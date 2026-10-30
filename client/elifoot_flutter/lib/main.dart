@@ -3265,7 +3265,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final pos = _formatPosition(item['position']);
       final ask = (item['askingPrice'] as num).toDouble();
       final fair = (item['fairValue'] as num).toDouble();
-      final estSalary = (fair * 0.035).round();
+      final actualSalary = (item['salaryPerRound'] as num?) ?? 0;
 
       marketPinned.add(
         ClassicPinnedRow(
@@ -3302,7 +3302,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
             ),
             DataCell(Text(formatClassicMoney(fair))),
-            DataCell(Text(formatClassicMoney(estSalary))),
+            DataCell(Text(formatClassicMoney(actualSalary))),
             DataCell(
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -3488,7 +3488,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               'CLUBE VENDEDOR',
               'PREÇO PEDIDO',
               'VALOR JUSTO',
-              'SALÁRIO EST.',
+              'SALÁRIO / PARTIDA',
               'SITUAÇÃO',
               'AÇÕES',
             ],
@@ -3508,7 +3508,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             final aid = a['auctionId'].toString();
             final cur = (a['currentBid'] as num).toDouble();
             final minBid = (a['minimumBid'] as num).toDouble();
-            final nextBid = cur == 0 ? minBid : cur + 15000;
+            final nextBid = a['highestBidderClubId'] == null ? minBid : cur + 5000;
             final closed = a['isClosed'] == true;
             return Container(
               margin: const EdgeInsets.only(bottom: 6),
@@ -3524,7 +3524,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
-                    '${a['displayName']} (${_formatPosition(a['position'])}, F:${a['strength']}) • Lance Mín: ${formatClassicMoney(minBid)} • Atual: ${formatClassicMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
+                    '${a['displayName']} (${_formatPosition(a['position'])}, F:${a['strength']}; salário ${formatClassicMoney(a['salaryPerRound'] ?? 0)}) • ${a['reason'] == 'FinancialInsolvency' ? 'INSOLVÊNCIA' : a['reason'] == 'SalaryRenewalRefused' ? 'RECUSA SALARIAL' : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} • Lance Mín: ${formatClassicMoney(minBid)} • Atual: ${formatClassicMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
                     style: const TextStyle(fontSize: 12),
                   ),
                   Wrap(
@@ -3684,6 +3684,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
     final stadium = _myClubDetail!['stadium'] as Map<String, dynamic>;
     final ledger = _financesData?['ledger'] as List<dynamic>? ?? [];
+    final loans = _financesData?['loans'] as List<dynamic>? ?? [];
+    final credit = _financesData?['credit'] as Map<String, dynamic>?;
+    final salaryRequests = (_financesData?['salaryRequests'] as List<dynamic>? ?? [])
+        .where((r) => r['status'] == 'PENDING').toList();
+    String loanInterest(dynamic loan) {
+      if (loan['mode'] == 'ClassicFixed') {
+        return '${formatClassicMoney(loan['interestPerMatch'] ?? 0)} por partida';
+      }
+      final rate = ((loan['interestRatePerRound'] as num?) ?? 0) * 100;
+      return '${rate.toStringAsFixed(2).replaceAll('.', ',')}% sobre o saldo; prestação ${formatClassicMoney(loan['installmentPerRound'] ?? 0)}';
+    }
     final renoCost =
         (_financesData?['renovationCostEstimate'] as num?)?.toDouble() ?? 50000;
     final expCost =
@@ -3869,16 +3880,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 _worldId!,
                                 _myClubId!,
                                 _coachId!,
-                                300000,
-                                10,
+                                500000,
+                                0,
                               );
                               await _refreshClubAndSecondaryData();
                               setState(
                                 () => _statusBanner =
-                                    'Empréstimo bancário de R\$ 300.000 creditado em caixa.',
+                                    'Empréstimo bancário de R\$ 500.000 creditado em caixa.',
                               );
                             }),
-                      child: const Text('EMPRÉSTIMO BANCÁRIO (+R\$ 300.000)'),
+                      child: const Text('EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)'),
                     ),
                   ],
                 ),
@@ -3886,6 +3897,34 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
           ),
           const SizedBox(height: 16),
+          if (credit != null) ...[
+            Text('SALDO DISPONÍVEL: ${formatClassicMoney(_financesData?['availableCash'] ?? cash)}'),
+            Text('CRÉDITO INDIVIDUAL: ${credit['activeLoans']}/${credit['loanLimit']} empréstimos; disponíveis: ${credit['availableLoans']}'),
+            Text('DÍVIDA TOTAL: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}'),
+          ],
+          ...loans.where((l) => l['isPaidOff'] != true).map((l) => ListTile(
+            title: Text('${l['mode'] == "ClassicFixed" ? "Empréstimo clássico" : "Empréstimo legado em prestações"} — dívida ${formatClassicMoney(l['remainingBalance'] ?? 0)}'),
+            subtitle: Text('Principal contratado: ${formatClassicMoney(l['principalAmount'] ?? 0)} | Principal pendente: ${l['outstandingPrincipal'] == null ? "composição anterior indisponível" : formatClassicMoney(l['outstandingPrincipal'])} | Juros: ${loanInterest(l)} | Juros pagos: ${formatClassicMoney(l['interestPaid'] ?? 0)} | Juros pendentes: ${formatClassicMoney(l['unpaidInterest'] ?? 0)}'),
+            trailing: OutlinedButton(onPressed: _commandBusy ? null : () => _runUiCommand(() async {
+              await widget.apiClient.repayBankLoan(_worldId!, _myClubId!, _coachId!, l['id'] as String);
+              await _refreshClubAndSecondaryData();
+            }), child: const Text('QUITAR')),
+          )),
+          ...salaryRequests.map((r) => Card(child: Padding(padding: const EdgeInsets.all(12), child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}'),
+              Text('Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}'),
+              Text('${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato'),
+              Text('Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}'),
+              if (r['mandatory'] == true) const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
+              Wrap(spacing: 8, children: [for (final accept in [true, false]) OutlinedButton(
+                onPressed: _commandBusy || !accept && r['mandatory'] == true ? null : () => _runUiCommand(() async {
+                  final message = await widget.apiClient.respondSalaryRequest(_worldId!, _myClubId!, _coachId!, r['id'] as String, accept);
+                  await _refreshClubAndSecondaryData();
+                  if (message != null) setState(() => _statusBanner = message);
+                }), child: Text(accept ? 'ACEITAR' : 'RECUSAR'))]),
+            ])))),
+          const SizedBox(height: 12),
           const Text(
             'LIVRO-CAIXA AUDITÁVEL (TRANSAÇÕES IDEMPOTENTES POR RODADA)',
             style: TextStyle(

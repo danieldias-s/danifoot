@@ -194,11 +194,12 @@ public static class MarketAndEconomyEngine
         GameWorld world,
         IReadOnlyList<MatchFixture> roundMatches)
     {
+        ClassicEconomyEngine.EnsureMigrated(world);
         DisciplineEngine.SettleFinishedMatches(world,roundMatches);
         var clubDict = world.Clubs.ToDictionary(c => c.Id);
 
         // 1. Settle match gate for every finished match in this round
-        foreach (var match in roundMatches.Where(m => m.IsFinished && !m.FinancialsSettled))
+        foreach (var match in roundMatches.Where(m => ClassicEconomyEngine.Played(m) && !m.FinancialsSettled))
         {
             if (!clubDict.TryGetValue(match.HomeClubId, out var homeClub) ||
                 !clubDict.TryGetValue(match.AwayClubId, out var awayClub))
@@ -262,6 +263,7 @@ public static class MarketAndEconomyEngine
         }
         if (!world.SettledFinancialRounds.Add(roundSettlementKey))
         {
+            ClassicEconomyEngine.SettleLoans(world,roundMatches);
             return;
         }
 
@@ -285,7 +287,7 @@ public static class MarketAndEconomyEngine
                 sponsorship, "Patrocínio e direitos de transmissão da rodada",
                 $"sponsor:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
 
-            bool playedThisRound = roundMatches.Any(m => m.HomeClubId == club.Id || m.AwayClubId == club.Id);
+            bool playedThisRound = roundMatches.Any(m => ClassicEconomyEngine.Played(m) && (m.HomeClubId == club.Id || m.AwayClubId == club.Id));
             if (!playedThisRound)
             {
                 continue;
@@ -295,19 +297,6 @@ public static class MarketAndEconomyEngine
             string salKey = $"salary:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}";
             TryRecordTransaction(world, club, FinancialTransactionCategory.PlayerSalary,
                 -totalSalary, $"Folha salarial da rodada ({squad.Count} atletas)", salKey);
-
-            // Process active bank loans
-            foreach (var loan in world.BankLoans.Where(l => l.ClubId == club.Id && !l.IsPaidOff))
-            {
-                decimal interest = Math.Round(loan.RemainingBalance * loan.InterestRatePerRound, 2);
-                decimal payment = Math.Min(loan.RemainingBalance + interest, loan.InstallmentPerRound);
-                loan.RemainingBalance = Math.Max(0m, loan.RemainingBalance + interest - payment);
-                loan.RemainingRounds = Math.Max(0, loan.RemainingRounds - 1);
-
-                TryRecordTransaction(world, club, FinancialTransactionCategory.LoanRepayment,
-                    -payment, $"Parcela de empréstimo bancário (restam {loan.RemainingRounds})",
-                    $"loan:{loan.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
-            }
 
             // Progress stadium works
             if (club.Stadium.ExpansionRoundsRemaining > 0)
@@ -347,12 +336,13 @@ public static class MarketAndEconomyEngine
                     var (canRelease, _) = SquadValidator.CanRemovePlayerFromSquad(squad, p.Id);
                     int samePosCount = squad.Count(x => x.Position == p.Position);
                     int minSafePos = p.Position == PlayerPosition.G ? 2 : 3;
-                    bool shouldRenew = !canRelease
+                    bool shouldRenew = ClassicEconomyEngine.AuctionReserved(world,p.Id) || !canRelease
                                        || samePosCount <= minSafePos
                                        || (squad.Count <= 20 && club.CashBalance > p.SalaryPerRound * 8m && p.Strength >= squad.Average(x => x.Strength) - 3);
 
                     if (shouldRenew)
                     {
+                        decimal previousSalary=p.SalaryPerRound;
                         p.ContractRoundsRemaining = 20;
                         p.SalaryPerRound = CalculateFairSalaryPerRound(p);
                         p.MarketPrice = CalculateFairValue(p);
@@ -360,6 +350,7 @@ public static class MarketAndEconomyEngine
                         TryRecordTransaction(world, club, FinancialTransactionCategory.ContractRenewal,
                             -bonus, $"Renovação contratual de {p.DisplayName}",
                             $"renew:{p.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
+                        ClassicEconomyEngine.RecordContract(world,p,previousSalary,"CONTRACT_EXPIRATION_RENEWAL",$"renew:{p.Id}:S{world.SeasonNumber}:R{world.RoundNumber}",bonus);
                     }
                     else
                     {
@@ -368,6 +359,7 @@ public static class MarketAndEconomyEngine
                         club.PreferredStarterIds.Remove(p.Id);
                         club.PreferredBenchIds.Remove(p.Id);
                         p.ClubId = null;
+                        p.NegotiatedContractProtected=false;
                         p.IsListedForTransfer = false;
                         p.AskingPrice = null;
                         p.ContractRoundsRemaining = 20;
@@ -389,6 +381,7 @@ public static class MarketAndEconomyEngine
                 }
             }
         }
+        ClassicEconomyEngine.SettleLoans(world,roundMatches);
     }
 
     /// <summary>
@@ -666,7 +659,7 @@ public static class MarketAndEconomyEngine
 
                 // Look at listed players first (including human-listed players!)
                 var candidates = world.Players
-                    .Where(p => p.ClubId != null && p.ClubId != buyer.Id && p.Position == pos && p.Strength >= minStrengthNeeded)
+                    .Where(p => p.ClubId != null && p.ClubId != buyer.Id && p.Position == pos && p.Strength >= minStrengthNeeded && !ClassicEconomyEngine.AuctionReserved(world,p.Id))
                     .Select(p => new
                     {
                         Player = p,
@@ -755,13 +748,14 @@ public static class MarketAndEconomyEngine
         }
 
         // 4. AI participation in open Auctions with private maxBid (no fake inflation loops)
-        foreach (var auction in world.Auctions.Where(a => !a.IsClosed))
+        foreach (var auction in world.Auctions.Where(a => !a.IsClosed).ToList())
         {
             if (!playerDict.TryGetValue(auction.PlayerId, out var auctionPlayer)) continue;
             decimal fair = CalculateFairValue(auctionPlayer);
 
             foreach (var aiClub in buyerCandidates.Take(10))
             {
+                if(auctionPlayer.ClubId==aiClub.Id)continue;
                 var squad = world.Players.Where(p => p.ClubId == aiClub.Id).ToList();
                 if (squad.Count >= SquadValidator.MaxSquadSize) continue;
 
@@ -779,13 +773,13 @@ public static class MarketAndEconomyEngine
                     auction.PrivateAiMaxBids[aiClub.Id] = privateMax;
                 }
 
-                decimal nextRequiredBid = auction.CurrentBid == 0m
+                decimal nextRequiredBid = auction.Reason!=AuctionReason.ContractExpiration ? ClassicEconomyEngine.NextBid(auction) : auction.CurrentBid == 0m
                     ? auction.MinimumBid
                     : Math.Round(auction.CurrentBid * 1.06m, 0);
 
                 if (auction.HighestBidderClubId != aiClub.Id
                     && nextRequiredBid <= privateMax
-                    && aiClub.CashBalance >= nextRequiredBid + plan.EmergencyCashReserve)
+                    && ClassicEconomyEngine.AvailableCash(world,aiClub,auction.Id) >= nextRequiredBid + plan.EmergencyCashReserve)
                 {
                     auction.CurrentBid = nextRequiredBid;
                     auction.HighestBidderClubId = aiClub.Id;
@@ -800,6 +794,7 @@ public static class MarketAndEconomyEngine
             }
         }
 
+        ClassicEconomyEngine.EvaluateInsolvency(world);
         return logs;
     }
 
@@ -811,7 +806,8 @@ public static class MarketAndEconomyEngine
         decimal price,
         string justification,
         string idempotencyKey,
-        string transactionType = "DirectPurchase")
+        string transactionType = "DirectPurchase",
+        Guid? settlingAuctionId = null)
     {
         if (buyerClubId == sellerClubId)
             return (false, "O clube comprador e vendedor são o mesmo.");
@@ -833,7 +829,9 @@ public static class MarketAndEconomyEngine
         if (player.ClubId != seller.Id)
             return (false, "O jogador não pertence mais ao clube vendedor.");
 
-        if (price <= 0m || buyer.CashBalance < price)
+        bool auctionSale=settlingAuctionId is Guid aid&&world.Auctions.Any(a=>a.Id==aid&&!a.IsClosed&&a.PlayerId==playerId&&a.FormerClubId==sellerClubId&&a.Reason==AuctionReason.FinancialInsolvency&&a.HighestBidderClubId==buyerClubId&&a.CurrentBid==price);
+        if(ClassicEconomyEngine.AuctionReserved(world,playerId)&&!auctionSale)return(false,"Jogador reservado para leilão.");
+        if (price < 0m || price == 0m&&!auctionSale || ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId) < price)
             return (false, "Saldo insuficiente no clube comprador.");
 
         var buyerSquad = world.Players.Where(p => p.ClubId == buyer.Id).ToList();
@@ -845,13 +843,13 @@ public static class MarketAndEconomyEngine
         if (!canRemove) return (false, remErr);
 
         // Record financial transactions idempotently
-        if (!TryRecordTransaction(world, buyer, FinancialTransactionCategory.TransferPurchase,
+        if (!TryRecordTransaction(world, buyer, auctionSale?FinancialTransactionCategory.AuctionPurchase:FinancialTransactionCategory.TransferPurchase,
                 -price, $"Compra de {player.DisplayName} de {seller.Name} ({justification})", $"{idempotencyKey}:buy"))
         {
             return (false, "Transação já processada anteriormente.");
         }
 
-        TryRecordTransaction(world, seller, FinancialTransactionCategory.TransferSale,
+        TryRecordTransaction(world, seller, auctionSale?FinancialTransactionCategory.AuctionSale:FinancialTransactionCategory.TransferSale,
             price, $"Venda de {player.DisplayName} para {buyer.Name}", $"{idempotencyKey}:sell");
 
         var buyTransaction = world.Transactions[^2];
@@ -874,7 +872,9 @@ public static class MarketAndEconomyEngine
         player.AskingPrice = null;
         player.ContractRoundsRemaining = Math.Max(player.ContractRoundsRemaining, 16);
         player.MarketPrice = CalculateFairValue(player);
+        decimal previousSalary=player.SalaryPerRound;
         player.SalaryPerRound = CalculateFairSalaryPerRound(player);
+        ClassicEconomyEngine.RecordContract(world,player,previousSalary,"TRANSFER_CONTRACT",$"transfer:{world.Id}:{buyer.Id}:{player.Id}:{idempotencyKey}:contract");
 
         return (true, null);
     }
@@ -882,17 +882,18 @@ public static class MarketAndEconomyEngine
     public static void SettleAuction(GameWorld world, AuctionItem auction, List<string>? logs = null)
     {
         if (auction.IsClosed) return;
+        if(auction.Reason!=AuctionReason.ContractExpiration){ClassicEconomyEngine.SettleSpecialAuction(world,auction,logs);return;}
         auction.IsClosed = true;
 
         var player = world.Players.FirstOrDefault(p => p.Id == auction.PlayerId);
-        if (player == null) return;
+        if (player == null || player.ClubId!=null) return;
 
         if (auction.HighestBidderClubId != null && auction.CurrentBid > 0m)
         {
             var winner = world.Clubs.FirstOrDefault(c => c.Id == auction.HighestBidderClubId.Value);
             var winnerSquad = winner != null ? world.Players.Where(p => p.ClubId == winner.Id).ToList() : new List<Player>();
 
-            if (winner != null && winner.CashBalance >= auction.CurrentBid && winnerSquad.Count < SquadValidator.MaxSquadSize)
+            if (winner != null && ClassicEconomyEngine.AvailableCash(world,winner,auction.Id) >= auction.CurrentBid && winnerSquad.Count < SquadValidator.MaxSquadSize)
             {
                 if (!TryRecordTransaction(world, winner, FinancialTransactionCategory.AuctionPurchase,
                     -auction.CurrentBid, $"Arremate em leilão de {player.DisplayName}", $"auction:{auction.Id}:win")) return;
@@ -905,6 +906,7 @@ public static class MarketAndEconomyEngine
                 player.AskingPrice = null;
                 player.MarketPrice = CalculateFairValue(player);
                 player.SalaryPerRound = CalculateFairSalaryPerRound(player);
+                ClassicEconomyEngine.RecordContract(world,player,player.SalaryPerRound,"EXPIRATION_AUCTION",$"auction:{auction.Id}:contract");
                 logs?.Add($"Leilão encerrado: {winner.ShortName} arrematou {player.DisplayName} por R$ {auction.CurrentBid:N0}.");
                 return;
             }
@@ -930,6 +932,7 @@ public static class MarketAndEconomyEngine
             player.ContractRoundsRemaining = 14;
             player.MarketPrice = CalculateFairValue(player);
             player.SalaryPerRound = CalculateFairSalaryPerRound(player);
+            ClassicEconomyEngine.RecordContract(world,player,player.SalaryPerRound,"EXPIRATION_FREE_ASSIGNMENT",$"auction:{auction.Id}:contract");
         }
     }
 

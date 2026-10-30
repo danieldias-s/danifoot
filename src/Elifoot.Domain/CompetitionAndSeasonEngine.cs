@@ -380,6 +380,7 @@ public static class CompetitionAndSeasonEngine
         }
 
         ClassicForceEvolutionEngine.ApplyFinishedRound(world, roundMatches);
+        ClassicEconomyEngine.AfterSportingRound(world,roundMatches);
         if (!updated) return;
         CoachCareerEngine.AwardCompletedLeagues(world);
         CoachCareerEngine.RecoverUnemployed(world);
@@ -551,6 +552,7 @@ public static class CompetitionAndSeasonEngine
                 $"prize:pro_dist:{c.Id}:S{world.SeasonNumber}");
         }
 
+        ClassicEconomyEngine.RegisterPromotions(world,promotedIds);
         // The table position from another division is no longer a valid growth reference,
         // including injury history produced during the transition days before season initialization.
         if (ClassicForceEvolutionEngine.IsActive(world))
@@ -570,6 +572,8 @@ public static class CompetitionAndSeasonEngine
 
         // Process seasonal stadium structural wear & AI stadium projects
         MarketAndEconomyEngine.ProcessSeasonalStadiumWearAndAiProjects(world);
+        ClassicEconomyEngine.EvaluateInsolvency(world);
+        foreach(var club in world.Clubs)ClassicEconomyEngine.AssessCredit(world,club);
 
         var historyEntry = new SeasonHistoryEntry
         {

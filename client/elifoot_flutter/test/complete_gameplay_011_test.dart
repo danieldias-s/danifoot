@@ -431,6 +431,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
           'sellerClubName': 'Real Dourado',
           'askingPrice': 600000,
           'fairValue': 580000,
+          'salaryPerRound': 1234,
         },
         {
           'playerId': 'mkt-2',
@@ -441,6 +442,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
           'sellerClubName': 'União Imperial',
           'askingPrice': 240000,
           'fairValue': 250000,
+          'salaryPerRound': 987,
         },
       ],
       'auctions': [
@@ -1068,6 +1070,10 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('quick-action-mercado')));
       await tester.pumpAndSettle();
 
+      // 012D: display the negotiated server wage, independently of the fair value.
+      expect(find.text('R\$ 1.234'), findsOneWidget);
+      expect(find.text('R\$ 20.300'), findsNothing);
+
       await tester.ensureVisible(find.text('COMPRAR').first);
       await tester.tap(find.text('COMPRAR').first);
       await tester.pumpAndSettle();
@@ -1120,7 +1126,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('btn-emprestimo-bancario')));
       await tester.pumpAndSettle();
       expect(
-        find.text('Empréstimo bancário de R\$ 300.000 creditado em caixa.'),
+        find.text('Empréstimo bancário de R\$ 500.000 creditado em caixa.'),
         findsOneWidget,
       );
     },

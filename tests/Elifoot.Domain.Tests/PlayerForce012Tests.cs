@@ -19,7 +19,8 @@ public class PlayerForce012Tests
         Assert.Equal(strength + 1, change.StrengthAfter);
         Assert.Equal("NORMAL_PROGRESS", change.ChangeReason);
         Assert.Equal(MarketAndEconomyEngine.CalculateFairValue(p), p.MarketPrice);
-        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p), p.SalaryPerRound);
+        Assert.Equal(8000m,p.SalaryPerRound); // The negotiated salary survives force evolution.
+        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p), p.ReferenceSalaryPerRound);
     }
 
     [Fact]
@@ -31,7 +32,8 @@ public class PlayerForce012Tests
         Assert.Equal(50, p.Strength);
         Assert.Empty(w.PlayerStrengthHistory);
         Assert.Equal(MarketAndEconomyEngine.CalculateFairValue(p), p.MarketPrice);
-        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p), p.SalaryPerRound);
+        Assert.Equal(8000m,p.SalaryPerRound); // The negotiated salary survives force evolution.
+        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p), p.ReferenceSalaryPerRound);
     }
 
     [Fact]

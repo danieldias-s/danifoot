@@ -326,7 +326,7 @@ class ElifootApiClient {
       'playerId': playerId,
       'askingPrice': price.round().toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -335,7 +335,7 @@ class ElifootApiClient {
       'coachId': coachId,
       'playerId': playerId,
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -345,7 +345,7 @@ class ElifootApiClient {
       'playerId': playerId,
       'offeredAmount': amount.round().toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     return _decodeResponse(res);
   }
 
@@ -354,7 +354,7 @@ class ElifootApiClient {
       'coachId': coachId,
       'accept': accept.toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -363,7 +363,7 @@ class ElifootApiClient {
       'coachId': coachId,
       'bidAmount': bidAmount.round().toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -372,13 +372,15 @@ class ElifootApiClient {
       'coachId': coachId,
       'additionalRounds': additionalRounds.toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
   Future<Map<String, dynamic>> getClubFinances(String worldId, String clubId) async {
     final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/finances'));
-    return _decodeResponse(res);
+    final data = _decodeResponse(res);
+    _financeVersions[worldId] = data['roundVersion'] as int?;
+    return data;
   }
 
   Future<void> takeBankLoan(String worldId, String clubId, String coachId, double amount, int rounds) async {
@@ -387,7 +389,7 @@ class ElifootApiClient {
       'amount': amount.round().toString(),
       'rounds': rounds.toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -395,7 +397,7 @@ class ElifootApiClient {
     final uri = Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/stadium/renovate').replace(queryParameters: {
       'coachId': coachId,
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -404,8 +406,43 @@ class ElifootApiClient {
       'coachId': coachId,
       'additionalSeats': seats.toString(),
     });
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
+  }
+
+  final Map<String, String> _financeKeys = {};
+  final Map<String, int?> _financeVersions = {};
+  int _financeSequence = 0;
+
+  Future<http.Response> _postFinance(Uri uri, {Map<String, dynamic>? body}) async {
+    final identity = '$uri:${body == null ? "" : jsonEncode(body)}';
+    final key = _financeKeys.putIfAbsent(identity,
+        () => '${DateTime.now().microsecondsSinceEpoch}-${++_financeSequence}');
+    final segments = uri.pathSegments;
+    final worldId = segments.length > 2 ? segments[2] : '';
+    final version = _financeVersions[worldId];
+    final response = body == null
+        ? await _http.post(uri.replace(queryParameters: {
+            ...uri.queryParameters, 'idempotencyKey': key,
+            if (version != null) 'expectedRoundVersion': '$version',
+          }))
+        : await _http.post(uri, headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({...body, 'idempotencyKey': key,
+              'expectedRoundVersion': ?version}));
+    // A transport/server failure may happen after the server committed the operation.
+    if (response.statusCode < 500) _financeKeys.remove(identity);
+    return response;
+  }
+
+  Future<void> repayBankLoan(String worldId, String clubId, String coachId, String loanId) async {
+    final response = await _postFinance(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/loans/$loanId/repay'), body: {'coachId': coachId});
+    _decodeResponse(response);
+  }
+
+  Future<String?> respondSalaryRequest(String worldId, String clubId, String coachId, String requestId, bool accept) async {
+    final response = await _postFinance(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/salary-requests/$requestId/respond'),
+        body: {'coachId': coachId, 'accept': accept});
+    return _decodeResponse(response)['message'] as String?;
   }
 
   Future<Map<String, dynamic>> getInvitations(String worldId, String coachId) async {

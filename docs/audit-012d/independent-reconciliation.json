@@ -1,0 +1,108 @@
+{
+  "Status": "PASS",
+  "Dataset": "docs\\audit-012d\\solution-final\\economy-012d",
+  "LedgerEntries": 558212,
+  "BankEntries": 60,
+  "UniqueChargedLoanMatches": 51,
+  "ReconciledTransferPairs": 8800,
+  "InitialCash": "138800000",
+  "FinalCash": "18107128451.84",
+  "FinalDebt": 0,
+  "CashDifference": 0,
+  "PairDifference": 0,
+  "CashByCategory": {
+    "InitialBalance": "138800000",
+    "LoanDisbursement": "2500000",
+    "StadiumRenovation": "-194143294",
+    "TicketRevenue": "9988069999.62",
+    "StadiumFixedCost": "-784612258.68",
+    "StadiumVariableCost": "-533656696.10",
+    "Sponsorship": "12566400000",
+    "PlayerSalary": "-1173597390",
+    "LoanPrincipalRepayment": "-2500000",
+    "TransferPurchase": "-933991527",
+    "TransferSale": "933991527",
+    "LoanInterestPayment": "-1275000",
+    "AuctionPurchase": "-2849769475",
+    "AuctionSale": "60000",
+    "ContractRenewal": "-56819877.0",
+    "PrizeMoney": "1590000000",
+    "StadiumMaintenance": "-473527557.0",
+    "StadiumExpansion": "-108800000",
+    "FreeAgentSigning": "0"
+  },
+  "Loans": {
+    "16edb112-ef77-bc93-87e5-0f9a1fc8993c": {
+      "Mode": "ClassicFixed",
+      "OpeningDebt": "0",
+      "Debt": "0",
+      "InterestCharged": "175000",
+      "InterestPaid": "175000",
+      "PrincipalPaid": "500000"
+    },
+    "2a330ea8-95e9-eb96-17ee-5fc085fd3da8": {
+      "Mode": "ClassicFixed",
+      "OpeningDebt": "0",
+      "Debt": "0",
+      "InterestCharged": "100000",
+      "InterestPaid": "100000",
+      "PrincipalPaid": "500000"
+    },
+    "8d035385-4d30-4c4d-8d21-b2f8010baa22": {
+      "Mode": "LegacyInstallment",
+      "OpeningDebt": "500000",
+      "Debt": "0",
+      "InterestCharged": "0",
+      "InterestPaid": "0",
+      "PrincipalPaid": "500000"
+    },
+    "4cc31886-442b-c6e8-c70a-897c5d2a1ec8": {
+      "Mode": "ClassicFixed",
+      "OpeningDebt": "0",
+      "Debt": "0",
+      "InterestCharged": "425000",
+      "InterestPaid": "425000",
+      "PrincipalPaid": "500000"
+    },
+    "f3e500d0-70ec-3683-2ab2-97884875c856": {
+      "Mode": "ClassicFixed",
+      "OpeningDebt": "0",
+      "Debt": "0",
+      "InterestCharged": "575000",
+      "InterestPaid": "575000",
+      "PrincipalPaid": "500000"
+    }
+  },
+  "FixedQualityControls": {
+    "1": {
+      "MarketValue": 15000,
+      "ReferenceSalary": 222,
+      "NominalIndexT1ToT100": 100
+    },
+    "10": {
+      "MarketValue": 48245,
+      "ReferenceSalary": 418,
+      "NominalIndexT1ToT100": 100
+    },
+    "20": {
+      "MarketValue": 236334,
+      "ReferenceSalary": 1059,
+      "NominalIndexT1ToT100": 100
+    },
+    "30": {
+      "MarketValue": 667800,
+      "ReferenceSalary": 2169,
+      "NominalIndexT1ToT100": 100
+    },
+    "40": {
+      "MarketValue": 1416906,
+      "ReferenceSalary": 3766,
+      "NominalIndexT1ToT100": 100
+    },
+    "50": {
+      "MarketValue": 2549325,
+      "ReferenceSalary": 5861,
+      "NominalIndexT1ToT100": 100
+    }
+  }
+}

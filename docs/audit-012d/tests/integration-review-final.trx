@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e78c6bd3-1337-47c5-bdfd-a5c05caebd36" name="Daniel@DESKTOP-A5J5UME 2026-10-30 18:45:18" runUser="DESKTOP-A5J5UME\CodexSandboxOffline" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T18:45:18.2370584-03:00" queuing="2026-10-30T18:45:18.2370587-03:00" start="2026-10-30T18:45:14.3026116-03:00" finish="2026-10-30T18:47:32.2129070-03:00" />
+  <TestSettings name="default" id="398c3bfc-3ca5-4ef6-ac9d-457cfb65ca51">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_18_45_18" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="640ada41-b13e-4081-8d22-5139c5527511" testId="82f925c9-c043-b54d-cdb9-0ac52b9c7ab5" testName="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 6)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4177409" startTime="2026-10-30T18:47:10.6385189-03:00" endTime="2026-10-30T18:47:11.0566408-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="640ada41-b13e-4081-8d22-5139c5527511" />
+    <UnitTestResult executionId="0ab9ee43-b1de-4497-b6cd-db25a816eb4e" testId="c001bb23-7468-e571-62c0-d760f7987cdb" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 128)" computerName="DESKTOP-A5J5UME" duration="00:00:01.1919183" startTime="2026-10-30T18:47:00.9317929-03:00" endTime="2026-10-30T18:47:02.1222464-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ab9ee43-b1de-4497-b6cd-db25a816eb4e">
+      <Output>
+        <StdOut>128 clubs, 2308 players: cold=125ms, three warm categories=40ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="da46b52a-125e-4a35-adfe-9cf597998d87" testId="a7c4d7d7-a4a4-4d03-e88b-8d430f122a43" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger" computerName="DESKTOP-A5J5UME" duration="00:00:00.9514096" startTime="2026-10-30T18:47:08.2659481-03:00" endTime="2026-10-30T18:47:09.2179510-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="da46b52a-125e-4a35-adfe-9cf597998d87" />
+    <UnitTestResult executionId="c32d1c36-fa47-4e7d-aef7-d9e87034f3d4" testId="623c0818-325c-e4ea-3285-9ef2e463311a" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" computerName="DESKTOP-A5J5UME" duration="00:00:00.5046975" startTime="2026-10-30T18:45:19.1102652-03:00" endTime="2026-10-30T18:45:19.6154497-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c32d1c36-fa47-4e7d-aef7-d9e87034f3d4" />
+    <UnitTestResult executionId="436b35e1-9cab-4321-a093-5dcd04120dc3" testId="2732439b-a7e3-986d-e490-68af2b31576f" testName="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.SqlitePersistsDailyLossDatesRecoveryAndHistoryWithoutReapplying" computerName="DESKTOP-A5J5UME" duration="00:00:00.2254045" startTime="2026-10-30T18:47:12.1703883-03:00" endTime="2026-10-30T18:47:12.3962806-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="436b35e1-9cab-4321-a093-5dcd04120dc3" />
+    <UnitTestResult executionId="553596e1-ae53-4d82-a333-6cf63b7b6acb" testId="93ec1265-168a-03bf-46e1-b2b1ae2fb42a" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 1024)" computerName="DESKTOP-A5J5UME" duration="00:00:02.9336859" startTime="2026-10-30T18:46:57.9959686-03:00" endTime="2026-10-30T18:47:00.9297558-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="553596e1-ae53-4d82-a333-6cf63b7b6acb">
+      <Output>
+        <StdOut>1024 clubs, 18436 players: cold=783ms, three warm categories=591ms</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a479ff2e-02b1-4b45-9f1e-f95e217ee81f" testId="14f8ad2a-8d11-efa4-2587-f8e3feedd823" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 8)" computerName="DESKTOP-A5J5UME" duration="00:00:36.2678080" startTime="2026-10-30T18:45:25.5919335-03:00" endTime="2026-10-30T18:46:01.8588273-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a479ff2e-02b1-4b45-9f1e-f95e217ee81f" />
+    <UnitTestResult executionId="813cf009-603d-4afd-9e45-2cec9eed9f75" testId="40899414-5587-6603-ee68-faf91118d27f" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" computerName="DESKTOP-A5J5UME" duration="00:00:03.3702024" startTime="2026-10-30T18:45:21.7766137-03:00" endTime="2026-10-30T18:45:25.1470405-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="813cf009-603d-4afd-9e45-2cec9eed9f75" />
+    <UnitTestResult executionId="cc3e57c3-75a7-48bd-ac62-265a1f923a74" testId="65c0618f-c3e6-499b-ba9c-3c4c440180a1" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpFiltersCoverAllCategoriesScopesAndPeriodsUsingPersistedStatistics" computerName="DESKTOP-A5J5UME" duration="00:00:00.2921237" startTime="2026-10-30T18:47:02.1225826-03:00" endTime="2026-10-30T18:47:02.4150235-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc3e57c3-75a7-48bd-ac62-265a1f923a74" />
+    <UnitTestResult executionId="d42007f6-e89c-4ec4-8aa5-044f6bc660cd" testId="b3774564-476e-637a-ba84-4ba253a58906" testName="Elifoot.Integration.Tests.PlayableQaRegressionTests.BrowserContract_UsesNamedEnums_AndSameSeedRoomsRemainIndependent" computerName="DESKTOP-A5J5UME" duration="00:00:00.6140023" startTime="2026-10-30T18:45:20.4422667-03:00" endTime="2026-10-30T18:45:21.0563889-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d42007f6-e89c-4ec4-8aa5-044f6bc660cd" />
+    <UnitTestResult executionId="6872f2ee-8d70-4ced-aad9-38d2977d08e6" testId="33b0b1ce-eab2-e653-2edf-bba8ac793fce" testName="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 8)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5307984" startTime="2026-10-30T18:47:11.0568606-03:00" endTime="2026-10-30T18:47:11.5881764-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6872f2ee-8d70-4ced-aad9-38d2977d08e6" />
+    <UnitTestResult executionId="a842fadf-17f7-4a00-ba78-ed3c6c70860e" testId="55c9ec07-50f4-11ec-b886-d3eeb088eb33" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.QueryServiceSharesTheClockLockAndReleasesItAfterCancellationOrFailure" computerName="DESKTOP-A5J5UME" duration="00:00:00.2164014" startTime="2026-10-30T18:47:02.7696654-03:00" endTime="2026-10-30T18:47:02.9861184-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a842fadf-17f7-4a00-ba78-ed3c6c70860e" />
+    <UnitTestResult executionId="0ead4f30-1961-4ba4-81d9-832bb6597c0d" testId="b6daea21-6ccc-7482-d9fe-d0dc426e31fc" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor" computerName="DESKTOP-A5J5UME" duration="00:00:09.0835163" startTime="2026-10-30T18:45:16.4999207-03:00" endTime="2026-10-30T18:45:25.5903669-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ead4f30-1961-4ba4-81d9-832bb6597c0d" />
+    <UnitTestResult executionId="d79fc4d0-30eb-4d5a-a7ae-0fe59ce1d13f" testId="25b2de78-6517-fb1e-7951-0a4c3306ec98" testName="Elifoot.Integration.Tests.PlayerForce012IntegrationTests.SqliteReloadAndHttpHistoryRetainStrengthEventsAcrossActualTransfer" computerName="DESKTOP-A5J5UME" duration="00:00:00.3080404" startTime="2026-10-30T18:47:09.5523504-03:00" endTime="2026-10-30T18:47:09.8604391-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d79fc4d0-30eb-4d5a-a7ae-0fe59ce1d13f" />
+    <UnitTestResult executionId="1aeff5f1-18f0-45ca-8ab6-ab45dff8e6ba" testId="bb07632c-0ed5-4707-38d0-74ca5a1a2b16" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;unattached&quot;)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5568370" startTime="2026-10-30T18:47:03.9282763-03:00" endTime="2026-10-30T18:47:04.4854861-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1aeff5f1-18f0-45ca-8ab6-ab45dff8e6ba" />
+    <UnitTestResult executionId="33b0ad95-c816-4d41-aa30-2566d7899277" testId="2aa1c3ab-2d1c-7424-28c8-f436366c7c63" testName="Elifoot.Integration.Tests.Discipline012CIntegrationTests.SqliteMigrationAndRestartKeepPlayerCyclesCardHistoryAndRemainingMatchBans" computerName="DESKTOP-A5J5UME" duration="00:00:00.2287831" startTime="2026-10-30T18:47:09.8607297-03:00" endTime="2026-10-30T18:47:10.0896029-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33b0ad95-c816-4d41-aa30-2566d7899277" />
+    <UnitTestResult executionId="18b0e869-6c46-4c50-a685-9a39277c9850" testId="4c1bfbf4-4b57-9653-a397-8f148479e327" testName="Elifoot.Integration.Tests.PlayerForce012IntegrationTests.ConcurrentSeasonAdvanceAndReconnectDoNotDuplicatePlayerProgress" computerName="DESKTOP-A5J5UME" duration="00:00:00.3331049" startTime="2026-10-30T18:47:09.2184516-03:00" endTime="2026-10-30T18:47:09.5517421-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18b0e869-6c46-4c50-a685-9a39277c9850" />
+    <UnitTestResult executionId="7a9efc54-8066-4d6b-b42c-9aec23919182" testId="b45fa551-5942-6c55-42a2-0fd4ae31f186" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRejectsInvalidOrAmbiguousQueriesAndReturns404ForMissingWorldOrPlayer" computerName="DESKTOP-A5J5UME" duration="00:00:00.3538597" startTime="2026-10-30T18:47:02.4152998-03:00" endTime="2026-10-30T18:47:02.7694390-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a9efc54-8066-4d6b-b42c-9aec23919182" />
+    <UnitTestResult executionId="25795940-ab94-4264-8e5b-1de601a3e728" testId="3027fba8-a4d8-264e-e174-db862a3681b7" testName="Elifoot.Integration.Tests.FinancialPersistence007Tests.AiOfferSubmissionAndHumanAcceptance_HaveDistinctMetricsAndCorrectAttribution" computerName="DESKTOP-A5J5UME" duration="00:00:00.8998915" startTime="2026-10-30T18:45:16.4969871-03:00" endTime="2026-10-30T18:45:17.4109193-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="25795940-ab94-4264-8e5b-1de601a3e728" />
+    <UnitTestResult executionId="44f41f6a-ce21-4719-85e3-7d6c8c23da76" testId="d0ac9175-f66b-4b69-2d6d-72a2818681b7" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 8)" computerName="DESKTOP-A5J5UME" duration="00:00:04.7526460" startTime="2026-10-30T18:47:26.5616423-03:00" endTime="2026-10-30T18:47:31.3143310-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44f41f6a-ce21-4719-85e3-7d6c8c23da76" />
+    <UnitTestResult executionId="3c6c5621-55dc-4707-864d-1afc95fd558b" testId="55a519d3-78a0-6b5b-53eb-3bf916c916ee" testName="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 4)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4309777" startTime="2026-10-30T18:47:11.5885495-03:00" endTime="2026-10-30T18:47:12.0196275-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c6c5621-55dc-4707-864d-1afc95fd558b" />
+    <UnitTestResult executionId="6b4793bd-72ca-4677-ba06-74bc26f2fccc" testId="cd75ebff-7bb1-97a4-a644-42f567485bf3" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;different&quot;)" computerName="DESKTOP-A5J5UME" duration="00:00:00.6831272" startTime="2026-10-30T18:47:04.4856951-03:00" endTime="2026-10-30T18:47:05.1692413-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b4793bd-72ca-4677-ba06-74bc26f2fccc" />
+    <UnitTestResult executionId="8f0a61ca-45e7-41b1-8b9d-b5c8fafcecea" testId="2c057334-6cff-e649-910d-247534263b39" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5006628" startTime="2026-10-30T18:45:21.2752907-03:00" endTime="2026-10-30T18:45:21.7762658-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f0a61ca-45e7-41b1-8b9d-b5c8fafcecea" />
+    <UnitTestResult executionId="86448394-10c0-4435-b6b1-5ca9bbbbf3da" testId="22f65bd4-c7c7-cd43-3b46-eacbc81f6ce5" testName="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.IdleCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays" computerName="DESKTOP-A5J5UME" duration="00:00:00.1499313" startTime="2026-10-30T18:47:12.0199887-03:00" endTime="2026-10-30T18:47:12.1700193-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86448394-10c0-4435-b6b1-5ca9bbbbf3da" />
+    <UnitTestResult executionId="c7d184ea-f9a4-4f86-a009-92fa930b2a2d" testId="0463c3de-670e-4a0c-99b4-129e2a1e865d" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5503711" startTime="2026-10-30T18:45:19.6159369-03:00" endTime="2026-10-30T18:45:20.1667735-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7d184ea-f9a4-4f86-a009-92fa930b2a2d" />
+    <UnitTestResult executionId="eb481690-b7ca-443b-9266-0f2850515988" testId="1cdca012-10b2-1ea0-ac4d-5836913e1834" testName="Elifoot.Integration.Tests.PlayableQaRegressionTests.EditorSavesBehaviorStarClubAndManager_AndCalendarListsFullSeason" computerName="DESKTOP-A5J5UME" duration="00:00:00.9971852" startTime="2026-10-30T18:45:19.4449412-03:00" endTime="2026-10-30T18:45:20.4419065-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb481690-b7ca-443b-9266-0f2850515988" />
+    <UnitTestResult executionId="08fbe1d8-5dac-49b9-9fed-4af8130ac960" testId="59e9aaba-248c-a90b-3cc4-8e83250588d2" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;same&quot;)" computerName="DESKTOP-A5J5UME" duration="00:00:00.9415046" startTime="2026-10-30T18:47:02.9866370-03:00" endTime="2026-10-30T18:47:03.9280903-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08fbe1d8-5dac-49b9-9fed-4af8130ac960" />
+    <UnitTestResult executionId="668468cf-7374-484b-8d0b-df4ccfdf587c" testId="de26c517-9172-fa94-9458-973bfab731b5" testName="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 2)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5482020" startTime="2026-10-30T18:47:10.0897975-03:00" endTime="2026-10-30T18:47:10.6383047-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="668468cf-7374-484b-8d0b-df4ccfdf587c" />
+    <UnitTestResult executionId="464b1a6a-2543-4ff3-9ec0-0c71c95faf53" testId="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba" testName="Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" computerName="DESKTOP-A5J5UME" duration="00:00:07.6952541" startTime="2026-10-30T18:45:17.4301277-03:00" endTime="2026-10-30T18:45:25.1071810-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="464b1a6a-2543-4ff3-9ec0-0c71c95faf53" />
+    <UnitTestResult executionId="70507562-228e-439d-8c56-34662c8fb5fb" testId="bc6b69c3-6042-a7a7-ac16-119b57750214" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpHistoryPreservesHistoricalClubsAndGetRequestsDoNotPayAwardsOrWriteSnapshots" computerName="DESKTOP-A5J5UME" duration="00:00:00.3867926" startTime="2026-10-30T18:46:57.6077447-03:00" endTime="2026-10-30T18:46:57.9955363-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70507562-228e-439d-8c56-34662c8fb5fb" />
+    <UnitTestResult executionId="a3a3c5cd-fd5a-4933-ac44-79ea52e7e5b9" testId="585bb8dd-b5f3-12bc-5b70-510b2e1ada59" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 4)" computerName="DESKTOP-A5J5UME" duration="00:00:04.5664005" startTime="2026-10-30T18:47:17.3131735-03:00" endTime="2026-10-30T18:47:21.8793778-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a3a3c5cd-fd5a-4933-ac44-79ea52e7e5b9" />
+    <UnitTestResult executionId="1f0c0418-232f-4101-a8a8-8c76d65e4872" testId="bdc355a7-ffbb-94f7-00f8-5fa3703a029d" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 2)" computerName="DESKTOP-A5J5UME" duration="00:00:09.3123847" startTime="2026-10-30T18:46:01.8615452-03:00" endTime="2026-10-30T18:46:11.1716666-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f0c0418-232f-4101-a8a8-8c76d65e4872" />
+    <UnitTestResult executionId="18742bc2-f329-48aa-92f1-b56be9086b67" testId="47b90669-6043-487c-f21f-5a9218645aef" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 2)" computerName="DESKTOP-A5J5UME" duration="00:00:04.7436011" startTime="2026-10-30T18:47:12.5686481-03:00" endTime="2026-10-30T18:47:17.3124553-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18742bc2-f329-48aa-92f1-b56be9086b67" />
+    <UnitTestResult executionId="d73f89dc-4043-4932-9f55-621b4cca9251" testId="88eccd58-eaa8-5885-9360-5ddd8c312868" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.AiAndConcurrentHumanBiddersCannotSellTheSameDebtPlayerTwice" computerName="DESKTOP-A5J5UME" duration="00:00:00.0576760" startTime="2026-10-30T18:47:12.5100703-03:00" endTime="2026-10-30T18:47:12.5680801-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d73f89dc-4043-4932-9f55-621b4cca9251" />
+    <UnitTestResult executionId="66cd4a15-2ff8-447d-91f6-4d0ac07cb1b6" testId="164bea7e-4dac-4ed6-b0d4-5e6bd28e26a1" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 4)" computerName="DESKTOP-A5J5UME" duration="00:00:17.1652508" startTime="2026-10-30T18:46:36.7276218-03:00" endTime="2026-10-30T18:46:53.8927390-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="66cd4a15-2ff8-447d-91f6-4d0ac07cb1b6" />
+    <UnitTestResult executionId="2e774fe2-53f6-4b38-a0c7-ba1b1e5337c4" testId="92b8316e-67e4-0164-3b15-cdc55348a890" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 6)" computerName="DESKTOP-A5J5UME" duration="00:00:04.6805818" startTime="2026-10-30T18:47:21.8798937-03:00" endTime="2026-10-30T18:47:26.5607314-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2e774fe2-53f6-4b38-a0c7-ba1b1e5337c4" />
+    <UnitTestResult executionId="be8ac222-8cd4-4a84-845f-fc8868506e8b" testId="087d7b2b-9dce-aa08-a53f-23c4ce51f71c" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" computerName="DESKTOP-A5J5UME" duration="00:00:03.0955556" startTime="2026-10-30T18:47:05.1694660-03:00" endTime="2026-10-30T18:47:08.2653231-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="be8ac222-8cd4-4a84-845f-fc8868506e8b">
+      <Output>
+        <StdOut>Real-season browser fixture: D:\elifoot_98\docs\audit-009\browser-fixture.json; SQLite: D:\elifoot_98\artifacts\player-rankings-009\browser-a403058be3de450581fd1e4a70ad2c9a.db</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="09b5e38d-063d-41a9-a894-36cf13c2e83d" testId="a85951ad-8efe-eada-ad32-370aac4a01b0" testName="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.NewRoomsUseOneAuthoritativeVersionAndConcurrentAdvanceDoesNotRepeatDays" computerName="DESKTOP-A5J5UME" duration="00:00:00.1132298" startTime="2026-10-30T18:47:12.3966577-03:00" endTime="2026-10-30T18:47:12.5096901-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09b5e38d-063d-41a9-a894-36cf13c2e83d" />
+    <UnitTestResult executionId="2d89f02d-cfe1-4f2a-87b0-6cb3c43817c1" testId="6e6224d5-6fe7-a2a2-a828-3a9d73dc027f" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 6)" computerName="DESKTOP-A5J5UME" duration="00:00:25.5546698" startTime="2026-10-30T18:46:11.1724197-03:00" endTime="2026-10-30T18:46:36.7268947-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d89f02d-cfe1-4f2a-87b0-6cb3c43817c1" />
+    <UnitTestResult executionId="e4816cd8-9de2-4482-b604-da6b35ff9b23" testId="8eff5695-25a0-4795-2036-da8e0690cdc5" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" computerName="DESKTOP-A5J5UME" duration="00:00:02.5944298" startTime="2026-10-30T18:45:16.4999787-03:00" endTime="2026-10-30T18:45:19.1073954-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4816cd8-9de2-4482-b604-da6b35ff9b23" />
+    <UnitTestResult executionId="4ee81d1e-acfc-4435-b380-62530f820568" testId="26393ad2-49e2-2035-8851-374d74f1efe1" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5580406" startTime="2026-10-30T18:45:20.1673134-03:00" endTime="2026-10-30T18:45:20.7255400-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ee81d1e-acfc-4435-b380-62530f820568" />
+    <UnitTestResult executionId="1ca73435-b988-4eee-954f-0bc47ad05225" testId="036c702c-0770-ea35-1f2c-c3edcebf8917" testName="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.SqliteRestartRetainsDebtModeSalaryRequestsAndCommandReceipts" computerName="DESKTOP-A5J5UME" duration="00:00:00.7161496" startTime="2026-10-30T18:47:31.3151181-03:00" endTime="2026-10-30T18:47:32.0307226-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ca73435-b988-4eee-954f-0bc47ad05225" />
+    <UnitTestResult executionId="c9b2c525-d34c-4cb7-95d5-7b0061c4f9a4" testId="4032b22c-01a2-67b2-afde-e83144c17299" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5489997" startTime="2026-10-30T18:45:20.7259383-03:00" endTime="2026-10-30T18:45:21.2750294-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9b2c525-d34c-4cb7-95d5-7b0061c4f9a4" />
+    <UnitTestResult executionId="1dba329e-f8a6-409c-973b-04a233f0c49c" testId="5f794e16-5a9c-0db8-d74b-f8d5c3cfd00f" testName="Elifoot.Integration.Tests.PlayableQaRegressionTests.LocalIdentity_IsStableAcrossServerInstances" computerName="DESKTOP-A5J5UME" duration="00:00:02.9373442" startTime="2026-10-30T18:45:16.4998080-03:00" endTime="2026-10-30T18:45:19.4441926-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1dba329e-f8a6-409c-973b-04a233f0c49c" />
+    <UnitTestResult executionId="d4c7f8fd-18ea-4173-8967-141e1267934e" testId="9060b6c0-b2d1-6762-0d14-950339c1cbb8" testName="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18" computerName="DESKTOP-A5J5UME" duration="00:00:03.7123746" startTime="2026-10-30T18:46:53.8934199-03:00" endTime="2026-10-30T18:46:57.6060025-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d4c7f8fd-18ea-4173-8967-141e1267934e" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="0463c3de-670e-4a0c-99b4-129e2a1e865d">
+      <Execution id="c7d184ea-f9a4-4f86-a009-92fa930b2a2d" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 2)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="de26c517-9172-fa94-9458-973bfab731b5">
+      <Execution id="668468cf-7374-484b-8d0b-df4ccfdf587c" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.Discipline012CIntegrationTests" name="IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 6)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="6e6224d5-6fe7-a2a2-a828-3a9d73dc027f">
+      <Execution id="2d89f02d-cfe1-4f2a-87b0-6cb3c43817c1" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerForce012IntegrationTests.ConcurrentSeasonAdvanceAndReconnectDoNotDuplicatePlayerProgress" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="4c1bfbf4-4b57-9653-a397-8f148479e327">
+      <Execution id="18b0e869-6c46-4c50-a685-9a39277c9850" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerForce012IntegrationTests" name="ConcurrentSeasonAdvanceAndReconnectDoNotDuplicatePlayerProgress" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.AiAndConcurrentHumanBiddersCannotSellTheSameDebtPlayerTwice" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="88eccd58-eaa8-5885-9360-5ddd8c312868">
+      <Execution id="d73f89dc-4043-4932-9f55-621b4cca9251" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="AiAndConcurrentHumanBiddersCannotSellTheSameDebtPlayerTwice" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayableQaRegressionTests.BrowserContract_UsesNamedEnums_AndSameSeedRoomsRemainIndependent" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="b3774564-476e-637a-ba84-4ba253a58906">
+      <Execution id="d42007f6-e89c-4ec4-8aa5-044f6bc660cd" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayableQaRegressionTests" name="BrowserContract_UsesNamedEnums_AndSameSeedRoomsRemainIndependent" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="2c057334-6cff-e649-910d-247534263b39">
+      <Execution id="8f0a61ca-45e7-41b1-8b9d-b5c8fafcecea" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.IdleCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="22f65bd4-c7c7-cd43-3b46-eacbc81f6ce5">
+      <Execution id="86448394-10c0-4435-b6b1-5ca9bbbbf3da" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests" name="IdleCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 6)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="82f925c9-c043-b54d-cdb9-0ac52b9c7ab5">
+      <Execution id="640ada41-b13e-4081-8d22-5139c5527511" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.Discipline012CIntegrationTests" name="IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpFiltersCoverAllCategoriesScopesAndPeriodsUsingPersistedStatistics" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="65c0618f-c3e6-499b-ba9c-3c4c440180a1">
+      <Execution id="cc3e57c3-75a7-48bd-ac62-265a1f923a74" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="HttpFiltersCoverAllCategoriesScopesAndPeriodsUsingPersistedStatistics" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 128)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="c001bb23-7468-e571-62c0-d760f7987cdb">
+      <Execution id="0ab9ee43-b1de-4497-b6cd-db25a816eb4e" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="HttpRankingPerformanceIsMeasuredAfterColdSqliteReload" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 2)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="bdc355a7-ffbb-94f7-00f8-5fa3703a029d">
+      <Execution id="1f0c0418-232f-4101-a8a8-8c76d65e4872" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="623c0818-325c-e4ea-3285-9ef2e463311a">
+      <Execution id="c32d1c36-fa47-4e7d-aef7-d9e87034f3d4" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 1024)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="93ec1265-168a-03bf-46e1-b2b1ae2fb42a">
+      <Execution id="553596e1-ae53-4d82-a333-6cf63b7b6acb" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="HttpRankingPerformanceIsMeasuredAfterColdSqliteReload" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="087d7b2b-9dce-aa08-a53f-23c4ce51f71c">
+      <Execution id="be8ac222-8cd4-4a84-845f-fc8868506e8b" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="40899414-5587-6603-ee68-faf91118d27f">
+      <Execution id="813cf009-603d-4afd-9e45-2cec9eed9f75" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayableQaRegressionTests.EditorSavesBehaviorStarClubAndManager_AndCalendarListsFullSeason" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="1cdca012-10b2-1ea0-ac4d-5836913e1834">
+      <Execution id="eb481690-b7ca-443b-9266-0f2850515988" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayableQaRegressionTests" name="EditorSavesBehaviorStarClubAndManager_AndCalendarListsFullSeason" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 2)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="47b90669-6043-487c-f21f-5a9218645aef">
+      <Execution id="18742bc2-f329-48aa-92f1-b56be9086b67" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="HttpAndSignalRFinanceShareRoomLockAndIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 4)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="585bb8dd-b5f3-12bc-5b70-510b2e1ada59">
+      <Execution id="a3a3c5cd-fd5a-4933-ac44-79ea52e7e5b9" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="HttpAndSignalRFinanceShareRoomLockAndIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 8)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="33b0b1ce-eab2-e653-2edf-bba8ac793fce">
+      <Execution id="6872f2ee-8d70-4ced-aad9-38d2977d08e6" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.Discipline012CIntegrationTests" name="IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;same&quot;)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="59e9aaba-248c-a90b-3cc4-8e83250588d2">
+      <Execution id="08fbe1d8-5dac-49b9-9fed-4af8130ac960" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;different&quot;)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="cd75ebff-7bb1-97a4-a644-42f567485bf3">
+      <Execution id="6b4793bd-72ca-4677-ba06-74bc26f2fccc" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: &quot;unattached&quot;)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="bb07632c-0ed5-4707-38d0-74ca5a1a2b16">
+      <Execution id="1aeff5f1-18f0-45ca-8ab6-ab45dff8e6ba" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayableQaRegressionTests.LocalIdentity_IsStableAcrossServerInstances" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="5f794e16-5a9c-0db8-d74b-f8d5c3cfd00f">
+      <Execution id="1dba329e-f8a6-409c-973b-04a233f0c49c" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayableQaRegressionTests" name="LocalIdentity_IsStableAcrossServerInstances" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.QueryServiceSharesTheClockLockAndReleasesItAfterCancellationOrFailure" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="55c9ec07-50f4-11ec-b886-d3eeb088eb33">
+      <Execution id="a842fadf-17f7-4a00-ba78-ed3c6c70860e" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="QueryServiceSharesTheClockLockAndReleasesItAfterCancellationOrFailure" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 4)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="55a519d3-78a0-6b5b-53eb-3bf916c916ee">
+      <Execution id="3c6c5621-55dc-4707-864d-1afc95fd558b" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.Discipline012CIntegrationTests" name="IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRejectsInvalidOrAmbiguousQueriesAndReturns404ForMissingWorldOrPlayer" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="b45fa551-5942-6c55-42a2-0fd4ae31f186">
+      <Execution id="7a9efc54-8066-4d6b-b42c-9aec23919182" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="HttpRejectsInvalidOrAmbiguousQueriesAndReturns404ForMissingWorldOrPlayer" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.Discipline012CIntegrationTests.SqliteMigrationAndRestartKeepPlayerCyclesCardHistoryAndRemainingMatchBans" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="2aa1c3ab-2d1c-7424-28c8-f436366c7c63">
+      <Execution id="33b0ad95-c816-4d41-aa30-2566d7899277" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.Discipline012CIntegrationTests" name="SqliteMigrationAndRestartKeepPlayerCyclesCardHistoryAndRemainingMatchBans" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.FinancialPersistence007Tests.AiOfferSubmissionAndHumanAcceptance_HaveDistinctMetricsAndCorrectAttribution" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="3027fba8-a4d8-264e-e174-db862a3681b7">
+      <Execution id="25795940-ab94-4264-8e5b-1de601a3e728" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.FinancialPersistence007Tests" name="AiOfferSubmissionAndHumanAcceptance_HaveDistinctMetricsAndCorrectAttribution" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba">
+      <Execution id="464b1a6a-2543-4ff3-9ec0-0c71c95faf53" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.FinancialPersistence007Tests" name="SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="b6daea21-6ccc-7482-d9fe-d0dc426e31fc">
+      <Execution id="0ead4f30-1961-4ba4-81d9-832bb6597c0d" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.SqlitePersistsDailyLossDatesRecoveryAndHistoryWithoutReapplying" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="2732439b-a7e3-986d-e490-68af2b31576f">
+      <Execution id="436b35e1-9cab-4321-a093-5dcd04120dc3" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests" name="SqlitePersistsDailyLossDatesRecoveryAndHistoryWithoutReapplying" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="4032b22c-01a2-67b2-afde-e83144c17299">
+      <Execution id="c9b2c525-d34c-4cb7-95d5-7b0061c4f9a4" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpHistoryPreservesHistoricalClubsAndGetRequestsDoNotPayAwardsOrWriteSnapshots" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="bc6b69c3-6042-a7a7-ac16-119b57750214">
+      <Execution id="70507562-228e-439d-8c56-34662c8fb5fb" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="HttpHistoryPreservesHistoricalClubsAndGetRequestsDoNotPayAwardsOrWriteSnapshots" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 8)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="d0ac9175-f66b-4b69-2d6d-72a2818681b7">
+      <Execution id="44f41f6a-ce21-4719-85e3-7d6c8c23da76" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="HttpAndSignalRFinanceShareRoomLockAndIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerForce012IntegrationTests.SqliteReloadAndHttpHistoryRetainStrengthEventsAcrossActualTransfer" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="25b2de78-6517-fb1e-7951-0a4c3306ec98">
+      <Execution id="d79fc4d0-30eb-4d5a-a7ae-0fe59ce1d13f" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerForce012IntegrationTests" name="SqliteReloadAndHttpHistoryRetainStrengthEventsAcrossActualTransfer" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 8)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="14f8ad2a-8d11-efa4-2587-f8e3feedd823">
+      <Execution id="a479ff2e-02b1-4b45-9f1e-f95e217ee81f" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.SqliteRestartRetainsDebtModeSalaryRequestsAndCommandReceipts" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="036c702c-0770-ea35-1f2c-c3edcebf8917">
+      <Execution id="1ca73435-b988-4eee-954f-0bc47ad05225" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="SqliteRestartRetainsDebtModeSalaryRequestsAndCommandReceipts" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="a7c4d7d7-a4a4-4d03-e88b-8d430f122a43">
+      <Execution id="da46b52a-125e-4a35-adfe-9cf597998d87" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="26393ad2-49e2-2035-8851-374d74f1efe1">
+      <Execution id="4ee81d1e-acfc-4435-b380-62530f820568" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.NewRoomsUseOneAuthoritativeVersionAndConcurrentAdvanceDoesNotRepeatDays" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="a85951ad-8efe-eada-ad32-370aac4a01b0">
+      <Execution id="09b5e38d-063d-41a9-a894-36cf13c2e83d" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicForce012CIntegrationTests" name="NewRoomsUseOneAuthoritativeVersionAndConcurrentAdvanceDoesNotRepeatDays" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 4)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="164bea7e-4dac-4ed6-b0d4-5e6bd28e26a1">
+      <Execution id="66cd4a15-2ff8-447d-91f6-4d0ac07cb1b6" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 6)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="92b8316e-67e4-0164-3b15-cdc55348a890">
+      <Execution id="2e774fe2-53f6-4b38-a0c7-ba1b1e5337c4" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests" name="HttpAndSignalRFinanceShareRoomLockAndIdempotency" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="8eff5695-25a0-4795-2036-da8e0690cdc5">
+      <Execution id="e4816cd8-9de2-4482-b604-da6b35ff9b23" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="9060b6c0-b2d1-6762-0d14-950339c1cbb8">
+      <Execution id="d4c7f8fd-18ea-4173-8967-141e1267934e" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ApiAndSignalREndToEndTests" name="PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="82f925c9-c043-b54d-cdb9-0ac52b9c7ab5" executionId="640ada41-b13e-4081-8d22-5139c5527511" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c001bb23-7468-e571-62c0-d760f7987cdb" executionId="0ab9ee43-b1de-4497-b6cd-db25a816eb4e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a7c4d7d7-a4a4-4d03-e88b-8d430f122a43" executionId="da46b52a-125e-4a35-adfe-9cf597998d87" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="623c0818-325c-e4ea-3285-9ef2e463311a" executionId="c32d1c36-fa47-4e7d-aef7-d9e87034f3d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2732439b-a7e3-986d-e490-68af2b31576f" executionId="436b35e1-9cab-4321-a093-5dcd04120dc3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93ec1265-168a-03bf-46e1-b2b1ae2fb42a" executionId="553596e1-ae53-4d82-a333-6cf63b7b6acb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14f8ad2a-8d11-efa4-2587-f8e3feedd823" executionId="a479ff2e-02b1-4b45-9f1e-f95e217ee81f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="40899414-5587-6603-ee68-faf91118d27f" executionId="813cf009-603d-4afd-9e45-2cec9eed9f75" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65c0618f-c3e6-499b-ba9c-3c4c440180a1" executionId="cc3e57c3-75a7-48bd-ac62-265a1f923a74" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b3774564-476e-637a-ba84-4ba253a58906" executionId="d42007f6-e89c-4ec4-8aa5-044f6bc660cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="33b0b1ce-eab2-e653-2edf-bba8ac793fce" executionId="6872f2ee-8d70-4ced-aad9-38d2977d08e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55c9ec07-50f4-11ec-b886-d3eeb088eb33" executionId="a842fadf-17f7-4a00-ba78-ed3c6c70860e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6daea21-6ccc-7482-d9fe-d0dc426e31fc" executionId="0ead4f30-1961-4ba4-81d9-832bb6597c0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="25b2de78-6517-fb1e-7951-0a4c3306ec98" executionId="d79fc4d0-30eb-4d5a-a7ae-0fe59ce1d13f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bb07632c-0ed5-4707-38d0-74ca5a1a2b16" executionId="1aeff5f1-18f0-45ca-8ab6-ab45dff8e6ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2aa1c3ab-2d1c-7424-28c8-f436366c7c63" executionId="33b0ad95-c816-4d41-aa30-2566d7899277" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c1bfbf4-4b57-9653-a397-8f148479e327" executionId="18b0e869-6c46-4c50-a685-9a39277c9850" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b45fa551-5942-6c55-42a2-0fd4ae31f186" executionId="7a9efc54-8066-4d6b-b42c-9aec23919182" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3027fba8-a4d8-264e-e174-db862a3681b7" executionId="25795940-ab94-4264-8e5b-1de601a3e728" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0ac9175-f66b-4b69-2d6d-72a2818681b7" executionId="44f41f6a-ce21-4719-85e3-7d6c8c23da76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55a519d3-78a0-6b5b-53eb-3bf916c916ee" executionId="3c6c5621-55dc-4707-864d-1afc95fd558b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cd75ebff-7bb1-97a4-a644-42f567485bf3" executionId="6b4793bd-72ca-4677-ba06-74bc26f2fccc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c057334-6cff-e649-910d-247534263b39" executionId="8f0a61ca-45e7-41b1-8b9d-b5c8fafcecea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="22f65bd4-c7c7-cd43-3b46-eacbc81f6ce5" executionId="86448394-10c0-4435-b6b1-5ca9bbbbf3da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0463c3de-670e-4a0c-99b4-129e2a1e865d" executionId="c7d184ea-f9a4-4f86-a009-92fa930b2a2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1cdca012-10b2-1ea0-ac4d-5836913e1834" executionId="eb481690-b7ca-443b-9266-0f2850515988" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="59e9aaba-248c-a90b-3cc4-8e83250588d2" executionId="08fbe1d8-5dac-49b9-9fed-4af8130ac960" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="de26c517-9172-fa94-9458-973bfab731b5" executionId="668468cf-7374-484b-8d0b-df4ccfdf587c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba" executionId="464b1a6a-2543-4ff3-9ec0-0c71c95faf53" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bc6b69c3-6042-a7a7-ac16-119b57750214" executionId="70507562-228e-439d-8c56-34662c8fb5fb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="585bb8dd-b5f3-12bc-5b70-510b2e1ada59" executionId="a3a3c5cd-fd5a-4933-ac44-79ea52e7e5b9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdc355a7-ffbb-94f7-00f8-5fa3703a029d" executionId="1f0c0418-232f-4101-a8a8-8c76d65e4872" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="47b90669-6043-487c-f21f-5a9218645aef" executionId="18742bc2-f329-48aa-92f1-b56be9086b67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="88eccd58-eaa8-5885-9360-5ddd8c312868" executionId="d73f89dc-4043-4932-9f55-621b4cca9251" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="164bea7e-4dac-4ed6-b0d4-5e6bd28e26a1" executionId="66cd4a15-2ff8-447d-91f6-4d0ac07cb1b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92b8316e-67e4-0164-3b15-cdc55348a890" executionId="2e774fe2-53f6-4b38-a0c7-ba1b1e5337c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="087d7b2b-9dce-aa08-a53f-23c4ce51f71c" executionId="be8ac222-8cd4-4a84-845f-fc8868506e8b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a85951ad-8efe-eada-ad32-370aac4a01b0" executionId="09b5e38d-063d-41a9-a894-36cf13c2e83d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6e6224d5-6fe7-a2a2-a828-3a9d73dc027f" executionId="2d89f02d-cfe1-4f2a-87b0-6cb3c43817c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8eff5695-25a0-4795-2036-da8e0690cdc5" executionId="e4816cd8-9de2-4482-b604-da6b35ff9b23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26393ad2-49e2-2035-8851-374d74f1efe1" executionId="4ee81d1e-acfc-4435-b380-62530f820568" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="036c702c-0770-ea35-1f2c-c3edcebf8917" executionId="1ca73435-b988-4eee-954f-0bc47ad05225" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4032b22c-01a2-67b2-afde-e83144c17299" executionId="c9b2c525-d34c-4cb7-95d5-7b0061c4f9a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f794e16-5a9c-0db8-d74b-f8d5c3cfd00f" executionId="1dba329e-f8a6-409c-973b-04a233f0c49c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9060b6c0-b2d1-6762-0d14-950339c1cbb8" executionId="d4c7f8fd-18ea-4173-8967-141e1267934e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="45" executed="45" passed="45" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:01.06]   Discovering: Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:01.16]   Discovered:  Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:01.25]   Starting:    Elifoot.Integration.Tests&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:02:16.83]   Finished:    Elifoot.Integration.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

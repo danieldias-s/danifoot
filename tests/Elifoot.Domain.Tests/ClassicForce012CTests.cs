@@ -64,7 +64,8 @@ public class ClassicForce012CTests
         Assert.True(p.IsAvailableForMatch);
         Assert.Equal(total,w.PlayerStrengthHistory.Sum(e=>e.DailyInjuryLoss));
         Assert.Equal(MarketAndEconomyEngine.CalculateFairValue(p),p.MarketPrice);
-        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p),p.SalaryPerRound);
+        Assert.Equal(8000m,p.SalaryPerRound); // The negotiated salary survives injury.
+        Assert.Equal(MarketAndEconomyEngine.CalculateFairSalaryPerRound(p),p.ReferenceSalaryPerRound);
         Assert.All(w.PlayerStrengthHistory,e=> {Assert.Equal(injury.Id,e.InjuryId);Assert.Equal(duration,e.InjuryDuration);Assert.Equal(w.Id,e.WorldId);});
         Assert.True(w.PlayerStrengthHistory.Count > 1);
         var history = JsonSerializer.Serialize(w.PlayerStrengthHistory);

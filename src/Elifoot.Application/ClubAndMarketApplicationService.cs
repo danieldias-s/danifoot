@@ -3,7 +3,7 @@ using Elifoot.Domain;
 
 namespace Elifoot.Application;
 
-public sealed class ClubAndMarketApplicationService
+public sealed partial class ClubAndMarketApplicationService
 {
     private readonly IWorldRepository _repository;
     private readonly IMatchRoomNotificationPublisher _publisher;
@@ -126,6 +126,8 @@ public sealed class ClubAndMarketApplicationService
             PhotoLicense: p.PhotoLicense,
             PhotoCredit: p.PhotoCredit)
         {
+            ReferenceSalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p),
+            NegotiatedContractProtected = p.NegotiatedContractProtected,
             InjuryDaysRemaining = p.InjuryDaysRemaining,
             TotalYellowCards = p.TotalYellowCards, YellowCardsInCurrentCycle = p.YellowCardsInCurrentCycle,
             TotalDirectRedCards = p.TotalDirectRedCards, TotalSecondYellowDismissals = p.TotalSecondYellowDismissals,
@@ -134,7 +136,7 @@ public sealed class ClubAndMarketApplicationService
         };
     }
 
-    public async Task<(bool Success, string? Error)> ListPlayerForTransferAsync(
+    private async Task<(bool Success, string? Error)> ListPlayerForTransferCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid playerId,
@@ -158,16 +160,14 @@ public sealed class ClubAndMarketApplicationService
 
         if (askingPrice <= 0m) return (false, "O preço pedido deve ser maior que zero.");
 
+        if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.");
         player.IsListedForTransfer = true;
         player.AskingPrice = Math.Round(askingPrice, 0);
         player.ListedAtRound = world.RoundNumber;
-        world.RoundVersion++;
-        await _repository.SaveWorldAsync(world, ct);
-        await _publisher.PublishMarketUpdatedAsync(world.Id, $"{player.DisplayName} anunciado por R$ {askingPrice:N0}.", ct);
         return (true, null);
     }
 
-    public async Task<(bool Success, string? Error)> BuyListedPlayerAsync(
+    private async Task<(bool Success, string? Error)> BuyListedPlayerCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid playerId,
@@ -197,13 +197,10 @@ public sealed class ClubAndMarketApplicationService
 
         if (!ok) return (false, err);
 
-        world.RoundVersion++;
-        await _repository.SaveWorldAsync(world, ct);
-        await _publisher.PublishMarketUpdatedAsync(world.Id, $"Transferência concluída: {player.DisplayName}.", ct);
         return (true, null);
     }
 
-    public async Task<(bool Success, string? Error, TransferOfferDto? Offer)> CreateTransferOfferAsync(
+    private async Task<(bool Success, string? Error, TransferOfferDto? Offer)> CreateTransferOfferCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid playerId,
@@ -224,9 +221,10 @@ public sealed class ClubAndMarketApplicationService
         if (player == null || player.ClubId == null || player.ClubId == buyer.Id)
             return (false, "Jogador inválido para proposta.", null);
 
-        if (offeredAmount <= 0m || buyer.CashBalance < offeredAmount)
+        if (offeredAmount <= 0m || ClassicEconomyEngine.AvailableCash(world,buyer) < offeredAmount)
             return (false, "Saldo insuficiente para sustentar a proposta.", null);
 
+        if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.",null);
         var seller = world.Clubs.First(c => c.Id == player.ClubId.Value);
         var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
         var (canRemove, remErr) = SquadValidator.CanRemovePlayerFromSquad(sellerSquad, player.Id);
@@ -274,19 +272,16 @@ public sealed class ClubAndMarketApplicationService
         }
 
         world.TransferOffers.Add(offer);
-        world.RoundVersion++;
-        await _repository.SaveWorldAsync(world, ct);
 
         var dto = new TransferOfferDto(
             offer.Id, player.Id, player.DisplayName, player.Position, player.Strength, player.IsStar,
             buyer.Id, buyer.Name, seller.Id, seller.Name, offer.OfferedAmount, offer.CounterAmount,
             offer.Status, offer.Justification, offer.CreatedAtRound);
 
-        await _publisher.PublishMarketUpdatedAsync(world.Id, $"Nova proposta por {player.DisplayName}: {offer.Status}.", ct);
         return (true, null, dto);
     }
 
-    public async Task<(bool Success, string? Error)> RespondToTransferOfferAsync(
+    private async Task<(bool Success, string? Error)> RespondToTransferOfferCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid offerId,
@@ -310,8 +305,7 @@ public sealed class ClubAndMarketApplicationService
         if (!accept)
         {
             offer.Status = TransferOfferStatus.Rejected;
-            await _repository.SaveWorldAsync(world, ct);
-            return (true, null);
+                return (true, null);
         }
 
         // Can be accepted by Seller (if Pending) or by Buyer (if Countered)
@@ -331,17 +325,15 @@ public sealed class ClubAndMarketApplicationService
         if (!ok) return (false, err);
 
         offer.Status = TransferOfferStatus.Accepted;
-        world.RoundVersion++;
-        await _repository.SaveWorldAsync(world, ct);
-        await _publisher.PublishMarketUpdatedAsync(world.Id, "Negociação concluída.", ct);
         return (true, null);
     }
 
-    public async Task<(bool Success, string? Error)> PlaceAuctionBidAsync(
+    private async Task<(bool Success, string? Error)> PlaceAuctionBidCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid auctionId,
         decimal bidAmount,
+        string commandKey,
         CancellationToken ct = default)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
@@ -353,32 +345,15 @@ public sealed class ClubAndMarketApplicationService
         if (coach?.CurrentClubId == null) return (false, "Você não controla um clube.");
 
         var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
-        var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
-        var (canAdd, addErr) = SquadValidator.CanAddPlayerToSquad(squad);
-        if (!canAdd) return (false, addErr);
-
-        var auction = world.Auctions.FirstOrDefault(a => a.Id == auctionId && !a.IsClosed);
-        if (auction == null) return (false, "Leilão não encontrado ou já encerrado.");
-
-        decimal minValid = auction.CurrentBid == 0m ? auction.MinimumBid : auction.CurrentBid + 5_000m;
-        if (bidAmount < minValid)
-            return (false, $"O lance mínimo atual é R$ {minValid:N0}.");
-        if (club.CashBalance < bidAmount)
-            return (false, "Saldo em caixa insuficiente para o lance.");
-
-        auction.CurrentBid = Math.Round(bidAmount, 0);
-        auction.HighestBidderClubId = club.Id;
-        world.RoundVersion++;
-        await _repository.SaveWorldAsync(world, ct);
-        await _publisher.PublishMarketUpdatedAsync(world.Id, $"Novo lance de {club.ShortName}: R$ {bidAmount:N0}.", ct);
-        return (true, null);
+        return ClassicEconomyEngine.PlaceBid(world,club,auctionId,bidAmount,commandKey);
     }
 
-    public async Task<(bool Success, string? Error)> RenewPlayerContractAsync(
+    private async Task<(bool Success, string? Error)> RenewPlayerContractCoreAsync(
         Guid worldId,
         Guid coachId,
         Guid playerId,
         int additionalRounds,
+        string commandKey,
         CancellationToken ct = default)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
@@ -391,25 +366,16 @@ public sealed class ClubAndMarketApplicationService
         var player = world.Players.FirstOrDefault(p => p.Id == playerId && p.ClubId == club.Id);
         if (player == null) return (false, "Jogador não pertence ao seu clube.");
 
-        additionalRounds = Math.Clamp(additionalRounds, 5, 30);
-        decimal signingFee = Math.Round(player.SalaryPerRound * (additionalRounds / 10m), 2);
-        if (club.CashBalance < signingFee)
-            return (false, $"Saldo insuficiente para luvas de renovação (R$ {signingFee:N0}).");
-
-        MarketAndEconomyEngine.TryRecordTransaction(world, club, FinancialTransactionCategory.ContractRenewal,
-            -signingFee, $"Renovação de contrato de {player.DisplayName} (+{additionalRounds} rodadas)",
-            $"manualrenew:{player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}:{player.ContractRoundsRemaining}");
-
-        player.ContractRoundsRemaining += additionalRounds;
-        await _repository.SaveWorldAsync(world, ct);
-        return (true, null);
+        var result=ClassicEconomyEngine.RenewContract(world,club,player,additionalRounds,commandKey);
+        return result;
     }
 
-    public async Task<(bool Success, string? Error)> TakeBankLoanAsync(
+    private async Task<(bool Success, string? Error)> TakeBankLoanCoreAsync(
         Guid worldId,
         Guid coachId,
         decimal amount,
         int rounds,
+        string commandKey,
         CancellationToken ct = default)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
@@ -419,34 +385,9 @@ public sealed class ClubAndMarketApplicationService
         if (coach?.CurrentClubId == null) return (false, "Você não controla um clube.");
 
         var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
-        if (amount < 50_000m || amount > 1_500_000m)
-            return (false, "Valor de empréstimo deve ser entre R$ 50.000 e R$ 1.500.000.");
-
-        int activeLoans = world.BankLoans.Count(l => l.ClubId == club.Id && !l.IsPaidOff);
-        if (activeLoans >= 2)
-            return (false, "O clube já possui o máximo de 2 empréstimos ativos.");
-
-        rounds = Math.Clamp(rounds, 5, 20);
-        decimal installment = Math.Round((amount * 1.15m) / rounds, 2);
-
-        var loan = new BankLoan
-        {
-            GameWorldId = world.Id,
-            ClubId = club.Id,
-            PrincipalAmount = amount,
-            RemainingBalance = amount,
-            InterestRatePerRound = 0.015m,
-            InstallmentPerRound = installment,
-            RemainingRounds = rounds
-        };
-        world.BankLoans.Add(loan);
-
-        MarketAndEconomyEngine.TryRecordTransaction(world, club, FinancialTransactionCategory.LoanDisbursement,
-            amount, $"Empréstimo bancário contratado ({rounds} parcelas)",
-            $"loandisb:{loan.Id}");
-
-        await _repository.SaveWorldAsync(world, ct);
-        return (true, null);
+        if(amount!=500_000m)return(false,"O empréstimo clássico possui principal fixo de R$ 500.000.");
+        var result=ClassicEconomyEngine.TakeClassicLoan(world,club,commandKey);
+        return(result.Success,result.Error);
     }
 
     public async Task<(bool Success, string? Error)> AcceptJobInvitationAsync(

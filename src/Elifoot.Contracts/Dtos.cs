@@ -223,6 +223,8 @@ public record PlayerDto(
     string? PhotoLicense,
     string? PhotoCredit)
 {
+    public decimal ReferenceSalaryPerRound { get; init; }
+    public bool NegotiatedContractProtected { get; init; }
     public int InjuryDaysRemaining { get; init; }
     public int TotalYellowCards { get; init; }
     public int YellowCardsInCurrentCycle { get; init; }
@@ -369,7 +371,12 @@ public record AuctionItemDto(
     Guid? HighestBidderClubId,
     string? HighestBidderClubName,
     int ExpiresAtRound,
-    bool IsClosed);
+    bool IsClosed)
+{
+    public AuctionReason Reason { get; init; }
+    public string? ClosureReason { get; init; }
+    public decimal SalaryPerRound { get; init; }
+}
 
 public record TransferOfferDto(
     Guid OfferId,

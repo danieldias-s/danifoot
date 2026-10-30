@@ -24,6 +24,8 @@ public sealed class MultiplayerRoundOrchestrator
         _publisher = publisher;
     }
 
+    public static SemaphoreSlim GetRoomLock(Guid worldId) => GetLock(worldId);
+
     internal static SemaphoreSlim GetLock(Guid worldId)
         => WorldLocks.GetOrAdd(worldId, _ => new SemaphoreSlim(1, 1));
 

@@ -63,7 +63,6 @@ public static class PlayerStrengthEvolutionEngine
             if (delta == 0) continue;
             p.Strength = after;
             p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(p);
-            p.SalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p);
             if (after == before) continue;
             world.PlayerStrengthHistory.Add(new(
                 $"player_strength:S{world.SeasonNumber}:P{p.Id}", p.Id, world.SeasonNumber, world.RoundNumber,

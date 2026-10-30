@@ -6,6 +6,7 @@ public class GameWorld
 {
     public ForceEvolutionMode ForceEvolutionMode { get; set; }
     public ClassicForceState ClassicForce { get; set; } = new();
+    public ClassicEconomyState Economy { get; set; } = new();
     public int DisciplineRulesVersion { get; set; }
     public HashSet<Guid> SettledDisciplineMatches { get; set; } = new();
     public List<string> DisciplineCoverageWarnings { get; set; } = new();
@@ -132,6 +133,8 @@ public class Player
     public bool IsStar { get; set; } // Literal '*' in compact tables
     public int ContractRoundsRemaining { get; set; } = 20;
     public decimal SalaryPerRound { get; set; } = 8_000m;
+    public decimal ReferenceSalaryPerRound => MarketAndEconomyEngine.CalculateFairSalaryPerRound(this);
+    public bool NegotiatedContractProtected { get; set; }
     public decimal MarketPrice { get; set; } = 250_000m;
     public bool IsListedForTransfer { get; set; }
     public decimal? AskingPrice { get; set; }
@@ -403,6 +406,8 @@ public class TransferOffer
 
 public class AuctionItem
 {
+    public AuctionReason Reason { get; set; }
+    public string? ClosureReason { get; set; }
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }
     public Guid PlayerId { get; set; }
@@ -442,6 +447,22 @@ public class FinancialTransaction
 
 public class BankLoan
 {
+    public BankLoanMode Mode { get; set; }
+    public decimal InterestPerMatch { get; set; }
+    public decimal UnpaidInterest { get; set; }
+    public decimal InterestCharged { get; set; }
+    public decimal InterestPaid { get; set; }
+    public decimal PrincipalPaid { get; set; }
+    public int CreatedSeason { get; set; }
+    public int CreatedRound { get; set; }
+    public DateOnly? CreatedVirtualDate { get; set; }
+    public int FirstEligibleOrdinal { get; set; }
+    public HashSet<Guid> ExcludedCompletedMatches { get; set; } = new();
+    public HashSet<Guid> ChargedMatches { get; set; } = new();
+    public List<BankLoanEntry> History { get; set; } = new();
+    public decimal? LegacyOpeningBalance { get; set; }
+    public decimal? OutstandingPrincipal => Mode==BankLoanMode.ClassicFixed?Math.Max(0m,RemainingBalance-UnpaidInterest):null;
+    public string Status => IsPaidOff?"PAID":Mode==BankLoanMode.LegacyInstallment&&RemainingRounds<=0?"OVERDUE":"ACTIVE";
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }
     public Guid ClubId { get; set; }
@@ -450,7 +471,7 @@ public class BankLoan
     public decimal InterestRatePerRound { get; set; } = 0.015m;
     public decimal InstallmentPerRound { get; set; }
     public int RemainingRounds { get; set; }
-    public bool IsPaidOff => RemainingBalance <= 0m || RemainingRounds <= 0;
+    public bool IsPaidOff => RemainingBalance <= 0m;
 }
 
 public class JobInvitation

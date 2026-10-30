@@ -1,0 +1,2 @@
+{"Status": "PASS", "LedgerEntries": 558212, "BankEntries": 60, "UniqueChargedLoanMatches": 51, "ReconciledTransferPairs": 8800, "FinalCash": "18107128451.84", "FinalDebt": 0}
+Reports generated: 410 .NET tests, 61 Flutter tests; overall PARTIAL.

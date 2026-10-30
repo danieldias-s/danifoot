@@ -272,7 +272,6 @@ public static class ClassicForceEvolutionEngine
         string key, ForceInjury? injury = null, DateOnly? date = null)
     {
         p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(p);
-        p.SalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p);
         w.PlayerStrengthHistory.Add(new(key, p.Id, w.SeasonNumber, w.RoundNumber, club?.Id, club?.Name ?? "Sem clube",
             club?.DivisionTier, before, p.Strength, reason, injury?.Id, Rule, reason)
         {

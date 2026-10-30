@@ -116,7 +116,9 @@ public enum FinancialTransactionCategory
     LoanDisbursement = 14,
     LoanRepayment = 15,
     Sponsorship = 16,
-    FreeAgentSigning = 17
+    FreeAgentSigning = 17,
+    LoanInterestPayment = 18,
+    LoanPrincipalRepayment = 19
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]

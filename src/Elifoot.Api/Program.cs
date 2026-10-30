@@ -507,7 +507,7 @@ app.MapGet("/api/worlds/{worldId:guid}/market", async (Guid worldId, IWorldRepos
             string? bidderName = a.HighestBidderClubId != null && clubDict.TryGetValue(a.HighestBidderClubId.Value, out var bc) ? bc.Name : null;
             return new AuctionItemDto(
                 a.Id, p.Id, p.DisplayName, p.Position, p.Strength, p.Behavior.ToDisplayPt(), p.IsStar,
-                a.MinimumBid, a.CurrentBid, a.HighestBidderClubId, bidderName, a.ExpiresAtRound, a.IsClosed);
+                a.MinimumBid, a.CurrentBid, a.HighestBidderClubId, bidderName, a.ExpiresAtRound, a.IsClosed) { Reason=a.Reason,ClosureReason=a.ClosureReason,SalaryPerRound=p.SalaryPerRound };
         })
         .ToList();
 
@@ -534,11 +534,13 @@ app.MapPost("/api/worlds/{worldId:guid}/market/list", async (
     Guid coachId,
     Guid playerId,
     decimal askingPrice,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.ListPlayerForTransferAsync(worldId, coachId, playerId, askingPrice, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    var (ok, err) = await service.ListPlayerForTransferAsync(worldId, coachId, playerId, askingPrice, ct, idempotencyKey, expectedRoundVersion);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/market/buy-listed", async (
@@ -546,11 +548,12 @@ app.MapPost("/api/worlds/{worldId:guid}/market/buy-listed", async (
     Guid coachId,
     Guid playerId,
     string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/market/offer", async (
@@ -559,11 +562,12 @@ app.MapPost("/api/worlds/{worldId:guid}/market/offer", async (
     Guid playerId,
     decimal offeredAmount,
     string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
     var (ok, err, offer) = await service.CreateTransferOfferAsync(
-        worldId, coachId, playerId, offeredAmount, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct);
+        worldId, coachId, playerId, offeredAmount, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
     return ok ? Results.Ok(offer) : Results.BadRequest(new { error = err });
 });
 
@@ -573,12 +577,13 @@ app.MapPost("/api/worlds/{worldId:guid}/market/offer/{offerId:guid}/respond", as
     Guid coachId,
     bool accept,
     string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
     var (ok, err) = await service.RespondToTransferOfferAsync(
-        worldId, coachId, offerId, accept, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+        worldId, coachId, offerId, accept, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/market/auction/{auctionId:guid}/bid", async (
@@ -586,11 +591,13 @@ app.MapPost("/api/worlds/{worldId:guid}/market/auction/{auctionId:guid}/bid", as
     Guid auctionId,
     Guid coachId,
     decimal bidAmount,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.PlaceAuctionBidAsync(worldId, coachId, auctionId, bidAmount, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    var (ok, err) = await service.PlaceAuctionBidAsync(worldId, coachId, auctionId, bidAmount, ct, idempotencyKey, expectedRoundVersion);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (
@@ -598,11 +605,13 @@ app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (
     Guid playerId,
     Guid coachId,
     int additionalRounds,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.RenewPlayerContractAsync(worldId, coachId, playerId, additionalRounds, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    var (ok, err) = await service.RenewPlayerContractAsync(worldId, coachId, playerId, additionalRounds, ct, idempotencyKey, expectedRoundVersion);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 // 6. Finances, Loans & Stadium Works
@@ -612,12 +621,16 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
     IWorldRepository repo,
     CancellationToken ct) =>
 {
+    var gate=MultiplayerRoundOrchestrator.GetRoomLock(worldId);await gate.WaitAsync(ct);
+    try {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
 
     var club = world.Clubs.FirstOrDefault(c => c.Id == clubId);
     if (club == null) return Results.NotFound();
 
+    ClassicEconomyEngine.EnsureMigrated(world);
+    var credit=ClassicEconomyEngine.AssessCredit(world,club);
     var ledger = world.Transactions
         .Where(t => t.ClubId == clubId)
         .OrderByDescending(t => t.CreatedAtUtc)
@@ -635,16 +648,24 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
         });
 
     var loans = world.BankLoans.Where(l => l.ClubId == clubId);
-    return Results.Ok(new
+    return Results.Ok(System.Text.Json.JsonSerializer.SerializeToElement(new
     {
         clubId = club.Id,
         clubName = club.Name,
         cashBalance = club.CashBalance,
+        availableCash = ClassicEconomyEngine.AvailableCash(world,club),
         renovationCostEstimate = MarketAndEconomyEngine.CalculateRenovationCost(club.Stadium),
         expansion5kCostEstimate = MarketAndEconomyEngine.CalculateExpansionCost(club.Stadium, 5_000),
         ledger,
-        loans
-    });
+        loans,
+        credit,
+        roundVersion=world.RoundVersion,
+        salaryRequests=world.Economy.SalaryRequests.Where(r=>r.ClubId==clubId).OrderByDescending(r=>r.Season).ThenByDescending(r=>r.Round).ToList(),
+        contracts=world.Economy.ContractHistory.Where(r=>r.ClubId==clubId).ToList(),
+        insolvency=world.Economy.Crises.GetValueOrDefault(clubId),
+        coverageWarnings=world.Economy.CoverageWarnings
+    },new System.Text.Json.JsonSerializerOptions{PropertyNamingPolicy=System.Text.Json.JsonNamingPolicy.CamelCase}));
+    } finally {gate.Release();}
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/loans", async (
@@ -653,50 +674,38 @@ app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/loans", async (
     Guid coachId,
     decimal amount,
     int rounds,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.TakeBankLoanAsync(worldId, coachId, amount, rounds, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    var (ok, err) = await service.TakeBankLoanAsync(worldId, coachId, amount, rounds, ct, idempotencyKey, expectedRoundVersion, clubId);
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/stadium/renovate", async (
-    Guid worldId,
-    Guid clubId,
-    Guid coachId,
-    IWorldRepository repo,
-    CancellationToken ct) =>
+    Guid worldId,Guid clubId,Guid coachId,string? idempotencyKey,long? expectedRoundVersion,ClubAndMarketApplicationService service,CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-    var club = world.Clubs.FirstOrDefault(c => c.Id == clubId && c.HumanCoachId == coachId);
-    if (club == null) return Results.BadRequest(new { error = "Você não controla este clube." });
-
-    var (ok, err) = MarketAndEconomyEngine.StartStadiumRenovation(world, club);
-    if (!ok) return Results.BadRequest(new { error = err });
-
-    await repo.SaveWorldAsync(world, ct);
-    return Results.Ok(new { success = true, stadium = club.Stadium });
+    var (ok,err)=await service.StadiumCommandAsync(worldId,coachId,clubId,false,0,idempotencyKey??Guid.NewGuid().ToString("N"),ct,expectedRoundVersion);
+    return ok?Results.Ok(new{success=true}):Results.BadRequest(new{error=err});
 });
-
 app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/stadium/expand", async (
-    Guid worldId,
-    Guid clubId,
-    Guid coachId,
-    int additionalSeats,
-    IWorldRepository repo,
-    CancellationToken ct) =>
+    Guid worldId,Guid clubId,Guid coachId,int additionalSeats,string? idempotencyKey,long? expectedRoundVersion,ClubAndMarketApplicationService service,CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-    var club = world.Clubs.FirstOrDefault(c => c.Id == clubId && c.HumanCoachId == coachId);
-    if (club == null) return Results.BadRequest(new { error = "Você não controla este clube." });
-
-    var (ok, err) = MarketAndEconomyEngine.StartStadiumExpansion(world, club, additionalSeats);
-    if (!ok) return Results.BadRequest(new { error = err });
-
-    await repo.SaveWorldAsync(world, ct);
-    return Results.Ok(new { success = true, stadium = club.Stadium });
+    var (ok,err)=await service.StadiumCommandAsync(worldId,coachId,clubId,true,additionalSeats,idempotencyKey??Guid.NewGuid().ToString("N"),ct,expectedRoundVersion);
+    return ok?Results.Ok(new{success=true}):Results.BadRequest(new{error=err});
+});
+app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/loans/{loanId:guid}/repay", async (
+    Guid worldId,Guid clubId,Guid loanId,FinancialCommandDto command,ClubAndMarketApplicationService service,CancellationToken ct)=>
+{
+    var(ok,err)=await service.RepayBankLoanAsync(worldId,command.CoachId,clubId,loanId,command.IdempotencyKey,ct,command.ExpectedRoundVersion);
+    return ok?Results.Ok(new{success=true}):Results.BadRequest(new{error=err});
+});
+app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/salary-requests/{requestId:guid}/respond", async (
+    Guid worldId,Guid clubId,Guid requestId,SalaryDecisionCommandDto command,ClubAndMarketApplicationService service,CancellationToken ct)=>
+{
+    var(ok,err)=await service.RespondSalaryAsync(worldId,command.CoachId,clubId,requestId,command.Accept,command.IdempotencyKey,ct,command.ExpectedRoundVersion);
+    return ok?Results.Ok(new{success=true,message=err}):Results.BadRequest(new{error=err});
 });
 
 // 7. Career & Job Invitations
@@ -718,14 +727,14 @@ app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/accept",
     CancellationToken ct) =>
 {
     var (ok, err) = await service.AcceptJobInvitationAsync(worldId, coachId, invitationId, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/reject", async (
     Guid worldId, Guid invitationId, Guid coachId, ClubAndMarketApplicationService service, CancellationToken ct) =>
 {
     var (ok, err) = await service.RespondJobInvitationAsync(worldId, coachId, invitationId, false, ct);
-    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+    return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPut("/api/worlds/{worldId:guid}/career/morale-rules", async (
