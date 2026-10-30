@@ -4,7 +4,7 @@
   "Aggregates": 36864,
   "Queries": 18,
   "Rows": 12313,
-  "ElapsedMs": 647.2721,
+  "ElapsedMs": 677.5534,
   "BudgetMs": 10000,
   "Fixture": "Synthetic deterministic load records; real128-club season validated separately."
 }

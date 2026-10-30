@@ -1,8 +1,8 @@
 {
   "sourcePath": "D:\\elifoot_98\\docs\\audit-009\\real-season-world.json",
-  "sourceSha256": "ADA6BC19BD42AA03D1187E644C3F53891EA0E4FD5AC6CB264049C8BD5A86E3EC",
-  "databasePath": "D:\\elifoot_98\\artifacts\\player-rankings-009\\browser-3d230c331dc04bbcb2c665365ca6370f.db",
-  "worldId": "f0877d7e-a92a-4beb-a223-a0caa587257a",
+  "sourceSha256": "CAA1B0AF4BBD9AEDFBFC259F781DADA019EB5D52EE01F35FE71EA2B41F12E143",
+  "databasePath": "D:\\elifoot_98\\artifacts\\player-rankings-009\\browser-d1ada2a4b7a144b8b0f270492643afc7.db",
+  "worldId": "d8379965-b5d7-4698-b939-710127e4591d",
   "inviteCode": "RANK009",
   "seasonNumber": 2,
   "clubs": 128,
@@ -13,7 +13,7 @@
     "season": 1,
     "awards": [
       {
-        "awardId": "97e293fa-304a-c91e-72bd-c7e6348ed989",
+        "awardId": "7e774d42-9655-4bce-2e61-85b599cb5d71",
         "playerId": "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
         "displayName": "Thiago Machado*",
         "season": 1,
@@ -22,11 +22,11 @@
         "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
         "clubNameAtClose": "Real Pampulha",
         "awardAmount": 3000000,
-        "awardGrantedAt": "2026-10-30T13:31:04.6803924Z",
-        "idempotencyKey": "season_top_scorer:f0877d7e-a92a-4beb-a223-a0caa587257a:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
+        "awardGrantedAt": "2026-10-30T16:26:35.8039221Z",
+        "idempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
       },
       {
-        "awardId": "0fb997ef-8ccf-0849-2f6a-b23cd5351fd0",
+        "awardId": "09bbca7e-d8a1-7cb9-f6ff-34087a3c325a",
         "playerId": "f15990a2-e802-2b47-b389-f6abe1e6b2b9",
         "displayName": "Mateus Alves*",
         "season": 1,
@@ -35,8 +35,8 @@
         "clubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
         "clubNameAtClose": "Guarani da Serra",
         "awardAmount": 3000000,
-        "awardGrantedAt": "2026-10-30T13:31:04.6808725Z",
-        "idempotencyKey": "season_top_scorer:f0877d7e-a92a-4beb-a223-a0caa587257a:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
+        "awardGrantedAt": "2026-10-30T16:26:35.8042721Z",
+        "idempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
       }
     ],
     "clubTotals": [

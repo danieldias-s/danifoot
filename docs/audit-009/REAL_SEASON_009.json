@@ -145,7 +145,7 @@
     "Season": 1,
     "Awards": [
       {
-        "AwardId": "b3c4c013-e4c6-03e5-7763-00ed9a0d636f",
+        "AwardId": "7e774d42-9655-4bce-2e61-85b599cb5d71",
         "PlayerId": "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
         "DisplayName": "Thiago Machado*",
         "Season": 1,
@@ -154,11 +154,11 @@
         "ClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
         "ClubNameAtClose": "Real Pampulha",
         "AwardAmount": 3000000,
-        "AwardGrantedAt": "2026-10-30T15:16:33.1383926Z",
-        "IdempotencyKey": "season_top_scorer:2dcec696-c9f2-4359-b7fa-84a43a5f7d65:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
+        "AwardGrantedAt": "2026-10-30T16:26:35.8039221Z",
+        "IdempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
       },
       {
-        "AwardId": "f0ae384d-c9cb-698b-d108-2fb1eadf6a65",
+        "AwardId": "09bbca7e-d8a1-7cb9-f6ff-34087a3c325a",
         "PlayerId": "f15990a2-e802-2b47-b389-f6abe1e6b2b9",
         "DisplayName": "Mateus Alves*",
         "Season": 1,
@@ -167,8 +167,8 @@
         "ClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
         "ClubNameAtClose": "Guarani da Serra",
         "AwardAmount": 3000000,
-        "AwardGrantedAt": "2026-10-30T15:16:33.1387493Z",
-        "IdempotencyKey": "season_top_scorer:2dcec696-c9f2-4359-b7fa-84a43a5f7d65:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
+        "AwardGrantedAt": "2026-10-30T16:26:35.8042721Z",
+        "IdempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
       }
     ],
     "ClubTotals": [
@@ -194,8 +194,8 @@
       "ManagerId": "6898a9d8-93a6-3544-abb1-0f9e01dc81f0",
       "TransactionType": null,
       "SigningDecision": null,
-      "Id": "cfbee988-96db-450d-82d4-0181e7f33439",
-      "GameWorldId": "2dcec696-c9f2-4359-b7fa-84a43a5f7d65",
+      "Id": "66c38b5e-3023-4a64-b666-be516916d105",
+      "GameWorldId": "d8379965-b5d7-4698-b939-710127e4591d",
       "ClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
       "SeasonNumber": 1,
       "RoundNumber": 22,
@@ -203,8 +203,8 @@
       "Amount": 3000000,
       "BalanceAfter": 17327661.11,
       "Description": "ARTILHEIRO DA TEMPORADA 1: Thiago Machado*, 10 gols",
-      "IdempotencyKey": "season_top_scorer:2dcec696-c9f2-4359-b7fa-84a43a5f7d65:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06",
-      "CreatedAtUtc": "2026-10-30T15:16:33.1383758Z"
+      "IdempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+      "CreatedAtUtc": "2026-10-30T16:26:35.8039062Z"
     },
     {
       "TransferTransactionId": null,
@@ -214,8 +214,8 @@
       "ManagerId": "3fa0a003-852a-0b4c-8f7d-e86b0f1643e0",
       "TransactionType": null,
       "SigningDecision": null,
-      "Id": "44f043a3-5f2b-4786-b33d-1ef579ce34ab",
-      "GameWorldId": "2dcec696-c9f2-4359-b7fa-84a43a5f7d65",
+      "Id": "a0e87554-8760-49a4-b2ff-338424dc92eb",
+      "GameWorldId": "d8379965-b5d7-4698-b939-710127e4591d",
       "ClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
       "SeasonNumber": 1,
       "RoundNumber": 22,
@@ -223,8 +223,8 @@
       "Amount": 3000000,
       "BalanceAfter": 10621967.71,
       "Description": "ARTILHEIRO DA TEMPORADA 1: Mateus Alves*, 10 gols",
-      "IdempotencyKey": "season_top_scorer:2dcec696-c9f2-4359-b7fa-84a43a5f7d65:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9",
-      "CreatedAtUtc": "2026-10-30T15:16:33.1387436Z"
+      "IdempotencyKey": "season_top_scorer:d8379965-b5d7-4698-b939-710127e4591d:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9",
+      "CreatedAtUtc": "2026-10-30T16:26:35.8042658Z"
     }
   ],
   "Rankings": [
