@@ -11,7 +11,7 @@ void main() {
   testWidgets(
     'New configuration clears previously saved consent to generated athletes',
     (tester) async {
-      bool? consent;
+      bool? consent, historical, unverified;
       final api = ElifootApiClient(
         httpClient: MockClient((request) async {
           dynamic result;
@@ -30,10 +30,14 @@ void main() {
               'assignments': [],
               'allowFictionalTeams': false,
               'allowFictionalPlayers': true,
+              'includeHistoricalClubs': true,
+              'includeUnverifiedClubs': true,
             };
           } else {
             final body = jsonDecode(request.body) as Map;
             consent = body['allowFictionalPlayers'] as bool;
+            historical = body['includeHistoricalClubs'] as bool;
+            unverified = body['includeUnverifiedClubs'] as bool;
             result = {'clubs': [], 'references': [], 'warnings': []};
           }
           return http.Response.bytes(
@@ -58,6 +62,8 @@ void main() {
         await tester.pumpAndSettle();
       }
       expect(consent, false);
+      expect(historical, false);
+      expect(unverified, false);
       expect(tester.takeException(), isNull);
       api.disconnectRealtime();
     },
@@ -134,6 +140,66 @@ void main() {
         'strengthEstimate': {'method': 'relative-v1:pending'},
       }),
       'força estimada na prévia',
+    );
+  });
+
+  testWidgets('Historical clubs and undated activity are visible separately', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: Column(
+            children: [
+              catalogClubStatus({
+                'verification': {
+                  'status': 'REAL_CLUB_HISTORICAL',
+                  'sourceSeason': '2025',
+                  'currentSeasonConfirmed': false,
+                },
+              }),
+              catalogClubStatus({
+                'verification': {
+                  'status': 'REAL_CLUB_VERIFIED',
+                  'sourceSeason': '2026-27',
+                  'currentSeasonConfirmed': true,
+                },
+              }),
+              catalogClubStatus({
+                'verification': {
+                  'status': 'REAL_CLUB_UNVERIFIED',
+                  'currentSeasonConfirmed': false,
+                },
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+    expect(find.textContaining('REAL_CLUB_HISTORICAL'), findsOneWidget);
+    expect(find.textContaining('REAL_CLUB_UNVERIFIED'), findsOneWidget);
+    expect(
+      find.textContaining('atividade atual não certificada'),
+      findsNWidgets(2),
+    );
+    expect(find.textContaining('participação datada'), findsOneWidget);
+  });
+  testWidgets('A technical identifier tie break is labeled unranked', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: catalogRankingLabel({
+            'rankingInfo': {'method': 'Unranked-v2', 'rank': 1},
+          }),
+        ),
+      ),
+    );
+    expect(find.textContaining('NÃO CLASSIFICADO'), findsOneWidget);
+    expect(
+      find.textContaining('desempate técnico não é ranking'),
+      findsOneWidget,
     );
   });
 }

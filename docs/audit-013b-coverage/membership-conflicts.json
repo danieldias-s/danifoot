@@ -1,0 +1,22 @@
+[
+  {
+    "player": "wikidata:Q10490646",
+    "gender": "Male",
+    "club": "Q50602",
+    "otherClubs": [
+      "Q50602",
+      "Q8682"
+    ],
+    "statement": "http://www.wikidata.org/entity/statement/Q10490646-82A6675B-BCD3-4E41-B990-E97ABE0262AC"
+  },
+  {
+    "player": "wikidata:Q10490646",
+    "gender": "Male",
+    "club": "Q8682",
+    "otherClubs": [
+      "Q50602",
+      "Q8682"
+    ],
+    "statement": "http://www.wikidata.org/entity/statement/Q10490646-DCC021E2-00ED-4DFB-887F-753CCF0718AF"
+  }
+]

@@ -30,16 +30,20 @@ public sealed class WikidataCatalogSource(ProviderHttp entities, ProviderHttp qu
             if (name != configured.ExpectedName || !Has("P17", configured.CountryEntityId) || !Has("P31", configured.CategoryEntityId) || !Has("P118", competition.LeagueId))
                 throw new ArgumentException("Identidade, país, categoria ou liga Wikidata divergiu do mapeamento revisado.");
             revisions.Add(configured.Id + ":" + entity.Text("lastrevid"));
-            teams.Add(new(configured.Id, name, configured.Id, competition.LeagueId, competition.LeagueName));
+            DateOnly? dissolved = DateTime.TryParse(entity.Child("claims").Child("P576").Rows().FirstOrDefault().Child("mainsnak").Child("datavalue").Child("value").Text("time").TrimStart('+'), out var dissolution) ? DateOnly.FromDateTime(dissolution) : null;
+            teams.Add(new(configured.Id, name, configured.Id, competition.LeagueId, competition.LeagueName,
+                Verification: fixtureData ? null : new(dissolved != null ? CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL : CatalogClubVerificationStatus.REAL_CLUB_VERIFIED,
+                    $"Reviewed Wikidata {configured.Id}; country {configured.CountryEntityId}; category {configured.CategoryEntityId}; league {competition.LeagueId}; undated league association",
+                    fetched, CurrentSeasonConfirmed: false, DissolvedAt: dissolved, WikidataId: configured.Id)));
         }
         List<CatalogAthlete> players = []; List<CatalogRosterReport> reports = [];
         if (dataType == CatalogDataType.Squads)
         {
             string asOf = competition.AsOf.Value.ToString("yyyy-MM-dd") + "T00:00:00Z";
-            string query = "SELECT DISTINCT ?team ?player ?playerLabel ?positionLabel ?start ?end WHERE { VALUES ?team { " +
+            string query = "SELECT DISTINCT ?team ?player ?playerLabel ?positionLabel ?start ?end ?membership ?sex WHERE { VALUES ?team { " +
                 string.Join(" ", teamIds.Select(id => "wd:" + id)) + " } ?player p:P54 ?membership . ?membership ps:P54 ?team; pq:P580 ?start . " +
                 "OPTIONAL { ?membership pq:P582 ?end } FILTER(?start <= \"" + asOf + "\"^^xsd:dateTime && (!BOUND(?end) || ?end >= \"" + asOf + "\"^^xsd:dateTime)) " +
-                "OPTIONAL { ?player wdt:P413 ?position } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,pt\". } } ORDER BY ?team ?player LIMIT 500";
+                "OPTIONAL { ?player wdt:P21 ?sex } OPTIONAL { ?player wdt:P413 ?position } SERVICE wikibase:label { bd:serviceParam wikibase:language \"en,pt\". } } ORDER BY ?team ?player LIMIT 500";
             var data = await queries.Get("sparql?format=json&query=" + Uri.EscapeDataString(query), budget, ct);
             if (data.Child("results").Child("bindings").ValueKind != JsonValueKind.Array) throw new ArgumentException("Wikidata SPARQL sem resultados válidos.");
             var rows = data.Child("results").Child("bindings").Rows();
@@ -52,6 +56,13 @@ public sealed class WikidataCatalogSource(ProviderHttp entities, ProviderHttp qu
                 {
                     string id = member.Key.Split('/').Last(), name = member.First().Child("playerLabel").Text("value");
                     if (string.IsNullOrWhiteSpace(name) || name == id) { issues.Add($"{id}: nome indisponível; atleta não gerado."); continue; }
+                    if (!fixtureData)
+                    {
+                        var sexes = member.Select(r => r.Child("sex").Text("value").Split('/').Last()).ToHashSet();
+                        string[] expected = competition.Gender == FootballGender.Female ? ["Q6581072", "Q1052281"] : ["Q6581097", "Q2449503"];
+                        string[] opposite = competition.Gender == FootballGender.Female ? ["Q6581097", "Q2449503"] : ["Q6581072", "Q1052281"];
+                        if (!sexes.Overlaps(expected) || sexes.Overlaps(opposite)) { issues.Add($"{id}: categoria do atleta incompatível/não certificada; não importado."); continue; }
+                    }
                     var positions = new HashSet<string>(); string original = string.Join(" / ", member.Select(r => r.Child("positionLabel").Text("value")).Distinct());
                     foreach (var row in member)
                     { try { positions.Add(CatalogImportCodec.Position(row.Child("positionLabel").Text("value"))); } catch (ArgumentException) { } }
@@ -60,9 +71,12 @@ public sealed class WikidataCatalogSource(ProviderHttp entities, ProviderHttp qu
                     players.Add(new(id, team.ExternalId, "wikidata", competition.Gender, competition.Season, name, positions.Single(), 25, "wikidata", fetched,
                         CanonicalPlayerId: "wikidata:" + id, IdentityOrigin: fixtureData ? CatalogDataOrigin.Fixture : CatalogDataOrigin.Real,
                         StrengthEstimate: new(InitialPlayerStrength.Version + ":pending", CatalogDataOrigin.Estimated, .2, "wikidata-no-individual-performance", .5, null),
-                        MembershipStart: Date("start"), MembershipEnd: Date("end"), OriginalPosition: original)); usable++;
+                        MembershipStart: Date("start"), MembershipEnd: Date("end"), OriginalPosition: original,
+                        MembershipEvidence: new(CatalogMembershipPolicy.Classify(Date("start"), Date("end"), competition.AsOf.Value),
+                            member.First().Child("membership").Text("value"), "Wikidata P54 with start/end qualifiers", competition.AsOf.Value,
+                            "Open end does not prove current membership"))); usable++;
                 }
-                var squad = players.Where(p => p.ClubExternalId == team.ExternalId).ToList();
+                var squad = players.Where(p => p.ClubExternalId == team.ExternalId && CatalogMembershipPolicy.Usable(p, competition.AsOf.Value)).ToList();
                 bool complete = squad.Count >= 11 && squad.Any(p => p.Position == "G") && squad.Count(p => p.Position != "G") >= 10 && squad.Any(p => p.Position == "D");
                 issues.Add("Vínculos comunitários do Wikidata não garantem o elenco oficial completo/atual.");
                 reports.Add(new(team.ExternalId, "wikidata", members.Count, usable, complete, issues));

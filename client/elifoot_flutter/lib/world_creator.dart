@@ -27,7 +27,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   bool _busy = false,
       _fictional = false,
       _saved = false,
-      _fictionalPlayers = false;
+      _fictionalPlayers = false,
+      _includeHistorical = false,
+      _includeUnverified = false;
   final Set<String> _countries = {
     'BR',
     'AR',
@@ -119,6 +121,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'fillRemainingDivisions': true,
     'allowFictionalTeams': _fictional,
     'allowFictionalPlayers': _fictionalPlayers,
+    'includeHistoricalClubs': _includeHistorical,
+    'includeUnverifiedClubs': _includeUnverified,
     'useSavedData': _saved,
   };
   void _useLast() {
@@ -146,6 +150,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         );
       _fictional = p['allowFictionalTeams'] == true;
       _fictionalPlayers = p['allowFictionalPlayers'] == true;
+      _includeHistorical = p['includeHistoricalClubs'] == true;
+      _includeUnverified = p['includeUnverifiedClubs'] == true;
       _saved = p['useSavedData'] == true;
       _preview = null;
     });
@@ -249,8 +255,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     decoration: const InputDecoration(labelText: 'Pesquisar'),
     onChanged: (v) => setState(() => _search = v.toLowerCase()),
   );
+  bool _clubAllowed(Map<String, dynamic> club) {
+    final verification = club['verification'];
+    if (verification is! Map) return true;
+    return (verification['status'] != 'REAL_CLUB_HISTORICAL' ||
+            _includeHistorical) &&
+        (verification['status'] != 'REAL_CLUB_UNVERIFIED' ||
+            _includeUnverified);
+  }
+
   Widget _clubList() {
-    final ranked = [..._clubs]
+    final ranked = _clubs.where(_clubAllowed).toList()
       ..sort((a, b) {
         final compare = ((a['rank'] as num?)?.toInt() ?? 2147483647).compareTo(
           (b['rank'] as num?)?.toInt() ?? 2147483647,
@@ -261,6 +276,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       });
     final reserved = ranked.take(32).map((c) => c['key']).toSet();
     final clubs = _clubs
+        .where(_clubAllowed)
         .where(
           (c) =>
               _mode != 'Automatic' ||
@@ -376,6 +392,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                       _assignments.clear();
                       _fictional = false;
                       _fictionalPlayers = false;
+                      _includeHistorical = false;
+                      _includeUnverified = false;
                       _preview = null;
                     }),
               child: const Text('CRIAR NOVA CONFIGURAÇÃO'),
@@ -472,6 +490,35 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               value: _saved,
               onChanged: _busy ? null : (v) => setState(() => _saved = v!),
             ),
+            CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text(
+                'INCLUIR clubes históricos, com referência passada explícita',
+              ),
+              value: _includeHistorical,
+              onChanged: _busy
+                  ? null
+                  : (v) => setState(() {
+                      _includeHistorical = v!;
+                      _preview = null;
+                      _assignments.clear();
+                    }),
+            ),
+            CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('INCLUIR clubes sem verificação de atividade'),
+              subtitle: const Text(
+                'Listas antigas não comprovam participação na temporada atual.',
+              ),
+              value: _includeUnverified,
+              onChanged: _busy
+                  ? null
+                  : (v) => setState(() {
+                      _includeUnverified = v!;
+                      _preview = null;
+                      _assignments.clear();
+                    }),
+            ),
             const Text(
               '4 divisões de 8 clubes e 96 distritais. Ranking define apenas a distribuição inicial.',
             ),
@@ -482,7 +529,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${_clubs.length} clubes disponíveis • ${_countries.join(', ')}',
+              '${_clubs.where(_clubAllowed).length} clubes disponíveis • ${_countries.join(', ')}',
             ),
             Wrap(
               spacing: 12,
@@ -575,6 +622,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               'Forças estimadas são calculadas na prévia e não são notas individuais oficiais. Confira o elenco final antes de confirmar.',
             ),
             for (final club in _clubs) ...[
+              catalogClubStatus(club),
               catalogRankingLabel(club),
               for (final issue in club['coverageWarnings'] as List? ?? [])
                 Text(
@@ -586,7 +634,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   '${club['name']} • ranking ${club['rank'] ?? 'ausente'}',
                 ),
                 subtitle: Text(
-                  '${(club['players'] as List).length} utilizáveis / ${club['rawRosterCount'] ?? (club['players'] as List).length} recebidos',
+                  '${(club['players'] as List).length} atuais utilizáveis • ${club['documentedPlayers'] ?? (club['players'] as List).length} documentados • ${club['uncertainPlayers'] ?? 0} vínculos não confirmados',
                 ),
                 children: _maps(club['players']).map(catalogPlayerRow).toList(),
               ),

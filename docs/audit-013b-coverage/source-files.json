@@ -1,0 +1,770 @@
+[
+  {
+    "file": "awesome-football-README.md",
+    "bytes": 14384,
+    "sha256": "0c0051bbec5a466550555f2d7f5c25441c4b28b113147cb98e5e8eb79685ef68",
+    "localModifiedAt": "2026-10-30T23:17:39.467Z"
+  },
+  {
+    "file": "awesome-football-tree.json",
+    "bytes": 814,
+    "sha256": "79483b74f89226f54e8c13ed3b29f427cfb79e5243cf2818b2ef298048e78a0c",
+    "localModifiedAt": "2026-10-30T23:17:22.000Z"
+  },
+  {
+    "file": "clubs-europe_england_eng.clubs.txt",
+    "bytes": 24232,
+    "sha256": "272bf00c7cc8991a0dc98493d0963fab18f07435098637a968f700015e83e93e",
+    "localModifiedAt": "2026-10-30T23:18:00.210Z"
+  },
+  {
+    "file": "clubs-europe_france_fr.clubs.txt",
+    "bytes": 10306,
+    "sha256": "bfdba243242c950759cfeb4de3541ecd319885753cee2e9f4719ce78875aca07",
+    "localModifiedAt": "2026-10-30T23:20:12.354Z"
+  },
+  {
+    "file": "clubs-europe_germany_de.clubs.txt",
+    "bytes": 23083,
+    "sha256": "5e0d22d19880a17bfff665a1643835c91d2cabf9dd9c6052e2f4a041eb15afa7",
+    "localModifiedAt": "2026-10-30T23:20:11.929Z"
+  },
+  {
+    "file": "clubs-europe_italy_it.clubs.txt",
+    "bytes": 10078,
+    "sha256": "a82c16981a2a2d8eb24e687f1b254c993f146ed1fa224e01e4a174ef6ca960a1",
+    "localModifiedAt": "2026-10-30T23:20:12.147Z"
+  },
+  {
+    "file": "clubs-europe_portugal_pt.clubs.txt",
+    "bytes": 6305,
+    "sha256": "9b2ec8b0903a4f59f1c14c0994919c105028835778f0f0372b43a6682e70be85",
+    "localModifiedAt": "2026-10-30T23:20:12.592Z"
+  },
+  {
+    "file": "clubs-europe_spain_es.clubs.txt",
+    "bytes": 10576,
+    "sha256": "057b6d2fa987ed488d9881b4741f65859be3649d78860aff25d3e1308e2c693a",
+    "localModifiedAt": "2026-10-30T23:18:00.548Z"
+  },
+  {
+    "file": "clubs-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:17.058Z"
+  },
+  {
+    "file": "clubs-README.md",
+    "bytes": 1627,
+    "sha256": "492302d4e97b8c3dffb86efb5725f4c691711c7d0671d6ddc4a9e55588c53be5",
+    "localModifiedAt": "2026-10-30T23:17:38.569Z"
+  },
+  {
+    "file": "clubs-south-america_argentina_ar.clubs.txt",
+    "bytes": 8917,
+    "sha256": "3822643d1998e42e848437e7e90ca7068c93919c51b5fc0c536dba42370bba98",
+    "localModifiedAt": "2026-10-30T23:18:01.208Z"
+  },
+  {
+    "file": "clubs-south-america_brazil_br.clubs.txt",
+    "bytes": 9222,
+    "sha256": "8420c36cd40b4c8c81f02330e796e0fb4488ca9be301c600d8941375e24998b7",
+    "localModifiedAt": "2026-10-30T23:18:00.885Z"
+  },
+  {
+    "file": "clubs-tree.json",
+    "bytes": 120057,
+    "sha256": "40f0e446995a038757191684e9967ac53f03fd2d098192ef874cb16f0fd34f3b",
+    "localModifiedAt": "2026-10-30T23:17:16.713Z"
+  },
+  {
+    "file": "downloads-manifest.json",
+    "bytes": 14721,
+    "sha256": "93a2cad71e4dae4fb4495011837beb94703511b5435dba391ff895f22e9f6497",
+    "localModifiedAt": "2026-10-30T23:21:28.626Z"
+  },
+  {
+    "file": "europe-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:21.362Z"
+  },
+  {
+    "file": "europe-tree.json",
+    "bytes": 80022,
+    "sha256": "aa5b50bf0373ac76520b835af6b3e5642280049fd46062bf46760ed3d7a68fad",
+    "localModifiedAt": "2026-10-30T23:17:20.850Z"
+  },
+  {
+    "file": "football.json-2025-26_de.1.json",
+    "bytes": 88247,
+    "sha256": "17d0999db6281e6365823acdbce41a4f01dd469eac63e1f897e4e47c02906672",
+    "localModifiedAt": "2026-10-30T23:20:12.805Z"
+  },
+  {
+    "file": "football.json-2025-26_de.2.json",
+    "bytes": 57270,
+    "sha256": "af223a755f2a0d5b7e17e4644e8918f54f2eae4c02825d1e90c7434f6f7a6c13",
+    "localModifiedAt": "2026-10-30T23:20:13.021Z"
+  },
+  {
+    "file": "football.json-2025-26_en.1.json",
+    "bytes": 108493,
+    "sha256": "d6070bdf731546ccf97767f062e8af4bd26dd309dee69f6092025bf9c78f43c1",
+    "localModifiedAt": "2026-10-30T23:20:13.249Z"
+  },
+  {
+    "file": "football.json-2025-26_en.2.json",
+    "bytes": 159839,
+    "sha256": "492a2fad47b787d694a33f06c6a9828fcb91f6351e2466385550c9a2d98a44ae",
+    "localModifiedAt": "2026-10-30T23:20:13.485Z"
+  },
+  {
+    "file": "football.json-2025-26_en.3.json",
+    "bytes": 124487,
+    "sha256": "fb80409f0189328ae327f49af7dd06902dc4a4f92affb00abbf3d6d751f6d912",
+    "localModifiedAt": "2026-10-30T23:20:13.710Z"
+  },
+  {
+    "file": "football.json-2025-26_en.4.json",
+    "bytes": 122452,
+    "sha256": "1c0b9b0af55ac3e0bc4a17f6118f0aec97aa9b2e5f8d700434f12b5ac3b25fff",
+    "localModifiedAt": "2026-10-30T23:20:13.930Z"
+  },
+  {
+    "file": "football.json-2025-26_es.1.json",
+    "bytes": 108642,
+    "sha256": "b40397d8e62c640138548d57a1a9f76150549213d2a07fcbbb90ed0eabc6ccea",
+    "localModifiedAt": "2026-10-30T23:20:14.147Z"
+  },
+  {
+    "file": "football.json-2025-26_es.2.json",
+    "bytes": 79957,
+    "sha256": "1778a3813cddd6d20d1a9cd2c73c1c22ec007b550a2a559f91bfaf0b5734c648",
+    "localModifiedAt": "2026-10-30T23:20:14.365Z"
+  },
+  {
+    "file": "football.json-2025-26_fr.1.json",
+    "bytes": 85845,
+    "sha256": "3e9403445dd96f4bb7f740de22d4ea7e3ea7d640777a12eab621ae4d4dbf3bc7",
+    "localModifiedAt": "2026-10-30T23:20:14.568Z"
+  },
+  {
+    "file": "football.json-2025-26_fr.2.json",
+    "bytes": 57609,
+    "sha256": "bf9a5d2a3caee58d71dd0f9b399829c9e7878aa4cb65ae5563b484269fbf5cb0",
+    "localModifiedAt": "2026-10-30T23:20:14.798Z"
+  },
+  {
+    "file": "football.json-2025-26_it.1.json",
+    "bytes": 105202,
+    "sha256": "28f7773dea86345aeb0cbb4aff2f90231033f7ed855219e70fdd1cf45d4d7e7f",
+    "localModifiedAt": "2026-10-30T23:20:15.000Z"
+  },
+  {
+    "file": "football.json-2025-26_it.2.json",
+    "bytes": 91100,
+    "sha256": "74e38be319c2c30b82abcd9aabd5468a79d36408e7f6f2b066eb8bf7938a06b5",
+    "localModifiedAt": "2026-10-30T23:20:15.214Z"
+  },
+  {
+    "file": "football.json-2025-26_pt.1.json",
+    "bytes": 86590,
+    "sha256": "c35c7b249ce7f3eb21c543d89ca32a3654cb218ed79c22ce6a9765fead5334da",
+    "localModifiedAt": "2026-10-30T23:20:15.417Z"
+  },
+  {
+    "file": "football.json-2025_ar.1.json",
+    "bytes": 69959,
+    "sha256": "f4ad6caff17f1347c9be45d307111d6e80b7f20f738327d545d41f50d6929f7f",
+    "localModifiedAt": "2026-10-30T23:20:15.627Z"
+  },
+  {
+    "file": "football.json-2025_br.1.json",
+    "bytes": 105751,
+    "sha256": "0fcc4647256b2e1f58b50f1372b751aeb7e6aacb5b8cd747579dd7ab71303fbb",
+    "localModifiedAt": "2026-10-30T23:20:15.832Z"
+  },
+  {
+    "file": "football.json-2025_br.2.json",
+    "bytes": 60824,
+    "sha256": "2e08bfe80749885fb5525e29ce79d503f4b883fa81ff2c8b44e358e2a84519c6",
+    "localModifiedAt": "2026-10-30T23:20:16.069Z"
+  },
+  {
+    "file": "football.json-2026-27_de.1.json",
+    "bytes": 40409,
+    "sha256": "07fab65d4a1de8ce4c8472da9ccf4d1d2b145ecd5abdc5b6d4250a5c119d7681",
+    "localModifiedAt": "2026-10-30T23:20:16.279Z"
+  },
+  {
+    "file": "football.json-2026-27_en.1.json",
+    "bytes": 55359,
+    "sha256": "bb91f0ab3e8359df163bb9ec98549bfed85e200dd4c32f3bd606b5890d932dd2",
+    "localModifiedAt": "2026-10-30T23:18:01.496Z"
+  },
+  {
+    "file": "football.json-2026-27_en.2.json",
+    "bytes": 77132,
+    "sha256": "869f91d6f0c3d48e50c3a7c05d5a220e309077c47ff48a15f3848b78bc346d45",
+    "localModifiedAt": "2026-10-30T23:20:16.506Z"
+  },
+  {
+    "file": "football.json-2026-27_es.1.json",
+    "bytes": 50771,
+    "sha256": "4b1a9906e3f2b279a1f25497a38f2f58e21ec19ea726b882fa646da7c07bc0e0",
+    "localModifiedAt": "2026-10-30T23:20:16.694Z"
+  },
+  {
+    "file": "football.json-2026-27_fr.1.json",
+    "bytes": 39943,
+    "sha256": "f875275f835e378fc8c4e7d48c7a2f327e7d426237bd057fe652fd47f30b5a4f",
+    "localModifiedAt": "2026-10-30T23:20:16.889Z"
+  },
+  {
+    "file": "football.json-2026-27_it.1.json",
+    "bytes": 47608,
+    "sha256": "721a6c220fecb8208287e41401fa2fce652cd23765ce58a39bf98cdaa3d528ad",
+    "localModifiedAt": "2026-10-30T23:20:17.072Z"
+  },
+  {
+    "file": "football.json-2026-27_pt.1.json",
+    "bytes": 41380,
+    "sha256": "57cac2d6caab5a303d0b846ce523462b4571da10766a128ac0a5102bd0182e7e",
+    "localModifiedAt": "2026-10-30T23:20:17.272Z"
+  },
+  {
+    "file": "football.json-2026_br.1.json",
+    "bytes": 61222,
+    "sha256": "828be04070293393096d88f13c9e7f06784516963843ff09ba47fedd08c4e171",
+    "localModifiedAt": "2026-10-30T23:18:01.812Z"
+  },
+  {
+    "file": "football.json-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:18.137Z"
+  },
+  {
+    "file": "football.json-README.md",
+    "bytes": 6330,
+    "sha256": "aadc464ae476ba4d5467785f6f2be435d1a583f589f4b2b0617fdf86fc18e29c",
+    "localModifiedAt": "2026-10-30T23:17:39.158Z"
+  },
+  {
+    "file": "football.json-tree.json",
+    "bytes": 94792,
+    "sha256": "b7ac6a4ca78e0c5f09a8f8d7416db8f1f9916586848eb3e1979686d9c5e6884c",
+    "localModifiedAt": "2026-10-30T23:17:17.828Z"
+  },
+  {
+    "file": "memberships-000.json",
+    "bytes": 56370,
+    "sha256": "765254613d35c3a68cdd7d0bdb3a51fb1b63e6ed2b86992a61d181005ab0069c",
+    "localModifiedAt": "2026-10-30T23:23:44.696Z"
+  },
+  {
+    "file": "memberships-001.json",
+    "bytes": 81327,
+    "sha256": "930eac47734b4698f3243bd45dd4f9b2a7e7893c5fef284a285e979e3247bbb3",
+    "localModifiedAt": "2026-10-30T23:23:47.166Z"
+  },
+  {
+    "file": "memberships-002.json",
+    "bytes": 54089,
+    "sha256": "29fdd9df7d40ec828f75d0299565d26659cce1d1474895d0f3e4ec74cce14bea",
+    "localModifiedAt": "2026-10-30T23:23:48.988Z"
+  },
+  {
+    "file": "memberships-003.json",
+    "bytes": 91657,
+    "sha256": "f928a81cb9b490c0636fe3fceec2205673f63ed3316dbf80735e01b1a13c58f3",
+    "localModifiedAt": "2026-10-30T23:23:50.865Z"
+  },
+  {
+    "file": "memberships-004.json",
+    "bytes": 97368,
+    "sha256": "b2751da32e5415b26096d649d077f8dd00b2919abb02cf30f361481f668eb3ce",
+    "localModifiedAt": "2026-10-30T23:23:53.941Z"
+  },
+  {
+    "file": "memberships-005.json",
+    "bytes": 41207,
+    "sha256": "07cfa3c9fa8e022a0d1b39af39ce3c87f2fec349b6bb3db9ca33ab450fdb73e0",
+    "localModifiedAt": "2026-10-30T23:23:55.824Z"
+  },
+  {
+    "file": "memberships-006.json",
+    "bytes": 16966,
+    "sha256": "eff3d7c0c023e7af66ac037a7589f984b19d246cb1745e341c5443c2359e4bd4",
+    "localModifiedAt": "2026-10-30T23:23:57.846Z"
+  },
+  {
+    "file": "memberships-007.json",
+    "bytes": 8159,
+    "sha256": "89fcf7b81e5c54df464df63916b209ae454f5a6cafe80a42d5b6e7e7ba32705b",
+    "localModifiedAt": "2026-10-30T23:23:59.618Z"
+  },
+  {
+    "file": "memberships-008.json",
+    "bytes": 30534,
+    "sha256": "180c815b20b2efa7f00dc34a447f7ebf16d6393f953be3747758f4d82bd45438",
+    "localModifiedAt": "2026-10-30T23:24:01.906Z"
+  },
+  {
+    "file": "memberships-009.json",
+    "bytes": 67253,
+    "sha256": "24ed00269a67fbd28a3f8cfb3dddcbed0a602cfdc8bf2fed80c09785263985be",
+    "localModifiedAt": "2026-10-30T23:24:04.180Z"
+  },
+  {
+    "file": "memberships-010.json",
+    "bytes": 66413,
+    "sha256": "3947d1e528b93337f8d46419fa6ec3a03542d706f0faa927ce3e26ceccf20483",
+    "localModifiedAt": "2026-10-30T23:24:06.265Z"
+  },
+  {
+    "file": "memberships-011.json",
+    "bytes": 125999,
+    "sha256": "e1e4b3847bb54e09e73d6b365cc5d2651a8a7fdc14f752cbb31ff6737e79c368",
+    "localModifiedAt": "2026-10-30T23:24:09.357Z"
+  },
+  {
+    "file": "memberships-012.json",
+    "bytes": 7297,
+    "sha256": "27237dcb00b267414b78750f662fb3b0e8d090c3736c5b8a45ace2770c14ee71",
+    "localModifiedAt": "2026-10-30T23:24:10.880Z"
+  },
+  {
+    "file": "memberships-013.json",
+    "bytes": 21470,
+    "sha256": "d01e05836c88390cd16257c92b1a871aaec6e8ff5626133437dc5f5c06ff48af",
+    "localModifiedAt": "2026-10-30T23:24:12.612Z"
+  },
+  {
+    "file": "memberships-014.json",
+    "bytes": 49792,
+    "sha256": "daa61729651270a679fee80d519038ca657ec5ee6f3a885198acefabae8b284a",
+    "localModifiedAt": "2026-10-30T23:24:14.720Z"
+  },
+  {
+    "file": "memberships-015.json",
+    "bytes": 49367,
+    "sha256": "0da9eac730fce10cdc592a0293edd8bbb9fdc252c77bfe0acbad7bccdc3c322c",
+    "localModifiedAt": "2026-10-30T23:24:17.178Z"
+  },
+  {
+    "file": "memberships-016.json",
+    "bytes": 52865,
+    "sha256": "959240fdc9b2d1f481da1e8ebc94cdc4d12600ee3363fb728b3166b5c4b99db8",
+    "localModifiedAt": "2026-10-30T23:24:19.958Z"
+  },
+  {
+    "file": "memberships-017.json",
+    "bytes": 8847,
+    "sha256": "32683199b89ef5a66c21752aabafa31167d6e20b1ac65a93ad193def962a48b1",
+    "localModifiedAt": "2026-10-30T23:24:21.792Z"
+  },
+  {
+    "file": "memberships-018.json",
+    "bytes": 69007,
+    "sha256": "937453829e33e2191425886a8a759a308b38a0e22e84e88200b942367dc569e2",
+    "localModifiedAt": "2026-10-30T23:24:24.259Z"
+  },
+  {
+    "file": "memberships-019.json",
+    "bytes": 33731,
+    "sha256": "a8ca31eef18e212aa9850003cbd17c9a015caa7913f581fde420a39532ca94a0",
+    "localModifiedAt": "2026-10-30T23:24:26.148Z"
+  },
+  {
+    "file": "memberships-020.json",
+    "bytes": 23278,
+    "sha256": "71dbefcfe13abced14a501feee2b8d9b4b2881174340c7ff86afdba23c2b13e7",
+    "localModifiedAt": "2026-10-30T23:24:28.077Z"
+  },
+  {
+    "file": "memberships-021.json",
+    "bytes": 13769,
+    "sha256": "62c0623c2dff397832344944b9236ef8616997faf7f1c91f4741bb73a8230b3f",
+    "localModifiedAt": "2026-10-30T23:24:30.021Z"
+  },
+  {
+    "file": "memberships-022.json",
+    "bytes": 4990,
+    "sha256": "61a97c3fabf3adc558bfba39f0d6bfc61f08cccb926a74081b2f053403c6be82",
+    "localModifiedAt": "2026-10-30T23:24:31.565Z"
+  },
+  {
+    "file": "memberships-023.json",
+    "bytes": 848,
+    "sha256": "7ed528317f82e58ff69328130bd9bc404a37f1c333b30b527529f88760dfa146",
+    "localModifiedAt": "2026-10-30T23:24:33.263Z"
+  },
+  {
+    "file": "memberships-024.json",
+    "bytes": 96259,
+    "sha256": "89a305f96758810b6cae0db54464fab812fdb547c14a4bb4cedd1e7e2b84b1d7",
+    "localModifiedAt": "2026-10-30T23:24:35.474Z"
+  },
+  {
+    "file": "memberships-025.json",
+    "bytes": 382603,
+    "sha256": "4f44a849d40d263dee841edb57e9f08fee638c4b25d64a2f5efabeb2013ae47b",
+    "localModifiedAt": "2026-10-30T23:24:39.313Z"
+  },
+  {
+    "file": "memberships-026.json",
+    "bytes": 368514,
+    "sha256": "49776d2b6d3c95d9ae70c436e54fb35e827a35069f546168d3fece4a733e7f1f",
+    "localModifiedAt": "2026-10-30T23:24:41.909Z"
+  },
+  {
+    "file": "memberships-027.json",
+    "bytes": 293284,
+    "sha256": "a920d0801a8ce3ba2cb6549f2402c9670e98cbc3a2fefe985cc323f725d8e006",
+    "localModifiedAt": "2026-10-30T23:24:48.304Z"
+  },
+  {
+    "file": "memberships-028.json",
+    "bytes": 299893,
+    "sha256": "2eb8bf820e4d3b4e8ea27d1be0778edb6eb521b032bb7569f5bd65a8132ff8c6",
+    "localModifiedAt": "2026-10-30T23:24:55.078Z"
+  },
+  {
+    "file": "memberships-029.json",
+    "bytes": 367437,
+    "sha256": "6cb2aebcea722fdb3213c402361fca016592a12c360e7cc1572f1077ee2edbd8",
+    "localModifiedAt": "2026-10-30T23:24:58.309Z"
+  },
+  {
+    "file": "memberships-030.json",
+    "bytes": 550619,
+    "sha256": "8446a21b248ef4e65046e935405623019b5094283fb45ad64ae0bc7c73a151e6",
+    "localModifiedAt": "2026-10-30T23:25:10.248Z"
+  },
+  {
+    "file": "memberships-031.json",
+    "bytes": 254379,
+    "sha256": "8a9d1e3b369467002f0360631a5e184accddfdfe80ff62ab7d8c3d3f3d1ba9d0",
+    "localModifiedAt": "2026-10-30T23:25:16.194Z"
+  },
+  {
+    "file": "player-genders-000.json",
+    "bytes": 23110,
+    "sha256": "af5c091ffb36e5b9fa63ce70628bd9ce8843a033a8b507da712f3e3d439ea3ea",
+    "localModifiedAt": "2026-10-30T23:44:00.358Z"
+  },
+  {
+    "file": "player-genders-001.json",
+    "bytes": 23105,
+    "sha256": "43029a2e1bf1749e254d4491e3e93f46d4bd0ee7d89c98d2089d186d87e6c4b1",
+    "localModifiedAt": "2026-10-30T23:44:02.648Z"
+  },
+  {
+    "file": "player-genders-002.json",
+    "bytes": 23129,
+    "sha256": "19c5b93d916a3401f9073ecc377b063351719830fbd7294a1e4b1a81e1a7aa17",
+    "localModifiedAt": "2026-10-30T23:44:04.466Z"
+  },
+  {
+    "file": "player-genders-003.json",
+    "bytes": 23116,
+    "sha256": "94dcd85b97f5ff9ea5f2c71a028053b41a05c0a578d49c8e8c5e1aeab9b6ae52",
+    "localModifiedAt": "2026-10-30T23:44:06.060Z"
+  },
+  {
+    "file": "player-genders-004.json",
+    "bytes": 23085,
+    "sha256": "7e404fa16396ba794c52dd91fd598d8818e21619fa18afd537777e14352d746d",
+    "localModifiedAt": "2026-10-30T23:44:07.877Z"
+  },
+  {
+    "file": "player-genders-005.json",
+    "bytes": 23071,
+    "sha256": "1531b580d8abaa7d775fa1b2bcb3ebd63b6941ce78b2bce7acee3084d3488a37",
+    "localModifiedAt": "2026-10-30T23:44:09.691Z"
+  },
+  {
+    "file": "player-genders-006.json",
+    "bytes": 23084,
+    "sha256": "f66f58a13d35590a7bd7c1adc46857d3217ab003a2a08e6fdc0d2342f82d6f48",
+    "localModifiedAt": "2026-10-30T23:44:11.504Z"
+  },
+  {
+    "file": "player-genders-007.json",
+    "bytes": 23062,
+    "sha256": "047037b00cd5ffb87a5a8d50cd2988e09f3233984bf6446d856004fb3cef0b1b",
+    "localModifiedAt": "2026-10-30T23:44:13.448Z"
+  },
+  {
+    "file": "player-genders-008.json",
+    "bytes": 23074,
+    "sha256": "a25717f272439d7547922b1adbce24f9eda86bc58a0e931cb6301d568d1080ed",
+    "localModifiedAt": "2026-10-30T23:44:15.256Z"
+  },
+  {
+    "file": "player-genders-009.json",
+    "bytes": 23072,
+    "sha256": "aeda8e5c3cd93df62bb3b552b359911410a5e6217b8c2dda211a02bb3b7303c3",
+    "localModifiedAt": "2026-10-30T23:44:17.078Z"
+  },
+  {
+    "file": "player-genders-010.json",
+    "bytes": 23061,
+    "sha256": "520f191135f30344864d95616194c2802716e2995f7281fd30ace8bba09d0790",
+    "localModifiedAt": "2026-10-30T23:44:18.911Z"
+  },
+  {
+    "file": "player-genders-011.json",
+    "bytes": 23075,
+    "sha256": "3232ee910c3c8d6c4afc04e5357bd3740fd5e79c56119d8c3592b026f343089b",
+    "localModifiedAt": "2026-10-30T23:44:20.686Z"
+  },
+  {
+    "file": "player-genders-012.json",
+    "bytes": 23080,
+    "sha256": "a3b0e2522ab917c32da039da766519b2f4b635af175200164aeb3ac663583b1d",
+    "localModifiedAt": "2026-10-30T23:44:22.277Z"
+  },
+  {
+    "file": "player-genders-013.json",
+    "bytes": 23064,
+    "sha256": "a84935ecee46729c05174d7fbf2497baf7686a6f8b5257b830852710d4004d67",
+    "localModifiedAt": "2026-10-30T23:44:23.875Z"
+  },
+  {
+    "file": "player-genders-014.json",
+    "bytes": 23066,
+    "sha256": "54b82bf9f827967500042725c89180f9dd36beb8a1bdd2329d8bece26d4bd8a4",
+    "localModifiedAt": "2026-10-30T23:44:25.464Z"
+  },
+  {
+    "file": "player-genders-015.json",
+    "bytes": 23028,
+    "sha256": "d07fecdf2eebe618ac17b18a378e4374daf5caf426816b8585d724350045ecae",
+    "localModifiedAt": "2026-10-30T23:44:27.258Z"
+  },
+  {
+    "file": "player-genders-016.json",
+    "bytes": 23046,
+    "sha256": "6dbfef6a399dcc5b8ddc8227d9a842f33f0ac022cbe2ac6973ee0720811f748e",
+    "localModifiedAt": "2026-10-30T23:44:29.181Z"
+  },
+  {
+    "file": "player-genders-017.json",
+    "bytes": 22970,
+    "sha256": "8278373e8c7846b92247d517602fbe20b6a46f2d0e044de37f62df95a4360b15",
+    "localModifiedAt": "2026-10-30T23:44:31.003Z"
+  },
+  {
+    "file": "player-genders-018.json",
+    "bytes": 23000,
+    "sha256": "fbde76859bd734e3a969d6ccc117fbf60d34ae08d0bf6b30440529d2114ce3f3",
+    "localModifiedAt": "2026-10-30T23:44:32.811Z"
+  },
+  {
+    "file": "player-genders-019.json",
+    "bytes": 22992,
+    "sha256": "440fa2a11651a8bfef604a38d07be20fcf9f8dae2e85379ae5d6d1870b22e97a",
+    "localModifiedAt": "2026-10-30T23:44:34.409Z"
+  },
+  {
+    "file": "player-genders-020.json",
+    "bytes": 22977,
+    "sha256": "340d563c97124a7519c47ec9346b060ba0fc893005ead8d21406334b40fa5dde",
+    "localModifiedAt": "2026-10-30T23:44:35.992Z"
+  },
+  {
+    "file": "player-genders-021.json",
+    "bytes": 22979,
+    "sha256": "821b848d4fa5140ca0ceba324289cef4ff39fdce0e30b4551f5cda78ce0ef61b",
+    "localModifiedAt": "2026-10-30T23:44:37.557Z"
+  },
+  {
+    "file": "player-genders-022.json",
+    "bytes": 23009,
+    "sha256": "1a7dbb277fb5d9262952eedb04efb6991ec7c16e99a92357fffcbe8ac06aa528",
+    "localModifiedAt": "2026-10-30T23:44:39.365Z"
+  },
+  {
+    "file": "player-genders-023.json",
+    "bytes": 23032,
+    "sha256": "a0c92319f870d9bc4a1385812583b23c41a7ae2f550654d7391696012d192866",
+    "localModifiedAt": "2026-10-30T23:44:40.985Z"
+  },
+  {
+    "file": "player-genders-024.json",
+    "bytes": 23004,
+    "sha256": "eaff2f940a932f13b6d4151865af90cfe822f6d8f4b014a4555162b270572313",
+    "localModifiedAt": "2026-10-30T23:44:42.827Z"
+  },
+  {
+    "file": "player-genders-025.json",
+    "bytes": 23026,
+    "sha256": "3008575eeae954f7f3def3666eed0ff4f3e7d6f21b3d583d28276eabe91ca085",
+    "localModifiedAt": "2026-10-30T23:44:44.623Z"
+  },
+  {
+    "file": "player-genders-026.json",
+    "bytes": 23005,
+    "sha256": "fed57009838436cccb471a539e573d3f667f7753600609002404c099f49d5061",
+    "localModifiedAt": "2026-10-30T23:44:46.440Z"
+  },
+  {
+    "file": "player-genders-027.json",
+    "bytes": 22974,
+    "sha256": "143324076c75ca1bc205286ccbc1ab6e50dad64dd6d7a06c853fc2b2df142312",
+    "localModifiedAt": "2026-10-30T23:44:48.020Z"
+  },
+  {
+    "file": "player-genders-028.json",
+    "bytes": 22978,
+    "sha256": "568fccb283805774d2619afce8970d69e65c466054da7076085ebae212640546",
+    "localModifiedAt": "2026-10-30T23:44:49.612Z"
+  },
+  {
+    "file": "player-genders-029.json",
+    "bytes": 23000,
+    "sha256": "16ecec769a3683f1c5a0e54323dea9cfd92d8a8fabcf88e5f8f7a75a204c8872",
+    "localModifiedAt": "2026-10-30T23:44:51.221Z"
+  },
+  {
+    "file": "player-genders-030.json",
+    "bytes": 23081,
+    "sha256": "3a56121836d30a3eb207e6daab49d656cfbfcb149d594581ef8f5ffc08413dda",
+    "localModifiedAt": "2026-10-30T23:44:52.789Z"
+  },
+  {
+    "file": "player-genders-031.json",
+    "bytes": 1932,
+    "sha256": "f77c9d1f8d835a6eb41c247ca7d439a3ac0cc8a0767417fd4c1f26cda939a9ee",
+    "localModifiedAt": "2026-10-30T23:44:54.375Z"
+  },
+  {
+    "file": "players-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:23.299Z"
+  },
+  {
+    "file": "players-README.md",
+    "bytes": 948,
+    "sha256": "a9b41ba98b6a221670e0470511c99fd72d50436c444c3e7707028c857af87d01",
+    "localModifiedAt": "2026-10-30T23:17:38.879Z"
+  },
+  {
+    "file": "players-tree.json",
+    "bytes": 108638,
+    "sha256": "220b16c5dd633064c58b5fd4092dee910f2c66f8e1e069c3318546ced4383a3d",
+    "localModifiedAt": "2026-10-30T23:17:22.978Z"
+  },
+  {
+    "file": "south-america-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:20.203Z"
+  },
+  {
+    "file": "south-america-tree.json",
+    "bytes": 22598,
+    "sha256": "4fea66407d5ac4bf2d988fa1784d718c7a6bd3153947077043da70fe7c82dbea",
+    "localModifiedAt": "2026-10-30T23:17:19.869Z"
+  },
+  {
+    "file": "wikidata-club-types.json",
+    "bytes": 78932,
+    "sha256": "ac1e5be5ecc0debf1c79d041959409abbe89bbbb2a69c669882e10ed9438a4eb",
+    "localModifiedAt": "2026-10-30T23:18:02.388Z"
+  },
+  {
+    "file": "wikidata-men-AR.json",
+    "bytes": 156335,
+    "sha256": "7c19f3a7d351e3a735a9f3c6f055f0e0919d5e76fbca660e253814df70a809c4",
+    "localModifiedAt": "2026-10-30T23:20:37.875Z"
+  },
+  {
+    "file": "wikidata-men-BR.json",
+    "bytes": 272053,
+    "sha256": "bedd668e613144704f6f0f9a36185fbb2d1232ca6e8bda44f382c18ea655bb34",
+    "localModifiedAt": "2026-10-30T23:20:34.213Z"
+  },
+  {
+    "file": "wikidata-men-DE.json",
+    "bytes": 273184,
+    "sha256": "e43b42080f5475456cdc75a8f94aa4c07e2b0d15581f700b7fd902d5c1caca5c",
+    "localModifiedAt": "2026-10-30T23:21:05.567Z"
+  },
+  {
+    "file": "wikidata-men-ES.json",
+    "bytes": 301585,
+    "sha256": "a95c2aa967ac8139d3f1f1b480a5242466293eb9c32690f8bb7f36985d236ce3",
+    "localModifiedAt": "2026-10-30T23:20:51.182Z"
+  },
+  {
+    "file": "wikidata-men-FR.json",
+    "bytes": 228894,
+    "sha256": "306f4e1876302ab34d74655fb1c07044e2ad2d19dc25547833ad990d14a1765b",
+    "localModifiedAt": "2026-10-30T23:21:19.518Z"
+  },
+  {
+    "file": "wikidata-men-GB.json",
+    "bytes": 304812,
+    "sha256": "e97437ee478e9edceeb05ce6ff2fb791643778ce4237e88e67f9c4732d40daf3",
+    "localModifiedAt": "2026-10-30T23:20:44.958Z"
+  },
+  {
+    "file": "wikidata-men-IT.json",
+    "bytes": 319130,
+    "sha256": "9a68ceb92a0385d54d2ff049692f48a1a6ba345d3a0411e20be82a1251c31c94",
+    "localModifiedAt": "2026-10-30T23:21:16.261Z"
+  },
+  {
+    "file": "wikidata-men-PT.json",
+    "bytes": 211091,
+    "sha256": "33c327d5923a2930d2747aebd8fae0cd1e0d56c316565918c40affac5e76b7c2",
+    "localModifiedAt": "2026-10-30T23:21:27.511Z"
+  },
+  {
+    "file": "wikidata-reviewed-men.json",
+    "bytes": 2450331,
+    "sha256": "230b9043b5ef07b6e866053e9af5af23d0bb6251ef80916e6cad0f7e15eb4ad6",
+    "localModifiedAt": "2026-10-30T23:23:16.449Z"
+  },
+  {
+    "file": "wikidata-reviewed-women.json",
+    "bytes": 184367,
+    "sha256": "b6e639b3d005e194dfb70bf9f015064c7904b8495f88667def5d69a3569bc0bb",
+    "localModifiedAt": "2026-10-30T23:19:12.718Z"
+  },
+  {
+    "file": "wikidata-uk-women-discovery.json",
+    "bytes": 39836,
+    "sha256": "5ed99830a68d970f56bbe2956888c648a2e0672738cc714d3b816e354b2776a4",
+    "localModifiedAt": "2026-10-30T23:18:54.376Z"
+  },
+  {
+    "file": "wikidata-women-discovery.json",
+    "bytes": 119334,
+    "sha256": "217e92be3efd5c7bba9cad5463578c5bccae1d9360189d7cbe0b2a6e20a9699f",
+    "localModifiedAt": "2026-10-30T23:18:26.999Z"
+  },
+  {
+    "file": "wikidata-women-expanded.json",
+    "bytes": 447832,
+    "sha256": "64fc443fd2f1c352eb9eb968c1ab8f79d64d0eeda2b7d432e12e9419fd81bc0c",
+    "localModifiedAt": "2026-10-30T23:19:35.508Z"
+  },
+  {
+    "file": "world-LICENSE.txt",
+    "bytes": 6557,
+    "sha256": "bec01b896243651eb767d4fe3955200e066f9dae73b8c42d972c5d69a6b605a5",
+    "localModifiedAt": "2026-10-30T23:17:19.226Z"
+  },
+  {
+    "file": "world-tree.json",
+    "bytes": 63422,
+    "sha256": "a08450062c7d79fe560a3b13406b18765be7bc2d54bc69c740fcdc12ffc310cf",
+    "localModifiedAt": "2026-10-30T23:17:18.884Z"
+  }
+]

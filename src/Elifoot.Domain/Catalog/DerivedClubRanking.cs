@@ -24,4 +24,16 @@ public static class DerivedClubRanking
             clubProvider, gender, season, i + 1, "elifoot-derived-elo", referenceDate, s.Value, "derived-elo-v1", games[s.Key] / (games[s.Key] + 20.0),
             $"derived-elo:{gender}:{season}", CatalogDataOrigin.Estimated)).ToList();
     }
+
+    public static List<CatalogRank> CalculateOpenEvidence(IEnumerable<string> teamIds, IEnumerable<CatalogHistoricalResult> matches,
+        string clubProvider, FootballGender gender, string season, DateTime referenceDate)
+    {
+        var verified = matches.ToList();
+        var active = verified.SelectMany(m => new[] { m.HomeClubId, m.AwayClubId }).ToHashSet();
+        var rankings = Calculate(teamIds, verified, clubProvider, gender, season, referenceDate);
+        return rankings.Where(r => active.Contains(r.ClubExternalId)).Select((r, i) => r with {
+            Rank = i + 1,
+            Source = "openfootball-derived-elo", Method = "derived-elo-open-results-v2-disconnected", Confidence = Math.Min(.35, r.Confidence ?? 0),
+            ComparableGroup = $"open-evidence-provisional:{gender}:{season}" }).ToList();
+    }
 }

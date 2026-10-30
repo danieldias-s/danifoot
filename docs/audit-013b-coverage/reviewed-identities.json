@@ -1,0 +1,1504 @@
+[
+  {
+    "country": "DE",
+    "openName": "Bayer 04 Leverkusen",
+    "openCanonical": "Bayer 04 Leverkusen",
+    "wikidata": "Q104761",
+    "wikidataName": "Bayer 04 Leverkusen",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "SC Freiburg",
+    "openCanonical": "SC Freiburg",
+    "wikidata": "Q106394",
+    "wikidataName": "SC Freiburg",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "1. FC Union Berlin",
+    "openCanonical": "1. FC Union Berlin",
+    "wikidata": "Q141971",
+    "wikidataName": "1. FC Union Berlin",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "1. FC Heidenheim 1846",
+    "openCanonical": "1. FC Heidenheim",
+    "wikidata": "Q162251",
+    "wikidataName": "1. FC Heidenheim 1846",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "VfL Wolfsburg",
+    "openCanonical": "VfL Wolfsburg",
+    "wikidata": "Q101859",
+    "wikidataName": "VfL Wolfsburg",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "1. FSV Mainz 05",
+    "openCanonical": "1. FSV Mainz 05",
+    "wikidata": "Q105254",
+    "wikidataName": "1. FSV Mainz 05",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "1. FC Köln",
+    "openCanonical": "1. FC Köln",
+    "wikidata": "Q104770",
+    "wikidataName": "1. FC Köln",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Borussia Mönchengladbach",
+    "openCanonical": "Bor. Mönchengladbach",
+    "wikidata": "Q101959",
+    "wikidataName": "Borussia Mönchengladbach",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Hertha BSC",
+    "openCanonical": "Hertha BSC",
+    "wikidata": "Q102720",
+    "wikidataName": "Hertha BSC",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "SC Paderborn 07",
+    "openCanonical": "SC Paderborn 07",
+    "wikidata": "Q160532",
+    "wikidataName": "SC Paderborn 07",
+    "leagues": [
+      {
+        "id": "Q82595",
+        "name": "Campeonato Alemão de Futebol"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Holstein Kiel",
+    "openCanonical": "Holstein Kiel",
+    "wikidata": "Q157828",
+    "wikidataName": "Holstein Kiel",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Karlsruher SC",
+    "openCanonical": "Karlsruher SC",
+    "wikidata": "Q105853",
+    "wikidataName": "Karlsruher SC",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      },
+      {
+        "id": "Q154069",
+        "name": "3. Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "VfL Bochum",
+    "openCanonical": "VfL Bochum",
+    "wikidata": "Q105861",
+    "wikidataName": "VfL Bochum",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Arminia Bielefeld",
+    "openCanonical": "Arminia Bielefeld",
+    "wikidata": "Q105844",
+    "wikidataName": "Arminia Bielefeld",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Fortuna Düsseldorf",
+    "openCanonical": "Fortuna Düsseldorf",
+    "wikidata": "Q151747",
+    "wikidataName": "Fortuna Düsseldorf",
+    "leagues": [
+      {
+        "id": "Q154069",
+        "name": "3. Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "1. FC Magdeburg",
+    "openCanonical": "1. FC Magdeburg",
+    "wikidata": "Q155730",
+    "wikidataName": "1. FC Magdeburg",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Eintracht Braunschweig",
+    "openCanonical": "Eintracht Braunschweig",
+    "wikidata": "Q154053",
+    "wikidataName": "Eintracht Braunschweig",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      },
+      {
+        "id": "Q154069",
+        "name": "3. Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "SpVgg Greuther Fürth",
+    "openCanonical": "SpVgg Greuther Fürth",
+    "wikidata": "Q153539",
+    "wikidataName": "SpVgg Greuther Fürth",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "DE",
+    "openName": "Dynamo Dresden",
+    "openCanonical": "Dynamo Dresden",
+    "wikidata": "Q141931",
+    "wikidataName": "Dynamo Dresden",
+    "leagues": [
+      {
+        "id": "Q152665",
+        "name": "2. Bundesliga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "GB",
+    "openName": "Liverpool FC",
+    "openCanonical": "Liverpool FC",
+    "wikidata": "Q1130849",
+    "wikidataName": "Liverpool F.C.",
+    "leagues": [
+      {
+        "id": "Q9448",
+        "name": "Premier League"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "GB",
+    "openName": "Leeds United FC",
+    "openCanonical": "Leeds United FC",
+    "wikidata": "Q1128631",
+    "wikidataName": "Leeds United F.C.",
+    "leagues": [
+      {
+        "id": "Q9448",
+        "name": "Premier League"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "GB",
+    "openName": "Bromley FC",
+    "openCanonical": "Bromley FC",
+    "wikidata": "Q1584552",
+    "wikidataName": "Bromley F.C.",
+    "leagues": [
+      {
+        "id": "Q19565",
+        "name": "EFL League One"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "ES",
+    "openName": "Real Oviedo",
+    "openCanonical": "Real Oviedo",
+    "wikidata": "Q271574",
+    "wikidataName": "Real Oviedo",
+    "leagues": [
+      {
+        "id": "Q35615",
+        "name": "LaLiga 2"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "ES",
+    "openName": "Deportivo Alavés",
+    "openCanonical": "Deportivo Alavés",
+    "wikidata": "Q223620",
+    "wikidataName": "Deportivo Alavés",
+    "leagues": [
+      {
+        "id": "Q324867",
+        "name": "La Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "ES",
+    "openName": "Real Sociedad B",
+    "openCanonical": "Real Sociedad B",
+    "wikidata": "Q1067750",
+    "wikidataName": "Real Sociedad B",
+    "leagues": [
+      {
+        "id": "Q35615",
+        "name": "LaLiga 2"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "FR",
+    "openName": "Paris FC",
+    "openCanonical": "Paris FC",
+    "wikidata": "Q1051013",
+    "wikidataName": "Paris FC",
+    "leagues": [
+      {
+        "id": "Q13394",
+        "name": "Ligue 1"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "FR",
+    "openName": "FC Annecy",
+    "openCanonical": "FC Annecy",
+    "wikidata": "Q1140695",
+    "wikidataName": "F.C. Annecy",
+    "leagues": [
+      {
+        "id": "Q217374",
+        "name": "Ligue 2"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "Como 1907",
+    "openCanonical": "Como 1907",
+    "wikidata": "Q1120838",
+    "wikidataName": "Como 1907",
+    "leagues": [
+      {
+        "id": "Q15804",
+        "name": "Campeonato Italiano de Futebol - Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "AC Pisa 1909",
+    "openCanonical": "AC Pisa",
+    "wikidata": "Q289613",
+    "wikidataName": "Pisa SC",
+    "leagues": [
+      {
+        "id": "Q194052",
+        "name": "Serie B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "Cesena FC",
+    "openCanonical": "AC Cesena (1940-2018)",
+    "wikidata": "Q16848949",
+    "wikidataName": "Cesena FC",
+    "leagues": [
+      {
+        "id": "Q194052",
+        "name": "Serie B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "Virtus Entella",
+    "openCanonical": "Virtus Entella",
+    "wikidata": "Q2276413",
+    "wikidataName": "Virtus Entella",
+    "leagues": [
+      {
+        "id": "Q194052",
+        "name": "Serie B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "AC Monza",
+    "openCanonical": "AC Monza",
+    "wikidata": "Q289482",
+    "wikidataName": "AC Monza",
+    "leagues": [
+      {
+        "id": "Q15804",
+        "name": "Campeonato Italiano de Futebol - Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "AC Reggiana 1919",
+    "openCanonical": "AC Reggiana",
+    "wikidata": "Q289707",
+    "wikidataName": "A.C. Reggiana 1919",
+    "leagues": [
+      {
+        "id": "Q607965",
+        "name": "Serie C"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "FC Südtirol",
+    "openCanonical": "FC Südtirol",
+    "wikidata": "Q1387710",
+    "wikidataName": "F.C. Südtirol",
+    "leagues": [
+      {
+        "id": "Q194052",
+        "name": "Serie B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "IT",
+    "openName": "US Avellino",
+    "openCanonical": "Avellino",
+    "wikidata": "Q298217",
+    "wikidataName": "U.S. Avellino 1912",
+    "leagues": [
+      {
+        "id": "Q194052",
+        "name": "Serie B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Casa Pia AC",
+    "openCanonical": "Casa Pia",
+    "wikidata": "Q1046440",
+    "wikidataName": "Casa Pia A.C.",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Sporting Clube de Portugal",
+    "openCanonical": "Sporting CP",
+    "wikidata": "Q75729",
+    "wikidataName": "Sporting CP",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "CD Nacional",
+    "openCanonical": "CD Nacional Madeira",
+    "wikidata": "Q216459",
+    "wikidataName": "C.D. Nacional",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Gil Vicente FC",
+    "openCanonical": "Gil Vicente FC",
+    "wikidata": "Q926438",
+    "wikidataName": "Gil Vicente F.C.",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "FC Arouca",
+    "openCanonical": "FC Arouca",
+    "wikidata": "Q1386869",
+    "wikidataName": "F.C. Arouca",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "AVS",
+    "openCanonical": "AVS Futebol",
+    "wikidata": "Q120775987",
+    "wikidataName": "AVS Futebol SAD",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      },
+      {
+        "id": "Q754488",
+        "name": "Liga Portugal 2"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "FC Famalicão",
+    "openCanonical": "FC Famalicão",
+    "wikidata": "Q1387105",
+    "wikidataName": "FC Famalicão",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "CD Santa Clara",
+    "openCanonical": "CD Santa Clara",
+    "wikidata": "Q740637",
+    "wikidataName": "C.D. Santa Clara",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Sporting Clube de Braga",
+    "openCanonical": "SC Braga",
+    "wikidata": "Q75684",
+    "wikidataName": "S.C. Braga",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "CD Tondela",
+    "openCanonical": "CD Tondela",
+    "wikidata": "Q1023227",
+    "wikidataName": "CD Tondela",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Moreirense FC",
+    "openCanonical": "Moreirense FC",
+    "wikidata": "Q1346314",
+    "wikidataName": "Moreirense F.C.",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "FC Alverca",
+    "openCanonical": "FC Alverca",
+    "wikidata": "Q1386850",
+    "wikidataName": "F.C. Alverca",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "GD Estoril Praia",
+    "openCanonical": "Estoril Praia",
+    "wikidata": "Q634829",
+    "wikidataName": "G.D. Estoril Praia",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "CF Estrela da Amadora",
+    "openCanonical": "CF Estrela da Amadora",
+    "wikidata": "Q838134",
+    "wikidataName": "C.F. Estrela da Amadora",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "FC Porto",
+    "openCanonical": "FC Porto",
+    "wikidata": "Q128446",
+    "wikidataName": "FC Porto",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Vitória Guimarães",
+    "openCanonical": "Vitória de Guimarães",
+    "wikidata": "Q223450",
+    "wikidataName": "Vitória S.C.",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Sport Lisboa e Benfica",
+    "openCanonical": "SL Benfica",
+    "wikidata": "Q131499",
+    "wikidataName": "S.L. Benfica",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Tigre",
+    "openCanonical": "CA Tigre",
+    "wikidata": "Q80886",
+    "wikidataName": "Club Atlético Tigre",
+    "leagues": [
+      {
+        "id": "Q934724",
+        "name": "Primera Nacional"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Vélez Sarsfield",
+    "openCanonical": "Vélez Sarsfield",
+    "wikidata": "Q215163",
+    "wikidataName": "Club Atlético Vélez Sarsfield",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Godoy Cruz",
+    "openCanonical": "Godoy Cruz",
+    "wikidata": "Q80882",
+    "wikidataName": "Godoy Cruz Antonio Tomba",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Rosario Central",
+    "openCanonical": "Rosario Central",
+    "wikidata": "Q318307",
+    "wikidataName": "Club Atlético Rosario Central",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Newell's Old Boys",
+    "openCanonical": "Newell's Old Boys",
+    "wikidata": "Q221882",
+    "wikidataName": "Newell's Old Boys",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Independiente Rivadavia",
+    "openCanonical": "Independiente Rivadavia",
+    "wikidata": "Q2454482",
+    "wikidataName": "Independiente Rivadavia",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Defensa y Justicia",
+    "openCanonical": "Defensa y Justicia",
+    "wikidata": "Q1024338",
+    "wikidataName": "Defensa y Justicia",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Banfield",
+    "openCanonical": "Club Atlético Banfield",
+    "wikidata": "Q692646",
+    "wikidataName": "Club Atlético Banfield",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Lanús",
+    "openCanonical": "CA Lanús",
+    "wikidata": "Q324589",
+    "wikidataName": "Club Atlético Lanús",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Deportivo Riestra",
+    "openCanonical": "Deportivo Riestra",
+    "wikidata": "Q4382304",
+    "wikidataName": "Deportivo Riestra",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Racing Club",
+    "openCanonical": "Racing Club",
+    "wikidata": "Q276533",
+    "wikidataName": "Racing Club",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Independiente",
+    "openCanonical": "CA Independiente de Avellaneda",
+    "wikidata": "Q214978",
+    "wikidataName": "Club Atlético Independiente",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Sarmiento de Junín",
+    "openCanonical": "Sarmiento Junín",
+    "wikidata": "Q1074980",
+    "wikidataName": "Sarmiento",
+    "leagues": [
+      {
+        "id": "Q17446411",
+        "name": "Torneo Federal A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Huracán",
+    "openCanonical": "Huracán",
+    "wikidata": "Q327172",
+    "wikidataName": "Club Atlético Huracán",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "San Martín de San Juan",
+    "openCanonical": "San Martín de San Juan",
+    "wikidata": "Q80921",
+    "wikidataName": "San Martín de San Juan",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Atlético Tucumán",
+    "openCanonical": "Atlético Tucumán",
+    "wikidata": "Q757470",
+    "wikidataName": "Atlético Tucumán",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Talleres de Córdoba",
+    "openCanonical": "Talleres de Córdoba",
+    "wikidata": "Q1022939",
+    "wikidataName": "Talleres de Córdoba",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Estudiantes",
+    "openCanonical": "Estudiantes LP",
+    "wikidata": "Q214940",
+    "wikidataName": "Estudiantes de La Plata",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Unión de Santa Fe",
+    "openCanonical": "Unión Santa Fe",
+    "wikidata": "Q80899",
+    "wikidataName": "Unión de Santa Fe",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Instituto de Córdoba",
+    "openCanonical": "Instituto",
+    "wikidata": "Q1421829",
+    "wikidataName": "Instituto Atlético Central Córdoba",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "River Plate",
+    "openCanonical": "River Plate",
+    "wikidata": "Q15799",
+    "wikidataName": "Club Atlético River Plate",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      },
+      {
+        "id": "Q2458887",
+        "name": "Liga de Voleibol Argentina – Serie A1"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Argentinos Juniors",
+    "openCanonical": "Argentinos Juniors",
+    "wikidata": "Q220621",
+    "wikidataName": "Argentinos Juniors",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "AR",
+    "openName": "Aldosivi",
+    "openCanonical": "Club Atlético Aldosivi",
+    "wikidata": "Q971490",
+    "wikidataName": "Club Atlético Aldosivi",
+    "leagues": [
+      {
+        "id": "Q223170",
+        "name": "Argentine Primera División"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "SC Recife",
+    "openCanonical": "Sport Recife",
+    "wikidata": "Q219098",
+    "wikidataName": "Sport Club do Recife",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Grêmio FBPA",
+    "openCanonical": "Grêmio RS",
+    "wikidata": "Q221695",
+    "wikidataName": "Grêmio FBPA",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Fortaleza EC",
+    "openCanonical": "Fortaleza EC",
+    "wikidata": "Q188841",
+    "wikidataName": "Fortaleza E.C.",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "EC Vitória",
+    "openCanonical": "EC Vitória",
+    "wikidata": "Q274465",
+    "wikidataName": "E.C. Vitória",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Ceará SC",
+    "openCanonical": "Ceára SC",
+    "wikidata": "Q1052219",
+    "wikidataName": "Ceará Sporting Club",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "CR Brasil AL",
+    "openCanonical": "CRB AL",
+    "wikidata": "Q1024264",
+    "wikidataName": "Clube de Regatas Brasil",
+    "leagues": [
+      {
+        "id": "Q610175",
+        "name": "Campeonato Brasileiro Série B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Chapecoense",
+    "openCanonical": "Chapecoense",
+    "wikidata": "Q2536715",
+    "wikidataName": "Associação Chapecoense de Futebol",
+    "leagues": [
+      {
+        "id": "Q610175",
+        "name": "Campeonato Brasileiro Série B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Cuiabá MT",
+    "openCanonical": "Cuiabá",
+    "wikidata": "Q2945011",
+    "wikidataName": "Cuiabá Esporte Clube",
+    "leagues": [
+      {
+        "id": "Q610175",
+        "name": "Campeonato Brasileiro Série B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Atlético Goianiense",
+    "openCanonical": "Atlético GO",
+    "wikidata": "Q198034",
+    "wikidataName": "Atlético Clube Goianiense",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "CS Marítimo",
+    "openCanonical": "CS Marítimo",
+    "wikidata": "Q216503",
+    "wikidataName": "C.S. Marítimo",
+    "leagues": [
+      {
+        "id": "Q182994",
+        "name": "Primeira Liga"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "PT",
+    "openName": "Académico de Viseu FC",
+    "openCanonical": "Académico Viseu",
+    "wikidata": "Q2410944",
+    "wikidataName": "Académico de Viseu FC",
+    "leagues": [
+      {
+        "id": "Q754488",
+        "name": "Liga Portugal 2"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Clube do Remo",
+    "openCanonical": "Clube do Remo",
+    "wikidata": "Q2552872",
+    "wikidataName": "Clube do Remo",
+    "leagues": [
+      {
+        "id": "Q206813",
+        "name": "Campeonato Brasileiro Série A"
+      },
+      {
+        "id": "Q610175",
+        "name": "Campeonato Brasileiro Série B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "BR",
+    "openName": "Chapecoense AF",
+    "openCanonical": "Chapecoense",
+    "wikidata": "Q2536715",
+    "wikidataName": "Associação Chapecoense de Futebol",
+    "leagues": [
+      {
+        "id": "Q610175",
+        "name": "Campeonato Brasileiro Série B"
+      }
+    ],
+    "status": "Reviewed",
+    "evidence": "Reviewed: country and masculine type from Wikidata; identity matches canonical/alternate spelling in openfootball clubs; documented domestic competition context. No inference of current transfer/roster."
+  },
+  {
+    "country": "GB",
+    "openName": "Manchester City FC",
+    "openCanonical": "Manchester City FC",
+    "wikidata": "Q50602",
+    "wikidataName": "Manchester City F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "GB",
+    "openName": "Manchester United FC",
+    "openCanonical": "Manchester United FC",
+    "wikidata": "Q18656",
+    "wikidataName": "Manchester United F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "GB",
+    "openName": "Arsenal FC",
+    "openCanonical": "Arsenal FC",
+    "wikidata": "Q9617",
+    "wikidataName": "Arsenal F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "GB",
+    "openName": "Chelsea FC",
+    "openCanonical": "Chelsea FC",
+    "wikidata": "Q9616",
+    "wikidataName": "Chelsea F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "ES",
+    "openName": "FC Barcelona",
+    "openCanonical": "FC Barcelona",
+    "wikidata": "Q7156",
+    "wikidataName": "FC Barcelona",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "ES",
+    "openName": "Real Madrid",
+    "openCanonical": "Real Madrid",
+    "wikidata": "Q8682",
+    "wikidataName": "Real Madrid Club de Fútbol",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "ES",
+    "openName": "Atlético Madrid",
+    "openCanonical": "Atlético Madrid",
+    "wikidata": "Q8701",
+    "wikidataName": "Atlético Madrid",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "DE",
+    "openName": "Borussia Dortmund",
+    "openCanonical": "Borussia Dortmund",
+    "wikidata": "Q41420",
+    "wikidataName": "Borussia Dortmund",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "IT",
+    "openName": "Juventus",
+    "openCanonical": "Juventus",
+    "wikidata": "Q1422",
+    "wikidataName": "Juventus FC",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "IT",
+    "openName": "AC Milan",
+    "openCanonical": "AC Milan",
+    "wikidata": "Q1543",
+    "wikidataName": "AC Milan",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "IT",
+    "openName": "FC Internazionale Milano",
+    "openCanonical": "FC Internazionale Milano",
+    "wikidata": "Q631",
+    "wikidataName": "Inter Milan",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "FR",
+    "openName": "Paris Saint-Germain",
+    "openCanonical": "Paris Saint-Germain",
+    "wikidata": "Q483020",
+    "wikidataName": "Paris Saint-Germain FC",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "FR",
+    "openName": "Olympique de Marseille",
+    "openCanonical": "Olympique de Marseille",
+    "wikidata": "Q132885",
+    "wikidataName": "Olympique de Marseille",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "BR",
+    "openName": "Flamengo RJ",
+    "openCanonical": "Flamengo RJ",
+    "wikidata": "Q17479",
+    "wikidataName": "Clube de Regatas do Flamengo",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "BR",
+    "openName": "Fluminense RJ",
+    "openCanonical": "Fluminense RJ",
+    "wikidata": "Q80987",
+    "wikidataName": "Fluminense F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "BR",
+    "openName": "Santos SP",
+    "openCanonical": "Santos SP",
+    "wikidata": "Q80955",
+    "wikidataName": "Santos F.C.",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "BR",
+    "openName": "São Paulo FC",
+    "openCanonical": "São Paulo FC",
+    "wikidata": "Q38568",
+    "wikidataName": "São Paulo FC",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  },
+  {
+    "country": "AR",
+    "openName": "Boca Juniors",
+    "openCanonical": "Boca Juniors",
+    "wikidata": "Q170703",
+    "wikidataName": "Boca Juniors",
+    "status": "Reviewed",
+    "evidence": "Reviewed exact canonical/alternate name plus country, team type and original entity league claims in wikidata-reviewed-men.json; openfootball dated domestic season membership."
+  }
+]

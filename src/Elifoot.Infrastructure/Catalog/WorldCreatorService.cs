@@ -19,7 +19,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         var male = await Select(countries.Select(x => x.Code).ToList(), FootballGender.Male, season, true, ct);
         var female = await Select(countries.Select(x => x.Code).ToList(), FootballGender.Female, season, true, ct);
         return countries.OrderBy(c => c.Name).Select(c => new CatalogCountryOption(c.Code, c.Name,
-            male.Clubs.Count(x => x.CountryCode == c.Code), female.Clubs.Count(x => x.CountryCode == c.Code))).ToList();
+            male.Clubs.Count(x => x.CountryCode == c.Code && (x.Verification == null || x.Verification.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED)), female.Clubs.Count(x => x.CountryCode == c.Code && (x.Verification == null || x.Verification.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED)))).ToList();
     }
     public async Task<CatalogSelection> Select(List<string> countries, FootballGender gender, string season, bool saved, CancellationToken ct = default)
     {
@@ -53,8 +53,12 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         var aliases = await db.Set<CatalogClubIdentityAlias>().AsNoTracking().Where(a => countries.Contains(a.CountryCode) && a.Gender == gender).ToListAsync(ct);
         var identities = await db.Set<CatalogClubIdentity>().AsNoTracking().Where(i => countries.Contains(i.CountryCode) && i.Gender == gender).ToListAsync(ct);
         var conflicts = await db.Set<CatalogIdentityConflict>().AsNoTracking().Where(c => c.Status == "Open").ToListAsync(ct);
-        Guid Identity(string country, string provider, string id) => aliases.FirstOrDefault(a => a.CountryCode == country && a.Provider == provider && a.ExternalId == id)?.ClubId
-            ?? CatalogIdentityService.StableId(CatalogIdentityService.AliasKey(country, gender, provider, id));
+        var aliasIndex = aliases.ToDictionary(a => a.Key, a => a.ClubId, StringComparer.Ordinal);
+        Guid Identity(string country, string provider, string id)
+        {
+            string key = CatalogIdentityService.AliasKey(country, gender, provider, id);
+            return aliasIndex.TryGetValue(key, out var identity) ? identity : CatalogIdentityService.StableId(key);
+        }
         var candidates = usablePackages.Where(p => p.Data.Scope.DataType == CatalogDataType.Clubs).SelectMany(p => p.Data.Clubs.Select(c =>
             (Data: p.Data, Ref: p.Ref, Club: c, Identity: Identity(p.Data.Scope.CountryCode, p.Data.Scope.Provider, c.ExternalId))));
         var unique = new List<EligibleCatalogClub>();
@@ -71,16 +75,21 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             var ranking = related.Where(p => p.Data.Scope.DataType == CatalogDataType.Rankings && p.Data.Rankings.Any(r => Matches(r.ClubProvider, r.ClubExternalId)))
                 .OrderByDescending(p => p.Ref.UpdatedAt).ThenBy(p => p.Data.Scope.Provider, StringComparer.Ordinal).FirstOrDefault();
             var asOf = squad.Data?.RosterAsOf ?? DateOnly.FromDateTime(squad.Ref?.UpdatedAt ?? DateTime.UtcNow);
-            var players = squad.Data?.Players.Where(p => Matches(p.ClubProvider, p.ClubExternalId) &&
-                    (p.MembershipStart == null || p.MembershipStart <= asOf) && (p.MembershipEnd == null || p.MembershipEnd >= asOf))
-                .Select(p => squad.Data.AllowPartialSquads || p.IdentityOrigin != null ? p with {
-                    CanonicalPlayerId = p.CanonicalPlayerId ?? $"{p.Source}:{p.Gender}:{p.PlayerExternalId}" } : p).ToList() ?? [];
+            var documented = squad.Data?.Players.Where(p => Matches(p.ClubProvider, p.ClubExternalId)).ToList() ?? [];
+            var players = documented.Where(p => CatalogMembershipPolicy.Usable(p, asOf))
+                .Select(p => squad.Data!.AllowPartialSquads || p.IdentityOrigin != null ? p with {
+                    CanonicalPlayerId = p.CanonicalPlayerId ?? $"{p.Source}:{p.Gender}:{p.PlayerExternalId}" } : p).ToList();
             var rank = ranking.Data?.Rankings.Where(r => Matches(r.ClubProvider, r.ClubExternalId)).OrderBy(r => r.Rank).FirstOrDefault();
             var references = new List<CatalogReference> { chosen.Ref };
             if (squad.Data != null) references.Add(squad.Ref!);
             if (ranking.Data != null) references.Add(ranking.Ref!);
             var rosterReport = squad.Data?.RosterReports?.FirstOrDefault(r => Matches(r.ClubProvider, r.ClubExternalId));
             var issues = rosterReport?.Issues.ToList() ?? [];
+            if (rank?.Method?.Contains("disconnected", StringComparison.Ordinal) == true) issues.Add("Elo estimado de resultados reais; comparação entre ligas desconectadas é provisória e de baixa confiança.");
+            if (documented.Any(p => p.MembershipEvidence?.Status != null && p.MembershipEvidence.Status != CatalogMembershipStatus.DatedActive))
+                issues.Add("Vínculos históricos/abertos não confirmam elenco atual; excluídos dos atletas utilizáveis.");
+            if (chosen.Club.Verification is { } verification && (!verification.CurrentSeasonConfirmed || verification.Status != CatalogClubVerificationStatus.REAL_CLUB_VERIFIED))
+                issues.Add($"{verification.Status}: existência/atividade conforme fonte; participação na temporada atual não presumida.");
             if (ranking.Data != null && ranking.Ref!.UpdatedAt < DateTime.UtcNow.AddDays(-7)) issues.Add("Ranking desatualizado: data de referência preservada; não apresentado como atual.");
             var linkedAliases = aliases.Where(a => a.ClubId == group.Key).Select(a => new CatalogClubAlias(a.Provider, a.ExternalId)).ToList();
             var identityConflicts = conflicts.Where(c => c.LeftClubId == group.Key || c.RightClubId == group.Key).Select(c => c.Id).ToList();
@@ -88,7 +97,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             unique.Add(new(key, chosen.Club.ExternalId, chosen.Data.Scope.Provider, chosen.Club.Name, chosen.Club.ShortName,
                 chosen.Data.Scope.CountryCode, chosen.Data.CountryName, gender, chosen.Club.LeagueName, season,
                 chosen.Club.PrimaryColor, chosen.Club.SecondaryColor, rank?.Rank, players, references, false, group.Key, rank,
-                linkedAliases, issues, squad.Data?.AllowPartialSquads == true ? rosterReport?.ReceivedPlayers ?? players.Count : null, identityConflicts));
+                linkedAliases, issues, squad.Data?.AllowPartialSquads == true ? rosterReport?.ReceivedPlayers ?? players.Count : null, identityConflicts, chosen.Club.Verification,
+                documented.Count, documented.Count(p => p.MembershipEvidence?.Status is CatalogMembershipStatus.OpenEndedUnconfirmed or CatalogMembershipStatus.Unknown)));
         }
         var comparable = unique.Select(c => c.RankingInfo?.ComparableGroup).Where(g => g != null).Distinct().ToList();
         if (comparable.Count > 1)
@@ -99,7 +109,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         }
         unique = unique.OrderBy(c => c.Key, StringComparer.Ordinal).Select((c, index) => c.RankingInfo == null && c.References.Any(r => !r.IsFixture)
             ? c with { RankingInfo = new(c.ExternalId, c.Provider, c.Gender, c.Season, index + 1, "elifoot-provisional013b",
-                c.References.Max(r => r.UpdatedAt), null, "ProvisionalIdentifierOrder-v1", 0, $"provisional:{gender}:{season}", CatalogDataOrigin.Estimated) } : c).ToList();
+                c.References.Max(r => r.UpdatedAt), null, c.Verification == null ? "ProvisionalIdentifierOrder-v1" : "Unranked-v2", 0, $"provisional:{gender}:{season}", CatalogDataOrigin.Estimated) } : c).ToList();
         foreach (var country in countries)
             if (!unique.Any(c => c.CountryCode == country)) warnings.Add($"{country}: sem cobertura válida para {gender}/{season}.");
         if (refs.Any(r => r.IsFixture)) warnings.Add(refs.All(r => r.IsFixture)
@@ -120,7 +130,11 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
                 players.Count(p => p.IdentityOrigin == CatalogDataOrigin.Real), players.Count(p => p.StrengthEstimate?.Origin == CatalogDataOrigin.Estimated),
                 players.Count(p => p.IdentityOrigin == CatalogDataOrigin.Generated), references,
                 references.Select(r => r.Rights?.License ?? (r.IsFixture ? "Fixture" : "Direitos não informados")).Distinct().ToList(),
-                selection.Warnings.Where(w => w.StartsWith(code, StringComparison.Ordinal)).Concat(clubs.SelectMany(c => c.CoverageWarnings ?? [])).Distinct().ToList());
+                selection.Warnings.Where(w => w.StartsWith(code, StringComparison.Ordinal)).Concat(clubs.SelectMany(c => c.CoverageWarnings ?? [])).Distinct().ToList(),
+                clubs.Sum(c => c.DocumentedPlayers ?? c.Players.Count), clubs.Sum(c => c.UncertainPlayers ?? 0),
+                clubs.Count(c => c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED),
+                clubs.Count(c => c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL),
+                clubs.Count(c => c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_UNVERIFIED));
         }).ToList();
     }
     public async Task<WorldCreatorPreview> Preview(Guid owner, WorldCreatorRequest request, CancellationToken ct = default)

@@ -228,8 +228,8 @@ public sealed class RealData013BTests
         await transport.Get("teams", new(10), default); await transport.Get("teams", new(10), default);
         await Assert.ThrowsAsync<HttpRequestException>(() => transport.Get("players", new(10), default)); Assert.Equal(1, calls);
     }
-    [Theory] [InlineData(FootballGender.Male)] [InlineData(FootballGender.Female)]
-    public async Task WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(FootballGender gender)
+    [Theory] [InlineData(FootballGender.Male, true)] [InlineData(FootballGender.Female, true)] [InlineData(FootballGender.Male, false)] [InlineData(FootballGender.Female, false)]
+    public async Task WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(FootballGender gender, bool fixtureData)
     {
         var competition = new ProviderCompetition { CountryCode = "ES", CountryName = "Espanha", Gender = gender, Season = "2026", LeagueId = "Q10",
             LeagueName = "Liga fictícia", AsOf = new(2026, 10, 1), ReviewEvidence = "Synthetic entity mapping", WikidataTeams = [new("Q100", "Equipe fictícia Wikidata", "Q29", "Q20")] };
@@ -239,12 +239,38 @@ public sealed class RealData013BTests
             claims = new Dictionary<string, object> { ["P17"] = new[] { Claim("Q29") }, ["P31"] = new[] { Claim("Q20") }, ["P118"] = new[] { Claim("Q10") } } } } })))) { BaseAddress = new("https://fixture.invalid/") };
         var rows = Enumerable.Range(0, 18).Select(n => new { team = new { value = "http://www.wikidata.org/entity/Q100" },
             player = new { value = "http://www.wikidata.org/entity/Q" + (1000 + n) }, playerLabel = new { value = n == 17 ? "Q1017" : "Atleta fictício " + n },
+            sex = new { value = "http://www.wikidata.org/entity/" + (n == 15 ? "Q0" : (gender == FootballGender.Female) == (n != 16) ? "Q6581072" : "Q6581097") },
             positionLabel = new { value = n < 2 ? "goalkeeper" : n < 8 ? "defender" : n < 14 ? "midfielder" : "forward" }, start = new { value = "2025-01-01T00:00:00Z" } }).ToList();
         using var queryClient = new HttpClient(new Handler((_, _) => Task.FromResult(Json(new { results = new { bindings = rows } })))) { BaseAddress = new("https://fixture.invalid/") };
-        var source = new WikidataCatalogSource(new(entityClient, FootballProviderKind.Wikidata, null, 0), new(queryClient, FootballProviderKind.Wikidata, null, 0), competition, CatalogDataType.Squads, true);
+        var source = new WikidataCatalogSource(new(entityClient, FootballProviderKind.Wikidata, null, 0), new(queryClient, FootballProviderKind.Wikidata, null, 0), competition, CatalogDataType.Squads, fixtureData);
         var result = await source.FetchAsync(default); CatalogSyncService.Validate(result);
-        Assert.Equal(17, result.Players.Count); Assert.True(result.IsFixture); Assert.DoesNotContain(result.Players, p => p.PlayerName == "Q1017");
-        Assert.All(result.Players, p => { Assert.Equal(gender, p.Gender); Assert.Equal(CatalogDataOrigin.Fixture, p.IdentityOrigin); Assert.NotNull(p.MembershipStart); });
+        Assert.Equal(fixtureData ? 17 : 15, result.Players.Count); Assert.Equal(fixtureData, result.IsFixture); Assert.DoesNotContain(result.Players, p => p.PlayerName == "Q1017");
+        Assert.All(result.Players, p => { Assert.Equal(gender, p.Gender); Assert.Equal(fixtureData ? CatalogDataOrigin.Fixture : CatalogDataOrigin.Real, p.IdentityOrigin); Assert.NotNull(p.MembershipStart); Assert.Equal(CatalogMembershipStatus.OpenEndedUnconfirmed, p.MembershipEvidence!.Status); });
         Assert.Contains(result.RosterReports!.Single().Issues, issue => issue.Contains("nome indisponível"));
+    }
+
+    [Theory] [InlineData(FootballGender.Male)] [InlineData(FootballGender.Female)]
+    public async Task CoverageSeparatesDocumentedContractsFromCurrentSquadsAndPreservesMetadataOnFallback(FootballGender gender)
+    {
+        await using var h = new Harness(); await h.Initialize();
+        var data = OneClub(gender: gender) with { ExpectedItems = 3, Clubs = new[] { CatalogClubVerificationStatus.REAL_CLUB_VERIFIED, CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL, CatalogClubVerificationStatus.REAL_CLUB_UNVERIFIED }
+            .Select((status, i) => new CatalogTeam(i.ToString(), "Clube sintético " + i, "FIX", "L", "Liga sintética", Verification: new(status, "Synthetic evidence", DateTime.UnixEpoch))).ToList() };
+        var id = await h.Sync.ImportAsync(data);
+        var source = CatalogFixtureFactory.Packages().First(p => p.Scope.Gender == gender && p.Scope.DataType == CatalogDataType.Squads);
+        var asOf = new DateOnly(2026, 10, 30);
+        var players = source.Players.Take(2).Select((p, i) => p with { ClubProvider = "fixture-a", ClubExternalId = "0", Source = "fixture-coverage", IdentityOrigin = CatalogDataOrigin.Fixture,
+            MembershipStart = asOf.AddDays(-100), MembershipEnd = i == 0 ? asOf.AddDays(100) : null,
+            MembershipEvidence = new(i == 0 ? CatalogMembershipStatus.DatedActive : CatalogMembershipStatus.OpenEndedUnconfirmed, "synthetic-statement", "synthetic test", asOf) }).ToList();
+        await h.Sync.ImportAsync(source with { Scope = source.Scope with { Provider = "fixture-coverage" }, Players = players, ExpectedItems = 2,
+            AllowPartialSquads = true, RosterAsOf = asOf, RosterReports = [new("0", "fixture-a", 2, 2, false, ["partial synthetic evidence"])] });
+        await Assert.ThrowsAsync<ArgumentException>(() => h.Sync.ImportAsync(data with { Version = "failed-incomplete", UpdatedAt = data.UpdatedAt.AddSeconds(1), Complete = false }));
+        var recovered = new WorldCreatorService(h.Services.GetRequiredService<IServiceScopeFactory>(), h.Sync, h.Services.GetRequiredService<IWorldRepository>());
+        var selection = await recovered.Select(["BR"], gender, "2026", true);
+        Assert.Equal(3, selection.Clubs.Count); Assert.All(selection.Clubs, c => Assert.NotNull(c.Verification));
+        Assert.Single(selection.Clubs.SelectMany(c => c.Players)); Assert.Empty(selection.Clubs.Single(c => c.ExternalId == "1").Players);
+        Assert.Contains(selection.References, r => r.SnapshotId == id && r.Status == "Fallback");
+        var coverage = Assert.Single(await recovered.Coverage(["BR"], gender, "2026"));
+        Assert.Equal(2, coverage.DocumentedPlayers); Assert.Equal(1, coverage.UncertainPlayers); Assert.Equal(1, coverage.Players);
+        Assert.Equal(0, coverage.CompleteSquads); Assert.Equal(3, coverage.PartialSquads); Assert.Equal(1, coverage.VerifiedClubs); Assert.Equal(1, coverage.HistoricalClubs); Assert.Equal(1, coverage.UnverifiedClubs);
     }
 }

@@ -5,6 +5,10 @@ using Elifoot.Infrastructure.Catalog.Providers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+if (args.Length >= 2 && args[0] == "coverage-audit") { await Elifoot.RealDataImporter.CoverageAudit.Run(args[1], args.ElementAtOrDefault(2) ?? "ELIFOOT_013B_CATALOG_PG"); return; }
+
+if (args.Length >= 2 && args[0] == "coverage") { await Elifoot.RealDataImporter.CoverageBundleImporter.Run(args[1], args.ElementAtOrDefault(2) ?? "ELIFOOT_013B_CATALOG_PG"); return; }
+
 if (args.Length < 2 || args[0] is not ("inspect" or "sync")) throw new ArgumentException("Uso: inspect|sync manifest.json [connection-env-name] [--force]");
 using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(args[1]));
 var providers = JsonSerializer.Deserialize<List<NativeProviderOptions>>(manifest.RootElement.GetProperty("Catalog013B").GetProperty("Providers").GetRawText(),

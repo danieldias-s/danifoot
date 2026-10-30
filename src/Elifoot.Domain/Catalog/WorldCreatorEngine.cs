@@ -20,7 +20,11 @@ public static class WorldCreatorEngine
         if (request.Countries.Count == 0 || request.Countries.Distinct().Count() != request.Countries.Count)
             errors.Add("Selecione países sem repetição.");
         if (request.MaxHumans is < 1 or > 8) errors.Add("Selecione de 1 a 8 treinadores.");
-        var calibrated = InitialPlayerStrength.Apply(selection.Clubs, request.Seed);
+        var allowed = selection.Clubs.Where(c => c.Verification == null ||
+            (c.Verification.Status != CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL || request.IncludeHistoricalClubs) &&
+            (c.Verification.Status != CatalogClubVerificationStatus.REAL_CLUB_UNVERIFIED || request.IncludeUnverifiedClubs)).ToList();
+        if (allowed.Count < selection.Clubs.Count) warnings.Add("Clubes históricos ou sem verificação foram excluídos; a inclusão exige escolha explícita.");
+        var calibrated = InitialPlayerStrength.Apply(allowed, request.Seed);
         var prepared = calibrated.Select(c => InitialRosterPolicy.IsRealImport(c)
             ? c with { Players = InitialRosterPolicy.Prepare(c, request.Seed, request.AllowFictionalPlayers).Players } : c).ToList();
         var eligible = prepared.Where(c => c.Gender == request.Gender && c.Season == request.Season &&
@@ -54,7 +58,7 @@ public static class WorldCreatorEngine
                 "Fictício autorizado", DateTime.UnixEpoch)).ToList();
             return new(ClubKey(country, request.Gender, "fictional", id), id, "fictional", $"Equipe fictícia {fictionalIndex:000}",
                 $"F{fictionalIndex:000}", country, country, request.Gender, "Fictícia", request.Season,
-                "#006400", "#FFFFFF", null, players, [], true);
+                "#006400", "#FFFFFF", null, players, [], true, Verification: new(CatalogClubVerificationStatus.FICTIONAL_CLUB, "Complemento fictício autorizado", DateTime.UnixEpoch));
         }
         void Fill(int division, IEnumerable<EligibleCatalogClub> candidates)
         {

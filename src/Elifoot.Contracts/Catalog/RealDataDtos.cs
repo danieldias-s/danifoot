@@ -20,4 +20,13 @@ public record CatalogIdentityMappingRequest(string CountryCode, FootballGender G
 public record CatalogCoverageReport(string CountryCode, string CountryName, FootballGender Gender,
     string Season, List<string> Leagues, int Clubs, int Players, int CompleteSquads, int PartialSquads,
     int RealPlayers, int EstimatedStrengths, int GeneratedPlayers, List<CatalogReference> References,
-    List<string> Restrictions, List<string> Warnings);
+    List<string> Restrictions, List<string> Warnings, int DocumentedPlayers = 0, int UncertainPlayers = 0, int VerifiedClubs = 0, int HistoricalClubs = 0, int UnverifiedClubs = 0);
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum CatalogClubVerificationStatus { REAL_CLUB_VERIFIED, REAL_CLUB_HISTORICAL, REAL_CLUB_UNVERIFIED, FICTIONAL_CLUB }
+public record CatalogClubVerification(CatalogClubVerificationStatus Status, string Evidence, DateTime ObservedAt,
+    string? SourceSeason = null, bool CurrentSeasonConfirmed = false, DateOnly? DissolvedAt = null, string? WikidataId = null);
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum CatalogMembershipStatus { DatedActive, OpenEndedUnconfirmed, Historical, Unknown }
+public record CatalogMembershipEvidence(CatalogMembershipStatus Status, string StatementId, string Evidence,
+    DateOnly AsOf, string? Note = null);
