@@ -33,6 +33,26 @@
     "docs/KNOWN_ISSUES_012D.md",
     "docs/MARKET_INFLATION_012D.md",
     "docs/SALARY_RENEWAL_RULES_012D.md",
+    "docs/audit-012d/RESEARCH_ONLY_REPORT.md",
+    "docs/audit-012d/baseline/manifest.json",
+    "docs/audit-012d/build-release-final.log",
+    "docs/audit-012d/economy-checkpoints.csv",
+    "docs/audit-012d/final-code-manifest.json",
+    "docs/audit-012d/flutter-analyze-final.log",
+    "docs/audit-012d/flutter-tests-final.log",
+    "docs/audit-012d/historical-artifacts-restored.json",
+    "docs/audit-012d/independent-reconciliation.json",
+    "docs/audit-012d/report-generation.log",
+    "docs/audit-012d/solution-final/economy-012d/100-seasons.json",
+    "docs/audit-012d/solution-release-final.log",
+    "docs/audit-012d/tests/application-review-final.trx",
+    "docs/audit-012d/tests/domain-review-final.trx",
+    "docs/audit-012d/tests/integration-review-final.trx",
+    "docs/audit-012d/tests/solution-release_net10.0_20261030183248.trx",
+    "docs/audit-012d/tests/solution-release_net10.0_20261030183301.trx",
+    "docs/audit-012d/tests/solution-release_net10.0_20261030183446.trx",
+    "docs/audit-012d/tests/solution-release_net10.0_20261030184852.trx",
+    "docs/audit-012d/verification.json",
     "scripts/report_economy_012d.py",
     "src/Elifoot.Application/FinancialCommandsApplicationService.cs",
     "src/Elifoot.Contracts/EconomyDtos.cs",
@@ -76,7 +96,7 @@
     },
     {
       "Path": "src/Elifoot.Application/FinancialCommandsApplicationService.cs",
-      "Sha256": "fae378a8f0abca0b72ad3b7d37e579caafac9b1cd778720aa6ecdf20b84e25fe"
+      "Sha256": "11e4f28dc4633a7060d68a7f73370c719100d39af5bd4c89f2bac94fbfa9cab6"
     },
     {
       "Path": "src/Elifoot.Application/Interfaces.cs",
@@ -508,7 +528,7 @@
     },
     {
       "Path": "scripts/report_economy_012d.py",
-      "Sha256": "285a5c5055b816c9b57e0b2550e66c3a00668df2553f98768e420f486d9999e5"
+      "Sha256": "3dc425ef5d0ceb77e8eba46a3a5d043978913bd9bc73ed76895aabacdd44d3b4"
     },
     {
       "Path": "scripts/research-player-force-012b.mjs",

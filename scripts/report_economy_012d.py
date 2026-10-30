@@ -124,6 +124,13 @@ save(AUDIT/'final-code-manifest.json',{'BaselineCommit':'50e9c12','Changed':chan
 with (AUDIT/'economy-checkpoints.csv').open('w',encoding='utf-8',newline='') as stream:
     out=csv.writer(stream);out.writerow(['Season','Cash','Debt','Loans','InterestCharged','InterestPaid','Requests','Accepted','Refused','Auctions','Unsold','Insolvent','Recovered'])
     for s in d['Checkpoints']:out.writerow([s[k] for k in ['Season','TotalCash','TotalDebt','Loans','InterestCharged','InterestPaid','Requests','Accepted','Refused','Auctions','Unsold','Insolvent','Recovered']])
+flows=['Loans','InterestCharged','InterestPaid','PrincipalPaid','Requests','Accepted','Refused','Auctions','Unsold','Recovered']
+with (AUDIT/'economy-annual-flows.csv').open('w',encoding='utf-8',newline='') as stream:
+    out=csv.writer(stream);out.writerow(['Season']+['New'+k for k in flows]+['ClosingCash','ClosingDebt','InsolventClubs','NegativeCashClubs','MinimumSquadClubs'])
+    previous={k:0 for k in flows}
+    for season in d['Seasons']:
+        out.writerow([season['Season']]+[season[k]-previous[k] for k in flows]+[season[k] for k in ['TotalCash','TotalDebt','Insolvent','NegativeCash','MinimumSquadClubs']])
+        previous={k:season[k] for k in flows}
 
 checkpoint_table='\n'.join(f"| {s['Season']} | {money(s['TotalCash'])} | {money(s['TotalDebt'])} | {s['Loans']} | {s['Requests']} | {s['Insolvent']} |" for s in d['Checkpoints'])
 division_table='\n'.join(f"| {s['Division']} | {money(s['Cash'])} | {money(s['Debt'])} | {money(s['MeanSalary'])} | {s['MinimumSquadClubs']} | {s['CreditLimits']} |" for s in last['ByDivision'])
@@ -177,7 +184,7 @@ A curva de valor justo da 005 permanece. A 012/012B/012C mudou a população de 
 
 ## Evidência
 
-Dataset: `{data_dir.relative_to(ROOT)}`. Arquivos: `100-seasons.json`, `ledger.jsonl.gz`, `bank.jsonl.gz`, `contracts-and-crises.jsonl.gz`, `salary-requests-final.json`; reconciliação independente em `docs/audit-012d/independent-reconciliation.json`; marcos CSV em `docs/audit-012d/economy-checkpoints.csv`. O JSON `Status=PASS` refere-se às invariantes verificadas, não à validação do equilíbrio estratégico global.
+Dataset: `{data_dir.relative_to(ROOT)}`. Arquivos: `100-seasons.json`, `ledger.jsonl.gz`, `bank.jsonl.gz`, `contracts-and-crises.jsonl.gz`, `salary-requests-final.json`; reconciliação independente em `docs/audit-012d/independent-reconciliation.json`; marcos CSV em `docs/audit-012d/economy-checkpoints.csv`. O arquivo `economy-annual-flows.csv` separa novas operações e fluxos de cada uma das 100 temporadas dos contadores acumulados, mantendo caixa, dívida e crises como estoques de fechamento. O JSON `Status=PASS` refere-se às invariantes verificadas, não à validação do equilíbrio estratégico global.
 '''
 (ROOT/'docs/ECONOMY_100_SEASONS_012D.md').write_text(report,encoding='utf-8')
 

@@ -72,4 +72,3 @@ public sealed partial class ClubAndMarketApplicationService
             if(ClassicEconomyEngine.AvailableCash(w,c)<cost)return(false,"Saldo disponível insuficiente.");
             return expand?MarketAndEconomyEngine.StartStadiumExpansion(w,c,seats):MarketAndEconomyEngine.StartStadiumRenovation(w,c);},ct,clubId);
 }
-

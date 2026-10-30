@@ -62,4 +62,4 @@ A curva de valor justo da 005 permanece. A 012/012B/012C mudou a população de 
 
 ## Evidência
 
-Dataset: `docs\audit-012d\solution-final\economy-012d`. Arquivos: `100-seasons.json`, `ledger.jsonl.gz`, `bank.jsonl.gz`, `contracts-and-crises.jsonl.gz`, `salary-requests-final.json`; reconciliação independente em `docs/audit-012d/independent-reconciliation.json`; marcos CSV em `docs/audit-012d/economy-checkpoints.csv`. O JSON `Status=PASS` refere-se às invariantes verificadas, não à validação do equilíbrio estratégico global.
+Dataset: `docs\audit-012d\solution-final\economy-012d`. Arquivos: `100-seasons.json`, `ledger.jsonl.gz`, `bank.jsonl.gz`, `contracts-and-crises.jsonl.gz`, `salary-requests-final.json`; reconciliação independente em `docs/audit-012d/independent-reconciliation.json`; marcos CSV em `docs/audit-012d/economy-checkpoints.csv`. O arquivo `economy-annual-flows.csv` separa novas operações e fluxos de cada uma das 100 temporadas dos contadores acumulados, mantendo caixa, dívida e crises como estoques de fechamento. O JSON `Status=PASS` refere-se às invariantes verificadas, não à validação do equilíbrio estratégico global.
