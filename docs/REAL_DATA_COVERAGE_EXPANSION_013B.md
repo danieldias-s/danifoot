@@ -75,6 +75,6 @@ DOTNET_TESTS: 441 PASS, incluindo a baseline 420 e 21 casos novos; build Release
 
 O runner mantém a exclusão herdada de MultiSeasonAndBenchmarkTests (100 temporadas e benchmarks extensos). Não se declara execução integral desses ensaios; a regressão curta e os testes específicos foram executados com PostgreSQL real isolado.
 
-CHECKPOINT_COMMIT: consultar o commit desta entrega na branch feature/real-football-data-013b (git log -1 --format=%H). A entrega do chat informa o hash efetivo; base preservada d00fc26.
+CHECKPOINT_COMMIT (implementação, carga e testes): 826cbb925050199b2fa59ab29e74b3e3d454df93. A revisão de documentação que contém este registro é identificada por git log -1 --format=%H; base preservada d00fc26.
 
 KNOWN_ISSUES: nenhum elenco atual completo; atividade atual feminina não certificada; diretórios e vínculos comunitários incompletos; descoberta masculina por país limitada a 900 linhas, com saturação registrada; identidade por região e clubes poliesportivos ainda exige revisão; nenhum ranking oficial ou calibração mundial. Cobertura continua PARTIAL independentemente dos testes aprovados.

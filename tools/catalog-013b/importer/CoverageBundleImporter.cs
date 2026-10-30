@@ -81,4 +81,3 @@ public static class CoverageBundleImporter
         await File.WriteAllTextAsync(Path.Combine(Path.GetDirectoryName(file)!, "database-coverage.json"), JsonSerializer.Serialize(new { male, female }, CatalogImportCodec.Json), ct);
     }
 }
-
