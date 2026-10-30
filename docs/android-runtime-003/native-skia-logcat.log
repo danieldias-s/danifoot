@@ -1,0 +1,71 @@
+--------- beginning of main
+10-29 21:34:32.152  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:32.204  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:32.216  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:32.398  3430  3445 D FlutterJNI: Beginning load of flutter...
+10-29 21:34:32.872  3430  3445 D FlutterJNI: flutter (null) was loaded normally!
+--------- beginning of system
+10-29 21:34:33.952  1636  1756 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-29 21:34:34.343  3430  3446 I ResourceExtractor: Found extracted resources res_timestamp-1-1793309416805
+10-29 21:34:34.733  3430  3430 W System  : ClassLoader referenced unknown path: 
+10-29 21:34:34.752  3430  3430 D ApplicationLoaders: ignored Vulkan layer search path /data/app/com.example.elifoot_flutter-2/lib/x86_64:/data/app/com.example.elifoot_flutter-2/base.apk!/lib/x86_64 for namespace 0x7cc8541510f0
+10-29 21:34:35.278  3430  3430 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(527)] [Action Required]: Impeller opt-out deprecated.
+10-29 21:34:35.278  3430  3430 I flutter :     The application opted out of Impeller by either using the
+10-29 21:34:35.278  3430  3430 I flutter :     `--no-enable-impeller` flag or the
+10-29 21:34:35.278  3430  3430 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+10-29 21:34:35.278  3430  3430 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+10-29 21:34:35.278  3430  3430 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+10-29 21:34:35.278  3430  3430 I flutter :     the issue.
+10-29 21:34:35.278  3430  3430 I flutter : 
+10-29 21:34:35.278  3430  3430 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+10-29 21:34:35.278  3430  3430 I flutter : 
+10-29 21:34:35.489  1636  1651 W ActivityManager: Launch timeout has expired, giving up wake lock!
+10-29 21:34:40.469  3420  3420 D AndroidRuntime: Shutting down VM
+10-29 21:34:47.308  3430  3457 I flutter : The Dart VM service is listening on http://127.0.0.1:46884/Nv-e1ZhhwEU=/
+10-29 21:34:49.074  1285  1665 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 21:34:49.140  3430  3430 D         : HostConnection::get() New Host Connection established 0x7cc834265180, tid 3430
+10-29 21:34:55.550  3430  3430 I Choreographer: Skipped 1476 frames!  The application may be doing too much work on its main thread.
+10-29 21:34:55.933  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.031  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.054  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.083  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.155  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.170  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.234  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.252  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.358  3430  3459 D         : HostConnection::get() New Host Connection established 0x7cc834265420, tid 3459
+10-29 21:34:56.382  3430  3459 I OpenGLRenderer: Initialized EGL, version 1.4
+10-29 21:34:56.384  3430  3459 D OpenGLRenderer: Swap behavior 1
+10-29 21:34:56.392  3430  3459 D EGL_emulation: eglCreateContext: 0x7cc84fb36540: maj 2 min 0 rcv 2
+10-29 21:34:56.406  3430  3459 D EGL_emulation: eglMakeCurrent: 0x7cc84fb36540: ver 2 0 (tinfo 0x7cc82ffca960)
+10-29 21:34:56.467  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.515  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.733  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.746  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.768  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.783  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.821  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.836  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.885  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.899  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.970  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:56.987  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.101  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.116  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.684  3430  3430 I Choreographer: Skipped 93 frames!  The application may be doing too much work on its main thread.
+10-29 21:34:57.717  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.731  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.793  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.829  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.842  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.856  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.902  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:34:57.917  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.518  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.533  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.684  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.703  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.852  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.866  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.969  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:35:01.986  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)

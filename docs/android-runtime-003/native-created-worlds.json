@@ -1,0 +1,17 @@
+{
+  "id": "44812948-76aa-4d02-87d9-0c7dcc74c6ae",
+  "name": "QA003 Android 1793310183652",
+  "roundState": "PREPARING",
+  "roundNumber": 1,
+  "readyCounter": {
+    "gameWorldId": "44812948-76aa-4d02-87d9-0c7dcc74c6ae",
+    "seasonNumber": 1,
+    "roundNumber": 1,
+    "roundState": "PREPARING",
+    "roundVersion": 1,
+    "readyCount": 0,
+    "totalHumans": 0,
+    "counterLabel": "TÁTICAS ENVIADAS: 0/0",
+    "participants": []
+  }
+}

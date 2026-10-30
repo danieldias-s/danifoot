@@ -1,0 +1,234 @@
+[
+  {
+    "SHA256": "3FF1C9423DEEF8AC9D74F6A6ABB6B0A03B0696C8DDB2673FFDD1178EE615AF73",
+    "Path": "src\\Elifoot.Infrastructure\\ElifootDbContext.cs"
+  },
+  {
+    "SHA256": "A74BD7D148035C2AC9D097EE1F15E6417BA7333D000C21D7B2D2539F4F78C1F2",
+    "Path": "src\\Elifoot.Infrastructure\\Elifoot.Infrastructure.csproj"
+  },
+  {
+    "SHA256": "E9EC877263DA96C99179A8914F0C4753666CE864E142EE5B313714609B9A7878",
+    "Path": "src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+  },
+  {
+    "SHA256": "12B6F93063A745621F7BE4FA451FCA2898EB79AE3A19C19B964E0AEED93F8E78",
+    "Path": "tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
+  },
+  {
+    "SHA256": "1A3330A50F98B6BB378135F4FA9A0B37B1FE26841DD165281D2E2503B3172E20",
+    "Path": "tests\\Elifoot.Simulation.Tests\\MetricAudit007Capture.cs"
+  },
+  {
+    "SHA256": "242960402ED37597BD082E35E2B2C6ECDF6D5E8D4F58EDAEB032857488EB0841",
+    "Path": "tests\\Elifoot.Simulation.Tests\\Elifoot.Simulation.Tests.csproj"
+  },
+  {
+    "SHA256": "C9E98276FB45A8301B3E52EE213330A6E151488D39C31744E38CA953C5CC6422",
+    "Path": "tests\\Elifoot.Simulation.Tests\\CoachCareer008SimulationTests.cs"
+  },
+  {
+    "SHA256": "E1AFAD0BD168CD97CE0E934202241D3BC3C5DBA76B1C4C272EB7189AA2D51F84",
+    "Path": "tests\\Elifoot.Integration.Tests\\PlayableQaRegressionTests.cs"
+  },
+  {
+    "SHA256": "7F4209954A815CB235F723EA28F0BBA935ABB2F6112E4641C306044A4B96CC32",
+    "Path": "src\\Elifoot.Domain\\WorldSeedFactory.cs"
+  },
+  {
+    "SHA256": "F00B476A8A5341B41BCAABC0ECC1198F5946112AA792BA095973ADC939668C8F",
+    "Path": "src\\Elifoot.Domain\\WorldEditorAndPackageService.cs"
+  },
+  {
+    "SHA256": "62DBAFFB4FF05F860E1603012D7954F914A709939455149146EE17D104F16D3C",
+    "Path": "src\\Elifoot.Domain\\TacticsAndSquadRules.cs"
+  },
+  {
+    "SHA256": "250C1E2CD3280AB178A0821F0F5EE2046721C42B978EB8C292CAAC21DDAE8D24",
+    "Path": "src\\Elifoot.Domain\\CoachCareerEngine.cs"
+  },
+  {
+    "SHA256": "BDBFC193889C0153CC535EB25FA765DD1BFEB1063DDE1B71DA312EA90A66467C",
+    "Path": "tests\\Elifoot.Integration.Tests\\ApiAndSignalREndToEndTests.cs"
+  },
+  {
+    "SHA256": "545FF388714F7C5A072DB842BE87E498E328AB44CE380E0F2F506DEDB83B8092",
+    "Path": "tests\\Elifoot.Integration.Tests\\Elifoot.Integration.Tests.csproj"
+  },
+  {
+    "SHA256": "8D224419216B1B176ED995132BFB149076D61DAFBD95D6939205A6B51C049737",
+    "Path": "tests\\Elifoot.Integration.Tests\\FinancialPersistence007Tests.cs"
+  },
+  {
+    "SHA256": "E5DD60F1A6F775DD9596213259013750F807695245985306F702F47F11EED8EC",
+    "Path": "tests\\Elifoot.Integration.Tests\\CoachCareer008IntegrationTests.cs"
+  },
+  {
+    "SHA256": "D9D301D3277FC3B4E8C1C2BF6050AF5CBE64E1D61AF83530F965E79BB4113A6F",
+    "Path": "src\\Elifoot.Domain\\Elifoot.Domain.csproj"
+  },
+  {
+    "SHA256": "C0CFDA1EB0327B738AB2CF989E8EC2D2879625AB113D76AAE7918AE1BF2BF932",
+    "Path": "src\\Elifoot.Domain\\DeterministicRng.cs"
+  },
+  {
+    "SHA256": "C66D717DFCDC0ECA7EBB3C6A03FBA39580490CE418AF86588CBD4DCB94A0BB2C",
+    "Path": "src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+  },
+  {
+    "SHA256": "5698CB369DDDF96FB9B766A19B78775891EF8659472AA91B0DC75FD964565C10",
+    "Path": "src\\Elifoot.Domain\\AiManagerBrain.cs"
+  },
+  {
+    "SHA256": "E159ECFDB285BCEED70F9CFA90AF7A6CFC6C9338F674BD3AB8F4F87A21D8258E",
+    "Path": "src\\Elifoot.Domain\\AiMarketMetrics.cs"
+  },
+  {
+    "SHA256": "2A55EB81CDB21A3D2EE39E73E56BFEA217D988B19941114404CBB6050E7BE321",
+    "Path": "src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
+  },
+  {
+    "SHA256": "34BA97074B718111340AC91EF98A080B198B5F1B9A4D9754CC5626106837EA52",
+    "Path": "src\\Elifoot.Domain\\Entities.cs"
+  },
+  {
+    "SHA256": "C4A053C673F0044D89C035DC323103F6CB760DC6594C74FF7902549FCD07DF9B",
+    "Path": "src\\Elifoot.Domain\\MatchEngine.cs"
+  },
+  {
+    "SHA256": "05066F8208E74F64C7AC78F117D66EF9568A43A84381C36DD10FD186604D54A4",
+    "Path": "tests\\Elifoot.Domain.Tests\\PlayableEconomyRegressionTests.cs"
+  },
+  {
+    "SHA256": "977A8E2B47B493C2A108751359213D308CB54AD9C267DC218C49897678179F89",
+    "Path": "tests\\Elifoot.Application.Tests\\MultiplayerSynchronizationAndPauseTests.cs"
+  },
+  {
+    "SHA256": "242960402ED37597BD082E35E2B2C6ECDF6D5E8D4F58EDAEB032857488EB0841",
+    "Path": "tests\\Elifoot.Application.Tests\\Elifoot.Application.Tests.csproj"
+  },
+  {
+    "SHA256": "3A5F88580E98720D74FADB53A8C58AA1CB8641B3E513807BDD61BCF8DF69E8EC",
+    "Path": "tests\\Elifoot.Application.Tests\\CoachCareer008ReadinessTests.cs"
+  },
+  {
+    "SHA256": "8AE1D0FB8342A7328CC4D274C3BCD12F73C82B17D119D50FA30A91BF271CE372",
+    "Path": "tests\\Elifoot.Domain.Tests\\MetricAiAudit007Tests.cs"
+  },
+  {
+    "SHA256": "AFC3B0A042E3ABF36989621716488A9950819DD123718B766FC03F75366DCF18",
+    "Path": "tests\\Elifoot.Domain.Tests\\Elifoot.Domain.Tests.csproj"
+  },
+  {
+    "SHA256": "0F4956D943FEA6EB76D25F1071304D05D1EB505ED4E29039425DFB2C06401ADA",
+    "Path": "tests\\Elifoot.Domain.Tests\\DomainEngineAndRulesTests.cs"
+  },
+  {
+    "SHA256": "26B1B3BC0D5644DE23668A948D8CBCB5915535D2FFA9EF72F937F744B6347DBD",
+    "Path": "tests\\Elifoot.Domain.Tests\\CoachCareer008Tests.cs"
+  },
+  {
+    "SHA256": "D56D46D1162FECDD4602DA942DE2F265FE527F1EFFA75BCC21A2B17A21F57067",
+    "Path": "src\\Elifoot.Contracts\\Enums.cs"
+  },
+  {
+    "SHA256": "2C82DAE7A6492E5DC0D99B6B5A5D1C89A4702B892F71757981E46302949D6115",
+    "Path": "src\\Elifoot.Contracts\\Elifoot.Contracts.csproj"
+  },
+  {
+    "SHA256": "FF00443709D28939BAB4FC552B058480C0775C81234FCC04D51C6F1270653C5B",
+    "Path": "src\\Elifoot.Contracts\\Dtos.cs"
+  },
+  {
+    "SHA256": "BBE816B09513CBBFC390C72187B33D4159C91C3FF19226379C85D65F804D3222",
+    "Path": "src\\Elifoot.Api\\Elifoot.Api.csproj"
+  },
+  {
+    "SHA256": "02E55F4B31B54FC397718C43E4E9FC3EF236ECD90B1B267EAC078A361E02F26B",
+    "Path": "src\\Elifoot.Application\\MultiplayerRoundOrchestrator.cs"
+  },
+  {
+    "SHA256": "6549D5CCC79C3FDC26438542360182F458FBE037B10A02DF07EE3C23EE4733A8",
+    "Path": "src\\Elifoot.Application\\Interfaces.cs"
+  },
+  {
+    "SHA256": "382F2F26B23F5CB75D268CC99C5C975BC8F497FF1FD858D422977069C97BCB15",
+    "Path": "src\\Elifoot.Application\\Elifoot.Application.csproj"
+  },
+  {
+    "SHA256": "B3F4BED000AAFABF9C96B02FA4FA52EF85686D69F362C627C07308B753B4B656",
+    "Path": "src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
+  },
+  {
+    "SHA256": "CEBC3A296DE65907E39615CADC4F8F3A85746217228EAABD59D920C1BE3CB360",
+    "Path": "src\\Elifoot.Api\\Services\\RoomClockBackgroundService.cs"
+  },
+  {
+    "SHA256": "73F95F9E0CEB205FC1C4DC50C07697FCFA29D7087868C2AEF1D504CB38C771EC",
+    "Path": "src\\Elifoot.Api\\appsettings.Development.json"
+  },
+  {
+    "SHA256": "A75F312FE1E24C13587C09F5A93D90579767881853F608B0716EDB606F62D641",
+    "Path": "src\\Elifoot.Api\\appsettings.json"
+  },
+  {
+    "SHA256": "25FC9E7A2154079A6E266205A62F433DAF75FB5ED2A2D13A97C136AC1BBA295B",
+    "Path": "src\\Elifoot.Api\\Program.cs"
+  },
+  {
+    "SHA256": "E5B36979934B04C866ABF90A6F9BCD2790C7F2EDEAA46C592BAD523C76A3A996",
+    "Path": "src\\Elifoot.Api\\Hubs\\GameRoomHub.cs"
+  },
+  {
+    "SHA256": "5FC7E9F4B32C3B07DE031ED22FF2E1967C66B047B0F14C56A28C89B2D53F8732",
+    "Path": "client/elifoot_flutter/test\\api_environment_test.dart"
+  },
+  {
+    "SHA256": "8179883D88F2961BA41983378E3DD2358D299A78D699413F8585861F0F865B24",
+    "Path": "client/elifoot_flutter/lib\\api_environment.dart"
+  },
+  {
+    "SHA256": "C5E356F3884A514240A68855020DC6AAE27C5DB788007E40A738FA55964E12AD",
+    "Path": "client/elifoot_flutter/lib\\api_client.dart"
+  },
+  {
+    "SHA256": "AE9E37047A8E528A1F250CDEFCA866BD422CAF56523F37708BD55A9C67EE17B8",
+    "Path": "client/elifoot_flutter/lib\\qa_mobile.dart"
+  },
+  {
+    "SHA256": "81E1C8E72DBF6A1068AED9215759F8C5A95FC131432823C187A086B1C7AB85A0",
+    "Path": "client/elifoot_flutter/lib\\main.dart"
+  },
+  {
+    "SHA256": "906E31F682E30EFD3A0F55BF4F4DA27496502916E6B7C751CCBD8A36963ECD16",
+    "Path": "src\\Elifoot.Api\\Properties\\launchSettings.json"
+  },
+  {
+    "SHA256": "269F0CCB9BE672A130F22C1F056F2B73AD0F4AD37B9481CA947DF9116D5E6D31",
+    "Path": "client/elifoot_flutter/test\\career_api_test.dart"
+  },
+  {
+    "SHA256": "09817486643F0B001195ECD1887E542CF1E1BB2802C1A3B6168E8602A144FA2E",
+    "Path": "client/elifoot_flutter/test\\session_store_test.dart"
+  },
+  {
+    "SHA256": "C01AFB381FD4A59EE7FA1DB01F3B07C5700DBFD5D0A1B5FAE4C810F284D98266",
+    "Path": "client/elifoot_flutter/lib\\session_store.dart"
+  },
+  {
+    "SHA256": "6C6DD5A4F71713B8BC3102F2B9E6075D81EE5B0005B58FE7C77EC79B8ACE41C5",
+    "Path": "client/elifoot_flutter/lib\\session_store_stub.dart"
+  },
+  {
+    "SHA256": "2AA504A4838A42FD8CFF077069A4CB5C42D92FDFCA4FFF927365FA22996D325E",
+    "Path": "client/elifoot_flutter/test\\widget_test.dart"
+  },
+  {
+    "SHA256": "96C7DA7F7D788DE8A8FB9D87A81BAEA5C25BC87CCA890A1604FCE3FACF3F29C1",
+    "Path": "client/elifoot_flutter/lib\\session_store_web.dart"
+  },
+  {
+    "SHA256": "0397390D560B8831C2B2B8B850C470FBD055735F8E4143ACC7C03344855874C7",
+    "Path": "client/elifoot_flutter/lib\\shell_actions.dart"
+  }
+]

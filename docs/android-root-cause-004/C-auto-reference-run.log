@@ -1,0 +1,13 @@
+{"name":"pre-processes","args":["exec-out","ps"],"startedAt":"2026-10-29T23:04:02.986Z","milliseconds":897,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"push","args":["push","D:\\elifoot_98\\tools\\android_reference\\build\\app\\outputs\\flutter-apk\\app-profile.apk","/data/local/tmp/qa004-test.apk"],"startedAt":"2026-10-29T23:04:03.885Z","milliseconds":1309,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"install","args":["exec-out","pm","install","-r","/data/local/tmp/qa004-test.apk"],"startedAt":"2026-10-29T23:04:05.195Z","milliseconds":84354,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"launch","args":["exec-out","am","start","-W","-n","dev.elifoot.qa.android_reference/.MainActivity","--ez","enable-software-rendering","true","--ez","enable-impeller","false"],"startedAt":"2026-10-29T23:05:29.550Z","milliseconds":20174,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"post-processes","args":["exec-out","ps"],"startedAt":"2026-10-29T23:06:19.738Z","milliseconds":3964,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"post-service","args":["exec-out","service","check","activity"],"startedAt":"2026-10-29T23:06:23.703Z","milliseconds":2952,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"logcat","args":["logcat","-b","all","-d","-v","threadtime"],"startedAt":"2026-10-29T23:06:26.657Z","milliseconds":30037,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"lastanr","args":["exec-out","dumpsys","activity","lastanr"],"startedAt":"2026-10-29T23:06:56.695Z","milliseconds":2524,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"activity-full","args":["exec-out","dumpsys","activity"],"startedAt":"2026-10-29T23:06:59.220Z","milliseconds":5210,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"dropbox-anr","args":["exec-out","dumpsys","dropbox","--print","system_app_anr"],"startedAt":"2026-10-29T23:07:04.431Z","milliseconds":3196,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"anr-traces","args":["exec-out","cat","/data/anr/traces.txt"],"startedAt":"2026-10-29T23:07:07.628Z","milliseconds":1174,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"screen","args":["exec-out","screencap","-p","/data/local/tmp/qa004-case.png"],"startedAt":"2026-10-29T23:07:08.803Z","milliseconds":30020,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"screen-pull","args":["pull","/data/local/tmp/qa004-case.png","D:\\elifoot_98\\docs\\android-root-cause-004\\C-auto-reference\\screen.png"],"startedAt":"2026-10-29T23:07:38.824Z","milliseconds":189,"code":0,"signal":null,"timedOut":false,"accepted":true}

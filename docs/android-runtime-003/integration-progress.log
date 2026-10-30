@@ -1,0 +1,62 @@
+--------- beginning of main
+10-29 21:40:08.097  3570  3570 W dex2oat : Verification of java.math.BigInteger com.google.common.collect.DiscreteDomain$BigIntegerDomain.next(java.math.BigInteger) took 557.508ms
+10-29 21:40:09.274  3570  3570 W dex2oat : Verification of int com.google.common.collect.Lists$Partition.size() took 426.486ms
+10-29 21:40:12.123  3570  3570 W dex2oat : Verification of com.google.common.collect.ImmutableSet com.google.common.reflect.ClassPath$Scanner.getClassPathFromManifest(java.io.File, java.util.jar.Manifest) took 592.319ms
+10-29 21:40:13.178  3570  3570 W dex2oat : Verification of void com.google.common.util.concurrent.AtomicLongMap.removeAllZeros() took 689.293ms
+10-29 21:40:13.311  3570  3570 W dex2oat : Verification of int com.google.common.util.concurrent.AtomicLongMap.size() took 130.964ms
+10-29 21:40:13.423  3570  3570 W dex2oat : Verification of void com.google.common.util.concurrent.CollectionFuture$CollectionFutureRunningState.<init>(com.google.common.util.concurrent.CollectionFuture, com.google.common.collect.ImmutableCollection, boolean) took 104.527ms
+10-29 21:40:19.906  3570  3570 W dex2oat : Before Android 4.1, method double java.util.concurrent.ThreadLocalRandom.internalNextDouble(double, double) would have incorrectly overridden the package-private method in java.util.Random
+10-29 21:40:19.906  3570  3570 W dex2oat : Before Android 4.1, method int java.util.concurrent.ThreadLocalRandom.internalNextInt(int, int) would have incorrectly overridden the package-private method in java.util.Random
+10-29 21:40:19.907  3570  3570 W dex2oat : Before Android 4.1, method long java.util.concurrent.ThreadLocalRandom.internalNextLong(long, long) would have incorrectly overridden the package-private method in java.util.Random
+10-29 21:40:33.381  3570  3570 I dex2oat : dex2oat took 60.733s (threads: 1) arena alloc=480B (480B) java alloc=9MB (9954392B) native alloc=20MB (21277584B) free=3MB (3888240B)
+--------- beginning of system
+10-29 21:40:33.534  1636  1651 I ActivityManager: Force stopping com.example.elifoot_flutter appid=10063 user=-1: installPackageLI
+10-29 21:40:34.265  1636  1651 I ProcessStatsService: Prepared write state in 26ms
+10-29 21:40:34.500  1636  1646 I art     : Background partial concurrent mark sweep GC freed 72528(2MB) AllocSpace objects, 5(220KB) LOS objects, 33% free, 7MB/10MB, paused 6.647ms total 848.375ms
+10-29 21:40:35.393  1636  1666 I PackageManager: Package com.example.elifoot_flutter codePath changed from /data/app/com.example.elifoot_flutter-2 to /data/app/com.example.elifoot_flutter-1; Retaining data and using new
+10-29 21:40:35.395  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 21:40:35.395  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 21:40:35.405  1636  1666 W PackageManager: Code path for com.example.elifoot_flutter changing from /data/app/com.example.elifoot_flutter-2 to /data/app/com.example.elifoot_flutter-1
+10-29 21:40:35.406  1636  1666 W PackageManager: Resource path for com.example.elifoot_flutter changing from /data/app/com.example.elifoot_flutter-2 to /data/app/com.example.elifoot_flutter-1
+10-29 21:40:36.256  1636  1650 W art     : Long monitor contention with owner PackageManager (1666) at void com.android.server.pm.PackageManagerService.updateSettingsInternalLI(android.content.pm.PackageParser$Package, java.lang.String, int[], int[], com.android.server.pm.PackageManagerService$PackageInstalledInfo, android.os.UserHandle)(PackageManagerService.java:14841) waiters=0 in void com.android.server.pm.Settings$RuntimePermissionPersistence.writePermissionsSync(int) for 657ms
+10-29 21:40:36.487  1636  1666 I art     : Starting a blocking GC Explicit
+10-29 21:40:36.678  1636  1666 I art     : Explicit concurrent mark sweep GC freed 20358(1184KB) AllocSpace objects, 10(196KB) LOS objects, 33% free, 7MB/10MB, paused 2.747ms total 184.616ms
+10-29 21:40:36.996  1293  1293 E         : Couldn't opendir /data/app/vmdl1640965634.tmp: No such file or directory
+10-29 21:40:37.105  1636  1666 I ActivityManager: Force stopping com.example.elifoot_flutter appid=10063 user=0: pkg removed
+10-29 21:40:37.296  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:40:37.343  1636  1636 W art     : Long monitor contention with owner ActivityManager (1651) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:760) waiters=0 in boolean com.android.server.am.ActivityManagerService.isUserRunning(int, int) for 157ms
+10-29 21:40:38.466  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:40:38.541  1636  2399 W art     : Long monitor contention with owner ActivityManager (1651) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:760) waiters=0 in void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean) for 196ms
+10-29 21:40:39.004  1921  1921 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 21:40:39.036  1921  1921 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 21:40:39.126  2598  2598 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:1357 android.content.ContextWrapper.startService:613 android.content.ContextWrapper.startService:613 com.android.keychain.KeyChainBroadcastReceiver.onReceive:12 android.app.ActivityThread.handleReceiver:3040 
+10-29 21:40:39.467  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:40:39.472  1921  1921 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-29 21:40:39.757  1921  1932 I art     : Background sticky concurrent mark sweep GC freed 24667(1626KB) AllocSpace objects, 0(0B) LOS objects, 34% free, 3MB/5MB, paused 4.382ms total 248.147ms
+10-29 21:40:43.681  2798  2809 I art     : Background sticky concurrent mark sweep GC freed 1162(112KB) AllocSpace objects, 0(0B) LOS objects, 17% free, 2MB/2MB, paused 1.681ms total 205.286ms
+10-29 21:40:43.772  1636  1650 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-29 21:40:45.532  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:45.599  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:52.747  3587  3587 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:40:52.795  3587  3587 D AndroidRuntime: CheckJNI is OFF
+10-29 21:40:53.576  3587  3587 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:40:53.645  3587  3587 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:40:54.024  3587  3587 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:40:54.024  3587  3587 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:40:54.036  3587  3587 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:40:54.306  3587  3587 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 21:40:54.393  1636  1961 I ActivityManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x30000000 cmp=com.example.elifoot_flutter/.MainActivity (has extras)} from uid 2000 on display 0
+10-29 21:40:54.673  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:54.700  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:54.773  1636  2398 W art     : Long monitor contention with owner Binder:1636_6 (1961) at int com.android.server.am.ActivityStarter.startActivityMayWait(android.app.IApplicationThread, int, java.lang.String, android.content.Intent, java.lang.String, android.service.voice.IVoiceInteractionSession, com.android.internal.app.IVoiceInteractor, android.os.IBinder, java.lang.String, int, int, android.app.ProfilerInfo, android.app.IActivityManager$WaitResult, android.content.res.Configuration, android.os.Bundle, boolean, int, android.app.IActivityContainer, com.android.server.am.TaskRecord)(ActivityStarter.java:757) waiters=1 in void com.android.server.am.ActivityManagerService.activityPaused(android.os.IBinder) for 189ms
+10-29 21:40:54.804  3587  3587 D AndroidRuntime: Shutting down VM
+10-29 21:40:54.873  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:54.887  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.000  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.016  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.053  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.078  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.150  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.163  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.219  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:55.234  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)

@@ -1,0 +1,78 @@
+{
+  "ProductionAndExistingTestsUnchanged": true,
+  "CheckedFiles": [
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_api_test.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Api/PlayerRankingsEndpoints.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Application/PlayerRankingsApplicationService.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEntities.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Unchanged": true
+    }
+  ],
+  "NewTestOnly": "client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart",
+  "DotnetRegression": 237,
+  "DotnetRerun": "Not repeated: production and existing tests identical to previously validated source.",
+  "FlutterRegressionRerun": 28,
+  "AdditionalRealDataRenderTests": 2
+}

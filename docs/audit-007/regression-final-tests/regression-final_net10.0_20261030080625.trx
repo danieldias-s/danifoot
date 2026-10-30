@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="ad226261-bb72-4322-a3e2-a34a952d9680" name="Daniel@DESKTOP-A5J5UME 2026-10-30 08:06:25" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T08:06:25.5268761-03:00" queuing="2026-10-30T08:06:25.5268763-03:00" start="2026-10-30T08:06:23.6224149-03:00" finish="2026-10-30T08:06:25.5278582-03:00" />
+  <TestSettings name="default" id="43195425-6456-4797-8d2f-82775c394e83">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_08_06_25" />
+  </TestSettings>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="0" executed="0" passed="0" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.61]   Discovering: Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.69]   Discovered:  Elifoot.Simulation.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Warning" timestamp="2026-10-30T08:06:25.4104614-03:00">
+        <Text>Nenhum teste corresponde ao filtro de testcase `FullyQualifiedName!~MultiSeasonAndBenchmarkTests` determinado no D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

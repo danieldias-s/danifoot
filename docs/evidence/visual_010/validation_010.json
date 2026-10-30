@@ -1,0 +1,94 @@
+{
+  "taskId": "ELIFOOT_VISUAL_POLISH_AND_RESPONSIVE_010",
+  "worldId": "19ee7691-473d-4033-9f56-63289b543a4a",
+  "sourceSnapshotCapturedAt": "2026-10-30T14:15:35.107Z",
+  "checks": [
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_general",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_division1",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_division2",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_division3",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_division4",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "scorers_cup",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "goalkeepers_general",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "defenders_general",
+      "overflow": false
+    },
+    {
+      "viewport": "1280x960",
+      "screen": "player_history_mateus",
+      "pluralizationFixed": "ARTILHEIRO: 1 VEZ",
+      "historicalClubNameResolved": "Guarani da Serra",
+      "dateFormatted": "30/10/2026",
+      "moneyFormatted": "R$ 3.000.000",
+      "overflow": false
+    },
+    {
+      "viewport": "1024x900",
+      "screen": "scorers_general",
+      "overflow": false
+    },
+    {
+      "viewport": "768x900",
+      "screen": "scorers_general",
+      "overflow": false
+    },
+    {
+      "viewport": "320x844",
+      "screen": "scorers_mobile_scroll",
+      "horizontalOffset": 198.34472656249994,
+      "playerNameVisibleAfterHorizontalScroll": true,
+      "overflow": false
+    },
+    {
+      "viewport": "360x844",
+      "screen": "scorers_mobile_scroll",
+      "horizontalOffset": 198.3447265624999,
+      "playerNameVisibleAfterHorizontalScroll": true,
+      "overflow": false
+    },
+    {
+      "viewport": "390x844",
+      "screen": "scorers_mobile_scroll",
+      "horizontalOffset": 211.2851562499999,
+      "playerNameVisibleAfterHorizontalScroll": true,
+      "overflow": false
+    },
+    {
+      "viewport": "430x844",
+      "screen": "scorers_mobile_scroll",
+      "horizontalOffset": 211.28515625,
+      "playerNameVisibleAfterHorizontalScroll": true,
+      "overflow": false
+    }
+  ]
+}

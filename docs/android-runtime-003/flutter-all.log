@@ -1,0 +1,26 @@
+--------- beginning of system
+--------- beginning of main
+10-29 21:28:17.870  3194  3194 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(527)] [Action Required]: Impeller opt-out deprecated.
+10-29 21:28:17.870  3194  3194 I flutter :     The application opted out of Impeller by either using the
+10-29 21:28:17.870  3194  3194 I flutter :     `--no-enable-impeller` flag or the
+10-29 21:28:17.870  3194  3194 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+10-29 21:28:17.870  3194  3194 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+10-29 21:28:17.870  3194  3194 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+10-29 21:28:17.870  3194  3194 I flutter :     the issue.
+10-29 21:28:17.870  3194  3194 I flutter : 
+10-29 21:28:17.870  3194  3194 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+10-29 21:28:17.870  3194  3194 I flutter : 
+10-29 21:28:29.158  3194  3245 I flutter : The Dart VM service is listening on http://127.0.0.1:56239/WF4UWdn_Xvk=/
+10-29 21:33:04.178  3372  3372 F flutter : [FATAL:flutter/shell/platform/android/flutter_main.cc(274)] Check failed: !settings.enable_impeller. Impeller does not support software rendering. Either disable software rendering or disable impeller.
+--------- beginning of crash
+10-29 21:34:35.278  3430  3430 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(527)] [Action Required]: Impeller opt-out deprecated.
+10-29 21:34:35.278  3430  3430 I flutter :     The application opted out of Impeller by either using the
+10-29 21:34:35.278  3430  3430 I flutter :     `--no-enable-impeller` flag or the
+10-29 21:34:35.278  3430  3430 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+10-29 21:34:35.278  3430  3430 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+10-29 21:34:35.278  3430  3430 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+10-29 21:34:35.278  3430  3430 I flutter :     the issue.
+10-29 21:34:35.278  3430  3430 I flutter : 
+10-29 21:34:35.278  3430  3430 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+10-29 21:34:35.278  3430  3430 I flutter : 
+10-29 21:34:47.308  3430  3457 I flutter : The Dart VM service is listening on http://127.0.0.1:46884/Nv-e1ZhhwEU=/

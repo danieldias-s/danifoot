@@ -1,0 +1,48 @@
+{
+  "baseline": {
+    "DuplicateTransactionIds": 0,
+    "DuplicateClubIdempotencyKeys": 0,
+    "UnpairedOrUnbalancedBilateralTransfers": 0,
+    "CompletedPurchases": 33325,
+    "ManagerPurchases": 33325,
+    "Delta": 0
+  },
+  "candidate": {
+    "DuplicateTransactionIds": 0,
+    "DuplicateClubIdempotencyKeys": 0,
+    "UnpairedOrUnbalancedBilateralTransfers": 0,
+    "CompletedPurchases": 32173,
+    "ManagerPurchases": 32173,
+    "Delta": 0
+  },
+  "metrics": {
+    "AiPurchaseEvaluations": 8922,
+    "AiPurchaseAttempts": 8800,
+    "AiOffersSubmitted": 0,
+    "AiOffersAccepted": 0,
+    "AiPurchasesCompleted": 32173,
+    "AiAuctionBids": 150573,
+    "AiAuctionsWon": 23373,
+    "AiSalesCompleted": 8800,
+    "AiContractRenewals": 38289
+  },
+  "baselineRecovery": {
+    "clubs": 21,
+    "recovered": 21,
+    "sustainable": 16,
+    "relapses": 5
+  },
+  "candidateRecovery": {
+    "clubs": 19,
+    "recovered": 19,
+    "sustainable": 11,
+    "relapses": 8
+  },
+  "quality": {
+    "count": 32173,
+    "belowStarter": 17969,
+    "priceAbove125PercentFair": 0,
+    "missing": 0,
+    "maxPriceToFair": 1.2487914436449612
+  }
+}

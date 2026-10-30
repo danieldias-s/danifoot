@@ -1,0 +1,987 @@
+--------- beginning of main
+10-29 23:03:50.380  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Iridium.ogg since build fingerprint changed
+10-29 23:03:50.600  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Krypton.ogg since build fingerprint changed
+10-29 23:03:50.736  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/KzurbSonar.ogg since build fingerprint changed
+10-29 23:03:50.849  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Lalande.ogg since build fingerprint changed
+10-29 23:03:50.980  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Merope.ogg since build fingerprint changed
+10-29 23:03:51.109  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Mira.ogg since build fingerprint changed
+10-29 23:03:51.240  2864  3270 W MediaScanner: forcing rescan of /system/media/audio/notifications/OnTheHunt.oggsince ringtone setting didn't finish
+10-29 23:03:51.373  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications; assuming invalid
+--------- beginning of kernel
+10-29 23:03:51.484     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:03:51.620  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Alarm_Rooster_02.ogg; assuming invalid
+10-29 23:03:51.642  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Argon.ogg; assuming invalid
+10-29 23:03:51.662  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Barium.ogg; assuming invalid
+10-29 23:03:51.690  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Carbon.ogg; assuming invalid
+10-29 23:03:51.713  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Cesium.ogg; assuming invalid
+10-29 23:03:51.736  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Fermium.ogg; assuming invalid
+10-29 23:03:51.760  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Hassium.ogg; assuming invalid
+10-29 23:03:51.780  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Helium.ogg; assuming invalid
+10-29 23:03:51.803  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Krypton.ogg; assuming invalid
+10-29 23:03:51.824  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Neon.ogg; assuming invalid
+10-29 23:03:51.847  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Neptunium.ogg; assuming invalid
+10-29 23:03:51.872  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Nobelium.ogg; assuming invalid
+10-29 23:03:51.919  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Osmium.ogg; assuming invalid
+10-29 23:03:51.945  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Oxygen.ogg; assuming invalid
+10-29 23:03:51.966  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Platinum.ogg; assuming invalid
+10-29 23:03:51.987  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Plutonium.ogg; assuming invalid
+10-29 23:03:52.010  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Promethium.ogg; assuming invalid
+10-29 23:03:52.032  2864  3270 W MediaProvider: Missing volume for /system/media/audio/alarms/Scandium.ogg; assuming invalid
+10-29 23:03:52.080  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Adara.ogg; assuming invalid
+10-29 23:03:52.151  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Aldebaran.ogg; assuming invalid
+10-29 23:03:52.176  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Altair.ogg; assuming invalid
+10-29 23:03:52.193  1301  1362 E MetadataRetrieverClient: failed to extract an album art
+10-29 23:03:52.237  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Alya.ogg; assuming invalid
+10-29 23:03:52.255  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Antares.ogg; assuming invalid
+10-29 23:03:52.281  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Antimony.ogg; assuming invalid
+10-29 23:03:52.332  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Arcturus.ogg; assuming invalid
+10-29 23:03:52.355  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Argon.ogg; assuming invalid
+10-29 23:03:52.377  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Beat_Box_Android.ogg; assuming invalid
+10-29 23:03:52.400  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Bellatrix.ogg; assuming invalid
+10-29 23:03:52.425  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Beryllium.ogg; assuming invalid
+10-29 23:03:52.441  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Betelgeuse.ogg; assuming invalid
+10-29 23:03:52.473  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/CaffeineSnake.ogg; assuming invalid
+10-29 23:03:52.504  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Canopus.ogg; assuming invalid
+10-29 23:03:52.524  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Capella.ogg; assuming invalid
+10-29 23:03:52.539  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Castor.ogg; assuming invalid
+10-29 23:03:52.560  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/CetiAlpha.ogg; assuming invalid
+10-29 23:03:52.581  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Cobalt.ogg; assuming invalid
+10-29 23:03:52.612  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Cricket.ogg; assuming invalid
+10-29 23:03:52.633  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/DearDeer.ogg; assuming invalid
+10-29 23:03:52.670  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Deneb.ogg; assuming invalid
+10-29 23:03:52.688  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Doink.ogg; assuming invalid
+10-29 23:03:52.712  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/DontPanic.ogg; assuming invalid
+10-29 23:03:52.731  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Drip.ogg; assuming invalid
+10-29 23:03:52.748  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Electra.ogg; assuming invalid
+10-29 23:03:52.768  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/F1_MissedCall.ogg; assuming invalid
+10-29 23:03:52.789  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/F1_New_MMS.ogg; assuming invalid
+10-29 23:03:52.810  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/F1_New_SMS.ogg; assuming invalid
+10-29 23:03:52.830  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Fluorine.ogg; assuming invalid
+10-29 23:03:52.847  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Fomalhaut.ogg; assuming invalid
+10-29 23:03:52.871  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Gallium.ogg; assuming invalid
+10-29 23:03:52.895  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Heaven.ogg; assuming invalid
+10-29 23:03:52.920  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Helium.ogg; assuming invalid
+10-29 23:03:52.942  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Highwire.ogg; assuming invalid
+10-29 23:03:52.984  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Hojus.ogg; assuming invalid
+10-29 23:03:53.005  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Iridium.ogg; assuming invalid
+10-29 23:03:53.027  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Krypton.ogg; assuming invalid
+10-29 23:03:53.045  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/KzurbSonar.ogg; assuming invalid
+10-29 23:03:53.069  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Lalande.ogg; assuming invalid
+10-29 23:03:53.095  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Merope.ogg; assuming invalid
+10-29 23:03:53.119  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Mira.ogg; assuming invalid
+10-29 23:03:53.152  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/OnTheHunt.ogg; assuming invalid
+10-29 23:03:53.377  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Palladium.ogg since build fingerprint changed
+10-29 23:03:53.602  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Plastic_Pipe.ogg since build fingerprint changed
+10-29 23:03:53.712  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Polaris.ogg since build fingerprint changed
+10-29 23:03:53.853  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Pollux.ogg since build fingerprint changed
+10-29 23:03:54.003  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Procyon.ogg since build fingerprint changed
+10-29 23:03:54.132  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Proxima.ogg since build fingerprint changed
+10-29 23:03:54.255  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Radon.ogg since build fingerprint changed
+10-29 23:03:54.501     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:03:54.566  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Rubidium.ogg since build fingerprint changed
+10-29 23:03:54.694  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Selenium.ogg since build fingerprint changed
+10-29 23:03:54.806  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Shaula.ogg since build fingerprint changed
+10-29 23:03:54.948  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Sirrah.ogg since build fingerprint changed
+10-29 23:03:55.076  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/SpaceSeed.ogg since build fingerprint changed
+10-29 23:03:55.217  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Spica.ogg since build fingerprint changed
+10-29 23:03:55.340  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Strontium.ogg since build fingerprint changed
+10-29 23:03:55.491  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Syrma.ogg since build fingerprint changed
+10-29 23:03:55.645  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/TaDa.ogg since build fingerprint changed
+10-29 23:03:55.818  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Talitha.ogg since build fingerprint changed
+--------- beginning of radio
+10-29 23:03:56.428  1938  1938 D RILJ    : [3804]> SIGNAL_STRENGTH [SUB0]
+10-29 23:03:56.436  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:03:56.436  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:03:56.437  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:03:56.437  1303  1319 D AT      : AT< OK
+10-29 23:03:56.439  1938  2066 D RILJ    : [3804]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:03:56.493  1938  1938 D RILJ    : [3805]> SIGNAL_STRENGTH [SUB0]
+10-29 23:03:56.499  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:03:56.499  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:03:56.500  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:03:56.500  1303  1319 D AT      : AT< OK
+10-29 23:03:56.502  1938  2066 D RILJ    : [3805]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:03:57.072  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Tejat.ogg since build fingerprint changed
+10-29 23:03:57.512     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:03:57.717  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Thallium.ogg since build fingerprint changed
+10-29 23:03:59.003  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Tinkerbell.ogg since build fingerprint changed
+10-29 23:04:00.548     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+--------- beginning of events
+10-29 23:04:01.968  1647  1660 I am_pss  : [2121,10002,com.android.providers.calendar,7909376,5976064,0]
+10-29 23:04:03.633     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:03.229  1287  1287 I auditd  : type=1400 audit(0.0:19): avc: denied { search } for comm=73657276696365203337 name="security" dev="vdc" ino=499841 scontext=u:r:adbd:s0 tcontext=u:object_r:security_file:s0 tclass=dir permissive=0
+10-29 23:04:03.229  1287  1287 W /sbin/adbd: type=1400 audit(0.0:19): avc: denied { search } for comm=73657276696365203337 name="security" dev="vdc" ino=499841 scontext=u:r:adbd:s0 tcontext=u:object_r:security_file:s0 tclass=dir permissive=0
+10-29 23:04:05.080  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Upsilon.ogg since build fingerprint changed
+10-29 23:04:06.649     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:07.034  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 23:04:07.052  1938  1938 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 23:04:07.101  1938  1938 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 23:04:07.110  1938  1938 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 23:04:07.114  1938  1938 D RetryPolicy: retry #2 for com.android.phone.vvm.omtp.ActivationTask@ea0b4e5 queued, executing in 5000
+10-29 23:04:07.153  1938  1938 D VvmTaskScheduler: minimal wait time:4963
+10-29 23:04:07.162  1938  1938 D VvmTaskScheduler: minimal wait time:4955
+10-29 23:04:08.279  1647  1660 I am_pss  : [2831,10054,com.android.messaging,15172608,12214272,0]
+10-29 23:04:09.305  3323  3323 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 23:04:09.372  3323  3323 D AndroidRuntime: CheckJNI is OFF
+10-29 23:04:09.669     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:10.354  3323  3323 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:04:10.431  3323  3323 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 23:04:10.765  3323  3323 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 23:04:10.766  3323  3323 E android.os.Debug: failed to load memtrack module: -2
+10-29 23:04:10.777  3323  3323 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 23:04:11.015  3323  3323 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 23:04:11.314  1293  1293 I         : free_cache(22938861) avail 10452660224
+10-29 23:04:12.128  1938  2863 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@ea0b4e5
+10-29 23:04:12.463  1938  2863 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 23:04:12.467  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 23:04:12.677     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:12.724  1938  2863 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 23:04:12.921  1938  2863 D SmsNumberUtils: enter filterDestAddr. destAddr="122"
+10-29 23:04:12.950  1938  2863 D SmsNumberUtils: destAddr is not formatted.
+10-29 23:04:12.950  1938  2863 D SmsNumberUtils: leave filterDestAddr, new destAddr="122"
+10-29 23:04:12.995  1938  2863 V GsmSMSDispatcher: No carrier package.
+10-29 23:04:13.027  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:us emergencyNumbers: 
+10-29 23:04:13.027  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:04:13.032  1938  2863 D GsmSMSDispatcher: sendSms:  isIms()=false mRetryCount=0 mImsRetry=0 mMessageRef=0 SS=0
+10-29 23:04:13.034  1938  2863 D RILJ    : [3806]> SEND_SMS [SUB0]
+10-29 23:04:13.090  1303  1317 D RIL     : onRequest: SEND_SMS
+10-29 23:04:13.091  1303  1317 D RIL     : requestSendSMS datalen =16
+10-29 23:04:13.092  1303  1317 D AT      : AT> AT+CMGS=30
+10-29 23:04:13.101  1303  1319 D AT      : AT< > 
+10-29 23:04:13.102  1303  1319 D AT      : AT> 004100038121f20004150605040710000041637469766174653a64743d3135^Z
+10-29 23:04:13.103  1303  1319 D AT      : AT< +CMGS: 0
+10-29 23:04:13.103  1303  1319 D AT      : AT< OK
+10-29 23:04:13.112  1938  2066 D RILJ    : [3806]< SEND_SMS { mMessageRef = 1, mErrorCode = 0, mAckPdu = null} [SUB0]
+10-29 23:04:13.129  1938  1938 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 23:04:13.185  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:US emergencyNumbers: 
+10-29 23:04:13.185  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:04:15.693     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:16.452  1938  1938 D RILJ    : [3807]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:16.459  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:16.459  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:16.460  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:16.460  1303  1319 D AT      : AT< OK
+10-29 23:04:16.464  1938  2066 D RILJ    : [3807]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:16.512  1938  1938 D RILJ    : [3808]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:16.518  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:16.518  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:16.519  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:16.519  1303  1319 D AT      : AT< OK
+10-29 23:04:16.521  1938  2066 D RILJ    : [3808]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:17.965  1647  2498 W art     : Long monitor contention with owner PackageInstaller (1694) at void sun.security.jca.ProviderList$ServiceList.addService(java.security.Provider$Service)(ProviderList.java:411) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerSession.generateInfo() for 3.782s
+10-29 23:04:17.969  1647  2498 I dvm_lock_sample: [system_server,1,Binder:1647_9,3782,PackageInstallerSession.java,287,ProviderList.java,411,100]
+--------- beginning of system
+10-29 23:04:18.117  1647  1675 W ActivityManager: Slow operation: 96ms so far, now at startProcess: returned from zygote!
+10-29 23:04:18.119  1647  1675 W ActivityManager: Slow operation: 98ms so far, now at startProcess: done updating battery stats
+10-29 23:04:18.119  1647  1675 I am_proc_start: [0,3333,10007,com.android.defcontainer,service,com.android.defcontainer/.DefaultContainerService]
+10-29 23:04:18.120  1647  1675 W ActivityManager: Slow operation: 99ms so far, now at startProcess: building log message
+10-29 23:04:18.120  1647  1675 I ActivityManager: Start proc 3333:com.android.defcontainer/u0a7 for service com.android.defcontainer/.DefaultContainerService
+10-29 23:04:18.120  1647  1675 W ActivityManager: Slow operation: 100ms so far, now at startProcess: starting to update pids map
+10-29 23:04:18.121  1647  1675 W ActivityManager: Slow operation: 100ms so far, now at startProcess: done updating pids map
+10-29 23:04:18.121  1647  1675 W ActivityManager: Slow operation: 104ms so far, now at startProcess: done starting proc!
+10-29 23:04:18.176  3333  3333 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:04:18.273  1647  2063 I am_proc_bound: [0,3333,com.android.defcontainer]
+10-29 23:04:18.702     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:18.837  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Vega.ogg since build fingerprint changed
+10-29 23:04:19.119  1647  1660 I am_pss  : [2664,10026,com.android.calendar,6612992,4558848,0]
+10-29 23:04:20.076  1647  1675 W PackageParser: Unknown element under <manifest>: queries at /data/app/vmdl1113178322.tmp/base.apk Binary XML file line #23
+10-29 23:04:20.675  1647  1675 W PackageManager: Package dev.elifoot.qa.android_reference desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 23:04:20.675  1647  1675 W PackageManager: Package dev.elifoot.qa.android_reference desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 23:04:20.761  1647  1660 I am_pss  : [2174,10042,com.android.launcher3,20248576,15351808,0]
+10-29 23:04:20.830  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Voila.ogg since build fingerprint changed
+10-29 23:04:20.914  1647  1675 I PackageManager.DexOptimizer: Running dexopt (dex2oat) on: /data/app/vmdl1113178322.tmp/base.apk pkg=dev.elifoot.qa.android_reference isa=x86_64 vmSafeMode=false debuggable=true target-filter=interpret-only oatDir = /data/app/vmdl1113178322.tmp/oat sharedLibraries=null
+10-29 23:04:21.721     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:22.187  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Xenon.ogg since build fingerprint changed
+10-29 23:04:22.248  1647  1660 I am_pss  : [2892,10051,com.android.printspooler,4636672,3145728,0]
+10-29 23:04:22.356     0     0 W healthd : battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+10-29 23:04:23.803  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/Zirconium.ogg since build fingerprint changed
+10-29 23:04:24.732     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:24.928  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/arcturus.ogg since build fingerprint changed
+10-29 23:04:25.548  3348  3348 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:04:25.852  3348  3348 I dex2oat : /system/bin/dex2oat --compiler-filter=interpret-only --debuggable
+10-29 23:04:26.474  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/moonbeam.ogg since build fingerprint changed
+10-29 23:04:27.741     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:28.056  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/pixiedust.ogg since build fingerprint changed
+10-29 23:04:28.863  1647  1657 I art     : Background sticky concurrent mark sweep GC freed 39342(2MB) AllocSpace objects, 13(352KB) LOS objects, 27% free, 7MB/10MB, paused 2.550ms total 135.558ms
+10-29 23:04:29.128  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/pizzicato.ogg since build fingerprint changed
+10-29 23:04:29.768  1285  1327 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 23:04:29.810  1285  1674 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1536000
+10-29 23:04:29.888  3367  3367 D         : HostConnection::get() New Host Connection established 0x7dfeefa2d4e0, tid 3367
+10-29 23:04:29.935  1285  1285 E EGL_emulation: tid 1285: eglCreateSyncKHR(1962): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-29 23:04:30.752     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:33.763     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:33.890  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/regulus.ogg since build fingerprint changed
+10-29 23:04:34.121  3372  3372 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 23:04:34.156  3372  3372 D AndroidRuntime: CheckJNI is OFF
+10-29 23:04:35.283  3372  3372 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:04:35.389  3372  3372 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 23:04:35.734  3372  3372 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 23:04:35.735  3372  3372 E android.os.Debug: failed to load memtrack module: -2
+10-29 23:04:35.747  3372  3372 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 23:04:36.029  3372  3372 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 23:04:36.325  2864  2864 D MediaScannerReceiver: action: android.intent.action.MEDIA_SCANNER_SCAN_FILE path: /data/local/tmp/qa004-case.png
+10-29 23:04:36.349  3372  3372 D AndroidRuntime: Shutting down VM
+10-29 23:04:36.490  1938  1938 D RILJ    : [3809]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:36.521  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:36.522  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:36.530  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:36.532  1303  1319 D AT      : AT< OK
+10-29 23:04:36.534  1938  1938 D RILJ    : [3810]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:36.547  1938  2066 D RILJ    : [3809]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:36.564  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:36.564  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:36.574  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:36.576  1303  1319 D AT      : AT< OK
+10-29 23:04:36.579  1938  2066 D RILJ    : [3810]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:36.812     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:37.553  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/sirius.ogg since build fingerprint changed
+10-29 23:04:38.103  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/tweeters.ogg since build fingerprint changed
+10-29 23:04:38.339  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/notifications/vega.ogg since build fingerprint changed
+10-29 23:04:38.640  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/ANDROMEDA.ogg since build fingerprint changed
+10-29 23:04:38.936  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones; assuming invalid
+10-29 23:04:39.105  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Palladium.ogg; assuming invalid
+10-29 23:04:39.148  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Plastic_Pipe.ogg; assuming invalid
+10-29 23:04:39.195  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Polaris.ogg; assuming invalid
+10-29 23:04:39.262  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Pollux.ogg; assuming invalid
+10-29 23:04:39.336  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Procyon.ogg; assuming invalid
+10-29 23:04:39.403  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Proxima.ogg; assuming invalid
+10-29 23:04:39.473  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Radon.ogg; assuming invalid
+10-29 23:04:39.498  1301  1875 E MetadataRetrieverClient: failed to extract an album art
+10-29 23:04:39.561  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Rubidium.ogg; assuming invalid
+10-29 23:04:39.595  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Selenium.ogg; assuming invalid
+10-29 23:04:39.644  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Shaula.ogg; assuming invalid
+10-29 23:04:39.686  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Sirrah.ogg; assuming invalid
+10-29 23:04:39.723  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/SpaceSeed.ogg; assuming invalid
+10-29 23:04:39.773  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Spica.ogg; assuming invalid
+10-29 23:04:39.833  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Strontium.ogg; assuming invalid
+10-29 23:04:39.850     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:39.930  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Syrma.ogg; assuming invalid
+10-29 23:04:39.976  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/TaDa.ogg; assuming invalid
+10-29 23:04:40.023  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Talitha.ogg; assuming invalid
+10-29 23:04:40.070  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Tejat.ogg; assuming invalid
+10-29 23:04:40.113  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Thallium.ogg; assuming invalid
+10-29 23:04:40.150  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Tinkerbell.ogg; assuming invalid
+10-29 23:04:40.200  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Upsilon.ogg; assuming invalid
+10-29 23:04:40.227  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Vega.ogg; assuming invalid
+10-29 23:04:40.256  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Voila.ogg; assuming invalid
+10-29 23:04:40.310  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Xenon.ogg; assuming invalid
+10-29 23:04:40.365  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/Zirconium.ogg; assuming invalid
+10-29 23:04:40.396  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/arcturus.ogg; assuming invalid
+10-29 23:04:40.450  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/moonbeam.ogg; assuming invalid
+10-29 23:04:40.498  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/pixiedust.ogg; assuming invalid
+10-29 23:04:40.546  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/pizzicato.ogg; assuming invalid
+10-29 23:04:40.577  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/regulus.ogg; assuming invalid
+10-29 23:04:40.604  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/sirius.ogg; assuming invalid
+10-29 23:04:40.660  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/tweeters.ogg; assuming invalid
+10-29 23:04:40.677  2864  3270 W MediaProvider: Missing volume for /system/media/audio/notifications/vega.ogg; assuming invalid
+10-29 23:04:40.859  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/ANDROMEDA.ogg; assuming invalid
+10-29 23:04:41.024  1301  1932 E MetadataRetrieverClient: failed to extract an album art
+10-29 23:04:41.677  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Andromeda.ogg since build fingerprint changed
+10-29 23:04:42.026  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Aquila.ogg since build fingerprint changed
+10-29 23:04:42.231  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/ArgoNavis.ogg since build fingerprint changed
+10-29 23:04:42.800  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Atria.ogg since build fingerprint changed
+10-29 23:04:42.865     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:43.255  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BOOTES.ogg since build fingerprint changed
+10-29 23:04:43.775  1647  1647 I free_storage_changed: 10422538240
+10-29 23:04:43.894     0     0 D ieee80211 phy0: hwsim hw_scan request
+10-29 23:04:43.895     0     0 D ieee80211 phy0: hw scan 2412 MHz
+10-29 23:04:43.920     0     0 D ieee80211 phy0: hw scan 2417 MHz
+10-29 23:04:43.949     0     0 D ieee80211 phy0: hw scan 2422 MHz
+10-29 23:04:43.979     0     0 D ieee80211 phy0: hw scan 2427 MHz
+10-29 23:04:44.009     0     0 D ieee80211 phy0: hw scan 2432 MHz
+10-29 23:04:44.039     0     0 D ieee80211 phy0: hw scan 2437 MHz
+10-29 23:04:44.069     0     0 D ieee80211 phy0: hw scan 2442 MHz
+10-29 23:04:44.099     0     0 D ieee80211 phy0: hw scan 2447 MHz
+10-29 23:04:44.136  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Backroad.ogg since build fingerprint changed
+10-29 23:04:44.129     0     0 D ieee80211 phy0: hw scan 2452 MHz
+10-29 23:04:44.158     0     0 D ieee80211 phy0: hw scan 2457 MHz
+10-29 23:04:44.188     0     0 D ieee80211 phy0: hw scan 2462 MHz
+10-29 23:04:44.218     0     0 D ieee80211 phy0: hw scan 2467 MHz
+10-29 23:04:44.339     0     0 D ieee80211 phy0: hw scan 2472 MHz
+10-29 23:04:44.447  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BeatPlucker.ogg since build fingerprint changed
+10-29 23:04:44.460     0     0 D ieee80211 phy0: hw scan 2484 MHz
+10-29 23:04:44.579     0     0 D ieee80211 phy0: hw scan complete
+10-29 23:04:44.580     0     0 D ieee80211 phy0: hwsim hw_scan request
+10-29 23:04:44.581     0     0 D ieee80211 phy0: hw scan 5180 MHz
+10-29 23:04:44.686  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BentleyDubs.ogg since build fingerprint changed
+10-29 23:04:44.699     0     0 D ieee80211 phy0: hw scan 5200 MHz
+10-29 23:04:44.819     0     0 D ieee80211 phy0: hw scan 5220 MHz
+10-29 23:04:44.939     0     0 D ieee80211 phy0: hw scan 5240 MHz
+10-29 23:04:44.973  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Big_Easy.ogg since build fingerprint changed
+10-29 23:04:45.059     0     0 D ieee80211 phy0: hw scan 5745 MHz
+10-29 23:04:45.178     0     0 D ieee80211 phy0: hw scan 5765 MHz
+10-29 23:04:45.282  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BirdLoop.ogg since build fingerprint changed
+10-29 23:04:45.300     0     0 D ieee80211 phy0: hw scan 5785 MHz
+10-29 23:04:45.419     0     0 D ieee80211 phy0: hw scan 5805 MHz
+10-29 23:04:45.538     0     0 D ieee80211 phy0: hw scan 5825 MHz
+10-29 23:04:45.552  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Bollywood.ogg since build fingerprint changed
+10-29 23:04:45.659     0     0 D ieee80211 phy0: hw scan complete
+10-29 23:04:45.666     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:45.875     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:45.999  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BussaMove.ogg since build fingerprint changed
+10-29 23:04:46.344  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CANISMAJOR.ogg since build fingerprint changed
+10-29 23:04:46.530  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CASSIOPEIA.ogg since build fingerprint changed
+10-29 23:04:46.553  3348  3348 W dex2oat : Verification of android.window.OnBackInvokedDispatcher androidx.activity.ComponentActivity$Api33Impl.getOnBackInvokedDispatcher(android.app.Activity) took 120.880ms
+10-29 23:04:46.757  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cairo.ogg since build fingerprint changed
+10-29 23:04:47.020  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Calypso_Steel.ogg since build fingerprint changed
+10-29 23:04:47.281  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CanisMajor.ogg since build fingerprint changed
+10-29 23:04:47.526  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CaribbeanIce.ogg since build fingerprint changed
+10-29 23:04:47.995  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Carina.ogg since build fingerprint changed
+10-29 23:04:48.208  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Centaurus.ogg since build fingerprint changed
+10-29 23:04:48.444  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Champagne_Edition.ogg since build fingerprint changed
+10-29 23:04:48.749  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Club_Cubano.ogg since build fingerprint changed
+10-29 23:04:48.889     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:49.027  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrayonRock.ogg since build fingerprint changed
+10-29 23:04:49.305  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrazyDream.ogg since build fingerprint changed
+10-29 23:04:49.805  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CurveBall.ogg since build fingerprint changed
+10-29 23:04:50.065  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cygnus.ogg since build fingerprint changed
+10-29 23:04:50.295  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DancinFool.ogg since build fingerprint changed
+10-29 23:04:50.663  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ding.ogg since build fingerprint changed
+10-29 23:04:51.065  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DonMessWivIt.ogg since build fingerprint changed
+10-29 23:04:51.514  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Draco.ogg since build fingerprint changed
+10-29 23:04:51.735  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DreamTheme.ogg since build fingerprint changed
+10-29 23:04:51.901     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:52.252  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eastern_Sky.ogg since build fingerprint changed
+10-29 23:04:52.579  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Enter_the_Nexus.ogg since build fingerprint changed
+10-29 23:04:52.877  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eridani.ogg since build fingerprint changed
+10-29 23:04:53.151  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/EtherShake.ogg since build fingerprint changed
+10-29 23:04:53.399  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FreeFlight.ogg since build fingerprint changed
+10-29 23:04:53.786  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FriendlyGhost.ogg since build fingerprint changed
+10-29 23:04:54.099  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Funk_Yall.ogg since build fingerprint changed
+10-29 23:04:54.357  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/GameOverGuitar.ogg since build fingerprint changed
+10-29 23:04:54.634  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Gimme_Mo_Town.ogg since build fingerprint changed
+10-29 23:04:54.908     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:54.925  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Girtab.ogg since build fingerprint changed
+10-29 23:04:55.244  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Glacial_Groove.ogg since build fingerprint changed
+10-29 23:04:55.570  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Growl.ogg since build fingerprint changed
+10-29 23:04:55.847  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/HalfwayHome.ogg since build fingerprint changed
+10-29 23:04:56.216  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Hydra.ogg since build fingerprint changed
+10-29 23:04:56.488  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/InsertCoin.ogg since build fingerprint changed
+10-29 23:04:56.594  1938  1938 D RILJ    : [3811]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:56.601  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:56.601  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:56.602  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:56.602  1303  1319 D AT      : AT< OK
+10-29 23:04:56.604  1938  2066 D RILJ    : [3811]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:56.608  1938  1938 D RILJ    : [3812]> SIGNAL_STRENGTH [SUB0]
+10-29 23:04:56.613  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:04:56.613  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:04:56.614  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:04:56.614  1303  1319 D AT      : AT< OK
+10-29 23:04:56.615  1938  2066 D RILJ    : [3812]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:04:56.785  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Kuma.ogg since build fingerprint changed
+10-29 23:04:57.375  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoopyLounge.ogg since build fingerprint changed
+10-29 23:04:57.643  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoveFlute.ogg since build fingerprint changed
+10-29 23:04:57.882  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Lyra.ogg since build fingerprint changed
+10-29 23:04:57.921     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:04:58.167  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Machina.ogg since build fingerprint changed
+10-29 23:04:58.425  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/MidEvilJaunt.ogg since build fingerprint changed
+10-29 23:04:58.711  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/MildlyAlarming.ogg since build fingerprint changed
+10-29 23:04:58.964  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Nairobi.ogg since build fingerprint changed
+10-29 23:04:59.222  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Nassau.ogg since build fingerprint changed
+10-29 23:04:59.455  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/NewPlayer.ogg since build fingerprint changed
+10-29 23:04:59.673  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/No_Limits.ogg since build fingerprint changed
+10-29 23:04:59.909  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises1.ogg since build fingerprint changed
+10-29 23:05:00.497  3348  3348 W dex2oat : Verification of void io.flutter.embedding.android.KeyboardMap$2.<init>() took 511.227ms
+10-29 23:05:00.607  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises2.ogg since build fingerprint changed
+10-29 23:05:00.740  1647  1660 I am_pss  : [3333,10007,com.android.defcontainer,4301824,2605056,0]
+10-29 23:05:00.932     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:01.020  3348  3348 W dex2oat : Verification of void io.flutter.embedding.engine.deferredcomponents.PlayStoreDeferredComponentManager$FeatureInstallStateUpdatedListener.onStateUpdate(com.google.android.play.core.splitinstall.SplitInstallSessionState) took 101.192ms
+10-29 23:05:01.088  1647  1660 I am_pss  : [2629,10001,android.process.acore,12975104,10383360,0]
+10-29 23:05:01.205  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Noises3.ogg since build fingerprint changed
+10-29 23:05:01.452  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/OrganDub.ogg since build fingerprint changed
+10-29 23:05:01.760  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Orion.ogg since build fingerprint changed
+10-29 23:05:02.101  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/PERSEUS.ogg since build fingerprint changed
+10-29 23:05:02.899  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Paradise_Island.ogg since build fingerprint changed
+10-29 23:05:03.166  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Pegasus.ogg since build fingerprint changed
+10-29 23:05:03.653  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Perseus.ogg since build fingerprint changed
+10-29 23:05:03.943     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:04.182  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Playa.ogg since build fingerprint changed
+10-29 23:05:04.501  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Pyxis.ogg since build fingerprint changed
+10-29 23:05:04.707  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Rasalas.ogg since build fingerprint changed
+10-29 23:05:05.175  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Revelation.ogg since build fingerprint changed
+10-29 23:05:05.544  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Rigel.ogg since build fingerprint changed
+10-29 23:05:05.867  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Classic_02.ogg since build fingerprint changed
+10-29 23:05:06.179  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Digital_02.ogg since build fingerprint changed
+10-29 23:05:06.411  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Synth_02.ogg since build fingerprint changed
+10-29 23:05:06.881  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ring_Synth_04.ogg since build fingerprint changed
+10-29 23:05:06.952     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:07.153  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Road_Trip.ogg since build fingerprint changed
+10-29 23:05:07.402  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/RomancingTheTone.ogg since build fingerprint changed
+10-29 23:05:07.617  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Safari.ogg since build fingerprint changed
+10-29 23:05:08.152  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Savannah.ogg since build fingerprint changed
+10-29 23:05:08.412  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Scarabaeus.ogg since build fingerprint changed
+10-29 23:05:08.883  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Sceptrum.ogg since build fingerprint changed
+10-29 23:05:09.398  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Seville.ogg since build fingerprint changed
+10-29 23:05:09.680  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Shes_All_That.ogg since build fingerprint changed
+10-29 23:05:09.966     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:09.983  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SilkyWay.ogg since build fingerprint changed
+10-29 23:05:10.214  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SitarVsSitar.ogg since build fingerprint changed
+10-29 23:05:10.444  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Solarium.ogg since build fingerprint changed
+10-29 23:05:10.644  3348  3348 W dex2oat : Before Android 4.1, method double java.util.concurrent.ThreadLocalRandom.internalNextDouble(double, double) would have incorrectly overridden the package-private method in java.util.Random
+10-29 23:05:10.645  3348  3348 W dex2oat : Before Android 4.1, method int java.util.concurrent.ThreadLocalRandom.internalNextInt(int, int) would have incorrectly overridden the package-private method in java.util.Random
+10-29 23:05:10.645  3348  3348 W dex2oat : Before Android 4.1, method long java.util.concurrent.ThreadLocalRandom.internalNextLong(long, long) would have incorrectly overridden the package-private method in java.util.Random
+10-29 23:05:10.863  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/SpringyJalopy.ogg since build fingerprint changed
+10-29 23:05:11.105  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Steppin_Out.ogg since build fingerprint changed
+10-29 23:05:11.344  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Terminated.ogg since build fingerprint changed
+10-29 23:05:11.610  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Testudo.ogg since build fingerprint changed
+10-29 23:05:12.052  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Themos.ogg since build fingerprint changed
+10-29 23:05:12.559  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Third_Eye.ogg since build fingerprint changed
+10-29 23:05:12.788  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Thunderfoot.ogg since build fingerprint changed
+10-29 23:05:12.979     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:13.056  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/TwirlAway.ogg since build fingerprint changed
+10-29 23:05:13.205  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 23:05:13.212  1938  1938 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 23:05:13.230  1938  1938 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 23:05:13.236  1938  1938 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 23:05:13.239  1938  1938 D RetryPolicy: retry #3 for com.android.phone.vvm.omtp.ActivationTask@c2cba61 queued, executing in 5000
+10-29 23:05:13.251  1938  1938 D VvmTaskScheduler: minimal wait time:4990
+10-29 23:05:13.261  1938  1938 D VvmTaskScheduler: minimal wait time:4979
+10-29 23:05:13.301  3348  3348 W dex2oat : Verification of long kotlin.time.Duration.toLong-impl(long, kotlin.time.DurationUnit) took 113.061ms
+10-29 23:05:13.401  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/URSAMINOR.ogg since build fingerprint changed
+10-29 23:05:13.850  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/UrsaMinor.ogg since build fingerprint changed
+10-29 23:05:14.313  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/VeryAlarmed.ogg since build fingerprint changed
+10-29 23:05:14.562  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Vespa.ogg since build fingerprint changed
+10-29 23:05:14.802  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/World.ogg since build fingerprint changed
+10-29 23:05:15.050  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Zeta.ogg since build fingerprint changed
+10-29 23:05:15.365  2864  3270 I MediaScanner: forcing rescan of /system/media/audio/ringtones/hydra.ogg since build fingerprint changed
+10-29 23:05:15.990     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:16.630  1938  1938 D RILJ    : [3813]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:16.635  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:16.635  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:16.636  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:16.636  1303  1319 D AT      : AT< OK
+10-29 23:05:16.637  1938  2066 D RILJ    : [3813]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:16.642  1938  1938 D RILJ    : [3814]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:16.648  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:16.648  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:16.648  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:16.648  1303  1319 D AT      : AT< OK
+10-29 23:05:16.651  1938  2066 D RILJ    : [3814]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:18.252  1938  2863 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@c2cba61
+10-29 23:05:18.391  1938  2863 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 23:05:18.394  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 23:05:18.515  1938  2863 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 23:05:18.586  1938  2863 D SmsNumberUtils: enter filterDestAddr. destAddr="122"
+10-29 23:05:18.590  1938  2863 D SmsNumberUtils: destAddr is not formatted.
+10-29 23:05:18.591  1938  2863 D SmsNumberUtils: leave filterDestAddr, new destAddr="122"
+10-29 23:05:18.612  1938  2863 V GsmSMSDispatcher: No carrier package.
+10-29 23:05:18.626  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:us emergencyNumbers: 
+10-29 23:05:18.626  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:05:18.631  1938  2863 D GsmSMSDispatcher: sendSms:  isIms()=false mRetryCount=0 mImsRetry=0 mMessageRef=0 SS=0
+10-29 23:05:18.632  1938  2863 D RILJ    : [3815]> SEND_SMS [SUB0]
+10-29 23:05:18.641  1303  1317 D RIL     : onRequest: SEND_SMS
+10-29 23:05:18.641  1303  1317 D RIL     : requestSendSMS datalen =16
+10-29 23:05:18.642  1303  1317 D AT      : AT> AT+CMGS=30
+10-29 23:05:18.644  1303  1319 D AT      : AT< > 
+10-29 23:05:18.646  1303  1319 D AT      : AT> 004100038121f20004150605040710000041637469766174653a64743d3135^Z
+10-29 23:05:18.647  1303  1319 D AT      : AT< +CMGS: 0
+10-29 23:05:18.647  1303  1319 D AT      : AT< OK
+10-29 23:05:18.650  1938  2066 D RILJ    : [3815]< SEND_SMS { mMessageRef = 1, mErrorCode = 0, mAckPdu = null} [SUB0]
+10-29 23:05:18.667  1938  1938 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 23:05:18.707  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:US emergencyNumbers: 
+10-29 23:05:18.707  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:05:18.743  3348  3348 W dex2oat : Verification of java.lang.String kotlinx.coroutines.scheduling.CoroutineScheduler.toString() took 536.026ms
+10-29 23:05:19.002     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:19.504  2864  3270 W MediaScanner: Error opening directory '/oem/media/', skipping: No such file or directory.
+10-29 23:05:19.539  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui; assuming invalid
+10-29 23:05:19.626  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Andromeda.ogg; assuming invalid
+10-29 23:05:19.665  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Aquila.ogg; assuming invalid
+10-29 23:05:19.706  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/ArgoNavis.ogg; assuming invalid
+10-29 23:05:19.750  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Atria.ogg; assuming invalid
+10-29 23:05:19.818  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/BOOTES.ogg; assuming invalid
+10-29 23:05:19.855  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Backroad.ogg; assuming invalid
+10-29 23:05:19.887  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/BeatPlucker.ogg; assuming invalid
+10-29 23:05:19.920  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/BentleyDubs.ogg; assuming invalid
+10-29 23:05:19.953  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Big_Easy.ogg; assuming invalid
+10-29 23:05:19.983  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/BirdLoop.ogg; assuming invalid
+10-29 23:05:20.004  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Bollywood.ogg; assuming invalid
+10-29 23:05:20.038  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/BussaMove.ogg; assuming invalid
+10-29 23:05:20.079  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CANISMAJOR.ogg; assuming invalid
+10-29 23:05:20.098  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CASSIOPEIA.ogg; assuming invalid
+10-29 23:05:20.139  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Cairo.ogg; assuming invalid
+10-29 23:05:20.163  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Calypso_Steel.ogg; assuming invalid
+10-29 23:05:20.205  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CanisMajor.ogg; assuming invalid
+10-29 23:05:20.224  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CaribbeanIce.ogg; assuming invalid
+10-29 23:05:20.253  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Carina.ogg; assuming invalid
+10-29 23:05:20.277  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Centaurus.ogg; assuming invalid
+10-29 23:05:20.304  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Champagne_Edition.ogg; assuming invalid
+10-29 23:05:20.348  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Club_Cubano.ogg; assuming invalid
+10-29 23:05:20.366  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CrayonRock.ogg; assuming invalid
+10-29 23:05:20.385  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CrazyDream.ogg; assuming invalid
+10-29 23:05:20.404  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/CurveBall.ogg; assuming invalid
+10-29 23:05:20.433  3348  3348 W dex2oat : Compilation of long io.flutter.embedding.engine.FlutterJNI.nativeAttach(io.flutter.embedding.engine.FlutterJNI) took 277.788ms
+10-29 23:05:20.453  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Cygnus.ogg; assuming invalid
+10-29 23:05:20.485  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/DancinFool.ogg; assuming invalid
+10-29 23:05:20.526  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ding.ogg; assuming invalid
+10-29 23:05:20.569  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/DonMessWivIt.ogg; assuming invalid
+10-29 23:05:20.608  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Draco.ogg; assuming invalid
+10-29 23:05:20.636  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/DreamTheme.ogg; assuming invalid
+10-29 23:05:20.684  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Eastern_Sky.ogg; assuming invalid
+10-29 23:05:20.714  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Enter_the_Nexus.ogg; assuming invalid
+10-29 23:05:20.741  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Eridani.ogg; assuming invalid
+10-29 23:05:20.779  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/EtherShake.ogg; assuming invalid
+10-29 23:05:20.805  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/FreeFlight.ogg; assuming invalid
+10-29 23:05:20.825  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/FriendlyGhost.ogg; assuming invalid
+10-29 23:05:20.858  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Funk_Yall.ogg; assuming invalid
+10-29 23:05:20.899  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/GameOverGuitar.ogg; assuming invalid
+10-29 23:05:20.918  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Gimme_Mo_Town.ogg; assuming invalid
+10-29 23:05:20.955  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Girtab.ogg; assuming invalid
+10-29 23:05:20.992  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Glacial_Groove.ogg; assuming invalid
+10-29 23:05:21.010  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Growl.ogg; assuming invalid
+10-29 23:05:21.046  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/HalfwayHome.ogg; assuming invalid
+10-29 23:05:21.104  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Hydra.ogg; assuming invalid
+10-29 23:05:21.141  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/InsertCoin.ogg; assuming invalid
+10-29 23:05:21.195  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Kuma.ogg; assuming invalid
+10-29 23:05:21.219  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/LoopyLounge.ogg; assuming invalid
+10-29 23:05:21.248  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/LoveFlute.ogg; assuming invalid
+10-29 23:05:21.275  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Lyra.ogg; assuming invalid
+10-29 23:05:21.312  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Machina.ogg; assuming invalid
+10-29 23:05:21.346  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/MidEvilJaunt.ogg; assuming invalid
+10-29 23:05:21.374  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/MildlyAlarming.ogg; assuming invalid
+10-29 23:05:21.405  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Nairobi.ogg; assuming invalid
+10-29 23:05:21.440  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Nassau.ogg; assuming invalid
+10-29 23:05:21.465  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/NewPlayer.ogg; assuming invalid
+10-29 23:05:21.490  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/No_Limits.ogg; assuming invalid
+10-29 23:05:21.525  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises1.ogg; assuming invalid
+10-29 23:05:21.557  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises2.ogg; assuming invalid
+10-29 23:05:21.594  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises3.ogg; assuming invalid
+10-29 23:05:21.618  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/OrganDub.ogg; assuming invalid
+10-29 23:05:21.668  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Orion.ogg; assuming invalid
+10-29 23:05:21.767  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/PERSEUS.ogg; assuming invalid
+10-29 23:05:21.814  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Paradise_Island.ogg; assuming invalid
+10-29 23:05:21.882  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Pegasus.ogg; assuming invalid
+10-29 23:05:21.945  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Perseus.ogg; assuming invalid
+10-29 23:05:22.000  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Playa.ogg; assuming invalid
+10-29 23:05:22.011     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:22.084  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Pyxis.ogg; assuming invalid
+10-29 23:05:22.160  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Rasalas.ogg; assuming invalid
+10-29 23:05:22.210  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Revelation.ogg; assuming invalid
+10-29 23:05:22.267  1301  1301 E MetadataRetrieverClient: failed to extract an album art
+10-29 23:05:22.300  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Rigel.ogg; assuming invalid
+10-29 23:05:22.372     0     0 W healthd : battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+10-29 23:05:22.383  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Classic_02.ogg; assuming invalid
+10-29 23:05:22.420  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Digital_02.ogg; assuming invalid
+10-29 23:05:22.470  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Synth_02.ogg; assuming invalid
+10-29 23:05:22.506  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Synth_04.ogg; assuming invalid
+10-29 23:05:22.536  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Road_Trip.ogg; assuming invalid
+10-29 23:05:22.578  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/RomancingTheTone.ogg; assuming invalid
+10-29 23:05:22.609  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Safari.ogg; assuming invalid
+10-29 23:05:22.635  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Savannah.ogg; assuming invalid
+10-29 23:05:22.679  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Scarabaeus.ogg; assuming invalid
+10-29 23:05:22.723  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Sceptrum.ogg; assuming invalid
+10-29 23:05:22.753  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Seville.ogg; assuming invalid
+10-29 23:05:22.772  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Shes_All_That.ogg; assuming invalid
+10-29 23:05:22.795  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/SilkyWay.ogg; assuming invalid
+10-29 23:05:22.823  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/SitarVsSitar.ogg; assuming invalid
+10-29 23:05:22.862  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Solarium.ogg; assuming invalid
+10-29 23:05:22.892  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/SpringyJalopy.ogg; assuming invalid
+10-29 23:05:22.924  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Steppin_Out.ogg; assuming invalid
+10-29 23:05:22.948  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Terminated.ogg; assuming invalid
+10-29 23:05:22.994  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Testudo.ogg; assuming invalid
+10-29 23:05:23.035  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Themos.ogg; assuming invalid
+10-29 23:05:23.092  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Third_Eye.ogg; assuming invalid
+10-29 23:05:23.123  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Thunderfoot.ogg; assuming invalid
+10-29 23:05:23.153  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/TwirlAway.ogg; assuming invalid
+10-29 23:05:23.175  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/URSAMINOR.ogg; assuming invalid
+10-29 23:05:23.232  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/UrsaMinor.ogg; assuming invalid
+10-29 23:05:23.279  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/VeryAlarmed.ogg; assuming invalid
+10-29 23:05:23.307  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Vespa.ogg; assuming invalid
+10-29 23:05:23.343  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/World.ogg; assuming invalid
+10-29 23:05:23.394  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/Zeta.ogg; assuming invalid
+10-29 23:05:23.428  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ringtones/hydra.ogg; assuming invalid
+10-29 23:05:23.509  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Dock.ogg; assuming invalid
+10-29 23:05:23.679  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Effect_Tick.ogg; assuming invalid
+10-29 23:05:23.724  1301  1362 E MetadataRetrieverClient: failed to extract an album art
+10-29 23:05:23.752  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressDelete.ogg; assuming invalid
+10-29 23:05:23.815  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressInvalid.ogg; assuming invalid
+10-29 23:05:23.854  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressReturn.ogg; assuming invalid
+10-29 23:05:23.892  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressSpacebar.ogg; assuming invalid
+10-29 23:05:23.944  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressStandard.ogg; assuming invalid
+10-29 23:05:23.985  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Lock.ogg; assuming invalid
+10-29 23:05:24.024  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/LowBattery.ogg; assuming invalid
+10-29 23:05:24.064  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Trusted.ogg; assuming invalid
+10-29 23:05:24.150  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Undock.ogg; assuming invalid
+10-29 23:05:24.214  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/Unlock.ogg; assuming invalid
+10-29 23:05:24.234  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/VideoRecord.ogg; assuming invalid
+10-29 23:05:24.264  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/VideoStop.ogg; assuming invalid
+10-29 23:05:24.310  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/WirelessChargingStarted.ogg; assuming invalid
+10-29 23:05:24.346  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/camera_click.ogg; assuming invalid
+10-29 23:05:24.392  2864  3270 W MediaProvider: Missing volume for /system/media/audio/ui/camera_focus.ogg; assuming invalid
+10-29 23:05:25.022     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:25.626  2864  3270 V MediaScanner: pruneDeadThumbnailFiles... android.content.ContentProviderClient$CursorWrapperInner@7cb6e90
+10-29 23:05:25.646  2864  3270 V MediaScanner: /pruneDeadThumbnailFiles... android.content.ContentProviderClient$CursorWrapperInner@7cb6e90
+10-29 23:05:26.732  3348  3348 I dex2oat : dex2oat took 61.396s (threads: 1) arena alloc=792B (792B) java alloc=3MB (3620344B) native alloc=8MB (9028376B) free=2MB (2637032B)
+10-29 23:05:26.898  1647  1675 W PackageManager: Package dev.elifoot.qa.android_reference desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 23:05:26.904  1647  1675 W PackageManager: Package dev.elifoot.qa.android_reference desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 23:05:27.472  1293  1293 D installd: Detected label change from u:object_r:system_data_file:s0 to u:object_r:app_data_file:s0:c512,c768 at /data/data/dev.elifoot.qa.android_reference; running recursive restorecon
+10-29 23:05:27.495  1293  1293 D installd: Detected label change from u:object_r:system_data_file:s0 to u:object_r:app_data_file:s0:c512,c768 at /data/user_de/0/dev.elifoot.qa.android_reference; running recursive restorecon
+10-29 23:05:27.541  1647  1675 V BackupManagerService: restoreAtInstall pkg=dev.elifoot.qa.android_reference token=1 restoreSet=0
+10-29 23:05:27.543  1647  1675 W BackupManagerService: Requested unavailable transport: android/com.android.internal.backup.LocalTransport
+10-29 23:05:27.543  1647  1675 W BackupManagerService: No transport
+10-29 23:05:27.544  1647  1675 V BackupManagerService: Finishing install immediately
+10-29 23:05:27.588  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,5,ActivityManagerService.java,4156,-,17339,1]
+10-29 23:05:27.606  1647  1675 I unknown_sources_enabled: 0
+10-29 23:05:27.607  1647  1675 I art     : Starting a blocking GC Explicit
+10-29 23:05:27.847  1647  1675 I art     : Explicit concurrent mark sweep GC freed 47614(2MB) AllocSpace objects, 17(356KB) LOS objects, 33% free, 7MB/11MB, paused 2.529ms total 218.293ms
+10-29 23:05:27.867  1293  1293 E         : Couldn't opendir /data/app/vmdl1113178322.tmp: No such file or directory
+10-29 23:05:28.047     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:28.264  1647  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 23:05:28.283  1647  1647 I notification_cancel_all: [1000,1647,dev.elifoot.qa.android_reference,0,0,0,5,NULL]
+10-29 23:05:28.342  1938  1938 E SmsApplication: com.android.bluetooth does not have system signature
+10-29 23:05:28.436  3323  3323 I art     : System.exit called, status: 0
+10-29 23:05:28.437  3323  3323 I AndroidRuntime: VM exiting with result code 0.
+10-29 23:05:28.499  1938  1938 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 23:05:28.530  1938  1938 D CarrierConfigLoader: mHandler: 9 phoneId: 0
+10-29 23:05:28.864  1647  1662 W art     : Long monitor contention with owner android.bg (1660) at void com.android.server.pm.ShortcutService.handlePackageAdded(java.lang.String, int)(ShortcutService.java:2696) waiters=0 in void com.android.server.pm.ShortcutService.handleOnUidStateChanged(int, int) for 650ms
+10-29 23:05:28.865  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,650,ShortcutService.java,477,-,2696,100]
+10-29 23:05:29.291  1647  2499 W ActivityManager: Slow operation: 210ms so far, now at startProcess: returned from zygote!
+10-29 23:05:29.292  1647  2499 W ActivityManager: Slow operation: 211ms so far, now at startProcess: done updating battery stats
+10-29 23:05:29.292  1647  2499 I am_proc_start: [0,3394,10049,com.svox.pico,broadcast,com.svox.pico/.VoiceDataInstallerReceiver]
+10-29 23:05:29.292  1647  2499 W ActivityManager: Slow operation: 212ms so far, now at startProcess: building log message
+10-29 23:05:29.293  1647  2499 I ActivityManager: Start proc 3394:com.svox.pico/u0a49 for broadcast com.svox.pico/.VoiceDataInstallerReceiver
+10-29 23:05:29.293  1647  2499 W ActivityManager: Slow operation: 212ms so far, now at startProcess: starting to update pids map
+10-29 23:05:29.293  1647  2499 W ActivityManager: Slow operation: 213ms so far, now at startProcess: done updating pids map
+10-29 23:05:29.294  1647  2499 W ActivityManager: Slow operation: 226ms so far, now at startProcess: done starting proc!
+10-29 23:05:29.295  1647  1662 W art     : Long monitor contention with owner Binder:1647_A (2499) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:760) waiters=0 in void com.android.server.am.ActivityManagerService.dispatchUidsChanged() for 215ms
+10-29 23:05:29.295  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,215,ActivityManagerService.java,4219,BroadcastQueue.java,760,43]
+10-29 23:05:29.339  3394  3394 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:05:29.514  1647  2070 I am_proc_bound: [0,3394,com.svox.pico]
+10-29 23:05:31.061     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:31.948  3221  3233 W art     : Suspending all threads took: 28.218ms
+10-29 23:05:32.071  3221  3230 W art     : Long monitor contention with owner IntentService[GalleryPackagesMonitorAsync] (3408) at void java.lang.ref.ReferenceQueue.add(java.lang.ref.Reference)(ReferenceQueue.java:260) waiters=1 in void java.lang.Object.wait!() for 202ms
+10-29 23:05:32.072  3221  3230 I dvm_lock_sample: [com.android.gallery3d,0,ReferenceQueueDaemon,202,Object.java,-2,ReferenceQueue.java,260,40]
+10-29 23:05:32.410  3221  3233 W art     : Long monitor contention with owner IntentService[GalleryPackagesMonitorAsync] (3408) at void java.lang.ref.ReferenceQueue.add(java.lang.ref.Reference)(ReferenceQueue.java:260) waiters=2 in void java.lang.ref.ReferenceQueue.add(java.lang.ref.Reference) for 457ms
+10-29 23:05:32.411  3221  3233 I dvm_lock_sample: [com.android.gallery3d,0,HeapTaskDaemon,457,ReferenceQueue.java,260,-,260,91]
+10-29 23:05:33.232  3401  3401 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 23:05:33.266  3401  3401 D AndroidRuntime: CheckJNI is OFF
+10-29 23:05:34.072     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:34.012  3401  3401 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:05:34.082  3401  3401 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 23:05:34.361  3401  3401 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 23:05:34.361  3401  3401 E android.os.Debug: failed to load memtrack module: -2
+10-29 23:05:34.371  3401  3401 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 23:05:34.540  3401  3401 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 23:05:34.678  1647  2063 I ActivityManager: START u0 {flg=0x10000000 cmp=dev.elifoot.qa.android_reference/.MainActivity (has extras)} from uid 2000 on display 0
+10-29 23:05:34.704  1647  2063 I am_create_task: [0,6]
+10-29 23:05:37.308     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:34.704  1647  2063 I am_create_activity: [0,190753420,6,dev.elifoot.qa.android_reference/.MainActivity,NULL,NULL,NULL,268435456]
+10-29 23:05:34.715  1647  2063 I wm_task_created: [6,1]
+10-29 23:05:34.721  1647  2063 I wm_task_moved: [6,1,1]
+10-29 23:05:34.748  1647  2063 I wm_task_moved: [6,1,1]
+10-29 23:05:34.807  1647  2063 I am_focused_activity: [0,dev.elifoot.qa.android_reference/.MainActivity,startedActivity]
+10-29 23:05:34.821  1647  2063 I am_pause_activity: [0,223294315,com.android.settings/.Settings]
+10-29 23:05:34.826  1970  1970 I sysui_view_visibility: [35,0]
+10-29 23:05:34.827  1970  1970 I sysui_view_visibility: [474,0]
+10-29 23:05:35.357  1647  1647 W art     : Long monitor contention with owner backup (2107) at boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long)(MessageQueue.java:541) waiters=0 in android.os.Message android.os.MessageQueue.next() for 1.568s
+10-29 23:05:35.361  1647  1647 I dvm_lock_sample: [system_server,1,main,1568,MessageQueue.java,325,-,541,100]
+10-29 23:05:35.363  1647  1662 W art     : Long monitor contention with owner backup (2107) at boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long)(MessageQueue.java:541) waiters=1 in boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long) for 563ms
+10-29 23:05:35.363  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,563,MessageQueue.java,541,-,541,100]
+10-29 23:05:35.368  1647  2063 W art     : Long monitor contention with owner backup (2107) at boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long)(MessageQueue.java:541) waiters=2 in void android.os.MessageQueue.removeMessages(android.os.Handler, java.lang.Runnable, java.lang.Object) for 537ms
+10-29 23:05:35.368  1647  2063 I dvm_lock_sample: [system_server,1,Binder:1647_5,537,MessageQueue.java,660,-,541,100]
+10-29 23:05:35.449  1647  1661 W art     : Long monitor contention with owner Binder:1647_5 (2063) at int com.android.server.am.ActivityStarter.startActivityMayWait(android.app.IApplicationThread, int, java.lang.String, android.content.Intent, java.lang.String, android.service.voice.IVoiceInteractionSession, com.android.internal.app.IVoiceInteractor, android.os.IBinder, java.lang.String, int, int, android.app.ProfilerInfo, android.app.IActivityManager$WaitResult, android.content.res.Configuration, android.os.Bundle, boolean, int, android.app.IActivityContainer, com.android.server.am.TaskRecord)(ActivityStarter.java:757) waiters=0 in void com.android.server.am.ActivityManagerService$MainHandler.handleMessage(android.os.Message) for 642ms
+10-29 23:05:35.450  1647  1661 I dvm_lock_sample: [system_server,1,ActivityManager,642,ActivityManagerService.java,2322,ActivityStarter.java,757,100]
+10-29 23:05:35.452  1647  1659 W art     : Long monitor contention with owner Binder:1647_5 (2063) at int com.android.server.am.ActivityStarter.startActivityMayWait(android.app.IApplicationThread, int, java.lang.String, android.content.Intent, java.lang.String, android.service.voice.IVoiceInteractionSession, com.android.internal.app.IVoiceInteractor, android.os.IBinder, java.lang.String, int, int, android.app.ProfilerInfo, android.app.IActivityManager$WaitResult, android.content.res.Configuration, android.os.Bundle, boolean, int, android.app.IActivityContainer, com.android.server.am.TaskRecord)(ActivityStarter.java:757) waiters=1 in void com.android.server.am.ActivityManagerService.unregisterReceiver(android.content.IIntentReceiver) for 623ms
+10-29 23:05:35.452  1647  1659 I dvm_lock_sample: [system_server,1,Binder:1647_2,623,ActivityManagerService.java,17696,ActivityStarter.java,757,100]
+10-29 23:05:35.472  1970  1970 I am_on_paused_called: [0,com.android.settings.Settings,handlePauseActivity]
+10-29 23:05:35.719  1647  2072 W ActivityManager: Slow operation: 211ms so far, now at startProcess: returned from zygote!
+10-29 23:05:35.720  1647  2072 W ActivityManager: Slow operation: 214ms so far, now at startProcess: done updating battery stats
+10-29 23:05:35.721  1647  2072 I am_proc_start: [0,3419,10063,dev.elifoot.qa.android_reference,activity,dev.elifoot.qa.android_reference/.MainActivity]
+10-29 23:05:35.721  1647  2072 W ActivityManager: Slow operation: 214ms so far, now at startProcess: building log message
+10-29 23:05:35.722  1647  2072 I ActivityManager: Start proc 3419:dev.elifoot.qa.android_reference/u0a63 for activity dev.elifoot.qa.android_reference/.MainActivity
+10-29 23:05:35.722  1647  2072 W ActivityManager: Slow operation: 215ms so far, now at startProcess: starting to update pids map
+10-29 23:05:35.722  1647  2072 W ActivityManager: Slow operation: 216ms so far, now at startProcess: done updating pids map
+10-29 23:05:35.722  1647  2072 W ActivityManager: Slow operation: 220ms so far, now at startProcess: done starting proc!
+10-29 23:05:35.819  1285  1673 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 528384
+10-29 23:05:35.835  1647  2072 D         : HostConnection::get() New Host Connection established 0x7d77965f9d80, tid 2072
+10-29 23:05:35.876  1285  1285 E EGL_emulation: tid 1285: eglCreateSyncKHR(1962): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-29 23:05:35.905  3419  3419 I art     : Late-enabling -Xcheck:jni
+10-29 23:05:36.046  1647  1662 W art     : Long monitor contention with owner Binder:1647_7 (2072) at void com.android.server.am.ActivityManagerService.activityPaused(android.os.IBinder)(ActivityManagerService.java:6916) waiters=1 in void com.android.server.am.ActivityManagerService.dispatchUidsChanged() for 533ms
+10-29 23:05:36.047  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,533,ActivityManagerService.java,4219,-,6916,100]
+10-29 23:05:36.196  3419  3419 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 23:05:36.416  1647  1859 I am_proc_bound: [0,3419,dev.elifoot.qa.android_reference]
+10-29 23:05:36.501  1647  1859 I am_restart_activity: [0,190753420,6,dev.elifoot.qa.android_reference/.MainActivity]
+10-29 23:05:36.583  1970  1988 D EGL_emulation: eglMakeCurrent: 0x7d77a63afd60: ver 2 0 (tinfo 0x7d77a63ad760)
+10-29 23:05:36.663  1938  1938 D RILJ    : [3816]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:36.692  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:36.693  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:36.695  1938  1938 D RILJ    : [3817]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:36.730  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:36.732  1303  1319 D AT      : AT< OK
+10-29 23:05:36.741  1938  2066 D RILJ    : [3816]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:36.756  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:36.756  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:36.756  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:40.497     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:36.757  1303  1319 D AT      : AT< OK
+10-29 23:05:36.759  1938  2066 D RILJ    : [3817]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:36.907  1647  1668 I sysui_action: [321,2231]
+10-29 23:05:36.909  1647  1668 I sysui_action: [320,1]
+10-29 23:05:36.909  1647  1668 I sysui_action: [319,2234]
+10-29 23:05:36.913  1647  1662 W art     : Long monitor contention with owner Binder:1647_4 (1859) at void com.android.server.am.ActivityManagerService.attachApplication(android.app.IApplicationThread)(ActivityManagerService.java:6669) waiters=2 in void com.android.server.am.ActivityManagerService.dispatchProcessesChanged() for 413ms
+10-29 23:05:36.913  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,413,ActivityManagerService.java,4156,-,6669,82]
+10-29 23:05:37.295  1285  1674 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1536000
+10-29 23:05:37.975  3419  3419 I art     : Rejecting re-init on previously-failed class java.lang.Class<io.flutter.embedding.android.FlutterActivity$1>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/window/OnBackAnimationCallback;
+10-29 23:05:37.975  3419  3419 I art     :   at java.lang.Object java.lang.Class.newInstance!() (Class.java:-2)
+10-29 23:05:37.975  3419  3419 I art     :   at android.app.Activity android.app.Instrumentation.newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent) (Instrumentation.java:1078)
+10-29 23:05:37.975  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2557)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:37.975  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:37.976  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:37.976  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:37.976  3419  3419 I art     : Caused by: java.lang.ClassNotFoundException: Didn't find class "android.window.OnBackAnimationCallback" on path: DexPathList[[zip file "/data/app/dev.elifoot.qa.android_reference-1/base.apk"],nativeLibraryDirectories=[/data/app/dev.elifoot.qa.android_reference-1/lib/x86_64, /data/app/dev.elifoot.qa.android_reference-1/base.apk!/lib/x86_64, /system/lib64, /vendor/lib64]]
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:56)
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:380)
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Object java.lang.Class.newInstance!() (Class.java:-2)
+10-29 23:05:37.976  3419  3419 I art     :   at android.app.Activity android.app.Instrumentation.newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent) (Instrumentation.java:1078)
+10-29 23:05:37.976  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2557)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:37.976  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:37.976  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:37.976  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:37.977  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:37.977  3419  3419 I art     : 
+10-29 23:05:38.007  3419  3419 I art     : Rejecting re-init on previously-failed class java.lang.Class<io.flutter.embedding.android.FlutterActivity$$ExternalSyntheticLambda0>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/window/OnBackInvokedCallback;
+10-29 23:05:38.007  3419  3419 I art     :   at java.lang.Object java.lang.Class.newInstance!() (Class.java:-2)
+10-29 23:05:38.007  3419  3419 I art     :   at android.app.Activity android.app.Instrumentation.newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent) (Instrumentation.java:1078)
+10-29 23:05:38.007  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2557)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:38.007  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:38.007  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:38.007  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:38.007  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:38.008  3419  3419 I art     : Caused by: java.lang.ClassNotFoundException: Didn't find class "android.window.OnBackInvokedCallback" on path: DexPathList[[zip file "/data/app/dev.elifoot.qa.android_reference-1/base.apk"],nativeLibraryDirectories=[/data/app/dev.elifoot.qa.android_reference-1/lib/x86_64, /data/app/dev.elifoot.qa.android_reference-1/base.apk!/lib/x86_64, /system/lib64, /vendor/lib64]]
+10-29 23:05:38.008  3419  3419 I art     :   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:56)
+10-29 23:05:38.008  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:380)
+10-29 23:05:38.008  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+10-29 23:05:38.008  3419  3419 I art     :   at java.lang.Object java.lang.Class.newInstance!() (Class.java:-2)
+10-29 23:05:38.008  3419  3419 I art     :   at android.app.Activity android.app.Instrumentation.newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent) (Instrumentation.java:1078)
+10-29 23:05:38.008  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2557)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:38.008  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:38.008  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:38.009  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:38.009  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:38.009  3419  3419 I art     : 
+10-29 23:05:38.117  3221  3233 W art     : Suspending all threads took: 339.320ms
+10-29 23:05:38.179  1647  1657 W art     : Suspending all threads took: 25.995ms
+10-29 23:05:38.320  1647  1657 I art     : Background partial concurrent mark sweep GC freed 9918(642KB) AllocSpace objects, 2(40KB) LOS objects, 33% free, 7MB/11MB, paused 33.950ms total 2.324s
+10-29 23:05:38.435  3419  3419 I art     : Rejecting re-init on previously-failed class java.lang.Class<io.flutter.embedding.engine.FlutterJNI$$ExternalSyntheticLambda1>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/graphics/ImageDecoder$OnHeaderDecodedListener;
+10-29 23:05:38.436  3419  3419 I art     :   at io.flutter.embedding.engine.FlutterJNI io.flutter.embedding.engine.FlutterJNI$Factory.provideFlutterJNI() (FlutterJNI.java:133)
+10-29 23:05:38.436  3419  3419 I art     :   at void io.flutter.FlutterInjector$Builder.fillDefaults() (FlutterInjector.java:169)
+10-29 23:05:38.436  3419  3419 I art     :   at io.flutter.FlutterInjector io.flutter.FlutterInjector$Builder.build() (FlutterInjector.java:179)
+10-29 23:05:38.436  3419  3419 I art     :   at io.flutter.FlutterInjector io.flutter.FlutterInjector.instance() (FlutterInjector.java:57)
+10-29 23:05:38.436  3419  3419 I art     :   at void io.flutter.embedding.engine.FlutterEngineGroup.<init>(android.content.Context, java.lang.String[]) (FlutterEngineGroup.java:60)
+10-29 23:05:38.436  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.setUpFlutterEngine() (FlutterActivityAndFragmentDelegate.java:336)
+10-29 23:05:38.436  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.onAttach(android.content.Context) (FlutterActivityAndFragmentDelegate.java:197)
+10-29 23:05:38.436  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivity.onCreate(android.os.Bundle) (FlutterActivity.java:646)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:6679)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1118)
+10-29 23:05:38.436  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2618)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:38.436  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:38.437  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:38.437  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:38.437  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:38.437  3419  3419 I art     : Caused by: java.lang.ClassNotFoundException: Didn't find class "android.graphics.ImageDecoder$OnHeaderDecodedListener" on path: DexPathList[[zip file "/data/app/dev.elifoot.qa.android_reference-1/base.apk"],nativeLibraryDirectories=[/data/app/dev.elifoot.qa.android_reference-1/lib/x86_64, /data/app/dev.elifoot.qa.android_reference-1/base.apk!/lib/x86_64, /system/lib64, /vendor/lib64]]
+10-29 23:05:38.437  3419  3419 I art     :   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:56)
+10-29 23:05:38.437  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:380)
+10-29 23:05:38.437  3419  3419 I art     :   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+10-29 23:05:38.437  3419  3419 I art     :   at io.flutter.embedding.engine.FlutterJNI io.flutter.embedding.engine.FlutterJNI$Factory.provideFlutterJNI() (FlutterJNI.java:133)
+10-29 23:05:38.437  3419  3419 I art     :   at void io.flutter.FlutterInjector$Builder.fillDefaults() (FlutterInjector.java:169)
+10-29 23:05:38.437  3419  3419 I art     :   at io.flutter.FlutterInjector io.flutter.FlutterInjector$Builder.build() (FlutterInjector.java:179)
+10-29 23:05:38.437  3419  3419 I art     :   at io.flutter.FlutterInjector io.flutter.FlutterInjector.instance() (FlutterInjector.java:57)
+10-29 23:05:38.437  3419  3419 I art     :   at void io.flutter.embedding.engine.FlutterEngineGroup.<init>(android.content.Context, java.lang.String[]) (FlutterEngineGroup.java:60)
+10-29 23:05:38.437  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.setUpFlutterEngine() (FlutterActivityAndFragmentDelegate.java:336)
+10-29 23:05:38.437  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivityAndFragmentDelegate.onAttach(android.content.Context) (FlutterActivityAndFragmentDelegate.java:197)
+10-29 23:05:38.437  3419  3419 I art     :   at void io.flutter.embedding.android.FlutterActivity.onCreate(android.os.Bundle) (FlutterActivity.java:646)
+10-29 23:05:38.437  3419  3419 I art     :   at void android.app.Activity.performCreate(android.os.Bundle) (Activity.java:6679)
+10-29 23:05:38.437  3419  3419 I art     :   at void android.app.Instrumentation.callActivityOnCreate(android.app.Activity, android.os.Bundle) (Instrumentation.java:1118)
+10-29 23:05:38.437  3419  3419 I art     :   at android.app.Activity android.app.ActivityThread.performLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent) (ActivityThread.java:2618)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.app.ActivityThread.handleLaunchActivity(android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:2726)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.app.ActivityThread.-wrap12(android.app.ActivityThread, android.app.ActivityThread$ActivityClientRecord, android.content.Intent, java.lang.String) (ActivityThread.java:-1)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1477)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:102)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.os.Looper.loop() (Looper.java:154)
+10-29 23:05:38.438  3419  3419 I art     :   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6119)
+10-29 23:05:38.438  3419  3419 I art     :   at java.lang.Object java.lang.reflect.Method.invoke!(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+10-29 23:05:38.438  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run() (ZygoteInit.java:886)
+10-29 23:05:38.438  3419  3419 I art     :   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:776)
+10-29 23:05:38.438  3419  3419 I art     : 
+10-29 23:05:39.202  3419  3419 W System  : ClassLoader referenced unknown path: 
+10-29 23:05:39.213  3419  3419 D ApplicationLoaders: ignored Vulkan layer search path /data/app/dev.elifoot.qa.android_reference-1/lib/x86_64:/data/app/dev.elifoot.qa.android_reference-1/base.apk!/lib/x86_64 for namespace 0x7d77b3bbc0f0
+10-29 23:05:39.566  3419  3419 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(527)] [Action Required]: Impeller opt-out deprecated.
+10-29 23:05:39.566  3419  3419 I flutter :     The application opted out of Impeller by either using the
+10-29 23:05:39.566  3419  3419 I flutter :     `--no-enable-impeller` flag or the
+10-29 23:05:39.566  3419  3419 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+10-29 23:05:39.566  3419  3419 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+10-29 23:05:39.566  3419  3419 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+10-29 23:05:39.566  3419  3419 I flutter :     the issue.
+10-29 23:05:39.566  3419  3419 I flutter : 
+10-29 23:05:39.566  3419  3419 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+10-29 23:05:39.566  3419  3419 I flutter : 
+10-29 23:05:39.936  3419  3443 I flutter : The Dart VM service is listening on http://127.0.0.1:46666/bSqM4zdr6EY=/
+10-29 23:05:40.532  1647  1859 I ActivityManager: Killing 2212:com.android.launcher3:wallpaper_chooser/u0a42 (adj 906): empty #17
+10-29 23:05:40.532  1647  1859 I am_kill : [0,2212,com.android.launcher3:wallpaper_chooser,906,empty #17]
+10-29 23:05:40.537  1647  1859 I ActivityManager: Killing 1946:com.android.settings:CryptKeeper/1000 (adj 906): empty #18
+10-29 23:05:40.537  1647  1859 I am_kill : [0,1946,com.android.settings:CryptKeeper,906,empty #18]
+10-29 23:05:40.843  1647  2229 I am_proc_died: [0,2212,com.android.launcher3:wallpaper_chooser]
+10-29 23:05:40.844  1647  2229 D ActivityManager: cleanUpApplicationRecord -- 2212
+10-29 23:05:40.857  1647  2498 I am_proc_died: [0,1946,com.android.settings:CryptKeeper]
+10-29 23:05:40.858  1647  2498 D ActivityManager: cleanUpApplicationRecord -- 1946
+10-29 23:05:41.561  3419  3419 W art     : Verification of boolean io.flutter.view.AccessibilityBridge.doesLayoutInDisplayCutoutModeRequireLeftInset() took 238.318ms
+10-29 23:05:41.881  3419  3419 I am_on_resume_called: [0,dev.elifoot.qa.android_reference.MainActivity,LAUNCH_ACTIVITY]
+10-29 23:05:42.789  1647  2229 W art     : Long monitor contention with owner android.bg (1660) at void com.android.server.InputMethodManagerService$MyPackageMonitor.onSomePackagesChanged()(InputMethodManagerService.java:671) waiters=0 in void com.android.server.InputMethodManagerService.addClient(com.android.internal.view.IInputMethodClient, com.android.internal.view.IInputContext, int, int) for 691ms
+10-29 23:05:42.790  1647  2229 I dvm_lock_sample: [system_server,1,Binder:1647_8,691,InputMethodManagerService.java,1231,-,671,100]
+10-29 23:05:43.516     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:42.813  1285  1673 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 23:05:42.871  3419  3419 D         : HostConnection::get() New Host Connection established 0x7d7796068ce0, tid 3419
+10-29 23:05:43.001  3419  3419 I Choreographer: Skipped 320 frames!  The application may be doing too much work on its main thread.
+10-29 23:05:43.274  3419  3445 D         : HostConnection::get() New Host Connection established 0x7d7796069040, tid 3445
+10-29 23:05:43.302  3419  3445 I OpenGLRenderer: Initialized EGL, version 1.4
+10-29 23:05:43.304  3419  3445 D OpenGLRenderer: Swap behavior 1
+10-29 23:05:43.320  3419  3445 D EGL_emulation: eglCreateContext: 0x7d77af5364a0: maj 2 min 0 rcv 2
+10-29 23:05:43.324  3419  3445 D EGL_emulation: eglMakeCurrent: 0x7d77af5364a0: ver 2 0 (tinfo 0x7d77961ea460)
+10-29 23:05:44.274  3419  3419 I Choreographer: Skipped 67 frames!  The application may be doing too much work on its main thread.
+10-29 23:05:44.769  1285  1325 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 770048
+10-29 23:05:44.774  3419  3436 D         : HostConnection::get() New Host Connection established 0x7d7798c46580, tid 3436
+10-29 23:05:44.891  3419  3445 D EGL_emulation: eglMakeCurrent: 0x7d77af5364a0: ver 2 0 (tinfo 0x7d77961ea460)
+10-29 23:05:45.073  1285  1673 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 770048
+10-29 23:05:45.356  1647  1662 I dvm_lock_sample: [system_server,1,android.ui,6,MessageQueue.java,325,-,541,1]
+10-29 23:05:46.537     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:45.411  1647  1668 I sysui_action: [322,10735]
+10-29 23:05:45.412  1647  1668 I am_activity_launch_time: [0,190753420,dev.elifoot.qa.android_reference/.MainActivity,9908,9908]
+10-29 23:05:45.433  1647  1668 I ActivityManager: Displayed dev.elifoot.qa.android_reference/.MainActivity: +9s908ms
+10-29 23:05:45.435  1647  2063 I sysui_action: [323,dev.elifoot.qa.android_reference/.MainActivity]
+10-29 23:05:45.435  1647  2063 I sysui_action: [324,true]
+10-29 23:05:45.435  1647  2063 I sysui_action: [325,703]
+10-29 23:05:45.453  1647  1661 I am_stop_activity: [0,223294315,com.android.settings/.Settings]
+10-29 23:05:46.285  3401  3401 D AndroidRuntime: Shutting down VM
+10-29 23:05:46.517  2507  2507 I Choreographer: Skipped 46 frames!  The application may be doing too much work on its main thread.
+10-29 23:05:48.752  3419  3447 D ProfileInstaller: Installing profile for dev.elifoot.qa.android_reference
+10-29 23:05:49.617     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:50.809  1970  1970 I sysui_action: [385,com.android.settings.Settings$FingerprintEnrollSuggestionActivity]
+10-29 23:05:50.810  1970  1970 I sysui_action: [385,com.android.settings.WallpaperSuggestionActivity]
+10-29 23:05:51.539  1970  1970 I am_on_stop_called: [0,com.android.settings.Settings,handleStopActivity]
+10-29 23:05:52.642     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:52.988  3419  3419 I flutter : QA004_REFERENCE frames=46 over100ms=46
+10-29 23:05:55.105  1970  1970 I Choreographer: Skipped 213 frames!  The application may be doing too much work on its main thread.
+10-29 23:05:55.106  1970  3299 E BluetoothAdapter: Bluetooth binder is null
+10-29 23:05:55.208  1970  1970 I art     : Waiting for a blocking GC DisableMovingGc
+10-29 23:05:55.460  1647  1661 W ActivityManager: Activity stop timeout for ActivityRecord{d4f336b u0 com.android.settings/.Settings t5}
+10-29 23:05:55.651  1970  1970 I art     : WaitForGcToComplete blocked for 442.285ms for cause DisableMovingGc
+10-29 23:05:55.651  1970  1970 I art     : Starting a blocking GC DisableMovingGc
+10-29 23:05:55.769     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:56.291  1647  1753 I ActivityManager: Activity reported stop, but no longer stopping: ActivityRecord{d4f336b u0 com.android.settings/.Settings t5}
+10-29 23:05:56.938  1938  1938 D RILJ    : [3818]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:57.021  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:57.022  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:57.022  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:57.023  1303  1319 D AT      : AT< OK
+10-29 23:05:57.024  1938  2066 D RILJ    : [3818]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:57.038  1938  1938 D RILJ    : [3819]> SIGNAL_STRENGTH [SUB0]
+10-29 23:05:57.051  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:05:57.051  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:05:57.052  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:05:57.052  1303  1319 D AT      : AT< OK
+10-29 23:05:57.054  1938  2066 D RILJ    : [3819]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:05:58.791     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:05:59.356  1647  1660 W VoiceInteractionManagerService: no available voice recognition services found for user 0
+10-29 23:06:01.798     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:02.983  3419  3419 I flutter : QA004_REFERENCE frames=111 over100ms=111
+10-29 23:06:04.817     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:05.989  2174  2174 W art     : Long monitor contention with owner launcher-loader (2201) at boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long)(MessageQueue.java:541) waiters=0 in android.os.Message android.os.MessageQueue.next() for 182ms
+10-29 23:06:05.990  2174  2174 I dvm_lock_sample: [com.android.launcher3,1,main,182,MessageQueue.java,325,-,541,36]
+10-29 23:06:07.830     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:10.685  1647  1660 I am_pss  : [3419,10063,dev.elifoot.qa.android_reference,45279232,42110976,0]
+10-29 23:06:10.843     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:12.986  3419  3419 I flutter : QA004_REFERENCE frames=182 over100ms=182
+10-29 23:06:13.889     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:14.985  1647  1660 I am_pss  : [2629,10001,android.process.acore,13171712,10514432,0]
+10-29 23:06:16.909     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:17.087  1938  1938 D RILJ    : [3820]> SIGNAL_STRENGTH [SUB0]
+10-29 23:06:17.099  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:06:17.100  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:06:17.100  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:06:17.100  1303  1319 D AT      : AT< OK
+10-29 23:06:17.102  1938  2066 D RILJ    : [3820]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:06:17.160  1938  1938 D RILJ    : [3821]> SIGNAL_STRENGTH [SUB0]
+10-29 23:06:17.174  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:06:17.175  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:06:17.175  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:06:17.175  1303  1319 D AT      : AT< OK
+10-29 23:06:17.177  1938  2066 D RILJ    : [3821]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:06:18.725  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 23:06:18.742  1938  1938 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 23:06:19.934     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:18.857  1938  1938 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 23:06:18.885  1938  1938 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 23:06:18.888  1938  1938 D RetryPolicy: retry #4 for com.android.phone.vvm.omtp.ActivationTask@abf4812 queued, executing in 5000
+10-29 23:06:18.955  1938  1938 D VvmTaskScheduler: minimal wait time:4935
+10-29 23:06:19.053  1938  1938 D VvmTaskScheduler: minimal wait time:4836
+10-29 23:06:22.407     0     0 W healthd : battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+10-29 23:06:22.956     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:22.988  3419  3419 I flutter : QA004_REFERENCE frames=246 over100ms=246
+10-29 23:06:23.954  1938  2863 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@abf4812
+10-29 23:06:26.016     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:24.807  1938  2863 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 23:06:24.832  1938  2863 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 23:06:25.239  1938  2863 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 23:06:25.584  1938  2863 D SmsNumberUtils: enter filterDestAddr. destAddr="122"
+10-29 23:06:25.594  1938  2863 D SmsNumberUtils: destAddr is not formatted.
+10-29 23:06:25.594  1938  2863 D SmsNumberUtils: leave filterDestAddr, new destAddr="122"
+10-29 23:06:25.685  1938  2863 V GsmSMSDispatcher: No carrier package.
+10-29 23:06:25.752  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:us emergencyNumbers: 
+10-29 23:06:25.753  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:06:25.757  1938  2863 D GsmSMSDispatcher: sendSms:  isIms()=false mRetryCount=0 mImsRetry=0 mMessageRef=0 SS=0
+10-29 23:06:25.760  1938  2863 D RILJ    : [3822]> SEND_SMS [SUB0]
+10-29 23:06:25.803  1303  1317 D RIL     : onRequest: SEND_SMS
+10-29 23:06:25.803  1303  1317 D RIL     : requestSendSMS datalen =16
+10-29 23:06:25.804  1303  1317 D AT      : AT> AT+CMGS=30
+10-29 23:06:25.804  1303  1319 D AT      : AT< > 
+10-29 23:06:25.804  1303  1319 D AT      : AT> 004100038121f20004150605040710000041637469766174653a64743d3135^Z
+10-29 23:06:25.805  1303  1319 D AT      : AT< +CMGS: 0
+10-29 23:06:25.805  1303  1319 D AT      : AT< OK
+10-29 23:06:25.807  1938  2066 D RILJ    : [3822]< SEND_SMS { mMessageRef = 1, mErrorCode = 0, mAckPdu = null} [SUB0]
+10-29 23:06:25.825  1938  1938 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 23:06:25.970  1938  2863 D PhoneNumberUtils: slotId:0 subId:1 country:US emergencyNumbers: 
+10-29 23:06:25.970  1938  2863 D PhoneNumberUtils: System property doesn't provide any emergency numbers. Use embedded logic for determining ones.
+10-29 23:06:29.040     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:29.690  1647  1660 I am_pss  : [2864,10010,android.process.media,10883072,7979008,0]
+10-29 23:06:32.055     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:32.982  3419  3419 I flutter : QA004_REFERENCE frames=304 over100ms=304
+10-29 23:06:35.068     0     0 D ieee80211 phy0: mac80211_hwsim_get_survey (idx=0)
+10-29 23:06:37.197  1938  1938 D RILJ    : [3823]> SIGNAL_STRENGTH [SUB0]
+10-29 23:06:37.225  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:06:37.225  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:06:37.225  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:06:37.225  1303  1319 D AT      : AT< OK
+10-29 23:06:37.227  1938  2066 D RILJ    : [3823]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]
+10-29 23:06:37.251  1938  1938 D RILJ    : [3824]> SIGNAL_STRENGTH [SUB0]
+10-29 23:06:37.264  1303  1317 D RIL     : onRequest: SIGNAL_STRENGTH
+10-29 23:06:37.264  1303  1317 D AT      : AT> AT+CSQ
+10-29 23:06:37.264  1303  1319 D AT      : AT< +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200
+10-29 23:06:37.264  1303  1319 D AT      : AT< OK
+10-29 23:06:37.270  1938  2066 D RILJ    : [3824]< SIGNAL_STRENGTH SignalStrength: 12 4 90 120 80 120 4 90 100 10 30 7 2147483647 gsm|lte [SUB0]

@@ -1,0 +1,90 @@
+{
+  "task": "ELIFOOT_GAMEPLAY_BALANCE_100_SEASONS_005",
+  "generatedAtUtc": "2026-10-30T00:16:53.8635944Z",
+  "engineUsed": "MatchSimulationEngine.SimulateFullMatchReal (100% Real Minute-by-Minute 1..90 \u002B ET 91..120 \u002B Penalty Shootout)",
+  "shortcutsOrAggregateScoresUsed": false,
+  "totalSeasonsAcrossAllExperiments": 301,
+  "totalRealMatchesAcrossAllExperiments": 105651,
+  "totalRealMinutesAcrossAllExperiments": 9794220,
+  "deterministicReplayCheck": {
+    "seed": 199801,
+    "seasonReplayed": 1,
+    "matchesVerified": 351,
+    "bitForBitIdentical": true,
+    "stateSignature": "733:346:367:884:154:1076:317197877,91"
+  },
+  "experiments": [
+    {
+      "experimentId": "EXP_A_100_SEASONS_AI_199801",
+      "worldSeed": 199801,
+      "scenario": "Cen\u00E1rio A: 128 clubes controlados por IA com personalidades distintas",
+      "startSeason": 1,
+      "endSeason": 100,
+      "seasonsCompleted": 100,
+      "totalRounds": 2200,
+      "totalMatchesScheduled": 35100,
+      "totalMatchesCompleted": 35100,
+      "pendingMatches": 0,
+      "realMinutesSimulated": 3253440,
+      "elapsedMilliseconds": 59769,
+      "matchesPerSecond": 587.3,
+      "integrityResult": {
+        "passed": true,
+        "clubDuplicationOrDisappearanceViolations": 0,
+        "cupBracketDuplicateClubViolations": 0,
+        "invalidSquadLimitViolations": 0,
+        "soleGoalkeeperSoldViolations": 0,
+        "invalidLineupSelectionViolations": 0,
+        "humanInDistritalViolations": 0
+      }
+    },
+    {
+      "experimentId": "EXP_B_100_SEASONS_8_HUMAN_AGENTS_199802",
+      "worldSeed": 199802,
+      "scenario": "Cen\u00E1rio B: 8 agentes treinadores humanos automatizados com pol\u00EDticas distintas \u002B 120 clubes IA",
+      "startSeason": 1,
+      "endSeason": 100,
+      "seasonsCompleted": 100,
+      "totalRounds": 2200,
+      "totalMatchesScheduled": 35100,
+      "totalMatchesCompleted": 35100,
+      "pendingMatches": 0,
+      "realMinutesSimulated": 3254010,
+      "elapsedMilliseconds": 56009,
+      "matchesPerSecond": 626.7,
+      "integrityResult": {
+        "passed": true,
+        "clubDuplicationOrDisappearanceViolations": 0,
+        "cupBracketDuplicateClubViolations": 0,
+        "invalidSquadLimitViolations": 0,
+        "soleGoalkeeperSoldViolations": 0,
+        "invalidLineupSelectionViolations": 0,
+        "humanInDistritalViolations": 0
+      }
+    },
+    {
+      "experimentId": "EXP_C_100_SEASONS_STRESS_ECONOMY_199803",
+      "worldSeed": 199803,
+      "scenario": "Cen\u00E1rio C: Mercado e economia sob estresse (clubes com pouco caixa, est\u00E1dios grandes degradados e elencos desbalanceados)",
+      "startSeason": 1,
+      "endSeason": 100,
+      "seasonsCompleted": 100,
+      "totalRounds": 2200,
+      "totalMatchesScheduled": 35100,
+      "totalMatchesCompleted": 35100,
+      "pendingMatches": 0,
+      "realMinutesSimulated": 3254220,
+      "elapsedMilliseconds": 57620,
+      "matchesPerSecond": 609.2,
+      "integrityResult": {
+        "passed": true,
+        "clubDuplicationOrDisappearanceViolations": 0,
+        "cupBracketDuplicateClubViolations": 0,
+        "invalidSquadLimitViolations": 0,
+        "soleGoalkeeperSoldViolations": 0,
+        "invalidLineupSelectionViolations": 0,
+        "humanInDistritalViolations": 0
+      }
+    }
+  ]
+}

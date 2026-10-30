@@ -1,0 +1,25 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Debug\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Debug\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Debug\net10.0\Elifoot.Application.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Debug\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Application.Tests -> D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Debug\net10.0\Elifoot.Application.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Debug\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Simulation.Tests -> D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Debug\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Debug\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Api -> D:\elifoot_98\src\Elifoot.Api\bin\Debug\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Debug\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Debug\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:     3, Ignorado:     0, Total:     3, Duração: 2 s - Elifoot.Application.Tests.dll (net10.0)
+
+Aprovado!  – Com falha:     0, Aprovado:     9, Ignorado:     0, Total:     9, Duração: 4 s - Elifoot.Domain.Tests.dll (net10.0)
+
+Aprovado!  – Com falha:     0, Aprovado:     5, Ignorado:     0, Total:     5, Duração: 37 s - Elifoot.Integration.Tests.dll (net10.0)
+
+Aprovado!  – Com falha:     0, Aprovado:     2, Ignorado:     0, Total:     2, Duração: 3 m 9 s - Elifoot.Simulation.Tests.dll (net10.0)

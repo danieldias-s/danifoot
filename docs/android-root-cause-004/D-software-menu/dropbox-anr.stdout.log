@@ -1,0 +1,80 @@
+Drop box contents: 26 entries
+Searching for: system_app_anr
+
+========================================
+2026-10-29 23:24:52 system_app_anr (text, 1851 bytes)
+Process: com.android.systemui
+Flags: 0x38c83e0d
+Package: com.android.systemui v25 (7.1.1)
+Foreground: No
+Subject: executing service com.android.systemui/.ImageWallpaper
+Build: Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+
+CPU usage from 17374ms to 350ms ago (2026-10-29 23:24:32.695 to 2026-10-29 23:24:49.719):
+  29% 1647/system_server: 18% user + 10% kernel / faults: 3267 minor 29 major
+  11% 1295/media.codec: 8.2% user + 2.8% kernel / faults: 3886 minor 12 major
+  6% 1865/com.android.systemui: 4.1% user + 1.8% kernel / faults: 1619 minor 9 major
+  2.6% 1285/surfaceflinger: 1.7% user + 0.8% kernel / faults: 59 minor
+  2% 1822/com.android.inputmethod.latin: 1.5% user + 0.4% kernel / faults: 197 minor 2 major
+  0% 1241/debuggerd64: 0% user + 0% kernel / faults: 79 minor
+  1.1% 1298/mediaserver: 0.8% user + 0.3% kernel / faults: 43 minor
+  0% 1240/debuggerd: 0% user + 0% kernel / faults: 177 minor
+  0.5% 1288/zygote64: 0.1% user + 0.3% kernel / faults: 440 minor
+  0.7% 8/rcu_preempt: 0% user + 0.7% kernel
+  0.7% 1234/logd: 0% user + 0.7% kernel / faults: 13 minor
+  0.6% 1290/audioserver: 0.3% user + 0.2% kernel / faults: 41 minor
+  0.5% 1161/kworker/0:1H: 0% user + 0.5% kernel
+  0.5% 1232/jbd2/vdc-8: 0% user + 0.5% kernel
+  0.5% 1284/servicemanager: 0.2% user + 0.2% kernel
+  0.5% 1314/logcat: 0.1% user + 0.4% kernel
+  0.2% 3/ksoftirqd/0: 0% user + 0.2% kernel
+  0.1% 1291/cameraserver: 0.1% user + 0% kernel / faults: 25 minor
+  0% 4/kworker/0:0: 0% user + 0% kernel
+  0% 13/kworker/u2:1: 0% user + 0% kernel
+  0% 1815/wpa_supplicant: 0% user + 0% kernel / faults: 1 minor
+ +0% 1980/com.android.phone: 0% user + 0% kernel
+ +0% 1993/com.android.settings:CryptKeeper: 0% user + 0% kernel
+ +0% 2017/com.android.settings: 0% user + 0% kernel
+100% TOTAL: 57% user + 33% kernel + 9% iowait + 0.3% softirq
+
+========================================
+2026-10-29 23:26:23 system_app_anr (text, 2011 bytes)
+Process: com.android.systemui
+Flags: 0x38c83e0d
+Package: com.android.systemui v25 (7.1.1)
+Foreground: No
+Subject: Broadcast of Intent { act=android.intent.action.TIME_TICK flg=0x50000014 (has extras) }
+Build: Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+
+CPU usage from 0ms to 10028ms later (2026-10-29 23:26:13.051 to 2026-10-29 23:26:23.079):
+  9.2% 1647/system_server: 6.2% user + 3% kernel / faults: 99 minor
+  6.6% 2284/com.android.launcher3: 4.1% user + 2.5% kernel / faults: 125 minor
+  1.6% 2017/com.android.settings: 1.3% user + 0.3% kernel / faults: 1479 minor
+  1.1% 1299/netd: 0.2% user + 0.9% kernel / faults: 120 minor
+  1% 8/rcu_preempt: 0% user + 1% kernel
+  1% 1822/com.android.inputmethod.latin: 0.9% user + 0.1% kernel / faults: 21 minor
+  0.9% 2323/com.android.launcher3:wallpaper_chooser: 0.9% user + 0% kernel / faults: 395 minor
+  0.8% 1232/jbd2/vdc-8: 0% user + 0.8% kernel
+  0.8% 1285/surfaceflinger: 0.6% user + 0.2% kernel
+  0.8% 2152/com.android.systemui: 0.6% user + 0.2% kernel / faults: 75 minor
+  0.6% 1980/com.android.phone: 0.4% user + 0.2% kernel
+  0.5% 1161/kworker/0:1H: 0% user + 0.5% kernel
+  0.5% 1234/logd: 0.3% user + 0.2% kernel / faults: 3 minor
+  0.5% 1287/adbd: 0.5% user + 0% kernel / faults: 64 minor
+  0.4% 2299/com.android.carrierconfig: 0.4% user + 0% kernel / faults: 94 minor
+  0.2% 3/ksoftirqd/0: 0% user + 0.2% kernel
+  0.2% 1280/healthd: 0.1% user + 0.1% kernel
+  0.1% 4/kworker/0:0: 0% user + 0.1% kernel
+  0.1% 13/kworker/u2:1: 0% user + 0.1% kernel
+  0% 916/ueventd: 0% user + 0% kernel
+  0.1% 1284/servicemanager: 0% user + 0.1% kernel
+  0.1% 1288/zygote64: 0% user + 0.1% kernel
+  0.1% 1301/rild: 0.1% user + 0% kernel
+  0.1% 1314/logcat: 0.1% user + 0% kernel
+  0.1% 1440/hostapd: 0.1% user + 0% kernel
+  0.1% 2370/logcat: 0% user + 0.1% kernel / faults: 34 minor
+ +0% 2431/sh: 0% user + 0% kernel
+ +0% 2433/app_process: 0% user + 0% kernel
+ +0% 2438/ip6tables: 0% user + 0% kernel
+100% TOTAL: 74% user + 26% kernel
+

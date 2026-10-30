@@ -1,0 +1,763 @@
+{
+  "Task": "ELIFOOT_PLAYER_RANKINGS_009_RECOVERY",
+  "GeneratedUtc": "2026-10-30T14:25:17.697Z",
+  "Status": "PARTIAL",
+  "Results": {
+    "STATUS": "PARTIAL",
+    "DOMAIN_TESTS": "PASS — 195 (129 específicos 009)",
+    "INTEGRATION_TESTS": "PASS — 29 (11 novos 009)",
+    "SIMULATION_TESTS": "PASS — 8 (3 novos 009)",
+    "FLUTTER_TESTS": "PASS — 28 regressões + 2 testes separados com dados reais capturados",
+    "GOAL_WITHOUT_AUTHOR": "PASS — placar e goleiro preservados; sem artilheiro inventado",
+    "ROOT_CAUSE": "Teste antigo não aceitava aviso; implementação confundia autoria incompleta com participação incompleta.",
+    "FIX_APPLIED": "Validação de autor/clube/campo e separação HasIncompleteGoals/HasIncompleteAppearances.",
+    "PLAYER_RANKINGS": "PASS — geral, quatro divisões, Taça e períodos",
+    "TOP_SCORER_AWARD": "PASS — empatados, 3 milhões por vencedor, clube no fechamento",
+    "GOALKEEPER_RANKING": "PASS — mínimo 20 por recorte e gols no tempo em campo",
+    "DEFENDER_RANKING": "PASS — índice racional exato, cartões reais, mínimo 20",
+    "HISTORICAL_PERSISTENCE": "PASS — transferências, temporadas, recarga e migração",
+    "FINANCIAL_AWARD_IDEMPOTENCE": "PASS — ledger, títulos e saldo preservados após repetição/reinício",
+    "WEB_BROWSER": "BLOCKED — ferramenta nega acesso, apesar da ativação informada pelo usuário",
+    "DATABASE_PERSISTENCE": "PASS — SQLite real, backup008 somente leitura e reinício do processo",
+    "REGRESSIONS": "PASS — carreira008, mercado, economia, estádio, pausa, substituições, competições e multiplayer",
+    "KNOWN_ISSUES": "Navegador real pendente; lacunas históricas documentadas. Renderização Flutter complementar não substitui Browser Use.",
+    "LOCAL_FLUTTER_RENDER": "PASS — 12 imagens; transporte HTTP reproduzido, sem dados esportivos inventados"
+  },
+  "OriginalTaskAndAddendum": {
+    "SCORER_GENERAL": "PASS",
+    "SCORER_DIVISION_1": "PASS",
+    "SCORER_DIVISION_2": "PASS",
+    "SCORER_DIVISION_3": "PASS",
+    "SCORER_DIVISION_4": "PASS",
+    "SCORER_CUP": "PASS",
+    "GOALKEEPER_GENERAL": "PASS",
+    "GOALKEEPER_DIVISIONS": "PASS",
+    "GOALKEEPER_MIN_20_MATCHES": "PASS",
+    "GOALKEEPER_AVERAGE": "PASS",
+    "DEFENDER_GENERAL": "PASS",
+    "DEFENDER_DIVISIONS": "PASS",
+    "DEFENDER_MIN_20_MATCHES": "PASS",
+    "DEFENDER_DISCIPLINE_INDEX": "PASS",
+    "STATISTICS_PERSISTENCE": "PASS",
+    "CLUB_TRANSFER_HISTORY": "PASS",
+    "SEASON_HISTORY": "PASS",
+    "NO_DUPLICATE_STATISTICS": "PASS",
+    "WEB_INTERFACE": "PARTIAL — Flutter28 e Web build aprovados; navegador bloqueado",
+    "ANDROID_RESPONSIVE_LAYOUT": "PASS em teste Flutter390px; runtime Android não investigado",
+    "DOTNET_TESTS": "237 PASS",
+    "FLUTTER_TESTS": "28 PASS",
+    "REGRESSIONS": "PASS",
+    "SEASON_TOP_SCORER": "PASS",
+    "MULTIPLE_WINNERS": "PASS",
+    "SAME_CLUB_MULTIPLE_AWARDS": "PASS",
+    "PRIZE_AMOUNT": "3.000.000 por vencedor com clube",
+    "FINANCIAL_INTEGRITY": "PASS",
+    "PLAYER_AWARD_HISTORY": "PASS",
+    "PLAYER_DETAIL_SCREEN": "PASS em renderização Flutter local com dados reais; navegador BLOCKED",
+    "SEASON_END_SCREEN": "PASS em renderização Flutter local com dados reais; navegador BLOCKED"
+  },
+  "DotnetTests": 237,
+  "FlutterTests": 28,
+  "RealSeason": {
+    "Matches": 351,
+    "Minutes": 32520,
+    "Goals": 725
+  },
+  "VisualValidation": {
+    "status": "BLOCKED",
+    "reason": "Local browser use is disabled in Work settings",
+    "attempt": "cua.createBrowserTab('iab', 'http://127.0.0.1:8089/', {visible:false})",
+    "webUrl": "http://127.0.0.1:8089/",
+    "apiUrl": "http://127.0.0.1:5089/",
+    "realScreenshots": [],
+    "visualPassClaimed": false,
+    "note": "The user reports the setting enabled, but effective browser capability remains denied. No browser visual PASS is claimed. Alternative local rendering is separate evidence.",
+    "retryAfterUserEnabled": {
+      "TabCreated": false,
+      "VisualPassClaimed": false,
+      "FreshConnectionTested": true,
+      "Result": "Local browser use is disabled in Work settings",
+      "UserReportedEnabled": true
+    },
+    "userReportedLocalBrowserEnabled": true,
+    "lastResumption": {
+      "result": "Local browser use is disabled in Work settings",
+      "authorizedBrowserInventory": 0,
+      "tabCreated": false,
+      "nativeWindowAutomationOfBrowserAttempted": false
+    },
+    "alternative": {
+      "method": "Flutter test engine; production widgets with verbatim JSON captured from real API/SQLite and transport replayed in memory",
+      "testsPassed": 2,
+      "responseBodiesCaptured": 59,
+      "browserUsed": false,
+      "inventedSportingDataUsed": false,
+      "imageCount": 12,
+      "report": "docs/PLAYER_RANKINGS_LOCAL_VALIDATION_009.md"
+    }
+  },
+  "MutableExclusions": [
+    "Runtime process metadata/logs",
+    "Live SQLite files",
+    "Regenerated browser-fixture.json",
+    "Bulk regression/capture artifacts retained separately"
+  ],
+  "Files": [
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Bytes": 21348,
+      "SHA256": "474EBC9858E9C714D03A165521ABBC9F93D44721B0A069F0DCD62356EB72D1B2"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Bytes": 101959,
+      "SHA256": "B5DC5F8C00B17869367CBA954314AA2C2F903F83CFE22AC8AEC106BF2C7600F7"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Bytes": 29906,
+      "SHA256": "2619BC90D615E7EF144B6F844A2D6BA72563E2A3E2C2907D01A397B2C4513064"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_api_test.dart",
+      "Bytes": 4460,
+      "SHA256": "BEC8598C76616D371AADE99C227C7BE1B49EBA70608E0B05F7C88CBEB207C5CD"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Bytes": 25893,
+      "SHA256": "CFDF2D7B359D4811F6D1624213EC5F106E8A919569002BB1CDAE8E9121AA4610"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Bytes": 17016,
+      "SHA256": "76E99A1F1C83C00C5133C49821B9D4859EE9626007A480FE287B6515E55114F7"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart",
+      "Bytes": 12025,
+      "SHA256": "7D36ABABB26D06E6581BB2837692A5E73A0ED852F29E01456D17D96B1B936CE4"
+    },
+    {
+      "Path": "docs/PLAYER_RANKINGS_009.md",
+      "Bytes": 12182,
+      "SHA256": "EF46731110BC60A3D6B59BA4DBE2D4B3B9541E0077AE1B9E27C1C8D453EB14F6"
+    },
+    {
+      "Path": "docs/PLAYER_RANKINGS_LOCAL_VALIDATION_009.md",
+      "Bytes": 7442,
+      "SHA256": "56F8C0CAC26EE6B200AC817EA09F49AABBF17EC5F7EC8F174FE0B2A7B55A6B0A"
+    },
+    {
+      "Path": "docs/PLAYER_RANKINGS_MIGRATION_009.md",
+      "Bytes": 5006,
+      "SHA256": "48A69646E3CC4C0DBB2EE8034E00C327C4DFE4D660701171BA3B84CA34E18858"
+    },
+    {
+      "Path": "docs/PLAYER_RANKINGS_RECOVERY_009.md",
+      "Bytes": 7446,
+      "SHA256": "05D8D6646091B69A0799366645C7FF95B4AE866BC60ED0F0E83B7CE81A059F1C"
+    },
+    {
+      "Path": "docs/PLAYER_RANKINGS_TESTS_009.md",
+      "Bytes": 10618,
+      "SHA256": "79603C13B6C14E0F4E0D5BF3CB62F37631323EEE0CCDAF3CDD216DB96F3A9200"
+    },
+    {
+      "Path": "docs/PLAYER_STATISTICS_STORAGE_009.md",
+      "Bytes": 6089,
+      "SHA256": "B2112C4FDFB14A71A00EC5D0AC565B56F64EC3AA275C41D479461FCC81147480"
+    },
+    {
+      "Path": "docs/SEASON_TOP_SCORER_AWARDS_009.md",
+      "Bytes": 5176,
+      "SHA256": "DCD27D51D74F2BF16FF04D5F33B70CC363068B17531DE5B0F232EEDEF0D7720D"
+    },
+    {
+      "Path": "docs/audit-009/008-preservation-baseline.json",
+      "Bytes": 1783,
+      "SHA256": "6EF44A72601614DFF6E095468EEDA74F5FE6FC4593342A3F898605EE804531D8"
+    },
+    {
+      "Path": "docs/audit-009/API_PERSISTENCE_RECOMMENDATION.md",
+      "Bytes": 8411,
+      "SHA256": "27F2ABF0118C3AEF405D4416AC2761C6EE55F19F42FB823F918DC558132B6702"
+    },
+    {
+      "Path": "docs/audit-009/BASELINE_RULES.md",
+      "Bytes": 1818,
+      "SHA256": "8653787A977FA38E96F25075819ACD8E33F0C6B3D4FF96BBE0A155C7EB28328F"
+    },
+    {
+      "Path": "docs/audit-009/QUERY_LOAD_1024_009.json",
+      "Bytes": 245,
+      "SHA256": "008E2AB1410301EC04060A32F913E1C18C43F2840BFA8766D2C2E0F123765992"
+    },
+    {
+      "Path": "docs/audit-009/QUERY_LOAD_128_009.json",
+      "Bytes": 242,
+      "SHA256": "9D372517D68C7FF2198573281B6CBB3513F87F9A66F8A889EEB8937A2118ACB7"
+    },
+    {
+      "Path": "docs/audit-009/REAL_SEASON_009.json",
+      "Bytes": 2124625,
+      "SHA256": "CCAB93E532C0FB002E2BE09FED49F120D3CF53BF46A5EE28926367C636BC4DA6"
+    },
+    {
+      "Path": "docs/audit-009/api-baseline-tests.log",
+      "Bytes": 1082,
+      "SHA256": "264826E923AC2116A79185912A4EDE32FE3B917EE4BAD3C4D0707EACA75FFBB8"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-cup.json",
+      "Bytes": 408226,
+      "SHA256": "215381E2D24F33DC10B6235E35760B3321C92A508103593BE35CD6BA51F5FFDD"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-division1.json",
+      "Bytes": 29167,
+      "SHA256": "D505A0519CBD0E188DE99462B3C7E852C11468DBB13F33A81275181438DCAABD"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-division2.json",
+      "Bytes": 29972,
+      "SHA256": "054F2DE4521610E36E65F1B704FA42FFE304CA4A8A3F4C27BEB3337D5A8246E2"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-division3.json",
+      "Bytes": 29893,
+      "SHA256": "78F30A2121ADC3139ABAB4E7F7231F32D6D299F49F5590894185552E5912DF5A"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-division4.json",
+      "Bytes": 29220,
+      "SHA256": "E4EA0BB9A1BBDBC982ED71087B6C657DDFDB2226CBDC8F6395A08B7D1DD812FA"
+    },
+    {
+      "Path": "docs/audit-009/api-defenders-general.json",
+      "Bytes": 420033,
+      "SHA256": "B842E812787E1DDCCA2F9E784D2FE32BC15D5EE1FB1819A71CA9D34556C5F532"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-cup.json",
+      "Bytes": 88946,
+      "SHA256": "FC0F028A3D3ED03DE005FD51CCB978988AB443A357F855FD2B01CA3C7DBBCB3D"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-division1.json",
+      "Bytes": 7882,
+      "SHA256": "4DE2A4A9A051B6665DE16EECA90E4C4FBF7C1D1DFA8A5083B44B243731967A2B"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-division2.json",
+      "Bytes": 8456,
+      "SHA256": "521B37CBF649B33240B0ADCB17F931DC771A12131887EE16761C55580E1B41F8"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-division3.json",
+      "Bytes": 5346,
+      "SHA256": "EFD9EBE1B22F156E5AD920B885D46752C0FC5DC3C7B5336481EC74596758F2EE"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-division4.json",
+      "Bytes": 9097,
+      "SHA256": "2CF8C3D0F3427D645E84C95E0EEF4C63BE0EB1EEE988BEFB1CC778528FE8E71C"
+    },
+    {
+      "Path": "docs/audit-009/api-goalkeepers-general.json",
+      "Bytes": 95098,
+      "SHA256": "69186C47D4B13C714C60B136B4EA8B17CCF09E9EC261645CFDCFF17730F12149"
+    },
+    {
+      "Path": "docs/audit-009/api-performance-1024.json",
+      "Bytes": 238,
+      "SHA256": "D53D4EE4EA225B1E4E5D3BF7EFF3DD076FB75AD0FA38564F43AD15B150710C97"
+    },
+    {
+      "Path": "docs/audit-009/api-performance-128.json",
+      "Bytes": 234,
+      "SHA256": "17ED57D9AA8CEFEBC369AFBC9E3F60B98128970FB610EA9E2A4D0FE51F8006C3"
+    },
+    {
+      "Path": "docs/audit-009/api-persisted-validation.json",
+      "Bytes": 10569,
+      "SHA256": "540F5B1BE3ED08612DF0C3667072481E0D083E5BBDB97B5519F9469CD2A4824D"
+    },
+    {
+      "Path": "docs/audit-009/api-persistence-baseline-manifest.json",
+      "Bytes": 1566,
+      "SHA256": "5F42C6537EEBC22B4EE7F3DB97E4DE389BF732B8F26C3BDE13868FCA25589BF4"
+    },
+    {
+      "Path": "docs/audit-009/api-player-008b7f2d-eea5-3341-ac35-9c7d32db1d06.json",
+      "Bytes": 4421,
+      "SHA256": "B45434B52E23C57C95E136D9ED9706F1025A578CD2E52FF04A68E10D8FE84E3B"
+    },
+    {
+      "Path": "docs/audit-009/api-player-f15990a2-e802-2b47-b389-f6abe1e6b2b9.json",
+      "Bytes": 4080,
+      "SHA256": "25F1C1D24AFC197FEF0E6CBCE7E374F9F586BA4BE353CF50E3BC99E557708396"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-cup.json",
+      "Bytes": 145594,
+      "SHA256": "86BB6B408BA53A556AE2F046C44FC5444B6F256F2EBCCB860E63404CE578D30D"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-division1.json",
+      "Bytes": 32396,
+      "SHA256": "04B38877A4D12B356FBB9E6F1A9DCD7864300061FA9FC97AF194A3B46682C3F8"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-division2.json",
+      "Bytes": 36085,
+      "SHA256": "CCF420B29CB4D6512ED564BD0DC389B809735176B725A50A0A75E9F4D8B27123"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-division3.json",
+      "Bytes": 35115,
+      "SHA256": "8D232A3A97E750D25263A542FEC3945FB0E591255CB2830D610FB437A73BDC44"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-division4.json",
+      "Bytes": 30544,
+      "SHA256": "16E050FE4EBFD42247622D51FC6CD8669E3931EE79B427FB3F3B044CF761BE7C"
+    },
+    {
+      "Path": "docs/audit-009/api-scorers-general.json",
+      "Bytes": 240677,
+      "SHA256": "3F7BC5AEF48195B713F3586A1E97DC05B6CFAFBD5BCDA2E42C9A505A92FEB717"
+    },
+    {
+      "Path": "docs/audit-009/awards-after-process-restart.json",
+      "Bytes": 1493,
+      "SHA256": "EC010BBEE08E28899A7E3A4579E5DE520A2AA3A112096D7D3109834144C7B8E3"
+    },
+    {
+      "Path": "docs/audit-009/awards-before-process-restart.json",
+      "Bytes": 1493,
+      "SHA256": "EC010BBEE08E28899A7E3A4579E5DE520A2AA3A112096D7D3109834144C7B8E3"
+    },
+    {
+      "Path": "docs/audit-009/baseline-manifest.json",
+      "Bytes": 9268,
+      "SHA256": "9429665B262DD43E7E7C0C58B03A0C4E9CE96E6974B231A305F694860C0D597E"
+    },
+    {
+      "Path": "docs/audit-009/baseline-tests/baseline-008-007.trx",
+      "Bytes": 17480,
+      "SHA256": "5AA5AD35FAE86C0CB9C3CCF5431BB647844D0B9B9A9ABAA6000DAB3E5D8BD7F9"
+    },
+    {
+      "Path": "docs/audit-009/browser-used-fixture.json",
+      "Bytes": 9034,
+      "SHA256": "40A7523D583CB3FC1C562B80FF7611AF06DCBB3C046E46932BFF57399C24B6C4"
+    },
+    {
+      "Path": "docs/audit-009/browser-validation.json",
+      "Bytes": 1329,
+      "SHA256": "78BC5C4BB7200860ECABCD34F7A0C952D8DDE57AE636DA6B33652A185A4C79FA"
+    },
+    {
+      "Path": "docs/audit-009/domain-first-build.log",
+      "Bytes": 285,
+      "SHA256": "22A22E369D39E972BB65D7D9A75AC6821321C20D87E755C3419723E8EA2A6EA9"
+    },
+    {
+      "Path": "docs/audit-009/domain-tests/domain009-initial.trx",
+      "Bytes": 159413,
+      "SHA256": "94853550D56303B1EA54351C2F7B46C5187E9DFDEFE7C047DAC9DB1154544F02"
+    },
+    {
+      "Path": "docs/audit-009/domain009-build.log",
+      "Bytes": 1812,
+      "SHA256": "067CCE6CEA0EDDB3CF15D52EE18F0F84557AAAABABBFEB4F65A8953945FA4391"
+    },
+    {
+      "Path": "docs/audit-009/domain009-initial-tests.log",
+      "Bytes": 1448,
+      "SHA256": "0CD4B4836CF32E5CCE855D44B56E295CEC01672F0E15541B4C55524C3C8AE58C"
+    },
+    {
+      "Path": "docs/audit-009/final-application.log",
+      "Bytes": 444,
+      "SHA256": "3F3D8F0201DA94676192B0C142AE4E2D7E37EE67B3EFA47362D04CEB149FFE38"
+    },
+    {
+      "Path": "docs/audit-009/final-domain.log",
+      "Bytes": 426,
+      "SHA256": "587F836D7286E431EF9D2E88555E853DEF97FBB16AED1465C60BDBA00168B8FC"
+    },
+    {
+      "Path": "docs/audit-009/final-tests.log",
+      "Bytes": 3054,
+      "SHA256": "323C5975D5B11435CF69FFC12899D32C8114E18E9982A08399CA4BAABA6E89EA"
+    },
+    {
+      "Path": "docs/audit-009/final-tests/application5.trx",
+      "Bytes": 9297,
+      "SHA256": "AB7DB22821355EEC7CC4B12CB7982EC664296B1628EE2A4456789FA9C74167AA"
+    },
+    {
+      "Path": "docs/audit-009/final-tests/domain195.trx",
+      "Bytes": 281033,
+      "SHA256": "234E1BDFB961AAD8CDD69CD9C2C9721D5FA7C073F7E1A6BA67B8E4122BD3C374"
+    },
+    {
+      "Path": "docs/audit-009/final-tests/final009.trx",
+      "Bytes": 13132,
+      "SHA256": "1A5EDC7C6EE34966BF93821BD2F879B2F1FF64AE2A8CA3CE6F19FF84711E1572"
+    },
+    {
+      "Path": "docs/audit-009/final-tests/integration29.trx",
+      "Bytes": 51795,
+      "SHA256": "7BCEC941FFDB6BF9237C700BC0AB7A309E70C523FB99883406C48489EEC3151D"
+    },
+    {
+      "Path": "docs/audit-009/final-tests/simulation8.trx",
+      "Bytes": 13132,
+      "SHA256": "1A5EDC7C6EE34966BF93821BD2F879B2F1FF64AE2A8CA3CE6F19FF84711E1572"
+    },
+    {
+      "Path": "docs/audit-009/flutter-analyze.log",
+      "Bytes": 98,
+      "SHA256": "9C75D5634DFD8437D691F669E7BF34C1FFB9B46A1AE01B16AB9902AB72BAB279"
+    },
+    {
+      "Path": "docs/audit-009/flutter-test-initial.log",
+      "Bytes": 15018,
+      "SHA256": "9F9707F796A62D8C051455C72759E22E5AC815DADFE1AB02F5DE7CF20685BAE1"
+    },
+    {
+      "Path": "docs/audit-009/flutter-test.log",
+      "Bytes": 4569,
+      "SHA256": "F15E4912ADE654FDAB94080B1C67CC031979D37C841188B0CBE849A1A060B30F"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-network-attempt.dart.txt",
+      "Bytes": 9514,
+      "SHA256": "FFEBD78A7A84D1E0760F51DE09A52A2211080072255245C5DD6C776184073179"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render-first-attempt.log",
+      "Bytes": 182,
+      "SHA256": "C2DE726F4F4F2B95B2FD05667E936619480E5B93C0C87F0323584CB879C70EA2"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render-network-timeout.log",
+      "Bytes": 2894,
+      "SHA256": "34942FE2925F70DDD86E689FDCAEBF3CFB88F29B608CE57BAC62EF36B0728393"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render-snapshot-first.log",
+      "Bytes": 4265,
+      "SHA256": "1AE1F229A85BFFE2AF10E21342B04CD7154D835A1FE8B51891A378CA2581C358"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render-tests.log",
+      "Bytes": 488,
+      "SHA256": "9F86693FBCABBA54E0B9774729591AD6C1AEEC27423419DB58AFF884B7532FD6"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/defenders-general.png",
+      "Bytes": 76744,
+      "SHA256": "FF20A99CA0FEC553E57394E1CFD46F766D98CEF0ECDBB282D11E6ED2EEF9D822"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/goalkeepers-general.png",
+      "Bytes": 77619,
+      "SHA256": "346AD4FF130741226111AE7EB5C1EED750BA6331E46072D4A8B52B6EA2730C71"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/player-history-mateus.png",
+      "Bytes": 114049,
+      "SHA256": "6702B31301DDC98312839E520B3FEE5C17DBCDB82004E948B94CC4D70DDE978A"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-cup.png",
+      "Bytes": 68829,
+      "SHA256": "0EEAF3398C80C28BF5367CFA4B7993B8DDCDEA91AC37947D81B2ED8A1ACC4B60"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-division1.png",
+      "Bytes": 67011,
+      "SHA256": "0A8C6F02A58DC57AA8998A5FE0C7608174D1913078EAD161EF7E227D0CFF01FD"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-division2.png",
+      "Bytes": 66444,
+      "SHA256": "C71D928C54E6509DE72A025D24B0959DF30175F574EAEA52F0844CB3E5323003"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-division3.png",
+      "Bytes": 67079,
+      "SHA256": "5F88A32F5162D9251BEABD5B817E9943257741480642EA90C31462E85B212F23"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-division4.png",
+      "Bytes": 67008,
+      "SHA256": "CAD3AF391C2D7B850AE335AF09ECB57A1F05C9A91273E7A8D71A8D7E2B22DE44"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/scorers-general.png",
+      "Bytes": 66422,
+      "SHA256": "CFD79648377A941BC520D302E8A259C3D14223C5851D8AB98BDB9BE93BFE5DF6"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/season-1-awards.png",
+      "Bytes": 40129,
+      "SHA256": "8BC6A151DA1B64FAEFF26F2AC4D629E88CFF0F6988253B53DBD0E75DD28D0CB8"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/validation.json",
+      "Bytes": 6918,
+      "SHA256": "39C3CD77694F339C8AB743DF1F0FA00CCB69D2218F28982C3A24DFD6EAD1B4C4"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/width-390-left.png",
+      "Bytes": 37970,
+      "SHA256": "72C7ED9EDD8E2322F7D6278954236D14D635D02568AB6788C73C2F7841E633DE"
+    },
+    {
+      "Path": "docs/audit-009/live-flutter-render/width-390-scrolled.png",
+      "Bytes": 34662,
+      "SHA256": "08FF798561CF524BBB69842C015D0892919A04ED6FA8034609E88E2E7582737D"
+    },
+    {
+      "Path": "docs/audit-009/live-ui-response-snapshot.json",
+      "Bytes": 2790110,
+      "SHA256": "11043DD525A8EAF4471A8AF0307079D38BFA7F17CAFBA04C40B00E40B5A66BCF"
+    },
+    {
+      "Path": "docs/audit-009/nuget-network-check.json",
+      "Bytes": 96,
+      "SHA256": "5C10BFD48AF71D844319E372982985D63749249DC3517EE29499330AE2453B5C"
+    },
+    {
+      "Path": "docs/audit-009/player-rankings-integration-isolated.log",
+      "Bytes": 11131,
+      "SHA256": "E53987677688A2717B7D36A53DC78741F8EE5A5B863C59B55CBF978AF1CB5649"
+    },
+    {
+      "Path": "docs/audit-009/player-rankings-integration.log",
+      "Bytes": 24092,
+      "SHA256": "C8D6C71E00971832C83C1A5C70A4822D26FF8024C55B03C29F7E06E87B722EC1"
+    },
+    {
+      "Path": "docs/audit-009/preservation.json",
+      "Bytes": 5010,
+      "SHA256": "00765B8F071D0C2666F2297D2C510CCF7A88BBC0A0F029129BB291AA91CDC373"
+    },
+    {
+      "Path": "docs/audit-009/process-restart-validation.json",
+      "Bytes": 270,
+      "SHA256": "BA06B1082D3328D345F03A1FE29D9454859D1ED14918706D8C23F006882215E5"
+    },
+    {
+      "Path": "docs/audit-009/real-season-world.json",
+      "Bytes": 13363263,
+      "SHA256": "ADA6BC19BD42AA03D1187E644C3F53891EA0E4FD5AC6CB264049C8BD5A86E3EC"
+    },
+    {
+      "Path": "docs/audit-009/recovery-baseline-manifest.json",
+      "Bytes": 11081,
+      "SHA256": "481C5B8A8271E83366F0E9C8159ABB2CFFF546F166312588174BE259489CF16D"
+    },
+    {
+      "Path": "docs/audit-009/recovery-build.log",
+      "Bytes": 1197,
+      "SHA256": "F0A4A7935F9E382DE68B718E371957F5D57622BA84083F385853DAB946D39593"
+    },
+    {
+      "Path": "docs/audit-009/recovery-dependency-check.json",
+      "Bytes": 34180,
+      "SHA256": "9E18425076D4D2F5969E802A4CB0E3513B1B2975CDDCB40C781B59873CB2FFE4"
+    },
+    {
+      "Path": "docs/audit-009/recovery-domain-goals.log",
+      "Bytes": 748,
+      "SHA256": "E20D00CF579A5105F03C21B18DE59F5B320562834B754FE4C3C1E4151211FC82"
+    },
+    {
+      "Path": "docs/audit-009/recovery-domain-initial.log",
+      "Bytes": 750,
+      "SHA256": "7237B20A7518B238A07FC17B16446C3FBA78A547E84F461E94A60D024B863007"
+    },
+    {
+      "Path": "docs/audit-009/recovery-domain-tests/recovery-goals.trx",
+      "Bytes": 188319,
+      "SHA256": "253A97630214F9E0829790B446004AE8E839A76E403E76D2F2C1E829BF52A05E"
+    },
+    {
+      "Path": "docs/audit-009/recovery-domain-tests/recovery-initial.trx",
+      "Bytes": 177772,
+      "SHA256": "904A4C5C9C15C1706B892F4921C41584CB232FBB241CB24625FD60B58C93EEE6"
+    },
+    {
+      "Path": "docs/audit-009/recovery-flutter-analyze.log",
+      "Bytes": 98,
+      "SHA256": "FD7B489B644386A08AA05EDD4D3117BD6BD1D70E4223BD365FF1246B9D6BCF74"
+    },
+    {
+      "Path": "docs/audit-009/recovery-flutter-test.log",
+      "Bytes": 4569,
+      "SHA256": "62289268B23A3C4FC6EB12A21F7696E8D5169FEB551C0E615561C5C2CD1BD3D2"
+    },
+    {
+      "Path": "docs/audit-009/recovery-integration-tests/recovery-integration.trx",
+      "Bytes": 25193,
+      "SHA256": "A18E37E39F6B46AE4D251EF7C9AB64CD43145033A24F028909DF12A54C7D03FF"
+    },
+    {
+      "Path": "docs/audit-009/recovery-integration.log",
+      "Bytes": 4382,
+      "SHA256": "46A7BF3C256660A252949C35E052EE3EB76A0DB188341E1586C7AD4FD5FF9793"
+    },
+    {
+      "Path": "docs/audit-009/recovery-stopped-process.json",
+      "Bytes": 217,
+      "SHA256": "05E0CCCFD7BD5A697F3FBA0A52F6F5FF96DD1C98DEADEF980ED927CA2D647889"
+    },
+    {
+      "Path": "docs/audit-009/resumed-flutter-analyze.log",
+      "Bytes": 98,
+      "SHA256": "791AA59757C8B0F4FEC48D4864DC496FCD4E98D0A53B13D3FA8C13D871DE28BB"
+    },
+    {
+      "Path": "docs/audit-009/resumed-flutter-tests.log",
+      "Bytes": 4549,
+      "SHA256": "B29AC617E403B656698620C820BA4515DFB3E81C5FEE4E6FCCD8D45F9FB635C6"
+    },
+    {
+      "Path": "docs/audit-009/resumed-scope-verification.json",
+      "Bytes": 2039,
+      "SHA256": "1509859BDC0250BA671369F19D58428F8A607DE5136E38561F8AA30BC26ADE16"
+    },
+    {
+      "Path": "docs/audit-009/simulation-first.log",
+      "Bytes": 8615,
+      "SHA256": "17579462777EB89B3EC5F1BD69FCD3974D52CDDC49049C0C5AA61A24CB11E337"
+    },
+    {
+      "Path": "docs/audit-009/simulation-tests.log",
+      "Bytes": 988,
+      "SHA256": "A022453607CCA80964BA56E8DD46D6D0554AD8E97CEDF096F214667D9FA4A41F"
+    },
+    {
+      "Path": "docs/audit-009/simulation-tests/players009-first.trx",
+      "Bytes": 21295,
+      "SHA256": "7E860F31CF4A96E3F756028DABBABA2078CF6B9AB95539D0B59F2D73993F1EF4"
+    },
+    {
+      "Path": "docs/audit-009/simulation-tests/players009.trx",
+      "Bytes": 5947,
+      "SHA256": "870B201BC4C550C5ED24FF6AECE94B45849AAE0BA5DBB207F637C7705252E00D"
+    },
+    {
+      "Path": "docs/audit-009/source-diff.patch",
+      "Bytes": 23078,
+      "SHA256": "833A2FEC23B67D6C02458E92B3177E2E9BDAE0AF71FDA7C47F3B715619D1E87C"
+    },
+    {
+      "Path": "docs/audit-009/sqlite008-readonly-audit.json",
+      "Bytes": 4831,
+      "SHA256": "8C8619FF64C7DAF1E764C2029138E406A0CB65BF66F89B582CF787BEB3ECA763"
+    },
+    {
+      "Path": "docs/audit-009/web-build-relative-failure-excerpt.txt",
+      "Bytes": 503,
+      "SHA256": "0185C954106A8F071EA50BF81351AC77E5EAD4C20A3DAECDD867F9135AB91544"
+    },
+    {
+      "Path": "docs/audit-009/web-build.log",
+      "Bytes": 833,
+      "SHA256": "BD6BA8BFD58F121BD36F095A6781E569C49CEF44D3E5B5333D3A9FBE185269E2"
+    },
+    {
+      "Path": "scripts/capture-player-ui-data-009.mjs",
+      "Bytes": 2000,
+      "SHA256": "70178C9A045B468EFE1F60F5F88165801EE9345C5892345A75ADE677DE27A51C"
+    },
+    {
+      "Path": "scripts/report-player-rankings-009.mjs",
+      "Bytes": 49146,
+      "SHA256": "4FED6331B6985101B0EDC01D9E252347D1446451CA7575E032CA211B039E1F39"
+    },
+    {
+      "Path": "scripts/verify-player-rankings-009.mjs",
+      "Bytes": 3819,
+      "SHA256": "B3CBC7C9EE4D367D23CE330F77EA9C57A50916386625039770623ABE585ADEF6"
+    },
+    {
+      "Path": "src/Elifoot.Api/PlayerRankingsEndpoints.cs",
+      "Bytes": 4397,
+      "SHA256": "C1E2BDEDFE58987C6F7245DE869F60E3D69308C2CADBC0514ED79B8C3DB4A246"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Bytes": 35698,
+      "SHA256": "8B0D6F24831B99AA5A17082F3F9506AF370038226F751BEC9353C1C7669E36FE"
+    },
+    {
+      "Path": "src/Elifoot.Application/PlayerRankingsApplicationService.cs",
+      "Bytes": 720,
+      "SHA256": "77167AA5FD239EDC7FF2A029CFD5716DC1DBCEDB89305BE8EAE71D9F70A1E13E"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Bytes": 1693,
+      "SHA256": "0917BBE7FE0FE6D736A8A9971A4945A32391DB22E1FA19AE85F5AB4DD721E191"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Bytes": 33264,
+      "SHA256": "9E57B339A9787E67EE74DB4A7606A62A8EBE57111E6C7B7F9EB0D9D26BEC1731"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Bytes": 22249,
+      "SHA256": "0AA7CDBA829AF247C6DCB0F173D206C62F6E86A63CCA25977F83014986394D59"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Bytes": 48227,
+      "SHA256": "E784B0429E845DDF761A95E9344A74514E16B84801F91419B472881074D47302"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Bytes": 20169,
+      "SHA256": "BD37640003A1AEC256D86C5B83E9FA4341FBE158C5E099EA32FBF5EC89978CE7"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEntities.cs",
+      "Bytes": 1253,
+      "SHA256": "0330B4CABF239BF31860442F71107C330AB7A1FCABF1550A8FB32BAD13CE9A70"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Bytes": 17970,
+      "SHA256": "31AEF4DD4D5AE45DD89DB6798951AA7A8E858282D11674148A5D1FBD8908B16E"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Bytes": 9776,
+      "SHA256": "075235F45341472EB47337F5C4A4D001A45EE2916CF3DF487FD1F1918BE4657F"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerRankings009Tests.cs",
+      "Bytes": 60660,
+      "SHA256": "B22F7E119B79FF9CC0D997F79F3DB97D8DD729F96C9737A867F50F9BE7141A34"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerRankings009IntegrationTests.cs",
+      "Bytes": 31136,
+      "SHA256": "1AD7DCA9FE51071D5021E4063CAD9943F285D108811241A047668B38AE1C9C94"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerRankings009SimulationTests.cs",
+      "Bytes": 7928,
+      "SHA256": "81BEB24FA18755946BE127A7BE3D4E46D8DCD665A17F366EDE807A84F327F55A"
+    }
+  ],
+  "FlutterRealDataRenderingTests": 2
+}

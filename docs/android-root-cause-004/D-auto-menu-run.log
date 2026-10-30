@@ -1,0 +1,14 @@
+{"name":"pre-processes","args":["exec-out","ps"],"startedAt":"2026-10-29T23:08:19.714Z","milliseconds":3807,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"stop-reference","args":["exec-out","am","force-stop","dev.elifoot.qa.android_reference"],"startedAt":"2026-10-29T23:08:23.523Z","milliseconds":30029,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"stop-settings","args":["exec-out","am","force-stop","com.android.settings"],"startedAt":"2026-10-29T23:08:53.554Z","milliseconds":30026,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"push","args":["push","D:\\elifoot_98\\artifacts\\android\\elifoot-qa003-profile.apk","/data/local/tmp/qa004-test.apk"],"startedAt":"2026-10-29T23:09:23.581Z","milliseconds":18359,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"install","args":["exec-out","pm","install","-r","/data/local/tmp/qa004-test.apk"],"startedAt":"2026-10-29T23:09:41.941Z","milliseconds":150027,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"post-processes","args":["exec-out","ps"],"startedAt":"2026-10-29T23:12:41.979Z","milliseconds":4498,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"post-service","args":["exec-out","service","check","activity"],"startedAt":"2026-10-29T23:12:46.478Z","milliseconds":2872,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"logcat","args":["logcat","-b","all","-d","-t","1500","-v","threadtime"],"startedAt":"2026-10-29T23:12:49.351Z","milliseconds":30020,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"lastanr","args":["exec-out","dumpsys","activity","lastanr"],"startedAt":"2026-10-29T23:13:19.372Z","milliseconds":2738,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"activity-full","args":["exec-out","dumpsys","activity"],"startedAt":"2026-10-29T23:13:22.110Z","milliseconds":3978,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"dropbox-anr","args":["exec-out","dumpsys","dropbox","--print","system_app_anr"],"startedAt":"2026-10-29T23:13:26.089Z","milliseconds":3069,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"anr-traces","args":["exec-out","cat","/data/anr/traces.txt"],"startedAt":"2026-10-29T23:13:29.160Z","milliseconds":1115,"code":0,"signal":null,"timedOut":false,"accepted":true}
+{"name":"screen","args":["exec-out","screencap","-p","/data/local/tmp/qa004-case.png"],"startedAt":"2026-10-29T23:13:30.276Z","milliseconds":30017,"code":null,"signal":"SIGTERM","timedOut":true,"accepted":false}
+{"name":"screen-pull","args":["pull","/data/local/tmp/qa004-case.png","D:\\elifoot_98\\docs\\android-root-cause-004\\D-auto-menu\\screen.png"],"startedAt":"2026-10-29T23:14:00.293Z","milliseconds":361,"code":0,"signal":null,"timedOut":false,"accepted":true}

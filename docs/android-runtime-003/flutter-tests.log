@@ -1,0 +1,10 @@
+00:00 +0: loading D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart
+00:00 +0: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Android DEV reaches the host through the emulator gateway
+00:00 +1: D:/elifoot_98/client/elifoot_flutter/test/session_store_test.dart: Native session reloads from preferences after cache initialization
+00:00 +2: D:/elifoot_98/client/elifoot_flutter/test/session_store_test.dart: Native session reloads from preferences after cache initialization
+00:00 +3: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Web DEV uses its host and the API port
+00:00 +4: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Native release requires an explicit HTTPS origin
+00:00 +5: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Invalid origins and embedded credentials are rejected
+00:01 +6: D:/elifoot_98/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:04 +7: D:/elifoot_98/client/elifoot_flutter/test/widget_test.dart: Phone width: login, room list and create dialog fit 390 pixels
+00:04 +8: All tests passed!

@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Elifoot.Api/Elifoot.Api.csproj" />
+    <Project Path="src/Elifoot.Application/Elifoot.Application.csproj" />
+    <Project Path="src/Elifoot.Contracts/Elifoot.Contracts.csproj" />
+    <Project Path="src/Elifoot.Domain/Elifoot.Domain.csproj" />
+    <Project Path="src/Elifoot.Infrastructure/Elifoot.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Elifoot.Application.Tests/Elifoot.Application.Tests.csproj" />
+    <Project Path="tests/Elifoot.Domain.Tests/Elifoot.Domain.Tests.csproj" />
+    <Project Path="tests/Elifoot.Integration.Tests/Elifoot.Integration.Tests.csproj" />
+    <Project Path="tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/" />
+  <Folder Name="/tools/seed-generator/">
+    <Project Path="tools/seed-generator/Elifoot.SeedGenerator.csproj" />
+  </Folder>
+</Solution>

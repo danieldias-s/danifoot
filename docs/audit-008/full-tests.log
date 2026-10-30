@@ -1,0 +1,30 @@
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\full-tests\career-final_net10.0_20261030085118.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     4, Ignorado:     0, Total:     4, Duração: 13 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\full-tests\career-final_net10.0_20261030085125.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    64, Ignorado:     0, Total:    64, Duração: 21 s - Elifoot.Domain.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\full-tests\career-final_net10.0_20261030085239.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    18, Ignorado:     0, Total:    18, Duração: 1 m 34 s - Elifoot.Integration.Tests.dll (net10.0)
+[xUnit.net 00:04:51.94]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables [FAIL]
+  Com falha Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables [2 m 5 s]
+  Mensagem de erro:
+   Assert.Equal() Failure: Values differ
+Expected: 0
+Actual:   1
+  Rastreamento de pilha:
+     at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables() in D:\elifoot_98\tests\Elifoot.Simulation.Tests\MultiSeasonAndBenchmarkTests.cs:line 85
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\full-tests\career-final_net10.0_20261030085555.trx
+
+Com falha! – Com falha:     1, Aprovado:     3, Ignorado:     0, Total:     4, Duração: 4 m 51 s - Elifoot.Simulation.Tests.dll (net10.0)

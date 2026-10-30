@@ -1,0 +1,18 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Application.Tests -> D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:01.49]     Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart [FAIL]
+  Com falha Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart [664 ms]
+  Mensagem de erro:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Rastreamento de pilha:
+     at Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart() in D:\elifoot_98\tests\Elifoot.Application.Tests\CoachCareer008ReadinessTests.cs:line 24
+--- End of stack trace from previous location ---
+
+Com falha! – Com falha:     1, Aprovado:     0, Ignorado:     0, Total:     1, Duração: 822 ms - Elifoot.Application.Tests.dll (net10.0)

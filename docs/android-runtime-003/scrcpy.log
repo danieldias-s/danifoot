@@ -1,0 +1,8 @@
+scrcpy 5.0.1 <https://github.com/Genymobile/scrcpy>
+INFO: ADB device found:
+INFO:     --> (tcpip)  emulator-5554                   device  Android_SDK_built_for_x86_64
+[server] INFO: Device: [unknown] Android Android SDK built for x86_64 (Android 7.1.1)
+INFO: Renderer: direct3d11
+INFO: Interop: d3d11va
+INFO: Video decoding: d3d11va
+INFO: Texture (D3D11VA): 480x800

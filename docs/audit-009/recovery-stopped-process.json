@@ -1,0 +1,5 @@
+{
+  "ProcessId": 4640,
+  "Name": "dotnet.exe",
+  "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" D:\\elifoot_98\\src\\Elifoot.Api\\bin\\Release\\net10.0\\Elifoot.Api.dll --urls http://127.0.0.1:5088"
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "function": "TableCellParentData",
+    "file": "package:flutter/src/rendering/table.dart",
+    "line": null,
+    "description": null
+  },
+  {
+    "function": "setupParentData",
+    "file": "package:flutter/src/rendering/table.dart",
+    "line": 602,
+    "description": null
+  },
+  {
+    "function": "insertRenderObjectChild",
+    "file": "package:flutter/src/widgets/table.dart",
+    "line": 316,
+    "description": null
+  },
+  {
+    "function": "attachRenderObject",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 6944,
+    "description": null
+  },
+  {
+    "function": "mount",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 6804,
+    "description": null
+  },
+  {
+    "function": "mount",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 7117,
+    "description": null
+  },
+  {
+    "function": "inflateWidget",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 4590,
+    "description": null
+  },
+  {
+    "function": "updateChild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 4059,
+    "description": null
+  },
+  {
+    "function": "performRebuild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 5844,
+    "description": null
+  },
+  {
+    "function": "rebuild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 5532,
+    "description": null
+  },
+  {
+    "function": "_firstBuild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 5802,
+    "description": null
+  },
+  {
+    "function": "mount",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 5796,
+    "description": null
+  },
+  {
+    "function": "inflateWidget",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 4590,
+    "description": null
+  },
+  {
+    "function": "updateChild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 4059,
+    "description": null
+  },
+  {
+    "function": "performRebuild",
+    "file": "package:flutter/src/widgets/framework.dart",
+    "line": 5844,
+    "description": null
+  }
+]

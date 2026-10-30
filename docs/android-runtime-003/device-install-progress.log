@@ -1,0 +1,113 @@
+--------- beginning of main
+10-29 21:23:16.763  3013  3013 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:23:18.704  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 21:23:18.728  1921  1921 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 21:23:18.742  1921  1921 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 21:23:18.754  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:23:18.772  1921  1921 D RetryPolicy: retry #2 for com.android.phone.vvm.omtp.ActivationTask@6c99f0 queued, executing in 5000
+10-29 21:23:18.806  1921  1921 D VvmTaskScheduler: minimal wait time:4968
+10-29 21:23:18.842  1921  1921 D VvmTaskScheduler: minimal wait time:4932
+10-29 21:23:23.795  1921  2882 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@6c99f0
+10-29 21:23:24.026  1921  2882 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 21:23:24.028  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 21:23:24.281  1921  2882 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 21:23:25.811  1921  1921 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 21:23:37.655  2798  2809 W art     : Suspending all threads took: 19.755ms
+10-29 21:23:37.682  2798  2809 I art     : Background sticky concurrent mark sweep GC freed 1341(133KB) AllocSpace objects, 0(0B) LOS objects, 20% free, 2MB/2MB, paused 21.586ms total 108.320ms
+--------- beginning of system
+10-29 21:23:39.178  1636  1651 W BroadcastQueue: Timeout of broadcast BroadcastRecord{76e1be2 u0 android.intent.action.BOOT_COMPLETED} - receiver=android.os.BinderProxy@92ceb73, started 60016ms ago
+10-29 21:23:39.179  1636  1651 W BroadcastQueue: Receiver during timeout: ResolveInfo{5cf7a30 com.android.email/.service.EmailUpgradeBroadcastReceiver m=0x108000}
+10-29 21:23:42.314  1636  1651 I Process : Sending signal. PID: 2973 SIG: 3
+10-29 21:23:42.537  2973  2979 I art     : Thread[3,tid=2979,WaitingInMainSignalCatcherLoop,Thread*=0x7cc84fb16e00,peer=0x22c0b0d0,"Signal Catcher"]: reacting to signal 3
+10-29 21:23:42.538  2973  2979 I art     : 
+10-29 21:23:42.679  2973  2979 W art     : Suspending all threads took: 38.820ms
+10-29 21:23:44.348  3032  3032 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:23:44.759  3032  3032 D AndroidRuntime: CheckJNI is OFF
+10-29 21:23:44.916  1636  1651 E ActivityManager: ANR in com.android.email
+10-29 21:23:44.916  1636  1651 E ActivityManager: PID: 2973
+10-29 21:23:44.916  1636  1651 E ActivityManager: Reason: Broadcast of Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 cmp=com.android.email/.service.EmailUpgradeBroadcastReceiver (has extras) }
+10-29 21:23:44.916  1636  1651 E ActivityManager: Load: 0.0 / 0.0 / 0.0
+10-29 21:23:44.916  1636  1651 E ActivityManager: CPU usage from 168322ms to 0ms ago (2026-10-29 21:20:50.864 to 2026-10-29 21:23:39.186):
+10-29 21:23:44.916  1636  1651 E ActivityManager:   36% 1636/system_server: 25% user + 11% kernel / faults: 49056 minor 194 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   5.8% 1287/adbd: 0.7% user + 5.1% kernel / faults: 6915 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   3.1% 2775/android.process.acore: 2.6% user + 0.5% kernel / faults: 4046 minor 30 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   2.5% 1921/com.android.phone: 1.9% user + 0.6% kernel / faults: 1195 minor 81 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   2.5% 554/kswapd0: 0% user + 2.5% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.8% 8/rcu_preempt: 0% user + 0.8% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.7% 2744/android.process.media: 0.5% user + 0.2% kernel / faults: 1634 minor 19 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.7% 2710/com.android.systemui: 0.5% user + 0.1% kernel / faults: 112 minor 3 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.6% 2248/com.android.launcher3: 0.5% user + 0.1% kernel / faults: 564 minor 9 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.6% 1125/kworker/0:1H: 0% user + 0.6% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.5% 1285/surfaceflinger: 0.2% user + 0.2% kernel / faults: 2 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.5% 1284/servicemanager: 0.1% user + 0.3% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.4% 2561/kworker/u2:2: 0% user + 0.4% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.4% 6/kworker/u2:0: 0% user + 0.4% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.4% 1234/logd: 0.1% user + 0.2% kernel / faults: 31 minor 1 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.2% 2312/com.android.providers.calendar: 0.1% user + 0% kernel / faults: 520 minor 5 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.2% 2798/com.android.printspooler: 0.1% user + 0.1% kernel / faults: 961 minor 9 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 1232/jbd2/vdc-8: 0% user + 0.1% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 3/ksoftirqd/0: 0% user + 0.1% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 1288/zygote64: 0% user + 0.1% kernel / faults: 913 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 1755/wpa_supplicant: 0.1% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1241/debuggerd64: 0% user + 0% kernel / faults: 38 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 1310/logcat: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 2547/com.android.deskclock: 0% user + 0% kernel / faults: 178 minor 6 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0.1% 1283/lmkd: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1293/installd: 0% user + 0% kernel / faults: 2 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 849/kworker/0:2: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 2094/com.android.cellbroadcastreceiver: 0% user + 0% kernel / faults: 151 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1764/sdcard: 0% user + 0% kernel / faults: 1 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1303/rild: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1427/hostapd: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1240/debuggerd: 0% user + 0% kernel / faults: 133 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1962/com.android.settings: 0% user + 0% kernel / faults: 33 minor 16 major
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1280/healthd: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1//init: 0% user + 0% kernel / faults: 1 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1392/dhcpclient: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 2186/android.ext.services: 0% user + 0% kernel / faults: 12 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 622/fsnotify_mark: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1301/mediaserver: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1302/netd: 0% user + 0% kernel / faults: 6 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 1305/fingerprintd: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 2279/com.android.launcher3:wallpaper_chooser: 0% user + 0% kernel / faults: 2 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:   0% 2298/com.android.carrierconfig: 0% user + 0% kernel / faults: 8 minor
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2819/com.android.managedprovisioning: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2842/com.android.messaging: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2867/com.android.calendar: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2915/com.android.dialer: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2920/screencap: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2937/sh: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2938/app_process: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2973/com.android.email: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 2997/app_process: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 3013/com.android.defcontainer: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager:  +0% 3032/app_process: 0% user + 0% kernel
+10-29 21:23:44.916  1636  1651 E ActivityManager: 100% TOTAL: 50% user + 32% kernel + 16% iowait + 0.2% softirq
+10-29 21:23:44.916  1636  1651 E ActivityManager: CPU usage from 943248ms to 943248ms ago (1970-01-01 00:00:00.000 to 1970-01-01 00:00:00.000) with 0% awake:
+10-29 21:23:44.916  1636  1651 E ActivityManager: 0% TOTAL: 0% user + 0% kernel
+10-29 21:23:44.980  1636  1651 I ActivityManager: Killing 2973:com.android.email/u0a34 (adj 0): bg anr
+10-29 21:23:45.451  1636  2399 D ActivityManager: cleanUpApplicationRecord -- 2973
+10-29 21:23:47.633  1636  1651 W ActivityManager: Slow operation: 2141ms so far, now at startProcess: returned from zygote!
+10-29 21:23:47.634  1636  1651 W ActivityManager: Slow operation: 2142ms so far, now at startProcess: done updating battery stats
+10-29 21:23:47.636  1636  1651 W ActivityManager: Slow operation: 2144ms so far, now at startProcess: building log message
+10-29 21:23:47.636  1636  1651 I ActivityManager: Start proc 3036:com.android.gallery3d/u0a39 for broadcast com.android.gallery3d/com.android.camera.DisableCameraReceiver
+10-29 21:23:47.637  1636  1651 W ActivityManager: Slow operation: 2145ms so far, now at startProcess: starting to update pids map
+10-29 21:23:47.637  1636  1651 W ActivityManager: Slow operation: 2146ms so far, now at startProcess: done updating pids map
+10-29 21:23:47.637  1636  1651 W ActivityManager: Slow operation: 2150ms so far, now at startProcess: done starting proc!
+10-29 21:23:47.643  1636  1652 W art     : Long monitor contention with owner Binder:1636_C (2399) at void com.android.server.am.ActivityManagerService$AppDeathRecipient.binderDied()(ActivityManagerService.java:1475) waiters=1 in void com.android.server.am.ActivityManagerService.dispatchUidsChanged() for 2.173s
+10-29 21:23:47.887  3036  3036 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:23:53.592  3032  3032 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:23:54.099  3032  3032 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:23:54.566  3036  3047 W art     : Suspending all threads took: 14.125ms
+10-29 21:23:56.929  3032  3032 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:23:56.947  3032  3032 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:23:57.014  3032  3032 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:23:59.485  3032  3032 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:24:00.582  3032  3032 I art     : System.exit called, status: 0
+10-29 21:24:00.582  3032  3032 I AndroidRuntime: VM exiting with result code 0.
+10-29 21:24:01.013  1636  1651 W art     : Long monitor contention with owner AlarmManager (1699) at int com.android.server.am.PendingIntentRecord.sendInner(int, android.content.Intent, java.lang.String, android.content.IIntentReceiver, java.lang.String, android.os.IBinder, java.lang.String, int, int, int, android.os.Bundle, android.app.IActivityContainer)(PendingIntentRecord.java:223) waiters=1 in void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean) for 607ms
+10-29 21:24:02.844  1636  2399 W art     : Long monitor contention with owner Binder:1636_2 (1648) at void com.android.server.pm.PackageInstallerService$InternalCallback.onSessionSealedBlocking(com.android.server.pm.PackageInstallerSession)(PackageInstallerService.java:1278) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerService.getSessionInfo(int) for 1.570s
+10-29 21:24:13.930  3036  3047 W art     : Suspending all threads took: 319.065ms
+10-29 21:24:14.133  1636  1666 W PackageParser: Unknown element under <manifest>: queries at /data/app/vmdl230478198.tmp/base.apk Binary XML file line #23
+10-29 21:24:18.814  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 21:24:18.814  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.sidecar; ignoring!

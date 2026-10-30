@@ -1,0 +1,336 @@
+--------- beginning of main
+10-29 21:20:57.162  1921  2397 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to add GSM cell broadcast subscription for MID range 4392 to 4392 from client com.android.cellbroadcastreceiver
+10-29 21:20:57.213  1921  1933 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast subscription for MID range 4393 to 4395 from client com.android.cellbroadcastreceiver
+10-29 21:20:57.280  1921  1939 D IccSmsInterfaceManager: [IccSmsInterfaceManager] Failed to remove GSM cell broadcast subscription for MID range 50 to 50 from client com.android.cellbroadcastreceiver
+10-29 21:20:57.465  2775  2797 I CallLogDatabaseHelper: Migrating from old tables...
+10-29 21:20:57.468  2775  2797 I CallLogDatabaseHelper: Source tables don't exist.
+10-29 21:20:57.992  1636  1646 I art     : Background partial concurrent mark sweep GC freed 20937(1277KB) AllocSpace objects, 14(332KB) LOS objects, 33% free, 7MB/10MB, paused 4.200ms total 185.799ms
+10-29 21:21:00.235  1636  1650 W art     : Long monitor contention with owner main (1636) at void com.android.server.am.ActivityManagerService.trimApplications()(ActivityManagerService.java:21356) waiters=2 in void com.android.server.am.ActivityManagerService$3.handleMessage(android.os.Message) for 207ms
+10-29 21:21:00.329  2842  2853 W art     : Suspending all threads took: 108.900ms
+10-29 21:21:00.433  2842  2842 I art     : Waiting for a blocking GC DisableMovingGc
+10-29 21:21:00.440  2842  2842 I art     : WaitForGcToComplete blocked for 6.163ms for cause DisableMovingGc
+10-29 21:21:00.440  2842  2842 I art     : Starting a blocking GC DisableMovingGc
+10-29 21:21:00.695  2775  2795 I ContactLocale: AddressBook Labels [[en_US]]: […, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω, …, А, Б, В, Г, Д, Ђ, Е, Є, Ж, З, И, І, Й, Ј, К, Л, Љ, М, Н, Њ, О, П, Р, С, Т, Ћ, У, Ф, Х, Ц, Ч, Џ, Ш, Щ, Ю, Я, …, א, ב, ג, ד, ה, ו, ז, ח, ט, י, כ, ל, מ, נ, ס, ע, פ, צ, ק, ר, ש, ת, …, ا, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, …, ก, ข, ฃ, ค, ฅ, ฆ, ง, จ, ฉ, ช, ซ, ฌ, ญ, ฎ, ฏ, ฐ, ฑ, ฒ, ณ, ด, ต, ถ, ท, ธ, น, บ, ป, ผ, ฝ, พ, ฟ, ภ, ม, ย, ร, ฤ, ล, ฦ, ว, ศ, ษ, ส, ห, ฬ, อ, ฮ, …, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, …, あ, か, さ, た, な, は, ま, や, ら, わ, #, …]
+10-29 21:21:00.950  2744  2835 V MediaScanner: pruneDeadThumbnailFiles... android.content.ContentProviderClient$CursorWrapperInner@8a021da
+10-29 21:21:00.952  2744  2835 V MediaScanner: /pruneDeadThumbnailFiles... android.content.ContentProviderClient$CursorWrapperInner@8a021da
+10-29 21:21:01.110  2775  2795 I ContactsDatabaseHelper: Bootstrapping database version: 1111
+10-29 21:21:01.774  1921  1921 D VvmSimChangeReceiver: Carrier config changed
+10-29 21:21:01.791  2842  2863 I MessagingApp: Upgrading shared prefs from -1 to 1
+10-29 21:21:02.439  2775  2795 I ContactsProviderV1: Bootstrapping database legacy support
+10-29 21:21:03.253  2842  2842 I MessagingApp: Carrier config changed. Reloading MMS config.
+10-29 21:21:03.312  1921  1921 I VvmSimChangeReceiver: Sim state or carrier config changed for 1
+--------- beginning of system
+10-29 21:21:03.538  1636  2391 W ActivityManager: Slow operation: 76ms so far, now at startProcess: returned from zygote!
+10-29 21:21:03.539  1636  2391 W ActivityManager: Slow operation: 77ms so far, now at startProcess: done updating battery stats
+10-29 21:21:03.540  1636  2391 W ActivityManager: Slow operation: 78ms so far, now at startProcess: building log message
+10-29 21:21:03.540  1636  2391 I ActivityManager: Start proc 2867:com.android.calendar/u0a26 for broadcast com.android.calendar/.alerts.AlertReceiver
+10-29 21:21:03.540  1636  2391 W ActivityManager: Slow operation: 78ms so far, now at startProcess: starting to update pids map
+10-29 21:21:03.541  1636  2391 W ActivityManager: Slow operation: 78ms so far, now at startProcess: done updating pids map
+10-29 21:21:03.541  1636  2391 W ActivityManager: Slow operation: 80ms so far, now at startProcess: done starting proc!
+10-29 21:21:03.621  2867  2867 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:21:04.987  1921  1921 V VvmPhoneStateListener: Signal returned: reattempting activation for 1
+10-29 21:21:05.073  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:21:05.147  2867  2867 W System  : ClassLoader referenced unknown path: /system/app/Calendar/lib/x86_64
+10-29 21:21:05.183  2842  2866 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+10-29 21:21:05.243  2842  2864 W MessagingApp: Rebuilt databases: reseting related state
+10-29 21:21:05.428  2775  2795 I ContactDirectoryManager: deleted 0 stale rows which don't have any relevant directory
+10-29 21:21:05.443  2775  2795 I ContactDirectoryManager: Discovered 0 contact directories in 157ms
+10-29 21:21:05.456  2775  2795 I ContactsProvider: Locale has changed from null to [en_US]
+10-29 21:21:05.467  2775  2795 I ContactsDatabaseHelper: Switching to locale [en_US] (ICU v56.1)
+10-29 21:21:06.748  1921  2882 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@240da73
+10-29 21:21:06.818  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:21:06.953  1921  2882 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 21:21:06.959  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 21:21:07.154  1921  2882 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 21:21:07.196  2842  2853 W art     : Suspending all threads took: 330.495ms
+10-29 21:21:07.212  2842  2862 W art     : Long monitor contention with owner Thread-2 (2863) at void java.lang.Thread.unpark$()(Thread.java:2069) waiters=1 in void java.lang.Object.wait!(long, int) for 2.032s
+10-29 21:21:07.478  2775  2795 I ContactsDatabaseHelper: Locale change completed in 2010ms
+10-29 21:21:07.487  2775  2795 I ContactsDatabaseHelper: Switching to locale [en_US] (ICU v56.1)
+10-29 21:21:08.485  1636  2391 D MmsServiceBroker: getCarrierConfigValues() by com.android.messaging
+10-29 21:21:08.490  1636  2391 W MmsServiceBroker: MmsService not connected. Try connecting...
+10-29 21:21:08.496  1636  1636 I MmsServiceBroker: Connecting to MmsService
+10-29 21:21:08.549  1636  1636 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.bindService:1421 com.android.server.MmsServiceBroker.tryConnecting:241 com.android.server.MmsServiceBroker.-wrap3:-1 com.android.server.MmsServiceBroker$1.handleMessage:83 android.os.Handler.dispatchMessage:102 
+10-29 21:21:09.071  2842  2865 W art     : Long monitor contention with owner AsyncTask #1 (2864) at void com.android.messaging.datamodel.n.MP(android.database.sqlite.SQLiteDatabase)(SourceFile:788) waiters=0 in com.android.messaging.datamodel.o com.android.messaging.datamodel.n.MO() for 4.083s
+10-29 21:21:09.190  2842  2865 I MessagingAppDataModel: Fixup: Send failed - 0 Download failed - 0
+10-29 21:21:09.194  2842  2865 W MessagingAppDataModel: Used 6070ms for FixupMessageStatusOnStartupAction#executeAction
+10-29 21:21:09.454  2775  2795 I ContactsDatabaseHelper: Locale change completed in 1967ms
+10-29 21:21:09.695  2775  2795 I ContactsFTS: Rebuild contact search index in 194ms, 0 contacts
+10-29 21:21:09.762  2775  2795 I ContactsProvider: Upgrading aggregation algorithm
+10-29 21:21:09.783  2775  2795 I ContactAggregator: Marked all visible contacts for aggregation: 0 raw contacts, 12 ms
+10-29 21:21:09.916  1921  1921 W System  : ClassLoader referenced unknown path: /system/priv-app/MmsService/lib/x86_64
+10-29 21:21:09.985  1921  1921 D ApplicationLoaders: ignored Vulkan layer search path /system/priv-app/MmsService/lib/x86_64:/system/lib64:/vendor/lib64 for namespace 0x7cc854151160
+10-29 21:21:10.191  1921  1921 D MmsService: onCreate
+10-29 21:21:10.288  1636  1636 I MmsServiceBroker: MmsService connected
+10-29 21:21:10.295  1921  1939 D MmsService: getCarrierConfigValues
+10-29 21:21:10.296  1921  1939 I MmsService: mms config for sub 1: null
+10-29 21:21:10.347  1921  1921 I MmsService: MmsConfigManager receiver action: android.intent.action.SIM_STATE_CHANGED
+10-29 21:21:10.376  1921  1921 I MmsService: MmsConfigManager receiver action: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-29 21:21:10.408  1921  2884 I MmsService: MmsConfigManager loads in background mcc/mnc: 310/260
+10-29 21:21:10.411  1921  2885 I MmsService: MmsConfigManager loads in background mcc/mnc: 310/260
+10-29 21:21:10.426  1921  1921 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 21:21:10.448  1921  2883 I MmsService: MmsConfigManager loads in background mcc/mnc: 310/260
+10-29 21:21:10.593  2842  2866 I MessagingApp: Carrier configs loaded: Bundle[{maxImageHeight=1944, maxMessageSize=1048576, maxImageWidth=2592}] from resources+system for subId=1
+10-29 21:21:10.766  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:21:10.948  1921  1921 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 21:21:11.102  2842  2863 W art     : Long monitor contention with owner AsyncTask #2 (2866) at boolean android.os.BinderProxy.transactNative(int, android.os.Parcel, android.os.Parcel, int)(Binder.java:-2) waiters=0 in void com.android.messaging.sms.o.load() for 3.228s
+10-29 21:21:11.255  2775  2795 I ContactsProvider: Aggregation algorithm upgraded for 0 raw contacts in 1491ms
+10-29 21:21:11.605  2842  2863 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+10-29 21:21:11.769  2867  2879 W art     : Suspending all threads took: 2.725s
+10-29 21:21:12.135  1636  2398 D MmsServiceBroker: getCarrierConfigValues() by com.android.messaging
+10-29 21:21:12.136  1921  1933 D MmsService: getCarrierConfigValues
+10-29 21:21:12.137  1921  1933 I MmsService: mms config for sub 1: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}]
+10-29 21:21:12.171  2842  2865 W MessagingAppDataModel: Used 2897ms for ProcessPendingMessagesAction#executeAction
+10-29 21:21:12.176  2842  2863 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+10-29 21:21:13.312  2842  2853 W art     : Suspending all threads took: 979.711ms
+10-29 21:21:13.626  2842  2887 I MessagingAppDataModel: SyncMessagesAction: Starting batch for messages from -1 to 1793308860533 (message update limit = 80, message scan limit = 4000)
+10-29 21:21:15.160  2842  2853 W art     : Suspending all threads took: 1.476s
+10-29 21:21:17.800  2842  2889 I MessagingAppDataModel: SyncMessagesAction: All messages now in sync
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: getSharedPreferences
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: org.xmlpull.v1.XmlPullParserException: Unexpected end of document
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: 	at com.android.internal.util.XmlUtils.readValueXml(XmlUtils.java:1341)
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: 	at com.android.internal.util.XmlUtils.readMapXml(XmlUtils.java:740)
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: 	at android.app.SharedPreferencesImpl.loadFromDisk(SharedPreferencesImpl.java:130)
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: 	at android.app.SharedPreferencesImpl.-wrap1(SharedPreferencesImpl.java)
+10-29 21:21:18.762  2867  2890 W SharedPreferencesImpl: 	at android.app.SharedPreferencesImpl$1.run(SharedPreferencesImpl.java:100)
+10-29 21:21:18.936  2867  2867 D ExtensionsFactory: No custom extensions.
+10-29 21:21:19.053  2867  2867 D AlertReceiver: onReceive: a=android.intent.action.PROVIDER_CHANGED Intent { act=android.intent.action.PROVIDER_CHANGED dat=content://com.android.calendar flg=0x20000010 cmp=com.android.calendar/.alerts.AlertReceiver }
+10-29 21:21:21.249  2867  2867 D AlertUtils: Flushing old alerts from shared prefs table
+10-29 21:21:21.332  2867  2893 D AlertService: 0 Action = android.intent.action.PROVIDER_CHANGED
+10-29 21:21:23.413  2842  2853 W art     : Suspending all threads took: 12.392ms
+10-29 21:21:23.738  2312  2312 I CalendarUpgradeReceiver: Creating or opening calendar database
+10-29 21:21:23.760  1636  2155 I PreBootBroadcaster: Pre-boot of {com.android.providers.contacts/com.android.providers.contacts.ContactsUpgradeReceiver} for user 0
+10-29 21:21:25.884  2867  2879 W art     : Suspending all threads took: 1.884s
+10-29 21:21:26.160  2775  2786 W art     : Suspending all threads took: 9.515ms
+10-29 21:21:26.203  2775  2775 I ContactsUpgradeReceiver: Creating or opening contacts database
+10-29 21:21:26.293  2842  2866 W art     : Long monitor contention with owner AsyncTask #1 (2864) at void java.util.jar.Manifest.<init>(java.io.InputStream)(Manifest.java:68) waiters=0 in com.google.i18n.phonenumbers.Phonemetadata$PhoneMetadata com.google.i18n.phonenumbers.h.aGJ(java.lang.String) for 11.079s
+10-29 21:21:26.391  2867  2893 I GlobalDismissManager: no sender configured
+10-29 21:21:26.394  2867  2893 D AlertService: Beginning updateAlertNotification
+10-29 21:21:27.178  2867  2893 D AlertService: No fired or scheduled alerts
+10-29 21:21:27.708  2842  2853 W art     : Suspending all threads took: 526.912ms
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: Write failure
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: java.io.IOException: write failed: EIO (I/O error)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:501)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at java.io.FileOutputStream.write(FileOutputStream.java:316)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushBytesLocked(FastPrintWriter.java:336)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flushLocked(FastPrintWriter.java:359)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at com.android.internal.util.FastPrintWriter.flush(FastPrintWriter.java:394)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at android.os.ShellCommand.exec(ShellCommand.java:113)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at com.android.server.pm.PackageManagerService.onShellCommand(PackageManagerService.java:18363)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at android.os.Binder.shellCommand(Binder.java:468)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at android.os.Binder.onTransact(Binder.java:367)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:2387)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at com.android.server.pm.PackageManagerService.onTransact(PackageManagerService.java:3031)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at android.os.Binder.execTransact(Binder.java:565)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: Caused by: android.system.ErrnoException: write failed: EIO (I/O error)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at libcore.io.Posix.writeBytes(Native Method)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at libcore.io.Posix.write(Posix.java:273)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at libcore.io.BlockGuardOs.write(BlockGuardOs.java:319)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	at libcore.io.IoBridge.write(IoBridge.java:496)
+10-29 21:21:27.726  1636  1837 W FastPrintWriter: 	... 11 more
+10-29 21:21:27.379  1287  1287 W /sbin/adbd: type=1400 audit(0.0:10): avc: denied { search } for comm=73657276696365203335 name="security" dev="vdc" ino=499841 scontext=u:r:adbd:s0 tcontext=u:object_r:security_file:s0 tclass=dir permissive=0
+10-29 21:21:29.069  2867  2893 D AlertService: Scheduling next alarm with AlarmScheduler. sEventReminderReceived: null
+10-29 21:21:29.192  1636  2400 I PreBootBroadcaster: Pre-boot of {com.android.providers.media/com.android.providers.media.MediaUpgradeReceiver} for user 0
+10-29 21:21:32.253  2744  2744 W art     : Long monitor contention with owner SharedPreferencesImpl-load (2904) at void android.app.SharedPreferencesImpl.loadFromDisk()(SharedPreferencesImpl.java:141) waiters=1 in void java.lang.Object.wait!() for 269ms
+10-29 21:21:32.416  1636  1961 D CountryDetector: The first listener is added
+10-29 21:21:34.149  1636  1651 I ActivityManager: Waited long enough for: ServiceRecord{2c9891f u0 com.android.calendar/.alerts.AlertService}
+10-29 21:21:35.836  2744  2744 I MediaUpgradeReceiver: ---> Start upgrade of media database external.db
+10-29 21:21:36.283  2744  2744 I MediaUpgradeReceiver: <--- Finished upgrade of media database external.db in 448ms
+10-29 21:21:36.291  1636  1649 I PreBootBroadcaster: Pre-boot of {com.android.settings/com.android.settings.SettingsInitialize} for user 0
+10-29 21:21:38.217  2842  2864 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+10-29 21:21:38.294  1636  2391 D MmsServiceBroker: getCarrierConfigValues() by com.android.messaging
+10-29 21:21:38.295  1921  1933 D MmsService: getCarrierConfigValues
+10-29 21:21:38.296  1921  1933 I MmsService: mms config for sub 1: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}]
+10-29 21:21:38.302  2842  2864 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+10-29 21:21:38.396  2867  2893 D AlarmScheduler: No events found starting within 1 week.
+10-29 21:21:41.086  1636  2398 D ActivityManager: Sending BOOT_COMPLETE user #0
+10-29 21:21:41.130  1636  1651 W art     : Long monitor contention with owner Binder:1636_B (2398) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:760) waiters=0 in void com.android.server.am.ActivityManagerService.idleUids() for 1.144s
+10-29 21:21:43.026  1636  2914 E BootReceiver: Error reading /data/system/last-header.txt
+10-29 21:21:43.026  1636  2914 E BootReceiver: java.io.FileNotFoundException: /data/system/last-header.txt (No such file or directory)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at java.io.FileInputStream.open(Native Method)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at android.os.FileUtils.readTextFile(FileUtils.java:263)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at com.android.server.BootReceiver.getPreviousBootHeaders(BootReceiver.java:121)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at com.android.server.BootReceiver.getBootHeadersToLogAndUpdate(BootReceiver.java:143)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at com.android.server.BootReceiver.logBootEvents(BootReceiver.java:163)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at com.android.server.BootReceiver.-wrap2(BootReceiver.java)
+10-29 21:21:43.026  1636  2914 E BootReceiver: 	at com.android.server.BootReceiver$1.run(BootReceiver.java:93)
+10-29 21:21:43.225  1636  1660 W art     : Long monitor contention with owner android.bg (1650) at boolean android.os.MessageQueue.enqueueMessage(android.os.Message, long)(MessageQueue.java:541) waiters=0 in android.os.Message android.os.MessageQueue.next() for 626ms
+10-29 21:21:43.405  2915  2915 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:21:44.723  1636  2914 I RecoverySystem: No recovery log file
+10-29 21:21:44.781  1636  1636 W ActivityManager: Slow operation: 1817ms so far, now at startProcess: returned from zygote!
+10-29 21:21:44.796  1636  1636 W ActivityManager: Slow operation: 1826ms so far, now at startProcess: done updating battery stats
+10-29 21:21:44.803  1636  1636 W ActivityManager: Slow operation: 1837ms so far, now at startProcess: building log message
+10-29 21:21:44.803  1636  1636 I ActivityManager: Start proc 2915:com.android.dialer/u0a8 for broadcast com.android.dialer/.calllog.CallLogReceiver
+10-29 21:21:44.804  1636  1636 W ActivityManager: Slow operation: 1839ms so far, now at startProcess: starting to update pids map
+10-29 21:21:44.804  1636  1636 W ActivityManager: Slow operation: 1840ms so far, now at startProcess: done updating pids map
+10-29 21:21:44.804  1636  1636 W ActivityManager: Slow operation: 1880ms so far, now at startProcess: done starting proc!
+10-29 21:21:44.806  1636  2914 I BootReceiver: No existing last log timestamp file /data/system/log-files.xml; starting empty
+10-29 21:21:44.812  1636  1652 W art     : Long monitor contention with owner main (1636) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:760) waiters=0 in void com.android.server.am.ActivityManagerService.dispatchUidsChanged() for 1.854s
+10-29 21:21:44.959  1636  2914 I BootReceiver: Copying audit failures to DropBox
+10-29 21:21:44.971  1636  1636 W art     : Long monitor contention with owner Binder:1636_9 (2391) at void com.android.server.am.ActivityManagerService.attachApplication(android.app.IApplicationThread)(ActivityManagerService.java:6669) waiters=1 in void com.android.server.am.ActivityManagerService.trimApplications() for 136ms
+10-29 21:21:45.013  1636  2914 I BootReceiver: Checking for fsck errors
+10-29 21:21:45.018  1636  2914 I BootReceiver: Copying /dev/fscklogs/log to DropBox (SYSTEM_FSCK)
+10-29 21:21:45.133  1636  1646 I art     : Background sticky concurrent mark sweep GC freed 32392(1992KB) AllocSpace objects, 21(592KB) LOS objects, 26% free, 7MB/10MB, paused 48.944ms total 3.601s
+10-29 21:21:46.652  1636  1652 W art     : Long monitor contention with owner main (1636) at void com.android.server.pm.UserManagerService$MainHandler.handleMessage(android.os.Message)(UserManagerService.java:3290) waiters=0 in int com.android.server.pm.PackageManagerService.checkUidPermission(java.lang.String, int) for 1.668s
+10-29 21:21:48.145  2915  2915 W System  : ClassLoader referenced unknown path: /system/priv-app/Dialer/lib/x86_64
+10-29 21:21:48.828  1285  1665 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 21:21:48.864  1285  1318 D PermissionCache: checking android.permission.READ_FRAME_BUFFER for uid=2000 => granted (3252 us)
+10-29 21:21:48.915  1285  1318 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1536000
+10-29 21:21:49.003  2920  2920 D         : HostConnection::get() New Host Connection established 0x72080962d4e0, tid 2920
+10-29 21:21:49.092  1285  1285 E EGL_emulation: tid 1285: eglCreateSyncKHR(1962): error 0x3004 (EGL_BAD_ATTRIBUTE)
+10-29 21:21:49.801  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:21:49.975  1921  1921 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 21:21:52.409  2915  2928 W art     : Suspending all threads took: 2.308s
+10-29 21:21:57.484  2933  2933 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:21:57.863  2933  2933 D AndroidRuntime: CheckJNI is OFF
+10-29 21:21:59.015  2938  2938 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:21:59.081  2938  2938 D AndroidRuntime: CheckJNI is OFF
+10-29 21:22:03.666  2933  2933 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:22:03.673  2938  2938 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:22:05.878  2933  2933 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:22:05.883  2938  2938 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:22:06.381  2933  2933 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:22:06.381  2933  2933 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:22:06.395  2933  2933 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:22:09.341  2938  2938 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:22:09.342  2938  2938 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:22:09.374  2938  2938 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:22:09.577  2933  2933 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:22:09.758  2938  2938 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 21:22:10.373  1636  1961 W art     : Long monitor contention with owner android.io (1657) at void com.android.server.pm.PackageInstallerService$2.run()(PackageInstallerService.java:561) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerService.getSessionInfo(int) for 147ms
+10-29 21:22:10.380  2915  2915 D ExtensionsFactory: No custom extensions.
+10-29 21:22:10.908  1293  1293 I         : free_cache(181736340) avail 10302271488
+10-29 21:22:11.571  1921  1932 I art     : Background sticky concurrent mark sweep GC freed 14715(1401KB) AllocSpace objects, 1(20KB) LOS objects, 37% free, 3MB/5MB, paused 33.570ms total 290.252ms
+10-29 21:22:11.795  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 21:22:11.828  1921  1921 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 21:22:11.889  1921  1921 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 21:22:11.898  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:22:11.917  1921  1921 D RetryPolicy: retry #1 for com.android.phone.vvm.omtp.ActivationTask@eadb243 queued, executing in 5000
+10-29 21:22:11.953  1921  1921 D VvmTaskScheduler: minimal wait time:4967
+10-29 21:22:11.998  1921  1921 D VvmTaskScheduler: minimal wait time:4921
+10-29 21:22:12.956  2915  2915 I BlockedNumbersAuto: Updating state as already checked for auto-migrate.
+10-29 21:22:13.825  2915  2915 I BlockedNumbersAuto: Attempting to auto-migrate.
+10-29 21:22:16.931  1921  2882 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@eadb243
+10-29 21:22:17.067  1636  2391 W ActivityManager: Slow operation: 64ms so far, now at getContentProviderImpl: after updateOomAdj
+10-29 21:22:17.067  1636  2391 W ActivityManager: Slow operation: 65ms so far, now at getContentProviderImpl: done!
+10-29 21:22:17.939  1921  2882 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 21:22:17.964  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 21:22:18.185  1921  2882 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 21:22:18.597  1921  1921 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 21:22:19.101  2915  2928 W art     : Suspending all threads took: 166.880ms
+10-29 21:22:28.362  1921  1921 V OtaStartupReceiver: onOtaspChanged: mOtaspMode=3
+10-29 21:22:28.411  1921  1921 D CarrierConfigLoader: mHandler: 13 phoneId: 0
+10-29 21:22:28.412  1921  1921 D CarrierConfigLoader: mHandler: 7 phoneId: 0
+10-29 21:22:28.661  1921  1921 D CarrierConfigLoader: Loaded config from XML. package=com.android.carrierconfig phoneId=0
+10-29 21:22:29.293  1921  1921 D CarrierConfigLoader: mHandler: 5 phoneId: 0
+10-29 21:22:29.402  2842  2842 I MessagingApp: Carrier config changed. Reloading MMS config.
+10-29 21:22:30.075  1921  1921 I MmsService: MmsConfigManager receiver action: android.telephony.action.CARRIER_CONFIG_CHANGED
+10-29 21:22:30.102  1921  2968 I MmsService: MmsConfigManager loads in background mcc/mnc: 310/260
+10-29 21:22:30.123  1636  1636 I Telecom : PhoneAccountRegistrar: SimCallManager queried, returning: null: TSI.gSCMFU@AEY
+10-29 21:22:32.774  2867  2867 D AlertReceiver: onReceive: a=android.intent.action.BOOT_COMPLETED Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 cmp=com.android.calendar/.alerts.AlertReceiver (has extras) }
+10-29 21:22:32.798  2842  2967 W MessagingApp: canonicalizeMccMnc: invalid mccmnc:null ,null
+10-29 21:22:32.838  2547  2547 I AlarmClock: AlarmInitReceiver android.intent.action.BOOT_COMPLETED
+10-29 21:22:32.909  1636  2709 D MmsServiceBroker: getCarrierConfigValues() by com.android.messaging
+10-29 21:22:32.910  1921  2269 D MmsService: getCarrierConfigValues
+10-29 21:22:32.912  1921  2269 I MmsService: mms config for sub 1: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}]
+10-29 21:22:32.916  2867  2969 D AlertService: 0 Action = android.intent.action.BOOT_COMPLETED
+10-29 21:22:32.919  2842  2967 I MessagingApp: Carrier configs loaded: Bundle[{httpSocketTimeout=60000, aliasMinChars=2, smsToMmsTextThreshold=-1, enableSMSDeliveryReports=true, maxMessageTextSize=-1, supportMmsContentDisposition=true, enabledTransID=false, aliasEnabled=false, supportHttpCharsetHeader=false, allowAttachAudio=true, smsToMmsTextLengthThreshold=-1, recipientLimit=2147483647, uaProfTagName=x-wap-profile, aliasMaxChars=48, maxImageHeight=1944, enableMMSDeliveryReports=false, userAgent=, mmsCloseConnection=false, config_cellBroadcastAppLinks=true, maxSubjectLength=40, httpParams=, enableGroupMms=true, emailGatewayNumber=, maxMessageSize=1048576, naiSuffix=, enableMMSReadReports=false, maxImageWidth=2592, uaProfUrl=, enabledMMS=false, enabledNotifyWapMMSC=false, sendMultipartSmsAsSeparateMessages=false, enableMultipartSMS=true}] from resources+system for subId=1
+10-29 21:22:32.970  2867  2969 D AlertService: Scheduling next alarm with AlarmScheduler. sEventReminderReceived: null
+10-29 21:22:33.068  2867  2969 D AlarmScheduler: No events found starting within 1 week.
+10-29 21:22:33.951  2915  2928 W art     : Suspending all threads took: 1.454s
+10-29 21:22:36.178  2915  2915 W art     : Long monitor contention with owner AsyncTask #1 (2963) at void android.os.MessageQueue.nativeWake(long)(MessageQueue.java:-2) waiters=0 in android.os.Message android.os.MessageQueue.next() for 2.150s
+10-29 21:22:36.228  2915  2964 W CountryDetector: No location permissions, not registering for location updates.
+10-29 21:22:37.130  2547  2558 W art     : Suspending all threads took: 13.712ms
+10-29 21:22:38.540  2915  2915 I BlockedNumbersAuto: Auto-migrating: no blocked numbers.
+10-29 21:22:39.312  1636  1961 W ActivityManager: Slow operation: 147ms so far, now at startProcess: returned from zygote!
+10-29 21:22:39.313  1636  1961 W ActivityManager: Slow operation: 148ms so far, now at startProcess: done updating battery stats
+10-29 21:22:39.315  1636  1961 W ActivityManager: Slow operation: 150ms so far, now at startProcess: building log message
+10-29 21:22:39.316  1636  1961 I ActivityManager: Start proc 2973:com.android.email/u0a34 for broadcast com.android.email/.service.EmailUpgradeBroadcastReceiver
+10-29 21:22:39.316  1636  1961 W ActivityManager: Slow operation: 151ms so far, now at startProcess: starting to update pids map
+10-29 21:22:39.317  1636  1961 W ActivityManager: Slow operation: 152ms so far, now at startProcess: done updating pids map
+10-29 21:22:39.317  1636  1961 W ActivityManager: Slow operation: 155ms so far, now at startProcess: done starting proc!
+10-29 21:22:39.438  2973  2973 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:22:39.509  2915  2928 W art     : Suspending all threads took: 261.211ms
+10-29 21:22:40.020  2547  2707 V AlarmClock: AlarmInitReceiver finished
+10-29 21:22:42.276  2973  2973 W System  : ClassLoader referenced unknown path: /system/app/Email/lib/x86_64
+10-29 21:22:43.247  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0200fc
+10-29 21:22:43.247  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0e03a5
+10-29 21:22:43.985  1636  1705 I InputReader: Reconfiguring input devices.  changes=0x00000010
+10-29 21:22:44.226  1921  1921 D CarrierSvcBindHelper: No carrier app for: 0
+10-29 21:22:44.429  1636  1646 W art     : Suspending all threads took: 29.086ms
+10-29 21:22:44.442  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0200fb
+10-29 21:22:44.442  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0e0927
+10-29 21:22:44.443  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0200fa
+10-29 21:22:44.443  1636  1650 W ResourceType: No known package when getting value for resource number 0x7f0e07e1
+10-29 21:22:44.799  1636  1895 I Process : Sending signal. PID: 1636 SIG: 3
+10-29 21:22:44.802  1636  1641 I art     : Thread[2,tid=1641,WaitingInMainSignalCatcherLoop,Thread*=0x7cc84fa96400,peer=0x12c010d0,"Signal Catcher"]: reacting to signal 3
+10-29 21:22:44.803  1636  1641 I art     : 
+10-29 21:22:44.936  1636  1641 W art     : Suspending all threads took: 128.046ms
+10-29 21:22:45.050  1636  1641 W art     : Suspending all threads took: 11.528ms
+10-29 21:22:45.093  1636  1646 I art     : Background partial concurrent mark sweep GC freed 32677(1836KB) AllocSpace objects, 17(644KB) LOS objects, 33% free, 7MB/11MB, paused 36.099ms total 1.869s
+10-29 21:22:47.961  1636  1651 I ActivityManager: Waited long enough for: ServiceRecord{8dab715 u0 com.android.calendar/.alerts.InitAlarmsService}
+10-29 21:22:48.986  1241  1241 W         : debuggerd: handling request: pid=1285 uid=1000 gid=1003 tid=1285
+10-29 21:22:49.462  1636  1641 I art     : Wrote stack traces to '/data/anr/traces.txt'
+10-29 21:22:49.797  1241  1241 W         : debuggerd: resuming target 1285
+10-29 21:22:49.803  1241  1241 W         : debuggerd: handling request: pid=1290 uid=1041 gid=1005 tid=1290
+10-29 21:22:49.839  1240  1240 W         : debuggerd: handling request: pid=1290 uid=1041 gid=1005 tid=1290
+10-29 21:22:50.675  1240  1240 W         : debuggerd: resuming target 1290
+10-29 21:22:50.683  1241  1241 W         : debuggerd: handling request: pid=1291 uid=1047 gid=1005 tid=1291
+10-29 21:22:50.688  1240  1240 W         : debuggerd: handling request: pid=1291 uid=1047 gid=1005 tid=1291
+10-29 21:22:50.786  1636  1652 W art     : Long monitor contention with owner android.bg (1650) at void com.android.server.pm.ShortcutService.handlePackageChanged(java.lang.String, int)(ShortcutService.java:2747) waiters=0 in void com.android.server.pm.ShortcutService.handleOnUidStateChanged(int, int) for 57.628s
+10-29 21:22:51.210  1240  1240 W         : debuggerd: resuming target 1291
+10-29 21:22:51.215  1241  1241 W         : debuggerd: handling request: pid=1292 uid=1019 gid=1019 tid=1292
+10-29 21:22:51.221  1240  1240 W         : debuggerd: handling request: pid=1292 uid=1019 gid=1019 tid=1292
+10-29 21:22:51.498  1240  1240 W         : debuggerd: resuming target 1292
+10-29 21:22:51.503  1241  1241 W         : debuggerd: handling request: pid=1295 uid=1046 gid=1006 tid=1295
+10-29 21:22:51.506  1240  1240 W         : debuggerd: handling request: pid=1295 uid=1046 gid=1006 tid=1295
+10-29 21:22:51.948  1240  1240 W         : debuggerd: resuming target 1295
+10-29 21:22:51.957  1241  1241 W         : debuggerd: handling request: pid=1296 uid=1013 gid=1031 tid=1296
+10-29 21:22:51.967  1240  1240 W         : debuggerd: handling request: pid=1296 uid=1013 gid=1031 tid=1296
+10-29 21:22:52.210  1240  1240 W         : debuggerd: resuming target 1296
+10-29 21:22:52.217  1241  1241 W         : debuggerd: handling request: pid=1300 uid=1040 gid=1026 tid=1300
+10-29 21:22:52.223  1240  1240 W         : debuggerd: handling request: pid=1300 uid=1040 gid=1026 tid=1300
+10-29 21:22:52.546  1240  1240 W         : debuggerd: resuming target 1300
+10-29 21:22:52.553  1241  1241 W         : debuggerd: handling request: pid=1301 uid=1013 gid=1005 tid=1301
+10-29 21:22:52.556  1240  1240 W         : debuggerd: handling request: pid=1301 uid=1013 gid=1005 tid=1301
+10-29 21:22:53.015  1240  1240 W         : debuggerd: resuming target 1301
+10-29 21:22:53.023  1241  1241 W         : debuggerd: handling request: pid=1764 uid=1023 gid=1023 tid=1764
+10-29 21:22:53.159  1241  1241 W         : debuggerd: resuming target 1764
+10-29 21:22:53.163  1636  1652 W art     : Long monitor contention with owner watchdog (1895) at void com.android.server.Watchdog.run()(Watchdog.java:356) waiters=0 in void com.android.server.Watchdog$HandlerChecker.run() for 2.250s
+10-29 21:23:03.030  2867  2970 D InitAlarmsService: Clearing and rescheduling alarms.
+10-29 21:23:06.460  1636  2392 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:23:09.225  2997  2997 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:23:09.362  2973  3000 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-29 21:23:10.425  2997  2997 D AndroidRuntime: CheckJNI is OFF
+10-29 21:23:10.591  1636  1648 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:23:12.237  2997  2997 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:23:12.381  2997  2997 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:23:13.083  2997  2997 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:23:13.083  2997  2997 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:23:13.116  2997  2997 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:23:13.598  2997  2997 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:23:13.630  2973  2973 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-29 21:23:13.805  1636  1837 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:23:16.432  1636  1657 W art     : Long monitor contention with owner PackageInstaller (1689) at void com.android.org.conscrypt.NativeCrypto.EVP_DigestUpdateDirect(com.android.org.conscrypt.NativeRef$EVP_MD_CTX, long, int)(NativeCrypto.java:-2) waiters=0 in boolean com.android.server.pm.PackageInstallerSession.isPrepared() for 2.686s
+10-29 21:23:16.482  1636  1836 W art     : Long monitor contention with owner android.io (1657) at void com.android.server.pm.PackageInstallerService$2.run()(PackageInstallerService.java:561) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerService.getSessionInfo(int) for 2.733s
+10-29 21:23:16.531  1293  1293 I         : free_cache(181736340) avail 10120220672
+10-29 21:23:16.752  1636  1666 W ActivityManager: Slow operation: 97ms so far, now at startProcess: returned from zygote!
+10-29 21:23:16.753  1636  1666 W ActivityManager: Slow operation: 99ms so far, now at startProcess: done updating battery stats
+10-29 21:23:16.754  1636  1666 W ActivityManager: Slow operation: 99ms so far, now at startProcess: building log message
+10-29 21:23:16.754  1636  1666 I ActivityManager: Start proc 3013:com.android.defcontainer/u0a7 for service com.android.defcontainer/.DefaultContainerService
+10-29 21:23:16.754  1636  1666 W ActivityManager: Slow operation: 99ms so far, now at startProcess: starting to update pids map
+10-29 21:23:16.755  1636  1666 W ActivityManager: Slow operation: 100ms so far, now at startProcess: done updating pids map
+10-29 21:23:16.755  1636  1666 W ActivityManager: Slow operation: 101ms so far, now at startProcess: done starting proc!
+10-29 21:23:16.763  3013  3013 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:23:18.704  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 21:23:18.728  1921  1921 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 21:23:18.742  1921  1921 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 21:23:18.754  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:23:18.772  1921  1921 D RetryPolicy: retry #2 for com.android.phone.vvm.omtp.ActivationTask@6c99f0 queued, executing in 5000
+10-29 21:23:18.806  1921  1921 D VvmTaskScheduler: minimal wait time:4968
+10-29 21:23:18.842  1921  1921 D VvmTaskScheduler: minimal wait time:4932
+10-29 21:23:23.795  1921  2882 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@6c99f0
+10-29 21:23:24.026  1921  2882 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 21:23:24.028  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 21:23:24.281  1921  2882 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 21:23:25.811  1921  1921 D VvmStatusSmsFetcher: Request SMS successfully sent

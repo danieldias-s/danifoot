@@ -1,0 +1,18 @@
+Installing build\app\outputs\flutter-apk\app-profile.apk...        79,2s
+I/Choreographer( 2431): Skipped 536 frames!  The application may be doing too much work on its main thread.
+I/Choreographer( 2431): Skipped 45 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:54170/4weWKivw9fw=/
+VMServiceFlutterDriver: Isolate found with number: 8409788516581271
+VMServiceFlutterDriver: Isolate 8409788516581271 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+VMServiceFlutterDriver: Connected to Flutter application.
+I/flutter ( 2431): 00:00 +0: Native Android UI and real server runtime
+I/Choreographer( 2431): Skipped 66 frames!  The application may be doing too much work on its main thread.
+D/gralloc_ranchu( 2431): Emulator without host-side GPU emulation detected. Loading gralloc.default.so from /vendor/lib64/hw/gralloc.goldfish.default.so...
+D/gralloc_ranchu( 2431): gralloc.default.so not found in /vendor. Trying /system/lib64/hw/gralloc.goldfish.default.so...
+D/ProfileInstaller( 2431): Installing profile for com.example.elifoot_flutter
+I/flutter ( 2431): QA003_STAGE 01-native-menu
+I/flutter ( 2431): QA003_STAGE 02-native-lobby
+I/flutter ( 2431): QA003_STAGE 03-native-squad
+I/flutter ( 2431): QA003_ROOM {"worldId":"b011cbb3-b8f8-469d-b196-98551d1200cd","name":"QA003 Android 1793312432317","clubId":"a935b33d-eb58-5547-a4cd-a5bb8e05d078","signalR":true,"frames":1}

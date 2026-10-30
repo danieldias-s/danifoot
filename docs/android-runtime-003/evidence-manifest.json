@@ -1,0 +1,584 @@
+{
+  "Task": "ELIFOOT_98_ANDROID_RUNTIME_003",
+  "Status": "PARTIAL",
+  "RecordedAt": "2026-10-29T19:43:22.4396593-03:00",
+  "Files": [
+    {
+      "Path": "adb-after-restart.log",
+      "Bytes": 28,
+      "SHA256": "BBFCC7239A6F1BE3544814EBDC6BCC9B66BF5B1F0B03BAA3340808F19265A630"
+    },
+    {
+      "Path": "adb-final.log",
+      "Bytes": 156,
+      "SHA256": "EFD3F4DA61DC3446A1572B1169B3DB2F8A312661A9EDF6EAE315057A87EABAC4"
+    },
+    {
+      "Path": "android-boot.png",
+      "Bytes": 105923,
+      "SHA256": "47E73E90503C981CC224BACB31FA27F1B5FAD6899D7FA229684816FD80CDA6D8"
+    },
+    {
+      "Path": "android-build-final.log",
+      "Bytes": 129,
+      "SHA256": "15244D07B64B5D67AC46E2002D8D1C7388F63BE8FFDF21D17B5C2BE25A0DDAF7"
+    },
+    {
+      "Path": "android-build.log",
+      "Bytes": 20360,
+      "SHA256": "0C4C76A012D13C4039F48C5595EE43B0BDA3133DD2CF4FFD9FC6F31F5A24932B"
+    },
+    {
+      "Path": "android-crash-final.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "android-crash.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "android-integration-build-2.log",
+      "Bytes": 129,
+      "SHA256": "A5A0FACC9D435A2DDE8EA7E031669E4E3859A0932539FAA1060A2D781D86B261"
+    },
+    {
+      "Path": "android-integration-build.log",
+      "Bytes": 129,
+      "SHA256": "8389FDEC5214DCF7609D0AC670E9C10D6360B24D5CCE7579AB7813187C3AFEEA"
+    },
+    {
+      "Path": "android-profile-build.log",
+      "Bytes": 418,
+      "SHA256": "81A22A4820D4F5E0C43118B5D20CD5FEEB2DD047F6FA50E6C8E8A230F3466F5D"
+    },
+    {
+      "Path": "android-profile-game-build.log",
+      "Bytes": 669,
+      "SHA256": "DC4DA86FB69961381666F0104EB567DDB968A2B85CABDFE612B8A3EB46E2C0D4"
+    },
+    {
+      "Path": "api-continued.log",
+      "Bytes": 215152,
+      "Mutable": true,
+      "HashNote": "Log de servidor local ainda em execucao; hash nao fixado."
+    },
+    {
+      "Path": "apk-final.json",
+      "Bytes": 158,
+      "SHA256": "2ED73E51B935FD7F7A0CCA0DB4E281A55ED057AAA5FE492C2258B67C3AC70A2A"
+    },
+    {
+      "Path": "apk-sha256.log",
+      "Bytes": 171,
+      "SHA256": "B45609763BA50C434208DAB48BCFC52B3ED7D9B6F80AC8AA6ED1DB7F2041A058"
+    },
+    {
+      "Path": "apks-final.json",
+      "Bytes": 493,
+      "SHA256": "65DA564671C41D20F02CADAE479F648B408B72353DEFDB5168FA3CB1DBF4E6CC"
+    },
+    {
+      "Path": "avd-light-create.log",
+      "Bytes": 470,
+      "SHA256": "D910C5C81AF41D606423590DBB2A18BC51570EBF1404FDD9CB4575B1E1C710D5"
+    },
+    {
+      "Path": "boot-completed.log",
+      "Bytes": 3,
+      "SHA256": "F1B2F662800122BED0FF255693DF89C4487FBDCF453D3524A42D4EC20C3D9C04"
+    },
+    {
+      "Path": "boot-logcat.log",
+      "Bytes": 158054,
+      "SHA256": "DD850C4051B0C38CEED13F7FEBE707CF6F71FACEBA4B4A07A35366B75253E592"
+    },
+    {
+      "Path": "cold-boot-api25-direct.log",
+      "Bytes": 12445,
+      "SHA256": "996C36150C97153FFA9BA5F7C5653B0677815E556BFB703D195A28D695115260"
+    },
+    {
+      "Path": "cold-boot-api25-emulator32.log",
+      "Bytes": 99025,
+      "SHA256": "797419121DA82C3BDA6A2955EC45016FD18D488F76A7EA7EEB125C6692D8B30F"
+    },
+    {
+      "Path": "cold-boot-api25-gpu-off.log",
+      "Bytes": 37864,
+      "SHA256": "0A567C4BE1628857DA028F407AFB85934C866EEFDA7C1C6ACDE8FF3E991D224E"
+    },
+    {
+      "Path": "cold-boot-api25-qt.log",
+      "Bytes": 44518,
+      "SHA256": "D708C6400DBC49296129BEADB5E8ED526E87D799FB917ADD786E8D2720E37CDE"
+    },
+    {
+      "Path": "cold-boot-api25.log",
+      "Bytes": 38577,
+      "SHA256": "ECDF69BC6B57CCBFD17473D451F7843699B9FF80DF16E4BA9C5D9BE3B6D937EB"
+    },
+    {
+      "Path": "cold-boot-api35.log",
+      "Bytes": 52030,
+      "SHA256": "F3ADEF2FBAABC4716915EFBEEC0E37F0D839F5BB6E71D17505A57C94F08ACDE7"
+    },
+    {
+      "Path": "cold-boot-profile-gpu-off.log",
+      "Bytes": 63745,
+      "SHA256": "98F95D4210302DA4EA06ADAEF55D26377168B6124539E7C91C38C1B1A1CC2A26"
+    },
+    {
+      "Path": "continued-device-diagnostics.json",
+      "Bytes": 915,
+      "SHA256": "052A409BD2B45B8A34B12B419DB41F4F80A1EFD5F4AFA734A2061AD3D405C882"
+    },
+    {
+      "Path": "crash-all-latest.log",
+      "Bytes": 3169,
+      "SHA256": "00EC70BADA4CBC16353291D64451DB65E79FD5C414593489FD6E3F7E929C9A0E"
+    },
+    {
+      "Path": "device-install-latest.log",
+      "Bytes": 44952,
+      "SHA256": "7C23D4BD331147EE189B73AB4BD447CEAA783EEFF58CB13A682578A0C3DEE5B5"
+    },
+    {
+      "Path": "device-install-progress-2.log",
+      "Bytes": 11744,
+      "SHA256": "4893172AEBBCD0F27F56599C77CF544CDA8356456291A77C62C88072C3C0B6A3"
+    },
+    {
+      "Path": "device-install-progress-3.log",
+      "Bytes": 10339,
+      "SHA256": "D57A4A76D6ADD56F152C95FB0035A97C12424208229553BBD3360D37E0F92009"
+    },
+    {
+      "Path": "device-install-progress.log",
+      "Bytes": 13171,
+      "SHA256": "8F8CCE9A2947D3C364518A3DABD5405838100D20D931ECA0E7E889C008A2FB48"
+    },
+    {
+      "Path": "device-latest.log",
+      "Bytes": 5647,
+      "SHA256": "A80470CA26456A2BC2BD3B5619F1CD30D2A91F362393CD40BFE07BB38604EDAA"
+    },
+    {
+      "Path": "dotnet-tests.log",
+      "Bytes": 2403,
+      "SHA256": "CD03DDE09938E573373A638F93E0000E67656D553F14EAD4D9B35E4493668F47"
+    },
+    {
+      "Path": "emulator-continued.log",
+      "Bytes": 1627,
+      "SHA256": "0FA1E0F0FC923E53A7717F3638B1DB626202522442BD2A5C1D3437D657A80CC2"
+    },
+    {
+      "Path": "emulator-controlled-restart.log",
+      "Bytes": 39,
+      "SHA256": "483D31D727A891B284FE65F3B042180F0DCF884EE845C457E261DE7A6E891804"
+    },
+    {
+      "Path": "emulator-fallback-download.log",
+      "Bytes": 1122,
+      "SHA256": "13758A30DCB1ED42FB7D8995063D07CD053EEF0325322642191014476E9CEDCF"
+    },
+    {
+      "Path": "emulator-final-stop.log",
+      "Bytes": 39,
+      "SHA256": "483D31D727A891B284FE65F3B042180F0DCF884EE845C457E261DE7A6E891804"
+    },
+    {
+      "Path": "final-host-check.json",
+      "Bytes": 108,
+      "SHA256": "AAAE95753BF9F5AC34A9D967B7FA3EF166C582B79DEB3147522E5CAD2C1EC52C"
+    },
+    {
+      "Path": "final-room-snapshot.json",
+      "Bytes": 273125,
+      "SHA256": "D05D26C8D697E9BC55EC8963F230764E78A57EC497C793542D08150C6A5DEA5F"
+    },
+    {
+      "Path": "flutter-all.log",
+      "Bytes": 2492,
+      "SHA256": "C9C1B6D6DA3B7921888AB84E80C1BADB64ABDFB45B70184F709F0A3B8BA6227A"
+    },
+    {
+      "Path": "flutter-analyze-completed.log",
+      "Bytes": 98,
+      "SHA256": "569CB324847C3364D0C9110BAF1F230DC7D04032DED899C9106C60247DF90217"
+    },
+    {
+      "Path": "flutter-analyze-final.log",
+      "Bytes": 98,
+      "SHA256": "15059E39D64E83043535CC3982500C520B7282FD6D5E9E78ED00792E51E7808C"
+    },
+    {
+      "Path": "flutter-analyze.log",
+      "Bytes": 98,
+      "SHA256": "7340376F030FFD71621742FE74C3FF6F03C2C37943A29EFCE4367E2446E7DE74"
+    },
+    {
+      "Path": "flutter-devices-final.log",
+      "Bytes": 836,
+      "SHA256": "7E5D2BC8C669377843C5E2059A1FB06642D24125A549DB0394DE4F9283DC0685"
+    },
+    {
+      "Path": "flutter-devices-initial.log",
+      "Bytes": 642,
+      "SHA256": "4B1CEBBB88791AE7C73EDE60675D717974296D861432BAE4A41BBE00A2160A94"
+    },
+    {
+      "Path": "flutter-direct-stage.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "flutter-doctor-initial.log",
+      "Bytes": 3114,
+      "SHA256": "A8DF954525309C6A9971855B4D6A7493867836C637376226FB9DD01C5D52A1F0"
+    },
+    {
+      "Path": "flutter-emulators-final.log",
+      "Bytes": 593,
+      "SHA256": "265B51E2C60D6ABE2E8790B7F52C5976CD783EEC2DE56F86ACD9BFF0BB93D3AC"
+    },
+    {
+      "Path": "flutter-emulators-initial.log",
+      "Bytes": 494,
+      "SHA256": "6ED1DCAE2FD44A8684AA3C22925DD8EEBB21C02F673A63F068B0CFA430CA49EB"
+    },
+    {
+      "Path": "flutter-native-crash.log",
+      "Bytes": 3169,
+      "SHA256": "00EC70BADA4CBC16353291D64451DB65E79FD5C414593489FD6E3F7E929C9A0E"
+    },
+    {
+      "Path": "flutter-native.log",
+      "Bytes": 5350,
+      "SHA256": "4C377BC48F1D54FDBD8C1A0611874F9FE138A788209B26F60BF4CA62D1247DD3"
+    },
+    {
+      "Path": "flutter-pub-final.log",
+      "Bytes": 842,
+      "SHA256": "98D6D5E7891D80E97B9B5E202534B6314C44DB3F3C98EFCFD422BCCA0FBA78CB"
+    },
+    {
+      "Path": "flutter-pub-integration.log",
+      "Bytes": 980,
+      "SHA256": "FC910126AFE0E858F1C367A56860C480060A8857B0E0C7221760A01F09B886F5"
+    },
+    {
+      "Path": "flutter-pub.log",
+      "Bytes": 907,
+      "SHA256": "DF3C963260A4D0A3B3DA79C62D4B3AE93B969B31EC360703CC10789CD312A389"
+    },
+    {
+      "Path": "flutter-tests-completed.log",
+      "Bytes": 1239,
+      "SHA256": "8B6B6C18CF5C4292FC7F9CF4E1C7E87FDDEE3C1F062AD45CBF02994A9A5E77E0"
+    },
+    {
+      "Path": "flutter-tests-final.log",
+      "Bytes": 1239,
+      "SHA256": "AE14C6956A3B0497A5F08BBDCB7E8267AD8500208124EEA543A60B7B2B7C46D5"
+    },
+    {
+      "Path": "flutter-tests.log",
+      "Bytes": 1244,
+      "SHA256": "88AE3854FCE2F7C9791A79F7BAC0311EBFF958F71EC43D0E8D34F3F0E2D10F01"
+    },
+    {
+      "Path": "host-api-check.json",
+      "Bytes": 126,
+      "SHA256": "58526938399FA5291BC5737547789728BADCB13F5F98E3FD660F96A1C7D6A9FB"
+    },
+    {
+      "Path": "host-diagnostics.json",
+      "Bytes": 509,
+      "SHA256": "3971C2B0E04A634F4A9E55B5CF4AA19BD445BC137A63F88F25460B3415A9D946"
+    },
+    {
+      "Path": "install-launch.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "install-legacy-shell.log",
+      "Bytes": 9,
+      "SHA256": "DF5F678C3E897E8DB27B8C5DE5AE1938A25AA084AEEE89A1A44958F104316B3D"
+    },
+    {
+      "Path": "install-no-streaming.log",
+      "Bytes": 109,
+      "SHA256": "D5BE31A85A52282AD8D4893A38A88D087E2E4CCB67158C0BE5FF0FFA9C8A4E76"
+    },
+    {
+      "Path": "integration-current.png",
+      "Bytes": 53132,
+      "SHA256": "157DCE2B99F4D6A3D8E94B794174394F00F66FE63CAAE1C6816A75E305EFD88B"
+    },
+    {
+      "Path": "integration-install-latest.log",
+      "Bytes": 11817,
+      "SHA256": "241C7C18C6D899EADDFAB597F3C6DEB3D8B2CBFEFDFC4DD5CC30C5883DC4069C"
+    },
+    {
+      "Path": "integration-install-progress.log",
+      "Bytes": 9239,
+      "SHA256": "8F85F6FF725F8457EE128B2AC1F523CEDD024D754247B7146AB9EB50246EC94E"
+    },
+    {
+      "Path": "integration-progress.log",
+      "Bytes": 9700,
+      "SHA256": "3803A931E211FB4FF9B3D8F9EF44B06B8921D59792DE132E02AE70966C175A5D"
+    },
+    {
+      "Path": "native-app-launch.log",
+      "Bytes": 165,
+      "SHA256": "3CBAF3D8ED23E55BFD657D6B0AC1F49B730CB81977FBBC19540FCE6D361D258D"
+    },
+    {
+      "Path": "native-created-worlds.json",
+      "Bytes": 453,
+      "SHA256": "56B507E72CF362F1E6BF5EF3B7B156F267C3F81BF247AC31658880D1AD943E5D"
+    },
+    {
+      "Path": "native-exec-out-runtime.log",
+      "Bytes": 90,
+      "SHA256": "2063FEDC65403BE2695B89F7B764429A40FA0548EC1A88B4166CA19AF768524B"
+    },
+    {
+      "Path": "native-exec-out-start.log",
+      "Bytes": 1084,
+      "SHA256": "428CBFE5DBCD89A82352012BD378C9D4C8F5D6F85847D63BB362F9C2876D186B"
+    },
+    {
+      "Path": "native-integration-run-2.log",
+      "Bytes": 1772,
+      "SHA256": "829C897C4944C1FC427FFC60F4021D591C33C54277A62FE22A4C4944DFC962BA"
+    },
+    {
+      "Path": "native-integration-run.log",
+      "Bytes": 2301,
+      "SHA256": "C4EA0C86176C142DC7E41DC3ECB1308B975CE8AC71E139FCDB3BDA9D5C11C575"
+    },
+    {
+      "Path": "native-launch-logcat.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "native-launch.png",
+      "Bytes": 172886,
+      "SHA256": "167D8A6BCF87B563E33FA2ED969D1C0C0390BBABCC9E5E683B6F96B12C4647E5"
+    },
+    {
+      "Path": "native-pretest.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "native-profile-continued.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "native-profile-retry.log",
+      "Bytes": 1562,
+      "SHA256": "34B5D736D59DC82C4B0972F11E6B01FAF643730D9D2A7A4FAEF4D4203A04BB06"
+    },
+    {
+      "Path": "native-profile-run.log",
+      "Bytes": 1139,
+      "SHA256": "82950F1D02C5362257EE6C4B167EAB4EC2B42D02EA9561D6D677B47CAF1E90D0"
+    },
+    {
+      "Path": "native-retry-progress.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "native-skia-launch.log",
+      "Bytes": 217,
+      "SHA256": "0B5CFD3F37291D6CB6563ED7EF5173AB03D55D13CE2227A34E87825660D77FAC"
+    },
+    {
+      "Path": "native-skia-logcat.log",
+      "Bytes": 7563,
+      "SHA256": "D673462BFE054409C054D8B81B391E07DD056A665D169837A1CFF3503E3B3118"
+    },
+    {
+      "Path": "native-skia.png",
+      "Bytes": 18814,
+      "SHA256": "457771BFC8F89B16866A47954D778C94930C2D5E00777F1B9E0357350D0019A9"
+    },
+    {
+      "Path": "native-software-launch.log",
+      "Bytes": 217,
+      "SHA256": "2BDB42F8D8D434982B181DF976DC023D79218C6FC5F3B8EE7C6668A945299157"
+    },
+    {
+      "Path": "native-software-logcat.log",
+      "Bytes": 21596,
+      "SHA256": "9494A7F36B862523374D950718719BAAAF2953E2179E1BFCC35B8F17EFA118AC"
+    },
+    {
+      "Path": "native-software.png",
+      "Bytes": 113414,
+      "SHA256": "662243B1A14E8EDCF9411B1CED4C3178176F335FDD036D63A18CA9D7CDB379EA"
+    },
+    {
+      "Path": "native-vm-stack-latest.json",
+      "Bytes": 2204,
+      "SHA256": "6BA8D07D8B858241C7380AB656261391429B0CC9F7EEB7F1F5F55FF21915F8FA"
+    },
+    {
+      "Path": "native-vm-stack.json",
+      "Bytes": 2393,
+      "SHA256": "8C012770E78DB98759CA883F21E0EB3E4446075C7B95B6379851331A1333BD6B"
+    },
+    {
+      "Path": "profile-apk-final.json",
+      "Bytes": 160,
+      "SHA256": "7EE8FFDC3A11F4CC2EBD9F6575170480029B6D508232DA9ABEBDAE4F10F07C2F"
+    },
+    {
+      "Path": "qemu-backend-version-with-path.log",
+      "Bytes": 668,
+      "SHA256": "7B3DDBFDC193EAD9685770817F0A05F401A28BD9443A63BC5EFC4E32C73F8899"
+    },
+    {
+      "Path": "qemu-backend-version.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "qemu-dependencies.json",
+      "Bytes": 555,
+      "SHA256": "EC44162B9220F71FFCA443B57B0AACCB20C59C82434CF14381634A3645F16AE3"
+    },
+    {
+      "Path": "qemu-qt-dependencies.json",
+      "Bytes": 546,
+      "SHA256": "B9400282A688D47A7BE21DEF04F367B011F1DC2B58AE681F38BD24DD877731EE"
+    },
+    {
+      "Path": "release-manifest-build.log",
+      "Bytes": 2384,
+      "SHA256": "479F7A3F5FE7F0DF65E9459EC032941DB23FDB11537F69107FE706F83BB63701"
+    },
+    {
+      "Path": "runtime-last.png",
+      "Bytes": 68214,
+      "SHA256": "78DCDD9953602376D59B8A674A2B441321177BB3E21509D6D61C0C44B988CF1B"
+    },
+    {
+      "Path": "scrcpy-error.log",
+      "Bytes": 126,
+      "SHA256": "FADBFDEE86F69C0E9FC9C1D032B7E78513F7FD66FD556471B5A0BF7B2AB989F4"
+    },
+    {
+      "Path": "scrcpy-interactive-error.log",
+      "Bytes": 86343,
+      "SHA256": "764A13DEA93B59EB61E30DA6EAFB5583C63E23BFC73952CCF95438653F14CCDE"
+    },
+    {
+      "Path": "scrcpy-interactive.log",
+      "Bytes": 365,
+      "SHA256": "6FC53822772D025F9FC332E265642EB0A15DDE9A7517353F35F2B3189C3EBF1F"
+    },
+    {
+      "Path": "scrcpy-software-error.log",
+      "Bytes": 126,
+      "SHA256": "1E29EBDDF9D0691DB43037D5FC1C5A7777EDD621140779F6E71383B2B8B6AEF5"
+    },
+    {
+      "Path": "scrcpy-software.log",
+      "Bytes": 365,
+      "SHA256": "6FC53822772D025F9FC332E265642EB0A15DDE9A7517353F35F2B3189C3EBF1F"
+    },
+    {
+      "Path": "scrcpy-source.json",
+      "Bytes": 124,
+      "SHA256": "7ADF293DF74119E6A99611A9307647D7366F05C48053F0C7361C5C7EA85DDB35"
+    },
+    {
+      "Path": "scrcpy.log",
+      "Bytes": 375,
+      "SHA256": "1028848B158F6DB22897C1F3FA0C00D56039565481D97FB74DE5F8778CB55051"
+    },
+    {
+      "Path": "script-guard-test.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "scripts-validation-final.log",
+      "Bytes": 108,
+      "SHA256": "AA5EED20DD051C0688134623C8ED84247095A7B2F5461B65EE792E3B3E84B155"
+    },
+    {
+      "Path": "scripts-validation.log",
+      "Bytes": 126,
+      "SHA256": "C8294262AF7B4F47E6A2368FFF50F4CEF260EB863333FD11DE3FC20512E18131"
+    },
+    {
+      "Path": "sdk-packages.log",
+      "Bytes": 112730,
+      "SHA256": "C11110773131A6CE306D9A854E7381717B641FD3B03DB4B64BBC13C8F2232255"
+    },
+    {
+      "Path": "sdk-update.log",
+      "Bytes": 346,
+      "SHA256": "0C0100FCF3F88EFC6E4DEDA77615D6C5AB56EB6E77C0AC5B5F1A36136FFB6492"
+    },
+    {
+      "Path": "stage-captures-continued.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "stage-captures.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "warm-boot-crash.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "web-android-counter-0-of-2.jpg",
+      "Bytes": 115707,
+      "SHA256": "6F2C3A90BA47A438E8548D7CE57B64E415B7ED8767EF4D87AB426F7593F9EDEB"
+    },
+    {
+      "Path": "web-build.log",
+      "Bytes": 803,
+      "SHA256": "3CE74AA10A22DE2D6C198CAC26055FE558E00A645BA3D7E22262BC1F07076587"
+    },
+    {
+      "Path": "web-continued.log",
+      "Bytes": 36,
+      "Mutable": true,
+      "HashNote": "Log de servidor local ainda em execucao; hash nao fixado."
+    },
+    {
+      "Path": "web-final-room.jpg",
+      "Bytes": 107816,
+      "SHA256": "2C76D87A8825D7C599AE06DC001339228B120A5C68435CCABCC7810E0C2B9C17"
+    },
+    {
+      "Path": "web-lobby.jpg",
+      "Bytes": 124812,
+      "SHA256": "93CBFC263BC652A3D9476CF2421621FCCC08556692B3CDF4537DA272CAE588A2"
+    },
+    {
+      "Path": "device-run/devices.log",
+      "Bytes": 158,
+      "SHA256": "C4C17FBFCABECBA0202F8C0A2B6B4E72DED0E156FAB664132C430CD92D1CA37E"
+    }
+  ]
+}

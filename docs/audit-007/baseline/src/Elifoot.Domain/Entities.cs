@@ -1,0 +1,423 @@
+using Elifoot.Contracts;
+
+namespace Elifoot.Domain;
+
+public class GameWorld
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public string Name { get; set; } = "Campeonato Brasileiro Clássico";
+    public string InviteCode { get; set; } = "ELIF98";
+    public int Seed { get; set; } = 199801;
+    public int MaxHumans { get; set; } = 8;
+    public int TotalClubs { get; set; } = 128;
+    public int SeasonNumber { get; set; } = 1;
+    public int RoundNumber { get; set; } = 1;
+    public int TotalRoundsInSeason { get; set; } = 22;
+    public RoundState RoundState { get; set; } = RoundState.PREPARING;
+    public long RoundVersion { get; set; } = 1;
+    public int CurrentMatchMinute { get; set; } = 0;
+    public int TickIntervalMs { get; set; } = 200;
+    public int PauseTimeoutSeconds { get; set; } = 60;
+    public bool AllowClassic505 { get; set; } = true;
+    public Guid? ActivePauseWindowId { get; set; }
+    public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedAtUtc { get; set; } = DateTime.UtcNow;
+
+    public List<Club> Clubs { get; set; } = new();
+    public List<Player> Players { get; set; } = new();
+    public List<AiManager> AiManagers { get; set; } = new();
+    public List<HumanCoach> HumanCoaches { get; set; } = new();
+    public List<MatchFixture> Fixtures { get; set; } = new();
+    public List<TransferOffer> TransferOffers { get; set; } = new();
+    public List<AuctionItem> Auctions { get; set; } = new();
+    public List<FinancialTransaction> Transactions { get; set; } = new();
+    public List<JobInvitation> JobInvitations { get; set; } = new();
+    public List<PauseWindow> PauseWindows { get; set; } = new();
+    public List<SeasonHistoryEntry> SeasonHistories { get; set; } = new();
+    public List<AuditLogEntry> AuditLogs { get; set; } = new();
+    public List<BankLoan> BankLoans { get; set; } = new();
+
+    [System.Text.Json.Serialization.JsonIgnore]
+    public HashSet<string> AppliedTransactionKeys { get; } = new();
+}
+
+public class Club
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public int DeterministicIndex { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string ShortName { get; set; } = string.Empty;
+    public string Country { get; set; } = "Brasil";
+    public string PrimaryColorHex { get; set; } = "#006400";
+    public string SecondaryColorHex { get; set; } = "#FFFFFF";
+    public DivisionTier DivisionTier { get; set; } = DivisionTier.PrimeiraDivisao;
+    public decimal CashBalance { get; set; } = 2_500_000m;
+    public int Reputation { get; set; } = 50;
+
+    public Guid? HumanCoachId { get; set; }
+    public Guid? AiManagerId { get; set; }
+
+    public string PreferredFormation { get; set; } = "4-4-2";
+    public List<Guid> PreferredStarterIds { get; set; } = new();
+    public List<Guid> PreferredBenchIds { get; set; } = new();
+
+    // League table tracking for current season
+    public int LeaguePlayed { get; set; }
+    public int LeagueWins { get; set; }
+    public int LeagueDraws { get; set; }
+    public int LeagueLosses { get; set; }
+    public int LeagueGoalsFor { get; set; }
+    public int LeagueGoalsAgainst { get; set; }
+    public int LeaguePoints => LeagueWins * 3 + LeagueDraws;
+    public int LeagueGoalDifference => LeagueGoalsFor - LeagueGoalsAgainst;
+    public int ConsecutiveWinlessRounds { get; set; }
+
+    public Stadium Stadium { get; set; } = new();
+    public ManagerSquadPlan? LatestSquadPlan { get; set; }
+}
+
+public class Stadium
+{
+    public string Name { get; set; } = "Estádio Municipal";
+    public int BuiltCapacity { get; set; } = 20_000;
+    public int UsableCapacity { get; set; } = 20_000;
+    public double ConditionPercent { get; set; } = 95.0;
+    public decimal MaintenanceReservePerSeason { get; set; } = 120_000m;
+    public decimal FixedMatchCostRate { get; set; } = 0.70m;
+    public decimal VariableAttendeeCostRate { get; set; } = 1.10m;
+    public decimal LastTicketPrice { get; set; } = 20m;
+    public int LastAttendance { get; set; } = 10_000;
+    public int ExpansionTargetSeats { get; set; } = 0;
+    public int ExpansionRoundsRemaining { get; set; } = 0;
+    public int RenovationRoundsRemaining { get; set; } = 0;
+}
+
+public class Player
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid? ClubId { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public PlayerPosition Position { get; set; } = PlayerPosition.M;
+    public int Strength { get; set; } = 25; // 1..50
+    public PlayerBehavior Behavior { get; set; } = PlayerBehavior.Cavalheiro;
+    public bool IsStar { get; set; } // Literal '*' in compact tables
+    public int ContractRoundsRemaining { get; set; } = 20;
+    public decimal SalaryPerRound { get; set; } = 8_000m;
+    public decimal MarketPrice { get; set; } = 250_000m;
+    public bool IsListedForTransfer { get; set; }
+    public decimal? AskingPrice { get; set; }
+    public int ListedAtRound { get; set; }
+
+    public int InjuryRoundsRemaining { get; set; }
+    public int SuspensionRoundsRemaining { get; set; }
+    public int YellowCardsAccumulated { get; set; }
+
+    public int SeasonGoals { get; set; }
+    public int CupGoals { get; set; }
+    public int SeasonMatches { get; set; }
+    public int SeasonYellows { get; set; }
+    public int SeasonReds { get; set; }
+    public int CareerGoals { get; set; }
+    public int CareerMatches { get; set; }
+
+    public string? PhotoUrl { get; set; }
+    public string? PhotoLicense { get; set; }
+    public string? PhotoCredit { get; set; }
+
+    public string DisplayName => IsStar ? $"{Name}*" : Name;
+    public bool IsAvailableForMatch => InjuryRoundsRemaining <= 0 && SuspensionRoundsRemaining <= 0;
+}
+
+public class AiManager
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid? CurrentClubId { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public ManagerTacticalIdentity Identity { get; set; } = ManagerTacticalIdentity.Equilibrado;
+    public int Pragmatism { get; set; } = 50; // 0..100
+    public int Adaptability { get; set; } = 50; // 0..100
+    public int FinancialAggressiveness { get; set; } = 50; // 0..100
+    public int YouthPatience { get; set; } = 50; // 0..100
+    public List<FormationPreferenceWeightDto> PreferredFormations { get; set; } = new();
+
+    // Career stats
+    public int LeagueTitles { get; set; }
+    public int CupTitles { get; set; }
+    public int CoachPoints { get; set; }
+    public int TotalWins { get; set; }
+    public int TotalDraws { get; set; }
+    public int TotalLosses { get; set; }
+    public int SeasonsManaged { get; set; }
+    public int Dismissals { get; set; }
+    public string LastDecisionLog { get; set; } = string.Empty;
+}
+
+public class HumanCoach
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public string Nickname { get; set; } = string.Empty;
+    public string DeviceId { get; set; } = string.Empty;
+    public string SessionToken { get; set; } = string.Empty;
+    public bool IsHost { get; set; }
+    public bool IsConnected { get; set; } = true;
+    public bool IsAutoMode { get; set; }
+    public Guid? CurrentClubId { get; set; }
+    public bool IsUnemployed => CurrentClubId == null;
+
+    // Ready state for current round preparation
+    public bool IsReadyForRound { get; set; }
+    public string? SubmittedFormation { get; set; }
+    public List<Guid> SubmittedStarterIds { get; set; } = new();
+    public List<Guid> SubmittedBenchIds { get; set; } = new();
+    public string? LastIdempotencyKey { get; set; }
+
+    // Career stats & classic ranking
+    public int LeagueTitles { get; set; }
+    public int CupTitles { get; set; }
+    public int CoachPoints { get; set; }
+    public int TotalWins { get; set; }
+    public int TotalDraws { get; set; }
+    public int TotalLosses { get; set; }
+    public int SeasonsManaged { get; set; }
+    public int Dismissals { get; set; }
+    public List<CoachEmploymentRecord> EmploymentHistory { get; set; } = new();
+}
+
+public class CoachEmploymentRecord
+{
+    public Guid ClubId { get; set; }
+    public string ClubName { get; set; } = string.Empty;
+    public int StartSeason { get; set; }
+    public int StartRound { get; set; }
+    public int? EndSeason { get; set; }
+    public int? EndRound { get; set; }
+    public string? ReasonForLeaving { get; set; }
+}
+
+public class ManagerSquadPlan
+{
+    public Guid ManagerId { get; set; }
+    public string ManagerName { get; set; } = string.Empty;
+    public ManagerTacticalIdentity Identity { get; set; }
+    public string TargetPrimaryFormation { get; set; } = "4-4-2";
+    public string SelectedMatchFormation { get; set; } = "4-4-2";
+    public string SelectionReasoning { get; set; } = string.Empty;
+    public Dictionary<PlayerPosition, int> TargetStarters { get; set; } = new();
+    public Dictionary<PlayerPosition, int> TargetReserves { get; set; } = new();
+    public List<PlayerPosition> PriorityGapPositions { get; set; } = new();
+    public List<string> PriorityGapDescriptions { get; set; } = new();
+    public decimal MaxSingleSigningBudget { get; set; }
+    public decimal EmergencyCashReserve { get; set; }
+    public List<Guid> SurplusPlayerIds { get; set; } = new();
+    public int EvaluatedAtRound { get; set; }
+}
+
+public class MatchFixture
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public int SeasonNumber { get; set; }
+    public int RoundNumber { get; set; }
+    public int DeterministicMatchIndex { get; set; }
+    public CompetitionType CompetitionType { get; set; } = CompetitionType.League;
+    public DivisionTier? DivisionTier { get; set; }
+    public Guid HomeClubId { get; set; }
+    public Guid AwayClubId { get; set; }
+
+    public int HomeGoals { get; set; }
+    public int AwayGoals { get; set; }
+    public int HomeFirstHalfGoals { get; set; }
+    public int AwayFirstHalfGoals { get; set; }
+    public bool HomeLedDuringMatch { get; set; }
+    public bool AwayLedDuringMatch { get; set; }
+    public int? HomePenaltyGoals { get; set; }
+    public int? AwayPenaltyGoals { get; set; }
+    public int HomeShootoutAttempts { get; set; }
+    public int AwayShootoutAttempts { get; set; }
+    public int HomeFouls { get; set; }
+    public int AwayFouls { get; set; }
+    public int CurrentMinute { get; set; }
+    public bool IsFinished { get; set; }
+    public bool RequiresKnockoutResolution { get; set; }
+    public bool EnteredExtraTime { get; set; }
+    public Guid? WinnerClubId { get; set; }
+
+    // Live match state
+    public string HomeFormation { get; set; } = "4-4-2";
+    public string AwayFormation { get; set; } = "4-4-2";
+    public List<Guid> HomeActiveStarterIds { get; set; } = new();
+    public List<Guid> HomeBenchIds { get; set; } = new();
+    public List<Guid> HomeSubstitutedOutIds { get; set; } = new();
+    public List<Guid> HomeSubstitutedInIds { get; set; } = new();
+    public List<Guid> HomeSentOffIds { get; set; } = new();
+    public List<Guid> HomeInjuredInMatchIds { get; set; } = new();
+    public List<Guid> HomeSuspendedByYellowInMatchIds { get; set; } = new();
+    public Dictionary<Guid, int> HomeYellowCardsInMatch { get; set; } = new();
+
+    public List<Guid> AwayActiveStarterIds { get; set; } = new();
+    public List<Guid> AwayBenchIds { get; set; } = new();
+    public List<Guid> AwaySubstitutedOutIds { get; set; } = new();
+    public List<Guid> AwaySubstitutedInIds { get; set; } = new();
+    public List<Guid> AwaySentOffIds { get; set; } = new();
+    public List<Guid> AwayInjuredInMatchIds { get; set; } = new();
+    public List<Guid> AwaySuspendedByYellowInMatchIds { get; set; } = new();
+    public Dictionary<Guid, int> AwayYellowCardsInMatch { get; set; } = new();
+
+    // Quotas: 5 subs / 3 windows in 90 min; +1 sub (6) / +1 window (4) in Extra Time
+    public int HomeUsedSubstitutions { get; set; }
+    public int HomeMaxSubstitutions => EnteredExtraTime ? 6 : 5;
+    public int HomeUsedPauseWindows { get; set; }
+    public int HomeMaxPauseWindows => EnteredExtraTime ? 4 : 3;
+
+    public int AwayUsedSubstitutions { get; set; }
+    public int AwayMaxSubstitutions => EnteredExtraTime ? 6 : 5;
+    public int AwayUsedPauseWindows { get; set; }
+    public int AwayMaxPauseWindows => EnteredExtraTime ? 4 : 3;
+
+    // Track which PauseWindowIds each side has already spent an opportunity on
+    public HashSet<Guid> HomeConsumedPauseWindowIds { get; set; } = new();
+    public HashSet<Guid> AwayConsumedPauseWindowIds { get; set; } = new();
+
+    // Stadium gate for this match
+    public int Attendance { get; set; }
+    public decimal TicketPrice { get; set; }
+    public decimal TicketRevenue { get; set; }
+    public decimal StadiumOperatingCost { get; set; }
+    public bool FinancialsSettled { get; set; }
+
+    public List<MatchEventRecord> Events { get; set; } = new();
+}
+
+public class MatchEventRecord
+{
+    public int Minute { get; set; }
+    public MatchEventType EventType { get; set; }
+    public Guid ClubId { get; set; }
+    public string ClubName { get; set; } = string.Empty;
+    public Guid? PrimaryPlayerId { get; set; }
+    public string? PrimaryPlayerDisplayName { get; set; }
+    public Guid? SecondaryPlayerId { get; set; }
+    public string? SecondaryPlayerDisplayName { get; set; }
+    public string Description { get; set; } = string.Empty;
+}
+
+public class PauseWindow
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public int SeasonNumber { get; set; }
+    public int RoundNumber { get; set; }
+    public int Minute { get; set; }
+    public RoundState PauseType { get; set; } = RoundState.GLOBAL_PAUSED;
+    public Guid? RequestedByCoachId { get; set; }
+    public string? RequestedByCoachName { get; set; }
+    public DateTime OpenedAtUtc { get; set; } = DateTime.UtcNow;
+    public DateTime ExpiresAtUtc { get; set; } = DateTime.UtcNow.AddSeconds(60);
+    public bool IsClosed { get; set; }
+    public HashSet<Guid> ConfirmedCoachIds { get; set; } = new();
+    public HashSet<Guid> EditedCoachIds { get; set; } = new();
+}
+
+public class TransferOffer
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid PlayerId { get; set; }
+    public Guid BuyerClubId { get; set; }
+    public Guid SellerClubId { get; set; }
+    public decimal OfferedAmount { get; set; }
+    public decimal? CounterAmount { get; set; }
+    public TransferOfferStatus Status { get; set; } = TransferOfferStatus.Pending;
+    public string Justification { get; set; } = string.Empty;
+    public int CreatedAtSeason { get; set; }
+    public int CreatedAtRound { get; set; }
+    public string IdempotencyKey { get; set; } = string.Empty;
+}
+
+public class AuctionItem
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid PlayerId { get; set; }
+    public Guid? FormerClubId { get; set; }
+    public decimal MinimumBid { get; set; }
+    public decimal CurrentBid { get; set; }
+    public Guid? HighestBidderClubId { get; set; }
+    public int CreatedAtSeason { get; set; }
+    public int CreatedAtRound { get; set; }
+    public int ExpiresAtRound { get; set; }
+    public bool IsClosed { get; set; }
+    public Dictionary<Guid, decimal> PrivateAiMaxBids { get; set; } = new();
+}
+
+public class FinancialTransaction
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid ClubId { get; set; }
+    public int SeasonNumber { get; set; }
+    public int RoundNumber { get; set; }
+    public FinancialTransactionCategory Category { get; set; }
+    public decimal Amount { get; set; } // Positive = credit, Negative = debit
+    public decimal BalanceAfter { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public string IdempotencyKey { get; set; } = string.Empty;
+    public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
+}
+
+public class BankLoan
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid ClubId { get; set; }
+    public decimal PrincipalAmount { get; set; }
+    public decimal RemainingBalance { get; set; }
+    public decimal InterestRatePerRound { get; set; } = 0.015m;
+    public decimal InstallmentPerRound { get; set; }
+    public int RemainingRounds { get; set; }
+    public bool IsPaidOff => RemainingBalance <= 0m || RemainingRounds <= 0;
+}
+
+public class JobInvitation
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public Guid CoachId { get; set; }
+    public Guid ClubId { get; set; }
+    public int CreatedAtSeason { get; set; }
+    public int CreatedAtRound { get; set; }
+    public bool IsAccepted { get; set; }
+    public bool IsExpired { get; set; }
+}
+
+public class SeasonHistoryEntry
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public int SeasonNumber { get; set; }
+    public Guid FirstDivisionChampionClubId { get; set; }
+    public string FirstDivisionChampionName { get; set; } = string.Empty;
+    public Guid CupChampionClubId { get; set; }
+    public string CupChampionName { get; set; } = string.Empty;
+    public Guid TopScorerPlayerId { get; set; }
+    public string TopScorerPlayerName { get; set; } = string.Empty;
+    public int TopScorerGoals { get; set; }
+    public List<Guid> PromotedClubIds { get; set; } = new();
+    public List<Guid> RelegatedClubIds { get; set; } = new();
+}
+
+public class AuditLogEntry
+{
+    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid GameWorldId { get; set; }
+    public int SeasonNumber { get; set; }
+    public int RoundNumber { get; set; }
+    public string ActionType { get; set; } = string.Empty;
+    public Guid? ActorCoachId { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public DateTime TimestampUtc { get; set; } = DateTime.UtcNow;
+}

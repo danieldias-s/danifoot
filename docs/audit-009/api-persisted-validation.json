@@ -1,0 +1,380 @@
+{
+  "WorldId": "19ee7691-473d-4033-9f56-63289b543a4a",
+  "Fixture": "Real complete season imported into a private SQLite database",
+  "Season": 1,
+  "Checks": [
+    {
+      "Category": "scorers",
+      "Scope": "general",
+      "Rows": 377,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "f15990a2-e802-2b47-b389-f6abe1e6b2b9",
+        "displayName": "Mateus Alves*",
+        "position": "A",
+        "strength": 37,
+        "behaviorDisplay": "Cavalheiro",
+        "isStar": true,
+        "currentClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "currentClubName": "Guarani da Serra",
+        "matchesPlayed": 17,
+        "goalsScored": 10,
+        "goalsConceded": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 1469,
+        "average": 0.5882352941176471,
+        "redRate": 0,
+        "yellowRate": 0,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 1
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "scorers",
+      "Scope": "division1",
+      "Rows": 50,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+        "displayName": "Thiago Machado*",
+        "position": "A",
+        "strength": 46,
+        "behaviorDisplay": "Caneleiro",
+        "isStar": true,
+        "currentClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "currentClubName": "Real Pampulha",
+        "matchesPlayed": 14,
+        "goalsScored": 6,
+        "goalsConceded": 0,
+        "yellowCards": 2,
+        "redCards": 0,
+        "minutesPlayed": 1260,
+        "average": 0.42857142857142855,
+        "redRate": 0,
+        "yellowRate": 0.14285714285714285,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 1
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "scorers",
+      "Scope": "division2",
+      "Rows": 56,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "f15990a2-e802-2b47-b389-f6abe1e6b2b9",
+        "displayName": "Mateus Alves*",
+        "position": "A",
+        "strength": 37,
+        "behaviorDisplay": "Cavalheiro",
+        "isStar": true,
+        "currentClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "currentClubName": "Guarani da Serra",
+        "matchesPlayed": 12,
+        "goalsScored": 8,
+        "goalsConceded": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 1041,
+        "average": 0.6666666666666666,
+        "redRate": 0,
+        "yellowRate": 0,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 1
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "scorers",
+      "Scope": "division3",
+      "Rows": 54,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "67150a06-f485-0240-9066-472c0c636cd6",
+        "displayName": "Fábio Andrade*",
+        "position": "M",
+        "strength": 23,
+        "behaviorDisplay": "Cordeirinho",
+        "isStar": true,
+        "currentClubId": null,
+        "currentClubName": "Sem clube",
+        "matchesPlayed": 10,
+        "goalsScored": 6,
+        "goalsConceded": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 428,
+        "average": 0.6,
+        "redRate": 0,
+        "yellowRate": 0,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 0
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "scorers",
+      "Scope": "division4",
+      "Rows": 47,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "9bee5fbc-756c-8045-a0c0-70021164cc72",
+        "displayName": "Carlos Pereira*",
+        "position": "A",
+        "strength": 22,
+        "behaviorDisplay": "Caceteiro",
+        "isStar": true,
+        "currentClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "currentClubName": "ABC Potiguar",
+        "matchesPlayed": 14,
+        "goalsScored": 5,
+        "goalsConceded": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "minutesPlayed": 1253,
+        "average": 0.35714285714285715,
+        "redRate": 0,
+        "yellowRate": 0,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 0
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "scorers",
+      "Scope": "cup",
+      "Rows": 231,
+      "NotEligible": 0,
+      "Leader": {
+        "rank": 1,
+        "playerId": "2d2b9df4-b1bf-c84d-ad19-9704192d1aa9",
+        "displayName": "Caio Martins",
+        "position": "A",
+        "strength": 47,
+        "behaviorDisplay": "Caneleiro",
+        "isStar": false,
+        "currentClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "currentClubName": "Real Pampulha",
+        "matchesPlayed": 6,
+        "goalsScored": 6,
+        "goalsConceded": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 540,
+        "average": 1,
+        "redRate": 0,
+        "yellowRate": 0.16666666666666666,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 0
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "general",
+      "Rows": 1,
+      "NotEligible": 150,
+      "Leader": {
+        "rank": 1,
+        "playerId": "d623ed48-8ae1-a04e-8f03-51deabfa4b07",
+        "displayName": "Pedro Silva",
+        "position": "G",
+        "strength": 46,
+        "behaviorDisplay": "Cordeirinho",
+        "isStar": false,
+        "currentClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "currentClubName": "Real Pampulha",
+        "matchesPlayed": 20,
+        "goalsScored": 0,
+        "goalsConceded": 23,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1800,
+        "average": 1.15,
+        "redRate": 0,
+        "yellowRate": 0.05,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 0
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "division1",
+      "Rows": 0,
+      "NotEligible": 12,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "division2",
+      "Rows": 0,
+      "NotEligible": 13,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "division3",
+      "Rows": 0,
+      "NotEligible": 8,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "division4",
+      "Rows": 0,
+      "NotEligible": 14,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "goalkeepers",
+      "Scope": "cup",
+      "Rows": 0,
+      "NotEligible": 142,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "general",
+      "Rows": 3,
+      "NotEligible": 667,
+      "Leader": {
+        "rank": 1,
+        "playerId": "a4f99114-7595-2849-b8b6-4b1e74381363",
+        "displayName": "Bruno Lima",
+        "position": "D",
+        "strength": 47,
+        "behaviorDisplay": "Cavalheiro",
+        "isStar": false,
+        "currentClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "currentClubName": "Real Pampulha",
+        "matchesPlayed": 20,
+        "goalsScored": 0,
+        "goalsConceded": 0,
+        "yellowCards": 1,
+        "redCards": 0,
+        "minutesPlayed": 1800,
+        "average": 0.05,
+        "redRate": 0,
+        "yellowRate": 0.05,
+        "matchesRemaining": 0,
+        "seasonTopScorerTitles": 0
+      },
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "division1",
+      "Rows": 0,
+      "NotEligible": 46,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "division2",
+      "Rows": 0,
+      "NotEligible": 47,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "division3",
+      "Rows": 0,
+      "NotEligible": 47,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "division4",
+      "Rows": 0,
+      "NotEligible": 46,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    },
+    {
+      "Category": "defenders",
+      "Scope": "cup",
+      "Rows": 0,
+      "NotEligible": 655,
+      "Leader": null,
+      "PersistedValuesMatch": true
+    }
+  ],
+  "Awards": {
+    "currentSeason": 2,
+    "season": 1,
+    "awards": [
+      {
+        "awardId": "315b2e42-ebee-ffd7-1bc7-e1e4fd08c397",
+        "playerId": "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+        "displayName": "Thiago Machado*",
+        "season": 1,
+        "totalGoals": 10,
+        "totalMatches": 20,
+        "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "clubNameAtClose": "Real Pampulha",
+        "awardAmount": 3000000,
+        "awardGrantedAt": "2026-10-30T12:51:52.3597657Z",
+        "idempotencyKey": "season_top_scorer:19ee7691-473d-4033-9f56-63289b543a4a:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
+      },
+      {
+        "awardId": "2edce1dc-e62f-1b09-63c5-53c38e648f1e",
+        "playerId": "f15990a2-e802-2b47-b389-f6abe1e6b2b9",
+        "displayName": "Mateus Alves*",
+        "season": 1,
+        "totalGoals": 10,
+        "totalMatches": 17,
+        "clubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "clubNameAtClose": "Guarani da Serra",
+        "awardAmount": 3000000,
+        "awardGrantedAt": "2026-10-30T12:51:52.3602031Z",
+        "idempotencyKey": "season_top_scorer:19ee7691-473d-4033-9f56-63289b543a4a:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
+      }
+    ],
+    "clubTotals": [
+      {
+        "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "clubName": "Real Pampulha",
+        "amount": 3000000
+      },
+      {
+        "clubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "clubName": "Guarani da Serra",
+        "amount": 3000000
+      }
+    ],
+    "coverageWarnings": []
+  },
+  "Ledger": [
+    {
+      "ClubId": "F7CA895F-A395-994F-A2E4-8B0FC7AD8FB7",
+      "Amount": "3000000.0",
+      "IdempotencyKey": "season_top_scorer:19ee7691-473d-4033-9f56-63289b543a4a:1:f15990a2-e802-2b47-b389-f6abe1e6b2b9"
+    },
+    {
+      "ClubId": "836CEA4D-DD81-D24A-805B-C2BE06BD2E00",
+      "Amount": "3000000.0",
+      "IdempotencyKey": "season_top_scorer:19ee7691-473d-4033-9f56-63289b543a4a:1:008b7f2d-eea5-3341-ac35-9c7d32db1d06"
+    }
+  ],
+  "DatabaseIntegrity": {
+    "integrity_check": "ok"
+  },
+  "AllPersistedValuesMatch": true
+}

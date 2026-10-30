@@ -1,0 +1,6 @@
+Stopping: com.example.elifoot_flutter
+Starting: Intent { cmp=com.example.elifoot_flutter/.MainActivity (has extras) }
+Status: timeout
+Activity: com.example.elifoot_flutter/.MainActivity
+WaitTime: 12572
+Complete

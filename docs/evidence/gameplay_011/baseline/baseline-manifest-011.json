@@ -1,0 +1,42 @@
+﻿[
+    {
+        "Path":  "d:\\elifoot_98\\.gitignore",
+        "SHA256":  "F17F8D2F33B95A4AE929F9034E5A833315031CD646752E038B3EB694186E3ED6",
+        "Size":  317
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\lib\\main.dart",
+        "SHA256":  "B5DC5F8C00B17869367CBA954314AA2C2F903F83CFE22AC8AEC106BF2C7600F7",
+        "Size":  101959
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\lib\\shell_actions.dart",
+        "SHA256":  "0397390D560B8831C2B2B8B850C470FBD055735F8E4143ACC7C03344855874C7",
+        "Size":  9991
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\lib\\player_rankings.dart",
+        "SHA256":  "98046B9FE959145A8A5CD4A8992F9E912438CF8F0CD0EB2D2299F6AC79D23CF6",
+        "Size":  76118
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\lib\\api_client.dart",
+        "SHA256":  "474EBC9858E9C714D03A165521ABBC9F93D44721B0A069F0DCD62356EB72D1B2",
+        "Size":  21348
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\test\\widget_test.dart",
+        "SHA256":  "76E99A1F1C83C00C5133C49821B9D4859EE9626007A480FE287B6515E55114F7",
+        "Size":  17016
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\test\\player_rankings_widget_test.dart",
+        "SHA256":  "10B7DED5C30B434D35422B1244A10A64F0C88C59B91F9FD9D49EDC7C6E62D26B",
+        "Size":  25905
+    },
+    {
+        "Path":  "d:\\elifoot_98\\client\\elifoot_flutter\\test\\visual_polish_010_test.dart",
+        "SHA256":  "846ACEA263036D8D18E35271042EDC89DD6E683801B2A77A867333683B71F952",
+        "Size":  22820
+    }
+]

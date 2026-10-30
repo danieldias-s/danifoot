@@ -1,0 +1,134 @@
+{
+  "Scope": {
+    "seed": 199801,
+    "seasons": [
+      1,
+      100
+    ],
+    "clubs": 128,
+    "aiManagers": 128,
+    "leagueClubs": 32,
+    "districtClubs": 96,
+    "matches": 35100,
+    "rounds": 2200,
+    "engine": "MatchSimulationEngine.SimulateFullMatchReal; minute by minute",
+    "aggregateScores": false
+  },
+  "Baseline": {
+    "Reconciliation": {
+      "DuplicateTransactionIds": 0,
+      "DuplicateClubIdempotencyKeys": 0,
+      "UnpairedOrUnbalancedBilateralTransfers": 0,
+      "CompletedPurchases": 33325,
+      "ManagerPurchases": 33325,
+      "Delta": 0
+    },
+    "Amounts": {
+      "InitialBalance": 138800000,
+      "TicketRevenue": 9639599372.82,
+      "StadiumFixedCost": -761453122.18,
+      "StadiumVariableCost": -517633085.2,
+      "Sponsorship": 12566400000,
+      "PlayerSalary": -2706908487,
+      "TransferPurchase": -3317455881,
+      "TransferSale": 3317455881,
+      "AuctionPurchase": -13546904060,
+      "ContractRenewal": -119735083.5,
+      "PrizeMoney": 1227000000,
+      "StadiumMaintenance": -464762641.5,
+      "StadiumExpansion": -113050000,
+      "StadiumRenovation": -188820043
+    },
+    "Counts": {
+      "InitialBalance": 128,
+      "TicketRevenue": 47800,
+      "StadiumFixedCost": 35100,
+      "StadiumVariableCost": 35100,
+      "Sponsorship": 281600,
+      "PlayerSalary": 70200,
+      "TransferPurchase": 8800,
+      "TransferSale": 8800,
+      "AuctionPurchase": 24525,
+      "ContractRenewal": 37425,
+      "PrizeMoney": 3600,
+      "StadiumMaintenance": 2393,
+      "StadiumExpansion": 266,
+      "StadiumRenovation": 2467
+    },
+    "OpeningCash": 138800000,
+    "ClosingCash": 5152532850.44,
+    "LedgerNetIncludingOpening": 5152532850.44
+  },
+  "Candidate": {
+    "Reconciliation": {
+      "DuplicateTransactionIds": 0,
+      "DuplicateClubIdempotencyKeys": 0,
+      "UnpairedOrUnbalancedBilateralTransfers": 0,
+      "CompletedPurchases": 32173,
+      "ManagerPurchases": 32173,
+      "Delta": 0
+    },
+    "Amounts": {
+      "InitialBalance": 138800000,
+      "TicketRevenue": 9678089019.54,
+      "StadiumFixedCost": -771905319.29,
+      "StadiumVariableCost": -520142299.6,
+      "Sponsorship": 12566400000,
+      "PlayerSalary": -2715652612,
+      "TransferPurchase": -3314681535,
+      "TransferSale": 3314681535,
+      "AuctionPurchase": -13048975816,
+      "ContractRenewal": -122959146,
+      "PrizeMoney": 1227000000,
+      "StadiumMaintenance": -470480863.5,
+      "StadiumExpansion": -108375000,
+      "FreeAgentSigning": 0,
+      "StadiumRenovation": -187415799
+    },
+    "Counts": {
+      "InitialBalance": 128,
+      "TicketRevenue": 47800,
+      "StadiumFixedCost": 35100,
+      "StadiumVariableCost": 35100,
+      "Sponsorship": 281600,
+      "PlayerSalary": 70200,
+      "TransferPurchase": 8800,
+      "TransferSale": 8800,
+      "AuctionPurchase": 23373,
+      "ContractRenewal": 38289,
+      "PrizeMoney": 3600,
+      "StadiumMaintenance": 2391,
+      "StadiumExpansion": 255,
+      "FreeAgentSigning": 832,
+      "StadiumRenovation": 2465
+    },
+    "OpeningCash": 138800000,
+    "ClosingCash": 5664382164.15,
+    "LedgerNetIncludingOpening": 5664382164.15,
+    "RoundCashVsLedgerMismatches": 0
+  },
+  "MoneyPrecision": "Reconciled in integer cents; initial balance is opening stock, excluded from operating income.",
+  "ExternalIncome": [
+    "TicketRevenue",
+    "Sponsorship",
+    "PrizeMoney"
+  ],
+  "ExternalExpenses": [
+    "PlayerSalary",
+    "ContractRenewal",
+    "StadiumFixedCost",
+    "StadiumVariableCost",
+    "StadiumMaintenance",
+    "StadiumRenovation",
+    "StadiumExpansion",
+    "AuctionPurchase"
+  ],
+  "AuctionMeaning": "Contract-expiry auction fee leaves the club economy; no seller club exists. Bilateral TransferPurchase+TransferSale is the conserved inter-club flow.",
+  "Fixes": [
+    "Persisted round settlement guard +006 snapshot reconstruction",
+    "Preflight both bilateral ledger legs before debiting",
+    "Complete SQLite ledger persistence: regression reproduced256 expected versus200 stored, then passed after removal of truncation"
+  ],
+  "BaselineObserverCorrection": "First capture counted128 seed InitialBalance entries as new operating flows: its raw summary reports128 mismatches and its observer assertion failed. Ledger and match run completed; this script separately reconciles opening stock and all recorded flows. Final observer excludes opening entries and asserts0 mismatches.",
+  "SourceLedger": "docs\\audit-007\\final-run\\capture-007\\ledger.jsonl.gz"
+}

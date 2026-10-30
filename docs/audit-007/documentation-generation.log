@@ -1,0 +1,20 @@
+{
+  "status": "PARTIAL",
+  "dotnet": 52,
+  "flutter": 8,
+  "engineSha256": "C4A053C673F0044D89C035DC323103F6CB760DC6594C74FF7902549FCD07DF9B",
+  "changedFiles": [
+    "tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs",
+    "src\\Elifoot.Infrastructure\\EfWorldRepository.cs",
+    "src\\Elifoot.Application\\ClubAndMarketApplicationService.cs",
+    "docs\\ECONOMIA_ESTADIOS.md",
+    "docs\\IA_TREINADORES.md",
+    "docs\\MOTOR_DEFESA.md",
+    "docs\\MERCADO_IA.md",
+    "src\\Elifoot.Contracts\\Enums.cs",
+    "src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs",
+    "src\\Elifoot.Domain\\AiManagerBrain.cs",
+    "src\\Elifoot.Domain\\Entities.cs",
+    "src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
+  ]
+}

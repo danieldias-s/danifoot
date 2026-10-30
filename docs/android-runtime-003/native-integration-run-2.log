@@ -1,0 +1,18 @@
+Installing build\app\outputs\flutter-apk\app-debug.apk...         179,5s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:52977/F2eZkEYzSjs=/
+VMServiceFlutterDriver: Isolate found with number: 3265107513831383
+VMServiceFlutterDriver: Isolate 3265107513831383 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+VMServiceFlutterDriver: Flutter Driver extension is taking a long time to become available. Ensure your test app (often "lib/main.dart") imports "package:flutter_driver/driver_extension.dart" and calls enableFlutterDriverExtension() as the first call in main().
+VMServiceFlutterDriver: Connected to Flutter application.
+I/flutter ( 3807): 00:00 +0: Native Android UI and real server runtime
+I/Choreographer( 3807): Skipped 872 frames!  The application may be doing too much work on its main thread.
+D/        ( 3807): HostConnection::get() New Host Connection established 0x7cc833e31300, tid 3829
+I/Choreographer( 3807): Skipped 1432 frames!  The application may be doing too much work on its main thread.
+D/EGL_emulation( 3807): eglMakeCurrent: 0x7cc84fbc3380: ver 2 0 (tinfo 0x7cc82de0e740)
+W/art     ( 3807): Verification of kotlin.text.MatchGroup kotlin.internal.jdk8.JDK8PlatformImplementations.getMatchResultNamedGroup(java.util.regex.MatchResult, java.lang.String) took 264.930ms
+I/flutter ( 3807): QA003_STAGE 01-native-menu
+I/flutter ( 3807): QA003_STAGE 02-native-lobby
+I/Choreographer( 3807): Skipped 466 frames!  The application may be doing too much work on its main thread.
+DEBUG RUN 2 INTERRUPTED: persistent ANR, repeated skipped frames and lost Android realtime connection; no gameplay PASS. Continuing with optimized DEV profile.

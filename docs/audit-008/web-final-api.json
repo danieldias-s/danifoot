@@ -1,0 +1,34 @@
+{
+  "invitations": [],
+  "employmentHistory": [
+    {
+      "clubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+      "clubName": "Joinville Tricolor",
+      "startSeason": 1,
+      "startRound": 3,
+      "endSeason": null,
+      "endRound": null,
+      "reasonForLeaving": null
+    }
+  ],
+  "morale": 71,
+  "moraleBand": "VERDE",
+  "moraleHistory": [
+    {
+      "season": 1,
+      "round": 3,
+      "matchId": "cd7dd814-81cc-4398-b7fb-dcb5b4e0a307",
+      "before": 70,
+      "after": 71,
+      "reason": "RESULT_0;expectedGap=0,4;winless=1;recent5=0;points=0,5"
+    }
+  ],
+  "currentClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+  "currentProjectScore": 58.689,
+  "careerRules": {
+    "greenMinimum": 60,
+    "yellowMinimum": 30,
+    "unemployedRecoveryPerRound": 6
+  },
+  "titles": []
+}

@@ -1,0 +1,82 @@
+--------- beginning of kernel
+10-29 22:54:01.999     0     0 I         : Initializing cgroup subsys cpuacct
+10-29 22:54:01.999     0     0 I         : Linux version 3.10.0+ (bjoernj@bjoernj.mtv.corp.google.com) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #257 SMP PREEMPT Fri May 19 12:01:07 PDT 2017
+10-29 22:54:01.999     0     0 I Command line: no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_auto mac80211_hwsim.mac_prefix=5554
+10-29 22:54:01.999     0     0 I e820    : BIOS-provided physical RAM map:
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x0000000000100000-0x000000003ffd9fff] usable
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x000000003ffda000-0x000000003fffffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+10-29 22:54:01.999     0     0 I         : NX (Execute Disable) protection: active
+10-29 22:54:01.999     0     0 I e820    : user-defined physical RAM map:
+10-29 22:54:01.999     0     0 I user    : [mem 0x0000000000000000-0x000000000009fbff] usable
+10-29 22:54:01.999     0     0 I user    : [mem 0x000000000009fc00-0x000000000009ffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000000f0000-0x00000000000fffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x0000000000100000-0x000000003ffd9fff] usable
+10-29 22:54:01.999     0     0 I user    : [mem 0x000000003ffda000-0x000000003fffffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000ff018000-0x00000000ff027fff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+10-29 22:54:01.999     0     0 I         : SMBIOS 2.8 present.
+10-29 22:54:01.999     0     0 D DMI     : QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.11.1-0-g0551a4be2c-prebuilt.qemu-project.org 04/01/2014
+10-29 22:54:01.999     0     0 D e820    : update [mem 0x00000000-0x00000fff] usable ==> reserved
+10-29 22:54:01.999     0     0 D e820    : remove [mem 0x000a0000-0x000fffff] usable
+10-29 22:54:01.999     0     0 I         : No AGP bridge found
+10-29 22:54:01.999     0     0 I e820    : last_pfn = 0x3ffda max_arch_pfn = 0x400000000
+10-29 22:54:01.999     0     0 D         : MTRR default type: write-back
+10-29 22:54:01.999     0     0 D         : MTRR fixed ranges enabled:
+10-29 22:54:01.999     0     0 D         : 00000-9FFFF write-back
+10-29 22:54:01.999     0     0 D         : A0000-BFFFF uncachable
+10-29 22:54:01.999     0     0 D         : C0000-FFFFF write-protect
+10-29 22:54:01.999     0     0 D         : MTRR variable ranges enabled:
+10-29 22:54:01.999     0     0 D         : 0 base 0080000000 mask FF80000000 uncachable
+10-29 22:54:01.999     0     0 D         : 1 disabled
+10-29 22:54:01.999     0     0 D         : 2 disabled
+10-29 22:54:01.999     0     0 D         : 3 disabled
+10-29 22:54:01.999     0     0 D         : 4 disabled
+10-29 22:54:01.999     0     0 D         : 5 disabled
+10-29 22:54:01.999     0     0 D         : 6 disabled
+10-29 22:54:01.999     0     0 D         : 7 disabled
+10-29 22:54:01.999     0     0 I         : PAT not supported by CPU.
+10-29 22:54:01.999     0     0 I         : found SMP MP-table at [mem 0x000f5b50-0x000f5b5f] mapped at [ffff8800000f5b50]
+10-29 22:54:01.999     0     0 D         : Base memory trampoline at [ffff880000098000] 98000 size 28672
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x00000000-0x000fffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x00000000-0x000fffff] page 4k
+10-29 22:54:01.999     0     0 D         : BRK [0x01eb8000, 0x01eb8fff] PGTABLE
+10-29 22:54:01.999     0     0 D         : BRK [0x01eb9000, 0x01eb9fff] PGTABLE
+10-29 22:54:01.999     0     0 D         : BRK [0x01eba000, 0x01ebafff] PGTABLE
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3fc00000-0x3fdfffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3fc00000-0x3fdfffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3c000000-0x3fbfffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3c000000-0x3fbfffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x00100000-0x3bffffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x00100000-0x001fffff] page 4k
+10-29 22:54:01.999     0     0 D         : [mem 0x00200000-0x3bffffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3fe00000-0x3ffd9fff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3fe00000-0x3ffd9fff] page 4k
+10-29 22:54:01.999     0     0 D         : BRK [0x01ebb000, 0x01ebbfff] PGTABLE
+10-29 22:54:01.999     0     0 I cma     : CMA: reserved 264 MiB at 2f400000
+10-29 22:54:01.999     0     0 I RAMDISK : [mem 0x3fe2c000-0x3ffcffff]
+10-29 22:54:01.999     0     0 W ACPI    : RSDP 00000000000f5950 00014 (v00 BOCHS )
+10-29 22:54:01.999     0     0 W ACPI    : RSDT 000000003ffe19ed 00030 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : FACP 000000003ffe18c9 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : DSDT 000000003ffe0040 01889 (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : FACS 000000003ffe0000 00040
+10-29 22:54:01.999     0     0 W ACPI    : APIC 000000003ffe193d 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : HPET 000000003ffe19b5 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 D ACPI    : Local APIC address 0xfee00000
+10-29 22:54:01.999     0     0 D         : [ffffea0000000000-ffffea0000ffffff] PMD -> [ffff88002dc00000-ffff88002ebfffff] on node 0
+10-29 22:54:01.999     0     0 W Zone ranges:  
+10-29 22:54:01.999     0     0 W         : DMA      [mem 0x00001000-0x00ffffff]
+10-29 22:54:01.999     0     0 W         : DMA32    [mem 0x01000000-0xffffffff]
+10-29 22:54:01.999     0     0 W         : Normal   empty
+10-29 22:54:01.999     0     0 W         : Movable zone start for each node
+10-29 22:54:01.999     0     0 W         : Early memory node ranges
+10-29 22:54:01.999     0     0 W node   0: [mem 0x00001000-0x0009efff]
+10-29 22:54:01.999     0     0 W node   0: [mem 0x00100000-0x3ffd9fff]
+10-29 22:54:01.999     0     0 D         : On node 0 totalpages: 262008
+10-29 22:54:01.999     0     0 D DMA zone: 64 pages used for memmap
+10-29 22:54:01.999     0     0 D DMA zone: 22 pages reserved
+10-29 22:54:01.999     0     0 D DMA zone: 3998 pages, LIFO batch:0
+10-29 22:54:01.999     0     0 D DMA32 zone: 4032 pages used for memmap

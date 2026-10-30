@@ -1,0 +1,102 @@
+[
+  {
+    "function": "add",
+    "file": "dart:core-patch/growable_array.dart",
+    "line": 283
+  },
+  {
+    "function": "send",
+    "file": "package:flutter_test/src/test_default_binary_messenger.dart",
+    "line": 152
+  },
+  {
+    "function": "_invokeMethod",
+    "file": "package:flutter/src/services/platform_channel.dart",
+    "line": 360
+  },
+  {
+    "function": "invokeMethod",
+    "file": "package:flutter/src/services/platform_channel.dart",
+    "line": 634
+  },
+  {
+    "function": "play",
+    "file": "package:flutter/src/services/system_sound.dart",
+    "line": 44
+  },
+  {
+    "function": "forTap",
+    "file": "package:flutter/src/widgets/feedback.dart",
+    "line": 96
+  },
+  {
+    "function": "handleTap",
+    "file": "package:flutter/src/material/ink_well.dart",
+    "line": 1220
+  },
+  {
+    "function": "invokeCallback",
+    "file": "package:flutter/src/gestures/recognizer.dart",
+    "line": 345
+  },
+  {
+    "function": "handleTapUp",
+    "file": "package:flutter/src/gestures/tap.dart",
+    "line": 758
+  },
+  {
+    "function": "_checkUp",
+    "file": "package:flutter/src/gestures/tap.dart",
+    "line": 383
+  },
+  {
+    "function": "handlePrimaryPointer",
+    "file": "package:flutter/src/gestures/tap.dart",
+    "line": 314
+  },
+  {
+    "function": "handleEvent",
+    "file": "package:flutter/src/gestures/recognizer.dart",
+    "line": 721
+  },
+  {
+    "function": "_dispatch",
+    "file": "package:flutter/src/gestures/pointer_router.dart",
+    "line": 97
+  },
+  {
+    "function": "<anonymous closure>",
+    "file": "package:flutter/src/gestures/pointer_router.dart",
+    "line": 142
+  },
+  {
+    "function": "forEach",
+    "file": "dart:_compact_hash",
+    "line": 765
+  },
+  {
+    "function": "_dispatchEventToRoutes",
+    "file": "package:flutter/src/gestures/pointer_router.dart",
+    "line": 140
+  },
+  {
+    "function": "route",
+    "file": "package:flutter/src/gestures/pointer_router.dart",
+    "line": 130
+  },
+  {
+    "function": "handleEvent",
+    "file": "package:flutter/src/gestures/binding.dart",
+    "line": 528
+  },
+  {
+    "function": "dispatchEvent",
+    "file": "package:flutter/src/gestures/binding.dart",
+    "line": 498
+  },
+  {
+    "function": "dispatchEvent",
+    "file": "package:flutter/src/rendering/binding.dart",
+    "line": 473
+  }
+]

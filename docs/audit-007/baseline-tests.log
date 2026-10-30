@@ -1,0 +1,35 @@
+  Determinando os projetos a serem restaurados...
+  D:\elifoot_98\src\Elifoot.Contracts\Elifoot.Contracts.csproj restaurado (em 326 ms).
+  D:\elifoot_98\src\Elifoot.Application\Elifoot.Application.csproj restaurado (em 344 ms).
+  D:\elifoot_98\src\Elifoot.Domain\Elifoot.Domain.csproj restaurado (em 343 ms).
+  D:\elifoot_98\tools\seed-generator\Elifoot.SeedGenerator.csproj restaurado (em 344 ms).
+D:\elifoot_98\src\Elifoot.Api\Elifoot.Api.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Api\Elifoot.Api.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Api\Elifoot.Api.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+  Falha ao restaurar D:\elifoot_98\src\Elifoot.Api\Elifoot.Api.csproj (em 5,87 seg).
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+  Falha ao restaurar D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj (em 11,35 seg).
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj : error NU1301: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json. [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. (api.nuget.org:443) [D:\elifoot_98\Elifoot.slnx]
+D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj : error NU1301:   Foi feita uma tentativa de acesso a um soquete de uma maneira que é proibida pelas permissões de acesso. [D:\elifoot_98\Elifoot.slnx]
+  Falha ao restaurar D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj (em 27,99 seg).
+  Falha ao restaurar D:\elifoot_98\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj (em 27,99 seg).
+  Falha ao restaurar D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj (em 27,99 seg).
+  Falha ao restaurar D:\elifoot_98\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj (em 27,99 seg).

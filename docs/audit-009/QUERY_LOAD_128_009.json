@@ -1,0 +1,10 @@
+{
+  "Clubs": 128,
+  "Players": 2308,
+  "Aggregates": 4608,
+  "Queries": 18,
+  "Rows": 1864,
+  "ElapsedMs": 71.5668,
+  "BudgetMs": 10000,
+  "Fixture": "Synthetic deterministic load records; real128-club season validated separately."
+}

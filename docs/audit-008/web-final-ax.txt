@@ -1,0 +1,772 @@
+Browser tab: 2, Title: "Elifoot Classic Multiplayer", URL: "http://127.0.0.1:8088/".
+1 AXWebArea Elifoot Classic Multiplayer, URL: 127.0.0.1:8088/
+	2 container
+		3 container flt-semantic-node-3
+			4 container flt-semantic-node-22
+				5 text Carreira 008 — validação privada • Temp 1 • Rodada 3 (Campeonato Nacional)
+				6 text TÉCNICO: Carreira 008 (Joinville Tricolor) • CAIXA: R$ 1148637
+				7 text Moral do treinador: 71 de 100, VERDE MORAL: 71/100 — VERDE
+				8 text TÁTICAS ENVIADAS: 1/1
+				9 text MINUTO 90' | SUBSTITUIÇÕES 0/5 | PARADAS 0/3
+				10 button AVANÇAR PRÓXIMA RODADA, ID: flt-semantic-node-28
+				11 button TROCAR SALA, ID: flt-semantic-node-29
+				12 text ✔ Carreira 008 (Joinville Tricolor)
+			13 container flt-semantic-node-31
+				14 button 1. PLANTEL & TÁTICAS, ID: flt-semantic-node-32
+				15 button 2. JOGOS AO VIVO, ID: flt-semantic-node-33
+				16 button 3. DIVISÕES & TAÇA, ID: flt-semantic-node-34
+				17 button 4. MERCADO & LEILÃO, ID: flt-semantic-node-35
+				18 button 5. FINANÇAS & ESTÁDIO, ID: flt-semantic-node-36
+				19 button 6. RANKING & CARREIRA, ID: flt-semantic-node-37
+				20 button 7. EDITOR & PACOTES, ID: flt-semantic-node-38
+				21 button 8. CALENDÁRIO & RESULTADOS, ID: flt-semantic-node-39
+			22 container flt-semantic-node-41
+				430 text Moral do treinador: 71 de 100, VERDE MORAL: 71/100 — VERDE
+				431 text Moral vermelha antes de uma derrota provoca demissão. Campeonatos > Taças > pontos de carreira.
+				432 text T1 R3: 70 → 71 (após partida)
+				433 text RANKING CLÁSSICO DE TREINADORES (1º CAMPEONATOS, 2º TAÇAS, 3º PONTOS DO TREINADOR)
+				434 text Joinville Tricolor — T1 R3 até atual
+				27 container flt-semantic-node-46
+					28 table flt-semantic-node-47
+						29 row flt-semantic-node-274
+							30 cell Description: #, ID: flt-semantic-node-48
+							31 cell Description: TREINADOR, ID: flt-semantic-node-49
+							32 cell Description: TIPO, ID: flt-semantic-node-50
+							33 cell Description: CLUBE ATUAL, ID: flt-semantic-node-51
+							34 cell Description: CAMPEONATOS, ID: flt-semantic-node-52
+							35 cell Description: TAÇAS, ID: flt-semantic-node-53
+							36 cell Description: PTS TREINADOR, ID: flt-semantic-node-54
+							37 cell Description: V / E / D, ID: flt-semantic-node-55
+						40 row flt-semantic-node-275
+							41 cell flt-semantic-node-58
+								435 text 1
+							43 cell flt-semantic-node-59
+								436 text Carreira 008
+							45 cell flt-semantic-node-60
+								437 text HUMANO
+							47 cell flt-semantic-node-61
+								438 text Joinville Tricolor
+							49 cell flt-semantic-node-62
+								439 text 1
+							51 cell flt-semantic-node-63
+								440 text 1
+							53 cell flt-semantic-node-64
+								441 text 13
+							55 cell flt-semantic-node-65
+								442 text 0V 1E 0D
+						62 row flt-semantic-node-276
+							63 cell flt-semantic-node-70
+								443 text 2
+							65 cell flt-semantic-node-71
+								444 text Henrique Andrade
+							67 cell flt-semantic-node-72
+								445 text IA
+							69 cell flt-semantic-node-73
+								446 text Palestra Verde
+							71 cell flt-semantic-node-74
+								447 text 0
+							73 cell flt-semantic-node-75
+								74 text 0
+							75 cell flt-semantic-node-76
+								448 text 4
+							77 cell flt-semantic-node-77
+								449 text 1V 0E 0D
+						84 row flt-semantic-node-277
+							85 cell flt-semantic-node-82
+								450 text 3
+							87 cell flt-semantic-node-83
+								451 text Otávio Santos
+							89 cell flt-semantic-node-84
+								452 text IA
+							91 cell flt-semantic-node-85
+								453 text Real Pampulha
+							93 cell flt-semantic-node-86
+								454 text 0
+							95 cell flt-semantic-node-87
+								96 text 0
+							97 cell flt-semantic-node-88
+								455 text 4
+							99 cell flt-semantic-node-89
+								456 text 1V 0E 0D
+						106 row flt-semantic-node-278
+							107 cell flt-semantic-node-94
+								457 text 4
+							109 cell flt-semantic-node-95
+								458 text Wagner Carvalho
+							111 cell flt-semantic-node-96
+								459 text IA
+							113 cell flt-semantic-node-97
+								460 text Estrela Solitária
+							115 cell flt-semantic-node-98
+								461 text 0
+							117 cell flt-semantic-node-99
+								118 text 0
+							119 cell flt-semantic-node-100
+								462 text 4
+							121 cell flt-semantic-node-101
+								463 text 1V 0E 0D
+						128 row flt-semantic-node-279
+							129 cell flt-semantic-node-106
+								464 text 5
+							131 cell flt-semantic-node-107
+								465 text Lucas Mendes
+							133 cell flt-semantic-node-108
+								466 text IA
+							135 cell flt-semantic-node-109
+								467 text Fortaleza do Sol
+							137 cell flt-semantic-node-110
+								468 text 0
+							139 cell flt-semantic-node-111
+								140 text 0
+							141 cell flt-semantic-node-112
+								469 text 3
+							143 cell flt-semantic-node-113
+								470 text 1V 0E 0D
+						150 row flt-semantic-node-280
+							151 cell flt-semantic-node-118
+								471 text 6
+							153 cell flt-semantic-node-119
+								472 text Eduardo Vieira
+							155 cell flt-semantic-node-120
+								473 text IA
+							157 cell flt-semantic-node-121
+								474 text Grêmio Guanabara
+							159 cell flt-semantic-node-122
+								475 text 0
+							161 cell flt-semantic-node-123
+								162 text 0
+							163 cell flt-semantic-node-124
+								476 text 2
+							165 cell flt-semantic-node-125
+								477 text 0V 1E 0D
+						172 row flt-semantic-node-281
+							173 cell flt-semantic-node-130
+								478 text 7
+							175 cell flt-semantic-node-131
+								479 text Wagner Santos
+							177 cell flt-semantic-node-132
+								480 text IA
+							179 cell flt-semantic-node-133
+								481 text Juventude Serrana
+							181 cell flt-semantic-node-134
+								482 text 0
+							183 cell flt-semantic-node-135
+								184 text 0
+							185 cell flt-semantic-node-136
+								483 text 2
+							187 cell flt-semantic-node-137
+								484 text 1V 0E 0D
+						194 row flt-semantic-node-282
+							195 cell flt-semantic-node-142
+								485 text 8
+							197 cell flt-semantic-node-143
+								486 text Rafael Carvalho
+							199 cell flt-semantic-node-144
+								487 text IA
+							201 cell flt-semantic-node-145
+								488 text Atlético Paulistano
+							203 cell flt-semantic-node-146
+								489 text 0
+							205 cell flt-semantic-node-147
+								206 text 0
+							207 cell flt-semantic-node-148
+								490 text 2
+							209 cell flt-semantic-node-149
+								491 text 0V 1E 0D
+						216 row flt-semantic-node-283
+							217 cell flt-semantic-node-154
+								492 text 9
+							219 cell flt-semantic-node-155
+								493 text Lucas Vieira
+							221 cell flt-semantic-node-156
+								494 text IA
+							223 cell flt-semantic-node-157
+								495 text Remo Azulino
+							225 cell flt-semantic-node-158
+								496 text 0
+							227 cell flt-semantic-node-159
+								228 text 0
+							229 cell flt-semantic-node-160
+								497 text 2
+							231 cell flt-semantic-node-161
+								498 text 1V 0E 0D
+						238 row flt-semantic-node-284
+							239 cell flt-semantic-node-166
+								499 text 10
+							241 cell flt-semantic-node-167
+								500 text Leandro Alves
+							243 cell flt-semantic-node-168
+								501 text IA
+							245 cell flt-semantic-node-169
+								502 text Avaí da Ilha
+							247 cell flt-semantic-node-170
+								503 text 0
+							249 cell flt-semantic-node-171
+								250 text 0
+							251 cell flt-semantic-node-172
+								504 text 2
+							253 cell flt-semantic-node-173
+								505 text 1V 0E 0D
+						260 row flt-semantic-node-285
+							261 cell flt-semantic-node-178
+								506 text 11
+							263 cell flt-semantic-node-179
+								507 text Eduardo Alves
+							265 cell flt-semantic-node-180
+								508 text IA
+							267 cell flt-semantic-node-181
+								509 text Goiás Esmeralda
+							269 cell flt-semantic-node-182
+								510 text 0
+							271 cell flt-semantic-node-183
+								272 text 0
+							273 cell flt-semantic-node-184
+								511 text 1.5
+							275 cell flt-semantic-node-185
+								512 text 0V 1E 0D
+						282 row flt-semantic-node-286
+							283 cell flt-semantic-node-190
+								513 text 12
+							285 cell flt-semantic-node-191
+								514 text Sérgio Mendes
+							287 cell flt-semantic-node-192
+								515 text IA
+							289 cell flt-semantic-node-193
+								516 text Ceará Alvinegro
+							291 cell flt-semantic-node-194
+								517 text 0
+							293 cell flt-semantic-node-195
+								294 text 0
+							295 cell flt-semantic-node-196
+								518 text 1.5
+							297 cell flt-semantic-node-197
+								519 text 0V 1E 0D
+						304 row flt-semantic-node-287
+							305 cell flt-semantic-node-202
+								520 text 13
+							307 cell flt-semantic-node-203
+								521 text Henrique Carvalho
+							309 cell flt-semantic-node-204
+								522 text IA
+							311 cell flt-semantic-node-205
+								523 text Leão da Ilha
+							313 cell flt-semantic-node-206
+								524 text 0
+							315 cell flt-semantic-node-207
+								316 text 0
+							317 cell flt-semantic-node-208
+								525 text 1.5
+							319 cell flt-semantic-node-209
+								526 text 0V 1E 0D
+						326 row flt-semantic-node-288
+							327 cell flt-semantic-node-214
+								527 text 14
+							329 cell flt-semantic-node-215
+								528 text Leandro Vieira
+							331 cell flt-semantic-node-216
+								529 text IA
+							333 cell flt-semantic-node-217
+								530 text Ponte Alvinegra
+							335 cell flt-semantic-node-218
+								531 text 0
+							337 cell flt-semantic-node-219
+								338 text 0
+							339 cell flt-semantic-node-220
+								532 text 1.5
+							341 cell flt-semantic-node-221
+								533 text 0V 1E 0D
+						348 row flt-semantic-node-289
+							349 cell flt-semantic-node-226
+								534 text 15
+							351 cell flt-semantic-node-227
+								535 text Rafael Santos
+							353 cell flt-semantic-node-228
+								536 text IA
+							355 cell flt-semantic-node-229
+								537 text Bahia de Todos
+							357 cell flt-semantic-node-230
+								538 text 0
+							359 cell flt-semantic-node-231
+								360 text 0
+							361 cell flt-semantic-node-232
+								539 text 1.5
+							363 cell flt-semantic-node-233
+								540 text 0V 1E 0D
+						370 row flt-semantic-node-290
+							371 cell flt-semantic-node-238
+								541 text 16
+							373 cell flt-semantic-node-239
+								542 text Otávio Andrade
+							375 cell flt-semantic-node-240
+								543 text IA
+							377 cell flt-semantic-node-241
+								544 text Guarani da Serra
+							379 cell flt-semantic-node-242
+								545 text 0
+							381 cell flt-semantic-node-243
+								382 text 0
+							383 cell flt-semantic-node-244
+								546 text 1.5
+							385 cell flt-semantic-node-245
+								547 text 0V 1E 0D
+						392 row flt-semantic-node-291
+							393 cell flt-semantic-node-250
+								548 text 17
+							395 cell flt-semantic-node-251
+								549 text Rafael Andrade
+							397 cell flt-semantic-node-252
+								550 text IA
+							399 cell flt-semantic-node-253
+								551 text Náutico Capibaribe
+							401 cell flt-semantic-node-254
+								552 text 0
+							403 cell flt-semantic-node-255
+								404 text 0
+							405 cell flt-semantic-node-256
+								553 text 1
+							407 cell flt-semantic-node-257
+								554 text 0V 1E 0D
+						414 row flt-semantic-node-292
+							415 cell flt-semantic-node-262
+								555 text 18
+							417 cell flt-semantic-node-263
+								556 text Caio Mendes
+							419 cell flt-semantic-node-264
+								557 text IA
+							421 cell flt-semantic-node-265
+								558 text Sampaio Boliviano
+							423 cell flt-semantic-node-266
+								559 text 0
+							425 cell flt-semantic-node-267
+								426 text 0
+							427 cell flt-semantic-node-268
+								560 text 1
+							429 cell flt-semantic-node-269
+								561 text 1V 0E 0D
+						562 row flt-semantic-node-493
+							563 cell flt-semantic-node-293
+								564 text 19
+							565 cell flt-semantic-node-294
+								566 text Eduardo Mendes
+							567 cell flt-semantic-node-295
+								568 text IA
+							569 cell flt-semantic-node-296
+								570 text Santa Cruz Coral
+							571 cell flt-semantic-node-297
+								572 text 0
+							573 cell flt-semantic-node-298
+								574 text 0
+							575 cell flt-semantic-node-299
+								576 text 1
+							577 cell flt-semantic-node-300
+								578 text 0V 1E 0D
+						579 row flt-semantic-node-494
+							580 cell flt-semantic-node-301
+								581 text 20
+							582 cell flt-semantic-node-302
+								583 text Wagner Andrade
+							584 cell flt-semantic-node-303
+								585 text IA
+							586 cell flt-semantic-node-304
+								587 text Brasil de Pelotas
+							588 cell flt-semantic-node-305
+								589 text 0
+							590 cell flt-semantic-node-306
+								591 text 0
+							592 cell flt-semantic-node-307
+								593 text 1
+							594 cell flt-semantic-node-308
+								595 text 1V 0E 0D
+						596 row flt-semantic-node-495
+							597 cell flt-semantic-node-309
+								598 text 21
+							599 cell flt-semantic-node-310
+								600 text Lucas Alves
+							601 cell flt-semantic-node-311
+								602 text IA
+							603 cell flt-semantic-node-312
+								604 text América Mecão
+							605 cell flt-semantic-node-313
+								606 text 0
+							607 cell flt-semantic-node-314
+								608 text 0
+							609 cell flt-semantic-node-315
+								610 text 1
+							611 cell flt-semantic-node-316
+								612 text 1V 0E 0D
+						613 row flt-semantic-node-496
+							614 cell flt-semantic-node-317
+								615 text 22
+							616 cell flt-semantic-node-318
+								617 text Otávio Carvalho
+							618 cell flt-semantic-node-319
+								619 text IA
+							620 cell flt-semantic-node-320
+								621 text Ferroviária Grená
+							622 cell flt-semantic-node-321
+								623 text 0
+							624 cell flt-semantic-node-322
+								625 text 0
+							626 cell flt-semantic-node-323
+								627 text 0.5
+							628 cell flt-semantic-node-324
+								629 text 0V 1E 0D
+						630 row flt-semantic-node-497
+							631 cell flt-semantic-node-325
+								632 text 23
+							633 cell flt-semantic-node-326
+								634 text Caio Vieira
+							635 cell flt-semantic-node-327
+								636 text IA
+							637 cell flt-semantic-node-328
+								638 text Sem Clube
+							639 cell flt-semantic-node-329
+								640 text 0
+							641 cell flt-semantic-node-330
+								642 text 0
+							643 cell flt-semantic-node-331
+								644 text 0
+							645 cell flt-semantic-node-332
+								646 text 0V 0E 1D
+						647 row flt-semantic-node-498
+							648 cell flt-semantic-node-333
+								649 text 24
+							650 cell flt-semantic-node-334
+								651 text Sérgio Alves
+							652 cell flt-semantic-node-335
+								653 text IA
+							654 cell flt-semantic-node-336
+								655 text Sem Clube
+							656 cell flt-semantic-node-337
+								657 text 0
+							658 cell flt-semantic-node-338
+								659 text 0
+							660 cell flt-semantic-node-339
+								661 text 0
+							662 cell flt-semantic-node-340
+								663 text 0V 0E 1D
+						664 row flt-semantic-node-499
+							665 cell flt-semantic-node-341
+								666 text 25
+							667 cell flt-semantic-node-342
+								668 text Interino BPB 137
+							669 cell flt-semantic-node-343
+								670 text IA
+							671 cell flt-semantic-node-344
+								672 text Botafogo da Paraíba
+							673 cell flt-semantic-node-345
+								674 text 0
+							675 cell flt-semantic-node-346
+								676 text 0
+							677 cell flt-semantic-node-347
+								678 text 0
+							679 cell flt-semantic-node-348
+								680 text 0V 0E 0D
+						681 row flt-semantic-node-500
+							682 cell flt-semantic-node-349
+								683 text 26
+							684 cell flt-semantic-node-350
+								685 text Interino SCA 130
+							686 cell flt-semantic-node-351
+								687 text IA
+							688 cell flt-semantic-node-352
+								689 text Sport Club Atlântico
+							690 cell flt-semantic-node-353
+								691 text 0
+							692 cell flt-semantic-node-354
+								693 text 0
+							694 cell flt-semantic-node-355
+								695 text 0
+							696 cell flt-semantic-node-356
+								697 text 0V 0E 0D
+						698 row flt-semantic-node-501
+							699 cell flt-semantic-node-357
+								700 text 27
+							701 cell flt-semantic-node-358
+								702 text Interino CIM 132
+							703 cell flt-semantic-node-359
+								704 text IA
+							705 cell flt-semantic-node-360
+								706 text Coritiba Imperial
+							707 cell flt-semantic-node-361
+								708 text 0
+							709 cell flt-semantic-node-362
+								710 text 0
+							711 cell flt-semantic-node-363
+								712 text 0
+							713 cell flt-semantic-node-364
+								714 text 0V 0E 0D
+						715 row flt-semantic-node-502
+							716 cell flt-semantic-node-365
+								717 text 28
+							718 cell flt-semantic-node-366
+								719 text Sérgio Vieira
+							720 cell flt-semantic-node-367
+								721 text IA
+							722 cell flt-semantic-node-368
+								723 text Sem Clube
+							724 cell flt-semantic-node-369
+								725 text 0
+							726 cell flt-semantic-node-370
+								727 text 0
+							728 cell flt-semantic-node-371
+								729 text 0
+							730 cell flt-semantic-node-372
+								731 text 0V 0E 0D
+						732 row flt-semantic-node-503
+							733 cell flt-semantic-node-373
+								734 text 29
+							735 cell flt-semantic-node-374
+								736 text Interino CRI 133
+							737 cell flt-semantic-node-375
+								738 text IA
+							739 cell flt-semantic-node-376
+								740 text Criciúma Carvoeiro
+							741 cell flt-semantic-node-377
+								742 text 0
+							743 cell flt-semantic-node-378
+								744 text 0
+							745 cell flt-semantic-node-379
+								746 text 0
+							747 cell flt-semantic-node-380
+								748 text 0V 0E 0D
+						749 row flt-semantic-node-504
+							750 cell flt-semantic-node-381
+								751 text 30
+							752 cell flt-semantic-node-382
+								753 text Interino CSA 136
+							754 cell flt-semantic-node-383
+								755 text IA
+							756 cell flt-semantic-node-384
+								757 text CSA Azulão
+							758 cell flt-semantic-node-385
+								759 text 0
+							760 cell flt-semantic-node-386
+								761 text 0
+							762 cell flt-semantic-node-387
+								763 text 0
+							764 cell flt-semantic-node-388
+								765 text 0V 0E 0D
+						766 row flt-semantic-node-505
+							767 cell flt-semantic-node-389
+								768 text 31
+							769 cell flt-semantic-node-390
+								770 text Interino VIL 135
+							771 cell flt-semantic-node-391
+								772 text IA
+							773 cell flt-semantic-node-392
+								774 text Vila Nova Colorada
+							775 cell flt-semantic-node-393
+								776 text 0
+							777 cell flt-semantic-node-394
+								778 text 0
+							779 cell flt-semantic-node-395
+								780 text 0
+							781 cell flt-semantic-node-396
+								782 text 0V 0E 0D
+						783 row flt-semantic-node-506
+							784 cell flt-semantic-node-397
+								785 text 32
+							786 cell flt-semantic-node-398
+								787 text Henrique Santos
+							788 cell flt-semantic-node-399
+								789 text IA
+							790 cell flt-semantic-node-400
+								791 text Sem Clube
+							792 cell flt-semantic-node-401
+								793 text 0
+							794 cell flt-semantic-node-402
+								795 text 0
+							796 cell flt-semantic-node-403
+								797 text 0
+							798 cell flt-semantic-node-404
+								799 text 0V 0E 1D
+						800 row flt-semantic-node-507
+							801 cell flt-semantic-node-405
+								802 text 33
+							803 cell flt-semantic-node-406
+								804 text Alex Santos
+							805 cell flt-semantic-node-407
+								806 text IA
+							807 cell flt-semantic-node-408
+								808 text Sem Clube
+							809 cell flt-semantic-node-409
+								810 text 0
+							811 cell flt-semantic-node-410
+								812 text 0
+							813 cell flt-semantic-node-411
+								814 text 0
+							815 cell flt-semantic-node-412
+								816 text 0V 0E 1D
+						817 row flt-semantic-node-508
+							818 cell flt-semantic-node-413
+								819 text 34
+							820 cell flt-semantic-node-414
+								821 text Interino INS 131
+							822 cell flt-semantic-node-415
+								823 text IA
+							824 cell flt-semantic-node-416
+								825 text Internacional do Sul
+							826 cell flt-semantic-node-417
+								827 text 0
+							828 cell flt-semantic-node-418
+								829 text 0
+							830 cell flt-semantic-node-419
+								831 text 0
+							832 cell flt-semantic-node-420
+								833 text 0V 0E 0D
+						834 row flt-semantic-node-509
+							835 cell flt-semantic-node-421
+								836 text 35
+							837 cell flt-semantic-node-422
+								838 text Interino ECL 129
+							839 cell flt-semantic-node-423
+								840 text IA
+							841 cell flt-semantic-node-424
+								842 text Esporte Clube Litoral
+							843 cell flt-semantic-node-425
+								844 text 0
+							845 cell flt-semantic-node-426
+								846 text 0
+							847 cell flt-semantic-node-427
+								848 text 0
+							849 cell flt-semantic-node-428
+								850 text 0V 0E 0D
+						851 row flt-semantic-node-510
+							852 cell flt-semantic-node-429
+								853 text 36
+							854 cell flt-semantic-node-430
+								855 text Interino ABC 138
+							856 cell flt-semantic-node-431
+								857 text IA
+							858 cell flt-semantic-node-432
+								859 text ABC Potiguar
+							860 cell flt-semantic-node-433
+								861 text 0
+							862 cell flt-semantic-node-434
+								863 text 0
+							864 cell flt-semantic-node-435
+								865 text 0
+							866 cell flt-semantic-node-436
+								867 text 0V 0E 0D
+						868 row flt-semantic-node-511
+							869 cell flt-semantic-node-437
+								870 text 37
+							871 cell flt-semantic-node-438
+								872 text Alex Carvalho
+							873 cell flt-semantic-node-439
+								874 text IA
+							875 cell flt-semantic-node-440
+								876 text Sem Clube
+							877 cell flt-semantic-node-441
+								878 text 0
+							879 cell flt-semantic-node-442
+								880 text 0
+							881 cell flt-semantic-node-443
+								882 text 0
+							883 cell flt-semantic-node-444
+								884 text 0V 0E 1D
+						885 row flt-semantic-node-512
+							886 cell flt-semantic-node-445
+								887 text 38
+							888 cell flt-semantic-node-446
+								889 text Rafael Carvalho
+							890 cell flt-semantic-node-447
+								891 text IA
+							892 cell flt-semantic-node-448
+								893 text Sem Clube
+							894 cell flt-semantic-node-449
+								895 text 0
+							896 cell flt-semantic-node-450
+								897 text 0
+							898 cell flt-semantic-node-451
+								899 text 0
+							900 cell flt-semantic-node-452
+								901 text 0V 0E 1D
+						902 row flt-semantic-node-513
+							903 cell flt-semantic-node-453
+								904 text 39
+							905 cell flt-semantic-node-454
+								906 text Interino PAY 134
+							907 cell flt-semantic-node-455
+								908 text IA
+							909 cell flt-semantic-node-456
+								910 text Paysandu da Amazônia
+							911 cell flt-semantic-node-457
+								912 text 0
+							913 cell flt-semantic-node-458
+								914 text 0
+							915 cell flt-semantic-node-459
+								916 text 0
+							917 cell flt-semantic-node-460
+								918 text 0V 0E 0D
+						919 row flt-semantic-node-514
+							920 cell flt-semantic-node-461
+								921 text 40
+							922 cell flt-semantic-node-462
+								923 text Alex Andrade
+							924 cell flt-semantic-node-463
+								925 text IA
+							926 cell flt-semantic-node-464
+								927 text Sem Clube
+							928 cell flt-semantic-node-465
+								929 text 0
+							930 cell flt-semantic-node-466
+								931 text 0
+							932 cell flt-semantic-node-467
+								933 text 0
+							934 cell flt-semantic-node-468
+								935 text 0V 0E 1D
+						936 row flt-semantic-node-515
+							937 cell flt-semantic-node-469
+								938 text 41
+							939 cell flt-semantic-node-470
+								940 text Eduardo Vieira
+							941 cell flt-semantic-node-471
+								942 text IA
+							943 cell flt-semantic-node-472
+								944 text Sem Clube
+							945 cell flt-semantic-node-473
+								946 text 0
+							947 cell flt-semantic-node-474
+								948 text 0
+							949 cell flt-semantic-node-475
+								950 text 0
+							951 cell flt-semantic-node-476
+								952 text 0V 0E 1D
+						953 row flt-semantic-node-516
+							954 cell flt-semantic-node-477
+								955 text 42
+							956 cell flt-semantic-node-478
+								957 text Caio Alves
+							958 cell flt-semantic-node-479
+								959 text IA
+							960 cell flt-semantic-node-480
+								961 text Sem Clube
+							962 cell flt-semantic-node-481
+								963 text 0
+							964 cell flt-semantic-node-482
+								965 text 0
+							966 cell flt-semantic-node-483
+								967 text 0
+							968 cell flt-semantic-node-484
+								969 text 0V 0E 1D
+						970 row flt-semantic-node-517
+							971 cell flt-semantic-node-485
+								972 text 43
+							973 cell flt-semantic-node-486
+								974 text Leandro Mendes
+							975 cell flt-semantic-node-487
+								976 text IA
+							977 cell flt-semantic-node-488
+								978 text Sem Clube
+							979 cell flt-semantic-node-489
+								980 text 0
+							981 cell flt-semantic-node-490
+								982 text 0
+							983 cell flt-semantic-node-491
+								984 text 0
+							985 cell flt-semantic-node-492
+								986 text 0V 0E 1D
+
+The focused UI element is 19 button 6. RANKING & CARREIRA, ID: flt-semantic-node-37

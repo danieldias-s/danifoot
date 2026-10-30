@@ -1,0 +1,603 @@
+{
+  "task": "ELIFOOT_GAMEPLAY_BALANCE_100_SEASONS_005",
+  "primaryScenario": {
+    "experimentId": "EXP_A_100_SEASONS_AI_199801",
+    "worldSeed": 199801,
+    "totalMatches": 35100,
+    "leagueMatches": 22400,
+    "cupMatches": 12700,
+    "realMinutesSimulated": 3253440,
+    "totalGoals": 88010,
+    "goalsPerMatch": 2.507,
+    "firstHalfGoals": 43526,
+    "firstHalfGoalsPct": 49.46,
+    "secondHalfGoals": 42242,
+    "secondHalfGoalsPct": 48,
+    "extraTimeGoals": 2242,
+    "goalsByCompetitionAndDivision": {
+      "Ta\u00E7a": {
+        "matches": 12700,
+        "totalGoals": 32820,
+        "goalsPerMatch": 2.584
+      },
+      "PrimeiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 15337,
+        "goalsPerMatch": 2.739
+      },
+      "SegundaDivisao": {
+        "matches": 5600,
+        "totalGoals": 14097,
+        "goalsPerMatch": 2.517
+      },
+      "TerceiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 13000,
+        "goalsPerMatch": 2.321
+      },
+      "QuartaDivisao": {
+        "matches": 5600,
+        "totalGoals": 12756,
+        "goalsPerMatch": 2.278
+      }
+    },
+    "goalsByMinuteBucket": {
+      "01-15": 14747,
+      "16-30": 14424,
+      "31-45": 14355,
+      "46-60": 14199,
+      "61-75": 14151,
+      "76-90": 13892,
+      "91-105": 1095,
+      "106-120": 1147
+    },
+    "outcomes": {
+      "homeWins": 14841,
+      "homeWinPct": 42.28,
+      "draws": 7644,
+      "drawPct": 21.78,
+      "awayWins": 12615,
+      "awayWinPct": 35.94,
+      "comebacksViradas": 3699,
+      "comebackPct": 10.54
+    },
+    "scorelines": {
+      "results_0_0": 3140,
+      "results_0_0_Pct": 8.95,
+      "results_1_0_or_0_1": 8226,
+      "results_1_0_or_0_1_Pct": 23.44,
+      "results_1_1": 3144,
+      "results_1_1_Pct": 8.96,
+      "results_2_0_or_0_2": 4739,
+      "results_2_0_or_0_2_Pct": 13.5,
+      "results_2_1_or_1_2": 4975,
+      "results_2_1_or_1_2_Pct": 14.17,
+      "results_3_0_or_0_3": 2290,
+      "results_3_0_or_0_3_Pct": 6.52,
+      "results_3_1_or_1_3": 2121,
+      "results_3_1_or_1_3_Pct": 6.04,
+      "highScoring4PlusGoals": 8586,
+      "highScoring4PlusGoalsPct": 24.46,
+      "top15ExactHomeAwayScores": {
+        "1-0": 4322,
+        "0-1": 3904,
+        "1-1": 3144,
+        "0-0": 3140,
+        "2-1": 2617,
+        "2-0": 2601,
+        "1-2": 2358,
+        "0-2": 2138,
+        "3-0": 1312,
+        "3-1": 1152,
+        "2-2": 1128,
+        "0-3": 978,
+        "1-3": 969,
+        "3-2": 631,
+        "2-3": 584
+      }
+    },
+    "disciplineAndEvents": {
+      "penaltyGoalsInPlay": 9055,
+      "penaltiesMissedInPlay": 3144,
+      "penaltyConversionRatePct": 74.23,
+      "yellowCards": 89757,
+      "yellowCardsPerMatch": 2.557,
+      "redCards": 16808,
+      "directRedCards": 8665,
+      "secondYellowRedCards": 8143,
+      "redCardsPerMatch": 0.479,
+      "injuries": 11787,
+      "injuriesPerMatch": 0.336,
+      "substitutions": 87894,
+      "substitutionsPerMatch": 2.504,
+      "extraTimeMatches": 3148,
+      "penaltyShootouts": 1745
+    },
+    "tacticalFormationPerformance": [
+      {
+        "formation": "4-3-3",
+        "matchesUsed": 19878,
+        "winPct": 41.71,
+        "drawPct": 19.92,
+        "lossPct": 38.37,
+        "avgGoalsFor": 1.425,
+        "avgGoalsAgainst": 1.337
+      },
+      {
+        "formation": "4-4-2",
+        "matchesUsed": 18620,
+        "winPct": 36.41,
+        "drawPct": 21.9,
+        "lossPct": 41.69,
+        "avgGoalsFor": 1.159,
+        "avgGoalsAgainst": 1.308
+      },
+      {
+        "formation": "3-4-3",
+        "matchesUsed": 7615,
+        "winPct": 47.8,
+        "drawPct": 18.75,
+        "lossPct": 33.45,
+        "avgGoalsFor": 1.689,
+        "avgGoalsAgainst": 1.299
+      },
+      {
+        "formation": "5-3-2",
+        "matchesUsed": 6216,
+        "winPct": 34.46,
+        "drawPct": 23.15,
+        "lossPct": 42.39,
+        "avgGoalsFor": 0.998,
+        "avgGoalsAgainst": 1.175
+      },
+      {
+        "formation": "5-4-1",
+        "matchesUsed": 6144,
+        "winPct": 34.64,
+        "drawPct": 27.73,
+        "lossPct": 37.63,
+        "avgGoalsFor": 0.912,
+        "avgGoalsAgainst": 0.965
+      },
+      {
+        "formation": "4-5-1",
+        "matchesUsed": 5851,
+        "winPct": 33,
+        "drawPct": 25.23,
+        "lossPct": 41.77,
+        "avgGoalsFor": 0.94,
+        "avgGoalsAgainst": 1.152
+      },
+      {
+        "formation": "3-5-2",
+        "matchesUsed": 5543,
+        "winPct": 43.53,
+        "drawPct": 20.58,
+        "lossPct": 35.88,
+        "avgGoalsFor": 1.351,
+        "avgGoalsAgainst": 1.215
+      },
+      {
+        "formation": "3-6-1",
+        "matchesUsed": 173,
+        "winPct": 37.57,
+        "drawPct": 26.01,
+        "lossPct": 36.42,
+        "avgGoalsFor": 1.116,
+        "avgGoalsAgainst": 1.162
+      },
+      {
+        "formation": "4-2-4",
+        "matchesUsed": 160,
+        "winPct": 40.62,
+        "drawPct": 11.88,
+        "lossPct": 47.5,
+        "avgGoalsFor": 1.556,
+        "avgGoalsAgainst": 1.706
+      }
+    ]
+  },
+  "additionalScenarioB_HumanAgents": {
+    "experimentId": "EXP_B_100_SEASONS_8_HUMAN_AGENTS_199802",
+    "worldSeed": 199802,
+    "totalMatches": 35100,
+    "leagueMatches": 22400,
+    "cupMatches": 12700,
+    "realMinutesSimulated": 3254010,
+    "totalGoals": 83565,
+    "goalsPerMatch": 2.381,
+    "firstHalfGoals": 41068,
+    "firstHalfGoalsPct": 49.14,
+    "secondHalfGoals": 40280,
+    "secondHalfGoalsPct": 48.2,
+    "extraTimeGoals": 2217,
+    "goalsByCompetitionAndDivision": {
+      "Ta\u00E7a": {
+        "matches": 12700,
+        "totalGoals": 31967,
+        "goalsPerMatch": 2.517
+      },
+      "PrimeiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 13410,
+        "goalsPerMatch": 2.395
+      },
+      "SegundaDivisao": {
+        "matches": 5600,
+        "totalGoals": 12883,
+        "goalsPerMatch": 2.301
+      },
+      "TerceiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 13111,
+        "goalsPerMatch": 2.341
+      },
+      "QuartaDivisao": {
+        "matches": 5600,
+        "totalGoals": 12194,
+        "goalsPerMatch": 2.178
+      }
+    },
+    "goalsByMinuteBucket": {
+      "01-15": 13666,
+      "16-30": 13748,
+      "31-45": 13654,
+      "46-60": 13537,
+      "61-75": 13544,
+      "76-90": 13199,
+      "91-105": 1107,
+      "106-120": 1110
+    },
+    "outcomes": {
+      "homeWins": 14689,
+      "homeWinPct": 41.85,
+      "draws": 7938,
+      "drawPct": 22.62,
+      "awayWins": 12473,
+      "awayWinPct": 35.54,
+      "comebacksViradas": 3362,
+      "comebackPct": 9.58
+    },
+    "scorelines": {
+      "results_0_0": 3346,
+      "results_0_0_Pct": 9.53,
+      "results_1_0_or_0_1": 8883,
+      "results_1_0_or_0_1_Pct": 25.31,
+      "results_1_1": 3328,
+      "results_1_1_Pct": 9.48,
+      "results_2_0_or_0_2": 4829,
+      "results_2_0_or_0_2_Pct": 13.76,
+      "results_2_1_or_1_2": 4892,
+      "results_2_1_or_1_2_Pct": 13.94,
+      "results_3_0_or_0_3": 2172,
+      "results_3_0_or_0_3_Pct": 6.19,
+      "results_3_1_or_1_3": 1919,
+      "results_3_1_or_1_3_Pct": 5.47,
+      "highScoring4PlusGoals": 7650,
+      "highScoring4PlusGoalsPct": 21.79,
+      "top15ExactHomeAwayScores": {
+        "1-0": 4720,
+        "0-1": 4163,
+        "0-0": 3346,
+        "1-1": 3328,
+        "2-0": 2693,
+        "2-1": 2537,
+        "1-2": 2355,
+        "0-2": 2136,
+        "3-0": 1200,
+        "3-1": 1045,
+        "2-2": 1044,
+        "0-3": 972,
+        "1-3": 874,
+        "3-2": 600,
+        "2-3": 538
+      }
+    },
+    "disciplineAndEvents": {
+      "penaltyGoalsInPlay": 8618,
+      "penaltiesMissedInPlay": 3027,
+      "penaltyConversionRatePct": 74.01,
+      "yellowCards": 89764,
+      "yellowCardsPerMatch": 2.557,
+      "redCards": 16309,
+      "directRedCards": 8416,
+      "secondYellowRedCards": 7893,
+      "redCardsPerMatch": 0.465,
+      "injuries": 11617,
+      "injuriesPerMatch": 0.331,
+      "substitutions": 83825,
+      "substitutionsPerMatch": 2.388,
+      "extraTimeMatches": 3167,
+      "penaltyShootouts": 1749
+    },
+    "tacticalFormationPerformance": [
+      {
+        "formation": "4-4-2",
+        "matchesUsed": 19381,
+        "winPct": 36.66,
+        "drawPct": 22.15,
+        "lossPct": 41.19,
+        "avgGoalsFor": 1.143,
+        "avgGoalsAgainst": 1.264
+      },
+      {
+        "formation": "4-3-3",
+        "matchesUsed": 16659,
+        "winPct": 40.75,
+        "drawPct": 20.61,
+        "lossPct": 38.64,
+        "avgGoalsFor": 1.334,
+        "avgGoalsAgainst": 1.29
+      },
+      {
+        "formation": "4-5-1",
+        "matchesUsed": 8013,
+        "winPct": 35.95,
+        "drawPct": 25.67,
+        "lossPct": 38.38,
+        "avgGoalsFor": 0.98,
+        "avgGoalsAgainst": 1.048
+      },
+      {
+        "formation": "5-3-2",
+        "matchesUsed": 7679,
+        "winPct": 34.93,
+        "drawPct": 24.21,
+        "lossPct": 40.86,
+        "avgGoalsFor": 0.975,
+        "avgGoalsAgainst": 1.102
+      },
+      {
+        "formation": "5-4-1",
+        "matchesUsed": 6556,
+        "winPct": 35.51,
+        "drawPct": 28.14,
+        "lossPct": 36.35,
+        "avgGoalsFor": 0.92,
+        "avgGoalsAgainst": 0.935
+      },
+      {
+        "formation": "3-4-3",
+        "matchesUsed": 5199,
+        "winPct": 47.18,
+        "drawPct": 20.06,
+        "lossPct": 32.76,
+        "avgGoalsFor": 1.63,
+        "avgGoalsAgainst": 1.268
+      },
+      {
+        "formation": "3-5-2",
+        "matchesUsed": 5168,
+        "winPct": 43.32,
+        "drawPct": 19.6,
+        "lossPct": 37.07,
+        "avgGoalsFor": 1.34,
+        "avgGoalsAgainst": 1.187
+      },
+      {
+        "formation": "4-2-4",
+        "matchesUsed": 1201,
+        "winPct": 46.96,
+        "drawPct": 19.82,
+        "lossPct": 33.22,
+        "avgGoalsFor": 1.7,
+        "avgGoalsAgainst": 1.221
+      },
+      {
+        "formation": "5-0-5",
+        "matchesUsed": 232,
+        "winPct": 32.33,
+        "drawPct": 29.74,
+        "lossPct": 37.93,
+        "avgGoalsFor": 1.082,
+        "avgGoalsAgainst": 1.181
+      },
+      {
+        "formation": "3-6-1",
+        "matchesUsed": 112,
+        "winPct": 41.07,
+        "drawPct": 23.21,
+        "lossPct": 35.71,
+        "avgGoalsFor": 1.134,
+        "avgGoalsAgainst": 1.054
+      }
+    ]
+  },
+  "additionalScenarioC_EconomyStress": {
+    "experimentId": "EXP_C_100_SEASONS_STRESS_ECONOMY_199803",
+    "worldSeed": 199803,
+    "totalMatches": 35100,
+    "leagueMatches": 22400,
+    "cupMatches": 12700,
+    "realMinutesSimulated": 3254220,
+    "totalGoals": 85256,
+    "goalsPerMatch": 2.429,
+    "firstHalfGoals": 41986,
+    "firstHalfGoalsPct": 49.25,
+    "secondHalfGoals": 41073,
+    "secondHalfGoalsPct": 48.18,
+    "extraTimeGoals": 2197,
+    "goalsByCompetitionAndDivision": {
+      "Ta\u00E7a": {
+        "matches": 12700,
+        "totalGoals": 32627,
+        "goalsPerMatch": 2.569
+      },
+      "PrimeiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 14489,
+        "goalsPerMatch": 2.587
+      },
+      "SegundaDivisao": {
+        "matches": 5600,
+        "totalGoals": 13328,
+        "goalsPerMatch": 2.38
+      },
+      "TerceiraDivisao": {
+        "matches": 5600,
+        "totalGoals": 12535,
+        "goalsPerMatch": 2.238
+      },
+      "QuartaDivisao": {
+        "matches": 5600,
+        "totalGoals": 12277,
+        "goalsPerMatch": 2.192
+      }
+    },
+    "goalsByMinuteBucket": {
+      "01-15": 14247,
+      "16-30": 13734,
+      "31-45": 14005,
+      "46-60": 13678,
+      "61-75": 13765,
+      "76-90": 13630,
+      "91-105": 1108,
+      "106-120": 1089
+    },
+    "outcomes": {
+      "homeWins": 14748,
+      "homeWinPct": 42.02,
+      "draws": 7873,
+      "drawPct": 22.43,
+      "awayWins": 12479,
+      "awayWinPct": 35.55,
+      "comebacksViradas": 3521,
+      "comebackPct": 10.03
+    },
+    "scorelines": {
+      "results_0_0": 3210,
+      "results_0_0_Pct": 9.15,
+      "results_1_0_or_0_1": 8625,
+      "results_1_0_or_0_1_Pct": 24.57,
+      "results_1_1": 3317,
+      "results_1_1_Pct": 9.45,
+      "results_2_0_or_0_2": 4858,
+      "results_2_0_or_0_2_Pct": 13.84,
+      "results_2_1_or_1_2": 4850,
+      "results_2_1_or_1_2_Pct": 13.82,
+      "results_3_0_or_0_3": 2189,
+      "results_3_0_or_0_3_Pct": 6.24,
+      "results_3_1_or_1_3": 1956,
+      "results_3_1_or_1_3_Pct": 5.57,
+      "highScoring4PlusGoals": 8051,
+      "highScoring4PlusGoalsPct": 22.94,
+      "top15ExactHomeAwayScores": {
+        "1-0": 4508,
+        "0-1": 4117,
+        "1-1": 3317,
+        "0-0": 3210,
+        "2-0": 2719,
+        "2-1": 2535,
+        "1-2": 2315,
+        "0-2": 2139,
+        "3-0": 1258,
+        "2-2": 1109,
+        "3-1": 1031,
+        "0-3": 931,
+        "1-3": 925,
+        "3-2": 659,
+        "2-3": 545
+      }
+    },
+    "disciplineAndEvents": {
+      "penaltyGoalsInPlay": 8770,
+      "penaltiesMissedInPlay": 3135,
+      "penaltyConversionRatePct": 73.67,
+      "yellowCards": 86665,
+      "yellowCardsPerMatch": 2.469,
+      "redCards": 15982,
+      "directRedCards": 8187,
+      "secondYellowRedCards": 7795,
+      "redCardsPerMatch": 0.455,
+      "injuries": 11767,
+      "injuriesPerMatch": 0.335,
+      "substitutions": 92147,
+      "substitutionsPerMatch": 2.625,
+      "extraTimeMatches": 3174,
+      "penaltyShootouts": 1750
+    },
+    "tacticalFormationPerformance": [
+      {
+        "formation": "4-4-2",
+        "matchesUsed": 19083,
+        "winPct": 36.99,
+        "drawPct": 21.93,
+        "lossPct": 41.08,
+        "avgGoalsFor": 1.188,
+        "avgGoalsAgainst": 1.289
+      },
+      {
+        "formation": "4-3-3",
+        "matchesUsed": 17824,
+        "winPct": 41.26,
+        "drawPct": 20.12,
+        "lossPct": 38.62,
+        "avgGoalsFor": 1.356,
+        "avgGoalsAgainst": 1.296
+      },
+      {
+        "formation": "5-3-2",
+        "matchesUsed": 9221,
+        "winPct": 36.96,
+        "drawPct": 24.54,
+        "lossPct": 38.5,
+        "avgGoalsFor": 1.049,
+        "avgGoalsAgainst": 1.087
+      },
+      {
+        "formation": "3-5-2",
+        "matchesUsed": 8187,
+        "winPct": 43.25,
+        "drawPct": 20.85,
+        "lossPct": 35.9,
+        "avgGoalsFor": 1.403,
+        "avgGoalsAgainst": 1.218
+      },
+      {
+        "formation": "4-5-1",
+        "matchesUsed": 6016,
+        "winPct": 34.33,
+        "drawPct": 26.55,
+        "lossPct": 39.13,
+        "avgGoalsFor": 0.965,
+        "avgGoalsAgainst": 1.074
+      },
+      {
+        "formation": "5-4-1",
+        "matchesUsed": 5870,
+        "winPct": 33.68,
+        "drawPct": 28.47,
+        "lossPct": 37.85,
+        "avgGoalsFor": 0.888,
+        "avgGoalsAgainst": 0.994
+      },
+      {
+        "formation": "3-4-3",
+        "matchesUsed": 3590,
+        "winPct": 45.96,
+        "drawPct": 18.25,
+        "lossPct": 35.79,
+        "avgGoalsFor": 1.589,
+        "avgGoalsAgainst": 1.333
+      },
+      {
+        "formation": "3-6-1",
+        "matchesUsed": 342,
+        "winPct": 44.44,
+        "drawPct": 19.88,
+        "lossPct": 35.67,
+        "avgGoalsFor": 1.234,
+        "avgGoalsAgainst": 1.05
+      },
+      {
+        "formation": "4-2-4",
+        "matchesUsed": 67,
+        "winPct": 31.34,
+        "drawPct": 20.9,
+        "lossPct": 47.76,
+        "avgGoalsFor": 1.597,
+        "avgGoalsAgainst": 1.791
+      }
+    ]
+  }
+}

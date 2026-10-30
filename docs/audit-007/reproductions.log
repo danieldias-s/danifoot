@@ -1,0 +1,152 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:00.83]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50) [FAIL]
+[xUnit.net 00:00:00.98]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60) [FAIL]
+[xUnit.net 00:00:00.98]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40) [FAIL]
+[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80) [FAIL]
+[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100) [FAIL]
+[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70) [FAIL]
+[xUnit.net 00:00:01.00]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64) [FAIL]
+[xUnit.net 00:00:01.02]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20) [FAIL]
+[xUnit.net 00:00:01.04]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90) [FAIL]
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50) [154 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60) [40 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40) [17 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80) [18 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "4-3-3"
+Actual:   "5-3-2"
+           ↑ (pos 0)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100) [61 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "4-3-3"
+Actual:   "5-3-2"
+           ↑ (pos 0)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70) [22 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "4-3-3"
+Actual:   "5-3-2"
+           ↑ (pos 0)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64) [17 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20) [17 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90) [16 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "4-3-3"
+Actual:   "5-3-2"
+           ↑ (pos 0)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.09]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65) [FAIL]
+[xUnit.net 00:00:01.09]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0) [FAIL]
+[xUnit.net 00:00:01.68]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain [FAIL]
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65) [20 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+           ↓ (pos 0)
+Expected: "4-3-3"
+Actual:   "5-3-2"
+           ↑ (pos 0)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0) [18 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+             ↓ (pos 2)
+Expected: "4-3-3"
+Actual:   "4-4-2"
+             ↑ (pos 2)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Com falha Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain [605 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+                                  ↓ (pos 779)
+Expected: ···"sao","CashBalance":5035238.95,"Reputation"···
+Actual:   ···"sao","CashBalance":5138320.95,"Reputation"···
+                                  ↑ (pos 779)
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain() in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 59
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\reproductions\reproductions.trx
+
+Com falha! – Com falha:    12, Aprovado:     0, Ignorado:     0, Total:    12, Duração: 1 s - Elifoot.Domain.Tests.dll (net10.0)

@@ -1,0 +1,636 @@
+{
+  "Task": "ELIFOOT_COACH_CAREER_MORALE_RANK_008",
+  "Status": {
+    "STATUS": "PASS",
+    "MORALE": "PASS",
+    "RED_MORALE_DISMISSAL": "PASS",
+    "DISTRICT_DISMISSAL": "PASS",
+    "UNEMPLOYED_RECOVERY": "PASS",
+    "RANKING": "PASS",
+    "LEAGUE_TITLES_PRIORITY": "PASS",
+    "CUP_TITLES_PRIORITY": "PASS",
+    "CAREER_POINTS": "PASS",
+    "DIVISION_POINTS": "PASS",
+    "CUP_PHASE_POINTS": "PASS",
+    "INVITATIONS": "PASS",
+    "RANK_EVALUATION": "PASS",
+    "MORALE_REQUIREMENT": "PASS",
+    "CLUB_ATTRACTIVENESS": "PASS",
+    "HUMAN_ACCEPT_REJECT": "PASS",
+    "AI_ACCEPT_REJECT": "PASS",
+    "NEXT_CANDIDATE_AFTER_REFUSAL": "PASS",
+    "AI_MANAGER_TRANSFERS": "PASS",
+    "CAREER_PERSISTENCE": "PASS",
+    "MULTIPLAYER_REGRESSION": "PASS",
+    "DATABASE_MIGRATION": "PASS — JSON versionado; sem DDL",
+    "WEB_INTERFACE": "PASS — navegador real, partida aos 90 e reinício real",
+    "TESTS": "94 .NET + 10 Flutter; analyze/build aprovados",
+    "FILES_CHANGED": "12 arquivos existentes; 7 arquivos novos de código/testes/relatório; 5 documentos finais e evidências",
+    "KNOWN_ISSUES": "Limites de migração histórica e heurística de projeto documentados; sem bloqueio aberto da tarefa 008."
+  },
+  "GeneratedUtc": "2026-10-30T12:37:45.829Z",
+  "DotnetTests": 94,
+  "FlutterTests": 10,
+  "Signature50": "474E4A3579EFDC4D0441464EA37ABE4C07173172636110AB8DE6160A544355AE",
+  "ProtectedFiles": [
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "SHA256": "C4A053C673F0044D89C035DC323103F6CB760DC6594C74FF7902549FCD07DF9B",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "SHA256": "5698CB369DDDF96FB9B766A19B78775891EF8659472AA91B0DC75FD964565C10",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "SHA256": "2A55EB81CDB21A3D2EE39E73E56BFEA217D988B19941114404CBB6050E7BE321",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "SHA256": "62DBAFFB4FF05F860E1603012D7954F914A709939455149146EE17D104F16D3C",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "SHA256": "D56D46D1162FECDD4602DA942DE2F265FE527F1EFFA75BCC21A2B17A21F57067",
+      "Unchanged": true
+    }
+  ],
+  "MutableExclusions": [
+    "dev-session.json",
+    "browser-fixture.json",
+    "api-live.*.log",
+    "web.*.log",
+    "live SQLite database"
+  ],
+  "Files": [
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "SHA256": "C5E356F3884A514240A68855020DC6AAE27C5DB788007E40A738FA55964E12AD",
+      "Bytes": 20209
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "SHA256": "81E1C8E72DBF6A1068AED9215759F8C5A95FC131432823C187A086B1C7AB85A0",
+      "Bytes": 100081
+    },
+    {
+      "Path": "client/elifoot_flutter/test/career_api_test.dart",
+      "SHA256": "269F0CCB9BE672A130F22C1F056F2B73AD0F4AD37B9481CA947DF9116D5E6D31",
+      "Bytes": 1348
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "SHA256": "2AA504A4838A42FD8CFF077069A4CB5C42D92FDFCA4FFF927365FA22996D325E",
+      "Bytes": 16002
+    },
+    {
+      "Path": "docs/COACH_CAREER_AUDIT_008.md",
+      "SHA256": "F2745665873BBF61F7D177EB5C67A49DC8E0C5497E481517FE307665CBBEFE89",
+      "Bytes": 13320
+    },
+    {
+      "Path": "docs/COACH_CAREER_TESTS_008.md",
+      "SHA256": "3A63648B25289154273CAE720FBCC196C7111EE29B73F08E4F94873059FB8F32",
+      "Bytes": 10679
+    },
+    {
+      "Path": "docs/COACH_INVITATION_AI_008.md",
+      "SHA256": "8FF1AED6F2E4E8211166E49A50EE2B9F09F7AE3FD02ECA2B91668A02456F1E8B",
+      "Bytes": 7053
+    },
+    {
+      "Path": "docs/COACH_MORALE_RULES_008.md",
+      "SHA256": "8AD01B991A748F5E7DE9D0B7A78243F1D07EC3F18904988CDF42416599AEE7C4",
+      "Bytes": 5327
+    },
+    {
+      "Path": "docs/COACH_RANKING_008.md",
+      "SHA256": "3819F8D4993FA124463608655CAE18EF67724C66075F4B3E9DD84658EB9D79C5",
+      "Bytes": 5047
+    },
+    {
+      "Path": "docs/audit-008/BASELINE_RULES.md",
+      "SHA256": "85460BAF8BBE3503D1B5A32DF1ED5A40F780970B28370A8D3BCC34868A2A6214",
+      "Bytes": 1087
+    },
+    {
+      "Path": "docs/audit-008/api-closure-build.log",
+      "SHA256": "735BFC3EA0D8F09BF03D4ED3F70FAE166A7F09CA2CC88350881870C7BEE1FE47",
+      "Bytes": 594
+    },
+    {
+      "Path": "docs/audit-008/api-restarted.stderr.log",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "Bytes": 0
+    },
+    {
+      "Path": "docs/audit-008/api-restarted.stdout.log",
+      "SHA256": "63702CA01943B0EADAB5C4F1725220586593C8CA83D1B1C5EA815B6A49053764",
+      "Bytes": 344
+    },
+    {
+      "Path": "docs/audit-008/api.stderr.log",
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "Bytes": 0
+    },
+    {
+      "Path": "docs/audit-008/api.stdout.log",
+      "SHA256": "63702CA01943B0EADAB5C4F1725220586593C8CA83D1B1C5EA815B6A49053764",
+      "Bytes": 344
+    },
+    {
+      "Path": "docs/audit-008/baseline-manifest.json",
+      "SHA256": "3312DC544A3739EA74E0A2C66B8A7D7380C4DE67246C45D9DB394A8E1B4CAD76",
+      "Bytes": 10703
+    },
+    {
+      "Path": "docs/audit-008/browser-used-fixture.json",
+      "SHA256": "543991A260E4AAFB34EB468D23003FAFC517D10DE02FAC2E6D06658193E9BF53",
+      "Bytes": 559
+    },
+    {
+      "Path": "docs/audit-008/build-final.log",
+      "SHA256": "065FF71697794E3798C7DF5955C3BCF309D92F0F6DF8F22952539027701785E6",
+      "Bytes": 1308
+    },
+    {
+      "Path": "docs/audit-008/build-first.log",
+      "SHA256": "E8703A2A36F0361C8C4DC12E39B873EBBE735CC8D3C163466332B286BE8CF640",
+      "Bytes": 1197
+    },
+    {
+      "Path": "docs/audit-008/build-release.log",
+      "SHA256": "7E418847724E411C94E86561AD8D3C0846DECB4B8F0B60783C06186358F4779A",
+      "Bytes": 1308
+    },
+    {
+      "Path": "docs/audit-008/career-50.log",
+      "SHA256": "A15E602749E542550A2DE5277B0C0A593279F6ECF89A4068CED47B9371D641B2",
+      "Bytes": 988
+    },
+    {
+      "Path": "docs/audit-008/career-final-evidence/COACH_CAREER_50_SEASONS_008.json",
+      "SHA256": "7492091A24112FF51F67B6C93960A1AE3C8B07FAA11C07D8A117B70B3397578F",
+      "Bytes": 21507581
+    },
+    {
+      "Path": "docs/audit-008/career-simulation/COACH_CAREER_50_SEASONS_008.json",
+      "SHA256": "87AF80557245042ED161CE7EE7015DC8745F1354B882530094F35EACAE30DAA6",
+      "Bytes": 25571662
+    },
+    {
+      "Path": "docs/audit-008/closure-career50.log",
+      "SHA256": "E786FC2075C4C4B7B8113AD4143E23737FB705323550FD654F3944AF0324AC4F",
+      "Bytes": 1001
+    },
+    {
+      "Path": "docs/audit-008/closure-domain-tests.log",
+      "SHA256": "7F92103ECA29C5C7D1EEA2655968288C62167318F16E4C5C48AE7DD4B7C2F823",
+      "Bytes": 864
+    },
+    {
+      "Path": "docs/audit-008/closure-domain-tests/career32-final.trx",
+      "SHA256": "4225B9D5386D3D38ED73F6D0E8CBC25D40AE07E9140D46887F0931908CDF44E4",
+      "Bytes": 45928
+    },
+    {
+      "Path": "docs/audit-008/closure-integration-tests.log",
+      "SHA256": "5605AAF858328194B26A84225534D266737F5A4DB1918AFAFA41A9DD42AA0C40",
+      "Bytes": 1091
+    },
+    {
+      "Path": "docs/audit-008/closure-integration-tests/career7-final.trx",
+      "SHA256": "EF88ABE2F53D6D87107630A4D8A031832E3997BAD2C23CEA5C98A081D9540805",
+      "Bytes": 14576
+    },
+    {
+      "Path": "docs/audit-008/closure-simulation-tests/career50-final.trx",
+      "SHA256": "FE3F8EBB55EE3904C4981409C986EBE267C78272B202CC392B8EF50452F7C287",
+      "Bytes": 3084
+    },
+    {
+      "Path": "docs/audit-008/domain-final-tests/career-domain-final.trx",
+      "SHA256": "EF34D097E23C62A031B90BF151B9C654DA60B3B8061F61BA0B359C9D94E582A5",
+      "Bytes": 44571
+    },
+    {
+      "Path": "docs/audit-008/domain-final.log",
+      "SHA256": "227D494DC76EE69FB53FDE69B0FD3E353F4074C1ED89D219F129361E7F88F64E",
+      "Bytes": 750
+    },
+    {
+      "Path": "docs/audit-008/domain-tests.log",
+      "SHA256": "C901AF48E33FBA35F4F7845508E8E001B2140FD26E416CEBC140302771C511D6",
+      "Bytes": 846
+    },
+    {
+      "Path": "docs/audit-008/domain-tests/career-domain.trx",
+      "SHA256": "AFABDEDC080AA0E75B211DECA88EAA801E4E71CB79EE718F95485A825AE623FD",
+      "Bytes": 41848
+    },
+    {
+      "Path": "docs/audit-008/final-regression/AI_PERSONALITY_ANALYSIS_006.json",
+      "SHA256": "33610F4A879A4E6DB5D3FC0F8B46ACA006E07F278816D67AA40DB2E17D574F51",
+      "Bytes": 32582
+    },
+    {
+      "Path": "docs/audit-008/final-regression/BENCHMARK_REPORT.json",
+      "SHA256": "CCF195CBCD897A886952AF19287E98BC964C62774E5D7272DF4775CE14BEC006",
+      "Bytes": 1159
+    },
+    {
+      "Path": "docs/audit-008/final-regression/COACH_CAREER_50_SEASONS_008.json",
+      "SHA256": "CD534BA40ED3AB4A308EF1612CE587FE9D00B173AB6CEAAF6D189A692E2906B3",
+      "Bytes": 21507589
+    },
+    {
+      "Path": "docs/audit-008/final-regression/DISCIPLINE_STATISTICS_006.json",
+      "SHA256": "7E8B40F4EF5B7CBC14CC3FDBF68CBB8F69DFB365DD9182CEFF9E7F0C0CC69AA4",
+      "Bytes": 8344
+    },
+    {
+      "Path": "docs/audit-008/final-regression/ECONOMY_HEALTH_006.json",
+      "SHA256": "6D91F3BBE6E1632C5CB77E1ADEC019AE18467200D4FCBA1910ECD83046D6150B",
+      "Bytes": 15849
+    },
+    {
+      "Path": "docs/audit-008/final-regression/PENALTY_ANALYSIS_006.json",
+      "SHA256": "5E3F93DB8C0526FDCA0A61BEE1338867AE788970479B17D7E474D97FB94CA904",
+      "Bytes": 5353
+    },
+    {
+      "Path": "docs/audit-008/final-regression/STADIUM_ANALYSIS_006.json",
+      "SHA256": "57A09C8FD2EBE10E2DFE0693C33CDC67803173A46DD4E6877576F071194D101E",
+      "Bytes": 34063
+    },
+    {
+      "Path": "docs/audit-008/final-regression/TACTICAL_MATCHUPS_006.json",
+      "SHA256": "67F5B1B04F23EE65BA16EB465ACDE57BB7E7671C2828FECC6D7E7D110FA479FE",
+      "Bytes": 47406
+    },
+    {
+      "Path": "docs/audit-008/final-regression/adaptability-controlled.json",
+      "SHA256": "42A2295C2500E1AFCED23445EAE4DED167F9A5895AF2C5C45F7F2C5C73CC3325",
+      "Bytes": 34635
+    },
+    {
+      "Path": "docs/audit-008/final-regression/behavior-controlled.json",
+      "SHA256": "6399C252D64958909A70727A08EE1280BC619988C551BEB387DC9277E5BE2B47",
+      "Bytes": 1650
+    },
+    {
+      "Path": "docs/audit-008/final-regression/capture-007/actions.jsonl.gz",
+      "SHA256": "CDA1145EA95374DA2C8002DE5B4D0D052C7A220F179944CAA9631708063C3708",
+      "Bytes": 27357199
+    },
+    {
+      "Path": "docs/audit-008/final-regression/capture-007/club-rounds.jsonl.gz",
+      "SHA256": "6B95EFA0850BAFAC1CCFE5339C6407B597251FAF42570EDF67BC63831E3FC835",
+      "Bytes": 34841358
+    },
+    {
+      "Path": "docs/audit-008/final-regression/capture-007/ledger.jsonl.gz",
+      "SHA256": "C4C5ED6576F7A4131B01B20C6D21088EC6AC110C3BDCA7122E3A5216CEB912F5",
+      "Bytes": 79041567
+    },
+    {
+      "Path": "docs/audit-008/final-regression/capture-007/population.json",
+      "SHA256": "970C2680010B29C6B467398AAB5247FF6B6DADB2CCF61CD25DBA6006860677EE",
+      "Bytes": 1103829
+    },
+    {
+      "Path": "docs/audit-008/final-regression/capture-007/summary.json",
+      "SHA256": "89C6B55474F3989D084C7D4C535207C195738A819E0C9A2101CBD56DA41FF429",
+      "Bytes": 3694544
+    },
+    {
+      "Path": "docs/audit-008/final-tests.log",
+      "SHA256": "ADE55C9FF66E688CAEAEAF0351D28CE7BC6803E5D6844C6DBB057F96FD9F7502",
+      "Bytes": 1841
+    },
+    {
+      "Path": "docs/audit-008/final-tests/final008_net10.0_20261030090114.trx",
+      "SHA256": "825BF326C4D644894D552AD9FDE025559C9E2C46C9A5498EC8D69405C0CD1803",
+      "Bytes": 9284
+    },
+    {
+      "Path": "docs/audit-008/final-tests/final008_net10.0_20261030090121.trx",
+      "SHA256": "AEAC47E9BA9EB53AF52324AA8AEA05B45C3955E5A084C0748810C2A1F023319F",
+      "Bytes": 94382
+    },
+    {
+      "Path": "docs/audit-008/final-tests/final008_net10.0_20261030090237.trx",
+      "SHA256": "DBFA032C5B4F88FEFFF4B9657AE7AB00F67E6E0401E8CD46B88E5A9F2DD662D0",
+      "Bytes": 34513
+    },
+    {
+      "Path": "docs/audit-008/final-tests/final008_net10.0_20261030090608.trx",
+      "SHA256": "4E8C7E10930A1897E348E4920215C85B24439362319074456353BD1B47B8087E",
+      "Bytes": 8879
+    },
+    {
+      "Path": "docs/audit-008/flutter-analyze-first.log",
+      "SHA256": "C757809EA59098B07323837D69DF6A3B3F2375B7CE22CE93F54F6DDA25F62B3A",
+      "Bytes": 98
+    },
+    {
+      "Path": "docs/audit-008/flutter-analyze.log",
+      "SHA256": "4EA4C0EFACBCADEA5F8777FBF76AC4F85E6F1DCE048436C4F5B516B1DB297F80",
+      "Bytes": 98
+    },
+    {
+      "Path": "docs/audit-008/flutter-tests-first.log",
+      "SHA256": "8B6B6C18CF5C4292FC7F9CF4E1C7E87FDDEE3C1F062AD45CBF02994A9A5E77E0",
+      "Bytes": 1239
+    },
+    {
+      "Path": "docs/audit-008/flutter-tests.log",
+      "SHA256": "A636EF15E26988D04109069D757C686AA00854590A3E0D7F3F7644137B027329",
+      "Bytes": 1536
+    },
+    {
+      "Path": "docs/audit-008/full-regression/BENCHMARK_REPORT.json",
+      "SHA256": "8750EED816CF2FB83E7A459055DB03A93025364ECA70F0831E51246B32E2C158",
+      "Bytes": 1158
+    },
+    {
+      "Path": "docs/audit-008/full-regression/COACH_CAREER_50_SEASONS_008.json",
+      "SHA256": "CEE63459DACE81560B4B77CB0EF4A02C4D11B82B0AB5320845997EFDD816E4D1",
+      "Bytes": 19777573
+    },
+    {
+      "Path": "docs/audit-008/full-regression/adaptability-controlled.json",
+      "SHA256": "42A2295C2500E1AFCED23445EAE4DED167F9A5895AF2C5C45F7F2C5C73CC3325",
+      "Bytes": 34635
+    },
+    {
+      "Path": "docs/audit-008/full-regression/behavior-controlled.json",
+      "SHA256": "6399C252D64958909A70727A08EE1280BC619988C551BEB387DC9277E5BE2B47",
+      "Bytes": 1650
+    },
+    {
+      "Path": "docs/audit-008/full-regression/capture-007/actions.jsonl.gz",
+      "SHA256": "1B3E52E19AB6EBE84787268B9E53FFFF7FC5F6592C28F57EED397EEE2080BF54",
+      "Bytes": 27890545
+    },
+    {
+      "Path": "docs/audit-008/full-regression/capture-007/club-rounds.jsonl.gz",
+      "SHA256": "862D6F0F7B36BFF70E6A7789DA0768E6A6DCB10C7251E41F69815196262AFD34",
+      "Bytes": 34861502
+    },
+    {
+      "Path": "docs/audit-008/full-regression/capture-007/ledger.jsonl.gz",
+      "SHA256": "D2DDE063506A813A04830FF1DF18193F20DF5D7D3FAB46BF740BE5B34480D7BC",
+      "Bytes": 79062304
+    },
+    {
+      "Path": "docs/audit-008/full-regression/capture-007/population.json",
+      "SHA256": "F30FB7E6AB679D7BE73A6961F8D6F022346818060B3E52BFE680F554BE64F747",
+      "Bytes": 1103829
+    },
+    {
+      "Path": "docs/audit-008/full-regression/capture-007/summary.json",
+      "SHA256": "BC1CFF51946F119EB193F3BE8A2E4B44453755E275A41D769DD496B78D3C8A5A",
+      "Bytes": 3729860
+    },
+    {
+      "Path": "docs/audit-008/full-tests.log",
+      "SHA256": "27DECD86A10A29B3DD946A50572BA72F62134EDFA451729D819938FA55A89260",
+      "Bytes": 2755
+    },
+    {
+      "Path": "docs/audit-008/full-tests/career-final_net10.0_20261030085118.trx",
+      "SHA256": "9433B055C34E259AEA1B2A028A92C4E711D4569CA84D69AEB15E216ECFD59B61",
+      "Bytes": 7847
+    },
+    {
+      "Path": "docs/audit-008/full-tests/career-final_net10.0_20261030085125.trx",
+      "SHA256": "75E7283D8F885BE156E52385EB4F8D7352EDFF6BDB160FFF6F464097FFA94F86",
+      "Bytes": 91647
+    },
+    {
+      "Path": "docs/audit-008/full-tests/career-final_net10.0_20261030085239.trx",
+      "SHA256": "290B87A4101A10420E0967BD774EBD840DAE7CF11E9B699AD1B13951946BBA86",
+      "Bytes": 34513
+    },
+    {
+      "Path": "docs/audit-008/full-tests/career-final_net10.0_20261030085555.trx",
+      "SHA256": "429847719E28F2D3BADE7F21AF094EF7B5D8CCB0604647CD9182E7A78AC92216",
+      "Bytes": 9261
+    },
+    {
+      "Path": "docs/audit-008/integration-tests-first.log",
+      "SHA256": "C0DD306B78FDDCA15D2056C2734B479DD3A08A93D625E94A6D7D8B032E2CDA59",
+      "Bytes": 15501
+    },
+    {
+      "Path": "docs/audit-008/integration-tests.log",
+      "SHA256": "8719DBCA7B778DDDD9D9E5D6279140DFE6361728E6E4559AC532A282F66C1338",
+      "Bytes": 1205
+    },
+    {
+      "Path": "docs/audit-008/integration-tests/career-integration.trx",
+      "SHA256": "4B04AE566AACE37D4C35F0E53613B3EEB506473E3DC1630A2322F3299DB05988",
+      "Bytes": 14563
+    },
+    {
+      "Path": "docs/audit-008/lineup-reproduction.log",
+      "SHA256": "0D82E5C8D7A6099DEAC12F85929BB19AFF8A7EFF3F9F21DD25646681D291B88C",
+      "Bytes": 1608
+    },
+    {
+      "Path": "docs/audit-008/morale-order-reproduction.log",
+      "SHA256": "2690F77EDD4210F7310A5954FBD63D01B7978B08CF8DB217732A76C122B62317",
+      "Bytes": 1425
+    },
+    {
+      "Path": "docs/audit-008/preservation.json",
+      "SHA256": "9B14454AABAD645CA55C17DD6FFB765E23B0EA1D35522724EEEAFFDF116B0563",
+      "Bytes": 5641
+    },
+    {
+      "Path": "docs/audit-008/ready-lineup-reproduction.log",
+      "SHA256": "960707E1A85F095F698A75F0899FC9582DA2FD4E0E7A32509AB8D26CC7226561",
+      "Bytes": 1582
+    },
+    {
+      "Path": "docs/audit-008/simulation-tests/career-50.trx",
+      "SHA256": "3CF5DE95618FD2AA0EE37BA0D5A883D095E2DA63BA30A962946D660078FA30E5",
+      "Bytes": 3084
+    },
+    {
+      "Path": "docs/audit-008/source-diff.patch",
+      "SHA256": "A88F46E4ACEBF6C45CC8B093BFD039602E83FDC24EACA8B880188D72C694D4A4",
+      "Bytes": 51363
+    },
+    {
+      "Path": "docs/audit-008/web-accepted.jpg",
+      "SHA256": "FFEA26B8E66541375A9EBFA5A8AF100B4BE2370CD9B27E27B95212A6699D4171",
+      "Bytes": 192776
+    },
+    {
+      "Path": "docs/audit-008/web-after-server-restart.json",
+      "SHA256": "398DD278D42BDC0A98C83314C68D3613CDEC2141CA18B08D1912E0959CA668BA",
+      "Bytes": 826
+    },
+    {
+      "Path": "docs/audit-008/web-before-server-restart.json",
+      "SHA256": "398DD278D42BDC0A98C83314C68D3613CDEC2141CA18B08D1912E0959CA668BA",
+      "Bytes": 826
+    },
+    {
+      "Path": "docs/audit-008/web-build.log",
+      "SHA256": "B9ACE3AFB80505C94DE57D9C6B1AEBF30939EA6D770F71F45FA3447014E097ED",
+      "Bytes": 830
+    },
+    {
+      "Path": "docs/audit-008/web-career-after-accept.json",
+      "SHA256": "E6AC6F881C04C6D1CDAA5A9A7A6137DD09BA4EFAB8603B7B87D3DE4E3802AEDF",
+      "Bytes": 595
+    },
+    {
+      "Path": "docs/audit-008/web-career-after-match.jpg",
+      "SHA256": "7930E59F917E01E59C8FE47A1EF4E410A33D36F67FB2D66263BB8CEF231D2AC7",
+      "Bytes": 193632
+    },
+    {
+      "Path": "docs/audit-008/web-final-api.json",
+      "SHA256": "398DD278D42BDC0A98C83314C68D3613CDEC2141CA18B08D1912E0959CA668BA",
+      "Bytes": 826
+    },
+    {
+      "Path": "docs/audit-008/web-final-ax.txt",
+      "SHA256": "A35AE400D4FF836E29404B4D2BA872DDA7B3930BBCFC87063C913CC522713F18",
+      "Bytes": 25024
+    },
+    {
+      "Path": "docs/audit-008/web-final.jpg",
+      "SHA256": "95AF5FCC9D9AD87DD57C9EBBE2B83E90030190F1F99D8BA7A0A7C72BA2E654AF",
+      "Bytes": 194573
+    },
+    {
+      "Path": "docs/audit-008/web-invitations.jpg",
+      "SHA256": "44B336CCB9433C787C5222C1470ED6F03DFA6B209C0DDE7B6E910C255957A860",
+      "Bytes": 188054
+    },
+    {
+      "Path": "docs/audit-008/web-live-match.jpg",
+      "SHA256": "4718775D7B32521003188715C07B8C622A2CCE555BB57237F073A4AFC22345C6",
+      "Bytes": 282541
+    },
+    {
+      "Path": "docs/audit-008/web-match-finished.jpg",
+      "SHA256": "B8344D4E67C75F1A5D9EFEB7EA9825AE547C108014C84FD1E6E5EC9EC4C2E025",
+      "Bytes": 306720
+    },
+    {
+      "Path": "docs/audit-008/web-reconnected.jpg",
+      "SHA256": "6118E8D2D0FBB1D28D1D06FA056F294606B26AB920F8E3CF2DD3F139044D646D",
+      "Bytes": 147820
+    },
+    {
+      "Path": "docs/audit-008/web-red-configured.jpg",
+      "SHA256": "FCDDDA929DEECD1294C1A7FE99C30E16A734108C377AF1073279D672867080F7",
+      "Bytes": 148122
+    },
+    {
+      "Path": "docs/audit-008/web-rejected.jpg",
+      "SHA256": "F28A435D66169CCE990EE70467BFE5797044392CBD59468E4EF8B0C529C60913",
+      "Bytes": 192100
+    },
+    {
+      "Path": "docs/audit-008/web-server-restarted.jpg",
+      "SHA256": "95AF5FCC9D9AD87DD57C9EBBE2B83E90030190F1F99D8BA7A0A7C72BA2E654AF",
+      "Bytes": 194573
+    },
+    {
+      "Path": "docs/audit-008/web-validation.json",
+      "SHA256": "0A4871336B7519C2E69AD392FBB92B8E65B56E120121696994DA47BE7738E9C6",
+      "Bytes": 678
+    },
+    {
+      "Path": "docs/audit-008/web-yellow-configured.jpg",
+      "SHA256": "A59890FA7474790EB554C7C5C2BAC54DE6B58738ECFE97B63E0C87A46181A560",
+      "Bytes": 148596
+    },
+    {
+      "Path": "scripts/report-coach-career-008.mjs",
+      "SHA256": "F102A4C87B07495E6FD66F66405296F554519C5C4149244F54A26E358E1A022B",
+      "Bytes": 47688
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "SHA256": "25FC9E7A2154079A6E266205A62F433DAF75FB5ED2A2D13A97C136AC1BBA295B",
+      "Bytes": 35463
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "SHA256": "B3F4BED000AAFABF9C96B02FA4FA52EF85686D69F362C627C07308B753B4B656",
+      "Bytes": 25833
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "SHA256": "02E55F4B31B54FC397718C43E4E9FC3EF236ECD90B1B267EAC078A361E02F26B",
+      "Bytes": 61785
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "SHA256": "FF00443709D28939BAB4FC552B058480C0775C81234FCC04D51C6F1270653C5B",
+      "Bytes": 10846
+    },
+    {
+      "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+      "SHA256": "250C1E2CD3280AB178A0821F0F5EE2046721C42B978EB8C292CAAC21DDAE8D24",
+      "Bytes": 22954
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "SHA256": "C66D717DFCDC0ECA7EBB3C6A03FBA39580490CE418AF86588CBD4DCB94A0BB2C",
+      "Bytes": 33019
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "SHA256": "34BA97074B718111340AC91EF98A080B198B5F1B9A4D9754CC5626106837EA52",
+      "Bytes": 21419
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "SHA256": "7F4209954A815CB235F723EA28F0BBA935ABB2F6112E4641C306044A4B96CC32",
+      "Bytes": 17927
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "SHA256": "E9EC877263DA96C99179A8914F0C4753666CE864E142EE5B313714609B9A7878",
+      "Bytes": 9598
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs",
+      "SHA256": "3A5F88580E98720D74FADB53A8C58AA1CB8641B3E513807BDD61BCF8DF69E8EC",
+      "Bytes": 1742
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs",
+      "SHA256": "26B1B3BC0D5644DE23668A948D8CBCB5915535D2FFA9EF72F937F744B6347DBD",
+      "Bytes": 17693
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+      "SHA256": "E5DD60F1A6F775DD9596213259013750F807695245985306F702F47F11EED8EC",
+      "Bytes": 8891
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs",
+      "SHA256": "C9E98276FB45A8301B3E52EE213330A6E151488D39C31744E38CA953C5CC6422",
+      "Bytes": 9162
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "SHA256": "12B6F93063A745621F7BE4FA451FCA2898EB79AE3A19C19B964E0AEED93F8E78",
+      "Bytes": 143630
+    }
+  ]
+}

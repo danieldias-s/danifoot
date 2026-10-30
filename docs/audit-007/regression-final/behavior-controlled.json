@@ -1,0 +1,74 @@
+[
+  {
+    "Behavior": "FairPlay",
+    "Matches": 400,
+    "Minutes": 396000,
+    "Appearances": 4400,
+    "Fouls": 0,
+    "Yellows": 0,
+    "DirectReds": 0,
+    "SecondYellowReds": 0,
+    "SuspensionAwards": 0,
+    "RedsPer10000Minutes": 0
+  },
+  {
+    "Behavior": "Cordeirinho",
+    "Matches": 400,
+    "Minutes": 396000,
+    "Appearances": 4400,
+    "Fouls": 1253,
+    "Yellows": 172,
+    "DirectReds": 0,
+    "SecondYellowReds": 0,
+    "SuspensionAwards": 0,
+    "RedsPer10000Minutes": 0
+  },
+  {
+    "Behavior": "Cavalheiro",
+    "Matches": 400,
+    "Minutes": 395656,
+    "Appearances": 4400,
+    "Fouls": 2590,
+    "Yellows": 339,
+    "DirectReds": 4,
+    "SecondYellowReds": 3,
+    "SuspensionAwards": 7,
+    "RedsPer10000Minutes": 0.17692136603514164
+  },
+  {
+    "Behavior": "Caneleiro",
+    "Matches": 400,
+    "Minutes": 394335,
+    "Appearances": 4400,
+    "Fouls": 4829,
+    "Yellows": 652,
+    "DirectReds": 23,
+    "SecondYellowReds": 13,
+    "SuspensionAwards": 36,
+    "RedsPer10000Minutes": 0.9129293620906083
+  },
+  {
+    "Behavior": "Caceteiro",
+    "Matches": 400,
+    "Minutes": 391238,
+    "Appearances": 4400,
+    "Fouls": 7778,
+    "Yellows": 962,
+    "DirectReds": 68,
+    "SecondYellowReds": 50,
+    "SuspensionAwards": 118,
+    "RedsPer10000Minutes": 3.0160669464622556
+  },
+  {
+    "Behavior": "Sarrafeiro",
+    "Matches": 400,
+    "Minutes": 386227,
+    "Appearances": 4400,
+    "Fouls": 11432,
+    "Yellows": 1339,
+    "DirectReds": 148,
+    "SecondYellowReds": 101,
+    "SuspensionAwards": 249,
+    "RedsPer10000Minutes": 6.446985839933511
+  }
+]

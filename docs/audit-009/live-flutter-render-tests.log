@@ -1,0 +1,10 @@
+00:00 +0: loading D:/elifoot_98/client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart
+00:00 +0: 009 captured real API data: render categories, scopes, history and season awards
+QA009 loading local font
+QA009 local font loaded
+QA009 mounting production ranking widget
+QA009 waiting for live ranking response
+00:15 +1: 009 captured real API data: 390px layout and horizontal table scrolling
+QA009 loading local font
+QA009 local font loaded
+00:17 +2: All tests passed!

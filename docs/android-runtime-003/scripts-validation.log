@@ -1,0 +1,2 @@
+PowerShell parser: PASS (3 scripts)
+Missing-device guard: PASS; Dispositivo qa003-no-such-device offline ou nao autorizado.

@@ -1,0 +1,1400 @@
+[
+  {
+    "Adaptability": 0,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 0,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 0,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 20,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 20,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 83,
+        "EventType": "Substitution",
+        "Description": "83\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 83,
+        "EventType": "TacticChange",
+        "Description": "83\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 20,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 40,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 40,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 40,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 50,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 50,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 50,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 60,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 60,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 60,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 64,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 64,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 64,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 65,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 65,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 65,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 70,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 70,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 2
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 74,
+        "EventType": "Substitution",
+        "Description": "74\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 74,
+        "EventType": "TacticChange",
+        "Description": "74\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 70,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 80,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 80,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 80,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 90,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 90,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 90,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 100,
+    "Deficit": 0,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-4-2",
+        "Subs": 2,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      }
+    ]
+  },
+  {
+    "Adaptability": 100,
+    "Deficit": 1,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  },
+  {
+    "Adaptability": 100,
+    "Deficit": 3,
+    "Decisions": [
+      {
+        "Minute": 62,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 74,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      },
+      {
+        "Minute": 83,
+        "Formation": "4-3-3",
+        "Subs": 3,
+        "Windows": 1
+      }
+    ],
+    "Events": [
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Mendes, sai Mateus Cardoso."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra S\u00E9rgio Souza, sai Wagner Martins."
+      },
+      {
+        "Minute": 62,
+        "EventType": "Substitution",
+        "Description": "62\u0027 Substitui\u00E7\u00E3o (APA): entra Z\u00E9 Gomes, sai Leandro Oliveira."
+      },
+      {
+        "Minute": 62,
+        "EventType": "TacticChange",
+        "Description": "62\u0027 Altera\u00E7\u00E3o t\u00E1tica (APA): 4-3-3."
+      }
+    ]
+  }
+]

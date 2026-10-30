@@ -1,0 +1,160 @@
+00:00 +0: loading D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart
+00:00 +0: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Android DEV reaches the host through the emulator gateway
+00:00 +1: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: An explicit API origin supports USB reverse and LAN devices
+00:00 +2: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Web DEV uses its host and the API port
+00:00 +3: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Native release requires an explicit HTTPS origin
+00:00 +4: D:/elifoot_98/client/elifoot_flutter/test/api_environment_test.dart: Invalid origins and embedded credentials are rejected
+00:00 +5: D:/elifoot_98/client/elifoot_flutter/test/career_api_test.dart: Career rejection sends the invitation and coach identity to the reject route
+00:00 +6: D:/elifoot_98/client/elifoot_flutter/test/career_api_test.dart: Career response preserves half-point ranking and pending invitations
+00:00 +7: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 sends every category, competition and period using the stable query contract
+00:00 +8: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 requires the selected season instead of silently querying a different period
+00:00 +9: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 preserves exact averages, null legacy average and coverage warnings
+00:00 +10: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 history and awards use official read-only endpoints and optional season
+00:00 +11: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 surfaces API failures without substituting invented empty rankings
+00:01 +12: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 filters request the selected category, all competitions and season periods
+00:01 +13: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 filters request the selected category, all competitions and season periods
+00:04 +14: D:/elifoot_98/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:04 +15: D:/elifoot_98/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:05 +16: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+00:05 +17: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly 2 matching candidates
+  Actual: _DescendantWidgetFinder:<Found 4 widgets with text "1" descending from widgets with key
+[<'not-eligible-table'>]: [
+            Text("1", dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+            Text("1", dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+            Text("1", dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+            Text("1", dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery]),
+          ]>
+   Which: is too many
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart:377:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart line 377
+The test description was:
+  009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +17 -1: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches [E]
+  Test failed. See exception logs above.
+  The test description was: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+  
+00:05 +17 -1: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 scorers have no match minimum and preserve server goal-first order
+00:06 +18 -1: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 legacy null averages show a dash and coverage, with honest empty and retry states
+══╡ EXCEPTION CAUGHT BY GESTURE ╞═══════════════════════════════════════════════════════════════════
+The following assertion was thrown while handling a gesture:
+setState() callback argument returned a Future.
+The setState() method on _PlayerRankingsScreenState#58a7b was called with a closure or method that
+returned a Future. Maybe it is marked as "async".
+Instead of performing asynchronous work inside a call to setState(), first execute the work (without
+updating the widget state), and then synchronously update the state inside a call to setState().
+
+When the exception was thrown, this was the stack:
+#0      State.setState.<anonymous closure> (package:flutter/src/widgets/framework.dart:1202:9)
+#1      State.setState (package:flutter/src/widgets/framework.dart:1218:6)
+#2      _PlayerRankingsScreenState._reload (package:elifoot_flutter/player_rankings.dart:121:21)
+#3      _InkResponseState.handleTap (package:flutter/src/material/ink_well.dart:1222:21)
+#4      GestureRecognizer.invokeCallback (package:flutter/src/gestures/recognizer.dart:345:24)
+#5      TapGestureRecognizer.handleTapUp (package:flutter/src/gestures/tap.dart:758:11)
+#6      BaseTapGestureRecognizer._checkUp (package:flutter/src/gestures/tap.dart:383:5)
+#7      BaseTapGestureRecognizer.handlePrimaryPointer (package:flutter/src/gestures/tap.dart:314:7)
+#8      PrimaryPointerGestureRecognizer.handleEvent (package:flutter/src/gestures/recognizer.dart:721:9)
+#9      PointerRouter._dispatch (package:flutter/src/gestures/pointer_router.dart:97:12)
+#10     PointerRouter._dispatchEventToRoutes.<anonymous closure> (package:flutter/src/gestures/pointer_router.dart:142:9)
+#11     _LinkedHashMapMixin.forEach (dart:_compact_hash:765:13)
+#12     PointerRouter._dispatchEventToRoutes (package:flutter/src/gestures/pointer_router.dart:140:18)
+#13     PointerRouter.route (package:flutter/src/gestures/pointer_router.dart:130:7)
+#14     GestureBinding.handleEvent (package:flutter/src/gestures/binding.dart:528:19)
+#15     GestureBinding.dispatchEvent (package:flutter/src/gestures/binding.dart:498:22)
+#16     RendererBinding.dispatchEvent (package:flutter/src/rendering/binding.dart:473:11)
+#17     GestureBinding._handlePointerEventImmediately (package:flutter/src/gestures/binding.dart:437:7)
+#18     GestureBinding.handlePointerEvent (package:flutter/src/gestures/binding.dart:394:5)
+#19     TestWidgetsFlutterBinding.handlePointerEventForSource.<anonymous closure> (package:flutter_test/src/binding.dart:678:42)
+#20     TestWidgetsFlutterBinding.withPointerEventSource (package:flutter_test/src/binding.dart:688:11)
+#21     TestWidgetsFlutterBinding.handlePointerEventForSource (package:flutter_test/src/binding.dart:678:5)
+#22     WidgetTester.sendEventToBinding.<anonymous closure> (package:flutter_test/src/widget_tester.dart:869:15)
+#25     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#26     WidgetTester.sendEventToBinding (package:flutter_test/src/widget_tester.dart:868:27)
+#27     TestGesture.up.<anonymous closure> (package:flutter_test/src/test_pointer.dart:538:26)
+#30     TestAsyncUtils.guard (package:flutter_test/src/test_async_utils.dart:74:41)
+#31     TestGesture.up (package:flutter_test/src/test_pointer.dart:531:27)
+#32     WidgetController.tapAt.<anonymous closure> (package:flutter_test/src/controller.dart:1117:21)
+<asynchronous suspension>
+#33     TestAsyncUtils.guard.<anonymous closure> (package:flutter_test/src/test_async_utils.dart:130:27)
+<asynchronous suspension>
+#34     main.<anonymous closure> (file:///D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart:425:7)
+<asynchronous suspension>
+#35     testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#36     TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided 5 frames from dart:async and package:stack_trace)
+
+Handler: "onTap"
+Recognizer:
+  TapGestureRecognizer#5ddc7
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following _Exception was thrown running a test:
+Exception: failed
+
+When the exception was thrown, this was the stack:
+#0      ElifootApiClient._decodeResponse (package:elifoot_flutter/api_client.dart:565:11)
+#1      ElifootApiClient.getPlayerRankings (package:elifoot_flutter/api_client.dart:303:12)
+<asynchronous suspension>
+#2      _PlayerRankingsScreenState._load (package:elifoot_flutter/player_rankings.dart:102:18)
+<asynchronous suspension>
+
+The test description was:
+  009 legacy null averages show a dash and coverage, with honest empty and retry states
+════════════════════════════════════════════════════════════════════════════════════════════════════
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following message was thrown:
+Multiple exceptions (2) were detected during the running of the current test, and at least one was
+unexpected.
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:06 +18 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 legacy null averages show a dash and coverage, with honest empty and retry states [E]
+  Test failed. See exception logs above.
+  The test description was: 009 legacy null averages show a dash and coverage, with honest empty and retry states
+  
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test (but after the test had completed):
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Não foi possível carregar ranking. Tente
+novamente.": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#0      fail (package:matcher/src/expect/expect.dart:149:31)
+#1      _expect (package:matcher/src/expect/expect.dart:144:3)
+#2      expect (package:matcher/src/expect/expect.dart:56:3)
+#3      expect (package:flutter_test/src/widget_tester.dart:473:18)
+#4      main.<anonymous closure> (file:///D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart:427:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  Test failed. See exception logs above.
+  The test description was: 009 legacy null averages show a dash and coverage, with honest empty and retry states
+  
+00:06 +18 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 stale responses never replace the most recent filter selection
+00:06 +19 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 player click shows exact ARTILHEIRO: 5 VEZES, five awards and historic divisions after transfer
+00:07 +20 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 season final displays every tied winner, unequal matches, 3 million each and 6 million club total
+00:07 +21 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 unassigned scorer keeps the title and no invented club credit
+00:07 +22 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 390 pixels: filters, horizontal rankings, player history and awards fit
+00:07 +23 -2: D:/elifoot_98/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 shell menu preserves career008 and opens the season final once after rollover
+00:08 +24 -2: Some tests failed.

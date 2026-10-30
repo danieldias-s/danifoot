@@ -1,0 +1,44 @@
+00:00 +0: loading D:/elifoot_98/client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart
+00:00 +0: 009 live API: render categories, every scope, history and season awards
+QA009 loading local font
+QA009 local font loaded
+QA009 mounting production ranking widget
+QA009 waiting for live ranking response
+01:00 +0 -1: 009 live API: render categories, every scope, history and season awards [E]
+  TimeoutException after 0:01:00.000000: Test timed out after 1 minutes.
+  dart:isolate  _RawReceivePort._handleMessage
+  
+01:00 +0 -1: 009 live API: 390px layout and horizontal table scrolling
+QA009 loading local font
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Reentrant call to runAsync() denied.
+runAsync() was called, then before its future completed, it was called again. You must wait for the
+first returned future to complete before calling runAsync() again.
+
+When the exception was thrown, this was the stack:
+#0      fail (package:matcher/src/expect/expect.dart:149:31)
+#1      AutomatedTestWidgetsFlutterBinding.runAsync.<anonymous closure> (package:flutter_test/src/binding.dart:1348:7)
+#2      AutomatedTestWidgetsFlutterBinding.runAsync (package:flutter_test/src/binding.dart:1354:6)
+#3      WidgetTester.runAsync (package:flutter_test/src/widget_tester.dart:838:17)
+#4      main.font (file:///D:/elifoot_98/client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart:92:18)
+#5      main.<anonymous closure> (file:///D:/elifoot_98/client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart:174:11)
+#6      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:29)
+<asynchronous suspension>
+#7      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  009 live API: 390px layout and horizontal table scrolling
+════════════════════════════════════════════════════════════════════════════════════════════════════
+01:00 +0 -2: 009 live API: 390px layout and horizontal table scrolling [E]
+  Test failed. See exception logs above.
+  The test description was: 009 live API: 390px layout and horizontal table scrolling
+  
+  TimeoutException after 0:01:00.000000: Test timed out after 1 minutes.
+  dart:isolate  _RawReceivePort._handleMessage
+  
+02:00 +0 -2: (tearDownAll)
+02:00 +0 -2: Some tests failed.

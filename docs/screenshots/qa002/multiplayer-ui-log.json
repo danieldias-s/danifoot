@@ -1,0 +1,156 @@
+{
+  "ready": [
+    "- generic: \"TÁTICAS ENVIADAS: 1/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 2/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 3/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 4/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 5/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 6/8\"",
+    "- generic: \"TÁTICAS ENVIADAS: 7/8\""
+  ],
+  "pauses": [
+    {
+      "client": 1,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 2,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 3,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 4,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 5,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 6,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 7,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    },
+    {
+      "client": 8,
+      "minute": "2",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (2')"
+    }
+  ],
+  "substitutions": [
+    {
+      "client": 1,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 2,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 3,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 4,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 5,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 6,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 7,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    },
+    {
+      "client": 8,
+      "event": "- generic: \"• 2' Substituição (PAL): entra Leandro Alves, sai Wagner Ribeiro.\""
+    }
+  ],
+  "reconnect": [
+    {
+      "before": "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)\n- generic: \"TÉCNICO: QA MP3 (Palestra Verde) • CAIXA: R$ 3824300\"\n- generic: \"INTERVALO: 8/8\"\n- generic: MINUTO 45' | SUBSTITUIÇÕES 1/5 | PARADAS 1/3\n- button \"TROCAR SALA\"\n- generic: ✔ QA MP1 (Atlético Paulistano)\n- generic: ✔ QA MP2 (Grêmio Guanabara)\n- generic: ✔ QA MP3 (Palestra Verde)\n- generic: ✔ QA MP4 (Sport Club Atlântico)\n- generic: ✔ QA MP5 (Real Pampulha)\n- generic: ✔ QA MP6 (Internacional do Sul)\n- generic: ✔ QA MP7 (Estrela Solitária)\n- generic: ✔ QA MP8 (Esporte Clube Litoral)\n- generic: INTERVALO DE JOGO (45') — AJUSTES GRATUITOS\n- generic: \"AJUSTES CONFIRMADOS: 0/8 | TEMPO: 59s\"\n- button \"PRONTO PARA O 2º TEMPO\"\n- generic: Ajustes aplicados com sucesso para o próximo minuto!\n- button\n- button \"1. PLANTEL & TÁTICAS\" [active]\n- button \"2. JOGOS AO VIVO\"\n- button \"3. DIVISÕES & TAÇA\"\n- button \"4. MERCADO & LEILÃO\"\n- button \"5. FINANÇAS & ESTÁDIO\"\n- button \"6. RANKING & CARREIRA\"\n- button \"7. EDITOR & PA",
+      "after": "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)\n- generic: \"TÉCNICO: QA MP3 (Palestra Verde) • CAIXA: R$ 0\"\n- generic: \"INTERVALO: 8/8\"\n- generic: MINUTO 45' | SUBSTITUIÇÕES 1/5 | PARADAS 1/3\n- button \"TROCAR SALA\"\n- generic: ✔ QA MP1 (Atlético Paulistano)\n- generic: ✔ QA MP2 (Grêmio Guanabara)\n- generic: ✔ QA MP3 (Palestra Verde)\n- generic: ✔ QA MP4 (Sport Club Atlântico)\n- generic: ✔ QA MP5 (Real Pampulha)\n- generic: ✔ QA MP6 (Internacional do Sul)\n- generic: ✔ QA MP7 (Estrela Solitária)\n- generic: ✔ QA MP8 (Esporte Clube Litoral)\n- generic: INTERVALO DE JOGO (45') — AJUSTES GRATUITOS\n- generic: \"AJUSTES CONFIRMADOS: 0/8 | TEMPO: 57s\"\n- button \"PRONTO PARA O 2º TEMPO\"\n- button \"1. PLANTEL & TÁTICAS\"\n- button \"2. JOGOS AO VIVO\"\n- button \"3. DIVISÕES & TAÇA\"\n- button \"4. MERCADO & LEILÃO\"\n- button \"5. FINANÇAS & ESTÁDIO\"\n- button \"6. RANKING & CARREIRA\"\n- button \"7. EDITOR & PACOTES\"\n- button \"8. CALENDÁRIO & RESULTADOS\"\n- generic: VOCÊ ESTÁ DESEMPREGADO NO MOMENTO\n- generic: Use o botão \"PRONTO PARA ACOMPANHAR\" no topo para avançar as rodadas com a sala, ou veja a aba \"6. RANKING & CARREIRA\" para aceitar convites de clubes!\n- button \"VER CONVITES DE EMPREGO\""
+    }
+  ],
+  "withdraw": "- generic: \"TÁTICAS ENVIADAS: 6/8\"",
+  "concurrentNext": [
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)"
+  ],
+  "concurrentNextSettled": [
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: QA Oito Clientes • Temp 1 • Rodada 4 (Campeonato Nacional)"
+  ],
+  "finalBuildPauses": [
+    {
+      "client": 1,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 2,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 3,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 4,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 5,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 6,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 7,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    },
+    {
+      "client": 8,
+      "minute": "1",
+      "pause": "PARTIDA PAUSADA POR QA MP3 (1')"
+    }
+  ]
+}

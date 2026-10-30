@@ -1,0 +1,143 @@
+Drop box contents: 26 entries
+Searching for: system_app_anr
+
+========================================
+2026-10-29 22:59:10 system_app_anr (text, 1722 bytes)
+Process: com.android.systemui
+Flags: 0x38c83e0d
+Package: com.android.systemui v25 (7.1.1)
+Foreground: No
+Subject: Broadcast of Intent { act=android.intent.action.TIME_TICK flg=0x50000014 (has extras) }
+Build: Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+
+CPU usage from 4066ms to -1123ms ago (2026-10-29 22:59:05.249 to 2026-10-29 22:59:10.438):
+  56% 1647/system_server: 35% user + 20% kernel / faults: 860 minor 5 major
+  8.6% 1302/netd: 2.5% user + 6% kernel / faults: 357 minor
+  4.3% 1938/com.android.phone: 2.3% user + 1.9% kernel / faults: 47 minor
+  3.5% 2174/com.android.launcher3: 2.1% user + 1.3% kernel / faults: 136 minor
+  1.1% 1284/servicemanager: 0.5% user + 0.5% kernel
+  0% 1400/dhcpclient: 0% user + 0% kernel
+  0.7% 8/rcu_preempt: 0% user + 0.7% kernel
+  0.7% 1231/jbd2/vdc-8: 0% user + 0.7% kernel
+  0.4% 1//init: 0.2% user + 0.1% kernel
+  0.4% 6/kworker/u2:0: 0% user + 0.4% kernel
+  0.5% 1157/kworker/0:1H: 0% user + 0.5% kernel
+  0.5% 1817/com.android.systemui: 0.5% user + 0% kernel / faults: 21 minor
+  0.3% 3/ksoftirqd/0: 0% user + 0.3% kernel
+  0.2% 1769/com.android.inputmethod.latin: 0% user + 0.2% kernel / faults: 8 minor 2 major
+  0% 1283/lmkd: 0% user + 0% kernel
+  0% 1310/logcat: 0% user + 0% kernel
+  0.1% 1375/kworker/0:2: 0% user + 0.1% kernel
+  0% 1608/logcat: 0% user + 0% kernel
+  0.1% 1970/com.android.settings: 0.1% user + 0% kernel / faults: 86 minor
+  0.1% 2088/com.android.deskclock: 0.1% user + 0% kernel / faults: 48 minor 2 major
+  0.1% 2283/com.android.carrierconfig: 0% user + 0.1% kernel / faults: 11 minor
+ +0% 2311/dumpsys: 0% user + 0% kernel
+ +0% 2325/ip6tables: 0% user + 0% kernel
+100% TOTAL: 55% user + 41% kernel + 3.2% softirq
+
+========================================
+2026-10-29 22:59:20 system_app_anr (text, 1928 bytes)
+Process: com.android.deskclock
+Flags: 0x3cc9be45
+Package: com.android.deskclock v450 (4.5.0)
+Foreground: No
+Subject: Broadcast of Intent { act=android.intent.action.LOCKED_BOOT_COMPLETED flg=0x9000010 cmp=com.android.deskclock/.AlarmInitReceiver (has extras) }
+Build: Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+
+CPU usage from 8566ms to 0ms ago (2026-10-29 22:59:10.438 to 2026-10-29 22:59:19.003):
+  40% 1647/system_server: 25% user + 14% kernel / faults: 189 minor
+  6.1% 1302/netd: 0.9% user + 5.2% kernel / faults: 528 minor
+  0.5% 1287/adbd: 0.2% user + 0.2% kernel / faults: 114 minor
+  0.3% 1288/zygote64: 0.1% user + 0.1% kernel / faults: 144 minor
+  0.7% 1375/kworker/0:2: 0% user + 0.7% kernel
+  0.4% 8/rcu_preempt: 0% user + 0.4% kernel
+  0.3% 6/kworker/u2:0: 0% user + 0.3% kernel
+  0% 554/kswapd0: 0% user + 0% kernel
+  0.3% 1938/com.android.phone: 0.3% user + 0% kernel / faults: 3 minor
+  0.1% 2212/com.android.launcher3:wallpaper_chooser: 0.1% user + 0% kernel / faults: 70 minor
+  0.3% 2283/com.android.carrierconfig: 0.2% user + 0.1% kernel / faults: 124 minor
+  0.2% 3/ksoftirqd/0: 0% user + 0.2% kernel
+  0.1% 1285/surfaceflinger: 0.1% user + 0% kernel
+  0.2% 1970/com.android.settings: 0.2% user + 0% kernel / faults: 1289 minor
+  0.2% 2088/com.android.deskclock: 0.1% user + 0.1% kernel / faults: 35 minor
+  0% 1234/logd: 0% user + 0% kernel / faults: 2 minor
+  0.1% 1284/servicemanager: 0% user + 0.1% kernel
+  0% 1303/rild: 0% user + 0% kernel
+  0.1% 1608/logcat: 0.1% user + 0% kernel
+  0.1% 1769/com.android.inputmethod.latin: 0.1% user + 0% kernel / faults: 2 major
+  0.1% 1817/com.android.systemui: 0% user + 0.1% kernel
+  0% 2121/com.android.providers.calendar: 0% user + 0% kernel / faults: 33 minor
+ +0% 2366/iptables: 0% user + 0% kernel
+ +0% 2367/sh: 0% user + 0% kernel
+ +0% 2369/zygote64: 0% user + 0% kernel
+100% TOTAL: 63% user + 35% kernel + 0.1% softirq
+
+========================================
+2026-10-29 23:00:20 system_app_anr (text, 3839 bytes)
+Process: android.process.media
+Flags: 0x38c83e45
+Package: com.android.providers.media v800 (7.1.1)
+Package: com.android.providers.downloads v25 (7.1.1)
+Foreground: No
+Subject: Broadcast of Intent { act=android.intent.action.MEDIA_MOUNTED dat=file:///storage/emulated/0 flg=0x4000010 cmp=com.android.providers.downloads/.DownloadReceiver (has extras) }
+Build: Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+
+CPU usage from 60108ms to 0ms ago (2026-10-29 22:59:19.003 to 2026-10-29 23:00:19.112):
+  23% 1647/system_server: 15% user + 7.6% kernel / faults: 3439 minor 16 major
+  3.4% 1302/netd: 0.5% user + 2.9% kernel / faults: 2502 minor
+  3.1% 1285/surfaceflinger: 1.4% user + 1.6% kernel / faults: 30 minor
+  2.1% 2174/com.android.launcher3: 1.7% user + 0.4% kernel / faults: 1601 minor
+  1% 1295/media.codec: 0.7% user + 0.2% kernel / faults: 1775 minor 4 major
+  1.7% 1938/com.android.phone: 1.3% user + 0.4% kernel / faults: 1683 minor 1 major
+  1.7% 2369/zygote64: 1.3% user + 0.3% kernel / faults: 6456 minor 10 major
+  1.5% 1769/com.android.inputmethod.latin: 1.2% user + 0.2% kernel / faults: 291 minor 3 major
+  1.3% 2212/com.android.launcher3:wallpaper_chooser: 1% user + 0.2% kernel / faults: 3513 minor 1 major
+  1.2% 1287/adbd: 0.2% user + 0.9% kernel / faults: 707 minor
+  0.9% 1284/servicemanager: 0.2% user + 0.6% kernel / faults: 20 minor 1 major
+  0.7% 8/rcu_preempt: 0% user + 0.7% kernel
+  0.6% 2121/com.android.providers.calendar: 0.5% user + 0% kernel / faults: 1965 minor
+  0.4% 1760/wpa_supplicant: 0.2% user + 0.2% kernel / faults: 16 minor
+  0.5% 1234/logd: 0.1% user + 0.4% kernel / faults: 33 minor
+  0.5% 554/kswapd0: 0% user + 0.5% kernel
+  0.4% 1970/com.android.settings: 0.3% user + 0% kernel / faults: 1542 minor
+  0.4% 1288/zygote64: 0.2% user + 0.2% kernel / faults: 294 minor
+  0.4% 2283/com.android.carrierconfig: 0.3% user + 0% kernel / faults: 1809 minor
+  0.2% 13/kworker/u2:1: 0% user + 0.2% kernel
+  0.1% 1298/media.extractor: 0.1% user + 0% kernel / faults: 65 minor
+  0% 1241/debuggerd64: 0% user + 0% kernel / faults: 81 minor 1 major
+  0.3% 3/ksoftirqd/0: 0% user + 0.3% kernel
+  0.3% 1375/kworker/0:2: 0% user + 0.3% kernel
+  0.2% 6/kworker/u2:0: 0% user + 0.2% kernel
+  0.2% 2073/android.ext.services: 0.1% user + 0% kernel / faults: 1776 minor
+  0.1% 1946/com.android.settings:CryptKeeper: 0.1% user + 0% kernel / faults: 1716 minor
+  0.1% 1291/cameraserver: 0% user + 0% kernel / faults: 36 minor
+  0.1% 1231/jbd2/vdc-8: 0% user + 0.1% kernel
+  0.1% 1442/hostapd: 0.1% user + 0% kernel / faults: 15 minor
+  0.1% 1608/logcat: 0.1% user + 0% kernel
+  0% 1240/debuggerd: 0% user + 0% kernel / faults: 175 minor 2 major
+  0.1% 1310/logcat: 0% user + 0% kernel
+  0.1% 1157/kworker/0:1H: 0% user + 0.1% kernel
+  0.1% 1303/rild: 0% user + 0% kernel
+  0% 1290/audioserver: 0% user + 0% kernel / faults: 27 minor 3 major
+  0% 1301/mediaserver: 0% user + 0% kernel / faults: 19 minor
+  0% 1//init: 0% user + 0% kernel / faults: 28 minor
+  0% 915/ueventd: 0% user + 0% kernel
+  0% 1400/dhcpclient: 0% user + 0% kernel
+  0% 1434/ipv6proxy: 0% user + 0% kernel
+  0% 1280/healthd: 0% user + 0% kernel
+  0% 1242/vold: 0% user + 0% kernel
+  0% 1445/dhcpserver: 0% user + 0% kernel / faults: 9 minor
+  0% 1283/lmkd: 0% user + 0% kernel
+  0% 1292/drmserver: 0% user + 0% kernel / faults: 21 minor 1 major
+  0% 1297/mediadrmserver: 0% user + 0% kernel / faults: 21 minor
+  0% 1305/fingerprintd: 0% user + 0% kernel
+ +0% 2471/kworker/u2:3: 0% user + 0% kernel
+ +0% 2501/com.android.keychain: 0% user + 0% kernel
+ +0% 2507/com.android.systemui: 0% user + 0% kernel
+ +0% 2560/kworker/0:0: 0% user + 0% kernel
+ +0% 2588/bugreportz: 0% user + 0% kernel
+ +0% 2590/dumpstate: 0% user + 0% kernel
+ +0% 2593/dumpsys: 0% user + 0% kernel
+100% TOTAL: 65% user + 34% kernel + 0.5% softirq
+

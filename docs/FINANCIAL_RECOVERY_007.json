@@ -1,0 +1,3464 @@
+{
+  "Scope": {
+    "seed": 199801,
+    "seasons": [
+      1,
+      100
+    ],
+    "clubs": 128,
+    "aiManagers": 128,
+    "leagueClubs": 32,
+    "districtClubs": 96,
+    "matches": 35100,
+    "rounds": 2200,
+    "engine": "MatchSimulationEngine.SimulateFullMatchReal; minute by minute",
+    "aggregateScores": false
+  },
+  "Baseline": {
+    "CrisisDefinition": "Cash < 150000 at post-market round sampling, while not district; recovery >=350000. These reproduce 006, not bankruptcy.",
+    "SustainableDefinition": "After first recovery: no sampled relapse below150000, at least22 subsequent rounds, final cash>=350000; no claim beyond season100.",
+    "OfficialCrisisClubs": 21,
+    "OfficialRecoveredClubs": 21,
+    "Clubs": [
+      {
+        "ClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "Name": "Brasil de Pelotas",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 15,
+              "Round": 12,
+              "Cash": 53349.76,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 41022,
+              "CashBefore": 515675.76,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -39086,
+                "AuctionPurchase": -495240
+              },
+              "Stadium": {
+                "Built": 13607,
+                "Usable": 11820,
+                "Condition": 86.87
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 15,
+              "Round": 19,
+              "Stage": "round",
+              "Cash": 391137.92,
+              "SalaryBill": 35812,
+              "ElapsedRounds": 7
+            },
+            "Flows": {
+              "Sponsorship": 504000,
+              "PlayerSalary": -182227,
+              "ContractRenewal": -6927,
+              "TicketRevenue": 149754.16,
+              "StadiumFixedCost": -28574.7,
+              "StadiumVariableCost": -14875.3,
+              "TransferPurchase": -83362
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -112862.08000000002
+          }
+        ],
+        "MinCashAfterFirstRecovery": 182528.02,
+        "FinalCash": 22609919.8,
+        "ObservedSamplesAfterFirstRecovery": 1959,
+        "MinLedgerCash": 53349.76,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 13607,
+          "Usable": 11748,
+          "Condition": 86.34
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1873,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "0c75b94b-87d4-704d-931e-a39e05bafe05",
+        "Name": "São Bento de Imperatriz",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 15,
+              "Round": 22,
+              "Cash": 101493.93,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 27592,
+              "CashBefore": 2172009.51,
+              "CauseFlows": {
+                "TicketRevenue": 65152.72,
+                "StadiumFixedCost": -3567.9,
+                "StadiumVariableCost": -5163.4,
+                "Sponsorship": 92000,
+                "PlayerSalary": -18440,
+                "TransferPurchase": -93254,
+                "AuctionPurchase": -2107243
+              },
+              "Stadium": {
+                "Built": 5097,
+                "Usable": 4694,
+                "Condition": 92.1
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 16,
+              "Round": 3,
+              "Stage": "round",
+              "Cash": 427957.79,
+              "SalaryBill": 27483,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "PrizeMoney": 120000,
+              "StadiumMaintenance": -22936.5,
+              "Sponsorship": 216000,
+              "TicketRevenue": 49425.46,
+              "StadiumFixedCost": -3567.9,
+              "StadiumVariableCost": -4974.2,
+              "PlayerSalary": -27483
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 211957.78999999998
+          }
+        ],
+        "MinCashAfterFirstRecovery": 199906.15,
+        "FinalCash": 36513158.56,
+        "ObservedSamplesAfterFirstRecovery": 1952,
+        "MinLedgerCash": 101493.93,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 5097,
+          "Usable": 4369,
+          "Condition": 85.72
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1867,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "Name": "Avaí da Ilha",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 16,
+              "Round": 10,
+              "Cash": 64110.67,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 30496,
+              "CashBefore": 639569.17,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -28978,
+                "ContractRenewal": -4267.5,
+                "TransferPurchase": -110375,
+                "AuctionPurchase": -503838
+              },
+              "Stadium": {
+                "Built": 15239,
+                "Usable": 12781,
+                "Condition": 83.87
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 16,
+              "Round": 15,
+              "Stage": "round",
+              "Cash": 408496.55,
+              "SalaryBill": 27357,
+              "ElapsedRounds": 5
+            },
+            "Flows": {
+              "Sponsorship": 360000,
+              "PlayerSalary": -85210,
+              "TicketRevenue": 101081.28,
+              "StadiumFixedCost": -21334.6,
+              "StadiumVariableCost": -10150.8
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 48496.54999999999
+          }
+        ],
+        "MinCashAfterFirstRecovery": 184831.72,
+        "FinalCash": 16874263.37,
+        "ObservedSamplesAfterFirstRecovery": 1940,
+        "MinLedgerCash": 64110.67,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 15239,
+          "Usable": 12053,
+          "Condition": 79.09
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1855,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "Name": "Sampaio Boliviano",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 17,
+              "Round": 18,
+              "Cash": 60225.51,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 32953,
+              "CashBefore": 596869.51,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -38483,
+                "TransferPurchase": -164904,
+                "AuctionPurchase": -425257
+              },
+              "Stadium": {
+                "Built": 14086,
+                "Usable": 11576,
+                "Condition": 82.18
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 18,
+              "Round": 1,
+              "Stage": "round",
+              "Cash": 423571.77,
+              "SalaryBill": 34610,
+              "ElapsedRounds": 5
+            },
+            "Flows": {
+              "TicketRevenue": 301129.46,
+              "StadiumFixedCost": -29580.6,
+              "StadiumVariableCost": -23282.6,
+              "Sponsorship": 460000,
+              "PlayerSalary": -99252,
+              "AuctionPurchase": -107730,
+              "TransferPurchase": -194777,
+              "PrizeMoney": 220000,
+              "StadiumMaintenance": -63387,
+              "StadiumRenovation": -99774
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 99774,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": -36428.22999999998
+          }
+        ],
+        "MinCashAfterFirstRecovery": 152819.09,
+        "FinalCash": 2988432.14,
+        "ObservedSamplesAfterFirstRecovery": 1908,
+        "MinLedgerCash": 60225.51,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 19086,
+          "Usable": 15757,
+          "Condition": 82.56
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1825,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "Name": "Vila Nova Colorada",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 19,
+              "Round": 2,
+              "Cash": 135224.6,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 42037,
+              "CashBefore": 688855.6,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "TransferPurchase": -205404,
+                "AuctionPurchase": -440227
+              },
+              "Stadium": {
+                "Built": 20787,
+                "Usable": 17555,
+                "Condition": 84.45
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 19,
+              "Round": 5,
+              "Stage": "round",
+              "Cash": 352879.26,
+              "SalaryBill": 42037,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "Sponsorship": 276000,
+              "PlayerSalary": -126111,
+              "TicketRevenue": 94649.16,
+              "StadiumFixedCost": -14550.9,
+              "StadiumVariableCost": -9653.6,
+              "ContractRenewal": -2679
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 76879.26000000001
+          },
+          {
+            "Entry": {
+              "Season": 47,
+              "Round": 18,
+              "Cash": 112279.3,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 40238,
+              "CashBefore": 1432123.82,
+              "CauseFlows": {
+                "TicketRevenue": 117053.28,
+                "StadiumFixedCost": -18050.9,
+                "StadiumVariableCost": -9249.9,
+                "Sponsorship": 92000,
+                "PlayerSalary": -33790,
+                "TransferPurchase": -240108,
+                "AuctionPurchase": -1227699
+              },
+              "Stadium": {
+                "Built": 25787,
+                "Usable": 22486,
+                "Condition": 87.2
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 47,
+              "Round": 21,
+              "Stage": "round",
+              "Cash": 496545.76,
+              "SalaryBill": 40238,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 244064.56,
+              "StadiumFixedCost": -36101.8,
+              "StadiumVariableCost": -19220.3,
+              "Sponsorship": 276000,
+              "PlayerSalary": -80476
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 220545.76
+          },
+          {
+            "Entry": {
+              "Season": 48,
+              "Round": 18,
+              "Cash": 32910.73,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 31457,
+              "CashBefore": 470712.73,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -34427,
+                "ContractRenewal": -4362,
+                "TransferPurchase": -192517,
+                "AuctionPurchase": -298496
+              },
+              "Stadium": {
+                "Built": 25787,
+                "Usable": 22455,
+                "Condition": 87.08
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 48,
+              "Round": 21,
+              "Stage": "round",
+              "Cash": 439840.46,
+              "SalaryBill": 30217,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 248225.03,
+              "StadiumFixedCost": -36101.8,
+              "StadiumVariableCost": -19519.5,
+              "Sponsorship": 276000,
+              "PlayerSalary": -61674
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 163840.46000000002
+          }
+        ],
+        "MinCashAfterFirstRecovery": 32910.73,
+        "FinalCash": 19340501.55,
+        "ObservedSamplesAfterFirstRecovery": 1881,
+        "MinLedgerCash": 32910.73,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 25787,
+          "Usable": 23603,
+          "Condition": 91.53
+        },
+        "Relapses": 2,
+        "ObservedRoundsAfterFirstRecovery": 1799,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "Name": "Paysandu da Amazônia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 24,
+              "Round": 18,
+              "Cash": 50125.1,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 36967,
+              "CashBefore": 1628045.6,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -32135,
+                "ContractRenewal": -9118.5,
+                "TransferSale": 295623,
+                "AuctionPurchase": -1904290
+              },
+              "Stadium": {
+                "Built": 44594,
+                "Usable": 42520,
+                "Condition": 95.35
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 25,
+              "Round": 3,
+              "Stage": "round",
+              "Cash": 359102.13,
+              "SalaryBill": 34847,
+              "ElapsedRounds": 7
+            },
+            "Flows": {
+              "Sponsorship": 348000,
+              "PlayerSalary": -141842,
+              "PrizeMoney": 100000,
+              "TicketRevenue": 2819.03
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 11102.130000000005
+          },
+          {
+            "Entry": {
+              "Season": 55,
+              "Round": 2,
+              "Cash": 60429.36,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 42103,
+              "CashBefore": 1193412.36,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -1204983
+              },
+              "Stadium": {
+                "Built": 44594,
+                "Usable": 40563,
+                "Condition": 90.96
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 55,
+              "Round": 6,
+              "Stage": "round",
+              "Cash": 459456.36,
+              "SalaryBill": 39414,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 288000,
+              "PlayerSalary": -164683,
+              "TicketRevenue": 4444,
+              "TransferSale": 271266
+            },
+            "Sales": [
+              {
+                "Id": "f01fd29a-0bf5-4457-9d14-7549047f02ba",
+                "Description": "Venda de Rafael Freitas para Goiás Esmeralda",
+                "Amount": 271266
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 171456.36
+          }
+        ],
+        "MinCashAfterFirstRecovery": 60429.36,
+        "FinalCash": 13975859.01,
+        "ObservedSamplesAfterFirstRecovery": 1745,
+        "MinLedgerCash": 50125.1,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 44594,
+          "Usable": 35760,
+          "Condition": 80.19
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1669,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "Name": "Santa Cruz Coral",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 26,
+              "Round": 2,
+              "Cash": 106414.94,
+              "Division": "SegundaDivisao",
+              "SalaryBill": 61693,
+              "CashBefore": 1130382.94,
+              "CauseFlows": {
+                "Sponsorship": 125000,
+                "TransferSale": 647219,
+                "TransferPurchase": -543493,
+                "AuctionPurchase": -1252694
+              },
+              "Stadium": {
+                "Built": 27975,
+                "Usable": 25052,
+                "Condition": 89.55
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 26,
+              "Round": 3,
+              "Stage": "round",
+              "Cash": 496910.67,
+              "SalaryBill": 61693,
+              "ElapsedRounds": 1
+            },
+            "Flows": {
+              "TicketRevenue": 368807.53,
+              "StadiumFixedCost": -19582.5,
+              "StadiumVariableCost": -22036.3,
+              "Sponsorship": 125000,
+              "PlayerSalary": -61693
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 371910.67
+          }
+        ],
+        "MinCashAfterFirstRecovery": 181684.72,
+        "FinalCash": 7237139.14,
+        "ObservedSamplesAfterFirstRecovery": 1722,
+        "MinLedgerCash": 106414.94,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 32975,
+          "Usable": 27076,
+          "Condition": 82.11
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1647,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "975fd07f-9b20-284c-a0a3-e394fc47a124",
+        "Name": "Ferroviário de Campo Grande",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 35,
+              "Round": 18,
+              "Cash": 13917.85,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 40315,
+              "CashBefore": 780978.85,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -35941,
+                "TransferPurchase": -261729,
+                "AuctionPurchase": -561391
+              },
+              "Stadium": {
+                "Built": 8169,
+                "Usable": 7153,
+                "Condition": 87.56
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 35,
+              "Round": 22,
+              "Stage": "seasonFinalized",
+              "Cash": 444212.35,
+              "SalaryBill": 40481,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 368000,
+              "PlayerSalary": -120945,
+              "PrizeMoney": 220000,
+              "StadiumMaintenance": -36760.5
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 76212.34999999998
+          }
+        ],
+        "MinCashAfterFirstRecovery": 185726.13,
+        "FinalCash": 4902728.74,
+        "ObservedSamplesAfterFirstRecovery": 1495,
+        "MinLedgerCash": 13917.85,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 13169,
+          "Usable": 11358,
+          "Condition": 86.25
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1430,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "Name": "Criciúma Carvoeiro",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 44,
+              "Round": 12,
+              "Cash": 97224.4,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 42453,
+              "CashBefore": 736383.71,
+              "CauseFlows": {
+                "TicketRevenue": 152059.89,
+                "StadiumFixedCost": -17463.6,
+                "StadiumVariableCost": -11705.1,
+                "Sponsorship": 92000,
+                "PlayerSalary": -38758,
+                "ContractRenewal": -5224.5,
+                "AuctionPurchase": -810068
+              },
+              "Stadium": {
+                "Built": 24948,
+                "Usable": 22196,
+                "Condition": 88.97
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 44,
+              "Round": 14,
+              "Stage": "round",
+              "Cash": 357066.29,
+              "SalaryBill": 42453,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 147254.59,
+              "StadiumFixedCost": -17463.6,
+              "StadiumVariableCost": -11496.1,
+              "Sponsorship": 184000,
+              "PlayerSalary": -42453
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 173066.28999999998
+          },
+          {
+            "Entry": {
+              "Season": 49,
+              "Round": 10,
+              "Cash": 73607.38,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 30682,
+              "CashBefore": 576524.38,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -28185,
+                "ContractRenewal": -7218,
+                "TransferSale": 126479,
+                "AuctionPurchase": -665993
+              },
+              "Stadium": {
+                "Built": 24948,
+                "Usable": 22623,
+                "Condition": 90.68
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 49,
+              "Round": 15,
+              "Stage": "round",
+              "Cash": 421678.8,
+              "SalaryBill": 28120,
+              "ElapsedRounds": 5
+            },
+            "Flows": {
+              "Sponsorship": 360000,
+              "TicketRevenue": 122220.82,
+              "StadiumFixedCost": -34927.2,
+              "StadiumVariableCost": -12300.2,
+              "PlayerSalary": -86922
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 61678.79999999999
+          }
+        ],
+        "MinCashAfterFirstRecovery": 73607.38,
+        "FinalCash": 1453203.42,
+        "ObservedSamplesAfterFirstRecovery": 1297,
+        "MinLedgerCash": 73607.38,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 24948,
+          "Usable": 22269,
+          "Condition": 89.26
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1240,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "a09d7cee-9541-274b-a2d2-a4905e2352c5",
+        "Name": "Nacional de Uberlândia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 46,
+              "Round": 6,
+              "Cash": 72659.36,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 42592,
+              "CashBefore": 2139237.41,
+              "CauseFlows": {
+                "TicketRevenue": 111762.75,
+                "StadiumFixedCost": -7829.5,
+                "StadiumVariableCost": -8627.3,
+                "Sponsorship": 92000,
+                "PlayerSalary": -33674,
+                "AuctionPurchase": -2220210
+              },
+              "Stadium": {
+                "Built": 11185,
+                "Usable": 9546,
+                "Condition": 85.35
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 46,
+              "Round": 8,
+              "Stage": "round",
+              "Cash": 431686.57,
+              "SalaryBill": 42592,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 277061.81,
+              "StadiumFixedCost": -7829.5,
+              "StadiumVariableCost": -9021.1,
+              "Sponsorship": 184000,
+              "PlayerSalary": -85184
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 247686.57
+          },
+          {
+            "Entry": {
+              "Season": 61,
+              "Round": 18,
+              "Cash": 123061.48,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 39961,
+              "CashBefore": 1790184.48,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -32130,
+                "TransferPurchase": -129891,
+                "AuctionPurchase": -1577102
+              },
+              "Stadium": {
+                "Built": 16185,
+                "Usable": 15534,
+                "Condition": 95.98
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 61,
+              "Round": 22,
+              "Stage": "seasonFinalized",
+              "Cash": 649165.48,
+              "SalaryBill": 32346,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 288000,
+              "PlayerSalary": -119883,
+              "ContractRenewal": -2013,
+              "PrizeMoney": 360000
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_COMPETITION_REWARD",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 361165.48
+          }
+        ],
+        "MinCashAfterFirstRecovery": 123061.48,
+        "FinalCash": 10616425.74,
+        "ObservedSamplesAfterFirstRecovery": 1257,
+        "MinLedgerCash": 72659.36,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 16185,
+          "Usable": 15023,
+          "Condition": 92.82
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1202,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "b9385e2a-8be3-024e-a6bc-ced202c9d071",
+        "Name": "Atlético de Campo Grande 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 55,
+              "Round": 8,
+              "Cash": 27382.72,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 31043,
+              "CashBefore": 632958.2,
+              "CauseFlows": {
+                "TicketRevenue": 3583.52,
+                "Sponsorship": 72000,
+                "PlayerSalary": -26878,
+                "TransferSale": 129881,
+                "TransferPurchase": -90958,
+                "AuctionPurchase": -693204
+              },
+              "Stadium": {
+                "Built": 35477,
+                "Usable": 29059,
+                "Condition": 81.91
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 55,
+              "Round": 17,
+              "Stage": "round",
+              "Cash": 366961.97,
+              "SalaryBill": 27985,
+              "ElapsedRounds": 9
+            },
+            "Flows": {
+              "Sponsorship": 648000,
+              "PlayerSalary": -221356,
+              "TicketRevenue": 311964.25,
+              "StadiumFixedCost": -24833.9,
+              "StadiumVariableCost": -4835.6,
+              "ContractRenewal": -10378.5,
+              "TransferSale": 126479,
+              "TransferPurchase": -142280,
+              "AuctionPurchase": -343180
+            },
+            "Sales": [
+              {
+                "Id": "7dde6e48-b78c-4deb-bd14-8e952ceae49c",
+                "Description": "Venda de Bruno Dias para Independente de Arapiraca 2",
+                "Amount": 126479
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -281038.03
+          }
+        ],
+        "MinCashAfterFirstRecovery": 237448.49,
+        "FinalCash": 9971332.32,
+        "ObservedSamplesAfterFirstRecovery": 1041,
+        "MinLedgerCash": 27382.72,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 35477,
+          "Usable": 32635,
+          "Condition": 91.99
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 995,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "747df8fb-bfe6-9346-b323-b8db3543bcb3",
+        "Name": "União de Imperatriz",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 58,
+              "Round": 6,
+              "Cash": 45011.84,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 51107,
+              "CashBefore": 1987977.44,
+              "CauseFlows": {
+                "TicketRevenue": 54450,
+                "StadiumFixedCost": -16714.6,
+                "StadiumVariableCost": -5324,
+                "Sponsorship": 72000,
+                "PlayerSalary": -44021,
+                "TransferPurchase": -135814,
+                "AuctionPurchase": -1867542
+              },
+              "Stadium": {
+                "Built": 23878,
+                "Usable": 20884,
+                "Condition": 87.46
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 58,
+              "Round": 12,
+              "Stage": "round",
+              "Cash": 459674.28,
+              "SalaryBill": 43921,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "TicketRevenue": 46634.84,
+              "StadiumFixedCost": -16714.6,
+              "StadiumVariableCost": -4650.8,
+              "Sponsorship": 432000,
+              "PlayerSalary": -204428,
+              "ContractRenewal": -2502,
+              "TransferSale": 164323
+            },
+            "Sales": [
+              {
+                "Id": "a396c66e-fcdd-4c6a-8844-01abe8834f60",
+                "Description": "Venda de Pedro Freitas para Criciúma Carvoeiro",
+                "Amount": 164323
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 27674.280000000028
+          }
+        ],
+        "MinCashAfterFirstRecovery": 180593.01,
+        "FinalCash": 11622539.13,
+        "ObservedSamplesAfterFirstRecovery": 977,
+        "MinLedgerCash": 45011.84,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 23878,
+          "Usable": 18907,
+          "Condition": 79.18
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 934,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "fbb2fd6f-545e-3a4a-bb8f-bd11d3d0b730",
+        "Name": "Desportivo de Uberlândia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 59,
+              "Round": 6,
+              "Cash": 137417.89,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 31687,
+              "CashBefore": 909447.69,
+              "CauseFlows": {
+                "TicketRevenue": 54936,
+                "StadiumFixedCost": -7412.3,
+                "StadiumVariableCost": -5395.5,
+                "Sponsorship": 72000,
+                "PlayerSalary": -29191,
+                "ContractRenewal": -6357,
+                "AuctionPurchase": -850610
+              },
+              "Stadium": {
+                "Built": 10589,
+                "Usable": 9629,
+                "Condition": 90.93
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 59,
+              "Round": 8,
+              "Stage": "round",
+              "Cash": 418212.54,
+              "SalaryBill": 31006,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 59083.85,
+              "StadiumFixedCost": -7412.3,
+              "StadiumVariableCost": -5828.9,
+              "Sponsorship": 144000,
+              "PlayerSalary": -31687,
+              "TransferSale": 122639
+            },
+            "Sales": [
+              {
+                "Id": "5d772808-0a14-492c-9ef0-f6cb8ba2c258",
+                "Description": "Venda de Igor Dias para Criciúma Carvoeiro",
+                "Amount": 122639
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 274212.54
+          }
+        ],
+        "MinCashAfterFirstRecovery": 192898.18,
+        "FinalCash": 15998094.67,
+        "ObservedSamplesAfterFirstRecovery": 958,
+        "MinLedgerCash": 137417.89,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 10589,
+          "Usable": 8296,
+          "Condition": 78.35
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 916,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "a7a34484-d355-3444-9fcc-dcef60cbe733",
+        "Name": "Independente de Petrópolis 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 60,
+              "Round": 20,
+              "Cash": 37262.72,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 39211,
+              "CashBefore": 434323.72,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -469061
+              },
+              "Stadium": {
+                "Built": 21052,
+                "Usable": 19633,
+                "Condition": 93.26
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 60,
+              "Round": 22,
+              "Stage": "seasonFinalized",
+              "Cash": 459380.22,
+              "SalaryBill": 37411,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 144000,
+              "PlayerSalary": -78422,
+              "ContractRenewal": -3460.5,
+              "PrizeMoney": 360000
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_COMPETITION_REWARD",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 315380.22
+          }
+        ],
+        "MinCashAfterFirstRecovery": 221572.32,
+        "FinalCash": 92259704.23,
+        "ObservedSamplesAfterFirstRecovery": 920,
+        "MinLedgerCash": 37262.72,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 51052,
+          "Usable": 43522,
+          "Condition": 85.25
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 880,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "Name": "Sport Club Atlântico",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 65,
+              "Round": 8,
+              "Cash": 92144.92,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 38012,
+              "CashBefore": 481356.05,
+              "CauseFlows": {
+                "TicketRevenue": 3806.87,
+                "Sponsorship": 92000,
+                "PlayerSalary": -35233,
+                "AuctionPurchase": -449785
+              },
+              "Stadium": {
+                "Built": 58577,
+                "Usable": 53756,
+                "Condition": 91.77
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 65,
+              "Round": 11,
+              "Stage": "round",
+              "Cash": 354907.16,
+              "SalaryBill": 38012,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 153310.34,
+              "StadiumFixedCost": -41003.9,
+              "StadiumVariableCost": -11508.2,
+              "Sponsorship": 276000,
+              "PlayerSalary": -114036
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 78907.15999999997
+          }
+        ],
+        "MinCashAfterFirstRecovery": 175011.18,
+        "FinalCash": 1008093.1,
+        "ObservedSamplesAfterFirstRecovery": 817,
+        "MinLedgerCash": 92144.92,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 58577,
+          "Usable": 41777,
+          "Condition": 71.32
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 781,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "fbf07e73-5d9d-4247-a9d3-04ea7c8ea65d",
+        "Name": "Esportivo de Imperatriz 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 65,
+              "Round": 8,
+              "Cash": 11543.25,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 33007,
+              "CashBefore": 411097.66,
+              "CauseFlows": {
+                "TicketRevenue": 27051.59,
+                "Sponsorship": 72000,
+                "PlayerSalary": -28745,
+                "TransferPurchase": -134779,
+                "AuctionPurchase": -335082
+              },
+              "Stadium": {
+                "Built": 24394,
+                "Usable": 23008,
+                "Condition": 94.32
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 65,
+              "Round": 11,
+              "Stage": "round",
+              "Cash": 353733.49,
+              "SalaryBill": 32189,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "Sponsorship": 216000,
+              "PlayerSalary": -98203,
+              "ContractRenewal": -14820,
+              "TicketRevenue": 261192.84,
+              "StadiumFixedCost": -17075.8,
+              "StadiumVariableCost": -4903.8
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 137733.49
+          }
+        ],
+        "MinCashAfterFirstRecovery": 185319.42,
+        "FinalCash": 10929819.17,
+        "ObservedSamplesAfterFirstRecovery": 817,
+        "MinLedgerCash": 11543.25,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 24394,
+          "Usable": 19881,
+          "Condition": 81.5
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 781,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "Name": "ABC Potiguar",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 75,
+              "Round": 2,
+              "Cash": 17920.24,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 42257,
+              "CashBefore": 708753.24,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "TransferPurchase": -334598,
+                "AuctionPurchase": -448235
+              },
+              "Stadium": {
+                "Built": 31613,
+                "Usable": 30412,
+                "Condition": 96.2
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 75,
+              "Round": 5,
+              "Stage": "round",
+              "Cash": 397555.37,
+              "SalaryBill": 42257,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 297228.63,
+              "StadiumFixedCost": -44258.2,
+              "StadiumVariableCost": -20699.8,
+              "Sponsorship": 276000,
+              "PlayerSalary": -126771,
+              "ContractRenewal": -1864.5
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 121555.37
+          }
+        ],
+        "MinCashAfterFirstRecovery": 218643.5,
+        "FinalCash": 8567238.31,
+        "ObservedSamplesAfterFirstRecovery": 593,
+        "MinLedgerCash": 17920.24,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 31613,
+          "Usable": 23937,
+          "Condition": 75.72
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 567,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "44d202c3-9291-1845-9543-de65881852cc",
+        "Name": "Real de Imperatriz",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 75,
+              "Round": 12,
+              "Cash": 143131.36,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 45520,
+              "CashBefore": 566476.36,
+              "CauseFlows": {
+                "TicketRevenue": 59105.2,
+                "StadiumFixedCost": -14354.2,
+                "StadiumVariableCost": -5852,
+                "Sponsorship": 72000,
+                "PlayerSalary": -44361,
+                "ContractRenewal": -7356,
+                "AuctionPurchase": -482527
+              },
+              "Stadium": {
+                "Built": 20506,
+                "Usable": 19438,
+                "Condition": 94.79
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 75,
+              "Round": 15,
+              "Stage": "round",
+              "Cash": 351234.7,
+              "SalaryBill": 45520,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 124143.14,
+              "StadiumFixedCost": -28708.4,
+              "StadiumVariableCost": -12291.4,
+              "Sponsorship": 216000,
+              "PlayerSalary": -91040
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 135234.7
+          },
+          {
+            "Entry": {
+              "Season": 98,
+              "Round": 12,
+              "Cash": 33549.58,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 38545,
+              "CashBefore": 852064.58,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -34860,
+                "AuctionPurchase": -875655
+              },
+              "Stadium": {
+                "Built": 20506,
+                "Usable": 17535,
+                "Condition": 85.51
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 98,
+              "Round": 16,
+              "Stage": "round",
+              "Cash": 387886.38,
+              "SalaryBill": 33779,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 368000,
+              "PlayerSalary": -110869,
+              "ContractRenewal": -7689,
+              "TicketRevenue": 129339.3,
+              "StadiumFixedCost": -14354.2,
+              "StadiumVariableCost": -10090.3
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 19886.380000000005
+          }
+        ],
+        "MinCashAfterFirstRecovery": 33549.58,
+        "FinalCash": 840693.89,
+        "ObservedSamplesAfterFirstRecovery": 583,
+        "MinLedgerCash": 33549.58,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 20506,
+          "Usable": 18394,
+          "Condition": 89.7
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 557,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "4258cd20-4cf1-d94b-b052-bbf4a389da70",
+        "Name": "Ferroviário de Arapiraca 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 79,
+              "Round": 18,
+              "Cash": 43133.39,
+              "Division": "PrimeiraDivisao",
+              "SalaryBill": 57906,
+              "CashBefore": 3514712.39,
+              "CauseFlows": {
+                "Sponsorship": 185000,
+                "PlayerSalary": -46179,
+                "TransferSale": 397806,
+                "TransferPurchase": -1522629,
+                "AuctionPurchase": -2485577
+              },
+              "Stadium": {
+                "Built": 25727,
+                "Usable": 22884,
+                "Condition": 88.95
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 79,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 394784.51,
+              "SalaryBill": 57906,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 370000,
+              "PlayerSalary": -115812,
+              "TicketRevenue": 97463.12
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 24784.51000000001
+          }
+        ],
+        "MinCashAfterFirstRecovery": 486557.59,
+        "FinalCash": 12193668.49,
+        "ObservedSamplesAfterFirstRecovery": 486,
+        "MinLedgerCash": 43133.39,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 40727,
+          "Usable": 38263,
+          "Condition": 93.95
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 464,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "1177b0d9-210a-8546-8be3-f9db00c05907",
+        "Name": "Primavera de Ponta Grossa",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 83,
+              "Round": 2,
+              "Cash": 88903.14,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 41556,
+              "CashBefore": 1557435.14,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "TransferPurchase": -305703,
+                "AuctionPurchase": -1254829
+              },
+              "Stadium": {
+                "Built": 30629,
+                "Usable": 26620,
+                "Condition": 86.91
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 83,
+              "Round": 4,
+              "Stage": "round",
+              "Cash": 399264.14,
+              "SalaryBill": 38286,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 184000,
+              "PlayerSalary": -82138,
+              "TransferSale": 208499
+            },
+            "Sales": [
+              {
+                "Id": "84810a75-f0e2-4165-a01d-ceec0f049e01",
+                "Description": "Venda de Alex Soares para Sampaio Boliviano",
+                "Amount": 208499
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 215264.14
+          }
+        ],
+        "MinCashAfterFirstRecovery": 213502.32,
+        "FinalCash": 16536190.38,
+        "ObservedSamplesAfterFirstRecovery": 410,
+        "MinLedgerCash": 88903.14,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 40629,
+          "Usable": 37769,
+          "Condition": 92.96
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 392,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "ee502622-99b7-584d-80be-683c519d6efe",
+        "Name": "Associação de Uberlândia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 88,
+              "Round": 8,
+              "Cash": 67711.93,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 38189,
+              "CashBefore": 700234.93,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "AuctionPurchase": -724523
+              },
+              "Stadium": {
+                "Built": 34133,
+                "Usable": 33013,
+                "Condition": 96.72
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 88,
+              "Round": 10,
+              "Stage": "round",
+              "Cash": 574086.59,
+              "SalaryBill": 35160,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 223150.76,
+              "StadiumFixedCost": -47786.2,
+              "StadiumVariableCost": -17675.9,
+              "Sponsorship": 184000,
+              "PlayerSalary": -74592,
+              "TransferSale": 239278
+            },
+            "Sales": [
+              {
+                "Id": "aa20b860-2a35-417d-99f4-ab9e4e20e134",
+                "Description": "Venda de Fábio Freitas para Palestra Verde",
+                "Amount": 239278
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 390086.58999999997
+          }
+        ],
+        "MinCashAfterFirstRecovery": 232781.93,
+        "FinalCash": 6661417.17,
+        "ObservedSamplesAfterFirstRecovery": 289,
+        "MinLedgerCash": 67711.93,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 34133,
+          "Usable": 29423,
+          "Condition": 86.2
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 276,
+        "SustainableUnderObservedPolicy": true
+      }
+    ],
+    "PrimaryMechanisms": {
+      "RECOVERY_BY_REVENUE": 23,
+      "RECOVERY_BY_COMPETITION_REWARD": 2,
+      "RECOVERY_BY_SALES": 2
+    },
+    "SustainableClubs": 16,
+    "ClubsWithRelapse": 5,
+    "Note": "Flows before the entry sample are recorded as causes; recovery flows start after entry. Ledger minima include intraround states. Without-sponsorship figure is arithmetic with decisions held fixed, not a simulated alternative economy."
+  },
+  "Candidate": {
+    "CrisisDefinition": "Cash < 150000 at post-market round sampling, while not district; recovery >=350000. These reproduce 006, not bankruptcy.",
+    "SustainableDefinition": "After first recovery: no sampled relapse below150000, at least22 subsequent rounds, final cash>=350000; no claim beyond season100.",
+    "OfficialCrisisClubs": 19,
+    "OfficialRecoveredClubs": 19,
+    "Clubs": [
+      {
+        "ClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "Name": "Criciúma Carvoeiro",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 16,
+              "Round": 18,
+              "Cash": 39034.33,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 37331,
+              "CashBefore": 541419.33,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -35300,
+                "TransferPurchase": -191780,
+                "AuctionPurchase": -367305
+              },
+              "Stadium": {
+                "Built": 24948,
+                "Usable": 22753,
+                "Condition": 91.2
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 17,
+              "Round": 1,
+              "Stage": "round",
+              "Cash": 374775.33,
+              "SalaryBill": 36684,
+              "ElapsedRounds": 5
+            },
+            "Flows": {
+              "Sponsorship": 440000,
+              "PlayerSalary": -111993,
+              "PrizeMoney": 120000,
+              "StadiumMaintenance": -112266
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -65224.669999999984
+          },
+          {
+            "Entry": {
+              "Season": 19,
+              "Round": 18,
+              "Cash": 135734.95,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 31237,
+              "CashBefore": 480845.37,
+              "CauseFlows": {
+                "TicketRevenue": 44476.38,
+                "StadiumFixedCost": -17463.6,
+                "StadiumVariableCost": -4534.2,
+                "Sponsorship": 72000,
+                "PlayerSalary": -31660,
+                "AuctionPurchase": -407929
+              },
+              "Stadium": {
+                "Built": 24948,
+                "Usable": 20739,
+                "Condition": 83.13
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 19,
+              "Round": 22,
+              "Stage": "round",
+              "Cash": 503679.89,
+              "SalaryBill": 27328,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 288000,
+              "PlayerSalary": -92652,
+              "ContractRenewal": -4956,
+              "TicketRevenue": 41396.34,
+              "StadiumFixedCost": -17463.6,
+              "StadiumVariableCost": -4243.8,
+              "TransferSale": 157864
+            },
+            "Sales": [
+              {
+                "Id": "e69bcd26-150c-4cd8-b1a0-4547f51cf401",
+                "Description": "Venda de Thiago Santos para Botafogo da Paraíba",
+                "Amount": 157864
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 215679.89
+          },
+          {
+            "Entry": {
+              "Season": 55,
+              "Round": 16,
+              "Cash": 7631.2,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 40207,
+              "CashBefore": 774306.51,
+              "CauseFlows": {
+                "TicketRevenue": 54392.39,
+                "StadiumFixedCost": -17463.6,
+                "StadiumVariableCost": -5545.1,
+                "Sponsorship": 72000,
+                "PlayerSalary": -36753,
+                "ContractRenewal": -2013,
+                "AuctionPurchase": -831293
+              },
+              "Stadium": {
+                "Built": 24948,
+                "Usable": 22982,
+                "Condition": 92.12
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 55,
+              "Round": 22,
+              "Stage": "round",
+              "Cash": 401824.75,
+              "SalaryBill": 39389,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "Sponsorship": 432000,
+              "TicketRevenue": 214839.65,
+              "StadiumFixedCost": -69854.4,
+              "StadiumVariableCost": -21963.7,
+              "PlayerSalary": -160828
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -30175.25
+          }
+        ],
+        "MinCashAfterFirstRecovery": 7631.2,
+        "FinalCash": 2994793.63,
+        "ObservedSamplesAfterFirstRecovery": 1931,
+        "MinLedgerCash": 7631.2,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 24948,
+          "Usable": 18025,
+          "Condition": 72.25
+        },
+        "Relapses": 2,
+        "ObservedRoundsAfterFirstRecovery": 1847,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "Name": "Avaí da Ilha",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 18,
+              "Round": 4,
+              "Cash": 116210.63,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 49860,
+              "CashBefore": 416073.79,
+              "CauseFlows": {
+                "TicketRevenue": 52715.34,
+                "StadiumFixedCost": -14167.3,
+                "StadiumVariableCost": -5238.2,
+                "Sponsorship": 72000,
+                "PlayerSalary": -46778,
+                "AuctionPurchase": -358395
+              },
+              "Stadium": {
+                "Built": 20239,
+                "Usable": 17383,
+                "Condition": 85.89
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 18,
+              "Round": 8,
+              "Stage": "round",
+              "Cash": 355639.59,
+              "SalaryBill": 47111,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "TicketRevenue": 180444.06,
+              "Sponsorship": 288000,
+              "PlayerSalary": -191193,
+              "StadiumFixedCost": -28334.6,
+              "StadiumVariableCost": -9487.5
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 67639.59000000003
+          },
+          {
+            "Entry": {
+              "Season": 66,
+              "Round": 10,
+              "Cash": 126436.97,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 36739,
+              "CashBefore": 660778.97,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -38152,
+                "ContractRenewal": -6516,
+                "TransferPurchase": -125832,
+                "AuctionPurchase": -435842
+              },
+              "Stadium": {
+                "Built": 20239,
+                "Usable": 19215,
+                "Condition": 94.94
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 66,
+              "Round": 12,
+              "Stage": "round",
+              "Cash": 445374.97,
+              "SalaryBill": 31385,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 144000,
+              "PlayerSalary": -36739,
+              "ContractRenewal": -2169,
+              "TransferSale": 213846
+            },
+            "Sales": [
+              {
+                "Id": "bf717cc3-6e8f-46b4-a58d-0e725fe1c5be",
+                "Description": "Venda de João Almeida para Grêmio de Ponta Grossa 2",
+                "Amount": 213846
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 301374.97
+          }
+        ],
+        "MinCashAfterFirstRecovery": 126436.97,
+        "FinalCash": 13150503.16,
+        "ObservedSamplesAfterFirstRecovery": 1901,
+        "MinLedgerCash": 116210.63,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 25239,
+          "Usable": 20898,
+          "Condition": 82.8
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1818,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "2ae83aac-7d1a-8143-9f69-1326401d90eb",
+        "Name": "Comercial de Imperatriz 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 18,
+              "Round": 8,
+              "Cash": 5338.52,
+              "Division": "SegundaDivisao",
+              "SalaryBill": 49586,
+              "CashBefore": 1128638.88,
+              "CauseFlows": {
+                "TicketRevenue": 173559.24,
+                "StadiumFixedCost": -11412.8,
+                "StadiumVariableCost": -14308.8,
+                "Sponsorship": 125000,
+                "PlayerSalary": -44022,
+                "AuctionPurchase": -1352116
+              },
+              "Stadium": {
+                "Built": 16304,
+                "Usable": 14659,
+                "Condition": 85.45
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 18,
+              "Round": 10,
+              "Stage": "round",
+              "Cash": 809848.1,
+              "SalaryBill": 43649,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 531862.18,
+              "StadiumFixedCost": -22825.6,
+              "StadiumVariableCost": -31724,
+              "Sponsorship": 250000,
+              "PlayerSalary": -95937,
+              "TransferSale": 173134
+            },
+            "Sales": [
+              {
+                "Id": "b68c7d48-7564-45f5-82c2-5d1d5f403724",
+                "Description": "Venda de Sérgio Alves para Ponte Alvinegra",
+                "Amount": 173134
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 559848.1
+          }
+        ],
+        "MinCashAfterFirstRecovery": 189418.37,
+        "FinalCash": 2446628.37,
+        "ObservedSamplesAfterFirstRecovery": 1899,
+        "MinLedgerCash": 5338.52,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 26304,
+          "Usable": 21861,
+          "Condition": 83.11
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1816,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "Name": "Internacional do Sul",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 25,
+              "Round": 14,
+              "Cash": 115665.91,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 36054,
+              "CashBefore": 759093.91,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "TransferPurchase": -103616,
+                "AuctionPurchase": -611812
+              },
+              "Stadium": {
+                "Built": 53662,
+                "Usable": 51097,
+                "Condition": 95.22
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 25,
+              "Round": 16,
+              "Stage": "round",
+              "Cash": 507691.63,
+              "SalaryBill": 34067,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 87118.72,
+              "StadiumFixedCost": -37563.4,
+              "StadiumVariableCost": -8465.6,
+              "Sponsorship": 144000,
+              "PlayerSalary": -72108,
+              "ContractRenewal": -6102,
+              "TransferSale": 285146
+            },
+            "Sales": [
+              {
+                "Id": "e285827a-a476-4ec1-b00e-06e5bb7d4b8d",
+                "Description": "Venda de Paulo Oliveira para Juventude Serrana",
+                "Amount": 91903
+              },
+              {
+                "Id": "0bab762c-ea6a-4701-9b43-ebb4b4f70c6c",
+                "Description": "Venda de Gabriel Silva para ABC Potiguar",
+                "Amount": 193243
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 363691.63
+          },
+          {
+            "Entry": {
+              "Season": 38,
+              "Round": 14,
+              "Cash": 45199.56,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 35767,
+              "CashBefore": 1133851.56,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -1160652
+              },
+              "Stadium": {
+                "Built": 53662,
+                "Usable": 40724,
+                "Condition": 75.89
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 38,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 363048.51,
+              "SalaryBill": 31692,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "TicketRevenue": 118269.61,
+              "StadiumFixedCost": -77596.96,
+              "StadiumVariableCost": -11755.7,
+              "Sponsorship": 432000,
+              "PlayerSalary": -143068
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -68951.48999999999
+          }
+        ],
+        "MinCashAfterFirstRecovery": 45199.56,
+        "FinalCash": 1143178.09,
+        "ObservedSamplesAfterFirstRecovery": 1732,
+        "MinLedgerCash": 45199.56,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 53662,
+          "Usable": 44298,
+          "Condition": 82.55
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1656,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "893c6659-a730-7744-ad3e-ee2fa87f81d0",
+        "Name": "Nacional de Ponta Grossa 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 28,
+              "Round": 6,
+              "Cash": 41599.46,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 32544,
+              "CashBefore": 1083541.71,
+              "CauseFlows": {
+                "TicketRevenue": 55670.45,
+                "StadiumFixedCost": -3252.2,
+                "StadiumVariableCost": -4383.5,
+                "Sponsorship": 92000,
+                "PlayerSalary": -27036,
+                "ContractRenewal": -2169,
+                "TransferPurchase": -197271,
+                "AuctionPurchase": -955501
+              },
+              "Stadium": {
+                "Built": 4646,
+                "Usable": 3985,
+                "Condition": 85.77
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 28,
+              "Round": 10,
+              "Stage": "round",
+              "Cash": 455624.91,
+              "SalaryBill": 32544,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "TicketRevenue": 168286.55,
+              "StadiumFixedCost": -9756.6,
+              "StadiumVariableCost": -13150.5,
+              "Sponsorship": 368000,
+              "PlayerSalary": -97632,
+              "ContractRenewal": -1722
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 87624.90999999997
+          },
+          {
+            "Entry": {
+              "Season": 33,
+              "Round": 12,
+              "Cash": 75788.35,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 26081,
+              "CashBefore": 630306.35,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -24123,
+                "AuctionPurchase": -602395
+              },
+              "Stadium": {
+                "Built": 9646,
+                "Usable": 8473,
+                "Condition": 87.84
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 33,
+              "Round": 17,
+              "Stage": "round",
+              "Cash": 355681.35,
+              "SalaryBill": 22948,
+              "ElapsedRounds": 5
+            },
+            "Flows": {
+              "Sponsorship": 360000,
+              "PlayerSalary": -71977,
+              "ContractRenewal": -8130
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": -4318.650000000023
+          }
+        ],
+        "MinCashAfterFirstRecovery": 75788.35,
+        "FinalCash": 17524913.96,
+        "ObservedSamplesAfterFirstRecovery": 1669,
+        "MinLedgerCash": 41599.46,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 9646,
+          "Usable": 7337,
+          "Condition": 76.06
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1596,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "c30a6517-6309-2548-954d-4623066f1d34",
+        "Name": "Comercial de Petrópolis",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 31,
+              "Round": 10,
+              "Cash": 33003.1,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 31353,
+              "CashBefore": 1629628.1,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -25680,
+                "ContractRenewal": -1578,
+                "AuctionPurchase": -1641367
+              },
+              "Stadium": {
+                "Built": 8471,
+                "Usable": 7795,
+                "Condition": 92.02
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 31,
+              "Round": 16,
+              "Stage": "round",
+              "Cash": 697579.55,
+              "SalaryBill": 25181,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "Sponsorship": 432000,
+              "PlayerSalary": -124070,
+              "TicketRevenue": 44867.65,
+              "StadiumFixedCost": -5929.7,
+              "StadiumVariableCost": -4515.5,
+              "ContractRenewal": -4029,
+              "TransferSale": 326253
+            },
+            "Sales": [
+              {
+                "Id": "07a5dea1-3050-47e3-8a03-6b969e91f9f3",
+                "Description": "Venda de Gustavo Mendes para Ceará Alvinegro",
+                "Amount": 326253
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 265579.55000000005
+          }
+        ],
+        "MinCashAfterFirstRecovery": 510945.48,
+        "FinalCash": 8518980.14,
+        "ObservedSamplesAfterFirstRecovery": 1594,
+        "MinLedgerCash": 33003.1,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 13471,
+          "Usable": 11072,
+          "Condition": 82.19
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1524,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "Name": "Paysandu da Amazônia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 32,
+              "Round": 18,
+              "Cash": 115998.87,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 54735,
+              "CashBefore": 991985.53,
+              "CauseFlows": {
+                "TicketRevenue": 113919.04,
+                "StadiumFixedCost": -24215.8,
+                "StadiumVariableCost": -9106.9,
+                "Sponsorship": 92000,
+                "PlayerSalary": -50926,
+                "ContractRenewal": -2679,
+                "TransferSale": 410607,
+                "TransferPurchase": -251688,
+                "AuctionPurchase": -1153897,
+                "FreeAgentSigning": 0
+              },
+              "Stadium": {
+                "Built": 34594,
+                "Usable": 32525,
+                "Condition": 94.02
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 32,
+              "Round": 21,
+              "Stage": "round",
+              "Cash": 449411.41,
+              "SalaryBill": 48594,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 239639.84,
+              "StadiumFixedCost": -48431.6,
+              "StadiumVariableCost": -18949.7,
+              "Sponsorship": 276000,
+              "PlayerSalary": -109470,
+              "ContractRenewal": -5376
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 173411.40999999997
+          },
+          {
+            "Entry": {
+              "Season": 48,
+              "Round": 12,
+              "Cash": 137310.08,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 33045,
+              "CashBefore": 863957.2,
+              "CauseFlows": {
+                "TicketRevenue": 60563.28,
+                "StadiumFixedCost": -24215.8,
+                "StadiumVariableCost": -6012.6,
+                "Sponsorship": 72000,
+                "PlayerSalary": -29182,
+                "AuctionPurchase": -799800
+              },
+              "Stadium": {
+                "Built": 34594,
+                "Usable": 30851,
+                "Condition": 89.18
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 48,
+              "Round": 14,
+              "Stage": "round",
+              "Cash": 483134.16,
+              "SalaryBill": 31897,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 56992.18,
+              "StadiumFixedCost": -24215.8,
+              "StadiumVariableCost": -5668.3,
+              "Sponsorship": 144000,
+              "PlayerSalary": -33045,
+              "TransferSale": 207761
+            },
+            "Sales": [
+              {
+                "Id": "6784da7a-b304-4580-bc31-5112305de104",
+                "Description": "Venda de Renato Marques para Atlético Paulistano",
+                "Amount": 207761
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 339134.16
+          },
+          {
+            "Entry": {
+              "Season": 65,
+              "Round": 12,
+              "Cash": 38085.04,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 39787,
+              "CashBefore": 656861.64,
+              "CauseFlows": {
+                "TicketRevenue": 61592.6,
+                "StadiumFixedCost": -24215.8,
+                "StadiumVariableCost": -6076.4,
+                "Sponsorship": 72000,
+                "PlayerSalary": -38228,
+                "ContractRenewal": -2013,
+                "TransferPurchase": -181621,
+                "AuctionPurchase": -500215
+              },
+              "Stadium": {
+                "Built": 34594,
+                "Usable": 29163,
+                "Condition": 84.3
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 65,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 798452.24,
+              "SalaryBill": 37491,
+              "ElapsedRounds": 8
+            },
+            "Flows": {
+              "Sponsorship": 576000,
+              "PlayerSalary": -198935,
+              "TicketRevenue": 130279,
+              "StadiumFixedCost": -48431.6,
+              "StadiumVariableCost": -12762.2,
+              "ContractRenewal": -2013,
+              "TransferPurchase": -110732,
+              "TransferSale": 426962
+            },
+            "Sales": [
+              {
+                "Id": "879758d9-ce22-4f0a-a044-85a111ccb87a",
+                "Description": "Venda de Júlio Oliveira para Grêmio de Ponta Grossa 2",
+                "Amount": 213116
+              },
+              {
+                "Id": "f7491d89-8ffc-412a-b8aa-cb09edae1466",
+                "Description": "Venda de Bruno Dias para Leão da Ilha",
+                "Amount": 213846
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 222452.24
+          }
+        ],
+        "MinCashAfterFirstRecovery": 38085.04,
+        "FinalCash": 97166638.9,
+        "ObservedSamplesAfterFirstRecovery": 1566,
+        "MinLedgerCash": 38085.04,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 59594,
+          "Usable": 49016,
+          "Condition": 82.25
+        },
+        "Relapses": 2,
+        "ObservedRoundsAfterFirstRecovery": 1497,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "Name": "Brasil de Pelotas",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 34,
+              "Round": 8,
+              "Cash": 141113.03,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 44172,
+              "CashBefore": 449682.48,
+              "CauseFlows": {
+                "TicketRevenue": 91778.05,
+                "Sponsorship": 92000,
+                "PlayerSalary": -42031,
+                "ContractRenewal": -2863.5,
+                "TransferPurchase": -238014,
+                "AuctionPurchase": -209439
+              },
+              "Stadium": {
+                "Built": 23607,
+                "Usable": 20545,
+                "Condition": 87.03
+              },
+              "LargestOutflowCategory": "TransferPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 34,
+              "Round": 10,
+              "Stage": "round",
+              "Cash": 541287.74,
+              "SalaryBill": 39512,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 226274.31,
+              "StadiumFixedCost": -33049.8,
+              "StadiumVariableCost": -17823.3,
+              "Sponsorship": 184000,
+              "PlayerSalary": -88344,
+              "ContractRenewal": -3253.5,
+              "TransferSale": 132371
+            },
+            "Sales": [
+              {
+                "Id": "58b9e199-c8cc-4c21-9fe0-bb8ab565cce6",
+                "Description": "Venda de Caio Andrade para XV de de Arapiraca",
+                "Amount": 132371
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 357287.74
+          }
+        ],
+        "MinCashAfterFirstRecovery": 184346.78,
+        "FinalCash": 24137972.37,
+        "ObservedSamplesAfterFirstRecovery": 1531,
+        "MinLedgerCash": 141113.03,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 23607,
+          "Usable": 20352,
+          "Condition": 86.21
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1464,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "44d202c3-9291-1845-9543-de65881852cc",
+        "Name": "Real de Imperatriz",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 34,
+              "Round": 18,
+              "Cash": 108925.09,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 31317,
+              "CashBefore": 487472.59,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "PlayerSalary": -31018,
+                "ContractRenewal": -1714.5,
+                "TransferPurchase": -117540,
+                "AuctionPurchase": -300275
+              },
+              "Stadium": {
+                "Built": 10506,
+                "Usable": 9058,
+                "Condition": 86.22
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 34,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 356107.57,
+              "SalaryBill": 25821,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 47646.48,
+              "StadiumFixedCost": -7354.2,
+              "StadiumVariableCost": -4738.8,
+              "Sponsorship": 144000,
+              "PlayerSalary": -31317,
+              "ContractRenewal": -3453,
+              "TransferSale": 102399
+            },
+            "Sales": [
+              {
+                "Id": "223c1020-46ee-4ad1-bfdc-afdac1c2e2e0",
+                "Description": "Venda de Vítor Ferreira para Esportivo de Imperatriz 2",
+                "Amount": 102399
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 212107.57
+          }
+        ],
+        "MinCashAfterFirstRecovery": 191472.15,
+        "FinalCash": 1178577.57,
+        "ObservedSamplesAfterFirstRecovery": 1521,
+        "MinLedgerCash": 108925.09,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 45506,
+          "Usable": 40305,
+          "Condition": 88.57
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1454,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "bfaeaf85-2baa-3949-89b2-899722668ce4",
+        "Name": "XV de de Arapiraca",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 36,
+              "Round": 14,
+              "Cash": 107016.31,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 35920,
+              "CashBefore": 2073328.31,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -2038312
+              },
+              "Stadium": {
+                "Built": 13248,
+                "Usable": 12115,
+                "Condition": 86.26
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 36,
+              "Round": 16,
+              "Stage": "round",
+              "Cash": 643340.22,
+              "SalaryBill": 32952,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 144000,
+              "PlayerSalary": -70781,
+              "TicketRevenue": 39342.81,
+              "StadiumFixedCost": -9273.6,
+              "StadiumVariableCost": -4018.3,
+              "TransferSale": 437054
+            },
+            "Sales": [
+              {
+                "Id": "a4d4ef11-9a90-4a4a-a7e6-a88c188496b3",
+                "Description": "Venda de Pedro Vieira para Bahia de Todos",
+                "Amount": 437054
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 499340.22
+          },
+          {
+            "Entry": {
+              "Season": 100,
+              "Round": 14,
+              "Cash": 97698.94,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 36908,
+              "CashBefore": 602506.94,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -576808
+              },
+              "Stadium": {
+                "Built": 43248,
+                "Usable": 35710,
+                "Condition": 82.57
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 100,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 661151.11,
+              "SalaryBill": 35566,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "Sponsorship": 432000,
+              "PlayerSalary": -147632,
+              "TicketRevenue": 60361.47,
+              "StadiumFixedCost": -30273.6,
+              "StadiumVariableCost": -5870.7,
+              "TransferSale": 254867
+            },
+            "Sales": [
+              {
+                "Id": "3c59850d-76cd-4f8a-b19d-e03051760717",
+                "Description": "Venda de Lucas Lopes para Palestra Verde",
+                "Amount": 254867
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 229151.11
+          }
+        ],
+        "MinCashAfterFirstRecovery": 97698.94,
+        "FinalCash": 589068.56,
+        "ObservedSamplesAfterFirstRecovery": 1479,
+        "MinLedgerCash": 97698.94,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 43248,
+          "Usable": 33807,
+          "Condition": 78.17
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1414,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "bc47a907-f67e-6c4e-b7c6-86e860d1fb3b",
+        "Name": "Nacional de Arapiraca",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 40,
+              "Round": 2,
+              "Cash": 66865.91,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 41806,
+              "CashBefore": 1121717.91,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "TransferPurchase": -287542,
+                "AuctionPurchase": -859310
+              },
+              "Stadium": {
+                "Built": 13881,
+                "Usable": 12368,
+                "Condition": 89.1
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 40,
+              "Round": 4,
+              "Stage": "round",
+              "Cash": 474564.91,
+              "SalaryBill": 40360,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 184000,
+              "PlayerSalary": -83612,
+              "TransferSale": 307311
+            },
+            "Sales": [
+              {
+                "Id": "75d8e7dc-8ba3-4013-abe0-27a4052b9e96",
+                "Description": "Venda de Leandro Rocha para Santa Cruz Coral",
+                "Amount": 307311
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_SALES",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 290564.91
+          },
+          {
+            "Entry": {
+              "Season": 97,
+              "Round": 2,
+              "Cash": 22603.21,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 50894,
+              "CashBefore": 857196.21,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -906593
+              },
+              "Stadium": {
+                "Built": 23881,
+                "Usable": 20941,
+                "Condition": 87.69
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 97,
+              "Round": 6,
+              "Stage": "round",
+              "Cash": 370048.79,
+              "SalaryBill": 49108,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "TicketRevenue": 307784.98,
+              "StadiumFixedCost": -33433.4,
+              "StadiumVariableCost": -11330,
+              "Sponsorship": 288000,
+              "PlayerSalary": -203576
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 82048.78999999998
+          }
+        ],
+        "MinCashAfterFirstRecovery": 22603.21,
+        "FinalCash": 1353872.56,
+        "ObservedSamplesAfterFirstRecovery": 1399,
+        "MinLedgerCash": 22603.21,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 23881,
+          "Usable": 22969,
+          "Condition": 96.18
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1338,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "Name": "Guarani da Serra",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 40,
+              "Round": 14,
+              "Cash": 71933.71,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 47810,
+              "CashBefore": 696706.71,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "AuctionPurchase": -716773
+              },
+              "Stadium": {
+                "Built": 44953,
+                "Usable": 37900,
+                "Condition": 84.31
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 40,
+              "Round": 16,
+              "Stage": "round",
+              "Cash": 372846.31,
+              "SalaryBill": 47810,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 298597.6,
+              "StadiumFixedCost": -62934.2,
+              "StadiumVariableCost": -23130.8,
+              "Sponsorship": 184000,
+              "PlayerSalary": -95620
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 188846.31
+          },
+          {
+            "Entry": {
+              "Season": 54,
+              "Round": 6,
+              "Cash": 86411.3,
+              "Division": "SegundaDivisao",
+              "SalaryBill": 52970,
+              "CashBefore": 1647912.3,
+              "CauseFlows": {
+                "Sponsorship": 125000,
+                "PlayerSalary": -47520,
+                "AuctionPurchase": -1638981
+              },
+              "Stadium": {
+                "Built": 44953,
+                "Usable": 37158,
+                "Condition": 82.66
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 54,
+              "Round": 7,
+              "Stage": "round",
+              "Cash": 424639.68,
+              "SalaryBill": 45877,
+              "ElapsedRounds": 1
+            },
+            "Flows": {
+              "TicketRevenue": 316669.08,
+              "StadiumFixedCost": -31467.1,
+              "StadiumVariableCost": -19003.6,
+              "Sponsorship": 125000,
+              "PlayerSalary": -52970
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 299639.68
+          }
+        ],
+        "MinCashAfterFirstRecovery": 86411.3,
+        "FinalCash": 566207.76,
+        "ObservedSamplesAfterFirstRecovery": 1387,
+        "MinLedgerCash": 71933.71,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 49953,
+          "Usable": 45063,
+          "Condition": 90.21
+        },
+        "Relapses": 1,
+        "ObservedRoundsAfterFirstRecovery": 1326,
+        "SustainableUnderObservedPolicy": false
+      },
+      {
+        "ClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "Name": "Botafogo da Paraíba",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 46,
+              "Round": 2,
+              "Cash": 85047.24,
+              "Division": "QuartaDivisao",
+              "SalaryBill": 38601,
+              "CashBefore": 936343.24,
+              "CauseFlows": {
+                "Sponsorship": 72000,
+                "AuctionPurchase": -923296
+              },
+              "Stadium": {
+                "Built": 25554,
+                "Usable": 20223,
+                "Condition": 79.14
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 46,
+              "Round": 8,
+              "Stage": "round",
+              "Cash": 517183.52,
+              "SalaryBill": 25712,
+              "ElapsedRounds": 6
+            },
+            "Flows": {
+              "Sponsorship": 432000,
+              "PlayerSalary": -180934,
+              "TicketRevenue": 102543.45,
+              "StadiumFixedCost": -35898.67,
+              "StadiumVariableCost": -11368.5,
+              "TransferSale": 125794
+            },
+            "Sales": [
+              {
+                "Id": "1793a403-e355-499c-92ef-89085263131c",
+                "Description": "Venda de Wagner Gomes para Ferroviária Grená",
+                "Amount": 125794
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 85183.52000000002
+          }
+        ],
+        "MinCashAfterFirstRecovery": 191345.36,
+        "FinalCash": 10182946.77,
+        "ObservedSamplesAfterFirstRecovery": 1257,
+        "MinLedgerCash": 85047.24,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 25554,
+          "Usable": 20160,
+          "Condition": 78.89
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1202,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "Name": "Santa Cruz Coral",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 49,
+              "Round": 18,
+              "Cash": 74491.98,
+              "Division": "SegundaDivisao",
+              "SalaryBill": 44599,
+              "CashBefore": 1276338.98,
+              "CauseFlows": {
+                "Sponsorship": 125000,
+                "PlayerSalary": -38634,
+                "AuctionPurchase": -1288213
+              },
+              "Stadium": {
+                "Built": 52975,
+                "Usable": 50559,
+                "Condition": 95.44
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 49,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 529333.98,
+              "SalaryBill": 43257,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "Sponsorship": 250000,
+              "PlayerSalary": -44599,
+              "TransferSale": 249441
+            },
+            "Sales": [
+              {
+                "Id": "79d3de19-b897-43f5-9338-98745edfe44d",
+                "Description": "Venda de Zé Santos para Atlético Paulistano",
+                "Amount": 249441
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 279333.98
+          }
+        ],
+        "MinCashAfterFirstRecovery": 151028.19,
+        "FinalCash": 1230675.67,
+        "ObservedSamplesAfterFirstRecovery": 1176,
+        "MinLedgerCash": 74491.98,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 52975,
+          "Usable": 39233,
+          "Condition": 74.06
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1124,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "Name": "CSA Azulão",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 54,
+              "Round": 18,
+              "Cash": 131159.39,
+              "Division": "SegundaDivisao",
+              "SalaryBill": 45064,
+              "CashBefore": 649086.89,
+              "CauseFlows": {
+                "Sponsorship": 125000,
+                "PlayerSalary": -43253,
+                "ContractRenewal": -6403.5,
+                "AuctionPurchase": -593271
+              },
+              "Stadium": {
+                "Built": 36312,
+                "Usable": 32050,
+                "Condition": 86.39
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 54,
+              "Round": 19,
+              "Stage": "round",
+              "Cash": 464810.34,
+              "SalaryBill": 45064,
+              "ElapsedRounds": 1
+            },
+            "Flows": {
+              "TicketRevenue": 297057.85,
+              "StadiumFixedCost": -25418.4,
+              "StadiumVariableCost": -17924.5,
+              "Sponsorship": 125000,
+              "PlayerSalary": -45064
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 339810.34
+          }
+        ],
+        "MinCashAfterFirstRecovery": 194827.91,
+        "FinalCash": 23594053.82,
+        "ObservedSamplesAfterFirstRecovery": 1062,
+        "MinLedgerCash": 131159.39,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 51312,
+          "Usable": 42245,
+          "Condition": 82.33
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 1015,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "Name": "Atlético Paulistano",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 55,
+              "Round": 16,
+              "Cash": 75212.83,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 52247,
+              "CashBefore": 739285.83,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -49247,
+                "TransferSale": 189086,
+                "AuctionPurchase": -895912
+              },
+              "Stadium": {
+                "Built": 55676,
+                "Usable": 48917,
+                "Condition": 87.86
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 55,
+              "Round": 20,
+              "Stage": "round",
+              "Cash": 612467.51,
+              "SalaryBill": 48308,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 368000,
+              "TicketRevenue": 139114.98,
+              "StadiumFixedCost": -38973.2,
+              "StadiumVariableCost": -10946.1,
+              "PlayerSalary": -104494,
+              "TransferSale": 184553
+            },
+            "Sales": [
+              {
+                "Id": "3f4789c1-8496-44b6-8abf-67b92615cb53",
+                "Description": "Venda de João Marques para São Bento de Uberlândia 2",
+                "Amount": 184553
+              }
+            ],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": true,
+            "ArithmeticBalanceWithoutSponsorship": 244467.51
+          }
+        ],
+        "MinCashAfterFirstRecovery": 221207.49,
+        "FinalCash": 4249552.89,
+        "ObservedSamplesAfterFirstRecovery": 1038,
+        "MinLedgerCash": 75212.83,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 55676,
+          "Usable": 44207,
+          "Condition": 79.4
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 992,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "2ab1b5e8-7aa1-0c4d-8cc6-256ff67e95ab",
+        "Name": "Estrela de Ponta Grossa 2",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 57,
+              "Round": 18,
+              "Cash": 110163.05,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 42842,
+              "CashBefore": 1189788.05,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -37942,
+                "AuctionPurchase": -1133683
+              },
+              "Stadium": {
+                "Built": 14263,
+                "Usable": 12292,
+                "Condition": 86.18
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 57,
+              "Round": 22,
+              "Stage": "round",
+              "Cash": 454555.31,
+              "SalaryBill": 42842,
+              "ElapsedRounds": 4
+            },
+            "Flows": {
+              "Sponsorship": 368000,
+              "PlayerSalary": -128526,
+              "ContractRenewal": -2701.5,
+              "TicketRevenue": 127501.66,
+              "StadiumFixedCost": -9984.1,
+              "StadiumVariableCost": -9897.8
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 86555.31
+          }
+        ],
+        "MinCashAfterFirstRecovery": 180214.83,
+        "FinalCash": 4059543.36,
+        "ObservedSamplesAfterFirstRecovery": 990,
+        "MinLedgerCash": 110163.05,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 29263,
+          "Usable": 25105,
+          "Condition": 85.79
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 946,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "Name": "Ferroviária Grená",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 60,
+              "Round": 10,
+              "Cash": 84122.21,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 54805,
+              "CashBefore": 1614063.39,
+              "CauseFlows": {
+                "TicketRevenue": 142367.52,
+                "StadiumFixedCost": -19926.9,
+                "StadiumVariableCost": -10920.8,
+                "Sponsorship": 92000,
+                "PlayerSalary": -48009,
+                "TransferPurchase": -532905,
+                "AuctionPurchase": -1152547
+              },
+              "Stadium": {
+                "Built": 28467,
+                "Usable": 23685,
+                "Condition": 83.2
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 60,
+              "Round": 12,
+              "Stage": "round",
+              "Cash": 388960.77,
+              "SalaryBill": 54805,
+              "ElapsedRounds": 2
+            },
+            "Flows": {
+              "TicketRevenue": 293561.86,
+              "StadiumFixedCost": -39853.8,
+              "StadiumVariableCost": -23259.5,
+              "Sponsorship": 184000,
+              "PlayerSalary": -109610
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 204960.77000000002
+          }
+        ],
+        "MinCashAfterFirstRecovery": 219929.71,
+        "FinalCash": 6759856.72,
+        "ObservedSamplesAfterFirstRecovery": 931,
+        "MinLedgerCash": 84122.21,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 43467,
+          "Usable": 36412,
+          "Condition": 83.77
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 890,
+        "SustainableUnderObservedPolicy": true
+      },
+      {
+        "ClubId": "2d118e4f-36ff-6a48-966d-89966e3684c3",
+        "Name": "Independente de Uberlândia",
+        "Episodes": [
+          {
+            "Entry": {
+              "Season": 71,
+              "Round": 18,
+              "Cash": 9373.29,
+              "Division": "TerceiraDivisao",
+              "SalaryBill": 41534,
+              "CashBefore": 819930.29,
+              "CauseFlows": {
+                "Sponsorship": 92000,
+                "PlayerSalary": -40137,
+                "ContractRenewal": -15144,
+                "TransferPurchase": -269396,
+                "AuctionPurchase": -577880
+              },
+              "Stadium": {
+                "Built": 8604,
+                "Usable": 7393,
+                "Condition": 85.93
+              },
+              "LargestOutflowCategory": "AuctionPurchase",
+              "CauseInterpretation": "Largest recorded outflow in the interval preceding the crisis sample; not proof of an exclusive counterfactual cause."
+            },
+            "Recovery": {
+              "Season": 71,
+              "Round": 21,
+              "Stage": "round",
+              "Cash": 380981.57,
+              "SalaryBill": 41534,
+              "ElapsedRounds": 3
+            },
+            "Flows": {
+              "TicketRevenue": 209665.48,
+              "StadiumFixedCost": -12045.6,
+              "StadiumVariableCost": -16264.6,
+              "Sponsorship": 276000,
+              "PlayerSalary": -83068,
+              "ContractRenewal": -2679
+            },
+            "Sales": [],
+            "StadiumInvestmentWhileInCrisis": 0,
+            "PrimaryMechanism": "RECOVERY_BY_REVENUE",
+            "CostReductionObserved": false,
+            "ArithmeticBalanceWithoutSponsorship": 104981.57
+          }
+        ],
+        "MinCashAfterFirstRecovery": 152566.76,
+        "FinalCash": 2460702.16,
+        "ObservedSamplesAfterFirstRecovery": 669,
+        "MinLedgerCash": 9373.29,
+        "NegativeLedgerEntries": 0,
+        "FinalRoundOrdinal": 2200,
+        "FinalStadium": {
+          "Built": 13604,
+          "Usable": 11664,
+          "Condition": 85.74
+        },
+        "Relapses": 0,
+        "ObservedRoundsAfterFirstRecovery": 639,
+        "SustainableUnderObservedPolicy": true
+      }
+    ],
+    "PrimaryMechanisms": {
+      "RECOVERY_BY_REVENUE": 24,
+      "RECOVERY_BY_SALES": 5
+    },
+    "SustainableClubs": 11,
+    "ClubsWithRelapse": 8,
+    "Note": "Flows before the entry sample are recorded as causes; recovery flows start after entry. Ledger minima include intraround states. Without-sponsorship figure is arithmetic with decisions held fixed, not a simulated alternative economy."
+  },
+  "Rules": {
+    "SponsorshipPerRound": {
+      "Primeira": 185000,
+      "Segunda": 125000,
+      "Terceira": 92000,
+      "Quarta": 72000,
+      "Distrital": 20000
+    },
+    "All22RoundsFunded": true,
+    "SalaryAndContractAgingOnlyWhenClubHasMatch": true,
+    "Meaning": "Documented005 design funds eliminated clubs; this asymmetry materially supports recovery. Sponsorship is external revenue, not an inter-club transfer or hidden emergency credit."
+  },
+  "Classification": "DESIGN_CHOICE; long-term growing cash and guaranteed sponsorship deserve balance observation, not an unrequested coefficient change."
+}

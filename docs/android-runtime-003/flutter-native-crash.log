@@ -1,0 +1,28 @@
+10-29 21:33:04.184  3372  3372 F libc    : Fatal signal 6 (SIGABRT), code -6 in tid 3372 (elifoot_flutter)
+10-29 21:33:05.061  3390  3390 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+10-29 21:33:05.063  3390  3390 F DEBUG   : Build fingerprint: 'Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys'
+10-29 21:33:05.063  3390  3390 F DEBUG   : Revision: '0'
+10-29 21:33:05.063  3390  3390 F DEBUG   : ABI: 'x86_64'
+10-29 21:33:05.065  3390  3390 F DEBUG   : pid: 3372, tid: 3372, name: elifoot_flutter  >>> com.example.elifoot_flutter <<<
+10-29 21:33:05.066  3390  3390 F DEBUG   : signal 6 (SIGABRT), code -6 (SI_TKILL), fault addr --------
+10-29 21:33:05.088  3390  3390 F DEBUG   : Abort message: '[FATAL:flutter/shell/platform/android/flutter_main.cc(274)] Check failed: !settings.enable_impeller. Impeller does not support software rendering. Either disable software rendering or disable impeller.
+10-29 21:33:05.088  3390  3390 F DEBUG   : '
+10-29 21:33:05.090  3390  3390 F DEBUG   :     rax 0000000000000000  rbx 00007cc854482be8  rcx ffffffffffffffff  rdx 0000000000000006
+10-29 21:33:05.090  3390  3390 F DEBUG   :     rsi 0000000000000d2c  rdi 0000000000000d2c
+10-29 21:33:05.091  3390  3390 F DEBUG   :     r8  fffffffffffffff0  r9  00007cc8542d7090  r10 0000000000000008  r11 0000000000000202
+10-29 21:33:05.091  3390  3390 F DEBUG   :     r12 0000000000000d2c  r13 0000000000000006  r14 0000000000000007  r15 00007fff081b4210
+10-29 21:33:05.091  3390  3390 F DEBUG   :     cs  0000000000000033  ss  000000000000002b
+10-29 21:33:05.091  3390  3390 F DEBUG   :     rip 00007cc85053abe7  rbp 000000000000000b  rsp 00007fff081b4158  eflags 0000000000000202
+10-29 21:33:06.046  3390  3390 F DEBUG   : 
+10-29 21:33:06.046  3390  3390 F DEBUG   : backtrace:
+10-29 21:33:06.047  3390  3390 F DEBUG   :     #00 pc 000000000008dbe7  /system/lib64/libc.so (tgkill+7)
+10-29 21:33:06.048  3390  3390 F DEBUG   :     #01 pc 000000000008a681  /system/lib64/libc.so (pthread_kill+65)
+10-29 21:33:06.048  3390  3390 F DEBUG   :     #02 pc 00000000000302c1  /system/lib64/libc.so (raise+17)
+10-29 21:33:06.048  3390  3390 F DEBUG   :     #03 pc 00000000000287fd  /system/lib64/libc.so (abort+77)
+10-29 21:33:06.049  3390  3390 F DEBUG   :     #04 pc 0000000001a84355  /data/app/com.example.elifoot_flutter-2/base.apk (offset 0x8914000)
+10-29 21:33:06.049  3390  3390 F DEBUG   :     #05 pc 0000000001a84317  /data/app/com.example.elifoot_flutter-2/base.apk (offset 0x8914000)
+10-29 21:33:06.049  3390  3390 F DEBUG   :     #06 pc 0000000001a554ae  /data/app/com.example.elifoot_flutter-2/base.apk (offset 0x8914000)
+10-29 21:33:06.053  3390  3390 F DEBUG   :     #07 pc 0000000001a55205  /data/app/com.example.elifoot_flutter-2/base.apk (offset 0x8914000)
+10-29 21:33:06.054  3390  3390 F DEBUG   :     #08 pc 0000000000b788ff  /data/app/com.example.elifoot_flutter-2/oat/x86_64/base.odex (offset 0xad2000)
+10-29 21:33:06.054  3390  3390 F DEBUG   :     #09 pc 00000000007f907f  <anonymous:00007fff079bc000>
+10-29 21:33:06.054  3390  3390 F DEBUG   :     #10 pc 0000000000000000  <unknown>

@@ -1,0 +1,977 @@
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs" "b/D:\\elifoot_98\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
+index 379d3dc..72888ff 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
++++ "b/D:\\elifoot_98\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
+@@ -391,7 +391,7 @@ public partial class MultiSeasonAndBenchmarkTests
+         public decimal TransferSpendTotal { get; set; }
+         public int LeagueTitles { get; set; }
+         public int CupTitles { get; set; }
+-        public int CoachPoints { get; set; }
++        public decimal CoachPoints { get; set; }
+         public int Wins { get; set; }
+         public int Draws { get; set; }
+         public int Losses { get; set; }
+@@ -967,6 +967,7 @@ public partial class MultiSeasonAndBenchmarkTests
+ 
+         foreach (var match in roundFixtures)
+         {
++            CoachCareerEngine.CaptureLeadership(world, match);
+             var home = clubDict[match.HomeClubId];
+             var away = clubDict[match.AwayClubId];
+             var homeSquad = playersByClub.GetValueOrDefault(home.Id) ?? new List<Player>();
+@@ -1062,10 +1063,14 @@ public partial class MultiSeasonAndBenchmarkTests
+         List<Player> clubSquad,
+         ExperimentResult result)
+     {
+-        var (isValid, _) = SquadValidator.ValidatePreMatchLineup(selectedFormation, starterIds, benchIds, clubSquad, allowClassic505: true);
++        var (isValid, validationError) = SquadValidator.ValidatePreMatchLineup(selectedFormation, starterIds, benchIds, clubSquad, allowClassic505: true);
+         if (!isValid)
+         {
+             result.InvalidLineupSelectionViolations++;
++            Directory.CreateDirectory(DocsDir);
++            File.AppendAllText(Path.Combine(DocsDir,"invalid-lineups-008.jsonl"),JsonSerializer.Serialize(new {
++                result.ExperimentId,managerId,selectedFormation,validationError,starterIds,benchIds,
++                Squad=clubSquad.Select(p=>new{p.Id,p.ClubId,p.Position,p.InjuryRoundsRemaining,p.SuspensionRoundsRemaining})})+Environment.NewLine);
+         }
+ 
+         if (result.ManagerTrackers.TryGetValue(managerId, out var tr))
+@@ -1476,6 +1481,18 @@ public partial class MultiSeasonAndBenchmarkTests
+             club.PreferredStarterIds = starters;
+             club.PreferredBenchIds = bench;
+         }
++
++        // Later agents can buy a previously prepared club's listed starter. Finalize all human
++        // lineups only after every agent's market actions, matching the server's kickoff validation.
++        foreach (var hc in world.HumanCoaches.Where(h => h.CurrentClubId != null))
++        {
++            var club = world.Clubs.Single(c => c.Id == hc.CurrentClubId);
++            var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
++            if (SquadValidator.ValidatePreMatchLineup(club.PreferredFormation,club.PreferredStarterIds,club.PreferredBenchIds,squad,world.AllowClassic505).IsValid) continue;
++            var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation,TacticalFormations.All["4-4-2"]);
++            var (starters,bench)=AiManagerBrain.BuildStartersAndBench(squad,spec);
++            club.PreferredStarterIds=starters;club.PreferredBenchIds=bench;
++        }
+     }
+ 
+     private static void HarvestRoundEconomyMetrics(
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs" "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+index 7f93e88..028005c 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+@@ -41,6 +41,7 @@ public sealed class EfWorldRepository : IWorldRepository
+         var world = JsonSerializer.Deserialize<GameWorld>(record.SnapshotJson, JsonOptions);
+         if (world != null)
+         {
++            CoachCareerEngine.EnsureMigrated(world);
+             MemoryCache[world.Id] = world;
+         }
+         return world;
+@@ -71,6 +72,7 @@ public sealed class EfWorldRepository : IWorldRepository
+         var world = JsonSerializer.Deserialize<GameWorld>(record.SnapshotJson, JsonOptions);
+         if (world != null)
+         {
++            CoachCareerEngine.EnsureMigrated(world);
+             MemoryCache[world.Id] = world;
+         }
+         return world;
+@@ -94,6 +96,7 @@ public sealed class EfWorldRepository : IWorldRepository
+                 var w = JsonSerializer.Deserialize<GameWorld>(r.SnapshotJson, JsonOptions);
+                 if (w != null)
+                 {
++                    CoachCareerEngine.EnsureMigrated(w);
+                     MemoryCache[w.Id] = w;
+                     result.Add(w);
+                 }
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\WorldSeedFactory.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
+index 2548dba..e091bd0 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
+@@ -341,6 +341,7 @@ public static class WorldSeedFactory
+ 
+         // Initialize Season 1 fixtures (14 League rounds + Cup Preliminary & Knockout schedule)
+         CompetitionAndSeasonEngine.InitializeSeasonFixtures(world);
++        CoachCareerEngine.EnsureMigrated(world, isNewWorld: true);
+ 
+         return world;
+     }
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\Entities.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+index 222fa06..c043df4 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\Entities.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+@@ -36,6 +36,9 @@ public class GameWorld
+     public List<SeasonHistoryEntry> SeasonHistories { get; set; } = new();
+     public List<AuditLogEntry> AuditLogs { get; set; } = new();
+     public List<BankLoan> BankLoans { get; set; } = new();
++    public int CareerRulesVersion { get; set; }
++    public CoachMoraleRules CoachMoraleRules { get; set; } = new();
++    public List<CoachTitleRecord> CoachTitles { get; set; } = new();
+ 
+     // The round guard must survive snapshot reloads. The transaction-key cache below is rebuilt from the ledger.
+     public HashSet<string> SettledFinancialRounds { get; set; } = new();
+@@ -78,6 +81,10 @@ public class Club
+ 
+     public Stadium Stadium { get; set; } = new();
+     public ManagerSquadPlan? LatestSquadPlan { get; set; }
++    public Guid? CareerVacancyId { get; set; }
++    public bool HasProvisionalManager { get; set; }
++    public int LastVacancySearchOrdinal { get; set; } = -1;
++    public int CareerVacancySequence { get; set; }
+ }
+ 
+ public class Stadium
+@@ -149,13 +156,15 @@ public class AiManager
+     // Career stats
+     public int LeagueTitles { get; set; }
+     public int CupTitles { get; set; }
+-    public int CoachPoints { get; set; }
++    public decimal CoachPoints { get; set; }
+     public int TotalWins { get; set; }
+     public int TotalDraws { get; set; }
+     public int TotalLosses { get; set; }
+     public int SeasonsManaged { get; set; }
+     public int Dismissals { get; set; }
+     public string LastDecisionLog { get; set; } = string.Empty;
++    public CoachCareerState Career { get; set; } = new();
++    public List<CoachEmploymentRecord> EmploymentHistory { get; set; } = new();
+ }
+ 
+ public class HumanCoach
+@@ -181,13 +190,14 @@ public class HumanCoach
+     // Career stats & classic ranking
+     public int LeagueTitles { get; set; }
+     public int CupTitles { get; set; }
+-    public int CoachPoints { get; set; }
++    public decimal CoachPoints { get; set; }
+     public int TotalWins { get; set; }
+     public int TotalDraws { get; set; }
+     public int TotalLosses { get; set; }
+     public int SeasonsManaged { get; set; }
+     public int Dismissals { get; set; }
+     public List<CoachEmploymentRecord> EmploymentHistory { get; set; } = new();
++    public CoachCareerState Career { get; set; } = new();
+ }
+ 
+ public class CoachEmploymentRecord
+@@ -221,6 +231,12 @@ public class ManagerSquadPlan
+ 
+ public class MatchFixture
+ {
++    public bool CareerLeadershipCaptured { get; set; }
++    public Guid? HomeCoachAtKickoffId { get; set; }
++    public Guid? AwayCoachAtKickoffId { get; set; }
++    public int HomeMoraleAtKickoff { get; set; }
++    public int AwayMoraleAtKickoff { get; set; }
++    public bool CareerResultsApplied { get; set; }
+     public Guid Id { get; set; } = Guid.NewGuid();
+     public Guid GameWorldId { get; set; }
+     public int SeasonNumber { get; set; }
+@@ -396,6 +412,13 @@ public class BankLoan
+ 
+ public class JobInvitation
+ {
++    public bool IsRejected { get; set; }
++    public bool IsAiCandidate { get; set; }
++    public Guid VacancyId { get; set; }
++    public string Explanation { get; set; } = string.Empty;
++    public decimal CandidateScore { get; set; }
++    public decimal ProjectImprovement { get; set; }
++    public int ExpiresAtOrdinal { get; set; }
+     public Guid Id { get; set; } = Guid.NewGuid();
+     public Guid GameWorldId { get; set; }
+     public Guid CoachId { get; set; }
+@@ -406,6 +429,28 @@ public class JobInvitation
+     public bool IsExpired { get; set; }
+ }
+ 
++public class CoachMoraleRules
++{
++    public int GreenMinimum { get; set; } = 60;
++    public int YellowMinimum { get; set; } = 30;
++    public int UnemployedRecoveryPerRound { get; set; } = 6;
++    public string Band(int value) => value >= GreenMinimum ? "VERDE" : value >= YellowMinimum ? "AMARELA" : "VERMELHA";
++}
++
++public class CoachCareerState
++{
++    public int Morale { get; set; } = 70;
++    public int WinlessMatches { get; set; }
++    public int UnemployedSinceOrdinal { get; set; } = -1;
++    public int LastRecoveryOrdinal { get; set; } = -1;
++    public int LastMoveOrdinal { get; set; } = -100;
++    public List<int> RecentResults { get; set; } = new();
++    public List<CoachMoraleEntry> MoraleHistory { get; set; } = new();
++}
++
++public record CoachMoraleEntry(int Season, int Round, Guid? MatchId, int Before, int After, string Reason);
++public record CoachTitleRecord(int Season, DivisionTier? Division, Guid ClubId, Guid CoachId, string TitleType);
++
+ public class SeasonHistoryEntry
+ {
+     public Guid Id { get; set; } = Guid.NewGuid();
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+index 2e0a1cd..e9de3c0 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+@@ -296,18 +296,19 @@ public static class CompetitionAndSeasonEngine
+     }
+ 
+     /// <summary>
+-    /// Updates League table, coach career points (Away Win=3, Home Win=2, Away Draw=2, Home Draw=1, Loss=0),
++    /// Updates League table and008 career points/morale using the coach captured at kickoff,
+     /// and mid-season dismissal checks when a round finishes.
+     /// </summary>
+     public static void ApplyFinishedRoundResultsToStandingsAndCareers(
+         GameWorld world,
+         IReadOnlyList<MatchFixture> roundMatches)
+     {
++        CoachCareerEngine.EnsureMigrated(world);
+         var clubDict = world.Clubs.ToDictionary(c => c.Id);
+-        var humanDict = world.HumanCoaches.ToDictionary(h => h.Id);
+-        var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+-
+-        foreach (var match in roundMatches.Where(m => m.IsFinished))
++        bool updated = false;
++        var pending = roundMatches.Where(m => m.IsFinished && m.CurrentMinute > 0 && !m.CareerResultsApplied).ToList();
++        foreach (var match in pending) CoachCareerEngine.CaptureLeadership(world, match);
++        foreach (var match in pending)
+         {
+             if (!clubDict.TryGetValue(match.HomeClubId, out var home) ||
+                 !clubDict.TryGetValue(match.AwayClubId, out var away))
+@@ -354,41 +355,21 @@ public static class CompetitionAndSeasonEngine
+                 }
+             }
+ 
+-            // Classic Coach Ranking Points:
+-            // Home win = 2, Away win = 3, Home draw = 1, Away draw = 2, Loss = 0
+-            int homeCoachPts = match.HomeGoals > match.AwayGoals ? 2 : (match.HomeGoals == match.AwayGoals ? 1 : 0);
+-            int awayCoachPts = match.AwayGoals > match.HomeGoals ? 3 : (match.HomeGoals == match.AwayGoals ? 2 : 0);
+-
+-            AwardCoachMatchStats(home, homeCoachPts, match.HomeGoals > match.AwayGoals, match.HomeGoals == match.AwayGoals, humanDict, aiDict);
+-            AwardCoachMatchStats(away, awayCoachPts, match.AwayGoals > match.HomeGoals, match.HomeGoals == match.AwayGoals, humanDict, aiDict);
+         }
+ 
+-        // Generate job invitations for unemployed human coaches if any division club has high winless streak
+-        GenerateJobInvitationsForUnemployedHumans(world);
+-    }
+-
+-    private static void AwardCoachMatchStats(
+-        Club club,
+-        int points,
+-        bool isWin,
+-        bool isDraw,
+-        Dictionary<Guid, HumanCoach> humans,
+-        Dictionary<Guid, AiManager> aiManagers)
+-    {
+-        if (club.HumanCoachId != null && humans.TryGetValue(club.HumanCoachId.Value, out var h))
+-        {
+-            h.CoachPoints += points;
+-            if (isWin) h.TotalWins++;
+-            else if (isDraw) h.TotalDraws++;
+-            else h.TotalLosses++;
+-        }
+-        else if (club.AiManagerId != null && aiManagers.TryGetValue(club.AiManagerId.Value, out var ai))
++        // Morale must see the completed league table, independent of fixture ordering within this round.
++        foreach (var match in pending)
+         {
+-            ai.CoachPoints += points;
+-            if (isWin) ai.TotalWins++;
+-            else if (isDraw) ai.TotalDraws++;
+-            else ai.TotalLosses++;
++            if (!clubDict.TryGetValue(match.HomeClubId, out var home) || !clubDict.TryGetValue(match.AwayClubId, out var away)) continue;
++            CoachCareerEngine.ApplyMatchCareer(world, match, home, away);
++            match.CareerResultsApplied = true;
++            updated = true;
+         }
++
++        if (!updated) return;
++        CoachCareerEngine.AwardCompletedLeagues(world);
++        CoachCareerEngine.RecoverUnemployed(world);
++        GenerateJobInvitationsForUnemployedHumans(world);
+     }
+ 
+     public static List<DivisionStandingRowDto> GetDivisionStandings(GameWorld world, DivisionTier tier)
+@@ -452,6 +433,7 @@ public static class CompetitionAndSeasonEngine
+     /// </summary>
+     public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world)
+     {
++        CoachCareerEngine.EnsureMigrated(world);
+         var div1 = GetDivisionStandings(world, DivisionTier.PrimeiraDivisao);
+         var div2 = GetDivisionStandings(world, DivisionTier.SegundaDivisao);
+         var div3 = GetDivisionStandings(world, DivisionTier.TerceiraDivisao);
+@@ -464,11 +446,7 @@ public static class CompetitionAndSeasonEngine
+         var champRow = div1.First();
+         var champClub = clubDict[champRow.ClubId];
+ 
+-        // Award League Title to 1st Division Champion coach
+-        if (champClub.HumanCoachId != null && humanDict.TryGetValue(champClub.HumanCoachId.Value, out var champHuman))
+-            champHuman.LeagueTitles++;
+-        else if (champClub.AiManagerId != null && aiDict.TryGetValue(champClub.AiManagerId.Value, out var champAi))
+-            champAi.LeagueTitles++;
++        CoachCareerEngine.AwardCompletedLeagues(world);
+ 
+         // Determine Cup Champion
+         var cupFinal = world.Fixtures
+@@ -476,10 +454,7 @@ public static class CompetitionAndSeasonEngine
+         Guid cupChampId = cupFinal?.WinnerClubId ?? champClub.Id;
+         var cupChampClub = clubDict.GetValueOrDefault(cupChampId, champClub);
+ 
+-        if (cupChampClub.HumanCoachId != null && humanDict.TryGetValue(cupChampClub.HumanCoachId.Value, out var cupHuman))
+-            cupHuman.CupTitles++;
+-        else if (cupChampClub.AiManagerId != null && aiDict.TryGetValue(cupChampClub.AiManagerId.Value, out var cupAi))
+-            cupAi.CupTitles++;
++        // Cup titles are awarded once by the played final, never by a fallback club.
+ 
+         // Award prize money idempotently
+         MarketAndEconomyEngine.TryRecordTransaction(world, champClub, FinancialTransactionCategory.PrizeMoney,
+@@ -565,7 +540,9 @@ public static class CompetitionAndSeasonEngine
+         }
+ 
+         // AI Manager evaluation & rotation for relegated/underperforming AI clubs
+-        RotateUnderperformingAiManagers(world, rel1.Concat(rel2).Concat(rel3).Concat(rel4).ToList());
++        foreach (var relegated in rel1.Concat(rel2).Concat(rel3).Concat(rel4))
++            if (relegated.AiManagerId is Guid managerId && !relegated.HasProvisionalManager)
++                CoachCareerEngine.Dismiss(world, managerId, relegated, "AI_RELEGATION");
+ 
+         // Increment seasons managed
+         foreach (var h in world.HumanCoaches) h.SeasonsManaged++;
+@@ -689,116 +666,10 @@ public static class CompetitionAndSeasonEngine
+     }
+ 
+     public static void DismissHumanCoach(GameWorld world, HumanCoach coach, Club club, string reason)
+-    {
+-        coach.Dismissals++;
+-        coach.CurrentClubId = null;
+-        coach.IsReadyForRound = false;
+-        club.HumanCoachId = null;
+-
+-        var openRecord = coach.EmploymentHistory.LastOrDefault(e => e.ClubId == club.Id && e.EndSeason == null);
+-        if (openRecord != null)
+-        {
+-            openRecord.EndSeason = world.SeasonNumber;
+-            openRecord.EndRound = world.RoundNumber;
+-            openRecord.ReasonForLeaving = reason;
+-        }
+-
+-        // Assign an available AI Manager so the club always has a manager
+-        var freeAi = world.AiManagers.FirstOrDefault(m => m.CurrentClubId == null);
+-        if (freeAi == null)
+-        {
+-            freeAi = new AiManager
+-            {
+-                GameWorldId = world.Id,
+-                Name = $"Técnico {club.ShortName}",
+-                Identity = ManagerTacticalIdentity.Equilibrado,
+-                PreferredFormations = AiManagerBrain.GetDefaultPreferencesForIdentity(ManagerTacticalIdentity.Equilibrado)
+-            };
+-            world.AiManagers.Add(freeAi);
+-        }
+-        freeAi.CurrentClubId = club.Id;
+-        club.AiManagerId = freeAi.Id;
+-
+-        world.AuditLogs.Add(new AuditLogEntry
+-        {
+-            GameWorldId = world.Id,
+-            SeasonNumber = world.SeasonNumber,
+-            RoundNumber = world.RoundNumber,
+-            ActionType = "COACH_DISMISSED",
+-            ActorCoachId = coach.Id,
+-            Description = $"{coach.Nickname} deixou o comando do {club.Name}: {reason}."
+-        });
+-    }
+-
+-    /// <summary>
+-    /// Rotates AI managers of relegated clubs so managers carry their own tactical philosophy to new clubs.
+-    /// </summary>
+-    private static void RotateUnderperformingAiManagers(GameWorld world, List<Club> relegatedClubs)
+-    {
+-        var aiClubs = relegatedClubs.Where(c => c.HumanCoachId == null && c.AiManagerId != null).ToList();
+-        if (aiClubs.Count < 2) return;
+-
+-        var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+-        var managersToRotate = new List<AiManager>();
+-
+-        foreach (var club in aiClubs)
+-        {
+-            if (club.AiManagerId != null && aiDict.TryGetValue(club.AiManagerId.Value, out var mgr))
+-            {
+-                mgr.Dismissals++;
+-                mgr.CurrentClubId = null;
+-                club.AiManagerId = null;
+-                managersToRotate.Add(mgr);
+-            }
+-        }
+-
+-        // Reassign rotated managers to different clubs (shifted by 1) so each club experiences a new manager philosophy
+-        for (int i = 0; i < aiClubs.Count; i++)
+-        {
+-            var club = aiClubs[i];
+-            var newMgr = managersToRotate[(i + 1) % managersToRotate.Count];
+-            club.AiManagerId = newMgr.Id;
+-            newMgr.CurrentClubId = club.Id;
+-        }
+-    }
++        => CoachCareerEngine.Dismiss(world, coach.Id, club, reason);
+ 
+     public static void GenerateJobInvitationsForUnemployedHumans(GameWorld world)
+-    {
+-        var unemployedHumans = world.HumanCoaches.Where(h => h.IsUnemployed).ToList();
+-        if (unemployedHumans.Count == 0) return;
+-
+-        // Division clubs without a human coach (especially 3rd and 4th division clubs) can invite unemployed humans
+-        var candidateClubs = world.Clubs
+-            .Where(c => c.HumanCoachId == null && c.DivisionTier != DivisionTier.Distrital)
+-            .OrderByDescending(c => c.DivisionTier) // 4th and 3rd division first, or higher if coach has high points
+-            .ThenByDescending(c => c.ConsecutiveWinlessRounds)
+-            .ToList();
+-
+-        foreach (var coach in unemployedHumans)
+-        {
+-            var existingOpen = world.JobInvitations
+-                .Where(inv => inv.CoachId == coach.Id && !inv.IsAccepted && !inv.IsExpired)
+-                .ToList();
+-            if (existingOpen.Count >= 3) continue;
+-
+-            var eligibleClubs = candidateClubs
+-                .Where(c => coach.LeagueTitles > 0 || coach.CoachPoints >= 30 || c.DivisionTier >= DivisionTier.TerceiraDivisao)
+-                .Where(c => existingOpen.All(inv => inv.ClubId != c.Id))
+-                .Take(3 - existingOpen.Count);
+-
+-            foreach (var club in eligibleClubs)
+-            {
+-                world.JobInvitations.Add(new JobInvitation
+-                {
+-                    GameWorldId = world.Id,
+-                    CoachId = coach.Id,
+-                    ClubId = club.Id,
+-                    CreatedAtSeason = world.SeasonNumber,
+-                    CreatedAtRound = world.RoundNumber
+-                });
+-            }
+-        }
+-    }
++        => CoachCareerEngine.ProcessVacancies(world);
+ 
+     public static List<CoachRankingDto> GetClassicCoachRanking(GameWorld world)
+     {
+@@ -829,7 +700,7 @@ public static class CompetitionAndSeasonEngine
+         foreach (var ai in world.AiManagers)
+         {
+             Club? club = ai.CurrentClubId != null ? clubDict.GetValueOrDefault(ai.CurrentClubId.Value) : null;
+-            if (club?.DivisionTier == DivisionTier.Distrital && ai.CoachPoints == 0 && ai.CupTitles == 0)
++            if (club?.DivisionTier == DivisionTier.Distrital && ai.CoachPoints == 0 && ai.CupTitles == 0 && ai.LeagueTitles == 0)
+             {
+                 continue;
+             }
+@@ -856,8 +727,7 @@ public static class CompetitionAndSeasonEngine
+             .OrderByDescending(e => e.LeagueTitles)
+             .ThenByDescending(e => e.CupTitles)
+             .ThenByDescending(e => e.CoachPoints)
+-            .ThenByDescending(e => e.TotalWins)
+-            .ThenByDescending(e => e.IsHuman)
++            .ThenBy(e => e.CoachId)
+             .ToList();
+ 
+         for (int i = 0; i < ordered.Count; i++)
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Contracts\\Dtos.cs" "b/D:\\elifoot_98\\src\\Elifoot.Contracts\\Dtos.cs"
+index 421a16e..4817d9e 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Contracts\\Dtos.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Contracts\\Dtos.cs"
+@@ -88,7 +88,9 @@ public record ParticipantReadyItemDto(
+     int UsedSubstitutions,
+     int MaxSubstitutions,
+     int UsedPauseWindows,
+-    int MaxPauseWindows);
++    int MaxPauseWindows,
++    int Morale = 70,
++    string MoraleBand = "VERDE");
+ 
+ public record PauseWindowStateDto(
+     Guid PauseWindowId,
+@@ -302,7 +304,7 @@ public record CoachRankingDto(
+     DivisionTier? CurrentDivision,
+     int LeagueTitles,
+     int CupTitles,
+-    int CoachPoints,
++    decimal CoachPoints,
+     int TotalWins,
+     int TotalDraws,
+     int TotalLosses,
+@@ -367,7 +369,14 @@ public record JobInvitationDto(
+     int SquadSize,
+     int CreatedAtSeason,
+     int CreatedAtRound,
+-    bool IsAccepted);
++    bool IsAccepted,
++    bool IsRejected = false,
++    string Explanation = "",
++    int TablePosition = 0,
++    double SquadStrength = 0,
++    int StadiumCapacity = 0,
++    string Objective = "",
++    decimal ProjectImprovement = 0);
+ 
+ public record WorldPackageExportDto(
+     string FormatVersion,
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\lib\\main.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\main.dart"
+index 34cb04c..3404b0d 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\lib\\main.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\main.dart"
+@@ -741,6 +741,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+                 ),
+               ),
+               // Always-visible Ready Counter badge
++              _buildCoachMorale(),
+               Container(
+                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                 decoration: BoxDecoration(
+@@ -1913,6 +1914,47 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+   }
+ 
+   /// Tab 5: Ranking Clássico de Treinadores, Carreira, Histórico de Temporadas e Convites
++  Widget _buildCoachMorale() {
++    final people = _snapshot?['readyCounter']?['participants'] as List<dynamic>? ?? [];
++    final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
++    final value = me?['morale'] ?? _invitationsData?['morale'] ?? 70;
++    final band = me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE';
++    final color = band == 'VERMELHA' ? const Color(0xFFEF5350)
++        : band == 'AMARELA' ? const Color(0xFFFFD54F) : const Color(0xFF81C784);
++    return Semantics(
++      label: 'Moral do treinador: $value de 100, $band',
++      child: Container(
++        key: const ValueKey('coach-morale'),
++        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
++        decoration: BoxDecoration(color: const Color(0xFF062E0F), border: Border.all(color: color)),
++        child: Text('MORAL: $value/100 — $band', style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 12)),
++      ),
++    );
++  }
++
++  Future<void> _respondCareerInvitation(Map<dynamic, dynamic> invitation, bool accept) async {
++    if (_worldId == null || _coachId == null) return;
++    await _runUiCommand(() async {
++      if (accept) {
++        await widget.apiClient.acceptInvitation(_worldId!, invitation['invitationId'].toString(), _coachId!);
++      } else {
++        await widget.apiClient.rejectInvitation(_worldId!, invitation['invitationId'].toString(), _coachId!);
++      }
++      final snap = await widget.apiClient.getSnapshot(_worldId!);
++      final people = snap['readyCounter']?['participants'] as List<dynamic>? ?? [];
++      final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
++      if (!mounted) return;
++      setState(() {
++        _snapshot = _preferLatestSnapshot(snap);
++        if (me != null) { _myClubId = me['clubId']?.toString(); _isUnemployed = me['isUnemployed'] == true; }
++        _myClubDetail = null; _selectedStarterIds.clear(); _selectedBenchIds.clear();
++        _statusBanner = accept ? 'Você assumiu o comando do ${invitation['clubName']}!' : 'Convite recusado. O clube seguirá sua busca.';
++      });
++      await _saveSession();
++      await _refreshClubAndSecondaryData();
++    });
++  }
++
+   Widget _buildCareerRankingAndInvitationsScreen() {
+     final ranking = _rankingData?['ranking'] as List<dynamic>? ?? [];
+     final seasonHist = _rankingData?['seasonHistory'] as List<dynamic>? ?? [];
+@@ -1923,6 +1965,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: [
++          _buildCoachMorale(),
++          const SizedBox(height: 8),
++          const Text('Moral vermelha antes de uma derrota provoca demissão. Campeonatos > Taças > pontos de carreira.'),
++          const SizedBox(height: 8),
++          ...((_invitationsData?['moraleHistory'] as List<dynamic>? ?? []).reversed.take(5)).map((h) => Text(
++            'T${h['season']} R${h['round']}: ${h['before']} → ${h['after']} (${h['matchId'] == null ? 'recuperação sem clube' : 'após partida'})',
++            style: const TextStyle(fontSize: 12),
++          )),
++          const SizedBox(height: 12),
+           if (invitations.isNotEmpty) ...[
+             const Text(
+               'CONVITES DE EMPREGO DISPONÍVEIS PARA VOCÊ',
+@@ -1934,33 +1985,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+                 margin: const EdgeInsets.only(bottom: 6),
+                 padding: const EdgeInsets.all(8),
+                 color: const Color(0xFF136F2D),
+-                child: Row(
++                child: Column(
++                  crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+-                    Expanded(
+-                      child: Text(
++                    Text(
+                         '${inv['clubName']} (${inv['divisionDisplay']}) — Caixa: R\$ ${(inv['clubBudget'] as num).toStringAsFixed(0)} | Elenco: ${inv['squadSize']} atletas',
+                         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+-                      ),
+                     ),
++                    Text('Posição: ${inv['tablePosition'] ?? '-'} • Força: ${inv['squadStrength'] ?? '-'} • Estádio: ${inv['stadiumCapacity'] ?? '-'} lugares', style: const TextStyle(fontSize: 12)),
++                    Text('Objetivo: ${inv['objective'] ?? 'Desenvolver o clube'}', style: const TextStyle(fontSize: 12)),
++                    Text('Projeto atual: ${(_invitationsData?['currentProjectScore'] as num? ?? 0).toStringAsFixed(1)} • Melhoria proposta: ${(inv['projectImprovement'] as num? ?? 0).toStringAsFixed(1)}', style: const TextStyle(fontSize: 12)),
+                     if (inv['isAccepted'] != true)
+-                      ElevatedButton(
+-                        onPressed: () async {
+-                          try {
+-                            await widget.apiClient.acceptInvitation(_worldId!, inv['invitationId'].toString(), _coachId!);
+-                            final snap = await widget.apiClient.getSnapshot(_worldId!);
+-                            setState(() {
+-                              _snapshot = _preferLatestSnapshot(snap);
+-                              _myClubId = inv['clubId'].toString();
+-                              _isUnemployed = false;
+-                              _statusBanner = 'Você assumiu o comando do ${inv['clubName']}!';
+-                            });
+-                            await _refreshClubAndSecondaryData();
+-                          } catch (e) {
+-                            setState(() => _statusBanner = '$e');
+-                          }
+-                        },
+-                        child: const Text('ASSUMIR CLUBE'),
+-                      ),
++                      Wrap(spacing: 8, children: [
++                        ElevatedButton(onPressed: _commandBusy ? null : () => _respondCareerInvitation(inv as Map, true), child: const Text('ACEITAR')),
++                        OutlinedButton(onPressed: _commandBusy ? null : () => _respondCareerInvitation(inv as Map, false), child: const Text('RECUSAR')),
++                      ]),
+                   ],
+                 ),
+               );
+@@ -1972,6 +2011,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+             style: TextStyle(color: Color(0xFFFFD700), fontWeight: FontWeight.bold, fontSize: 14),
+           ),
+           const SizedBox(height: 8),
++          ...(_invitationsData?['employmentHistory'] as List<dynamic>? ?? []).reversed.take(8).map((h) => Text(
++            '${h['clubName']} — T${h['startSeason']} R${h['startRound']} até ${h['endSeason'] == null ? 'atual' : 'T${h['endSeason']} R${h['endRound']}'}',
++            style: const TextStyle(fontSize: 12),
++          )),
++          const SizedBox(height: 8),
+           SingleChildScrollView(
+             scrollDirection: Axis.horizontal,
+             child: DataTable(
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\lib\\api_client.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\api_client.dart"
+index 1c58cb0..84570c9 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\lib\\api_client.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\api_client.dart"
+@@ -389,6 +389,12 @@ class ElifootApiClient {
+     _decodeResponse(res);
+   }
+ 
++  Future<void> rejectInvitation(String worldId, String invitationId, String coachId) async {
++    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$invitationId/reject')
++        .replace(queryParameters: {'coachId': coachId});
++    _decodeResponse(await _http.post(uri));
++  }
++
+   Future<String> exportWorldJson(String worldId) async {
+     final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/editor/export-json'));
+     if (res.statusCode >= 400) throw Exception(res.body);
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\test\\widget_test.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\test\\widget_test.dart"
+index 8886c7b..9243e4f 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\client\\elifoot_flutter\\test\\widget_test.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\test\\widget_test.dart"
+@@ -15,6 +15,7 @@ void main() {
+     String roundState = 'PREPARING';
+     int currentMinute = 0;
+     int pauseWindowsUsed = 0;
++    int morale = 70;
+     Map<String, dynamic>? activePauseWindow;
+ 
+     Map<String, dynamic> buildMockSnapshot() {
+@@ -48,6 +49,8 @@ void main() {
+               'isReady': readyCount > 0,
+               'isConnected': true,
+               'isAutoMode': false,
++              'morale': morale,
++              'moraleBand': morale >= 60 ? 'VERDE' : morale >= 30 ? 'AMARELA' : 'VERMELHA',
+               'usedSubstitutions': 0,
+               'maxSubstitutions': 5,
+               'usedPauseWindows': pauseWindowsUsed,
+@@ -378,6 +381,14 @@ void main() {
+     expect(find.text('TÁTICAS ENVIADAS: 0/6'), findsOneWidget);
+     expect(find.text('João Silva*'), findsOneWidget);
+ 
++    for (final value in [20, 50, 70]) {
++      morale = value;
++      client.onSnapshotUpdated?.call(buildMockSnapshot());
++      await tester.pump();
++      final band = value >= 60 ? 'VERDE' : value >= 30 ? 'AMARELA' : 'VERMELHA';
++      expect(find.text('MORAL: $value/100 — $band'), findsOneWidget);
++    }
++
+     // 3. Click ENVIAR TÁTICA -> transitions to 6/6 and RUNNING_FIRST_HALF at minute 37'
+     await tester.tap(find.byKey(const Key('btn-enviar-tatica')));
+     await tester.pumpAndSettle();
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Api\\Program.cs" "b/D:\\elifoot_98\\src\\Elifoot.Api\\Program.cs"
+index 8f4198f..faa3844 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Api\\Program.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Api\\Program.cs"
+@@ -711,33 +711,11 @@ app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/stadium/expand", asy
+ app.MapGet("/api/worlds/{worldId:guid}/invitations/{coachId:guid}", async (
+     Guid worldId,
+     Guid coachId,
+-    IWorldRepository repo,
++    ClubAndMarketApplicationService service,
+     CancellationToken ct) =>
+ {
+-    var world = await repo.GetWorldAsync(worldId, ct);
+-    if (world == null) return Results.NotFound();
+-
+-    CompetitionAndSeasonEngine.GenerateJobInvitationsForUnemployedHumans(world);
+-    await repo.SaveWorldAsync(world, ct);
+-
+-    var clubDict = world.Clubs.ToDictionary(c => c.Id);
+-    var list = world.JobInvitations
+-        .Where(i => i.CoachId == coachId && !i.IsExpired)
+-        .Select(i =>
+-        {
+-            var c = clubDict[i.ClubId];
+-            int squadSize = world.Players.Count(p => p.ClubId == c.Id);
+-            return new JobInvitationDto(
+-                i.Id, i.CoachId, c.Id, c.Name, c.DivisionTier, c.DivisionTier.ToDisplayPt(),
+-                c.CashBalance, squadSize, i.CreatedAtSeason, i.CreatedAtRound, i.IsAccepted);
+-        });
+-
+-    var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+-    return Results.Ok(new
+-    {
+-        invitations = list,
+-        employmentHistory = coach?.EmploymentHistory ?? new List<CoachEmploymentRecord>()
+-    });
++    var career = await service.GetCareerAsync(worldId, coachId, ct);
++    return career == null ? Results.NotFound() : Results.Ok(career);
+ });
+ 
+ app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/accept", async (
+@@ -751,6 +729,20 @@ app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/accept",
+     return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
+ });
+ 
++app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/reject", async (
++    Guid worldId, Guid invitationId, Guid coachId, ClubAndMarketApplicationService service, CancellationToken ct) =>
++{
++    var (ok, err) = await service.RespondJobInvitationAsync(worldId, coachId, invitationId, false, ct);
++    return ok ? Results.Ok(new { success = true }) : Results.BadRequest(new { error = err });
++});
++
++app.MapPut("/api/worlds/{worldId:guid}/career/morale-rules", async (
++    Guid worldId, Guid coachId, CoachMoraleRules rules, ClubAndMarketApplicationService service, CancellationToken ct) =>
++{
++    var (ok,err) = await service.UpdateMoraleRulesAsync(worldId,coachId,rules,ct);
++    return ok ? Results.Ok(new { success=true }) : Results.BadRequest(new { error=err });
++});
++
+ // 8. Editor & Data Packages (JSON / CSV Import & Export)
+ app.MapGet("/api/worlds/{worldId:guid}/editor/export-json", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
+ {
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs" "b/D:\\elifoot_98\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
+index d015522..7e50bc6 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
+@@ -441,54 +441,66 @@ public sealed class ClubAndMarketApplicationService
+         Guid coachId,
+         Guid invitationId,
+         CancellationToken ct = default)
+-    {
+-        var world = await _repository.GetWorldAsync(worldId, ct);
+-        if (world == null) return (false, "Sala não encontrada.");
+-        if (world.RoundState is not (RoundState.PREPARING or RoundState.RESULTS))
+-            return (false, "Só é possível assumir um clube entre rodadas.");
+-
+-        var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+-        if (coach == null) return (false, "Treinador não encontrado.");
+-
+-        var invitation = world.JobInvitations.FirstOrDefault(i => i.Id == invitationId && i.CoachId == coach.Id && !i.IsAccepted && !i.IsExpired);
+-        if (invitation == null) return (false, "Convite inválido ou expirado.");
+-
+-        var club = world.Clubs.FirstOrDefault(c => c.Id == invitation.ClubId);
+-        if (club == null || club.DivisionTier == DivisionTier.Distrital || club.HumanCoachId != null)
+-            return (false, "O clube não está mais disponível para contratação.");
++        => await RespondJobInvitationAsync(worldId, coachId, invitationId, true, ct);
+ 
+-        if (coach.CurrentClubId != null)
++    public async Task<(bool Success, string? Error)> RespondJobInvitationAsync(Guid worldId, Guid coachId, Guid invitationId, bool accept, CancellationToken ct = default)
++    {
++        var gate = MultiplayerRoundOrchestrator.GetLock(worldId);
++        await gate.WaitAsync(ct);
++        try
+         {
+-            var oldClub = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId.Value);
+-            if (oldClub != null) oldClub.HumanCoachId = null;
++            var world = await _repository.GetWorldAsync(worldId, ct);
++            if (world == null) return (false, "Sala não encontrada.");
++            var coach = world.HumanCoaches.FirstOrDefault(c => c.Id == coachId);
++            if (world.RoundState == RoundState.PREPARING && coach?.IsReadyForRound == true)
++                return (false, "Retire o pronto antes de mudar de clube.");
++            var result = CoachCareerEngine.Respond(world, coachId, invitationId, accept);
++            if (!result.Success) return result;
++            world.RoundVersion++;
++            await _repository.SaveWorldAsync(world, ct);
++            var snap = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world);
++            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snap.ReadyCounter, ct);
++            await _publisher.PublishRoundStateChangedAsync(world.Id, snap, ct);
++            return (true, null);
+         }
++        finally { gate.Release(); }
++    }
+ 
+-        club.HumanCoachId = coach.Id;
+-        coach.CurrentClubId = club.Id;
+-        coach.IsReadyForRound = false;
+-        invitation.IsAccepted = true;
+-
+-        coach.EmploymentHistory.Add(new CoachEmploymentRecord
+-        {
+-            ClubId = club.Id,
+-            ClubName = club.Name,
+-            StartSeason = world.SeasonNumber,
+-            StartRound = world.RoundNumber
+-        });
+-
+-        world.AuditLogs.Add(new AuditLogEntry
++    public async Task<object?> GetCareerAsync(Guid worldId, Guid coachId, CancellationToken ct = default)
++    {
++        var gate = MultiplayerRoundOrchestrator.GetLock(worldId); await gate.WaitAsync(ct);
++        try
+         {
+-            GameWorldId = world.Id,
+-            SeasonNumber = world.SeasonNumber,
+-            RoundNumber = world.RoundNumber,
+-            ActionType = "JOB_INVITATION_ACCEPTED",
+-            ActorCoachId = coach.Id,
+-            Description = $"{coach.Nickname} aceitou o convite para treinar o {club.Name} ({club.DivisionTier.ToDisplayPt()})."
+-        });
++            var w = await _repository.GetWorldAsync(worldId, ct); if (w == null) return null;
++            CoachCareerEngine.EnsureMigrated(w); CoachCareerEngine.ProcessVacancies(w);
++            await _repository.SaveWorldAsync(w, ct);
++            var coach = CoachCareerEngine.Find(w, coachId);
++            var list = w.JobInvitations.Where(i => i.CoachId == coachId && !i.IsExpired && !i.IsRejected && !i.IsAccepted)
++                .Select(i => {
++                    var c = w.Clubs.Single(c => c.Id == i.ClubId);
++                    return new JobInvitationDto(i.Id, i.CoachId, c.Id, c.Name, c.DivisionTier, c.DivisionTier.ToDisplayPt(), c.CashBalance,
++                        w.Players.Count(p => p.ClubId == c.Id), i.CreatedAtSeason, i.CreatedAtRound, i.IsAccepted, i.IsRejected,
++                        i.Explanation, CoachCareerEngine.TablePosition(w,c), Math.Round(CoachCareerEngine.Strength(w,c),1), c.Stadium.BuiltCapacity,
++                        c.Reputation >= 75 ? "Disputar títulos" : c.Reputation >= 45 ? "Buscar acesso e estabilidade" : "Permanência e desenvolvimento", i.ProjectImprovement);
++                }).ToList();
++            return new { invitations = list, employmentHistory = coach?.Employment ?? new(), morale = coach?.State.Morale ?? 70,
++                moraleBand = w.CoachMoraleRules.Band(coach?.State.Morale ?? 70), moraleHistory = coach?.State.MoraleHistory ?? new(),
++                currentClubId = coach?.ClubId, currentProjectScore = coach?.ClubId is Guid id ? CoachCareerEngine.ProjectScore(w,w.Clubs.Single(c=>c.Id==id)) : 0m,
++                careerRules = w.CoachMoraleRules, titles = w.CoachTitles.Where(t=>t.CoachId==coachId).ToList() };
++        }
++        finally { gate.Release(); }
++    }
+ 
+-        world.RoundVersion++;
+-        await _repository.SaveWorldAsync(world, ct);
+-        return (true, null);
++    public async Task<(bool Success, string? Error)> UpdateMoraleRulesAsync(Guid worldId, Guid hostId, CoachMoraleRules rules, CancellationToken ct = default)
++    {
++        var gate=MultiplayerRoundOrchestrator.GetLock(worldId);await gate.WaitAsync(ct);
++        try {
++            var w=await _repository.GetWorldAsync(worldId,ct);if(w==null)return(false,"Sala não encontrada.");
++            if(!w.HumanCoaches.Any(c=>c.Id==hostId && c.IsHost))return(false,"Apenas o anfitrião pode configurar as faixas.");
++            if(!CoachCareerEngine.IsSafe(w))return(false,"Configuração somente entre partidas.");
++            if(rules.YellowMinimum<1 || rules.GreenMinimum<=rules.YellowMinimum || rules.GreenMinimum>100 || rules.UnemployedRecoveryPerRound<1 || rules.UnemployedRecoveryPerRound>20)return(false,"Faixas inválidas.");
++            w.CoachMoraleRules=rules;w.RoundVersion++;await _repository.SaveWorldAsync(w,ct);return(true,null);
++        } finally {gate.Release();}
+     }
+ 
+     public async Task<(bool Success, string? Error)> SetCoachAutoModeByHostAsync(
+diff --git "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Application\\MultiplayerRoundOrchestrator.cs" "b/D:\\elifoot_98\\src\\Elifoot.Application\\MultiplayerRoundOrchestrator.cs"
+index f0f68bd..caf4362 100644
+--- "a/D:\\elifoot_98\\docs\\audit-008\\baseline\\src\\Elifoot.Application\\MultiplayerRoundOrchestrator.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Application\\MultiplayerRoundOrchestrator.cs"
+@@ -24,7 +24,7 @@ public sealed class MultiplayerRoundOrchestrator
+         _publisher = publisher;
+     }
+ 
+-    private static SemaphoreSlim GetLock(Guid worldId)
++    internal static SemaphoreSlim GetLock(Guid worldId)
+         => WorldLocks.GetOrAdd(worldId, _ => new SemaphoreSlim(1, 1));
+ 
+     private static HashSet<string> GetIdempotencySet(Guid worldId)
+@@ -68,6 +68,8 @@ public sealed class MultiplayerRoundOrchestrator
+                 existingCoach.IsConnected = true;
+                 if (preferredClubId != null && existingCoach.CurrentClubId != preferredClubId)
+                 {
++                    if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0)
++                        return (false, "Mudanças de carreira são feitas por convites na aba RANKING & CARREIRA.", existingCoach, world);
+                     if (world.RoundState != RoundState.PREPARING || existingCoach.IsReadyForRound)
+                         return (false, "Troque de clube somente entre rodadas e sem pronto.", existingCoach, world);
+                     var assignRes = TryAssignClubInternal(world, existingCoach, preferredClubId.Value);
+@@ -147,7 +149,13 @@ public sealed class MultiplayerRoundOrchestrator
+         if (coach.CurrentClubId != null && coach.CurrentClubId != club.Id)
+         {
+             var prev = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId.Value);
+-            if (prev != null) prev.HumanCoachId = null;
++            if (prev != null)
++            {
++                prev.HumanCoachId = null;
++                var record = coach.EmploymentHistory.LastOrDefault(e => e.EndSeason == null);
++                if (record != null) { record.EndSeason = world.SeasonNumber; record.EndRound = world.RoundNumber; record.ReasonForLeaving = "CLUB_CHANGE"; }
++                CoachCareerEngine.OpenVacancy(world, prev); CoachCareerEngine.EnsureProvisional(world, prev);
++            }
+         }
+ 
+         AssignCoachToClubObject(world, coach, club);
+@@ -156,6 +164,19 @@ public sealed class MultiplayerRoundOrchestrator
+ 
+     private static void AssignCoachToClubObject(GameWorld world, HumanCoach coach, Club club)
+     {
++        if (club.AiManagerId is Guid aiId)
++        {
++            var ai = world.AiManagers.FirstOrDefault(a => a.Id == aiId);
++            if (ai != null && ai.CurrentClubId == club.Id)
++            {
++                ai.CurrentClubId = null;
++                var previousJob = ai.EmploymentHistory.LastOrDefault(e => e.EndSeason == null && e.ClubId == club.Id);
++                if (previousJob != null) { previousJob.EndSeason = world.SeasonNumber; previousJob.EndRound = world.RoundNumber; previousJob.ReasonForLeaving = "HUMAN_INITIAL_ASSIGNMENT"; }
++            }
++            club.AiManagerId = null;
++        }
++        foreach (var pending in world.JobInvitations.Where(i => i.ClubId == club.Id && !i.IsAccepted)) pending.IsExpired = true;
++        club.CareerVacancyId = null; club.HasProvisionalManager = false;
+         club.HumanCoachId = coach.Id;
+         coach.CurrentClubId = club.Id;
+         coach.EmploymentHistory.Add(new CoachEmploymentRecord
+@@ -381,6 +402,26 @@ public sealed class MultiplayerRoundOrchestrator
+         bool allReady = world.HumanCoaches.All(h => h.IsReadyForRound);
+         if (!allReady) return false;
+ 
++        // A transfer or career move may have changed a squad after its tactics were submitted.
++        // Never start using a player who has left the club; the affected human must submit again.
++        foreach (var human in world.HumanCoaches.Where(h => h.CurrentClubId != null))
++        {
++            var squad = world.Players.Where(p => p.ClubId == human.CurrentClubId).ToList();
++            var valid = SquadValidator.ValidatePreMatchLineup(human.SubmittedFormation ?? "4-4-2",
++                human.SubmittedStarterIds, human.SubmittedBenchIds, squad, world.AllowClassic505);
++            if (valid.IsValid) continue;
++            if (human.IsAutoMode)
++            {
++                var spec = TacticalFormations.All.GetValueOrDefault(human.SubmittedFormation ?? "4-4-2", TacticalFormations.All["4-4-2"]);
++                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
++                human.SubmittedFormation = spec.Code; human.SubmittedStarterIds = starters; human.SubmittedBenchIds = bench;
++                if (SquadValidator.ValidatePreMatchLineup(spec.Code, starters, bench, squad, world.AllowClassic505).IsValid) continue;
++            }
++            human.IsReadyForRound = false;
++            CoachCareerEngine.Log(world, "READY_LINEUP_INVALIDATED", human.Id, human.CurrentClubId, valid.ErrorMessage ?? "Elenco alterado.");
++        }
++        if (world.HumanCoaches.Any(h => !h.IsReadyForRound)) return false;
++
+         // Transition atomically: PREPARING -> ALL_READY -> RUNNING_FIRST_HALF
+         world.RoundState = RoundState.ALL_READY;
+ 
+@@ -402,6 +443,7 @@ public sealed class MultiplayerRoundOrchestrator
+ 
+         foreach (var match in roundFixtures)
+         {
++            CoachCareerEngine.CaptureLeadership(world, match);
+             var homeClub = clubDict[match.HomeClubId];
+             var awayClub = clubDict[match.AwayClubId];
+             var homeSquad = playersByClub.GetValueOrDefault(homeClub.Id) ?? new List<Player>();
+@@ -1124,7 +1166,9 @@ public sealed class MultiplayerRoundOrchestrator
+                 UsedSubstitutions: usedSubs,
+                 MaxSubstitutions: maxSubs,
+                 UsedPauseWindows: usedWins,
+-                MaxPauseWindows: maxWins));
++                MaxPauseWindows: maxWins,
++                Morale: h.Career.Morale,
++                MoraleBand: world.CoachMoraleRules.Band(h.Career.Morale)));
+         }
+ 
+         return new ReadyCounterDto(

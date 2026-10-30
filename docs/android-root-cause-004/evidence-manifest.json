@@ -1,0 +1,1754 @@
+{
+  "Task": "ELIFOOT_98_ANDROID_ROOT_CAUSE_004",
+  "Status": "PARTIAL",
+  "Classification": [
+    "ANDROID_SYSTEM_FAILURE",
+    "ENVIRONMENT_FAILURE"
+  ],
+  "ExclusiveUnderlyingCause": "INCONCLUSIVE",
+  "ControlBoots": 2,
+  "NativeGamePass": false,
+  "Timestamp": "2026-10-29T20:34:48.3531131-03:00",
+  "Files": [
+    {
+      "Path": "A-auto-collector.log",
+      "Bytes": 5960,
+      "SHA256": "71610239C10E774425CD139EA2C6DAA660AA3CB85A8CFE591D696D4AAD16B68B"
+    },
+    {
+      "Path": "A-software-collector.log",
+      "Bytes": 8673,
+      "SHA256": "2A2E5033B021EFDDF22A4ABF7B59AF2DBB9D1D61D1ECAAE332B26CFA45853BC6"
+    },
+    {
+      "Path": "accel-check.log",
+      "Bytes": 87,
+      "SHA256": "F299C2B4E5D0D680E0039C89AB27F7CB0570B51E86E51FFA6BEEE60167B48E06"
+    },
+    {
+      "Path": "adb-final-before-stop.log",
+      "Bytes": 156,
+      "SHA256": "79FDE06D74EA3FAA572A9A947AFB84624E606B79D7EFEE0683077A712EDB7A96"
+    },
+    {
+      "Path": "adb-initial.log",
+      "Bytes": 28,
+      "SHA256": "BBFCC7239A6F1BE3544814EBDC6BCC9B66BF5B1F0B03BAA3340808F19265A630"
+    },
+    {
+      "Path": "apk-manifest.json",
+      "Bytes": 554,
+      "SHA256": "E3C450F49CF889DAC80940B8E8A08DC448823F8F81FAD0D2E668899E3DE33B95"
+    },
+    {
+      "Path": "apk-x64-badging.log",
+      "Bytes": 5711,
+      "SHA256": "278F4F7BFA728D53AE82267EF0B480880C2794D62DE25A397EE3D72CBC6D76E6"
+    },
+    {
+      "Path": "apk-x64-sha256.json",
+      "Bytes": 164,
+      "SHA256": "9381ED72DD1E2D07D91125FEF19A16FABB061682BA3D6CDA695B30253B958D3C"
+    },
+    {
+      "Path": "auto-logcat-stream.log",
+      "Bytes": 917354,
+      "SHA256": "5215A4348EC320CF7ABD8D092355BA53B5784DCE1487D01AFC1CBB722A76A366"
+    },
+    {
+      "Path": "auto-stop.log",
+      "Bytes": 39,
+      "SHA256": "483D31D727A891B284FE65F3B042180F0DCF884EE845C457E261DE7A6E891804"
+    },
+    {
+      "Path": "avd-create-elifoot_qa004_auto.log",
+      "Bytes": 470,
+      "SHA256": "D910C5C81AF41D606423590DBB2A18BC51570EBF1404FDD9CB4575B1E1C710D5"
+    },
+    {
+      "Path": "avd-create-elifoot_qa004_software.log",
+      "Bytes": 470,
+      "SHA256": "D910C5C81AF41D606423590DBB2A18BC51570EBF1404FDD9CB4575B1E1C710D5"
+    },
+    {
+      "Path": "B-auto-native-run.log",
+      "Bytes": 2158,
+      "SHA256": "7B97C737D646C63A369F4234121346F8B247465BB25E276DD04121DA209842F4"
+    },
+    {
+      "Path": "C-auto-reference-run.log",
+      "Bytes": 2740,
+      "SHA256": "01686C68293D565030C4C1C9172C44DEA67FA4F92244463711AF638180BF0EB2"
+    },
+    {
+      "Path": "D-auto-menu-run.log",
+      "Bytes": 2861,
+      "SHA256": "378CA35E1F23AE6F88B43582F75F60814B57A4FEB74359023DA35DE4737B962F"
+    },
+    {
+      "Path": "D-software-menu-run.log",
+      "Bytes": 3021,
+      "SHA256": "713964E68A63022DF6D7B0191BAEA2B9098CA4683710AAA4E0C8812D985C7FCD"
+    },
+    {
+      "Path": "dotnet-tests.log",
+      "Bytes": 2404,
+      "SHA256": "04BADB66EB066D40716231EFEC6CB29B06A68592AA642D0A7554B852CB7072D7"
+    },
+    {
+      "Path": "elifoot-x64-profile-build.log",
+      "Bytes": 669,
+      "SHA256": "9DE1439A58501C8D500639CA36F5C183D8E3D13A45387C824D8BCAA7720B7040"
+    },
+    {
+      "Path": "emulator-auto.log",
+      "Bytes": 69157,
+      "SHA256": "D0FE86A658D7E7283221E7CC8E848373B46CE6044CB2FA2D38D3DBF04CF8ABA3"
+    },
+    {
+      "Path": "emulator-software.log",
+      "Bytes": 68983,
+      "SHA256": "134EABE45AE78F03384D73A7883DDFBEC7667B10491BE8DDD7B25DAF345336D3"
+    },
+    {
+      "Path": "final-state.json",
+      "Bytes": 194,
+      "SHA256": "CADBAE5603A7C08809ACB7D5011DAAE653DD02731A045BFA8314679A854CAB9A"
+    },
+    {
+      "Path": "flutter-analyze.log",
+      "Bytes": 98,
+      "SHA256": "7D7975C309E203449B22C690CAF7D49B89CAC8E926FE45BE2DEAC44D2519E685"
+    },
+    {
+      "Path": "flutter-doctor.log",
+      "Bytes": 3114,
+      "SHA256": "9B85A1C3ABAF6CE38E72BF96F954A2A7B58453277A8541EA9286F5254879C9BE"
+    },
+    {
+      "Path": "flutter-tests.log",
+      "Bytes": 1244,
+      "SHA256": "C19D9438EDB2B91251BDA849522A47A2766E524AC9186AF916BA46907EEA9DEF"
+    },
+    {
+      "Path": "gradle-stop-final.log",
+      "Bytes": 38,
+      "SHA256": "63B3B053D39A00D0131788861236A840924E2034075E93E2733CD8BF4CF52003"
+    },
+    {
+      "Path": "gradle-stop.log",
+      "Bytes": 38,
+      "SHA256": "63B3B053D39A00D0131788861236A840924E2034075E93E2733CD8BF4CF52003"
+    },
+    {
+      "Path": "host-resource-samples.csv",
+      "Bytes": 12965,
+      "SHA256": "97F8C0E7E800F68D63736E926DB676B2132975FF5C4000290EE4D261CBACA637"
+    },
+    {
+      "Path": "host-resource-software.csv",
+      "Bytes": 6303,
+      "SHA256": "ABD7F0377172E228A9C0F310D92D31193A83EC1DE8BCC2C743CD7EF32B689717"
+    },
+    {
+      "Path": "host-resource-summary.json",
+      "Bytes": 398,
+      "SHA256": "10D22F79C3B9DF92A61CAE3AC9F98A74B9B6BE1F56D2597D965BE842BE6E7D30"
+    },
+    {
+      "Path": "reference-analyze.log",
+      "Bytes": 98,
+      "SHA256": "6E31BD53EFCFA355413D3A3150BD855B33D58D1D89D792FB39EE1021BE749C6F"
+    },
+    {
+      "Path": "reference-build.log",
+      "Bytes": 418,
+      "SHA256": "2A4330C7A34B50C7636F517769D2ABC78F4F2D6F90BA2A7285773679ACBA15D8"
+    },
+    {
+      "Path": "reference-create.log",
+      "Bytes": 472,
+      "SHA256": "5783247D06D3A65C0BA97430C6039DBF18C6930955570BD94DC0D43D146A563D"
+    },
+    {
+      "Path": "reference-frame-summary.json",
+      "Bytes": 327,
+      "SHA256": "26A8EC9ED99A74FEAC1F1CE4FB908E6157903881B6F5C97479BF3E2736C37AD9"
+    },
+    {
+      "Path": "reference-pub.log",
+      "Bytes": 1008,
+      "SHA256": "C1498D34C485EFCF5FCCD5128AE57BF14B719DFDF2DE9DD957DE43F469364A5E"
+    },
+    {
+      "Path": "software-stop.log",
+      "Bytes": 39,
+      "SHA256": "483D31D727A891B284FE65F3B042180F0DCF884EE845C457E261DE7A6E891804"
+    },
+    {
+      "Path": "storage-observation.json",
+      "Bytes": 688,
+      "SHA256": "131FA1E349797D92010AE7EFC64FBDBA71A6D781CD57EA975BECD86314C396ED"
+    },
+    {
+      "Path": "windows-host.json",
+      "Bytes": 919,
+      "SHA256": "9DE2695798D9A33347CB5E5AA4CBA3271D1726636BE0798620AB7D6EE19B37D7"
+    },
+    {
+      "Path": "A-auto/activity-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/activity-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "A-auto/anr-traces.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/anr-traces.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-1.stderr.log",
+      "Bytes": 23,
+      "SHA256": "FABA18991A66C091C6CD8E5F54E4920AE9E6BD588EA0FFDBCCE2A18813F9AB31"
+    },
+    {
+      "Path": "A-auto/boot-1.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-10.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-10.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-11.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-11.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-12.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-12.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-13.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-13.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-14.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-14.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-15.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-15.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-16.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-16.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-17.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-17.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-18.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-18.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-19.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-19.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-2.stderr.log",
+      "Bytes": 23,
+      "SHA256": "FABA18991A66C091C6CD8E5F54E4920AE9E6BD588EA0FFDBCCE2A18813F9AB31"
+    },
+    {
+      "Path": "A-auto/boot-2.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-20.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-20.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-21.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-21.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-22.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-22.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-23.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-23.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-24.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-24.stdout.log",
+      "Bytes": 2,
+      "SHA256": "4355A46B19D348DC2F57C046F8EF63D4538EBB936000F3C9EE954A27460DD865"
+    },
+    {
+      "Path": "A-auto/boot-3.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-3.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-4.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-4.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-5.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-5.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-6.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-6.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-7.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-7.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-8.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-8.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/boot-9.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/boot-9.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-auto/bugreport-entries.json",
+      "Bytes": 10903,
+      "SHA256": "48045534CA642B1625AF26C28F4286CF2BDFE9077DAA457C8636BFF967A1933A"
+    },
+    {
+      "Path": "A-auto/bugreport.stderr.log",
+      "Bytes": 151,
+      "SHA256": "664E2CE1ACAEF0B072052B0CCB9B4FF53A38789A879B024A1D69BF32CDE35ADF"
+    },
+    {
+      "Path": "A-auto/bugreport.stdout.log",
+      "Bytes": 85,
+      "SHA256": "6AA8389DF6DD7DE7F1105C53F130C6206E7B8185D19F846F03092CBA63DAAC16"
+    },
+    {
+      "Path": "A-auto/bugreport.txt",
+      "Bytes": 6018348,
+      "SHA256": "5AB0DE49E69CA5E8C2520EC98196FEBB2E31BF10E3071A8E3E79267473114F81"
+    },
+    {
+      "Path": "A-auto/bugreport.zip",
+      "Bytes": 714583,
+      "SHA256": "9D66E8D3BDD71CD9B5423BEBA493ABB69414442B6CFA1B7857DED8AAB54F3368"
+    },
+    {
+      "Path": "A-auto/commands.json",
+      "Bytes": 9135,
+      "SHA256": "1EEF316101776FBEF2966F3422FC5E42AA642F0A65C0E41EA1BF6E39C9624445"
+    },
+    {
+      "Path": "A-auto/cpuinfo.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/cpuinfo.stdout.log",
+      "Bytes": 1966,
+      "SHA256": "C78B87527536CB72499E711392D2F02A666606221C87D664E20F577D7BECC396"
+    },
+    {
+      "Path": "A-auto/devices.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/devices.stdout.log",
+      "Bytes": 156,
+      "SHA256": "270360F5A47B565E454A25DC1E0FE22F07BC8843E5D2890696C2C6E0B95B9C5A"
+    },
+    {
+      "Path": "A-auto/getprop-exec.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/getprop-exec.stdout.log",
+      "Bytes": 7082,
+      "SHA256": "7397234CAC70E50E9E9D9B85D3F5BD05D03E1BF65D62E302377F443413A58E16"
+    },
+    {
+      "Path": "A-auto/getprop-shell.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/getprop-shell.stdout.log",
+      "Bytes": 7286,
+      "SHA256": "AAF4399988C66553DD9E456D2EC31F1E82B67FC212C3B81A079D9F0E123F2DB2"
+    },
+    {
+      "Path": "A-auto/lastanr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/lastanr.stdout.log",
+      "Bytes": 96,
+      "SHA256": "E395592670693091CB678F8C67E4D356D9A390BE22C2ED04766CC40381BB8934"
+    },
+    {
+      "Path": "A-auto/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/logcat.stdout.log",
+      "Bytes": 7567,
+      "SHA256": "F1A18F9E39BFFFD5C96F665EDA07D2E8880AF6A8E0C781C0E617B5897059CD34"
+    },
+    {
+      "Path": "A-auto/meminfo.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/meminfo.stdout.log",
+      "Bytes": 41,
+      "SHA256": "0FBBFCADE0547481DC1380384B14B240A2E2D705001A93137B5E7DC1B8BD6E51"
+    },
+    {
+      "Path": "A-auto/package-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/package-service.stdout.log",
+      "Bytes": 23,
+      "SHA256": "5598FD9DB814B7D972569280C6E31130F002DF86C6B9EA983E023754F63843D1"
+    },
+    {
+      "Path": "A-auto/processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/processes.stdout.log",
+      "Bytes": 6910,
+      "SHA256": "28A6732120FBEBEFD760792E5070DF54354597EFAED3165535C9440D00559F1A"
+    },
+    {
+      "Path": "A-auto/screen.png",
+      "Bytes": 38762,
+      "SHA256": "BE5A54A6A59BE74B7062D59DEB66570F15346EC3EF339F15CFAE7DFAA70814C5"
+    },
+    {
+      "Path": "A-auto/screenshot-pull.stderr.log",
+      "Bytes": 87,
+      "SHA256": "C8FC205DB9FE0274A024647F3A3B5D1CE4AF66E9505A504866D47EF1CC6B1ECC"
+    },
+    {
+      "Path": "A-auto/screenshot-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/screenshot.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/screenshot.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/third-party-packages.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-auto/third-party-packages.stdout.log",
+      "Bytes": 248,
+      "SHA256": "95A4685027528116776963B000EA4B59F1D6391F417063C0EA98E4B1D9D7B9FE"
+    },
+    {
+      "Path": "A-software/activity-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/activity-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "A-software/boot-1.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-1.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-10.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-10.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-11.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-11.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-12.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-12.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-13.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-13.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-14.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-14.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-15.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-15.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-16.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-16.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-17.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-17.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-18.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-18.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-19.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-19.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-2.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-2.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-20.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-20.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-21.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-21.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-22.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-22.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-23.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-23.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-24.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-24.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-25.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-25.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-26.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-26.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-27.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-27.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-28.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-28.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-29.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-29.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-3.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-3.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-30.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-30.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-31.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-31.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-32.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-32.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-33.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-33.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-34.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-34.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-35.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-35.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-36.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-36.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-37.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-37.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-38.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-38.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-39.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-39.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-4.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-4.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-40.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-40.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-41.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-41.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-42.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-42.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-43.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-43.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-44.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-44.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-45.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-45.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/boot-5.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-5.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-6.stderr.log",
+      "Bytes": 41,
+      "SHA256": "F3BBDB99F38F6BEBA03929DA4B23AFF5BC2F7EBAFF9CDE129D8334AC8BF6C6C2"
+    },
+    {
+      "Path": "A-software/boot-6.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-7.stderr.log",
+      "Bytes": 23,
+      "SHA256": "FABA18991A66C091C6CD8E5F54E4920AE9E6BD588EA0FFDBCCE2A18813F9AB31"
+    },
+    {
+      "Path": "A-software/boot-7.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-8.stderr.log",
+      "Bytes": 23,
+      "SHA256": "FABA18991A66C091C6CD8E5F54E4920AE9E6BD588EA0FFDBCCE2A18813F9AB31"
+    },
+    {
+      "Path": "A-software/boot-8.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-9.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/boot-9.stdout.log",
+      "Bytes": 1,
+      "SHA256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+    },
+    {
+      "Path": "A-software/commands.json",
+      "Bytes": 13165,
+      "SHA256": "0BE1C6C89358C4BF17C5935CD7472CDE6AA5F9CB4BA7E59D7B9F2651EDC916DC"
+    },
+    {
+      "Path": "A-software/devices.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/devices.stdout.log",
+      "Bytes": 156,
+      "SHA256": "79FDE06D74EA3FAA572A9A947AFB84624E606B79D7EFEE0683077A712EDB7A96"
+    },
+    {
+      "Path": "A-software/dropbox-anr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/dropbox-anr.stdout.log",
+      "Bytes": 2008,
+      "SHA256": "0CD6730D62D78F2CE3D1C0211313C28C959DB6F67CC311BCD80974F97DFAE63D"
+    },
+    {
+      "Path": "A-software/getprop-exec.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/getprop-exec.stdout.log",
+      "Bytes": 7227,
+      "SHA256": "6C5058B97C8DD106E01CFD552FC06B7B5AC084CD55EF037600168F386A0F26DA"
+    },
+    {
+      "Path": "A-software/getprop-shell.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/getprop-shell.stdout.log",
+      "Bytes": 7400,
+      "SHA256": "4AD905E34C3D982182DD6784F8029CCC0D80CE3793C73BF7818992CFCE05B91C"
+    },
+    {
+      "Path": "A-software/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/logcat.stdout.log",
+      "Bytes": 415,
+      "SHA256": "D4C9F8CF4EC87D6D3A0D07AA055354D07591A25BED8A47400E864329B473666C"
+    },
+    {
+      "Path": "A-software/package-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/package-service.stdout.log",
+      "Bytes": 23,
+      "SHA256": "5598FD9DB814B7D972569280C6E31130F002DF86C6B9EA983E023754F63843D1"
+    },
+    {
+      "Path": "A-software/processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/processes.stdout.log",
+      "Bytes": 6392,
+      "SHA256": "6D7726AE489F8BFCA6DB39784824362F0C75933578F1E3B2DD38F5AA4693C923"
+    },
+    {
+      "Path": "A-software/screen.png",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/screenshot-pull.stderr.log",
+      "Bytes": 54,
+      "SHA256": "53769C45181992F6AD85C8A78107A242A4313B81805EEE68506FE936EC3CB034"
+    },
+    {
+      "Path": "A-software/screenshot-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/screenshot.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/screenshot.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/third-party-packages.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "A-software/third-party-packages.stdout.log",
+      "Bytes": 248,
+      "SHA256": "95A4685027528116776963B000EA4B59F1D6391F417063C0EA98E4B1D9D7B9FE"
+    },
+    {
+      "Path": "B-auto-native/activity-full.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/activity-full.stdout.log",
+      "Bytes": 54119,
+      "SHA256": "98676774C87ECB0AF9D4BBFE3B63B3B5A8231BDCDAD5116D815FBC01B7603EED"
+    },
+    {
+      "Path": "B-auto-native/anr-traces.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/anr-traces.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/commands.json",
+      "Bytes": 3092,
+      "SHA256": "5DBC52FC3DCB4B9F0867E0159E0842D7DBBE2144DAF49B9DA525782BB1254EED"
+    },
+    {
+      "Path": "B-auto-native/dropbox-anr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/dropbox-anr.stdout.log",
+      "Bytes": 7838,
+      "SHA256": "0B0FCD3DA50F1E124B398D9BA541CCA43508855232733CA49390CBF1B41AEC9A"
+    },
+    {
+      "Path": "B-auto-native/lastanr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/lastanr.stdout.log",
+      "Bytes": 96,
+      "SHA256": "E395592670693091CB678F8C67E4D356D9A390BE22C2ED04766CC40381BB8934"
+    },
+    {
+      "Path": "B-auto-native/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/logcat.stdout.log",
+      "Bytes": 468149,
+      "SHA256": "CA5BF9F69ECA845D15E724DD2ED2B8935C4DF559BE40551BF33AB3232CCBB513"
+    },
+    {
+      "Path": "B-auto-native/native-settings-launch.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/native-settings-launch.stdout.log",
+      "Bytes": 158,
+      "SHA256": "9DFB4A60A7C30AFF73A7688B94D9F5E1F5FFD5E4A78EA5F86A528EDB3D173B97"
+    },
+    {
+      "Path": "B-auto-native/post-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/post-processes.stdout.log",
+      "Bytes": 8021,
+      "SHA256": "C017C7FE235FCAD2CC24908F6EFD9BFC87BDE89C81376521202FA96335A8C3D7"
+    },
+    {
+      "Path": "B-auto-native/post-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/post-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "B-auto-native/pre-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/pre-processes.stdout.log",
+      "Bytes": 8021,
+      "SHA256": "BA9FA68DF389EF47F87FAC70A39985A921D00A6C9E73DB6D1898E5109D086731"
+    },
+    {
+      "Path": "B-auto-native/screen-pull.stderr.log",
+      "Bytes": 92,
+      "SHA256": "B49E8C12F980FC3CB7EF75C414DBE08CC0B71616B2843331D73FC584B2ACAF59"
+    },
+    {
+      "Path": "B-auto-native/screen-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/screen.png",
+      "Bytes": 45761,
+      "SHA256": "C6DC615C7E5AAD46547E4C001C82B847D2E3D0F7101A7309C19A6FD25D913937"
+    },
+    {
+      "Path": "B-auto-native/screen.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "B-auto-native/screen.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/activity-full.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/activity-full.stdout.log",
+      "Bytes": 56094,
+      "SHA256": "F7DBDE449ADD9F4C01EF4966DFB341DDF8CF2ACA27A27636C6EFC6BD278A4DBE"
+    },
+    {
+      "Path": "C-auto-reference/anr-traces.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/anr-traces.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/commands.json",
+      "Bytes": 3888,
+      "SHA256": "A21BCBE3617C4AB2071EF5D930D16FB5CB06DB176F32F1C16A9B507F9266CA18"
+    },
+    {
+      "Path": "C-auto-reference/dropbox-anr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/dropbox-anr.stdout.log",
+      "Bytes": 7838,
+      "SHA256": "DF9DC8D55519D5E00B404FC17500B5EFA8A38C5034C38F1D07C05201B85E161F"
+    },
+    {
+      "Path": "C-auto-reference/install.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/install.stdout.log",
+      "Bytes": 8,
+      "SHA256": "7FC0023A6402C7BD7ABD98BB3E580968DE4833EED07D88D1CC8D70819D69C7A0"
+    },
+    {
+      "Path": "C-auto-reference/lastanr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/lastanr.stdout.log",
+      "Bytes": 96,
+      "SHA256": "E395592670693091CB678F8C67E4D356D9A390BE22C2ED04766CC40381BB8934"
+    },
+    {
+      "Path": "C-auto-reference/launch.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/launch.stdout.log",
+      "Bytes": 209,
+      "SHA256": "E08C261BBD8181FF5EAE51A93763E133A9ACF253C20F88B4B96FBA63BD110055"
+    },
+    {
+      "Path": "C-auto-reference/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/logcat.stdout.log",
+      "Bytes": 122656,
+      "SHA256": "DB8E8B7C9CCE8B458BB42C608B75535F88E2AA3F8EFE560EC13D1802DFF78424"
+    },
+    {
+      "Path": "C-auto-reference/post-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/post-processes.stdout.log",
+      "Bytes": 7937,
+      "SHA256": "25A217AC1E48C5D5FD5159844BC6CAD39D9E50F6B6D6B51D1BB9F7DA0A9F46EA"
+    },
+    {
+      "Path": "C-auto-reference/post-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/post-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "C-auto-reference/pre-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/pre-processes.stdout.log",
+      "Bytes": 8089,
+      "SHA256": "90D7EDDD0EF612564AAE37DE5AE7926A5D73330FEDC4B2BDB653B6164F66C84E"
+    },
+    {
+      "Path": "C-auto-reference/push.stderr.log",
+      "Bytes": 149,
+      "SHA256": "AEBB2E6FC8434607593B943D952261031A74501752C48EF03E6815492080EE5F"
+    },
+    {
+      "Path": "C-auto-reference/push.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/screen-pull.stderr.log",
+      "Bytes": 92,
+      "SHA256": "5C7B3E34FBEA3F1C8AEED993ADCC0AB65390CB4C5F1F690A7650DB84B0A7F68A"
+    },
+    {
+      "Path": "C-auto-reference/screen-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/screen.png",
+      "Bytes": 21499,
+      "SHA256": "91E8A969FA75CC04A2C7C0DB8EABF12878D9FB6123DF807D4AEC0C186AED0350"
+    },
+    {
+      "Path": "C-auto-reference/screen.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "C-auto-reference/screen.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/activity-full.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/activity-full.stdout.log",
+      "Bytes": 53399,
+      "SHA256": "9F7B41DE5891ED954FA0DCBD555A0C42C7C2F04D878EE70504555EA143FC986F"
+    },
+    {
+      "Path": "D-auto-menu/anr-traces.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/anr-traces.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/commands.json",
+      "Bytes": 4053,
+      "SHA256": "CC43B50B74F0178DAA54A2FCB7018313450C485583739773CD9F7A085981BBCE"
+    },
+    {
+      "Path": "D-auto-menu/dropbox-anr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/dropbox-anr.stdout.log",
+      "Bytes": 7838,
+      "SHA256": "C256141E9259184C562FE60F56FA93BF5DDE9282D4AB8AAD37489C07B21DDF65"
+    },
+    {
+      "Path": "D-auto-menu/install.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/install.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/lastanr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/lastanr.stdout.log",
+      "Bytes": 96,
+      "SHA256": "E395592670693091CB678F8C67E4D356D9A390BE22C2ED04766CC40381BB8934"
+    },
+    {
+      "Path": "D-auto-menu/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/logcat.stdout.log",
+      "Bytes": 120681,
+      "SHA256": "D42B94501525C4F7F2DF3FED6C193C37CE1EE299E93909EECD98163005370EEF"
+    },
+    {
+      "Path": "D-auto-menu/post-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/post-processes.stdout.log",
+      "Bytes": 8016,
+      "SHA256": "8071D0C4A172E3265B8987D66EF3977FFB972DF9D92AC04DD6E68A76BC0BD38C"
+    },
+    {
+      "Path": "D-auto-menu/post-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/post-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "D-auto-menu/pre-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/pre-processes.stdout.log",
+      "Bytes": 7937,
+      "SHA256": "AE12201073A89FFAC6A9C7ABC407977DB718FD705201504C27EA96D3145A6A5B"
+    },
+    {
+      "Path": "D-auto-menu/push.stderr.log",
+      "Bytes": 123,
+      "SHA256": "EF8E3AF3604B360C6DB8AB6DA681051BE58169FBEB6A3BC2AE950B1D682DD2EE"
+    },
+    {
+      "Path": "D-auto-menu/push.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/screen-pull.stderr.log",
+      "Bytes": 92,
+      "SHA256": "B360A3983112385746137396DDB6FD32992C51942F49906129E8C3BCC08C5309"
+    },
+    {
+      "Path": "D-auto-menu/screen-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/screen.png",
+      "Bytes": 21546,
+      "SHA256": "C95DAB081FA29C22A5954C46386D0928147AF252EFE3605CA73C129BFA212028"
+    },
+    {
+      "Path": "D-auto-menu/screen.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/screen.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/stop-reference.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/stop-reference.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/stop-settings.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-auto-menu/stop-settings.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/activity-full.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/activity-full.stdout.log",
+      "Bytes": 53420,
+      "SHA256": "E5D16E8C3B277FA7F0468DEB81708050BD635A8B383CE6D4848FA1184ADC5692"
+    },
+    {
+      "Path": "D-software-menu/anr-traces.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/anr-traces.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/boot-check.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/boot-check.stdout.log",
+      "Bytes": 2,
+      "SHA256": "4355A46B19D348DC2F57C046F8EF63D4538EBB936000F3C9EE954A27460DD865"
+    },
+    {
+      "Path": "D-software-menu/commands.json",
+      "Bytes": 4292,
+      "SHA256": "3373DCF77F4F689880588BA2321F10CFB8C321BA329E6FB942143C7BE0F67A93"
+    },
+    {
+      "Path": "D-software-menu/dropbox-anr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/dropbox-anr.stdout.log",
+      "Bytes": 4115,
+      "SHA256": "5647642CDF643C1CF52CB06CD6B8CAE1CDF11D6009E713FC93C39BDA69867F13"
+    },
+    {
+      "Path": "D-software-menu/install.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/install.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/lastanr.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/lastanr.stdout.log",
+      "Bytes": 96,
+      "SHA256": "E395592670693091CB678F8C67E4D356D9A390BE22C2ED04766CC40381BB8934"
+    },
+    {
+      "Path": "D-software-menu/logcat.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/logcat.stdout.log",
+      "Bytes": 203729,
+      "SHA256": "78489D8BB4054289977A4124E8FEF8873D6F86B1C6CF79AE80B6C76B55B0C4D2"
+    },
+    {
+      "Path": "D-software-menu/post-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/post-processes.stdout.log",
+      "Bytes": 7881,
+      "SHA256": "012F1861BE2B0ED1B4959BBF5DB59A96AB38526BB23576BFC613C13E6E78942D"
+    },
+    {
+      "Path": "D-software-menu/post-service.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/post-service.stdout.log",
+      "Bytes": 24,
+      "SHA256": "31ACE82959C4828F90008DF4AE03B5261DD868182B482F43D7BB83B3A4D87233"
+    },
+    {
+      "Path": "D-software-menu/pre-processes.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/pre-processes.stdout.log",
+      "Bytes": 6798,
+      "SHA256": "95967F438F7831E631ADE2681236FA0C10200F5CEFBD296DBDFBA4A9EFB533B7"
+    },
+    {
+      "Path": "D-software-menu/push.stderr.log",
+      "Bytes": 127,
+      "SHA256": "BB030A3201C83078BA26795A965DFFBB20E4475AA883384FCAD084A939721AF0"
+    },
+    {
+      "Path": "D-software-menu/push.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/screen-pull.stderr.log",
+      "Bytes": 59,
+      "SHA256": "F16AE25BFC02C75DF8ACCEAA57153EFE65D2AC6FB0CF67A64A91692F531A25CC"
+    },
+    {
+      "Path": "D-software-menu/screen-pull.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/screen.png",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/screen.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/screen.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/stop-reference.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/stop-reference.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/stop-settings.stderr.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Path": "D-software-menu/stop-settings.stdout.log",
+      "Bytes": 0,
+      "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    }
+  ]
+}

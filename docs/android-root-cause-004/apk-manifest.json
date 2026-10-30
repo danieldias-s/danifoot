@@ -1,0 +1,17 @@
+[
+  {
+    "Path": "artifacts/android/elifoot-qa004-profile-x64.apk",
+    "Bytes": 30314882,
+    "SHA256": "F532212EF268F294A860F5549F16DFBCEA07211DF4FF70F35BEB598E7765C752"
+  },
+  {
+    "Path": "artifacts/android/android-reference-qa004-profile-x64.apk",
+    "Bytes": 22938861,
+    "SHA256": "7ED76FCDA640DB1B71D1920AFEE281408376D5D940EAEBB47C62D0E29F39FDAD"
+  },
+  {
+    "Path": "artifacts/android/elifoot-qa003-profile.apk",
+    "Bytes": 70740682,
+    "SHA256": "76063AE7D5F87353C233B7B16B1B3996A9D834F7A8AD7907B52ED20521D533A0"
+  }
+]

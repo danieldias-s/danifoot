@@ -1,0 +1,18 @@
+START ["-s","emulator-5554","push","artifacts/android/elifoot-qa003-integration-profile.apk","/data/local/tmp/qa003-integration.apk"]
+artifacts/android/elifoot-qa003-integration-profile.apk: 1 file pushed, 0 skipped. 1.7 MB/s (30314882 bytes in 17.448s)
+
+START ["-s","emulator-5554","exec-out","pm","install","-r","/data/local/tmp/qa003-integration.apk"]
+Error: Could not access the Package Manager.  Is the system running?
+
+START ["-s","emulator-5554","exec-out","am","start","-W","-n","com.example.elifoot_flutter/.MainActivity","--ez","enable-software-rendering","true","--ez","enable-impeller","false"]
+Error type 2
+android.util.AndroidException: Can't connect to activity manager; is the system running?
+	at com.android.commands.am.Am.onRun(Am.java:376)
+	at com.android.internal.os.BaseCommand.run(BaseCommand.java:51)
+	at com.android.commands.am.Am.main(Am.java:121)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:262)
+
+START ["-s","emulator-5554","forward","tcp:54321","tcp:8181"]
+54321
+

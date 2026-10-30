@@ -1,0 +1,47 @@
+[
+  {
+    "Path": "src/Elifoot.Api/Program.cs",
+    "Bytes": 35463,
+    "SHA256": "25FC9E7A2154079A6E266205A62F433DAF75FB5ED2A2D13A97C136AC1BBA295B"
+  },
+  {
+    "Path": "src/Elifoot.Infrastructure/ElifootDbContext.cs",
+    "Bytes": 4120,
+    "SHA256": "3FF1C9423DEEF8AC9D74F6A6ABB6B0A03B0696C8DDB2673FFDD1178EE615AF73"
+  },
+  {
+    "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+    "Bytes": 9598,
+    "SHA256": "E9EC877263DA96C99179A8914F0C4753666CE864E142EE5B313714609B9A7878"
+  },
+  {
+    "Path": "src/Elifoot.Domain/Entities.cs",
+    "Bytes": 21419,
+    "SHA256": "34BA97074B718111340AC91EF98A080B198B5F1B9A4D9754CC5626106837EA52"
+  },
+  {
+    "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+    "Bytes": 22954,
+    "SHA256": "250C1E2CD3280AB178A0821F0F5EE2046721C42B978EB8C292CAAC21DDAE8D24"
+  },
+  {
+    "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+    "Bytes": 33019,
+    "SHA256": "C66D717DFCDC0ECA7EBB3C6A03FBA39580490CE418AF86588CBD4DCB94A0BB2C"
+  },
+  {
+    "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+    "Bytes": 61785,
+    "SHA256": "02E55F4B31B54FC397718C43E4E9FC3EF236ECD90B1B267EAC078A361E02F26B"
+  },
+  {
+    "Path": "src/Elifoot.Contracts/Dtos.cs",
+    "Bytes": 10846,
+    "SHA256": "FF00443709D28939BAB4FC552B058480C0775C81234FCC04D51C6F1270653C5B"
+  },
+  {
+    "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+    "Bytes": 8891,
+    "SHA256": "E5DD60F1A6F775DD9596213259013750F807695245985306F702F47F11EED8EC"
+  }
+]

@@ -1,0 +1,20 @@
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Nenhum teste corresponde ao filtro de testcase `FullyQualifiedName!~MultiSeasonAndBenchmarkTests` determinado no D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\regression-final-tests\regression-final_net10.0_20261030080625.trx
+
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\regression-final-tests\regression-final_net10.0_20261030080636.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     4, Ignorado:     0, Total:     4, Duração: 11 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\regression-final-tests\regression-final_net10.0_20261030080643.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    34, Ignorado:     0, Total:    34, Duração: 18 s - Elifoot.Domain.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\regression-final-tests\regression-final_net10.0_20261030080800.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    10, Ignorado:     0, Total:    10, Duração: 1 m 35 s - Elifoot.Integration.Tests.dll (net10.0)

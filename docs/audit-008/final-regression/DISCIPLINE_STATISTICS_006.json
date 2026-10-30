@@ -1,0 +1,301 @@
+{
+  "task": "ELIFOOT_DISCIPLINE_AND_GAMEPLAY_AUDIT_006",
+  "generatedAtUtc": "2026-10-30T12:06:07.8733702Z",
+  "worldSeed": 199801,
+  "seasonsSimulated": 100,
+  "totalRealMatches": 35100,
+  "totalRealMinutes": 3254820,
+  "baseline005VsCandidate006Comparison": {
+    "baseline005": {
+      "matches": 35100,
+      "yellowCards": 89757,
+      "yellowCardsPerMatch": 2.557,
+      "directRedCards": 8665,
+      "secondYellowRedCards": 8143,
+      "totalRedCards": 16808,
+      "redCardsPerMatch": 0.479
+    },
+    "candidate006": {
+      "matches": 35100,
+      "totalFouls": 636914,
+      "foulsPerMatch": 18.146,
+      "foulsPerTeamPerMatch": 9.073,
+      "yellowCards": 79412,
+      "yellowCardsPerMatch": 2.262,
+      "directRedCards": 3232,
+      "secondYellowRedCards": 2483,
+      "totalRedCards": 5715,
+      "redCardsPerMatch": 0.163,
+      "redCardsPerTeamPerMatch": 0.0814,
+      "redCardReductionPct": 66
+    }
+  },
+  "ruleVerificationChecks": {
+    "A_excessiveCardsSingleInfraction": {
+      "passed": true,
+      "violations": 0
+    },
+    "B_multipleCardsSingleOccurrence": {
+      "passed": true,
+      "violations": 0
+    },
+    "C_secondYellowAppliedCorrectly": {
+      "passed": true,
+      "bugFixed": "BUG-006-01: 2\u00BA amarelo na mesma partida n\u00E3o incrementa mais indevidamente YellowCardsAccumulated ap\u00F3s gerar suspens\u00E3o por cart\u00E3o vermelho."
+    },
+    "D_sentOffPlayersExcludedFromEvents": {
+      "passed": true,
+      "violations": 0
+    },
+    "E_sarrafeiroAggressivenessCalibrated": {
+      "passed": true,
+      "finding": "BALANCEAMENTO-006-01: Peso de falta do Sarrafeiro (5.20 -\u003E 3.60), chance de vermelho direto (0.16 -\u003E 0.085) e cautela p\u00F3s-1\u00BA amarelo (0.48x/0.32x) calibrados."
+    },
+    "F_fairPlayZeroIntentionalFoulsAndCards": {
+      "passed": true,
+      "fairPlayYellows": 0,
+      "fairPlayDirectReds": 0,
+      "fairPlaySecondYellowReds": 0
+    },
+    "G_noArtificialTacticalCardInflation": {
+      "passed": true
+    }
+  },
+  "cardsByBehavior": [
+    {
+      "behavior": "FairPlay",
+      "yellowCards": 0,
+      "secondYellowRedCards": 0,
+      "directRedCards": 0,
+      "totalRedCards": 0
+    },
+    {
+      "behavior": "Cordeirinho",
+      "yellowCards": 5067,
+      "secondYellowRedCards": 31,
+      "directRedCards": 17,
+      "totalRedCards": 48
+    },
+    {
+      "behavior": "Cavalheiro",
+      "yellowCards": 16611,
+      "secondYellowRedCards": 180,
+      "directRedCards": 189,
+      "totalRedCards": 369
+    },
+    {
+      "behavior": "Caneleiro",
+      "yellowCards": 22871,
+      "secondYellowRedCards": 421,
+      "directRedCards": 582,
+      "totalRedCards": 1003
+    },
+    {
+      "behavior": "Caceteiro",
+      "yellowCards": 20480,
+      "secondYellowRedCards": 912,
+      "directRedCards": 1009,
+      "totalRedCards": 1921
+    },
+    {
+      "behavior": "Sarrafeiro",
+      "yellowCards": 14383,
+      "secondYellowRedCards": 939,
+      "directRedCards": 1435,
+      "totalRedCards": 2374
+    }
+  ],
+  "expulsionsByMinuteBucket": {
+    "01-15": 606,
+    "16-30": 764,
+    "31-45": 929,
+    "46-60": 961,
+    "61-75": 1042,
+    "76-90": 1167,
+    "91-105": 125,
+    "106-120": 121
+  },
+  "disciplineByDivisionAndCompetition": [
+    {
+      "competitionOrDivision": "Ta\u00E7a",
+      "matches": 12700,
+      "totalFouls": 232859,
+      "foulsPerMatch": 18.335,
+      "yellowCards": 29237,
+      "yellowsPerMatch": 2.302,
+      "redCards": 2022,
+      "redsPerMatch": 0.159
+    },
+    {
+      "competitionOrDivision": "PrimeiraDivisao",
+      "matches": 5600,
+      "totalFouls": 104126,
+      "foulsPerMatch": 18.594,
+      "yellowCards": 12660,
+      "yellowsPerMatch": 2.261,
+      "redCards": 1009,
+      "redsPerMatch": 0.18
+    },
+    {
+      "competitionOrDivision": "SegundaDivisao",
+      "matches": 5600,
+      "totalFouls": 102839,
+      "foulsPerMatch": 18.364,
+      "yellowCards": 12785,
+      "yellowsPerMatch": 2.283,
+      "redCards": 901,
+      "redsPerMatch": 0.161
+    },
+    {
+      "competitionOrDivision": "TerceiraDivisao",
+      "matches": 5600,
+      "totalFouls": 98374,
+      "foulsPerMatch": 17.567,
+      "yellowCards": 12353,
+      "yellowsPerMatch": 2.206,
+      "redCards": 913,
+      "redsPerMatch": 0.163
+    },
+    {
+      "competitionOrDivision": "QuartaDivisao",
+      "matches": 5600,
+      "totalFouls": 98716,
+      "foulsPerMatch": 17.628,
+      "yellowCards": 12377,
+      "yellowsPerMatch": 2.21,
+      "redCards": 870,
+      "redsPerMatch": 0.155
+    }
+  ],
+  "disciplineByFormation": [
+    {
+      "formation": "4-4-2",
+      "teamMatches": 23615,
+      "fouls": 216331,
+      "foulsPerTeamMatch": 9.161,
+      "yellowCards": 26799,
+      "yellowsPerTeamMatch": 1.135,
+      "redCards": 1916,
+      "redsPerTeamMatch": 0.0811
+    },
+    {
+      "formation": "4-3-3",
+      "teamMatches": 17171,
+      "fouls": 157266,
+      "foulsPerTeamMatch": 9.159,
+      "yellowCards": 19710,
+      "yellowsPerTeamMatch": 1.148,
+      "redCards": 1465,
+      "redsPerTeamMatch": 0.0853
+    },
+    {
+      "formation": "5-3-2",
+      "teamMatches": 6815,
+      "fouls": 60080,
+      "foulsPerTeamMatch": 8.816,
+      "yellowCards": 7463,
+      "yellowsPerTeamMatch": 1.095,
+      "redCards": 535,
+      "redsPerTeamMatch": 0.0785
+    },
+    {
+      "formation": "3-5-2",
+      "teamMatches": 6581,
+      "fouls": 57908,
+      "foulsPerTeamMatch": 8.799,
+      "yellowCards": 7339,
+      "yellowsPerTeamMatch": 1.115,
+      "redCards": 493,
+      "redsPerTeamMatch": 0.0749
+    },
+    {
+      "formation": "4-5-1",
+      "teamMatches": 6077,
+      "fouls": 55070,
+      "foulsPerTeamMatch": 9.062,
+      "yellowCards": 6899,
+      "yellowsPerTeamMatch": 1.135,
+      "redCards": 480,
+      "redsPerTeamMatch": 0.079
+    },
+    {
+      "formation": "3-4-3",
+      "teamMatches": 5802,
+      "fouls": 53854,
+      "foulsPerTeamMatch": 9.282,
+      "yellowCards": 6568,
+      "yellowsPerTeamMatch": 1.132,
+      "redCards": 468,
+      "redsPerTeamMatch": 0.0807
+    },
+    {
+      "formation": "5-4-1",
+      "teamMatches": 3897,
+      "fouls": 34129,
+      "foulsPerTeamMatch": 8.758,
+      "yellowCards": 4365,
+      "yellowsPerTeamMatch": 1.12,
+      "redCards": 339,
+      "redsPerTeamMatch": 0.087
+    },
+    {
+      "formation": "3-6-1",
+      "teamMatches": 161,
+      "fouls": 1505,
+      "foulsPerTeamMatch": 9.348,
+      "yellowCards": 180,
+      "yellowsPerTeamMatch": 1.118,
+      "redCards": 14,
+      "redsPerTeamMatch": 0.087
+    },
+    {
+      "formation": "4-2-4",
+      "teamMatches": 81,
+      "fouls": 771,
+      "foulsPerTeamMatch": 9.519,
+      "yellowCards": 89,
+      "yellowsPerTeamMatch": 1.099,
+      "redCards": 5,
+      "redsPerTeamMatch": 0.0617
+    }
+  ],
+  "expulsionsByStrengthDifference": {
+    "EquipeMaisForte_DiffGte5": 720,
+    "Equilibrado_DiffWithin4": 4389,
+    "EquipeMaisFraca_DiffLteMinus5": 606
+  },
+  "top15ClubsByExpulsions": {
+    "Internacional do Sul": 164,
+    "Palestra Verde": 162,
+    "Sport Club Atl\u00E2ntico": 160,
+    "Crici\u00FAma Carvoeiro": 159,
+    "Guarani da Serra": 152,
+    "Associa\u00E7\u00E3o de Uberl\u00E2ndia": 150,
+    "Atl\u00E9tico Paulistano": 147,
+    "Goi\u00E1s Esmeralda": 147,
+    "Estrela Solit\u00E1ria": 141,
+    "Gr\u00EAmio Guanabara": 129,
+    "Fortaleza do Sol": 127,
+    "Real Pampulha": 126,
+    "Le\u00E3o da Ilha": 124,
+    "Coritiba Imperial": 124,
+    "XV de de Arapiraca": 119
+  },
+  "top15PlayersByExpulsions": {
+    "Caio Fernandes (Sarrafeiro)": 80,
+    "N\u00EDlton Machado (Sarrafeiro)": 65,
+    "Rafael Barbosa (Sarrafeiro)": 65,
+    "Bruno Machado (Sarrafeiro)": 64,
+    "Renato Nascimento (Sarrafeiro)": 64,
+    "Rafael Dias (Sarrafeiro)": 63,
+    "Igor Teixeira (Sarrafeiro)": 63,
+    "Ot\u00E1vio Vieira (Sarrafeiro)": 58,
+    "Z\u00E9 Marques (Sarrafeiro)": 58,
+    "Henrique Lopes* (Sarrafeiro)": 57,
+    "Wagner Moreira (Sarrafeiro)": 55,
+    "Lucas Ferreira (Sarrafeiro)": 54,
+    "Z\u00E9 Santos (Sarrafeiro)": 54,
+    "Lucas Teixeira* (Sarrafeiro)": 51,
+    "Thiago Marques (Sarrafeiro)": 49
+  }
+}

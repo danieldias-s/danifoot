@@ -1,0 +1,14 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+D:\elifoot_98\tests\Elifoot.Domain.Tests\PlayerRankings009Tests.cs(126,9): warning xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj]
+D:\elifoot_98\tests\Elifoot.Domain.Tests\PlayerRankings009Tests.cs(129,9): warning xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj]
+  Elifoot.Domain.Tests -> D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+
+Compilação com êxito.
+
+D:\elifoot_98\tests\Elifoot.Domain.Tests\PlayerRankings009Tests.cs(126,9): warning xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj]
+D:\elifoot_98\tests\Elifoot.Domain.Tests\PlayerRankings009Tests.cs(129,9): warning xUnit2031: Do not use a Where clause to filter before calling Assert.Single. Use the overload of Assert.Single that accepts a filtering function. (https://xunit.net/xunit.analyzers/rules/xUnit2031) [D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj]
+    2 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:09.81

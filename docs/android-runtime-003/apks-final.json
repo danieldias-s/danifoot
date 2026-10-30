@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "elifoot-qa003-debug.apk",
+    "Bytes": 181736973,
+    "SHA256": "E3F53AA3EC34359203756CB7C56479ABA163AE548AD9E1F58E4BA786ADD51BD1"
+  },
+  {
+    "Name": "elifoot-qa003-integration-profile.apk",
+    "Bytes": 30314882,
+    "SHA256": "94A5DEECB7349CDE69EA2A5ECC843830174D3FB51DB4B4CA05CC40697CF59B1D"
+  },
+  {
+    "Name": "elifoot-qa003-profile.apk",
+    "Bytes": 70740682,
+    "SHA256": "76063AE7D5F87353C233B7B16B1B3996A9D834F7A8AD7907B52ED20521D533A0"
+  }
+]

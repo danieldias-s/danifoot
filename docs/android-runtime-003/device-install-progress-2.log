@@ -1,0 +1,82 @@
+--------- beginning of main
+10-29 21:24:01.013  1636  1651 W art     : Long monitor contention with owner AlarmManager (1699) at int com.android.server.am.PendingIntentRecord.sendInner(int, android.content.Intent, java.lang.String, android.content.IIntentReceiver, java.lang.String, android.os.IBinder, java.lang.String, int, int, int, android.os.Bundle, android.app.IActivityContainer)(PendingIntentRecord.java:223) waiters=1 in void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean) for 607ms
+10-29 21:24:02.844  1636  2399 W art     : Long monitor contention with owner Binder:1636_2 (1648) at void com.android.server.pm.PackageInstallerService$InternalCallback.onSessionSealedBlocking(com.android.server.pm.PackageInstallerSession)(PackageInstallerService.java:1278) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerService.getSessionInfo(int) for 1.570s
+10-29 21:24:13.930  3036  3047 W art     : Suspending all threads took: 319.065ms
+--------- beginning of system
+10-29 21:24:14.133  1636  1666 W PackageParser: Unknown element under <manifest>: queries at /data/app/vmdl230478198.tmp/base.apk Binary XML file line #23
+10-29 21:24:18.814  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 21:24:18.814  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 21:24:21.471  1636  1666 I PackageManager.DexOptimizer: Running dexopt (dex2oat) on: /data/app/vmdl230478198.tmp/base.apk pkg=com.example.elifoot_flutter isa=x86_64 vmSafeMode=false debuggable=true target-filter=interpret-only oatDir = /data/app/vmdl230478198.tmp/oat sharedLibraries=null
+10-29 21:24:26.638  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_STATUS_SMS_TIME_OUT
+10-29 21:24:26.644  1921  1921 I RetryPolicy: discarding deferred status: configuration_state=4
+10-29 21:24:26.697  1921  1921 D VvmTaskScheduler: No more tasks, stopping service if no task are added in 5000 millis
+10-29 21:24:26.704  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:24:26.727  1921  1921 D RetryPolicy: retry #3 for com.android.phone.vvm.omtp.ActivationTask@f093e8f queued, executing in 5000
+10-29 21:24:26.756  1921  1921 D VvmTaskScheduler: minimal wait time:4973
+10-29 21:24:26.780  1921  1921 D VvmTaskScheduler: minimal wait time:4960
+10-29 21:24:28.594  1291  1900 V EmulatedCamera_Camera: getCameraInfo
+10-29 21:24:28.597  1291  1900 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 21:24:28.741  3036  3036 I G:DisableCameraReceiver: back camera found: 0
+10-29 21:24:29.925  1636  2399 W art     : Long monitor contention with owner PackageInstaller (1689) at java.io.FileDescriptor libcore.io.Posix.open(java.lang.String, int, int)(Posix.java:-2) waiters=0 in android.content.pm.PackageInstaller$SessionInfo com.android.server.pm.PackageInstallerSession.generateInfo() for 27.076s
+10-29 21:24:30.705  1759  1759 I SystemBroadcastReceiver: Boot has been completed
+10-29 21:24:30.706  1759  1759 I SystemBroadcastReceiver: toggleAppIcon() : FLAG_SYSTEM = true
+10-29 21:24:32.621  1921  2882 V VvmTaskScheduler: executing task com.android.phone.vvm.omtp.ActivationTask@f093e8f
+10-29 21:24:32.704  1921  1921 V VvmBootCompletedRcvr: processing subId list
+10-29 21:24:34.056  1921  1921 V VvmBootCompletedRcvr: processing subId 1
+10-29 21:24:34.105  1921  1921 I VvmSimChangeReceiver: Sim state or carrier config changed for 1
+10-29 21:24:34.295  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:24:34.315  1921  2882 I VvmActivationTask: VVM content provider configured - vvm_type_cvvm
+10-29 21:24:34.317  1921  2882 I OmtpVvmCarrierCfgHlpr: OmtpEvent:CONFIG_ACTIVATING
+10-29 21:24:34.487  1921  2882 V OmtpMessageSender: Sending BINARY sms 'Activate:dt=15' to 122:1808
+10-29 21:24:35.814  1921  1921 D VvmStatusSmsFetcher: Request SMS successfully sent
+10-29 21:24:37.624  2842  3069 W MessagingAppDataModel: Used 5059ms for UpdateMessageNotificationAction#executeAction
+10-29 21:24:38.018  2744  2744 D MediaScannerReceiver: action: android.intent.action.MEDIA_SCANNER_SCAN_FILE path: /data/local/tmp/qa003-boot.png
+10-29 21:24:38.049  1921  1921 D VvmSimChangeReceiver: Carrier config changed
+10-29 21:24:38.096  1921  1921 I VvmSimChangeReceiver: Sim state or carrier config changed for 1
+10-29 21:24:38.142  2938  2938 D AndroidRuntime: Shutting down VM
+10-29 21:24:38.198  1921  1921 D VvmTaskScheduler: create task:com.android.phone.vvm.omtp.ActivationTask
+10-29 21:24:39.756  1636  1647 W ActivityManager: Slow operation: 108ms so far, now at startProcess: returned from zygote!
+10-29 21:24:39.756  1636  1647 W ActivityManager: Slow operation: 109ms so far, now at startProcess: done updating battery stats
+10-29 21:24:39.757  1636  1647 W ActivityManager: Slow operation: 109ms so far, now at startProcess: building log message
+10-29 21:24:39.757  1636  1647 I ActivityManager: Start proc 3073:com.android.email/u0a34 for broadcast com.android.email/.provider.WidgetProvider
+10-29 21:24:39.757  1636  1647 W ActivityManager: Slow operation: 110ms so far, now at startProcess: starting to update pids map
+10-29 21:24:39.757  1636  1647 W ActivityManager: Slow operation: 110ms so far, now at startProcess: done updating pids map
+10-29 21:24:39.757  1636  1647 W ActivityManager: Slow operation: 113ms so far, now at startProcess: done starting proc!
+10-29 21:24:39.790  3073  3073 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:24:41.374  3073  3073 W System  : ClassLoader referenced unknown path: /system/app/Email/lib/x86_64
+10-29 21:24:41.851  2744  3071 I MediaProvider: Upgrading media database from version 0 to 800, which will destroy all old data
+10-29 21:24:43.042  2744  2756 W art     : Suspending all threads took: 310.970ms
+10-29 21:24:43.441  1636  2392 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:43.535  3073  3089 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-29 21:24:43.542  1636  2391 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:43.600  3073  3073 D ActivityThread: Loading provider com.android.email.provider;com.android.email.notifier: com.android.email.provider.EmailProvider
+10-29 21:24:43.607  1636  1837 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:43.653  3067  3067 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:24:43.917  2744  3071 D MediaProvider: Adjusting external storage paths to: /storage/emulated/0
+10-29 21:24:44.935  2744  3071 E SQLiteLog: (1) no such table: files
+10-29 21:24:44.966  3067  3067 I dex2oat : /system/bin/dex2oat --compiler-filter=interpret-only --debuggable
+10-29 21:24:45.198  3073  3090 W art     : Long monitor contention with owner main (3073) at long android.database.sqlite.SQLiteConnection.nativeOpen(java.lang.String, int, java.lang.String, boolean, boolean)(SQLiteConnection.java:-2) waiters=0 in android.database.sqlite.SQLiteDatabase com.android.email.provider.EmailProvider.getDatabase(android.content.Context) for 1.522s
+10-29 21:24:45.304  1636  2392 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.332  1636  1648 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.359  1636  2391 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.371  1636  2399 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.387  1636  2709 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.404  1636  1836 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.419  1636  2392 W ActivityManager: Unable to start service Intent { act=com.android.mail.action.BACKUP_DATA_CHANGED pkg=com.android.email } U=0: not found
+10-29 21:24:45.446  3073  3089 W art     : Long monitor contention with owner main (3073) at long android.database.sqlite.SQLiteConnection.nativeOpen(java.lang.String, int, java.lang.String, boolean, boolean)(SQLiteConnection.java:-2) waiters=0 in com.android.mail.preferences.MailPrefs com.android.mail.preferences.MailPrefs.get(android.content.Context) for 1.764s
+10-29 21:24:45.509  1636  1649 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:45.613  1636  2399 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-29 21:24:45.657  1636  2398 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-29 21:24:46.922  3073  3084 W art     : Suspending all threads took: 672.037ms
+10-29 21:24:47.050  3073  3090 W art     : Long monitor contention with owner AsyncTask #1 (3089) at java.lang.Object android.app.SystemServiceRegistry$CachedServiceFetcher.getService(android.app.ContextImpl)(SystemServiceRegistry.java:835) waiters=0 in com.android.email.EmailNotificationController com.android.email.EmailNotificationController.getInstance(android.content.Context) for 1.364s
+10-29 21:24:47.194  3073  3095 I Email   : Observing account changes for notifications
+10-29 21:24:47.523  1636  1836 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:47.565  1636  2001 W ActivityManager: Unable to start service Intent { cmp=com.android.email/.service.AttachmentService } U=0: not found
+10-29 21:24:47.622  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_01.ogg since build fingerprint changed
+10-29 21:24:47.672  1636  1648 W ActivityManager: Unable to start service Intent { act=com.android.email.EXCHANGE_INTENT pkg=com.android.exchange } U=0: not found
+10-29 21:24:49.816  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_02.ogg since build fingerprint changed
+10-29 21:24:51.182  1636  1646 I art     : Background sticky concurrent mark sweep GC freed 43425(2MB) AllocSpace objects, 15(580KB) LOS objects, 33% free, 7MB/11MB, paused 3.673ms total 1.230s
+10-29 21:24:51.303  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Beep_03.ogg since build fingerprint changed
+10-29 21:24:52.601  1636  1651 I ActivityManager: Waited long enough for: ServiceRecord{df0818c u0 com.android.providers.media/.MediaScannerService}
+10-29 21:24:52.779  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Buzzer.ogg since build fingerprint changed
+10-29 21:24:53.045  2744  3071 W MediaScanner: forcing rescan of /system/media/audio/alarms/Alarm_Classic.oggsince ringtone setting didn't finish

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="27663290-81ad-40e0-a9df-aab4050dac90" name="Daniel@DESKTOP-A5J5UME 2026-10-30 09:31:32" runUser="DESKTOP-A5J5UME\CodexSandboxOffline" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T09:31:32.2852814-03:00" queuing="2026-10-30T09:31:32.2852817-03:00" start="2026-10-30T09:31:22.6306526-03:00" finish="2026-10-30T09:31:38.9531162-03:00" />
+  <TestSettings name="default" id="295d67f3-93d9-465d-a79e-1c747e811111">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_09_31_32" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="44287353-d40f-4cb5-b99e-2bb138643ae9" testId="40899414-5587-6603-ee68-faf91118d27f" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" computerName="DESKTOP-A5J5UME" duration="00:00:04.1434479" startTime="2026-10-30T09:31:34.5999330-03:00" endTime="2026-10-30T09:31:38.7436159-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44287353-d40f-4cb5-b99e-2bb138643ae9" />
+    <UnitTestResult executionId="d2818512-ddb9-4ec3-8aef-4787e51a6086" testId="26393ad2-49e2-2035-8851-374d74f1efe1" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4155538" startTime="2026-10-30T09:31:33.2697174-03:00" endTime="2026-10-30T09:31:33.6852361-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2818512-ddb9-4ec3-8aef-4787e51a6086" />
+    <UnitTestResult executionId="5a154489-e453-447b-be56-cf3fac67d337" testId="4032b22c-01a2-67b2-afde-e83144c17299" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4948953" startTime="2026-10-30T09:31:33.6858719-03:00" endTime="2026-10-30T09:31:34.1809729-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a154489-e453-447b-be56-cf3fac67d337" />
+    <UnitTestResult executionId="bff481fb-1fdb-4ed4-b72d-a8b88161e0a1" testId="8eff5695-25a0-4795-2036-da8e0690cdc5" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" computerName="DESKTOP-A5J5UME" duration="00:00:05.5311584" startTime="2026-10-30T09:31:26.6571943-03:00" endTime="2026-10-30T09:31:32.2121494-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bff481fb-1fdb-4ed4-b72d-a8b88161e0a1" />
+    <UnitTestResult executionId="1064c61f-efbe-4cf6-bf3e-746eae302e61" testId="2c057334-6cff-e649-910d-247534263b39" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4175825" startTime="2026-10-30T09:31:34.1814170-03:00" endTime="2026-10-30T09:31:34.5994099-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1064c61f-efbe-4cf6-bf3e-746eae302e61" />
+    <UnitTestResult executionId="2a52fdea-8489-4552-9d13-de2d757fac98" testId="623c0818-325c-e4ea-3285-9ef2e463311a" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" computerName="DESKTOP-A5J5UME" duration="00:00:00.5551870" startTime="2026-10-30T09:31:32.2513221-03:00" endTime="2026-10-30T09:31:32.7741228-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a52fdea-8489-4552-9d13-de2d757fac98" />
+    <UnitTestResult executionId="082214ec-1217-4b24-b913-bae16de02aad" testId="0463c3de-670e-4a0c-99b4-129e2a1e865d" testName="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True)" computerName="DESKTOP-A5J5UME" duration="00:00:00.4943544" startTime="2026-10-30T09:31:32.7767275-03:00" endTime="2026-10-30T09:31:33.2690900-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="082214ec-1217-4b24-b913-bae16de02aad" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="2c057334-6cff-e649-910d-247534263b39">
+      <Execution id="1064c61f-efbe-4cf6-bf3e-746eae302e61" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="40899414-5587-6603-ee68-faf91118d27f">
+      <Execution id="44287353-d40f-4cb5-b99e-2bb138643ae9" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="623c0818-325c-e4ea-3285-9ef2e463311a">
+      <Execution id="2a52fdea-8489-4552-9d13-de2d757fac98" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="0463c3de-670e-4a0c-99b4-129e2a1e865d">
+      <Execution id="082214ec-1217-4b24-b913-bae16de02aad" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="4032b22c-01a2-67b2-afde-e83144c17299">
+      <Execution id="5a154489-e453-447b-be56-cf3fac67d337" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="8eff5695-25a0-4795-2036-da8e0690cdc5">
+      <Execution id="bff481fb-1fdb-4ed4-b72d-a8b88161e0a1" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False)" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="26393ad2-49e2-2035-8851-374d74f1efe1">
+      <Execution id="d2818512-ddb9-4ec3-8aef-4787e51a6086" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.CoachCareer008IntegrationTests" name="HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="40899414-5587-6603-ee68-faf91118d27f" executionId="44287353-d40f-4cb5-b99e-2bb138643ae9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26393ad2-49e2-2035-8851-374d74f1efe1" executionId="d2818512-ddb9-4ec3-8aef-4787e51a6086" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4032b22c-01a2-67b2-afde-e83144c17299" executionId="5a154489-e453-447b-be56-cf3fac67d337" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8eff5695-25a0-4795-2036-da8e0690cdc5" executionId="bff481fb-1fdb-4ed4-b72d-a8b88161e0a1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c057334-6cff-e649-910d-247534263b39" executionId="1064c61f-efbe-4cf6-bf3e-746eae302e61" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="623c0818-325c-e4ea-3285-9ef2e463311a" executionId="2a52fdea-8489-4552-9d13-de2d757fac98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0463c3de-670e-4a0c-99b4-129e2a1e865d" executionId="082214ec-1217-4b24-b913-bae16de02aad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="7" executed="7" passed="7" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:01.09]   Discovering: Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:01.21]   Discovered:  Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:01.28]   Starting:    Elifoot.Integration.Tests&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:13.42]   Finished:    Elifoot.Integration.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

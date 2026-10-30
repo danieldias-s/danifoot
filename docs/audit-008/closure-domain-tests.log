@@ -1,0 +1,9 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+AVISO: sobrescrevendo o arquivo de resultados: D:\elifoot_98\docs\audit-008\closure-domain-tests\career32-final.trx
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\closure-domain-tests\career32-final.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    32, Ignorado:     0, Total:    32, Duração: 2 s - Elifoot.Domain.Tests.dll (net10.0)

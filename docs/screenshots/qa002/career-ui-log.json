@@ -1,0 +1,28 @@
+{
+  "fixture": "Imported via GUI editor; Ferroviaria players strength 1; no scores edited",
+  "finishedRounds": [
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 1 (Taça - Preliminar 1)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 2 (Taça - Preliminar 2)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 3 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 4 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 5 (Taça - 32-avos de Final (64))",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 6 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 7 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 8 (Taça - 16-avos de Final (32))",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 9 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 10 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 11 (Taça - Oitavas de Final)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 12 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 13 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 14 (Taça - Quartas de Final)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 15 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 16 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 17 (Taça - Semifinal)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 18 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 19 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 20 (Taça - Grande Final)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 21 (Campeonato Nacional)",
+    "- generic: Mundo Importado Editado • Temp 1 • Rodada 22 (Campeonato Nacional)"
+  ],
+  "finalState": "- generic: Mundo Importado Editado • Temp 2 • Rodada 1 (Taça - Preliminar 1)\n- generic: \"TÉCNICO: QA Rebaixamento (Desempregado) • CAIXA: R$ 0\"\n- generic: \"TÁTICAS ENVIADAS: 0/1\"\n- button \"PRONTO PARA ACOMPANHAR\"\n- button \"TROCAR SALA\"\n- generic: ⏳ QA Rebaixamento (Desempregado)\n- generic: Partidas retomadas!\n- button\n- button \"1. PLANTEL & TÁTICAS\" [active]\n- button \"2. JOGOS AO VIVO\"\n- button \"3. DIVISÕES & TAÇA\"\n- button \"4. MERCADO & LEILÃO\"\n- button \"5. FINANÇAS & ESTÁDIO\"\n- button \"6. RANKING & CARREIRA\"\n- button \"7. EDITOR & PACOTES\"\n- button \"8. CALENDÁRIO & RESULTADOS\"\n- generic: VOCÊ ESTÁ DESEMPREGADO NO MOMENTO\n- generic: Use o botão \"PRONTO PARA ACOMPANHAR\" no topo para avançar as rodadas com a sala, ou veja a aba \"6. RANKING & CARREIRA\" para aceitar convites de clubes!\n- button \"VER CONVITES DE EMPREGO\""
+}

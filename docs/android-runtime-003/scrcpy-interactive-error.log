@@ -1,0 +1,1362 @@
+D:\elifoot_98\.tools\scrcpy\scrcpy-win64-v5.0.1\scrcpy-server: 1 file pushed, 0 skipped. 571.3 MB/s (733930 bytes in 0.001s)
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+[server] ERROR: Could not invoke method
+java.lang.reflect.InvocationTargetException
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.genymobile.scrcpy.wrappers.InputManager.injectInputEvent(InputManager.java:51)
+	at com.genymobile.scrcpy.device.Device.injectEvent(Device.java:71)
+	at com.genymobile.scrcpy.control.Controller.injectTouch(Controller.java:620)
+	at com.genymobile.scrcpy.control.Controller.handleEvent(Controller.java:358)
+	at com.genymobile.scrcpy.control.Controller.control(Controller.java:246)
+	at com.genymobile.scrcpy.control.Controller.lambda$start$2$com-genymobile-scrcpy-control-Controller(Controller.java:281)
+	at com.genymobile.scrcpy.control.Controller$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+	at java.lang.Thread.run(Thread.java:761)
+Caused by: java.lang.RuntimeException: android.os.DeadSystemException
+	at android.hardware.input.InputManager.injectInputEvent(InputManager.java:867)
+	... 9 more
+Caused by: android.os.DeadSystemException
+	... 10 more
+WARN: Device disconnected

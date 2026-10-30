@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="92a5fb93-85c2-4c07-bf57-a8f470d00921" name="Daniel@DESKTOP-A5J5UME 2026-10-30 08:01:24" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T08:01:24.5711316-03:00" queuing="2026-10-30T08:01:24.5711317-03:00" start="2026-10-30T08:01:20.5368835-03:00" finish="2026-10-30T08:01:24.5800770-03:00" />
+  <TestSettings name="default" id="d856854b-046e-49fb-bbd0-f8dafcf4f7b5">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_08_01_24" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3c91f0a8-d5d2-4d55-95cb-f218f5fe612e" testId="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba" testName="Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" computerName="DESKTOP-A5J5UME" duration="00:00:02.4064388" startTime="2026-10-30T08:01:21.6588158-03:00" endTime="2026-10-30T08:01:24.2186774-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c91f0a8-d5d2-4d55-95cb-f218f5fe612e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 256&#xD;
+Actual:   200</Message>
+          <StackTrace>   at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce() in D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs:line 26&#xD;
+   at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce() in D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs:line 36&#xD;
+   at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce() in D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs:line 36&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" storage="d:\elifoot_98\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba">
+      <Execution id="3c91f0a8-d5d2-4d55-95cb-f218f5fe612e" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.FinancialPersistence007Tests" name="SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba" executionId="3c91f0a8-d5d2-4d55-95cb-f218f5fe612e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.17]   Discovering: Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.25]   Discovered:  Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.30]   Starting:    Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:02.91]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:02.91]       Expected: 256&#xD;
+[xUnit.net 00:00:02.91]       Actual:   200&#xD;
+[xUnit.net 00:00:02.91]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.02]         D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs(26,0): at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce()&#xD;
+[xUnit.net 00:00:03.02]         D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs(36,0): at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce()&#xD;
+[xUnit.net 00:00:03.02]         D:\elifoot_98\tests\Elifoot.Integration.Tests\FinancialPersistence007Tests.cs(36,0): at Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce()&#xD;
+[xUnit.net 00:00:03.02]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.06]   Finished:    Elifoot.Integration.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T08:01:24.2273668-03:00">
+        <Text>[xUnit.net 00:00:02.90]     Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

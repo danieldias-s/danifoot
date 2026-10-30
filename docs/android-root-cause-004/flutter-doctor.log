@@ -1,0 +1,48 @@
+[!] Flutter (Channel [user-branch], 3.38.5, on Microsoft Windows [versÆo 10.0.19045.6466], locale pt-BR) [1.258ms]
+    ! Flutter version 3.38.5 on channel [user-branch] at C:\flutter
+      Currently on an unknown channel. Run `flutter channel` to switch to an official channel.
+      If that doesn't fix the issue, reinstall Flutter by following instructions at https://flutter.dev/setup.
+    ! Upstream repository unknown source is not a standard remote.
+      Set environment variable "FLUTTER_GIT_URL" to unknown source to dismiss this error.
+    • Framework revision f6ff1529fd (11 months ago), 2025-12-11 11:50:07 -0500
+    • Engine revision 1527ae0ec5
+    • Dart version 3.10.4
+    • DevTools version 2.51.1
+    • Feature flags: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging
+    • If those were intentional, you can disregard the above warnings; however it is recommended to use "git" directly to perform update checks and upgrades.
+
+[√] Windows Version (10 Pro 64 bits, 22H2, 2009) [4,4s]
+
+[√] Android toolchain - develop for Android devices (Android SDK version 36.0.0) [11,4s]
+    • Android SDK at D:\elifoot_98\.tools\android-sdk
+    • Emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+    • Platform android-36, build-tools 36.0.0
+    • ANDROID_HOME = D:\elifoot_98\.tools\android-sdk
+    • ANDROID_SDK_ROOT = D:\elifoot_98\.tools\android-sdk
+    • Java binary at: D:\elifoot_98\.tools\jdk\jdk-17.0.20.1+1\bin\java
+      This JDK is specified by the JAVA_HOME environment variable.
+      To manually set the JDK path, use: `flutter config --jdk-dir="path/to/jdk"`.
+    • Java version OpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)
+    • All Android licenses accepted.
+
+[√] Chrome - develop for the web [538ms]
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[!] Visual Studio - develop Windows apps (Visual Studio Professional 2026 18.8.0) [535ms]
+    • Visual Studio at C:\Program Files\Microsoft Visual Studio\18\Professional
+    • Visual Studio Professional 2026 version 18.8.12009.203
+    X Visual Studio is missing necessary components. Please re-run the Visual Studio installer for the "Desktop development with C++" workload, and include these components:
+        MSVC v142 - VS 2019 C++ x64/x86 build tools
+         - If there are multiple build tool versions available, install the latest
+        C++ CMake tools for Windows
+        Windows 10 SDK
+
+[√] Connected device (3 available) [435ms]
+    • Windows (desktop) • windows • windows-x64    • Microsoft Windows [versÆo 10.0.19045.6466]
+    • Chrome (web)      • chrome  • web-javascript • Google Chrome 156.0.8078.48
+    • Edge (web)        • edge    • web-javascript • Microsoft Edge 156.0.4314.50
+
+[√] Network resources [748ms]
+    • All expected network resources are available.
+
+! Doctor found issues in 2 categories.

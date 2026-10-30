@@ -1,0 +1,1453 @@
+{
+  "Scope": {
+    "seed": 199801,
+    "seasons": [
+      1,
+      100
+    ],
+    "clubs": 128,
+    "aiManagers": 128,
+    "leagueClubs": 32,
+    "districtClubs": 96,
+    "matches": 35100,
+    "rounds": 2200,
+    "engine": "MatchSimulationEngine.SimulateFullMatchReal; minute by minute",
+    "aggregateScores": false
+  },
+  "Classification": "BUG",
+  "Threshold65": {
+    "IntentionalIn005": true,
+    "Source": "GAMEPLAY_BALANCE_100_SEASONS_005.md BALANCEAMENTO-002 and original AiManagerBrain.cs",
+    "Original": "Only adaptability>=65 and second preference; defensive identities could not chase a deficit. A second preference could be less attacking. Sub quota also prevented free formation-only decisions.",
+    "Reproduction": "docs/audit-007/reproductions.log: all11 attribute cases and persisted-round test failed before changes.",
+    "Removed": true
+  },
+  "Correction": {
+    "ChasingMinute": "clamp(84 - Adaptability*0.28 - max(0,deficit-1)*8,55,84)",
+    "ProtectingMinute": "clamp(88 - Adaptability*0.14 - max(0,lead-1)*3,70,88)",
+    "DecisionPoints": [
+      62,
+      74,
+      83,
+      112,
+      "free intervals",
+      "injury"
+    ],
+    "CooldownMinutes": 10,
+    "Constraints": "Only own weighted preferred formations, directional score response or reduced position shortage, fit with available bench and remaining quotas. No random draw; no preference/identity mutation."
+  },
+  "Controlled": [
+    {
+      "Adaptability": 0,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 0,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 0,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 20,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 20,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 83,
+          "EventType": "Substitution",
+          "Description": "83' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 83,
+          "EventType": "TacticChange",
+          "Description": "83' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 20,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 40,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 40,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 40,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 50,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 50,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 50,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 60,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 60,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 60,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 64,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 64,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 64,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 65,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 65,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 65,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 70,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 70,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 2
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 74,
+          "EventType": "Substitution",
+          "Description": "74' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 74,
+          "EventType": "TacticChange",
+          "Description": "74' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 70,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 80,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 80,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 80,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 90,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 90,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 90,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 100,
+      "Deficit": 0,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-4-2",
+          "Subs": 2,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        }
+      ]
+    },
+    {
+      "Adaptability": 100,
+      "Deficit": 1,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    },
+    {
+      "Adaptability": 100,
+      "Deficit": 3,
+      "Decisions": [
+        {
+          "Minute": 62,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 74,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        },
+        {
+          "Minute": 83,
+          "Formation": "4-3-3",
+          "Subs": 3,
+          "Windows": 1
+        }
+      ],
+      "Events": [
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Mendes, sai Mateus Cardoso."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Sérgio Souza, sai Wagner Martins."
+        },
+        {
+          "Minute": 62,
+          "EventType": "Substitution",
+          "Description": "62' Substituição (APA): entra Zé Gomes, sai Leandro Oliveira."
+        },
+        {
+          "Minute": 62,
+          "EventType": "TacticChange",
+          "Description": "62' Alteração tática (APA): 4-3-3."
+        }
+      ]
+    }
+  ],
+  "BaselineManagersWhoShifted": 58,
+  "CandidateManagersWhoShifted": 128,
+  "MandatoryAnswers": {
+    "Q1": "Yes, explicitly intentional in005, to preserve tactical identity.",
+    "Q2": "Below65 could select a different pre-match formation and substitute, but could never execute the in-match formation branch.",
+    "Q3": "Yes, a three-goal deficit at83 was ignored; reproduced.",
+    "Q4": "Yes,64 never entered the branch,65 did; fixed by gradual timing.",
+    "Q5": "Own weighted preferences outrank alternatives; random variation remains only in unchanged pre-match selection.",
+    "Q6": "Before only list index1, not the third; now all valid weighted preferences can be considered for context and fit.",
+    "Q7": "Now every tested adaptability can react to an extreme deficit when it has a suitable preferred formation and resources.",
+    "Q8": "Injuries trigger immediate substitutions; shortages can favor a better-fit preference. Red cards do not create a substitute slot. No suitable option means preserving current tactic.",
+    "Q9": "Existing ApplyInMatchAdjustments remains authority for5/3,6/4 and free intervals. Covered by old and new tests.",
+    "Q10": "Manager identity, attributes and preference weights remain on the same persistent manager entity when clubs rotate."
+  }
+}

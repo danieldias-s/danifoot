@@ -1,0 +1,450 @@
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs" "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+index 028005c..cec5861 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+@@ -42,6 +42,7 @@ public sealed class EfWorldRepository : IWorldRepository
+         if (world != null)
+         {
+             CoachCareerEngine.EnsureMigrated(world);
++            PlayerStatisticsEngine.EnsureMigrated(world);
+             MemoryCache[world.Id] = world;
+         }
+         return world;
+@@ -73,6 +74,7 @@ public sealed class EfWorldRepository : IWorldRepository
+         if (world != null)
+         {
+             CoachCareerEngine.EnsureMigrated(world);
++            PlayerStatisticsEngine.EnsureMigrated(world);
+             MemoryCache[world.Id] = world;
+         }
+         return world;
+@@ -97,6 +99,7 @@ public sealed class EfWorldRepository : IWorldRepository
+                 if (w != null)
+                 {
+                     CoachCareerEngine.EnsureMigrated(w);
++                    PlayerStatisticsEngine.EnsureMigrated(w);
+                     MemoryCache[w.Id] = w;
+                     result.Add(w);
+                 }
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\WorldSeedFactory.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
+index e091bd0..4ddff23 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\WorldSeedFactory.cs"
+@@ -342,6 +342,7 @@ public static class WorldSeedFactory
+         // Initialize Season 1 fixtures (14 League rounds + Cup Preliminary & Knockout schedule)
+         CompetitionAndSeasonEngine.InitializeSeasonFixtures(world);
+         CoachCareerEngine.EnsureMigrated(world, isNewWorld: true);
++        world.PlayerStatisticsVersion = 9;
+ 
+         return world;
+     }
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+index e9de3c0..0068c70 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+@@ -304,6 +304,7 @@ public static class CompetitionAndSeasonEngine
+         IReadOnlyList<MatchFixture> roundMatches)
+     {
+         CoachCareerEngine.EnsureMigrated(world);
++        PlayerStatisticsEngine.ApplyFinishedMatches(world, roundMatches);
+         var clubDict = world.Clubs.ToDictionary(c => c.Id);
+         bool updated = false;
+         var pending = roundMatches.Where(m => m.IsFinished && m.CurrentMinute > 0 && !m.CareerResultsApplied).ToList();
+@@ -434,6 +435,7 @@ public static class CompetitionAndSeasonEngine
+     public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world)
+     {
+         CoachCareerEngine.EnsureMigrated(world);
++        var scorerAwards = PlayerStatisticsEngine.AwardSeason(world, world.SeasonNumber);
+         var div1 = GetDivisionStandings(world, DivisionTier.PrimeiraDivisao);
+         var div2 = GetDivisionStandings(world, DivisionTier.SegundaDivisao);
+         var div3 = GetDivisionStandings(world, DivisionTier.TerceiraDivisao);
+@@ -478,10 +480,7 @@ public static class CompetitionAndSeasonEngine
+         AwardDivisionPlacementQuotas(world, div4, clubDict, 360_000m, 180_000m, 100_000m, skipFirst: false);
+ 
+         // Top scorer
+-        var topScorer = world.Players
+-            .OrderByDescending(p => p.SeasonGoals + p.CupGoals)
+-            .ThenByDescending(p => p.Strength)
+-            .First();
++        var topScorer = PlayerStatisticsEngine.GetRankings(world, "scorers", "general", "current").Rows.FirstOrDefault();
+ 
+         // Promotion & Relegation lists
+         var promotedIds = new List<Guid>();
+@@ -562,9 +561,9 @@ public static class CompetitionAndSeasonEngine
+             FirstDivisionChampionName = champClub.Name,
+             CupChampionClubId = cupChampClub.Id,
+             CupChampionName = cupChampClub.Name,
+-            TopScorerPlayerId = topScorer.Id,
+-            TopScorerPlayerName = topScorer.DisplayName,
+-            TopScorerGoals = topScorer.SeasonGoals + topScorer.CupGoals,
++            TopScorerPlayerId = topScorer?.PlayerId ?? Guid.Empty,
++            TopScorerPlayerName = scorerAwards.Count > 0 ? string.Join(", ", scorerAwards.Select(a => a.DisplayName)) : topScorer?.DisplayName ?? "Sem gols oficiais recuperáveis",
++            TopScorerGoals = topScorer?.GoalsScored ?? 0,
+             PromotedClubIds = promotedIds,
+             RelegatedClubIds = relegatedIds
+         };
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\Entities.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+index c043df4..b3a04c3 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\Entities.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+@@ -39,6 +39,14 @@ public class GameWorld
+     public int CareerRulesVersion { get; set; }
+     public CoachMoraleRules CoachMoraleRules { get; set; } = new();
+     public List<CoachTitleRecord> CoachTitles { get; set; } = new();
++    public int PlayerStatisticsVersion { get; set; }
++    public List<PlayerCompetitionStatistics> PlayerStatistics { get; set; } = new();
++    public HashSet<Guid> AppliedPlayerStatisticsMatches { get; set; } = new();
++    public List<string> PlayerStatisticsCoverageWarnings { get; set; } = new();
++    public List<SeasonTopScorerAward> SeasonTopScorerAwards { get; set; } = new();
++    public HashSet<int> ClosedPlayerAwardSeasons { get; set; } = new();
++    [System.Text.Json.Serialization.JsonIgnore]
++    public Dictionary<string, PlayerCompetitionStatistics> PlayerStatisticsIndex { get; } = new();
+ 
+     // The round guard must survive snapshot reloads. The transaction-key cache below is rebuilt from the ledger.
+     public HashSet<string> SettledFinancialRounds { get; set; } = new();
+@@ -131,6 +139,7 @@ public class Player
+     public int SeasonReds { get; set; }
+     public int CareerGoals { get; set; }
+     public int CareerMatches { get; set; }
++    public int SeasonTopScorerTitles { get; set; }
+ 
+     public string? PhotoUrl { get; set; }
+     public string? PhotoLicense { get; set; }
+@@ -231,6 +240,8 @@ public class ManagerSquadPlan
+ 
+ public class MatchFixture
+ {
++    public bool StatisticsLineupCaptured { get; set; }
++    public List<PlayerLineupSnapshot> StatisticsInitialLineup { get; set; } = new();
+     public bool CareerLeadershipCaptured { get; set; }
+     public Guid? HomeCoachAtKickoffId { get; set; }
+     public Guid? AwayCoachAtKickoffId { get; set; }
+@@ -313,6 +324,7 @@ public class MatchFixture
+ 
+ public class MatchEventRecord
+ {
++    public bool IsOwnGoal { get; set; }
+     public int Minute { get; set; }
+     public MatchEventType EventType { get; set; }
+     public Guid ClubId { get; set; }
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\MatchEngine.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\MatchEngine.cs"
+index 6c3ea92..50e4ce6 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Domain\\MatchEngine.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\MatchEngine.cs"
+@@ -207,6 +207,7 @@ public static class MatchSimulationEngine
+     {
+         var events = new List<MatchEventRecord>();
+         if (match.IsFinished) return events;
++        PlayerStatisticsEngine.CaptureLineup(match, worldPlayers);
+ 
+         int minute = match.CurrentMinute;
+         var rng = DeterministicRng.FromContext(worldSeed, match.SeasonNumber, match.RoundNumber, match.DeterministicMatchIndex, minute);
+@@ -683,6 +684,7 @@ public static class MatchSimulationEngine
+         bool allowClassic505 = true)
+     {
+         var createdEvents = new List<MatchEventRecord>();
++        PlayerStatisticsEngine.CaptureLineup(match, worldPlayers);
+         bool hasFormationChange = !string.IsNullOrWhiteSpace(newFormation) &&
+             !string.Equals(newFormation.Trim(), isHomeTeam ? match.HomeFormation : match.AwayFormation, StringComparison.OrdinalIgnoreCase);
+         bool hasSubs = substitutions.Count > 0;
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Api\\Program.cs" "b/D:\\elifoot_98\\src\\Elifoot.Api\\Program.cs"
+index faa3844..29fddce 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\src\\Elifoot.Api\\Program.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Api\\Program.cs"
+@@ -1,4 +1,5 @@
+ using System.Text;
++using Elifoot.Api;
+ using Elifoot.Api.Hubs;
+ using Elifoot.Api.Services;
+ using Elifoot.Application;
+@@ -46,6 +47,7 @@ builder.Services.AddSignalR();
+ builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
+ builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
+ builder.Services.AddScoped<ClubAndMarketApplicationService>();
++builder.Services.AddScoped<PlayerRankingsApplicationService>();
+ builder.Services.AddHostedService<RoomClockBackgroundService>();
+ 
+ builder.Services.AddCors(options =>
+@@ -93,6 +95,7 @@ using (var scope = app.Services.CreateScope())
+ }
+ 
+ app.MapHub<GameRoomHub>("/hubs/gameroom");
++app.MapPlayerRankings();
+ 
+ app.MapGet("/api/health", () => Results.Ok(new
+ {
+@@ -454,26 +457,15 @@ app.MapGet("/api/worlds/{worldId:guid}/cup", async (Guid worldId, IWorldReposito
+     return Results.Ok(cupFixtures);
+ });
+ 
+-app.MapGet("/api/worlds/{worldId:guid}/top-scorers", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
++app.MapGet("/api/worlds/{worldId:guid}/top-scorers", async (Guid worldId, PlayerRankingsApplicationService queries, CancellationToken ct) =>
+ {
+-    var world = await repo.GetWorldAsync(worldId, ct);
+-    if (world == null) return Results.NotFound();
+-
+-    var clubDict = world.Clubs.ToDictionary(c => c.Id);
+-    var scorers = world.Players
+-        .Where(p => p.ClubId != null && (p.SeasonGoals > 0 || p.CupGoals > 0))
+-        .OrderByDescending(p => p.SeasonGoals + p.CupGoals)
+-        .ThenByDescending(p => p.Strength)
+-        .Take(40)
+-        .Select((p, idx) =>
+-        {
+-            var c = clubDict[p.ClubId!.Value];
+-            return new TopScorerDto(
+-                idx + 1, p.Id, p.DisplayName, p.Position, p.Strength, p.IsStar,
+-                c.Id, c.Name, c.DivisionTier, p.SeasonGoals, p.CupGoals);
+-        });
+-
+-    return Results.Ok(scorers);
++    return await queries.ReadWorldAsync<IResult>(worldId, world => {
++        var rows = PlayerStatisticsEngine.GetRankings(world,"scorers","general","current").Rows.Take(40);
++        return Results.Ok(rows.Select(p => new TopScorerDto(p.Rank,p.PlayerId,p.DisplayName,p.Position,p.Strength,p.IsStar,
++            p.CurrentClubId??Guid.Empty,p.CurrentClubName,world.Clubs.FirstOrDefault(c=>c.Id==p.CurrentClubId)?.DivisionTier??DivisionTier.Distrital,
++            world.PlayerStatistics.Where(s=>s.PlayerId==p.PlayerId&&s.Season==world.SeasonNumber&&s.CompetitionType==CompetitionType.League).Sum(s=>s.GoalsScored),
++            world.PlayerStatistics.Where(s=>s.PlayerId==p.PlayerId&&s.Season==world.SeasonNumber&&s.CompetitionType!=CompetitionType.League).Sum(s=>s.GoalsScored))).ToList());
++    }, ct) ?? Results.NotFound();
+ });
+ 
+ app.MapGet("/api/worlds/{worldId:guid}/ranking", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\lib\\api_client.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\api_client.dart"
+index 84570c9..e01dcc8 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\lib\\api_client.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\api_client.dart"
+@@ -283,6 +283,38 @@ class ElifootApiClient {
+     return _decodeResponse(res);
+   }
+ 
++  Future<Map<String, dynamic>> getPlayerRankings(
++    String worldId, {
++    String category = 'scorers',
++    String scope = 'general',
++    String period = 'career',
++    int? season,
++  }) async {
++    if (period == 'season' && season == null) {
++      throw ArgumentError('Informe a temporada selecionada.');
++    }
++    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/player-rankings')
++        .replace(queryParameters: {
++      'category': category,
++      'scope': scope,
++      'period': period,
++      if (period == 'season') 'season': season.toString(),
++    });
++    return _decodeResponse(await _http.get(uri));
++  }
++
++  Future<Map<String, dynamic>> getPlayerHistory(String worldId, String playerId) async {
++    return _decodeResponse(await _http.get(
++      Uri.parse('$baseUrl/api/worlds/$worldId/players/$playerId/history'),
++    ));
++  }
++
++  Future<Map<String, dynamic>> getSeasonTopScorers(String worldId, {int? season}) async {
++    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/season-top-scorers')
++        .replace(queryParameters: {if (season != null) 'season': '$season'});
++    return _decodeResponse(await _http.get(uri));
++  }
++
+   Future<Map<String, dynamic>> getMarket(String worldId) async {
+     final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/market'));
+     return _decodeResponse(res);
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\lib\\main.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\main.dart"
+index 3404b0d..e0ef187 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\lib\\main.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\lib\\main.dart"
+@@ -3,6 +3,7 @@ import 'dart:convert';
+ import 'dart:math';
+ import 'package:flutter/semantics.dart';
+ import 'api_client.dart';
++import 'player_rankings.dart';
+ import 'session_store.dart';
+ part 'shell_actions.dart';
+ 
+@@ -103,6 +104,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+   String? _statusBanner;
+   bool _isLoading = false;
+   bool _commandBusy = false;
++  final Set<String> _shownSeasonAwards = {};
+ 
+   static const List<String> availableFormations = [
+     '4-4-2',
+@@ -133,7 +135,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       final prevState = _snapshot?['roundState'];
+       final newState = snap['roundState'];
+       setState(() {
+-        _snapshot = _preferLatestSnapshot(snap);
++        _snapshot = _acceptSnapshot(snap);
+         final people = snap['readyCounter']?['participants'] as List<dynamic>? ?? [];
+         final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+         if (me != null) {
+@@ -285,7 +287,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+         _worldId = worldId;
+         _myClubId = res['clubId']?.toString();
+         _isUnemployed = res['isUnemployed'] == true;
+-        _snapshot = _preferLatestSnapshot(snap);
++        _snapshot = _acceptSnapshot(snap);
+       });
+       widget.apiClient.connectRealtimeRoom(worldId, _coachId!);
+       await _saveSession();
+@@ -349,6 +351,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+     }
+   }
+ 
++  Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
++    final next = _preferLatestSnapshot(incoming);
++    final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
++    final nextSeason = (next?['seasonNumber'] as num?)?.toInt();
++    final worldId = _worldId;
++    if (worldId != null && previousSeason != null && nextSeason != null &&
++        nextSeason > previousSeason && _shownSeasonAwards.add('$worldId:${nextSeason - 1}')) {
++      WidgetsBinding.instance.addPostFrameCallback((_) {
++        if (!mounted || _worldId != worldId) return;
++        showSeasonTopScorersDialog(context: context, apiClient: widget.apiClient,
++            worldId: worldId, season: nextSeason - 1);
++      });
++    }
++    return next;
++  }
++
+   Future<void> _handleSendTacticsOrReady() async {
+     if (_worldId == null || _coachId == null || _snapshot == null) return;
+     final roundVersion = (_snapshot!['roundVersion'] as num?)?.toInt() ?? 1;
+@@ -374,7 +392,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       final started = res['roundStarted'] == true;
+       final snap = await widget.apiClient.getSnapshot(_worldId!);
+       setState(() {
+-        _snapshot = _preferLatestSnapshot(snap);
++        _snapshot = _acceptSnapshot(snap);
+         if (counter != null) {
+           _snapshot!['readyCounter'] = counter;
+         }
+@@ -414,7 +432,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       await widget.apiClient.requestGlobalPause(_worldId!, _coachId!);
+       final snap = await widget.apiClient.getSnapshot(_worldId!);
+       setState(() {
+-        _snapshot = _preferLatestSnapshot(snap);
++        _snapshot = _acceptSnapshot(snap);
+         _statusBanner = 'PARADA GLOBAL ATIVADA! Todas as partidas da sala foram congeladas.';
+       });
+     } catch (e) {
+@@ -427,7 +445,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+     try {
+       final res = await widget.apiClient.confirmContinue(_worldId!, _coachId!);
+       setState(() {
+-        _snapshot = _preferLatestSnapshot(res['snapshot'] as Map<String, dynamic>?);
++        _snapshot = _acceptSnapshot(res['snapshot'] as Map<String, dynamic>?);
+         _statusBanner = res['resumed'] == true
+             ? 'Partidas retomadas!'
+             : 'Confirmação registrada. Aguardando demais técnicos...';
+@@ -796,7 +814,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+                     onPressed: _commandBusy ? null : () => _runUiCommand(() async {
+                       final nextSnap = await widget.apiClient.advanceToNextRound(_worldId!);
+                       setState(() {
+-                        _snapshot = _preferLatestSnapshot(nextSnap);
++                        _snapshot = _acceptSnapshot(nextSnap);
+                         _activeTabIndex = 0;
+                         _selectedStarterIds = [];
+                       });
+@@ -899,6 +917,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       (Icons.emoji_events, '6. RANKING & CARREIRA'),
+       (Icons.edit_note, '7. EDITOR & PACOTES'),
+       (Icons.calendar_month, '8. CALENDÁRIO & RESULTADOS'),
++      (Icons.format_list_numbered, '9. RANKINGS DE JOGADORES'),
+     ];
+ 
+     return Container(
+@@ -964,6 +983,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+         return _buildEditorAndPackagesScreen();
+       case 7:
+         return _buildCalendarScreen();
++      case 8:
++        return PlayerRankingsScreen(
++          key: ValueKey('player-rankings-$_worldId'),
++          apiClient: widget.apiClient,
++          worldId: _worldId!,
++          currentSeason: (_snapshot?['seasonNumber'] as num?)?.toInt() ?? 1,
++          revision: (_snapshot?['roundVersion'] as num?)?.toInt() ?? 0,
++        );
+       default:
+         return _buildSquadAndTacticsScreen();
+     }
+@@ -1283,6 +1310,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+           ],
+         ),
+         actions: [
++          if (_worldId != null && (player['id'] ?? player['playerId']) != null)
++            TextButton(onPressed: () {
++              Navigator.pop(ctx);
++              showPlayerHistoryDialog(context: context, apiClient: widget.apiClient,
++                  worldId: _worldId!, playerId: (player['id'] ?? player['playerId']).toString());
++            }, child: const Text('HISTÓRICO & ARTILHARIAS')),
+           TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('FECHAR')),
+         ],
+       ),
+@@ -1495,7 +1528,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+                       substitutions: subs,
+                     );
+                     setState(() {
+-                      _snapshot = _preferLatestSnapshot(snap);
++                      _snapshot = _acceptSnapshot(snap);
+                       _subPlayerOutId = null;
+                       _subPlayerInId = null;
+                       _statusBanner = 'Ajustes aplicados com sucesso para o próximo minuto!';
+@@ -1945,7 +1978,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+       final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+       if (!mounted) return;
+       setState(() {
+-        _snapshot = _preferLatestSnapshot(snap);
++        _snapshot = _acceptSnapshot(snap);
+         if (me != null) { _myClubId = me['clubId']?.toString(); _isUnemployed = me['isUnemployed'] == true; }
+         _myClubDetail = null; _selectedStarterIds.clear(); _selectedBenchIds.clear();
+         _statusBanner = accept ? 'Você assumiu o comando do ${invitation['clubName']}!' : 'Convite recusado. O clube seguirá sua busca.';
+@@ -2062,6 +2095,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
+               );
+             }),
+           ],
++          const SizedBox(height: 20),
++          SeasonTopScorersPanel(
++            apiClient: widget.apiClient,
++            worldId: _worldId!,
++            currentSeason: (_snapshot?['seasonNumber'] as num?)?.toInt(),
++            revision: (_snapshot?['roundVersion'] as num?)?.toInt() ?? 0,
++          ),
+         ],
+       ),
+     );
+diff --git "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\test\\widget_test.dart" "b/D:\\elifoot_98\\client\\elifoot_flutter\\test\\widget_test.dart"
+index 9243e4f..a4178ce 100644
+--- "a/D:\\elifoot_98\\docs\\audit-009\\baseline\\client\\elifoot_flutter\\test\\widget_test.dart"
++++ "b/D:\\elifoot_98\\client\\elifoot_flutter\\test\\widget_test.dart"
+@@ -335,6 +335,27 @@ void main() {
+       if (path.endsWith('/ranking')) {
+         return http.Response(jsonEncode({'ranking': [], 'seasonHistory': []}), 200);
+       }
++      if (path.endsWith('/player-rankings')) {
++        return http.Response(jsonEncode({
++          'category': req.url.queryParameters['category'] ?? 'scorers',
++          'scope': req.url.queryParameters['scope'] ?? 'general',
++          'period': req.url.queryParameters['period'] ?? 'career',
++          'season': null, 'currentSeason': 1, 'minimumMatches': 20,
++          'rows': [], 'notEligible': [], 'seasons': [], 'coverageWarnings': [],
++        }), 200);
++      }
++      if (path.endsWith('/season-top-scorers')) {
++        return http.Response(jsonEncode({
++          'currentSeason': 1, 'season': null, 'awards': [],
++          'clubTotals': [], 'coverageWarnings': [],
++        }), 200);
++      }
++      if (path.endsWith('/history') && path.contains('/players/')) {
++        return http.Response(jsonEncode({
++          'player': {'playerId': 'p2', 'displayName': 'João Silva*', 'seasonTopScorerTitles': 0},
++          'career': {}, 'statistics': [], 'awards': [], 'coverageWarnings': [],
++        }), 200);
++      }
+       if (path.contains('/finances')) {
+         return http.Response(
+           jsonEncode({

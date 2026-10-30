@@ -1,0 +1,18 @@
+[
+  {
+    "Pid": "26296",
+    "Samples": 23,
+    "AverageOneCorePercent": 48.74,
+    "MaxOneCorePercent": 102.93,
+    "MinHostFreeKB": 4240332.0,
+    "MaxWorkingSetBytes": 864464896.0
+  },
+  {
+    "Pid": "29040",
+    "Samples": 121,
+    "AverageOneCorePercent": 109.06,
+    "MaxOneCorePercent": 136.78,
+    "MinHostFreeKB": 1263324.0,
+    "MaxWorkingSetBytes": 1872199680.0
+  }
+]

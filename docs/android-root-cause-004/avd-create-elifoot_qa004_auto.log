@@ -1,0 +1,5 @@
+Auto-selecting single ABI x86_64
+Error: Could not load devices from D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\devices.xml
+Error: D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\devices.xml
+Error: Could not load devices from D:\elifoot_98\.tools\android-sdk\system-images\android-35\google_apis\x86_64\devices.xml
+Error: D:\elifoot_98\.tools\android-sdk\system-images\android-35\google_apis\x86_64\devices.xml

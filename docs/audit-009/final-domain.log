@@ -1,0 +1,5 @@
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\docs\audit-009\final-tests\domain195.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   195, Ignorado:     0, Total:   195, Duração: 18 s - Elifoot.Domain.Tests.dll (net10.0)

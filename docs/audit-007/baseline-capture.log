@@ -1,0 +1,21 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:01:12.51]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence [FAIL]
+  Com falha Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence [1 m 11 s]
+  Mensagem de erro:
+   Assert.Equal() Failure: Values differ
+Expected: 0
+Actual:   128
+  Rastreamento de pilha:
+     at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007Capture.Complete(ExperimentResult r) in D:\elifoot_98\tests\Elifoot.Simulation.Tests\MetricAudit007Capture.cs:line 176
+   at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence() in D:\elifoot_98\tests\Elifoot.Simulation.Tests\MetricAudit007Capture.cs:line 20
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\baseline-capture-tests\baseline-capture.trx
+
+Com falha! – Com falha:     1, Aprovado:     0, Ignorado:     0, Total:     1, Duração: 1 m 12 s - Elifoot.Simulation.Tests.dll (net10.0)

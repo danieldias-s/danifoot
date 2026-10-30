@@ -1,0 +1,1276 @@
+--------- beginning of kernel
+10-29 22:54:01.999     0     0 I         : Initializing cgroup subsys cpuacct
+10-29 22:54:01.999     0     0 I         : Linux version 3.10.0+ (bjoernj@bjoernj.mtv.corp.google.com) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #257 SMP PREEMPT Fri May 19 12:01:07 PDT 2017
+10-29 22:54:01.999     0     0 I Command line: no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_auto mac80211_hwsim.mac_prefix=5554
+10-29 22:54:01.999     0     0 I e820    : BIOS-provided physical RAM map:
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x0000000000100000-0x000000003ffd9fff] usable
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x000000003ffda000-0x000000003fffffff] reserved
+10-29 22:54:01.999     0     0 I BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+10-29 22:54:01.999     0     0 I         : NX (Execute Disable) protection: active
+10-29 22:54:01.999     0     0 I e820    : user-defined physical RAM map:
+10-29 22:54:01.999     0     0 I user    : [mem 0x0000000000000000-0x000000000009fbff] usable
+10-29 22:54:01.999     0     0 I user    : [mem 0x000000000009fc00-0x000000000009ffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000000f0000-0x00000000000fffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x0000000000100000-0x000000003ffd9fff] usable
+10-29 22:54:01.999     0     0 I user    : [mem 0x000000003ffda000-0x000000003fffffff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000ff018000-0x00000000ff027fff] reserved
+10-29 22:54:01.999     0     0 I user    : [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+10-29 22:54:01.999     0     0 I         : SMBIOS 2.8 present.
+10-29 22:54:01.999     0     0 D DMI     : QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.11.1-0-g0551a4be2c-prebuilt.qemu-project.org 04/01/2014
+10-29 22:54:01.999     0     0 D e820    : update [mem 0x00000000-0x00000fff] usable ==> reserved
+10-29 22:54:01.999     0     0 D e820    : remove [mem 0x000a0000-0x000fffff] usable
+10-29 22:54:01.999     0     0 I         : No AGP bridge found
+10-29 22:54:01.999     0     0 I e820    : last_pfn = 0x3ffda max_arch_pfn = 0x400000000
+10-29 22:54:01.999     0     0 D         : MTRR default type: write-back
+10-29 22:54:01.999     0     0 D         : MTRR fixed ranges enabled:
+10-29 22:54:01.999     0     0 D         : 00000-9FFFF write-back
+10-29 22:54:01.999     0     0 D         : A0000-BFFFF uncachable
+10-29 22:54:01.999     0     0 D         : C0000-FFFFF write-protect
+10-29 22:54:01.999     0     0 D         : MTRR variable ranges enabled:
+10-29 22:54:01.999     0     0 D         : 0 base 0080000000 mask FF80000000 uncachable
+10-29 22:54:01.999     0     0 D         : 1 disabled
+10-29 22:54:01.999     0     0 D         : 2 disabled
+10-29 22:54:01.999     0     0 D         : 3 disabled
+10-29 22:54:01.999     0     0 D         : 4 disabled
+10-29 22:54:01.999     0     0 D         : 5 disabled
+10-29 22:54:01.999     0     0 D         : 6 disabled
+10-29 22:54:01.999     0     0 D         : 7 disabled
+10-29 22:54:01.999     0     0 I         : PAT not supported by CPU.
+10-29 22:54:01.999     0     0 I         : found SMP MP-table at [mem 0x000f5b50-0x000f5b5f] mapped at [ffff8800000f5b50]
+10-29 22:54:01.999     0     0 D         : Base memory trampoline at [ffff880000098000] 98000 size 28672
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x00000000-0x000fffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x00000000-0x000fffff] page 4k
+10-29 22:54:01.999     0     0 D         : BRK [0x01eb8000, 0x01eb8fff] PGTABLE
+10-29 22:54:01.999     0     0 D         : BRK [0x01eb9000, 0x01eb9fff] PGTABLE
+10-29 22:54:01.999     0     0 D         : BRK [0x01eba000, 0x01ebafff] PGTABLE
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3fc00000-0x3fdfffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3fc00000-0x3fdfffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3c000000-0x3fbfffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3c000000-0x3fbfffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x00100000-0x3bffffff]
+10-29 22:54:01.999     0     0 D         : [mem 0x00100000-0x001fffff] page 4k
+10-29 22:54:01.999     0     0 D         : [mem 0x00200000-0x3bffffff] page 2M
+10-29 22:54:01.999     0     0 I init_memory_mapping: [mem 0x3fe00000-0x3ffd9fff]
+10-29 22:54:01.999     0     0 D         : [mem 0x3fe00000-0x3ffd9fff] page 4k
+10-29 22:54:01.999     0     0 D         : BRK [0x01ebb000, 0x01ebbfff] PGTABLE
+10-29 22:54:01.999     0     0 I cma     : CMA: reserved 264 MiB at 2f400000
+10-29 22:54:01.999     0     0 I RAMDISK : [mem 0x3fe2c000-0x3ffcffff]
+10-29 22:54:01.999     0     0 W ACPI    : RSDP 00000000000f5950 00014 (v00 BOCHS )
+10-29 22:54:01.999     0     0 W ACPI    : RSDT 000000003ffe19ed 00030 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : FACP 000000003ffe18c9 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : DSDT 000000003ffe0040 01889 (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : FACS 000000003ffe0000 00040
+10-29 22:54:01.999     0     0 W ACPI    : APIC 000000003ffe193d 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 W ACPI    : HPET 000000003ffe19b5 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+10-29 22:54:01.999     0     0 D ACPI    : Local APIC address 0xfee00000
+10-29 22:54:01.999     0     0 D         : [ffffea0000000000-ffffea0000ffffff] PMD -> [ffff88002dc00000-ffff88002ebfffff] on node 0
+10-29 22:54:01.999     0     0 W Zone ranges:  
+10-29 22:54:01.999     0     0 W         : DMA      [mem 0x00001000-0x00ffffff]
+10-29 22:54:01.999     0     0 W         : DMA32    [mem 0x01000000-0xffffffff]
+10-29 22:54:01.999     0     0 W         : Normal   empty
+10-29 22:54:01.999     0     0 W         : Movable zone start for each node
+10-29 22:54:01.999     0     0 W         : Early memory node ranges
+10-29 22:54:01.999     0     0 W node   0: [mem 0x00001000-0x0009efff]
+10-29 22:54:01.999     0     0 W node   0: [mem 0x00100000-0x3ffd9fff]
+10-29 22:54:01.999     0     0 D         : On node 0 totalpages: 262008
+10-29 22:54:01.999     0     0 D DMA zone: 64 pages used for memmap
+10-29 22:54:01.999     0     0 D DMA zone: 22 pages reserved
+10-29 22:54:01.999     0     0 D DMA zone: 3998 pages, LIFO batch:0
+10-29 22:54:01.999     0     0 D DMA32 zone: 4032 pages used for memmap
+10-29 22:54:01.999     0     0 D DMA32 zone: 258010 pages, LIFO batch:31
+10-29 22:54:01.999     0     0 I ACPI    : PM-Timer IO Port: 0x608
+10-29 22:54:01.999     0     0 D ACPI    : Local APIC address 0xfee00000
+10-29 22:54:01.999     0     0 I ACPI    : LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+10-29 22:54:01.999     0     0 I ACPI    : LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+10-29 22:54:01.999     0     0 I ACPI    : IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+10-29 22:54:01.999     0     0 I IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+10-29 22:54:01.999     0     0 I ACPI    : INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+10-29 22:54:01.999     0     0 I ACPI    : INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+10-29 22:54:01.999     0     0 I ACPI    : INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+10-29 22:54:01.999     0     0 I ACPI    : INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+10-29 22:54:01.999     0     0 I ACPI    : INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+10-29 22:54:01.999     0     0 D ACPI    : IRQ0 used by override.
+10-29 22:54:01.999     0     0 D ACPI    : IRQ2 used by override.
+10-29 22:54:01.999     0     0 D ACPI    : IRQ5 used by override.
+10-29 22:54:01.999     0     0 D ACPI    : IRQ9 used by override.
+10-29 22:54:01.999     0     0 D ACPI    : IRQ10 used by override.
+10-29 22:54:01.999     0     0 D ACPI    : IRQ11 used by override.
+10-29 22:54:01.999     0     0 I         : Using ACPI (MADT) for SMP configuration information
+10-29 22:54:01.999     0     0 I ACPI    : HPET id: 0x8086a201 base: 0xfed00000
+10-29 22:54:01.999     0     0 I smpboot : Allowing 1 CPUs, 0 hotplug CPUs
+10-29 22:54:01.999     0     0 D nr_irqs_gsi: 40
+10-29 22:54:01.999     0     0 I e820    : [mem 0x40000000-0xff017fff] available for PCI devices
+10-29 22:54:01.999     0     0 I         : Booting paravirtualized kernel on bare hardware
+10-29 22:54:01.999     0     0 I setup_percpu: NR_CPUS:4096 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+10-29 22:54:01.999     0     0 I PERCPU  : Embedded 24 pages/cpu @ffff88003fc00000 s74624 r0 d23680 u2097152
+10-29 22:54:01.999     0     0 D pcpu-alloc: s74624 r0 d23680 u2097152 alloc=1*2097152
+10-29 22:54:01.999     0     0 D pcpu-alloc: [0] 0
+10-29 22:54:01.999     0     0 W         : Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 257890
+10-29 22:54:01.999     0     0 I         : Kernel command line: no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_auto mac80211_hwsim.mac_prefix=5554
+10-29 22:54:01.999     0     0 I         : PID hash table entries: 4096 (order: 3, 32768 bytes)
+10-29 22:54:01.999     0     0 I         : Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+10-29 22:54:01.999     0     0 I         : Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+10-29 22:54:01.999     0     0 I         : Checking aperture...
+10-29 22:54:01.999     0     0 I         : No AGP bridge found
+10-29 22:54:01.999     0     0 I Memory  : 742736k/1048424k available (6153k kernel code, 392k absent, 305296k reserved, 7066k data, 1008k init)
+10-29 22:54:01.999     0     0 I SLUB    : HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+10-29 22:54:01.999     0     0 I         : Preemptible hierarchical RCU implementation.
+10-29 22:54:01.999     0     0 I         : CONFIG_RCU_FANOUT set to non-default value of 32
+10-29 22:54:01.999     0     0 I         : RCU restricting CPUs from NR_CPUS=4096 to nr_cpu_ids=1.
+10-29 22:54:01.999     0     0 I NR_IRQS : 262400 nr_irqs:256 16
+10-29 22:54:01.999     0     0 I Console : colour dummy device 80x25
+10-29 22:54:01.999     0     0 I         : console [ttyS0] enabled
+10-29 22:54:01.999     0     0 D         : hpet clockevent registered
+10-29 22:54:01.999     0     0 I tsc     : Fast TSC calibration using PIT
+10-29 22:54:01.999     0     0 I tsc     : Detected 2199.978 MHz processor
+10-29 22:54:02.020     0     0 I         : Calibrating delay loop (skipped), value calculated using timer frequency.. 4399.95 BogoMIPS (lpj=21999780)
+10-29 22:54:02.021     0     0 I pid_max : default: 32768 minimum: 301
+10-29 22:54:02.031     0     0 I         : Security Framework initialized
+10-29 22:54:02.032     0     0 I SELinux : Initializing.
+10-29 22:54:02.033     0     0 D SELinux : Starting in permissive mode
+10-29 22:54:02.034     0     0 I         : Mount-cache hash table entries: 256
+10-29 22:54:02.047     0     0 I         : Initializing cgroup subsys debug
+10-29 22:54:02.048     0     0 I         : Initializing cgroup subsys freezer
+10-29 22:54:02.051     0     0 W         : CPU: CPU feature xsave disabled, no CPUID level 0xd
+10-29 22:54:02.052     0     0 I         : Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+10-29 22:54:02.052     0     0 I         : Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0
+10-29 22:54:02.052     0     0 I tlb_flushall_shift: 6
+10-29 22:54:02.436     0     0 I         : Freeing SMP alternatives: 24k freed
+10-29 22:54:02.448     0     0 I ACPI    : Core revision 20130328
+10-29 22:54:02.480     0     0 W ACPI    : All ACPI Tables successfully acquired
+10-29 22:54:02.498     0     0 I ..TIMER : vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+10-29 22:54:02.498     0     0 I smpboot : CPU0: Intel Android virtual processor (fam: 06, model: 06, stepping: 03)
+10-29 22:54:02.499     0     0 I Performance Events: Broken PMU hardware detected, using software events only.
+10-29 22:54:02.499     0     0 E         : Failed to access perfctr msr (MSR c1 is 0)
+10-29 22:54:02.533     0     0 I         : Brought up 1 CPUs
+10-29 22:54:02.534     0     0 I smpboot : Total of 1 processors activated (4399.95 BogoMIPS)
+10-29 22:54:02.581     0     0 I NET     : Registered protocol family 16
+10-29 22:54:02.604     0     0 I ACPI    : bus type PCI registered
+10-29 22:54:02.614     0     0 I PCI     : Using configuration type 1 for base access
+10-29 22:54:02.814     0     0 I bio     : create slab <bio-0> at 0
+10-29 22:54:02.818     0     0 I ACPI    : Added _OSI(Module Device)
+10-29 22:54:02.818     0     0 I ACPI    : Added _OSI(Processor Device)
+10-29 22:54:02.818     0     0 I ACPI    : Added _OSI(3.0 _SCP Extensions)
+10-29 22:54:02.818     0     0 I ACPI    : Added _OSI(Processor Aggregator Device)
+10-29 22:54:02.828     0     0 D ACPI    : EC: Look up EC in DSDT
+10-29 22:54:02.853     0     0 I ACPI    : Interpreter enabled
+10-29 22:54:02.853     0     0 W ACPI Exception: AE_NOT_FOUND, While evaluating Sleep State [\_S1_] (20130328/hwxface-568)
+10-29 22:54:02.854     0     0 W ACPI Exception: AE_NOT_FOUND, While evaluating Sleep State [\_S2_] (20130328/hwxface-568)
+10-29 22:54:02.855     0     0 I ACPI    : (supports S0 S3 S5)
+10-29 22:54:02.855     0     0 I ACPI    : Using IOAPIC for interrupt routing
+10-29 22:54:02.856     0     0 I PCI     : Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+10-29 22:54:02.991     0     0 I ACPI    : PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+10-29 22:54:02.993     0     0 W acpi PNP0A03: 00: fail to add MMCONFIG information, can't access extended PCI configuration space under this bridge.
+10-29 22:54:02.996     0     0 I         : PCI host bridge to bus 0000:00
+10-29 22:54:02.997     0     0 I pci_bus 0000: 00: root bus resource [bus 00-ff]
+10-29 22:54:02.997     0     0 I pci_bus 0000: 00: root bus resource [io  0x0000-0x0cf7]
+10-29 22:54:02.997     0     0 I pci_bus 0000: 00: root bus resource [io  0x0d00-0xffff]
+10-29 22:54:02.998     0     0 I pci_bus 0000: 00: root bus resource [mem 0x000a0000-0x000bffff]
+10-29 22:54:02.998     0     0 I pci_bus 0000: 00: root bus resource [mem 0x40000000-0xfebfffff]
+10-29 22:54:02.999     0     0 I pci_bus 0000: 00: root bus resource [mem 0x400000000-0x800013fff]
+10-29 22:54:03.000  8086  8086 D pci 0000: 00:00.0: [8086:1237] type 00 class 0x060000
+10-29 22:54:03.004  8086  8086 D pci 0000: 00:01.0: [8086:7000] type 00 class 0x060100
+10-29 22:54:03.006  8086  8086 D pci 0000: 00:01.1: [8086:7010] type 00 class 0x010180
+10-29 22:54:03.012     0     0 D pci 0000: 00:01.1: reg 20: [io  0xc100-0xc10f]
+10-29 22:54:03.016  8086  8086 D pci 0000: 00:01.3: [8086:7113] type 00 class 0x068000
+10-29 22:54:03.017     0     0 I pci 0000: 00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+10-29 22:54:03.017     0     0 I pci 0000: 00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+10-29 22:54:03.019  8086  8086 D pci 0000: 00:02.0: [8086:2668] type 00 class 0x040300
+10-29 22:54:03.021     0     0 D pci 0000: 00:02.0: reg 10: [mem 0xfebc0000-0xfebc3fff]
+10-29 22:54:03.031     0     0 D pci 0000: 00:03.0: [1af4:1001] type 00 class 0x010000
+10-29 22:54:03.034     0     0 D pci 0000: 00:03.0: reg 10: [io  0xc000-0xc03f]
+10-29 22:54:03.037     0     0 D pci 0000: 00:03.0: reg 14: [mem 0xfebc4000-0xfebc4fff]
+10-29 22:54:03.041     0     0 D pci 0000: 00:03.0: reg 18: [io  0xc110-0xc113]
+10-29 22:54:03.049     0     0 D pci 0000: 00:03.0: reg 20: [mem 0x800000000-0x800003fff 64bit pref]
+10-29 22:54:03.054     0     0 D pci 0000: 00:04.0: [1af4:1001] type 00 class 0x010000
+10-29 22:54:03.057     0     0 D pci 0000: 00:04.0: reg 10: [io  0xc040-0xc07f]
+10-29 22:54:03.060     0     0 D pci 0000: 00:04.0: reg 14: [mem 0xfebc5000-0xfebc5fff]
+10-29 22:54:03.064     0     0 D pci 0000: 00:04.0: reg 18: [io  0xc114-0xc117]
+10-29 22:54:03.077     0     0 D pci 0000: 00:04.0: reg 20: [mem 0x800004000-0x800007fff 64bit pref]
+10-29 22:54:03.082     0     0 D pci 0000: 00:05.0: [1af4:1001] type 00 class 0x010000
+10-29 22:54:03.086     0     0 D pci 0000: 00:05.0: reg 10: [io  0xc080-0xc0bf]
+10-29 22:54:03.092     0     0 D pci 0000: 00:05.0: reg 14: [mem 0xfebc6000-0xfebc6fff]
+10-29 22:54:03.095     0     0 D pci 0000: 00:05.0: reg 18: [io  0xc118-0xc11b]
+10-29 22:54:03.101     0     0 D pci 0000: 00:05.0: reg 20: [mem 0x800008000-0x80000bfff 64bit pref]
+10-29 22:54:03.111     0     0 D pci 0000: 00:06.0: [1af4:1000] type 00 class 0x020000
+10-29 22:54:03.114     0     0 D pci 0000: 00:06.0: reg 10: [io  0xc0c0-0xc0df]
+10-29 22:54:03.120     0     0 D pci 0000: 00:06.0: reg 14: [mem 0xfebc7000-0xfebc7fff]
+10-29 22:54:03.127     0     0 D pci 0000: 00:06.0: reg 20: [mem 0x80000c000-0x80000ffff 64bit pref]
+10-29 22:54:03.132     0     0 D pci 0000: 00:06.0: reg 30: [mem 0xfeb80000-0xfebbffff pref]
+10-29 22:54:03.135     0     0 D pci 0000: 00:07.0: [1af4:1005] type 00 class 0x00ff00
+10-29 22:54:03.137     0     0 D pci 0000: 00:07.0: reg 10: [io  0xc0e0-0xc0ff]
+10-29 22:54:03.145     0     0 D pci 0000: 00:07.0: reg 20: [mem 0x800010000-0x800013fff 64bit pref]
+10-29 22:54:03.148     0     0 D pci 0000: 00:0b.0: [607d:f153] type 00 class 0x00ff00
+10-29 22:54:03.150     0     0 D pci 0000: 00:0b.0: reg 10: [mem 0xfebc8000-0xfebc8fff]
+10-29 22:54:03.151     0     0 D pci 0000: 00:0b.0: reg 14: [mem 0x400000000-0x7ffffffff 64bit]
+10-29 22:54:03.161     0     0 D pci_bus 0000: 00: on NUMA node 0
+10-29 22:54:03.161     0     0 I acpi PNP0A03: 00: Unable to request _OSC control (_OSC support mask: 0x08)
+10-29 22:54:03.173     0     0 I ACPI    : PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+10-29 22:54:03.175     0     0 I ACPI    : PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+10-29 22:54:03.177     0     0 I ACPI    : PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+10-29 22:54:03.178     0     0 I ACPI    : PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+10-29 22:54:03.180     0     0 I ACPI    : PCI Interrupt Link [LNKS] (IRQs *9)
+10-29 22:54:03.197     0     0 W ACPI    : Enabled 2 GPEs in block 00 to 0F
+10-29 22:54:03.197     0     0 D acpi root: \_SB_.PCI0 notify handler is installed
+10-29 22:54:03.198     0     0 D         : Found 1 acpi root devices
+10-29 22:54:03.203     0     0 I vgaarb  : loaded
+10-29 22:54:03.212     0     0 I         : SCSI subsystem initialized
+10-29 22:54:03.212     0     0 I ACPI    : bus type ATA registered
+10-29 22:54:03.215     0     0 D         : libata version 3.00 loaded.
+10-29 22:54:03.218     0     0 I ACPI    : bus type USB registered
+10-29 22:54:03.221     0     0 I usbcore : registered new interface driver usbfs
+10-29 22:54:03.222     0     0 I usbcore : registered new interface driver hub
+10-29 22:54:03.223     0     0 I usbcore : registered new device driver usb
+10-29 22:54:03.226     0     0 I pps_core: LinuxPPS API ver. 1 registered
+10-29 22:54:03.227     0     0 I pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+10-29 22:54:03.228     0     0 I         : PTP clock support registered
+10-29 22:54:03.232     0     0 I         : Advanced Linux Sound Architecture Driver Initialized.
+10-29 22:54:03.232     0     0 I PCI     : Using ACPI for IRQ routing
+10-29 22:54:03.233     0     0 D PCI     : pci_cache_line_size set to 64 bytes
+10-29 22:54:03.234     0     0 D e820    : reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+10-29 22:54:03.234     0     0 D e820    : reserve RAM buffer [mem 0x3ffda000-0x3fffffff]
+10-29 22:54:03.252     0     0 I NetLabel: Initializing
+10-29 22:54:03.252     0     0 I NetLabel: domain hash size = 128
+10-29 22:54:03.253     0     0 I NetLabel: protocols = UNLABELED CIPSOv4
+10-29 22:54:03.255     0     0 I NetLabel: unlabeled traffic allowed by default
+10-29 22:54:03.261     0     0 I cfg80211: Calling CRDA to update world regulatory domain
+10-29 22:54:03.266     0     0 I         : Switching to clocksource hpet
+10-29 22:54:03.372     0     0 I pnp     : PnP ACPI init
+10-29 22:54:03.373     0     0 I ACPI    : bus type PNP registered
+10-29 22:54:03.376     0     0 D pnp 00  : 00: Plug and Play ACPI device, IDs PNP0b00 (active)
+10-29 22:54:03.377     0     0 D pnp 00  : 01: Plug and Play ACPI device, IDs PNP0303 (active)
+10-29 22:54:03.378     0     0 D pnp 00  : 02: Plug and Play ACPI device, IDs PNP0f13 (active)
+10-29 22:54:03.378     0     0 D pnp 00  : 03: [dma 2]
+10-29 22:54:03.379     0     0 D pnp 00  : 03: Plug and Play ACPI device, IDs PNP0700 (active)
+10-29 22:54:03.380     0     0 D pnp 00  : 04: Plug and Play ACPI device, IDs PNP0501 (active)
+10-29 22:54:03.382     0     0 D pnp 00  : 05: Plug and Play ACPI device, IDs PNP0a06 (active)
+10-29 22:54:03.383     0     0 D pnp 00  : 06: Plug and Play ACPI device, IDs PNP0a06 (active)
+10-29 22:54:03.384     0     0 D pnp 00  : 07: Plug and Play ACPI device, IDs PNP0a06 (active)
+10-29 22:54:03.386     0     0 D pnp 00  : 08: Plug and Play ACPI device, IDs PNP0103 (active)
+10-29 22:54:03.387     0     0 I pnp     : PnP ACPI: found 9 devices
+10-29 22:54:03.388     0     0 I ACPI    : bus type PNP unregistered
+10-29 22:54:03.452     0     0 D pci_bus 0000: 00: resource 4 [io  0x0000-0x0cf7]
+10-29 22:54:03.452     0     0 D pci_bus 0000: 00: resource 5 [io  0x0d00-0xffff]
+10-29 22:54:03.452     0     0 D pci_bus 0000: 00: resource 6 [mem 0x000a0000-0x000bffff]
+10-29 22:54:03.452     0     0 D pci_bus 0000: 00: resource 7 [mem 0x40000000-0xfebfffff]
+10-29 22:54:03.452     0     0 D pci_bus 0000: 00: resource 8 [mem 0x400000000-0x800013fff]
+10-29 22:54:03.453     0     0 I NET     : Registered protocol family 2
+10-29 22:54:03.459     0     0 I         : TCP established hash table entries: 8192 (order: 5, 131072 bytes)
+10-29 22:54:03.460     0     0 I         : TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+10-29 22:54:03.461     0     0 I TCP     : Hash tables configured (established 8192 bind 8192)
+10-29 22:54:03.462     0     0 I TCP     : reno registered
+10-29 22:54:03.462     0     0 I         : UDP hash table entries: 512 (order: 2, 16384 bytes)
+10-29 22:54:03.462     0     0 I         : UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+10-29 22:54:03.465     0     0 I NET     : Registered protocol family 1
+10-29 22:54:03.466     0     0 I pci 0000: 00:00.0: Limiting direct PCI/PCI transfers
+10-29 22:54:03.466     0     0 I pci 0000: 00:01.0: PIIX3: Enabling Passive Release
+10-29 22:54:03.467     0     0 I pci 0000: 00:01.0: Activating ISA DMA hang workarounds
+10-29 22:54:03.467     0     0 D PCI     : CLS 0 bytes, default 64
+10-29 22:54:03.475     0     0 I         : Trying to unpack rootfs image as initramfs...
+10-29 22:54:03.663     0     0 I         : Freeing initrd memory: 1680k freed
+--------- beginning of events
+10-29 22:54:03.680  1234  1234 I auditd  : type=2000 audit(0.0:1): initialized
+--------- beginning of main
+10-29 22:54:03.680  1234  1234 W auditd  : type=2000 audit(0.0:1): initialized
+10-29 22:54:03.686     0     0 I audit   : initializing netlink socket (disabled)
+10-29 22:54:03.694     0     0 I         : HugeTLB registered 2 MB page size, pre-allocated 0 pages
+10-29 22:54:03.757     0     0 I VFS     : Disk quotas dquot_6.5.2
+10-29 22:54:03.758     0     0 W         : Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+10-29 22:54:03.777     0     0 I         : fuse init (API version 7.22)
+10-29 22:54:03.780     0     0 I         : msgmni has been set to 1981
+10-29 22:54:03.783     0     0 D SELinux : Registering netfilter hooks
+10-29 22:54:03.796     0     0 I         : Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+10-29 22:54:03.796     0     0 I         : io scheduler noop registered
+10-29 22:54:03.797     0     0 I         : io scheduler deadline registered
+10-29 22:54:03.798     0     0 I         : io scheduler cfq registered (default)
+10-29 22:54:03.800     0     0 I pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+10-29 22:54:03.843     0     0 I input   : Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+10-29 22:54:03.845     0     0 I ACPI    : Power Button [PWRF]
+10-29 22:54:04.506     0     0 W ACPI    : PCI Interrupt Link [LNKC] enabled at IRQ 11
+10-29 22:54:04.507     0     0 D virtio-pci 0000: 00:03.0: setting latency timer to 64
+10-29 22:54:04.670     0     0 I tsc     : Refined TSC clocksource calibration: 2200.001 MHz
+10-29 22:54:04.671     0     0 I         : Switching to clocksource tsc
+10-29 22:54:05.139     0     0 W ACPI    : PCI Interrupt Link [LNKD] enabled at IRQ 10
+10-29 22:54:05.140     0     0 D virtio-pci 0000: 00:04.0: setting latency timer to 64
+10-29 22:54:05.799     0     0 W ACPI    : PCI Interrupt Link [LNKA] enabled at IRQ 10
+10-29 22:54:05.799     0     0 D virtio-pci 0000: 00:05.0: setting latency timer to 64
+10-29 22:54:06.467     0     0 W ACPI    : PCI Interrupt Link [LNKB] enabled at IRQ 11
+10-29 22:54:06.468     0     0 D virtio-pci 0000: 00:06.0: setting latency timer to 64
+10-29 22:54:07.120     0     0 D virtio-pci 0000: 00:07.0: setting latency timer to 64
+10-29 22:54:07.124     0     0 I Serial  : 8250/16550 driver, 4 ports, IRQ sharing disabled
+10-29 22:54:07.148     0     0 I         : 00:04: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+10-29 22:54:07.159     0     0 I         : Non-volatile memory driver v1.3
+10-29 22:54:07.159     0     0 I         : Linux agpgart interface v0.103
+10-29 22:54:07.165     0     0 I         : [drm] Initialized drm 1.1.0 20060810
+10-29 22:54:07.200     0     0 I brd     : module loaded
+10-29 22:54:07.222     0     0 I loop    : module loaded
+10-29 22:54:07.241     0     0 I vda     : unknown partition table
+10-29 22:54:07.250     0     0 I vdb     : unknown partition table
+10-29 22:54:07.255     0     0 I vdc     : unknown partition table
+10-29 22:54:07.259     0     0 I         : Loading iSCSI transport class v2.0-870.
+10-29 22:54:07.269     0     0 D ata_piix 0000: 00:01.1: version 2.13
+10-29 22:54:07.273     0     0 D ata_piix 0000: 00:01.1: setting latency timer to 64
+10-29 22:54:07.283     0     0 I scsi0   : ata_piix
+10-29 22:54:07.287     0     0 I scsi1   : ata_piix
+10-29 22:54:07.289     0     0 I ata1    : PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc100 irq 14
+10-29 22:54:07.289     0     0 I ata2    : PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc108 irq 15
+10-29 22:54:07.299     0     0 I tun     : Universal TUN/TAP device driver, 1.6
+10-29 22:54:07.299     0     0 I tun     : (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+10-29 22:54:07.311     0     0 I e100    : Intel(R) PRO/100 Network Driver, 3.5.24-k2-NAPI
+10-29 22:54:07.312     0     0 I e100    : Copyright(c) 1999-2006 Intel Corporation
+10-29 22:54:07.313     0     0 I e1000   : Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+10-29 22:54:07.314     0     0 I e1000   : Copyright (c) 1999-2006 Intel Corporation.
+10-29 22:54:07.316     0     0 I e1000e  : Intel(R) PRO/1000 Network Driver - 2.3.2-k
+10-29 22:54:07.316     0     0 I e1000e  : Copyright(c) 1999 - 2013 Intel Corporation.
+10-29 22:54:07.318     0     0 I sky2    : driver version 1.30
+10-29 22:54:07.322     0     0 I         : PPP generic driver version 2.4.2
+10-29 22:54:07.324     0     0 I         : PPP BSD Compression module registered
+10-29 22:54:07.324     0     0 I         : PPP Deflate Compression module registered
+10-29 22:54:07.328     0     0 I         : PPP MPPE Compression module registered
+10-29 22:54:07.328     0     0 I NET     : Registered protocol family 24
+10-29 22:54:07.330     0     0 D mac80211_hwsim: Initializing radio 0
+10-29 22:54:07.337     0     0 D ieee80211 phy0: Selected rate control algorithm 'minstrel_ht'
+10-29 22:54:07.344     0     0 D ieee80211 phy0: hwaddr 020000000000 registered
+10-29 22:54:07.344     0     0 D mac80211_hwsim: Initializing radio 1
+10-29 22:54:07.346     0     0 D ieee80211 phy1: Selected rate control algorithm 'minstrel_ht'
+10-29 22:54:07.351     0     0 D ieee80211 phy1: hwaddr 020000000100 registered
+10-29 22:54:07.357     0     0 I ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+10-29 22:54:07.357     0     0 D ehci_hcd: block sizes: qh 112 qtd 96 itd 192 sitd 96
+10-29 22:54:07.357     0     0 I ehci-pci: EHCI PCI platform driver
+10-29 22:54:07.358     0     0 I ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+10-29 22:54:07.359     0     0 D ohci_hcd: block sizes: ed 80 td 96
+10-29 22:54:07.359     0     0 I uhci_hcd: USB Universal Host Controller Interface driver
+10-29 22:54:07.362     0     0 I usbcore : registered new interface driver usblp
+10-29 22:54:07.363     0     0 I usbcore : registered new interface driver usb-storage
+10-29 22:54:07.366     0     0 I mousedev: PS/2 mouse device common for all mice
+10-29 22:54:07.370     0     0 I input   : qwerty2 as /devices/platform/GFSH0002:00/input/input1
+10-29 22:54:07.372     0     0 I rtc_cmos 00: 00: RTC can wake from S4
+10-29 22:54:07.375     0     0 I rtc_cmos 00: 00: rtc core: registered rtc_cmos as rtc0
+10-29 22:54:07.376     0     0 I rtc_cmos 00: 00: alarms up to one day, y3k, 114 bytes nvram, hpet irqs
+10-29 22:54:07.378     0     0 I goldfish_rtc GFSH0007: 00: rtc core: registered GFSH0007:00 as rtc1
+10-29 22:54:07.390     0     0 I device-mapper: uevent: version 1.0.3
+10-29 22:54:07.395     0     0 I device-mapper: ioctl: 4.24.0-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+10-29 22:54:07.398     0     0 I cpuidle : using governor ladder
+10-29 22:54:07.398     0     0 I cpuidle : using governor menu
+10-29 22:54:07.403     0     0 I hidraw  : raw HID events driver (C) Jiri Kosina
+10-29 22:54:07.432     0     0 I usbcore : registered new interface driver usbhid
+10-29 22:54:07.433     0     0 I usbhid  : USB HID core driver
+10-29 22:54:07.436     0     0 I ashmem  : initialized
+10-29 22:54:07.447     0     0 I goldfish_sync: Initialized goldfish sync device
+10-29 22:54:08.036     0     0 D snd_hda_intel 0000: 00:02.0: setting latency timer to 64
+10-29 22:54:08.071     0     0 I         : u32 classifier
+10-29 22:54:08.071     0     0 I         : Actions configured
+10-29 22:54:08.072     0     0 I         : Netfilter messages via NETLINK v0.30.
+10-29 22:54:08.073     0     0 I         : nf_conntrack version 0.5.0 (7927 buckets, 31708 max)
+10-29 22:54:08.078     0     0 I ctnetlink v0.93: registering with nfnetlink.
+10-29 22:54:08.081     0     0 I NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+10-29 22:54:08.081     0     0 I NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+10-29 22:54:08.086     0     0 I xt_time : kernel timezone is -0000
+10-29 22:54:08.090     0     0 I ip_tables: (C) 2000-2006 Netfilter Core Team
+10-29 22:54:08.095     0     0 I arp_tables: (C) 2002 David S. Miller
+10-29 22:54:08.096     0     0 I TCP     : cubic registered
+10-29 22:54:08.097     0     0 I         : Initializing XFRM netlink socket
+10-29 22:54:08.102     0     0 I NET     : Registered protocol family 10
+10-29 22:54:08.111     0     0 I mip6    : Mobile IPv6
+10-29 22:54:08.112     0     0 I ip6_tables: (C) 2000-2006 Netfilter Core Team
+10-29 22:54:08.115     0     0 I sit     : IPv6 over IPv4 tunneling driver
+10-29 22:54:08.120     0     0 I NET     : Registered protocol family 17
+10-29 22:54:08.122     0     0 I NET     : Registered protocol family 15
+10-29 22:54:08.127     0     0 I         : registered taskstats version 1
+10-29 22:54:08.131     0     0 I         : console [netcon0] enabled
+10-29 22:54:08.131     0     0 I netconsole: network logging started
+10-29 22:54:08.133     0     0 E init    : failed to probe driver -19
+10-29 22:54:08.137     0     0 I         : ALSA device list:
+10-29 22:54:08.137     0     0 I         : #0: HDA Intel at 0xfebc0000 irq 11
+10-29 22:54:08.147     0     0 I         : Freeing unused kernel memory: 1008k freed
+10-29 22:54:08.340     0     0 I         : Write protecting the kernel read-only data: 12288k
+10-29 22:54:08.378     0     0 I         : Freeing unused kernel memory: 2028k freed
+10-29 22:54:08.417     0     0 I         : Freeing unused kernel memory: 1716k freed
+10-29 22:54:08.543     0     0 I init    : init first stage started!
+10-29 22:54:08.574     0     0 D SELinux : 2048 avtab hash slots, 6825 rules.
+10-29 22:54:08.583     0     0 D SELinux : 2048 avtab hash slots, 6825 rules.
+10-29 22:54:08.584     0     0 D SELinux : 1 users, 2 roles, 668 types, 0 bools, 1 sens, 1024 cats
+10-29 22:54:08.584     0     0 D SELinux : 63 classes, 6825 rules
+10-29 22:54:08.593     0     0 D SELinux : Completing initialization.
+10-29 22:54:08.593     0     0 D SELinux : Setting up existing superblocks.
+10-29 22:54:08.594     0     0 D SELinux : initialized (dev sysfs, type sysfs), uses genfs_contexts
+10-29 22:54:08.594     0     0 D SELinux : initialized (dev rootfs, type rootfs), uses genfs_contexts
+10-29 22:54:08.595     0     0 D SELinux : initialized (dev bdev, type bdev), not configured for labeling
+10-29 22:54:08.595     0     0 D SELinux : initialized (dev proc, type proc), uses genfs_contexts
+10-29 22:54:08.595     0     0 D SELinux : initialized (dev tmpfs, type tmpfs), uses transition SIDs
+10-29 22:54:08.596     0     0 D SELinux : initialized (dev sockfs, type sockfs), uses task SIDs
+10-29 22:54:08.596     0     0 D SELinux : initialized (dev debugfs, type debugfs), uses genfs_contexts
+10-29 22:54:08.629     0     0 D SELinux : initialized (dev pipefs, type pipefs), uses task SIDs
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev anon_inodefs, type anon_inodefs), not configured for labeling
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev devpts, type devpts), uses transition SIDs
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev hugetlbfs, type hugetlbfs), not configured for labeling
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev mqueue, type mqueue), uses transition SIDs
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev selinuxfs, type selinuxfs), uses genfs_contexts
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev configfs, type configfs), uses genfs_contexts
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev tmpfs, type tmpfs), uses transition SIDs
+10-29 22:54:08.630     0     0 D SELinux : initialized (dev sysfs, type sysfs), uses genfs_contexts
+10-29 22:54:08.661  1234  1234 I auditd  : type=1403 audit(0.0:2): policy loaded auid=4294967295 ses=4294967295
+10-29 22:54:08.661  1234  1234 I auditd  : type=1403 audit(0.0:2): policy loaded auid=4294967295 ses=4294967295
+10-29 22:54:08.681  1234  1234 I auditd  : type=1404 audit(0.0:3): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+10-29 22:54:08.681  1234  1234 W auditd  : type=1404 audit(0.0:3): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+10-29 22:54:08.724     0     0 I init    : (Initializing SELinux enforcing took 0.18s.)
+10-29 22:54:08.774     0     0 I init    : init second stage started!
+10-29 22:54:08.816     0     0 E init    : property_set("ro.kernel.mac80211_hwsim.channels", "2") failed
+10-29 22:54:08.817     0     0 E init    : property_set("ro.kernel.qemu.settings.system.screen_off_timeout", "2147483647") failed
+10-29 22:54:08.818     0     0 E init    : property_set("ro.kernel.qemu.gltransport.drawFlushInterval", "800") failed
+10-29 22:54:08.819     0     0 E init    : property_set("ro.kernel.qemu.dalvik.vm.heapsize", "256m") failed
+10-29 22:54:08.819     0     0 E init    : property_set("ro.kernel.qemu.camera_hq_edge_processing", "0") failed
+10-29 22:54:08.819     0     0 E init    : property_set("ro.kernel.androidboot.android_dt_dir", "/sys/bus/platform/devices/ANDR0001:00/properties/android/") failed
+10-29 22:54:08.820     0     0 E init    : property_set("ro.kernel.mac80211_hwsim.mac_prefix", "5554") failed
+10-29 22:54:08.839     0     0 I init    : Running restorecon...
+10-29 22:54:08.948     0     0 E init    : waitpid failed: No child processes
+10-29 22:54:08.952     0     0 I init    : (Loading properties from /default.prop took 0.00s.)
+10-29 22:54:08.988     0     0 I init    : (Parsing /init.environ.rc took 0.00s.)
+10-29 22:54:08.993     0     0 I init    : (Parsing /init.usb.rc took 0.00s.)
+10-29 22:54:08.998     0     0 I init    : (Parsing init.ranchu-noencrypt.rc took 0.00s.)
+10-29 22:54:08.998     0     0 I init    : (Parsing /init.ranchu.rc took 0.01s.)
+10-29 22:54:09.002     0     0 I init    : (Parsing /init.usb.configfs.rc took 0.00s.)
+10-29 22:54:09.004     0     0 I init    : (Parsing /init.zygote64_32.rc took 0.00s.)
+10-29 22:54:09.004     0     0 I init    : (Parsing /init.rc took 0.04s.)
+10-29 22:54:09.014     0     0 I init    : Starting service 'ueventd'...
+10-29 22:54:09.053     0     0 I init    : Waiting for /dev/.coldboot_done...
+10-29 22:54:09.064     0     0 I ueventd : ueventd started!
+10-29 22:54:10.060     0     0 E init    : Timed out waiting for /dev/.coldboot_done
+10-29 22:54:10.063     0     0 I init    : Waiting for /dev/.coldboot_done took 1.01s.
+10-29 22:54:10.065     0     0 E init    : /dev/hw_random not found
+10-29 22:54:10.110     0     0 E init    : could not open /dev/keychord: No such file or directory
+10-29 22:54:10.147     0     0 D SELinux : initialized (dev cgroup, type cgroup), uses genfs_contexts
+10-29 22:54:10.179     0     0 D SELinux : initialized (dev tmpfs, type tmpfs), uses transition SIDs
+10-29 22:54:10.228     0     0 I init    : write_file: Unable to open '/proc/sys/kernel/hung_task_timeout_secs': No such file or directory
+10-29 22:54:10.229     0     0 I init    : write_file: Unable to open '/proc/cpu/alignment': No such file or directory
+10-29 22:54:10.250     0     0 D SELinux : initialized (dev cgroup, type cgroup), uses genfs_contexts
+10-29 22:54:10.321     0     0 I init    : write_file: Unable to open '/proc/sys/abi/swp': No such file or directory
+10-29 22:54:10.349     0     0 E init    : /dev/hw_random not found
+10-29 22:54:10.475     0     0 I EXT4-fs (vda): mounted filesystem with ordered data mode. Opts: (null)
+10-29 22:54:10.476     0     0 D SELinux : initialized (dev vda, type ext4), uses xattr
+10-29 22:54:10.478     0     0 I fs_mgr  : __mount(source=/dev/block/vda,target=/system,type=ext4)=0
+10-29 22:54:10.485     0     0 W EXT4-fs (vdb): Ignoring removed nomblk_io_submit option
+10-29 22:54:10.565     0     0 I EXT4-fs (vdb): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=panic
+10-29 22:54:10.566     0     0 D SELinux : initialized (dev vdb, type ext4), uses xattr
+10-29 22:54:10.566     0     0 I fs_mgr  : __mount(source=/dev/block/vdb,target=/cache,type=ext4)=0
+10-29 22:54:10.583     0     0 W EXT4-fs (vdc): Ignoring removed nomblk_io_submit option
+10-29 22:54:10.617     0     0 I EXT4-fs (vdc): mounted filesystem with ordered data mode. Opts: errors=remount-ro,nomblk_io_submit
+10-29 22:54:10.617     0     0 D SELinux : initialized (dev vdc, type ext4), uses xattr
+10-29 22:54:10.618     0     0 I fs_mgr  : check_fs(): mount(/dev/block/vdc,/data,ext4)=0: Success
+10-29 22:54:10.660     0     0 I fs_mgr  : check_fs(): unmount(/data) succeeded
+10-29 22:54:10.684     0     0 I ueventd : Coldboot took 1.59s.
+10-29 22:54:10.711     0     0 I fs_mgr  : Running /system/bin/e2fsck on /dev/block/vdc
+10-29 22:54:14.188     0     0 I e2fsck  : e2fsck 1.42.9 (28-Dec-2013)
+10-29 22:54:14.189     0     0 I e2fsck  : Pass 1: Checking inodes, blocks, and sizes
+10-29 22:54:14.189     0     0 I e2fsck  : Inode 7, i_size is 163631104, should be 167854080.  Fix? yes
+10-29 22:54:14.190     0     0 I e2fsck  :  
+10-29 22:54:14.190     0     0 I e2fsck  : Pass 2: Checking directory structure
+10-29 22:54:14.190     0     0 I e2fsck  : Pass 3: Checking directory connectivity
+10-29 22:54:14.190     0     0 I e2fsck  : Pass 4: Checking reference counts
+10-29 22:54:14.190     0     0 I e2fsck  : Pass 5: Checking group summary information
+10-29 22:54:14.190     0     0 I e2fsck  :  
+10-29 22:54:14.193     0     0 I e2fsck  : data: ***** FILE SYSTEM WAS MODIFIED *****
+10-29 22:54:14.193     0     0 I e2fsck  : data: 85/563200 files (0.0% non-contiguous), 47996/2621440 blocks
+10-29 22:54:14.194     0     0 I e2fsck  : e2fsck terminated by exit(1)
+10-29 22:54:14.201     0     0 W EXT4-fs (vdc): Ignoring removed nomblk_io_submit option
+10-29 22:54:14.209     0     0 I EXT4-fs (vdc): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=panic
+10-29 22:54:14.210     0     0 D SELinux : initialized (dev vdc, type ext4), uses xattr
+10-29 22:54:14.210     0     0 I fs_mgr  : __mount(source=/dev/block/vdc,target=/data,type=ext4)=0
+10-29 22:54:14.253     0     0 I init    : (Parsing /system/etc/init/atrace.rc took 0.03s.)
+10-29 22:54:14.284     0     0 I init    : (Parsing /system/etc/init/audioserver.rc took 0.03s.)
+10-29 22:54:14.310     0     0 I init    : (Parsing /system/etc/init/bootanim.rc took 0.03s.)
+10-29 22:54:14.315     0     0 I init    : (Parsing /system/etc/init/bootstat.rc took 0.00s.)
+10-29 22:54:14.341     0     0 I init    : (Parsing /system/etc/init/cameraserver.rc took 0.03s.)
+10-29 22:54:14.374     0     0 I init    : (Parsing /system/etc/init/debuggerd.rc took 0.03s.)
+10-29 22:54:14.376     0     0 I init    : (Parsing /system/etc/init/debuggerd64.rc took 0.00s.)
+10-29 22:54:14.401     0     0 I init    : (Parsing /system/etc/init/drmserver.rc took 0.03s.)
+10-29 22:54:14.405     0     0 I init    : (Parsing /system/etc/init/dumpstate.rc took 0.00s.)
+10-29 22:54:14.430     0     0 I init    : (Parsing /system/etc/init/gatekeeperd.rc took 0.02s.)
+10-29 22:54:14.432     0     0 I init    : (Parsing /system/etc/init/init-debug.rc took 0.00s.)
+10-29 22:54:14.460     0     0 I init    : (Parsing /system/etc/init/installd.rc took 0.03s.)
+10-29 22:54:14.462     0     0 I init    : (Parsing /system/etc/init/keystore.rc took 0.00s.)
+10-29 22:54:14.490     0     0 I init    : (Parsing /system/etc/init/lmkd.rc took 0.03s.)
+10-29 22:54:14.494     0     0 I init    : (Parsing /system/etc/init/logcatd.rc took 0.00s.)
+10-29 22:54:14.520     0     0 I init    : (Parsing /system/etc/init/logd.rc took 0.03s.)
+10-29 22:54:14.523     0     0 I init    : (Parsing /system/etc/init/mdnsd.rc took 0.00s.)
+10-29 22:54:14.550     0     0 I init    : (Parsing /system/etc/init/mediacodec.rc took 0.03s.)
+10-29 22:54:14.552     0     0 I init    : (Parsing /system/etc/init/mediadrmserver.rc took 0.00s.)
+10-29 22:54:14.581     0     0 I init    : (Parsing /system/etc/init/mediaextractor.rc took 0.03s.)
+10-29 22:54:14.585     0     0 I init    : (Parsing /system/etc/init/mediaserver.rc took 0.00s.)
+10-29 22:54:14.611     0     0 I init    : (Parsing /system/etc/init/mtpd.rc took 0.02s.)
+10-29 22:54:14.613     0     0 I init    : (Parsing /system/etc/init/netd.rc took 0.00s.)
+10-29 22:54:14.640     0     0 I init    : (Parsing /system/etc/init/perfprofd.rc took 0.03s.)
+10-29 22:54:14.642     0     0 I init    : (Parsing /system/etc/init/racoon.rc took 0.00s.)
+10-29 22:54:14.669     0     0 I init    : (Parsing /system/etc/init/rild.rc took 0.03s.)
+10-29 22:54:14.672     0     0 I init    : (Parsing /system/etc/init/servicemanager.rc took 0.00s.)
+10-29 22:54:14.701     0     0 I init    : (Parsing /system/etc/init/surfaceflinger.rc took 0.03s.)
+10-29 22:54:14.704     0     0 I init    : (Parsing /system/etc/init/uncrypt.rc took 0.00s.)
+10-29 22:54:14.730     0     0 I init    : (Parsing /system/etc/init/vdc.rc took 0.03s.)
+10-29 22:54:14.731     1     1 I auditd  : type=1400 audit(0.0:4): avc: denied { write } for comm="init" name="tracing_on" dev="debugfs" ino=28 scontext=u:r:init:s0 tcontext=u:object_r:debugfs:s0 tclass=file permissive=0
+10-29 22:54:14.731     1     1 I chatty  : uid=0(root) /init expire 2 lines
+10-29 22:54:14.733     0     0 I init    : (Parsing /system/etc/init/vold.rc took 0.00s.)
+10-29 22:54:14.748     0     0 I init    : write_file: Unable to open '/sys/kernel/debug/tracing/tracing_on': Permission denied
+10-29 22:54:14.759     0     0 I init    : Starting service 'logd'...
+10-29 22:54:15.983     0     0 I logd.auditd: start
+10-29 22:54:16.174     0     0 I init    : (Loading properties from /system/build.prop took 0.00s.)
+10-29 22:54:16.176     0     0 I init    : (Loading properties from /vendor/build.prop took 0.00s.)
+10-29 22:54:16.177     0     0 I init    : (Loading properties from /factory/factory.prop took 0.00s.)
+10-29 22:54:16.184     0     0 E init    : /recovery not specified in fstab
+10-29 22:54:16.190     0     0 I init    : Starting service 'debuggerd'...
+10-29 22:54:16.198     0     0 I init    : Starting service 'debuggerd64'...
+10-29 22:54:16.228     0     0 I init    : Starting service 'vold'...
+10-29 22:54:16.305     0     0 I init    : Not bootcharting.
+10-29 22:54:17.549  1241  1241 I chatty  : uid=0(root) /system/bin/debuggerd64 expire 1 line
+--------- beginning of system
+10-29 22:54:18.785  1242  1242 I vold    : Vold 3.0 (the awakening) firing up
+10-29 22:54:18.788  1242  1242 V vold    : Detected support for: ext4 vfat
+10-29 22:54:18.970  1240  1240 I chatty  : uid=0(root) /system/bin/debuggerd expire 1 line
+10-29 22:54:19.447  1242  1277 D vold    : e4crypt_init_user0
+10-29 22:54:19.449  1242  1277 D vold    : e4crypt_prepare_user_storage for volume null, user 0, serial 0, flags 1
+10-29 22:54:19.463  1242  1277 D vold    : Preparing: /data/system/users/0
+10-29 22:54:19.482  1242  1277 D vold    : Preparing: /data/misc/profiles/cur/0
+10-29 22:54:19.485  1242  1277 D vold    : Preparing: /data/misc/profiles/cur/0/foreign-dex
+10-29 22:54:19.485  1242  1277 D vold    : Preparing: /data/system_de/0
+10-29 22:54:19.486  1242  1277 D vold    : Preparing: /data/misc_de/0
+10-29 22:54:19.487  1242  1277 D vold    : Preparing: /data/user_de/0
+10-29 22:54:19.490  1242  1277 D vold    : e4crypt_unlock_user_key 0 serial=0 token_present=0
+10-29 22:54:19.490  1242  1277 E vold    : Failed to chmod /data/system_ce/0: No such file or directory
+10-29 22:54:19.491  1242  1277 E vold    : Failed to chmod /data/misc_ce/0: No such file or directory
+10-29 22:54:19.496  1242  1277 E vold    : Failed to chmod /data/media/0: No such file or directory
+10-29 22:54:20.216     0     0 I init    : Starting service 'exec 1 (/system/bin/tzdatacheck)'...
+10-29 22:54:20.561  1278  1278 I /system/bin/tzdatacheck: tzdata file /data/misc/zoneinfo/current/tzdata does not exist. No action required.
+10-29 22:54:20.569     0     0 I init    : Service 'exec 1 (/system/bin/tzdatacheck)' (pid 1278) exited with status 0
+10-29 22:54:20.600     0     0 I init    : (Loading properties from /data/local.prop took 0.00s.)
+10-29 22:54:20.604     0     0 I init    : Starting service 'logd-reinit'...
+10-29 22:54:20.668     0     0 I init    : Starting service 'healthd'...
+10-29 22:54:20.695     0     0 I init    : Starting service 'ranchu-setup'...
+10-29 22:54:20.698     0     0 I init    : Starting service 'qemu-props'...
+10-29 22:54:20.753     0     0 I init    : Starting service 'lmkd'...
+10-29 22:54:20.757     0     0 I init    : Starting service 'servicemanager'...
+10-29 22:54:20.782     0     0 I init    : Starting service 'surfaceflinger'...
+10-29 22:54:20.922     0     0 E init    : property_set("ro.build.product", "generic") failed
+10-29 22:54:20.923     0     0 E init    : property_set("ro.product.device", "generic") failed
+10-29 22:54:20.925     0     0 E init    : do_stop: Service dund not found
+10-29 22:54:20.925     0     0 E init    : do_stop: Service akmd not found
+10-29 22:54:20.929     0     0 I init    : Starting service 'console'...
+10-29 22:54:20.961     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:20.962     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+10-29 22:54:20.962     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+10-29 22:54:20.963     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+10-29 22:54:20.964     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:20.964     0     0 I init    : Starting service 'adbd'...
+10-29 22:54:20.968     0     0 E init    : cannot find '/system/bin/update_verifier' (No such file or directory), disabling 'exec 2 (/system/bin/update_verifier)'
+10-29 22:54:20.969     0     0 E init    : cannot find '/system/bin/install-recovery.sh' (No such file or directory), disabling 'flash_recovery'
+10-29 22:54:21.042     0     0 I binder  : 1280:1280 transaction failed 29189, size 0-0
+10-29 22:54:21.053     0     0 I init    : Starting service 'zygote'...
+10-29 22:54:21.102     0     0 I init    : Starting service 'zygote_secondary'...
+10-29 22:54:21.106     0     0 I init    : Starting service 'audioserver'...
+10-29 22:54:21.109     0     0 I init    : Starting service 'cameraserver'...
+10-29 22:54:21.154     0     0 I init    : Starting service 'drm'...
+10-29 22:54:21.158     0     0 I init    : Starting service 'installd'...
+10-29 22:54:21.208     0     0 E init    : couldn't write 1291 to /dev/cpuset/camera-daemon/tasks: No such file or directory
+10-29 22:54:21.213     0     0 I init    : Starting service 'keystore'...
+10-29 22:54:21.217     0     0 I init    : Starting service 'mediacodec'...
+10-29 22:54:21.293     0     0 I init    : Starting service 'mediadrm'...
+10-29 22:54:21.297     0     0 I init    : Starting service 'mediaextractor'...
+10-29 22:54:21.328  1282  1282 I chatty  : uid=0(root) /system/bin/qemu-props expire 19 lines
+10-29 22:54:21.352     0     0 I init    : Starting service 'media'...
+10-29 22:54:21.356     0     0 I init    : Starting service 'netd'...
+10-29 22:54:21.407     0     0 I init    : Starting service 'ril-daemon'...
+10-29 22:54:21.438     0     0 I init    : Starting service 'ranchu-net'...
+10-29 22:54:21.463     0     0 I init    : Starting service 'fingerprintd'...
+10-29 22:54:21.467     0     0 I init    : Starting service 'gatekeeperd'...
+10-29 22:54:21.551  1291  1291 I auditd  : type=1400 audit(0.0:5): avc: denied { getattr } for comm="cameraserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:cameraserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.551  1291  1291 W cameraserver: type=1400 audit(0.0:5): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:cameraserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.663     0     0 I logd.daemon: reinit
+10-29 22:54:21.801  1290  1290 I auditd  : type=1400 audit(0.0:6): avc: denied { getattr } for comm="audioserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:audioserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.801  1290  1290 W audioserver: type=1400 audit(0.0:6): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:audioserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.891  1297  1297 I auditd  : type=1400 audit(0.0:7): avc: denied { getattr } for comm="mediadrmserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediadrmserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.891  1297  1297 W mediadrmserver: type=1400 audit(0.0:7): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediadrmserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.931  1295  1295 I auditd  : type=1400 audit(0.0:8): avc: denied { getattr } for comm="mediacodec" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediacodec:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:21.931  1295  1295 W mediacodec: type=1400 audit(0.0:8): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediacodec:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:22.079     0     0 W healthd : BatteryVoltagePath not found
+10-29 22:54:22.079     0     0 W healthd : BatteryTemperaturePath not found
+10-29 22:54:22.080     0     0 W healthd : BatteryCurrentNowPath not found
+10-29 22:54:22.080     0     0 W healthd : BatteryFullChargePath not found
+10-29 22:54:22.080     0     0 W healthd : BatteryCycleCountPath not found
+10-29 22:54:26.445     0     0 I init    : Starting service 'perfprofd'...
+10-29 22:54:26.448     0     0 I init    : Service 'logd-reinit' (pid 1279) exited with status 0
+10-29 22:54:26.449     0     0 I init    : Service 'qemu-props' (pid 1282) exited with status 0
+10-29 22:54:26.604  1293  1293 I chatty  : uid=0(root) /system/bin/installd expire 3 lines
+10-29 22:54:26.608  1293  1293 D         : Assuming that device has multi-user storage layout; upgrade no longer supported
+10-29 22:54:27.202  1283  1283 I chatty  : uid=0(root) /system/bin/lmkd expire 1 line
+10-29 22:54:27.272     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:27.286     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+10-29 22:54:27.288     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+10-29 22:54:27.289     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+10-29 22:54:27.290     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:27.445     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:27.446     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+10-29 22:54:27.446     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+10-29 22:54:27.447     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+10-29 22:54:27.447     0     0 I init    : write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+10-29 22:54:27.538     0     0 I init    : Starting service 'goldfish-logcat'...
+10-29 22:54:28.199  1306  1306 I gatekeeperd: Starting gatekeeperd...
+10-29 22:54:28.225  1305  1305 I fingerprintd: Starting fingerprintd
+10-29 22:54:28.418  1307  1307 I chatty  : uid=0(root) /system/xbin/perfprofd expire 3 lines
+10-29 22:54:28.573  1306  1306 W gatekeeperd: falling back to software GateKeeper
+10-29 22:54:28.574  1306  1306 I gatekeeperd: cold boot: clearing state
+10-29 22:54:29.318  1294  1294 I keystore: Found keymaster0 module Keymaster OpenSSL HAL, version 2
+10-29 22:54:29.319  1294  1294 I SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 131: Creating device
+10-29 22:54:29.319  1294  1294 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 132: Device address: 0x74b3ac83d000
+10-29 22:54:29.320  1294  1294 I keystore: Keymaster0 module is software-only.  Using SoftKeymasterDevice instead.
+10-29 22:54:29.320  1294  1294 I SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 131: Creating device
+10-29 22:54:29.320  1294  1294 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 132: Device address: 0x74b3ac83d400
+--------- beginning of radio
+10-29 22:54:29.547  1303  1303 D RILD    : **RIL Daemon Started**
+10-29 22:54:29.549  1303  1303 D RILD    : **RILd param count=1**
+10-29 22:54:30.412  1302  1302 I chatty  : uid=0(root) Binder:1302_2 expire 16 lines
+10-29 22:54:30.755  1303  1303 D RILD    : overriding with -s /dev/socket/qemud
+10-29 22:54:30.830  1303  1303 W RILD    : RIL_SAP_Init not defined or exported in libreference-ril.so: undefined symbol: RIL_SAP_Init
+10-29 22:54:30.830  1303  1303 D RILD    : RIL_Init argc = 5 clientId = 0
+10-29 22:54:30.831  1303  1303 I RIL     : Opening socket /dev/socket/qemud
+10-29 22:54:30.831  1303  1303 I RIL     : Client id received 0
+10-29 22:54:30.868  1303  1303 D RILD    : RIL_Init rilInit completed
+10-29 22:54:30.869  1303  1303 I RILC    : SIM_COUNT: 1
+10-29 22:54:30.869  1303  1303 E RILC    : RIL_register: RIL version 12
+10-29 22:54:30.869  1303  1303 I RILC    : s_registerCalled flag set, 1
+10-29 22:54:30.869  1303  1303 I RILC    : Start to listen RIL_SOCKET_1
+10-29 22:54:30.892  1303  1317 D RIL     : setRadioState(0)
+10-29 22:54:30.964  1303  1303 D RILD    : RIL_Init RIL_register completed
+10-29 22:54:30.964  1303  1303 D RILD    : RIL_register_socket completed
+10-29 22:54:30.964  1303  1303 D RILD    : RIL_Init starting sleep loop
+10-29 22:54:31.566  1303  1317 D AT      : AT> ATE0Q0V1
+10-29 22:54:31.653  1303  1319 D AT      : AT< OK
+10-29 22:54:33.940     0     0 I init    : Service 'ranchu-setup' (pid 1281) exited with status 0
+10-29 22:54:35.256     0     0 I init    : Starting service 'bootanim'...
+10-29 22:54:31.909  1303  1317 D RIL     : query_ctec. current: 0x7cf31a9ff2ac, preferred: 0x7cf31a9ff2a8
+10-29 22:54:31.909  1303  1317 D AT      : AT> AT+CTEC?
+10-29 22:54:31.910  1303  1319 D AT      : AT< +CTEC: 0,f
+10-29 22:54:31.910  1303  1319 D AT      : AT< OK
+10-29 22:54:31.911  1303  1317 D RIL     : Response: +CTEC: 0,f
+10-29 22:54:31.911  1303  1317 D RIL     : line remaining after int: f
+10-29 22:54:31.912  1303  1317 D RIL     : query_supported_techs
+10-29 22:54:31.912  1303  1317 D AT      : AT> AT+CTEC=?
+10-29 22:54:31.912  1303  1319 D AT      : AT< +CTEC: 0,1,2,3
+10-29 22:54:31.912  1303  1319 D AT      : AT< OK
+10-29 22:54:31.913  1303  1317 I RIL     : Found Multimode Modem. Supported techs mask: 0000000f. Current tech: 0
+10-29 22:54:31.913  1303  1317 D AT      : AT> ATE0Q0V1
+10-29 22:54:31.914  1303  1319 D AT      : AT< OK
+10-29 22:54:31.914  1303  1317 D AT      : AT> ATS0=0
+10-29 22:54:31.914  1303  1319 D AT      : AT< OK
+10-29 22:54:31.915  1303  1317 D AT      : AT> AT+CMEE=1
+10-29 22:54:31.915  1303  1319 D AT      : AT< OK
+10-29 22:54:31.916  1303  1317 D AT      : AT> AT+CREG=2
+10-29 22:54:31.916  1303  1319 D AT      : AT< OK
+10-29 22:54:31.916  1303  1317 D AT      : AT> AT+CGREG=1
+10-29 22:54:31.917  1303  1319 D AT      : AT< OK
+10-29 22:54:31.917  1303  1317 D AT      : AT> AT+CCWA=1
+10-29 22:54:31.917  1303  1319 D AT      : AT< OK
+10-29 22:54:31.918  1303  1317 D AT      : AT> AT+CMOD=0
+10-29 22:54:31.918  1303  1319 D AT      : AT< OK
+10-29 22:54:31.918  1303  1317 D AT      : AT> AT+CMUT=0
+10-29 22:54:31.919  1303  1319 D AT      : AT< OK
+10-29 22:54:31.919  1303  1317 D AT      : AT> AT+CSSN=0,1
+10-29 22:54:31.919  1303  1319 D AT      : AT< OK
+10-29 22:54:31.921  1303  1317 D AT      : AT> AT+COLP=0
+10-29 22:54:31.931  1303  1319 D AT      : AT< OK
+10-29 22:54:31.931  1303  1317 D AT      : AT> AT+CSCS="HEX"
+10-29 22:54:31.941  1303  1319 D AT      : AT< OK
+10-29 22:54:31.942  1303  1317 D AT      : AT> AT+CUSD=1
+10-29 22:54:31.951  1303  1319 D AT      : AT< OK
+10-29 22:54:31.951  1303  1317 D AT      : AT> AT+CGEREP=1,0
+10-29 22:54:31.952  1303  1319 D AT      : AT< OK
+10-29 22:54:31.952  1303  1317 D AT      : AT> AT+CMGF=0
+10-29 22:54:31.952  1303  1319 D AT      : AT< %CTZV: 26/10/29:22:54:33-12:0:Unknown!Unknown
+10-29 22:54:31.954  1303  1319 D AT      : AT< OK
+10-29 22:54:31.954  1303  1317 D AT      : AT> AT+CFUN?
+10-29 22:54:31.972  1303  1319 D AT      : AT< +CFUN: 0
+10-29 22:54:31.972  1303  1319 D AT      : AT< OK
+10-29 22:54:33.278  1285  1285 I SurfaceFlinger: SurfaceFlinger is starting
+10-29 22:54:33.374  1285  1285 I SurfaceFlinger: SurfaceFlinger's main thread ready to run. Initializing graphics H/W...
+10-29 22:54:33.376  1285  1285 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-29 22:54:33.423  1285  1285 E libEGL  : load_driver(/system/lib64/egl/libGLES_emulation.so): dlopen failed: library "/system/lib64/egl/libGLES_emulation.so" not found
+10-29 22:54:33.857  1285  1285 D libEGL  : loaded /system/lib64/egl/libEGL_emulation.so
+10-29 22:54:33.995  1285  1285 D libEGL  : loaded /system/lib64/egl/libGLESv1_CM_emulation.so
+10-29 22:54:34.265  1285  1285 D libEGL  : loaded /system/lib64/egl/libGLESv2_emulation.so
+10-29 22:54:34.452  1285  1285 D         : HostConnection::get() New Host Connection established 0x7cf61262d540, tid 1285
+10-29 22:54:34.569  1285  1285 E SurfaceFlinger: hwcomposer module not found
+10-29 22:54:34.583  1285  1285 I SurfaceFlinger: EGL information:
+10-29 22:54:34.584  1285  1285 I SurfaceFlinger: vendor    : Android
+10-29 22:54:34.584  1285  1285 I SurfaceFlinger: version   : 1.4 Android META-EGL
+10-29 22:54:34.584  1285  1285 I SurfaceFlinger: extensions: EGL_KHR_get_all_proc_addresses EGL_ANDROID_presentation_time EGL_KHR_swap_buffers_with_damage EGL_ANDROID_create_native_client_buffer EGL_ANDROID_front_buffer_auto_refresh EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_fence_sync EGL_ANDROID_image_native_buffer EGL_ANDROID_recordable 
+10-29 22:54:34.584  1285  1285 I SurfaceFlinger: Client API: OpenGL_ES
+10-29 22:54:34.584  1285  1285 I SurfaceFlinger: EGLSurface: 8-8-8-8, config=0x2
+10-29 22:54:34.597  1285  1285 D EGL_emulation: eglCreateContext: 0x7cf612642140: maj 2 min 0 rcv 2
+10-29 22:54:34.656  1285  1285 D EGL_emulation: eglMakeCurrent: 0x7cf612642140: ver 2 0 (tinfo 0x7cf61265f060)
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: OpenGL ES informations:
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: vendor    : Google (Google Inc.)
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: renderer  : Android Emulator OpenGL ES Translator (Google SwiftShader)
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: version   : OpenGL ES 2.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: extensions: GL_EXT_debug_marker GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_dma_v1 ANDROID_EMU_sync_buffer_data GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_2 
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: GL_MAX_TEXTURE_SIZE = 8192
+10-29 22:54:34.744  1285  1285 I SurfaceFlinger: GL_MAX_VIEWPORT_DIMS = 8192
+10-29 22:54:34.793  1285  1285 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4096
+10-29 22:54:34.811  1285  1285 D EGL_emulation: eglMakeCurrent: 0x7cf612642140: ver 2 0 (tinfo 0x7cf61265f060)
+10-29 22:54:35.246  1285  1285 D SurfaceFlinger: shader cache generated - 24 shaders in 428.233276 ms
+10-29 22:54:35.271  1285  1285 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x7cf612647000
+10-29 22:54:35.731  1336  1336 I auditd  : type=1400 audit(0.0:9): avc: denied { getattr } for comm="bootanimation" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:bootanim:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:35.731  1336  1336 W bootanimation: type=1400 audit(0.0:9): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:bootanim:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 22:54:36.433  1295  1295 I mediacodec: @@@ mediacodecservice starting
+10-29 22:54:36.482  1295  1295 W         : No seccomp filter defined for this architecture.
+10-29 22:54:36.782  1285  1285 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4096
+10-29 22:54:37.086  1291  1291 I cameraserver: ServiceManager: 0xe9abc020
+10-29 22:54:37.162  1291  1291 I CameraService: CameraService started (pid=1291)
+10-29 22:54:37.162  1291  1291 I CameraService: CameraService process starting
+10-29 22:54:37.166  1291  1291 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:37.171  1291  1291 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:37.494  1291  1291 D EmulatedCamera_QemuClient: Emulated camera list: 
+10-29 22:54:37.496  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 22:54:37.500  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 22:54:37.581  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 22:54:37.582  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 22:54:37.582  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 22:54:37.582  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 22:54:37.584  1291  1291 E EmulatedCamera_Factory: 1 cameras are being emulated. 0 of them are fake cameras.
+10-29 22:54:37.585  1291  1291 E EmulatedCamera_HotplugThread: createFileIfNotExists: Could not create file '/data/misc/media/emulator.camera.hotplug.0', error: 'Permission denied' (13)
+10-29 22:54:37.693  1291  1291 I CameraService: Loaded "Emulated Camera Module" camera module
+10-29 22:54:37.694  1291  1291 E CameraService: setUpVendorTags: Vendor tag operations not fully defined. Ignoring definitions.
+10-29 22:54:37.695  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 22:54:37.695  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 22:54:37.697  1291  1291 I CameraFlashlight: Opening camera 0
+10-29 22:54:37.697  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 22:54:37.697  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 22:54:37.772  1291  1291 V EmulatedCamera_Camera: connectCamera
+10-29 22:54:37.772  1291  1291 V EmulatedCamera_FakeDevice: connectDevice
+10-29 22:54:37.773  1291  1291 V EmulatedCamera_CallbackNotifier: setCallbacks: 0xea751e80, 0xea751ed0, 0xea751ff0, 0xea752110 (0xe9ac3140)
+10-29 22:54:38.647  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0x0 -> new: 0xe9ac3150
+10-29 22:54:38.751  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0xe9ac3150 -> new: 0x0
+10-29 22:54:38.752  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 22:54:38.754  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0x0 -> new: 0x0
+10-29 22:54:38.754  1291  1291 V EmulatedCamera_Camera: releaseCamera
+10-29 22:54:38.754  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 22:54:38.755  1291  1291 V EmulatedCamera_FakeDevice: disconnectDevice
+10-29 22:54:38.755  1291  1291 W EmulatedCamera_Device: Initialize: Emulated camera device is already initialized: mState = 1
+10-29 22:54:38.756  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 22:54:38.841  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 22:54:38.842  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 22:54:38.843  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 22:54:38.843  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 22:54:38.843  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 22:54:38.844  1291  1291 I CameraFlashlight: Destroying camera 0
+10-29 22:54:38.844  1291  1291 V EmulatedCamera_Camera: closeCamera
+10-29 22:54:38.844  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 22:54:38.845  1291  1291 W EmulatedCamera_Device: Initialize: Emulated camera device is already initialized: mState = 1
+10-29 22:54:38.845  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 22:54:38.845  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 22:54:38.845  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 22:54:38.845  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 22:54:38.846  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 22:54:38.846  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 22:54:38.962  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 22:54:38.962  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 22:54:39.018  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 22:54:39.199  1290  1290 I         : sMaxFastTracks = 8
+10-29 22:54:39.376  1290  1290 I audioserver: ServiceManager: 0xec2bc020
+10-29 22:54:39.462  1290  1290 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:39.463  1290  1290 I AudioFlinger: Using default 3000 mSec as standby time.
+10-29 22:54:39.510  1290  1290 I AudioPolicyService: AudioPolicyService CSTOR in new mode
+10-29 22:54:39.520  1297  1297 I mediaserver: ServiceManager: 0xee1bc0a0
+10-29 22:54:39.845  1290  1290 I APM::ConfigParsingUtils: loadAudioPolicyConfig() loaded /system/etc/audio_policy.conf
+10-29 22:54:39.880  1298  1298 V MediaUtils: physMem: 1043996672
+10-29 22:54:39.880  1298  1298 V MediaUtils: requested limit: 208799320
+10-29 22:54:39.881  1298  1298 V MediaUtils: actual limit: 208799320
+10-29 22:54:39.961  1298  1298 V MediaUtils: original limits: 4294967295/4294967295
+10-29 22:54:39.962  1298  1298 V MediaUtils: new limits: 208799320/4294967295
+10-29 22:54:39.966  1298  1298 W /system/bin/mediaextractor: libminijail: allowing syscall: socketcall
+10-29 22:54:39.967  1298  1298 W /system/bin/mediaextractor: libminijail: allowing syscall: writev
+10-29 22:54:39.967  1298  1298 W /system/bin/mediaextractor: libminijail: allowing syscall: fcntl64
+10-29 22:54:39.968  1298  1298 W /system/bin/mediaextractor: libminijail: allowing syscall: clock_gettime
+10-29 22:54:40.023  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 22:54:40.118  1298  1298 W /system/bin/mediaextractor: libminijail: logging seccomp filter failures
+10-29 22:54:40.163  1290  1290 D audio_hw_generic: Emulator host-side ALSA audio emulation detected.
+10-29 22:54:40.166  1290  1290 D audio_hw_generic: mixer 0 name Master Playback Volume
+10-29 22:54:40.166  1290  1290 D audio_hw_generic: set ctl 0 to 100
+10-29 22:54:40.169  1290  1290 D audio_hw_generic: set ctl 1 to 100
+10-29 22:54:40.169  1290  1290 D audio_hw_generic: mixer 1 name Master Playback Switch
+10-29 22:54:40.169  1290  1290 D audio_hw_generic: set ctl 0 to 1
+10-29 22:54:40.170  1290  1290 D audio_hw_generic: set ctl 1 to 1
+10-29 22:54:40.170  1290  1290 D audio_hw_generic: mixer 2 name Capture Volume
+10-29 22:54:40.170  1290  1290 D audio_hw_generic: set ctl 0 to 100
+10-29 22:54:40.170  1290  1290 D audio_hw_generic: set ctl 1 to 100
+10-29 22:54:40.170  1290  1290 D audio_hw_generic: mixer 3 name Capture Switch
+10-29 22:54:40.171  1290  1290 D audio_hw_generic: set ctl 0 to 1
+10-29 22:54:40.171  1290  1290 D audio_hw_generic: set ctl 1 to 1
+10-29 22:54:40.171  1290  1290 D audio_hw_generic: mixer 4 name Line Phantom Jack
+10-29 22:54:40.171  1290  1290 D audio_hw_generic: mixer 5 name Line Out Phantom Jack
+10-29 22:54:40.171  1290  1290 D audio_hw_generic: mixer 6 name Playback Channel Map
+10-29 22:54:40.195  1290  1290 D audio_hw_generic: mixer 7 name Capture Channel Map
+10-29 22:54:40.195  1290  1290 I AudioFlinger: loadHwModule() Loaded primary audio interface from Generic audio HW HAL (audio) handle 10
+10-29 22:54:40.198  1290  1290 I AudioFlinger: openOutput(), module 10 Device 2, SamplingRate 48000, Format 0x000001, Channels 3, flags 2
+10-29 22:54:40.246  1290  1290 I AudioFlinger: HAL output buffer size 720 frames, normal sink buffer size 1152 frames
+10-29 22:54:40.568  1301  1301 I mediaserver: ServiceManager: 0xe8a3c0a0
+10-29 22:54:41.026  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 22:54:41.028  1290  1290 I BufferProvider: found effect "Multichannel Downmix To Stereo" from The Android Open Source Project
+10-29 22:54:41.083  1301  1301 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.142  1290  1361 I AudioFlinger: AudioFlinger's thread 0xebd03740 ready to run
+10-29 22:54:41.145  1290  1361 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.148  1290  1361 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.157  1290  1290 I AudioFlinger: Using module 10 has the primary audio interface
+10-29 22:54:41.276  1290  1361 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.286  1290  1361 W AudioFlinger: no wake lock to update, system not ready yet
+10-29 22:54:41.412  1290  1366 I AudioFlinger: AudioFlinger's thread 0xeb883380 ready to run
+10-29 22:54:41.414  1290  1366 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.415  1290  1366 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.423  1290  1366 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.424  1290  1366 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:41.495  1290  1290 I r_submix: adev_open(name=audio_hw_if)
+10-29 22:54:41.496  1290  1290 I r_submix: adev_init_check()
+10-29 22:54:41.496  1290  1290 I AudioFlinger: loadHwModule() Loaded r_submix audio interface from Wifi Display audio HAL (audio) handle 18
+10-29 22:54:41.496  1290  1290 D r_submix: adev_open_input_stream(addr=0)
+10-29 22:54:41.497  1290  1290 D r_submix: submix_audio_device_create_pipe_l(addr=0, idx=9)
+10-29 22:54:41.497  1290  1290 D r_submix:   now using address 0 for route 9
+10-29 22:54:41.563  1290  1367 I AudioFlinger: AudioFlinger's thread 0xeb983600 ready to run
+10-29 22:54:41.564  1290  1290 D r_submix: adev_close_input_stream()
+10-29 22:54:41.565  1290  1290 D r_submix: submix_audio_device_release_pipe_l(idx=9) addr=0
+10-29 22:54:41.565  1290  1290 D r_submix: submix_audio_device_destroy_pipe_l(): pipe destroyed
+10-29 22:54:41.604  1290  1290 I RadioService: RadioService
+10-29 22:54:41.604  1290  1290 I RadioService: onFirstRef
+10-29 22:54:41.606  1290  1290 E RadioService: couldn't load radio module radio.primary (No such file or directory)
+10-29 22:54:41.633  1290  1290 E SoundTriggerHwService: couldn't load sound trigger module sound_trigger.primary (No such file or directory)
+10-29 22:54:42.032  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 22:54:43.034  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 22:54:44.286  1290  1361 W BatteryNotifier: batterystats service unavailable!
+10-29 22:54:47.899     0     0 I IPv6    : ADDRCONF(NETDEV_UP): radio0-peer: link is not ready
+10-29 22:54:48.562     0     0 I init    : Starting service 'dhcpclient_rtr'...
+10-29 22:54:54.485     0     0 D ieee80211 phy1: mac80211_hwsim_start
+10-29 22:54:54.487     0     0 D ieee80211 phy1: mac80211_hwsim_add_interface (type=2 mac_addr=02:00:00:00:01:00)
+10-29 22:54:54.487     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0xe)
+10-29 22:54:54.487     0     0 D ieee80211 phy1: ERP_CTS_PROT: 0
+10-29 22:54:54.487     0     0 D ieee80211 phy1: ERP_PREAMBLE: 0
+10-29 22:54:54.487     0     0 D ieee80211 phy1: ERP_SLOT: 0
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=0 txop=0 cw_min=15 cw_max=1023 aifs=2)
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=1 txop=0 cw_min=15 cw_max=1023 aifs=2)
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=2 txop=0 cw_min=15 cw_max=1023 aifs=2)
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=3 txop=0 cw_min=15 cw_max=1023 aifs=2)
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:54:54.488     0     0 D ieee80211 phy1: mac80211_hwsim_config (freq=0 idle=0 ps=0 smps=auto)
+10-29 22:54:54.533     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:54:54.542     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:54:54.546     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:54:54.558     0     0 I IPv6    : ADDRCONF(NETDEV_UP): wlan1: link is not ready
+10-29 22:54:55.466     0     0 I init    : Starting service 'ipv6proxy'...
+10-29 22:54:57.154     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:54:57.157     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:54:57.935     0     0 I init    : Starting service 'emu_hostapd'...
+10-29 22:54:58.714     0     0 I init    : Starting service 'dhcpserver'...
+10-29 22:54:59.468     0     0 I warning : `hostapd' uses 32-bit capabilities (legacy support in use)
+10-29 22:54:59.712  1442  1442 E hostapd : Configuration file: /system/etc/simulated_hostapd.conf
+10-29 22:55:00.198  1442  1442 I hostapd : rfkill: Cannot get wiphy information
+10-29 22:55:00.263  1442  1442 I hostapd : nl80211: Could not re-add multicast membership for vendor events: -2 (No such file or directory)
+10-29 22:55:00.266  1442  1442 I hostapd : wlan1: interface state UNINITIALIZED->COUNTRY_UPDATE
+10-29 22:54:59.872     0     0 I IPv6    : ADDRCONF(NETDEV_CHANGE): radio0-peer: link becomes ready
+10-29 22:55:00.161     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:55:00.162     0     0 D ieee80211 phy1: mac80211_hwsim_change_interface (old type=2, new type=3, mac_addr=02:00:00:00:01:00)
+10-29 22:55:00.162     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:55:00.162     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0xe)
+10-29 22:55:00.162     0     0 D ieee80211 phy1: ERP_CTS_PROT: 0
+10-29 22:55:00.163     0     0 D ieee80211 phy1: ERP_PREAMBLE: 0
+10-29 22:55:00.163     0     0 D ieee80211 phy1: ERP_SLOT: 0
+10-29 22:55:00.163     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=0 txop=47 cw_min=3 cw_max=7 aifs=2)
+10-29 22:55:00.163     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=1 txop=94 cw_min=7 cw_max=15 aifs=2)
+10-29 22:55:00.163     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=2 txop=0 cw_min=15 cw_max=1023 aifs=3)
+10-29 22:55:00.163     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=3 txop=0 cw_min=15 cw_max=1023 aifs=7)
+10-29 22:55:00.163     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:55:00.168     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:55:00.780     0     0 I init    : Service 'ranchu-net' (pid 1304) exited with status 0
+10-29 22:55:00.835  1434  1434 I chatty  : uid=0(root) /system/bin/ipv6proxy expire 3 lines
+10-29 22:55:03.112  1336  1336 I BootAnimation: boot animation disabled
+10-29 22:55:03.483  1288  1288 I chatty  : uid=0(root) main expire 118 lines
+10-29 22:55:03.512  1288  1288 I boot_progress_start: 61485
+10-29 22:55:03.922     0     0 I init    : Service 'bootanim' (pid 1336) exited with status 0
+10-29 22:55:04.083  1289  1289 I chatty  : uid=0(root) main expire 129 lines
+10-29 22:55:05.343     0     0 D ieee80211 phy1: mac80211_hwsim_config (freq=0 idle=1 ps=0 smps=auto)
+10-29 22:55:05.345     0     0 D ieee80211 phy1: hwsim hw_scan request
+10-29 22:55:05.346     0     0 D ieee80211 phy1: hw scan 2412 MHz
+10-29 22:55:05.462     0     0 D ieee80211 phy1: hw scan 2417 MHz
+10-29 22:55:05.582     0     0 D ieee80211 phy1: hw scan 2422 MHz
+10-29 22:55:05.701     0     0 D ieee80211 phy1: hw scan 2427 MHz
+10-29 22:55:05.821     0     0 D ieee80211 phy1: hw scan 2432 MHz
+10-29 22:55:05.942     0     0 D ieee80211 phy1: hw scan 2437 MHz
+10-29 22:55:06.061     0     0 D ieee80211 phy1: hw scan 2442 MHz
+10-29 22:55:06.181     0     0 D ieee80211 phy1: hw scan 2447 MHz
+10-29 22:55:06.301     0     0 D ieee80211 phy1: hw scan 2452 MHz
+10-29 22:55:06.420     0     0 D ieee80211 phy1: hw scan 2457 MHz
+10-29 22:55:06.542     0     0 D ieee80211 phy1: hw scan 2462 MHz
+10-29 22:55:06.663     0     0 D ieee80211 phy1: hw scan complete
+10-29 22:55:06.765     0     0 D ieee80211 phy1: mac80211_hwsim_get_survey (idx=0)
+10-29 22:55:06.875     0     0 D ieee80211 phy1: mac80211_hwsim_config (freq=0 idle=0 ps=0 smps=auto)
+10-29 22:55:06.875     0     0 D ieee80211 phy1: add channel context control: 2447 MHz/width: 2/cfreqs:2437/0 MHz
+10-29 22:55:06.875     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x40000)
+10-29 22:55:06.875     0     0 D ieee80211 phy1: TX Power: 20 dBm
+10-29 22:55:06.875     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x4000)
+10-29 22:55:06.876     0     0 D ieee80211 phy1: change channel context control: 2447 MHz/width: 2/cfreqs:2437/0 MHz
+10-29 22:55:06.876     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x88340)
+10-29 22:55:06.876     0     0 D ieee80211 phy1: BCNINT: 100
+10-29 22:55:06.876     0     0 D ieee80211 phy1: BCN EN: 1
+10-29 22:55:06.879     0     0 I IPv6    : ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+10-29 22:55:06.906     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:55:06.946     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x3e)
+10-29 22:55:06.947     0     0 D ieee80211 phy1: ERP_CTS_PROT: 0
+10-29 22:55:06.947     0     0 D ieee80211 phy1: ERP_PREAMBLE: 0
+10-29 22:55:06.947     0     0 D ieee80211 phy1: ERP_SLOT: 1
+10-29 22:55:06.947     0     0 D ieee80211 phy1: HT: op_mode=0x0
+10-29 22:55:06.947     0     0 D ieee80211 phy1: BASIC_RATES: 0xf
+10-29 22:55:06.948     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=0 txop=47 cw_min=3 cw_max=7 aifs=1)
+10-29 22:55:06.948     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:55:05.318  1442  1442 I hostapd : wlan1: interface state COUNTRY_UPDATE->HT_SCAN
+10-29 22:55:06.837  1442  1442 E hostapd : Using interface wlan1 with hwaddr 02:00:00:00:01:00 and ssid "AndroidWifi"
+10-29 22:55:06.950  1442  1442 I hostapd : wlan1: interface state HT_SCAN->ENABLED
+10-29 22:55:06.950  1442  1442 I hostapd : wlan1: AP-ENABLED 
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=1 txop=94 cw_min=7 cw_max=15 aifs=1)
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=2 txop=0 cw_min=15 cw_max=63 aifs=3)
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_conf_tx (queue=3 txop=0 cw_min=15 cw_max=1023 aifs=7)
+10-29 22:55:06.949     0     0 D ieee80211 phy1: mac80211_hwsim_bss_info_changed(changed=0x2000)
+10-29 22:55:08.166     0     0 D ieee80211 phy1: mac80211_hwsim_configure_filter
+10-29 22:55:22.081     0     0 W healthd : battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+10-29 22:55:23.950  1288  1288 I boot_progress_preload_start: 81949
+10-29 22:55:24.022  1289  1289 I boot_progress_preload_start: 82017
+10-29 22:55:38.045  1288  1549 I chatty  : uid=0(root) main expire 8 lines
+10-29 22:55:38.744  1289  1545 I chatty  : uid=0(root) main expire 2 lines
+10-29 22:55:40.035  1302  1633 I chatty  : uid=0(root) /system/bin/netd expire 2 lines
+10-29 22:55:42.271  1288  1288 D TelephonyManager: No /proc/cmdline exception=java.io.FileNotFoundException: /proc/cmdline (Permission denied)
+10-29 22:55:42.271  1288  1288 D TelephonyManager: /proc/cmdline=
+10-29 22:55:42.665  1289  1289 D TelephonyManager: No /proc/cmdline exception=java.io.FileNotFoundException: /proc/cmdline (Permission denied)
+10-29 22:55:42.667  1289  1289 D TelephonyManager: /proc/cmdline=
+10-29 22:55:54.555  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-mr.hyb
+10-29 22:55:54.555  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-mr.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.555  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.555  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.558  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nb.hyb
+10-29 22:55:54.558  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nb.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.558  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.558  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.562  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nn.hyb
+10-29 22:55:54.562  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nn.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.562  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.562  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.565  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-or.hyb
+10-29 22:55:54.565  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-or.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.565  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.565  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.570  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pa.hyb
+10-29 22:55:54.570  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pa.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.570  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.570  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.576  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pt.hyb
+10-29 22:55:54.576  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pt.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.576  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.576  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.582  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-sl.hyb
+10-29 22:55:54.582  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-sl.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.582  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.582  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.588  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ta.hyb
+10-29 22:55:54.588  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ta.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.588  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.588  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.594  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-te.hyb
+10-29 22:55:54.594  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-te.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.594  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.594  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.599  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-tk.hyb
+10-29 22:55:54.599  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-tk.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.599  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.599  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:54.605  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-und-ethi.hyb
+10-29 22:55:54.605  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-und-ethi.hyb: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 22:55:54.605  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 22:55:54.605  1288  1288 E Hyphenator: 	... 6 more
+10-29 22:55:55.211  1288  1288 I Zygote  : Uninstalled ICU cache reference pinning...
+10-29 22:55:55.224  1289  1289 I Zygote  : Uninstalled ICU cache reference pinning...
+10-29 22:55:55.304  1288  1288 I Zygote  : Installed AndroidKeyStoreProvider in 89ms.
+10-29 22:55:55.324  1289  1289 I Zygote  : Installed AndroidKeyStoreProvider in 98ms.
+10-29 22:55:55.641  1288  1288 I Zygote  : Warmed up JCA providers in 336ms.
+10-29 22:55:55.642  1288  1288 D Zygote  : end preload
+10-29 22:55:55.642  1288  1288 I boot_progress_preload_end: 113642
+10-29 22:55:55.643  1288  1288 I art     : Starting a blocking GC Explicit
+10-29 22:55:55.673  1289  1289 I Zygote  : Warmed up JCA providers in 348ms.
+10-29 22:55:55.674  1289  1289 D Zygote  : end preload
+10-29 22:55:55.674  1289  1289 I boot_progress_preload_end: 113674
+10-29 22:55:55.675  1289  1289 I art     : Starting a blocking GC Explicit
+10-29 22:55:55.752  1288  1288 I art     : Explicit concurrent mark sweep GC freed 15150(1166KB) AllocSpace objects, 0(0B) LOS objects, 57% free, 2MB/6MB, paused 890us total 100.552ms
+10-29 22:55:55.755  1288  1288 I art     : Starting a blocking GC Explicit
+10-29 22:55:55.853  1288  1288 I art     : Explicit concurrent mark sweep GC freed 1202(54KB) AllocSpace objects, 1(24KB) LOS objects, 58% free, 2MB/6MB, paused 544us total 82.027ms
+10-29 22:55:55.880  1288  1549 I art     : Starting a blocking GC HeapTrim
+10-29 22:55:55.924  1289  1289 I art     : Explicit concurrent mark sweep GC freed 30618(2MB) AllocSpace objects, 4(72KB) LOS objects, 57% free, 3MB/7MB, paused 15.952ms total 223.344ms
+10-29 22:55:55.948  1288  1288 I art     : Starting a blocking GC Background
+10-29 22:55:55.967  1289  1289 I art     : Starting a blocking GC Explicit
+10-29 22:55:56.068  1289  1289 I art     : Explicit concurrent mark sweep GC freed 2443(126KB) AllocSpace objects, 1(24KB) LOS objects, 58% free, 2MB/6MB, paused 706us total 98.570ms
+10-29 22:55:56.074  1289  1289 I Zygote  : Accepting command socket connections
+10-29 22:55:56.246  1288  1288 I Zygote  : System server process 1647 has been created
+10-29 22:55:56.267  1288  1288 I Zygote  : Accepting command socket connections
+10-29 22:55:56.426  1647  1647 I chatty  : uid=1000 system_server expire 16 lines
+10-29 22:55:56.439  1647  1647 I InstallerConnection: connecting...
+10-29 22:55:56.445  1293  1293 I         : new connection
+10-29 22:55:56.629  1647  1647 I InstallerConnection: disconnecting...
+10-29 22:55:56.630  1293  1293 E         : eof
+10-29 22:55:56.631  1293  1293 E         : failed to read size
+10-29 22:55:56.631  1293  1293 I         : closing connection
+10-29 22:55:57.024  1647  1647 I SystemServer: Entered the Android system server!
+10-29 22:55:57.025  1647  1647 I boot_progress_system_run: 115025
+10-29 22:55:58.459  1647  1647 I SystemServiceManager: Starting com.android.server.pm.Installer
+10-29 22:55:58.504  1647  1647 I Installer: Waiting for installd to be ready.
+10-29 22:55:58.505  1647  1647 I InstallerConnection: connecting...
+10-29 22:55:58.518  1293  1293 I         : new connection
+10-29 22:55:58.528  1647  1647 I SystemServiceManager: Starting com.android.server.am.ActivityManagerService$Lifecycle
+10-29 22:55:58.775  1647  1647 I ActivityManager: Memory class: 256
+10-29 22:55:58.804  1647  1661 I ServiceThread: Enabled StrictMode logging for ActivityManager looper.
+10-29 22:55:58.838  1647  1662 I ServiceThread: Enabled StrictMode logging for android.ui looper.
+10-29 22:55:59.100  1647  1647 D BatteryStatsImpl: Reading daily items from /data/system/batterystats-daily.xml
+10-29 22:55:59.706  1647  1647 I AppOps  : No existing app ops /data/system/appops.xml; starting empty
+10-29 22:56:00.147  1647  1647 I IntentFirewall: Read new rules (A:0 B:0 S:0)
+10-29 22:56:00.261  1647  1668 I ServiceThread: Enabled StrictMode logging for android.display looper.
+10-29 22:56:00.346  1647  1647 D AppOps  : AppOpsService published
+10-29 22:56:00.349  1647  1647 I SystemServiceManager: Starting com.android.server.power.PowerManagerService
+10-29 22:56:00.386  1647  1670 I ServiceThread: Enabled StrictMode logging for PowerManagerService looper.
+10-29 22:56:00.447  1647  1647 I SystemServiceManager: Starting com.android.server.lights.LightsService
+10-29 22:56:00.484  1647  1647 I SystemServiceManager: Starting com.android.server.display.DisplayManagerService
+10-29 22:56:00.625  1285  1325 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 22:56:00.632  1647  1647 I SystemServiceManager: Starting phase 100
+10-29 22:56:00.700  1647  1668 I DisplayManagerService: Display device added: DisplayDeviceInfo{"Built-in Screen": uniqueId="local:0", 480 x 800, modeId 1, defaultModeId 1, supportedModes [{id=1, width=480, height=800, fps=60.000004}], colorMode 0, supportedColorModes [0], HdrCapabilities android.view.Display$HdrCapabilities@a69d6308, density 240, 240.0 x 240.0 dpi, appVsyncOff 1000000, presDeadline 16666666, touch INTERNAL, rotation 0, type BUILT_IN, state UNKNOWN, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+10-29 22:56:00.719  1285  1285 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x7cf612647000
+10-29 22:56:00.719  1285  1285 D SurfaceFlinger: Screen type=0 is already mode=2
+10-29 22:56:00.725  1647  1647 I SystemServer: StartPackageManagerService
+10-29 22:56:00.730  1647  1668 I DisplayManagerService: Display device changed state: "Built-in Screen", ON
+10-29 22:56:00.983  1647  1647 I boot_progress_pms_start: 118983
+10-29 22:56:01.049  1647  1647 W FileUtils: Failed to chmod(/data/system/packages.list): android.system.ErrnoException: chmod failed: ENOENT (No such file or directory)
+10-29 22:56:01.110  1647  1647 W SystemConfig: No directory /system/etc/sysconfig, skipping
+10-29 22:56:01.489  1647  1647 D SELinuxMMAC: Using policy file /system/etc/security/mac_permissions.xml
+10-29 22:56:01.522  1647  1647 I PackageManager: No settings file; creating initial state
+10-29 22:56:01.525  1647  1647 I pm_critical_info: No settings file; creating initial state
+10-29 22:56:01.608  1647  1647 I boot_progress_pms_system_scan_start: 119607
+10-29 22:56:01.716  1647  1647 W PackageManager: Library not found: /system/framework/org.apache.http.legacy.jar
+10-29 22:56:01.870  1647  1647 W PackageManager: Library not found: /system/framework/org.apache.http.legacy.jar
+10-29 22:56:02.283  1647  1647 I PackageManager: /system/framework/framework-res.apk changed; collecting certs
+10-29 22:56:06.464  1647  1647 W PackageManager: Failed to parse /system/framework/oat: Missing base APK in /system/framework/oat
+10-29 22:56:06.469  1647  1647 W PackageManager: Failed to parse /system/framework/x86: Missing base APK in /system/framework/x86
+10-29 22:56:06.473  1647  1647 W PackageManager: Failed to parse /system/framework/x86_64: Missing base APK in /system/framework/x86_64
+10-29 22:56:06.516  1647  1647 I PackageManager: /system/priv-app/BackupRestoreConfirmation changed; collecting certs
+10-29 22:56:06.590  1647  1647 I PackageManager: /system/priv-app/BlockedNumberProvider changed; collecting certs
+10-29 22:56:06.662  1647  1647 I PackageManager: /system/priv-app/CalendarProvider changed; collecting certs
+10-29 22:56:06.823  1647  1647 I PackageManager: /system/priv-app/CarrierConfig changed; collecting certs
+10-29 22:56:07.109  1647  1647 I PackageManager: /system/priv-app/CellBroadcastReceiver changed; collecting certs
+10-29 22:56:07.548  1647  1647 W PackageParser: No actions in intent filter at /system/priv-app/Contacts/Contacts.apk Binary XML file line #409
+10-29 22:56:07.562  1647  1647 I PackageManager: /system/priv-app/Contacts changed; collecting certs
+10-29 22:56:08.267  1647  1647 I PackageManager: /system/priv-app/ContactsProvider changed; collecting certs
+10-29 22:56:08.360  1647  1647 I PackageManager: /system/priv-app/CtsShimPrivPrebuilt changed; collecting certs
+10-29 22:56:08.420  1647  1647 I PackageManager: /system/priv-app/DefaultContainerService changed; collecting certs
+10-29 22:56:08.519  1647  1647 W PackageParser: No actions in intent filter at /system/priv-app/Dialer/Dialer.apk Binary XML file line #186
+10-29 22:56:08.533  1647  1647 I PackageManager: /system/priv-app/Dialer changed; collecting certs
+10-29 22:56:09.515  1647  1647 I PackageManager: /system/priv-app/DocumentsUI changed; collecting certs
+10-29 22:56:09.714  1647  1647 I PackageManager: /system/priv-app/DownloadProvider changed; collecting certs
+10-29 22:56:09.778  1647  1647 W PackageManager: Permission android.permission.DOWNLOAD_WITHOUT_NOTIFICATION from package com.android.providers.downloads in an unknown group android.permission-group.NETWORK
+10-29 22:56:09.879  1647  1647 I PackageManager: /system/priv-app/EmergencyInfo changed; collecting certs
+10-29 22:56:10.157  1647  1647 I PackageManager: /system/priv-app/ExtServices changed; collecting certs
+10-29 22:56:10.217  1647  1647 I PackageManager: /system/priv-app/ExternalStorageProvider changed; collecting certs
+10-29 22:56:10.261  1647  1647 I PackageManager: /system/priv-app/FusedLocation changed; collecting certs
+10-29 22:56:10.328  1647  1647 I PackageManager: /system/priv-app/InputDevices changed; collecting certs
+10-29 22:56:10.435  1647  1647 I PackageManager: /system/priv-app/ManagedProvisioning changed; collecting certs
+10-29 22:56:10.582  1647  1647 I PackageManager: /system/priv-app/MediaProvider changed; collecting certs
+10-29 22:56:10.651  1647  1647 I PackageManager: /system/priv-app/MmsService changed; collecting certs
+10-29 22:56:10.702  1647  1647 I PackageManager: /system/priv-app/MtpDocumentsProvider changed; collecting certs
+10-29 22:56:10.818  1647  1647 I PackageManager: /system/priv-app/PackageInstaller changed; collecting certs
+10-29 22:56:11.334  1647  1647 I PackageManager: /system/priv-app/ProxyHandler changed; collecting certs
+10-29 22:56:11.386  1647  1647 I PackageManager: /system/priv-app/SdkSetup changed; collecting certs
+10-29 22:56:11.560  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.USE_CREDENTIALS in package: com.android.settings at: Binary XML file line #53
+10-29 22:56:11.561  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.READ_SYNC_SETTINGS in package: com.android.settings at: Binary XML file line #58
+10-29 22:56:11.561  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SYNC_SETTINGS in package: com.android.settings at: Binary XML file line #59
+10-29 22:56:11.934  1647  1657 I chatty  : uid=1000(system) HeapTaskDaemon expire 10 lines
+10-29 22:56:11.989  1647  1647 I PackageManager: /system/priv-app/Settings changed; collecting certs
+10-29 22:56:15.166  1647  1647 I PackageManager: /system/priv-app/SettingsProvider changed; collecting certs
+10-29 22:56:15.233  1647  1647 I PackageManager: /system/priv-app/SharedStorageBackup changed; collecting certs
+10-29 22:56:15.301  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.INSTALL_GRANT_RUNTIME_PERMISSIONS in package: com.android.shell at: Binary XML file line #102
+10-29 22:56:15.308  1647  1647 I PackageManager: /system/priv-app/Shell changed; collecting certs
+10-29 22:56:15.379  1647  1647 I PackageManager: /system/priv-app/StatementService changed; collecting certs
+10-29 22:56:15.496  1647  1647 I PackageManager: /system/priv-app/StorageManager changed; collecting certs
+10-29 22:56:16.064  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.CONFIGURE_WIFI_DISPLAY in package: com.android.systemui at: Binary XML file line #123
+10-29 22:56:16.124  1647  1647 I PackageManager: /system/priv-app/SystemUI changed; collecting certs
+10-29 22:56:17.555  1647  1647 I PackageManager: /system/priv-app/TeleService changed; collecting certs
+10-29 22:56:18.194  1647  1647 I PackageManager: /system/priv-app/Telecom changed; collecting certs
+10-29 22:56:18.517  1647  1647 I PackageManager: /system/priv-app/TelephonyProvider changed; collecting certs
+10-29 22:56:18.611  1647  1647 I PackageManager: /system/priv-app/VpnDialogs changed; collecting certs
+10-29 22:56:18.706  1647  1647 I PackageManager: /system/app/BasicDreams changed; collecting certs
+10-29 22:56:18.773  1647  1647 I PackageManager: /system/app/BookmarkProvider changed; collecting certs
+10-29 22:56:18.843  1647  1647 I PackageManager: /system/app/Browser2 changed; collecting certs
+10-29 22:56:18.980  1647  1647 I PackageManager: /system/app/Calendar changed; collecting certs
+10-29 22:56:19.259  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.calendar activity: com.android.calendar.GoogleCalendarUriIntentFilter origPrio: 50
+10-29 22:56:19.320  1647  1647 I PackageManager: /system/app/CaptivePortalLogin changed; collecting certs
+10-29 22:56:19.507  1647  1647 I PackageManager: /system/app/CertInstaller changed; collecting certs
+10-29 22:56:19.600  1647  1647 I PackageManager: /system/app/CtsShimPrebuilt changed; collecting certs
+10-29 22:56:19.625  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.cts.ctsshim activity: com.android.cts.ctsshim.InstallPriority origPrio: 100
+10-29 22:56:19.626  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.cts.ctsshim activity: com.android.cts.ctsshim.InstallPriority origPrio: 100
+10-29 22:56:19.626  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.cts.ctsshim activity: com.android.cts.ctsshim.InstallPriority origPrio: 100
+10-29 22:56:19.626  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.cts.ctsshim activity: com.android.cts.ctsshim.InstallPriority origPrio: 100
+10-29 22:56:19.627  1647  1647 W PackageManager: Non-privileged app; cap priority to 0; package: com.android.cts.ctsshim activity: com.android.cts.ctsshim.InstallPriority origPrio: 100
+10-29 22:56:19.676  1647  1647 I PackageManager: /system/app/CustomLocale changed; collecting certs
+10-29 22:56:19.968  1647  1647 I PackageManager: /system/app/DeskClock changed; collecting certs
+10-29 22:56:20.517  1647  1647 I PackageManager: /system/app/Development changed; collecting certs
+10-29 22:56:20.658  1647  1647 I PackageManager: /system/app/DownloadProviderUi changed; collecting certs
+10-29 22:56:20.728  1647  1647 I PackageManager: /system/app/EasterEgg changed; collecting certs
+10-29 22:56:20.816  1647  1647 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_CONTACTS in package: com.android.email at: Binary XML file line #40
+10-29 22:56:20.878  1647  1647 I PackageManager: /system/app/Email changed; collecting certs
+10-29 22:56:21.378  1647  1647 I PackageManager: /system/app/EmulatorSmokeTests changed; collecting certs
+10-29 22:56:21.456  1647  1647 I PackageManager: /system/app/ExactCalculator changed; collecting certs
+10-29 22:56:21.528  1647  1647 I PackageManager: /system/app/ExtShared changed; collecting certs
+10-29 22:56:21.585  1647  1647 I PackageManager: /system/app/Fallback changed; collecting certs
+10-29 22:56:21.761  1647  1647 W PackageParser: Unknown element under <application>: permission at /system/app/Gallery2/Gallery2.apk Binary XML file line #238
+10-29 22:56:21.762  1647  1647 W PackageParser: Unknown element under <application>: permission at /system/app/Gallery2/Gallery2.apk Binary XML file line #241
+10-29 22:56:21.774  1647  1647 I PackageManager: /system/app/Gallery2 changed; collecting certs
+10-29 22:56:22.092     0     0 W healthd : battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+10-29 22:56:22.746  1647  1647 I PackageManager: /system/app/HTMLViewer changed; collecting certs
+10-29 22:56:22.824  1647  1647 I PackageManager: /system/app/KeyChain changed; collecting certs
+10-29 22:56:23.297  1647  1647 I PackageManager: /system/app/LatinIME changed; collecting certs
+10-29 22:56:26.745  1647  1647 I PackageManager: /system/app/Launcher3 changed; collecting certs
+10-29 22:56:26.992  1647  1647 W PackageManager: Permission com.android.launcher3.permission.READ_SETTINGS from package com.android.launcher3 in an unknown group android.permission-group.SYSTEM_TOOLS
+10-29 22:56:26.993  1647  1647 W PackageManager: Permission com.android.launcher3.permission.WRITE_SETTINGS from package com.android.launcher3 in an unknown group android.permission-group.SYSTEM_TOOLS
+10-29 22:56:26.993  1647  1647 W PackageManager: Permission com.android.launcher.permission.INSTALL_SHORTCUT from package com.android.launcher3 in an unknown group android.permission-group.SYSTEM_TOOLS
+10-29 22:56:27.118  1647  1647 I PackageManager: /system/app/LegacyCamera changed; collecting certs
+10-29 22:56:27.863  1647  1647 I PackageManager: /system/app/LiveWallpapersPicker changed; collecting certs
+10-29 22:56:28.169  1647  1647 I PackageManager: /system/app/Music changed; collecting certs
+10-29 22:56:28.424  1647  1647 I PackageManager: /system/app/NetSpeed changed; collecting certs
+10-29 22:56:28.721  1647  1647 I PackageManager: /system/app/OpenWnn changed; collecting certs
+10-29 22:56:29.137  1647  1647 I PackageManager: /system/app/PacProcessor changed; collecting certs
+10-29 22:56:29.214  1647  1647 I PackageManager: /system/app/PicoTts changed; collecting certs
+10-29 22:56:29.299  1647  1647 I PackageManager: /system/app/PrintRecommendationService changed; collecting certs
+10-29 22:56:29.459  1647  1647 I PackageManager: /system/app/PrintSpooler changed; collecting certs
+10-29 22:56:29.608  1647  1647 I PackageManager: /system/app/Protips changed; collecting certs
+10-29 22:56:29.773  1647  1647 I PackageManager: /system/app/QuickSearchBox changed; collecting certs
+10-29 22:56:29.933  1647  1647 I PackageManager: /system/app/UserDictionaryProvider changed; collecting certs
+10-29 22:56:30.013  1647  1647 I PackageManager: /system/app/WallpaperBackup changed; collecting certs
+10-29 22:56:30.200  1647  1647 I PackageManager: /system/app/messaging changed; collecting certs
+10-29 22:56:31.233  1647  1647 I PackageManager: /system/app/webview changed; collecting certs
+10-29 22:56:52.226  1647  1647 I boot_progress_pms_data_scan_start: 170225
+10-29 22:56:52.694  1647  1647 W PackageParser: No actions in intent filter at /data/app/ApiDemos/ApiDemos.apk Binary XML file line #3145
+10-29 22:56:52.694  1647  1647 W PackageParser: No actions in intent filter at /data/app/ApiDemos/ApiDemos.apk Binary XML file line #3151
+10-29 22:56:52.715  1647  1647 I PackageManager: /data/app/ApiDemos changed; collecting certs
+10-29 22:56:53.780  1647  1647 W PackageManager: Package com.example.android.apis desires unavailable shared library com.example.will.never.exist; ignoring!
+10-29 22:56:53.861  1647  1647 I PackageManager: /data/app/CubeLiveWallpapers changed; collecting certs
+10-29 22:56:53.922  1647  1647 I PackageManager: /data/app/GestureBuilder changed; collecting certs
+10-29 22:56:54.105  1647  1647 I PackageManager: /data/app/SmokeTest changed; collecting certs
+10-29 22:56:54.233  1647  1647 I PackageManager: /data/app/SmokeTestApp changed; collecting certs

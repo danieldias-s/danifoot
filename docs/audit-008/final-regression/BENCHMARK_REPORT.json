@@ -1,0 +1,46 @@
+[
+  {
+    "Clubs": 128,
+    "DivisionClubs": 32,
+    "DistrictClubs": 96,
+    "TotalPlayers": 2308,
+    "TotalAiManagers": 128,
+    "WorldSeedGenerationMs": 5,
+    "Full90MinRoundSimulationMs": 106,
+    "ApproxMemoryDeltaMb": 3.22,
+    "SerializedWorldSnapshotKb": 2666.4
+  },
+  {
+    "Clubs": 256,
+    "DivisionClubs": 32,
+    "DistrictClubs": 224,
+    "TotalPlayers": 4612,
+    "TotalAiManagers": 256,
+    "WorldSeedGenerationMs": 42,
+    "Full90MinRoundSimulationMs": 177,
+    "ApproxMemoryDeltaMb": 6.07,
+    "SerializedWorldSnapshotKb": 4706.7
+  },
+  {
+    "Clubs": 512,
+    "DivisionClubs": 32,
+    "DistrictClubs": 480,
+    "TotalPlayers": 9220,
+    "TotalAiManagers": 512,
+    "WorldSeedGenerationMs": 18,
+    "Full90MinRoundSimulationMs": 243,
+    "ApproxMemoryDeltaMb": 11.82,
+    "SerializedWorldSnapshotKb": 8778.4
+  },
+  {
+    "Clubs": 1024,
+    "DivisionClubs": 32,
+    "DistrictClubs": 992,
+    "TotalPlayers": 18436,
+    "TotalAiManagers": 1024,
+    "WorldSeedGenerationMs": 49,
+    "Full90MinRoundSimulationMs": 361,
+    "ApproxMemoryDeltaMb": 15.17,
+    "SerializedWorldSnapshotKb": 16941.1
+  }
+]

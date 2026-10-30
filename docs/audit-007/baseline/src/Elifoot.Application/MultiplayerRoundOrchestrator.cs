@@ -1,0 +1,1275 @@
+using System.Collections.Concurrent;
+using Elifoot.Contracts;
+using Elifoot.Domain;
+
+namespace Elifoot.Application;
+
+/// <summary>
+/// Server-authoritative multiplayer orchestrator for isolated GameWorld rooms.
+/// Guarantees concurrency safety via per-world locks, idempotent command handling,
+/// synchronized 0/N ready counters, shared match clock ticks, and global pause windows.
+/// </summary>
+public sealed class MultiplayerRoundOrchestrator
+{
+    private readonly IWorldRepository _repository;
+    private readonly IMatchRoomNotificationPublisher _publisher;
+    private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> WorldLocks = new();
+    private static readonly ConcurrentDictionary<Guid, HashSet<string>> ProcessedIdempotencyKeys = new();
+
+    public MultiplayerRoundOrchestrator(
+        IWorldRepository repository,
+        IMatchRoomNotificationPublisher publisher)
+    {
+        _repository = repository;
+        _publisher = publisher;
+    }
+
+    private static SemaphoreSlim GetLock(Guid worldId)
+        => WorldLocks.GetOrAdd(worldId, _ => new SemaphoreSlim(1, 1));
+
+    private static HashSet<string> GetIdempotencySet(Guid worldId)
+        => ProcessedIdempotencyKeys.GetOrAdd(worldId, _ => new HashSet<string>(StringComparer.Ordinal));
+
+    public async Task<GameWorld> CreateWorldAsync(CreateWorldRequest request, CancellationToken ct = default)
+    {
+        var world = WorldSeedFactory.CreateSeededWorld(
+            worldName: string.IsNullOrWhiteSpace(request.WorldName) ? "Campeonato Brasileiro Clássico" : request.WorldName.Trim(),
+            seed: request.Seed == 0 ? 199801 : request.Seed,
+            totalClubs: request.TotalClubs <= 0 ? 128 : request.TotalClubs,
+            maxHumans: Math.Clamp(request.MaxHumans, 1, 8),
+            tickIntervalMs: Math.Clamp(request.TickIntervalMs, 10, 5000),
+            pauseTimeoutSeconds: Math.Clamp(request.PauseTimeoutSeconds, 5, 3600),
+            allowClassic505: request.AllowClassic505,
+            inviteCode: request.InviteCode);
+
+        await _repository.SaveWorldAsync(world, ct);
+        return world;
+    }
+
+    public async Task<(bool Success, string? Error, HumanCoach? Coach, GameWorld? World)> JoinWorldAndAssignClubAsync(
+        Guid worldId,
+        Guid coachId,
+        string nickname,
+        string deviceId,
+        Guid? preferredClubId = null,
+        bool joinUnemployed = false,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(worldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(worldId, ct);
+            if (world == null) return (false, "Sala/Mundo não encontrado.", null, null);
+
+            var existingCoach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+            if (existingCoach != null)
+            {
+                existingCoach.IsConnected = true;
+                if (preferredClubId != null && existingCoach.CurrentClubId != preferredClubId)
+                {
+                    if (world.RoundState != RoundState.PREPARING || existingCoach.IsReadyForRound)
+                        return (false, "Troque de clube somente entre rodadas e sem pronto.", existingCoach, world);
+                    var assignRes = TryAssignClubInternal(world, existingCoach, preferredClubId.Value);
+                    if (!assignRes.Success) return (false, assignRes.Error, existingCoach, world);
+                }
+                world.RoundVersion++;
+                await _repository.SaveWorldAsync(world, ct);
+                await _publisher.PublishReadyCounterUpdatedAsync(world.Id, BuildReadyCounterDto(world), ct);
+                return (true, null, existingCoach, world);
+            }
+
+            if (world.HumanCoaches.Count >= world.MaxHumans)
+                return (false, $"A sala atingiu o limite máximo de {world.MaxHumans} treinadores humanos.", null, world);
+            if (world.RoundState != RoundState.PREPARING)
+                return (false, "Aguarde a próxima preparação para entrar na sala.", null, world);
+
+            var coach = new HumanCoach
+            {
+                Id = coachId == Guid.Empty ? Guid.NewGuid() : coachId,
+                GameWorldId = world.Id,
+                Nickname = string.IsNullOrWhiteSpace(nickname) ? $"Técnico {world.HumanCoaches.Count + 1}" : nickname.Trim(),
+                DeviceId = deviceId,
+                SessionToken = Guid.NewGuid().ToString("N"),
+                IsHost = world.HumanCoaches.Count == 0,
+                IsConnected = true
+            };
+
+            if (!joinUnemployed)
+            {
+                Club? targetClub = null;
+                if (preferredClubId != null)
+                {
+                    targetClub = world.Clubs.FirstOrDefault(c => c.Id == preferredClubId.Value);
+                    if (targetClub == null) return (false, "Clube escolhido não existe nesta sala.", null, world);
+                    if (targetClub.DivisionTier == DivisionTier.Distrital)
+                        return (false, "Treinador humano nunca pode controlar um clube distrital.", null, world);
+                    if (targetClub.HumanCoachId != null)
+                        return (false, $"O clube {targetClub.Name} já é controlado por outro humano.", null, world);
+                }
+                else
+                {
+                    // Auto-pick available division club (preferring 4th/3rd/2nd/1st available)
+                    targetClub = world.Clubs
+                        .Where(c => c.DivisionTier != DivisionTier.Distrital && c.HumanCoachId == null)
+                        .OrderBy(c => c.DivisionTier)
+                        .ThenBy(c => c.DeterministicIndex)
+                        .FirstOrDefault();
+                }
+
+                if (targetClub != null)
+                {
+                    AssignCoachToClubObject(world, coach, targetClub);
+                }
+            }
+
+            world.HumanCoaches.Add(coach);
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, BuildReadyCounterDto(world), ct);
+            return (true, null, coach, world);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    private static (bool Success, string? Error) TryAssignClubInternal(GameWorld world, HumanCoach coach, Guid clubId)
+    {
+        var club = world.Clubs.FirstOrDefault(c => c.Id == clubId);
+        if (club == null) return (false, "Clube não encontrado.");
+        if (club.DivisionTier == DivisionTier.Distrital)
+            return (false, "Treinador humano nunca pode controlar um clube distrital.");
+        if (club.HumanCoachId != null && club.HumanCoachId != coach.Id)
+            return (false, "Este clube já pertence a outro treinador humano.");
+
+        if (coach.CurrentClubId != null && coach.CurrentClubId != club.Id)
+        {
+            var prev = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId.Value);
+            if (prev != null) prev.HumanCoachId = null;
+        }
+
+        AssignCoachToClubObject(world, coach, club);
+        return (true, null);
+    }
+
+    private static void AssignCoachToClubObject(GameWorld world, HumanCoach coach, Club club)
+    {
+        club.HumanCoachId = coach.Id;
+        coach.CurrentClubId = club.Id;
+        coach.EmploymentHistory.Add(new CoachEmploymentRecord
+        {
+            ClubId = club.Id,
+            ClubName = club.Name,
+            StartSeason = world.SeasonNumber,
+            StartRound = world.RoundNumber
+        });
+
+        // Pre-populate valid starter & bench selection if empty
+        var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+        if (club.PreferredStarterIds.Count != 11)
+        {
+            var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+            club.PreferredStarterIds = starters;
+            club.PreferredBenchIds = bench;
+        }
+    }
+
+    /// <summary>
+    /// Handles tactic submission ("ENVIAR TÁTICA") for a human coach during RoundState.PREPARING.
+    /// Increments the 0/N counter idempotently and automatically starts the round when N/N is reached.
+    /// </summary>
+    public async Task<(bool Success, string? Error, ReadyCounterDto? Counter, bool RoundStarted)> SubmitTacticsAsync(
+        SubmitTacticsRequest request,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(request.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", null, false);
+
+            if (world.RoundState != RoundState.PREPARING)
+                return (false, $"A rodada já não está em fase de preparação (estado atual: {world.RoundState}).", BuildReadyCounterDto(world), false);
+
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == request.CoachId);
+            if (coach == null)
+                return (false, "Treinador humano não pertence a esta sala.", BuildReadyCounterDto(world), false);
+
+            // Idempotency: if the same idempotency key was already processed, return current counter without mutating
+            var idemSet = GetIdempotencySet(world.Id);
+            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
+            {
+                return (true, null, BuildReadyCounterDto(world), world.RoundState != RoundState.PREPARING);
+            }
+
+            if (coach.CurrentClubId == null)
+                return (false, "Treinador está desempregado; use a ação 'Pronto para acompanhar'.", BuildReadyCounterDto(world), false);
+
+            var club = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId.Value);
+            if (club == null || club.HumanCoachId != coach.Id)
+                return (false, "Propriedade do clube inválida.", BuildReadyCounterDto(world), false);
+
+            var clubSquad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+            var (isValid, validationError) = SquadValidator.ValidatePreMatchLineup(
+                request.Formation,
+                request.StarterPlayerIds,
+                request.BenchPlayerIds,
+                clubSquad,
+                world.AllowClassic505);
+
+            if (!isValid)
+                return (false, validationError, BuildReadyCounterDto(world), false);
+
+            coach.SubmittedFormation = request.Formation.Trim();
+            coach.SubmittedStarterIds = request.StarterPlayerIds.ToList();
+            coach.SubmittedBenchIds = request.BenchPlayerIds.ToList();
+            coach.IsReadyForRound = true;
+            coach.LastIdempotencyKey = request.IdempotencyKey;
+
+            if (request.SaveAsPreferred)
+            {
+                club.PreferredFormation = coach.SubmittedFormation;
+                club.PreferredStarterIds = coach.SubmittedStarterIds.ToList();
+                club.PreferredBenchIds = coach.SubmittedBenchIds.ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey))
+                idemSet.Add(request.IdempotencyKey);
+
+            world.RoundVersion++;
+            bool started = CheckAndStartRoundIfAllReadyInternal(world);
+
+            await _repository.SaveWorldAsync(world, ct);
+            var counter = BuildReadyCounterDto(world);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
+
+            if (started)
+            {
+                var snapshot = BuildLiveRoundSnapshotDto(world);
+                await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
+            }
+
+            return (true, null, counter, started);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    /// <summary>
+    /// Marks an unemployed human participant as ready ("PRONTO PARA ACOMPANHAR").
+    /// Unemployed humans are included in the 0/N denominator and can trigger round start at N/N.
+    /// </summary>
+    public async Task<(bool Success, string? Error, ReadyCounterDto? Counter, bool RoundStarted)> SubmitUnemployedReadyAsync(
+        UnemployedReadyRequest request,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(request.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", null, false);
+
+            if (world.RoundState != RoundState.PREPARING)
+                return (false, "A rodada já não está em fase de preparação.", BuildReadyCounterDto(world), false);
+
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == request.CoachId);
+            if (coach == null)
+                return (false, "Participante não encontrado na sala.", BuildReadyCounterDto(world), false);
+
+            var idemSet = GetIdempotencySet(world.Id);
+            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
+            {
+                return (true, null, BuildReadyCounterDto(world), world.RoundState != RoundState.PREPARING);
+            }
+
+            // If coach actually has a club and auto-submits via PRONTO, validate/auto-build their preferred lineup
+            if (coach.CurrentClubId != null)
+            {
+                var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
+                var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+                var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+                coach.SubmittedFormation = spec.Code;
+                coach.SubmittedStarterIds = starters;
+                coach.SubmittedBenchIds = bench;
+            }
+
+            coach.IsReadyForRound = true;
+            coach.LastIdempotencyKey = request.IdempotencyKey;
+            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey))
+                idemSet.Add(request.IdempotencyKey);
+
+            world.RoundVersion++;
+            bool started = CheckAndStartRoundIfAllReadyInternal(world);
+
+            await _repository.SaveWorldAsync(world, ct);
+            var counter = BuildReadyCounterDto(world);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
+
+            if (started)
+            {
+                await _publisher.PublishRoundStateChangedAsync(world.Id, BuildLiveRoundSnapshotDto(world), ct);
+            }
+
+            return (true, null, counter, started);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    public async Task<(bool Success, string? Error, ReadyCounterDto? Counter)> WithdrawReadyAsync(
+        WithdrawReadyRequest request,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(request.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", null);
+
+            if (world.RoundState != RoundState.PREPARING)
+                return (false, "Não é possível retirar o pronto após o início da rodada.", BuildReadyCounterDto(world));
+
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == request.CoachId);
+            if (coach == null) return (false, "Treinador não encontrado.", BuildReadyCounterDto(world));
+
+            coach.IsReadyForRound = false;
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+
+            var counter = BuildReadyCounterDto(world);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
+            return (true, null, counter);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    private static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
+    {
+        if (world.RoundState != RoundState.PREPARING) return false;
+        if (world.HumanCoaches.Count == 0) return false;
+
+        // Auto-ready any human coach explicitly placed in AutoMode by the host
+        foreach (var autoHuman in world.HumanCoaches.Where(h => h.IsAutoMode && !h.IsReadyForRound))
+        {
+            if (autoHuman.CurrentClubId != null)
+            {
+                var club = world.Clubs.First(c => c.Id == autoHuman.CurrentClubId.Value);
+                var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+                var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+                autoHuman.SubmittedFormation = spec.Code;
+                autoHuman.SubmittedStarterIds = starters;
+                autoHuman.SubmittedBenchIds = bench;
+            }
+            autoHuman.IsReadyForRound = true;
+        }
+
+        bool allReady = world.HumanCoaches.All(h => h.IsReadyForRound);
+        if (!allReady) return false;
+
+        // Transition atomically: PREPARING -> ALL_READY -> RUNNING_FIRST_HALF
+        world.RoundState = RoundState.ALL_READY;
+
+        CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world, world.RoundNumber);
+        var roundFixtures = world.Fixtures
+            .Where(f => f.SeasonNumber == world.SeasonNumber && f.RoundNumber == world.RoundNumber)
+            .OrderBy(f => f.DeterministicMatchIndex)
+            .ToList();
+
+        var clubDict = world.Clubs.ToDictionary(c => c.Id);
+        var humanByClub = world.HumanCoaches
+            .Where(h => h.CurrentClubId != null)
+            .ToDictionary(h => h.CurrentClubId!.Value);
+        var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+        var playersByClub = world.Players
+            .Where(p => p.ClubId != null)
+            .GroupBy(p => p.ClubId!.Value)
+            .ToDictionary(g => g.Key, g => g.ToList());
+
+        foreach (var match in roundFixtures)
+        {
+            var homeClub = clubDict[match.HomeClubId];
+            var awayClub = clubDict[match.AwayClubId];
+            var homeSquad = playersByClub.GetValueOrDefault(homeClub.Id) ?? new List<Player>();
+            var awaySquad = playersByClub.GetValueOrDefault(awayClub.Id) ?? new List<Player>();
+
+            // Lock Home lineup (Human submission or AI Manager selection)
+            if (humanByClub.TryGetValue(homeClub.Id, out var hCoach) && hCoach.SubmittedStarterIds.Count == 11)
+            {
+                match.HomeFormation = hCoach.SubmittedFormation ?? homeClub.PreferredFormation;
+                match.HomeActiveStarterIds = hCoach.SubmittedStarterIds.ToList();
+                match.HomeBenchIds = hCoach.SubmittedBenchIds.ToList();
+            }
+            else
+            {
+                var mgr = homeClub.AiManagerId != null ? aiDict.GetValueOrDefault(homeClub.AiManagerId.Value) : null;
+                if (mgr != null)
+                {
+                    var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
+                        mgr, homeClub, homeSquad, awayClub, awaySquad, isHomeMatch: true,
+                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                    match.HomeFormation = form;
+                    match.HomeActiveStarterIds = starters;
+                    match.HomeBenchIds = bench;
+                }
+                else
+                {
+                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(homeSquad, TacticalFormations.All["4-4-2"]);
+                    match.HomeFormation = "4-4-2";
+                    match.HomeActiveStarterIds = starters;
+                    match.HomeBenchIds = bench;
+                }
+            }
+
+            // Lock Away lineup (Human submission or AI Manager selection)
+            if (humanByClub.TryGetValue(awayClub.Id, out var aCoach) && aCoach.SubmittedStarterIds.Count == 11)
+            {
+                match.AwayFormation = aCoach.SubmittedFormation ?? awayClub.PreferredFormation;
+                match.AwayActiveStarterIds = aCoach.SubmittedStarterIds.ToList();
+                match.AwayBenchIds = aCoach.SubmittedBenchIds.ToList();
+            }
+            else
+            {
+                var mgr = awayClub.AiManagerId != null ? aiDict.GetValueOrDefault(awayClub.AiManagerId.Value) : null;
+                if (mgr != null)
+                {
+                    var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
+                        mgr, awayClub, awaySquad, homeClub, homeSquad, isHomeMatch: false,
+                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                    match.AwayFormation = form;
+                    match.AwayActiveStarterIds = starters;
+                    match.AwayBenchIds = bench;
+                }
+                else
+                {
+                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(awaySquad, TacticalFormations.All["4-4-2"]);
+                    match.AwayFormation = "4-4-2";
+                    match.AwayActiveStarterIds = starters;
+                    match.AwayBenchIds = bench;
+                }
+            }
+
+            // Increment appearance count for starting 11
+            var playerMap = world.Players.ToDictionary(p => p.Id);
+            foreach (var sId in match.HomeActiveStarterIds.Concat(match.AwayActiveStarterIds))
+            {
+                if (playerMap.TryGetValue(sId, out var p))
+                {
+                    p.SeasonMatches++;
+                    p.CareerMatches++;
+                }
+            }
+
+            match.CurrentMinute = 0;
+            match.IsFinished = false;
+        }
+
+        world.CurrentMatchMinute = 0;
+        world.RoundState = RoundState.RUNNING_FIRST_HALF;
+        world.RoundVersion++;
+        return true;
+    }
+
+    /// <summary>
+    /// Requests a Global Pause ("PEDIR PARADA") during live match play.
+    /// Freezes ALL matches in the room at the exact same minute.
+    /// Merges simultaneous pause requests into a single shared PauseWindow.
+    /// Enforces the 3-window quota in normal time (4 in extra time).
+    /// </summary>
+    public async Task<(bool Success, string? Error, PauseWindowStateDto? PauseWindow)> RequestGlobalPauseAsync(
+        RequestPauseCommand command,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(command.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", null);
+
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
+            if (coach == null) return (false, "Treinador não pertence à sala.", null);
+            if (coach.CurrentClubId == null)
+                return (false, "Treinador desempregado não pode solicitar parada tática.", null);
+
+            var roundMatches = GetCurrentRoundFixtures(world);
+            var coachMatch = roundMatches.FirstOrDefault(m => m.HomeClubId == coach.CurrentClubId || m.AwayClubId == coach.CurrentClubId);
+            if (coachMatch == null || coachMatch.IsFinished)
+                return (false, "Sua equipe não possui partida em andamento neste momento.", null);
+
+            bool isHome = coachMatch.HomeClubId == coach.CurrentClubId;
+            int usedWindows = isHome ? coachMatch.HomeUsedPauseWindows : coachMatch.AwayUsedPauseWindows;
+            int maxWindows = isHome ? coachMatch.HomeMaxPauseWindows : coachMatch.AwayMaxPauseWindows;
+            var consumedSet = isHome ? coachMatch.HomeConsumedPauseWindowIds : coachMatch.AwayConsumedPauseWindowIds;
+
+            // If already in GLOBAL_PAUSED, merge into the active shared PauseWindow!
+            if (world.RoundState == RoundState.GLOBAL_PAUSED && world.ActivePauseWindowId != null)
+            {
+                var existingWindow = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
+                if (!consumedSet.Contains(existingWindow.Id))
+                {
+                    if (usedWindows >= maxWindows)
+                        return (false, $"Você já utilizou todas as suas paradas ({usedWindows}/{maxWindows}).", BuildPauseWindowDto(world, existingWindow));
+
+                    if (isHome) coachMatch.HomeUsedPauseWindows++;
+                    else coachMatch.AwayUsedPauseWindows++;
+                    consumedSet.Add(existingWindow.Id);
+                    existingWindow.EditedCoachIds.Add(coach.Id);
+                }
+
+                world.RoundVersion++;
+                await _repository.SaveWorldAsync(world, ct);
+                var dto = BuildPauseWindowDto(world, existingWindow);
+                await _publisher.PublishGlobalPauseAsync(world.Id, dto, BuildLiveRoundSnapshotDto(world), ct);
+                return (true, null, dto);
+            }
+
+            if (world.RoundState is not (RoundState.RUNNING_FIRST_HALF or RoundState.RUNNING_SECOND_HALF or RoundState.RUNNING_EXTRA_TIME))
+            {
+                return (false, $"Não é possível solicitar parada no estado {world.RoundState}.", null);
+            }
+
+            if (usedWindows >= maxWindows)
+            {
+                return (false, $"Limite de oportunidades de parada ({usedWindows}/{maxWindows}) esgotado.", null);
+            }
+
+            // Create the single shared PauseWindow and freeze the entire room
+            var window = new PauseWindow
+            {
+                Id = Guid.NewGuid(),
+                GameWorldId = world.Id,
+                SeasonNumber = world.SeasonNumber,
+                RoundNumber = world.RoundNumber,
+                Minute = world.CurrentMatchMinute,
+                PauseType = RoundState.GLOBAL_PAUSED,
+                RequestedByCoachId = coach.Id,
+                RequestedByCoachName = coach.Nickname,
+                OpenedAtUtc = DateTime.UtcNow,
+                ExpiresAtUtc = DateTime.UtcNow.AddSeconds(world.PauseTimeoutSeconds)
+            };
+            window.EditedCoachIds.Add(coach.Id);
+
+            if (isHome) coachMatch.HomeUsedPauseWindows++;
+            else coachMatch.AwayUsedPauseWindows++;
+            consumedSet.Add(window.Id);
+
+            world.PauseWindows.Add(window);
+            world.ActivePauseWindowId = window.Id;
+            world.RoundState = RoundState.GLOBAL_PAUSED;
+            world.RoundVersion++;
+
+            var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
+            coachMatch.Events.Add(new MatchEventRecord
+            {
+                Minute = world.CurrentMatchMinute,
+                EventType = MatchEventType.GlobalPauseTriggered,
+                ClubId = club.Id,
+                ClubName = club.Name,
+                Description = $"{world.CurrentMatchMinute}' PARADA GLOBAL solicitada por {coach.Nickname} ({club.ShortName})."
+            });
+
+            await _repository.SaveWorldAsync(world, ct);
+            var winDto = BuildPauseWindowDto(world, window);
+            var snapDto = BuildLiveRoundSnapshotDto(world);
+            await _publisher.PublishGlobalPauseAsync(world.Id, winDto, snapDto, ct);
+            return (true, null, winDto);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    /// <summary>
+    /// Submits tactical/substitution adjustments during a Global Pause or Free Interval (Halftime 45', Extra Time 90', 105').
+    /// If another coach edits during someone else's Global Pause, they consume 1 of their own pause opportunities.
+    /// If they only observe/confirm, they consume 0.
+    /// </summary>
+    public async Task<(bool Success, string? Error, LiveRoundSnapshotDto? Snapshot)> SubmitInMatchAdjustmentAsync(
+        SubmitInMatchAdjustmentCommand command,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(command.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", null);
+
+            if (world.RoundState is not (RoundState.GLOBAL_PAUSED or RoundState.HALFTIME_PAUSED or RoundState.EXTRA_TIME_BREAK or RoundState.EXTRA_TIME_HALFTIME))
+            {
+                return (false, "Ajustes em partida só podem ser enviados durante pausa global ou intervalo.", BuildLiveRoundSnapshotDto(world));
+            }
+
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
+            if (coach == null || coach.CurrentClubId == null)
+                return (false, "Treinador sem clube em partida.", BuildLiveRoundSnapshotDto(world));
+
+            var match = world.Fixtures.FirstOrDefault(f =>
+                f.Id == command.MatchId &&
+                f.SeasonNumber == world.SeasonNumber &&
+                f.RoundNumber == world.RoundNumber);
+
+            if (match == null || (match.HomeClubId != coach.CurrentClubId && match.AwayClubId != coach.CurrentClubId))
+                return (false, "Partida inválida ou não pertence ao seu clube.", BuildLiveRoundSnapshotDto(world));
+
+            var idemSet = GetIdempotencySet(world.Id);
+            if (!string.IsNullOrWhiteSpace(command.IdempotencyKey) && idemSet.Contains(command.IdempotencyKey))
+            {
+                return (true, null, BuildLiveRoundSnapshotDto(world));
+            }
+
+            bool isHome = match.HomeClubId == coach.CurrentClubId;
+            var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
+            var playerMap = world.Players.ToDictionary(p => p.Id);
+
+            var (ok, err, _) = MatchSimulationEngine.ApplyInMatchAdjustments(
+                match,
+                club,
+                isHome,
+                world.RoundState,
+                world.ActivePauseWindowId,
+                command.NewFormation,
+                command.Substitutions,
+                playerMap,
+                world.AllowClassic505);
+
+            if (!ok)
+                return (false, err, BuildLiveRoundSnapshotDto(world));
+
+            if (world.ActivePauseWindowId != null)
+            {
+                var win = world.PauseWindows.FirstOrDefault(w => w.Id == world.ActivePauseWindowId.Value);
+                if (win != null && (!string.IsNullOrWhiteSpace(command.NewFormation) || command.Substitutions.Count > 0))
+                {
+                    win.EditedCoachIds.Add(coach.Id);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(command.IdempotencyKey))
+                idemSet.Add(command.IdempotencyKey);
+
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            var snapshot = BuildLiveRoundSnapshotDto(world);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
+            return (true, null, snapshot);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    /// <summary>
+    /// Confirms readiness to resume play ("CONTINUAR" / "PRONTO PARA O 2º TEMPO").
+    /// Coaches who did not edit during a Global Pause do NOT spend a pause opportunity.
+    /// When all humans confirm, the room resumes play automatically.
+    /// </summary>
+    public async Task<(bool Success, string? Error, bool Resumed, LiveRoundSnapshotDto? Snapshot)> ConfirmContinueMatchAsync(
+        ConfirmContinueMatchCommand command,
+        CancellationToken ct = default)
+    {
+        var sem = GetLock(command.GameWorldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
+            if (world == null) return (false, "Sala não encontrada.", false, null);
+
+            if (world.ActivePauseWindowId == null)
+                return (false, "Não há janela de pausa ou intervalo ativa.", false, BuildLiveRoundSnapshotDto(world));
+
+            var window = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
+            var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
+            if (coach == null)
+                return (false, "Participante não encontrado na sala.", false, BuildLiveRoundSnapshotDto(world));
+
+            window.ConfirmedCoachIds.Add(coach.Id);
+
+            // Auto-confirm any coaches in AutoMode
+            foreach (var autoCoach in world.HumanCoaches.Where(h => h.IsAutoMode))
+            {
+                window.ConfirmedCoachIds.Add(autoCoach.Id);
+            }
+
+            bool allConfirmed = world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id));
+            if (allConfirmed)
+            {
+                ResumeFromPauseWindowInternal(world, window);
+            }
+
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            var snapshot = BuildLiveRoundSnapshotDto(world);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
+            return (true, null, allConfirmed, snapshot);
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    public async Task<bool> ForceExpirePauseWindowIfTimedOutAsync(Guid worldId, bool ignoreClockForTest = false, CancellationToken ct = default)
+    {
+        var sem = GetLock(worldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(worldId, ct);
+            if (world?.ActivePauseWindowId == null) return false;
+
+            var window = world.PauseWindows.FirstOrDefault(w => w.Id == world.ActivePauseWindowId.Value);
+            if (window == null || window.IsClosed) return false;
+
+            if (!ignoreClockForTest && DateTime.UtcNow < window.ExpiresAtUtc)
+                return false;
+
+            ResumeFromPauseWindowInternal(world, window);
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, BuildLiveRoundSnapshotDto(world), ct);
+            return true;
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    private static void ResumeFromPauseWindowInternal(GameWorld world, PauseWindow window)
+    {
+        window.IsClosed = true;
+        world.ActivePauseWindowId = null;
+
+        int m = world.CurrentMatchMinute;
+        if (window.PauseType == RoundState.HALFTIME_PAUSED || m == 45)
+        {
+            world.RoundState = RoundState.RUNNING_SECOND_HALF;
+        }
+        else if (window.PauseType == RoundState.EXTRA_TIME_BREAK || m == 90)
+        {
+            world.RoundState = RoundState.RUNNING_EXTRA_TIME;
+        }
+        else if (window.PauseType == RoundState.EXTRA_TIME_HALFTIME || m == 105)
+        {
+            world.RoundState = RoundState.RUNNING_EXTRA_TIME;
+        }
+        else if (m < 45)
+        {
+            world.RoundState = RoundState.RUNNING_FIRST_HALF;
+        }
+        else if (m < 90)
+        {
+            world.RoundState = RoundState.RUNNING_SECOND_HALF;
+        }
+        else
+        {
+            world.RoundState = RoundState.RUNNING_EXTRA_TIME;
+        }
+    }
+
+    /// <summary>
+    /// Advances the synchronized match clock by 1 virtual minute across ALL active matches of the current round.
+    /// Stops automatically at 45' (Halftime), 90' (End of normal time / Extra Time Break), 105' (Extra Time Halftime),
+    /// and 120' (Penalty Shootout & End of Extra Time), or immediately if a Global Pause is active.
+    /// </summary>
+    public async Task<LiveRoundSnapshotDto?> AdvanceClockTickAsync(Guid worldId, CancellationToken ct = default)
+    {
+        var sem = GetLock(worldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(worldId, ct);
+            if (world == null) return null;
+
+            if (world.RoundState is not (RoundState.RUNNING_FIRST_HALF or RoundState.RUNNING_SECOND_HALF or RoundState.RUNNING_EXTRA_TIME))
+            {
+                return BuildLiveRoundSnapshotDto(world);
+            }
+
+            world.CurrentMatchMinute++;
+            int minute = world.CurrentMatchMinute;
+
+            var roundMatches = GetCurrentRoundFixtures(world);
+            var clubDict = world.Clubs.ToDictionary(c => c.Id);
+            var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+            var playerMap = world.Players.ToDictionary(p => p.Id);
+
+            foreach (var match in roundMatches.Where(m => !m.IsFinished))
+            {
+                match.CurrentMinute = minute;
+                var homeClub = clubDict[match.HomeClubId];
+                var awayClub = clubDict[match.AwayClubId];
+                var homeMgr = homeClub.AiManagerId != null ? aiDict.GetValueOrDefault(homeClub.AiManagerId.Value) : null;
+                var awayMgr = awayClub.AiManagerId != null ? aiDict.GetValueOrDefault(awayClub.AiManagerId.Value) : null;
+
+                var homeIdentity = homeMgr?.Identity ?? ManagerTacticalIdentity.Equilibrado;
+                var awayIdentity = awayMgr?.Identity ?? ManagerTacticalIdentity.Equilibrado;
+
+                MatchSimulationEngine.SimulateSingleMinute(
+                    match, homeClub, awayClub, playerMap, homeIdentity, awayIdentity, world.Seed, world.AllowClassic505);
+
+                // AI in-match reactive adjustments (never opens a global pause window!)
+                if (homeClub.HumanCoachId == null)
+                {
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, isHomeTeam: true, world.RoundState, playerMap, world.AllowClassic505);
+                }
+                if (awayClub.HumanCoachId == null)
+                {
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, isHomeTeam: false, world.RoundState, playerMap, world.AllowClassic505);
+                }
+            }
+
+            // Check phase boundary transitions at 45', 90', 105', 120'
+            if (minute == 45 && world.RoundState == RoundState.RUNNING_FIRST_HALF)
+            {
+                OpenFreeIntervalPauseWindow(world, RoundState.HALFTIME_PAUSED, 45);
+                // Let AI teams evaluate halftime adjustments during the free interval
+                EvaluateAllAiTeamsAtFreeInterval(world, roundMatches, clubDict, aiDict, playerMap);
+            }
+            else if (minute == 90 && world.RoundState == RoundState.RUNNING_SECOND_HALF)
+            {
+                bool anyMatchEntersExtraTime = false;
+                foreach (var match in roundMatches.Where(m => !m.IsFinished))
+                {
+                    if (match.RequiresKnockoutResolution && match.HomeGoals == match.AwayGoals)
+                    {
+                        match.EnteredExtraTime = true; // Grants +1 sub (6) and +1 pause window (4)!
+                        anyMatchEntersExtraTime = true;
+                        match.Events.Add(new MatchEventRecord
+                        {
+                            Minute = 90,
+                            EventType = MatchEventType.ExtraTimeStarted,
+                            ClubId = match.HomeClubId,
+                            ClubName = clubDict[match.HomeClubId].Name,
+                            Description = "90' Empate no tempo normal! A partida vai para a PRORROGAÇÃO (+1 substituição e +1 parada)."
+                        });
+                    }
+                    else
+                    {
+                        match.IsFinished = true;
+                        match.WinnerClubId = match.HomeGoals > match.AwayGoals
+                            ? match.HomeClubId
+                            : (match.AwayGoals > match.HomeGoals ? match.AwayClubId : null);
+                    }
+                }
+
+                if (anyMatchEntersExtraTime)
+                {
+                    // Check if any human is participating in the extra time matches, or open free interval break before extra time
+                    bool humanInExtraTime = roundMatches
+                        .Where(m => !m.IsFinished && m.EnteredExtraTime)
+                        .Any(m => clubDict[m.HomeClubId].HumanCoachId != null || clubDict[m.AwayClubId].HumanCoachId != null);
+
+                    EvaluateAllAiTeamsAtFreeInterval(world, roundMatches.Where(m => !m.IsFinished).ToList(), clubDict, aiDict, playerMap);
+
+                    if (humanInExtraTime)
+                    {
+                        OpenFreeIntervalPauseWindow(world, RoundState.EXTRA_TIME_BREAK, 90);
+                    }
+                    else
+                    {
+                        world.RoundState = RoundState.RUNNING_EXTRA_TIME;
+                    }
+                }
+                else
+                {
+                    CompleteAllMatchesAndTransitionToResults(world, roundMatches);
+                }
+            }
+            else if (minute == 105 && world.RoundState == RoundState.RUNNING_EXTRA_TIME)
+            {
+                bool humanInExtraTime = roundMatches
+                    .Where(m => !m.IsFinished && m.EnteredExtraTime)
+                    .Any(m => clubDict[m.HomeClubId].HumanCoachId != null || clubDict[m.AwayClubId].HumanCoachId != null);
+
+                EvaluateAllAiTeamsAtFreeInterval(world, roundMatches.Where(m => !m.IsFinished).ToList(), clubDict, aiDict, playerMap);
+
+                if (humanInExtraTime)
+                {
+                    OpenFreeIntervalPauseWindow(world, RoundState.EXTRA_TIME_HALFTIME, 105);
+                }
+            }
+            else if (minute >= 120 && world.RoundState == RoundState.RUNNING_EXTRA_TIME)
+            {
+                foreach (var match in roundMatches.Where(m => !m.IsFinished))
+                {
+                    if (match.HomeGoals == match.AwayGoals && match.RequiresKnockoutResolution)
+                    {
+                        MatchSimulationEngine.ResolvePenaltyShootout(
+                            match, clubDict[match.HomeClubId], clubDict[match.AwayClubId], playerMap, world.Seed);
+                    }
+                    else
+                    {
+                        match.WinnerClubId = match.HomeGoals > match.AwayGoals ? match.HomeClubId : match.AwayClubId;
+                    }
+                    match.IsFinished = true;
+                }
+
+                CompleteAllMatchesAndTransitionToResults(world, roundMatches);
+            }
+
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            var snapshot = BuildLiveRoundSnapshotDto(world);
+            await _publisher.PublishClockTickAsync(world.Id, snapshot, ct);
+            return snapshot;
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    private static void EvaluateAllAiTeamsAtFreeInterval(
+        GameWorld world,
+        List<MatchFixture> matches,
+        Dictionary<Guid, Club> clubDict,
+        Dictionary<Guid, AiManager> aiDict,
+        Dictionary<Guid, Player> playerMap)
+    {
+        foreach (var match in matches.Where(m => !m.IsFinished))
+        {
+            var home = clubDict[match.HomeClubId];
+            var away = clubDict[match.AwayClubId];
+            if (home.HumanCoachId == null)
+            {
+                var mgr = home.AiManagerId != null ? aiDict.GetValueOrDefault(home.AiManagerId.Value) : null;
+                AiManagerBrain.EvaluateAiInMatchReaction(match, home, mgr, true, world.RoundState, playerMap, world.AllowClassic505);
+            }
+            if (away.HumanCoachId == null)
+            {
+                var mgr = away.AiManagerId != null ? aiDict.GetValueOrDefault(away.AiManagerId.Value) : null;
+                AiManagerBrain.EvaluateAiInMatchReaction(match, away, mgr, false, world.RoundState, playerMap, world.AllowClassic505);
+            }
+        }
+    }
+
+    private static void OpenFreeIntervalPauseWindow(GameWorld world, RoundState pauseState, int minute)
+    {
+        var window = new PauseWindow
+        {
+            Id = Guid.NewGuid(),
+            GameWorldId = world.Id,
+            SeasonNumber = world.SeasonNumber,
+            RoundNumber = world.RoundNumber,
+            Minute = minute,
+            PauseType = pauseState,
+            RequestedByCoachId = null,
+            RequestedByCoachName = pauseState == RoundState.HALFTIME_PAUSED ? "Intervalo (45')" : $"Intervalo Prorrogação ({minute}')",
+            OpenedAtUtc = DateTime.UtcNow,
+            ExpiresAtUtc = DateTime.UtcNow.AddSeconds(world.PauseTimeoutSeconds)
+        };
+
+        foreach (var autoHuman in world.HumanCoaches.Where(h => h.IsAutoMode))
+        {
+            window.ConfirmedCoachIds.Add(autoHuman.Id);
+        }
+
+        world.PauseWindows.Add(window);
+        world.ActivePauseWindowId = window.Id;
+        world.RoundState = pauseState;
+
+        if (world.HumanCoaches.Count > 0 && world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id)))
+        {
+            ResumeFromPauseWindowInternal(world, window);
+        }
+    }
+
+    private static void CompleteAllMatchesAndTransitionToResults(GameWorld world, List<MatchFixture> roundMatches)
+    {
+        world.RoundState = RoundState.RESULTS;
+        world.ActivePauseWindowId = null;
+
+        // 1. Settle gate receipts, stadium costs, salaries, contract renewals/expirations
+        MarketAndEconomyEngine.SettleMatchAndRoundFinancials(world, roundMatches);
+
+        // 2. Update standings, coach career points, and job invitations
+        CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(world, roundMatches);
+
+        // 3. Process weekly AI market batch (listings, transfers, auctions)
+        MarketAndEconomyEngine.ProcessWeeklyAiMarketBatch(world);
+    }
+
+    /// <summary>
+    /// Advances the room from RoundState.RESULTS to the next round's RoundState.PREPARING
+    /// (or concludes the season and starts Season + 1 if it was the final round).
+    /// Resets the human ReadyCounter back to 0/N.
+    /// </summary>
+    public async Task<LiveRoundSnapshotDto?> AdvanceToNextRoundPreparationAsync(Guid worldId, CancellationToken ct = default)
+    {
+        var sem = GetLock(worldId);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var world = await _repository.GetWorldAsync(worldId, ct);
+            if (world == null) return null;
+
+            if (world.RoundState is not (RoundState.RESULTS or RoundState.FINISHED))
+            {
+                return BuildLiveRoundSnapshotDto(world);
+            }
+
+            foreach (var h in world.HumanCoaches)
+            {
+                h.IsReadyForRound = false;
+                h.SubmittedFormation = null;
+                h.SubmittedStarterIds.Clear();
+                h.SubmittedBenchIds.Clear();
+            }
+
+            if (world.RoundNumber >= world.TotalRoundsInSeason)
+            {
+                CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance(world);
+            }
+            else
+            {
+                world.RoundNumber++;
+                world.CurrentMatchMinute = 0;
+                world.RoundState = RoundState.PREPARING;
+                CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world, world.RoundNumber);
+            }
+
+            // Refresh AI squad plans and ensure human-controlled clubs have healthy default starters/bench for the new round
+            var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+            foreach (var club in world.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital))
+            {
+                var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+                if (club.HumanCoachId == null && club.AiManagerId != null && aiDict.TryGetValue(club.AiManagerId.Value, out var mgr))
+                {
+                    AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                }
+                else if (club.HumanCoachId != null)
+                {
+                    TacticalFormations.TryGet(club.PreferredFormation, world.AllowClassic505, out var spec);
+                    var (s, b) = AiManagerBrain.BuildStartersAndBench(squad, spec ?? TacticalFormations.All["4-4-2"]);
+                    club.PreferredStarterIds = s;
+                    club.PreferredBenchIds = b;
+                }
+            }
+
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            var snapshot = BuildLiveRoundSnapshotDto(world);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snapshot.ReadyCounter, ct);
+            return snapshot;
+        }
+        finally
+        {
+            sem.Release();
+        }
+    }
+
+    public static List<MatchFixture> GetCurrentRoundFixtures(GameWorld world)
+        => world.Fixtures
+            .Where(f => f.SeasonNumber == world.SeasonNumber && f.RoundNumber == world.RoundNumber)
+            .OrderBy(f => f.DeterministicMatchIndex)
+            .ToList();
+
+    public static ReadyCounterDto BuildReadyCounterDto(GameWorld world)
+    {
+        var clubDict = world.Clubs.ToDictionary(c => c.Id);
+        var roundMatches = GetCurrentRoundFixtures(world);
+        int totalHumans = world.HumanCoaches.Count;
+        int readyCount = world.HumanCoaches.Count(h => h.IsReadyForRound);
+
+        string prefix = world.RoundState switch
+        {
+            RoundState.HALFTIME_PAUSED => "INTERVALO",
+            RoundState.GLOBAL_PAUSED => "AJUSTES",
+            _ => "TÁTICAS ENVIADAS"
+        };
+
+        var items = new List<ParticipantReadyItemDto>(totalHumans);
+        foreach (var h in world.HumanCoaches)
+        {
+            Club? club = h.CurrentClubId != null ? clubDict.GetValueOrDefault(h.CurrentClubId.Value) : null;
+            var match = club != null
+                ? roundMatches.FirstOrDefault(m => m.HomeClubId == club.Id || m.AwayClubId == club.Id)
+                : null;
+            bool isHome = match != null && match.HomeClubId == club?.Id;
+
+            int usedSubs = match == null ? 0 : (isHome ? match.HomeUsedSubstitutions : match.AwayUsedSubstitutions);
+            int maxSubs = match == null ? 5 : (isHome ? match.HomeMaxSubstitutions : match.AwayMaxSubstitutions);
+            int usedWins = match == null ? 0 : (isHome ? match.HomeUsedPauseWindows : match.AwayUsedPauseWindows);
+            int maxWins = match == null ? 3 : (isHome ? match.HomeMaxPauseWindows : match.AwayMaxPauseWindows);
+
+            items.Add(new ParticipantReadyItemDto(
+                CoachId: h.Id,
+                Nickname: h.Nickname,
+                ClubId: club?.Id,
+                ClubName: club?.Name ?? "Desempregado",
+                IsUnemployed: h.IsUnemployed,
+                IsReady: h.IsReadyForRound,
+                IsConnected: h.IsConnected,
+                IsAutoMode: h.IsAutoMode,
+                UsedSubstitutions: usedSubs,
+                MaxSubstitutions: maxSubs,
+                UsedPauseWindows: usedWins,
+                MaxPauseWindows: maxWins));
+        }
+
+        return new ReadyCounterDto(
+            GameWorldId: world.Id,
+            SeasonNumber: world.SeasonNumber,
+            RoundNumber: world.RoundNumber,
+            RoundState: world.RoundState,
+            RoundVersion: world.RoundVersion,
+            ReadyCount: readyCount,
+            TotalHumans: totalHumans,
+            CounterLabel: $"{prefix}: {readyCount}/{totalHumans}",
+            Participants: items);
+    }
+
+    public static PauseWindowStateDto BuildPauseWindowDto(GameWorld world, PauseWindow window)
+    {
+        int remainingSec = Math.Max(0, (int)Math.Ceiling((window.ExpiresAtUtc - DateTime.UtcNow).TotalSeconds));
+        return new PauseWindowStateDto(
+            PauseWindowId: window.Id,
+            GameWorldId: world.Id,
+            Minute: window.Minute,
+            PauseType: window.PauseType,
+            RequestedByCoachId: window.RequestedByCoachId,
+            RequestedByCoachName: window.RequestedByCoachName,
+            ConfirmedCount: window.ConfirmedCoachIds.Count,
+            TotalHumans: world.HumanCoaches.Count,
+            RemainingSeconds: remainingSec,
+            ConfirmedCoachIds: window.ConfirmedCoachIds.ToList(),
+            EditedCoachIds: window.EditedCoachIds.ToList());
+    }
+
+    public static LiveRoundSnapshotDto BuildLiveRoundSnapshotDto(GameWorld world)
+    {
+        var clubDict = world.Clubs.ToDictionary(c => c.Id);
+        var playerDict = world.Players.ToDictionary(p => p.Id);
+        var roundMatches = GetCurrentRoundFixtures(world);
+        var compType = CompetitionAndSeasonEngine.GetCompetitionTypeForRound(world, world.RoundNumber);
+
+        PauseWindowStateDto? pauseDto = null;
+        if (world.ActivePauseWindowId != null)
+        {
+            var win = world.PauseWindows.FirstOrDefault(w => w.Id == world.ActivePauseWindowId.Value);
+            if (win != null) pauseDto = BuildPauseWindowDto(world, win);
+        }
+
+        // For 128+ clubs, during preliminary district rounds, include human matches + top 32 matches so client stays fast
+        var matchesToProject = roundMatches
+            .OrderByDescending(m => clubDict[m.HomeClubId].HumanCoachId != null || clubDict[m.AwayClubId].HumanCoachId != null)
+            .ThenBy(m => m.DivisionTier ?? DivisionTier.Distrital)
+            .ThenBy(m => m.DeterministicMatchIndex)
+            .Take(32)
+            .ToList();
+
+        var matchDtos = new List<LiveMatchSummaryDto>(matchesToProject.Count);
+        foreach (var m in matchesToProject)
+        {
+            var home = clubDict[m.HomeClubId];
+            var away = clubDict[m.AwayClubId];
+
+            List<MatchLineupPlayerDto> MapLineup(
+                List<Guid> ids,
+                Dictionary<Guid, int> yellows,
+                List<Guid> sentOff,
+                List<Guid> injured,
+                List<Guid> subOut,
+                List<Guid> subIn)
+            {
+                return ids.Where(playerDict.ContainsKey).Select(id =>
+                {
+                    var p = playerDict[id];
+                    return new MatchLineupPlayerDto(
+                        p.Id,
+                        p.DisplayName,
+                        p.Position,
+                        p.Strength,
+                        p.Behavior.ToDisplayPt(),
+                        p.IsStar,
+                        yellows.GetValueOrDefault(p.Id, 0),
+                        sentOff.Contains(p.Id),
+                        injured.Contains(p.Id),
+                        subOut.Contains(p.Id),
+                        subIn.Contains(p.Id));
+                }).ToList();
+            }
+
+            var homeStarterSource = m.HomeActiveStarterIds.Count > 0 ? m.HomeActiveStarterIds : home.PreferredStarterIds;
+            var homeBenchSource = m.HomeBenchIds.Count > 0 ? m.HomeBenchIds : home.PreferredBenchIds;
+            var awayStarterSource = m.AwayActiveStarterIds.Count > 0 ? m.AwayActiveStarterIds : away.PreferredStarterIds;
+            var awayBenchSource = m.AwayBenchIds.Count > 0 ? m.AwayBenchIds : away.PreferredBenchIds;
+
+            matchDtos.Add(new LiveMatchSummaryDto(
+                MatchId: m.Id,
+                CompetitionType: m.CompetitionType,
+                DivisionTier: m.DivisionTier,
+                HomeClubId: home.Id,
+                HomeClubName: home.Name,
+                HomePrimaryColor: home.PrimaryColorHex,
+                HomeSecondaryColor: home.SecondaryColorHex,
+                AwayClubId: away.Id,
+                AwayClubName: away.Name,
+                AwayPrimaryColor: away.PrimaryColorHex,
+                AwaySecondaryColor: away.SecondaryColorHex,
+                HomeGoals: m.HomeGoals,
+                AwayGoals: m.AwayGoals,
+                HomePenaltyGoals: m.HomePenaltyGoals,
+                AwayPenaltyGoals: m.AwayPenaltyGoals,
+                Minute: m.CurrentMinute,
+                IsFinished: m.IsFinished,
+                IsExtraTime: m.EnteredExtraTime,
+                HomeFormation: m.HomeFormation,
+                AwayFormation: m.AwayFormation,
+                HomeSubCount: m.HomeUsedSubstitutions,
+                HomeMaxSubs: m.HomeMaxSubstitutions,
+                HomePauseWindowsUsed: m.HomeUsedPauseWindows,
+                HomeMaxPauseWindows: m.HomeMaxPauseWindows,
+                AwaySubCount: m.AwayUsedSubstitutions,
+                AwayMaxSubs: m.AwayMaxSubstitutions,
+                AwayPauseWindowsUsed: m.AwayUsedPauseWindows,
+                AwayMaxPauseWindows: m.AwayMaxPauseWindows,
+                Attendance: m.Attendance,
+                TicketPrice: m.TicketPrice,
+                TicketRevenue: m.TicketRevenue,
+                Events: m.Events.Select(e => new MatchEventDto(
+                    e.Minute, e.EventType, e.ClubId, e.ClubName,
+                    e.PrimaryPlayerId, e.PrimaryPlayerDisplayName,
+                    e.SecondaryPlayerId, e.SecondaryPlayerDisplayName,
+                    e.Description)).ToList(),
+                HomeStarters: MapLineup(homeStarterSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
+                HomeBench: MapLineup(homeBenchSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
+                AwayStarters: MapLineup(awayStarterSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds),
+                AwayBench: MapLineup(awayBenchSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds)));
+        }
+
+        return new LiveRoundSnapshotDto(
+            GameWorldId: world.Id,
+            WorldName: world.Name,
+            SeasonNumber: world.SeasonNumber,
+            RoundNumber: world.RoundNumber,
+            CompetitionType: compType,
+            CompetitionLabel: compType.ToDisplayPt(),
+            RoundState: world.RoundState,
+            RoundVersion: world.RoundVersion,
+            CurrentMinute: world.CurrentMatchMinute,
+            ReadyCounter: BuildReadyCounterDto(world),
+            ActivePauseWindow: pauseDto,
+            Matches: matchDtos);
+    }
+}

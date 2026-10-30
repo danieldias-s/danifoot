@@ -1,0 +1,32 @@
+{
+  "Time": "2026-10-29T19:51:39.1848898-03:00",
+  "Computer": {
+    "HypervisorPresent": false,
+    "TotalPhysicalMemory": 17081327616,
+    "Manufacturer": "INTEL",
+    "Model": " "
+  },
+  "Cpu": {
+    "Name": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "VirtualizationFirmwareEnabled": true,
+    "VMMonitorModeExtensions": true,
+    "SecondLevelAddressTranslationExtensions": true,
+    "NumberOfCores": 10,
+    "NumberOfLogicalProcessors": 20
+  },
+  "Memory": {
+    "FreePhysicalMemory": 4489312,
+    "TotalVisibleMemorySize": 16680984,
+    "Caption": "Microsoft Windows 10 Pro",
+    "Version": "10.0.19045"
+  },
+  "Gpu": {
+    "Name": "AMD Radeon RX 5600 XT",
+    "DriverVersion": "32.0.21030.2001",
+    "AdapterRAM": 4293918720,
+    "Status": "OK"
+  },
+  "Administrator": false,
+  "WHPXQueryError": "A operação solicitada requer elevação.\r\n",
+  "HypervisorServices": []
+}

@@ -1,0 +1,6 @@
+Extract from the first build tool output, preserved as an excerpt (not the original full log):
+Could not write file to ..\..\artifacts\player-rankings-009\web\assets\shaders/stretch_effect.frag
+Could not write file to ..\..\artifacts\player-rankings-009\web\assets\shaders/ink_sparkle.frag
+Target web_release_bundle failed: ShaderCompilerException.
+Retry with absolute --output=D:\elifoot_98\artifacts\player-rankings-009\web completed successfully.
+See web-build.log for the complete successful retry.

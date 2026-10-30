@@ -1,0 +1,418 @@
+[
+  {
+    "FullName": "version.txt",
+    "Length": 3
+  },
+  {
+    "FullName": "systrace.txt",
+    "Length": 495
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.smoketest/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.cts.priv.ctsshim/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.example.android.livecubes/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.telephony/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.calendar/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.media/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.protips/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.documentsui/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.externalstorage/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.htmlviewer/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.quicksearchbox/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.mms.service/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.downloads/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.messaging/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.defcontainer/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.downloads.ui/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.pacprocessor/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.certinstaller/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.carrierconfig/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/android/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.contacts/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.egg/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.mtp/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.launcher3/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.backupconfirm/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.statementservice/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.calendar/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.settings/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.sharedstoragebackup/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.printspooler/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.dreams.basic/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.webview/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.inputdevices/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.sdksetup/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.cellbroadcastreceiver/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/android.ext.shared/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.server.telecom/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.keychain/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.camera/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.printservice.recommendation/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.dialer/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.gallery3d/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.emulator.smoketests/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/android.ext.services/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.packageinstaller/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.svox.pico/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.example.android.apis/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.proxyhandler/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.fallback/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.inputmethod.latin/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/org.chromium.webview_shell/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.managedprovisioning/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.wallpaper.livepicker/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.netspeed/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.storagemanager/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/jp.co.omronsoft.openwnn/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.bookmarkprovider/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.settings/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.calculator2/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.gesture.builder/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.cts.ctsshim/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.vpndialogs/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.email/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.music/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.phone/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.shell/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.wallpaperbackup/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.blockednumber/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.userdictionary/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.emergency/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.location.fused/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.deskclock/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.systemui/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.smoketest.tests/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.customlocale2/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.example.android.softkeyboard/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.development/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.providers.contacts/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.captiveportallogin/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/data/misc/profiles/cur/0/com.android.widgetpreview/primary.prof",
+    "Length": 0
+  },
+  {
+    "FullName": "FS/proc/1/mountinfo",
+    "Length": 2186
+  },
+  {
+    "FullName": "FS/proc/1288/mountinfo",
+    "Length": 1943
+  },
+  {
+    "FullName": "FS/proc/1289/mountinfo",
+    "Length": 1943
+  },
+  {
+    "FullName": "FS/proc/1647/mountinfo",
+    "Length": 1943
+  },
+  {
+    "FullName": "FS/proc/1769/mountinfo",
+    "Length": 2298
+  },
+  {
+    "FullName": "FS/proc/1938/mountinfo",
+    "Length": 2337
+  },
+  {
+    "FullName": "FS/proc/1946/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/1970/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2073/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2121/mountinfo",
+    "Length": 2337
+  },
+  {
+    "FullName": "FS/proc/2174/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2212/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2283/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2501/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2507/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2600/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2629/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2650/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2664/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "FS/proc/2683/mountinfo",
+    "Length": 2339
+  },
+  {
+    "FullName": "bugreport-NYC-2026-10-29-23-00-11.txt",
+    "Length": 6018346
+  },
+  {
+    "FullName": "main_entry.txt",
+    "Length": 37
+  }
+]

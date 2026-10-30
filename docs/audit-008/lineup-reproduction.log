@@ -1,0 +1,16 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:01.23]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.CoachCareer008_HumanMarketPrepRevalidatesAllPreviouslySelectedLineups [FAIL]
+  Com falha Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.CoachCareer008_HumanMarketPrepRevalidatesAllPreviouslySelectedLineups [567 ms]
+  Mensagem de erro:
+   A escalação titular deve ter exatamente 11 jogadores (enviado: 10).
+  Rastreamento de pilha:
+     at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.CoachCareer008_HumanMarketPrepRevalidatesAllPreviouslySelectedLineups() in D:\elifoot_98\tests\Elifoot.Simulation.Tests\CoachCareer008SimulationTests.cs:line 31
+--- End of stack trace from previous location ---
+
+Com falha! – Com falha:     1, Aprovado:     0, Ignorado:     0, Total:     1, Duração: 602 ms - Elifoot.Simulation.Tests.dll (net10.0)

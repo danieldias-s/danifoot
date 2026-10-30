@@ -1,0 +1,570 @@
+{
+  "task": "ELIFOOT_GAMEPLAY_BALANCE_100_SEASONS_005",
+  "scenarioA_199801": {
+    "worldSeed": 199801,
+    "totalTicketRevenue": 9573189485.91,
+    "totalStadiumOperatingCost": 1282251478.11,
+    "totalMaintenancePaid": 463851229.5,
+    "totalRenovationCost": 192980826,
+    "totalExpansionCost": 111775000,
+    "netStadiumOperatingBalance": 7827086778.30,
+    "maintenanceEventsCount": 2382,
+    "renovationProjectsCount": 2468,
+    "expansionProjectsCount": 263,
+    "decadeEvolution": [
+      {
+        "Season": 1,
+        "AvgStadiumBuiltCapacity": 21721,
+        "AvgStadiumUsableCapacity": 20505,
+        "AvgStadiumConditionPercent": 94.6,
+        "AvgMatchAttendance": 17339
+      },
+      {
+        "Season": 10,
+        "AvgStadiumBuiltCapacity": 31417,
+        "AvgStadiumUsableCapacity": 28342,
+        "AvgStadiumConditionPercent": 90.23,
+        "AvgMatchAttendance": 16936
+      },
+      {
+        "Season": 20,
+        "AvgStadiumBuiltCapacity": 36073,
+        "AvgStadiumUsableCapacity": 32122,
+        "AvgStadiumConditionPercent": 89.06,
+        "AvgMatchAttendance": 16632
+      },
+      {
+        "Season": 30,
+        "AvgStadiumBuiltCapacity": 36853,
+        "AvgStadiumUsableCapacity": 32699,
+        "AvgStadiumConditionPercent": 89.66,
+        "AvgMatchAttendance": 17483
+      },
+      {
+        "Season": 40,
+        "AvgStadiumBuiltCapacity": 39319,
+        "AvgStadiumUsableCapacity": 35472,
+        "AvgStadiumConditionPercent": 90.69,
+        "AvgMatchAttendance": 17447
+      },
+      {
+        "Season": 50,
+        "AvgStadiumBuiltCapacity": 38365,
+        "AvgStadiumUsableCapacity": 34375,
+        "AvgStadiumConditionPercent": 89.57,
+        "AvgMatchAttendance": 16308
+      },
+      {
+        "Season": 60,
+        "AvgStadiumBuiltCapacity": 41152,
+        "AvgStadiumUsableCapacity": 37260,
+        "AvgStadiumConditionPercent": 90.28,
+        "AvgMatchAttendance": 17303
+      },
+      {
+        "Season": 70,
+        "AvgStadiumBuiltCapacity": 42171,
+        "AvgStadiumUsableCapacity": 37232,
+        "AvgStadiumConditionPercent": 88.54,
+        "AvgMatchAttendance": 17099
+      },
+      {
+        "Season": 80,
+        "AvgStadiumBuiltCapacity": 41125,
+        "AvgStadiumUsableCapacity": 36725,
+        "AvgStadiumConditionPercent": 88.96,
+        "AvgMatchAttendance": 17334
+      },
+      {
+        "Season": 90,
+        "AvgStadiumBuiltCapacity": 39323,
+        "AvgStadiumUsableCapacity": 35316,
+        "AvgStadiumConditionPercent": 88.99,
+        "AvgMatchAttendance": 17479
+      },
+      {
+        "Season": 100,
+        "AvgStadiumBuiltCapacity": 42336,
+        "AvgStadiumUsableCapacity": 37730,
+        "AvgStadiumConditionPercent": 89.61,
+        "AvgMatchAttendance": 17254
+      }
+    ],
+    "finalDivisionStadiums": [
+      {
+        "clubName": "Estrela Solit\u00E1ria",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 62249754.31,
+        "stadiumName": "Est\u00E1dio Ol\u00EDmpico Norte",
+        "builtCapacity": 62900,
+        "usableCapacity": 54729,
+        "conditionPercent": 87.01,
+        "lastTicketPrice": 24.01,
+        "lastAttendance": 31659,
+        "occupancyRate": 0.578
+      },
+      {
+        "clubName": "Real Pampulha",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 259513683.70,
+        "stadiumName": "Gigante da Lagoa",
+        "builtCapacity": 62796,
+        "usableCapacity": 52874,
+        "conditionPercent": 84.2,
+        "lastTicketPrice": 25.17,
+        "lastAttendance": 42128,
+        "occupancyRate": 0.797
+      },
+      {
+        "clubName": "Cear\u00E1 Alvinegro",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 136171429.77,
+        "stadiumName": "Vovoz\u00E3o Arena",
+        "builtCapacity": 62664,
+        "usableCapacity": 52970,
+        "conditionPercent": 84.53,
+        "lastTicketPrice": 24.64,
+        "lastAttendance": 36853,
+        "occupancyRate": 0.696
+      },
+      {
+        "clubName": "Crici\u00FAma Carvoeiro",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 101507712.10,
+        "stadiumName": "Majestoso do Sul",
+        "builtCapacity": 59948,
+        "usableCapacity": 54774,
+        "conditionPercent": 91.37,
+        "lastTicketPrice": 18.86,
+        "lastAttendance": 21923,
+        "occupancyRate": 0.4
+      },
+      {
+        "clubName": "Brasil de Pelotas",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 9709446.10,
+        "stadiumName": "Bento Freitas",
+        "builtCapacity": 58607,
+        "usableCapacity": 52359,
+        "conditionPercent": 89.34,
+        "lastTicketPrice": 24.49,
+        "lastAttendance": 36513,
+        "occupancyRate": 0.697
+      },
+      {
+        "clubName": "Associa\u00E7\u00E3o de Uberl\u00E2ndia",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 63238673.60,
+        "stadiumName": "Municipal de Uberl\u00E2ndia",
+        "builtCapacity": 54133,
+        "usableCapacity": 51816,
+        "conditionPercent": 95.72,
+        "lastTicketPrice": 24.77,
+        "lastAttendance": 37113,
+        "occupancyRate": 0.716
+      },
+      {
+        "clubName": "Comercial de Ponta Grossa 2",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 60794108.24,
+        "stadiumName": "Municipal de Ponta Grossa",
+        "builtCapacity": 44394,
+        "usableCapacity": 42001,
+        "conditionPercent": 94.61,
+        "lastTicketPrice": 18.67,
+        "lastAttendance": 18389,
+        "occupancyRate": 0.438
+      },
+      {
+        "clubName": "XV de de Arapiraca",
+        "division": "PrimeiraDivisao",
+        "cashBalance": 22288211.16,
+        "stadiumName": "Municipal de Arapiraca",
+        "builtCapacity": 38248,
+        "usableCapacity": 36768,
+        "conditionPercent": 96.13,
+        "lastTicketPrice": 24.72,
+        "lastAttendance": 37028,
+        "occupancyRate": 1.007
+      },
+      {
+        "clubName": "Esporte Clube Litoral",
+        "division": "SegundaDivisao",
+        "cashBalance": 123443317.68,
+        "stadiumName": "Vila do Porto",
+        "builtCapacity": 62829,
+        "usableCapacity": 56540,
+        "conditionPercent": 89.99,
+        "lastTicketPrice": 23.94,
+        "lastAttendance": 33228,
+        "occupancyRate": 0.588
+      },
+      {
+        "clubName": "Palestra Verde",
+        "division": "SegundaDivisao",
+        "cashBalance": 124206582.10,
+        "stadiumName": "Jardim das Palmeiras",
+        "builtCapacity": 62286,
+        "usableCapacity": 57845,
+        "conditionPercent": 92.87,
+        "lastTicketPrice": 18.35,
+        "lastAttendance": 22253,
+        "occupancyRate": 0.385
+      },
+      {
+        "clubName": "Guarani da Serra",
+        "division": "SegundaDivisao",
+        "cashBalance": 179918243.97,
+        "stadiumName": "Brinco de Ouro",
+        "builtCapacity": 59953,
+        "usableCapacity": 51296,
+        "conditionPercent": 85.56,
+        "lastTicketPrice": 14.48,
+        "lastAttendance": 13230,
+        "occupancyRate": 0.258
+      },
+      {
+        "clubName": "Juventude Serrana",
+        "division": "SegundaDivisao",
+        "cashBalance": 59077363.08,
+        "stadiumName": "Alfredo da Serra",
+        "builtCapacity": 57308,
+        "usableCapacity": 47778,
+        "conditionPercent": 83.37,
+        "lastTicketPrice": 24.37,
+        "lastAttendance": 35774,
+        "occupancyRate": 0.749
+      },
+      {
+        "clubName": "Le\u00E3o da Ilha",
+        "division": "SegundaDivisao",
+        "cashBalance": 35327599.11,
+        "stadiumName": "Ilha do Retiro Novo",
+        "builtCapacity": 55809,
+        "usableCapacity": 49084,
+        "conditionPercent": 87.95,
+        "lastTicketPrice": 17.99,
+        "lastAttendance": 19424,
+        "occupancyRate": 0.396
+      },
+      {
+        "clubName": "Remo Azulino",
+        "division": "SegundaDivisao",
+        "cashBalance": 99992310.06,
+        "stadiumName": "Baen\u00E3o Norte",
+        "builtCapacity": 54831,
+        "usableCapacity": 45987,
+        "conditionPercent": 83.87,
+        "lastTicketPrice": 17.98,
+        "lastAttendance": 15486,
+        "occupancyRate": 0.337
+      },
+      {
+        "clubName": "Independente de Sorocaba 2",
+        "division": "SegundaDivisao",
+        "cashBalance": 11401285.72,
+        "stadiumName": "Municipal de Sorocaba",
+        "builtCapacity": 34021,
+        "usableCapacity": 32095,
+        "conditionPercent": 94.34,
+        "lastTicketPrice": 18.35,
+        "lastAttendance": 16665,
+        "occupancyRate": 0.519
+      },
+      {
+        "clubName": "Rio Branco de Campo Grande",
+        "division": "SegundaDivisao",
+        "cashBalance": 2809700.11,
+        "stadiumName": "Municipal de Campo Grande",
+        "builtCapacity": 23421,
+        "usableCapacity": 21538,
+        "conditionPercent": 91.96,
+        "lastTicketPrice": 14.42,
+        "lastAttendance": 10117,
+        "occupancyRate": 0.47
+      },
+      {
+        "clubName": "Goi\u00E1s Esmeralda",
+        "division": "TerceiraDivisao",
+        "cashBalance": 68812241.87,
+        "stadiumName": "Serra Dourada Sul",
+        "builtCapacity": 64668,
+        "usableCapacity": 58550,
+        "conditionPercent": 90.54,
+        "lastTicketPrice": 17.85,
+        "lastAttendance": 16199,
+        "occupancyRate": 0.277
+      },
+      {
+        "clubName": "Ponte Alvinegra",
+        "division": "TerceiraDivisao",
+        "cashBalance": 316154064.02,
+        "stadiumName": "Mois\u00E9s Central",
+        "builtCapacity": 64138,
+        "usableCapacity": 54742,
+        "conditionPercent": 85.35,
+        "lastTicketPrice": 13.78,
+        "lastAttendance": 8718,
+        "occupancyRate": 0.159
+      },
+      {
+        "clubName": "Esportivo de Sorocaba",
+        "division": "TerceiraDivisao",
+        "cashBalance": 2505919.31,
+        "stadiumName": "Municipal de Sorocaba",
+        "builtCapacity": 40587,
+        "usableCapacity": 36301,
+        "conditionPercent": 89.44,
+        "lastTicketPrice": 18.07,
+        "lastAttendance": 16410,
+        "occupancyRate": 0.452
+      },
+      {
+        "clubName": "Primavera de Sorocaba",
+        "division": "TerceiraDivisao",
+        "cashBalance": 1764273.48,
+        "stadiumName": "Municipal de Sorocaba",
+        "builtCapacity": 25135,
+        "usableCapacity": 21169,
+        "conditionPercent": 84.22,
+        "lastTicketPrice": 14.11,
+        "lastAttendance": 7457,
+        "occupancyRate": 0.352
+      },
+      {
+        "clubName": "Uni\u00E3o de Ponta Grossa",
+        "division": "TerceiraDivisao",
+        "cashBalance": 1606427.19,
+        "stadiumName": "Municipal de Ponta Grossa",
+        "builtCapacity": 23902,
+        "usableCapacity": 20759,
+        "conditionPercent": 86.85,
+        "lastTicketPrice": 14.22,
+        "lastAttendance": 7888,
+        "occupancyRate": 0.38
+      },
+      {
+        "clubName": "Ferrovi\u00E1rio de Ponta Grossa",
+        "division": "TerceiraDivisao",
+        "cashBalance": 778443.56,
+        "stadiumName": "Municipal de Ponta Grossa",
+        "builtCapacity": 18071,
+        "usableCapacity": 15725,
+        "conditionPercent": 87.02,
+        "lastTicketPrice": 11.15,
+        "lastAttendance": 6143,
+        "occupancyRate": 0.391
+      },
+      {
+        "clubName": "CSA Azul\u00E3o",
+        "division": "TerceiraDivisao",
+        "cashBalance": 995809.14,
+        "stadiumName": "Rei Pel\u00E9",
+        "builtCapacity": 16312,
+        "usableCapacity": 14974,
+        "conditionPercent": 91.8,
+        "lastTicketPrice": 14.08,
+        "lastAttendance": 8644,
+        "occupancyRate": 0.577
+      },
+      {
+        "clubName": "S\u00E3o Bento de Uberl\u00E2ndia 2",
+        "division": "TerceiraDivisao",
+        "cashBalance": 3662201.76,
+        "stadiumName": "Municipal de Uberl\u00E2ndia",
+        "builtCapacity": 10454,
+        "usableCapacity": 9187,
+        "conditionPercent": 87.88,
+        "lastTicketPrice": 11.55,
+        "lastAttendance": 6845,
+        "occupancyRate": 0.745
+      },
+      {
+        "clubName": "Atl\u00E9tico Paulistano",
+        "division": "QuartaDivisao",
+        "cashBalance": 7161801.38,
+        "stadiumName": "Arena Parque Sul",
+        "builtCapacity": 60676,
+        "usableCapacity": 50319,
+        "conditionPercent": 82.93,
+        "lastTicketPrice": 8.21,
+        "lastAttendance": 2653,
+        "occupancyRate": 0.053
+      },
+      {
+        "clubName": "Gr\u00EAmio Guanabara",
+        "division": "QuartaDivisao",
+        "cashBalance": 937687.94,
+        "stadiumName": "Est\u00E1dio da Colina",
+        "builtCapacity": 59027,
+        "usableCapacity": 45758,
+        "conditionPercent": 77.52,
+        "lastTicketPrice": 11.16,
+        "lastAttendance": 6344,
+        "occupancyRate": 0.139
+      },
+      {
+        "clubName": "Associa\u00E7\u00E3o de Petr\u00F3polis",
+        "division": "QuartaDivisao",
+        "cashBalance": 7728128.04,
+        "stadiumName": "Municipal de Petr\u00F3polis",
+        "builtCapacity": 40524,
+        "usableCapacity": 36459,
+        "conditionPercent": 89.97,
+        "lastTicketPrice": 11.13,
+        "lastAttendance": 5642,
+        "occupancyRate": 0.155
+      },
+      {
+        "clubName": "Esportivo de Imperatriz 2",
+        "division": "QuartaDivisao",
+        "cashBalance": 891601.35,
+        "stadiumName": "Municipal de Imperatriz",
+        "builtCapacity": 24394,
+        "usableCapacity": 21240,
+        "conditionPercent": 87.07,
+        "lastTicketPrice": 13.61,
+        "lastAttendance": 6928,
+        "occupancyRate": 0.326
+      },
+      {
+        "clubName": "Am\u00E9rica Mec\u00E3o",
+        "division": "QuartaDivisao",
+        "cashBalance": 789641.98,
+        "stadiumName": "Arena das Dunas Sul",
+        "builtCapacity": 21922,
+        "usableCapacity": 20320,
+        "conditionPercent": 92.69,
+        "lastTicketPrice": 11.07,
+        "lastAttendance": 5596,
+        "occupancyRate": 0.275
+      },
+      {
+        "clubName": "Real de Uberl\u00E2ndia 2",
+        "division": "QuartaDivisao",
+        "cashBalance": 7504012.36,
+        "stadiumName": "Municipal de Uberl\u00E2ndia",
+        "builtCapacity": 21082,
+        "usableCapacity": 17622,
+        "conditionPercent": 83.59,
+        "lastTicketPrice": 10.25,
+        "lastAttendance": 2411,
+        "occupancyRate": 0.137
+      },
+      {
+        "clubName": "Real de Arapiraca 2",
+        "division": "QuartaDivisao",
+        "cashBalance": 1177791.77,
+        "stadiumName": "Municipal de Arapiraca",
+        "builtCapacity": 14944,
+        "usableCapacity": 14415,
+        "conditionPercent": 96.46,
+        "lastTicketPrice": 13.98,
+        "lastAttendance": 8491,
+        "occupancyRate": 0.589
+      },
+      {
+        "clubName": "S\u00E3o Bento de Campo Grande",
+        "division": "QuartaDivisao",
+        "cashBalance": 9245108.57,
+        "stadiumName": "Municipal de Campo Grande",
+        "builtCapacity": 9334,
+        "usableCapacity": 7547,
+        "conditionPercent": 80.86,
+        "lastTicketPrice": 10.87,
+        "lastAttendance": 4026,
+        "occupancyRate": 0.533
+      }
+    ]
+  },
+  "scenarioC_Stress_199803": {
+    "worldSeed": 199803,
+    "totalTicketRevenue": 9727657845.98,
+    "totalStadiumOperatingCost": 1315823692.88,
+    "totalMaintenancePaid": 473391666.0,
+    "totalRenovationCost": 206029597,
+    "totalExpansionCost": 104975000,
+    "maintenanceEventsCount": 2382,
+    "renovationProjectsCount": 2477,
+    "expansionProjectsCount": 247,
+    "decadeEvolution": [
+      {
+        "Season": 1,
+        "AvgStadiumBuiltCapacity": 26672,
+        "AvgStadiumUsableCapacity": 23774,
+        "AvgStadiumConditionPercent": 91.04,
+        "AvgMatchAttendance": 16839
+      },
+      {
+        "Season": 10,
+        "AvgStadiumBuiltCapacity": 32621,
+        "AvgStadiumUsableCapacity": 29166,
+        "AvgStadiumConditionPercent": 89.12,
+        "AvgMatchAttendance": 16667
+      },
+      {
+        "Season": 20,
+        "AvgStadiumBuiltCapacity": 34995,
+        "AvgStadiumUsableCapacity": 30983,
+        "AvgStadiumConditionPercent": 88.09,
+        "AvgMatchAttendance": 15968
+      },
+      {
+        "Season": 30,
+        "AvgStadiumBuiltCapacity": 36310,
+        "AvgStadiumUsableCapacity": 32963,
+        "AvgStadiumConditionPercent": 90.78,
+        "AvgMatchAttendance": 16691
+      },
+      {
+        "Season": 40,
+        "AvgStadiumBuiltCapacity": 39766,
+        "AvgStadiumUsableCapacity": 35470,
+        "AvgStadiumConditionPercent": 89.22,
+        "AvgMatchAttendance": 16875
+      },
+      {
+        "Season": 50,
+        "AvgStadiumBuiltCapacity": 41753,
+        "AvgStadiumUsableCapacity": 36922,
+        "AvgStadiumConditionPercent": 88.94,
+        "AvgMatchAttendance": 17582
+      },
+      {
+        "Season": 60,
+        "AvgStadiumBuiltCapacity": 39299,
+        "AvgStadiumUsableCapacity": 34864,
+        "AvgStadiumConditionPercent": 89.17,
+        "AvgMatchAttendance": 17557
+      },
+      {
+        "Season": 70,
+        "AvgStadiumBuiltCapacity": 40932,
+        "AvgStadiumUsableCapacity": 36581,
+        "AvgStadiumConditionPercent": 89.63,
+        "AvgMatchAttendance": 17270
+      },
+      {
+        "Season": 80,
+        "AvgStadiumBuiltCapacity": 43466,
+        "AvgStadiumUsableCapacity": 38534,
+        "AvgStadiumConditionPercent": 88.33,
+        "AvgMatchAttendance": 16977
+      },
+      {
+        "Season": 90,
+        "AvgStadiumBuiltCapacity": 45388,
+        "AvgStadiumUsableCapacity": 40856,
+        "AvgStadiumConditionPercent": 90.06,
+        "AvgMatchAttendance": 17229
+      },
+      {
+        "Season": 100,
+        "AvgStadiumBuiltCapacity": 44191,
+        "AvgStadiumUsableCapacity": 40280,
+        "AvgStadiumConditionPercent": 90.83,
+        "AvgMatchAttendance": 17244
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:01.19]     Elifoot.Domain.Tests.PlayerRankings009Tests.OwnGoalAndUnknownScorer_ChargeActiveGoalkeeperWithoutInventingIndividualGoal(ownGoal: False) [FAIL]
+  Com falha Elifoot.Domain.Tests.PlayerRankings009Tests.OwnGoalAndUnknownScorer_ChargeActiveGoalkeeperWithoutInventingIndividualGoal(ownGoal: False) [6 ms]
+  Mensagem de erro:
+   Assert.Empty() Failure: Collection was not empty
+Collection: ["Temporada 1: evento de gol sem autor em campo veri"···, "Temporada 1: escalação/minutos incompletos em part"···]
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.PlayerRankings009Tests.OwnGoalAndUnknownScorer_ChargeActiveGoalkeeperWithoutInventingIndividualGoal(Boolean ownGoal) in D:\elifoot_98\tests\Elifoot.Domain.Tests\PlayerRankings009Tests.cs:line 284
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+Arquivo de resultados: D:\elifoot_98\docs\audit-009\domain-tests\domain009-initial.trx
+
+Com falha! – Com falha:     1, Aprovado:   108, Ignorado:     0, Total:   109, Duração: 1 s - Elifoot.Domain.Tests.dll (net10.0)

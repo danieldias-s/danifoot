@@ -1,0 +1,60 @@
+--------- beginning of main
+--------- beginning of system
+10-29 21:15:12.923  1790  1790 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+10-29 21:15:13.019  1784  1784 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+10-29 21:19:03.616  2523  2523 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:19:03.833  2523  2523 D AndroidRuntime: CheckJNI is OFF
+10-29 21:19:26.355  2523  2523 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:19:26.663  2523  2523 I AndroidRuntime: VM exiting with result code 0.
+10-29 21:21:57.484  2933  2933 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:21:57.863  2933  2933 D AndroidRuntime: CheckJNI is OFF
+10-29 21:21:59.015  2938  2938 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:21:59.081  2938  2938 D AndroidRuntime: CheckJNI is OFF
+10-29 21:22:09.577  2933  2933 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:22:09.758  2938  2938 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 21:23:09.225  2997  2997 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:23:10.425  2997  2997 D AndroidRuntime: CheckJNI is OFF
+10-29 21:23:13.598  2997  2997 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:23:44.348  3032  3032 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:23:44.759  3032  3032 D AndroidRuntime: CheckJNI is OFF
+10-29 21:23:59.485  3032  3032 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:24:00.582  3032  3032 I AndroidRuntime: VM exiting with result code 0.
+10-29 21:24:38.142  2938  2938 D AndroidRuntime: Shutting down VM
+10-29 21:24:58.470  3100  3100 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:24:58.575  3100  3100 D AndroidRuntime: CheckJNI is OFF
+10-29 21:25:01.511  3100  3100 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:25:01.584  3100  3100 I AndroidRuntime: VM exiting with result code 1.
+10-29 21:26:07.346  3116  3116 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:26:07.402  3116  3116 D AndroidRuntime: CheckJNI is OFF
+10-29 21:26:09.091  3116  3116 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:26:09.157  3116  3116 I AndroidRuntime: VM exiting with result code 1.
+10-29 21:27:09.158  3158  3158 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:27:09.212  3158  3158 D AndroidRuntime: CheckJNI is OFF
+10-29 21:27:10.776  3158  3158 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:27:10.889  3158  3158 I AndroidRuntime: VM exiting with result code 0.
+10-29 21:27:32.078  3170  3170 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:27:32.253  3170  3170 D AndroidRuntime: CheckJNI is OFF
+10-29 21:27:34.926  3170  3170 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 21:27:35.101  3175  3175 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:27:35.146  3175  3175 D AndroidRuntime: CheckJNI is OFF
+10-29 21:27:37.858  3175  3175 D AndroidRuntime: Calling main entry com.genymobile.scrcpy.Server
+10-29 21:27:50.050  3199  3199 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:27:50.114  3199  3199 D AndroidRuntime: CheckJNI is OFF
+10-29 21:27:55.308  3170  3170 D AndroidRuntime: Shutting down VM
+10-29 21:27:57.677  3199  3199 D AndroidRuntime: Calling main entry com.genymobile.scrcpy.CleanUp
+10-29 21:28:17.870  3194  3194 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(527)] [Action Required]: Impeller opt-out deprecated.
+10-29 21:28:17.870  3194  3194 I flutter :     The application opted out of Impeller by either using the
+10-29 21:28:17.870  3194  3194 I flutter :     `--no-enable-impeller` flag or the
+10-29 21:28:17.870  3194  3194 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+10-29 21:28:17.870  3194  3194 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+10-29 21:28:17.870  3194  3194 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+10-29 21:28:17.870  3194  3194 I flutter :     the issue.
+10-29 21:28:17.870  3194  3194 I flutter : 
+10-29 21:28:17.870  3194  3194 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+10-29 21:28:17.870  3194  3194 I flutter : 
+10-29 21:28:29.158  3194  3245 I flutter : The Dart VM service is listening on http://127.0.0.1:56239/WF4UWdn_Xvk=/
+10-29 21:30:21.862  2997  2997 I AndroidRuntime: VM exiting with result code 0.
+10-29 21:31:11.733  3301  3301 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:31:11.776  3301  3301 D AndroidRuntime: CheckJNI is OFF
+10-29 21:31:14.083  3301  3301 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+10-29 21:31:14.368  3301  3301 D AndroidRuntime: Shutting down VM

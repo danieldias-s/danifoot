@@ -1,0 +1,3533 @@
+{
+  "task": "ELIFOOT_GAMEPLAY_BALANCE_100_SEASONS_005",
+  "primaryScenarioManagers": {
+    "worldSeed": 199801,
+    "totalActiveManagersTracked": 128,
+    "managersWhoAdaptedFormation": 128,
+    "managersWhoChangedClubs": 75,
+    "managersWhoUsedReserves": 128,
+    "totalInvalidLineupsAcross100Seasons": 0,
+    "managers": [
+      {
+        "Name": "Henrique Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 951,
+          "3-5-2": 27,
+          "4-5-1": 8,
+          "4-3-3": 97,
+          "5-3-2": 13
+        },
+        "TacticalAdaptations": 145,
+        "distinctClubsManaged": 8,
+        "ReservesUsedInMatches": 1346,
+        "InvalidLineups": 0,
+        "LeagueTitles": 13,
+        "CupTitles": 8,
+        "CoachPoints": 1690,
+        "Wins": 529,
+        "Draws": 256,
+        "Losses": 311,
+        "Dismissals": 7,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 77,
+          "3-4-3": 1097,
+          "4-3-3": 249,
+          "4-4-2": 47,
+          "3-5-2": 2,
+          "4-2-4": 22,
+          "5-3-2": 24
+        },
+        "TacticalAdaptations": 421,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1745,
+        "InvalidLineups": 0,
+        "LeagueTitles": 10,
+        "CupTitles": 6,
+        "CoachPoints": 2137,
+        "Wins": 701,
+        "Draws": 276,
+        "Losses": 541,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1387,
+          "4-4-2": 29,
+          "3-4-3": 81,
+          "3-5-2": 4,
+          "4-5-1": 7
+        },
+        "TacticalAdaptations": 121,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1865,
+        "InvalidLineups": 0,
+        "LeagueTitles": 6,
+        "CupTitles": 5,
+        "CoachPoints": 2124,
+        "Wins": 672,
+        "Draws": 308,
+        "Losses": 528,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Alves",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 996,
+          "4-3-3": 46,
+          "3-5-2": 29,
+          "4-5-1": 15,
+          "5-3-2": 12
+        },
+        "TacticalAdaptations": 102,
+        "distinctClubsManaged": 9,
+        "ReservesUsedInMatches": 1310,
+        "InvalidLineups": 0,
+        "LeagueTitles": 6,
+        "CupTitles": 5,
+        "CoachPoints": 1535,
+        "Wins": 490,
+        "Draws": 226,
+        "Losses": 382,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1269,
+          "4-3-3": 76,
+          "4-5-1": 27,
+          "3-5-2": 72,
+          "5-3-2": 10
+        },
+        "TacticalAdaptations": 185,
+        "distinctClubsManaged": 18,
+        "ReservesUsedInMatches": 1919,
+        "InvalidLineups": 0,
+        "LeagueTitles": 6,
+        "CupTitles": 2,
+        "CoachPoints": 2028,
+        "Wins": 610,
+        "Draws": 338,
+        "Losses": 506,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 622,
+          "4-4-2": 98,
+          "3-5-2": 19,
+          "4-5-1": 3,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 121,
+        "distinctClubsManaged": 7,
+        "ReservesUsedInMatches": 1109,
+        "InvalidLineups": 0,
+        "LeagueTitles": 5,
+        "CupTitles": 2,
+        "CoachPoints": 1030,
+        "Wins": 337,
+        "Draws": 130,
+        "Losses": 276,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1259,
+          "4-3-3": 72,
+          "3-5-2": 31,
+          "4-5-1": 27,
+          "5-3-2": 21
+        },
+        "TacticalAdaptations": 151,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1808,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 3,
+        "CoachPoints": 1967,
+        "Wins": 598,
+        "Draws": 332,
+        "Losses": 480,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 782,
+          "4-3-3": 162,
+          "4-5-1": 67,
+          "5-3-2": 33,
+          "4-4-2": 32,
+          "4-2-4": 11,
+          "3-5-2": 4
+        },
+        "TacticalAdaptations": 309,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1303,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 2,
+        "CoachPoints": 1451,
+        "Wins": 443,
+        "Draws": 224,
+        "Losses": 424,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1092,
+          "3-5-2": 50,
+          "4-5-1": 14,
+          "4-3-3": 77,
+          "5-3-2": 14
+        },
+        "TacticalAdaptations": 155,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1349,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 1,
+        "CoachPoints": 1772,
+        "Wins": 538,
+        "Draws": 293,
+        "Losses": 416,
+        "Dismissals": 15,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 1015,
+          "4-4-2": 38,
+          "4-3-3": 256,
+          "4-5-1": 66,
+          "5-3-2": 38,
+          "4-2-4": 14,
+          "3-5-2": 3
+        },
+        "TacticalAdaptations": 415,
+        "distinctClubsManaged": 18,
+        "ReservesUsedInMatches": 1949,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 2,
+        "CoachPoints": 1899,
+        "Wins": 577,
+        "Draws": 326,
+        "Losses": 527,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 965,
+          "3-4-3": 41,
+          "5-3-2": 29,
+          "4-4-2": 37,
+          "3-5-2": 10,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 119,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1296,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 2,
+        "CoachPoints": 1554,
+        "Wins": 505,
+        "Draws": 206,
+        "Losses": 373,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1212,
+          "4-3-3": 92,
+          "5-3-2": 22,
+          "3-5-2": 62,
+          "4-5-1": 12
+        },
+        "TacticalAdaptations": 188,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1659,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 4,
+        "CoachPoints": 1931,
+        "Wins": 598,
+        "Draws": 305,
+        "Losses": 497,
+        "Dismissals": 16,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 127,
+          "4-3-3": 849,
+          "3-5-2": 82,
+          "5-3-2": 7,
+          "4-5-1": 1
+        },
+        "TacticalAdaptations": 217,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1386,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 3,
+        "CoachPoints": 1442,
+        "Wins": 447,
+        "Draws": 230,
+        "Losses": 389,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 802,
+          "4-4-2": 64,
+          "5-4-1": 12,
+          "4-3-3": 25,
+          "3-5-2": 35,
+          "4-5-1": 13
+        },
+        "TacticalAdaptations": 149,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 1152,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 3,
+        "CoachPoints": 1288,
+        "Wins": 389,
+        "Draws": 221,
+        "Losses": 341,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1116,
+          "4-4-2": 260,
+          "3-5-2": 75,
+          "4-5-1": 3,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 339,
+        "distinctClubsManaged": 20,
+        "ReservesUsedInMatches": 1976,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 2,
+        "CoachPoints": 1880,
+        "Wins": 561,
+        "Draws": 334,
+        "Losses": 560,
+        "Dismissals": 23,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 851,
+          "4-3-3": 216,
+          "4-5-1": 66,
+          "5-3-2": 34,
+          "4-4-2": 38,
+          "4-2-4": 22,
+          "3-5-2": 3
+        },
+        "TacticalAdaptations": 379,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1552,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 2,
+        "CoachPoints": 1677,
+        "Wins": 540,
+        "Draws": 221,
+        "Losses": 469,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1093,
+          "4-4-2": 196,
+          "3-5-2": 34,
+          "4-5-1": 2,
+          "5-3-2": 3
+        },
+        "TacticalAdaptations": 235,
+        "distinctClubsManaged": 20,
+        "ReservesUsedInMatches": 1827,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 1757,
+        "Wins": 518,
+        "Draws": 320,
+        "Losses": 490,
+        "Dismissals": 22,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 742,
+          "4-4-2": 152,
+          "4-3-3": 19,
+          "5-3-2": 12,
+          "4-5-1": 16
+        },
+        "TacticalAdaptations": 199,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1062,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 1297,
+        "Wins": 381,
+        "Draws": 228,
+        "Losses": 332,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 774,
+          "4-5-1": 6,
+          "3-5-2": 63,
+          "4-3-3": 28,
+          "5-3-2": 13
+        },
+        "TacticalAdaptations": 110,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 1030,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 0,
+        "CoachPoints": 1197,
+        "Wins": 351,
+        "Draws": 221,
+        "Losses": 312,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Alves",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1091,
+          "3-5-2": 8,
+          "3-4-3": 37,
+          "4-4-2": 35,
+          "5-3-2": 3,
+          "4-5-1": 7
+        },
+        "TacticalAdaptations": 90,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1611,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 4,
+        "CoachPoints": 1638,
+        "Wins": 517,
+        "Draws": 239,
+        "Losses": 425,
+        "Dismissals": 16,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 808,
+          "4-5-1": 6,
+          "3-5-2": 20,
+          "5-3-2": 13,
+          "4-3-3": 44
+        },
+        "TacticalAdaptations": 83,
+        "distinctClubsManaged": 6,
+        "ReservesUsedInMatches": 999,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 4,
+        "CoachPoints": 1247,
+        "Wins": 367,
+        "Draws": 217,
+        "Losses": 307,
+        "Dismissals": 5,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 746,
+          "4-4-2": 158,
+          "3-5-2": 125,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 284,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1194,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1354,
+        "Wins": 429,
+        "Draws": 201,
+        "Losses": 400,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 724,
+          "4-3-3": 150,
+          "4-4-2": 34,
+          "4-2-4": 23,
+          "5-3-2": 28,
+          "4-5-1": 53,
+          "3-5-2": 1
+        },
+        "TacticalAdaptations": 289,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1142,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1346,
+        "Wins": 410,
+        "Draws": 223,
+        "Losses": 380,
+        "Dismissals": 16,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 761,
+          "4-5-1": 17,
+          "4-3-3": 112,
+          "5-3-2": 45,
+          "3-5-2": 5,
+          "4-4-2": 2
+        },
+        "TacticalAdaptations": 181,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1106,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1339,
+        "Wins": 392,
+        "Draws": 247,
+        "Losses": 303,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1170,
+          "4-4-2": 201,
+          "4-5-1": 4,
+          "3-5-2": 55
+        },
+        "TacticalAdaptations": 260,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1749,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1881,
+        "Wins": 587,
+        "Draws": 293,
+        "Losses": 550,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 1145,
+          "4-3-3": 35,
+          "5-3-2": 60,
+          "4-5-1": 34,
+          "3-5-2": 33,
+          "4-4-2": 7
+        },
+        "TacticalAdaptations": 169,
+        "distinctClubsManaged": 18,
+        "ReservesUsedInMatches": 1920,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1693,
+        "Wins": 448,
+        "Draws": 390,
+        "Losses": 476,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 935,
+          "4-4-2": 238,
+          "4-5-1": 10,
+          "5-3-2": 24,
+          "4-3-3": 28
+        },
+        "TacticalAdaptations": 300,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1745,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1640,
+        "Wins": 489,
+        "Draws": 300,
+        "Losses": 446,
+        "Dismissals": 20,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 718,
+          "4-4-2": 37,
+          "4-3-3": 214,
+          "5-3-2": 26,
+          "4-2-4": 12,
+          "4-5-1": 60,
+          "3-5-2": 3
+        },
+        "TacticalAdaptations": 352,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1395,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1456,
+        "Wins": 460,
+        "Draws": 210,
+        "Losses": 400,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 632,
+          "4-4-2": 129,
+          "3-5-2": 57,
+          "4-5-1": 3,
+          "5-3-2": 3
+        },
+        "TacticalAdaptations": 192,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1053,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1084,
+        "Wins": 331,
+        "Draws": 178,
+        "Losses": 315,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 508,
+          "3-5-2": 29,
+          "4-4-2": 86,
+          "4-5-1": 1,
+          "5-3-2": 35
+        },
+        "TacticalAdaptations": 151,
+        "distinctClubsManaged": 7,
+        "ReservesUsedInMatches": 695,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 915,
+        "Wins": 283,
+        "Draws": 150,
+        "Losses": 226,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 409,
+          "5-3-2": 3,
+          "4-3-3": 97,
+          "3-5-2": 18,
+          "4-5-1": 48,
+          "4-4-2": 21,
+          "4-2-4": 5
+        },
+        "TacticalAdaptations": 192,
+        "distinctClubsManaged": 7,
+        "ReservesUsedInMatches": 560,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 841,
+        "Wins": 281,
+        "Draws": 95,
+        "Losses": 225,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 443,
+          "3-5-2": 10,
+          "4-3-3": 28,
+          "4-5-1": 5,
+          "5-3-2": 11
+        },
+        "TacticalAdaptations": 54,
+        "distinctClubsManaged": 6,
+        "ReservesUsedInMatches": 352,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 638,
+        "Wins": 189,
+        "Draws": 116,
+        "Losses": 192,
+        "Dismissals": 5,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 762,
+          "4-3-3": 31,
+          "4-4-2": 24,
+          "3-5-2": 49,
+          "5-4-1": 3
+        },
+        "TacticalAdaptations": 107,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1080,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1179,
+        "Wins": 353,
+        "Draws": 204,
+        "Losses": 312,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 608,
+          "5-3-2": 82,
+          "4-3-3": 77,
+          "4-4-2": 2,
+          "3-6-1": 35
+        },
+        "TacticalAdaptations": 196,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 939,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1027,
+        "Wins": 279,
+        "Draws": 231,
+        "Losses": 294,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 505,
+          "4-4-2": 13,
+          "3-5-2": 6,
+          "4-3-3": 21,
+          "5-4-1": 44,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 86,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 809,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 743,
+        "Wins": 212,
+        "Draws": 148,
+        "Losses": 231,
+        "Dismissals": 9,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 465,
+          "4-4-2": 54,
+          "3-4-3": 12,
+          "3-5-2": 5,
+          "5-3-2": 2,
+          "4-5-1": 7
+        },
+        "TacticalAdaptations": 80,
+        "distinctClubsManaged": 5,
+        "ReservesUsedInMatches": 593,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 718,
+        "Wins": 228,
+        "Draws": 108,
+        "Losses": 209,
+        "Dismissals": 5,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 325,
+          "4-3-3": 100,
+          "4-5-1": 34,
+          "4-4-2": 33,
+          "5-3-2": 18,
+          "3-5-2": 6,
+          "4-2-4": 3
+        },
+        "TacticalAdaptations": 194,
+        "distinctClubsManaged": 9,
+        "ReservesUsedInMatches": 491,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 681,
+        "Wins": 221,
+        "Draws": 90,
+        "Losses": 208,
+        "Dismissals": 8,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 424,
+          "5-3-2": 20,
+          "4-4-2": 21,
+          "3-5-2": 21,
+          "3-6-1": 25,
+          "4-3-3": 9
+        },
+        "TacticalAdaptations": 96,
+        "distinctClubsManaged": 9,
+        "ReservesUsedInMatches": 586,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 672,
+        "Wins": 198,
+        "Draws": 121,
+        "Losses": 201,
+        "Dismissals": 8,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 219,
+          "4-4-2": 87,
+          "4-5-1": 12
+        },
+        "TacticalAdaptations": 99,
+        "distinctClubsManaged": 2,
+        "ReservesUsedInMatches": 260,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 400,
+        "Wins": 122,
+        "Draws": 66,
+        "Losses": 130,
+        "Dismissals": 1,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 958,
+          "4-5-1": 33,
+          "4-4-2": 3,
+          "5-3-2": 86,
+          "4-3-3": 45,
+          "3-5-2": 18
+        },
+        "TacticalAdaptations": 185,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1693,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 5,
+        "CoachPoints": 1536,
+        "Wins": 427,
+        "Draws": 317,
+        "Losses": 399,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      }
+    ]
+  },
+  "scenarioBWithHumanAgents": {
+    "worldSeed": 199802,
+    "totalActiveManagersTracked": 132,
+    "managersWhoAdaptedFormation": 130,
+    "managersWhoChangedClubs": 68,
+    "managersWhoUsedReserves": 124,
+    "totalInvalidLineupsAcross100Seasons": 0,
+    "managers": [
+      {
+        "Name": "Agente_Ofensivo_433",
+        "IsHumanAgent": true,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 808,
+          "4-4-2": 967
+        },
+        "TacticalAdaptations": 967,
+        "distinctClubsManaged": 1,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 30,
+        "CupTitles": 19,
+        "CoachPoints": 2962,
+        "Wins": 933,
+        "Draws": 430,
+        "Losses": 412,
+        "Dismissals": 0,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Pressao_343",
+        "IsHumanAgent": true,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 773,
+          "4-3-3": 1001
+        },
+        "TacticalAdaptations": 1001,
+        "distinctClubsManaged": 1,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 13,
+        "CupTitles": 18,
+        "CoachPoints": 2743,
+        "Wins": 884,
+        "Draws": 385,
+        "Losses": 505,
+        "Dismissals": 0,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Direto_424",
+        "IsHumanAgent": true,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-2-4",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-2-4": 1049,
+          "4-4-2": 668
+        },
+        "TacticalAdaptations": 668,
+        "distinctClubsManaged": 2,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 9,
+        "CupTitles": 7,
+        "CoachPoints": 2553,
+        "Wins": 798,
+        "Draws": 386,
+        "Losses": 533,
+        "Dismissals": 1,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Pragmatico_352",
+        "IsHumanAgent": true,
+        "Identity": "Pragmatico",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 468,
+          "4-4-2": 1290
+        },
+        "TacticalAdaptations": 1290,
+        "distinctClubsManaged": 1,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 7,
+        "CupTitles": 14,
+        "CoachPoints": 2637,
+        "Wins": 825,
+        "Draws": 410,
+        "Losses": 523,
+        "Dismissals": 0,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1163,
+          "4-3-3": 61,
+          "5-3-2": 7,
+          "4-5-1": 23,
+          "3-5-2": 32
+        },
+        "TacticalAdaptations": 123,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1756,
+        "InvalidLineups": 0,
+        "LeagueTitles": 7,
+        "CupTitles": 2,
+        "CoachPoints": 1761,
+        "Wins": 531,
+        "Draws": 300,
+        "Losses": 455,
+        "Dismissals": 20,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 506,
+          "4-3-3": 49,
+          "4-5-1": 9,
+          "3-5-2": 11,
+          "5-3-2": 3
+        },
+        "TacticalAdaptations": 72,
+        "distinctClubsManaged": 5,
+        "ReservesUsedInMatches": 717,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 2,
+        "CoachPoints": 803,
+        "Wins": 250,
+        "Draws": 129,
+        "Losses": 199,
+        "Dismissals": 4,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Retranca_532",
+        "IsHumanAgent": true,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 98,
+          "5-4-1": 1577
+        },
+        "TacticalAdaptations": 1577,
+        "distinctClubsManaged": 1,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 4,
+        "CoachPoints": 2372,
+        "Wins": 665,
+        "Draws": 483,
+        "Losses": 527,
+        "Dismissals": 0,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 649,
+          "4-4-2": 177,
+          "3-5-2": 10,
+          "4-5-1": 3,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 191,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1346,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 2,
+        "CoachPoints": 1106,
+        "Wins": 321,
+        "Draws": 205,
+        "Losses": 314,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 1266,
+          "4-5-1": 22,
+          "5-3-2": 32,
+          "4-3-3": 12,
+          "3-5-2": 11,
+          "4-4-2": 1
+        },
+        "TacticalAdaptations": 78,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 2064,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 1,
+        "CoachPoints": 1776,
+        "Wins": 493,
+        "Draws": 379,
+        "Losses": 472,
+        "Dismissals": 21,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Equilibrado_442",
+        "IsHumanAgent": true,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 484,
+          "4-5-1": 1230
+        },
+        "TacticalAdaptations": 1230,
+        "distinctClubsManaged": 1,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 4,
+        "CoachPoints": 2522,
+        "Wins": 737,
+        "Draws": 466,
+        "Losses": 511,
+        "Dismissals": 0,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1187,
+          "4-3-3": 10,
+          "5-4-1": 13,
+          "4-4-2": 12,
+          "3-5-2": 12,
+          "4-5-1": 1
+        },
+        "TacticalAdaptations": 48,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 2124,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 2,
+        "CoachPoints": 1622,
+        "Wins": 456,
+        "Draws": 340,
+        "Losses": 439,
+        "Dismissals": 16,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 691,
+          "4-5-1": 9,
+          "4-4-2": 292,
+          "4-3-3": 50,
+          "5-3-2": 13
+        },
+        "TacticalAdaptations": 364,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1674,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 1484,
+        "Wins": 460,
+        "Draws": 230,
+        "Losses": 365,
+        "Dismissals": 14,
+        "SeasonsManaged": 99
+      },
+      {
+        "Name": "Alex Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 323,
+          "4-4-2": 59,
+          "3-5-2": 1,
+          "5-3-2": 30,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 92,
+        "distinctClubsManaged": 3,
+        "ReservesUsedInMatches": 429,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 528,
+        "Wins": 161,
+        "Draws": 80,
+        "Losses": 174,
+        "Dismissals": 2,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 300,
+          "4-4-2": 15,
+          "3-4-3": 2,
+          "3-5-2": 3,
+          "5-3-2": 58
+        },
+        "TacticalAdaptations": 78,
+        "distinctClubsManaged": 4,
+        "ReservesUsedInMatches": 297,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 497,
+        "Wins": 153,
+        "Draws": 79,
+        "Losses": 146,
+        "Dismissals": 3,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 983,
+          "4-5-1": 13,
+          "3-5-2": 50,
+          "5-3-2": 8,
+          "4-3-3": 17
+        },
+        "TacticalAdaptations": 88,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 1700,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 3,
+        "CoachPoints": 1502,
+        "Wins": 457,
+        "Draws": 246,
+        "Losses": 368,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 863,
+          "4-3-3": 282,
+          "4-4-2": 35,
+          "5-3-2": 42,
+          "4-5-1": 50,
+          "3-5-2": 3,
+          "4-2-4": 9
+        },
+        "TacticalAdaptations": 421,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1973,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1751,
+        "Wins": 537,
+        "Draws": 278,
+        "Losses": 469,
+        "Dismissals": 16,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1117,
+          "5-4-1": 11,
+          "4-3-3": 34,
+          "4-4-2": 8,
+          "3-5-2": 3
+        },
+        "TacticalAdaptations": 56,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1662,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1614,
+        "Wins": 468,
+        "Draws": 314,
+        "Losses": 391,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 702,
+          "4-5-1": 60,
+          "4-3-3": 298,
+          "5-3-2": 23,
+          "4-4-2": 39,
+          "4-2-4": 17
+        },
+        "TacticalAdaptations": 437,
+        "distinctClubsManaged": 19,
+        "ReservesUsedInMatches": 1689,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1475,
+        "Wins": 466,
+        "Draws": 224,
+        "Losses": 449,
+        "Dismissals": 21,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 323,
+          "4-4-2": 196,
+          "4-5-1": 1,
+          "5-3-2": 21,
+          "3-5-2": 6
+        },
+        "TacticalAdaptations": 224,
+        "distinctClubsManaged": 8,
+        "ReservesUsedInMatches": 955,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 718,
+        "Wins": 219,
+        "Draws": 123,
+        "Losses": 205,
+        "Dismissals": 7,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1339,
+          "4-5-1": 13,
+          "3-5-2": 25,
+          "4-3-3": 27,
+          "5-3-2": 16
+        },
+        "TacticalAdaptations": 81,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 2522,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1870,
+        "Wins": 559,
+        "Draws": 340,
+        "Losses": 521,
+        "Dismissals": 22,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 915,
+          "3-6-1": 25,
+          "4-3-3": 47,
+          "5-3-2": 48,
+          "4-4-2": 3
+        },
+        "TacticalAdaptations": 123,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1397,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1389,
+        "Wins": 387,
+        "Draws": 293,
+        "Losses": 358,
+        "Dismissals": 15,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 585,
+          "4-5-1": 22,
+          "4-3-3": 33,
+          "4-4-2": 13,
+          "3-5-2": 11,
+          "5-3-2": 21
+        },
+        "TacticalAdaptations": 100,
+        "distinctClubsManaged": 7,
+        "ReservesUsedInMatches": 1157,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 921,
+        "Wins": 269,
+        "Draws": 166,
+        "Losses": 250,
+        "Dismissals": 7,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 779,
+          "4-4-2": 370,
+          "4-3-3": 15,
+          "5-3-2": 6,
+          "4-5-1": 16
+        },
+        "TacticalAdaptations": 407,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1983,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1531,
+        "Wins": 453,
+        "Draws": 277,
+        "Losses": 456,
+        "Dismissals": 15,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Alves",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 749,
+          "4-4-2": 311,
+          "4-3-3": 11,
+          "5-3-2": 14,
+          "4-5-1": 19
+        },
+        "TacticalAdaptations": 355,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1857,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1407,
+        "Wins": 423,
+        "Draws": 252,
+        "Losses": 429,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 700,
+          "4-4-2": 151,
+          "5-3-2": 5,
+          "3-5-2": 24,
+          "4-5-1": 1
+        },
+        "TacticalAdaptations": 181,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1392,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1125,
+        "Wins": 345,
+        "Draws": 179,
+        "Losses": 357,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1176,
+          "5-4-1": 14,
+          "4-4-2": 26,
+          "3-5-2": 14,
+          "4-3-3": 8,
+          "4-5-1": 5
+        },
+        "TacticalAdaptations": 67,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 2131,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1603,
+        "Wins": 460,
+        "Draws": 321,
+        "Losses": 462,
+        "Dismissals": 22,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1160,
+          "4-4-2": 38,
+          "3-4-3": 21,
+          "5-3-2": 3,
+          "4-5-1": 7
+        },
+        "TacticalAdaptations": 69,
+        "distinctClubsManaged": 19,
+        "ReservesUsedInMatches": 2197,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1541,
+        "Wins": 451,
+        "Draws": 289,
+        "Losses": 489,
+        "Dismissals": 22,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 983,
+          "3-5-2": 5,
+          "3-4-3": 24,
+          "4-4-2": 20,
+          "4-5-1": 6,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 56,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1740,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1366,
+        "Wins": 411,
+        "Draws": 235,
+        "Losses": 393,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 868,
+          "5-3-2": 23,
+          "4-3-3": 32,
+          "4-5-1": 31,
+          "3-5-2": 32,
+          "4-4-2": 5
+        },
+        "TacticalAdaptations": 123,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1452,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1348,
+        "Wins": 368,
+        "Draws": 290,
+        "Losses": 333,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 826,
+          "4-4-2": 7,
+          "3-6-1": 16,
+          "4-3-3": 25,
+          "3-5-2": 10,
+          "5-3-2": 39
+        },
+        "TacticalAdaptations": 97,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1241,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1234,
+        "Wins": 348,
+        "Draws": 254,
+        "Losses": 321,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 735,
+          "4-4-2": 147,
+          "3-5-2": 10
+        },
+        "TacticalAdaptations": 157,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 993,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1187,
+        "Wins": 364,
+        "Draws": 193,
+        "Losses": 335,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 765,
+          "4-3-3": 15,
+          "3-5-2": 10,
+          "5-3-2": 17,
+          "3-6-1": 30,
+          "4-4-2": 3
+        },
+        "TacticalAdaptations": 75,
+        "distinctClubsManaged": 8,
+        "ReservesUsedInMatches": 1278,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1086,
+        "Wins": 311,
+        "Draws": 224,
+        "Losses": 305,
+        "Dismissals": 9,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 552,
+          "4-4-2": 9,
+          "5-4-1": 6,
+          "4-3-3": 3,
+          "3-5-2": 11
+        },
+        "TacticalAdaptations": 29,
+        "distinctClubsManaged": 6,
+        "ReservesUsedInMatches": 995,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 750,
+        "Wins": 234,
+        "Draws": 119,
+        "Losses": 228,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Agente_Posse_361",
+        "IsHumanAgent": true,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-6-1",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "3-6-1": 8,
+          "4-5-1": 1620
+        },
+        "TacticalAdaptations": 1620,
+        "distinctClubsManaged": 2,
+        "ReservesUsedInMatches": 0,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 2150,
+        "Wins": 598,
+        "Draws": 456,
+        "Losses": 574,
+        "Dismissals": 1,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1195,
+          "3-5-2": 13,
+          "3-4-3": 41,
+          "4-4-2": 26,
+          "4-5-1": 8
+        },
+        "TacticalAdaptations": 88,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 2008,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1684,
+        "Wins": 531,
+        "Draws": 262,
+        "Losses": 490,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1111,
+          "4-5-1": 8,
+          "3-4-3": 40,
+          "4-4-2": 22,
+          "3-5-2": 9,
+          "5-3-2": 3
+        },
+        "TacticalAdaptations": 82,
+        "distinctClubsManaged": 22,
+        "ReservesUsedInMatches": 1748,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1509,
+        "Wins": 440,
+        "Draws": 293,
+        "Losses": 460,
+        "Dismissals": 23,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1152,
+          "3-4-3": 28,
+          "4-4-2": 26,
+          "3-5-2": 3,
+          "4-5-1": 4,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 62,
+        "distinctClubsManaged": 18,
+        "ReservesUsedInMatches": 1834,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1498,
+        "Wins": 450,
+        "Draws": 267,
+        "Losses": 497,
+        "Dismissals": 20,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 966,
+          "3-5-2": 30,
+          "4-3-3": 24,
+          "4-5-1": 11,
+          "5-3-2": 4
+        },
+        "TacticalAdaptations": 69,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1672,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1304,
+        "Wins": 388,
+        "Draws": 237,
+        "Losses": 410,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 905,
+          "5-3-2": 22,
+          "4-5-1": 10,
+          "4-3-3": 32,
+          "3-5-2": 7,
+          "4-4-2": 8
+        },
+        "TacticalAdaptations": 79,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1543,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1261,
+        "Wins": 337,
+        "Draws": 290,
+        "Losses": 357,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 857,
+          "3-5-2": 7,
+          "4-5-1": 17,
+          "4-3-3": 38,
+          "5-3-2": 10
+        },
+        "TacticalAdaptations": 72,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1413,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 0,
+        "CoachPoints": 1259,
+        "Wins": 379,
+        "Draws": 212,
+        "Losses": 338,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      }
+    ]
+  },
+  "scenarioCEconomyStressManagers": {
+    "worldSeed": 199803,
+    "totalActiveManagersTracked": 128,
+    "managersWhoAdaptedFormation": 128,
+    "managersWhoChangedClubs": 68,
+    "managersWhoUsedReserves": 128,
+    "totalInvalidLineupsAcross100Seasons": 0,
+    "managers": [
+      {
+        "Name": "Lucas Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1341,
+          "3-5-2": 26,
+          "5-3-2": 16,
+          "4-3-3": 40,
+          "4-5-1": 15
+        },
+        "TacticalAdaptations": 97,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1823,
+        "InvalidLineups": 0,
+        "LeagueTitles": 15,
+        "CupTitles": 4,
+        "CoachPoints": 2121,
+        "Wins": 653,
+        "Draws": 344,
+        "Losses": 441,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 294,
+          "3-5-2": 1148,
+          "4-5-1": 12,
+          "5-3-2": 20,
+          "4-3-3": 24
+        },
+        "TacticalAdaptations": 350,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 2014,
+        "InvalidLineups": 0,
+        "LeagueTitles": 11,
+        "CupTitles": 7,
+        "CoachPoints": 2168,
+        "Wins": 677,
+        "Draws": 323,
+        "Losses": 498,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1093,
+          "4-5-1": 2,
+          "3-4-3": 63,
+          "4-4-2": 18,
+          "3-5-2": 6,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 90,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1776,
+        "InvalidLineups": 0,
+        "LeagueTitles": 6,
+        "CupTitles": 3,
+        "CoachPoints": 1623,
+        "Wins": 507,
+        "Draws": 252,
+        "Losses": 424,
+        "Dismissals": 15,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 931,
+          "4-4-2": 175,
+          "3-5-2": 46,
+          "4-5-1": 1
+        },
+        "TacticalAdaptations": 222,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1415,
+        "InvalidLineups": 0,
+        "LeagueTitles": 5,
+        "CupTitles": 4,
+        "CoachPoints": 1566,
+        "Wins": 503,
+        "Draws": 221,
+        "Losses": 429,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1113,
+          "5-3-2": 17,
+          "4-3-3": 49,
+          "3-5-2": 18,
+          "4-5-1": 4
+        },
+        "TacticalAdaptations": 88,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1758,
+        "InvalidLineups": 0,
+        "LeagueTitles": 5,
+        "CupTitles": 1,
+        "CoachPoints": 1703,
+        "Wins": 527,
+        "Draws": 266,
+        "Losses": 408,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1405,
+          "4-3-3": 84,
+          "5-3-2": 22,
+          "4-5-1": 6,
+          "3-5-2": 38
+        },
+        "TacticalAdaptations": 150,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1946,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 5,
+        "CoachPoints": 2168,
+        "Wins": 638,
+        "Draws": 389,
+        "Losses": 528,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1101,
+          "4-4-2": 174,
+          "3-5-2": 70,
+          "4-5-1": 1,
+          "5-3-2": 1
+        },
+        "TacticalAdaptations": 246,
+        "distinctClubsManaged": 18,
+        "ReservesUsedInMatches": 1920,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 3,
+        "CoachPoints": 1877,
+        "Wins": 603,
+        "Draws": 269,
+        "Losses": 475,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 677,
+          "4-3-3": 48,
+          "5-3-2": 5,
+          "3-5-2": 28,
+          "4-5-1": 4
+        },
+        "TacticalAdaptations": 85,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1001,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 2,
+        "CoachPoints": 1020,
+        "Wins": 312,
+        "Draws": 176,
+        "Losses": 274,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 383,
+          "4-4-2": 38,
+          "4-3-3": 128,
+          "5-3-2": 28,
+          "4-5-1": 30,
+          "3-5-2": 1,
+          "4-2-4": 1
+        },
+        "TacticalAdaptations": 226,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 756,
+        "InvalidLineups": 0,
+        "LeagueTitles": 4,
+        "CupTitles": 2,
+        "CoachPoints": 840,
+        "Wins": 276,
+        "Draws": 111,
+        "Losses": 222,
+        "Dismissals": 9,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Alves",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 902,
+          "4-3-3": 89,
+          "3-5-2": 83,
+          "4-5-1": 9,
+          "5-3-2": 11
+        },
+        "TacticalAdaptations": 192,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1318,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 7,
+        "CoachPoints": 1552,
+        "Wins": 469,
+        "Draws": 252,
+        "Losses": 373,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Caio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "4-4-2",
+          "3-5-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1174,
+          "4-4-2": 231,
+          "3-5-2": 54,
+          "5-3-2": 1,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 288,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1806,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 5,
+        "CoachPoints": 2004,
+        "Wins": 605,
+        "Draws": 344,
+        "Losses": 513,
+        "Dismissals": 20,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 929,
+          "4-3-3": 264,
+          "4-5-1": 17,
+          "4-4-2": 22,
+          "5-3-2": 23,
+          "4-2-4": 21,
+          "3-5-2": 1
+        },
+        "TacticalAdaptations": 348,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1931,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 2,
+        "CoachPoints": 1786,
+        "Wins": 557,
+        "Draws": 278,
+        "Losses": 442,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1039,
+          "4-5-1": 13,
+          "3-5-2": 44,
+          "4-3-3": 47,
+          "5-3-2": 9
+        },
+        "TacticalAdaptations": 113,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1767,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 2,
+        "CoachPoints": 1542,
+        "Wins": 462,
+        "Draws": 271,
+        "Losses": 419,
+        "Dismissals": 13,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 1209,
+          "4-3-3": 34,
+          "4-4-2": 6,
+          "5-3-2": 67,
+          "3-6-1": 58,
+          "3-5-2": 3
+        },
+        "TacticalAdaptations": 168,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1995,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 1,
+        "CoachPoints": 1824,
+        "Wins": 507,
+        "Draws": 384,
+        "Losses": 486,
+        "Dismissals": 19,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 1087,
+          "5-3-2": 15,
+          "4-3-3": 59,
+          "3-5-2": 48,
+          "4-5-1": 12
+        },
+        "TacticalAdaptations": 134,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1693,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 1,
+        "CoachPoints": 1685,
+        "Wins": 505,
+        "Draws": 295,
+        "Losses": 421,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 927,
+          "4-3-3": 76,
+          "5-3-2": 21,
+          "4-5-1": 18,
+          "3-5-2": 74
+        },
+        "TacticalAdaptations": 189,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1305,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 0,
+        "CoachPoints": 1542,
+        "Wins": 472,
+        "Draws": 262,
+        "Losses": 382,
+        "Dismissals": 11,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 486,
+          "4-4-2": 64,
+          "3-5-2": 93,
+          "4-3-3": 21,
+          "4-5-1": 7,
+          "5-4-1": 2
+        },
+        "TacticalAdaptations": 187,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 858,
+        "InvalidLineups": 0,
+        "LeagueTitles": 3,
+        "CupTitles": 0,
+        "CoachPoints": 923,
+        "Wins": 275,
+        "Draws": 157,
+        "Losses": 241,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Lucas Vieira",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 970,
+          "4-4-2": 201,
+          "4-3-3": 8,
+          "4-5-1": 19,
+          "5-3-2": 9
+        },
+        "TacticalAdaptations": 237,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1604,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 5,
+        "CoachPoints": 1667,
+        "Wins": 518,
+        "Draws": 254,
+        "Losses": 435,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 605,
+          "4-4-2": 9,
+          "4-5-1": 1,
+          "3-4-3": 46,
+          "3-5-2": 3,
+          "5-3-2": 10
+        },
+        "TacticalAdaptations": 69,
+        "distinctClubsManaged": 8,
+        "ReservesUsedInMatches": 819,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 2,
+        "CoachPoints": 912,
+        "Wins": 284,
+        "Draws": 141,
+        "Losses": 249,
+        "Dismissals": 8,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1284,
+          "3-4-3": 79,
+          "3-5-2": 17,
+          "4-4-2": 12,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 110,
+        "distinctClubsManaged": 19,
+        "ReservesUsedInMatches": 1745,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 1831,
+        "Wins": 566,
+        "Draws": 298,
+        "Losses": 530,
+        "Dismissals": 21,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Wagner Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 616,
+          "4-5-1": 27,
+          "3-5-2": 36,
+          "4-3-3": 42,
+          "4-4-2": 8,
+          "5-3-2": 26
+        },
+        "TacticalAdaptations": 139,
+        "distinctClubsManaged": 8,
+        "ReservesUsedInMatches": 954,
+        "InvalidLineups": 0,
+        "LeagueTitles": 2,
+        "CupTitles": 1,
+        "CoachPoints": 1028,
+        "Wins": 290,
+        "Draws": 205,
+        "Losses": 260,
+        "Dismissals": 9,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1373,
+          "5-4-1": 10,
+          "4-3-3": 34,
+          "4-4-2": 15,
+          "4-5-1": 5,
+          "3-5-2": 19
+        },
+        "TacticalAdaptations": 83,
+        "distinctClubsManaged": 17,
+        "ReservesUsedInMatches": 1827,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 3,
+        "CoachPoints": 2032,
+        "Wins": 611,
+        "Draws": 358,
+        "Losses": 487,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 1422,
+          "3-4-3": 87,
+          "4-4-2": 8,
+          "3-5-2": 8,
+          "4-5-1": 3
+        },
+        "TacticalAdaptations": 106,
+        "distinctClubsManaged": 20,
+        "ReservesUsedInMatches": 1959,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 3,
+        "CoachPoints": 2025,
+        "Wins": 615,
+        "Draws": 338,
+        "Losses": 575,
+        "Dismissals": 24,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "3-5-2",
+          "4-3-3"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 790,
+          "4-3-3": 57,
+          "3-5-2": 38,
+          "4-5-1": 8,
+          "5-3-2": 5
+        },
+        "TacticalAdaptations": 108,
+        "distinctClubsManaged": 10,
+        "ReservesUsedInMatches": 1357,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 3,
+        "CoachPoints": 1244,
+        "Wins": 370,
+        "Draws": 216,
+        "Losses": 312,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1134,
+          "4-4-2": 59,
+          "4-5-1": 6,
+          "3-5-2": 38,
+          "4-3-3": 24,
+          "5-4-1": 3
+        },
+        "TacticalAdaptations": 130,
+        "distinctClubsManaged": 15,
+        "ReservesUsedInMatches": 1830,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1719,
+        "Wins": 495,
+        "Draws": 329,
+        "Losses": 440,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 855,
+          "4-3-3": 31,
+          "5-3-2": 2,
+          "3-5-2": 35,
+          "4-5-1": 9
+        },
+        "TacticalAdaptations": 77,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1227,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 2,
+        "CoachPoints": 1233,
+        "Wins": 363,
+        "Draws": 230,
+        "Losses": 339,
+        "Dismissals": 10,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 958,
+          "4-4-2": 330,
+          "5-3-2": 30,
+          "4-3-3": 22,
+          "4-5-1": 8
+        },
+        "TacticalAdaptations": 390,
+        "distinctClubsManaged": 21,
+        "ReservesUsedInMatches": 1989,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1775,
+        "Wins": 533,
+        "Draws": 306,
+        "Losses": 509,
+        "Dismissals": 21,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Henrique Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 1143,
+          "5-3-2": 57,
+          "3-6-1": 28,
+          "4-3-3": 52,
+          "4-4-2": 7,
+          "3-5-2": 4
+        },
+        "TacticalAdaptations": 148,
+        "distinctClubsManaged": 19,
+        "ReservesUsedInMatches": 1677,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 1,
+        "CoachPoints": 1687,
+        "Wins": 463,
+        "Draws": 367,
+        "Losses": 461,
+        "Dismissals": 23,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 1165,
+          "5-3-2": 82,
+          "4-3-3": 44,
+          "4-5-1": 17,
+          "3-5-2": 5,
+          "4-4-2": 12
+        },
+        "TacticalAdaptations": 160,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1970,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1755,
+        "Wins": 466,
+        "Draws": 408,
+        "Losses": 451,
+        "Dismissals": 22,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 802,
+          "3-4-3": 48,
+          "4-4-2": 18,
+          "5-3-2": 3,
+          "3-5-2": 5
+        },
+        "TacticalAdaptations": 74,
+        "distinctClubsManaged": 12,
+        "ReservesUsedInMatches": 1490,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 1100,
+        "Wins": 329,
+        "Draws": 199,
+        "Losses": 348,
+        "Dismissals": 14,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Santos",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "3-4-3",
+          "4-3-3",
+          "4-2-4"
+        ],
+        "FormationsUsed": {
+          "3-4-3": 285,
+          "4-5-1": 26,
+          "4-3-3": 83,
+          "4-4-2": 21,
+          "5-3-2": 9,
+          "4-2-4": 1,
+          "3-5-2": 2
+        },
+        "TacticalAdaptations": 142,
+        "distinctClubsManaged": 6,
+        "ReservesUsedInMatches": 432,
+        "InvalidLineups": 0,
+        "LeagueTitles": 1,
+        "CupTitles": 0,
+        "CoachPoints": 533,
+        "Wins": 164,
+        "Draws": 86,
+        "Losses": 177,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Rafael Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 576,
+          "4-4-2": 128,
+          "4-5-1": 7,
+          "4-3-3": 55,
+          "5-3-2": 15
+        },
+        "TacticalAdaptations": 205,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1068,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 4,
+        "CoachPoints": 1092,
+        "Wins": 340,
+        "Draws": 161,
+        "Losses": 280,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Santos",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "3-5-2",
+          "4-4-2",
+          "5-3-2"
+        ],
+        "FormationsUsed": {
+          "3-5-2": 771,
+          "4-4-2": 245,
+          "4-5-1": 11,
+          "4-3-3": 13,
+          "5-3-2": 13
+        },
+        "TacticalAdaptations": 282,
+        "distinctClubsManaged": 16,
+        "ReservesUsedInMatches": 1456,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 1396,
+        "Wins": 433,
+        "Draws": 223,
+        "Losses": 397,
+        "Dismissals": 17,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Equilibrado",
+        "PreferredFormations": [
+          "4-4-2",
+          "4-3-3",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "4-4-2": 857,
+          "3-5-2": 18,
+          "4-3-3": 73,
+          "4-5-1": 11,
+          "5-3-2": 26
+        },
+        "TacticalAdaptations": 128,
+        "distinctClubsManaged": 13,
+        "ReservesUsedInMatches": 1148,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 1336,
+        "Wins": 409,
+        "Draws": 215,
+        "Losses": 361,
+        "Dismissals": 15,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Alex Carvalho",
+        "IsHumanAgent": false,
+        "Identity": "Ofensivo",
+        "PreferredFormations": [
+          "4-3-3",
+          "3-4-3",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "4-3-3": 795,
+          "4-4-2": 28,
+          "4-5-1": 1,
+          "3-4-3": 87,
+          "3-5-2": 11
+        },
+        "TacticalAdaptations": 127,
+        "distinctClubsManaged": 11,
+        "ReservesUsedInMatches": 1115,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 1228,
+        "Wins": 382,
+        "Draws": 203,
+        "Losses": 337,
+        "Dismissals": 12,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Andrade",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 332,
+          "4-3-3": 9,
+          "5-3-2": 12,
+          "4-4-2": 1,
+          "4-5-1": 47,
+          "3-5-2": 12
+        },
+        "TacticalAdaptations": 81,
+        "distinctClubsManaged": 6,
+        "ReservesUsedInMatches": 365,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 485,
+        "Wins": 130,
+        "Draws": 115,
+        "Losses": 168,
+        "Dismissals": 6,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Ot\u00E1vio Santos",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "4-5-1",
+          "5-3-2",
+          "3-6-1"
+        ],
+        "FormationsUsed": {
+          "4-5-1": 140,
+          "3-6-1": 1,
+          "4-3-3": 10,
+          "3-5-2": 1,
+          "5-3-2": 119,
+          "4-4-2": 3
+        },
+        "TacticalAdaptations": 134,
+        "distinctClubsManaged": 3,
+        "ReservesUsedInMatches": 325,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 333,
+        "Wins": 101,
+        "Draws": 61,
+        "Losses": 112,
+        "Dismissals": 2,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Leandro Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 195,
+          "4-3-3": 24
+        },
+        "TacticalAdaptations": 24,
+        "distinctClubsManaged": 2,
+        "ReservesUsedInMatches": 89,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 2,
+        "CoachPoints": 258,
+        "Wins": 82,
+        "Draws": 41,
+        "Losses": 96,
+        "Dismissals": 1,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "Eduardo Mendes",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-3-2",
+          "5-4-1",
+          "4-4-2"
+        ],
+        "FormationsUsed": {
+          "5-3-2": 1023,
+          "4-4-2": 14,
+          "3-5-2": 14,
+          "5-4-1": 8,
+          "4-3-3": 21,
+          "4-5-1": 2
+        },
+        "TacticalAdaptations": 59,
+        "distinctClubsManaged": 9,
+        "ReservesUsedInMatches": 1298,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1486,
+        "Wins": 436,
+        "Draws": 285,
+        "Losses": 361,
+        "Dismissals": 8,
+        "SeasonsManaged": 100
+      },
+      {
+        "Name": "S\u00E9rgio Alves",
+        "IsHumanAgent": false,
+        "Identity": "Defensivo",
+        "PreferredFormations": [
+          "5-4-1",
+          "5-3-2",
+          "4-5-1"
+        ],
+        "FormationsUsed": {
+          "5-4-1": 847,
+          "5-3-2": 74,
+          "3-5-2": 46,
+          "4-5-1": 35,
+          "4-4-2": 9,
+          "4-3-3": 64
+        },
+        "TacticalAdaptations": 228,
+        "distinctClubsManaged": 14,
+        "ReservesUsedInMatches": 1640,
+        "InvalidLineups": 0,
+        "LeagueTitles": 0,
+        "CupTitles": 1,
+        "CoachPoints": 1414,
+        "Wins": 382,
+        "Draws": 314,
+        "Losses": 379,
+        "Dismissals": 18,
+        "SeasonsManaged": 100
+      }
+    ]
+  }
+}

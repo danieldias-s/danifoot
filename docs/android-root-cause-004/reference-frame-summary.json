@@ -1,0 +1,16 @@
+{
+  "First": {
+    "Utc": "23:05:52.988",
+    "Frames": 46,
+    "Over100ms": 46
+  },
+  "Last": {
+    "Utc": "23:08:12.982",
+    "Frames": 939,
+    "Over100ms": 939
+  },
+  "SampleSeconds": 139.994,
+  "AverageFramesPerSecond": 6.38,
+  "AllObservedFramesOver100ms": true,
+  "ElifootInstalledDuringSample": false
+}

@@ -1,0 +1,26 @@
+{
+  "ServerRestart": "PASS",
+  "Club": "Joinville Tricolor",
+  "Points": 13.0,
+  "Morale": 71,
+  "MoraleHistory": [
+    {
+      "season": 1,
+      "round": 3,
+      "matchId": "cd7dd814-81cc-4398-b7fb-dcb5b4e0a307",
+      "before": 70,
+      "after": 71,
+      "reason": "RESULT_0;expectedGap=0,4;winless=1;recent5=0;points=0,5"
+    }
+  ],
+  "LeagueTitles": 1,
+  "CupTitles": 1,
+  "DefaultRulesRestored": {
+    "greenMinimum": 60,
+    "yellowMinimum": 30,
+    "unemployedRecoveryPerRound": 6
+  },
+  "FinalRound": "RESULTS at90",
+  "PendingInvitationsFromFixture": "Rejected one and accepted one through real UI",
+  "WebUrl": "http://127.0.0.1:8088/"
+}

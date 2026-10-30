@@ -1,0 +1,1062 @@
+[
+  {
+    "Found": true,
+    "Package": "coverlet.collector/6.0.4",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeCoverage/17.14.0",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Data.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Analyzers/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Relational/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Memory/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyModel/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Options/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Primitives/10.0.14",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.NET.Test.Sdk/17.14.0",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.ObjectModel/17.14.0",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.TestHost/17.14.0",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Newtonsoft.Json/13.0.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql/10.0.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql.EntityFrameworkCore.PostgreSQL/10.0.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.bundle_e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.core/2.1.13",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.lib.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.provider.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit/2.9.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.abstractions/2.0.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.analyzers/1.18.0",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.assert/2.9.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.core/2.9.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.core/2.9.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.execution/2.9.3",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.runner.visualstudio/3.1.4",
+    "Assets": "tests\\Elifoot.Simulation.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "coverlet.collector/6.0.4",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.Connections.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.Http.Connections.Client/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.Http.Connections.Common/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.Mvc.Testing/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.SignalR.Client/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.SignalR.Client.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.SignalR.Common/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.SignalR.Protocols.Json/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.AspNetCore.TestHost/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeCoverage/17.14.0",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Data.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Analyzers/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Relational/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Memory/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Binder/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.CommandLine/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.EnvironmentVariables/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.FileExtensions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Json/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.UserSecrets/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyModel/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Diagnostics/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Diagnostics.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Features/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.FileProviders.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.FileProviders.Physical/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.FileSystemGlobbing/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Hosting/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Hosting.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Configuration/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Console/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Debug/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.EventLog/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.EventSource/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Options/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Primitives/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.NET.Test.Sdk/17.14.0",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.ObjectModel/17.14.0",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.TestHost/17.14.0",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Newtonsoft.Json/13.0.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql/10.0.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql.EntityFrameworkCore.PostgreSQL/10.0.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.bundle_e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.core/2.1.13",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.lib.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.provider.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Diagnostics.EventLog/10.0.14",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit/2.9.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.abstractions/2.0.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.analyzers/1.18.0",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.assert/2.9.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.core/2.9.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.core/2.9.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.execution/2.9.3",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.runner.visualstudio/3.1.4",
+    "Assets": "tests\\Elifoot.Integration.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "coverlet.collector/6.0.4",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeCoverage/17.14.0",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Data.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Analyzers/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Relational/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite.Core/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Memory/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyModel/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Abstractions/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Options/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Primitives/10.0.14",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.NET.Test.Sdk/17.14.0",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.ObjectModel/17.14.0",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.TestHost/17.14.0",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Newtonsoft.Json/13.0.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql/10.0.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql.EntityFrameworkCore.PostgreSQL/10.0.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.bundle_e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.core/2.1.13",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.lib.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.provider.e_sqlite3/2.1.13",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit/2.9.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.abstractions/2.0.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.analyzers/1.18.0",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.assert/2.9.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.core/2.9.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.core/2.9.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.execution/2.9.3",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.runner.visualstudio/3.1.4",
+    "Assets": "tests\\Elifoot.Application.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Data.Sqlite.Core/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Analyzers/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Relational/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite.Core/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Caching.Memory/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Configuration.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyModel/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Logging.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Options/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.Primitives/10.0.14",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql/10.0.3",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql.EntityFrameworkCore.PostgreSQL/10.0.3",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.bundle_e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.core/2.1.13",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.lib.e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.provider.e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Infrastructure\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "coverlet.collector/6.0.4",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeCoverage/17.14.0",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.NET.Test.Sdk/17.14.0",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.ObjectModel/17.14.0",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.TestPlatform.TestHost/17.14.0",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Newtonsoft.Json/13.0.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit/2.9.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.abstractions/2.0.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.analyzers/1.18.0",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.assert/2.9.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.core/2.9.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.core/2.9.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.extensibility.execution/2.9.3",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "xunit.runner.visualstudio/3.1.4",
+    "Assets": "tests\\Elifoot.Domain.Tests\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Humanizer.Core/2.14.1",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Build.Framework/18.0.2",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.Analyzers/3.11.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.Common/5.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.CSharp/5.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.CSharp.Workspaces/5.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.Workspaces.Common/5.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.CodeAnalysis.Workspaces.MSBuild/5.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Data.Sqlite.Core/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Abstractions/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Analyzers/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Design/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Relational/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.EntityFrameworkCore.Sqlite.Core/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.Extensions.DependencyModel/10.0.14",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Microsoft.VisualStudio.SolutionPersistence/1.0.52",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Mono.TextTemplating/3.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Newtonsoft.Json/13.0.4",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql/10.0.3",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "Npgsql.EntityFrameworkCore.PostgreSQL/10.0.3",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.bundle_e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.core/2.1.13",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.lib.e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "SQLitePCLRaw.provider.e_sqlite3/2.1.13",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.CodeDom/6.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition.AttributedModel/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition.Convention/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition.Hosting/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition.Runtime/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  },
+  {
+    "Found": true,
+    "Package": "System.Composition.TypedParts/9.0.0",
+    "Assets": "src\\Elifoot.Api\\obj\\project.assets.json"
+  }
+]

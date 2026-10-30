@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="3f61986f-face-4830-857a-81e7e1ec9d4b" name="Daniel@DESKTOP-A5J5UME 2026-10-30 07:46:12" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T07:46:12.8847239-03:00" queuing="2026-10-30T07:46:12.8847241-03:00" start="2026-10-30T07:46:04.3018461-03:00" finish="2026-10-30T07:46:15.2081876-03:00" />
+  <TestSettings name="default" id="85b68cc4-1f4c-45c6-92b6-41fcf4ce3f34">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_07_46_12" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="bd80656a-8f55-4244-95ec-0e9d11a3e4d4" testId="4f25c2f3-0146-f369-c663-e686bc60642b" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Discipline_Audit006_SingleCardPerFoul_SecondYellowBugFix_SentOffIsolation_AndFairPlayZeroFouls" computerName="DESKTOP-A5J5UME" duration="00:00:00.1228859" startTime="2026-10-30T07:46:14.7140640-03:00" endTime="2026-10-30T07:46:14.8368239-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bd80656a-8f55-4244-95ec-0e9d11a3e4d4" />
+    <UnitTestResult executionId="3f77a1a6-b4c9-4e96-872b-25ed0c43de85" testId="2ac06ab3-021b-3ad7-647b-573084397335" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Penalties_Audit006_GoalkeeperSavesVsWide_ShootoutSeparation_AndDefenderBehaviorInfluence" computerName="DESKTOP-A5J5UME" duration="00:00:01.6420537" startTime="2026-10-30T07:46:12.1219673-03:00" endTime="2026-10-30T07:46:13.7638446-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f77a1a6-b4c9-4e96-872b-25ed0c43de85" />
+    <UnitTestResult executionId="a1c1691d-8fd3-4d29-8b77-0e4ba5439702" testId="6b8619e4-9a0c-18af-5d35-e74c5678e08c" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.AiManagerBrain_AdaptsTacticsToSquadAndBudget_AndFollowsManagerPhilosophy" computerName="DESKTOP-A5J5UME" duration="00:00:00.0360146" startTime="2026-10-30T07:46:11.9485959-03:00" endTime="2026-10-30T07:46:11.9528796-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a1c1691d-8fd3-4d29-8b77-0e4ba5439702" />
+    <UnitTestResult executionId="ef36b416-1622-47df-99cb-02d8941737e9" testId="e8103b0e-0835-8a2f-66c3-7579c1c539f6" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Characterization_All10Formations_DefensiveFormula_DeterministicReplay_AndBugRegressions" computerName="DESKTOP-A5J5UME" duration="00:00:00.1827509" startTime="2026-10-30T07:46:14.8371090-03:00" endTime="2026-10-30T07:46:15.0197094-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef36b416-1622-47df-99cb-02d8941737e9" />
+    <UnitTestResult executionId="89445d8a-58d1-460c-8b87-68e7ee3551ad" testId="7d92999d-6c53-2d2d-c8b9-eec44a395996" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Monotonicity_StrongerDefense_StrongerGk_StarBonus_RedCard_AndBehaviorDiscipline" computerName="DESKTOP-A5J5UME" duration="00:00:00.9323726" startTime="2026-10-30T07:46:13.7816142-03:00" endTime="2026-10-30T07:46:14.7138081-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="89445d8a-58d1-460c-8b87-68e7ee3551ad" />
+    <UnitTestResult executionId="f55ae822-0926-4071-a273-f8906a6d3118" testId="3530ca24-6b0a-6f56-fb24-48f63020a013" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MarketAndStadiumEconomy_FairValueConvex_Wear1To6Percent_AndBilateralTransfers" computerName="DESKTOP-A5J5UME" duration="00:00:00.6982547" startTime="2026-10-30T07:46:11.3359568-03:00" endTime="2026-10-30T07:46:11.9158629-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f55ae822-0926-4071-a273-f8906a6d3118" />
+    <UnitTestResult executionId="57ed338c-3b87-49a7-bb81-ef6b4d72b1d1" testId="e69f660b-7f8b-20dc-5cf4-ad9885e4b127" testName="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.AuctionCreatedAtSeasonEnd_ExpiresInNextSeason_WithoutGivingHumanUnwantedPlayers" computerName="DESKTOP-A5J5UME" duration="00:00:00.0750506" startTime="2026-10-30T07:46:12.0171083-03:00" endTime="2026-10-30T07:46:12.0919621-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="57ed338c-3b87-49a7-bb81-ef6b4d72b1d1" />
+    <UnitTestResult executionId="06074bf3-bf62-4d12-b05d-8c976c18299b" testId="bba96883-c45c-a568-1796-f169ed31fad1" testName="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.ManagerKeepsPersonalityAndPreferencesWhenSeasonRotatesClubs" computerName="DESKTOP-A5J5UME" duration="00:00:00.0932543" startTime="2026-10-30T07:46:11.9501647-03:00" endTime="2026-10-30T07:46:12.0167848-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06074bf3-bf62-4d12-b05d-8c976c18299b" />
+    <UnitTestResult executionId="03edd85a-3fcf-411f-a055-9408ef5e7a31" testId="2e8e5771-cf4c-6d4e-75ba-622e5c2a03e8" testName="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.SubstitutionLimitRejectsSixthInNormalTime_AndSeventhInExtraTime" computerName="DESKTOP-A5J5UME" duration="00:00:00.0485876" startTime="2026-10-30T07:46:12.0922586-03:00" endTime="2026-10-30T07:46:12.1406626-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="03edd85a-3fcf-411f-a055-9408ef5e7a31" />
+    <UnitTestResult executionId="26108daf-f6ed-4365-8d69-f743be61100d" testId="2189a54c-7d66-e0fa-0272-aee4466129fd" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.WorldEditorAndPackageService_ValidatesAndRoundTripsJsonAndCsv" computerName="DESKTOP-A5J5UME" duration="00:00:00.1685846" startTime="2026-10-30T07:46:11.9533257-03:00" endTime="2026-10-30T07:46:12.1216633-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="26108daf-f6ed-4365-8d69-f743be61100d" />
+    <UnitTestResult executionId="ec0fcba6-cd30-4fbe-9a08-7f2a47e562c7" testId="56c95100-0613-7881-2c52-3a1dddef2ad7" testName="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.RoundSponsorship_IsIdempotent_AndFundsEliminatedDistrictClubs" computerName="DESKTOP-A5J5UME" duration="00:00:00.7110086" startTime="2026-10-30T07:46:11.3390538-03:00" endTime="2026-10-30T07:46:11.9487735-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec0fcba6-cd30-4fbe-9a08-7f2a47e562c7" />
+    <UnitTestResult executionId="e90ab709-7caf-44e0-b6bc-9a3505dc08a7" testId="673bce83-2765-7aa9-b2d2-265142593b60" testName="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Player_DisplayName_PreservesLiteralAsterisk_AndSquadLimitsAreEnforced" computerName="DESKTOP-A5J5UME" duration="00:00:00.0173398" startTime="2026-10-30T07:46:13.7644408-03:00" endTime="2026-10-30T07:46:13.7812912-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e90ab709-7caf-44e0-b6bc-9a3505dc08a7" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.SubstitutionLimitRejectsSixthInNormalTime_AndSeventhInExtraTime" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="2e8e5771-cf4c-6d4e-75ba-622e5c2a03e8">
+      <Execution id="03edd85a-3fcf-411f-a055-9408ef5e7a31" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.PlayableEconomyRegressionTests" name="SubstitutionLimitRejectsSixthInNormalTime_AndSeventhInExtraTime" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.AiManagerBrain_AdaptsTacticsToSquadAndBudget_AndFollowsManagerPhilosophy" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="6b8619e4-9a0c-18af-5d35-e74c5678e08c">
+      <Execution id="a1c1691d-8fd3-4d29-8b77-0e4ba5439702" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="AiManagerBrain_AdaptsTacticsToSquadAndBudget_AndFollowsManagerPhilosophy" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Monotonicity_StrongerDefense_StrongerGk_StarBonus_RedCard_AndBehaviorDiscipline" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="7d92999d-6c53-2d2d-c8b9-eec44a395996">
+      <Execution id="89445d8a-58d1-460c-8b87-68e7ee3551ad" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="MatchEngine_Monotonicity_StrongerDefense_StrongerGk_StarBonus_RedCard_AndBehaviorDiscipline" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.ManagerKeepsPersonalityAndPreferencesWhenSeasonRotatesClubs" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="bba96883-c45c-a568-1796-f169ed31fad1">
+      <Execution id="06074bf3-bf62-4d12-b05d-8c976c18299b" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.PlayableEconomyRegressionTests" name="ManagerKeepsPersonalityAndPreferencesWhenSeasonRotatesClubs" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.RoundSponsorship_IsIdempotent_AndFundsEliminatedDistrictClubs" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="56c95100-0613-7881-2c52-3a1dddef2ad7">
+      <Execution id="ec0fcba6-cd30-4fbe-9a08-7f2a47e562c7" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.PlayableEconomyRegressionTests" name="RoundSponsorship_IsIdempotent_AndFundsEliminatedDistrictClubs" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.WorldEditorAndPackageService_ValidatesAndRoundTripsJsonAndCsv" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="2189a54c-7d66-e0fa-0272-aee4466129fd">
+      <Execution id="26108daf-f6ed-4365-8d69-f743be61100d" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="WorldEditorAndPackageService_ValidatesAndRoundTripsJsonAndCsv" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Player_DisplayName_PreservesLiteralAsterisk_AndSquadLimitsAreEnforced" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="673bce83-2765-7aa9-b2d2-265142593b60">
+      <Execution id="e90ab709-7caf-44e0-b6bc-9a3505dc08a7" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="Player_DisplayName_PreservesLiteralAsterisk_AndSquadLimitsAreEnforced" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.PlayableEconomyRegressionTests.AuctionCreatedAtSeasonEnd_ExpiresInNextSeason_WithoutGivingHumanUnwantedPlayers" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="e69f660b-7f8b-20dc-5cf4-ad9885e4b127">
+      <Execution id="57ed338c-3b87-49a7-bb81-ef6b4d72b1d1" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.PlayableEconomyRegressionTests" name="AuctionCreatedAtSeasonEnd_ExpiresInNextSeason_WithoutGivingHumanUnwantedPlayers" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Penalties_Audit006_GoalkeeperSavesVsWide_ShootoutSeparation_AndDefenderBehaviorInfluence" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="2ac06ab3-021b-3ad7-647b-573084397335">
+      <Execution id="3f77a1a6-b4c9-4e96-872b-25ed0c43de85" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="Penalties_Audit006_GoalkeeperSavesVsWide_ShootoutSeparation_AndDefenderBehaviorInfluence" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.Discipline_Audit006_SingleCardPerFoul_SecondYellowBugFix_SentOffIsolation_AndFairPlayZeroFouls" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="4f25c2f3-0146-f369-c663-e686bc60642b">
+      <Execution id="bd80656a-8f55-4244-95ec-0e9d11a3e4d4" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="Discipline_Audit006_SingleCardPerFoul_SecondYellowBugFix_SentOffIsolation_AndFairPlayZeroFouls" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Characterization_All10Formations_DefensiveFormula_DeterministicReplay_AndBugRegressions" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="e8103b0e-0835-8a2f-66c3-7579c1c539f6">
+      <Execution id="ef36b416-1622-47df-99cb-02d8941737e9" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="MatchEngine_Characterization_All10Formations_DefensiveFormula_DeterministicReplay_AndBugRegressions" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.DomainEngineAndRulesTests.MarketAndStadiumEconomy_FairValueConvex_Wear1To6Percent_AndBilateralTransfers" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="3530ca24-6b0a-6f56-fb24-48f63020a013">
+      <Execution id="f55ae822-0926-4071-a273-f8906a6d3118" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.DomainEngineAndRulesTests" name="MarketAndStadiumEconomy_FairValueConvex_Wear1To6Percent_AndBilateralTransfers" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4f25c2f3-0146-f369-c663-e686bc60642b" executionId="bd80656a-8f55-4244-95ec-0e9d11a3e4d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ac06ab3-021b-3ad7-647b-573084397335" executionId="3f77a1a6-b4c9-4e96-872b-25ed0c43de85" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b8619e4-9a0c-18af-5d35-e74c5678e08c" executionId="a1c1691d-8fd3-4d29-8b77-0e4ba5439702" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8103b0e-0835-8a2f-66c3-7579c1c539f6" executionId="ef36b416-1622-47df-99cb-02d8941737e9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d92999d-6c53-2d2d-c8b9-eec44a395996" executionId="89445d8a-58d1-460c-8b87-68e7ee3551ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3530ca24-6b0a-6f56-fb24-48f63020a013" executionId="f55ae822-0926-4071-a273-f8906a6d3118" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e69f660b-7f8b-20dc-5cf4-ad9885e4b127" executionId="57ed338c-3b87-49a7-bb81-ef6b4d72b1d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bba96883-c45c-a568-1796-f169ed31fad1" executionId="06074bf3-bf62-4d12-b05d-8c976c18299b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e8e5771-cf4c-6d4e-75ba-622e5c2a03e8" executionId="03edd85a-3fcf-411f-a055-9408ef5e7a31" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2189a54c-7d66-e0fa-0272-aee4466129fd" executionId="26108daf-f6ed-4365-8d69-f743be61100d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56c95100-0613-7881-2c52-3a1dddef2ad7" executionId="ec0fcba6-cd30-4fbe-9a08-7f2a47e562c7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="673bce83-2765-7aa9-b2d2-265142593b60" executionId="e90ab709-7caf-44e0-b6bc-9a3505dc08a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="12" executed="12" passed="12" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:01.31]   Discovering: Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:01.41]   Discovered:  Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:01.81]   Starting:    Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:05.68]   Finished:    Elifoot.Domain.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

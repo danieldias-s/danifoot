@@ -1,0 +1,33 @@
+{
+  "status": "BLOCKED",
+  "reason": "Local browser use is disabled in Work settings",
+  "attempt": "cua.createBrowserTab('iab', 'http://127.0.0.1:8089/', {visible:false})",
+  "webUrl": "http://127.0.0.1:8089/",
+  "apiUrl": "http://127.0.0.1:5089/",
+  "realScreenshots": [],
+  "visualPassClaimed": false,
+  "note": "The user reports the setting enabled, but effective browser capability remains denied. No browser visual PASS is claimed. Alternative local rendering is separate evidence.",
+  "retryAfterUserEnabled": {
+    "TabCreated": false,
+    "VisualPassClaimed": false,
+    "FreshConnectionTested": true,
+    "Result": "Local browser use is disabled in Work settings",
+    "UserReportedEnabled": true
+  },
+  "userReportedLocalBrowserEnabled": true,
+  "lastResumption": {
+    "result": "Local browser use is disabled in Work settings",
+    "authorizedBrowserInventory": 0,
+    "tabCreated": false,
+    "nativeWindowAutomationOfBrowserAttempted": false
+  },
+  "alternative": {
+    "method": "Flutter test engine; production widgets with verbatim JSON captured from real API/SQLite and transport replayed in memory",
+    "testsPassed": 2,
+    "responseBodiesCaptured": 59,
+    "browserUsed": false,
+    "inventedSportingDataUsed": false,
+    "imageCount": 12,
+    "report": "docs/PLAYER_RANKINGS_LOCAL_VALIDATION_009.md"
+  }
+}

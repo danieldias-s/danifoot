@@ -1,0 +1,12 @@
+{
+  "DatabasePath": "D:\\elifoot_98\\artifacts\\coach-career-008\\browser-aaacbb03055c49ccb73ea64c978c32ad.db",
+  "WorldId": "eb9844f6-1fb7-4cea-a2c9-190c0f484b69",
+  "CoachId": "e7a6aa5f-c7ff-2f24-6596-f9000e11db80",
+  "Nickname": "Carreira 008",
+  "DeviceId": "qa008-web",
+  "InvitationIds": [
+    "0cfab997-0d55-6e52-2606-3c5a7458fbc9",
+    "29afb181-fc25-407d-0f7f-5e32e01ece70"
+  ],
+  "Label": "Private QA fixture with pre-existing career aggregates and two real pending invitations; not evidence that seeded titles were won in the browser."
+}

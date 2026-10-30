@@ -1,0 +1,23 @@
+Error type 2
+android.util.AndroidException: Can't connect to activity manager; is the system running?
+	at com.android.commands.am.Am.onRun(Am.java:376)
+	at com.android.internal.os.BaseCommand.run(BaseCommand.java:51)
+	at com.android.commands.am.Am.main(Am.java:121)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:262)
+Installing build\app\outputs\flutter-apk\app-profile.apk...         7,7s
+Error: ADB exited with exit code 1
+Performing Streamed Install
+
+adb.exe: failed to install build/app/outputs/flutter-apk/app-profile.apk: Can't find service: package
+Application failed to start on attempt: 1
+Installing build\app\outputs\flutter-apk\app-profile.apk...         66ms
+Error: ADB exited with exit code 1
+adb.exe: device offline
+Application failed to start on attempt: 2
+adb.exe: device offline
+Installing build\app\outputs\flutter-apk\app-profile.apk...         61ms
+Error: ADB exited with exit code 1
+adb.exe: device offline
+Application failed to start on attempt: 3
+Application failed to start. Will not run test. Quitting.

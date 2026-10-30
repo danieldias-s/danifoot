@@ -1,0 +1,219 @@
+{
+  "task": "ELIFOOT_DISCIPLINE_AND_GAMEPLAY_AUDIT_006",
+  "generatedAtUtc": "2026-10-30T12:06:07.9075901Z",
+  "worldSeed": 199801,
+  "seasonsSimulated": 100,
+  "totalRealMatches": 35100,
+  "baseline005VsCandidate006Comparison": {
+    "baseline005": {
+      "matches": 35100,
+      "inPlayAttempts": 12199,
+      "inPlayGoals": 9055,
+      "inPlayMissedTotal": 3144,
+      "conversionRatePct": 74.23,
+      "attemptsPerMatch": 0.3475
+    },
+    "candidate006": {
+      "matches": 35100,
+      "inPlayAttempts": 7122,
+      "inPlayGoals": 5279,
+      "inPlayGoalkeeperSaves": 929,
+      "inPlayShotsWide": 914,
+      "inPlayMissedTotal": 1843,
+      "conversionRatePct": 74.12,
+      "saveRatePct": 13.04,
+      "wideRatePct": 12.83,
+      "attemptsPerMatch": 0.2029,
+      "attemptsPerTeamPerMatch": 0.1015,
+      "attemptsReductionPct": 41.62
+    }
+  },
+  "strictSeparationByPhase": {
+    "regularTime_1_to_90": {
+      "attempts": 6971,
+      "goals": 5174,
+      "goalkeeperSaves": 904,
+      "shotsWide": 893,
+      "conversionRatePct": 74.22,
+      "attemptsPer90mMatch": 0.1986
+    },
+    "extraTime_91_to_120": {
+      "extraTimeMatches": 3194,
+      "attempts": 151,
+      "goals": 105,
+      "goalkeeperSaves": 25,
+      "shotsWide": 21,
+      "conversionRatePct": 69.54,
+      "attemptsPerExtraTimeMatch": 0.0473
+    },
+    "postMatchPenaltyShootouts": {
+      "shootoutMatches": 1827,
+      "totalKicks": 19224,
+      "goals": 13009,
+      "missedOrSaved": 6215,
+      "conversionRatePct": 67.67,
+      "avgKicksPerShootout": 10.52
+    }
+  },
+  "penaltiesByMinuteBucket": {
+    "01-15": 1161,
+    "16-30": 1158,
+    "31-45": 1170,
+    "46-60": 1174,
+    "61-75": 1155,
+    "76-90": 1153,
+    "91-105": 68,
+    "106-120": 83
+  },
+  "penaltiesByDivisionAndCompetition": [
+    {
+      "competitionOrDivision": "Ta\u00E7a",
+      "matches": 12700,
+      "penaltyAttempts": 2425,
+      "attemptsPerMatch": 0.1909
+    },
+    {
+      "competitionOrDivision": "PrimeiraDivisao",
+      "matches": 5600,
+      "penaltyAttempts": 1368,
+      "attemptsPerMatch": 0.2443
+    },
+    {
+      "competitionOrDivision": "SegundaDivisao",
+      "matches": 5600,
+      "penaltyAttempts": 1272,
+      "attemptsPerMatch": 0.2271
+    },
+    {
+      "competitionOrDivision": "TerceiraDivisao",
+      "matches": 5600,
+      "penaltyAttempts": 1041,
+      "attemptsPerMatch": 0.1859
+    },
+    {
+      "competitionOrDivision": "QuartaDivisao",
+      "matches": 5600,
+      "penaltyAttempts": 1016,
+      "attemptsPerMatch": 0.1814
+    }
+  ],
+  "penaltiesByFormation": [
+    {
+      "formation": "4-4-2",
+      "teamMatches": 23615,
+      "penaltiesAwarded": 2335,
+      "penaltiesPerTeamMatch": 0.0989
+    },
+    {
+      "formation": "4-3-3",
+      "teamMatches": 17171,
+      "penaltiesAwarded": 1946,
+      "penaltiesPerTeamMatch": 0.1133
+    },
+    {
+      "formation": "5-3-2",
+      "teamMatches": 6815,
+      "penaltiesAwarded": 574,
+      "penaltiesPerTeamMatch": 0.0842
+    },
+    {
+      "formation": "3-5-2",
+      "teamMatches": 6581,
+      "penaltiesAwarded": 724,
+      "penaltiesPerTeamMatch": 0.11
+    },
+    {
+      "formation": "4-5-1",
+      "teamMatches": 6077,
+      "penaltiesAwarded": 494,
+      "penaltiesPerTeamMatch": 0.0813
+    },
+    {
+      "formation": "3-4-3",
+      "teamMatches": 5802,
+      "penaltiesAwarded": 715,
+      "penaltiesPerTeamMatch": 0.1232
+    },
+    {
+      "formation": "5-4-1",
+      "teamMatches": 3897,
+      "penaltiesAwarded": 305,
+      "penaltiesPerTeamMatch": 0.0783
+    },
+    {
+      "formation": "3-6-1",
+      "teamMatches": 161,
+      "penaltiesAwarded": 16,
+      "penaltiesPerTeamMatch": 0.0994
+    },
+    {
+      "formation": "4-2-4",
+      "teamMatches": 81,
+      "penaltiesAwarded": 13,
+      "penaltiesPerTeamMatch": 0.1605
+    }
+  ],
+  "conversionByTakerStrengthAndStar": {
+    "Forca_10_24": {
+      "attempts": 1609,
+      "goals": 1105,
+      "saves": 218,
+      "wide": 286,
+      "conversionPct": 68.68
+    },
+    "Forca_25_34": {
+      "attempts": 1296,
+      "goals": 898,
+      "saves": 200,
+      "wide": 198,
+      "conversionPct": 69.29
+    },
+    "Forca_35_50": {
+      "attempts": 4217,
+      "goals": 3276,
+      "saves": 511,
+      "wide": 430,
+      "conversionPct": 77.69
+    },
+    "Craque_Estrela": {
+      "attempts": 4188,
+      "goals": 3215,
+      "saves": 513,
+      "wide": 460,
+      "conversionPct": 76.77
+    },
+    "Sem_Estrela": {
+      "attempts": 2934,
+      "goals": 2064,
+      "saves": 416,
+      "wide": 454,
+      "conversionPct": 70.35
+    }
+  },
+  "conversionAgainstGoalkeeperStrength": {
+    "Goleiro_10_24": {
+      "attempts": 2277,
+      "goalsConceded": 1656,
+      "saves": 260,
+      "wide": 361,
+      "conversionConcededPct": 72.73,
+      "savePct": 11.42
+    },
+    "Goleiro_25_34": {
+      "attempts": 2773,
+      "goalsConceded": 2067,
+      "saves": 358,
+      "wide": 348,
+      "conversionConcededPct": 74.54,
+      "savePct": 12.91
+    },
+    "Goleiro_35_50": {
+      "attempts": 2072,
+      "goalsConceded": 1556,
+      "saves": 311,
+      "wide": 205,
+      "conversionConcededPct": 75.1,
+      "savePct": 15.01
+    }
+  }
+}

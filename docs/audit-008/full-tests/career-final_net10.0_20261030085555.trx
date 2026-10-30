@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a00e9f53-0a49-4082-b698-4533231939a3" name="Daniel@DESKTOP-A5J5UME 2026-10-30 08:51:50" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T08:51:50.2873648-03:00" queuing="2026-10-30T08:51:50.2873651-03:00" start="2026-10-30T08:51:02.5960526-03:00" finish="2026-10-30T08:55:55.4893687-03:00" />
+  <TestSettings name="default" id="472f1f8f-3afc-40e6-9ee3-7a34d2d2c3ba">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_08_51_50" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b57ec95f-4ebf-4b41-af3d-15fc37695518" testId="cffc33d2-c3fb-cd99-d1ac-348f7dd332bb" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence" computerName="DESKTOP-A5J5UME" duration="00:01:58.1868852" startTime="2026-10-30T08:51:51.8424275-03:00" endTime="2026-10-30T08:53:50.0265468-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b57ec95f-4ebf-4b41-af3d-15fc37695518" />
+    <UnitTestResult executionId="37c45c0d-946a-458f-bfb9-2413845f9656" testId="aafe9183-4172-459e-62ea-8143f31fc342" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.CoachCareer008_FiftyRealSeasonsAndDeterministicReplay" computerName="DESKTOP-A5J5UME" duration="00:00:46.1650890" startTime="2026-10-30T08:51:03.9872164-03:00" endTime="2026-10-30T08:51:50.1656269-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37c45c0d-946a-458f-bfb9-2413845f9656" />
+    <UnitTestResult executionId="ea4674c1-0489-4102-a92e-6ae4de8dabc5" testId="f2d14928-48f3-07c9-9c7a-af313cf2eea5" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Benchmark_128_256_512_And_1024_Clubs_RealEngine_MeasurePerformance" computerName="DESKTOP-A5J5UME" duration="00:00:01.6558270" startTime="2026-10-30T08:51:50.2529384-03:00" endTime="2026-10-30T08:51:51.8326814-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea4674c1-0489-4102-a92e-6ae4de8dabc5" />
+    <UnitTestResult executionId="7a6ecc98-87d8-455f-9969-fc96968e966b" testId="9722ca15-7b01-738d-b914-ca2f12fdfdb9" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables" computerName="DESKTOP-A5J5UME" duration="00:02:05.2561447" startTime="2026-10-30T08:53:50.0276067-03:00" endTime="2026-10-30T08:55:55.2929734-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a6ecc98-87d8-455f-9969-fc96968e966b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 0&#xD;
+Actual:   1</Message>
+          <StackTrace>   at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables() in D:\elifoot_98\tests\Elifoot.Simulation.Tests\MultiSeasonAndBenchmarkTests.cs:line 85&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Benchmark_128_256_512_And_1024_Clubs_RealEngine_MeasurePerformance" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="f2d14928-48f3-07c9-9c7a-af313cf2eea5">
+      <Execution id="ea4674c1-0489-4102-a92e-6ae4de8dabc5" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="Benchmark_128_256_512_And_1024_Clubs_RealEngine_MeasurePerformance" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.CoachCareer008_FiftyRealSeasonsAndDeterministicReplay" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="aafe9183-4172-459e-62ea-8143f31fc342">
+      <Execution id="37c45c0d-946a-458f-bfb9-2413845f9656" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="CoachCareer008_FiftyRealSeasonsAndDeterministicReplay" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="cffc33d2-c3fb-cd99-d1ac-348f7dd332bb">
+      <Execution id="b57ec95f-4ebf-4b41-af3d-15fc37695518" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="9722ca15-7b01-738d-b914-ca2f12fdfdb9">
+      <Execution id="7a6ecc98-87d8-455f-9969-fc96968e966b" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="cffc33d2-c3fb-cd99-d1ac-348f7dd332bb" executionId="b57ec95f-4ebf-4b41-af3d-15fc37695518" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aafe9183-4172-459e-62ea-8143f31fc342" executionId="37c45c0d-946a-458f-bfb9-2413845f9656" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2d14928-48f3-07c9-9c7a-af313cf2eea5" executionId="ea4674c1-0489-4102-a92e-6ae4de8dabc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9722ca15-7b01-738d-b914-ca2f12fdfdb9" executionId="7a6ecc98-87d8-455f-9969-fc96968e966b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="3" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.47]   Discovering: Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.54]   Discovered:  Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.58]   Starting:    Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:04:51.94]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:04:51.94]       Expected: 0&#xD;
+[xUnit.net 00:04:51.94]       Actual:   1&#xD;
+[xUnit.net 00:04:51.94]       Stack Trace:&#xD;
+[xUnit.net 00:04:51.94]         D:\elifoot_98\tests\Elifoot.Simulation.Tests\MultiSeasonAndBenchmarkTests.cs(85,0): at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables()&#xD;
+[xUnit.net 00:04:51.94]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:04:51.94]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:04:51.95]   Finished:    Elifoot.Simulation.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T08:55:55.3018698-03:00">
+        <Text>[xUnit.net 00:04:51.94]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

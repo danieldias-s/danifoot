@@ -1,0 +1,1485 @@
+--------- beginning of main
+10-29 21:07:56.760  1234  1234 W auditd  : type=2000 audit(0.0:1): initialized
+10-29 21:08:02.182  1234  1234 I auditd  : type=1403 audit(0.0:2): policy loaded auid=4294967295 ses=4294967295
+10-29 21:08:02.192  1234  1234 W auditd  : type=1404 audit(0.0:3): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+10-29 21:08:07.052     1     1 W init    : type=1400 audit(0.0:4): avc: denied { write } for name="tracing_on" dev="debugfs" ino=28 scontext=u:r:init:s0 tcontext=u:object_r:debugfs:s0 tclass=file permissive=0
+10-29 21:08:10.350  1241  1241 I         : debuggerd: starting
+10-29 21:08:10.698  1240  1240 I         : debuggerd: starting
+--------- beginning of system
+10-29 21:08:10.919  1242  1242 I vold    : Vold 3.0 (the awakening) firing up
+10-29 21:08:10.924  1242  1242 V vold    : Detected support for: ext4 vfat
+10-29 21:08:11.502  1242  1277 D vold    : e4crypt_init_user0
+10-29 21:08:11.504  1242  1277 D vold    : e4crypt_prepare_user_storage for volume null, user 0, serial 0, flags 1
+10-29 21:08:11.505  1242  1277 D vold    : Preparing: /data/system/users/0
+10-29 21:08:11.508  1242  1277 D vold    : Preparing: /data/misc/profiles/cur/0
+10-29 21:08:11.510  1242  1277 D vold    : Preparing: /data/misc/profiles/cur/0/foreign-dex
+10-29 21:08:11.549  1242  1277 D vold    : Preparing: /data/system_de/0
+10-29 21:08:11.551  1242  1277 D vold    : Preparing: /data/misc_de/0
+10-29 21:08:11.552  1242  1277 D vold    : Preparing: /data/user_de/0
+10-29 21:08:11.554  1242  1277 D vold    : e4crypt_unlock_user_key 0 serial=0 token_present=0
+10-29 21:08:11.555  1242  1277 E vold    : Failed to chmod /data/system_ce/0: No such file or directory
+10-29 21:08:11.555  1242  1277 E vold    : Failed to chmod /data/misc_ce/0: No such file or directory
+10-29 21:08:11.556  1242  1277 E vold    : Failed to chmod /data/media/0: No such file or directory
+10-29 21:08:11.567     1     1 I vdc     : 200 1244 Command succeeded
+10-29 21:08:12.873  1278  1278 I /system/bin/tzdatacheck: tzdata file /data/misc/zoneinfo/current/tzdata does not exist. No action required.
+10-29 21:08:15.394  1282  1282 I qemu-props: connected to 'boot-properties' qemud service.
+10-29 21:08:15.396  1282  1282 I qemu-props: receiving..
+10-29 21:08:15.397  1282  1282 I qemu-props: received: qemu.cmdline=androidboot.logcat=*:V androidboot.consolepipe=qemu_pipe,pipe:logcat
+10-29 21:08:15.653  1282  1282 I qemu-props: receiving..
+10-29 21:08:15.654  1282  1282 I qemu-props: received: qemu.logcat=start
+10-29 21:08:15.909  1282  1282 I qemu-props: receiving..
+10-29 21:08:15.910  1282  1282 I qemu-props: received: ro.opengles.version=131072
+10-29 21:08:16.163  1282  1282 I qemu-props: receiving..
+10-29 21:08:16.164  1282  1282 I qemu-props: received: qemu.sf.fake_camera=back
+10-29 21:08:16.352  1295  1295 W mediacodec: type=1400 audit(0.0:5): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediacodec:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 21:08:16.417  1282  1282 I qemu-props: receiving..
+10-29 21:08:16.417  1282  1282 I qemu-props: received: dalvik.vm.heapsize=256m
+10-29 21:08:16.670  1282  1282 I qemu-props: receiving..
+10-29 21:08:16.670  1282  1282 I qemu-props: received: qemu.hw.mainkeys=1
+10-29 21:08:16.922  1282  1282 I qemu-props: receiving..
+10-29 21:08:16.924  1282  1282 I qemu-props: received: qemu.sf.lcd_density=240
+10-29 21:08:17.177  1282  1282 I qemu-props: receiving..
+10-29 21:08:17.177  1282  1282 I qemu-props: received: qemu.timezone=Unknown/Unknown
+10-29 21:08:17.382  1282  1282 I qemu-props: receiving..
+10-29 21:08:17.383  1282  1282 I qemu-props: exiting (8 properties set).
+10-29 21:08:17.936  1283  1283 I lowmemorykiller: Using in-kernel low memory killer interface
+10-29 21:08:19.434  1293  1293 I         : installd firing up
+10-29 21:08:19.535  1293  1293 E cutils  : Failed to read /data/.layout_version: No such file or directory
+10-29 21:08:19.535  1293  1293 D         : Assuming that device has multi-user storage layout; upgrade no longer supported
+10-29 21:08:19.539  1293  1293 D         : Upgrading to /data/misc/user directories
+10-29 21:08:19.553  1307  1307 I perfprofd: starting Android Wide Profiling daemon
+10-29 21:08:19.555  1307  1307 E perfprofd: unable to open configuration file /data/data/com.google.android.gms/files/perfprofd.conf
+10-29 21:08:20.204  1307  1307 I perfprofd: random seed set to 3126871547
+10-29 21:08:22.129  1306  1306 I gatekeeperd: Starting gatekeeperd...
+10-29 21:08:22.176  1305  1305 I fingerprintd: Starting fingerprintd
+10-29 21:08:22.481  1306  1306 W gatekeeperd: falling back to software GateKeeper
+10-29 21:08:22.482  1306  1306 I gatekeeperd: cold boot: clearing state
+10-29 21:08:22.531  1294  1294 I keystore: Found keymaster0 module Keymaster OpenSSL HAL, version 2
+10-29 21:08:22.533  1294  1294 I SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 131: Creating device
+10-29 21:08:22.534  1294  1294 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 132: Device address: 0x77cf4f23d000
+10-29 21:08:22.534  1294  1294 I keystore: Keymaster0 module is software-only.  Using SoftKeymasterDevice instead.
+10-29 21:08:22.535  1294  1294 I SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 131: Creating device
+10-29 21:08:22.535  1294  1294 D SoftKeymaster: system/keymaster/soft_keymaster_device.cpp, Line 132: Device address: 0x77cf4f23d400
+10-29 21:08:22.563  1302  1302 I Netd    : Netd 1.0 starting
+10-29 21:08:22.567  1302  1302 D TetherController: Setting IP forward enable = 0
+10-29 21:08:26.567  1285  1285 I SurfaceFlinger: SurfaceFlinger is starting
+10-29 21:08:26.969  1285  1285 I SurfaceFlinger: SurfaceFlinger's main thread ready to run. Initializing graphics H/W...
+10-29 21:08:27.002  1285  1285 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-29 21:08:27.134  1285  1285 E libEGL  : load_driver(/system/lib64/egl/libGLES_emulation.so): dlopen failed: library "/system/lib64/egl/libGLES_emulation.so" not found
+10-29 21:08:27.386  1285  1285 D libEGL  : loaded /system/lib64/egl/libEGL_emulation.so
+10-29 21:08:27.508  1285  1285 D libEGL  : loaded /system/lib64/egl/libGLESv1_CM_emulation.so
+10-29 21:08:27.969  1285  1285 D libEGL  : loaded /system/lib64/egl/libGLESv2_emulation.so
+10-29 21:08:30.084  1285  1285 D         : HostConnection::get() New Host Connection established 0x771359e2d540, tid 1285
+10-29 21:08:31.717  1285  1285 E SurfaceFlinger: hwcomposer module not found
+10-29 21:08:31.725  1285  1285 I SurfaceFlinger: EGL information:
+10-29 21:08:31.726  1285  1285 I SurfaceFlinger: vendor    : Android
+10-29 21:08:31.726  1285  1285 I SurfaceFlinger: version   : 1.4 Android META-EGL
+10-29 21:08:31.726  1285  1285 I SurfaceFlinger: extensions: EGL_KHR_get_all_proc_addresses EGL_ANDROID_presentation_time EGL_KHR_swap_buffers_with_damage EGL_ANDROID_create_native_client_buffer EGL_ANDROID_front_buffer_auto_refresh EGL_KHR_image EGL_KHR_image_base EGL_KHR_gl_texture_2D_image EGL_KHR_fence_sync EGL_ANDROID_image_native_buffer EGL_ANDROID_recordable 
+10-29 21:08:31.726  1285  1285 I SurfaceFlinger: Client API: OpenGL_ES
+10-29 21:08:31.727  1285  1285 I SurfaceFlinger: EGLSurface: 8-8-8-8, config=0x2
+10-29 21:08:31.755  1285  1285 D EGL_emulation: eglCreateContext: 0x771359e42140: maj 2 min 0 rcv 2
+10-29 21:08:31.777  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:08:31.926  1285  1285 I SurfaceFlinger: OpenGL ES informations:
+10-29 21:08:31.926  1285  1285 I SurfaceFlinger: vendor    : Google (Google Inc.)
+10-29 21:08:31.926  1285  1285 I SurfaceFlinger: renderer  : Android Emulator OpenGL ES Translator (Google SwiftShader)
+10-29 21:08:31.926  1285  1285 I SurfaceFlinger: version   : OpenGL ES 2.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+10-29 21:08:31.927  1285  1285 I SurfaceFlinger: extensions: GL_EXT_debug_marker GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_dma_v1 ANDROID_EMU_sync_buffer_data GL_OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_2 
+10-29 21:08:31.927  1285  1285 I SurfaceFlinger: GL_MAX_TEXTURE_SIZE = 8192
+10-29 21:08:31.927  1285  1285 I SurfaceFlinger: GL_MAX_VIEWPORT_DIMS = 8192
+10-29 21:08:32.071  1285  1285 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4096
+10-29 21:08:32.158  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:08:32.732  1285  1285 D SurfaceFlinger: shader cache generated - 24 shaders in 494.319489 ms
+10-29 21:08:32.898  1285  1285 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x771359e47000
+10-29 21:08:34.172  1291  1291 I cameraserver: ServiceManager: 0xedf3c020
+10-29 21:08:34.228  1285  1285 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4096
+10-29 21:08:34.273  1291  1291 I CameraService: CameraService started (pid=1291)
+10-29 21:08:34.275  1291  1291 I CameraService: CameraService process starting
+10-29 21:08:34.342  1291  1291 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:34.343  1291  1291 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:34.495  1295  1295 I mediacodec: @@@ mediacodecservice starting
+10-29 21:08:35.685  1295  1295 W         : No seccomp filter defined for this architecture.
+10-29 21:08:36.262  1300  1300 V MediaUtils: physMem: 1043996672
+10-29 21:08:36.263  1300  1300 V MediaUtils: requested limit: 208799320
+10-29 21:08:36.264  1300  1300 V MediaUtils: actual limit: 208799320
+10-29 21:08:36.264  1300  1300 V MediaUtils: original limits: 4294967295/4294967295
+10-29 21:08:36.264  1300  1300 V MediaUtils: new limits: 208799320/4294967295
+10-29 21:08:36.269  1300  1300 W /system/bin/mediaextractor: libminijail: allowing syscall: socketcall
+10-29 21:08:36.271  1300  1300 W /system/bin/mediaextractor: libminijail: allowing syscall: writev
+10-29 21:08:36.271  1300  1300 W /system/bin/mediaextractor: libminijail: allowing syscall: fcntl64
+10-29 21:08:36.362  1291  1291 D EmulatedCamera_QemuClient: Emulated camera list: 
+10-29 21:08:36.366  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 21:08:36.370  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 21:08:36.382  1300  1300 W /system/bin/mediaextractor: libminijail: allowing syscall: clock_gettime
+10-29 21:08:36.417  1300  1300 W /system/bin/mediaextractor: libminijail: logging seccomp filter failures
+10-29 21:08:36.485  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 21:08:36.486  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 21:08:36.486  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 21:08:36.486  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 21:08:36.488  1291  1291 E EmulatedCamera_Factory: 1 cameras are being emulated. 0 of them are fake cameras.
+10-29 21:08:36.564  1291  1291 E EmulatedCamera_HotplugThread: createFileIfNotExists: Could not create file '/data/misc/media/emulator.camera.hotplug.0', error: 'Permission denied' (13)
+10-29 21:08:36.580  1296  1296 I mediaserver: ServiceManager: 0xecd3c0a0
+10-29 21:08:36.666  1291  1291 I CameraService: Loaded "Emulated Camera Module" camera module
+10-29 21:08:36.667  1291  1291 E CameraService: setUpVendorTags: Vendor tag operations not fully defined. Ignoring definitions.
+10-29 21:08:36.669  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 21:08:36.669  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 21:08:36.773  1291  1291 I CameraFlashlight: Opening camera 0
+10-29 21:08:36.773  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 21:08:36.773  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 21:08:36.773  1291  1291 V EmulatedCamera_Camera: connectCamera
+10-29 21:08:36.774  1291  1291 V EmulatedCamera_FakeDevice: connectDevice
+10-29 21:08:36.774  1291  1291 V EmulatedCamera_CallbackNotifier: setCallbacks: 0xee0cee80, 0xee0ceed0, 0xee0ceff0, 0xee0cf110 (0xedf43140)
+10-29 21:08:37.087  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0x0 -> new: 0xedf43150
+10-29 21:08:37.090  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0xedf43150 -> new: 0x0
+10-29 21:08:37.091  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 21:08:37.521  1291  1291 V EmulatedCamera_Preview: setPreviewWindow: current: 0x0 -> new: 0x0
+10-29 21:08:37.525  1291  1291 V EmulatedCamera_Camera: releaseCamera
+10-29 21:08:37.526  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 21:08:37.526  1291  1291 V EmulatedCamera_FakeDevice: disconnectDevice
+10-29 21:08:37.527  1291  1291 W EmulatedCamera_Device: Initialize: Emulated camera device is already initialized: mState = 1
+10-29 21:08:37.529  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 21:08:37.586  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 21:08:37.588  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 21:08:37.588  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 21:08:37.589  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 21:08:37.590  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 21:08:37.612  1290  1290 I         : sMaxFastTracks = 8
+10-29 21:08:37.652  1291  1291 I CameraFlashlight: Destroying camera 0
+10-29 21:08:37.652  1291  1291 V EmulatedCamera_Camera: closeCamera
+10-29 21:08:16.512  1290  1290 W audioserver: type=1400 audit(0.0:6): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:audioserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 21:08:16.562  1296  1296 W mediadrmserver: type=1400 audit(0.0:7): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediadrmserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 21:08:16.592  1291  1291 W cameraserver: type=1400 audit(0.0:8): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:cameraserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 21:08:34.302  1331  1331 W bootanimation: type=1400 audit(0.0:9): avc: denied { getattr } for path="/vendor" dev="rootfs" ino=2976 scontext=u:r:bootanim:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+10-29 21:08:37.653  1291  1291 V EmulatedCamera_Camera: doStopPreview
+10-29 21:08:37.653  1291  1291 W EmulatedCamera_Device: Initialize: Emulated camera device is already initialized: mState = 1
+10-29 21:08:37.653  1291  1291 D EmulatedCamera_FakeCamera: Initialize: Fake camera is facing back
+10-29 21:08:37.654  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with auto, 1.000000, 1.000000
+10-29 21:08:37.654  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with incandescent, 1.380000, 0.600000
+10-29 21:08:37.655  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with daylight, 1.090000, 0.920000
+10-29 21:08:37.655  1291  1291 V EmulatedCamera_Device: initializeWhiteBalanceModes with twilight, 0.920000, 1.220000
+10-29 21:08:37.655  1291  1291 V EmulatedCamera_Device: setWhiteBalanceMode with white balance auto
+10-29 21:08:37.725  1291  1291 V EmulatedCamera_Camera: getCameraInfo
+10-29 21:08:37.726  1291  1291 V EmulatedCamera_BaseCamera: getCameraInfo
+10-29 21:08:37.806  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 21:08:37.854  1290  1290 I audioserver: ServiceManager: 0xeed3c020
+10-29 21:08:37.902  1290  1290 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:37.904  1290  1290 I AudioFlinger: Using default 3000 mSec as standby time.
+10-29 21:08:38.106  1290  1290 I AudioPolicyService: AudioPolicyService CSTOR in new mode
+10-29 21:08:38.812  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 21:08:38.885  1301  1301 I mediaserver: ServiceManager: 0xf173c0a0
+10-29 21:08:38.929  1290  1290 I APM::ConfigParsingUtils: loadAudioPolicyConfig() loaded /system/etc/audio_policy.conf
+10-29 21:08:39.124  1301  1301 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:39.532  1290  1290 D audio_hw_generic: Emulator host-side ALSA audio emulation detected.
+10-29 21:08:39.535  1290  1290 D audio_hw_generic: mixer 0 name Master Playback Volume
+10-29 21:08:39.536  1290  1290 D audio_hw_generic: set ctl 0 to 100
+10-29 21:08:39.538  1290  1290 D audio_hw_generic: set ctl 1 to 100
+10-29 21:08:39.539  1290  1290 D audio_hw_generic: mixer 1 name Master Playback Switch
+10-29 21:08:39.539  1290  1290 D audio_hw_generic: set ctl 0 to 1
+10-29 21:08:39.540  1290  1290 D audio_hw_generic: set ctl 1 to 1
+10-29 21:08:39.540  1290  1290 D audio_hw_generic: mixer 2 name Capture Volume
+10-29 21:08:39.540  1290  1290 D audio_hw_generic: set ctl 0 to 100
+10-29 21:08:39.540  1290  1290 D audio_hw_generic: set ctl 1 to 100
+10-29 21:08:39.541  1290  1290 D audio_hw_generic: mixer 3 name Capture Switch
+10-29 21:08:39.602  1290  1290 D audio_hw_generic: set ctl 0 to 1
+10-29 21:08:39.602  1290  1290 D audio_hw_generic: set ctl 1 to 1
+10-29 21:08:39.602  1290  1290 D audio_hw_generic: mixer 4 name Line Phantom Jack
+10-29 21:08:39.603  1290  1290 D audio_hw_generic: mixer 5 name Line Out Phantom Jack
+10-29 21:08:39.603  1290  1290 D audio_hw_generic: mixer 6 name Playback Channel Map
+10-29 21:08:39.603  1290  1290 D audio_hw_generic: mixer 7 name Capture Channel Map
+10-29 21:08:39.604  1290  1290 I AudioFlinger: loadHwModule() Loaded primary audio interface from Generic audio HW HAL (audio) handle 10
+10-29 21:08:39.608  1290  1290 I AudioFlinger: openOutput(), module 10 Device 2, SamplingRate 48000, Format 0x000001, Channels 3, flags 2
+10-29 21:08:39.693  1290  1290 I AudioFlinger: HAL output buffer size 720 frames, normal sink buffer size 1152 frames
+10-29 21:08:39.815  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 21:08:40.823  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 21:08:41.825  1291  1291 I ServiceManager: Waiting for service media.camera.proxy...
+10-29 21:08:41.874  1290  1290 I BufferProvider: found effect "Multichannel Downmix To Stereo" from The Android Open Source Project
+10-29 21:08:41.925  1290  1290 I AudioFlinger: Using module 10 has the primary audio interface
+10-29 21:08:41.954  1290  1371 I AudioFlinger: AudioFlinger's thread 0xee7830c0 ready to run
+10-29 21:08:41.962  1290  1371 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:41.966  1290  1371 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:42.051  1290  1371 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:42.060  1290  1371 W AudioFlinger: no wake lock to update, system not ready yet
+10-29 21:08:43.382  1290  1378 I AudioFlinger: AudioFlinger's thread 0xee303a40 ready to run
+10-29 21:08:44.726  1290  1290 I r_submix: adev_open(name=audio_hw_if)
+10-29 21:08:44.727  1290  1290 I r_submix: adev_init_check()
+10-29 21:08:44.727  1290  1290 I AudioFlinger: loadHwModule() Loaded r_submix audio interface from Wifi Display audio HAL (audio) handle 18
+10-29 21:08:44.728  1290  1290 D r_submix: adev_open_input_stream(addr=0)
+10-29 21:08:44.729  1290  1290 D r_submix: submix_audio_device_create_pipe_l(addr=0, idx=9)
+10-29 21:08:44.729  1290  1290 D r_submix:   now using address 0 for route 9
+10-29 21:08:44.832  1290  1379 I AudioFlinger: AudioFlinger's thread 0xee4036c0 ready to run
+10-29 21:08:44.837  1290  1290 D r_submix: adev_close_input_stream()
+10-29 21:08:44.972  1290  1290 D r_submix: submix_audio_device_release_pipe_l(idx=9) addr=0
+10-29 21:08:44.973  1290  1290 D r_submix: submix_audio_device_destroy_pipe_l(): pipe destroyed
+10-29 21:08:45.051  1290  1290 I RadioService: RadioService
+10-29 21:08:45.051  1290  1290 I RadioService: onFirstRef
+10-29 21:08:45.053  1290  1371 W BatteryNotifier: batterystats service unavailable!
+10-29 21:08:45.067  1290  1290 E RadioService: couldn't load radio module radio.primary (No such file or directory)
+10-29 21:08:45.074  1290  1290 E SoundTriggerHwService: couldn't load sound trigger module sound_trigger.primary (No such file or directory)
+10-29 21:09:02.980  1289  1289 D AndroidRuntime: >>>>>> START com.android.internal.os.ZygoteInit uid 0 <<<<<<
+10-29 21:09:03.642  1289  1289 D AndroidRuntime: CheckJNI is OFF
+10-29 21:09:03.823  1289  1289 I art     : option[0]=-Xzygote
+10-29 21:09:03.824  1289  1289 I art     : option[1]=-Xstacktracefile:/data/anr/traces.txt
+10-29 21:09:03.825  1289  1289 I art     : option[2]=exit
+10-29 21:09:03.825  1289  1289 I art     : option[3]=vfprintf
+10-29 21:09:03.825  1289  1289 I art     : option[4]=sensitiveThread
+10-29 21:09:03.825  1289  1289 I art     : option[5]=-verbose:gc
+10-29 21:09:03.825  1289  1289 I art     : option[6]=-Xms4m
+10-29 21:09:03.825  1289  1289 I art     : option[7]=-Xmx256m
+10-29 21:09:03.826  1289  1289 I art     : option[8]=-Xusejit:true
+10-29 21:09:03.826  1289  1289 I art     : option[9]=-Xjitsaveprofilinginfo
+10-29 21:09:03.826  1289  1289 I art     : option[10]=-agentlib:jdwp=transport=dt_android_adb,suspend=n,server=y
+10-29 21:09:03.827  1289  1289 I art     : option[11]=-Xlockprofthreshold:500
+10-29 21:09:03.827  1289  1289 I art     : option[12]=-Ximage-compiler-option
+10-29 21:09:03.827  1289  1289 I art     : option[13]=--runtime-arg
+10-29 21:09:03.827  1289  1289 I art     : option[14]=-Ximage-compiler-option
+10-29 21:09:03.827  1289  1289 I art     : option[15]=-Xms64m
+10-29 21:09:03.827  1289  1289 I art     : option[16]=-Ximage-compiler-option
+10-29 21:09:03.827  1289  1289 I art     : option[17]=--runtime-arg
+10-29 21:09:03.828  1289  1289 I art     : option[18]=-Ximage-compiler-option
+10-29 21:09:03.828  1289  1289 I art     : option[19]=-Xmx64m
+10-29 21:09:03.828  1289  1289 I art     : option[20]=-Ximage-compiler-option
+10-29 21:09:03.828  1289  1289 I art     : option[21]=--image-classes=/system/etc/preloaded-classes
+10-29 21:09:03.828  1289  1289 I art     : option[22]=-Ximage-compiler-option
+10-29 21:09:03.828  1289  1289 I art     : option[23]=--compiled-classes=/system/etc/compiled-classes
+10-29 21:09:03.828  1289  1289 I art     : option[24]=-Xcompiler-option
+10-29 21:09:03.829  1289  1289 I art     : option[25]=--runtime-arg
+10-29 21:09:03.829  1289  1289 I art     : option[26]=-Xcompiler-option
+10-29 21:09:03.829  1289  1289 I art     : option[27]=-Xms64m
+10-29 21:09:03.829  1289  1289 I art     : option[28]=-Xcompiler-option
+10-29 21:09:03.829  1289  1289 I art     : option[29]=--runtime-arg
+10-29 21:09:03.829  1289  1289 I art     : option[30]=-Xcompiler-option
+10-29 21:09:03.829  1289  1289 I art     : option[31]=-Xmx512m
+10-29 21:09:03.830  1289  1289 I art     : option[32]=-Ximage-compiler-option
+10-29 21:09:03.830  1289  1289 I art     : option[33]=--instruction-set-variant=x86
+10-29 21:09:03.882  1289  1289 I art     : option[34]=-Xcompiler-option
+10-29 21:09:03.882  1289  1289 I art     : option[35]=--instruction-set-variant=x86
+10-29 21:09:03.882  1289  1289 I art     : option[36]=-Ximage-compiler-option
+10-29 21:09:03.882  1289  1289 I art     : option[37]=--instruction-set-features=default
+10-29 21:09:03.882  1289  1289 I art     : option[38]=-Xcompiler-option
+10-29 21:09:03.883  1289  1289 I art     : option[39]=--instruction-set-features=default
+10-29 21:09:03.883  1289  1289 I art     : option[40]=-Duser.locale=en-US
+10-29 21:09:03.883  1289  1289 I art     : option[41]=--cpu-abilist=x86
+10-29 21:09:03.883  1289  1289 I art     : option[42]=-Xfingerprint:Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+10-29 21:09:05.334  1427  1427 E hostapd : Configuration file: /system/etc/simulated_hostapd.conf
+10-29 21:09:05.443  1289  1289 I art     : Pruning dalvik-cache since we are relocating an image and will need to recompile
+10-29 21:09:05.714  1289  1289 I art     : RelocateImage: /system/bin/patchoat --input-image-location=/system/framework/boot.art --output-image-file=/data/dalvik-cache/x86/system@framework@boot.art --instruction-set=x86 --base-offset-delta=14966784
+10-29 21:09:06.151  1427  1427 I hostapd : rfkill: Cannot get wiphy information
+10-29 21:09:06.228  1427  1427 I hostapd : nl80211: Could not re-add multicast membership for vendor events: -2 (No such file or directory)
+10-29 21:09:06.294  1427  1427 I hostapd : wlan1: interface state UNINITIALIZED->COUNTRY_UPDATE
+10-29 21:09:06.590  1420  1420 E ipv6proxy: Failed to forward Router Advertisement from eth0 to wlan1: Network is unreachable
+10-29 21:09:06.635  1420  1420 E ipv6proxy: Failed to forward Router Advertisement from eth0 to radio0-peer: Cannot assign requested address
+10-29 21:09:06.989  1331  1331 I BootAnimation: boot animation disabled
+10-29 21:09:07.257  1288  1288 D AndroidRuntime: >>>>>> START com.android.internal.os.ZygoteInit uid 0 <<<<<<
+10-29 21:09:07.672  1288  1288 D AndroidRuntime: CheckJNI is OFF
+10-29 21:09:07.741  1288  1288 I art     : option[0]=-Xzygote
+10-29 21:09:07.743  1288  1288 I art     : option[1]=-Xstacktracefile:/data/anr/traces.txt
+10-29 21:09:07.743  1288  1288 I art     : option[2]=exit
+10-29 21:09:07.744  1288  1288 I art     : option[3]=vfprintf
+10-29 21:09:07.744  1288  1288 I art     : option[4]=sensitiveThread
+10-29 21:09:07.744  1288  1288 I art     : option[5]=-verbose:gc
+10-29 21:09:07.744  1288  1288 I art     : option[6]=-Xms4m
+10-29 21:09:07.744  1288  1288 I art     : option[7]=-Xmx256m
+10-29 21:09:07.744  1288  1288 I art     : option[8]=-Xusejit:true
+10-29 21:09:07.744  1288  1288 I art     : option[9]=-Xjitsaveprofilinginfo
+10-29 21:09:07.744  1288  1288 I art     : option[10]=-agentlib:jdwp=transport=dt_android_adb,suspend=n,server=y
+10-29 21:09:07.745  1288  1288 I art     : option[11]=-Xlockprofthreshold:500
+10-29 21:09:07.745  1288  1288 I art     : option[12]=-Ximage-compiler-option
+10-29 21:09:07.745  1288  1288 I art     : option[13]=--runtime-arg
+10-29 21:09:07.745  1288  1288 I art     : option[14]=-Ximage-compiler-option
+10-29 21:09:07.745  1288  1288 I art     : option[15]=-Xms64m
+10-29 21:09:07.745  1288  1288 I art     : option[16]=-Ximage-compiler-option
+10-29 21:09:07.745  1288  1288 I art     : option[17]=--runtime-arg
+10-29 21:09:07.745  1288  1288 I art     : option[18]=-Ximage-compiler-option
+10-29 21:09:07.745  1288  1288 I art     : option[19]=-Xmx64m
+10-29 21:09:07.746  1288  1288 I art     : option[20]=-Ximage-compiler-option
+10-29 21:09:07.746  1288  1288 I art     : option[21]=--image-classes=/system/etc/preloaded-classes
+10-29 21:09:07.746  1288  1288 I art     : option[22]=-Ximage-compiler-option
+10-29 21:09:07.746  1288  1288 I art     : option[23]=--compiled-classes=/system/etc/compiled-classes
+10-29 21:09:07.746  1288  1288 I art     : option[24]=-Xcompiler-option
+10-29 21:09:07.746  1288  1288 I art     : option[25]=--runtime-arg
+10-29 21:09:07.746  1288  1288 I art     : option[26]=-Xcompiler-option
+10-29 21:09:07.746  1288  1288 I art     : option[27]=-Xms64m
+10-29 21:09:07.746  1288  1288 I art     : option[28]=-Xcompiler-option
+10-29 21:09:07.746  1288  1288 I art     : option[29]=--runtime-arg
+10-29 21:09:07.747  1288  1288 I art     : option[30]=-Xcompiler-option
+10-29 21:09:07.747  1288  1288 I art     : option[31]=-Xmx512m
+10-29 21:09:07.747  1288  1288 I art     : option[32]=-Ximage-compiler-option
+10-29 21:09:07.747  1288  1288 I art     : option[33]=--instruction-set-variant=x86_64
+10-29 21:09:07.747  1288  1288 I art     : option[34]=-Xcompiler-option
+10-29 21:09:07.747  1288  1288 I art     : option[35]=--instruction-set-variant=x86_64
+10-29 21:09:07.747  1288  1288 I art     : option[36]=-Ximage-compiler-option
+10-29 21:09:07.747  1288  1288 I art     : option[37]=--instruction-set-features=default
+10-29 21:09:07.747  1288  1288 I art     : option[38]=-Xcompiler-option
+10-29 21:09:07.747  1288  1288 I art     : option[39]=--instruction-set-features=default
+10-29 21:09:07.747  1288  1288 I art     : option[40]=-Duser.locale=en-US
+10-29 21:09:07.748  1288  1288 I art     : option[41]=--cpu-abilist=x86_64
+10-29 21:09:07.748  1288  1288 I art     : option[42]=-Xfingerprint:Android/sdk_phone_x86_64/generic_x86_64:7.1.1/NYC/4931657:userdebug/test-keys
+10-29 21:09:08.296  1288  1288 I art     : Pruning dalvik-cache since we are relocating an image and will need to recompile
+10-29 21:09:08.307  1288  1288 I art     : RelocateImage: /system/bin/patchoat --input-image-location=/system/framework/boot.art --output-image-file=/data/dalvik-cache/x86_64/system@framework@boot.art --instruction-set=x86_64 --base-offset-delta=-16363520
+10-29 21:09:10.503  1420  1420 E ipv6proxy: Failed to forward Router Advertisement from eth0 to wlan1: Network is unreachable
+10-29 21:09:11.319  1427  1427 I hostapd : wlan1: interface state COUNTRY_UPDATE->HT_SCAN
+10-29 21:09:12.836  1427  1427 E hostapd : Using interface wlan1 with hwaddr 02:00:00:00:01:00 and ssid "AndroidWifi"
+10-29 21:09:12.941  1427  1427 I hostapd : wlan1: interface state HT_SCAN->ENABLED
+10-29 21:09:12.941  1427  1427 I hostapd : wlan1: AP-ENABLED 
+10-29 21:09:15.860  1289  1289 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:09:19.774  1289  1289 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:09:19.780  1289  1289 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:09:19.872  1289  1289 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:09:21.462  1288  1288 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:09:21.719  1289  1289 I SamplingProfilerIntegration: Profiling disabled.
+10-29 21:09:21.788  1289  1289 D Zygote  : begin preload
+10-29 21:09:21.788  1289  1289 I Zygote  : Installing ICU cache reference pinning...
+10-29 21:09:21.795  1289  1289 I Zygote  : Preloading ICU data...
+10-29 21:09:23.395  1289  1289 I Zygote  : Preloading classes...
+10-29 21:09:23.421  1288  1288 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:09:23.427  1288  1288 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:09:23.467  1288  1288 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:09:23.566  1289  1289 W Zygote  : Class not found for preloading: [Landroid.view.Display$ColorTransform;
+10-29 21:09:23.726  1288  1288 I SamplingProfilerIntegration: Profiling disabled.
+10-29 21:09:23.743  1288  1288 D Zygote  : begin preload
+10-29 21:09:23.743  1288  1288 I Zygote  : Installing ICU cache reference pinning...
+10-29 21:09:23.773  1288  1288 I Zygote  : Preloading ICU data...
+10-29 21:09:26.154  1288  1288 I Zygote  : Preloading classes...
+10-29 21:09:26.318  1288  1288 W Zygote  : Class not found for preloading: [Landroid.view.Display$ColorTransform;
+10-29 21:09:32.595  1288  1288 E Typeface: Error mapping font file /system/fonts/DroidSansFallback.ttf
+10-29 21:09:32.674  1289  1289 E Typeface: Error mapping font file /system/fonts/DroidSansFallback.ttf
+10-29 21:09:41.515  1288  1490 W art     : Suspending all threads took: 18.833ms
+10-29 21:09:41.525  1289  1460 W art     : Suspending all threads took: 14.025ms
+10-29 21:09:41.804  1288  1490 I art     : Background concurrent mark sweep GC freed 21949(2MB) AllocSpace objects, 63(1108KB) LOS objects, 33% free, 2MB/3MB, paused 24.999ms total 783.625ms
+10-29 21:09:41.886  1289  1460 I art     : Background concurrent mark sweep GC freed 21945(2MB) AllocSpace objects, 62(1092KB) LOS objects, 33% free, 2MB/4MB, paused 44.383ms total 614.051ms
+10-29 21:09:42.143  1288  1490 I art     : Background sticky concurrent mark sweep GC freed 199(1266KB) AllocSpace objects, 57(1132KB) LOS objects, 53% free, 1812KB/3MB, paused 874us total 167.879ms
+10-29 21:09:42.215  1289  1460 I art     : Background sticky concurrent mark sweep GC freed 237(1333KB) AllocSpace objects, 64(1248KB) LOS objects, 61% free, 1763KB/4MB, paused 1.342ms total 231.424ms
+10-29 21:09:43.050  1289  1289 I art     : Thread[1,tid=1289,Native,Thread*=0xed60b400,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib/libmedia_jni.so"
+10-29 21:09:43.072  1288  1288 I art     : Thread[1,tid=1288,Native,Thread*=0x7cc84fa95a00,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib64/libmedia_jni.so"
+10-29 21:09:43.079  1289  1289 D MtpDeviceJNI: register_android_mtp_MtpDevice
+10-29 21:09:43.085  1289  1289 I art     : Thread[1,tid=1289,Native,Thread*=0xed60b400,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib/libmedia_jni.so"
+10-29 21:09:43.090  1289  1289 I art     : Thread[1,tid=1289,Native,Thread*=0xed60b400,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib/libmedia_jni.so"
+10-29 21:09:43.101  1288  1288 D MtpDeviceJNI: register_android_mtp_MtpDevice
+10-29 21:09:43.105  1288  1288 I art     : Thread[1,tid=1288,Native,Thread*=0x7cc84fa95a00,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib64/libmedia_jni.so"
+10-29 21:09:43.109  1288  1288 I art     : Thread[1,tid=1288,Native,Thread*=0x7cc84fa95a00,peer=0x12c060d0,"main"] recursive attempt to load library "/system/lib64/libmedia_jni.so"
+10-29 21:09:45.063  1288  1288 W Zygote  : Class not found for preloading: android.view.Display$ColorTransform
+10-29 21:09:45.064  1288  1288 W Zygote  : Class not found for preloading: android.view.Display$ColorTransform$1
+10-29 21:09:45.281  1289  1289 W Zygote  : Class not found for preloading: android.view.Display$ColorTransform
+10-29 21:09:45.293  1289  1289 W Zygote  : Class not found for preloading: android.view.Display$ColorTransform$1
+10-29 21:09:49.145  1302  1302 V NatController: runCmd(/system/bin/iptables -w -F natctrl_FORWARD) res=0
+10-29 21:09:49.282  1302  1302 V NatController: runCmd(/system/bin/ip6tables -w -F natctrl_FORWARD) res=0
+10-29 21:09:49.473  1302  1302 V NatController: runCmd(/system/bin/iptables -w -A natctrl_FORWARD -j DROP) res=0
+10-29 21:09:49.692  1302  1302 V NatController: runCmd(/system/bin/iptables -w -t nat -F natctrl_nat_POSTROUTING) res=0
+10-29 21:09:50.225  1302  1302 V NatController: runCmd(/system/bin/ip6tables -w -t raw -F natctrl_raw_PREROUTING) res=0
+10-29 21:09:50.605  1302  1302 V NatController: runCmd(/system/bin/iptables -w -F natctrl_tether_counters) res=1
+10-29 21:09:50.833  1302  1302 V NatController: runCmd(/system/bin/ip6tables -w -F natctrl_tether_counters) res=1
+10-29 21:09:51.115  1302  1302 V NatController: runCmd(/system/bin/iptables -w -X natctrl_tether_counters) res=1
+10-29 21:09:51.344  1302  1302 V NatController: runCmd(/system/bin/ip6tables -w -X natctrl_tether_counters) res=1
+10-29 21:09:51.867  1302  1302 V NatController: runCmd(/system/bin/iptables -w -N natctrl_tether_counters) res=0
+10-29 21:09:52.483  1302  1302 V NatController: runCmd(/system/bin/ip6tables -w -N natctrl_tether_counters) res=0
+10-29 21:09:52.993  1302  1302 V NatController: runCmd(/system/bin/iptables -w -t mangle -A natctrl_mangle_FORWARD -p tcp --tcp-flags SYN SYN -j TCPMSS --clamp-mss-to-pmtu) res=0
+10-29 21:09:53.183  1288  1288 I System  : Loaded time zone names for "" in 1720ms (1657ms in ICU)
+10-29 21:09:53.845  1288  1288 I System  : Loaded time zone names for "en_US" in 660ms (629ms in ICU)
+10-29 21:09:53.924  1289  1289 I System  : Loaded time zone names for "" in 1399ms (1345ms in ICU)
+10-29 21:09:54.393  1289  1289 I System  : Loaded time zone names for "en_US" in 466ms (433ms in ICU)
+10-29 21:09:55.516  1288  1490 I art     : Background sticky concurrent mark sweep GC freed 24010(1810KB) AllocSpace objects, 6(96KB) LOS objects, 52% free, 1843KB/3MB, paused 3.058ms total 395.565ms
+10-29 21:09:55.836  1288  1288 I Zygote  : ...preloaded 4158 classes in 29681ms.
+10-29 21:09:55.838  1288  1288 I art     : VMRuntime.preloadDexCaches starting
+10-29 21:09:57.033  1302  1302 E Netd    : cannot find interface dummy0
+10-29 21:09:57.164  1302  1302 D MDnsDS  : MDnsSdListener::Hander starting up
+10-29 21:09:57.174  1302  1628 D MDnsDS  : MDnsSdListener starting to monitor
+10-29 21:09:57.174  1302  1628 D MDnsDS  : Going to poll with pollCount 1
+10-29 21:09:57.470  1289  1289 I Zygote  : ...preloaded 4158 classes in 34074ms.
+10-29 21:09:57.485  1289  1289 I art     : VMRuntime.preloadDexCaches starting
+10-29 21:09:59.364  1288  1288 I art     : VMRuntime.preloadDexCaches strings total=283712 before=39625 after=39625
+10-29 21:09:59.364  1288  1288 I art     : VMRuntime.preloadDexCaches types total=23581 before=7877 after=7904
+10-29 21:09:59.364  1288  1288 I art     : VMRuntime.preloadDexCaches fields total=112007 before=40903 after=41117
+10-29 21:09:59.365  1288  1288 I art     : VMRuntime.preloadDexCaches methods total=197534 before=82457 after=83017
+10-29 21:09:59.365  1288  1288 I art     : VMRuntime.preloadDexCaches finished
+10-29 21:09:59.393  1288  1288 I Zygote  : Preloading resources...
+10-29 21:09:59.594  1289  1289 I art     : VMRuntime.preloadDexCaches strings total=283712 before=39625 after=39625
+10-29 21:09:59.594  1289  1289 I art     : VMRuntime.preloadDexCaches types total=23581 before=7877 after=7904
+10-29 21:09:59.595  1289  1289 I art     : VMRuntime.preloadDexCaches fields total=112007 before=40903 after=41117
+10-29 21:09:59.595  1289  1289 I art     : VMRuntime.preloadDexCaches methods total=197534 before=82457 after=83017
+10-29 21:09:59.595  1289  1289 I art     : VMRuntime.preloadDexCaches finished
+10-29 21:09:59.618  1289  1289 I Zygote  : Preloading resources...
+10-29 21:10:00.189  1288  1288 W Resources: Preloaded drawable resource #0x108025c (android:drawable/dialog_background_material) that varies with configuration!!
+10-29 21:10:00.205  1288  1288 W Resources: Preloaded drawable resource #0x1080298 (android:drawable/editbox_dropdown_background_dark) that varies with configuration!!
+10-29 21:10:00.305  1288  1288 W Resources: Preloaded color resource #0x10600e2 (android:color/material_grey_800) that varies with configuration!!
+10-29 21:10:00.306  1288  1288 W Resources: Preloaded drawable resource #0x10802c9 (android:drawable/floating_popup_background_dark) that varies with configuration!!
+10-29 21:10:00.472  1289  1289 W Resources: Preloaded drawable resource #0x108025c (android:drawable/dialog_background_material) that varies with configuration!!
+10-29 21:10:00.477  1289  1289 W Resources: Preloaded drawable resource #0x1080298 (android:drawable/editbox_dropdown_background_dark) that varies with configuration!!
+10-29 21:10:00.538  1289  1289 W Resources: Preloaded color resource #0x10600e2 (android:color/material_grey_800) that varies with configuration!!
+10-29 21:10:00.538  1289  1289 W Resources: Preloaded drawable resource #0x10802c9 (android:drawable/floating_popup_background_dark) that varies with configuration!!
+10-29 21:10:01.723  1288  1288 W Resources: Preloaded drawable resource #0x108030b (android:drawable/ic_clear_disabled) that varies with configuration!!
+10-29 21:10:01.728  1288  1288 W Resources: Preloaded drawable resource #0x1080310 (android:drawable/ic_clear_normal) that varies with configuration!!
+10-29 21:10:01.733  1289  1289 W Resources: Preloaded drawable resource #0x108030b (android:drawable/ic_clear_disabled) that varies with configuration!!
+10-29 21:10:01.737  1289  1289 W Resources: Preloaded drawable resource #0x1080310 (android:drawable/ic_clear_normal) that varies with configuration!!
+10-29 21:10:01.784  1288  1288 W Resources: Preloaded drawable resource #0x1080359 (android:drawable/ic_go) that varies with configuration!!
+10-29 21:10:01.799  1289  1289 W Resources: Preloaded drawable resource #0x1080359 (android:drawable/ic_go) that varies with configuration!!
+10-29 21:10:01.879  1288  1288 W Resources: Preloaded drawable resource #0x1080038 (android:drawable/ic_menu_close_clear_cancel) that varies with configuration!!
+10-29 21:10:01.962  1289  1289 W Resources: Preloaded drawable resource #0x1080038 (android:drawable/ic_menu_close_clear_cancel) that varies with configuration!!
+10-29 21:10:01.967  1288  1288 W Resources: Preloaded drawable resource #0x1080045 (android:drawable/ic_menu_more) that varies with configuration!!
+10-29 21:10:02.080  1289  1289 W Resources: Preloaded drawable resource #0x1080045 (android:drawable/ic_menu_more) that varies with configuration!!
+10-29 21:10:02.179  1289  1460 I art     : Background concurrent mark sweep GC freed 28288(2MB) AllocSpace objects, 7(116KB) LOS objects, 64% free, 2MB/6MB, paused 16.924ms total 334.760ms
+10-29 21:10:03.403  1288  1288 W Resources: Preloaded drawable resource #0x10804e8 (android:drawable/menu_background_fill_parent_width) that varies with configuration!!
+10-29 21:10:03.417  1289  1289 W Resources: Preloaded drawable resource #0x10804e8 (android:drawable/menu_background_fill_parent_width) that varies with configuration!!
+10-29 21:10:06.633  1288  1288 W Resources: Preloaded drawable resource #0x108077e (android:drawable/text_edit_paste_window) that varies with configuration!!
+10-29 21:10:06.648  1289  1289 W Resources: Preloaded drawable resource #0x108077e (android:drawable/text_edit_paste_window) that varies with configuration!!
+10-29 21:10:06.706  1288  1288 W Resources: Preloaded drawable resource #0x1080096 (android:drawable/toast_frame) that varies with configuration!!
+10-29 21:10:06.706  1288  1288 I Zygote  : ...preloaded 114 resources in 7312ms.
+10-29 21:10:06.732  1289  1289 W Resources: Preloaded drawable resource #0x1080096 (android:drawable/toast_frame) that varies with configuration!!
+10-29 21:10:06.733  1289  1289 I Zygote  : ...preloaded 114 resources in 7115ms.
+10-29 21:10:06.824  1288  1288 W Resources: Preloaded color resource #0x106010b (android:color/background_cache_hint_selector_material_dark) that varies with configuration!!
+10-29 21:10:06.831  1288  1288 W Resources: Preloaded color resource #0x1060110 (android:color/btn_default_material_dark) that varies with configuration!!
+10-29 21:10:06.869  1288  1288 I Zygote  : ...preloaded 41 resources in 163ms.
+10-29 21:10:06.873  1289  1289 W Resources: Preloaded color resource #0x106010b (android:color/background_cache_hint_selector_material_dark) that varies with configuration!!
+10-29 21:10:06.878  1289  1289 W Resources: Preloaded color resource #0x1060110 (android:color/btn_default_material_dark) that varies with configuration!!
+10-29 21:10:06.881  1288  1288 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-29 21:10:06.902  1288  1288 E libEGL  : load_driver(/system/lib64/egl/libGLES_emulation.so): dlopen failed: library "/system/lib64/egl/libGLES_emulation.so" not found
+10-29 21:10:06.927  1289  1289 I Zygote  : ...preloaded 41 resources in 194ms.
+10-29 21:10:06.929  1289  1289 D libEGL  : Emulator has host GPU support, qemu.gles is set to 1.
+10-29 21:10:06.955  1289  1289 E libEGL  : load_driver(/system/lib/egl/libGLES_emulation.so): dlopen failed: library "/system/lib/egl/libGLES_emulation.so" not found
+10-29 21:10:06.970  1288  1288 D libEGL  : loaded /system/lib64/egl/libEGL_emulation.so
+10-29 21:10:06.991  1288  1288 D libEGL  : loaded /system/lib64/egl/libGLESv1_CM_emulation.so
+10-29 21:10:07.098  1289  1289 D libEGL  : loaded /system/lib/egl/libEGL_emulation.so
+10-29 21:10:07.159  1289  1289 D libEGL  : loaded /system/lib/egl/libGLESv1_CM_emulation.so
+10-29 21:10:07.386  1288  1288 D libEGL  : loaded /system/lib64/egl/libGLESv2_emulation.so
+10-29 21:10:07.458  1288  1288 I Zygote  : Preloading shared libraries...
+10-29 21:10:09.009  1289  1289 D libEGL  : loaded /system/lib/egl/libGLESv2_emulation.so
+10-29 21:10:09.078  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-as.hyb
+10-29 21:10:09.078  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-as.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.078  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.078  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.096  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-bn.hyb
+10-29 21:10:09.096  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-bn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.096  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.096  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.111  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-cy.hyb
+10-29 21:10:09.111  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-cy.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.111  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.111  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.115  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-da.hyb
+10-29 21:10:09.115  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-da.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.115  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.115  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.117  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-1901.hyb
+10-29 21:10:09.117  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-1901.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.117  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.117  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.120  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-1996.hyb
+10-29 21:10:09.120  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-1996.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.120  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.120  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.134  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-ch-1901.hyb
+10-29 21:10:09.134  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-ch-1901.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.134  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.134  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.146  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-en-gb.hyb
+10-29 21:10:09.146  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-en-gb.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.146  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.146  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.150  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-en-us.hyb
+10-29 21:10:09.150  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-en-us.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.150  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.150  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.179  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-es.hyb
+10-29 21:10:09.179  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-es.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.179  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.179  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.205  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-et.hyb
+10-29 21:10:09.205  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-et.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.205  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.205  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.208  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-eu.hyb
+10-29 21:10:09.208  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-eu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.208  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.208  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.211  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-fr.hyb
+10-29 21:10:09.211  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-fr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.211  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.211  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.235  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ga.hyb
+10-29 21:10:09.235  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ga.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.235  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.235  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.238  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-gu.hyb
+10-29 21:10:09.238  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-gu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.238  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.238  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.240  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hi.hyb
+10-29 21:10:09.240  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hi.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.240  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.240  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.249  1289  1289 I Zygote  : Preloading shared libraries...
+10-29 21:10:09.263  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hr.hyb
+10-29 21:10:09.263  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.263  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.263  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.266  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hu.hyb
+10-29 21:10:09.266  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.266  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.266  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.292  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hy.hyb
+10-29 21:10:09.292  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hy.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.292  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.292  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.296  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-kn.hyb
+10-29 21:10:09.296  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-kn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.296  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.296  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.299  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ml.hyb
+10-29 21:10:09.299  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ml.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.299  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.299  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.322  1288  1490 I art     : Background concurrent mark sweep GC freed 10172(852KB) AllocSpace objects, 7(120KB) LOS objects, 56% free, 3MB/7MB, paused 1.118ms total 167.094ms
+10-29 21:10:09.323  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-mn-cyrl.hyb
+10-29 21:10:09.323  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-mn-cyrl.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.323  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.323  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.327  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-mr.hyb
+10-29 21:10:09.327  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-mr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.327  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.327  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.329  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nb.hyb
+10-29 21:10:09.329  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nb.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.329  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.329  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.334  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nn.hyb
+10-29 21:10:09.334  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.334  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.334  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.336  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-or.hyb
+10-29 21:10:09.336  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-or.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.336  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.336  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.339  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pa.hyb
+10-29 21:10:09.339  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pa.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.339  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.339  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.345  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pt.hyb
+10-29 21:10:09.345  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pt.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.345  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.345  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.348  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-sl.hyb
+10-29 21:10:09.348  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-sl.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.348  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.348  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.351  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ta.hyb
+10-29 21:10:09.351  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ta.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.351  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.351  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.354  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-te.hyb
+10-29 21:10:09.354  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-te.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.354  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.354  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.356  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-tk.hyb
+10-29 21:10:09.356  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-tk.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.356  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.356  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:09.359  1288  1288 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-und-ethi.hyb
+10-29 21:10:09.359  1288  1288 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-und-ethi.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:09.359  1288  1288 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:09.359  1288  1288 E Hyphenator: 	... 6 more
+10-29 21:10:12.071  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-as.hyb
+10-29 21:10:12.071  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-as.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.071  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.071  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.112  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-bn.hyb
+10-29 21:10:12.112  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-bn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.112  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.112  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.117  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-cy.hyb
+10-29 21:10:12.117  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-cy.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.117  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.117  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.119  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-da.hyb
+10-29 21:10:12.119  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-da.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.119  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.119  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.135  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-1901.hyb
+10-29 21:10:12.135  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-1901.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.135  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.135  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.138  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-1996.hyb
+10-29 21:10:12.138  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-1996.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.138  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.138  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.153  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-de-ch-1901.hyb
+10-29 21:10:12.153  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-de-ch-1901.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.153  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.153  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.157  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-en-gb.hyb
+10-29 21:10:12.157  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-en-gb.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.157  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.157  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.159  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-en-us.hyb
+10-29 21:10:12.159  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-en-us.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.159  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.159  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.175  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-es.hyb
+10-29 21:10:12.175  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-es.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.175  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.175  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.180  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-et.hyb
+10-29 21:10:12.180  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-et.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.180  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.180  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.200  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-eu.hyb
+10-29 21:10:12.200  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-eu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.200  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.200  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.204  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-fr.hyb
+10-29 21:10:12.204  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-fr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.204  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.204  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.206  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ga.hyb
+10-29 21:10:12.206  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ga.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.206  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.206  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.209  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-gu.hyb
+10-29 21:10:12.209  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-gu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.209  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.209  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.223  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hi.hyb
+10-29 21:10:12.223  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hi.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.223  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.223  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.227  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hr.hyb
+10-29 21:10:12.227  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.227  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.227  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.250  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hu.hyb
+10-29 21:10:12.250  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hu.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.250  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.250  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.254  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-hy.hyb
+10-29 21:10:12.254  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-hy.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.254  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.254  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.257  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-kn.hyb
+10-29 21:10:12.257  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-kn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.257  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.257  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.260  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ml.hyb
+10-29 21:10:12.260  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ml.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.260  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.260  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.264  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-mn-cyrl.hyb
+10-29 21:10:12.264  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-mn-cyrl.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.264  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.264  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.266  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-mr.hyb
+10-29 21:10:12.266  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-mr.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.266  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.266  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.269  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nb.hyb
+10-29 21:10:12.269  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nb.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.269  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.269  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.271  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-nn.hyb
+10-29 21:10:12.271  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-nn.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.271  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.271  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.276  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-or.hyb
+10-29 21:10:12.276  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-or.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.276  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.276  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.280  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pa.hyb
+10-29 21:10:12.280  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pa.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.280  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.280  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.284  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-pt.hyb
+10-29 21:10:12.284  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-pt.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.284  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.284  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.287  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-sl.hyb
+10-29 21:10:12.287  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-sl.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.287  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.287  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.290  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-ta.hyb
+10-29 21:10:12.290  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-ta.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.290  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.290  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.294  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-te.hyb
+10-29 21:10:12.294  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-te.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.294  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.294  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.296  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-tk.hyb
+10-29 21:10:12.296  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-tk.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.296  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.296  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:12.299  1289  1289 E Hyphenator: error loading hyphenation /system/usr/hyphen-data/hyph-und-ethi.hyb
+10-29 21:10:12.299  1289  1289 E Hyphenator: java.io.FileNotFoundException: /system/usr/hyphen-data/hyph-und-ethi.hyb: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:455)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:247)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at android.text.Hyphenator.loadHyphenator(Hyphenator.java:118)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at android.text.Hyphenator.init(Hyphenator.java:224)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preloadTextResources(ZygoteInit.java:252)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.preload(ZygoteInit.java:206)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:743)
+10-29 21:10:12.299  1289  1289 E Hyphenator: Caused by: android.system.ErrnoException: open failed: ENOENT (No such file or directory)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at libcore.io.Posix.open(Native Method)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at libcore.io.BlockGuardOs.open(BlockGuardOs.java:187)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	at libcore.io.IoBridge.open(IoBridge.java:441)
+10-29 21:10:12.299  1289  1289 E Hyphenator: 	... 6 more
+10-29 21:10:13.629  1288  1288 I Zygote  : Uninstalled ICU cache reference pinning...
+10-29 21:10:13.709  1288  1288 I Zygote  : Installed AndroidKeyStoreProvider in 79ms.
+10-29 21:10:13.859  1289  1289 I Zygote  : Uninstalled ICU cache reference pinning...
+10-29 21:10:13.952  1289  1289 I Zygote  : Installed AndroidKeyStoreProvider in 92ms.
+10-29 21:10:13.969  1288  1288 I Zygote  : Warmed up JCA providers in 259ms.
+10-29 21:10:13.969  1288  1288 D Zygote  : end preload
+10-29 21:10:14.028  1288  1288 I art     : Starting a blocking GC Explicit
+10-29 21:10:14.234  1288  1288 I art     : Explicit concurrent mark sweep GC freed 11785(823KB) AllocSpace objects, 1(24KB) LOS objects, 58% free, 2MB/6MB, paused 2.411ms total 185.616ms
+10-29 21:10:14.259  1289  1289 I Zygote  : Warmed up JCA providers in 305ms.
+10-29 21:10:14.259  1289  1289 D Zygote  : end preload
+10-29 21:10:14.262  1288  1288 I art     : Starting a blocking GC Explicit
+10-29 21:10:14.275  1289  1289 I art     : Starting a blocking GC Explicit
+10-29 21:10:14.343  1288  1288 I art     : Explicit concurrent mark sweep GC freed 115(3KB) AllocSpace objects, 0(0B) LOS objects, 58% free, 2MB/6MB, paused 649us total 72.831ms
+10-29 21:10:14.344  1288  1490 I art     : WaitForGcToComplete blocked for 37.134ms for cause HeapTrim
+10-29 21:10:14.466  1288  1288 I art     : Starting a blocking GC Background
+10-29 21:10:14.579  1289  1289 I art     : Explicit concurrent mark sweep GC freed 16000(1216KB) AllocSpace objects, 0(0B) LOS objects, 57% free, 2MB/6MB, paused 4.146ms total 288.380ms
+10-29 21:10:14.624  1289  1289 I art     : Starting a blocking GC Explicit
+10-29 21:10:14.735  1289  1289 I art     : Explicit concurrent mark sweep GC freed 1615(78KB) AllocSpace objects, 1(24KB) LOS objects, 58% free, 2MB/6MB, paused 1.581ms total 94.352ms
+10-29 21:10:14.746  1289  1289 I Zygote  : Accepting command socket connections
+10-29 21:10:14.859  1288  1288 I Zygote  : System server process 1636 has been created
+10-29 21:10:14.905  1288  1288 I Zygote  : Accepting command socket connections
+10-29 21:10:15.134  1636  1636 I Zygote  : Process: zygote socket opened, supported ABIS: x86
+10-29 21:10:15.149  1636  1636 I InstallerConnection: connecting...
+10-29 21:10:15.163  1293  1293 I         : new connection
+10-29 21:10:15.269  1636  1636 I InstallerConnection: disconnecting...
+10-29 21:10:15.270  1293  1293 E         : eof
+10-29 21:10:15.270  1293  1293 E         : failed to read size
+10-29 21:10:15.271  1293  1293 I         : closing connection
+10-29 21:10:15.493  1636  1636 I SystemServer: Entered the Android system server!
+10-29 21:10:16.089  1636  1636 I SystemServiceManager: Starting com.android.server.pm.Installer
+10-29 21:10:16.103  1636  1636 I Installer: Waiting for installd to be ready.
+10-29 21:10:16.103  1636  1636 I InstallerConnection: connecting...
+10-29 21:10:16.105  1293  1293 I         : new connection
+10-29 21:10:16.109  1636  1636 I SystemServiceManager: Starting com.android.server.am.ActivityManagerService$Lifecycle
+10-29 21:10:16.227  1636  1636 I ActivityManager: Memory class: 256
+10-29 21:10:16.245  1636  1651 I ServiceThread: Enabled StrictMode logging for ActivityManager looper.
+10-29 21:10:16.262  1636  1652 I ServiceThread: Enabled StrictMode logging for android.ui looper.
+10-29 21:10:16.462  1636  1636 D BatteryStatsImpl: Reading daily items from /data/system/batterystats-daily.xml
+10-29 21:10:18.068  1636  1636 I AppOps  : No existing app ops /data/system/appops.xml; starting empty
+10-29 21:10:18.422  1636  1636 I IntentFirewall: Read new rules (A:0 B:0 S:0)
+10-29 21:10:19.003  1636  1658 I ServiceThread: Enabled StrictMode logging for android.display looper.
+10-29 21:10:19.084  1636  1636 D AppOps  : AppOpsService published
+10-29 21:10:19.088  1636  1636 I SystemServiceManager: Starting com.android.server.power.PowerManagerService
+10-29 21:10:19.112  1636  1660 I ServiceThread: Enabled StrictMode logging for PowerManagerService looper.
+10-29 21:10:19.124  1636  1636 E PowerManagerService-JNI: Couldn't load power module (No such file or directory)
+10-29 21:10:19.125  1636  1636 W libsuspend: Error writing 'on' to /sys/power/state: Invalid argument
+10-29 21:10:19.127  1636  1636 I libsuspend: Selected wakeup count
+10-29 21:10:19.158  1636  1636 I SystemServiceManager: Starting com.android.server.lights.LightsService
+10-29 21:10:19.178  1636  1636 I SystemServiceManager: Starting com.android.server.display.DisplayManagerService
+10-29 21:10:19.276  1285  1318 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+10-29 21:10:19.326  1636  1636 I SystemServiceManager: Starting phase 100
+10-29 21:10:19.359  1636  1658 I DisplayManagerService: Display device added: DisplayDeviceInfo{"Built-in Screen": uniqueId="local:0", 480 x 800, modeId 1, defaultModeId 1, supportedModes [{id=1, width=480, height=800, fps=60.000004}], colorMode 0, supportedColorModes [0], HdrCapabilities android.view.Display$HdrCapabilities@a69d6308, density 240, 240.0 x 240.0 dpi, appVsyncOff 1000000, presDeadline 16666666, touch INTERNAL, rotation 0, type BUILT_IN, state UNKNOWN, FLAG_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS}
+10-29 21:10:19.367  1285  1285 D SurfaceFlinger: Set power mode=2, type=0 flinger=0x771359e47000
+10-29 21:10:19.368  1285  1285 D SurfaceFlinger: Screen type=0 is already mode=2
+10-29 21:10:19.376  1636  1636 I SystemServer: StartPackageManagerService
+10-29 21:10:19.391  1636  1658 I DisplayManagerService: Display device changed state: "Built-in Screen", ON
+10-29 21:10:19.519  1636  1636 W FileUtils: Failed to chmod(/data/system/packages.list): android.system.ErrnoException: chmod failed: ENOENT (No such file or directory)
+10-29 21:10:19.554  1636  1636 W SystemConfig: No directory /system/etc/sysconfig, skipping
+10-29 21:10:19.815  1636  1636 D SELinuxMMAC: Using policy file /system/etc/security/mac_permissions.xml
+10-29 21:10:19.836  1636  1636 I PackageManager: No settings file; creating initial state
+10-29 21:10:20.024  1636  1636 E art     : DexFile_getDexOptNeeded file '/system/framework/org.apache.http.legacy.jar' does not exist
+10-29 21:10:20.028  1636  1636 W PackageManager: Library not found: /system/framework/org.apache.http.legacy.jar
+10-29 21:10:20.179  1636  1636 E art     : DexFile_getDexOptNeeded file '/system/framework/org.apache.http.legacy.jar' does not exist
+10-29 21:10:20.180  1636  1636 W PackageManager: Library not found: /system/framework/org.apache.http.legacy.jar
+10-29 21:10:20.259  1636  1636 D PackageManager: No files in app dir /vendor/overlay
+10-29 21:10:21.871  1636  1636 I PackageManager: /system/framework/framework-res.apk changed; collecting certs
+10-29 21:10:29.924  1636  1636 W PackageManager: Failed to parse /system/framework/oat: Missing base APK in /system/framework/oat
+10-29 21:10:29.929  1636  1636 W PackageManager: Failed to parse /system/framework/x86: Missing base APK in /system/framework/x86
+10-29 21:10:29.934  1636  1636 W PackageManager: Failed to parse /system/framework/x86_64: Missing base APK in /system/framework/x86_64
+10-29 21:10:29.986  1636  1636 I PackageManager: /system/priv-app/BackupRestoreConfirmation changed; collecting certs
+10-29 21:10:30.094  1636  1636 I PackageManager: /system/priv-app/BlockedNumberProvider changed; collecting certs
+10-29 21:10:30.115  1636  1636 I PackageManager: New shared user android.uid.shared: id=10001
+10-29 21:10:31.537  1636  1636 I PackageManager: /system/priv-app/CalendarProvider changed; collecting certs
+10-29 21:10:31.578  1636  1636 I PackageManager: New shared user android.uid.calendar: id=10002
+10-29 21:10:31.619  1636  1636 I PackageManager: /system/priv-app/CarrierConfig changed; collecting certs
+10-29 21:10:31.738  1636  1636 I PackageManager: /system/priv-app/CellBroadcastReceiver changed; collecting certs
+10-29 21:10:34.648  1636  1636 W PackageParser: No actions in intent filter at /system/priv-app/Contacts/Contacts.apk Binary XML file line #409
+10-29 21:10:34.662  1636  1636 I PackageManager: /system/priv-app/Contacts changed; collecting certs
+10-29 21:10:39.184  1636  1636 I PackageManager: /system/priv-app/ContactsProvider changed; collecting certs
+10-29 21:10:39.270  1636  1636 I PackageManager: /system/priv-app/CtsShimPrivPrebuilt changed; collecting certs
+10-29 21:10:39.342  1636  1636 I PackageManager: /system/priv-app/DefaultContainerService changed; collecting certs
+10-29 21:10:39.489  1636  1636 W PackageParser: No actions in intent filter at /system/priv-app/Dialer/Dialer.apk Binary XML file line #186
+10-29 21:10:39.506  1636  1636 I PackageManager: /system/priv-app/Dialer changed; collecting certs
+10-29 21:10:42.722  1636  1636 I PackageManager: /system/priv-app/DocumentsUI changed; collecting certs
+10-29 21:10:42.935  1636  1636 I PackageManager: /system/priv-app/DownloadProvider changed; collecting certs
+10-29 21:10:42.987  1636  1636 I PackageManager: New shared user android.media: id=10010
+10-29 21:10:42.996  1636  1636 W PackageManager: Permission android.permission.DOWNLOAD_WITHOUT_NOTIFICATION from package com.android.providers.downloads in an unknown group android.permission-group.NETWORK
+10-29 21:10:44.190  1636  1636 I PackageManager: /system/priv-app/EmergencyInfo changed; collecting certs
+10-29 21:10:44.456  1636  1636 I PackageManager: New shared user com.android.emergency.uid: id=10011
+10-29 21:10:44.489  1636  1636 I PackageManager: /system/priv-app/ExtServices changed; collecting certs
+10-29 21:10:45.770  1636  1636 I PackageManager: /system/priv-app/ExternalStorageProvider changed; collecting certs
+10-29 21:10:45.827  1636  1636 I PackageManager: /system/priv-app/FusedLocation changed; collecting certs
+10-29 21:10:45.909  1636  1636 I PackageManager: /system/priv-app/InputDevices changed; collecting certs
+10-29 21:10:46.005  1636  1636 I PackageManager: /system/priv-app/ManagedProvisioning changed; collecting certs
+10-29 21:10:46.320  1636  1636 I PackageManager: /system/priv-app/MediaProvider changed; collecting certs
+10-29 21:10:46.398  1636  1636 I PackageManager: /system/priv-app/MmsService changed; collecting certs
+10-29 21:10:46.459  1636  1636 I PackageManager: /system/priv-app/MtpDocumentsProvider changed; collecting certs
+10-29 21:10:46.592  1636  1636 I PackageManager: /system/priv-app/PackageInstaller changed; collecting certs
+10-29 21:10:48.143  1636  1636 I PackageManager: /system/priv-app/ProxyHandler changed; collecting certs
+10-29 21:10:48.225  1636  1636 I PackageManager: /system/priv-app/SdkSetup changed; collecting certs
+10-29 21:10:48.409  1636  1636 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.USE_CREDENTIALS in package: com.android.settings at: Binary XML file line #53
+10-29 21:10:48.410  1636  1636 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.READ_SYNC_SETTINGS in package: com.android.settings at: Binary XML file line #58
+10-29 21:10:48.411  1636  1636 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.WRITE_SYNC_SETTINGS in package: com.android.settings at: Binary XML file line #59
+10-29 21:10:48.752  1636  1646 I art     : Background sticky concurrent mark sweep GC freed 22061(2MB) AllocSpace objects, 34(1440KB) LOS objects, 54% free, 3MB/6MB, paused 2.737ms total 225.252ms
+10-29 21:10:48.805  1636  1636 I PackageManager: /system/priv-app/Settings changed; collecting certs
+10-29 21:11:06.708  1636  1636 I PackageManager: /system/priv-app/SettingsProvider changed; collecting certs
+10-29 21:11:06.784  1636  1636 I PackageManager: /system/priv-app/SharedStorageBackup changed; collecting certs
+10-29 21:11:06.839  1636  1636 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.INSTALL_GRANT_RUNTIME_PERMISSIONS in package: com.android.shell at: Binary XML file line #102
+10-29 21:11:06.849  1636  1636 I PackageManager: /system/priv-app/Shell changed; collecting certs
+10-29 21:11:06.916  1636  1636 I PackageManager: /system/priv-app/StatementService changed; collecting certs
+10-29 21:11:07.020  1636  1636 I PackageManager: /system/priv-app/StorageManager changed; collecting certs
+10-29 21:11:08.672  1636  1636 W PackageParser: Ignoring duplicate uses-permissions/uses-permissions-sdk-m: android.permission.CONFIGURE_WIFI_DISPLAY in package: com.android.systemui at: Binary XML file line #123
+10-29 21:11:08.698  1636  1636 I PackageManager: /system/priv-app/SystemUI changed; collecting certs
+10-29 21:11:12.214  1636  1636 I PackageManager: New shared user android.uid.systemui: id=10021
+10-29 21:11:13.256  1636  1636 I PackageManager: /system/priv-app/TeleService changed; collecting certs
+10-29 21:11:16.642  1636  1636 I PackageManager: /system/priv-app/Telecom changed; collecting certs

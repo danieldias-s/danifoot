@@ -1,0 +1,1002 @@
+INFO    | Android emulator version 32.1.15.0 (build_id 10696886) (CL:N/A)
+INFO    | Found systemPath D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\
+WARNING | encryption is off
+WARNING | x86_64 emulation may not work without hardware acceleration!
+INFO    | Crashreporting disabled, not reporting crashes.
+INFO    | Duplicate loglines will be removed, if you wish to see each indiviudal line launch with the -log-nofilter flag.
+VERBOSE | autoconfig: -skin 480x800
+VERBOSE | autoconfig: -skindir (null)
+VERBOSE | [FeatureControl] Feature 'Vulkan' (22) state set to disabled
+VERBOSE | querying file version info API...
+VERBOSE | found kernelbase.dll
+VERBOSE | GetFileVersionInfoSizeW found. On Windows 10?
+VERBOSE | GetFileVersionInfoW found. On Windows 10?
+VERBOSE | VerQueryValueW found. Can query file versions
+VERBOSE | queryFileVersionInfo: path not found: amdvlk64.dll
+VERBOSE | querying file version info API...
+VERBOSE | queryFileVersionInfo: path not found: amdvlk32.dll
+VERBOSE | querying file version info API...
+VERBOSE | autoconfig: -kernel D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\kernel-ranchu
+VERBOSE | Target arch = 'x86_64'
+VERBOSE | Auto-detect: Kernel image requires new device naming scheme.
+VERBOSE | Auto-detect: Kernel does not support YAFFS2 partitions.
+VERBOSE | autoconfig: -ramdisk D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\ramdisk.img
+VERBOSE | Using initial system image: D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\system.img
+VERBOSE | No vendor image
+VERBOSE | autoconfig: -initdata D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata.img
+VERBOSE | autoconfig: -cache D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\cache.img
+VERBOSE | Physical RAM size: 1024MB
+VERBOSE | VM heap size 0MB is below hardware specified minimum of 256MB,setting it to that value
+VERBOSE | System image is read only
+INFO    | IPv4 server found: 192.168.31.1
+VERBOSE | Ignore IPv6 address: 6884:e783:4002::e081:80:0
+VERBOSE | Ignore IPv6 address: 6884:e783:4002::e081:80:0
+ (2x)
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.31.1
+VERBOSE | found magic skin width=480 height=800 bpp=32
+VERBOSE | Creating: D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata-qemu.img by copying from D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata.img 
+VERBOSE | Creating empty ext4 cache partition: D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\cache.img
+Creating filesystem with parameters:
+    Size: 69206016
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 4224
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 16896
+    Block groups: 1
+    Reserved block group size: 7
+Created filesystem with 11/4224 inodes and 1302/16896 blocks
+VERBOSE | CPU Acceleration: DISABLED
+VERBOSE | CPU Acceleration status: HAXM is not installed on this machine
+VERBOSE | handleCpuAcceleration: feature check for hvf
+VERBOSE | registered 'boot-properties' qemud service
+VERBOSE | Adding boot property: 'qemu.cmdline' = 'androidboot.logcat=*:V androidboot.consolepipe=qemu_pipe,pipe:logcat'
+VERBOSE | Adding boot property: 'qemu.logcat' = 'start'
+VERBOSE | feeding guest with passive gps data, in headless mode
+VERBOSE | Path:D:\elifoot_98\.tools\android-sdk\platform-tools\adb.exe protocol version: 41
+VERBOSE |  no root specified: 
+VERBOSE | Found: 1 adb executables
+VERBOSE | Adb: D:\elifoot_98\.tools\android-sdk\platform-tools\adb.exe
+VERBOSE | Path:D:\elifoot_98\.tools\android-sdk\platform-tools\adb.exe protocol version: 41
+VERBOSE | GPU emulation is disabled
+VERBOSE | Verified boot params were not found.
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.31.1
+INFO    | Content of hardware configuration file:
+INFO    | 	hw.cpu.arch = x86_64
+INFO    | 	hw.cpu.ncore = 1
+INFO    | 	hw.ramSize = 1024
+INFO    | 	hw.screen = multi-touch
+INFO    | 	hw.mainKeys = true
+INFO    | 	hw.trackBall = false
+INFO    | 	hw.keyboard = false
+INFO    | 	hw.keyboard.lid = true
+INFO    | 	hw.keyboard.charmap = qwerty2
+INFO    | 	hw.dPad = false
+INFO    | 	hw.rotaryInput = false
+INFO    | 	hw.gsmModem = true
+INFO    | 	hw.gps = true
+INFO    | 	hw.battery = true
+INFO    | 	hw.accelerometer = true
+INFO    | 	hw.accelerometer_uncalibrated = true
+INFO    | 	hw.gyroscope = true
+INFO    | 	hw.audioInput = true
+INFO    | 	hw.audioOutput = true
+INFO    | 	hw.sdCard = true
+INFO    | 	disk.cachePartition = true
+INFO    | 	disk.cachePartition.path = D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\cache.img
+INFO    | 	disk.cachePartition.size = 66m
+INFO    | 	test.quitAfterBootTimeOut = -1
+INFO    | 	test.delayAdbTillBootComplete = 0
+INFO    | 	test.monitorAdb = 0
+INFO    | 	hw.lcd.width = 480
+INFO    | 	hw.lcd.height = 800
+INFO    | 	hw.lcd.depth = 16
+INFO    | 	hw.lcd.circular = false
+INFO    | 	hw.lcd.density = 240
+INFO    | 	hw.lcd.backlight = true
+INFO    | 	hw.lcd.vsync = 60
+INFO    | 	hw.gltransport = pipe
+INFO    | 	hw.gltransport.asg.writeBufferSize = 1048576
+INFO    | 	hw.gltransport.asg.writeStepSize = 4096
+INFO    | 	hw.gltransport.asg.dataRingSize = 32768
+INFO    | 	hw.gltransport.drawFlushInterval = 800
+INFO    | 	hw.displayRegion.0.1.xOffset = -1
+INFO    | 	hw.displayRegion.0.1.yOffset = -1
+INFO    | 	hw.displayRegion.0.1.width = 0
+INFO    | 	hw.displayRegion.0.1.height = 0
+INFO    | 	hw.displayRegion.0.2.xOffset = -1
+INFO    | 	hw.displayRegion.0.2.yOffset = -1
+INFO    | 	hw.displayRegion.0.2.width = 0
+INFO    | 	hw.displayRegion.0.2.height = 0
+INFO    | 	hw.displayRegion.0.3.xOffset = -1
+INFO    | 	hw.displayRegion.0.3.yOffset = -1
+INFO    | 	hw.displayRegion.0.3.width = 0
+INFO    | 	hw.displayRegion.0.3.height = 0
+INFO    | 	hw.display1.width = 0
+INFO    | 	hw.display1.height = 0
+INFO    | 	hw.display1.density = 0
+INFO    | 	hw.display1.xOffset = -1
+INFO    | 	hw.display1.yOffset = -1
+INFO    | 	hw.display1.flag = 0
+INFO    | 	hw.display2.width = 0
+INFO    | 	hw.display2.height = 0
+INFO    | 	hw.display2.density = 0
+INFO    | 	hw.display2.xOffset = -1
+INFO    | 	hw.display2.yOffset = -1
+INFO    | 	hw.display2.flag = 0
+INFO    | 	hw.display3.width = 0
+INFO    | 	hw.display3.height = 0
+INFO    | 	hw.display3.density = 0
+INFO    | 	hw.display3.xOffset = -1
+INFO    | 	hw.display3.yOffset = -1
+INFO    | 	hw.display3.flag = 0
+INFO    | 	hw.multi_display_window = false
+INFO    | 	hw.gpu.enabled = false
+INFO    | 	hw.gpu.mode = off
+INFO    | 	hw.initialOrientation = portrait
+INFO    | 	hw.camera.back = emulated
+INFO    | 	hw.camera.front = none
+INFO    | 	vm.heapSize = 256
+INFO    | 	hw.sensors.light = true
+INFO    | 	hw.sensors.pressure = false
+INFO    | 	hw.sensors.humidity = true
+INFO    | 	hw.sensors.proximity = true
+INFO    | 	hw.sensors.magnetic_field = true
+INFO    | 	hw.sensors.magnetic_field_uncalibrated = true
+INFO    | 	hw.sensors.gyroscope_uncalibrated = true
+INFO    | 	hw.sensors.orientation = true
+INFO    | 	hw.sensors.temperature = true
+INFO    | 	hw.sensors.rgbclight = false
+INFO    | 	hw.sensor.hinge = false
+INFO    | 	hw.sensor.hinge.count = 0
+INFO    | 	hw.sensor.hinge.type = 0
+INFO    | 	hw.sensor.hinge.sub_type = 0
+INFO    | 	hw.sensor.hinge.fold_to_displayRegion.0.1_at_posture = 1
+INFO    | 	hw.sensor.roll = false
+INFO    | 	hw.sensor.roll.count = 0
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.1_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.2_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.3_at_posture = 6
+INFO    | 	hw.sensors.heart_rate = false
+INFO    | 	hw.sensors.wrist_tilt = false
+INFO    | 	hw.useext4 = true
+INFO    | 	hw.arc = false
+INFO    | 	hw.arc.autologin = false
+INFO    | 	hw.device.name = Nexus S
+INFO    | 	kernel.path = D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\kernel-ranchu
+INFO    | 	kernel.newDeviceNaming = yes
+INFO    | 	kernel.supportsYaffs2 = no
+INFO    | 	disk.ramdisk.path = D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\ramdisk.img
+INFO    | 	disk.systemPartition.initPath = D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\system.img
+INFO    | 	disk.systemPartition.size = 2765m
+INFO    | 	disk.vendorPartition.size = 0
+INFO    | 	disk.dataPartition.path = D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata-qemu.img
+INFO    | 	disk.dataPartition.initPath = D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata.img
+INFO    | 	disk.dataPartition.size = 10g
+INFO    | 	PlayStore.enabled = false
+INFO    | 	avd.name = elifoot_qa004_software
+INFO    | 	avd.id = elifoot_qa004_software
+INFO    | 	fastboot.forceColdBoot = false
+INFO    | 	android.sdk.root = D:\elifoot_98\.tools\android-sdk
+INFO    | 	android.avd.home = D:\elifoot_98\.tools\avd
+INFO    | .
+INFO    | QEMU options list:
+INFO    | 	 argv[00] = "D:\elifoot_98\.tools\emulator-fallback\emulator\qemu\windows-x86_64\qemu-system-x86_64-headless.exe"
+INFO    | 	 argv[01] = "-dns-server"
+INFO    | 	 argv[02] = "192.168.31.1"
+INFO    | 	 argv[03] = "-no-audio"
+INFO    | 	 argv[04] = "-mem-path"
+INFO    | 	 argv[05] = "D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\snapshots\default_boot\ram.img"
+INFO    | 	 argv[06] = "-serial"
+INFO    | 	 argv[07] = "con:"
+INFO    | 	 argv[08] = "-device"
+INFO    | 	 argv[09] = "goldfish_pstore,addr=0xff018000,size=0x10000,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\data\misc\pstore\pstore.bin"
+INFO    | 	 argv[10] = "-cpu"
+INFO    | 	 argv[11] = "android64"
+INFO    | 	 argv[12] = "-m"
+INFO    | 	 argv[13] = "1024"
+INFO    | 	 argv[14] = "-lcd-density"
+INFO    | 	 argv[15] = "240"
+INFO    | 	 argv[16] = "-nodefaults"
+INFO    | 	 argv[17] = "-kernel"
+INFO    | 	 argv[18] = "D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\kernel-ranchu"
+INFO    | 	 argv[19] = "-initrd"
+INFO    | 	 argv[20] = "D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\ramdisk.img"
+INFO    | 	 argv[21] = "-drive"
+INFO    | 	 argv[22] = "if=none,index=0,id=system,if=none,file=D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\system.img,read-only"
+INFO    | 	 argv[23] = "-device"
+INFO    | 	 argv[24] = "virtio-blk-pci,drive=system,modern-pio-notify"
+INFO    | 	 argv[25] = "-drive"
+INFO    | 	 argv[26] = "if=none,index=1,id=cache,if=none,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[27] = "-device"
+INFO    | 	 argv[28] = "virtio-blk-pci,drive=cache,modern-pio-notify"
+INFO    | 	 argv[29] = "-drive"
+INFO    | 	 argv[30] = "if=none,index=2,id=userdata,if=none,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1310720"
+INFO    | 	 argv[31] = "-device"
+INFO    | 	 argv[32] = "virtio-blk-pci,drive=userdata,modern-pio-notify"
+INFO    | 	 argv[33] = "-netdev"
+INFO    | 	 argv[34] = "user,id=mynet"
+INFO    | 	 argv[35] = "-device"
+INFO    | 	 argv[36] = "virtio-net-pci,netdev=mynet"
+INFO    | 	 argv[37] = "-device"
+INFO    | 	 argv[38] = "virtio-rng-pci"
+INFO    | 	 argv[39] = "-show-cursor"
+INFO    | 	 argv[40] = "-L"
+INFO    | 	 argv[41] = "D:\elifoot_98\.tools\emulator-fallback\emulator/lib/pc-bios"
+INFO    | 	 argv[42] = "-soundhw"
+INFO    | 	 argv[43] = "hda"
+INFO    | 	 argv[44] = "-vga"
+INFO    | 	 argv[45] = "none"
+INFO    | 	 argv[46] = "-append"
+INFO    | 	 argv[47] = "no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=0 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_software"
+INFO    | 	 argv[48] = "-android-hw"
+INFO    | 	 argv[49] = "D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\hardware-qemu.ini"
+INFO    | Concatenated QEMU options: D:\elifoot_98\.tools\emulator-fallback\emulator\qemu\windows-x86_64\qemu-system-x86_64-headless.exe -dns-server 192.168.31.1 -no-audio -mem-path D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\snapshots\default_boot\ram.img -serial con: -device goldfish_pstore,addr=0xff018000,size=0x10000,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\data\misc\pstore\pstore.bin -cpu android64 -m 1024 -lcd-density 240 -nodefaults -kernel D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\kernel-ranchu -initrd D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\ramdisk.img -drive if=none,index=0,id=system,if=none,file=D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\\system.img,read-only -device virtio-blk-pci,drive=system,modern-pio-notify -drive if=none,index=1,id=cache,if=none,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=cache,modern-pio-notify -drive if=none,index=2,id=userdata,if=none,file=D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1310720 -device virtio-blk-pci,drive=userdata,modern-pio-notify -netdev user,id=mynet -device virtio-net-pci,netdev=mynet -device virtio-rng-pci -show-cursor -L D:\elifoot_98\.tools\emulator-fallback\emulator/lib/pc-bios -soundhw hda -vga none -append "no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=0 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge
+VERBOSE | Android qemu version 32.1.15.0 (build_id 10696886) (CL:N/A)
+VERBOSE | Starting QEMU main loop
+VERBOSE | android_fopen: Failed to open /qemu.conf, err: 2
+VERBOSE | Adding boot property: 'ro.opengles.version' = '131072'
+VERBOSE | Adding boot property: 'qemu.sf.fake_camera' = 'back'
+VERBOSE | Adding boot property: 'dalvik.vm.heapsize' = '256m'
+VERBOSE | Adding boot property: 'qemu.hw.mainkeys' = '1'
+VERBOSE | Adding boot property: 'qemu.sf.lcd_density' = '240'
+VERBOSE | control console listening on port 5554, ADB on port 5555
+VERBOSE | goldfish_events.have-dpad: false
+VERBOSE | goldfish_events.have-trackball: false
+VERBOSE | goldfish_events.have-camera: true
+VERBOSE | goldfish_events.have-keyboard: false
+VERBOSE | goldfish_events.have-lidswitch: true
+VERBOSE | goldfish_events.have-tabletmode: false
+VERBOSE | goldfish_events.have-touch: false
+VERBOSE | goldfish_events.have-multitouch: true
+TCG doesn't support requested feature: CPUID.01H:ECX.avx [bit 28]
+TCG doesn't support requested feature: CPUID.01H:ECX.f16c [bit 29]
+VERBOSE | Not using any http proxy
+VERBOSE | Adding boot property: 'qemu.timezone' = 'Unknown/Unknown'
+VERBOSE | android_hw_fingerprint_init: fingerprint qemud listen service initialized
+WARNING | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO    | Started GRPC server at 127.0.0.1:8554, security: Local, auth: none
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+INFO    | Advertising in: C:\Users\Daniel\AppData\Local\Temp\avd\running\pid_26296.ini
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+VERBOSE | emulator_window_fb_rotate
+VERBOSE | No acpi ini file provided, using default
+INFO    | Cold boot: requested by the user
+VERBOSE | No acpi ini file provided, using default
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 3.10.0+ (bjoernj@bjoernj.mtv.corp.google.com) (gcc version 4.9.x 20150123 (prerelease) (GCC) ) #257 SMP PREEMPT Fri May 19 12:01:07 PDT 2017
+[    0.000000] Command line: no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=0 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_software mac80211_hwsim.mac_prefix=5554
+[    0.000000] e820: BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000003ffd9fff] usable
+[    0.000000] BIOS-e820: [mem 0x000000003ffda000-0x000000003fffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] e820: user-defined physical RAM map:
+[    0.000000] user: [mem 0x0000000000000000-0x000000000009fbff] usable
+[    0.000000] user: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+[    0.000000] user: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+[    0.000000] user: [mem 0x0000000000100000-0x000000003ffd9fff] usable
+[    0.000000] user: [mem 0x000000003ffda000-0x000000003fffffff] reserved
+[    0.000000] user: [mem 0x00000000ff018000-0x00000000ff027fff] reserved
+[    0.000000] user: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+[    0.000000] SMBIOS 2.8 present.
+[    0.000000] No AGP bridge found
+[    0.000000] e820: last_pfn = 0x3ffda max_arch_pfn = 0x400000000
+[    0.000000] PAT not supported by CPU.
+[    0.000000] found SMP MP-table at [mem 0x000f5b50-0x000f5b5f] mapped at [ffff8800000f5b50]
+[    0.000000] init_memory_mapping: [mem 0x00000000-0x000fffff]
+[    0.000000] init_memory_mapping: [mem 0x3fc00000-0x3fdfffff]
+[    0.000000] init_memory_mapping: [mem 0x3c000000-0x3fbfffff]
+[    0.000000] init_memory_mapping: [mem 0x00100000-0x3bffffff]
+[    0.000000] init_memory_mapping: [mem 0x3fe00000-0x3ffd9fff]
+[    0.000000] cma: CMA: reserved 264 MiB at 2f400000
+[    0.000000] RAMDISK: [mem 0x3fe2c000-0x3ffcffff]
+[    0.000000] ACPI: RSDP 00000000000f5950 00014 (v00 BOCHS )
+[    0.000000] ACPI: RSDT 000000003ffe19ed 00030 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACP 000000003ffe18c9 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 000000003ffe0040 01889 (v01 BOCHS  BXPCDSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACS 000000003ffe0000 00040
+[    0.000000] ACPI: APIC 000000003ffe193d 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+[    0.000000] ACPI: HPET 000000003ffe19b5 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x00001000-0x00ffffff]
+[    0.000000]   DMA32    [mem 0x01000000-0xffffffff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x00001000-0x0009efff]
+[    0.000000]   node   0: [mem 0x00100000-0x3ffd9fff]
+[    0.000000] ACPI: PM-Timer IO Port: 0x608
+[    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+[    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+[    0.000000] IOAPIC[0]: apic_id 0, version 32, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.000000] Using ACPI (MADT) for SMP configuration information
+[    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
+[    0.000000] smpboot: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.000000] e820: [mem 0x40000000-0xff017fff] available for PCI devices
+[    0.000000] Booting paravirtualized kernel on bare hardware
+[    0.000000] setup_percpu: NR_CPUS:4096 nr_cpumask_bits:1 nr_cpu_ids:1 nr_node_ids:1
+[    0.000000] PERCPU: Embedded 24 pages/cpu @ffff88003fc00000 s74624 r0 d23680 u2097152
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 257890
+[    0.000000] Kernel command line: no_timer_check clocksource=pit no-kvmclock console=ttyS0,38400 cma=262M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR32X1X15X0 android.bootanim=0 qemu.gles=0 qemu.settings.system.screen_off_timeout=2147483647 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=131072 qemu.dalvik.vm.heapsize=256m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ qemu.wifi=1 android.qemud=1 qemu.avd_name=elifoot_qa004_software mac80211_hwsim.mac_prefix=5554
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.000000] Checking aperture...
+[    0.000000] No AGP bridge found
+[    0.000000] Memory: 742736k/1048424k available (6153k kernel code, 392k absent, 305296k reserved, 7066k data, 1008k init)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] 	CONFIG_RCU_FANOUT set to non-default value of 32
+[    0.000000] 	RCU restricting CPUs from NR_CPUS=4096 to nr_cpu_ids=1.
+[    0.000000] NR_IRQS:262400 nr_irqs:256 16
+[    0.000000] Console: colour dummy device 80x25
+[    0.000000] console [ttyS0] enabled
+[    0.000000] tsc: Fast TSC calibration failed
+[    0.000000] tsc: Unable to calibrate against PIT
+[    0.000000] tsc: using HPET reference calibration
+[    0.000000] tsc: Detected 2200.003 MHz processor
+[    0.051308] Calibrating delay loop (skipped), value calculated using timer frequency.. 4400.00 BogoMIPS (lpj=22000030)
+[    0.053256] pid_max: default: 32768 minimum: 301
+[    0.061812] Security Framework initialized
+[    0.064108] SELinux:  Initializing.
+[    0.067271] Mount-cache hash table entries: 256
+[    0.080386] Initializing cgroup subsys debug
+[    0.080887] Initializing cgroup subsys freezer
+[    0.083458] CPU: CPU feature xsave disabled, no CPUID level 0xd
+[    0.084786] Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+[    0.084786] Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0
+[    0.084786] tlb_flushall_shift: 6
+[    0.536393] Freeing SMP alternatives: 24k freed
+[    0.550790] ACPI: Core revision 20130328
+[    0.576145] ACPI: All ACPI Tables successfully acquired
+[    0.606374] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.607185] smpboot: CPU0: Intel Android virtual processor (fam: 06, model: 06, stepping: 03)
+[    0.610000] Performance Events: Broken PMU hardware detected, using software events only.
+[    0.610000] Failed to access perfctr msr (MSR c1 is 0)
+[    0.658739] Brought up 1 CPUs
+[    0.659323] smpboot: Total of 1 processors activated (4400.00 BogoMIPS)
+[    0.699560] NET: Registered protocol family 16
+[    0.728902] ACPI: bus type PCI registered
+[    0.732650] PCI: Using configuration type 1 for base access
+[    0.927539] bio: create slab <bio-0> at 0
+[    0.932676] ACPI: Added _OSI(Module Device)
+[    0.932948] ACPI: Added _OSI(Processor Device)
+[    0.933157] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.933374] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.983701] ACPI: Interpreter enabled
+[    0.984249] ACPI Exception: AE_NOT_FOUND, While evaluating Sleep State [\_S1_] (20130328/hwxface-568)
+[    0.984981] ACPI Exception: AE_NOT_FOUND, While evaluating Sleep State [\_S2_] (20130328/hwxface-568)
+[    0.986053] ACPI: (supports S0 S3 S5)
+[    0.986351] ACPI: Using IOAPIC for interrupt routing
+[    0.988032] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+[    1.125056] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    1.126946] acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended PCI configuration space under this bridge.
+[    1.129467] PCI host bridge to bus 0000:00
+[    1.130923] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.131389] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7]
+[    1.131690] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff]
+[    1.132038] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff]
+[    1.132373] pci_bus 0000:00: root bus resource [mem 0x40000000-0xfebfffff]
+[    1.132678] pci_bus 0000:00: root bus resource [mem 0x400000000-0x800013fff]
+[    1.149031] pci 0000:00:01.3: quirk: [io  0x0600-0x063f] claimed by PIIX4 ACPI
+[    1.149460] pci 0000:00:01.3: quirk: [io  0x0700-0x070f] claimed by PIIX4 SMB
+[    1.292243] acpi PNP0A03:00: Unable to request _OSC control (_OSC support mask: 0x08)
+[    1.301691] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+[    1.304074] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+[    1.305849] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+[    1.311766] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+[    1.312722] ACPI: PCI Interrupt Link [LNKS] (IRQs *9)
+[    1.325848] ACPI: Enabled 2 GPEs in block 00 to 0F
+[    1.333021] vgaarb: loaded
+[    1.336716] SCSI subsystem initialized
+[    1.337147] ACPI: bus type ATA registered
+[    1.342238] ACPI: bus type USB registered
+[    1.344087] usbcore: registered new interface driver usbfs
+[    1.345171] usbcore: registered new interface driver hub
+[    1.346713] usbcore: registered new device driver usb
+[    1.353923] pps_core: LinuxPPS API ver. 1 registered
+[    1.354499] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.356946] PTP clock support registered
+[    1.368113] Advanced Linux Sound Architecture Driver Initialized.
+[    1.368892] PCI: Using ACPI for IRQ routing
+[    1.401974] NetLabel: Initializing
+[    1.402207] NetLabel:  domain hash size = 128
+[    1.402426] NetLabel:  protocols = UNLABELED CIPSOv4
+[    1.403638] NetLabel:  unlabeled traffic allowed by default
+[    1.406471] Switching to clocksource hpet
+[    1.407519] cfg80211: Calling CRDA to update world regulatory domain
+[    1.531762] pnp: PnP ACPI init
+[    1.532204] ACPI: bus type PNP registered
+[    1.553270] pnp: PnP ACPI: found 9 devices
+[    1.553755] ACPI: bus type PNP unregistered
+[    1.627827] NET: Registered protocol family 2
+[    1.635964] TCP established hash table entries: 8192 (order: 5, 131072 bytes)
+[    1.636655] TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+[    1.637201] TCP: Hash tables configured (established 8192 bind 8192)
+[    1.637857] TCP: reno registered
+[    1.638259] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    1.638692] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    1.641439] NET: Registered protocol family 1
+[    1.642120] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    1.642446] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    1.642843] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    1.650398] Trying to unpack rootfs image as initramfs...
+[    1.862967] Freeing initrd memory: 1680k freed
+[    1.893418] audit: initializing netlink socket (disabled)
+[    1.894569] type=2000 audit(1793315816.890:1): initialized
+[    1.906493] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    1.976108] VFS: Disk quotas dquot_6.5.2
+[    1.978487] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    2.009086] fuse init (API version 7.22)
+[    2.016413] msgmni has been set to 1981
+[    2.040431] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+[    2.041558] io scheduler noop registered
+[    2.041924] io scheduler deadline registered
+[    2.043320] io scheduler cfq registered (default)
+[    2.046967] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+VERBOSE | emulator_window_fb_update
+[    2.062740] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    2.063794] ACPI: Power Button [PWRF]
+[    2.663878] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 11
+[    2.872139] tsc: Refined TSC clocksource calibration: 2200.001 MHz
+[    2.872584] Switching to clocksource tsc
+[    3.310617] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 10
+[    3.874170] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+[    4.496117] ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 11
+[    5.124875] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    5.148429] 00:04: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    5.157914] Non-volatile memory driver v1.3
+[    5.158561] Linux agpgart interface v0.103
+[    5.163381] [drm] Initialized drm 1.1.0 20060810
+[    5.198747] brd: module loaded
+[    5.214288] loop: module loaded
+[    5.234151]  vda: unknown partition table
+[    5.247857]  vdb: unknown partition table
+[    5.254994]  vdc: unknown partition table
+[    5.260631] Loading iSCSI transport class v2.0-870.
+[    5.294382] scsi0 : ata_piix
+[    5.297248] scsi1 : ata_piix
+[    5.299128] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc100 irq 14
+[    5.299711] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc108 irq 15
+[    5.313179] tun: Universal TUN/TAP device driver, 1.6
+[    5.313578] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    5.334757] e100: Intel(R) PRO/100 Network Driver, 3.5.24-k2-NAPI
+[    5.335354] e100: Copyright(c) 1999-2006 Intel Corporation
+[    5.337263] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+[    5.337888] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    5.339006] e1000e: Intel(R) PRO/1000 Network Driver - 2.3.2-k
+[    5.339389] e1000e: Copyright(c) 1999 - 2013 Intel Corporation.
+[    5.340571] sky2: driver version 1.30
+[    5.343694] PPP generic driver version 2.4.2
+[    5.345580] PPP BSD Compression module registered
+[    5.345899] PPP Deflate Compression module registered
+[    5.346337] PPP MPPE Compression module registered
+[    5.346623] NET: Registered protocol family 24
+[    5.378158] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    5.378694] ehci-pci: EHCI PCI platform driver
+[    5.379712] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    5.380771] uhci_hcd: USB Universal Host Controller Interface driver
+[    5.383107] usbcore: registered new interface driver usblp
+[    5.384022] usbcore: registered new interface driver usb-storage
+[    5.387224] mousedev: PS/2 mouse device common for all mice
+[    5.390425] input: qwerty2 as /devices/platform/GFSH0002:00/input/input1
+[    5.393034] rtc_cmos 00:00: RTC can wake from S4
+[    5.395813] rtc_cmos 00:00: rtc core: registered rtc_cmos as rtc0
+[    5.396714] rtc_cmos 00:00: alarms up to one day, y3k, 114 bytes nvram, hpet irqs
+[    5.398739] goldfish_rtc GFSH0007:00: rtc core: registered GFSH0007:00 as rtc1
+[    5.409170] device-mapper: uevent: version 1.0.3
+[    5.421833] device-mapper: ioctl: 4.24.0-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+[    5.421833] cpuidle: using governor ladder
+[    5.421833] cpuidle: using governor menu
+[    5.421833] hidraw: raw HID events driver (C) Jiri Kosina
+[    5.447056] usbcore: registered new interface driver usbhid
+[    5.447441] usbhid: USB HID core driver
+[    5.448503] ashmem: initialized
+[    5.453647] goldfish_sync: Initialized goldfish sync device
+[    6.068659] u32 classifier
+[    6.068971]     Actions configured
+[    6.069507] Netfilter messages via NETLINK v0.30.
+[    6.072151] nf_conntrack version 0.5.0 (7927 buckets, 31708 max)
+[    6.079648] ctnetlink v0.93: registering with nfnetlink.
+[    6.085006] NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+[    6.085607] NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+[    6.092087] xt_time: kernel timezone is -0000
+[    6.095435] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    6.098997] arp_tables: (C) 2002 David S. Miller
+[    6.100418] TCP: cubic registered
+[    6.102100] Initializing XFRM netlink socket
+[    6.106302] NET: Registered protocol family 10
+[    6.114756] mip6: Mobile IPv6
+[    6.115470] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    6.119439] sit: IPv6 over IPv4 tunneling driver
+[    6.127570] NET: Registered protocol family 17
+[    6.128289] NET: Registered protocol family 15
+[    6.133321] registered taskstats version 1
+[    6.137138] console [netcon0] enabled
+[    6.137363] netconsole: network logging started
+[    6.139209] init: failed to probe driver -19
+[    6.143175] ALSA device list:
+[    6.143514]   #0: HDA Intel at 0xfebc0000 irq 11
+[    6.152291] Freeing unused kernel memory: 1008k freed
+[    6.323323] Write protecting the kernel read-only data: 12288k
+[    6.365627] Freeing unused kernel memory: 2028k freed
+[    6.418867] Freeing unused kernel memory: 1716k freed
+[    6.532306] init: init first stage started!
+[    6.658877] type=1403 audit(1793315821.642:2): policy loaded auid=4294967295 ses=4294967295
+[    6.673579] type=1404 audit(1793315821.662:3): enforcing=1 old_enforcing=0 auid=4294967295 ses=4294967295
+[    6.706819] init: (Initializing SELinux enforcing took 0.17s.)
+[    6.764906] init: init second stage started!
+[    6.826163] init: property_set("ro.kernel.mac80211_hwsim.channels", "2") failed
+[    6.827501] init: property_set("ro.kernel.qemu.settings.system.screen_off_timeout", "2147483647") failed
+[    6.828261] init: property_set("ro.kernel.qemu.gltransport.drawFlushInterval", "800") failed
+[    6.828780] init: property_set("ro.kernel.qemu.dalvik.vm.heapsize", "256m") failed
+[    6.829116] init: property_set("ro.kernel.qemu.camera_hq_edge_processing", "0") failed
+[    6.829502] init: property_set("ro.kernel.androidboot.android_dt_dir", "/sys/bus/platform/devices/ANDR0001:00/properties/android/") failed
+[    6.831050] init: property_set("ro.kernel.mac80211_hwsim.mac_prefix", "5554") failed
+[    6.844022] init: Running restorecon...
+[    6.958763] init: waitpid failed: No child processes
+[    6.964063] init: (Loading properties from /default.prop took 0.00s.)
+[    6.997503] init: (Parsing /init.environ.rc took 0.00s.)
+[    7.000749] init: (Parsing /init.usb.rc took 0.00s.)
+[    7.005171] init: (Parsing init.ranchu-noencrypt.rc took 0.00s.)
+[    7.005708] init: (Parsing /init.ranchu.rc took 0.00s.)
+[    7.008480] init: (Parsing /init.usb.configfs.rc took 0.00s.)
+[    7.009836] init: (Parsing /init.zygote64_32.rc took 0.00s.)
+[    7.010248] init: (Parsing /init.rc took 0.03s.)
+[    7.021831] init: Starting service 'ueventd'...
+[    7.029672] init: Waiting for /dev/.coldboot_done...
+[    7.049269] ueventd: ueventd started!
+[    8.038938] init: Timed out waiting for /dev/.coldboot_done
+[    8.039727] init: Waiting for /dev/.coldboot_done took 1.01s.
+[    8.041561] init: /dev/hw_random not found
+[    8.061795] init: could not open /dev/keychord: No such file or directory
+[    8.189058] init: write_file: Unable to open '/proc/sys/kernel/hung_task_timeout_secs': No such file or directory
+[    8.189903] init: write_file: Unable to open '/proc/cpu/alignment': No such file or directory
+[    8.278179] init: write_file: Unable to open '/proc/sys/abi/swp': No such file or directory
+[    8.280716] init: /dev/hw_random not found
+[    8.508882] ueventd: Coldboot took 1.44s.
+[    9.569754] EXT4-fs (vda): mounted filesystem with ordered data mode. Opts: (null)
+[    9.574815] fs_mgr: __mount(source=/dev/block/vda,target=/system,type=ext4)=0
+[    9.582540] EXT4-fs (vdb): Ignoring removed nomblk_io_submit option
+[    9.621292] EXT4-fs (vdb): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=panic
+[    9.622527] fs_mgr: __mount(source=/dev/block/vdb,target=/cache,type=ext4)=0
+[    9.634032] EXT4-fs (vdc): Ignoring removed nomblk_io_submit option
+[    9.657786] EXT4-fs (vdc): mounted filesystem with ordered data mode. Opts: errors=remount-ro,nomblk_io_submit
+[    9.659309] fs_mgr: check_fs(): mount(/dev/block/vdc,/data,ext4)=0: Success
+[    9.679390] fs_mgr: check_fs(): unmount(/data) succeeded
+[    9.698900] fs_mgr: Running /system/bin/e2fsck on /dev/block/vdc
+[   10.520598] e2fsck: e2fsck 1.42.9 (28-Dec-2013)
+[   10.520598] 
+[   10.521384] e2fsck: Pass 1: Checking inodes, blocks, and sizes
+[   10.521384] 
+[   10.522997] e2fsck: Inode 7, i_size is 163631104, should be 167854080.  Fix? yes
+[   10.522997] 
+[   10.523581] e2fsck: 
+[   10.523581] 
+[   10.523847] e2fsck: Pass 2: Checking directory structure
+[   10.523847] 
+[   10.524442] e2fsck: Pass 3: Checking directory connectivity
+[   10.524442] 
+[   10.524962] e2fsck: Pass 4: Checking reference counts
+[   10.524962] 
+[   10.525466] e2fsck: Pass 5: Checking group summary information
+[   10.525466] 
+[   10.526010] e2fsck: 
+[   10.526010] 
+[   10.526328] e2fsck: data: ***** FILE SYSTEM WAS MODIFIED *****
+[   10.526328] 
+[   10.526967] e2fsck: data: 85/563200 files (0.0% non-contiguous), 47996/2621440 blocks
+[   10.526967] 
+[   10.528009] e2fsck: e2fsck terminated by exit(1)
+[   10.528009] 
+[   10.542558] EXT4-fs (vdc): Ignoring removed nomblk_io_submit option
+[   10.557367] EXT4-fs (vdc): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,errors=panic
+[   10.558475] fs_mgr: __mount(source=/dev/block/vdc,target=/data,type=ext4)=0
+[   10.572814] init: (Parsing /system/etc/init/atrace.rc took 0.00s.)
+[   10.576429] init: (Parsing /system/etc/init/audioserver.rc took 0.00s.)
+[   10.578668] init: (Parsing /system/etc/init/bootanim.rc took 0.00s.)
+[   10.587082] init: (Parsing /system/etc/init/bootstat.rc took 0.01s.)
+[   10.590028] init: (Parsing /system/etc/init/cameraserver.rc took 0.00s.)
+[   10.592875] init: (Parsing /system/etc/init/debuggerd.rc took 0.00s.)
+[   10.595202] init: (Parsing /system/etc/init/debuggerd64.rc took 0.00s.)
+[   10.597633] init: (Parsing /system/etc/init/drmserver.rc took 0.00s.)
+[   10.600454] init: (Parsing /system/etc/init/dumpstate.rc took 0.00s.)
+[   10.603359] init: (Parsing /system/etc/init/gatekeeperd.rc took 0.00s.)
+[   10.605813] init: (Parsing /system/etc/init/init-debug.rc took 0.00s.)
+[   10.608096] init: (Parsing /system/etc/init/installd.rc took 0.00s.)
+[   10.610420] init: (Parsing /system/etc/init/keystore.rc took 0.00s.)
+[   10.613481] init: (Parsing /system/etc/init/lmkd.rc took 0.00s.)
+[   10.616821] init: (Parsing /system/etc/init/logcatd.rc took 0.00s.)
+[   10.619052] init: (Parsing /system/etc/init/logd.rc took 0.00s.)
+[   10.620550] init: (Parsing /system/etc/init/mdnsd.rc took 0.00s.)
+[   11.592420] init: (Parsing /system/etc/init/mediacodec.rc took 0.97s.)
+[   11.595741] init: (Parsing /system/etc/init/mediadrmserver.rc took 0.00s.)
+[   11.598344] init: (Parsing /system/etc/init/mediaextractor.rc took 0.00s.)
+[   11.601570] init: (Parsing /system/etc/init/mediaserver.rc took 0.00s.)
+[   11.604075] init: (Parsing /system/etc/init/mtpd.rc took 0.00s.)
+[   11.606784] init: (Parsing /system/etc/init/netd.rc took 0.00s.)
+[   11.608713] init: (Parsing /system/etc/init/perfprofd.rc took 0.00s.)
+[   11.611122] init: (Parsing /system/etc/init/racoon.rc took 0.00s.)
+[   11.613096] init: (Parsing /system/etc/init/rild.rc took 0.00s.)
+[   11.615510] init: (Parsing /system/etc/init/servicemanager.rc took 0.00s.)
+[   11.618205] init: (Parsing /system/etc/init/surfaceflinger.rc took 0.00s.)
+[   11.621456] init: (Parsing /system/etc/init/uncrypt.rc took 0.00s.)
+[   11.623744] init: (Parsing /system/etc/init/vdc.rc took 0.00s.)
+[   11.625855] init: (Parsing /system/etc/init/vold.rc took 0.00s.)
+[   11.639371] type=1400 audit(1793315826.622:4): avc:  denied  { write } for  pid=1 comm="init" name="tracing_on" dev="debugfs" ino=28 scontext=u:r:init:s0 tcontext=u:object_r:debugfs:s0 tclass=file permissive=0
+[   11.640127] init: write_file: Unable to open '/sys/kernel/debug/tracing/tracing_on': Permission denied
+[   11.654103] init: Starting service 'logd'...
+[   12.644883] logd.auditd: start
+[   12.645770] logd.klogd: 12645377730
+[   13.486126] init: (Loading properties from /system/build.prop took 0.30s.)
+[   13.487019] init: (Loading properties from /vendor/build.prop took 0.00s.)
+[   13.487689] init: (Loading properties from /factory/factory.prop took 0.00s.)
+[   13.489781] init: /recovery not specified in fstab
+[   13.504567] init: Starting service 'debuggerd'...
+[   13.508785] init: Starting service 'debuggerd64'...
+[   13.516498] init: Starting service 'vold'...
+[   13.533930] init: Not bootcharting.
+[   17.142497] init: Starting service 'exec 1 (/system/bin/tzdatacheck)'...
+[   17.393462] init: Service 'exec 1 (/system/bin/tzdatacheck)' (pid 1278) exited with status 0
+[   18.046366] init: (Loading properties from /data/local.prop took 0.00s.)
+[   18.048417] init: Starting service 'logd-reinit'...
+[   18.126343] init: Starting service 'healthd'...
+[   18.130169] init: Starting service 'ranchu-setup'...
+[   18.165157] init: Starting service 'qemu-props'...
+[   18.168965] init: Starting service 'lmkd'...
+[   18.211330] init: Starting service 'servicemanager'...
+[   18.216059] init: Starting service 'surfaceflinger'...
+[   18.296984] binder: 1280:1280 transaction failed 29189, size 0-0
+[   18.387463] logd.daemon: reinit
+[   19.301566] binder: 1280:1280 transaction failed 29189, size 0-0
+[   19.529288] init: Service 'logd-reinit' (pid 1279) exited with status 0
+[   19.573062] init: property_set("ro.build.product", "generic") failed
+[   19.573621] init: property_set("ro.product.device", "generic") failed
+[   19.576125] init: do_stop: Service dund not found
+[   19.576520] init: do_stop: Service akmd not found
+[   19.580456] init: Starting service 'console'...
+[   19.627484] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   19.672575] init: write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+[   19.673453] init: write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+[   19.674189] init: write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+[   19.674807] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   19.675347] init: Starting service 'adbd'...
+[   19.678717] init: cannot find '/system/bin/update_verifier' (No such file or directory), disabling 'exec 2 (/system/bin/update_verifier)'
+[   19.679564] init: cannot find '/system/bin/install-recovery.sh' (No such file or directory), disabling 'flash_recovery'
+[   19.751181] init: Starting service 'zygote'...
+[   19.754956] init: Starting service 'zygote_secondary'...
+[   19.757880] init: Starting service 'audioserver'...
+[   19.760158] init: Starting service 'cameraserver'...
+[   20.003546] init: Starting service 'drm'...
+[   20.008173] init: Starting service 'installd'...
+[   20.023598] init: couldn't write 1291 to /dev/cpuset/camera-daemon/tasks: No such file or directory
+[   20.094652] init: Starting service 'keystore'...
+[   20.098861] init: Starting service 'mediacodec'...
+[   20.257663] init: Starting service 'mediadrm'...
+[   20.304123] binder: 1280:1280 transaction failed 29189, size 0-0
+[   20.385136] init: Starting service 'mediaextractor'...
+[   20.514465] init: Starting service 'media'...
+[   20.518598] init: Starting service 'netd'...
+[   20.657946] init: Starting service 'ril-daemon'...
+[   20.661426] init: Starting service 'ranchu-net'...
+[   20.715969] init: Starting service 'fingerprintd'...
+[   20.763867] type=1400 audit(1793315835.352:5): avc: denied { getattr } for pid=1290 comm="audioserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:audioserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+[   20.768345] type=1400 audit(1793315835.732:6): avc: denied { getattr } for pid=1291 comm="cameraserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:cameraserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+[   20.812334] init: Starting service 'gatekeeperd'...
+VERBOSE | onGuestSendCommand: [000002408460D500] Adb connected, start proxing data
+VERBOSE | onGuestSendCommand: [000002408460C7E0] Adb connected, start proxing data
+VERBOSE | onGuestRecvData: [000002408460C7E0] Adb closed by host
+VERBOSE | onGuestClose: [000002408460C7E0] Adb closed by guest
+[   21.339073] healthd: BatteryVoltagePath not found
+[   21.339707] healthd: BatteryTemperaturePath not found
+[   21.340113] healthd: BatteryCurrentNowPath not found
+[   21.340687] healthd: BatteryFullChargePath not found
+[   21.341153] healthd: BatteryCycleCountPath not found
+[   21.848440] init: Starting service 'perfprofd'...
+[   23.173341] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   23.175323] init: write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+[   23.177546] init: Service 'qemu-props' (pid 1282) exited with status 0
+[   23.178887] init: write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+[   23.180413] init: write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+[   23.375009] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   23.816509] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   23.817962] init: write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+[   23.819057] init: write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+[   23.820163] init: write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+[   23.820846] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[   24.396647] init: Starting service 'goldfish-logcat'...
+[   24.828712] type=1400 audit(1793315837.352:7): avc: denied { getattr } for pid=1296 comm="mediadrmserver" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediadrmserver:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+generic_x86_64:/ $ [   25.913963] type=1400 audit(1793315837.362:8): avc: denied { getattr } for pid=1295 comm="mediacodec" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:mediacodec:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+[   27.687503] init: Service 'ranchu-setup' (pid 1281) exited with status 0
+VERBOSE | emulator_window_fb_update
+[   29.854872] init: Starting service 'bootanim'...
+[   31.282009] type=1400 audit(1793315845.272:9): avc: denied { getattr } for pid=1335 comm="bootanimation" path="/vendor" dev="rootfs" ino=2976 scontext=u:r:bootanim:s0 tcontext=u:object_r:rootfs:s0 tclass=lnk_file permissive=0
+[   44.102971] IPv6: ADDRCONF(NETDEV_UP): radio0-peer: link is not ready
+[   45.091300] init: Starting service 'dhcpclient_rtr'...
+[   53.676042] IPv6: ADDRCONF(NETDEV_UP): wlan1: link is not ready
+[   54.668348] init: Starting service 'ipv6proxy'...
+[   54.879899] init: Service 'bootanim' (pid 1335) exited with status 0
+[   56.227866] init: Starting service 'emu_hostapd'...
+[   56.613715] init: Starting service 'dhcpserver'...
+[   57.027867] IPv6: ADDRCONF(NETDEV_CHANGE): radio0-peer: link becomes ready
+[   58.121859] warning: `hostapd' uses 32-bit capabilities (legacy support in use)
+[   58.292517] init: Service 'ranchu-net' (pid 1302) exited with status 0
+[   65.081439] IPv6: ADDRCONF(NETDEV_CHANGE): wlan1: link becomes ready
+[   81.379230] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  141.337222] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  201.332454] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  261.332738] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  321.335007] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  375.486822] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  381.334263] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+VERBOSE | emulator_window_fb_update
+ (2x)
+VERBOSE | _hwFingerprint_connect: connect finger print listen is called
+VERBOSE | got message from guest system fingerprint HAL
+[  433.964074] init: Starting service 'wpa_supplicant'...
+VERBOSE | emulator_window_fb_update
+[  437.720326] IPv6: ADDRCONF(NETDEV_UP): wlan0: link is not ready
+[  441.337576] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  478.139067] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.152496] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.200643] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.200789] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.205447] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.205798] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.218959] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.219361] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.227720] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.228075] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.231863] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.232249] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.236578] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.236978] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.238705] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.239128] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.243844] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.244266] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.245875] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.246302] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.250606] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.251032] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.253072] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.253499] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.522989] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.523455] binder: 1647:1665 transaction failed 29201, size 324-8
+[  478.525673] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.526030] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.574162] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.574538] binder: 1647:1665 transaction failed 29201, size 324-8
+[  478.576226] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.576612] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.783218] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.784049] binder: 1647:1665 transaction failed 29201, size 920-8
+[  478.788126] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.788778] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.843154] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.843643] binder: 1647:1665 transaction failed 29201, size 920-8
+[  478.845871] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.846331] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.882090] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.882481] binder: 1647:1665 transaction failed 29201, size 356-8
+[  478.884435] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.884789] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.964930] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.965343] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.967675] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.968057] binder: 1647:1665 transaction failed 29201, size 124-0
+[  478.973173] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.973584] binder: 1647:1665 transaction failed 29201, size 644-8
+[  478.975228] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  478.975585] binder: 1647:1665 transaction failed 29201, size 124-0
+[  479.012940] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.013335] binder: 1647:1665 transaction failed 29201, size 644-8
+[  479.015257] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.015786] binder: 1647:1665 transaction failed 29201, size 124-0
+[  479.023546] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.024021] binder: 1647:1665 transaction failed 29201, size 644-8
+[  479.032091] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.032465] binder: 1647:1665 transaction failed 29201, size 124-0
+[  479.050181] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.050788] binder: 1647:1647 transaction failed 29201, size 256-0
+[  479.058878] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  479.059299] binder: 1647:1647 transaction failed 29201, size 256-0
+[  480.354026] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.354512] binder: 1647:1672 transaction failed 29201, size 84-0
+[  480.622737] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.623217] binder: 1647:1647 transaction failed 29201, size 124-0
+[  480.853505] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.853981] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.899919] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.900427] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.905637] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.906132] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.909865] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.910325] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.926659] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.927149] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.931288] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.932699] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.950901] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.956042] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.960570] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.961001] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.987271] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.987805] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.992419] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.992897] binder: 1647:1647 transaction failed 29201, size 104-0
+[  480.997006] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  480.997457] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.000578] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.000928] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.025685] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.026330] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.040205] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.040795] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.054629] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.055078] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.146846] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.147343] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.166109] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.166609] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.170692] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.170964] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.183051] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.183465] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.186577] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.186970] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.190086] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.190473] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.203686] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.204169] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.208057] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.208522] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.231724] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.232478] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.236751] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.237236] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.258117] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.258617] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.263176] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.263647] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.267269] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.267742] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.279816] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.280330] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.285115] binder: 1865: binder_alloc_buf failed to map pages in userspace, no vma
+[  481.285572] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.616453] binder: 1865: binder_alloc_buf, no vma
+[  481.617038] binder: 1647:1665 transaction failed 29201, size 456-8
+[  481.619977] binder: 1865: binder_alloc_buf, no vma
+[  481.620424] binder: 1647:1665 transaction failed 29201, size 124-0
+[  481.720759] binder: 1865: binder_alloc_buf, no vma
+[  481.722077] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.746278] binder: 1865: binder_alloc_buf, no vma
+[  481.746716] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.764945] binder: 1865: binder_alloc_buf, no vma
+[  481.765256] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.770906] binder: 1865: binder_alloc_buf, no vma
+[  481.771379] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.799606] binder: 1865: binder_alloc_buf, no vma
+[  481.799923] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.835078] binder: 1865: binder_alloc_buf, no vma
+[  481.835629] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.864167] binder: 1865: binder_alloc_buf, no vma
+[  481.864469] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.867846] binder: 1865: binder_alloc_buf, no vma
+[  481.868101] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.871046] binder: 1865: binder_alloc_buf, no vma
+[  481.871322] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.884615] binder: 1865: binder_alloc_buf, no vma
+[  481.884924] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.887942] binder: 1865: binder_alloc_buf, no vma
+[  481.888228] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.890885] binder: 1865: binder_alloc_buf, no vma
+[  481.890885] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.949904] binder: 1865: binder_alloc_buf, no vma
+[  481.950242] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.968441] binder: 1865: binder_alloc_buf, no vma
+[  481.968775] binder: 1647:1647 transaction failed 29201, size 104-0
+[  481.994117] binder: 1865: binder_alloc_buf, no vma
+[  481.994437] binder: 1647:1647 transaction failed 29201, size 104-0
+[  483.651062] binder: 1865: binder_alloc_buf, no vma
+[  483.651415] binder: 1647:1665 transaction failed 29201, size 72-0
+[  483.657478] binder: 1865: binder_alloc_buf, no vma
+[  483.657765] binder: 1647:1665 transaction failed 29201, size 300-8
+[  483.659484] binder: 1865: binder_alloc_buf, no vma
+[  483.659712] binder: 1647:1665 transaction failed 29201, size 124-0
+[  483.713648] binder: 1865: binder_alloc_buf, no vma
+[  483.713988] binder: 1647:1665 transaction failed 29201, size 76-0
+[  483.727595] binder: 1865: binder_alloc_buf, no vma
+[  483.727953] binder: 1647:1665 transaction failed 29201, size 236-8
+[  483.729684] binder: 1865: binder_alloc_buf, no vma
+[  483.729962] binder: 1647:1665 transaction failed 29201, size 124-0
+[  483.928652] binder: undelivered transaction 4629
+[  483.930268] binder: undelivered transaction 4700
+[  483.930560] binder: undelivered transaction 4706
+[  483.930560] binder: undelivered transaction 4711
+[  483.931756] binder: undelivered transaction 4619
+[  483.932031] binder: undelivered transaction 4626
+[  483.936273] binder: 1297:1890 transaction failed 29189, size 60-0
+[  486.017735] binder: 1647:2016 transaction failed 29189, size 136-0
+[  486.091567] binder: 1647:1647 transaction failed 29189, size 84-0
+[  497.207317] binder: 1647:1647 transaction failed 29189, size 92-0
+[  497.882058] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[  497.883414] init: write_file: Unable to open '/sys/class/android_usb/android0/idVendor': No such file or directory
+[  497.884407] init: write_file: Unable to open '/sys/class/android_usb/android0/idProduct': No such file or directory
+[  497.886327] init: write_file: Unable to open '/sys/class/android_usb/android0/functions': No such file or directory
+[  497.887397] init: write_file: Unable to open '/sys/class/android_usb/android0/enable': No such file or directory
+[  501.397984] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  531.899908] init: Untracked pid 2251 killed by signal 1
+[  561.339776] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  567.740129] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.771913] binder: 1647:1665 transaction failed 29201, size 1452-8
+[  567.814640] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.815834] binder: 1647:1665 transaction failed 29201, size 544-8
+[  567.818276] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.818582] binder: 1647:1665 transaction failed 29201, size 124-0
+[  567.843421] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.843832] binder: 1647:1665 transaction failed 29201, size 624-8
+[  567.845625] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.845969] binder: 1647:1665 transaction failed 29201, size 124-0
+[  567.849891] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.850228] binder: 1647:1665 transaction failed 29201, size 696-8
+[  567.873558] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  567.874128] binder: 1647:1665 transaction failed 29201, size 124-0
+[  576.248109] type=1400 audit(1793316391.759:10): avc: denied { search } for pid=1287 comm=73657276696365203232 name="security" dev="vdc" ino=499841 scontext=u:r:adbd:s0 tcontext=u:object_r:security_file:s0 tclass=dir permissive=0
+[  577.562901] binder: 2152: binder_alloc_buf failed to map pages in userspace, no vma
+[  577.563534] binder: 1647:1793 transaction failed 29201, size 104-0
+[  586.708977] binder: release 2152:2373 transaction 16071 out, still active
+[  586.712172] binder: undelivered transaction 16152
+[  586.712637] binder: undelivered transaction 16153
+[  586.712987] binder: undelivered transaction 16154
+[  586.713328] binder: undelivered transaction 16155
+[  586.713668] binder: undelivered transaction 16157
+[  586.714450] binder: undelivered transaction 16151
+[  586.750341] binder: 1647:1800 transaction failed 29189, size 348-0
+[  586.818011] binder: 1297:1890 transaction failed 29189, size 60-0
+[  590.881765] binder: 1647:1647 transaction failed 29189, size 96-0
+[  591.226552] binder: 1980:2263 transaction failed 29189, size 5396-0
+[  591.226980] binder: send failed reply for transaction 16071, target dead
+[  592.107919] binder: 1647:1647 transaction failed 29189, size 84-0
+[  597.671035] binder: 1647:2014 transaction failed 29189, size 0-0
+[  621.335833] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  623.590201] wlan0: authenticate with 02:00:00:00:01:00
+[  623.622994] wlan0: send auth to 02:00:00:00:01:00 (try 1/3)
+[  623.659660] wlan0: authenticated
+[  623.692467] wlan0: associate with 02:00:00:00:01:00 (try 1/3)
+[  623.742928] wlan0: RX AssocResp from 02:00:00:00:01:00 (capab=0x401 status=0 aid=1)
+[  623.747192] wlan0: associated
+[  623.754312] IPv6: ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[  681.337243] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  730.107823] init: Untracked pid 2487 killed by signal 1
+[  741.331795] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  776.981894] binder: 1647:1678 transaction failed 29189, size 692-0
+[  801.336175] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  861.334010] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+[  921.332122] healthd: battery l=100 v=0 t=0.0 h=2 st=2 chg=a
+VERBOSE | emulator_window_fb_update
+ (1028x)
+VERBOSE | Emulator killed by console kill command.
+INFO    | Wait for emulator (pid 26296) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+WARNING | Not saving state: RAM not mapped as shared
+VERBOSE | Done with QEMU main loop
+VERBOSE | User configuration saved to D:\elifoot_98\.tools\avd\elifoot_qa004_software.avd\emulator-user.ini
+VERBOSE | Adb transition disconnected -> disconnected
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.

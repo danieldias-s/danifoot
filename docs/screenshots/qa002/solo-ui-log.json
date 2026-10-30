@@ -1,0 +1,30 @@
+{
+  "completedRounds": 22,
+  "season": 2,
+  "manuallyObservedRounds": [
+    2,
+    3
+  ],
+  "automatedFinals": [
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 1 (Taça - Preliminar 1) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 4 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 5 (Taça - 32-avos de Final (64)) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 6 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 7 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 8 (Taça - 16-avos de Final (32)) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 9 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 10 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 11 (Taça - Oitavas de Final) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 12 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 13 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 14 (Taça - Quartas de Final) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 15 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 16 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 17 (Taça - Semifinal) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 18 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 19 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 20 (Taça - Grande Final) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 21 (Campeonato Nacional) FINAL",
+    "- generic: QA Temporada Completa • Temp 1 • Rodada 22 (Campeonato Nacional) FINAL"
+  ]
+}

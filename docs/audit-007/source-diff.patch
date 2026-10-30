@@ -1,0 +1,674 @@
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs" "b/D:\\elifoot_98\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
+index b5e0359..379d3dc 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
++++ "b/D:\\elifoot_98\\tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs"
+@@ -9,10 +9,10 @@ using Elifoot.Infrastructure;
+ 
+ namespace Elifoot.Simulation.Tests;
+ 
+-public class MultiSeasonAndBenchmarkTests
++public partial class MultiSeasonAndBenchmarkTests
+ {
+-    private static readonly string DocsDir = Path.GetFullPath(
+-        Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "docs"));
++    private static readonly string DocsDir = Environment.GetEnvironmentVariable("ELIFOOT_AUDIT_OUTPUT")
++        ?? Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "docs"));
+ 
+     [Fact]
+     public void Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables()
+@@ -170,6 +170,7 @@ public class MultiSeasonAndBenchmarkTests
+ 
+     private sealed class ExperimentResult
+     {
++        public Audit007Capture? Capture { get; set; }
+         public string ExperimentId { get; set; } = string.Empty;
+         public int WorldSeed { get; set; }
+         public string ScenarioDescription { get; set; } = string.Empty;
+@@ -384,6 +385,8 @@ public class MultiSeasonAndBenchmarkTests
+         public int GoalsAgainst { get; set; }
+         public int MatchesManaged { get; set; }
+         public int PurchasesMade { get; set; }
++        public int BilateralPurchasesMade { get; set; }
++        public int AuctionPurchasesMade { get; set; }
+         public int SalesMade { get; set; }
+         public decimal TransferSpendTotal { get; set; }
+         public int LeagueTitles { get; set; }
+@@ -440,7 +443,8 @@ public class MultiSeasonAndBenchmarkTests
+         string experimentId,
+         int worldSeed,
+         int seasonsToSimulate,
+-        ScenarioMode scenarioMode)
++        ScenarioMode scenarioMode,
++        Audit007Capture? capture = null)
+     {
+         var sw = Stopwatch.StartNew();
+         var world = WorldSeedFactory.CreateSeededWorld(
+@@ -450,6 +454,7 @@ public class MultiSeasonAndBenchmarkTests
+ 
+         var result = new ExperimentResult
+         {
++            Capture = capture,
+             ExperimentId = experimentId,
+             WorldSeed = worldSeed,
+             StartSeason = 1,
+@@ -580,6 +585,7 @@ public class MultiSeasonAndBenchmarkTests
+         }
+ 
+         var processedTxIds = new HashSet<Guid>();
++        capture?.Begin(world);
+         var seenAuctionIds = new HashSet<Guid>();
+         string? lastLeagueChampName = null;
+         int currentChampStreak = 0;
+@@ -722,6 +728,7 @@ public class MultiSeasonAndBenchmarkTests
+ 
+                 // Harvest newly recorded financial transactions & auctions
+                 HarvestRoundEconomyMetrics(world, processedTxIds, seenAuctionIds, result);
++                capture?.Observe(world, "round", season, r);
+ 
+                 result.TotalRoundsCompleted++;
+             }
+@@ -753,6 +760,7 @@ public class MultiSeasonAndBenchmarkTests
+ 
+             // Harvest end-of-season prize money and stadium maintenance/renovation/expansion transactions
+             HarvestRoundEconomyMetrics(world, processedTxIds, seenAuctionIds, result);
++            capture?.Observe(world, "seasonFinalized", season, roundsInSeason);
+ 
+             // Check if any human agent was dismissed due to relegation to Distrital and accept a new job invitation
+             foreach (var h in world.HumanCoaches)
+@@ -1022,6 +1030,8 @@ public class MultiSeasonAndBenchmarkTests
+ 
+             string initialHomeFormation = match.HomeFormation;
+             string initialAwayFormation = match.AwayFormation;
++            var auditHome = result.Capture == null ? null : match.HomeActiveStarterIds.ToArray();
++            var auditAway = result.Capture == null ? null : match.AwayActiveStarterIds.ToArray();
+ 
+             // Execute the REAL minute-by-minute MatchSimulationEngine (1..90 + extra time 91..120 + penalties when tied in Cup)
+             int minutesSimulated = MatchSimulationEngine.SimulateFullMatchReal(
+@@ -1037,6 +1047,7 @@ public class MultiSeasonAndBenchmarkTests
+                 world.AllowClassic505);
+ 
+             result.RealMinutesSimulated += minutesSimulated;
++            result.Capture?.ObserveMatch(match, home, away, playerDict, auditHome!, auditAway!, initialHomeFormation, initialAwayFormation, minutesSimulated);
+ 
+             // Record detailed match statistics
+             CollectFinishedMatchStatistics(match, home, away, homeAi, awayAi, homeSquad, awaySquad, playerDict, initialHomeFormation, initialAwayFormation, result);
+@@ -1505,10 +1516,11 @@ public class MultiSeasonAndBenchmarkTests
+                     else
+                         result.AiToAiTransfers++;
+ 
+-                    Guid? buyerMgrId = club?.HumanCoachId ?? club?.AiManagerId;
++                    Guid? buyerMgrId = tx.ManagerId ?? club?.HumanCoachId ?? club?.AiManagerId;
+                     if (buyerMgrId != null && result.ManagerTrackers.TryGetValue(buyerMgrId.Value, out var bTr))
+                     {
+                         bTr.PurchasesMade++;
++                        bTr.BilateralPurchasesMade++;
+                         bTr.TransferSpendTotal += absAmount;
+                     }
+                     break;
+@@ -1516,7 +1528,7 @@ public class MultiSeasonAndBenchmarkTests
+                     result.TotalSales++;
+                     result.BilateralSaleCreditsTotal += tx.Amount;
+                     result.ClubSalesCount[clubName] = result.ClubSalesCount.GetValueOrDefault(clubName) + 1;
+-                    Guid? sellerMgrId = club?.HumanCoachId ?? club?.AiManagerId;
++                    Guid? sellerMgrId = tx.ManagerId ?? club?.HumanCoachId ?? club?.AiManagerId;
+                     if (sellerMgrId != null && result.ManagerTrackers.TryGetValue(sellerMgrId.Value, out var sTr))
+                     {
+                         sTr.SalesMade++;
+@@ -1528,10 +1540,11 @@ public class MultiSeasonAndBenchmarkTests
+                     if (absAmount > result.MaxTransferPrice) result.MaxTransferPrice = absAmount;
+                     if (absAmount < result.MinTransferPrice) result.MinTransferPrice = absAmount;
+                     result.ClubPurchasesCount[clubName] = result.ClubPurchasesCount.GetValueOrDefault(clubName) + 1;
+-                    Guid? aucMgrId = club?.HumanCoachId ?? club?.AiManagerId;
++                    Guid? aucMgrId = tx.ManagerId ?? club?.HumanCoachId ?? club?.AiManagerId;
+                     if (aucMgrId != null && result.ManagerTrackers.TryGetValue(aucMgrId.Value, out var aTr))
+                     {
+                         aTr.PurchasesMade++;
++                        aTr.AuctionPurchasesMade++;
+                         aTr.TransferSpendTotal += absAmount;
+                     }
+                     break;
+@@ -2482,6 +2495,9 @@ public class MultiSeasonAndBenchmarkTests
+                 avgInMatchTacticalShiftsPerManager = Math.Round(g.Average(x => x.InMatchTacticalShifts), 1),
+                 avgSubstitutionsPerMatch = Math.Round((double)g.Sum(x => x.ReservesUsedInMatches) / Math.Max(1, g.Sum(x => x.MatchesManaged)), 3),
+                 avgPurchasesPerManager = Math.Round(g.Average(x => x.PurchasesMade), 1),
++                purchaseDefinition = "Completed bilateral purchases + completed auction wins; excludes bids, attempts, renewals and free assignments",
++                avgBilateralPurchasesPerManager = Math.Round(g.Average(x => x.BilateralPurchasesMade), 3),
++                avgAuctionPurchasesPerManager = Math.Round(g.Average(x => x.AuctionPurchasesMade), 3),
+                 topFormationsUsed = g
+                     .SelectMany(x => x.FormationsUsed)
+                     .GroupBy(kv => kv.Key)
+@@ -2662,6 +2678,9 @@ public class MultiSeasonAndBenchmarkTests
+             avgInMatchTacticalShiftsPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.InMatchTacticalShifts), 1) : 0.0,
+             avgSubstitutionsPerMatch = Math.Round((double)group.Sum(x => x.ReservesUsedInMatches) / totalMatches, 3),
+             avgPurchasesPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.PurchasesMade), 1) : 0.0,
++            purchaseDefinition = "Completed bilateral purchases + completed auction wins",
++            avgBilateralPurchasesPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.BilateralPurchasesMade), 3) : 0.0,
++            avgAuctionPurchasesPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.AuctionPurchasesMade), 3) : 0.0,
+             avgSalesPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.SalesMade), 1) : 0.0,
+             avgTransferSpendPerManager = group.Count > 0 ? Math.Round(group.Average(x => x.TransferSpendTotal), 0) : 0m
+         };
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs" "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+index 2f46036..7f93e88 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Infrastructure\\EfWorldRepository.cs"
+@@ -170,7 +170,6 @@ public sealed class EfWorldRepository : IWorldRepository
+ 
+             var newTransactions = world.Transactions
+                 .Where(t => !existingLedgerIds.Contains(t.Id))
+-                .TakeLast(200)
+                 .Select(t => new FinancialLedgerRecord
+                 {
+                     Id = t.Id,
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs" "b/D:\\elifoot_98\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
+index 90024f5..d015522 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Application\\ClubAndMarketApplicationService.cs"
+@@ -221,6 +221,7 @@ public sealed class ClubAndMarketApplicationService
+ 
+         var offer = new TransferOffer
+         {
++            SubmittedByManagerId = coach.Id,
+             GameWorldId = world.Id,
+             PlayerId = player.Id,
+             BuyerClubId = buyer.Id,
+@@ -244,7 +245,7 @@ public sealed class ClubAndMarketApplicationService
+             {
+                 var (ok, err) = MarketAndEconomyEngine.ExecuteTransfer(
+                     world, buyer.Id, seller.Id, player.Id, offer.OfferedAmount,
+-                    "Proposta aceita pelo clube de IA", idempotencyKey);
++                    "Proposta aceita pelo clube de IA", idempotencyKey, "AcceptedOffer");
+                 if (!ok) return (false, err, null);
+                 offer.Status = TransferOfferStatus.Accepted;
+             }
+@@ -312,7 +313,7 @@ public sealed class ClubAndMarketApplicationService
+ 
+         var (ok, err) = MarketAndEconomyEngine.ExecuteTransfer(
+             world, offer.BuyerClubId, offer.SellerClubId, offer.PlayerId, finalPrice,
+-            "Negociação bilateral concluída", idempotencyKey);
++            "Negociação bilateral concluída", idempotencyKey, "AcceptedOffer");
+ 
+         if (!ok) return (false, err);
+ 
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\ECONOMIA_ESTADIOS.md" "b/D:\\elifoot_98\\docs\\ECONOMIA_ESTADIOS.md"
+index 956b32d..29f4ed9 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\ECONOMIA_ESTADIOS.md"
++++ "b/D:\\elifoot_98\\docs\\ECONOMIA_ESTADIOS.md"
+@@ -38,5 +38,7 @@ Ao final de cada temporada (`ProcessSeasonalStadiumWearAndAiProjects`):
+ - **Ampliações (`StartStadiumExpansion`)**: a IA só amplia o estádio quando a ocupação supera `88%` da capacidade utilizável e o retorno líquido estimado em 4 temporadas supera o custo da obra (ROI positivo).
+ # Atualização de QA 002
+ 
+-A auditoria de 100 temporadas identificou déficit estrutural sem receitas recorrentes. Foi adicionada a categoria auditável e idempotente `Sponsorship`: R$ 140.000 / 100.000 / 75.000 / 60.000 por rodada nas quatro divisões e R$ 20.000 para distritais, incluindo rodadas sem jogo. São parâmetros novos deste projeto, sem pretensão de reproduzir a economia original do Elifoot 98. Valores e limitações estão em [PLAYABLE_QA_002.md](PLAYABLE_QA_002.md) e [AI_100_SEASONS_QA002.json](AI_100_SEASONS_QA002.json).
++A auditoria de 100 temporadas identificou déficit estrutural sem receitas recorrentes. Foi adicionada a categoria auditável e idempotente `Sponsorship`. Os valores atuais, conferidos no código de 006/007, são R$ 185.000 / 125.000 / 92.000 / 72.000 por rodada nas quatro divisões e R$ 20.000 para distritais, incluindo as 22 rodadas mesmo sem jogo. Os valores menores anteriormente descritos aqui pertenciam a QA002. São parâmetros novos deste projeto, sem pretensão de reproduzir a economia original do Elifoot 98.
++
++Salários, contagem de contratos, empréstimos e avanço de obras são processados somente quando o clube participa da rodada. Assim, patrocínio continua entrando após eliminação, enquanto salários por rodada de jogo não são cobrados. Essa assimetria explica parte importante da recuperação e do acúmulo de caixa; foi preservada. Os 21 recuperados do cenário 006 incluem 5 clubes que tiveram recaídas. Evidências por clube, fluxos e limitações de sustentabilidade estão em `FINANCIAL_RECOVERY_007.json`.
+ 
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\IA_TREINADORES.md" "b/D:\\elifoot_98\\docs\\IA_TREINADORES.md"
+index 222e3e0..59350c6 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\IA_TREINADORES.md"
++++ "b/D:\\elifoot_98\\docs\\IA_TREINADORES.md"
+@@ -33,6 +33,9 @@ Semanalmente, `PlanAndSelectLineup` gera um `ManagerSquadPlan` contendo:
+ 
+ Durante a partida, a IA avalia o estado nos intervalos gratuitos (`45'`, `90'`, `105'`) e em checkpoints do 2º tempo (`62'`, `74'`, `83'`, `112'`):
+ - Substitui imediatamente titulares lesionados em campo se houver quota disponível.
+-- Se estiver perdendo após os `60'`, muda para formação mais ofensiva (`3-4-3` ou `4-3-3`) e coloca atacantes descansados.
+-- Se estiver vencendo após os `74'`, reforça a defesa (`5-4-1` ou `5-3-2`) e substitui atletas amarelados de comportamento agressivo (`Caneleiro`, `Caceteiro`, `Sarrafeiro`).
++- Ao perder, considera uma formação própria mais ofensiva a partir de `clamp(84 - Adaptability*0.28 - max(0,desvantagem-1)*8,55,84)` minutos. Ao vencer, considera proteger o resultado a partir de `clamp(88 - Adaptability*0.14 - max(0,vantagem-1)*3,70,88)`.
++- A avaliação continua restrita aos checkpoints e intervalos; essas fórmulas não criam decisões a cada minuto. As opções são somente suas formações preferidas, ponderadas pelo peso e pelo encaixe real. Banco e quotas devem permitir suprir os setores necessários. Uma formação que reduza improvisações também pode ser considerada.
++- Há cooldown de 10 minutos a partir da última troca ou mudança de formação; nova lesão permite avaliação imediata. Empate não provoca mudanças aleatórias de formação. Jogadores amarelados ou mais fracos podem ser substituídos independentemente de Adaptability.
+ - Respeita estritamente os limites de **5 substituições / 3 paradas** no tempo normal (**6 substituições / 4 paradas** na prorrogação) e **nunca abre janelas de pausa global desnecessárias** para os humanos.
++
++O corte rígido `Adaptability >= 65` foi introduzido intencionalmente em 005 para preservar personalidade. Em 007, controles reproduziram sua incapacidade de reagir a desvantagens extremas e a escolha inadequada da segunda preferência. A correção usa progressão de tempo e todas as preferências próprias, preservando a seleção pré-jogo e a personalidade persistente. Uma mudança somente de formação pode ocorrer em intervalo gratuito mesmo com a quota de substituições esgotada.
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\MOTOR_DEFESA.md" "b/D:\\elifoot_98\\docs\\MOTOR_DEFESA.md"
+index f5c1849..fa6f46b 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\MOTOR_DEFESA.md"
++++ "b/D:\\elifoot_98\\docs\\MOTOR_DEFESA.md"
+@@ -43,12 +43,16 @@ Para cada equipe ativa no minuto $m$:
+ ## 3. Disciplina e Comportamentos (`Fair Play` a `Sarrafeiro`)
+ 
+ Pesos de propensão a faltas (`GetBehaviorFoulWeight`):
+-- `Fair Play`: **0.00** (nunca comete faltas intencionais e nunca recebe cartão vermelho por agressividade)
+-- `Cordeirinho`: **0.35** (chance de vermelho direto na falta: 1.0%)
+-- `Cavalheiro`: **0.75** (chance de vermelho direto na falta: 2.5%)
+-- `Caneleiro`: **1.65** (chance de vermelho direto na falta: 5.5%)
+-- `Caceteiro`: **3.10** (chance de vermelho direto na falta: 10.0%)
+-- `Sarrafeiro`: **5.20** (chance de vermelho direto na falta: 16.0%)
++- `Fair Play`: **0.00** (sem faltas intencionais e sem cartões nos mecanismos implementados)
++- `Cordeirinho`: **0.35** (vermelho direto em uma decisão de cartão: 0.5%)
++- `Cavalheiro`: **0.75** (vermelho direto em uma decisão de cartão: 1.2%)
++- `Caneleiro`: **1.45** (vermelho direto em uma decisão de cartão: 2.5%)
++- `Caceteiro`: **2.35** (vermelho direto em uma decisão de cartão: 4.8%)
++- `Sarrafeiro`: **3.60** (vermelho direto em uma decisão de cartão: 8.5%)
++
++Valores conferidos em 007 contra o código efetivamente executado de 006. A probabilidade de falta por equipe/minuto é `clamp(0.095 * peso médio efetivo, 0, 0.35)`; a região do mesmo sorteio que gera cartão é `0.0128 * peso médio efetivo`. Não são dois sorteios independentes. Após um amarelo, o peso individual cai para `0.48x` em Caceteiro/Sarrafeiro e `0.32x` nos demais. Pênaltis usam a média de peso dos defensores/goleiro, com `clamp(0.031 * média, 0, 0.085)`.
++
++Fair Play continua sujeito a gols, lesões, impedimentos e substituições. Não existe no projeto outro mecanismo de cartões por reclamação ou conduta não relacionada a essas faltas. Isso descreve a escolha documentada deste projeto; não comprova regras do executável histórico do Elifoot 98. Faltas sem cartão e faltas de pênalti não registram infrator individual: sua atribuição exata por comportamento só é possível em equipes homogêneas. Consulte `PLAYER_BEHAVIOR_DISCIPLINE_007.json`.
+ 
+ O 2º cartão amarelo na mesma partida gera automaticamente `SecondYellowRedCard` e remove o atleta de `ActiveStarterIds`, reduzindo o poder do setor a partir do minuto seguinte.
+ 
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\MERCADO_IA.md" "b/D:\\elifoot_98\\docs\\MERCADO_IA.md"
+index 661cd3e..ca34b06 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\docs\\MERCADO_IA.md"
++++ "b/D:\\elifoot_98\\docs\\MERCADO_IA.md"
+@@ -17,7 +17,9 @@ $$\text{FairValue} = \text{Base}(S) \times \text{StarMod} \times \text{PositionM
+   - Força `48*` (Atacante `Fair Play`): ~`R$ 3.420.000`
+ - A IA ordena alvos de compra maximizando a utilidade marginal por unidade monetária:
+   $$U = \frac{\text{Strength} + (\text{IsStar} ? 6 : 0)}{\text{Price}}$$
+-  garantindo que nunca compre um atleta fraco caro ignorando um craque de preço semelhante.
++  dentro de um shortlist de até seis candidatos por posição. Jogadores listados têm precedência sobre não listados; isto não constitui prova de uma escolha global ótima. O alvo precisa atender ao limiar de força da necessidade, ao orçamento e ao teto `Price <= 1.25 * FairValue`. Em 007, o exemplo força 11 por R$ 2 milhões foi rejeitado em teste controlado; nenhuma contratação da amostra excedeu esse teto. Não houve mudança na ordenação ou nos preços.
++
++As compras por treinador incluem bilaterais e arremates pagos, separadamente dos lances e das tentativas. Cada nova compra grava os clubes, jogador, treinador responsável naquele momento, mecanismo, valor, temporada e rodada no lançamento financeiro canônico, com a justificativa e comparação com titular/reserva. `AiMarketMetrics.FromRecords` deriva os nove indicadores dos fatos, sem contadores independentes. Leilões de contratos expirados não têm clube vendedor; o ex-clube não recebe o lance. Contratação sem lance é registrada como `FreeAgentSigning`, de valor zero, e não como compra ou leilão vencido. Histórico completo de uma auditoria deve usar o arquivo arquivado: snapshots do mundo mantêm uma janela recente e não representam toda a carreira.
+ 
+ ## 2. Operações Bilaterais e Leilões
+ 
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Contracts\\Enums.cs" "b/D:\\elifoot_98\\src\\Elifoot.Contracts\\Enums.cs"
+index c12e6d5..b547734 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Contracts\\Enums.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Contracts\\Enums.cs"
+@@ -113,7 +113,8 @@ public enum FinancialTransactionCategory
+     PrizeMoney = 13,
+     LoanDisbursement = 14,
+     LoanRepayment = 15,
+-    Sponsorship = 16
++    Sponsorship = 16,
++    FreeAgentSigning = 17
+ }
+ 
+ [JsonConverter(typeof(JsonStringEnumConverter))]
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+index 0ae12fa..2e0a1cd 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs"
+@@ -602,6 +602,8 @@ public static class CompetitionAndSeasonEngine
+             world.Auctions.RemoveAll(a => a.IsClosed && a.CreatedAtSeason < pruneBeforeSeason);
+             world.TransferOffers.RemoveAll(o => o.Status != TransferOfferStatus.Pending && o.CreatedAtSeason < pruneBeforeSeason);
+             world.PauseWindows.RemoveAll(p => p.IsClosed && p.SeasonNumber < pruneBeforeSeason);
++            world.AuditLogs.RemoveAll(a => a.SeasonNumber < pruneBeforeSeason
++                && (a.ActionType.StartsWith("AiPurchase", StringComparison.Ordinal) || a.ActionType == "AiAuctionBid"));
+         }
+ 
+         // Advance to next season
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\AiManagerBrain.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\AiManagerBrain.cs"
+index 5b771a5..8689f95 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\AiManagerBrain.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\AiManagerBrain.cs"
+@@ -376,13 +376,16 @@ public static class AiManagerBrain
+         bool isCheckpointMinute = isFreeInterval || minute is 62 or 74 or 83 or 112;
+         if (!hasInjuredOnPitch && !isCheckpointMinute) return;
+ 
++        var lastDecision = match.Events.LastOrDefault(e => e.ClubId == aiClub.Id
++            && e.EventType is MatchEventType.Substitution or MatchEventType.TacticChange);
++        if (!hasInjuredOnPitch && lastDecision != null && minute - lastDecision.Minute < 10) return;
++
+         int usedSubs = isHomeTeam ? match.HomeUsedSubstitutions : match.AwayUsedSubstitutions;
+         int maxSubs = isHomeTeam ? match.HomeMaxSubstitutions : match.AwayMaxSubstitutions;
+         int usedWindows = isHomeTeam ? match.HomeUsedPauseWindows : match.AwayUsedPauseWindows;
+         int maxWindows = isHomeTeam ? match.HomeMaxPauseWindows : match.AwayMaxPauseWindows;
+ 
+         if (!isFreeInterval && usedWindows >= maxWindows) return;
+-        if (usedSubs >= maxSubs && isFreeInterval) return;
+ 
+         int myGoals = isHomeTeam ? match.HomeGoals : match.AwayGoals;
+         int oppGoals = isHomeTeam ? match.AwayGoals : match.HomeGoals;
+@@ -416,25 +419,58 @@ public static class AiManagerBrain
+         // 2. Tactical shift & performance substitutions at checkpoints (45, 62, 74, 83, 90, 105)
+         string currentFormation = isHomeTeam ? match.HomeFormation : match.AwayFormation;
+         string? newFormation = null;
+-        var identity = manager?.Identity ?? ManagerTacticalIdentity.Equilibrado;
+         int adaptability = manager?.Adaptability ?? 50;
+ 
+-        if (adaptability >= 65 && manager != null && manager.PreferredFormations.Count >= 2)
++        if (manager != null && manager.PreferredFormations.Count > 0)
+         {
+-            string fallbackForm = manager.PreferredFormations[1].Formation;
+-            if (minute >= 62 && scoreDiff < 0 && identity != ManagerTacticalIdentity.Defensivo)
++            // Adaptability changes reaction timing gradually; an extreme deficit can move even a conservative coach.
++            double chasingMinute = Math.Clamp(84 - adaptability * 0.28 - Math.Max(0, -scoreDiff - 1) * 8, 55, 84);
++            double protectingMinute = Math.Clamp(88 - adaptability * 0.14 - Math.Max(0, scoreDiff - 1) * 3, 70, 88);
++            bool chasing = scoreDiff < 0 && minute >= chasingMinute;
++            bool protecting = scoreDiff > 0 && minute >= protectingMinute;
++            var projected = activeIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).ToList();
++            foreach (var sub in subsToMake)
+             {
+-                if (!string.Equals(currentFormation, fallbackForm, StringComparison.OrdinalIgnoreCase))
+-                {
+-                    newFormation = fallbackForm;
+-                }
++                projected.RemoveAll(p => p.Id == sub.PlayerOutId);
++                projected.Add(worldPlayers[sub.PlayerInId]);
++            }
++            var currentSpec = TacticalFormations.All[currentFormation];
++            int Shortage(FormationSpec spec, IEnumerable<Player> squad)
++            {
++                var needs = SectorNeeds(spec, projected.Count);
++                return needs.Sum(k => Math.Max(0, k.Value - squad.Count(p => p.Position == k.Key)));
+             }
+-            else if (minute >= 74 && scoreDiff == 1 && identity == ManagerTacticalIdentity.Defensivo)
++            var candidate = manager.PreferredFormations
++                .Where(p => TacticalFormations.TryGet(p.Formation, allowClassic505, out _) && p.Formation != currentFormation)
++                .Select(p => new { Preference = p, Spec = TacticalFormations.All[p.Formation] })
++                .Where(x => (chasing && (x.Spec.Attackers > currentSpec.Attackers
++                        || x.Spec.Attackers == currentSpec.Attackers && x.Spec.Defenders < currentSpec.Defenders))
++                    || (protecting && (x.Spec.Defenders > currentSpec.Defenders
++                        || x.Spec.Defenders == currentSpec.Defenders && x.Spec.Attackers < currentSpec.Attackers))
++                    || (Shortage(currentSpec, projected) > 0 && Shortage(x.Spec, projected) < Shortage(currentSpec, projected)))
++                .Where(x => Shortage(x.Spec, projected) <= Math.Max(0, maxSubs - usedSubs - subsToMake.Count)
++                    && Shortage(x.Spec, projected.Concat(availableBench)) == 0)
++                .OrderByDescending(x => x.Preference.WeightPercent * 0.45 - Shortage(x.Spec, projected) * 8)
++                .FirstOrDefault();
++
++            if (candidate != null)
+             {
+-                if (!string.Equals(currentFormation, fallbackForm, StringComparison.OrdinalIgnoreCase))
++                var needs = SectorNeeds(candidate.Spec, projected.Count);
++                foreach (var (pos, count) in needs)
+                 {
+-                    newFormation = fallbackForm;
++                    while (projected.Count(p => p.Position == pos) < count && usedSubs + subsToMake.Count < maxSubs)
++                    {
++                        var incoming = availableBench.Where(p => p.Position == pos).OrderByDescending(GetSelectionScore).FirstOrDefault();
++                        var outgoing = projected.Where(p => p.Position != PlayerPosition.G
++                                && projected.Count(s => s.Position == p.Position) > needs.GetValueOrDefault(p.Position)
++                                && subsToMake.All(s => s.PlayerInId != p.Id))
++                            .OrderBy(GetSelectionScore).FirstOrDefault();
++                        if (incoming == null || outgoing == null) break;
++                        subsToMake.Add(new(outgoing.Id, incoming.Id)); availableBench.Remove(incoming);
++                        projected.Remove(outgoing); projected.Add(incoming);
++                    }
+                 }
++                if (Shortage(candidate.Spec, projected) == 0) newFormation = candidate.Spec.Code;
+             }
+         }
+ 
+@@ -483,6 +519,17 @@ public static class AiManagerBrain
+         }
+     }
+ 
++    private static Dictionary<PlayerPosition, int> SectorNeeds(FormationSpec spec, int activeCount)
++    {
++        int d = spec.Defenders, m = spec.Midfielders, a = spec.Attackers;
++        for (int missing = Math.Max(0, 11 - activeCount); missing > 0; missing--)
++        {
++            if (a > 1) a--; else if (m > 1) m--; else if (d > 1) d--;
++            else if (a > 0) a--; else if (m > 0) m--; else if (d > 0) d--;
++        }
++        return new() { [PlayerPosition.G] = 1, [PlayerPosition.D] = d, [PlayerPosition.M] = m, [PlayerPosition.A] = a };
++    }
++
+     public static List<FormationPreferenceWeightDto> GetDefaultPreferencesForIdentity(ManagerTacticalIdentity identity)
+         => identity switch
+         {
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\Entities.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+index 596e539..222fa06 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\Entities.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\Entities.cs"
+@@ -37,6 +37,9 @@ public class GameWorld
+     public List<AuditLogEntry> AuditLogs { get; set; } = new();
+     public List<BankLoan> BankLoans { get; set; } = new();
+ 
++    // The round guard must survive snapshot reloads. The transaction-key cache below is rebuilt from the ledger.
++    public HashSet<string> SettledFinancialRounds { get; set; } = new();
++
+     [System.Text.Json.Serialization.JsonIgnore]
+     public HashSet<string> AppliedTransactionKeys { get; } = new();
+ }
+@@ -324,6 +327,7 @@ public class PauseWindow
+ 
+ public class TransferOffer
+ {
++    public Guid? SubmittedByManagerId { get; set; }
+     public Guid Id { get; set; } = Guid.NewGuid();
+     public Guid GameWorldId { get; set; }
+     public Guid PlayerId { get; set; }
+@@ -356,6 +360,14 @@ public class AuctionItem
+ 
+ public class FinancialTransaction
+ {
++    // Transfer metadata is captured at execution, never inferred from the club's current manager.
++    public Guid? TransferTransactionId { get; set; }
++    public Guid? PlayerId { get; set; }
++    public Guid? BuyerClubId { get; set; }
++    public Guid? SellerClubId { get; set; }
++    public Guid? ManagerId { get; set; }
++    public string? TransactionType { get; set; }
++    public AiSigningDecision? SigningDecision { get; set; }
+     public Guid Id { get; set; } = Guid.NewGuid();
+     public Guid GameWorldId { get; set; }
+     public Guid ClubId { get; set; }
+@@ -412,6 +424,10 @@ public class SeasonHistoryEntry
+ 
+ public class AuditLogEntry
+ {
++    public Guid? ClubId { get; set; }
++    public Guid? PlayerId { get; set; }
++    public Guid? RelatedEntityId { get; set; }
++    public decimal? Amount { get; set; }
+     public Guid Id { get; set; } = Guid.NewGuid();
+     public Guid GameWorldId { get; set; }
+     public int SeasonNumber { get; set; }
+@@ -421,3 +437,7 @@ public class AuditLogEntry
+     public string Description { get; set; } = string.Empty;
+     public DateTime TimestampUtc { get; set; } = DateTime.UtcNow;
+ }
++
++public record AiSigningDecision(string Reason, string Formation, PlayerPosition Position,
++    int Strength, int? StarterStrength, int? ReserveStrength, decimal Amount, decimal MarketValue,
++    decimal SalaryPerRound, PlayerBehavior Behavior, bool IsStar, decimal CashBefore, decimal CashAfter);
+diff --git "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\MarketAndEconomyEngine.cs" "b/D:\\elifoot_98\\src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
+index 1c598af..4210767 100644
+--- "a/D:\\elifoot_98\\docs\\audit-007\\baseline\\src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
++++ "b/D:\\elifoot_98\\src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
+@@ -154,13 +154,7 @@ public static class MarketAndEconomyEngine
+         string description,
+         string idempotencyKey)
+     {
+-        if (world.AppliedTransactionKeys.Count == 0 && world.Transactions.Count > 0)
+-        {
+-            foreach (var existing in world.Transactions)
+-            {
+-                world.AppliedTransactionKeys.Add($"{existing.ClubId}:{existing.IdempotencyKey}");
+-            }
+-        }
++        EnsureTransactionKeys(world);
+ 
+         string compositeKey = $"{club.Id}:{idempotencyKey}";
+         if (!world.AppliedTransactionKeys.Add(compositeKey))
+@@ -173,6 +167,7 @@ public static class MarketAndEconomyEngine
+         {
+             GameWorldId = world.Id,
+             ClubId = club.Id,
++            ManagerId = club.HumanCoachId ?? club.AiManagerId,
+             SeasonNumber = world.SeasonNumber,
+             RoundNumber = world.RoundNumber,
+             Category = category,
+@@ -184,6 +179,13 @@ public static class MarketAndEconomyEngine
+         return true;
+     }
+ 
++    private static void EnsureTransactionKeys(GameWorld world)
++    {
++        if (world.AppliedTransactionKeys.Count != 0) return;
++        foreach (var existing in world.Transactions)
++            world.AppliedTransactionKeys.Add($"{existing.ClubId}:{existing.IdempotencyKey}");
++    }
++
+     /// <summary>
+     /// Settles match gate revenues, stadium operating costs, player round salaries, contract countdowns,
+     /// and stadium construction progress idempotently at the end of a round.
+@@ -247,7 +249,17 @@ public static class MarketAndEconomyEngine
+ 
+         // 2. Settle salaries, contracts, injuries/suspensions recovery, and stadium works for clubs active in this round (idempotent per Season+Round)
+         string roundSettlementKey = $"round_settled:S{world.SeasonNumber}:R{world.RoundNumber}";
+-        if (!world.AppliedTransactionKeys.Add(roundSettlementKey))
++        // Compatibility with 006 snapshots: a completed sponsorship pass contains every funded club.
++        // Reconstruct only this round, from its recorded transactions; do not age players on reload.
++        if (!world.SettledFinancialRounds.Contains(roundSettlementKey))
++        {
++            var fundedClubIds = world.Players.Where(p => p.ClubId.HasValue).Select(p => p.ClubId!.Value).Distinct().ToHashSet();
++            var sponsored = world.Transactions.Where(t => t.SeasonNumber == world.SeasonNumber && t.RoundNumber == world.RoundNumber
++                && t.Category == FinancialTransactionCategory.Sponsorship).Select(t => t.ClubId).ToHashSet();
++            if (fundedClubIds.Count > 0 && fundedClubIds.IsSubsetOf(sponsored))
++                world.SettledFinancialRounds.Add(roundSettlementKey);
++        }
++        if (!world.SettledFinancialRounds.Add(roundSettlementKey))
+         {
+             return;
+         }
+@@ -586,7 +598,7 @@ public static class MarketAndEconomyEngine
+             if (offer.OfferedAmount >= minAccept)
+             {
+                 var transferResult = ExecuteTransfer(world, offer.BuyerClubId, seller.Id, player.Id, offer.OfferedAmount,
+-                    $"Oferta aceita ({offer.Justification})", $"offer:{offer.Id}");
++                    $"Oferta aceita ({offer.Justification})", $"offer:{offer.Id}", "AcceptedOffer");
+                 offer.Status = transferResult.Success ? TransferOfferStatus.Accepted : TransferOfferStatus.Cancelled;
+                 if (!transferResult.Success) continue;
+                 logs.Add($"Transferência: {player.DisplayName} de {seller.ShortName} para {clubDict[offer.BuyerClubId].ShortName} por R$ {offer.OfferedAmount:N0}.");
+@@ -681,6 +693,7 @@ public static class MarketAndEconomyEngine
+                 bool signedOrOffered = false;
+                 foreach (var bestTarget in candidates)
+                 {
++                    RecordAiMarketAction(world, buyer, "AiPurchaseEvaluation", bestTarget.Player.Id, bestTarget.Price);
+                     var seller = clubDict[bestTarget.Player.ClubId!.Value];
+                     var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
+                     var (canSellerRemove, _) = SquadValidator.CanRemovePlayerFromSquad(sellerSquad, bestTarget.Player.Id);
+@@ -696,7 +709,7 @@ public static class MarketAndEconomyEngine
+                     {
+                         // Direct buy from transfer list (works for both AI and Human sellers who listed the player)
+                         var (ok, _) = ExecuteTransfer(world, buyer.Id, seller.Id, bestTarget.Player.Id, bestTarget.Price,
+-                            justification, $"listbuy:{buyer.Id}:{bestTarget.Player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
++                            justification, $"listbuy:{buyer.Id}:{bestTarget.Player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}", "DirectPurchase");
+                         if (ok)
+                         {
+                             transfersExecutedThisBatch++;
+@@ -712,6 +725,7 @@ public static class MarketAndEconomyEngine
+                         {
+                             world.TransferOffers.Add(new TransferOffer
+                             {
++                                SubmittedByManagerId = buyer.AiManagerId,
+                                 GameWorldId = world.Id,
+                                 PlayerId = bestTarget.Player.Id,
+                                 BuyerClubId = buyer.Id,
+@@ -723,6 +737,7 @@ public static class MarketAndEconomyEngine
+                                 CreatedAtRound = world.RoundNumber,
+                                 IdempotencyKey = $"aioffer:{buyer.Id}:{bestTarget.Player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}"
+                             });
++                            RecordAiMarketAction(world, buyer, "AiPurchaseAttempt", bestTarget.Player.Id, bestTarget.Price);
+                             logs.Add($"Proposta enviada: {buyer.ShortName} ofereceu R$ {bestTarget.Price:N0} a {seller.ShortName} por {bestTarget.Player.DisplayName}.");
+                             signedOrOffered = true;
+                             break;
+@@ -732,7 +747,7 @@ public static class MarketAndEconomyEngine
+                     {
+                         // AI-to-AI direct negotiation
+                         var (ok, _) = ExecuteTransfer(world, buyer.Id, seller.Id, bestTarget.Player.Id, bestTarget.Price,
+-                            justification, $"aidirect:{buyer.Id}:{bestTarget.Player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
++                            justification, $"aidirect:{buyer.Id}:{bestTarget.Player.Id}:S{world.SeasonNumber}:R{world.RoundNumber}", "NegotiatedTransfer");
+                         if (ok)
+                         {
+                             transfersExecutedThisBatch++;
+@@ -782,6 +797,7 @@ public static class MarketAndEconomyEngine
+                 {
+                     auction.CurrentBid = nextRequiredBid;
+                     auction.HighestBidderClubId = aiClub.Id;
++                    RecordAiMarketAction(world, aiClub, "AiAuctionBid", auction.PlayerId, nextRequiredBid, auction.Id);
+                 }
+             }
+ 
+@@ -802,7 +818,8 @@ public static class MarketAndEconomyEngine
+         Guid playerId,
+         decimal price,
+         string justification,
+-        string idempotencyKey)
++        string idempotencyKey,
++        string transactionType = "DirectPurchase")
+     {
+         if (buyerClubId == sellerClubId)
+             return (false, "O clube comprador e vendedor são o mesmo.");
+@@ -814,6 +831,13 @@ public static class MarketAndEconomyEngine
+         if (buyer == null || seller == null || player == null)
+             return (false, "Clube ou jogador não encontrado.");
+ 
++        EnsureTransactionKeys(world);
++        if (world.AppliedTransactionKeys.Contains($"{buyer.Id}:{idempotencyKey}:buy")
++            || world.AppliedTransactionKeys.Contains($"{seller.Id}:{idempotencyKey}:sell"))
++            return (false, "Transação já processada anteriormente.");
++
++        RecordAiMarketAction(world, buyer, "AiPurchaseAttempt", player.Id, price);
++
+         if (player.ClubId != seller.Id)
+             return (false, "O jogador não pertence mais ao clube vendedor.");
+ 
+@@ -838,6 +862,16 @@ public static class MarketAndEconomyEngine
+         TryRecordTransaction(world, seller, FinancialTransactionCategory.TransferSale,
+             price, $"Venda de {player.DisplayName} para {buyer.Name}", $"{idempotencyKey}:sell");
+ 
++        var buyTransaction = world.Transactions[^2];
++        var sellTransaction = world.Transactions[^1];
++        StampTransfer(world, buyTransaction, buyer, seller, player, transactionType, price, justification);
++        sellTransaction.TransferTransactionId = buyTransaction.Id;
++        sellTransaction.PlayerId = player.Id;
++        sellTransaction.BuyerClubId = buyer.Id;
++        sellTransaction.SellerClubId = seller.Id;
++        sellTransaction.ManagerId = seller.HumanCoachId ?? seller.AiManagerId;
++        sellTransaction.TransactionType = transactionType;
++
+         // Remove from seller preferred lists
+         seller.PreferredStarterIds.Remove(player.Id);
+         seller.PreferredBenchIds.Remove(player.Id);
+@@ -868,8 +902,10 @@ public static class MarketAndEconomyEngine
+ 
+             if (winner != null && winner.CashBalance >= auction.CurrentBid && winnerSquad.Count < SquadValidator.MaxSquadSize)
+             {
+-                TryRecordTransaction(world, winner, FinancialTransactionCategory.AuctionPurchase,
+-                    -auction.CurrentBid, $"Arremate em leilão de {player.DisplayName}", $"auction:{auction.Id}:win");
++                if (!TryRecordTransaction(world, winner, FinancialTransactionCategory.AuctionPurchase,
++                    -auction.CurrentBid, $"Arremate em leilão de {player.DisplayName}", $"auction:{auction.Id}:win")) return;
++                // Expired contracts are free agents. The former club is not a selling counterparty.
++                StampTransfer(world, world.Transactions[^1], winner, null, player, "Auction", auction.CurrentBid, "Leilão");
+ 
+                 player.ClubId = winner.Id;
+                 player.ContractRoundsRemaining = 20;
+@@ -895,10 +931,45 @@ public static class MarketAndEconomyEngine
+ 
+         if (fallbackClub != null)
+         {
++            if (!TryRecordTransaction(world, fallbackClub, FinancialTransactionCategory.FreeAgentSigning, 0m,
++                $"Contrato sem lance de {player.DisplayName}", $"auction:{auction.Id}:free")) return;
++            StampTransfer(world, world.Transactions[^1], fallbackClub, null, player, "FreeAgentAssignment", 0m, "Contrato sem lance");
+             player.ClubId = fallbackClub.Id;
+             player.ContractRoundsRemaining = 14;
+             player.MarketPrice = CalculateFairValue(player);
+             player.SalaryPerRound = CalculateFairSalaryPerRound(player);
+         }
+     }
++
++    private static void RecordAiMarketAction(GameWorld world, Club club, string action, Guid playerId, decimal amount, Guid? relatedId = null)
++    {
++        if (club.HumanCoachId != null || club.AiManagerId == null) return;
++        world.AuditLogs.Add(new AuditLogEntry { GameWorldId = world.Id, SeasonNumber = world.SeasonNumber,
++            RoundNumber = world.RoundNumber, ActorCoachId = club.AiManagerId, ClubId = club.Id,
++            PlayerId = playerId, Amount = amount, RelatedEntityId = relatedId, ActionType = action });
++    }
++
++    private static void StampTransfer(GameWorld world, FinancialTransaction tx, Club buyer, Club? seller,
++        Player player, string type, decimal amount, string justification)
++    {
++        tx.TransferTransactionId = tx.Id;
++        tx.PlayerId = player.Id;
++        tx.BuyerClubId = buyer.Id;
++        tx.SellerClubId = seller?.Id;
++        tx.ManagerId = buyer.HumanCoachId ?? buyer.AiManagerId;
++        tx.TransactionType = type;
++        if (buyer.HumanCoachId != null || buyer.AiManagerId == null) return;
++        var positionSquad = world.Players.Where(p => p.ClubId == buyer.Id && p.Position == player.Position).OrderByDescending(p => p.Strength).ToList();
++        int starters = buyer.LatestSquadPlan?.TargetStarters.GetValueOrDefault(player.Position) ?? 1;
++        string reason = justification.Contains("Titular urgente", StringComparison.Ordinal) ? "TACTICAL_REQUIREMENT"
++            : justification.Contains("Melhoria titular", StringComparison.Ordinal) ? "REINFORCEMENT_STARTER"
++            : justification.Contains("Reserva tático", StringComparison.Ordinal) ? "SQUAD_DEPTH"
++            : positionSquad.Count < starters ? "TACTICAL_REQUIREMENT"
++            : positionSquad.Count < starters + (buyer.LatestSquadPlan?.TargetReserves.GetValueOrDefault(player.Position) ?? 1) ? "SQUAD_DEPTH"
++            : player.Strength > (positionSquad.Take(starters).LastOrDefault()?.Strength ?? 0) ? "REINFORCEMENT_STARTER" : "MARKET_OPPORTUNITY";
++        tx.SigningDecision = new(reason, buyer.LatestSquadPlan?.TargetPrimaryFormation ?? buyer.PreferredFormation,
++            player.Position, player.Strength, positionSquad.Take(starters).LastOrDefault()?.Strength,
++            positionSquad.Skip(starters).FirstOrDefault()?.Strength, amount, CalculateFairValue(player),
++            CalculateFairSalaryPerRound(player), player.Behavior, player.IsStar, buyer.CashBalance + amount, buyer.CashBalance);
++    }
+ }

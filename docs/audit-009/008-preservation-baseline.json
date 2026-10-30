@@ -1,0 +1,74 @@
+[
+  {
+    "Matches008": true,
+    "Path": "client/elifoot_flutter/lib/api_client.dart"
+  },
+  {
+    "Matches008": true,
+    "Path": "client/elifoot_flutter/lib/main.dart"
+  },
+  {
+    "Matches008": true,
+    "Path": "client/elifoot_flutter/test/career_api_test.dart"
+  },
+  {
+    "Matches008": true,
+    "Path": "client/elifoot_flutter/test/widget_test.dart"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Api/Program.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Contracts/Dtos.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Domain/CoachCareerEngine.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Domain/Entities.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Domain/WorldSeedFactory.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs"
+  },
+  {
+    "Matches008": true,
+    "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs"
+  }
+]

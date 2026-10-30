@@ -1,0 +1,72 @@
+--------- beginning of main
+10-29 21:26:03.310  3067  3067 W dex2oat : Verification of java.lang.String kotlinx.coroutines.JobSupport.toDebugString() took 207.414ms
+10-29 21:26:03.531  3067  3067 W dex2oat : Verification of boolean kotlinx.coroutines.AbstractCoroutine.isActive() took 216.953ms
+10-29 21:26:03.802  3067  3067 W dex2oat : Verification of kotlinx.coroutines.internal.LockFreeLinkedListNode kotlinx.coroutines.internal.LockFreeLinkedListNode.correctPrev(kotlinx.coroutines.internal.OpDescriptor) took 263.773ms
+10-29 21:26:04.240  3067  3067 W dex2oat : Verification of int kotlinx.coroutines.internal.LockFreeLinkedListNode.tryCondAddNext(kotlinx.coroutines.internal.LockFreeLinkedListNode, kotlinx.coroutines.internal.LockFreeLinkedListNode, kotlinx.coroutines.internal.LockFreeLinkedListNode$CondAddOp) took 432.256ms
+10-29 21:26:04.571  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.AwaitAll$AwaitAllNode.invoke(java.lang.Throwable) took 325.588ms
+10-29 21:26:05.110  3067  3067 W dex2oat : Verification of java.lang.Object kotlinx.coroutines.AwaitKt$joinAll$1.invokeSuspend(java.lang.Object) took 531.427ms
+10-29 21:26:05.550  3067  3067 W dex2oat : Verification of java.lang.Object kotlinx.coroutines.AwaitKt.joinAll(java.util.Collection, kotlin.coroutines.Continuation) took 437.438ms
+10-29 21:26:05.931  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.EventLoopImplBase.<clinit>() took 371.072ms
+10-29 21:26:06.531  3067  3067 W dex2oat : Verification of long kotlinx.coroutines.EventLoopImplBase.processNextEvent() took 591.221ms
+10-29 21:26:07.131  3067  3067 W dex2oat : Verification of kotlinx.coroutines.Deferred kotlinx.coroutines.BuildersKt__Builders_commonKt.async$default(kotlinx.coroutines.CoroutineScope, kotlin.coroutines.CoroutineContext, kotlinx.coroutines.CoroutineStart, kotlin.jvm.functions.Function2, int, java.lang.Object) took 591.594ms
+10-29 21:26:07.346  3116  3116 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:26:07.402  3116  3116 D AndroidRuntime: CheckJNI is OFF
+10-29 21:26:07.656  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.DispatchedTask.run() took 516.681ms
+10-29 21:26:08.081  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.CancellableContinuationImpl.callCancelHandler(kotlin.jvm.functions.Function1, java.lang.Throwable) took 421.922ms
+10-29 21:26:08.280  3116  3116 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:26:08.363  3116  3116 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:26:08.621  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.CancellableContinuationImpl.resumeImpl(java.lang.Object, int, kotlin.jvm.functions.Function1) took 532.537ms
+10-29 21:26:08.741  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.CancellableContinuationImpl.completeResume(java.lang.Object) took 111.786ms
+10-29 21:26:08.774  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BirdLoop.ogg since build fingerprint changed
+10-29 21:26:08.779  3116  3116 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:26:08.779  3116  3116 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:26:08.793  3116  3116 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:26:09.091  3116  3116 D AndroidRuntime: Calling main entry com.android.commands.pm.Pm
+10-29 21:26:09.156  3116  3116 I art     : System.exit called, status: 1
+10-29 21:26:09.157  3116  3116 I AndroidRuntime: VM exiting with result code 1.
+10-29 21:26:09.261  3067  3067 W dex2oat : Verification of void kotlinx.coroutines.CancelledContinuation.<init>(kotlin.coroutines.Continuation, java.lang.Throwable, boolean) took 321.932ms
+10-29 21:26:09.635  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Bollywood.ogg since build fingerprint changed
+10-29 21:26:09.954  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/BussaMove.ogg since build fingerprint changed
+10-29 21:26:10.286  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CANISMAJOR.ogg since build fingerprint changed
+10-29 21:26:10.585  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CASSIOPEIA.ogg since build fingerprint changed
+10-29 21:26:10.889  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cairo.ogg since build fingerprint changed
+10-29 21:26:11.207  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Calypso_Steel.ogg since build fingerprint changed
+10-29 21:26:11.411  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CanisMajor.ogg since build fingerprint changed
+10-29 21:26:11.583  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CaribbeanIce.ogg since build fingerprint changed
+10-29 21:26:11.844  3067  3067 W dex2oat : Verification of byte[] kotlinx.coroutines.debug.AgentPremain$DebugProbesTransformer.transform(java.lang.ClassLoader, java.lang.String, java.lang.Class, java.security.ProtectionDomain, byte[]) took 566.238ms
+10-29 21:26:12.107  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Carina.ogg since build fingerprint changed
+10-29 21:26:12.363  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Centaurus.ogg since build fingerprint changed
+10-29 21:26:12.638  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Champagne_Edition.ogg since build fingerprint changed
+10-29 21:26:12.968  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Club_Cubano.ogg since build fingerprint changed
+10-29 21:26:13.279  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrayonRock.ogg since build fingerprint changed
+10-29 21:26:13.670  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CrazyDream.ogg since build fingerprint changed
+10-29 21:26:15.511  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/CurveBall.ogg since build fingerprint changed
+10-29 21:26:15.805  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Cygnus.ogg since build fingerprint changed
+10-29 21:26:16.068  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DancinFool.ogg since build fingerprint changed
+10-29 21:26:16.450  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Ding.ogg since build fingerprint changed
+10-29 21:26:16.794  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DonMessWivIt.ogg since build fingerprint changed
+10-29 21:26:18.106  3067  3067 W dex2oat : Compilation of long androidx.datastore.core.NativeSharedCounter.nativeCreateSharedCounter(int) took 1.307s
+10-29 21:26:18.341  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Draco.ogg since build fingerprint changed
+10-29 21:26:18.579  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/DreamTheme.ogg since build fingerprint changed
+10-29 21:26:19.880  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eastern_Sky.ogg since build fingerprint changed
+10-29 21:26:20.215  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Enter_the_Nexus.ogg since build fingerprint changed
+10-29 21:26:20.561  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Eridani.ogg since build fingerprint changed
+10-29 21:26:20.828  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/EtherShake.ogg since build fingerprint changed
+10-29 21:26:21.159  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FreeFlight.ogg since build fingerprint changed
+10-29 21:26:22.724  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/FriendlyGhost.ogg since build fingerprint changed
+10-29 21:26:23.033  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Funk_Yall.ogg since build fingerprint changed
+10-29 21:26:23.339  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/GameOverGuitar.ogg since build fingerprint changed
+10-29 21:26:23.670  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Gimme_Mo_Town.ogg since build fingerprint changed
+10-29 21:26:24.761  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Girtab.ogg since build fingerprint changed
+10-29 21:26:25.098  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Glacial_Groove.ogg since build fingerprint changed
+10-29 21:26:25.417  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Growl.ogg since build fingerprint changed
+10-29 21:26:25.795  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/HalfwayHome.ogg since build fingerprint changed
+10-29 21:26:26.438  3067  3067 I dex2oat : dex2oat took 103.226s (threads: 1) arena alloc=2240B (2240B) java alloc=6MB (7172272B) native alloc=14MB (14846976B) free=3MB (3503104B)
+10-29 21:26:26.564  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Hydra.ogg since build fingerprint changed
+10-29 21:26:26.769  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/InsertCoin.ogg since build fingerprint changed
+10-29 21:26:27.983  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/Kuma.ogg since build fingerprint changed
+--------- beginning of system
+10-29 21:26:28.023  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 21:26:28.024  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 21:26:29.971  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoopyLounge.ogg since build fingerprint changed
+10-29 21:26:31.424  2744  3071 I MediaScanner: forcing rescan of /system/media/audio/ringtones/LoveFlute.ogg since build fingerprint changed

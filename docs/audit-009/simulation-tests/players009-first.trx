@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="95b6ea49-81ab-42da-b4dd-0a1fb306c123" name="Daniel@DESKTOP-A5J5UME 2026-10-30 09:50:49" runUser="DESKTOP-A5J5UME\CodexSandboxOffline" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T09:50:49.2102396-03:00" queuing="2026-10-30T09:50:49.2102399-03:00" start="2026-10-30T09:50:45.3141382-03:00" finish="2026-10-30T09:50:53.6476885-03:00" />
+  <TestSettings name="default" id="487168e8-5e86-4f81-99df-e7467291ec44">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_09_50_49" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0001afff-a775-456f-9dfe-0e91181816d8" testId="2aefdd0f-abdf-106a-0c9d-4845d874106d" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards" computerName="DESKTOP-A5J5UME" duration="00:00:04.9434161" startTime="2026-10-30T09:50:48.5594672-03:00" endTime="2026-10-30T09:50:53.4981559-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0001afff-a775-456f-9dfe-0e91181816d8">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Collections differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: [PlayerRankingRowDto { Rank = 1, PlayerId = f15990a2-e802-2b47-b389-f6abe1e6b2b9, DisplayName = Mateus Alves*, Position = A, Strength = 36, BehaviorDisplay = Cavalheiro, IsStar = True, CurrentClubId = f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7, CurrentClubName = Guarani da Serra, MatchesPlayed = 17, GoalsScored = 10, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1469, Average = 0,5882352941176470588235294118, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 2, PlayerId = 008b7f2d-eea5-3341-ac35-9c7d32db1d06, DisplayName = Thiago Machado*, Position = A, Strength = 45, BehaviorDisplay = Caneleiro, IsStar = True, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 20, GoalsScored = 10, GoalsConceded = 0, YellowCards = 2, RedCards = 0, MinutesPlayed = 1800, Average = 0,5, RedRate = 0, YellowRate = 0,1, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 3, PlayerId = c473c3ff-63ea-9344-b527-af625e83af9f, DisplayName = Pedro Freitas, Position = A, Strength = 45, BehaviorDisplay = Cordeirinho, IsStar = False, CurrentClubId = 9b6949ae-103a-f041-b5cc-990093f3bca6, CurrentClubName = Sport Club Atlântico, MatchesPlayed = 18, GoalsScored = 9, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1620, Average = 0,5, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 4, PlayerId = 2d2b9df4-b1bf-c84d-ad19-9704192d1aa9, DisplayName = Caio Martins, Position = A, Strength = 46, BehaviorDisplay = Caneleiro, IsStar = False, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 19, GoalsScored = 9, GoalsConceded = 0, YellowCards = 3, RedCards = 0, MinutesPlayed = 1710, Average = 0,4736842105263157894736842105, RedRate = 0, YellowRate = 0,1578947368421052631578947368, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 5, PlayerId = 4c3fe694-2c54-4448-a558-b964c2c9122a, DisplayName = Mateus Vieira, Position = A, Strength = 47, BehaviorDisplay = Cavalheiro, IsStar = False, CurrentClubId = 587a76db-cf8e-3542-957e-6544812c3aab, CurrentClubName = Palestra Verde, MatchesPlayed = 20, GoalsScored = 9, GoalsConceded = 0, YellowCards = 1, RedCards = 0, MinutesPlayed = 1779, Average = 0,45, RedRate = 0, YellowRate = 0,05, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, ···]&#xD;
+Actual:   [PlayerRankingRowDto { Rank = 1, PlayerId = f15990a2-e802-2b47-b389-f6abe1e6b2b9, DisplayName = Mateus Alves*, Position = A, Strength = 37, BehaviorDisplay = Cavalheiro, IsStar = True, CurrentClubId = f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7, CurrentClubName = Guarani da Serra, MatchesPlayed = 17, GoalsScored = 10, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1469, Average = 0,5882352941176470588235294118, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 1 }, PlayerRankingRowDto { Rank = 2, PlayerId = 008b7f2d-eea5-3341-ac35-9c7d32db1d06, DisplayName = Thiago Machado*, Position = A, Strength = 46, BehaviorDisplay = Caneleiro, IsStar = True, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 20, GoalsScored = 10, GoalsConceded = 0, YellowCards = 2, RedCards = 0, MinutesPlayed = 1800, Average = 0,5, RedRate = 0, YellowRate = 0,1, MatchesRemaining = 0, SeasonTopScorerTitles = 1 }, PlayerRankingRowDto { Rank = 3, PlayerId = c473c3ff-63ea-9344-b527-af625e83af9f, DisplayName = Pedro Freitas, Position = A, Strength = 47, BehaviorDisplay = Cordeirinho, IsStar = False, CurrentClubId = 9b6949ae-103a-f041-b5cc-990093f3bca6, CurrentClubName = Sport Club Atlântico, MatchesPlayed = 18, GoalsScored = 9, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1620, Average = 0,5, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 4, PlayerId = 2d2b9df4-b1bf-c84d-ad19-9704192d1aa9, DisplayName = Caio Martins, Position = A, Strength = 47, BehaviorDisplay = Caneleiro, IsStar = False, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 19, GoalsScored = 9, GoalsConceded = 0, YellowCards = 3, RedCards = 0, MinutesPlayed = 1710, Average = 0,4736842105263157894736842105, RedRate = 0, YellowRate = 0,1578947368421052631578947368, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 5, PlayerId = 4c3fe694-2c54-4448-a558-b964c2c9122a, DisplayName = Mateus Vieira, Position = A, Strength = 48, BehaviorDisplay = Cavalheiro, IsStar = False, CurrentClubId = 587a76db-cf8e-3542-957e-6544812c3aab, CurrentClubName = Palestra Verde, MatchesPlayed = 20, GoalsScored = 9, GoalsConceded = 0, YellowCards = 1, RedCards = 0, MinutesPlayed = 1779, Average = 0,45, RedRate = 0, YellowRate = 0,05, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, ···]&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards() in D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs:line 59&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8d97d1d5-7813-4fb6-8ee6-5d5a9f9572f8" testId="98248fa6-dcd5-4530-48cc-95cca671f370" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 1024)" computerName="DESKTOP-A5J5UME" duration="00:00:01.5356027" startTime="2026-10-30T09:50:46.9694019-03:00" endTime="2026-10-30T09:50:48.5290802-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d97d1d5-7813-4fb6-8ee6-5d5a9f9572f8">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : Nullable object must have a value.</Message>
+          <StackTrace>   at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Int32 clubs) in D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs:line 79&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1171ebd2-b5f3-4f53-92b3-7c0ce83000ab" testId="044d23f1-198a-df6b-1f0e-1b8ed75715c0" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 128)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0213854" startTime="2026-10-30T09:50:48.5553358-03:00" endTime="2026-10-30T09:50:48.5555847-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1171ebd2-b5f3-4f53-92b3-7c0ce83000ab">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : Nullable object must have a value.</Message>
+          <StackTrace>   at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Int32 clubs) in D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs:line 79&#xD;
+   at InvokeStub_MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 128)" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="044d23f1-198a-df6b-1f0e-1b8ed75715c0">
+      <Execution id="1171ebd2-b5f3-4f53-92b3-7c0ce83000ab" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="PlayerRankings009_QueryLoad_128And1024Clubs" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="2aefdd0f-abdf-106a-0c9d-4845d874106d">
+      <Execution id="0001afff-a775-456f-9dfe-0e91181816d8" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 1024)" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="98248fa6-dcd5-4530-48cc-95cca671f370">
+      <Execution id="8d97d1d5-7813-4fb6-8ee6-5d5a9f9572f8" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="PlayerRankings009_QueryLoad_128And1024Clubs" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2aefdd0f-abdf-106a-0c9d-4845d874106d" executionId="0001afff-a775-456f-9dfe-0e91181816d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98248fa6-dcd5-4530-48cc-95cca671f370" executionId="8d97d1d5-7813-4fb6-8ee6-5d5a9f9572f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="044d23f1-198a-df6b-1f0e-1b8ed75715c0" executionId="1171ebd2-b5f3-4f53-92b3-7c0ce83000ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.53]   Discovering: Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.62]   Discovered:  Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.68]   Starting:    Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:02.29]       System.InvalidOperationException : Nullable object must have a value.&#xD;
+[xUnit.net 00:00:02.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.29]         D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs(79,0): at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Int32 clubs)&#xD;
+[xUnit.net 00:00:02.29]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:02.29]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:02.31]       System.InvalidOperationException : Nullable object must have a value.&#xD;
+[xUnit.net 00:00:02.31]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.31]         D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs(79,0): at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Int32 clubs)&#xD;
+[xUnit.net 00:00:02.31]            at InvokeStub_MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(Object, Span`1)&#xD;
+[xUnit.net 00:00:02.31]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:07.25]       Assert.Equal() Failure: Collections differ&#xD;
+[xUnit.net 00:00:07.25]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:07.25]       Expected: [PlayerRankingRowDto { Rank = 1, PlayerId = f15990a2-e802-2b47-b389-f6abe1e6b2b9, DisplayName = Mateus Alves*, Position = A, Strength = 36, BehaviorDisplay = Cavalheiro, IsStar = True, CurrentClubId = f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7, CurrentClubName = Guarani da Serra, MatchesPlayed = 17, GoalsScored = 10, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1469, Average = 0,5882352941176470588235294118, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 2, PlayerId = 008b7f2d-eea5-3341-ac35-9c7d32db1d06, DisplayName = Thiago Machado*, Position = A, Strength = 45, BehaviorDisplay = Caneleiro, IsStar = True, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 20, GoalsScored = 10, GoalsConceded = 0, YellowCards = 2, RedCards = 0, MinutesPlayed = 1800, Average = 0,5, RedRate = 0, YellowRate = 0,1, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 3, PlayerId = c473c3ff-63ea-9344-b527-af625e83af9f, DisplayName = Pedro Freitas, Position = A, Strength = 45, BehaviorDisplay = Cordeirinho, IsStar = False, CurrentClubId = 9b6949ae-103a-f041-b5cc-990093f3bca6, CurrentClubName = Sport Club Atlântico, MatchesPlayed = 18, GoalsScored = 9, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1620, Average = 0,5, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 4, PlayerId = 2d2b9df4-b1bf-c84d-ad19-9704192d1aa9, DisplayName = Caio Martins, Position = A, Strength = 46, BehaviorDisplay = Caneleiro, IsStar = False, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 19, GoalsScored = 9, GoalsConceded = 0, YellowCards = 3, RedCards = 0, MinutesPlayed = 1710, Average = 0,4736842105263157894736842105, RedRate = 0, YellowRate = 0,1578947368421052631578947368, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 5, PlayerId = 4c3fe694-2c54-4448-a558-b964c2c9122a, DisplayName = Mateus Vieira, Position = A, Strength = 47, BehaviorDisplay = Cavalheiro, IsStar = False, CurrentClubId = 587a76db-cf8e-3542-957e-6544812c3aab, CurrentClubName = Palestra Verde, MatchesPlayed = 20, GoalsScored = 9, GoalsConceded = 0, YellowCards = 1, RedCards = 0, MinutesPlayed = 1779, Average = 0,45, RedRate = 0, YellowRate = 0,05, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, ···]&#xD;
+[xUnit.net 00:00:07.25]       Actual:   [PlayerRankingRowDto { Rank = 1, PlayerId = f15990a2-e802-2b47-b389-f6abe1e6b2b9, DisplayName = Mateus Alves*, Position = A, Strength = 37, BehaviorDisplay = Cavalheiro, IsStar = True, CurrentClubId = f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7, CurrentClubName = Guarani da Serra, MatchesPlayed = 17, GoalsScored = 10, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1469, Average = 0,5882352941176470588235294118, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 1 }, PlayerRankingRowDto { Rank = 2, PlayerId = 008b7f2d-eea5-3341-ac35-9c7d32db1d06, DisplayName = Thiago Machado*, Position = A, Strength = 46, BehaviorDisplay = Caneleiro, IsStar = True, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 20, GoalsScored = 10, GoalsConceded = 0, YellowCards = 2, RedCards = 0, MinutesPlayed = 1800, Average = 0,5, RedRate = 0, YellowRate = 0,1, MatchesRemaining = 0, SeasonTopScorerTitles = 1 }, PlayerRankingRowDto { Rank = 3, PlayerId = c473c3ff-63ea-9344-b527-af625e83af9f, DisplayName = Pedro Freitas, Position = A, Strength = 47, BehaviorDisplay = Cordeirinho, IsStar = False, CurrentClubId = 9b6949ae-103a-f041-b5cc-990093f3bca6, CurrentClubName = Sport Club Atlântico, MatchesPlayed = 18, GoalsScored = 9, GoalsConceded = 0, YellowCards = 0, RedCards = 0, MinutesPlayed = 1620, Average = 0,5, RedRate = 0, YellowRate = 0, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 4, PlayerId = 2d2b9df4-b1bf-c84d-ad19-9704192d1aa9, DisplayName = Caio Martins, Position = A, Strength = 47, BehaviorDisplay = Caneleiro, IsStar = False, CurrentClubId = 836cea4d-dd81-d24a-805b-c2be06bd2e00, CurrentClubName = Real Pampulha, MatchesPlayed = 19, GoalsScored = 9, GoalsConceded = 0, YellowCards = 3, RedCards = 0, MinutesPlayed = 1710, Average = 0,4736842105263157894736842105, RedRate = 0, YellowRate = 0,1578947368421052631578947368, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, PlayerRankingRowDto { Rank = 5, PlayerId = 4c3fe694-2c54-4448-a558-b964c2c9122a, DisplayName = Mateus Vieira, Position = A, Strength = 48, BehaviorDisplay = Cavalheiro, IsStar = False, CurrentClubId = 587a76db-cf8e-3542-957e-6544812c3aab, CurrentClubName = Palestra Verde, MatchesPlayed = 20, GoalsScored = 9, GoalsConceded = 0, YellowCards = 1, RedCards = 0, MinutesPlayed = 1779, Average = 0,45, RedRate = 0, YellowRate = 0,05, MatchesRemaining = 0, SeasonTopScorerTitles = 0 }, ···]&#xD;
+[xUnit.net 00:00:07.25]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:07.25]       Stack Trace:&#xD;
+[xUnit.net 00:00:07.25]         D:\elifoot_98\tests\Elifoot.Simulation.Tests\PlayerRankings009SimulationTests.cs(59,0): at Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards()&#xD;
+[xUnit.net 00:00:07.25]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:07.25]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:07.26]   Finished:    Elifoot.Simulation.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T09:50:48.5337100-03:00">
+        <Text>[xUnit.net 00:00:02.28]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 1024) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T09:50:48.5562675-03:00">
+        <Text>[xUnit.net 00:00:02.31]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_QueryLoad_128And1024Clubs(clubs: 128) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T09:50:53.4986155-03:00">
+        <Text>[xUnit.net 00:00:07.25]     Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.PlayerRankings009_RealFullSeason_ReconcilesEveryRoundAndPaysExactAwards [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

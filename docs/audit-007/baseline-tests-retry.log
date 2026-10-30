@@ -1,0 +1,40 @@
+  Determinando os projetos a serem restaurados...
+  D:\elifoot_98\src\Elifoot.Contracts\Elifoot.Contracts.csproj restaurado (em 259 ms).
+  D:\elifoot_98\tools\seed-generator\Elifoot.SeedGenerator.csproj restaurado (em 277 ms).
+  D:\elifoot_98\src\Elifoot.Domain\Elifoot.Domain.csproj restaurado (em 276 ms).
+  D:\elifoot_98\src\Elifoot.Application\Elifoot.Application.csproj restaurado (em 277 ms).
+  D:\elifoot_98\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj restaurado (em 1,53 seg).
+  D:\elifoot_98\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj restaurado (em 1,63 seg).
+  D:\elifoot_98\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj restaurado (em 1,63 seg).
+  D:\elifoot_98\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj restaurado (em 1,63 seg).
+  D:\elifoot_98\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj restaurado (em 1,72 seg).
+  D:\elifoot_98\src\Elifoot.Api\Elifoot.Api.csproj restaurado (em 1,77 seg).
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Application.Tests -> D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Simulation.Tests -> D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Api -> D:\elifoot_98\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\baseline-tests\baseline_net10.0_20261030074615.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    12, Ignorado:     0, Total:    12, Duração: 3 s - Elifoot.Domain.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\baseline-tests\baseline_net10.0_20261030074625.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     4, Ignorado:     0, Total:     4, Duração: 11 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\baseline-tests\baseline_net10.0_20261030074747.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     2, Ignorado:     0, Total:     2, Duração: 1 m 30 s - Elifoot.Simulation.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\docs\audit-007\baseline-tests\baseline_net10.0_20261030074816.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     9, Ignorado:     0, Total:     9, Duração: 1 m 55 s - Elifoot.Integration.Tests.dll (net10.0)

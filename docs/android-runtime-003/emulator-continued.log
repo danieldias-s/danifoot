@@ -1,0 +1,19 @@
+INFO    | Android emulator version 32.1.15.0 (build_id 10696886) (CL:N/A)
+INFO    | Found systemPath D:\elifoot_98\.tools\android-sdk\system-images\android-25\default\x86_64\
+WARNING | encryption is off
+WARNING | x86_64 emulation may not work without hardware acceleration!
+INFO    | Crashreporting disabled, not reporting crashes.
+INFO    | Duplicate loglines will be removed, if you wish to see each indiviudal line launch with the -log-nofilter flag.
+INFO    | IPv4 server found: 192.168.31.1
+TCG doesn't support requested feature: CPUID.01H:ECX.avx [bit 28]
+TCG doesn't support requested feature: CPUID.01H:ECX.f16c [bit 29]
+WARNING | *** No gRPC protection active, consider launching with the -grpc-use-jwt flag.***
+INFO    | Started GRPC server at 127.0.0.1:8554, security: Local, auth: none
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+INFO    | Advertising in: C:\Users\Daniel\AppData\Local\Temp\avd\running\pid_22356.ini
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.
+INFO    | Cold boot: requested by the user
+INFO    | Wait for emulator (pid 22356) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+WARNING | Not saving state: RAM not mapped as shared
+WARNING | Failed to process .ini file C:\Users\Daniel\AppData\Local\Temp\avd\running\31380 for reading.

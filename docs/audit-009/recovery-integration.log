@@ -1,0 +1,46 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:09.24]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "same") [FAIL]
+[xUnit.net 00:00:09.25]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "unattached") [FAIL]
+[xUnit.net 00:00:09.27]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "different") [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "same") [104 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Values differ
+Expected: 2
+Actual:   130
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(String receiver) in D:\elifoot_98\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 150
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "unattached") [18 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   129
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(String receiver) in D:\elifoot_98\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 150
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: "different") [18 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Values differ
+Expected: 2
+Actual:   130
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(String receiver) in D:\elifoot_98\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 150
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:13.74]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger [566 ms]
+  Mensagem de erro:
+   Assert.NotEmpty() Failure: Collection was empty
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger() in D:\elifoot_98\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 236
+   at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger() in D:\elifoot_98\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 245
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98\docs\audit-009\recovery-integration-tests\recovery-integration.trx
+
+Com falha! – Com falha:     4, Aprovado:     7, Ignorado:     0, Total:    11, Duração: 12 s - Elifoot.Integration.Tests.dll (net10.0)

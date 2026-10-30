@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="51073d51-85da-4fc1-93dd-71a4eb63bbe8" name="Daniel@DESKTOP-A5J5UME 2026-10-30 07:47:16" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T07:47:16.7337492-03:00" queuing="2026-10-30T07:47:16.7337501-03:00" start="2026-10-30T07:47:14.6330719-03:00" finish="2026-10-30T07:47:17.4079249-03:00" />
+  <TestSettings name="default" id="5499bafc-ce58-4af3-839b-3a972abd08dd">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_07_47_16" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="32b4edae-5d47-475d-9598-017e5c56be13" testId="2d1ae931-cbc4-6164-0d6b-8adc0715dd42" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0614437" startTime="2026-10-30T07:47:16.5853864-03:00" endTime="2026-10-30T07:47:16.5854601-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32b4edae-5d47-475d-9598-017e5c56be13">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "5-3-2"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a77fde8b-b643-4a4f-930d-ff6d775200a5" testId="65bb83bf-702c-7e20-af07-c20b2e09012d" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0170126" startTime="2026-10-30T07:47:16.5867710-03:00" endTime="2026-10-30T07:47:16.5999591-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a77fde8b-b643-4a4f-930d-ff6d775200a5">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4e1cc19d-126e-4872-878b-449be54da913" testId="93d3289c-c4b7-409d-693a-203ab8401765" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0170132" startTime="2026-10-30T07:47:16.6007148-03:00" endTime="2026-10-30T07:47:16.6171974-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e1cc19d-126e-4872-878b-449be54da913">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7d77b5b4-b36e-4540-bc47-1a9640964550" testId="9e4d759a-0482-b6cc-ea0c-4cceba9289a9" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50)" computerName="DESKTOP-A5J5UME" duration="00:00:00.1544892" startTime="2026-10-30T07:47:16.1127879-03:00" endTime="2026-10-30T07:47:16.4210498-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d77b5b4-b36e-4540-bc47-1a9640964550">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b936dedc-426d-40e5-9ed3-811287ecb061" testId="b1714707-3dd9-4733-28c5-b35b538542ac" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0406069" startTime="2026-10-30T07:47:16.5817680-03:00" endTime="2026-10-30T07:47:16.5819149-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b936dedc-426d-40e5-9ed3-811287ecb061">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="385b2dd8-ca04-4723-8579-6ce799b9de95" testId="961c396a-4eaa-861a-e652-e612114220e0" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0206493" startTime="2026-10-30T07:47:16.6858045-03:00" endTime="2026-10-30T07:47:16.6859095-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="385b2dd8-ca04-4723-8579-6ce799b9de95">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "5-3-2"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f69e52f9-52b7-4251-b87c-2f625791d186" testId="48f884f6-d67e-701b-131f-9f5e24f6ac20" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0180888" startTime="2026-10-30T07:47:16.5847234-03:00" endTime="2026-10-30T07:47:16.5848042-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f69e52f9-52b7-4251-b87c-2f625791d186">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "5-3-2"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e2710cf6-1e3a-4d9b-a769-4a68cb0603f0" testId="6b876b6d-c43b-51ef-e19f-05c263dd77a6" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0175161" startTime="2026-10-30T07:47:16.5838980-03:00" endTime="2026-10-30T07:47:16.5839984-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2710cf6-1e3a-4d9b-a769-4a68cb0603f0">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a937a03e-c686-4beb-9331-bf1c637839e3" testId="7cd20e7b-9cef-1882-90c7-cac8a98816df" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain" computerName="DESKTOP-A5J5UME" duration="00:00:00.6051222" startTime="2026-10-30T07:47:16.6889648-03:00" endTime="2026-10-30T07:47:17.2795391-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a937a03e-c686-4beb-9331-bf1c637839e3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 779)&#xD;
+Expected: ···"sao","CashBalance":5035238.95,"Reputation"···&#xD;
+Actual:   ···"sao","CashBalance":5138320.95,"Reputation"···&#xD;
+                                  ↑ (pos 779)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain() in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 59&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bc85a632-1edb-4eef-9410-ad61627aa2c4" testId="044461d9-55b0-6a0f-139e-693ed6beb084" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0180198" startTime="2026-10-30T07:47:16.6868025-03:00" endTime="2026-10-30T07:47:16.6868853-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc85a632-1edb-4eef-9410-ad61627aa2c4">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+             ↓ (pos 2)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "4-4-2"&#xD;
+             ↑ (pos 2)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="88b29610-31ec-48bb-801c-dccc90fedc67" testId="c2a48cc1-454d-92b5-6c27-45bd2339a3b5" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0168882" startTime="2026-10-30T07:47:16.6179537-03:00" endTime="2026-10-30T07:47:16.6342713-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="88b29610-31ec-48bb-801c-dccc90fedc67">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "5-3-2"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="dc7ad7dc-3c57-4ade-9b18-b10d9d5b6745" testId="56259a2c-7c80-888d-8c86-7eb2f8a1a285" testName="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0225783" startTime="2026-10-30T07:47:16.5861096-03:00" endTime="2026-10-30T07:47:16.5862004-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc7ad7dc-3c57-4ade-9b18-b10d9d5b6745">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+           ↓ (pos 0)&#xD;
+Expected: "4-3-3"&#xD;
+Actual:   "5-3-2"&#xD;
+           ↑ (pos 0)</Message>
+          <StackTrace>   at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability) in D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs:line 36&#xD;
+   at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="2d1ae931-cbc4-6164-0d6b-8adc0715dd42">
+      <Execution id="32b4edae-5d47-475d-9598-017e5c56be13" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="6b876b6d-c43b-51ef-e19f-05c263dd77a6">
+      <Execution id="e2710cf6-1e3a-4d9b-a769-4a68cb0603f0" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="56259a2c-7c80-888d-8c86-7eb2f8a1a285">
+      <Execution id="dc7ad7dc-3c57-4ade-9b18-b10d9d5b6745" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="9e4d759a-0482-b6cc-ea0c-4cceba9289a9">
+      <Execution id="7d77b5b4-b36e-4540-bc47-1a9640964550" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="48f884f6-d67e-701b-131f-9f5e24f6ac20">
+      <Execution id="f69e52f9-52b7-4251-b87c-2f625791d186" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="b1714707-3dd9-4733-28c5-b35b538542ac">
+      <Execution id="b936dedc-426d-40e5-9ed3-811287ecb061" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="c2a48cc1-454d-92b5-6c27-45bd2339a3b5">
+      <Execution id="88b29610-31ec-48bb-801c-dccc90fedc67" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="044461d9-55b0-6a0f-139e-693ed6beb084">
+      <Execution id="bc85a632-1edb-4eef-9410-ad61627aa2c4" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="93d3289c-c4b7-409d-693a-203ab8401765">
+      <Execution id="4e1cc19d-126e-4872-878b-449be54da913" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="65bb83bf-702c-7e20-af07-c20b2e09012d">
+      <Execution id="a77fde8b-b643-4a4f-930d-ff6d775200a5" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="7cd20e7b-9cef-1882-90c7-cac8a98816df">
+      <Execution id="a937a03e-c686-4beb-9331-bf1c637839e3" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65)" storage="d:\elifoot_98\tests\elifoot.domain.tests\bin\release\net10.0\elifoot.domain.tests.dll" id="961c396a-4eaa-861a-e652-e612114220e0">
+      <Execution id="385b2dd8-ca04-4723-8579-6ce799b9de95" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Domain.Tests.MetricAiAudit007Tests" name="ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2d1ae931-cbc4-6164-0d6b-8adc0715dd42" executionId="32b4edae-5d47-475d-9598-017e5c56be13" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65bb83bf-702c-7e20-af07-c20b2e09012d" executionId="a77fde8b-b643-4a4f-930d-ff6d775200a5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93d3289c-c4b7-409d-693a-203ab8401765" executionId="4e1cc19d-126e-4872-878b-449be54da913" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9e4d759a-0482-b6cc-ea0c-4cceba9289a9" executionId="7d77b5b4-b36e-4540-bc47-1a9640964550" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b1714707-3dd9-4733-28c5-b35b538542ac" executionId="b936dedc-426d-40e5-9ed3-811287ecb061" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="961c396a-4eaa-861a-e652-e612114220e0" executionId="385b2dd8-ca04-4723-8579-6ce799b9de95" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48f884f6-d67e-701b-131f-9f5e24f6ac20" executionId="f69e52f9-52b7-4251-b87c-2f625791d186" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b876b6d-c43b-51ef-e19f-05c263dd77a6" executionId="e2710cf6-1e3a-4d9b-a769-4a68cb0603f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7cd20e7b-9cef-1882-90c7-cac8a98816df" executionId="a937a03e-c686-4beb-9331-bf1c637839e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="044461d9-55b0-6a0f-139e-693ed6beb084" executionId="bc85a632-1edb-4eef-9410-ad61627aa2c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c2a48cc1-454d-92b5-6c27-45bd2339a3b5" executionId="88b29610-31ec-48bb-801c-dccc90fedc67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56259a2c-7c80-888d-8c86-7eb2f8a1a285" executionId="dc7ad7dc-3c57-4ade-9b18-b10d9d5b6745" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="12" executed="12" passed="0" failed="12" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.24]   Discovering: Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:00.42]   Discovered:  Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:00.47]   Starting:    Elifoot.Domain.Tests&#xD;
+[xUnit.net 00:00:00.83]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.83]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:00.83]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.83]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:00.83]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.96]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.96]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:00.96]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.98]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.98]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:00.98]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.98]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:00.98]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:00.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.98]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.98]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.98]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.98]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.98]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:00.98]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.98]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:00.98]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:00.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.99]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.99]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.99]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.99]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.99]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.99]       Actual:   "5-3-2"&#xD;
+[xUnit.net 00:00:00.99]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.99]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.99]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.99]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.99]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.99]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.99]       Actual:   "5-3-2"&#xD;
+[xUnit.net 00:00:00.99]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.99]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.99]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.99]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.99]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.99]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:00.99]       Actual:   "5-3-2"&#xD;
+[xUnit.net 00:00:00.99]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:00.99]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.99]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:00.99]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.99]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.00]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.00]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:01.00]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:01.00]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:01.00]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:01.00]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.00]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:01.00]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.00]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.02]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.02]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:01.02]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:01.02]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:01.02]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:01.02]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.02]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:01.02]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.02]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.04]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.04]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:01.04]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:01.04]       Actual:   "5-3-2"&#xD;
+[xUnit.net 00:00:01.04]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:01.04]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.04]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:01.04]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.04]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.09]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.09]                  ↓ (pos 0)&#xD;
+[xUnit.net 00:00:01.09]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:01.09]       Actual:   "5-3-2"&#xD;
+[xUnit.net 00:00:01.09]                  ↑ (pos 0)&#xD;
+[xUnit.net 00:00:01.09]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.09]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:01.09]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.09]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.09]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.09]                    ↓ (pos 2)&#xD;
+[xUnit.net 00:00:01.09]       Expected: "4-3-3"&#xD;
+[xUnit.net 00:00:01.09]       Actual:   "4-4-2"&#xD;
+[xUnit.net 00:00:01.09]                    ↑ (pos 2)&#xD;
+[xUnit.net 00:00:01.09]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.09]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(36,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Int32 adaptability)&#xD;
+[xUnit.net 00:00:01.09]            at InvokeStub_MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.09]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.68]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:01.68]                                         ↓ (pos 779)&#xD;
+[xUnit.net 00:00:01.68]       Expected: ···"sao","CashBalance":5035238.95,"Reputation"···&#xD;
+[xUnit.net 00:00:01.68]       Actual:   ···"sao","CashBalance":5138320.95,"Reputation"···&#xD;
+[xUnit.net 00:00:01.68]                                         ↑ (pos 779)&#xD;
+[xUnit.net 00:00:01.68]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.68]         D:\elifoot_98\tests\Elifoot.Domain.Tests\MetricAiAudit007Tests.cs(59,0): at Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain()&#xD;
+[xUnit.net 00:00:01.68]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:01.68]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.69]   Finished:    Elifoot.Domain.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.4317651-03:00">
+        <Text>[xUnit.net 00:00:00.83]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.5825878-03:00">
+        <Text>[xUnit.net 00:00:00.98]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.5844005-03:00">
+        <Text>[xUnit.net 00:00:00.98]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.5853116-03:00">
+        <Text>[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.5860960-03:00">
+        <Text>[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.5870291-03:00">
+        <Text>[xUnit.net 00:00:00.99]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.6003908-03:00">
+        <Text>[xUnit.net 00:00:01.00]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.6176221-03:00">
+        <Text>[xUnit.net 00:00:01.02]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.6346875-03:00">
+        <Text>[xUnit.net 00:00:01.04]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.7446550-03:00">
+        <Text>[xUnit.net 00:00:01.09]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:16.7447214-03:00">
+        <Text>[xUnit.net 00:00:01.09]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-A5J5UME" outcome="Error" timestamp="2026-10-30T07:47:17.2801390-03:00">
+        <Text>[xUnit.net 00:00:01.68]     Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

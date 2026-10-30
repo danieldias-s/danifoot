@@ -1,0 +1,291 @@
+{
+  "status": "PARTIAL",
+  "date": "2026-10-30",
+  "engineSha256": "C4A053C673F0044D89C035DC323103F6CB760DC6594C74FF7902549FCD07DF9B",
+  "changed": [
+    "tests\\Elifoot.Simulation.Tests\\MultiSeasonAndBenchmarkTests.cs",
+    "src\\Elifoot.Infrastructure\\EfWorldRepository.cs",
+    "src\\Elifoot.Application\\ClubAndMarketApplicationService.cs",
+    "docs\\ECONOMIA_ESTADIOS.md",
+    "docs\\IA_TREINADORES.md",
+    "docs\\MOTOR_DEFESA.md",
+    "docs\\MERCADO_IA.md",
+    "src\\Elifoot.Contracts\\Enums.cs",
+    "src\\Elifoot.Domain\\CompetitionAndSeasonEngine.cs",
+    "src\\Elifoot.Domain\\AiManagerBrain.cs",
+    "src\\Elifoot.Domain\\Entities.cs",
+    "src\\Elifoot.Domain\\MarketAndEconomyEngine.cs"
+  ],
+  "tests": {
+    "dotnet": 52,
+    "flutter": 8,
+    "results": [
+      {
+        "name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.Multiplayer_100ConsecutiveRounds_8Coaches_SyncCounter_Pauses_Substitutions_Reconnection_AndRoomIsolation",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081346.trx"
+      },
+      {
+        "name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.HumanSynchronization_0To6Counter_Idempotency_UnemployedIncluded_AndNoRaceConditions",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081346.trx"
+      },
+      {
+        "name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.GlobalPause_8Humans_Minute37Freeze_Quotas5And3_ExtraTime6And4_AndRoomIsolation",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081346.trx"
+      },
+      {
+        "name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.CupExtraTime_Grants6SubstitutionsAnd4PauseWindows_WithFreeIntervalsAt90And105",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081346.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.TiedScore_DoesNotCauseRandomFormationChanges_AndExhaustedSubsAllowFreeTacticalChange",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Monotonicity_StrongerDefense_StrongerGk_StarBonus_RedCard_AndBehaviorDiscipline",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Player_DisplayName_PreservesLiteralAsterisk_AndSquadLimitsAreEnforced",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.WorldEditorAndPackageService_ValidatesAndRoundTripsJsonAndCsv",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.SubstitutionLimitRejectsSixthInNormalTime_AndSeventhInExtraTime",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.AiManagerBrain_AdaptsTacticsToSquadAndBudget_AndFollowsManagerPhilosophy",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.ManagerKeepsPersonalityAndPreferencesWhenSeasonRotatesClubs",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.RoundSponsorship_IsIdempotent_AndFundsEliminatedDistrictClubs",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.Legacy006Snapshot_ReconstructsRoundGuardFromCompleteSponsorshipPass",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.AuctionCreatedAtSeasonEnd_ExpiresInNextSeason_WithoutGivingHumanUnwantedPlayers",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.Transfers_ReconcileOnce_AndRetainResponsibleManagerAfterClubChangeAndReload",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Discipline_Audit006_SingleCardPerFoul_SecondYellowBugFix_SentOffIsolation_AndFairPlayZeroFouls",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AiMarket_DoesNotBuyStrength11ForTwoMillion",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.CrisisClub_RecoversThroughRecordedRevenue_AndCannotFundStadiumExpansion",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AdaptabilityMatrix_UsesIdenticalSquadsSeedsAndScoreContexts",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.TransferWithExistingSellerLeg_DoesNotCreateAnUnpairedDebit",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.InjuryAndRedCardReactions_RespectQuotasAndNeverReplaceSentOffPlayer",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AuctionBids_AreNotPurchases_AndExpiredContractHasNoSellerCredit",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Penalties_Audit006_GoalkeeperSavesVsWide_ShootoutSeparation_AndDefenderBehaviorInfluence",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.HomogeneousBehaviorExposure_RecordsRealMinutesFoulsCardsAndSuspensions",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Characterization_All10Formations_DefensiveFormula_DeterministicReplay_AndBugRegressions",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MarketAndStadiumEconomy_FairValueConvex_Wear1To6Percent_AndBilateralTransfers",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081354.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 6)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 2)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 8)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 4)",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.FinancialPersistence007Tests.AiOfferSubmissionAndHumanAcceptance_HaveDistinctMetricsAndCorrectAttribution",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.LocalIdentity_IsStableAcrossServerInstances",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.EditorSavesBehaviorStarClubAndManager_AndCalendarListsFullSeason",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.BrowserContract_UsesNamedEnums_AndSameSeedRoomsRemainIndependent",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\closure-tests\\closure_net10.0_20261030081511.trx"
+      },
+      {
+        "name": "Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Audit007_Reconstruct100Seasons_WithTransactionAndCrisisEvidence",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\final-tests\\final_net10.0_20261030080045.trx"
+      },
+      {
+        "name": "Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Execute_100Seasons_RealMatchEngine_TacticalMatrix_And_Audit006_Deliverables",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\final-tests\\final_net10.0_20261030080045.trx"
+      },
+      {
+        "name": "Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.Benchmark_128_256_512_And_1024_Clubs_RealEngine_MeasurePerformance",
+        "outcome": "Passed",
+        "file": "docs\\audit-007\\final-tests\\final_net10.0_20261030080045.trx"
+      }
+    ]
+  },
+  "protectedOriginal005006Reports": true,
+  "limitations": [
+    "Individual non-card foul attribution absent from original engine",
+    "Historical stage counters unavailable before007",
+    "Live snapshot is not a complete career archive"
+  ]
+}

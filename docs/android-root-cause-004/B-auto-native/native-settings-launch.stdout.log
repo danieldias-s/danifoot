@@ -1,0 +1,7 @@
+Starting: Intent { act=android.settings.SETTINGS }
+Status: ok
+Activity: com.android.settings/.Settings
+ThisTime: 5020
+TotalTime: 5020
+WaitTime: 5609
+Complete

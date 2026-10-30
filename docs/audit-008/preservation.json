@@ -1,0 +1,133 @@
+{
+  "BaselineFiles": 70,
+  "ProtectedFiles": [
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "SHA256": "C4A053C673F0044D89C035DC323103F6CB760DC6594C74FF7902549FCD07DF9B",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "SHA256": "5698CB369DDDF96FB9B766A19B78775891EF8659472AA91B0DC75FD964565C10",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "SHA256": "2A55EB81CDB21A3D2EE39E73E56BFEA217D988B19941114404CBB6050E7BE321",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "SHA256": "62DBAFFB4FF05F860E1603012D7954F914A709939455149146EE17D104F16D3C",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "SHA256": "D56D46D1162FECDD4602DA942DE2F265FE527F1EFFA75BCC21A2B17A21F57067",
+      "Unchanged": true
+    }
+  ],
+  "ProtectedSections": [
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Section": "public class Player",
+      "SHA256Normalized": "FE7BF628C020F17FA5F4FBA3F325ADF45DBCC79898B9F9F8417C23727065B188",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Section": "public class Stadium",
+      "SHA256Normalized": "C655CA0C5CD411F6CBEA37FD0CAEAD6E4359FE51888E94BC86C02740C0562FEB",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Section": "private static void AwardDivisionPlacementQuotas",
+      "SHA256Normalized": "DBAA95BBBA2FB14666C4D4C360E0B969B0541F3A1F868493CD48514BB25881BA",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Section": "private static void EvolvePlayersAtSeasonEnd",
+      "SHA256Normalized": "03E2B8794D26E19A45E17111FB52826BEDCDFB188291BFF29820A091803DE76D",
+      "Unchanged": true
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Section": "app.MapGet(\"/api/worlds/{worldId:guid}/top-scorers\"",
+      "SHA256Normalized": "E56284C092D6FBAC2F00EE64F2C4200A5CE54D757A8CC0980D8C4AEB4DDFC9AB",
+      "Unchanged": true
+    }
+  ],
+  "ExistingFilesChanged": [
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "SHA256": "85F8CB81AB8013276EF69EC545B63619E03883A383C212F78F89726C110CDD99",
+      "CurrentSHA256": "12B6F93063A745621F7BE4FA451FCA2898EB79AE3A19C19B964E0AEED93F8E78"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "SHA256": "2FA545D86C7D9DCD2A362E07889731098DBA14CC9F52CBD194494A5D526E4C2E",
+      "CurrentSHA256": "E9EC877263DA96C99179A8914F0C4753666CE864E142EE5B313714609B9A7878"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "SHA256": "8BDF39B9057B510F6B3E54C629CD5EDE38F52AA7F4D65F239D75F3123C51AE26",
+      "CurrentSHA256": "7F4209954A815CB235F723EA28F0BBA935ABB2F6112E4641C306044A4B96CC32"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "SHA256": "5A7A5350C6E6001B2EF5E06D394836642E9053D343E627A2412E97AE3180DC0A",
+      "CurrentSHA256": "34BA97074B718111340AC91EF98A080B198B5F1B9A4D9754CC5626106837EA52"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "SHA256": "FD7083A4BD70D3C9FF4E8986F064B6253A9297D8941CFA9344B8669842FC3D2A",
+      "CurrentSHA256": "C66D717DFCDC0ECA7EBB3C6A03FBA39580490CE418AF86588CBD4DCB94A0BB2C"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "SHA256": "C30B684836786E3D62C1004677AF0EA54A978748745C5F153410168F160BF32A",
+      "CurrentSHA256": "FF00443709D28939BAB4FC552B058480C0775C81234FCC04D51C6F1270653C5B"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "SHA256": "8FF3C539273F789E1B1F7A5DDD1BFEEF1A4388EDE2A571EF73C374F58619CB6E",
+      "CurrentSHA256": "81E1C8E72DBF6A1068AED9215759F8C5A95FC131432823C187A086B1C7AB85A0"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "SHA256": "D42E2E306B0E90040C62CA427FAA8844381D627D743256A921D1E963BC61210C",
+      "CurrentSHA256": "C5E356F3884A514240A68855020DC6AAE27C5DB788007E40A738FA55964E12AD"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "SHA256": "58F5539E74FADFAF4D7905225238303FFEC9026C2BF84C184B1C23B1CE277931",
+      "CurrentSHA256": "2AA504A4838A42FD8CFF077069A4CB5C42D92FDFCA4FFF927365FA22996D325E"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "SHA256": "9259DD46D639806817BF6BAB6F782FF6F0513965A86DE53DC3DE7BEE5204B116",
+      "CurrentSHA256": "25FC9E7A2154079A6E266205A62F433DAF75FB5ED2A2D13A97C136AC1BBA295B"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "SHA256": "DF1246D05C1812D1DDC3169BF8972BC3407772137A9D11377646BA9B55CD2A28",
+      "CurrentSHA256": "B3F4BED000AAFABF9C96B02FA4FA52EF85686D69F362C627C07308B753B4B656"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "SHA256": "34BD5F6DF67999846E218DC68B1FFCF1AA0FC3ADA31EC91B09B94BE0FE522B34",
+      "CurrentSHA256": "02E55F4B31B54FC397718C43E4E9FC3EF236ECD90B1B267EAC078A361E02F26B"
+    }
+  ],
+  "NewSourceTestAndReportFiles": [
+    "src/Elifoot.Domain/CoachCareerEngine.cs",
+    "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs",
+    "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs",
+    "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+    "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs",
+    "client/elifoot_flutter/test/career_api_test.dart",
+    "scripts/report-coach-career-008.mjs"
+  ]
+}

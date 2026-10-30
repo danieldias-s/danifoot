@@ -1,0 +1,82 @@
+--------- beginning of main
+10-29 21:38:15.341  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.466  1295  3549 D         : HostConnection::get() New Host Connection established 0xf10e6400, tid 3549
+10-29 21:38:15.477  1636  1658 W art     : Long monitor contention with owner android.ui (1652) at void com.android.server.wm.WindowManagerService.removeWindow(com.android.server.wm.Session, android.view.IWindow)(WindowManagerService.java:2392) waiters=0 in void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message) for 1.121s
+--------- beginning of system
+10-29 21:38:15.497  1636  1647 W InputMethodManagerService: Window already focused, ignoring focus gain of: com.android.internal.view.IInputMethodClient$Stub$Proxy@1fe76fb attribute=null, token = android.os.BinderProxy@d1721af
+10-29 21:38:15.604  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.619  1285  1285 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 1536000
+10-29 21:38:15.631  1636  1652 I Choreographer: Skipped 98 frames!  The application may be doing too much work on its main thread.
+10-29 21:38:15.736  1295  1295 D         : HostConnection::get() New Host Connection established 0xf0c74e80, tid 1295
+10-29 21:38:15.745  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.761  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.784  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.800  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.814  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.851  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.864  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.887  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.904  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.941  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.953  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:15.961  1636  1658 W AppOps  : Finishing op nesting under-run: uid 1000 pkg android code 24 time=0 duration=0 nesting=0
+10-29 21:38:16.016  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:16.034  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:16.066  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:16.080  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:38:27.753  3541  3541 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+10-29 21:38:28.042  3541  3541 D AndroidRuntime: CheckJNI is OFF
+10-29 21:38:31.564  3541  3541 W art     : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:38:31.829  3541  3541 D ICU     : No timezone override file found: /data/misc/zoneinfo/current/icu/icu_tzdata.dat
+10-29 21:38:34.151  3541  3541 E memtrack: Couldn't load memtrack module (No such file or directory)
+10-29 21:38:34.152  3541  3541 E android.os.Debug: failed to load memtrack module: -2
+10-29 21:38:34.199  3541  3541 I Radio-JNI: register_android_hardware_Radio DONE
+10-29 21:38:35.116  3541  3541 D AndroidRuntime: Calling main entry com.genymobile.scrcpy.CleanUp
+10-29 21:38:35.713  3562  3562 E asset   : setgid: Operation not permitted
+10-29 21:39:00.518  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:00.534  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:00.787  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:00.809  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:00.984  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:00.996  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:01.101  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:01.113  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:39:29.972  1636  1666 W PackageParser: Unknown element under <manifest>: queries at /data/app/vmdl1640965634.tmp/base.apk Binary XML file line #23
+10-29 21:39:30.089  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.extensions; ignoring!
+10-29 21:39:30.089  1636  1666 W PackageManager: Package com.example.elifoot_flutter desires unavailable shared library androidx.window.sidecar; ignoring!
+10-29 21:39:30.255  1636  1666 I PackageManager.DexOptimizer: Running dexopt (dex2oat) on: /data/app/vmdl1640965634.tmp/base.apk pkg=com.example.elifoot_flutter isa=x86_64 vmSafeMode=false debuggable=true target-filter=interpret-only oatDir = /data/app/vmdl1640965634.tmp/oat sharedLibraries=null
+10-29 21:39:32.661  3570  3570 W dex2oat : Unexpected CPU variant for X86 using defaults: x86_64
+10-29 21:39:32.684  3570  3570 I dex2oat : /system/bin/dex2oat --compiler-filter=interpret-only --debuggable
+10-29 21:39:39.315  3570  3570 W dex2oat : Before Android 4.1, method int androidx.appcompat.widget.DropDownListView.lookForSelectablePosition(int, boolean) would have incorrectly overridden the package-private method in android.widget.ListView
+10-29 21:39:39.397  3570  3570 W dex2oat : Before Android 4.1, method int androidx.appcompat.widget.MenuPopupWindow$MenuDropDownListView.lookForSelectablePosition(int, boolean) would have incorrectly overridden the package-private method in android.widget.ListView
+10-29 21:39:40.951  3570  3570 W dex2oat : Before Android 4.1, method android.graphics.PorterDuffColorFilter androidx.vectordrawable.graphics.drawable.VectorDrawableCompat.updateTintFilter(android.graphics.PorterDuffColorFilter, android.content.res.ColorStateList, android.graphics.PorterDuff$Mode) would have incorrectly overridden the package-private method in android.graphics.drawable.Drawable
+10-29 21:39:56.467  3570  3570 W dex2oat : Verification of void androidx.test.espresso.action.AdapterViewProtocols$StandardAdapterViewProtocol.makeDataRenderedWithinAdapterView(android.widget.AdapterView, androidx.test.espresso.action.AdapterViewProtocol$AdaptedData) took 800.473ms
+10-29 21:39:57.652  3570  3570 W dex2oat : Verification of boolean androidx.test.espresso.matcher.PreferenceMatchers$1.matchesSafely(android.preference.Preference) took 280.294ms
+10-29 21:39:58.452  3570  3570 W dex2oat : Verification of java.io.BufferedReader androidx.test.internal.runner.RunnerArgs$Builder.openFile(android.app.Instrumentation, java.lang.String) took 557.056ms
+10-29 21:40:00.101  3570  3570 W dex2oat : Verification of boolean androidx.window.embedding.EmbeddingCompat.isActivityEmbedded(android.app.Activity) took 100.565ms
+10-29 21:40:00.165  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.179  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.317  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.334  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.466  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.477  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.515  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.533  1285  1285 D EGL_emulation: eglMakeCurrent: 0x771359e42140: ver 2 0 (tinfo 0x771359e5f060)
+10-29 21:40:00.850  3570  3570 W dex2oat : Verification of void androidx.window.embedding.EmbeddingCompat.setRules(java.util.Set) took 745.489ms
+10-29 21:40:01.545  3570  3570 W dex2oat : Verification of boolean androidx.window.embedding.ExtensionEmbeddingBackend$RuleTracker.contains(androidx.window.embedding.EmbeddingRule) took 685.600ms
+10-29 21:40:01.996  3570  3570 W dex2oat : Verification of androidx.window.embedding.EmbeddingInterfaceCompat androidx.window.embedding.ExtensionEmbeddingBackend.getEmbeddingExtension() took 297.166ms
+10-29 21:40:02.133  3570  3570 W dex2oat : Verification of void androidx.window.embedding.ExtensionEmbeddingBackend.invalidateTopVisibleSplitAttributes() took 134.427ms
+10-29 21:40:02.371  3570  3570 W dex2oat : Verification of boolean androidx.window.embedding.MatcherUtils.wildcardMatch(java.lang.String, java.lang.String) took 232.678ms
+10-29 21:40:02.710  3570  3570 W dex2oat : Verification of boolean androidx.window.embedding.MatcherUtils.isActivityMatching$window_release(android.app.Activity, androidx.window.core.ActivityComponentInfo) took 336.266ms
+10-29 21:40:03.135  3570  3570 W dex2oat : Verification of android.content.ComponentName androidx.window.embedding.RuleParser.buildClassName(java.lang.String, java.lang.CharSequence) took 375.816ms
+10-29 21:40:03.479  3570  3570 W dex2oat : Verification of androidx.window.embedding.SplitPlaceholderRule androidx.window.embedding.RuleParser.parseSplitPlaceholderRule(android.content.Context, android.content.res.XmlResourceParser) took 319.125ms
+10-29 21:40:04.170  3570  3570 W dex2oat : Verification of java.lang.Boolean androidx.window.embedding.SafeActivityEmbeddingComponentProvider$isMethodSetEmbeddingRulesValid$1.invoke() took 680.722ms
+10-29 21:40:04.551  3570  3570 W dex2oat : Verification of androidx.window.extensions.embedding.ActivityEmbeddingComponent androidx.window.embedding.SafeActivityEmbeddingComponentProvider.getActivityEmbeddingComponent() took 372.863ms
+10-29 21:40:05.050  3570  3570 W dex2oat : Verification of void androidx.window.embedding.SplitController$Companion.<init>(kotlin.jvm.internal.DefaultConstructorMarker) took 391.606ms
+10-29 21:40:05.784  3570  3570 W dex2oat : Verification of int androidx.window.embedding.SplitPairFilter.hashCode() took 125.779ms
+10-29 21:40:06.117  3570  3570 W dex2oat : Verification of boolean androidx.window.embedding.SplitRule.checkParentBounds$window_release(float, android.graphics.Rect) took 229.592ms
+10-29 21:40:08.097  3570  3570 W dex2oat : Verification of java.math.BigInteger com.google.common.collect.DiscreteDomain$BigIntegerDomain.next(java.math.BigInteger) took 557.508ms
+10-29 21:40:09.274  3570  3570 W dex2oat : Verification of int com.google.common.collect.Lists$Partition.size() took 426.486ms
+10-29 21:40:12.123  3570  3570 W dex2oat : Verification of com.google.common.collect.ImmutableSet com.google.common.reflect.ClassPath$Scanner.getClassPathFromManifest(java.io.File, java.util.jar.Manifest) took 592.319ms
+10-29 21:40:13.178  3570  3570 W dex2oat : Verification of void com.google.common.util.concurrent.AtomicLongMap.removeAllZeros() took 689.293ms
+10-29 21:40:13.311  3570  3570 W dex2oat : Verification of int com.google.common.util.concurrent.AtomicLongMap.size() took 130.964ms

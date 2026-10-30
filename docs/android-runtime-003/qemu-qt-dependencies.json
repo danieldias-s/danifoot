@@ -1,0 +1,13 @@
+{
+  "file": "D:\\elifoot_98\\.tools\\android-sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64.exe",
+  "searchDirectories": [
+    "D:\\elifoot_98\\.tools\\android-sdk\\emulator\\qemu\\windows-x86_64",
+    "D:\\elifoot_98\\.tools\\android-sdk\\emulator",
+    "D:\\elifoot_98\\.tools\\android-sdk\\emulator\\lib64",
+    "D:\\elifoot_98\\.tools\\android-sdk\\emulator\\lib64\\qt\\lib",
+    "D:\\elifoot_98\\.tools\\android-sdk\\emulator\\lib64\\qt\\bin",
+    "C:/Windows/System32"
+  ],
+  "modulesInspected": 31,
+  "missing": []
+}

@@ -1,0 +1,50 @@
+﻿[
+    {
+        "Path":  "client\\elifoot_flutter\\lib\\player_rankings.dart",
+        "Sha256":  "2619BC90D615E7EF144B6F844A2D6BA72563E2A3E2C2907D01A397B2C4513064"
+    },
+    {
+        "Path":  "client\\elifoot_flutter\\lib\\main.dart",
+        "Sha256":  "B5DC5F8C00B17869367CBA954314AA2C2F903F83CFE22AC8AEC106BF2C7600F7"
+    },
+    {
+        "Path":  "client\\elifoot_flutter\\test\\player_rankings_widget_test.dart",
+        "Sha256":  "CFDF2D7B359D4811F6D1624213EC5F106E8A919569002BB1CDAE8E9121AA4610"
+    },
+    {
+        "Path":  "client\\elifoot_flutter\\test\\player_rankings_api_test.dart",
+        "Sha256":  "BEC8598C76616D371AADE99C227C7BE1B49EBA70608E0B05F7C88CBEB207C5CD"
+    },
+    {
+        "Path":  "client\\elifoot_flutter\\tool\\qa\\player_rankings_live_009_test.dart",
+        "Sha256":  "7D36ABABB26D06E6581BB2837692A5E73A0ED852F29E01456D17D96B1B936CE4"
+    },
+    {
+        "Path":  "src\\Elifoot.Contracts\\PlayerRankingsDtos.cs",
+        "Sha256":  "0917BBE7FE0FE6D736A8A9971A4945A32391DB22E1FA19AE85F5AB4DD721E191"
+    },
+    {
+        "Path":  "src\\Elifoot.Domain\\PlayerStatisticsEntities.cs",
+        "Sha256":  "0330B4CABF239BF31860442F71107C330AB7A1FCABF1550A8FB32BAD13CE9A70"
+    },
+    {
+        "Path":  "src\\Elifoot.Domain\\PlayerStatisticsEngine.cs",
+        "Sha256":  "BD37640003A1AEC256D86C5B83E9FA4341FBE158C5E099EA32FBF5EC89978CE7"
+    },
+    {
+        "Path":  "tests\\Elifoot.Domain.Tests\\PlayerRankings009Tests.cs",
+        "Sha256":  "B22F7E119B79FF9CC0D997F79F3DB97D8DD729F96C9737A867F50F9BE7141A34"
+    },
+    {
+        "Path":  "tests\\Elifoot.Integration.Tests\\PlayerRankings009IntegrationTests.cs",
+        "Sha256":  "1AD7DCA9FE51071D5021E4063CAD9943F285D108811241A047668B38AE1C9C94"
+    },
+    {
+        "Path":  "docs\\PLAYER_RANKINGS_RECOVERY_009.md",
+        "Sha256":  "05D8D6646091B69A0799366645C7FF95B4AE866BC60ED0F0E83B7CE81A059F1C"
+    },
+    {
+        "Path":  "docs\\PLAYER_RANKINGS_LOCAL_VALIDATION_009.md",
+        "Sha256":  "56F8C0CAC26EE6B200AC817EA09F49AABBF17EC5F7EC8F174FE0B2A7B55A6B0A"
+    }
+]

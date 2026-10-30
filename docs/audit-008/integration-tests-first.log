@@ -1,0 +1,116 @@
+  Elifoot.Contracts -> D:\elifoot_98\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:02.44]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter [FAIL]
+[xUnit.net 00:00:02.91]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected [FAIL]
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter [1 s]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 77
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 83
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected [479 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 51
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 62
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.30]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True) [FAIL]
+[xUnit.net 00:00:03.74]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False) [FAIL]
+[xUnit.net 00:00:04.26]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20) [FAIL]
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True) [384 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(Boolean accept) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 36
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(Boolean accept) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 45
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False) [439 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(Boolean accept) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 36
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(Boolean accept) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 45
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20) [510 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(Int32 morale) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 68
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(Int32 morale) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 71
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:04.68]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50) [FAIL]
+[xUnit.net 00:00:05.13]     Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture [FAIL]
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50) [427 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(Int32 morale) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 68
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(Int32 morale) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 71
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture [443 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Cannot resolve scoped service 'Elifoot.Application.MultiplayerRoundOrchestrator' from root provider.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.Prepare(WebApplicationFactory`1 f, HttpClient client) in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 25
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 89
+   at Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture() in D:\elifoot_98\tests\Elifoot.Integration.Tests\CoachCareer008IntegrationTests.cs:line 104
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98\docs\audit-008\integration-tests\career-integration.trx
+
+Com falha! – Com falha:     7, Aprovado:     0, Ignorado:     0, Total:     7, Duração: 4 s - Elifoot.Integration.Tests.dll (net10.0)

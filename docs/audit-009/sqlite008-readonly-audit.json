@@ -1,0 +1,92 @@
+{
+  "auditedAtUtc": "2026-10-30T12:46:51.042Z",
+  "sourceDatabase": "D:\\elifoot_98\\artifacts\\coach-career-008\\browser-30d84bd2309f4d30801707c6655a1afe.db",
+  "sourceOpenedReadOnly": true,
+  "integrity": [
+    {
+      "quick_check": "ok"
+    }
+  ],
+  "tables": [
+    {
+      "name": "ef_club_summaries",
+      "sql": "CREATE TABLE \"ef_club_summaries\" (\r\n    \"Id\" TEXT NOT NULL,\r\n    \"GameWorldId\" TEXT NOT NULL,\r\n    \"Name\" TEXT NOT NULL,\r\n    \"DivisionTier\" INTEGER NOT NULL,\r\n    \"CashBalance\" TEXT NOT NULL,\r\n    \"LeaguePoints\" INTEGER NOT NULL,\r\n    \"BuiltCapacity\" INTEGER NOT NULL,\r\n    \"UsableCapacity\" INTEGER NOT NULL,\r\n    \"ConditionPercent\" REAL NOT NULL,\r\n    CONSTRAINT \"PK_ef_club_summaries\" PRIMARY KEY (\"GameWorldId\", \"Id\")\r\n)"
+    },
+    {
+      "name": "ef_financial_ledger",
+      "sql": "CREATE TABLE \"ef_financial_ledger\" (\r\n    \"Id\" TEXT NOT NULL CONSTRAINT \"PK_ef_financial_ledger\" PRIMARY KEY,\r\n    \"GameWorldId\" TEXT NOT NULL,\r\n    \"ClubId\" TEXT NOT NULL,\r\n    \"SeasonNumber\" INTEGER NOT NULL,\r\n    \"RoundNumber\" INTEGER NOT NULL,\r\n    \"Category\" INTEGER NOT NULL,\r\n    \"Amount\" TEXT NOT NULL,\r\n    \"BalanceAfter\" TEXT NOT NULL,\r\n    \"Description\" TEXT NOT NULL,\r\n    \"IdempotencyKey\" TEXT NOT NULL,\r\n    \"CreatedAtUtc\" TEXT NOT NULL\r\n)"
+    },
+    {
+      "name": "ef_season_histories",
+      "sql": "CREATE TABLE \"ef_season_histories\" (\r\n    \"Id\" TEXT NOT NULL CONSTRAINT \"PK_ef_season_histories\" PRIMARY KEY,\r\n    \"GameWorldId\" TEXT NOT NULL,\r\n    \"SeasonNumber\" INTEGER NOT NULL,\r\n    \"FirstDivisionChampionClubId\" TEXT NOT NULL,\r\n    \"FirstDivisionChampionName\" TEXT NOT NULL,\r\n    \"CupChampionClubId\" TEXT NOT NULL,\r\n    \"CupChampionName\" TEXT NOT NULL,\r\n    \"TopScorerPlayerName\" TEXT NOT NULL,\r\n    \"TopScorerGoals\" INTEGER NOT NULL\r\n)"
+    },
+    {
+      "name": "ef_worlds",
+      "sql": "CREATE TABLE \"ef_worlds\" (\r\n    \"Id\" TEXT NOT NULL CONSTRAINT \"PK_ef_worlds\" PRIMARY KEY,\r\n    \"Name\" TEXT NOT NULL,\r\n    \"InviteCode\" TEXT NOT NULL,\r\n    \"Seed\" INTEGER NOT NULL,\r\n    \"TotalClubs\" INTEGER NOT NULL,\r\n    \"SeasonNumber\" INTEGER NOT NULL,\r\n    \"RoundNumber\" INTEGER NOT NULL,\r\n    \"RoundState\" INTEGER NOT NULL,\r\n    \"RoundVersion\" INTEGER NOT NULL,\r\n    \"CurrentMatchMinute\" INTEGER NOT NULL,\r\n    \"SnapshotJson\" TEXT NOT NULL,\r\n    \"CreatedAtUtc\" TEXT NOT NULL,\r\n    \"UpdatedAtUtc\" TEXT NOT NULL\r\n)"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_ef_club_summaries_GameWorldId_DivisionTier",
+      "tbl_name": "ef_club_summaries",
+      "sql": "CREATE INDEX \"IX_ef_club_summaries_GameWorldId_DivisionTier\" ON \"ef_club_summaries\" (\"GameWorldId\", \"DivisionTier\")"
+    },
+    {
+      "name": "IX_ef_financial_ledger_GameWorldId_ClubId_IdempotencyKey",
+      "tbl_name": "ef_financial_ledger",
+      "sql": "CREATE UNIQUE INDEX \"IX_ef_financial_ledger_GameWorldId_ClubId_IdempotencyKey\" ON \"ef_financial_ledger\" (\"GameWorldId\", \"ClubId\", \"IdempotencyKey\")"
+    },
+    {
+      "name": "IX_ef_financial_ledger_GameWorldId_SeasonNumber_RoundNumber",
+      "tbl_name": "ef_financial_ledger",
+      "sql": "CREATE INDEX \"IX_ef_financial_ledger_GameWorldId_SeasonNumber_RoundNumber\" ON \"ef_financial_ledger\" (\"GameWorldId\", \"SeasonNumber\", \"RoundNumber\")"
+    },
+    {
+      "name": "IX_ef_season_histories_GameWorldId_SeasonNumber",
+      "tbl_name": "ef_season_histories",
+      "sql": "CREATE UNIQUE INDEX \"IX_ef_season_histories_GameWorldId_SeasonNumber\" ON \"ef_season_histories\" (\"GameWorldId\", \"SeasonNumber\")"
+    },
+    {
+      "name": "IX_ef_worlds_InviteCode",
+      "tbl_name": "ef_worlds",
+      "sql": "CREATE UNIQUE INDEX \"IX_ef_worlds_InviteCode\" ON \"ef_worlds\" (\"InviteCode\")"
+    },
+    {
+      "name": "sqlite_autoindex_ef_club_summaries_1",
+      "tbl_name": "ef_club_summaries",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_ef_financial_ledger_1",
+      "tbl_name": "ef_financial_ledger",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_ef_season_histories_1",
+      "tbl_name": "ef_season_histories",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_ef_worlds_1",
+      "tbl_name": "ef_worlds",
+      "sql": null
+    }
+  ],
+  "worlds": [
+    {
+      "worldId": "7B285600-16F3-4707-867E-61B13BE7AF86",
+      "snapshotSha256": "3f078a046f2fb6680f402250780a5e046f27d69975c03a51aa3840c33b754408",
+      "bytes": 2913503,
+      "careerRulesVersion": 8,
+      "season": 1,
+      "clubs": 128,
+      "players": 2308,
+      "matches": 256,
+      "finishedMatches": 16,
+      "humanCoaches": 1,
+      "coachTitles": 0,
+      "transactions": 356,
+      "playerStatisticsVersion": null
+    }
+  ]
+}

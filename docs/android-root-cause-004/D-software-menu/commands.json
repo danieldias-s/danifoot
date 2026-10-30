@@ -1,0 +1,224 @@
+[
+  {
+    "name": "boot-check",
+    "args": [
+      "exec-out",
+      "getprop",
+      "sys.boot_completed"
+    ],
+    "startedAt": "2026-10-29T23:25:53.010Z",
+    "milliseconds": 4952,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "pre-processes",
+    "args": [
+      "exec-out",
+      "ps"
+    ],
+    "startedAt": "2026-10-29T23:25:57.966Z",
+    "milliseconds": 11738,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "stop-reference",
+    "args": [
+      "exec-out",
+      "am",
+      "force-stop",
+      "dev.elifoot.qa.android_reference"
+    ],
+    "startedAt": "2026-10-29T23:26:09.705Z",
+    "milliseconds": 11346,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "stop-settings",
+    "args": [
+      "exec-out",
+      "am",
+      "force-stop",
+      "com.android.settings"
+    ],
+    "startedAt": "2026-10-29T23:26:21.052Z",
+    "milliseconds": 11613,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "push",
+    "args": [
+      "push",
+      "D:\\elifoot_98\\artifacts\\android\\elifoot-qa004-profile-x64.apk",
+      "/data/local/tmp/qa004-test.apk"
+    ],
+    "startedAt": "2026-10-29T23:26:32.666Z",
+    "milliseconds": 2975,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "install",
+    "args": [
+      "exec-out",
+      "pm",
+      "install",
+      "-r",
+      "/data/local/tmp/qa004-test.apk"
+    ],
+    "startedAt": "2026-10-29T23:26:35.642Z",
+    "milliseconds": 150024,
+    "code": null,
+    "signal": "SIGTERM",
+    "timedOut": true,
+    "accepted": false
+  },
+  {
+    "name": "post-processes",
+    "args": [
+      "exec-out",
+      "ps"
+    ],
+    "startedAt": "2026-10-29T23:29:35.670Z",
+    "milliseconds": 1115,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "post-service",
+    "args": [
+      "exec-out",
+      "service",
+      "check",
+      "activity"
+    ],
+    "startedAt": "2026-10-29T23:29:36.786Z",
+    "milliseconds": 419,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "logcat",
+    "args": [
+      "logcat",
+      "-b",
+      "all",
+      "-d",
+      "-t",
+      "1500",
+      "-v",
+      "threadtime"
+    ],
+    "startedAt": "2026-10-29T23:29:37.206Z",
+    "milliseconds": 5163,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": false
+  },
+  {
+    "name": "lastanr",
+    "args": [
+      "exec-out",
+      "dumpsys",
+      "activity",
+      "lastanr"
+    ],
+    "startedAt": "2026-10-29T23:29:42.371Z",
+    "milliseconds": 493,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": false
+  },
+  {
+    "name": "activity-full",
+    "args": [
+      "exec-out",
+      "dumpsys",
+      "activity"
+    ],
+    "startedAt": "2026-10-29T23:29:42.865Z",
+    "milliseconds": 730,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "dropbox-anr",
+    "args": [
+      "exec-out",
+      "dumpsys",
+      "dropbox",
+      "--print",
+      "system_app_anr"
+    ],
+    "startedAt": "2026-10-29T23:29:43.596Z",
+    "milliseconds": 512,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "anr-traces",
+    "args": [
+      "exec-out",
+      "cat",
+      "/data/anr/traces.txt"
+    ],
+    "startedAt": "2026-10-29T23:29:44.109Z",
+    "milliseconds": 223,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "screen",
+    "args": [
+      "exec-out",
+      "screencap",
+      "-p",
+      "/data/local/tmp/qa004-case.png"
+    ],
+    "startedAt": "2026-10-29T23:29:44.333Z",
+    "milliseconds": 1602,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  },
+  {
+    "name": "screen-pull",
+    "args": [
+      "pull",
+      "/data/local/tmp/qa004-case.png",
+      "D:\\elifoot_98\\docs\\android-root-cause-004\\D-software-menu\\screen.png"
+    ],
+    "startedAt": "2026-10-29T23:29:45.936Z",
+    "milliseconds": 102,
+    "code": 0,
+    "signal": null,
+    "timedOut": false,
+    "accepted": true
+  }
+]

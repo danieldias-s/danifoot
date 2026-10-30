@@ -1,0 +1,32 @@
+{
+  "Time": "2026-10-29T20:22:14.0493522-03:00",
+  "Volume": {
+    "DeviceID": "D:",
+    "FileSystem": "NTFS",
+    "Size": 255352369152,
+    "FreeSpace": 137731215360
+  },
+  "Disks": [
+    {
+      "Model": "SSD",
+      "InterfaceType": "IDE",
+      "Size": 256052966400,
+      "Status": "OK"
+    },
+    {
+      "Model": "CUSU CV3500Q 256GB",
+      "InterfaceType": "SCSI",
+      "Size": 256052966400,
+      "Status": "OK"
+    }
+  ],
+  "DiskPerformance": {
+    "Name": "D:",
+    "PercentDiskTime": 0,
+    "CurrentDiskQueueLength": 2,
+    "DiskReadBytesPersec": 0,
+    "DiskWriteBytesPersec": 0,
+    "AvgDisksecPerRead": 0,
+    "AvgDisksecPerWrite": 0
+  }
+}

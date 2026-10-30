@@ -1,0 +1,15 @@
+{
+  "RecordedAt": "2026-10-29T18:48:02.5228866-03:00",
+  "HypervisorPresent": false,
+  "Cpu": {
+    "Name": "Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+    "VirtualizationFirmwareEnabled": true,
+    "SecondLevelAddressTranslationExtensions": true
+  },
+  "WindowsAdministrator": false,
+  "Adb": "D:\\elifoot_98\\.tools\\android-sdk\\platform-tools\\adb.exe",
+  "Api": "http://127.0.0.1:5080",
+  "Web": "http://127.0.0.1:8083",
+  "RuntimeEmulator": "32.1.15",
+  "InstalledEmulator": "37.2.13"
+}

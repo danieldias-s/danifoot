@@ -1,0 +1,33 @@
+Load: 17.9 / 6.45 / 2.49
+CPU usage from 22394ms to 16846ms ago (2026-10-29 22:58:42.729 to 2026-10-29 22:58:48.277):
+  32% 1647/system_server: 22% user + 10% kernel / faults: 3431 minor 1 major
+  22% 1938/com.android.phone: 16% user + 5.5% kernel / faults: 3646 minor 18 major
+  18% 2174/com.android.launcher3: 14% user + 3.7% kernel / faults: 5256 minor 2 major
+  7.1% 1285/surfaceflinger: 3.5% user + 3.5% kernel / faults: 26 minor
+  3% 1284/servicemanager: 0.8% user + 2.2% kernel
+  2.2% 1817/com.android.systemui: 1.7% user + 0.4% kernel / faults: 130 minor 1 major
+  1.5% 1303/rild: 0.7% user + 0.7% kernel / faults: 9 minor
+  1.3% 8/rcu_preempt: 0% user + 1.3% kernel
+  1% 2212/com.android.launcher3:wallpaper_chooser: 0.9% user + 0% kernel / faults: 849 minor
+  0.6% 1970/com.android.settings: 0.5% user + 0% kernel / faults: 468 minor
+  0.6% 1769/com.android.inputmethod.latin: 0.5% user + 0% kernel / faults: 54 minor 1 major
+  0.5% 2088/com.android.deskclock: 0.3% user + 0.1% kernel / faults: 827 minor 17 major
+  0.4% 1287/adbd: 0.2% user + 0.2% kernel / faults: 142 minor
+  0.4% 1288/zygote64: 0% user + 0.4% kernel / faults: 288 minor
+  0.3% 1157/kworker/0:1H: 0% user + 0.3% kernel
+  0.3% 1231/jbd2/vdc-8: 0% user + 0.3% kernel
+  0.2% 1//init: 0.1% user + 0.1% kernel
+  0.1% 3/ksoftirqd/0: 0% user + 0.1% kernel
+  0.2% 2121/com.android.providers.calendar: 0.1% user + 0% kernel / faults: 68 minor
+  0% 6/kworker/u2:0: 0% user + 0% kernel
+  0% 1302/netd: 0% user + 0% kernel / faults: 15 minor
+  0% 1234/logd: 0% user + 0% kernel / faults: 1 minor
+  0% 1305/fingerprintd: 0% user + 0% kernel
+  0% 1375/kworker/0:2: 0% user + 0% kernel
+  0% 1760/wpa_supplicant: 0% user + 0% kernel
+  0% 2073/android.ext.services: 0% user + 0% kernel
+ +0% 2259/sh: 0% user + 0% kernel
+ +0% 2261/dumpsys: 0% user + 0% kernel
+ +0% 2283/com.android.carrierconfig: 0% user + 0% kernel
+ +0% 2296/iptables: 0% user + 0% kernel
+100% TOTAL: 68% user + 31% kernel + 0.3% softirq
