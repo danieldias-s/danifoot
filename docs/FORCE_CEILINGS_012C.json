@@ -1,0 +1,65 @@
+{
+  "Rule": "CLASSIC_ADAPTED_FORCE_EVOLUTION",
+  "Version": 1,
+  "HistoricalExactnessClaim": false,
+  "StrengthRange": [
+    1,
+    50
+  ],
+  "GrowthOnly": true,
+  "ProvisionalLeaguePosition": 4,
+  "Positions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "Divisions": {
+    "PrimeiraDivisao": [
+      50,
+      50,
+      50,
+      49,
+      48,
+      47,
+      46,
+      44
+    ],
+    "SegundaDivisao": [
+      44,
+      42,
+      42,
+      39,
+      37,
+      34,
+      31,
+      28
+    ],
+    "TerceiraDivisao": [
+      28,
+      26,
+      26,
+      23,
+      21,
+      18,
+      15,
+      12
+    ],
+    "QuartaDivisao": [
+      12,
+      10,
+      10,
+      8,
+      6,
+      4,
+      2,
+      1
+    ]
+  },
+  "DistrictPolicy": "No league fixture and no reserve growth; cup never grows strength",
+  "ExistingSaves": "LegacySeasonal unless explicitly activated in a validated new world"
+}

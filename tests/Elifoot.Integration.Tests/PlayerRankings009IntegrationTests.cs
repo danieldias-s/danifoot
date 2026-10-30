@@ -27,7 +27,7 @@ public sealed class PlayerRankings009Collection;
 public sealed class PlayerRankings009IntegrationTests(ITestOutputHelper output)
 {
     private static readonly string Root = FindRoot();
-    private static readonly string Audit = Path.Combine(Root, "docs", "audit-009");
+    private static readonly string Audit = Environment.GetEnvironmentVariable("ELIFOOT_AUDIT_OUTPUT") ?? Path.Combine(Root, "docs", "audit-009");
     private static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web);
 
     [Fact]

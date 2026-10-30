@@ -526,12 +526,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return next;
   }
 
+  int get _requiredStarterCount => (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
+
+  bool get _isClassicIdleRound =>
+      _snapshot?['forceRulesVersion'] == 1 &&
+      _myClubId != null &&
+      !((_snapshot?['matches'] as List<dynamic>?) ?? []).any(
+        (m) => m['homeClubId']?.toString() == _myClubId ||
+            m['awayClubId']?.toString() == _myClubId,
+      );
+
   Future<void> _handleSendTacticsOrReady() async {
     if (_worldId == null || _coachId == null || _snapshot == null) return;
     final roundVersion = (_snapshot!['roundVersion'] as num?)?.toInt() ?? 1;
     try {
       Map<String, dynamic> res;
-      if (_isUnemployed || _myClubId == null) {
+      if (_isUnemployed || _myClubId == null || _isClassicIdleRound) {
         res = await widget.apiClient.submitUnemployedReady(
           worldId: _worldId!,
           coachId: _coachId!,
@@ -1032,12 +1042,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     key: const Key('btn-enviar-tatica'),
                     onPressed:
                         _commandBusy ||
-                            (!_isUnemployed &&
-                                _selectedStarterIds.length != 11)
+                            (!_isUnemployed && !_isClassicIdleRound &&
+                                (_requiredStarterCount < 1 || _selectedStarterIds.length != _requiredStarterCount))
                         ? null
                         : () => _runUiCommand(_handleSendTacticsOrReady),
                     child: Text(
-                      _isUnemployed
+                      _isUnemployed || _isClassicIdleRound
                           ? 'PRONTO PARA ACOMPANHAR'
                           : 'ENVIAR TÁTICA',
                     ),
@@ -1306,7 +1316,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final filteredSquad = squad.where((p) {
       final pid = p['id'].toString();
       final pos = _formatPosition(p['position']);
-      final inj = (p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0;
+      final inj = ((p['injuryDaysRemaining'] as num?)?.toInt() ?? 0) +
+          ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
       final susp = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
       final isStarter = _selectedStarterIds.contains(pid);
       final isBench = _selectedBenchIds.contains(pid);
@@ -1357,7 +1368,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final contract = p['contractRoundsRemaining'] ?? 10;
       final salary = (p['salaryPerRound'] as num?)?.toDouble() ?? 0;
       final fair = (p['fairValue'] as num?)?.toDouble() ?? 0;
-      final inj = (p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0;
+      final injuryDays = (p['injuryDaysRemaining'] as num?)?.toInt() ?? 0;
+      final inj = injuryDays + ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
       final susp = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
 
       final isStarter = _selectedStarterIds.contains(pid);
@@ -1368,7 +1380,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       String conditionLabel = 'APTO';
       if (inj > 0) {
         roleLabel = 'LES ($inj)';
-        conditionLabel = 'LESIONADO (${inj}r)';
+        conditionLabel = injuryDays > 0 ? 'LESIONADO ($injuryDays dias)' : 'LESIONADO (${inj}r)';
         roleColor = Colors.redAccent;
       } else if (susp > 0) {
         roleLabel = 'SUS ($susp)';
@@ -2334,7 +2346,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
-                  '${myMatch['homeClubName']} [${myMatch['homeFormation']}]',
+                  '${myMatch['homeClubName']} [${myMatch['homeFormation']}]${myMatch['homePlayersOnPitch'] == null ? '' : ' • ${myMatch['homePlayersOnPitch']} em campo'}',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -2360,7 +2372,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
                 Text(
-                  '${myMatch['awayClubName']} [${myMatch['awayFormation']}]',
+                  '${myMatch['awayClubName']} [${myMatch['awayFormation']}]${myMatch['awayPlayersOnPitch'] == null ? '' : ' • ${myMatch['awayPlayersOnPitch']} em campo'}',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,

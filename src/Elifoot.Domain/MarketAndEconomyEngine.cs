@@ -194,6 +194,7 @@ public static class MarketAndEconomyEngine
         GameWorld world,
         IReadOnlyList<MatchFixture> roundMatches)
     {
+        DisciplineEngine.SettleFinishedMatches(world,roundMatches);
         var clubDict = world.Clubs.ToDictionary(c => c.Id);
 
         // 1. Settle match gate for every finished match in this round
@@ -338,15 +339,6 @@ public static class MarketAndEconomyEngine
                 {
                     bool injuredToday = matchForClub.HomeInjuredInMatchIds.Contains(p.Id) || matchForClub.AwayInjuredInMatchIds.Contains(p.Id);
                     if (!injuredToday) p.InjuryRoundsRemaining--;
-                }
-
-                if (p.SuspensionRoundsRemaining > 0)
-                {
-                    bool suspendedToday = matchForClub.HomeSentOffIds.Contains(p.Id)
-                                          || matchForClub.AwaySentOffIds.Contains(p.Id)
-                                          || matchForClub.HomeSuspendedByYellowInMatchIds.Contains(p.Id)
-                                          || matchForClub.AwaySuspendedByYellowInMatchIds.Contains(p.Id);
-                    if (!suspendedToday) p.SuspensionRoundsRemaining--;
                 }
 
                 p.ContractRoundsRemaining--;

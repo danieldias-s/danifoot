@@ -43,6 +43,7 @@ public sealed class EfWorldRepository : IWorldRepository
         {
             CoachCareerEngine.EnsureMigrated(world);
             PlayerStatisticsEngine.EnsureMigrated(world);
+            DisciplineEngine.EnsureMigrated(world);
             MemoryCache[world.Id] = world;
         }
         return world;
@@ -75,6 +76,7 @@ public sealed class EfWorldRepository : IWorldRepository
         {
             CoachCareerEngine.EnsureMigrated(world);
             PlayerStatisticsEngine.EnsureMigrated(world);
+            DisciplineEngine.EnsureMigrated(world);
             MemoryCache[world.Id] = world;
         }
         return world;

@@ -337,6 +337,8 @@ extension _ShellActions on _ElifootShellScreenState {
                 ),
                 PlayerStatItem('MORAL', '$moraleVal/100 ($moraleBand)'),
                 PlayerStatItem('RODADA ATUAL', 'T$seasonNumber • R$roundNumber'),
+                if (snap?['gameDate'] != null)
+                  PlayerStatItem('DATA DO JOGO', formatClassicDate(snap!['gameDate'])),
                 PlayerStatItem(
                   'CONVITES',
                   '${invitations.length} disponível(is)',
@@ -514,9 +516,9 @@ extension _ShellActions on _ElifootShellScreenState {
     }
 
     final prepText = roundState == 'PREPARING'
-        ? (isReady
+        ? (_isClassicIdleRound ? 'SEM PARTIDA — PRONTO PARA ACOMPANHAR' : isReady
               ? 'TÁTICA ENVIADA (PRONTO)'
-              : (_selectedStarterIds.length == 11
+              : (_requiredStarterCount > 0 && _selectedStarterIds.length == _requiredStarterCount
                     ? 'ESCALADO (FALTA ENVIAR)'
                     : 'ESCALAÇÃO INCOMPLETA (${_selectedStarterIds.length}/11)'))
         : (roundState == 'RESULTS'
@@ -544,6 +546,10 @@ extension _ShellActions on _ElifootShellScreenState {
               PlayerStatItem('TREINADOR', _nickname),
               PlayerStatItem('CLUBE ATUAL', clubName, highlight: true),
               PlayerStatItem('DIVISÃO', divisionDisplay),
+              if (snap?['gameDate'] != null)
+                PlayerStatItem('DATA DO JOGO', formatClassicDate(snap!['gameDate'])),
+              if (_myClubDetail?['growthCeiling'] != null)
+                PlayerStatItem('TETO DE EVOLUÇÃO', '${_myClubDetail!['growthCeiling']}'),
               PlayerStatItem('POSIÇÃO', positionText, highlight: true),
               PlayerStatItem('PRÓXIMO ADVERSÁRIO', nextOpponentText),
               PlayerStatItem('PRÓXIMA PARTIDA', nextMatchText),
@@ -648,6 +654,7 @@ extension _ShellActions on _ElifootShellScreenState {
         .where(
           (p) =>
               (p['injuryRoundsRemaining'] ?? 0) == 0 &&
+              (p['injuryDaysRemaining'] ?? 0) == 0 &&
               (p['suspensionRoundsRemaining'] ?? 0) == 0,
         )
         .toList();
@@ -738,6 +745,7 @@ extension _ShellActions on _ElifootShellScreenState {
         .where(
           (p) =>
               ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0) > 0 ||
+              ((p['injuryDaysRemaining'] as num?)?.toInt() ?? 0) > 0 ||
               ((p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0) > 0,
         )
         .toList();
@@ -755,7 +763,7 @@ extension _ShellActions on _ElifootShellScreenState {
         .where((p) => _formatPosition(p['position']) == 'A')
         .toList();
 
-    final isComplete = starters.length == 11;
+    final isComplete = _requiredStarterCount > 0 && starters.length == _requiredStarterCount;
     final isSectorMatch =
         isComplete &&
         gStarters.length == 1 &&
@@ -864,6 +872,8 @@ extension _ShellActions on _ElifootShellScreenState {
             title: 'CAMPO TÁTICO CLÁSSICO — ESQUEMA $_selectedFormation',
             trailing: isSectorMatch
                 ? 'SETORES COMPATÍVEIS [OK]'
+                : isComplete && starters.length < 11
+                ? 'EM INFERIORIDADE (${starters.length}/11 APTOS)'
                 : isComplete
                 ? 'DESVIO SETORIAL (${gStarters.length}G-${dStarters.length}D-${mStarters.length}M-${aStarters.length}A)'
                 : 'ESCALAÇÃO INCOMPLETA (${starters.length}/11)',
@@ -977,8 +987,9 @@ extension _ShellActions on _ElifootShellScreenState {
             Text(
               'INDISPONÍVEIS (${unavailable.length}): ${unavailable.map((p) {
                 final inj = (p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0;
+                final days = (p['injuryDaysRemaining'] as num?)?.toInt() ?? 0;
                 final sus = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
-                return '${p['displayName']} (${inj > 0 ? "LES ${inj}r" : "SUS ${sus}r"})';
+                return '${p['displayName']} (${days > 0 ? "LES $days dias" : inj > 0 ? "LES ${inj}r" : "SUS ${sus}r"})';
               }).join(" | ")}',
               style: const TextStyle(fontSize: 11, color: Colors.orangeAccent),
             ),

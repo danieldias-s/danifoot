@@ -110,7 +110,7 @@ public class CoachCareer008IntegrationTests
         Assert.Equal(ids,loaded.JobInvitations.Where(i=>i.CoachId==h.Id).Select(i=>i.Id).ToArray());
         Assert.Equal(ranking,CompetitionAndSeasonEngine.GetClassicCoachRanking(loaded));Assert.Equal(12.5m,loaded.HumanCoaches.Single().CoachPoints);
         Assert.Equal(70,loaded.HumanCoaches.Single().Career.Morale);
-        var output=Path.Combine(root,"docs","audit-008");Directory.CreateDirectory(output);
+        var output=Environment.GetEnvironmentVariable("ELIFOOT_AUDIT_OUTPUT") ?? Path.Combine(root,"docs","audit-008");Directory.CreateDirectory(output);
         File.WriteAllText(Path.Combine(output,"browser-fixture.json"),JsonSerializer.Serialize(new{
             DatabasePath=database,WorldId=w.Id,CoachId=h.Id,Nickname=h.Nickname,DeviceId=h.DeviceId,
             InvitationIds=ids,Label="Private QA fixture with pre-existing career aggregates and two real pending invitations; not evidence that seeded titles were won in the browser."

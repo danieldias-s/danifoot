@@ -59,6 +59,7 @@ public static class CompetitionAndSeasonEngine
     /// </summary>
     public static void InitializeSeasonFixtures(GameWorld world)
     {
+        DisciplineEngine.EnsureMigrated(world);
         world.Fixtures.RemoveAll(f => f.SeasonNumber == world.SeasonNumber);
 
         var schedule = BuildSeasonRoundSchedule(world.TotalClubs);
@@ -134,6 +135,8 @@ public static class CompetitionAndSeasonEngine
 
         // Generate Cup Round 1 fixtures
         EnsureCupFixturesForRound(world, 1);
+        ClassicForceEvolutionEngine.InitializeSeason(world);
+        ClassicForceEvolutionEngine.PrepareRound(world);
     }
 
     private static List<List<(Club Home, Club Away)>> GenerateRoundRobin8(List<Club> teams)
@@ -303,7 +306,16 @@ public static class CompetitionAndSeasonEngine
         GameWorld world,
         IReadOnlyList<MatchFixture> roundMatches)
     {
+        if (ClassicForceEvolutionEngine.IsActive(world))
+        {
+            var official = world.Fixtures.Where(m => m.SeasonNumber == world.SeasonNumber && m.RoundNumber == world.RoundNumber).ToList();
+            if (official.Count == 0 || official.Any(m => !m.IsFinished)) return;
+            if (official.Any(m => m.CurrentMinute > 0 && (!m.StatisticsLineupCaptured || m.ForceRoster.Count == 0)))
+                throw new InvalidOperationException("Classic force requires captured kickoff lineups and rosters.");
+            roundMatches = official;
+        }
         CoachCareerEngine.EnsureMigrated(world);
+        DisciplineEngine.SettleFinishedMatches(world,roundMatches);
         PlayerStatisticsEngine.ApplyFinishedMatches(world, roundMatches);
         var clubDict = world.Clubs.ToDictionary(c => c.Id);
         bool updated = false;
@@ -367,6 +379,7 @@ public static class CompetitionAndSeasonEngine
             updated = true;
         }
 
+        ClassicForceEvolutionEngine.ApplyFinishedRound(world, roundMatches);
         if (!updated) return;
         CoachCareerEngine.AwardCompletedLeagues(world);
         CoachCareerEngine.RecoverUnemployed(world);
@@ -538,6 +551,11 @@ public static class CompetitionAndSeasonEngine
                 $"prize:pro_dist:{c.Id}:S{world.SeasonNumber}");
         }
 
+        // The table position from another division is no longer a valid growth reference,
+        // including injury history produced during the transition days before season initialization.
+        if (ClassicForceEvolutionEngine.IsActive(world))
+            foreach (var id in promotedIds.Concat(relegatedIds)) world.ClassicForce.CompletedLeaguePositions.Remove(id);
+
         // AI Manager evaluation & rotation for relegated/underperforming AI clubs
         foreach (var relegated in rel1.Concat(rel2).Concat(rel3).Concat(rel4))
             if (relegated.AiManagerId is Guid managerId && !relegated.HasProvisionalManager)
@@ -548,7 +566,7 @@ public static class CompetitionAndSeasonEngine
         foreach (var ai in world.AiManagers.Where(m => m.CurrentClubId != null)) ai.SeasonsManaged++;
 
         // Process seasonal player strength evolution & equilibrium
-        EvolvePlayersAtSeasonEnd(world, clubDict);
+        PlayerStrengthEvolutionEngine.ApplySeasonEnd(world);
 
         // Process seasonal stadium structural wear & AI stadium projects
         MarketAndEconomyEngine.ProcessSeasonalStadiumWearAndAiProjects(world);
@@ -583,6 +601,8 @@ public static class CompetitionAndSeasonEngine
         }
 
         // Advance to next season
+        if (ClassicForceEvolutionEngine.IsActive(world))
+            ClassicForceEvolutionEngine.AdvanceToDate(world, world.ClassicForce.GameDate.AddDays(21));
         world.SeasonNumber++;
         InitializeSeasonFixtures(world);
         GenerateJobInvitationsForUnemployedHumans(world);
@@ -611,56 +631,6 @@ public static class CompetitionAndSeasonEngine
             MarketAndEconomyEngine.TryRecordTransaction(world, club, FinancialTransactionCategory.PrizeMoney,
                 prize, $"Cota de classificação ({row.Position}º lugar na {club.DivisionTier} - T{world.SeasonNumber})",
                 $"prize:pos:{club.Id}:S{world.SeasonNumber}");
-        }
-    }
-
-    private static void EvolvePlayersAtSeasonEnd(GameWorld world, Dictionary<Guid, Club> clubDict)
-    {
-        for (int i = 0; i < world.Players.Count; i++)
-        {
-            var p = world.Players[i];
-            Club? club = p.ClubId != null ? clubDict.GetValueOrDefault(p.ClubId.Value) : null;
-            var rng = DeterministicRng.FromContext(world.Seed, world.SeasonNumber, 100, i + 1, p.Strength, 888);
-
-            int targetMean = club?.DivisionTier switch
-            {
-                DivisionTier.PrimeiraDivisao => 37,
-                DivisionTier.SegundaDivisao => 30,
-                DivisionTier.TerceiraDivisao => 25,
-                DivisionTier.QuartaDivisao => 21,
-                _ => 17
-            };
-
-            int totalGoals = p.SeasonGoals + p.CupGoals;
-            int delta = 0;
-
-            if (totalGoals >= 6 || (p.SeasonMatches >= 12 && p.Strength < targetMean + 2 && rng.NextBool(0.42)))
-            {
-                delta = 1;
-                if (totalGoals >= 11 && p.Strength < 46 && rng.NextBool(0.35))
-                {
-                    delta = 2;
-                }
-            }
-            else if (p.Strength > targetMean + 6 && rng.NextBool(0.45))
-            {
-                delta = -1;
-            }
-            else if (p.Strength < targetMean - 4 && rng.NextBool(0.55))
-            {
-                delta = 1;
-            }
-            else if (p.SeasonMatches <= 2 && p.Strength > 22 && rng.NextBool(0.25))
-            {
-                delta = -1;
-            }
-
-            if (delta != 0)
-            {
-                p.Strength = Math.Clamp(p.Strength + delta, 10, 50);
-                p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(p);
-                p.SalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p);
-            }
         }
     }
 

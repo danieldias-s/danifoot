@@ -86,7 +86,13 @@ public sealed class ClubAndMarketApplicationService
                 ExpansionRoundsRemaining: club.Stadium.ExpansionRoundsRemaining,
                 RenovationRoundsRemaining: club.Stadium.RenovationRoundsRemaining),
             Squad: squad.Select(p => MapPlayerDto(p, club.Name)).ToList(),
-            AiSquadPlan: planDto);
+            AiSquadPlan: planDto)
+        {
+            GrowthCeiling = ClassicForceEvolutionEngine.IsActive(world) ? ClassicForceEvolutionEngine.ClubContext(world,club).Ceiling : null,
+            GrowthLeaguePosition = ClassicForceEvolutionEngine.IsActive(world) ? ClassicForceEvolutionEngine.ClubContext(world,club).Position : null,
+            GrowthPositionIsProvisional = ClassicForceEvolutionEngine.IsActive(world) && !world.ClassicForce.CompletedLeaguePositions.ContainsKey(club.Id),
+            RequiredStarterCount = SquadValidator.RequiredStartersForSquad(squad)
+        };
     }
 
     public static PlayerDto MapPlayerDto(Player p, string? clubName)
@@ -118,7 +124,14 @@ public sealed class ClubAndMarketApplicationService
             CareerMatches: p.CareerMatches,
             PhotoUrl: p.PhotoUrl,
             PhotoLicense: p.PhotoLicense,
-            PhotoCredit: p.PhotoCredit);
+            PhotoCredit: p.PhotoCredit)
+        {
+            InjuryDaysRemaining = p.InjuryDaysRemaining,
+            TotalYellowCards = p.TotalYellowCards, YellowCardsInCurrentCycle = p.YellowCardsInCurrentCycle,
+            TotalDirectRedCards = p.TotalDirectRedCards, TotalSecondYellowDismissals = p.TotalSecondYellowDismissals,
+            SuspensionMatchesRemaining = p.SuspensionMatchesRemaining, SuspensionReason = p.SuspensionReason,
+            InjuryRecoveryDate = p.InjuryDaysRemaining > 0 ? p.ForceInjuries.LastOrDefault()?.EndDate : null
+        };
     }
 
     public async Task<(bool Success, string? Error)> ListPlayerForTransferAsync(

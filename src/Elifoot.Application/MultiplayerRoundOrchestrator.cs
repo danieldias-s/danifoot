@@ -32,6 +32,7 @@ public sealed class MultiplayerRoundOrchestrator
 
     public async Task<GameWorld> CreateWorldAsync(CreateWorldRequest request, CancellationToken ct = default)
     {
+        if (!Enum.IsDefined(request.ForceEvolutionMode)) throw new ArgumentException("Unsupported force evolution mode.");
         var world = WorldSeedFactory.CreateSeededWorld(
             worldName: string.IsNullOrWhiteSpace(request.WorldName) ? "Campeonato Brasileiro Clássico" : request.WorldName.Trim(),
             seed: request.Seed == 0 ? 199801 : request.Seed,
@@ -40,7 +41,8 @@ public sealed class MultiplayerRoundOrchestrator
             tickIntervalMs: Math.Clamp(request.TickIntervalMs, 10, 5000),
             pauseTimeoutSeconds: Math.Clamp(request.PauseTimeoutSeconds, 5, 3600),
             allowClassic505: request.AllowClassic505,
-            inviteCode: request.InviteCode);
+            inviteCode: request.InviteCode,
+            forceEvolutionMode: request.ForceEvolutionMode);
 
         await _repository.SaveWorldAsync(world, ct);
         return world;
@@ -235,23 +237,25 @@ public sealed class MultiplayerRoundOrchestrator
                 return (false, "Propriedade do clube inválida.", BuildReadyCounterDto(world), false);
 
             var clubSquad = world.Players.Where(p => p.ClubId == club.Id).ToList();
-            var (isValid, validationError) = SquadValidator.ValidatePreMatchLineup(
+            bool needsLineup = NeedsCurrentRoundLineup(world, club.Id);
+            var (isValid, validationError) = needsLineup ? SquadValidator.ValidatePreMatchLineup(
                 request.Formation,
                 request.StarterPlayerIds,
                 request.BenchPlayerIds,
                 clubSquad,
-                world.AllowClassic505);
+                world.AllowClassic505) : TacticalFormations.TryGet(request.Formation, world.AllowClassic505, out _)
+                    ? (true, (string?)null) : (false, "Formação tática inválida.");
 
             if (!isValid)
                 return (false, validationError, BuildReadyCounterDto(world), false);
 
             coach.SubmittedFormation = request.Formation.Trim();
-            coach.SubmittedStarterIds = request.StarterPlayerIds.ToList();
-            coach.SubmittedBenchIds = request.BenchPlayerIds.ToList();
+            coach.SubmittedStarterIds = needsLineup ? request.StarterPlayerIds.ToList() : new();
+            coach.SubmittedBenchIds = needsLineup ? request.BenchPlayerIds.ToList() : new();
             coach.IsReadyForRound = true;
             coach.LastIdempotencyKey = request.IdempotencyKey;
 
-            if (request.SaveAsPreferred)
+            if (request.SaveAsPreferred && needsLineup)
             {
                 club.PreferredFormation = coach.SubmittedFormation;
                 club.PreferredStarterIds = coach.SubmittedStarterIds.ToList();
@@ -378,10 +382,16 @@ public sealed class MultiplayerRoundOrchestrator
         }
     }
 
+    private static bool NeedsCurrentRoundLineup(GameWorld world, Guid clubId)
+        => !ClassicForceEvolutionEngine.IsActive(world) || GetCurrentRoundFixtures(world)
+            .Any(m => m.HomeClubId == clubId || m.AwayClubId == clubId);
+
     private static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
     {
         if (world.RoundState != RoundState.PREPARING) return false;
         if (world.HumanCoaches.Count == 0) return false;
+        ClassicForceEvolutionEngine.PrepareRound(world);
+        DisciplineEngine.EnsureMigrated(world);
 
         // Auto-ready any human coach explicitly placed in AutoMode by the host
         foreach (var autoHuman in world.HumanCoaches.Where(h => h.IsAutoMode && !h.IsReadyForRound))
@@ -406,6 +416,7 @@ public sealed class MultiplayerRoundOrchestrator
         // Never start using a player who has left the club; the affected human must submit again.
         foreach (var human in world.HumanCoaches.Where(h => h.CurrentClubId != null))
         {
+            if (!NeedsCurrentRoundLineup(world, human.CurrentClubId!.Value)) continue;
             var squad = world.Players.Where(p => p.ClubId == human.CurrentClubId).ToList();
             var valid = SquadValidator.ValidatePreMatchLineup(human.SubmittedFormation ?? "4-4-2",
                 human.SubmittedStarterIds, human.SubmittedBenchIds, squad, world.AllowClassic505);
@@ -450,7 +461,7 @@ public sealed class MultiplayerRoundOrchestrator
             var awaySquad = playersByClub.GetValueOrDefault(awayClub.Id) ?? new List<Player>();
 
             // Lock Home lineup (Human submission or AI Manager selection)
-            if (humanByClub.TryGetValue(homeClub.Id, out var hCoach) && hCoach.SubmittedStarterIds.Count == 11)
+            if (humanByClub.TryGetValue(homeClub.Id, out var hCoach) && hCoach.SubmittedStarterIds.Count > 0)
             {
                 match.HomeFormation = hCoach.SubmittedFormation ?? homeClub.PreferredFormation;
                 match.HomeActiveStarterIds = hCoach.SubmittedStarterIds.ToList();
@@ -478,7 +489,7 @@ public sealed class MultiplayerRoundOrchestrator
             }
 
             // Lock Away lineup (Human submission or AI Manager selection)
-            if (humanByClub.TryGetValue(awayClub.Id, out var aCoach) && aCoach.SubmittedStarterIds.Count == 11)
+            if (humanByClub.TryGetValue(awayClub.Id, out var aCoach) && aCoach.SubmittedStarterIds.Count > 0)
             {
                 match.AwayFormation = aCoach.SubmittedFormation ?? awayClub.PreferredFormation;
                 match.AwayActiveStarterIds = aCoach.SubmittedStarterIds.ToList();
@@ -1089,6 +1100,7 @@ public sealed class MultiplayerRoundOrchestrator
                 CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world, world.RoundNumber);
             }
 
+            ClassicForceEvolutionEngine.PrepareRound(world);
             // Refresh AI squad plans and ensure human-controlled clubs have healthy default starters/bench for the new round
             var aiDict = world.AiManagers.ToDictionary(m => m.Id);
             foreach (var club in world.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital))
@@ -1250,14 +1262,19 @@ public sealed class MultiplayerRoundOrchestrator
                         sentOff.Contains(p.Id),
                         injured.Contains(p.Id),
                         subOut.Contains(p.Id),
-                        subIn.Contains(p.Id));
+                        subIn.Contains(p.Id))
+                    {
+                        IsOnPitch = (m.HomeActiveStarterIds.Contains(id)||m.AwayActiveStarterIds.Contains(id))
+                            && !sentOff.Contains(id)&&!injured.Contains(id)&&!subOut.Contains(id)
+                    };
                 }).ToList();
             }
 
-            var homeStarterSource = m.HomeActiveStarterIds.Count > 0 ? m.HomeActiveStarterIds : home.PreferredStarterIds;
-            var homeBenchSource = m.HomeBenchIds.Count > 0 ? m.HomeBenchIds : home.PreferredBenchIds;
-            var awayStarterSource = m.AwayActiveStarterIds.Count > 0 ? m.AwayActiveStarterIds : away.PreferredStarterIds;
-            var awayBenchSource = m.AwayBenchIds.Count > 0 ? m.AwayBenchIds : away.PreferredBenchIds;
+            bool started=m.CurrentMinute>0||m.StatisticsLineupCaptured;
+            var homeStarterSource = started ? m.HomeActiveStarterIds.Concat(m.HomeInjuryVacancies).Concat(m.HomeSentOffIds).Distinct().ToList() : home.PreferredStarterIds;
+            var homeBenchSource = started ? m.HomeBenchIds : home.PreferredBenchIds;
+            var awayStarterSource = started ? m.AwayActiveStarterIds.Concat(m.AwayInjuryVacancies).Concat(m.AwaySentOffIds).Distinct().ToList() : away.PreferredStarterIds;
+            var awayBenchSource = started ? m.AwayBenchIds : away.PreferredBenchIds;
 
             matchDtos.Add(new LiveMatchSummaryDto(
                 MatchId: m.Id,
@@ -1299,7 +1316,11 @@ public sealed class MultiplayerRoundOrchestrator
                 HomeStarters: MapLineup(homeStarterSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
                 HomeBench: MapLineup(homeBenchSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
                 AwayStarters: MapLineup(awayStarterSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds),
-                AwayBench: MapLineup(awayBenchSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds)));
+                AwayBench: MapLineup(awayBenchSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds))
+            {
+                HomePlayersOnPitch = started?m.HomeActiveStarterIds.Count:homeStarterSource.Count,
+                AwayPlayersOnPitch = started?m.AwayActiveStarterIds.Count:awayStarterSource.Count
+            });
         }
 
         return new LiveRoundSnapshotDto(
@@ -1314,6 +1335,12 @@ public sealed class MultiplayerRoundOrchestrator
             CurrentMinute: world.CurrentMatchMinute,
             ReadyCounter: BuildReadyCounterDto(world),
             ActivePauseWindow: pauseDto,
-            Matches: matchDtos);
+            Matches: matchDtos)
+        {
+            ForceEvolutionMode = world.ForceEvolutionMode,
+            DisciplineRulesVersion = world.DisciplineRulesVersion,
+            ForceRulesVersion = ClassicForceEvolutionEngine.IsActive(world) ? world.ClassicForce.Version : 0,
+            GameDate = ClassicForceEvolutionEngine.IsActive(world) ? world.ClassicForce.GameDate : null
+        };
     }
 }

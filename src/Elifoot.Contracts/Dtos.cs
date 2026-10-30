@@ -17,7 +17,8 @@ public record CreateWorldRequest(
     int TickIntervalMs = 250,
     int PauseTimeoutSeconds = 60,
     bool AllowClassic505 = true,
-    string? InviteCode = null);
+    string? InviteCode = null,
+    ForceEvolutionMode ForceEvolutionMode = ForceEvolutionMode.ClassicAdapted);
 
 public record JoinWorldRequest(
     string InviteCodeOrWorldId,
@@ -117,7 +118,13 @@ public record LiveRoundSnapshotDto(
     int CurrentMinute,
     ReadyCounterDto ReadyCounter,
     PauseWindowStateDto? ActivePauseWindow,
-    List<LiveMatchSummaryDto> Matches);
+    List<LiveMatchSummaryDto> Matches)
+{
+    public ForceEvolutionMode ForceEvolutionMode { get; init; }
+    public int ForceRulesVersion { get; init; }
+    public int DisciplineRulesVersion { get; init; }
+    public DateOnly? GameDate { get; init; }
+}
 
 public record LiveMatchSummaryDto(
     Guid MatchId,
@@ -155,7 +162,11 @@ public record LiveMatchSummaryDto(
     List<MatchLineupPlayerDto> HomeStarters,
     List<MatchLineupPlayerDto> HomeBench,
     List<MatchLineupPlayerDto> AwayStarters,
-    List<MatchLineupPlayerDto> AwayBench);
+    List<MatchLineupPlayerDto> AwayBench)
+{
+    public int HomePlayersOnPitch { get; init; }
+    public int AwayPlayersOnPitch { get; init; }
+}
 
 public record MatchLineupPlayerDto(
     Guid PlayerId,
@@ -168,7 +179,10 @@ public record MatchLineupPlayerDto(
     bool IsSentOff,
     bool IsInjuredInMatch,
     bool WasSubstitutedOut,
-    bool WasSubstitutedIn);
+    bool WasSubstitutedIn)
+{
+    public bool IsOnPitch { get; init; }
+}
 
 public record MatchEventDto(
     int Minute,
@@ -207,7 +221,17 @@ public record PlayerDto(
     int CareerMatches,
     string? PhotoUrl,
     string? PhotoLicense,
-    string? PhotoCredit);
+    string? PhotoCredit)
+{
+    public int InjuryDaysRemaining { get; init; }
+    public int TotalYellowCards { get; init; }
+    public int YellowCardsInCurrentCycle { get; init; }
+    public int TotalDirectRedCards { get; init; }
+    public int TotalSecondYellowDismissals { get; init; }
+    public int SuspensionMatchesRemaining { get; init; }
+    public string? SuspensionReason { get; init; }
+    public DateOnly? InjuryRecoveryDate { get; init; }
+}
 
 public record ClubDetailDto(
     Guid Id,
@@ -230,7 +254,13 @@ public record ClubDetailDto(
     List<Guid> PreferredBenchIds,
     StadiumDto Stadium,
     List<PlayerDto> Squad,
-    AiSquadPlanDto? AiSquadPlan);
+    AiSquadPlanDto? AiSquadPlan)
+{
+    public int? GrowthCeiling { get; init; }
+    public int? GrowthLeaguePosition { get; init; }
+    public bool GrowthPositionIsProvisional { get; init; }
+    public int RequiredStarterCount { get; init; } = 11;
+}
 
 public record StadiumDto(
     Guid ClubId,

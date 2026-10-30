@@ -86,6 +86,10 @@ public static class SquadValidator
         return (true, null);
     }
 
+    public static int RequiredStartersForSquad(IReadOnlyCollection<Player> squad)
+        => Math.Min(11,squad.Count(p=>p.IsAvailableForMatch&&p.Position!=PlayerPosition.G)
+            +(squad.Any(p=>p.IsAvailableForMatch&&p.Position==PlayerPosition.G)?1:0));
+
     public static (bool IsValid, string? ErrorMessage) ValidatePreMatchLineup(
         string formationCode,
         IReadOnlyList<Guid> starterIds,
@@ -96,8 +100,10 @@ public static class SquadValidator
         if (!TacticalFormations.TryGet(formationCode, allowClassic505, out var spec))
             return (false, $"Formação tática inválida ou não permitida: '{formationCode}'.");
 
-        if (starterIds.Count != RequiredStarters)
-            return (false, $"A escalação titular deve ter exatamente {RequiredStarters} jogadores (enviado: {starterIds.Count}).");
+        int required=RequiredStartersForSquad(clubSquad);
+        if(required<1)return(false,"O clube precisa de ao menos um jogador apto para disputar a partida.");
+        if (starterIds.Count != required)
+            return (false, $"A escalação titular deve ter exatamente {required} jogadores aptos (enviado: {starterIds.Count}).");
 
         if (benchIds.Count > MaxBenchSize)
             return (false, $"O banco de reservas comporta no máximo {MaxBenchSize} jogadores (enviado: {benchIds.Count}).");
@@ -122,10 +128,7 @@ public static class SquadValidator
                 return (false, $"Jogador titular {id} não pertence ao elenco do clube.");
             if (!p.IsAvailableForMatch)
             {
-                if (p.Position == PlayerPosition.G && availableGkInSquad >= 1)
-                    return (false, $"O goleiro {p.DisplayName} está lesionado ou suspenso e não pode ser escalado.");
-                if (p.Position != PlayerPosition.G && availableOutfieldInSquad >= 10)
-                    return (false, $"O jogador {p.DisplayName} está lesionado ou suspenso e não pode ser escalado.");
+                return (false, $"O jogador {p.DisplayName} está lesionado ou suspenso e não pode ser escalado.");
             }
             starters.Add(p);
         }
@@ -139,7 +142,7 @@ public static class SquadValidator
         }
 
         int gkCount = starters.Count(p => p.Position == PlayerPosition.G);
-        if (gkCount != 1)
+        if (gkCount != (availableGkInSquad>0?1:0))
             return (false, $"A escalação titular deve conter exatamente 1 goleiro (G). Encontrado: {gkCount}.");
 
         if (spec.TotalOutfield != 10)

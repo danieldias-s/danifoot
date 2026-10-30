@@ -268,11 +268,6 @@ public static class AiManagerBrain
             .Where(p => p.Position == PlayerPosition.G)
             .OrderByDescending(GetSelectionScore)
             .FirstOrDefault()
-            ?? clubSquad
-                .Where(p => p.Position == PlayerPosition.G)
-                .OrderBy(p => p.InjuryRoundsRemaining + p.SuspensionRoundsRemaining)
-                .ThenByDescending(GetSelectionScore)
-                .FirstOrDefault()
             ?? available.OrderByDescending(GetSelectionScore).FirstOrDefault();
 
         if (gk != null)
@@ -306,17 +301,6 @@ public static class AiManagerBrain
             if (starters.Count >= 11) break;
             starters.Add(nextOutfield);
             remaining.Remove(nextOutfield);
-        }
-
-        // If extreme injuries/suspensions left fewer than 10 available outfield players, fallback to least-unavailable outfield players
-        if (starters.Count < 11)
-        {
-            var emergencyPool = clubSquad
-                .Where(p => p.Position != PlayerPosition.G && starters.All(s => s.Id != p.Id))
-                .OrderBy(p => p.InjuryRoundsRemaining + p.SuspensionRoundsRemaining)
-                .ThenByDescending(GetSelectionScore)
-                .Take(11 - starters.Count);
-            starters.AddRange(emergencyPool);
         }
 
         // Build balanced bench (up to 9: 1 G, 2-3 D, 2-3 M, 2-3 A)
@@ -372,7 +356,8 @@ public static class AiManagerBrain
         var activeIds = isHomeTeam ? match.HomeActiveStarterIds : match.AwayActiveStarterIds;
         var benchIds = isHomeTeam ? match.HomeBenchIds : match.AwayBenchIds;
 
-        bool hasInjuredOnPitch = activeIds.Any(id => injuredList.Contains(id));
+        var vacancies = isHomeTeam ? match.HomeInjuryVacancies : match.AwayInjuryVacancies;
+        bool hasInjuredOnPitch = activeIds.Any(id => injuredList.Contains(id)) || vacancies.Count > 0;
         bool isCheckpointMinute = isFreeInterval || minute is 62 or 74 or 83 or 112;
         if (!hasInjuredOnPitch && !isCheckpointMinute) return;
 
@@ -399,7 +384,7 @@ public static class AiManagerBrain
             .ToList();
 
         // 1. Replace any injured player on pitch if substitution quota allows
-        foreach (var injuredId in activeIds.Where(id => injuredList.Contains(id)).ToList())
+        foreach (var injuredId in activeIds.Where(id => injuredList.Contains(id)).Concat(vacancies).Distinct().ToList())
         {
             if (usedSubs + subsToMake.Count >= maxSubs) break;
             if (!worldPlayers.TryGetValue(injuredId, out var injuredPlayer)) continue;

@@ -1,0 +1,133 @@
+{
+  "Rule": "CLASSIC_ADAPTED_FORCE_EVOLUTION",
+  "Version": 1,
+  "Condition": "After an injury occurs; occurrence probability is unchanged",
+  "Draw": "NextInt(0,200), exclusive upper bound, cumulative integer weights",
+  "TotalPercent": 100,
+  "Days2To8Percent": 80,
+  "Days9To15Percent": 20,
+  "Durations": [
+    {
+      "Days": 2,
+      "WeightOutOf200": 26,
+      "Percent": 13,
+      "Count": 12905,
+      "ObservedPercent": 12.905,
+      "Sigma": -0.893289651465121
+    },
+    {
+      "Days": 3,
+      "WeightOutOf200": 26,
+      "Percent": 13,
+      "Count": 13147,
+      "ObservedPercent": 13.147,
+      "Sigma": 1.3822481975302396
+    },
+    {
+      "Days": 4,
+      "WeightOutOf200": 24,
+      "Percent": 12,
+      "Count": 12053,
+      "ObservedPercent": 12.053,
+      "Sigma": 0.5157555505070089
+    },
+    {
+      "Days": 5,
+      "WeightOutOf200": 24,
+      "Percent": 12,
+      "Count": 11938,
+      "ObservedPercent": 11.938,
+      "Sigma": -0.6033366817251803
+    },
+    {
+      "Days": 6,
+      "WeightOutOf200": 22,
+      "Percent": 11,
+      "Count": 11068,
+      "ObservedPercent": 11.068,
+      "Sigma": 0.6872544598206778
+    },
+    {
+      "Days": 7,
+      "WeightOutOf200": 20,
+      "Percent": 10,
+      "Count": 10041,
+      "ObservedPercent": 10.041,
+      "Sigma": 0.43217794688967853
+    },
+    {
+      "Days": 8,
+      "WeightOutOf200": 18,
+      "Percent": 9,
+      "Count": 8779,
+      "ObservedPercent": 8.779,
+      "Sigma": -2.4420262208854484
+    },
+    {
+      "Days": 9,
+      "WeightOutOf200": 12,
+      "Percent": 6,
+      "Count": 6026,
+      "ObservedPercent": 6.026,
+      "Sigma": 0.3462053668393499
+    },
+    {
+      "Days": 10,
+      "WeightOutOf200": 8,
+      "Percent": 4,
+      "Count": 3894,
+      "ObservedPercent": 3.894,
+      "Sigma": -1.7105676445749425
+    },
+    {
+      "Days": 11,
+      "WeightOutOf200": 6,
+      "Percent": 3,
+      "Count": 3108,
+      "ObservedPercent": 3.108,
+      "Sigma": 2.002060793952175
+    },
+    {
+      "Days": 12,
+      "WeightOutOf200": 5,
+      "Percent": 2.5,
+      "Count": 2501,
+      "ObservedPercent": 2.501,
+      "Sigma": 0.020254787341673332
+    },
+    {
+      "Days": 13,
+      "WeightOutOf200": 4,
+      "Percent": 2,
+      "Count": 2053,
+      "ObservedPercent": 2.053,
+      "Sigma": 1.197147971349458
+    },
+    {
+      "Days": 14,
+      "WeightOutOf200": 3,
+      "Percent": 1.5,
+      "Count": 1510,
+      "ObservedPercent": 1.51,
+      "Sigma": 0.2601574428938419
+    },
+    {
+      "Days": 15,
+      "WeightOutOf200": 2,
+      "Percent": 1,
+      "Count": 977,
+      "ObservedPercent": 0.977,
+      "Sigma": -0.7309879850882874
+    }
+  ],
+  "StatisticalSample": {
+    "Seed": 120031,
+    "Draws": 100000,
+    "Tolerance": "6 binomial standard deviations + 2 counts per duration"
+  },
+  "Loss": {
+    "Maximum": "floor(initialForce * duration / 30)",
+    "Sampling": "Uniform integer from 0 through maximum inclusive",
+    "CumulativeAtDay": "floor(sampledTotal * elapsedDays / duration)"
+  }
+}

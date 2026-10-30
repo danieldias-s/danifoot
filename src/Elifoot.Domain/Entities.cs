@@ -4,6 +4,11 @@ namespace Elifoot.Domain;
 
 public class GameWorld
 {
+    public ForceEvolutionMode ForceEvolutionMode { get; set; }
+    public ClassicForceState ClassicForce { get; set; } = new();
+    public int DisciplineRulesVersion { get; set; }
+    public HashSet<Guid> SettledDisciplineMatches { get; set; } = new();
+    public List<string> DisciplineCoverageWarnings { get; set; } = new();
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; } = "Campeonato Brasileiro Clássico";
     public string InviteCode { get; set; } = "ELIF98";
@@ -45,6 +50,10 @@ public class GameWorld
     public List<string> PlayerStatisticsCoverageWarnings { get; set; } = new();
     public List<SeasonTopScorerAward> SeasonTopScorerAwards { get; set; } = new();
     public HashSet<int> ClosedPlayerAwardSeasons { get; set; } = new();
+    public List<PlayerStrengthChangeDto> PlayerStrengthHistory { get; set; } = new();
+    public HashSet<int> EvolvedPlayerStrengthSeasons { get; set; } = new();
+    public int? PlayerStrengthHistoryStartSeason { get; set; }
+    public int? PlayerStrengthHistoryStartRound { get; set; }
     [System.Text.Json.Serialization.JsonIgnore]
     public Dictionary<string, PlayerCompetitionStatistics> PlayerStatisticsIndex { get; } = new();
 
@@ -129,8 +138,20 @@ public class Player
     public int ListedAtRound { get; set; }
 
     public int InjuryRoundsRemaining { get; set; }
+    public int InjuryDaysRemaining { get; set; }
+    public List<ForceInjury> ForceInjuries { get; set; } = new();
     public int SuspensionRoundsRemaining { get; set; }
     public int YellowCardsAccumulated { get; set; }
+    public int DisciplineVersion { get; set; }
+    public int TotalYellowCards { get; set; }
+    public int YellowCardsInCurrentCycle { get => YellowCardsAccumulated; set => YellowCardsAccumulated=value; }
+    public int TotalDirectRedCards { get; set; }
+    public int TotalSecondYellowDismissals { get; set; }
+    public int UnclassifiedHistoricalRedCards { get; set; }
+    public int SuspensionMatchesRemaining { get => SuspensionRoundsRemaining; set => SuspensionRoundsRemaining=value; }
+    public string? SuspensionReason { get; set; }
+    public List<PlayerCardHistoryDto> CardHistory { get; set; } = new();
+    public List<PlayerSuspensionHistoryDto> SuspensionHistory { get; set; } = new();
 
     public int SeasonGoals { get; set; }
     public int CupGoals { get; set; }
@@ -146,7 +167,7 @@ public class Player
     public string? PhotoCredit { get; set; }
 
     public string DisplayName => IsStar ? $"{Name}*" : Name;
-    public bool IsAvailableForMatch => InjuryRoundsRemaining <= 0 && SuspensionRoundsRemaining <= 0;
+    public bool IsAvailableForMatch => InjuryRoundsRemaining <= 0 && InjuryDaysRemaining <= 0 && SuspensionRoundsRemaining <= 0;
 }
 
 public class AiManager
@@ -240,6 +261,9 @@ public class ManagerSquadPlan
 
 public class MatchFixture
 {
+    public int ForceRulesVersion { get; set; }
+    public DateOnly? GameDate { get; set; }
+    public List<ForceRosterPlayer> ForceRoster { get; set; } = new();
     public bool StatisticsLineupCaptured { get; set; }
     public List<PlayerLineupSnapshot> StatisticsInitialLineup { get; set; } = new();
     public bool CareerLeadershipCaptured { get; set; }
@@ -272,6 +296,12 @@ public class MatchFixture
     public int AwayFouls { get; set; }
     public int CurrentMinute { get; set; }
     public bool IsFinished { get; set; }
+    public bool IsCancelled { get; set; }
+    public bool IsPostponed { get; set; }
+    public int LastSimulatedMinute { get; set; }
+    public MatchDisciplineState Discipline { get; set; } = new();
+    public HashSet<Guid> HomeInjuryVacancies { get; set; } = new();
+    public HashSet<Guid> AwayInjuryVacancies { get; set; } = new();
     public bool RequiresKnockoutResolution { get; set; }
     public bool EnteredExtraTime { get; set; }
     public Guid? WinnerClubId { get; set; }
@@ -324,6 +354,7 @@ public class MatchFixture
 
 public class MatchEventRecord
 {
+    public int? DisciplinarySuspensionMatches { get; set; }
     public bool IsOwnGoal { get; set; }
     public int Minute { get; set; }
     public MatchEventType EventType { get; set; }

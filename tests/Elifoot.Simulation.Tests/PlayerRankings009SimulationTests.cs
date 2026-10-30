@@ -63,7 +63,7 @@ public partial class MultiSeasonAndBenchmarkTests
         PlayerStatisticsEngine.AwardSeason(reload,1);
         Assert.Equal(balances,reload.Clubs.Select(c=>c.CashBalance));
         Assert.Equal(awards.Awards,PlayerStatisticsEngine.GetSeasonAwards(reload,1).Awards);
-        string output=Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"../../../../../docs/audit-009"));Directory.CreateDirectory(output);
+        string output=Environment.GetEnvironmentVariable("ELIFOOT_AUDIT_OUTPUT") ?? Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"../../../../../docs/audit-009"));Directory.CreateDirectory(output);
         File.WriteAllText(Path.Combine(output,"real-season-world.json"),JsonSerializer.Serialize(w));
         File.WriteAllText(Path.Combine(output,"REAL_SEASON_009.json"),JsonSerializer.Serialize(new {Seed=w.Seed,Clubs=128,Season=1,Matches=games,Minutes=minutes,RoundChecks=checks,
             Goals=seasonRanking.Rows.Sum(r=>r.GoalsScored),MaximumGoals=maximum,Awards=awards,Ledger=awardLedger,
@@ -89,7 +89,7 @@ public partial class MultiSeasonAndBenchmarkTests
             foreach(var scope in new[]{"general","division1","division2","division3","division4","cup"})
                 rows+=PlayerStatisticsEngine.GetRankings(w,category,scope,"career").Rows.Count;
         watch.Stop();Assert.True(watch.Elapsed<TimeSpan.FromSeconds(10),$"18 consultas: {watch.Elapsed}");Assert.True(rows>0);
-        string output=Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"../../../../../docs/audit-009"));Directory.CreateDirectory(output);
+        string output=Environment.GetEnvironmentVariable("ELIFOOT_AUDIT_OUTPUT") ?? Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"../../../../../docs/audit-009"));Directory.CreateDirectory(output);
         File.WriteAllText(Path.Combine(output,$"QUERY_LOAD_{clubs}_009.json"),JsonSerializer.Serialize(new {Clubs=clubs,Players=w.Players.Count,Aggregates=w.PlayerStatistics.Count,Queries=18,Rows=rows,ElapsedMs=watch.Elapsed.TotalMilliseconds,BudgetMs=10000,Fixture="Synthetic deterministic load records; real128-club season validated separately."},new JsonSerializerOptions{WriteIndented=true}));
     }
 }

@@ -100,13 +100,15 @@ public static class WorldSeedFactory
         int tickIntervalMs = 200,
         int pauseTimeoutSeconds = 60,
         bool allowClassic505 = true,
-        string? inviteCode = null)
+        string? inviteCode = null,
+        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal)
     {
         totalClubs = Math.Max(64, totalClubs);
         var rng = new DeterministicRng(seed);
 
         var world = new GameWorld
         {
+            ForceEvolutionMode = forceEvolutionMode,
             Id = Guid.NewGuid(),
             Name = worldName,
             InviteCode = inviteCode ?? $"ELI{Guid.NewGuid().ToString("N")[..8].ToUpperInvariant()}",

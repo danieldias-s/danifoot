@@ -14,7 +14,14 @@ public record PlayerAwardDto(Guid AwardId, Guid PlayerId, string DisplayName, in
     int TotalMatches, Guid? ClubId, string ClubNameAtClose, decimal AwardAmount, DateTime AwardGrantedAt,
     string IdempotencyKey);
 public record PlayerHistoryDto(PlayerRankingRowDto Player, PlayerRankingRowDto Career,
-    List<PlayerStatisticsRowDto> Statistics, List<PlayerAwardDto> Awards, List<string> CoverageWarnings);
+    List<PlayerStatisticsRowDto> Statistics, List<PlayerAwardDto> Awards, List<string> CoverageWarnings)
+{
+    public List<PlayerStrengthChangeDto> StrengthHistory { get; init; } = new();
+    public int? StrengthHistoryStartSeason { get; init; }
+    public int? StrengthHistoryStartRound { get; init; }
+    public List<PlayerCardHistoryDto> CardHistory { get; init; } = new();
+    public List<PlayerSuspensionHistoryDto> SuspensionHistory { get; init; } = new();
+}
 public record AwardClubTotalDto(Guid ClubId, string ClubName, decimal Amount);
 public record SeasonTopScorerAwardsDto(int CurrentSeason, int? Season, List<PlayerAwardDto> Awards,
     List<AwardClubTotalDto> ClubTotals, List<string> CoverageWarnings);

@@ -988,6 +988,7 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                 ),
               ),
               _CoverageWarnings(data['coverageWarnings']),
+              PlayerStrengthHistoryPanel(data: data),
               if (statistics.any(
                 (s) => s['hasIncompleteAppearances'] == true,
               ))
@@ -2197,6 +2198,95 @@ class _ClassicCloseIconPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class PlayerStrengthHistoryPanel extends StatelessWidget {
+  final Map<String, dynamic> data;
+  const PlayerStrengthHistoryPanel({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    final events = _records(data['strengthHistory']);
+    final startSeason = data['strengthHistoryStartSeason'];
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const ClassicSectionTitle(title: 'HISTÓRICO DE FORÇA'),
+          if (startSeason != null)
+            Text(
+              'Registro desde T$startSeason R${data['strengthHistoryStartRound']}. Mudanças anteriores não estão disponíveis.',
+              style: const TextStyle(fontSize: 12),
+            ),
+          if (events.isEmpty)
+            const Text('Nenhuma mudança de força registrada.')
+          else
+            ClassicTable(
+              tableKey: 'player-strength-history',
+              columns: const [
+                'TEMPORADA',
+                'RODADA',
+                'CLUBE',
+                'DIVISÃO',
+                'ANTES',
+                'DEPOIS',
+                'MOTIVO',
+                'DATA DO JOGO',
+                'POSIÇÃO DO CLUBE',
+                'TETO',
+              ],
+              numericColumns: const {0, 1, 4, 5},
+              rows: events
+                  .map(
+                    (event) => DataRow(
+                      cells: [
+                        DataCell(Text(_value(event['season']))),
+                        DataCell(Text(_value(event['round']))),
+                        DataCell(Text(resolveHistoricalClubName(event))),
+                        DataCell(Text(_strengthDivision(event['division']))),
+                        DataCell(Text(_value(event['strengthBefore']))),
+                        DataCell(Text(_value(event['strengthAfter']))),
+                        DataCell(Text(_strengthReason(event))),
+                        DataCell(Text(event['gameDate'] == null ? '-' : formatClassicDate(event['gameDate']))),
+                        DataCell(Text(event['leaguePosition']?.toString() ?? '-')),
+                        DataCell(Text(event['growthCeiling']?.toString() ?? '-')),
+                      ],
+                    ),
+                  )
+                  .toList(),
+            ),
+        ],
+      ),
+    );
+  }
+
+  static String _strengthDivision(dynamic division) => switch ('$division') {
+    'PrimeiraDivisao' || '1' => '1ª DIVISÃO',
+    'SegundaDivisao' || '2' => '2ª DIVISÃO',
+    'TerceiraDivisao' || '3' => '3ª DIVISÃO',
+    'QuartaDivisao' || '4' => '4ª DIVISÃO',
+    'Distrital' || '5' => 'DISTRITAL',
+    _ => 'SEM DIVISÃO',
+  };
+
+  static String _strengthReason(Map<String, dynamic> event) {
+    if (event['rule'] == 'LEGACY_SEASONAL_005_SCALE_FIX_012') {
+      return event['changeReason'] == 'NORMAL_DECLINE'
+          ? 'Queda sazonal'
+          : 'Evolução sazonal';
+    }
+    return switch (event['changeReason']) {
+      'NORMAL_PROGRESS' => 'Evolução',
+      'NORMAL_DECLINE' => 'Queda de força',
+      'INJURY_STRENGTH_LOSS' => 'Perda por contusão',
+      'RECOVERY_PROGRESS' => 'Recuperação',
+      'RESERVE_PROGRESS' => 'Evolução sem jogar',
+      'PLAYED_MATCH_DECLINE' => 'Queda após participação',
+      'INJURY_DAILY_LOSS' => 'Perda diária por contusão',
+      _ => 'Outra mudança',
+    };
+  }
 }
 
 class _CoverageWarnings extends StatelessWidget {

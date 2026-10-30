@@ -444,13 +444,16 @@ public partial class MultiSeasonAndBenchmarkTests
         int worldSeed,
         int seasonsToSimulate,
         ScenarioMode scenarioMode,
-        Audit007Capture? capture = null)
+        Audit007Capture? capture = null,
+        Action<GameWorld, string>? observeForce012 = null,
+        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal)
     {
         var sw = Stopwatch.StartNew();
         var world = WorldSeedFactory.CreateSeededWorld(
             worldName: experimentId,
             seed: worldSeed,
-            totalClubs: 128);
+            totalClubs: 128,
+            forceEvolutionMode: forceEvolutionMode);
 
         var result = new ExperimentResult
         {
@@ -586,6 +589,7 @@ public partial class MultiSeasonAndBenchmarkTests
 
         var processedTxIds = new HashSet<Guid>();
         capture?.Begin(world);
+        observeForce012?.Invoke(world, "initial");
         var seenAuctionIds = new HashSet<Guid>();
         string? lastLeagueChampName = null;
         int currentChampStreak = 0;
@@ -729,6 +733,7 @@ public partial class MultiSeasonAndBenchmarkTests
                 // Harvest newly recorded financial transactions & auctions
                 HarvestRoundEconomyMetrics(world, processedTxIds, seenAuctionIds, result);
                 capture?.Observe(world, "round", season, r);
+                observeForce012?.Invoke(world, "round");
 
                 result.TotalRoundsCompleted++;
             }
@@ -761,6 +766,7 @@ public partial class MultiSeasonAndBenchmarkTests
             // Harvest end-of-season prize money and stadium maintenance/renovation/expansion transactions
             HarvestRoundEconomyMetrics(world, processedTxIds, seenAuctionIds, result);
             capture?.Observe(world, "seasonFinalized", season, roundsInSeason);
+            observeForce012?.Invoke(world, "seasonFinalized");
 
             // Check if any human agent was dismissed due to relegation to Distrital and accept a new job invitation
             foreach (var h in world.HumanCoaches)
@@ -957,6 +963,7 @@ public partial class MultiSeasonAndBenchmarkTests
         List<MatchFixture> roundFixtures,
         ExperimentResult result)
     {
+        ClassicForceEvolutionEngine.PrepareRound(world);
         var clubDict = world.Clubs.ToDictionary(c => c.Id);
         var aiDict = world.AiManagers.ToDictionary(m => m.Id);
         var playerDict = world.Players.ToDictionary(p => p.Id);

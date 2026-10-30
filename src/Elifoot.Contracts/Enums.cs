@@ -2,6 +2,8 @@ using System.Text.Json.Serialization;
 
 namespace Elifoot.Contracts;
 
+public enum ForceEvolutionMode { LegacySeasonal = 0, ClassicAdapted = 1 }
+
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PlayerPosition
 {

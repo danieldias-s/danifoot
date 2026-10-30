@@ -206,8 +206,19 @@ public static class MatchSimulationEngine
         bool allowClassic505 = true)
     {
         var events = new List<MatchEventRecord>();
-        if (match.IsFinished) return events;
+        if (match.IsFinished || match.IsCancelled || match.IsPostponed || match.CurrentMinute <= match.LastSimulatedMinute) return events;
+        match.LastSimulatedMinute = match.CurrentMinute;
+        DisciplineEngine.CaptureKickoff(match, worldPlayers);
         PlayerStatisticsEngine.CaptureLineup(match, worldPlayers);
+        foreach(bool home in new[]{true,false})
+        {
+            var active=home?match.HomeActiveStarterIds:match.AwayActiveStarterIds;
+            var injured=home?match.HomeInjuredInMatchIds:match.AwayInjuredInMatchIds;
+            var sentOff=home?match.HomeSentOffIds:match.AwaySentOffIds;
+            var vacancies=home?match.HomeInjuryVacancies:match.AwayInjuryVacancies;
+            foreach(var id in active.Where(injured.Contains))if(!sentOff.Contains(id))vacancies.Add(id);
+            active.RemoveAll(id=>injured.Contains(id)||sentOff.Contains(id));
+        }
 
         int minute = match.CurrentMinute;
         var rng = DeterministicRng.FromContext(worldSeed, match.SeasonNumber, match.RoundNumber, match.DeterministicMatchIndex, minute);
@@ -215,32 +226,34 @@ public static class MatchSimulationEngine
         var homeActive = match.HomeActiveStarterIds
             .Where(worldPlayers.ContainsKey)
             .Select(id => worldPlayers[id])
+            .Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0)
             .ToList();
         var awayActive = match.AwayActiveStarterIds
             .Where(worldPlayers.ContainsKey)
             .Select(id => worldPlayers[id])
+            .Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0)
             .ToList();
 
         // 1. Discipline / Foul & Card Check
         int prevEvents = events.Count;
-        ProcessTeamDisciplineTick(match, homeClub, homeActive, isHome: true, minute, rng, events);
-        ProcessTeamDisciplineTick(match, awayClub, awayActive, isHome: false, minute, rng, events);
+        ProcessTeamDisciplineTick(match, homeClub, homeActive, isHome: true, minute, rng, events, worldSeed);
+        ProcessTeamDisciplineTick(match, awayClub, awayActive, isHome: false, minute, rng, events, worldSeed);
 
         if (events.Count > prevEvents)
         {
-            homeActive = match.HomeActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).ToList();
-            awayActive = match.AwayActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).ToList();
+            homeActive = match.HomeActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0).ToList();
+            awayActive = match.AwayActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0).ToList();
         }
 
         // 2. Injury Check (low deterministic chance per minute)
         prevEvents = events.Count;
-        ProcessInjuryTick(match, homeClub, homeActive, isHome: true, minute, rng, events);
-        ProcessInjuryTick(match, awayClub, awayActive, isHome: false, minute, rng, events);
+        ProcessInjuryTick(match, homeClub, homeActive, isHome: true, minute, rng, events, worldSeed);
+        ProcessInjuryTick(match, awayClub, awayActive, isHome: false, minute, rng, events, worldSeed);
 
         if (events.Count > prevEvents)
         {
-            homeActive = match.HomeActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).ToList();
-            awayActive = match.AwayActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).ToList();
+            homeActive = match.HomeActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0).ToList();
+            awayActive = match.AwayActiveStarterIds.Where(worldPlayers.ContainsKey).Select(id => worldPlayers[id]).Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0).ToList();
         }
 
         // 3. Sector Computation & Attack vs Defense Resolution
@@ -283,7 +296,8 @@ public static class MatchSimulationEngine
         bool isHome,
         int minute,
         DeterministicRng rng,
-        List<MatchEventRecord> events)
+        List<MatchEventRecord> events,
+        int worldSeed)
     {
         // Only players with Behavior != FairPlay commit intentional/aggressive fouls
         var foulCandidates = activePlayers.Where(p => p.Behavior != PlayerBehavior.FairPlay).ToList();
@@ -341,7 +355,7 @@ public static class MatchSimulationEngine
             activeIds.Remove(offender.Id);
             if (!sentOffList.Contains(offender.Id)) sentOffList.Add(offender.Id);
             offender.SeasonReds++;
-            offender.SuspensionRoundsRemaining = Math.Max(offender.SuspensionRoundsRemaining, 2);
+
 
             var evt = new MatchEventRecord
             {
@@ -353,6 +367,7 @@ public static class MatchSimulationEngine
                 PrimaryPlayerDisplayName = offender.DisplayName,
                 Description = $"{minute}' Cartão VERMELHO direto para {offender.DisplayName} ({club.ShortName})!"
             };
+            DisciplineEngine.RecordCard(match,offender,evt,worldSeed);
             match.Events.Add(evt);
             events.Add(evt);
         }
@@ -363,22 +378,14 @@ public static class MatchSimulationEngine
             yellowDict[offender.Id] = currentYellows;
             offender.SeasonYellows++;
 
-            var suspList = isHome ? match.HomeSuspendedByYellowInMatchIds : match.AwaySuspendedByYellowInMatchIds;
+
 
             if (currentYellows >= 2)
             {
-                // BUG-006-01 Fix: 2nd yellow in same match converts into a Red Card (1-round suspension).
-                // It must NOT also increment YellowCardsAccumulated toward a future 3-yellow suspension,
-                // and if the 1st yellow in this match had incremented YellowCardsAccumulated without triggering a 3-yellow suspension, revert that +1.
-                if (!suspList.Contains(offender.Id) && offender.YellowCardsAccumulated > 0)
-                {
-                    offender.YellowCardsAccumulated--;
-                }
-
                 activeIds.Remove(offender.Id);
                 if (!sentOffList.Contains(offender.Id)) sentOffList.Add(offender.Id);
                 offender.SeasonReds++;
-                offender.SuspensionRoundsRemaining = Math.Max(offender.SuspensionRoundsRemaining, 1);
+
 
                 var evt = new MatchEventRecord
                 {
@@ -390,19 +397,12 @@ public static class MatchSimulationEngine
                     PrimaryPlayerDisplayName = offender.DisplayName,
                     Description = $"{minute}' 2º Amarelo e VERMELHO para {offender.DisplayName} ({club.ShortName})!"
                 };
+                DisciplineEngine.RecordCard(match,offender,evt,worldSeed);
                 match.Events.Add(evt);
                 events.Add(evt);
             }
             else
             {
-                offender.YellowCardsAccumulated++;
-                if (offender.YellowCardsAccumulated >= 3)
-                {
-                    offender.SuspensionRoundsRemaining = Math.Max(offender.SuspensionRoundsRemaining, 1);
-                    offender.YellowCardsAccumulated = 0;
-                    if (!suspList.Contains(offender.Id)) suspList.Add(offender.Id);
-                }
-
                 var evt = new MatchEventRecord
                 {
                     Minute = minute,
@@ -413,6 +413,7 @@ public static class MatchSimulationEngine
                     PrimaryPlayerDisplayName = offender.DisplayName,
                     Description = $"{minute}' Cartão amarelo para {offender.DisplayName} ({club.ShortName})."
                 };
+                DisciplineEngine.RecordCard(match,offender,evt,worldSeed);
                 match.Events.Add(evt);
                 events.Add(evt);
             }
@@ -426,7 +427,8 @@ public static class MatchSimulationEngine
         bool isHome,
         int minute,
         DeterministicRng rng,
-        List<MatchEventRecord> events)
+        List<MatchEventRecord> events,
+        int worldSeed)
     {
         if (activePlayers.Count == 0) return;
 
@@ -438,10 +440,15 @@ public static class MatchSimulationEngine
         if (injuredList.Contains(injured.Id)) return;
 
         injuredList.Add(injured.Id);
-        injured.InjuryRoundsRemaining = rng.NextInt(1, 4);
+        (isHome ? match.HomeActiveStarterIds : match.AwayActiveStarterIds).Remove(injured.Id);
+        (isHome ? match.HomeInjuryVacancies : match.AwayInjuryVacancies).Add(injured.Id);
+        int legacyDuration = rng.NextInt(1, 4); // Preserve the match RNG stream and occurrence probability.
+        if (match.ForceRulesVersion == ClassicForceEvolutionEngine.Version)
+            ClassicForceEvolutionEngine.RegisterInjury(match, club, injured, worldSeed);
+        else injured.InjuryRoundsRemaining = legacyDuration;
 
-        // If the team has exhausted substitutions or it's a severe injury and no subs can be made,
-        // the player remains flagged as injured; if severe (3+ rounds), player leaves the pitch if no subs left.
+        // Keep the slot available for an injury substitution. Classic day-based injuries are
+        // excluded from subsequent active-player projections, even when no substitution remains.
         var evt = new MatchEventRecord
         {
             Minute = minute,
@@ -725,30 +732,33 @@ public static class MatchSimulationEngine
         var subbedOut = isHomeTeam ? match.HomeSubstitutedOutIds : match.AwaySubstitutedOutIds;
         var subbedIn = isHomeTeam ? match.HomeSubstitutedInIds : match.AwaySubstitutedInIds;
         var sentOff = isHomeTeam ? match.HomeSentOffIds : match.AwaySentOffIds;
+        var vacancies = isHomeTeam ? match.HomeInjuryVacancies : match.AwayInjuryVacancies;
 
         // Validate each substitution before mutating state
         var simActive = new List<Guid>(activeStarters);
         var simBench = new List<Guid>(bench);
         var simSubbedOut = new List<Guid>(subbedOut);
+        var simVacancies = new HashSet<Guid>(vacancies);
 
         foreach (var sub in substitutions)
         {
             if (sentOff.Contains(sub.PlayerOutId))
                 return (false, "Jogador expulso não pode ser substituído.", createdEvents);
 
-            if (!simActive.Contains(sub.PlayerOutId))
+            if (!simActive.Contains(sub.PlayerOutId) && !simVacancies.Contains(sub.PlayerOutId))
                 return (false, "O jogador que sai não está em campo.", createdEvents);
 
             if (simSubbedOut.Contains(sub.PlayerInId))
                 return (false, "Um jogador já substituído não pode retornar ao gramado.", createdEvents);
 
-            if (!simBench.Contains(sub.PlayerInId))
+            if (!simBench.Contains(sub.PlayerInId) || sentOff.Contains(sub.PlayerInId))
                 return (false, "O jogador que entra não está disponível no banco de reservas.", createdEvents);
 
             if (!worldPlayers.TryGetValue(sub.PlayerInId, out var pIn) || !pIn.IsAvailableForMatch)
                 return (false, "O jogador que entra não está apto para atuar.", createdEvents);
 
             simActive.Remove(sub.PlayerOutId);
+            simVacancies.Remove(sub.PlayerOutId);
             simActive.Add(sub.PlayerInId);
             simBench.Remove(sub.PlayerInId);
             simSubbedOut.Add(sub.PlayerOutId);
@@ -776,6 +786,7 @@ public static class MatchSimulationEngine
         foreach (var sub in substitutions)
         {
             activeStarters.Remove(sub.PlayerOutId);
+            vacancies.Remove(sub.PlayerOutId);
             activeStarters.Add(sub.PlayerInId);
             bench.Remove(sub.PlayerInId);
             subbedOut.Add(sub.PlayerOutId);
@@ -843,6 +854,7 @@ public static class MatchSimulationEngine
         var homeTakers = match.HomeActiveStarterIds
             .Where(worldPlayers.ContainsKey)
             .Select(id => worldPlayers[id])
+            .Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0)
             .OrderByDescending(p => p.IsStar)
             .ThenByDescending(p => p.Position == PlayerPosition.A)
             .ThenByDescending(p => p.Strength)
@@ -851,6 +863,7 @@ public static class MatchSimulationEngine
         var awayTakers = match.AwayActiveStarterIds
             .Where(worldPlayers.ContainsKey)
             .Select(id => worldPlayers[id])
+            .Where(p => match.ForceRulesVersion != ClassicForceEvolutionEngine.Version || p.InjuryDaysRemaining == 0)
             .OrderByDescending(p => p.IsStar)
             .ThenByDescending(p => p.Position == PlayerPosition.A)
             .ThenByDescending(p => p.Strength)
@@ -954,8 +967,9 @@ public static class MatchSimulationEngine
         int worldSeed,
         bool allowClassic505 = true)
     {
+        if(match.IsFinished||match.IsCancelled||match.IsPostponed)return 0;
         // 1. Prepare initial lineups via AI Manager Brain if not already locked by a Human Coach
-        if (match.HomeActiveStarterIds.Count != 11)
+        if (match.CurrentMinute==0&&!SquadValidator.ValidatePreMatchLineup(match.HomeFormation,match.HomeActiveStarterIds,match.HomeBenchIds,homeSquad,allowClassic505).IsValid)
         {
             if (homeMgr != null)
             {
@@ -975,7 +989,7 @@ public static class MatchSimulationEngine
             }
         }
 
-        if (match.AwayActiveStarterIds.Count != 11)
+        if (match.CurrentMinute==0&&!SquadValidator.ValidatePreMatchLineup(match.AwayFormation,match.AwayActiveStarterIds,match.AwayBenchIds,awaySquad,allowClassic505).IsValid)
         {
             if (awayMgr != null)
             {

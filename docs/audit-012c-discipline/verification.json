@@ -1,0 +1,380 @@
+{
+  "Rule": "DISCIPLINE_INJURY_AND_MAN_DOWN_RULES",
+  "Version": 1,
+  "Seasons": 100,
+  "Matches": 35100,
+  "Minutes": 3255480,
+  "CardTypes": {
+    "YellowCard": 79775,
+    "SecondYellowRedCard": 2251,
+    "DirectRedCard": 3125
+  },
+  "DirectRedDurationCounts": [
+    1562,
+    932,
+    488,
+    143
+  ],
+  "CardRecords": 85151,
+  "SuspensionRecords": 63397,
+  "AwardReasons": {
+    "SECOND_YELLOW": 2251,
+    "DIRECT_RED": 3125,
+    "THREE_YELLOWS": 25195
+  },
+  "AwardedMatches": 32908,
+  "ServedMatches": 32826,
+  "NoDuplicateCards": true,
+  "NoDuplicateSuspensions": true,
+  "NoInfractionMatchServed": true,
+  "ShortHandedMatches": 7386,
+  "UnreplacedInjuries": 598,
+  "Metrics": [
+    {
+      "Metric": "Faltas",
+      "Before": 621767,
+      "After": 640277,
+      "BeforePerMatch": 17.714159544159543,
+      "AfterPerMatch": 18.24150997150997,
+      "ChangePercent": 2.976999422613291
+    },
+    {
+      "Metric": "Amarelos isolados (eventos YellowCard)",
+      "Before": 77493,
+      "After": 79775,
+      "BeforePerMatch": 2.207777777777778,
+      "AfterPerMatch": 2.272792022792023,
+      "ChangePercent": 2.9447821093518067
+    },
+    {
+      "Metric": "Vermelhos diretos",
+      "Before": 3099,
+      "After": 3125,
+      "BeforePerMatch": 0.0882905982905983,
+      "AfterPerMatch": 0.08903133903133903,
+      "ChangePercent": 0.8389803162310416
+    },
+    {
+      "Metric": "Expulsões por segundo amarelo",
+      "Before": 2416,
+      "After": 2251,
+      "BeforePerMatch": 0.06883190883190883,
+      "AfterPerMatch": 0.06413105413105413,
+      "ChangePercent": -6.829470198675491
+    },
+    {
+      "Metric": "Expulsões totais",
+      "Before": 5515,
+      "After": 5376,
+      "BeforePerMatch": 0.1571225071225071,
+      "AfterPerMatch": 0.15316239316239316,
+      "ChangePercent": -2.5203989120580195
+    },
+    {
+      "Metric": "Lesões (referência legada 012)",
+      "Before": 11869,
+      "After": 11847,
+      "BeforePerMatch": 0.33814814814814814,
+      "AfterPerMatch": 0.3375213675213675,
+      "ChangePercent": -0.1853568118628357
+    },
+    {
+      "Metric": "Gols (referência legada 012)",
+      "Before": 86071,
+      "After": 107573,
+      "BeforePerMatch": 2.452165242165242,
+      "AfterPerMatch": 3.0647578347578346,
+      "ChangePercent": 24.981701153698687
+    }
+  ],
+  "Prior012C": {
+    "Goals": 109687,
+    "Injuries": 11866
+  },
+  "DirectRedSample": [
+    {
+      "Matches": 1,
+      "Percent": 50,
+      "Count": 50104,
+      "ObservedPercent": 50.104
+    },
+    {
+      "Matches": 2,
+      "Percent": 30,
+      "Count": 30119,
+      "ObservedPercent": 30.119
+    },
+    {
+      "Matches": 3,
+      "Percent": 15,
+      "Count": 14802,
+      "ObservedPercent": 14.802
+    },
+    {
+      "Matches": 4,
+      "Percent": 5,
+      "Count": 4975,
+      "ObservedPercent": 4.975
+    }
+  ],
+  "StatisticalFamilyErrorBound": 1.5165676225645334e-7,
+  "InjuryEpisodes": 11847,
+  "ForceEvents": 248311,
+  "Replay": {
+    "Seed": 199813,
+    "Seasons": 2,
+    "First": "AE2367AEE99E5D28D448097F9D960EFC4B28E57005257C2FFE772541AC3B2CC5",
+    "Second": "AE2367AEE99E5D28D448097F9D960EFC4B28E57005257C2FFE772541AC3B2CC5",
+    "Identical": true
+  },
+  "ReserveEvents": 109590,
+  "PlayedLosses": 124352,
+  "DailyLosses": 14369,
+  "Status": "PASS",
+  "DotnetCases": 367,
+  "FlutterCases": 56,
+  "TrxFiles": [
+    "closing-discipline012c_net10.0_20261030164500.trx",
+    "closing-discipline012c_net10.0_20261030165340.trx",
+    "closing-discipline012c_net10.0_20261030165623.trx",
+    "verified-discipline012c_net10.0_20261030164303.trx",
+    "verified-discipline012c_net10.0_20261030164314.trx",
+    "verified-discipline012c_net10.0_20261030164435.trx",
+    "verified-discipline012c_net10.0_20261030165409.trx"
+  ],
+  "DefensiveFormulaPreserved": true,
+  "BehaviorFoulWeightsPreserved": true,
+  "OccurrenceProbabilityConstantsPreserved": true,
+  "ChangedFiles": [
+    "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+    "tests/Elifoot.Domain.Tests/PlayerForce012Tests.cs",
+    "tests/Elifoot.Domain.Tests/DomainEngineAndRulesTests.cs",
+    "client/elifoot_flutter/lib/shell_actions.dart",
+    "client/elifoot_flutter/lib/main.dart",
+    "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+    "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+    "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+    "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+    "src/Elifoot.Contracts/Dtos.cs",
+    "src/Elifoot.Domain/AiManagerBrain.cs",
+    "src/Elifoot.Domain/Entities.cs",
+    "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+    "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+    "src/Elifoot.Domain/MatchEngine.cs",
+    "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+    "src/Elifoot.Domain/TacticsAndSquadRules.cs"
+  ],
+  "PreservedCheckpointFiles": 165,
+  "CreatedFiles": [
+    "src/Elifoot.Contracts/PlayerDisciplineDtos.cs",
+    "src/Elifoot.Domain/DisciplineEngine.cs",
+    "tests/Elifoot.Domain.Tests/Discipline012CTests.cs",
+    "tests/Elifoot.Integration.Tests/Discipline012CIntegrationTests.cs",
+    "tests/Elifoot.Simulation.Tests/Discipline012CSimulationTests.cs",
+    "client/elifoot_flutter/test/discipline_012c_test.dart",
+    "scripts/report-discipline-012c.mjs",
+    "docs/DISCIPLINE_RULES_012C.md",
+    "docs/RED_CARD_SUSPENSION_012C.md",
+    "docs/YELLOW_CARD_ACCUMULATION_012C.md",
+    "docs/MAN_DOWN_MATCH_IMPACT_012C.md",
+    "docs/INJURY_SELECTION_AUDIT_012C.md",
+    "docs/DISCIPLINE_REGRESSION_012C.md"
+  ],
+  "GeneratedAtUtc": "2026-10-30T19:58:23.520Z",
+  "FileHashes": [
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+      "Sha256": "A4A9E85AB0A88078510EA72E8D46B619376E87002DEB7DFAB4C404641C9C6F36"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012Tests.cs",
+      "Sha256": "58608C62C8BB21FC131C59BD10F9616D88476DC20CE0BF4B7D514271F64CFE73"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/DomainEngineAndRulesTests.cs",
+      "Sha256": "5021D01A8EA898E13D2A3E27D223D0131F00B82F29CE4B8201BDF26AB35FE236"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Sha256": "B4931BCE928267975ACFA971CFE811953393949AE6FC9FF47AB3CA61158CE196"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "D0C5EE5F281B838218A46B9A0138DDCD2D047D04DAAB4DFD848A163C1D8BB018"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "128332F13B6B46B2D9972C0D061B6C2D9CEDF0ABFE2A9CBE31A506B73DA4984C"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "Sha256": "683FFA1900318CF96113F90490AB6A4E9EA6C92D4C23BDFE722ABB0D5F2AFE4D"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "Sha256": "B1DBAE5D3439DC06FC5339DC29B150F42C72754BF2209AD815A953F51AE0EB65"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Sha256": "E4D3FE4BDE39A317116CD72E82EE0777F181E92D1D9E38F36F477F0234CDA40B"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "Sha256": "B7F7AE058ED905A6E72FB783A23105D81C5DB00FDAE6338C46AF30DF207A1C04"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "1C620A878306A8DE6F885C69EE7E4B6BF99CF89C7B312C47E45C444BE8E2AF23"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "0413FB6FC1084AC674EE644C884CBE6481F11326146991088725240BB5874C16"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "201D497495A3BDC577D359BF15203B22E54FD1C757C09D7076290CBE99B3F127"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "Sha256": "86C3B0E5D7FF5F2139D85C5E6FE96B4AE42A6617F96C611E61F08EC08FAEE396"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "01179D6A0F0A073B69FF7BF0589674B664F960FBEDCBA6E1D5907EA55E18BB71"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "4C3D849A3D84B883B0D755F2EDD8AD635AF17A49B54D859A6EAE1E56F083188E"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "05BD246FCCC88A70CEC00FF2919C71F4DEC762A0E2DDB00979DBFC780565E861"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerDisciplineDtos.cs",
+      "Sha256": "EBC06F889AD7AC1DBD3C033CFF3C1553BE1EAC76570A87CB5BE51F6E10148E5F"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DisciplineEngine.cs",
+      "Sha256": "F46F70BBAADC412AFC5ED729CBB08760A2F887B10934D582E167D025FDABA313"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Discipline012CTests.cs",
+      "Sha256": "8F3095CB07913B1C81141EBDF835AE1F20340475278D75C13127AF12609CD493"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Discipline012CIntegrationTests.cs",
+      "Sha256": "7C08C7EC52B33F85E775C1363961A39E998A1FA4ABB6BF6789E483042B7050DC"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Discipline012CSimulationTests.cs",
+      "Sha256": "9B0571008F175E153FE0B22162FC57B30B8E9874ACF831D7679152E2B8D2058C"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/discipline_012c_test.dart",
+      "Sha256": "81E7EB15B217051CF884E35C80A9E1B2BFBA54686894607BFDD69328CC0DE2C5"
+    },
+    {
+      "Path": "scripts/report-discipline-012c.mjs",
+      "Sha256": "22B6F0AC094300C0BB6107AA6F8E2A33F5B98BCD6442C5F32DC87AEC97C1D766"
+    },
+    {
+      "Path": "docs/DISCIPLINE_RULES_012C.md",
+      "Sha256": "D70A02B137F4D29DA3E763B7EB3FBF50DE4F3871F4073AA980B82052C5C48C83"
+    },
+    {
+      "Path": "docs/RED_CARD_SUSPENSION_012C.md",
+      "Sha256": "740B1E5A140EC119CBE66287F5B787E2752600DD81CE22CB4283088B46486B79"
+    },
+    {
+      "Path": "docs/YELLOW_CARD_ACCUMULATION_012C.md",
+      "Sha256": "E08DE2D43B0EB061A847003B3E42B47E5868BFB963CA2C43C0A07306FF3B57E9"
+    },
+    {
+      "Path": "docs/MAN_DOWN_MATCH_IMPACT_012C.md",
+      "Sha256": "7EDAC874DCEEB0EE0AF92F016383D08A7EB48B80BB363857C7BCF0095B99089E"
+    },
+    {
+      "Path": "docs/INJURY_SELECTION_AUDIT_012C.md",
+      "Sha256": "176F69FBE349F97805B79A00619D0B3568114D2B32D6C07F3E82DB0B00CB9C6F"
+    },
+    {
+      "Path": "docs/DISCIPLINE_REGRESSION_012C.md",
+      "Sha256": "D401509BEBA202AF66ACC50C431B380C4AD0D88D419EAF8EB393EFB25D35899A"
+    }
+  ],
+  "EvidenceHashes": [
+    {
+      "Path": "build-verified.log",
+      "Sha256": "6E11E52E5A25AE73B24CEE094984138446A6F53CEEEED860836EB9A222DF128B"
+    },
+    {
+      "Path": "regression-verified.log",
+      "Sha256": "74A2D7EE120D10319DC0A63AE812FB12A2DCC477CBEA6115703517A5CB7A0BEA"
+    },
+    {
+      "Path": "replay-verified.log",
+      "Sha256": "A4870BC80403C5EE2A80A8186D05889DC4D192E8F129EFAF9519668086CB6E0B"
+    },
+    {
+      "Path": "sector-verified.log",
+      "Sha256": "4EED447A1A988C675B9B843C3954E7A5E3C14E7E0D39E782A4A31E42DFE0A293"
+    },
+    {
+      "Path": "migration-verified.log",
+      "Sha256": "A616ACE882F57CCFA07490F02C193821B61BBDE57B365C86E1C520976B29F653"
+    },
+    {
+      "Path": "flutter-analyze.log",
+      "Sha256": "91DBD0D06F9BE3AA8103C79D0D4BF0454B356E2A87DD07FFE3C839617867087B"
+    },
+    {
+      "Path": "flutter-tests.log",
+      "Sha256": "5634B712ADCBB427DAC0C925D1265BECEE04D56846F8F45411FF5B625FBA78D1"
+    },
+    {
+      "Path": "tests/closing-discipline012c_net10.0_20261030164500.trx",
+      "Sha256": "1F70E3D1CD4F7F10CD0E671ED6286ED2F6C5EFA4A9C18CF7705176338252410F"
+    },
+    {
+      "Path": "tests/closing-discipline012c_net10.0_20261030165340.trx",
+      "Sha256": "18D903F8C3E84DB3C4DE163521F3A3ADAFD220A3A78C361FBCA06E28F499026D"
+    },
+    {
+      "Path": "tests/closing-discipline012c_net10.0_20261030165623.trx",
+      "Sha256": "272621FD7FFDDDFE2F42D162B65E8162CF761993AE6208FEE9DEC0D3B43BD953"
+    },
+    {
+      "Path": "tests/verified-discipline012c_net10.0_20261030164303.trx",
+      "Sha256": "518836E854457286584E57CB6FF85F3C4EA16579BC669ADC15DFB87C0FC18B0C"
+    },
+    {
+      "Path": "tests/verified-discipline012c_net10.0_20261030164314.trx",
+      "Sha256": "9EA98D5288EC1F30C74586C06402BD388E84C012F8D451E726113C8C9EFA9156"
+    },
+    {
+      "Path": "tests/verified-discipline012c_net10.0_20261030164435.trx",
+      "Sha256": "F90AF66F40B205137D9554B404F33D05F380F89F1B989C720C19D1C5C78E903E"
+    },
+    {
+      "Path": "tests/verified-discipline012c_net10.0_20261030165409.trx",
+      "Sha256": "7EE6FF84895DE02242A45BCEBECFF737F6D5820DBC298BB83ABAA24239AE846E"
+    },
+    {
+      "Path": "verified/classic-force-012c/100-seasons.json",
+      "Sha256": "87D14221F6B085EFBD8C912F36C341280CFFAABDA51A7FD7D9225530745337D9"
+    },
+    {
+      "Path": "verified/classic-force-012c/discipline-cards.jsonl.gz",
+      "Sha256": "A137556850568923DB89D70F7EA90FE32C7FD75C133123F5FEB7B64CFA09ADC5"
+    },
+    {
+      "Path": "verified/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Sha256": "4C9050ED8AF8696194DF058A2202B40943A16238DC8377E0B746A1CA6CA7C77F"
+    },
+    {
+      "Path": "verified/direct-red-100000.json",
+      "Sha256": "8F3BEECD2C03EDB26C2EB22F47A73E18E27E705BF8C5A036CDFA5515775C18CF"
+    }
+  ]
+}

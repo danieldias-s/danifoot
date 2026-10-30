@@ -1,0 +1,2938 @@
+{
+  "Rule": "CLASSIC_ADAPTED_FORCE_EVOLUTION",
+  "Version": 1,
+  "Seasons": 100,
+  "Matches": 35100,
+  "Minutes": 3255840,
+  "Goals": 109687,
+  "ReasonTotals": {
+    "PLAYED_MATCH_DECLINE": {
+      "Events": 126084,
+      "Points": 126084
+    },
+    "INJURY_DAILY_LOSS": {
+      "Events": 14732,
+      "Points": 14805
+    },
+    "RESERVE_PROGRESS": {
+      "Events": 113664,
+      "Points": 113664
+    }
+  },
+  "Injuries": 11866,
+  "RealDurationCounts": [
+    1539,
+    1612,
+    1457,
+    1466,
+    1287,
+    1136,
+    1055,
+    691,
+    474,
+    347,
+    276,
+    223,
+    180,
+    123
+  ],
+  "TotalInjuryBudget": 14805,
+  "ActualInjuryPoints": 14805,
+  "ZeroBudgetEpisodes": 5459,
+  "MaximumBudgetEpisodes": 5379,
+  "NoDuplicateHistoryKeys": true,
+  "NoDuplicateInjuryDays": true,
+  "ContinuousPlayerHistory": true,
+  "SeasonsByDivision": [
+    {
+      "Season": 1,
+      "Divisions": {
+        "PrimeiraDivisao": {
+          "Count": 149,
+          "Mean": 39.02684563758389,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 9,
+          "Maximum": 48
+        },
+        "SegundaDivisao": {
+          "Count": 139,
+          "Mean": 30.741007194244606,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 8,
+          "Maximum": 39
+        },
+        "TerceiraDivisao": {
+          "Count": 143,
+          "Mean": 24.657342657342657,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 5,
+          "Maximum": 38
+        },
+        "QuartaDivisao": {
+          "Count": 143,
+          "Mean": 19.706293706293707,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 4,
+          "Maximum": 31
+        },
+        "Distrital": {
+          "Count": 1728,
+          "Mean": 15.269097222222221,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 8,
+          "Maximum": 21
+        }
+      }
+    },
+    {
+      "Season": 10,
+      "Divisions": {
+        "PrimeiraDivisao": {
+          "Count": 173,
+          "Mean": 22.45664739884393,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 11,
+          "Maximum": 44
+        },
+        "SegundaDivisao": {
+          "Count": 174,
+          "Mean": 20.03448275862069,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 10,
+          "Maximum": 39
+        },
+        "TerceiraDivisao": {
+          "Count": 171,
+          "Mean": 17.257309941520468,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 9,
+          "Maximum": 39
+        },
+        "QuartaDivisao": {
+          "Count": 163,
+          "Mean": 14.478527607361963,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 5,
+          "Maximum": 32
+        },
+        "Distrital": {
+          "Count": 1602,
+          "Mean": 13.52059925093633,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 3,
+          "Maximum": 29
+        }
+      }
+    },
+    {
+      "Season": 25,
+      "Divisions": {
+        "PrimeiraDivisao": {
+          "Count": 174,
+          "Mean": 18.2816091954023,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 8,
+          "Maximum": 42
+        },
+        "SegundaDivisao": {
+          "Count": 172,
+          "Mean": 17.953488372093023,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 9,
+          "Maximum": 40
+        },
+        "TerceiraDivisao": {
+          "Count": 168,
+          "Mean": 15.696428571428571,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 6,
+          "Maximum": 29
+        },
+        "QuartaDivisao": {
+          "Count": 160,
+          "Mean": 12.9625,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 2,
+          "Maximum": 29
+        },
+        "Distrital": {
+          "Count": 1343,
+          "Mean": 10.822784810126583,
+          "At1": 5,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 26
+        }
+      }
+    },
+    {
+      "Season": 50,
+      "Divisions": {
+        "PrimeiraDivisao": {
+          "Count": 156,
+          "Mean": 18.647435897435898,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 2,
+          "Maximum": 41
+        },
+        "SegundaDivisao": {
+          "Count": 167,
+          "Mean": 16.940119760479043,
+          "At1": 3,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 37
+        },
+        "TerceiraDivisao": {
+          "Count": 174,
+          "Mean": 14.522988505747126,
+          "At1": 0,
+          "At50": 0,
+          "Minimum": 2,
+          "Maximum": 41
+        },
+        "QuartaDivisao": {
+          "Count": 155,
+          "Mean": 10.935483870967742,
+          "At1": 3,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 31
+        },
+        "Distrital": {
+          "Count": 1310,
+          "Mean": 5.991603053435115,
+          "At1": 137,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 24
+        }
+      }
+    },
+    {
+      "Season": 100,
+      "Divisions": {
+        "PrimeiraDivisao": {
+          "Count": 161,
+          "Mean": 19.391304347826086,
+          "At1": 6,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 45
+        },
+        "SegundaDivisao": {
+          "Count": 152,
+          "Mean": 15.519736842105264,
+          "At1": 3,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 39
+        },
+        "TerceiraDivisao": {
+          "Count": 168,
+          "Mean": 13.416666666666666,
+          "At1": 2,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 40
+        },
+        "QuartaDivisao": {
+          "Count": 156,
+          "Mean": 10.096153846153847,
+          "At1": 4,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 36
+        },
+        "Distrital": {
+          "Count": 1291,
+          "Mean": 2.0580945003872966,
+          "At1": 1049,
+          "At50": 0,
+          "Minimum": 1,
+          "Maximum": 27
+        }
+      }
+    }
+  ],
+  "FinalByRank": [
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 1,
+      "Ceiling": 50,
+      "Count": 18,
+      "Mean": 24.77777777777778,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 43
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 2,
+      "Ceiling": 50,
+      "Count": 20,
+      "Mean": 25.7,
+      "At1": 3,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 45
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 3,
+      "Ceiling": 50,
+      "Count": 24,
+      "Mean": 16.291666666666668,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 4,
+      "Maximum": 38
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 4,
+      "Ceiling": 49,
+      "Count": 16,
+      "Mean": 23.1875,
+      "At1": 2,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 32
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 5,
+      "Ceiling": 48,
+      "Count": 22,
+      "Mean": 17.5,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 7,
+      "Maximum": 33
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 6,
+      "Ceiling": 47,
+      "Count": 21,
+      "Mean": 19,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 3,
+      "Maximum": 38
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 7,
+      "Ceiling": 46,
+      "Count": 17,
+      "Mean": 18.470588235294116,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 3,
+      "Maximum": 30
+    },
+    {
+      "Division": "PrimeiraDivisao",
+      "Rank": 8,
+      "Ceiling": 44,
+      "Count": 23,
+      "Mean": 13.130434782608695,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 2,
+      "Maximum": 26
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 1,
+      "Ceiling": 44,
+      "Count": 18,
+      "Mean": 16.61111111111111,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 4,
+      "Maximum": 28
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 2,
+      "Ceiling": 42,
+      "Count": 17,
+      "Mean": 17.294117647058822,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 5,
+      "Maximum": 31
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 3,
+      "Ceiling": 42,
+      "Count": 16,
+      "Mean": 19.1875,
+      "At1": 2,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 32
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 4,
+      "Ceiling": 39,
+      "Count": 17,
+      "Mean": 17.88235294117647,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 4,
+      "Maximum": 32
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 5,
+      "Ceiling": 37,
+      "Count": 20,
+      "Mean": 13.8,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 5,
+      "Maximum": 33
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 6,
+      "Ceiling": 34,
+      "Count": 23,
+      "Mean": 13.043478260869565,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 6,
+      "Maximum": 39
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 7,
+      "Ceiling": 31,
+      "Count": 17,
+      "Mean": 17.470588235294116,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 30
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Rank": 8,
+      "Ceiling": 28,
+      "Count": 24,
+      "Mean": 11.75,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 6,
+      "Maximum": 30
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 1,
+      "Ceiling": 28,
+      "Count": 17,
+      "Mean": 17.41176470588235,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 4,
+      "Maximum": 31
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 2,
+      "Ceiling": 26,
+      "Count": 24,
+      "Mean": 13.166666666666666,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 5,
+      "Maximum": 40
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 3,
+      "Ceiling": 26,
+      "Count": 17,
+      "Mean": 15.647058823529411,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 24
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 4,
+      "Ceiling": 23,
+      "Count": 21,
+      "Mean": 16.285714285714285,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 6,
+      "Maximum": 29
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 5,
+      "Ceiling": 21,
+      "Count": 19,
+      "Mean": 13.526315789473685,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 22
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 6,
+      "Ceiling": 18,
+      "Count": 24,
+      "Mean": 11.625,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 5,
+      "Maximum": 22
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 7,
+      "Ceiling": 15,
+      "Count": 23,
+      "Mean": 9.73913043478261,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 6,
+      "Maximum": 24
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Rank": 8,
+      "Ceiling": 12,
+      "Count": 23,
+      "Mean": 11.91304347826087,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 6,
+      "Maximum": 28
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 1,
+      "Ceiling": 12,
+      "Count": 18,
+      "Mean": 14.444444444444445,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 20
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 2,
+      "Ceiling": 10,
+      "Count": 21,
+      "Mean": 11.285714285714286,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 3,
+      "Maximum": 36
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 3,
+      "Ceiling": 10,
+      "Count": 18,
+      "Mean": 11.555555555555555,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 3,
+      "Maximum": 22
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 4,
+      "Ceiling": 8,
+      "Count": 24,
+      "Mean": 10.208333333333334,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 5,
+      "Maximum": 23
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 5,
+      "Ceiling": 6,
+      "Count": 18,
+      "Mean": 8.222222222222221,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 22
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 6,
+      "Ceiling": 4,
+      "Count": 19,
+      "Mean": 8.789473684210526,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 3,
+      "Maximum": 21
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 7,
+      "Ceiling": 2,
+      "Count": 19,
+      "Mean": 7.894736842105263,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 19
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Rank": 8,
+      "Ceiling": 1,
+      "Count": 19,
+      "Mean": 8.421052631578947,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 26
+    }
+  ],
+  "FinalByPlayerPosition": [
+    {
+      "Position": "G",
+      "Count": 257,
+      "Mean": 8.719844357976653,
+      "At1": 113,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 45
+    },
+    {
+      "Position": "D",
+      "Count": 769,
+      "Mean": 4.964889466840052,
+      "At1": 352,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 25
+    },
+    {
+      "Position": "M",
+      "Count": 769,
+      "Mean": 8.490247074122237,
+      "At1": 332,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 32
+    },
+    {
+      "Position": "A",
+      "Count": 513,
+      "Mean": 8.621832358674464,
+      "At1": 267,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 30
+    }
+  ],
+  "FinalByUsage": [
+    {
+      "Usage": "Zero league minutes",
+      "Count": 12,
+      "Mean": 17.25,
+      "At1": 0,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 50
+    },
+    {
+      "Usage": "Played 1 to 6 league games",
+      "Count": 138,
+      "Mean": 17.608695652173914,
+      "At1": 1,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 50
+    },
+    {
+      "Usage": "Played at least 7 league games",
+      "Count": 487,
+      "Mean": 13.702258726899384,
+      "At1": 14,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 50
+    }
+  ],
+  "FinalInjuredCohorts": [
+    {
+      "InjuredThisSeason": false,
+      "Count": 549,
+      "Mean": 14.650273224043715,
+      "At1": 13,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 50
+    },
+    {
+      "InjuredThisSeason": true,
+      "Count": 88,
+      "Mean": 14.397727272727273,
+      "At1": 2,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 50
+    }
+  ],
+  "FirstGrowthCeiling": [
+    {
+      "Division": "PrimeiraDivisao",
+      "Players": 3,
+      "MedianFirstCapDay": 28,
+      "First": {
+        "PlayerId": "b3d3fdd5-b505-1d48-a3d0-60dc753c80f9",
+        "Division": "PrimeiraDivisao",
+        "Season": 1,
+        "Round": 3,
+        "Date": "1998-08-08",
+        "Ceiling": 44,
+        "DaysSinceWorldStart": 7
+      },
+      "Last": {
+        "PlayerId": "816a7c71-77b9-b549-85ce-cc757007fd2a",
+        "Division": "PrimeiraDivisao",
+        "Season": 2,
+        "Round": 9,
+        "Date": "1998-12-02",
+        "Ceiling": 46,
+        "DaysSinceWorldStart": 123
+      }
+    },
+    {
+      "Division": "SegundaDivisao",
+      "Players": 32,
+      "MedianFirstCapDay": 2014,
+      "First": {
+        "PlayerId": "97389c2c-9734-6f41-b4f2-8905920d1b56",
+        "Division": "SegundaDivisao",
+        "Season": 1,
+        "Round": 4,
+        "Date": "1998-08-12",
+        "Ceiling": 28,
+        "DaysSinceWorldStart": 11
+      },
+      "Last": {
+        "PlayerId": "b2df815d-7724-d449-932e-ab737d9c4583",
+        "Division": "SegundaDivisao",
+        "Season": 95,
+        "Round": 13,
+        "Date": "2024-01-27",
+        "Ceiling": 44,
+        "DaysSinceWorldStart": 9310
+      }
+    },
+    {
+      "Division": "TerceiraDivisao",
+      "Players": 273,
+      "MedianFirstCapDay": 2927,
+      "First": {
+        "PlayerId": "235bb527-6ecf-8a43-a074-c0de5b50739f",
+        "Division": "TerceiraDivisao",
+        "Season": 1,
+        "Round": 3,
+        "Date": "1998-08-08",
+        "Ceiling": 23,
+        "DaysSinceWorldStart": 7
+      },
+      "Last": {
+        "PlayerId": "52c3da2e-0723-1746-8a37-0095b62b6429",
+        "Division": "TerceiraDivisao",
+        "Season": 99,
+        "Round": 15,
+        "Date": "2025-02-28",
+        "Ceiling": 18,
+        "DaysSinceWorldStart": 9708
+      }
+    },
+    {
+      "Division": "QuartaDivisao",
+      "Players": 346,
+      "MedianFirstCapDay": 4314,
+      "First": {
+        "PlayerId": "0305d799-a9c4-6c47-81d8-6ee581742783",
+        "Division": "QuartaDivisao",
+        "Season": 1,
+        "Round": 12,
+        "Date": "1998-09-09",
+        "Ceiling": 4,
+        "DaysSinceWorldStart": 39
+      },
+      "Last": {
+        "PlayerId": "14ac2e6f-793e-1749-a667-8c935af49154",
+        "Division": "QuartaDivisao",
+        "Season": 100,
+        "Round": 16,
+        "Date": "2025-06-11",
+        "Ceiling": 8,
+        "DaysSinceWorldStart": 9811
+      }
+    }
+  ],
+  "Probes": [
+    {
+      "Id": "8d807aef-e042-0e47-a826-a0707126e72d",
+      "Position": "G",
+      "InitialDivision": "PrimeiraDivisao",
+      "FinalDivision": "SegundaDivisao",
+      "FinalForce": 31,
+      "Maximum": 46,
+      "FirstObservedCap": {
+        "Season": 5,
+        "Round": 9,
+        "Date": "1999-09-13",
+        "Ceiling": 28
+      }
+    },
+    {
+      "Id": "765362da-7e8c-d749-a864-34b8a25f860b",
+      "Position": "A",
+      "InitialDivision": "PrimeiraDivisao",
+      "FinalDivision": "Distrital",
+      "FinalForce": 1,
+      "Maximum": 17,
+      "FirstObservedCap": {
+        "Season": 2,
+        "Round": 5,
+        "Date": "1998-11-18",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "5eff26fb-2342-884f-b0f0-3f126d8712e0",
+      "Position": "G",
+      "InitialDivision": "SegundaDivisao",
+      "FinalDivision": "QuartaDivisao",
+      "FinalForce": 27,
+      "Maximum": 28,
+      "FirstObservedCap": {
+        "Season": 4,
+        "Round": 9,
+        "Date": "1999-06-10",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "a2012735-f9e0-1144-8d53-2b857b719441",
+      "Position": "A",
+      "InitialDivision": "SegundaDivisao",
+      "FinalDivision": "Distrital",
+      "FinalForce": 1,
+      "Maximum": 25,
+      "FirstObservedCap": {
+        "Season": 1,
+        "Round": 19,
+        "Date": "1998-10-03",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "08375cbb-9089-2a49-b935-bdf2300803e6",
+      "Position": "G",
+      "InitialDivision": "TerceiraDivisao",
+      "FinalDivision": "Distrital",
+      "FinalForce": 1,
+      "Maximum": 25,
+      "FirstObservedCap": {
+        "Season": 1,
+        "Round": 16,
+        "Date": "1998-09-23",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "762b6600-2937-e747-9313-29e4df86058a",
+      "Position": "A",
+      "InitialDivision": "TerceiraDivisao",
+      "FinalDivision": "TerceiraDivisao",
+      "FinalForce": 27,
+      "Maximum": 31,
+      "FirstObservedCap": {
+        "Season": 2,
+        "Round": 14,
+        "Date": "1998-12-20",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "0305d799-a9c4-6c47-81d8-6ee581742783",
+      "Position": "G",
+      "InitialDivision": "QuartaDivisao",
+      "FinalDivision": "Distrital",
+      "FinalForce": 1,
+      "Maximum": 12,
+      "FirstObservedCap": {
+        "Season": 1,
+        "Round": 4,
+        "Date": "1998-08-12",
+        "Ceiling": 1
+      }
+    },
+    {
+      "Id": "7d0712c7-e9da-cb4e-a640-f545f5003792",
+      "Position": "A",
+      "InitialDivision": "QuartaDivisao",
+      "FinalDivision": "SegundaDivisao",
+      "FinalForce": 25,
+      "Maximum": 31,
+      "FirstObservedCap": {
+        "Season": 1,
+        "Round": 4,
+        "Date": "1998-08-12",
+        "Ceiling": 1
+      }
+    }
+  ],
+  "FirstGrowthCeilingNote": "First observed +1 that reaches the current club ceiling; calendar days since world creation, including transfers and table changes. Not time to a fixed ceiling under permanent reserve treatment.",
+  "Comparison": {
+    "Legacy012": {
+      "Count": 2308,
+      "Mean": 22.157279033795493,
+      "At1": 0,
+      "At50": 26,
+      "Minimum": 13,
+      "Maximum": 50
+    },
+    "Legacy012B": {
+      "Count": 2308,
+      "Mean": 22.157279033795493,
+      "At1": 0,
+      "At50": 26,
+      "Minimum": 13,
+      "Maximum": 50
+    },
+    "Classic012C": {
+      "Count": 2308,
+      "Mean": 7.364384748700173,
+      "At1": 1064,
+      "At50": 0,
+      "Minimum": 1,
+      "Maximum": 45
+    },
+    "LegacyModeIdentical": true
+  },
+  "DurationSample": [
+    {
+      "Days": 2,
+      "WeightOutOf200": 26,
+      "Percent": 13,
+      "Count": 12905,
+      "ObservedPercent": 12.905,
+      "Sigma": -0.893289651465121
+    },
+    {
+      "Days": 3,
+      "WeightOutOf200": 26,
+      "Percent": 13,
+      "Count": 13147,
+      "ObservedPercent": 13.147,
+      "Sigma": 1.3822481975302396
+    },
+    {
+      "Days": 4,
+      "WeightOutOf200": 24,
+      "Percent": 12,
+      "Count": 12053,
+      "ObservedPercent": 12.053,
+      "Sigma": 0.5157555505070089
+    },
+    {
+      "Days": 5,
+      "WeightOutOf200": 24,
+      "Percent": 12,
+      "Count": 11938,
+      "ObservedPercent": 11.938,
+      "Sigma": -0.6033366817251803
+    },
+    {
+      "Days": 6,
+      "WeightOutOf200": 22,
+      "Percent": 11,
+      "Count": 11068,
+      "ObservedPercent": 11.068,
+      "Sigma": 0.6872544598206778
+    },
+    {
+      "Days": 7,
+      "WeightOutOf200": 20,
+      "Percent": 10,
+      "Count": 10041,
+      "ObservedPercent": 10.041,
+      "Sigma": 0.43217794688967853
+    },
+    {
+      "Days": 8,
+      "WeightOutOf200": 18,
+      "Percent": 9,
+      "Count": 8779,
+      "ObservedPercent": 8.779,
+      "Sigma": -2.4420262208854484
+    },
+    {
+      "Days": 9,
+      "WeightOutOf200": 12,
+      "Percent": 6,
+      "Count": 6026,
+      "ObservedPercent": 6.026,
+      "Sigma": 0.3462053668393499
+    },
+    {
+      "Days": 10,
+      "WeightOutOf200": 8,
+      "Percent": 4,
+      "Count": 3894,
+      "ObservedPercent": 3.894,
+      "Sigma": -1.7105676445749425
+    },
+    {
+      "Days": 11,
+      "WeightOutOf200": 6,
+      "Percent": 3,
+      "Count": 3108,
+      "ObservedPercent": 3.108,
+      "Sigma": 2.002060793952175
+    },
+    {
+      "Days": 12,
+      "WeightOutOf200": 5,
+      "Percent": 2.5,
+      "Count": 2501,
+      "ObservedPercent": 2.501,
+      "Sigma": 0.020254787341673332
+    },
+    {
+      "Days": 13,
+      "WeightOutOf200": 4,
+      "Percent": 2,
+      "Count": 2053,
+      "ObservedPercent": 2.053,
+      "Sigma": 1.197147971349458
+    },
+    {
+      "Days": 14,
+      "WeightOutOf200": 3,
+      "Percent": 1.5,
+      "Count": 1510,
+      "ObservedPercent": 1.51,
+      "Sigma": 0.2601574428938419
+    },
+    {
+      "Days": 15,
+      "WeightOutOf200": 2,
+      "Percent": 1,
+      "Count": 977,
+      "ObservedPercent": 0.977,
+      "Sigma": -0.7309879850882874
+    }
+  ],
+  "DurationSampleFamilyErrorBound": 6.216972124771008e-7,
+  "Replay": {
+    "Seed": 199813,
+    "Seasons": 2,
+    "First": "21979101A2336376BB92298BEBCF127887A60446166A14A33C5982952283DC77",
+    "Second": "21979101A2336376BB92298BEBCF127887A60446166A14A33C5982952283DC77",
+    "Identical": true
+  },
+  "AiPurchases": 33007,
+  "StrongAiPurchases": 28,
+  "Market": [
+    {
+      "Season": 1,
+      "Phase": "initial",
+      "PlayersAtLeast40": 89,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 312630.79419410747,
+      "Injured": 0
+    },
+    {
+      "Season": 1,
+      "Phase": "round",
+      "PlayersAtLeast40": 72,
+      "ListedAtLeast40": 7,
+      "AverageFairValue": 270682.0870883882,
+      "Injured": 6
+    },
+    {
+      "Season": 2,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 72,
+      "ListedAtLeast40": 7,
+      "AverageFairValue": 270480.3552859619,
+      "Injured": 0
+    },
+    {
+      "Season": 2,
+      "Phase": "round",
+      "PlayersAtLeast40": 59,
+      "ListedAtLeast40": 17,
+      "AverageFairValue": 246844.81889081455,
+      "Injured": 6
+    },
+    {
+      "Season": 3,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 58,
+      "ListedAtLeast40": 17,
+      "AverageFairValue": 246295.5836221837,
+      "Injured": 0
+    },
+    {
+      "Season": 3,
+      "Phase": "round",
+      "PlayersAtLeast40": 36,
+      "ListedAtLeast40": 16,
+      "AverageFairValue": 226444.356152513,
+      "Injured": 15
+    },
+    {
+      "Season": 4,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 35,
+      "ListedAtLeast40": 16,
+      "AverageFairValue": 225409.27036395148,
+      "Injured": 0
+    },
+    {
+      "Season": 4,
+      "Phase": "round",
+      "PlayersAtLeast40": 26,
+      "ListedAtLeast40": 10,
+      "AverageFairValue": 206020.16464471404,
+      "Injured": 3
+    },
+    {
+      "Season": 5,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 26,
+      "ListedAtLeast40": 10,
+      "AverageFairValue": 205795.07279029462,
+      "Injured": 0
+    },
+    {
+      "Season": 5,
+      "Phase": "round",
+      "PlayersAtLeast40": 20,
+      "ListedAtLeast40": 7,
+      "AverageFairValue": 186058.56802426343,
+      "Injured": 13
+    },
+    {
+      "Season": 6,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 20,
+      "ListedAtLeast40": 7,
+      "AverageFairValue": 185631.99350086655,
+      "Injured": 0
+    },
+    {
+      "Season": 6,
+      "Phase": "round",
+      "PlayersAtLeast40": 14,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 171361.44020797228,
+      "Injured": 6
+    },
+    {
+      "Season": 7,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 14,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 171111.44627383017,
+      "Injured": 0
+    },
+    {
+      "Season": 7,
+      "Phase": "round",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 161149.81889081455,
+      "Injured": 6
+    },
+    {
+      "Season": 8,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 160997.28639514733,
+      "Injured": 0
+    },
+    {
+      "Season": 8,
+      "Phase": "round",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 153597.3856152513,
+      "Injured": 7
+    },
+    {
+      "Season": 9,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 153422.30502599652,
+      "Injured": 0
+    },
+    {
+      "Season": 9,
+      "Phase": "round",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 147115.0433275563,
+      "Injured": 8
+    },
+    {
+      "Season": 10,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 146902.7370017331,
+      "Injured": 0
+    },
+    {
+      "Season": 10,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 139523.18587521664,
+      "Injured": 10
+    },
+    {
+      "Season": 11,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 139353.7240034662,
+      "Injured": 0
+    },
+    {
+      "Season": 11,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 135100.37781629115,
+      "Injured": 8
+    },
+    {
+      "Season": 12,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 135017.98006932408,
+      "Injured": 0
+    },
+    {
+      "Season": 12,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 131947.2157712305,
+      "Injured": 5
+    },
+    {
+      "Season": 13,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 131848.09055459272,
+      "Injured": 0
+    },
+    {
+      "Season": 13,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 130081.62781629116,
+      "Injured": 7
+    },
+    {
+      "Season": 14,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 129951.82235701906,
+      "Injured": 0
+    },
+    {
+      "Season": 14,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 126159.71620450607,
+      "Injured": 6
+    },
+    {
+      "Season": 15,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 126081.7322357019,
+      "Injured": 0
+    },
+    {
+      "Season": 15,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 123614.42374350087,
+      "Injured": 15
+    },
+    {
+      "Season": 16,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 123432.36351819757,
+      "Injured": 0
+    },
+    {
+      "Season": 16,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 121443.21923743501,
+      "Injured": 11
+    },
+    {
+      "Season": 17,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 121281.87348353553,
+      "Injured": 0
+    },
+    {
+      "Season": 17,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 120144.22140381283,
+      "Injured": 7
+    },
+    {
+      "Season": 18,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 120107.46923743501,
+      "Injured": 0
+    },
+    {
+      "Season": 18,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 118344.29506065858,
+      "Injured": 9
+    },
+    {
+      "Season": 19,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 118271.26906412479,
+      "Injured": 0
+    },
+    {
+      "Season": 19,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 117311.92547660312,
+      "Injured": 10
+    },
+    {
+      "Season": 20,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 117247.32972270364,
+      "Injured": 0
+    },
+    {
+      "Season": 20,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 115393.85095320625,
+      "Injured": 6
+    },
+    {
+      "Season": 21,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 115304.41334488735,
+      "Injured": 0
+    },
+    {
+      "Season": 21,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 114120.5801559792,
+      "Injured": 10
+    },
+    {
+      "Season": 22,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 114060.01256499134,
+      "Injured": 0
+    },
+    {
+      "Season": 22,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 110811.94974003466,
+      "Injured": 6
+    },
+    {
+      "Season": 23,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 110654.49566724437,
+      "Injured": 0
+    },
+    {
+      "Season": 23,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 109493.90424610052,
+      "Injured": 11
+    },
+    {
+      "Season": 24,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 109386.75563258232,
+      "Injured": 0
+    },
+    {
+      "Season": 24,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 106590.05285961872,
+      "Injured": 10
+    },
+    {
+      "Season": 25,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 106497.59185441941,
+      "Injured": 0
+    },
+    {
+      "Season": 25,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 104917.4493067591,
+      "Injured": 12
+    },
+    {
+      "Season": 26,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 104669.9670710572,
+      "Injured": 0
+    },
+    {
+      "Season": 26,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 104217.46750433276,
+      "Injured": 13
+    },
+    {
+      "Season": 27,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 103975.0472270364,
+      "Injured": 0
+    },
+    {
+      "Season": 27,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 103704.76559792028,
+      "Injured": 14
+    },
+    {
+      "Season": 28,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 103521.40814558059,
+      "Injured": 0
+    },
+    {
+      "Season": 28,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 102206.60615251299,
+      "Injured": 8
+    },
+    {
+      "Season": 29,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 102172.5671577123,
+      "Injured": 0
+    },
+    {
+      "Season": 29,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 101165.00693240901,
+      "Injured": 6
+    },
+    {
+      "Season": 30,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 101089.11048526863,
+      "Injured": 0
+    },
+    {
+      "Season": 30,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 100819.49350086655,
+      "Injured": 14
+    },
+    {
+      "Season": 31,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 100731.52253032928,
+      "Injured": 0
+    },
+    {
+      "Season": 31,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 101773.81152512999,
+      "Injured": 11
+    },
+    {
+      "Season": 32,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 101698.48006932408,
+      "Injured": 0
+    },
+    {
+      "Season": 32,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 100962.8171577123,
+      "Injured": 10
+    },
+    {
+      "Season": 33,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 100874.06975736568,
+      "Injured": 0
+    },
+    {
+      "Season": 33,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 99725.17677642981,
+      "Injured": 10
+    },
+    {
+      "Season": 34,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 99366.23613518197,
+      "Injured": 0
+    },
+    {
+      "Season": 34,
+      "Phase": "round",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 98996.62218370884,
+      "Injured": 4
+    },
+    {
+      "Season": 35,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 98954.68240901214,
+      "Injured": 0
+    },
+    {
+      "Season": 35,
+      "Phase": "round",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 97131.04636048527,
+      "Injured": 7
+    },
+    {
+      "Season": 36,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 97058.83188908146,
+      "Injured": 0
+    },
+    {
+      "Season": 36,
+      "Phase": "round",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 94931.68674176777,
+      "Injured": 6
+    },
+    {
+      "Season": 37,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 94824.45710571924,
+      "Injured": 0
+    },
+    {
+      "Season": 37,
+      "Phase": "round",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 92823.53466204506,
+      "Injured": 8
+    },
+    {
+      "Season": 38,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 8,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 92545.99133448873,
+      "Injured": 0
+    },
+    {
+      "Season": 38,
+      "Phase": "round",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 93520.61048526863,
+      "Injured": 4
+    },
+    {
+      "Season": 39,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 10,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 93514.15511265164,
+      "Injured": 0
+    },
+    {
+      "Season": 39,
+      "Phase": "round",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 93154.5506932409,
+      "Injured": 10
+    },
+    {
+      "Season": 40,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 93018.87651646447,
+      "Injured": 0
+    },
+    {
+      "Season": 40,
+      "Phase": "round",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 90549.80849220105,
+      "Injured": 7
+    },
+    {
+      "Season": 41,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 90472.75129982669,
+      "Injured": 0
+    },
+    {
+      "Season": 41,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 88062.70580589255,
+      "Injured": 14
+    },
+    {
+      "Season": 42,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 87845.386915078,
+      "Injured": 0
+    },
+    {
+      "Season": 42,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86644.2205372617,
+      "Injured": 4
+    },
+    {
+      "Season": 43,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86597.31282495667,
+      "Injured": 0
+    },
+    {
+      "Season": 43,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86583.80155979203,
+      "Injured": 10
+    },
+    {
+      "Season": 44,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86439.84662045061,
+      "Injured": 0
+    },
+    {
+      "Season": 44,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86289.31542461005,
+      "Injured": 11
+    },
+    {
+      "Season": 45,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 86042.46880415945,
+      "Injured": 0
+    },
+    {
+      "Season": 45,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 87025.30632582323,
+      "Injured": 12
+    },
+    {
+      "Season": 46,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86878.56455805892,
+      "Injured": 0
+    },
+    {
+      "Season": 46,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86495.85181975737,
+      "Injured": 8
+    },
+    {
+      "Season": 47,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86438.42071057193,
+      "Injured": 0
+    },
+    {
+      "Season": 47,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86477.28336221837,
+      "Injured": 4
+    },
+    {
+      "Season": 48,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86349.25216637782,
+      "Injured": 0
+    },
+    {
+      "Season": 48,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86243.83622183709,
+      "Injured": 7
+    },
+    {
+      "Season": 49,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86173.77989601386,
+      "Injured": 0
+    },
+    {
+      "Season": 49,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 87432.94670710572,
+      "Injured": 8
+    },
+    {
+      "Season": 50,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 87251.14211438475,
+      "Injured": 0
+    },
+    {
+      "Season": 50,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86188.56759098786,
+      "Injured": 6
+    },
+    {
+      "Season": 51,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86105.85311958406,
+      "Injured": 0
+    },
+    {
+      "Season": 51,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86753.20017331022,
+      "Injured": 17
+    },
+    {
+      "Season": 52,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86591.77642980935,
+      "Injured": 0
+    },
+    {
+      "Season": 52,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86263.06585788561,
+      "Injured": 12
+    },
+    {
+      "Season": 53,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86101.64774696706,
+      "Injured": 0
+    },
+    {
+      "Season": 53,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86697.5424610052,
+      "Injured": 8
+    },
+    {
+      "Season": 54,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86645.57019064124,
+      "Injured": 0
+    },
+    {
+      "Season": 54,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86300.46273830156,
+      "Injured": 7
+    },
+    {
+      "Season": 55,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86255.61351819757,
+      "Injured": 0
+    },
+    {
+      "Season": 55,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 87226.9445407279,
+      "Injured": 8
+    },
+    {
+      "Season": 56,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 87146.4527729636,
+      "Injured": 0
+    },
+    {
+      "Season": 56,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86568.5766897747,
+      "Injured": 18
+    },
+    {
+      "Season": 57,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 86188.88171577123,
+      "Injured": 0
+    },
+    {
+      "Season": 57,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 84475.54029462738,
+      "Injured": 8
+    },
+    {
+      "Season": 58,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 84263.82712305026,
+      "Injured": 0
+    },
+    {
+      "Season": 58,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83588.97487001734,
+      "Injured": 3
+    },
+    {
+      "Season": 59,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83558.22963604852,
+      "Injured": 0
+    },
+    {
+      "Season": 59,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83432.45017331022,
+      "Injured": 8
+    },
+    {
+      "Season": 60,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83385.5047660312,
+      "Injured": 0
+    },
+    {
+      "Season": 60,
+      "Phase": "round",
+      "PlayersAtLeast40": 3,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81939.27772963604,
+      "Injured": 9
+    },
+    {
+      "Season": 61,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81627.83362218371,
+      "Injured": 0
+    },
+    {
+      "Season": 61,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81983.91681109185,
+      "Injured": 12
+    },
+    {
+      "Season": 62,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81652.30675909879,
+      "Injured": 0
+    },
+    {
+      "Season": 62,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81423.68544194108,
+      "Injured": 11
+    },
+    {
+      "Season": 63,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81196.13301559792,
+      "Injured": 0
+    },
+    {
+      "Season": 63,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82209.1650779896,
+      "Injured": 5
+    },
+    {
+      "Season": 64,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82119.19714038128,
+      "Injured": 0
+    },
+    {
+      "Season": 64,
+      "Phase": "round",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80582.39644714037,
+      "Injured": 7
+    },
+    {
+      "Season": 65,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80485.60571923743,
+      "Injured": 0
+    },
+    {
+      "Season": 65,
+      "Phase": "round",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81473.66117850953,
+      "Injured": 7
+    },
+    {
+      "Season": 66,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81394.95060658579,
+      "Injured": 0
+    },
+    {
+      "Season": 66,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82840.86395147313,
+      "Injured": 7
+    },
+    {
+      "Season": 67,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82740.73526863084,
+      "Injured": 0
+    },
+    {
+      "Season": 67,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81795.6616117851,
+      "Injured": 7
+    },
+    {
+      "Season": 68,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81619.43154246101,
+      "Injured": 0
+    },
+    {
+      "Season": 68,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80474.09575389948,
+      "Injured": 9
+    },
+    {
+      "Season": 69,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80156.35788561525,
+      "Injured": 0
+    },
+    {
+      "Season": 69,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80109.18934142114,
+      "Injured": 9
+    },
+    {
+      "Season": 70,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 79920.12824956673,
+      "Injured": 0
+    },
+    {
+      "Season": 70,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82767.2829289428,
+      "Injured": 7
+    },
+    {
+      "Season": 71,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82715.71490467938,
+      "Injured": 0
+    },
+    {
+      "Season": 71,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82987.92850953207,
+      "Injured": 11
+    },
+    {
+      "Season": 72,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82626.0849220104,
+      "Injured": 0
+    },
+    {
+      "Season": 72,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83160.52686308492,
+      "Injured": 7
+    },
+    {
+      "Season": 73,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83108.74696707106,
+      "Injured": 0
+    },
+    {
+      "Season": 73,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 85460.8301559792,
+      "Injured": 6
+    },
+    {
+      "Season": 74,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 85399.8006932409,
+      "Injured": 0
+    },
+    {
+      "Season": 74,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83342.86655112651,
+      "Injured": 8
+    },
+    {
+      "Season": 75,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 83293.6143847487,
+      "Injured": 0
+    },
+    {
+      "Season": 75,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82001.62088388215,
+      "Injured": 7
+    },
+    {
+      "Season": 76,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81949.7322357019,
+      "Injured": 0
+    },
+    {
+      "Season": 76,
+      "Phase": "round",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82470.37868284229,
+      "Injured": 13
+    },
+    {
+      "Season": 77,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 2,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 82249.98136915077,
+      "Injured": 0
+    },
+    {
+      "Season": 77,
+      "Phase": "round",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80741.57928942807,
+      "Injured": 12
+    },
+    {
+      "Season": 78,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 1,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80696.25303292894,
+      "Injured": 0
+    },
+    {
+      "Season": 78,
+      "Phase": "round",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80697.68414211439,
+      "Injured": 6
+    },
+    {
+      "Season": 79,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80502.35745233968,
+      "Injured": 0
+    },
+    {
+      "Season": 79,
+      "Phase": "round",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80564.7746967071,
+      "Injured": 8
+    },
+    {
+      "Season": 80,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 80553.80632582323,
+      "Injured": 0
+    },
+    {
+      "Season": 80,
+      "Phase": "round",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81963.03466204506,
+      "Injured": 6
+    },
+    {
+      "Season": 81,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 0,
+      "ListedAtLeast40": 0,
+      "AverageFairValue": 81903.78552859619,
+      "Injured": 0
+    },
+    {
+      "Season": 81,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81288.33708838822,
+      "Injured": 12
+    },
+    {
+      "Season": 82,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81140.88258232236,
+      "Injured": 0
+    },
+    {
+      "Season": 82,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 5,
+      "AverageFairValue": 81510.36611785095,
+      "Injured": 6
+    },
+    {
+      "Season": 83,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 5,
+      "AverageFairValue": 81454.8526863085,
+      "Injured": 0
+    },
+    {
+      "Season": 83,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 82882.17201039862,
+      "Injured": 7
+    },
+    {
+      "Season": 84,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 82729.77902946273,
+      "Injured": 0
+    },
+    {
+      "Season": 84,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 81456.35138648181,
+      "Injured": 6
+    },
+    {
+      "Season": 85,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 1,
+      "AverageFairValue": 81447.48786828422,
+      "Injured": 0
+    },
+    {
+      "Season": 85,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81178.09272097054,
+      "Injured": 13
+    },
+    {
+      "Season": 86,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 80994.88128249567,
+      "Injured": 0
+    },
+    {
+      "Season": 86,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81978.38258232236,
+      "Injured": 14
+    },
+    {
+      "Season": 87,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81609.80805892548,
+      "Injured": 0
+    },
+    {
+      "Season": 87,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 82433.27512998266,
+      "Injured": 14
+    },
+    {
+      "Season": 88,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 82214.95883882149,
+      "Injured": 0
+    },
+    {
+      "Season": 88,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 83912.20450606586,
+      "Injured": 5
+    },
+    {
+      "Season": 89,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 83788.68760831888,
+      "Injured": 0
+    },
+    {
+      "Season": 89,
+      "Phase": "round",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81724.50866551127,
+      "Injured": 8
+    },
+    {
+      "Season": 90,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 4,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81637.43024263432,
+      "Injured": 0
+    },
+    {
+      "Season": 90,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 80462.51386481803,
+      "Injured": 11
+    },
+    {
+      "Season": 91,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 80330.58535528596,
+      "Injured": 0
+    },
+    {
+      "Season": 91,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 81962.79332755633,
+      "Injured": 12
+    },
+    {
+      "Season": 92,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 2,
+      "AverageFairValue": 81803.30849220105,
+      "Injured": 0
+    },
+    {
+      "Season": 92,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 80499.63994800694,
+      "Injured": 12
+    },
+    {
+      "Season": 93,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 80303.18370883883,
+      "Injured": 0
+    },
+    {
+      "Season": 93,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 5,
+      "AverageFairValue": 80640.30372616985,
+      "Injured": 7
+    },
+    {
+      "Season": 94,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 5,
+      "AverageFairValue": 80601.45233968804,
+      "Injured": 0
+    },
+    {
+      "Season": 94,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 79834.99740034662,
+      "Injured": 13
+    },
+    {
+      "Season": 95,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 79386.10095320625,
+      "Injured": 0
+    },
+    {
+      "Season": 95,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81658.11178509532,
+      "Injured": 10
+    },
+    {
+      "Season": 96,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81548.90511265164,
+      "Injured": 0
+    },
+    {
+      "Season": 96,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81828.5602253033,
+      "Injured": 5
+    },
+    {
+      "Season": 97,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 4,
+      "AverageFairValue": 81810.59142114385,
+      "Injured": 0
+    },
+    {
+      "Season": 97,
+      "Phase": "round",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 6,
+      "AverageFairValue": 79961.70797227036,
+      "Injured": 9
+    },
+    {
+      "Season": 98,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 7,
+      "ListedAtLeast40": 6,
+      "AverageFairValue": 79898.00736568458,
+      "Injured": 0
+    },
+    {
+      "Season": 98,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81555.34878682843,
+      "Injured": 7
+    },
+    {
+      "Season": 99,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81450.45970537262,
+      "Injured": 0
+    },
+    {
+      "Season": 99,
+      "Phase": "round",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81844.88258232236,
+      "Injured": 6
+    },
+    {
+      "Season": 100,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 6,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 81729.58795493934,
+      "Injured": 0
+    },
+    {
+      "Season": 100,
+      "Phase": "round",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 83468.79462738302,
+      "Injured": 12
+    },
+    {
+      "Season": 101,
+      "Phase": "seasonFinalized",
+      "PlayersAtLeast40": 5,
+      "ListedAtLeast40": 3,
+      "AverageFairValue": 83295.48916811091,
+      "Injured": 0
+    }
+  ],
+  "CalendarPostponements": {
+    "Rounds": 82,
+    "TotalDays": 353,
+    "MaximumDays": 11
+  },
+  "Status": "PASS",
+  "DotnetPassingCases": 324,
+  "FlutterPassingCases": 54,
+  "DotnetProjects": [
+    {
+      "File": "final012c_net10.0_20261030155545.trx",
+      "Cases": 5
+    },
+    {
+      "File": "final012c_net10.0_20261030155552.trx",
+      "Cases": 266
+    },
+    {
+      "File": "final012c_net10.0_20261030155728.trx",
+      "Cases": 34
+    },
+    {
+      "File": "final012c_net10.0_20261030160536.trx",
+      "Cases": 19
+    }
+  ],
+  "DefensiveFormulaByteIdentical": true,
+  "ChangedExistingFiles": [
+    "client/elifoot_flutter/lib/shell_actions.dart",
+    "client/elifoot_flutter/lib/player_rankings.dart",
+    "client/elifoot_flutter/lib/main.dart",
+    "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+    "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+    "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+    "src/Elifoot.Contracts/PlayerStrengthDtos.cs",
+    "src/Elifoot.Contracts/Enums.cs",
+    "src/Elifoot.Contracts/Dtos.cs",
+    "src/Elifoot.Domain/Entities.cs",
+    "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+    "src/Elifoot.Domain/AiManagerBrain.cs",
+    "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+    "src/Elifoot.Domain/MatchEngine.cs",
+    "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+    "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+    "src/Elifoot.Domain/WorldSeedFactory.cs"
+  ],
+  "PreservedBaselineFiles": 191,
+  "NewFiles": [
+    "src/Elifoot.Domain/ClassicForceState.cs",
+    "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+    "tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs",
+    "tests/Elifoot.Integration.Tests/ClassicForce012CIntegrationTests.cs",
+    "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+    "tests/Elifoot.Simulation.Tests/ClassicForce012CInjuryTriggerTests.cs",
+    "client/elifoot_flutter/test/classic_force_012c_test.dart",
+    "scripts/report-classic-force-012c.mjs",
+    "docs/CLASSIC_FORCE_EVOLUTION_012C.md",
+    "docs/FORCE_CEILINGS_012C.json",
+    "docs/WEIGHTED_INJURIES_012C.json",
+    "docs/INJURY_DAILY_FORCE_LOSS_012C.md",
+    "docs/PLAYER_FORCE_HISTORY_012C.md",
+    "docs/FORCE_BALANCE_100_SEASONS_012C.md",
+    "docs/FORCE_REGRESSION_TESTS_012C.md",
+    "docs/KNOWN_ISSUES_012C.md"
+  ],
+  "GeneratedAtUtc": "2026-10-30T19:07:16.743Z",
+  "FinalFileHashes": [
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Sha256": "3B4CEEBE9347E97222F80B913404292C167717375DB87046BFEFDBB48FC2D924"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Sha256": "E11C8BC88B45608FD75DAF9B02F12BF3CC9973595B9A7A587051276E781677CE"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "666DFB31A70E4536B3268D4E319F0A86CDC373EBE416B5AE58949ADEF54E2812"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "Sha256": "322E6B65BFC110BEE6CAF668088E08E6AA8956B2A0A458C7F378BC0E65DC8DE8"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "Sha256": "584D55C073AAC76373379A175B59D5E237AE2DFBA1F64FF76444FEDBA5B56100"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "Sha256": "291513ED689EFA8F064E7414F5009236B47EF92C58069916234CF20B459ABE7C"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerStrengthDtos.cs",
+      "Sha256": "499D43520C9986A08ABF6CBA4E1C4B80BC2F5EE4E74B96E82D6DA85A15BE977A"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "Sha256": "0C7E2E57B29B439F2AB186C476002AF88F1B1D5BB1D8554EEAB8B9DF4235C632"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "Sha256": "FBE75EA68DCC2CE5D953F590C2D57DD07A5B55271FB6117B97BFA060B9D4D3BE"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "AA1C2B156CB8EB628CF22F9EC3AA2F1C0516B6C2B5ABC1336E696E18F992F278"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "7A2DBD3C17BEBF4506428C0ECEF7BAD3F2A98F5E7D16F1E96CFE7EE26B1C96FD"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "5BE6C159E1583CF5423135A6EA0C445C3237F7477F2DEDBE3B5B5E2E211C33CC"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "7C8A1D9435CE4E40438AA083B311673780F5A6A87046361587947F2DB1134EDA"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "492EF40914DB595523DC58E7914FFC500E7EB01E75200F8941376BF25F416B79"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "A70C2DFF180E2CDC1B62AEF17B1D59DC2789F4F11C1705B9423C57A5BBFB0B23"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+      "Sha256": "0FDC02671439F738CC10188A8AE3B27F5AB8E1489B6056192285E0BAA23DAF7A"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Sha256": "048B98A129C405DF415624CDCBBBC6384835541930882FDB75A9C1238D2C53AF"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceState.cs",
+      "Sha256": "2B21339B8A72755C52DACB97580835B8351C8BBAFF8DC15685B0F8127489ADD9"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+      "Sha256": "283F49E905EAA4DB8BBDB51D00990CB40B621E574232EA6E385D103355BD672B"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs",
+      "Sha256": "820D67D35D37E89DD70534A0086E2C90592645D1F066F229E3C9C43F52B401E9"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicForce012CIntegrationTests.cs",
+      "Sha256": "E7BE8B00F9B9F169327BBE7A7EFDA8BF1AA3BA7AA07853CA872AE2B9F43FA86A"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+      "Sha256": "52915FD2B30E652FE350131968DAAF37B351EDB22FA3688F2E05276603D4A560"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CInjuryTriggerTests.cs",
+      "Sha256": "6D9057C1DEAB55C77F39106CD1774FC7074C01AABFA74810886CF36361493F9F"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/classic_force_012c_test.dart",
+      "Sha256": "77E6C212F190F53AAB1DAF17847C17ACF8665CB3AA8A321711467029D5402D01"
+    },
+    {
+      "Path": "scripts/report-classic-force-012c.mjs",
+      "Sha256": "44C28830E7592B6879F282043B4797F9822631999F16968C8BA7B434E3CC1C78"
+    },
+    {
+      "Path": "docs/CLASSIC_FORCE_EVOLUTION_012C.md",
+      "Sha256": "252F32FD6B357B21F6AB20B7A724E9D070DEE409DD1C16422F0D96C2F993613C"
+    },
+    {
+      "Path": "docs/FORCE_CEILINGS_012C.json",
+      "Sha256": "E8D65D8F24F69783CAE80998A1602DFDBEE133EBB24AF43A64019D83DE7E05F2"
+    },
+    {
+      "Path": "docs/WEIGHTED_INJURIES_012C.json",
+      "Sha256": "5469DCBDD184505DEFC864078A75AF25CFFF1367AB1D7B0B386C3626120EB2C4"
+    },
+    {
+      "Path": "docs/INJURY_DAILY_FORCE_LOSS_012C.md",
+      "Sha256": "2FA012EC029AC5681482F4150A6353B61101A23AE1A18D66E7830E030228AF98"
+    },
+    {
+      "Path": "docs/PLAYER_FORCE_HISTORY_012C.md",
+      "Sha256": "5448142F47FD35CE86EDA6B04EFB2AD1B41004BC0514C615121E8A5EA88144F2"
+    },
+    {
+      "Path": "docs/FORCE_BALANCE_100_SEASONS_012C.md",
+      "Sha256": "402825EA53BE0AA15E7E46A6027961B1D439D0DC5C29F583A9C54031F9FF31A9"
+    },
+    {
+      "Path": "docs/FORCE_REGRESSION_TESTS_012C.md",
+      "Sha256": "83BD7CA4116A2601C32A751A898C41D035B97F2A8F15A2148E62071A784BF742"
+    },
+    {
+      "Path": "docs/KNOWN_ISSUES_012C.md",
+      "Sha256": "8111D03C9CDC88FAFA929E05ABF0358405EE6B2318FFDBC3A7D383EFC1AB8C22"
+    }
+  ],
+  "EvidenceHashes": [
+    {
+      "Path": "build-final.log",
+      "Sha256": "711B47E60A128B69E317CBFFB72CE2ACB3A505B8CE4935EACB9423B7D8CD7AEA"
+    },
+    {
+      "Path": "regression-final.log",
+      "Sha256": "0D8C37E8F3C072E912ADFB2DCE1AF88EECB3A733917AEFF786BB5A4FE900ED45"
+    },
+    {
+      "Path": "flutter-analyze.log",
+      "Sha256": "C757809EA59098B07323837D69DF6A3B3F2375B7CE22CE93F54F6DDA25F62B3A"
+    },
+    {
+      "Path": "flutter-tests.log",
+      "Sha256": "5674CE45FF7099E2F9A1FC7BE67CC39B6F7A2348030FEE30B3095EEAE3B842A0"
+    },
+    {
+      "Path": "regression/classic-force-012c/100-seasons.json",
+      "Sha256": "5427E29A9A7FECC75DDC6594669C9D5CCC64606D5AEA74DEE845E0245DB6155C"
+    },
+    {
+      "Path": "regression/classic-force-012c/force-events.jsonl.gz",
+      "Sha256": "484BAEA1F54518F3A06D7977D9A7E8EF3318773BBB013D9CDB7B6472C190B67A"
+    },
+    {
+      "Path": "regression/classic-force-012c/injuries.jsonl.gz",
+      "Sha256": "D0D8E33108C1EB065B7F6F4B7E3ECB4DF109E001DCAB61148451A399DF747492"
+    },
+    {
+      "Path": "regression/classic-force-012c/replay.json",
+      "Sha256": "B666D10476F16177975A234ED33D375AA11568CDD4C6EEFE5A428A6FA9D8A97C"
+    },
+    {
+      "Path": "regression/classic-force-012c/weighted-duration-sample.json",
+      "Sha256": "3887F4DD7082390939CCE6493BDCD0AB3783E91E67704849A67FAED945AEEB81"
+    },
+    {
+      "Path": "tests/final012c_net10.0_20261030155545.trx",
+      "Sha256": "DDD01D28338FCCEE5BF50A0C9169B23C86EBFBE7474AA8A36958BB219FDEBC29"
+    },
+    {
+      "Path": "tests/final012c_net10.0_20261030155552.trx",
+      "Sha256": "230C1A5463D92CB43E5CBBE2AF20E6F4A6D721ED0F0300C82565133FFA8E65B1"
+    },
+    {
+      "Path": "tests/final012c_net10.0_20261030155728.trx",
+      "Sha256": "91C546A9A77CCC977996B3D04875766E3EB521DD1EEFC12927F9F1DF3E376D65"
+    },
+    {
+      "Path": "tests/final012c_net10.0_20261030160536.trx",
+      "Sha256": "5F1134EAB1E3C8AEA20805018FE3D73A10C5A377D13AB2BE88A7581CFDF1B7F3"
+    }
+  ]
+}

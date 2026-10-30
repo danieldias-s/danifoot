@@ -484,7 +484,7 @@ public class DomainEngineAndRulesTests
         // In the next round (Round 4), when the player does NOT receive a new suspension, it decrements to 0
         world.RoundNumber = 4;
         var round4Matches = world.Fixtures.Where(f => f.SeasonNumber == 1 && f.RoundNumber == 4).ToList();
-        foreach (var m in round4Matches) m.IsFinished = true;
+        foreach (var m in round4Matches) { m.IsFinished = true; m.CurrentMinute=90; }
         MarketAndEconomyEngine.SettleMatchAndRoundFinancials(world, round4Matches);
         Assert.Equal(0, homePlayer.SuspensionRoundsRemaining);
 

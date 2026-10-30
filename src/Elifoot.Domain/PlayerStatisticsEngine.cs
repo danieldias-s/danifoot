@@ -10,6 +10,7 @@ public static class PlayerStatisticsEngine
 
     public static void CaptureLineup(MatchFixture match, IReadOnlyDictionary<Guid, Player> players)
     {
+        ClassicForceEvolutionEngine.CaptureRoster(match, players);
         if (match.StatisticsLineupCaptured) return;
         void Side(Guid club, IEnumerable<Guid> active, IEnumerable<Guid> bench)
         {
@@ -21,8 +22,8 @@ public static class PlayerStatisticsEngine
         }
         Side(match.HomeClubId, match.HomeActiveStarterIds, match.HomeBenchIds);
         Side(match.AwayClubId, match.AwayActiveStarterIds, match.AwayBenchIds);
-        match.StatisticsLineupCaptured = match.StatisticsInitialLineup.Count(x => x.IsStarter && x.ClubId == match.HomeClubId) == 11
-            && match.StatisticsInitialLineup.Count(x => x.IsStarter && x.ClubId == match.AwayClubId) == 11;
+        match.StatisticsLineupCaptured = match.StatisticsInitialLineup.Count(x => x.IsStarter && x.ClubId == match.HomeClubId) is >=1 and <=11
+            && match.StatisticsInitialLineup.Count(x => x.IsStarter && x.ClubId == match.AwayClubId) is >=1 and <=11;
         if (!match.StatisticsLineupCaptured) match.StatisticsInitialLineup.Clear();
     }
 
@@ -130,6 +131,9 @@ public static class PlayerStatisticsEngine
                     break;
                 case MatchEventType.DirectRedCard:
                     if (a != null) { a.Red++; active[e.ClubId].Remove(a.Snapshot.PlayerId); }
+                    break;
+                case MatchEventType.Injury when m.ForceRulesVersion == ClassicForceEvolutionEngine.Version || m.Discipline.KickoffCaptured:
+                    if (a != null) active[e.ClubId].Remove(a.Snapshot.PlayerId);
                     break;
                 case MatchEventType.Substitution:
                     if (e.SecondaryPlayerId is Guid outgoing) active[e.ClubId].Remove(outgoing);
@@ -255,7 +259,15 @@ public static class PlayerStatisticsEngine
         var row=Row(w,total,0,"scorers");
         return new(row,row,w.PlayerStatistics.Where(s=>s.PlayerId==playerId).OrderByDescending(s=>s.Season).ThenBy(s=>s.CompetitionType).ThenBy(s=>s.ClubId)
             .Select(s=>new PlayerStatisticsRowDto(s.Season,s.CompetitionType,s.Division,s.ClubId,s.MatchesPlayed,s.GoalsScored,s.GoalsConceded,s.YellowCards,s.RedCards,s.MinutesPlayed,s.HasIncompleteAppearances,s.HasIncompleteGoals,ResolveHistoricalClubName(w,s.ClubId,s.ClubName))).ToList(),
-            w.SeasonTopScorerAwards.Where(a=>a.PlayerId==playerId).OrderByDescending(a=>a.Season).Select(AwardDto).ToList(),w.PlayerStatisticsCoverageWarnings.ToList());
+            w.SeasonTopScorerAwards.Where(a=>a.PlayerId==playerId).OrderByDescending(a=>a.Season).Select(AwardDto).ToList(),w.PlayerStatisticsCoverageWarnings.Concat(w.DisciplineCoverageWarnings).Distinct().ToList())
+        {
+            StrengthHistory = w.PlayerStrengthHistory.Where(e => e.PlayerId == playerId)
+                .OrderByDescending(e => e.Season).ThenByDescending(e => e.Round).ToList(),
+            StrengthHistoryStartSeason = w.PlayerStrengthHistoryStartSeason,
+            StrengthHistoryStartRound = w.PlayerStrengthHistoryStartRound,
+            CardHistory = p.CardHistory.ToList(),
+            SuspensionHistory = p.SuspensionHistory.ToList()
+        };
     }
     private static PlayerAwardDto AwardDto(SeasonTopScorerAward a)=>new(a.AwardId,a.PlayerId,a.DisplayName,a.Season,a.TotalGoals,a.TotalMatches,a.ClubId,a.ClubNameAtClose,a.AwardAmount,a.AwardGrantedAt,a.IdempotencyKey);
     public static SeasonTopScorerAwardsDto GetSeasonAwards(GameWorld w,int? season=null)
