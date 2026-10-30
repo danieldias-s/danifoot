@@ -1,0 +1,25 @@
+{
+  "coachId": "9d16d7cf-c340-0e17-760f-8d7a577c41ae",
+  "worlds": [
+    {
+      "worldId": "3ee3bbc2-4224-487e-8b71-98f4ed67d0c2",
+      "fixture": true,
+      "clubs": 128,
+      "gender": "Male",
+      "dataHash": "70BB73D259DE4321402D2E495C43A7BF847B52DD174B7D10EBE7B73120999276",
+      "players": 2304,
+      "draftId": "d88041f1-e943-493e-acc1-c0c1bfe84366"
+    },
+    {
+      "worldId": "3a79eee5-ce1e-4eb7-9fbf-6524da366933",
+      "fixture": true,
+      "clubs": 128,
+      "gender": "Female",
+      "dataHash": "33B8C5569BF0D96DE8BAE1C278D74C20D9F5827FE2434CD5E84BE50E4A652A9B",
+      "players": 2304,
+      "draftId": "ad574a0e-37bd-4051-bfc9-f8b240321a39"
+    }
+  ],
+  "health": "OK",
+  "timestamp": "2026-10-30T18:07:19.7658885-03:00"
+}

@@ -30,6 +30,13 @@ class ElifootApiClient {
   }) : baseUrl = baseUrl ?? ApiEnvironment.baseUrl,
        _http = httpClient ?? http.Client();
 
+  Future<dynamic> worldCreator(String coachId, String path, {Map<String, dynamic>? body}) async {
+    final uri = Uri.parse('$baseUrl/api/world-creator/$path');
+    final headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer localdev-${coachId.replaceAll('-', '')}'};
+    final res = body == null ? await _http.get(uri, headers: headers) : await _http.post(uri, headers: headers, body: jsonEncode(body));
+    if (res.statusCode >= 400) throw Exception(res.statusCode == 404 ? 'Catálogo indisponível: ative o perfil 013A.' : res.body);
+    return res.body.isEmpty ? null : jsonDecode(res.body);
+  }
   Future<Map<String, dynamic>> localLogin(String nickname, String deviceId) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/auth/local-login'),

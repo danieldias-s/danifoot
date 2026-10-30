@@ -168,7 +168,9 @@ public class ApiAndSignalREndToEndTests
     public async Task PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18()
     {
         string testDbName = $"elifoot_test_{Guid.NewGuid():N}"[..28];
-        string testConn = $"Host=127.0.0.1;Port=5432;Database={testDbName};Username=postgres;Password=123456";
+        string testConn = Environment.GetEnvironmentVariable("ELIFOOT_013A_LEGACY_PG") is { Length: > 0 } isolated
+            ? new Npgsql.NpgsqlConnectionStringBuilder(isolated) { Database = testDbName }.ConnectionString
+            : $"Host=127.0.0.1;Port=5432;Database={testDbName};Username=postgres;Password=123456";
 
         var services = new ServiceCollection();
         services.AddDbContext<ElifootDbContext>(opt => opt.UseNpgsql(testConn));

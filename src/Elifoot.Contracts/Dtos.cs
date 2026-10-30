@@ -417,7 +417,9 @@ public record WorldPackageExportDto(
     int DefaultTickIntervalMs,
     List<ClubExportDto> Clubs,
     List<PlayerExportDto> Players,
-    List<AiManagerExportDto> AiManagers);
+    List<AiManagerExportDto> AiManagers,
+    FootballGender Gender = FootballGender.Male,
+    WorldCreationOrigin? CatalogOrigin = null);
 
 public record ClubExportDto(
     Guid Id,

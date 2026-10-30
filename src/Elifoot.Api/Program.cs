@@ -43,6 +43,7 @@ else
     builder.Services.AddSingleton<IWorldRepository, EfWorldRepository>();
 }
 
+bool worldCreator013A = builder.AddWorldCreator013A();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
 builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
@@ -96,6 +97,7 @@ using (var scope = app.Services.CreateScope())
 
 app.MapHub<GameRoomHub>("/hubs/gameroom");
 app.MapPlayerRankings();
+if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
 
 app.MapGet("/api/health", () => Results.Ok(new
 {

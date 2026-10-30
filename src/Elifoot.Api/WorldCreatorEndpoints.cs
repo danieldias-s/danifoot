@@ -1,0 +1,100 @@
+using System.Text.Json;
+using Elifoot.Application;
+using Elifoot.Contracts;
+using Elifoot.Infrastructure.Catalog;
+using Microsoft.EntityFrameworkCore;
+
+namespace Elifoot.Api;
+
+public static class WorldCreatorEndpoints
+{
+    public static bool AddWorldCreator013A(this WebApplicationBuilder builder)
+    {
+        var c = builder.Configuration.GetSection("Catalog013A");
+        if (!c.GetValue<bool>("Enabled")) return false;
+        string connection = builder.Configuration.GetConnectionString("Catalog013A")
+            ?? throw new InvalidOperationException("Configure um banco exclusivo ConnectionStrings:Catalog013A.");
+        string provider = c["DatabaseProvider"] ?? "PostgreSQL";
+        if (provider != "Sqlite" && !new Npgsql.NpgsqlConnectionStringBuilder(connection).Database!.Contains("013a", StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("A 013A exige nome de banco exclusivo contendo 013a.");
+        if (provider is not ("Sqlite" or "PostgreSQL")) throw new InvalidOperationException("Provedor de banco do catálogo inválido.");
+        if (provider == "PostgreSQL" && builder.Configuration["Elifoot:DatabaseProvider"] is not ("InMemory" or "Sqlite"))
+        {
+            var worldConnection = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? throw new InvalidOperationException("Configure explicitamente o banco de mundos exclusivo da 013A.");
+            var world = new Npgsql.NpgsqlConnectionStringBuilder(worldConnection);
+            var catalog = new Npgsql.NpgsqlConnectionStringBuilder(connection);
+            if (world.Database?.Contains("013a", StringComparison.OrdinalIgnoreCase) != true ||
+                world.Host == catalog.Host && world.Port == catalog.Port && world.Database == catalog.Database)
+                throw new InvalidOperationException("Use bancos de mundos e catálogo separados, ambos exclusivos da 013A.");
+        }
+        builder.Services.AddDbContext<CatalogDbContext>(o => { if (provider == "Sqlite") o.UseSqlite(connection); else o.UseNpgsql(connection); });
+        var options = new CatalogSyncOptions();
+        options.Timeout = TimeSpan.FromSeconds(Math.Clamp(c.GetValue("TimeoutSeconds", 2), 1, 5));
+        foreach (var type in Enum.GetValues<CatalogDataType>())
+            options.Frequencies[type] = TimeSpan.FromMinutes(Math.Max(1, c.GetValue($"FrequencyMinutes:{type}", options.Frequencies[type].TotalMinutes)));
+        builder.Services.AddSingleton(options);
+        foreach (var entry in c.GetSection("Sources").GetChildren())
+        {
+            var key = entry.GetSection("Scope").Get<CatalogScopeKey>() ?? throw new InvalidOperationException("Escopo ausente.");
+            var endpoint = new Uri(entry["Endpoint"]!);
+            if (endpoint.Scheme != "https") throw new InvalidOperationException("Fontes externas exigem HTTPS.");
+            builder.Services.AddSingleton<ICatalogSource>(new AuthorizedJsonCatalogSource(new HttpClient { Timeout = Timeout.InfiniteTimeSpan }, key,
+                endpoint, entry.GetValue<bool>("StorageAuthorized"), entry.GetValue<bool>("CommercialUseAuthorized"),
+                entry["LicenseReference"] ?? "", entry["BearerToken"]));
+        }
+        builder.Services.AddSingleton<CatalogSyncService>();
+        builder.Services.AddSingleton<WorldCreatorService>();
+        return true;
+    }
+    public static async Task InitializeWorldCreator013A(this WebApplication app)
+    {
+        using var scope = app.Services.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        await db.Database.EnsureCreatedAsync();
+        foreach (var country in WorldCreatorService.PriorityCountries)
+            if (!await db.Countries.AnyAsync(c => c.Code == country.Code)) db.Countries.Add(new() { Code = country.Code, Name = country.Name });
+        await db.SaveChangesAsync();
+        if (app.Configuration.GetValue<bool>("Catalog013A:LoadFixtures"))
+            foreach (var package in CatalogFixtureFactory.Packages()) await app.Services.GetRequiredService<CatalogSyncService>().ImportAsync(package);
+    }
+    public static void MapWorldCreator013A(this WebApplication app)
+    {
+        var group = app.MapGroup("/api/world-creator");
+        // Follows the existing LocalDev identity contract. Production identity integration is deliberately gated.
+        group.AddEndpointFilter(async (context, next) => {
+            if (app.Configuration["Elifoot:AuthMode"] is not (null or "LocalDev")) return Results.StatusCode(503);
+            string auth = context.HttpContext.Request.Headers.Authorization.ToString();
+            if (!auth.StartsWith("Bearer localdev-", StringComparison.Ordinal) || !Guid.TryParseExact(auth[16..], "N", out var owner) || owner == Guid.Empty)
+                return Results.Unauthorized();
+            context.HttpContext.Items["creatorOwner"] = owner;
+            try { return await next(context); }
+            catch (ArgumentException e) { return Results.BadRequest(new { error = e.Message }); }
+            catch (KeyNotFoundException e) { return Results.NotFound(new { error = e.Message }); }
+            catch (CatalogBusyException e) { return Results.Conflict(new { error = e.Message }); }
+        });
+        Guid Owner(HttpContext c) => (Guid)c.Items["creatorOwner"]!;
+        group.MapGet("/countries", async (string season, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Countries(season, ct)));
+        group.MapPost("/catalog", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) =>
+            Results.Ok(await service.Select(request.Countries, request.Gender, request.Season, request.UseSavedData, ct)));
+        group.MapGet("/last-configuration", async (HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.LastConfiguration(Owner(c), ct)));
+        group.MapPost("/preview", async (WorldCreatorRequest request, HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Preview(Owner(c), request, ct)));
+        group.MapPost("/confirm/{draftId:guid}", async (Guid draftId, HttpContext c, WorldCreatorService service, CancellationToken ct) => {
+            var world = await service.Confirm(Owner(c), draftId, ct);
+            return Results.Ok(new { world.Id, world.Name, world.InviteCode, world.Gender, world.CatalogOrigin });
+        });
+        var admin = app.MapGroup("/api/catalog-013a");
+        admin.AddEndpointFilter(async (context, next) => {
+            string? token = app.Configuration["Catalog013A:ImportToken"];
+            if (string.IsNullOrWhiteSpace(token) || context.HttpContext.Request.Headers["X-Catalog-Import-Token"].ToString() != token ||
+                !System.Net.IPAddress.IsLoopback(context.HttpContext.Connection.RemoteIpAddress ?? System.Net.IPAddress.None)) return Results.NotFound();
+            try { return await next(context); }
+            catch (ArgumentException e) { return Results.BadRequest(new { error = e.Message }); }
+            catch (CatalogBusyException e) { return Results.Conflict(new { error = e.Message }); }
+        });
+        admin.MapPost("/import", async (CatalogImportPackage package, CatalogSyncService sync, CancellationToken ct) => Results.Ok(new { snapshotId = await sync.ImportAsync(package, ct) }));
+        admin.MapPost("/import-csv", async (CatalogCsvRequest request, CatalogSyncService sync, CancellationToken ct) =>
+            Results.Ok(new { snapshotId = await sync.ImportAsync(CatalogImportCodec.ReadCsv(request.Manifest, request.Csv), ct) }));
+        admin.MapPost("/run-due", async (CatalogSyncService sync, CancellationToken ct) => { await sync.RunDueAsync(ct); return Results.Ok(new { status = "Completed" }); });
+    }
+}
+public record CatalogCsvRequest(CatalogImportPackage Manifest, string Csv);

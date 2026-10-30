@@ -1,0 +1,57 @@
+{
+  "baseCommit": "50e9c1215ed6d1256cc0593f84ab8aa54629b314",
+  "scope": "Isolated DEV implementation with explicit fixture data",
+  "productionPublished": false,
+  "mainBranchObserved": "master",
+  "mainFilesModifiedBy013A": [],
+  "data": {
+    "fixtureSnapshots": 48,
+    "fixtureRanking": "fixture-ranking013a",
+    "fixturePlayers": 5760,
+    "fixtureLeagues": 16,
+    "realClubs": 0,
+    "externalRanking": "Not configured",
+    "realPlayers": 0,
+    "fixtureClubs": 320
+  },
+  "tests": {
+    "creatorSpecific": 30,
+    "long100SeasonSuiteRepeated": false,
+    "physicalPhoneTested": false,
+    "simulation": 6,
+    "flutterAnalyze": "No issues found",
+    "dotnetTotal": 383,
+    "integration": 69,
+    "application": 5,
+    "viewportWidths": [
+      390,
+      1366
+    ],
+    "flutter": 59,
+    "domain": 303
+  },
+  "task": "ELIFOOT_WORLD_CREATOR_AND_CATALOG_013A",
+  "worktree": "D:\\elifoot_98_013A",
+  "merged": false,
+  "postgres": {
+    "port": 55433,
+    "catalog": "elifoot_013a_catalog",
+    "containersUsed": [],
+    "worlds": "elifoot_013a_worlds",
+    "tests": "elifoot_013a_tests"
+  },
+  "mainHeadObserved": "50e9c1215ed6d1256cc0593f84ab8aa54629b314",
+  "date": "2026-10-30",
+  "status": "PASS",
+  "branch": "feature/world-creator-013a",
+  "evidence": [
+    "dotnet-regression-complete.log",
+    "dotnet-integration-final.log",
+    "dotnet-build-final.log",
+    "flutter-analyze-final.log",
+    "flutter-tests-final.log",
+    "flutter-build-web-final.log",
+    "api-smoke.json",
+    "api-restart.json"
+  ]
+}

@@ -61,7 +61,9 @@ public static class WorldEditorAndPackageService
                 m.Adaptability,
                 m.FinancialAggressiveness,
                 m.YouthPatience,
-                m.PreferredFormations)).ToList());
+                m.PreferredFormations)).ToList(),
+            Gender: world.Gender,
+            CatalogOrigin: world.CatalogOrigin);
     }
 
     public static string SerializePackageToJson(WorldPackageExportDto package)
@@ -360,6 +362,8 @@ public static class WorldEditorAndPackageService
             }
         }
 
+        if (!Enum.IsDefined(package.Gender)) throw new ArgumentException("Categoria inválida no pacote.");
+        world.SetImportedCategory(package.Gender, package.CatalogOrigin);
         CompetitionAndSeasonEngine.InitializeSeasonFixtures(world);
         return (world, validation);
     }
