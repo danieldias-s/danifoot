@@ -170,7 +170,7 @@ public class ApiAndSignalREndToEndTests
         string testDbName = $"elifoot_test_{Guid.NewGuid():N}"[..28];
         string testConn = Environment.GetEnvironmentVariable("ELIFOOT_013A_LEGACY_PG") is { Length: > 0 } isolated
             ? new Npgsql.NpgsqlConnectionStringBuilder(isolated) { Database = testDbName }.ConnectionString
-            : $"Host=127.0.0.1;Port=5432;Database={testDbName};Username=postgres;Password=123456";
+            : throw new InvalidOperationException("Configure ELIFOOT_013A_LEGACY_PG via o runner isolado 013A/013B; o teste não usará o PostgreSQL principal.");
 
         var services = new ServiceCollection();
         services.AddDbContext<ElifootDbContext>(opt => opt.UseNpgsql(testConn));

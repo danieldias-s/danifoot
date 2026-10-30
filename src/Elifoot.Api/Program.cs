@@ -742,6 +742,7 @@ app.MapGet("/api/worlds/{worldId:guid}/editor/export-json", async (Guid worldId,
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin?.References.Any(r => !r.IsFixture && r.Rights?.WorldExportAllowed != true) == true) return Results.StatusCode(403);
     var pkg = WorldEditorAndPackageService.ExportWorldToPackage(world, world.Name);
     return Results.Ok(pkg);
 });
@@ -750,6 +751,7 @@ app.MapGet("/api/worlds/{worldId:guid}/editor/export-csv", async (Guid worldId, 
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin?.References.Any(r => !r.IsFixture && r.Rights?.WorldExportAllowed != true) == true) return Results.StatusCode(403);
     string csv = WorldEditorAndPackageService.ExportPlayersToCsv(world);
     return Results.Text(csv, "text/csv", Encoding.UTF8);
 });

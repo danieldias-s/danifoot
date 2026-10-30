@@ -75,6 +75,13 @@ public sealed class CatalogDbContext(DbContextOptions<CatalogDbContext> options)
         b.Entity<WorldCreationPreset>().HasKey(x => x.OwnerId);
         b.Entity<WorldCreationDraft>().HasKey(x => x.Id);
         b.Entity<WorldCreationDraft>().HasIndex(x => new { x.OwnerId, x.ExpiresAt });
+        b.Entity<CatalogClubIdentity>().HasKey(x => x.Id);
+        b.Entity<CatalogClubIdentity>().HasIndex(x => x.CanonicalKey).IsUnique();
+        b.Entity<CatalogClubIdentity>().HasIndex(x => new { x.CountryCode, x.Gender, x.NormalizedName });
+        b.Entity<CatalogClubIdentityAlias>().HasKey(x => x.Key);
+        b.Entity<CatalogClubIdentityAlias>().HasIndex(x => x.ClubId);
+        b.Entity<CatalogIdentityConflict>().HasKey(x => x.Id);
+        b.Entity<CatalogIdentityConflict>().HasIndex(x => x.Status);
         foreach (var entity in b.Model.GetEntityTypes())
             entity.SetTableName("wc013a_" + entity.ClrType.Name);
     }

@@ -1,0 +1,229 @@
+[
+  {
+    "countryCode": "BR",
+    "countryName": "BR",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "BR: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "AR",
+    "countryName": "AR",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "AR: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "GB",
+    "countryName": "GB",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "GB: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "ES",
+    "countryName": "Espanha",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [
+      "Liga feminina espanhola (Wikidata Q40068)"
+    ],
+    "clubs": 1,
+    "players": 6,
+    "completeSquads": 0,
+    "partialSquads": 1,
+    "realPlayers": 6,
+    "estimatedStrengths": 6,
+    "generatedPlayers": 0,
+    "references": [
+      {
+        "snapshotId": "7bf17809-6d77-4fb3-a97f-befc6ce0f099",
+        "scope": {
+          "countryCode": "ES",
+          "gender": "Female",
+          "league": "Q40068",
+          "season": "2026",
+          "dataType": "Clubs",
+          "provider": "wikidata",
+          "key": "ES|Female|Q40068|2026|Clubs|wikidata"
+        },
+        "version": "wikidata:Q96791589:2499143668:F49D5D4EFEDF9662FE9ACB4D1A0D3212EA34F76B131EDE47985D09F1C0D85E0A",
+        "updatedAt": "2026-10-30T22:00:26.014215Z",
+        "validatedAt": "2026-10-30T22:00:26.984719Z",
+        "isFixture": false,
+        "status": "Cached",
+        "warning": null,
+        "rights": {
+          "license": "CC0-1.0",
+          "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+          "accessAllowed": true,
+          "storageAllowed": true,
+          "displayAllowed": true,
+          "commercialUseAllowed": true,
+          "redistributionAllowed": true,
+          "offlineWorldsAllowed": true,
+          "worldExportAllowed": true,
+          "attribution": "Wikidata (CC0), contribuições comunitárias; cobertura não garantida.",
+          "useUntil": null,
+          "retainUntil": null,
+          "logosAllowed": false,
+          "photosAllowed": false
+        }
+      },
+      {
+        "snapshotId": "dec63d0c-9d7f-423a-8bb7-e1a392b0f16e",
+        "scope": {
+          "countryCode": "ES",
+          "gender": "Female",
+          "league": "Q40068",
+          "season": "2026",
+          "dataType": "Squads",
+          "provider": "wikidata",
+          "key": "ES|Female|Q40068|2026|Squads|wikidata"
+        },
+        "version": "wikidata:Q96791589:2499143668:82D33E2AB92DDB1AEF1188475F4E3959E2466CF791B0BE54E49808500DABF417",
+        "updatedAt": "2026-10-30T22:00:28.419775Z",
+        "validatedAt": "2026-10-30T22:00:29.1379Z",
+        "isFixture": false,
+        "status": "Cached",
+        "warning": null,
+        "rights": {
+          "license": "CC0-1.0",
+          "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+          "accessAllowed": true,
+          "storageAllowed": true,
+          "displayAllowed": true,
+          "commercialUseAllowed": true,
+          "redistributionAllowed": true,
+          "offlineWorldsAllowed": true,
+          "worldExportAllowed": true,
+          "attribution": "Wikidata (CC0), contribuições comunitárias; cobertura não garantida.",
+          "useUntil": null,
+          "retainUntil": null,
+          "logosAllowed": false,
+          "photosAllowed": false
+        }
+      }
+    ],
+    "restrictions": [
+      "CC0-1.0"
+    ],
+    "warnings": [
+      "Q136339421: nome indisponível; atleta não gerado.",
+      "Q136343511: posição ausente/ambígua; revisão necessária.",
+      "Vínculos comunitários do Wikidata não garantem o elenco oficial completo/atual."
+    ]
+  },
+  {
+    "countryCode": "DE",
+    "countryName": "DE",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "DE: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "IT",
+    "countryName": "IT",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "IT: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "FR",
+    "countryName": "FR",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "FR: sem cobertura válida para Female/2026."
+    ]
+  },
+  {
+    "countryCode": "PT",
+    "countryName": "PT",
+    "gender": "Female",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "PT: sem cobertura válida para Female/2026."
+    ]
+  }
+]

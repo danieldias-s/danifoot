@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api_client.dart';
+import 'catalog_provenance.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
   final ElifootApiClient api;
@@ -23,7 +24,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _search = '',
       _error = '';
   int _step = 0, _humans = 1;
-  bool _busy = false, _fictional = false, _saved = false;
+  bool _busy = false,
+      _fictional = false,
+      _saved = false,
+      _fictionalPlayers = false;
   final Set<String> _countries = {
     'BR',
     'AR',
@@ -114,6 +118,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         .toList(),
     'fillRemainingDivisions': true,
     'allowFictionalTeams': _fictional,
+    'allowFictionalPlayers': _fictionalPlayers,
     'useSavedData': _saved,
   };
   void _useLast() {
@@ -140,6 +145,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           ),
         );
       _fictional = p['allowFictionalTeams'] == true;
+      _fictionalPlayers = p['allowFictionalPlayers'] == true;
       _saved = p['useSavedData'] == true;
       _preview = null;
     });
@@ -337,12 +343,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             children: clubs
                 .where((c) => c['division'] == d)
                 .map(
-                  (c) => ListTile(
-                    dense: true,
+                  (c) => ExpansionTile(
                     title: Text((c['club'] as Map)['name'].toString()),
                     subtitle: Text(
                       '${((c['club'] as Map)['players'] as List).length} atletas',
                     ),
+                    children: _maps(
+                      (c['club'] as Map)['players'],
+                    ).map(catalogPlayerRow).toList(),
                   ),
                 )
                 .toList(),
@@ -367,6 +375,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   : () => setState(() {
                       _assignments.clear();
                       _fictional = false;
+                      _fictionalPlayers = false;
                       _preview = null;
                     }),
               child: const Text('CRIAR NOVA CONFIGURAÇÃO'),
@@ -519,6 +528,22 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                       _preview = null;
                     }),
             ),
+            CheckboxListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text(
+                'AUTORIZO atletas fictícios para completar elencos reais insuficientes',
+              ),
+              subtitle: const Text(
+                'Atletas gerados serão identificados e não serão apresentados como importados.',
+              ),
+              value: _fictionalPlayers,
+              onChanged: _busy
+                  ? null
+                  : (value) => setState(() {
+                      _fictionalPlayers = value!;
+                      _preview = null;
+                    }),
+            ),
             Text(
               '${_assignments.values.where((v) => v == 5).length}/96 distritais escolhidos',
             ),
@@ -532,31 +557,40 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (final w in _warnings)
-              Text(w.toString(), style: const TextStyle(color: Colors.amber)),
-            for (final r in _references)
+            for (final warning in _warnings)
+              Text(
+                warning.toString(),
+                style: const TextStyle(color: Colors.amber),
+              ),
+            for (final reference in _references)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Text(
-                  '${(r['scope'] as Map)['countryCode']} • ${(r['scope'] as Map)['dataType']} • ${(r['scope'] as Map)['provider']}\n${r['status']} • referência ${r['updatedAt']} • versão ${r['version']}${r['isFixture'] == true ? ' • FICTÍCIO' : ''}',
+                  '${(reference['scope'] as Map)['countryCode']} • ${(reference['scope'] as Map)['dataType']} • ${(reference['scope'] as Map)['provider']}\n'
+                  '${reference['status']} • referência ${reference['updatedAt']} • versão ${reference['version']}${reference['isFixture'] == true ? ' • FICTÍCIO' : ''}\n'
+                  '${reference['rights'] is Map ? (reference['rights'] as Map)['attribution'] ?? (reference['rights'] as Map)['license'] : ''}',
                 ),
               ),
-            for (final c in _clubs)
+            const Text(
+              'Forças estimadas são calculadas na prévia e não são notas individuais oficiais. Confira o elenco final antes de confirmar.',
+            ),
+            for (final club in _clubs) ...[
+              catalogRankingLabel(club),
+              for (final issue in club['coverageWarnings'] as List? ?? [])
+                Text(
+                  issue.toString(),
+                  style: const TextStyle(color: Colors.amber),
+                ),
               ExpansionTile(
-                title: Text('${c['name']} • ranking ${c['rank'] ?? 'ausente'}'),
-                subtitle: Text('${(c['players'] as List).length} atletas'),
-                children: _maps(c['players'])
-                    .map(
-                      (p) => ListTile(
-                        dense: true,
-                        title: Text(
-                          '${p['position']} • ${p['playerName']} • força ${p['strength']}',
-                        ),
-                        subtitle: Text('${p['source']} • ${p['updatedAt']}'),
-                      ),
-                    )
-                    .toList(),
+                title: Text(
+                  '${club['name']} • ranking ${club['rank'] ?? 'ausente'}',
+                ),
+                subtitle: Text(
+                  '${(club['players'] as List).length} utilizáveis / ${club['rawRosterCount'] ?? (club['players'] as List).length} recebidos',
+                ),
+                children: _maps(club['players']).map(catalogPlayerRow).toList(),
               ),
+            ],
           ],
         );
       case 6:

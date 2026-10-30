@@ -219,7 +219,8 @@ public sealed class WorldCreator013ATests
         await using var h = new Harness(postgres: true); await h.Initialize(); var owner = Guid.NewGuid();
         var preview = await h.Creator.Preview(owner, Request()); var world = await h.Creator.Confirm(owner, preview.DraftId);
         var connection = Environment.GetEnvironmentVariable("ELIFOOT_013A_WORLD_PG")!;
-        Assert.Contains("013a", connection); Assert.Contains("55433", connection);
+        var isolated = new Npgsql.NpgsqlConnectionStringBuilder(connection);
+        Assert.True(isolated.Database!.Contains("013a") && isolated.Port == 55433 || isolated.Database.Contains("013b") && isolated.Port == 55434);
         var services = new ServiceCollection(); services.AddDbContext<ElifootDbContext>(o => o.UseNpgsql(connection)); services.AddSingleton<IWorldRepository, EfWorldRepository>();
         await using var provider = services.BuildServiceProvider();
         using (var scope = provider.CreateScope()) await scope.ServiceProvider.GetRequiredService<ElifootDbContext>().Database.EnsureCreatedAsync();

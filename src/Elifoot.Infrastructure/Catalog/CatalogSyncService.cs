@@ -12,6 +12,7 @@ public interface ICatalogSource
 {
     CatalogScopeKey Scope { get; }
     Task<CatalogImportPackage> FetchAsync(CancellationToken ct);
+    TimeSpan? FetchTimeout => null;
 }
 public sealed class CatalogSyncOptions
 {
@@ -111,7 +112,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
                     try
                     {
                         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
-                        timeout.CancelAfter(options.Timeout);
+                        timeout.CancelAfter(source.FetchTimeout ?? options.Timeout);
                         var package = await source.FetchAsync(timeout.Token).WaitAsync(timeout.Token);
                         if (package.Scope != source.Scope) throw new ArgumentException("Escopo da resposta difere do solicitado.");
                         await Commit(package, owner, ct); break;
@@ -134,12 +135,13 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
     }
     private static string ErrorCode(Exception e) => e switch {
         OperationCanceledException => "Timeout/cancelamento", HttpRequestException h when h.StatusCode == HttpStatusCode.TooManyRequests => "RateLimit",
+        HttpRequestException h when h.StatusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden => "AutenticacaoOuLicenca",
         HttpRequestException => "ApiIndisponivel", DbUpdateException => "Banco", ArgumentException => "RespostaInvalida", _ => e.GetType().Name };
     private async Task<bool> Acquire(string key, Guid owner, bool dueOnly, CancellationToken ct)
     {
         using var scope = factory.CreateScope(); var db = Db(scope); var now = DateTime.UtcNow;
         return await db.Scopes.Where(s => s.Key == key && (s.LeaseUntil == null || s.LeaseUntil < now) && (!dueOnly || s.NextAttempt <= now))
-            .ExecuteUpdateAsync(s => s.SetProperty(x => x.LeaseOwner, owner).SetProperty(x => x.LeaseUntil, now.AddMinutes(2)), ct) == 1;
+            .ExecuteUpdateAsync(s => s.SetProperty(x => x.LeaseOwner, owner).SetProperty(x => x.LeaseUntil, now.AddMinutes(10)), ct) == 1;
     }
     private async Task Release(string key, Guid owner)
     {
@@ -161,8 +163,10 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
     }
     private async Task<Guid> Commit(CatalogImportPackage input, Guid owner, CancellationToken ct)
     {
+        if (input?.Scope == null || input.Players == null || input.Clubs == null || input.Rankings == null) throw new ArgumentException("Pacote incompleto.");
         var p = input with { Players = input.Players.Select(x => x with { Position = CatalogImportCodec.Position(x.Position) }).ToList() };
         Validate(p);
+        if (CatalogRightsPolicy.StorageIssue(p, DateTime.UtcNow) is { } rightsIssue) throw new ArgumentException(rightsIssue);
         using var scope = factory.CreateScope(); var db = Db(scope);
         await using var tx = await db.Database.BeginTransactionAsync(ct);
         var state = await db.Scopes.SingleAsync(s => s.Key == p.Scope.Key, ct);
@@ -175,6 +179,10 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             var clubSnapshots = await db.Snapshots.Where(s => catalogIds.Contains(s.Id)).ToListAsync(ct);
             var known = clubSnapshots.SelectMany(s => { var data = CatalogImportCodec.ReadJson(s.PayloadJson);
                 return data.Clubs.Select(c => (Provider: data.Scope.Provider, Id: c.ExternalId)); }).ToHashSet();
+            var knownIdentityIds = await db.Set<CatalogClubIdentityAlias>().Where(a => a.CountryCode == p.Scope.CountryCode && a.Gender == p.Scope.Gender).ToListAsync(ct);
+            var activeIdentities = knownIdentityIds.Where(a => known.Contains((a.Provider, a.ExternalId))).Select(a => a.ClubId).ToHashSet();
+            foreach (var alias in knownIdentityIds.Where(a => activeIdentities.Contains(a.ClubId))) known.Add((alias.Provider, alias.ExternalId));
+            if (p.RosterReports?.Any(r => !known.Contains((r.ClubProvider, r.ClubExternalId))) == true) throw new ArgumentException("Relatório de elenco referencia clube desconhecido.");
             if (p.Players.Any(x => !known.Contains((x.ClubProvider, x.ClubExternalId))) ||
                 p.Rankings.Any(x => !known.Contains((x.ClubProvider, x.ClubExternalId))))
                 throw new ArgumentException("Elenco/ranking referencia clube ausente neste país, categoria, liga e temporada; importe os clubes primeiro.");
@@ -183,6 +191,16 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
         int Count(CatalogImportPackage v) => v.Scope.DataType switch { CatalogDataType.Clubs => v.Clubs.Count, CatalogDataType.Squads => v.Players.Count, CatalogDataType.Countries => v.CountryData?.Count ?? 0, CatalogDataType.Leagues => v.LeagueData?.Count ?? 0, _ => v.Rankings.Count };
         if (previous != null && (p.UpdatedAt < previous.UpdatedAt || !p.AllowCountDecrease && Count(p) < Count(CatalogImportCodec.ReadJson(previous.PayloadJson))))
             throw new ArgumentException("Atualização mais antiga ou com perda inesperada de itens.");
+        if (previous != null && p.Scope.DataType == CatalogDataType.Squads && p.AllowPartialSquads)
+        {
+            var old = CatalogImportCodec.ReadJson(previous.PayloadJson);
+            foreach (var oldSquad in old.Players.GroupBy(x => (x.ClubProvider, x.ClubExternalId)))
+            {
+                var current = p.Players.Where(x => (x.ClubProvider, x.ClubExternalId) == oldSquad.Key).ToList();
+                bool Good(IEnumerable<CatalogAthlete> roster) => roster.Count() >= 11 && roster.Any(x => x.Position == "G") && roster.Count(x => x.Position != "G") >= 10;
+                if (Good(oldSquad) && !Good(current)) throw new ArgumentException("Atualização parcial não pode substituir elenco completo válido.");
+            }
+        }
         string json = JsonSerializer.Serialize(p, CatalogImportCodec.Json);
         string hash = Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(json)));
         var snapshot = await db.Snapshots.SingleOrDefaultAsync(s => s.ScopeKey == p.Scope.Key && s.Version == p.Version, ct);
@@ -192,6 +210,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             snapshot = new() { Id = Guid.NewGuid(), ScopeKey = p.Scope.Key, Version = p.Version, Hash = hash,
                 PayloadJson = json, UpdatedAt = p.UpdatedAt, ValidatedAt = DateTime.UtcNow, IsFixture = p.IsFixture };
             db.Snapshots.Add(snapshot);
+            await CatalogIdentityService.RegisterAsync(db, p, ct);
             foreach (var league in p.Clubs.GroupBy(c => c.LeagueExternalId))
                 db.Add(new CatalogLeague { SnapshotId = snapshot.Id, ExternalId = league.Key, Name = league.First().LeagueName });
             foreach (var league in p.LeagueData ?? [])
@@ -224,8 +243,8 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             new[] { k.League, k.Season, k.Provider, p.CountryName, p.Version, p.LicenseReference }.Any(string.IsNullOrWhiteSpace))
             throw new ArgumentException("Manifesto inválido.");
         int count = k.DataType switch { CatalogDataType.Clubs => p.Clubs.Count, CatalogDataType.Squads => p.Players.Count, CatalogDataType.Countries => p.CountryData?.Count ?? 0, CatalogDataType.Leagues => p.LeagueData?.Count ?? 0, _ => p.Rankings.Count };
-        if (!p.StorageAuthorized || !p.CommercialUseAuthorized) throw new ArgumentException("Licença não autorizada.");
-        if (!p.Complete || p.ExpectedPages < 1 || p.ExpectedPages != p.ReceivedPages || count == 0 || count != p.ExpectedItems ||
+        if (!p.StorageAuthorized || p.IsFixture && !p.CommercialUseAuthorized) throw new ArgumentException("Licença não autorizada.");
+        if (!p.Complete || p.ExpectedPages < 1 || p.ExpectedPages != p.ReceivedPages || (count == 0 && !(p.AllowPartialSquads && k.DataType == CatalogDataType.Squads && p.RosterReports?.Count > 0)) || count != p.ExpectedItems ||
             p.UpdatedAt.Kind != DateTimeKind.Utc || p.UpdatedAt > DateTime.UtcNow.AddMinutes(5)) throw new ArgumentException("Resposta vazia/incompleta, páginas ou data inválidas.");
         if (k.DataType != CatalogDataType.Clubs && p.Clubs.Count != 0 || k.DataType != CatalogDataType.Squads && p.Players.Count != 0 || k.DataType != CatalogDataType.Rankings && p.Rankings.Count != 0)
             throw new ArgumentException("Pacote mistura tipos de dados.");
@@ -237,7 +256,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             p.LeagueData?.Select(x => x.ExternalId).Distinct().Count() != p.LeagueData?.Count)
             throw new ArgumentException("Liga duplicada ou incompatível com categoria/temporada.");
         if (p.Clubs.Any(c => string.IsNullOrWhiteSpace(c.ExternalId) || string.IsNullOrWhiteSpace(c.Name) || string.IsNullOrWhiteSpace(c.LeagueExternalId)) ||
-            p.Clubs.Select(c => c.ExternalId).Distinct().Count() != p.Clubs.Count || p.Clubs.Select(c => c.Name.Trim().ToUpperInvariant()).Distinct().Count() != p.Clubs.Count)
+            p.Clubs.Select(c => c.ExternalId).Distinct().Count() != p.Clubs.Count)
             throw new ArgumentException("Clubes duplicados ou inválidos.");
         if (p.Players.Any(x => x.Gender != k.Gender || x.Season != k.Season || x.Source != k.Provider ||
             string.IsNullOrWhiteSpace(x.PlayerExternalId) || string.IsNullOrWhiteSpace(x.ClubExternalId) || string.IsNullOrWhiteSpace(x.ClubProvider) ||
@@ -245,8 +264,22 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             p.Players.Select(x => x.PlayerExternalId).Distinct().Count() != p.Players.Count)
             throw new ArgumentException("Elenco inconsistente, categoria/temporada incorreta ou jogadores duplicados.");
         foreach (var squad in p.Players.GroupBy(x => (x.ClubProvider, x.ClubExternalId)))
-            if (squad.Count() is < 11 or > 24 || !squad.Any(x => x.Position == "G") || squad.Count(x => x.Position != "G") < 10)
+            if (!p.AllowPartialSquads && (squad.Count() is < 11 or > 24 || !squad.Any(x => x.Position == "G") || squad.Count(x => x.Position != "G") < 10) || p.AllowPartialSquads && squad.Count() > 100)
                 throw new ArgumentException("Elenco incompleto ou sem goleiro.");
+        if (p.AllowPartialSquads && (p.RosterReports == null || p.RosterReports.Count == 0 || p.RosterAsOf == null ||
+            p.RosterReports.Select(r => (r.ClubProvider, r.ClubExternalId)).Distinct().Count() != p.RosterReports.Count ||
+            p.RosterReports.Any(r => r.ReceivedPlayers < r.UsablePlayers || r.UsablePlayers != p.Players.Count(x => x.ClubProvider == r.ClubProvider && x.ClubExternalId == r.ClubExternalId))))
+            throw new ArgumentException("Elenco parcial exige relatório completo de cobertura e data.");
+        if (p.Players.Any(x => x.MembershipStart > x.MembershipEnd || x.Performance?.Rating is { } rating && !double.IsFinite(rating)))
+            throw new ArgumentException("Dados individuais/vínculos inválidos.");
+        if (!p.IsFixture && p.Players.Any(x => x.IdentityOrigin == null || x.StrengthEstimate == null ||
+            x.StrengthEstimate.Origin is not (CatalogDataOrigin.Estimated or CatalogDataOrigin.Generated) || string.IsNullOrWhiteSpace(x.StrengthEstimate.Method)))
+            throw new ArgumentException("Atletas reais exigem origem da identidade e método da estimativa de força explicitamente identificados.");
+        if (p.Players.Any(x => x.StrengthEstimate != null && (!double.IsFinite(x.StrengthEstimate.Confidence) || x.StrengthEstimate.Confidence < 0 || x.StrengthEstimate.Confidence > 1) ||
+            x.Performance?.Minutes < 0 || x.Performance?.Appearances < 0 || x.Performance?.Goals < 0 || x.Performance?.Assists < 0))
+            throw new ArgumentException("Estatísticas/confiança inválidas.");
+        if (!p.IsFixture && p.Rankings.Any(r => string.IsNullOrWhiteSpace(r.Method) || r.Origin == null || r.Confidence is null or < 0 or > 1 || !double.IsFinite(r.Confidence ?? double.NaN) || string.IsNullOrWhiteSpace(r.ComparableGroup)))
+            throw new ArgumentException("Ranking real/derivado exige método, origem, confiança e universo comparável.");
         if (p.Rankings.Any(x => x.Gender != k.Gender || x.Season != k.Season || x.Source != k.Provider || x.Rank < 1 ||
             string.IsNullOrWhiteSpace(x.ClubExternalId) || string.IsNullOrWhiteSpace(x.ClubProvider) || x.UpdatedAt.Kind != DateTimeKind.Utc || x.UpdatedAt > p.UpdatedAt) ||
             p.Rankings.Select(x => (x.ClubProvider, x.ClubExternalId)).Distinct().Count() != p.Rankings.Count)

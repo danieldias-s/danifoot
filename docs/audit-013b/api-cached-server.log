@@ -1,0 +1,9 @@
+PostgreSQL 013B disponível em 127.0.0.1:55434; encerrar com -Action Stop.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:5134
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: LocalDev
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\elifoot_98_013A\src\Elifoot.Api

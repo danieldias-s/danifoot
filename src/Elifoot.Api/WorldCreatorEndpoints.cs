@@ -14,8 +14,9 @@ public static class WorldCreatorEndpoints
         if (!c.GetValue<bool>("Enabled")) return false;
         string connection = builder.Configuration.GetConnectionString("Catalog013A")
             ?? throw new InvalidOperationException("Configure um banco exclusivo ConnectionStrings:Catalog013A.");
+        string isolatedSuffix = builder.Configuration.GetValue<bool>("Catalog013B:Enabled") ? "013b" : "013a";
         string provider = c["DatabaseProvider"] ?? "PostgreSQL";
-        if (provider != "Sqlite" && !new Npgsql.NpgsqlConnectionStringBuilder(connection).Database!.Contains("013a", StringComparison.OrdinalIgnoreCase))
+        if (provider != "Sqlite" && !new Npgsql.NpgsqlConnectionStringBuilder(connection).Database!.Contains(isolatedSuffix, StringComparison.OrdinalIgnoreCase))
             throw new InvalidOperationException("A 013A exige nome de banco exclusivo contendo 013a.");
         if (provider is not ("Sqlite" or "PostgreSQL")) throw new InvalidOperationException("Provedor de banco do catálogo inválido.");
         if (provider == "PostgreSQL" && builder.Configuration["Elifoot:DatabaseProvider"] is not ("InMemory" or "Sqlite"))
@@ -24,7 +25,7 @@ public static class WorldCreatorEndpoints
                 ?? throw new InvalidOperationException("Configure explicitamente o banco de mundos exclusivo da 013A.");
             var world = new Npgsql.NpgsqlConnectionStringBuilder(worldConnection);
             var catalog = new Npgsql.NpgsqlConnectionStringBuilder(connection);
-            if (world.Database?.Contains("013a", StringComparison.OrdinalIgnoreCase) != true ||
+            if (world.Database?.Contains(isolatedSuffix, StringComparison.OrdinalIgnoreCase) != true ||
                 world.Host == catalog.Host && world.Port == catalog.Port && world.Database == catalog.Database)
                 throw new InvalidOperationException("Use bancos de mundos e catálogo separados, ambos exclusivos da 013A.");
         }
@@ -43,6 +44,7 @@ public static class WorldCreatorEndpoints
                 endpoint, entry.GetValue<bool>("StorageAuthorized"), entry.GetValue<bool>("CommercialUseAuthorized"),
                 entry["LicenseReference"] ?? "", entry["BearerToken"]));
         }
+        builder.AddRealDataProviders013B();
         builder.Services.AddSingleton<CatalogSyncService>();
         builder.Services.AddSingleton<WorldCreatorService>();
         return true;
@@ -71,9 +73,11 @@ public static class WorldCreatorEndpoints
             catch (ArgumentException e) { return Results.BadRequest(new { error = e.Message }); }
             catch (KeyNotFoundException e) { return Results.NotFound(new { error = e.Message }); }
             catch (CatalogBusyException e) { return Results.Conflict(new { error = e.Message }); }
+            catch (FormatException) { return Results.BadRequest(new { error = "Formato JSON/CSV inválido." }); }
         });
         Guid Owner(HttpContext c) => (Guid)c.Items["creatorOwner"]!;
         group.MapGet("/countries", async (string season, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Countries(season, ct)));
+        group.MapPost("/coverage", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Coverage(request.Countries, request.Gender, request.Season, ct)));
         group.MapPost("/catalog", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.Select(request.Countries, request.Gender, request.Season, request.UseSavedData, ct)));
         group.MapGet("/last-configuration", async (HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.LastConfiguration(Owner(c), ct)));
@@ -91,6 +95,9 @@ public static class WorldCreatorEndpoints
             catch (ArgumentException e) { return Results.BadRequest(new { error = e.Message }); }
             catch (CatalogBusyException e) { return Results.Conflict(new { error = e.Message }); }
         });
+        admin.MapGet("/identities", async (string country, FootballGender gender, [Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => Results.Ok(await db.Set<CatalogClubIdentity>().Where(i => i.CountryCode == country && i.Gender == gender).ToListAsync(ct)));
+        admin.MapGet("/identity-conflicts", async ([Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => Results.Ok(await db.Set<CatalogIdentityConflict>().Where(c => c.Status == "Open").ToListAsync(ct)));
+        admin.MapPost("/map-club", async (CatalogIdentityMappingRequest request, [Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => { await CatalogIdentityService.MapAsync(db, request, ct); return Results.Ok(new { status = "Reviewed" }); });
         admin.MapPost("/import", async (CatalogImportPackage package, CatalogSyncService sync, CancellationToken ct) => Results.Ok(new { snapshotId = await sync.ImportAsync(package, ct) }));
         admin.MapPost("/import-csv", async (CatalogCsvRequest request, CatalogSyncService sync, CancellationToken ct) =>
             Results.Ok(new { snapshotId = await sync.ImportAsync(CatalogImportCodec.ReadCsv(request.Manifest, request.Csv), ct) }));

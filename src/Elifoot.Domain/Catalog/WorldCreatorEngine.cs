@@ -20,7 +20,10 @@ public static class WorldCreatorEngine
         if (request.Countries.Count == 0 || request.Countries.Distinct().Count() != request.Countries.Count)
             errors.Add("Selecione países sem repetição.");
         if (request.MaxHumans is < 1 or > 8) errors.Add("Selecione de 1 a 8 treinadores.");
-        var eligible = selection.Clubs.Where(c => c.Gender == request.Gender && c.Season == request.Season &&
+        var calibrated = InitialPlayerStrength.Apply(selection.Clubs, request.Seed);
+        var prepared = calibrated.Select(c => InitialRosterPolicy.IsRealImport(c)
+            ? c with { Players = InitialRosterPolicy.Prepare(c, request.Seed, request.AllowFictionalPlayers).Players } : c).ToList();
+        var eligible = prepared.Where(c => c.Gender == request.Gender && c.Season == request.Season &&
             request.Countries.Contains(c.CountryCode)).ToDictionary(c => c.Key);
         var ordered = eligible.Values.OrderBy(c => c.Rank ?? int.MaxValue).ThenBy(c => c.Key, StringComparer.Ordinal).ToList();
         if (ordered.Any(c => c.Rank == null)) warnings.Add("Ranking ausente: clubes sem classificação ficam ao final, ordenados por identificador. Ranking só define a montagem inicial.");
@@ -34,8 +37,10 @@ public static class WorldCreatorEngine
             { errors.Add("Escolhas de divisões exigem modo personalizado."); continue; }
             if (request.Mode == WorldAssemblyMode.Automatic && a.Division == 5 && ordered.Take(32).Any(c => c.Key == a.ClubKey))
             { errors.Add("Clube reservado às divisões pelo ranking automático; altere para personalizado para movê-lo."); continue; }
-            if (!eligible.TryGetValue(a.ClubKey, out var club)) { errors.Add($"Clube fora da seleção: {a.ClubKey}."); continue; }
-            if (!used.Add(a.ClubKey)) { errors.Add($"Clube repetido: {club.Name}."); continue; }
+            string assignmentKey = eligible.ContainsKey(a.ClubKey) ? a.ClubKey : eligible.Values.FirstOrDefault(c =>
+                c.Aliases?.Any(alias => ClubKey(c.CountryCode, c.Gender, alias.Provider, alias.ExternalId) == a.ClubKey) == true)?.Key ?? a.ClubKey;
+            if (!eligible.TryGetValue(assignmentKey, out var club)) { errors.Add($"Clube fora da seleção: {a.ClubKey}."); continue; }
+            if (!used.Add(club.Key)) { errors.Add($"Clube repetido: {club.Name}."); continue; }
             assigned.Add(new(a.Division, club));
         }
         int fictionalIndex = 0;
@@ -89,19 +94,24 @@ public static class WorldCreatorEngine
         {
             var c = item.Club;
             var p = c.Players;
+            if (InitialRosterPolicy.IsRealImport(c)) errors.AddRange(InitialRosterPolicy.Prepare(c, request.Seed, false).Issues);
             if (p.Count is < 11 or > 24 || !p.Any(x => x.Position == "G") || p.Count(x => x.Position != "G") < 10)
                 errors.Add($"Elenco incompleto ou inválido: {c.Name}; exige 11–24 atletas, 1 G e 10 de linha.");
             if (p.Any(x => x.Gender != request.Gender || x.Season != request.Season || x.Strength is < 1 or > 50))
                 errors.Add($"Categoria, temporada ou força inválida no elenco de {c.Name}.");
         }
-        var allPlayers = assigned.SelectMany(c => c.Club.Players.Select(p => $"{p.Source}:{p.PlayerExternalId}")).ToList();
+        var allPlayers = assigned.SelectMany(c => c.Club.Players.Select(p => p.CanonicalPlayerId ?? $"{p.Source}:{p.PlayerExternalId}")).ToList();
         if (allPlayers.Distinct().Count() != allPlayers.Count) errors.Add("Jogadores duplicados entre elencos.");
+        foreach (var conflict in assigned.SelectMany(c => c.Club.IdentityConflicts ?? []).Distinct())
+            if (assigned.Count(c => c.Club.IdentityConflicts?.Contains(conflict) == true) > 1) errors.Add("Identidades de equipes precisam de revisão antes de usar ambas no mesmo mundo.");
+        if (assigned.SelectMany(c => c.Club.Players).Any(p => p.IdentityOrigin == CatalogDataOrigin.Generated)) warnings.Add("Complemento de atletas fictícios autorizado; não são jogadores reais importados.");
         if (assigned.Any(c => c.Club.IsFictional)) warnings.Add("Complemento fictício autorizado nesta configuração.");
         var result = assigned.OrderBy(c => c.Division).ToList();
-        string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, selection.References })));
+        var usedReferences = result.SelectMany(c => c.Club.References).DistinctBy(r => r.SnapshotId).ToList();
+        string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, References = usedReferences })));
         return new(Guid.NewGuid(), request.Name, request.Gender, request.Seed, result,
             Math.Max(0, 128 - result.Count), errors.Distinct().ToList(), warnings.Distinct().ToList(),
-            selection.References, DateTime.UtcNow, hash);
+            usedReferences, DateTime.UtcNow, hash);
     }
 
     public static GameWorld Create(WorldCreatorRequest request, WorldCreatorPreview preview)

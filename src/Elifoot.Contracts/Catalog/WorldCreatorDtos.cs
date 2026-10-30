@@ -22,20 +22,26 @@ public record CatalogTeam(string ExternalId, string Name, string ShortName, stri
     string LeagueName, string PrimaryColor = "#006400", string SecondaryColor = "#FFFFFF");
 public record CatalogAthlete(string PlayerExternalId, string ClubExternalId, string ClubProvider,
     FootballGender Gender, string Season, string PlayerName, string Position, int Strength, string Source,
-    DateTime UpdatedAt);
+    DateTime UpdatedAt, string? CanonicalPlayerId = null, CatalogDataOrigin? IdentityOrigin = null,
+    PlayerStrengthEstimate? StrengthEstimate = null, CatalogPlayerPerformance? Performance = null,
+    DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null);
 public record CatalogRank(string ClubExternalId, string ClubProvider, FootballGender Gender, string Season,
-    int Rank, string Source, DateTime UpdatedAt);
+    int Rank, string Source, DateTime UpdatedAt, double? Score = null, string? Method = null,
+    double? Confidence = null, string? ComparableGroup = null, CatalogDataOrigin? Origin = null);
 public record CatalogImportPackage(CatalogScopeKey Scope, string CountryName, string Version,
     DateTime UpdatedAt, bool Complete, int ExpectedPages, int ReceivedPages, int ExpectedItems,
     bool StorageAuthorized, bool CommercialUseAuthorized, string LicenseReference,
     bool IsFixture, List<CatalogTeam> Clubs, List<CatalogAthlete> Players, List<CatalogRank> Rankings,
-    bool AllowCountDecrease = false, List<CatalogCountryEntry>? CountryData = null, List<CatalogLeagueEntry>? LeagueData = null);
+    bool AllowCountDecrease = false, List<CatalogCountryEntry>? CountryData = null, List<CatalogLeagueEntry>? LeagueData = null, CatalogUsageRights? Rights = null,
+    bool AllowPartialSquads = false, List<CatalogRosterReport>? RosterReports = null, DateOnly? RosterAsOf = null);
 public record CatalogReference(Guid SnapshotId, CatalogScopeKey Scope, string Version, DateTime UpdatedAt,
-    DateTime ValidatedAt, bool IsFixture, string Status, string? Warning);
+    DateTime ValidatedAt, bool IsFixture, string Status, string? Warning, CatalogUsageRights? Rights = null);
 public record EligibleCatalogClub(string Key, string ExternalId, string Provider, string Name, string ShortName,
     string CountryCode, string CountryName, FootballGender Gender, string League, string Season,
     string PrimaryColor, string SecondaryColor, int? Rank, List<CatalogAthlete> Players,
-    List<CatalogReference> References, bool IsFictional = false);
+    List<CatalogReference> References, bool IsFictional = false, Guid? InternalCatalogClubId = null,
+    CatalogRank? RankingInfo = null, List<CatalogClubAlias>? Aliases = null, List<string>? CoverageWarnings = null,
+    int? RawRosterCount = null, List<Guid>? IdentityConflicts = null);
 public record CatalogCountryOption(string Code, string Name, int MaleClubs, int FemaleClubs);
 public record CatalogSelection(FootballGender Gender, string Season, List<string> Countries,
     List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings);
@@ -43,7 +49,7 @@ public record ClubAssignment(string ClubKey, int Division);
 public record WorldCreatorRequest(string Name, FootballGender Gender, string Season, List<string> Countries,
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
-    int MaxHumans = 8);
+    int MaxHumans = 8, bool AllowFictionalPlayers = false);
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
     List<WorldPreviewClub> Clubs, int PendingSlots, List<string> Errors, List<string> Warnings,

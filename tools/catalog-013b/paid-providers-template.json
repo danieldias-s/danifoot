@@ -1,0 +1,76 @@
+{
+  "Catalog013B": {
+    "Enabled": false,
+    "Providers": [
+      {
+        "Kind": "ApiFootball",
+        "CredentialEnvironmentVariable": "ELIFOOT_APIFOOTBALL_TOKEN",
+        "MinimumIntervalMilliseconds": 6100,
+        "MaxFetchSeconds": 90,
+        "MaxPages": 32,
+        "MaxRequestsPerFetch": 100,
+        "FixtureData": false,
+        "Rights": {
+          "License": "UNREVIEWED",
+          "Evidence": "Replace with reviewed contract reference",
+          "AccessAllowed": false,
+          "StorageAllowed": false,
+          "DisplayAllowed": false,
+          "CommercialUseAllowed": false,
+          "RedistributionAllowed": false,
+          "OfflineWorldsAllowed": false,
+          "WorldExportAllowed": false,
+          "LogosAllowed": false,
+          "PhotosAllowed": false
+        },
+        "Competitions": []
+      },
+      {
+        "Kind": "Sportmonks",
+        "CredentialEnvironmentVariable": "ELIFOOT_SPORTMONKS_TOKEN",
+        "MinimumIntervalMilliseconds": 6100,
+        "MaxFetchSeconds": 90,
+        "MaxPages": 32,
+        "MaxRequestsPerFetch": 100,
+        "FixtureData": false,
+        "Rights": {
+          "License": "UNREVIEWED",
+          "Evidence": "Replace with reviewed contract reference",
+          "AccessAllowed": false,
+          "StorageAllowed": false,
+          "DisplayAllowed": false,
+          "CommercialUseAllowed": false,
+          "RedistributionAllowed": false,
+          "OfflineWorldsAllowed": false,
+          "WorldExportAllowed": false,
+          "LogosAllowed": false,
+          "PhotosAllowed": false
+        },
+        "Competitions": []
+      },
+      {
+        "Kind": "FootballData",
+        "CredentialEnvironmentVariable": "ELIFOOT_FOOTBALLDATA_TOKEN",
+        "MinimumIntervalMilliseconds": 6100,
+        "MaxFetchSeconds": 90,
+        "MaxPages": 32,
+        "MaxRequestsPerFetch": 100,
+        "FixtureData": false,
+        "Rights": {
+          "License": "UNREVIEWED",
+          "Evidence": "Replace with reviewed contract reference",
+          "AccessAllowed": false,
+          "StorageAllowed": false,
+          "DisplayAllowed": false,
+          "CommercialUseAllowed": false,
+          "RedistributionAllowed": false,
+          "OfflineWorldsAllowed": false,
+          "WorldExportAllowed": false,
+          "LogosAllowed": false,
+          "PhotosAllowed": false
+        },
+        "Competitions": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,232 @@
+[
+  {
+    "countryCode": "BR",
+    "countryName": "BR",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "BR: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "AR",
+    "countryName": "AR",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "AR: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "GB",
+    "countryName": "GB",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "GB: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "ES",
+    "countryName": "Espanha",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [
+      "Liga espanhola (Wikidata Q324867)"
+    ],
+    "clubs": 1,
+    "players": 35,
+    "completeSquads": 1,
+    "partialSquads": 0,
+    "realPlayers": 35,
+    "estimatedStrengths": 35,
+    "generatedPlayers": 0,
+    "references": [
+      {
+        "snapshotId": "ccb0176d-54ba-495e-bc8a-489e454886b6",
+        "scope": {
+          "countryCode": "ES",
+          "gender": "Male",
+          "league": "Q324867",
+          "season": "2026",
+          "dataType": "Clubs",
+          "provider": "wikidata",
+          "key": "ES|Male|Q324867|2026|Clubs|wikidata"
+        },
+        "version": "wikidata:Q8682:2560947415:9C8C555412000AD63357C1F72FE8EE39DF9EB81E2E4F14658DDA2F54E8489B4D",
+        "updatedAt": "2026-10-30T22:00:27.494264Z",
+        "validatedAt": "2026-10-30T22:00:28.208726Z",
+        "isFixture": false,
+        "status": "Cached",
+        "warning": null,
+        "rights": {
+          "license": "CC0-1.0",
+          "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+          "accessAllowed": true,
+          "storageAllowed": true,
+          "displayAllowed": true,
+          "commercialUseAllowed": true,
+          "redistributionAllowed": true,
+          "offlineWorldsAllowed": true,
+          "worldExportAllowed": true,
+          "attribution": "Wikidata (CC0), contribuições comunitárias; cobertura não garantida.",
+          "useUntil": null,
+          "retainUntil": null,
+          "logosAllowed": false,
+          "photosAllowed": false
+        }
+      },
+      {
+        "snapshotId": "314451b7-6d1c-4664-90b9-498cefcee2dc",
+        "scope": {
+          "countryCode": "ES",
+          "gender": "Male",
+          "league": "Q324867",
+          "season": "2026",
+          "dataType": "Squads",
+          "provider": "wikidata",
+          "key": "ES|Male|Q324867|2026|Squads|wikidata"
+        },
+        "version": "wikidata:Q8682:2560947415:3E4B1507BA1C36D4473B6A9710F72BA40E06432FAFD11E06EA36A70C8D8B27CA",
+        "updatedAt": "2026-10-30T22:00:29.247202Z",
+        "validatedAt": "2026-10-30T22:00:30.866693Z",
+        "isFixture": false,
+        "status": "Cached",
+        "warning": null,
+        "rights": {
+          "license": "CC0-1.0",
+          "evidence": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+          "accessAllowed": true,
+          "storageAllowed": true,
+          "displayAllowed": true,
+          "commercialUseAllowed": true,
+          "redistributionAllowed": true,
+          "offlineWorldsAllowed": true,
+          "worldExportAllowed": true,
+          "attribution": "Wikidata (CC0), contribuições comunitárias; cobertura não garantida.",
+          "useUntil": null,
+          "retainUntil": null,
+          "logosAllowed": false,
+          "photosAllowed": false
+        }
+      }
+    ],
+    "restrictions": [
+      "CC0-1.0"
+    ],
+    "warnings": [
+      "Q123289726: posição ausente/ambígua; revisão necessária.",
+      "Q135682148: posição ausente/ambígua; revisão necessária.",
+      "Q19845456: posição ausente/ambígua; revisão necessária.",
+      "Q27569376: posição ausente/ambígua; revisão necessária.",
+      "Q654903: posição ausente/ambígua; revisão necessária.",
+      "Vínculos comunitários do Wikidata não garantem o elenco oficial completo/atual."
+    ]
+  },
+  {
+    "countryCode": "DE",
+    "countryName": "DE",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "DE: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "IT",
+    "countryName": "IT",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "IT: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "FR",
+    "countryName": "FR",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "FR: sem cobertura válida para Male/2026."
+    ]
+  },
+  {
+    "countryCode": "PT",
+    "countryName": "PT",
+    "gender": "Male",
+    "season": "2026",
+    "leagues": [],
+    "clubs": 0,
+    "players": 0,
+    "completeSquads": 0,
+    "partialSquads": 0,
+    "realPlayers": 0,
+    "estimatedStrengths": 0,
+    "generatedPlayers": 0,
+    "references": [],
+    "restrictions": [],
+    "warnings": [
+      "PT: sem cobertura válida para Male/2026."
+    ]
+  }
+]
