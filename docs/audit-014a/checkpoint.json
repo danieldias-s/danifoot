@@ -1,0 +1,22 @@
+{
+  "Task": "ELIFOOT_INTEGRATION_012D_013AB_014A",
+  "Status": "PASS",
+  "IntegrationWorktree": "D:\\elifoot_98_integration",
+  "IntegrationBranch": "feature/integration-012d-013ab",
+  "IntegrationCommit": "228c3bfe3e4627aa5288a6424519f3af1752879e",
+  "Base012DCommit": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+  "Source013BCommit": "47608e9a674c0978c4be4b244de88d961876e197",
+  "DotnetDistinctCases": 533,
+  "FlutterTests": 70,
+  "NodeTests": 2,
+  "LongSimulationSeasonsPerWorld": 100,
+  "LongWorlds": [
+    "Seed012D",
+    "Male fixtures",
+    "Female fixtures"
+  ],
+  "CashAndDebtReconciled": true,
+  "OriginalWorktreesPreserved": true,
+  "ProductionPublished": false,
+  "013CImplemented": false
+}

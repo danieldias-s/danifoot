@@ -8,7 +8,7 @@ INTEGRATION_BRANCH: feature/integration-012d-013ab
 BASE_012D_COMMIT: 7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48
 SOURCE_013B_COMMIT: 47608e9a674c0978c4be4b244de88d961876e197
 COMMON_ANCESTOR: 50e9c1215ed6d1256cc0593f84ab8aa54629b314
-INTEGRATION_COMMIT: pendente de commit após validação completa
+INTEGRATION_COMMIT: 228c3bfe3e4627aa5288a6424519f3af1752879e
 
 012C_PRESERVED: motores protegidos idênticos à base; replay e regressão executados.
 012D_PRESERVED: regras financeiras, sala e contabilidade preservadas; comparação exata abaixo.

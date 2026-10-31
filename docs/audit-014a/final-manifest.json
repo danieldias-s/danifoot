@@ -1,7 +1,7 @@
 {
   "Task": "ELIFOOT_INTEGRATION_012D_013AB_014A",
   "Status": "PASS",
-  "HeadBeforeCheckpoint": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+  "HeadBeforeCheckpoint": "228c3bfe3e4627aa5288a6424519f3af1752879e",
   "SourceFiles": [
     {
       "Path": "Elifoot.slnx",
@@ -924,7 +924,7 @@
   "CompactEvidence": [
     {
       "Path": "docs/INTEGRATION_012D_013AB_014A.md",
-      "Sha256": "c2d4dda17c0162938edd083692e46b32b29116ae0fd20c17afb4b0b0d9bdd9ac"
+      "Sha256": "fa305d32df4a1b7e5b9bf17edb0f84bbddad669bcb7009742210f723e8a82876"
     },
     {
       "Path": "docs/INTEGRATION_CONFLICTS_014A.md",
@@ -973,6 +973,10 @@
     {
       "Path": "docs/audit-014a/build-release-final.log",
       "Sha256": "49130cc661f3a8cf04c8ca603ff7ad640bd15af4949d491934a1667a34381b1d"
+    },
+    {
+      "Path": "docs/audit-014a/checkpoint.json",
+      "Sha256": "2cb1ed182c2f5380ab979c7eb8f4df25eda93b74f7c4c1af61a1d562b306407b"
     },
     {
       "Path": "docs/audit-014a/compatibility-consolidated.json",
@@ -1144,7 +1148,7 @@
     },
     {
       "Path": "docs/audit-014a/verification.json",
-      "Sha256": "3fd173008f4c5cd8a9b4b13584197d3032a1f111cc93809703e88ce23d4eaa17"
+      "Sha256": "66ad731bb653b0f129bdb7320b2856025dd62f351c350edca68fde1457a4c7e8"
     },
     {
       "Path": "docs/audit-014a/verified-final/balance-012d-fix/final-199801/seasons.json",
@@ -1255,6 +1259,7 @@
     "docs/audit-014a/artifact-restoration.json",
     "docs/audit-014a/build-final.log",
     "docs/audit-014a/build-release-final.log",
+    "docs/audit-014a/checkpoint.json",
     "docs/audit-014a/compatibility-consolidated.json",
     "docs/audit-014a/compatibility-final-exit.json",
     "docs/audit-014a/compatibility-final.log",
