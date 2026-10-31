@@ -2,7 +2,7 @@
   "Task": "ELIFOOT_PLAYABLE_REAL_CLUB_WORLDS_013C",
   "Status": "PASS",
   "ApprovedBase": "d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17",
-  "HeadBeforeCheckpoint": "d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17",
+  "HeadBeforeCheckpoint": "9c1f776930c4ca4bb28c4ff6d0f68c829272d727",
   "SourceFiles": [
     {
       "Path": "Elifoot.slnx",
@@ -918,8 +918,8 @@
     },
     {
       "Path": "docs/PLAYABLE_WORLDS_013C.md",
-      "Bytes": 5424,
-      "Sha256": "04e43fcf79f324e45d7d31c1faef229094938b8cd4b19e70b15c056410d35978"
+      "Bytes": 5422,
+      "Sha256": "953b52cfae0c77a86d7e66585a922ebb0ce59e1d5b954f272f4454819db22435"
     },
     {
       "Path": "docs/REAL_AND_SIMULATED_ROSTERS_013C.md",
@@ -990,6 +990,11 @@
       "Path": "docs/audit-013c/build-initial.log",
       "Bytes": 1562,
       "Sha256": "31e8fc1193312f33d2bf30ba2368e8f3ac251b2032d663a12007a3560a559c30"
+    },
+    {
+      "Path": "docs/audit-013c/checkpoint.json",
+      "Bytes": 459,
+      "Sha256": "fc10d8fc6c7d2a2ad5c364c2bd96aba9405f5b295ede6287f47802f1673d5ef2"
     },
     {
       "Path": "docs/audit-013c/domain-build-initial.log",
@@ -1278,8 +1283,8 @@
     },
     {
       "Path": "docs/audit-013c/verification.json",
-      "Bytes": 89353,
-      "Sha256": "e0a9edc0d0fa0a773d387a72a67943ac5460f7e9420373cf8d8d8dfa0ebeca6d"
+      "Bytes": 89351,
+      "Sha256": "8f06d0c52e4903293ea206062cb79a8edfd0e47fdac7a6b7254a39e2785ec496"
     },
     {
       "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/seasons.json",
@@ -1830,9 +1835,6 @@
     }
   ],
   "CommitFiles": [
-    "client/elifoot_flutter/lib/catalog_provenance.dart",
-    "client/elifoot_flutter/lib/main.dart",
-    "client/elifoot_flutter/lib/world_creator.dart",
     "client/elifoot_flutter/test/playable_worlds_013c_test.dart",
     "docs/KNOWN_ISSUES_013C.md",
     "docs/PLAYABLE_WORLDS_013C.md",
@@ -1850,6 +1852,7 @@
     "docs/audit-013c/boundary-exits.json",
     "docs/audit-013c/boundary-integration.log",
     "docs/audit-013c/build-initial.log",
+    "docs/audit-013c/checkpoint.json",
     "docs/audit-013c/domain-build-initial.log",
     "docs/audit-013c/domain-targeted.log",
     "docs/audit-013c/dotnet-full-exits.json",
@@ -1923,27 +1926,14 @@
     "scripts/stop-playable-worlds-013c.ps1",
     "scripts/test-playable-worlds-013c.ps1",
     "scripts/verify-restart-playable-worlds-013c.ps1",
-    "src/Elifoot.Api/WorldCreatorEndpoints.cs",
-    "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
     "src/Elifoot.Contracts/Catalog/PlayableWorldDtos.cs",
-    "src/Elifoot.Contracts/Catalog/WorldCreatorDtos.cs",
-    "src/Elifoot.Contracts/Dtos.cs",
     "src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs",
     "src/Elifoot.Domain/Catalog/PlayerProvenance.cs",
-    "src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs",
-    "src/Elifoot.Domain/Entities.cs",
-    "src/Elifoot.Domain/WorldEditorAndPackageService.cs",
-    "src/Elifoot.Infrastructure/Catalog/WorldCreatorService.cs",
     "tests/Elifoot.Domain.Tests/PlayableWorld013CTests.cs",
-    "tests/Elifoot.Integration.Tests/Integration014ATests.cs",
     "tests/Elifoot.Integration.Tests/PlayableWorld013CIntegrationTests.cs",
-    "tests/Elifoot.Integration.Tests/WorldCreator013ATests.cs",
-    "tools/catalog-013b/importer/CoverageAudit.cs",
-    "tools/catalog-013b/importer/CoverageBundleImporter.cs",
-    "tools/catalog-013b/importer/LocalCatalogTarget.cs",
     "docs/audit-013c/final-manifest.json"
   ],
-  "TotalCommitBytes": 6263907,
+  "TotalCommitBytes": 5853825,
   "OriginalWorktrees": {
     "012D": {
       "Path": "D:\\elifoot_98",

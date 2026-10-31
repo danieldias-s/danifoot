@@ -6,7 +6,7 @@ STATUS: PASS
 WORKTREE: D:\elifoot_98_integration
 BRANCH: feature/playable-real-club-worlds-013c
 BASE_COMMIT: d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17
-CHECKPOINT_COMMIT: pendente de commit local após validação
+CHECKPOINT_COMMIT: 9c1f776930c4ca4bb28c4ff6d0f68c829272d727
 012D_PRESERVED: motores e contabilidade preservados; regressão de 100 temporadas reconciliada.
 013A_PRESERVED: montagem 4x8+96, escolha manual, snapshots, cache e compatibilidade.
 013B_PRESERVED: provedores, direitos, referências e cobertura preservados.

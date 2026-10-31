@@ -1,0 +1,14 @@
+{
+  "Branch": "feature/playable-real-club-worlds-013c",
+  "DistinctValidatedDotnetTests": 552,
+  "NoProductionPublish": true,
+  "FlutterTests": 76,
+  "NodeTests": 2,
+  "ImplementationCommit": "9c1f776930c4ca4bb28c4ff6d0f68c829272d727",
+  "NoAutomaticMerge": true,
+  "FullSolutionTests": 551,
+  "NoPush": true,
+  "Status": "PASS",
+  "Task": "ELIFOOT_PLAYABLE_REAL_CLUB_WORLDS_013C",
+  "ApprovedBase": "d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17"
+}
