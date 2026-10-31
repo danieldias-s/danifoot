@@ -1,0 +1,56 @@
+{
+  "database": "elifoot_013b_catalog",
+  "port": 55434,
+  "reports": [
+    {
+      "generatedPlayers": 0,
+      "isFixture": false,
+      "pendingSlots": 127,
+      "gender": "Male",
+      "errors": [
+        "Divisão 1 precisa de exatamente 8 clubes.",
+        "Divisão 2 precisa de exatamente 8 clubes.",
+        "Divisão 3 precisa de exatamente 8 clubes.",
+        "Divisão 4 precisa de exatamente 8 clubes.",
+        "Distritais precisam de exatamente 96 clubes."
+      ],
+      "rawUsablePlayers": 35,
+      "previewSquadPlayers": 24,
+      "rankingMethod": "ProvisionalIdentifierOrder-v1",
+      "snapshotIds": [
+        "ccb0176d-54ba-495e-bc8a-489e454886b6",
+        "314451b7-6d1c-4664-90b9-498cefcee2dc"
+      ],
+      "realIdentities": 35,
+      "clubs": 1
+    },
+    {
+      "generatedPlayers": 0,
+      "isFixture": false,
+      "pendingSlots": 127,
+      "gender": "Female",
+      "errors": [
+        "Divisão 1 precisa de exatamente 8 clubes.",
+        "Divisão 2 precisa de exatamente 8 clubes.",
+        "Divisão 3 precisa de exatamente 8 clubes.",
+        "Divisão 4 precisa de exatamente 8 clubes.",
+        "Distritais precisam de exatamente 96 clubes.",
+        "Real Madrid Femenino: apenas 6 atletas utilizáveis; mínimo 11.",
+        "Real Madrid Femenino: falta goleiro.",
+        "Real Madrid Femenino: faltam jogadores de linha.",
+        "Elenco incompleto ou inválido: Real Madrid Femenino; exige 11–24 atletas, 1 G e 10 de linha."
+      ],
+      "rawUsablePlayers": 6,
+      "previewSquadPlayers": 6,
+      "rankingMethod": "ProvisionalIdentifierOrder-v1",
+      "snapshotIds": [
+        "7bf17809-6d77-4fb3-a97f-befc6ce0f099",
+        "dec63d0c-9d7f-423a-8bb7-e1a392b0f16e"
+      ],
+      "realIdentities": 6,
+      "clubs": 1
+    }
+  ],
+  "noExternalProvidersConfigured": true,
+  "checkedAt": "2026-10-30T19:08:14.3060509-03:00"
+}

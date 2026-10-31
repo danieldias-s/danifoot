@@ -168,7 +168,9 @@ public class ApiAndSignalREndToEndTests
     public async Task PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18()
     {
         string testDbName = $"elifoot_test_{Guid.NewGuid():N}"[..28];
-        string testConn = $"Host=127.0.0.1;Port=5432;Database={testDbName};Username=postgres;Password=123456";
+        string testConn = Environment.GetEnvironmentVariable("ELIFOOT_013A_LEGACY_PG") is { Length: > 0 } isolated
+            ? new Npgsql.NpgsqlConnectionStringBuilder(isolated) { Database = testDbName }.ConnectionString
+            : throw new InvalidOperationException("Configure ELIFOOT_013A_LEGACY_PG via o runner isolado 013A/013B; o teste não usará o PostgreSQL principal.");
 
         var services = new ServiceCollection();
         services.AddDbContext<ElifootDbContext>(opt => opt.UseNpgsql(testConn));
@@ -207,11 +209,9 @@ public class ApiAndSignalREndToEndTests
     }
 
     [Theory]
-    [InlineData(2)]
-    [InlineData(4)]
-    [InlineData(6)]
-    [InlineData(8)]
-    public async Task MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(int coachCount)
+    [InlineData(2, false)] [InlineData(4, false)] [InlineData(6, false)] [InlineData(8, false)]
+    [InlineData(2, true)] [InlineData(4, true)] [InlineData(6, true)] [InlineData(8, true)]
+    public async Task MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(int coachCount, bool importedWorld)
     {
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
@@ -258,6 +258,15 @@ public class ApiAndSignalREndToEndTests
             // Advance world to Round 3 (League Round 1 where all 32 division clubs play)
             var repo = factory.Services.GetRequiredService<IWorldRepository>();
             var worldEntity = (await repo.GetWorldAsync(worldId))!;
+            if (importedWorld)
+            {
+                worldEntity = Elifoot.Testing.Imported014AWorlds.Create(
+                    coachCount is 2 or 6 ? FootballGender.Female : FootballGender.Male, 199801 + coachCount);
+                worldId = worldEntity.Id;
+                await repo.SaveWorldAsync(worldEntity);
+                Assert.NotNull(worldEntity.CatalogOrigin);
+                Assert.Equal(OperatingEconomyEngine.CurrentPolicy, worldEntity.Economy.OperatingRules.Name);
+            }
             worldEntity.RoundNumber = 3;
             await repo.SaveWorldAsync(worldEntity);
 
@@ -288,6 +297,22 @@ public class ApiAndSignalREndToEndTests
             Assert.Equal($"TÁTICAS ENVIADAS: 0/{coachCount}", prepSnap.ReadyCounter.CounterLabel);
             Assert.Equal(0, prepSnap.ReadyCounter.ReadyCount);
             Assert.Equal(coachCount, prepSnap.ReadyCounter.TotalHumans);
+
+            if (importedWorld)
+            {
+                var club = worldEntity.Clubs.Single(c => c.Id == clubPool[0]);
+                decimal before = club.CashBalance;
+                string bank = $"/api/worlds/{worldId}/clubs/{club.Id}/loans?coachId={coachIds[0]}&amount=500000&rounds=0&idempotencyKey=014a-reconnect";
+                var loans = await Task.WhenAll(Enumerable.Range(0, coachCount).Select(_ => httpClients[0].PostAsync(bank, null)));
+                Assert.All(loans, response => Assert.True(response.IsSuccessStatusCode));
+                await hubClients[0].StopAsync(); await hubClients[0].StartAsync();
+                await hubClients[0].InvokeAsync<LiveRoundSnapshotDto>("JoinRoom", worldId, coachIds[0]);
+                Assert.True((await httpClients[0].PostAsync(bank, null)).IsSuccessStatusCode);
+                Assert.Equal(before + 500000, club.CashBalance); Assert.Single(worldEntity.BankLoans);
+                string foreignBank = bank.Replace($"clubs/{club.Id}", $"clubs/{clubPool[1]}").Replace("014a-reconnect", "014a-forbidden");
+                Assert.False((await httpClients[0].PostAsync(foreignBank, null)).IsSuccessStatusCode);
+                Assert.Single(worldEntity.BankLoans);
+            }
 
             // Steps 4, 5, 6, 7 & 8: Prepare lineup, pick tactic, submit tactic for each of the N clients, verify counter progression and automatic start at N/N
             string[] formationChoices = ["4-4-2", "4-3-3", "3-5-2", "5-3-2", "3-4-3", "4-5-1", "5-4-1", "4-2-4"];

@@ -25,4 +25,7 @@
     <ProjectReference Include="..\..\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="..\Shared\Imported014AWorlds.cs" Link="Imported014AWorlds.cs" />
+  </ItemGroup>
 </Project>

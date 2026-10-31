@@ -2,7 +2,7 @@ using Elifoot.Contracts;
 
 namespace Elifoot.Domain;
 
-public class GameWorld
+public partial class GameWorld
 {
     public ForceEvolutionMode ForceEvolutionMode { get; set; }
     public ClassicForceState ClassicForce { get; set; } = new();

@@ -1,0 +1,7 @@
+{
+  "Source": "docs\\audit-014a\\verified-final\\real-season-world.json",
+  "Target": "docs\\audit-014a\\compatibility-final\\real-season-world.json",
+  "SourceSha256": "e02fd3f602f88e87490576642e53c4acb0294df0a5fd60382870e7bfa2198f70",
+  "TargetSha256": "e02fd3f602f88e87490576642e53c4acb0294df0a5fd60382870e7bfa2198f70",
+  "Purpose": "Input snapshot produced by the passed full real-engine regression; copied unchanged for the short reload test."
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "CountryCode": "BR",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "AR",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "GB",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "ES",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": true
+  },
+  {
+    "CountryCode": "DE",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "IT",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "FR",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  },
+  {
+    "CountryCode": "PT",
+    "Categories": [
+      "Male",
+      "Female"
+    ],
+    "ProviderCompetitionIds": "Require authorized discovery and review for each gender/season",
+    "RealPilotAvailable": false
+  }
+]

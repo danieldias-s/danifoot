@@ -21,9 +21,16 @@ public partial class MultiSeasonAndBenchmarkTests
         public int Transactions,Games,LoanDisbursements;
         public Dictionary<Guid,Dictionary<string,decimal>> ClubCategories {get;}=new();
     }
-    private static void RunEconomyBalanceCase(string name,int seed,int seasonCount)
+    [Theory][InlineData(FootballGender.Male)][InlineData(FootballGender.Female)]
+    public void Integration014A_CreatedWorld100SeasonsReconcilesCashDebtAndTransfers(FootballGender gender)
     {
-        string dir=Path.Combine(DocsDir,"balance-012d-fix",name+"-"+seed);Directory.CreateDirectory(dir);
+        RunEconomyBalanceCase("final",199801,100,
+            () => Elifoot.Testing.Imported014AWorlds.Create(gender),
+            Path.Combine(DocsDir,"integration-014a",gender.ToString()));
+    }
+    private static void RunEconomyBalanceCase(string name,int seed,int seasonCount,Func<GameWorld>? worldFactory=null,string? reportFolder=null)
+    {
+        string dir=reportFolder??Path.Combine(DocsDir,"balance-012d-fix",name+"-"+seed);Directory.CreateDirectory(dir);
         var books=new Dictionary<int,BalanceYear>();var seen=new HashSet<Guid>();var keys=new HashSet<string>();
         var pairs=new Dictionary<Guid,(int Count,decimal Net)>();var loanOffsets=new Dictionary<Guid,int>();
         var years=new List<object>();var clubSeries=new List<object>();var negativeStreak=new Dictionary<Guid,int>();
@@ -110,13 +117,13 @@ public partial class MultiSeasonAndBenchmarkTests
                 years.Add(snapshot);clubSeries.Add(new{Season=season,Clubs=clubs});previousCash=clubs.ToDictionary(c=>c.Id,c=>c.Cash);openingDebt=debtTotal;
                 divisions=w.Clubs.ToDictionary(c=>c.Id,c=>c.DivisionTier);final=w;
                 File.WriteAllText(Path.Combine(dir,"progress.json"),JsonSerializer.Serialize(new{Season=season,Cash=cash,Median=median,Debt=debtTotal,Insolvent=clubs.Count(c=>c.Insolvent)}));
-            },forceEvolutionMode:ForceEvolutionMode.ClassicAdapted);
+            },forceEvolutionMode:ForceEvolutionMode.ClassicAdapted,worldFactory:worldFactory);
         Assert.All(pairs.Values,p=>{Assert.Equal(2,p.Count);Assert.Equal(0,p.Net);});
         Assert.Equal(seasonCount*351,result.TotalMatchesCompleted);Assert.Equal(0,result.InvalidSquadLimitViolations);Assert.Equal(0,result.DoubleSettledMatchFinancialViolations);
         if(name=="baseline"&&seed==199801&&seasonCount==100)Assert.Equal(18_107_128_451.84m,final!.Clubs.Sum(c=>c.CashBalance));
         File.WriteAllText(Path.Combine(dir,"seasons.json"),JsonSerializer.Serialize(years,new JsonSerializerOptions{WriteIndented=true}));
         using(var stream=new StreamWriter(new GZipStream(File.Create(Path.Combine(dir,"clubs.json.gz")),CompressionLevel.Fastest)))stream.Write(JsonSerializer.Serialize(clubSeries));
-        File.WriteAllText(Path.Combine(dir,"summary.json"),JsonSerializer.Serialize(new{Case=name,Seed=seed,Seasons=seasonCount,SourceCheckpoint="7529e69",InitialCash=opening,
+        File.WriteAllText(Path.Combine(dir,"summary.json"),JsonSerializer.Serialize(new{Case=name,Seed=seed,Seasons=seasonCount,SourceCheckpoint=worldFactory==null?"7529e69":"7a00bdd+47608e9",Gender=final!.Gender.ToString(),WorldSnapshot=final.CatalogOrigin?.DataHash,FixtureWorld=worldFactory!=null,InitialCash=opening,
             FinalCash=final!.Clubs.Sum(c=>c.CashBalance),FinalDebt=final.BankLoans.Sum(l=>l.RemainingBalance),Transactions=ledgerCount,TransferPairs=pairs.Count,
             result.TotalMatchesCompleted,result.RealMinutesSimulated,result.InvalidLineupSelectionViolations,result.InvalidSquadLimitViolations,result.DoubleSettledMatchFinancialViolations,
             OperatingRules=final.Economy.OperatingRules,SalaryRequests=final.Economy.SalaryRequests.Count,ForcedAuctions=final.Economy.CrisisHistory.Count(e=>e.Kind=="FORCED_AUCTION"),

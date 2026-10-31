@@ -13,6 +13,9 @@
     <Project Path="tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/" />
+  <Folder Name="/tools/catalog-013b/">
+    <Project Path="tools/catalog-013b/importer/Elifoot.RealDataImporter.csproj" />
+  </Folder>
   <Folder Name="/tools/seed-generator/">
     <Project Path="tools/seed-generator/Elifoot.SeedGenerator.csproj" />
   </Folder>

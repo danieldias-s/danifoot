@@ -1,0 +1,27 @@
+{
+  "existingWorldHashesUnchanged": true,
+  "backups": [
+    {
+      "path": "D:\\elifoot_98_013A\\artifacts\\013b-coverage\\backups\\elifoot_013b_catalog-after.dump",
+      "sha256": "3675ADE402583375D715FE0730690C9CB6017AD55F2C761A0A7F9485A5E69621",
+      "bytes": 5345708
+    },
+    {
+      "path": "D:\\elifoot_98_013A\\artifacts\\013b-coverage\\backups\\elifoot_013b_catalog-before.dump",
+      "sha256": "A11882927C1C2DF146ED5EFD7C4EE4DDA6584FB5CC2AD881A5D89E700023E792",
+      "bytes": 4057934
+    },
+    {
+      "path": "D:\\elifoot_98_013A\\artifacts\\013b-coverage\\backups\\elifoot_013b_worlds-after.dump",
+      "sha256": "D4041B6008FDA61B723CB241BA4AEFB8FAD71676F28A11BB51A9206144AD354F",
+      "bytes": 6574187
+    },
+    {
+      "path": "D:\\elifoot_98_013A\\artifacts\\013b-coverage\\backups\\elifoot_013b_worlds-before.dump",
+      "sha256": "95C410A4C78D1CEA0980D24AFD7A9344EAF449911394A21D33922EED24762823",
+      "bytes": 5497520
+    }
+  ],
+  "snapshotHashesUnchanged": true,
+  "postgresRestart": "PASS"
+}

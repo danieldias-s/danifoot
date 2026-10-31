@@ -1,0 +1,119 @@
+{
+  "Task": "ELIFOOT_INTEGRATION_012D_013AB_014A",
+  "Status": "PASS",
+  "Scope": "DEV; fixtures ou complemento fictício explícito; nenhum elenco real atual completo declarado.",
+  "IntegrationWorktree": "D:\\elifoot_98_integration",
+  "IntegrationBranch": "feature/integration-012d-013ab",
+  "Base012DCommit": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+  "Source013BCommit": "47608e9a674c0978c4be4b244de88d961876e197",
+  "CommonAncestor": "50e9c1215ed6d1256cc0593f84ab8aa54629b314",
+  "TextConflicts": [],
+  "IntegrationCommit": "pendente de commit após validação completa",
+  "OriginalWorktrees": {
+    "012D": {
+      "Path": "D:\\elifoot_98",
+      "Head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "Branch": "master",
+      "StateUnchanged": true,
+      "StatusSha256": "c80475d5c716b928bd1eb68cf0d2b645a71d31ec1311b12caca4f5195b852d30"
+    },
+    "013AB": {
+      "Path": "D:\\elifoot_98_013A",
+      "Head": "47608e9a674c0978c4be4b244de88d961876e197",
+      "Branch": "feature/real-football-data-013b",
+      "StateUnchanged": true,
+      "StatusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "ProtectedFilesUnchanged": {
+    "MatchEngine.cs": true,
+    "DisciplineEngine.cs": true,
+    "TacticsAndSquadRules.cs": true,
+    "ClassicForceEvolutionEngine.cs": true,
+    "ClassicForceState.cs": true,
+    "PlayerStrengthEvolutionEngine.cs": true,
+    "AiManagerBrain.cs": true,
+    "ClassicEconomyEngine.cs": true,
+    "FinancialInsolvencyEngine.cs": true,
+    "SalaryContractsEngine.cs": true,
+    "OperatingEconomyEngine.cs": true,
+    "MarketAndEconomyEngine.cs": true
+  },
+  "Suites": [
+    {
+      "Suite": "elifoot.application.tests.dll",
+      "Total": 6,
+      "Passed": 6,
+      "Failed": 0,
+      "File": "docs\\audit-014a\\tests\\final_net10.0_20261031000120.trx"
+    },
+    {
+      "Suite": "elifoot.domain.tests.dll",
+      "Total": 371,
+      "Passed": 371,
+      "Failed": 0,
+      "File": "docs\\audit-014a\\tests\\final_net10.0_20261031000136.trx"
+    },
+    {
+      "Suite": "elifoot.integration.tests.dll",
+      "Total": 132,
+      "Passed": 132,
+      "Failed": 0,
+      "File": "docs\\audit-014a\\tests\\final_net10.0_20261031000532.trx"
+    },
+    {
+      "Suite": "elifoot.simulation.tests.dll",
+      "Total": 24,
+      "Passed": 24,
+      "Failed": 0,
+      "File": "docs\\audit-014a\\tests\\final_net10.0_20261031002557.trx"
+    }
+  ],
+  "DotnetTests": 533,
+  "FullDotnetExit": 0,
+  "CompatibilityRegression": {
+    "Status": "PASS",
+    "DistinctByStableTestId": 515,
+    "RemainingFailures": 0,
+    "InitialShortRunRawExit": 1,
+    "TargetedReloadRawExit": 0,
+    "Trx": [
+      "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003254.trx",
+      "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003307.trx",
+      "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003347.trx",
+      "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003632.trx",
+      "docs\\audit-014a\\tests\\compatibility-reload_net10.0_20261031003811.trx"
+    ],
+    "IdentityNote": "Three invalid-source JSON theory rows have the same truncated display name but different stable testIds. The reload keeps the same testId on re-execution and is counted once.",
+    "InputNote": "The fresh short output lacked the snapshot produced by the passed long run. A byte-identical copy was supplied and the reload test passed. Raw exit codes are preserved."
+  },
+  "FlutterTests": 70,
+  "FlutterExits": {
+    "Tests": 0,
+    "Build": 0,
+    "Analyze": 0
+  },
+  "NodeTests": 2,
+  "NodePassed": true,
+  "Restart": {
+    "ExternalDatabasesUsed": false,
+    "Port": 55435,
+    "Status": "PASS",
+    "OldWorldsPreserved": true,
+    "SnapshotsUnchanged": true,
+    "LoanReplayIdempotent": true,
+    "Databases": [
+      "elifoot_014a_013b_worlds",
+      "elifoot_014a_013b_worlds_real",
+      "elifoot_014a_old_b26b473b9f61",
+      "elifoot_014a_old_caa1b0af4bbd"
+    ],
+    "PreviousPostmasterPid": "36800",
+    "NewPostmasterPid": "34732",
+    "ApiRestart": true
+  },
+  "FinancialReconciliation": "PASS",
+  "EconomicReview": "PASS",
+  "ProductionPublished": false,
+  "013CImplemented": false
+}

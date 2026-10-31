@@ -1,0 +1,38 @@
+[
+  {
+    "Id": "13b79bea-c224-4b07-b262-592b378a42bf",
+    "Database": "elifoot_014a_old_b26b473b9f61",
+    "Source": "D:\\elifoot_98\\docs\\audit-012d\\solution-final\\real-season-world.json",
+    "SourceSha256": "B26B473B9F617CEA029D2EC1F7AC7BBEC299CA51322B9E81299D8623D0A22ACD",
+    "FinancialHash": "CC5362BCD8CFF957BFC594A1EE2A8978D72803870C9ADAD258904E7FF60A22B3",
+    "SeasonNumber": 2,
+    "RoundNumber": 1,
+    "Clubs": 128,
+    "Players": 2308,
+    "Cash": 338980535.65,
+    "Debt": 0,
+    "Contracts": 2308,
+    "CatalogOriginAbsent": true,
+    "FinancialStateUnchanged": true,
+    "OriginalFileWritten": false,
+    "OperatingUpgradeSeason": 3
+  },
+  {
+    "Id": "d8379965-b5d7-4698-b939-710127e4591d",
+    "Database": "elifoot_014a_old_caa1b0af4bbd",
+    "Source": "D:\\elifoot_98\\docs\\audit-009\\real-season-world.json",
+    "SourceSha256": "CAA1B0AF4BBD9AEDFBFC259F781DADA019EB5D52EE01F35FE71EA2B41F12E143",
+    "FinancialHash": "5068D139EC18FCB84B1A9DD921B8A2CACF3D769E193CC850AFA6321FE98F0533",
+    "SeasonNumber": 2,
+    "RoundNumber": 1,
+    "Clubs": 128,
+    "Players": 2308,
+    "Cash": 338972942.22,
+    "Debt": 0,
+    "Contracts": 2308,
+    "CatalogOriginAbsent": true,
+    "FinancialStateUnchanged": true,
+    "OriginalFileWritten": false,
+    "OperatingUpgradeSeason": 3
+  }
+]

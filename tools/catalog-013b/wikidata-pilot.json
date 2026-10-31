@@ -1,0 +1,52 @@
+{
+  "Catalog013B": {
+    "Enabled": true,
+    "Providers": [
+      {
+        "Kind": "Wikidata",
+        "MinimumIntervalMilliseconds": 1200,
+        "FixtureData": false,
+        "Competitions": [
+          {
+            "CountryCode": "ES",
+            "CountryName": "Espanha",
+            "Gender": "Male",
+            "Season": "2026",
+            "LeagueId": "Q324867",
+            "LeagueName": "Liga espanhola (Wikidata Q324867)",
+            "ProviderSeasonId": "2026",
+            "ReviewEvidence": "CC0 Wikidata: P17 Q29; P31 Q476028; P118 Q324867; identity reviewed from API on 2026-10-30",
+            "AsOf": "2026-10-30",
+            "WikidataTeams": [
+              {
+                "Id": "Q8682",
+                "ExpectedName": "Real Madrid Club de Fútbol",
+                "CountryEntityId": "Q29",
+                "CategoryEntityId": "Q476028"
+              }
+            ]
+          },
+          {
+            "CountryCode": "ES",
+            "CountryName": "Espanha",
+            "Gender": "Female",
+            "Season": "2026",
+            "LeagueId": "Q40068",
+            "LeagueName": "Liga feminina espanhola (Wikidata Q40068)",
+            "ProviderSeasonId": "2026",
+            "ReviewEvidence": "CC0 Wikidata: P17 Q29; P31 Q51481377; P118 Q40068; identity reviewed from API on 2026-10-30",
+            "AsOf": "2026-10-30",
+            "WikidataTeams": [
+              {
+                "Id": "Q96791589",
+                "ExpectedName": "Real Madrid Femenino",
+                "CountryEntityId": "Q29",
+                "CategoryEntityId": "Q51481377"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

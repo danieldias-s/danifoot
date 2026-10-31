@@ -1,0 +1,232 @@
+[
+  {
+    "World": "1e5ec9dc-dfae-4ec7-b39f-fd92ca14ecbc",
+    "Port": 5140,
+    "Gender": "Male",
+    "Reference012D": true,
+    "BirthCash": 138800000,
+    "NoSportingRoundAdvanced": true,
+    "HttpLoanProbeDoesNotChangeWagesOrStrength": true,
+    "Divisions": {
+      "PrimeiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "606702",
+        "RosterFairValue": "236845169",
+        "MeanStrength": "41.40277777777777777777777778"
+      },
+      "SegundaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "380089",
+        "RosterFairValue": "124962970",
+        "MeanStrength": "32.50694444444444444444444444"
+      },
+      "TerceiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "258633",
+        "RosterFairValue": "73845317",
+        "MeanStrength": "26.53472222222222222222222222"
+      },
+      "QuartaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "176237",
+        "RosterFairValue": "42394191",
+        "MeanStrength": "21.27777777777777777777777778"
+      },
+      "Distrital": {
+        "Clubs": 96,
+        "Players": 1728,
+        "SalaryPerOfficialMatch": "1313913",
+        "RosterFairValue": "245674943",
+        "MeanStrength": "15.50578703703703703703703704"
+      }
+    }
+  },
+  {
+    "World": "1687850f-3947-4626-9492-8db2630320a2",
+    "Port": 5140,
+    "Gender": "Male",
+    "Reference012D": false,
+    "BirthCash": 138800000,
+    "NoSportingRoundAdvanced": true,
+    "HttpLoanProbeDoesNotChangeWagesOrStrength": true,
+    "Divisions": {
+      "PrimeiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "280351",
+        "RosterFairValue": "85205888",
+        "MeanStrength": "27"
+      },
+      "SegundaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "419368",
+        "RosterFairValue": "145659329",
+        "MeanStrength": "33.75"
+      },
+      "TerceiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "316270",
+        "RosterFairValue": "102838291",
+        "MeanStrength": "28.41666666666666666666666667"
+      },
+      "QuartaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "354621",
+        "RosterFairValue": "116768504",
+        "MeanStrength": "31"
+      },
+      "Distrital": {
+        "Clubs": 96,
+        "Players": 1728,
+        "SalaryPerOfficialMatch": "4360178",
+        "RosterFairValue": "1471524372",
+        "MeanStrength": "30.97569444444444444444444444"
+      }
+    }
+  },
+  {
+    "World": "e76b08d9-5b96-4773-aa47-e6979c8b6378",
+    "Port": 5140,
+    "Gender": "Female",
+    "Reference012D": false,
+    "BirthCash": 138800000,
+    "NoSportingRoundAdvanced": true,
+    "HttpLoanProbeDoesNotChangeWagesOrStrength": true,
+    "Divisions": {
+      "PrimeiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "280519",
+        "RosterFairValue": "84720995",
+        "MeanStrength": "27"
+      },
+      "SegundaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "416184",
+        "RosterFairValue": "146373585",
+        "MeanStrength": "33.16666666666666666666666667"
+      },
+      "TerceiraDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "355228",
+        "RosterFairValue": "117084610",
+        "MeanStrength": "31"
+      },
+      "QuartaDivisao": {
+        "Clubs": 8,
+        "Players": 144,
+        "SalaryPerOfficialMatch": "314499",
+        "RosterFairValue": "102187345",
+        "MeanStrength": "28.41666666666666666666666667"
+      },
+      "Distrital": {
+        "Clubs": 96,
+        "Players": 1728,
+        "SalaryPerOfficialMatch": "4262090",
+        "RosterFairValue": "1424584442",
+        "MeanStrength": "30.61805555555555555555555556"
+      }
+    }
+  },
+  {
+    "World": "c70d2e2d-c819-4f50-ba53-9dcbf938a748",
+    "Port": 5141,
+    "Gender": "Male",
+    "Reference012D": false,
+    "BirthCash": 138800000,
+    "NoSportingRoundAdvanced": true,
+    "HttpLoanProbeDoesNotChangeWagesOrStrength": true,
+    "Divisions": {
+      "PrimeiraDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132894",
+        "RosterFairValue": "36029600",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "SegundaDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132744",
+        "RosterFairValue": "35392886",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "TerceiraDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132444",
+        "RosterFairValue": "36192740",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "QuartaDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132444",
+        "RosterFairValue": "35808625",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "Distrital": {
+        "Clubs": 96,
+        "Players": 1056,
+        "SalaryPerOfficialMatch": "1588728",
+        "RosterFairValue": "428396956",
+        "MeanStrength": "23.72727272727272727272727273"
+      }
+    }
+  },
+  {
+    "World": "06ca4fd3-6f47-4a8e-9ec8-ddd75aae22a7",
+    "Port": 5141,
+    "Gender": "Female",
+    "Reference012D": false,
+    "BirthCash": 138800000,
+    "NoSportingRoundAdvanced": true,
+    "HttpLoanProbeDoesNotChangeWagesOrStrength": true,
+    "Divisions": {
+      "PrimeiraDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132894",
+        "RosterFairValue": "36029600",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "SegundaDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132744",
+        "RosterFairValue": "35392886",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "TerceiraDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132444",
+        "RosterFairValue": "36192740",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "QuartaDivisao": {
+        "Clubs": 8,
+        "Players": 88,
+        "SalaryPerOfficialMatch": "132444",
+        "RosterFairValue": "35808625",
+        "MeanStrength": "23.72727272727272727272727273"
+      },
+      "Distrital": {
+        "Clubs": 96,
+        "Players": 1056,
+        "SalaryPerOfficialMatch": "1589566",
+        "RosterFairValue": "428756702",
+        "MeanStrength": "23.73484848484848484848484848"
+      }
+    }
+  }
+]

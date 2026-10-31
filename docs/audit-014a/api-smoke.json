@@ -1,0 +1,100 @@
+{
+  "Status": "PASS",
+  "Worlds": [
+    {
+      "World": "1687850f-3947-4626-9492-8db2630320a2",
+      "Gender": "Male",
+      "Port": 5140,
+      "Countries": 8,
+      "Clubs": 128,
+      "Players": 2304,
+      "MinimumSquad": 18,
+      "Assembly": "Automatic",
+      "DistrictMode": "Random",
+      "InitialCash": 138800000,
+      "RealClubCatalog": false,
+      "GeneratedPlayersExplicitlyAuthorized": false,
+      "GeneratedPlayers": 0,
+      "RealCurrentSquadsComplete": false,
+      "Snapshot": "4DFD6CE43FD0CB2A8F7DDB7E29E963A447F62725B9C6B474903B34E9507EDE83",
+      "LoanCommands": 2,
+      "LoansCreated": 1,
+      "SalaryField": "SalaryPerRound",
+      "Warnings": [
+        "FIXTURES DE TESTE — clubes, atletas e rankings fictícios; nenhuma carga real."
+      ]
+    },
+    {
+      "World": "e76b08d9-5b96-4773-aa47-e6979c8b6378",
+      "Gender": "Female",
+      "Port": 5140,
+      "Countries": 8,
+      "Clubs": 128,
+      "Players": 2304,
+      "MinimumSquad": 18,
+      "Assembly": "Custom",
+      "DistrictMode": "Manual",
+      "InitialCash": 138800000,
+      "RealClubCatalog": false,
+      "GeneratedPlayersExplicitlyAuthorized": false,
+      "GeneratedPlayers": 0,
+      "RealCurrentSquadsComplete": false,
+      "Snapshot": "EF32E4072137F83A6BD4C82F4FBA99AD9E30C992CA2C1840B7FA95BD6D1CC386",
+      "LoanCommands": 2,
+      "LoansCreated": 1,
+      "SalaryField": "SalaryPerRound",
+      "Warnings": [
+        "FIXTURES DE TESTE — clubes, atletas e rankings fictícios; nenhuma carga real."
+      ]
+    },
+    {
+      "World": "c70d2e2d-c819-4f50-ba53-9dcbf938a748",
+      "Gender": "Male",
+      "Port": 5141,
+      "Countries": 8,
+      "Clubs": 128,
+      "Players": 1408,
+      "MinimumSquad": 11,
+      "Assembly": "Automatic",
+      "DistrictMode": "Random",
+      "InitialCash": 138800000,
+      "RealClubCatalog": true,
+      "GeneratedPlayersExplicitlyAuthorized": true,
+      "GeneratedPlayers": 1408,
+      "RealCurrentSquadsComplete": false,
+      "Snapshot": "3470AC2841FDC989BD86D8E68DFC64DAD0D09E98233159CB369C330945826734",
+      "LoanCommands": 2,
+      "LoansCreated": 1,
+      "SalaryField": "SalaryPerRound",
+      "Warnings": [
+        "Clubes históricos ou sem verificação foram excluídos; a inclusão exige escolha explícita.",
+        "Complemento de atletas fictícios autorizado; não são jogadores reais importados."
+      ]
+    },
+    {
+      "World": "06ca4fd3-6f47-4a8e-9ec8-ddd75aae22a7",
+      "Gender": "Female",
+      "Port": 5141,
+      "Countries": 8,
+      "Clubs": 128,
+      "Players": 1408,
+      "MinimumSquad": 11,
+      "Assembly": "Custom",
+      "DistrictMode": "Manual",
+      "InitialCash": 138800000,
+      "RealClubCatalog": true,
+      "GeneratedPlayersExplicitlyAuthorized": true,
+      "GeneratedPlayers": 1407,
+      "RealCurrentSquadsComplete": false,
+      "Snapshot": "1895FA5E6937420C1ADC766089A1C46E5F4AF4723E1AF86891F6ED2757302A5E",
+      "LoanCommands": 2,
+      "LoansCreated": 1,
+      "SalaryField": "SalaryPerRound",
+      "Warnings": [
+        "Clubes históricos ou sem verificação foram excluídos; a inclusão exige escolha explícita.",
+        "Ranking ausente: clubes sem classificação ficam ao final, ordenados por identificador. Ranking só define a montagem inicial.",
+        "Complemento de atletas fictícios autorizado; não são jogadores reais importados."
+      ]
+    }
+  ]
+}

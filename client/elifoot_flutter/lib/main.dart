@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
 import 'api_client.dart';
+import 'world_creator.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 
@@ -273,6 +274,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     }
   }
 
+  Future<void> _openCatalogCreator() async {
+    if (_coachId == null) return;
+    final created = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => WorldCreatorScreen(api: widget.apiClient, coachId: _coachId!)));
+    if (created == true) {
+      final worlds = await widget.apiClient.listWorlds();
+      if (mounted) setState(() => _worlds = worlds);
+    }
+  }
   Future<void> _createNewWorldDialog() async {
     final nameCtrl = TextEditingController(text: 'Liga Clássica 98');
     int clubs = 128;
@@ -370,6 +379,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ],
           ),
           actions: [
+            TextButton(onPressed: () { Navigator.pop(ctx, false); _openCatalogCreator(); }, child: const Text('CRIADOR DE MUNDOS / CATÁLOGO')),
             TextButton(
               onPressed: () => Navigator.pop(ctx, false),
               child: const Text('CANCELAR'),

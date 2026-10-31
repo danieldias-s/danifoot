@@ -1,0 +1,26 @@
+[
+  {
+    "Path": "docs/audit-008/browser-fixture.json",
+    "Archive": "docs\\audit-014a\\test-artifact-overwrites\\docs\\audit-008\\browser-fixture.json",
+    "ArchivedSha256": "a9f954e842d93a46bbc3862d7c0deea87dc6579bcf231100fda069a29e9ca682",
+    "RestoredIndexBlobSha256": "d910fa4a9fae58b950bebc7d23fa8b42f0c16f2983a79cbbcc302527b9c8220c"
+  },
+  {
+    "Path": "docs/audit-009/api-performance-1024.json",
+    "Archive": "docs\\audit-014a\\test-artifact-overwrites\\docs\\audit-009\\api-performance-1024.json",
+    "ArchivedSha256": "790e187d4ad9f5524fe7d925aa4cfdc6e25422630cfb8d3e26275af2ead41beb",
+    "RestoredIndexBlobSha256": "cd66ae3feac216d2f4c7ba85aa5ef3f1f34e8f49326acb079ca3a7e6473c1099"
+  },
+  {
+    "Path": "docs/audit-009/api-performance-128.json",
+    "Archive": "docs\\audit-014a\\test-artifact-overwrites\\docs\\audit-009\\api-performance-128.json",
+    "ArchivedSha256": "c6973d3175547838d0d2e0d12174db552cf7ab007c9a2f1cc3b60192a04b0620",
+    "RestoredIndexBlobSha256": "f9936cfc38836487e48bac1d08406b9a4665647d2e479af83025de659e6ec377"
+  },
+  {
+    "Path": "docs/audit-009/browser-fixture.json",
+    "Archive": "docs\\audit-014a\\test-artifact-overwrites\\docs\\audit-009\\browser-fixture.json",
+    "ArchivedSha256": "54cef5875254c3a01fd310c449ab8caabb3a9a95efc303c72ce9e2c85f8fb9f6",
+    "RestoredIndexBlobSha256": "ce32665ef2170ff18a4e9af0960b0ed4b28623f5051d06da8fb2d3313f2650b0"
+  }
+]

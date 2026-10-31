@@ -1,0 +1,21 @@
+{
+  "health": "OK",
+  "recovered": [
+    {
+      "clubs": 128,
+      "players": 2304,
+      "dataHash": "70BB73D259DE4321402D2E495C43A7BF847B52DD174B7D10EBE7B73120999276",
+      "id": "3ee3bbc2-4224-487e-8b71-98f4ed67d0c2",
+      "gender": "Male"
+    },
+    {
+      "clubs": 128,
+      "players": 2304,
+      "dataHash": "33B8C5569BF0D96DE8BAE1C278D74C20D9F5827FE2434CD5E84BE50E4A652A9B",
+      "id": "3a79eee5-ce1e-4eb7-9fbf-6524da366933",
+      "gender": "Female"
+    }
+  ],
+  "noExternalApi": true,
+  "timestamp": "2026-10-30T18:08:40.4932203-03:00"
+}

@@ -446,10 +446,11 @@ public partial class MultiSeasonAndBenchmarkTests
         ScenarioMode scenarioMode,
         Audit007Capture? capture = null,
         Action<GameWorld, string>? observeForce012 = null,
-        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal)
+        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal,
+        Func<GameWorld>? worldFactory = null)
     {
         var sw = Stopwatch.StartNew();
-        var world = WorldSeedFactory.CreateSeededWorld(
+        var world = worldFactory?.Invoke() ?? WorldSeedFactory.CreateSeededWorld(
             worldName: experimentId,
             seed: worldSeed,
             totalClubs: 128,

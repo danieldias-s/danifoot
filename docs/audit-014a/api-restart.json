@@ -1,0 +1,38 @@
+{
+  "Status": "PASS",
+  "CrossRoomFinancialAuthorization": "PASS",
+  "Worlds": [
+    {
+      "World": "1687850f-3947-4626-9492-8db2630320a2",
+      "Port": 5140,
+      "Gender": "Male",
+      "FinancialStateUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanReplayIdempotent": true
+    },
+    {
+      "World": "e76b08d9-5b96-4773-aa47-e6979c8b6378",
+      "Port": 5140,
+      "Gender": "Female",
+      "FinancialStateUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanReplayIdempotent": true
+    },
+    {
+      "World": "c70d2e2d-c819-4f50-ba53-9dcbf938a748",
+      "Port": 5141,
+      "Gender": "Male",
+      "FinancialStateUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanReplayIdempotent": true
+    },
+    {
+      "World": "06ca4fd3-6f47-4a8e-9ec8-ddd75aae22a7",
+      "Port": 5141,
+      "Gender": "Female",
+      "FinancialStateUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanReplayIdempotent": true
+    }
+  ]
+}

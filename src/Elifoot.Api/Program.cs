@@ -43,6 +43,7 @@ else
     builder.Services.AddSingleton<IWorldRepository, EfWorldRepository>();
 }
 
+bool worldCreator013A = builder.AddWorldCreator013A();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
 builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
@@ -96,6 +97,7 @@ using (var scope = app.Services.CreateScope())
 
 app.MapHub<GameRoomHub>("/hubs/gameroom");
 app.MapPlayerRankings();
+if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
 
 app.MapGet("/api/health", () => Results.Ok(new
 {
@@ -755,6 +757,7 @@ app.MapGet("/api/worlds/{worldId:guid}/editor/export-json", async (Guid worldId,
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin?.References.Any(r => !r.IsFixture && r.Rights?.WorldExportAllowed != true) == true) return Results.StatusCode(403);
     var pkg = WorldEditorAndPackageService.ExportWorldToPackage(world, world.Name);
     return Results.Ok(pkg);
 });
@@ -763,6 +766,7 @@ app.MapGet("/api/worlds/{worldId:guid}/editor/export-csv", async (Guid worldId, 
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin?.References.Any(r => !r.IsFixture && r.Rights?.WorldExportAllowed != true) == true) return Results.StatusCode(403);
     string csv = WorldEditorAndPackageService.ExportPlayersToCsv(world);
     return Results.Text(csv, "text/csv", Encoding.UTF8);
 });

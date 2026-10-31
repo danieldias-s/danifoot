@@ -51,7 +51,8 @@ public static class WorldEditorAndPackageService
                 p.MarketPrice,
                 p.PhotoUrl,
                 p.PhotoLicense,
-                p.PhotoCredit)).ToList(),
+                p.PhotoCredit,
+                p.NegotiatedContractProtected)).ToList(),
             AiManagers: world.AiManagers.Select(m => new AiManagerExportDto(
                 m.Id,
                 m.CurrentClubId,
@@ -61,7 +62,10 @@ public static class WorldEditorAndPackageService
                 m.Adaptability,
                 m.FinancialAggressiveness,
                 m.YouthPatience,
-                m.PreferredFormations)).ToList());
+                m.PreferredFormations)).ToList(),
+            Gender: world.Gender,
+            CatalogOrigin: world.CatalogOrigin,
+            ForceEvolutionMode: world.ForceEvolutionMode);
     }
 
     public static string SerializePackageToJson(WorldPackageExportDto package)
@@ -272,8 +276,13 @@ public static class WorldEditorAndPackageService
         var validation = ValidatePackage(package);
         if (!validation.IsValid) return (null, validation);
 
+        // Old catalog packages predate the mode field, but their creator always used ClassicAdapted.
+        var forceMode = package.ForceEvolutionMode ?? (package.CatalogOrigin != null
+            ? ForceEvolutionMode.ClassicAdapted : ForceEvolutionMode.LegacySeasonal);
+        if (!Enum.IsDefined(forceMode)) throw new ArgumentException("Modo de evolução inválido no pacote.");
         var world = new GameWorld
         {
+            ForceEvolutionMode = forceMode,
             Id = Guid.NewGuid(),
             Name = newWorldName,
             InviteCode = $"ED{Guid.NewGuid().ToString("N")[..8].ToUpperInvariant()}",
@@ -327,6 +336,7 @@ public static class WorldEditorAndPackageService
                 IsStar = pDto.IsStar,
                 ContractRoundsRemaining = pDto.ContractRoundsRemaining,
                 SalaryPerRound = pDto.SalaryPerRound,
+                NegotiatedContractProtected = pDto.NegotiatedContractProtected ?? (pDto.ContractRoundsRemaining > 0),
                 MarketPrice = pDto.MarketPrice,
                 PhotoUrl = pDto.PhotoUrl,
                 PhotoLicense = pDto.PhotoLicense,
@@ -360,6 +370,15 @@ public static class WorldEditorAndPackageService
             }
         }
 
+        if (!Enum.IsDefined(package.Gender)) throw new ArgumentException("Categoria inválida no pacote.");
+        world.SetImportedCategory(package.Gender, package.CatalogOrigin);
+        world.Economy.OperatingRules = OperatingEconomyEngine.CurrentRules();
+        ClassicEconomyEngine.EnsureMigrated(world, isNewWorld: true);
+        foreach (var club in world.Clubs)
+            world.Transactions.Add(new FinancialTransaction { GameWorldId = world.Id, ClubId = club.Id,
+                SeasonNumber = 1, RoundNumber = 1, Category = FinancialTransactionCategory.InitialBalance,
+                Amount = club.CashBalance, BalanceAfter = club.CashBalance,
+                Description = "Saldo inicial do mundo criado por pacote", IdempotencyKey = $"init:{club.Id}" });
         CompetitionAndSeasonEngine.InitializeSeasonFixtures(world);
         return (world, validation);
     }

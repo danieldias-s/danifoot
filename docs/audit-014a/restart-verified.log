@@ -1,0 +1,13 @@
+PostgreSQL exclusivo 014A: loopback 55435, credenciais próprias em artifacts/014a (fora do Git).
+API própria 014A 5140 encerrada.
+API própria 014A 5141 encerrada.
+waiting for server to shut down......... done
+server stopped
+PostgreSQL exclusivo 014A: loopback 55435, credenciais próprias em artifacts/014a (fora do Git).
+PostgreSQL exclusivo 014A: loopback 55435, credenciais próprias em artifacts/014a (fora do Git).
+API 014A iniciada em loopback 5140, PID 37000.
+PostgreSQL exclusivo 014A: loopback 55435, credenciais próprias em artifacts/014a (fora do Git).
+API 014A iniciada em loopback 5141, PID 34968.
+PASS: four HTTP worlds, snapshots and negotiated financial state unchanged after real restart.
+PASS: historical saves retain cash, debt, salaries, contracts, players and ledger after restart.
+PASS: PostgreSQL e APIs 014A reiniciados; snapshots e finanças preservados.

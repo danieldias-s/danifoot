@@ -1,0 +1,56 @@
+[
+  {
+    "license": "CC0-1.0",
+    "files": 295,
+    "sha": "ae3800227c449447b3a337fc0aac79a8f02f4c8b",
+    "repo": "clubs",
+    "branch": "master",
+    "pushed": "2025-01-03T18:08:49Z",
+    "truncated": false
+  },
+  {
+    "license": "CC0-1.0",
+    "files": 294,
+    "sha": "e6744429ee395bc86f247348c6184bb08d4eb361",
+    "repo": "football.json",
+    "branch": "master",
+    "pushed": "2026-09-22T09:33:50Z",
+    "truncated": false
+  },
+  {
+    "license": "CC0-1.0",
+    "files": 175,
+    "sha": "42df8203e73e922cdfa36104e3acee3aea1f2bc0",
+    "repo": "world",
+    "branch": "master",
+    "pushed": "2026-09-23T11:34:28Z",
+    "truncated": false
+  },
+  {
+    "license": "CC0-1.0",
+    "files": 67,
+    "sha": "f51b2dcf5e0fab9f0abd5206ab8c24a413e67277",
+    "repo": "south-america",
+    "branch": "master",
+    "pushed": "2026-10-20T11:43:55Z",
+    "truncated": false
+  },
+  {
+    "license": "CC0-1.0",
+    "files": 221,
+    "sha": "63df627f3c87ce71708f016522ea236cf74332c3",
+    "repo": "europe",
+    "branch": "master",
+    "pushed": "2026-10-15T14:36:29Z",
+    "truncated": false
+  },
+  {
+    "license": "CC0-1.0",
+    "files": 190,
+    "sha": "125d20f7cc06cac7e758b40df535a7695632680a",
+    "repo": "players",
+    "branch": "master",
+    "pushed": "2024-06-17T10:39:47Z",
+    "truncated": false
+  }
+]

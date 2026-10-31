@@ -424,7 +424,10 @@ public record WorldPackageExportDto(
     int DefaultTickIntervalMs,
     List<ClubExportDto> Clubs,
     List<PlayerExportDto> Players,
-    List<AiManagerExportDto> AiManagers);
+    List<AiManagerExportDto> AiManagers,
+    FootballGender Gender = FootballGender.Male,
+    WorldCreationOrigin? CatalogOrigin = null,
+    ForceEvolutionMode? ForceEvolutionMode = null);
 
 public record ClubExportDto(
     Guid Id,
@@ -455,7 +458,8 @@ public record PlayerExportDto(
     decimal MarketPrice,
     string? PhotoUrl,
     string? PhotoLicense,
-    string? PhotoCredit);
+    string? PhotoCredit,
+    bool? NegotiatedContractProtected = null);
 
 public record AiManagerExportDto(
     Guid Id,

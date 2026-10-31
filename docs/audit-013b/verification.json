@@ -1,0 +1,57 @@
+{
+  "realMaleUsablePlayers": 35,
+  "baseCommit": "40e71b4c1424fe9c5942de405c39c457ef4deac6",
+  "officialWorldRankingImported": false,
+  "database": {
+    "tests": "elifoot_013b_tests",
+    "worlds": "elifoot_013b_worlds",
+    "catalog": "elifoot_013b_catalog",
+    "port": 55434
+  },
+  "branch": "feature/real-football-data-013b",
+  "automatedTests": {
+    "domain": 310,
+    "flutterFailures": 0,
+    "simulation": 6,
+    "flutterAnalyze": "No issues found",
+    "application": 5,
+    "integration": 99,
+    "dotnetFailures": 0,
+    "flutter": 63,
+    "dotnetTotal": 420
+  },
+  "fixturesInRealCatalog": 0,
+  "worktree": "D:\\elifoot_98_013A",
+  "status": "PARTIAL",
+  "realPlayers": 41,
+  "realSnapshots": 4,
+  "branch013APreserved": true,
+  "realClubs": 2,
+  "task": "ELIFOOT_REAL_FOOTBALL_DATA_013B",
+  "realProvider": "Wikidata structured CC0",
+  "completeRealWorldCreated": false,
+  "published": false,
+  "merged": false,
+  "realMenCountries": [
+    "ES"
+  ],
+  "mainFilesModifiedBy013B": [],
+  "remaining": [
+    "Coverage for all eight countries and genders",
+    "Full real 128-club worlds",
+    "Complete female squad",
+    "Licensed global ranking or approved derived dataset",
+    "Credentialed commercial provider homologation",
+    "Physical mobile device test",
+    "Production authentication and 012D integration"
+  ],
+  "realFemaleUsablePlayers": 6,
+  "realWomenCountries": [
+    "ES"
+  ],
+  "mainHeadObserved": "7529e69845844f91c1d8aea3bb431ef2aa212c0e",
+  "builds": {
+    "flutterWeb": "PASS",
+    "dotnetRelease": "PASS"
+  }
+}

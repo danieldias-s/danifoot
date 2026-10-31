@@ -1,0 +1,16 @@
+{
+  "Status": "PASS",
+  "DistinctByStableTestId": 515,
+  "RemainingFailures": 0,
+  "InitialShortRunRawExit": 1,
+  "TargetedReloadRawExit": 0,
+  "Trx": [
+    "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003254.trx",
+    "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003307.trx",
+    "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003347.trx",
+    "docs\\audit-014a\\tests\\compatibility-final_net10.0_20261031003632.trx",
+    "docs\\audit-014a\\tests\\compatibility-reload_net10.0_20261031003811.trx"
+  ],
+  "IdentityNote": "Three invalid-source JSON theory rows have the same truncated display name but different stable testIds. The reload keeps the same testId on re-execution and is counted once.",
+  "InputNote": "The fresh short output lacked the snapshot produced by the passed long run. A byte-identical copy was supplied and the reload test passed. Raw exit codes are preserved."
+}

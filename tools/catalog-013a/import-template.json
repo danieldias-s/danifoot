@@ -1,0 +1,17 @@
+{
+  "scope": { "countryCode": "BR", "gender": "Female", "league": "example", "season": "2026", "dataType": "Clubs", "provider": "authorized-import" },
+  "countryName": "Brasil",
+  "version": "example-1",
+  "updatedAt": "2026-10-01T00:00:00Z",
+  "complete": true,
+  "expectedPages": 1,
+  "receivedPages": 1,
+  "expectedItems": 1,
+  "storageAuthorized": false,
+  "commercialUseAuthorized": false,
+  "licenseReference": "Preencher com documento de autorização do dataset",
+  "isFixture": true,
+  "clubs": [{ "externalId": "EXAMPLE-1", "name": "EXEMPLO FICTÍCIO", "shortName": "EXF", "leagueExternalId": "EX-L", "leagueName": "Liga de exemplo" }],
+  "players": [],
+  "rankings": []
+}

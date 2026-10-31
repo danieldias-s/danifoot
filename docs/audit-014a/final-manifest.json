@@ -1,0 +1,1314 @@
+{
+  "Task": "ELIFOOT_INTEGRATION_012D_013AB_014A",
+  "Status": "PASS",
+  "HeadBeforeCheckpoint": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+  "SourceFiles": [
+    {
+      "Path": "Elifoot.slnx",
+      "Sha256": "3bd9555e39bd3029840acae182ab21f2794c99c8056e7382188455f8068eeb8d"
+    },
+    {
+      "Path": "client/elifoot_flutter/README.md",
+      "Sha256": "1646a8991adf30bb853a694ce6d4dbfe3bd7be23617a003a1669d071040c0284"
+    },
+    {
+      "Path": "client/elifoot_flutter/analysis_options.yaml",
+      "Sha256": "b63207cf529949ec4727b68c23dbb38ce255b6f6f4ae1effcb5c1dcf2852d238"
+    },
+    {
+      "Path": "client/elifoot_flutter/integration_test/android_runtime_test.dart",
+      "Sha256": "f996a5ab8d55748aaac79ce6742b518e2014d6add066ac973ca9a8b415df54f8"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Sha256": "cfde780e2e6a08776aaa8147c11d1b75c1f0390dd5e8e37b54508d5ff8f202e3"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_environment.dart",
+      "Sha256": "5a38f93b344ed9cf95403aff9f3ba8fe1186eb2134b2122af6b75a4c82912d05"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/catalog_provenance.dart",
+      "Sha256": "32157832b5c6f7f2970ce306a6c68f0bfb9ff8221453678914c31884841eca7f"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "8bb145661f990c8bb509e7fb5955a3a2d7b4dd84f1725cf99c40b41b67a7264c"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Sha256": "cc3f2d7ba99f6583384c4c456bdc1603e127f628588554beedd24e5ee152e1a0"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/qa_mobile.dart",
+      "Sha256": "2de3ad914dd2faa0a162affdff91b27abf609552a98e3ffad071bf9aae79eb24"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store.dart",
+      "Sha256": "1fb5e1d59f52e1aabd2e1306c9dcfe58948853cac52f0c5994798490e5b1f95b"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_stub.dart",
+      "Sha256": "a01c14a6f10550886755e431c4212ff8a815f02c5983cdeb797c893c4e4fe808"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_web.dart",
+      "Sha256": "60cadfb354a9122835e28a29b3c4a81ff07adbb9b2f9f8f85470d09afc60f07a"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Sha256": "b833da15832901179e0dd8c253fbedda92c5bc37839e5cd7e15f1a3705ec20d0"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/world_creator.dart",
+      "Sha256": "c8e4959688225e34186827d4ffbfae853274abd81bd10da837714e4e6e09719a"
+    },
+    {
+      "Path": "client/elifoot_flutter/pubspec.lock",
+      "Sha256": "9f7cf367d2532205944c7807587dbdc10821fe5f5ad78e9778a728094aa2a5ab"
+    },
+    {
+      "Path": "client/elifoot_flutter/pubspec.yaml",
+      "Sha256": "3bb9da458e4f84a0be38e76ae48f3a99b2915805154dcc962fdeb9e0a4b63e44"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/api_environment_test.dart",
+      "Sha256": "f5bd7fd9c749c1c03abfaf5d57e009b62680352c387bc4fda6a75e4b0021efa4"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/career_api_test.dart",
+      "Sha256": "a44be89a7c8c720803e92f12db2281f2341e8fa745064ec4bd16d9cd06f24692"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/classic_force_012c_test.dart",
+      "Sha256": "6d0d0fd702cf5ce8c3835b5aaac11350796ba6ccf9fcff266f4aa0345d2f103f"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/complete_gameplay_011_test.dart",
+      "Sha256": "eaf8d0bada1e1e8090ef74c761e46691cccabbb6cd6057b96fc797e8c1882610"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/discipline_012c_test.dart",
+      "Sha256": "a7b3e02a5125d22b1f94a250be55a062eb2d1037c0b165e57ffc0cdf5a6f1711"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_api_test.dart",
+      "Sha256": "0e3c772fcf9d8e9ec396831e879fb4f1440c6b8894ace4ca04e989a2da573b6d"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_widget_test.dart",
+      "Sha256": "93a6f96440554728288f52d62c08a78a8be246e720975e2680aed247711b7534"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_api_test.dart",
+      "Sha256": "0df7c9954d728d8c5d9d874c058241286f89f93b6f0141dd1b6c9e878cb5eb65"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Sha256": "5910313f846580649c745a8a93f297558e08c2185d7dfb600c97ea23215c45fb"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_strength_012_test.dart",
+      "Sha256": "24b2df5c5813312f48a7896cab8bd408b6973ef32336edce58650e05f9761edd"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/real_data_013b_test.dart",
+      "Sha256": "889a5cfc9a52d58605d61864873d0f7468ff654851037c17ce4c8287b163add6"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/session_store_test.dart",
+      "Sha256": "9d440ef5d62be6fc8bc65fbd32c2f334694296915a8867925fb26116a91a6c33"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/visual_polish_010_test.dart",
+      "Sha256": "4786194b2b5a801d60d668ef32f9faba7f995a04e788ce3f58c1ebcb81d22ddb"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Sha256": "163cbb4a1f6cd01974a002af119f16562b770bd6cb51e2d589c922aace1c1336"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/world_creator_013a_test.dart",
+      "Sha256": "737dd5ac656ac127cb6e5faba2aa72f56b1a6f8aca418e28205cca74bb6ef39b"
+    },
+    {
+      "Path": "client/elifoot_flutter/test_driver/runtime_driver.dart",
+      "Sha256": "12c29fa30379515714e24fba00319ef17128a2c35542307745933a599bed3f52"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/gameplay_visual_011_test.dart",
+      "Sha256": "e5e831d23f9d4bcdb00400d02342294c7917aa3849bd69b237ed9a8d27281a6a"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart",
+      "Sha256": "5b78ee70dc867fb1afdc22d3a2d7e1c9100a760346bf7cd91704183eb3815edc"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/player_rankings_visual_010_test.dart",
+      "Sha256": "dbc653844097f3713c0b35d511e4e8c873e3c96c5825256b7569052cbb61d9df"
+    },
+    {
+      "Path": "client/elifoot_flutter/web/manifest.json",
+      "Sha256": "562dcb21870d9f65d686a3f470519256a13a1cad06ca350d6533afefa3b7b71c"
+    },
+    {
+      "Path": "scripts/analyze_economy_balance_012d.py",
+      "Sha256": "cd735d1785c96d2e648a2d5bb925bee7b023bac4847e596ae1acdcab73c4a076"
+    },
+    {
+      "Path": "scripts/audit_ai_capital_012d.py",
+      "Sha256": "f9e374c78371233c3618a8d7b766e7a1c35086cf3277f400b678648c202e9b08"
+    },
+    {
+      "Path": "scripts/backup-restore.ps1",
+      "Sha256": "30ab3a2b7f99caa5246fc96440c8fcb14ff67b9c14a42c6e47808725dda92892"
+    },
+    {
+      "Path": "scripts/build-android-qa.ps1",
+      "Sha256": "245f5917ccfc7bef3b69d6ad6f50bcdc317ec12f0e530db1d7fa67cfde2a73be"
+    },
+    {
+      "Path": "scripts/capture-android-qa-stages.mjs",
+      "Sha256": "053d906014bc825e496921a7e317252103c951ad07efc731623e0aab561427ff"
+    },
+    {
+      "Path": "scripts/capture-initial-economy-014a.py",
+      "Sha256": "1f1a717be09f73800ae6a88b28bfe3d59f48778ebd7b0d3dcc296104f332bae2"
+    },
+    {
+      "Path": "scripts/capture-player-ui-data-009.mjs",
+      "Sha256": "7e8a0c3a30c9f6299246d9fffc6202b93ad5419f9ead1e9bf90aa3365e9a3e31"
+    },
+    {
+      "Path": "scripts/checkpoint-integration-014a.py",
+      "Sha256": "41512ed1cce62cf05c725259711f1ae341f5ea24d07eecfd6e263d8fea5c7f57"
+    },
+    {
+      "Path": "scripts/checkpoint_economy_balance_012d.py",
+      "Sha256": "0585f049c53b4ed3cdb6c0b0c9c8e86527f4c3faf2c986fa7acf11f73b9f4769"
+    },
+    {
+      "Path": "scripts/collect-android-isolation.mjs",
+      "Sha256": "df520869567731e8accf624855dd3d8400fad56f9f8cb0f2b32798a633bed182"
+    },
+    {
+      "Path": "scripts/consolidate-regression-014a.py",
+      "Sha256": "1e5b3e75b9cb536a5d270492c068906a71e104d67bcc8b972eb0066553acdc9b"
+    },
+    {
+      "Path": "scripts/economic-review-integration-014a.py",
+      "Sha256": "fc6edce35f89c99e08cef923b93a1278a31a80c676266a90d72461a828be40c0"
+    },
+    {
+      "Path": "scripts/finish-metric-ai-007.mjs",
+      "Sha256": "ff4721b64775926f9f0839f751b5122c1a6385fd28d35f4c362c635fbd98be8c"
+    },
+    {
+      "Path": "scripts/reconcile-integration-014a.py",
+      "Sha256": "227a773a8aa6e5bf0306f901e17ace51b0089a19969b28cdda710c6f045b4572"
+    },
+    {
+      "Path": "scripts/report-classic-force-012c.mjs",
+      "Sha256": "dd8f2f3e7330e4b6a307a629731b41a1ef77f3111d9c645981a8d5b47f862e88"
+    },
+    {
+      "Path": "scripts/report-coach-career-008.mjs",
+      "Sha256": "e6bb8ec8f9eddd61c744c06d297276a06df27708e158568d645978db8bf2beb6"
+    },
+    {
+      "Path": "scripts/report-discipline-012c.mjs",
+      "Sha256": "ef6395e7abd74133284f913d55b6d5fb43a9c185ad4833ee22c6b882ab780cd6"
+    },
+    {
+      "Path": "scripts/report-integration-014a.py",
+      "Sha256": "7c7a356e57243bad61d0ccdb67b26a9208d44d7f0377a6341bc99dd00f101f5b"
+    },
+    {
+      "Path": "scripts/report-metric-ai-007.mjs",
+      "Sha256": "52c048720d586330ba7f4a90733b4f9bdcc3619ea9ac525cc280fe9c89af2412"
+    },
+    {
+      "Path": "scripts/report-player-force-012.mjs",
+      "Sha256": "7720cc36255189fa5036aabaa9d0c48d4b2217b36d1d46aba742e3104b8fa0ac"
+    },
+    {
+      "Path": "scripts/report-player-force-012b.mjs",
+      "Sha256": "aaa3cc8af617d0cd89ade55bcaeff26980ce67aec92632e4e72209ed07cc205a"
+    },
+    {
+      "Path": "scripts/report-player-rankings-009.mjs",
+      "Sha256": "9aafad0a8666f82262d369ea7a6f4534719debca6233899fd51c71643e9b8e0b"
+    },
+    {
+      "Path": "scripts/report_economy_012d.py",
+      "Sha256": "b41b032a71a17fdf58f56d0f54bf6b80c4d9f45f1e524a5afe8a023159a2120c"
+    },
+    {
+      "Path": "scripts/report_economy_balance_012d.py",
+      "Sha256": "4e6c5794cae98ad625d191c1255dae1cb76703b8262fd761b422fbf4cafe5cf3"
+    },
+    {
+      "Path": "scripts/research-player-force-012b.mjs",
+      "Sha256": "b236e9ad35fa3017f34b67fcfb86bebad7e3592e8351b1fcdbc5305bbab4a32f"
+    },
+    {
+      "Path": "scripts/run-android-isolation-case.mjs",
+      "Sha256": "8d1c0c5f39d9278511a2748047a2fc986624d69bad5d7882d6c1078a228dc340"
+    },
+    {
+      "Path": "scripts/run-android-qa.ps1",
+      "Sha256": "833b7d04a6b1d1f33939a39170aef1526a5c1b204494096417cc77b14803715c"
+    },
+    {
+      "Path": "scripts/run-dev.ps1",
+      "Sha256": "2770ed99a8b8566652355017d6cbf2f228aa22531ace7c4e3bed777907872db9"
+    },
+    {
+      "Path": "scripts/run-integration-014a.ps1",
+      "Sha256": "313323e2713308ec8905fff6bd536de28be49c54546f586a4eb2cf04e9ed1668"
+    },
+    {
+      "Path": "scripts/run-real-data-013b.ps1",
+      "Sha256": "7ae204b9645e7e1a18d79801ff6f38ceff78ad1ba14646a55da57966684b9ae2"
+    },
+    {
+      "Path": "scripts/run-web.ps1",
+      "Sha256": "c39cc7385bbe4fe5b1a1bc9e0738218d6c6ef63696ab4ab1ac13d27322602f97"
+    },
+    {
+      "Path": "scripts/run-world-creator-013a.ps1",
+      "Sha256": "e594d6920359c6a8d92442183bd870429b4eb56f0f44f0650fcf949770c46d94"
+    },
+    {
+      "Path": "scripts/run_playtest_011.ps1",
+      "Sha256": "1b74bc134915698fcb94ee6a945f56e7c3f8c53b96c159d58f7f003ebf81f4a7"
+    },
+    {
+      "Path": "scripts/serve-web.mjs",
+      "Sha256": "67c893c2e48ea5c89da2d2b695f03ae68680bd5af606765c7963d71486b2245a"
+    },
+    {
+      "Path": "scripts/smoke-integration-014a.py",
+      "Sha256": "40b62749bb3223a77c84fae65dc67966ceb38662bb45720b2fadd181aa74e313"
+    },
+    {
+      "Path": "scripts/start-android-qa-emulator.ps1",
+      "Sha256": "8fb7608b537b8705a61d8b61ffe21dd18ce765885e18e3569eba68174d2c8540"
+    },
+    {
+      "Path": "scripts/stop-integration-014a.ps1",
+      "Sha256": "adb0e92845e1d93afdcb8652470b9ae1fcb88dd8ae1a429e75a67ebaa8e0bf38"
+    },
+    {
+      "Path": "scripts/test-integration-014a.ps1",
+      "Sha256": "211058af807847ff443e77f39194d708cca119d8e8ee2561109e7285f40e537a"
+    },
+    {
+      "Path": "scripts/test-real-data-013b.ps1",
+      "Sha256": "8625bacebd7235f11b31fbca6dcfb86768dd62674c5272cf4d1c16271b1c5a70"
+    },
+    {
+      "Path": "scripts/test-world-creator-013a.ps1",
+      "Sha256": "d771f1040c9425bb9f9f10512fbea48e772a66c00e2318fbffd9c9cda4ab4b00"
+    },
+    {
+      "Path": "scripts/verify-coverage-013b.ps1",
+      "Sha256": "bbca402576ad6755bb1cb714da651e820697a09c31f05ef754c5bdf31c737450"
+    },
+    {
+      "Path": "scripts/verify-player-rankings-009.mjs",
+      "Sha256": "b3653bb120076f3da35421854bdd5755c8a23346cddff561e6da6084efa00aff"
+    },
+    {
+      "Path": "scripts/verify-restart-integration-014a.ps1",
+      "Sha256": "6f8ce991156302db5007f7ae04d154d274cbdcfbafe53cba2fad227b4735493e"
+    },
+    {
+      "Path": "src/Elifoot.Api/Elifoot.Api.csproj",
+      "Sha256": "44b84d04ed1761188398a56b966afb5a90e3a6af35317a892dd87d4e16cac5fb"
+    },
+    {
+      "Path": "src/Elifoot.Api/Hubs/GameRoomHub.cs",
+      "Sha256": "10935a53d212dda0f8c44fb27679771c6f6d50055abbadeaaf7ad128865dbb78"
+    },
+    {
+      "Path": "src/Elifoot.Api/PlayerRankingsEndpoints.cs",
+      "Sha256": "19177f7b27352588b77fe5f26933f94bbccbabf2377b1fc78e78a5abd52b0935"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Sha256": "1d657cfe24acba53d6ad6ccdcdfcfa1545bd67630f7ca8a83c37cd4f16cc485d"
+    },
+    {
+      "Path": "src/Elifoot.Api/Properties/launchSettings.json",
+      "Sha256": "906e31f682e30efd3a0f55bf4f4da27496502916e6b7c751ccbd8a36963ecd16"
+    },
+    {
+      "Path": "src/Elifoot.Api/RealDataProviders013B.cs",
+      "Sha256": "9d62bc056a6d848852c26dc9c7a58fde300884cbe9943c65a64fab00bf5092e1"
+    },
+    {
+      "Path": "src/Elifoot.Api/Services/RoomClockBackgroundService.cs",
+      "Sha256": "76cb1a5d9deb04ee27e86a53a4745cd46922ad6e43496ce8e26ee083333caf36"
+    },
+    {
+      "Path": "src/Elifoot.Api/WorldCreatorEndpoints.cs",
+      "Sha256": "b62699cd7fc4fd0365eb095ff28059ecbfa1b8a24f019375182023476ff87070"
+    },
+    {
+      "Path": "src/Elifoot.Api/appsettings.Development.json",
+      "Sha256": "73f95f9e0ceb205fc1c4dc50c07697fcfa29d7087868c2aef1d504cb38c771ec"
+    },
+    {
+      "Path": "src/Elifoot.Api/appsettings.WorldCreator013A.example.json",
+      "Sha256": "0602000192cdc5c20f4ff202dbd9eeaab5f06c1417150dd2cc4b647166beed69"
+    },
+    {
+      "Path": "src/Elifoot.Api/appsettings.json",
+      "Sha256": "bbf364046205849235059eb94b59cb5e5b66ac1161af250ed48fd80b7431fb36"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "Sha256": "011e07cec4f90f701cbaa66061e476095a4e798bf05e1a2c92ed982a31182c93"
+    },
+    {
+      "Path": "src/Elifoot.Application/Elifoot.Application.csproj",
+      "Sha256": "a03fbe8cee5945af6c726ac6afc83ddb80dd89a252195fda9e5e3d6c5c3fab82"
+    },
+    {
+      "Path": "src/Elifoot.Application/FinancialCommandsApplicationService.cs",
+      "Sha256": "11e4f28dc4633a7060d68a7f73370c719100d39af5bd4c89f2bac94fbfa9cab6"
+    },
+    {
+      "Path": "src/Elifoot.Application/Interfaces.cs",
+      "Sha256": "e54faab273b467a45abfc8e65c9d2d5295381a58bff4031bea23815c676d4ef9"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "Sha256": "891b560a85ccde7addb9f7180ae9416a6ba8ed5b816d566764e3fefc1a2c38e9"
+    },
+    {
+      "Path": "src/Elifoot.Application/PlayerRankingsApplicationService.cs",
+      "Sha256": "09a8339a2a575dc16a3311389128bf279aa32db20a90d2abb6020912615b1de1"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/RealDataDtos.cs",
+      "Sha256": "c83cd92e2e0ab7ca6e27ecbe82885cf6340bbf0dbe65791a19456696eaea019d"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/WorldCreatorDtos.cs",
+      "Sha256": "91eaf676de8cb017f5973c5a2c761ab7858e4082906e3586f7090ee712fd390d"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "Sha256": "f46493b6f27d944c5665b624bf9e64f8d39c93a0ba3714bc7d13e465a30e5883"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/EconomyDtos.cs",
+      "Sha256": "9e316c5aaf6b27d01b202d9cc93e171930ab85848d87b13dca819d484beadb9a"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Elifoot.Contracts.csproj",
+      "Sha256": "9a7c4743b53ee2158584f52be9e95e0ba94dd797ec0fb78fc48a41dc147236f6"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "Sha256": "ae4dfc5ef801ba8039b5942f9de709b099d426daa35f7575736a80a8dcab053c"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerDisciplineDtos.cs",
+      "Sha256": "692d0f267e835c102659c7ac81b5c377f717334d36695b975270f336d6801f8b"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Sha256": "bacbbc2ce35765f5a9f9e6ecc6bee063477b4e51451ea5b1b20b5105c3cc291e"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerStrengthDtos.cs",
+      "Sha256": "c32de83e952e159d59e36d336a16252940fd464931ceb4ae89c1557f3c4e4310"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "baceab5255f9e2f02b9ef27cee885164ceca5214941689f6b09d7774c769a6f9"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiMarketMetrics.cs",
+      "Sha256": "26d75f2c4ed8092ce707af6c33ed0aa463410d7ca6a6430943d98a84293d91b3"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/CatalogMembershipPolicy.cs",
+      "Sha256": "e29ae0a767c80c140776f6cb0b3a9d3ac1d2450e10a99cedf19912b9f9d45b49"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/DerivedClubRanking.cs",
+      "Sha256": "3f3990444d3999d73bf332b1accc05305eb4086aec2fa6416981ff8f91e61e43"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs",
+      "Sha256": "a4280144da34a0dcbb0592771cec87e651c23cc9419ad51643ab9184610ccb36"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/InitialRosterPolicy.cs",
+      "Sha256": "5ebf9191dbfddfbf8788809d330915e25756e82358cc94c5445b21ae7d3b0086"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs",
+      "Sha256": "2f1230e94ddfa5cec3138e2fec62bf6c55df1a1f1f41b4590dab7e799e0cfd28"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/WorldOrigin.cs",
+      "Sha256": "aa8a0fa286d07e123c16cd75b3bc954b22e4f711363159fb3b2b019b1a52ff0b"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyEngine.cs",
+      "Sha256": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyState.cs",
+      "Sha256": "74a66d609659738c2cdc02bd1500803fc1d4ba3cddbcca7a5d51913e5f40e3a8"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+      "Sha256": "039f535f3b1d85b6a8291df96debb1b9bd10bb03065ba9e250445d6a23bd4779"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceState.cs",
+      "Sha256": "ca84df6b47e1b9b0d2e3ff2fa2fa3fce260af4501501519dae223f6674377466"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+      "Sha256": "c0fbde8070400067e96ebf2a071462136911b94b23ca2b17d304087f564872db"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "5974b493ee8363ae830826657c82a9b2fd0dcffd671675251b1fea9336623d44"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DeterministicRng.cs",
+      "Sha256": "b9c988cbc4eebf1d1ac8ee873bd238b8008928a70ab38a86ad0313e547e4254a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DisciplineEngine.cs",
+      "Sha256": "e5cbeb47fd228a15934b06153891360a4835944da054f61a34fd2ecd0eb75e5a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Elifoot.Domain.csproj",
+      "Sha256": "cb6eacd2ad334ad3eb339ab7ae0e4dace4ed8454e56e9ebb9b8654eb50602c67"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "7320f33efa3a3ec99908a3f05aae48c958d338827d2a323afe2851a164ced6fb"
+    },
+    {
+      "Path": "src/Elifoot.Domain/FinancialInsolvencyEngine.cs",
+      "Sha256": "a85ae550516ffe893f3a1e13a8dc24e914701c1cc0224b6ac20562068c861713"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "Sha256": "b35aaf8c26aca95fd8f5699f8d67b5dd642f80479ecc21402532f3feebc35c82"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842"
+    },
+    {
+      "Path": "src/Elifoot.Domain/OperatingEconomyEngine.cs",
+      "Sha256": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "159334d80ec1e55d78f5026ae5ba9ed4ff4fb2cac72b46e38a8a76cae9656f04"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEntities.cs",
+      "Sha256": "1ece5e063f9fd41c7b4128e574512d3e1e937a8ff7d5d84ea02b83acaec6d8ed"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+      "Sha256": "d6cd82bead9e05aa2caf2dca01b9ae3bfcc8fe5478463b3b232a96182c35ed2a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/SalaryContractsEngine.cs",
+      "Sha256": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "976049917f83396cb9c33a88385c4ef87054a882dcd11a59049a3de136634d43"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldEditorAndPackageService.cs",
+      "Sha256": "e5677498ac53656f7a6bde37943bd024b287e10c3f98372cd4bee04f336e46fa"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Sha256": "f3a232b15c48905baa78d626f252379c666cf7d1db0d12dafebe7a4d08815af4"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogDbContext.cs",
+      "Sha256": "8b73562db41eee23d58e0c8b7858c014f17af045f4843b552223b3ca8e932f8c"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogFixtureFactory.cs",
+      "Sha256": "687ac14ec4f564880bdfdef4d68663bff3a7a8a488dd7a46fd111fa62bca2fa8"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogIdentityService.cs",
+      "Sha256": "66f12650b2bb9a95420108c057e467ad337bf0130b59ca6a1b490f587fc4b7f1"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogImportCodec.cs",
+      "Sha256": "44d63da9b91db1dccbe716619ac20467ed0107a61c85c3ce9fe326a02a574bc6"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogRightsPolicy.cs",
+      "Sha256": "c3568b1e41ae58450b1c94c7ebe0a9d587bca164d78bb66176e43a5d3de2e60e"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogSyncService.cs",
+      "Sha256": "283b4784c72369b3a04e7748f1a636ab0e4aa822f69a17b128448e4f4b7e6b0c"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/NativeFootballCatalogSource.cs",
+      "Sha256": "7adc5759b9f1e2edf08fb34ff73c45b44393670de027691d0a93e52103b9c9f3"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/NativeProviderFactory.cs",
+      "Sha256": "7f12eee59741eed9281e08275792ba260011720d25a62d01fbee97438c3f7e40"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/OpenFootballResultParser.cs",
+      "Sha256": "a5e9336df59a638e6c55307fa281aa77131beaa3e2ca8125e4b3fad9c0df5668"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/ProviderHttp.cs",
+      "Sha256": "22242938da3280a27c8950728ff281ef15f9e5aff2310bafb354eae358f6c1d5"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/WikidataCatalogSource.cs",
+      "Sha256": "2f3922e04e0d9685451afe4185ec9d2037c231c8113a008829886017e21b1ae9"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/WorldCreatorService.cs",
+      "Sha256": "f3ea88d5d6c9d86f6797789440b8d5593a69558098805fbfc6bc75d10e89f381"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "b25cd6d416d992573b3902047495d233fae6f3142a937751f7599f16fd3d57e3"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Elifoot.Infrastructure.csproj",
+      "Sha256": "cd88bfe0ac5c8e36822ac43d2757a85ddb106979913d496069597cb3d5392787"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/ElifootDbContext.cs",
+      "Sha256": "7859760e456dd8db35341a0a53c867db706c4673d75b22e228310e70eecc3924"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs",
+      "Sha256": "cbac0cba4b776326ab27d973e31024c5e1c2ea47604ce3708a2f97a7b88f4f5d"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/Elifoot.Application.Tests.csproj",
+      "Sha256": "db95949e2c4282f79655311cec5da95179869a9c8cef2582f28962de3c2f13c2"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/FinancialCommandDurability012DTests.cs",
+      "Sha256": "a4e77ec8fd9452259603439c4aba1243054130d21ba520fe9131514cd69c6645"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/MultiplayerSynchronizationAndPauseTests.cs",
+      "Sha256": "4457f874e5af7b7cc5650cb145c5ab699c33125bdd95440b0c284e3e358821a7"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicEconomy012DTests.cs",
+      "Sha256": "ec330d4ec8fb77b918dc266772719c7c82c41b1aae9c5c51a35e803f2daa3384"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs",
+      "Sha256": "0db24b71eb1e4bb0ef6a3222256f3f785daa4e05a27412c293a25205effdafd0"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs",
+      "Sha256": "a1c4e7ca33194332ee1567af89c955e26b9ce423beea1fbc789265625453141f"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Coverage013BDomainTests.cs",
+      "Sha256": "ae212151b4c8bbfc8d34dd8d59c88d51c6d5c0326b3d6e0e8724386ffdc7741c"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Discipline012CTests.cs",
+      "Sha256": "34ac703583ace65a608146e3079d79ddd0255a683f5f0349f848fc11dc79126a"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/DomainEngineAndRulesTests.cs",
+      "Sha256": "0bdde8e9c201811d55cba4ea66886d19d0d49705d1bd6cfd8bb72749ae6c4a80"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Elifoot.Domain.Tests.csproj",
+      "Sha256": "14cd9e64185912f6527715e5f0263846939531796f145059c8b427c596c78c21"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/MetricAiAudit007Tests.cs",
+      "Sha256": "9cfdfda59de27a17afa1beeb3da1fa34e16b32d03f4d5684cbb70c2a6cffd471"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/OperatingEconomy012DFixTests.cs",
+      "Sha256": "c402d609378bc32ed31b5ef6d163db76488388dae5be8a99cfd1717370ec3d58"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableEconomyRegressionTests.cs",
+      "Sha256": "836e78ae460bcb88b752212f5ce398acbe34ec213b715ed5c4bbe995e78c7e28"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012BPublicModelTests.cs",
+      "Sha256": "a34e0d687f048792b7a298bee149920b0e56345647795d51a66f3ff4c355d3f2"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012Tests.cs",
+      "Sha256": "586f37fb566c751c31804cf200dd89ba7da37f9a1c726df942a3269b4ae7745e"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerRankings009Tests.cs",
+      "Sha256": "8e86beabf0ae21cc20fefe23d897ed322db42694843e16feddad6103fbb1ae57"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/RealData013BDomainTests.cs",
+      "Sha256": "bd2df7960d9c7a770c0d52d94fd4a83600e8521fb03aa6727cb87c706e8727f3"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ApiAndSignalREndToEndTests.cs",
+      "Sha256": "f7ee02eea888602f3d19f2edc0befc648ab71c429f0a5432b32adda9820147c2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicEconomy012DIntegrationTests.cs",
+      "Sha256": "11eb4378b3bc4b9650af3eb7fefb73f92a5916fde8cdf0361279a7569059ed26"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicForce012CIntegrationTests.cs",
+      "Sha256": "95b6b6538223754dcaf494770364099be3ee0fbfcd64c925ddf68eb2cad1a54d"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+      "Sha256": "fe217b95de1bd9aeafff621c328e22a86347428a881ece8d3c5b314081789fc9"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Discipline012CIntegrationTests.cs",
+      "Sha256": "0a3f9c788b6439f66e28570d54d55e76ef045e9781a1ee837f00fe685c569cf2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Elifoot.Integration.Tests.csproj",
+      "Sha256": "9f7f3fbd998380b1a05a78c9d59c760af88a07e806a8dfe133b1ad6cbe5bf576"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/FinancialPersistence007Tests.cs",
+      "Sha256": "696ebf06e16d39b9d2dc970cf9514326eaf09da72c40b9de820e8779a2ffa9d7"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Integration014ATests.cs",
+      "Sha256": "be0a35f2b60b6fe5c14e77ac4e1444452b8d94295a0d50c371fc635232cc644b"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/OpenFootball013BTests.cs",
+      "Sha256": "89b7f6ee210890ba91420fb39e7d90244195afe2530405fa3470fe32b4d43cf2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/OperatingEconomy012DFixIntegrationTests.cs",
+      "Sha256": "13c187fec30918f8ea0e16981da326939fc8735f1ba262d5e31969f4f3323c1b"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayableQaRegressionTests.cs",
+      "Sha256": "88f420e061f994ae2adeef4947b814a613b6001f38ee9d49924f51459ce85b12"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerForce012IntegrationTests.cs",
+      "Sha256": "5eef9ab4a39e41337a112c0f4139245b1526c2b6a2464bb4b3830b4df0ce10ef"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerRankings009IntegrationTests.cs",
+      "Sha256": "922b6e144b4d2e199e1650b3d46bfa6546551c57e47dfe0df04b4d0866d4738d"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/RealData013BTests.cs",
+      "Sha256": "9b8cb052dee46871f5554793f6862a38eb2dc2cb50e8cf9af7c29d5e19519929"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/WorldCreator013ATests.cs",
+      "Sha256": "be5abbece525fb5dd556a1b4336e29a6d2fe035d2e5f54ae8408c6a9e562af35"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicEconomy012DSimulationTests.cs",
+      "Sha256": "0358e6f24f77b641d028b1d1a970f9a9328f3de5fbed645b4a20ff741999a79b"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CInjuryTriggerTests.cs",
+      "Sha256": "babe86e9ddacffe18951e056cf044e5d940a8610e0234337b852c98642df3b36"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+      "Sha256": "5f6ee69b26a27148776dd543beb2d7086dda9be892c6ccc78f83c5794fa66d31"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs",
+      "Sha256": "f6a42fc6dec1b5c85ba2c6c6dbc56c1942ff41ea18cd3dcfa8b47892c018fa5b"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Discipline012CSimulationTests.cs",
+      "Sha256": "7020caac249bcfff72a156c9b3bafa8cde728d2261e96474e4b13be491ae938c"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/EconomyBalance012DFixSimulationTests.cs",
+      "Sha256": "ade970f31846882ccaf939443dc430cf93225ec1cf7a5537e9d35155e240b264"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj",
+      "Sha256": "e68eae624ac10e23682af3211d46a3f29e4c53bc03a6d6224d153ee0dc80be7e"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MetricAudit007Capture.cs",
+      "Sha256": "c772e959332daf500e80760138e415f533ebc48a1ea7eb81b230c72668c91da3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "Sha256": "61ddb2909014b014100283d7ef7694aa5e913cd8209f65528b5b90521e01ac56"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012BResearchTests.cs",
+      "Sha256": "89a2ab47e7c41ca4255ab4bd740b3eee4d32fec2e8ca6dded4d8272d86959ed3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012ControlledTests.cs",
+      "Sha256": "7bf7e35e0a8ba05f6547625e98b31bde634f607787d1d96f51a7df75e84feae8"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012SimulationTests.cs",
+      "Sha256": "ce224bfd28a948b8ca73130e635e9a81be970257016aaad1cea4b83b7b4960f3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerRankings009SimulationTests.cs",
+      "Sha256": "6da046d76468de35701c170ef5c476f6d756747b07f0ab123c33cad1493a1acf"
+    },
+    {
+      "Path": "tests/Shared/Imported014AWorlds.cs",
+      "Sha256": "079515fd4e42d2554abb1c46b471526fbc2a4151ee173644252046402f0ba2f6"
+    },
+    {
+      "Path": "tools/android_reference/README.md",
+      "Sha256": "4ac97cb59350b19f1795f7b7df0afb52ac1d3ccc3d71ab0bfdad1ca6b58727dd"
+    },
+    {
+      "Path": "tools/android_reference/README_QA004.md",
+      "Sha256": "5e6d4c395cdb6f72c5378a68bc11208b9baf43ad2b56affaeb18280fbf7abce9"
+    },
+    {
+      "Path": "tools/android_reference/analysis_options.yaml",
+      "Sha256": "b63207cf529949ec4727b68c23dbb38ce255b6f6f4ae1effcb5c1dcf2852d238"
+    },
+    {
+      "Path": "tools/android_reference/lib/main.dart",
+      "Sha256": "c0f80c0dd6995a68dadbb068516c7275782a92717ebd6dbf771ee8529c399ef8"
+    },
+    {
+      "Path": "tools/android_reference/pubspec.lock",
+      "Sha256": "62588665f74b84c1ffba19ca687e867d1877b79877e324a226391dfee4a8ef2a"
+    },
+    {
+      "Path": "tools/android_reference/pubspec.yaml",
+      "Sha256": "1c7e9d3654a2d29820b195214efaa93fc87fb131fb83beaea43ff94e0597445f"
+    },
+    {
+      "Path": "tools/catalog-013a/README.md",
+      "Sha256": "5b9daefd57918ca6c9c99bc9606a37bbbd747cf9f6ad860bc752447b04caf3db"
+    },
+    {
+      "Path": "tools/catalog-013a/clubs-template.csv",
+      "Sha256": "89247e8503edd06ecd7f80663ff969163351e5a840bb89bb35fe4c2e65b0f38e"
+    },
+    {
+      "Path": "tools/catalog-013a/import-template.json",
+      "Sha256": "de0722d3332120922f65d7880e93df701072bbcbb8b24a7cd137f12780dd23f3"
+    },
+    {
+      "Path": "tools/catalog-013b/README.md",
+      "Sha256": "cce8f10e99bc98048cef61e22f90410b3a0886358cc8ad2b4757151a9daa66b0"
+    },
+    {
+      "Path": "tools/catalog-013b/bootstrap-coverage.mjs",
+      "Sha256": "b4416a2f28568bf3d7c07668839406efa764bda0aa853c8d56c67e52e78f9f05"
+    },
+    {
+      "Path": "tools/catalog-013b/build-coverage-bundle.mjs",
+      "Sha256": "41cc42aecf8eae2566af1aad7a10456f708a7d33ef6bcda77afae87c49c41b81"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-coverage.mjs",
+      "Sha256": "b49f6577d9bed2881961dbfe76917c3ac3d3c8a99ca4d51c898acc7cf48f7714"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-memberships.mjs",
+      "Sha256": "fae9bc85b090416c110ebecbdbcaca18e2d9da48c90da57d90237136fe0bd9c2"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-player-genders.mjs",
+      "Sha256": "f7ff84a1c234455c108a697c9ddf5b5c8cca214e29fce60aae0eb27dacf316e2"
+    },
+    {
+      "Path": "tools/catalog-013b/country-coverage-plan.json",
+      "Sha256": "8ff35fb7062a94793f3bc535bcbcbedeb7320a6953abb2f5965e16bcc09921bd"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/CoverageAudit.cs",
+      "Sha256": "c19de42b1e8ff0b2ca3bacfa1d676daf98868279eabbe4f27d20fb30809a43cc"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/CoverageBundleImporter.cs",
+      "Sha256": "a0f53547d15f74a2ac57dc2eb8416e8185edaf0203dcaf06ff875a4ff85844cf"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Elifoot.RealDataImporter.csproj",
+      "Sha256": "e84ef782376627e0802367e1b09e0a295be0f129db3b715f4d8fbe42ff138881"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Integration014APreservation.cs",
+      "Sha256": "280a3897cbc15d444ba5f3d05647147bdebdc9334ea1a30961fec7b067aba724"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/LocalCatalogTarget.cs",
+      "Sha256": "cb1a1839ce8a4c6e2a64695cad8074f98133824e6961d6571c08f7ac470da1fc"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Program.cs",
+      "Sha256": "d6f10e08189ae80a44ceb81610c03dac0d4c50272aee93b1022e83ddfc53b033"
+    },
+    {
+      "Path": "tools/catalog-013b/openfootball-directory.mjs",
+      "Sha256": "52cdfd87b2e5fd7367611e2ae0b1f968fdbc12f4004b1b7ce040ca36fe746f60"
+    },
+    {
+      "Path": "tools/catalog-013b/openfootball-directory.test.mjs",
+      "Sha256": "9c819762da1e84478658357f6aa434d0c839163f74f5a634f796354985396f21"
+    },
+    {
+      "Path": "tools/catalog-013b/paid-providers-template.json",
+      "Sha256": "0c92a32256064b054790581024172705bd2a653daa2858a3da5750aa00dfa8c6"
+    },
+    {
+      "Path": "tools/catalog-013b/prepare-coverage.mjs",
+      "Sha256": "36189ac5eee70cefbb576d529ae6626af0948bc2707618fab3116cfd0d4cff2b"
+    },
+    {
+      "Path": "tools/catalog-013b/reviewed-entity-ids.json",
+      "Sha256": "f41a0a77c3dabee6d72da92fbb4a9ef352965d8748d8948f3df15b228895557f"
+    },
+    {
+      "Path": "tools/catalog-013b/wikidata-pilot.json",
+      "Sha256": "c6d9e5abd46e405abbc860b5672d34bd8a624a9cbcc31f684c0489558d60d9c8"
+    },
+    {
+      "Path": "tools/seed-generator/Elifoot.SeedGenerator.csproj",
+      "Sha256": "183aedf07f11306f6d29c0525bd79109c9f5bdc2b70726c6f4fd0c8591354d90"
+    },
+    {
+      "Path": "tools/seed-generator/Program.cs",
+      "Sha256": "eece30e5fd191ab454d7dae1d8443d575789f904524e6e5e871e8744186141c8"
+    },
+    {
+      "Path": "tools/seed-generator/seed-128-clubs.json",
+      "Sha256": "8b6a8d5b29b37378f4d9499bbb9a59e56be71b6ee10886bb80df16153d477ef5"
+    },
+    {
+      "Path": "tools/seed-generator/seed-128-clubs.players.csv",
+      "Sha256": "620a6e225e764b1b4c790897f7b430e280a200531fa9dcea2da511383170ad0b"
+    }
+  ],
+  "SourcesDigest": "263f2cd84fabf82ed2272c4f517c58b412cd749fda6ccb8d7bbd8809e7cb8e33",
+  "CompactEvidence": [
+    {
+      "Path": "docs/INTEGRATION_012D_013AB_014A.md",
+      "Sha256": "c2d4dda17c0162938edd083692e46b32b29116ae0fd20c17afb4b0b0d9bdd9ac"
+    },
+    {
+      "Path": "docs/INTEGRATION_CONFLICTS_014A.md",
+      "Sha256": "539932b5a52a35db56e50db287caec7c4a173e3b51fd6eaa6fe66f3fb7e239e0"
+    },
+    {
+      "Path": "docs/INTEGRATION_ECONOMY_014A.md",
+      "Sha256": "47efc4c612b42dac9731bda4aeb38c936add198afd7d0036531c6f9c5ff82b4f"
+    },
+    {
+      "Path": "docs/INTEGRATION_KNOWN_ISSUES_014A.md",
+      "Sha256": "937c31a296c5d1c9358ec5e52d47d4a2c68f2ce4e20c39eaa1573b7f4de87cbd"
+    },
+    {
+      "Path": "docs/INTEGRATION_MULTIPLAYER_014A.md",
+      "Sha256": "dc9957eebd5f53214a41aebb4dec1376d58cb51033c7896d8fbbc52d37e15f7a"
+    },
+    {
+      "Path": "docs/INTEGRATION_REGRESSION_014A.md",
+      "Sha256": "2099867a80c8f2cd3347bd962ededccfc628e44da0b1b23a661b25e990d7a22e"
+    },
+    {
+      "Path": "docs/INTEGRATION_WORLD_CREATOR_014A.md",
+      "Sha256": "1478e0c6d5c1c86b667398a54d6b8365625bf7089e77841cb1218cba5493f5bc"
+    },
+    {
+      "Path": "docs/audit-014a/api-restart.json",
+      "Sha256": "b16b9f6b267a7e73ffa68c0b06cd70e9a090bfce1fbab0597c4ab678dcae3c0d"
+    },
+    {
+      "Path": "docs/audit-014a/api-smoke-verified.log",
+      "Sha256": "fee8058dc72865d1693334c2efebf17ea459e4b40c80325004efdedf13a9bd84"
+    },
+    {
+      "Path": "docs/audit-014a/api-smoke.json",
+      "Sha256": "f833e13383b344275d57b1e708ebc34730491252dbb7510f121414bb22076823"
+    },
+    {
+      "Path": "docs/audit-014a/artifact-restoration.json",
+      "Sha256": "fed2323b0a23040ce00022388c4605a65309a3e1aec17d6652a936113f0d73d3"
+    },
+    {
+      "Path": "docs/audit-014a/build-final.log",
+      "Sha256": "d71c398a2c88e84991410e627d92da9f9a6d062b274e8b409d583d82f280e878"
+    },
+    {
+      "Path": "docs/audit-014a/build-release-final.log",
+      "Sha256": "49130cc661f3a8cf04c8ca603ff7ad640bd15af4949d491934a1667a34381b1d"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-consolidated.json",
+      "Sha256": "6242703dcc1c6df0efcce6cce34f24f14ebcbbf0c8a4e2b3100ef82966e0e100"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-final-exit.json",
+      "Sha256": "e0c2a133209f266b86d2b8b23a4fc3aa4d744be336d3922ce9f7d3417feff007"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-final.log",
+      "Sha256": "0af0ccf3e4e63f34ba4d97d03a18e8b68d4e4320f4fedd46b5c8bf08a637160f"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-input.json",
+      "Sha256": "0fade9a10ae1e75b5956dc3af35f9ab89ec2f99a240f2d9506b8ad1582f616f4"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-reload-exit.json",
+      "Sha256": "0cec79bdabd108dc8f671ea11f65e0db39b7521a87c78cc337ba9cdfa7e42fe6"
+    },
+    {
+      "Path": "docs/audit-014a/compatibility-reload.log",
+      "Sha256": "0418359858c6cd4cab9b192d556329aa5afd34912c0af18717387bf6b8bfc8d0"
+    },
+    {
+      "Path": "docs/audit-014a/dotnet-final-exit.json",
+      "Sha256": "0cec79bdabd108dc8f671ea11f65e0db39b7521a87c78cc337ba9cdfa7e42fe6"
+    },
+    {
+      "Path": "docs/audit-014a/economic-review.json",
+      "Sha256": "5494dcccac2bb0d31b06490efd9fbe32af71ebec1cfb49d0893384208dff3117"
+    },
+    {
+      "Path": "docs/audit-014a/financial-reconciliation.json",
+      "Sha256": "996e8739a45547dd76ee559f853518a83ff4be6539e033c39e4594c12d0b8a03"
+    },
+    {
+      "Path": "docs/audit-014a/financial-reconciliation.log",
+      "Sha256": "9109d81a85318cd04667a35b0245778113ab0801df60a5de591dfc6aff9a1682"
+    },
+    {
+      "Path": "docs/audit-014a/flutter-analyze.log",
+      "Sha256": "67982da696f83f38d79ba81302871d89e9e26eed8de8708608d06d256c7b78f4"
+    },
+    {
+      "Path": "docs/audit-014a/flutter-build-web.log",
+      "Sha256": "8f5674b9d556f239027d75738b44f647e240466727338edf3153633a22a98183"
+    },
+    {
+      "Path": "docs/audit-014a/flutter-exits.json",
+      "Sha256": "858a77404058501784ee8209411482bec2a6977c0e273829aabe087475f2ab98"
+    },
+    {
+      "Path": "docs/audit-014a/flutter-test.log",
+      "Sha256": "9e8de562e206e852ec8428ceb9fc16f68037b253080374e08591efe6116ff62b"
+    },
+    {
+      "Path": "docs/audit-014a/initial-economy.json",
+      "Sha256": "22af968f7c48c9daa0bc1618c8145a939036735c13da1232409df132b6883340"
+    },
+    {
+      "Path": "docs/audit-014a/initial-economy.log",
+      "Sha256": "25111118f13342fe66a86ef6a1b848f07bf53de5f42861554e573369b904d035"
+    },
+    {
+      "Path": "docs/audit-014a/node-tests.log",
+      "Sha256": "8bfde8450893af5bba2b473b204f6d4d5dd10f732e9fd7fbcbda17072d0903de"
+    },
+    {
+      "Path": "docs/audit-014a/old-worlds-restart.json",
+      "Sha256": "5fac9f9cc9e5e22b0ec89945ee305df7a960009a6268d008b7628fdaf65c07f5"
+    },
+    {
+      "Path": "docs/audit-014a/old-worlds-verified.log",
+      "Sha256": "519e42129ca6e08ea3c381f9633ce7ed3101de8306c8377f3e007f6899bc36cb"
+    },
+    {
+      "Path": "docs/audit-014a/old-worlds.json",
+      "Sha256": "116728341aaa444a8268104af0d1b52295035ad671f8d35e0a656b56879a2345"
+    },
+    {
+      "Path": "docs/audit-014a/real-bundle.json",
+      "Sha256": "240e0c1e2a2730f098846cd6ece5138a21d1c56744e4295fc25fd41d1ce02698"
+    },
+    {
+      "Path": "docs/audit-014a/real-catalog-audit.log",
+      "Sha256": "9f33762e76143ade0b189e9ffd12c9298e63ba267b31014fc6a4f5e00e7f821f"
+    },
+    {
+      "Path": "docs/audit-014a/real-catalog/coverage.json",
+      "Sha256": "b8408f2b7e5de8c31cac96d15c63934514db9eab7b21ae0d7a6a8759770a578a"
+    },
+    {
+      "Path": "docs/audit-014a/real-catalog/fallback-postgres.json",
+      "Sha256": "d4bb6ac49f8044a989105fa72841e8618ed3bf59da5a41cd6b7f2c31241409e2"
+    },
+    {
+      "Path": "docs/audit-014a/real-import-verified.log",
+      "Sha256": "472bcbdf5a8ea77bebdf1981efb342d995e52de64ba6583b9f3af121e75e8470"
+    },
+    {
+      "Path": "docs/audit-014a/regression-final.log",
+      "Sha256": "c7fecd848ed63a286f1d82cc55157f54c25542d055c998a16ec34e3af9f945b5"
+    },
+    {
+      "Path": "docs/audit-014a/restart-verification.json",
+      "Sha256": "88abdf02bfc80704929951b1e2f311f91b23bde9aeb44fdc1c36634148188c40"
+    },
+    {
+      "Path": "docs/audit-014a/restart-verified.log",
+      "Sha256": "f5671dccc0efc59ee6799188f292af46fb5d4d80856fe10ddd62e64851373e79"
+    },
+    {
+      "Path": "docs/audit-014a/services-stop.json",
+      "Sha256": "bbc8e77f21d7815d2ee40371ea892d4d9906c0588783278abe01ca535e980d43"
+    },
+    {
+      "Path": "docs/audit-014a/services-stop.log",
+      "Sha256": "2eee0ecb8d7ff9ce3e6463e888f45e83eacd44002bddffe35ea827d665e4f99a"
+    },
+    {
+      "Path": "docs/audit-014a/snapshots-after-restart.json",
+      "Sha256": "8044324506d1d594ece0633a08333e5c745d226f6aaceffec9b11587783f2a91"
+    },
+    {
+      "Path": "docs/audit-014a/snapshots-before-restart.json",
+      "Sha256": "8044324506d1d594ece0633a08333e5c745d226f6aaceffec9b11587783f2a91"
+    },
+    {
+      "Path": "docs/audit-014a/source-state.json",
+      "Sha256": "a24160db6d66cad536e0b7675f4a9fdef37deff55711c16ac40748ee30895270"
+    },
+    {
+      "Path": "docs/audit-014a/tests/compatibility-final_net10.0_20261031003254.trx",
+      "Sha256": "1e063c218b2bc7b1534514e05c75a47cb93416141b72329631ef72864934bfc1"
+    },
+    {
+      "Path": "docs/audit-014a/tests/compatibility-final_net10.0_20261031003307.trx",
+      "Sha256": "3b9f95ec569fd018f557b43feecfde4747f45f7108bdc8bb996e778002937966"
+    },
+    {
+      "Path": "docs/audit-014a/tests/compatibility-final_net10.0_20261031003347.trx",
+      "Sha256": "0ff08e84ebc1ee5483523ed6f9dd8a20669e2a3921db69e9b409ab880c64810e"
+    },
+    {
+      "Path": "docs/audit-014a/tests/compatibility-final_net10.0_20261031003632.trx",
+      "Sha256": "3358acf0b860a3290fcba96bfce0f009f7c19c1dd829e0450d5e4cb5cce98672"
+    },
+    {
+      "Path": "docs/audit-014a/tests/compatibility-reload_net10.0_20261031003811.trx",
+      "Sha256": "089928a7dfd54d3285ad35e6c7a1088ac64b2a094355484f2e8696f4af5f093f"
+    },
+    {
+      "Path": "docs/audit-014a/tests/final_net10.0_20261031000120.trx",
+      "Sha256": "6371a548dadccfbead16d002f685816c1035f2bc3a9779a0d094b90b480f92f9"
+    },
+    {
+      "Path": "docs/audit-014a/tests/final_net10.0_20261031000136.trx",
+      "Sha256": "b0b802137e5056fbe3c4f4223bbf18a13074fa393bc421a3cc872b855d1f4a02"
+    },
+    {
+      "Path": "docs/audit-014a/tests/final_net10.0_20261031000532.trx",
+      "Sha256": "8cc1003921d032af447e690dd14262bccb2f70b28d0b5b442134cc28a4b38156"
+    },
+    {
+      "Path": "docs/audit-014a/tests/final_net10.0_20261031002557.trx",
+      "Sha256": "04fa95ccb389bab2d63ca4e3cbd47d530b32cda9635afb3c46b635c7670b01fc"
+    },
+    {
+      "Path": "docs/audit-014a/verification.json",
+      "Sha256": "3fd173008f4c5cd8a9b4b13584197d3032a1f111cc93809703e88ce23d4eaa17"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/balance-012d-fix/final-199801/summary.json",
+      "Sha256": "dc2ff15fea21c03318eeb87a5824da9b26b68340341e7f8ba4576f5268a78112"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/classic-force-012c/100-seasons.json",
+      "Sha256": "2be33678a291b4491ac66833235354f067fe5cdf752ceddbf3587abfac1e4be9"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/classic-force-012c/replay.json",
+      "Sha256": "2df50b2dc1d0d0b75e93fdd3e978640a8e9bd8eff5d61718e839d562219ce0c7"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/integration-014a/Female/seasons.json",
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/integration-014a/Female/summary.json",
+      "Sha256": "4481d5c023a291c2a48290cee70e7e1e7a05b496b44e262e66692857fef3fd4f"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/integration-014a/Male/seasons.json",
+      "Sha256": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed"
+    },
+    {
+      "Path": "docs/audit-014a/verified-final/integration-014a/Male/summary.json",
+      "Sha256": "d201a867f8e6cce31a95acebf5493747a55039f9293d2e9ad30f1dcd6e6dc16c"
+    }
+  ],
+  "RawSimulationInputs": [
+    {
+      "Directory": "docs\\audit-014a\\verified-final\\balance-012d-fix\\final-199801",
+      "Inputs": {
+        "summary.json": "dc2ff15fea21c03318eeb87a5824da9b26b68340341e7f8ba4576f5268a78112",
+        "seasons.json": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1",
+        "ledger.jsonl.gz": "0f7dff891fa709b3bb4b61faa7cbea61a12c55723221ecac7cfa8bd9bad79a2f",
+        "clubs.json.gz": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+      },
+      "GzipLedgersAndClubSeriesRetainedLocally": true
+    },
+    {
+      "Directory": "docs\\audit-014a\\verified-final\\integration-014a\\Male",
+      "Inputs": {
+        "summary.json": "d201a867f8e6cce31a95acebf5493747a55039f9293d2e9ad30f1dcd6e6dc16c",
+        "seasons.json": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed",
+        "ledger.jsonl.gz": "b20f2112418ae8dfaaf3a50ece73bdd9baa63c718d589424d51a508eb2f66e6b",
+        "clubs.json.gz": "ba29c302db45f6b574cae5c904b922bef1102017e87e14d856e4028446c3405a"
+      },
+      "GzipLedgersAndClubSeriesRetainedLocally": true
+    },
+    {
+      "Directory": "docs\\audit-014a\\verified-final\\integration-014a\\Female",
+      "Inputs": {
+        "summary.json": "4481d5c023a291c2a48290cee70e7e1e7a05b496b44e262e66692857fef3fd4f",
+        "seasons.json": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3",
+        "ledger.jsonl.gz": "30aac382b44802b90b9ac1e4be12fe4f307dfddbf5bf2b37db99e1c6d040b52d",
+        "clubs.json.gz": "982bcf9bead8f1df7bcea9f4f774ee6205c5c51197a24ff2f1e4ae9d39d4efba"
+      },
+      "GzipLedgersAndClubSeriesRetainedLocally": true
+    }
+  ],
+  "ProtectedFilesUnchanged": {
+    "MatchEngine.cs": true,
+    "DisciplineEngine.cs": true,
+    "TacticsAndSquadRules.cs": true,
+    "ClassicForceEvolutionEngine.cs": true,
+    "ClassicForceState.cs": true,
+    "PlayerStrengthEvolutionEngine.cs": true,
+    "AiManagerBrain.cs": true,
+    "ClassicEconomyEngine.cs": true,
+    "FinancialInsolvencyEngine.cs": true,
+    "SalaryContractsEngine.cs": true,
+    "OperatingEconomyEngine.cs": true,
+    "MarketAndEconomyEngine.cs": true
+  },
+  "OriginalWorktrees": {
+    "012D": {
+      "Path": "D:\\elifoot_98",
+      "Head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "Branch": "master",
+      "StateUnchanged": true,
+      "StatusSha256": "c80475d5c716b928bd1eb68cf0d2b645a71d31ec1311b12caca4f5195b852d30"
+    },
+    "013AB": {
+      "Path": "D:\\elifoot_98_013A",
+      "Head": "47608e9a674c0978c4be4b244de88d961876e197",
+      "Branch": "feature/real-football-data-013b",
+      "StateUnchanged": true,
+      "StatusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "CommitFiles": [
+    "docs/INTEGRATION_012D_013AB_014A.md",
+    "docs/INTEGRATION_CONFLICTS_014A.md",
+    "docs/INTEGRATION_ECONOMY_014A.md",
+    "docs/INTEGRATION_KNOWN_ISSUES_014A.md",
+    "docs/INTEGRATION_MULTIPLAYER_014A.md",
+    "docs/INTEGRATION_REGRESSION_014A.md",
+    "docs/INTEGRATION_WORLD_CREATOR_014A.md",
+    "docs/audit-014a/api-restart.json",
+    "docs/audit-014a/api-smoke-verified.log",
+    "docs/audit-014a/api-smoke.json",
+    "docs/audit-014a/artifact-restoration.json",
+    "docs/audit-014a/build-final.log",
+    "docs/audit-014a/build-release-final.log",
+    "docs/audit-014a/compatibility-consolidated.json",
+    "docs/audit-014a/compatibility-final-exit.json",
+    "docs/audit-014a/compatibility-final.log",
+    "docs/audit-014a/compatibility-input.json",
+    "docs/audit-014a/compatibility-reload-exit.json",
+    "docs/audit-014a/compatibility-reload.log",
+    "docs/audit-014a/dotnet-final-exit.json",
+    "docs/audit-014a/economic-review.json",
+    "docs/audit-014a/financial-reconciliation.json",
+    "docs/audit-014a/financial-reconciliation.log",
+    "docs/audit-014a/flutter-analyze.log",
+    "docs/audit-014a/flutter-build-web.log",
+    "docs/audit-014a/flutter-exits.json",
+    "docs/audit-014a/flutter-test.log",
+    "docs/audit-014a/initial-economy.json",
+    "docs/audit-014a/initial-economy.log",
+    "docs/audit-014a/node-tests.log",
+    "docs/audit-014a/old-worlds-restart.json",
+    "docs/audit-014a/old-worlds-verified.log",
+    "docs/audit-014a/old-worlds.json",
+    "docs/audit-014a/real-bundle.json",
+    "docs/audit-014a/real-catalog-audit.log",
+    "docs/audit-014a/real-catalog/coverage.json",
+    "docs/audit-014a/real-catalog/fallback-postgres.json",
+    "docs/audit-014a/real-import-verified.log",
+    "docs/audit-014a/regression-final.log",
+    "docs/audit-014a/restart-verification.json",
+    "docs/audit-014a/restart-verified.log",
+    "docs/audit-014a/services-stop.json",
+    "docs/audit-014a/services-stop.log",
+    "docs/audit-014a/snapshots-after-restart.json",
+    "docs/audit-014a/snapshots-before-restart.json",
+    "docs/audit-014a/source-state.json",
+    "docs/audit-014a/tests/compatibility-final_net10.0_20261031003254.trx",
+    "docs/audit-014a/tests/compatibility-final_net10.0_20261031003307.trx",
+    "docs/audit-014a/tests/compatibility-final_net10.0_20261031003347.trx",
+    "docs/audit-014a/tests/compatibility-final_net10.0_20261031003632.trx",
+    "docs/audit-014a/tests/compatibility-reload_net10.0_20261031003811.trx",
+    "docs/audit-014a/tests/final_net10.0_20261031000120.trx",
+    "docs/audit-014a/tests/final_net10.0_20261031000136.trx",
+    "docs/audit-014a/tests/final_net10.0_20261031000532.trx",
+    "docs/audit-014a/tests/final_net10.0_20261031002557.trx",
+    "docs/audit-014a/verification.json",
+    "docs/audit-014a/verified-final/balance-012d-fix/final-199801/seasons.json",
+    "docs/audit-014a/verified-final/balance-012d-fix/final-199801/summary.json",
+    "docs/audit-014a/verified-final/classic-force-012c/100-seasons.json",
+    "docs/audit-014a/verified-final/classic-force-012c/replay.json",
+    "docs/audit-014a/verified-final/integration-014a/Female/seasons.json",
+    "docs/audit-014a/verified-final/integration-014a/Female/summary.json",
+    "docs/audit-014a/verified-final/integration-014a/Male/seasons.json",
+    "docs/audit-014a/verified-final/integration-014a/Male/summary.json",
+    "docs/audit-014a/final-manifest.json"
+  ],
+  "LongSimulationSourcesUnchangedSinceFullBuild": true,
+  "NoProductionPublish": true,
+  "OriginalFixturesRestoredFromIntegrationIndexOnly": true
+}

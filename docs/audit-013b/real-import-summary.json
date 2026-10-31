@@ -1,0 +1,10 @@
+{
+  "port": 55434,
+  "fixtureSnapshots": 0,
+  "snapshots": 4,
+  "clubs": 2,
+  "source": "Wikidata",
+  "license": "CC0-1.0 structured data",
+  "database": "elifoot_013b_catalog",
+  "players": 41
+}

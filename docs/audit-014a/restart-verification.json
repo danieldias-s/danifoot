@@ -1,0 +1,17 @@
+{
+  "ExternalDatabasesUsed": false,
+  "Port": 55435,
+  "Status": "PASS",
+  "OldWorldsPreserved": true,
+  "SnapshotsUnchanged": true,
+  "LoanReplayIdempotent": true,
+  "Databases": [
+    "elifoot_014a_013b_worlds",
+    "elifoot_014a_013b_worlds_real",
+    "elifoot_014a_old_b26b473b9f61",
+    "elifoot_014a_old_caa1b0af4bbd"
+  ],
+  "PreviousPostmasterPid": "36800",
+  "NewPostmasterPid": "34732",
+  "ApiRestart": true
+}

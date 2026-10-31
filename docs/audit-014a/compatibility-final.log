@@ -1,0 +1,43 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_integration\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_integration\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_integration\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+  Elifoot.Infrastructure -> D:\elifoot_98_integration\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Application.Tests -> D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98_integration\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Api -> D:\elifoot_98_integration\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Integration.Tests -> D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-014a\tests\compatibility-final_net10.0_20261031003254.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 21 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-014a\tests\compatibility-final_net10.0_20261031003307.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   371, Ignorado:     0, Total:   371, Duração: 34 s - Elifoot.Domain.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-014a\tests\compatibility-final_net10.0_20261031003347.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 1 m 14 s - Elifoot.Simulation.Tests.dll (net10.0)
+[xUnit.net 00:03:24.33]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload [11 ms]
+  Mensagem de erro:
+   System.IO.FileNotFoundException : Could not find file 'D:\elifoot_98_integration\docs\audit-014a\compatibility-final\real-season-world.json'.
+  Rastreamento de pilha:
+     at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.File.OpenHandle(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.File.ReadAllBytesAsync(String path, CancellationToken cancellationToken)
+   at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.CreateRealSeasonQaFixtureAsync(String sourcePath) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 355
+   at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload() in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 314
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-014a\tests\compatibility-final_net10.0_20261031003632.trx
+
+Com falha! – Com falha:     1, Aprovado:   131, Ignorado:     0, Total:   132, Duração: 3 m 57 s - Elifoot.Integration.Tests.dll (net10.0)

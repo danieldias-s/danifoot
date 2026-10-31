@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7a27aea0-dd8d-47ca-9c00-793dd16f518d" name="Daniel@DESKTOP-A5J5UME 2026-10-31 00:32:34" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-31T00:32:34.8275297-03:00" queuing="2026-10-31T00:32:34.8275300-03:00" start="2026-10-31T00:32:30.6520459-03:00" finish="2026-10-31T00:32:54.6938556-03:00" />
+  <TestSettings name="default" id="31d00f73-9d51-4da0-985e-d3638f4457d6">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-31_00_32_34" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ce552472-c50e-44a9-8182-4d9518cefb87" testId="4389d1e0-b8e6-d7b5-49c0-9b75ea47788a" testName="Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart" computerName="DESKTOP-A5J5UME" duration="00:00:00.5706170" startTime="2026-10-31T00:32:33.0797581-03:00" endTime="2026-10-31T00:32:33.6635283-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce552472-c50e-44a9-8182-4d9518cefb87" />
+    <UnitTestResult executionId="d28bce2a-4f06-4187-990b-298c1b5e6efb" testId="2290053f-45cf-4c92-794c-a0fb93aed147" testName="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.Multiplayer_100ConsecutiveRounds_8Coaches_SyncCounter_Pauses_Substitutions_Reconnection_AndRoomIsolation" computerName="DESKTOP-A5J5UME" duration="00:00:19.0575540" startTime="2026-10-31T00:32:35.4552065-03:00" endTime="2026-10-31T00:32:54.5126697-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d28bce2a-4f06-4187-990b-298c1b5e6efb" />
+    <UnitTestResult executionId="1266b6ab-6bd3-491e-831c-b4c8e681bbf4" testId="1a494b26-d105-7c85-7ee9-8c5c0942903e" testName="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.HumanSynchronization_0To6Counter_Idempotency_UnemployedIncluded_AndNoRaceConditions" computerName="DESKTOP-A5J5UME" duration="00:00:00.1083390" startTime="2026-10-31T00:32:35.3465825-03:00" endTime="2026-10-31T00:32:35.4544307-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1266b6ab-6bd3-491e-831c-b4c8e681bbf4" />
+    <UnitTestResult executionId="52853c7f-c603-4934-9a47-db7ba2a25c2e" testId="836dd090-37d5-e0ac-ff2e-5abd86d829e0" testName="Elifoot.Application.Tests.FinancialCommandDurability012DTests.RetryAfterFailedSavePersistsTheOriginalLoanWithoutCreditingItAgain" computerName="DESKTOP-A5J5UME" duration="00:00:01.7964398" startTime="2026-10-31T00:32:33.0750674-03:00" endTime="2026-10-31T00:32:34.8840282-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52853c7f-c603-4934-9a47-db7ba2a25c2e" />
+    <UnitTestResult executionId="9b5c2eb5-6080-4c4d-82ed-8f043a85966a" testId="2c449186-a603-2943-1f6e-347a6524d920" testName="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.CupExtraTime_Grants6SubstitutionsAnd4PauseWindows_WithFreeIntervalsAt90And105" computerName="DESKTOP-A5J5UME" duration="00:00:01.0596209" startTime="2026-10-31T00:32:34.2882449-03:00" endTime="2026-10-31T00:32:35.3458406-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b5c2eb5-6080-4c4d-82ed-8f043a85966a" />
+    <UnitTestResult executionId="0e85a3c5-a23b-4337-bd7b-73debf87bbb6" testId="9535c5a3-095e-9116-c7d5-94560327fe5b" testName="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.GlobalPause_8Humans_Minute37Freeze_Quotas5And3_ExtraTime6And4_AndRoomIsolation" computerName="DESKTOP-A5J5UME" duration="00:00:01.1982860" startTime="2026-10-31T00:32:33.0799920-03:00" endTime="2026-10-31T00:32:34.2859965-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e85a3c5-a23b-4337-bd7b-73debf87bbb6" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.Multiplayer_100ConsecutiveRounds_8Coaches_SyncCounter_Pauses_Substitutions_Reconnection_AndRoomIsolation" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="2290053f-45cf-4c92-794c-a0fb93aed147">
+      <Execution id="d28bce2a-4f06-4187-990b-298c1b5e6efb" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests" name="Multiplayer_100ConsecutiveRounds_8Coaches_SyncCounter_Pauses_Substitutions_Reconnection_AndRoomIsolation" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Application.Tests.FinancialCommandDurability012DTests.RetryAfterFailedSavePersistsTheOriginalLoanWithoutCreditingItAgain" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="836dd090-37d5-e0ac-ff2e-5abd86d829e0">
+      <Execution id="52853c7f-c603-4934-9a47-db7ba2a25c2e" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.FinancialCommandDurability012DTests" name="RetryAfterFailedSavePersistsTheOriginalLoanWithoutCreditingItAgain" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="4389d1e0-b8e6-d7b5-49c0-9b75ea47788a">
+      <Execution id="ce552472-c50e-44a9-8182-4d9518cefb87" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.CoachCareer008ReadinessTests" name="ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.CupExtraTime_Grants6SubstitutionsAnd4PauseWindows_WithFreeIntervalsAt90And105" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="2c449186-a603-2943-1f6e-347a6524d920">
+      <Execution id="9b5c2eb5-6080-4c4d-82ed-8f043a85966a" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests" name="CupExtraTime_Grants6SubstitutionsAnd4PauseWindows_WithFreeIntervalsAt90And105" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.GlobalPause_8Humans_Minute37Freeze_Quotas5And3_ExtraTime6And4_AndRoomIsolation" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="9535c5a3-095e-9116-c7d5-94560327fe5b">
+      <Execution id="0e85a3c5-a23b-4337-bd7b-73debf87bbb6" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests" name="GlobalPause_8Humans_Minute37Freeze_Quotas5And3_ExtraTime6And4_AndRoomIsolation" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.HumanSynchronization_0To6Counter_Idempotency_UnemployedIncluded_AndNoRaceConditions" storage="d:\elifoot_98_integration\tests\elifoot.application.tests\bin\release\net10.0\elifoot.application.tests.dll" id="1a494b26-d105-7c85-7ee9-8c5c0942903e">
+      <Execution id="1266b6ab-6bd3-491e-831c-b4c8e681bbf4" />
+      <TestMethod codeBase="D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests" name="HumanSynchronization_0To6Counter_Idempotency_UnemployedIncluded_AndNoRaceConditions" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4389d1e0-b8e6-d7b5-49c0-9b75ea47788a" executionId="ce552472-c50e-44a9-8182-4d9518cefb87" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2290053f-45cf-4c92-794c-a0fb93aed147" executionId="d28bce2a-4f06-4187-990b-298c1b5e6efb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a494b26-d105-7c85-7ee9-8c5c0942903e" executionId="1266b6ab-6bd3-491e-831c-b4c8e681bbf4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="836dd090-37d5-e0ac-ff2e-5abd86d829e0" executionId="52853c7f-c603-4934-9a47-db7ba2a25c2e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c449186-a603-2943-1f6e-347a6524d920" executionId="9b5c2eb5-6080-4c4d-82ed-8f043a85966a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9535c5a3-095e-9116-c7d5-94560327fe5b" executionId="0e85a3c5-a23b-4337-bd7b-73debf87bbb6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.97]   Discovering: Elifoot.Application.Tests&#xD;
+[xUnit.net 00:00:01.09]   Discovered:  Elifoot.Application.Tests&#xD;
+[xUnit.net 00:00:01.17]   Starting:    Elifoot.Application.Tests&#xD;
+[xUnit.net 00:00:22.68]   Finished:    Elifoot.Application.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
