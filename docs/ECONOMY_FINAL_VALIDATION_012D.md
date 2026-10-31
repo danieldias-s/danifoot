@@ -29,7 +29,7 @@ FLUTTER_TESTS: 61 aprovados; análise limpa.
 DETERMINISTIC_REPLAY: baseline exata e replay clássico de duas temporadas na regressão, além de persistência/reprocessamento financeiro.
 012C_PRESERVED: hashes de motor, força, lesões, disciplina, táticas, IA tática, carreira e estatísticas idênticos à base.
 013B_PRESERVED: nenhum arquivo escrito por esta tarefa no worktree separado; a tarefa 013B avançou independentemente de 40e71b4 para 47608e9.
-CHECKPOINT_COMMIT: Consultar audit-012d-fix/checkpoint.json, emitido após o commit local.
+CHECKPOINT_COMMIT: 207d0ae4a7279404197294ad9474f3f1c9bedb26
 
 ## Testes reais
 

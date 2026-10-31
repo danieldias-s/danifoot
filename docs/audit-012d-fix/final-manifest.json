@@ -29,7 +29,7 @@
     },
     {
       "Path": "docs/ECONOMY_FINAL_VALIDATION_012D.md",
-      "Sha256": "6f0dc40258df063e2baf5c1a567c54ee456dd6940b7a1ea4789651cdc2ff030e"
+      "Sha256": "bfc59f228841907feffd78897a488483702a0edb056ee075dcea312e28db2efc"
     },
     {
       "Path": "scripts/analyze_economy_balance_012d.py",
@@ -41,7 +41,7 @@
     },
     {
       "Path": "scripts/checkpoint_economy_balance_012d.py",
-      "Sha256": "3831be301f97cbb58d7dd47774f98dd8ad0b0bf4a6b86d6f238cb310b9d0a82d"
+      "Sha256": "202165e2aee65c8a08ab45c302b046b7ed938e7595276a8f3d933c8187505c25"
     },
     {
       "Path": "scripts/report_economy_balance_012d.py",
@@ -201,6 +201,15 @@
       }
     },
     {
+      "Directory": "docs\\audit-012d-fix\\regression\\balance-012d-fix\\final-199801",
+      "Sha256": {
+        "summary.json": "c92c2bf9f98623172d6bddfe20400b73f9d2da3395f06b248fc232c391697f4c",
+        "seasons.json": "6aebd45cc5de6da31206edc8f4f3497599ff29223fd14a52ba471273a2ff0ae8",
+        "ledger.jsonl.gz": "be7b19d81fc868b331f49396470a14fc7d8c60a94a2b9b796f1465fab31a59b2",
+        "clubs.json.gz": "00367758ffda906144124c0e84d6ed3d2c38f95392419fa6623c22d8bfeee6a5"
+      }
+    },
+    {
       "Directory": "docs\\audit-012d-fix\\verified\\balance-012d-fix\\final-199801",
       "Sha256": {
         "summary.json": "fd286a160ddcbab7702916266b371c50c39fb977d355075d3d24ac961a7c7be4",
@@ -210,6 +219,6 @@
       }
     }
   ],
-  "OtherWorktrees": "worktree D:/elifoot_98\nHEAD 7529e69845844f91c1d8aea3bb431ef2aa212c0e\nbranch refs/heads/master\n\nworktree D:/elifoot_98_013A\nHEAD 47608e9a674c0978c4be4b244de88d961876e197\nbranch refs/heads/feature/real-football-data-013b\n\n",
+  "OtherWorktrees": "worktree D:/elifoot_98\nHEAD 207d0ae4a7279404197294ad9474f3f1c9bedb26\nbranch refs/heads/master\n\nworktree D:/elifoot_98_013A\nHEAD 47608e9a674c0978c4be4b244de88d961876e197\nbranch refs/heads/feature/real-football-data-013b\n\n",
   "013B": "No checkout, reset, merge or write to the separate worktree by this task; its branch may progress independently."
 }

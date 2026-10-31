@@ -28,7 +28,7 @@ for rel in paths:
     if rel.startswith('docs/audit-') or not (root/rel).is_file():continue
     files.append({'Path':rel,'Sha256':hashlib.sha256((root/rel).read_bytes()).hexdigest()})
 evidence=[]
-for area in [audit/'experiments/balance-012d-fix',audit/'verified/balance-012d-fix']:
+for area in [audit/'experiments/balance-012d-fix',audit/'regression/balance-012d-fix',audit/'verified/balance-012d-fix']:
     if not area.exists():continue
     for folder in area.iterdir():
         if not (folder/'summary.json').exists():continue
