@@ -10,4 +10,4 @@ Nível privado: tabela PlayerAppearance, chave OwnerId/WorldId/ClubId, Preferenc
 
 EnsureSchema acrescenta somente as duas tabelas em PostgreSQL/SQLite, sem destruir estruturas anteriores. Preferências não chamam SaveWorld. Testes comparam serialização/fingerprint completo, incluindo atletas, salários, contratos, dívida, caixa e histórico, antes/depois das preferências.
 
-Evidências: `appearance-http.json`, `color-presets-http.json`, `appearance-restart.json`, `color-presets-restart.json`, `colors-backend-final.log` e TRX. Reinício do controlador tem teste próprio; reinício nativo do navegador continua pendente. A persistência comprovada por processo/BD e a restauração pelo controlador não são apresentadas como auditoria de Chrome.
+Evidências: `appearance-http.json`, `color-presets-http.json`, `appearance-restart.json`, `color-presets-restart.json`, `colors-backend-final.log` e TRX. Reinício do controlador tem teste próprio; reload no navegador real também recuperou a preferência; reinício do processo completo continua pendente. A persistência comprovada por processo/BD e a restauração pelo controlador não são apresentadas como auditoria de Chrome.

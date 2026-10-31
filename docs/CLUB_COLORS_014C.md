@@ -1,6 +1,6 @@
 # ELIFOOT_DYNAMIC_CLUB_COLORS_014C
 
-STATUS: PARTIAL. Funcionalidade implementada e validada automaticamente; cobertura do catálogo incompleta e auditoria nativa/comparação com a referência ainda pendentes.
+STATUS: PARTIAL. Funcionalidade implementada e validada automaticamente; cobertura do catálogo incompleta; comparação com a referência e sequência de contratação ainda pendentes. A matriz principal foi executada no navegador integrado real.
 
 WORKTREE: `D:\elifoot_98_014C`
 
@@ -81,7 +81,7 @@ A 014B já validou 26 testes de simulação e cenários de 100 temporadas. Não 
 
 HTTP real: paletas propagadas, categorias separadas, dois treinadores, conflito em três de quatro gravações concorrentes, autenticação e reset; fingerprints completos de mundos antes/depois das preferências iguais. Três rodadas oficiais foram usadas somente para registrar partidas reais.
 
-VISUAL_CAPTURES: `audit-014c/automated-renders/`, renderer de respostas HTTP reais; não são screenshots de Chrome. Ver `VISUAL_AUDIT_014C.md`.
+VISUAL_CAPTURES: 14 capturas reais IAB em `audit-014c/browser-captures/` e 18 renders separados. Ver `VISUAL_AUDIT_014C.md`.
 
 MATCH_ENGINE_PRESERVED / ECONOMY_PRESERVED: hashes iguais, sem alterações de regras. Sem merge, push ou publicação.
 
@@ -91,6 +91,6 @@ MATCH_ENGINE_PRESERVED / ECONOMY_PRESERVED: hashes iguais, sem alterações de r
 
 Web: `http://127.0.0.1:5156`; API: `http://127.0.0.1:5155`; PostgreSQL próprio: `127.0.0.1:55438`. O modo manual impede avanço enquanto o revisor inspeciona. Credenciais locais ficam em artifacts ignorados. O runner recusa portas/processos de outra sessão. Para parar somente estes serviços: `scripts/stop-club-colors-014c.ps1 -IncludePostgres`.
 
-KNOWN_ISSUES: ver documento próprio. Este relatório não aprova cobertura integral nem auditoria nativa.
+KNOWN_ISSUES: ver documento próprio. Este relatório não aprova cobertura integral nem comparação com referência ausente. O navegador integrado foi inspecionado; controle nativo do Chrome e sequência completa de contratação não foram exercitados.
 
 A reconciliação por identificador de teste está em `audit-014c/dotnet-reconciled-results.json`; nomes de alguns casos parametrizados são truncados pelo TRX e não devem ser usados para contagem. Reinício real de API/PostgreSQL confirmou quatro preferências, dois presets e quatro mundos independentes sem mudança dos fingerprints.

@@ -91,6 +91,111 @@
       "Type": "Flutter renderer, real recorded HTTP; not native browser screenshot"
     }
   ],
-  "NativeBrowserAudit": "PENDING",
-  "ReferenceImage": "Not attached"
+  "NativeBrowserAudit": "Actual IAB browser matrix executed; not native Chrome automation",
+  "ReferenceImage": "Not attached",
+  "BrowserCaptures": [
+    {
+      "File": "docs\\audit-014c\\browser-captures\\appearance-desktop.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "bda7aa0c8bd654f55e84c56b7459d61b2aaab2ac102b75dcee4fa56578ee18f3",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\appearance-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "995bde905be11a210c8784db3cbee2a0d063cfb19415cfddb7b716fd1c8d0060",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\blue-desktop.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "f313d93d996764299be5cd3cb33155d2544c64fae9216d594a4c3da0fea45e30",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\blue-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "f4be43ea2a391b87a8f4499fbe6227e139c5043a7ded8d1b0475be092799527f",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\browser-reload-restored.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "287bb4702e2c256120bcbbaa1e4492413dbb786b833b6b431bf838a48da0db9c",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\flamengo-desktop.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "ed299aa4beebdeaf52e8f9e1eda992481be1a9bf0ebc2bfca98c212a8480dcc9",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\flamengo-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "3ad9dba5977686a97e2ba661a59399a705621bd28a128fa1510e5236a15f41e2",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\flamengo-second-trainer-same-room.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "3b3c46db7b28b31f57065999988d66ec2fb9761bbd3247b7473e5f821a299ae9",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\mixed-matches-desktop.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "2a052b9c8dafe0447d66c5c7fbbadd30af1a713794a85be101286c9702b95b89",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\mixed-matches-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "c77db19c69be75cec4c410dce08d1e5850a3af6f182b8b91728adbe182cabe59",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\picker-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "cb8fc22fee6f8e640bd6ba479ae6c927f33b1065caed9808f9d80a0d92da7a5b",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\preview-mobile.jpg",
+      "Width": 390,
+      "Height": 1000,
+      "Sha256": "dd791095c1d9500e4cccd7747ce213b0dd56e55772ca5cb2cfbd23c559512de9",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\unemployed-neutral.jpg",
+      "Width": 1366,
+      "Height": 1000,
+      "Sha256": "bc5c346e073ce5bb36321158fdf156d77d0a6e5532574204a111078e3b6c0ef9",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    },
+    {
+      "File": "docs\\audit-014c\\browser-captures\\unknown-club-picker-neutral.jpg",
+      "Width": 1380,
+      "Height": 1252,
+      "Sha256": "b73221cb4d998bd928284c96a2879a7577f92568bfb4d2604961787b3cadf733",
+      "Type": "Actual IAB browser screenshot; original JPEG"
+    }
+  ],
+  "BrowserReloadRestore": "PASS: black background restored after reload, then reset to club palette",
+  "SeparateTrainersSameRoom": "Blue Manchester City and red Flamengo captured from separate trainer sessions in the same review world",
+  "FullBrowserProcessRestart": "Not exercised; new IAB tabs start separate sessions",
+  "CareerHiringSequence": "Controller/widget coverage; actual hiring flow not exercised",
+  "UnknownClubPicker": "PASS in final build: unknown club swatches are neutral"
 }

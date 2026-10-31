@@ -6,115 +6,115 @@
 00:00 +4: D:/elifoot_98_014C/client/elifoot_flutter/test/api_environment_test.dart: Invalid origins and embedded credentials are rejected
 00:00 +5: D:/elifoot_98_014C/client/elifoot_flutter/test/career_api_test.dart: Career rejection sends the invitation and coach identity to the reject route
 00:00 +6: D:/elifoot_98_014C/client/elifoot_flutter/test/career_api_test.dart: Career response preserves half-point ranking and pending invitations
-00:00 +7: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +8: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +9: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +10: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +11: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +12: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +13: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +14: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +15: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +16: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +17: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +18: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:01 +19: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:03 +20: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:03 +21: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:03 +22: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:04 +23: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:04 +24: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:04 +25: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:04 +26: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:04 +27: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +28: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +29: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +30: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +31: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +32: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +33: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +34: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +35: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +36: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +37: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:06 +38: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
-00:07 +39: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:08 +40: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:08 +41: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:08 +42: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:08 +43: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:08 +44: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:09 +45: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:09 +46: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:09 +47: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:09 +48: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:11 +49: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:11 +50: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:11 +51: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:11 +52: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
-00:12 +53: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:12 +54: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:13 +55: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:13 +56: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:13 +57: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:14 +58: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:14 +58: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) resolveHistoricalClubName resolves explicit clubName, exact clubId, and friendly fallback without leaking raw GUIDs
+00:01 +7: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +8: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +9: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +10: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +11: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +12: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +13: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +14: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +15: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +16: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +17: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +18: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:03 +19: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:06 +20: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:06 +21: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:06 +22: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+00:07 +23: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:07 +24: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +25: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +26: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +27: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +28: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +29: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +30: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +31: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +32: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +33: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +34: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +35: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +36: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +37: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +38: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +39: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +40: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +41: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:09 +42: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:12 +43: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:12 +44: D:/elifoot_98_014C/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:12 +45: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:13 +46: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:13 +47: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:13 +48: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:13 +49: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:14 +50: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:15 +51: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:15 +52: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:15 +53: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +54: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +55: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +56: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +57: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +58: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +59: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:16 +60: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:17 +61: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:17 +62: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:17 +63: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:17 +63: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) resolveHistoricalClubName resolves explicit clubName, exact clubId, and friendly fallback without leaking raw GUIDs
 [Elifoot010] Clube histórico indisponível para clubId=11111111-2222-4333-8444-555555555555 (season=1, player=p1)
-00:14 +59: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:14 +60: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
-00:14 +61: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:15 +62: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:15 +63: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:15 +64: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:15 +65: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +66: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +67: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +68: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +69: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +70: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +71: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +72: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:16 +73: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:17 +74: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:17 +75: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:17 +76: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:18 +77: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:18 +78: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:18 +79: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:19 +80: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:19 +81: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:19 +82: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:20 +83: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
-00:20 +84: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:20 +85: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:21 +86: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:21 +86: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 historical clubs: same club, club transfer, division change, two clubs in same season, and unknown GUID fallback
+00:17 +64: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:18 +65: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+00:18 +66: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:18 +67: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:18 +68: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:19 +69: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:19 +70: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:19 +71: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:20 +72: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:20 +73: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:20 +74: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:21 +75: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:22 +76: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:22 +77: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:22 +78: D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:22 +79: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:22 +80: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:22 +81: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:23 +82: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:23 +83: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:23 +84: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+00:24 +85: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:25 +86: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:25 +87: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:25 +87: D:/elifoot_98_014C/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 historical clubs: same club, club transfer, division change, two clubs in same season, and unknown GUID fallback
 [Elifoot010] Clube histórico indisponível para clubId=deadbeef-dead-4eef-8eef-deadbeef0000 (season=0, player=p1)
-00:21 +87: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:21 +88: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:22 +89: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:22 +90: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:22 +91: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
-00:23 +92: D:/elifoot_98_014C/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
-00:24 +93: D:/elifoot_98_014C/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
-00:25 +94: D:/elifoot_98_014C/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
-00:25 +95: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:25 +96: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:26 +97: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:26 +98: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:26 +99: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:26 +100: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:26 +101: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:27 +102: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:27 +103: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:27 +104: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:27 +105: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:28 +106: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:28 +107: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:28 +108: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:28 +109: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:29 +110: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:29 +111: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:30 +112: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
-00:31 +113: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: All 10 Tactical Formations (4-4-2..5-0-5), Market Actions & Stadium/Finance Operations
-00:34 +114: All tests passed!
+00:25 +88: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:26 +89: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:26 +90: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:26 +91: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:27 +92: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:27 +93: D:/elifoot_98_014C/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+00:28 +94: D:/elifoot_98_014C/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
+00:28 +95: D:/elifoot_98_014C/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
+00:28 +96: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:28 +97: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:28 +98: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:28 +99: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:29 +100: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:29 +101: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:29 +102: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:30 +103: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:30 +104: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:31 +105: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:31 +106: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:31 +107: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:31 +108: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:32 +109: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:32 +110: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:33 +111: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:33 +112: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+00:34 +113: D:/elifoot_98_014C/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: All 10 Tactical Formations (4-4-2..5-0-5), Market Actions & Stadium/Finance Operations
+00:37 +114: All tests passed!

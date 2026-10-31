@@ -1,0 +1,20 @@
+{
+  "Status": "PARTIAL",
+  "DotnetDistinctCases": 569,
+  "FlutterCases": 114,
+  "NodeCases": 2,
+  "FlutterRendererCases": 2,
+  "BrowserScreenshots": 14,
+  "RendererPngs": 18,
+  "ProtectedFilesUnchanged": 12,
+  "PreviousWorktreesUnchanged": 4,
+  "ActualApiDatabaseRestart": "PASS",
+  "ActualBrowserReload": "PASS",
+  "MissingColorPalettes": 1381,
+  "Remaining": [
+    "Coverage",
+    "Reference comparison",
+    "Full hiring/dismissal/return UI flow",
+    "Full browser process restart"
+  ]
+}

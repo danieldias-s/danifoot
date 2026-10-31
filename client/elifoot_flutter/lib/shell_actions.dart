@@ -193,9 +193,15 @@ extension _ShellActions on _ElifootShellScreenState {
                             width: 14,
                             height: 24,
                             decoration: BoxDecoration(
-                              color: _clubColor(c['primaryColorHex']),
+                              color: _clubColor(
+                                c['colorPalette'],
+                                'primaryColor',
+                              ),
                               border: Border.all(
-                                color: _clubColor(c['secondaryColorHex']),
+                                color: _clubColor(
+                                  c['colorPalette'],
+                                  'secondaryColor',
+                                ),
                                 width: 2,
                               ),
                             ),
@@ -269,13 +275,14 @@ extension _ShellActions on _ElifootShellScreenState {
     }
   }
 
-  Color _clubColor(dynamic hex) => Color(
-    int.tryParse(
-          'FF${(hex ?? '#FFFFFF').toString().replaceFirst('#', '')}',
-          radix: 16,
-        ) ??
-        0xFFFFFFFF,
-  );
+  Color _clubColor(dynamic palette, String field) {
+    if (palette is Map &&
+        (palette['colorVerified'] == true ||
+            palette['isPersonalized'] == true)) {
+      return rgbColor(palette[field]) ?? ClassicTheme.of(context).border;
+    }
+    return ClassicTheme.of(context).surfaceAlternate;
+  }
 
   /// Section 4: Painel Principal do Treinador (Employed & Unemployed views)
   Widget _buildCoachMainPanel() {

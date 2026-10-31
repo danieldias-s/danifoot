@@ -1,0 +1,7 @@
+{
+  "Status": "PASS",
+  "World": "87b431a2-fcf7-4b43-9078-2ae60be01d8d",
+  "OfficialRoundsPrepared": 3,
+  "Fixtures": 16,
+  "Note": "Local API advanced real engine; browser displays actual SignalR state, not a mocked board."
+}

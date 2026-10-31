@@ -9,3 +9,5 @@ As escolhas pertencem ao usuário/mundo/clube. Nem a paleta oficial nem o tema d
 Testes em 390 e 1366 pixels acionam menu, campos, três controles visuais, gravação, restauração e retorno ao painel do treinador. Troca de clube e retorno são exercitados no controlador; ainda falta a sequência completa de contratação no navegador real.
 
 Se o clube mudar com o painel aberto, o rascunho anterior é bloqueado para não gravar/restaurar no clube novo. Reabrir Aparência carrega o contexto atual; caso coberto por teste de widget.
+
+A inspeção IAB real confirmou seletor, prévia preta, salvamento, reload com recuperação do preto e restauração do vermelho/preto. Screenshots desktop/mobile estão separados dos renders.
