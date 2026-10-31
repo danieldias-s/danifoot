@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 
-String catalogIdentityOrigin(Map<String, dynamic> player) =>
-    switch (player['identityOrigin']) {
-      'Real' => 'DADO REAL',
+String catalogIdentityOrigin(Map<String, dynamic> player) {
+  final identity = player['catalogIdentity'];
+  final origin =
+      player['playerOrigin'] ?? (identity is Map ? identity['origin'] : null);
+  return switch (origin) {
+    'REAL_VERIFIED_CURRENT' =>
+      identity is Map
+          ? 'REAL — VÍNCULO COMPROVADO NO SNAPSHOT ${identity['asOf'] ?? ''}'
+          : 'REAL — VÍNCULO ATUAL COMPROVADO',
+    'REAL_HISTORICAL_REFERENCE' => 'REFERÊNCIA REAL — NÃO É ELENCO ATUAL',
+    'FICTIONAL_GENERATED' => 'FICTÍCIO GERADO',
+    _ => switch (player['identityOrigin']) {
+      'Real' => 'DADO REAL — conferir vínculo',
       'Generated' => 'FICTÍCIO GERADO',
       'Fixture' => 'FIXTURE DE TESTE',
       _ => 'Origem legada / consultar fonte',
-    };
+    },
+  };
+}
 
 String catalogStrengthDescription(Map<String, dynamic> player) {
   final estimate = player['strengthEstimate'];
@@ -24,19 +36,26 @@ Widget catalogPlayerRow(Map<String, dynamic> player) => ListTile(
     '${player['position']} • ${player['playerName']} • ${catalogStrengthDescription(player)}',
   ),
   subtitle: Text(
-    '${catalogIdentityOrigin(player)} • ${player['source']} • ${player['updatedAt']}',
+    '${catalogIdentityOrigin(player)} • ${player['source']} • ${player['playerOrigin'] == 'FICTIONAL_GENERATED' ? 'geração determinística; seed salva' : player['updatedAt']}',
   ),
 );
 
 Widget catalogRankingLabel(Map<String, dynamic> club) {
   final rank = club['rankingInfo'];
+  if (rank is Map && rank['method'] == 'ProvisionalSeededOrder-v1') {
+    return const Text(
+      'CLASSIFICAÇÃO PROVISÓRIA • baixa confiança • desempate por seed, sem ranking esportivo comprovado.',
+    );
+  }
   if (rank is Map && rank['method'] == 'Unranked-v2') {
     return const Text(
       'NÃO CLASSIFICADO — sem resultados suficientes; desempate técnico não é ranking.',
     );
   }
   if (rank is! Map) {
-    return const Text('Ranking ausente: ordem provisória por identificador.');
+    return const Text(
+      'Ranking ausente: sem classificação esportiva comprovada.',
+    );
   }
   return Text(
     'Ranking: ${rank['method'] ?? 'posição informada'} • ${rank['source']}\n'

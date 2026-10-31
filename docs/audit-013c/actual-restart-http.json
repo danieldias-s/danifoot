@@ -1,0 +1,19 @@
+{
+  "Status": "PASS",
+  "Worlds": [
+    {
+      "World": "0ec5dc78-5997-4fa7-85ef-fef49826f9ad",
+      "Gender": "Male",
+      "FingerprintUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanIdempotent": true
+    },
+    {
+      "World": "1e134d3e-e095-4922-add3-9e879f5f679a",
+      "Gender": "Female",
+      "FingerprintUnchanged": true,
+      "DraftIdempotent": true,
+      "LoanIdempotent": true
+    }
+  ]
+}

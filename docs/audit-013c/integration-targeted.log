@@ -1,0 +1,39 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_integration\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_integration\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_integration\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98_integration\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98_integration\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:21.99]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [18 s]
+  Mensagem de erro:
+   System.ArgumentException : Dados reais exigem evidência de acesso e armazenamento autorizado.
+  Rastreamento de pilha:
+     at Elifoot.Infrastructure.Catalog.CatalogSyncService.Commit(CatalogImportPackage input, Guid owner, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 169
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 74
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 78
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 79
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.Populate(CatalogSyncService sync, FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 37
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 54
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 116
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:24.30]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [2 s]
+  Mensagem de erro:
+   System.ArgumentException : Dados reais exigem evidência de acesso e armazenamento autorizado.
+  Rastreamento de pilha:
+     at Elifoot.Infrastructure.Catalog.CatalogSyncService.Commit(CatalogImportPackage input, Guid owner, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 169
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 74
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 78
+   at Elifoot.Infrastructure.Catalog.CatalogSyncService.ImportAsync(CatalogImportPackage package, CancellationToken ct) in D:\elifoot_98_integration\src\Elifoot.Infrastructure\Catalog\CatalogSyncService.cs:line 79
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.Populate(CatalogSyncService sync, FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 37
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 54
+   at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 116
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\integration-targeted_net10.0_20261031061142.trx
+
+Com falha! – Com falha:     2, Aprovado:     0, Ignorado:     0, Total:     2, Duração: 21 s - Elifoot.Integration.Tests.dll (net10.0)

@@ -98,7 +98,9 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
                 chosen.Data.Scope.CountryCode, chosen.Data.CountryName, gender, chosen.Club.LeagueName, season,
                 chosen.Club.PrimaryColor, chosen.Club.SecondaryColor, rank?.Rank, players, references, false, group.Key, rank,
                 linkedAliases, issues, squad.Data?.AllowPartialSquads == true ? rosterReport?.ReceivedPlayers ?? players.Count : null, identityConflicts, chosen.Club.Verification,
-                documented.Count, documented.Count(p => p.MembershipEvidence?.Status is CatalogMembershipStatus.OpenEndedUnconfirmed or CatalogMembershipStatus.Unknown)));
+                documented.Count, documented.Count(p => p.MembershipEvidence?.Status is CatalogMembershipStatus.OpenEndedUnconfirmed or CatalogMembershipStatus.Unknown),
+                documented.Where(p=>!CatalogMembershipPolicy.Usable(p,asOf) && p.IdentityOrigin==CatalogDataOrigin.Real)
+                    .Select(p=>p with {PlayerOrigin=WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE}).ToList(),asOf));
         }
         var comparable = unique.Select(c => c.RankingInfo?.ComparableGroup).Where(g => g != null).Distinct().ToList();
         if (comparable.Count > 1)
@@ -116,6 +118,15 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             ? "FIXTURES DE TESTE — clubes, atletas e rankings fictícios; nenhuma carga real."
             : "CATÁLOGO MISTO — existem fixtures junto dos dados reais; consulte a origem de cada snapshot.");
         return new(gender, season, countries, unique, refs, warnings);
+    }
+    public async Task<CatalogSelection> SelectForWorld(WorldCreatorRequest request, CancellationToken ct = default)
+    {
+        var selection=await Select(request.Countries,request.Gender,request.Season,request.UseSavedData,ct);
+        if(request.DataMode==null)return selection;
+        var asOf=DateOnly.FromDateTime(DateTime.UtcNow);var errors=new List<string>();var warnings=selection.Warnings.ToList();
+        var eligible=PlayableWorldPolicy.Select(request,selection,asOf,errors,warnings);
+        return selection with {Clubs=eligible,Warnings=warnings.Concat(errors).Distinct().ToList(),
+            DataSummary=PlayableWorldPolicy.Summary(request,selection,[],asOf)};
     }
     public async Task<List<CatalogCoverageReport>> Coverage(List<string> countries, FootballGender gender, string season, CancellationToken ct = default)
     {

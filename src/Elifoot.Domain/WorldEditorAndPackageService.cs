@@ -52,7 +52,7 @@ public static class WorldEditorAndPackageService
                 p.PhotoUrl,
                 p.PhotoLicense,
                 p.PhotoCredit,
-                p.NegotiatedContractProtected)).ToList(),
+                p.NegotiatedContractProtected, p.CatalogIdentity)).ToList(),
             AiManagers: world.AiManagers.Select(m => new AiManagerExportDto(
                 m.Id,
                 m.CurrentClubId,
@@ -81,7 +81,7 @@ public static class WorldEditorAndPackageService
     public static string ExportPlayersToCsv(GameWorld world)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("Id,ClubId,Name,Position,Strength,Behavior,IsStar,ContractRounds,SalaryPerRound,MarketPrice,PhotoUrl,PhotoLicense,PhotoCredit");
+        sb.AppendLine("Id,ClubId,Name,Position,Strength,Behavior,IsStar,ContractRounds,SalaryPerRound,MarketPrice,PhotoUrl,PhotoLicense,PhotoCredit,NegotiatedContractProtected,CatalogIdentityJson");
         foreach (var p in world.Players)
         {
             sb.AppendLine(string.Join(",",
@@ -97,7 +97,9 @@ public static class WorldEditorAndPackageService
                 p.MarketPrice.ToString(CultureInfo.InvariantCulture),
                 EscapeCsv(p.PhotoUrl ?? ""),
                 EscapeCsv(p.PhotoLicense ?? ""),
-                EscapeCsv(p.PhotoCredit ?? "")));
+                EscapeCsv(p.PhotoCredit ?? ""),
+                p.NegotiatedContractProtected ? "true" : "false",
+                EscapeCsv(p.CatalogIdentity == null ? "" : JsonSerializer.Serialize(p.CatalogIdentity, new JsonSerializerOptions {PropertyNamingPolicy=JsonNamingPolicy.CamelCase}))));
         }
         return sb.ToString();
     }
@@ -153,8 +155,15 @@ public static class WorldEditorAndPackageService
             string? photoLic = cols.Count > 11 && !string.IsNullOrWhiteSpace(cols[11]) ? cols[11].Trim() : null;
             string? photoCred = cols.Count > 12 && !string.IsNullOrWhiteSpace(cols[12]) ? cols[12].Trim() : null;
 
+            bool? protection = cols.Count > 13 && bool.TryParse(cols[13],out var protectedSalary) ? protectedSalary : null;
+            WorldPlayerProvenance? identity = null;
+            if(cols.Count>14 && !string.IsNullOrWhiteSpace(cols[14]))
+            {
+                try { identity=JsonSerializer.Deserialize<WorldPlayerProvenance>(cols[14],JsonOptions); }
+                catch(JsonException) { errors.Add($"Linha {i+1}: origem do atleta inválida."); continue; }
+            }
             players.Add(new PlayerExportDto(id, clubId, name, pos, strength, behavior, isStar,
-                Math.Max(1, contractRounds), Math.Max(0m, salary), Math.Max(0m, price), photoUrl, photoLic, photoCred));
+                Math.Max(1, contractRounds), Math.Max(0m, salary), Math.Max(0m, price), photoUrl, photoLic, photoCred,protection,identity));
         }
 
         return (players, errors);
@@ -340,7 +349,8 @@ public static class WorldEditorAndPackageService
                 MarketPrice = pDto.MarketPrice,
                 PhotoUrl = pDto.PhotoUrl,
                 PhotoLicense = pDto.PhotoLicense,
-                PhotoCredit = pDto.PhotoCredit
+                PhotoCredit = pDto.PhotoCredit,
+                CatalogIdentity = pDto.CatalogIdentity
             });
         }
 
@@ -400,7 +410,12 @@ public static class WorldEditorAndPackageService
             char c = line[i];
             if (c == '"')
             {
-                inQuotes = !inQuotes;
+                if (inQuotes && i + 1 < line.Length && line[i + 1] == '"')
+                {
+                    current.Append('"');
+                    i++;
+                }
+                else inQuotes = !inQuotes;
             }
             else if (c == ',' && !inQuotes)
             {

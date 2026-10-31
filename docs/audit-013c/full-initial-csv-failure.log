@@ -1,0 +1,34 @@
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Playable013C\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\bin\Playable013C\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Playable013C\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Simulation.Tests\bin\Playable013C\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:10.98]     Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Female) [FAIL]
+  Com falha Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Female) [3 s]
+  Mensagem de erro:
+   Assert.Empty() Failure: Collection was not empty
+Collection: ["Linha 2: origem do atleta inválida.", "Linha 3: origem do atleta inválida.", "Linha 4: origem do atleta inválida.", "Linha 5: origem do atleta inválida.", "Linha 6: origem do atleta inválida.", ···]
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\PlayableWorld013CTests.cs:line 63
+   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:12.98]     Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Male) [FAIL]
+  Com falha Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Male) [1 s]
+  Mensagem de erro:
+   Assert.Empty() Failure: Collection was not empty
+Collection: ["Linha 2: origem do atleta inválida.", "Linha 3: origem do atleta inválida.", "Linha 4: origem do atleta inválida.", "Linha 5: origem do atleta inválida.", "Linha 6: origem do atleta inválida.", ···]
+  Rastreamento de pilha:
+     at Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(FootballGender gender) in D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\PlayableWorld013CTests.cs:line 63
+   at InvokeStub_PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\full-013c_net10.0_20261031063218.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 21 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\full-013c_net10.0_20261031063238.trx
+
+Com falha! – Com falha:     2, Aprovado:   385, Ignorado:     0, Total:   387, Duração: 38 s - Elifoot.Domain.Tests.dll (net10.0)
+MSBUILD : error MSB4166: O nó filho "10" foi encerrado prematuramente. Desligando. Informações de diagnóstico poderão ser encontradas nos arquivos em "C:\Users\Daniel\AppData\Local\Temp\MSBuildTempnbz0nmrd.due\" e estarão nomeadas como MSBuild_*.failure.txt. Esse local pode ser alterado por meio da configuração da variável de ambiente MSBUILDDEBUGPATH para um diretório diferente.

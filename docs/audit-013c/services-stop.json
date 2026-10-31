@@ -1,0 +1,11 @@
+{
+  "Status": "PASS",
+  "ApiPorts": [
+    5142,
+    5143
+  ],
+  "OwnServicesStopped": true,
+  "PostgresPort": 55436,
+  "FinishedAt": "2026-10-31T07:05:10.4558736-03:00",
+  "OriginalServicesTouched": false
+}

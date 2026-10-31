@@ -24,7 +24,7 @@ public record CatalogAthlete(string PlayerExternalId, string ClubExternalId, str
     FootballGender Gender, string Season, string PlayerName, string Position, int Strength, string Source,
     DateTime UpdatedAt, string? CanonicalPlayerId = null, CatalogDataOrigin? IdentityOrigin = null,
     PlayerStrengthEstimate? StrengthEstimate = null, CatalogPlayerPerformance? Performance = null,
-    DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null, CatalogMembershipEvidence? MembershipEvidence = null);
+    DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null, CatalogMembershipEvidence? MembershipEvidence = null, WorldPlayerOrigin? PlayerOrigin = null);
 public record CatalogRank(string ClubExternalId, string ClubProvider, FootballGender Gender, string Season,
     int Rank, string Source, DateTime UpdatedAt, double? Score = null, string? Method = null,
     double? Confidence = null, string? ComparableGroup = null, CatalogDataOrigin? Origin = null);
@@ -41,18 +41,22 @@ public record EligibleCatalogClub(string Key, string ExternalId, string Provider
     string PrimaryColor, string SecondaryColor, int? Rank, List<CatalogAthlete> Players,
     List<CatalogReference> References, bool IsFictional = false, Guid? InternalCatalogClubId = null,
     CatalogRank? RankingInfo = null, List<CatalogClubAlias>? Aliases = null, List<string>? CoverageWarnings = null,
-    int? RawRosterCount = null, List<Guid>? IdentityConflicts = null, CatalogClubVerification? Verification = null, int? DocumentedPlayers = null, int? UncertainPlayers = null);
+    int? RawRosterCount = null, List<Guid>? IdentityConflicts = null, CatalogClubVerification? Verification = null, int? DocumentedPlayers = null, int? UncertainPlayers = null,
+    List<CatalogAthlete>? ReferencePlayers = null, DateOnly? RosterAsOf = null, CatalogRank? SourceRanking = null);
 public record CatalogCountryOption(string Code, string Name, int MaleClubs, int FemaleClubs);
 public record CatalogSelection(FootballGender Gender, string Season, List<string> Countries,
-    List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings);
+    List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings, WorldDataSummary? DataSummary = null);
 public record ClubAssignment(string ClubKey, int Division);
 public record WorldCreatorRequest(string Name, FootballGender Gender, string Season, List<string> Countries,
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
-    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false);
+    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null);
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
     List<WorldPreviewClub> Clubs, int PendingSlots, List<string> Errors, List<string> Warnings,
-    List<CatalogReference> References, DateTime CreatedAt, string DataHash);
+    List<CatalogReference> References, DateTime CreatedAt, string DataHash,
+    WorldDataMode? DataMode = null, DateOnly? DataAsOf = null, WorldDataSummary? DataSummary = null);
 public record WorldCreationOrigin(FootballGender Gender, string Season, List<string> Countries, int Seed,
-    DateTime CreatedAt, string DataHash, List<WorldPreviewClub> Clubs, List<CatalogReference> References);
+    DateTime CreatedAt, string DataHash, List<WorldPreviewClub> Clubs, List<CatalogReference> References,
+    WorldDataMode? DataMode = null, int? GeneratedPlayerSeed = null, DateOnly? DataAsOf = null,
+    WorldDataSummary? DataSummary = null, List<CatalogRank>? RankingSnapshot = null);

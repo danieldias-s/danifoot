@@ -24,6 +24,7 @@ public static class CoverageBundleImporter
         var services = new ServiceCollection(); services.AddDbContext<CatalogDbContext>(o => o.UseNpgsql(connection));
         services.AddSingleton(new CatalogSyncOptions()); services.AddSingleton<IWorldRepository, InMemoryWorldRepository>();
         services.AddSingleton<CatalogSyncService>(); services.AddSingleton<WorldCreatorService>(); await using var provider = services.BuildServiceProvider();
+        using(var scope=provider.CreateScope()) await scope.ServiceProvider.GetRequiredService<CatalogDbContext>().Database.EnsureCreatedAsync(ct);
         var sync = provider.GetRequiredService<CatalogSyncService>();
         foreach (var package in packages.Where(p => p.Scope.DataType == CatalogDataType.Clubs))
         { await sync.ImportAsync(package, ct); Console.WriteLine($"Clubs {package.Scope.CountryCode}/{package.Scope.Gender}/{package.Scope.Provider}: {package.Clubs.Count}"); }

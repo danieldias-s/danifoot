@@ -1,0 +1,20 @@
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Domain.Tests\bin\Playable013C\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Simulation.Tests\bin\Playable013C\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Application.Tests\bin\Playable013C\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Playable013C\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\final-013c_net10.0_20261031063410.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     6, Ignorado:     0, Total:     6, Duração: 20 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\final-013c_net10.0_20261031063426.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   387, Ignorado:     0, Total:   387, Duração: 36 s - Elifoot.Domain.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\final-013c_net10.0_20261031064056.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   134, Ignorado:     0, Total:   134, Duração: 7 m 6 s - Elifoot.Integration.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\final-013c_net10.0_20261031070012.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    24, Ignorado:     0, Total:    24, Duração: 26 m 22 s - Elifoot.Simulation.Tests.dll (net10.0)

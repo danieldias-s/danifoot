@@ -104,7 +104,8 @@ public sealed class Integration014ATests
         string catalog = catalogConnection ?? Environment.GetEnvironmentVariable("ELIFOOT_014A_CATALOG_PG") ?? throw new InvalidOperationException("Execute o runner PostgreSQL 014A.");
         string worlds = worldConnection ?? Environment.GetEnvironmentVariable("ELIFOOT_014A_WORLD_PG")!;
         var parsed = new Npgsql.NpgsqlConnectionStringBuilder(catalog);
-        Assert.Equal(55435, parsed.Port); Assert.Equal("127.0.0.1", parsed.Host); Assert.StartsWith("elifoot_014a_", parsed.Database);
+        Assert.Equal("127.0.0.1", parsed.Host);
+        Assert.True(parsed.Port==55435 && parsed.Database!.StartsWith("elifoot_014a_",StringComparison.Ordinal) || parsed.Port==55436 && parsed.Database!.StartsWith("elifoot_013c_",StringComparison.Ordinal));
         Assert.NotEqual(catalog, worlds);
         var services = new ServiceCollection(); services.AddDbContext<CatalogDbContext>(o => o.UseNpgsql(catalog));
         services.AddDbContext<ElifootDbContext>(o => o.UseNpgsql(worlds));
@@ -117,8 +118,10 @@ public sealed class Integration014ATests
     {
         // Fresh databases per execution: tests never downgrade or reuse the live catalog.
         string suffix = Guid.NewGuid().ToString("N")[..12];
-        var catalogConnection = new Npgsql.NpgsqlConnectionStringBuilder(Environment.GetEnvironmentVariable("ELIFOOT_014A_CATALOG_PG")) { Database = "elifoot_014a_test_catalog_" + suffix };
-        var worldConnection = new Npgsql.NpgsqlConnectionStringBuilder(Environment.GetEnvironmentVariable("ELIFOOT_014A_WORLD_PG")) { Database = "elifoot_014a_test_worlds_" + suffix };
+        var catalogConnection = new Npgsql.NpgsqlConnectionStringBuilder(Environment.GetEnvironmentVariable("ELIFOOT_014A_CATALOG_PG"));
+        var worldConnection = new Npgsql.NpgsqlConnectionStringBuilder(Environment.GetEnvironmentVariable("ELIFOOT_014A_WORLD_PG"));
+        string prefix=catalogConnection.Port==55436?"elifoot_013c_test_":"elifoot_014a_test_";
+        catalogConnection.Database=prefix+"catalog_"+suffix;worldConnection.Database=prefix+"worlds_"+suffix;
         await using var provider = Provider(catalogConnection.ConnectionString, worldConnection.ConnectionString);
         using (var scope = provider.CreateScope())
         {

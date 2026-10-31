@@ -1,0 +1,11 @@
+{
+  "WorldSnapshotsUnchanged": true,
+  "ApiRestart": true,
+  "Status": "PASS",
+  "Port": 55436,
+  "PreviousPostmasterPid": "28400",
+  "NewPostmasterPid": "35084",
+  "PostgresRestart": true,
+  "ExternalDatabaseUsed": false,
+  "CatalogSnapshotsUnchanged": true
+}

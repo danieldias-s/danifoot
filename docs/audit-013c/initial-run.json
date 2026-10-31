@@ -1,0 +1,5 @@
+{
+  "Reason": "CSV parser lost escaped quotes; corrected before complete rerun",
+  "FailedCases": 2,
+  "Status": "INTERRUPTED_AFTER_CONFIRMED_CSV_FAILURE"
+}

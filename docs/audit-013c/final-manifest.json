@@ -1,0 +1,1977 @@
+{
+  "Task": "ELIFOOT_PLAYABLE_REAL_CLUB_WORLDS_013C",
+  "Status": "PASS",
+  "ApprovedBase": "d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17",
+  "HeadBeforeCheckpoint": "d838cc5acf8302f1fa2dd56ce8ca6e7781a14b17",
+  "SourceFiles": [
+    {
+      "Path": "Elifoot.slnx",
+      "Sha256": "3bd9555e39bd3029840acae182ab21f2794c99c8056e7382188455f8068eeb8d"
+    },
+    {
+      "Path": "client/elifoot_flutter/analysis_options.yaml",
+      "Sha256": "b63207cf529949ec4727b68c23dbb38ce255b6f6f4ae1effcb5c1dcf2852d238"
+    },
+    {
+      "Path": "client/elifoot_flutter/integration_test/android_runtime_test.dart",
+      "Sha256": "f996a5ab8d55748aaac79ce6742b518e2014d6add066ac973ca9a8b415df54f8"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Sha256": "cfde780e2e6a08776aaa8147c11d1b75c1f0390dd5e8e37b54508d5ff8f202e3"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_environment.dart",
+      "Sha256": "5a38f93b344ed9cf95403aff9f3ba8fe1186eb2134b2122af6b75a4c82912d05"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/catalog_provenance.dart",
+      "Sha256": "04929dad33ceda81b7f62172208db5989de1bf4adc90e9a8705d0d2c213a680e"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "1237d0cefdae76275fb8b4aa7b5fddccdcfad97805608acaafd92f412219de60"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Sha256": "cc3f2d7ba99f6583384c4c456bdc1603e127f628588554beedd24e5ee152e1a0"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/qa_mobile.dart",
+      "Sha256": "2de3ad914dd2faa0a162affdff91b27abf609552a98e3ffad071bf9aae79eb24"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store.dart",
+      "Sha256": "1fb5e1d59f52e1aabd2e1306c9dcfe58948853cac52f0c5994798490e5b1f95b"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_stub.dart",
+      "Sha256": "a01c14a6f10550886755e431c4212ff8a815f02c5983cdeb797c893c4e4fe808"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_web.dart",
+      "Sha256": "60cadfb354a9122835e28a29b3c4a81ff07adbb9b2f9f8f85470d09afc60f07a"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Sha256": "b833da15832901179e0dd8c253fbedda92c5bc37839e5cd7e15f1a3705ec20d0"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/world_creator.dart",
+      "Sha256": "6ef3413c7dbfa426be42314273e985fac7b51b725cf5c0e5a683fe4e70bb8b9e"
+    },
+    {
+      "Path": "client/elifoot_flutter/pubspec.lock",
+      "Sha256": "9f7cf367d2532205944c7807587dbdc10821fe5f5ad78e9778a728094aa2a5ab"
+    },
+    {
+      "Path": "client/elifoot_flutter/pubspec.yaml",
+      "Sha256": "3bb9da458e4f84a0be38e76ae48f3a99b2915805154dcc962fdeb9e0a4b63e44"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/api_environment_test.dart",
+      "Sha256": "f5bd7fd9c749c1c03abfaf5d57e009b62680352c387bc4fda6a75e4b0021efa4"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/career_api_test.dart",
+      "Sha256": "a44be89a7c8c720803e92f12db2281f2341e8fa745064ec4bd16d9cd06f24692"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/classic_force_012c_test.dart",
+      "Sha256": "6d0d0fd702cf5ce8c3835b5aaac11350796ba6ccf9fcff266f4aa0345d2f103f"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/complete_gameplay_011_test.dart",
+      "Sha256": "eaf8d0bada1e1e8090ef74c761e46691cccabbb6cd6057b96fc797e8c1882610"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/discipline_012c_test.dart",
+      "Sha256": "a7b3e02a5125d22b1f94a250be55a062eb2d1037c0b165e57ffc0cdf5a6f1711"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_api_test.dart",
+      "Sha256": "0e3c772fcf9d8e9ec396831e879fb4f1440c6b8894ace4ca04e989a2da573b6d"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_widget_test.dart",
+      "Sha256": "93a6f96440554728288f52d62c08a78a8be246e720975e2680aed247711b7534"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/playable_worlds_013c_test.dart",
+      "Sha256": "6839c09e7c670fb8cd9b6775bd4952cdd29efc97a6dfd919dc491fb2c3d31fc7"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_api_test.dart",
+      "Sha256": "0df7c9954d728d8c5d9d874c058241286f89f93b6f0141dd1b6c9e878cb5eb65"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Sha256": "5910313f846580649c745a8a93f297558e08c2185d7dfb600c97ea23215c45fb"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_strength_012_test.dart",
+      "Sha256": "24b2df5c5813312f48a7896cab8bd408b6973ef32336edce58650e05f9761edd"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/real_data_013b_test.dart",
+      "Sha256": "889a5cfc9a52d58605d61864873d0f7468ff654851037c17ce4c8287b163add6"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/session_store_test.dart",
+      "Sha256": "9d440ef5d62be6fc8bc65fbd32c2f334694296915a8867925fb26116a91a6c33"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/visual_polish_010_test.dart",
+      "Sha256": "4786194b2b5a801d60d668ef32f9faba7f995a04e788ce3f58c1ebcb81d22ddb"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Sha256": "163cbb4a1f6cd01974a002af119f16562b770bd6cb51e2d589c922aace1c1336"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/world_creator_013a_test.dart",
+      "Sha256": "737dd5ac656ac127cb6e5faba2aa72f56b1a6f8aca418e28205cca74bb6ef39b"
+    },
+    {
+      "Path": "client/elifoot_flutter/test_driver/runtime_driver.dart",
+      "Sha256": "12c29fa30379515714e24fba00319ef17128a2c35542307745933a599bed3f52"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/gameplay_visual_011_test.dart",
+      "Sha256": "e5e831d23f9d4bcdb00400d02342294c7917aa3849bd69b237ed9a8d27281a6a"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/player_rankings_live_009_test.dart",
+      "Sha256": "5b78ee70dc867fb1afdc22d3a2d7e1c9100a760346bf7cd91704183eb3815edc"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/qa/player_rankings_visual_010_test.dart",
+      "Sha256": "dbc653844097f3713c0b35d511e4e8c873e3c96c5825256b7569052cbb61d9df"
+    },
+    {
+      "Path": "scripts/analyze_economy_balance_012d.py",
+      "Sha256": "cd735d1785c96d2e648a2d5bb925bee7b023bac4847e596ae1acdcab73c4a076"
+    },
+    {
+      "Path": "scripts/audit_ai_capital_012d.py",
+      "Sha256": "f9e374c78371233c3618a8d7b766e7a1c35086cf3277f400b678648c202e9b08"
+    },
+    {
+      "Path": "scripts/backup-restore.ps1",
+      "Sha256": "30ab3a2b7f99caa5246fc96440c8fcb14ff67b9c14a42c6e47808725dda92892"
+    },
+    {
+      "Path": "scripts/build-android-qa.ps1",
+      "Sha256": "245f5917ccfc7bef3b69d6ad6f50bcdc317ec12f0e530db1d7fa67cfde2a73be"
+    },
+    {
+      "Path": "scripts/capture-android-qa-stages.mjs",
+      "Sha256": "053d906014bc825e496921a7e317252103c951ad07efc731623e0aab561427ff"
+    },
+    {
+      "Path": "scripts/capture-initial-economy-014a.py",
+      "Sha256": "1f1a717be09f73800ae6a88b28bfe3d59f48778ebd7b0d3dcc296104f332bae2"
+    },
+    {
+      "Path": "scripts/capture-player-ui-data-009.mjs",
+      "Sha256": "7e8a0c3a30c9f6299246d9fffc6202b93ad5419f9ead1e9bf90aa3365e9a3e31"
+    },
+    {
+      "Path": "scripts/checkpoint-integration-014a.py",
+      "Sha256": "41512ed1cce62cf05c725259711f1ae341f5ea24d07eecfd6e263d8fea5c7f57"
+    },
+    {
+      "Path": "scripts/checkpoint-playable-worlds-013c.py",
+      "Sha256": "981c1ee2d1cde2f2176fbcfb9435a44cabd685b6fbdf3b401c1e4df7164f30ed"
+    },
+    {
+      "Path": "scripts/checkpoint_economy_balance_012d.py",
+      "Sha256": "0585f049c53b4ed3cdb6c0b0c9c8e86527f4c3faf2c986fa7acf11f73b9f4769"
+    },
+    {
+      "Path": "scripts/collect-android-isolation.mjs",
+      "Sha256": "df520869567731e8accf624855dd3d8400fad56f9f8cb0f2b32798a633bed182"
+    },
+    {
+      "Path": "scripts/consolidate-regression-014a.py",
+      "Sha256": "1e5b3e75b9cb536a5d270492c068906a71e104d67bcc8b972eb0066553acdc9b"
+    },
+    {
+      "Path": "scripts/economic-review-integration-014a.py",
+      "Sha256": "fc6edce35f89c99e08cef923b93a1278a31a80c676266a90d72461a828be40c0"
+    },
+    {
+      "Path": "scripts/finish-metric-ai-007.mjs",
+      "Sha256": "ff4721b64775926f9f0839f751b5122c1a6385fd28d35f4c362c635fbd98be8c"
+    },
+    {
+      "Path": "scripts/normal-clock-playable-worlds-013c.py",
+      "Sha256": "0362db7814d1e4fd0a5c022962bea9866b4b8e2c7a57465922e156478b205908"
+    },
+    {
+      "Path": "scripts/reconcile-integration-014a.py",
+      "Sha256": "227a773a8aa6e5bf0306f901e17ace51b0089a19969b28cdda710c6f045b4572"
+    },
+    {
+      "Path": "scripts/reconcile-playable-worlds-013c.py",
+      "Sha256": "fe13d107107e3e62e455e6e3d59e7ab9612ac4c9f563b00067df923d345f1019"
+    },
+    {
+      "Path": "scripts/report-classic-force-012c.mjs",
+      "Sha256": "dd8f2f3e7330e4b6a307a629731b41a1ef77f3111d9c645981a8d5b47f862e88"
+    },
+    {
+      "Path": "scripts/report-coach-career-008.mjs",
+      "Sha256": "e6bb8ec8f9eddd61c744c06d297276a06df27708e158568d645978db8bf2beb6"
+    },
+    {
+      "Path": "scripts/report-discipline-012c.mjs",
+      "Sha256": "ef6395e7abd74133284f913d55b6d5fb43a9c185ad4833ee22c6b882ab780cd6"
+    },
+    {
+      "Path": "scripts/report-integration-014a.py",
+      "Sha256": "7c7a356e57243bad61d0ccdb67b26a9208d44d7f0377a6341bc99dd00f101f5b"
+    },
+    {
+      "Path": "scripts/report-metric-ai-007.mjs",
+      "Sha256": "52c048720d586330ba7f4a90733b4f9bdcc3619ea9ac525cc280fe9c89af2412"
+    },
+    {
+      "Path": "scripts/report-playable-worlds-013c.py",
+      "Sha256": "0ac5a415dddb1a75c47ab89c0450f8f03932451d23e5538b56fa66e92296cb4b"
+    },
+    {
+      "Path": "scripts/report-player-force-012.mjs",
+      "Sha256": "7720cc36255189fa5036aabaa9d0c48d4b2217b36d1d46aba742e3104b8fa0ac"
+    },
+    {
+      "Path": "scripts/report-player-force-012b.mjs",
+      "Sha256": "aaa3cc8af617d0cd89ade55bcaeff26980ce67aec92632e4e72209ed07cc205a"
+    },
+    {
+      "Path": "scripts/report-player-rankings-009.mjs",
+      "Sha256": "9aafad0a8666f82262d369ea7a6f4534719debca6233899fd51c71643e9b8e0b"
+    },
+    {
+      "Path": "scripts/report_economy_012d.py",
+      "Sha256": "b41b032a71a17fdf58f56d0f54bf6b80c4d9f45f1e524a5afe8a023159a2120c"
+    },
+    {
+      "Path": "scripts/report_economy_balance_012d.py",
+      "Sha256": "4e6c5794cae98ad625d191c1255dae1cb76703b8262fd761b422fbf4cafe5cf3"
+    },
+    {
+      "Path": "scripts/research-player-force-012b.mjs",
+      "Sha256": "b236e9ad35fa3017f34b67fcfb86bebad7e3592e8351b1fcdbc5305bbab4a32f"
+    },
+    {
+      "Path": "scripts/run-android-isolation-case.mjs",
+      "Sha256": "8d1c0c5f39d9278511a2748047a2fc986624d69bad5d7882d6c1078a228dc340"
+    },
+    {
+      "Path": "scripts/run-android-qa.ps1",
+      "Sha256": "833b7d04a6b1d1f33939a39170aef1526a5c1b204494096417cc77b14803715c"
+    },
+    {
+      "Path": "scripts/run-dev.ps1",
+      "Sha256": "2770ed99a8b8566652355017d6cbf2f228aa22531ace7c4e3bed777907872db9"
+    },
+    {
+      "Path": "scripts/run-integration-014a.ps1",
+      "Sha256": "313323e2713308ec8905fff6bd536de28be49c54546f586a4eb2cf04e9ed1668"
+    },
+    {
+      "Path": "scripts/run-playable-worlds-013c.ps1",
+      "Sha256": "1231a382163d58a9c206a8b918cd73d3d231dde589d20b6b5062c92cc8e94f5e"
+    },
+    {
+      "Path": "scripts/run-real-data-013b.ps1",
+      "Sha256": "7ae204b9645e7e1a18d79801ff6f38ceff78ad1ba14646a55da57966684b9ae2"
+    },
+    {
+      "Path": "scripts/run-web.ps1",
+      "Sha256": "c39cc7385bbe4fe5b1a1bc9e0738218d6c6ef63696ab4ab1ac13d27322602f97"
+    },
+    {
+      "Path": "scripts/run-world-creator-013a.ps1",
+      "Sha256": "e594d6920359c6a8d92442183bd870429b4eb56f0f44f0650fcf949770c46d94"
+    },
+    {
+      "Path": "scripts/run_playtest_011.ps1",
+      "Sha256": "1b74bc134915698fcb94ee6a945f56e7c3f8c53b96c159d58f7f003ebf81f4a7"
+    },
+    {
+      "Path": "scripts/serve-web.mjs",
+      "Sha256": "67c893c2e48ea5c89da2d2b695f03ae68680bd5af606765c7963d71486b2245a"
+    },
+    {
+      "Path": "scripts/smoke-integration-014a.py",
+      "Sha256": "40b62749bb3223a77c84fae65dc67966ceb38662bb45720b2fadd181aa74e313"
+    },
+    {
+      "Path": "scripts/smoke-playable-worlds-013c.py",
+      "Sha256": "dcecbace301a78e3983f8e99c5b9beb056f1b652932ad75006ce3c5607bd10c0"
+    },
+    {
+      "Path": "scripts/start-android-qa-emulator.ps1",
+      "Sha256": "8fb7608b537b8705a61d8b61ffe21dd18ce765885e18e3569eba68174d2c8540"
+    },
+    {
+      "Path": "scripts/stop-integration-014a.ps1",
+      "Sha256": "adb0e92845e1d93afdcb8652470b9ae1fcb88dd8ae1a429e75a67ebaa8e0bf38"
+    },
+    {
+      "Path": "scripts/stop-playable-worlds-013c.ps1",
+      "Sha256": "bd9ab33a4abfb6451b3e2c16608a7b20a13c79e5691a655cf662fecfa40f724d"
+    },
+    {
+      "Path": "scripts/test-integration-014a.ps1",
+      "Sha256": "211058af807847ff443e77f39194d708cca119d8e8ee2561109e7285f40e537a"
+    },
+    {
+      "Path": "scripts/test-playable-worlds-013c.ps1",
+      "Sha256": "730475473445ba216845b83f22e91d4da58a5c7338df768ac56767106b3b5d39"
+    },
+    {
+      "Path": "scripts/test-real-data-013b.ps1",
+      "Sha256": "8625bacebd7235f11b31fbca6dcfb86768dd62674c5272cf4d1c16271b1c5a70"
+    },
+    {
+      "Path": "scripts/test-world-creator-013a.ps1",
+      "Sha256": "d771f1040c9425bb9f9f10512fbea48e772a66c00e2318fbffd9c9cda4ab4b00"
+    },
+    {
+      "Path": "scripts/verify-coverage-013b.ps1",
+      "Sha256": "bbca402576ad6755bb1cb714da651e820697a09c31f05ef754c5bdf31c737450"
+    },
+    {
+      "Path": "scripts/verify-player-rankings-009.mjs",
+      "Sha256": "b3653bb120076f3da35421854bdd5755c8a23346cddff561e6da6084efa00aff"
+    },
+    {
+      "Path": "scripts/verify-restart-integration-014a.ps1",
+      "Sha256": "6f8ce991156302db5007f7ae04d154d274cbdcfbafe53cba2fad227b4735493e"
+    },
+    {
+      "Path": "scripts/verify-restart-playable-worlds-013c.ps1",
+      "Sha256": "39a9cddaa690e7c4c5280fae8c85cbc9770e26aaab6e3fcb6b5e7432be851d7e"
+    },
+    {
+      "Path": "src/Elifoot.Api/Elifoot.Api.csproj",
+      "Sha256": "44b84d04ed1761188398a56b966afb5a90e3a6af35317a892dd87d4e16cac5fb"
+    },
+    {
+      "Path": "src/Elifoot.Api/Hubs/GameRoomHub.cs",
+      "Sha256": "10935a53d212dda0f8c44fb27679771c6f6d50055abbadeaaf7ad128865dbb78"
+    },
+    {
+      "Path": "src/Elifoot.Api/PlayerRankingsEndpoints.cs",
+      "Sha256": "19177f7b27352588b77fe5f26933f94bbccbabf2377b1fc78e78a5abd52b0935"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Sha256": "1d657cfe24acba53d6ad6ccdcdfcfa1545bd67630f7ca8a83c37cd4f16cc485d"
+    },
+    {
+      "Path": "src/Elifoot.Api/RealDataProviders013B.cs",
+      "Sha256": "9d62bc056a6d848852c26dc9c7a58fde300884cbe9943c65a64fab00bf5092e1"
+    },
+    {
+      "Path": "src/Elifoot.Api/Services/RoomClockBackgroundService.cs",
+      "Sha256": "76cb1a5d9deb04ee27e86a53a4745cd46922ad6e43496ce8e26ee083333caf36"
+    },
+    {
+      "Path": "src/Elifoot.Api/WorldCreatorEndpoints.cs",
+      "Sha256": "613c6a595cdcdc02caa6333123d913625ef19bcbd5d6d20a0f2ee8f07677cd7d"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "Sha256": "99b49af7aae77a3ae2126c3752b621df1830d1f93f663277a08389917e0bc597"
+    },
+    {
+      "Path": "src/Elifoot.Application/Elifoot.Application.csproj",
+      "Sha256": "a03fbe8cee5945af6c726ac6afc83ddb80dd89a252195fda9e5e3d6c5c3fab82"
+    },
+    {
+      "Path": "src/Elifoot.Application/FinancialCommandsApplicationService.cs",
+      "Sha256": "11e4f28dc4633a7060d68a7f73370c719100d39af5bd4c89f2bac94fbfa9cab6"
+    },
+    {
+      "Path": "src/Elifoot.Application/Interfaces.cs",
+      "Sha256": "e54faab273b467a45abfc8e65c9d2d5295381a58bff4031bea23815c676d4ef9"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "Sha256": "891b560a85ccde7addb9f7180ae9416a6ba8ed5b816d566764e3fefc1a2c38e9"
+    },
+    {
+      "Path": "src/Elifoot.Application/PlayerRankingsApplicationService.cs",
+      "Sha256": "09a8339a2a575dc16a3311389128bf279aa32db20a90d2abb6020912615b1de1"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/PlayableWorldDtos.cs",
+      "Sha256": "8a2b809acc3d334722b3a70d61db4d37280bcf3790fba09c8a00aac3eb7488f2"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/RealDataDtos.cs",
+      "Sha256": "c83cd92e2e0ab7ca6e27ecbe82885cf6340bbf0dbe65791a19456696eaea019d"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/WorldCreatorDtos.cs",
+      "Sha256": "3453c0ae92efc00534c03665e429bc698a1f05e97fb2e3f557c8b886d436024a"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "Sha256": "308b2b9e3f2055056474a4320a825b81c1f7fcf16f1bb734b08cf5b7d4d9e08a"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/EconomyDtos.cs",
+      "Sha256": "9e316c5aaf6b27d01b202d9cc93e171930ab85848d87b13dca819d484beadb9a"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Elifoot.Contracts.csproj",
+      "Sha256": "9a7c4743b53ee2158584f52be9e95e0ba94dd797ec0fb78fc48a41dc147236f6"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "Sha256": "ae4dfc5ef801ba8039b5942f9de709b099d426daa35f7575736a80a8dcab053c"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerDisciplineDtos.cs",
+      "Sha256": "692d0f267e835c102659c7ac81b5c377f717334d36695b975270f336d6801f8b"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Sha256": "bacbbc2ce35765f5a9f9e6ecc6bee063477b4e51451ea5b1b20b5105c3cc291e"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerStrengthDtos.cs",
+      "Sha256": "c32de83e952e159d59e36d336a16252940fd464931ceb4ae89c1557f3c4e4310"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "baceab5255f9e2f02b9ef27cee885164ceca5214941689f6b09d7774c769a6f9"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiMarketMetrics.cs",
+      "Sha256": "26d75f2c4ed8092ce707af6c33ed0aa463410d7ca6a6430943d98a84293d91b3"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/CatalogMembershipPolicy.cs",
+      "Sha256": "e29ae0a767c80c140776f6cb0b3a9d3ac1d2450e10a99cedf19912b9f9d45b49"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/DerivedClubRanking.cs",
+      "Sha256": "3f3990444d3999d73bf332b1accc05305eb4086aec2fa6416981ff8f91e61e43"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs",
+      "Sha256": "a4280144da34a0dcbb0592771cec87e651c23cc9419ad51643ab9184610ccb36"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/InitialRosterPolicy.cs",
+      "Sha256": "5ebf9191dbfddfbf8788809d330915e25756e82358cc94c5445b21ae7d3b0086"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs",
+      "Sha256": "88b6d9d2e693200f26b542c47a27f3ddb76f0dd3bc087b2c0a5efcabf96ebb2e"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/PlayerProvenance.cs",
+      "Sha256": "490456ca496a3b964960b61bf6a11f379f5bbe607e17356ca904c33648bd2869"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs",
+      "Sha256": "957573d0fe696bfffdd03c9d38037f89d2788f9bb8d9162c2c6a33eeba70ab2e"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/WorldOrigin.cs",
+      "Sha256": "aa8a0fa286d07e123c16cd75b3bc954b22e4f711363159fb3b2b019b1a52ff0b"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyEngine.cs",
+      "Sha256": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyState.cs",
+      "Sha256": "74a66d609659738c2cdc02bd1500803fc1d4ba3cddbcca7a5d51913e5f40e3a8"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+      "Sha256": "039f535f3b1d85b6a8291df96debb1b9bd10bb03065ba9e250445d6a23bd4779"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceState.cs",
+      "Sha256": "ca84df6b47e1b9b0d2e3ff2fa2fa3fce260af4501501519dae223f6674377466"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+      "Sha256": "c0fbde8070400067e96ebf2a071462136911b94b23ca2b17d304087f564872db"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "5974b493ee8363ae830826657c82a9b2fd0dcffd671675251b1fea9336623d44"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DeterministicRng.cs",
+      "Sha256": "b9c988cbc4eebf1d1ac8ee873bd238b8008928a70ab38a86ad0313e547e4254a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DisciplineEngine.cs",
+      "Sha256": "e5cbeb47fd228a15934b06153891360a4835944da054f61a34fd2ecd0eb75e5a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Elifoot.Domain.csproj",
+      "Sha256": "cb6eacd2ad334ad3eb339ab7ae0e4dace4ed8454e56e9ebb9b8654eb50602c67"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "f1c6dc0f71fe5489e6404dbb6d39104899dbf8c1612c0dbbc060b84f6cbd151d"
+    },
+    {
+      "Path": "src/Elifoot.Domain/FinancialInsolvencyEngine.cs",
+      "Sha256": "a85ae550516ffe893f3a1e13a8dc24e914701c1cc0224b6ac20562068c861713"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "Sha256": "b35aaf8c26aca95fd8f5699f8d67b5dd642f80479ecc21402532f3feebc35c82"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842"
+    },
+    {
+      "Path": "src/Elifoot.Domain/OperatingEconomyEngine.cs",
+      "Sha256": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "159334d80ec1e55d78f5026ae5ba9ed4ff4fb2cac72b46e38a8a76cae9656f04"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEntities.cs",
+      "Sha256": "1ece5e063f9fd41c7b4128e574512d3e1e937a8ff7d5d84ea02b83acaec6d8ed"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+      "Sha256": "d6cd82bead9e05aa2caf2dca01b9ae3bfcc8fe5478463b3b232a96182c35ed2a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/SalaryContractsEngine.cs",
+      "Sha256": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "976049917f83396cb9c33a88385c4ef87054a882dcd11a59049a3de136634d43"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldEditorAndPackageService.cs",
+      "Sha256": "4729f37da7e086a00c5ca49d2762161edb49134e62c1713763f25e4a800ce6e4"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Sha256": "f3a232b15c48905baa78d626f252379c666cf7d1db0d12dafebe7a4d08815af4"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogDbContext.cs",
+      "Sha256": "8b73562db41eee23d58e0c8b7858c014f17af045f4843b552223b3ca8e932f8c"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogFixtureFactory.cs",
+      "Sha256": "687ac14ec4f564880bdfdef4d68663bff3a7a8a488dd7a46fd111fa62bca2fa8"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogIdentityService.cs",
+      "Sha256": "66f12650b2bb9a95420108c057e467ad337bf0130b59ca6a1b490f587fc4b7f1"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogImportCodec.cs",
+      "Sha256": "44d63da9b91db1dccbe716619ac20467ed0107a61c85c3ce9fe326a02a574bc6"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogRightsPolicy.cs",
+      "Sha256": "c3568b1e41ae58450b1c94c7ebe0a9d587bca164d78bb66176e43a5d3de2e60e"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogSyncService.cs",
+      "Sha256": "283b4784c72369b3a04e7748f1a636ab0e4aa822f69a17b128448e4f4b7e6b0c"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/NativeFootballCatalogSource.cs",
+      "Sha256": "7adc5759b9f1e2edf08fb34ff73c45b44393670de027691d0a93e52103b9c9f3"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/NativeProviderFactory.cs",
+      "Sha256": "7f12eee59741eed9281e08275792ba260011720d25a62d01fbee97438c3f7e40"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/OpenFootballResultParser.cs",
+      "Sha256": "a5e9336df59a638e6c55307fa281aa77131beaa3e2ca8125e4b3fad9c0df5668"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/ProviderHttp.cs",
+      "Sha256": "22242938da3280a27c8950728ff281ef15f9e5aff2310bafb354eae358f6c1d5"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/Providers/WikidataCatalogSource.cs",
+      "Sha256": "2f3922e04e0d9685451afe4185ec9d2037c231c8113a008829886017e21b1ae9"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/WorldCreatorService.cs",
+      "Sha256": "0a1e9d00836a331c6054f0ecc50a7c2039f79344dc1322292645a52f26e44640"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "b25cd6d416d992573b3902047495d233fae6f3142a937751f7599f16fd3d57e3"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Elifoot.Infrastructure.csproj",
+      "Sha256": "cd88bfe0ac5c8e36822ac43d2757a85ddb106979913d496069597cb3d5392787"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/ElifootDbContext.cs",
+      "Sha256": "7859760e456dd8db35341a0a53c867db706c4673d75b22e228310e70eecc3924"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs",
+      "Sha256": "cbac0cba4b776326ab27d973e31024c5e1c2ea47604ce3708a2f97a7b88f4f5d"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/Elifoot.Application.Tests.csproj",
+      "Sha256": "db95949e2c4282f79655311cec5da95179869a9c8cef2582f28962de3c2f13c2"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/FinancialCommandDurability012DTests.cs",
+      "Sha256": "a4e77ec8fd9452259603439c4aba1243054130d21ba520fe9131514cd69c6645"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/MultiplayerSynchronizationAndPauseTests.cs",
+      "Sha256": "4457f874e5af7b7cc5650cb145c5ab699c33125bdd95440b0c284e3e358821a7"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicEconomy012DTests.cs",
+      "Sha256": "ec330d4ec8fb77b918dc266772719c7c82c41b1aae9c5c51a35e803f2daa3384"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs",
+      "Sha256": "0db24b71eb1e4bb0ef6a3222256f3f785daa4e05a27412c293a25205effdafd0"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs",
+      "Sha256": "a1c4e7ca33194332ee1567af89c955e26b9ce423beea1fbc789265625453141f"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Coverage013BDomainTests.cs",
+      "Sha256": "ae212151b4c8bbfc8d34dd8d59c88d51c6d5c0326b3d6e0e8724386ffdc7741c"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Discipline012CTests.cs",
+      "Sha256": "34ac703583ace65a608146e3079d79ddd0255a683f5f0349f848fc11dc79126a"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/DomainEngineAndRulesTests.cs",
+      "Sha256": "0bdde8e9c201811d55cba4ea66886d19d0d49705d1bd6cfd8bb72749ae6c4a80"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Elifoot.Domain.Tests.csproj",
+      "Sha256": "14cd9e64185912f6527715e5f0263846939531796f145059c8b427c596c78c21"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/MetricAiAudit007Tests.cs",
+      "Sha256": "9cfdfda59de27a17afa1beeb3da1fa34e16b32d03f4d5684cbb70c2a6cffd471"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/OperatingEconomy012DFixTests.cs",
+      "Sha256": "c402d609378bc32ed31b5ef6d163db76488388dae5be8a99cfd1717370ec3d58"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableEconomyRegressionTests.cs",
+      "Sha256": "836e78ae460bcb88b752212f5ce398acbe34ec213b715ed5c4bbe995e78c7e28"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableWorld013CTests.cs",
+      "Sha256": "4ff6432a3d7054d1fcfedf32a1281858f47b61a0534dffb8396720c168cfacd3"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012BPublicModelTests.cs",
+      "Sha256": "a34e0d687f048792b7a298bee149920b0e56345647795d51a66f3ff4c355d3f2"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012Tests.cs",
+      "Sha256": "586f37fb566c751c31804cf200dd89ba7da37f9a1c726df942a3269b4ae7745e"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerRankings009Tests.cs",
+      "Sha256": "8e86beabf0ae21cc20fefe23d897ed322db42694843e16feddad6103fbb1ae57"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/RealData013BDomainTests.cs",
+      "Sha256": "bd2df7960d9c7a770c0d52d94fd4a83600e8521fb03aa6727cb87c706e8727f3"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ApiAndSignalREndToEndTests.cs",
+      "Sha256": "f7ee02eea888602f3d19f2edc0befc648ab71c429f0a5432b32adda9820147c2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicEconomy012DIntegrationTests.cs",
+      "Sha256": "11eb4378b3bc4b9650af3eb7fefb73f92a5916fde8cdf0361279a7569059ed26"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicForce012CIntegrationTests.cs",
+      "Sha256": "95b6b6538223754dcaf494770364099be3ee0fbfcd64c925ddf68eb2cad1a54d"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+      "Sha256": "fe217b95de1bd9aeafff621c328e22a86347428a881ece8d3c5b314081789fc9"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Discipline012CIntegrationTests.cs",
+      "Sha256": "0a3f9c788b6439f66e28570d54d55e76ef045e9781a1ee837f00fe685c569cf2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Elifoot.Integration.Tests.csproj",
+      "Sha256": "9f7f3fbd998380b1a05a78c9d59c760af88a07e806a8dfe133b1ad6cbe5bf576"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/FinancialPersistence007Tests.cs",
+      "Sha256": "696ebf06e16d39b9d2dc970cf9514326eaf09da72c40b9de820e8779a2ffa9d7"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Integration014ATests.cs",
+      "Sha256": "f2c21c1f7bd3fbcbe1b44367a7ae60ef415e8f35bd787d6aeb662492ebdd56c1"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/OpenFootball013BTests.cs",
+      "Sha256": "89b7f6ee210890ba91420fb39e7d90244195afe2530405fa3470fe32b4d43cf2"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/OperatingEconomy012DFixIntegrationTests.cs",
+      "Sha256": "13c187fec30918f8ea0e16981da326939fc8735f1ba262d5e31969f4f3323c1b"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayableQaRegressionTests.cs",
+      "Sha256": "88f420e061f994ae2adeef4947b814a613b6001f38ee9d49924f51459ce85b12"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayableWorld013CIntegrationTests.cs",
+      "Sha256": "c146c1a932bcbd5f163e64925be3ebc389dcbd50a4b4f345071716096d76cf7d"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerForce012IntegrationTests.cs",
+      "Sha256": "5eef9ab4a39e41337a112c0f4139245b1526c2b6a2464bb4b3830b4df0ce10ef"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerRankings009IntegrationTests.cs",
+      "Sha256": "922b6e144b4d2e199e1650b3d46bfa6546551c57e47dfe0df04b4d0866d4738d"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/RealData013BTests.cs",
+      "Sha256": "9b8cb052dee46871f5554793f6862a38eb2dc2cb50e8cf9af7c29d5e19519929"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/WorldCreator013ATests.cs",
+      "Sha256": "a611937b9867dcb5037c6daf4dea13191e0e8cb06565a5f37d4979075e8076bf"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicEconomy012DSimulationTests.cs",
+      "Sha256": "0358e6f24f77b641d028b1d1a970f9a9328f3de5fbed645b4a20ff741999a79b"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CInjuryTriggerTests.cs",
+      "Sha256": "babe86e9ddacffe18951e056cf044e5d940a8610e0234337b852c98642df3b36"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+      "Sha256": "5f6ee69b26a27148776dd543beb2d7086dda9be892c6ccc78f83c5794fa66d31"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs",
+      "Sha256": "f6a42fc6dec1b5c85ba2c6c6dbc56c1942ff41ea18cd3dcfa8b47892c018fa5b"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Discipline012CSimulationTests.cs",
+      "Sha256": "7020caac249bcfff72a156c9b3bafa8cde728d2261e96474e4b13be491ae938c"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/EconomyBalance012DFixSimulationTests.cs",
+      "Sha256": "ade970f31846882ccaf939443dc430cf93225ec1cf7a5537e9d35155e240b264"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj",
+      "Sha256": "e68eae624ac10e23682af3211d46a3f29e4c53bc03a6d6224d153ee0dc80be7e"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MetricAudit007Capture.cs",
+      "Sha256": "c772e959332daf500e80760138e415f533ebc48a1ea7eb81b230c72668c91da3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "Sha256": "61ddb2909014b014100283d7ef7694aa5e913cd8209f65528b5b90521e01ac56"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012BResearchTests.cs",
+      "Sha256": "89a2ab47e7c41ca4255ab4bd740b3eee4d32fec2e8ca6dded4d8272d86959ed3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012ControlledTests.cs",
+      "Sha256": "7bf7e35e0a8ba05f6547625e98b31bde634f607787d1d96f51a7df75e84feae8"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012SimulationTests.cs",
+      "Sha256": "ce224bfd28a948b8ca73130e635e9a81be970257016aaad1cea4b83b7b4960f3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerRankings009SimulationTests.cs",
+      "Sha256": "6da046d76468de35701c170ef5c476f6d756747b07f0ab123c33cad1493a1acf"
+    },
+    {
+      "Path": "tests/Shared/Imported014AWorlds.cs",
+      "Sha256": "079515fd4e42d2554abb1c46b471526fbc2a4151ee173644252046402f0ba2f6"
+    },
+    {
+      "Path": "tools/android_reference/analysis_options.yaml",
+      "Sha256": "b63207cf529949ec4727b68c23dbb38ce255b6f6f4ae1effcb5c1dcf2852d238"
+    },
+    {
+      "Path": "tools/android_reference/lib/main.dart",
+      "Sha256": "c0f80c0dd6995a68dadbb068516c7275782a92717ebd6dbf771ee8529c399ef8"
+    },
+    {
+      "Path": "tools/android_reference/pubspec.lock",
+      "Sha256": "62588665f74b84c1ffba19ca687e867d1877b79877e324a226391dfee4a8ef2a"
+    },
+    {
+      "Path": "tools/android_reference/pubspec.yaml",
+      "Sha256": "1c7e9d3654a2d29820b195214efaa93fc87fb131fb83beaea43ff94e0597445f"
+    },
+    {
+      "Path": "tools/catalog-013b/bootstrap-coverage.mjs",
+      "Sha256": "b4416a2f28568bf3d7c07668839406efa764bda0aa853c8d56c67e52e78f9f05"
+    },
+    {
+      "Path": "tools/catalog-013b/build-coverage-bundle.mjs",
+      "Sha256": "41cc42aecf8eae2566af1aad7a10456f708a7d33ef6bcda77afae87c49c41b81"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-coverage.mjs",
+      "Sha256": "b49f6577d9bed2881961dbfe76917c3ac3d3c8a99ca4d51c898acc7cf48f7714"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-memberships.mjs",
+      "Sha256": "fae9bc85b090416c110ebecbdbcaca18e2d9da48c90da57d90237136fe0bd9c2"
+    },
+    {
+      "Path": "tools/catalog-013b/collect-player-genders.mjs",
+      "Sha256": "f7ff84a1c234455c108a697c9ddf5b5c8cca214e29fce60aae0eb27dacf316e2"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/CoverageAudit.cs",
+      "Sha256": "9e5d1f696f4089a2682a45ca5a86481240a858631aa6a44664039adfeb2e2d08"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/CoverageBundleImporter.cs",
+      "Sha256": "68e2ba175e027e0a8260f8f5deca54daee922d117f4ed04f7e397a250b0f9d5b"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Elifoot.RealDataImporter.csproj",
+      "Sha256": "e84ef782376627e0802367e1b09e0a295be0f129db3b715f4d8fbe42ff138881"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Integration014APreservation.cs",
+      "Sha256": "280a3897cbc15d444ba5f3d05647147bdebdc9334ea1a30961fec7b067aba724"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/LocalCatalogTarget.cs",
+      "Sha256": "031976ed63d3984b4c81cd0b8f5b0dd766fca685f92c656b861099fb375aa512"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Program.cs",
+      "Sha256": "d6f10e08189ae80a44ceb81610c03dac0d4c50272aee93b1022e83ddfc53b033"
+    },
+    {
+      "Path": "tools/catalog-013b/openfootball-directory.mjs",
+      "Sha256": "52cdfd87b2e5fd7367611e2ae0b1f968fdbc12f4004b1b7ce040ca36fe746f60"
+    },
+    {
+      "Path": "tools/catalog-013b/openfootball-directory.test.mjs",
+      "Sha256": "9c819762da1e84478658357f6aa434d0c839163f74f5a634f796354985396f21"
+    },
+    {
+      "Path": "tools/catalog-013b/prepare-coverage.mjs",
+      "Sha256": "36189ac5eee70cefbb576d529ae6626af0948bc2707618fab3116cfd0d4cff2b"
+    },
+    {
+      "Path": "tools/seed-generator/Elifoot.SeedGenerator.csproj",
+      "Sha256": "183aedf07f11306f6d29c0525bd79109c9f5bdc2b70726c6f4fd0c8591354d90"
+    },
+    {
+      "Path": "tools/seed-generator/Program.cs",
+      "Sha256": "eece30e5fd191ab454d7dae1d8443d575789f904524e6e5e871e8744186141c8"
+    }
+  ],
+  "SourcesDigest": "53aa0d83fb5eed0cdc9f62018f974a15f21a08121af6427f950bdc26dca4bdfd",
+  "CompactEvidence": [
+    {
+      "Path": "docs/KNOWN_ISSUES_013C.md",
+      "Bytes": 2538,
+      "Sha256": "57cec30cc8d2f6dab3ec1b2c33410865d14122b4d36d9c448c911a5c5719520b"
+    },
+    {
+      "Path": "docs/PLAYABLE_WORLDS_013C.md",
+      "Bytes": 5424,
+      "Sha256": "04e43fcf79f324e45d7d31c1faef229094938b8cd4b19e70b15c056410d35978"
+    },
+    {
+      "Path": "docs/REAL_AND_SIMULATED_ROSTERS_013C.md",
+      "Bytes": 3769,
+      "Sha256": "7ce77415b07b0f9e1ec8e989bfecb990061c914dd60c33f206b62ecd2f7e063a"
+    },
+    {
+      "Path": "docs/WORLD_CREATION_ACCEPTANCE_013C.md",
+      "Bytes": 4820,
+      "Sha256": "c723c1ab5cc7d1f2a58ec143f55ada246ec0bd57229a34807607d3a9bcd771de"
+    },
+    {
+      "Path": "docs/WORLD_DATA_MODES_013C.md",
+      "Bytes": 2415,
+      "Sha256": "9ffdc728f16005359dff8d4c29358d20d999d7d44cf60720bd8835c350bd1f6c"
+    },
+    {
+      "Path": "docs/audit-013c/actual-modes.json",
+      "Bytes": 1465,
+      "Sha256": "64d1183383f5de1aee23d48a43178c02d94759af7560dbb97bc08b0821c9d54c"
+    },
+    {
+      "Path": "docs/audit-013c/actual-restart-http.json",
+      "Bytes": 436,
+      "Sha256": "78f7c4e680a398b541325126fd7bb41f26502149d6d538a003955e3e0449cbd4"
+    },
+    {
+      "Path": "docs/audit-013c/actual-restart.log",
+      "Bytes": 540,
+      "Sha256": "041b096fcc81bc3f4774e5707eb405d41c8d0cec827a4981d62e5a3352d9a794"
+    },
+    {
+      "Path": "docs/audit-013c/actual-smoke-exit.json",
+      "Bytes": 73,
+      "Sha256": "21e93bf5eea08dea4a935e20484749dbfb5b493d7fac9192f67e4172675644cd"
+    },
+    {
+      "Path": "docs/audit-013c/actual-smoke.log",
+      "Bytes": 212,
+      "Sha256": "df9f86034dd3fcc4f2a21f26f1c7713605b6102710366ce4f392e0bdf717b18e"
+    },
+    {
+      "Path": "docs/audit-013c/actual-worlds.json",
+      "Bytes": 58458,
+      "Sha256": "e3a1ef697684dbf45625a68fbbacbb1d7f05938bebf94616d1c92bbc1018413e"
+    },
+    {
+      "Path": "docs/audit-013c/artifact-restoration.json",
+      "Bytes": 2,
+      "Sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "Path": "docs/audit-013c/boundary-domain.log",
+      "Bytes": 947,
+      "Sha256": "51004a0ed71a7ab2c6b2dab0aa8cb6faf639edb2625c08db2ec7825637b4dcd3"
+    },
+    {
+      "Path": "docs/audit-013c/boundary-exits.json",
+      "Bytes": 96,
+      "Sha256": "9ba18c6ce2dd81287f50c1c37801a5c0f0c77018302cdb30f0732de366059658"
+    },
+    {
+      "Path": "docs/audit-013c/boundary-integration.log",
+      "Bytes": 1341,
+      "Sha256": "48d0d891367fd805b0b360e3d9ef3ef820c484493e974418f2c28c5bb2c688bf"
+    },
+    {
+      "Path": "docs/audit-013c/build-initial.log",
+      "Bytes": 1562,
+      "Sha256": "31e8fc1193312f33d2bf30ba2368e8f3ac251b2032d663a12007a3560a559c30"
+    },
+    {
+      "Path": "docs/audit-013c/domain-build-initial.log",
+      "Bytes": 420,
+      "Sha256": "d4d5a349563ecc6a6b9f20e222e9c6fad2d0973071ebad7acfd3b44f1b13fb77"
+    },
+    {
+      "Path": "docs/audit-013c/domain-targeted.log",
+      "Bytes": 928,
+      "Sha256": "581d8458f9cdf774301adf1ddf62a7d62b9683d5016b16defd207a50f0ce574e"
+    },
+    {
+      "Path": "docs/audit-013c/dotnet-full-exits.json",
+      "Bytes": 89,
+      "Sha256": "ac8e98b29fcc6ee52d0378f10a06ab131d82a71b0a767176d096dbe7f92a4707"
+    },
+    {
+      "Path": "docs/audit-013c/final-build-exit.json",
+      "Bytes": 73,
+      "Sha256": "76b0c6b487215eccea1c5b025dff9e27d5a597437d7e88333dcd740cd48ef70c"
+    },
+    {
+      "Path": "docs/audit-013c/final-build.log",
+      "Bytes": 1617,
+      "Sha256": "1073429acf5cbcae8310615aefe7b3356d7fe26f692525a48d561b3718293182"
+    },
+    {
+      "Path": "docs/audit-013c/financial-reconciliation-progress.json",
+      "Bytes": 64523,
+      "Sha256": "0ec8d1aa75cc8771fec68684da4cbdca16e59265afda80fe68247b21c7683f8e"
+    },
+    {
+      "Path": "docs/audit-013c/financial-reconciliation.json",
+      "Bytes": 97198,
+      "Sha256": "197522bf9d7fa4963387c1205f763dc156287ee70525776bbd9ad24a8fda1c67"
+    },
+    {
+      "Path": "docs/audit-013c/financial-reconciliation.log",
+      "Bytes": 232,
+      "Sha256": "79ebb17d01a4b186614d3c4dfcfca56fadcd33b02cc1aec20e6b56b16bcbfa19"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-analyze-final.log",
+      "Bytes": 877,
+      "Sha256": "6d0496b6b62d3879d83c65f2146116e89121252cc7affcf57fbb910aded17c74"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-analyze-initial.log",
+      "Bytes": 1007,
+      "Sha256": "cf5c23b055585274624307bffc5e99e37ac99f02c1b74bde820e273dcf144afc"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-analyze-verified.log",
+      "Bytes": 1758,
+      "Sha256": "38a935a9056bf13922c194980e143b65346b9f19a56e3783f55917286933988b"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-build-web-final.log",
+      "Bytes": 1581,
+      "Sha256": "70dc1c1c7461808b7c2fe389bfa6b4f0ab4cccb73080f8d2163fd0dd79d2d188"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-build-web.log",
+      "Bytes": 1581,
+      "Sha256": "53b66e3b73068a481ae9412303501c142e5382398f9fca108cc354144d3a9271"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-exits.json",
+      "Bytes": 52,
+      "Sha256": "858a77404058501784ee8209411482bec2a6977c0e273829aabe087475f2ab98"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-format-final.log",
+      "Bytes": 121,
+      "Sha256": "f409e11620f189f4eebaede6feb845613e4fcc56333a51176f231f89d65c106b"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-format-tests.log",
+      "Bytes": 47,
+      "Sha256": "c751a5a119f17c4391d8b9ee94f3b4c832831c6bfa5f725139097ca4c229ee76"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-format.log",
+      "Bytes": 95,
+      "Sha256": "cff413ab7c24064d090b08165d8b591f8d7303d39ba1b31552b8faa45bc9552b"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-initial-exits.json",
+      "Bytes": 37,
+      "Sha256": "e4774535a2ffdd5743a52355331b75620068082299e5e84a82cda9bdfe0accc3"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-lint-fix.log",
+      "Bytes": 177,
+      "Sha256": "7d9652356083feff73c444701fa33b09824df74ba3c18fc7a63358c13abe3239"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-targeted.log",
+      "Bytes": 5611,
+      "Sha256": "4766073da17e7d8f98630c5553d9bb12a582db98dd54821b1e704cc637d90d86"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-test-final.log",
+      "Bytes": 14909,
+      "Sha256": "3eceb3519f3b578b7e6145bbfd90a4af6a18b0954fd567ae5427dcf88095be79"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-test-verified.log",
+      "Bytes": 14765,
+      "Sha256": "2225c05f786a9c48c2dd3045464ca23c9c8daf5d8f04469fa616eeebf90f6645"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-tests-initial.log",
+      "Bytes": 13741,
+      "Sha256": "5f962b8631aa1816dccf9f625359c1459588ea06c8d4a39a60759330d6946647"
+    },
+    {
+      "Path": "docs/audit-013c/flutter-version.log",
+      "Bytes": 310,
+      "Sha256": "12234e8b03160ad863e30cc0f6a6a940e7bf7ed1a139b50d2eb425f055f96cfa"
+    },
+    {
+      "Path": "docs/audit-013c/full-build.log",
+      "Bytes": 1617,
+      "Sha256": "2582e35d1ca4386482d8eeb6e87966cadc80b8bc369bad8424e0f1a27d777e61"
+    },
+    {
+      "Path": "docs/audit-013c/full-initial-csv-failure.log",
+      "Bytes": 4252,
+      "Sha256": "15764a316de2849804acd7ed9b1489c6d30e49ba97aaa933237098a531b7b501"
+    },
+    {
+      "Path": "docs/audit-013c/full-regression.log",
+      "Bytes": 1946,
+      "Sha256": "689c114fccc9a82bc7c38ccda2c6deef6b6ec715109a598b73653ef4fe1343f8"
+    },
+    {
+      "Path": "docs/audit-013c/import-exits.json",
+      "Bytes": 35,
+      "Sha256": "4147280312f9059340d412d3cb01f8c049d8a2c8bd490cc4133713a180b44e73"
+    },
+    {
+      "Path": "docs/audit-013c/initial-run.json",
+      "Bytes": 162,
+      "Sha256": "de5e478744b85e4aa3deff83d798eb12487f826d0d18f1cbbd89ac1b09dd59ee"
+    },
+    {
+      "Path": "docs/audit-013c/integration-acceptance.log",
+      "Bytes": 6047,
+      "Sha256": "c02b0960d1f0b2d8598db3eb6a2365adcfc21baac159260eeeb2e16c8a48f920"
+    },
+    {
+      "Path": "docs/audit-013c/integration-complete.log",
+      "Bytes": 1313,
+      "Sha256": "f1d641e015b240ec7dc905ebb57dfe3101fe02153cd8ac59f3236158d7b23deb"
+    },
+    {
+      "Path": "docs/audit-013c/integration-targeted.log",
+      "Bytes": 5600,
+      "Sha256": "25cf5a4d828cea09a951b302174c806bd7a20fccd9e9acfaa3962cc5b2c62af8"
+    },
+    {
+      "Path": "docs/audit-013c/integration-verified.log",
+      "Bytes": 5956,
+      "Sha256": "a980945ba356b60ad8e9376ed267fd393418bc5a6ffbf02e45039e6dd02e4bbc"
+    },
+    {
+      "Path": "docs/audit-013c/node-tests.log",
+      "Bytes": 254,
+      "Sha256": "aa0e400591948db3f72746d810a8fdfd1cf8a062c6796eac5924de7ffe399a8f"
+    },
+    {
+      "Path": "docs/audit-013c/normal-clock-acceptance.json",
+      "Bytes": 24068,
+      "Sha256": "bcfdefda37c116f5d67d3994b7ccee09d6997152eac3cc2cbea05ba5b3b38ec9"
+    },
+    {
+      "Path": "docs/audit-013c/normal-clock-exit.json",
+      "Bytes": 73,
+      "Sha256": "e11ad55ef7c9b36e7ac3c52868d2d7c0071e1ee9308b11d2fd6313666cdb5b34"
+    },
+    {
+      "Path": "docs/audit-013c/normal-clock-start.log",
+      "Bytes": 147,
+      "Sha256": "90e5918ee22cd128f9103fd6023364e2f3e58c6cc7fbdf7ffe7cb6029805e658"
+    },
+    {
+      "Path": "docs/audit-013c/normal-clock.log",
+      "Bytes": 178,
+      "Sha256": "b3ea831d1b0412dd394003dab05e82602d5e08ec3416aa682a8308a7dccdc010"
+    },
+    {
+      "Path": "docs/audit-013c/postgres-init.log",
+      "Bytes": 1041,
+      "Sha256": "467e4c677609dde0f0cf4cdea78ce7ae8538d2762b72258d98aaff5a9dec9e33"
+    },
+    {
+      "Path": "docs/audit-013c/postgres-ready.log",
+      "Bytes": 99,
+      "Sha256": "7589fcbb720b2aaebe152364b6d0ce0fde434be48e90a43442ae630b3ed8c192"
+    },
+    {
+      "Path": "docs/audit-013c/real-bundle.json",
+      "Bytes": 384,
+      "Sha256": "0bdc3043d49e658574fc31d7ce2ace37b38ffdab0a0c3eb155d5e7177be5b29b"
+    },
+    {
+      "Path": "docs/audit-013c/real-import.log",
+      "Bytes": 2703,
+      "Sha256": "472bcbdf5a8ea77bebdf1981efb342d995e52de64ba6583b9f3af121e75e8470"
+    },
+    {
+      "Path": "docs/audit-013c/reconciliation-exit.json",
+      "Bytes": 73,
+      "Sha256": "73b8c8ca615cc96fa1b783e7134679fea3dd62b0df4e137b7263310283e9f7db"
+    },
+    {
+      "Path": "docs/audit-013c/reconciliation-progress.log",
+      "Bytes": 181,
+      "Sha256": "fd73369dafba4271482f36b5d646433f6daa055655b55806d9013eae4668cf5c"
+    },
+    {
+      "Path": "docs/audit-013c/report.log",
+      "Bytes": 77,
+      "Sha256": "24a42e27f8fd4987837e3d3d22aa7ef8ae0c0b23316351dc58422dc24c91003e"
+    },
+    {
+      "Path": "docs/audit-013c/restart-verification.json",
+      "Bytes": 272,
+      "Sha256": "c6a31edfa2a8390af0b6434aa4e7d9906b9ff78f218b4c8d44f0dd5ae0b1b127"
+    },
+    {
+      "Path": "docs/audit-013c/services-stop.json",
+      "Bytes": 218,
+      "Sha256": "ca6a89e777b4b1ef78cdbf8ac3f6c2f047b2870b28b35299189b109149c834ba"
+    },
+    {
+      "Path": "docs/audit-013c/services-stop.log",
+      "Bytes": 93,
+      "Sha256": "45bfbfe30583f1084078d1a07078968fc35ec051f85ac37a152a4e968c1456d8"
+    },
+    {
+      "Path": "docs/audit-013c/snapshots-after-restart.json",
+      "Bytes": 9788,
+      "Sha256": "aad42d0f2a88c35de7b61ae921592750340929ea0464319c9b2492df926b6276"
+    },
+    {
+      "Path": "docs/audit-013c/snapshots-before-restart.json",
+      "Bytes": 9788,
+      "Sha256": "aad42d0f2a88c35de7b61ae921592750340929ea0464319c9b2492df926b6276"
+    },
+    {
+      "Path": "docs/audit-013c/source-state.json",
+      "Bytes": 127686,
+      "Sha256": "c4f393c23c74dae42ad7d5dfd20e1bf17116102a96b531ac2c20c69537e31931"
+    },
+    {
+      "Path": "docs/audit-013c/tests/boundary-013c_net10.0_20261031070118.trx",
+      "Bytes": 564563,
+      "Sha256": "085f6fb5d4fcb246d52f26c784d515e7de992ced65677eaff383eaccf864a00f"
+    },
+    {
+      "Path": "docs/audit-013c/tests/boundary-013c_net10.0_20261031070316.trx",
+      "Bytes": 6245,
+      "Sha256": "99cabfd2b7b9210eb5317235d6f52c994f09199fa1109495e193213bb90280a4"
+    },
+    {
+      "Path": "docs/audit-013c/tests/final-013c_net10.0_20261031063410.trx",
+      "Bytes": 10958,
+      "Sha256": "90bc4e998594bf1072e5193d4b28baee13593f6bb6762198e0b14d2a88565e0c"
+    },
+    {
+      "Path": "docs/audit-013c/tests/final-013c_net10.0_20261031063426.trx",
+      "Bytes": 563124,
+      "Sha256": "f285bddc842f3a39fe5b106562450d75d3c3a9aa8b7497402ca3a37637e49028"
+    },
+    {
+      "Path": "docs/audit-013c/tests/final-013c_net10.0_20261031064056.trx",
+      "Bytes": 215839,
+      "Sha256": "d8ec949f37637acb32fd2fcf818973833e17c1a1b4b4f88c2ac268e6fc11c810"
+    },
+    {
+      "Path": "docs/audit-013c/tests/final-013c_net10.0_20261031070012.trx",
+      "Bytes": 36784,
+      "Sha256": "2c6cb22e3e8b7ecd4c16bcbd7fd95c655829b0a16d4fb13d6f4fe2ab93772ac5"
+    },
+    {
+      "Path": "docs/audit-013c/verification.json",
+      "Bytes": 89353,
+      "Sha256": "e0a9edc0d0fa0a773d387a72a67943ac5460f7e9420373cf8d8d8dfa0ebeca6d"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Bytes": 1248773,
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/summary.json",
+      "Bytes": 849,
+      "Sha256": "dc2ff15fea21c03318eeb87a5824da9b26b68340341e7f8ba4576f5268a78112"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/summary.json",
+      "Bytes": 924,
+      "Sha256": "6277b6b3292f0cb9a9db080db4e5622afca94a3cba3a522ac68be033e29f8469"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/summary.json",
+      "Bytes": 922,
+      "Sha256": "b0965a3ff30e77b6720ea85d977397cc9f077a7dcdc421d81dcff7090319a534"
+    }
+  ],
+  "RawSimulationArtifacts": [
+    {
+      "Path": "docs/audit-013c/verified-final/adaptability-controlled.json",
+      "Bytes": 34635,
+      "Sha256": "42a2295c2500e1afced23445eae4ded167f9a5895af2c5c45f7f2c5c73cc3325"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/AI_PERSONALITY_ANALYSIS_006.json",
+      "Bytes": 32575,
+      "Sha256": "3fc09d74920bb24dbbeb4d76fb247dc7ae7cea567b26d6edb43243cd26847a07"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/api-performance-1024.json",
+      "Bytes": 238,
+      "Sha256": "67eb2acc9f999298450804c1b7157e7c26530783fe3e2a3fb454a4683013387b"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/api-performance-128.json",
+      "Bytes": 233,
+      "Sha256": "2475d433e0d27a2187b84d276de9e6d9dfeb065b806758b67a951b8cdf7e2d45"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/clubs.json.gz",
+      "Bytes": 1617887,
+      "Sha256": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/initial-clubs.json",
+      "Bytes": 16688,
+      "Sha256": "6d674170bfa8e12c9684c5cb51e4610c2ce307e819753f140aa146716fac074d"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Bytes": 74528957,
+      "Sha256": "e38833262b492e2ccc625e16f672a7d18b250aee9a7c24a2fc8256fb6ddb0fa8"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/progress.json",
+      "Bytes": 86,
+      "Sha256": "8a9646265e2014564c8c7c105ef6761acd8e1b7b9333632e23351e01317e6c13"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Bytes": 1248773,
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/balance-012d-fix/final-199801/summary.json",
+      "Bytes": 849,
+      "Sha256": "dc2ff15fea21c03318eeb87a5824da9b26b68340341e7f8ba4576f5268a78112"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/behavior-controlled.json",
+      "Bytes": 1649,
+      "Sha256": "83ea1007ce92276a971eda007451b9fd89d34005cde7206e2b3d4488d5b2f74b"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/BENCHMARK_REPORT.json",
+      "Bytes": 1158,
+      "Sha256": "f205302c992cfcb9ae6d326f800843b9843501caa81db026598453349c2e6131"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/browser-fixture.json",
+      "Bytes": 9135,
+      "Sha256": "3b80138a54d75a66d55dfaea284e7222810f2213b20601b562fce6880f827d44"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/capture-007/actions.jsonl.gz",
+      "Bytes": 20136487,
+      "Sha256": "11bba9fc857afb383d94e47d06be5a5f975279bdfdb5ce2896387361894cc656"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/capture-007/club-rounds.jsonl.gz",
+      "Bytes": 35328978,
+      "Sha256": "28626abe0972e11dda0e55d373e0056a9258193c380c816e37929b9fc884072f"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/capture-007/ledger.jsonl.gz",
+      "Bytes": 78090336,
+      "Sha256": "656fc48da34b2e06578237e04dc943a9e16eb1d982b85fcf0d38a180933a257c"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/capture-007/population.json",
+      "Bytes": 1103829,
+      "Sha256": "c8a4ab6492c783094e6a9dc42b5f168bf2afceb6c38b037e5fcaea70818a09d8"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/capture-007/summary.json",
+      "Bytes": 3940172,
+      "Sha256": "d8d199fee30b132c352445f28ac07ad666f91d26377d9199c35c686350de6ed0"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/100-seasons.json",
+      "Bytes": 8142469,
+      "Sha256": "2be33678a291b4491ac66833235354f067fe5cdf752ceddbf3587abfac1e4be9"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/discipline-cards.jsonl.gz",
+      "Bytes": 7141964,
+      "Sha256": "8b7c211ffd2b851feceebf750754b89929c188108656a2f9784a961f70e49637"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Bytes": 4746399,
+      "Sha256": "7580efe697ea5e3c1ae6a1303bd9ea8e07c5f6b95ad0029cd0c5f040987e9210"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/force-events.jsonl.gz",
+      "Bytes": 23391095,
+      "Sha256": "12418453920ba3b5f00c4841deb7867f5f825a7d7d9b89161cd41118842cc07d"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/force-one-probes.jsonl",
+      "Bytes": 4468045,
+      "Sha256": "1cd7dc869f38e0389857d6d83a668a6d7d361b9fb793a3b3aa5c12a5ac70ecc9"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/injuries.jsonl.gz",
+      "Bytes": 1569590,
+      "Sha256": "0654ce4da63cb7bfee7a9dafaabfb6c604b529607c4b31e1f61d3b01c868d7d2"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/replay.json",
+      "Bytes": 195,
+      "Sha256": "2df50b2dc1d0d0b75e93fdd3e978640a8e9bd8eff5d61718e839d562219ce0c7"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/classic-force-012c/weighted-duration-sample.json",
+      "Bytes": 302,
+      "Sha256": "3887f4dd7082390939cce6493bdcd0ab3783e91e67704849a67faed945aeeb81"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/COACH_CAREER_50_SEASONS_008.json",
+      "Bytes": 21672314,
+      "Sha256": "a1712e2db91376e25d8055b917b63d167eb2eb9deefade5906cfc5f992f74b5c"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/direct-red-100000.json",
+      "Bytes": 233,
+      "Sha256": "8f3beecd2c03edb26c2eb22f47a73e18e27e705bf8c5a036cdfa5515775c18cf"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/DISCIPLINE_STATISTICS_006.json",
+      "Bytes": 8340,
+      "Sha256": "b5b658e14389b0221edab8c0503322e0fa4461b34407856858706eb7ab579ea3"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/100-seasons.json",
+      "Bytes": 582924,
+      "Sha256": "754dad37b74ef526b5a04653d1eb2227d82b4962991c40e20d7a39c3aa90dddf"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/bank.jsonl.gz",
+      "Bytes": 16547,
+      "Sha256": "f8b59ba90d2970edbdc13cb04ff040b7facda4f226f0cbcc3893f8d0697de908"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/contracts-and-crises.jsonl.gz",
+      "Bytes": 5848197,
+      "Sha256": "baa5082aad98991a670d2cb3c394c4cf35c9b828e00e8898e1ed1cbe01c728cf"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/ledger.jsonl.gz",
+      "Bytes": 74524413,
+      "Sha256": "65b15a13a52bb955112377f0ed409dde4e5a06873c0bbaeaf422ea70ce03c540"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/progress.json",
+      "Bytes": 77,
+      "Sha256": "8898e2d788e3d7ac3a4500a2294a843eef96fb45662ad6cb10c0c799f3e13db1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/economy-012d/salary-requests-final.json",
+      "Bytes": 79990,
+      "Sha256": "d8026edbdc0e30ff386d5a444af4776a61b3ff3a8281e6bd47c6326801225729"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/ECONOMY_HEALTH_006.json",
+      "Bytes": 15766,
+      "Sha256": "face0f9f9b0b4f852f0614ae83603b792a812c1cd99c23ca789207824b61ee3d"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012/candidate-100-seasons.json",
+      "Bytes": 1329407,
+      "Sha256": "49ecdc7dcb2c52534bf8e080c97033ea8d4d5ae1988ea4f975a6fb7568daefe6"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012/force-one-rounds.jsonl",
+      "Bytes": 4875648,
+      "Sha256": "fc99553474d1801fbc4f847eb16bc43e61ef234da5ba4b083bde82f00a763fc6"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012/force-one-summary.json",
+      "Bytes": 9141,
+      "Sha256": "1a7f9710a91344ebaa9f8f8bead7b5499c3b7ddf91abd49477409756397692e0"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injuries-division-1.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injuries-division-2.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injuries-division-3.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injuries-division-4.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injury-probe-events.jsonl",
+      "Bytes": 13772,
+      "Sha256": "9892083e84b6a2143e1128859ecb0ee15303660c3f3dc01aa46fa1d84a1d904c"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/injury-probe-summary.json",
+      "Bytes": 37139,
+      "Sha256": "31f8abd525227057f90601d33b762cbb3244efc97471739fc7eb3d9be3caa5b1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/published-model-counterexamples.json",
+      "Bytes": 48680,
+      "Sha256": "f927d1ba1fd08679c42e93bcd34dc43384911679bd8346bce1c5812a824f4252"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/rounds-division-1.jsonl",
+      "Bytes": 5265300,
+      "Sha256": "0db66bb6959bea31cb06ec4c45ca8c96297e19b9d289bbdaae958942f8e2922b"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/rounds-division-2.jsonl",
+      "Bytes": 5257257,
+      "Sha256": "ccc396f9c4c0a1e2cc934dd1329a21734731711fe0d0174cd369d038bf18ff93"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/rounds-division-3.jsonl",
+      "Bytes": 5265030,
+      "Sha256": "e8c1e85f51ae2b58504780a0396f9e06674536a56965121722e6490fa63bd4cf"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/rounds-division-4.jsonl",
+      "Bytes": 5250180,
+      "Sha256": "edbdffd5ade7303582ba22ab5e09f3d14143aee999b717c8e57f1e23ef76d9c0"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/summary-division-1.json",
+      "Bytes": 83613,
+      "Sha256": "430a9875358127dbcbd5815daa2e24e62c427f83358a8ce7aa68ac8028bbc872"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/summary-division-2.json",
+      "Bytes": 83433,
+      "Sha256": "1756292f6454c799dea18d98ab3a3ee88d560b8a3d86315b52fe08e276d269ca"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/summary-division-3.json",
+      "Bytes": 83613,
+      "Sha256": "e6106cda0e1b2b41e002c56e81f53b76691ef3a1e4fee7fdbe6415f34ec26834"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/force-012b/summary-division-4.json",
+      "Bytes": 83253,
+      "Sha256": "74c6a486baef0b51c4937e6f0a47b992d928c0f3dc1c9ad7da7d1386207cbb0e"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/clubs.json.gz",
+      "Bytes": 1607562,
+      "Sha256": "982bcf9bead8f1df7bcea9f4f774ee6205c5c51197a24ff2f1e4ae9d39d4efba"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/initial-clubs.json",
+      "Bytes": 16969,
+      "Sha256": "c9847f3eb2e2aa8da087bec7e088ba2a332e8ea4bee0075b89160dca3ad46514"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/ledger.jsonl.gz",
+      "Bytes": 73840547,
+      "Sha256": "1f5f01d5cc282c376cd95a0054aa340b5f34cd60b349c0547e4c36d39706c095"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/progress.json",
+      "Bytes": 85,
+      "Sha256": "ed93459299459caa45fb3abaa1e045316872b08a7448f9b7b8272948c8d636ac"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Female/summary.json",
+      "Bytes": 924,
+      "Sha256": "6277b6b3292f0cb9a9db080db4e5622afca94a3cba3a522ac68be033e29f8469"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/clubs.json.gz",
+      "Bytes": 1607157,
+      "Sha256": "ba29c302db45f6b574cae5c904b922bef1102017e87e14d856e4028446c3405a"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/initial-clubs.json",
+      "Bytes": 16969,
+      "Sha256": "7690729cb12d98ffbb62a385ac0a9c0f7428c9f62338c49f1ad1fd97105d348b"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/ledger.jsonl.gz",
+      "Bytes": 73833363,
+      "Sha256": "8717686f46d577d32821882888ef605c2983c285e96cd7741d6e5f2fedc6a6a1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/progress.json",
+      "Bytes": 85,
+      "Sha256": "ed93459299459caa45fb3abaa1e045316872b08a7448f9b7b8272948c8d636ac"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/integration-014a/Male/summary.json",
+      "Bytes": 922,
+      "Sha256": "b0965a3ff30e77b6720ea85d977397cc9f077a7dcdc421d81dcff7090319a534"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/PENALTY_ANALYSIS_006.json",
+      "Bytes": 5351,
+      "Sha256": "bd5f2ea1ff763f5f6574f29c360268229c68a33630f923ac01cc134109f3850a"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/QUERY_LOAD_1024_009.json",
+      "Bytes": 248,
+      "Sha256": "5664df9eaad696454edc371056138b7e965cece3e276ecd451b11b06f89199c9"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/QUERY_LOAD_128_009.json",
+      "Bytes": 242,
+      "Sha256": "5d85760a2e16deef4ec175bb143aa3b6290efcc92617ade6f3b1fc3eee003a30"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/real-season-world.json",
+      "Bytes": 15636786,
+      "Sha256": "d7b9782a51ca6166be9bc95815c306d2cbd03a1b374b86d6a025a8895b94c5ee"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/REAL_SEASON_009.json",
+      "Bytes": 2115183,
+      "Sha256": "cef04329e97e03952dd2aba6369c9059efd5082be04f36691ad7d7a139b63b6f"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-different-ddc4b79950d34a6194db702d4fb96082.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-different-ddc4b79950d34a6194db702d4fb96082.db-shm",
+      "Bytes": 32768,
+      "Sha256": "c53d59a34a254d8aa540a257cd13fb00918a0d87b44952e304fbf3d82ab6b47a"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-different-ddc4b79950d34a6194db702d4fb96082.db-wal",
+      "Bytes": 3168312,
+      "Sha256": "57525d0e487f27ddb1662f6877bc3894fbb59ad6ff8782137246668166f772bc"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-same-00c01fae565a4e40a7ad79420676a1b0.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-same-00c01fae565a4e40a7ad79420676a1b0.db-shm",
+      "Bytes": 32768,
+      "Sha256": "4a491cec3bb095896ae716d86e0160ab51f741a160380c9e5fc8b9bdf4e16b24"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-same-00c01fae565a4e40a7ad79420676a1b0.db-wal",
+      "Bytes": 3168312,
+      "Sha256": "4202978085b4495c4ef11bc7daf0513b88a711c00ed48b6bc15400d04899dad0"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-unattached-096acbeba8c44a3e95d38c9a8647b7c5.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-unattached-096acbeba8c44a3e95d38c9a8647b7c5.db-shm",
+      "Bytes": 32768,
+      "Sha256": "8602af50244af549fc976b0797fbc8231f24c0046daf2e8d466c08e2d327a6fa"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/awards-unattached-096acbeba8c44a3e95d38c9a8647b7c5.db-wal",
+      "Bytes": 3168312,
+      "Sha256": "0ca1a0dae81b0730ea9e71eb76bf193171927424f17a2ddee8aa02a311b8ea5a"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/filters-568627f49cc84a45a018b6afdf5af4b1.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/filters-568627f49cc84a45a018b6afdf5af4b1.db-shm",
+      "Bytes": 32768,
+      "Sha256": "4021bdb0541c80b96338b81905ea49fbbb45d9d365426d53f1908ec3cd2a33de"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/filters-568627f49cc84a45a018b6afdf5af4b1.db-wal",
+      "Bytes": 3646232,
+      "Sha256": "e223f9810f543350beadeba5be293f1e59120b1162cfde8e1ac45b822d23b177"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/history-555cdda006db41f7aa598e1cdd717b30.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/history-555cdda006db41f7aa598e1cdd717b30.db-shm",
+      "Bytes": 32768,
+      "Sha256": "042456d74df4d806867f65f5275fd28d8a6222cb3f9ca7cf363be98ea44313a8"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/history-555cdda006db41f7aa598e1cdd717b30.db-wal",
+      "Bytes": 3646232,
+      "Sha256": "61c7bdc0571d96c81370cc60a91234963d9c909c13659f67bd986242d6b0c47f"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/legacy008-copy-9c36911789e3446794130854dcee2b04.db",
+      "Bytes": 6082560,
+      "Sha256": "98b1ee17cfb780930062e4b14962a4f7e8d0e217d75e2b73813441c1985166df"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/legacy008-copy-9c36911789e3446794130854dcee2b04.db-shm",
+      "Bytes": 32768,
+      "Sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/legacy008-copy-9c36911789e3446794130854dcee2b04.db-wal",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/lock-ba4a290442ff4e4385c2b4fb7b3a2180.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/lock-ba4a290442ff4e4385c2b4fb7b3a2180.db-shm",
+      "Bytes": 32768,
+      "Sha256": "60fa710bb3d8d2c6eeefaa6963de538d0469b53a6f2d7b528ae8c96fc3044529"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/lock-ba4a290442ff4e4385c2b4fb7b3a2180.db-wal",
+      "Bytes": 3646232,
+      "Sha256": "17f80e6980dfb5928658a2b0197cf59f843b6c037bca14482366771c944a6fd6"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-1024-38bf8b168d0548848933844baa770465.db",
+      "Bytes": 31621120,
+      "Sha256": "81f8afd09b2011fbdab713b904891813f9b588e809e302c2e45d62c42b9e4ae7"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-1024-38bf8b168d0548848933844baa770465.db-shm",
+      "Bytes": 65536,
+      "Sha256": "2a919ca126e1a8a20d11b2f307032a24a111659c77e4b600312db0661e497cb2"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-1024-38bf8b168d0548848933844baa770465.db-wal",
+      "Bytes": 31822912,
+      "Sha256": "405af9dbcfb699ab0ff94c1dfdd543bec0370585ab79431010c04069174bf4d1"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-128-ac346b331e8441fa83783806b25ebeec.db",
+      "Bytes": 4472832,
+      "Sha256": "05fc80f9cb4469f27e0b69be24ece55c5b0c1dd56dd6c7780f7eddb0eb0baef6"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-128-ac346b331e8441fa83783806b25ebeec.db-shm",
+      "Bytes": 32768,
+      "Sha256": "5502dbbfa4afd34c38ef788c8d9e0a91db33c0503b4199c0eea4181923be4ddc"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/performance-128-ac346b331e8441fa83783806b25ebeec.db-wal",
+      "Bytes": 4515552,
+      "Sha256": "2f7a493afcde37990370bf5fe38f80d8b5442616b5e9ec9a09dbee62580b99e5"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/validation-59f06a6c0e07405e845d15d704c7bb8d.db",
+      "Bytes": 4096,
+      "Sha256": "52a371445ce0812ca930aea418e7d7e9d6459f1778a6e14cb56592f08f5a08af"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/validation-59f06a6c0e07405e845d15d704c7bb8d.db-shm",
+      "Bytes": 32768,
+      "Sha256": "99c0f0e519a4aa162acc0652878515318f8d6b03d5c816da050213724e60fe02"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/sqlite/validation-59f06a6c0e07405e845d15d704c7bb8d.db-wal",
+      "Bytes": 3646232,
+      "Sha256": "e3400e84e0f22ebaa6bc3718907dba1ba375214539f2bbf3d5ceba0a47d836d7"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/STADIUM_ANALYSIS_006.json",
+      "Bytes": 33931,
+      "Sha256": "e0f3c58786dcb95a4a3ae4ccd92e2cf5d39d36766e8c774151daa61338ea29e7"
+    },
+    {
+      "Path": "docs/audit-013c/verified-final/TACTICAL_MATCHUPS_006.json",
+      "Bytes": 47384,
+      "Sha256": "1bb1b36b837f94a3b3f326505b2a03d0073921b586f747c54e19968677bbde7e"
+    }
+  ],
+  "CommitFiles": [
+    "client/elifoot_flutter/lib/catalog_provenance.dart",
+    "client/elifoot_flutter/lib/main.dart",
+    "client/elifoot_flutter/lib/world_creator.dart",
+    "client/elifoot_flutter/test/playable_worlds_013c_test.dart",
+    "docs/KNOWN_ISSUES_013C.md",
+    "docs/PLAYABLE_WORLDS_013C.md",
+    "docs/REAL_AND_SIMULATED_ROSTERS_013C.md",
+    "docs/WORLD_CREATION_ACCEPTANCE_013C.md",
+    "docs/WORLD_DATA_MODES_013C.md",
+    "docs/audit-013c/actual-modes.json",
+    "docs/audit-013c/actual-restart-http.json",
+    "docs/audit-013c/actual-restart.log",
+    "docs/audit-013c/actual-smoke-exit.json",
+    "docs/audit-013c/actual-smoke.log",
+    "docs/audit-013c/actual-worlds.json",
+    "docs/audit-013c/artifact-restoration.json",
+    "docs/audit-013c/boundary-domain.log",
+    "docs/audit-013c/boundary-exits.json",
+    "docs/audit-013c/boundary-integration.log",
+    "docs/audit-013c/build-initial.log",
+    "docs/audit-013c/domain-build-initial.log",
+    "docs/audit-013c/domain-targeted.log",
+    "docs/audit-013c/dotnet-full-exits.json",
+    "docs/audit-013c/final-build-exit.json",
+    "docs/audit-013c/final-build.log",
+    "docs/audit-013c/financial-reconciliation-progress.json",
+    "docs/audit-013c/financial-reconciliation.json",
+    "docs/audit-013c/financial-reconciliation.log",
+    "docs/audit-013c/flutter-analyze-final.log",
+    "docs/audit-013c/flutter-analyze-initial.log",
+    "docs/audit-013c/flutter-analyze-verified.log",
+    "docs/audit-013c/flutter-build-web-final.log",
+    "docs/audit-013c/flutter-build-web.log",
+    "docs/audit-013c/flutter-exits.json",
+    "docs/audit-013c/flutter-format-final.log",
+    "docs/audit-013c/flutter-format-tests.log",
+    "docs/audit-013c/flutter-format.log",
+    "docs/audit-013c/flutter-initial-exits.json",
+    "docs/audit-013c/flutter-lint-fix.log",
+    "docs/audit-013c/flutter-targeted.log",
+    "docs/audit-013c/flutter-test-final.log",
+    "docs/audit-013c/flutter-test-verified.log",
+    "docs/audit-013c/flutter-tests-initial.log",
+    "docs/audit-013c/flutter-version.log",
+    "docs/audit-013c/full-build.log",
+    "docs/audit-013c/full-initial-csv-failure.log",
+    "docs/audit-013c/full-regression.log",
+    "docs/audit-013c/import-exits.json",
+    "docs/audit-013c/initial-run.json",
+    "docs/audit-013c/integration-acceptance.log",
+    "docs/audit-013c/integration-complete.log",
+    "docs/audit-013c/integration-targeted.log",
+    "docs/audit-013c/integration-verified.log",
+    "docs/audit-013c/node-tests.log",
+    "docs/audit-013c/normal-clock-acceptance.json",
+    "docs/audit-013c/normal-clock-exit.json",
+    "docs/audit-013c/normal-clock-start.log",
+    "docs/audit-013c/normal-clock.log",
+    "docs/audit-013c/postgres-init.log",
+    "docs/audit-013c/postgres-ready.log",
+    "docs/audit-013c/real-bundle.json",
+    "docs/audit-013c/real-import.log",
+    "docs/audit-013c/reconciliation-exit.json",
+    "docs/audit-013c/reconciliation-progress.log",
+    "docs/audit-013c/report.log",
+    "docs/audit-013c/restart-verification.json",
+    "docs/audit-013c/services-stop.json",
+    "docs/audit-013c/services-stop.log",
+    "docs/audit-013c/snapshots-after-restart.json",
+    "docs/audit-013c/snapshots-before-restart.json",
+    "docs/audit-013c/source-state.json",
+    "docs/audit-013c/tests/boundary-013c_net10.0_20261031070118.trx",
+    "docs/audit-013c/tests/boundary-013c_net10.0_20261031070316.trx",
+    "docs/audit-013c/tests/final-013c_net10.0_20261031063410.trx",
+    "docs/audit-013c/tests/final-013c_net10.0_20261031063426.trx",
+    "docs/audit-013c/tests/final-013c_net10.0_20261031064056.trx",
+    "docs/audit-013c/tests/final-013c_net10.0_20261031070012.trx",
+    "docs/audit-013c/verification.json",
+    "docs/audit-013c/verified-final/balance-012d-fix/final-199801/seasons.json",
+    "docs/audit-013c/verified-final/balance-012d-fix/final-199801/summary.json",
+    "docs/audit-013c/verified-final/integration-014a/Female/seasons.json",
+    "docs/audit-013c/verified-final/integration-014a/Female/summary.json",
+    "docs/audit-013c/verified-final/integration-014a/Male/seasons.json",
+    "docs/audit-013c/verified-final/integration-014a/Male/summary.json",
+    "scripts/checkpoint-playable-worlds-013c.py",
+    "scripts/normal-clock-playable-worlds-013c.py",
+    "scripts/reconcile-playable-worlds-013c.py",
+    "scripts/report-playable-worlds-013c.py",
+    "scripts/run-playable-worlds-013c.ps1",
+    "scripts/smoke-playable-worlds-013c.py",
+    "scripts/stop-playable-worlds-013c.ps1",
+    "scripts/test-playable-worlds-013c.ps1",
+    "scripts/verify-restart-playable-worlds-013c.ps1",
+    "src/Elifoot.Api/WorldCreatorEndpoints.cs",
+    "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+    "src/Elifoot.Contracts/Catalog/PlayableWorldDtos.cs",
+    "src/Elifoot.Contracts/Catalog/WorldCreatorDtos.cs",
+    "src/Elifoot.Contracts/Dtos.cs",
+    "src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs",
+    "src/Elifoot.Domain/Catalog/PlayerProvenance.cs",
+    "src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs",
+    "src/Elifoot.Domain/Entities.cs",
+    "src/Elifoot.Domain/WorldEditorAndPackageService.cs",
+    "src/Elifoot.Infrastructure/Catalog/WorldCreatorService.cs",
+    "tests/Elifoot.Domain.Tests/PlayableWorld013CTests.cs",
+    "tests/Elifoot.Integration.Tests/Integration014ATests.cs",
+    "tests/Elifoot.Integration.Tests/PlayableWorld013CIntegrationTests.cs",
+    "tests/Elifoot.Integration.Tests/WorldCreator013ATests.cs",
+    "tools/catalog-013b/importer/CoverageAudit.cs",
+    "tools/catalog-013b/importer/CoverageBundleImporter.cs",
+    "tools/catalog-013b/importer/LocalCatalogTarget.cs",
+    "docs/audit-013c/final-manifest.json"
+  ],
+  "TotalCommitBytes": 6263907,
+  "OriginalWorktrees": {
+    "012D": {
+      "Path": "D:\\elifoot_98",
+      "Head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "StateUnchanged": true
+    },
+    "013B": {
+      "Path": "D:\\elifoot_98_013A",
+      "Head": "47608e9a674c0978c4be4b244de88d961876e197",
+      "StateUnchanged": true
+    }
+  },
+  "ProtectedFilesUnchanged": {
+    "MatchEngine.cs": true,
+    "ClassicForceEvolutionEngine.cs": true,
+    "ClassicForceState.cs": true,
+    "DisciplineEngine.cs": true,
+    "PlayerStrengthEvolutionEngine.cs": true,
+    "OperatingEconomyEngine.cs": true,
+    "MarketAndEconomyEngine.cs": true,
+    "ClassicEconomyEngine.cs": true,
+    "SalaryContractsEngine.cs": true,
+    "FinancialInsolvencyEngine.cs": true,
+    "WorldSeedFactory.cs": true,
+    "AiManagerBrain.cs": true
+  },
+  "NoProductionPublish": true,
+  "NoPush": true,
+  "NoAutomaticMerge": true,
+  "SimulationSourcesUnchangedSinceBuild": true
+}

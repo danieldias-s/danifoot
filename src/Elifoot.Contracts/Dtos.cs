@@ -223,6 +223,7 @@ public record PlayerDto(
     string? PhotoLicense,
     string? PhotoCredit)
 {
+    public WorldPlayerProvenance? CatalogIdentity { get; init; }
     public decimal ReferenceSalaryPerRound { get; init; }
     public bool NegotiatedContractProtected { get; init; }
     public int InjuryDaysRemaining { get; init; }
@@ -459,7 +460,8 @@ public record PlayerExportDto(
     string? PhotoUrl,
     string? PhotoLicense,
     string? PhotoCredit,
-    bool? NegotiatedContractProtected = null);
+    bool? NegotiatedContractProtected = null,
+    WorldPlayerProvenance? CatalogIdentity = null);
 
 public record AiManagerExportDto(
     Guid Id,

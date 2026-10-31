@@ -79,7 +79,7 @@ public static class WorldCreatorEndpoints
         group.MapGet("/countries", async (string season, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Countries(season, ct)));
         group.MapPost("/coverage", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Coverage(request.Countries, request.Gender, request.Season, ct)));
         group.MapPost("/catalog", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) =>
-            Results.Ok(await service.Select(request.Countries, request.Gender, request.Season, request.UseSavedData, ct)));
+            Results.Ok(await service.SelectForWorld(request, ct)));
         group.MapGet("/last-configuration", async (HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.LastConfiguration(Owner(c), ct)));
         group.MapPost("/preview", async (WorldCreatorRequest request, HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Preview(Owner(c), request, ct)));
         group.MapPost("/confirm/{draftId:guid}", async (Guid draftId, HttpContext c, WorldCreatorService service, CancellationToken ct) => {

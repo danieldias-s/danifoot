@@ -22,7 +22,7 @@ public static class CoverageAudit
         string connection = Environment.GetEnvironmentVariable(connectionEnvironment) ?? throw new ArgumentException("Conexão isolada ausente.");
         var parsed = new Npgsql.NpgsqlConnectionStringBuilder(connection);
         if (!LocalCatalogTarget.Catalog(parsed)) throw new ArgumentException("Banco isolado obrigatório.");
-        var worldConnection = Environment.GetEnvironmentVariable(parsed.Port == 55435 ? "ELIFOOT_014A_REAL_WORLD_PG" : "ELIFOOT_013B_WORLD_PG") ?? throw new ArgumentException("Configure explicitamente o banco de mundos isolado; sem fallback.");
+        var worldConnection = Environment.GetEnvironmentVariable(parsed.Port == 55436 ? "ELIFOOT_013C_REAL_WORLD_PG" : parsed.Port == 55435 ? "ELIFOOT_014A_REAL_WORLD_PG" : "ELIFOOT_013B_WORLD_PG") ?? throw new ArgumentException("Configure explicitamente o banco de mundos isolado; sem fallback.");
         var worldParsed = new Npgsql.NpgsqlConnectionStringBuilder(worldConnection);
         if (!LocalCatalogTarget.Worlds(parsed, worldParsed)) throw new ArgumentException("Banco de mundos isolado obrigatório.");
         var services = new ServiceCollection(); services.AddDbContext<CatalogDbContext>(o => o.UseNpgsql(connection));
@@ -88,11 +88,11 @@ public static class CoverageAudit
         foreach (var c in selection.Clubs) clubLines.Add(string.Join(",", new object?[] { c.CountryCode, c.Gender, c.Season, c.Name, c.Provider, c.ExternalId, c.InternalCatalogClubId,
             c.Verification?.Status, c.Verification?.CurrentSeasonConfirmed, c.Verification?.SourceSeason, c.DocumentedPlayers, c.Players.Count, c.UncertainPlayers,
             c.RankingInfo?.Method, c.RankingInfo?.Score, c.RankingInfo?.Confidence, c.Verification?.Evidence }.Select(Csv)));
-        await File.WriteAllLinesAsync(Path.Combine(parsed.Port == 55435 ? outputDirectory : "docs", "REAL_CLUBS_BY_COUNTRY_013B.csv"), clubLines);
+        await File.WriteAllLinesAsync(Path.Combine(parsed.Port is 55435 or 55436 ? outputDirectory : "docs", "REAL_CLUBS_BY_COUNTRY_013B.csv"), clubLines);
         var rosterLines = new List<string> { "Country,Gender,Season,Clubs,VerifiedClubs,HistoricalClubs,UnverifiedClubs,DocumentedPlayerLinks,UncertainPlayerLinks,CurrentUsablePlayers,CompleteCurrentSquads,IncompleteCurrentSquads,GeneratedInCatalog" };
         foreach (var r in reports) rosterLines.Add(string.Join(",", new object?[] { r.CountryCode, r.Gender, r.Season, r.Clubs, r.VerifiedClubs, r.HistoricalClubs, r.UnverifiedClubs,
             r.DocumentedPlayers, r.UncertainPlayers, r.Players, r.CompleteSquads, r.PartialSquads, r.GeneratedPlayers }.Select(Csv)));
-        await File.WriteAllLinesAsync(Path.Combine(parsed.Port == 55435 ? outputDirectory : "docs", "REAL_ROSTERS_BY_COUNTRY_013B.csv"), rosterLines);
+        await File.WriteAllLinesAsync(Path.Combine(parsed.Port is 55435 or 55436 ? outputDirectory : "docs", "REAL_ROSTERS_BY_COUNTRY_013B.csv"), rosterLines);
         Console.WriteLine(JsonSerializer.Serialize(new { clubs = selections.Sum(s => s.Clubs.Count), documentedLinks = reports.Sum(r => r.DocumentedPlayers), currentUsablePlayers = reports.Sum(r => r.Players),
             completeCurrentRosters = reports.Sum(r => r.CompleteSquads), controlledWorlds = worlds.Count, existingWorldsPreserved = before.Count }, CatalogImportCodec.Json));
     }

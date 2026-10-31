@@ -1,0 +1,2180 @@
+{
+  "Status": "RUNNING",
+  "CompletedCases": {
+    "Seed012D": {
+      "Directory": "docs\\audit-013c\\verified-final\\balance-012d-fix\\final-199801",
+      "Summary": {
+        "Case": "final",
+        "Seed": 199801,
+        "Seasons": 100,
+        "SourceCheckpoint": "7529e69",
+        "Gender": "Male",
+        "WorldSnapshot": null,
+        "FixtureWorld": false,
+        "InitialCash": 138800000,
+        "FinalCash": "137353919.79",
+        "FinalDebt": "3270104.68",
+        "Transactions": 556238,
+        "TransferPairs": 8888,
+        "TotalMatchesCompleted": 35100,
+        "RealMinutesSimulated": 3264000,
+        "InvalidLineupSelectionViolations": 0,
+        "InvalidSquadLimitViolations": 0,
+        "DoubleSettledMatchFinancialViolations": 0,
+        "OperatingRules": {
+          "Name": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+          "AnnualSponsorship": true,
+          "GateQualityExponent": "2.2",
+          "ReserveBorrowedCapitalForAi": true,
+          "AiCreditRequiresOperatingSurplus": true
+        },
+        "SalaryRequests": 130,
+        "ForcedAuctions": 162,
+        "Unsold": 63,
+        "Crises": 111,
+        "Recovered": 103
+      },
+      "MedianCash": "749694.905",
+      "MinimumCash": "-1246376.01",
+      "MaximumCash": "9971636.58",
+      "LateAnnualCashChange": "-135053.8116",
+      "FinalInsolventClubs": 8,
+      "FinalPersistentInsolventClubs": 6,
+      "CashDeficits": "3376577.84",
+      "InterestCharged": "6200000",
+      "InterestPaid": "3429895.32",
+      "PrincipalPaid": "1000000",
+      "FinalDivisionCash": [
+        {
+          "Division": "Distrital",
+          "Clubs": 96,
+          "Cash": "82160122.85",
+          "MeanCash": "855834.6130208333333333333333",
+          "Debt": "3270104.68",
+          "AssetsRoster": 22773053,
+          "AssetsStadiumProxy": 25753700,
+          "Insolvent": 8,
+          "WageBillPerGame": 316836,
+          "NominalStrength": "1.6085617279285043",
+          "CashFlow": {
+            "TicketRevenue": "341203.42",
+            "Sponsorship": "1920000.00",
+            "PlayerSalary": -590026,
+            "ContractRenewal": "-43549.5",
+            "StadiumRenovation": -498176,
+            "StadiumFixedCost": "-787665.06",
+            "StadiumVariableCost": "-28853.00",
+            "PrizeMoney": 760000,
+            "TransferSale": 84099,
+            "LoanInterestPayment": "-5028.71"
+          }
+        },
+        {
+          "Division": "PrimeiraDivisao",
+          "Clubs": 8,
+          "Cash": "28909984.95",
+          "MeanCash": "3613748.11875",
+          "Debt": 0,
+          "AssetsRoster": 65290763,
+          "AssetsStadiumProxy": 7394050,
+          "Insolvent": 0,
+          "WageBillPerGame": 226527,
+          "NominalStrength": "20.63311887254902",
+          "CashFlow": {
+            "Sponsorship": "1480000.00",
+            "TransferPurchase": -4316508,
+            "TransferSale": 2983588,
+            "TicketRevenue": "11480254.83",
+            "StadiumFixedCost": "-997692.50",
+            "StadiumVariableCost": "-518604.90",
+            "PlayerSalary": -4189939,
+            "ContractRenewal": "-204715.5",
+            "FreeAgentSigning": 0,
+            "AuctionPurchase": -12417228,
+            "PrizeMoney": 4170000,
+            "StadiumMaintenance": "-753205.5"
+          }
+        },
+        {
+          "Division": "TerceiraDivisao",
+          "Clubs": 8,
+          "Cash": "4173590.71",
+          "MeanCash": "521698.83875",
+          "Debt": 0,
+          "AssetsRoster": 19973648,
+          "AssetsStadiumProxy": 4711300,
+          "Insolvent": 0,
+          "WageBillPerGame": 107943,
+          "NominalStrength": "12.682082811194654",
+          "CashFlow": {
+            "Sponsorship": "736000.00",
+            "PlayerSalary": -1790508,
+            "ContractRenewal": "-84808.5",
+            "TicketRevenue": "1889707.16",
+            "StadiumFixedCost": "-632672.55",
+            "StadiumVariableCost": "-142353.20",
+            "TransferPurchase": -969029,
+            "AuctionPurchase": -1313787,
+            "TransferSale": 1420707,
+            "PrizeMoney": 2040000,
+            "StadiumMaintenance": "-461754.0",
+            "FreeAgentSigning": 0
+          }
+        },
+        {
+          "Division": "SegundaDivisao",
+          "Clubs": 8,
+          "Cash": "15850559.75",
+          "MeanCash": "1981319.96875",
+          "Debt": 0,
+          "AssetsRoster": 35630629,
+          "AssetsStadiumProxy": 4026450,
+          "Insolvent": 0,
+          "WageBillPerGame": 152860,
+          "NominalStrength": "16.793409276589426",
+          "CashFlow": {
+            "Sponsorship": "1000000.00",
+            "PlayerSalary": -2631854,
+            "TicketRevenue": "5223602.48",
+            "StadiumFixedCost": "-552658.40",
+            "StadiumVariableCost": "-310291.30",
+            "ContractRenewal": "-130027.5",
+            "TransferSale": 2036763,
+            "FreeAgentSigning": 0,
+            "TransferPurchase": -1306814,
+            "AuctionPurchase": -3874322,
+            "PrizeMoney": 3660000,
+            "StadiumMaintenance": "-399847.5"
+          }
+        },
+        {
+          "Division": "QuartaDivisao",
+          "Clubs": 8,
+          "Cash": "6259661.53",
+          "MeanCash": "782457.69125",
+          "Debt": 0,
+          "AssetsRoster": 13344068,
+          "AssetsStadiumProxy": 2455450,
+          "Insolvent": 0,
+          "WageBillPerGame": 84884,
+          "NominalStrength": "9.341317271092267",
+          "CashFlow": {
+            "Sponsorship": "576000.00",
+            "TransferPurchase": -655677,
+            "AuctionPurchase": -1149958,
+            "TicketRevenue": "595473.38",
+            "StadiumFixedCost": "-491055.13",
+            "StadiumVariableCost": "-50976.20",
+            "PlayerSalary": -1222928,
+            "ContractRenewal": "-58345.5",
+            "FreeAgentSigning": 0,
+            "PrizeMoney": 4640000,
+            "TransferSale": 722871,
+            "StadiumRenovation": -67968
+          }
+        }
+      ],
+      "FinalTopTen": [
+        {
+          "Id": "a84311ab-f4c5-dc42-827d-6ba0edfd40ee",
+          "Name": "Desportivo de Arapiraca 2",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "11123481.60",
+          "Cash": "9971636.58",
+          "InitialCash": 650000,
+          "Accumulation": "9321636.58",
+          "Debt": 0,
+          "SquadCount": 24,
+          "NominalStrength": 19,
+          "WageBillPerGame": 32725,
+          "RosterMarketValue": 9111563,
+          "StadiumAssetProxy": 671450,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 15090,
+          "UsableCapacity": 13429
+        },
+        {
+          "Id": "fe9e6b9c-4f36-f440-ba4a-9cc87822a9d8",
+          "Name": "Primavera de Uberlândia 2",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "6643455.30",
+          "Cash": "6655242.34",
+          "InitialCash": 650000,
+          "Accumulation": "6005242.34",
+          "Debt": 0,
+          "SquadCount": 12,
+          "NominalStrength": "1.4166666666666667",
+          "WageBillPerGame": 2770,
+          "RosterMarketValue": 181947,
+          "StadiumAssetProxy": 176800,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 4843,
+          "UsableCapacity": 3536
+        },
+        {
+          "Id": "8484cc73-5544-ab4d-9e9f-4ec9cee26308",
+          "Name": "Real de Uberlândia 2",
+          "Division": "SegundaDivisao",
+          "NextDivision": "SegundaDivisao",
+          "OpeningCash": "4723268.52",
+          "Cash": "5466726.89",
+          "InitialCash": 650000,
+          "Accumulation": "4816726.89",
+          "Debt": 0,
+          "SquadCount": 16,
+          "NominalStrength": "17.1875",
+          "WageBillPerGame": 16351,
+          "RosterMarketValue": 3532193,
+          "StadiumAssetProxy": 512450,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 11082,
+          "UsableCapacity": 10249
+        },
+        {
+          "Id": "587a76db-cf8e-3542-957e-6544812c3aab",
+          "Name": "Palestra Verde",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "5426579.50",
+          "Cash": "4646731.16",
+          "InitialCash": 4200000,
+          "Accumulation": "446731.16",
+          "Debt": 0,
+          "SquadCount": 16,
+          "NominalStrength": "21.6875",
+          "WageBillPerGame": 23138,
+          "RosterMarketValue": 6259107,
+          "StadiumAssetProxy": 2049400,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 47286,
+          "UsableCapacity": 40988
+        },
+        {
+          "Id": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+          "Name": "Avaí da Ilha",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "2925958.76",
+          "Cash": "4631372.84",
+          "InitialCash": 1650000,
+          "Accumulation": "2981372.84",
+          "Debt": 0,
+          "SquadCount": 18,
+          "NominalStrength": "15.555555555555555",
+          "WageBillPerGame": 20774,
+          "RosterMarketValue": 5033232,
+          "StadiumAssetProxy": 877950,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 20239,
+          "UsableCapacity": 17559
+        },
+        {
+          "Id": "2d118e4f-36ff-6a48-966d-89966e3684c3",
+          "Name": "Independente de Uberlândia",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "3339130.31",
+          "Cash": "4619654.24",
+          "InitialCash": 650000,
+          "Accumulation": "3969654.24",
+          "Debt": 0,
+          "SquadCount": 17,
+          "NominalStrength": 22,
+          "WageBillPerGame": 27468,
+          "RosterMarketValue": 8569649,
+          "StadiumAssetProxy": 568250,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 13604,
+          "UsableCapacity": 11365
+        },
+        {
+          "Id": "4c99327e-eec2-ee4f-9473-3334380312cf",
+          "Name": "Atlético de Ponta Grossa 2",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "4053772.75",
+          "Cash": "4067550.68",
+          "InitialCash": 650000,
+          "Accumulation": "3417550.68",
+          "Debt": 0,
+          "SquadCount": 12,
+          "NominalStrength": "2.5833333333333335",
+          "WageBillPerGame": 3672,
+          "RosterMarketValue": 366646,
+          "StadiumAssetProxy": 162850,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 4331,
+          "UsableCapacity": 3257
+        },
+        {
+          "Id": "7ef5b3e9-784d-fe41-adae-296b19df2d04",
+          "Name": "Grêmio de Sorocaba",
+          "Division": "QuartaDivisao",
+          "NextDivision": "TerceiraDivisao",
+          "OpeningCash": "360815.82",
+          "Cash": "3544650.12",
+          "InitialCash": 650000,
+          "Accumulation": "2894650.12",
+          "Debt": 0,
+          "SquadCount": 17,
+          "NominalStrength": "14.882352941176471",
+          "WageBillPerGame": 16780,
+          "RosterMarketValue": 3845419,
+          "StadiumAssetProxy": 274050,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 6201,
+          "UsableCapacity": 5481
+        },
+        {
+          "Id": "31a61e64-9d61-5141-9483-32857d3ccecc",
+          "Name": "Ferroviária Grená",
+          "Division": "SegundaDivisao",
+          "NextDivision": "SegundaDivisao",
+          "OpeningCash": "2809554.42",
+          "Cash": "3521545.53",
+          "InitialCash": 1100000,
+          "Accumulation": "2421545.53",
+          "Debt": 0,
+          "SquadCount": 18,
+          "NominalStrength": "14.944444444444445",
+          "WageBillPerGame": 17206,
+          "RosterMarketValue": 3791685,
+          "StadiumAssetProxy": 360850,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 8467,
+          "UsableCapacity": 7217
+        },
+        {
+          "Id": "2ab1b5e8-7aa1-0c4d-8cc6-256ff67e95ab",
+          "Name": "Estrela de Ponta Grossa 2",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "4916971.12",
+          "Cash": "3116478.11",
+          "InitialCash": 650000,
+          "Accumulation": "2466478.11",
+          "Debt": 0,
+          "SquadCount": 17,
+          "NominalStrength": "24.294117647058822",
+          "WageBillPerGame": 31265,
+          "RosterMarketValue": 9178519,
+          "StadiumAssetProxy": 687100,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 14263,
+          "UsableCapacity": 13742
+        }
+      ],
+      "LedgerRows": 556238,
+      "TransferPairs": 8888,
+      "ClubYearIdentities": 12800,
+      "AnnualReconciliation": [
+        {
+          "Season": 1,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 2,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 3,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 4,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 5,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 6,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 7,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 8,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 9,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 10,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 11,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 12,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 13,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 14,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 15,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 16,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 17,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 18,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 19,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 20,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 21,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 22,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 23,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 24,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 25,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 26,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 27,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 28,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 29,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 30,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 31,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 32,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 33,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 34,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 35,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 36,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 37,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 38,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 39,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 40,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 41,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 42,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 43,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 44,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 45,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 46,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 47,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 48,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 49,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 50,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 51,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 52,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 53,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 54,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 55,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 56,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 57,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 58,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 59,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 60,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 61,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 62,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 63,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 64,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 65,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 66,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 67,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 68,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 69,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 70,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 71,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 72,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 73,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 74,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 75,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 76,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 77,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 78,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 79,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 80,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 81,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 82,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 83,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 84,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 85,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 86,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 87,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 88,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 89,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 90,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 91,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 92,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 93,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 94,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 95,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 96,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 97,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 98,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 99,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 100,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        }
+      ],
+      "InputSha256": {
+        "summary.json": "dc2ff15fea21c03318eeb87a5824da9b26b68340341e7f8ba4576f5268a78112",
+        "seasons.json": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1",
+        "ledger.jsonl.gz": "e38833262b492e2ccc625e16f672a7d18b250aee9a7c24a2fc8256fb6ddb0fa8",
+        "clubs.json.gz": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+      }
+    },
+    "ImportedFixtureFemale": {
+      "Directory": "docs\\audit-013c\\verified-final\\integration-014a\\Female",
+      "Summary": {
+        "Case": "final",
+        "Seed": 199801,
+        "Seasons": 100,
+        "SourceCheckpoint": "7a00bdd+47608e9",
+        "Gender": "Female",
+        "WorldSnapshot": "D2D43BA9826B9124DF4B866906FA7CC506A3755ECB9F0DB77C3A112259CC1BC4",
+        "FixtureWorld": true,
+        "InitialCash": 138800000,
+        "FinalCash": "79157786.17",
+        "FinalDebt": "4366066.93",
+        "Transactions": 553936,
+        "TransferPairs": 8868,
+        "TotalMatchesCompleted": 35100,
+        "RealMinutesSimulated": 3249330,
+        "InvalidLineupSelectionViolations": 0,
+        "InvalidSquadLimitViolations": 0,
+        "DoubleSettledMatchFinancialViolations": 0,
+        "OperatingRules": {
+          "Name": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+          "AnnualSponsorship": true,
+          "GateQualityExponent": "2.2",
+          "ReserveBorrowedCapitalForAi": true,
+          "AiCreditRequiresOperatingSurplus": true
+        },
+        "SalaryRequests": 136,
+        "ForcedAuctions": 136,
+        "Unsold": 11,
+        "Crises": 182,
+        "Recovered": 172
+      },
+      "MedianCash": "425999.40",
+      "MinimumCash": "-902521.44",
+      "MaximumCash": "3544434.31",
+      "LateAnnualCashChange": "-4909762.7868",
+      "FinalInsolventClubs": 10,
+      "FinalPersistentInsolventClubs": 8,
+      "CashDeficits": "3189596.65",
+      "InterestCharged": "6650000",
+      "InterestPaid": "2783933.07",
+      "PrincipalPaid": "1500000",
+      "FinalDivisionCash": [
+        {
+          "Division": "Distrital",
+          "Clubs": 96,
+          "Cash": "50042873.70",
+          "MeanCash": "521279.934375",
+          "Debt": "4366066.93",
+          "AssetsRoster": 29299488,
+          "AssetsStadiumProxy": 25923900,
+          "Insolvent": 10,
+          "WageBillPerGame": 364150,
+          "NominalStrength": "3.271912412645047",
+          "CashFlow": {
+            "TicketRevenue": "255935.65",
+            "Sponsorship": "1920000.00",
+            "PlayerSalary": -718680,
+            "ContractRenewal": "-58087.5",
+            "StadiumFixedCost": "-724950.63",
+            "StadiumVariableCost": "-24256.10",
+            "TransferSale": 187471,
+            "StadiumRenovation": -623246,
+            "PrizeMoney": 760000,
+            "LoanInterestPayment": "-40920.81"
+          }
+        },
+        {
+          "Division": "PrimeiraDivisao",
+          "Clubs": 8,
+          "Cash": "11602664.77",
+          "MeanCash": "1450333.09625",
+          "Debt": 0,
+          "AssetsRoster": 69477441,
+          "AssetsStadiumProxy": 6309900,
+          "Insolvent": 0,
+          "WageBillPerGame": 234293,
+          "NominalStrength": "19.71054558186911",
+          "CashFlow": {
+            "Sponsorship": "1480000.00",
+            "PlayerSalary": -3693586,
+            "TicketRevenue": "9742822.74",
+            "StadiumFixedCost": "-799167.60",
+            "StadiumVariableCost": "-439485.20",
+            "ContractRenewal": "-231568.5",
+            "TransferSale": 3814429,
+            "TransferPurchase": -3199292,
+            "AuctionPurchase": -12089229,
+            "PrizeMoney": 3720000,
+            "StadiumMaintenance": "-648562.5"
+          }
+        },
+        {
+          "Division": "SegundaDivisao",
+          "Clubs": 8,
+          "Cash": "6555512.25",
+          "MeanCash": "819439.03125",
+          "Debt": 0,
+          "AssetsRoster": 37390537,
+          "AssetsStadiumProxy": 5263550,
+          "Insolvent": 0,
+          "WageBillPerGame": 159570,
+          "NominalStrength": "15.758829246411484",
+          "CashFlow": {
+            "Sponsorship": "1000000.00",
+            "PlayerSalary": -2837641,
+            "ContractRenewal": "-140854.5",
+            "TicketRevenue": "4370139.03",
+            "StadiumFixedCost": "-722691.20",
+            "StadiumVariableCost": "-259427.30",
+            "TransferPurchase": -2102130,
+            "AuctionPurchase": -4903680,
+            "TransferSale": 1746191,
+            "PrizeMoney": 3660000,
+            "StadiumMaintenance": "-527949.0",
+            "FreeAgentSigning": 0
+          }
+        },
+        {
+          "Division": "QuartaDivisao",
+          "Clubs": 8,
+          "Cash": "2903029.95",
+          "MeanCash": "362878.74375",
+          "Debt": 0,
+          "AssetsRoster": 18149193,
+          "AssetsStadiumProxy": 3319350,
+          "Insolvent": 0,
+          "WageBillPerGame": 101654,
+          "NominalStrength": "11.47077277942216",
+          "CashFlow": {
+            "Sponsorship": "576000.00",
+            "TransferPurchase": -1314102,
+            "PlayerSalary": -1618398,
+            "TicketRevenue": "783025.48",
+            "StadiumFixedCost": "-561713.97",
+            "StadiumVariableCost": "-74244.50",
+            "TransferSale": 874858,
+            "FreeAgentSigning": 0,
+            "AuctionPurchase": -3485360,
+            "PrizeMoney": 1640000,
+            "ContractRenewal": "-59929.5",
+            "StadiumRenovation": -83903
+          }
+        },
+        {
+          "Division": "TerceiraDivisao",
+          "Clubs": 8,
+          "Cash": "8053705.50",
+          "MeanCash": "1006713.1875",
+          "Debt": 0,
+          "AssetsRoster": 26333751,
+          "AssetsStadiumProxy": 6444700,
+          "Insolvent": 0,
+          "WageBillPerGame": 125995,
+          "NominalStrength": "14.325919117647057",
+          "CashFlow": {
+            "Sponsorship": "736000.00",
+            "TransferPurchase": -1016153,
+            "AuctionPurchase": -3469473,
+            "TicketRevenue": "2290270.40",
+            "StadiumFixedCost": "-917610.38",
+            "StadiumVariableCost": "-175945.00",
+            "PlayerSalary": -2211645,
+            "TransferSale": 1008728,
+            "ContractRenewal": "-128866.5",
+            "PrizeMoney": 5490000,
+            "StadiumMaintenance": "-598329.0",
+            "StadiumRenovation": -367803,
+            "FreeAgentSigning": 0
+          }
+        }
+      ],
+      "FinalTopTen": [
+        {
+          "Id": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+          "Name": "Clube fictício BR F 09",
+          "Division": "TerceiraDivisao",
+          "NextDivision": "SegundaDivisao",
+          "OpeningCash": "2823141.78",
+          "Cash": "3544434.31",
+          "InitialCash": 2600000,
+          "Accumulation": "944434.31",
+          "Debt": 0,
+          "SquadCount": 20,
+          "NominalStrength": "13.95",
+          "WageBillPerGame": 19482,
+          "RosterMarketValue": 4158957,
+          "StadiumAssetProxy": 820150,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 26082,
+          "UsableCapacity": 16403
+        },
+        {
+          "Id": "587a76db-cf8e-3542-957e-6544812c3aab",
+          "Name": "Clube fictício BR F 03",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "3111415.41",
+          "Cash": "3274541.82",
+          "InitialCash": 4200000,
+          "Accumulation": "-925458.18",
+          "Debt": 0,
+          "SquadCount": 22,
+          "NominalStrength": "17.863636363636363",
+          "WageBillPerGame": 27615,
+          "RosterMarketValue": 8230261,
+          "StadiumAssetProxy": 1868200,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 42286,
+          "UsableCapacity": 37364
+        },
+        {
+          "Id": "2e8930df-26f5-cf49-9ee7-6f6b86cce437",
+          "Name": "Clube fictício GB F 11",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "3152375.63",
+          "Cash": "3169686.59",
+          "InitialCash": 650000,
+          "Accumulation": "2519686.59",
+          "Debt": 0,
+          "SquadCount": 13,
+          "NominalStrength": "2.769230769230769",
+          "WageBillPerGame": 3356,
+          "RosterMarketValue": 222944,
+          "StadiumAssetProxy": 402800,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 10102,
+          "UsableCapacity": 8056
+        },
+        {
+          "Id": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+          "Name": "Clube fictício AR F 04",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "SegundaDivisao",
+          "OpeningCash": "1991350.78",
+          "Cash": "2489269.63",
+          "InitialCash": 1650000,
+          "Accumulation": "839269.63",
+          "Debt": 0,
+          "SquadCount": 24,
+          "NominalStrength": "12.083333333333334",
+          "WageBillPerGame": 18713,
+          "RosterMarketValue": 4750696,
+          "StadiumAssetProxy": 657700,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 15239,
+          "UsableCapacity": 13154
+        },
+        {
+          "Id": "5355ef5f-eae2-ee4f-8137-aa23605b3288",
+          "Name": "Clube fictício IT F 11",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "2422751.62",
+          "Cash": "2433111.82",
+          "InitialCash": 650000,
+          "Accumulation": "1783111.82",
+          "Debt": 0,
+          "SquadCount": 12,
+          "NominalStrength": "2.5833333333333335",
+          "WageBillPerGame": 3505,
+          "RosterMarketValue": 210304,
+          "StadiumAssetProxy": 468950,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 10811,
+          "UsableCapacity": 9379
+        },
+        {
+          "Id": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+          "Name": "Clube fictício AR F 07",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "2373804.63",
+          "Cash": "2390394.57",
+          "InitialCash": 1100000,
+          "Accumulation": "1290394.57",
+          "Debt": 0,
+          "SquadCount": 13,
+          "NominalStrength": "2.923076923076923",
+          "WageBillPerGame": 3682,
+          "RosterMarketValue": 241901,
+          "StadiumAssetProxy": 357000,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 8607,
+          "UsableCapacity": 7140
+        },
+        {
+          "Id": "7c512425-fb91-d049-ada5-ba1b930cc70a",
+          "Name": "Clube fictício ES F 04",
+          "Division": "TerceiraDivisao",
+          "NextDivision": "TerceiraDivisao",
+          "OpeningCash": "1687897.04",
+          "Cash": "2175628.80",
+          "InitialCash": 650000,
+          "Accumulation": "1525628.80",
+          "Debt": 0,
+          "SquadCount": 16,
+          "NominalStrength": "17.6875",
+          "WageBillPerGame": 18383,
+          "RosterMarketValue": 4312917,
+          "StadiumAssetProxy": 663600,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 14606,
+          "UsableCapacity": 13272
+        },
+        {
+          "Id": "cea571e3-89f7-2f4d-945f-18463fa44cde",
+          "Name": "Clube fictício IT F 16",
+          "Division": "PrimeiraDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "2111989.94",
+          "Cash": "2021155.32",
+          "InitialCash": 650000,
+          "Accumulation": "1371155.32",
+          "Debt": 0,
+          "SquadCount": 18,
+          "NominalStrength": "21.72222222222222",
+          "WageBillPerGame": 29907,
+          "RosterMarketValue": 8927809,
+          "StadiumAssetProxy": 621850,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 14592,
+          "UsableCapacity": 12437
+        },
+        {
+          "Id": "bfaeaf85-2baa-3949-89b2-899722668ce4",
+          "Name": "Clube fictício FR F 09",
+          "Division": "SegundaDivisao",
+          "NextDivision": "PrimeiraDivisao",
+          "OpeningCash": "670910.56",
+          "Cash": "1723061.31",
+          "InitialCash": 650000,
+          "Accumulation": "1073061.31",
+          "Debt": 0,
+          "SquadCount": 16,
+          "NominalStrength": "21.25",
+          "WageBillPerGame": 21892,
+          "RosterMarketValue": 5690283,
+          "StadiumAssetProxy": 346550,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 8248,
+          "UsableCapacity": 6931
+        },
+        {
+          "Id": "74074f2a-c83a-1d4c-9916-e7dc9579ab6c",
+          "Name": "Clube fictício PT F 14",
+          "Division": "Distrital",
+          "NextDivision": "Distrital",
+          "OpeningCash": "1348837.43",
+          "Cash": "1351884.17",
+          "InitialCash": 650000,
+          "Accumulation": "701884.17",
+          "Debt": 0,
+          "SquadCount": 12,
+          "NominalStrength": 4,
+          "WageBillPerGame": 4041,
+          "RosterMarketValue": 289373,
+          "StadiumAssetProxy": 154150,
+          "Insolvent": false,
+          "ConsecutiveInsolventSeasons": 0,
+          "BuiltCapacity": 3381,
+          "UsableCapacity": 3083
+        }
+      ],
+      "LedgerRows": 553936,
+      "TransferPairs": 8868,
+      "ClubYearIdentities": 12800,
+      "AnnualReconciliation": [
+        {
+          "Season": 1,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 2,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 3,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 4,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 5,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 6,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 7,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 8,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 9,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 10,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 11,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 12,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 13,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 14,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 15,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 16,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 17,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 18,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 19,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 20,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 21,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 22,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 23,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 24,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 25,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 26,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 27,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 28,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 29,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 30,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 31,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 32,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 33,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 34,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 35,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 36,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 37,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 38,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 39,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 40,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 41,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 42,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 43,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 44,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 45,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 46,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 47,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 48,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 49,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 50,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 51,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 52,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 53,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 54,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 55,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 56,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 57,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 58,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 59,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 60,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 61,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 62,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 63,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 64,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 65,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 66,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 67,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 68,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 69,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 70,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 71,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 72,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 73,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 74,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 75,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 76,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 77,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 78,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 79,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 80,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 81,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 82,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 83,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 84,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 85,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 86,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 87,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 88,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 89,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 90,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 91,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 92,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 93,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 94,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 95,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 96,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 97,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 98,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 99,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        },
+        {
+          "Season": 100,
+          "CashDifference": "0",
+          "DebtDifference": "0",
+          "ClubCashDifferences": 0,
+          "TransferNet": "0"
+        }
+      ],
+      "InputSha256": {
+        "summary.json": "6277b6b3292f0cb9a9db080db4e5622afca94a3cba3a522ac68be033e29f8469",
+        "seasons.json": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3",
+        "ledger.jsonl.gz": "1f5f01d5cc282c376cd95a0054aa340b5f34cd60b349c0547e4c36d39706c095",
+        "clubs.json.gz": "982bcf9bead8f1df7bcea9f4f774ee6205c5c51197a24ff2f1e4ae9d39d4efba"
+      }
+    }
+  },
+  "PendingCase": "ImportedFixtureMale"
+}

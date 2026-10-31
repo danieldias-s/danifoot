@@ -6,6 +6,7 @@ import 'package:flutter/semantics.dart';
 
 import 'api_client.dart';
 import 'world_creator.dart';
+import 'catalog_provenance.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 
@@ -1916,6 +1917,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               'Posição: ${_formatPosition(player['position'])}  |  Força: ${player['strength']}',
             ),
             Text('Comportamento: ${player['behaviorDisplay']}'),
+            if (player['catalogIdentity'] != null) Text(catalogIdentityOrigin(player)),
             Text(
               'Craque (*): ${player['isStar'] == true ? "Sim (*)" : "Não"}',
             ),

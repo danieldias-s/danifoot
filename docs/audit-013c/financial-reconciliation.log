@@ -1,0 +1,3 @@
+Seed012D PASS 137353919.79 cash; 3270104.68 debt; 556238 ledger rows
+ImportedFixtureMale PASS 79157786.17 cash; 4366066.93 debt; 553936 ledger rows
+ImportedFixtureFemale PASS 79157786.17 cash; 4366066.93 debt; 553936 ledger rows

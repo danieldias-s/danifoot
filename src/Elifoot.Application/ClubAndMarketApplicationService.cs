@@ -126,6 +126,7 @@ public sealed partial class ClubAndMarketApplicationService
             PhotoLicense: p.PhotoLicense,
             PhotoCredit: p.PhotoCredit)
         {
+            CatalogIdentity = p.CatalogIdentity,
             ReferenceSalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p),
             NegotiatedContractProtected = p.NegotiatedContractProtected,
             InjuryDaysRemaining = p.InjuryDaysRemaining,

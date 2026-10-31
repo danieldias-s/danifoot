@@ -19,6 +19,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   final _season = TextEditingController(text: '2026');
   final _seed = TextEditingController(text: '199801');
   String _gender = 'Male',
+      _dataMode = 'REAL_COMPLETE',
       _mode = 'Automatic',
       _district = 'Ranking',
       _search = '',
@@ -43,7 +44,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   List<Map<String, dynamic>> _options = [], _clubs = [], _references = [];
   List<dynamic> _warnings = [];
   final Map<String, int> _assignments = {};
-  Map<String, dynamic>? _last, _preview;
+  Map<String, dynamic>? _last, _preview, _dataSummary;
   static const _steps = [
     'Categoria',
     'Países',
@@ -108,6 +109,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   Map<String, dynamic> _request() => {
     'name': _name.text.trim(),
     'gender': _gender,
+    'dataMode': _dataMode,
     'season': _season.text.trim(),
     'countries': _countries.toList()..sort(),
     'mode': _mode,
@@ -130,6 +132,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     setState(() {
       _name.text = p['name'].toString();
       _gender = p['gender'].toString();
+      _dataMode =
+          p['dataMode']?.toString() ??
+          (p['allowFictionalTeams'] == true
+              ? 'FREE_WORLD'
+              : p['allowFictionalPlayers'] == true
+              ? 'REAL_CLUBS_SIMULATED'
+              : 'REAL_COMPLETE');
       _season.text = p['season'].toString();
       _seed.text = p['seed'].toString();
       _mode = p['mode'].toString();
@@ -166,6 +175,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _clubs = _maps(data['clubs']);
         _references = _maps(data['references']);
         _warnings = data['warnings'] as List? ?? [];
+        _dataSummary = data['dataSummary'] is Map
+            ? Map<String, dynamic>.from(data['dataSummary'] as Map)
+            : null;
         final keys = _clubs.map((c) => c['key']).toSet();
         _assignments.removeWhere((key, _) => !keys.contains(key));
         _preview = null;
@@ -247,6 +259,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         ? null
         : (v) => setState(() {
             change(v!);
+            if (label == 'Categoria' || label == 'Dados do mundo') {
+              _fictional = false;
+              _fictionalPlayers = false;
+              _includeHistorical = false;
+              _includeUnverified = false;
+              _assignments.clear();
+              _clubs = [];
+              _dataSummary = null;
+            }
             _preview = null;
           }),
   );
@@ -332,18 +353,92 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     );
   }
 
+  Widget _dataCounts(Map<String, dynamic>? summary) {
+    if (summary == null) return const SizedBox.shrink();
+    return Text(
+      '${summary['verifiedRealClubs']} clubes reais verificados • ${summary['currentSeasonConfirmedClubs']} com temporada atual comprovada\n'
+      '${summary['completeRealSquads']} elencos reais completos • ${summary['incompleteRealSquads']} incompletos • ${summary['missingClubSlots']} vagas a completar no catálogo',
+    );
+  }
+
+  String _rosterLabel(Map club) {
+    final generated = (club['players'] as List? ?? [])
+        .where(
+          (p) =>
+              p['playerOrigin'] == 'FICTIONAL_GENERATED' ||
+              p['identityOrigin'] == 'Generated',
+        )
+        .length;
+    final verified =
+        (club['verification'] as Map?)?['status'] == 'REAL_CLUB_VERIFIED';
+    return verified && generated > 0
+        ? 'CLUBE REAL — ELENCO SIMULADO'
+        : club['isFictional'] == true
+        ? 'CLUBE FICTÍCIO — ELENCO SIMULADO'
+        : 'Confira a origem de cada atleta';
+  }
+
+  Widget _dataConsentChoices() => Column(
+    children: [
+      CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        title: const Text(
+          'AUTORIZO atletas fictícios para completar elencos reais insuficientes',
+        ),
+        subtitle: const Text(
+          'A origem fictícia e a força estimada ficam identificadas no mundo.',
+        ),
+        value: _fictionalPlayers,
+        onChanged: _busy || _dataMode == 'REAL_COMPLETE'
+            ? null
+            : (value) => setState(() {
+                _fictionalPlayers = value!;
+                _preview = null;
+              }),
+      ),
+      CheckboxListTile(
+        contentPadding: EdgeInsets.zero,
+        title: const Text(
+          'AUTORIZO completar vagas com equipes e atletas fictícios',
+        ),
+        value: _fictional,
+        onChanged: _busy || _dataMode != 'FREE_WORLD'
+            ? null
+            : (value) => setState(() {
+                _fictional = value!;
+                _fictionalPlayers = value;
+                _preview = null;
+              }),
+      ),
+    ],
+  );
   Widget _previewPanel() {
     final p = _preview;
     if (p == null) {
       return const Text('Gere a prévia para conferir clubes e elencos.');
     }
     final clubs = _maps(p['clubs']);
+    final summary = p['dataSummary'] is Map
+        ? Map<String, dynamic>.from(p['dataSummary'] as Map)
+        : null;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           '${clubs.length}/128 clubes • ${p['pendingSlots']} vagas pendentes',
         ),
+        _dataCounts(summary),
+        if (p['dataAsOf'] != null)
+          Text('Vínculos conferidos em ${p['dataAsOf']} • seed ${p['seed']}'),
+        for (final reference in _maps(p['references']))
+          Text(
+            '${(reference['scope'] as Map)['provider']} • referência ${reference['updatedAt']} • versão ${reference['version']}\n'
+            '${reference['rights'] is Map ? (reference['rights'] as Map)['attribution'] ?? (reference['rights'] as Map)['license'] : ''}',
+          ),
+        if (summary != null)
+          Text(
+            '${summary['selectedRealClubs']} clubes reais selecionados • ${summary['selectedFictionalClubs']} fictícios • ${summary['realCurrentPlayers']} atletas reais confirmados • ${summary['generatedPlayers']} fictícios gerados',
+          ),
         for (final e in p['errors'] as List? ?? [])
           Text(
             e.toString(),
@@ -362,11 +457,19 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   (c) => ExpansionTile(
                     title: Text((c['club'] as Map)['name'].toString()),
                     subtitle: Text(
-                      '${((c['club'] as Map)['players'] as List).length} atletas',
+                      '${_rosterLabel(c['club'] as Map)} • ${((c['club'] as Map)['players'] as List).length} atletas',
                     ),
-                    children: _maps(
-                      (c['club'] as Map)['players'],
-                    ).map(catalogPlayerRow).toList(),
+                    children: [
+                      catalogClubStatus(
+                        Map<String, dynamic>.from(c['club'] as Map),
+                      ),
+                      catalogRankingLabel(
+                        Map<String, dynamic>.from(c['club'] as Map),
+                      ),
+                      ..._maps(
+                        (c['club'] as Map)['players'],
+                      ).map(catalogPlayerRow),
+                    ],
                   ),
                 )
                 .toList(),
@@ -390,6 +493,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   ? null
                   : () => setState(() {
                       _assignments.clear();
+                      _dataMode = 'REAL_COMPLETE';
+                      _dataSummary = null;
                       _fictional = false;
                       _fictionalPlayers = false;
                       _includeHistorical = false;
@@ -466,6 +571,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                           _countries.remove(c['code']);
                         }
                         _assignments.clear();
+                        _fictional = false;
+                        _fictionalPlayers = false;
+                        _dataSummary = null;
                         _preview = null;
                       }),
               ),
@@ -477,6 +585,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       case 2:
         return Column(
           children: [
+            _choice('Dados do mundo', _dataMode, [
+              ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
+              ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
+              ('FREE_WORLD', 'MUNDO LIVRE'),
+            ], (v) => _dataMode = v),
+            const Text(
+              'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
+            ),
+            _dataConsentChoices(),
             _choice('Montagem', _mode, [
               ('Automatic', 'AUTOMÁTICO POR RANKING'),
               ('Custom', 'PERSONALIZADO'),
@@ -496,7 +613,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 'INCLUIR clubes históricos, com referência passada explícita',
               ),
               value: _includeHistorical,
-              onChanged: _busy
+              onChanged: _busy || _dataMode != 'FREE_WORLD'
                   ? null
                   : (v) => setState(() {
                       _includeHistorical = v!;
@@ -511,7 +628,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 'Listas antigas não comprovam participação na temporada atual.',
               ),
               value: _includeUnverified,
-              onChanged: _busy
+              onChanged: _busy || _dataMode != 'FREE_WORLD'
                   ? null
                   : (v) => setState(() {
                       _includeUnverified = v!;
@@ -531,6 +648,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             Text(
               '${_clubs.where(_clubAllowed).length} clubes disponíveis • ${_countries.join(', ')}',
             ),
+            _dataCounts(_dataSummary),
             Wrap(
               spacing: 12,
               children: [
@@ -562,35 +680,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               ('Random', 'Sorteio com seed salva'),
               ('Manual', 'Escolher os 96 manualmente'),
             ], (v) => _district = v),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text(
-                'AUTORIZO completar vagas com equipes e atletas fictícios',
-              ),
-              value: _fictional,
-              onChanged: _busy
-                  ? null
-                  : (v) => setState(() {
-                      _fictional = v!;
-                      _preview = null;
-                    }),
-            ),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text(
-                'AUTORIZO atletas fictícios para completar elencos reais insuficientes',
-              ),
-              subtitle: const Text(
-                'Atletas gerados serão identificados e não serão apresentados como importados.',
-              ),
-              value: _fictionalPlayers,
-              onChanged: _busy
-                  ? null
-                  : (value) => setState(() {
-                      _fictionalPlayers = value!;
-                      _preview = null;
-                    }),
-            ),
+            _dataConsentChoices(),
             Text(
               '${_assignments.values.where((v) => v == 5).length}/96 distritais escolhidos',
             ),
@@ -636,7 +726,18 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 subtitle: Text(
                   '${(club['players'] as List).length} atuais utilizáveis • ${club['documentedPlayers'] ?? (club['players'] as List).length} documentados • ${club['uncertainPlayers'] ?? 0} vínculos não confirmados',
                 ),
-                children: _maps(club['players']).map(catalogPlayerRow).toList(),
+                children: [
+                  ..._maps(club['players']).map(catalogPlayerRow),
+                  if (_maps(club['referencePlayers']).isNotEmpty)
+                    ExpansionTile(
+                      title: Text(
+                        '${_maps(club['referencePlayers']).length} referências documentais — fora do elenco atual',
+                      ),
+                      children: _maps(
+                        club['referencePlayers'],
+                      ).map(catalogPlayerRow).toList(),
+                    ),
+                ],
               ),
             ],
           ],
@@ -658,7 +759,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             Text(
               '${_name.text} • ${_gender == 'Female' ? 'FEMININO' : 'MASCULINO'} • ${_season.text}',
             ),
-            Text('Países: ${_countries.join(', ')} • seed ${_seed.text}'),
+            Text(
+              'Países: ${_countries.join(', ')} • seed ${_seed.text} • modo $_dataMode',
+            ),
             _previewPanel(),
             const Text(
               'A confirmação copia os dados desta prévia para um mundo independente e salva sua configuração.',

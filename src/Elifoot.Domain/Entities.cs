@@ -121,7 +121,7 @@ public class Stadium
     public int RenovationRoundsRemaining { get; set; } = 0;
 }
 
-public class Player
+public partial class Player
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }

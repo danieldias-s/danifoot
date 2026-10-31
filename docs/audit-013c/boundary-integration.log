@@ -1,0 +1,13 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_integration\src\Elifoot.Contracts\bin\Boundary013C\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_integration\src\Elifoot.Domain\bin\Boundary013C\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_integration\src\Elifoot.Application\bin\Boundary013C\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98_integration\src\Elifoot.Infrastructure\bin\Boundary013C\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98_integration\src\Elifoot.Api\bin\Boundary013C\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Boundary013C\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98_integration\tests\Elifoot.Integration.Tests\bin\Boundary013C\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_integration\docs\audit-013c\tests\boundary-013c_net10.0_20261031070316.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     2, Ignorado:     0, Total:     2, Duração: 1 m 35 s - Elifoot.Integration.Tests.dll (net10.0)

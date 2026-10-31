@@ -1,0 +1,31 @@
+{
+  "Case": "final",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7a00bdd\u002B47608e9",
+  "Gender": "Female",
+  "WorldSnapshot": "D2D43BA9826B9124DF4B866906FA7CC506A3755ECB9F0DB77C3A112259CC1BC4",
+  "FixtureWorld": true,
+  "InitialCash": 138800000,
+  "FinalCash": 79157786.17,
+  "FinalDebt": 4366066.93,
+  "Transactions": 553936,
+  "TransferPairs": 8868,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3249330,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2.2,
+    "ReserveBorrowedCapitalForAi": true,
+    "AiCreditRequiresOperatingSurplus": true
+  },
+  "SalaryRequests": 136,
+  "ForcedAuctions": 136,
+  "Unsold": 11,
+  "Crises": 182,
+  "Recovered": 172
+}
