@@ -131,6 +131,30 @@ public sealed class PlayableWorld013CTests
         Assert.All(a.Clubs,c=>{Assert.Equal("ProvisionalSeededOrder-v1",c.Club.RankingInfo!.Method);Assert.Equal(0,c.Club.RankingInfo.Confidence);});
         Assert.Contains(a.Warnings,w=>w.Contains("baixa confiança"));
     }
+    [Theory]
+    [InlineData("REAL_VERIFIED_CURRENT")][InlineData("REAL_CURRENT_VERIFIED")]
+    public void CurrentOriginAcceptsLegacyAndCanonicalNames(string persisted)
+    {
+        var origin=JsonSerializer.Deserialize<WorldPlayerOrigin>("\""+persisted+"\"");
+        Assert.Equal(WorldPlayerOrigin.REAL_CURRENT_VERIFIED,origin);
+        Assert.Equal("\"REAL_CURRENT_VERIFIED\"",JsonSerializer.Serialize(origin));
+    }
+    [Fact]
+    public void NewGameGeneratedPlayersAcquireStableFictionalOriginWithoutChangingContracts()
+    {
+        var request=Request(FootballGender.Female,WorldDataMode.REAL_CLUBS_SIMULATED,true);
+        var world=WorldCreatorEngine.Create(request,WorldCreatorEngine.Preview(request,Selection(FootballGender.Female)));
+        var initial=world.Players[0];var original=initial.CatalogIdentity;
+        var generated=new Player{Id=Guid.NewGuid(),GameWorldId=world.Id,ClubId=world.Clubs[0].Id,Name="Atleta do jogo",Position=PlayerPosition.M,
+            Strength=24,SalaryPerRound=12345.67m,ContractRoundsRemaining=19};
+        world.Players.Add(generated);world.SeasonNumber=2;RuntimePlayerProvenance.EnsureGeneratedPlayers(world);
+        Assert.Equal(WorldPlayerOrigin.FICTIONAL_GENERATED,generated.CatalogIdentity!.Origin);
+        Assert.Equal(2,generated.CatalogIdentity.CreatedInGameSeason);Assert.Equal(12345.67m,generated.SalaryPerRound);Assert.Equal(19,generated.ContractRoundsRemaining);
+        var recorded=generated.CatalogIdentity;RuntimePlayerProvenance.EnsureGeneratedPlayers(world);Assert.Same(recorded,generated.CatalogIdentity);Assert.Same(original,initial.CatalogIdentity);
+        var restored=JsonSerializer.Deserialize<GameWorld>(JsonSerializer.Serialize(world))!;
+        Assert.Equal(recorded.CanonicalIdentity,restored.Players.Single(p=>p.Id==generated.Id).CatalogIdentity!.CanonicalIdentity);
+        var legacy=WorldSeedFactory.CreateSeededWorld();RuntimePlayerProvenance.EnsureGeneratedPlayers(legacy);Assert.All(legacy.Players,p=>Assert.Null(p.CatalogIdentity));
+    }
     [Fact]
     public void CanonicalCurrentPlayerDuplicatesAreRejected()
     {

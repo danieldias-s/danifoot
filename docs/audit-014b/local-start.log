@@ -1,0 +1,3 @@
+PostgreSQL exclusivo 014B: loopback 55437, credenciais próprias em artifacts/014b (fora do Git).
+014B pronta: http://127.0.0.1:5146 | API http://127.0.0.1:5145 | PostgreSQL próprio 55437.
+Serviços existentes da 014B são reutilizados; para encerrar: .\scripts\stop-final-worlds-014b.ps1 -IncludePostgres

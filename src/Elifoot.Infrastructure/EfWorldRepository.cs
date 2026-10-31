@@ -123,6 +123,7 @@ public sealed class EfWorldRepository : IWorldRepository
         await gate.WaitAsync(ct);
         try {
         world.UpdatedAtUtc = DateTime.UtcNow;
+        RuntimePlayerProvenance.EnsureGeneratedPlayers(world);
         MemoryCache[world.Id] = world;
 
         // Avoid serializing full snapshot on every intermediate live match minute except checkpoints (0, 45, 90, 105, 120) or paused/preparing states

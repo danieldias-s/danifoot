@@ -1,0 +1,101 @@
+{
+  "Status": "PASS",
+  "Worlds": [
+    {
+      "World": "8de36795-bb3b-4fb5-ae4d-6e88397d8292",
+      "Gender": "Male",
+      "PurchasePrice": 511382,
+      "TransferMoneyReconciled": true,
+      "TransferOriginPreserved": true,
+      "RenewedSalary": 2169,
+      "RenewalRoundsAddedOnce": 5,
+      "PrincipalPaidOnce": 500000,
+      "InterestAlreadyCharged": 25000,
+      "Auction": {
+        "auctionId": "2ebf5218-f8c0-42b5-a783-5c0c9dcac809",
+        "playerId": "99f71cc8-9296-cc43-a875-f3ae605da018",
+        "displayName": "Atleta fictício Bayer-06",
+        "position": "D",
+        "strength": 25,
+        "behaviorDisplay": "Caceteiro",
+        "isStar": false,
+        "minimumBid": 238519,
+        "currentBid": 380164,
+        "highestBidderClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "highestBidderClubName": "Palmeiras SP",
+        "expiresAtRound": 6,
+        "isClosed": true,
+        "reason": "ContractExpiration",
+        "closureReason": null,
+        "salaryPerRound": 1554
+      },
+      "ExpiryProbe": "Only ContractRoundsRemaining set to 1 through supported editor; original force, salary, origin and engines preserved.",
+      "AdditionalRealRounds": 3,
+      "NextRound": 7,
+      "ClubReconciliations": [
+        {
+          "Club": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+          "Cash": 4963692.78,
+          "LedgerRows": 25,
+          "LedgerDifference": "0",
+          "Squad": 19
+        },
+        {
+          "Club": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+          "Cash": 4466006.29,
+          "LedgerRows": 15,
+          "LedgerDifference": "0",
+          "Squad": 16
+        }
+      ]
+    },
+    {
+      "World": "8c7d87f6-841b-4f74-b292-2c274bfc076a",
+      "Gender": "Female",
+      "PurchasePrice": 253854,
+      "TransferMoneyReconciled": true,
+      "TransferOriginPreserved": true,
+      "RenewedSalary": 1909,
+      "RenewalRoundsAddedOnce": 5,
+      "PrincipalPaidOnce": 500000,
+      "InterestAlreadyCharged": 25000,
+      "Auction": {
+        "auctionId": "5ffadf67-5db4-4064-a078-7f961b3aa753",
+        "playerId": "99f71cc8-9296-cc43-a875-f3ae605da018",
+        "displayName": "Atleta fictício Q107612952-13",
+        "position": "D",
+        "strength": 21,
+        "behaviorDisplay": "Caceteiro",
+        "isStar": false,
+        "minimumBid": 152935,
+        "currentBid": 243757,
+        "highestBidderClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "highestBidderClubName": "Clube de Albergaria",
+        "expiresAtRound": 6,
+        "isClosed": true,
+        "reason": "ContractExpiration",
+        "closureReason": null,
+        "salaryPerRound": 1148
+      },
+      "ExpiryProbe": "Only ContractRoundsRemaining set to 1 through supported editor; original force, salary, origin and engines preserved.",
+      "AdditionalRealRounds": 3,
+      "NextRound": 7,
+      "ClubReconciliations": [
+        {
+          "Club": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+          "Cash": 4952025.7,
+          "LedgerRows": 25,
+          "LedgerDifference": "0",
+          "Squad": 19
+        },
+        {
+          "Club": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+          "Cash": 4323007.27,
+          "LedgerRows": 15,
+          "LedgerDifference": "0",
+          "Squad": 16
+        }
+      ]
+    }
+  ]
+}

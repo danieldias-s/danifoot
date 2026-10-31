@@ -212,6 +212,13 @@ public class ApiAndSignalREndToEndTests
     [InlineData(2, false)] [InlineData(4, false)] [InlineData(6, false)] [InlineData(8, false)]
     [InlineData(2, true)] [InlineData(4, true)] [InlineData(6, true)] [InlineData(8, true)]
     public async Task MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(int coachCount, bool importedWorld)
+        => await RunRoomLifecycle(coachCount,importedWorld);
+
+    [Theory][InlineData(2)][InlineData(4)][InlineData(6)][InlineData(8)]
+    public async Task Final014B_RealClubsAndAuthorizedSimulatedSquadsFullMultiplayerLifecycle(int coachCount)
+        => await RunRoomLifecycle(coachCount,true,true);
+
+    private async Task RunRoomLifecycle(int coachCount,bool importedWorld,bool finalWorld=false)
     {
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
@@ -260,8 +267,14 @@ public class ApiAndSignalREndToEndTests
             var worldEntity = (await repo.GetWorldAsync(worldId))!;
             if (importedWorld)
             {
-                worldEntity = Elifoot.Testing.Imported014AWorlds.Create(
-                    coachCount is 2 or 6 ? FootballGender.Female : FootballGender.Male, 199801 + coachCount);
+                var gender=coachCount is 2 or 6 ? FootballGender.Female : FootballGender.Male;
+                worldEntity = finalWorld ? Elifoot.Testing.Final014BWorlds.Create(gender)
+                    : Elifoot.Testing.Imported014AWorlds.Create(gender,199801+coachCount);
+                if(finalWorld)
+                {
+                    Assert.Equal(WorldDataMode.REAL_CLUBS_SIMULATED,worldEntity.CatalogOrigin!.DataMode);
+                    Assert.All(worldEntity.Players,p=>Assert.NotNull(p.CatalogIdentity));
+                }
                 worldId = worldEntity.Id;
                 await repo.SaveWorldAsync(worldEntity);
                 Assert.NotNull(worldEntity.CatalogOrigin);

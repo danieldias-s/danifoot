@@ -1,0 +1,127 @@
+{
+  "NodeTests": 2,
+  "CapturedAt": "2026-10-31T09:22:07.1016317-03:00",
+  "DistinctDotnetTests": 561,
+  "PreviousTask": "ELIFOOT_FINAL_WORLD_INTEGRATION_014B",
+  "PreviousChanges": [
+    {
+      "Path": "client/elifoot_flutter/lib/catalog_provenance.dart",
+      "Sha256": "454c826a4e06e0062235244b22b05b74e14b5c68ce289ece1a8aaa67e6d79ba4"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/playable_worlds_013c_test.dart",
+      "Sha256": "918582dab259dd92fc686e9f494866695e7ba42bb5720e07cdf2d6442fd88140"
+    },
+    {
+      "Path": "scripts/finance-final-worlds-014b.py",
+      "Sha256": "95bd3f0269fe8532ae2ad1e02dd2c9e163423f4d9cd7acfc8ecc0b9bbdf5347d"
+    },
+    {
+      "Path": "scripts/run-final-api-014b.ps1",
+      "Sha256": "1979a504dc04e066b9df3aae14862b6ff4b9656170ee94062e9612a2061e31a0"
+    },
+    {
+      "Path": "scripts/run-local-014b.ps1",
+      "Sha256": "ec1b3898bb1ef273956545184221fad110e3829efc71fe43406ea277e46bf749"
+    },
+    {
+      "Path": "scripts/serve-final-web-014b.mjs",
+      "Sha256": "4bfceea6508eb976a448266bae09467ff3c62da8bce8931df957e905b4c201f4"
+    },
+    {
+      "Path": "scripts/smoke-final-worlds-014b.py",
+      "Sha256": "bc79f75e728a120c462b82242fa5be13219e22788606f9e96cc6c098f4c5f1a3"
+    },
+    {
+      "Path": "scripts/stop-final-worlds-014b.ps1",
+      "Sha256": "19b4f139f1cf7aa0dc4bf53fef5800d2832e46ace2cae25f9b8ae7413baf00c8"
+    },
+    {
+      "Path": "scripts/test-final-worlds-014b.ps1",
+      "Sha256": "6c85ffcf9427a2151e4b8c56f95c391656a4733aded5df97e39efbc9d553c369"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/PlayableWorldDtos.cs",
+      "Sha256": "0f3c84a7297ecde43627f590a551d6f5c67bebf67c442ecd07e8628d69b233fb"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/WorldPlayerOriginJsonConverter.cs",
+      "Sha256": "f47af996fc7d05146281620ed44a1f936e5b47b24601815715484d1c2fd212a0"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/RuntimePlayerProvenance.cs",
+      "Sha256": "482818f1e0737c1dfdf7b8679bcd062b651d1b87da2a7c0b6b9da581e3443ede"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "7c698a424478728434e2796e19df88d952e1a8098015e6c63328a7c6af703ec9"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableWorld013CTests.cs",
+      "Sha256": "f6be79f1ad3bf31373c2839d413e64db6dcb60c1ee8adcb851db3eb5695f797e"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ApiAndSignalREndToEndTests.cs",
+      "Sha256": "2dfd4fbf23d97cf32abfd8f6041e7f97bc37c19add5b446be8082a48b1d5b152"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Elifoot.Integration.Tests.csproj",
+      "Sha256": "45f1cdc82784d1af065618039830406a3e9ce581eb8a21ef91df2635635c8827"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Integration014ATests.cs",
+      "Sha256": "bfa2cba20dd9c060c851f087be98da552e34fa56ee28aa9e83b15851aa0a6eb4"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayableWorld013CIntegrationTests.cs",
+      "Sha256": "268c7dd7ebb13d7fd8fa143cafa41e40fcdc2fa0154e242d50d6a3f5334e6bd4"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/WorldCreator013ATests.cs",
+      "Sha256": "1f178dccc9e8e3700ef97d1c1c0f81ae80c9b558c1bc4751fe884d6db832b733"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/EconomyBalance012DFixSimulationTests.cs",
+      "Sha256": "5f51bd3f4dba9ad4127e721ddc20f63bf6cdaf5669130bd78dcc8644be979612"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj",
+      "Sha256": "b6c13f3df8c8d3af1031f95d4581cb9337d6a82ea1fb42a8e0d56436f3f54539"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/FinalWorlds014BSimulationTests.cs",
+      "Sha256": "8def073e82c3bf284eb2c1f4c511647a6eb033c1ef3d58d70cebacd3cb44726e"
+    },
+    {
+      "Path": "tests/Shared/Final014BWorlds.cs",
+      "Sha256": "625f801ab9c9deb70c475d3df7f4aa783ac7348e438b6b5014dbdbafd975a918"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/CoverageAudit.cs",
+      "Sha256": "36d07cfbae95f0b7f0ad0638693cd482ee96d253643fdc2f6f58fbba443a3d2f"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Final014BInputs.cs",
+      "Sha256": "3fb1de4856565ea236b4454a20eb4348d6d002c31589377efe9bf061bf3be38b"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Integration014APreservation.cs",
+      "Sha256": "20d6bb1956ede397c5de5af084dd11fb895c85c8584bb72f9b1b72ec5156a855"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/LocalCatalogTarget.cs",
+      "Sha256": "2a46822547dfb97be710f2c9180c5d00b4bb8069b72c7927923df91bcbe32478"
+    },
+    {
+      "Path": "tools/catalog-013b/importer/Program.cs",
+      "Sha256": "6474555088626ef843a293289a6ef02523d19e408720afddaed10b50a9f97f8c"
+    }
+  ],
+  "ReferenceImagesAttached": false,
+  "OtherActiveWorktreeSessionObserved": false,
+  "PreviousRunsFinished": true,
+  "PreviousTaskStatus": "PARTIAL_VISUAL_AUDIT_PENDING",
+  "Task": "ELIFOOT_CLASSIC_UX_AND_PRE_SAVE_EDITOR_014B",
+  "FlutterTests": 76,
+  "FullDotnetExit": 0
+}

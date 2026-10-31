@@ -1,0 +1,29 @@
+  Determinando os projetos a serem restaurados...
+  D:\elifoot_98_014B\src\Elifoot.Domain\Elifoot.Domain.csproj restaurado (em 214 ms).
+  D:\elifoot_98_014B\src\Elifoot.Contracts\Elifoot.Contracts.csproj restaurado (em 198 ms).
+  D:\elifoot_98_014B\tools\seed-generator\Elifoot.SeedGenerator.csproj restaurado (em 214 ms).
+  D:\elifoot_98_014B\src\Elifoot.Application\Elifoot.Application.csproj restaurado (em 214 ms).
+  D:\elifoot_98_014B\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj restaurado (em 1,25 seg).
+  D:\elifoot_98_014B\src\Elifoot.Infrastructure\Elifoot.Infrastructure.csproj restaurado (em 1,34 seg).
+  D:\elifoot_98_014B\tools\catalog-013b\importer\Elifoot.RealDataImporter.csproj restaurado (em 1,34 seg).
+  D:\elifoot_98_014B\tests\Elifoot.Application.Tests\Elifoot.Application.Tests.csproj restaurado (em 1,34 seg).
+  D:\elifoot_98_014B\tests\Elifoot.Simulation.Tests\Elifoot.Simulation.Tests.csproj restaurado (em 1,34 seg).
+  D:\elifoot_98_014B\tests\Elifoot.Integration.Tests\Elifoot.Integration.Tests.csproj restaurado (em 1,42 seg).
+  D:\elifoot_98_014B\src\Elifoot.Api\Elifoot.Api.csproj restaurado (em 1,48 seg).
+  Elifoot.Contracts -> D:\elifoot_98_014B\src\Elifoot.Contracts\bin\Final014B\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_014B\src\Elifoot.Domain\bin\Final014B\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_014B\src\Elifoot.Application\bin\Final014B\net10.0\Elifoot.Application.dll
+  Elifoot.SeedGenerator -> D:\elifoot_98_014B\tools\seed-generator\bin\Final014B\net10.0\Elifoot.SeedGenerator.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98_014B\tests\Elifoot.Domain.Tests\bin\Final014B\net10.0\Elifoot.Domain.Tests.dll
+  Elifoot.Infrastructure -> D:\elifoot_98_014B\src\Elifoot.Infrastructure\bin\Final014B\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.RealDataImporter -> D:\elifoot_98_014B\tools\catalog-013b\importer\bin\Final014B\net10.0\Elifoot.RealDataImporter.dll
+  Elifoot.Application.Tests -> D:\elifoot_98_014B\tests\Elifoot.Application.Tests\bin\Final014B\net10.0\Elifoot.Application.Tests.dll
+  Elifoot.Api -> D:\elifoot_98_014B\src\Elifoot.Api\bin\Final014B\net10.0\Elifoot.Api.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98_014B\tests\Elifoot.Simulation.Tests\bin\Final014B\net10.0\Elifoot.Simulation.Tests.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98_014B\tests\Elifoot.Integration.Tests\bin\Final014B\net10.0\Elifoot.Integration.Tests.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:25.18

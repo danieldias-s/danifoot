@@ -51,10 +51,11 @@ public sealed class PlayableWorld013CIntegrationTests
     public async Task ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender)
     {
         string baseConnection=Environment.GetEnvironmentVariable("ELIFOOT_013C_REAL_CATALOG_PG")??throw new InvalidOperationException("Use PostgreSQL 013C runner.");
-        var parsed=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection);Assert.Equal(55436,parsed.Port);Assert.Equal("127.0.0.1",parsed.Host);
+        var parsed=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection);Assert.True(parsed.Port==55436&&parsed.Database!.StartsWith("elifoot_013c_",StringComparison.Ordinal)||parsed.Port==55437&&parsed.Database!.StartsWith("elifoot_014b_",StringComparison.Ordinal));Assert.Equal("127.0.0.1",parsed.Host);
+        string prefix=parsed.Port==55437?"elifoot_014b_013b_":"elifoot_013c_013b_";
         string suffix=Guid.NewGuid().ToString("N")[..10];
-        string catalog=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection){Database="elifoot_013c_013b_catalog_test_"+suffix}.ConnectionString;
-        string worlds=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection){Database="elifoot_013c_013b_worlds_test_"+suffix}.ConnectionString;
+        string catalog=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection){Database=prefix+"catalog_test_"+suffix}.ConnectionString;
+        string worlds=new Npgsql.NpgsqlConnectionStringBuilder(baseConnection){Database=prefix+"worlds_test_"+suffix}.ConnectionString;
         await using var factory=Factory(catalog,worlds);using var client=factory.CreateClient();
         var owner=Guid.NewGuid();client.DefaultRequestHeaders.Authorization=new("Bearer","localdev-"+owner.ToString("N"));
         await Populate(factory.Services.GetRequiredService<CatalogSyncService>(),gender);

@@ -1,0 +1,14 @@
+[
+  {
+    "Source": "D:\\elifoot_98\\docs\\audit-012d\\solution-final\\real-season-world.json",
+    "Copy": "D:\\elifoot_98_014B\\artifacts\\014b\\old-worlds\\old-0.json",
+    "Sha256": "b26b473b9f617cea029d2ec1f7ac7bbec299ca51322b9e81299d8623d0a22acd",
+    "OriginalWritten": false
+  },
+  {
+    "Source": "D:\\elifoot_98\\docs\\audit-009\\real-season-world.json",
+    "Copy": "D:\\elifoot_98_014B\\artifacts\\014b\\old-worlds\\old-1.json",
+    "Sha256": "caa1b0af4bbd9aedfbfc259f781dada019eb5d52ee01f35fe71ea2b41f12e143",
+    "OriginalWritten": false
+  }
+]

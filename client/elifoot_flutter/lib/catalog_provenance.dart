@@ -5,7 +5,7 @@ String catalogIdentityOrigin(Map<String, dynamic> player) {
   final origin =
       player['playerOrigin'] ?? (identity is Map ? identity['origin'] : null);
   return switch (origin) {
-    'REAL_VERIFIED_CURRENT' =>
+    'REAL_CURRENT_VERIFIED' || 'REAL_VERIFIED_CURRENT' =>
       identity is Map
           ? 'REAL — VÍNCULO COMPROVADO NO SNAPSHOT ${identity['asOf'] ?? ''}'
           : 'REAL — VÍNCULO ATUAL COMPROVADO',

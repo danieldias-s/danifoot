@@ -17,15 +17,15 @@ internal static class Integration014APreservation
         Ledger = world.Transactions.Select(t => new {t.Id,t.Amount,t.ClubId,t.Category})
     }, CatalogImportCodec.Json);
     private static string Hash(string value) => Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(value)));
-    public static async Task Run(string output, bool verify, string[] files)
+    public static async Task Run(string output, bool verify, string[] files, bool final014B = false)
     {
-        string connection = Environment.GetEnvironmentVariable("ELIFOOT_014A_REAL_WORLD_PG") ?? throw new ArgumentException("Conexão 014A ausente.");
+        string connection = Environment.GetEnvironmentVariable(final014B ? "ELIFOOT_014B_REAL_WORLD_PG" : "ELIFOOT_014A_REAL_WORLD_PG") ?? throw new ArgumentException("Conexão 014A ausente.");
         var parsed = new Npgsql.NpgsqlConnectionStringBuilder(connection);
-        if (parsed.Host != "127.0.0.1" || parsed.Port != 55435 || parsed.Database != "elifoot_014a_013b_worlds_real")
+        if (parsed.Host != "127.0.0.1" || parsed.Port != (final014B?55437:55435) || parsed.Database != (final014B?"elifoot_014b_013b_worlds_real":"elifoot_014a_013b_worlds_real"))
             throw new ArgumentException("Somente banco de mundos 014A próprio é aceito.");
         ServiceProvider Provider(string database)
         {
-            if (!database.StartsWith("elifoot_014a_old_", StringComparison.Ordinal)) throw new ArgumentException("Banco histórico fora da 014A.");
+            if (!database.StartsWith(final014B?"elifoot_014b_old_":"elifoot_014a_old_", StringComparison.Ordinal)) throw new ArgumentException("Banco histórico fora da 014A.");
             var selected = new Npgsql.NpgsqlConnectionStringBuilder(connection) { Database = database };
             var services = new ServiceCollection(); services.AddDbContext<ElifootDbContext>(o => o.UseNpgsql(selected.ConnectionString));
             services.AddSingleton<IWorldRepository, EfWorldRepository>(); return services.BuildServiceProvider();
@@ -49,7 +49,7 @@ internal static class Integration014APreservation
             string raw = await File.ReadAllTextAsync(file);
             var world = JsonSerializer.Deserialize<GameWorld>(raw, CatalogImportCodec.Json) ?? throw new ArgumentException("Save inválido.");
             // Historical fixtures reuse an invite code; distinct disposable databases preserve that code unchanged.
-            string database = "elifoot_014a_old_" + Hash(raw)[..12].ToLowerInvariant();
+            string database = (final014B?"elifoot_014b_old_":"elifoot_014a_old_") + Hash(raw)[..12].ToLowerInvariant();
             await using var provider = Provider(database);
             using (var scope = provider.CreateScope()) await scope.ServiceProvider.GetRequiredService<ElifootDbContext>().Database.EnsureCreatedAsync();
             var repo = provider.GetRequiredService<IWorldRepository>();

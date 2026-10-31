@@ -42,6 +42,7 @@ public partial class MultiSeasonAndBenchmarkTests
         var result=RunMultiSeasonExperiment("ECONOMY_BALANCE_012D_FIX_"+name,seed,seasonCount,ScenarioMode.ScenarioA_AllAi,
             observeForce012:(w,phase)=>
             {
+                RuntimePlayerProvenance.EnsureGeneratedPlayers(w);
                 if(phase=="initial")
                 {
                     ConfigureOperatingExperiment(w,name);
@@ -123,7 +124,8 @@ public partial class MultiSeasonAndBenchmarkTests
         if(name=="baseline"&&seed==199801&&seasonCount==100)Assert.Equal(18_107_128_451.84m,final!.Clubs.Sum(c=>c.CashBalance));
         File.WriteAllText(Path.Combine(dir,"seasons.json"),JsonSerializer.Serialize(years,new JsonSerializerOptions{WriteIndented=true}));
         using(var stream=new StreamWriter(new GZipStream(File.Create(Path.Combine(dir,"clubs.json.gz")),CompressionLevel.Fastest)))stream.Write(JsonSerializer.Serialize(clubSeries));
-        File.WriteAllText(Path.Combine(dir,"summary.json"),JsonSerializer.Serialize(new{Case=name,Seed=seed,Seasons=seasonCount,SourceCheckpoint=worldFactory==null?"7529e69":"7a00bdd+47608e9",Gender=final!.Gender.ToString(),WorldSnapshot=final.CatalogOrigin?.DataHash,FixtureWorld=worldFactory!=null,InitialCash=opening,
+        File.WriteAllText(Path.Combine(dir,"summary.json"),JsonSerializer.Serialize(new{Case=name,Seed=seed,Seasons=seasonCount,SourceCheckpoint=worldFactory==null?"7529e69":"7a00bdd+47608e9",Gender=final!.Gender.ToString(),WorldSnapshot=final.CatalogOrigin?.DataHash,FixtureWorld=worldFactory!=null&&final.CatalogOrigin?.DataMode==null,DataMode=final.CatalogOrigin?.DataMode,
+            PlayerOrigins=final.Players.GroupBy(p=>p.CatalogIdentity?.Origin.ToString()??"LEGACY").ToDictionary(g=>g.Key,g=>g.Count()),InitialCash=opening,
             FinalCash=final!.Clubs.Sum(c=>c.CashBalance),FinalDebt=final.BankLoans.Sum(l=>l.RemainingBalance),Transactions=ledgerCount,TransferPairs=pairs.Count,
             result.TotalMatchesCompleted,result.RealMinutesSimulated,result.InvalidLineupSelectionViolations,result.InvalidSquadLimitViolations,result.DoubleSettledMatchFinancialViolations,
             OperatingRules=final.Economy.OperatingRules,SalaryRequests=final.Economy.SalaryRequests.Count,ForcedAuctions=final.Economy.CrisisHistory.Count(e=>e.Kind=="FORCED_AUCTION"),

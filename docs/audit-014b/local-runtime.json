@@ -1,0 +1,10 @@
+{
+  "Api": "http://127.0.0.1:5145",
+  "ApiPid": 23940,
+  "RepeatedStartReusedProcesses": true,
+  "ActualExecution": true,
+  "WebPid": 1504,
+  "Web": "http://127.0.0.1:5146",
+  "Status": "PASS",
+  "PostgresPort": 55437
+}

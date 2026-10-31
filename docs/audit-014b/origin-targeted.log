@@ -1,0 +1,10 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_014B\src\Elifoot.Contracts\bin\Final014B\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_014B\src\Elifoot.Domain\bin\Final014B\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98_014B\tests\Elifoot.Domain.Tests\bin\Final014B\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98_014B\tests\Elifoot.Domain.Tests\bin\Final014B\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_014B\docs\audit-014b\tests\origin-targeted_net10.0_20261031082608.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     3, Ignorado:     0, Total:     3, Duração: 2 s - Elifoot.Domain.Tests.dll (net10.0)

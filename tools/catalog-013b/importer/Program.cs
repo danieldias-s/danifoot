@@ -5,6 +5,10 @@ using Elifoot.Infrastructure.Catalog.Providers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+if (args.Length >= 2 && args[0] is "014b-old-worlds" or "014b-verify-old-worlds") { await Elifoot.RealDataImporter.Integration014APreservation.Run(args[1], args[0] == "014b-verify-old-worlds", args.Skip(2).ToArray(), true); return; }
+
+if (args.Length >= 2 && args[0] == "014b-inputs") { await Elifoot.RealDataImporter.Final014BInputs.Run(args[1]); return; }
+
 if (args.Length >= 2 && args[0] is "014a-old-worlds" or "014a-verify-old-worlds") { await Elifoot.RealDataImporter.Integration014APreservation.Run(args[1], args[0] == "014a-verify-old-worlds", args.Skip(2).ToArray()); return; }
 
 if (args.Length >= 2 && args[0] == "coverage-audit") { await Elifoot.RealDataImporter.CoverageAudit.Run(args[1], args.ElementAtOrDefault(2) ?? "ELIFOOT_013B_CATALOG_PG"); return; }

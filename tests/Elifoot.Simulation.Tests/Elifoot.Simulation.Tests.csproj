@@ -27,5 +27,6 @@
 
   <ItemGroup>
     <Compile Include="..\Shared\Imported014AWorlds.cs" Link="Imported014AWorlds.cs" />
+    <Compile Include="..\Shared\Final014BWorlds.cs" Link="Final014BWorlds.cs" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,47 @@
+{
+  "Status": "PASS",
+  "Cases": [
+    {
+      "Gender": "Male",
+      "StrictRealBlocked": true,
+      "StrictGenerated": 0,
+      "SimulationRefusalBlocked": true,
+      "OneCountryRealOnlyBlocked": true,
+      "OneCountryFreeWorld": "19706adb-6f25-4807-ba72-996916cbda39",
+      "OneCountryFreeSummary": {
+        "verifiedRealClubs": 20,
+        "currentSeasonConfirmedClubs": 20,
+        "completeRealSquads": 0,
+        "incompleteRealSquads": 20,
+        "missingClubSlots": 108,
+        "selectedRealClubs": 20,
+        "selectedFictionalClubs": 108,
+        "realCurrentPlayers": 0,
+        "generatedPlayers": 2304,
+        "initiallyIncompleteSelectedClubs": 128,
+        "selectedReferenceClubs": 0
+      }
+    },
+    {
+      "Gender": "Female",
+      "StrictRealBlocked": true,
+      "StrictGenerated": 0,
+      "SimulationRefusalBlocked": true,
+      "OneCountryRealOnlyBlocked": true,
+      "OneCountryFreeWorld": "4bc1a438-5794-4694-8608-2bb32111be2a",
+      "OneCountryFreeSummary": {
+        "verifiedRealClubs": 1,
+        "currentSeasonConfirmedClubs": 0,
+        "completeRealSquads": 0,
+        "incompleteRealSquads": 1,
+        "missingClubSlots": 127,
+        "selectedRealClubs": 1,
+        "selectedFictionalClubs": 127,
+        "realCurrentPlayers": 0,
+        "generatedPlayers": 2304,
+        "initiallyIncompleteSelectedClubs": 128,
+        "selectedReferenceClubs": 0
+      }
+    }
+  ]
+}

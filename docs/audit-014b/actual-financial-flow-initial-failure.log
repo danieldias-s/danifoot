@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\elifoot_98_014B\scripts\finance-final-worlds-014b.py", line 76, in <module>
+    assert len({t['idempotencyKey'] for t in f['ledger']})==len(f['ledger'])
+                ~^^^^^^^^^^^^^^^^^^
+KeyError: 'idempotencyKey'

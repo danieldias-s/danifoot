@@ -286,6 +286,10 @@ void main() {
         contains('COMPROVADO'),
       );
       expect(
+        catalogIdentityOrigin({'playerOrigin': 'REAL_CURRENT_VERIFIED'}),
+        contains('COMPROVADO'),
+      );
+      expect(
         catalogIdentityOrigin({'playerOrigin': 'REAL_HISTORICAL_REFERENCE'}),
         contains('NÃO É ELENCO ATUAL'),
       );
