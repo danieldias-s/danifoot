@@ -1,0 +1,148 @@
+{
+  "Status": "PASS",
+  "Cases": [
+    {
+      "Case": "baseline",
+      "Seed": 199801,
+      "Transactions": 558212,
+      "ReconciledTransferPairs": 8800,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "18107128451.84"
+    },
+    {
+      "Case": "final",
+      "Seed": 199802,
+      "Transactions": 555700,
+      "ReconciledTransferPairs": 8741,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "404287586.57"
+    },
+    {
+      "Case": "final",
+      "Seed": 199803,
+      "Transactions": 554797,
+      "ReconciledTransferPairs": 8871,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "231901943.09"
+    },
+    {
+      "Case": "h1-annual-sponsor",
+      "Seed": 199801,
+      "Transactions": 558130,
+      "ReconciledTransferPairs": 8813,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "5275210651.93"
+    },
+    {
+      "Case": "h2-quality-linear",
+      "Seed": 199801,
+      "Transactions": 558139,
+      "ReconciledTransferPairs": 8809,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "1307032286.58"
+    },
+    {
+      "Case": "h3-quality-square",
+      "Seed": 199801,
+      "Transactions": 556529,
+      "ReconciledTransferPairs": 8877,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "110950244.98"
+    },
+    {
+      "Case": "h4-debt-reserve",
+      "Seed": 199801,
+      "Transactions": 556871,
+      "ReconciledTransferPairs": 8821,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "201599037.31"
+    },
+    {
+      "Case": "h5-credit-surplus",
+      "Seed": 199801,
+      "Transactions": 556092,
+      "ReconciledTransferPairs": 8856,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "208174554.87"
+    },
+    {
+      "Case": "h6-quality-2p2",
+      "Seed": 199801,
+      "Transactions": 556238,
+      "ReconciledTransferPairs": 8888,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "137353919.79"
+    },
+    {
+      "Case": "h6-quality-2p2",
+      "Seed": 199802,
+      "Transactions": 555633,
+      "ReconciledTransferPairs": 8882,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "120794271.78"
+    },
+    {
+      "Case": "h6-quality-2p2",
+      "Seed": 199803,
+      "Transactions": 554955,
+      "ReconciledTransferPairs": 8755,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "365563613.85"
+    },
+    {
+      "Case": "final",
+      "Seed": 199801,
+      "Transactions": 556092,
+      "ReconciledTransferPairs": 8856,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "208174554.87"
+    },
+    {
+      "Case": "final",
+      "Seed": 199801,
+      "Transactions": 556238,
+      "ReconciledTransferPairs": 8888,
+      "AnnualReconciliations": 100,
+      "ClubYearReconciliations": 12800,
+      "CashDifference": 0,
+      "DebtDifference": 0,
+      "FinalCash": "137353919.79"
+    }
+  ]
+}

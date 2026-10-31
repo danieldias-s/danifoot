@@ -3898,6 +3898,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           ),
           const SizedBox(height: 16),
           if (credit != null) ...[
+            if (_financesData?['annualSponsorshipBudget'] != null)
+              Text('PATROCÍNIO ANUAL: ${formatClassicMoney(_financesData!['annualSponsorshipBudget'])} em ${_financesData!['sponsorshipInstallments']} parcelas'),
+            const Text('FOLHA SALARIAL: por partida oficial disputada.'),
             Text('SALDO DISPONÍVEL: ${formatClassicMoney(_financesData?['availableCash'] ?? cash)}'),
             Text('CRÉDITO INDIVIDUAL: ${credit['activeLoans']}/${credit['loanLimit']} empréstimos; disponíveis: ${credit['availableLoans']}'),
             Text('DÍVIDA TOTAL: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}'),

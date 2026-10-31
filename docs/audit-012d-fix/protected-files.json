@@ -1,0 +1,54 @@
+{
+  "Status": "PASS",
+  "Protected": [
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "01179d6a0f0a073b69ff7bf0589674b664f960fbedcba6e1d5907ea55e18bb71"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DisciplineEngine.cs",
+      "Sha256": "f46f70bbaadc412afc5ed729cbb08760a2f887b10934d582e167d025fdaba313"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "05bd246fccc88a70cec00ff2919c71f4dec762a0e2ddb00979dbfc780565e861"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+      "Sha256": "36bc502e99256ccf10b51446945e46b6c423b410588923083865c87aec519290"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceState.cs",
+      "Sha256": "2b21339b8a72755c52dacb97580835b8351c8bbaff8dc15685b0f8127489add9"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+      "Sha256": "025878825e592cb15898d1d1146879de912296c1f7d04327454909e95994ab82"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "1c620a878306a8de6f885c69ee7e4b6bf99cf89c7b312c47e45c444be8e2af23"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+      "Sha256": "250c1e2cd3280ab178a0821f0f5ee2046721c42b978eb8c292caac21ddae8d24"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "4c3d849a3d84b883b0d755f2edd8ad635af17a49b54d859a6eae1e56f083188e"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyEngine.cs",
+      "Sha256": "07573549fe262e8de665a692956415e38fbdf89322995f652f54ff64cbdb533c"
+    },
+    {
+      "Path": "src/Elifoot.Domain/FinancialInsolvencyEngine.cs",
+      "Sha256": "f01931878fcf7cac35d0a7cbf3f6df171470dfe547da3c4c86b9e0ab3577f40c"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "59660c9e44d2bcebef501aafd502a1291f5413de1659a0da464686dfe732381b"
+    }
+  ],
+  "SalaryEngineOnlyChangedAiBorrowingDecision": true
+}

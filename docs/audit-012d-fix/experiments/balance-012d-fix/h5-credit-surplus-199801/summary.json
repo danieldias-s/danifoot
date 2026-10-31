@@ -1,0 +1,28 @@
+{
+  "Case": "h5-credit-surplus",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 208174554.87,
+  "FinalDebt": 3102782.52,
+  "Transactions": 556092,
+  "TransferPairs": 8856,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3262170,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h5-credit-surplus",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2,
+    "ReserveBorrowedCapitalForAi": true,
+    "AiCreditRequiresOperatingSurplus": true
+  },
+  "SalaryRequests": 130,
+  "ForcedAuctions": 93,
+  "Unsold": 27,
+  "Crises": 63,
+  "Recovered": 60
+}

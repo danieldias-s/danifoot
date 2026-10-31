@@ -11,6 +11,8 @@ class EconomyApi extends FakeGameplay011ApiClient {
   Future<Map<String, dynamic>> getClubFinances(String worldId, String clubId) async => {
     ...await super.getClubFinances(worldId, clubId),
     'availableCash': 123456,
+    'annualSponsorshipBudget': 185000,
+    'sponsorshipInstallments': 22,
     'credit': {'activeLoans': paid ? 0 : 1, 'loanLimit': 2, 'availableLoans': paid ? 2 : 1,
       'outstandingDebt': paid ? 0 : 525000, 'interestPerMatch': paid ? 0 : 25000},
     'loans': [{'id': 'loan', 'mode': legacy ? 'LegacyInstallment' : 'ClassicFixed', 'principalAmount': 500000,
@@ -58,6 +60,8 @@ void main() {
       await tester.binding.setSurfaceSize(Size(width, 900)); await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       expect(find.textContaining('1/2 empréstimos'), findsOneWidget);
+      expect(find.text('PATROCÍNIO ANUAL: R\$ 185.000 em 22 parcelas'), findsOneWidget);
+      expect(find.text('FOLHA SALARIAL: por partida oficial disputada.'), findsOneWidget);
       expect(find.textContaining('R\$ 525.000'), findsWidgets);
       expect(find.text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'), findsOneWidget);
     }

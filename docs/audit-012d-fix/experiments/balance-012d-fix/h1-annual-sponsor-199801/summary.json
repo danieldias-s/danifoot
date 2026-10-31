@@ -1,0 +1,26 @@
+{
+  "Case": "h1-annual-sponsor",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 5275210651.93,
+  "FinalDebt": 14632660.02,
+  "Transactions": 558130,
+  "TransferPairs": 8813,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3256890,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h1-annual-sponsor",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 0
+  },
+  "SalaryRequests": 130,
+  "ForcedAuctions": 13,
+  "Unsold": 0,
+  "Crises": 4,
+  "Recovered": 2
+}

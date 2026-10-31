@@ -147,7 +147,7 @@ public static partial class ClassicEconomyEngine
             if(!w.Economy.AiFinancialRounds.Add(key))continue;
             decimal payroll=w.Players.Where(p=>p.ClubId==c.Id).Sum(p=>p.SalaryPerRound);
             var credit=AssessCredit(w,c);decimal reserve=payroll*3+credit.InterestPerMatch*2+c.Stadium.BuiltCapacity*.7m;
-            if(c.CashBalance<Math.Max(0,payroll)&&credit.AvailableLoans>0)TakeClassicLoan(w,c,"ai-loan:"+key);
+            if(c.CashBalance<Math.Max(0,payroll)&&credit.AvailableLoans>0&&OperatingEconomyEngine.AiCanServiceNewLoan(w,c))TakeClassicLoan(w,c,"ai-loan:"+key);
             foreach(var r in pendingByClub.GetValueOrDefault(c.Id)??[])
             {
                 decimal increase=r.RequestedSalary-r.CurrentSalary;

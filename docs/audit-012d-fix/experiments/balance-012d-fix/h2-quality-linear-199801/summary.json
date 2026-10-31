@@ -1,0 +1,26 @@
+{
+  "Case": "h2-quality-linear",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 1307032286.58,
+  "FinalDebt": 14759959.25,
+  "Transactions": 558139,
+  "TransferPairs": 8809,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3261120,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h2-quality-linear",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 1
+  },
+  "SalaryRequests": 131,
+  "ForcedAuctions": 9,
+  "Unsold": 0,
+  "Crises": 3,
+  "Recovered": 1
+}

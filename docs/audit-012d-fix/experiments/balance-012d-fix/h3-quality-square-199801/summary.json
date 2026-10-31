@@ -1,0 +1,26 @@
+{
+  "Case": "h3-quality-square",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 110950244.98,
+  "FinalDebt": 112202916.97,
+  "Transactions": 556529,
+  "TransferPairs": 8877,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3262140,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h3-quality-square",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2
+  },
+  "SalaryRequests": 130,
+  "ForcedAuctions": 110,
+  "Unsold": 25,
+  "Crises": 28,
+  "Recovered": 17
+}

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="9e23b2dd-ad70-4f9b-8ebd-d2d5e9dc2d70" name="Daniel@DESKTOP-A5J5UME 2026-10-30 19:30:33" runUser="DESKTOP-A5J5UME\CodexSandboxOffline" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-30T19:30:33.4243158-03:00" queuing="2026-10-30T19:30:33.4243160-03:00" start="2026-10-30T19:27:46.5804230-03:00" finish="2026-10-30T19:30:33.4365292-03:00" />
+  <TestSettings name="default" id="31b3ec32-4694-41a8-8974-b8f4759bf172">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-30_19_30_33" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0b7e0604-6ea8-4a54-9f45-775d083576a2" testId="0e1dcb5a-d394-b952-4e20-862b876acd99" testName="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.EconomyBalance012DFix_Experiment" computerName="DESKTOP-A5J5UME" duration="00:02:45.3388828" startTime="2026-10-30T19:27:47.7947046-03:00" endTime="2026-10-30T19:30:33.1526266-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0b7e0604-6ea8-4a54-9f45-775d083576a2" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests.EconomyBalance012DFix_Experiment" storage="d:\elifoot_98\tests\elifoot.simulation.tests\bin\release\net10.0\elifoot.simulation.tests.dll" id="0e1dcb5a-d394-b952-4e20-862b876acd99">
+      <Execution id="0b7e0604-6ea8-4a54-9f45-775d083576a2" />
+      <TestMethod codeBase="D:\elifoot_98\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Simulation.Tests.MultiSeasonAndBenchmarkTests" name="EconomyBalance012DFix_Experiment" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0e1dcb5a-d394-b952-4e20-862b876acd99" executionId="0b7e0604-6ea8-4a54-9f45-775d083576a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.17]   Discovering: Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:00:00.34]   Starting:    Elifoot.Simulation.Tests&#xD;
+[xUnit.net 00:02:45.77]   Finished:    Elifoot.Simulation.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

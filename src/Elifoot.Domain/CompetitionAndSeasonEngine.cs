@@ -448,6 +448,7 @@ public static class CompetitionAndSeasonEngine
     /// </summary>
     public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world)
     {
+        OperatingEconomyEngine.EnsureScheduledRules(world);
         CoachCareerEngine.EnsureMigrated(world);
         var scorerAwards = PlayerStatisticsEngine.AwardSeason(world, world.SeasonNumber);
         var div1 = GetDivisionStandings(world, DivisionTier.PrimeiraDivisao);
@@ -608,6 +609,7 @@ public static class CompetitionAndSeasonEngine
         if (ClassicForceEvolutionEngine.IsActive(world))
             ClassicForceEvolutionEngine.AdvanceToDate(world, world.ClassicForce.GameDate.AddDays(21));
         world.SeasonNumber++;
+        OperatingEconomyEngine.EnsureScheduledRules(world);
         InitializeSeasonFixtures(world);
         GenerateJobInvitationsForUnemployedHumans(world);
 

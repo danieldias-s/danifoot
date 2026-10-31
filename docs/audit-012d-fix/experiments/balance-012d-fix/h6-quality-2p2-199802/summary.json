@@ -1,0 +1,28 @@
+{
+  "Case": "h6-quality-2p2",
+  "Seed": 199802,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 120794271.78,
+  "FinalDebt": 2755147.34,
+  "Transactions": 555633,
+  "TransferPairs": 8882,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3258660,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h6-quality-2p2",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2.2,
+    "ReserveBorrowedCapitalForAi": true,
+    "AiCreditRequiresOperatingSurplus": true
+  },
+  "SalaryRequests": 115,
+  "ForcedAuctions": 131,
+  "Unsold": 38,
+  "Crises": 117,
+  "Recovered": 108
+}

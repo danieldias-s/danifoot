@@ -6,6 +6,9 @@ public class ClassicEconomyState
 {
     public int Version { get; set; }
     public ClassicEconomyRules Rules { get; set; } = new();
+    public OperatingEconomyRules OperatingRules { get; set; } = new();
+    public int? OperatingUpgradeSeason { get; set; }
+    public Dictionary<string,SponsorSeasonBudget> SponsorshipBudgets { get; set; } = new();
     public Dictionary<string,FinancialCommandReceipt> Commands { get; set; } = new();
     public List<SalaryRaiseRequest> SalaryRequests { get; set; } = new();
     public Dictionary<Guid,SalaryEligibility> SalaryEligibility { get; set; } = new();

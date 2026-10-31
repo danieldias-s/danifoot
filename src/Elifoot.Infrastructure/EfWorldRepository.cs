@@ -45,6 +45,7 @@ public sealed class EfWorldRepository : IWorldRepository
             PlayerStatisticsEngine.EnsureMigrated(world);
             DisciplineEngine.EnsureMigrated(world);
             ClassicEconomyEngine.EnsureMigrated(world);
+            OperatingEconomyEngine.EnsureScheduledRules(world);
             MemoryCache[world.Id] = world;
         }
         return world;
@@ -79,6 +80,7 @@ public sealed class EfWorldRepository : IWorldRepository
             PlayerStatisticsEngine.EnsureMigrated(world);
             DisciplineEngine.EnsureMigrated(world);
             ClassicEconomyEngine.EnsureMigrated(world);
+            OperatingEconomyEngine.EnsureScheduledRules(world);
             MemoryCache[world.Id] = world;
         }
         return world;
@@ -106,6 +108,7 @@ public sealed class EfWorldRepository : IWorldRepository
                     PlayerStatisticsEngine.EnsureMigrated(w);
                     DisciplineEngine.EnsureMigrated(w);
                     ClassicEconomyEngine.EnsureMigrated(w);
+                    OperatingEconomyEngine.EnsureScheduledRules(w);
                     MemoryCache[w.Id] = w;
                     result.Add(w);
                 }

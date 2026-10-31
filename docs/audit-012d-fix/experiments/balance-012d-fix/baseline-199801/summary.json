@@ -1,0 +1,21 @@
+{
+  "Case": "baseline",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 18107128451.84,
+  "FinalDebt": 0,
+  "Transactions": 558212,
+  "TransferPairs": 8800,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3254370,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "SalaryRequests": 133,
+  "ForcedAuctions": 1,
+  "Unsold": 0,
+  "Crises": 1,
+  "Recovered": 1
+}

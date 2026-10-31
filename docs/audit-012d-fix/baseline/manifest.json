@@ -1,0 +1,527 @@
+{
+  "Head": "7529e69845844f91c1d8aea3bb431ef2aa212c0e",
+  "TrackedStatus": "",
+  "Worktrees": "worktree D:/elifoot_98\nHEAD 7529e69845844f91c1d8aea3bb431ef2aa212c0e\nbranch refs/heads/master\n\nworktree D:/elifoot_98_013A\nHEAD 40e71b4c1424fe9c5942de405c39c457ef4deac6\nbranch refs/heads/feature/real-football-data-013b\n\n",
+  "Files": [
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Sha256": "6deaad0b227caf69a154a1abe2c889aa911acf5ebfff7d5b8a435dd62c372c9a"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/api_environment.dart",
+      "Sha256": "8179883d88f2961ba41983378e3dd2358d299a78d699413f8585861f0f865b24"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "1427aae59d839a001256e123f6c35fb908b5e120a8959e04f1aeffe4639a4c15"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Sha256": "e11c8bc88b45608fd75daf9b02f12bf3cc9973595b9a7a587051276e781677ce"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/qa_mobile.dart",
+      "Sha256": "ae9e37047a8e528a1f250cdefca866bd422caf56523f37708bd55a9c67ee17b8"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store.dart",
+      "Sha256": "c01afb381fd4a59ee7fa1db01f3b07c5700dbfd5d0a1b5fae4c810f284d98266"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_stub.dart",
+      "Sha256": "6c6dd5a4f71713b8bc3102f2b9e6075d81ee5b0005b58fe7c77ec79b8ace41c5"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/session_store_web.dart",
+      "Sha256": "96c7da7f7d788de8a8fb9d87a81baea5c25bc87cca890a1604fce3facf3f29c1"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Sha256": "b4931bce928267975acfa971cfe811953393949ae6fc9ff47ab3ca61158ce196"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/api_environment_test.dart",
+      "Sha256": "5fc7e9f4b32c3b07de031ed22ff2e1967c66b047b0f14c56a28c89b2d53f8732"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/career_api_test.dart",
+      "Sha256": "269f0ccb9be672a130f22c1f056f2b73ad0f4ad37b9481ca947df9116d5e6d31"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/classic_force_012c_test.dart",
+      "Sha256": "77e6c212f190f53aab1daf17847c17acf8665cb3aa8a321711467029d5402d01"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/complete_gameplay_011_test.dart",
+      "Sha256": "946cd302ede22777f1f1b0b3370cd74470ceda52c11736d1172fe5bcefb9669f"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/discipline_012c_test.dart",
+      "Sha256": "81e7eb15b217051cf884e35c80a9e1b2bfba54686894607bfdd69328cc0de2c5"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_api_test.dart",
+      "Sha256": "9d2d375968399444d81f9fb209c8bd4f9702f7fa96fceda0c2d72908ca8f70ce"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_widget_test.dart",
+      "Sha256": "f0ae937982a88d94faa602926fc3e757b516ce5295e5d3f12897d4d9c4540921"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_api_test.dart",
+      "Sha256": "bec8598c76616d371aade99c227c7be1b49eba70608e0b05f7c88cbeb207c5cd"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Sha256": "10b7ded5c30b434d35422b1244a10a64f0c88c59b91f9fd9d49edc7c6e62d26b"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_strength_012_test.dart",
+      "Sha256": "7f8f699361a53142c679f979d5bc680a75a783dead59c4acdd83ee489fab3aea"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/session_store_test.dart",
+      "Sha256": "09817486643f0b001195ecd1887e542cf1e1bb2802c1a3b6168e8602a144fa2e"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/visual_polish_010_test.dart",
+      "Sha256": "846acea263036d8d18e35271042edc89dd6e683801b2a77a867333683b71f952"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Sha256": "76e99a1f1c83c00c5133c49821b9d4859ee9626007a480fe287b6515e55114f7"
+    },
+    {
+      "Path": "scripts/backup-restore.ps1",
+      "Sha256": "0f52a1290f3bb0dfdc735246e7c3d17915c0902a8a58487676eaef9fbe171859"
+    },
+    {
+      "Path": "scripts/backup-restore.sh",
+      "Sha256": "105e0281513002afab2b592b9011b17980ba1a6946b609f52e634d2b68f2e132"
+    },
+    {
+      "Path": "scripts/build-android-qa.ps1",
+      "Sha256": "9c0251acefbc18208e2500ed7b416e16890f958bc72f9d94c4f07545c2f49947"
+    },
+    {
+      "Path": "scripts/capture-android-qa-stages.mjs",
+      "Sha256": "218b6a252c0e1b77ddc94cd158109ce20c4dbca716facb5facc37411981eb3a6"
+    },
+    {
+      "Path": "scripts/capture-player-ui-data-009.mjs",
+      "Sha256": "70178c9a045b468efe1f60f5f88165801ee9345c5892345a75ade677de27a51c"
+    },
+    {
+      "Path": "scripts/collect-android-isolation.mjs",
+      "Sha256": "de988900b8a0e38b59b4063ac31f9d66dcbc423d92108df879956e80056bb3a0"
+    },
+    {
+      "Path": "scripts/finish-metric-ai-007.mjs",
+      "Sha256": "0f4aad5357e2e5f72c1444dceef19ceaae77cf6d53fb83092ec1527e885f5326"
+    },
+    {
+      "Path": "scripts/report-classic-force-012c.mjs",
+      "Sha256": "44c28830e7592b6879f282043b4797f9822631999f16968c8ba7b434e3cc1c78"
+    },
+    {
+      "Path": "scripts/report-coach-career-008.mjs",
+      "Sha256": "f102a4c87b07495e6fd66f66405296f554519c5c4149244f54a26e358e1a022b"
+    },
+    {
+      "Path": "scripts/report-discipline-012c.mjs",
+      "Sha256": "22b6f0ac094300c0bb6107aa6f8e2a33f5b98bcd6442c5f32dc87aec97c1d766"
+    },
+    {
+      "Path": "scripts/report-metric-ai-007.mjs",
+      "Sha256": "54e9be73d006e30bb0d641ff3ca80187ac7d55119d83cfefe4aba499025d2d69"
+    },
+    {
+      "Path": "scripts/report-player-force-012.mjs",
+      "Sha256": "51bed699de1f79a08838e7126676c926ab7e07c1a82d72c2606b4f13ba19acf0"
+    },
+    {
+      "Path": "scripts/report-player-force-012b.mjs",
+      "Sha256": "be208614914d7ddcec29720a9ec8a4c9277163844009be4e58eb40cda4bcd445"
+    },
+    {
+      "Path": "scripts/report-player-rankings-009.mjs",
+      "Sha256": "4fed6331b6985101b0edc01d9e252347d1446451ca7575e032ca211b039e1f39"
+    },
+    {
+      "Path": "scripts/report_economy_012d.py",
+      "Sha256": "3dc425ef5d0ceb77e8eba46a3a5d043978913bd9bc73ed76895aabacdd44d3b4"
+    },
+    {
+      "Path": "scripts/research-player-force-012b.mjs",
+      "Sha256": "803c8def0d0f5644672416aa5c8c554f68d62dad97c350cc289ed1d0ce5fae68"
+    },
+    {
+      "Path": "scripts/run-android-isolation-case.mjs",
+      "Sha256": "337feda342d176b93e525a6bb8d651be8eaafdbf2da753a8030b3555af33748e"
+    },
+    {
+      "Path": "scripts/run-android-qa.ps1",
+      "Sha256": "15903b669988b7aa9969233e526a6433ffb067c204dad75874aa9ab46576e926"
+    },
+    {
+      "Path": "scripts/run-dev.ps1",
+      "Sha256": "f7052290d0d7bc5cb1182ba8dc88b1df2e22f69754a5b2d0943dbe77e3143b16"
+    },
+    {
+      "Path": "scripts/run-dev.sh",
+      "Sha256": "ffb0856f98323fa62167d9f5ae69a7a4217483528e9c432e50eb1b9c327b60d1"
+    },
+    {
+      "Path": "scripts/run-web.ps1",
+      "Sha256": "58062b873f1b2d2cc93955286bdaf5e61b090a590307dca3f2fc14a53e156fc1"
+    },
+    {
+      "Path": "scripts/run_playtest_011.ps1",
+      "Sha256": "c3048d7c9941c4d33ac328151b61ec4441faf4472d630433e7ae23f377f235b4"
+    },
+    {
+      "Path": "scripts/serve-web.mjs",
+      "Sha256": "c0e84193230700b4612c8bb55118ad8105afb18e8dd065cada183d2e4c0dc340"
+    },
+    {
+      "Path": "scripts/start-android-qa-emulator.ps1",
+      "Sha256": "9aec9b1679fb9942aee14ccc356e4861da86fa622dcb5aeb833cc619d1501a83"
+    },
+    {
+      "Path": "scripts/verify-player-rankings-009.mjs",
+      "Sha256": "b3cbc7c9ee4d367d23ce330f77ea9c57a50916386625039770623abe585adef6"
+    },
+    {
+      "Path": "src/Elifoot.Api/Elifoot.Api.csproj",
+      "Sha256": "bbe816b09513cbbfc390c72187b33d4159c91c3ff19226379c85d65f804d3222"
+    },
+    {
+      "Path": "src/Elifoot.Api/Hubs/GameRoomHub.cs",
+      "Sha256": "e5b36979934b04c866abf90a6f9bcd2790c7f2edeaa46c592bad523c76a3a996"
+    },
+    {
+      "Path": "src/Elifoot.Api/PlayerRankingsEndpoints.cs",
+      "Sha256": "c1e2bdedfe58987c6f7245de869f60e3d69308c2cadbc0514ed79b8c3db4a246"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Sha256": "2386e183a35339984534a281569c30e13894180f8e8e8a095cc44d55257aa46e"
+    },
+    {
+      "Path": "src/Elifoot.Api/Properties/launchSettings.json",
+      "Sha256": "906e31f682e30efd3a0f55bf4f4da27496502916e6b7c751ccbd8a36963ecd16"
+    },
+    {
+      "Path": "src/Elifoot.Api/Services/RoomClockBackgroundService.cs",
+      "Sha256": "cebc3a296de65907e39615cadc4f8f3a85746217228eaabd59d920c1be3cb360"
+    },
+    {
+      "Path": "src/Elifoot.Api/appsettings.Development.json",
+      "Sha256": "73f95f9e0ceb205fc1c4dc50c07697fcfa29d7087868c2aef1d504cb38c771ec"
+    },
+    {
+      "Path": "src/Elifoot.Api/appsettings.json",
+      "Sha256": "a75f312fe1e24c13587c09f5a93d90579767881853f608b0716edb606f62d641"
+    },
+    {
+      "Path": "src/Elifoot.Application/ClubAndMarketApplicationService.cs",
+      "Sha256": "011e07cec4f90f701cbaa66061e476095a4e798bf05e1a2c92ed982a31182c93"
+    },
+    {
+      "Path": "src/Elifoot.Application/Elifoot.Application.csproj",
+      "Sha256": "382f2f26b23f5cb75d268cc99c5c975bc8f497ff1fd858d422977069c97bcb15"
+    },
+    {
+      "Path": "src/Elifoot.Application/FinancialCommandsApplicationService.cs",
+      "Sha256": "11e4f28dc4633a7060d68a7f73370c719100d39af5bd4c89f2bac94fbfa9cab6"
+    },
+    {
+      "Path": "src/Elifoot.Application/Interfaces.cs",
+      "Sha256": "6549d5ccc79c3fdc26438542360182f458fbe037b10a02df07ee3c23ee4733a8"
+    },
+    {
+      "Path": "src/Elifoot.Application/MultiplayerRoundOrchestrator.cs",
+      "Sha256": "6a3adc5071e89599e23c6153504e40141f312e4b67c33e98795fe3e09f976366"
+    },
+    {
+      "Path": "src/Elifoot.Application/PlayerRankingsApplicationService.cs",
+      "Sha256": "77167aa5fd239edc7ff2a029cfd5716dc1dbcedb89305be8eae71d9f70a1e13e"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Dtos.cs",
+      "Sha256": "a7654ab102e775de7d766a812c3cf91e199a09022146cdd2903d50d40c81b7b9"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/EconomyDtos.cs",
+      "Sha256": "44f4b711e1791c46aff8b56c0d974bfd76d0e896fe9f3c5466407d8793248e62"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Elifoot.Contracts.csproj",
+      "Sha256": "2c82dae7a6492e5dc0d99b6b5a5d1c89a4702b892f71757981e46302949d6115"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Enums.cs",
+      "Sha256": "d766592a900f7666bd48414b495e1814a1b73a33e6d3626b7cef5008e270c562"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerDisciplineDtos.cs",
+      "Sha256": "ebc06f889ad7ac1dbd3c033cff3c1553be1eac76570a87cb5be51f6e10148e5f"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerRankingsDtos.cs",
+      "Sha256": "e4d3fe4bde39a317116cd72e82ee0777f181e92d1d9e38f36f477f0234cda40b"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/PlayerStrengthDtos.cs",
+      "Sha256": "499d43520c9986a08abf6cba4e1c4b80bc2f5ee4e74b96e82d6da85a15be977a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiManagerBrain.cs",
+      "Sha256": "1c620a878306a8de6f885c69ee7e4b6bf99cf89c7b312c47e45c444be8e2af23"
+    },
+    {
+      "Path": "src/Elifoot.Domain/AiMarketMetrics.cs",
+      "Sha256": "e159ecfdb285bceed70f9cfa90af7a6cfc6c9338f674bd3ab8f4f87a21d8258e"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyEngine.cs",
+      "Sha256": "07573549fe262e8de665a692956415e38fbdf89322995f652f54ff64cbdb533c"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyState.cs",
+      "Sha256": "815733222e6a17319583c7963051b24ec6aa470d5fbc5042396aab72eed5511c"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs",
+      "Sha256": "36bc502e99256ccf10b51446945e46b6c423b410588923083865c87aec519290"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicForceState.cs",
+      "Sha256": "2b21339b8a72755c52dacb97580835b8351c8bbaff8dc15685b0f8127489add9"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CoachCareerEngine.cs",
+      "Sha256": "250c1e2cd3280ab178a0821f0f5ee2046721c42b978eb8c292caac21ddae8d24"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "4b493097538f078a4c31c999757bd6404346d5ae23f98fc12d3c8b2a9362c530"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DeterministicRng.cs",
+      "Sha256": "c0cfda1eb0327b738ab2cf989e8ec2d2879625ab113d76aae7918ae1bf2bf932"
+    },
+    {
+      "Path": "src/Elifoot.Domain/DisciplineEngine.cs",
+      "Sha256": "f46f70bbaadc412afc5ed729cbb08760a2f887b10934d582e167d025fdaba313"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Elifoot.Domain.csproj",
+      "Sha256": "d9d301d3277fc3b4e8c1c2bf6050af5cbe64e1d61af83530f965e79bb4113a6f"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Entities.cs",
+      "Sha256": "59660c9e44d2bcebef501aafd502a1291f5413de1659a0da464686dfe732381b"
+    },
+    {
+      "Path": "src/Elifoot.Domain/FinancialInsolvencyEngine.cs",
+      "Sha256": "f01931878fcf7cac35d0a7cbf3f6df171470dfe547da3c4c86b9e0ab3577f40c"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "Sha256": "3c6e291052f2ccda0227868850314ac0fa5aab912984a4a8a7da8b0b31488947"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MatchEngine.cs",
+      "Sha256": "01179d6a0f0a073b69ff7bf0589674b664f960fbedcba6e1d5907ea55e18bb71"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEngine.cs",
+      "Sha256": "4c3d849a3d84b883b0d755f2edd8ad635af17a49b54d859a6eae1e56f083188e"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStatisticsEntities.cs",
+      "Sha256": "dd085be9f5f7f224b5f83a2ab85f053998c22c8e0b59bb4c0dd9f78d2dfd037d"
+    },
+    {
+      "Path": "src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs",
+      "Sha256": "025878825e592cb15898d1d1146879de912296c1f7d04327454909e95994ab82"
+    },
+    {
+      "Path": "src/Elifoot.Domain/SalaryContractsEngine.cs",
+      "Sha256": "8c0063ed7c1bfca9ad88bb7cdc0cd6926e09af2899fa04b4c68a398543ab403b"
+    },
+    {
+      "Path": "src/Elifoot.Domain/TacticsAndSquadRules.cs",
+      "Sha256": "05bd246fccc88a70cec00ff2919c71f4dec762a0e2ddb00979dbfc780565e861"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldEditorAndPackageService.cs",
+      "Sha256": "f00b476a8a5341b41bcaabc0ecc1198f5946112aa792ba095973adc939668c8f"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Sha256": "718ab9ed22cba6ca13eade222d460548a21f0b222cf6d9f71ce45f706ab50237"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "b6e3bab4e1adbbc93aeca27c14e61f72787e07745eb3116f319e721c552d292a"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Elifoot.Infrastructure.csproj",
+      "Sha256": "a74bd7d148035c2ac9d097ee1f15e6417ba7333d000c21d7b2d2539f4f78c1f2"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/ElifootDbContext.cs",
+      "Sha256": "3ff1c9423deef8ac9d74f6a6abb6b0a03b0696c8ddb2673ffdd1178ee615af73"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/CoachCareer008ReadinessTests.cs",
+      "Sha256": "3a5f88580e98720d74fadb53a8c58aa1cb8641b3e513807bdd61bcf8df69e8ec"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/Elifoot.Application.Tests.csproj",
+      "Sha256": "242960402ed37597bd082e35e2b2c6ecdf6d5e8d4f58edaeb032857488eb0841"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/FinancialCommandDurability012DTests.cs",
+      "Sha256": "fe900f7729c6763ea740bc18d51ff94935a4e15c285e1fd66afb5f2bf2e6ba1b"
+    },
+    {
+      "Path": "tests/Elifoot.Application.Tests/MultiplayerSynchronizationAndPauseTests.cs",
+      "Sha256": "977a8e2b47b493c2a108751359213d308cb54ad9c267dc218c49897678179f89"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicEconomy012DTests.cs",
+      "Sha256": "9b79991c54403373a25661417082aefcebc85e6092584b1e237b0974b0110258"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs",
+      "Sha256": "0db24b71eb1e4bb0ef6a3222256f3f785daa4e05a27412c293a25205effdafd0"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/CoachCareer008Tests.cs",
+      "Sha256": "26b1b3bc0d5644de23668a948d8cbcb5915535d2ffa9ef72f937f744b6347dbd"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Discipline012CTests.cs",
+      "Sha256": "8f3095cb07913b1c81141ebdf835ae1f20340475278d75c13127af12609cd493"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/DomainEngineAndRulesTests.cs",
+      "Sha256": "5021d01a8ea898e13d2a3e27d223d0131f00b82f29ce4b8201bdf26ab35fe236"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/Elifoot.Domain.Tests.csproj",
+      "Sha256": "afc3b0a042e3abf36989621716488a9950819dd123718b766fc03f75366dcf18"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/MetricAiAudit007Tests.cs",
+      "Sha256": "8ae1d0fb8342a7328cc4d274c3bcd12f73c82b17d119d50fa30a91bf271ce372"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableEconomyRegressionTests.cs",
+      "Sha256": "05066f8208e74f64c7ac78f117d66ef9568a43a84381c36dd10fd186604d54a4"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012BPublicModelTests.cs",
+      "Sha256": "a52c8e3c20988eab0b71a6a6cd5af0408d26210c20249feaaeb2c94b6cf25ece"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerForce012Tests.cs",
+      "Sha256": "586f37fb566c751c31804cf200dd89ba7da37f9a1c726df942a3269b4ae7745e"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayerRankings009Tests.cs",
+      "Sha256": "a0c709835eb77750a1ca3ffc4461b0fa6c23c8181fce530c38a8190da8c45fd0"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ApiAndSignalREndToEndTests.cs",
+      "Sha256": "bdbfc193889c0153cc535eb25fa765dd1bfeb1063dde1b71da312ea90a66467c"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicEconomy012DIntegrationTests.cs",
+      "Sha256": "9dc16acdad6781aebf7c7346dc0b720233bd46fa716249b804c465310dd39a56"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/ClassicForce012CIntegrationTests.cs",
+      "Sha256": "e7be8b00f9b9f169327bbe7a7efda8bf1aa3ba7aa07853ca872ae2b9f43fa86a"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/CoachCareer008IntegrationTests.cs",
+      "Sha256": "be2b825b37f87e538a7059921d2142d629690148cfe4a774d2e2b24f0ae0052e"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Discipline012CIntegrationTests.cs",
+      "Sha256": "7c08c7ec52b33f85e775c1363961a39e998a1fa4abb6bf6789e483042b7050dc"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/Elifoot.Integration.Tests.csproj",
+      "Sha256": "545ff388714f7c5a072db842be87e498e328ab44ce380e0f2f506dedb83b8092"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/FinancialPersistence007Tests.cs",
+      "Sha256": "8d224419216b1b176ed995132bfb149076d61dafbd95d6939205a6b51c049737"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayableQaRegressionTests.cs",
+      "Sha256": "e1afad0bd168cd97ce0e934202241d3bc3c5dba76b1c4c272eb7189aa2d51f84"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerForce012IntegrationTests.cs",
+      "Sha256": "587c159258a4cfdb7e320d931cbc6b8ba6cfe837f943a7678c16a8337af53383"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/PlayerRankings009IntegrationTests.cs",
+      "Sha256": "9aa60cfa188d8ce959a46f081b690ec4497f985d99f376b7f21185015bca9de3"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicEconomy012DSimulationTests.cs",
+      "Sha256": "7fcef10d88b189cdbe997fa743cdeab40c828f859b2c26dd890ca2e3e3993b2b"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CInjuryTriggerTests.cs",
+      "Sha256": "6d9057c1deab55c77f39106cd1774fc7074c01aabfa74810886cf36361493f9f"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/ClassicForce012CSimulationTests.cs",
+      "Sha256": "a4a9e85ab0a88078510ea72e8d46b619376e87002deb7dfab4c404641c9c6f36"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/CoachCareer008SimulationTests.cs",
+      "Sha256": "c9e98276fb45a8301b3e52ee213330a6e151488d39c31744e38ca953c5cc6422"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Discipline012CSimulationTests.cs",
+      "Sha256": "9b0571008f175e153fe0b22162fc57b30b8e9874acf831d7679152e2b8d2058c"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/Elifoot.Simulation.Tests.csproj",
+      "Sha256": "242960402ed37597bd082e35e2b2c6ecdf6d5e8d4f58edaeb032857488eb0841"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MetricAudit007Capture.cs",
+      "Sha256": "1a3330a50f98b6bb378135f4fa9a0b37b1fe26841dd165281d2e2503b3172e20"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/MultiSeasonAndBenchmarkTests.cs",
+      "Sha256": "322e6b65bfc110bee6caf668088e08e6aa8956b2a0a458c7f378bc0e65dc8de8"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012BResearchTests.cs",
+      "Sha256": "67c8cf34a1f1d3a33473324918d60abf655d5f89256c76f2ac087aed55fd2b9c"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012ControlledTests.cs",
+      "Sha256": "b03bb05e1eca5de4ab220e7bd5864a0c54a1ff6d3d06b3b41b86c101b8aa96d9"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerForce012SimulationTests.cs",
+      "Sha256": "db0508a16558be7c640ab2827427b2c87aad05c3d024b7e3a662c3571e45d8d8"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/PlayerRankings009SimulationTests.cs",
+      "Sha256": "2cf695629909c0923453f5153705382bf8207cab651d40a113114a6d5fce1348"
+    }
+  ]
+}

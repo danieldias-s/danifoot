@@ -654,6 +654,12 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
         clubName = club.Name,
         cashBalance = club.CashBalance,
         availableCash = ClassicEconomyEngine.AvailableCash(world,club),
+        annualSponsorshipBudget = world.Economy.OperatingRules.AnnualSponsorship
+            ?world.Economy.SponsorshipBudgets.GetValueOrDefault($"S{world.SeasonNumber}:{club.Id}")?.AnnualBudget??OperatingEconomyEngine.CommercialBase(club.DivisionTier)
+            :(decimal?)null,
+        sponsorshipInstallments=world.Economy.OperatingRules.AnnualSponsorship?world.TotalRoundsInSeason:(int?)null,
+        salaryPeriod="OFFICIAL_MATCH",
+        commercialChangeFromSeason=world.Economy.OperatingUpgradeSeason,
         renovationCostEstimate = MarketAndEconomyEngine.CalculateRenovationCost(club.Stadium),
         expansion5kCostEstimate = MarketAndEconomyEngine.CalculateExpansionCost(club.Stadium, 5_000),
         ledger,

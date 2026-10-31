@@ -75,7 +75,8 @@ public static class MarketAndEconomyEngine
             int worldSeed,
             int seasonNumber,
             int roundNumber,
-            int matchIndex)
+            int matchIndex,
+            double demandMultiplier = 1.0)
     {
         var stadium = homeClub.Stadium;
         int usableCap = Math.Clamp(stadium.UsableCapacity, 1_000, stadium.BuiltCapacity);
@@ -126,7 +127,8 @@ public static class MarketAndEconomyEngine
                            * opponentBoost
                            * conditionFactor
                            * priceElasticity
-                           * weatherOrDayMod;
+                           * weatherOrDayMod
+                           * demandMultiplier;
 
         int attendance = (int)Math.Round(Math.Clamp(rawDemand, usableCap * 0.05, usableCap));
         decimal revenue = Math.Round(attendance * ticketPrice, 2);
@@ -195,6 +197,7 @@ public static class MarketAndEconomyEngine
         IReadOnlyList<MatchFixture> roundMatches)
     {
         ClassicEconomyEngine.EnsureMigrated(world);
+        OperatingEconomyEngine.EnsureScheduledRules(world);
         DisciplineEngine.SettleFinishedMatches(world,roundMatches);
         var clubDict = world.Clubs.ToDictionary(c => c.Id);
 
@@ -214,7 +217,8 @@ public static class MarketAndEconomyEngine
                 world.Seed,
                 match.SeasonNumber,
                 match.RoundNumber,
-                match.DeterministicMatchIndex);
+                match.DeterministicMatchIndex,
+                OperatingEconomyEngine.GateDemandFactor(world,homeClub,awayClub));
 
             match.TicketPrice = ticketPrice;
             match.Attendance = attendance;
@@ -276,15 +280,9 @@ public static class MarketAndEconomyEngine
         {
             if (!playersByClub.TryGetValue(club.Id, out var squad)) continue;
 
-            decimal sponsorship = club.DivisionTier switch {
-                DivisionTier.PrimeiraDivisao => 185_000m,
-                DivisionTier.SegundaDivisao => 125_000m,
-                DivisionTier.TerceiraDivisao => 92_000m,
-                DivisionTier.QuartaDivisao => 72_000m,
-                _ => 20_000m
-            };
+            var (sponsorship,sponsorshipDescription)=OperatingEconomyEngine.SponsorshipForRound(world,club);
             TryRecordTransaction(world, club, FinancialTransactionCategory.Sponsorship,
-                sponsorship, "Patrocínio e direitos de transmissão da rodada",
+                sponsorship, sponsorshipDescription,
                 $"sponsor:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
 
             bool playedThisRound = roundMatches.Any(m => ClassicEconomyEngine.Played(m) && (m.HomeClubId == club.Id || m.AwayClubId == club.Id));
@@ -397,7 +395,8 @@ public static class MarketAndEconomyEngine
             var rng = DeterministicRng.FromContext(world.Seed, world.SeasonNumber, 99, club.DeterministicIndex, 0, 501);
 
             decimal maintenanceCost = Math.Round(stadium.BuiltCapacity * 4.5m, 2);
-            bool canAffordMaintenance = club.CashBalance > maintenanceCost * 2.2m;
+            decimal operatingCash=club.CashBalance-OperatingEconomyEngine.AiDebtReserve(world,club);
+            bool canAffordMaintenance = operatingCash > maintenanceCost * 2.2m;
 
             // AI estimates future loss from neglect vs maintenance cost
             double expectedWearWithoutMaint = 3.5; // avg of 1..6%
@@ -429,7 +428,7 @@ public static class MarketAndEconomyEngine
                 if (stadium.ConditionPercent < 82.0 && stadium.RenovationRoundsRemaining == 0)
                 {
                     decimal renoCost = CalculateRenovationCost(stadium);
-                    if (club.CashBalance > renoCost * 2.5m)
+                    if (operatingCash > renoCost * 2.5m)
                     {
                         StartStadiumRenovation(world, club);
                     }
@@ -443,7 +442,7 @@ public static class MarketAndEconomyEngine
                     // ROI check: will 5,000 extra seats pay back within ~4 seasons?
                     decimal annualNetGainPerSeat = (stadium.LastTicketPrice - stadium.VariableAttendeeCostRate - stadium.FixedMatchCostRate) * 7m;
                     decimal fourYearReturn = annualNetGainPerSeat * addSeats * 4m;
-                    if (fourYearReturn > expCost && club.CashBalance > expCost * 2.8m)
+                    if (fourYearReturn > expCost && operatingCash > expCost * 2.8m)
                     {
                         StartStadiumExpansion(world, club, addSeats);
                     }
@@ -524,6 +523,7 @@ public static class MarketAndEconomyEngine
             {
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
                 AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                OperatingEconomyEngine.ApplyAiCapitalBudget(world,club);
             }
         }
 
@@ -833,6 +833,8 @@ public static class MarketAndEconomyEngine
         if(ClassicEconomyEngine.AuctionReserved(world,playerId)&&!auctionSale)return(false,"Jogador reservado para leilão.");
         if (price < 0m || price == 0m&&!auctionSale || ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId) < price)
             return (false, "Saldo insuficiente no clube comprador.");
+        if(OperatingEconomyEngine.AiDebtReserve(world,buyer)>0&&ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId)-OperatingEconomyEngine.AiDebtReserve(world,buyer)<price)
+            return(false,"A IA preserva o saldo necessário à quitação antes de contratar reforços.");
 
         var buyerSquad = world.Players.Where(p => p.ClubId == buyer.Id).ToList();
         var (canAdd, addErr) = SquadValidator.CanAddPlayerToSquad(buyerSquad);

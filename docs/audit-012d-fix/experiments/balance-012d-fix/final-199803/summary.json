@@ -1,0 +1,28 @@
+{
+  "Case": "final",
+  "Seed": 199803,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 231901943.09,
+  "FinalDebt": 2998386.55,
+  "Transactions": 554797,
+  "TransferPairs": 8871,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3265230,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "CLASSIC_OPERATING_BALANCE_012D_FIX_V1",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2,
+    "ReserveBorrowedCapitalForAi": true,
+    "AiCreditRequiresOperatingSurplus": true
+  },
+  "SalaryRequests": 120,
+  "ForcedAuctions": 96,
+  "Unsold": 24,
+  "Crises": 65,
+  "Recovered": 56
+}

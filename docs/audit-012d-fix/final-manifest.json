@@ -1,0 +1,215 @@
+{
+  "Task": "ELIFOOT_ECONOMY_LONG_TERM_BALANCE_012D_FIX",
+  "Baseline": "7529e69",
+  "Policy": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+  "Files": [
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Sha256": "b32f6d8d4c6748c6624c8bb33c07047cca57c216b669e3ad3d7e04c09546cb6d"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_widget_test.dart",
+      "Sha256": "f9622cdd7c4b35569d62e296ef63036ecdb9979d1aa2f94d15f0435c69ed7826"
+    },
+    {
+      "Path": "docs/ECONOMY_100_SEASONS_BEFORE_AFTER_012D.md",
+      "Sha256": "eb805ba11fcb202807137a1699ad523d8bbb6c8c10202d8bd4e54b4fadadf5f4"
+    },
+    {
+      "Path": "docs/ECONOMY_BALANCE_FIX_012D.md",
+      "Sha256": "5428185f870b131516847f92f859eb04f51c3d927f42ff927327a66833b33124"
+    },
+    {
+      "Path": "docs/ECONOMY_CASH_FLOW_012D.json",
+      "Sha256": "127a1c49102bdb15356d4f8bd51e6ffbe31869b40b79a8335fb84d0cbffc90a0"
+    },
+    {
+      "Path": "docs/ECONOMY_CASH_ROOT_CAUSE_012D.md",
+      "Sha256": "e4a0d28c8c1531eeb0b949cf4a9c2db735a9abcc690fd7d93016cb1b0411dcb1"
+    },
+    {
+      "Path": "docs/ECONOMY_FINAL_VALIDATION_012D.md",
+      "Sha256": "6f0dc40258df063e2baf5c1a567c54ee456dd6940b7a1ea4789651cdc2ff030e"
+    },
+    {
+      "Path": "scripts/analyze_economy_balance_012d.py",
+      "Sha256": "58532897f9d5ccab9beebfcba32b524ebd0a866f5a6e620b75342ddad5e0aae3"
+    },
+    {
+      "Path": "scripts/audit_ai_capital_012d.py",
+      "Sha256": "e19061ce54c6699841a5202e0a863e9f0edf64073d9509a915bf9a8f8c6a8a7b"
+    },
+    {
+      "Path": "scripts/checkpoint_economy_balance_012d.py",
+      "Sha256": "3831be301f97cbb58d7dd47774f98dd8ad0b0bf4a6b86d6f238cb310b9d0a82d"
+    },
+    {
+      "Path": "scripts/report_economy_balance_012d.py",
+      "Sha256": "a845a397fefaa9d5625192a3bcd8812c1d895aa3558c69373d35bf47583e9a56"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Sha256": "6182af8234452a175e8b5ad7d3ed9aadaf3fb6cea94937f96a7bafb26c2221be"
+    },
+    {
+      "Path": "src/Elifoot.Domain/ClassicEconomyState.cs",
+      "Sha256": "b50c3909d16579e9c68d37662914f1242c2c6a7f544e3c168684e5c689569695"
+    },
+    {
+      "Path": "src/Elifoot.Domain/CompetitionAndSeasonEngine.cs",
+      "Sha256": "edae4f7471548e04fb73347e87a741ea072ed1039d11fcdde877aea14e3d0a40"
+    },
+    {
+      "Path": "src/Elifoot.Domain/MarketAndEconomyEngine.cs",
+      "Sha256": "d6527df142db68871a4a3e8833f1664dbf10c0ad956551cfdae19939d5cfda07"
+    },
+    {
+      "Path": "src/Elifoot.Domain/OperatingEconomyEngine.cs",
+      "Sha256": "9bec39fe9820296c87c592cda77fb8c92dcb44dc7ebb748383abb9ea0557378a"
+    },
+    {
+      "Path": "src/Elifoot.Domain/SalaryContractsEngine.cs",
+      "Sha256": "833f2cccd242e6bd57d801dd3d9ceb488d939fb930dd18725432c2d4eff70796"
+    },
+    {
+      "Path": "src/Elifoot.Domain/WorldSeedFactory.cs",
+      "Sha256": "9a2c2f9fab5baf18c92f03238ade5ce2b8cdda2d0a6ee45716b7575eee525147"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/EfWorldRepository.cs",
+      "Sha256": "6bac0e1f733eb74f081d74006eee9615da720cbf7deb9e1be89e77a160daa75d"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/MetricAiAudit007Tests.cs",
+      "Sha256": "9c5071dade2805c9ac6741ab734f5a697f3d9af6252e39e597a1478884b2cd6c"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/OperatingEconomy012DFixTests.cs",
+      "Sha256": "820f4c05641afa611815abdd30fa5ad28a83a5f2335ceee1f85bd102fd43154c"
+    },
+    {
+      "Path": "tests/Elifoot.Domain.Tests/PlayableEconomyRegressionTests.cs",
+      "Sha256": "e66fa7826ff5200c19cd26ecb577a770a14ef8966940fb60ac4f8851b2598d79"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/OperatingEconomy012DFixIntegrationTests.cs",
+      "Sha256": "5d0fda38161d608d3fb0f099dda89f42f16ab137e9f56e178526ed46806bf790"
+    },
+    {
+      "Path": "tests/Elifoot.Simulation.Tests/EconomyBalance012DFixSimulationTests.cs",
+      "Sha256": "e8fd13b20ba2a83aa05058d998052c3a08c377518db648e1a11dd3720db12d02"
+    }
+  ],
+  "Evidence": [
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\baseline-199801",
+      "Sha256": {
+        "summary.json": "9528f568a1849f82f8c17c0e1fdfe723e75a97b3552cfc52c41416d755bcc3aa",
+        "seasons.json": "2eddd9a99967ab67087a5c558cadf84927ef6cb7e2b86fada43cb63a6331e154",
+        "ledger.jsonl.gz": "8308696375ea149542e5de8bc4bfc8f3f3fb14528ccc48c83d757c9d0f5256e8",
+        "clubs.json.gz": "7e90a27e53eb7d027b1f7e19146628a00283319a432a856afcae11b8fce64ec6"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\final-199802",
+      "Sha256": {
+        "summary.json": "b1accd4124ddcef0cbc4e4555d6618838604ab3b67db477eff54c595a82afa40",
+        "seasons.json": "889fbafdaf6509715f52c22cf88d82bd140a995e86f3e742a9bceb383720cea6",
+        "ledger.jsonl.gz": "fa06e95cf06ddf65cddb8cce93434e05ee71007417a6a71901376bcac810ec11",
+        "clubs.json.gz": "da4485569239f7ba1ea947a9eaae682372369b694d60a2ed68632f19bb94a4fd"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\final-199803",
+      "Sha256": {
+        "summary.json": "c0d79d712a1f260b40a085be65636980fc9481a160501b74952a91f9f1d996c1",
+        "seasons.json": "3f8a974fa96f11c76151fbd82c3a9d0424befc06cc83e907763f17feea5caa43",
+        "ledger.jsonl.gz": "3fcff0bfdccdde2c37071002c6a299136852a1deb78c087b0bc8f3567bfae8a8",
+        "clubs.json.gz": "f559b477cc7f6eaa53404b796cffd7023d1f689003e2a64c7069e03c65e35a6c"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h1-annual-sponsor-199801",
+      "Sha256": {
+        "summary.json": "41075eaf6dba8161e59a03a84b2cf7fd2e3aef920599a5c1dd871c3059047060",
+        "seasons.json": "3f5b334395b3b18e2a0c2eb8222cd8eabbb7c5f72c225a56ab70c15b43840c2d",
+        "ledger.jsonl.gz": "49b48fcc0a7f4e0475f0de8adc1688499343a2166f600a0e032547a76092244c",
+        "clubs.json.gz": "3548910a74074a5b59ffd3f757b2e988de4eaccde29db23bacb9c4cf090d9c26"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h2-quality-linear-199801",
+      "Sha256": {
+        "summary.json": "ef5f05b635827fafc9501e7487ed8898f3e9d8d4d9ed397bcaed58a8992823e1",
+        "seasons.json": "f17267c140eadebb1d3fd3ac8d4cb12ef5a26601d3c525df4bd1f45788076ebe",
+        "ledger.jsonl.gz": "36a44cf7b0e0cfa53098a7943867045b3438c93d31ded05b107c069408fc8c14",
+        "clubs.json.gz": "1a139652f5768950a3c3c5e6d57ad7ed506aa57b4dd74cb7940f0ed335745ce3"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h3-quality-square-199801",
+      "Sha256": {
+        "summary.json": "0c9ff062d89764a1d12e73b6f0bb27521ca2c462d2274310ff1e3a6233d44d8e",
+        "seasons.json": "e8ea6987a867dd7200e0e62353709dc8ec718481ac4885c50a8adf7517bc2ee6",
+        "ledger.jsonl.gz": "200b07ab6ee90c811e6bdf038ae85aa6b2da9dbe163142d54ecaeb196a400060",
+        "clubs.json.gz": "3b1d2efce6aed2b041307fee91dd560b3a2d861e74971de608eae5228acb3f31"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h4-debt-reserve-199801",
+      "Sha256": {
+        "summary.json": "e5af32624359da11f2cd9b23281cedf63a1d21a92cac0d56ab7d3d153121648b",
+        "seasons.json": "91b3fbb4308d7bbc6caff01295db6d4fe5dd522410b9a8480c4ceafd994586c5",
+        "ledger.jsonl.gz": "321cac66b2addc5c7712f24924e5d6238131df92aeceb66879e232351ef2380f",
+        "clubs.json.gz": "f713ad5afa19393d95d15e78d8b677d5264a66bb11cbdbd2355639545ba12bce"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h5-credit-surplus-199801",
+      "Sha256": {
+        "summary.json": "d6c1c28c5fbdc69e2e51ec8e0fe734aac6426cc89288925fa1a387e67645b983",
+        "seasons.json": "e2dae94bd44b4f87af2039cb68c2f54f0b4206df88125b7ebfbe80a8c414b05c",
+        "ledger.jsonl.gz": "be6c35d52671a45d819e13dba5b521f69a4afd0289ad84bc6300d6e9bb3de24b",
+        "clubs.json.gz": "56c718a66d3c165ea864d7dff8d7ffd22b9aab15099cfec514173dcab06d66be"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h6-quality-2p2-199801",
+      "Sha256": {
+        "summary.json": "4c183cc6e45f82f527b1d94c6265042409426ecdb447befbd88c38c032451bbe",
+        "seasons.json": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1",
+        "ledger.jsonl.gz": "d846d41f40bb048e179566b44ef7ab8c27522d72010c3a85a107cb4aece718e8",
+        "clubs.json.gz": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h6-quality-2p2-199802",
+      "Sha256": {
+        "summary.json": "6aef3030301206c60491f1452d6641f5bd5abf3c8ef5b173a51685b2366031b0",
+        "seasons.json": "6a44141d65ab52a891da59356a51d9e8c79f1a867a1a0e00cdf98b5e6438cec3",
+        "ledger.jsonl.gz": "8f4f74ac3c38a23b49f895753c3a52d046b119e3b1950a5c0634ae755f4323ab",
+        "clubs.json.gz": "192c51d62a6a0f4dc6ddce87de10af8c6388104e75e6ee8fb015cf53fffbcdc0"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\experiments\\balance-012d-fix\\h6-quality-2p2-199803",
+      "Sha256": {
+        "summary.json": "34881bd097fe59eab33f25a8b0b7a5b7afd20b9a807d56ac1dd9ed8349485d29",
+        "seasons.json": "d4d498ee1199b08ed91f79be9288649ed0bf6b0eb628c8b7649303c27aa0ff68",
+        "ledger.jsonl.gz": "181bce3bd135f6a8b38b99479d2d1a7cc5c0f30d1dbd1d72f500b583992566f0",
+        "clubs.json.gz": "c8c61c17ed990663903dd3f5b9dc579a5010d63abaccf72a426560b2d7d2314c"
+      }
+    },
+    {
+      "Directory": "docs\\audit-012d-fix\\verified\\balance-012d-fix\\final-199801",
+      "Sha256": {
+        "summary.json": "fd286a160ddcbab7702916266b371c50c39fb977d355075d3d24ac961a7c7be4",
+        "seasons.json": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1",
+        "ledger.jsonl.gz": "fd0a8af5ab40377a247d733e0a517cec08622d97bde6822cb5bc281b6c52a01b",
+        "clubs.json.gz": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+      }
+    }
+  ],
+  "OtherWorktrees": "worktree D:/elifoot_98\nHEAD 7529e69845844f91c1d8aea3bb431ef2aa212c0e\nbranch refs/heads/master\n\nworktree D:/elifoot_98_013A\nHEAD 47608e9a674c0978c4be4b244de88d961876e197\nbranch refs/heads/feature/real-football-data-013b\n\n",
+  "013B": "No checkout, reset, merge or write to the separate worktree by this task; its branch may progress independently."
+}

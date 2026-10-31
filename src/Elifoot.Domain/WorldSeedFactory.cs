@@ -342,6 +342,7 @@ public static class WorldSeedFactory
         }
 
         // Initialize Season 1 fixtures (14 League rounds + Cup Preliminary & Knockout schedule)
+        world.Economy.OperatingRules=OperatingEconomyEngine.CurrentRules();
         ClassicEconomyEngine.EnsureMigrated(world,isNewWorld:true);
         CompetitionAndSeasonEngine.InitializeSeasonFixtures(world);
         CoachCareerEngine.EnsureMigrated(world, isNewWorld: true);

@@ -1,0 +1,26 @@
+[
+  {
+    "Path": "docs/audit-007/controlled/behavior-controlled.json",
+    "OriginalSha256": "053063e471301ef2a53c92f55a8960b0c7c71a47539e4e9b7eee78a2bf2813a0",
+    "RunSha256": "83ea1007ce92276a971eda007451b9fd89d34005cde7206e2b3d4488d5b2f74b",
+    "RunCopy": "docs\\audit-012d-fix\\test-artifact-overwrites\\docs\\audit-007\\controlled\\behavior-controlled.json"
+  },
+  {
+    "Path": "docs/audit-009/api-performance-1024.json",
+    "OriginalSha256": "cd66ae3feac216d2f4c7ba85aa5ef3f1f34e8f49326acb079ca3a7e6473c1099",
+    "RunSha256": "8ba7b6e4ce521e376bbe5852afedd42eb0307e523f927dea625f5496975bf942",
+    "RunCopy": "docs\\audit-012d-fix\\test-artifact-overwrites\\docs\\audit-009\\api-performance-1024.json"
+  },
+  {
+    "Path": "docs/audit-009/api-performance-128.json",
+    "OriginalSha256": "f9936cfc38836487e48bac1d08406b9a4665647d2e479af83025de659e6ec377",
+    "RunSha256": "2f7a61d5483b0770961fa12f25b5d7c827441a844d56f87df00bea4a167251d3",
+    "RunCopy": "docs\\audit-012d-fix\\test-artifact-overwrites\\docs\\audit-009\\api-performance-128.json"
+  },
+  {
+    "Path": "docs/audit-009/browser-fixture.json",
+    "OriginalSha256": "ce32665ef2170ff18a4e9af0960b0ed4b28623f5051d06da8fb2d3313f2650b0",
+    "RunSha256": "86846490110c27bb98f1483bcaa7ebb1e6277804166ec1246ab8d0f54838abae",
+    "RunCopy": "docs\\audit-012d-fix\\test-artifact-overwrites\\docs\\audit-009\\browser-fixture.json"
+  }
+]

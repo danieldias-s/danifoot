@@ -1,0 +1,27 @@
+{
+  "Case": "h4-debt-reserve",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "InitialCash": 138800000,
+  "FinalCash": 201599037.31,
+  "FinalDebt": 81570730.07,
+  "Transactions": 556871,
+  "TransferPairs": 8821,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3265140,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "h4-debt-reserve",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2,
+    "ReserveBorrowedCapitalForAi": true
+  },
+  "SalaryRequests": 129,
+  "ForcedAuctions": 71,
+  "Unsold": 16,
+  "Crises": 24,
+  "Recovered": 14
+}
