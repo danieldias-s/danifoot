@@ -63,6 +63,11 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       tableHeader,
       tableRow,
       tableRowAlternate;
+
+  /// 014C rebalance: club colors belong to MATCH areas (team blocks, fixture
+  /// lists). `true` paints each team with its registered palette; `false`
+  /// shows a neutral block with only a thin identity stripe.
+  final bool strongTeamColors;
   const ClassicTheme({
     required this.background,
     required this.surface,
@@ -80,14 +85,145 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     required this.tableHeader,
     required this.tableRow,
     required this.tableRowAlternate,
+    this.strongTeamColors = true,
   });
   static ClassicTheme of(BuildContext context) =>
       Theme.of(context).extension<ClassicTheme>() ?? derive();
+
+  /// Global app theme selection (the APP THEME concept):
+  /// - `Classic` / `Club` / `Neutral` (default): fixed "Liga Clássica 98"
+  ///   green. `Club` is the legacy default persisted by 014C saves; since the
+  ///   014C rebalance it no longer paints the whole interface with club colors.
+  /// - `Custom` (advanced): user-chosen colors for the whole interface.
+  /// - `ClubGlobal` (advanced, legacy 014C behavior): coach club colors on the
+  ///   whole interface. Never the default.
+  /// Club palettes keep feeding MATCH TEAM COLORS independently of this mode.
   static ClassicTheme derive({
     Map<String, dynamic>? club,
     Map<String, dynamic>? preferences,
   }) {
-    final p = preferences ?? {}, mode = p['mode'] ?? 'Club';
+    final p = preferences ?? {};
+    final mode = (p['mode'] ?? 'Classic').toString();
+    final strong = p['matchColors']?.toString() != 'Neutral';
+    if (mode != 'Custom' && mode != 'ClubGlobal') {
+      return classicGreen(
+        variant: p['themeVariant']?.toString(),
+        brightness: (p['brightness'] as num?)?.toInt() ?? 0,
+        strongTeamColors: strong,
+      );
+    }
+    return _dynamic(club, p, mode == 'Custom' ? 'Custom' : 'Club', strong);
+  }
+
+  /// Fixed classic green theme (reference "Liga Clássica 98"), with optional
+  /// variant (`Classico`, `Escuro`, `AltoContraste`) and brightness -2..2.
+  static ClassicTheme classicGreen({
+    String? variant,
+    int brightness = 0,
+    bool strongTeamColors = true,
+  }) {
+    final level = brightness.clamp(-2, 2);
+    const white = Colors.white;
+    final (
+      Color bg,
+      Color surf,
+      Color alt,
+      Color prim,
+      Color sec,
+      Color border,
+      Color button,
+      Color accentRaw,
+      Color textSec,
+    ) = switch (variant) {
+      'Escuro' => (
+        const Color(0xFF062A10),
+        const Color(0xFF0A2512),
+        const Color(0xFF0D2E16),
+        const Color(0xFF041F0B),
+        const Color(0xFF03180A),
+        const Color(0xFF2E6B3D),
+        const Color(0xFF0F5A24),
+        const Color(0xFFFFD700),
+        const Color(0xFFB8D8BC),
+      ),
+      'AltoContraste' => (
+        const Color(0xFF003300),
+        const Color(0xFF000000),
+        const Color(0xFF0A1A0A),
+        const Color(0xFF000000),
+        const Color(0xFF000000),
+        const Color(0xFFFFFF00),
+        const Color(0xFF006400),
+        const Color(0xFFFFFF00),
+        const Color(0xFFFFFFFF),
+      ),
+      _ => (
+        const Color(0xFF0A4D1C),
+        const Color(0xFF0E3B19),
+        const Color(0xFF10421C),
+        const Color(0xFF073612),
+        const Color(0xFF062E0F),
+        const Color(0xFF3E8450),
+        const Color(0xFF136F2D),
+        const Color(0xFFFFD700),
+        const Color(0xFFC8E6C9),
+      ),
+    };
+    Color tone(Color c) {
+      if (level == 0) return c;
+      final shifted = level > 0
+          ? Color.lerp(c, white, level * .07)!
+          : Color.lerp(c, Colors.black, -level * .25)!;
+      return readableSurface(shifted, white);
+    }
+
+    final background = tone(bg), surface = tone(surf), alternate = tone(alt);
+    final primary = tone(prim), secondary = tone(sec), buttonBg = tone(button);
+    Color across(Color requested) {
+      for (int i = 0; i <= 100; i++) {
+        final c = Color.lerp(requested, white, i / 100)!;
+        if ([
+          background,
+          surface,
+          alternate,
+          secondary,
+        ].every((b) => colorContrast(c, b) >= 4.5)) {
+          return c;
+        }
+      }
+      return white;
+    }
+
+    final accent = across(accentRaw);
+    return ClassicTheme(
+      background: background,
+      surface: surface,
+      surfaceAlternate: alternate,
+      primary: primary,
+      secondary: secondary,
+      textPrimary: white,
+      textSecondary: across(textSec),
+      accent: accent,
+      border: tone(border),
+      buttonBackground: buttonBg,
+      buttonText: readableInk(buttonBg, white),
+      selectedBackground: accent,
+      selectedText: readableInk(accent),
+      tableHeader: secondary,
+      tableRow: surface,
+      tableRowAlternate: alternate,
+      strongTeamColors: strongTeamColors,
+    );
+  }
+
+  /// Advanced/legacy dynamic theme: `Custom` colors or (`Club`) the coach club
+  /// palette applied to the whole interface (pre-rebalance 014C behavior).
+  static ClassicTheme _dynamic(
+    Map<String, dynamic>? club,
+    Map<String, dynamic> p,
+    String mode,
+    bool strongTeamColors,
+  ) {
     final known =
         club != null &&
         (club['colorVerified'] == true || club['isPersonalized'] == true);
@@ -158,6 +294,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       tableHeader: surface,
       tableRow: surface,
       tableRowAlternate: alternate,
+      strongTeamColors: strongTeamColors,
     );
   }
 
@@ -353,14 +490,19 @@ class TeamColorName extends StatelessWidget {
     final known =
         p != null &&
         (p['colorVerified'] == true || p['isPersonalized'] == true);
-    final primary = rgbColor(known ? p['primaryColor'] : null) ?? t.surface;
+    final teamPrimary = rgbColor(known ? p['primaryColor'] : null);
     final secondary = rgbColor(known ? p['secondaryColor'] : null);
-    final preferred =
-        rgbColor(known ? p['preferredTextColor'] : null) ?? secondary;
+    // Neutral match mode keeps only a thin identity stripe in the team color.
+    final strong = t.strongTeamColors && teamPrimary != null;
+    final primary = strong ? teamPrimary : t.surface;
+    final preferred = strong
+        ? (rgbColor(p!['preferredTextColor']) ?? secondary)
+        : t.textPrimary;
     final ink = preferred != null && preferred != primary
         ? preferred
         : readableInk(primary);
     final background = readableSurface(primary, ink);
+    final stripe = strong ? (secondary ?? t.border) : (teamPrimary ?? t.border);
     return Tooltip(
       message: name,
       child: Container(
@@ -368,9 +510,7 @@ class TeamColorName extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
         decoration: BoxDecoration(
           color: background,
-          border: Border(
-            left: BorderSide(color: secondary ?? t.border, width: 3),
-          ),
+          border: Border(left: BorderSide(color: stripe, width: 3)),
         ),
         child: Text(
           name,

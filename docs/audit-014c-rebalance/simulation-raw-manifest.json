@@ -1,0 +1,400 @@
+{
+  "Archive": "artifacts/014c-rebalance/simulation-verified-original",
+  "Files": [
+    {
+      "File": "AI_PERSONALITY_ANALYSIS_006.json",
+      "Bytes": 32574,
+      "Sha256": "b46d247b6b59167c3252405eb36319490e8170a64df4ed1307652ae3bd43cb23"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/clubs.json.gz",
+      "Bytes": 1617887,
+      "Sha256": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/initial-clubs.json",
+      "Bytes": 16688,
+      "Sha256": "6d674170bfa8e12c9684c5cb51e4610c2ce307e819753f140aa146716fac074d"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Bytes": 74552416,
+      "Sha256": "ccc98ba7de6e86cfb439e95a92ac3297d755233c223bccf79054a865a1199d4a"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/progress.json",
+      "Bytes": 86,
+      "Sha256": "8a9646265e2014564c8c7c105ef6761acd8e1b7b9333632e23351e01317e6c13"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/seasons.json",
+      "Bytes": 1248773,
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1"
+    },
+    {
+      "File": "balance-012d-fix/final-199801/summary.json",
+      "Bytes": 918,
+      "Sha256": "e11fac693b45cb6a18ebaf0fac7bec71877964309e68759a72fdde41e80dbe60"
+    },
+    {
+      "File": "BENCHMARK_REPORT.json",
+      "Bytes": 1157,
+      "Sha256": "fc6b750589c9a400328850a34356f6c4cc0ccbd34e9a7af357480cd0a4db020b"
+    },
+    {
+      "File": "capture-007/actions.jsonl.gz",
+      "Bytes": 20147129,
+      "Sha256": "ffad6596c24d966ab477853dd7a2673200566bdd9b184520e8bc9719e0f5456d"
+    },
+    {
+      "File": "capture-007/club-rounds.jsonl.gz",
+      "Bytes": 35329114,
+      "Sha256": "29c32eb4bd580a46d3ddc599d3dad79dc078f62e3a3eb317abf0a97d1523789d"
+    },
+    {
+      "File": "capture-007/ledger.jsonl.gz",
+      "Bytes": 78112796,
+      "Sha256": "2038c1cc49aef612a188d8a25dee4024187bae5e56dc17678600240148b9aef8"
+    },
+    {
+      "File": "capture-007/population.json",
+      "Bytes": 1107541,
+      "Sha256": "155e186d8352ce0b34f05c8f978dcf03df706aa949f099c96e0273076d5da11f"
+    },
+    {
+      "File": "capture-007/summary.json",
+      "Bytes": 3940172,
+      "Sha256": "f16750ff5c557ff5950a1f880ad04702309dda84d11de00e754d4af18191bd4f"
+    },
+    {
+      "File": "classic-force-012c/100-seasons.json",
+      "Bytes": 8142469,
+      "Sha256": "2be33678a291b4491ac66833235354f067fe5cdf752ceddbf3587abfac1e4be9"
+    },
+    {
+      "File": "classic-force-012c/discipline-cards.jsonl.gz",
+      "Bytes": 7141144,
+      "Sha256": "647060e7cf74028cab328900519cef305b68b0726c694880032b212caad2055c"
+    },
+    {
+      "File": "classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Bytes": 4745266,
+      "Sha256": "1c0696d9d6d53b0d87db2c5a50c0b45125bf4a70f4c97d0d7768f4a9f85f9098"
+    },
+    {
+      "File": "classic-force-012c/force-events.jsonl.gz",
+      "Bytes": 23388822,
+      "Sha256": "42183356499d5f2f8c6fb80d3d1e8ac28d43dfc17bf36297aa750831508eb08a"
+    },
+    {
+      "File": "classic-force-012c/force-one-probes.jsonl",
+      "Bytes": 4468045,
+      "Sha256": "1cd7dc869f38e0389857d6d83a668a6d7d361b9fb793a3b3aa5c12a5ac70ecc9"
+    },
+    {
+      "File": "classic-force-012c/injuries.jsonl.gz",
+      "Bytes": 1569651,
+      "Sha256": "3bf57d4236db23f94b135ae48c1e96ad31294bf07f740692018c202f53ebe3be"
+    },
+    {
+      "File": "classic-force-012c/replay.json",
+      "Bytes": 195,
+      "Sha256": "2df50b2dc1d0d0b75e93fdd3e978640a8e9bd8eff5d61718e839d562219ce0c7"
+    },
+    {
+      "File": "classic-force-012c/weighted-duration-sample.json",
+      "Bytes": 302,
+      "Sha256": "3887f4dd7082390939cce6493bdcd0ab3783e91e67704849a67faed945aeeb81"
+    },
+    {
+      "File": "COACH_CAREER_50_SEASONS_008.json",
+      "Bytes": 21672319,
+      "Sha256": "6437ef81aeb504879edf9c0db58120dfa1aef5acf4adcc6986ac76382da9e109"
+    },
+    {
+      "File": "direct-red-100000.json",
+      "Bytes": 233,
+      "Sha256": "8f3beecd2c03edb26c2eb22f47a73e18e27e705bf8c5a036cdfa5515775c18cf"
+    },
+    {
+      "File": "DISCIPLINE_STATISTICS_006.json",
+      "Bytes": 8340,
+      "Sha256": "f2f7b30ac875d8f7c3ba4b8269aec07fbb4c70e3268555bcf0e6294dafc74e4c"
+    },
+    {
+      "File": "economy-012d/100-seasons.json",
+      "Bytes": 582924,
+      "Sha256": "754dad37b74ef526b5a04653d1eb2227d82b4962991c40e20d7a39c3aa90dddf"
+    },
+    {
+      "File": "economy-012d/bank.jsonl.gz",
+      "Bytes": 16518,
+      "Sha256": "4cf608b63ec672b7b109b950d0dd8ee321838a37e8e6648eee0edb9aeb6b9d1c"
+    },
+    {
+      "File": "economy-012d/contracts-and-crises.jsonl.gz",
+      "Bytes": 5848356,
+      "Sha256": "831369bb383532496fc6f5ba738b787275932fc790dbee1c838ac5def5a5c9d3"
+    },
+    {
+      "File": "economy-012d/ledger.jsonl.gz",
+      "Bytes": 74547506,
+      "Sha256": "2f5d0947f8b8034cc9f16e670685608a0745cfa5358a2292169102025ec20638"
+    },
+    {
+      "File": "economy-012d/progress.json",
+      "Bytes": 77,
+      "Sha256": "8898e2d788e3d7ac3a4500a2294a843eef96fb45662ad6cb10c0c799f3e13db1"
+    },
+    {
+      "File": "economy-012d/salary-requests-final.json",
+      "Bytes": 79990,
+      "Sha256": "fc926ce4dbf2f71a97f2f78d6d2678fab2d42a1c4f9440f5ecad26ffdd669123"
+    },
+    {
+      "File": "ECONOMY_HEALTH_006.json",
+      "Bytes": 15766,
+      "Sha256": "6666a51ca4020567aa63a6c30b7a15ea1ac1f0dc1727f7dfb67ef35d5c6a0e0e"
+    },
+    {
+      "File": "force-012/candidate-100-seasons.json",
+      "Bytes": 1329407,
+      "Sha256": "49ecdc7dcb2c52534bf8e080c97033ea8d4d5ae1988ea4f975a6fb7568daefe6"
+    },
+    {
+      "File": "force-012/force-one-rounds.jsonl",
+      "Bytes": 4875648,
+      "Sha256": "fc99553474d1801fbc4f847eb16bc43e61ef234da5ba4b083bde82f00a763fc6"
+    },
+    {
+      "File": "force-012/force-one-summary.json",
+      "Bytes": 9141,
+      "Sha256": "1a7f9710a91344ebaa9f8f8bead7b5499c3b7ddf91abd49477409756397692e0"
+    },
+    {
+      "File": "force-012b/injuries-division-1.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "File": "force-012b/injuries-division-2.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "File": "force-012b/injuries-division-3.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "File": "force-012b/injuries-division-4.jsonl",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "File": "force-012b/injury-probe-events.jsonl",
+      "Bytes": 13772,
+      "Sha256": "9892083e84b6a2143e1128859ecb0ee15303660c3f3dc01aa46fa1d84a1d904c"
+    },
+    {
+      "File": "force-012b/injury-probe-summary.json",
+      "Bytes": 37139,
+      "Sha256": "31f8abd525227057f90601d33b762cbb3244efc97471739fc7eb3d9be3caa5b1"
+    },
+    {
+      "File": "force-012b/rounds-division-1.jsonl",
+      "Bytes": 5265300,
+      "Sha256": "0db66bb6959bea31cb06ec4c45ca8c96297e19b9d289bbdaae958942f8e2922b"
+    },
+    {
+      "File": "force-012b/rounds-division-2.jsonl",
+      "Bytes": 5257257,
+      "Sha256": "ccc396f9c4c0a1e2cc934dd1329a21734731711fe0d0174cd369d038bf18ff93"
+    },
+    {
+      "File": "force-012b/rounds-division-3.jsonl",
+      "Bytes": 5265030,
+      "Sha256": "e8c1e85f51ae2b58504780a0396f9e06674536a56965121722e6490fa63bd4cf"
+    },
+    {
+      "File": "force-012b/rounds-division-4.jsonl",
+      "Bytes": 5250180,
+      "Sha256": "edbdffd5ade7303582ba22ab5e09f3d14143aee999b717c8e57f1e23ef76d9c0"
+    },
+    {
+      "File": "force-012b/summary-division-1.json",
+      "Bytes": 83613,
+      "Sha256": "430a9875358127dbcbd5815daa2e24e62c427f83358a8ce7aa68ac8028bbc872"
+    },
+    {
+      "File": "force-012b/summary-division-2.json",
+      "Bytes": 83433,
+      "Sha256": "1756292f6454c799dea18d98ab3a3ee88d560b8a3d86315b52fe08e276d269ca"
+    },
+    {
+      "File": "force-012b/summary-division-3.json",
+      "Bytes": 83613,
+      "Sha256": "e6106cda0e1b2b41e002c56e81f53b76691ef3a1e4fee7fdbe6415f34ec26834"
+    },
+    {
+      "File": "force-012b/summary-division-4.json",
+      "Bytes": 83253,
+      "Sha256": "74c6a486baef0b51c4937e6f0a47b992d928c0f3dc1c9ad7da7d1386207cbb0e"
+    },
+    {
+      "File": "integration-014a/Female/clubs.json.gz",
+      "Bytes": 1607562,
+      "Sha256": "982bcf9bead8f1df7bcea9f4f774ee6205c5c51197a24ff2f1e4ae9d39d4efba"
+    },
+    {
+      "File": "integration-014a/Female/initial-clubs.json",
+      "Bytes": 16969,
+      "Sha256": "c9847f3eb2e2aa8da087bec7e088ba2a332e8ea4bee0075b89160dca3ad46514"
+    },
+    {
+      "File": "integration-014a/Female/ledger.jsonl.gz",
+      "Bytes": 73856293,
+      "Sha256": "df40a474a3a9e9864e951d18ef1f027e56aeaeb04570c03b6457262fae8baa3b"
+    },
+    {
+      "File": "integration-014a/Female/progress.json",
+      "Bytes": 85,
+      "Sha256": "ed93459299459caa45fb3abaa1e045316872b08a7448f9b7b8272948c8d636ac"
+    },
+    {
+      "File": "integration-014a/Female/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3"
+    },
+    {
+      "File": "integration-014a/Female/summary.json",
+      "Bytes": 993,
+      "Sha256": "2747012cc5a59eb17e84b119a5fc8d8265e45560fdf1740b13d5ea1b9f79acb6"
+    },
+    {
+      "File": "integration-014a/Male/clubs.json.gz",
+      "Bytes": 1607157,
+      "Sha256": "ba29c302db45f6b574cae5c904b922bef1102017e87e14d856e4028446c3405a"
+    },
+    {
+      "File": "integration-014a/Male/initial-clubs.json",
+      "Bytes": 16969,
+      "Sha256": "7690729cb12d98ffbb62a385ac0a9c0f7428c9f62338c49f1ad1fd97105d348b"
+    },
+    {
+      "File": "integration-014a/Male/ledger.jsonl.gz",
+      "Bytes": 73840056,
+      "Sha256": "7307fd05464e1787fc343f726dddb47d9afc4f0dfa2c8a93e889f915dc488d78"
+    },
+    {
+      "File": "integration-014a/Male/progress.json",
+      "Bytes": 85,
+      "Sha256": "ed93459299459caa45fb3abaa1e045316872b08a7448f9b7b8272948c8d636ac"
+    },
+    {
+      "File": "integration-014a/Male/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed"
+    },
+    {
+      "File": "integration-014a/Male/summary.json",
+      "Bytes": 991,
+      "Sha256": "85d5f5a776b365e560005941a573cb6d43c6ec8895dab323a550c188ab63015e"
+    },
+    {
+      "File": "integration-014b/Female/clubs.json.gz",
+      "Bytes": 1724751,
+      "Sha256": "9f84108e82690ffce39719f53816dcc83825fbc657ab317f42c91582133a2378"
+    },
+    {
+      "File": "integration-014b/Female/initial-clubs.json",
+      "Bytes": 16340,
+      "Sha256": "2a1f6ab083347ed491801db29a06a40767a37fcaf21be40e20371b118f9babfa"
+    },
+    {
+      "File": "integration-014b/Female/ledger.jsonl.gz",
+      "Bytes": 74804260,
+      "Sha256": "994d157b977132a7be43c369d71833968031d3135f44052b67fd025acd8a35dc"
+    },
+    {
+      "File": "integration-014b/Female/progress.json",
+      "Bytes": 77,
+      "Sha256": "c80552d3f75324c0c33d959e4006fd92358688662e1711c44983d9d5969e77d2"
+    },
+    {
+      "File": "integration-014b/Female/seasons.json",
+      "Bytes": 1238026,
+      "Sha256": "e646aab864b534d1d0da955c3aa58c440fc4755e15708c69d8f5353c913435bb"
+    },
+    {
+      "File": "integration-014b/Female/summary.json",
+      "Bytes": 1046,
+      "Sha256": "069e2f0fa92ab3f81a739362d99128d52766ed6ee819a800ebb87ef2565fdc91"
+    },
+    {
+      "File": "integration-014b/Male/clubs.json.gz",
+      "Bytes": 1662571,
+      "Sha256": "7879352016d8d167a5d1aa34156faf3aef391f5da57e2c29415008d4f3511fdd"
+    },
+    {
+      "File": "integration-014b/Male/initial-clubs.json",
+      "Bytes": 15313,
+      "Sha256": "cf172385eed3e125223ed9432d4284ed45a36e627a05ac56372a527a4b3d1ebe"
+    },
+    {
+      "File": "integration-014b/Male/ledger.jsonl.gz",
+      "Bytes": 74208152,
+      "Sha256": "4815bdd22df135a62d96bf12b313f14c26bdbec6ee6c34540e55f0324517cad3"
+    },
+    {
+      "File": "integration-014b/Male/progress.json",
+      "Bytes": 75,
+      "Sha256": "ad9725aef0c7cd89c37c7737792b750c9af335efc4c02f9ee07611891502917f"
+    },
+    {
+      "File": "integration-014b/Male/seasons.json",
+      "Bytes": 1229846,
+      "Sha256": "d68be8f5507741a304a52d3553ccfaeffe2ddc773e3ec7a7c8c8a77cab7addfb"
+    },
+    {
+      "File": "integration-014b/Male/summary.json",
+      "Bytes": 1010,
+      "Sha256": "23f659bbd5d3c1ff7ed599b1986d2a291af940a43dfac7f48be9028e758b74d6"
+    },
+    {
+      "File": "PENALTY_ANALYSIS_006.json",
+      "Bytes": 5351,
+      "Sha256": "7f55b29adfff107c9f0ceadb937c1c5bfe90edebd1b742c726039a2237c9af6d"
+    },
+    {
+      "File": "QUERY_LOAD_1024_009.json",
+      "Bytes": 247,
+      "Sha256": "64a2bd799cc1ed139415ba8d7652209a2cde83d1a265bb21a1a80219b04c54dd"
+    },
+    {
+      "File": "QUERY_LOAD_128_009.json",
+      "Bytes": 242,
+      "Sha256": "1156edfd7f07208e719a13eac1012df6f64788146fba403e0dfe59d6950b935a"
+    },
+    {
+      "File": "real-season-world.json",
+      "Bytes": 15641323,
+      "Sha256": "bd008d0f6b2618edffa6fdeaf96ed1a63156a26bbfe6ee8a18265c650b0c7965"
+    },
+    {
+      "File": "REAL_SEASON_009.json",
+      "Bytes": 2115183,
+      "Sha256": "814329473c74d12783c4b6967afc7ae960ba3cbc5abd6d37db404dd084887d8b"
+    },
+    {
+      "File": "STADIUM_ANALYSIS_006.json",
+      "Bytes": 33931,
+      "Sha256": "221559d751675e385da2a89c6579d57863d4bee67083af28ea0c9156f0fac39d"
+    },
+    {
+      "File": "TACTICAL_MATCHUPS_006.json",
+      "Bytes": 47384,
+      "Sha256": "caeb00884cf4e2b0a58cd346907c14d85c1a431f5b3b84142bf16c3b7bda8c03"
+    }
+  ]
+}

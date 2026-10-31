@@ -11,3 +11,6 @@ Testes em 390 e 1366 pixels acionam menu, campos, três controles visuais, grava
 Se o clube mudar com o painel aberto, o rascunho anterior é bloqueado para não gravar/restaurar no clube novo. Reabrir Aparência carrega o contexto atual; caso coberto por teste de widget.
 
 A inspeção IAB real confirmou seletor, prévia preta, salvamento, reload com recuperação do preto e restauração do vermelho/preto. Screenshots desktop/mobile estão separados dos renders.
+
+
+> **Atualização — ELIFOOT_VISUAL_THEME_REBALANCE_014C:** o menu passou a controlar variação do verde clássico, brilho e cores fortes/neutras dos clubes nas partidas. "Usar cores do clube" deixou de ser o comportamento principal; personalização manual e "cor do clube no jogo inteiro" ficaram em Opções avançadas. Restaurar padrão grava `mode: Classic`. Ver `VISUAL_THEME_REBALANCE_014C.md`.

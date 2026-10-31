@@ -1271,14 +1271,41 @@ extension _ShellActions on _ElifootShellScreenState {
                         child: Row(
                           children: [
                             Expanded(
+                              child: TeamColorName(
+                                name: '${f['home']}',
+                                palette: _teamPalette(
+                                  id: f['homeClubId'],
+                                  name: f['home'],
+                                ),
+                                textAlign: TextAlign.right,
+                                highlight: f['home'] == myClubName,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 56,
                               child: Text(
-                                '${f['home']} ${f['isFinished'] == true ? "${f['homeGoals']} x ${f['awayGoals']}" : "×"} ${f['away']}',
-                                style: const TextStyle(
+                                f['isFinished'] == true
+                                    ? '${f['homeGoals']} x ${f['awayGoals']}'
+                                    : '×',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold,
+                                  color: ClassicTheme.of(context).accent,
                                 ),
                               ),
                             ),
+                            Expanded(
+                              child: TeamColorName(
+                                name: '${f['away']}',
+                                palette: _teamPalette(
+                                  id: f['awayClubId'],
+                                  name: f['away'],
+                                ),
+                                highlight: f['away'] == myClubName,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
                             Text(
                               f['isFinished'] == true ? 'FINAL' : 'A JOGAR',
                               style: TextStyle(

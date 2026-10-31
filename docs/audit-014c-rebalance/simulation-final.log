@@ -1,0 +1,5 @@
+Execução de teste para D:\elifoot_98_014C\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_014C\docs\audit-014c-rebalance\test-results\simulation-final.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    26, Ignorado:     0, Total:    26, Duração: 39 m 45 s - Elifoot.Simulation.Tests.dll (net10.0)

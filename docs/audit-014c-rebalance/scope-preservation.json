@@ -1,0 +1,36 @@
+{
+  "Base": "9690d9578aba2ec6a35b344921d9429478bd54ab",
+  "OtherWorktrees": [
+    {
+      "Worktree": "D:\\elifoot_98",
+      "Head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "TrackedChanges": false
+    },
+    {
+      "Worktree": "D:\\elifoot_98_013A",
+      "Head": "47608e9a674c0978c4be4b244de88d961876e197",
+      "TrackedChanges": false
+    },
+    {
+      "Worktree": "D:\\elifoot_98_integration",
+      "Head": "3f12999e16ec0452b4d8889b20f4be18a4ca3f01",
+      "TrackedChanges": false
+    },
+    {
+      "Worktree": "D:\\elifoot_98_014B",
+      "Head": "c0ff28ec510553385438f82dc652c23126bd7689",
+      "TrackedChanges": false
+    }
+  ],
+  "ChangedProductionFiles": [
+    "client/elifoot_flutter/lib/appearance_settings.dart",
+    "client/elifoot_flutter/lib/club_theme.dart",
+    "client/elifoot_flutter/lib/main.dart",
+    "client/elifoot_flutter/lib/shell_actions.dart",
+    "src/Elifoot.Contracts/Catalog/ClubColorDtos.cs",
+    "src/Elifoot.Domain/Catalog/ClubColorPolicy.cs"
+  ],
+  "GameplayAndEconomySourceUnchanged": true,
+  "AuctionConfigSourceUnchanged": true,
+  "NoProductionDeployment": true
+}

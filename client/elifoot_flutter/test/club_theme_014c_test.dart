@@ -81,6 +81,9 @@ void main() {
           ),
         ),
       );
+      await tester.tap(find.text('OPÇÕES AVANÇADAS'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('PERSONALIZAR CORES'));
       await tester.tap(find.text('PERSONALIZAR CORES'));
       await tester.pumpAndSettle();
       await controller.activate(
@@ -90,6 +93,8 @@ void main() {
         'club-2',
         api.colors('club-2'),
       );
+      await tester.pumpAndSettle();
+      await tester.drag(find.byType(Scrollable).first, const Offset(0, 3000));
       await tester.pumpAndSettle();
       expect(find.textContaining('CLUBE ALTERADO.'), findsOneWidget);
       await tester.scrollUntilVisible(
@@ -102,7 +107,13 @@ void main() {
       );
       expect(save.onPressed, isNull);
       expect(api.writes, 0);
-      expect(controller.theme.primary, rgbColor('#0000FF'));
+      // Rebalance: the new club palette is loaded for match areas while the
+      // global interface stays classic green.
+      expect(controller.palette?['primaryColor'], '#0000FF');
+      expect(
+        controller.theme.background,
+        ClassicTheme.classicGreen().background,
+      );
       await tester.pumpWidget(const SizedBox());
       controller.dispose();
     },
@@ -158,26 +169,30 @@ void main() {
     <String, dynamic>{},
   ]) {
     test('All semantic text tokens meet contrast for $colors', () {
-      final t = ClassicTheme.derive(club: colors);
-      for (final bg in [
-        t.background,
-        t.surface,
-        t.surfaceAlternate,
-        t.tableHeader,
-        t.tableRow,
-        t.tableRowAlternate,
+      for (final t in [
+        ClassicTheme.derive(club: colors),
+        ClassicTheme.derive(club: colors, preferences: {'mode': 'ClubGlobal'}),
       ]) {
-        expect(colorContrast(t.textPrimary, bg), greaterThanOrEqualTo(4.5));
+        for (final bg in [
+          t.background,
+          t.surface,
+          t.surfaceAlternate,
+          t.tableHeader,
+          t.tableRow,
+          t.tableRowAlternate,
+        ]) {
+          expect(colorContrast(t.textPrimary, bg), greaterThanOrEqualTo(4.5));
+        }
+        expect(
+          colorContrast(t.buttonText, t.buttonBackground),
+          greaterThanOrEqualTo(4.5),
+        );
+        expect(
+          colorContrast(t.selectedText, t.selectedBackground),
+          greaterThanOrEqualTo(4.5),
+        );
+        expect(colorContrast(t.accent, t.surface), greaterThanOrEqualTo(4.5));
       }
-      expect(
-        colorContrast(t.buttonText, t.buttonBackground),
-        greaterThanOrEqualTo(4.5),
-      );
-      expect(
-        colorContrast(t.selectedText, t.selectedBackground),
-        greaterThanOrEqualTo(4.5),
-      );
-      expect(colorContrast(t.accent, t.surface), greaterThanOrEqualTo(4.5));
     });
   }
   test(
@@ -225,7 +240,8 @@ void main() {
       expect(a.theme.background, Colors.black);
       expect(b.preferences['mode'], 'Club');
       await a.activate(api, 'coach-a', 'world', 'club-2', api.colors('club-2'));
-      expect(a.theme.primary, rgbColor('#0000FF'));
+      expect(a.palette?['primaryColor'], '#0000FF');
+      expect(a.theme.background, ClassicTheme.classicGreen().background);
       await a.activate(api, 'coach-a', 'world', null, null);
       expect(a.palette, isNull);
       await a.activate(api, 'coach-a', 'world', 'club-1', api.colors('club-1'));
@@ -299,7 +315,7 @@ void main() {
   );
   for (final width in [390.0, 1366.0]) {
     testWidgets(
-      'Global Flamengo theme, live color picker, persistence and restore at $width',
+      'Global theme stays classic green for Flamengo; picker, persistence and restore at $width',
       (tester) async {
         await tester.binding.setSurfaceSize(Size(width, 1000));
         addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -308,14 +324,21 @@ void main() {
         var theme = ClassicTheme.of(
           tester.element(find.byType(ElifootShellScreen)),
         );
-        expect(theme.primary, rgbColor('#C3281E'));
-        expect(HSVColor.fromColor(theme.background).hue, lessThan(30));
+        expect(theme.background, ClassicTheme.classicGreen().background);
+        expect(
+          HSVColor.fromColor(theme.background).hue,
+          inInclusiveRange(90, 160),
+        );
         expect(find.text('7. EDITOR & PACOTES'), findsNothing);
         await tester.ensureVisible(
           find.byKey(const ValueKey('appearance-menu')),
         );
         await tester.tap(find.byKey(const ValueKey('appearance-menu')));
         await tester.pumpAndSettle();
+        await tester.ensureVisible(find.text('OPÇÕES AVANÇADAS'));
+        await tester.tap(find.text('OPÇÕES AVANÇADAS'));
+        await tester.pumpAndSettle();
+        await tester.ensureVisible(find.text('PERSONALIZAR CORES'));
         await tester.tap(find.text('PERSONALIZAR CORES'));
         await tester.pumpAndSettle();
         await tester.ensureVisible(
@@ -340,7 +363,7 @@ void main() {
         await tester.tap(find.text('RESTAURAR PADRÃO'));
         await tester.pumpAndSettle();
         expect(api.writes, 2);
-        expect(api.prefs.values.single['mode'], 'Club');
+        expect(api.prefs.values.single['mode'], 'Classic');
         await tester.pageBack();
         await tester.pumpAndSettle();
         expect(find.byKey(const ValueKey('coach-main-panel')), findsOneWidget);

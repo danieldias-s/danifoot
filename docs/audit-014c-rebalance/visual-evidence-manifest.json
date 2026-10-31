@@ -1,0 +1,323 @@
+{
+  "Method": "Flutter renderer of recorded HTTP snapshots; auxiliary screens use explicit SceneApi test adapters; legacy Club preferences render as fixed green.",
+  "BrowserScreenshots": 16,
+  "BrowserBlocker": null,
+  "BrowserCaptures": [
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\appearance-advanced-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\appearance-advanced-desktop.jpg",
+      "Sha256": "6daf147d23cbbcbff7666192d57d94f2907ba4e3efe8832a994caae12072f6f2",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\appearance-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\appearance-mobile.jpg",
+      "Sha256": "40883321e8aa3ec126302059c9815f04a4a8486f8a129c2803d5561b95d69630",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\calendar-blue-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\calendar-blue-desktop.jpg",
+      "Sha256": "94e7fd4afcb57c40fb02064522ea4ed950346c7e5866ea58e7f8fa787541df85",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\cup-blue-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\cup-blue-mobile.jpg",
+      "Sha256": "f59d593415c819ed04c557d8fb1edd61aac984ea0edb0c36503e69297c08a1e7",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\cup-red-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\cup-red-desktop-reloaded.jpg",
+      "Sha256": "c29bc156d2b0072f6aa5bd42bb928f98269a71c4f54ce8085405f2d58eace548",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\cup-red-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\cup-red-mobile.jpg",
+      "Sha256": "f52ecf2d36fe2c7c3e53978e5236539c8155fadfa8e0ccf5dffdc9198faebfd9",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\finance-blue-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\finance-blue-desktop.jpg",
+      "Sha256": "6fee003e029ef3af2422721d9abf23947553eed975db9020177b85f7dcd7961d",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\general-blue-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\general-blue-desktop.jpg",
+      "Sha256": "f87d356124d17f7e219e8160f8e5352a09433d9db99ceb856151588f21381891",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\general-blue-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\general-blue-mobile.jpg",
+      "Sha256": "82613f16720f4ee7279cc88c0dd7a6388f504735ad3e563c21d88a8cc6fabc00",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\general-red-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\general-red-desktop.jpg",
+      "Sha256": "76b99785891b931057413504d0a713663c27e6903e70c336d92745e38df3a8e0",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\general-red-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\general-red-mobile.jpg",
+      "Sha256": "398ab8a97269259ba03d3e8d2097e7f19730c3c9720c7acc941de3007e801384",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\league-blue-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\league-blue-desktop.jpg",
+      "Sha256": "8167eab1bb1a2e1214ab4d58a31c9659866e6b6c27f6617548ff5676e661dd48",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\league-blue-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\league-blue-mobile.jpg",
+      "Sha256": "266d16020cd6644157d06fbee86cbe748bef71e26607b6ffc5e571a5d736210a",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\league-red-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\league-red-desktop.jpg",
+      "Sha256": "feb30509ee20476bfdaceb5d348c92b0f6942243593b1eff114675b0c2853b11",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\live-update-blue-41-mobile.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\live-update-blue-41-mobile.jpg",
+      "Sha256": "36171f42490f65b0dde551f72eab55e4a4c1214afa19e93a058e78991cfe1983",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    },
+    {
+      "File": "D:\\elifoot_98_014C\\docs\\audit-014c-rebalance\\browser-captures\\market-blue-desktop.jpg",
+      "Source": "C:\\Users\\Daniel\\.codex\\visualizations\\2026\\10\\30\\01a18db5-930b-74a1-a132-5bad4d1c924b\\theme-rebalance-014c\\market-blue-desktop.jpg",
+      "Sha256": "035a00b484a3df15331a41aba50dda6c5887f9c43ba127edda31945f5e3c9f8b",
+      "Method": "Original supported browser tool screenshot; imported without alteration"
+    }
+  ],
+  "References": [
+    {
+      "Label": "Elifoot 98",
+      "Source": "C:/Users/Daniel/AppData/Local/Temp/codex-clipboard-b70663ca-5b3b-495e-a6d5-c7f3cbc897fe.png",
+      "Sha256": "86429ff76cc2deee5e9dc999f58a7c9624afb89658ec9fdfdaeb6da932389714"
+    },
+    {
+      "Label": "Liga Clássica 98",
+      "Source": "C:/Users/Daniel/AppData/Local/Temp/codex-clipboard-466a0e22-66de-4de6-893e-6de2b5c7ccaa.png",
+      "Sha256": "6f173c6e04fb6fc14d5f9fc3d773f763e5965dd0e67eacb0c343b0bac4ea4fab"
+    }
+  ],
+  "Renders": [
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/appearance-menu-1366.png",
+      "Bytes": 60015,
+      "Sha256": "67f8c735d4f78b96daf97e66640fec27805c5c96e059f3cb4755bad7042f4248",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/appearance-menu-390.png",
+      "Bytes": 51613,
+      "Sha256": "0ced77395952ed2576012a06e1b6234b7c6c1e56d83e9d66ec8611cba9bbc11f",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/calendar-red-club-1366.png",
+      "Bytes": 67431,
+      "Sha256": "0d8782f9e82db71465fc6b311eb8f63ff7912b13d975e868d0cf1a3c7548e341",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/calendar-red-club-390.png",
+      "Bytes": 55295,
+      "Sha256": "6ece4549bfe314b4319051893721ff60c04d6cc5c712b5bbf0bb95d67bae8193",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/cup-grouped-1366.png",
+      "Bytes": 149849,
+      "Sha256": "1446bc70f9b619452d7580a39bea8f7d745f3b9257318c6f1b101498808253af",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/cup-grouped-390.png",
+      "Bytes": 75169,
+      "Sha256": "e95b61a3d5da4b69d1b7b0985ac4ff1753f0f077e413ef88c501ebb64bbe18cf",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/divisions-red-club-1366.png",
+      "Bytes": 146315,
+      "Sha256": "fe9d7f518258136bbf9c31b25681dbe85be2cc17981d6440e95a070ec71846fb",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/divisions-red-club-390.png",
+      "Bytes": 85790,
+      "Sha256": "b4e231079005149eb168d94f41bde084040b46e9cf97eaf7db6aa5e6fa854f8d",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/general-blue-club-1366.png",
+      "Bytes": 192288,
+      "Sha256": "beaf1d951a5298152b24e676143a5a7249adeef6823bf9a25884d44c2efb05ff",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/general-blue-club-390.png",
+      "Bytes": 106093,
+      "Sha256": "e9f09cd0c35cabb396f2d6dcdb26ab19312c81690b0b8a7e98212adfde1dbd04",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/general-red-club-1366.png",
+      "Bytes": 191162,
+      "Sha256": "91629f1ba265f7ba4f32bc3384485da9bd0628cbea909fb56d1b22afea8d16c1",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/general-red-club-390.png",
+      "Bytes": 104115,
+      "Sha256": "727bec32190e01b052cf98d6ce874a554519e8592a880d8a3ef0cd758b45c2fd",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/live-cup-grouped-1366.png",
+      "Bytes": 108703,
+      "Sha256": "6e567594674f286119a360d0287c43828c489bc2945ceaacbf6988ada5cb437f",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/live-cup-grouped-390.png",
+      "Bytes": 85269,
+      "Sha256": "16620451416360218dc59f93b846c2c2ccfd7504a0973ee93daac83bdd042001",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/live-league-grouped-1366.png",
+      "Bytes": 104336,
+      "Sha256": "6fda7910855543dbda8f77258f9131ebcce55aba60ba0b3ad2ebeb72b53e972b",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/live-league-grouped-390.png",
+      "Bytes": 81867,
+      "Sha256": "9b1de3eeedf340d3438e0345efbdf3891241a9bab47a1ad3c79782cb647a66ab",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/market-red-club-1366.png",
+      "Bytes": 106061,
+      "Sha256": "a41e3abb2f1f8ea6885d96a48b75fc255a98d6acc3aa2a5446ddf3cef78595a8",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/market-red-club-390.png",
+      "Bytes": 79625,
+      "Sha256": "0467e0846854da74b3e8924e509c762c6b5fa8b6ade81f90dae2fb1aca542f6f",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/matches-blue-board-1366.png",
+      "Bytes": 103234,
+      "Sha256": "4299a7050a3226014333f770e59eebf840d9f1cf06c452d3f4277297e8ee80c0",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/matches-blue-board-390.png",
+      "Bytes": 80917,
+      "Sha256": "bc5022a7b9aa130d62497d044c8ea6b17a7d181bef270322f45c3f5232fb10e6",
+      "Width": 390,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/matches-red-board-1366.png",
+      "Bytes": 102733,
+      "Sha256": "0cc3143a4652be428d9b19d08e62df1f2164052b1589722e17df4fceed38dddb",
+      "Width": 1366,
+      "Height": 1000
+    },
+    {
+      "File": "docs/audit-014c-rebalance/automated-renders/matches-red-board-390.png",
+      "Bytes": 80734,
+      "Sha256": "f59e65d6b044eee3b29c6ce5df123ab447ccded509b88a3f8ecdc36efe391b8c",
+      "Width": 390,
+      "Height": 1000
+    }
+  ],
+  "LocalRecordedScenes": [
+    {
+      "File": "artifacts/014c/scene-female-blue.json",
+      "Bytes": 828534,
+      "Sha256": "b9229d293fd79683328401d1ea47f438c03cac12055bf31b7a2e1a7bb4f019a8"
+    },
+    {
+      "File": "artifacts/014c/scene-female-red.json",
+      "Bytes": 828075,
+      "Sha256": "c6ee1d4312b4121d92f81a894c969bb210fa990584a0de260b8f282a48645ae7"
+    },
+    {
+      "File": "artifacts/014c/scene-male-blue.json",
+      "Bytes": 860955,
+      "Sha256": "d5355645a763e98be062cc142690201f27e344ff811deb66c5ba272cf9a8d491"
+    },
+    {
+      "File": "artifacts/014c/scene-male-red.json",
+      "Bytes": 860700,
+      "Sha256": "7a3d886bb6072763b389c0a4416ef6b44b1a42c76ea3b8ed6638d0eb36b27601"
+    },
+    {
+      "File": "artifacts/014c/scene-matches-blue.json",
+      "Bytes": 554558,
+      "Sha256": "b2ffe69ba46510b8e9748bcbc1c4f972019e4472249b0f5c8213148ee7ca5434"
+    },
+    {
+      "File": "artifacts/014c/scene-matches-red.json",
+      "Bytes": 554303,
+      "Sha256": "986710931251ed9c99f1ec04e8dea5360a1a47c7c7c0cbbb0c08fbc1138f4374"
+    },
+    {
+      "File": "artifacts/014c-rebalance/scenes/cup-blue.json",
+      "Bytes": 912545,
+      "Sha256": "b59e90c71ace2d69b02c66519605cb66aefd7f150f183ec7b518d0a3b8352391"
+    },
+    {
+      "File": "artifacts/014c-rebalance/scenes/cup-red.json",
+      "Bytes": 912298,
+      "Sha256": "ded33a06eab6a7a4f400485a07998f5db95afa84613fb1703d8013e3d5dc2cbc"
+    },
+    {
+      "File": "artifacts/014c-rebalance/scenes/league-blue.json",
+      "Bytes": 579333,
+      "Sha256": "436b5903d4fd505446017d13d35730e604bbd3feaa35adfc677dbe7c88cb1ec4"
+    },
+    {
+      "File": "artifacts/014c-rebalance/scenes/league-red.json",
+      "Bytes": 579122,
+      "Sha256": "60e5f59889844afed5cbf9df00203226b036c71ab63328413020fa2bf214832f"
+    }
+  ]
+}

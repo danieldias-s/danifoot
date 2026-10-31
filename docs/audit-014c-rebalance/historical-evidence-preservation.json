@@ -1,0 +1,749 @@
+{
+  "Status": "PASS",
+  "Original014CEvidenceUnchanged": true,
+  "NoFilesDeleted": true,
+  "Records": [
+    {
+      "File": "docs/COACH_CAREER_50_SEASONS_008.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/COACH_CAREER_50_SEASONS_008.json",
+      "Sha256": "d5916e015f83bf53bea035035059ef9c9fcff59f93144b617c9d1990094966e8",
+      "Bytes": 21672317,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-007/controlled/behavior-controlled.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-007/controlled/behavior-controlled.json",
+      "Sha256": "83ea1007ce92276a971eda007451b9fd89d34005cde7206e2b3d4488d5b2f74b",
+      "Bytes": 1649,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-008/browser-fixture.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-008/browser-fixture.json",
+      "Sha256": "fe85ad895aad72965a2ea65c4217deaab99b27fef4b556d879b459d947a57763",
+      "Bytes": 564,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/QUERY_LOAD_1024_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/QUERY_LOAD_1024_009.json",
+      "Sha256": "fd518c8412f1bb18cbc4783e0b739f0d038c2911563cfb692f3c4a840f0e83a5",
+      "Bytes": 248,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/QUERY_LOAD_128_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/QUERY_LOAD_128_009.json",
+      "Sha256": "e963ef88a04b49015eff0a3ee8efaaef5a5ea6c7151cdea057ccae92f5f4d5b5",
+      "Bytes": 242,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/REAL_SEASON_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/REAL_SEASON_009.json",
+      "Sha256": "e30c38d8dd757448809ac3bbdbd1ffe1cc4d6b423d7597c691fe4cb76cc38d0c",
+      "Bytes": 2115180,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/api-performance-1024.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/api-performance-1024.json",
+      "Sha256": "cab060d26d904ac599a19c6b410450b0a19d4b9458ab1f357b0a0ad424435ed2",
+      "Bytes": 239,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/api-performance-128.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/api-performance-128.json",
+      "Sha256": "615dd50871d4cec767f765191ef2b51e14ed0653d64a4759b29a36da9453c815",
+      "Bytes": 234,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/browser-fixture.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/browser-fixture.json",
+      "Sha256": "d2e16bb24daf5ecb255884b79fff2869054bb88fa4335725ac1757f8160d1370",
+      "Bytes": 9104,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-009/real-season-world.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-009/real-season-world.json",
+      "Sha256": "7c941d918cd937774d728ab6c7677d17e725a673dd950857d642a1fe6b577b40",
+      "Bytes": 15641325,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/api-performance-1024.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-014c/verified-final/api-performance-1024.json",
+      "Sha256": "e1ddd1db42e24157234577c554af3bc86a595f1b5d549e9cd29c701b2ca89e82",
+      "Bytes": 238,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/api-performance-128.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-014c/verified-final/api-performance-128.json",
+      "Sha256": "d435212593925db2ab63300326acc9f35fe8b36e8419bbc3081daf835e78566c",
+      "Bytes": 233,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/browser-fixture.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/tracked/docs/audit-014c/verified-final/browser-fixture.json",
+      "Sha256": "46d4d7a365921e749997151f1997fc0ca90f1c48cc9ad52a19cc80f4994ce441",
+      "Bytes": 9121,
+      "Action": "Preserved generated output; restored historical HEAD bytes"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injuries-division-1.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injuries-division-1.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injuries-division-2.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injuries-division-2.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injuries-division-3.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injuries-division-3.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injuries-division-4.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injuries-division-4.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injury-probe-events.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injury-probe-events.jsonl",
+      "Sha256": "9892083e84b6a2143e1128859ecb0ee15303660c3f3dc01aa46fa1d84a1d904c",
+      "Bytes": 13772,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/injury-probe-summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/injury-probe-summary.json",
+      "Sha256": "31f8abd525227057f90601d33b762cbb3244efc97471739fc7eb3d9be3caa5b1",
+      "Bytes": 37139,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/published-model-counterexamples.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/published-model-counterexamples.json",
+      "Sha256": "f927d1ba1fd08679c42e93bcd34dc43384911679bd8346bce1c5812a824f4252",
+      "Bytes": 48680,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/rounds-division-1.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/rounds-division-1.jsonl",
+      "Sha256": "0db66bb6959bea31cb06ec4c45ca8c96297e19b9d289bbdaae958942f8e2922b",
+      "Bytes": 5265300,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/rounds-division-2.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/rounds-division-2.jsonl",
+      "Sha256": "ccc396f9c4c0a1e2cc934dd1329a21734731711fe0d0174cd369d038bf18ff93",
+      "Bytes": 5257257,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/rounds-division-3.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/rounds-division-3.jsonl",
+      "Sha256": "e8c1e85f51ae2b58504780a0396f9e06674536a56965121722e6490fa63bd4cf",
+      "Bytes": 5265030,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/rounds-division-4.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/rounds-division-4.jsonl",
+      "Sha256": "edbdffd5ade7303582ba22ab5e09f3d14143aee999b717c8e57f1e23ef76d9c0",
+      "Bytes": 5250180,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/summary-division-1.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/summary-division-1.json",
+      "Sha256": "430a9875358127dbcbd5815daa2e24e62c427f83358a8ce7aa68ac8028bbc872",
+      "Bytes": 83613,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/summary-division-2.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/summary-division-2.json",
+      "Sha256": "1756292f6454c799dea18d98ab3a3ee88d560b8a3d86315b52fe08e276d269ca",
+      "Bytes": 83433,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/summary-division-3.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/summary-division-3.json",
+      "Sha256": "e6106cda0e1b2b41e002c56e81f53b76691ef3a1e4fee7fdbe6415f34ec26834",
+      "Bytes": 83613,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-012b/force-012b/summary-division-4.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-012b/force-012b/summary-division-4.json",
+      "Sha256": "74c6a486baef0b51c4937e6f0a47b992d928c0f3dc1c9ad7da7d1386207cbb0e",
+      "Bytes": 83253,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/BENCHMARK_REPORT.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/BENCHMARK_REPORT.json",
+      "Sha256": "7635c57da417c8c97dd18ebc09ee5435046f479cf7cc6e468607f1a829f7e0f2",
+      "Bytes": 1156,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/COACH_CAREER_50_SEASONS_008.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/COACH_CAREER_50_SEASONS_008.json",
+      "Sha256": "35059415f2029f3df85d62dccacbb10732e510e3654c08ae915e0b854b184d11",
+      "Bytes": 21672328,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/QUERY_LOAD_1024_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/QUERY_LOAD_1024_009.json",
+      "Sha256": "a90414033fa5d540634ec515d39fdf7f0e8ca2fe0eb646b21f1152ce469b2e05",
+      "Bytes": 248,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/QUERY_LOAD_128_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/QUERY_LOAD_128_009.json",
+      "Sha256": "73dc6a650d1da20be94fc98910e51abf252d36edc90a968c68fae8cf596eb51b",
+      "Bytes": 242,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/REAL_SEASON_009.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/REAL_SEASON_009.json",
+      "Sha256": "691fb75062c7561fd10006a274b70c892967aac07062dc98d708905bd7e1f3b3",
+      "Bytes": 2115183,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/clubs.json.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/clubs.json.gz",
+      "Sha256": "e624ab0db3e587e06ab4532bd6e60fbadd153e8b8af276992d79e455ed373d76",
+      "Bytes": 1617887,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/initial-clubs.json",
+      "Sha256": "6d674170bfa8e12c9684c5cb51e4610c2ce307e819753f140aa146716fac074d",
+      "Bytes": 16688,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Sha256": "2d33abbea8054fa06ae384addcf871a43a2aad4d14cd0013c4a8760467e51b5a",
+      "Bytes": 74550604,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/progress.json",
+      "Sha256": "8a9646265e2014564c8c7c105ef6761acd8e1b7b9333632e23351e01317e6c13",
+      "Bytes": 86,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1",
+      "Bytes": 1248773,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/balance-012d-fix/final-199801/summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/balance-012d-fix/final-199801/summary.json",
+      "Sha256": "e11fac693b45cb6a18ebaf0fac7bec71877964309e68759a72fdde41e80dbe60",
+      "Bytes": 918,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/100-seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/100-seasons.json",
+      "Sha256": "2be33678a291b4491ac66833235354f067fe5cdf752ceddbf3587abfac1e4be9",
+      "Bytes": 8142469,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/discipline-cards.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/discipline-cards.jsonl.gz",
+      "Sha256": "5738f802dba9a48846c8f4d503e096cdd6e5a98dc9627f16dd3ecfa3565ec151",
+      "Bytes": 7143022,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Sha256": "747024e93938dbac563d663a3dbba99564cc34ccbe747faad450534db4bed8e6",
+      "Bytes": 4746077,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/force-events.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/force-events.jsonl.gz",
+      "Sha256": "cba076f3aadec618b6c58ef8ea0ca86852536ed3416c8e3314c4967f999a057f",
+      "Bytes": 23389067,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/force-one-probes.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/force-one-probes.jsonl",
+      "Sha256": "1cd7dc869f38e0389857d6d83a668a6d7d361b9fb793a3b3aa5c12a5ac70ecc9",
+      "Bytes": 4468045,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/injuries.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/injuries.jsonl.gz",
+      "Sha256": "afadf55b5a6b029f7691408242ee30f5a8ace35deb5bab23921ca0f383a11447",
+      "Bytes": 1569536,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/replay.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/replay.json",
+      "Sha256": "2df50b2dc1d0d0b75e93fdd3e978640a8e9bd8eff5d61718e839d562219ce0c7",
+      "Bytes": 195,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/classic-force-012c/weighted-duration-sample.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/classic-force-012c/weighted-duration-sample.json",
+      "Sha256": "3887f4dd7082390939cce6493bdcd0ab3783e91e67704849a67faed945aeeb81",
+      "Bytes": 302,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/direct-red-100000.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/direct-red-100000.json",
+      "Sha256": "8f3beecd2c03edb26c2eb22f47a73e18e27e705bf8c5a036cdfa5515775c18cf",
+      "Bytes": 233,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/100-seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/100-seasons.json",
+      "Sha256": "754dad37b74ef526b5a04653d1eb2227d82b4962991c40e20d7a39c3aa90dddf",
+      "Bytes": 582924,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/bank.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/bank.jsonl.gz",
+      "Sha256": "2336eb145cc181c85b94cc6e7a9d5a154d6a3ef138eb244d9a8ccd2378deda2f",
+      "Bytes": 16510,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/contracts-and-crises.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/contracts-and-crises.jsonl.gz",
+      "Sha256": "23d1ced063e844d6631e98010fde5186a8d4d151e98d8a71ceb8f08aad076ad6",
+      "Bytes": 5848233,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/ledger.jsonl.gz",
+      "Sha256": "50d28f07098920a2379d3a4620a5ce44860927dd8b3023de65f416d9b0ed9b43",
+      "Bytes": 74549846,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/progress.json",
+      "Sha256": "8898e2d788e3d7ac3a4500a2294a843eef96fb45662ad6cb10c0c799f3e13db1",
+      "Bytes": 77,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/economy-012d/salary-requests-final.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/economy-012d/salary-requests-final.json",
+      "Sha256": "9973efc9f2cf936e984add722b09b15d9571df52e9e41f7164d98d203f0b05d1",
+      "Bytes": 79990,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012/force-one-rounds.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012/force-one-rounds.jsonl",
+      "Sha256": "fc99553474d1801fbc4f847eb16bc43e61ef234da5ba4b083bde82f00a763fc6",
+      "Bytes": 4875648,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012/force-one-summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012/force-one-summary.json",
+      "Sha256": "1a7f9710a91344ebaa9f8f8bead7b5499c3b7ddf91abd49477409756397692e0",
+      "Bytes": 9141,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injuries-division-1.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injuries-division-1.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injuries-division-2.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injuries-division-2.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injuries-division-3.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injuries-division-3.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injuries-division-4.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injuries-division-4.jsonl",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injury-probe-events.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injury-probe-events.jsonl",
+      "Sha256": "9892083e84b6a2143e1128859ecb0ee15303660c3f3dc01aa46fa1d84a1d904c",
+      "Bytes": 13772,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/injury-probe-summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/injury-probe-summary.json",
+      "Sha256": "31f8abd525227057f90601d33b762cbb3244efc97471739fc7eb3d9be3caa5b1",
+      "Bytes": 37139,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/rounds-division-1.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/rounds-division-1.jsonl",
+      "Sha256": "0db66bb6959bea31cb06ec4c45ca8c96297e19b9d289bbdaae958942f8e2922b",
+      "Bytes": 5265300,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/rounds-division-2.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/rounds-division-2.jsonl",
+      "Sha256": "ccc396f9c4c0a1e2cc934dd1329a21734731711fe0d0174cd369d038bf18ff93",
+      "Bytes": 5257257,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/rounds-division-3.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/rounds-division-3.jsonl",
+      "Sha256": "e8c1e85f51ae2b58504780a0396f9e06674536a56965121722e6490fa63bd4cf",
+      "Bytes": 5265030,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/rounds-division-4.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/rounds-division-4.jsonl",
+      "Sha256": "edbdffd5ade7303582ba22ab5e09f3d14143aee999b717c8e57f1e23ef76d9c0",
+      "Bytes": 5250180,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/summary-division-1.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/summary-division-1.json",
+      "Sha256": "430a9875358127dbcbd5815daa2e24e62c427f83358a8ce7aa68ac8028bbc872",
+      "Bytes": 83613,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/summary-division-2.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/summary-division-2.json",
+      "Sha256": "1756292f6454c799dea18d98ab3a3ee88d560b8a3d86315b52fe08e276d269ca",
+      "Bytes": 83433,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/summary-division-3.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/summary-division-3.json",
+      "Sha256": "e6106cda0e1b2b41e002c56e81f53b76691ef3a1e4fee7fdbe6415f34ec26834",
+      "Bytes": 83613,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/force-012b/summary-division-4.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/force-012b/summary-division-4.json",
+      "Sha256": "74c6a486baef0b51c4937e6f0a47b992d928c0f3dc1c9ad7da7d1386207cbb0e",
+      "Bytes": 83253,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/clubs.json.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/clubs.json.gz",
+      "Sha256": "982bcf9bead8f1df7bcea9f4f774ee6205c5c51197a24ff2f1e4ae9d39d4efba",
+      "Bytes": 1607562,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/initial-clubs.json",
+      "Sha256": "c9847f3eb2e2aa8da087bec7e088ba2a332e8ea4bee0075b89160dca3ad46514",
+      "Bytes": 16969,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/ledger.jsonl.gz",
+      "Sha256": "f9bfb85520783b97edbc00abae897f07704f658beadc4e8b74b401bce99332ef",
+      "Bytes": 73858125,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/progress.json",
+      "Sha256": "ed93459299459caa45fb3abaa1e045316872b08a7448f9b7b8272948c8d636ac",
+      "Bytes": 85,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/seasons.json",
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3",
+      "Bytes": 1255841,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Female/summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Female/summary.json",
+      "Sha256": "2747012cc5a59eb17e84b119a5fc8d8265e45560fdf1740b13d5ea1b9f79acb6",
+      "Bytes": 993,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Male/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Male/initial-clubs.json",
+      "Sha256": "7690729cb12d98ffbb62a385ac0a9c0f7428c9f62338c49f1ad1fd97105d348b",
+      "Bytes": 16969,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Male/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Male/ledger.jsonl.gz",
+      "Sha256": "b7302a28fa9e66283c07b09317c97cb9d992223563351e4aa792d24b7bfbb458",
+      "Bytes": 18608128,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014a/Male/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014a/Male/progress.json",
+      "Sha256": "bbeafaa3a2ad9c4cce61718fb0cf3ec62dc09f5195c607ac1851c52d3af4607d",
+      "Bytes": 85,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/clubs.json.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/clubs.json.gz",
+      "Sha256": "9f84108e82690ffce39719f53816dcc83825fbc657ab317f42c91582133a2378",
+      "Bytes": 1724751,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/initial-clubs.json",
+      "Sha256": "2a1f6ab083347ed491801db29a06a40767a37fcaf21be40e20371b118f9babfa",
+      "Bytes": 16340,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/ledger.jsonl.gz",
+      "Sha256": "7aa16c2eaaa48303c3b9e3ab27672fe5578e708c6b837c8ab0d0b28540d87694",
+      "Bytes": 74790148,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/progress.json",
+      "Sha256": "c80552d3f75324c0c33d959e4006fd92358688662e1711c44983d9d5969e77d2",
+      "Bytes": 77,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/seasons.json",
+      "Sha256": "e646aab864b534d1d0da955c3aa58c440fc4755e15708c69d8f5353c913435bb",
+      "Bytes": 1238026,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Female/summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Female/summary.json",
+      "Sha256": "069e2f0fa92ab3f81a739362d99128d52766ed6ee819a800ebb87ef2565fdc91",
+      "Bytes": 1046,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/clubs.json.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/clubs.json.gz",
+      "Sha256": "7879352016d8d167a5d1aa34156faf3aef391f5da57e2c29415008d4f3511fdd",
+      "Bytes": 1662571,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/initial-clubs.json",
+      "Sha256": "cf172385eed3e125223ed9432d4284ed45a36e627a05ac56372a527a4b3d1ebe",
+      "Bytes": 15313,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/ledger.jsonl.gz",
+      "Sha256": "c17628ef0b626a10d6c1312265be47ea1b438ca7e4f1ce7ec0d0171c4221945a",
+      "Bytes": 74204509,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/progress.json",
+      "Sha256": "ad9725aef0c7cd89c37c7737792b750c9af335efc4c02f9ee07611891502917f",
+      "Bytes": 75,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/seasons.json",
+      "Sha256": "d68be8f5507741a304a52d3553ccfaeffe2ddc773e3ec7a7c8c8a77cab7addfb",
+      "Bytes": 1229846,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/audit-014c/verified-final/integration-014b/Male/summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/audit-014c/verified-final/integration-014b/Male/summary.json",
+      "Sha256": "23f659bbd5d3c1ff7ed599b1986d2a291af940a43dfac7f48be9028e758b74d6",
+      "Bytes": 1010,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/balance-012d-fix/final-199801/initial-clubs.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/balance-012d-fix/final-199801/initial-clubs.json",
+      "Sha256": "6d674170bfa8e12c9684c5cb51e4610c2ce307e819753f140aa146716fac074d",
+      "Bytes": 16688,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/balance-012d-fix/final-199801/ledger.jsonl.gz",
+      "Sha256": "6a82be32ec18fcc5459ae5cc62a4b465df4c1d24a26d1fa1f907fe051d3396cd",
+      "Bytes": 62672896,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/balance-012d-fix/final-199801/progress.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/balance-012d-fix/final-199801/progress.json",
+      "Sha256": "7fbb58690182b81f7b0bdb9969fb1f064d2919f0acf51be61a64fae8b1723d23",
+      "Bytes": 84,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/100-seasons.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/100-seasons.json",
+      "Sha256": "2be33678a291b4491ac66833235354f067fe5cdf752ceddbf3587abfac1e4be9",
+      "Bytes": 8142469,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/discipline-cards.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/discipline-cards.jsonl.gz",
+      "Sha256": "0730027bc9c7bdaa69d517571109ddd2e76f9e3bff8f8d30e58d3f180ee45b86",
+      "Bytes": 7143686,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/discipline-suspensions.jsonl.gz",
+      "Sha256": "604eba1a54d030fe78834786cb0c51ee670283af20ba73915e099ee622554c7b",
+      "Bytes": 4744311,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/force-events.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/force-events.jsonl.gz",
+      "Sha256": "4a0c8bf73f8c946627334ddd34dd186b4589e5755bc5d4cf21635686240832c9",
+      "Bytes": 23392159,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/force-one-probes.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/force-one-probes.jsonl",
+      "Sha256": "1cd7dc869f38e0389857d6d83a668a6d7d361b9fb793a3b3aa5c12a5ac70ecc9",
+      "Bytes": 4468045,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/injuries.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/injuries.jsonl.gz",
+      "Sha256": "8b82dd5d4a34518ac3dbc980554dfaef656b788530b76c103205ac299de35a4b",
+      "Bytes": 1569453,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/replay.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/replay.json",
+      "Sha256": "2df50b2dc1d0d0b75e93fdd3e978640a8e9bd8eff5d61718e839d562219ce0c7",
+      "Bytes": 195,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/classic-force-012c/weighted-duration-sample.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/classic-force-012c/weighted-duration-sample.json",
+      "Sha256": "3887f4dd7082390939cce6493bdcd0ab3783e91e67704849a67faed945aeeb81",
+      "Bytes": 302,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/force-012/force-one-rounds.jsonl",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/force-012/force-one-rounds.jsonl",
+      "Sha256": "fc99553474d1801fbc4f847eb16bc43e61ef234da5ba4b083bde82f00a763fc6",
+      "Bytes": 4875648,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/force-012/force-one-summary.json",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/force-012/force-one-summary.json",
+      "Sha256": "1a7f9710a91344ebaa9f8f8bead7b5499c3b7ddf91abd49477409756397692e0",
+      "Bytes": 9141,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/integration-014b/Female/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/integration-014b/Female/ledger.jsonl.gz",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    },
+    {
+      "File": "docs/integration-014b/Male/ledger.jsonl.gz",
+      "Archive": "artifacts/014c-rebalance/recovered-test-outputs/untracked/docs/integration-014b/Male/ledger.jsonl.gz",
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "Action": "Moved generated output; no deletion"
+    }
+  ]
+}

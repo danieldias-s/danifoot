@@ -1,0 +1,104 @@
+{
+  "Base": "9690d9578aba2ec6a35b344921d9429478bd54ab",
+  "PriorChangesPreserved": {
+    "client/elifoot_flutter/lib/appearance_settings.dart": {
+      "Sha256": "5b3d1ba4d61263993c5b5f3d34a46c0514759416b45b1d651ea02e027f4058da",
+      "Size": 20676
+    },
+    "client/elifoot_flutter/lib/club_theme.dart": {
+      "Sha256": "c1762b54709f22f9b5b45c6a218ea0d4f803e86a3501839f34ff16fe55c93955",
+      "Size": 16674
+    },
+    "client/elifoot_flutter/lib/main.dart": {
+      "Sha256": "9b995cfb69e253f5db65167ffb5a42021a1fea7e3674268294e08b9e3e3ed5f0",
+      "Size": 167014
+    },
+    "client/elifoot_flutter/lib/shell_actions.dart": {
+      "Sha256": "5323e7818ff8266a1723a704cdd08b441e911bf02c96ff5985eb03a4b0181e6b",
+      "Size": 52300
+    },
+    "client/elifoot_flutter/test/club_theme_014c_test.dart": {
+      "Sha256": "cabe9add5a2504f84243838f0c3f28a3563ab2f617a3e9278d306b312095d0ff",
+      "Size": 12885
+    },
+    "docs/APPEARANCE_SETTINGS_014C.md": {
+      "Sha256": "961cab1ec2673e2d6a185bd3b1fa1ad88cf9d1bad4a3fe6aa958b976aeae5ade",
+      "Size": 2152
+    },
+    "docs/COACH_CAREER_50_SEASONS_008.json": {
+      "Sha256": "d5916e015f83bf53bea035035059ef9c9fcff59f93144b617c9d1990094966e8",
+      "Size": 21672317
+    },
+    "docs/DYNAMIC_THEME_014C.md": {
+      "Sha256": "5919fadaca6602792dcd0d8d6eb340529e26cbdb1d9bba7bbd27bb901a1ef7c0",
+      "Size": 2690
+    },
+    "docs/audit-007/controlled/behavior-controlled.json": {
+      "Sha256": "83ea1007ce92276a971eda007451b9fd89d34005cde7206e2b3d4488d5b2f74b",
+      "Size": 1649
+    },
+    "docs/audit-008/browser-fixture.json": {
+      "Sha256": "fe85ad895aad72965a2ea65c4217deaab99b27fef4b556d879b459d947a57763",
+      "Size": 564
+    },
+    "docs/audit-009/QUERY_LOAD_1024_009.json": {
+      "Sha256": "fd518c8412f1bb18cbc4783e0b739f0d038c2911563cfb692f3c4a840f0e83a5",
+      "Size": 248
+    },
+    "docs/audit-009/QUERY_LOAD_128_009.json": {
+      "Sha256": "e963ef88a04b49015eff0a3ee8efaaef5a5ea6c7151cdea057ccae92f5f4d5b5",
+      "Size": 242
+    },
+    "docs/audit-009/REAL_SEASON_009.json": {
+      "Sha256": "e30c38d8dd757448809ac3bbdbd1ffe1cc4d6b423d7597c691fe4cb76cc38d0c",
+      "Size": 2115180
+    },
+    "docs/audit-009/api-performance-1024.json": {
+      "Sha256": "cab060d26d904ac599a19c6b410450b0a19d4b9458ab1f357b0a0ad424435ed2",
+      "Size": 239
+    },
+    "docs/audit-009/api-performance-128.json": {
+      "Sha256": "615dd50871d4cec767f765191ef2b51e14ed0653d64a4759b29a36da9453c815",
+      "Size": 234
+    },
+    "docs/audit-009/browser-fixture.json": {
+      "Sha256": "d2e16bb24daf5ecb255884b79fff2869054bb88fa4335725ac1757f8160d1370",
+      "Size": 9104
+    },
+    "docs/audit-009/real-season-world.json": {
+      "Sha256": "7c941d918cd937774d728ab6c7677d17e725a673dd950857d642a1fe6b577b40",
+      "Size": 15641325
+    },
+    "docs/audit-014c/verified-final/api-performance-1024.json": {
+      "Sha256": "e1ddd1db42e24157234577c554af3bc86a595f1b5d549e9cd29c701b2ca89e82",
+      "Size": 238
+    },
+    "docs/audit-014c/verified-final/api-performance-128.json": {
+      "Sha256": "d435212593925db2ab63300326acc9f35fe8b36e8419bbc3081daf835e78566c",
+      "Size": 233
+    },
+    "docs/audit-014c/verified-final/browser-fixture.json": {
+      "Sha256": "46d4d7a365921e749997151f1997fc0ca90f1c48cc9ad52a19cc80f4994ce441",
+      "Size": 9121
+    },
+    "src/Elifoot.Contracts/Catalog/ClubColorDtos.cs": {
+      "Sha256": "355b42b289a594d695f53ea5e8f2a2f0801253df29c5142eebbbb1379ae94b4a",
+      "Size": 1888
+    },
+    "src/Elifoot.Domain/Catalog/ClubColorPolicy.cs": {
+      "Sha256": "c3b6fb1b8f6e174a8624efd53e9fbf715be0faaa423fe79f584caf36bbcfeb37",
+      "Size": 3059
+    }
+  },
+  "OtherActiveProjectChats": 0,
+  "PreviousRun": {
+    "Application": 7,
+    "Domain": 409,
+    "Integration": 186,
+    "Simulation": "No final result, no process running"
+  },
+  "ReferenceImages": [
+    "C:/Users/Daniel/AppData/Local/Temp/codex-clipboard-b70663ca-5b3b-495e-a6d5-c7f3cbc897fe.png",
+    "C:/Users/Daniel/AppData/Local/Temp/codex-clipboard-466a0e22-66de-4de6-893e-6de2b5c7ccaa.png"
+  ]
+}

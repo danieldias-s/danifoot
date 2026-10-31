@@ -1,0 +1,7 @@
+{
+  "World": "ca85633e-f618-4b36-b07b-b4f0c4635c09",
+  "Round": 5,
+  "BeforeMinute": 40,
+  "AfterMinute": 41,
+  "Method": "Existing authoritative tick endpoint; both browser tabs remain open without reload."
+}

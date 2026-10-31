@@ -113,6 +113,54 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   List<dynamic> _standings = [];
   String _selectedDivisionTier = 'PrimeiraDivisao';
   List<dynamic> _cupFixtures = [];
+
+  /// MATCH TEAM COLORS directory (014C rebalance): registered club palettes by
+  /// club id and by name, used to paint team blocks in cup/calendar lists.
+  /// Loaded once per world; failures leave the lists neutral.
+  final Map<String, Map<String, dynamic>> _clubPaletteById = {};
+  final Map<String, Map<String, dynamic>> _clubPaletteByName = {};
+  String? _clubPaletteWorld;
+
+  Map<String, dynamic>? _teamPalette({dynamic id, dynamic name}) {
+    if (_clubPaletteWorld != _worldId) return null;
+    // An explicit fixture ID is authoritative; never substitute a namesake.
+    if (id != null) return _clubPaletteById[id.toString()];
+    return _clubPaletteByName[name?.toString()];
+  }
+
+  Future<void> _loadClubPalettes(String worldId) async {
+    if (_clubPaletteWorld == worldId) return;
+    try {
+      final clubs = await widget.apiClient.getClubs(worldId);
+      if (!mounted || _worldId != worldId) return;
+      setState(() {
+        _clubPaletteWorld = worldId;
+        _clubPaletteById.clear();
+        _clubPaletteByName.clear();
+        final duplicateNames = <String>{};
+        final seenNames = <String>{};
+        for (final c in clubs) {
+          if (c is Map &&
+              c['name'] != null &&
+              !seenNames.add(c['name'].toString())) {
+            duplicateNames.add(c['name'].toString());
+          }
+        }
+        for (final c in clubs) {
+          if (c is! Map || c['colorPalette'] is! Map) continue;
+          final p = Map<String, dynamic>.from(c['colorPalette'] as Map);
+          _clubPaletteById[c['id'].toString()] = p;
+          if (c['name'] != null &&
+              !duplicateNames.contains(c['name'].toString())) {
+            _clubPaletteByName[c['name'].toString()] = p;
+          }
+        }
+      });
+    } catch (_) {
+      // Team blocks fall back to neutral; gameplay data is unaffected.
+    }
+  }
+
   List<dynamic> _topScorers = [];
   Map<String, dynamic>? _marketData;
   Map<String, dynamic>? _financesData;
@@ -217,7 +265,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     };
     widget.apiClient.onReadyCounterUpdated = (counter) {
       if (!mounted || _snapshot == null) return;
-      if (counter['gameWorldId'] != null && counter['gameWorldId'] != _worldId) {
+      if (counter['gameWorldId'] != null &&
+          counter['gameWorldId'] != _worldId) {
         return;
       }
       if ((_snapshot?['roundVersion'] as num? ?? 0) >
@@ -335,6 +384,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final market = await widget.apiClient.getMarket(_worldId!);
       final ranking = await widget.apiClient.getRankingAndHistory(_worldId!);
       final calendar = await widget.apiClient.getCalendar(_worldId!);
+      await _loadClubPalettes(_worldId!);
 
       Map<String, dynamic>? clubDetail;
       Map<String, dynamic>? finances;
@@ -1562,21 +1612,68 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       style: TextStyle(fontSize: 10, color: Colors.amberAccent),
                     ),
                   ),
-                  TextButton(key:ValueKey('create-auction-$pid'),onPressed:_commandBusy||(_snapshot?['roundState']!='RESULTS'&&_tacticsLocked)?null:() async {
-                    final worldId=_worldId,coachId=_coachId,clubId=_myClubId;
-                    final config=await showDialog<VoluntaryAuctionConfig>(context:context,builder:(_)=>AuctionConfigDialog(
-                      playerName:displayName,roundNumber:(_snapshot?['roundNumber'] as num?)?.toInt()??1,
-                      seasonNumber:(_snapshot?['seasonNumber'] as num?)?.toInt()??1,
-                      totalRoundsInSeason:(_snapshot?['totalRoundsInSeason'] as num?)?.toInt()??22,
-                      roundAlreadyCompleted:_snapshot?['roundState']=='RESULTS'));
-                    if(!mounted||config==null||worldId!=_worldId||coachId!=_coachId||clubId!=_myClubId)return;
-                    await _runUiCommand(() async {
-                      await widget.apiClient.createVoluntaryAuction(worldId!,coachId!,pid,
-                        minimumBid:config.minimumBid,durationRounds:config.durationRounds);
-                      await _refreshClubAndSecondaryData();
-                      if(mounted)setState(()=>_statusBanner='Leilão voluntário de $displayName criado.');
-                    });
-                  },child:const Text('LEILOAR',style:TextStyle(fontSize:10))),
+                  TextButton(
+                    key: ValueKey('create-auction-$pid'),
+                    onPressed:
+                        _commandBusy ||
+                            (_snapshot?['roundState'] != 'RESULTS' &&
+                                _tacticsLocked)
+                        ? null
+                        : () async {
+                            final worldId = _worldId,
+                                coachId = _coachId,
+                                clubId = _myClubId;
+                            final config =
+                                await showDialog<VoluntaryAuctionConfig>(
+                                  context: context,
+                                  builder: (_) => AuctionConfigDialog(
+                                    playerName: displayName,
+                                    roundNumber:
+                                        (_snapshot?['roundNumber'] as num?)
+                                            ?.toInt() ??
+                                        1,
+                                    seasonNumber:
+                                        (_snapshot?['seasonNumber'] as num?)
+                                            ?.toInt() ??
+                                        1,
+                                    totalRoundsInSeason:
+                                        (_snapshot?['totalRoundsInSeason']
+                                                as num?)
+                                            ?.toInt() ??
+                                        22,
+                                    roundAlreadyCompleted:
+                                        _snapshot?['roundState'] == 'RESULTS',
+                                  ),
+                                );
+                            if (!mounted ||
+                                config == null ||
+                                worldId != _worldId ||
+                                coachId != _coachId ||
+                                clubId != _myClubId) {
+                              return;
+                            }
+                            await _runUiCommand(() async {
+                              await widget.apiClient.createVoluntaryAuction(
+                                worldId!,
+                                coachId!,
+                                pid,
+                                minimumBid: config.minimumBid,
+                                durationRounds: config.durationRounds,
+                              );
+                              await _refreshClubAndSecondaryData();
+                              if (mounted) {
+                                setState(
+                                  () => _statusBanner =
+                                      'Leilão voluntário de $displayName criado.',
+                                );
+                              }
+                            });
+                          },
+                    child: const Text(
+                      'LEILOAR',
+                      style: TextStyle(fontSize: 10),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -2946,12 +3043,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                     ),
                     DataCell(
-                      Text(
-                        '${f['homeClubName']} (${f['homeDivision']})',
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
+                      TeamColorName(
+                        name: '${f['homeClubName']} (${f['homeDivision']})',
+                        palette: _teamPalette(
+                          id: f['homeClubId'],
+                          name: f['homeClubName'],
                         ),
+                        textAlign: TextAlign.right,
                       ),
                     ),
                     DataCell(
@@ -2965,11 +3063,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                     ),
                     DataCell(
-                      Text(
-                        '${f['awayClubName']} (${f['awayDivision']})',
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
+                      TeamColorName(
+                        name: '${f['awayClubName']} (${f['awayDivision']})',
+                        palette: _teamPalette(
+                          id: f['awayClubId'],
+                          name: f['awayClubName'],
                         ),
                       ),
                     ),
@@ -3340,7 +3438,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ? 'INSOLVÊNCIA'
                         : a['reason'] == 'SalaryRenewalRefused'
                         ? 'RECUSA SALARIAL'
-                        : a['reason'] == 'Voluntary' ? 'VOLUNTÁRIO' : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} ${a['durationRounds'] != null ? ' • ${a['durationRounds']} rodada(s); encerra após R${a['expiresAtRound']} / T${a['expiresAtSeason']}' : ''} • Lance Mín: ${formatAuctionMoney(minBid)} • Atual: ${formatAuctionMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
+                        : a['reason'] == 'Voluntary'
+                        ? 'VOLUNTÁRIO'
+                        : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} ${a['durationRounds'] != null ? ' • ${a['durationRounds']} rodada(s); encerra após R${a['expiresAtRound']} / T${a['expiresAtSeason']}' : ''} • Lance Mín: ${formatAuctionMoney(minBid)} • Atual: ${formatAuctionMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
                     style: const TextStyle(fontSize: 12),
                   ),
                   Wrap(

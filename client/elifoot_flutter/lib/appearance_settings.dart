@@ -39,6 +39,42 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
     widget.controller.preview(Map.from(_draft));
   }
 
+  /// True when the draft renders the fixed classic green app theme.
+  bool get _classic =>
+      _draft['mode'] != 'Custom' && _draft['mode'] != 'ClubGlobal';
+  int get _brightness => (_draft['brightness'] as num?)?.toInt() ?? 0;
+
+  /// Green-theme tweaks always return the interface to the classic green.
+  void _classicChange(String key, dynamic value) {
+    if (!_sameClub) return;
+    setState(() {
+      if (!_classic) _draft['mode'] = 'Classic';
+      _draft[key] = value;
+      _saved = false;
+    });
+    widget.controller.preview(Map.from(_draft));
+  }
+
+  Widget _choice({
+    required String key,
+    required String label,
+    required bool selected,
+    required VoidCallback onTap,
+  }) {
+    final t = ClassicTheme.of(context);
+    return OutlinedButton(
+      key: ValueKey(key),
+      style: selected
+          ? OutlinedButton.styleFrom(
+              backgroundColor: t.selectedBackground,
+              foregroundColor: t.selectedText,
+            )
+          : null,
+      onPressed: _busy || !_sameClub ? null : onTap,
+      child: Text(selected ? '[X] $label' : label),
+    );
+  }
+
   void _custom() {
     if (!_sameClub) return;
     final t = widget.controller.theme;
@@ -64,7 +100,7 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
       _error = null;
     });
     if (restore) {
-      _draft = {'mode': 'Club', 'version': _original['version'] ?? 0};
+      _draft = {'mode': 'Classic', 'version': _original['version'] ?? 0};
       widget.controller.preview(_draft);
     }
     try {
@@ -103,37 +139,159 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: [
-                  Text('CORES DO JOGO', style: t.headingStyle),
+                  Text('TEMA DO JOGO', style: t.headingStyle),
                   if (!_sameClub)
                     const Text(
                       'CLUBE ALTERADO. Reabra Aparência para configurar o clube atual.',
                     ),
-                  Text(
-                    palette == null
-                        ? 'Cores tradicionais não disponíveis; tema neutro.'
-                        : '${palette['colorSource']} • ${palette['colorVerified'] == true ? 'VERIFICADAS' : 'PERSONALIZADAS'}',
+                  const Text(
+                    'A interface usa o verde clássico em qualquer clube. As cores dos clubes aparecem nas partidas, confrontos e listas de jogos.',
                   ),
-                  if (palette != null)
-                    Text(
-                      'Cores registradas: ${palette['primaryColor']} / ${palette['secondaryColor'] ?? 'não informada'}',
-                    ),
                   const Text(
                     'As escolhas são suas e não alteram o catálogo nem a aparência dos outros treinadores.',
+                  ),
+                  const SizedBox(height: 8),
+                  Text('VARIAÇÃO DO VERDE CLÁSSICO', style: t.headingStyle),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      for (final v in const [
+                        ('Classico', 'CLÁSSICO'),
+                        ('Escuro', 'ESCURO'),
+                        ('AltoContraste', 'ALTO CONTRASTE'),
+                      ])
+                        _choice(
+                          key: 'theme-variant-${v.$1}',
+                          label: v.$2,
+                          selected:
+                              _classic &&
+                              (_draft['themeVariant'] ?? 'Classico') == v.$1,
+                          onTap: () => _classicChange('themeVariant', v.$1),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text('BRILHO', style: t.headingStyle),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    runSpacing: 6,
+                    children: [
+                      OutlinedButton(
+                        key: const ValueKey('brightness-down'),
+                        onPressed: _busy || !_sameClub || _brightness <= -2
+                            ? null
+                            : () =>
+                                  _classicChange('brightness', _brightness - 1),
+                        child: const Text('- BRILHO'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          _brightness == 0
+                              ? 'PADRÃO'
+                              : (_brightness > 0
+                                    ? '+$_brightness'
+                                    : '$_brightness'),
+                          key: const ValueKey('brightness-value'),
+                        ),
+                      ),
+                      OutlinedButton(
+                        key: const ValueKey('brightness-up'),
+                        onPressed: _busy || !_sameClub || _brightness >= 2
+                            ? null
+                            : () =>
+                                  _classicChange('brightness', _brightness + 1),
+                        child: const Text('+ BRILHO'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Text('CORES DOS CLUBES NAS PARTIDAS', style: t.headingStyle),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      _choice(
+                        key: 'match-colors-Strong',
+                        label: 'CORES FORTES DOS CLUBES',
+                        selected: _draft['matchColors'] != 'Neutral',
+                        onTap: () => _change('matchColors', 'Strong'),
+                      ),
+                      _choice(
+                        key: 'match-colors-Neutral',
+                        label: 'MODO NEUTRO',
+                        selected: _draft['matchColors'] == 'Neutral',
+                        onTap: () => _change('matchColors', 'Neutral'),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    palette == null
+                        ? 'Seu clube não tem cores tradicionais registradas; nas partidas ele aparece neutro.'
+                        : 'Seu clube nas partidas: ${palette['primaryColor']} / ${palette['secondaryColor'] ?? 'não informada'} • ${palette['colorVerified'] == true ? 'VERIFICADAS' : 'PERSONALIZADAS'}',
+                  ),
+                  if (palette != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TeamColorName(
+                              name: 'SEU CLUBE',
+                              palette: palette,
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 64,
+                            child: Text('2 - 1', textAlign: TextAlign.center),
+                          ),
+                          const Expanded(
+                            child: TeamColorName(name: 'ADVERSÁRIO'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  const SizedBox(height: 8),
+                  ExpansionTile(
+                    key: const ValueKey('appearance-advanced'),
+                    initiallyExpanded: !_classic,
+                    tilePadding: EdgeInsets.zero,
+                    title: Text('OPÇÕES AVANÇADAS', style: t.headingStyle),
+                    children: [
+                      const Text(
+                        'Não recomendadas: substituem o verde clássico na interface inteira.',
+                      ),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          OutlinedButton(
+                            onPressed: _busy || !_sameClub ? null : _custom,
+                            child: const Text('PERSONALIZAR CORES'),
+                          ),
+                          OutlinedButton(
+                            key: const ValueKey('appearance-club-global'),
+                            onPressed: _busy || !_sameClub
+                                ? null
+                                : () => _change('mode', 'ClubGlobal'),
+                            child: const Text('COR DO CLUBE NO JOGO INTEIRO'),
+                          ),
+                          OutlinedButton(
+                            onPressed: _busy || !_sameClub
+                                ? null
+                                : () => _change('mode', 'Classic'),
+                            child: const Text('VOLTAR AO VERDE CLÁSSICO'),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
                     children: [
-                      OutlinedButton(
-                        onPressed: _busy || !_sameClub
-                            ? null
-                            : () => _change('mode', 'Club'),
-                        child: const Text('USAR CORES DO CLUBE'),
-                      ),
-                      OutlinedButton(
-                        onPressed: _busy || !_sameClub ? null : _custom,
-                        child: const Text('PERSONALIZAR CORES'),
-                      ),
                       OutlinedButton(
                         onPressed: _busy || !_sameClub
                             ? null

@@ -1,0 +1,54 @@
+{
+  "Status": "PASS",
+  "Method": "Read existing saved 014C worlds after rebalance API restart; original fields must match and only optional null fields may be added. No writes.",
+  "Contexts": [
+    {
+      "World": "2a29c54b-9ebd-4b19-889e-c6d7115f701c",
+      "Club": "5b94bf3d-90cf-5749-a864-33d5499d726b",
+      "AllOriginalPreferenceFieldsPreserved": true,
+      "AddedOptionalNullFields": [
+        "themeVariant",
+        "brightness",
+        "matchColors"
+      ],
+      "WorldFingerprintUnchanged": true,
+      "Mode": "Club"
+    },
+    {
+      "World": "2a29c54b-9ebd-4b19-889e-c6d7115f701c",
+      "Club": "17a8c382-47b9-cc41-84c4-fd0127712a32",
+      "AllOriginalPreferenceFieldsPreserved": true,
+      "AddedOptionalNullFields": [
+        "themeVariant",
+        "brightness",
+        "matchColors"
+      ],
+      "WorldFingerprintUnchanged": true,
+      "Mode": "Custom"
+    },
+    {
+      "World": "4c2cbcc7-8346-47db-8188-7e99143e295a",
+      "Club": "5b94bf3d-90cf-5749-a864-33d5499d726b",
+      "AllOriginalPreferenceFieldsPreserved": true,
+      "AddedOptionalNullFields": [
+        "themeVariant",
+        "brightness",
+        "matchColors"
+      ],
+      "WorldFingerprintUnchanged": true,
+      "Mode": "Club"
+    },
+    {
+      "World": "4c2cbcc7-8346-47db-8188-7e99143e295a",
+      "Club": "17a8c382-47b9-cc41-84c4-fd0127712a32",
+      "AllOriginalPreferenceFieldsPreserved": true,
+      "AddedOptionalNullFields": [
+        "themeVariant",
+        "brightness",
+        "matchColors"
+      ],
+      "WorldFingerprintUnchanged": true,
+      "Mode": "Custom"
+    }
+  ]
+}

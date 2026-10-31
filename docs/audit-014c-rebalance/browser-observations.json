@@ -1,0 +1,22 @@
+{
+  "Status": "PASS",
+  "Method": "Supported in-app browser UI and original screenshots",
+  "GeneralRedAndBlueGreen": true,
+  "Desktop": true,
+  "Mobile": true,
+  "LeagueFourDivisions": true,
+  "Cup32Matches": true,
+  "AppearanceSavedAndReloaded": {
+    "variant": "Escuro",
+    "brightness": 1,
+    "matchColors": "Neutral"
+  },
+  "DefaultRestored": true,
+  "LiveUpdateBothCoaches": {
+    "before": 40,
+    "after": 41,
+    "reload": false
+  },
+  "NavigationPreserved": true,
+  "ViewportReset": true
+}

@@ -1,0 +1,46 @@
+{
+  "Status": "PASS",
+  "DotnetBuild": {
+    "Configuration": "Release",
+    "Warnings": 0,
+    "Errors": 0
+  },
+  "DotnetTests": {
+    "Application": 7,
+    "Domain": 409,
+    "Integration": 186,
+    "Simulation": 26,
+    "Total": 628,
+    "Failed": 0,
+    "Skipped": 0,
+    "SimulationElapsed": "39m45s",
+    "Method": "Full solution test run completed Application/Domain/Integration; resumed Simulation project in isolated 014C environment, --no-build, same Release binaries; final TRX included."
+  },
+  "Flutter": {
+    "AnalyzerIssues": 0,
+    "Tests": 134,
+    "Failed": 0,
+    "WebReleaseBuild": true,
+    "ApiBaseUrl": "http://127.0.0.1:5155",
+    "RenderHarnessTests": 2,
+    "Renders": 22,
+    "RecordedSceneTeamBlockContrastMinimum": 4.5
+  },
+  "Node": {
+    "Tests": 2,
+    "Passed": 2,
+    "CaptureImporterSyntax": true
+  },
+  "Browser": {
+    "OriginalCaptures": 16,
+    "Desktop": true,
+    "Mobile": true,
+    "PrivatePreferencesReloaded": true,
+    "BothCoachesReceivedMinute41WithoutReload": true
+  },
+  "Persistence": {
+    "RealHttpPostgreSqlApiRestart": "PASS",
+    "TwoOldSavesFourPrivateContexts": "PASS"
+  },
+  "ProductionPublished": false
+}

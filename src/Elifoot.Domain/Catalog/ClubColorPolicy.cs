@@ -26,7 +26,10 @@ public static class ClubColorPolicy
     }
     public static void Validate(AppearancePreferencesDto p)
     {
-        if(p.Mode is not("Club" or "Custom" or "Neutral"))throw new ArgumentException("Modo de aparência inválido.");
+        if(p.Mode is not("Club" or "Classic" or "Custom" or "Neutral" or "ClubGlobal"))throw new ArgumentException("Modo de aparência inválido.");
+        if(p.ThemeVariant is not(null or "Classico" or "Escuro" or "AltoContraste"))throw new ArgumentException("Variação de tema inválida.");
+        if(p.Brightness is <-2 or >2)throw new ArgumentException("Brilho deve estar entre -2 e 2.");
+        if(p.MatchColors is not(null or "Strong" or "Neutral"))throw new ArgumentException("Modo de cores das partidas inválido.");
         foreach(var c in new[]{p.Background,p.Primary,p.Secondary,p.Text,p.Accent})if(c!=null&&!Hex(c))throw new ArgumentException("Use hexadecimal RGB #RRGGBB.");
         if(p.Mode=="Custom" && (p.Background==null||p.Primary==null||p.Secondary==null||p.Text==null||p.Accent==null))throw new ArgumentException("Informe todas as cores da personalização.");
     }

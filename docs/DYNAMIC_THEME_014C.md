@@ -11,3 +11,6 @@ As telas de plantel/tática, divisões/taça, mercado/leilões, finanças/banco/
 TeamColorName aplica as cores de cada time aos nomes no quadro de jogos, sem usar a paleta do treinador para todos. Times sem fonte usam superfície neutra. Cores únicas não ganham segunda cor oficial fictícia. Os placares continuam centrais; divisão, expansão e destaque do clube não mudaram.
 
 Testes: seis paletas-base/neutral, 17 paletas importadas, texto preto em vermelho e cinza intermediário, preferências/restauração/troca/desemprego, nomes com identidade independente e viewport desktop/mobile. Renderer registra dados efetivamente retornados pelo servidor. Testes não equivalem à auditoria de navegador pendente.
+
+
+> **Atualização — ELIFOOT_VISUAL_THEME_REBALANCE_014C:** o tema global agora é o verde clássico fixo para qualquer clube. A paleta do clube do treinador não pinta mais a interface inteira (comportamento rebaixado à opção avançada `ClubGlobal`). As cores dos clubes continuam em `TeamColorName` nas partidas, na Taça e no calendário. Ver `VISUAL_THEME_REBALANCE_014C.md`.

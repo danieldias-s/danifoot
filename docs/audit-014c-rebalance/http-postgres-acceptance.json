@@ -1,0 +1,25 @@
+{
+  "Status": "PASS",
+  "World": "ca85633e-f618-4b36-b07b-b4f0c4635c09",
+  "ApiRestart": true,
+  "Storage": "PostgreSQL 18 / own 014C 55438",
+  "ConcurrentWrites": 4,
+  "Accepted": 1,
+  "Conflicts": 3,
+  "NewFieldsRestored": {
+    "mode": "Classic",
+    "background": null,
+    "primary": null,
+    "secondary": null,
+    "text": null,
+    "accent": null,
+    "version": 1,
+    "themeVariant": "Escuro",
+    "brightness": 1,
+    "matchColors": "Neutral"
+  },
+  "PrivateCoachScope": true,
+  "WorldUnchanged": true,
+  "WorldFingerprint": "88e1bf5f37b3be585fabe49e7e24c545918923ad1a1200b5809e9c5628d026e1",
+  "OriginalPreferencesRestored": true
+}
