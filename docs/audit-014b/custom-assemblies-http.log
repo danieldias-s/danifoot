@@ -1,0 +1,2 @@
+PASS private Male: 128 clubs, 2304 players; private draft, invalid roster, independent IDs, salary, concurrent retry, JSON/CSV and active-save guards
+PASS private Female: 128 clubs, 2304 players; private draft, invalid roster, independent IDs, salary, concurrent retry, JSON/CSV and active-save guards

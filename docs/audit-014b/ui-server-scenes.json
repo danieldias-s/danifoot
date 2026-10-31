@@ -1,0 +1,17 @@
+{
+  "Status": "PASS",
+  "World": "9e86f413-4560-44bc-86fd-3e1c122299d7",
+  "AuthoritativeWaiting": "1/2 PREPARING",
+  "CupFixtures": 32,
+  "LeagueFixtures": 16,
+  "LeagueGamesPerDivision": 4,
+  "RealEngineRoundsPlayed": 3,
+  "Scenes": [
+    "waiting",
+    "cup",
+    "league",
+    "pause",
+    "results"
+  ],
+  "Scope": "Authoritative HTTP responses for automated renderer; not Chrome screenshots."
+}

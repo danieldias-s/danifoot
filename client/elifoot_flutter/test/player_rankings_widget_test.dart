@@ -741,14 +741,14 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('ENTRAR DESEMPREGADO'));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('6. RANKING & CARREIRA'));
-      await tester.tap(find.text('6. RANKING & CARREIRA'));
+      await tester.ensureVisible(find.text('5. RANKING & CARREIRA'));
+      await tester.tap(find.text('5. RANKING & CARREIRA'));
       await tester.pumpAndSettle();
       expect(find.text('Técnico 008'), findsOneWidget);
       expect(find.text('12.5'), findsOneWidget);
       expect(find.text('MORAL: 70/100 — VERDE'), findsNWidgets(2));
-      await tester.ensureVisible(find.text('9. RANKINGS DE JOGADORES'));
-      await tester.tap(find.text('9. RANKINGS DE JOGADORES'));
+      await tester.ensureVisible(find.text('7. RANKINGS DE JOGADORES'));
+      await tester.tap(find.text('7. RANKINGS DE JOGADORES'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('ranking-table')), findsOneWidget);
       f.awards = [award(2036)];

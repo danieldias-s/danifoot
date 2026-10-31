@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'api_client.dart';
+import 'custom_assembly_editor.dart';
+import 'classic_match_board.dart';
 import 'catalog_provenance.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
@@ -24,6 +26,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _district = 'Ranking',
       _search = '',
       _error = '';
+  String _creation = 'Automatic';
+  bool _customConsent = false;
+  Map<String, dynamic>? _assembly;
+  final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
   int _step = 0, _humans = 1;
   bool _busy = false,
       _fictional = false,
@@ -128,6 +134,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'useSavedData': _saved,
   };
   void _useLast() {
+    _assembly = null;
     final p = _last!;
     setState(() {
       _name.text = p['name'].toString();
@@ -186,6 +193,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   Future<void> _makePreview({bool fill = false}) async {
+    if (_assembly != null) {
+      final data = Map<String, dynamic>.from(
+        await _call('assemblies/${_assembly!['id']}') as Map,
+      );
+      if (mounted) setState(() => _applyAssembly(data));
+      return;
+    }
     final data = Map<String, dynamic>.from(
       await _call('preview', body: _request()) as Map,
     );
@@ -203,6 +217,138 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         }
       });
     }
+  }
+
+  void _applyAssembly(Map<String, dynamic> data) {
+    _assembly = data;
+    _gender = data['gender'].toString();
+    _seed.text = data['seed'].toString();
+    _countries
+      ..clear()
+      ..addAll((data['countries'] as List).cast<String>());
+    _name.text = data['name'].toString();
+    _preview = null;
+  }
+
+  Future<void> _openAssemblyEditor(Map<String, dynamic> data) async {
+    final result = await Navigator.push<Map<String, dynamic>>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CustomAssemblyEditor(
+          api: widget.api,
+          coachId: widget.coachId,
+          assembly: data,
+          countryOptions: _options,
+        ),
+      ),
+    );
+    if (mounted) setState(() => _applyAssembly(result ?? data));
+  }
+
+  Future<void> _editPreview() => _run(() async {
+    if (_assembly == null) {
+      if (!_validPreview) {
+        throw Exception('Gere uma prévia válida antes de editar.');
+      }
+      final data = Map<String, dynamic>.from(
+        await _call(
+              'assemblies',
+              body: {
+                'name': _name.text,
+                'gender': _gender,
+                'countries': _countries.toList(),
+                'seed': int.tryParse(_seed.text) ?? 199801,
+                'sourcePreviewId': _preview!['draftId'],
+              },
+            )
+            as Map,
+      );
+      if (!mounted) return;
+      setState(() => _applyAssembly(data));
+    }
+    await _openAssemblyEditor(_assembly!);
+  });
+  Future<void> _restoreAssembly() => _run(() async {
+    final items = _maps(await _call('assemblies'));
+    if (!mounted) return;
+    if (items.isEmpty) {
+      throw Exception('Você ainda não tem montagens salvas nesta conta.');
+    }
+    setState(() => _busy = false);
+    final id = await showDialog<String>(
+      context: context,
+      builder: (ctx) => SimpleDialog(
+        title: const Text('USAR MONTAGEM SALVA'),
+        children: items
+            .map(
+              (a) => SimpleDialogOption(
+                onPressed: () => Navigator.pop(ctx, a['id'].toString()),
+                child: Text(
+                  '${a['name']} • ${a['gender'] == 'Female' ? 'FEMININO' : 'MASCULINO'} • seed ${a['seed']}',
+                ),
+              ),
+            )
+            .toList(),
+      ),
+    );
+    if (id == null) return;
+    if (mounted) setState(() => _busy = true);
+    final data = Map<String, dynamic>.from(
+      await _call('assemblies/$id') as Map,
+    );
+    if (mounted) {
+      setState(() {
+        _applyAssembly(data);
+        _step = 6;
+      });
+    }
+  });
+  Widget _assemblyPanel() {
+    final a = _assembly!, p = a['package'] as Map, v = a['validation'] as Map;
+    final clubs = _maps(p['clubs']), players = _maps(p['players']);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '${a['name']} • ${clubs.length}/128 clubes • ${players.length} atletas • seed ${a['seed']}',
+        ),
+        Text(
+          a['isSaved'] == true
+              ? 'MONTAGEM SALVA NA SUA CONTA'
+              : 'RASCUNHO PRIVADO',
+        ),
+        for (final error in v['errors'] as List? ?? [])
+          Text('$error', style: const TextStyle(color: Colors.orangeAccent)),
+        TextButton(
+          onPressed: _busy ? null : _editPreview,
+          child: const Text('REVISAR / EDITAR MONTAGEM'),
+        ),
+        for (final d in [
+          'PrimeiraDivisao',
+          'SegundaDivisao',
+          'TerceiraDivisao',
+          'QuartaDivisao',
+          'Distrital',
+        ])
+          ExpansionTile(
+            title: Text(
+              '${classicDivisionLabel(d)} • ${clubs.where((c) => c['divisionTier'] == d).length}/${d == 'Distrital' ? 96 : 8}',
+            ),
+            children: clubs
+                .where((c) => c['divisionTier'] == d)
+                .map(
+                  (c) => ListTile(
+                    dense: true,
+                    title: Text('${c['name']}'),
+                    subtitle: Text(
+                      '${c['country']} • ${players.where((p) => p['clubId'] == c['id']).length} atletas',
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+      ],
+    );
   }
 
   Future<void> _assign(Map<String, dynamic> club, int? target) async {
@@ -269,6 +415,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               _dataSummary = null;
             }
             _preview = null;
+            if (label != 'Treinadores') _assembly = null;
           }),
   );
   Widget _searchField() => TextField(
@@ -413,6 +560,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     ],
   );
   Widget _previewPanel() {
+    if (_assembly != null) return _assemblyPanel();
     final p = _preview;
     if (p == null) {
       return const Text('Gere a prévia para conferir clubes e elencos.');
@@ -479,10 +627,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   Widget _body() {
+    if (_assembly != null && _step >= 3 && _step <= 5) return _assemblyPanel();
     switch (_step) {
       case 0:
         return Column(
           children: [
+            TextButton(
+              onPressed: _busy ? null : _restoreAssembly,
+              child: const Text('USAR MONTAGEM SALVA'),
+            ),
             if (_last != null)
               TextButton(
                 onPressed: _busy ? null : _useLast,
@@ -570,6 +723,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                         } else {
                           _countries.remove(c['code']);
                         }
+                        _assembly = null;
                         _assignments.clear();
                         _fictional = false;
                         _fictionalPlayers = false;
@@ -585,60 +739,90 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       case 2:
         return Column(
           children: [
-            _choice('Dados do mundo', _dataMode, [
-              ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
-              ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
-              ('FREE_WORLD', 'MUNDO LIVRE'),
-            ], (v) => _dataMode = v),
-            const Text(
-              'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
+            _choice(
+              'Como montar',
+              _creation,
+              [
+                ('Automatic', 'GERAR MUNDO AUTOMÁTICO'),
+                ('Choose', 'ESCOLHER CLUBES E DIVISÕES'),
+                ('FullCustom', 'CRIAR MUNDO PERSONALIZADO'),
+              ],
+              (v) {
+                _creation = v;
+                _mode = v == 'Choose' ? 'Custom' : 'Automatic';
+                _assembly = null;
+              },
             ),
-            _dataConsentChoices(),
-            _choice('Montagem', _mode, [
-              ('Automatic', 'AUTOMÁTICO POR RANKING'),
-              ('Custom', 'PERSONALIZADO'),
-            ], (v) => _mode = v),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text('Usar imediatamente os dados salvos'),
-              subtitle: const Text(
-                'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
+            if (_creation == 'FullCustom')
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text('AUTORIZO CLUBES E JOGADORES PERSONALIZADOS'),
+                subtitle: const Text(
+                  'Começar com 128 clubes fictícios editáveis, usando os países e a categoria selecionados.',
+                ),
+                value: _customConsent,
+                onChanged: _busy
+                    ? null
+                    : (v) => setState(() => _customConsent = v == true),
               ),
-              value: _saved,
-              onChanged: _busy ? null : (v) => setState(() => _saved = v!),
-            ),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text(
-                'INCLUIR clubes históricos, com referência passada explícita',
+            if (_creation != 'FullCustom') ...[
+              _choice('Dados do mundo', _dataMode, [
+                ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
+                ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
+                ('FREE_WORLD', 'MUNDO LIVRE'),
+              ], (v) => _dataMode = v),
+              const Text(
+                'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
               ),
-              value: _includeHistorical,
-              onChanged: _busy || _dataMode != 'FREE_WORLD'
-                  ? null
-                  : (v) => setState(() {
-                      _includeHistorical = v!;
-                      _preview = null;
-                      _assignments.clear();
-                    }),
-            ),
-            CheckboxListTile(
-              contentPadding: EdgeInsets.zero,
-              title: const Text('INCLUIR clubes sem verificação de atividade'),
-              subtitle: const Text(
-                'Listas antigas não comprovam participação na temporada atual.',
+              _dataConsentChoices(),
+              _choice('Montagem', _mode, [
+                ('Automatic', 'AUTOMÁTICO POR RANKING'),
+                ('Custom', 'ESCOLHER CLUBES E DIVISÕES'),
+              ], (v) => _mode = v),
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text('Usar imediatamente os dados salvos'),
+                subtitle: const Text(
+                  'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
+                ),
+                value: _saved,
+                onChanged: _busy ? null : (v) => setState(() => _saved = v!),
               ),
-              value: _includeUnverified,
-              onChanged: _busy || _dataMode != 'FREE_WORLD'
-                  ? null
-                  : (v) => setState(() {
-                      _includeUnverified = v!;
-                      _preview = null;
-                      _assignments.clear();
-                    }),
-            ),
-            const Text(
-              '4 divisões de 8 clubes e 96 distritais. Ranking define apenas a distribuição inicial.',
-            ),
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text(
+                  'INCLUIR clubes históricos, com referência passada explícita',
+                ),
+                value: _includeHistorical,
+                onChanged: _busy || _dataMode != 'FREE_WORLD'
+                    ? null
+                    : (v) => setState(() {
+                        _includeHistorical = v!;
+                        _preview = null;
+                        _assignments.clear();
+                      }),
+              ),
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                title: const Text(
+                  'INCLUIR clubes sem verificação de atividade',
+                ),
+                subtitle: const Text(
+                  'Listas antigas não comprovam participação na temporada atual.',
+                ),
+                value: _includeUnverified,
+                onChanged: _busy || _dataMode != 'FREE_WORLD'
+                    ? null
+                    : (v) => setState(() {
+                        _includeUnverified = v!;
+                        _preview = null;
+                        _assignments.clear();
+                      }),
+              ),
+              const Text(
+                '4 divisões de 8 clubes e 96 distritais. Ranking define apenas a distribuição inicial.',
+              ),
+            ],
           ],
         );
       case 3:
@@ -750,6 +934,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               child: const Text('ATUALIZAR PRÉVIA'),
             ),
             _previewPanel(),
+            if (_assembly == null)
+              TextButton(
+                onPressed: _busy || !_validPreview ? null : _editPreview,
+                child: const Text('REVISAR / EDITAR MONTAGEM'),
+              ),
           ],
         );
       default:
@@ -770,7 +959,21 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               onPressed: _busy || !_validPreview
                   ? null
                   : () => _run(() async {
-                      await _call('confirm/${_preview!['draftId']}', body: {});
+                      if (_assembly != null) {
+                        await _call(
+                          'assemblies/${_assembly!['id']}/confirm',
+                          body: {
+                            'idempotencyKey': _confirmationKey,
+                            'worldName': _name.text.trim(),
+                            'maxHumans': _humans,
+                          },
+                        );
+                      } else {
+                        await _call(
+                          'confirm/${_preview!['draftId']}',
+                          body: {},
+                        );
+                      }
                       if (mounted) Navigator.pop(context, true);
                     }),
               child: const Text('CONFIRMAR CRIAÇÃO'),
@@ -780,15 +983,42 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
-  bool get _validPreview =>
-      _preview != null &&
-      (_preview!['errors'] as List).isEmpty &&
-      _preview!['pendingSlots'] == 0;
+  bool get _validPreview => _assembly != null
+      ? (_assembly!['validation'] as Map)['isValid'] == true
+      : _preview != null &&
+            (_preview!['errors'] as List).isEmpty &&
+            _preview!['pendingSlots'] == 0;
   Future<void> _next() => _run(() async {
     if (_step == 1 && _countries.isEmpty) {
       throw Exception('Selecione pelo menos um país.');
     }
-    if (_step == 2) await _catalog();
+    if (_step == 2) {
+      if (_creation == 'FullCustom') {
+        if (!_customConsent) {
+          throw Exception(
+            'Autorize explicitamente clubes e jogadores personalizados.',
+          );
+        }
+        if (_assembly == null) {
+          final data = Map<String, dynamic>.from(
+            await _call(
+                  'assemblies',
+                  body: {
+                    'name': _name.text,
+                    'gender': _gender,
+                    'countries': _countries.toList(),
+                    'seed': int.tryParse(_seed.text) ?? 199801,
+                    'allowPersonalizedContent': true,
+                  },
+                )
+                as Map,
+          );
+          if (mounted) setState(() => _applyAssembly(data));
+        }
+      } else {
+        await _catalog();
+      }
+    }
     if (_step == 5) await _makePreview();
     if (mounted) {
       setState(() {

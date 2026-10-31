@@ -40,8 +40,8 @@ void main() {
     await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)')); await tester.pumpAndSettle();
     await tester.tap(find.text('ENTRAR COM CLUBE')); await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('choose-club-club-1'))); await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('5. FINANÇAS & ESTÁDIO'));
-    await tester.tap(find.text('5. FINANÇAS & ESTÁDIO')); await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));
+    await tester.tap(find.text('4. FINANÇAS & ESTÁDIO')); await tester.pumpAndSettle();
     expect(find.textContaining('Empréstimo legado em prestações'), findsOneWidget);
     expect(find.textContaining('1,50% sobre o saldo; prestação R\$ 28.750'), findsOneWidget);
     expect(tester.takeException(), isNull);
@@ -54,8 +54,8 @@ void main() {
     await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)')); await tester.pumpAndSettle();
     await tester.tap(find.text('ENTRAR COM CLUBE')); await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('choose-club-club-1'))); await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('5. FINANÇAS & ESTÁDIO'));
-    await tester.tap(find.text('5. FINANÇAS & ESTÁDIO')); await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));
+    await tester.tap(find.text('4. FINANÇAS & ESTÁDIO')); await tester.pumpAndSettle();
     for (final width in [320.0, 1280.0]) {
       await tester.binding.setSurfaceSize(Size(width, 900)); await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);

@@ -1,0 +1,5 @@
+00:00 +0: loading D:/elifoot_98_014B/client/elifoot_flutter/test/custom_assembly_014b_test.dart
+00:00 +0: Pre-save editor keeps invalid drafts and saves actual edited club/player fields at 320.0
+00:03 +1: Pre-save editor keeps invalid drafts and saves actual edited club/player fields at 1366.0
+00:04 +2: Saved assembly is restored only on request and confirms through private assembly endpoint
+00:04 +3: All tests passed!

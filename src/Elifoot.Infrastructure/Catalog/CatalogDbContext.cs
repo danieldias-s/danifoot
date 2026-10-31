@@ -42,6 +42,14 @@ public sealed class WorldCreationDraft
     public Guid? WorldId { get; set; } public string? WorldJson { get; set; }
 }
 
+public sealed class CustomWorldAssembly
+{
+    public Guid Id {get;set;} public Guid OwnerId {get;set;} public string Name {get;set;}="";
+    public string CountriesJson {get;set;}="[]"; public string SourceJson {get;set;}=""; public string PackageJson {get;set;}="";
+    public int Version {get;set;} public bool IsSaved {get;set;} public bool TrustedCatalog {get;set;} public bool Personalized {get;set;}
+    public DateTime CreatedAtUtc {get;set;} public DateTime UpdatedAtUtc {get;set;}
+}
+
 /// <summary>Separate database and lifecycle from gameplay persistence; never migrates an existing world database.</summary>
 public sealed class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbContext(options)
 {
@@ -51,8 +59,12 @@ public sealed class CatalogDbContext(DbContextOptions<CatalogDbContext> options)
     public DbSet<CatalogSyncJob> SyncJobs => Set<CatalogSyncJob>();
     public DbSet<WorldCreationPreset> Presets => Set<WorldCreationPreset>();
     public DbSet<WorldCreationDraft> Drafts => Set<WorldCreationDraft>();
+    public DbSet<CustomWorldAssembly> Assemblies => Set<CustomWorldAssembly>();
     protected override void OnModelCreating(ModelBuilder b)
     {
+        b.Entity<CustomWorldAssembly>().HasKey(x=>x.Id);
+        b.Entity<CustomWorldAssembly>().HasIndex(x=>new{x.OwnerId,x.IsSaved});
+        b.Entity<CustomWorldAssembly>().Property(x=>x.Version).IsConcurrencyToken();
         b.Entity<CatalogCountry>().HasKey(x => x.Code);
         b.Entity<CatalogProvider>().HasKey(x => x.Id);
         b.Entity<CatalogSeason>().HasKey(x => x.Name);

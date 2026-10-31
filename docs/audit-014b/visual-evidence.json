@@ -1,0 +1,112 @@
+{
+  "Status": "PARTIAL",
+  "AutomatedRenderer": "PASS",
+  "Images": [
+    {
+      "File": "automated-renders\\cup-1366.png",
+      "Bytes": 114751,
+      "Sha256": "83a1eb610a591854d32de80c7e52f5db86f9ebacd47b04eefd4ff234b3e79601"
+    },
+    {
+      "File": "automated-renders\\cup-390.png",
+      "Bytes": 84946,
+      "Sha256": "cd48074896380af9d4eff05f77ffc48155c6c720c5c573131ef6092eae877e0a"
+    },
+    {
+      "File": "automated-renders\\league-1366.png",
+      "Bytes": 105972,
+      "Sha256": "37204cab2457dea50ec8006bfcca95733fbab99008a335ab728cf0dccdbbde34"
+    },
+    {
+      "File": "automated-renders\\league-390.png",
+      "Bytes": 85862,
+      "Sha256": "c4dad6c75ab2a71b8a490ebef771a9fb577a0f7e172ec42f0a32a0841ee0ecdf"
+    },
+    {
+      "File": "automated-renders\\league-lower-divisions-1366.png",
+      "Bytes": 105972,
+      "Sha256": "37204cab2457dea50ec8006bfcca95733fbab99008a335ab728cf0dccdbbde34"
+    },
+    {
+      "File": "automated-renders\\league-lower-divisions-390.png",
+      "Bytes": 79617,
+      "Sha256": "86b9cd13bc25e54128e46726bf1dd29a3af9231d0d4f1b95420377b92ab4288e"
+    },
+    {
+      "File": "automated-renders\\pause-1366.png",
+      "Bytes": 145776,
+      "Sha256": "8841fac471076613daac90d637f867a883ba1199bf2279dfdb6c76cdbee10b56"
+    },
+    {
+      "File": "automated-renders\\pause-390.png",
+      "Bytes": 107023,
+      "Sha256": "dad37cf29471c9c865a92f4a03f837423eae4f4ed7139cee0725013d0ec35f42"
+    },
+    {
+      "File": "automated-renders\\pre-save-editor-1366.png",
+      "Bytes": 53577,
+      "Sha256": "a96bc4524a52d2acf10b20e84b2fc2d1e7c5d358135e16da900d25d03dd5797b"
+    },
+    {
+      "File": "automated-renders\\pre-save-editor-390.png",
+      "Bytes": 43023,
+      "Sha256": "3e97fec31346c06be4ed656d8462b5898474f8301bc433ae1a07a01f1a6ac09a"
+    },
+    {
+      "File": "automated-renders\\pre-save-roster-1366.png",
+      "Bytes": 55803,
+      "Sha256": "9fe85bc876c1b2ee0fe16df804c006d32a0e25d9b0bd86e8fbbafb91107acf2b"
+    },
+    {
+      "File": "automated-renders\\pre-save-roster-390.png",
+      "Bytes": 45529,
+      "Sha256": "c4a7c9cda288cdc83c2fa3c7ea5500bdb5fbce54fc83cfdd19edaa46eabc33f9"
+    },
+    {
+      "File": "automated-renders\\result-events-1366.png",
+      "Bytes": 132889,
+      "Sha256": "690a812c6feec1fefc01f35a655fe144de75146dfe428a5b2a2a0453d0d12f8b"
+    },
+    {
+      "File": "automated-renders\\result-events-390.png",
+      "Bytes": 99493,
+      "Sha256": "799b04587325616c61a7a486d6a21455beba0ffc7cafd67782be712e61f850aa"
+    },
+    {
+      "File": "automated-renders\\results-1366.png",
+      "Bytes": 106309,
+      "Sha256": "dae744cb55bb9b8e5ee1b2b0f92f4a305e59576fac8a0726d6932bbd9899879e"
+    },
+    {
+      "File": "automated-renders\\results-390.png",
+      "Bytes": 80486,
+      "Sha256": "da2d924fecf21dfea29618cdf01b818bacf21de7f09cf780ce3a5977f0a45a2d"
+    },
+    {
+      "File": "automated-renders\\saved-assembly-restored-1366.png",
+      "Bytes": 29073,
+      "Sha256": "5da8c75855899cb52e843f01adb7569378eb5ebfdaf97c52b71ce3adb1125282"
+    },
+    {
+      "File": "automated-renders\\saved-assembly-restored-390.png",
+      "Bytes": 23734,
+      "Sha256": "171c97fd76ad6d55413d97d81b0600421ef10a01288c276ff3f2dfdce5429b57"
+    },
+    {
+      "File": "automated-renders\\waiting-1-of-2-1366.png",
+      "Bytes": 186234,
+      "Sha256": "f345238bfdafab7480950335ceb598a727d484e8db51813e4a6c541675dc40f5"
+    },
+    {
+      "File": "automated-renders\\waiting-1-of-2-390.png",
+      "Bytes": 113203,
+      "Sha256": "06dc251891d1e740df6bc24bd985aeb5008a805d76a2f074e31cdc85bf7b2e9b"
+    }
+  ],
+  "Source": "Authenticated local server snapshots; actual Flutter widgets; frozen responses during render; Windows fonts loaded for legibility",
+  "ChromeScreenshots": false,
+  "ReferenceImagesAttached": false,
+  "HumanAuditClaimed": false,
+  "ComputerUsePriorBlock": "Could not determine current browser URL on Windows with enough confidence to enforce policy",
+  "VisualInspection": "Images inspected by agent; independent cup-row expansion corrected; real eventType labels corrected after image inspection"
+}

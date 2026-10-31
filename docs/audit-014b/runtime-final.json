@@ -1,0 +1,37 @@
+{
+  "Status": "PASS",
+  "ManualClock": false,
+  "BrowserUrl": "http://127.0.0.1:5146",
+  "Api": "http://127.0.0.1:5145",
+  "PostgreSQLPort": 55437,
+  "Resources": [
+    {
+      "Path": "/",
+      "Status": 200,
+      "Bytes": 1249,
+      "ContentType": "text/html; charset=utf-8",
+      "Sha256": "3751fe51742be0b9ed61f171b9b2bc9dcc1b4ef7d68cabe69b753eb06b888132"
+    },
+    {
+      "Path": "/flutter_bootstrap.js",
+      "Status": 200,
+      "Bytes": 9738,
+      "ContentType": "text/javascript; charset=utf-8",
+      "Sha256": "f5fea792b1973252df51b00788b1cccc0c9b8808c458003d6f7bb0695a4bbb2b"
+    },
+    {
+      "Path": "/main.dart.js",
+      "Status": 200,
+      "Bytes": 2995575,
+      "ContentType": "text/javascript; charset=utf-8",
+      "Sha256": "5a422e789df83991c686f2d9c1a3882562e01378a1a6ed2f2efee9e1f8a8b6ca"
+    },
+    {
+      "Path": "/__014b_health",
+      "Status": 200,
+      "Bytes": 118,
+      "ContentType": "application/json",
+      "Sha256": "92cb58389f5d7e7ef8e0e426b3aa88e6065045e61985bb42b36bbf5c7583f9bb"
+    }
+  ]
+}

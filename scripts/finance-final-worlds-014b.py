@@ -3,7 +3,9 @@ from pathlib import Path
 from decimal import Decimal as D
 import runpy,json,uuid,urllib.parse
 ROOT=Path(__file__).resolve().parents[1];api=runpy.run_path(str(ROOT/'scripts/smoke-final-worlds-014b.py'));call=api['call'];save=api['save'];fingerprint=api['fingerprint'];local=api['LOCAL']
-main_contexts=json.loads((local/'smoke-context.json').read_text(encoding='utf-8'));contexts=[];results=[]
+contexts=[];results=[]
+original_save=save
+save=lambda name,value:original_save(name.replace('actual-financial-flow','actual-financial-ux'),value)
 def post(path,owner):return call(path,{},owner)
 def query(path,values):return path+'?'+urllib.parse.urlencode(values)
 def money(value):return D(str(value))
@@ -31,18 +33,29 @@ for gender in ['Male','Female']:
     frozen=json.loads((local/'inputs'/f'{gender}.input.json').read_text(encoding='utf-8'))
     request=frozen['request'];request['name']='014B finanças '+gender
     preview=call('/api/world-creator/preview',request,owner);assert not preview['errors'],preview['errors']
-    world=call('/api/world-creator/confirm/'+preview['draftId'],{},owner)['id']
-    buyer=next(x['id'] for x in call(f'/api/worlds/{world}/clubs') if x['divisionTier']=='PrimeiraDivisao')
+    # Set the controlled expiry contract before world confirmation. No active-save editor call.
+    assembly=call('/api/world-creator/assemblies',{'name':request['name'],'gender':gender,'countries':request['countries'],
+      'seed':request['seed'],'sourcePreviewId':preview['draftId']},owner)
+    package=assembly['package'];first_division=[c for c in package['clubs'] if c['divisionTier']=='PrimeiraDivisao']
+    seller_template=first_division[1];squad=[p for p in package['players'] if p['clubId']==seller_template['id']]
+    mean=sum(p['strength'] for p in squad)/len(squad)
+    probe=min((p for p in squad if p['position'] in ['D','M'] and sum(q['position']==p['position'] for q in squad)>3),key=lambda p:p['strength'])
+    assert probe['strength']<mean-3;probe['contractRoundsRemaining']=2
+    assembly=call('/api/world-creator/assemblies/'+assembly['id'],{'name':assembly['name'],'countries':assembly['countries'],
+      'package':package,'expectedVersion':assembly['version'],'savePreset':True},owner)
+    assert assembly['validation']['isValid'],assembly['validation']
+    world=call('/api/world-creator/assemblies/'+assembly['id']+'/confirm',{'idempotencyKey':'finance-world-'+uuid.uuid4().hex},owner)['id']
+    first_division=[c for c in call(f'/api/worlds/{world}/clubs') if c['divisionTier']=='PrimeiraDivisao'];buyer=first_division[0]['id'];seller=first_division[1]['id']
+    seller_login=call('/api/auth/local-login',{'nickname':'014B vendedor '+gender,'deviceId':uuid.uuid4().hex});seller_coach=seller_login['coachId']
     post(query(f'/api/worlds/{world}/join',{'coachId':owner,'nickname':login['nickname'],'deviceId':login['deviceId'],'preferredClubId':buyer}),owner)
+    post(query(f'/api/worlds/{world}/join',{'coachId':seller_coach,'nickname':seller_login['nickname'],'deviceId':seller_login['deviceId'],'preferredClubId':seller}),seller_coach)
     loanpath=query(f'/api/worlds/{world}/clubs/{buyer}/loans',{'coachId':owner,'amount':500000,'rounds':0,'idempotencyKey':'014b-finance-opening-loan'})
     post(loanpath,owner);post(loanpath,owner)
-    for n in range(3):play(world,[(owner,buyer)],f'014b-finance-opening-{n}')
-    contexts.append({'World':world,'Club':buyer,'Coach':owner,'Gender':gender,'Draft':preview['draftId'],'LoanPath':loanpath})
+    for n in range(3):play(world,[(owner,buyer),(seller_coach,seller)],f'014b-finance-opening-{n}')
+    contexts.append({'World':world,'Club':buyer,'Coach':owner,'Gender':gender,'Draft':preview['draftId'],'LoanPath':loanpath,'Seller':seller,'SellerCoach':seller_coach,'ProbeIdentity':probe['catalogIdentity']['canonicalIdentity']})
 for c in contexts:
     world=c['World'];buyer=c['Club'];owner=c['Coach']
-    seller=next(x['id'] for x in call(f'/api/worlds/{world}/clubs') if x['id']!=buyer and x['divisionTier']=='PrimeiraDivisao')
-    seller_login=call('/api/auth/local-login',{'nickname':'014B vendedor '+c['Gender'],'deviceId':uuid.uuid4().hex});seller_coach=seller_login['coachId']
-    post(query(f'/api/worlds/{world}/join',{'coachId':seller_coach,'nickname':seller_login['nickname'],'deviceId':seller_login['deviceId'],'preferredClubId':seller}),seller_coach)
+    seller=c['Seller'];seller_coach=c['SellerCoach']
     sd=call(f'/api/worlds/{world}/clubs/{seller}');bd=call(f'/api/worlds/{world}/clubs/{buyer}')
     target=next(p for p in reversed(sd['squad']) if p['position']=='A');price=target['fairValue'];seller_cash=money(sd['cashBalance']);buyer_cash=money(bd['cashBalance'])
     origin=target['catalogIdentity']
@@ -62,12 +75,10 @@ for c in contexts:
     call(repay,body,owner);retry_without_duplication(lambda:call(repay,body,owner))
     finance=call(f'/api/worlds/{world}/clubs/{buyer}/finances');assert finance['loans'][0]['remainingBalance']==0 and finance['loans'][0]['principalPaid']==500000
     assert money(finance['cashBalance'])==before_repay-D(500000)
-    # Explicit controlled expiry probe through the supported editor; no force, salary or engine modification.
-    sd=call(f'/api/worlds/{world}/clubs/{seller}');mean=sum(p['strength'] for p in sd['squad'])/len(sd['squad'])
-    expiring=min((p for p in sd['squad'] if p['position'] in ['D','M'] and sum(q['position']==p['position'] for q in sd['squad'])>3),key=lambda p:p['strength'])
-    assert expiring['strength']<mean-3
-    edit={k:expiring.get(k) for k in ['id','clubId','name','position','strength','behavior','isStar','salaryPerRound','marketPrice','photoUrl','photoLicense','photoCredit','catalogIdentity','negotiatedContractProtected']};edit['contractRoundsRemaining']=1
-    call(f'/api/worlds/{world}/editor/update-player',edit,seller_coach)
+    # The probe expires through official played matches, with its initial contract fixed pre-save.
+    sd=call(f'/api/worlds/{world}/clubs/{seller}')
+    expiring=next(p for p in sd['squad'] if p['catalogIdentity']['canonicalIdentity']==c['ProbeIdentity'])
+    assert expiring['contractRoundsRemaining']==1
     coaches=[(owner,buyer),(seller_coach,seller)]
     played=[play(world,coaches,'014b-expiry')]
     market=call(f'/api/worlds/{world}/market');auction=next(a for a in market['auctions'] if a['playerId']==expiring['id'] and not a['isClosed'])
@@ -88,14 +99,10 @@ for c in contexts:
         assert len({t['id'] for t in f['ledger']})==len(f['ledger'])
         finances.append({'Club':club,'Cash':f['cashBalance'],'LedgerRows':len(f['ledger']),'LedgerDifference':'0','Squad':len(detail['squad'])})
     c['Fingerprint']=fingerprint(world,buyer);c['Seller']=seller;c['SellerCoach']=seller_coach
-    (local/'finance-context.json').write_text(json.dumps(contexts,indent=2),encoding='utf-8')
+    (local/'finance-ux-context.json').write_text(json.dumps(contexts,indent=2),encoding='utf-8')
     result={'World':world,'Gender':c['Gender'],'PurchasePrice':price,'TransferMoneyReconciled':True,'TransferOriginPreserved':True,
        'RenewedSalary':salary,'RenewalRoundsAddedOnce':5,'PrincipalPaidOnce':500000,'InterestAlreadyCharged':loan['interestCharged'],
-       'Auction':closed,'ExpiryProbe':'Only ContractRoundsRemaining set to 1 through supported editor; original force, salary, origin and engines preserved.',
+       'Auction':closed,'ExpiryProbe':'Initial contract set to 2 before save confirmation; expiry by official matches; no active-world edits.',
        'AdditionalRealRounds':len(played),'NextRound':call(f'/api/worlds/{world}/snapshot')['roundNumber'],'ClubReconciliations':finances}
     results.append(result);save('actual-financial-flow.json',{'Status':'PASS' if len(results)==2 else 'RUNNING','Worlds':results})
     print('PASS actual finance',c['Gender'],': buy/sell, protected renewal, loan payoff, auction, real matches and ledgers reconciled.',flush=True)
-
-for c in main_contexts:
-    c['Fingerprint']=fingerprint(c['World'],c['Club'])
-(local/'smoke-context.json').write_text(json.dumps(main_contexts,indent=2),encoding='utf-8')

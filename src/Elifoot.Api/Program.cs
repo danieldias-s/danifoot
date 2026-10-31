@@ -230,6 +230,8 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/update-club", async (
 {
     var w = await repo.GetWorldAsync(worldId, ct);
     if (w == null) return Results.NotFound();
+    if (w.CatalogOrigin != null || w.CustomAssemblyOrigin != null || w.HumanCoaches.Count > 0 || w.SeasonNumber > 1 || w.RoundNumber > 1)
+        return Results.Conflict(new { error = "Edite uma montagem em CRIAR NOVO CAMPEONATO. Saves confirmados não permitem edição direta." });
     if (w.RoundState != RoundState.PREPARING || w.HumanCoaches.Any(h => h.IsReadyForRound))
         return Results.BadRequest(new { error = "Retire pronto de todos os técnicos antes de editar." });
     if (string.IsNullOrWhiteSpace(edited.Name) || !System.Text.RegularExpressions.Regex.IsMatch(edited.PrimaryColorHex, "^#[0-9a-fA-F]{6}$") ||
@@ -250,6 +252,8 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/create-club", async (
 {
     var w = await repo.GetWorldAsync(worldId, ct);
     if (w == null) return Results.NotFound();
+    if (w.CatalogOrigin != null || w.CustomAssemblyOrigin != null || w.HumanCoaches.Count > 0 || w.SeasonNumber > 1 || w.RoundNumber > 1)
+        return Results.Conflict(new { error = "Edite uma montagem em CRIAR NOVO CAMPEONATO. Saves confirmados não permitem edição direta." });
     if (w.RoundState != RoundState.PREPARING || w.RoundNumber != 1 || w.HumanCoaches.Any(h => h.IsReadyForRound))
         return Results.BadRequest(new { error = "Crie clubes antes da primeira rodada, com todos sem pronto." });
     if (string.IsNullOrWhiteSpace(edited.Name)) return Results.BadRequest(new { error = "Informe um nome." });
@@ -811,6 +815,8 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/update-player", async (
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin != null || world.CustomAssemblyOrigin != null || world.HumanCoaches.Count > 0 || world.SeasonNumber > 1 || world.RoundNumber > 1)
+        return Results.Conflict(new { error = "Edite uma montagem em CRIAR NOVO CAMPEONATO. Saves confirmados não permitem edição direta." });
     if (world.RoundState != RoundState.PREPARING)
         return Results.BadRequest(new { error = "Edição direta só é permitida com a rodada em PREPARING (ou crie uma cópia do mundo)." });
     if (world.HumanCoaches.Any(h => h.IsReadyForRound))
@@ -856,6 +862,8 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/update-manager", async (
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
+    if (world.CatalogOrigin != null || world.CustomAssemblyOrigin != null || world.HumanCoaches.Count > 0 || world.SeasonNumber > 1 || world.RoundNumber > 1)
+        return Results.Conflict(new { error = "Edite uma montagem em CRIAR NOVO CAMPEONATO. Saves confirmados não permitem edição direta." });
 
     int weightSum = edited.PreferredFormations.Sum(f => f.WeightPercent);
     if (world.RoundState != RoundState.PREPARING || world.HumanCoaches.Any(h => h.IsReadyForRound))

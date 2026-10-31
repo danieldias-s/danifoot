@@ -1,0 +1,39 @@
+{
+  "Status": "PASS",
+  "Cases": [
+    {
+      "Gender": "Male",
+      "PrivateOwnership": true,
+      "SavedAndRestored": true,
+      "InvalidDraftRetained": true,
+      "InvalidConfirmationBlocked": true,
+      "IndependentWorlds": [
+        "b5c5f2fb-f5e2-4839-b265-e751c3094f13",
+        "0fe6e3ee-b619-4c82-a6e0-9cb4ce4589a6"
+      ],
+      "UniquePlayersPerWorld": 2304,
+      "ContractsAndSalaryPreserved": true,
+      "ConcurrentConfirmationRetries": 6,
+      "ExistingWorldsUnchanged": true,
+      "LiveEditorMutationsBlocked": 4,
+      "CsvRoundTrip": 2304
+    },
+    {
+      "Gender": "Female",
+      "PrivateOwnership": true,
+      "SavedAndRestored": true,
+      "InvalidDraftRetained": true,
+      "InvalidConfirmationBlocked": true,
+      "IndependentWorlds": [
+        "7483ec1d-7323-4e84-a486-04a36b1abbf6",
+        "1f6d7d15-196f-434f-87dd-7899e71185f6"
+      ],
+      "UniquePlayersPerWorld": 2304,
+      "ContractsAndSalaryPreserved": true,
+      "ConcurrentConfirmationRetries": 6,
+      "ExistingWorldsUnchanged": true,
+      "LiveEditorMutationsBlocked": 4,
+      "CsvRoundTrip": 2304
+    }
+  ]
+}

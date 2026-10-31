@@ -7,6 +7,8 @@ import 'package:flutter/semantics.dart';
 import 'api_client.dart';
 import 'world_creator.dart';
 import 'catalog_provenance.dart';
+import 'round_navigation.dart';
+import 'classic_match_board.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 
@@ -116,11 +118,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       'device-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 30)}';
   late final TextEditingController _nicknameController;
   late final TextEditingController _deviceController;
-  final _packageController = TextEditingController();
   List<dynamic> _calendar = [];
-  List<dynamic> _editorClubs = [];
-  List<dynamic> _editorPlayers = [];
-  List<dynamic> _editorManagers = [];
   String? _coachId;
   String? _authWarning;
   String? _worldId;
@@ -161,10 +159,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   String? _inMatchFormation;
 
   // Editor state
-  String _editorJsonText = '';
-  Map<String, dynamic>? _packageValidationResult;
 
   int _activeTabIndex = 0;
+  bool _showMatchView = false;
+  final _roundView = RoundViewCoordinator();
   String? _statusBanner;
   bool _isLoading = false;
   bool _commandBusy = false;
@@ -197,6 +195,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _deviceController = TextEditingController(text: _deviceId);
     widget.apiClient.onSnapshotUpdated = (snap) {
       if (!mounted) return;
+      if (_worldId!=null && snap['gameWorldId']!=null && snap['gameWorldId']!=_worldId) return;
       if ((_snapshot?['roundVersion'] as num? ?? 0) >
           (snap['roundVersion'] as num? ?? 0)) {
         return;
@@ -213,9 +212,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _isUnemployed = me['isUnemployed'] == true;
           if (_isUnemployed) _myClubDetail = null;
         }
-        if (prevState == 'PREPARING' && newState != 'PREPARING') {
-          _activeTabIndex = 1;
-        }
+
       });
       if (prevState != newState &&
           (newState == 'PREPARING' || newState == 'RESULTS')) {
@@ -224,6 +221,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     };
     widget.apiClient.onReadyCounterUpdated = (counter) {
       if (!mounted || _snapshot == null) return;
+      if (counter['gameWorldId']!=null && counter['gameWorldId']!=_worldId) return;
       if ((_snapshot?['roundVersion'] as num? ?? 0) >
           (counter['roundVersion'] as num? ?? 0)) {
         return;
@@ -249,7 +247,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   void dispose() {
     _nicknameController.dispose();
     _deviceController.dispose();
-    _packageController.dispose();
     widget.apiClient.disconnectRealtime();
     super.dispose();
   }
@@ -283,135 +280,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       if (mounted) setState(() => _worlds = worlds);
     }
   }
-  Future<void> _createNewWorldDialog() async {
-    final nameCtrl = TextEditingController(text: 'Liga Clássica 98');
-    int clubs = 128;
-    int maxHumans = 1;
-    final created = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx, setDialogState) => AlertDialog(
-          backgroundColor: const Color(0xFF0D3B18),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-            side: BorderSide(color: Color(0xFFFFD700), width: 1.5),
-          ),
-          title: const Text(
-            'NOVO CAMPEONATO / SALA',
-            style: TextStyle(
-              color: Color(0xFFFFD700),
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: nameCtrl,
-                decoration: const InputDecoration(
-                  labelText: 'Nome da Sala / Campeonato',
-                ),
-              ),
-              const SizedBox(height: 10),
-              DropdownButtonFormField<int>(
-                isExpanded: true,
-                initialValue: clubs,
-                dropdownColor: const Color(0xFF062E0F),
-                icon: _classicDropdownIcon(),
-                decoration: const InputDecoration(
-                  labelText: 'Total de Clubes (32 Divisão + Distritais)',
-                ),
-                items: const [
-                  DropdownMenuItem(
-                    value: 128,
-                    child: Text(
-                      '128 Clubes (32 Div + 96 Distritais)',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  DropdownMenuItem(
-                    value: 256,
-                    child: Text(
-                      '256 Clubes (32 Div + 224 Distritais)',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  DropdownMenuItem(
-                    value: 512,
-                    child: Text(
-                      '512 Clubes (32 Div + 480 Distritais)',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  DropdownMenuItem(
-                    value: 1024,
-                    child: Text(
-                      '1024 Clubes (32 Div + 992 Distritais)',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-                onChanged: (v) => setDialogState(() => clubs = v ?? 128),
-              ),
-              const SizedBox(height: 10),
-              DropdownButtonFormField<int>(
-                isExpanded: true,
-                initialValue: maxHumans,
-                dropdownColor: const Color(0xFF062E0F),
-                icon: _classicDropdownIcon(),
-                decoration: const InputDecoration(
-                  labelText: 'Máximo de Treinadores Humanos',
-                ),
-                items: const [1, 2, 4, 6, 8]
-                    .map(
-                      (n) => DropdownMenuItem(
-                        value: n,
-                        child: Text('$n Treinadores Humanos'),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (v) => setDialogState(() => maxHumans = v ?? 8),
-              ),
-            ],
-          ),
-          actions: [
-            TextButton(onPressed: () { Navigator.pop(ctx, false); _openCatalogCreator(); }, child: const Text('CRIADOR DE MUNDOS / CATÁLOGO')),
-            TextButton(
-              onPressed: () => Navigator.pop(ctx, false),
-              child: const Text('CANCELAR'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(ctx, true),
-              child: const Text('CRIAR SALA'),
-            ),
-          ],
-        ),
-      ),
-    );
-
-    if (created == true) {
-      setState(() => _isLoading = true);
-      try {
-        await widget.apiClient.createWorld(
-          worldName: nameCtrl.text,
-          maxHumans: maxHumans,
-          totalClubs: clubs,
-        );
-        final worlds = await widget.apiClient.listWorlds();
-        setState(() => _worlds = worlds);
-      } catch (e) {
-        setState(() => _statusBanner = 'Erro ao criar sala: $e');
-      } finally {
-        setState(() => _isLoading = false);
-      }
-    }
-  }
-
   Future<void> _joinSelectedWorld(
     String worldId, {
     String? preferredClubId,
@@ -430,6 +298,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
       final snap = res['snapshot'] as Map<String, dynamic>;
       setState(() {
+        if (_worldId != worldId) { _snapshot = null; _roundView.reset(); }
         _worldId = worldId;
         _myClubId = res['clubId']?.toString();
         _isUnemployed = res['isUnemployed'] == true;
@@ -516,6 +385,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
     final next = _preferLatestSnapshot(incoming);
+    if (next != null) {
+      switch (_roundView.accept(next)) {
+        case RoundViewDecision.match: _showMatchView = true;
+        case RoundViewDecision.tactics: _showMatchView = false; _activeTabIndex = 0;
+        case RoundViewDecision.none: break;
+      }
+    }
     final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
     final nextSeason = (next?['seasonNumber'] as num?)?.toInt();
     final worldId = _worldId;
@@ -538,6 +414,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   int get _requiredStarterCount => (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
+
+  bool get _tacticsLocked => _snapshot?['roundState'] != 'PREPARING' ||
+      (_snapshot?['readyCounter']?['participants'] as List? ?? []).any((p)=>p['coachId']==_coachId && p['isReady']==true);
 
   bool get _isClassicIdleRound =>
       _snapshot?['forceRulesVersion'] == 1 &&
@@ -569,19 +448,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         );
       }
       final counter = res['counter'] as Map<String, dynamic>?;
-      final started = res['roundStarted'] == true;
+
       final snap = await widget.apiClient.getSnapshot(_worldId!);
       setState(() {
         _snapshot = _acceptSnapshot(snap);
-        if (counter != null) {
+        if (counter != null && (counter['roundVersion'] as num? ?? 0) >= (_snapshot?['roundVersion'] as num? ?? 0)) {
           _snapshot!['readyCounter'] = counter;
         }
-        _statusBanner = started
-            ? 'TODOS PRONTOS! RODADA INICIADA SINCRONIZADAMENTE!'
-            : 'Tática enviada! Aguardando demais treinadores humanos...';
-        if (started) {
-          _activeTabIndex = 1; // Switch to Jogos ao Vivo tab automatically!
-        }
+        _statusBanner = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString())
+            ? 'RODADA INICIADA PELO SERVIDOR'
+            : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.';
+
       });
     } catch (e) {
       setState(() => _statusBanner = 'Erro ao enviar tática: $e');
@@ -702,6 +579,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ],
                 ),
               ),
+            if ((_snapshot?['roundState']=='PREPARING'||_snapshot?['roundState']=='ALL_READY') &&
+                ((_snapshot?['readyCounter']?['participants'] as List? ?? []).any((p)=>p['coachId']==_coachId && p['isReady']==true)))
+              Container(key:const Key('ready-waiting-panel'),width:double.infinity,padding:const EdgeInsets.all(8),color:const Color(0xFF174F26),
+                child:Text(_isUnemployed?'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.':'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                  style:const TextStyle(color:Color(0xFFFFD700),fontWeight:FontWeight.bold))),
             _buildClassicNavigationMenu(),
             Expanded(child: _buildActiveScreenBody()),
           ],
@@ -868,7 +750,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         runSpacing: 8,
                         children: [
                           ElevatedButton(
-                            onPressed: _createNewWorldDialog,
+                            onPressed: _openCatalogCreator,
                             child: const Text('NOVO CAMPEONATO / SALA'),
                           ),
                           OutlinedButton(
@@ -1047,6 +929,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
               ),
+              if (!_showMatchView && RoundViewCoordinator.isMatchStage(roundState))
+                OutlinedButton(key: const Key('return-to-match'), onPressed:()=>setState(()=>_showMatchView=true),
+                  child:const Text('VOLTAR À PARTIDA')),
               if (roundState == 'PREPARING') ...[
                 if (!isReady)
                   ElevatedButton(
@@ -1222,14 +1107,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Widget _buildClassicNavigationMenu() {
     const tabs = [
       '1. PLANTEL & TÁTICAS',
-      '2. JOGOS AO VIVO',
-      '3. DIVISÕES & TAÇA',
-      '4. MERCADO & LEILÃO',
-      '5. FINANÇAS & ESTÁDIO',
-      '6. RANKING & CARREIRA',
-      '7. EDITOR & PACOTES',
-      '8. CALENDÁRIO & RESULTADOS',
-      '9. RANKINGS DE JOGADORES',
+      '2. DIVISÕES & TAÇA',
+      '3. MERCADO & LEILÃO',
+      '4. FINANÇAS & ESTÁDIO',
+      '5. RANKING & CARREIRA',
+      '6. CALENDÁRIO & RESULTADOS',
+      '7. RANKINGS DE JOGADORES',
     ];
 
     return Container(
@@ -1240,12 +1123,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: List.generate(tabs.length, (idx) {
-            final selected = _activeTabIndex == idx;
+            final selected = !_showMatchView && _activeTabIndex == idx;
             return Padding(
               padding: const EdgeInsets.only(right: 6),
               child: InkWell(
                 onTap: () {
-                  setState(() => _activeTabIndex = idx);
+                  setState(() { _activeTabIndex = idx; _showMatchView = false; });
                   _refreshClubAndSecondaryData();
                 },
                 child: Container(
@@ -1281,24 +1164,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Widget _buildActiveScreenBody() {
+    if (_showMatchView) return _buildLiveMatchesAndPauseScreen();
     switch (_activeTabIndex) {
       case 0:
         return _buildSquadAndTacticsScreen();
       case 1:
-        return _buildLiveMatchesAndPauseScreen();
-      case 2:
         return _buildDivisionsAndCupScreen();
-      case 3:
+      case 2:
         return _buildMarketAndAuctionsScreen();
-      case 4:
+      case 3:
         return _buildFinancesAndStadiumScreen();
-      case 5:
+      case 4:
         return _buildCareerRankingAndInvitationsScreen();
-      case 6:
-        return _buildEditorAndPackagesScreen();
-      case 7:
+      case 5:
         return _buildCalendarScreen();
-      case 8:
+      case 6:
         return PlayerRankingsScreen(
           key: ValueKey('player-rankings-$_worldId'),
           apiClient: widget.apiClient,
@@ -1430,7 +1310,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             DataCell(
               InkWell(
                 key: ValueKey('toggle-role-$pid'),
-                onTap: (inj > 0 || susp > 0)
+                onTap: (_tacticsLocked || inj > 0 || susp > 0)
                     ? null
                     : () {
                         setState(() {
@@ -1635,7 +1515,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 ),
                               )
                               .toList(),
-                          onChanged: (v) {
+                          onChanged: _tacticsLocked ? null : (v) {
                             if (v != null) {
                               setState(() => _selectedFormation = v);
                             }
@@ -1655,7 +1535,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ),
                     OutlinedButton(
                       key: const ValueKey('btn-auto-escalar'),
-                      onPressed: _autoPickBestLineup,
+                      onPressed: _tacticsLocked ? null : _autoPickBestLineup,
                       child: const Text(
                         'AUTO-ESCALAR 11 + BANCO',
                         style: TextStyle(fontSize: 11),
@@ -1795,7 +1675,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
           ),
           const SizedBox(height: 10),
-          _buildTacticalFieldPreview(squad),
+          AbsorbPointer(absorbing:_tacticsLocked,child:_buildTacticalFieldPreview(squad)),
           const SizedBox(height: 10),
           const ClassicTableHeader(
             title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
@@ -1985,315 +1865,25 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return 'PREPARAÇÃO DA RODADA';
   }
 
-  String _formatEventBadge(dynamic event) {
-    final desc = event['description']?.toString() ?? '';
-    final type = event['type']?.toString().toLowerCase() ?? '';
-    if (type.contains('goal') || desc.toUpperCase().contains('GOL')) {
-      return '[GOL]';
-    }
-    if (type.contains('red') || desc.toUpperCase().contains('EXPULSO')) {
-      return '[EXPULSÃO]';
-    }
-    if (type.contains('card') || desc.toUpperCase().contains('CARTÃO')) {
-      return '[CARTÃO]';
-    }
-    if (type.contains('injur') || desc.toUpperCase().contains('LES')) {
-      return '[LESÃO]';
-    }
-    if (type.contains('sub') || desc.toUpperCase().contains('SUB')) {
-      return '[SUB]';
-    }
-    return '[LANCE]';
-  }
+  String _formatEventBadge(dynamic event) => classicEventBadge(Map<String,dynamic>.from(event as Map));
 
   /// Tab 1: Jogos ao Vivo, Placar Simultâneo, Intervalo (45'), Pausa Global e Substituições (5/3 e 6/4)
   Widget _buildLiveMatchesAndPauseScreen() {
-    final matches = _snapshot?['matches'] as List<dynamic>? ?? [];
-    final roundState = _snapshot?['roundState']?.toString() ?? 'PREPARING';
-    final pauseWindow =
-        _snapshot?['activePauseWindow'] as Map<String, dynamic>?;
-    final visualState = _matchVisualStateLabel(roundState, pauseWindow);
-    final isPausedOrInterval =
-        roundState == 'GLOBAL_PAUSED' ||
-        roundState == 'HALFTIME_PAUSED' ||
-        roundState == 'EXTRA_TIME_BREAK' ||
-        roundState == 'EXTRA_TIME_HALFTIME';
-
-    Map<String, dynamic>? myMatch;
-    for (final m in matches) {
-      if (m['homeClubId']?.toString() == _myClubId ||
-          m['awayClubId']?.toString() == _myClubId) {
-        myMatch = m as Map<String, dynamic>;
-        break;
-      }
-    }
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            decoration: BoxDecoration(
-              color: const Color(0xFF062E0F),
-              border: Border.all(color: const Color(0xFFFFD700)),
-            ),
-            child: Wrap(
-              spacing: 12,
-              runSpacing: 8,
-              alignment: WrapAlignment.spaceBetween,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Text(
-                  'PLACARES SIMULTÂNEOS DA RODADA — ESTADO: $roundState ($visualState)',
-                  key: const ValueKey('live-match-state-banner'),
-                  style: const TextStyle(
-                    color: Color(0xFFFFD700),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                  ),
-                ),
-                if (roundState == 'RUNNING_FIRST_HALF' ||
-                    roundState == 'RUNNING_SECOND_HALF' ||
-                    roundState == 'RUNNING_EXTRA_TIME')
-                  OutlinedButton(
-                    key: const ValueKey('btn-dev-tick-5m'),
-                    onPressed: () async {
-                      final snap = await widget.apiClient.manualTick(
-                        _worldId!,
-                        ticks: 5,
-                      );
-                      setState(() => _snapshot = snap);
-                    },
-                    child: const Text(
-                      '+5 MINUTOS (DEV)',
-                      style: TextStyle(fontSize: 11),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 8),
-          if (myMatch != null) ...[
-            _buildHighlightedCoachMatchCard(myMatch, visualState),
-            const SizedBox(height: 8),
-          ],
-          if (isPausedOrInterval && myMatch != null) ...[
-            _buildInMatchSubstitutionPanel(myMatch),
-            const SizedBox(height: 8),
-          ],
-          const ClassicTableHeader(
-            title: 'TODOS OS JOGOS DA RODADA',
-            subtitle:
-                'Acompanhe simultaneamente o andamento das partidas e os principais eventos.',
-          ),
-          const SizedBox(height: 6),
-          if (matches.isEmpty)
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFF0E3B19),
-                border: Border.all(color: const Color(0xFF3E8450)),
-              ),
-              child: const Text(
-                'Nenhuma partida em andamento. Envie a tática para iniciar a rodada.',
-                style: TextStyle(fontSize: 12),
-              ),
-            ),
-          ...matches.map((m) {
-            final isMyMatch =
-                m['homeClubId']?.toString() == _myClubId ||
-                m['awayClubId']?.toString() == _myClubId;
-            final events = m['events'] as List<dynamic>? ?? [];
-            final penH = m['homePenaltyGoals'];
-            final penA = m['awayPenaltyGoals'];
-            final penText = (penH != null && penA != null)
-                ? ' (Pên: $penH x $penA)'
-                : '';
-            final isNarrow = MediaQuery.sizeOf(context).width < 560;
-
-            return Container(
-              margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: isMyMatch
-                    ? const Color(0xFF174F26)
-                    : const Color(0xFF0E3B19),
-                border: Border.all(
-                  color: isMyMatch
-                      ? const Color(0xFFFFD700)
-                      : const Color(0xFF3E8450),
-                  width: isMyMatch ? 2 : 1,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (isNarrow)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
-                              color: Colors.black54,
-                              child: Text(
-                                "${m['minute']}'",
-                                style: const TextStyle(
-                                  color: Color(0xFFFFD700),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 11,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              'Subs: ${m['homeSubCount']}/${m['homeMaxSubs']} - ${m['awaySubCount']}/${m['awayMaxSubs']}',
-                              style: const TextStyle(
-                                fontSize: 10,
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 6),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                '${m['homeClubName']} (${m['homeFormation']})',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 6),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 3,
-                              ),
-                              color: Colors.black87,
-                              child: Text(
-                                '${m['homeGoals']} x ${m['awayGoals']}$penText',
-                                style: const TextStyle(
-                                  color: Color(0xFFFFD700),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                '${m['awayClubName']} (${m['awayFormation']})',
-                                textAlign: TextAlign.right,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  else
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          color: Colors.black45,
-                          child: Text(
-                            "${m['minute']}'",
-                            style: const TextStyle(
-                              color: Color(0xFFFFD700),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            '${m['homeClubName']} (${m['homeFormation']})',
-                            textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
-                          ),
-                          color: Colors.black87,
-                          child: Text(
-                            '${m['homeGoals']} x ${m['awayGoals']}$penText',
-                            style: const TextStyle(
-                              color: Color(0xFFFFD700),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '${m['awayClubName']} (${m['awayFormation']})',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        if (MediaQuery.sizeOf(context).width > 700)
-                          Text(
-                            'Subs: ${m['homeSubCount']}/${m['homeMaxSubs']} - ${m['awaySubCount']}/${m['awayMaxSubs']} | Paradas: ${m['homePauseWindowsUsed']}/${m['homeMaxPauseWindows']} - ${m['awayPauseWindowsUsed']}/${m['awayMaxPauseWindows']}',
-                            style: const TextStyle(
-                              fontSize: 10,
-                              color: Colors.white70,
-                            ),
-                          ),
-                      ],
-                    ),
-                  if (events.isNotEmpty) ...[
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 4,
-                      children: events.reversed.take(5).map((e) {
-                        return Text(
-                          '• ${_formatEventBadge(e)} ${e['description']}',
-                          style: const TextStyle(
-                            fontSize: 11,
-                            color: Colors.amberAccent,
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ],
-              ),
-            );
-          }),
-        ],
-      ),
-    );
+    final matches = (_snapshot?['matches'] as List? ?? []).map((m)=>Map<String,dynamic>.from(m as Map)).toList();
+    final state = _snapshot?['roundState']?.toString() ?? 'PREPARING';
+    final pause = _snapshot?['activePauseWindow'] as Map<String,dynamic>?;
+    final mine = matches.where((m)=>m['homeClubId']==_myClubId||m['awayClubId']==_myClubId).firstOrNull;
+    return SingleChildScrollView(padding: const EdgeInsets.all(8), child:Center(child:ConstrainedBox(
+      constraints:const BoxConstraints(maxWidth:940),child:Column(crossAxisAlignment:CrossAxisAlignment.stretch,children:[
+        Text('PLACARES DA RODADA • ${_matchVisualStateLabel(state,pause)}',key:const ValueKey('live-match-state-banner'),
+          style:const TextStyle(color:Color(0xFFFFD700),fontWeight:FontWeight.bold,fontSize:13)),
+        const SizedBox(height:8),
+        if(pause!=null&&mine!=null) _buildInMatchSubstitutionPanel(mine),
+        if(matches.isEmpty) const Text('Aguardando a rodada confirmada pelo servidor.'),
+        ClassicMatchBoard(matches:matches,competitionType:_snapshot?['competitionType']?.toString()??'League',
+          competitionLabel:_snapshot?['competitionLabel']?.toString()??'',coachClubId:_myClubId,
+          coachDetails:(match)=>_buildHighlightedCoachMatchCard(match,_matchVisualStateLabel(state,pause))),
+      ]))));
   }
 
   Widget _buildHighlightedCoachMatchCard(
@@ -2310,7 +1900,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final roundNum = _snapshot?['roundNumber'] ?? 1;
 
     return Container(
-      key: const ValueKey('coach-highlighted-match-card'),
+      key: const ValueKey('coach-highlighted-match-details'),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: const Color(0xFF144B22),
@@ -2405,7 +1995,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
             ),
             const SizedBox(height: 4),
-            for (final e in events.reversed.take(8))
+            for (final e in events.reversed)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 1.5),
                 child: Text(
@@ -4331,194 +3921,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             worldId: _worldId!,
             currentSeason: (_snapshot?['seasonNumber'] as num?)?.toInt(),
             revision: (_snapshot?['roundVersion'] as num?)?.toInt() ?? 0,
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Tab 6: Editor Integral (Clubes, Jogadores, Técnicos IA e Importação/Exportação JSON/CSV)
-  Widget _buildEditorAndPackagesScreen() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              ElevatedButton(
-                onPressed: _loadEditor,
-                child: const Text('CARREGAR EDITOR DE DADOS'),
-              ),
-              OutlinedButton(
-                onPressed: () => _editEntity('create-club', {
-                  'id': '00000000-0000-0000-0000-000000000000',
-                  'name': 'Novo Clube',
-                  'shortName': 'NOV',
-                  'country': 'Brasil',
-                  'primaryColorHex': '#FFFFFF',
-                  'secondaryColorHex': '#000000',
-                  'divisionTier': 'Distrital',
-                  'cashBalance': 100000,
-                  'reputation': 20,
-                  'stadiumName': 'Estádio Novo',
-                  'builtCapacity': 5000,
-                  'usableCapacity': 5000,
-                  'conditionPercent': 100,
-                  'maintenanceReserve': 0,
-                }),
-                child: const Text('CRIAR CLUBE DISTRITAL'),
-              ),
-            ],
-          ),
-          if (_editorClubs.isNotEmpty) ...[
-            _editorPicker('Editar clube', _editorClubs, 'update-club'),
-            _editorPicker(
-              'Editar jogador: força, comportamento e *',
-              _editorPlayers,
-              'update-player',
-            ),
-            _editorPicker(
-              'Editar treinador e preferências',
-              _editorManagers,
-              'update-manager',
-            ),
-          ],
-          const SizedBox(height: 8),
-          const Text(
-            'EDITOR INTEGRAL DE MUNDO E PACOTES DE DADOS (JSON / CSV)',
-            style: TextStyle(
-              color: Color(0xFFFFD700),
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Wrap(
-            spacing: 10,
-            runSpacing: 8,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  final jsonStr = await widget.apiClient.exportWorldJson(
-                    _worldId!,
-                  );
-                  setState(() {
-                    _editorJsonText = jsonStr;
-                    _packageController.text = jsonStr;
-                    _statusBanner =
-                        'Pacote JSON exportado do mundo atual (${jsonStr.length} bytes).';
-                  });
-                },
-                child: const Text('EXPORTAR MUNDO PARA JSON'),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  final csvStr = await widget.apiClient.exportPlayersCsv(
-                    _worldId!,
-                  );
-                  setState(() {
-                    _editorJsonText = csvStr;
-                    _packageController.text = csvStr;
-                    _statusBanner =
-                        'Lista de jogadores exportada em formato CSV.';
-                  });
-                },
-                child: const Text('EXPORTAR JOGADORES PARA CSV'),
-              ),
-              OutlinedButton(
-                onPressed: _editorJsonText.isEmpty
-                    ? null
-                    : () async {
-                        try {
-                          final val = await widget.apiClient
-                              .validatePackageJson(_worldId!, _editorJsonText);
-                          setState(() => _packageValidationResult = val);
-                        } catch (e) {
-                          setState(
-                            () => _statusBanner = 'Erro ao validar JSON: $e',
-                          );
-                        }
-                      },
-                child: const Text('VALIDAR E PREVIEW DE DIFERENÇAS'),
-              ),
-              ElevatedButton(
-                onPressed: _editorJsonText.isEmpty
-                    ? null
-                    : () async {
-                        try {
-                          final res = await widget.apiClient.importPackageJson(
-                            _editorJsonText,
-                            'Mundo Importado Editado',
-                          );
-                          setState(
-                            () => _statusBanner =
-                                'Novo mundo criado a partir do pacote! Código: ${res['inviteCode']}',
-                          );
-                        } catch (e) {
-                          setState(
-                            () => _statusBanner = 'Erro na importação: $e',
-                          );
-                        }
-                      },
-                child: const Text('CRIAR NOVO MUNDO DO PACOTE'),
-              ),
-            ],
-          ),
-          if (_packageValidationResult != null) ...[
-            const SizedBox(height: 10),
-            Container(
-              padding: const EdgeInsets.all(10),
-              color: const Color(0xFF062E0F),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Validação: ${_packageValidationResult!['isValid'] == true ? "VÁLIDO [OK]" : "INVÁLIDO [X]"} '
-                    '(Clubes: ${_packageValidationResult!['clubCount']}, Atletas: ${_packageValidationResult!['playerCount']}, Técnicos IA: ${_packageValidationResult!['managerCount']})',
-                    style: const TextStyle(
-                      color: Color(0xFFFFD700),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  for (final err
-                      in (_packageValidationResult!['errors']
-                              as List<dynamic>? ??
-                          []))
-                    Text(
-                      'Erro: $err',
-                      style: const TextStyle(
-                        color: Colors.redAccent,
-                        fontSize: 11,
-                      ),
-                    ),
-                  for (final diff
-                      in (_packageValidationResult!['diffPreview']
-                              as List<dynamic>? ??
-                          []))
-                    Text(
-                      'Diff: $diff',
-                      style: const TextStyle(
-                        color: Colors.cyanAccent,
-                        fontSize: 11,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ],
-          const SizedBox(height: 10),
-          TextField(
-            maxLines: 14,
-            style: const TextStyle(fontSize: 11, fontFamily: 'monospace'),
-            decoration: const InputDecoration(
-              labelText: 'Conteúdo do Pacote JSON / CSV',
-              border: OutlineInputBorder(borderRadius: BorderRadius.zero),
-            ),
-            controller: _packageController,
-            onChanged: (v) => setState(() => _editorJsonText = v),
           ),
         ],
       ),

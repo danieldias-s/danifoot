@@ -1,0 +1,95 @@
+{
+  "Dotnet": {
+    "Passed": 579,
+    "Failed": 0,
+    "Skipped": 0,
+    "Suites": [
+      {
+        "File": "ux-full-014b_net10.0_20261031095508.trx",
+        "total": 6,
+        "executed": 6,
+        "passed": 6,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      {
+        "File": "ux-full-014b_net10.0_20261031095525.trx",
+        "total": 391,
+        "executed": 391,
+        "passed": 391,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      {
+        "File": "ux-full-014b_net10.0_20261031100227.trx",
+        "total": 156,
+        "executed": 156,
+        "passed": 156,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      {
+        "File": "ux-full-014b_net10.0_20261031102623.trx",
+        "total": 26,
+        "executed": 26,
+        "passed": 26,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      }
+    ]
+  },
+  "Flutter": {
+    "Passed": 101,
+    "Analyze": "No issues found",
+    "WebBuild": 0
+  },
+  "Node": {
+    "Passed": 2,
+    "Failed": 0
+  },
+  "AutomatedCaptureTests": 2
+}

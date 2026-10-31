@@ -1,0 +1,252 @@
+[
+  {
+    "Gender": "Male",
+    "Clubs": [
+      {
+        "Club": "ff25bdb6-531d-e747-825b-29fbda38265d",
+        "Name": "Stade Rennais FC",
+        "Credit": {
+          "clubId": "ff25bdb6-531d-e747-825b-29fbda38265d",
+          "division": "QuartaDivisao",
+          "assetIndicator": 307600,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "55edb389-e7ca-d640-aeb3-a8aefc9bcce9",
+        "Name": "Southampton FC",
+        "Credit": {
+          "clubId": "55edb389-e7ca-d640-aeb3-a8aefc9bcce9",
+          "division": "QuartaDivisao",
+          "assetIndicator": 339950,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "1066cff7-3627-a64a-9c08-adb3caa89897",
+        "Name": "Como 1907",
+        "Credit": {
+          "clubId": "1066cff7-3627-a64a-9c08-adb3caa89897",
+          "division": "QuartaDivisao",
+          "assetIndicator": 364550,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "259f3fde-7497-0140-8086-4b323a96849f",
+        "Name": "FC Famalicão",
+        "Credit": {
+          "clubId": "259f3fde-7497-0140-8086-4b323a96849f",
+          "division": "QuartaDivisao",
+          "assetIndicator": 386800,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "44c7b89f-9702-534a-8fc6-8f60788af189",
+        "Name": "Juventus",
+        "Credit": {
+          "clubId": "44c7b89f-9702-534a-8fc6-8f60788af189",
+          "division": "QuartaDivisao",
+          "assetIndicator": 300400,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "90bc0e17-11f8-ce4a-8350-f0a293b0a741",
+        "Name": "Villarreal CF",
+        "Credit": {
+          "clubId": "90bc0e17-11f8-ce4a-8350-f0a293b0a741",
+          "division": "QuartaDivisao",
+          "assetIndicator": 411750,
+          "loanLimit": 2,
+          "activeLoans": 0,
+          "availableLoans": 2,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "2097239f-7274-1042-8966-69ae28175e5e",
+        "Name": "SV Elversberg",
+        "Credit": {
+          "clubId": "2097239f-7274-1042-8966-69ae28175e5e",
+          "division": "QuartaDivisao",
+          "assetIndicator": 412650,
+          "loanLimit": 2,
+          "activeLoans": 0,
+          "availableLoans": 2,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "eb855e5b-651a-e146-b3bc-04eb9f7a7423",
+        "Name": "AS Monaco FC",
+        "Credit": {
+          "clubId": "eb855e5b-651a-e146-b3bc-04eb9f7a7423",
+          "division": "QuartaDivisao",
+          "assetIndicator": 383550,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      }
+    ]
+  },
+  {
+    "Gender": "Female",
+    "Clubs": [
+      {
+        "Club": "ff25bdb6-531d-e747-825b-29fbda38265d",
+        "Name": "CF Pozuelo de Alarcón Femenino",
+        "Credit": {
+          "clubId": "ff25bdb6-531d-e747-825b-29fbda38265d",
+          "division": "QuartaDivisao",
+          "assetIndicator": 307600,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "55edb389-e7ca-d640-aeb3-a8aefc9bcce9",
+        "Name": "1. FFC Turbine Potsdam II",
+        "Credit": {
+          "clubId": "55edb389-e7ca-d640-aeb3-a8aefc9bcce9",
+          "division": "QuartaDivisao",
+          "assetIndicator": 339950,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "1066cff7-3627-a64a-9c08-adb3caa89897",
+        "Name": "Paris Saint-Germain Féminine",
+        "Credit": {
+          "clubId": "1066cff7-3627-a64a-9c08-adb3caa89897",
+          "division": "QuartaDivisao",
+          "assetIndicator": 364550,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "259f3fde-7497-0140-8086-4b323a96849f",
+        "Name": "Elche Club de Fútbol women",
+        "Credit": {
+          "clubId": "259f3fde-7497-0140-8086-4b323a96849f",
+          "division": "QuartaDivisao",
+          "assetIndicator": 386800,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "44c7b89f-9702-534a-8fc6-8f60788af189",
+        "Name": "Birmingham City W.F.C.",
+        "Credit": {
+          "clubId": "44c7b89f-9702-534a-8fc6-8f60788af189",
+          "division": "QuartaDivisao",
+          "assetIndicator": 300400,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "90bc0e17-11f8-ce4a-8350-f0a293b0a741",
+        "Name": "Leeds United L.F.C.",
+        "Credit": {
+          "clubId": "90bc0e17-11f8-ce4a-8350-f0a293b0a741",
+          "division": "QuartaDivisao",
+          "assetIndicator": 411750,
+          "loanLimit": 2,
+          "activeLoans": 0,
+          "availableLoans": 2,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "2097239f-7274-1042-8966-69ae28175e5e",
+        "Name": "Club El Porvenir (women)",
+        "Credit": {
+          "clubId": "2097239f-7274-1042-8966-69ae28175e5e",
+          "division": "QuartaDivisao",
+          "assetIndicator": 412650,
+          "loanLimit": 2,
+          "activeLoans": 0,
+          "availableLoans": 2,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      },
+      {
+        "Club": "eb855e5b-651a-e146-b3bc-04eb9f7a7423",
+        "Name": "Racing Club de Lens",
+        "Credit": {
+          "clubId": "eb855e5b-651a-e146-b3bc-04eb9f7a7423",
+          "division": "QuartaDivisao",
+          "assetIndicator": 383550,
+          "loanLimit": 1,
+          "activeLoans": 0,
+          "availableLoans": 1,
+          "outstandingDebt": 0,
+          "interestPerMatch": 0,
+          "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,623 @@
+{
+  "Files": [
+    {
+      "Path": "client/elifoot_flutter/lib/api_client.dart",
+      "Bytes": 24590,
+      "Sha256": "04a14e3bab5df2932c6da6fd8b74503e788ccb925315ddfde72f863ad52b4ba2"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/classic_match_board.dart",
+      "Bytes": 11003,
+      "Sha256": "601a6a31062180d332ab573b4a71a88a6dd67ba2bda5ede80a5bb3de13436ee8"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/custom_assembly_editor.dart",
+      "Bytes": 27156,
+      "Sha256": "b3b8ede65b75aaa2b7f302825504eacd8dc378323160541d1d54106a170bce6c"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/main.dart",
+      "Bytes": 159008,
+      "Sha256": "6560c7dcf39506397f078946eb8f71fa8c25684a42c193a6d82a4c84f1f2dc3c"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/player_rankings.dart",
+      "Bytes": 82095,
+      "Sha256": "6a30e4d7eefb3c1ae5ef7d0024c000de09bf230368daba9821195151a966cbbf"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/round_navigation.dart",
+      "Bytes": 1812,
+      "Sha256": "23419c731e5b600ddc4b09121d90190e5b646af423be38bd3e5af24166e5e1c9"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/shell_actions.dart",
+      "Bytes": 49698,
+      "Sha256": "2bacca4be497799e482e485a8ffae23ac18cbaa72e4d25033f3aa233a645057f"
+    },
+    {
+      "Path": "client/elifoot_flutter/lib/world_creator.dart",
+      "Bytes": 39741,
+      "Sha256": "41b2e90fa650508767dfe40622c20ba712bbba4801dc1a5a032de6372a323fb6"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/classic_ux_014b_test.dart",
+      "Bytes": 15280,
+      "Sha256": "e98e286142f3e1225e916c3ff0bfe66e2b1cfdaeb2395887bc9cfce9ee4e4a58"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/complete_gameplay_011_test.dart",
+      "Bytes": 35606,
+      "Sha256": "c163359d886ddef0a3392fd0955b364beae7bd5c921825a27aa97fd178e5a1f0"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/custom_assembly_014b_test.dart",
+      "Bytes": 7987,
+      "Sha256": "c14169cf588be2bcc738fdec960be4948143a5b97f02c703de89a880fedc7560"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/economy_012d_widget_test.dart",
+      "Bytes": 4831,
+      "Sha256": "96169470e8a45ac362b0ffee64565cbffb8f47fa21eff72f898041c1ab47f511"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/player_rankings_widget_test.dart",
+      "Bytes": 26688,
+      "Sha256": "1f52e341104eaec71e5d22698bed0ea133dd38886425ad8bdadc71b9a8d3909a"
+    },
+    {
+      "Path": "client/elifoot_flutter/test/widget_test.dart",
+      "Bytes": 17790,
+      "Sha256": "5f22635a58892cade8b7bcc2526d016a75965457b7659dd4e68158f7cbb3a3f0"
+    },
+    {
+      "Path": "client/elifoot_flutter/tool/classic_ux_capture_014b_test.dart",
+      "Bytes": 8713,
+      "Sha256": "911303be0efa29dde97bbeaf5a56f9eb2ba3f3563fe8546fd6ae7063cfc98533"
+    },
+    {
+      "Path": "docs/AUTO_MATCH_NAVIGATION_014B.md",
+      "Bytes": 1692,
+      "Sha256": "b485ea6c5535b17f93468e3850e4de746d66613ed3cf9a37ecff76f5fa7dbb64"
+    },
+    {
+      "Path": "docs/CLASSIC_MATCH_VIEW_014B.md",
+      "Bytes": 1788,
+      "Sha256": "f4482152e2f088f4556a3eb5cb5b038b870dd71cb716bb2699cb8c78673bbb7b"
+    },
+    {
+      "Path": "docs/CLASSIC_UX_REGRESSION_014B.md",
+      "Bytes": 3593,
+      "Sha256": "6a0923df34164ef311c7b653a0e4aa33e89a15450f8524efd919e76b112ee450"
+    },
+    {
+      "Path": "docs/CUSTOM_WORLD_PRESET_014B.md",
+      "Bytes": 1871,
+      "Sha256": "de18e01afd5b36380211de8754449b99d7acc9ab68fd7554ed26d230d64cf3c1"
+    },
+    {
+      "Path": "docs/FINAL_REPORT_014B.md",
+      "Bytes": 4696,
+      "Sha256": "c0495a34e1362c2f63068ed43e6a205544f28ed261f7bfd37cbe205731ab7c69"
+    },
+    {
+      "Path": "docs/HOW_TO_RUN_014B.md",
+      "Bytes": 1684,
+      "Sha256": "aa75120a9f8cc3ae3cf8f80fb5ce29b9634bbfa67ec619265fdda6e057d68150"
+    },
+    {
+      "Path": "docs/INTEGRATION_013C_014B.md",
+      "Bytes": 1475,
+      "Sha256": "885310f1c53224fd106836639dd838a41fea7b06c7966d974d986481d06b221f"
+    },
+    {
+      "Path": "docs/INTEGRATION_100_SEASONS_014B.md",
+      "Bytes": 2260,
+      "Sha256": "adab479435868d101b9d6d32361c5d9b4685f0d2fd368b16ee23c6519eba605b"
+    },
+    {
+      "Path": "docs/INTEGRATION_CONFLICTS_014B.md",
+      "Bytes": 1059,
+      "Sha256": "73585984943069bf0a77337ee66bfa578d5734f941eb6660ac191c6b7f39fd52"
+    },
+    {
+      "Path": "docs/INTEGRATION_ECONOMY_014B.md",
+      "Bytes": 3171,
+      "Sha256": "754252d99d44de57db314d9631fcc4da903250638571569885ebda1736322a94"
+    },
+    {
+      "Path": "docs/INTEGRATION_MULTIPLAYER_014B.md",
+      "Bytes": 983,
+      "Sha256": "89f483386c04e9015bfab7123cc219ba95058e1f692e9b7eedcc5e14a62868fb"
+    },
+    {
+      "Path": "docs/INTEGRATION_REGRESSION_014B.md",
+      "Bytes": 1352,
+      "Sha256": "282443322ec4ae932684b6320cac9c6b6ba697218b271397737768d734e827cb"
+    },
+    {
+      "Path": "docs/INTEGRATION_WORLD_CREATION_014B.md",
+      "Bytes": 1715,
+      "Sha256": "e41b954ddee7aa753e155b1029f609420e63f6a2510b5ad070b79b2c1e08a553"
+    },
+    {
+      "Path": "docs/KNOWN_ISSUES_014B.md",
+      "Bytes": 1214,
+      "Sha256": "d4b1feb8ca4654aa329ab1529d008292d22d99868ef1920eb9ac79cd05d0fd94"
+    },
+    {
+      "Path": "docs/PRE_SAVE_EDITOR_014B.md",
+      "Bytes": 2105,
+      "Sha256": "c9aeb0c503154cbb04a4cfa799c749cde213a756ddaa13e35e3dfe34666de5b4"
+    },
+    {
+      "Path": "docs/VISUAL_AUDIT_014B.md",
+      "Bytes": 1484,
+      "Sha256": "3dacaefb5864ab3a6dda447abd5bd077fc19295496b4e176a4a275be40a6f7c3"
+    },
+    {
+      "Path": "docs/audit-014b/actual-financial-ux-exit.json",
+      "Bytes": 23,
+      "Sha256": "0cec79bdabd108dc8f671ea11f65e0db39b7521a87c78cc337ba9cdfa7e42fe6"
+    },
+    {
+      "Path": "docs/audit-014b/actual-financial-ux.json",
+      "Bytes": 3364,
+      "Sha256": "ba669aa622152098367c43239392e1a49cf570bb34b4717e306c8fc20ebc0b46"
+    },
+    {
+      "Path": "docs/audit-014b/actual-financial-ux.log",
+      "Bytes": 234,
+      "Sha256": "8bc0691b08130e498a62252d52dba61276a91f4c1974d4760b9aa76c7450795f"
+    },
+    {
+      "Path": "docs/audit-014b/actual-restart-http.json",
+      "Bytes": 436,
+      "Sha256": "5d8b3bf84e2d09614f67e3d01f0df5e4964f7e54407414767344089c5db5b673"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders.log",
+      "Bytes": 226,
+      "Sha256": "53f9c1efe330f9f282571ab4de0ba020f456b9d49b3b53dc088234b6f512d0b6"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/cup-1366.png",
+      "Bytes": 114751,
+      "Sha256": "83a1eb610a591854d32de80c7e52f5db86f9ebacd47b04eefd4ff234b3e79601"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/cup-390.png",
+      "Bytes": 84946,
+      "Sha256": "cd48074896380af9d4eff05f77ffc48155c6c720c5c573131ef6092eae877e0a"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/league-1366.png",
+      "Bytes": 105972,
+      "Sha256": "37204cab2457dea50ec8006bfcca95733fbab99008a335ab728cf0dccdbbde34"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/league-390.png",
+      "Bytes": 85862,
+      "Sha256": "c4dad6c75ab2a71b8a490ebef771a9fb577a0f7e172ec42f0a32a0841ee0ecdf"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/league-lower-divisions-1366.png",
+      "Bytes": 105972,
+      "Sha256": "37204cab2457dea50ec8006bfcca95733fbab99008a335ab728cf0dccdbbde34"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/league-lower-divisions-390.png",
+      "Bytes": 79617,
+      "Sha256": "86b9cd13bc25e54128e46726bf1dd29a3af9231d0d4f1b95420377b92ab4288e"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pause-1366.png",
+      "Bytes": 145776,
+      "Sha256": "8841fac471076613daac90d637f867a883ba1199bf2279dfdb6c76cdbee10b56"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pause-390.png",
+      "Bytes": 107023,
+      "Sha256": "dad37cf29471c9c865a92f4a03f837423eae4f4ed7139cee0725013d0ec35f42"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pre-save-editor-1366.png",
+      "Bytes": 53577,
+      "Sha256": "a96bc4524a52d2acf10b20e84b2fc2d1e7c5d358135e16da900d25d03dd5797b"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pre-save-editor-390.png",
+      "Bytes": 43023,
+      "Sha256": "3e97fec31346c06be4ed656d8462b5898474f8301bc433ae1a07a01f1a6ac09a"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pre-save-roster-1366.png",
+      "Bytes": 55803,
+      "Sha256": "9fe85bc876c1b2ee0fe16df804c006d32a0e25d9b0bd86e8fbbafb91107acf2b"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/pre-save-roster-390.png",
+      "Bytes": 45529,
+      "Sha256": "c4a7c9cda288cdc83c2fa3c7ea5500bdb5fbce54fc83cfdd19edaa46eabc33f9"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/result-events-1366.png",
+      "Bytes": 132889,
+      "Sha256": "690a812c6feec1fefc01f35a655fe144de75146dfe428a5b2a2a0453d0d12f8b"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/result-events-390.png",
+      "Bytes": 99493,
+      "Sha256": "799b04587325616c61a7a486d6a21455beba0ffc7cafd67782be712e61f850aa"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/results-1366.png",
+      "Bytes": 106309,
+      "Sha256": "dae744cb55bb9b8e5ee1b2b0f92f4a305e59576fac8a0726d6932bbd9899879e"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/results-390.png",
+      "Bytes": 80486,
+      "Sha256": "da2d924fecf21dfea29618cdf01b818bacf21de7f09cf780ce3a5977f0a45a2d"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/saved-assembly-restored-1366.png",
+      "Bytes": 29073,
+      "Sha256": "5da8c75855899cb52e843f01adb7569378eb5ebfdaf97c52b71ce3adb1125282"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/saved-assembly-restored-390.png",
+      "Bytes": 23734,
+      "Sha256": "171c97fd76ad6d55413d97d81b0600421ef10a01288c276ff3f2dfdce5429b57"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/waiting-1-of-2-1366.png",
+      "Bytes": 186234,
+      "Sha256": "f345238bfdafab7480950335ceb598a727d484e8db51813e4a6c541675dc40f5"
+    },
+    {
+      "Path": "docs/audit-014b/automated-renders/waiting-1-of-2-390.png",
+      "Bytes": 113203,
+      "Sha256": "06dc251891d1e740df6bc24bd985aeb5008a805d76a2f074e31cdc85bf7b2e9b"
+    },
+    {
+      "Path": "docs/audit-014b/custom-assemblies-http.json",
+      "Bytes": 1157,
+      "Sha256": "1bf82a188d264116033d5a545adb8fb6bb5bffdf1a6f2b314e081bed9a65557f"
+    },
+    {
+      "Path": "docs/audit-014b/custom-assemblies-http.log",
+      "Bytes": 304,
+      "Sha256": "065efb6ec3db6b3c08873dd462721de78a36e802c1de47f10e1aa09d02725e86"
+    },
+    {
+      "Path": "docs/audit-014b/custom-assemblies-restart.json",
+      "Bytes": 139,
+      "Sha256": "a65c07f9067132c046876bf29eadbbf570f39e249191560f4d811e58007948ac"
+    },
+    {
+      "Path": "docs/audit-014b/final-runtime-build-exit.json",
+      "Bytes": 23,
+      "Sha256": "0cec79bdabd108dc8f671ea11f65e0db39b7521a87c78cc337ba9cdfa7e42fe6"
+    },
+    {
+      "Path": "docs/audit-014b/final-runtime-build.log",
+      "Bytes": 1507,
+      "Sha256": "966502941275c818a7bf36fb1830fa1d54d9c9f80ef6f75f22c9efdd431ab386"
+    },
+    {
+      "Path": "docs/audit-014b/final-status.json",
+      "Bytes": 430,
+      "Sha256": "3be049a86ebf40e01badd8ee96fcc8cca51be5e5f2ffa261935cc2b66fa3747e"
+    },
+    {
+      "Path": "docs/audit-014b/financial-reconciliation.json",
+      "Bytes": 161464,
+      "Sha256": "9e858e44bf31cb34ba42db6aaa36c922c02496769570f47418b06ed031fdd099"
+    },
+    {
+      "Path": "docs/audit-014b/individual-credit-http.json",
+      "Bytes": 8011,
+      "Sha256": "0b96ef0362158f30518acaa23e151670c1f90ea7778a5c6b3620effe7fb38727"
+    },
+    {
+      "Path": "docs/audit-014b/old-saves-load.log",
+      "Bytes": 70,
+      "Sha256": "519e42129ca6e08ea3c381f9633ce7ed3101de8306c8377f3e007f6899bc36cb"
+    },
+    {
+      "Path": "docs/audit-014b/old-saves/old-worlds-restart.json",
+      "Bytes": 51,
+      "Sha256": "5fac9f9cc9e5e22b0ec89945ee305df7a960009a6268d008b7628fdaf65c07f5"
+    },
+    {
+      "Path": "docs/audit-014b/old-saves/old-worlds.json",
+      "Bytes": 1333,
+      "Sha256": "e33485d6c7ffc5b5a2b63c880a63812a3c108da083c58e2e4048844e05a7faaa"
+    },
+    {
+      "Path": "docs/audit-014b/pre-save-schema-backup.json",
+      "Bytes": 460,
+      "Sha256": "d6b0c2bebddcdc709c10f531e9a3a038cae905f83c88bade1d060acce7fa852c"
+    },
+    {
+      "Path": "docs/audit-014b/protected-files-final.json",
+      "Bytes": 1731,
+      "Sha256": "16de259f6b9334c24ed0938aa94456bf876b4f638062c5eb176410e4c7f6dc78"
+    },
+    {
+      "Path": "docs/audit-014b/restart-actual.log",
+      "Bytes": 95,
+      "Sha256": "f37ddfba5c82baa76767bc293a259ad5884179566e4fdbfd3ce55e6df1e62d8f"
+    },
+    {
+      "Path": "docs/audit-014b/restart-custom.log",
+      "Bytes": 85,
+      "Sha256": "b9f5394ff4a06e9f0e554777abbc8f8669ca047a1ccb8f9aa20732a58e7a6f6c"
+    },
+    {
+      "Path": "docs/audit-014b/restart-exits.json",
+      "Bytes": 106,
+      "Sha256": "d94abae70fa09d0ec7fde1bf6a34866ad1bf2d1a5fc20008f636524244cad9b8"
+    },
+    {
+      "Path": "docs/audit-014b/restart-old.log",
+      "Bytes": 98,
+      "Sha256": "7730acfe4c2b43174711567fb44802a36b6a0d8073b0b7abafd461b80e84ba98"
+    },
+    {
+      "Path": "docs/audit-014b/runtime-final.json",
+      "Bytes": 1080,
+      "Sha256": "f890a1451d23320ef3372635537d83d749f75227193f992edecd05d5e45af768"
+    },
+    {
+      "Path": "docs/audit-014b/source-state-final.json",
+      "Bytes": 470,
+      "Sha256": "d8350040bea10d73f88a001e638e0d245369fb251d691f0691d289ae51f334fa"
+    },
+    {
+      "Path": "docs/audit-014b/test-results-final.json",
+      "Bytes": 2204,
+      "Sha256": "422332c23cb716da0fec20197649112a3f8cb4c8dcb4c28e90371339867f1418"
+    },
+    {
+      "Path": "docs/audit-014b/ui-server-scenes.json",
+      "Bytes": 416,
+      "Sha256": "e2a343527647f4e56ac2e6b7f5babca7770c1cd2ce8f888562ef47f54062ac9c"
+    },
+    {
+      "Path": "docs/audit-014b/ui-server-scenes.log",
+      "Bytes": 128,
+      "Sha256": "26ab756c7e04663fe84bc116554114cd2be3b7d985813eadd494fd62493c05ed"
+    },
+    {
+      "Path": "docs/audit-014b/ux-assemblies-test.log",
+      "Bytes": 1182,
+      "Sha256": "dbd420824c06ba0a3baf54ccae59ad662bdbcd9846641c099d08c2884c980003"
+    },
+    {
+      "Path": "docs/audit-014b/ux-build-initial-exit.json",
+      "Bytes": 23,
+      "Sha256": "c34bc644b4dfc96082e294ccb49ac40bdf34a3c659c956ffef43981ed30b2234"
+    },
+    {
+      "Path": "docs/audit-014b/ux-build-initial.log",
+      "Bytes": 1551,
+      "Sha256": "5260cc7812779e4d67de4f9629229f3c83ca60c826099213d18126cb191bc848"
+    },
+    {
+      "Path": "docs/audit-014b/ux-csharp-format.log",
+      "Bytes": 0,
+      "Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "docs/audit-014b/ux-dart-fix-final.log",
+      "Bytes": 56,
+      "Sha256": "0ddfbaee5d85756725e5821e9b9e0a408abfc3ac00f418f85d8715e2c35f4444"
+    },
+    {
+      "Path": "docs/audit-014b/ux-dart-fix.log",
+      "Bytes": 234,
+      "Sha256": "c4923219a1eba9046099871f11c1bcbd95b8be4fe21f7e73e1008d82f0f36856"
+    },
+    {
+      "Path": "docs/audit-014b/ux-editor-widget-tests.log",
+      "Bytes": 428,
+      "Sha256": "c83da0ff40933e7f2d3145c65f9c70a39c696371861b052905593afd6d59ced3"
+    },
+    {
+      "Path": "docs/audit-014b/ux-financial-reconciliation.json",
+      "Bytes": 161525,
+      "Sha256": "68e3bda33758ecf2786fb6bdc1ef24f4d9467f4c28b3d32b4758fd982ca1586a"
+    },
+    {
+      "Path": "docs/audit-014b/ux-flutter-analyze.log",
+      "Bytes": 98,
+      "Sha256": "569cb324847c3364d0c9110baf1f230dc7d04032ded899c9106c60247df90217"
+    },
+    {
+      "Path": "docs/audit-014b/ux-flutter-exits.json",
+      "Bytes": 168,
+      "Sha256": "782b4076129fe21fc0821bbd52a2e610248733e98abd6d0898c783815b80e8cb"
+    },
+    {
+      "Path": "docs/audit-014b/ux-flutter-tests-initial.log",
+      "Bytes": 34894,
+      "Sha256": "0e707134db3a0ea5dd6613982192586ebe81fef899ec95377ad9c9f2bfabb161"
+    },
+    {
+      "Path": "docs/audit-014b/ux-flutter-tests.log",
+      "Bytes": 17629,
+      "Sha256": "2c7d643b743e6fa5e8af213a1fd9ccba21048e96332d7f866d49a097defc51a0"
+    },
+    {
+      "Path": "docs/audit-014b/ux-flutter-web.log",
+      "Bytes": 1581,
+      "Sha256": "9d0cbf3a94b3b88d95c794724f4092df0b5bac9243f71c6faa3eb15c9da911f7"
+    },
+    {
+      "Path": "docs/audit-014b/ux-full-build.log",
+      "Bytes": 1485,
+      "Sha256": "40974b8d78441264e83b67f8cb5c6c86a525f561fccb12f7e837e27c7073818e"
+    },
+    {
+      "Path": "docs/audit-014b/ux-full-dotnet-exits.json",
+      "Bytes": 87,
+      "Sha256": "82833c0ab41a6c61809b6835ac3b22f01bffb2bcf340daff0bbb09ad065b2da7"
+    },
+    {
+      "Path": "docs/audit-014b/ux-full-regression.log",
+      "Bytes": 1891,
+      "Sha256": "fd311e0aab47576225ed67c72ae2faa483b09212d4c50fb4ae70da931f18cc66"
+    },
+    {
+      "Path": "docs/audit-014b/ux-navigation-tests.log",
+      "Bytes": 1726,
+      "Sha256": "d061d77529089572eb672be401181bd39b7857de3a53bf0c890d5be8ae26e877"
+    },
+    {
+      "Path": "docs/audit-014b/ux-node-exit.json",
+      "Bytes": 23,
+      "Sha256": "0cec79bdabd108dc8f671ea11f65e0db39b7521a87c78cc337ba9cdfa7e42fe6"
+    },
+    {
+      "Path": "docs/audit-014b/ux-node-tests.log",
+      "Bytes": 255,
+      "Sha256": "8826627cfd53f5891ce025ec30449df90ddd63ce4662e10a37636e319a9cac28"
+    },
+    {
+      "Path": "docs/audit-014b/ux-tests/ux-full-014b_net10.0_20261031095508.trx",
+      "Bytes": 10814,
+      "Sha256": "2cdc7295ada3020428ea0bf0b3554d0f3c69c3ea62738d1acc14287f7ded4e56"
+    },
+    {
+      "Path": "docs/audit-014b/ux-tests/ux-full-014b_net10.0_20261031095525.trx",
+      "Bytes": 559542,
+      "Sha256": "51f577570f5fa3eeb6ba69bfedcb4088391ba490eac5e6b29967766488a2e20c"
+    },
+    {
+      "Path": "docs/audit-014b/ux-tests/ux-full-014b_net10.0_20261031100227.trx",
+      "Bytes": 245598,
+      "Sha256": "e46021b2f81dd1ac243ab49056d5bc876ccc85ea6e3278fc136365f055375e81"
+    },
+    {
+      "Path": "docs/audit-014b/ux-tests/ux-full-014b_net10.0_20261031102623.trx",
+      "Bytes": 39196,
+      "Sha256": "8a7fee76632b3c461648ea9c9a13810eed7dfa84fa2bc995b92b27070a0820be"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/balance-012d-fix/final-199801/seasons.json",
+      "Bytes": 1248773,
+      "Sha256": "afe108b9e736f22e23e2972b9ab395e866ba062acd2891600c7ba76631fe1ff1"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/balance-012d-fix/final-199801/summary.json",
+      "Bytes": 918,
+      "Sha256": "e11fac693b45cb6a18ebaf0fac7bec71877964309e68759a72fdde41e80dbe60"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014a/Female/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "e0b4230e699a75c5f27837b05bf90c04d3a266a774d1380089c15c4474d42fd3"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014a/Female/summary.json",
+      "Bytes": 993,
+      "Sha256": "469e62b8cbc57f2b2322d01904a7ccacc3390527a4eca171546b52f3b08007a5"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014a/Male/seasons.json",
+      "Bytes": 1255841,
+      "Sha256": "31061e4b2a023142cc4b142ec3d58823e043fc9c0707181788a80a1750c1c9ed"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014a/Male/summary.json",
+      "Bytes": 991,
+      "Sha256": "aa5f06f28d3a5b96635dc7889da41fc233cf3c6217fca8bf9d8dc4a86ee104b9"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014b/Female/seasons.json",
+      "Bytes": 1238026,
+      "Sha256": "e646aab864b534d1d0da955c3aa58c440fc4755e15708c69d8f5353c913435bb"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014b/Female/summary.json",
+      "Bytes": 1046,
+      "Sha256": "069e2f0fa92ab3f81a739362d99128d52766ed6ee819a800ebb87ef2565fdc91"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014b/Male/seasons.json",
+      "Bytes": 1229846,
+      "Sha256": "d68be8f5507741a304a52d3553ccfaeffe2ddc773e3ec7a7c8c8a77cab7addfb"
+    },
+    {
+      "Path": "docs/audit-014b/ux-verified-final/integration-014b/Male/summary.json",
+      "Bytes": 1010,
+      "Sha256": "23f659bbd5d3c1ff7ed599b1986d2a291af940a43dfac7f48be9028e758b74d6"
+    },
+    {
+      "Path": "docs/audit-014b/visual-evidence.json",
+      "Bytes": 4221,
+      "Sha256": "d757ab8821d32dbc5d239b7ef463d455561d0e50e133572e69062e1be338d9d9"
+    },
+    {
+      "Path": "scripts/finance-final-worlds-014b.py",
+      "Bytes": 10314,
+      "Sha256": "699ffcc7fb682df5ff27d7b106880899b2cb2d61da231c4f891a15c9a652379a"
+    },
+    {
+      "Path": "scripts/record-classic-ui-014b.py",
+      "Bytes": 3799,
+      "Sha256": "6ba2f96f2b917099efdd74ae92f1160f4d0053ce921d68262e24548c5106b4fd"
+    },
+    {
+      "Path": "scripts/smoke-classic-ux-014b.py",
+      "Bytes": 6284,
+      "Sha256": "a5eb392f7bec62b5dfbd7dc6b4dadea08c48e4ee1d739164abec9047466f0bce"
+    },
+    {
+      "Path": "src/Elifoot.Api/Program.cs",
+      "Bytes": 40785,
+      "Sha256": "9551e2d5439739003a208091b0ad1810c2607b281d6085a4f6da2cf3e780f6da"
+    },
+    {
+      "Path": "src/Elifoot.Api/WorldCreatorEndpoints.cs",
+      "Bytes": 12493,
+      "Sha256": "7af723f431960bab3381a1e07c43d37cea36398de37448ff5db989d4fac40b3f"
+    },
+    {
+      "Path": "src/Elifoot.Contracts/Catalog/CustomWorldAssemblyDtos.cs",
+      "Bytes": 1249,
+      "Sha256": "366f4e36b539f91ac741a47fabfd5a85f1b754021ff5bff3572d58fd11ea09af"
+    },
+    {
+      "Path": "src/Elifoot.Domain/Catalog/CustomAssemblyPolicy.cs",
+      "Bytes": 10720,
+      "Sha256": "e5e4ae5b9443b0109c4f40832dd3c59a6a37ca8c82e969babf0971c8e5a20c26"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/CatalogDbContext.cs",
+      "Bytes": 7198,
+      "Sha256": "7a01654de090d132591d7d3e368070a866377ec372cecf628fca283df7b2cd25"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/WorldAssemblyService.cs",
+      "Bytes": 11617,
+      "Sha256": "b85a42905d9d967da40a7e9d46ed2cdd9dd36e13e4a61a0ffc090d29b54f38bd"
+    },
+    {
+      "Path": "src/Elifoot.Infrastructure/Catalog/WorldCreatorService.cs",
+      "Bytes": 18528,
+      "Sha256": "4fb3940f76c08fddd988c0cbb0b9e8413a0f693139c05b4d54a6e32515871f1e"
+    },
+    {
+      "Path": "tests/Elifoot.Integration.Tests/CustomWorldAssembly014BTests.cs",
+      "Bytes": 10145,
+      "Sha256": "9aae224c8032613ba91eae619a9b7609e1bd34fbd0ec90535c4e436a0b7f14f6"
+    }
+  ],
+  "FullRawDatasetsRetainedLocally": true,
+  "SourceWorktreesUnchanged": true,
+  "NoProduction": true,
+  "RawLogsPreserveOriginalWhitespace": true
+}

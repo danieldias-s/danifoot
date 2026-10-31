@@ -1,0 +1,101 @@
+{
+  "Status": "PASS",
+  "Worlds": [
+    {
+      "World": "0f9bfdd1-9541-4552-9981-fe2af25bcd9f",
+      "Gender": "Male",
+      "PurchasePrice": 599713,
+      "TransferMoneyReconciled": true,
+      "TransferOriginPreserved": true,
+      "RenewedSalary": 2169,
+      "RenewalRoundsAddedOnce": 5,
+      "PrincipalPaidOnce": 500000,
+      "InterestAlreadyCharged": 25000,
+      "Auction": {
+        "auctionId": "84af6bcc-1c7d-4405-b3c1-3159dab92c4d",
+        "playerId": "ea8d8115-52f9-4e63-9e31-6eb57d37a0d1",
+        "displayName": "Atleta fictício Bayer-06",
+        "position": "D",
+        "strength": 26,
+        "behaviorDisplay": "Caceteiro",
+        "isStar": false,
+        "minimumBid": 263854,
+        "currentBid": 420543,
+        "highestBidderClubId": "92dbf47b-c148-4419-872e-ac957f4e21b6",
+        "highestBidderClubName": "Atlético Madrid",
+        "expiresAtRound": 6,
+        "isClosed": true,
+        "reason": "ContractExpiration",
+        "closureReason": null,
+        "salaryPerRound": 1668
+      },
+      "ExpiryProbe": "Initial contract set to 2 before save confirmation; expiry by official matches; no active-world edits.",
+      "AdditionalRealRounds": 3,
+      "NextRound": 7,
+      "ClubReconciliations": [
+        {
+          "Club": "46e246db-99bd-41f9-9be5-e818cd07ba77",
+          "Cash": 4889715.83,
+          "LedgerRows": 25,
+          "LedgerDifference": "0",
+          "Squad": 19
+        },
+        {
+          "Club": "8205211c-9631-4b16-8960-cb071e46ea41",
+          "Cash": 4694919.39,
+          "LedgerRows": 13,
+          "LedgerDifference": "0",
+          "Squad": 16
+        }
+      ]
+    },
+    {
+      "World": "2ddd49d3-41c2-4c5c-adf4-aa5f9e17fe70",
+      "Gender": "Female",
+      "PurchasePrice": 223311,
+      "TransferMoneyReconciled": true,
+      "TransferOriginPreserved": true,
+      "RenewedSalary": 1909,
+      "RenewalRoundsAddedOnce": 5,
+      "PrincipalPaidOnce": 500000,
+      "InterestAlreadyCharged": 25000,
+      "Auction": {
+        "auctionId": "3358ec88-67f7-4b45-8bca-59991246e4c3",
+        "playerId": "4060b40b-668a-47ce-a24b-82682986fb05",
+        "displayName": "Atleta fictício Q107612952-13",
+        "position": "D",
+        "strength": 23,
+        "behaviorDisplay": "Caceteiro",
+        "isStar": false,
+        "minimumBid": 172054,
+        "currentBid": 308123,
+        "highestBidderClubId": "a1fdf387-33b2-4047-8d7f-cf3010d32b72",
+        "highestBidderClubName": "San Lorenzo de Almagro women",
+        "expiresAtRound": 6,
+        "isClosed": true,
+        "reason": "ContractExpiration",
+        "closureReason": null,
+        "salaryPerRound": 1342
+      },
+      "ExpiryProbe": "Initial contract set to 2 before save confirmation; expiry by official matches; no active-world edits.",
+      "AdditionalRealRounds": 3,
+      "NextRound": 7,
+      "ClubReconciliations": [
+        {
+          "Club": "7648ecb4-5f79-4a32-bba9-bcc6fc69b03c",
+          "Cash": 4953164.03,
+          "LedgerRows": 25,
+          "LedgerDifference": "0",
+          "Squad": 19
+        },
+        {
+          "Club": "03eb4a25-4045-408a-b4ad-6aef52505a3d",
+          "Cash": 4353750.5,
+          "LedgerRows": 13,
+          "LedgerDifference": "0",
+          "Squad": 16
+        }
+      ]
+    }
+  ]
+}

@@ -862,6 +862,9 @@ void main() {
         findsOneWidget,
       );
       expect(find.textContaining('PARTIDA EM ANDAMENTO'), findsWidgets);
+      await tester.ensureVisible(find.byKey(const ValueKey('coach-highlighted-match-card')));
+      await tester.tap(find.byKey(const ValueKey('coach-highlighted-match-card')));
+      await tester.pumpAndSettle();
       expect(find.textContaining('[GOL]'), findsWidgets);
 
       // 7. Request global pause -> opens interactive substitution panel
@@ -941,8 +944,8 @@ void main() {
         findsOneWidget,
       );
 
-      // Switch to Tab 2: 3. DIVISÕES & TAÇA
-      await tester.tap(find.text('3. DIVISÕES & TAÇA'));
+      // Switch to Tab 2: 2. DIVISÕES & TAÇA
+      await tester.tap(find.text('2. DIVISÕES & TAÇA'));
       await tester.pumpAndSettle();
 
       expect(find.byKey(const ValueKey('standings-table')), findsOneWidget);
@@ -961,8 +964,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('União Imperial (1ª Divisão)'), findsOneWidget);
 
-      // Switch to Tab 3: 4. MERCADO & LEILÃO
-      await tester.tap(find.text('4. MERCADO & LEILÃO'));
+      // Switch to Tab 3: 3. MERCADO & LEILÃO
+      await tester.tap(find.text('3. MERCADO & LEILÃO'));
       await tester.pumpAndSettle();
       expect(
         find.byKey(const ValueKey('market-listings-table')),
@@ -972,8 +975,8 @@ void main() {
       expect(find.text('LEILÃO ABERTO'), findsOneWidget);
       expect(find.textContaining('CONTRAPROPOSTA'), findsWidgets);
 
-      // Switch to Tab 4: 5. FINANÇAS & ESTÁDIO
-      await tester.tap(find.text('5. FINANÇAS & ESTÁDIO'));
+      // Switch to Tab 4: 4. FINANÇAS & ESTÁDIO
+      await tester.tap(find.text('4. FINANÇAS & ESTÁDIO'));
       await tester.pumpAndSettle();
       expect(
         find.text('RESUMO FINANCEIRO CONSOLIDADO DO CLUBE'),
@@ -984,9 +987,9 @@ void main() {
         findsOneWidget,
       );
 
-      // Switch to Tab 5: 6. RANKING & CARREIRA and open Coach Career Detail Dialog
-      await tester.ensureVisible(find.text('6. RANKING & CARREIRA'));
-      await tester.tap(find.text('6. RANKING & CARREIRA'));
+      // Switch to Tab 5: 5. RANKING & CARREIRA and open Coach Career Detail Dialog
+      await tester.ensureVisible(find.text('5. RANKING & CARREIRA'));
+      await tester.tap(find.text('5. RANKING & CARREIRA'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('coach-ranking-table')), findsOneWidget);
       await tester.ensureVisible(find.text('Treinador 1').first);
@@ -1023,12 +1026,11 @@ void main() {
 
         for (final tab in [
           '1. PLANTEL & TÁTICAS',
-          '2. JOGOS AO VIVO',
-          '3. DIVISÕES & TAÇA',
-          '4. MERCADO & LEILÃO',
-          '5. FINANÇAS & ESTÁDIO',
-          '6. RANKING & CARREIRA',
-          '8. CALENDÁRIO & RESULTADOS',
+          '2. DIVISÕES & TAÇA',
+          '3. MERCADO & LEILÃO',
+          '4. FINANÇAS & ESTÁDIO',
+          '5. RANKING & CARREIRA',
+          '6. CALENDÁRIO & RESULTADOS',
         ]) {
           await tester.ensureVisible(find.text(tab));
           await tester.tap(find.text(tab));
@@ -1096,8 +1098,8 @@ void main() {
       expect(find.textContaining('Lance de R\$'), findsWidgets);
 
       // Test Stadium & Finance operations (Renovate, Expand, Loan)
-      await tester.ensureVisible(find.text('5. FINANÇAS & ESTÁDIO'));
-      await tester.tap(find.text('5. FINANÇAS & ESTÁDIO'));
+      await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));
+      await tester.tap(find.text('4. FINANÇAS & ESTÁDIO'));
       await tester.pumpAndSettle();
 
       await tester.ensureVisible(

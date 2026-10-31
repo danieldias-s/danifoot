@@ -1,0 +1,12 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_014B\src\Elifoot.Contracts\bin\ClassicUX014B\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_014B\src\Elifoot.Domain\bin\ClassicUX014B\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_014B\src\Elifoot.Application\bin\ClassicUX014B\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98_014B\src\Elifoot.Infrastructure\bin\ClassicUX014B\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98_014B\src\Elifoot.Api\bin\ClassicUX014B\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98_014B\tests\Elifoot.Integration.Tests\bin\ClassicUX014B\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98_014B\tests\Elifoot.Integration.Tests\bin\ClassicUX014B\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:    18, Ignorado:     0, Total:    18, Duração: 29 s - Elifoot.Integration.Tests.dll (net10.0)

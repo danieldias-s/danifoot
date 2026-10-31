@@ -1555,7 +1555,7 @@ enum ClassicButtonIcon { none, refresh, close }
 /// Classic Elifoot 98 high-contrast button with vector icon support and full keyboard accessibility.
 class ClassicActionButton extends StatelessWidget {
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final ClassicButtonIcon iconType;
   final bool autofocus;
   final Key? buttonKey;

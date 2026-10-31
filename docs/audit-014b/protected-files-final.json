@@ -1,0 +1,50 @@
+{
+  "MatchEngine.cs": {
+    "Sha256": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842",
+    "Unchanged": true
+  },
+  "ClassicForceEvolutionEngine.cs": {
+    "Sha256": "039f535f3b1d85b6a8291df96debb1b9bd10bb03065ba9e250445d6a23bd4779",
+    "Unchanged": true
+  },
+  "ClassicForceState.cs": {
+    "Sha256": "ca84df6b47e1b9b0d2e3ff2fa2fa3fce260af4501501519dae223f6674377466",
+    "Unchanged": true
+  },
+  "DisciplineEngine.cs": {
+    "Sha256": "e5cbeb47fd228a15934b06153891360a4835944da054f61a34fd2ecd0eb75e5a",
+    "Unchanged": true
+  },
+  "PlayerStrengthEvolutionEngine.cs": {
+    "Sha256": "d6cd82bead9e05aa2caf2dca01b9ae3bfcc8fe5478463b3b232a96182c35ed2a",
+    "Unchanged": true
+  },
+  "OperatingEconomyEngine.cs": {
+    "Sha256": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12",
+    "Unchanged": true
+  },
+  "MarketAndEconomyEngine.cs": {
+    "Sha256": "b35aaf8c26aca95fd8f5699f8d67b5dd642f80479ecc21402532f3feebc35c82",
+    "Unchanged": true
+  },
+  "ClassicEconomyEngine.cs": {
+    "Sha256": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707",
+    "Unchanged": true
+  },
+  "SalaryContractsEngine.cs": {
+    "Sha256": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5",
+    "Unchanged": true
+  },
+  "FinancialInsolvencyEngine.cs": {
+    "Sha256": "a85ae550516ffe893f3a1e13a8dc24e914701c1cc0224b6ac20562068c861713",
+    "Unchanged": true
+  },
+  "WorldSeedFactory.cs": {
+    "Sha256": "f3a232b15c48905baa78d626f252379c666cf7d1db0d12dafebe7a4d08815af4",
+    "Unchanged": true
+  },
+  "AiManagerBrain.cs": {
+    "Sha256": "baceab5255f9e2f02b9ef27cee885164ceca5214941689f6b09d7774c769a6f9",
+    "Unchanged": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "Task": "ELIFOOT_CLASSIC_UX_AND_PRE_SAVE_EDITOR_014B",
+  "Status": "PARTIAL",
+  "Worktree": "D:\\elifoot_98_014B",
+  "Branch": "feature/integration-013c-014b",
+  "AutomatedChecks": "PASS",
+  "DotnetTests": 579,
+  "FlutterTests": 101,
+  "NodeTests": 2,
+  "HundredSeasonCases": 5,
+  "ProtectedEngineFiles": 12,
+  "NativeChromeAudit": "PENDING",
+  "ReferenceImages": "NOT_ATTACHED",
+  "ProductionPublished": false
+}

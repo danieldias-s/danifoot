@@ -169,6 +169,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         var draft = await db.Drafts.AsNoTracking().SingleOrDefaultAsync(d => d.Id == draftId && d.OwnerId == owner, ct)
             ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
         if (draft.ExpiresAt < DateTime.UtcNow && draft.WorldJson == null) throw new ArgumentException("Prévia expirada; gere uma nova.");
+        using var receiptType=JsonDocument.Parse(draft.RequestJson);
+        if(receiptType.RootElement.TryGetProperty("assemblyConfirmation",out _))throw new ArgumentException("Use a confirmação da montagem privada.");
         var request = JsonSerializer.Deserialize<WorldCreatorRequest>(draft.RequestJson, CatalogImportCodec.Json)!;
         if (draft.WorldJson == null)
         {

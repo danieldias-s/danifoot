@@ -1,0 +1,22 @@
+00:00 +0: loading D:/elifoot_98_014B/client/elifoot_flutter/test/classic_ux_014b_test.dart
+00:00 +0: Only authoritative started snapshots open matches, once per transition
+00:00 +1: Refresh/reconnect restores RUNNING_FIRST_HALF from snapshot
+00:00 +2: Refresh/reconnect restores HALFTIME_PAUSED from snapshot
+00:00 +3: Refresh/reconnect restores RUNNING_SECOND_HALF from snapshot
+00:00 +4: Refresh/reconnect restores GLOBAL_PAUSED from snapshot
+00:00 +5: Refresh/reconnect restores EXTRA_TIME_BREAK from snapshot
+00:00 +6: Refresh/reconnect restores RUNNING_EXTRA_TIME from snapshot
+00:00 +7: Refresh/reconnect restores EXTRA_TIME_HALFTIME from snapshot
+00:00 +8: Refresh/reconnect restores RESULTS from snapshot
+00:00 +9: Refresh/reconnect restores FINISHED from snapshot
+00:00 +10: 2 coaches wait for server start, navigate from another tab and retain manual navigation
+00:04 +11: 4 coaches wait for server start, navigate from another tab and retain manual navigation
+00:06 +12: 6 coaches wait for server start, navigate from another tab and retain manual navigation
+00:07 +13: 8 coaches wait for server start, navigate from another tab and retain manual navigation
+00:08 +14: Unemployed coach waits and follows authoritative start
+00:09 +15: Classic board has four real fixtures per division, live scores and no overflow at 320.0
+00:09 +16: Classic board has four real fixtures per division, live scores and no overflow at 390.0
+00:09 +17: Classic board has four real fixtures per division, live scores and no overflow at 1366.0
+00:09 +18: Cup group expansion does not open every match detail
+00:09 +19: Cup preliminary keeps all district fixtures under actual cup stage
+00:10 +20: All tests passed!

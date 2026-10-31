@@ -437,6 +437,8 @@ void main() {
       if (req.url.path.endsWith('local-login')) {
         return http.Response(jsonEncode({'coachId':'phone','authModeWarning':'LOCAL_DEV'}),200);
       }
+      if(req.url.path.contains('world-creator/countries')) return http.Response(jsonEncode([{'code':'BR','name':'Brasil','maleClubs':0,'femaleClubs':0}]),200);
+      if(req.url.path.endsWith('last-configuration')) return http.Response('null',200);
       return http.Response(jsonEncode([{'id':'phone-world','name':'Sala no telefone',
         'inviteCode':'PHONE','seasonNumber':1,'roundNumber':1,'roundState':'PREPARING','totalClubs':128}]),200);
     }));
@@ -449,6 +451,7 @@ void main() {
     await tester.tap(find.text('NOVO CAMPEONATO / SALA'));
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
-    expect(find.text('CRIAR SALA'), findsOneWidget);
+    expect(find.text('CRIADOR DE MUNDOS'), findsOneWidget);
+    expect(find.text('USAR MONTAGEM SALVA'), findsOneWidget);
   });
 }

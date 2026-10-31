@@ -44,6 +44,7 @@ extension _ShellActions on _ElifootShellScreenState {
 
   Map<String, dynamic>? _preferLatestSnapshot(Map<String, dynamic>? incoming) {
     if (incoming == null) return _snapshot;
+    if (_worldId!=null && incoming['gameWorldId']!=null && incoming['gameWorldId']!=_worldId) return _snapshot;
     if ((_snapshot?['roundVersion'] as num? ?? 0) >
         (incoming['roundVersion'] as num? ?? 0)) {
       return _snapshot;
@@ -358,7 +359,7 @@ extension _ShellActions on _ElifootShellScreenState {
               children: [
                 ElevatedButton(
                   key: const ValueKey('btn-ver-convites-desempregado'),
-                  onPressed: () => setState(() => _activeTabIndex = 5),
+                  onPressed: () => setState(() { _activeTabIndex = 4; _showMatchView = false; }),
                   child: const Text('VER CONVITES DE EMPREGO'),
                 ),
                 if (roundState == 'PREPARING' && !isReady)
@@ -369,11 +370,11 @@ extension _ShellActions on _ElifootShellScreenState {
                   ),
                 ClassicActionButton(
                   label: 'CLASSIFICAÇÃO',
-                  onPressed: () => setState(() => _activeTabIndex = 2),
+                  onPressed: () => setState(() { _activeTabIndex = 1; _showMatchView = false; }),
                 ),
                 ClassicActionButton(
-                  label: 'JOGOS DA RODADA',
-                  onPressed: () => setState(() => _activeTabIndex = 1),
+                  label: 'ACOMPANHAR RODADA',
+                  onPressed: () => setState(() { _showMatchView = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString()); if (!_showMatchView) _activeTabIndex = 0; }),
                 ),
               ],
             ),
@@ -584,7 +585,7 @@ extension _ShellActions on _ElifootShellScreenState {
               ),
               if (invitations.isNotEmpty)
                 InkWell(
-                  onTap: () => setState(() => _activeTabIndex = 5),
+                  onTap: () => setState(() { _activeTabIndex = 4; _showMatchView = false; }),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 8,
@@ -607,12 +608,12 @@ extension _ShellActions on _ElifootShellScreenState {
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-escalacao'),
                 label: 'ESCALAÇÃO',
-                onPressed: _autoPickBestLineup,
+                onPressed: _tacticsLocked ? null : _autoPickBestLineup,
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-taticas'),
                 label: 'TÁTICAS ($_selectedFormation)',
-                onPressed: () {
+                onPressed: _tacticsLocked ? null : () {
                   final idx = _ElifootShellScreenState.availableFormations
                       .indexOf(_selectedFormation);
                   final nextIdx =
@@ -629,17 +630,17 @@ extension _ShellActions on _ElifootShellScreenState {
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-mercado'),
                 label: 'MERCADO',
-                onPressed: () => setState(() => _activeTabIndex = 3),
+                onPressed: () => setState(() { _activeTabIndex = 2; _showMatchView = false; }),
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-classificacao'),
                 label: 'CLASSIFICAÇÃO',
-                onPressed: () => setState(() => _activeTabIndex = 2),
+                onPressed: () => setState(() { _activeTabIndex = 1; _showMatchView = false; }),
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-proxima-partida'),
                 label: 'PRÓXIMA PARTIDA',
-                onPressed: () => setState(() => _activeTabIndex = 1),
+                onPressed: () => setState(() { _showMatchView = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString()); if(!_showMatchView) _activeTabIndex=0; }),
               ),
             ],
           ),
@@ -649,6 +650,7 @@ extension _ShellActions on _ElifootShellScreenState {
   }
 
   void _autoPickBestLineup() {
+    if (_tacticsLocked) return;
     final squad = _myClubDetail?['squad'] as List<dynamic>? ?? [];
     final avail = squad
         .where(
@@ -1215,255 +1217,4 @@ extension _ShellActions on _ElifootShellScreenState {
     );
   }
 
-  Future<void> _loadEditor() async {
-    try {
-      final data = jsonDecode(
-        await widget.apiClient.exportWorldJson(_worldId!),
-      );
-      if (!mounted) return;
-      setState(() {
-        _editorClubs = data['clubs'];
-        _editorPlayers = data['players'];
-        _editorManagers = data['aiManagers'];
-        _statusBanner =
-            'Editor carregado. Escolha um clube, jogador ou treinador.';
-      });
-    } catch (e) {
-      if (mounted) setState(() => _statusBanner = '$e');
-    }
-  }
-
-  Widget _editorPicker(String label, List<dynamic> entries, String kind) =>
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        child: DropdownButtonFormField<String>(
-          isExpanded: true,
-          dropdownColor: const Color(0xFF062E0F),
-          icon: _classicDropdownIcon(),
-          decoration: InputDecoration(labelText: label),
-          items: entries
-              .map(
-                (e) => DropdownMenuItem<String>(
-                  value: e['id'],
-                  child: Text('${e['name']}'),
-                ),
-              )
-              .toList(),
-          onChanged: (id) => _editEntity(
-            kind,
-            Map<String, dynamic>.from(entries.firstWhere((e) => e['id'] == id)),
-          ),
-        ),
-      );
-
-  Future<void> _editEntity(String kind, Map<String, dynamic> data) async {
-    final isPlayer = kind == 'update-player';
-    final isManager = kind == 'update-manager';
-    final name = TextEditingController(text: data['name']);
-    final short = TextEditingController(text: data['shortName'] ?? '');
-    final primary = TextEditingController(text: data['primaryColorHex'] ?? '');
-    final secondary = TextEditingController(
-      text: data['secondaryColorHex'] ?? '',
-    );
-    final stadium = TextEditingController(text: data['stadiumName'] ?? '');
-    final strength = TextEditingController(text: '${data['strength'] ?? 20}');
-    final prefs = TextEditingController(
-      text: jsonEncode(data['preferredFormations'] ?? []),
-    );
-    String position = '${data['position'] ?? 'M'}';
-    String behavior = '${data['behavior'] ?? 'FairPlay'}';
-    String identity = '${data['identity'] ?? 'Equilibrado'}';
-    bool star = data['isStar'] == true;
-    String? error;
-    await showDialog<void>(
-      context: context,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx, update) => AlertDialog(
-          backgroundColor: const Color(0xFF0E3B19),
-          title: Text(
-            isPlayer
-                ? 'EDITAR JOGADOR'
-                : isManager
-                ? 'EDITAR TREINADOR'
-                : 'EDITAR CLUBE',
-            style: const TextStyle(color: Color(0xFFFFD700)),
-          ),
-          content: SizedBox(
-            width: 520,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                    controller: name,
-                    decoration: const InputDecoration(labelText: 'Nome'),
-                  ),
-                  if (isPlayer) ...[
-                    TextField(
-                      controller: strength,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Força (1 a 50)',
-                      ),
-                    ),
-                    DropdownButtonFormField<String>(
-                      initialValue: position,
-                      dropdownColor: const Color(0xFF062E0F),
-                      icon: _classicDropdownIcon(),
-                      decoration: const InputDecoration(labelText: 'Posição'),
-                      items: ['G', 'D', 'M', 'A']
-                          .map(
-                            (v) => DropdownMenuItem(value: v, child: Text(v)),
-                          )
-                          .toList(),
-                      onChanged: (v) => position = v!,
-                    ),
-                    DropdownButtonFormField<String>(
-                      initialValue: behavior,
-                      dropdownColor: const Color(0xFF062E0F),
-                      icon: _classicDropdownIcon(),
-                      decoration: const InputDecoration(
-                        labelText: 'Comportamento',
-                      ),
-                      items:
-                          [
-                                'FairPlay',
-                                'Cordeirinho',
-                                'Cavalheiro',
-                                'Caneleiro',
-                                'Caceteiro',
-                                'Sarrafeiro',
-                              ]
-                              .map(
-                                (v) => DropdownMenuItem(
-                                  value: v,
-                                  child: Text(
-                                    v == 'FairPlay' ? 'Fair Play' : v,
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                      onChanged: (v) => behavior = v!,
-                    ),
-                    CheckboxListTile(
-                      title: const Text('Craque (*)'),
-                      value: star,
-                      onChanged: (v) => update(() => star = v!),
-                    ),
-                  ] else if (isManager) ...[
-                    DropdownButtonFormField<String>(
-                      initialValue: identity,
-                      dropdownColor: const Color(0xFF062E0F),
-                      icon: _classicDropdownIcon(),
-                      decoration: const InputDecoration(
-                        labelText: 'Personalidade',
-                      ),
-                      items: ['Ofensivo', 'Equilibrado', 'Defensivo']
-                          .map(
-                            (v) => DropdownMenuItem(value: v, child: Text(v)),
-                          )
-                          .toList(),
-                      onChanged: (v) => identity = v!,
-                    ),
-                    TextField(
-                      controller: prefs,
-                      maxLines: 5,
-                      decoration: const InputDecoration(
-                        labelText: 'Formações e pesos (JSON; total 100%)',
-                      ),
-                    ),
-                  ] else ...[
-                    TextField(
-                      controller: short,
-                      decoration: const InputDecoration(labelText: 'Sigla'),
-                    ),
-                    TextField(
-                      controller: primary,
-                      decoration: const InputDecoration(
-                        labelText: 'Cor principal (#RRGGBB)',
-                      ),
-                    ),
-                    TextField(
-                      controller: secondary,
-                      decoration: const InputDecoration(
-                        labelText: 'Cor secundária (#RRGGBB)',
-                      ),
-                    ),
-                    TextField(
-                      controller: stadium,
-                      decoration: const InputDecoration(
-                        labelText: 'Nome do estádio',
-                      ),
-                    ),
-                  ],
-                  if (error != null)
-                    Text(
-                      error!,
-                      style: const TextStyle(color: Colors.redAccent),
-                    ),
-                ],
-              ),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('CANCELAR'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                try {
-                  if (name.text.trim().isEmpty) {
-                    throw Exception('Informe um nome.');
-                  }
-                  data['name'] = name.text.trim();
-                  if (isPlayer) {
-                    final value = int.tryParse(strength.text);
-                    if (value == null || value < 1 || value > 50) {
-                      throw Exception('Força deve estar entre 1 e 50.');
-                    }
-                    data.addAll({
-                      'strength': value,
-                      'position': position,
-                      'behavior': behavior,
-                      'isStar': star,
-                    });
-                  } else if (isManager) {
-                    data.addAll({
-                      'identity': identity,
-                      'preferredFormations': jsonDecode(prefs.text),
-                    });
-                  } else {
-                    data.addAll({
-                      'shortName': short.text,
-                      'primaryColorHex': primary.text,
-                      'secondaryColorHex': secondary.text,
-                      'stadiumName': stadium.text,
-                    });
-                  }
-                  await widget.apiClient.saveEditorEntity(_worldId!, kind, data);
-                  if (!ctx.mounted) return;
-                  Navigator.pop(ctx);
-                  await _loadEditor();
-                  await _refreshClubAndSecondaryData();
-                  if (mounted) {
-                    setState(
-                      () => _statusBanner = 'Alterações salvas no servidor.',
-                    );
-                  }
-                } catch (e) {
-                  if (ctx.mounted) update(() => error = '$e');
-                }
-              },
-              child: const Text('SALVAR ALTERAÇÕES'),
-            ),
-          ],
-        ),
-      ),
-    );
-    await Future<void>.delayed(const Duration(milliseconds: 300));
-    for (final c in [name, short, primary, secondary, stadium, strength, prefs]) {
-      c.dispose();
-    }
-  }
 }
