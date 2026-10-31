@@ -47,6 +47,12 @@ public sealed partial class ClubAndMarketApplicationService
     }
     public Task<(bool Success,string? Error)> ListPlayerForTransferAsync(Guid worldId,Guid coachId,Guid playerId,decimal askingPrice,CancellationToken ct=default,string? idempotencyKey=null,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"LIST",$"{playerId}:{askingPrice}",idempotencyKey,expectedRoundVersion,e=>(false,e),k=>ListPlayerForTransferCoreAsync(worldId,coachId,playerId,askingPrice,ct),ct);
+    public Task<(bool Success,string? Error,Guid? AuctionId)> CreateVoluntaryAuctionAsync(Guid worldId,Guid coachId,Guid playerId,
+        decimal minimumBid=VoluntaryAuctionDefaults.MinimumBid,int durationRounds=VoluntaryAuctionDefaults.DurationRounds,
+        CancellationToken ct=default,string? idempotencyKey=null,long? expectedRoundVersion=null)
+        =>Finance<(bool,string?,Guid?)>(worldId,coachId,"CREATE_VOLUNTARY_AUCTION",$"{playerId}:{minimumBid.ToString(System.Globalization.CultureInfo.InvariantCulture)}:{durationRounds}",idempotencyKey,expectedRoundVersion,
+            e=>(false,e,null),async k=>{var w=(await _repository.GetWorldAsync(worldId,ct))!;var c=w.Clubs.First(c=>c.HumanCoachId==coachId);
+                return VoluntaryAuctionEngine.Create(w,c,playerId,k,minimumBid,durationRounds);},ct);
     public Task<(bool Success,string? Error)> BuyListedPlayerAsync(Guid worldId,Guid coachId,Guid playerId,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"BUY",playerId.ToString(),idempotencyKey,expectedRoundVersion,e=>(false,e),k=>BuyListedPlayerCoreAsync(worldId,coachId,playerId,k,ct),ct);
     public Task<(bool Success,string? Error,TransferOfferDto? Offer)> CreateTransferOfferAsync(Guid worldId,Guid coachId,Guid playerId,decimal offeredAmount,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null)

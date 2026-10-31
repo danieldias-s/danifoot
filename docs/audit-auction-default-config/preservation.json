@@ -1,0 +1,43 @@
+{
+  "Files": {
+    "src/Elifoot.Domain/MarketAndEconomyEngine.cs": {
+      "Baseline": "b35aaf8c26aca95fd8f5699f8d67b5dd642f80479ecc21402532f3feebc35c82",
+      "Final": "634bad8492eb7431da724209096f8e6ac290961043e5c9d111206034d98820ba",
+      "Unchanged": false
+    },
+    "src/Elifoot.Domain/FinancialInsolvencyEngine.cs": {
+      "Baseline": "a85ae550516ffe893f3a1e13a8dc24e914701c1cc0224b6ac20562068c861713",
+      "Final": "24c47da65e5edc70931f0e0428b9c7c5fe3bdf2bc379a9a6d55175d976560ccd",
+      "Unchanged": false
+    },
+    "src/Elifoot.Domain/ClassicEconomyEngine.cs": {
+      "Baseline": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707",
+      "Final": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707",
+      "Unchanged": true
+    },
+    "src/Elifoot.Domain/SalaryContractsEngine.cs": {
+      "Baseline": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5",
+      "Final": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5",
+      "Unchanged": true
+    },
+    "src/Elifoot.Domain/OperatingEconomyEngine.cs": {
+      "Baseline": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12",
+      "Final": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12",
+      "Unchanged": true
+    },
+    "src/Elifoot.Domain/MatchEngine.cs": {
+      "Baseline": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842",
+      "Final": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842",
+      "Unchanged": true
+    },
+    "client/elifoot_flutter/lib/main.dart": {
+      "Baseline": "c8a83f3941962e129e26ce7706196db19c9a313f4a8ed2b08df412c0bdfc68ae",
+      "Final": "7eb35eec0a0634949c0cf043543340c4ed352ac3dd4beb77115e7e9a63dbf772",
+      "Unchanged": false
+    }
+  },
+  "AutomaticAuctionCreationMethodsUnchanged": true,
+  "ExistingEnumValuesPreserved": true,
+  "OldAuctionFieldsOptional": true,
+  "OtherWorktreesNotEdited": true
+}

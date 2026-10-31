@@ -120,6 +120,7 @@ public record LiveRoundSnapshotDto(
     PauseWindowStateDto? ActivePauseWindow,
     List<LiveMatchSummaryDto> Matches)
 {
+    public int TotalRoundsInSeason { get; init; }
     public ForceEvolutionMode ForceEvolutionMode { get; init; }
     public int ForceRulesVersion { get; init; }
     public int DisciplineRulesVersion { get; init; }
@@ -377,6 +378,8 @@ public record AuctionItemDto(
     int ExpiresAtRound,
     bool IsClosed)
 {
+    public int? DurationRounds { get; init; }
+    public int? ExpiresAtSeason { get; init; }
     public AuctionReason Reason { get; init; }
     public string? ClosureReason { get; init; }
     public decimal SalaryPerRound { get; init; }

@@ -1,0 +1,10 @@
+Computing fixes in elifoot_flutter...
+Applying fixes...
+
+lib\auction_config.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+test\auction_default_config_test.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+2 fixes made in 2 files.

@@ -788,7 +788,8 @@ public static class MarketAndEconomyEngine
             }
 
             // Close auction if expired
-            if (world.SeasonNumber > auction.CreatedAtSeason || world.RoundNumber >= auction.ExpiresAtRound)
+            if (auction.Reason==AuctionReason.Voluntary ? VoluntaryAuctionEngine.IsDue(world,auction)
+                : world.SeasonNumber > auction.CreatedAtSeason || world.RoundNumber >= auction.ExpiresAtRound)
             {
                 SettleAuction(world, auction, logs);
             }
@@ -829,7 +830,7 @@ public static class MarketAndEconomyEngine
         if (player.ClubId != seller.Id)
             return (false, "O jogador não pertence mais ao clube vendedor.");
 
-        bool auctionSale=settlingAuctionId is Guid aid&&world.Auctions.Any(a=>a.Id==aid&&!a.IsClosed&&a.PlayerId==playerId&&a.FormerClubId==sellerClubId&&a.Reason==AuctionReason.FinancialInsolvency&&a.HighestBidderClubId==buyerClubId&&a.CurrentBid==price);
+        bool auctionSale=settlingAuctionId is Guid aid&&world.Auctions.Any(a=>a.Id==aid&&!a.IsClosed&&a.PlayerId==playerId&&a.FormerClubId==sellerClubId&&a.Reason is (AuctionReason.FinancialInsolvency or AuctionReason.Voluntary)&&a.HighestBidderClubId==buyerClubId&&a.CurrentBid==price);
         if(ClassicEconomyEngine.AuctionReserved(world,playerId)&&!auctionSale)return(false,"Jogador reservado para leilão.");
         if (price < 0m || price == 0m&&!auctionSale || ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId) < price)
             return (false, "Saldo insuficiente no clube comprador.");
@@ -884,6 +885,7 @@ public static class MarketAndEconomyEngine
     public static void SettleAuction(GameWorld world, AuctionItem auction, List<string>? logs = null)
     {
         if (auction.IsClosed) return;
+        if(auction.Reason==AuctionReason.Voluntary){VoluntaryAuctionEngine.Settle(world,auction,logs);return;}
         if(auction.Reason!=AuctionReason.ContractExpiration){ClassicEconomyEngine.SettleSpecialAuction(world,auction,logs);return;}
         auction.IsClosed = true;
 

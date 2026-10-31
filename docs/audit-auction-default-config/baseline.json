@@ -1,0 +1,15 @@
+{
+  "Base": "33d84882b61b4ff0c0903c7b2d0270e2de757e98",
+  "Worktree": "D:\\elifoot_98_014C",
+  "OtherActiveProjectSessions": 0,
+  "TrackedChangesBefore": 0,
+  "Hashes": {
+    "src/Elifoot.Domain/MarketAndEconomyEngine.cs": "b35aaf8c26aca95fd8f5699f8d67b5dd642f80479ecc21402532f3feebc35c82",
+    "src/Elifoot.Domain/FinancialInsolvencyEngine.cs": "a85ae550516ffe893f3a1e13a8dc24e914701c1cc0224b6ac20562068c861713",
+    "src/Elifoot.Domain/ClassicEconomyEngine.cs": "7e51e8b6e79249ec05f7067e304d617b507bcad1409243962dfd5185bf6d1707",
+    "src/Elifoot.Domain/SalaryContractsEngine.cs": "e090cd6bd538d9952e65fad320258e2fe4593384603743756f1e21082f189cb5",
+    "src/Elifoot.Domain/OperatingEconomyEngine.cs": "968e53d294fdb8276a0dd7a1c4fb68dcb19882ca0e4c6f6ea08da6b2d2b8ad12",
+    "src/Elifoot.Domain/MatchEngine.cs": "eba48e0823e696a9549705abb0191caabd339f042dd7f7edf974fac6566ca842",
+    "client/elifoot_flutter/lib/main.dart": "c8a83f3941962e129e26ce7706196db19c9a313f4a8ed2b08df412c0bdfc68ae"
+  }
+}

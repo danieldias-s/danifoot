@@ -1,0 +1,19 @@
+{
+  "Status": "PASS",
+  "Database": "PostgreSQL 014C, port 55438",
+  "World": "49f546e5-3edd-4f99-bd13-878ac6526020",
+  "ConcurrentCreations": 4,
+  "UniqueDefaultAuction": true,
+  "Defaults": [
+    500000,
+    2
+  ],
+  "CustomZeroThree": true,
+  "CentsOne": true,
+  "AfterFirstGlobalRound": {
+    "DefaultClosed": false,
+    "ThreeClosed": false,
+    "OneClosed": true
+  },
+  "PageReadsDoNotCount": true
+}

@@ -87,7 +87,7 @@ public static partial class ClassicEconomyEngine
         if(w.Players.Any(p=>p.Id==a.PlayerId&&p.ClubId==c.Id))return(false,"O clube já possui este jogador.");
         if(w.Players.Count(p=>p.ClubId==c.Id)+w.Auctions.Count(a=>!a.IsClosed&&a.Id!=auctionId&&a.HighestBidderClubId==c.Id)>=SquadValidator.MaxSquadSize)
             return(false,"Limite de elenco reservado por contratações em andamento.");
-        if(amount!=Math.Round(amount,0)||amount<NextBid(a)||AvailableCash(w,c,a.Id)<amount)return(false,"Lance abaixo do mínimo ou sem saldo disponível.");
+        if(amount!=Math.Round(amount,a.Reason==AuctionReason.Voluntary?2:0)||amount<NextBid(a)||AvailableCash(w,c,a.Id)<amount)return(false,"Lance abaixo do mínimo ou sem saldo disponível.");
         a.CurrentBid=amount;a.HighestBidderClubId=c.Id;Remember(w,c,key,"AUCTION_BID",payload,a.Id);return(true,null);
     }
 }

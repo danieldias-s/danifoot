@@ -1,0 +1,52 @@
+{
+  "Status": "PASS",
+  "Base": "33d84882b61b4ff0c0903c7b2d0270e2de757e98",
+  "Worktree": "D:\\elifoot_98_014C",
+  "Branch": "feature/club-colors-theme-014c",
+  "Dotnet": {
+    "domain-regression": {
+      "Total": 409,
+      "Passed": 409
+    },
+    "application-regression": {
+      "Total": 7,
+      "Passed": 7
+    },
+    "integration-regression": {
+      "Total": 28,
+      "Passed": 28
+    }
+  },
+  "Flutter": {
+    "Analyze": "No issues found",
+    "Tests": 120,
+    "BuildWeb": "PASS",
+    "TargetedNewTests": 6
+  },
+  "ActualPostgreSqlAndHttp": {
+    "Status": "PASS",
+    "ActualApiProcessRestart": true,
+    "OriginalDeadlinePreserved": true,
+    "AfterSecondGlobalRound": {
+      "DefaultClosed": true,
+      "ThreeClosed": false
+    },
+    "SaleAmount": 540000,
+    "SellerCredit": 540000,
+    "BuyerDebit": -540000,
+    "PlayerClubMatchesWinningBidder": true,
+    "CreationReplayAfterSaleSameAuction": true
+  },
+  "R7PreparationDuration2ExpiresAfterR8": "PASS actual engine integration",
+  "AllowedDurations": [
+    1,
+    2,
+    3
+  ],
+  "DefaultMinimumBid": 500000,
+  "DefaultDurationRounds": 2,
+  "AutomaticZeroMinimumPreserved": true,
+  "SquadProtection": "11 total, 1 goalkeeper, 10 outfield; revalidated at creation and sale",
+  "NoProductionPublish": true,
+  "LongSimulations": "Not repeated for scoped voluntary-auction change; full domain/application and focused integrations passed"
+}

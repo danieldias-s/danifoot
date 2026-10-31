@@ -1,0 +1,2207 @@
+{
+  "Comparisons": 30000,
+  "Counterexamples": [
+    {
+      "Strength": 2,
+      "Base": 7,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 1,
+      "PublicCResult": 2,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 2,
+      "Base": 7,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 1,
+      "PublicCResult": 2,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 3,
+      "Base": 8,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 2,
+      "PublicCResult": 3,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 3,
+      "Base": 8,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 2,
+      "PublicCResult": 3,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 4,
+      "Base": 9,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 3,
+      "PublicCResult": 4,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 4,
+      "Base": 9,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 3,
+      "PublicCResult": 4,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 5,
+      "Base": 10,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 4,
+      "PublicCResult": 5,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 5,
+      "Base": 10,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 4,
+      "PublicCResult": 5,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 6,
+      "Base": 1,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 7,
+      "PublicCResult": 6,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 6,
+      "Base": 1,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 7,
+      "PublicCResult": 6,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 6,
+      "Base": 1,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 7,
+      "PublicCResult": 6,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 6,
+      "Base": 11,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 5,
+      "PublicCResult": 6,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 6,
+      "Base": 11,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 5,
+      "PublicCResult": 6,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 7,
+      "Base": 2,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 8,
+      "PublicCResult": 7,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 7,
+      "Base": 2,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 8,
+      "PublicCResult": 7,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 7,
+      "Base": 2,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 8,
+      "PublicCResult": 7,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 7,
+      "Base": 12,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 6,
+      "PublicCResult": 7,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 7,
+      "Base": 12,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 6,
+      "PublicCResult": 7,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 8,
+      "Base": 3,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 9,
+      "PublicCResult": 8,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 8,
+      "Base": 3,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 9,
+      "PublicCResult": 8,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 8,
+      "Base": 3,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 9,
+      "PublicCResult": 8,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 8,
+      "Base": 13,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 7,
+      "PublicCResult": 8,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 8,
+      "Base": 13,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 7,
+      "PublicCResult": 8,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 9,
+      "Base": 4,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 10,
+      "PublicCResult": 9,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 9,
+      "Base": 4,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 10,
+      "PublicCResult": 9,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 9,
+      "Base": 4,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 10,
+      "PublicCResult": 9,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 9,
+      "Base": 14,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 8,
+      "PublicCResult": 9,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 9,
+      "Base": 14,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 8,
+      "PublicCResult": 9,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 10,
+      "Base": 5,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 11,
+      "PublicCResult": 10,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 10,
+      "Base": 5,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 11,
+      "PublicCResult": 10,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 10,
+      "Base": 5,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 11,
+      "PublicCResult": 10,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 10,
+      "Base": 15,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 9,
+      "PublicCResult": 10,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 10,
+      "Base": 15,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 9,
+      "PublicCResult": 10,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 11,
+      "Base": 6,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 12,
+      "PublicCResult": 11,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 11,
+      "Base": 6,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 12,
+      "PublicCResult": 11,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 11,
+      "Base": 6,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 12,
+      "PublicCResult": 11,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 11,
+      "Base": 16,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 10,
+      "PublicCResult": 11,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 11,
+      "Base": 16,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 10,
+      "PublicCResult": 11,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 12,
+      "Base": 7,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 13,
+      "PublicCResult": 12,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 12,
+      "Base": 7,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 13,
+      "PublicCResult": 12,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 12,
+      "Base": 7,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 13,
+      "PublicCResult": 12,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 12,
+      "Base": 17,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 11,
+      "PublicCResult": 12,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 12,
+      "Base": 17,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 11,
+      "PublicCResult": 12,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 13,
+      "Base": 8,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 14,
+      "PublicCResult": 13,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 13,
+      "Base": 8,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 14,
+      "PublicCResult": 13,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 13,
+      "Base": 8,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 14,
+      "PublicCResult": 13,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 13,
+      "Base": 18,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 12,
+      "PublicCResult": 13,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 13,
+      "Base": 18,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 12,
+      "PublicCResult": 13,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 14,
+      "Base": 9,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 15,
+      "PublicCResult": 14,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 14,
+      "Base": 9,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 15,
+      "PublicCResult": 14,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 14,
+      "Base": 9,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 15,
+      "PublicCResult": 14,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 14,
+      "Base": 19,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 13,
+      "PublicCResult": 14,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 14,
+      "Base": 19,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 13,
+      "PublicCResult": 14,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 15,
+      "Base": 10,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 16,
+      "PublicCResult": 15,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 15,
+      "Base": 10,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 16,
+      "PublicCResult": 15,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 15,
+      "Base": 10,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 16,
+      "PublicCResult": 15,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 15,
+      "Base": 20,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 14,
+      "PublicCResult": 15,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 15,
+      "Base": 20,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 14,
+      "PublicCResult": 15,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 16,
+      "Base": 11,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 17,
+      "PublicCResult": 16,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 16,
+      "Base": 11,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 17,
+      "PublicCResult": 16,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 16,
+      "Base": 11,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 17,
+      "PublicCResult": 16,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 16,
+      "Base": 21,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 15,
+      "PublicCResult": 16,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 16,
+      "Base": 21,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 15,
+      "PublicCResult": 16,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 17,
+      "Base": 12,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 18,
+      "PublicCResult": 17,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 17,
+      "Base": 12,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 18,
+      "PublicCResult": 17,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 17,
+      "Base": 12,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 18,
+      "PublicCResult": 17,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 17,
+      "Base": 22,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 16,
+      "PublicCResult": 17,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 17,
+      "Base": 22,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 16,
+      "PublicCResult": 17,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 18,
+      "Base": 13,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 19,
+      "PublicCResult": 18,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 18,
+      "Base": 13,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 19,
+      "PublicCResult": 18,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 18,
+      "Base": 13,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 19,
+      "PublicCResult": 18,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 18,
+      "Base": 23,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 17,
+      "PublicCResult": 18,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 18,
+      "Base": 23,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 17,
+      "PublicCResult": 18,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 19,
+      "Base": 14,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 20,
+      "PublicCResult": 19,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 19,
+      "Base": 14,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 20,
+      "PublicCResult": 19,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 19,
+      "Base": 14,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 20,
+      "PublicCResult": 19,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 19,
+      "Base": 24,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 18,
+      "PublicCResult": 19,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 19,
+      "Base": 24,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 18,
+      "PublicCResult": 19,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 20,
+      "Base": 15,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 21,
+      "PublicCResult": 20,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 20,
+      "Base": 15,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 21,
+      "PublicCResult": 20,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 20,
+      "Base": 15,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 21,
+      "PublicCResult": 20,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 20,
+      "Base": 25,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 19,
+      "PublicCResult": 20,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 20,
+      "Base": 25,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 19,
+      "PublicCResult": 20,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 21,
+      "Base": 16,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 22,
+      "PublicCResult": 21,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 21,
+      "Base": 16,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 22,
+      "PublicCResult": 21,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 21,
+      "Base": 16,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 22,
+      "PublicCResult": 21,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 21,
+      "Base": 26,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 20,
+      "PublicCResult": 21,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 21,
+      "Base": 26,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 20,
+      "PublicCResult": 21,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 22,
+      "Base": 17,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 23,
+      "PublicCResult": 22,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 22,
+      "Base": 17,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 23,
+      "PublicCResult": 22,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 22,
+      "Base": 17,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 23,
+      "PublicCResult": 22,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 22,
+      "Base": 27,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 21,
+      "PublicCResult": 22,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 22,
+      "Base": 27,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 21,
+      "PublicCResult": 22,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 23,
+      "Base": 18,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 24,
+      "PublicCResult": 23,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 23,
+      "Base": 18,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 24,
+      "PublicCResult": 23,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 23,
+      "Base": 18,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 24,
+      "PublicCResult": 23,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 23,
+      "Base": 28,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 22,
+      "PublicCResult": 23,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 23,
+      "Base": 28,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 22,
+      "PublicCResult": 23,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 24,
+      "Base": 19,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 25,
+      "PublicCResult": 24,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 24,
+      "Base": 19,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 25,
+      "PublicCResult": 24,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 24,
+      "Base": 19,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 25,
+      "PublicCResult": 24,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 24,
+      "Base": 29,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 23,
+      "PublicCResult": 24,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 24,
+      "Base": 29,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 23,
+      "PublicCResult": 24,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 25,
+      "Base": 20,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 26,
+      "PublicCResult": 25,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 25,
+      "Base": 20,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 26,
+      "PublicCResult": 25,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 25,
+      "Base": 20,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 26,
+      "PublicCResult": 25,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 25,
+      "Base": 30,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 24,
+      "PublicCResult": 25,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 25,
+      "Base": 30,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 24,
+      "PublicCResult": 25,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 26,
+      "Base": 21,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 27,
+      "PublicCResult": 26,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 26,
+      "Base": 21,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 27,
+      "PublicCResult": 26,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 26,
+      "Base": 21,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 27,
+      "PublicCResult": 26,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 26,
+      "Base": 31,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 25,
+      "PublicCResult": 26,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 26,
+      "Base": 31,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 25,
+      "PublicCResult": 26,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 27,
+      "Base": 22,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 28,
+      "PublicCResult": 27,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 27,
+      "Base": 22,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 28,
+      "PublicCResult": 27,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 27,
+      "Base": 22,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 28,
+      "PublicCResult": 27,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 27,
+      "Base": 32,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 26,
+      "PublicCResult": 27,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 27,
+      "Base": 32,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 26,
+      "PublicCResult": 27,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 28,
+      "Base": 23,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 29,
+      "PublicCResult": 28,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 28,
+      "Base": 23,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 29,
+      "PublicCResult": 28,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 28,
+      "Base": 23,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 29,
+      "PublicCResult": 28,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 28,
+      "Base": 33,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 27,
+      "PublicCResult": 28,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 28,
+      "Base": 33,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 27,
+      "PublicCResult": 28,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 29,
+      "Base": 24,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 30,
+      "PublicCResult": 29,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 29,
+      "Base": 24,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 30,
+      "PublicCResult": 29,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 29,
+      "Base": 24,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 30,
+      "PublicCResult": 29,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 29,
+      "Base": 34,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 28,
+      "PublicCResult": 29,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 29,
+      "Base": 34,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 28,
+      "PublicCResult": 29,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 30,
+      "Base": 25,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 31,
+      "PublicCResult": 30,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 30,
+      "Base": 25,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 31,
+      "PublicCResult": 30,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 30,
+      "Base": 25,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 31,
+      "PublicCResult": 30,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 30,
+      "Base": 35,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 29,
+      "PublicCResult": 30,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 30,
+      "Base": 35,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 29,
+      "PublicCResult": 30,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 31,
+      "Base": 26,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 32,
+      "PublicCResult": 31,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 31,
+      "Base": 26,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 32,
+      "PublicCResult": 31,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 31,
+      "Base": 26,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 32,
+      "PublicCResult": 31,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 31,
+      "Base": 36,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 30,
+      "PublicCResult": 31,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 31,
+      "Base": 36,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 30,
+      "PublicCResult": 31,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 32,
+      "Base": 27,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 33,
+      "PublicCResult": 32,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 32,
+      "Base": 27,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 33,
+      "PublicCResult": 32,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 32,
+      "Base": 27,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 33,
+      "PublicCResult": 32,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 32,
+      "Base": 37,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 31,
+      "PublicCResult": 32,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 32,
+      "Base": 37,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 31,
+      "PublicCResult": 32,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 33,
+      "Base": 28,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 34,
+      "PublicCResult": 33,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 33,
+      "Base": 28,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 34,
+      "PublicCResult": 33,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 33,
+      "Base": 28,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 34,
+      "PublicCResult": 33,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 33,
+      "Base": 38,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 32,
+      "PublicCResult": 33,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 33,
+      "Base": 38,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 32,
+      "PublicCResult": 33,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 34,
+      "Base": 29,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 35,
+      "PublicCResult": 34,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 34,
+      "Base": 29,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 35,
+      "PublicCResult": 34,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 34,
+      "Base": 29,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 35,
+      "PublicCResult": 34,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 34,
+      "Base": 39,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 33,
+      "PublicCResult": 34,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 34,
+      "Base": 39,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 33,
+      "PublicCResult": 34,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 35,
+      "Base": 30,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 36,
+      "PublicCResult": 35,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 35,
+      "Base": 30,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 36,
+      "PublicCResult": 35,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 35,
+      "Base": 30,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 36,
+      "PublicCResult": 35,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 35,
+      "Base": 40,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 34,
+      "PublicCResult": 35,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 35,
+      "Base": 40,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 34,
+      "PublicCResult": 35,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 36,
+      "Base": 31,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 37,
+      "PublicCResult": 36,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 36,
+      "Base": 31,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 37,
+      "PublicCResult": 36,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 36,
+      "Base": 31,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 37,
+      "PublicCResult": 36,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 36,
+      "Base": 41,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 35,
+      "PublicCResult": 36,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 36,
+      "Base": 41,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 35,
+      "PublicCResult": 36,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 37,
+      "Base": 32,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 38,
+      "PublicCResult": 37,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 37,
+      "Base": 32,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 38,
+      "PublicCResult": 37,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 37,
+      "Base": 32,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 38,
+      "PublicCResult": 37,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 37,
+      "Base": 42,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 36,
+      "PublicCResult": 37,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 37,
+      "Base": 42,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 36,
+      "PublicCResult": 37,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 38,
+      "Base": 33,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 39,
+      "PublicCResult": 38,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 38,
+      "Base": 33,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 39,
+      "PublicCResult": 38,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 38,
+      "Base": 33,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 39,
+      "PublicCResult": 38,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 38,
+      "Base": 43,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 37,
+      "PublicCResult": 38,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 38,
+      "Base": 43,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 37,
+      "PublicCResult": 38,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 39,
+      "Base": 34,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 40,
+      "PublicCResult": 39,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 39,
+      "Base": 34,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 40,
+      "PublicCResult": 39,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 39,
+      "Base": 34,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 40,
+      "PublicCResult": 39,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 39,
+      "Base": 44,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 38,
+      "PublicCResult": 39,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 39,
+      "Base": 44,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 38,
+      "PublicCResult": 39,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 40,
+      "Base": 35,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 41,
+      "PublicCResult": 40,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 40,
+      "Base": 35,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 41,
+      "PublicCResult": 40,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 40,
+      "Base": 35,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 41,
+      "PublicCResult": 40,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 40,
+      "Base": 45,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 39,
+      "PublicCResult": 40,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 40,
+      "Base": 45,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 39,
+      "PublicCResult": 40,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 41,
+      "Base": 36,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 42,
+      "PublicCResult": 41,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 41,
+      "Base": 36,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 42,
+      "PublicCResult": 41,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 41,
+      "Base": 36,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 42,
+      "PublicCResult": 41,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 41,
+      "Base": 46,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 40,
+      "PublicCResult": 41,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 41,
+      "Base": 46,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 40,
+      "PublicCResult": 41,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 42,
+      "Base": 37,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 43,
+      "PublicCResult": 42,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 42,
+      "Base": 37,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 43,
+      "PublicCResult": 42,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 42,
+      "Base": 37,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 43,
+      "PublicCResult": 42,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 42,
+      "Base": 47,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 41,
+      "PublicCResult": 42,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 42,
+      "Base": 47,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 41,
+      "PublicCResult": 42,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 43,
+      "Base": 38,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 44,
+      "PublicCResult": 43,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 43,
+      "Base": 38,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 44,
+      "PublicCResult": 43,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 43,
+      "Base": 38,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 44,
+      "PublicCResult": 43,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 43,
+      "Base": 48,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 42,
+      "PublicCResult": 43,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 43,
+      "Base": 48,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 42,
+      "PublicCResult": 43,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 44,
+      "Base": 39,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 45,
+      "PublicCResult": 44,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 44,
+      "Base": 39,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 45,
+      "PublicCResult": 44,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 44,
+      "Base": 39,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 45,
+      "PublicCResult": 44,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 44,
+      "Base": 49,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 43,
+      "PublicCResult": 44,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 44,
+      "Base": 49,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 43,
+      "PublicCResult": 44,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 45,
+      "Base": 40,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 46,
+      "PublicCResult": 45,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 45,
+      "Base": 40,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 46,
+      "PublicCResult": 45,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 45,
+      "Base": 40,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 46,
+      "PublicCResult": 45,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 45,
+      "Base": 50,
+      "Assessment": -1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 44,
+      "PublicCResult": 45,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 45,
+      "Base": 50,
+      "Assessment": -1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 44,
+      "PublicCResult": 45,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 46,
+      "Base": 41,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 47,
+      "PublicCResult": 46,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 46,
+      "Base": 41,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 47,
+      "PublicCResult": 46,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 46,
+      "Base": 41,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 47,
+      "PublicCResult": 46,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 47,
+      "Base": 42,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 48,
+      "PublicCResult": 47,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 47,
+      "Base": 42,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 48,
+      "PublicCResult": 47,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 47,
+      "Base": 42,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 48,
+      "PublicCResult": 47,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 48,
+      "Base": 43,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 49,
+      "PublicCResult": 48,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 48,
+      "Base": 43,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 49,
+      "PublicCResult": 48,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 48,
+      "Base": 43,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 49,
+      "PublicCResult": 48,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 49,
+      "Base": 44,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": false,
+      "ReadmeResult": 50,
+      "PublicCResult": 49,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 49,
+      "Base": 44,
+      "Assessment": 1,
+      "Goalkeeper": false,
+      "GatePassed": true,
+      "ReadmeResult": 50,
+      "PublicCResult": 49,
+      "OriginalResult": null
+    },
+    {
+      "Strength": 49,
+      "Base": 44,
+      "Assessment": 1,
+      "Goalkeeper": true,
+      "GatePassed": true,
+      "ReadmeResult": 50,
+      "PublicCResult": 49,
+      "OriginalResult": null
+    }
+  ],
+  "Scope": "PUBLIC_DESCRIPTION_COMPARISON",
+  "OriginalExecuted": false
+}

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
 import 'api_client.dart';
+import 'auction_config.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'appearance_settings.dart';
@@ -1561,6 +1562,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       style: TextStyle(fontSize: 10, color: Colors.amberAccent),
                     ),
                   ),
+                  TextButton(key:ValueKey('create-auction-$pid'),onPressed:_commandBusy||(_snapshot?['roundState']!='RESULTS'&&_tacticsLocked)?null:() async {
+                    final worldId=_worldId,coachId=_coachId,clubId=_myClubId;
+                    final config=await showDialog<VoluntaryAuctionConfig>(context:context,builder:(_)=>AuctionConfigDialog(
+                      playerName:displayName,roundNumber:(_snapshot?['roundNumber'] as num?)?.toInt()??1,
+                      seasonNumber:(_snapshot?['seasonNumber'] as num?)?.toInt()??1,
+                      totalRoundsInSeason:(_snapshot?['totalRoundsInSeason'] as num?)?.toInt()??22,
+                      roundAlreadyCompleted:_snapshot?['roundState']=='RESULTS'));
+                    if(!mounted||config==null||worldId!=_worldId||coachId!=_coachId||clubId!=_myClubId)return;
+                    await _runUiCommand(() async {
+                      await widget.apiClient.createVoluntaryAuction(worldId!,coachId!,pid,
+                        minimumBid:config.minimumBid,durationRounds:config.durationRounds);
+                      await _refreshClubAndSecondaryData();
+                      if(mounted)setState(()=>_statusBanner='Leilão voluntário de $displayName criado.');
+                    });
+                  },child:const Text('LEILOAR',style:TextStyle(fontSize:10))),
                 ],
               ),
             ),
@@ -3324,7 +3340,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ? 'INSOLVÊNCIA'
                         : a['reason'] == 'SalaryRenewalRefused'
                         ? 'RECUSA SALARIAL'
-                        : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} • Lance Mín: ${formatClassicMoney(minBid)} • Atual: ${formatClassicMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
+                        : a['reason'] == 'Voluntary' ? 'VOLUNTÁRIO' : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} ${a['durationRounds'] != null ? ' • ${a['durationRounds']} rodada(s); encerra após R${a['expiresAtRound']} / T${a['expiresAtSeason']}' : ''} • Lance Mín: ${formatAuctionMoney(minBid)} • Atual: ${formatAuctionMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
                     style: const TextStyle(fontSize: 12),
                   ),
                   Wrap(
@@ -3368,7 +3384,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                   );
                                 }),
                           child: Text(
-                            'DAR LANCE ${formatClassicMoney(nextBid)}',
+                            'DAR LANCE ${formatAuctionMoney(nextBid)}',
                           ),
                         )
                       else

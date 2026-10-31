@@ -419,6 +419,9 @@ public class AuctionItem
     public int CreatedAtSeason { get; set; }
     public int CreatedAtRound { get; set; }
     public int ExpiresAtRound { get; set; }
+    // Optional: old automatic auctions retain their original deadline semantics.
+    public int? DurationRounds { get; set; }
+    public int? ExpiresAtSeason { get; set; }
     public bool IsClosed { get; set; }
     public Dictionary<Guid, decimal> PrivateAiMaxBids { get; set; } = new();
 }

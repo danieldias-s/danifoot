@@ -369,10 +369,17 @@ class ElifootApiClient {
     _decodeResponse(res);
   }
 
+  Future<Map<String,dynamic>> createVoluntaryAuction(String worldId,String coachId,String playerId,
+      {double minimumBid=500000,int durationRounds=2}) async {
+    final uri=Uri.parse('$baseUrl/api/worlds/$worldId/market/auction');
+    return _decodeResponse(await _postFinance(uri,body:{'coachId':coachId,'playerId':playerId,
+      'minimumBid':minimumBid,'durationRounds':durationRounds}));
+  }
+
   Future<void> placeAuctionBid(String worldId, String auctionId, String coachId, double bidAmount) async {
     final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/auction/$auctionId/bid').replace(queryParameters: {
       'coachId': coachId,
-      'bidAmount': bidAmount.round().toString(),
+      'bidAmount': bidAmount.toStringAsFixed(2),
     });
     final res = await _postFinance(uri);
     _decodeResponse(res);

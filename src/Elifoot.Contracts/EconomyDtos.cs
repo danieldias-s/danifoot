@@ -6,9 +6,18 @@ public enum BankLoanMode { LegacyInstallment = 0, ClassicFixed = 1 }
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum SalaryRequestStatus { PENDING = 0, ACCEPTED = 1, REFUSED = 2 }
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum AuctionReason { ContractExpiration = 0, SalaryRenewalRefused = 1, FinancialInsolvency = 2 }
+public enum AuctionReason { ContractExpiration = 0, SalaryRenewalRefused = 1, FinancialInsolvency = 2, Voluntary = 3 }
 
 public record FinancialCommandDto(Guid CoachId,string IdempotencyKey,long? ExpectedRoundVersion=null);
 public record SalaryDecisionCommandDto(Guid CoachId,bool Accept,string IdempotencyKey,long? ExpectedRoundVersion=null);
 public record CreditAssessmentDto(Guid ClubId,DivisionTier Division,decimal AssetIndicator,int LoanLimit,
     int ActiveLoans,int AvailableLoans,decimal OutstandingDebt,decimal InterestPerMatch,string Rule);
+
+public static class VoluntaryAuctionDefaults
+{
+    public const decimal MinimumBid = 500_000m;
+    public const int DurationRounds = 2;
+}
+public record CreateVoluntaryAuctionCommandDto(Guid CoachId,Guid PlayerId,
+    decimal MinimumBid=VoluntaryAuctionDefaults.MinimumBid,int DurationRounds=VoluntaryAuctionDefaults.DurationRounds,
+    string? IdempotencyKey=null,long? ExpectedRoundVersion=null);

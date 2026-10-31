@@ -20,6 +20,22 @@ public class FinancialCommandDurability012DTests
         Assert.False((await service.TakeBankLoanAsync(w.Id,coach.Id,100000,0,idempotencyKey:"retry-after-save-error")).Success);
         Assert.Equal(before+500000,c.CashBalance);
     }
+    [Fact]
+    public async Task VoluntaryAuctionRetryAfterFailedSavePersistsOneAuctionAndItsOriginalDeadline()
+    {
+        var w=WorldSeedFactory.CreateSeededWorld();w.Auctions.Clear();w.RoundNumber=7;
+        var c=w.Clubs[0];var coach=new HumanCoach{CurrentClubId=c.Id};c.HumanCoachId=coach.Id;w.HumanCoaches.Add(coach);
+        var p=w.Players.Last(p=>p.ClubId==c.Id);var repo=new FailsOneSave(w);var service=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
+        await Assert.ThrowsAsync<IOException>(()=>service.CreateVoluntaryAuctionAsync(w.Id,coach.Id,p.Id,idempotencyKey:"retry-auction"));
+        var first=Assert.Single(w.Auctions);Assert.Equal(8,first.ExpiresAtRound);Assert.Null(repo.DurableSnapshot);
+        // Reconnection with an old room version replays the accepted command, even after a state transition.
+        w.RoundState=RoundState.RUNNING_FIRST_HALF;
+        var result=await service.CreateVoluntaryAuctionAsync(w.Id,coach.Id,p.Id,idempotencyKey:"retry-auction",expectedRoundVersion:-1);
+        Assert.True(result.Success,result.Error);Assert.Equal(first.Id,result.AuctionId);Assert.Single(w.Auctions);Assert.Equal(2,repo.SaveCalls);
+        var durable=JsonSerializer.Deserialize<GameWorld>(repo.DurableSnapshot!)!;Assert.Equal(8,durable.Auctions.Single().ExpiresAtRound);
+        Assert.False((await service.CreateVoluntaryAuctionAsync(w.Id,coach.Id,p.Id,0,3,idempotencyKey:"retry-auction")).Success);
+        Assert.Equal(c.Id,p.ClubId);
+    }
     private sealed class FailsOneSave(GameWorld world):IWorldRepository
     {
         public int SaveCalls {get;private set;}

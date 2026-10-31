@@ -1341,6 +1341,7 @@ public sealed class MultiplayerRoundOrchestrator
             ActivePauseWindow: pauseDto,
             Matches: matchDtos)
         {
+            TotalRoundsInSeason = world.TotalRoundsInSeason,
             ForceEvolutionMode = world.ForceEvolutionMode,
             DisciplineRulesVersion = world.DisciplineRulesVersion,
             ForceRulesVersion = ClassicForceEvolutionEngine.IsActive(world) ? world.ClassicForce.Version : 0,

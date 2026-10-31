@@ -1,0 +1,14 @@
+{
+  "Status": "PASS",
+  "ActualApiProcessRestart": true,
+  "OriginalDeadlinePreserved": true,
+  "AfterSecondGlobalRound": {
+    "DefaultClosed": true,
+    "ThreeClosed": false
+  },
+  "SaleAmount": 540000,
+  "SellerCredit": 540000,
+  "BuyerDebit": -540000,
+  "PlayerClubMatchesWinningBidder": true,
+  "CreationReplayAfterSaleSameAuction": true
+}
