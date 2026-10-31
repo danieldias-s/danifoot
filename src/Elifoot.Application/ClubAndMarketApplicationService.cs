@@ -88,6 +88,7 @@ public sealed partial class ClubAndMarketApplicationService
             Squad: squad.Select(p => MapPlayerDto(p, club.Name)).ToList(),
             AiSquadPlan: planDto)
         {
+            ColorPalette = club.ColorPalette,
             GrowthCeiling = ClassicForceEvolutionEngine.IsActive(world) ? ClassicForceEvolutionEngine.ClubContext(world,club).Ceiling : null,
             GrowthLeaguePosition = ClassicForceEvolutionEngine.IsActive(world) ? ClassicForceEvolutionEngine.ClubContext(world,club).Position : null,
             GrowthPositionIsProvisional = ClassicForceEvolutionEngine.IsActive(world) && !world.ClassicForce.CompletedLeaguePositions.ContainsKey(club.Id),

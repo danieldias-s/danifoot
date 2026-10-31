@@ -1,0 +1,6 @@
+{
+  "Status": "PASS",
+  "RowsRoundTripped": 17,
+  "DuplicateIdentityRejected": true,
+  "OriginalPalettePreserved": true
+}

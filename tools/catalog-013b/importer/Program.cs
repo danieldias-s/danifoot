@@ -5,6 +5,8 @@ using Elifoot.Infrastructure.Catalog.Providers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+if(args.Length==3 && args[0]=="014c-colors"){await Elifoot.RealDataImporter.ClubColors014CImport.Run(args[1],args[2]);return;}
+
 if (args.Length >= 2 && args[0] is "014b-old-worlds" or "014b-verify-old-worlds") { await Elifoot.RealDataImporter.Integration014APreservation.Run(args[1], args[0] == "014b-verify-old-worlds", args.Skip(2).ToArray(), true); return; }
 
 if (args.Length >= 2 && args[0] == "014b-inputs") { await Elifoot.RealDataImporter.Final014BInputs.Run(args[1]); return; }

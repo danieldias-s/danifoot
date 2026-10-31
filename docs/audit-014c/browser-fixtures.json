@@ -1,0 +1,24 @@
+{
+  "Api": "http://127.0.0.1:5155",
+  "Web": "http://127.0.0.1:5156",
+  "Worlds": [
+    {
+      "Name": "014C Visual Flamengo",
+      "World": "87b431a2-fcf7-4b43-9078-2ae60be01d8d",
+      "UnclaimedClubs": true,
+      "AvailableClubNames": [
+        "Flamengo RJ",
+        "Manchester City FC"
+      ]
+    },
+    {
+      "Name": "014C Visual Azul",
+      "World": "62ec1c39-f4c2-4f69-9bf1-996d817496a0",
+      "UnclaimedClubs": true,
+      "AvailableClubNames": [
+        "Flamengo RJ",
+        "Manchester City FC"
+      ]
+    }
+  ]
+}

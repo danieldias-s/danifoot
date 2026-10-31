@@ -67,6 +67,7 @@ public partial class GameWorld
 
 public class Club
 {
+    public ClubColorPalette? ColorPalette { get; set; }
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }
     public int DeterministicIndex { get; set; }

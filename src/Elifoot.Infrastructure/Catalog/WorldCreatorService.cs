@@ -117,6 +117,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         if (refs.Any(r => r.IsFixture)) warnings.Add(refs.All(r => r.IsFixture)
             ? "FIXTURES DE TESTE — clubes, atletas e rankings fictícios; nenhuma carga real."
             : "CATÁLOGO MISTO — existem fixtures junto dos dados reais; consulte a origem de cada snapshot.");
+        var colors=scope.ServiceProvider.GetService<ClubColorService>();
+        if(colors!=null)unique=await colors.Enrich(unique,ct);
         return new(gender, season, countries, unique, refs, warnings);
     }
     public async Task<CatalogSelection> SelectForWorld(WorldCreatorRequest request, CancellationToken ct = default)

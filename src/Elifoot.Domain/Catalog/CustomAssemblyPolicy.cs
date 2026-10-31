@@ -39,7 +39,7 @@ public static class CustomAssemblyPolicy
         }).ToList();
         var ordered = edited.Clubs.OrderBy(c => (int)c.DivisionTier).ToList();
         var foundation = WorldSeedFactory.CreateSeededWorld(seed: edited.Seed, forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);
-        var clubs = ordered.Select((c, i) => c with { CashBalance = i < foundation.Clubs.Count ? foundation.Clubs[i].CashBalance : c.CashBalance }).ToList();
+        var clubs = ordered.Select((c, i) => c with { ColorPalette=ClubColorPolicy.ForAssembly(c,originalClubs.GetValueOrDefault(c.Id),trustedCatalog,edited.Gender,countries.FirstOrDefault(x=>x.Code.Equals(c.Country,StringComparison.OrdinalIgnoreCase)||x.Name.Equals(c.Country,StringComparison.OrdinalIgnoreCase))?.Code), CashBalance = i < foundation.Clubs.Count ? foundation.Clubs[i].CashBalance : c.CashBalance }).ToList();
         var rows = clubs.Select((c, i) =>
         {
             var country = countries.FirstOrDefault(x => string.Equals(x.Name, c.Country, StringComparison.OrdinalIgnoreCase) || string.Equals(x.Code, c.Country, StringComparison.OrdinalIgnoreCase));
@@ -57,10 +57,10 @@ public static class CustomAssemblyPolicy
                         identity.CanonicalIdentity, identity.Origin == WorldPlayerOrigin.FICTIONAL_GENERATED ? CatalogDataOrigin.Generated : CatalogDataOrigin.Real,
                         PlayerOrigin: identity.Origin);
             }).ToList();
-            var record = unchanged ? previous! with { Name = c.Name, ShortName = c.ShortName, Players = athletes } :
+            var record = unchanged ? previous! with { Name = c.Name, ShortName = c.ShortName, Players = athletes,PrimaryColor=c.PrimaryColorHex,SecondaryColor=c.SecondaryColorHex,ColorPalette=c.ColorPalette } :
                 new EligibleCatalogClub(key, c.Id.ToString("N"), "custom014b", c.Name, c.ShortName, country?.Code ?? "INVALID", country?.Name ?? c.Country,
                     edited.Gender, "Montagem personalizada", baseline.CatalogOrigin?.Season ?? "PERSONALIZADO", c.PrimaryColorHex, c.SecondaryColorHex, i + 1, athletes, [], true,
-                    Verification: new(CatalogClubVerificationStatus.FICTIONAL_CLUB, "Clube personalizado pelo proprietário", DateTime.UtcNow));
+                    Verification: new(CatalogClubVerificationStatus.FICTIONAL_CLUB, "Clube personalizado pelo proprietário", DateTime.UtcNow),ColorPalette:c.ColorPalette);
             return new WorldPreviewClub((int)c.DivisionTier, record);
         }).ToList();
         string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { edited.Seed, edited.Gender, clubs, players })));
@@ -78,6 +78,7 @@ public static class CustomAssemblyPolicy
         if (countries.Count == 0 || countries.Select(c => c.Code).Distinct().Count() != countries.Count) errors.Add("Selecione países válidos sem repetição.");
         foreach (var c in package.Clubs)
         {
+            if(!ClubColorPolicy.Hex(c.PrimaryColorHex)||!ClubColorPolicy.Hex(c.SecondaryColorHex))errors.Add($"{c.Name}: cores devem ser #RRGGBB.");
             if (!countries.Any(x => string.Equals(x.Name, c.Country, StringComparison.OrdinalIgnoreCase) || string.Equals(x.Code, c.Country, StringComparison.OrdinalIgnoreCase))) errors.Add($"{c.Name}: país fora da seleção.");
             if (!Enum.IsDefined(c.DivisionTier) || string.IsNullOrWhiteSpace(c.Name) || string.IsNullOrWhiteSpace(c.ShortName)) errors.Add($"{c.Name}: divisão ou sigla inválida.");
         }

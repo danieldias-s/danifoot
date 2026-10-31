@@ -392,6 +392,7 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs", async (
             c.ShortName,
             c.DivisionTier,
             DivisionDisplay = c.DivisionTier.ToDisplayPt(),
+            c.ColorPalette,
             c.PrimaryColorHex,
             c.SecondaryColorHex,
             c.CashBalance,

@@ -164,6 +164,8 @@ public record LiveMatchSummaryDto(
     List<MatchLineupPlayerDto> AwayStarters,
     List<MatchLineupPlayerDto> AwayBench)
 {
+    public ClubColorPalette? HomeColorPalette { get; init; }
+    public ClubColorPalette? AwayColorPalette { get; init; }
     public int HomePlayersOnPitch { get; init; }
     public int AwayPlayersOnPitch { get; init; }
 }
@@ -259,6 +261,7 @@ public record ClubDetailDto(
     List<PlayerDto> Squad,
     AiSquadPlanDto? AiSquadPlan)
 {
+    public ClubColorPalette? ColorPalette { get; init; }
     public int? GrowthCeiling { get; init; }
     public int? GrowthLeaguePosition { get; init; }
     public bool GrowthPositionIsProvisional { get; init; }
@@ -444,7 +447,8 @@ public record ClubExportDto(
     int BuiltCapacity,
     int UsableCapacity,
     double ConditionPercent,
-    decimal MaintenanceReserve);
+    decimal MaintenanceReserve,
+    ClubColorPalette? ColorPalette = null);
 
 public record PlayerExportDto(
     Guid Id,

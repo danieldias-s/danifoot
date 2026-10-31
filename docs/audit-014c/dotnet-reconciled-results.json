@@ -1,0 +1,2853 @@
+{
+  "DistinctCases": 569,
+  "Passed": 569,
+  "Unresolved": [],
+  "LongSimulationTests": "26 inherited from 014B; intentionally not rerun",
+  "Cases": {
+    "2c449186-a603-2943-1f6e-347a6524d920": {
+      "Name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.CupExtraTime_Grants6SubstitutionsAnd4PauseWindows_WithFreeIntervalsAt90And105",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "2290053f-45cf-4c92-794c-a0fb93aed147": {
+      "Name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.Multiplayer_100ConsecutiveRounds_8Coaches_SyncCounter_Pauses_Substitutions_Reconnection_AndRoomIsolation",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "4389d1e0-b8e6-d7b5-49c0-9b75ea47788a": {
+      "Name": "Elifoot.Application.Tests.CoachCareer008ReadinessTests.ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "836dd090-37d5-e0ac-ff2e-5abd86d829e0": {
+      "Name": "Elifoot.Application.Tests.FinancialCommandDurability012DTests.RetryAfterFailedSavePersistsTheOriginalLoanWithoutCreditingItAgain",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "9535c5a3-095e-9116-c7d5-94560327fe5b": {
+      "Name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.GlobalPause_8Humans_Minute37Freeze_Quotas5And3_ExtraTime6And4_AndRoomIsolation",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "1a494b26-d105-7c85-7ee9-8c5c0942903e": {
+      "Name": "Elifoot.Application.Tests.MultiplayerSynchronizationAndPauseTests.HumanSynchronization_0To6Counter_Idempotency_UnemployedIncluded_AndNoRaceConditions",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111545.trx"
+    },
+    "fe3b025e-9b01-e676-8c20-f24a24aa3a18": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.DifferentClubsMayReuseACommandKeyWithoutLosingEitherContractHistory",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a099de8c-45bb-52a4-3192-c896ff082181": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.DivisionTargetsAreNotHardGrowthCaps(division: TerceiraDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "80203410-5cc7-48c8-8431-671b54485f16": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.DerivedRankingIsExplicitReproducibleAndGenderSpecific",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6cfb69f6-1873-8e13-0498-0e9077652ef1": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.TwoYellowsRestorePriorCycleAndAwardExactlyOneMatch(prior: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0d4d4a28-e299-89e9-31c8-eb4ced7caa6b": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SeasonWithoutGamesPaysOneAnnualCommercialBudgetAndNoUncontractedMatchWages(division: QuartaDivisao, annual: 72000)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6e7986f5-1916-5891-7bf6-d5c4160bd82b": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RepeatedSeasonClose_IsIdempotentAcrossJsonRestart(reload: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7fe50cd7-671c-dcef-e65f-62e4454617d1": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupSemiFinal, points: 7)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d6768fa5-8f03-3207-5c7e-f435859d69b2": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonFilters_PreserveCareerAndSelectOnlyRequestedSeason(period: \"career\", season: null, goals: 6, matches: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "152064f9-76fa-ef89-2b4d-1a3a868e57cb": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 99, matches: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "66432a03-2dc9-2302-c825-05acd145b60f": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.OnlyGreenHumanReceivesOpportunity(morale: 20, invited: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5f877aa8-b197-1fa4-68a6-d90368b76e96": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnattributableOfficialGoal_PreservesScoreAndKnownKeeperWithoutInventingScorer(association: \"opponent-id\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0f88860d-3e17-821e-a63d-5a7763d47303": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnattributableOfficialGoal_PreservesScoreAndKnownKeeperWithoutInventingScorer(association: \"benched-player\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "83cea070-7148-4df2-201d-9cbc03d49c80": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.ExactDecimalDivisionPoints(tier: SegundaDivisao, win: 3, draw: 1,5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7579bce9-e83d-ebfb-9f3e-d585cba6237b": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.InsolvencyProtectsTheOnlyGoalkeeperAndResolvesPriorityTies(squadSize: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c2a48cc1-454d-92b5-6c27-45bd2339a3b5": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 90)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c6ed490e-7b5f-28f2-c8dd-36a6cc3c35d8": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.LoanAfterGameHasNoRetroactiveInterestAndSurvivesSerialization",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c4aa96d6-5a2c-685d-aaa3-177361464304": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupRoundOf16)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "67f60356-a2ed-94a1-aefc-9185bf1ce142": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupPreliminary2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e4fc19a5-ddf1-787d-0801-a5a2515defd2": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"division2\", matches: 1, goals: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "891760b8-b610-0552-e629-76eb1549dc44": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ByesPostponementCancellationAndRepeatedSettlementDoNotServe(district: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ad658edf-a83c-2998-03f6-1e5c4958c9ff": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.OnlyGreenHumanReceivesOpportunity(morale: 70, invited: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "547ace4e-c7ec-9c0c-2fc9-94a3c6280063": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.AiAcceptsAffordableRaisesAndRefusesUnaffordableOnesWithoutUnlimitedCredit(affordable: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2124cec9-a483-880d-e2ef-82c749210797": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StrengthFiftyDoesNotOverflowOrEmitAnUnchangedEvent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7cd20e7b-9cef-1882-90c7-cac8a98816df": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ReloadedRoundSettlement_DoesNotAgePlayersLoansOrWorksAgain",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "34d16a7d-fa9c-1214-30a9-db139134df44": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupSemiFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aa6a0916-eec7-d7fc-3b75-03382b5cc10b": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"open\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "90bc4ac8-c391-a80d-7ac2-6ffae84c39c3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.ZeroGoalSeason_NeverAwardsTitlesOrMoney(withStatistics: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e55125d6-eaf1-2622-f0ee-bc5b419b4c11": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StartingBenchAndSubstitutionsDoNotChangeNominalStrength(entryMinute: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8bc28c1e-755a-9751-47df-037c0c5b2e17": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ApprovedCeilingsForAllEightPlaces(tier: TerceiraDivisao, expected: [28, 26, 26, 23, 21, ···])",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "557c1d1a-28ed-48de-3ac0-a1112e28391e": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.DistrictRelegationDismissesRegardlessOfMorale_AndPromotedClubIsEligible",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e8103b0e-0835-8a2f-66c3-7579c1c539f6": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Characterization_All10Formations_DefensiveFormula_DeterministicReplay_AndBugRegressions",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "265e4d91-8abd-8172-f82f-7ff79d43d37f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scorers_TotalGoalsPrecedeAverage_ThenAveragePrecedesStableId",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "07666f50-34cf-e892-61a3-5f1859bc2764": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.SuspendedPlayersNeverStartEvenWhenSquadMustPlayShortHanded",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "26d79f49-3303-e3e1-19d6-0504df86529f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"defenders\", position: D, matches: 19, eligible: False, remaining: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "02576fed-1f03-7835-8165-700d563081dc": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "76624e04-b5c8-d306-d585-0c649ad39420": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.ExactDecimalDivisionPoints(tier: TerceiraDivisao, win: 2, draw: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ec4256de-aedb-be2a-a58c-b1c41961d845": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.MissingIndividualDataIsAnExplicitEstimateAndNeverAnOfficialRating",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "de9dbd52-8eed-53c9-8ce6-045600ff3abf": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupPreliminary1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6b8619e4-9a0c-18af-5d35-e74c5678e08c": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.AiManagerBrain_AdaptsTacticsToSquadAndBudget_AndFollowsManagerPhilosophy",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8ed5dfbf-efb6-b4c7-7a45-dbc48d96189d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OfficialGoalWithVerifiedAuthor_IncludingPenaltyAndExtraTime_IsCountedExactly(minute: 20, description: \"Gol de pênalti durante a partida\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "69636008-8090-7dfb-b644-4fe8ec295d24": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.MatchAndPlayerGuards_PreventDuplicateStatisticsAcrossRetries(retry: \"reconnect-json\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "37db136e-82ef-677a-df0f-f52c226ec513": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.DailyLossIsGradualExactAndRecoversOnVirtualDate(duration: 15)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f5a2cd17-69f7-bcea-e066-738df2790817": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.FiveDistinctSeasonTitles_PersistWithCorrectPerSeasonHistoryAndNoDuplicateTitles",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "bb96a3ae-1433-6617-7ec6-72a146b5afca": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.LargeRostersPreservePositionsAndIncompleteRostersRequireSeparateConsent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "daffb982-34f6-df85-055d-54f346bf9457": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SeasonWithoutGamesPaysOneAnnualCommercialBudgetAndNoUncontractedMatchWages(division: Distrital, annual: 20000)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "811216f3-230b-a677-300c-c9e8fae862f8": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 20, home: 0, away: 1, expected: 11, band: \"VERMELHA\", dismissed: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3f04ac69-88b6-41a0-f31c-aece96b4a244": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.AiRepaidPrincipalReleasesItsBudgetWithoutFutureInterest",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "471c252b-f2cb-e5dc-a042-6fd207644eb9": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupFinal, points: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d743e514-54ed-80ad-bf97-2a0bfc874641": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.EveryActivePrincipalHasItsOwnFixedMatchInterest(count: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3530ca24-6b0a-6f56-fb24-48f63020a013": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MarketAndStadiumEconomy_FairValueConvex_Wear1To6Percent_AndBilateralTransfers",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "419d6ea3-877a-5f07-eea7-f0bb528b427c": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Consolidation_RequiresFinishedMatchAndPositiveMinute(finished: False, minute: 0, applied: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ff4ce585-cdf1-7290-bce8-1f66fc86b301": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RankingScalesToSupportedClubCounts_WithoutLosingRows(clubs: 1024)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aee739c9-b804-81b7-3fd5-b6b1e287d888": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RealMinuteEngine_FullMatchFeedsOfficialEventsAndSeasonAwardWithoutDuplicateTelemetry",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "81e5c385-caa9-1ac5-26ef-a512f587b773": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.VerifiedPlayerIsKeptOnceAndManualPlacementDoesNotChangeStrength",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "36d02a83-95eb-9420-2709-0120b4ab6f53": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 55, home: 1, away: 0, expected: 64, band: \"VERDE\", dismissed: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0adb51b8-4d60-88d8-44bd-c0436c3ca4da": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RepeatedMinuteAndRestoredFixtureDoNotRepeatEventsCardsOrInjuries",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "169fafd9-f6ab-aecd-0c25-fc5f71a139fa": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardingSeason_ChangesOnlyPrizeMoneyAndTitles_PreservingEconomyAndMultiplayerState",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f993c64d-ae66-cf8a-b1ca-d8bc1fae6849": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ApprovedCeilingsForAllEightPlaces(tier: PrimeiraDivisao, expected: [50, 50, 50, 49, 48, ···])",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "673bce83-2765-7aa9-b2d2-265142593b60": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Player_DisplayName_PreservesLiteralAsterisk_AndSquadLimitsAreEnforced",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b3dabd38-8eda-2efa-b64c-2fc171b7505d": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.AiAndNormalLineupValidationExcludeAlreadyInjuredPlayers",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c299d6ca-ff16-a245-18e4-0ef337a551c3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwoDifferentMatches_AccumulateIntoSameBucketAfterJsonReload",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a73c7d72-7887-dc3a-6e8a-600c7115f82b": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.DebtAuctionPrioritizesForceThenSalaryThenStableIdAndReconcilesActualSale",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "46ca47e5-4dbf-ecef-ac0d-22af5673e89e": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StartingBenchAndSubstitutionsDoNotChangeNominalStrength(entryMinute: 45)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "55bdc652-3eae-280e-2ce1-5e29bf189cb8": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.History_ExposesRealIdentityAndSeasonDivisionCupStatistics",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fc748cdb-463c-f11d-1e38-aed9f34f791d": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.InjuredNonparticipantStillReceivesEligibleLeagueGrowth(tier: QuartaDivisao, rank: 1, strength: 50, total: 25, grows: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aa78cdb4-ea00-522d-fe78-d3651921e87e": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.TiedScore_DoesNotCauseRandomFormationChanges_AndExhaustedSubsAllowFreeTacticalChange",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7e232f20-5725-9b91-1f3b-28afda73c68d": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.InjuryAndRedCardReactions_RespectQuotasAndNeverReplaceSentOffPlayer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9f395fe0-b69c-72e1-cc71-c406fb846c98": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ActualPlayerCompositionDeterminesManDownSectorStrength(homeCount: 11, awayCount: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "de953d93-22d6-5741-28bc-36b6a8d0cb03": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EachWinner_CreditsFullPrizeToClosingClub_AndClubTotalsAccumulate(sameClub: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f88969cc-8d64-56f6-f919-d4c89513fa68": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SeasonWithoutGamesPaysOneAnnualCommercialBudgetAndNoUncontractedMatchWages(division: SegundaDivisao, annual: 125000)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0ca50814-fe1e-9a17-f548-9ce59ee1cc0c": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupSemiFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "84d9115d-b982-ba43-f71a-ad4564a41c6a": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ExtremeShortageUsesAllFiveEligibleAthletesWithoutErasingOrServingBansEarly",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5ed88ac2-96f8-cc37-4fdc-c8d9c4685b75": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.StrengthOneNeverFallsBelowOneEvenAcrossAnInterruptedSave",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "912336c3-3fcd-ca48-87ab-2ba58fa60b64": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.MatchAndPlayerGuards_PreventDuplicateStatisticsAcrossRetries(retry: \"reprocess\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2a65849a-52b7-06df-e02e-0d7d3a38f217": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnusedKeeper_NeverReceivesAppearanceOrGoalsConceded",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7ff3af30-62b7-cde1-6564-b1342b8dd4cb": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.DurationHasExactCumulativeBoundariesAndLossMaximum",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "de32f738-fa58-0bed-9900-b22cd9281e2e": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.MissingModeOnOldSaveRemainsLegacyWithoutAutomaticConversion",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0e098e68-5082-7e35-0302-b6fe4fbfec7f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.IncompleteEarlierSeason_DoesNotBlockCompleteCurrentSeasonAwards",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "37b869fd-ee61-ccb1-ca1c-158499d6ff33": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.OffMatchCommercialInstallmentDoesNotGenerateBankInterest",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b48f3fc3-e920-60a4-25ab-d6e77c4f760c": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.SeasonalPolicyDoesNotMistakeInjuryForItsStrengthAdjustment",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fb7eed23-2eeb-1eef-3883-ca9790bdb720": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.CommercialQualityUsesNominalRegisteredPlayersAndCannotOverwriteWages",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6b5802d0-2e8d-23a0-b054-3d07d16dc7fc": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"general\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b8e95c99-e037-d284-f96c-8af047faa534": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealRedRemovesEveryRoleAndPreventsSubstitutionReturnAndFutureParticipation(role: M)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9ad66e7b-e5a9-c696-6a9a-6a4e9a266c01": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.CeilingNeverClampsAStrongNonparticipant(tier: QuartaDivisao, rank: 1, strength: 40)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7c0a55be-14cf-2b59-7f35-cdfaa93c4ff0": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.HistoricalAndUnverifiedTeamsNeedExplicitChoiceAndRosterCompletionNeedsSeparateConsent(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d70f25c9-5d00-e4b2-1265-a4b128bee234": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnattributableOfficialGoal_PreservesScoreAndKnownKeeperWithoutInventingScorer(association: \"missing-id\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e970257d-e4d4-70b8-95cc-80ed499fcb6e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"unfinished\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d1c1a84d-18b5-421e-fc47-e9b41e972f63": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.ReplayWithSameSnapshotAndSeedProducesIdenticalEventsAndPrices",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d2071320-a8ac-4c3d-5f5b-0b40452d0010": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.DivisionTargetsAreNotHardGrowthCaps(division: PrimeiraDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "921afe99-c8d3-b9fc-0532-6123aeb7e38c": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealInjuryLeavesFieldImmediatelyAndOnlyLegalSubstitutionCanRestoreItsSlot(role: M, legalSub: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "443b908e-6086-977e-0b55-2504a462739a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"division3\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "29c0a711-8012-5943-3d4e-a0b6d64fe378": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.EstimatedInitialForcesAreRelativeVariedReproducibleAndWorldSnapshotIsIndependent(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9db15f7e-4c98-d2d2-af66-36f442471046": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RationalAverageComparison_DistinguishesValuesThatRoundToSameDisplay(category: \"goalkeepers\", position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "18ebe019-b9e1-8fee-849d-db452ecbda45": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.SixCupWinsEqual33AndTitleIsSeparate_NoByeTitle",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3d8e9912-f5a3-ed58-c34f-bd323c56f7ef": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.LegacyMigrationPreservesKnownTotalsWithoutInventingMissingEventsOrTypes",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3ab0d401-04da-15ab-9a71-98c222a6ba71": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ApprovedCeilingsForAllEightPlaces(tier: QuartaDivisao, expected: [12, 10, 10, 8, 6, ···])",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e8a5ccca-4e25-9816-7e7a-346b09c113e9": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OwnGoalAndUnknownScorer_ChargeActiveGoalkeeperWithoutInventingIndividualGoal(ownGoal: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "92f76897-f37e-06be-51d8-02aab85c5e12": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AuctionBids_AreNotPurchases_AndExpiredContractHasNoSellerCredit",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "39037053-a622-bdc0-c1cb-ab4890cc7782": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OfficialGoalWithVerifiedAuthor_IncludingPenaltyAndExtraTime_IsCountedExactly(minute: 117, description: \"Gol na prorrogação\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9ede4568-94c3-da8f-7dbd-a239d0e9dcdd": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 20, home: 0, away: 0, expected: 21, band: \"VERMELHA\", dismissed: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7a36d538-5273-9c17-1817-d8091b8a973f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SameMinuteEvents_UseOriginalOrder_AndDifferentMinutesAreReplayedChronologically(goalBeforeSub: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "effc44f9-b247-7319-7519-e8d83cb3addf": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.CurrentOriginAcceptsLegacyAndCanonicalNames(persisted: \"REAL_VERIFIED_CURRENT\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "27cd3847-690e-7603-874c-b06261808f99": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"division2\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8553e2ff-3140-f514-1fc8-317858c4266d": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.OldLiveThirdYellowMarkerRestoresTheTwoPriorYellowsIfSecondYellowFollows",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a43172d7-d042-9d07-8221-3f75a3d0880c": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"division1\", matches: 1, goals: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f58bbc2b-ec0a-24ce-ab24-7764299deac3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Goalkeepers_LowerConcededAverageWins_EqualAveragePrefersMoreMatches",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e4ea4004-d972-38e5-ebaf-922844652aec": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.DismissedAiCannotImmediatelyReappointItselfAsInterim",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "516859e0-a8e4-6360-5a67-141dcb229e1d": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.RankingIsLexicographicAndTiesAreStableAcrossReloadAndUnemployment",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "756dda10-db81-9320-9a08-432d7c069420": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b62b66c5-2cb7-668a-74c6-f6704abb6c6d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardSnapshots_RemainImmutableAfterTransfersRenamingContractExpiryAndNewSeason",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "850d6657-104b-a511-17eb-89585045e82f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupRoundOf32)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2ac06ab3-021b-3ad7-647b-573084397335": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Penalties_Audit006_GoalkeeperSavesVsWide_ShootoutSeparation_AndDefenderBehaviorInfluence",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2d1ae931-cbc4-6164-0d6b-8adc0715dd42": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 100)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1e51ae56-da86-d4d6-bcb2-f88fa3feddca": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RegulationAndExtraTimeGoals_Count_ShootoutAttemptsNeverCount(minute: 105)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0597fc27-776d-38a2-e947-ea41af7034ee": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.CanonicalPlayerDuplicatesAcrossClubsAreRejected",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "65bb83bf-702c-7e20-af07-c20b2e09012d": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 64)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "63fad128-78a7-1666-4867-1d7d57c4b914": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RationalAverageComparison_DistinguishesValuesThatRoundToSameDisplay(category: \"defenders\", position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ad639359-edc8-85f7-1194-1c905ff1df1a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardRecordGuard_ProtectsTitleAndPaymentWhenSeasonCloseMarkerIsMissing",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "db9df1ef-2159-131c-12b4-8ac5c4b776ae": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealRedRemovesEveryRoleAndPreventsSubstitutionReturnAndFutureParticipation(role: A)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4f25c2f3-0146-f369-c663-e686bc60642b": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.Discipline_Audit006_SingleCardPerFoul_SecondYellowBugFix_SentOffIsolation_AndFairPlayZeroFouls",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "31dcab3e-d8d8-0532-aeef-29cd4d885c50": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.Legacy006Snapshot_ReconstructsRoundGuardFromCompleteSponsorshipPass",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "eaca2027-16bc-c8df-3f79-7af16e02e337": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"wrong-gender\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f3a5f480-119d-c9a5-13e2-5bb8a3e7dbc9": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.RefusalCreatesZeroAuctionForFreeAgentWithoutFormerClubRevenue",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "48f884f6-d67e-701b-131f-9f5e24f6ac20": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 80)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7f1c5925-3fbd-1bef-ee48-31fa3c58f83c": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.OnlyGreenHumanReceivesOpportunity(morale: 50, invited: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d22936a0-5f95-26f7-f600-e90a1c2d383a": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupRoundOf16, points: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "24b446ff-fb60-008a-ab18-21d37ff476f1": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 80, matches: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7b731125-fd81-fdc8-ce75-3f081f7cc268": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.ExistingPolicyHasNoAdditionalGoalkeeperGate(position: M)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2de395c5-c028-497e-77c4-23de6554e85d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RankingScalesToSupportedClubCounts_WithoutLosingRows(clubs: 128)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5fe9d681-3b75-c7ed-ba6b-874d58c11581": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupQuarterFinal, points: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "960cc930-d25c-cc00-bde8-42b6f977739f": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.CompleteRealModeRequiresCurrentEvidenceAndNeverCompletesAutomatically(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f9f23401-6033-bff2-9500-af903ad0c92e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"past-season\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "92f6f3a1-cc5d-7ba7-3cf4-8881076a54e6": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.NewSeasonInitialization_ResetsLegacyCountersButRetainsRankingHistory",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c29d63f9-0d9f-ae8d-6d2d-dc044381f8eb": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.OneCountryFreeWorldNeedsConsentAndNeverDuplicatesIdentities(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5ad23135-030a-4a3a-f2ee-af3ee24f336e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_AllTiedGoalsWinRegardlessOfMatchesOrAverage(winners: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "369af8ef-1556-77c3-4071-dca41855708e": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealRedRemovesEveryRoleAndPreventsSubstitutionReturnAndFutureParticipation(role: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "39c52ed1-b027-ae7c-b279-14c4a530150d": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.SuspensionIsServedAtCompletionAcrossCompetitionsAndSurvivesReload(first: CupRoundOf64, second: League)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8ea8ce6d-eb2a-176a-a4a8-9d1cee2d92fb": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.AiDebtReserveProtectsPrincipalWithoutChangingCashDebtOrHumanAuthority",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "611a4f36-bcbb-e82d-4352-316d9e92cefb": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SeasonWithoutGamesPaysOneAnnualCommercialBudgetAndNoUncontractedMatchWages(division: PrimeiraDivisao, annual: 185000)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1aafefef-31c8-0a7c-3d00-8fc23fd55c00": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012BPublicModelTests.PublishedPreAndPostBoundaryConditionsAreNotEquivalent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5baac529-2c96-a81b-6992-7d62a0685556": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.MatchAndPlayerGuards_PreventDuplicateStatisticsAcrossRetries(retry: \"replay-clone\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e69f660b-7f8b-20dc-5cf4-ad9885e4b127": {
+      "Name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.AuctionCreatedAtSeasonEnd_ExpiresInNextSeason_WithoutGivingHumanUnwantedPlayers",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ac2162c2-631e-4e86-7aa1-cd05d5200e41": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.InsolvencyProtectsTheOnlyGoalkeeperAndResolvesPriorityTies(squadSize: 20)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "448975fa-9d38-5203-897d-4473bb0ab031": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_Aggregates20AcrossClubsAndCupPhasesWithinSelectedScope(category: \"goalkeepers\", position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5a650c1b-9f88-c2fe-37af-36c6445999f2": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_IsComputedWithinDivisionCupAndSeason(category: \"defenders\", position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2189a54c-7d66-e0fa-0272-aee4466129fd": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.WorldEditorAndPackageService_ValidatesAndRoundTripsJsonAndCsv",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "637c7b11-1caa-0eb4-5aee-49764522802b": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.SearchContinuesAfterAiRefusalAndPreservesPersonalityOnAcceptedMove",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3a584d9a-90e5-eca2-ca91-4cad6dcb290a": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ReprocessingAndReloadPreserveEventsAndDisableOldSeasonalPolicy",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6b54ae9c-9bcd-7eed-7113-76b1ee1057a5": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.NewGameGeneratedPlayersAcquireStableFictionalOriginWithoutChangingContracts",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "715929fd-274c-ee22-c52e-61408a98054c": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.ExactDecimalDivisionPoints(tier: QuartaDivisao, win: 1, draw: 0,5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "044461d9-55b0-6a0f-139e-693ed6beb084": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "badc9507-9299-f21f-a93d-a135515ecfe7": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_ConsolidateFinishedMatchBeforeSelectingWinner_AndIgnoreShootout",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ac2092b0-8e6e-f791-a5ae-8c12ca6954c2": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"defenders\", position: D, matches: 1, eligible: False, remaining: 19)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8a38a703-1a2b-80d1-6cd3-6db0defa792f": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.FullButUnbalancedRosterCompletesWithoutReplacingThePositionBeingAdded",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "863f5f08-cf7e-9f15-a40b-2296d29e4129": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Consolidation_RequiresFinishedMatchAndPositiveMinute(finished: False, minute: 90, applied: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f371c24f-df3a-44f1-30c6-4fa71f5afb8d": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.AiAcceptsAffordableRaisesAndRefusesUnaffordableOnesWithoutUnlimitedCredit(affordable: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a2a882b7-24c2-268b-4034-a2b6cb2812c6": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.OldSaveMigrationPreservesOriginalLoanAndProtectsExistingNegotiatedSalary",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "34d5e61a-4860-175f-881e-d87e7ac45b97": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"incomplete\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5bbdf7e4-249c-0173-ff3a-39433f9b7415": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.ExplicitCompletionBuildsVariedDeterministicSquadsAndPreservesProvenance(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6799a1ad-611c-cfb8-44c5-9ff00b9da37d": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.SuspensionIsServedAtCompletionAcrossCompetitionsAndSurvivesReload(first: League, second: CupRoundOf64)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3459c827-1e1f-8245-6b21-2da28276e404": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.InsolvencyWithNoEligiblePlayerRetainsDebtAndReturns",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "14a1d138-487b-b0fb-184f-a1b5a89bf1fe": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.DivisionTargetsAreNotHardGrowthCaps(division: QuartaDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1771cc53-449e-4310-9c3c-2897fdb2984c": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupRoundOf32, points: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dc36a22b-fb84-0bae-5cdc-da5d6bb45f02": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.AiBorrowingRequiresObservedOperatingProfitRatherThanSalesOrPrizeWindfalls(profitable: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "69f4e8db-54dc-e002-9345-a47f93a159d0": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.EveryActivePrincipalHasItsOwnFixedMatchInterest(count: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6d21cc06-c254-62f3-f97e-031656a3e7cf": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Defenders_DisciplineScorePrecedesRedRate_AndUsesActualCardCounts",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fda37d62-221d-e28f-6696-35b48dca07c4": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.OpenResultEloExcludesClubsWithoutGamesAndLimitsConfidenceOfDisconnectedLeagues",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f62eb2db-8b2d-1a7e-1f70-51066dda40dc": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardPayment_UsesClubAtClose_InsteadOfClubWhereGoalsWereScored",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0b07815e-d33f-719d-d8b6-425b71a25e9d": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.ClassicChargesExactlyOneInterestPerActuallyPlayedMatch(type: League)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "47dacbfd-ccf4-6919-ae43-cb42fa509dfb": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.ExistingPolicyHasNoAdditionalGoalkeeperGate(position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f98c96df-34ba-466c-ebe0-755fd6f2de33": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ActualPlayerCompositionDeterminesManDownSectorStrength(homeCount: 9, awayCount: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a3e487af-112f-70d1-582f-68d5dc377ff2": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"division4\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4cf3a66b-32d4-e826-5875-151899e49df3": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CupPhaseWinAndPenaltiesCreditOnce(phase: CupRoundOf64, points: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3a9c3f3c-1733-d6a7-ae12-ff6cb5b305ea": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.AnInsolventMinimumSquadCanRemainInCrisisAcrossSeasonsWithoutDebtErasure",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "27802d85-d6c0-76c1-8024-489329978530": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.DailyLossIsGradualExactAndRecoversOnVirtualDate(duration: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b1ca979c-85a8-a5b7-d178-d711d436c9de": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.UnsoldDebtAuctionKeepsOwnershipAndDebtAndDoesNotLoop",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9f3244ef-7c42-6d52-d5a3-2bb0453ffec9": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupRoundOf32)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6a9b5e51-72b2-2588-2f50-f5ba800123bd": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.PromotionAndRelegation_NeverReclassifyHistoricalCompetition(original: SegundaDivisao, current: PrimeiraDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9d0c9d33-516e-570a-06b2-6dd67e51811a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Defenders_EquivalentDisciplineRedAndYellowRates_PreferMoreMatches",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f158781f-86c5-e56f-e2e6-f5131b7bf6d2": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.NoInterestForUndisputedGames(kind: \"postponed\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b8b65c12-7e2b-1466-e076-215014cc0b5e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_AllTiedGoalsWinRegardlessOfMatchesOrAverage(winners: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "247b28b3-9c3f-94d4-9a8b-b59121d492e2": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.NoInterestForUndisputedGames(kind: \"zero-minute\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d6ac3ccc-d441-c2f4-8d42-39fa15bf40f9": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.TwoYellowsRestorePriorCycleAndAwardExactlyOneMatch(prior: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0cd24c5a-b58d-a39d-3934-f18cc77e8f2e": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.UnknownRulesVersionIsRejectedInsteadOfSilentlyUsingAnotherFormula",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "de0bca5e-4597-cd1b-b95e-1eb1eebce1ef": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Ties_AreStableByGuidAcrossInsertionOrderAndJsonReload(category: \"goalkeepers\", position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b133b1a2-782e-2c03-b9e9-0852834f969b": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.CrisisClub_ReceivesOnlyAccruedAnnualRevenue_AndCannotFundStadiumExpansion",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "735fc0a8-1f35-3600-d931-bae44f6f7dfc": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"missing\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9118d286-23ad-fa29-e3ff-aa0fd59ae3bc": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.FinishedByeWithNoPlayedMinuteCannotAwardPointsOrCupTitle",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d6a28d93-5eb6-5672-715b-41de409d12c5": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.LegacyMigrationPreservesAggregatesAndMarksFinishedGamesWithoutInventingHistory",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1decf9b8-369d-f5cd-3b41-afde0583aeab": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.LegacyMissingLineup_RecoversOnlyIndividualFactsWithoutInventingAppearancesOrAverages",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fad9375d-e628-92e6-4944-6fc33a487078": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_IsComputedWithinDivisionCupAndSeason(category: \"goalkeepers\", position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4f5838a4-09e1-8da5-f300-12733c9b705a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupQuarterFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6625cb34-f7be-78bb-4ccc-a82cf25f2013": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardLedgerGuard_PreventsDuplicateCashWhenAwardRecordNeedsRecovery",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "961c396a-4eaa-861a-e652-e612114220e0": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 65)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "78ed2d01-0f4d-7f40-d4d0-21c46c669662": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OnlyMatchesPlayedInCategoryPosition_CountTowardItsMinimum(category: \"defenders\", position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "26c28a86-c580-01b3-1342-10b868b545d3": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"wrong-club\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "60a73d35-e0b2-5c22-d931-6dc8e8ba4997": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.LegacyTermCannotEraseResidualDebt",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fd74cbcc-7df9-fe44-1abb-4f3762e60eec": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ActualPlayerCompositionDeterminesManDownSectorStrength(homeCount: 10, awayCount: 10)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aec602cf-9f62-b090-46ab-7ac3dc4e245a": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleUsesCompletedRoundTableRegardlessOfFixtureProcessingOrder",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "eb2d1371-ec29-64dc-6d1a-6209a9216765": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"historical\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dcbf6135-b3f9-a133-929d-2ec48b00db1d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Dismissals_CountRealCardsAndStopMinutes(dismissal: DirectRedCard, yellow: 0, red: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a7e5fb19-5cba-853e-b5fe-dd1c4fc05de7": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.CanonicalCurrentPlayerDuplicatesAreRejected",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0bc72df2-0b57-8305-8c61-1c1dd5acc368": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.LowStrengthAdvancesOnePointWithoutJumpingToTen(strength: 9)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d3dcec8b-9a30-527a-42a1-32595eb142a1": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.SeasonalProcessingIsIdempotentAfterJsonReloadAndDoesNotTouchRankings",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "24e25561-e468-73c1-4a5c-8ae40bab2bac": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.SuspensionAloneNeverLosesForceAndRemainsEligibleForLeagueReserveGrowth",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "db9034f4-cd68-92c3-eb5d-796697af8716": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"early-round\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7f5c1864-98f0-443d-f117-f52e9013e01f": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.UnemployedRecoveryIsGradualOncePerRoundAndNeverDeletesCareer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fffce021-fd24-04fa-ef1a-11866211a545": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SameMinuteEvents_UseOriginalOrder_AndDifferentMinutesAreReplayedChronologically(goalBeforeSub: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a4274d8f-4123-f58f-1024-e437c0958643": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.InjuryTransferKeepsInitialLossBudgetAndHistoricalClubs",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8ce6ce18-be60-7cd6-e055-e3d33ac15429": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.CalendarPostponesWholeRoundRatherThanFieldingAnInjuredPlayer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8cd31370-7d6d-7c5b-aa22-a4c79ce46b21": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.ReferenceSalaryTracksEditedOrImportedStrengthWithoutChangingNegotiatedWage",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ab1e3075-6f21-be2f-a474-89886ac248ab": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: \"2025-01-01\", end: null, expected: OpenEndedUnconfirmed)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3b909f5d-e57a-6c43-0821-072f4ad46f3c": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.StrongFavoriteDemandsMoreThanUnderdog_AndRecentPoorFormMatters",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "62e58ddf-9deb-43f7-6b6e-6182e507674f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonFilters_PreserveCareerAndSelectOnlyRequestedSeason(period: \"season\", season: 3, goals: 3, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1b35a899-3b6f-44f7-df55-ce859fa4a685": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealInjuryLeavesFieldImmediatelyAndOnlyLegalSubstitutionCanRestoreItsSlot(role: A, legalSub: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a941efc7-d9ad-9978-b7c8-23275029cee5": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.PersistedPerPlayerMatchGuard_ProtectsExistingBucketsEvenIfWorldMatchGuardNeedsRecovery",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f2104d4a-2369-a1ba-1076-0a0582e6b23e": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.SameInjuryEpisodeNeverAlsoChargesParticipationLoss",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9e4d759a-0482-b6cc-ea0c-4cceba9289a9": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 50)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ae7c46e0-abd4-90cb-744c-aef8e9f621c3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RepeatedSeasonClose_IsIdempotentAcrossJsonRestart(reload: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "92e4d49d-4733-3509-54db-21b6541311f5": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.HistoricalAndUnverifiedTeamsNeedExplicitChoiceAndRosterCompletionNeedsSeparateConsent(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ed768323-2726-45b1-caaf-f0bc48e9fbd4": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"division4\", matches: 1, goals: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0510c89c-b7e6-1053-4d39-ce6a72cc4fba": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.NoInterestForUndisputedGames(kind: \"unfinished\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6eca550a-d29a-40d1-1ccf-22e781375889": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.CeilingNeverClampsAStrongNonparticipant(tier: PrimeiraDivisao, rank: 8, strength: 48)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f5752045-f3cd-a1da-8c0f-28eb57ad0d68": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RealMinuteEngine_CapturesKickoffBeforeLaterRosterAdjustments",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4eac0a19-6b6c-ac8a-bb5e-9af6eaae572a": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.OfficialRoundWaitsForAllResultsAndCapturesBothHalvesBeforePromotion",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "984df796-3365-b7ea-eb3c-7af6442942cf": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AdaptabilityMatrix_UsesIdenticalSquadsSeedsAndScoreContexts",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e698dc3d-8017-6c0d-2799-b4a9917e3cb1": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: \"2026-10-30\", end: \"2026-10-30\", expected: DatedActive)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "491f958b-1d7d-a6f7-a0c4-aa2dda364075": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Consolidation_RequiresFinishedMatchAndPositiveMinute(finished: True, minute: 0, applied: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fbbddd8f-c899-13f3-7f60-f5ab4ee189dc": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StartingBenchAndSubstitutionsDoNotChangeNominalStrength(entryMinute: 80)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fa9b18da-ad44-2e52-a38e-c4951715656b": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.EconomicReplaySurvivesSerializationWithoutDuplicateSalaryOrInterest",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dda84b6e-2d09-042d-5a75-0a04bac0974e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.PromotionAndRelegation_NeverReclassifyHistoricalCompetition(original: QuartaDivisao, current: TerceiraDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "31d3f534-ff0b-d101-a6b5-87fc06c28a48": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"division1\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ab01e09d-24e5-1c7d-44f7-2773f9364e36": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.InjuredNonparticipantStillReceivesEligibleLeagueGrowth(tier: TerceiraDivisao, rank: 8, strength: 5, total: 2, grows: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "076753cd-d3e8-4007-3f61-426a800d37c0": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupPreliminary1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3d384926-9b2f-b3ba-da21-4eace320b18d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EachWinner_CreditsFullPrizeToClosingClub_AndClubTotalsAccumulate(sameClub: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d102095e-c674-d90d-d28a-9d3667bf35a9": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.InjuredNonparticipantStillReceivesEligibleLeagueGrowth(tier: PrimeiraDivisao, rank: 1, strength: 50, total: 25, grows: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7f8bc5c5-0df2-e8de-58dd-6f1019ac6e82": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.AiBorrowingRequiresObservedOperatingProfitRatherThanSalesOrPrizeWindfalls(profitable: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a9ddf565-bf60-bd1d-112f-3386b00d3c07": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.TransferWithExistingSellerLeg_DoesNotCreateAnUnpairedDebit",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1e734354-a513-47b1-e665-1da2b88de8a4": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SubstituteAppearance_CountsEvenWhenEnteredAtMinute90(minute: 60, played: 30)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ff8f4e50-ae6a-9e67-b4f3-1fbd302ecdab": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.LowStrengthAdvancesOnePointWithoutJumpingToTen(strength: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9486efae-aa7b-8184-c32f-58b94d4b9cfc": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.PromotionCanTriggerRequestButOnlyInTheNewSeason",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9dd95073-775f-b5df-83a2-adf173b03f98": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.TwoYellowsRestorePriorCycleAndAwardExactlyOneMatch(prior: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a638b658-1510-529a-08ec-87d14a623964": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.AiMarket_DoesNotBuyStrength11ForTwoMillion",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ffe4c2d4-aa74-0b10-9cce-367d47378190": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"goalkeepers\", position: G, matches: 20, eligible: True, remaining: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f0087f10-68ad-0239-27e7-14ba79441892": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.RealInjuryRecoveryAndReinjuryPreserveNominalStrengthInCurrentEngine",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4f54b369-299a-730e-2b12-1f4f7d528b8d": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.LegacySnapshotDoesNotInventEarlierStrengthEvents",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f9e23213-55bd-c2c1-e186-d9b4f261b209": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.NonParticipantCanReachApprovedCeiling(tier: TerceiraDivisao, rank: 8, initial: 5, ceiling: 12)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3689fd4b-c306-a6f4-d23c-ac7456db9beb": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Consolidation_RequiresFinishedMatchAndPositiveMinute(finished: True, minute: 90, applied: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f546471d-d733-74bb-9b56-090717ab1cb3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonFilters_PreserveCareerAndSelectOnlyRequestedSeason(period: \"season\", season: 1, goals: 1, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "48e9a424-65d3-0c4e-6d56-3e2bdf0cd8b6": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StrongPlayersStillDeclineUnderExplicitLegacyPolicy",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aeefa08b-6662-c61c-299f-1b6c4d00ba09": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ParticipantCanMaintainOrLoseOneButNeverReceivesReserveGain(competition: League)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "01a233c8-4fd0-dcf0-0ad9-eb41d4fba8cd": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.GrowthHistorySurvivesTransferPromotionAndRelegation",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4bf8a0bb-10cc-076f-1923-0f21bba957c0": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.UnpaidInterestIsRealDebtWithoutCompoundInterestOrGiftedCash",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "99dac0e8-d3b7-33e9-80e5-c1040b973547": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.InsolvencyProtectsTheOnlyGoalkeeperAndResolvesPriorityTies(squadSize: 12)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c647de12-8f8c-0a61-1569-24795dab7af3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"future-season\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e7196ecc-2c1a-4c02-98cc-afefaf92411a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.PromotionAndRelegation_NeverReclassifyHistoricalCompetition(original: PrimeiraDivisao, current: SegundaDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c9e2765a-3413-c1c5-a437-4c580158d023": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: \"2025-01-01\", end: \"2027-01-01\", expected: DatedActive)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "56259a2c-7c80-888d-8c86-7eb2f8a1a285": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 70)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "15df2030-e91f-ba6f-6ab4-1b759dd683f0": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.AwardLedger_RecordsExactAmountBalanceSeasonAndWorldScopedIdempotencyKey",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "221882a8-65d8-e1d3-34b3-11750b826af0": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.ScoreWithoutMatchingGoalEvents_MarksIncompleteInsteadOfInventingGoals",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "58cb1f51-dff2-1e3d-752b-2c52e05e4fb0": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealInjuryLeavesFieldImmediatelyAndOnlyLegalSubstitutionCanRestoreItsSlot(role: G, legalSub: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "51aeb8d6-fd6d-7290-30bd-e4118ba00111": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.TransferAndSeasonChangeKeepCyclesBalancesAndCompleteHistories",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "aa488fcb-5b11-79f9-e821-979405cf751c": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.ExactDecimalDivisionPoints(tier: PrimeiraDivisao, win: 4, draw: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "82156fc8-aebe-66f8-84fa-431673e79e82": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"defenders\", position: D, matches: 21, eligible: True, remaining: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2e8e5771-cf4c-6d4e-75ba-622e5c2a03e8": {
+      "Name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.SubstitutionLimitRejectsSixthInNormalTime_AndSeventhInExtraTime",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "8d45c68f-e2ce-ef0d-03aa-daa5285695aa": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"cup\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e4502ba0-cf33-4eda-4154-c08d502f93fe": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scorers_EqualGoalsCompareExactAverageBeforeGuid",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9035dd3e-ee9f-1af5-ca8e-92d0e9a8ca54": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnknownScorer_DoesNotDisqualifyKeeperWithTwentyVerifiedAppearances",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f46113b9-f190-f44a-2593-69022ae0ae76": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.DivisionTargetsAreNotHardGrowthCaps(division: SegundaDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "064a01b3-3595-d8ab-d7ee-92c08ec90198": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonFilters_PreserveCareerAndSelectOnlyRequestedSeason(period: \"current\", season: null, goals: 3, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "688ee4c4-e185-52ad-784f-88e6adde3898": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"goalkeepers\", position: G, matches: 1, eligible: False, remaining: 19)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "899a29cb-64bf-07e2-8f86-c82c0ccee1d3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupPreliminary2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1ca37d32-1629-a18a-785b-c55f100532c7": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: null, end: null, expected: Unknown)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2ee0200f-7060-c329-82ee-8219490dec68": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.ExpiringContractCannotReleaseAPlayerReservedForDebtAuction",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "efaa13fe-9a60-08cc-bf8f-cf8d005cc598": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.LowStrengthAdvancesOnePointWithoutJumpingToTen(strength: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f07a4b08-b666-474d-134d-a306cedf4054": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ActualPlayerCompositionDeterminesManDownSectorStrength(homeCount: 10, awayCount: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2bb6ef10-d23f-80bc-2bf7-4af211ff9471": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: \"2025-01-01\", end: \"2026-10-29\", expected: Historical)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "204a42dd-19d2-e605-09b6-381eb480db27": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.GoalkeeperSubstitution_AssignsOnlyGoalsConcededWhileEachKeeperWasActive",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a388956f-5ffe-a16d-ff4f-d9788a2c2a82": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: \"2026-10-31\", end: null, expected: Historical)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "cec0a83b-b4e4-27c5-5a47-0ad43e7e8e0a": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 20, home: 1, away: 0, expected: 29, band: \"VERMELHA\", dismissed: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f415736c-d1cc-c7b9-d420-fd352b9f0d33": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.Transfers_ReconcileOnce_AndRetainResponsibleManagerAfterClubChangeAndReload",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7bbeb102-23c3-c2b0-0c2d-7585e7119370": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.EveryActivePrincipalHasItsOwnFixedMatchInterest(count: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "817f2fb0-9052-ae33-05c2-a1f4b7327aa3": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 35, home: 0, away: 1, expected: 26, band: \"VERMELHA\", dismissed: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e643dc71-6e14-9ca1-8756-879802217b1d": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ActualMinutesDistinguishUnusedBenchLateEntryAndZeroMinuteEntry",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "74fab586-de05-17db-9079-0f0126a103fe": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ParticipantCanMaintainOrLoseOneButNeverReceivesReserveGain(competition: CupFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a2f2c7b7-7c79-ed92-b644-4e0ca386ccd5": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.ClassicChargesExactlyOneInterestPerActuallyPlayedMatch(type: CupFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1ce77199-f87a-ed4a-403a-e830df923104": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.MoraleBandsAndPreMatchRedDismissal(before: 60, home: 0, away: 1, expected: 51, band: \"AMARELA\", dismissed: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2ac8bead-9949-5179-451a-e698d31d83f1": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OnlyMatchesPlayedInCategoryPosition_CountTowardItsMinimum(category: \"goalkeepers\", position: G)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3ca3f971-1e63-2d07-109b-234959a18b89": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.ExistingSaveKeepsItsSeasonTermsAndBalancesUntilTheScheduledUpgrade",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5f599548-b79e-702c-5c65-cc51b189d66a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.ZeroGoalSeason_NeverAwardsTitlesOrMoney(withStatistics: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "277f1b47-0d32-bf58-2024-fb8964149c04": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RegulationAndExtraTimeGoals_Count_ShootoutAttemptsNeverCount(minute: 90)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "eff00d45-f83b-9551-d458-744bca895b7c": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.FullFixtureReplayPreservesActualCardsSuspensionHistoryAndOneTimeSettlement",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d2cc7f65-03dd-704a-dc18-19e62b47fcb5": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"cup\", matches: 1, goals: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c178fd68-1613-7f60-66b6-4ac87ef42880": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_SumEveryDivisionAndCupAcrossClubChanges",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b5a7e62d-579a-9518-4167-d8fa9085130a": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupQuarterFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5be649d5-180b-c512-2aff-96acc8e36bd8": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SentOffGoalkeeper_DoesNotReceiveLaterGoals",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "711e0a25-d42f-a77e-4a34-1bc7f4495052": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.FourthDivisionHasIndividualOneAndTwoLoanLimitsWithoutCashFeedback",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "068c3141-b9e4-1fd1-fee2-b91d9628bd77": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.CompleteRealModeRequiresCurrentEvidenceAndNeverCompletesAutomatically(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "02c53985-b479-0f73-f4ec-53dcabe3282d": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.LowerGateDemandChangesOnlyRealAttendanceRevenueAndVariableCost",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "80c152f4-e249-bee7-373a-a95a49e78c67": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_AllTiedGoalsWinRegardlessOfMatchesOrAverage(winners: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a5b914a7-188d-e9f1-c11e-bb91f2932ddb": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.OneCountryFreeWorldNeedsConsentAndNeverDuplicatesIdentities(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f3025be5-18a5-ae43-173c-3659966d5e17": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ApprovedCeilingsForAllEightPlaces(tier: SegundaDivisao, expected: [44, 42, 42, 39, 37, ···])",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dbe5a4e4-107c-00e9-4005-909abb0ebbed": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"goalkeepers\", position: G, matches: 21, eligible: True, remaining: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e2aec8e1-bad8-f391-e12c-1cff9fac09e0": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"division3\", matches: 1, goals: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5671f871-2e4d-8411-cc63-5245cf645a68": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_AllTiedGoalsWinRegardlessOfMatchesOrAverage(winners: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "36b456b2-cba1-45bf-c555-c61593c7f4be": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.ExistingPolicyHasNoAdditionalGoalkeeperGate(position: A)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e745e128-0463-3d24-1acc-d73a636e181b": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 94, matches: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e84ca8e8-d32e-e924-d867-93620258e530": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.CeilingNeverClampsAStrongNonparticipant(tier: PrimeiraDivisao, rank: 1, strength: 50)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a5c8e4f8-1e3a-a45c-d584-ef804c809ee8": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.DivisionTargetsAreNotHardGrowthCaps(division: Distrital)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "072f94b3-596e-f0f0-d9e6-05658c640b6c": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.MinimumSquadMakesRefusalAMandatoryRenewalEvenWithoutCash",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9754ddaf-cc6b-ca74-e47d-07291b9d923d": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.EliteLeaderRejectsLowerProjectButSmallLeaderCanAcceptGreatStructure",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ae20d9ae-9352-74f1-6818-2ec4b1e8b13f": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.ManualPlacementDoesNotReduceForcesAndGendersUseIdenticalScale",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "bba96883-c45c-a568-1796-f169ed31fad1": {
+      "Name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.ManagerKeepsPersonalityAndPreferencesWhenSeasonRotatesClubs",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1c3dbc53-29c1-7926-8cb6-01224175ca46": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.DurationAndLossLotteryCanReachMaximumAndAlsoChooseSmallerLosses",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "305da130-f06f-36ec-a671-e80faea5bfe1": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SponsorshipTermsSurviveReloadAndDivisionChangeWithoutBackpayOrOverpayment",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a74bcded-ffe7-b8ec-1ab5-8db1a16f2c6a": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.AiCreditProjectionIncludesLegacyInterestWithoutConvertingTheExistingLoan",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f6229a9b-4603-bfbf-a596-69791bcce435": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.CaptureLineup_IsImmutableAndIncludesBenchWithoutGivingBenchAppearances",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c5391e48-575e-d1b8-74b1-59553be8aae7": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.HomogeneousBehaviorExposure_RecordsRealMinutesFoulsCardsAndSuspensions",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a7d89034-5a1c-67fb-631e-611d82ae4fa9": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupRoundOf16)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "76b8861a-6e41-385e-835f-64c635077f5d": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 0, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "614b4b49-c3b9-9bdd-884d-a96ddd7fc64f": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.StartingBenchAndSubstitutionsDoNotChangeNominalStrength(entryMinute: -1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "0d12a682-ced2-0540-bef4-90dd241bfdc3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Defenders_RedRateTieBreakUsesExactRationalComparison",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c34c8ff0-9f56-5142-3d54-662861e70a54": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.EveryCupStageForbidsReserveGrowth(competition: CupRoundOf64)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "56c95100-0613-7881-2c52-3a1dddef2ad7": {
+      "Name": "Elifoot.Domain.Tests.PlayableEconomyRegressionTests.RoundSponsorship_IsIdempotent_AndFundsEliminatedDistrictClubs",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3058cdb9-4a01-39e8-d7e5-3dd0eadbd41c": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.ClassicChargesExactlyOneInterestPerActuallyPlayedMatch(type: CupPreliminary1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c830a68a-fd11-592f-b7ca-65c3c922d54c": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_Aggregates20AcrossClubsAndCupPhasesWithinSelectedScope(category: \"defenders\", position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7dae4a24-8c1a-ec91-1dfc-05a571d819d2": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.NonParticipantCanReachApprovedCeiling(tier: QuartaDivisao, rank: 1, initial: 1, ceiling: 12)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "cbe5d6bc-899d-034b-10e7-3a4ec7d7f13b": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.SameDateDailyLossPrecedesReserveGainAndReplayDoesNotRepeatEither",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "eca67004-8bcd-fdc0-48da-a66203af9596": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Ties_AreStableByGuidAcrossInsertionOrderAndJsonReload(category: \"scorers\", position: A)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "449ad4c4-4689-dd57-de05-a5e006423519": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ThreeIsolatedYellowsShareOneCycleAcrossLeagueCupAndTransfer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "202524c8-a870-bce4-68be-f0671f524ce5": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.UnattributableOfficialGoal_PreservesScoreAndKnownKeeperWithoutInventingScorer(association: \"unknown-id\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "21644e37-932f-f678-ca69-d838f7d0448c": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"division1\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f2d74cfe-d779-5cb7-c682-7b81d7e4ca58": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.CurrentOriginAcceptsLegacyAndCanonicalNames(persisted: \"REAL_CURRENT_VERIFIED\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c2c5d7d9-9033-6921-fd93-acce834092fc": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.LegacyRecovery_ReconstructsStartingLineupAndSubstitutionTimingFromFinalLists",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2592309c-7bd0-53f6-e763-7b9b88487713": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.InjuryClockIgnoresWallTimeAndCannotAdvanceDuringLiveMatch",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "cd6b9745-64de-da86-41e0-58ebe72decca": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.RealGoalkeeperInjuryDoesNotReduceNominalStrengthInCurrentEngine",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b826bfb3-fb89-d7fc-2249-f6285f209a58": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.RequestsArePersistentLimitedToOneAndDoNotOverrideNegotiatedTerms",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1349cde8-e1a0-9e02-012c-5f4be9b5e2ca": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.InsolvencyProtectsTheOnlyGoalkeeperAndResolvesPriorityTies(squadSize: 15)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "897fe906-aade-4ba3-692c-f35330fe78f7": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.History_ResolvesHistoricalClubNames_AcrossTransfersSameSeasonAndLaterRenaming",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "fa628ef6-ff7c-4ed8-bca3-2df4ebe4b2b4": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.EveryCompletedDivisionAwardsOneTitleToItsClosingMatchCoach",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6b876b6d-c43b-51ef-e19f-05c263dd77a6": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 40)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d3d561ff-3b94-9c33-e2e9-9606dd74462d": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.ByesPostponementCancellationAndRepeatedSettlementDoNotServe(district: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5b9d005a-5207-3f14-66a2-f49280d4f78b": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupRoundOf64)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2ef66d9c-0eb0-b525-f7b8-5bd04d7de3a9": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 95, matches: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4e93d3f1-8332-c636-e9fe-8547119df112": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.NonParticipantCanReachApprovedCeiling(tier: PrimeiraDivisao, rank: 3, initial: 40, ceiling: 50)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "5638eaae-f633-352b-96a5-a02cdcbb261e": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"cup\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "2984417f-f196-0df3-3cc9-5457efe5a630": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.ExistingPolicyHasNoAdditionalGoalkeeperGate(position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "95ceb4c7-49c1-a61e-44db-272cb59d0df3": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"defenders\", position: D, matches: 20, eligible: True, remaining: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6d6a9e68-dbad-c54a-f756-517d932ee17a": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.RefusalDoesNotGeneratePlayersOrFictionalTeams",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "93d3289c-c4b7-409d-693a-203ab8401765": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 20)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "256c8d65-250b-abb6-7f4d-4083f3a6af30": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"general\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "739c127f-ac34-7db2-9585-ae3aeb05ecda": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonFilters_PreserveCareerAndSelectOnlyRequestedSeason(period: \"season\", season: 2, goals: 2, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "610b6bba-1eeb-09e0-16a5-75bebf22c35f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"goalkeepers\", position: G, scope: \"division3\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "bc21b589-a567-f004-a02e-b373a271cdb7": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealInjuryLeavesFieldImmediatelyAndOnlyLegalSubstitutionCanRestoreItsSlot(role: G, legalSub: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "85e0b181-9521-e8ab-86a7-1fd68dc27ff7": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.RegulationAndExtraTimeGoals_Count_ShootoutAttemptsNeverCount(minute: 120)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "ca6d2ecf-e3aa-2c2f-e743-bf0d3595b1c3": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.BidsReserveCashAndRepaymentCannotSpendItTwice",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c235abab-0b81-3f6a-72d0-cc5bb21a337a": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.NoInterestForUndisputedGames(kind: \"cancelled\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a26156b0-6d5e-1631-98b2-3e10253806ff": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.EveryOfficialCupPhase_ContributesOnceToCupAndGeneral(phase: CupFinal)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "6de84a9d-b52f-9b0f-250c-c3b8960ed705": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.HistoricalAndUnprovenMembershipsNeverEnterTheInitialRealRoster(issue: \"forged-label\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "75c90b88-956b-73ae-69c8-de7a202b1736": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 49, matches: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e9589e51-85b3-7174-955b-8e8bc75d5903": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.FreeAgentWinner_KeepsTitleWithZeroAwardWithoutFictitiousClubOrLedgerCredit",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "b1714707-3dd9-4733-28c5-b35b538542ac": {
+      "Name": "Elifoot.Domain.Tests.MetricAiAudit007Tests.ExtremeDeficit_ReactsWithSuitablePreferredFormation_AtEveryAdaptability(adaptability: 60)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4314a21e-405f-1bca-82fb-0023960d729b": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealInjuryLeavesFieldImmediatelyAndOnlyLegalSubstitutionCanRestoreItsSlot(role: D, legalSub: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "00ec9d16-4cd4-5cfd-5ce8-9423bf705833": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Scopes_KeepEachDivisionAndCupIndependent(scope: \"general\", matches: 5, goals: 15)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "836839fa-c686-9fd8-b766-7f91d0f5d4e6": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 50, matches: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "45c6ba79-6445-974a-89d2-2c88d5593b9d": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Ties_AreStableByGuidAcrossInsertionOrderAndJsonReload(category: \"defenders\", position: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a100b908-8264-4963-5142-e21e07560a87": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.OpenEndedEvidenceCannotBeMadeCurrentByOnlyChangingItsLabel",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1800d0c1-a439-9411-02ac-b31c0a82416f": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"division4\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "4bc21b22-f40f-22a9-e346-09f4c7d0aceb": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.OwnGoalAndUnknownScorer_ChargeActiveGoalkeeperWithoutInventingIndividualGoal(ownGoal: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dda9ea15-6d0e-93fa-152b-52ccd75dbbaa": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SubstituteAppearance_CountsEvenWhenEnteredAtMinute90(minute: 90, played: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c8ea04fb-cc14-4ffd-e11a-8479aa009a1d": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.ReserveChanceDecreasesNearCeilingAndIsNeverAutomatic",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "3970c11d-d10e-a2fc-e808-e020d9511d0a": {
+      "Name": "Elifoot.Domain.Tests.PlayableWorld013CTests.ProvisionalOrderingUsesSavedSeedAndIsNeverPresentedAsSportingRanking",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "95421e30-e7d8-4986-6684-6b06d4f5d97b": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.LegacyWithoutEvents_DoesNotDistributeOldCountersAcrossCompetitionsOrAwardRetroactively",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "811d5c00-8372-de27-4a49-6334c8cc37fe": {
+      "Name": "Elifoot.Domain.Tests.RealData013BDomainTests.EstimatedInitialForcesAreRelativeVariedReproducibleAndWorldSnapshotIsIndependent(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "87ac9c25-ae7f-ad02-87c5-bf25e4ba0856": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TwentiethFinishedAppearance_QualifiesWithinEachScopeAcrossStatisticalBuckets(category: \"defenders\", position: D, scope: \"division2\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9f109148-cadd-13a9-6be3-fda7628118f6": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.LowStrengthAdvancesOnePointWithoutJumpingToTen(strength: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "126a2ada-d464-49d2-9ccd-6975f8897a65": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.DirectRedCumulativeBoundariesAndMaximumOfPenalties(roll: 79, matches: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "328be772-fa6c-97d5-5f55-2a3547274b40": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.PromotionAndRelegation_NeverReclassifyHistoricalCompetition(original: TerceiraDivisao, current: QuartaDivisao)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "7d92999d-6c53-2d2d-c8b9-eec44a395996": {
+      "Name": "Elifoot.Domain.Tests.DomainEngineAndRulesTests.MatchEngine_Monotonicity_StrongerDefense_StrongerGk_StarBonus_RedCard_AndBehaviorDiscipline",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "d6787504-da31-7c0d-dd6f-25857ba6e18e": {
+      "Name": "Elifoot.Domain.Tests.OperatingEconomy012DFixTests.SeasonWithoutGamesPaysOneAnnualCommercialBudgetAndNoUncontractedMatchWages(division: TerceiraDivisao, annual: 92000)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c7cd9d47-07c1-3253-fcf3-3fc2c25c4f1f": {
+      "Name": "Elifoot.Domain.Tests.CoachCareer008Tests.CreditBelongsToKickoffCoachEvenAfterClubChanges_AndReplayReloadIsIdempotent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "eabfb876-5f27-b6e3-e353-5a53e22a2c21": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.TransferAfterKickoffAndBetweenGames_PreservesOriginalClubAndDivisionBuckets",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "57b370b5-6209-36b9-b481-46f7bb4bf85b": {
+      "Name": "Elifoot.Domain.Tests.PlayerForce012Tests.TransferToDistrictDoesNotClampAStrongPlayer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "9137693a-41d8-ec1f-3441-3c1fb37af9f2": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.DailyLossIsGradualExactAndRecoversOnVirtualDate(duration: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "f737bceb-9325-7175-2b1d-76e57e534a07": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Dismissals_CountRealCardsAndStopMinutes(dismissal: SecondYellowRedCard, yellow: 2, red: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "644534a8-0786-f494-cb48-cd15e804258a": {
+      "Name": "Elifoot.Domain.Tests.Coverage013BDomainTests.MembershipRequiresExplicitStartAndEndToEstablishCurrentPeriod(start: null, end: \"2027-01-01\", expected: Unknown)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "a369dbd0-734c-07e2-5a87-31ff51603b1a": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.Eligibility_ChangesExactlyAt20Matches(category: \"goalkeepers\", position: G, matches: 19, eligible: False, remaining: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "e8270f81-a2a3-1a50-954e-b5f48a0fa8ed": {
+      "Name": "Elifoot.Domain.Tests.PlayerRankings009Tests.SeasonAwards_RequireCurrentSeasonOfficialCloseAndCompleteStatistics(obstacle: \"no-fixtures\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "dbe766c3-c45b-2d65-b2f0-8b329cf0e1f3": {
+      "Name": "Elifoot.Domain.Tests.Discipline012CTests.RealRedRemovesEveryRoleAndPreventsSubstitutionReturnAndFutureParticipation(role: D)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "c8094484-cbad-e992-3438-bb377d5cfe58": {
+      "Name": "Elifoot.Domain.Tests.ClassicEconomy012DTests.TwoLoansChargeFiftyThousandAndReborrowingRequiresActualRepayment",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "abf94eea-9753-9249-d8d7-8c3f4682a364": {
+      "Name": "Elifoot.Domain.Tests.ClassicForce012CTests.PartialAndZeroInjuryLossDoNotBecomeMaximumOrAutomaticRestoration",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031111605.trx"
+    },
+    "1f616ae3-b220-9e0b-06c7-7f822d3ce3d1": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.TransportRedactsHttpFailuresAndRateLimits(status: 403)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "958df9bf-bedc-957c-9bfc-5ff780d71c9c": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"#abcdef\", valid: True)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "17183f3e-3fa2-b555-a4da-81395ea050ce": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"#C3281E\", valid: True)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "2c40e33d-e9e4-646b-22bf-2d7cd97ec9e3": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9f769272-fb3c-ae44-3e8e-ccd3dd70b215": {
+      "Name": "Elifoot.Integration.Tests.OperatingEconomy012DFixIntegrationTests.ReplayedSettlementAndLoanCommandsShareTheWorldGateWithoutExtraCommercialIncome(participants: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "087d7b2b-9dce-aa08-a53f-23c4ce51f71c": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload",
+      "Outcome": "Passed",
+      "Evidence": "missing-fixture-rerun.trx"
+    },
+    "9a82da7f-51ae-5dd7-41be-b2e94768c59e": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.InvalidSourceEvidenceIsRejected(row: \"{\\\"date\\\":\\\"2026-10-01\\\",\\\"team1\\\":\\\"a\\\",\\\"team2\\\"\"···)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c635221f-16b7-8a4d-19b0-8bc9d8ee993c": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.PersonalizedPackageKeepsColorsAndUsesIndependentCopies",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "20a60be9-b9af-7e02-839b-8b43637f42b1": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"#FFF\", valid: False)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "33b0b1ce-eab2-e653-2edf-bba8ac793fce": {
+      "Name": "Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "06a4f2a5-308c-5c5c-811e-4487637a58fb": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedInsolvencyKeepsUnsoldPlayerAndProtectsTheLastGoalkeeperAndTenOutfield(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a1b14b60-38a3-de85-08a3-ecb8615d4eb1": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: ApiFootball, gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "6b572c39-cefa-b93b-409b-9c11a6b9524c": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "92b8316e-67e4-0164-3b15-cdc55348a890": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b3774564-476e-637a-ba84-4ba253a58906": {
+      "Name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.BrowserContract_UsesNamedEnums_AndSameSeedRoomsRemainIndependent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "45413cc7-5e44-0c40-217d-db95dda18f0b": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PartialRosterPersistsCoverageButDoesNotReplaceACompleteValidRoster",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7371ae41-bfa5-e7f3-67e1-e38def70a999": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.PartialCountryFallbackWithApiFailureAndSuccessfulCountryUsesIndependentDates(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "27bf4408-00ea-4b6a-7ccc-502b58ae2cb9": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Winger\", expected: \"A\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2c057334-6cff-e649-910d-247534263b39": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 50)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a55ccb8a-e2ce-a97e-e11a-72b72d135f01": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(gender: Female, fixtureData: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c730f950-6264-543f-fee7-31ff65d74f76": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 10)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "67b05b69-c8e4-ec56-0a6c-f63df429dca9": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 4, importedWorld: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7bce9cae-6910-3f6e-c461-4986e7e6ca06": {
+      "Name": "Elifoot.Integration.Tests.OperatingEconomy012DFixIntegrationTests.ReplayedSettlementAndLoanCommandsShareTheWorldGateWithoutExtraCommercialIncome(participants: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b45fa551-5942-6c55-42a2-0fd4ae31f186": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRejectsInvalidOrAmbiguousQueriesAndReturns404ForMissingWorldOrPlayer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9db29e88-c905-afc9-e0dc-fe34b14ec7d8": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "82f925c9-c043-b54d-cdb9-0ac52b9c7ab5": {
+      "Name": "Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "45076382-8ad5-1930-c8ce-387c508bb171": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "55c9ec07-50f4-11ec-b886-d3eeb088eb33": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.QueryServiceSharesTheClockLockAndReleasesItAfterCancellationOrFailure",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "de26c517-9172-fa94-9458-973bfab731b5": {
+      "Name": "Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2aa1c3ab-2d1c-7424-28c8-f436366c7c63": {
+      "Name": "Elifoot.Integration.Tests.Discipline012CIntegrationTests.SqliteMigrationAndRestartKeepPlayerCyclesCardHistoryAndRemainingMatchBans",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b797cf7d-595b-286d-8e59-e3c55eeab893": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "4a083d76-2dd0-7fe3-75a2-f984b575c54e": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Centre Back\", expected: \"D\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2bbbe242-73dd-dbc4-5665-bb5861abb5fd": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0138ae20-2956-096c-e473-6d50100e120b": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.SavedAssemblyCreatesIndependentWorldsAndPreservesNegotiatedSalary(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "40899414-5587-6603-ee68-faf91118d27f": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.SqliteRestartPreservesRankingPendingOffersAndCareer_AndWritesPrivateBrowserFixture",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "5bc80a4a-1c95-7b36-15af-3ae7a2159f1f": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 8, importedWorld: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "55a519d3-78a0-6b5b-53eb-3bf916c916ee": {
+      "Name": "Elifoot.Integration.Tests.Discipline012CIntegrationTests.IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(count: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2732439b-a7e3-986d-e490-68af2b31576f": {
+      "Name": "Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.SqlitePersistsDailyLossDatesRecoveryAndHistoryWithoutReapplying",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c001bb23-7468-e571-62c0-d760f7987cdb": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 128)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "53fc2042-78ba-e5f1-e427-aaf38baca6dc": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "251f9cc6-d3e9-e360-09e2-efcbb49d66cc": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.PlayedResultsAreDeduplicatedAndFutureOrUnplayedFixturesDoNotAffectElo",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "fc7404ce-00be-51a5-6ad3-499272c1813d": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 8, importedWorld: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f4973a77-7ef6-9fc6-1256-3e42e4856116": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9060b6c0-b2d1-6762-0d14-950339c1cbb8": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "06d1e31b-37bb-e90c-0ca7-97308f6502ab": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Attacking Midfielder\", expected: \"M\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f7bd3cf8-45e3-ae01-cbff-eb4bab6ac860": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.CatalogPackageRoundTripRetainsClassicForceProtectedSalaryAndApprovedCommercialRules(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "46ad480a-504c-ad9c-4f39-5c7f8773b6c9": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 6, importedWorld: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f964d9c6-13ac-dd2e-c41b-fc98460cc0e3": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a9699c7e-b329-1fd5-447a-8d58b510407b": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"association football midfielder\", expected: \"M\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7b31bdfe-00c2-197e-4171-04bd01792ef3": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.JsonCsvImportChecksRightsQuotesAndPositionsAndPreservesLastGoalkeeper",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "337ffb2c-a485-9bf8-3851-1b2a292bc795": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 7)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "aad45803-51bf-e8a7-6750-ba291a9c1a21": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.TransportRedactsHttpFailuresAndRateLimits(status: 429)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "1cdca012-10b2-1ea0-ac4d-5836913e1834": {
+      "Name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.EditorSavesBehaviorStarClubAndManager_AndCalendarListsFullSeason",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e9ce934f-0c15-fba0-7252-bfedd321a1d8": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.Final014B_RealClubsAndAuthorizedSimulatedSquadsFullMultiplayerLifecycle(coachCount: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a7444565-463b-269a-d1e6-088bfb883cde": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Striker\", expected: \"A\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "bc6b69c3-6042-a7a7-ac16-119b57750214": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpHistoryPreservesHistoricalClubsAndGetRequestsDoNotPayAwardsOrWriteSnapshots",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "5fb3ee01-45ae-0309-53d8-25084eb184af": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"#00000000\", valid: False)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "1fa7a8a6-674e-802e-467b-39433693711c": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 13)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "6df88e8c-ec85-e3da-a6e1-d1dc51507c50": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 0)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7ad1e83d-2742-33c7-3614-7162d8c59c87": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.FirstNetworkLoadOrdersClubsBeforeSquadsAndRankingEvenWithReversedRegistration",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7991da45-a874-183b-99a2-33884a5dd111": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.EightCountriesAutomatic128UniqueAndImmutableIndependentSnapshot(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a664aa48-8640-d828-b240-5014715611f0": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.InvalidSourceEvidenceIsRejected(row: \"{\\\"date\\\":\\\"2026-10-01\\\",\\\"team1\\\":\\\"a\\\",\\\"team2\\\"\"···)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "5aef0aad-0394-098e-0d6a-a29d43ef5592": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NamesNeverMergeTeamsGenderAndMultipleLeaguesRemainDistinctUntilReviewed",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "dc353dfb-8711-a623-8405-b6dcde4c9b47": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 7)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9ca04b8b-59eb-1c79-377e-834232ed17e1": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "c41564bc-6eb8-407e-0209-194754488fcc": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 12)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9b2f9b03-e48d-3ceb-6062-081e129f9fd8": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: Sportmonks, gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "52a7310d-5cdf-5b09-00d8-3071a8b40f4d": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"red\", valid: False)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "22f65bd4-c7c7-cd43-3b46-eacbc81f6ce5": {
+      "Name": "Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.IdleCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "88eccd58-eaa8-5885-9360-5ddd8c312868": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.AiAndConcurrentHumanBiddersCannotSellTheSameDebtPlayerTwice",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "894954d7-5ee4-f44c-f297-65f6c21d5ae6": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: ApiFootball, gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "ebfe8bef-2d00-d0d0-b2a8-657d052dca61": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(gender: Male, fixtureData: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "dbbcf984-5a70-fe35-9837-4fd883e4d5fd": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 5)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "ef852e54-8bb1-8b59-ea41-20bc24259c0c": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.TransportRedactsHttpFailuresAndRateLimits(status: 401)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0c33f544-ed1f-8583-cb26-52a687722898": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 3)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "cc603f4e-6dcd-10c0-ee7f-e81e5955c9ba": {
+      "Name": "Elifoot.Integration.Tests.FinancialPersistence007Tests.SaveMoreThan200LedgerEntries_PersistsEveryEntryExactlyOnce",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "8eff5695-25a0-4795-2036-da8e0690cdc5": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HostCanConfigureMoraleBandsWithValidationAndUnemployedCountsInReadyCounter",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "aede1da3-dde2-2031-4419-77097ac31f27": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedInsolvencyKeepsUnsoldPlayerAndProtectsTheLastGoalkeeperAndTenOutfield(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "6a1e4388-5a5c-7ff3-4128-00a22251f79e": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: \"#12xx34\", valid: False)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "0904e10b-67b9-2718-0051-98f53daa83ab": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.RandomDistrictsAreSeededAndRankingAbsenceHasExplicitStableFallback",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "74f57058-62e6-ea16-6518-12966f573b1d": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PaginationAndHttp200ErrorsNeverActivate(payloadError: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "036c702c-0770-ea35-1f2c-c3edcebf8917": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.SqliteRestartRetainsDebtModeSalaryRequestsAndCommandReceipts",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "1536e4fe-5491-3bfb-0bdc-d04a97f6817f": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedFoundationUsesApprovedEconomyForFinalSquadsAndIndividualCredit(gender: Male, manual: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2be28b95-a7c9-5295-777e-0be6cde14565": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2b7c0d2b-a5a7-16fc-934c-77165457bd49": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedFoundationUsesApprovedEconomyForFinalSquadsAndIndividualCredit(gender: Female, manual: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "67f2b8ec-f64b-670e-8d37-e09725e8161b": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.MembershipDatesPreventTransferredPlayerAppearingAtBothClubs",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "623c0818-325c-e4ea-3285-9ef2e463311a": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.ConcurrentAcceptancesCannotDuplicateClubOrCoach_AndInFlightChangesAreRejected",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f734e27f-e9fd-9453-9e7e-bed217952a70": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedFoundationUsesApprovedEconomyForFinalSquadsAndIndividualCredit(gender: Female, manual: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e703544c-3e64-efef-8f50-d9904e3d0cb3": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "6b4bbdee-001f-5321-7c73-d4797e44d7cc": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.HttpPreviewConfirmationIsOwnedAndDoesNotRequeryChangedCatalog",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "59e9aaba-248c-a90b-3cc4-8e83250588d2": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: \"same\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a5d20bf2-ca16-fbe3-6600-473218c029ab": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "65c0618f-c3e6-499b-ba9c-3c4c440180a1": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpFiltersCoverAllCategoriesScopesAndPeriodsUsingPersistedStatistics",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a85951ad-8efe-eada-ad32-370aac4a01b0": {
+      "Name": "Elifoot.Integration.Tests.ClassicForce012CIntegrationTests.NewRoomsUseOneAuthoritativeVersionAndConcurrentAdvanceDoesNotRepeatDays",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "bb07632c-0ed5-4707-38d0-74ca5a1a2b16": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: \"unattached\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "407dc53c-e130-fd66-f60d-a60010cb8d11": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 11)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "bb456327-4547-3734-520c-073090c97786": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.ConcurrentConfirmationCreatesExactlyOneReceiptAndWorld",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0572f35c-2686-c49a-d68f-66f738b561fe": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.SavedAssemblyCreatesIndependentWorldsAndPreservesNegotiatedSalary(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0009610c-3986-c0ba-3607-2f77adfa3b92": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 2, importedWorld: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f0bb7014-e89a-0dc6-8dfe-f321f37fe434": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.CountriesAndLeaguesHaveIndependentSnapshotsCadenceAndJsonCsvImport",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "be5e87f2-061a-7733-7cea-e9c2f9552359": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.TimeoutAndRateLimitHaveBoundedRetriesAndFallback(rateLimit: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "5f794e16-5a9c-0db8-d74b-f8d5c3cfd00f": {
+      "Name": "Elifoot.Integration.Tests.PlayableQaRegressionTests.LocalIdentity_IsStableAcrossServerInstances",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "cdebda1d-a9f5-73c5-f254-fd81c19b45d8": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.DatabaseFailureRollsBackStagedVersionWithoutDestroyingActiveData",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "10e7b3bd-1a60-603e-6761-b4d49935a8cf": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.EstimatedRankingPreservesDateMethodAndRequiresRightsForPermanentStorage",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "1c756542-a7c0-c468-efb9-e552cfbecc44": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.ProviderQuotaHeadersStopNewCallsButCachedDataRemainsUsable",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e5287f19-4927-7ae3-ddd0-9d4b56654fa6": {
+      "Name": "Elifoot.Integration.Tests.OperatingEconomy012DFixIntegrationTests.ReplayedSettlementAndLoanCommandsShareTheWorldGateWithoutExtraCommercialIncome(participants: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "78233d80-c733-95b6-ee9d-dd5d4cc40c62": {
+      "Name": "Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "50643994-f5de-32b1-ae28-c8a0f90a858d": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.Final014B_RealClubsAndAuthorizedSimulatedSquadsFullMultiplayerLifecycle(coachCount: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2b6b6d70-297a-03df-9a3a-3ce74bab9585": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.CoverageSeparatesDocumentedContractsFromCurrentSquadsAndPreservesMetadataOnFallback(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "585bb8dd-b5f3-12bc-5b70-510b2e1ada59": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b6daea21-6ccc-7482-d9fe-d0dc426e31fc": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "4d42c633-0179-cc6a-4bee-067ab623993e": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 9)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b7b399d2-cf7e-04da-dce8-08b652f53061": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"centre-forward\", expected: \"A\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "8c348744-c0ea-2c55-85e7-716bdaa8ecbb": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 12)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "ac8f1bd3-d378-59ee-6ab4-d523ef9cf5a4": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.Final014B_RealClubsAndAuthorizedSimulatedSquadsFullMultiplayerLifecycle(coachCount: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "077d2ff2-11a2-8abe-c198-ad28d3036110": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.CoverageSeparatesDocumentedContractsFromCurrentSquadsAndPreservesMetadataOnFallback(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "4746e378-a26f-5238-2b14-4dd4d9a54bdb": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.CacheHonorsLastValidResultCooldownAndSourceFailure",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "fcc87955-8ec9-298b-1dd7-cfbe7206fab9": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.TimeoutAndRateLimitHaveBoundedRetriesAndFallback(rateLimit: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "d0ac9175-f66b-4b69-2d6d-72a2818681b7": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9e27a123-7e1a-eb84-05da-4be54242c7b7": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 2, importedWorld: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "cd75ebff-7bb1-97a4-a644-42f567485bf3": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.SqliteReloadPreservesExactAwardsTitlesLedgerAndMatchIdempotency(receiver: \"different\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "05731558-a11d-85a0-3851-7737dc22ab71": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.EightCountriesAutomatic128UniqueAndImmutableIndependentSnapshot(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "f1b387c2-e2f6-183c-1821-e27e99faac01": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.MissingCredentialsCancellationAndWikimediaMaxlagRespectLimits",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "47b90669-6043-487c-f21f-5a9218645aef": {
+      "Name": "Elifoot.Integration.Tests.ClassicEconomy012DIntegrationTests.HttpAndSignalRFinanceShareRoomLockAndIdempotency(humans: 2)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0463c3de-670e-4a0c-99b4-129e2a1e865d": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "bfce584b-c07c-dd30-6630-a62109bc525a": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 6, importedWorld: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "1122afa2-17e7-9a1a-56b2-ab64df252ae6": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.SharedSyncLeaseAcrossServiceInstancesCoalescesConcurrentFetchAndImportIsIdempotent",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e17db386-c43a-544a-e72a-c19e0885550c": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "01aaa79f-40e4-2f8c-7f25-db3b994e171c": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 6)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c2849a3f-8863-b2fe-afda-97dd6d427514": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 13)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b42f0ce1-9054-3ba9-8778-20ee5693a764": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "0212dc31-350b-832e-d960-ed4e15d84873": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.PartialCountryFallbackWithApiFailureAndSuccessfulCountryUsesIndependentDates(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "a7c4d7d7-a4a4-4d03-e88b-8d430f122a43": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.Existing008DatabaseMigratesFromConsistentReadOnlyBackupWithoutChangingCareerOrLedger",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "364c5aed-9bef-25b0-d053-4bbfe457e782": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 1)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "70d6d20e-4457-3ffc-82a1-69964ec02839": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.InvalidSourceEvidenceIsRejected(row: \"{\\\"date\\\":\\\"invalid\\\",\\\"team1\\\":\\\"a\\\",\\\"team2\\\":\\\"\"···)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "0262480b-e69b-d097-39ff-f16a0876cd0c": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.LicensesAreIndependentAndExpiredCacheIsNotShownAsUsable",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e3c60a75-2325-f229-8788-e215cdd1c08f": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.TransportRedactsHttpFailuresAndRateLimits(status: 500)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "3f23e548-38aa-dc7c-6bcb-9007f0814f99": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Defensive Midfielder\", expected: \"M\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "fb28f63b-6f58-db7f-df25-c9c2db2a8e9f": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.ConflictingScoresForSameFixtureAreRejected",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e53d8a96-7f35-715b-82ad-97df26f464c0": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.Final014B_RealClubsAndAuthorizedSimulatedSquadsFullMultiplayerLifecycle(coachCount: 8)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "3027fba8-a4d8-264e-e174-db862a3681b7": {
+      "Name": "Elifoot.Integration.Tests.FinancialPersistence007Tests.AiOfferSubmissionAndHumanAcceptance_HaveDistinctMetricsAndCorrectAttribution",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "206735bc-8d8c-902a-a030-a6cc7c128692": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Full Back\", expected: \"D\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "26393ad2-49e2-2035-8851-374d74f1efe1": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.HumanCanAcceptOrRejectThroughHttpAndReceivesUpdatedOwnership(accept: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "fe3f4488-430c-5f62-bf93-0389f45c3f77": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(gender: Male, fixtureData: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "25b2de78-6517-fb1e-7951-0a4c3306ec98": {
+      "Name": "Elifoot.Integration.Tests.PlayerForce012IntegrationTests.SqliteReloadAndHttpHistoryRetainStrengthEventsAcrossActualTransfer",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "93ec1265-168a-03bf-46e1-b2b1ae2fb42a": {
+      "Name": "Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.HttpRankingPerformanceIsMeasuredAfterColdSqliteReload(clubs: 1024)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "60a913f6-2804-e1c6-d1b9-8a3b41f18c97": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 9)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "d534d9b9-f064-e8d8-92fe-502ac715ed90": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.InvalidUpdatePreservesLastValidSnapshot(issue: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "43d1c432-dfb1-2c41-5e7f-9f3a346a97c0": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PaginationAndHttp200ErrorsNeverActivate(payloadError: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "87450a32-b2eb-5168-695a-beb92d986951": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.ImportedFoundationUsesApprovedEconomyForFinalSquadsAndIndividualCredit(gender: Male, manual: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "d28d96a0-25a6-6e4f-08f6-d353dd775a64": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: Sportmonks, gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "7bca0dcc-1e00-6939-bee7-c5cb2134913b": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.ShortageRequiresExplicitFictionalConsentAndDoesNotMixCategories",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "18fc23ed-f684-3298-b842-822cf872c7a3": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.OwnershipConsentAndOptimisticConcurrencyAreEnforced",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b5add7f3-bcfb-57bf-8341-df1a83bc0159": {
+      "Name": "Elifoot.Integration.Tests.Integration014ATests.CatalogPackageRoundTripRetainsClassicForceProtectedSalaryAndApprovedCommercialRules(gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "e6f5a8a9-74aa-9548-a407-db8402fa613f": {
+      "Name": "Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.MultiplayerRooms_2_4_6_And_8_IndependentClients_Full15StepLifecycle_SignalR_Pause_Substitutions_DisconnectAndReconnect(coachCount: 4, importedWorld: False)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "03c6045e-1696-be95-5268-e51ebc9a0102": {
+      "Name": "Elifoot.Integration.Tests.WorldCreator013ATests.CustomManualAssignmentsOverrideRankingAndManualDistrictsAreExact",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c155a265-9da4-47fe-f07b-72932d7595d1": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: FootballData, gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "4c1bfbf4-4b57-9653-a397-8f148479e327": {
+      "Name": "Elifoot.Integration.Tests.PlayerForce012IntegrationTests.ConcurrentSeasonAdvanceAndReconnectDoNotDuplicatePlayerProgress",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "43776156-f208-cc5d-b5fe-f45e99fbc340": {
+      "Name": "Elifoot.Integration.Tests.OperatingEconomy012DFixIntegrationTests.ReplayedSettlementAndLoanCommandsShareTheWorldGateWithoutExtraCommercialIncome(participants: 4)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "b82c4f3d-dff1-cd23-ba06-6cdada9fb775": {
+      "Name": "Elifoot.Integration.Tests.OpenFootball013BTests.InvalidSourceEvidenceIsRejected(row: \"{\\\"date\\\":\\\"2026-10-01\\\",\\\"team1\\\":\\\"a\\\",\\\"team2\\\"\"···)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "c716d4a5-2b60-1d29-b5ea-d818eb4a8d12": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.ExternalIdentityCountryAndGenderAreNotMergedByName",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "7025d688-259f-3260-7110-afb8937017e0": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.WikidataProtocolMapsReviewedTeamAndMembershipWithoutInventingMissingNames(gender: Female, fixtureData: True)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "9c66cbde-7f69-f1d2-9142-ad3ddaa8c788": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.PositionsAreClassicAndUnknownIsRejected(value: \"Central Midfielder\", expected: \"M\")",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "5b824964-070a-449d-6436-25c7fecd729e": {
+      "Name": "Elifoot.Integration.Tests.RealData013BTests.NativeProviderProtocolsImportGenderSeasonSquadsAndNoMedia(kind: FootballData, gender: Male)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "2e228c34-ce06-d559-90f7-73cc4a896ae7": {
+      "Name": "Elifoot.Integration.Tests.CustomWorldAssembly014BTests.InvalidDraftRemainsEditableButCannotCreateWorld(issue: 10)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "4032b22c-01a2-67b2-afde-e83144c17299": {
+      "Name": "Elifoot.Integration.Tests.CoachCareer008IntegrationTests.PendingOfferCannotBeAcceptedAfterMoraleFallsBelowGreen(morale: 20)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "352d1b9b-dcdf-189d-88cb-8787766645ef": {
+      "Name": "Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female)",
+      "Outcome": "Passed",
+      "Evidence": "014c_net10.0_20261031112419.trx"
+    },
+    "1937b0a6-2d19-d4a1-deb8-ab47386333ec": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.ConcurrentCacheRefreshCoalescesSourceRequests",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "675bc1a6-db7c-2653-9dba-22b0d91991da": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.FailedOnlineSourceFallsBackToAuthorizedImport",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "b8c38482-101b-96b5-4de2-16ca04624ff9": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: \"P462\")",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "fc0f47e9-5666-28de-15ff-bc87261688e9": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: \"P6364\")",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    },
+    "ab7be102-28bc-d50f-1f5e-4cf56e9a1f28": {
+      "Name": "Elifoot.Integration.Tests.ClubColors014CTests.LegacyWorldWithoutColorsAllowsPrivateAppearanceAndPreservesCompleteSnapshot",
+      "Outcome": "Passed",
+      "Evidence": "colors-final.trx"
+    }
+  }
+}

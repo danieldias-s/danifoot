@@ -1,0 +1,35 @@
+{
+  "Status": "PASS",
+  "Cases": [
+    {
+      "Gender": "Male",
+      "World": "2a29c54b-9ebd-4b19-889e-c6d7115f701c",
+      "PrivateTrainers": 2,
+      "ConcurrentSaves": [
+        "CONFLICT",
+        1,
+        "CONFLICT",
+        "CONFLICT"
+      ],
+      "NoGameplayWritesByAppearance": true,
+      "ResetOriginal": true,
+      "UnauthorizedRejected": true,
+      "DatabasePersistence": true
+    },
+    {
+      "Gender": "Female",
+      "World": "4c2cbcc7-8346-47db-8188-7e99143e295a",
+      "PrivateTrainers": 2,
+      "ConcurrentSaves": [
+        "CONFLICT",
+        1,
+        "CONFLICT",
+        "CONFLICT"
+      ],
+      "NoGameplayWritesByAppearance": true,
+      "ResetOriginal": true,
+      "UnauthorizedRejected": true,
+      "DatabasePersistence": true
+    }
+  ]
+}

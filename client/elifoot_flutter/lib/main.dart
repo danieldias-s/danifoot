@@ -6,6 +6,8 @@ import 'package:flutter/semantics.dart';
 
 import 'api_client.dart';
 import 'world_creator.dart';
+import 'club_theme.dart';
+import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
 import 'classic_match_board.dart';
@@ -22,12 +24,13 @@ Future<void> main() async {
 }
 
 class _PlayerSilhouettePainter extends CustomPainter {
-  const _PlayerSilhouettePainter();
+  final Color color;
+  const _PlayerSilhouettePainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFD2EBD6)
+      ..color = color
       ..style = PaintingStyle.fill;
     final cx = size.width / 2;
     canvas.drawCircle(Offset(cx, size.height * 0.34), size.width * 0.18, paint);
@@ -44,68 +47,46 @@ class _PlayerSilhouettePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _PlayerSilhouettePainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
-class ElifootClassicApp extends StatelessWidget {
+class ElifootClassicApp extends StatefulWidget {
   final ElifootApiClient? apiClient;
   const ElifootClassicApp({super.key, this.apiClient});
+  @override
+  State<ElifootClassicApp> createState() => _ElifootClassicAppState();
+}
+
+class _ElifootClassicAppState extends State<ElifootClassicApp> {
+  final appearance = ClubThemeController();
+  late final api = widget.apiClient ?? ElifootApiClient();
+  @override
+  void dispose() {
+    appearance.dispose();
+    super.dispose();
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: appearance,
+    builder: (context, _) => MaterialApp(
       title: 'Elifoot Classic Multiplayer',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: false,
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF0A4D1C),
-        primaryColor: const Color(0xFF136F2D),
-        colorScheme: const ColorScheme.dark(
-          primary: Color(0xFFFFD700),
-          secondary: Color(0xFF00E676),
-          surface: Color(0xFF0E3B19),
-        ),
-        fontFamily: 'monospace',
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFC0C0C0),
-            foregroundColor: Colors.black,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero,
-            ),
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-              fontFamily: 'monospace',
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          ),
-        ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            foregroundColor: const Color(0xFFFFD700),
-            side: const BorderSide(color: Color(0xFFFFD700)),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero,
-            ),
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-              fontFamily: 'monospace',
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          ),
-        ),
-      ),
-      home: ElifootShellScreen(apiClient: apiClient ?? ElifootApiClient()),
-    );
-  }
+      theme: appearance.theme.material(),
+      home: ElifootShellScreen(apiClient: api, appearance: appearance),
+    ),
+  );
 }
 
 class ElifootShellScreen extends StatefulWidget {
   final ElifootApiClient apiClient;
-  const ElifootShellScreen({super.key, required this.apiClient});
+  final ClubThemeController? appearance;
+  const ElifootShellScreen({
+    super.key,
+    required this.apiClient,
+    this.appearance,
+  });
 
   @override
   State<ElifootShellScreen> createState() => _ElifootShellScreenState();
@@ -195,11 +176,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _deviceController = TextEditingController(text: _deviceId);
     widget.apiClient.onSnapshotUpdated = (snap) {
       if (!mounted) return;
-      if (_worldId!=null && snap['gameWorldId']!=null && snap['gameWorldId']!=_worldId) return;
+      if (_worldId != null &&
+          snap['gameWorldId'] != null &&
+          snap['gameWorldId'] != _worldId) {
+        return;
+      }
       if ((_snapshot?['roundVersion'] as num? ?? 0) >
           (snap['roundVersion'] as num? ?? 0)) {
         return;
       }
+      final previousClub = _myClubId;
       final prevState = _snapshot?['roundState'];
       final newState = snap['roundState'];
       setState(() {
@@ -212,8 +198,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _isUnemployed = me['isUnemployed'] == true;
           if (_isUnemployed) _myClubDetail = null;
         }
-
       });
+      if (previousClub != _myClubId) {
+        widget.appearance?.activate(
+          widget.apiClient,
+          _coachId,
+          _worldId,
+          _myClubId,
+          null,
+        );
+        _refreshClubAndSecondaryData();
+      }
       if (prevState != newState &&
           (newState == 'PREPARING' || newState == 'RESULTS')) {
         _refreshClubAndSecondaryData();
@@ -221,7 +216,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     };
     widget.apiClient.onReadyCounterUpdated = (counter) {
       if (!mounted || _snapshot == null) return;
-      if (counter['gameWorldId']!=null && counter['gameWorldId']!=_worldId) return;
+      if (counter['gameWorldId'] != null && counter['gameWorldId'] != _worldId) {
+        return;
+      }
       if ((_snapshot?['roundVersion'] as num? ?? 0) >
           (counter['roundVersion'] as num? ?? 0)) {
         return;
@@ -274,12 +271,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Future<void> _openCatalogCreator() async {
     if (_coachId == null) return;
-    final created = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => WorldCreatorScreen(api: widget.apiClient, coachId: _coachId!)));
+    final created = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) =>
+            WorldCreatorScreen(api: widget.apiClient, coachId: _coachId!),
+      ),
+    );
     if (created == true) {
       final worlds = await widget.apiClient.listWorlds();
       if (mounted) setState(() => _worlds = worlds);
     }
   }
+
   Future<void> _joinSelectedWorld(
     String worldId, {
     String? preferredClubId,
@@ -298,7 +302,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
       final snap = res['snapshot'] as Map<String, dynamic>;
       setState(() {
-        if (_worldId != worldId) { _snapshot = null; _roundView.reset(); }
+        if (_worldId != worldId) {
+          _snapshot = null;
+          _roundView.reset();
+        }
         _worldId = worldId;
         _myClubId = res['clubId']?.toString();
         _isUnemployed = res['isUnemployed'] == true;
@@ -316,6 +323,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Future<void> _refreshClubAndSecondaryData() async {
     if (_worldId == null) return;
+    final appearanceWorld = _worldId, appearanceClub = _myClubId;
     try {
       final standings = await widget.apiClient.getStandings(
         _worldId!,
@@ -345,7 +353,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         invites = await widget.apiClient.getInvitations(_worldId!, _coachId!);
       }
 
-      if (!mounted) return;
+      if (!mounted ||
+          _worldId != appearanceWorld ||
+          _myClubId != appearanceClub) {
+        return;
+      }
       setState(() {
         _standings = standings;
         _cupFixtures = cup;
@@ -378,6 +390,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _financesData = finances;
         }
       });
+      await widget.appearance?.activate(
+        widget.apiClient,
+        _coachId,
+        _worldId,
+        _myClubId,
+        clubDetail?['colorPalette'] is Map
+            ? Map<String, dynamic>.from(clubDetail!['colorPalette'] as Map)
+            : null,
+      );
     } catch (e) {
       if (mounted) setState(() => _statusBanner = 'Aviso: $e');
     }
@@ -387,9 +408,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final next = _preferLatestSnapshot(incoming);
     if (next != null) {
       switch (_roundView.accept(next)) {
-        case RoundViewDecision.match: _showMatchView = true;
-        case RoundViewDecision.tactics: _showMatchView = false; _activeTabIndex = 0;
-        case RoundViewDecision.none: break;
+        case RoundViewDecision.match:
+          _showMatchView = true;
+        case RoundViewDecision.tactics:
+          _showMatchView = false;
+          _activeTabIndex = 0;
+        case RoundViewDecision.none:
+          break;
       }
     }
     final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
@@ -413,16 +438,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return next;
   }
 
-  int get _requiredStarterCount => (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
+  int get _requiredStarterCount =>
+      (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
 
-  bool get _tacticsLocked => _snapshot?['roundState'] != 'PREPARING' ||
-      (_snapshot?['readyCounter']?['participants'] as List? ?? []).any((p)=>p['coachId']==_coachId && p['isReady']==true);
+  bool get _tacticsLocked =>
+      _snapshot?['roundState'] != 'PREPARING' ||
+      (_snapshot?['readyCounter']?['participants'] as List? ?? []).any(
+        (p) => p['coachId'] == _coachId && p['isReady'] == true,
+      );
 
   bool get _isClassicIdleRound =>
       _snapshot?['forceRulesVersion'] == 1 &&
       _myClubId != null &&
       !((_snapshot?['matches'] as List<dynamic>?) ?? []).any(
-        (m) => m['homeClubId']?.toString() == _myClubId ||
+        (m) =>
+            m['homeClubId']?.toString() == _myClubId ||
             m['awayClubId']?.toString() == _myClubId,
       );
 
@@ -452,13 +482,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final snap = await widget.apiClient.getSnapshot(_worldId!);
       setState(() {
         _snapshot = _acceptSnapshot(snap);
-        if (counter != null && (counter['roundVersion'] as num? ?? 0) >= (_snapshot?['roundVersion'] as num? ?? 0)) {
+        if (counter != null &&
+            (counter['roundVersion'] as num? ?? 0) >=
+                (_snapshot?['roundVersion'] as num? ?? 0)) {
           _snapshot!['readyCounter'] = counter;
         }
-        _statusBanner = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString())
+        _statusBanner =
+            RoundViewCoordinator.isMatchStage(
+              _snapshot?['roundState']?.toString(),
+            )
             ? 'RODADA INICIADA PELO SERVIDOR'
             : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.';
-
       });
     } catch (e) {
       setState(() => _statusBanner = 'Erro ao enviar tática: $e');
@@ -534,34 +568,34 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             if (_statusBanner != null)
               Container(
                 width: double.infinity,
-                color: const Color(0xFF1B5E20),
+                color: ClassicTheme.of(context).surfaceAlternate,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 4,
                 ),
                 child: Row(
                   children: [
-                    const Text(
+                    Text(
                       '[!]',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         _statusBanner!,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12,
-                          color: Colors.white,
+                          color: ClassicTheme.of(context).textPrimary,
                         ),
                       ),
                     ),
                     InkWell(
                       onTap: () => setState(() => _statusBanner = null),
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 6,
                           vertical: 2,
@@ -571,7 +605,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFFFFD700),
+                            color: ClassicTheme.of(context).accent,
                           ),
                         ),
                       ),
@@ -579,11 +613,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ],
                 ),
               ),
-            if ((_snapshot?['roundState']=='PREPARING'||_snapshot?['roundState']=='ALL_READY') &&
-                ((_snapshot?['readyCounter']?['participants'] as List? ?? []).any((p)=>p['coachId']==_coachId && p['isReady']==true)))
-              Container(key:const Key('ready-waiting-panel'),width:double.infinity,padding:const EdgeInsets.all(8),color:const Color(0xFF174F26),
-                child:Text(_isUnemployed?'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.':'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                  style:const TextStyle(color:Color(0xFFFFD700),fontWeight:FontWeight.bold))),
+            if ((_snapshot?['roundState'] == 'PREPARING' ||
+                    _snapshot?['roundState'] == 'ALL_READY') &&
+                ((_snapshot?['readyCounter']?['participants'] as List? ?? [])
+                    .any(
+                      (p) => p['coachId'] == _coachId && p['isReady'] == true,
+                    )))
+              Container(
+                key: const Key('ready-waiting-panel'),
+                width: double.infinity,
+                padding: const EdgeInsets.all(8),
+                color: ClassicTheme.of(context).surfaceAlternate,
+                child: Text(
+                  _isUnemployed
+                      ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+                      : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).accent,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             _buildClassicNavigationMenu(),
             Expanded(child: _buildActiveScreenBody()),
           ],
@@ -596,11 +646,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Widget _buildLobbyAndHomeScreen() {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF073612),
-        title: const Text(
+        backgroundColor: ClassicTheme.of(context).surface,
+        title: Text(
           'ELIFOOT CLASSIC MULTIPLAYER — EDIÇÃO 98',
           style: TextStyle(
-            color: Color(0xFFFFD700),
+            color: ClassicTheme.of(context).accent,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
@@ -612,8 +662,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 12),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF136F2D),
-                  border: Border.all(color: const Color(0xFFFFD700)),
+                  color: ClassicTheme.of(context).buttonBackground,
+                  border: Border.all(
+                    color: ClassicTheme.of(context).selectedBackground,
+                  ),
                 ),
                 child: Text(
                   'Técnico: $_nickname',
@@ -637,29 +689,32 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0E3B19),
+                    color: ClassicTheme.of(context).surface,
                     border: Border.all(
-                      color: const Color(0xFFFFD700),
+                      color: ClassicTheme.of(context).selectedBackground,
                       width: 2,
                     ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'GESTÃO CLÁSSICA DE FUTEBOL • MULTIPLAYER ATÉ 8 TÉCNICOS • MOTOR AUTORITATIVO',
                         style: TextStyle(
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
+                      Text(
                         '• 128 Clubes no Brasil (4 Divisões de 8 + 96 Distritais na Taça)\n'
                         '• Contador Sincronizado (TÁTICAS ENVIADAS: 0/6) e Parada Global compartilhada\n'
                         '• Técnicos de IA com filosofia tática persistente e mercado bilateral racional',
-                        style: TextStyle(fontSize: 12, color: Colors.white70),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: ClassicTheme.of(context).textSecondary,
+                        ),
                       ),
                       const SizedBox(height: 12),
                       Wrap(
@@ -737,10 +792,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     runSpacing: 8,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'SALAS / MUNDOS DISPONÍVEIS',
                         style: TextStyle(
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
                         ),
@@ -785,8 +840,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         margin: const EdgeInsets.only(bottom: 10),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF0E3B19),
-                          border: Border.all(color: const Color(0xFF3E8450)),
+                          color: ClassicTheme.of(context).surface,
+                          border: Border.all(
+                            color: ClassicTheme.of(context).border,
+                          ),
                         ),
                         child: Wrap(
                           spacing: 8,
@@ -802,8 +859,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 children: [
                                   Text(
                                     '${w['name']}  [Código: ${w['inviteCode']}]',
-                                    style: const TextStyle(
-                                      color: Color(0xFFFFD700),
+                                    style: TextStyle(
+                                      color: ClassicTheme.of(context).accent,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
                                     ),
@@ -811,9 +868,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                   const SizedBox(height: 4),
                                   Text(
                                     'Temporada ${w['seasonNumber']} • Rodada ${w['roundNumber']} • Estado: ${w['roundState']} • Clubes: ${w['totalClubs']} • $counterLabel',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 12,
-                                      color: Colors.white70,
+                                      color: ClassicTheme.of(
+                                        context,
+                                      ).textSecondary,
                                     ),
                                   ),
                                 ],
@@ -825,10 +884,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               child: const Text('ENTRAR COM CLUBE'),
                             ),
                             OutlinedButton(
-                              onPressed: () => _joinSelectedWorld(
-                                wid,
-                                joinUnemployed: true,
-                              ),
+                              onPressed: () =>
+                                  _joinSelectedWorld(wid, joinUnemployed: true),
                               child: const Text('ENTRAR DESEMPREGADO'),
                             ),
                           ],
@@ -852,8 +909,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final readyCounter = snap?['readyCounter'] as Map<String, dynamic>?;
     final counterLabel =
         readyCounter?['counterLabel']?.toString() ?? 'TÁTICAS ENVIADAS: 0/1';
-    final participants =
-        readyCounter?['participants'] as List<dynamic>? ?? [];
+    final participants = readyCounter?['participants'] as List<dynamic>? ?? [];
     final currentMinute = (snap?['currentMinute'] as num?)?.toInt() ?? 0;
     final pauseWindow = snap?['activePauseWindow'] as Map<String, dynamic>?;
 
@@ -879,9 +935,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: const BoxDecoration(
-        color: Color(0xFF062E0F),
-        border: Border(bottom: BorderSide(color: Color(0xFFFFD700), width: 2)),
+      decoration: BoxDecoration(
+        color: ClassicTheme.of(context).surface,
+        border: Border(
+          bottom: BorderSide(
+            color: ClassicTheme.of(context).selectedBackground,
+            width: 2,
+          ),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -893,15 +954,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             children: [
               Text(
                 '${snap?['worldName'] ?? 'Sala'} • Temp ${snap?['seasonNumber'] ?? 1} • Rodada ${snap?['roundNumber'] ?? 1} (${snap?['competitionLabel'] ?? ''})',
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                color: const Color(0xFF136F2D),
+                color: ClassicTheme.of(context).buttonBackground,
                 child: Text(
                   _isUnemployed
                       ? 'TÉCNICO: $_nickname ($clubName)'
@@ -916,30 +977,53 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1B5E20),
-                  border: Border.all(color: const Color(0xFFFFD700)),
+                  color: ClassicTheme.of(context).surfaceAlternate,
+                  border: Border.all(
+                    color: ClassicTheme.of(context).selectedBackground,
+                  ),
                 ),
                 child: Text(
                   counterLabel,
                   key: const Key('ready-counter-label'),
-                  style: const TextStyle(
-                    color: Color(0xFFFFD700),
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).accent,
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
                 ),
               ),
-              if (!_showMatchView && RoundViewCoordinator.isMatchStage(roundState))
-                OutlinedButton(key: const Key('return-to-match'), onPressed:()=>setState(()=>_showMatchView=true),
-                  child:const Text('VOLTAR À PARTIDA')),
+              if (!_showMatchView &&
+                  RoundViewCoordinator.isMatchStage(roundState))
+                OutlinedButton(
+                  key: const Key('return-to-match'),
+                  onPressed: () => setState(() => _showMatchView = true),
+                  child: const Text('VOLTAR À PARTIDA'),
+                ),
+              if (widget.appearance != null)
+                OutlinedButton(
+                  key: const ValueKey('appearance-menu'),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => AppearanceSettings(
+                        api: widget.apiClient,
+                        controller: widget.appearance!,
+                      ),
+                    ),
+                  ),
+                  child: const Text('APARÊNCIA'),
+                ),
               if (roundState == 'PREPARING') ...[
                 if (!isReady)
                   ElevatedButton(
                     key: const Key('btn-enviar-tatica'),
                     onPressed:
                         _commandBusy ||
-                            (!_isUnemployed && !_isClassicIdleRound &&
-                                (_requiredStarterCount < 1 || _selectedStarterIds.length != _requiredStarterCount))
+                            (!_isUnemployed &&
+                                !_isClassicIdleRound &&
+                                (_requiredStarterCount < 1 ||
+                                    _selectedStarterIds.length !=
+                                        _requiredStarterCount))
                         ? null
                         : () => _runUiCommand(_handleSendTacticsOrReady),
                     child: Text(
@@ -981,7 +1065,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     key: const Key('btn-pedir-parada'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.redAccent,
-                      foregroundColor: Colors.white,
+                      foregroundColor: ClassicTheme.of(context).textPrimary,
                     ),
                     onPressed: _commandBusy
                         ? null
@@ -1011,6 +1095,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   widget.apiClient.disconnectRealtime();
                   setState(() {
                     _worldId = null;
+                    widget.appearance?.activate(
+                      widget.apiClient,
+                      null,
+                      null,
+                      null,
+                      null,
+                    );
                     _snapshot = null;
                     _myClubDetail = null;
                     _myClubId = null;
@@ -1036,16 +1127,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               return Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: pReady ? Colors.green.shade800 : Colors.grey.shade900,
+                  color: pReady
+                      ? ClassicTheme.of(context).selectedBackground
+                      : ClassicTheme.of(context).surface,
                   border: Border.all(
-                    color: pReady ? Colors.lightGreenAccent : Colors.white24,
+                    color: pReady
+                        ? ClassicTheme.of(context).border
+                        : ClassicTheme.of(context).border,
                   ),
                 ),
                 child: Text(
                   '${pReady ? "[OK]" : "[..]"} $pName ($pClub)${p['isConnected'] == false ? " • DESCONECTADO" : ""}',
                   style: TextStyle(
                     fontSize: 10.5,
-                    color: pReady ? Colors.lightGreenAccent : Colors.white70,
+                    color: pReady
+                        ? ClassicTheme.of(context).selectedText
+                        : ClassicTheme.of(context).textSecondary,
                     fontWeight: pReady ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
@@ -1070,16 +1167,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     roundState == 'HALFTIME_PAUSED'
                         ? "INTERVALO DE JOGO (45') — AJUSTES GRATUITOS"
                         : "PARTIDA PAUSADA POR ${pauseWindow['requestedByCoachName'] ?? 'INTERVALO'} (${pauseWindow['minute']}')",
-                    style: const TextStyle(
-                      color: Color(0xFFFFD700),
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).accent,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
                   ),
                   Text(
                     "AJUSTES CONFIRMADOS: ${pauseWindow['confirmedCount']}/${pauseWindow['totalHumans']}  |  TEMPO: ${pauseWindow['remainingSeconds']}s",
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).textPrimary,
                       fontWeight: FontWeight.bold,
                       fontSize: 11,
                     ),
@@ -1117,7 +1214,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
     return Container(
       width: double.infinity,
-      color: const Color(0xFF093915),
+      color: ClassicTheme.of(context).surface,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -1128,7 +1225,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               padding: const EdgeInsets.only(right: 6),
               child: InkWell(
                 onTap: () {
-                  setState(() { _activeTabIndex = idx; _showMatchView = false; });
+                  setState(() {
+                    _activeTabIndex = idx;
+                    _showMatchView = false;
+                  });
                   _refreshClubAndSecondaryData();
                 },
                 child: Container(
@@ -1138,12 +1238,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                   decoration: BoxDecoration(
                     color: selected
-                        ? const Color(0xFFFFD700)
-                        : const Color(0xFF124E21),
+                        ? ClassicTheme.of(context).selectedBackground
+                        : ClassicTheme.of(context).surfaceAlternate,
                     border: Border.all(
                       color: selected
-                          ? const Color(0xFFFFD700)
-                          : const Color(0xFF3E8450),
+                          ? ClassicTheme.of(context).selectedBackground
+                          : ClassicTheme.of(context).border,
                     ),
                   ),
                   child: Text(
@@ -1151,7 +1251,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
-                      color: selected ? Colors.black : Colors.white,
+                      color: selected
+                          ? ClassicTheme.of(context).selectedText
+                          : ClassicTheme.of(context).textPrimary,
                     ),
                   ),
                 ),
@@ -1207,7 +1309,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final filteredSquad = squad.where((p) {
       final pid = p['id'].toString();
       final pos = _formatPosition(p['position']);
-      final inj = ((p['injuryDaysRemaining'] as num?)?.toInt() ?? 0) +
+      final inj =
+          ((p['injuryDaysRemaining'] as num?)?.toInt() ?? 0) +
           ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
       final susp = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
       final isStarter = _selectedStarterIds.contains(pid);
@@ -1250,8 +1353,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     for (var i = 0; i < filteredSquad.length; i++) {
       final p = filteredSquad[i];
       final pid = p['id'].toString();
-      final displayName =
-          p['displayName']?.toString() ?? p['name'].toString();
+      final displayName = p['displayName']?.toString() ?? p['name'].toString();
       final pos = _formatPosition(p['position']);
       final str = p['strength'] ?? 20;
       final beh = p['behaviorDisplay']?.toString() ?? '';
@@ -1260,7 +1362,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final salary = (p['salaryPerRound'] as num?)?.toDouble() ?? 0;
       final fair = (p['fairValue'] as num?)?.toDouble() ?? 0;
       final injuryDays = (p['injuryDaysRemaining'] as num?)?.toInt() ?? 0;
-      final inj = injuryDays + ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
+      final inj =
+          injuryDays + ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
       final susp = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
 
       final isStarter = _selectedStarterIds.contains(pid);
@@ -1271,7 +1374,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       String conditionLabel = 'APTO';
       if (inj > 0) {
         roleLabel = 'LES ($inj)';
-        conditionLabel = injuryDays > 0 ? 'LESIONADO ($injuryDays dias)' : 'LESIONADO (${inj}r)';
+        conditionLabel = injuryDays > 0
+            ? 'LESIONADO ($injuryDays dias)'
+            : 'LESIONADO (${inj}r)';
         roleColor = Colors.redAccent;
       } else if (susp > 0) {
         roleLabel = 'SUS ($susp)';
@@ -1301,10 +1406,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           selected: isStarter,
           color: WidgetStateProperty.all(
             isStarter
-                ? const Color(0xFF185728)
+                ? ClassicTheme.of(context).surfaceAlternate
                 : (i.isEven
-                      ? const Color(0xFF0B3515)
-                      : const Color(0xFF10421C)),
+                      ? ClassicTheme.of(context).tableRow
+                      : ClassicTheme.of(context).tableRowAlternate),
           ),
           cells: [
             DataCell(
@@ -1358,8 +1463,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
             DataCell(
               InkWell(
-                onTap: () =>
-                    _showPlayerDetailDialog(p as Map<String, dynamic>),
+                onTap: () => _showPlayerDetailDialog(p as Map<String, dynamic>),
                 child: Text(
                   displayName,
                   style: TextStyle(
@@ -1367,8 +1471,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ? FontWeight.bold
                         : FontWeight.normal,
                     color: displayName.endsWith('*')
-                        ? const Color(0xFFFFD700)
-                        : Colors.white,
+                        ? ClassicTheme.of(context).accent
+                        : ClassicTheme.of(context).textPrimary,
                     fontSize: 12,
                   ),
                 ),
@@ -1396,7 +1500,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
             ),
             DataCell(Text('$goals', style: const TextStyle(fontSize: 11))),
-            DataCell(Text('${contract}r', style: const TextStyle(fontSize: 11))),
+            DataCell(
+              Text('${contract}r', style: const TextStyle(fontSize: 11)),
+            ),
             DataCell(
               Text(
                 formatClassicMoney(salary),
@@ -1472,8 +1578,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: const Color(0xFF0E3B19),
-              border: Border.all(color: const Color(0xFF3E8450)),
+              color: ClassicTheme.of(context).surface,
+              border: Border.all(color: ClassicTheme.of(context).border),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1487,19 +1593,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       spacing: 6,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'ESQUEMA TÁTICO: ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
-                            color: Color(0xFFFFD700),
+                            color: ClassicTheme.of(context).accent,
                           ),
                         ),
                         DropdownButton<String>(
                           key: const ValueKey('dropdown-formation'),
-                          dropdownColor: const Color(0xFF062E0F),
-                          icon: _classicDropdownIcon(),
-                          value: availableFormations.contains(_selectedFormation)
+                          dropdownColor: ClassicTheme.of(context).surface,
+                          icon: _classicDropdownIcon(context),
+                          value:
+                              availableFormations.contains(_selectedFormation)
                               ? _selectedFormation
                               : '4-4-2',
                           items: availableFormations
@@ -1515,11 +1622,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 ),
                               )
                               .toList(),
-                          onChanged: _tacticsLocked ? null : (v) {
-                            if (v != null) {
-                              setState(() => _selectedFormation = v);
-                            }
-                          },
+                          onChanged: _tacticsLocked
+                              ? null
+                              : (v) {
+                                  if (v != null) {
+                                    setState(() => _selectedFormation = v);
+                                  }
+                                },
                         ),
                       ],
                     ),
@@ -1549,19 +1658,18 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   runSpacing: 6,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'FILTRAR POS:',
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                     for (final pos in ['ALL', 'G', 'D', 'M', 'A'])
                       InkWell(
                         key: ValueKey('filter-squad-pos-$pos'),
-                        onTap: () =>
-                            setState(() => _squadPositionFilter = pos),
+                        onTap: () => setState(() => _squadPositionFilter = pos),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,
@@ -1569,9 +1677,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           ),
                           decoration: BoxDecoration(
                             color: _squadPositionFilter == pos
-                                ? const Color(0xFFFFD700)
-                                : const Color(0xFF062E0F),
-                            border: Border.all(color: const Color(0xFF3E8450)),
+                                ? ClassicTheme.of(context).selectedBackground
+                                : ClassicTheme.of(context).surface,
+                            border: Border.all(
+                              color: ClassicTheme.of(context).border,
+                            ),
                           ),
                           child: Text(
                             pos == 'ALL' ? 'TODAS' : pos,
@@ -1579,19 +1689,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                               color: _squadPositionFilter == pos
-                                  ? Colors.black
-                                  : Colors.white,
+                                  ? ClassicTheme.of(context).selectedText
+                                  : ClassicTheme.of(context).textPrimary,
                             ),
                           ),
                         ),
                       ),
                     const SizedBox(width: 8),
-                    const Text(
+                    Text(
                       'STATUS:',
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                     for (final st in [
@@ -1603,8 +1713,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ])
                       InkWell(
                         key: ValueKey('filter-squad-status-${st.$1}'),
-                        onTap: () =>
-                            setState(() => _squadStatusFilter = st.$1),
+                        onTap: () => setState(() => _squadStatusFilter = st.$1),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 8,
@@ -1612,9 +1721,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           ),
                           decoration: BoxDecoration(
                             color: _squadStatusFilter == st.$1
-                                ? const Color(0xFFFFD700)
-                                : const Color(0xFF062E0F),
-                            border: Border.all(color: const Color(0xFF3E8450)),
+                                ? ClassicTheme.of(context).selectedBackground
+                                : ClassicTheme.of(context).surface,
+                            border: Border.all(
+                              color: ClassicTheme.of(context).border,
+                            ),
                           ),
                           child: Text(
                             st.$2,
@@ -1622,19 +1733,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                               color: _squadStatusFilter == st.$1
-                                  ? Colors.black
-                                  : Colors.white,
+                                  ? ClassicTheme.of(context).selectedText
+                                  : ClassicTheme.of(context).textPrimary,
                             ),
                           ),
                         ),
                       ),
                     const SizedBox(width: 8),
-                    const Text(
+                    Text(
                       'ORDENAR:',
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                     for (final srt in [
@@ -1653,9 +1764,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           ),
                           decoration: BoxDecoration(
                             color: _squadSortBy == srt.$1
-                                ? const Color(0xFFFFD700)
-                                : const Color(0xFF062E0F),
-                            border: Border.all(color: const Color(0xFF3E8450)),
+                                ? ClassicTheme.of(context).selectedBackground
+                                : ClassicTheme.of(context).surface,
+                            border: Border.all(
+                              color: ClassicTheme.of(context).border,
+                            ),
                           ),
                           child: Text(
                             srt.$2,
@@ -1663,8 +1776,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                               color: _squadSortBy == srt.$1
-                                  ? Colors.black
-                                  : Colors.white,
+                                  ? ClassicTheme.of(context).selectedText
+                                  : ClassicTheme.of(context).textPrimary,
                             ),
                           ),
                         ),
@@ -1675,7 +1788,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
           ),
           const SizedBox(height: 10),
-          AbsorbPointer(absorbing:_tacticsLocked,child:_buildTacticalFieldPreview(squad)),
+          AbsorbPointer(
+            absorbing: _tacticsLocked,
+            child: _buildTacticalFieldPreview(squad),
+          ),
           const SizedBox(height: 10),
           const ClassicTableHeader(
             title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
@@ -1708,16 +1824,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFF062E0F),
-                border: Border.all(color: const Color(0xFF3E8450)),
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'RELATÓRIO DA COMISSÃO TÉCNICA / IA (${aiPlan['managerName']} — Perfil: ${aiPlan['tacticalIdentity']})',
-                    style: const TextStyle(
-                      color: Color(0xFFFFD700),
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).accent,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -1753,15 +1869,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF0E3B19),
-        shape: const RoundedRectangleBorder(
+        backgroundColor: ClassicTheme.of(context).surface,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(color: Color(0xFFFFD700), width: 1.5),
+          side: BorderSide(color: ClassicTheme.of(context).border, width: 1.5),
         ),
         title: Text(
           displayName,
-          style: const TextStyle(
-            color: Color(0xFFFFD700),
+          style: TextStyle(
+            color: ClassicTheme.of(context).accent,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -1774,21 +1890,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 width: 84,
                 height: 84,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF062E0F),
-                  border: Border.all(color: const Color(0xFFFFD700)),
+                  color: ClassicTheme.of(context).surface,
+                  border: Border.all(
+                    color: ClassicTheme.of(context).selectedBackground,
+                  ),
                 ),
                 child: (photoUrl != null && photoUrl.isNotEmpty)
                     ? Image.network(
                         photoUrl,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => const CustomPaint(
+                        errorBuilder: (_, _, _) => CustomPaint(
                           size: Size(64, 64),
-                          painter: _PlayerSilhouettePainter(),
+                          painter: _PlayerSilhouettePainter(
+                            ClassicTheme.of(context).selectedBackground,
+                          ),
                         ),
                       )
-                    : const CustomPaint(
+                    : CustomPaint(
                         size: Size(64, 64),
-                        painter: _PlayerSilhouettePainter(),
+                        painter: _PlayerSilhouettePainter(
+                          ClassicTheme.of(context).selectedBackground,
+                        ),
                       ),
               ),
             ),
@@ -1797,10 +1919,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               'Posição: ${_formatPosition(player['position'])}  |  Força: ${player['strength']}',
             ),
             Text('Comportamento: ${player['behaviorDisplay']}'),
-            if (player['catalogIdentity'] != null) Text(catalogIdentityOrigin(player)),
-            Text(
-              'Craque (*): ${player['isStar'] == true ? "Sim (*)" : "Não"}',
-            ),
+            if (player['catalogIdentity'] != null)
+              Text(catalogIdentityOrigin(player)),
+            Text('Craque (*): ${player['isStar'] == true ? "Sim (*)" : "Não"}'),
             Text(
               'Gols na Temporada: ${player['seasonGoals']}  |  Carreira: ${player['careerGoals']}',
             ),
@@ -1810,7 +1931,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             const Divider(),
             Text(
               'Licença da Imagem: $photoLicense ($photoCredit)',
-              style: const TextStyle(fontSize: 10, color: Colors.white54),
+              style: TextStyle(
+                fontSize: 10,
+                color: ClassicTheme.of(context).textSecondary,
+              ),
             ),
           ],
         ),
@@ -1865,25 +1989,60 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return 'PREPARAÇÃO DA RODADA';
   }
 
-  String _formatEventBadge(dynamic event) => classicEventBadge(Map<String,dynamic>.from(event as Map));
+  String _formatEventBadge(dynamic event) =>
+      classicEventBadge(Map<String, dynamic>.from(event as Map));
 
   /// Tab 1: Jogos ao Vivo, Placar Simultâneo, Intervalo (45'), Pausa Global e Substituições (5/3 e 6/4)
   Widget _buildLiveMatchesAndPauseScreen() {
-    final matches = (_snapshot?['matches'] as List? ?? []).map((m)=>Map<String,dynamic>.from(m as Map)).toList();
+    final matches = (_snapshot?['matches'] as List? ?? [])
+        .map((m) => Map<String, dynamic>.from(m as Map))
+        .toList();
     final state = _snapshot?['roundState']?.toString() ?? 'PREPARING';
-    final pause = _snapshot?['activePauseWindow'] as Map<String,dynamic>?;
-    final mine = matches.where((m)=>m['homeClubId']==_myClubId||m['awayClubId']==_myClubId).firstOrNull;
-    return SingleChildScrollView(padding: const EdgeInsets.all(8), child:Center(child:ConstrainedBox(
-      constraints:const BoxConstraints(maxWidth:940),child:Column(crossAxisAlignment:CrossAxisAlignment.stretch,children:[
-        Text('PLACARES DA RODADA • ${_matchVisualStateLabel(state,pause)}',key:const ValueKey('live-match-state-banner'),
-          style:const TextStyle(color:Color(0xFFFFD700),fontWeight:FontWeight.bold,fontSize:13)),
-        const SizedBox(height:8),
-        if(pause!=null&&mine!=null) _buildInMatchSubstitutionPanel(mine),
-        if(matches.isEmpty) const Text('Aguardando a rodada confirmada pelo servidor.'),
-        ClassicMatchBoard(matches:matches,competitionType:_snapshot?['competitionType']?.toString()??'League',
-          competitionLabel:_snapshot?['competitionLabel']?.toString()??'',coachClubId:_myClubId,
-          coachDetails:(match)=>_buildHighlightedCoachMatchCard(match,_matchVisualStateLabel(state,pause))),
-      ]))));
+    final pause = _snapshot?['activePauseWindow'] as Map<String, dynamic>?;
+    final mine = matches
+        .where(
+          (m) => m['homeClubId'] == _myClubId || m['awayClubId'] == _myClubId,
+        )
+        .firstOrNull;
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(8),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 940),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'PLACARES DA RODADA • ${_matchVisualStateLabel(state, pause)}',
+                key: const ValueKey('live-match-state-banner'),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
+              ),
+              const SizedBox(height: 8),
+              if (pause != null && mine != null)
+                _buildInMatchSubstitutionPanel(mine),
+              if (matches.isEmpty)
+                const Text('Aguardando a rodada confirmada pelo servidor.'),
+              ClassicMatchBoard(
+                matches: matches,
+                competitionType:
+                    _snapshot?['competitionType']?.toString() ?? 'League',
+                competitionLabel:
+                    _snapshot?['competitionLabel']?.toString() ?? '',
+                coachClubId: _myClubId,
+                coachDetails: (match) => _buildHighlightedCoachMatchCard(
+                  match,
+                  _matchVisualStateLabel(state, pause),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildHighlightedCoachMatchCard(
@@ -1903,8 +2062,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       key: const ValueKey('coach-highlighted-match-details'),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFF144B22),
-        border: Border.all(color: const Color(0xFFFFD700), width: 2),
+        color: ClassicTheme.of(context).surfaceAlternate,
+        border: Border.all(
+          color: ClassicTheme.of(context).selectedBackground,
+          width: 2,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1916,15 +2078,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             children: [
               Text(
                 'SEU JOGO EM DESTAQUE • RODADA $roundNum ($compLabel)',
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                color: const Color(0xFF062E0F),
+                color: ClassicTheme.of(context).surface,
                 child: Text(
                   "$visualState • ${myMatch['minute']}'",
                   style: const TextStyle(
@@ -1940,7 +2102,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            color: const Color(0xFF062E0F),
+            color: ClassicTheme.of(context).surface,
             child: Wrap(
               spacing: 12,
               runSpacing: 6,
@@ -1949,10 +2111,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               children: [
                 Text(
                   '${myMatch['homeClubName']} [${myMatch['homeFormation']}]${myMatch['homePlayersOnPitch'] == null ? '' : ' • ${myMatch['homePlayersOnPitch']} em campo'}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    color: Colors.white,
+                    color: ClassicTheme.of(context).textPrimary,
                   ),
                 ),
                 Container(
@@ -1961,13 +2123,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(color: const Color(0xFFFFD700)),
+                    color: ClassicTheme.of(context).surface,
+                    border: Border.all(
+                      color: ClassicTheme.of(context).selectedBackground,
+                    ),
                   ),
                   child: Text(
                     '${myMatch['homeGoals']} x ${myMatch['awayGoals']}$penText',
-                    style: const TextStyle(
-                      color: Color(0xFFFFD700),
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).accent,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
@@ -1975,10 +2139,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 ),
                 Text(
                   '${myMatch['awayClubName']} [${myMatch['awayFormation']}]${myMatch['awayPlayersOnPitch'] == null ? '' : ' • ${myMatch['awayPlayersOnPitch']} em campo'}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    color: Colors.white,
+                    color: ClassicTheme.of(context).textPrimary,
                   ),
                 ),
               ],
@@ -1986,10 +2150,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           ),
           if (events.isNotEmpty) ...[
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'CRONOLOGIA DE EVENTOS DA SUA PARTIDA:',
               style: TextStyle(
-                color: Color(0xFFFFD700),
+                color: ClassicTheme.of(context).accent,
                 fontWeight: FontWeight.bold,
                 fontSize: 11,
               ),
@@ -2047,7 +2211,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         )
         ? _subPlayerOutId
         : null;
-    final validInId = bench.any((p) => p['playerId'].toString() == _subPlayerInId)
+    final validInId =
+        bench.any((p) => p['playerId'].toString() == _subPlayerInId)
         ? _subPlayerInId
         : null;
 
@@ -2055,16 +2220,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       key: const ValueKey('in-match-substitution-panel'),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFF1A3A20),
-        border: Border.all(color: const Color(0xFFFFD700), width: 2),
+        color: ClassicTheme.of(context).surfaceAlternate,
+        border: Border.all(
+          color: ClassicTheme.of(context).selectedBackground,
+          width: 2,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'PAINEL DE SUBSTITUIÇÕES E TÁTICA EM JOGO — SUBS: $usedSubs/$maxSubs (RESTANTES: $remainingSubs) | PARADAS: $usedWins/$maxWins',
-            style: const TextStyle(
-              color: Color(0xFFFFD700),
+            style: TextStyle(
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 12,
             ),
@@ -2077,8 +2245,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             children: [
               DropdownButton<String>(
                 key: const ValueKey('in-match-formation-dropdown'),
-                dropdownColor: const Color(0xFF062E0F),
-                icon: _classicDropdownIcon(),
+                dropdownColor: ClassicTheme.of(context).surface,
+                icon: _classicDropdownIcon(context),
                 value:
                     availableFormations.contains(
                       _inMatchFormation ?? currentForm,
@@ -2100,8 +2268,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 child: DropdownButton<String>(
                   key: const ValueKey('in-match-sub-out-dropdown'),
                   isExpanded: true,
-                  dropdownColor: const Color(0xFF062E0F),
-                  icon: _classicDropdownIcon(),
+                  dropdownColor: ClassicTheme.of(context).surface,
+                  icon: _classicDropdownIcon(context),
                   hint: const Text('Sai (Em campo)'),
                   value: validOutId,
                   items: starters
@@ -2125,8 +2293,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 child: DropdownButton<String>(
                   key: const ValueKey('in-match-sub-in-dropdown'),
                   isExpanded: true,
-                  dropdownColor: const Color(0xFF062E0F),
-                  icon: _classicDropdownIcon(),
+                  dropdownColor: ClassicTheme.of(context).surface,
+                  icon: _classicDropdownIcon(context),
                   hint: const Text('Entra (Banco)'),
                   value: validInId,
                   items: bench
@@ -2196,16 +2364,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF062E0F),
-                    border: Border.all(color: const Color(0xFF3E8450)),
+                    color: ClassicTheme.of(context).surface,
+                    border: Border.all(color: ClassicTheme.of(context).border),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'EM CAMPO (TOQUE PARA SELECIONAR QUEM SAI)',
                         style: TextStyle(
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                           fontWeight: FontWeight.bold,
                           fontSize: 10,
                         ),
@@ -2230,14 +2398,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               ),
                               decoration: BoxDecoration(
                                 color: selected
-                                    ? const Color(0xFFFFD700)
+                                    ? ClassicTheme.of(
+                                        context,
+                                      ).selectedBackground
                                     : (sentOff
                                           ? Colors.red.shade900
-                                          : const Color(0xFF0E3B19)),
+                                          : ClassicTheme.of(context).surface),
                                 border: Border.all(
                                   color: selected
-                                      ? Colors.white
-                                      : const Color(0xFF3E8450),
+                                      ? ClassicTheme.of(context).textPrimary
+                                      : ClassicTheme.of(context).border,
                                 ),
                               ),
                               child: Text(
@@ -2245,7 +2415,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
-                                  color: selected ? Colors.black : Colors.white,
+                                  color: selected
+                                      ? ClassicTheme.of(context).selectedText
+                                      : ClassicTheme.of(context).textPrimary,
                                 ),
                               ),
                             ),
@@ -2263,16 +2435,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF062E0F),
-                    border: Border.all(color: const Color(0xFF3E8450)),
+                    color: ClassicTheme.of(context).surface,
+                    border: Border.all(color: ClassicTheme.of(context).border),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'RESERVAS (TOQUE PARA SELECIONAR QUEM ENTRA)',
                         style: TextStyle(
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                           fontWeight: FontWeight.bold,
                           fontSize: 10,
                         ),
@@ -2294,12 +2466,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               ),
                               decoration: BoxDecoration(
                                 color: selected
-                                    ? const Color(0xFFFFD700)
-                                    : const Color(0xFF0E3B19),
+                                    ? ClassicTheme.of(
+                                        context,
+                                      ).selectedBackground
+                                    : ClassicTheme.of(context).surface,
                                 border: Border.all(
                                   color: selected
-                                      ? Colors.white
-                                      : const Color(0xFF3E8450),
+                                      ? ClassicTheme.of(context).textPrimary
+                                      : ClassicTheme.of(context).border,
                                 ),
                               ),
                               child: Text(
@@ -2307,7 +2481,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
-                                  color: selected ? Colors.black : Colors.white,
+                                  color: selected
+                                      ? ClassicTheme.of(context).selectedText
+                                      : ClassicTheme.of(context).textPrimary,
                                 ),
                               ),
                             ),
@@ -2367,12 +2543,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         DataRow(
           color: WidgetStateProperty.all(
             isMyClub
-                ? const Color(0xFF185728)
+                ? ClassicTheme.of(context).surfaceAlternate
                 : isLeader
-                ? const Color(0xFF164D24)
+                ? ClassicTheme.of(context).surfaceAlternate
                 : (i.isEven
-                      ? const Color(0xFF0B3515)
-                      : const Color(0xFF10421C)),
+                      ? ClassicTheme.of(context).tableRow
+                      : ClassicTheme.of(context).tableRowAlternate),
           ),
           cells: [
             DataCell(
@@ -2380,7 +2556,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 '$pos',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: isLeader ? const Color(0xFFFFD700) : Colors.white,
+                  color: isLeader
+                      ? ClassicTheme.of(context).accent
+                      : ClassicTheme.of(context).textPrimary,
                 ),
               ),
             ),
@@ -2389,21 +2567,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 '${r['clubName']}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: isMyClub ? const Color(0xFFFFD700) : Colors.white,
+                  color: isMyClub
+                      ? ClassicTheme.of(context).accent
+                      : ClassicTheme.of(context).textPrimary,
                 ),
               ),
             ),
             DataCell(
-              Text(
-                '${r['coachName']}',
-                style: const TextStyle(fontSize: 11),
-              ),
+              Text('${r['coachName']}', style: const TextStyle(fontSize: 11)),
             ),
             DataCell(
               Text(
                 '${r['points']}',
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -2422,12 +2599,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
                   color: isLeader
-                      ? const Color(0xFFFFD700)
+                      ? ClassicTheme.of(context).accent
                       : isReleg
                       ? Colors.redAccent
                       : isPromo
                       ? Colors.lightGreenAccent
-                      : Colors.white70,
+                      : ClassicTheme.of(context).textSecondary,
                 ),
               ),
             ),
@@ -2502,9 +2679,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ),
                     decoration: BoxDecoration(
                       color: _selectedDivisionTier == tier.$1
-                          ? const Color(0xFFFFD700)
-                          : const Color(0xFF145224),
-                      border: Border.all(color: const Color(0xFFFFD700)),
+                          ? ClassicTheme.of(context).selectedBackground
+                          : ClassicTheme.of(context).buttonBackground,
+                      border: Border.all(
+                        color: ClassicTheme.of(context).selectedBackground,
+                      ),
                     ),
                     child: Text(
                       tier.$2,
@@ -2512,8 +2691,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: _selectedDivisionTier == tier.$1
-                            ? Colors.black
-                            : const Color(0xFFFFD700),
+                            ? ClassicTheme.of(context).selectedText
+                            : ClassicTheme.of(context).accent,
                       ),
                     ),
                   ),
@@ -2547,8 +2726,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: const Color(0xFF0E3B19),
-              border: Border.all(color: const Color(0xFF3E8450)),
+              color: ClassicTheme.of(context).surface,
+              border: Border.all(color: ClassicTheme.of(context).border),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -2573,16 +2752,18 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               : 290,
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF062E0F),
-                            border: Border.all(color: const Color(0xFF3E8450)),
+                            color: ClassicTheme.of(context).surface,
+                            border: Border.all(
+                              color: ClassicTheme.of(context).border,
+                            ),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 '${entry.$1}: R${entry.$2['roundNumber']} (${entry.$2['competition']})',
-                                style: const TextStyle(
-                                  color: Color(0xFFFFD700),
+                                style: TextStyle(
+                                  color: ClassicTheme.of(context).accent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 11,
                                 ),
@@ -2607,10 +2788,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -2622,14 +2803,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFF185728),
-                border: Border.all(color: const Color(0xFFFFD700), width: 1.5),
+                color: ClassicTheme.of(context).surfaceAlternate,
+                border: Border.all(
+                  color: ClassicTheme.of(context).selectedBackground,
+                  width: 1.5,
+                ),
               ),
               child: Text(
                 'CAMPEÃO DA TAÇA NACIONAL: $cupChampion',
                 key: const ValueKey('cup-champion-banner'),
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
                 ),
@@ -2651,9 +2835,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ),
                     decoration: BoxDecoration(
                       color: activeCupStage == 'ALL'
-                          ? const Color(0xFFFFD700)
-                          : const Color(0xFF062E0F),
-                      border: Border.all(color: const Color(0xFF3E8450)),
+                          ? ClassicTheme.of(context).selectedBackground
+                          : ClassicTheme.of(context).surface,
+                      border: Border.all(
+                        color: ClassicTheme.of(context).border,
+                      ),
                     ),
                     child: Text(
                       'TODAS AS FASES (${_cupFixtures.length})',
@@ -2661,8 +2847,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         fontSize: 10.5,
                         fontWeight: FontWeight.bold,
                         color: activeCupStage == 'ALL'
-                            ? Colors.black
-                            : Colors.white,
+                            ? ClassicTheme.of(context).selectedText
+                            : ClassicTheme.of(context).textPrimary,
                       ),
                     ),
                   ),
@@ -2678,9 +2864,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: activeCupStage == st
-                            ? const Color(0xFFFFD700)
-                            : const Color(0xFF062E0F),
-                        border: Border.all(color: const Color(0xFF3E8450)),
+                            ? ClassicTheme.of(context).selectedBackground
+                            : ClassicTheme.of(context).surface,
+                        border: Border.all(
+                          color: ClassicTheme.of(context).border,
+                        ),
                       ),
                       child: Text(
                         st,
@@ -2688,8 +2876,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           fontSize: 10.5,
                           fontWeight: FontWeight.bold,
                           color: activeCupStage == st
-                              ? Colors.black
-                              : Colors.white,
+                              ? ClassicTheme.of(context).selectedText
+                              : ClassicTheme.of(context).textPrimary,
                         ),
                       ),
                     ),
@@ -2728,16 +2916,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 return DataRow(
                   color: WidgetStateProperty.all(
                     i.isEven
-                        ? const Color(0xFF0B3515)
-                        : const Color(0xFF10421C),
+                        ? ClassicTheme.of(context).tableRow
+                        : ClassicTheme.of(context).tableRowAlternate,
                   ),
                   cells: [
                     DataCell(
                       Text(
                         '${f['stage']}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 11,
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                         ),
                       ),
                     ),
@@ -2753,10 +2941,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     DataCell(
                       Text(
                         scoreStr,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFFD700),
+                          color: ClassicTheme.of(context).accent,
                         ),
                       ),
                     ),
@@ -2771,14 +2959,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ),
                     DataCell(
                       Text(
-                        winner != null
-                            ? 'Vencedor: $winner'
-                            : 'A disputar',
+                        winner != null ? 'Vencedor: $winner' : 'A disputar',
                         style: TextStyle(
                           fontSize: 11,
                           color: winner != null
                               ? Colors.lightGreenAccent
-                              : Colors.white70,
+                              : ClassicTheme.of(context).textSecondary,
                         ),
                       ),
                     ),
@@ -2787,10 +2973,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               }).toList(),
             ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'ARTILHARIA DA TEMPORADA',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -2881,7 +3067,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       marketRows.add(
         DataRow(
           color: WidgetStateProperty.all(
-            i.isEven ? const Color(0xFF0B3515) : const Color(0xFF10421C),
+            i.isEven
+                ? ClassicTheme.of(context).tableRow
+                : ClassicTheme.of(context).tableRowAlternate,
           ),
           cells: [
             DataCell(Text(pos)),
@@ -2897,8 +3085,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             DataCell(
               Text(
                 formatClassicMoney(ask),
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -2908,7 +3096,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             DataCell(
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                color: const Color(0xFF145224),
+                color: ClassicTheme.of(context).buttonBackground,
                 child: const Text(
                   'COMPRA DIRETA',
                   style: TextStyle(
@@ -2978,10 +3166,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'LISTA DE TRANSFERÊNCIAS (COMPRA DIRETA OU PROPOSTA BILATERAL)',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -2990,20 +3178,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: const Color(0xFF0E3B19),
-              border: Border.all(color: const Color(0xFF3E8450)),
+              color: ClassicTheme.of(context).surface,
+              border: Border.all(color: ClassicTheme.of(context).border),
             ),
             child: Wrap(
               spacing: 8,
               runSpacing: 6,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                const Text(
+                Text(
                   'POSIÇÃO:',
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFFFD700),
+                    color: ClassicTheme.of(context).accent,
                   ),
                 ),
                 for (final pos in ['ALL', 'G', 'D', 'M', 'A'])
@@ -3017,9 +3205,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: _marketPositionFilter == pos
-                            ? const Color(0xFFFFD700)
-                            : const Color(0xFF062E0F),
-                        border: Border.all(color: const Color(0xFF3E8450)),
+                            ? ClassicTheme.of(context).selectedBackground
+                            : ClassicTheme.of(context).surface,
+                        border: Border.all(
+                          color: ClassicTheme.of(context).border,
+                        ),
                       ),
                       child: Text(
                         pos == 'ALL' ? 'TODAS' : pos,
@@ -3027,19 +3217,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: _marketPositionFilter == pos
-                              ? Colors.black
-                              : Colors.white,
+                              ? ClassicTheme.of(context).selectedText
+                              : ClassicTheme.of(context).textPrimary,
                         ),
                       ),
                     ),
                   ),
                 const SizedBox(width: 8),
-                const Text(
+                Text(
                   'ORDENAR:',
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFFFD700),
+                    color: ClassicTheme.of(context).accent,
                   ),
                 ),
                 for (final srt in [
@@ -3057,9 +3247,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: _marketSortBy == srt.$1
-                            ? const Color(0xFFFFD700)
-                            : const Color(0xFF062E0F),
-                        border: Border.all(color: const Color(0xFF3E8450)),
+                            ? ClassicTheme.of(context).selectedBackground
+                            : ClassicTheme.of(context).surface,
+                        border: Border.all(
+                          color: ClassicTheme.of(context).border,
+                        ),
                       ),
                       child: Text(
                         srt.$2,
@@ -3067,8 +3259,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: _marketSortBy == srt.$1
-                              ? Colors.black
-                              : Colors.white,
+                              ? ClassicTheme.of(context).selectedText
+                              : ClassicTheme.of(context).textPrimary,
                         ),
                       ),
                     ),
@@ -3097,10 +3289,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             rows: marketRows,
           ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'LEILÕES ATIVOS (ATLETAS EM FIM DE CONTRATO / LIVRES)',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -3110,14 +3302,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             final aid = a['auctionId'].toString();
             final cur = (a['currentBid'] as num).toDouble();
             final minBid = (a['minimumBid'] as num).toDouble();
-            final nextBid = a['highestBidderClubId'] == null ? minBid : cur + 5000;
+            final nextBid = a['highestBidderClubId'] == null
+                ? minBid
+                : cur + 5000;
             final closed = a['isClosed'] == true;
             return Container(
               margin: const EdgeInsets.only(bottom: 6),
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFF0E3B19),
-                border: Border.all(color: const Color(0xFF3E8450)),
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
               ),
               child: Wrap(
                 spacing: 10,
@@ -3126,7 +3320,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
-                    '${a['displayName']} (${_formatPosition(a['position'])}, F:${a['strength']}; salário ${formatClassicMoney(a['salaryPerRound'] ?? 0)}) • ${a['reason'] == 'FinancialInsolvency' ? 'INSOLVÊNCIA' : a['reason'] == 'SalaryRenewalRefused' ? 'RECUSA SALARIAL' : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} • Lance Mín: ${formatClassicMoney(minBid)} • Atual: ${formatClassicMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
+                    '${a['displayName']} (${_formatPosition(a['position'])}, F:${a['strength']}; salário ${formatClassicMoney(a['salaryPerRound'] ?? 0)}) • ${a['reason'] == 'FinancialInsolvency'
+                        ? 'INSOLVÊNCIA'
+                        : a['reason'] == 'SalaryRenewalRefused'
+                        ? 'RECUSA SALARIAL'
+                        : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} • Lance Mín: ${formatClassicMoney(minBid)} • Atual: ${formatClassicMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
                     style: const TextStyle(fontSize: 12),
                   ),
                   Wrap(
@@ -3140,14 +3338,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ),
                         color: closed
                             ? Colors.grey.shade800
-                            : const Color(0xFF145224),
+                            : ClassicTheme.of(context).buttonBackground,
                         child: Text(
                           closed ? 'LEILÃO ENCERRADO' : 'LEILÃO ABERTO',
                           style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             color: closed
-                                ? Colors.white70
+                                ? ClassicTheme.of(context).textSecondary
                                 : Colors.lightGreenAccent,
                           ),
                         ),
@@ -3185,19 +3383,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             );
           }),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'PROPOSTAS E CONTRAPROPOSTAS BILATERAIS',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
           ),
           const SizedBox(height: 8),
           if (offers.isEmpty)
-            const Text(
+            Text(
               'Nenhuma proposta bilateral pendente para o seu clube.',
-              style: TextStyle(fontSize: 12, color: Colors.white70),
+              style: TextStyle(
+                fontSize: 12,
+                color: ClassicTheme.of(context).textSecondary,
+              ),
             ),
           ...offers.map((o) {
             final oid = o['offerId'].toString();
@@ -3211,8 +3412,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               margin: const EdgeInsets.only(bottom: 6),
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: const Color(0xFF0E3B19),
-                border: Border.all(color: const Color(0xFF3E8450)),
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
               ),
               child: Wrap(
                 spacing: 10,
@@ -3288,8 +3489,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final ledger = _financesData?['ledger'] as List<dynamic>? ?? [];
     final loans = _financesData?['loans'] as List<dynamic>? ?? [];
     final credit = _financesData?['credit'] as Map<String, dynamic>?;
-    final salaryRequests = (_financesData?['salaryRequests'] as List<dynamic>? ?? [])
-        .where((r) => r['status'] == 'PENDING').toList();
+    final salaryRequests =
+        (_financesData?['salaryRequests'] as List<dynamic>? ?? [])
+            .where((r) => r['status'] == 'PENDING')
+            .toList();
     String loanInterest(dynamic loan) {
       if (loan['mode'] == 'ClassicFixed') {
         return '${formatClassicMoney(loan['interestPerMatch'] ?? 0)} por partida';
@@ -3297,6 +3500,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final rate = ((loan['interestRatePerRound'] as num?) ?? 0) * 100;
       return '${rate.toStringAsFixed(2).replaceAll('.', ',')}% sobre o saldo; prestação ${formatClassicMoney(loan['installmentPerRound'] ?? 0)}';
     }
+
     final renoCost =
         (_financesData?['renovationCostEstimate'] as num?)?.toDouble() ?? 50000;
     final expCost =
@@ -3350,8 +3554,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: const Color(0xFF0E3B19),
-              border: Border.all(color: const Color(0xFF3E8450)),
+              color: ClassicTheme.of(context).surface,
+              border: Border.all(color: ClassicTheme.of(context).border),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -3401,16 +3605,18 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: const Color(0xFF0E3B19),
-              border: Border.all(color: const Color(0xFFFFD700)),
+              color: ClassicTheme.of(context).surface,
+              border: Border.all(
+                color: ClassicTheme.of(context).selectedBackground,
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'ESTÁDIO: ${stadium['stadiumName']}',
-                  style: const TextStyle(
-                    color: Color(0xFFFFD700),
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).accent,
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                   ),
@@ -3425,7 +3631,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 ),
                 Text(
                   'Último Ingresso Automático: ${formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0)}  |  Último Público: ${stadium['lastAttendance']}  |  Custo Fixo/Jogo: ${formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0)}',
-                  style: const TextStyle(fontSize: 12, color: Colors.white70),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: ClassicTheme.of(context).textSecondary,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Wrap(
@@ -3491,7 +3700,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                     'Empréstimo bancário de R\$ 500.000 creditado em caixa.',
                               );
                             }),
-                      child: const Text('EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)'),
+                      child: const Text(
+                        'EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)',
+                      ),
                     ),
                   ],
                 ),
@@ -3501,39 +3712,104 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           const SizedBox(height: 16),
           if (credit != null) ...[
             if (_financesData?['annualSponsorshipBudget'] != null)
-              Text('PATROCÍNIO ANUAL: ${formatClassicMoney(_financesData!['annualSponsorshipBudget'])} em ${_financesData!['sponsorshipInstallments']} parcelas'),
+              Text(
+                'PATROCÍNIO ANUAL: ${formatClassicMoney(_financesData!['annualSponsorshipBudget'])} em ${_financesData!['sponsorshipInstallments']} parcelas',
+              ),
             const Text('FOLHA SALARIAL: por partida oficial disputada.'),
-            Text('SALDO DISPONÍVEL: ${formatClassicMoney(_financesData?['availableCash'] ?? cash)}'),
-            Text('CRÉDITO INDIVIDUAL: ${credit['activeLoans']}/${credit['loanLimit']} empréstimos; disponíveis: ${credit['availableLoans']}'),
-            Text('DÍVIDA TOTAL: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}'),
+            Text(
+              'SALDO DISPONÍVEL: ${formatClassicMoney(_financesData?['availableCash'] ?? cash)}',
+            ),
+            Text(
+              'CRÉDITO INDIVIDUAL: ${credit['activeLoans']}/${credit['loanLimit']} empréstimos; disponíveis: ${credit['availableLoans']}',
+            ),
+            Text(
+              'DÍVIDA TOTAL: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}',
+            ),
           ],
-          ...loans.where((l) => l['isPaidOff'] != true).map((l) => ListTile(
-            title: Text('${l['mode'] == "ClassicFixed" ? "Empréstimo clássico" : "Empréstimo legado em prestações"} — dívida ${formatClassicMoney(l['remainingBalance'] ?? 0)}'),
-            subtitle: Text('Principal contratado: ${formatClassicMoney(l['principalAmount'] ?? 0)} | Principal pendente: ${l['outstandingPrincipal'] == null ? "composição anterior indisponível" : formatClassicMoney(l['outstandingPrincipal'])} | Juros: ${loanInterest(l)} | Juros pagos: ${formatClassicMoney(l['interestPaid'] ?? 0)} | Juros pendentes: ${formatClassicMoney(l['unpaidInterest'] ?? 0)}'),
-            trailing: OutlinedButton(onPressed: _commandBusy ? null : () => _runUiCommand(() async {
-              await widget.apiClient.repayBankLoan(_worldId!, _myClubId!, _coachId!, l['id'] as String);
-              await _refreshClubAndSecondaryData();
-            }), child: const Text('QUITAR')),
-          )),
-          ...salaryRequests.map((r) => Card(child: Padding(padding: const EdgeInsets.all(12), child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}'),
-              Text('Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}'),
-              Text('${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato'),
-              Text('Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}'),
-              if (r['mandatory'] == true) const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
-              Wrap(spacing: 8, children: [for (final accept in [true, false]) OutlinedButton(
-                onPressed: _commandBusy || !accept && r['mandatory'] == true ? null : () => _runUiCommand(() async {
-                  final message = await widget.apiClient.respondSalaryRequest(_worldId!, _myClubId!, _coachId!, r['id'] as String, accept);
-                  await _refreshClubAndSecondaryData();
-                  if (message != null) setState(() => _statusBanner = message);
-                }), child: Text(accept ? 'ACEITAR' : 'RECUSAR'))]),
-            ])))),
+          ...loans
+              .where((l) => l['isPaidOff'] != true)
+              .map(
+                (l) => ListTile(
+                  title: Text(
+                    '${l['mode'] == "ClassicFixed" ? "Empréstimo clássico" : "Empréstimo legado em prestações"} — dívida ${formatClassicMoney(l['remainingBalance'] ?? 0)}',
+                  ),
+                  subtitle: Text(
+                    'Principal contratado: ${formatClassicMoney(l['principalAmount'] ?? 0)} | Principal pendente: ${l['outstandingPrincipal'] == null ? "composição anterior indisponível" : formatClassicMoney(l['outstandingPrincipal'])} | Juros: ${loanInterest(l)} | Juros pagos: ${formatClassicMoney(l['interestPaid'] ?? 0)} | Juros pendentes: ${formatClassicMoney(l['unpaidInterest'] ?? 0)}',
+                  ),
+                  trailing: OutlinedButton(
+                    onPressed: _commandBusy
+                        ? null
+                        : () => _runUiCommand(() async {
+                            await widget.apiClient.repayBankLoan(
+                              _worldId!,
+                              _myClubId!,
+                              _coachId!,
+                              l['id'] as String,
+                            );
+                            await _refreshClubAndSecondaryData();
+                          }),
+                    child: const Text('QUITAR'),
+                  ),
+                ),
+              ),
+          ...salaryRequests.map(
+            (r) => Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}',
+                    ),
+                    Text(
+                      'Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}',
+                    ),
+                    Text(
+                      '${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato',
+                    ),
+                    Text(
+                      'Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}',
+                    ),
+                    if (r['mandatory'] == true)
+                      const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
+                    Wrap(
+                      spacing: 8,
+                      children: [
+                        for (final accept in [true, false])
+                          OutlinedButton(
+                            onPressed:
+                                _commandBusy ||
+                                    !accept && r['mandatory'] == true
+                                ? null
+                                : () => _runUiCommand(() async {
+                                    final message = await widget.apiClient
+                                        .respondSalaryRequest(
+                                          _worldId!,
+                                          _myClubId!,
+                                          _coachId!,
+                                          r['id'] as String,
+                                          accept,
+                                        );
+                                    await _refreshClubAndSecondaryData();
+                                    if (message != null) {
+                                      setState(() => _statusBanner = message);
+                                    }
+                                  }),
+                            child: Text(accept ? 'ACEITAR' : 'RECUSAR'),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'LIVRO-CAIXA AUDITÁVEL (TRANSAÇÕES IDEMPOTENTES POR RODADA)',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -3556,16 +3832,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 return DataRow(
                   color: WidgetStateProperty.all(
                     i.isEven
-                        ? const Color(0xFF0B3515)
-                        : const Color(0xFF10421C),
+                        ? ClassicTheme.of(context).tableRow
+                        : ClassicTheme.of(context).tableRowAlternate,
                   ),
                   cells: [
                     DataCell(
                       Text(
                         'T${t['seasonNumber']} R${t['roundNumber']}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 11,
-                          color: Colors.white70,
+                          color: ClassicTheme.of(context).textSecondary,
                         ),
                       ),
                     ),
@@ -3602,7 +3878,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _snapshot?['readyCounter']?['participants'] as List<dynamic>? ?? [];
     final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
     final value = me?['morale'] ?? _invitationsData?['morale'] ?? 70;
-    final band = me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE';
+    final band =
+        me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE';
     final color = band == 'VERMELHA'
         ? const Color(0xFFEF5350)
         : band == 'AMARELA'
@@ -3614,7 +3891,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         key: const ValueKey('coach-morale'),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         decoration: BoxDecoration(
-          color: const Color(0xFF062E0F),
+          color: ClassicTheme.of(context).surface,
           border: Border.all(color: color),
         ),
         child: Text(
@@ -3699,10 +3976,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         DataRow(
           color: WidgetStateProperty.all(
             isMe
-                ? const Color(0xFF185728)
+                ? ClassicTheme.of(context).surfaceAlternate
                 : (i.isEven
-                      ? const Color(0xFF0B3515)
-                      : const Color(0xFF10421C)),
+                      ? ClassicTheme.of(context).tableRow
+                      : ClassicTheme.of(context).tableRowAlternate),
           ),
           cells: [
             DataCell(Text('${r['rank']}')),
@@ -3713,9 +3990,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 ),
                 child: Text(
                   '${r['name']}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFFFFD700),
+                    color: ClassicTheme.of(context).accent,
                     decoration: TextDecoration.underline,
                   ),
                 ),
@@ -3726,8 +4003,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             DataCell(
               Text(
                 '${r['leagueTitles']}',
-                style: const TextStyle(
-                  color: Color(0xFFFFD700),
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -3779,10 +4056,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
           const SizedBox(height: 12),
           if (invitations.isNotEmpty) ...[
-            const Text(
+            Text(
               'CONVITES DE EMPREGO DISPONÍVEIS PARA VOCÊ',
               style: TextStyle(
-                color: Color(0xFFFFD700),
+                color: ClassicTheme.of(context).accent,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -3793,18 +4070,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 margin: const EdgeInsets.only(bottom: 6),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF136F2D),
-                  border: Border.all(color: const Color(0xFFFFD700)),
+                  color: ClassicTheme.of(context).buttonBackground,
+                  border: Border.all(
+                    color: ClassicTheme.of(context).selectedBackground,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       '${inv['clubName']} (${inv['divisionDisplay']}) — Caixa: ${formatClassicMoney(inv['clubBudget'])} | Elenco: ${inv['squadSize']} atletas',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                     Text(
@@ -3861,10 +4140,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             }),
             const SizedBox(height: 16),
           ],
-          const Text(
+          Text(
             'RANKING CLÁSSICO DE TREINADORES (1º CAMPEONATOS, 2º TAÇAS, 3º PONTOS DO TREINADOR)',
             style: TextStyle(
-              color: Color(0xFFFFD700),
+              color: ClassicTheme.of(context).accent,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -3899,10 +4178,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           ),
           if (seasonHist.isNotEmpty) ...[
             const SizedBox(height: 20),
-            const Text(
+            Text(
               'GALERIA DE CAMPEÕES POR TEMPORADA',
               style: TextStyle(
-                color: Color(0xFFFFD700),
+                color: ClassicTheme.of(context).accent,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),

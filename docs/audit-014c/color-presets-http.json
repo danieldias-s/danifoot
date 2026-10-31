@@ -1,0 +1,63 @@
+{
+  "Status": "PASS",
+  "Cases": [
+    {
+      "Assembly": "0414a81c-1c57-4868-8ee7-5b23f74bae31",
+      "Worlds": [
+        "4eb83eed-6555-4fbd-a42b-b9f1defda432",
+        "9e56220d-9548-47bb-915a-08239f9bc8a1"
+      ],
+      "Fingerprints": [
+        "185692b89b7b1a2a65a00ede4e0e1f54966653a0ee6183a6e374d5c6f550f69c",
+        "8585fd22c20fdd7a434097970a4b0430427c9756a3c998fffef902524d879f54"
+      ],
+      "Gender": "Male",
+      "Palette": {
+        "primaryColor": "#0000FF",
+        "secondaryColor": "#FFFFFF",
+        "preferredTextColor": null,
+        "colorSource": "Montagem privada do usuário",
+        "colorVerified": false,
+        "lastColorUpdate": "2026-10-31T14:42:07.2695969Z",
+        "colorConfidence": 1,
+        "version": "custom014c-v1",
+        "countryCode": "BR",
+        "gender": "Male",
+        "provider": "custom014c",
+        "externalId": "5b94bf3d90cf5749a86433d5499d726b",
+        "evidence": "Cores definidas explicitamente no editor pré-save",
+        "isPersonalized": true,
+        "precision": "UserDefined"
+      }
+    },
+    {
+      "Assembly": "7e906fc4-a3b8-4cf8-8bcd-28b1b35993ea",
+      "Worlds": [
+        "cadfec9a-3729-434d-8f39-3f7b29691118",
+        "bce68b5b-4721-42ec-ae0e-c64f2ddf0263"
+      ],
+      "Fingerprints": [
+        "dcd0fd2174cf84bffaff443dd94e04146128bed2084cfb7448be4b201cf61d1d",
+        "3f81c3b8cdf51bb7bf02437fc7b11d64df7006ce2a31f47064a01fe56bf74a03"
+      ],
+      "Gender": "Female",
+      "Palette": {
+        "primaryColor": "#FFFF00",
+        "secondaryColor": "#000000",
+        "preferredTextColor": null,
+        "colorSource": "Montagem privada do usuário",
+        "colorVerified": false,
+        "lastColorUpdate": "2026-10-31T14:42:14.7260639Z",
+        "colorConfidence": 1,
+        "version": "custom014c-v1",
+        "countryCode": "BR",
+        "gender": "Female",
+        "provider": "custom014c",
+        "externalId": "5b94bf3d90cf5749a86433d5499d726b",
+        "evidence": "Cores definidas explicitamente no editor pré-save",
+        "isPersonalized": true,
+        "precision": "UserDefined"
+      }
+    }
+  ]
+}

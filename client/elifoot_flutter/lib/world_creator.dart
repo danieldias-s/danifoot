@@ -1,3 +1,4 @@
+import 'club_theme.dart';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'custom_assembly_editor.dart';
@@ -1029,10 +1030,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   });
   @override
   Widget build(BuildContext context) => Scaffold(
-    backgroundColor: const Color(0xFF062E0F),
+    backgroundColor: ClassicTheme.of(context).surface,
     appBar: AppBar(
       title: const Text('CRIADOR DE MUNDOS', style: TextStyle(fontSize: 16)),
-      backgroundColor: const Color(0xFF0D3B18),
+      backgroundColor: ClassicTheme.of(context).surface,
     ),
     body: SafeArea(
       child: Center(

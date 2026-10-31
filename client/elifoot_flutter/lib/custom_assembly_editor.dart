@@ -1,8 +1,10 @@
+import 'club_theme.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'api_client.dart';
+import 'appearance_settings.dart';
 import 'classic_match_board.dart';
 
 /// Edits a private package only. A confirmed world's identifiers are never used.
@@ -202,11 +204,19 @@ class _CustomAssemblyEditorState extends State<CustomAssemblyEditor> {
                       'Autorize conteúdo personalizado para mudar nomes, países ou posições.',
                     ),
                   for (final f in fields)
-                    TextField(
-                      key: ValueKey('assembly-field-$f'),
-                      controller: controls[f],
-                      decoration: InputDecoration(labelText: labels[f] ?? f),
-                    ),
+                    if (f == 'primaryColorHex' || f == 'secondaryColorHex')
+                      ColorChoice(
+                        label: labels[f] ?? f,
+                        value: rgbColor(controls[f]!.text) ?? Colors.black,
+                        onChanged: (c) =>
+                            update(() => controls[f]!.text = rgbHex(c)),
+                      )
+                    else
+                      TextField(
+                        key: ValueKey('assembly-field-$f'),
+                        controller: controls[f],
+                        decoration: InputDecoration(labelText: labels[f] ?? f),
+                      ),
                   if (player) ...[
                     _select(
                       'Posição',
@@ -456,7 +466,7 @@ class _CustomAssemblyEditorState extends State<CustomAssemblyEditor> {
         }
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFF062E0F),
+        backgroundColor: ClassicTheme.of(context).surface,
         appBar: AppBar(title: const Text('MONTAGEM ANTES DO SAVE')),
         body: SafeArea(
           child: Center(

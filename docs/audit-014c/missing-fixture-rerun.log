@@ -1,0 +1,5 @@
+Execução de teste para D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_014C\docs\audit-014c\test-results\missing-fixture-rerun.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     1, Ignorado:     0, Total:     1, Duração: 14 s - Elifoot.Integration.Tests.dll (net10.0)

@@ -1,0 +1,71 @@
+{
+  "Total": 1398,
+  "Palettes": 17,
+  "Missing": 1381,
+  "ByCountryAndGender": {
+    "AR:Male": {
+      "clubs": 67,
+      "palettes": 1
+    },
+    "BR:Male": {
+      "clubs": 82,
+      "palettes": 1
+    },
+    "DE:Male": {
+      "clubs": 258,
+      "palettes": 1
+    },
+    "ES:Male": {
+      "clubs": 128,
+      "palettes": 3
+    },
+    "FR:Male": {
+      "clubs": 87,
+      "palettes": 2
+    },
+    "GB:Male": {
+      "clubs": 208,
+      "palettes": 4
+    },
+    "IT:Male": {
+      "clubs": 100,
+      "palettes": 3
+    },
+    "PT:Male": {
+      "clubs": 61,
+      "palettes": 0
+    },
+    "AR:Female": {
+      "clubs": 43,
+      "palettes": 1
+    },
+    "BR:Female": {
+      "clubs": 33,
+      "palettes": 0
+    },
+    "DE:Female": {
+      "clubs": 69,
+      "palettes": 0
+    },
+    "ES:Female": {
+      "clubs": 82,
+      "palettes": 0
+    },
+    "FR:Female": {
+      "clubs": 38,
+      "palettes": 0
+    },
+    "GB:Female": {
+      "clubs": 55,
+      "palettes": 1
+    },
+    "IT:Female": {
+      "clubs": 69,
+      "palettes": 0
+    },
+    "PT:Female": {
+      "clubs": 18,
+      "palettes": 0
+    }
+  }
+}

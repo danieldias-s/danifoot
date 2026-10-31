@@ -1,0 +1,13 @@
+00:00 +0: loading D:/elifoot_98_014C/client/elifoot_flutter/test/club_theme_014c_test.dart
+00:00 +0: All semantic text tokens meet contrast for {primaryColor: #C3281E, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+00:00 +1: All semantic text tokens meet contrast for {primaryColor: #0000FF, secondaryColor: #FFFFFF, preferredTextColor: #FFFFFF, colorVerified: true, colorSource: Reviewed fixture}
+00:00 +2: All semantic text tokens meet contrast for {primaryColor: #FFFFFF, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+00:00 +3: All semantic text tokens meet contrast for {primaryColor: #FFFF00, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+00:00 +4: All semantic text tokens meet contrast for {primaryColor: #002366, secondaryColor: null, preferredTextColor: null, colorVerified: true, colorSource: Reviewed fixture}
+00:00 +5: All semantic text tokens meet contrast for {}
+00:00 +6: Custom black-on-red adjusts only rendered background and keeps registered colors
+00:00 +7: Preferences restore after controller restart, isolate trainers/worlds and return to previous club
+00:00 +8: Match teams keep independent colors and scores remain centered
+00:01 +9: Global Flamengo theme, live color picker, persistence and restore at 390.0
+00:08 +10: Global Flamengo theme, live color picker, persistence and restore at 1366.0
+00:11 +11: All tests passed!

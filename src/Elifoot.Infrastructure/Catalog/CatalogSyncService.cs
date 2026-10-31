@@ -72,7 +72,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
         try
         {
             Guid id = await Commit(package, owner, ct);
-            await Finish(job, "Succeeded", 1, null, ct); return id;
+            await Finish(job, "Succeeded", 1, null, ct); await RefreshColors(package,ct); return id;
         }
         catch (Exception e)
         { await Finish(job, "Failed", 1, ErrorCode(e), CancellationToken.None); throw; }
@@ -115,7 +115,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
                         timeout.CancelAfter(source.FetchTimeout ?? options.Timeout);
                         var package = await source.FetchAsync(timeout.Token).WaitAsync(timeout.Token);
                         if (package.Scope != source.Scope) throw new ArgumentException("Escopo da resposta difere do solicitado.");
-                        await Commit(package, owner, ct); break;
+                        await Commit(package, owner, ct); await RefreshColors(package,ct); break;
                     }
                     catch (Exception e) when (i < Math.Clamp(options.Retries, 0, 1) && !ct.IsCancellationRequested &&
                         (e is OperationCanceledException || e is HttpRequestException h && h.StatusCode != HttpStatusCode.TooManyRequests)) { }
@@ -132,6 +132,14 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
                 .ExecuteUpdateAsync(s => s.SetProperty(x => x.NextAttempt, DateTime.UtcNow.AddMinutes(15)));
         }
         finally { await Release(source.Scope.Key, owner); }
+    }
+    private async Task RefreshColors(CatalogImportPackage package,CancellationToken ct) {
+        if(package.Scope.DataType!=CatalogDataType.Clubs||package.IsFixture)return;
+        using var scope=factory.CreateScope();var colors=scope.ServiceProvider.GetService<ClubColorService>();
+        if(colors==null)return;
+        var creator=scope.ServiceProvider.GetService<WorldCreatorService>();if(creator==null)return;
+        var selected=await creator.Select([package.Scope.CountryCode],package.Scope.Gender,package.Scope.Season,true,ct);
+        await colors.Refresh(selected.Clubs,ct:ct);
     }
     private static string ErrorCode(Exception e) => e switch {
         OperationCanceledException => "Timeout/cancelamento", HttpRequestException h when h.StatusCode == HttpStatusCode.TooManyRequests => "RateLimit",

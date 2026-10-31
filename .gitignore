@@ -22,3 +22,6 @@ artifacts/
 appsettings.Local.json
 client/elifoot_flutter/android/.gradle/
 client/elifoot_flutter/android/local.properties
+
+# Reused real-season fixture: provenance/hash is versioned instead.
+docs/audit-014c/verified-final/real-season-world.json

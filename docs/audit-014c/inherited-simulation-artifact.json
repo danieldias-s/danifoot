@@ -1,0 +1,5 @@
+{
+  "Source": "D:\\elifoot_98_014B\\docs\\audit-014b\\verified-final\\real-season-world.json",
+  "Sha256": "aae88ecc2b4b582b65dbf1cf2703f2c6de65f63274df611e03b3d9051bddd7e1",
+  "Reason": "Existing real-season artifact required by integration test; long simulations unchanged."
+}

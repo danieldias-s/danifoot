@@ -19,7 +19,7 @@ public record CatalogScopeKey(string CountryCode, FootballGender Gender, string 
 public record CatalogCountryEntry(string Code, string Name);
 public record CatalogLeagueEntry(string ExternalId, string Name, FootballGender Gender, string Season);
 public record CatalogTeam(string ExternalId, string Name, string ShortName, string LeagueExternalId,
-    string LeagueName, string PrimaryColor = "#006400", string SecondaryColor = "#FFFFFF", CatalogClubVerification? Verification = null);
+    string LeagueName, string PrimaryColor = "#006400", string SecondaryColor = "#FFFFFF", CatalogClubVerification? Verification = null, ClubColorPalette? ColorPalette = null);
 public record CatalogAthlete(string PlayerExternalId, string ClubExternalId, string ClubProvider,
     FootballGender Gender, string Season, string PlayerName, string Position, int Strength, string Source,
     DateTime UpdatedAt, string? CanonicalPlayerId = null, CatalogDataOrigin? IdentityOrigin = null,
@@ -42,7 +42,7 @@ public record EligibleCatalogClub(string Key, string ExternalId, string Provider
     List<CatalogReference> References, bool IsFictional = false, Guid? InternalCatalogClubId = null,
     CatalogRank? RankingInfo = null, List<CatalogClubAlias>? Aliases = null, List<string>? CoverageWarnings = null,
     int? RawRosterCount = null, List<Guid>? IdentityConflicts = null, CatalogClubVerification? Verification = null, int? DocumentedPlayers = null, int? UncertainPlayers = null,
-    List<CatalogAthlete>? ReferencePlayers = null, DateOnly? RosterAsOf = null, CatalogRank? SourceRanking = null);
+    List<CatalogAthlete>? ReferencePlayers = null, DateOnly? RosterAsOf = null, CatalogRank? SourceRanking = null, ClubColorPalette? ColorPalette = null);
 public record CatalogCountryOption(string Code, string Name, int MaleClubs, int FemaleClubs);
 public record CatalogSelection(FootballGender Gender, string Season, List<string> Countries,
     List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings, WorldDataSummary? DataSummary = null);

@@ -1320,6 +1320,8 @@ public sealed class MultiplayerRoundOrchestrator
                 AwayStarters: MapLineup(awayStarterSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds),
                 AwayBench: MapLineup(awayBenchSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds))
             {
+                HomeColorPalette = home.ColorPalette,
+                AwayColorPalette = away.ColorPalette,
                 HomePlayersOnPitch = started?m.HomeActiveStarterIds.Count:homeStarterSource.Count,
                 AwayPlayersOnPitch = started?m.AwayActiveStarterIds.Count:awayStarterSource.Count
             });

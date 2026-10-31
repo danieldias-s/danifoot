@@ -49,6 +49,13 @@ public static class WorldCreatorEndpoints
         builder.Services.AddSingleton<CatalogSyncService>();
         builder.Services.AddSingleton<WorldCreatorService>();
         builder.Services.AddSingleton<WorldAssemblyService>();
+        builder.Services.AddSingleton<ClubColorService>();
+        if(builder.Configuration.GetValue<bool>("Catalog014C:OnlineColorResearch")) {
+            var client=new HttpClient{BaseAddress=new Uri("https://www.wikidata.org/"),Timeout=TimeSpan.FromSeconds(12)};
+            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.WikidataClubColorSource(new(client,Elifoot.Infrastructure.Catalog.Providers.FootballProviderKind.Wikidata,null)));
+        }
+        if(builder.Configuration["Catalog014C:ColorFile"] is string colorFile)
+            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.SavedClubColorSource(Path.GetFullPath(colorFile)));
         return true;
     }
     public static async Task InitializeWorldCreator013A(this WebApplication app)
@@ -56,6 +63,7 @@ public static class WorldCreatorEndpoints
         using var scope = app.Services.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         await db.Database.EnsureCreatedAsync();
         await WorldAssemblyService.EnsureSchema(db);
+        await ClubColorService.EnsureSchema(db);
         foreach (var country in WorldCreatorService.PriorityCountries)
             if (!await db.Countries.AnyAsync(c => c.Code == country.Code)) db.Countries.Add(new() { Code = country.Code, Name = country.Name });
         await db.SaveChangesAsync();
@@ -129,6 +137,8 @@ public static class WorldCreatorEndpoints
             });
             return Results.Ok(new { csv = WorldEditorAndPackageService.ExportPlayersToCsv(preview) });
         });
+        group.MapGet("/appearance/{worldId:guid}/{clubId:guid}",async(Guid worldId,Guid clubId,HttpContext c,[Microsoft.AspNetCore.Mvc.FromServices] ClubColorService service,CancellationToken ct)=>Results.Ok(await service.Appearance(Owner(c),worldId,clubId,ct:ct)));
+        group.MapPost("/appearance/{worldId:guid}/{clubId:guid}",async(Guid worldId,Guid clubId,SaveAppearanceRequest command,HttpContext c,[Microsoft.AspNetCore.Mvc.FromServices] ClubColorService service,CancellationToken ct)=>Results.Ok(await service.Appearance(Owner(c),worldId,clubId,command,ct)));
         var admin = app.MapGroup("/api/catalog-013a");
         admin.AddEndpointFilter(async (context, next) =>
         {
@@ -143,6 +153,9 @@ public static class WorldCreatorEndpoints
         admin.MapGet("/identities", async (string country, FootballGender gender, [Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => Results.Ok(await db.Set<CatalogClubIdentity>().Where(i => i.CountryCode == country && i.Gender == gender).ToListAsync(ct)));
         admin.MapGet("/identity-conflicts", async ([Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => Results.Ok(await db.Set<CatalogIdentityConflict>().Where(c => c.Status == "Open").ToListAsync(ct)));
         admin.MapPost("/map-club", async (CatalogIdentityMappingRequest request, [Microsoft.AspNetCore.Mvc.FromServices] CatalogDbContext db, CancellationToken ct) => { await CatalogIdentityService.MapAsync(db, request, ct); return Results.Ok(new { status = "Reviewed" }); });
+        admin.MapPost("/club-colors/import",async(ImportClubColorRequest request,[Microsoft.AspNetCore.Mvc.FromServices] ClubColorService service,CancellationToken ct)=>{await service.Import(request,ct);return Results.Ok(new{status="Imported"});});
+        admin.MapPost("/club-colors/refresh",async(WorldCreatorRequest request,WorldCreatorService creator,[Microsoft.AspNetCore.Mvc.FromServices] ClubColorService service,CancellationToken ct)=>{
+            var selected=await creator.Select(request.Countries,request.Gender,request.Season,true,ct);return Results.Ok(await service.Refresh(selected.Clubs,ct:ct));});
         admin.MapPost("/import", async (CatalogImportPackage package, CatalogSyncService sync, CancellationToken ct) => Results.Ok(new { snapshotId = await sync.ImportAsync(package, ct) }));
         admin.MapPost("/import-csv", async (CatalogCsvRequest request, CatalogSyncService sync, CancellationToken ct) =>
             Results.Ok(new { snapshotId = await sync.ImportAsync(CatalogImportCodec.ReadCsv(request.Manifest, request.Csv), ct) }));

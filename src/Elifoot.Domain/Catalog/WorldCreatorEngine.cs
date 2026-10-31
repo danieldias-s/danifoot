@@ -162,6 +162,7 @@ public static class WorldCreatorEngine
             var entry = preview.Clubs[i];
             var club = world.Clubs[i];
             club.Name = entry.Club.Name; club.ShortName = entry.Club.ShortName;
+            club.ColorPalette = entry.Club.ColorPalette;
             club.Country = entry.Club.CountryName; club.PrimaryColorHex = entry.Club.PrimaryColor;
             club.SecondaryColorHex = entry.Club.SecondaryColor; club.DivisionTier = (DivisionTier)entry.Division;
             club.Stadium.Name = $"Estádio de {club.Name}";

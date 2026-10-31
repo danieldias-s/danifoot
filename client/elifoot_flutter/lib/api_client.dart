@@ -37,6 +37,10 @@ class ElifootApiClient {
     if (res.statusCode >= 400) throw Exception(res.statusCode == 404 ? (path.startsWith('assemblies') ? 'Montagem não encontrada para este usuário.' : 'Catálogo indisponível: ative o perfil 013A.') : res.body);
     return res.body.isEmpty ? null : jsonDecode(res.body);
   }
+  Future<Map<String,dynamic>> getAppearance(String owner,String world,String club) async =>
+      Map<String,dynamic>.from(await worldCreator(owner,'appearance/$world/$club') as Map);
+  Future<Map<String,dynamic>> saveAppearance(String owner,String world,String club,Map<String,dynamic> preferences,int version) async =>
+      Map<String,dynamic>.from(await worldCreator(owner,'appearance/$world/$club',body:{'preferences':preferences,'expectedVersion':version}) as Map);
   Future<Map<String, dynamic>> localLogin(String nickname, String deviceId) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/auth/local-login'),

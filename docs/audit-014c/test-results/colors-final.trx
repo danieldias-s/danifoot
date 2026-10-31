@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="70eca41e-17d2-4063-927d-04d4e13bd723" name="Daniel@DESKTOP-A5J5UME 2026-10-31 11:39:21" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-31T11:39:21.4762792-03:00" queuing="2026-10-31T11:39:21.4762798-03:00" start="2026-10-31T11:39:15.9273898-03:00" finish="2026-10-31T11:39:25.0920427-03:00" />
+  <TestSettings name="default" id="27cfad12-18cf-4768-be17-43fa440b79e3">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-31_11_39_21" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="9904fd28-b970-4a62-a3e1-dfe2a386c72d" testId="1937b0a6-2d19-d4a1-deb8-ab47386333ec" testName="Elifoot.Integration.Tests.ClubColors014CTests.ConcurrentCacheRefreshCoalescesSourceRequests" computerName="DESKTOP-A5J5UME" duration="00:00:00.1282568" startTime="2026-10-31T11:39:24.8209689-03:00" endTime="2026-10-31T11:39:24.9475620-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9904fd28-b970-4a62-a3e1-dfe2a386c72d" />
+    <UnitTestResult executionId="4eee05ce-5734-45f2-a4f2-51c691843d7b" testId="675bc1a6-db7c-2653-9dba-22b0d91991da" testName="Elifoot.Integration.Tests.ClubColors014CTests.FailedOnlineSourceFallsBackToAuthorizedImport" computerName="DESKTOP-A5J5UME" duration="00:00:00.2128808" startTime="2026-10-31T11:39:22.0433686-03:00" endTime="2026-10-31T11:39:22.2508109-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4eee05ce-5734-45f2-a4f2-51c691843d7b" />
+    <UnitTestResult executionId="bbbdd0ce-5e7c-426a-b833-2990014530ad" testId="c635221f-16b7-8a4d-19b0-8bc9d8ee993c" testName="Elifoot.Integration.Tests.ClubColors014CTests.PersonalizedPackageKeepsColorsAndUsesIndependentCopies" computerName="DESKTOP-A5J5UME" duration="00:00:01.8490000" startTime="2026-10-31T11:39:22.9701548-03:00" endTime="2026-10-31T11:39:24.8191610-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbbdd0ce-5e7c-426a-b833-2990014530ad" />
+    <UnitTestResult executionId="dcefa2a2-fa24-4189-99b1-82a469078f8b" testId="9ca04b8b-59eb-1c79-377e-834232ed17e1" testName="Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Male)" computerName="DESKTOP-A5J5UME" duration="00:00:00.5155378" startTime="2026-10-31T11:39:21.4525521-03:00" endTime="2026-10-31T11:39:21.9384745-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcefa2a2-fa24-4189-99b1-82a469078f8b" />
+    <UnitTestResult executionId="0aa84b99-8559-47f9-bc00-643f408cbb27" testId="5fb3ee01-45ae-0309-53d8-25084eb184af" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#00000000&quot;, valid: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0006304" startTime="2026-10-31T11:39:22.0351788-03:00" endTime="2026-10-31T11:39:22.0354514-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0aa84b99-8559-47f9-bc00-643f408cbb27" />
+    <UnitTestResult executionId="fe855eca-0768-4a40-8480-fdea92be82ba" testId="b42f0ce1-9054-3ba9-8778-20ee5693a764" testName="Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Female)" computerName="DESKTOP-A5J5UME" duration="00:00:03.6971955" startTime="2026-10-31T11:39:17.7113845-03:00" endTime="2026-10-31T11:39:21.4222148-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe855eca-0768-4a40-8480-fdea92be82ba" />
+    <UnitTestResult executionId="0cf93fdf-e66b-4246-8b41-27dbf8773cff" testId="52a7310d-5cdf-5b09-00d8-3071a8b40f4d" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;red&quot;, valid: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0000208" startTime="2026-10-31T11:39:22.0358227-03:00" endTime="2026-10-31T11:39:22.0360102-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0cf93fdf-e66b-4246-8b41-27dbf8773cff" />
+    <UnitTestResult executionId="352eff7c-31f9-4487-ae03-12f59b1e6a57" testId="17183f3e-3fa2-b555-a4da-81395ea050ce" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#C3281E&quot;, valid: True)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0000140" startTime="2026-10-31T11:39:22.0373461-03:00" endTime="2026-10-31T11:39:22.0375198-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="352eff7c-31f9-4487-ae03-12f59b1e6a57" />
+    <UnitTestResult executionId="8aeb25bb-d638-4e03-a00d-bd849acd10db" testId="b8c38482-101b-96b5-4de2-16ca04624ff9" testName="Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: &quot;P462&quot;)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0871651" startTime="2026-10-31T11:39:21.9429074-03:00" endTime="2026-10-31T11:39:22.0263827-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8aeb25bb-d638-4e03-a00d-bd849acd10db" />
+    <UnitTestResult executionId="8402c28e-baa3-4a2f-856f-0612b6919fc4" testId="20a60be9-b9af-7e02-839b-8b43637f42b1" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#FFF&quot;, valid: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0000142" startTime="2026-10-31T11:39:22.0363777-03:00" endTime="2026-10-31T11:39:22.0365541-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8402c28e-baa3-4a2f-856f-0612b6919fc4" />
+    <UnitTestResult executionId="d89f9f59-6d14-4f73-94bd-1cae56f88d47" testId="c716d4a5-2b60-1d29-b5ea-d818eb4a8d12" testName="Elifoot.Integration.Tests.ClubColors014CTests.ExternalIdentityCountryAndGenderAreNotMergedByName" computerName="DESKTOP-A5J5UME" duration="00:00:00.1587788" startTime="2026-10-31T11:39:22.8110420-03:00" endTime="2026-10-31T11:39:22.9696968-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d89f9f59-6d14-4f73-94bd-1cae56f88d47" />
+    <UnitTestResult executionId="7df0dc4f-310b-4cd8-a2e8-a4ddac3c0006" testId="fc0f47e9-5666-28de-15ff-bc87261688e9" testName="Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: &quot;P6364&quot;)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0019618" startTime="2026-10-31T11:39:22.0275452-03:00" endTime="2026-10-31T11:39:22.0284788-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7df0dc4f-310b-4cd8-a2e8-a4ddac3c0006" />
+    <UnitTestResult executionId="3b4f8194-e26e-416a-b775-6f2690c03c42" testId="958df9bf-bedc-957c-9bfc-5ff780d71c9c" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#abcdef&quot;, valid: True)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0000194" startTime="2026-10-31T11:39:22.0368784-03:00" endTime="2026-10-31T11:39:22.0370408-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3b4f8194-e26e-416a-b775-6f2690c03c42" />
+    <UnitTestResult executionId="21e42ce1-29bf-4e8a-985c-bea9037e8d40" testId="ab7be102-28bc-d50f-1f5e-4cf56e9a1f28" testName="Elifoot.Integration.Tests.ClubColors014CTests.LegacyWorldWithoutColorsAllowsPrivateAppearanceAndPreservesCompleteSnapshot" computerName="DESKTOP-A5J5UME" duration="00:00:00.2986024" startTime="2026-10-31T11:39:22.2518983-03:00" endTime="2026-10-31T11:39:22.5486758-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21e42ce1-29bf-4e8a-985c-bea9037e8d40" />
+    <UnitTestResult executionId="0fb7fe78-8cbd-449d-8f89-4928b2acb8d7" testId="6a1e4388-5a5c-7ff3-4128-00a22251f79e" testName="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#12xx34&quot;, valid: False)" computerName="DESKTOP-A5J5UME" duration="00:00:00.0059564" startTime="2026-10-31T11:39:22.0294170-03:00" endTime="2026-10-31T11:39:22.0347708-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0fb7fe78-8cbd-449d-8f89-4928b2acb8d7" />
+    <UnitTestResult executionId="4a3c9693-c86c-489b-acd3-4f6834b90791" testId="4746e378-a26f-5238-2b14-4dd4d9a54bdb" testName="Elifoot.Integration.Tests.ClubColors014CTests.CacheHonorsLastValidResultCooldownAndSourceFailure" computerName="DESKTOP-A5J5UME" duration="00:00:00.2611690" startTime="2026-10-31T11:39:22.5494422-03:00" endTime="2026-10-31T11:39:22.8106790-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4a3c9693-c86c-489b-acd3-4f6834b90791" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.PersonalizedPackageKeepsColorsAndUsesIndependentCopies" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="c635221f-16b7-8a4d-19b0-8bc9d8ee993c">
+      <Execution id="bbbdd0ce-5e7c-426a-b833-2990014530ad" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="PersonalizedPackageKeepsColorsAndUsesIndependentCopies" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.LegacyWorldWithoutColorsAllowsPrivateAppearanceAndPreservesCompleteSnapshot" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="ab7be102-28bc-d50f-1f5e-4cf56e9a1f28">
+      <Execution id="21e42ce1-29bf-4e8a-985c-bea9037e8d40" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="LegacyWorldWithoutColorsAllowsPrivateAppearanceAndPreservesCompleteSnapshot" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: &quot;P462&quot;)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="b8c38482-101b-96b5-4de2-16ca04624ff9">
+      <Execution id="8aeb25bb-d638-4e03-a00d-bd849acd10db" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="WikidataUsesColorItemsThenP465WithExactReviewedQid" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.FailedOnlineSourceFallsBackToAuthorizedImport" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="675bc1a6-db7c-2653-9dba-22b0d91991da">
+      <Execution id="4eee05ce-5734-45f2-a4f2-51c691843d7b" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="FailedOnlineSourceFallsBackToAuthorizedImport" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Male)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="9ca04b8b-59eb-1c79-377e-834232ed17e1">
+      <Execution id="dcefa2a2-fa24-4189-99b1-82a469078f8b" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.ExternalIdentityCountryAndGenderAreNotMergedByName" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="c716d4a5-2b60-1d29-b5ea-d818eb4a8d12">
+      <Execution id="d89f9f59-6d14-4f73-94bd-1cae56f88d47" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="ExternalIdentityCountryAndGenderAreNotMergedByName" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#00000000&quot;, valid: False)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="5fb3ee01-45ae-0309-53d8-25084eb184af">
+      <Execution id="0aa84b99-8559-47f9-bc00-643f408cbb27" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#FFF&quot;, valid: False)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="20a60be9-b9af-7e02-839b-8b43637f42b1">
+      <Execution id="8402c28e-baa3-4a2f-856f-0612b6919fc4" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#12xx34&quot;, valid: False)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="6a1e4388-5a5c-7ff3-4128-00a22251f79e">
+      <Execution id="0fb7fe78-8cbd-449d-8f89-4928b2acb8d7" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot(gender: Female)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="b42f0ce1-9054-3ba9-8778-20ee5693a764">
+      <Execution id="fe855eca-0768-4a40-8480-fdea92be82ba" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="AppearanceIsPrivateDurablePerClubAndDoesNotWriteGameplaySnapshot" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.ConcurrentCacheRefreshCoalescesSourceRequests" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="1937b0a6-2d19-d4a1-deb8-ab47386333ec">
+      <Execution id="9904fd28-b970-4a62-a3e1-dfe2a386c72d" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="ConcurrentCacheRefreshCoalescesSourceRequests" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#abcdef&quot;, valid: True)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="958df9bf-bedc-957c-9bfc-5ff780d71c9c">
+      <Execution id="3b4f8194-e26e-416a-b775-6f2690c03c42" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;#C3281E&quot;, valid: True)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="17183f3e-3fa2-b555-a4da-81395ea050ce">
+      <Execution id="352eff7c-31f9-4487-ae03-12f59b1e6a57" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.RgbHexValidationIsStrict(hex: &quot;red&quot;, valid: False)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="52a7310d-5cdf-5b09-00d8-3071a8b40f4d">
+      <Execution id="0cf93fdf-e66b-4246-8b41-27dbf8773cff" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="RgbHexValidationIsStrict" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.CacheHonorsLastValidResultCooldownAndSourceFailure" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="4746e378-a26f-5238-2b14-4dd4d9a54bdb">
+      <Execution id="4a3c9693-c86c-489b-acd3-4f6834b90791" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="CacheHonorsLastValidResultCooldownAndSourceFailure" />
+    </UnitTest>
+    <UnitTest name="Elifoot.Integration.Tests.ClubColors014CTests.WikidataUsesColorItemsThenP465WithExactReviewedQid(property: &quot;P6364&quot;)" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="fc0f47e9-5666-28de-15ff-bc87261688e9">
+      <Execution id="7df0dc4f-310b-4cd8-a2e8-a4ddac3c0006" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.ClubColors014CTests" name="WikidataUsesColorItemsThenP465WithExactReviewedQid" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="1937b0a6-2d19-d4a1-deb8-ab47386333ec" executionId="9904fd28-b970-4a62-a3e1-dfe2a386c72d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="675bc1a6-db7c-2653-9dba-22b0d91991da" executionId="4eee05ce-5734-45f2-a4f2-51c691843d7b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c635221f-16b7-8a4d-19b0-8bc9d8ee993c" executionId="bbbdd0ce-5e7c-426a-b833-2990014530ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ca04b8b-59eb-1c79-377e-834232ed17e1" executionId="dcefa2a2-fa24-4189-99b1-82a469078f8b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fb3ee01-45ae-0309-53d8-25084eb184af" executionId="0aa84b99-8559-47f9-bc00-643f408cbb27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b42f0ce1-9054-3ba9-8778-20ee5693a764" executionId="fe855eca-0768-4a40-8480-fdea92be82ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="52a7310d-5cdf-5b09-00d8-3071a8b40f4d" executionId="0cf93fdf-e66b-4246-8b41-27dbf8773cff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="17183f3e-3fa2-b555-a4da-81395ea050ce" executionId="352eff7c-31f9-4487-ae03-12f59b1e6a57" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8c38482-101b-96b5-4de2-16ca04624ff9" executionId="8aeb25bb-d638-4e03-a00d-bd849acd10db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="20a60be9-b9af-7e02-839b-8b43637f42b1" executionId="8402c28e-baa3-4a2f-856f-0612b6919fc4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c716d4a5-2b60-1d29-b5ea-d818eb4a8d12" executionId="d89f9f59-6d14-4f73-94bd-1cae56f88d47" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fc0f47e9-5666-28de-15ff-bc87261688e9" executionId="7df0dc4f-310b-4cd8-a2e8-a4ddac3c0006" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="958df9bf-bedc-957c-9bfc-5ff780d71c9c" executionId="3b4f8194-e26e-416a-b775-6f2690c03c42" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab7be102-28bc-d50f-1f5e-4cf56e9a1f28" executionId="21e42ce1-29bf-4e8a-985c-bea9037e8d40" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a1e4388-5a5c-7ff3-4128-00a22251f79e" executionId="0fb7fe78-8cbd-449d-8f89-4928b2acb8d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4746e378-a26f-5238-2b14-4dd4d9a54bdb" executionId="4a3c9693-c86c-489b-acd3-4f6834b90791" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="16" executed="16" passed="16" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.50]   Discovering: Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.66]   Discovered:  Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.75]   Starting:    Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:08.05]   Finished:    Elifoot.Integration.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

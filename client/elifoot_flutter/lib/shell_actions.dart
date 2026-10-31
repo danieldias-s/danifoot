@@ -2,12 +2,13 @@
 part of 'main.dart';
 
 class _ShellDropdownArrowPainter extends CustomPainter {
-  const _ShellDropdownArrowPainter();
+  final Color color;
+  const _ShellDropdownArrowPainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFFFD700)
+      ..color = color
       ..style = PaintingStyle.fill;
     final path = Path()
       ..moveTo(0, 0)
@@ -18,14 +19,15 @@ class _ShellDropdownArrowPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _ShellDropdownArrowPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
-Widget _classicDropdownIcon() => const Padding(
+Widget _classicDropdownIcon(BuildContext context) => Padding(
   padding: EdgeInsets.only(right: 4),
   child: CustomPaint(
     size: Size(10, 6),
-    painter: _ShellDropdownArrowPainter(),
+    painter: _ShellDropdownArrowPainter(ClassicTheme.of(context).accent),
   ),
 );
 
@@ -44,7 +46,11 @@ extension _ShellActions on _ElifootShellScreenState {
 
   Map<String, dynamic>? _preferLatestSnapshot(Map<String, dynamic>? incoming) {
     if (incoming == null) return _snapshot;
-    if (_worldId!=null && incoming['gameWorldId']!=null && incoming['gameWorldId']!=_worldId) return _snapshot;
+    if (_worldId != null &&
+        incoming['gameWorldId'] != null &&
+        incoming['gameWorldId'] != _worldId) {
+      return _snapshot;
+    }
     if ((_snapshot?['roundVersion'] as num? ?? 0) >
         (incoming['roundVersion'] as num? ?? 0)) {
       return _snapshot;
@@ -67,15 +73,15 @@ extension _ShellActions on _ElifootShellScreenState {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF0E3B19),
-        shape: const RoundedRectangleBorder(
+        backgroundColor: ClassicTheme.of(context).surface,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(color: Color(0xFFFFD700), width: 1.5),
+          side: BorderSide(color: ClassicTheme.of(context).border, width: 1.5),
         ),
-        title: const Text(
+        title: Text(
           'ENTRAR POR CÓDIGO',
           style: TextStyle(
-            color: Color(0xFFFFD700),
+            color: ClassicTheme.of(context).accent,
             fontWeight: FontWeight.bold,
             fontSize: 14,
           ),
@@ -141,19 +147,22 @@ extension _ShellActions on _ElifootShellScreenState {
           final screen = MediaQuery.sizeOf(ctx);
           final isMobile = screen.width < 600;
           return AlertDialog(
-            backgroundColor: const Color(0xFF0E3B19),
+            backgroundColor: ClassicTheme.of(context).surface,
             insetPadding: EdgeInsets.symmetric(
               horizontal: isMobile ? 8 : 24,
               vertical: isMobile ? 10 : 20,
             ),
-            shape: const RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.zero,
-              side: BorderSide(color: Color(0xFFFFD700), width: 1.5),
+              side: BorderSide(
+                color: ClassicTheme.of(context).border,
+                width: 1.5,
+              ),
             ),
-            title: const Text(
+            title: Text(
               'SELECIONE SEU CLUBE',
               style: TextStyle(
-                color: Color(0xFFFFD700),
+                color: ClassicTheme.of(context).accent,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
@@ -198,17 +207,17 @@ extension _ShellActions on _ElifootShellScreenState {
                               children: [
                                 Text(
                                   '${c['name']}',
-                                  style: const TextStyle(
-                                    color: Color(0xFFFFD700),
+                                  style: TextStyle(
+                                    color: ClassicTheme.of(context).accent,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
                                 Text(
                                   '${c['divisionDisplay']} • Caixa $cashStr',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 11,
-                                    color: Colors.white70,
+                                    color: ClassicTheme.of(context).accent,
                                   ),
                                 ),
                               ],
@@ -220,15 +229,17 @@ extension _ShellActions on _ElifootShellScreenState {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF145224),
+                              color: ClassicTheme.of(context).buttonBackground,
                               border: Border.all(
-                                color: const Color(0xFFFFD700),
+                                color: ClassicTheme.of(
+                                  context,
+                                ).selectedBackground,
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               'ASSUMIR',
                               style: TextStyle(
-                                color: Color(0xFFFFD700),
+                                color: ClassicTheme.of(context).accent,
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -307,8 +318,11 @@ extension _ShellActions on _ElifootShellScreenState {
         margin: const EdgeInsets.all(12),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: const Color(0xFF0E3B19),
-          border: Border.all(color: const Color(0xFFFFD700), width: 1.5),
+          color: ClassicTheme.of(context).surface,
+          border: Border.all(
+            color: ClassicTheme.of(context).selectedBackground,
+            width: 1.5,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,9 +351,15 @@ extension _ShellActions on _ElifootShellScreenState {
                       : '0 Liga / 0 Taça',
                 ),
                 PlayerStatItem('MORAL', '$moraleVal/100 ($moraleBand)'),
-                PlayerStatItem('RODADA ATUAL', 'T$seasonNumber • R$roundNumber'),
+                PlayerStatItem(
+                  'RODADA ATUAL',
+                  'T$seasonNumber • R$roundNumber',
+                ),
                 if (snap?['gameDate'] != null)
-                  PlayerStatItem('DATA DO JOGO', formatClassicDate(snap!['gameDate'])),
+                  PlayerStatItem(
+                    'DATA DO JOGO',
+                    formatClassicDate(snap!['gameDate']),
+                  ),
                 PlayerStatItem(
                   'CONVITES',
                   '${invitations.length} disponível(is)',
@@ -348,9 +368,12 @@ extension _ShellActions on _ElifootShellScreenState {
               ],
             ),
             const SizedBox(height: 10),
-            const Text(
+            Text(
               'Use o botão "PRONTO PARA ACOMPANHAR" no topo para avançar as rodadas com a sala, ou veja a aba "6. RANKING & CARREIRA" para aceitar convites de clubes!',
-              style: TextStyle(fontSize: 11, color: Colors.white70),
+              style: TextStyle(
+                fontSize: 11,
+                color: ClassicTheme.of(context).accent,
+              ),
             ),
             const SizedBox(height: 10),
             Wrap(
@@ -359,7 +382,10 @@ extension _ShellActions on _ElifootShellScreenState {
               children: [
                 ElevatedButton(
                   key: const ValueKey('btn-ver-convites-desempregado'),
-                  onPressed: () => setState(() { _activeTabIndex = 4; _showMatchView = false; }),
+                  onPressed: () => setState(() {
+                    _activeTabIndex = 4;
+                    _showMatchView = false;
+                  }),
                   child: const Text('VER CONVITES DE EMPREGO'),
                 ),
                 if (roundState == 'PREPARING' && !isReady)
@@ -370,11 +396,19 @@ extension _ShellActions on _ElifootShellScreenState {
                   ),
                 ClassicActionButton(
                   label: 'CLASSIFICAÇÃO',
-                  onPressed: () => setState(() { _activeTabIndex = 1; _showMatchView = false; }),
+                  onPressed: () => setState(() {
+                    _activeTabIndex = 1;
+                    _showMatchView = false;
+                  }),
                 ),
                 ClassicActionButton(
                   label: 'ACOMPANHAR RODADA',
-                  onPressed: () => setState(() { _showMatchView = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString()); if (!_showMatchView) _activeTabIndex = 0; }),
+                  onPressed: () => setState(() {
+                    _showMatchView = RoundViewCoordinator.isMatchStage(
+                      _snapshot?['roundState']?.toString(),
+                    );
+                    if (!_showMatchView) _activeTabIndex = 0;
+                  }),
                 ),
               ],
             ),
@@ -405,8 +439,10 @@ extension _ShellActions on _ElifootShellScreenState {
                   margin: const EdgeInsets.only(bottom: 6),
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF136F2D),
-                    border: Border.all(color: const Color(0xFFFFD700)),
+                    color: ClassicTheme.of(context).buttonBackground,
+                    border: Border.all(
+                      color: ClassicTheme.of(context).selectedBackground,
+                    ),
                   ),
                   child: Wrap(
                     spacing: 10,
@@ -419,8 +455,8 @@ extension _ShellActions on _ElifootShellScreenState {
                         children: [
                           Text(
                             '${inv['clubName']} (${inv['divisionDisplay']}) — Caixa: ${formatClassicMoney(inv['clubBudget'])}',
-                            style: const TextStyle(
-                              color: Color(0xFFFFD700),
+                            style: TextStyle(
+                              color: ClassicTheme.of(context).accent,
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
@@ -512,27 +548,29 @@ extension _ShellActions on _ElifootShellScreenState {
         final isHome = myCalFix['home'] == clubName;
         final oppName = isHome ? myCalFix['away'] : myCalFix['home'];
         nextOpponentText = '$oppName (${isHome ? "CASA" : "FORA"})';
-        nextMatchText = '${myCalFix['home']} x ${myCalFix['away']} (R$roundNumber)';
+        nextMatchText =
+            '${myCalFix['home']} x ${myCalFix['away']} (R$roundNumber)';
       }
     }
 
     final prepText = roundState == 'PREPARING'
-        ? (_isClassicIdleRound ? 'SEM PARTIDA — PRONTO PARA ACOMPANHAR' : isReady
+        ? (_isClassicIdleRound
+              ? 'SEM PARTIDA — PRONTO PARA ACOMPANHAR'
+              : isReady
               ? 'TÁTICA ENVIADA (PRONTO)'
-              : (_requiredStarterCount > 0 && _selectedStarterIds.length == _requiredStarterCount
+              : (_requiredStarterCount > 0 &&
+                        _selectedStarterIds.length == _requiredStarterCount
                     ? 'ESCALADO (FALTA ENVIAR)'
                     : 'ESCALAÇÃO INCOMPLETA (${_selectedStarterIds.length}/11)'))
-        : (roundState == 'RESULTS'
-              ? 'RODADA FINALIZADA'
-              : 'PARTIDA EM CURSO');
+        : (roundState == 'RESULTS' ? 'RODADA FINALIZADA' : 'PARTIDA EM CURSO');
 
     return Container(
       key: const ValueKey('coach-main-panel'),
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: const Color(0xFF0E3B19),
-        border: Border.all(color: const Color(0xFF3E8450)),
+        color: ClassicTheme.of(context).surface,
+        border: Border.all(color: ClassicTheme.of(context).border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -548,9 +586,15 @@ extension _ShellActions on _ElifootShellScreenState {
               PlayerStatItem('CLUBE ATUAL', clubName, highlight: true),
               PlayerStatItem('DIVISÃO', divisionDisplay),
               if (snap?['gameDate'] != null)
-                PlayerStatItem('DATA DO JOGO', formatClassicDate(snap!['gameDate'])),
+                PlayerStatItem(
+                  'DATA DO JOGO',
+                  formatClassicDate(snap!['gameDate']),
+                ),
               if (_myClubDetail?['growthCeiling'] != null)
-                PlayerStatItem('TETO DE EVOLUÇÃO', '${_myClubDetail!['growthCeiling']}'),
+                PlayerStatItem(
+                  'TETO DE EVOLUÇÃO',
+                  '${_myClubDetail!['growthCeiling']}',
+                ),
               PlayerStatItem('POSIÇÃO', positionText, highlight: true),
               PlayerStatItem('PRÓXIMO ADVERSÁRIO', nextOpponentText),
               PlayerStatItem('PRÓXIMA PARTIDA', nextMatchText),
@@ -571,7 +615,7 @@ extension _ShellActions on _ElifootShellScreenState {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF062E0F),
+                  color: ClassicTheme.of(context).surface,
                   border: Border.all(color: moraleColor),
                 ),
                 child: Text(
@@ -585,22 +629,27 @@ extension _ShellActions on _ElifootShellScreenState {
               ),
               if (invitations.isNotEmpty)
                 InkWell(
-                  onTap: () => setState(() { _activeTabIndex = 4; _showMatchView = false; }),
+                  onTap: () => setState(() {
+                    _activeTabIndex = 4;
+                    _showMatchView = false;
+                  }),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 8,
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF1B5E20),
-                      border: Border.all(color: const Color(0xFFFFD700)),
+                      color: ClassicTheme.of(context).surfaceAlternate,
+                      border: Border.all(
+                        color: ClassicTheme.of(context).selectedBackground,
+                      ),
                     ),
                     child: Text(
                       '[!] ${invitations.length} CONVITE(S) PENDENTE(S) — CLIQUE PARA VER',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFFD700),
+                        color: ClassicTheme.of(context).accent,
                       ),
                     ),
                   ),
@@ -613,34 +662,47 @@ extension _ShellActions on _ElifootShellScreenState {
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-taticas'),
                 label: 'TÁTICAS ($_selectedFormation)',
-                onPressed: _tacticsLocked ? null : () {
-                  final idx = _ElifootShellScreenState.availableFormations
-                      .indexOf(_selectedFormation);
-                  final nextIdx =
-                      (idx + 1) %
-                      _ElifootShellScreenState.availableFormations.length;
-                  setState(() {
-                    _selectedFormation =
-                        _ElifootShellScreenState.availableFormations[nextIdx];
-                    _statusBanner =
-                        'Esquema tático alterado para $_selectedFormation.';
-                  });
-                },
+                onPressed: _tacticsLocked
+                    ? null
+                    : () {
+                        final idx = _ElifootShellScreenState.availableFormations
+                            .indexOf(_selectedFormation);
+                        final nextIdx =
+                            (idx + 1) %
+                            _ElifootShellScreenState.availableFormations.length;
+                        setState(() {
+                          _selectedFormation = _ElifootShellScreenState
+                              .availableFormations[nextIdx];
+                          _statusBanner =
+                              'Esquema tático alterado para $_selectedFormation.';
+                        });
+                      },
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-mercado'),
                 label: 'MERCADO',
-                onPressed: () => setState(() { _activeTabIndex = 2; _showMatchView = false; }),
+                onPressed: () => setState(() {
+                  _activeTabIndex = 2;
+                  _showMatchView = false;
+                }),
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-classificacao'),
                 label: 'CLASSIFICAÇÃO',
-                onPressed: () => setState(() { _activeTabIndex = 1; _showMatchView = false; }),
+                onPressed: () => setState(() {
+                  _activeTabIndex = 1;
+                  _showMatchView = false;
+                }),
               ),
               ClassicActionButton(
                 buttonKey: const ValueKey('quick-action-proxima-partida'),
                 label: 'PRÓXIMA PARTIDA',
-                onPressed: () => setState(() { _showMatchView = RoundViewCoordinator.isMatchStage(_snapshot?['roundState']?.toString()); if(!_showMatchView) _activeTabIndex=0; }),
+                onPressed: () => setState(() {
+                  _showMatchView = RoundViewCoordinator.isMatchStage(
+                    _snapshot?['roundState']?.toString(),
+                  );
+                  if (!_showMatchView) _activeTabIndex = 0;
+                }),
               ),
             ],
           ),
@@ -661,8 +723,9 @@ extension _ShellActions on _ElifootShellScreenState {
         )
         .toList();
     avail.sort(
-      (a, b) =>
-          ((b['strength'] as num?) ?? 0).compareTo((a['strength'] as num?) ?? 0),
+      (a, b) => ((b['strength'] as num?) ?? 0).compareTo(
+        (a['strength'] as num?) ?? 0,
+      ),
     );
     final parts = _selectedFormation
         .split('-')
@@ -765,7 +828,8 @@ extension _ShellActions on _ElifootShellScreenState {
         .where((p) => _formatPosition(p['position']) == 'A')
         .toList();
 
-    final isComplete = _requiredStarterCount > 0 && starters.length == _requiredStarterCount;
+    final isComplete =
+        _requiredStarterCount > 0 && starters.length == _requiredStarterCount;
     final isSectorMatch =
         isComplete &&
         gStarters.length == 1 &&
@@ -792,10 +856,10 @@ extension _ShellActions on _ElifootShellScreenState {
         margin: const EdgeInsets.symmetric(vertical: 3),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         decoration: BoxDecoration(
-          color: const Color(0xFF0A4218),
+          color: ClassicTheme.of(context).surfaceAlternate,
           border: Border.all(
             color: countMatch
-                ? const Color(0xFF3E8450)
+                ? ClassicTheme.of(context).border
                 : const Color(0xFFFFB74D),
           ),
         ),
@@ -813,14 +877,17 @@ extension _ShellActions on _ElifootShellScreenState {
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                     color: countMatch
-                        ? const Color(0xFFFFD700)
+                        ? ClassicTheme.of(context).accent
                         : const Color(0xFFFFB74D),
                   ),
                 ),
                 if (targetCount == 0 && players.isEmpty)
-                  const Text(
+                  Text(
                     'Setor sem atletas neste esquema',
-                    style: TextStyle(fontSize: 10, color: Colors.white54),
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: ClassicTheme.of(context).accent,
+                    ),
                   ),
               ],
             ),
@@ -840,15 +907,15 @@ extension _ShellActions on _ElifootShellScreenState {
                       vertical: 2,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF062E0F),
+                      color: ClassicTheme.of(context).surface,
                       border: Border.all(color: Colors.lightGreenAccent),
                     ),
                     child: Text(
                       '[$pos] $name (F:$str)',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: ClassicTheme.of(context).textPrimary,
                       ),
                     ),
                   );
@@ -864,8 +931,8 @@ extension _ShellActions on _ElifootShellScreenState {
       key: const ValueKey('tactical-field-preview'),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: const Color(0xFF062E0F),
-        border: Border.all(color: const Color(0xFF3E8450)),
+        color: ClassicTheme.of(context).surface,
+        border: Border.all(color: ClassicTheme.of(context).border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -891,18 +958,18 @@ extension _ShellActions on _ElifootShellScreenState {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: const Color(0xFF0E3B19),
-                border: Border.all(color: const Color(0xFF3E8450)),
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
               ),
               child: Wrap(
                 spacing: 10,
                 runSpacing: 6,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'TROCA RÁPIDA:',
                     style: TextStyle(
-                      color: Color(0xFFFFD700),
+                      color: ClassicTheme.of(context).accent,
                       fontWeight: FontWeight.bold,
                       fontSize: 11,
                     ),
@@ -913,8 +980,8 @@ extension _ShellActions on _ElifootShellScreenState {
                       key: const ValueKey('dropdown-swap-starter'),
                       isExpanded: true,
                       value: validSwapStarter,
-                      dropdownColor: const Color(0xFF062E0F),
-                      icon: _classicDropdownIcon(),
+                      dropdownColor: ClassicTheme.of(context).surface,
+                      icon: _classicDropdownIcon(context),
                       items: starters
                           .map(
                             (p) => DropdownMenuItem(
@@ -937,8 +1004,8 @@ extension _ShellActions on _ElifootShellScreenState {
                       key: const ValueKey('dropdown-swap-reserve'),
                       isExpanded: true,
                       value: validSwapReserve,
-                      dropdownColor: const Color(0xFF062E0F),
-                      icon: _classicDropdownIcon(),
+                      dropdownColor: ClassicTheme.of(context).surface,
+                      icon: _classicDropdownIcon(context),
                       items: bench
                           .map(
                             (p) => DropdownMenuItem(
@@ -991,7 +1058,11 @@ extension _ShellActions on _ElifootShellScreenState {
                 final inj = (p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0;
                 final days = (p['injuryDaysRemaining'] as num?)?.toInt() ?? 0;
                 final sus = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
-                return '${p['displayName']} (${days > 0 ? "LES $days dias" : inj > 0 ? "LES ${inj}r" : "SUS ${sus}r"})';
+                return '${p['displayName']} (${days > 0
+                    ? "LES $days dias"
+                    : inj > 0
+                    ? "LES ${inj}r"
+                    : "SUS ${sus}r"})';
               }).join(" | ")}',
               style: const TextStyle(fontSize: 11, color: Colors.orangeAccent),
             ),
@@ -1136,34 +1207,41 @@ extension _ShellActions on _ElifootShellScreenState {
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF0E3B19),
+                  color: ClassicTheme.of(context).surface,
                   border: Border.all(
                     color: isCurrent
-                        ? const Color(0xFFFFD700)
-                        : const Color(0xFF3E8450),
+                        ? ClassicTheme.of(context).selectedBackground
+                        : ClassicTheme.of(context).border,
                     width: isCurrent ? 1.5 : 1,
                   ),
                 ),
                 child: ExpansionTile(
                   initiallyExpanded:
                       isCurrent || _selectedCalendarFilter != 'ALL',
-                  collapsedIconColor: const Color(0xFFFFD700),
-                  iconColor: const Color(0xFFFFD700),
+                  collapsedIconColor: ClassicTheme.of(
+                    context,
+                  ).selectedBackground,
+                  iconColor: ClassicTheme.of(context).selectedBackground,
                   title: Text(
                     'Rodada ${r['roundNumber']} • ${r['competition']}${isCurrent ? " [ATUAL]" : ""}',
                     style: TextStyle(
-                      color: isCurrent ? const Color(0xFFFFD700) : Colors.white,
+                      color: isCurrent
+                          ? ClassicTheme.of(context).accent
+                          : ClassicTheme.of(context).textPrimary,
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
                     ),
                   ),
                   children: [
                     if (fixtures.isEmpty)
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
                           'Confrontos definidos após a fase anterior da Taça.',
-                          style: TextStyle(fontSize: 12, color: Colors.white70),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: ClassicTheme.of(context).accent,
+                          ),
                         ),
                       ),
                     for (final f in fixtures)
@@ -1177,7 +1255,7 @@ extension _ShellActions on _ElifootShellScreenState {
                               (myClubName != null &&
                                   (f['home'] == myClubName ||
                                       f['away'] == myClubName))
-                              ? const Color(0xFF185728)
+                              ? ClassicTheme.of(context).surfaceAlternate
                               : Colors.transparent,
                           border: const Border(
                             top: BorderSide(color: Colors.white12),
@@ -1200,8 +1278,8 @@ extension _ShellActions on _ElifootShellScreenState {
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,
                                 color: f['isFinished'] == true
-                                    ? const Color(0xFFFFD700)
-                                    : Colors.white70,
+                                    ? ClassicTheme.of(context).accent
+                                    : ClassicTheme.of(context).accent,
                               ),
                             ),
                           ],
@@ -1216,5 +1294,4 @@ extension _ShellActions on _ElifootShellScreenState {
       ],
     );
   }
-
 }

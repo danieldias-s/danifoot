@@ -37,7 +37,7 @@ public static class WorldEditorAndPackageService
                 c.Stadium.BuiltCapacity,
                 c.Stadium.UsableCapacity,
                 c.Stadium.ConditionPercent,
-                c.Stadium.MaintenanceReservePerSeason)).ToList(),
+                c.Stadium.MaintenanceReservePerSeason,c.ColorPalette)).ToList(),
             Players: world.Players.Select(p => new PlayerExportDto(
                 p.Id,
                 p.ClubId,
@@ -315,6 +315,7 @@ public static class WorldEditorAndPackageService
                 Name = cDto.Name,
                 ShortName = cDto.ShortName,
                 Country = cDto.Country,
+                ColorPalette = cDto.ColorPalette,
                 PrimaryColorHex = cDto.PrimaryColorHex,
                 SecondaryColorHex = cDto.SecondaryColorHex,
                 DivisionTier = cDto.DivisionTier,

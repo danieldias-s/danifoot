@@ -1,7 +1,6 @@
+import 'club_theme.dart';
 import 'package:flutter/material.dart';
 
-const _gold = Color(0xFFFFD700);
-const _green = Color(0xFF062E0F);
 String classicDivisionLabel(dynamic tier) => switch (tier?.toString()) {
   'PrimeiraDivisao' || '1' => '1ª DIVISÃO',
   'SegundaDivisao' || '2' => '2ª DIVISÃO',
@@ -93,8 +92,8 @@ class ClassicMatchBoard extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: _green,
-                    border: Border.all(color: const Color(0xFF3E8450)),
+                    color: ClassicTheme.of(context).surface,
+                    border: Border.all(color: ClassicTheme.of(context).border),
                   ),
                   child: group.value.length > 8
                       ? ExpansionTile(
@@ -102,13 +101,13 @@ class ClassicMatchBoard extends StatelessWidget {
                           initiallyExpanded: group.value.any(_isCoachMatch),
                           title: Text(
                             '${group.key} • ${group.value.length} JOGOS',
-                            style: const TextStyle(
-                              color: _gold,
+                            style: TextStyle(
+                              color: ClassicTheme.of(context).accent,
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
                             ),
                           ),
-                          children: _rows(group.value),
+                          children: _rows(context, group.value),
                         )
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -121,14 +120,14 @@ class ClassicMatchBoard extends StatelessWidget {
                               child: Text(
                                 group.key,
                                 key: ValueKey('division-heading-${group.key}'),
-                                style: const TextStyle(
-                                  color: _gold,
+                                style: TextStyle(
+                                  color: ClassicTheme.of(context).accent,
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            ..._rows(group.value),
+                            ..._rows(context, group.value),
                           ],
                         ),
                 ),
@@ -143,10 +142,9 @@ class ClassicMatchBoard extends StatelessWidget {
       coachClubId != null &&
       (match['homeClubId']?.toString() == coachClubId ||
           match['awayClubId']?.toString() == coachClubId);
-  List<Widget> _rows(List<Map<String, dynamic>> games) => [
-    for (int i = 0; i < games.length; i++) _row(games[i], i),
-  ];
-  Widget _row(Map<String, dynamic> match, int index) {
+  List<Widget> _rows(BuildContext context, List<Map<String, dynamic>> games) =>
+      [for (int i = 0; i < games.length; i++) _row(context, games[i], i)];
+  Widget _row(BuildContext context, Map<String, dynamic> match, int index) {
     final mine = _isCoachMatch(match);
     final id =
         match['matchId']?.toString() ??
@@ -162,11 +160,17 @@ class ClassicMatchBoard extends StatelessWidget {
       child: DecoratedBox(
         key: ValueKey('classic-match-$id'),
         decoration: BoxDecoration(
-          color: mine ? const Color(0xFF174F26) : null,
+          color: mine ? ClassicTheme.of(context).surfaceAlternate : null,
           border: Border(
-            top: BorderSide(color: mine ? _gold : const Color(0xFF205B30)),
+            top: BorderSide(
+              color: mine
+                  ? ClassicTheme.of(context).border
+                  : ClassicTheme.of(context).border,
+            ),
             left: BorderSide(
-              color: mine ? _gold : Colors.transparent,
+              color: mine
+                  ? ClassicTheme.of(context).border
+                  : Colors.transparent,
               width: 3,
             ),
           ),
@@ -197,22 +201,22 @@ class ClassicMatchBoard extends StatelessWidget {
                   match['isFinished'] == true
                       ? 'FIM'
                       : "${match['minute'] ?? 0}'",
-                  style: const TextStyle(color: _gold, fontSize: 10),
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).accent,
+                    fontSize: 10,
+                  ),
                 ),
               ),
               Expanded(
-                child: Tooltip(
-                  message: home,
-                  child: Text(
-                    home,
-                    textAlign: TextAlign.right,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: mine ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
+                child: TeamColorName(
+                  name: home,
+                  palette: match['homeColorPalette'] is Map
+                      ? Map<String, dynamic>.from(
+                          match['homeColorPalette'] as Map,
+                        )
+                      : null,
+                  textAlign: TextAlign.right,
+                  highlight: mine,
                 ),
               ),
               SizedBox(
@@ -224,8 +228,8 @@ class ClassicMatchBoard extends StatelessWidget {
                       '${match['homeGoals'] ?? 0} - ${match['awayGoals'] ?? 0}',
                       key: ValueKey('score-$id'),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: _gold,
+                      style: TextStyle(
+                        color: ClassicTheme.of(context).accent,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -234,26 +238,23 @@ class ClassicMatchBoard extends StatelessWidget {
                       Text(
                         pens,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 9,
-                          color: Colors.white70,
+                          color: ClassicTheme.of(context).textSecondary,
                         ),
                       ),
                   ],
                 ),
               ),
               Expanded(
-                child: Tooltip(
-                  message: away,
-                  child: Text(
-                    away,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: mine ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
+                child: TeamColorName(
+                  name: away,
+                  palette: match['awayColorPalette'] is Map
+                      ? Map<String, dynamic>.from(
+                          match['awayColorPalette'] as Map,
+                        )
+                      : null,
+                  highlight: mine,
                 ),
               ),
             ],
@@ -264,7 +265,10 @@ class ClassicMatchBoard extends StatelessWidget {
               style: const TextStyle(fontSize: 11),
             ),
             if (match['isExtraTime'] == true)
-              const Text('PRORROGAÇÃO', style: TextStyle(color: _gold)),
+              Text(
+                'PRORROGAÇÃO',
+                style: TextStyle(color: ClassicTheme.of(context).accent),
+              ),
             if (mine && coachDetails != null)
               coachDetails!(match)
             else

@@ -1,0 +1,16 @@
+Computing fixes in elifoot_flutter...
+Applying fixes...
+
+lib\appearance_settings.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+lib\club_theme.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib\main.dart
+  curly_braces_in_flow_control_structures - 4 fixes
+
+lib\shell_actions.dart
+  curly_braces_in_flow_control_structures - 1 fix
+
+10 fixes made in 4 files.

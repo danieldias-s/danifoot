@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="20178978-5495-4443-b29d-146945445a93" name="Daniel@DESKTOP-A5J5UME 2026-10-31 11:25:06" runUser="DESKTOP-A5J5UME\Daniel" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-31T11:25:06.4309036-03:00" queuing="2026-10-31T11:25:06.4309038-03:00" start="2026-10-31T11:24:49.5455599-03:00" finish="2026-10-31T11:25:06.4390716-03:00" />
+  <TestSettings name="default" id="2cbf54f9-eb4c-49e0-bbfc-c918cd0c56c9">
+    <Deployment runDeploymentRoot="Daniel_DESKTOP-A5J5UME_2026-10-31_11_25_06" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="5aa69763-4255-40d5-85da-9f26c4da715f" testId="087d7b2b-9dce-aa08-a53f-23c4ce51f71c" testName="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" computerName="DESKTOP-A5J5UME" duration="00:00:14.0773851" startTime="2026-10-31T11:24:52.1072428-03:00" endTime="2026-10-31T11:25:06.2026074-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5aa69763-4255-40d5-85da-9f26c4da715f">
+      <Output>
+        <StdOut>Real-season browser fixture: D:\elifoot_98_014C\docs\audit-014c\verified-final\browser-fixture.json; SQLite: D:\elifoot_98_014C\artifacts\player-rankings-009\browser-627ed9e9ee6a4b4b8856c44790cdda2a.db</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" storage="d:\elifoot_98_014c\tests\elifoot.integration.tests\bin\release\net10.0\elifoot.integration.tests.dll" id="087d7b2b-9dce-aa08-a53f-23c4ce51f71c">
+      <Execution id="5aa69763-4255-40d5-85da-9f26c4da715f" />
+      <TestMethod codeBase="D:\elifoot_98_014C\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Elifoot.Integration.Tests.PlayerRankings009IntegrationTests" name="RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="087d7b2b-9dce-aa08-a53f-23c4ce51f71c" executionId="5aa69763-4255-40d5-85da-9f26c4da715f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)&#xD;
+[xUnit.net 00:00:00.36]   Discovering: Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.52]   Discovered:  Elifoot.Integration.Tests&#xD;
+[xUnit.net 00:00:00.58]   Starting:    Elifoot.Integration.Tests&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Development&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\elifoot_98_014C\src\Elifoot.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:14.75]   Finished:    Elifoot.Integration.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

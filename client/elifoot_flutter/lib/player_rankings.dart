@@ -1,25 +1,10 @@
+import 'club_theme.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'api_client.dart';
-
-const _gold = Color(0xFFFFD700);
-const _green = Color(0xFF062E0F);
-const _panelGreen = Color(0xFF0E3B19);
-const _rowEvenGreen = Color(0xFF0B3515);
-const _rowOddGreen = Color(0xFF10421C);
-const _rowTopGreen = Color(0xFF185728);
-const _borderGreen = Color(0xFF3E8450);
-const _mutedText = Color(0xFFD2EBD6);
-
-const _headingStyle = TextStyle(
-  color: _gold,
-  fontWeight: FontWeight.bold,
-  fontFamily: 'monospace',
-  letterSpacing: 0.4,
-);
 
 final _guidPattern = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
@@ -384,12 +369,17 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: _green,
-                        border: Border.all(color: _borderGreen),
+                        color: ClassicTheme.of(context).surface,
+                        border: Border.all(
+                          color: ClassicTheme.of(context).border,
+                        ),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Mínimo de 20 jogos no recorte consultado.',
-                        style: TextStyle(fontSize: 12, color: _gold),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: ClassicTheme.of(context).accent,
+                        ),
                       ),
                     ),
                   ],
@@ -448,8 +438,10 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
                             Container(
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: _panelGreen,
-                                border: Border.all(color: _borderGreen),
+                                color: ClassicTheme.of(context).surface,
+                                border: Border.all(
+                                  color: ClassicTheme.of(context).border,
+                                ),
                               ),
                               child: const Text(
                                 'Nenhum jogador elegível com estatísticas oficiais neste recorte.',
@@ -506,8 +498,8 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
     return Container(
       padding: EdgeInsets.all(isNarrow ? 8 : 10),
       decoration: BoxDecoration(
-        color: _panelGreen,
-        border: Border.all(color: _borderGreen),
+        color: ClassicTheme.of(context).surface,
+        border: Border.all(color: ClassicTheme.of(context).border),
       ),
       child: Wrap(
         spacing: 10,
@@ -607,10 +599,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
       _category == 'defenders' ? 'ÍNDICE' : 'MÉDIA',
       if (minimum != null) 'JOGOS FALTANTES',
     ];
-    final numericColumns = <int>{
-      0,
-      for (var i = 3; i < columns.length; i++) i,
-    };
+    final numericColumns = <int>{0, for (var i = 3; i < columns.length; i++) i};
 
     return ClassicTable(
       tableKey: minimum == null ? 'ranking-table' : 'not-eligible-table',
@@ -644,8 +633,10 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
         final rankInt = _integer(p['rank']);
         final isTop3 = minimum == null && rankInt >= 1 && rankInt <= 3;
         final rowColor = isTop3
-            ? _rowTopGreen
-            : (index.isEven ? _rowEvenGreen : _rowOddGreen);
+            ? ClassicTheme.of(context).surfaceAlternate
+            : (index.isEven
+                  ? ClassicTheme.of(context).tableRow
+                  : ClassicTheme.of(context).tableRowAlternate);
         return DataRow(
           color: WidgetStateProperty.all(rowColor),
           cells: [
@@ -653,7 +644,9 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
               Text(
                 minimum == null ? _value(p['rank']) : '—',
                 style: TextStyle(
-                  color: isTop3 ? _gold : Colors.white,
+                  color: isTop3
+                      ? ClassicTheme.of(context).accent
+                      : ClassicTheme.of(context).textPrimary,
                   fontWeight: isTop3 ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
@@ -661,7 +654,8 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
             _playerCell(context, widget.apiClient, widget.worldId, p),
             DataCell(Text(_club(p))),
             DataCell(Text(_value(p['matchesPlayed']))),
-            if (_category == 'scorers') DataCell(Text(_value(p['goalsScored']))),
+            if (_category == 'scorers')
+              DataCell(Text(_value(p['goalsScored']))),
             if (_category == 'goalkeepers')
               DataCell(Text(_value(p['goalsConceded']))),
             if (_category == 'defenders') ...[
@@ -688,8 +682,8 @@ DataCell _playerCell(
 ) => DataCell(
   Text(
     _playerName(player),
-    style: const TextStyle(
-      color: _gold,
+    style: TextStyle(
+      color: ClassicTheme.of(context).accent,
       decoration: TextDecoration.underline,
       fontWeight: FontWeight.bold,
     ),
@@ -829,8 +823,7 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
               'redCards',
               'minutesPlayed',
             ]) {
-              aggregated[key] =
-                  _integer(aggregated[key]) + _integer(row[key]);
+              aggregated[key] = _integer(aggregated[key]) + _integer(row[key]);
             }
           }
           final seasonRows = seasonRowsByKey.values.toList();
@@ -848,16 +841,19 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: _green,
-                  border: Border.all(color: _gold, width: 1),
+                  color: ClassicTheme.of(context).surface,
+                  border: Border.all(
+                    color: ClassicTheme.of(context).selectedBackground,
+                    width: 1,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'IDENTIFICAÇÃO DO ATLETA',
                       style: TextStyle(
-                        color: _mutedText,
+                        color: ClassicTheme.of(context).textSecondary,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                       ),
@@ -865,8 +861,8 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                     const SizedBox(height: 2),
                     Text(
                       _playerName(player),
-                      style: const TextStyle(
-                        color: _gold,
+                      style: TextStyle(
+                        color: ClassicTheme.of(context).accent,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
@@ -905,8 +901,8 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: _rowEvenGreen,
-                  border: Border.all(color: _borderGreen),
+                  color: ClassicTheme.of(context).tableRow,
+                  border: Border.all(color: ClassicTheme.of(context).border),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -917,19 +913,24 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: _green,
-                        border: Border.all(color: _gold),
+                        color: ClassicTheme.of(context).surface,
+                        border: Border.all(
+                          color: ClassicTheme.of(context).selectedBackground,
+                        ),
                       ),
                       child: Text(
                         formatTopScorerTitles(player['seasonTopScorerTitles']),
                         key: const ValueKey('player-scorer-titles'),
-                        style: _headingStyle,
+                        style: ClassicTheme.of(context).headingStyle,
                       ),
                     ),
                     const SizedBox(height: 8),
                     PlayerStatisticRow(
                       items: [
-                        PlayerStatItem('JOGOS', _value(career['matchesPlayed'])),
+                        PlayerStatItem(
+                          'JOGOS',
+                          _value(career['matchesPlayed']),
+                        ),
                         if (isGoalkeeper) ...[
                           PlayerStatItem(
                             'GOLS SOFRIDOS',
@@ -989,14 +990,15 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
               ),
               _CoverageWarnings(data['coverageWarnings']),
               PlayerStrengthHistoryPanel(data: data),
-              if (statistics.any(
-                (s) => s['hasIncompleteAppearances'] == true,
-              ))
-                const Padding(
+              if (statistics.any((s) => s['hasIncompleteAppearances'] == true))
+                Padding(
                   padding: EdgeInsets.only(top: 4),
                   child: Text(
                     'COBERTURA: Há aparições legadas incompletas; jogos e minutos podem estar parciais.',
-                    style: TextStyle(color: _gold, fontSize: 12),
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).accent,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               const SizedBox(height: 12),
@@ -1026,7 +1028,9 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                     final e = entry.value;
                     return DataRow(
                       color: WidgetStateProperty.all(
-                        idx.isEven ? _rowEvenGreen : _rowOddGreen,
+                        idx.isEven
+                            ? ClassicTheme.of(context).tableRow
+                            : ClassicTheme.of(context).tableRowAlternate,
                       ),
                       cells: [
                         DataCell(Text(e.key)),
@@ -1064,7 +1068,9 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                     final s = entry.value;
                     return DataRow(
                       color: WidgetStateProperty.all(
-                        idx.isEven ? _rowEvenGreen : _rowOddGreen,
+                        idx.isEven
+                            ? ClassicTheme.of(context).tableRow
+                            : ClassicTheme.of(context).tableRowAlternate,
                       ),
                       cells: [
                         DataCell(Text(_value(s['season']))),
@@ -1115,7 +1121,9 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
                     return DataRow(
                       key: ValueKey('player-award-${a['awardId']}'),
                       color: WidgetStateProperty.all(
-                        idx.isEven ? _rowEvenGreen : _rowOddGreen,
+                        idx.isEven
+                            ? ClassicTheme.of(context).tableRow
+                            : ClassicTheme.of(context).tableRowAlternate,
                       ),
                       cells: [
                         DataCell(Text(_value(a['season']))),
@@ -1231,7 +1239,8 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ClassicSectionTitle(
-            title: 'ARTILHEIROS DA TEMPORADA${season == null ? '' : ' $season'}',
+            title:
+                'ARTILHEIROS DA TEMPORADA${season == null ? '' : ' $season'}',
             subtitle: widget.season == null
                 ? 'Última temporada encerrada.'
                 : null,
@@ -1251,8 +1260,12 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: _green,
-                border: Border.all(color: isTie ? _gold : _borderGreen),
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(
+                  color: isTie
+                      ? ClassicTheme.of(context).selectedBackground
+                      : ClassicTheme.of(context).border,
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1266,8 +1279,8 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
                       padding: const EdgeInsets.only(top: 2),
                       child: Text(
                         'EMPATE NA ARTILHARIA: ${awards.length} ARTILHEIROS EMPATADOS COM ${_value(awards.first['totalGoals'])} GOLS.',
-                        style: const TextStyle(
-                          color: _gold,
+                        style: TextStyle(
+                          color: ClassicTheme.of(context).accent,
                           fontSize: 11,
                           fontWeight: FontWeight.bold,
                         ),
@@ -1311,15 +1324,12 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
                 final a = entry.value;
                 return DataRow(
                   color: WidgetStateProperty.all(
-                    idx.isEven ? _rowTopGreen : _rowOddGreen,
+                    idx.isEven
+                        ? ClassicTheme.of(context).surfaceAlternate
+                        : ClassicTheme.of(context).tableRowAlternate,
                   ),
                   cells: [
-                    _playerCell(
-                      context,
-                      widget.apiClient,
-                      widget.worldId,
-                      a,
-                    ),
+                    _playerCell(context, widget.apiClient, widget.worldId, a),
                     DataCell(
                       Text(a['clubNameAtClose']?.toString() ?? 'Sem clube'),
                     ),
@@ -1344,7 +1354,9 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
                 final c = entry.value;
                 return DataRow(
                   color: WidgetStateProperty.all(
-                    idx.isEven ? _rowEvenGreen : _rowOddGreen,
+                    idx.isEven
+                        ? ClassicTheme.of(context).tableRow
+                        : ClassicTheme.of(context).tableRowAlternate,
                   ),
                   cells: [
                     DataCell(Text(_value(c['clubName']))),
@@ -1369,34 +1381,36 @@ class ClassicSectionTitle extends StatelessWidget {
   final String title;
   final String? subtitle;
 
-  const ClassicSectionTitle({
-    super.key,
-    required this.title,
-    this.subtitle,
-  });
+  const ClassicSectionTitle({super.key, required this.title, this.subtitle});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: const BoxDecoration(
-        color: _green,
+      decoration: BoxDecoration(
+        color: ClassicTheme.of(context).surface,
         border: Border(
-          left: BorderSide(color: _gold, width: 3),
-          top: BorderSide(color: _borderGreen, width: 1),
-          right: BorderSide(color: _borderGreen, width: 1),
-          bottom: BorderSide(color: _borderGreen, width: 1),
+          left: BorderSide(
+            color: ClassicTheme.of(context).selectedBackground,
+            width: 3,
+          ),
+          top: BorderSide(color: ClassicTheme.of(context).border, width: 1),
+          right: BorderSide(color: ClassicTheme.of(context).border, width: 1),
+          bottom: BorderSide(color: ClassicTheme.of(context).border, width: 1),
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: _headingStyle),
+          Text(title, style: ClassicTheme.of(context).headingStyle),
           if (subtitle != null) ...[
             const SizedBox(height: 2),
             Text(
               subtitle!,
-              style: const TextStyle(fontSize: 11, color: _mutedText),
+              style: TextStyle(
+                fontSize: 11,
+                color: ClassicTheme.of(context).textSecondary,
+              ),
             ),
           ],
         ],
@@ -1423,8 +1437,8 @@ class ClassicTableHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: _green,
-        border: Border.all(color: _borderGreen),
+        color: ClassicTheme.of(context).surface,
+        border: Border.all(color: ClassicTheme.of(context).border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1435,13 +1449,13 @@ class ClassicTableHeader extends StatelessWidget {
             alignment: WrapAlignment.spaceBetween,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Text(title, style: _headingStyle),
+              Text(title, style: ClassicTheme.of(context).headingStyle),
               if (trailing != null)
                 Text(
                   trailing!,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 10,
-                    color: _mutedText,
+                    color: ClassicTheme.of(context).textSecondary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -1484,45 +1498,56 @@ class ClassicFilter extends StatelessWidget {
         key: ValueKey(filterKey),
         initialValue: value,
         isExpanded: true,
-        dropdownColor: _green,
-        icon: const Padding(
+        dropdownColor: ClassicTheme.of(context).surface,
+        icon: Padding(
           padding: EdgeInsets.only(right: 2),
           child: CustomPaint(
             size: Size(10, 6),
-            painter: _ClassicDropdownArrowPainter(),
+            painter: _ClassicDropdownArrowPainter(
+              ClassicTheme.of(context).accent,
+            ),
           ),
         ),
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 12,
-          color: Colors.white,
+          color: ClassicTheme.of(context).textPrimary,
           fontFamily: 'monospace',
         ),
         decoration: InputDecoration(
           labelText: label,
-          labelStyle: const TextStyle(
-            color: _gold,
+          labelStyle: TextStyle(
+            color: ClassicTheme.of(context).accent,
             fontSize: 11,
             fontWeight: FontWeight.bold,
             fontFamily: 'monospace',
           ),
           filled: true,
-          fillColor: _green,
+          fillColor: ClassicTheme.of(context).surface,
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 10,
             vertical: 10,
           ),
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.zero,
-            borderSide: BorderSide(color: _borderGreen, width: 1),
+            borderSide: BorderSide(
+              color: ClassicTheme.of(context).border,
+              width: 1,
+            ),
           ),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.zero,
-            borderSide: BorderSide(color: _gold, width: 1.5),
+            borderSide: BorderSide(
+              color: ClassicTheme.of(context).border,
+              width: 1.5,
+            ),
           ),
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderRadius: BorderRadius.zero,
-            borderSide: BorderSide(color: _borderGreen, width: 1),
+            borderSide: BorderSide(
+              color: ClassicTheme.of(context).border,
+              width: 1,
+            ),
           ),
         ),
         items: options.entries
@@ -1532,9 +1557,9 @@ class ClassicFilter extends StatelessWidget {
                 child: Text(
                   e.value,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: Colors.white,
+                    color: ClassicTheme.of(context).textPrimary,
                     fontFamily: 'monospace',
                   ),
                 ),
@@ -1576,28 +1601,32 @@ class ClassicActionButton extends StatelessWidget {
       autofocus: autofocus,
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        foregroundColor: _gold,
-        backgroundColor: const Color(0xFF145224),
+        foregroundColor: ClassicTheme.of(context).accent,
+        backgroundColor: ClassicTheme.of(context).buttonBackground,
         minimumSize: const Size(88, 38),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(color: _gold, width: 1.2),
+          side: BorderSide(color: ClassicTheme.of(context).border, width: 1.2),
         ),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (iconType == ClassicButtonIcon.refresh) ...[
-            const CustomPaint(
+            CustomPaint(
               size: Size(12, 12),
-              painter: _ClassicRefreshIconPainter(),
+              painter: _ClassicRefreshIconPainter(
+                ClassicTheme.of(context).accent,
+              ),
             ),
             const SizedBox(width: 6),
           ] else if (iconType == ClassicButtonIcon.close) ...[
-            const CustomPaint(
+            CustomPaint(
               size: Size(10, 10),
-              painter: _ClassicCloseIconPainter(),
+              painter: _ClassicCloseIconPainter(
+                ClassicTheme.of(context).accent,
+              ),
             ),
             const SizedBox(width: 6),
           ],
@@ -1606,8 +1635,8 @@ class ClassicActionButton extends StatelessWidget {
               label,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: _gold,
+              style: TextStyle(
+                color: ClassicTheme.of(context).accent,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'monospace',
@@ -1644,9 +1673,11 @@ class PlayerStatisticRow extends StatelessWidget {
             (item) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: _green,
+                color: ClassicTheme.of(context).surface,
                 border: Border.all(
-                  color: item.highlight ? _gold : _borderGreen,
+                  color: item.highlight
+                      ? ClassicTheme.of(context).selectedBackground
+                      : ClassicTheme.of(context).border,
                   width: item.highlight ? 1.2 : 1,
                 ),
               ),
@@ -1656,9 +1687,9 @@ class PlayerStatisticRow extends StatelessWidget {
                 children: [
                   Text(
                     item.label,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 9,
-                      color: _mutedText,
+                      color: ClassicTheme.of(context).textSecondary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -1666,7 +1697,9 @@ class PlayerStatisticRow extends StatelessWidget {
                     item.value,
                     style: TextStyle(
                       fontSize: 12,
-                      color: item.highlight ? _gold : Colors.white,
+                      color: item.highlight
+                          ? ClassicTheme.of(context).accent
+                          : ClassicTheme.of(context).textPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -1712,28 +1745,33 @@ class ClassicDialog extends StatelessWidget {
       },
       child: AlertDialog(
         key: dialogKey,
-        backgroundColor: _panelGreen,
+        backgroundColor: ClassicTheme.of(context).surface,
         insetPadding: inset,
         titlePadding: EdgeInsets.zero,
         contentPadding: EdgeInsets.all(isMobile ? 10 : 14),
         actionsPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(color: _gold, width: 1.5),
+          side: BorderSide(color: ClassicTheme.of(context).border, width: 1.5),
         ),
         title: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          decoration: const BoxDecoration(
-            color: _green,
-            border: Border(bottom: BorderSide(color: _gold, width: 1)),
+          decoration: BoxDecoration(
+            color: ClassicTheme.of(context).surface,
+            border: Border(
+              bottom: BorderSide(
+                color: ClassicTheme.of(context).selectedBackground,
+                width: 1,
+              ),
+            ),
           ),
           child: Row(
             children: [
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    color: _gold,
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).accent,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'monospace',
@@ -1745,10 +1783,7 @@ class ClassicDialog extends StatelessWidget {
         ),
         content: SizedBox(
           width: targetWidth,
-          child: SingleChildScrollView(
-            key: scrollKey,
-            child: child,
-          ),
+          child: SingleChildScrollView(key: scrollKey, child: child),
         ),
         actions: [
           ClassicActionButton(
@@ -1909,7 +1944,9 @@ class _ClassicTableState extends State<ClassicTable> {
 
         final tableWidget = DataTable(
           key: ValueKey(widget.tableKey),
-          headingRowColor: WidgetStateProperty.all(_green),
+          headingRowColor: WidgetStateProperty.all(
+            ClassicTheme.of(context).surface,
+          ),
           headingRowHeight: headingHeight,
           dataRowMinHeight: rowHeight,
           dataRowMaxHeight: rowHeight,
@@ -1917,19 +1954,19 @@ class _ClassicTableState extends State<ClassicTable> {
           horizontalMargin: horizontalMargin,
           border: TableBorder(
             horizontalInside: BorderSide(
-              color: _borderGreen.withValues(alpha: 0.45),
+              color: ClassicTheme.of(context).border.withValues(alpha: 0.45),
               width: 0.8,
             ),
           ),
           dataTextStyle: TextStyle(
             fontSize: isUltraNarrow ? 11 : 12,
-            color: Colors.white,
+            color: ClassicTheme.of(context).textPrimary,
             fontFamily: 'monospace',
           ),
           headingTextStyle: TextStyle(
             fontSize: isUltraNarrow ? 10 : 11,
             fontWeight: FontWeight.bold,
-            color: _gold,
+            color: ClassicTheme.of(context).accent,
             fontFamily: 'monospace',
           ),
           columns: widget.columns.asMap().entries.map((entry) {
@@ -1955,8 +1992,11 @@ class _ClassicTableState extends State<ClassicTable> {
 
         return Container(
           decoration: BoxDecoration(
-            color: _rowEvenGreen,
-            border: Border.all(color: _borderGreen, width: 1),
+            color: ClassicTheme.of(context).tableRow,
+            border: Border.all(
+              color: ClassicTheme.of(context).border,
+              width: 1,
+            ),
           ),
           child: Stack(
             children: [
@@ -2022,15 +2062,16 @@ class _PinnedPlayerColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: _rowEvenGreen,
-        border: Border(right: BorderSide(color: _gold, width: 1.5)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black54,
-            blurRadius: 4,
-            offset: Offset(2, 0),
+      decoration: BoxDecoration(
+        color: ClassicTheme.of(context).tableRow,
+        border: Border(
+          right: BorderSide(
+            color: ClassicTheme.of(context).selectedBackground,
+            width: 1.5,
           ),
+        ),
+        boxShadow: [
+          BoxShadow(color: Colors.black54, blurRadius: 4, offset: Offset(2, 0)),
         ],
       ),
       child: Column(
@@ -2041,7 +2082,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
             height: headingHeight,
             padding: const EdgeInsets.symmetric(horizontal: 6),
             alignment: Alignment.centerLeft,
-            color: _green,
+            color: ClassicTheme.of(context).surface,
             child: Text(
               header,
               maxLines: 1,
@@ -2049,7 +2090,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
               style: TextStyle(
                 fontSize: compact ? 10 : 11,
                 fontWeight: FontWeight.bold,
-                color: _gold,
+                color: ClassicTheme.of(context).accent,
                 fontFamily: 'monospace',
               ),
             ),
@@ -2063,11 +2104,15 @@ class _PinnedPlayerColumn extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: row.highlight
-                      ? _rowTopGreen
-                      : (row.isEven ? _rowEvenGreen : _rowOddGreen),
+                      ? ClassicTheme.of(context).surfaceAlternate
+                      : (row.isEven
+                            ? ClassicTheme.of(context).tableRow
+                            : ClassicTheme.of(context).tableRowAlternate),
                   border: Border(
                     top: BorderSide(
-                      color: _borderGreen.withValues(alpha: 0.45),
+                      color: ClassicTheme.of(
+                        context,
+                      ).border.withValues(alpha: 0.45),
                       width: 0.8,
                     ),
                   ),
@@ -2081,7 +2126,9 @@ class _PinnedPlayerColumn extends StatelessWidget {
                           row.rank!,
                           style: TextStyle(
                             fontSize: compact ? 10 : 11,
-                            color: row.highlight ? _gold : Colors.white,
+                            color: row.highlight
+                                ? ClassicTheme.of(context).accent
+                                : ClassicTheme.of(context).textPrimary,
                             fontWeight: row.highlight
                                 ? FontWeight.bold
                                 : FontWeight.normal,
@@ -2102,7 +2149,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: compact ? 10 : 11,
-                              color: _gold,
+                              color: ClassicTheme.of(context).accent,
                               fontWeight: FontWeight.bold,
                               decoration: row.onTap != null
                                   ? TextDecoration.underline
@@ -2118,7 +2165,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: compact ? 8.5 : 9.5,
-                                color: _mutedText,
+                                color: ClassicTheme.of(context).textSecondary,
                                 fontFamily: 'monospace',
                               ),
                             ),
@@ -2137,12 +2184,13 @@ class _PinnedPlayerColumn extends StatelessWidget {
 }
 
 class _ClassicDropdownArrowPainter extends CustomPainter {
-  const _ClassicDropdownArrowPainter();
+  final Color color;
+  const _ClassicDropdownArrowPainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = _gold
+      ..color = color
       ..style = PaintingStyle.fill;
     final path = Path()
       ..moveTo(0, 0)
@@ -2153,23 +2201,25 @@ class _ClassicDropdownArrowPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _ClassicDropdownArrowPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class _ClassicRefreshIconPainter extends CustomPainter {
-  const _ClassicRefreshIconPainter();
+  final Color color;
+  const _ClassicRefreshIconPainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = _gold
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.6;
     final rect = Rect.fromLTWH(1, 1, size.width - 2, size.height - 2);
     canvas.drawArc(rect, 0.4, math.pi * 1.55, false, paint);
 
     final fill = Paint()
-      ..color = _gold
+      ..color = color
       ..style = PaintingStyle.fill;
     final arrow = Path()
       ..moveTo(size.width - 1, 1)
@@ -2180,16 +2230,18 @@ class _ClassicRefreshIconPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _ClassicRefreshIconPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class _ClassicCloseIconPainter extends CustomPainter {
-  const _ClassicCloseIconPainter();
+  final Color color;
+  const _ClassicCloseIconPainter(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = _gold
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.8;
     canvas.drawLine(Offset.zero, Offset(size.width, size.height), paint);
@@ -2197,7 +2249,8 @@ class _ClassicCloseIconPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _ClassicCloseIconPainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class PlayerStrengthHistoryPanel extends StatelessWidget {
@@ -2248,9 +2301,19 @@ class PlayerStrengthHistoryPanel extends StatelessWidget {
                         DataCell(Text(_value(event['strengthBefore']))),
                         DataCell(Text(_value(event['strengthAfter']))),
                         DataCell(Text(_strengthReason(event))),
-                        DataCell(Text(event['gameDate'] == null ? '-' : formatClassicDate(event['gameDate']))),
-                        DataCell(Text(event['leaguePosition']?.toString() ?? '-')),
-                        DataCell(Text(event['growthCeiling']?.toString() ?? '-')),
+                        DataCell(
+                          Text(
+                            event['gameDate'] == null
+                                ? '-'
+                                : formatClassicDate(event['gameDate']),
+                          ),
+                        ),
+                        DataCell(
+                          Text(event['leaguePosition']?.toString() ?? '-'),
+                        ),
+                        DataCell(
+                          Text(event['growthCeiling']?.toString() ?? '-'),
+                        ),
                       ],
                     ),
                   )
@@ -2301,7 +2364,10 @@ class _CoverageWarnings extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: Text(
             'COBERTURA: $warning',
-            style: const TextStyle(color: _gold, fontSize: 12),
+            style: TextStyle(
+              color: ClassicTheme.of(context).accent,
+              fontSize: 12,
+            ),
           ),
         ),
     ],
