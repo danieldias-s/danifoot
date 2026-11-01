@@ -9,6 +9,9 @@ String catalogIdentityOrigin(Map<String, dynamic> player) {
       identity is Map
           ? 'REAL — VÍNCULO COMPROVADO NO SNAPSHOT ${identity['asOf'] ?? ''}'
           : 'REAL — VÍNCULO ATUAL COMPROVADO',
+    'REAL_CURRENT_PROVIDER_REPORTED' =>
+      'REAL — VÍNCULO ATUAL REPORTADO PELO FORNECEDOR, NÃO VERIFICADO',
+    'REAL_HISTORICAL' ||
     'REAL_HISTORICAL_REFERENCE' => 'REFERÊNCIA REAL — NÃO É ELENCO ATUAL',
     'FICTIONAL_GENERATED' => 'FICTÍCIO GERADO',
     _ => switch (player['identityOrigin']) {

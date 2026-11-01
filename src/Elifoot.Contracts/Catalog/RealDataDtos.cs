@@ -27,6 +27,6 @@ public enum CatalogClubVerificationStatus { REAL_CLUB_VERIFIED, REAL_CLUB_HISTOR
 public record CatalogClubVerification(CatalogClubVerificationStatus Status, string Evidence, DateTime ObservedAt,
     string? SourceSeason = null, bool CurrentSeasonConfirmed = false, DateOnly? DissolvedAt = null, string? WikidataId = null);
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum CatalogMembershipStatus { DatedActive, OpenEndedUnconfirmed, Historical, Unknown }
+public enum CatalogMembershipStatus { DatedActive, OpenEndedUnconfirmed, Historical, Unknown, ProviderReported }
 public record CatalogMembershipEvidence(CatalogMembershipStatus Status, string StatementId, string Evidence,
     DateOnly AsOf, string? Note = null);

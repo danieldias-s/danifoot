@@ -71,7 +71,10 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             var related = usablePackages.Where(p => p.Data.Scope.CountryCode == chosen.Data.Scope.CountryCode).ToList();
             var squad = related.Where(p => p.Data.Scope.DataType == CatalogDataType.Squads && (p.Data.Players.Any(a => Matches(a.ClubProvider, a.ClubExternalId)) ||
                     p.Data.RosterReports?.Any(r => Matches(r.ClubProvider, r.ClubExternalId)) == true))
-                .OrderByDescending(p => p.Ref.UpdatedAt).ThenBy(p => p.Data.Scope.Provider, StringComparer.Ordinal).FirstOrDefault();
+                .OrderByDescending(p => {
+                    var usable=p.Data.Players.Where(a=>Matches(a.ClubProvider,a.ClubExternalId)&&CatalogMembershipPolicy.Usable(a,DateOnly.FromDateTime(DateTime.UtcNow))).ToList();
+                    return usable.Count>=11&&usable.Any(a=>a.Position=="G")&&usable.Count(a=>a.Position!="G")>=10;
+                }).ThenByDescending(p => p.Ref.UpdatedAt).ThenBy(p => p.Data.Scope.Provider, StringComparer.Ordinal).FirstOrDefault();
             var ranking = related.Where(p => p.Data.Scope.DataType == CatalogDataType.Rankings && p.Data.Rankings.Any(r => Matches(r.ClubProvider, r.ClubExternalId)))
                 .OrderByDescending(p => p.Ref.UpdatedAt).ThenBy(p => p.Data.Scope.Provider, StringComparer.Ordinal).FirstOrDefault();
             var asOf = squad.Data?.RosterAsOf ?? DateOnly.FromDateTime(squad.Ref?.UpdatedAt ?? DateTime.UtcNow);
@@ -102,6 +105,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
                 documented.Where(p=>!CatalogMembershipPolicy.Usable(p,asOf) && p.IdentityOrigin==CatalogDataOrigin.Real)
                     .Select(p=>p with {PlayerOrigin=WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE}).ToList(),asOf));
         }
+        unique = CatalogRosterReconciliation016A.Resolve(unique);
         var comparable = unique.Select(c => c.RankingInfo?.ComparableGroup).Where(g => g != null).Distinct().ToList();
         if (comparable.Count > 1)
         {

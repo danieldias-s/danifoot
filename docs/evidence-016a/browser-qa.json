@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "browser": "Chromium in-app browser",
+  "physicalMobileDevice": false,
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "adminDryRunAndApply": true,
+  "historicalProvenanceReviewed": true,
+  "createdThroughUI": true,
+  "worldId": "60744f36-0dad-40db-9011-31f122c1ebb4",
+  "inviteCode": "ELIFF921F93",
+  "worldName": "016A - Revisão no navegador",
+  "club": "Flamengo",
+  "players": 18,
+  "positionAndStrengthMatchFrozenCatalogOrigin": true,
+  "simulatedContractsPositive": true,
+  "fictionalPlayersExplicitConsent": true,
+  "realCurrentPlayers": 0,
+  "webSha256": "62422a3473660aaa4d6dcdf21a2a81072cbbe78d69b9b2ddac13059f8482059f",
+  "apiRuntimeMatchesBuild": true,
+  "consoleErrorsAtFinalCheck": 0,
+  "temporaryViewportReset": true,
+  "transientRestartFetchErrorRecovered": true
+}

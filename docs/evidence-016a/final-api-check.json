@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "postFinalBuildRestart": true,
+  "apiRuntimeMatchesFinalBuild": true,
+  "identityOnlyPreviewPreservedSquadCoverage": true,
+  "documentedPlayers": 126,
+  "currentReported": 0,
+  "currentVerified": 0,
+  "snapshotsAndWorldHashesUnchanged": true,
+  "providers": [
+    {
+      "provider": "api-football",
+      "configured": false,
+      "status": "NOT_CONNECTED",
+      "dailyBudget": 100,
+      "requestsUsed": 0,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 0
+    },
+    {
+      "provider": "wikidata",
+      "configured": true,
+      "status": "READY",
+      "dailyBudget": 1000,
+      "requestsUsed": 12,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 12
+    }
+  ],
+  "worlds": [
+    {
+      "Id": "60744f36-0dad-40db-9011-31f122c1ebb4",
+      "Name": "016A - Revisão no navegador",
+      "RoundNumber": 1,
+      "RoundState": 0,
+      "RoundVersion": 2,
+      "hash": "5fc20afbf53b52df06c81f4fae15d7b6"
+    },
+    {
+      "Id": "8113da5c-6be6-4491-a5af-db19a5123c35",
+      "Name": "016A QA - Masculino",
+      "RoundNumber": 3,
+      "RoundState": 9,
+      "RoundVersion": 343,
+      "hash": "f37e2bf016a17dcef2fd10b5c7ccfc39"
+    },
+    {
+      "Id": "fad24719-8127-428a-a02e-4cc83f54aaa3",
+      "Name": "016A QA - Feminino",
+      "RoundNumber": 3,
+      "RoundState": 9,
+      "RoundVersion": 344,
+      "hash": "cea166759383face5f22b4bd20df6e34"
+    }
+  ]
+}

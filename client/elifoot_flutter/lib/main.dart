@@ -1,3 +1,4 @@
+import 'import_admin_016a.dart';
 import 'dart:convert';
 import 'dart:math';
 
@@ -967,6 +968,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           OutlinedButton(
                             onPressed: _joinByCodeDialog,
                             child: const Text('ENTRAR POR CÓDIGO'),
+                          ),
+                          OutlinedButton(
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    ImportAdmin016A(api: widget.apiClient),
+                              ),
+                            ),
+                            child: const Text('DADOS DE CLUBES E JOGADORES'),
                           ),
                         ],
                       ),

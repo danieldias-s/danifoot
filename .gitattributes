@@ -1,0 +1,2 @@
+# Preserve captured 016A evidence byte-for-byte for the SHA256 manifest.
+docs/evidence-016a/** -text -whitespace

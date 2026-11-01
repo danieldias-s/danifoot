@@ -147,7 +147,8 @@ public static class WorldCreatorEngine
                 {
                     if(player.PlayerOrigin==WorldPlayerOrigin.FICTIONAL_GENERATED)
                     {if(request.DataMode==WorldDataMode.REAL_COMPLETE || !request.AllowFictionalPlayers)throw new ArgumentException("Atleta fictício sem autorização.");}
-                    else if(player.PlayerOrigin!=WorldPlayerOrigin.REAL_VERIFIED_CURRENT || !PlayableWorldPolicy.Current(player,entry.Club,preview.DataAsOf!.Value))
+                    else if(!(player.PlayerOrigin==WorldPlayerOrigin.REAL_VERIFIED_CURRENT && PlayableWorldPolicy.Current(player,entry.Club,preview.DataAsOf!.Value)) &&
+                        !(request.AllowProviderReportedPlayers && request.DataMode!=WorldDataMode.REAL_COMPLETE && PlayableWorldPolicy.ProviderReported(player,entry.Club,preview.DataAsOf!.Value)))
                         throw new ArgumentException("Atleta sem vínculo atual verificado no elenco inicial.");
                 }
             }

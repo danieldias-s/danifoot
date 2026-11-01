@@ -1,0 +1,58 @@
+Execução de teste para D:\elifoot_98_016A\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_016A\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+Execução de teste para D:\elifoot_98_016A\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98_016A\artifacts\016a\tests\full\Daniel_DESKTOP-A5J5UME_2026-11-01_15_15_17_net10.0.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     7, Ignorado:     0, Total:     7, Duração: 35 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_016A\artifacts\016a\tests\full\Daniel_DESKTOP-A5J5UME_2026-11-01_15_15_06_net10.0.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   423, Ignorado:     0, Total:   423, Duração: 1 m 11 s - Elifoot.Domain.Tests.dll (net10.0)
+[xUnit.net 00:01:45.53]     Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots [FAIL]
+  Com falha Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots [10 s]
+  Mensagem de erro:
+   Assert.True() Failure
+Expected: True
+Actual:   False
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots() in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\WorldCreator013ATests.cs:line 223
+   at Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots() in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\WorldCreator013ATests.cs:line 241
+--- End of stack trace from previous location ---
+[xUnit.net 00:06:49.95]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [FAIL]
+[xUnit.net 00:06:49.95]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [339 ms]
+  Mensagem de erro:
+   Assert.True() Failure
+Expected: True
+Actual:   False
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 54
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [2 ms]
+  Mensagem de erro:
+   Assert.True() Failure
+Expected: True
+Actual:   False
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 54
+--- End of stack trace from previous location ---
+[xUnit.net 00:06:57.26]     Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart [FAIL]
+  Com falha Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart [18 ms]
+  Mensagem de erro:
+   Assert.True() Failure
+Expected: True
+Actual:   False
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.Integration014ATests.Provider(String catalogConnection, String worldConnection) in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\Integration014ATests.cs:line 108
+   at Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart() in D:\elifoot_98_016A\tests\Elifoot.Integration.Tests\Integration014ATests.cs:line 125
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98_016A\artifacts\016a\tests\full\Daniel_DESKTOP-A5J5UME_2026-11-01_15_15_05_net10.0.trx
+
+Com falha! – Com falha:     4, Aprovado:   217, Ignorado:     0, Total:   221, Duração: 7 m 20 s - Elifoot.Integration.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98_016A\artifacts\016a\tests\full\Daniel_DESKTOP-A5J5UME_2026-11-01_15_15_15_net10.0.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    26, Ignorado:     0, Total:    26, Duração: 1 h 9 m - Elifoot.Simulation.Tests.dll (net10.0)

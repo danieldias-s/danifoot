@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "realHttp": true,
+  "fixture": false,
+  "postRestart": true,
+  "repeatedNewPreviews": 2,
+  "repeatedApply": true,
+  "snapshotCount": 62,
+  "catalogAndWorldHashesUnchanged": true,
+  "externalCallsAdded": 0,
+  "runs": [
+    "f7cae4e7-2233-4185-a1fd-aca85a98e129",
+    "bb27ebfb-1765-4481-82d6-8ecac96e914b"
+  ]
+}

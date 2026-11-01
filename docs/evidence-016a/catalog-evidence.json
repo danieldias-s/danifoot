@@ -1,0 +1,271 @@
+{
+  "snapshots": 62,
+  "priorSnapshots": 48,
+  "pilotSnapshots": 14,
+  "aliases": [
+    {
+      "ExternalId": "Q128446",
+      "ClubId": "1ea0650d-1379-698d-e42e-ed3ee093b846",
+      "Name": "FC Porto",
+      "CountryCode": "PT",
+      "Gender": 0,
+      "ReviewEvidence": "016A Wikidata identity: Q128446"
+    },
+    {
+      "ExternalId": "Q17479",
+      "ClubId": "579dbfde-2816-3336-e3a1-dc03727762e6",
+      "Name": "Flamengo RJ",
+      "CountryCode": "BR",
+      "Gender": 0,
+      "ReviewEvidence": "016A Wikidata identity: Q17479"
+    },
+    {
+      "ExternalId": "Q35933",
+      "ClubId": "d28535a2-4d65-8e60-a088-269f430c8791",
+      "Name": "Corinthians SP",
+      "CountryCode": "BR",
+      "Gender": 0,
+      "ReviewEvidence": "016A Wikidata identity: Q35933"
+    },
+    {
+      "ExternalId": "Q522899",
+      "ClubId": "a33f32d2-16fc-6d1e-ff83-cec3e802307a",
+      "Name": "FC Barcelona Femení",
+      "CountryCode": "ES",
+      "Gender": 1,
+      "ReviewEvidence": "016A Wikidata identity: Q522899"
+    },
+    {
+      "ExternalId": "Q7156",
+      "ClubId": "3a433c8b-b82d-39da-e4a0-d6b5137c4644",
+      "Name": "FC Barcelona",
+      "CountryCode": "ES",
+      "Gender": 0,
+      "ReviewEvidence": "016A Wikidata identity: Q7156"
+    },
+    {
+      "ExternalId": "Q8682",
+      "ClubId": "e3316783-0f26-e8f1-1f63-a5ea7210334f",
+      "Name": "Real Madrid",
+      "CountryCode": "ES",
+      "Gender": 0,
+      "ReviewEvidence": "016A Wikidata identity: Q8682"
+    }
+  ],
+  "activePlayerCount": 113,
+  "activePositionCounts": {
+    "A": 31,
+    "M": 31,
+    "D": 35,
+    "G": 16
+  },
+  "uniqueHistoricalPlayers": 113,
+  "historicalSnapshotRows": 226,
+  "audit": [
+    {
+      "Provider": "wikidata",
+      "Status": "SUCCESS",
+      "HttpStatus": 200,
+      "calls": 12,
+      "records": 6
+    }
+  ],
+  "cacheResources": 12,
+  "providerStatuses": [
+    {
+      "provider": "api-football",
+      "configured": false,
+      "status": "NOT_CONNECTED",
+      "dailyBudget": 100,
+      "requestsUsed": 0,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 0
+    },
+    {
+      "provider": "wikidata",
+      "configured": true,
+      "status": "READY",
+      "dailyBudget": 1000,
+      "requestsUsed": 12,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 12
+    }
+  ],
+  "clubReports": [
+    {
+      "clubKey": "flamengo",
+      "name": "Flamengo",
+      "countryCode": "BR",
+      "gender": "Male",
+      "provider": "wikidata",
+      "externalId": "Q17479",
+      "wikidataId": "Q17479",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:08:27.275203Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 500,
+      "usablePlayers": 0,
+      "positions": {},
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 0,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "SPARQL_TRUNCATED"
+      ]
+    },
+    {
+      "clubKey": "corinthians",
+      "name": "Corinthians",
+      "countryCode": "BR",
+      "gender": "Male",
+      "provider": "wikidata",
+      "externalId": "Q35933",
+      "wikidataId": "Q35933",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:08:28.712736Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 500,
+      "usablePlayers": 0,
+      "positions": {},
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 0,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "SPARQL_TRUNCATED"
+      ]
+    },
+    {
+      "clubKey": "real-madrid",
+      "name": "Real Madrid",
+      "countryCode": "ES",
+      "gender": "Male",
+      "provider": "wikidata",
+      "externalId": "Q8682",
+      "wikidataId": "Q8682",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:08:29.754993Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 500,
+      "usablePlayers": 0,
+      "positions": {},
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 0,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "SPARQL_TRUNCATED"
+      ]
+    },
+    {
+      "clubKey": "barcelona-male",
+      "name": "Barcelona",
+      "countryCode": "ES",
+      "gender": "Male",
+      "provider": "wikidata",
+      "externalId": "Q7156",
+      "wikidataId": "Q7156",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:08:30.689969Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 500,
+      "usablePlayers": 0,
+      "positions": {},
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 0,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "SPARQL_TRUNCATED"
+      ]
+    },
+    {
+      "clubKey": "porto",
+      "name": "FC Porto",
+      "countryCode": "PT",
+      "gender": "Male",
+      "provider": "wikidata",
+      "externalId": "Q128446",
+      "wikidataId": "Q128446",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:08:31.385943Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 500,
+      "usablePlayers": 0,
+      "positions": {},
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 0,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "SPARQL_TRUNCATED"
+      ]
+    },
+    {
+      "clubKey": "barcelona-female",
+      "name": "FC Barcelona Feminino",
+      "countryCode": "ES",
+      "gender": "Female",
+      "provider": "wikidata",
+      "externalId": "Q522899",
+      "wikidataId": "Q522899",
+      "season": "2026",
+      "observedAt": "2026-11-01T18:17:17.836825Z",
+      "status": "INCOMPLETE",
+      "receivedPlayers": 155,
+      "usablePlayers": 0,
+      "positions": {
+        "A": 31,
+        "M": 31,
+        "D": 35,
+        "G": 16
+      },
+      "duplicates": 0,
+      "currentReported": 0,
+      "currentVerified": 0,
+      "historical": 126,
+      "issues": [
+        "Wikidata não confirma cobertura completa nem participação na temporada atual; datas de vínculos são preservadas.",
+        "Q122079790: NAME_MISSING",
+        "Q122335248: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q123735690: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q123816229: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q127942905: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q136746262: NAME_MISSING",
+        "Q24060309: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q4726254: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q5045087: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q6178420: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q6774103: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q6812596: POSITION_MISSING_OR_AMBIGUOUS",
+        "Q10916: POSITION_MISSING_OR_AMBIGUOUS"
+      ]
+    }
+  ],
+  "worlds": [
+    {
+      "Id": "8113da5c-6be6-4491-a5af-db19a5123c35",
+      "Name": "016A QA - Masculino",
+      "RoundNumber": 1,
+      "RoundState": 0,
+      "RoundVersion": 2,
+      "hash": "0972c94f49f825e274f194770a2f0822"
+    },
+    {
+      "Id": "fad24719-8127-428a-a02e-4cc83f54aaa3",
+      "Name": "016A QA - Feminino",
+      "RoundNumber": 1,
+      "RoundState": 0,
+      "RoundVersion": 2,
+      "hash": "b053453c4e22bf97c0da0147faa14c53"
+    }
+  ]
+}

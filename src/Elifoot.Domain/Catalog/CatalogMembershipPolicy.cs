@@ -13,6 +13,8 @@ public static class CatalogMembershipPolicy
     public static bool Usable(CatalogAthlete athlete, DateOnly asOf) =>
         (athlete.MembershipStart == null || athlete.MembershipStart <= asOf) &&
         (athlete.MembershipEnd == null || athlete.MembershipEnd >= asOf) &&
-        (athlete.MembershipEvidence == null || athlete.MembershipEvidence.Status == CatalogMembershipStatus.DatedActive &&
+        (athlete.MembershipEvidence?.Status == CatalogMembershipStatus.ProviderReported
+            ? athlete.PlayerOrigin == WorldPlayerOrigin.REAL_CURRENT_PROVIDER_REPORTED && athlete.MembershipEvidence.AsOf <= asOf && athlete.MembershipEvidence.AsOf >= asOf.AddDays(-7)
+            : athlete.MembershipEvidence == null || athlete.MembershipEvidence.Status == CatalogMembershipStatus.DatedActive &&
             Classify(athlete.MembershipStart, athlete.MembershipEnd, asOf) == CatalogMembershipStatus.DatedActive);
 }

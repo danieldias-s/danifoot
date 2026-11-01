@@ -1,0 +1,55 @@
+{
+  "readOnly": true,
+  "port": 55440,
+  "database": "elifoot_015b_013b_worlds_real",
+  "worlds": [
+    {
+      "Id": "1282ff82-503d-4799-b91f-a675fd945263",
+      "Name": "015B QA - Pênaltis e substituições",
+      "RoundNumber": 3,
+      "RoundState": 9,
+      "RoundVersion": 352,
+      "hash": "c4e6f3c4b0a33ea39d1bad4e69ba69eb"
+    },
+    {
+      "Id": "64280293-c3a1-4727-9baf-084c35166f88",
+      "Name": "015B QA - Formação e início individual",
+      "RoundNumber": 3,
+      "RoundState": 9,
+      "RoundVersion": 345,
+      "hash": "4f413eba5172e5c14690ae8051eae886"
+    },
+    {
+      "Id": "6ceb9f35-2248-4ab9-add1-d73ca37fc6c2",
+      "Name": "015B QA - Pênaltis e substituições",
+      "RoundNumber": 16,
+      "RoundState": 9,
+      "RoundVersion": 1731,
+      "hash": "3d78f27430afa43c0f9ee1c483267c97"
+    },
+    {
+      "Id": "a580544f-f88e-41fd-89b4-d2e6c467ce42",
+      "Name": "015B - Mercado e partidas",
+      "RoundNumber": 3,
+      "RoundState": 0,
+      "RoundVersion": 275,
+      "hash": "7d5c73fe104db893344f85a7cb12af15"
+    },
+    {
+      "Id": "af4dcfb3-5207-48ae-92db-5cd3623e7270",
+      "Name": "015B - Teste individual Daniel",
+      "RoundNumber": 9,
+      "RoundState": 9,
+      "RoundVersion": 977,
+      "hash": "b0995d24c7756a8f187fc0f2d35152e6"
+    },
+    {
+      "Id": "f9864efb-943c-4aa5-ad8e-daa6bf185cc0",
+      "Name": "015B QA - Jogos ao vivo",
+      "RoundNumber": 3,
+      "RoundState": 9,
+      "RoundVersion": 349,
+      "hash": "83709e381583c3854e62a7d5ceab0971"
+    }
+  ]
+}

@@ -50,7 +50,7 @@ public record ClubAssignment(string ClubKey, int Division);
 public record WorldCreatorRequest(string Name, FootballGender Gender, string Season, List<string> Countries,
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
-    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null);
+    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null, bool AllowProviderReportedPlayers = false);
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
     List<WorldPreviewClub> Clubs, int PendingSlots, List<string> Errors, List<string> Warnings,

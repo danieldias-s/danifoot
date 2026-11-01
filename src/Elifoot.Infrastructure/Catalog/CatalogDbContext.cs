@@ -62,6 +62,7 @@ public sealed class CatalogDbContext(DbContextOptions<CatalogDbContext> options)
     public DbSet<CustomWorldAssembly> Assemblies => Set<CustomWorldAssembly>();
     protected override void OnModelCreating(ModelBuilder b)
     {
+        Import016A.Import016ASchema.Configure(b);
         b.Entity<ClubColorCache>().HasKey(x=>x.ClubId);
         b.Entity<PlayerAppearance>().HasKey(x=>new{x.OwnerId,x.WorldId,x.ClubId});
         b.Entity<PlayerAppearance>().Property(x=>x.Version).IsConcurrencyToken();

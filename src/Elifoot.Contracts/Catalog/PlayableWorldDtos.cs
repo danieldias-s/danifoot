@@ -4,7 +4,7 @@ namespace Elifoot.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum WorldDataMode { REAL_COMPLETE, REAL_CLUBS_SIMULATED, FREE_WORLD }
 [JsonConverter(typeof(WorldPlayerOriginJsonConverter))]
-public enum WorldPlayerOrigin { REAL_VERIFIED_CURRENT = 0, REAL_HISTORICAL_REFERENCE = 1, FICTIONAL_GENERATED = 2, REAL_CURRENT_VERIFIED = REAL_VERIFIED_CURRENT }
+public enum WorldPlayerOrigin { REAL_VERIFIED_CURRENT = 0, REAL_HISTORICAL_REFERENCE = 1, FICTIONAL_GENERATED = 2, REAL_CURRENT_VERIFIED = REAL_VERIFIED_CURRENT, REAL_CURRENT_PROVIDER_REPORTED = 3, REAL_HISTORICAL = REAL_HISTORICAL_REFERENCE }
 
 public record WorldPlayerProvenance(WorldPlayerOrigin Origin, string Provider, string ExternalPlayerId,
     string CanonicalIdentity, string InitialClubKey, string CountryCode, FootballGender Gender, string Season,

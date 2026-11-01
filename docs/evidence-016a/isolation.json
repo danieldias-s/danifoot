@@ -1,0 +1,29 @@
+{
+  "base": "456cd4008ad352c46b5c476922a8f74d067e56c6",
+  "otherTrackedWorktrees": {
+    "D:/elifoot_98": {
+      "head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "trackedStatus": ""
+    },
+    "D:/elifoot_98_014C": {
+      "head": "dd7b783e9ed8e299bd1d671fb0083449373cadbc",
+      "trackedStatus": ""
+    },
+    "D:/elifoot_98_015A": {
+      "head": "3595668d073cb29d710839288f84095db896cfa0",
+      "trackedStatus": ""
+    },
+    "D:/elifoot_98_015B": {
+      "head": "8ed83c3640e844202aa42f7d59e9921793b4d6e4",
+      "trackedStatus": ""
+    }
+  },
+  "protectedSourceSha256": {
+    "src/Elifoot.Domain/MatchEngine.cs": "89523d636e0050bc0e5b8461af9171557d9bf0bab5c7846a2c29dc8821d6a62e",
+    "src/Elifoot.Domain/MarketAndEconomyEngine.cs": "7f7a41a3619b2a79e1da85ac79c24613d3c0739c6f4059895aa38b7deda8aae2",
+    "src/Elifoot.Domain/ClassicEconomyEngine.cs": "07573549fe262e8de665a692956415e38fbdf89322995f652f54ff64cbdb533c",
+    "src/Elifoot.Domain/ClassicForceEvolutionEngine.cs": "36bc502e99256ccf10b51446945e46b6c423b410588923083865c87aec519290"
+  },
+  "noMerge": true,
+  "noProduction": true
+}

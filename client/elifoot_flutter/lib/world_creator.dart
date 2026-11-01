@@ -36,6 +36,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _fictional = false,
       _saved = false,
       _fictionalPlayers = false,
+      _providerReported = false,
       _includeHistorical = false,
       _includeUnverified = false;
   final Set<String> _countries = {
@@ -130,6 +131,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'fillRemainingDivisions': true,
     'allowFictionalTeams': _fictional,
     'allowFictionalPlayers': _fictionalPlayers,
+    'allowProviderReportedPlayers':
+        _providerReported && _dataMode != 'REAL_COMPLETE',
     'includeHistoricalClubs': _includeHistorical,
     'includeUnverifiedClubs': _includeUnverified,
     'useSavedData': _saved,
@@ -167,6 +170,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         );
       _fictional = p['allowFictionalTeams'] == true;
       _fictionalPlayers = p['allowFictionalPlayers'] == true;
+      _providerReported = p['allowProviderReportedPlayers'] == true;
       _includeHistorical = p['includeHistoricalClubs'] == true;
       _includeUnverified = p['includeUnverifiedClubs'] == true;
       _saved = p['useSavedData'] == true;
@@ -528,6 +532,21 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   Widget _dataConsentChoices() => Column(
     children: [
+      CheckboxListTile(
+        key: const Key('allow-provider-reported-016a'),
+        contentPadding: EdgeInsets.zero,
+        title: const Text('USAR elencos atuais reportados pelo fornecedor'),
+        subtitle: const Text(
+          'Vínculo reportado não é verificação independente. A origem e a data ficam no snapshot. Em SOMENTE DADOS REAIS COMPLETOS, apenas vínculos verificados são aceitos.',
+        ),
+        value: _providerReported && _dataMode != 'REAL_COMPLETE',
+        onChanged: _busy || _dataMode == 'REAL_COMPLETE'
+            ? null
+            : (v) => setState(() {
+                _providerReported = v!;
+                _preview = null;
+              }),
+      ),
       CheckboxListTile(
         contentPadding: EdgeInsets.zero,
         title: const Text(

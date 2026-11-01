@@ -28,6 +28,35 @@ class ElifootApiClient {
     : baseUrl = baseUrl ?? ApiEnvironment.baseUrl,
       _http = httpClient ?? http.Client();
 
+  Future<dynamic> import016a(
+    String adminToken,
+    String path, {
+    Map<String, dynamic>? body,
+  }) async {
+    final uri = Uri.parse('$baseUrl/api/catalog-016a/$path');
+    final headers = {
+      'Content-Type': 'application/json',
+      'X-Catalog-Admin-Token': adminToken,
+    };
+    final response = body == null
+        ? await _http.get(uri, headers: headers)
+        : await _http.post(uri, headers: headers, body: jsonEncode(body));
+    if (response.statusCode != 200) {
+      if (response.statusCode == 404) {
+        throw Exception(
+          'Acesso administrativo indisponível. Confira o token local e a configuração 016A.',
+        );
+      }
+      final value = jsonDecode(response.body);
+      throw Exception(
+        value is Map
+            ? value['error'] ?? 'Importação indisponível'
+            : 'Importação indisponível',
+      );
+    }
+    return jsonDecode(response.body);
+  }
+
   Future<dynamic> worldCreator(
     String coachId,
     String path, {

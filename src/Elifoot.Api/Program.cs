@@ -44,6 +44,7 @@ else
 }
 
 bool worldCreator013A = builder.AddWorldCreator013A();
+builder.AddImport016A();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
 builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
@@ -98,6 +99,7 @@ using (var scope = app.Services.CreateScope())
 app.MapHub<GameRoomHub>("/hubs/gameroom");
 app.MapPlayerRankings();
 if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
+if (builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
 
 app.MapGet("/api/health", () => Results.Ok(new
 {

@@ -19,8 +19,14 @@ public static class PlayableWorldPolicy
         !string.IsNullOrWhiteSpace(proof.StatementId) && !string.IsNullOrWhiteSpace(proof.Evidence) && proof.AsOf <= asOf &&
         CatalogMembershipPolicy.Classify(p.MembershipStart, p.MembershipEnd, asOf) == CatalogMembershipStatus.DatedActive &&
         Enum.TryParse<PlayerPosition>(p.Position, out var position) && Enum.IsDefined(position) && !string.IsNullOrWhiteSpace(p.PlayerName);
-    public static List<CatalogAthlete> CurrentPlayers(EligibleCatalogClub club, DateOnly asOf) =>
-        club.Players.Where(p => Current(p, club, asOf)).Select(p => p with { PlayerOrigin = WorldPlayerOrigin.REAL_VERIFIED_CURRENT }).ToList();
+    public static bool ProviderReported(CatalogAthlete p,EligibleCatalogClub club,DateOnly asOf) =>
+        Verified(club) && Linked(p,club) && p.Gender==club.Gender && p.Season==club.Season && p.IdentityOrigin==CatalogDataOrigin.Real &&
+        p.PlayerOrigin==WorldPlayerOrigin.REAL_CURRENT_PROVIDER_REPORTED && p.MembershipEvidence is {Status:CatalogMembershipStatus.ProviderReported} proof &&
+        !string.IsNullOrWhiteSpace(proof.StatementId) && !string.IsNullOrWhiteSpace(proof.Evidence) && CatalogMembershipPolicy.Usable(p,asOf) &&
+        Enum.TryParse<PlayerPosition>(p.Position,out var role) && Enum.IsDefined(role) && !string.IsNullOrWhiteSpace(p.PlayerName);
+    public static List<CatalogAthlete> CurrentPlayers(EligibleCatalogClub club, DateOnly asOf, bool allowReported=false) =>
+        club.Players.Where(p => Current(p, club, asOf) || allowReported&&ProviderReported(p,club,asOf))
+            .Select(p => p with { PlayerOrigin = ProviderReported(p,club,asOf)?WorldPlayerOrigin.REAL_CURRENT_PROVIDER_REPORTED:WorldPlayerOrigin.REAL_VERIFIED_CURRENT }).ToList();
     public static bool Complete(IEnumerable<CatalogAthlete> players)
     {
         var p = players.ToList();
@@ -46,8 +52,8 @@ public static class PlayableWorldPolicy
                 (Fictional(c) && request.AllowFictionalTeams || c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL && request.IncludeHistoricalClubs ||
                  c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_UNVERIFIED && request.IncludeUnverifiedClubs)).ToList();
         var prepared = candidates.Select(c => {
-            var current = CurrentPlayers(c, asOf);
-            var reference = (c.ReferencePlayers ?? []).Where(p=>p.IdentityOrigin==CatalogDataOrigin.Real).Concat(c.Players.Where(p => p.IdentityOrigin == CatalogDataOrigin.Real && !Current(p,c,asOf)))
+            var current = CurrentPlayers(c, asOf, request.AllowProviderReportedPlayers && request.DataMode!=WorldDataMode.REAL_COMPLETE);
+            var reference = (c.ReferencePlayers ?? []).Where(p=>p.IdentityOrigin==CatalogDataOrigin.Real).Concat(c.Players.Where(p => p.IdentityOrigin == CatalogDataOrigin.Real && !Current(p,c,asOf) && !(request.AllowProviderReportedPlayers && ProviderReported(p,c,asOf))))
                 .DistinctBy(p => p.CanonicalPlayerId ?? $"{p.Source}:{p.PlayerExternalId}")
                 .Select(p => p with { PlayerOrigin = WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE }).ToList();
             return c with { IsFictional = Fictional(c), Players = current, ReferencePlayers = reference,

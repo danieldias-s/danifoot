@@ -78,6 +78,23 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
         { await Finish(job, "Failed", 1, ErrorCode(e), CancellationToken.None); throw; }
         finally { await Release(package.Scope.Key, owner); }
     }
+    public async Task<List<Guid>> ImportBatch016AAsync(List<CatalogImportPackage> packages, CancellationToken ct = default, Func<CatalogDbContext,CancellationToken,Task>? linkIdentities = null)
+    {
+        if (packages.Count == 0 || packages.Count > 12 || packages.Select(p=>p.Scope.Key).Distinct().Count()!=packages.Count)
+            throw new ArgumentException("Lote de importação inválido.");
+        var ordered=packages.OrderBy(p=>p.Scope.DataType==CatalogDataType.Clubs?0:1).ThenBy(p=>p.Scope.Key,StringComparer.Ordinal).ToList();
+        var owner=Guid.NewGuid();var held=new List<string>();
+        try {
+            foreach(var p in ordered) {
+                Validate(p);await EnsureScopeAsync(p.Scope,ct);
+                if(!await Acquire(p.Scope.Key,owner,false,ct))throw new CatalogBusyException();held.Add(p.Scope.Key);
+            }
+            using var scope=factory.CreateScope();var db=Db(scope);await using var transaction=await db.Database.BeginTransactionAsync(ct);
+            if(linkIdentities!=null)await linkIdentities(db,ct);
+            var result=new List<Guid>();foreach(var p in ordered)result.Add(await Commit(p,owner,ct,db));
+            await transaction.CommitAsync(ct);return result;
+        } finally {foreach(string key in held)await Release(key,owner);}
+    }
     public async Task RefreshAsync(IEnumerable<string> countries, FootballGender gender, string season, CancellationToken ct = default)
     {
         var selected = countries.ToHashSet();
@@ -169,14 +186,14 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
         await db.SyncJobs.Where(s => s.Id == id).ExecuteUpdateAsync(s => s.SetProperty(x => x.Status, status)
             .SetProperty(x => x.Attempts, attempts).SetProperty(x => x.Error, error).SetProperty(x => x.FinishedAt, DateTime.UtcNow), ct);
     }
-    private async Task<Guid> Commit(CatalogImportPackage input, Guid owner, CancellationToken ct)
+    private async Task<Guid> Commit(CatalogImportPackage input, Guid owner, CancellationToken ct, CatalogDbContext? batchDb = null)
     {
         if (input?.Scope == null || input.Players == null || input.Clubs == null || input.Rankings == null) throw new ArgumentException("Pacote incompleto.");
         var p = input with { Players = input.Players.Select(x => x with { Position = CatalogImportCodec.Position(x.Position) }).ToList() };
         Validate(p);
         if (CatalogRightsPolicy.StorageIssue(p, DateTime.UtcNow) is { } rightsIssue) throw new ArgumentException(rightsIssue);
-        using var scope = factory.CreateScope(); var db = Db(scope);
-        await using var tx = await db.Database.BeginTransactionAsync(ct);
+        using var scope = batchDb == null ? factory.CreateScope() : null; var db = batchDb ?? Db(scope!);
+        await using var tx = batchDb == null ? await db.Database.BeginTransactionAsync(ct) : null;
         var state = await db.Scopes.SingleAsync(s => s.Key == p.Scope.Key, ct);
         if (state.LeaseOwner != owner || state.LeaseUntil < DateTime.UtcNow) throw new CatalogBusyException();
         if (p.Scope.DataType is CatalogDataType.Squads or CatalogDataType.Rankings)
@@ -242,7 +259,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             .ExecuteUpdateAsync(s => s.SetProperty(x => x.ActiveSnapshotId, snapshot.Id).SetProperty(x => x.LastSuccess, DateTime.UtcNow)
                 .SetProperty(x => x.NextAttempt, DateTime.UtcNow.Add(options.Frequencies[p.Scope.DataType])), ct);
         if (updated != 1) throw new CatalogBusyException();
-        await tx.CommitAsync(ct); return snapshot.Id;
+        if (tx != null) await tx.CommitAsync(ct); return snapshot.Id;
     }
     public static void Validate(CatalogImportPackage p)
     {
@@ -272,7 +289,7 @@ public sealed class CatalogSyncService(IServiceScopeFactory factory, IEnumerable
             p.Players.Select(x => x.PlayerExternalId).Distinct().Count() != p.Players.Count)
             throw new ArgumentException("Elenco inconsistente, categoria/temporada incorreta ou jogadores duplicados.");
         foreach (var squad in p.Players.GroupBy(x => (x.ClubProvider, x.ClubExternalId)))
-            if (!p.AllowPartialSquads && (squad.Count() is < 11 or > 24 || !squad.Any(x => x.Position == "G") || squad.Count(x => x.Position != "G") < 10) || p.AllowPartialSquads && squad.Count() > 100)
+            if (!p.AllowPartialSquads && (squad.Count() is < 11 or > 24 || !squad.Any(x => x.Position == "G") || squad.Count(x => x.Position != "G") < 10) || p.AllowPartialSquads && squad.Count() > (p.Scope.League.StartsWith("016a:",StringComparison.Ordinal) ? 500 : 100))
                 throw new ArgumentException("Elenco incompleto ou sem goleiro.");
         if (p.AllowPartialSquads && (p.RosterReports == null || p.RosterReports.Count == 0 || p.RosterAsOf == null ||
             p.RosterReports.Select(r => (r.ClubProvider, r.ClubExternalId)).Distinct().Count() != p.RosterReports.Count ||

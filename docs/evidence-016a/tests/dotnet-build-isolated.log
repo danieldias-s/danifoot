@@ -1,0 +1,19 @@
+  Determinando os projetos a serem restaurados...
+  Todos os projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Contracts\release\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Domain\release\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Application\release\Elifoot.Application.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Domain.Tests\release\Elifoot.Domain.Tests.dll
+  Elifoot.SeedGenerator -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.SeedGenerator\release\Elifoot.SeedGenerator.dll
+  Elifoot.Infrastructure -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Infrastructure\release\Elifoot.Infrastructure.dll
+  Elifoot.RealDataImporter -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.RealDataImporter\release\Elifoot.RealDataImporter.dll
+  Elifoot.Application.Tests -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Application.Tests\release\Elifoot.Application.Tests.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Simulation.Tests\release\Elifoot.Simulation.Tests.dll
+  Elifoot.Api -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Api\release\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98_016A\artifacts\016a\verified-build\bin\Elifoot.Integration.Tests\release\Elifoot.Integration.Tests.dll
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:33.72

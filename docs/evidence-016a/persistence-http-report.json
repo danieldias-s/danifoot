@@ -1,0 +1,33 @@
+{
+  "restartRecovered": true,
+  "idempotentApply": true,
+  "catalogUnchanged": true,
+  "worldSnapshotsUnchanged": true,
+  "worldHashes": {
+    "8113da5c-6be6-4491-a5af-db19a5123c35": "0972c94f49f825e274f194770a2f0822",
+    "fad24719-8127-428a-a02e-4cc83f54aaa3": "b053453c4e22bf97c0da0147faa14c53"
+  },
+  "providerStatuses": [
+    {
+      "provider": "api-football",
+      "configured": false,
+      "status": "NOT_CONNECTED",
+      "dailyBudget": 100,
+      "requestsUsed": 0,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 0
+    },
+    {
+      "provider": "wikidata",
+      "configured": true,
+      "status": "READY",
+      "dailyBudget": 1000,
+      "requestsUsed": 12,
+      "providerRemaining": null,
+      "blockedUntil": null,
+      "cacheEntries": 12
+    }
+  ],
+  "recoveredReportId": "44a1d6e4-9e78-4ca9-8f1c-b43437f2424e"
+}

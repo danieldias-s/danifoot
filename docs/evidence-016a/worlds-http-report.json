@@ -1,0 +1,30 @@
+[
+  {
+    "gender": "Male",
+    "worldId": "8113da5c-6be6-4491-a5af-db19a5123c35",
+    "inviteCode": "ELIF868257E",
+    "clubName": "Flamengo",
+    "clubs": 128,
+    "selectedSquad": 18,
+    "realPlayers": 0,
+    "generatedPlayers": 2304,
+    "fictionalComplementExplicitlyAuthorized": true,
+    "positionsAndStrengthMatchFrozenPreview": true,
+    "simulatedContracts": true,
+    "officialRoundCompleted": true
+  },
+  {
+    "gender": "Female",
+    "worldId": "fad24719-8127-428a-a02e-4cc83f54aaa3",
+    "inviteCode": "ELI3C7700AA",
+    "clubName": "FC Barcelona Feminino",
+    "clubs": 128,
+    "selectedSquad": 18,
+    "realPlayers": 0,
+    "generatedPlayers": 2304,
+    "fictionalComplementExplicitlyAuthorized": true,
+    "positionsAndStrengthMatchFrozenPreview": true,
+    "simulatedContracts": true,
+    "officialRoundCompleted": true
+  }
+]
