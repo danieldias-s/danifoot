@@ -16,3 +16,7 @@ Limites de desenho e evidência:
 - O ambiente de revisão requer os dados DEV preparados neste computador; o runner não é um instalador de produção.
 
 O teste manual do proprietário permanece pendente da sua confirmação. Não houve merge, push nem publicação em produção.
+
+## Teste manual posterior
+
+O desenho da formação e o ajuste dos setores foram corrigidos após a captura do proprietário. A espera 1/3 era causada pela sala de auditoria com três identidades. Há uma sala individual nova ELIC18AA38C para o proprietário, preservando o save anterior. Validações e limites constam em PLAYTEST_FORMATION_SOLO_FIX_015B.md.

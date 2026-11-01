@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "worldId": "64280293-c3a1-4727-9baf-084c35166f88",
+  "worldName": "015B QA - Formação e início individual",
+  "request": {
+    "gameWorldId": "64280293-c3a1-4727-9baf-084c35166f88",
+    "coachId": "bcf7378b-31e2-7bc3-3d7b-50fd781a931f",
+    "formation": "5-3-2",
+    "starterPlayerIds": [
+      "e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc",
+      "034bf404-23d5-f14c-9a6f-84d7ab17e3b6",
+      "a4f99114-7595-2849-b8b6-4b1e74381363",
+      "0396b31a-f86f-ce40-881f-bdec53a78eb7",
+      "4965dc17-cbea-fe43-887d-4edad3bf617c",
+      "7690ef28-ff21-6a40-9651-5e1cc95fbd54",
+      "2e54bd7f-e973-e94f-b80e-4357852247ff",
+      "42773de4-b479-5447-a259-660b80dd2fe4",
+      "528045cd-8c75-2b4f-95a4-6723d2cc00ed",
+      "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+      "2d2b9df4-b1bf-c84d-ad19-9704192d1aa9"
+    ],
+    "benchPlayerIds": [
+      "d623ed48-8ae1-a04e-8f03-51deabfa4b07",
+      "ead6e146-1e5e-d648-a634-6fe954515eb2",
+      "c0382e86-e042-e04a-bec4-ba4a7c14cf53",
+      "1c4c42cd-2112-e742-be2b-1c756bb13a27",
+      "bb15bb5d-b646-4c41-8d7e-71c372264ca1",
+      "94f65660-637a-6446-bbe4-49c877f1caa7",
+      "3596e10e-d611-1548-95f6-066000e29d3c"
+    ],
+    "idempotencyKey": "015b-solo-532-8236fb2244524edda820c92cd1366cb3",
+    "expectedRoundVersion": 250
+  },
+  "beforeState": "PREPARING",
+  "beforeCounter": "TÁTICAS ENVIADAS: 0/1",
+  "response": {
+    "counter": {
+      "gameWorldId": "64280293-c3a1-4727-9baf-084c35166f88",
+      "seasonNumber": 1,
+      "roundNumber": 3,
+      "roundState": "RUNNING_FIRST_HALF",
+      "roundVersion": 252,
+      "readyCount": 1,
+      "totalHumans": 1,
+      "counterLabel": "TÁTICAS ENVIADAS: 1/1",
+      "participants": [
+        {
+          "coachId": "bcf7378b-31e2-7bc3-3d7b-50fd781a931f",
+          "nickname": "QA015B Solo",
+          "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+          "clubName": "Flamengo RJ",
+          "isUnemployed": false,
+          "isReady": true,
+          "isConnected": true,
+          "isAutoMode": false,
+          "usedSubstitutions": 0,
+          "maxSubstitutions": 5,
+          "usedPauseWindows": 0,
+          "maxPauseWindows": 3,
+          "morale": 70,
+          "moraleBand": "VERDE"
+        }
+      ]
+    },
+    "roundStarted": true
+  },
+  "startedState": "RUNNING_FIRST_HALF",
+  "startedCounter": "TÁTICAS ENVIADAS: 1/1",
+  "persistedFormation": "5-3-2",
+  "persistedStarterIds": [
+    "e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc",
+    "034bf404-23d5-f14c-9a6f-84d7ab17e3b6",
+    "a4f99114-7595-2849-b8b6-4b1e74381363",
+    "0396b31a-f86f-ce40-881f-bdec53a78eb7",
+    "4965dc17-cbea-fe43-887d-4edad3bf617c",
+    "7690ef28-ff21-6a40-9651-5e1cc95fbd54",
+    "2e54bd7f-e973-e94f-b80e-4357852247ff",
+    "42773de4-b479-5447-a259-660b80dd2fe4",
+    "528045cd-8c75-2b4f-95a4-6723d2cc00ed",
+    "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+    "2d2b9df4-b1bf-c84d-ad19-9704192d1aa9"
+  ],
+  "finishedState": "RESULTS",
+  "stages": [
+    "GLOBAL_PAUSED",
+    "RUNNING_FIRST_HALF",
+    "HALFTIME_PAUSED",
+    "RUNNING_SECOND_HALF",
+    "RESULTS"
+  ],
+  "actualPositions": {
+    "G": 1,
+    "D": 5,
+    "M": 3,
+    "A": 2
+  }
+}

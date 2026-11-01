@@ -654,12 +654,9 @@ extension _ShellActions on _ElifootShellScreenState {
                         final nextIdx =
                             (idx + 1) %
                             _ElifootShellScreenState.availableFormations.length;
-                        setState(() {
-                          _selectedFormation = _ElifootShellScreenState
-                              .availableFormations[nextIdx];
-                          _statusBanner =
-                              'Esquema tático alterado para $_selectedFormation.';
-                        });
+                        _changeFormation(
+                          _ElifootShellScreenState.availableFormations[nextIdx],
+                        );
                       },
               ),
               ClassicActionButton(
@@ -693,6 +690,31 @@ extension _ShellActions on _ElifootShellScreenState {
         ],
       ),
     );
+  }
+
+  void _changeFormation(String formation) {
+    if (_tacticsLocked ||
+        !_ElifootShellScreenState.availableFormations.contains(formation) ||
+        formation == _selectedFormation) {
+      return;
+    }
+    final squad = (_myClubDetail?['squad'] as List? ?? [])
+        .whereType<Map>()
+        .map((p) => Map<String, dynamic>.from(p))
+        .toList();
+    final lineup = lineupForFormation(
+      squad,
+      formation,
+      _selectedStarterIds,
+      _selectedBenchIds,
+    );
+    setState(() {
+      _selectedFormation = formation;
+      _selectedStarterIds = lineup.starters;
+      _selectedBenchIds = lineup.bench;
+      _statusBanner =
+          'Formação $formation aplicada. Confira os titulares antes de enviar a tática.';
+    });
   }
 
   void _autoPickBestLineup() {
@@ -936,16 +958,16 @@ extension _ShellActions on _ElifootShellScreenState {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 480),
               child: ClassicTacticalPitch(
-                lines: [aStarters, mStarters, dStarters, gStarters]
-                    .map(
-                      (line) => line
-                          .map(
-                            (p) => Map<String, dynamic>.from(p as Map)
+                lines: tacticalPitchLines(
+                  starters
+                      .map(
+                        (p) =>
+                            Map<String, dynamic>.from(p as Map)
                               ..['position'] = _formatPosition(p['position']),
-                          )
-                          .toList(),
-                    )
-                    .toList(),
+                      )
+                      .toList(),
+                  _selectedFormation,
+                ),
                 shirt: _clubColor(
                   _myClubDetail?['colorPalette'],
                   'primaryColor',

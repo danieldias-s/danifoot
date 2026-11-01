@@ -12,6 +12,7 @@ import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
+import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
@@ -1744,7 +1745,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ? null
                   : (value) {
                       if (value != null) {
-                        setState(() => _selectedFormation = value);
+                        _changeFormation(value);
                       }
                     },
             ),

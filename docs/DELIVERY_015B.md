@@ -32,7 +32,7 @@ A interface funcional foi implementada e todas as regressões passaram. A missã
 | DESKTOP_RESPONSIVE | Testes 1024/1440/1920 aprovados; inspeção real 1440 feita; demais capturas pendentes |
 | MOBILE_RESPONSIVE | Testes 360/390/768 aprovados; inspeção real final pendente |
 | DOTNET_TESTS | PASS — 640/640 (7 Application, 409 Domain, 198 Integration, 26 Simulation), zero ignorados; build zero erros/avisos |
-| FLUTTER_TESTS | PASS — 168/168, zero issues no analyze; build Web final aprovada |
+| FLUTTER_TESTS | PASS — 173/173, zero issues no analyze; build Web final aprovada |
 | NODE_TESTS | PASS — 2/2 |
 | REAL_BROWSER_TEST | PARTIAL — API + PostgreSQL DEV reais e inspeção desktop; continuação impedida pelo navegador desabilitado |
 | VISUAL_COMPARISON | PARTIAL — diferenças registradas; auditoria completa final pendente |
@@ -57,3 +57,9 @@ TREINADOR: Daniel 015B, dispositivo 015b-daniel, Flamengo RJ. Os outros humanos 
 Para iniciar neste computador: `powershell -ExecutionPolicy Bypass -File D:\elifoot_98_015B\scripts\run-local-015b.ps1 -NoBuild`. A sala aguarda três humanos prontos; o botão do cabeçalho respeita esse fluxo.
 
 Os serviços da 015B ficam ativos para revisão. A 015A continua nas portas 5165/5166 e banco 55439. Todos os worktrees anteriores mantêm seus commits e nenhum arquivo rastreado alterado. Sem merge, push ou publicação. O teste manual do proprietário não foi declarado aprovado.
+
+## Adendo do teste manual
+
+Corrigidos os controles de formação para ajustar a escalação e reorganizar o campo conforme o esquema escolhido. Novo teste de 5-3-2 passou em 390/1440 px; cinco casos novos elevam a regressão Flutter a 173/173. API real confirmou persistência, início 1/1 e conclusão oficial em sala QA separada.
+
+Para teste individual do proprietário, usar **015B - Teste individual Daniel / ELIC18AA38C**, com Daniel 015B e dispositivo 015b-daniel, Flamengo RJ, preparação R3 e contador 0/1. A sala anterior ELI115608A3 continua preservada com três treinadores e por isso aguarda 3/3. Ver PLAYTEST_FORMATION_SOLO_FIX_015B.md. STATUS global permanece PARTIAL pela auditoria visual final pendente.
