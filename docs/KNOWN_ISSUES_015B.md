@@ -24,3 +24,7 @@ O desenho da formação e o ajuste dos setores foram corrigidos após a captura 
 ## Revisão mobile posterior
 
 O layout pedido na imagem está implementado com barra de moral preservada. A suíte passou 180/180, e as prévias Flutter de respostas GET reais foram inspecionadas. As imagens novas em evidence-015b-mobile/automated-renders têm sua origem explicitamente identificada; não encerram a pendência de captura Chrome. MOBILE_REFERENCE_LAYOUT_015B.md documenta comportamentos, reprodução e acesso ao teste individual. O save foi consultado em R5, sem reinício.
+
+## Nova tela ao vivo
+
+A implementação e a regressão de 196 testes estão concluídas. O limite da auditoria Chrome permanece. Ver LIVE_MATCH_SCREEN_015B.md para dados não fornecidos pela API (cidade, posse/finalizações/escanteios/faltas, escudos oficiais), bilheteria apurada no encerramento, dados limitados do calendário e preservação do editor antes do save. Há 12 prévias Flutter identificadas; não se declara que são capturas reais de navegador.

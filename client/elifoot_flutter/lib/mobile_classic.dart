@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'club_theme.dart';
+import 'club_crest.dart';
 import 'morale_bar.dart';
 import 'player_rankings.dart' show formatClassicMoney;
 
@@ -105,9 +106,15 @@ class MobileClubOverview extends StatelessWidget {
           ),
           child: Row(
             children: [
-              CustomPaint(
-                size: const Size(37, 44),
-                painter: _ClubShield(primary, secondary),
+              ClubCrest(
+                club: club,
+                size: 44,
+                palette: {
+                  'primaryColor':
+                      '#${primary.toARGB32().toRadixString(16).substring(2)}',
+                  'secondaryColor':
+                      '#${secondary.toARGB32().toRadixString(16).substring(2)}',
+                },
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -181,70 +188,36 @@ class MobileClubOverview extends StatelessWidget {
   );
 }
 
-class _ClubShield extends CustomPainter {
-  final Color primary, secondary;
-  _ClubShield(this.primary, this.secondary);
-  @override
-  void paint(Canvas canvas, Size size) {
-    final path = Path()
-      ..moveTo(2, 2)
-      ..quadraticBezierTo(size.width / 2, 7, size.width - 2, 2)
-      ..lineTo(size.width - 3, size.height * .53)
-      ..quadraticBezierTo(
-        size.width * .75,
-        size.height * .84,
-        size.width / 2,
-        size.height - 2,
-      )
-      ..quadraticBezierTo(
-        size.width * .25,
-        size.height * .84,
-        3,
-        size.height * .53,
-      )
-      ..close();
-    canvas.save();
-    canvas.clipPath(path);
-    canvas.drawPaint(Paint()..color = primary);
-    canvas.drawRect(
-      Rect.fromLTWH(size.width * .38, 0, size.width * .24, size.height),
-      Paint()..color = secondary,
-    );
-    canvas.restore();
-    canvas.drawPath(
-      path,
-      Paint()
-        ..color = MobileClassicColors.ink
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.5,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _ClubShield old) =>
-      old.primary != primary || old.secondary != secondary;
-}
-
 class MobileClassicNavigation extends StatelessWidget {
   final int selected;
   final bool locked;
+  final bool liveMode;
   final ValueChanged<int> onSelected;
   const MobileClassicNavigation({
     super.key,
     required this.selected,
     required this.locked,
+    this.liveMode = false,
     required this.onSelected,
   });
   @override
   Widget build(BuildContext context) {
     final theme = ClassicTheme.of(context);
-    const items = [
-      ('PLANTEL', Icons.checkroom),
-      ('TÁTICAS', Icons.account_tree),
-      ('MERCADO', Icons.swap_horiz),
-      ('COMPETIÇÕES', Icons.emoji_events),
-      ('MAIS', Icons.settings),
-    ];
+    final items = liveMode
+        ? [
+            ('PLANTEL', Icons.checkroom),
+            ('JOGOS', Icons.sports_soccer),
+            ('DIVISÕES', Icons.emoji_events),
+            ('MERCADO', Icons.swap_horiz),
+            ('MAIS', Icons.more_horiz),
+          ]
+        : [
+            ('PLANTEL', Icons.checkroom),
+            ('TÁTICAS', Icons.account_tree),
+            ('MERCADO', Icons.swap_horiz),
+            ('COMPETIÇÕES', Icons.emoji_events),
+            ('MAIS', Icons.settings),
+          ];
     return Material(
       key: const Key('mobile-bottom-navigation'),
       color: theme.secondary,
@@ -261,7 +234,7 @@ class MobileClassicNavigation extends StatelessWidget {
                 Expanded(
                   child: Semantics(
                     button: true,
-                    selected: !locked && selected == i,
+                    selected: selected == i,
                     enabled: !locked,
                     child: InkWell(
                       key: i == 4 && !locked
@@ -272,7 +245,7 @@ class MobileClassicNavigation extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
-                              color: !locked && selected == i
+                              color: selected == i
                                   ? theme.accent
                                   : Colors.transparent,
                               width: 3,
@@ -289,7 +262,7 @@ class MobileClassicNavigation extends StatelessWidget {
                             Icon(
                               items[i].$2,
                               size: 25,
-                              color: !locked && selected == i
+                              color: selected == i
                                   ? theme.accent
                                   : theme.textSecondary,
                             ),
@@ -301,7 +274,7 @@ class MobileClassicNavigation extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w800,
-                                  color: !locked && selected == i
+                                  color: selected == i
                                       ? theme.accent
                                       : theme.textSecondary,
                                 ),

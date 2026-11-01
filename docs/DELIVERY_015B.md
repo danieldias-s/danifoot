@@ -32,7 +32,7 @@ A interface funcional foi implementada e todas as regressões passaram. A missã
 | DESKTOP_RESPONSIVE | Testes 1024/1440/1920 aprovados; inspeção real 1440 feita; demais capturas pendentes |
 | MOBILE_RESPONSIVE | Novo layout conforme referência; testes adicionais 320/360/390/430/600 aprovados; prévias Flutter inspecionadas; Chrome final pendente |
 | DOTNET_TESTS | PASS — 640/640 (7 Application, 409 Domain, 198 Integration, 26 Simulation), zero ignorados; build zero erros/avisos |
-| FLUTTER_TESTS | PASS — 180/180 na revisão mobile; analyzer e build registrados em evidence-015b-mobile/validation.json |
+| FLUTTER_TESTS | PASS — 196/196 na nova tela ao vivo; analyzer zero issues, build concluída; evidence-live-matches-015b/validation.json |
 | NODE_TESTS | PASS — 2/2 |
 | REAL_BROWSER_TEST | PARTIAL — API + PostgreSQL DEV reais e inspeção desktop; continuação impedida pelo navegador desabilitado |
 | VISUAL_COMPARISON | PARTIAL — diferenças registradas; auditoria completa final pendente |
@@ -71,3 +71,9 @@ O pedido posterior do proprietário foi implementado em MOBILE_REFERENCE_LAYOUT_
 A regressão Flutter completa passou 180/180. Sete casos novos cobrem navegação, fichas, filtros, salário contratado, leilões, moral e bloqueio ao vivo; o caso de filtros também verifica o reinício de rolagem ao abrir Táticas. O aviso de equipe com dez aptos permaneceu coberto pelo teste 012C original. Analyzer/build e os hashes das prévias constam em evidence-015b-mobile/validation.json; runtime em runtime-health.json.
 
 A sala individual do proprietário foi somente consultada para registrar a cena; a leitura encontrou preparação R5. Não foi reiniciada nem avançada por esta alteração. As imagens novas são renderizações Flutter de respostas GET reais, identificadas como tal. A auditoria Chrome continua PARTIAL pelo navegador desabilitado nas configurações do Work. Nenhuma aprovação manual foi atribuída ao proprietário.
+
+## Nova tela de jogos ao vivo
+
+Implementada em LIVE_MATCH_SCREEN_015B.md: placar selecionado automaticamente pelo clube do treinador, observação de outros confrontos, MEU JOGO, estádio/bilheteria, lances, cartões, filtros e resultados por divisão; desktop em colunas e mobile com abas e painéis expansíveis. Seleção individual persistida e protegida por sala/treinador/temporada/rodada; comandos de clube e bloqueio da partida preservados. Calendário de outras rodadas é somente leitura.
+
+Validação: 196/196 Flutter, analyzer zero issues, build Web concluída e dois renderers 1/1 com cenas oficiais em andamento/encerradas. A sala QA foi independente dos saves do proprietário. O registro de bilheteria mostrou que os campos são apurados no encerramento; antes disso aparece Em apuração. Posse/finalizações e cidade não foram inventadas. As 12 imagens novas são renderizações Flutter identificadas, com dados reais gravados. Capturas Chrome continuam pendentes pelo navegador desabilitado; STATUS global PARTIAL.

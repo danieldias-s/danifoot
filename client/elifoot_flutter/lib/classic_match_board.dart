@@ -1,4 +1,5 @@
 import 'club_theme.dart';
+import 'match_gate.dart';
 import 'package:flutter/material.dart';
 
 String classicDivisionLabel(dynamic tier) => switch (tier?.toString()) {
@@ -7,8 +8,17 @@ String classicDivisionLabel(dynamic tier) => switch (tier?.toString()) {
   'TerceiraDivisao' || '3' => '3ª DIVISÃO',
   'QuartaDivisao' || '4' => '4ª DIVISÃO',
   'Distrital' || '5' => 'DISTRITAIS',
-  _ => 'CAMPEONATO — DIVISÃO NÃO INFORMADA',
+  _ => _additionalDivisionLabel(tier),
 };
+String _additionalDivisionLabel(dynamic tier) {
+  final raw = tier?.toString();
+  final number = int.tryParse(raw ?? '');
+  if (number != null && number > 5) return '$numberª DIVISÃO';
+  return raw == null || raw.isEmpty
+      ? 'CAMPEONATO — DIVISÃO NÃO INFORMADA'
+      : raw.toUpperCase();
+}
+
 String classicCupLabel(String type) => switch (type) {
   'CupPreliminary1' => 'TAÇA - PRELIMINAR 1',
   'CupPreliminary2' => 'TAÇA - PRELIMINAR 2',
@@ -46,6 +56,10 @@ class ClassicMatchBoard extends StatelessWidget {
   final List<Map<String, dynamic>> matches;
   final String competitionType, competitionLabel;
   final String? coachClubId;
+  final String? selectedMatchId;
+  final ValueChanged<Map<String, dynamic>>? onSelected;
+  final bool mobile;
+  final String selectionScope;
   final Widget Function(Map<String, dynamic>)? coachDetails;
   const ClassicMatchBoard({
     super.key,
@@ -53,6 +67,10 @@ class ClassicMatchBoard extends StatelessWidget {
     required this.competitionType,
     required this.competitionLabel,
     this.coachClubId,
+    this.selectedMatchId,
+    this.onSelected,
+    this.mobile = false,
+    this.selectionScope = '',
     this.coachDetails,
   });
 
@@ -81,6 +99,68 @@ class ClassicMatchBoard extends StatelessWidget {
         final ai = order.indexOf(a.key), bi = order.indexOf(b.key);
         return (ai < 0 ? 99 : ai).compareTo(bi < 0 ? 99 : bi);
       });
+    if (onSelected != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final group in entries)
+            Container(
+              margin: const EdgeInsets.only(bottom: 5),
+              decoration: BoxDecoration(
+                color: ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
+              ),
+              child: mobile
+                  ? ExpansionTile(
+                      key: PageStorageKey(
+                        'live-group-$selectionScope-${group.key}',
+                      ),
+                      initiallyExpanded:
+                          group.value.any(
+                            (m) => '${m['matchId']}' == selectedMatchId,
+                          ) ||
+                          group == entries.first,
+                      dense: true,
+                      tilePadding: const EdgeInsets.symmetric(horizontal: 8),
+                      title: Text(
+                        group.key,
+                        style: TextStyle(
+                          color: ClassicTheme.of(context).accent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                        ),
+                      ),
+                      children: [
+                        for (final match in group.value)
+                          _selectionRow(context, match),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 5,
+                          ),
+                          child: Text(
+                            group.key,
+                            key: ValueKey('division-heading-${group.key}'),
+                            style: TextStyle(
+                              color: ClassicTheme.of(context).accent,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        for (final match in group.value)
+                          _selectionRow(context, match),
+                      ],
+                    ),
+            ),
+        ],
+      );
+    }
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 940),
@@ -133,6 +213,109 @@ class ClassicMatchBoard extends StatelessWidget {
                 ),
               ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _selectionRow(BuildContext context, Map<String, dynamic> match) {
+    final id = '${match['matchId']}',
+        mine = _isCoachMatch(match),
+        selected = id == selectedMatchId;
+    final t = ClassicTheme.of(context);
+    final attendance = officialGateValue(match, 'attendance');
+    final audience = attendance == null
+        ? '—'
+        : attendance
+              .toStringAsFixed(0)
+              .replaceAllMapped(
+                RegExp(r'(\d)(?=(\d{3})+$)'),
+                (m) => '${m[1]}.',
+              );
+    Widget club(String side) => Expanded(
+      child: Tooltip(
+        message: '${match['${side}ClubName'] ?? ''}',
+        child: TeamColorName(
+          name: '${match['${side}ClubName'] ?? ''}',
+          palette: match['${side}ColorPalette'] is Map
+              ? Map<String, dynamic>.from(match['${side}ColorPalette'] as Map)
+              : null,
+          highlight: mine,
+        ),
+      ),
+    );
+    return KeyedSubtree(
+      key: mine
+          ? const ValueKey('coach-highlighted-match-card')
+          : ValueKey('observed-match-$id'),
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: mine ? 'Partida do seu clube' : null,
+        child: InkWell(
+          key: ValueKey('select-match-$id'),
+          onTap: () => onSelected!(match),
+          child: Container(
+            key: ValueKey('classic-match-$id'),
+            constraints: BoxConstraints(minHeight: mobile ? 36 : 30),
+            margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 1),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: selected ? t.accent : Colors.transparent,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(3),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: mobile ? 12 : 16,
+                  child: mine
+                      ? Icon(
+                          Icons.sports_esports,
+                          size: mobile ? 12 : 15,
+                          color: t.accent,
+                        )
+                      : null,
+                ),
+                Tooltip(
+                  message: attendance == null
+                      ? 'Público: ${unreportedGateLabel(match)}'
+                      : 'Público pagante: $audience',
+                  child: SizedBox(
+                    width: mobile ? 40 : 53,
+                    child: Text(
+                      audience,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: t.textPrimary,
+                        fontSize: mobile ? 10 : 11,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 4),
+                club('home'),
+                Container(
+                  key: ValueKey('score-$id'),
+                  width: mobile ? 58 : 66,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  color: t.accent,
+                  child: Text(
+                    '${match['homeGoals'] ?? '—'} x ${match['awayGoals'] ?? '—'}',
+                    style: TextStyle(
+                      color: t.selectedText,
+                      fontWeight: FontWeight.w900,
+                      fontSize: mobile ? 12 : 14,
+                    ),
+                  ),
+                ),
+                club('away'),
+              ],
+            ),
+          ),
         ),
       ),
     );

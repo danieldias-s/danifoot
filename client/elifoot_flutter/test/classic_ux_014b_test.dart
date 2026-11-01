@@ -251,8 +251,8 @@ void main() {
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
-        await tester.ensureVisible(find.text('3. MERCADO & LEILÃO'));
-        await tester.tap(find.text('3. MERCADO & LEILÃO'));
+        await tester.ensureVisible(find.byKey(const ValueKey('shell-nav-2')));
+        await tester.tap(find.byKey(const ValueKey('shell-nav-2')));
         await tester.pumpAndSettle();
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();

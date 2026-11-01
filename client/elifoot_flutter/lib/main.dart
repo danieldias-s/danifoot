@@ -13,11 +13,13 @@ import 'world_creator.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
 import 'mobile_classic.dart';
+import 'live_match_data.dart';
+import 'live_match_view.dart';
+import 'live_match_navigation.dart';
 import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
-import 'classic_match_board.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 
@@ -136,10 +138,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   /// MATCH TEAM COLORS directory (014C rebalance): registered club palettes by
   /// club id and by name, used to paint team blocks in cup/calendar lists.
-  /// Loaded once per world; failures leave the lists neutral.
+  /// Refreshed with the secondary queries; failures never mix rooms.
   final Map<String, Map<String, dynamic>> _clubPaletteById = {};
   final Map<String, Map<String, dynamic>> _clubPaletteByName = {};
   String? _clubPaletteWorld;
+  final Map<String, Map<String, dynamic>> _liveClubs = {};
+  final _liveSelection = LiveMatchSelection();
 
   Map<String, dynamic>? _teamPalette({dynamic id, dynamic name}) {
     if (_clubPaletteWorld != _worldId) return null;
@@ -149,7 +153,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _loadClubPalettes(String worldId) async {
-    if (_clubPaletteWorld == worldId) return;
+    // Stadium capacity and club metadata can change between rounds.
     try {
       final clubs = await widget.apiClient.getClubs(worldId);
       if (!mounted || _worldId != worldId) return;
@@ -157,6 +161,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _clubPaletteWorld = worldId;
         _clubPaletteById.clear();
         _clubPaletteByName.clear();
+        _liveClubs.clear();
         final duplicateNames = <String>{};
         final seenNames = <String>{};
         for (final c in clubs) {
@@ -167,6 +172,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           }
         }
         for (final c in clubs) {
+          if (c is Map && c['id'] != null) {
+            _liveClubs['${c['id']}'] = Map<String, dynamic>.from(c);
+          }
           if (c is! Map || c['colorPalette'] is! Map) continue;
           final p = Map<String, dynamic>.from(c['colorPalette'] as Map);
           _clubPaletteById[c['id'].toString()] = p;
@@ -263,6 +271,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     try {
       if (saved != null) session = jsonDecode(saved);
     } catch (_) {}
+    if (session?['liveSelection'] is Map) {
+      _liveSelection.restore(
+        Map<String, dynamic>.from(session!['liveSelection'] as Map),
+      );
+    }
     _restoringSession = session?['worldId'] != null;
     _nickname = session?['nickname'] ?? _nickname;
     _deviceId = session?['deviceId'] ?? _deviceId;
@@ -539,6 +552,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
     final nextSeason = (next?['seasonNumber'] as num?)?.toInt();
     final worldId = _worldId;
+    if (previousSeason != null &&
+        nextSeason != null &&
+        nextSeason > previousSeason) {
+      _clubPaletteWorld = null;
+    }
     if (worldId != null &&
         previousSeason != null &&
         nextSeason != null &&
@@ -685,8 +703,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             drawerEnableOpenDragGesture: !_matchLocked,
             bottomNavigationBar: viewport.maxWidth < 768
                 ? MobileClassicNavigation(
+                    liveMode: _showMatchView || _matchLocked,
                     selected: _showMatchView
-                        ? -1
+                        ? 1
                         : _activeTabIndex == 0
                         ? (_mobileTacticsView ? 1 : 0)
                         : _activeTabIndex == 2
@@ -787,11 +806,25 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ),
                       ),
                     ),
+                  if ((_showMatchView || _matchLocked) &&
+                      viewport.maxWidth >= 768)
+                    LiveMatchNavigation(
+                      locked: _matchLocked,
+                      onSelected: (idx) {
+                        if (idx == -1) {
+                          _navigation.navigate('/partida');
+                        } else {
+                          _navigateToTab(idx);
+                        }
+                      },
+                      switchRoom: _matchLocked ? null : _switchRoom,
+                    ),
                   Expanded(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        if (desktop) _buildClassicNavigationMenu(),
+                        if (desktop && !_showMatchView && !_matchLocked)
+                          _buildClassicNavigationMenu(),
                         Expanded(
                           child: Column(
                             children: [
@@ -1155,7 +1188,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           round:
               'Temporada ${snap?['seasonNumber'] ?? '—'} | Rodada ${snap?['roundNumber'] ?? '—'} (${snap?['competitionLabel'] ?? ''})',
           date: formatClassicDate(snap?['gameDate']),
-          world: snap?['worldName']?.toString() ?? '',
+          live: _showMatchView || _matchLocked,
+          world: (_showMatchView || _matchLocked)
+              ? '${snap?['worldName'] ?? ''} • ${snap?['readyCounter']?['totalHumans'] ?? people.length} treinadores • ${_myClubDetail?['name'] ?? me?['clubName'] ?? 'Sem clube'}'
+              : snap?['worldName']?.toString() ?? '',
           action: action,
           openMenu:
               viewportWidth >= 768 && viewportWidth < 1024 && !_matchLocked
@@ -1259,32 +1295,48 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
             );
           },
-    switchRoom: _matchLocked
-        ? null
-        : () async {
-            if (_matchLocked) return;
-            _shellScaffoldKey.currentState?.closeDrawer();
-            widget.apiClient.disconnectRealtime();
-            setState(() {
-              _worldId = null;
-              widget.appearance?.activate(
-                widget.apiClient,
-                null,
-                null,
-                null,
-                null,
-              );
-              _snapshot = null;
-              _myClubDetail = null;
-              _myClubId = null;
-              _selectedStarterIds = [];
-            });
-            await _saveSession();
-          },
+    switchRoom: _matchLocked ? null : _switchRoom,
+    liveMatches: () {
+      _navigation.navigate('/partida');
+      _shellScaffoldKey.currentState?.closeDrawer();
+    },
   );
+
+  Future<void> _switchRoom() async {
+    if (_matchLocked) return;
+    _shellScaffoldKey.currentState?.closeDrawer();
+    widget.apiClient.disconnectRealtime();
+    setState(() {
+      _worldId = null;
+      widget.appearance?.activate(widget.apiClient, null, null, null, null);
+      _snapshot = null;
+      _myClubDetail = null;
+      _myClubId = null;
+      _selectedStarterIds = [];
+    });
+    await _saveSession();
+  }
 
   void _navigateMobile(int destination) {
     if (_matchLocked) return;
+    if (_showMatchView) {
+      if (destination == 4) {
+        _shellScaffoldKey.currentState?.openDrawer();
+        return;
+      }
+      if (destination == 1) {
+        _navigation.navigate('/partida');
+        return;
+      }
+      _navigateToTab(
+        destination == 0
+            ? 0
+            : destination == 2
+            ? 1
+            : 2,
+      );
+      return;
+    }
     if (destination == 4) {
       _shellScaffoldKey.currentState?.openDrawer();
       return;
@@ -2255,190 +2307,49 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return 'PREPARAÇÃO DA RODADA';
   }
 
-  String _formatEventBadge(dynamic event) =>
-      classicEventBadge(Map<String, dynamic>.from(event as Map));
-
-  /// Tab 1: Jogos ao Vivo, Placar Simultâneo, Intervalo (45'), Pausa Global e Substituições (5/3 e 6/4)
   Widget _buildLiveMatchesAndPauseScreen() {
-    final matches = (_snapshot?['matches'] as List? ?? [])
-        .map((m) => Map<String, dynamic>.from(m as Map))
-        .toList();
-    final state = _snapshot?['roundState']?.toString() ?? 'PREPARING';
-    final pause = _snapshot?['activePauseWindow'] as Map<String, dynamic>?;
+    final snap = _snapshot ?? <String, dynamic>{};
+    final matches = (snap['matches'] as List? ?? []).whereType<Map>();
     final mine = matches
         .where(
           (m) => m['homeClubId'] == _myClubId || m['awayClubId'] == _myClubId,
         )
         .firstOrNull;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 940),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'PLACARES DA RODADA • ${_matchVisualStateLabel(state, pause)}',
-                key: const ValueKey('live-match-state-banner'),
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
-              const SizedBox(height: 8),
-              if (pause != null && mine != null)
-                _buildInMatchSubstitutionPanel(mine),
-              if (matches.isEmpty)
-                const Text('Aguardando a rodada confirmada pelo servidor.'),
-              ClassicMatchBoard(
-                matches: matches,
-                competitionType:
-                    _snapshot?['competitionType']?.toString() ?? 'League',
-                competitionLabel:
-                    _snapshot?['competitionLabel']?.toString() ?? '',
-                coachClubId: _myClubId,
-                coachDetails: (match) => _buildHighlightedCoachMatchCard(
-                  match,
-                  _matchVisualStateLabel(state, pause),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHighlightedCoachMatchCard(
-    Map<String, dynamic> myMatch,
-    String visualState,
-  ) {
-    final events = myMatch['events'] as List<dynamic>? ?? [];
-    final penH = myMatch['homePenaltyGoals'];
-    final penA = myMatch['awayPenaltyGoals'];
-    final penText = (penH != null && penA != null)
-        ? ' (Pênaltis: $penH x $penA)'
-        : '';
-    final compLabel = _snapshot?['competitionLabel']?.toString() ?? 'Liga';
-    final roundNum = _snapshot?['roundNumber'] ?? 1;
-
-    return Container(
-      key: const ValueKey('coach-highlighted-match-details'),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surfaceAlternate,
-        border: Border.all(
-          color: ClassicTheme.of(context).selectedBackground,
-          width: 2,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            spacing: 10,
-            runSpacing: 4,
-            alignment: WrapAlignment.spaceBetween,
-            children: [
-              Text(
-                'SEU JOGO EM DESTAQUE • RODADA $roundNum ($compLabel)',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                color: ClassicTheme.of(context).surface,
-                child: Text(
-                  "$visualState • ${myMatch['minute']}'",
-                  style: const TextStyle(
-                    color: Colors.lightGreenAccent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 11,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            color: ClassicTheme.of(context).surface,
-            child: Wrap(
-              spacing: 12,
-              runSpacing: 6,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Text(
-                  '${myMatch['homeClubName']} [${myMatch['homeFormation']}]${myMatch['homePlayersOnPitch'] == null ? '' : ' • ${myMatch['homePlayersOnPitch']} em campo'}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: ClassicTheme.of(context).textPrimary,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(
-                      color: ClassicTheme.of(context).selectedBackground,
-                    ),
-                  ),
-                  child: Text(
-                    '${myMatch['homeGoals']} x ${myMatch['awayGoals']}$penText',
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).accent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                Text(
-                  '${myMatch['awayClubName']} [${myMatch['awayFormation']}]${myMatch['awayPlayersOnPitch'] == null ? '' : ' • ${myMatch['awayPlayersOnPitch']} em campo'}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: ClassicTheme.of(context).textPrimary,
-                  ),
-                ),
-              ],
+    final pause = snap['activePauseWindow'] as Map<String, dynamic>?;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          child: Text(
+            'PLACARES DA RODADA • ${_matchVisualStateLabel(snap['roundState']?.toString() ?? 'PREPARING', pause)}',
+            key: const ValueKey('live-match-state-banner'),
+            style: TextStyle(
+              color: ClassicTheme.of(context).accent,
+              fontSize: 11,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          if (events.isNotEmpty) ...[
-            const SizedBox(height: 8),
-            Text(
-              'CRONOLOGIA DE EVENTOS DA SUA PARTIDA:',
-              style: TextStyle(
-                color: ClassicTheme.of(context).accent,
-                fontWeight: FontWeight.bold,
-                fontSize: 11,
-              ),
-            ),
-            const SizedBox(height: 4),
-            for (final e in events.reversed)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 1.5),
-                child: Text(
-                  '• ${_formatEventBadge(e)} ${e['description']}',
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: Colors.amberAccent,
-                  ),
-                ),
-              ),
-          ],
-        ],
-      ),
+        ),
+        Expanded(
+          child: LiveMatchScreen(
+            key: ValueKey('live-view-$_worldId-$_coachId'),
+            snapshot: snap,
+            calendar: _calendar,
+            clubs: _clubPaletteWorld == _worldId ? _liveClubs : {},
+            coachId: _coachId ?? '',
+            coachName: _nickname,
+            coachClubId: _myClubId,
+            selection: _liveSelection,
+            onSelectionChanged: _saveSession,
+            coachControls: pause != null && mine != null
+                ? _buildInMatchSubstitutionPanel(
+                    Map<String, dynamic>.from(mine),
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 

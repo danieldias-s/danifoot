@@ -64,6 +64,7 @@ extension _ShellActions on _ElifootShellScreenState {
         'nickname': _nickname,
         'deviceId': _deviceId,
         'worldId': _worldId,
+        'liveSelection': _liveSelection.toJson(),
       }),
     );
   }

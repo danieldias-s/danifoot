@@ -869,7 +869,8 @@ void main() {
         find.byKey(const ValueKey('coach-highlighted-match-card')),
       );
       await tester.pumpAndSettle();
-      expect(find.textContaining('[GOL]'), findsWidgets);
+      expect(find.byKey(const Key('live-match-events')), findsOneWidget);
+      expect(find.textContaining('GOL de Titular 10'), findsOneWidget);
 
       // 7. Request global pause -> opens interactive substitution panel
       await tester.tap(find.byKey(const Key('btn-pedir-parada')));

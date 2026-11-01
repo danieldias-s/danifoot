@@ -36,6 +36,7 @@ class AppHeader extends StatelessWidget {
   final String round, date, world;
   final Widget action;
   final VoidCallback? openMenu;
+  final bool live;
   const AppHeader({
     super.key,
     required this.round,
@@ -43,6 +44,7 @@ class AppHeader extends StatelessWidget {
     required this.world,
     required this.action,
     this.openMenu,
+    this.live = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class AppHeader extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              'LIGA CLÁSSICA ',
+              live ? 'ELIFOOT ' : 'LIGA CLÁSSICA ',
               style: TextStyle(
                 color: t.textPrimary,
                 fontSize: compact ? 18 : 27,
@@ -78,7 +80,7 @@ class AppHeader extends StatelessWidget {
               ),
             ),
             Text(
-              '98',
+              live ? '98 ONLINE' : '98',
               style: TextStyle(
                 color: t.accent,
                 fontSize: compact ? 23 : 34,
@@ -148,6 +150,16 @@ class AppHeader extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                if (live)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: Text(
+                      world,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: t.textSecondary, fontSize: 10),
+                    ),
+                  ),
               ],
             ),
           );
@@ -261,7 +273,7 @@ class AppSidebar extends StatelessWidget {
   final int selected;
   final bool locked, showAppearance;
   final ValueChanged<int> onSelected;
-  final VoidCallback? appearance, switchRoom;
+  final VoidCallback? appearance, switchRoom, liveMatches;
   const AppSidebar({
     super.key,
     required this.selected,
@@ -269,6 +281,7 @@ class AppSidebar extends StatelessWidget {
     required this.onSelected,
     this.appearance,
     this.switchRoom,
+    this.liveMatches,
     this.showAppearance = true,
   });
   @override
@@ -304,6 +317,35 @@ class AppSidebar extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  if (liveMatches != null)
+                    InkWell(
+                      key: const Key('open-live-matches'),
+                      onTap: locked ? null : liveMatches,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 14,
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.sports_soccer,
+                              color: t.textPrimary,
+                              size: 23,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              'JOGOS AO VIVO',
+                              style: TextStyle(
+                                color: t.textPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   for (int i = 0; i < classicNavigation.length; i++)
                     Semantics(
                       button: true,
