@@ -28,3 +28,8 @@ O layout pedido na imagem está implementado com barra de moral preservada. A su
 ## Nova tela ao vivo
 
 A implementação e a regressão de 196 testes estão concluídas. O limite da auditoria Chrome permanece. Ver LIVE_MATCH_SCREEN_015B.md para dados não fornecidos pela API (cidade, posse/finalizações/escanteios/faltas, escudos oficiais), bilheteria apurada no encerramento, dados limitados do calendário e preservação do editor antes do save. Há 12 prévias Flutter identificadas; não se declara que são capturas reais de navegador.
+
+
+## Interações de partida
+
+Implementação e validação em MATCH_INTERACTIONS_015B.md. Pênaltis durante a partida aguardam o cobrador humano; disputa final automática. Abertura/observação não debita parada, somente alterações reais; intervalo é gratuito em paradas e toda troca conta. Recuperação e idempotência foram verificadas em SQLite/PostgreSQL e com reinício real da API. Resultado: 654/654 .NET, 211/211 Flutter, analyzer zero issues e simulações de 100 temporadas repetidas. Dez prévias Flutter registradas como renderizações; Chrome/aprovação manual continuam pendentes. STATUS global PARTIAL.

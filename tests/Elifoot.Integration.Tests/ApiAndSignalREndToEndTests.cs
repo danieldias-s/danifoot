@@ -12,6 +12,26 @@ namespace Elifoot.Integration.Tests;
 
 public class ApiAndSignalREndToEndTests
 {
+    // Lifecycle test driver explicitly supplies the new human decision; production never auto-chooses it.
+    internal static async Task<HttpResponseMessage> TickWithAutomaticPenaltyChoices(HttpClient client, Guid worldId, int ticks)
+    {
+        var snapshot=(await client.GetFromJsonAsync<LiveRoundSnapshotDto>($"/api/worlds/{worldId}/snapshot"))!;
+        int target=snapshot.CurrentMinute+ticks;
+        for(int guard=0;guard<128;guard++) {
+            if(snapshot.PendingPenalty is {} pending) {
+                var player=pending.EligiblePlayers.OrderByDescending(p=>p.IsStar).ThenByDescending(p=>p.Position==PlayerPosition.A).ThenByDescending(p=>p.Strength).First();
+                var chosen=await client.PostAsJsonAsync($"/api/worlds/{worldId}/penalty-taker",new ChoosePenaltyTakerCommand(worldId,pending.CoachId,pending.DecisionId,player.PlayerId,$"lifecycle-{pending.DecisionId}"));
+                chosen.EnsureSuccessStatusCode(); snapshot=(await chosen.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
+                continue;
+            }
+            if(snapshot.CurrentMinute>=target || snapshot.RoundState is not (RoundState.RUNNING_FIRST_HALF or RoundState.RUNNING_SECOND_HALF or RoundState.RUNNING_EXTRA_TIME))
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK){Content=JsonContent.Create(snapshot)};
+            var response=await client.PostAsync($"/api/worlds/{worldId}/tick?ticks={target-snapshot.CurrentMinute}",null);
+            response.EnsureSuccessStatusCode(); snapshot=(await response.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
+        }
+        throw new InvalidOperationException("Lifecycle driver could not reach its requested minute.");
+    }
+
     [Fact]
     public async Task EndToEnd_ApiAndSignalR_6Humans_PauseAtMinute79_Reconnect_Market_Stadium_AndEditor()
     {
@@ -110,7 +130,7 @@ public class ApiAndSignalREndToEndTests
         Assert.NotEmpty(receivedCounters);
 
         // 5. Tick to Halftime (45'), confirm halftime, tick to Minute 79', and Pause at Minute 79'!
-        var tick45Res = await client.PostAsync($"/api/worlds/{worldId}/tick?ticks=45", null);
+        var tick45Res = await TickWithAutomaticPenaltyChoices(client, worldId, 45);
         var snap45 = await tick45Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>();
         Assert.Equal(45, snap45!.CurrentMinute);
         Assert.Equal(RoundState.HALFTIME_PAUSED, snap45.RoundState);
@@ -120,7 +140,7 @@ public class ApiAndSignalREndToEndTests
             await client.PostAsJsonAsync($"/api/worlds/{worldId}/continue", new ConfirmContinueMatchCommand(worldId, coachIds[i], $"ht-{i}"));
         }
 
-        var tick79Res = await client.PostAsync($"/api/worlds/{worldId}/tick?ticks=34", null); // 45 + 34 = 79'
+        var tick79Res = await TickWithAutomaticPenaltyChoices(client, worldId, 34); // 45 + 34 = 79'
         var snap79 = await tick79Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>();
         Assert.Equal(79, snap79!.CurrentMinute);
 
@@ -142,7 +162,7 @@ public class ApiAndSignalREndToEndTests
             await client.PostAsJsonAsync($"/api/worlds/{worldId}/continue", new ConfirmContinueMatchCommand(worldId, coachIds[i], $"c79-{i}"));
         }
 
-        var tick90Res = await client.PostAsync($"/api/worlds/{worldId}/tick?ticks=15", null);
+        var tick90Res = await TickWithAutomaticPenaltyChoices(client, worldId, 15);
         var snap90 = await tick90Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>();
         Assert.Equal(RoundState.RESULTS, snap90!.RoundState);
 
@@ -360,7 +380,7 @@ public class ApiAndSignalREndToEndTests
             }
 
             // Step 9: Follow matches up to Minute 34'
-            var tick34Res = await httpClients[0].PostAsync($"/api/worlds/{worldId}/tick?ticks=34", null);
+            var tick34Res = await TickWithAutomaticPenaltyChoices(httpClients[0], worldId, 34);
             tick34Res.EnsureSuccessStatusCode();
             var snap34 = (await tick34Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
             Assert.Equal(34, snap34.CurrentMinute);
@@ -409,7 +429,7 @@ public class ApiAndSignalREndToEndTests
             }
 
             // Advance to Halftime (45'), confirm halftime, and finish at 90' (Step 13)
-            var tick45Res = await httpClients[0].PostAsync($"/api/worlds/{worldId}/tick?ticks=11", null);
+            var tick45Res = await TickWithAutomaticPenaltyChoices(httpClients[0], worldId, 11);
             var snap45 = (await tick45Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
             Assert.Equal(45, snap45.CurrentMinute);
             Assert.Equal(RoundState.HALFTIME_PAUSED, snap45.RoundState);
@@ -420,7 +440,7 @@ public class ApiAndSignalREndToEndTests
                     new ConfirmContinueMatchCommand(worldId, coachIds[i], $"cont45-{coachCount}-{i}"));
             }
 
-            var tick90Res = await httpClients[0].PostAsync($"/api/worlds/{worldId}/tick?ticks=45", null);
+            var tick90Res = await TickWithAutomaticPenaltyChoices(httpClients[0], worldId, 45);
             var snap90 = (await tick90Res.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
             Assert.Equal(RoundState.RESULTS, snap90.RoundState);
             Assert.All(snap90.Matches, m => Assert.True(m.IsFinished));

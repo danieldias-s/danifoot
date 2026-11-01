@@ -61,6 +61,11 @@ public record SubmitInMatchAdjustmentCommand(
 
 public record InMatchSubstitutionDto(Guid PlayerOutId, Guid PlayerInId);
 
+public record ChoosePenaltyTakerCommand(Guid GameWorldId, Guid CoachId, Guid DecisionId, Guid PlayerId, string IdempotencyKey);
+public record PenaltyTakerChoiceDto(Guid PlayerId, string DisplayName, PlayerPosition Position, int Strength, bool IsStar);
+public record PendingPenaltyDecisionDto(Guid DecisionId, Guid MatchId, Guid CoachId, string CoachName,
+    Guid ClubId, string ClubName, int Minute, List<PenaltyTakerChoiceDto> EligiblePlayers);
+
 public record ConfirmContinueMatchCommand(
     Guid GameWorldId,
     Guid CoachId,
@@ -120,6 +125,7 @@ public record LiveRoundSnapshotDto(
     PauseWindowStateDto? ActivePauseWindow,
     List<LiveMatchSummaryDto> Matches)
 {
+    public PendingPenaltyDecisionDto? PendingPenalty { get; init; }
     public int TotalRoundsInSeason { get; init; }
     public ForceEvolutionMode ForceEvolutionMode { get; init; }
     public int ForceRulesVersion { get; init; }

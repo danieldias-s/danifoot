@@ -46,3 +46,8 @@ A regressão Flutter completa foi repetida após o layout mobile e passou 180/18
 O teste de inferioridade 012C continuou inalterado e passou com dez jogadores aptos em 390/1280 px. O renderer adicional em tool/mobile_reference_capture_015b_test.dart passou e produziu sete PNG de respostas GET da API real. Ele é executado separadamente da suíte de 180, não substitui Chrome e não muda saves. Testes/analyzer/build desta revisão ficam em artifacts/015b/mobile-*.log; manifesto versionado em evidence-015b-mobile/validation.json.
 
 Não houve mudança de backend nesta revisão; os 640 testes .NET, dois Node e cenários de 100 temporadas acima são resultados da regressão anterior, não uma nova execução atribuída à revisão mobile.
+
+
+## Regressão das interações de partida
+
+Implementação e validação em MATCH_INTERACTIONS_015B.md. Pênaltis durante a partida aguardam o cobrador humano; disputa final automática. Abertura/observação não debita parada, somente alterações reais; intervalo é gratuito em paradas e toda troca conta. Recuperação e idempotência foram verificadas em SQLite/PostgreSQL e com reinício real da API. Resultado: 654/654 .NET, 211/211 Flutter, analyzer zero issues e simulações de 100 temporadas repetidas. Dez prévias Flutter registradas como renderizações; Chrome/aprovação manual continuam pendentes. STATUS global PARTIAL.

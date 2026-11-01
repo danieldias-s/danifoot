@@ -50,6 +50,7 @@ String eventType(Map<String, dynamic> e) =>
       '11' => 'GlobalPauseTriggered',
       '12' => 'HalftimeReached',
       '13' => 'ExtraTimeStarted',
+      '15' => 'PenaltyAwarded',
       final String value => value,
     };
 

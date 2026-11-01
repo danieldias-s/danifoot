@@ -320,6 +320,12 @@ app.MapPost("/api/worlds/{worldId:guid}/pause", async (
     return Results.Ok(pauseWin);
 });
 
+app.MapPost("/api/worlds/{worldId:guid}/penalty-taker", async (Guid worldId, ChoosePenaltyTakerCommand cmd, MultiplayerRoundOrchestrator orchestrator, CancellationToken ct) =>
+{
+    var (ok,err,snapshot)=await orchestrator.ChoosePenaltyTakerAsync(cmd with { GameWorldId=worldId },ct);
+    return ok ? Results.Ok(snapshot) : Results.BadRequest(new { error=err,snapshot });
+});
+
 app.MapPost("/api/worlds/{worldId:guid}/in-match-adjust", async (
     Guid worldId,
     SubmitInMatchAdjustmentCommand cmd,

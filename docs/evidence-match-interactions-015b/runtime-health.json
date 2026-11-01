@@ -1,0 +1,50 @@
+{
+  "api": {
+    "status": "OK",
+    "authMode": "LocalDev",
+    "dbProvider": "PostgreSQL",
+    "timestampUtc": "2026-11-01T16:39:10.855993Z"
+  },
+  "apiDllMatches": true,
+  "web": {
+    "app": "ELIFOOT_015B",
+    "api": "http://127.0.0.1:5167",
+    "web": "http://127.0.0.1:5168",
+    "root": "D:\\elifoot_98_015B\\artifacts\\015b\\web",
+    "sha256": "a5a1b31900d860e3a13a4c7471992f30c6cabac0a2d4a024d5dfb3fb3a228bf2"
+  },
+  "localSha256": "a5a1b31900d860e3a13a4c7471992f30c6cabac0a2d4a024d5dfb3fb3a228bf2",
+  "ports": [
+    {
+      "LocalPort": 55440,
+      "OwningProcess": 5748
+    },
+    {
+      "LocalPort": 55439,
+      "OwningProcess": 13684
+    },
+    {
+      "LocalPort": 5168,
+      "OwningProcess": 15172
+    },
+    {
+      "LocalPort": 5167,
+      "OwningProcess": 10900
+    },
+    {
+      "LocalPort": 5166,
+      "OwningProcess": 11984
+    },
+    {
+      "LocalPort": 5165,
+      "OwningProcess": 9460
+    }
+  ],
+  "httpSha256": "a5a1b31900d860e3a13a4c7471992f30c6cabac0a2d4a024d5dfb3fb3a228bf2",
+  "owner": {
+    "minute": 90,
+    "round": 6,
+    "version": 659,
+    "state": "RESULTS"
+  }
+}

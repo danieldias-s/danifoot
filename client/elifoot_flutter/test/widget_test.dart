@@ -285,7 +285,7 @@ void main() {
         }
         if (path.endsWith('/pause')) {
           roundState = 'GLOBAL_PAUSED';
-          pauseWindowsUsed = 1;
+          pauseWindowsUsed = 0;
           activePauseWindow = {
             'pauseWindowId': 'pw1',
             'gameWorldId': '11111111-1111-1111-1111-111111111111',
@@ -297,7 +297,7 @@ void main() {
             'totalHumans': 6,
             'remainingSeconds': 58,
             'confirmedCoachIds': [],
-            'editedCoachIds': ['c1'],
+            'editedCoachIds': [],
           };
           return http.Response(jsonEncode(activePauseWindow), 200);
         }
@@ -498,7 +498,7 @@ void main() {
         find.textContaining('PARTIDA PAUSADA POR Treinador 1'),
         findsOneWidget,
       );
-      expect(find.textContaining('PARADAS 1/3'), findsOneWidget);
+      expect(find.textContaining('PARADAS 0/3'), findsWidgets);
       expect(find.byKey(const Key('btn-confirmar-continuar')), findsOneWidget);
 
       client.disconnectRealtime();

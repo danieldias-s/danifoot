@@ -77,3 +77,8 @@ A sala individual do proprietário foi somente consultada para registrar a cena;
 Implementada em LIVE_MATCH_SCREEN_015B.md: placar selecionado automaticamente pelo clube do treinador, observação de outros confrontos, MEU JOGO, estádio/bilheteria, lances, cartões, filtros e resultados por divisão; desktop em colunas e mobile com abas e painéis expansíveis. Seleção individual persistida e protegida por sala/treinador/temporada/rodada; comandos de clube e bloqueio da partida preservados. Calendário de outras rodadas é somente leitura.
 
 Validação: 196/196 Flutter, analyzer zero issues, build Web concluída e dois renderers 1/1 com cenas oficiais em andamento/encerradas. A sala QA foi independente dos saves do proprietário. O registro de bilheteria mostrou que os campos são apurados no encerramento; antes disso aparece Em apuração. Posse/finalizações e cidade não foram inventadas. As 12 imagens novas são renderizações Flutter identificadas, com dados reais gravados. Capturas Chrome continuam pendentes pelo navegador desabilitado; STATUS global PARTIAL.
+
+
+## Pênaltis humanos e substituições compartilhadas
+
+Implementação e validação em MATCH_INTERACTIONS_015B.md. Pênaltis durante a partida aguardam o cobrador humano; disputa final automática. Abertura/observação não debita parada, somente alterações reais; intervalo é gratuito em paradas e toda troca conta. Recuperação e idempotência foram verificadas em SQLite/PostgreSQL e com reinício real da API. Resultado: 654/654 .NET, 211/211 Flutter, analyzer zero issues e simulações de 100 temporadas repetidas. Dez prévias Flutter registradas como renderizações; Chrome/aprovação manual continuam pendentes. STATUS global PARTIAL.

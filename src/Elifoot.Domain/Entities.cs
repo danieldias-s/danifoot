@@ -304,6 +304,7 @@ public class MatchFixture
     public bool IsCancelled { get; set; }
     public bool IsPostponed { get; set; }
     public int LastSimulatedMinute { get; set; }
+    public List<PendingPenaltyKick> PendingPenalties { get; set; } = new();
     public MatchDisciplineState Discipline { get; set; } = new();
     public HashSet<Guid> HomeInjuryVacancies { get; set; } = new();
     public HashSet<Guid> AwayInjuryVacancies { get; set; } = new();

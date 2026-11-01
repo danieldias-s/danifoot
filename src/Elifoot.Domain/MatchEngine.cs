@@ -11,7 +11,7 @@ public record SectorBreakdown(
     double EffectiveAttackTotal,
     int ActivePlayersCount);
 
-public static class MatchSimulationEngine
+public static partial class MatchSimulationEngine
 {
     public const double StarBonusAttacker = 1.18;
     public const double StarBonusMidfielder = 1.15;
@@ -203,7 +203,9 @@ public static class MatchSimulationEngine
         ManagerTacticalIdentity homeIdentity,
         ManagerTacticalIdentity awayIdentity,
         int worldSeed,
-        bool allowClassic505 = true)
+        bool allowClassic505 = true,
+        bool homeHumanPenaltyChoice = false,
+        bool awayHumanPenaltyChoice = false)
     {
         var events = new List<MatchEventRecord>();
         if (match.IsFinished || match.IsCancelled || match.IsPostponed || match.CurrentMinute <= match.LastSimulatedMinute) return events;
@@ -271,7 +273,8 @@ public static class MatchSimulationEngine
             isHomeAttacking: true,
             minute: minute,
             rng: rng,
-            events: events);
+            events: events,
+            deferPenaltyChoice: homeHumanPenaltyChoice);
 
         // Away attack chance
         TryResolveAttackAttempt(
@@ -284,7 +287,8 @@ public static class MatchSimulationEngine
             isHomeAttacking: false,
             minute: minute,
             rng: rng,
-            events: events);
+            events: events,
+            deferPenaltyChoice: awayHumanPenaltyChoice);
 
         return events;
     }
@@ -473,7 +477,8 @@ public static class MatchSimulationEngine
         bool isHomeAttacking,
         int minute,
         DeterministicRng rng,
-        List<MatchEventRecord> events)
+        List<MatchEventRecord> events,
+        bool deferPenaltyChoice = false)
     {
         if (attackingPlayers.Count == 0) return;
 
@@ -528,39 +533,21 @@ public static class MatchSimulationEngine
                 .ThenByDescending(p => p.Strength)
                 .First();
 
-            double takerSkill = 0.74 + (penTaker.Strength - 25) * 0.004 + (penTaker.IsStar ? 0.06 : 0.0);
-            double gkResist = defBreakdown.GoalkeeperPower * 0.003;
-            double penConvProb = Math.Clamp(takerSkill - gkResist, 0.58, 0.88);
-
             double convRoll = rng.NextDouble();
-            if (convRoll < penConvProb)
+            var defendingGk = defendingPlayers.FirstOrDefault(p => p.Position == PlayerPosition.G) ?? defendingPlayers.FirstOrDefault();
+            if (deferPenaltyChoice && attackingClub.HumanCoachId is Guid coachId)
             {
-                RecordGoalScored(match, attackingClub, penTaker, isHomeAttacking, minute, isPenalty: true, events);
+                match.PendingPenalties.Add(new PendingPenaltyKick {
+                    CoachId = coachId, ClubId = attackingClub.Id, Minute = minute,
+                    ConversionRoll = convRoll, GoalkeeperPower = defBreakdown.GoalkeeperPower,
+                    GoalkeeperId = defendingGk?.Id, EligiblePlayerIds = attackingPlayers.Select(p => p.Id).ToList()
+                });
+                var awarded = new MatchEventRecord { Minute = minute, EventType = MatchEventType.PenaltyAwarded,
+                    ClubId = attackingClub.Id, ClubName = attackingClub.Name,
+                    Description = $"{minute}' PÊNALTI para {attackingClub.Name}. Aguardando escolha do cobrador." };
+                match.Events.Add(awarded); events.Add(awarded);
             }
-            else
-            {
-                double missRange = Math.Max(0.0001, 1.0 - penConvProb);
-                double saveShare = Math.Clamp(0.50 + (defBreakdown.GoalkeeperPower - 25.0) * 0.008, 0.35, 0.72);
-                bool isGoalkeeperSave = (convRoll - penConvProb) < (missRange * saveShare);
-                var defendingGk = defendingPlayers.FirstOrDefault(p => p.Position == PlayerPosition.G) ?? defendingPlayers.FirstOrDefault();
-
-                var missEvt = new MatchEventRecord
-                {
-                    Minute = minute,
-                    EventType = MatchEventType.PenaltyMissed,
-                    ClubId = attackingClub.Id,
-                    ClubName = attackingClub.Name,
-                    PrimaryPlayerId = penTaker.Id,
-                    PrimaryPlayerDisplayName = penTaker.DisplayName,
-                    SecondaryPlayerId = isGoalkeeperSave ? defendingGk?.Id : null,
-                    SecondaryPlayerDisplayName = isGoalkeeperSave ? defendingGk?.DisplayName : null,
-                    Description = isGoalkeeperSave
-                        ? $"{minute}' PÊNALTI DEFENDIDO! {defendingGk?.DisplayName ?? "Goleiro"} defende a cobrança de {penTaker.DisplayName} ({attackingClub.ShortName})!"
-                        : $"{minute}' PÊNALTI PARA FORA! {penTaker.DisplayName} ({attackingClub.ShortName}) chuta para fora!"
-                };
-                match.Events.Add(missEvt);
-                events.Add(missEvt);
-            }
+            else ResolvePenaltyKick(match, attackingClub, penTaker, defendingGk, defBreakdown.GoalkeeperPower, isHomeAttacking, minute, convRoll, events);
             return;
         }
 

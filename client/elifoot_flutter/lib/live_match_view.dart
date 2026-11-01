@@ -613,6 +613,7 @@ class LiveMatchScreen extends StatefulWidget {
   final LiveMatchSelection selection;
   final VoidCallback onSelectionChanged;
   final Widget? coachControls;
+  final VoidCallback? onSubstitute;
   const LiveMatchScreen({
     super.key,
     required this.snapshot,
@@ -624,6 +625,7 @@ class LiveMatchScreen extends StatefulWidget {
     required this.onSelectionChanged,
     this.coachClubId,
     this.coachControls,
+    this.onSubstitute,
   });
   @override
   State<LiveMatchScreen> createState() => _LiveMatchScreenState();
@@ -786,6 +788,13 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
               ),
             const SizedBox(height: 8),
             myGame(),
+            if (widget.onSubstitute != null)
+              OutlinedButton.icon(
+                key: const Key('live-substitute-desktop'),
+                onPressed: widget.onSubstitute,
+                icon: const Icon(Icons.swap_horiz, size: 17),
+                label: const Text('SUBSTITUIR'),
+              ),
           ],
         ),
       );
@@ -1031,6 +1040,13 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       myGame(),
+                      if (widget.onSubstitute != null)
+                        OutlinedButton.icon(
+                          key: const Key('live-substitute-mobile'),
+                          onPressed: widget.onSubstitute,
+                          icon: const Icon(Icons.swap_horiz, size: 17),
+                          label: const Text('SUBSTITUIR'),
+                        ),
                       if (mine == null)
                         Text(
                           widget.coachClubId == null

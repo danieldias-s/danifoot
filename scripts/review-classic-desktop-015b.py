@@ -53,10 +53,15 @@ def ready(w,p):
         return api('/worlds/'+w+'/tactics',tactics(w,p))
 def finish(w,participants):
     stages=[]
-    for _ in range(20):
+    for _ in range(128):
         snap=api('/worlds/'+w+'/snapshot');stage=snap['roundState'];stages.append(stage)
         if stage in ['RESULTS','FINISHED']:return snap,stages
-        if stage.startswith('RUNNING_'):api('/worlds/'+w+'/tick?ticks=125',{})
+        if snap.get('pendingPenalty'):
+            pending=snap['pendingPenalty']
+            assert pending['coachId'] in [p['auth']['coachId'] for p in participants], 'QA may choose only its own coaches'
+            taker=sorted(pending['eligiblePlayers'],key=lambda p:(-int(p['isStar']),-int(p['position']=='A'),-p['strength'],p['playerId']))[0]
+            api('/worlds/'+w+'/penalty-taker',dict(gameWorldId=w,coachId=pending['coachId'],decisionId=pending['decisionId'],playerId=taker['playerId'],idempotencyKey='qa-penalty-'+pending['decisionId']))
+        elif stage.startswith('RUNNING_'):api('/worlds/'+w+'/tick?ticks=125',{})
         elif stage in ['HALFTIME_PAUSED','GLOBAL_PAUSED','EXTRA_TIME_BREAK','EXTRA_TIME_HALFTIME']:
             for p in participants:
                 api('/worlds/'+w+'/continue',dict(gameWorldId=w,coachId=p['auth']['coachId'],idempotencyKey='015b-'+uuid.uuid4().hex))

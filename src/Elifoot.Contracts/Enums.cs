@@ -93,7 +93,8 @@ public enum MatchEventType
     GlobalPauseTriggered = 11,
     HalftimeReached = 12,
     ExtraTimeStarted = 13,
-    MatchEnded = 14
+    MatchEnded = 14,
+    PenaltyAwarded
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]

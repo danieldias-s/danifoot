@@ -48,6 +48,7 @@ String classicEventBadge(Map<String, dynamic> event) {
     'GlobalPauseTriggered' || '11' => '[PAUSA]',
     'HalftimeReached' || '12' => '[INTERVALO]',
     'ExtraTimeStarted' || '13' => '[PRORROGAÇÃO]',
+    'PenaltyAwarded' || '15' => '[PÊNALTI]',
     _ => '[LANCE]',
   };
 }

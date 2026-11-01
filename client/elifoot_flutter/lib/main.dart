@@ -16,6 +16,7 @@ import 'mobile_classic.dart';
 import 'live_match_data.dart';
 import 'live_match_view.dart';
 import 'live_match_navigation.dart';
+import 'match_interaction_dialog.dart';
 import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
@@ -211,9 +212,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   final _marketPreferences = MarketPreferences();
 
   // In-match substitution selection state
-  String? _subPlayerOutId;
-  String? _subPlayerInId;
-  String? _inMatchFormation;
+  String? _matchInteractionNotice;
+  String? _lastInteractionId;
 
   // Editor state
 
@@ -527,6 +527,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
     final next = _preferLatestSnapshot(incoming);
     if (next != null) {
+      final interactionId =
+          (next['pendingPenalty']?['decisionId'] ??
+                  next['activePauseWindow']?['pauseWindowId'])
+              ?.toString();
+      if (interactionId != _lastInteractionId) {
+        _lastInteractionId = interactionId;
+        _matchInteractionNotice = null;
+        if (interactionId != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted && _lastInteractionId == interactionId) {
+              _shellScaffoldKey.currentState?.closeDrawer();
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            }
+          });
+        }
+      }
       final wasLocked = _navigation.locked;
       _navigation.acceptStage(next['roundState']?.toString());
       if (_navigation.locked && !wasLocked) {
@@ -723,121 +739,125 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     width: 250,
                     child: SafeArea(child: _buildClassicNavigationMenu()),
                   ),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.sizeOf(context).height * 0.42,
-                    ),
-                    child: SingleChildScrollView(
-                      child: _buildTopSynchronizedHeader(viewport.maxWidth),
-                    ),
-                  ),
-                  if (_statusBanner != null)
-                    Container(
-                      width: double.infinity,
-                      color: ClassicTheme.of(context).surfaceAlternate,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
+            body: MatchInteractionOverlay(
+              interaction: _buildMatchInteraction(),
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.42,
                       ),
-                      child: Row(
-                        children: [
-                          Text(
-                            '[!]',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: ClassicTheme.of(context).accent,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              _statusBanner!,
+                      child: SingleChildScrollView(
+                        child: _buildTopSynchronizedHeader(viewport.maxWidth),
+                      ),
+                    ),
+                    if (_statusBanner != null)
+                      Container(
+                        width: double.infinity,
+                        color: ClassicTheme.of(context).surfaceAlternate,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '[!]',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: ClassicTheme.of(context).textPrimary,
+                                fontWeight: FontWeight.bold,
+                                color: ClassicTheme.of(context).accent,
                               ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () => setState(() => _statusBanner = null),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
+                            const SizedBox(width: 8),
+                            Expanded(
                               child: Text(
-                                '[X]',
+                                _statusBanner!,
                                 style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                  color: ClassicTheme.of(context).accent,
+                                  fontSize: 12,
+                                  color: ClassicTheme.of(context).textPrimary,
                                 ),
                               ),
+                            ),
+                            InkWell(
+                              onTap: () => setState(() => _statusBanner = null),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
+                                child: Text(
+                                  '[X]',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: ClassicTheme.of(context).accent,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    if ((_snapshot?['roundState'] == 'PREPARING' ||
+                            _snapshot?['roundState'] == 'ALL_READY') &&
+                        ((_snapshot?['readyCounter']?['participants']
+                                    as List? ??
+                                [])
+                            .any(
+                              (p) =>
+                                  p['coachId'] == _coachId &&
+                                  p['isReady'] == true,
+                            )))
+                      Container(
+                        key: const Key('ready-waiting-panel'),
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(8),
+                        color: ClassicTheme.of(context).surfaceAlternate,
+                        child: Text(
+                          _isUnemployed
+                              ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+                              : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                          style: TextStyle(
+                            color: ClassicTheme.of(context).accent,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    if ((_showMatchView || _matchLocked) &&
+                        viewport.maxWidth >= 768)
+                      LiveMatchNavigation(
+                        locked: _matchLocked,
+                        onSelected: (idx) {
+                          if (idx == -1) {
+                            _navigation.navigate('/partida');
+                          } else {
+                            _navigateToTab(idx);
+                          }
+                        },
+                        switchRoom: _matchLocked ? null : _switchRoom,
+                      ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (desktop && !_showMatchView && !_matchLocked)
+                            _buildClassicNavigationMenu(),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                if (!_matchLocked && !_showMatchView)
+                                  _buildClubSummaryStrip(viewport.maxWidth),
+                                Expanded(child: _buildActiveScreenBody()),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  if ((_snapshot?['roundState'] == 'PREPARING' ||
-                          _snapshot?['roundState'] == 'ALL_READY') &&
-                      ((_snapshot?['readyCounter']?['participants'] as List? ??
-                              [])
-                          .any(
-                            (p) =>
-                                p['coachId'] == _coachId &&
-                                p['isReady'] == true,
-                          )))
-                    Container(
-                      key: const Key('ready-waiting-panel'),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(8),
-                      color: ClassicTheme.of(context).surfaceAlternate,
-                      child: Text(
-                        _isUnemployed
-                            ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
-                            : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  if ((_showMatchView || _matchLocked) &&
-                      viewport.maxWidth >= 768)
-                    LiveMatchNavigation(
-                      locked: _matchLocked,
-                      onSelected: (idx) {
-                        if (idx == -1) {
-                          _navigation.navigate('/partida');
-                        } else {
-                          _navigateToTab(idx);
-                        }
-                      },
-                      switchRoom: _matchLocked ? null : _switchRoom,
-                    ),
-                  Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (desktop && !_showMatchView && !_matchLocked)
-                          _buildClassicNavigationMenu(),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              if (!_matchLocked && !_showMatchView)
-                                _buildClubSummaryStrip(viewport.maxWidth),
-                              Expanded(child: _buildActiveScreenBody()),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -1162,7 +1182,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     } else if (pause != null) {
       action = ElevatedButton(
-        key: const Key('btn-confirmar-continuar'),
+        key: const Key('btn-header-confirmar-continuar'),
         onPressed: _commandBusy
             ? null
             : () => _runUiCommand(_handleConfirmContinue),
@@ -1176,7 +1196,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         onPressed: _commandBusy
             ? null
             : () => _runUiCommand(_handleRequestGlobalPause),
-        child: const Text('PEDIR PARADA'),
+        child: const Text('SUBSTITUIR'),
       );
     } else {
       action = const Text('TEMPORADA ENCERRADA');
@@ -2283,6 +2303,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     String roundState,
     Map<String, dynamic>? pauseWindow,
   ) {
+    if (_snapshot?['pendingPenalty'] != null) {
+      return 'PÊNALTI • RELÓGIO PARADO';
+    }
     if (roundState == 'RUNNING_FIRST_HALF' ||
         roundState == 'RUNNING_SECOND_HALF' ||
         roundState == 'RUNNING_EXTRA_TIME') {
@@ -2342,10 +2365,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             coachClubId: _myClubId,
             selection: _liveSelection,
             onSelectionChanged: _saveSession,
-            coachControls: pause != null && mine != null
-                ? _buildInMatchSubstitutionPanel(
-                    Map<String, dynamic>.from(mine),
-                  )
+            onSubstitute:
+                mine != null &&
+                    mine['isFinished'] != true &&
+                    snap['pendingPenalty'] == null &&
+                    !_commandBusy &&
+                    '${snap['roundState']}'.startsWith('RUNNING_')
+                ? () => _runUiCommand(_handleRequestGlobalPause)
                 : null,
           ),
         ),
@@ -2353,328 +2379,92 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     );
   }
 
-  Widget _buildInMatchSubstitutionPanel(Map<String, dynamic> myMatch) {
-    final isHome = myMatch['homeClubId']?.toString() == _myClubId;
-    final starters =
-        (isHome ? myMatch['homeStarters'] : myMatch['awayStarters'])
-            as List<dynamic>? ??
-        [];
-    final bench =
-        (isHome ? myMatch['homeBench'] : myMatch['awayBench'])
-            as List<dynamic>? ??
-        [];
-    final currentForm =
-        (isHome ? myMatch['homeFormation'] : myMatch['awayFormation'])
-            ?.toString() ??
-        '4-4-2';
-    final usedSubs =
-        (isHome ? myMatch['homeSubCount'] : myMatch['awaySubCount']) as int? ??
-        0;
-    final maxSubs =
-        (isHome ? myMatch['homeMaxSubs'] : myMatch['awayMaxSubs']) as int? ?? 5;
-    final remainingSubs = max(0, maxSubs - usedSubs);
-    final usedWins = isHome
-        ? myMatch['homePauseWindowsUsed']
-        : myMatch['awayPauseWindowsUsed'];
-    final maxWins = isHome
-        ? myMatch['homeMaxPauseWindows']
-        : myMatch['awayMaxPauseWindows'];
-
-    final validOutId =
-        starters.any(
-          (p) =>
-              p['isSentOff'] != true &&
-              p['playerId'].toString() == _subPlayerOutId,
+  Widget? _buildMatchInteraction() {
+    final penalty = _snapshot?['pendingPenalty'];
+    if (penalty is Map) {
+      final value = Map<String, dynamic>.from(penalty);
+      return PenaltyChoiceDialog(
+        key: ValueKey('penalty-${value['decisionId']}'),
+        penalty: value,
+        choosing: value['coachId'] == _coachId,
+        busy: _commandBusy,
+        notice: _matchInteractionNotice,
+        onShoot: (player) => _runUiCommand(() async {
+          try {
+            final snap = await widget.apiClient.choosePenaltyTaker(
+              _worldId!,
+              _coachId!,
+              '${value['decisionId']}',
+              player,
+            );
+            if (mounted) setState(() => _snapshot = _acceptSnapshot(snap));
+          } catch (e) {
+            if (mounted) setState(() => _matchInteractionNotice = '$e');
+            rethrow;
+          }
+        }),
+      );
+    }
+    final pauseRaw = _snapshot?['activePauseWindow'];
+    if (pauseRaw is! Map) return null;
+    final pause = Map<String, dynamic>.from(pauseRaw);
+    final mine = (_snapshot?['matches'] as List? ?? [])
+        .whereType<Map>()
+        .where(
+          (m) => m['homeClubId'] == _myClubId || m['awayClubId'] == _myClubId,
         )
-        ? _subPlayerOutId
-        : null;
-    final validInId =
-        bench.any((p) => p['playerId'].toString() == _subPlayerInId)
-        ? _subPlayerInId
-        : null;
-
-    return Container(
-      key: const ValueKey('in-match-substitution-panel'),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surfaceAlternate,
-        border: Border.all(
-          color: ClassicTheme.of(context).selectedBackground,
-          width: 2,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'PAINEL DE SUBSTITUIÇÕES E TÁTICA EM JOGO — SUBS: $usedSubs/$maxSubs (RESTANTES: $remainingSubs) | PARADAS: $usedWins/$maxWins',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
+        .firstOrNull;
+    final confirmed = (pause['confirmedCoachIds'] as List? ?? []).contains(
+      _coachId,
+    );
+    final child = mine == null || mine['isFinished'] == true
+        ? PauseWaitingContent(
+            pause: pause,
+            confirmed: confirmed,
+            busy: _commandBusy,
+            onContinue: () => _runUiCommand(_handleConfirmContinue),
+          )
+        : SubstitutionChoicePanel(
+            key: ValueKey(
+              'substitution-${pause['pauseWindowId'] ?? '${_snapshot?['roundNumber']}-${pause['minute']}-${_snapshot?['roundState']}'}',
             ),
-          ),
-          const SizedBox(height: 8),
-          Wrap(
-            spacing: 12,
-            runSpacing: 8,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              DropdownButton<String>(
-                key: const ValueKey('in-match-formation-dropdown'),
-                dropdownColor: ClassicTheme.of(context).surface,
-                icon: _classicDropdownIcon(context),
-                value:
-                    availableFormations.contains(
-                      _inMatchFormation ?? currentForm,
-                    )
-                    ? (_inMatchFormation ?? currentForm)
-                    : '4-4-2',
-                items: availableFormations
-                    .map(
-                      (f) => DropdownMenuItem(
-                        value: f,
-                        child: Text('Formação: $f'),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (v) => setState(() => _inMatchFormation = v),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 230),
-                child: DropdownButton<String>(
-                  key: const ValueKey('in-match-sub-out-dropdown'),
-                  isExpanded: true,
-                  dropdownColor: ClassicTheme.of(context).surface,
-                  icon: _classicDropdownIcon(context),
-                  hint: const Text('Sai (Em campo)'),
-                  value: validOutId,
-                  items: starters
-                      .where((p) => p['isSentOff'] != true)
-                      .map(
-                        (p) => DropdownMenuItem(
-                          value: p['playerId'].toString(),
-                          child: Text(
-                            'Sai: ${p['displayName']} (F:${p['strength']})',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (v) => setState(() => _subPlayerOutId = v),
-                ),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 230),
-                child: DropdownButton<String>(
-                  key: const ValueKey('in-match-sub-in-dropdown'),
-                  isExpanded: true,
-                  dropdownColor: ClassicTheme.of(context).surface,
-                  icon: _classicDropdownIcon(context),
-                  hint: const Text('Entra (Banco)'),
-                  value: validInId,
-                  items: bench
-                      .map(
-                        (p) => DropdownMenuItem(
-                          value: p['playerId'].toString(),
-                          child: Text(
-                            'Entra: ${p['displayName']} (F:${p['strength']})',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (v) => setState(() => _subPlayerInId = v),
-                ),
-              ),
-              ElevatedButton(
-                key: const ValueKey('btn-aplicar-ajuste-janela'),
-                onPressed: _commandBusy
-                    ? null
-                    : () => _runUiCommand(() async {
-                        final subs = <Map<String, String>>[];
-                        if (validOutId != null && validInId != null) {
-                          if (remainingSubs <= 0) {
-                            setState(
-                              () => _statusBanner =
-                                  'Limite de substituições ($maxSubs) já atingido nesta partida.',
-                            );
-                            return;
-                          }
-                          subs.add({
-                            'playerOutId': validOutId,
-                            'playerInId': validInId,
-                          });
-                        }
-                        final snap = await widget.apiClient
-                            .submitInMatchAdjustments(
-                              worldId: _worldId!,
-                              coachId: _coachId!,
-                              matchId: myMatch['matchId'].toString(),
-                              newFormation: _inMatchFormation,
-                              substitutions: subs,
-                            );
-                        setState(() {
-                          _snapshot = _acceptSnapshot(snap);
-                          _subPlayerOutId = null;
-                          _subPlayerInId = null;
-                          _statusBanner =
-                              'Ajustes aplicados com sucesso para o próximo minuto!';
-                        });
-                      }),
-                child: const Text('APLICAR AJUSTE NA JANELA'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          // Interactive lists of Starters on Pitch & Bench Reserves
-          Wrap(
-            spacing: 12,
-            runSpacing: 8,
-            children: [
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width < 700
-                    ? double.infinity
-                    : 410,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(color: ClassicTheme.of(context).border),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'EM CAMPO (TOQUE PARA SELECIONAR QUEM SAI)',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 4,
-                        children: starters.map((p) {
-                          final pid = p['playerId'].toString();
-                          final sentOff = p['isSentOff'] == true;
-                          final selected = validOutId == pid;
-                          return InkWell(
-                            key: ValueKey('sub-select-out-$pid'),
-                            onTap: sentOff
-                                ? null
-                                : () => setState(() => _subPlayerOutId = pid),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: selected
-                                    ? ClassicTheme.of(
-                                        context,
-                                      ).selectedBackground
-                                    : (sentOff
-                                          ? Colors.red.shade900
-                                          : ClassicTheme.of(context).surface),
-                                border: Border.all(
-                                  color: selected
-                                      ? ClassicTheme.of(context).textPrimary
-                                      : ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: Text(
-                                '[${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})${sentOff ? " [EXP]" : ""}',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: selected
-                                      ? ClassicTheme.of(context).selectedText
-                                      : ClassicTheme.of(context).textPrimary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width < 700
-                    ? double.infinity
-                    : 410,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(color: ClassicTheme.of(context).border),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'RESERVAS (TOQUE PARA SELECIONAR QUEM ENTRA)',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 4,
-                        children: bench.map((p) {
-                          final pid = p['playerId'].toString();
-                          final selected = validInId == pid;
-                          return InkWell(
-                            key: ValueKey('sub-select-in-$pid'),
-                            onTap: () => setState(() => _subPlayerInId = pid),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: selected
-                                    ? ClassicTheme.of(
-                                        context,
-                                      ).selectedBackground
-                                    : ClassicTheme.of(context).surface,
-                                border: Border.all(
-                                  color: selected
-                                      ? ClassicTheme.of(context).textPrimary
-                                      : ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: Text(
-                                '[${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: selected
-                                      ? ClassicTheme.of(context).selectedText
-                                      : ClassicTheme.of(context).textPrimary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+            match: Map<String, dynamic>.from(mine),
+            pause: pause,
+            coachId: _coachId!,
+            isHome: mine['homeClubId'] == _myClubId,
+            busy: _commandBusy,
+            confirmed: confirmed,
+            notice: _matchInteractionNotice,
+            formations: availableFormations,
+            onContinue: () => _runUiCommand(_handleConfirmContinue),
+            onApply: (formation, subs) => _runUiCommand(() async {
+              try {
+                final snap = await widget.apiClient.submitInMatchAdjustments(
+                  worldId: _worldId!,
+                  coachId: _coachId!,
+                  matchId: '${mine['matchId']}',
+                  newFormation: formation,
+                  substitutions: subs,
+                );
+                if (mounted) {
+                  setState(() {
+                    _snapshot = _acceptSnapshot(snap);
+                    _matchInteractionNotice =
+                        'Alterações registradas. Clique em Continuar quando terminar.';
+                  });
+                }
+              } catch (e) {
+                if (mounted) setState(() => _matchInteractionNotice = '$e');
+                rethrow;
+              }
+            }),
+          );
+    return ClassicMatchActionDialog(
+      key: const Key('shared-substitution-dialog'),
+      caption: pause['pauseType'] == 'GLOBAL_PAUSED'
+          ? 'SUBSTITUIÇÕES • ${pause['minute'] ?? _snapshot?['currentMinute']}\''
+          : 'INTERVALO — SUBSTITUIÇÕES',
+      child: child,
     );
   }
 

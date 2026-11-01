@@ -57,7 +57,7 @@ public class VoluntaryAuctionIntegrationTests
                 var snap=(await client.GetFromJsonAsync<LiveRoundSnapshotDto>($"/api/worlds/{w.Id}/snapshot"))!;if(snap.RoundState==RoundState.RESULTS)break;
                 Assert.False(a.IsClosed); // No partial game completion can end the global auction.
                 if(snap.ActivePauseWindow!=null)foreach(var coach in new[]{owner,bidder})Assert.True((await client.PostAsJsonAsync($"/api/worlds/{w.Id}/continue",new ConfirmContinueMatchCommand(w.Id,coach.Id,$"continue-{round}-{step}-{coach.Id}"))).IsSuccessStatusCode);
-                else Assert.True((await client.PostAsync($"/api/worlds/{w.Id}/tick?ticks=125",null)).IsSuccessStatusCode);
+                else Assert.True((await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client,w.Id,125)).IsSuccessStatusCode);
             }
             Assert.Equal(RoundState.RESULTS,w.RoundState);Assert.Equal(round==8,a.IsClosed);
             if(round==7){Assert.Equal(owner.CurrentClubId,p.ClubId);Assert.True((await client.PostAsync($"/api/worlds/{w.Id}/next-round",null)).IsSuccessStatusCode);Assert.False(a.IsClosed);}
