@@ -30,9 +30,9 @@ A interface funcional foi implementada e todas as regressões passaram. A missã
 | MATCH_SCREEN_LOCK | Preservado; novo teste encontrou e corrigiu drawer aberto no início; testes aprovados, confirmação visual final pendente |
 | PRE_SAVE_EDITOR_PRESERVED | Código do editor/criador preservado; regressão completa aprovada; nenhuma aba reintroduzida |
 | DESKTOP_RESPONSIVE | Testes 1024/1440/1920 aprovados; inspeção real 1440 feita; demais capturas pendentes |
-| MOBILE_RESPONSIVE | Testes 360/390/768 aprovados; inspeção real final pendente |
+| MOBILE_RESPONSIVE | Novo layout conforme referência; testes adicionais 320/360/390/430/600 aprovados; prévias Flutter inspecionadas; Chrome final pendente |
 | DOTNET_TESTS | PASS — 640/640 (7 Application, 409 Domain, 198 Integration, 26 Simulation), zero ignorados; build zero erros/avisos |
-| FLUTTER_TESTS | PASS — 173/173, zero issues no analyze; build Web final aprovada |
+| FLUTTER_TESTS | PASS — 180/180 na revisão mobile; analyzer e build registrados em evidence-015b-mobile/validation.json |
 | NODE_TESTS | PASS — 2/2 |
 | REAL_BROWSER_TEST | PARTIAL — API + PostgreSQL DEV reais e inspeção desktop; continuação impedida pelo navegador desabilitado |
 | VISUAL_COMPARISON | PARTIAL — diferenças registradas; auditoria completa final pendente |
@@ -63,3 +63,11 @@ Os serviços da 015B ficam ativos para revisão. A 015A continua nas portas 5165
 Corrigidos os controles de formação para ajustar a escalação e reorganizar o campo conforme o esquema escolhido. Novo teste de 5-3-2 passou em 390/1440 px; cinco casos novos elevam a regressão Flutter a 173/173. API real confirmou persistência, início 1/1 e conclusão oficial em sala QA separada.
 
 Para teste individual do proprietário, usar **015B - Teste individual Daniel / ELIC18AA38C**, com Daniel 015B e dispositivo 015b-daniel, Flamengo RJ, preparação R3 e contador 0/1. A sala anterior ELI115608A3 continua preservada com três treinadores e por isso aguarda 3/3. Ver PLAYTEST_FORMATION_SOLO_FIX_015B.md. STATUS global permanece PARTIAL pela auditoria visual final pendente.
+
+## Adendo mobile conforme a referência
+
+O pedido posterior do proprietário foi implementado em MOBILE_REFERENCE_LAYOUT_015B.md. Abaixo de 768 px, clube e indicadores ficam em painel claro; Plantel exibe resumo, titulares, banco e elenco; o campo fica em Táticas. A barra inferior fixa abre cinco destinos e Mais mantém os demais menus. A moral continua somente em barra, com o valor/faixa usados pelo desktop.
+
+A regressão Flutter completa passou 180/180. Sete casos novos cobrem navegação, fichas, filtros, salário contratado, leilões, moral e bloqueio ao vivo; o caso de filtros também verifica o reinício de rolagem ao abrir Táticas. O aviso de equipe com dez aptos permaneceu coberto pelo teste 012C original. Analyzer/build e os hashes das prévias constam em evidence-015b-mobile/validation.json; runtime em runtime-health.json.
+
+A sala individual do proprietário foi somente consultada para registrar a cena; a leitura encontrou preparação R5. Não foi reiniciada nem avançada por esta alteração. As imagens novas são renderizações Flutter de respostas GET reais, identificadas como tal. A auditoria Chrome continua PARTIAL pelo navegador desabilitado nas configurações do Work. Nenhuma aprovação manual foi atribuída ao proprietário.

@@ -38,3 +38,11 @@ A suíte .NET completa inclui os cenários longos anteriores de 100 temporadas, 
 Zero violações de escalação, limite de elenco e dupla liquidação nos resumos econômicos. O cenário 012D verificou 5.059.273 contratos preservados, juros cobrados de R$ 6.200.000, pagos de R$ 3.429.895,32 e principal pago de R$ 1.000.000. Nenhuma fórmula foi modificada para obter esses resultados. SourceCheckpoint nos JSON é metadado histórico do cenário; a execução ocorreu na 015B.
 
 Os quatro TRX e relatórios integrais permanecem em artifacts/015b. Resumos e nomes dos 640 testes estão versionados em docs/evidence-015b. A auditoria real de interface tem seu próprio estado, separado do sucesso da regressão automatizada.
+
+## Revisão mobile solicitada pelo proprietário
+
+A regressão Flutter completa foi repetida após o layout mobile e passou 180/180. Os 173 casos existentes foram mantidos; sete casos adicionais verificam as larguras 320/360/390/430/600, dados da moral, navegação inferior, ficha, filtros, salário contratado, leilão, retorno ao início ao abrir Táticas e bloqueio do drawer durante a partida. O helper de entrada passou a revelar o botão na área rolável antes de clicar. As verificações de formação agora abrem Táticas no celular, e os testes de tema verificam o painel mobile correspondente.
+
+O teste de inferioridade 012C continuou inalterado e passou com dez jogadores aptos em 390/1280 px. O renderer adicional em tool/mobile_reference_capture_015b_test.dart passou e produziu sete PNG de respostas GET da API real. Ele é executado separadamente da suíte de 180, não substitui Chrome e não muda saves. Testes/analyzer/build desta revisão ficam em artifacts/015b/mobile-*.log; manifesto versionado em evidence-015b-mobile/validation.json.
+
+Não houve mudança de backend nesta revisão; os 640 testes .NET, dois Node e cenários de 100 temporadas acima são resultados da regressão anterior, não uma nova execução atribuída à revisão mobile.

@@ -88,6 +88,70 @@ class AppHeader extends StatelessWidget {
             ),
           ],
         );
+        if (c.maxWidth < 768) {
+          return Container(
+            key: const Key('classic-app-header'),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            decoration: BoxDecoration(
+              gradient: t.panelGradient,
+              border: Border(bottom: BorderSide(color: t.accent)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: brand,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 5,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: t.border),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      child: Text(
+                        date,
+                        style: TextStyle(
+                          color: t.textPrimary,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 116),
+                      child: DefaultTextStyle.merge(
+                        style: const TextStyle(fontSize: 10),
+                        child: action,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  round,
+                  key: const Key('classic-header-round'),
+                  maxLines: 2,
+                  style: TextStyle(
+                    color: t.textPrimary,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
         final info = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

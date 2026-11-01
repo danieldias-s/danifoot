@@ -370,7 +370,14 @@ void main() {
         expect(api.prefs.values.single['mode'], 'Classic');
         await tester.pageBack();
         await tester.pumpAndSettle();
-        expect(find.byKey(const ValueKey('coach-main-panel')), findsOneWidget);
+        expect(
+          find.byKey(
+            width < 768
+                ? const Key('mobile-squad-screen')
+                : const ValueKey('coach-main-panel'),
+          ),
+          findsOneWidget,
+        );
         expect(tester.takeException(), isNull);
       },
     );

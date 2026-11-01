@@ -41,6 +41,10 @@ void main() {
         addTearDown(() => tester.binding.setSurfaceSize(null));
         final api = OneHumanFormationApi();
         await join(tester, api);
+        if (width < 768) {
+          await tester.tap(find.byKey(const Key('mobile-nav-1')));
+          await tester.pumpAndSettle();
+        }
         final before = tester
             .widget<ClassicTacticalPitch>(find.byType(ClassicTacticalPitch))
             .lines

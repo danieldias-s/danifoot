@@ -12,6 +12,7 @@ import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
+import 'mobile_classic.dart';
 import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
@@ -209,6 +210,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   // Editor state
 
   final _shellScaffoldKey = GlobalKey<ScaffoldState>();
+  bool _mobileTacticsView = false;
   int _activeTabIndex = 0;
   bool _showMatchView = false;
   final _roundView = RoundViewCoordinator();
@@ -680,6 +682,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           canPop: !_matchLocked,
           child: Scaffold(
             key: _shellScaffoldKey,
+            drawerEnableOpenDragGesture: !_matchLocked,
+            bottomNavigationBar: viewport.maxWidth < 768
+                ? MobileClassicNavigation(
+                    selected: _showMatchView
+                        ? -1
+                        : _activeTabIndex == 0
+                        ? (_mobileTacticsView ? 1 : 0)
+                        : _activeTabIndex == 2
+                        ? 2
+                        : _activeTabIndex == 1
+                        ? 3
+                        : 4,
+                    locked: _matchLocked,
+                    onSelected: _navigateMobile,
+                  )
+                : null,
             drawer: desktop
                 ? null
                 : Drawer(
@@ -694,7 +712,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       maxHeight: MediaQuery.sizeOf(context).height * 0.42,
                     ),
                     child: SingleChildScrollView(
-                      child: _buildTopSynchronizedHeader(),
+                      child: _buildTopSynchronizedHeader(viewport.maxWidth),
                     ),
                   ),
                   if (_statusBanner != null)
@@ -778,7 +796,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           child: Column(
                             children: [
                               if (!_matchLocked && !_showMatchView)
-                                _buildClubSummaryStrip(),
+                                _buildClubSummaryStrip(viewport.maxWidth),
                               Expanded(child: _buildActiveScreenBody()),
                             ],
                           ),
@@ -1056,7 +1074,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   /// Persistent Top Header:
   /// Shows `TÁTICAS ENVIADAS: X/N` + names in preparation, and `MINUTO XX'`, `SUBSTITUIÇÕES X/5`, `PARADAS X/3`, `PEDIR PARADA` in match!
-  Widget _buildTopSynchronizedHeader() {
+  Widget _buildTopSynchronizedHeader(double viewportWidth) {
     final snap = _snapshot;
     final state = snap?['roundState']?.toString() ?? 'PREPARING';
     final people = snap?['readyCounter']?['participants'] as List? ?? [];
@@ -1139,7 +1157,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           date: formatClassicDate(snap?['gameDate']),
           world: snap?['worldName']?.toString() ?? '',
           action: action,
-          openMenu: MediaQuery.sizeOf(context).width < 1024 && !_matchLocked
+          openMenu:
+              viewportWidth >= 768 && viewportWidth < 1024 && !_matchLocked
               ? () => _shellScaffoldKey.currentState?.openDrawer()
               : null,
         ),
@@ -1264,7 +1283,62 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           },
   );
 
-  Widget _buildClubSummaryStrip() {
+  void _navigateMobile(int destination) {
+    if (_matchLocked) return;
+    if (destination == 4) {
+      _shellScaffoldKey.currentState?.openDrawer();
+      return;
+    }
+    if (destination == 0 || destination == 1) {
+      setState(() => _mobileTacticsView = destination == 1);
+      _navigateToTab(0);
+    } else {
+      _navigateToTab(destination == 2 ? 2 : 1);
+    }
+  }
+
+  void _toggleSquadPlayer(Map<String, dynamic> player) {
+    final pid = '${player['id']}';
+    if (_tacticsLocked ||
+        (player['injuryDaysRemaining'] as num? ?? 0) > 0 ||
+        (player['injuryRoundsRemaining'] as num? ?? 0) > 0 ||
+        (player['suspensionRoundsRemaining'] as num? ?? 0) > 0) {
+      return;
+    }
+    setState(() {
+      if (_selectedStarterIds.contains(pid)) {
+        _selectedStarterIds.remove(pid);
+        if (_selectedBenchIds.length < 9) _selectedBenchIds.add(pid);
+      } else if (_selectedBenchIds.contains(pid)) {
+        _selectedBenchIds.remove(pid);
+      } else if (_selectedStarterIds.length < 11) {
+        _selectedStarterIds.add(pid);
+      } else if (_selectedBenchIds.length < 9) {
+        _selectedBenchIds.add(pid);
+      }
+    });
+  }
+
+  void _renewSquadPlayer(Map<String, dynamic> player) {
+    if (_commandBusy || _matchLocked) return;
+    _runUiCommand(() async {
+      await widget.apiClient.renewPlayerContract(
+        _worldId!,
+        '${player['id']}',
+        _coachId!,
+        15,
+      );
+      await _refreshClubAndSecondaryData();
+      if (mounted) {
+        setState(
+          () => _statusBanner =
+              'Contrato de ${player['displayName']} renovado (+15 rodadas).',
+        );
+      }
+    });
+  }
+
+  Widget _buildClubSummaryStrip(double viewportWidth) {
     final club = _myClubDetail;
     final round = (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1;
     final next = _calendar
@@ -1277,6 +1351,29 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final fixture = (next?['fixtures'] as List? ?? [])
         .where((f) => f['home'] == club?['name'] || f['away'] == club?['name'])
         .firstOrNull;
+    if (viewportWidth < 768) {
+      final people = _snapshot?['readyCounter']?['participants'] as List? ?? [];
+      final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+      return MobileClubOverview(
+        club: club?['name']?.toString() ?? 'TREINADOR SEM CLUBE',
+        coach: _nickname,
+        division: club?['divisionDisplay']?.toString() ?? 'Sem divisão',
+        standing:
+            'Posição: ${_standings.where((s) => s['clubId'] == _myClubId).firstOrNull?['position'] ?? '—'}',
+        cash: club?['cashBalance'] is num
+            ? formatClassicMoney(club!['cashBalance'])
+            : '—',
+        opponent: fixture == null
+            ? 'A definir'
+            : '${fixture['home'] == club?['name'] ? fixture['away'] : fixture['home']} • R${next?['roundNumber']}',
+        morale: (me?['morale'] ?? _invitationsData?['morale'] ?? 70) as num,
+        moraleBand:
+            (me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE')
+                .toString(),
+        primary: _clubColor(club?['colorPalette'], 'primaryColor'),
+        secondary: _clubColor(club?['colorPalette'], 'secondaryColor'),
+      );
+    }
     final cards = <Widget>[
       ClassicSummaryCard(
         icon: Icons.shield_outlined,
@@ -1546,24 +1643,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 key: ValueKey('toggle-role-$pid'),
                 onTap: (_tacticsLocked || inj > 0 || susp > 0)
                     ? null
-                    : () {
-                        setState(() {
-                          if (isStarter) {
-                            _selectedStarterIds.remove(pid);
-                            if (_selectedBenchIds.length < 9) {
-                              _selectedBenchIds.add(pid);
-                            }
-                          } else if (isBench) {
-                            _selectedBenchIds.remove(pid);
-                          } else {
-                            if (_selectedStarterIds.length < 11) {
-                              _selectedStarterIds.add(pid);
-                            } else if (_selectedBenchIds.length < 9) {
-                              _selectedBenchIds.add(pid);
-                            }
-                          }
-                        });
-                      },
+                    : () => _toggleSquadPlayer(
+                        Map<String, dynamic>.from(p as Map),
+                      ),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 6,
@@ -1941,6 +2023,42 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     ];
     return LayoutBuilder(
       builder: (context, viewport) {
+        if (viewport.maxWidth < 768) {
+          return MobileSquadScreen(
+            squad: squad
+                .map((p) => Map<String, dynamic>.from(p as Map))
+                .toList(),
+            filteredSquad: filteredSquad
+                .map((p) => Map<String, dynamic>.from(p as Map))
+                .toList(),
+            starters: _selectedStarterIds,
+            bench: _selectedBenchIds,
+            formations: availableFormations,
+            formation: _selectedFormation,
+            requiredStarterCount:
+                (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11,
+            locked: _tacticsLocked,
+            busy: _commandBusy,
+            tactics: _mobileTacticsView,
+            canManage:
+                !_matchLocked &&
+                (!_tacticsLocked || _snapshot?['roundState'] == 'RESULTS'),
+            onFormation: _changeFormation,
+            onAutoPick: _autoPickBestLineup,
+            onDetail: _showPlayerDetailDialog,
+            onToggle: _toggleSquadPlayer,
+            onRenew: _renewSquadPlayer,
+            onAnnounce: (p) => _announceSquadPlayer(p, direct: true),
+            onAuction: _announceSquadPlayer,
+            onTab: _navigateMobile,
+            field: AbsorbPointer(
+              absorbing: _tacticsLocked,
+              child: _buildTacticalFieldPreview(squad),
+            ),
+            filters: squadFilters,
+            coachPanel: _buildCoachMainPanel(),
+          );
+        }
         final tactical = Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

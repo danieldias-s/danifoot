@@ -157,7 +157,11 @@ void main() {
               ).scaffoldBackgroundColor;
           expect(hue(bg), inInclusiveRange(90, 180));
           expect(
-            find.byKey(const ValueKey('coach-main-panel')),
+            find.byKey(
+              width < 768
+                  ? const Key('mobile-squad-screen')
+                  : const ValueKey('coach-main-panel'),
+            ),
             findsOneWidget,
           );
           expect(tester.takeException(), isNull);
