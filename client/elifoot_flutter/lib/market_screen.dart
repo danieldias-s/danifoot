@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'auction_config.dart';
 import 'club_theme.dart';
+import 'classic_layout.dart';
 
 String marketPosition(dynamic position) => position is num
     ? const ['G', 'D', 'M', 'A'][position.toInt().clamp(0, 3)]
@@ -386,14 +387,9 @@ class _MarketScreenState extends State<MarketScreen> {
     }
   }
 
-  Widget _panel(Widget child) => Container(
-    margin: const EdgeInsets.only(bottom: 8),
-    padding: const EdgeInsets.all(10),
-    decoration: BoxDecoration(
-      color: ClassicTheme.of(context).surface,
-      border: Border.all(color: ClassicTheme.of(context).border),
-    ),
-    child: child,
+  Widget _panel(Widget child) => Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: ClassicPanel(child: child),
   );
 
   @override
@@ -427,13 +423,10 @@ class _MarketScreenState extends State<MarketScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'MERCADO E LEILÃO',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
+          const ClassicPageHeader(
+            title: 'MERCADO E LEILÃO',
+            subtitle:
+                'Anuncie jogadores, acompanhe lances e negocie com os outros clubes.',
           ),
           const SizedBox(height: 8),
           if (!_safe) const Text('Mercado disponível somente entre partidas.'),
@@ -462,6 +455,18 @@ class _MarketScreenState extends State<MarketScreen> {
                     key: ValueKey('market-tab-${tab.$1}'),
                     label: Text(tab.$2),
                     selected: pref.tab == tab.$1,
+                    selectedColor: ClassicTheme.of(context).selectedBackground,
+                    backgroundColor: ClassicTheme.of(context).surface,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(3),
+                      side: BorderSide(color: ClassicTheme.of(context).border),
+                    ),
+                    labelStyle: TextStyle(
+                      color: pref.tab == tab.$1
+                          ? ClassicTheme.of(context).selectedText
+                          : ClassicTheme.of(context).textPrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
                     onSelected: (_) => setState(() {
                       pref.tab = tab.$1;
                       _message = null;

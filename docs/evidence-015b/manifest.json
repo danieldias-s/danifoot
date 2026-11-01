@@ -1,0 +1,155 @@
+{
+  "status": "PARTIAL",
+  "files": [
+    {
+      "file": "api-calendar.json",
+      "bytes": 101938,
+      "sha256": "49999e22194fc239e294084f2f1e9794204934c656804bcafe51f20cbb44240a"
+    },
+    {
+      "file": "api-cup.json",
+      "bytes": 37560,
+      "sha256": "89b2c59e737842dc7c899aa05edf071161981955a46d4d2851f57e40429c0df9"
+    },
+    {
+      "file": "api-market.json",
+      "bytes": 16336,
+      "sha256": "6e8412742a5c703a71cab349f414e641cc31ad4c767584aeef9380d544672b4e"
+    },
+    {
+      "file": "api-rankings.json",
+      "bytes": 87847,
+      "sha256": "adce5d3e7382fae7de3092f8de6292186011366b4f54b6d5e7b64094a88bc85b"
+    },
+    {
+      "file": "api-snapshot.json",
+      "bytes": 309483,
+      "sha256": "4922096a93bb93306b462f867f2f5673bdd42ffc72ff3680501aad8cb563df15"
+    },
+    {
+      "file": "api-standings.json",
+      "bytes": 3637,
+      "sha256": "a415b3bca417780e6267d5573e1bbc8b96807e09e3c005fd45e6849639060a02"
+    },
+    {
+      "file": "balance-100-summary.json",
+      "bytes": 920,
+      "sha256": "504e9a464dfabd83cf0d4f02ace5e17dc0086157500b976c159d33d2d65b96f3"
+    },
+    {
+      "file": "browser-build-health.json",
+      "bytes": 238,
+      "sha256": "32e2d5ca0155e36ed57e00710949b1cb8a30daafe5416ae8ddbe4849c895cab6"
+    },
+    {
+      "file": "desktop-1440-calendario.png",
+      "bytes": 154641,
+      "sha256": "ecf87b1cc6eaf4a34792db85da41f413d7ed0ad659b88349a998715dc8823094"
+    },
+    {
+      "file": "desktop-1440-calendario.txt",
+      "bytes": 8572,
+      "sha256": "0469af560159287a46d04d9b69c4da6fe296893ec8f8ddad0b0d145597ecce68"
+    },
+    {
+      "file": "desktop-1440-divisoes.png",
+      "bytes": 190631,
+      "sha256": "3e08f967d08bd7189a29c78c1c81dd2311b8c1cacc37806150d4833b60a62310"
+    },
+    {
+      "file": "desktop-1440-divisoes.txt",
+      "bytes": 50988,
+      "sha256": "d28711e97e5957cbe47a6776dd56e9a29d5dc7c9e2504c585c61b596983c1608"
+    },
+    {
+      "file": "desktop-1440-plantel.png",
+      "bytes": 233154,
+      "sha256": "bda57b5288819369f16826e7352577e3eaef76c95c3423743bb98c38fafb6ed2"
+    },
+    {
+      "file": "desktop-1440-plantel.txt",
+      "bytes": 16955,
+      "sha256": "573f115f091139e9c76fe2af3dfbdad2ad109e40c9fdc293304500fc3dff2442"
+    },
+    {
+      "file": "desktop-1440-quarta-divisao.png",
+      "bytes": 188884,
+      "sha256": "892a8776b7627c11eb5b091c00579daa5de8a5e8ada07473ca54c17abbd4de03"
+    },
+    {
+      "file": "desktop-1440-quarta-divisao.txt",
+      "bytes": 50897,
+      "sha256": "d41f2c763e460e990c171ca3be73decfcd0056103a13dd7d9357b6cdfb206c82"
+    },
+    {
+      "file": "dotnet-build.log.tail.txt",
+      "bytes": 2207,
+      "sha256": "bdb987b9be6f78242f1f31f4689186e71b22ac8a913ce4456bd49dcc909e6b27"
+    },
+    {
+      "file": "dotnet-test.log.tail.txt",
+      "bytes": 1965,
+      "sha256": "eab9467ed204e74b25f512eb8b861c6a873b3ea72b854de493e6cc797b518199"
+    },
+    {
+      "file": "drawer-transition-test.log.tail.txt",
+      "bytes": 1050,
+      "sha256": "e2a5d4a5b6b1f927d4fafa2472ae4724bfb4dc80a6338a73a98da22a3ba698b4"
+    },
+    {
+      "file": "economy-100-summary.json",
+      "bytes": 1379,
+      "sha256": "db36c12929d250c72d459c1fdc5f35673279d892f55a8ae3abc7a967a0a2bb43"
+    },
+    {
+      "file": "flutter-analyze.log.tail.txt",
+      "bytes": 841,
+      "sha256": "608460fd60057689d1dbed941703e74dd07648ff8adac156928f5a22d27f3712"
+    },
+    {
+      "file": "flutter-build-web.log.tail.txt",
+      "bytes": 1571,
+      "sha256": "52d07978553164fd1dfebe8a37fb1ffd79407988b045a0622916a397065c7045"
+    },
+    {
+      "file": "flutter-test-final.log.tail.txt",
+      "bytes": 4944,
+      "sha256": "d420fb4d65e02598012fc33ebce917b4854e0a10c57c01d0a8452b20e89e6003"
+    },
+    {
+      "file": "node-test.log.tail.txt",
+      "bytes": 254,
+      "sha256": "0853526e99310f7d3c945fe032f62b5d7955f5d4763bff01d2ac5f16cdd6b30a"
+    },
+    {
+      "file": "preservation.json",
+      "bytes": 916,
+      "sha256": "953c386a1e88c3a401ff633d64dd9a94b9042b57673acb419662135f4408c9ec"
+    },
+    {
+      "file": "README.md",
+      "bytes": 1481,
+      "sha256": "fda701be90e38b190de9d2dd3250a7dfbcb53046881e280cf9390027000143ec"
+    },
+    {
+      "file": "real-female-100-summary.json",
+      "bytes": 1043,
+      "sha256": "40af2f7985c12705770eaaadd5b177dfee45520f7eae409f2bc4b231ec242ea7"
+    },
+    {
+      "file": "real-male-100-summary.json",
+      "bytes": 1007,
+      "sha256": "663b4fedfa3b78a6c398147dd322941e331a68ac18a82232b08db63825f83a95"
+    },
+    {
+      "file": "regression-counts.json",
+      "bytes": 88730,
+      "sha256": "e885909b83a8dc093b50b4a2753694466519df2d3adc7f35c760a7567466358d"
+    },
+    {
+      "file": "review-room.json",
+      "bytes": 492,
+      "sha256": "86e3ec4a545e29214b42f4b19ca06b15bf5bdff78909e40c334aa1693e8b9642"
+    }
+  ]
+}

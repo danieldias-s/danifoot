@@ -1,0 +1,22 @@
+{
+  "worldId": "a580544f-f88e-41fd-89b4-d2e6c467ce42",
+  "worldName": "015B - Mercado e partidas",
+  "inviteCode": "ELI115608A3",
+  "participants": [
+    {
+      "nickname": "Daniel 015B",
+      "device": "015b-daniel",
+      "club": "Flamengo RJ"
+    },
+    {
+      "nickname": "Comprador 015B",
+      "device": "015b-comprador",
+      "club": "FC Porto"
+    },
+    {
+      "nickname": "Rival 015B",
+      "device": "015b-rival",
+      "club": "Arsenal FC"
+    }
+  ]
+}

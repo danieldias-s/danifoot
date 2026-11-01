@@ -1,0 +1,35 @@
+{
+  "backendSourceChanged": false,
+  "worktrees": [
+    {
+      "worktree": "D:/elifoot_98",
+      "head": "7a00bdd2dcf2f721ac32d14b2d195e3ea2aebf48",
+      "trackedChanges": 0
+    },
+    {
+      "worktree": "D:/elifoot_98_014B",
+      "head": "c0ff28ec510553385438f82dc652c23126bd7689",
+      "trackedChanges": 0
+    },
+    {
+      "worktree": "D:/elifoot_98_014C",
+      "head": "dd7b783e9ed8e299bd1d671fb0083449373cadbc",
+      "trackedChanges": 0
+    },
+    {
+      "worktree": "D:/elifoot_98_015A",
+      "head": "3595668d073cb29d710839288f84095db896cfa0",
+      "trackedChanges": 0
+    },
+    {
+      "worktree": "D:/elifoot_98_013A",
+      "head": "47608e9a674c0978c4be4b244de88d961876e197",
+      "trackedChanges": 0
+    },
+    {
+      "worktree": "D:/elifoot_98_integration",
+      "head": "3f12999e16ec0452b4d8889b20f4be18a4ca3f01",
+      "trackedChanges": 0
+    }
+  ]
+}

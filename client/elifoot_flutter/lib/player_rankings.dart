@@ -1,4 +1,5 @@
 import 'club_theme.dart';
+import 'classic_layout.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -1384,39 +1385,8 @@ class ClassicSectionTitle extends StatelessWidget {
   const ClassicSectionTitle({super.key, required this.title, this.subtitle});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surface,
-        border: Border(
-          left: BorderSide(
-            color: ClassicTheme.of(context).selectedBackground,
-            width: 3,
-          ),
-          top: BorderSide(color: ClassicTheme.of(context).border, width: 1),
-          right: BorderSide(color: ClassicTheme.of(context).border, width: 1),
-          bottom: BorderSide(color: ClassicTheme.of(context).border, width: 1),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: ClassicTheme.of(context).headingStyle),
-          if (subtitle != null) ...[
-            const SizedBox(height: 2),
-            Text(
-              subtitle!,
-              style: TextStyle(
-                fontSize: 11,
-                color: ClassicTheme.of(context).textSecondary,
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) =>
+      ClassicPageHeader(title: title, subtitle: subtitle);
 }
 
 /// Classic Elifoot 98 table section subheader.
@@ -1437,7 +1407,7 @@ class ClassicTableHeader extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surface,
+        gradient: ClassicTheme.of(context).panelGradient,
         border: Border.all(color: ClassicTheme.of(context).border),
       ),
       child: Column(
@@ -1511,7 +1481,7 @@ class ClassicFilter extends StatelessWidget {
         style: TextStyle(
           fontSize: 12,
           color: ClassicTheme.of(context).textPrimary,
-          fontFamily: 'monospace',
+          fontFamily: 'Roboto',
         ),
         decoration: InputDecoration(
           labelText: label,
@@ -1519,7 +1489,7 @@ class ClassicFilter extends StatelessWidget {
             color: ClassicTheme.of(context).accent,
             fontSize: 11,
             fontWeight: FontWeight.bold,
-            fontFamily: 'monospace',
+            fontFamily: 'Roboto',
           ),
           filled: true,
           fillColor: ClassicTheme.of(context).surface,
@@ -1560,7 +1530,7 @@ class ClassicFilter extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     color: ClassicTheme.of(context).textPrimary,
-                    fontFamily: 'monospace',
+                    fontFamily: 'Roboto',
                   ),
                 ),
               ),
@@ -1603,8 +1573,11 @@ class ClassicActionButton extends StatelessWidget {
       style: TextButton.styleFrom(
         foregroundColor: ClassicTheme.of(context).accent,
         backgroundColor: ClassicTheme.of(context).buttonBackground,
-        minimumSize: const Size(88, 38),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        minimumSize: Size(
+          72,
+          MediaQuery.sizeOf(context).width < 1024 ? 44 : 32,
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
           side: BorderSide(color: ClassicTheme.of(context).border, width: 1.2),
@@ -1639,7 +1612,7 @@ class ClassicActionButton extends StatelessWidget {
                 color: ClassicTheme.of(context).accent,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'monospace',
+                fontFamily: 'Roboto',
               ),
             ),
           ),
@@ -1660,11 +1633,79 @@ class PlayerStatItem {
 /// Classic compact statistic strip for player career KPIs.
 class PlayerStatisticRow extends StatelessWidget {
   final List<PlayerStatItem> items;
+  final bool dense;
 
-  const PlayerStatisticRow({super.key, required this.items});
+  const PlayerStatisticRow({
+    super.key,
+    required this.items,
+    this.dense = false,
+  });
 
   @override
   Widget build(BuildContext context) {
+    if (dense) {
+      const priority = {
+        'TREINADOR',
+        'DATA DO JOGO',
+        'TETO DE EVOLUÇÃO',
+        'PREPARAÇÃO',
+      };
+      Widget facts(Iterable<PlayerStatItem> values) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final item in values)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Text(
+                      item.label,
+                      style: TextStyle(
+                        fontSize: 9,
+                        color: ClassicTheme.of(context).textSecondary,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    flex: 7,
+                    child: Text(
+                      item.value,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: item.highlight
+                            ? ClassicTheme.of(context).accent
+                            : ClassicTheme.of(context).textPrimary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      );
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          facts(items.where((item) => priority.contains(item.label))),
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            dense: true,
+            title: const Text(
+              'MAIS INFORMAÇÕES DO TREINADOR',
+              style: TextStyle(fontSize: 10),
+            ),
+            children: [
+              facts(items.where((item) => !priority.contains(item.label))),
+            ],
+          ),
+        ],
+      );
+    }
     return Wrap(
       spacing: 8,
       runSpacing: 6,
@@ -1774,7 +1815,7 @@ class ClassicDialog extends StatelessWidget {
                     color: ClassicTheme.of(context).accent,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'monospace',
+                    fontFamily: 'Roboto',
                   ),
                 ),
               ),
@@ -1916,8 +1957,8 @@ class _ClassicTableState extends State<ClassicTable> {
             ? 156.0
             : 190.0;
 
-        const headingHeight = 38.0;
-        const rowHeight = 38.0;
+        final headingHeight = isMobile ? 38.0 : 34.0;
+        final rowHeight = isMobile ? 42.0 : 34.0;
 
         final columnSpacing = isMobile
             ? (isUltraNarrow ? 10.0 : 12.0)
@@ -1945,7 +1986,7 @@ class _ClassicTableState extends State<ClassicTable> {
         final tableWidget = DataTable(
           key: ValueKey(widget.tableKey),
           headingRowColor: WidgetStateProperty.all(
-            ClassicTheme.of(context).surface,
+            ClassicTheme.of(context).tableHeader,
           ),
           headingRowHeight: headingHeight,
           dataRowMinHeight: rowHeight,
@@ -1961,13 +2002,13 @@ class _ClassicTableState extends State<ClassicTable> {
           dataTextStyle: TextStyle(
             fontSize: isUltraNarrow ? 11 : 12,
             color: ClassicTheme.of(context).textPrimary,
-            fontFamily: 'monospace',
+            fontFamily: 'Roboto',
           ),
           headingTextStyle: TextStyle(
             fontSize: isUltraNarrow ? 10 : 11,
             fontWeight: FontWeight.bold,
             color: ClassicTheme.of(context).accent,
-            fontFamily: 'monospace',
+            fontFamily: 'Roboto',
           ),
           columns: widget.columns.asMap().entries.map((entry) {
             final idx = entry.key;
@@ -2091,7 +2132,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                 fontSize: compact ? 10 : 11,
                 fontWeight: FontWeight.bold,
                 color: ClassicTheme.of(context).accent,
-                fontFamily: 'monospace',
+                fontFamily: 'Roboto',
               ),
             ),
           ),
@@ -2132,7 +2173,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                             fontWeight: row.highlight
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            fontFamily: 'monospace',
+                            fontFamily: 'Roboto',
                           ),
                         ),
                       ),
@@ -2154,7 +2195,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                               decoration: row.onTap != null
                                   ? TextDecoration.underline
                                   : TextDecoration.none,
-                              fontFamily: 'monospace',
+                              fontFamily: 'Roboto',
                             ),
                           ),
                           if (row.subtitle != null &&
@@ -2166,7 +2207,7 @@ class _PinnedPlayerColumn extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: compact ? 8.5 : 9.5,
                                 color: ClassicTheme.of(context).textSecondary,
-                                fontFamily: 'monospace',
+                                fontFamily: 'Roboto',
                               ),
                             ),
                           ],

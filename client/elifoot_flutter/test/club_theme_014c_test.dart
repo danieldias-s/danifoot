@@ -327,9 +327,13 @@ void main() {
         expect(theme.background, ClassicTheme.classicGreen().background);
         expect(
           HSVColor.fromColor(theme.background).hue,
-          inInclusiveRange(90, 160),
+          inInclusiveRange(90, 180),
         );
         expect(find.text('7. EDITOR & PACOTES'), findsNothing);
+        if (width < 1024) {
+          await tester.tap(find.byKey(const Key('open-navigation')));
+          await tester.pumpAndSettle();
+        }
         await tester.ensureVisible(
           find.byKey(const ValueKey('appearance-menu')),
         );

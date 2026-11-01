@@ -1,0 +1,3008 @@
+[
+  {
+    "roundNumber": 1,
+    "competition": "CupPreliminary1",
+    "fixtures": [
+      {
+        "id": "b1fa5a0e-5e86-463f-9d11-d338b2e8263e",
+        "home": "Manchester United FC",
+        "away": "SSC Napoli",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "7c512425-fb91-d049-ada5-ba1b930cc70a",
+        "awayClubId": "97fa7aa3-c69d-5344-875b-dae076115184"
+      },
+      {
+        "id": "d57a8d46-a9d7-49fc-9bd0-4d64c649f56c",
+        "home": "1. FC Union Berlin",
+        "away": "FC Lorient",
+        "homeGoals": 1,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "0c75b94b-87d4-704d-931e-a39e05bafe05",
+        "awayClubId": "fbd37113-5e84-804e-bfbe-b426a5ef24cb"
+      },
+      {
+        "id": "2353bdc5-01ea-49c7-aa36-d48b04b7d776",
+        "home": "VfB Stuttgart",
+        "away": "Chapecoense",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "7b9661a3-35f2-6742-888b-fc837a806e6a",
+        "awayClubId": "34d5c187-314a-7343-8372-844d569b631b"
+      },
+      {
+        "id": "9af194b5-8c58-4a9e-8b71-6a16a2173878",
+        "home": "AFC Bournemouth",
+        "away": "Portsmouth FC",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "9ab9adf0-44bb-5841-a3b1-ead91190f6e1",
+        "awayClubId": "54baa9ce-cd8b-ba41-93e1-c9924e5bd4ed"
+      },
+      {
+        "id": "a3b15bfa-08ad-4a41-909e-a7f022a13264",
+        "home": "CA Osasuna",
+        "away": "FC Alverca",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "74074f2a-c83a-1d4c-9916-e7dc9579ab6c",
+        "awayClubId": "bf7a005e-ce5e-a74c-93a0-dd6998c4ebc2"
+      },
+      {
+        "id": "367b7f8e-74f4-4cc3-bdf3-1db431322f2d",
+        "home": "Valencia CF",
+        "away": "FC Schalke 04",
+        "homeGoals": 1,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "85780e24-20a1-4242-891d-b8fcac56bf70",
+        "awayClubId": "6f6ed55b-1792-094f-8352-ecb77b256ef7"
+      },
+      {
+        "id": "6951e012-4fba-45ee-910b-5d59f459fced",
+        "home": "Internacional Porto Alegre",
+        "away": "Sheffield United FC",
+        "homeGoals": 1,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "d32b859f-a8f1-a74b-8257-7314c2cb0412",
+        "awayClubId": "2d118e4f-36ff-6a48-966d-89966e3684c3"
+      },
+      {
+        "id": "5a8a88ff-869a-432f-8d25-d605f63fdc09",
+        "home": "Getafe CF",
+        "away": "Bristol City FC",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "893c6659-a730-7744-ad3e-ee2fa87f81d0",
+        "awayClubId": "bb97db37-a6c2-4e4e-b896-6bbc8766acec"
+      },
+      {
+        "id": "abf365be-c852-46d3-ab74-fe6f45598a85",
+        "home": "Moreirense FC",
+        "away": "Clube do Remo",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "142c4e1e-d14f-c84b-8208-7af70c9992fe",
+        "awayClubId": "f7010a1f-397d-6e41-afb1-b666296d6973"
+      },
+      {
+        "id": "3ce97bb2-e307-4e27-b623-1daf9bc3f565",
+        "home": "Sevilla FC",
+        "away": "Corinthians SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "4a9af608-7ed1-d240-ae83-b8e855c9f703",
+        "awayClubId": "420bca3c-c0b4-0e4e-8b40-7aadec77bc4d"
+      },
+      {
+        "id": "02b7f759-6f13-4771-a46b-fca2776d30c0",
+        "home": "West Bromwich Albion FC",
+        "away": "Middlesbrough FC",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "20b47e3d-954d-f441-b78c-974a7f549232",
+        "awayClubId": "979ed99f-8acd-914f-8c9c-e216373504c3"
+      },
+      {
+        "id": "52e928bb-ba79-4069-a729-997a18a08ee4",
+        "home": "RC Lens",
+        "away": "Gil Vicente FC",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "de333fca-a71e-8645-81b4-d6b0e4a61187",
+        "awayClubId": "2a139d43-668f-2e42-a8a5-66e99afe260a"
+      },
+      {
+        "id": "428eadef-6667-4a8d-afac-25c6be069864",
+        "home": "Udinese Calcio",
+        "away": "São Paulo FC",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "e8aa0acd-b60d-5a48-95e7-7e72b064fed3",
+        "awayClubId": "fdd212ab-d40c-474c-aabc-c5511688b4e3"
+      },
+      {
+        "id": "961ea0ab-62f2-4c8b-97d8-bc76ccc23d0c",
+        "home": "Everton FC",
+        "away": "AC Milan",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "975fd07f-9b20-284c-a0a3-e394fc47a124",
+        "awayClubId": "411fd7ed-aa72-b449-a6f6-1de67902d061"
+      },
+      {
+        "id": "a148fed7-37f0-4262-9784-b0e2a9053f58",
+        "home": "Atalanta Bergamo",
+        "away": "Rayo Vallecano",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "dd0ea592-0493-ac4b-9c3c-89e54cc42009",
+        "awayClubId": "1177b0d9-210a-8546-8be3-f9db00c05907"
+      },
+      {
+        "id": "d94c23b1-7779-457e-b240-263c4ec7043f",
+        "home": "RCD La Coruña",
+        "away": "Hamburger SV",
+        "homeGoals": 3,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "4258cd20-4cf1-d94b-b052-bbf4a389da70",
+        "awayClubId": "22f236b7-c687-b240-818a-947cfa89c699"
+      },
+      {
+        "id": "10722635-ae9d-4c54-a77f-e44664392e52",
+        "home": "Torino FC",
+        "away": "Académico Viseu",
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "59dcbe2c-3519-1c44-a30a-1ed91cdf58a8",
+        "awayClubId": "329311bf-a2a2-ae4f-b417-f3d11790fee3"
+      },
+      {
+        "id": "56e3b499-a56e-4264-86b7-c5289642f158",
+        "home": "Ipswich Town FC",
+        "away": "Elche CF",
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "fbf07e73-5d9d-4247-a9d3-04ea7c8ea65d",
+        "awayClubId": "087b9588-108c-2943-acb6-e837ce8674b0"
+      },
+      {
+        "id": "e43a15f0-4656-4f05-a967-2d883e19e006",
+        "home": "Fulham FC",
+        "away": "SC Freiburg",
+        "homeGoals": 0,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "3638586b-e674-414b-bfd6-b81193ecb666",
+        "awayClubId": "56c190f5-6259-d84b-a3f5-77813328f837"
+      },
+      {
+        "id": "916408ab-d522-4e92-bdd8-2281fecf555e",
+        "home": "Millwall FC",
+        "away": "Coritiba PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "2cb8da7f-66f4-fb48-91d8-1c09e6ca5c7d",
+        "awayClubId": "2e8930df-26f5-cf49-9ee7-6f6b86cce437"
+      },
+      {
+        "id": "a9651065-b161-49bb-86ee-f262586869e4",
+        "home": "Genoa CFC",
+        "away": "Coventry City FC",
+        "homeGoals": 2,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "a84311ab-f4c5-dc42-827d-6ba0edfd40ee",
+        "awayClubId": "cb6d0960-167e-b342-ae87-2edc6651beb6"
+      },
+      {
+        "id": "f11fc432-691e-43b4-b177-00cd00ce369b",
+        "home": "Málaga CF",
+        "away": "Le Mans FC",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "8f716ee7-c4d6-064e-a51b-7e2808099cc7",
+        "awayClubId": "8884b1be-61ac-b243-8e7d-982940c23478"
+      },
+      {
+        "id": "67be1606-c5f1-4df1-8003-ee93165a706c",
+        "home": "ACF Fiorentina",
+        "away": "Bor. Mönchengladbach",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "8600b0cc-fc0f-9f41-ae40-f99d5bd10e57",
+        "awayClubId": "713e43f5-90b3-c045-bfe3-46d9cafae811"
+      },
+      {
+        "id": "d4bbcfa4-4580-4579-a08a-8e6587cde426",
+        "home": "Charlton Athletic FC",
+        "away": "Le Havre AC",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "bc47a907-f67e-6c4e-b7c6-86e860d1fb3b",
+        "awayClubId": "44d202c3-9291-1845-9543-de65881852cc"
+      },
+      {
+        "id": "df754408-d7a8-43a8-8ff2-2c212d300640",
+        "home": "CD Santa Clara",
+        "away": "Brighton & Hove Albion FC",
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "7b7b16d5-63c8-3749-af1e-4a03b5ee37a6",
+        "awayClubId": "9bcd45f2-c641-b248-838d-11fcf91a66ef"
+      },
+      {
+        "id": "931680f9-0db1-4d30-8361-b9d5130f8e40",
+        "home": "Hull City AFC",
+        "away": "Deportivo Alavés",
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "c30a6517-6309-2548-954d-4623066f1d34",
+        "awayClubId": "f802a64b-e311-9a41-95bb-7362fc7f558e"
+      },
+      {
+        "id": "1764fe6a-dc3a-4802-b40e-e9f801f1c4a6",
+        "home": "Botafogo RJ",
+        "away": "Blackburn Rovers FC",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "57ad2bbc-b20c-be4c-8d1a-e75909d93ee6",
+        "awayClubId": "ee502622-99b7-584d-80be-683c519d6efe"
+      },
+      {
+        "id": "a27fb39e-5054-4b20-88aa-9c2df37596d4",
+        "home": "1. FC Köln",
+        "away": "Derby County FC",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "isFinished": true,
+        "homeClubId": "5355ef5f-eae2-ee4f-8137-aa23605b3288",
+        "awayClubId": "641975e4-c6ba-d443-971a-852eafe7d169"
+      },
+      {
+        "id": "74bc23ee-9034-44d9-ba3c-58b325f87e03",
+        "home": "RCD Espanyol",
+        "away": "Sunderland AFC",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "b44c846d-ba43-0f43-a90d-55277b6183be",
+        "awayClubId": "e8d180db-fb8b-864f-a658-f5f2e29d8ba1"
+      },
+      {
+        "id": "6f5185ed-9305-4fe1-a4f5-7eb2b17b610e",
+        "home": "Real Sociedad",
+        "away": "Eintracht Frankfurt",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "bfaeaf85-2baa-3949-89b2-899722668ce4",
+        "awayClubId": "8484cc73-5544-ab4d-9e9f-4ec9cee26308"
+      },
+      {
+        "id": "bf145fa3-10af-4bc0-8f83-be35fde6b55e",
+        "home": "AS Monaco FC",
+        "away": "Levante UD",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "fbb2fd6f-545e-3a4a-bb8f-bd11d3d0b730",
+        "awayClubId": "19c0682e-2bba-e042-8c6d-ebb65dfc652e"
+      },
+      {
+        "id": "a62ab2c5-7dd4-403f-9bae-695d052d0e5f",
+        "home": "RC Celta Vigo",
+        "away": "Crystal Palace FC",
+        "homeGoals": 5,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "b6a6e869-6239-554d-b1d7-851edf67cd94",
+        "awayClubId": "acc876d6-1286-3d45-a406-5992837d3abc"
+      }
+    ]
+  },
+  {
+    "roundNumber": 2,
+    "competition": "CupPreliminary2",
+    "fixtures": [
+      {
+        "id": "c999c8de-b62b-4db5-8b7d-8a56429f8e94",
+        "home": "Swansea City AFC",
+        "away": "Udinese Calcio",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "0c609448-e47f-444b-8a08-2775c6112b01",
+        "awayClubId": "e8aa0acd-b60d-5a48-95e7-7e72b064fed3"
+      },
+      {
+        "id": "7ecd335b-be66-417c-885d-a7a45d7910d3",
+        "home": "Moreirense FC",
+        "away": "Bolton Wanderers FC",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "142c4e1e-d14f-c84b-8208-7af70c9992fe",
+        "awayClubId": "9154d74a-8290-d247-aca6-bf2bff54e326"
+      },
+      {
+        "id": "480dbd5b-cfef-4aa6-9faa-0f055f9725d3",
+        "home": "TSG 1899 Hoffenheim",
+        "away": "1. FC Köln",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "2ab1b5e8-7aa1-0c4d-8cc6-256ff67e95ab",
+        "awayClubId": "5355ef5f-eae2-ee4f-8137-aa23605b3288"
+      },
+      {
+        "id": "0bb6a859-56de-4372-86e7-5235a3d8be36",
+        "home": "CA Osasuna",
+        "away": "Coventry City FC",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "74074f2a-c83a-1d4c-9916-e7dc9579ab6c",
+        "awayClubId": "cb6d0960-167e-b342-ae87-2edc6651beb6"
+      },
+      {
+        "id": "762f3494-2ae6-4af1-82f9-940c6a59b80f",
+        "home": "Portsmouth FC",
+        "away": "Atalanta Bergamo",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "54baa9ce-cd8b-ba41-93e1-c9924e5bd4ed",
+        "awayClubId": "dd0ea592-0493-ac4b-9c3c-89e54cc42009"
+      },
+      {
+        "id": "3865ee7c-04ea-420d-bb7f-35deb0c02c04",
+        "home": "Lincoln City FC",
+        "away": "Real Racing Santander",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "fe9e6b9c-4f36-f440-ba4a-9cc87822a9d8",
+        "awayClubId": "c1506685-25c5-8249-bbc0-6c9056f459a8"
+      },
+      {
+        "id": "5ffe7770-a817-4890-94c1-90890386134e",
+        "home": "CD Santa Clara",
+        "away": "FC Arouca",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "7b7b16d5-63c8-3749-af1e-4a03b5ee37a6",
+        "awayClubId": "a7a34484-d355-3444-9fcc-dcef60cbe733"
+      },
+      {
+        "id": "161a19cf-dd22-4961-84b0-48db9ae795d6",
+        "home": "SSC Napoli",
+        "away": "Angers SCO",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "97fa7aa3-c69d-5344-875b-dae076115184",
+        "awayClubId": "cea571e3-89f7-2f4d-945f-18463fa44cde"
+      },
+      {
+        "id": "3016f44a-05cf-44c1-81e1-e61f1b60ffd4",
+        "home": "Torino FC",
+        "away": "Burnley FC",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "59dcbe2c-3519-1c44-a30a-1ed91cdf58a8",
+        "awayClubId": "b34ea4dd-5e90-9347-81aa-2862a47c6e91"
+      },
+      {
+        "id": "f33124c3-2411-47cf-bde6-581be99059e3",
+        "home": "Paris FC",
+        "away": "RC Celta Vigo",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "2ae83aac-7d1a-8143-9f69-1326401d90eb",
+        "awayClubId": "b6a6e869-6239-554d-b1d7-851edf67cd94"
+      },
+      {
+        "id": "03381088-e2c7-41a0-876d-127fa8ed6f7a",
+        "home": "Leeds United FC",
+        "away": "Blackburn Rovers FC",
+        "homeGoals": 0,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "b2759aa2-0023-2d49-82af-64be8220c919",
+        "awayClubId": "ee502622-99b7-584d-80be-683c519d6efe"
+      },
+      {
+        "id": "0180a382-c51b-4708-87ce-a5c0dd0bfc7e",
+        "home": "Queens Park Rangers FC",
+        "away": "Bologna FC",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "b9385e2a-8be3-024e-a6bc-ced202c9d071",
+        "awayClubId": "bef742a3-2a6a-404d-8e18-d6ed87f9d8a3"
+      },
+      {
+        "id": "08b65216-cb14-462b-a20c-4eff7b47e94c",
+        "home": "SS Lazio",
+        "away": "SC Freiburg",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "2d102d90-c083-c84d-b7f8-d80e48a91471",
+        "awayClubId": "56c190f5-6259-d84b-a3f5-77813328f837"
+      },
+      {
+        "id": "bdb522b6-9e14-48ab-bda7-56f99d5603c1",
+        "home": "AC Milan",
+        "away": "RC Strasbourg",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "411fd7ed-aa72-b449-a6f6-1de67902d061",
+        "awayClubId": "747df8fb-bfe6-9346-b323-b8db3543bcb3"
+      },
+      {
+        "id": "10a4a445-ee72-4424-a9cb-3f009ef54e67",
+        "home": "RCD La Coruña",
+        "away": "FC Lorient",
+        "homeGoals": 4,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "4258cd20-4cf1-d94b-b052-bbf4a389da70",
+        "awayClubId": "fbd37113-5e84-804e-bfbe-b426a5ef24cb"
+      },
+      {
+        "id": "798c9377-1864-4d80-a2cc-fe3872cc0b4b",
+        "home": "Ipswich Town FC",
+        "away": "Sevilla FC",
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "fbf07e73-5d9d-4247-a9d3-04ea7c8ea65d",
+        "awayClubId": "4a9af608-7ed1-d240-ae83-b8e855c9f703"
+      },
+      {
+        "id": "0d1d1e79-d8c1-48b2-8a54-381452435ba2",
+        "home": "Atlético MG",
+        "away": "Charlton Athletic FC",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "bd9485aa-bf8b-2d42-9072-f2dff1e36e02",
+        "awayClubId": "bc47a907-f67e-6c4e-b7c6-86e860d1fb3b"
+      },
+      {
+        "id": "43e9ebee-35b4-4b1f-8901-3d60e59f126c",
+        "home": "Olympique de Marseille",
+        "away": "Coritiba PR",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "7e4f9d8f-d96f-734a-bafb-d039689d0c05",
+        "awayClubId": "2e8930df-26f5-cf49-9ee7-6f6b86cce437"
+      },
+      {
+        "id": "8e2e1bad-a64d-4f42-93da-661b3689d7ba",
+        "home": "Preston North End FC",
+        "away": "FC Augsburg",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "65e025d1-3a90-2b4f-97c0-66a367aea01d",
+        "awayClubId": "1b790f58-3f44-5342-991e-8c85a81daef1"
+      },
+      {
+        "id": "534f40d5-57b3-4760-8765-c44ea6b667af",
+        "home": "Rio Ave FC",
+        "away": "Bristol City FC",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "4c99327e-eec2-ee4f-9473-3334380312cf",
+        "awayClubId": "bb97db37-a6c2-4e4e-b896-6bbc8766acec"
+      },
+      {
+        "id": "a4f4cc7c-d15b-48a1-87a6-c59460601773",
+        "home": "Venezia FC",
+        "away": "CS Marítimo",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "85b91979-103e-5447-b5ad-92188a6676d6",
+        "awayClubId": "7ef5b3e9-784d-fe41-adae-296b19df2d04"
+      },
+      {
+        "id": "62938a34-75d6-4d41-93fa-d188298f529f",
+        "home": "Parma Calcio",
+        "away": "AS Monaco FC",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "ef52d6d4-e75d-0d46-9975-39401ed8e200",
+        "awayClubId": "fbb2fd6f-545e-3a4a-bb8f-bd11d3d0b730"
+      },
+      {
+        "id": "428bfdd5-206c-4452-b5ae-37c7889ee79f",
+        "home": "RB Bragantino",
+        "away": "Cagliari Calcio",
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "9c6c26d2-f1c6-ef4e-b261-6bbbfdda5adb",
+        "awayClubId": "90b55286-81c9-ae47-bdcd-1b1317e15e53"
+      },
+      {
+        "id": "10206049-8e8b-4f3e-b4af-1ea7b1689f5d",
+        "home": "CF Estrela da Amadora",
+        "away": "Le Mans FC",
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "d3c83bce-27c3-694d-b445-71b53678d826",
+        "awayClubId": "8884b1be-61ac-b243-8e7d-982940c23478"
+      },
+      {
+        "id": "83dc47a4-d478-4db8-b246-591750ad0dc9",
+        "home": "Bor. Mönchengladbach",
+        "away": "Athletic Club Bilbao",
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "713e43f5-90b3-c045-bfe3-46d9cafae811",
+        "awayClubId": "f4517508-e1e6-cc4c-8de9-3f5403de3628"
+      },
+      {
+        "id": "cdcf944c-15da-4324-9cc9-cbcc7ce4e11d",
+        "home": "Sunderland AFC",
+        "away": "US Lecce",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "e8d180db-fb8b-864f-a658-f5f2e29d8ba1",
+        "awayClubId": "8a46d99f-a315-c44b-9a0a-2aebab936453"
+      },
+      {
+        "id": "b42402bf-d6cd-47fb-b2cb-bf8924be699b",
+        "home": "Eintracht Frankfurt",
+        "away": "Gil Vicente FC",
+        "homeGoals": 3,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "8484cc73-5544-ab4d-9e9f-4ec9cee26308",
+        "awayClubId": "2a139d43-668f-2e42-a8a5-66e99afe260a"
+      },
+      {
+        "id": "34393ad7-0f52-4f6a-a75a-5c3f0b9324d7",
+        "home": "CR Vasco da Gama",
+        "away": "West Bromwich Albion FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "c809547b-6beb-7a4f-9459-9804be247514",
+        "awayClubId": "20b47e3d-954d-f441-b78c-974a7f549232"
+      },
+      {
+        "id": "643d679a-476c-4ed6-a636-02106316ae17",
+        "home": "Sheffield United FC",
+        "away": "Hull City AFC",
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "isFinished": true,
+        "homeClubId": "2d118e4f-36ff-6a48-966d-89966e3684c3",
+        "awayClubId": "c30a6517-6309-2548-954d-4623066f1d34"
+      },
+      {
+        "id": "32b736f7-4435-4781-bdfc-6918073b66b4",
+        "home": "Wrexham AFC",
+        "away": "Casa Pia",
+        "homeGoals": 3,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "663f40a3-d4e4-d640-b547-7a6a10465400",
+        "awayClubId": "6a036f55-17bb-574b-bbb6-0dc3cf267fd5"
+      },
+      {
+        "id": "357708e6-708b-4891-ba55-bf9d0036c3fb",
+        "home": "VfB Stuttgart",
+        "away": "Wolverhampton Wanderers FC",
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "isFinished": true,
+        "homeClubId": "7b9661a3-35f2-6742-888b-fc837a806e6a",
+        "awayClubId": "ed969b00-fab7-c744-9ef9-ed738c377db9"
+      },
+      {
+        "id": "7973c422-76b1-4426-befd-b0402ac8305e",
+        "home": "US Sassuolo Calcio",
+        "away": "FC Schalke 04",
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "isFinished": true,
+        "homeClubId": "a09d7cee-9541-274b-a2d2-a4905e2352c5",
+        "awayClubId": "6f6ed55b-1792-094f-8352-ecb77b256ef7"
+      }
+    ]
+  },
+  {
+    "roundNumber": 3,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "ce80db9b-5f52-46f2-92f2-866df136a0b7",
+        "home": "Arsenal FC",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "9d209c53-f033-4d93-bd0f-6be7edec460a",
+        "home": "Real Madrid",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "aacc5f61-3f4b-48f0-96ac-0f6fdf92d750",
+        "home": "FC Barcelona",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "5b52cffe-945f-400a-bee6-305719dfe5d0",
+        "home": "FC Internazionale Milano",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "5d45766d-a2fe-4575-845d-5f80fb585811",
+        "home": "Borussia Dortmund",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "ee28ca3c-5472-4a49-9cd7-f5fa32889b8b",
+        "home": "RB Leipzig",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "3808b513-3e1a-4987-b901-4eef70ee0ea1",
+        "home": "Lille OSC",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "a28b3270-302b-4b94-a37e-60b3db60beb8",
+        "home": "Palmeiras SP",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "5ef6b917-8b72-4cd7-b539-407aaf48c93e",
+        "home": "Frosinone Calcio",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "25e448c4-f2ba-4940-b651-a372ba0bc1de",
+        "home": "SC Braga",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "95c80f6e-5520-48b9-ac47-5b1f02767d5b",
+        "home": "Sporting CP",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "8adac333-e3b0-441a-a1d3-379ce8a9eb94",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "c6f75037-a490-445e-aed0-74ad0ad45cab",
+        "home": "Fluminense RJ",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      },
+      {
+        "id": "06bb02ef-21ba-41b1-b66c-cd1656f67e6b",
+        "home": "SV Elversberg",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      },
+      {
+        "id": "3442c15d-1783-4bb2-9fbe-52a446bf8028",
+        "home": "Atlético PR",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      },
+      {
+        "id": "802dc3f7-e3a3-4ea7-a812-8c4c939de51d",
+        "home": "FC Famalicão",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      }
+    ]
+  },
+  {
+    "roundNumber": 4,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "df7b484d-a5a9-4dd5-8a42-4bb4ba0b62fe",
+        "home": "FC Porto",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "fe007fe8-0635-4fb3-aae7-eaf6139106e9",
+        "home": "FC Barcelona",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "4984f2b8-6ad4-47f2-88b5-d461b42b4bc4",
+        "home": "Real Madrid",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "da6c83d9-beb7-41c8-84db-cb81901514be",
+        "home": "FC Internazionale Milano",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "2d0c65bd-8be4-4657-bce4-0dc4050537e6",
+        "home": "SL Benfica",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "be9373ed-78f9-41bc-adc7-9bd0c3708902",
+        "home": "Lille OSC",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "2154e686-9062-468f-9b6c-92e76ea5084b",
+        "home": "RB Leipzig",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "7b7b17a9-b882-4891-977d-841f2859b069",
+        "home": "Palmeiras SP",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "7199a488-1765-4fa0-89b1-565e63daa288",
+        "home": "Olympique Lyonnais",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "3c9e0cc2-9e68-4f8b-a9b7-e69c0b6a24ff",
+        "home": "Sporting CP",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "187ffa5b-fd47-43ac-8c86-39cc4f6c6394",
+        "home": "SC Braga",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "0dac8ed0-7dbd-422c-ba82-7b93478a9e43",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "8751de7f-4458-49d4-906b-1e7e6247f7b1",
+        "home": "Southampton FC",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "74dcdaab-5f0d-4095-af4d-bbcc1854599d",
+        "home": "Atlético PR",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      },
+      {
+        "id": "ece16b11-0152-4261-9f79-74003bde5602",
+        "home": "SV Elversberg",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      },
+      {
+        "id": "809dbc78-0626-4313-a1a5-2514d7cb5662",
+        "home": "FC Famalicão",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      }
+    ]
+  },
+  {
+    "roundNumber": 5,
+    "competition": "CupRoundOf64",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 6,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "4ff39eca-264f-4ad4-af1d-d2bb841ecc38",
+        "home": "Arsenal FC",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "bb40e0a5-8e1a-47e4-afd0-4c43a8483c1a",
+        "home": "FC Porto",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "ae807971-d4b4-4dab-93c7-6d3c22859cd9",
+        "home": "FC Internazionale Milano",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "630b0a7e-3da0-477e-94e8-2fb98f67fcb3",
+        "home": "Real Madrid",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "ad1af17a-5431-4c89-a1a3-ad1137d83698",
+        "home": "Borussia Dortmund",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "0a86e8aa-7a49-46bd-a0ad-b271bf6dac32",
+        "home": "SL Benfica",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "dec035c5-becd-4117-8481-6a049da91f8c",
+        "home": "Palmeiras SP",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "814a8ae7-18b7-4285-9e3f-91179bce3921",
+        "home": "RB Leipzig",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "0d43f18e-7b9e-4bad-9484-00dd50323d40",
+        "home": "Frosinone Calcio",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "f5dfc4cc-d27a-452e-a521-a30b4b0b6ddf",
+        "home": "Olympique Lyonnais",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "7bbc28ac-a2d2-4808-98fe-ae41e03e5137",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "9687c45b-9de4-4730-8b1b-7da769004a66",
+        "home": "SC Braga",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "7e927dd9-97a2-4f78-8cd8-6fa6588394f7",
+        "home": "Fluminense RJ",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      },
+      {
+        "id": "9791062a-bcd3-4586-bebf-1f2693d4585d",
+        "home": "Southampton FC",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      },
+      {
+        "id": "6b67b4b2-f841-4560-93a8-65d192fcf270",
+        "home": "FC Famalicão",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      },
+      {
+        "id": "56d016dd-9d87-490b-816b-6c72e2aaaa5f",
+        "home": "SV Elversberg",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      }
+    ]
+  },
+  {
+    "roundNumber": 7,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "0bb01fcd-28d3-4658-b955-0eba8a4e55c7",
+        "home": "Flamengo RJ",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "0103da9f-6966-4144-a977-5ae9cc64a11e",
+        "home": "FC Internazionale Milano",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "3834595c-bf2a-46e1-b498-6cdc3bbab606",
+        "home": "FC Porto",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "f3f01895-0598-457a-9e31-7052cb8b32e3",
+        "home": "Real Madrid",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "1a04c01f-bbe9-44ea-bd88-e2bb529b70e1",
+        "home": "AS Roma",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "37adbc2a-b4fb-4c1a-ad99-d3c80ca28324",
+        "home": "Palmeiras SP",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "ba7376ef-cd22-4559-9224-ba6399900af9",
+        "home": "SL Benfica",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "c0ab1cc2-e4bf-449c-8292-bbdf63cdf314",
+        "home": "RB Leipzig",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "9be95c29-db73-44da-afd6-1c45b1ae86ee",
+        "home": "Real Betis",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "1c16324f-518f-40af-9e44-8248ef9e5a42",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "0544a3da-a9f6-435b-9298-8f2e89833337",
+        "home": "Olympique Lyonnais",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "0fcbf6be-29b0-401c-a66b-5687e6db301e",
+        "home": "SC Braga",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "91a8c618-502c-4c92-9a6e-056e716e734e",
+        "home": "Villarreal CF",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "0794b885-4cdc-4ca0-9075-ae9c74263018",
+        "home": "FC Famalicão",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      },
+      {
+        "id": "ca52daba-61b9-4652-8293-7ba50a1ee01b",
+        "home": "Southampton FC",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      },
+      {
+        "id": "b113f571-cad3-4b70-a3f8-c3f775616b41",
+        "home": "SV Elversberg",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      }
+    ]
+  },
+  {
+    "roundNumber": 8,
+    "competition": "CupRoundOf32",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 9,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "c46e7cd7-ce00-4550-b6d6-f5d46ab3854f",
+        "home": "Arsenal FC",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "40d54549-98d7-49ba-8231-d854d54ce7b4",
+        "home": "Flamengo RJ",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "e376a213-6ddd-462a-89e7-43d9d5ad5ebf",
+        "home": "Real Madrid",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "04f2099e-1f6e-4ed5-b07b-f89f5c945d28",
+        "home": "FC Porto",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "b5a39db6-8e06-4628-9e41-fc018d612a22",
+        "home": "Borussia Dortmund",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "6910b9ad-fb9c-42d3-a39b-fe2e93813d4a",
+        "home": "AS Roma",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "54beee35-8661-4e23-b57b-5d229d75942b",
+        "home": "RB Leipzig",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "a027e89d-0f9e-494e-a78f-ce052da2198d",
+        "home": "SL Benfica",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "8c22d7d0-0c87-4e71-934d-0ad3e549d54c",
+        "home": "Frosinone Calcio",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "4951dad7-f5f0-4535-aa9b-3db22568309c",
+        "home": "Real Betis",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "a4b58b95-3dfb-4d35-86ca-a0a7f4bcbddc",
+        "home": "SC Braga",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "c0aaaace-a194-42a9-98a4-be3dcb11e9f8",
+        "home": "Olympique Lyonnais",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "c2772428-9d14-42de-866b-383c2353ec85",
+        "home": "Fluminense RJ",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      },
+      {
+        "id": "38cd08da-f9dd-4e81-9a10-5cf700c7762f",
+        "home": "Villarreal CF",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      },
+      {
+        "id": "dd558900-9cdf-4640-bde4-4bf9a2e13353",
+        "home": "SV Elversberg",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      },
+      {
+        "id": "42d1ae78-d0b4-45e2-b89f-17d4428b892c",
+        "home": "Southampton FC",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      }
+    ]
+  },
+  {
+    "roundNumber": 10,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "8599829b-78bb-4ab0-abec-54a747387188",
+        "home": "Paris Saint-Germain",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "bfb2dd02-787a-47d5-b6d5-b966299f0a1d",
+        "home": "Real Madrid",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "a71929da-b50c-4da1-aff7-b7ea12a4d7e1",
+        "home": "Flamengo RJ",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "269018c3-0a6f-4a9d-b508-2758f8260cc3",
+        "home": "FC Porto",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "49b96fa0-66a0-4a5f-84e7-a530fb50a9b9",
+        "home": "Atlético Madrid",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "8c4c9fbd-baa5-4399-bf3c-ecfb6cb2e4ff",
+        "home": "RB Leipzig",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "a2d786e7-a2aa-46f1-b357-67b72ec9e79a",
+        "home": "AS Roma",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "31d42cd0-0dcb-4713-a591-8782ef369905",
+        "home": "SL Benfica",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "91081b49-d148-483f-8fa2-7e99bcb4815d",
+        "home": "Como 1907",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "d94ce711-1792-4d44-8f7b-568b65d6f937",
+        "home": "SC Braga",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "733fd93e-1723-4778-948e-5cac33279fe6",
+        "home": "Real Betis",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "004d9e64-e663-4a5b-8de0-f43169c680d4",
+        "home": "Olympique Lyonnais",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "4257b63a-01c5-4890-945d-7885f2cca855",
+        "home": "Juventus",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "45373346-7124-47e7-a16d-14c82a0a4960",
+        "home": "SV Elversberg",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      },
+      {
+        "id": "2b829498-3213-4c6e-82e6-62e40caa2a5d",
+        "home": "Villarreal CF",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      },
+      {
+        "id": "a5bcca00-48c3-4709-9feb-465e78e3e5db",
+        "home": "Southampton FC",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      }
+    ]
+  },
+  {
+    "roundNumber": 11,
+    "competition": "CupRoundOf16",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 12,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "bd29bc32-f60d-4080-a3d6-dadb4c0a98a8",
+        "home": "Arsenal FC",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "197929f0-26dd-4fac-966b-139bbbfe0f30",
+        "home": "Paris Saint-Germain",
+        "away": "Bayern München",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8"
+      },
+      {
+        "id": "26c504d0-678f-4661-b54c-bfa892d88cf6",
+        "home": "FC Porto",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "59f5a6d9-90a7-4827-ac68-45efb03f76ff",
+        "home": "Flamengo RJ",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "363ebd14-3428-45a5-84ff-40e7ea99e88d",
+        "home": "Borussia Dortmund",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "eec39e5d-38ef-4d9d-9d25-fa089ea02863",
+        "home": "Atlético Madrid",
+        "away": "Manchester City FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "41f10264-8393-6348-b0b6-da8006dccab9"
+      },
+      {
+        "id": "6f56483f-26b8-4f40-8c91-4ae81af650a4",
+        "home": "SL Benfica",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "3978a961-63c8-453b-9e3d-bdf9992e5bc4",
+        "home": "AS Roma",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "90009254-8c9b-4e07-9d21-9d20e3556d0a",
+        "home": "Frosinone Calcio",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "ed0cc2ff-7696-4dfc-a557-dca28a666789",
+        "home": "Como 1907",
+        "away": "Cruzeiro MG",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "14ee43af-d453-a343-8209-724f783c3912"
+      },
+      {
+        "id": "c4073035-68bd-49ef-8b37-e691d42b305b",
+        "home": "Olympique Lyonnais",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "2e04aec8-d3e1-452e-8665-15cd94c80d63",
+        "home": "Real Betis",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "f20d08a9-15e3-4718-be0d-a5f0ba71c706",
+        "home": "Fluminense RJ",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      },
+      {
+        "id": "ac355c52-3278-4a1d-b778-c4d6aa394057",
+        "home": "Juventus",
+        "away": "Stade Rennais FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5"
+      },
+      {
+        "id": "1e37e781-6a15-4a20-a828-a205ab2669ca",
+        "home": "Southampton FC",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      },
+      {
+        "id": "fa23249d-44d9-4130-b700-abb53dd57146",
+        "home": "Villarreal CF",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      }
+    ]
+  },
+  {
+    "roundNumber": 13,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "304c5266-96f9-4f3c-8701-dc2161716452",
+        "home": "Bayern München",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "ec42c24a-a85c-44d8-aa32-98faaa471b62",
+        "home": "FC Porto",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "09ec4e27-881c-4048-b11c-aa88c11129fe",
+        "home": "Paris Saint-Germain",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "f70888be-a594-488f-b71f-32189415af88",
+        "home": "Flamengo RJ",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "84fb5d69-e47d-4b19-a431-49cd57d88b47",
+        "home": "Manchester City FC",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "3d8edfaf-61b5-4428-b7b7-818d7fe40820",
+        "home": "SL Benfica",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "95eaa5e6-5869-f343-90df-a128995d2585",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "cab660f7-6cbc-4693-90fa-fe000303ad16",
+        "home": "Atlético Madrid",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "6fefb230-e8ee-4f66-8e28-0a493fee3e90",
+        "home": "AS Roma",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "cdc6610b-34c4-473e-b2b5-daa964a7e524",
+        "home": "Cruzeiro MG",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "7d597c0a-e4d0-4c6b-9b49-083e27599809",
+        "home": "Olympique Lyonnais",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "90c64f66-dde4-45e8-9c8c-6ee55f952ec2",
+        "home": "Como 1907",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "1d9072af-0f05-4441-921e-f9a779862c4c",
+        "home": "Real Betis",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "2308baef-ec7c-4801-afd9-8bea6da23925",
+        "home": "Stade Rennais FC",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "4ea7b508-d5ec-4273-b17e-8a8706ffdd24",
+        "home": "Southampton FC",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      },
+      {
+        "id": "7e64aadb-8fe1-48e9-b87a-b8f32ed1658b",
+        "home": "Juventus",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      },
+      {
+        "id": "c116551e-12e8-421e-b09b-e4cd43bb79df",
+        "home": "Villarreal CF",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      }
+    ]
+  },
+  {
+    "roundNumber": 14,
+    "competition": "CupQuarterFinal",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 15,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "c429f0e2-ad74-4213-a0c6-c0873fa68233",
+        "home": "Arsenal FC",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "b785d687-0aa3-4134-8550-978a15624ca0",
+        "home": "Bayern München",
+        "away": "FC Barcelona",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6"
+      },
+      {
+        "id": "6c6592e5-5bb7-4529-93e4-7022978a7a20",
+        "home": "Flamengo RJ",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "9b7be3cf-cd62-46e8-8d65-3e7a6e34467b",
+        "home": "Paris Saint-Germain",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "a5f57495-fa49-4605-8a1d-52c0a1e39265",
+        "home": "Borussia Dortmund",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "d1c28786-eb2d-4c2e-b964-332d5bb9f7ee",
+        "home": "Manchester City FC",
+        "away": "Lille OSC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855"
+      },
+      {
+        "id": "e083d5f6-a5c7-4aa1-870b-2c4a0997864a",
+        "home": "AS Roma",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "54418a6f-f9f5-4261-a1e5-476ebeaea1b3",
+        "home": "Atlético Madrid",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "404105f5-e108-4681-9138-1ba6aacdaa54",
+        "home": "Frosinone Calcio",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "41789e85-b222-4c2c-8978-45ca51dbe0d9",
+        "home": "Cruzeiro MG",
+        "away": "Sporting CP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "dade9b8e-1939-2444-9907-94543ab0928b"
+      },
+      {
+        "id": "b85b618d-2a9b-41c9-841b-8799183b05cf",
+        "home": "Real Betis",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "82c28c55-cf23-4b85-88a2-61927c81dad7",
+        "home": "Como 1907",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "84e98992-d84d-42bd-8fd7-18aa00405585",
+        "home": "Fluminense RJ",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      },
+      {
+        "id": "4ae98c3e-9b8c-4551-bf26-2ea6c23018ac",
+        "home": "Stade Rennais FC",
+        "away": "Atlético PR",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c"
+      },
+      {
+        "id": "0b3fab35-1349-40dd-9199-ddf0c6f30aeb",
+        "home": "Villarreal CF",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      },
+      {
+        "id": "4a5b35bb-2c62-4045-b15a-00350e7bf9cb",
+        "home": "Juventus",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      }
+    ]
+  },
+  {
+    "roundNumber": 16,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "9d2abd60-6e2c-4519-8c62-8e7242085df6",
+        "home": "FC Barcelona",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "1cec5dbc-3806-4c53-b511-f2ba9819a163",
+        "home": "Flamengo RJ",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "9549e4eb-51fa-46ec-9bd0-4b62d70f2042",
+        "home": "Bayern München",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "f4fbbb60-0a84-48c6-8b24-5c442d5d849a",
+        "home": "Paris Saint-Germain",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "12931f26-4502-457c-ba7b-c2ce91964315",
+        "home": "Lille OSC",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "1f5a98b6-48b7-4b91-8c99-fa0a945486ac",
+        "home": "AS Roma",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "430ce72b-e718-fb4f-aab6-605b5c169633",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "15fddd99-44f2-42d2-b32d-8b3727db1cf4",
+        "home": "Manchester City FC",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "8fcc0cae-699c-472b-bca5-c038cf9173cd",
+        "home": "Atlético Madrid",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "7306515d-cb4b-48f2-befc-5e0f64b70a79",
+        "home": "Sporting CP",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "a7f2e829-7015-4f97-9fbe-f52a3a8789b4",
+        "home": "Real Betis",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "cef2cd4a-8cfc-43cc-8f7f-316a26581a5e",
+        "home": "Cruzeiro MG",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "b3a5bb15-a5ae-48b8-a107-08aee3fa8b2d",
+        "home": "Como 1907",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "9440c34f-55da-4476-b658-2ce779dc6263",
+        "home": "Atlético PR",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "73ab9a3f-d523-4da3-91dd-ffdc0179f3a7",
+        "home": "Villarreal CF",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      },
+      {
+        "id": "6c4911a7-6540-457b-9d2f-d96842e804b8",
+        "home": "Stade Rennais FC",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      },
+      {
+        "id": "89f4a966-16e5-4843-acf4-be51717a3a53",
+        "home": "Juventus",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      }
+    ]
+  },
+  {
+    "roundNumber": 17,
+    "competition": "CupSemiFinal",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 18,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "bb7d16cd-c3e5-4e1c-b6f0-831d1e2332c2",
+        "home": "Arsenal FC",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "f6939b0f-7529-4f7b-9905-dd7f62f72375",
+        "home": "FC Barcelona",
+        "away": "FC Internazionale Milano",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae"
+      },
+      {
+        "id": "4d010b6a-32c2-4b15-997a-5329b180660f",
+        "home": "Paris Saint-Germain",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "a4e3c09c-c0b7-466e-9ab0-17d8330a4e9b",
+        "home": "Bayern München",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "a970aeea-09cf-4138-b84d-7090c2604116",
+        "home": "Borussia Dortmund",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "835cbc14-8b28-436b-bdbd-515d583103da",
+        "home": "Lille OSC",
+        "away": "Palmeiras SP",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5"
+      },
+      {
+        "id": "c5adb757-1dc3-4a72-bc6b-a11757ddcf94",
+        "home": "Atlético Madrid",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "654ef0d9-3bbf-4b7f-a6b0-c5da0972e352",
+        "home": "Manchester City FC",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "9aa36cfd-ec99-4cdd-b50f-fca47116b705",
+        "home": "Frosinone Calcio",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "6c307a53-3562-4073-97e7-c5cc3a92e28b",
+        "home": "Sporting CP",
+        "away": "Bayer 04 Leverkusen",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2"
+      },
+      {
+        "id": "28f380a7-4253-4a8a-a5f0-395691f3ab34",
+        "home": "Como 1907",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "941c70df-e182-40fe-a987-0ebaa890ddf1",
+        "home": "Cruzeiro MG",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "540a9310-6f4a-4d71-87ae-a1dc320d8fa4",
+        "home": "Fluminense RJ",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      },
+      {
+        "id": "0cda7991-153a-4937-b404-18e91b40a018",
+        "home": "Atlético PR",
+        "away": "FC Famalicão",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06"
+      },
+      {
+        "id": "4efef058-4232-414b-a92d-a2f72be4b23c",
+        "home": "Juventus",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      },
+      {
+        "id": "36ab0236-5159-4a35-b831-00621d47eac8",
+        "home": "Stade Rennais FC",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      }
+    ]
+  },
+  {
+    "roundNumber": 19,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "436eb0e6-4ae4-4cc6-a982-6292774e12e5",
+        "home": "FC Internazionale Milano",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "c0aedc8f-0308-4161-94e5-5fa4d1f15dca",
+        "home": "Paris Saint-Germain",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "a734c786-a76b-42c6-8e15-d249e877cae6",
+        "home": "FC Barcelona",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "e176a5a5-4536-4f98-a6d1-cb07892f5719",
+        "home": "Bayern München",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "4adc30fe-19c9-4863-9da3-3b253b74ee2d",
+        "home": "Palmeiras SP",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "9b954f01-9bcb-4768-8cf2-55272f9999ec",
+        "home": "Atlético Madrid",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "7200affc-542d-4b46-bd7f-ca83776560a3",
+        "home": "Lille OSC",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "6c9d776c-38c1-4b76-aa63-544a8de02e01",
+        "home": "Manchester City FC",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "1320ad99-b760-46b3-ba35-060320381d97",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "153a9b30-e210-47fd-bc1b-384c784ce2a3",
+        "home": "Como 1907",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "3924402e-a6da-d044-86c6-4d77db344c1d",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "f0cbd4b6-4b5f-4023-afcf-133d1769a918",
+        "home": "Sporting CP",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "63dc2f80-ddc1-4c0e-99d6-9850529d1644",
+        "home": "Cruzeiro MG",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "42c6b6ba-3d3b-494d-a253-bdb54b972b45",
+        "home": "FC Famalicão",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "6c1f2181-64f1-43f9-8f32-3880527f4f04",
+        "home": "Juventus",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "588631ad-80e6-6744-bad0-2fc1119253a4",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      },
+      {
+        "id": "5ed53144-aa5f-4950-9b67-948065b8094d",
+        "home": "Atlético PR",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      },
+      {
+        "id": "7326dc44-36c3-4681-a2cd-5ea83b6e826c",
+        "home": "Stade Rennais FC",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      }
+    ]
+  },
+  {
+    "roundNumber": 20,
+    "competition": "CupFinal",
+    "fixtures": []
+  },
+  {
+    "roundNumber": 21,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "0f8be89b-13ef-46d2-9124-b03af1e9ba40",
+        "home": "Arsenal FC",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "d3d3633a-9214-482a-ac79-54e546093edb",
+        "home": "FC Internazionale Milano",
+        "away": "Real Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "f6fb282c-e699-ff46-9e26-89d14c694538"
+      },
+      {
+        "id": "4951ad76-bf92-48b8-b83e-b35757b1414b",
+        "home": "Bayern München",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "b1d80396-f460-46b7-94cb-27d553dc42c1",
+        "home": "FC Barcelona",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "d5829632-ecf4-413e-bb6e-ccc78e34e6e4",
+        "home": "Borussia Dortmund",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "1a4a1faf-a022-4a97-925c-016571ac7a39",
+        "home": "Palmeiras SP",
+        "away": "RB Leipzig",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa"
+      },
+      {
+        "id": "08f8f975-2894-4360-bcf1-a8dbb1992ef9",
+        "home": "Manchester City FC",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "8a4337f8-6b9c-4ee9-abc6-cf1994593198",
+        "home": "Lille OSC",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "47b4b469-e52f-4aa8-b246-c43a14fe0940",
+        "home": "Frosinone Calcio",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "381c79d0-fe18-6f46-8857-5972411565dd",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "27f38632-18f6-4c9a-be47-11f8e67a7385",
+        "home": "Bayer 04 Leverkusen",
+        "away": "SC Braga",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8"
+      },
+      {
+        "id": "50cc332b-5fe4-4b0b-a99d-692824314d4c",
+        "home": "Cruzeiro MG",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "522eacf0-0e25-4da1-a6b4-c78ee62f238b",
+        "home": "Sporting CP",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "636695fd-8fee-43d9-a08b-d8b949621d3a",
+        "home": "Fluminense RJ",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "31a61e64-9d61-5141-9483-32857d3ccecc",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      },
+      {
+        "id": "9d663429-719c-4bf4-a1f0-9d503ab0303a",
+        "home": "FC Famalicão",
+        "away": "SV Elversberg",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219"
+      },
+      {
+        "id": "d4b76206-6a8f-4545-8dca-3ee7fad118ea",
+        "home": "Stade Rennais FC",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      },
+      {
+        "id": "60c89888-4ae7-45bd-afaa-ce6ba7d80ee0",
+        "home": "Atlético PR",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      }
+    ]
+  },
+  {
+    "roundNumber": 22,
+    "competition": "League",
+    "fixtures": [
+      {
+        "id": "c7740650-d849-4755-bf8c-ef0dcab589d2",
+        "home": "Real Madrid",
+        "away": "Arsenal FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "f6fb282c-e699-ff46-9e26-89d14c694538",
+        "awayClubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61"
+      },
+      {
+        "id": "98481c1f-5fec-4199-93d0-b0d21bea17c2",
+        "home": "Bayern München",
+        "away": "Paris Saint-Germain",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "a3f16faa-c3c4-5842-81ea-b0e68ee551b8",
+        "awayClubId": "26ef89e3-56c6-0b4e-b6cf-24e47db55ef9"
+      },
+      {
+        "id": "6fefeb7b-bfe0-4e78-8de3-63d8de6a8014",
+        "home": "FC Internazionale Milano",
+        "away": "FC Porto",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6ef7f5f2-cab0-fb47-883e-66b317189dae",
+        "awayClubId": "587a76db-cf8e-3542-957e-6544812c3aab"
+      },
+      {
+        "id": "98bd6f84-ed17-460a-a0d4-bef7840e23ac",
+        "home": "FC Barcelona",
+        "away": "Flamengo RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "9b6949ae-103a-f041-b5cc-990093f3bca6",
+        "awayClubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00"
+      },
+      {
+        "id": "f262614d-1ca1-461c-9712-85b590bb56a2",
+        "home": "RB Leipzig",
+        "away": "Borussia Dortmund",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa",
+        "awayClubId": "62f367b0-ad6d-f84e-b10f-e2f77d022954"
+      },
+      {
+        "id": "a6ae2747-85ee-4679-841f-df88eb53c4e7",
+        "home": "Manchester City FC",
+        "away": "Atlético Madrid",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "41f10264-8393-6348-b0b6-da8006dccab9",
+        "awayClubId": "f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7"
+      },
+      {
+        "id": "8823d278-dd86-4699-9206-4784d72ac3e7",
+        "home": "Palmeiras SP",
+        "away": "SL Benfica",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b93369d6-1df1-3642-9ad5-08aefebd0eb5",
+        "awayClubId": "95eaa5e6-5869-f343-90df-a128995d2585"
+      },
+      {
+        "id": "1d0d22b9-9c23-483c-8335-5ec8670fd16f",
+        "home": "Lille OSC",
+        "away": "AS Roma",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dffd7032-985b-3d4f-a33e-f48461cd4855",
+        "awayClubId": "430ce72b-e718-fb4f-aab6-605b5c169633"
+      },
+      {
+        "id": "9fdcd08c-30a4-4397-951e-2bfe29b58fa8",
+        "home": "SC Braga",
+        "away": "Frosinone Calcio",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "0b1785c6-b2f9-8643-ab97-4b0a659276a8",
+        "awayClubId": "381c79d0-fe18-6f46-8857-5972411565dd"
+      },
+      {
+        "id": "69f8ad42-1f5c-4313-999c-01055c87cc9a",
+        "home": "Cruzeiro MG",
+        "away": "Como 1907",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "14ee43af-d453-a343-8209-724f783c3912",
+        "awayClubId": "3924402e-a6da-d044-86c6-4d77db344c1d"
+      },
+      {
+        "id": "3fb03c2f-5cf3-4302-9327-8013e157e6b5",
+        "home": "Bayer 04 Leverkusen",
+        "away": "Olympique Lyonnais",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "72073afd-c047-4645-bc87-a7da14cbc4b2",
+        "awayClubId": "ae2c86bd-e501-074c-99ea-e23c1881b528"
+      },
+      {
+        "id": "199564fe-34a0-4943-9918-48a94c408842",
+        "home": "Sporting CP",
+        "away": "Real Betis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "dade9b8e-1939-2444-9907-94543ab0928b",
+        "awayClubId": "d5f0ecd5-de1b-804d-bbe2-7407f5a1a446"
+      },
+      {
+        "id": "fb35d984-8730-4e9e-8b9b-0bbddcabc474",
+        "home": "SV Elversberg",
+        "away": "Fluminense RJ",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "b2addc73-a58b-224e-a3f3-c7dbdc7b8219",
+        "awayClubId": "31a61e64-9d61-5141-9483-32857d3ccecc"
+      },
+      {
+        "id": "bb39f638-d7a3-4d32-ac7c-41b71e036ee6",
+        "home": "Stade Rennais FC",
+        "away": "Juventus",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "8caadb71-1ee1-c641-910f-dc52b617a6c5",
+        "awayClubId": "588631ad-80e6-6744-bad0-2fc1119253a4"
+      },
+      {
+        "id": "c50a2ea7-46ee-4ff1-9884-8f4cc777a617",
+        "home": "FC Famalicão",
+        "away": "Southampton FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+        "awayClubId": "2c754cf2-b0ed-214a-82c7-0a979b7e6b72"
+      },
+      {
+        "id": "a4cee5e8-5d2b-4fde-a3a7-df31ac8d3121",
+        "home": "Atlético PR",
+        "away": "Villarreal CF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "isFinished": false,
+        "homeClubId": "56241ac1-4216-c54f-89ad-a2c2be150e0c",
+        "awayClubId": "5a3c066d-5e44-ab47-b352-19f7aae52e18"
+      }
+    ]
+  }
+]

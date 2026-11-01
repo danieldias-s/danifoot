@@ -225,6 +225,7 @@ public sealed class WorldCreator013ATests
             || isolated.Host == "127.0.0.1" && isolated.Database.StartsWith("elifoot_013c_", StringComparison.Ordinal) && isolated.Port == 55436
             || isolated.Host == "127.0.0.1" && isolated.Database.StartsWith("elifoot_014b_", StringComparison.Ordinal) && isolated.Port == 55437
             || isolated.Host == "127.0.0.1" && isolated.Database.StartsWith("elifoot_014c_", StringComparison.Ordinal) && isolated.Port == 55438
+            || isolated.Host == "127.0.0.1" && isolated.Database.StartsWith("elifoot_015b_", StringComparison.Ordinal) && isolated.Port == 55440
             || isolated.Host == "127.0.0.1" && isolated.Database.StartsWith("elifoot_015a_", StringComparison.Ordinal) && isolated.Port == 55439);
         var services = new ServiceCollection(); services.AddDbContext<ElifootDbContext>(o => o.UseNpgsql(connection)); services.AddSingleton<IWorldRepository, EfWorldRepository>();
         await using var provider = services.BuildServiceProvider();

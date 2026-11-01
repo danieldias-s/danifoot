@@ -999,8 +999,14 @@ void main() {
       await tester.tap(find.text('5. RANKING & CARREIRA'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('coach-ranking-table')), findsOneWidget);
-      await tester.ensureVisible(find.text('Treinador 1').first);
-      await tester.tap(find.text('Treinador 1').first);
+      final coachName = find
+          .descendant(
+            of: find.byKey(const ValueKey('coach-ranking-table')),
+            matching: find.text('Treinador 1'),
+          )
+          .first;
+      await tester.ensureVisible(coachName);
+      await tester.tap(coachName);
       await tester.pumpAndSettle();
       expect(
         find.byKey(const ValueKey('coach-career-detail-dialog')),
@@ -1048,6 +1054,10 @@ void main() {
           '5. RANKING & CARREIRA',
           '6. CALENDÁRIO & RESULTADOS',
         ]) {
+          if (width < 1024) {
+            await tester.tap(find.byKey(const Key('open-navigation')));
+            await tester.pumpAndSettle();
+          }
           await tester.ensureVisible(find.text(tab));
           await tester.tap(find.text(tab));
           await tester.pumpAndSettle();

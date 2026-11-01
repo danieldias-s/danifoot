@@ -1,0 +1,35 @@
+{
+  "Case": "final",
+  "Seed": 199801,
+  "Seasons": 100,
+  "SourceCheckpoint": "7529e69",
+  "Gender": "Male",
+  "WorldSnapshot": null,
+  "FixtureWorld": false,
+  "DataMode": null,
+  "PlayerOrigins": {
+    "LEGACY": 2308
+  },
+  "InitialCash": 138800000,
+  "FinalCash": 137353919.79,
+  "FinalDebt": 3270104.68,
+  "Transactions": 556238,
+  "TransferPairs": 8888,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3264000,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "OperatingRules": {
+    "Name": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+    "AnnualSponsorship": true,
+    "GateQualityExponent": 2.2,
+    "ReserveBorrowedCapitalForAi": true,
+    "AiCreditRequiresOperatingSurplus": true
+  },
+  "SalaryRequests": 130,
+  "ForcedAuctions": 162,
+  "Unsold": 63,
+  "Crises": 111,
+  "Recovered": 103
+}

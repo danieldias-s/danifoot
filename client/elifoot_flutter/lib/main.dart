@@ -11,6 +11,7 @@ import 'match_router.dart';
 import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
+import 'classic_layout.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
@@ -86,7 +87,7 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: appearance,
     builder: (context, _) => MaterialApp.router(
-      title: 'Elifoot Classic Multiplayer — 015A',
+      title: 'Liga Clássica 98 — 015B',
       debugShowCheckedModeBanner: false,
       theme: appearance.theme.material(),
       routerDelegate: router,
@@ -206,6 +207,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   // Editor state
 
+  final _shellScaffoldKey = GlobalKey<ScaffoldState>();
   int _activeTabIndex = 0;
   bool _showMatchView = false;
   final _roundView = RoundViewCoordinator();
@@ -514,6 +516,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       if (_navigation.locked && !wasLocked) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted && _navigation.locked) {
+            _shellScaffoldKey.currentState?.closeDrawer();
             Navigator.of(context).popUntil((route) => route.isFirst);
           }
         });
@@ -669,95 +672,125 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       return _buildLobbyAndHomeScreen();
     }
 
-    return PopScope(
-      canPop: !_matchLocked,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * 0.42,
-                ),
-                child: SingleChildScrollView(
-                  child: _buildTopSynchronizedHeader(),
-                ),
-              ),
-              if (_statusBanner != null)
-                Container(
-                  width: double.infinity,
-                  color: ClassicTheme.of(context).surfaceAlternate,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
+    return LayoutBuilder(
+      builder: (context, viewport) {
+        final desktop = viewport.maxWidth >= 1024;
+        return PopScope(
+          canPop: !_matchLocked,
+          child: Scaffold(
+            key: _shellScaffoldKey,
+            drawer: desktop
+                ? null
+                : Drawer(
+                    width: 250,
+                    child: SafeArea(child: _buildClassicNavigationMenu()),
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        '[!]',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: ClassicTheme.of(context).accent,
-                        ),
+            body: SafeArea(
+              child: Column(
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.sizeOf(context).height * 0.42,
+                    ),
+                    child: SingleChildScrollView(
+                      child: _buildTopSynchronizedHeader(),
+                    ),
+                  ),
+                  if (_statusBanner != null)
+                    Container(
+                      width: double.infinity,
+                      color: ClassicTheme.of(context).surfaceAlternate,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
                       ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          _statusBanner!,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: ClassicTheme.of(context).textPrimary,
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () => setState(() => _statusBanner = null),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          child: Text(
-                            '[X]',
+                      child: Row(
+                        children: [
+                          Text(
+                            '[!]',
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                               color: ClassicTheme.of(context).accent,
                             ),
                           ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              _statusBanner!,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: ClassicTheme.of(context).textPrimary,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () => setState(() => _statusBanner = null),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 2,
+                              ),
+                              child: Text(
+                                '[X]',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  color: ClassicTheme.of(context).accent,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if ((_snapshot?['roundState'] == 'PREPARING' ||
+                          _snapshot?['roundState'] == 'ALL_READY') &&
+                      ((_snapshot?['readyCounter']?['participants'] as List? ??
+                              [])
+                          .any(
+                            (p) =>
+                                p['coachId'] == _coachId &&
+                                p['isReady'] == true,
+                          )))
+                    Container(
+                      key: const Key('ready-waiting-panel'),
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(8),
+                      color: ClassicTheme.of(context).surfaceAlternate,
+                      child: Text(
+                        _isUnemployed
+                            ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+                            : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                        style: TextStyle(
+                          color: ClassicTheme.of(context).accent,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              if ((_snapshot?['roundState'] == 'PREPARING' ||
-                      _snapshot?['roundState'] == 'ALL_READY') &&
-                  ((_snapshot?['readyCounter']?['participants'] as List? ?? [])
-                      .any(
-                        (p) => p['coachId'] == _coachId && p['isReady'] == true,
-                      )))
-                Container(
-                  key: const Key('ready-waiting-panel'),
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(8),
-                  color: ClassicTheme.of(context).surfaceAlternate,
-                  child: Text(
-                    _isUnemployed
-                        ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
-                        : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).accent,
-                      fontWeight: FontWeight.bold,
+                    ),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (desktop) _buildClassicNavigationMenu(),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              if (!_matchLocked && !_showMatchView)
+                                _buildClubSummaryStrip(),
+                              Expanded(child: _buildActiveScreenBody()),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              _buildClassicNavigationMenu(),
-              Expanded(child: _buildActiveScreenBody()),
-            ],
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -1024,360 +1057,283 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   /// Shows `TÁTICAS ENVIADAS: X/N` + names in preparation, and `MINUTO XX'`, `SUBSTITUIÇÕES X/5`, `PARADAS X/3`, `PEDIR PARADA` in match!
   Widget _buildTopSynchronizedHeader() {
     final snap = _snapshot;
-    final roundState = snap?['roundState']?.toString() ?? 'PREPARING';
-    final readyCounter = snap?['readyCounter'] as Map<String, dynamic>?;
-    final counterLabel =
-        readyCounter?['counterLabel']?.toString() ?? 'TÁTICAS ENVIADAS: 0/1';
-    final participants = readyCounter?['participants'] as List<dynamic>? ?? [];
-    final currentMinute = (snap?['currentMinute'] as num?)?.toInt() ?? 0;
-    final pauseWindow = snap?['activePauseWindow'] as Map<String, dynamic>?;
-
-    Map<String, dynamic>? myPart;
-    for (final p in participants) {
-      if (p['coachId']?.toString() == _coachId) {
-        myPart = p as Map<String, dynamic>;
-        break;
-      }
-    }
-
-    final isReady = myPart?['isReady'] == true;
-    final usedSubs = myPart?['usedSubstitutions'] ?? 0;
-    final maxSubs = myPart?['maxSubstitutions'] ?? 5;
-    final usedWins = myPart?['usedPauseWindows'] ?? 0;
-    final maxWins = myPart?['maxPauseWindows'] ?? 3;
-    final clubName = _isUnemployed
-        ? 'TREINADOR SEM CLUBE'
-        : (_myClubDetail?['name']?.toString() ??
-              (myPart?['clubName']?.toString() ?? 'Desempregado'));
-    final cash = (_myClubDetail?['cashBalance'] as num?)?.toDouble() ?? 0.0;
-
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surface,
-        border: Border(
-          bottom: BorderSide(
-            color: ClassicTheme.of(context).selectedBackground,
-            width: 2,
-          ),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            spacing: 10,
-            runSpacing: 6,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Text(
-                '${snap?['worldName'] ?? 'Sala'} • Temp ${snap?['seasonNumber'] ?? 1} • Rodada ${snap?['roundNumber'] ?? 1} (${snap?['competitionLabel'] ?? ''})',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
+    final state = snap?['roundState']?.toString() ?? 'PREPARING';
+    final people = snap?['readyCounter']?['participants'] as List? ?? [];
+    final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+    final ready = me?['isReady'] == true;
+    final pause = snap?['activePauseWindow'] as Map?;
+    final t = ClassicTheme.of(context);
+    Widget action;
+    if (state == 'PREPARING') {
+      action = ready
+          ? OutlinedButton(
+              key: const Key('btn-retirar-pronto'),
+              onPressed: _commandBusy
+                  ? null
+                  : () => _runUiCommand(_handleWithdrawReady),
+              child: const Text('RETIRAR PRONTO'),
+            )
+          : ElevatedButton(
+              key: const Key('btn-enviar-tatica'),
+              onPressed:
+                  _commandBusy ||
+                      (!_isUnemployed &&
+                          !_isClassicIdleRound &&
+                          (_requiredStarterCount < 1 ||
+                              _selectedStarterIds.length !=
+                                  _requiredStarterCount))
+                  ? null
+                  : () => _runUiCommand(_handleSendTacticsOrReady),
+              child: Text(
+                _isUnemployed || _isClassicIdleRound
+                    ? 'PRONTO PARA ACOMPANHAR'
+                    : 'ENVIAR TÁTICA',
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                color: ClassicTheme.of(context).buttonBackground,
-                child: Text(
-                  _isUnemployed
-                      ? 'TÉCNICO: $_nickname ($clubName)'
-                      : 'TÉCNICO: $_nickname ($clubName) • CAIXA: ${formatClassicMoney(cash)}',
-                  style: const TextStyle(
+            );
+    } else if (state == 'RESULTS') {
+      action = ElevatedButton(
+        key: const Key('btn-proxima-rodada'),
+        onPressed: _commandBusy
+            ? null
+            : () => _runUiCommand(() async {
+                final next = await widget.apiClient.advanceToNextRound(
+                  _worldId!,
+                );
+                setState(() {
+                  _snapshot = _acceptSnapshot(next);
+                  _activeTabIndex = 0;
+                  _selectedStarterIds = [];
+                });
+                await _refreshClubAndSecondaryData();
+              }),
+        child: const Text('AVANÇAR PRÓXIMA RODADA'),
+      );
+    } else if (pause != null) {
+      action = ElevatedButton(
+        key: const Key('btn-confirmar-continuar'),
+        onPressed: _commandBusy
+            ? null
+            : () => _runUiCommand(_handleConfirmContinue),
+        child: Text(
+          state == 'HALFTIME_PAUSED' ? 'PRONTO PARA O 2º TEMPO' : 'CONTINUAR',
+        ),
+      );
+    } else if (state.startsWith('RUNNING_')) {
+      action = ElevatedButton(
+        key: const Key('btn-pedir-parada'),
+        onPressed: _commandBusy
+            ? null
+            : () => _runUiCommand(_handleRequestGlobalPause),
+        child: const Text('PEDIR PARADA'),
+      );
+    } else {
+      action = const Text('TEMPORADA ENCERRADA');
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        AppHeader(
+          round:
+              'Temporada ${snap?['seasonNumber'] ?? '—'} | Rodada ${snap?['roundNumber'] ?? '—'} (${snap?['competitionLabel'] ?? ''})',
+          date: formatClassicDate(snap?['gameDate']),
+          world: snap?['worldName']?.toString() ?? '',
+          action: action,
+          openMenu: MediaQuery.sizeOf(context).width < 1024 && !_matchLocked
+              ? () => _shellScaffoldKey.currentState?.openDrawer()
+              : null,
+        ),
+        Container(
+          color: t.surface,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Text(
+                  snap?['readyCounter']?['counterLabel']?.toString() ??
+                      'TÁTICAS ENVIADAS: —',
+                  key: const Key('ready-counter-label'),
+                  style: TextStyle(
+                    color: t.accent,
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              _buildCoachMorale(),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: ClassicTheme.of(context).surfaceAlternate,
-                  border: Border.all(
-                    color: ClassicTheme.of(context).selectedBackground,
-                  ),
-                ),
-                child: Text(
-                  counterLabel,
-                  key: const Key('ready-counter-label'),
-                  style: TextStyle(
-                    color: ClassicTheme.of(context).accent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-              if (!_showMatchView &&
-                  RoundViewCoordinator.isMatchStage(roundState))
-                OutlinedButton(
-                  key: const Key('return-to-match'),
-                  onPressed: () => setState(() => _showMatchView = true),
-                  child: const Text('VOLTAR À PARTIDA'),
-                ),
-              if (widget.appearance != null && !_matchLocked)
-                OutlinedButton(
-                  key: const ValueKey('appearance-menu'),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => AppearanceSettings(
-                        api: widget.apiClient,
-                        controller: widget.appearance!,
-                      ),
-                    ),
-                  ),
-                  child: const Text('APARÊNCIA'),
-                ),
-              if (roundState == 'PREPARING') ...[
-                if (!isReady)
-                  ElevatedButton(
-                    key: const Key('btn-enviar-tatica'),
-                    onPressed:
-                        _commandBusy ||
-                            (!_isUnemployed &&
-                                !_isClassicIdleRound &&
-                                (_requiredStarterCount < 1 ||
-                                    _selectedStarterIds.length !=
-                                        _requiredStarterCount))
-                        ? null
-                        : () => _runUiCommand(_handleSendTacticsOrReady),
+                const SizedBox(width: 16),
+                for (final person in people)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
                     child: Text(
-                      _isUnemployed || _isClassicIdleRound
-                          ? 'PRONTO PARA ACOMPANHAR'
-                          : 'ENVIAR TÁTICA',
+                      '${person['isReady'] == true ? '[OK]' : '[..]'} ${person['nickname']} (${person['clubName'] ?? 'Sem clube'})${person['isConnected'] == false ? ' • DESCONECTADO' : ''}',
+                      style: TextStyle(color: t.textSecondary, fontSize: 10),
                     ),
-                  )
-                else
-                  OutlinedButton(
-                    key: const Key('btn-retirar-pronto'),
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(_handleWithdrawReady),
-                    child: const Text('RETIRAR PRONTO'),
+                  ),
+                if (!_showMatchView && RoundViewCoordinator.isMatchStage(state))
+                  TextButton(
+                    key: const Key('return-to-match'),
+                    onPressed: () => setState(() => _showMatchView = true),
+                    child: const Text('VOLTAR À PARTIDA'),
                   ),
               ],
-              if (roundState != 'PREPARING') ...[
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  color: Colors.black54,
-                  child: Text(
-                    "MINUTO $currentMinute'  |  SUBSTITUIÇÕES $usedSubs/$maxSubs  |  PARADAS $usedWins/$maxWins",
-                    key: const Key('live-match-quota-header'),
-                    style: const TextStyle(
-                      color: Colors.lightGreenAccent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                    ),
-                  ),
-                ),
-                if (roundState == 'RUNNING_FIRST_HALF' ||
-                    roundState == 'RUNNING_SECOND_HALF' ||
-                    roundState == 'RUNNING_EXTRA_TIME')
-                  ElevatedButton(
-                    key: const Key('btn-pedir-parada'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
-                      foregroundColor: ClassicTheme.of(context).textPrimary,
-                    ),
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(_handleRequestGlobalPause),
-                    child: const Text('PEDIR PARADA'),
-                  ),
-                if (roundState == 'RESULTS')
-                  ElevatedButton(
-                    key: const Key('btn-proxima-rodada'),
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(() async {
-                            final nextSnap = await widget.apiClient
-                                .advanceToNextRound(_worldId!);
-                            setState(() {
-                              _snapshot = _acceptSnapshot(nextSnap);
-                              _activeTabIndex = 0;
-                              _selectedStarterIds = [];
-                            });
-                            await _refreshClubAndSecondaryData();
-                          }),
-                    child: const Text('AVANÇAR PRÓXIMA RODADA'),
-                  ),
-              ],
-              OutlinedButton(
-                onPressed: _matchLocked
-                    ? null
-                    : () async {
-                        if (_matchLocked) return;
-                        widget.apiClient.disconnectRealtime();
-                        setState(() {
-                          _worldId = null;
-                          widget.appearance?.activate(
-                            widget.apiClient,
-                            null,
-                            null,
-                            null,
-                            null,
-                          );
-                          _snapshot = null;
-                          _myClubDetail = null;
-                          _myClubId = null;
-                          _selectedStarterIds = [];
-                        });
-                        await _saveSession();
-                      },
-                child: const Text(
-                  'TROCAR SALA',
-                  style: TextStyle(fontSize: 11),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          Wrap(
-            spacing: 6,
-            runSpacing: 4,
-            children: participants.map((p) {
-              final pName = p['nickname']?.toString() ?? '';
-              final pClub = p['clubName']?.toString() ?? '';
-              final pReady = p['isReady'] == true;
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(
-                  color: pReady
-                      ? ClassicTheme.of(context).selectedBackground
-                      : ClassicTheme.of(context).surface,
-                  border: Border.all(
-                    color: pReady
-                        ? ClassicTheme.of(context).border
-                        : ClassicTheme.of(context).border,
-                  ),
-                ),
-                child: Text(
-                  '${pReady ? "[OK]" : "[..]"} $pName ($pClub)${p['isConnected'] == false ? " • DESCONECTADO" : ""}',
-                  style: TextStyle(
-                    fontSize: 10.5,
-                    color: pReady
-                        ? ClassicTheme.of(context).selectedText
-                        : ClassicTheme.of(context).textSecondary,
-                    fontWeight: pReady ? FontWeight.bold : FontWeight.normal,
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-          if (pauseWindow != null) ...[
-            const SizedBox(height: 6),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: const Color(0xFF4A1212),
-                border: Border.all(color: Colors.amberAccent, width: 2),
-              ),
-              child: Wrap(
-                spacing: 12,
-                runSpacing: 6,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    roundState == 'HALFTIME_PAUSED'
-                        ? "INTERVALO DE JOGO (45') — AJUSTES GRATUITOS"
-                        : "PARTIDA PAUSADA POR ${pauseWindow['requestedByCoachName'] ?? 'INTERVALO'} (${pauseWindow['minute']}')",
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).accent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                  Text(
-                    "AJUSTES CONFIRMADOS: ${pauseWindow['confirmedCount']}/${pauseWindow['totalHumans']}  |  TEMPO: ${pauseWindow['remainingSeconds']}s",
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).textPrimary,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                    ),
-                  ),
-                  ElevatedButton(
-                    key: const Key('btn-confirmar-continuar'),
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(_handleConfirmContinue),
-                    child: Text(
-                      roundState == 'HALFTIME_PAUSED'
-                          ? 'PRONTO PARA O 2º TEMPO'
-                          : 'CONTINUAR',
-                    ),
-                  ),
-                ],
-              ),
             ),
-          ],
-        ],
-      ),
+          ),
+        ),
+        if (state != 'PREPARING')
+          Container(
+            color: t.secondary,
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            child: Text(
+              "MINUTO ${snap?['currentMinute'] ?? 0}'  |  SUBSTITUIÇÕES ${me?['usedSubstitutions'] ?? 0}/${me?['maxSubstitutions'] ?? 5}  |  PARADAS ${me?['usedPauseWindows'] ?? 0}/${me?['maxPauseWindows'] ?? 3}",
+              key: const Key('live-match-quota-header'),
+              style: TextStyle(fontSize: 11, color: t.textSecondary),
+            ),
+          ),
+        if (pause != null)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            color: t.surfaceAlternate,
+            child: Wrap(
+              spacing: 12,
+              runSpacing: 4,
+              children: [
+                Text(
+                  state == 'HALFTIME_PAUSED'
+                      ? "INTERVALO DE JOGO (45') — AJUSTES GRATUITOS"
+                      : "PARTIDA PAUSADA POR ${pause['requestedByCoachName'] ?? 'INTERVALO'} (${pause['minute']}')",
+                  style: TextStyle(
+                    color: t.accent,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "AJUSTES CONFIRMADOS: ${pause['confirmedCount']}/${pause['totalHumans']}  |  TEMPO: ${pause['remainingSeconds']}s",
+                  style: TextStyle(color: t.textPrimary, fontSize: 11),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 
-  Widget _buildClassicNavigationMenu() {
-    const tabs = [
-      '1. PLANTEL & TÁTICAS',
-      '2. DIVISÕES & TAÇA',
-      '3. MERCADO & LEILÃO',
-      '4. FINANÇAS & ESTÁDIO',
-      '5. RANKING & CARREIRA',
-      '6. CALENDÁRIO & RESULTADOS',
-      '7. RANKINGS DE JOGADORES',
-    ];
-
-    return Container(
-      width: double.infinity,
-      color: ClassicTheme.of(context).surface,
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(tabs.length, (idx) {
-            final selected = !_showMatchView && _activeTabIndex == idx;
-            return Padding(
-              padding: const EdgeInsets.only(right: 6),
-              child: InkWell(
-                key: ValueKey('shell-nav-$idx'),
-                onTap: _matchLocked ? null : () => _navigateToTab(idx),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: selected
-                        ? ClassicTheme.of(context).selectedBackground
-                        : ClassicTheme.of(context).surfaceAlternate,
-                    border: Border.all(
-                      color: selected
-                          ? ClassicTheme.of(context).selectedBackground
-                          : ClassicTheme.of(context).border,
-                    ),
-                  ),
-                  child: Text(
-                    tabs[idx],
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: selected
-                          ? ClassicTheme.of(context).selectedText
-                          : ClassicTheme.of(context).textPrimary,
-                    ),
-                  ),
+  Widget _buildClassicNavigationMenu() => AppSidebar(
+    selected: _showMatchView ? -1 : _activeTabIndex,
+    locked: _matchLocked,
+    onSelected: (idx) {
+      _navigateToTab(idx);
+      _shellScaffoldKey.currentState?.closeDrawer();
+    },
+    showAppearance: widget.appearance != null,
+    appearance: _matchLocked
+        ? null
+        : () {
+            _shellScaffoldKey.currentState?.closeDrawer();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => AppearanceSettings(
+                  api: widget.apiClient,
+                  controller: widget.appearance!,
                 ),
               ),
             );
-          }),
-        ),
+          },
+    switchRoom: _matchLocked
+        ? null
+        : () async {
+            if (_matchLocked) return;
+            _shellScaffoldKey.currentState?.closeDrawer();
+            widget.apiClient.disconnectRealtime();
+            setState(() {
+              _worldId = null;
+              widget.appearance?.activate(
+                widget.apiClient,
+                null,
+                null,
+                null,
+                null,
+              );
+              _snapshot = null;
+              _myClubDetail = null;
+              _myClubId = null;
+              _selectedStarterIds = [];
+            });
+            await _saveSession();
+          },
+  );
+
+  Widget _buildClubSummaryStrip() {
+    final club = _myClubDetail;
+    final round = (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1;
+    final next = _calendar
+        .where(
+          (r) =>
+              (r['roundNumber'] as num? ?? 0) >=
+              (round + (_snapshot?['roundState'] == 'RESULTS' ? 1 : 0)),
+        )
+        .firstOrNull;
+    final fixture = (next?['fixtures'] as List? ?? [])
+        .where((f) => f['home'] == club?['name'] || f['away'] == club?['name'])
+        .firstOrNull;
+    final cards = <Widget>[
+      ClassicSummaryCard(
+        icon: Icons.shield_outlined,
+        title: club?['name']?.toString() ?? 'TREINADOR SEM CLUBE',
+        subtitle: _nickname,
+      ),
+      ClassicSummaryCard(
+        icon: Icons.emoji_events_outlined,
+        title: club?['divisionDisplay']?.toString() ?? 'Sem divisão',
+        subtitle:
+            'Posição: ${_standings.where((s) => s['clubId'] == _myClubId).firstOrNull?['position'] ?? '—'}º',
+      ),
+      ClassicSummaryCard(
+        icon: Icons.sentiment_satisfied_alt,
+        content: _buildCoachMorale(),
+      ),
+      ClassicSummaryCard(
+        icon: Icons.account_balance_wallet_outlined,
+        title: 'Caixa',
+        subtitle: club?['cashBalance'] is num
+            ? formatClassicMoney(club!['cashBalance'])
+            : '—',
+      ),
+      ClassicSummaryCard(
+        icon: Icons.sports_soccer,
+        title: 'Próximo jogo',
+        subtitle: fixture == null
+            ? 'A definir'
+            : '${fixture['home'] == club?['name'] ? fixture['away'] : fixture['home']} • R${next?['roundNumber']}',
+      ),
+    ];
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+      child: LayoutBuilder(
+        builder: (context, c) => c.maxWidth >= 920
+            ? Row(
+                children: [
+                  for (int i = 0; i < cards.length; i++) ...[
+                    if (i > 0) const SizedBox(width: 6),
+                    Expanded(flex: i == 0 ? 5 : 4, child: cards[i]),
+                  ],
+                ],
+              )
+            : SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    for (int i = 0; i < cards.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 6),
+                        child: SizedBox(
+                          width: i == 0 || i == 4 ? 205 : 162,
+                          child: cards[i],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
       ),
     );
   }
@@ -1750,293 +1706,303 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     }
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildCoachMainPanel(),
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: ClassicTheme.of(context).surface,
-              border: Border.all(color: ClassicTheme.of(context).border),
+    final tacticControls = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Wrap(
+          spacing: 8,
+          runSpacing: 4,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            const Text(
+              'FORMAÇÃO',
+              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Wrap(
-                  spacing: 14,
-                  runSpacing: 8,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Wrap(
-                      spacing: 6,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          'ESQUEMA TÁTICO: ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            color: ClassicTheme.of(context).accent,
-                          ),
-                        ),
-                        DropdownButton<String>(
-                          key: const ValueKey('dropdown-formation'),
-                          dropdownColor: ClassicTheme.of(context).surface,
-                          icon: _classicDropdownIcon(context),
-                          value:
-                              availableFormations.contains(_selectedFormation)
-                              ? _selectedFormation
-                              : '4-4-2',
-                          items: availableFormations
-                              .map(
-                                (f) => DropdownMenuItem(
-                                  value: f,
-                                  child: Text(
-                                    f,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: _tacticsLocked
-                              ? null
-                              : (v) {
-                                  if (v != null) {
-                                    setState(() => _selectedFormation = v);
-                                  }
-                                },
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'TITULARES: ${_selectedStarterIds.length}/11  |  BANCO: ${_selectedBenchIds.length}/9  |  ELENCO: ${squad.length}/24',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: _selectedStarterIds.length == 11
-                            ? Colors.lightGreenAccent
-                            : Colors.orangeAccent,
-                      ),
-                    ),
-                    OutlinedButton(
-                      key: const ValueKey('btn-auto-escalar'),
-                      onPressed: _tacticsLocked ? null : _autoPickBestLineup,
-                      child: const Text(
-                        'AUTO-ESCALAR 11 + BANCO',
-                        style: TextStyle(fontSize: 11),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 6,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Text(
-                      'FILTRAR POS:',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: ClassicTheme.of(context).accent,
-                      ),
-                    ),
-                    for (final pos in ['ALL', 'G', 'D', 'M', 'A'])
-                      InkWell(
-                        key: ValueKey('filter-squad-pos-$pos'),
-                        onTap: () => setState(() => _squadPositionFilter = pos),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: _squadPositionFilter == pos
-                                ? ClassicTheme.of(context).selectedBackground
-                                : ClassicTheme.of(context).surface,
-                            border: Border.all(
-                              color: ClassicTheme.of(context).border,
-                            ),
-                          ),
-                          child: Text(
-                            pos == 'ALL' ? 'TODAS' : pos,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: _squadPositionFilter == pos
-                                  ? ClassicTheme.of(context).selectedText
-                                  : ClassicTheme.of(context).textPrimary,
-                            ),
-                          ),
+            const SizedBox(width: 8),
+            DropdownButton<String>(
+              key: const ValueKey('dropdown-formation'),
+              value: availableFormations.contains(_selectedFormation)
+                  ? _selectedFormation
+                  : '4-4-2',
+              isDense: true,
+              icon: _classicDropdownIcon(context),
+              items: availableFormations
+                  .map(
+                    (f) => DropdownMenuItem(
+                      value: f,
+                      child: Text(
+                        f,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'STATUS:',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: ClassicTheme.of(context).accent,
-                      ),
                     ),
-                    for (final st in [
-                      ('ALL', 'TODOS'),
-                      ('TITULAR', 'TITULARES'),
-                      ('RESERVA', 'RESERVAS'),
-                      ('APTO', 'APTOS'),
-                      ('INDISPONIVEL', 'INDISPONÍVEIS'),
-                    ])
-                      InkWell(
-                        key: ValueKey('filter-squad-status-${st.$1}'),
-                        onTap: () => setState(() => _squadStatusFilter = st.$1),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: _squadStatusFilter == st.$1
-                                ? ClassicTheme.of(context).selectedBackground
-                                : ClassicTheme.of(context).surface,
-                            border: Border.all(
-                              color: ClassicTheme.of(context).border,
-                            ),
-                          ),
-                          child: Text(
-                            st.$2,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: _squadStatusFilter == st.$1
-                                  ? ClassicTheme.of(context).selectedText
-                                  : ClassicTheme.of(context).textPrimary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'ORDENAR:',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: ClassicTheme.of(context).accent,
-                      ),
-                    ),
-                    for (final srt in [
-                      ('DEFAULT', 'PADRÃO'),
-                      ('STRENGTH_DESC', 'FORÇA'),
-                      ('GOALS_DESC', 'GOLS'),
-                      ('VALUE_DESC', 'VALOR'),
-                    ])
-                      InkWell(
-                        key: ValueKey('sort-squad-${srt.$1}'),
-                        onTap: () => setState(() => _squadSortBy = srt.$1),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: _squadSortBy == srt.$1
-                                ? ClassicTheme.of(context).selectedBackground
-                                : ClassicTheme.of(context).surface,
-                            border: Border.all(
-                              color: ClassicTheme.of(context).border,
-                            ),
-                          ),
-                          child: Text(
-                            srt.$2,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: _squadSortBy == srt.$1
-                                  ? ClassicTheme.of(context).selectedText
-                                  : ClassicTheme.of(context).textPrimary,
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ],
+                  )
+                  .toList(),
+              onChanged: _tacticsLocked
+                  ? null
+                  : (value) {
+                      if (value != null) {
+                        setState(() => _selectedFormation = value);
+                      }
+                    },
             ),
-          ),
-          const SizedBox(height: 10),
-          AbsorbPointer(
-            absorbing: _tacticsLocked,
-            child: _buildTacticalFieldPreview(squad),
-          ),
-          const SizedBox(height: 10),
-          const ClassicTableHeader(
-            title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
-            subtitle:
-                'Clique em STATUS para alternar TITULAR / RESERVA / FORA ou no nome do atleta para abrir a ficha completa.',
-          ),
-          const SizedBox(height: 4),
-          ClassicTable(
-            tableKey: 'squad-table',
-            pinnedHeader: 'POS / JOGADOR',
-            pinnedRows: pinnedRows,
-            numericColumns: const {3, 6, 7, 8, 9},
-            columns: const [
-              'STATUS',
-              'POS',
-              'JOGADOR (* = CRAQUE)',
-              'FORÇA',
-              'COMPORTAMENTO',
-              'CONDIÇÃO',
-              'GOLS',
-              'CONTRATO',
-              'SALÁRIO',
-              'VALOR JUSTO',
-              'AÇÕES',
-            ],
-            rows: tableRows,
-          ),
-          if (aiPlan != null) ...[
-            const SizedBox(height: 16),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: ClassicTheme.of(context).surface,
-                border: Border.all(color: ClassicTheme.of(context).border),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'RELATÓRIO DA COMISSÃO TÉCNICA / IA (${aiPlan['managerName']} — Perfil: ${aiPlan['tacticalIdentity']})',
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).accent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Análise: ${aiPlan['selectionReasoning']}',
-                    style: const TextStyle(fontSize: 11),
-                  ),
-                  Text(
-                    'Lacunas prioritárias: ${(aiPlan['priorityGaps'] as List<dynamic>? ?? []).join(" | ")}',
-                    style: const TextStyle(
-                      fontSize: 11,
-                      color: Colors.cyanAccent,
-                    ),
-                  ),
-                ],
+            OutlinedButton(
+              key: const ValueKey('btn-auto-escalar'),
+              onPressed: _tacticsLocked ? null : _autoPickBestLineup,
+              child: const Text(
+                'AUTO-ESCALAR 11 + BANCO',
+                style: TextStyle(fontSize: 10),
               ),
             ),
           ],
-        ],
-      ),
+        ),
+        Text(
+          'TITULARES: ${_selectedStarterIds.length}/11  |  BANCO: ${_selectedBenchIds.length}/9  |  ELENCO: ${squad.length}/24',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 11,
+            color: ClassicTheme.of(context).accent,
+          ),
+        ),
+      ],
+    );
+    final squadFilters = Wrap(
+      spacing: 8,
+      runSpacing: 6,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(
+          'FILTRAR POS:',
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: ClassicTheme.of(context).accent,
+          ),
+        ),
+        for (final pos in ['ALL', 'G', 'D', 'M', 'A'])
+          InkWell(
+            key: ValueKey('filter-squad-pos-$pos'),
+            onTap: () => setState(() => _squadPositionFilter = pos),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: _squadPositionFilter == pos
+                    ? ClassicTheme.of(context).selectedBackground
+                    : ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
+              ),
+              child: Text(
+                pos == 'ALL' ? 'TODAS' : pos,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: _squadPositionFilter == pos
+                      ? ClassicTheme.of(context).selectedText
+                      : ClassicTheme.of(context).textPrimary,
+                ),
+              ),
+            ),
+          ),
+        const SizedBox(width: 8),
+        Text(
+          'STATUS:',
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: ClassicTheme.of(context).accent,
+          ),
+        ),
+        for (final st in [
+          ('ALL', 'TODOS'),
+          ('TITULAR', 'TITULARES'),
+          ('RESERVA', 'RESERVAS'),
+          ('APTO', 'APTOS'),
+          ('INDISPONIVEL', 'INDISPONÍVEIS'),
+        ])
+          InkWell(
+            key: ValueKey('filter-squad-status-${st.$1}'),
+            onTap: () => setState(() => _squadStatusFilter = st.$1),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: _squadStatusFilter == st.$1
+                    ? ClassicTheme.of(context).selectedBackground
+                    : ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
+              ),
+              child: Text(
+                st.$2,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: _squadStatusFilter == st.$1
+                      ? ClassicTheme.of(context).selectedText
+                      : ClassicTheme.of(context).textPrimary,
+                ),
+              ),
+            ),
+          ),
+        const SizedBox(width: 8),
+        Text(
+          'ORDENAR:',
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: ClassicTheme.of(context).accent,
+          ),
+        ),
+        for (final srt in [
+          ('DEFAULT', 'PADRÃO'),
+          ('STRENGTH_DESC', 'FORÇA'),
+          ('GOALS_DESC', 'GOLS'),
+          ('VALUE_DESC', 'VALOR'),
+        ])
+          InkWell(
+            key: ValueKey('sort-squad-${srt.$1}'),
+            onTap: () => setState(() => _squadSortBy = srt.$1),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: _squadSortBy == srt.$1
+                    ? ClassicTheme.of(context).selectedBackground
+                    : ClassicTheme.of(context).surface,
+                border: Border.all(color: ClassicTheme.of(context).border),
+              ),
+              child: Text(
+                srt.$2,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: _squadSortBy == srt.$1
+                      ? ClassicTheme.of(context).selectedText
+                      : ClassicTheme.of(context).textPrimary,
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+    final squadTable = ClassicTable(
+      tableKey: 'squad-table',
+      pinnedHeader: 'POS / JOGADOR',
+      pinnedRows: pinnedRows,
+      numericColumns: const {3, 6, 7, 8, 9},
+      columns: const [
+        'STATUS',
+        'POS',
+        'JOGADOR (* = CRAQUE)',
+        'FORÇA',
+        'COMPORTAMENTO',
+        'CONDIÇÃO',
+        'GOLS',
+        'CONTRATO',
+        'SALÁRIO',
+        'VALOR JUSTO',
+        'AÇÕES',
+      ],
+      rows: tableRows,
+    );
+    final extras = <Widget>[
+      if (aiPlan != null) ...[
+        const SizedBox(height: 16),
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: ClassicTheme.of(context).surface,
+            border: Border.all(color: ClassicTheme.of(context).border),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'RELATÓRIO DA COMISSÃO TÉCNICA / IA (${aiPlan['managerName']} — Perfil: ${aiPlan['tacticalIdentity']})',
+                style: TextStyle(
+                  color: ClassicTheme.of(context).accent,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Análise: ${aiPlan['selectionReasoning']}',
+                style: const TextStyle(fontSize: 11),
+              ),
+              Text(
+                'Lacunas prioritárias: ${(aiPlan['priorityGaps'] as List<dynamic>? ?? []).join(" | ")}',
+                style: const TextStyle(fontSize: 11, color: Colors.cyanAccent),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ];
+    return LayoutBuilder(
+      builder: (context, viewport) {
+        final tactical = Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildCoachMainPanel(),
+            ClassicPanel(title: 'ESQUEMA TÁTICO', child: tacticControls),
+            const SizedBox(height: 8),
+            AbsorbPointer(
+              absorbing: _tacticsLocked,
+              child: _buildTacticalFieldPreview(squad),
+            ),
+          ],
+        );
+        final roster = ClassicPanel(
+          title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              squadFilters,
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: Text(
+                  'Clique em STATUS para alternar TITULAR / RESERVA / FORA ou no nome do atleta para abrir a ficha completa.',
+                  style: TextStyle(fontSize: 11),
+                ),
+              ),
+              squadTable,
+            ],
+          ),
+        );
+        return SingleChildScrollView(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const ClassicSectionTitle(
+                title: 'PLANTEL & TÁTICAS',
+                subtitle:
+                    'Prepare o onze inicial, escolha o esquema e envie a tática para a sala.',
+              ),
+              const SizedBox(height: 8),
+              if (viewport.maxWidth >= 1000)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      key: const Key('desktop-tactics-column'),
+                      width: (viewport.maxWidth * .34).clamp(330.0, 460.0),
+                      child: tactical,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(child: roster),
+                  ],
+                )
+              else ...[
+                tactical,
+                const SizedBox(height: 10),
+                roster,
+              ],
+              ...extras,
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -2702,8 +2668,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final pos = (r['position'] as num?)?.toInt() ?? (i + 1);
       final zone = r['zoneStatus']?.toString() ?? '';
       final isLeader = pos == 1;
-      final isPromo = zone.toUpperCase().contains('ACESSO') || pos <= 2;
-      final isReleg = zone.toUpperCase().contains('REBAIX') || pos >= 7;
+      final isPromo =
+          zone.toUpperCase().contains('ACESSO') ||
+          zone.toUpperCase().contains('PROMO');
+      final isReleg = zone.toUpperCase().contains('REBAIX');
       final isMyClub =
           r['clubId']?.toString() == _myClubId ||
           r['clubName']?.toString() == _myClubDetail?['name'];
@@ -3266,6 +3234,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const ClassicSectionTitle(
+            title: 'FINANÇAS & ESTÁDIO',
+            subtitle: 'Caixa, contratos, crédito e patrimônio do clube.',
+          ),
+          const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(

@@ -1,0 +1,227 @@
+- generic: LIGA CLÁSSICA
+- generic: "98"
+- generic: 015B - Mercado e partidas
+- generic: Temporada 1 | Rodada 3 (Campeonato Nacional)
+- generic: 08/08/1998
+- button "ENVIAR TÁTICA"
+- generic: "TÁTICAS ENVIADAS: 0/3"
+- generic: "[..] Daniel 015B (Flamengo RJ)"
+- generic: "[..] Comprador 015B (FC Porto)"
+- generic: "[..] Rival 015B (Arsenal FC)"
+- generic: CENTRAL DO TREINADOR
+- button "1. PLANTEL & TÁTICAS"
+- button "2. DIVISÕES & TAÇA"
+- button "3. MERCADO & LEILÃO"
+- button "4. FINANÇAS & ESTÁDIO"
+- button "5. RANKING & CARREIRA"
+- button "6. CALENDÁRIO & RESULTADOS" [active]
+- button "7. RANKINGS DE JOGADORES"
+- button "APARÊNCIA"
+- button "TROCAR SALA"
+- generic: LIGA CLÁSSICA 98
+- generic: Flamengo RJ
+- generic: 1ª Divisão
+- generic: Caixa
+- generic: Próximo jogo
+- generic: Moral do treinador 70 de 100, VERDE
+- generic: Daniel 015B
+- generic: "Posição: 5º"
+- generic: R$ 4.216.818
+- generic: CALENDÁRIO DA TEMPORADA E RESULTADOS Consulte os confrontos realizados e os jogos futuros da Liga e da Taça.
+- button "TODAS AS RODADAS"
+- button "RODADA ATUAL (R3)"
+- button "MEU CLUBE (Flamengo RJ)"
+- button "Rodada 1 • CupPreliminary1"
+- button "Rodada 2 • CupPreliminary2"
+- group "Rodada 3 • League [ATUAL]":
+  - table:
+    - row "# MANDANTE VISITANTE PLACAR SITUAÇÃO":
+      - columnheader "#"
+      - columnheader "MANDANTE"
+      - columnheader "VISITANTE"
+      - columnheader "PLACAR"
+      - columnheader "SITUAÇÃO"
+    - row "1 Arsenal FC Arsenal FC Bayern München Bayern München — x — PREPARANDO":
+      - cell "1":
+        - generic: "1"
+      - cell "Arsenal FC Arsenal FC":
+        - generic: Arsenal FC Arsenal FC
+      - cell "Bayern München Bayern München":
+        - generic: Bayern München Bayern München
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "2 Real Madrid Real Madrid FC Porto FC Porto — x — PREPARANDO":
+      - cell "2":
+        - generic: "2"
+      - cell "Real Madrid Real Madrid":
+        - generic: Real Madrid Real Madrid
+      - cell "FC Porto FC Porto":
+        - generic: FC Porto FC Porto
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "3 FC Barcelona FC Barcelona Paris Saint-Germain Paris Saint-Germain — x — PREPARANDO":
+      - cell "3":
+        - generic: "3"
+      - cell "FC Barcelona FC Barcelona":
+        - generic: FC Barcelona FC Barcelona
+      - cell "Paris Saint-Germain Paris Saint-Germain":
+        - generic: Paris Saint-Germain Paris Saint-Germain
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "4 FC Internazionale Milano FC Internazionale Milano Flamengo RJ Flamengo RJ — x — PREPARANDO":
+      - cell "4":
+        - generic: "4"
+      - cell "FC Internazionale Milano FC Internazionale Milano":
+        - generic: FC Internazionale Milano FC Internazionale Milano
+      - cell "Flamengo RJ Flamengo RJ":
+        - generic: Flamengo RJ Flamengo RJ
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "5 Borussia Dortmund Borussia Dortmund Manchester City FC Manchester City FC — x — PREPARANDO":
+      - cell "5":
+        - generic: "5"
+      - cell "Borussia Dortmund Borussia Dortmund":
+        - generic: Borussia Dortmund Borussia Dortmund
+      - cell "Manchester City FC Manchester City FC":
+        - generic: Manchester City FC Manchester City FC
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "6 RB Leipzig RB Leipzig SL Benfica SL Benfica — x — PREPARANDO":
+      - cell "6":
+        - generic: "6"
+      - cell "RB Leipzig RB Leipzig":
+        - generic: RB Leipzig RB Leipzig
+      - cell "SL Benfica SL Benfica":
+        - generic: SL Benfica SL Benfica
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "7 Lille OSC Lille OSC Atlético Madrid Atlético Madrid — x — PREPARANDO":
+      - cell "7":
+        - generic: "7"
+      - cell "Lille OSC Lille OSC":
+        - generic: Lille OSC Lille OSC
+      - cell "Atlético Madrid Atlético Madrid":
+        - generic: Atlético Madrid Atlético Madrid
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "8 Palmeiras SP Palmeiras SP AS Roma AS Roma — x — PREPARANDO":
+      - cell "8":
+        - generic: "8"
+      - cell "Palmeiras SP Palmeiras SP":
+        - generic: Palmeiras SP Palmeiras SP
+      - cell "AS Roma AS Roma":
+        - generic: AS Roma AS Roma
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "9 Frosinone Calcio Frosinone Calcio Cruzeiro MG Cruzeiro MG — x — PREPARANDO":
+      - cell "9":
+        - generic: "9"
+      - cell "Frosinone Calcio Frosinone Calcio":
+        - generic: Frosinone Calcio Frosinone Calcio
+      - cell "Cruzeiro MG Cruzeiro MG":
+        - generic: Cruzeiro MG Cruzeiro MG
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "10 SC Braga SC Braga Olympique Lyonnais Olympique Lyonnais — x — PREPARANDO":
+      - cell "10":
+        - generic: "10"
+      - cell "SC Braga SC Braga":
+        - generic: SC Braga SC Braga
+      - cell "Olympique Lyonnais Olympique Lyonnais":
+        - generic: Olympique Lyonnais Olympique Lyonnais
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "11 Sporting CP Sporting CP Como 1907 Como 1907 — x — PREPARANDO":
+      - cell "11":
+        - generic: "11"
+      - cell "Sporting CP Sporting CP":
+        - generic: Sporting CP Sporting CP
+      - cell "Como 1907 Como 1907":
+        - generic: Como 1907 Como 1907
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "12 Bayer 04 Leverkusen Bayer 04 Leverkusen Real Betis Real Betis — x — PREPARANDO":
+      - cell "12":
+        - generic: "12"
+      - cell "Bayer 04 Leverkusen Bayer 04 Leverkusen":
+        - generic: Bayer 04 Leverkusen Bayer 04 Leverkusen
+      - cell "Real Betis Real Betis":
+        - generic: Real Betis Real Betis
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "13 Fluminense RJ Fluminense RJ Stade Rennais FC Stade Rennais FC — x — PREPARANDO":
+      - cell "13":
+        - generic: "13"
+      - cell "Fluminense RJ Fluminense RJ":
+        - generic: Fluminense RJ Fluminense RJ
+      - cell "Stade Rennais FC Stade Rennais FC":
+        - generic: Stade Rennais FC Stade Rennais FC
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "14 SV Elversberg SV Elversberg Southampton FC Southampton FC — x — PREPARANDO":
+      - cell "14":
+        - generic: "14"
+      - cell "SV Elversberg SV Elversberg":
+        - generic: SV Elversberg SV Elversberg
+      - cell "Southampton FC Southampton FC":
+        - generic: Southampton FC Southampton FC
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "15 Atlético PR Atlético PR Juventus Juventus — x — PREPARANDO":
+      - cell "15":
+        - generic: "15"
+      - cell "Atlético PR Atlético PR":
+        - generic: Atlético PR Atlético PR
+      - cell "Juventus Juventus":
+        - generic: Juventus Juventus
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+    - row "16 FC Famalicão FC Famalicão Villarreal CF Villarreal CF — x — PREPARANDO":
+      - cell "16":
+        - generic: "16"
+      - cell "FC Famalicão FC Famalicão":
+        - generic: FC Famalicão FC Famalicão
+      - cell "Villarreal CF Villarreal CF":
+        - generic: Villarreal CF Villarreal CF
+      - cell "— x —":
+        - generic: — x —
+      - cell "PREPARANDO":
+        - generic: PREPARANDO
+- button "Rodada 4 • League"
+- button "Rodada 5 • CupRoundOf64"
+- button "Rodada 6 • League"
+- button "Rodada 7 • League"
+- button "Rodada 8 • CupRoundOf32"
+- button "Rodada 9 • League"
+- button "Rodada 10 • League"
+- generic: FC Internazionale Milano • R3

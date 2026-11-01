@@ -1,0 +1,997 @@
+- generic: LIGA CLÁSSICA
+- generic: "98"
+- generic: 015B - Mercado e partidas
+- generic: Temporada 1 | Rodada 3 (Campeonato Nacional)
+- generic: 08/08/1998
+- button "ENVIAR TÁTICA"
+- generic: "TÁTICAS ENVIADAS: 0/3"
+- generic: "[..] Daniel 015B (Flamengo RJ)"
+- generic: "[..] Comprador 015B (FC Porto)"
+- generic: "[..] Rival 015B (Arsenal FC)"
+- generic: CENTRAL DO TREINADOR
+- button "1. PLANTEL & TÁTICAS"
+- button "2. DIVISÕES & TAÇA"
+- button "3. MERCADO & LEILÃO"
+- button "4. FINANÇAS & ESTÁDIO"
+- button "5. RANKING & CARREIRA"
+- button "6. CALENDÁRIO & RESULTADOS"
+- button "7. RANKINGS DE JOGADORES"
+- button "APARÊNCIA"
+- button "TROCAR SALA"
+- generic: LIGA CLÁSSICA 98
+- generic: Flamengo RJ
+- generic: 1ª Divisão
+- generic: Caixa
+- generic: Próximo jogo
+- generic: Moral do treinador 70 de 100, VERDE
+- generic: Daniel 015B
+- generic: "Posição: —º"
+- generic: R$ 4.216.818
+- generic: CAMPEONATO NACIONAL — CLASSIFICAÇÃO POR DIVISÃO
+- generic: 4 Divisões de 8 clubes em turno e returno (14 rodadas de liga).
+- button "1ª DIVISÃO"
+- button "2ª DIVISÃO"
+- button "3ª DIVISÃO"
+- button "4ª DIVISÃO" [active]
+- table:
+  - row "# CLUBE TÉCNICO PTS J V E D GP GC SG ZONA":
+    - columnheader "#"
+    - columnheader "CLUBE"
+    - columnheader "TÉCNICO"
+    - columnheader "PTS"
+    - columnheader "J"
+    - columnheader "V"
+    - columnheader "E"
+    - columnheader "D"
+    - columnheader "GP"
+    - columnheader "GC"
+    - columnheader "SG"
+    - columnheader "ZONA"
+  - row "1 Fluminense RJ Otávio Carvalho 0 0 0 0 0 0 0 0 Promoção":
+    - cell "1":
+      - generic: "1"
+    - cell "Fluminense RJ":
+      - generic: Fluminense RJ
+    - cell "Otávio Carvalho":
+      - generic: Otávio Carvalho
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Promoção":
+      - generic: Promoção
+  - row "2 Stade Rennais FC Sérgio Vieira 0 0 0 0 0 0 0 0 Promoção":
+    - cell "2":
+      - generic: "2"
+    - cell "Stade Rennais FC":
+      - generic: Stade Rennais FC
+    - cell "Sérgio Vieira":
+      - generic: Sérgio Vieira
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Promoção":
+      - generic: Promoção
+  - row "3 Southampton FC Wagner Andrade 0 0 0 0 0 0 0 0 Permanência":
+    - cell "3":
+      - generic: "3"
+    - cell "Southampton FC":
+      - generic: Southampton FC
+    - cell "Wagner Andrade":
+      - generic: Wagner Andrade
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Permanência":
+      - generic: Permanência
+  - row "4 Atlético PR Caio Mendes 0 0 0 0 0 0 0 0 Permanência":
+    - cell "4":
+      - generic: "4"
+    - cell "Atlético PR":
+      - generic: Atlético PR
+    - cell "Caio Mendes":
+      - generic: Caio Mendes
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Permanência":
+      - generic: Permanência
+  - row "5 Villarreal CF Alex Santos 0 0 0 0 0 0 0 0 Permanência":
+    - cell "5":
+      - generic: "5"
+    - cell "Villarreal CF":
+      - generic: Villarreal CF
+    - cell "Alex Santos":
+      - generic: Alex Santos
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Permanência":
+      - generic: Permanência
+  - row "6 FC Famalicão Lucas Alves 0 0 0 0 0 0 0 0 Permanência":
+    - cell "6":
+      - generic: "6"
+    - cell "FC Famalicão":
+      - generic: FC Famalicão
+    - cell "Lucas Alves":
+      - generic: Lucas Alves
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Permanência":
+      - generic: Permanência
+  - row "7 Juventus Rafael Carvalho 0 0 0 0 0 0 0 0 Rebaixamento":
+    - cell "7":
+      - generic: "7"
+    - cell "Juventus":
+      - generic: Juventus
+    - cell "Rafael Carvalho":
+      - generic: Rafael Carvalho
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Rebaixamento":
+      - generic: Rebaixamento
+  - row "8 SV Elversberg Eduardo Vieira 0 0 0 0 0 0 0 0 Rebaixamento":
+    - cell "8":
+      - generic: "8"
+    - cell "SV Elversberg":
+      - generic: SV Elversberg
+    - cell "Eduardo Vieira":
+      - generic: Eduardo Vieira
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "0":
+      - generic: "0"
+    - cell "Rebaixamento":
+      - generic: Rebaixamento
+- generic: RESUMO DE RODADAS (ANTERIOR • ATUAL • PRÓXIMA)
+- generic: "RODADA ANTERIOR: R2 (CupPreliminary2)"
+- generic: "RODADA ATUAL: R3 (League)"
+- generic: "PRÓXIMA RODADA: R4 (League)"
+- generic: • Swansea City AFC 2x1 Udinese Calcio
+- generic: • Arsenal FC vs Bayern München
+- generic: • FC Porto vs Arsenal FC
+- generic: • Moreirense FC 1x2 Bolton Wanderers FC
+- generic: • Real Madrid vs FC Porto
+- generic: • FC Barcelona vs Bayern München
+- generic: • TSG 1899 Hoffenheim 2x2 1. FC Köln
+- generic: • FC Barcelona vs Paris Saint-Germain
+- generic: • Real Madrid vs Flamengo RJ
+- generic: • CA Osasuna 1x1 Coventry City FC
+- generic: • FC Internazionale Milano vs Flamengo RJ
+- generic: • FC Internazionale Milano vs Paris Saint-Germain
+- generic: TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)
+- button "TODAS AS FASES (64)"
+- button "Taça - Preliminar 1"
+- button "Taça - Preliminar 2"
+- table:
+  - row "FASE MANDANTE PLACAR VISITANTE CLASSIFICADO / SITUAÇÃO":
+    - columnheader "FASE"
+    - columnheader "MANDANTE"
+    - columnheader "PLACAR"
+    - columnheader "VISITANTE"
+    - columnheader "CLASSIFICADO / SITUAÇÃO"
+  - 'row "Taça - Preliminar 1 Manchester United FC (Distrital) Manchester United FC (Distrital) 0 x 2 SSC Napoli (Distrital) SSC Napoli (Distrital) Vencedor: SSC Napoli"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Manchester United FC (Distrital) Manchester United FC (Distrital)":
+      - generic: Manchester United FC (Distrital) Manchester United FC (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "SSC Napoli (Distrital) SSC Napoli (Distrital)":
+      - generic: SSC Napoli (Distrital) SSC Napoli (Distrital)
+    - 'cell "Vencedor: SSC Napoli"':
+      - generic: "Vencedor: SSC Napoli"
+  - 'row "Taça - Preliminar 1 1. FC Union Berlin (Distrital) 1. FC Union Berlin (Distrital) 1 x 3 FC Lorient (Distrital) FC Lorient (Distrital) Vencedor: FC Lorient"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "1. FC Union Berlin (Distrital) 1. FC Union Berlin (Distrital)":
+      - generic: 1. FC Union Berlin (Distrital) 1. FC Union Berlin (Distrital)
+    - cell "1 x 3":
+      - generic: 1 x 3
+    - cell "FC Lorient (Distrital) FC Lorient (Distrital)":
+      - generic: FC Lorient (Distrital) FC Lorient (Distrital)
+    - 'cell "Vencedor: FC Lorient"':
+      - generic: "Vencedor: FC Lorient"
+  - 'row "Taça - Preliminar 1 VfB Stuttgart (Distrital) VfB Stuttgart (Distrital) 2 x 1 Chapecoense (Distrital) Chapecoense (Distrital) Vencedor: VfB Stuttgart"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "VfB Stuttgart (Distrital) VfB Stuttgart (Distrital)":
+      - generic: VfB Stuttgart (Distrital) VfB Stuttgart (Distrital)
+    - cell "2 x 1":
+      - generic: 2 x 1
+    - cell "Chapecoense (Distrital) Chapecoense (Distrital)":
+      - generic: Chapecoense (Distrital) Chapecoense (Distrital)
+    - 'cell "Vencedor: VfB Stuttgart"':
+      - generic: "Vencedor: VfB Stuttgart"
+  - 'row "Taça - Preliminar 1 AFC Bournemouth (Distrital) AFC Bournemouth (Distrital) 0 x 1 Portsmouth FC (Distrital) Portsmouth FC (Distrital) Vencedor: Portsmouth FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "AFC Bournemouth (Distrital) AFC Bournemouth (Distrital)":
+      - generic: AFC Bournemouth (Distrital) AFC Bournemouth (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "Portsmouth FC (Distrital) Portsmouth FC (Distrital)":
+      - generic: Portsmouth FC (Distrital) Portsmouth FC (Distrital)
+    - 'cell "Vencedor: Portsmouth FC"':
+      - generic: "Vencedor: Portsmouth FC"
+  - 'row "Taça - Preliminar 1 CA Osasuna (Distrital) CA Osasuna (Distrital) 1 x 0 FC Alverca (Distrital) FC Alverca (Distrital) Vencedor: CA Osasuna"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "CA Osasuna (Distrital) CA Osasuna (Distrital)":
+      - generic: CA Osasuna (Distrital) CA Osasuna (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "FC Alverca (Distrital) FC Alverca (Distrital)":
+      - generic: FC Alverca (Distrital) FC Alverca (Distrital)
+    - 'cell "Vencedor: CA Osasuna"':
+      - generic: "Vencedor: CA Osasuna"
+  - 'row "Taça - Preliminar 1 Valencia CF (Distrital) Valencia CF (Distrital) 1 x 3 FC Schalke 04 (Distrital) FC Schalke 04 (Distrital) Vencedor: FC Schalke 04"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Valencia CF (Distrital) Valencia CF (Distrital)":
+      - generic: Valencia CF (Distrital) Valencia CF (Distrital)
+    - cell "1 x 3":
+      - generic: 1 x 3
+    - cell "FC Schalke 04 (Distrital) FC Schalke 04 (Distrital)":
+      - generic: FC Schalke 04 (Distrital) FC Schalke 04 (Distrital)
+    - 'cell "Vencedor: FC Schalke 04"':
+      - generic: "Vencedor: FC Schalke 04"
+  - 'row "Taça - Preliminar 1 Internacional Porto Alegre (Distrital) Internacional Porto Alegre (Distrital) 1 x 3 Sheffield United FC (Distrital) Sheffield United FC (Distrital) Vencedor: Sheffield United FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Internacional Porto Alegre (Distrital) Internacional Porto Alegre (Distrital)":
+      - generic: Internacional Porto Alegre (Distrital) Internacional Porto Alegre (Distrital)
+    - cell "1 x 3":
+      - generic: 1 x 3
+    - cell "Sheffield United FC (Distrital) Sheffield United FC (Distrital)":
+      - generic: Sheffield United FC (Distrital) Sheffield United FC (Distrital)
+    - 'cell "Vencedor: Sheffield United FC"':
+      - generic: "Vencedor: Sheffield United FC"
+  - 'row "Taça - Preliminar 1 Getafe CF (Distrital) Getafe CF (Distrital) 1 x 2 Bristol City FC (Distrital) Bristol City FC (Distrital) Vencedor: Bristol City FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Getafe CF (Distrital) Getafe CF (Distrital)":
+      - generic: Getafe CF (Distrital) Getafe CF (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "Bristol City FC (Distrital) Bristol City FC (Distrital)":
+      - generic: Bristol City FC (Distrital) Bristol City FC (Distrital)
+    - 'cell "Vencedor: Bristol City FC"':
+      - generic: "Vencedor: Bristol City FC"
+  - 'row "Taça - Preliminar 1 Moreirense FC (Distrital) Moreirense FC (Distrital) 1 x 0 Clube do Remo (Distrital) Clube do Remo (Distrital) Vencedor: Moreirense FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Moreirense FC (Distrital) Moreirense FC (Distrital)":
+      - generic: Moreirense FC (Distrital) Moreirense FC (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Clube do Remo (Distrital) Clube do Remo (Distrital)":
+      - generic: Clube do Remo (Distrital) Clube do Remo (Distrital)
+    - 'cell "Vencedor: Moreirense FC"':
+      - generic: "Vencedor: Moreirense FC"
+  - 'row "Taça - Preliminar 1 Sevilla FC (Distrital) Sevilla FC (Distrital) 0 x 0 (Pên: 4 x 3) Corinthians SP (Distrital) Corinthians SP (Distrital) Vencedor: Sevilla FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Sevilla FC (Distrital) Sevilla FC (Distrital)":
+      - generic: Sevilla FC (Distrital) Sevilla FC (Distrital)
+    - 'cell "0 x 0 (Pên: 4 x 3)"':
+      - generic: "0 x 0 (Pên: 4 x 3)"
+    - cell "Corinthians SP (Distrital) Corinthians SP (Distrital)":
+      - generic: Corinthians SP (Distrital) Corinthians SP (Distrital)
+    - 'cell "Vencedor: Sevilla FC"':
+      - generic: "Vencedor: Sevilla FC"
+  - 'row "Taça - Preliminar 1 West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital) 2 x 1 Middlesbrough FC (Distrital) Middlesbrough FC (Distrital) Vencedor: West Bromwich Albion FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital)":
+      - generic: West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital)
+    - cell "2 x 1":
+      - generic: 2 x 1
+    - cell "Middlesbrough FC (Distrital) Middlesbrough FC (Distrital)":
+      - generic: Middlesbrough FC (Distrital) Middlesbrough FC (Distrital)
+    - 'cell "Vencedor: West Bromwich Albion FC"':
+      - generic: "Vencedor: West Bromwich Albion FC"
+  - 'row "Taça - Preliminar 1 RC Lens (Distrital) RC Lens (Distrital) 0 x 1 Gil Vicente FC (Distrital) Gil Vicente FC (Distrital) Vencedor: Gil Vicente FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "RC Lens (Distrital) RC Lens (Distrital)":
+      - generic: RC Lens (Distrital) RC Lens (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "Gil Vicente FC (Distrital) Gil Vicente FC (Distrital)":
+      - generic: Gil Vicente FC (Distrital) Gil Vicente FC (Distrital)
+    - 'cell "Vencedor: Gil Vicente FC"':
+      - generic: "Vencedor: Gil Vicente FC"
+  - 'row "Taça - Preliminar 1 Udinese Calcio (Distrital) Udinese Calcio (Distrital) 1 x 0 São Paulo FC (Distrital) São Paulo FC (Distrital) Vencedor: Udinese Calcio"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Udinese Calcio (Distrital) Udinese Calcio (Distrital)":
+      - generic: Udinese Calcio (Distrital) Udinese Calcio (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "São Paulo FC (Distrital) São Paulo FC (Distrital)":
+      - generic: São Paulo FC (Distrital) São Paulo FC (Distrital)
+    - 'cell "Vencedor: Udinese Calcio"':
+      - generic: "Vencedor: Udinese Calcio"
+  - 'row "Taça - Preliminar 1 Everton FC (Distrital) Everton FC (Distrital) 0 x 1 AC Milan (Distrital) AC Milan (Distrital) Vencedor: AC Milan"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Everton FC (Distrital) Everton FC (Distrital)":
+      - generic: Everton FC (Distrital) Everton FC (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "AC Milan (Distrital) AC Milan (Distrital)":
+      - generic: AC Milan (Distrital) AC Milan (Distrital)
+    - 'cell "Vencedor: AC Milan"':
+      - generic: "Vencedor: AC Milan"
+  - 'row "Taça - Preliminar 1 Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital) 1 x 0 Rayo Vallecano (Distrital) Rayo Vallecano (Distrital) Vencedor: Atalanta Bergamo"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital)":
+      - generic: Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Rayo Vallecano (Distrital) Rayo Vallecano (Distrital)":
+      - generic: Rayo Vallecano (Distrital) Rayo Vallecano (Distrital)
+    - 'cell "Vencedor: Atalanta Bergamo"':
+      - generic: "Vencedor: Atalanta Bergamo"
+  - 'row "Taça - Preliminar 1 RCD La Coruña (Distrital) RCD La Coruña (Distrital) 3 x 2 Hamburger SV (Distrital) Hamburger SV (Distrital) Vencedor: RCD La Coruña"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "RCD La Coruña (Distrital) RCD La Coruña (Distrital)":
+      - generic: RCD La Coruña (Distrital) RCD La Coruña (Distrital)
+    - cell "3 x 2":
+      - generic: 3 x 2
+    - cell "Hamburger SV (Distrital) Hamburger SV (Distrital)":
+      - generic: Hamburger SV (Distrital) Hamburger SV (Distrital)
+    - 'cell "Vencedor: RCD La Coruña"':
+      - generic: "Vencedor: RCD La Coruña"
+  - 'row "Taça - Preliminar 1 Torino FC (Distrital) Torino FC (Distrital) 3 x 0 Académico Viseu (Distrital) Académico Viseu (Distrital) Vencedor: Torino FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Torino FC (Distrital) Torino FC (Distrital)":
+      - generic: Torino FC (Distrital) Torino FC (Distrital)
+    - cell "3 x 0":
+      - generic: 3 x 0
+    - cell "Académico Viseu (Distrital) Académico Viseu (Distrital)":
+      - generic: Académico Viseu (Distrital) Académico Viseu (Distrital)
+    - 'cell "Vencedor: Torino FC"':
+      - generic: "Vencedor: Torino FC"
+  - 'row "Taça - Preliminar 1 Ipswich Town FC (Distrital) Ipswich Town FC (Distrital) 3 x 0 Elche CF (Distrital) Elche CF (Distrital) Vencedor: Ipswich Town FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Ipswich Town FC (Distrital) Ipswich Town FC (Distrital)":
+      - generic: Ipswich Town FC (Distrital) Ipswich Town FC (Distrital)
+    - cell "3 x 0":
+      - generic: 3 x 0
+    - cell "Elche CF (Distrital) Elche CF (Distrital)":
+      - generic: Elche CF (Distrital) Elche CF (Distrital)
+    - 'cell "Vencedor: Ipswich Town FC"':
+      - generic: "Vencedor: Ipswich Town FC"
+  - 'row "Taça - Preliminar 1 Fulham FC (Distrital) Fulham FC (Distrital) 0 x 3 SC Freiburg (Distrital) SC Freiburg (Distrital) Vencedor: SC Freiburg"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Fulham FC (Distrital) Fulham FC (Distrital)":
+      - generic: Fulham FC (Distrital) Fulham FC (Distrital)
+    - cell "0 x 3":
+      - generic: 0 x 3
+    - cell "SC Freiburg (Distrital) SC Freiburg (Distrital)":
+      - generic: SC Freiburg (Distrital) SC Freiburg (Distrital)
+    - 'cell "Vencedor: SC Freiburg"':
+      - generic: "Vencedor: SC Freiburg"
+  - 'row "Taça - Preliminar 1 Millwall FC (Distrital) Millwall FC (Distrital) 0 x 0 (Pên: 3 x 4) Coritiba PR (Distrital) Coritiba PR (Distrital) Vencedor: Coritiba PR"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Millwall FC (Distrital) Millwall FC (Distrital)":
+      - generic: Millwall FC (Distrital) Millwall FC (Distrital)
+    - 'cell "0 x 0 (Pên: 3 x 4)"':
+      - generic: "0 x 0 (Pên: 3 x 4)"
+    - cell "Coritiba PR (Distrital) Coritiba PR (Distrital)":
+      - generic: Coritiba PR (Distrital) Coritiba PR (Distrital)
+    - 'cell "Vencedor: Coritiba PR"':
+      - generic: "Vencedor: Coritiba PR"
+  - 'row "Taça - Preliminar 1 Genoa CFC (Distrital) Genoa CFC (Distrital) 2 x 3 Coventry City FC (Distrital) Coventry City FC (Distrital) Vencedor: Coventry City FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Genoa CFC (Distrital) Genoa CFC (Distrital)":
+      - generic: Genoa CFC (Distrital) Genoa CFC (Distrital)
+    - cell "2 x 3":
+      - generic: 2 x 3
+    - cell "Coventry City FC (Distrital) Coventry City FC (Distrital)":
+      - generic: Coventry City FC (Distrital) Coventry City FC (Distrital)
+    - 'cell "Vencedor: Coventry City FC"':
+      - generic: "Vencedor: Coventry City FC"
+  - 'row "Taça - Preliminar 1 Málaga CF (Distrital) Málaga CF (Distrital) 1 x 2 Le Mans FC (Distrital) Le Mans FC (Distrital) Vencedor: Le Mans FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Málaga CF (Distrital) Málaga CF (Distrital)":
+      - generic: Málaga CF (Distrital) Málaga CF (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "Le Mans FC (Distrital) Le Mans FC (Distrital)":
+      - generic: Le Mans FC (Distrital) Le Mans FC (Distrital)
+    - 'cell "Vencedor: Le Mans FC"':
+      - generic: "Vencedor: Le Mans FC"
+  - 'row "Taça - Preliminar 1 ACF Fiorentina (Distrital) ACF Fiorentina (Distrital) 1 x 1 (Pên: 4 x 5) Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital) Vencedor: Bor. Mönchengladbach"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "ACF Fiorentina (Distrital) ACF Fiorentina (Distrital)":
+      - generic: ACF Fiorentina (Distrital) ACF Fiorentina (Distrital)
+    - 'cell "1 x 1 (Pên: 4 x 5)"':
+      - generic: "1 x 1 (Pên: 4 x 5)"
+    - cell "Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital)":
+      - generic: Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital)
+    - 'cell "Vencedor: Bor. Mönchengladbach"':
+      - generic: "Vencedor: Bor. Mönchengladbach"
+  - 'row "Taça - Preliminar 1 Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital) 1 x 0 Le Havre AC (Distrital) Le Havre AC (Distrital) Vencedor: Charlton Athletic FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital)":
+      - generic: Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Le Havre AC (Distrital) Le Havre AC (Distrital)":
+      - generic: Le Havre AC (Distrital) Le Havre AC (Distrital)
+    - 'cell "Vencedor: Charlton Athletic FC"':
+      - generic: "Vencedor: Charlton Athletic FC"
+  - 'row "Taça - Preliminar 1 CD Santa Clara (Distrital) CD Santa Clara (Distrital) 3 x 0 Brighton & Hove Albion FC (Distrital) Brighton & Hove Albion FC (Distrital) Vencedor: CD Santa Clara"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "CD Santa Clara (Distrital) CD Santa Clara (Distrital)":
+      - generic: CD Santa Clara (Distrital) CD Santa Clara (Distrital)
+    - cell "3 x 0":
+      - generic: 3 x 0
+    - cell "Brighton & Hove Albion FC (Distrital) Brighton & Hove Albion FC (Distrital)":
+      - generic: Brighton & Hove Albion FC (Distrital) Brighton & Hove Albion FC (Distrital)
+    - 'cell "Vencedor: CD Santa Clara"':
+      - generic: "Vencedor: CD Santa Clara"
+  - 'row "Taça - Preliminar 1 Hull City AFC (Distrital) Hull City AFC (Distrital) 2 x 0 Deportivo Alavés (Distrital) Deportivo Alavés (Distrital) Vencedor: Hull City AFC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Hull City AFC (Distrital) Hull City AFC (Distrital)":
+      - generic: Hull City AFC (Distrital) Hull City AFC (Distrital)
+    - cell "2 x 0":
+      - generic: 2 x 0
+    - cell "Deportivo Alavés (Distrital) Deportivo Alavés (Distrital)":
+      - generic: Deportivo Alavés (Distrital) Deportivo Alavés (Distrital)
+    - 'cell "Vencedor: Hull City AFC"':
+      - generic: "Vencedor: Hull City AFC"
+  - 'row "Taça - Preliminar 1 Botafogo RJ (Distrital) Botafogo RJ (Distrital) 0 x 1 Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital) Vencedor: Blackburn Rovers FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Botafogo RJ (Distrital) Botafogo RJ (Distrital)":
+      - generic: Botafogo RJ (Distrital) Botafogo RJ (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital)":
+      - generic: Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital)
+    - 'cell "Vencedor: Blackburn Rovers FC"':
+      - generic: "Vencedor: Blackburn Rovers FC"
+  - 'row "Taça - Preliminar 1 1. FC Köln (Distrital) 1. FC Köln (Distrital) 3 x 3 (Pên: 3 x 0) Derby County FC (Distrital) Derby County FC (Distrital) Vencedor: 1. FC Köln"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "1. FC Köln (Distrital) 1. FC Köln (Distrital)":
+      - generic: 1. FC Köln (Distrital) 1. FC Köln (Distrital)
+    - 'cell "3 x 3 (Pên: 3 x 0)"':
+      - generic: "3 x 3 (Pên: 3 x 0)"
+    - cell "Derby County FC (Distrital) Derby County FC (Distrital)":
+      - generic: Derby County FC (Distrital) Derby County FC (Distrital)
+    - 'cell "Vencedor: 1. FC Köln"':
+      - generic: "Vencedor: 1. FC Köln"
+  - 'row "Taça - Preliminar 1 RCD Espanyol (Distrital) RCD Espanyol (Distrital) 0 x 2 Sunderland AFC (Distrital) Sunderland AFC (Distrital) Vencedor: Sunderland AFC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "RCD Espanyol (Distrital) RCD Espanyol (Distrital)":
+      - generic: RCD Espanyol (Distrital) RCD Espanyol (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "Sunderland AFC (Distrital) Sunderland AFC (Distrital)":
+      - generic: Sunderland AFC (Distrital) Sunderland AFC (Distrital)
+    - 'cell "Vencedor: Sunderland AFC"':
+      - generic: "Vencedor: Sunderland AFC"
+  - 'row "Taça - Preliminar 1 Real Sociedad (Distrital) Real Sociedad (Distrital) 1 x 2 Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital) Vencedor: Eintracht Frankfurt"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "Real Sociedad (Distrital) Real Sociedad (Distrital)":
+      - generic: Real Sociedad (Distrital) Real Sociedad (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital)":
+      - generic: Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital)
+    - 'cell "Vencedor: Eintracht Frankfurt"':
+      - generic: "Vencedor: Eintracht Frankfurt"
+  - 'row "Taça - Preliminar 1 AS Monaco FC (Distrital) AS Monaco FC (Distrital) 1 x 0 Levante UD (Distrital) Levante UD (Distrital) Vencedor: AS Monaco FC"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "AS Monaco FC (Distrital) AS Monaco FC (Distrital)":
+      - generic: AS Monaco FC (Distrital) AS Monaco FC (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Levante UD (Distrital) Levante UD (Distrital)":
+      - generic: Levante UD (Distrital) Levante UD (Distrital)
+    - 'cell "Vencedor: AS Monaco FC"':
+      - generic: "Vencedor: AS Monaco FC"
+  - 'row "Taça - Preliminar 1 RC Celta Vigo (Distrital) RC Celta Vigo (Distrital) 5 x 1 Crystal Palace FC (Distrital) Crystal Palace FC (Distrital) Vencedor: RC Celta Vigo"':
+    - cell "Taça - Preliminar 1":
+      - generic: Taça - Preliminar 1
+    - cell "RC Celta Vigo (Distrital) RC Celta Vigo (Distrital)":
+      - generic: RC Celta Vigo (Distrital) RC Celta Vigo (Distrital)
+    - cell "5 x 1":
+      - generic: 5 x 1
+    - cell "Crystal Palace FC (Distrital) Crystal Palace FC (Distrital)":
+      - generic: Crystal Palace FC (Distrital) Crystal Palace FC (Distrital)
+    - 'cell "Vencedor: RC Celta Vigo"':
+      - generic: "Vencedor: RC Celta Vigo"
+  - 'row "Taça - Preliminar 2 Swansea City AFC (Distrital) Swansea City AFC (Distrital) 2 x 1 Udinese Calcio (Distrital) Udinese Calcio (Distrital) Vencedor: Swansea City AFC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Swansea City AFC (Distrital) Swansea City AFC (Distrital)":
+      - generic: Swansea City AFC (Distrital) Swansea City AFC (Distrital)
+    - cell "2 x 1":
+      - generic: 2 x 1
+    - cell "Udinese Calcio (Distrital) Udinese Calcio (Distrital)":
+      - generic: Udinese Calcio (Distrital) Udinese Calcio (Distrital)
+    - 'cell "Vencedor: Swansea City AFC"':
+      - generic: "Vencedor: Swansea City AFC"
+  - 'row "Taça - Preliminar 2 Moreirense FC (Distrital) Moreirense FC (Distrital) 1 x 2 Bolton Wanderers FC (Distrital) Bolton Wanderers FC (Distrital) Vencedor: Bolton Wanderers FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Moreirense FC (Distrital) Moreirense FC (Distrital)":
+      - generic: Moreirense FC (Distrital) Moreirense FC (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "Bolton Wanderers FC (Distrital) Bolton Wanderers FC (Distrital)":
+      - generic: Bolton Wanderers FC (Distrital) Bolton Wanderers FC (Distrital)
+    - 'cell "Vencedor: Bolton Wanderers FC"':
+      - generic: "Vencedor: Bolton Wanderers FC"
+  - 'row "Taça - Preliminar 2 TSG 1899 Hoffenheim (Distrital) TSG 1899 Hoffenheim (Distrital) 2 x 2 (Pên: 4 x 2) 1. FC Köln (Distrital) 1. FC Köln (Distrital) Vencedor: TSG 1899 Hoffenheim"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "TSG 1899 Hoffenheim (Distrital) TSG 1899 Hoffenheim (Distrital)":
+      - generic: TSG 1899 Hoffenheim (Distrital) TSG 1899 Hoffenheim (Distrital)
+    - 'cell "2 x 2 (Pên: 4 x 2)"':
+      - generic: "2 x 2 (Pên: 4 x 2)"
+    - cell "1. FC Köln (Distrital) 1. FC Köln (Distrital)":
+      - generic: 1. FC Köln (Distrital) 1. FC Köln (Distrital)
+    - 'cell "Vencedor: TSG 1899 Hoffenheim"':
+      - generic: "Vencedor: TSG 1899 Hoffenheim"
+  - 'row "Taça - Preliminar 2 CA Osasuna (Distrital) CA Osasuna (Distrital) 1 x 1 (Pên: 2 x 4) Coventry City FC (Distrital) Coventry City FC (Distrital) Vencedor: Coventry City FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "CA Osasuna (Distrital) CA Osasuna (Distrital)":
+      - generic: CA Osasuna (Distrital) CA Osasuna (Distrital)
+    - 'cell "1 x 1 (Pên: 2 x 4)"':
+      - generic: "1 x 1 (Pên: 2 x 4)"
+    - cell "Coventry City FC (Distrital) Coventry City FC (Distrital)":
+      - generic: Coventry City FC (Distrital) Coventry City FC (Distrital)
+    - 'cell "Vencedor: Coventry City FC"':
+      - generic: "Vencedor: Coventry City FC"
+  - 'row "Taça - Preliminar 2 Portsmouth FC (Distrital) Portsmouth FC (Distrital) 0 x 2 Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital) Vencedor: Atalanta Bergamo"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Portsmouth FC (Distrital) Portsmouth FC (Distrital)":
+      - generic: Portsmouth FC (Distrital) Portsmouth FC (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital)":
+      - generic: Atalanta Bergamo (Distrital) Atalanta Bergamo (Distrital)
+    - 'cell "Vencedor: Atalanta Bergamo"':
+      - generic: "Vencedor: Atalanta Bergamo"
+  - 'row "Taça - Preliminar 2 Lincoln City FC (Distrital) Lincoln City FC (Distrital) 1 x 1 (Pên: 4 x 2) Real Racing Santander (Distrital) Real Racing Santander (Distrital) Vencedor: Lincoln City FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Lincoln City FC (Distrital) Lincoln City FC (Distrital)":
+      - generic: Lincoln City FC (Distrital) Lincoln City FC (Distrital)
+    - 'cell "1 x 1 (Pên: 4 x 2)"':
+      - generic: "1 x 1 (Pên: 4 x 2)"
+    - cell "Real Racing Santander (Distrital) Real Racing Santander (Distrital)":
+      - generic: Real Racing Santander (Distrital) Real Racing Santander (Distrital)
+    - 'cell "Vencedor: Lincoln City FC"':
+      - generic: "Vencedor: Lincoln City FC"
+  - 'row "Taça - Preliminar 2 CD Santa Clara (Distrital) CD Santa Clara (Distrital) 1 x 2 FC Arouca (Distrital) FC Arouca (Distrital) Vencedor: FC Arouca"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "CD Santa Clara (Distrital) CD Santa Clara (Distrital)":
+      - generic: CD Santa Clara (Distrital) CD Santa Clara (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "FC Arouca (Distrital) FC Arouca (Distrital)":
+      - generic: FC Arouca (Distrital) FC Arouca (Distrital)
+    - 'cell "Vencedor: FC Arouca"':
+      - generic: "Vencedor: FC Arouca"
+  - 'row "Taça - Preliminar 2 SSC Napoli (Distrital) SSC Napoli (Distrital) 0 x 1 Angers SCO (Distrital) Angers SCO (Distrital) Vencedor: Angers SCO"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "SSC Napoli (Distrital) SSC Napoli (Distrital)":
+      - generic: SSC Napoli (Distrital) SSC Napoli (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "Angers SCO (Distrital) Angers SCO (Distrital)":
+      - generic: Angers SCO (Distrital) Angers SCO (Distrital)
+    - 'cell "Vencedor: Angers SCO"':
+      - generic: "Vencedor: Angers SCO"
+  - 'row "Taça - Preliminar 2 Torino FC (Distrital) Torino FC (Distrital) 0 x 2 Burnley FC (Distrital) Burnley FC (Distrital) Vencedor: Burnley FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Torino FC (Distrital) Torino FC (Distrital)":
+      - generic: Torino FC (Distrital) Torino FC (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "Burnley FC (Distrital) Burnley FC (Distrital)":
+      - generic: Burnley FC (Distrital) Burnley FC (Distrital)
+    - 'cell "Vencedor: Burnley FC"':
+      - generic: "Vencedor: Burnley FC"
+  - 'row "Taça - Preliminar 2 Paris FC (Distrital) Paris FC (Distrital) 0 x 1 RC Celta Vigo (Distrital) RC Celta Vigo (Distrital) Vencedor: RC Celta Vigo"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Paris FC (Distrital) Paris FC (Distrital)":
+      - generic: Paris FC (Distrital) Paris FC (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "RC Celta Vigo (Distrital) RC Celta Vigo (Distrital)":
+      - generic: RC Celta Vigo (Distrital) RC Celta Vigo (Distrital)
+    - 'cell "Vencedor: RC Celta Vigo"':
+      - generic: "Vencedor: RC Celta Vigo"
+  - 'row "Taça - Preliminar 2 Leeds United FC (Distrital) Leeds United FC (Distrital) 0 x 1 Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital) Vencedor: Blackburn Rovers FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Leeds United FC (Distrital) Leeds United FC (Distrital)":
+      - generic: Leeds United FC (Distrital) Leeds United FC (Distrital)
+    - cell "0 x 1":
+      - generic: 0 x 1
+    - cell "Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital)":
+      - generic: Blackburn Rovers FC (Distrital) Blackburn Rovers FC (Distrital)
+    - 'cell "Vencedor: Blackburn Rovers FC"':
+      - generic: "Vencedor: Blackburn Rovers FC"
+  - 'row "Taça - Preliminar 2 Queens Park Rangers FC (Distrital) Queens Park Rangers FC (Distrital) 1 x 1 (Pên: 4 x 3) Bologna FC (Distrital) Bologna FC (Distrital) Vencedor: Queens Park Rangers FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Queens Park Rangers FC (Distrital) Queens Park Rangers FC (Distrital)":
+      - generic: Queens Park Rangers FC (Distrital) Queens Park Rangers FC (Distrital)
+    - 'cell "1 x 1 (Pên: 4 x 3)"':
+      - generic: "1 x 1 (Pên: 4 x 3)"
+    - cell "Bologna FC (Distrital) Bologna FC (Distrital)":
+      - generic: Bologna FC (Distrital) Bologna FC (Distrital)
+    - 'cell "Vencedor: Queens Park Rangers FC"':
+      - generic: "Vencedor: Queens Park Rangers FC"
+  - 'row "Taça - Preliminar 2 SS Lazio (Distrital) SS Lazio (Distrital) 1 x 0 SC Freiburg (Distrital) SC Freiburg (Distrital) Vencedor: SS Lazio"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "SS Lazio (Distrital) SS Lazio (Distrital)":
+      - generic: SS Lazio (Distrital) SS Lazio (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "SC Freiburg (Distrital) SC Freiburg (Distrital)":
+      - generic: SC Freiburg (Distrital) SC Freiburg (Distrital)
+    - 'cell "Vencedor: SS Lazio"':
+      - generic: "Vencedor: SS Lazio"
+  - 'row "Taça - Preliminar 2 AC Milan (Distrital) AC Milan (Distrital) 1 x 0 RC Strasbourg (Distrital) RC Strasbourg (Distrital) Vencedor: AC Milan"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "AC Milan (Distrital) AC Milan (Distrital)":
+      - generic: AC Milan (Distrital) AC Milan (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "RC Strasbourg (Distrital) RC Strasbourg (Distrital)":
+      - generic: RC Strasbourg (Distrital) RC Strasbourg (Distrital)
+    - 'cell "Vencedor: AC Milan"':
+      - generic: "Vencedor: AC Milan"
+  - 'row "Taça - Preliminar 2 RCD La Coruña (Distrital) RCD La Coruña (Distrital) 4 x 1 FC Lorient (Distrital) FC Lorient (Distrital) Vencedor: RCD La Coruña"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "RCD La Coruña (Distrital) RCD La Coruña (Distrital)":
+      - generic: RCD La Coruña (Distrital) RCD La Coruña (Distrital)
+    - cell "4 x 1":
+      - generic: 4 x 1
+    - cell "FC Lorient (Distrital) FC Lorient (Distrital)":
+      - generic: FC Lorient (Distrital) FC Lorient (Distrital)
+    - 'cell "Vencedor: RCD La Coruña"':
+      - generic: "Vencedor: RCD La Coruña"
+  - 'row "Taça - Preliminar 2 Ipswich Town FC (Distrital) Ipswich Town FC (Distrital) 3 x 0 Sevilla FC (Distrital) Sevilla FC (Distrital) Vencedor: Ipswich Town FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Ipswich Town FC (Distrital) Ipswich Town FC (Distrital)":
+      - generic: Ipswich Town FC (Distrital) Ipswich Town FC (Distrital)
+    - cell "3 x 0":
+      - generic: 3 x 0
+    - cell "Sevilla FC (Distrital) Sevilla FC (Distrital)":
+      - generic: Sevilla FC (Distrital) Sevilla FC (Distrital)
+    - 'cell "Vencedor: Ipswich Town FC"':
+      - generic: "Vencedor: Ipswich Town FC"
+  - 'row "Taça - Preliminar 2 Atlético MG (Distrital) Atlético MG (Distrital) 1 x 0 Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital) Vencedor: Atlético MG"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Atlético MG (Distrital) Atlético MG (Distrital)":
+      - generic: Atlético MG (Distrital) Atlético MG (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital)":
+      - generic: Charlton Athletic FC (Distrital) Charlton Athletic FC (Distrital)
+    - 'cell "Vencedor: Atlético MG"':
+      - generic: "Vencedor: Atlético MG"
+  - 'row "Taça - Preliminar 2 Olympique de Marseille (Distrital) Olympique de Marseille (Distrital) 1 x 0 Coritiba PR (Distrital) Coritiba PR (Distrital) Vencedor: Olympique de Marseille"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Olympique de Marseille (Distrital) Olympique de Marseille (Distrital)":
+      - generic: Olympique de Marseille (Distrital) Olympique de Marseille (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Coritiba PR (Distrital) Coritiba PR (Distrital)":
+      - generic: Coritiba PR (Distrital) Coritiba PR (Distrital)
+    - 'cell "Vencedor: Olympique de Marseille"':
+      - generic: "Vencedor: Olympique de Marseille"
+  - 'row "Taça - Preliminar 2 Preston North End FC (Distrital) Preston North End FC (Distrital) 1 x 2 FC Augsburg (Distrital) FC Augsburg (Distrital) Vencedor: FC Augsburg"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Preston North End FC (Distrital) Preston North End FC (Distrital)":
+      - generic: Preston North End FC (Distrital) Preston North End FC (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "FC Augsburg (Distrital) FC Augsburg (Distrital)":
+      - generic: FC Augsburg (Distrital) FC Augsburg (Distrital)
+    - 'cell "Vencedor: FC Augsburg"':
+      - generic: "Vencedor: FC Augsburg"
+  - 'row "Taça - Preliminar 2 Rio Ave FC (Distrital) Rio Ave FC (Distrital) 1 x 1 (Pên: 7 x 8) Bristol City FC (Distrital) Bristol City FC (Distrital) Vencedor: Bristol City FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Rio Ave FC (Distrital) Rio Ave FC (Distrital)":
+      - generic: Rio Ave FC (Distrital) Rio Ave FC (Distrital)
+    - 'cell "1 x 1 (Pên: 7 x 8)"':
+      - generic: "1 x 1 (Pên: 7 x 8)"
+    - cell "Bristol City FC (Distrital) Bristol City FC (Distrital)":
+      - generic: Bristol City FC (Distrital) Bristol City FC (Distrital)
+    - 'cell "Vencedor: Bristol City FC"':
+      - generic: "Vencedor: Bristol City FC"
+  - 'row "Taça - Preliminar 2 Venezia FC (Distrital) Venezia FC (Distrital) 0 x 2 CS Marítimo (Distrital) CS Marítimo (Distrital) Vencedor: CS Marítimo"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Venezia FC (Distrital) Venezia FC (Distrital)":
+      - generic: Venezia FC (Distrital) Venezia FC (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "CS Marítimo (Distrital) CS Marítimo (Distrital)":
+      - generic: CS Marítimo (Distrital) CS Marítimo (Distrital)
+    - 'cell "Vencedor: CS Marítimo"':
+      - generic: "Vencedor: CS Marítimo"
+  - 'row "Taça - Preliminar 2 Parma Calcio (Distrital) Parma Calcio (Distrital) 1 x 0 AS Monaco FC (Distrital) AS Monaco FC (Distrital) Vencedor: Parma Calcio"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Parma Calcio (Distrital) Parma Calcio (Distrital)":
+      - generic: Parma Calcio (Distrital) Parma Calcio (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "AS Monaco FC (Distrital) AS Monaco FC (Distrital)":
+      - generic: AS Monaco FC (Distrital) AS Monaco FC (Distrital)
+    - 'cell "Vencedor: Parma Calcio"':
+      - generic: "Vencedor: Parma Calcio"
+  - 'row "Taça - Preliminar 2 RB Bragantino (Distrital) RB Bragantino (Distrital) 2 x 0 Cagliari Calcio (Distrital) Cagliari Calcio (Distrital) Vencedor: RB Bragantino"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "RB Bragantino (Distrital) RB Bragantino (Distrital)":
+      - generic: RB Bragantino (Distrital) RB Bragantino (Distrital)
+    - cell "2 x 0":
+      - generic: 2 x 0
+    - cell "Cagliari Calcio (Distrital) Cagliari Calcio (Distrital)":
+      - generic: Cagliari Calcio (Distrital) Cagliari Calcio (Distrital)
+    - 'cell "Vencedor: RB Bragantino"':
+      - generic: "Vencedor: RB Bragantino"
+  - 'row "Taça - Preliminar 2 CF Estrela da Amadora (Distrital) CF Estrela da Amadora (Distrital) 3 x 0 Le Mans FC (Distrital) Le Mans FC (Distrital) Vencedor: CF Estrela da Amadora"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "CF Estrela da Amadora (Distrital) CF Estrela da Amadora (Distrital)":
+      - generic: CF Estrela da Amadora (Distrital) CF Estrela da Amadora (Distrital)
+    - cell "3 x 0":
+      - generic: 3 x 0
+    - cell "Le Mans FC (Distrital) Le Mans FC (Distrital)":
+      - generic: Le Mans FC (Distrital) Le Mans FC (Distrital)
+    - 'cell "Vencedor: CF Estrela da Amadora"':
+      - generic: "Vencedor: CF Estrela da Amadora"
+  - 'row "Taça - Preliminar 2 Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital) 0 x 2 Athletic Club Bilbao (Distrital) Athletic Club Bilbao (Distrital) Vencedor: Athletic Club Bilbao"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital)":
+      - generic: Bor. Mönchengladbach (Distrital) Bor. Mönchengladbach (Distrital)
+    - cell "0 x 2":
+      - generic: 0 x 2
+    - cell "Athletic Club Bilbao (Distrital) Athletic Club Bilbao (Distrital)":
+      - generic: Athletic Club Bilbao (Distrital) Athletic Club Bilbao (Distrital)
+    - 'cell "Vencedor: Athletic Club Bilbao"':
+      - generic: "Vencedor: Athletic Club Bilbao"
+  - 'row "Taça - Preliminar 2 Sunderland AFC (Distrital) Sunderland AFC (Distrital) 1 x 0 US Lecce (Distrital) US Lecce (Distrital) Vencedor: Sunderland AFC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Sunderland AFC (Distrital) Sunderland AFC (Distrital)":
+      - generic: Sunderland AFC (Distrital) Sunderland AFC (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "US Lecce (Distrital) US Lecce (Distrital)":
+      - generic: US Lecce (Distrital) US Lecce (Distrital)
+    - 'cell "Vencedor: Sunderland AFC"':
+      - generic: "Vencedor: Sunderland AFC"
+  - 'row "Taça - Preliminar 2 Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital) 3 x 1 Gil Vicente FC (Distrital) Gil Vicente FC (Distrital) Vencedor: Eintracht Frankfurt"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital)":
+      - generic: Eintracht Frankfurt (Distrital) Eintracht Frankfurt (Distrital)
+    - cell "3 x 1":
+      - generic: 3 x 1
+    - cell "Gil Vicente FC (Distrital) Gil Vicente FC (Distrital)":
+      - generic: Gil Vicente FC (Distrital) Gil Vicente FC (Distrital)
+    - 'cell "Vencedor: Eintracht Frankfurt"':
+      - generic: "Vencedor: Eintracht Frankfurt"
+  - 'row "Taça - Preliminar 2 CR Vasco da Gama (Distrital) CR Vasco da Gama (Distrital) 0 x 0 (Pên: 5 x 3) West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital) Vencedor: CR Vasco da Gama"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "CR Vasco da Gama (Distrital) CR Vasco da Gama (Distrital)":
+      - generic: CR Vasco da Gama (Distrital) CR Vasco da Gama (Distrital)
+    - 'cell "0 x 0 (Pên: 5 x 3)"':
+      - generic: "0 x 0 (Pên: 5 x 3)"
+    - cell "West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital)":
+      - generic: West Bromwich Albion FC (Distrital) West Bromwich Albion FC (Distrital)
+    - 'cell "Vencedor: CR Vasco da Gama"':
+      - generic: "Vencedor: CR Vasco da Gama"
+  - 'row "Taça - Preliminar 2 Sheffield United FC (Distrital) Sheffield United FC (Distrital) 1 x 0 Hull City AFC (Distrital) Hull City AFC (Distrital) Vencedor: Sheffield United FC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Sheffield United FC (Distrital) Sheffield United FC (Distrital)":
+      - generic: Sheffield United FC (Distrital) Sheffield United FC (Distrital)
+    - cell "1 x 0":
+      - generic: 1 x 0
+    - cell "Hull City AFC (Distrital) Hull City AFC (Distrital)":
+      - generic: Hull City AFC (Distrital) Hull City AFC (Distrital)
+    - 'cell "Vencedor: Sheffield United FC"':
+      - generic: "Vencedor: Sheffield United FC"
+  - 'row "Taça - Preliminar 2 Wrexham AFC (Distrital) Wrexham AFC (Distrital) 3 x 1 Casa Pia (Distrital) Casa Pia (Distrital) Vencedor: Wrexham AFC"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "Wrexham AFC (Distrital) Wrexham AFC (Distrital)":
+      - generic: Wrexham AFC (Distrital) Wrexham AFC (Distrital)
+    - cell "3 x 1":
+      - generic: 3 x 1
+    - cell "Casa Pia (Distrital) Casa Pia (Distrital)":
+      - generic: Casa Pia (Distrital) Casa Pia (Distrital)
+    - 'cell "Vencedor: Wrexham AFC"':
+      - generic: "Vencedor: Wrexham AFC"
+  - 'row "Taça - Preliminar 2 VfB Stuttgart (Distrital) VfB Stuttgart (Distrital) 2 x 1 Wolverhampton Wanderers FC (Distrital) Wolverhampton Wanderers FC (Distrital) Vencedor: VfB Stuttgart"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "VfB Stuttgart (Distrital) VfB Stuttgart (Distrital)":
+      - generic: VfB Stuttgart (Distrital) VfB Stuttgart (Distrital)
+    - cell "2 x 1":
+      - generic: 2 x 1
+    - cell "Wolverhampton Wanderers FC (Distrital) Wolverhampton Wanderers FC (Distrital)":
+      - generic: Wolverhampton Wanderers FC (Distrital) Wolverhampton Wanderers FC (Distrital)
+    - 'cell "Vencedor: VfB Stuttgart"':
+      - generic: "Vencedor: VfB Stuttgart"
+  - 'row "Taça - Preliminar 2 US Sassuolo Calcio (Distrital) US Sassuolo Calcio (Distrital) 1 x 2 FC Schalke 04 (Distrital) FC Schalke 04 (Distrital) Vencedor: FC Schalke 04"':
+    - cell "Taça - Preliminar 2":
+      - generic: Taça - Preliminar 2
+    - cell "US Sassuolo Calcio (Distrital) US Sassuolo Calcio (Distrital)":
+      - generic: US Sassuolo Calcio (Distrital) US Sassuolo Calcio (Distrital)
+    - cell "1 x 2":
+      - generic: 1 x 2
+    - cell "FC Schalke 04 (Distrital) FC Schalke 04 (Distrital)":
+      - generic: FC Schalke 04 (Distrital) FC Schalke 04 (Distrital)
+    - 'cell "Vencedor: FC Schalke 04"':
+      - generic: "Vencedor: FC Schalke 04"
+- generic: ARTILHARIA DA TEMPORADA
+- generic: "1º Atleta fictício RC Ce-18* (RC Celta Vigo) — 3 gols (Liga: 0, Taça: 3)"
+- generic: "2º Atleta fictício FC Ar-17 (FC Arouca) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "3º Atleta fictício Eintr-10 (Eintracht Frankfurt) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "4º Atleta fictício Sunde-08 (Sunderland AFC) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "5º Atleta fictício FC Sc-16 (FC Schalke 04) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "6º Atleta fictício RCD L-15 (RCD La Coruña) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "7º Atleta fictício VfB S-07 (VfB Stuttgart) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "8º Atleta fictício Atala-11 (Atalanta Bergamo) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "9º Atleta fictício 1. FC-09 (1. FC Köln) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "10º Atleta fictício CD Sa-12 (CD Santa Clara) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "11º Atleta fictício RC Ce-11 (RC Celta Vigo) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "12º Atleta fictício 1. FC-11* (1. FC Köln) — 2 gols (Liga: 0, Taça: 2)"
+- generic: "13º Atleta fictício Genoa-17* (Genoa CFC) — 1 gols (Liga: 0, Taça: 1)"
+- generic: "14º Atleta fictício US Sa-05 (US Sassuolo Calcio) — 1 gols (Liga: 0, Taça: 1)"
+- generic: "15º Atleta fictício 1. FC-08 (1. FC Union Berlin) — 1 gols (Liga: 0, Taça: 1)"
+- generic: FC Internazionale Milano • R3

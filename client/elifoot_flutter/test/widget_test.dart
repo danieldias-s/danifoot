@@ -453,7 +453,13 @@ void main() {
       // Verify 0/6 counter & literal '*' in João Silva*
       expect(find.byKey(const Key('ready-counter-label')), findsOneWidget);
       expect(find.text('TÁTICAS ENVIADAS: 0/6'), findsOneWidget);
-      expect(find.text('João Silva*'), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('squad-table')),
+          matching: find.text('João Silva*'),
+        ),
+        findsOneWidget,
+      );
 
       for (final value in [20, 50, 70]) {
         morale = value;

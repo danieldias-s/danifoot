@@ -1,0 +1,554 @@
+- generic: LIGA CLÁSSICA
+- generic: "98"
+- generic: 015B - Mercado e partidas
+- generic: Temporada 1 | Rodada 3 (Campeonato Nacional)
+- generic: 08/08/1998
+- button "ENVIAR TÁTICA"
+- generic: "TÁTICAS ENVIADAS: 0/3"
+- generic: "[..] Daniel 015B (Flamengo RJ)"
+- generic: "[..] Comprador 015B (FC Porto)"
+- generic: "[..] Rival 015B (Arsenal FC)"
+- generic: CENTRAL DO TREINADOR
+- button "1. PLANTEL & TÁTICAS"
+- button "2. DIVISÕES & TAÇA"
+- button "3. MERCADO & LEILÃO"
+- button "4. FINANÇAS & ESTÁDIO"
+- button "5. RANKING & CARREIRA"
+- button "6. CALENDÁRIO & RESULTADOS"
+- button "7. RANKINGS DE JOGADORES"
+- button "APARÊNCIA"
+- button "TROCAR SALA"
+- generic: LIGA CLÁSSICA 98
+- generic: Flamengo RJ
+- generic: 1ª Divisão
+- generic: Caixa
+- generic: Próximo jogo
+- generic: Moral do treinador 70 de 100, VERDE
+- generic: Daniel 015B
+- generic: "Posição: 5º"
+- generic: R$ 4.216.818
+- generic: PLANTEL & TÁTICAS
+- generic: Prepare o onze inicial, escolha o esquema e envie a tática para a sala.
+- generic: PAINEL PRINCIPAL DO TREINADOR — Flamengo RJ
+- generic: PLANTEL DE JOGADORES (* = CRAQUE)
+- generic: TEMP 1 • RODADA 3 (Campeonato Nacional)
+- generic: TREINADOR
+- generic: Daniel 015B
+- generic: DATA DO JOGO
+- generic: 08/08/1998
+- button "TODAS"
+- button "G"
+- button "D"
+- generic: "FILTRAR POS:"
+- button "PADRÃO"
+- button "FORÇA"
+- generic: "ORDENAR:"
+- button "M"
+- button "GOLS"
+- button "A"
+- button "VALOR"
+- generic: "STATUS:"
+- button "TODOS"
+- button "TITULARES"
+- button "RESERVAS"
+- button "APTOS"
+- button "INDISPONÍVEIS"
+- generic: TETO DE EVOLUÇÃO
+- generic: "49"
+- generic: PREPARAÇÃO
+- generic: ESCALADO (FALTA ENVIAR)
+- button "MAIS INFORMAÇÕES DO TREINADOR"
+- button "ESCALAÇÃO"
+- button "TÁTICAS (4-4-2)"
+- button "MERCADO"
+- button "CLASSIFICAÇÃO"
+- button "PRÓXIMA PARTIDA"
+- generic: ESQUEMA TÁTICO
+- button "AUTO-ESCALAR 11 + BANCO"
+- button "4-4-2"
+- generic: FORMAÇÃO
+- generic: "TITULARES: 11/11 | BANCO: 7/9 | ELENCO: 18/24"
+- generic: CAMPO TÁTICO CLÁSSICO — ESQUEMA 4-4-2
+- generic: SETORES COMPATÍVEIS [OK]
+- button "Atleta fictício Flame-11* Flame-11* A • 37"
+- button "Atleta fictício Flame-12 Flame-12 A • 37"
+- button "Atleta fictício Flame-17* Flame-17* M • 37"
+- button "Atleta fictício Flame-09 Flame-09 M • 35"
+- button "Atleta fictício Flame-10 Flame-10 M • 32"
+- button "Atleta fictício Flame-08 Flame-08 M • 31"
+- button "Atleta fictício Flame-13 Flame-13 D • 37"
+- button "Atleta fictício Flame-04 Flame-04 D • 36"
+- button "Atleta fictício Flame-05 Flame-05 D • 35"
+- button "Atleta fictício Flame-01 Flame-01 G • 32"
+- button "TITULARES E POSIÇÕES"
+- button "Atleta fictício Flame-06 Flame-06 D • 34"
+- generic: Clique em STATUS para alternar TITULAR / RESERVA / FORA ou no nome do atleta para abrir a ficha completa.
+- table:
+  - row "STATUS POS JOGADOR (* = CRAQUE) FORÇA COMPORTAMENTO CONDIÇÃO GOLS CONTRATO SALÁRIO VALOR JUSTO AÇÕES":
+    - columnheader "STATUS"
+    - columnheader "POS"
+    - columnheader "JOGADOR (* = CRAQUE)"
+    - columnheader "FORÇA"
+    - columnheader "COMPORTAMENTO"
+    - columnheader "CONDIÇÃO"
+    - columnheader "GOLS"
+    - columnheader "CONTRATO"
+    - columnheader "SALÁRIO"
+    - columnheader "VALOR JUSTO"
+    - columnheader "AÇÕES"
+  - row "TITULAR G Atleta fictício Flame-01 32 Fair Play APTO 0 19r R$ 2.449 R$ 887.177 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "G":
+      - generic: G
+    - cell "Atleta fictício Flame-01":
+      - generic: Atleta fictício Flame-01
+    - cell "32":
+      - generic: "32"
+    - cell "Fair Play":
+      - generic: Fair Play
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "19r":
+      - generic: 19r
+    - cell "R$ 2.449":
+      - generic: R$ 2.449
+    - cell "R$ 887.177":
+      - generic: R$ 887.177
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA G Atleta fictício Flame-02 29 Cordeirinho APTO 0 16r R$ 2.037 R$ 623.851 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "G":
+      - generic: G
+    - cell "Atleta fictício Flame-02":
+      - generic: Atleta fictício Flame-02
+    - cell "29":
+      - generic: "29"
+    - cell "Cordeirinho":
+      - generic: Cordeirinho
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "16r":
+      - generic: 16r
+    - cell "R$ 2.037":
+      - generic: R$ 2.037
+    - cell "R$ 623.851":
+      - generic: R$ 623.851
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR D Atleta fictício Flame-13 37 Caceteiro APTO 0 17r R$ 3.235 R$ 959.244 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-13":
+      - generic: Atleta fictício Flame-13
+    - cell "37":
+      - generic: "37"
+    - cell "Caceteiro":
+      - generic: Caceteiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "17r":
+      - generic: 17r
+    - cell "R$ 3.235":
+      - generic: R$ 3.235
+    - cell "R$ 959.244":
+      - generic: R$ 959.244
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR D Atleta fictício Flame-04 36 Cavalheiro APTO 0 19r R$ 3.068 R$ 1.063.331 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-04":
+      - generic: Atleta fictício Flame-04
+    - cell "36":
+      - generic: "36"
+    - cell "Cavalheiro":
+      - generic: Cavalheiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "19r":
+      - generic: 19r
+    - cell "R$ 3.068":
+      - generic: R$ 3.068
+    - cell "R$ 1.063.331":
+      - generic: R$ 1.063.331
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR D Atleta fictício Flame-05 35 Cordeirinho APTO 0 27r R$ 2.906 R$ 1.027.247 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-05":
+      - generic: Atleta fictício Flame-05
+    - cell "35":
+      - generic: "35"
+    - cell "Cordeirinho":
+      - generic: Cordeirinho
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "27r":
+      - generic: 27r
+    - cell "R$ 2.906":
+      - generic: R$ 2.906
+    - cell "R$ 1.027.247":
+      - generic: R$ 1.027.247
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA D Atleta fictício Flame-03 34 Cavalheiro APTO 0 18r R$ 2.749 R$ 915.626 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-03":
+      - generic: Atleta fictício Flame-03
+    - cell "34":
+      - generic: "34"
+    - cell "Cavalheiro":
+      - generic: Cavalheiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "18r":
+      - generic: 18r
+    - cell "R$ 2.749":
+      - generic: R$ 2.749
+    - cell "R$ 915.626":
+      - generic: R$ 915.626
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR D Atleta fictício Flame-06 34 Fair Play APTO 0 27r R$ 2.749 R$ 988.876 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-06":
+      - generic: Atleta fictício Flame-06
+    - cell "34":
+      - generic: "34"
+    - cell "Fair Play":
+      - generic: Fair Play
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "27r":
+      - generic: 27r
+    - cell "R$ 2.749":
+      - generic: R$ 2.749
+    - cell "R$ 988.876":
+      - generic: R$ 988.876
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA D Atleta fictício Flame-16 31 Cavalheiro APTO 0 23r R$ 2.307 R$ 719.522 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "D":
+      - generic: D
+    - cell "Atleta fictício Flame-16":
+      - generic: Atleta fictício Flame-16
+    - cell "31":
+      - generic: "31"
+    - cell "Cavalheiro":
+      - generic: Cavalheiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "23r":
+      - generic: 23r
+    - cell "R$ 2.307":
+      - generic: R$ 2.307
+    - cell "R$ 719.522":
+      - generic: R$ 719.522
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR M Atleta fictício Flame-17* 37 Cavalheiro APTO 0 18r R$ 3.882 R$ 1.615.779 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-17*":
+      - generic: Atleta fictício Flame-17*
+    - cell "37":
+      - generic: "37"
+    - cell "Cavalheiro":
+      - generic: Cavalheiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "18r":
+      - generic: 18r
+    - cell "R$ 3.882":
+      - generic: R$ 3.882
+    - cell "R$ 1.615.779":
+      - generic: R$ 1.615.779
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR M Atleta fictício Flame-09 35 Caneleiro APTO 0 12r R$ 2.906 R$ 948.468 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-09":
+      - generic: Atleta fictício Flame-09
+    - cell "35":
+      - generic: "35"
+    - cell "Caneleiro":
+      - generic: Caneleiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "12r":
+      - generic: 12r
+    - cell "R$ 2.906":
+      - generic: R$ 2.906
+    - cell "R$ 948.468":
+      - generic: R$ 948.468
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR M Atleta fictício Flame-10 32 Fair Play APTO 0 12r R$ 2.449 R$ 853.211 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-10":
+      - generic: Atleta fictício Flame-10
+    - cell "32":
+      - generic: "32"
+    - cell "Fair Play":
+      - generic: Fair Play
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "12r":
+      - generic: 12r
+    - cell "R$ 2.449":
+      - generic: R$ 2.449
+    - cell "R$ 853.211":
+      - generic: R$ 853.211
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR M Atleta fictício Flame-08 31 Cordeirinho APTO 0 15r R$ 2.307 R$ 756.371 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-08":
+      - generic: Atleta fictício Flame-08
+    - cell "31":
+      - generic: "31"
+    - cell "Cordeirinho":
+      - generic: Cordeirinho
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "15r":
+      - generic: 15r
+    - cell "R$ 2.307":
+      - generic: R$ 2.307
+    - cell "R$ 756.371":
+      - generic: R$ 756.371
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA M Atleta fictício Flame-07 28 Fair Play APTO 0 27r R$ 1.909 R$ 639.167 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-07":
+      - generic: Atleta fictício Flame-07
+    - cell "28":
+      - generic: "28"
+    - cell "Fair Play":
+      - generic: Fair Play
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "27r":
+      - generic: 27r
+    - cell "R$ 1.909":
+      - generic: R$ 1.909
+    - cell "R$ 639.167":
+      - generic: R$ 639.167
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA M Atleta fictício Flame-14 25 Cavalheiro APTO 0 14r R$ 1.554 R$ 416.751 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "M":
+      - generic: M
+    - cell "Atleta fictício Flame-14":
+      - generic: Atleta fictício Flame-14
+    - cell "25":
+      - generic: "25"
+    - cell "Cavalheiro":
+      - generic: Cavalheiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "14r":
+      - generic: 14r
+    - cell "R$ 1.554":
+      - generic: R$ 1.554
+    - cell "R$ 416.751":
+      - generic: R$ 416.751
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR A Atleta fictício Flame-11* 37 Caneleiro APTO 0 25r R$ 4.193 R$ 1.637.323 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "A":
+      - generic: A
+    - cell "Atleta fictício Flame-11*":
+      - generic: Atleta fictício Flame-11*
+    - cell "37":
+      - generic: "37"
+    - cell "Caneleiro":
+      - generic: Caneleiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "25r":
+      - generic: 25r
+    - cell "R$ 4.193":
+      - generic: R$ 4.193
+    - cell "R$ 1.637.323":
+      - generic: R$ 1.637.323
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "TITULAR A Atleta fictício Flame-12 37 Caneleiro APTO 0 14r R$ 3.494 R$ 1.170.185 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "TITULAR":
+      - generic: TITULAR
+    - cell "A":
+      - generic: A
+    - cell "Atleta fictício Flame-12":
+      - generic: Atleta fictício Flame-12
+    - cell "37":
+      - generic: "37"
+    - cell "Caneleiro":
+      - generic: Caneleiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "14r":
+      - generic: 14r
+    - cell "R$ 3.494":
+      - generic: R$ 3.494
+    - cell "R$ 1.170.185":
+      - generic: R$ 1.170.185
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA A Atleta fictício Flame-15 36 Caceteiro APTO 0 22r R$ 3.314 R$ 1.081.560 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "A":
+      - generic: A
+    - cell "Atleta fictício Flame-15":
+      - generic: Atleta fictício Flame-15
+    - cell "36":
+      - generic: "36"
+    - cell "Caceteiro":
+      - generic: Caceteiro
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "22r":
+      - generic: 22r
+    - cell "R$ 3.314":
+      - generic: R$ 3.314
+    - cell "R$ 1.081.560":
+      - generic: R$ 1.081.560
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+  - row "RESERVA A Atleta fictício Flame-18 25 Cordeirinho APTO 0 21r R$ 1.678 R$ 490.055 RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+    - cell "RESERVA":
+      - generic: RESERVA
+    - cell "A":
+      - generic: A
+    - cell "Atleta fictício Flame-18":
+      - generic: Atleta fictício Flame-18
+    - cell "25":
+      - generic: "25"
+    - cell "Cordeirinho":
+      - generic: Cordeirinho
+    - cell "APTO":
+      - generic: APTO
+    - cell "0":
+      - generic: "0"
+    - cell "21r":
+      - generic: 21r
+    - cell "R$ 1.678":
+      - generic: R$ 1.678
+    - cell "R$ 490.055":
+      - generic: R$ 490.055
+    - cell "RENOVAR ANUNCIAR COLOCAR EM LEILÃO":
+      - button "RENOVAR"
+      - button "ANUNCIAR"
+      - button "COLOCAR EM LEILÃO"
+- button "BANCO E RESERVAS (7)"
+- generic: "TROCA RÁPIDA:"
+- 'button "Sai Titular: [G] Atleta fictício Flame-01 (F:32)"'
+- 'button "Entra Reserva: [G] Atleta fictício Flame-02 (F:29)"'
+- button "TROCAR TITULAR POR RESERVA"
+- generic: FC Internazionale Milano • R3

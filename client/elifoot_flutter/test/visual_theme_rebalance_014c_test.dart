@@ -131,8 +131,8 @@ void main() {
           expect(t.background, green.background);
           expect(t.surface, green.surface);
           expect(t.primary, green.primary);
-          expect(t.selectedBackground, const Color(0xFFFFD700));
-          expect(hue(t.background), inInclusiveRange(90, 160));
+          expect(t.selectedBackground, const Color(0xFFFFD400));
+          expect(hue(t.background), inInclusiveRange(90, 180));
         }
       });
     }
@@ -155,7 +155,7 @@ void main() {
               Theme.of(
                 tester.element(find.byType(Scaffold).first),
               ).scaffoldBackgroundColor;
-          expect(hue(bg), inInclusiveRange(90, 160));
+          expect(hue(bg), inInclusiveRange(90, 180));
           expect(
             find.byKey(const ValueKey('coach-main-panel')),
             findsOneWidget,
@@ -189,7 +189,7 @@ void main() {
             greaterThanOrEqualTo(4.5),
           );
           if (variant != 'AltoContraste') {
-            expect(hue(t.background), inInclusiveRange(90, 160));
+            expect(hue(t.background), inInclusiveRange(90, 180));
           }
         }
       }

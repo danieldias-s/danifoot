@@ -367,7 +367,7 @@ extension _ShellActions on _ElifootShellScreenState {
             ),
             const SizedBox(height: 10),
             Text(
-              'Use o botão "PRONTO PARA ACOMPANHAR" no topo para avançar as rodadas com a sala, ou veja a aba "6. RANKING & CARREIRA" para aceitar convites de clubes!',
+              'Use o botão "PRONTO PARA ACOMPANHAR" no topo para avançar as rodadas com a sala, ou veja a aba "5. RANKING & CARREIRA" para aceitar convites de clubes!',
               style: TextStyle(
                 fontSize: 11,
                 color: ClassicTheme.of(context).accent,
@@ -579,6 +579,7 @@ extension _ShellActions on _ElifootShellScreenState {
           ),
           const SizedBox(height: 8),
           PlayerStatisticRow(
+            dense: true,
             items: [
               PlayerStatItem('TREINADOR', _nickname),
               PlayerStatItem('CLUBE ATUAL', clubName, highlight: true),
@@ -610,7 +611,6 @@ extension _ShellActions on _ElifootShellScreenState {
             runSpacing: 6,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              _buildCoachMorale(),
               if (invitations.isNotEmpty)
                 InkWell(
                   onTap: () => setState(() {
@@ -932,10 +932,66 @@ extension _ShellActions on _ElifootShellScreenState {
                 : 'ESCALAÇÃO INCOMPLETA (${starters.length}/11)',
           ),
           const SizedBox(height: 6),
-          buildSectorLine('ATAQUE', targetA, aStarters),
-          buildSectorLine('MEIO-CAMPO', targetM, mStarters),
-          buildSectorLine('DEFESA', targetD, dStarters),
-          buildSectorLine('GOLEIRO', 1, gStarters),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 480),
+              child: ClassicTacticalPitch(
+                lines: [aStarters, mStarters, dStarters, gStarters]
+                    .map(
+                      (line) => line
+                          .map(
+                            (p) => Map<String, dynamic>.from(p as Map)
+                              ..['position'] = _formatPosition(p['position']),
+                          )
+                          .toList(),
+                    )
+                    .toList(),
+                shirt: _clubColor(
+                  _myClubDetail?['colorPalette'],
+                  'primaryColor',
+                ),
+                ink: Colors.white,
+                onPlayer: _showPlayerDetailDialog,
+              ),
+            ),
+          ),
+          ExpansionTile(
+            tilePadding: EdgeInsets.zero,
+            title: const Text(
+              'TITULARES E POSIÇÕES',
+              style: TextStyle(fontSize: 11),
+            ),
+            children: [
+              buildSectorLine('ATAQUE', targetA, aStarters),
+              buildSectorLine('MEIO-CAMPO', targetM, mStarters),
+              buildSectorLine('DEFESA', targetD, dStarters),
+              buildSectorLine('GOLEIRO', 1, gStarters),
+            ],
+          ),
+          if (bench.isNotEmpty)
+            ExpansionTile(
+              tilePadding: EdgeInsets.zero,
+              title: Text(
+                'BANCO E RESERVAS (${bench.length})',
+                style: const TextStyle(fontSize: 11),
+              ),
+              children: [
+                for (final p in bench)
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      '${p['displayName']}',
+                      style: const TextStyle(fontSize: 11),
+                    ),
+                    subtitle: Text(
+                      '${_formatPosition(p['position'])} • Força ${p['strength']}',
+                    ),
+                    onTap: () => _showPlayerDetailDialog(
+                      Map<String, dynamic>.from(p as Map),
+                    ),
+                  ),
+              ],
+            ),
           const SizedBox(height: 6),
           // Quick Starter <-> Reserve Swap bar
           if (starters.isNotEmpty && bench.isNotEmpty)
@@ -1140,13 +1196,13 @@ extension _ShellActions on _ElifootShellScreenState {
   Widget _buildCalendarScreen() {
     final currentRound = (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1;
     final myClubName = _myClubDetail?['name']?.toString();
-    final filteredRounds = _calendar.where((r) {
-      if (_selectedCalendarFilter == 'CURRENT') {
-        return r['roundNumber'] == currentRound;
-      }
-      return true;
-    }).toList();
-
+    final rounds = _calendar
+        .where(
+          (r) =>
+              _selectedCalendarFilter != 'CURRENT' ||
+              r['roundNumber'] == currentRound,
+        )
+        .toList();
     return ListView(
       padding: const EdgeInsets.all(12),
       children: [
@@ -1156,152 +1212,167 @@ extension _ShellActions on _ElifootShellScreenState {
               'Consulte os confrontos realizados e os jogos futuros da Liga e da Taça.',
         ),
         const SizedBox(height: 8),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final filter in [
-              ('ALL', 'TODAS AS RODADAS'),
-              ('CURRENT', 'RODADA ATUAL (R$currentRound)'),
-              if (myClubName != null) ('MY_CLUB', 'MEU CLUBE ($myClubName)'),
-            ])
-              ClassicActionButton(
-                label: filter.$2,
-                onPressed: () =>
-                    setState(() => _selectedCalendarFilter = filter.$1),
-              ),
+        ClassicTabs(
+          key: const Key('calendar-filters'),
+          selected: _selectedCalendarFilter,
+          items: [
+            ('ALL', 'TODAS AS RODADAS'),
+            ('CURRENT', 'RODADA ATUAL (R$currentRound)'),
+            if (myClubName != null) ('MY_CLUB', 'MEU CLUBE ($myClubName)'),
           ],
+          onSelected: (value) =>
+              setState(() => _selectedCalendarFilter = value),
         ),
-        const SizedBox(height: 10),
-        for (final r in filteredRounds) ...[
+        const SizedBox(height: 8),
+        if (rounds.isEmpty)
+          const ClassicPanel(child: Text('Calendário ainda não disponível.')),
+        for (final r in rounds)
           Builder(
             builder: (context) {
-              final allFixtures = r['fixtures'] as List<dynamic>? ?? [];
-              final fixtures =
-                  (_selectedCalendarFilter == 'MY_CLUB' && myClubName != null)
-                  ? allFixtures
-                        .where(
-                          (f) =>
-                              f['home'] == myClubName ||
-                              f['away'] == myClubName,
-                        )
-                        .toList()
-                  : allFixtures;
-              final isCurrent = r['roundNumber'] == currentRound;
-              return Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                decoration: BoxDecoration(
-                  color: ClassicTheme.of(context).surface,
-                  border: Border.all(
-                    color: isCurrent
-                        ? ClassicTheme.of(context).selectedBackground
-                        : ClassicTheme.of(context).border,
-                    width: isCurrent ? 1.5 : 1,
-                  ),
-                ),
-                child: ExpansionTile(
-                  initiallyExpanded:
-                      isCurrent || _selectedCalendarFilter != 'ALL',
-                  collapsedIconColor: ClassicTheme.of(
-                    context,
-                  ).selectedBackground,
-                  iconColor: ClassicTheme.of(context).selectedBackground,
-                  title: Text(
-                    'Rodada ${r['roundNumber']} • ${r['competition']}${isCurrent ? " [ATUAL]" : ""}',
-                    style: TextStyle(
-                      color: isCurrent
-                          ? ClassicTheme.of(context).accent
-                          : ClassicTheme.of(context).textPrimary,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
+              final fixtures = (r['fixtures'] as List? ?? [])
+                  .where(
+                    (f) =>
+                        _selectedCalendarFilter != 'MY_CLUB' ||
+                        f['homeClubId'] == _myClubId ||
+                        f['awayClubId'] == _myClubId ||
+                        f['home'] == myClubName ||
+                        f['away'] == myClubName,
+                  )
+                  .toList();
+              final current = r['roundNumber'] == currentRound;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: ClassicPanel(
+                  padding: EdgeInsets.zero,
+                  child: ExpansionTile(
+                    key: PageStorageKey(
+                      'calendar-$_selectedCalendarFilter-${r['roundNumber']}',
                     ),
+                    initiallyExpanded:
+                        current || _selectedCalendarFilter != 'ALL',
+                    tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+                    title: Text(
+                      'Rodada ${r['roundNumber']} • ${r['competition']}${current ? ' [ATUAL]' : ''}',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: current
+                            ? ClassicTheme.of(context).accent
+                            : ClassicTheme.of(context).textPrimary,
+                      ),
+                    ),
+                    children: [
+                      if (fixtures.isEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Text(
+                            _selectedCalendarFilter == 'MY_CLUB' &&
+                                    (r['fixtures'] as List? ?? []).isNotEmpty
+                                ? 'Seu clube não disputa esta rodada.'
+                                : 'Confrontos definidos após a fase anterior da Taça.',
+                          ),
+                        )
+                      else
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxHeight: 440),
+                          child: SingleChildScrollView(
+                            child: ClassicTable(
+                              tableKey: 'calendar-round-${r['roundNumber']}',
+                              columns: const [
+                                '#',
+                                'MANDANTE',
+                                'VISITANTE',
+                                'PLACAR',
+                                'SITUAÇÃO',
+                              ],
+                              numericColumns: const {0},
+                              rows: [
+                                for (int i = 0; i < fixtures.length; i++)
+                                  DataRow(
+                                    color: WidgetStatePropertyAll(
+                                      i.isEven
+                                          ? ClassicTheme.of(context).tableRow
+                                          : ClassicTheme.of(
+                                              context,
+                                            ).tableRowAlternate,
+                                    ),
+                                    cells: [
+                                      DataCell(Text('${i + 1}')),
+                                      DataCell(
+                                        SizedBox(
+                                          width:
+                                              MediaQuery.sizeOf(context).width <
+                                                  600
+                                              ? 155
+                                              : 225,
+                                          child: TeamColorName(
+                                            name: '${fixtures[i]['home']}',
+                                            palette: _teamPalette(
+                                              id: fixtures[i]['homeClubId'],
+                                              name: fixtures[i]['home'],
+                                            ),
+                                            highlight:
+                                                fixtures[i]['home'] ==
+                                                myClubName,
+                                          ),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        SizedBox(
+                                          width:
+                                              MediaQuery.sizeOf(context).width <
+                                                  600
+                                              ? 155
+                                              : 225,
+                                          child: TeamColorName(
+                                            name: '${fixtures[i]['away']}',
+                                            palette: _teamPalette(
+                                              id: fixtures[i]['awayClubId'],
+                                              name: fixtures[i]['away'],
+                                            ),
+                                            highlight:
+                                                fixtures[i]['away'] ==
+                                                myClubName,
+                                          ),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        Text(
+                                          fixtures[i]['isFinished'] == true
+                                              ? '${fixtures[i]['homeGoals']} x ${fixtures[i]['awayGoals']}'
+                                              : '— x —',
+                                          style: TextStyle(
+                                            color: ClassicTheme.of(
+                                              context,
+                                            ).accent,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        ClassicStatusIndicator(
+                                          completed:
+                                              fixtures[i]['isFinished'] == true,
+                                          label:
+                                              fixtures[i]['isFinished'] == true
+                                              ? 'FINALIZADO'
+                                              : current && _matchLocked
+                                              ? 'EM ANDAMENTO'
+                                              : 'PREPARANDO',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
-                  children: [
-                    if (fixtures.isEmpty)
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          'Confrontos definidos após a fase anterior da Taça.',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: ClassicTheme.of(context).accent,
-                          ),
-                        ),
-                      ),
-                    for (final f in fixtures)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        decoration: BoxDecoration(
-                          color:
-                              (myClubName != null &&
-                                  (f['home'] == myClubName ||
-                                      f['away'] == myClubName))
-                              ? ClassicTheme.of(context).surfaceAlternate
-                              : Colors.transparent,
-                          border: const Border(
-                            top: BorderSide(color: Colors.white12),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TeamColorName(
-                                name: '${f['home']}',
-                                palette: _teamPalette(
-                                  id: f['homeClubId'],
-                                  name: f['home'],
-                                ),
-                                textAlign: TextAlign.right,
-                                highlight: f['home'] == myClubName,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 56,
-                              child: Text(
-                                f['isFinished'] == true
-                                    ? '${f['homeGoals']} x ${f['awayGoals']}'
-                                    : '×',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: ClassicTheme.of(context).accent,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: TeamColorName(
-                                name: '${f['away']}',
-                                palette: _teamPalette(
-                                  id: f['awayClubId'],
-                                  name: f['away'],
-                                ),
-                                highlight: f['away'] == myClubName,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              f['isFinished'] == true ? 'FINAL' : 'A JOGAR',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: f['isFinished'] == true
-                                    ? ClassicTheme.of(context).accent
-                                    : ClassicTheme.of(context).accent,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
                 ),
               );
             },
           ),
-        ],
       ],
     );
   }

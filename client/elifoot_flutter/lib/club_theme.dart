@@ -143,7 +143,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
         const Color(0xFF03180A),
         const Color(0xFF2E6B3D),
         const Color(0xFF0F5A24),
-        const Color(0xFFFFD700),
+        const Color(0xFFFFD400),
         const Color(0xFFB8D8BC),
       ),
       'AltoContraste' => (
@@ -158,14 +158,14 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
         const Color(0xFFFFFFFF),
       ),
       _ => (
-        const Color(0xFF0A4D1C),
-        const Color(0xFF0E3B19),
-        const Color(0xFF10421C),
-        const Color(0xFF073612),
-        const Color(0xFF062E0F),
-        const Color(0xFF3E8450),
-        const Color(0xFF136F2D),
-        const Color(0xFFFFD700),
+        const Color(0xFF002E20),
+        const Color(0xFF00452B),
+        const Color(0xFF064E32),
+        const Color(0xFF003923),
+        const Color(0xFF002719),
+        const Color(0xFF3D7250),
+        const Color(0xFF00883C),
+        const Color(0xFFFFD400),
         const Color(0xFFC8E6C9),
       ),
     };
@@ -263,7 +263,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     final surface = panel(.09), alternate = panel(.17);
     final rawAccent =
         rgbColor(mode == 'Custom' ? p['accent'] : null) ??
-        (useClub ? primary : const Color(0xFFFFD700));
+        (useClub ? primary : const Color(0xFFFFD400));
     Color across(Color requested) {
       for (int i = 0; i <= 100; i++) {
         final c = Color.lerp(requested, text, i / 100)!;
@@ -301,7 +301,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
   TextStyle get headingStyle => TextStyle(
     color: accent,
     fontWeight: FontWeight.bold,
-    fontFamily: 'monospace',
+    fontFamily: 'Roboto',
     letterSpacing: .4,
   );
   ThemeData material() {
@@ -320,7 +320,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     );
     final textTheme = ThemeData(
       brightness: scheme.brightness,
-      fontFamily: 'monospace',
+      fontFamily: 'Roboto',
     ).textTheme.apply(bodyColor: textPrimary, displayColor: textPrimary);
     final shape = const RoundedRectangleBorder(borderRadius: BorderRadius.zero);
     return ThemeData(
@@ -328,9 +328,18 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       colorScheme: scheme,
       scaffoldBackgroundColor: background,
       primaryColor: primary,
-      fontFamily: 'monospace',
+      fontFamily: 'Roboto',
       textTheme: textTheme,
       extensions: [this],
+      visualDensity: VisualDensity.compact,
+      dataTableTheme: DataTableThemeData(
+        headingRowColor: WidgetStatePropertyAll(tableHeader),
+        headingRowHeight: 36,
+        dataRowMinHeight: 34,
+        dataRowMaxHeight: 44,
+        columnSpacing: 16,
+        horizontalMargin: 12,
+      ),
       dividerColor: border,
       appBarTheme: AppBarTheme(
         backgroundColor: surface,
@@ -339,10 +348,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       dialogTheme: DialogThemeData(
         backgroundColor: surface,
         titleTextStyle: headingStyle,
-        contentTextStyle: TextStyle(
-          color: textPrimary,
-          fontFamily: 'monospace',
-        ),
+        contentTextStyle: TextStyle(color: textPrimary, fontFamily: 'Roboto'),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -352,7 +358,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 12,
-            fontFamily: 'monospace',
+            fontFamily: 'Roboto',
           ),
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
@@ -368,6 +374,13 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
         style: TextButton.styleFrom(foregroundColor: accent),
       ),
       inputDecorationTheme: InputDecorationTheme(
+        isDense: true,
+        filled: true,
+        fillColor: surfaceAlternate,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 12,
+        ),
         labelStyle: TextStyle(color: textSecondary),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: border),

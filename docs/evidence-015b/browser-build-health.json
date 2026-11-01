@@ -1,0 +1,7 @@
+{
+  "app": "ELIFOOT_015B",
+  "api": "http://127.0.0.1:5167",
+  "web": "http://127.0.0.1:5168",
+  "root": "D:\\elifoot_98_015B\\artifacts\\015b\\web",
+  "sha256": "a267293e23dc5be04c9f3235e21589caca4b7da560bae14ae0c2f461af7734ff"
+}
