@@ -163,43 +163,35 @@ public sealed partial class ClubAndMarketApplicationService
         if (askingPrice <= 0m) return (false, "O preço pedido deve ser maior que zero.");
 
         if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.");
+        if (player.ContractRoundsRemaining <= 0) return (false, "Contrato do jogador encerrado.");
+        if (askingPrice != Math.Round(askingPrice, 2)) return (false, "Preço deve ter até duas casas decimais.");
+        player.TransferListingVersion++;
         player.IsListedForTransfer = true;
-        player.AskingPrice = Math.Round(askingPrice, 0);
+        player.AskingPrice = askingPrice;
         player.ListedAtRound = world.RoundNumber;
         return (true, null);
     }
 
     private async Task<(bool Success, string? Error)> BuyListedPlayerCoreAsync(
-        Guid worldId,
-        Guid coachId,
-        Guid playerId,
-        string idempotencyKey,
-        CancellationToken ct = default)
+        Guid worldId, Guid coachId, Guid playerId, string idempotencyKey,
+        CancellationToken ct = default, long? listingVersion = null, Guid? sellerClubId = null, decimal? askingPrice = null)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
         if (world == null) return (false, "Sala não encontrada.");
-        if (world.RoundState is not (RoundState.PREPARING or RoundState.RESULTS))
-            return (false, "Operações de mercado só são permitidas fora da partida.");
-
         var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
         if (coach?.CurrentClubId == null) return (false, "Você não controla um clube.");
-
         var player = world.Players.FirstOrDefault(p => p.Id == playerId);
-        if (player == null || player.ClubId == null || !player.IsListedForTransfer || !player.AskingPrice.HasValue)
-            return (false, "Jogador não está disponível para compra direta na lista.");
-
-        var (ok, err) = MarketAndEconomyEngine.ExecuteTransfer(
-            world,
-            coach.CurrentClubId.Value,
-            player.ClubId.Value,
-            player.Id,
-            player.AskingPrice.Value,
-            "Compra direta na lista de transferências",
-            idempotencyKey);
-
-        if (!ok) return (false, err);
-
-        return (true, null);
+        if (player?.ClubId == null || !player.IsListedForTransfer || !player.AskingPrice.HasValue)
+            return (false, "JOGADOR JÁ VENDIDO.");
+        if (listingVersion.HasValue && player.TransferListingVersion != listingVersion ||
+            sellerClubId.HasValue && player.ClubId != sellerClubId ||
+            askingPrice.HasValue && player.AskingPrice != askingPrice)
+            return (false, "O anúncio mudou. Atualize antes de confirmar a compra.");
+        if (player.ContractRoundsRemaining <= 0) return (false, "Contrato do jogador encerrado.");
+        if (world.Players.Count(p=>p.ClubId==coach.CurrentClubId)+world.Auctions.Count(a=>!a.IsClosed&&a.HighestBidderClubId==coach.CurrentClubId)>=SquadValidator.MaxSquadSize)
+            return (false,"Limite de elenco reservado por contratações em andamento.");
+        return MarketAndEconomyEngine.ExecuteTransfer(world, coach.CurrentClubId.Value, player.ClubId.Value,
+            player.Id, player.AskingPrice.Value, "Compra direta pelo preço anunciado", idempotencyKey);
     }
 
     private async Task<(bool Success, string? Error, TransferOfferDto? Offer)> CreateTransferOfferCoreAsync(
@@ -223,7 +215,7 @@ public sealed partial class ClubAndMarketApplicationService
         if (player == null || player.ClubId == null || player.ClubId == buyer.Id)
             return (false, "Jogador inválido para proposta.", null);
 
-        if (offeredAmount <= 0m || ClassicEconomyEngine.AvailableCash(world,buyer) < offeredAmount)
+        if (offeredAmount <= 0m || offeredAmount != Math.Round(offeredAmount,2) || ClassicEconomyEngine.AvailableCash(world,buyer) < offeredAmount)
             return (false, "Saldo insuficiente para sustentar a proposta.", null);
 
         if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.",null);
@@ -239,7 +231,7 @@ public sealed partial class ClubAndMarketApplicationService
             PlayerId = player.Id,
             BuyerClubId = buyer.Id,
             SellerClubId = seller.Id,
-            OfferedAmount = Math.Round(offeredAmount, 0),
+            OfferedAmount = offeredAmount,
             Status = TransferOfferStatus.Pending,
             Justification = $"Proposta de {coach.Nickname}",
             CreatedAtSeason = world.SeasonNumber,

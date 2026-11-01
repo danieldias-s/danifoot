@@ -1,0 +1,158 @@
+- generic: 015A - Mercado e partidas • Temp 1 • Rodada 3 (Campeonato Nacional)
+- generic: "TÉCNICO: Comprador 015A (FC Porto) • CAIXA: R$ 2.676.107"
+- generic: Moral do treinador 79 de 100, VERDE
+- generic: "TÁTICAS ENVIADAS: 3/3"
+- button "VOLTAR À PARTIDA"
+- button "APARÊNCIA"
+- generic: MINUTO 90' | SUBSTITUIÇÕES 0/5 | PARADAS 0/3
+- button "AVANÇAR PRÓXIMA RODADA"
+- button "TROCAR SALA"
+- generic: "[OK] Daniel 015A (Flamengo RJ)"
+- generic: "[OK] Comprador 015A (FC Porto)"
+- generic: "[OK] Rival 015A (Arsenal FC)"
+- button "1. PLANTEL & TÁTICAS"
+- button "2. DIVISÕES & TAÇA"
+- button "3. MERCADO & LEILÃO"
+- button "4. FINANÇAS & ESTÁDIO"
+- button "5. RANKING & CARREIRA"
+- button "6. CALENDÁRIO & RESULTADOS"
+- button "7. RANKINGS DE JOGADORES"
+- generic: MERCADO E LEILÃO
+- checkbox "LEILÃO"
+- checkbox "COMPRA DIRETA" [checked]
+- button "Posição TODOS"
+- button "Ordenação MAIOR FORÇA" [active]
+- generic: ANUNCIAR JOGADOR DO MEU CLUBE
+- button "Jogador próprio"
+- button "COLOCAR EM LEILÃO" [disabled]
+- button "VENDA POR PREÇO FIXO" [disabled]
+- generic: COMPRA DIRETA • 25 jogador(es)
+- generic: Atleta fictício Arsen-13 • D • FORÇA 37
+- generic: "Vendedor: Arsenal FC"
+- generic: "Preço fixo: R$ 1.100.000 • Salário: R$ 3.235 / rodada"
+- generic: "Contrato vigente: 18 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Frosi-12 • A • FORÇA 33
+- generic: "Vendedor: Frosinone Calcio"
+- generic: "Preço fixo: R$ 895.906 • Salário: R$ 2.805 / rodada"
+- generic: "Contrato vigente: 17 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Paris-15 • A • FORÇA 32
+- generic: "Vendedor: Paris Saint-Germain"
+- generic: "Preço fixo: R$ 855.203 • Salário: R$ 2.492 / rodada"
+- generic: "Contrato vigente: 19 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Palme-15 • A • FORÇA 30
+- generic: "Vendedor: Palmeiras SP"
+- generic: "Preço fixo: R$ 698.883 • Salário: R$ 2.343 / rodada"
+- generic: "Contrato vigente: 22 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Stade-18 • A • FORÇA 29
+- generic: "Vendedor: Stade Rennais FC"
+- generic: "Preço fixo: R$ 683.110 • Salário: R$ 2.200 / rodada"
+- generic: "Contrato vigente: 20 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Atlét-07 • M • FORÇA 29
+- generic: "Vendedor: Atlético Madrid"
+- generic: "Preço fixo: R$ 640.416 • Salário: R$ 2.037 / rodada"
+- generic: "Contrato vigente: 26 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Arsen-11* • A • FORÇA 29
+- generic: "Vendedor: Arsenal FC"
+- generic: "Preço fixo: R$ 1.200.000 • Salário: R$ 2.640 / rodada"
+- generic: "Contrato vigente: 19 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Arsen-02 • G • FORÇA 29
+- generic: "Vendedor: Arsenal FC"
+- generic: "Preço fixo: R$ 950.000 • Salário: R$ 2.169 / rodada"
+- generic: "Contrato vigente: 23 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Sport-08 • M • FORÇA 28
+- generic: "Vendedor: Sporting CP"
+- generic: "Preço fixo: R$ 584.720 • Salário: R$ 1.909 / rodada"
+- generic: "Contrato vigente: 22 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Real -11 • A • FORÇA 28
+- generic: "Vendedor: Real Madrid"
+- generic: "Preço fixo: R$ 623.702 • Salário: R$ 2.061 / rodada"
+- generic: "Contrato vigente: 23 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Frosi-11 • A • FORÇA 28
+- generic: "Vendedor: Frosinone Calcio"
+- generic: "Preço fixo: R$ 656.527 • Salário: R$ 2.061 / rodada"
+- generic: "Contrato vigente: 21 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício FC Ba-18 • A • FORÇA 28
+- generic: "Vendedor: FC Barcelona"
+- generic: "Preço fixo: R$ 682.788 • Salário: R$ 2.061 / rodada"
+- generic: "Contrato vigente: 25 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício AS Ro-05 • D • FORÇA 26
+- generic: "Vendedor: AS Roma"
+- generic: "Preço fixo: R$ 496.730 • Salário: R$ 1.786 / rodada"
+- generic: "Contrato vigente: 24 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício FC In-18 • A • FORÇA 26
+- generic: "Vendedor: FC Internazionale Milano"
+- generic: "Preço fixo: R$ 552.336 • Salário: R$ 1.801 / rodada"
+- generic: "Contrato vigente: 14 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício FC In-09 • M • FORÇA 25
+- generic: "Vendedor: FC Internazionale Milano"
+- generic: "Preço fixo: R$ 468.095 • Salário: R$ 1.554 / rodada"
+- generic: "Contrato vigente: 14 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Real -12 • A • FORÇA 24
+- generic: "Vendedor: Real Betis"
+- generic: "Preço fixo: R$ 416.346 • Salário: R$ 1.561 / rodada"
+- generic: "Contrato vigente: 12 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Cruze-07 • M • FORÇA 24
+- generic: "Vendedor: Cruzeiro MG"
+- generic: "Preço fixo: R$ 446.844 • Salário: R$ 1.446 / rodada"
+- generic: "Contrato vigente: 21 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Flumi-12 • A • FORÇA 24
+- generic: "Vendedor: Fluminense RJ"
+- generic: "Preço fixo: R$ 441.327 • Salário: R$ 1.561 / rodada"
+- generic: "Contrato vigente: 18 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício RB Le-18 • A • FORÇA 24
+- generic: "Vendedor: RB Leipzig"
+- generic: "Preço fixo: R$ 476.634 • Salário: R$ 1.561 / rodada"
+- generic: "Contrato vigente: 25 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Como -12 • A • FORÇA 24
+- generic: "Vendedor: Como 1907"
+- generic: "Preço fixo: R$ 395.530 • Salário: R$ 1.561 / rodada"
+- generic: "Contrato vigente: 12 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício AS Ro-18 • A • FORÇA 23
+- generic: "Vendedor: AS Roma"
+- generic: "Preço fixo: R$ 367.637 • Salário: R$ 1.342 / rodada"
+- generic: "Contrato vigente: 21 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Atlét-18 • A • FORÇA 22
+- generic: "Vendedor: Atlético Madrid"
+- generic: "Preço fixo: R$ 367.637 • Salário: R$ 1.342 / rodada"
+- generic: "Contrato vigente: 21 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Juven-12 • A • FORÇA 22
+- generic: "Vendedor: Juventus"
+- generic: "Preço fixo: R$ 381.777 • Salário: R$ 1.342 / rodada"
+- generic: "Contrato vigente: 24 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Stade-15 • A • FORÇA 22
+- generic: "Vendedor: Stade Rennais FC"
+- generic: "Preço fixo: R$ 346.828 • Salário: R$ 1.342 / rodada"
+- generic: "Contrato vigente: 12 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: Atleta fictício Bayer-15 • A • FORÇA 22
+- generic: "Vendedor: Bayer 04 Leverkusen"
+- generic: "Preço fixo: R$ 346.828 • Salário: R$ 1.342 / rodada"
+- generic: "Contrato vigente: 15 rodadas • contratação imediata pelo preço anunciado."
+- button "COMPRAR JOGADOR"
+- generic: PROPOSTAS E CONTRAPROPOSTAS BILATERAIS
+- generic: Atleta fictício Flame-01 • FC Porto → Flamengo RJ
+- generic: "Proposta: R$ 600.000,25 • ACEITA"
+- generic: "Contraproposta: R$ 675.000,25"

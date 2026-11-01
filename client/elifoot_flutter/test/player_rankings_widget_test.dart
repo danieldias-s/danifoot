@@ -614,7 +614,10 @@ void main() {
       expect(inTable('season-scorer-awards', '29'), findsNWidgets(2));
       expect(inTable('season-scorer-awards', '30'), findsOneWidget);
       expect(inTable('season-scorer-awards', '40'), findsOneWidget);
-      expect(inTable('season-scorer-awards', 'R\$ 3.000.000'), findsNWidgets(2));
+      expect(
+        inTable('season-scorer-awards', 'R\$ 3.000.000'),
+        findsNWidgets(2),
+      );
       expect(inTable('season-club-awards', 'R\$ 6.000.000'), findsOneWidget);
       expect(f.requests.single.url.queryParameters, {'season': '2035'});
       expect(f.requests.every((r) => r.method == 'GET'), isTrue);
@@ -746,7 +749,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Técnico 008'), findsOneWidget);
       expect(find.text('12.5'), findsOneWidget);
-      expect(find.text('MORAL: 70/100 — VERDE'), findsNWidgets(2));
+      expect(find.text('MORAL: 70/100 — VERDE'), findsNothing);
+      expect(find.byKey(const ValueKey('morale-bar-fill')), findsNWidgets(2));
       await tester.ensureVisible(find.text('7. RANKINGS DE JOGADORES'));
       await tester.tap(find.text('7. RANKINGS DE JOGADORES'));
       await tester.pumpAndSettle();

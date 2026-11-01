@@ -1,0 +1,227 @@
+[
+  {
+    "label": "GOLEIRO",
+    "rows": [
+      {
+        "position": "G",
+        "strength": 29
+      }
+    ]
+  },
+  {
+    "label": "DEFESA",
+    "rows": [
+      {
+        "position": "D",
+        "strength": 26
+      },
+      {
+        "position": "D",
+        "strength": 37
+      }
+    ]
+  },
+  {
+    "label": "MEIO-CAMPO",
+    "rows": [
+      {
+        "position": "M",
+        "strength": 24
+      },
+      {
+        "position": "M",
+        "strength": 25
+      },
+      {
+        "position": "M",
+        "strength": 28
+      },
+      {
+        "position": "M",
+        "strength": 29
+      }
+    ]
+  },
+  {
+    "label": "ATAQUE",
+    "rows": [
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 23
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 26
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 29
+      },
+      {
+        "position": "A",
+        "strength": 29
+      },
+      {
+        "position": "A",
+        "strength": 30
+      },
+      {
+        "position": "A",
+        "strength": 32
+      },
+      {
+        "position": "A",
+        "strength": 33
+      }
+    ]
+  },
+  {
+    "label": "TODOS",
+    "rows": [
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 22
+      },
+      {
+        "position": "A",
+        "strength": 23
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "M",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "A",
+        "strength": 24
+      },
+      {
+        "position": "M",
+        "strength": 25
+      },
+      {
+        "position": "D",
+        "strength": 26
+      },
+      {
+        "position": "A",
+        "strength": 26
+      },
+      {
+        "position": "M",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 28
+      },
+      {
+        "position": "A",
+        "strength": 29
+      },
+      {
+        "position": "M",
+        "strength": 29
+      },
+      {
+        "position": "A",
+        "strength": 29
+      },
+      {
+        "position": "G",
+        "strength": 29
+      },
+      {
+        "position": "A",
+        "strength": 30
+      },
+      {
+        "position": "A",
+        "strength": 32
+      },
+      {
+        "position": "A",
+        "strength": 33
+      },
+      {
+        "position": "D",
+        "strength": 37
+      }
+    ]
+  }
+]

@@ -1,0 +1,255 @@
+{
+  "capturedWith": "Real in-app browser + API/PostgreSQL 015A",
+  "files": [
+    {
+      "file": "balance-100-summary.json",
+      "bytes": 920,
+      "sha256": "504e9a464dfabd83cf0d4f02ace5e17dc0086157500b976c159d33d2d65b96f3"
+    },
+    {
+      "file": "browser-after-counteroffer.json",
+      "bytes": 13625,
+      "sha256": "00b894891b1992b8515359356188e8a09568058d69a9a9ed7dcee254589058f9"
+    },
+    {
+      "file": "browser-after-immediate-buy.json",
+      "bytes": 14990,
+      "sha256": "59b66ae2df65f1ec2c632583b4e915e6066f43abf02fc46a4ec319474547d27c"
+    },
+    {
+      "file": "browser-balances-before-direct.json",
+      "bytes": 12239,
+      "sha256": "a5705dd847cb514abcd7e387ece06061c01778456e52ab93898d20a4209906b1"
+    },
+    {
+      "file": "browser-build-health.json",
+      "bytes": 238,
+      "sha256": "5b544abeea38aa2bd677d60c6e2248a68013f3c2a828164da65f9319bfc3c324"
+    },
+    {
+      "file": "browser-market-after-round3.json",
+      "bytes": 16315,
+      "sha256": "b02a56e6e0d43839916fcbcc3472254f3c85046c1efe97fe4f81d24f6e86b02f"
+    },
+    {
+      "file": "counteroffer-actual-metadata.png",
+      "bytes": 101654,
+      "sha256": "5f94898893b1ae51304331caaa35b65c7b6fa2ffeccbd311d6b367c85b29ae2a"
+    },
+    {
+      "file": "desktop-auction-created.png",
+      "bytes": 96735,
+      "sha256": "3442622713a0f0779257e88f902b75e5eeafb4bfe442d3e2ebaa69b290db4a4a"
+    },
+    {
+      "file": "desktop-auction-custom-review.png",
+      "bytes": 92901,
+      "sha256": "0148d1f3302f25524e0b2136face0d318ca718355008b40bc480b91f27b6402a"
+    },
+    {
+      "file": "desktop-auction-defaults.png",
+      "bytes": 90457,
+      "sha256": "286f1e5f5b8637a5a4505c6a0410f5f54d97ed68ac471ea043e9f755a6af3d40"
+    },
+    {
+      "file": "desktop-auction-price-asc.png",
+      "bytes": 105920,
+      "sha256": "77a78c3fd882b1f74e7248fb81426573404571cfa9b550f19efe685d37f2174f"
+    },
+    {
+      "file": "desktop-auction-price-desc.png",
+      "bytes": 105901,
+      "sha256": "f28da098d73a2052a9a9bfd7c6155968b2aadc69216cf2ad9492cce6d7016014"
+    },
+    {
+      "file": "desktop-auction-review.png",
+      "bytes": 85535,
+      "sha256": "121e3e5b73403b9d20167198a42f12202ae3b4b933cb09eea4614208f2283099"
+    },
+    {
+      "file": "desktop-auction-strength-asc.png",
+      "bytes": 105932,
+      "sha256": "8cc681add0aa7ee76a34c5c4f584266ae296f973f97a47723e438b8cc63b4dbd"
+    },
+    {
+      "file": "desktop-auction-strength-desc.png",
+      "bytes": 105886,
+      "sha256": "782ad6f5a20e69a24acce3e78be8d573aaf18c42c191ae46516ce1b84422ac68"
+    },
+    {
+      "file": "desktop-counteroffer-completed.png",
+      "bytes": 94851,
+      "sha256": "103b7c2e2a7cd624f48cc8488255cfb2b16cfe4eac6a1d377ad27d38f6183db2"
+    },
+    {
+      "file": "desktop-custom-bid.png",
+      "bytes": 72792,
+      "sha256": "ff1cb9b8c67956dbf52c7cec6fdf822417c9a00b69db14263383cc3ee5027883"
+    },
+    {
+      "file": "desktop-direct-confirmation.png",
+      "bytes": 77003,
+      "sha256": "7e422175479dccf299d9f675cddd4602bb7c57200243a964b876e1e0f517c5d5"
+    },
+    {
+      "file": "desktop-final-live-lock.png",
+      "bytes": 144825,
+      "sha256": "0021ca7b2160376ce5add930c89917270c11046295e238d83da7e8b89f91dce9"
+    },
+    {
+      "file": "desktop-final-results.png",
+      "bytes": 125336,
+      "sha256": "31d9fc73a8a509c1b3d73ab3be33a0ed56db30d1eb3dc4fa2f27d10d22910dd7"
+    },
+    {
+      "file": "desktop-results-unlocked.png",
+      "bytes": 124584,
+      "sha256": "6ee2cad2afd5edcf4b996faeca3b556e7af7fc42e91f9135ededbf18265d2ed2"
+    },
+    {
+      "file": "desktop-tactic-waiting.png",
+      "bytes": 169373,
+      "sha256": "b2017d11c309a0f177f8af56d5d01c0f2caee4f4cde7a0a07e55f896b1fbe6da"
+    },
+    {
+      "file": "dotnet-build.log.tail.txt",
+      "bytes": 1485,
+      "sha256": "63d25317066f3dbe4e787ee8b046d28c58fbea174f12bdc23f34cc62ad25c5a5"
+    },
+    {
+      "file": "dotnet-test-final.log.tail.txt",
+      "bytes": 1993,
+      "sha256": "721ccf67a7604976e69245d2bdf2298b98c37769a9542181a3195fe61c913b89"
+    },
+    {
+      "file": "economy-100-summary.json",
+      "bytes": 1379,
+      "sha256": "db36c12929d250c72d459c1fdc5f35673279d892f55a8ae3abc7a967a0a2bb43"
+    },
+    {
+      "file": "flutter-analyze-final.log.tail.txt",
+      "bytes": 841,
+      "sha256": "f1b678f83832b8f43d6f6f37450f0f8f3af9d3fee5750208833b8bc70eb42390"
+    },
+    {
+      "file": "flutter-build-web.log.tail.txt",
+      "bytes": 1570,
+      "sha256": "5916085050fd7ea08f97fee603b8bd56ce9ccbef2a57d1d10c50bcd99d21ef27"
+    },
+    {
+      "file": "flutter-test-final.log.tail.txt",
+      "bytes": 5870,
+      "sha256": "36c38b1f2de480b3bc5dc3349d19077e1b7139eeffa3dcb558f1ec3adebf07b6"
+    },
+    {
+      "file": "force-100-summary.json",
+      "bytes": 1107,
+      "sha256": "5512982ef5f020fd2ff025f431e4957f1af49cd39a460a20506208d4125d1eed"
+    },
+    {
+      "file": "mobile-attacker-filter.png",
+      "bytes": 71308,
+      "sha256": "acc7ddf3ae08dd18a52dcd6b81f73d19dc05ec2491f675cc9549c6f48bf6ee95"
+    },
+    {
+      "file": "mobile-auction-defaults.png",
+      "bytes": 55115,
+      "sha256": "e5ef99539de852f2069f3677114079066a2b791c99ff0ceed0e117b5cfae1144"
+    },
+    {
+      "file": "mobile-direct-completed.png",
+      "bytes": 62245,
+      "sha256": "4d59515131ea14f4467d911819d22fac39628506e4ae7159259212b53c291d9d"
+    },
+    {
+      "file": "mobile-direct-confirmation.png",
+      "bytes": 58657,
+      "sha256": "e5a0dbd863b848787a7e80c003a1810b7d1b44c97b3b4d33fb72e502654570f4"
+    },
+    {
+      "file": "mobile-final-live-lock.png",
+      "bytes": 10429,
+      "sha256": "76a516df9a655fb56d2972c17afa419e1813afbef7fd94ed6888055076696b11"
+    },
+    {
+      "file": "mobile-goalkeeper-filter.png",
+      "bytes": 71439,
+      "sha256": "941f768407a21d57e2f97e0ba3c8b102c0686f040dc773383915afd9289c49d1"
+    },
+    {
+      "file": "mobile-market-sorted.png",
+      "bytes": 69369,
+      "sha256": "41de07790306ba6c54f12c63807bfe6acf4ab95f0d17ba245dae562e8c9baa7a"
+    },
+    {
+      "file": "mobile-results-reconnected.png",
+      "bytes": 69727,
+      "sha256": "148393bfe4818a4050ff8f6d8067b0f6e224dc06e106cc15d62957ba6e47937f"
+    },
+    {
+      "file": "multiplayer-http.json",
+      "bytes": 4202,
+      "sha256": "14f2a468073a2999d35438f0876c7c90d6f2dc48f8eecb14c93c127d95ab005d"
+    },
+    {
+      "file": "node-test-final.log.tail.txt",
+      "bytes": 254,
+      "sha256": "aeb8e06549140ba79ee6453e1ddc2585553bc6fc49cbaac760b4cd5d19b765f7"
+    },
+    {
+      "file": "numeric-sorts-real.json",
+      "bytes": 1542,
+      "sha256": "c627253103593ede401e717ce586e66e8ee8f8918b752d81f463cb5e1c4983fb"
+    },
+    {
+      "file": "position-filters-real.json",
+      "bytes": 3511,
+      "sha256": "b27674a5dfa09d4c8f37833479a33aa93a0db43a9654391cdb584283ca8c7eea"
+    },
+    {
+      "file": "real-female-100-summary.json",
+      "bytes": 1043,
+      "sha256": "40af2f7985c12705770eaaadd5b177dfee45520f7eae409f2bc4b231ec242ea7"
+    },
+    {
+      "file": "real-male-100-summary.json",
+      "bytes": 1007,
+      "sha256": "663b4fedfa3b78a6c398147dd322941e331a68ac18a82232b08db63825f83a95"
+    },
+    {
+      "file": "regression-counts.json",
+      "bytes": 88733,
+      "sha256": "056236edef5c6f6e254fbbebc7e5181bedec88752cfb850c68b6544abaf5105e"
+    },
+    {
+      "file": "restart-after.json",
+      "bytes": 402084,
+      "sha256": "e8383ada34fa86409e1620d8cac370f6921d10bed9bd93574edde4b37e3ab474"
+    },
+    {
+      "file": "restart-before.json",
+      "bytes": 402084,
+      "sha256": "e8383ada34fa86409e1620d8cac370f6921d10bed9bd93574edde4b37e3ab474"
+    },
+    {
+      "file": "sort-0.txt",
+      "bytes": 8405,
+      "sha256": "e09650ef2d5e1060a01090ae6b020f6d0e44ada108d884744ef47a24852b724d"
+    },
+    {
+      "file": "sort-1.txt",
+      "bytes": 8405,
+      "sha256": "98a1ef006b4e25c0afa4d0260f26d7c70f58ce46d1ac322ae344f54279ad08e5"
+    },
+    {
+      "file": "sort-2.txt",
+      "bytes": 8405,
+      "sha256": "2cebad5c6c42c49cb541964dd6940ccecff10de8eb430937e0b8b155a1a60435"
+    },
+    {
+      "file": "sort-3.txt",
+      "bytes": 8405,
+      "sha256": "043a857e9cb1b32464704ef128414297df4a913e50ddef15d39aaa516b68cddb"
+    }
+  ]
+}

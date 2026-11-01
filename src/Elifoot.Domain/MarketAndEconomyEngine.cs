@@ -869,6 +869,11 @@ public static class MarketAndEconomyEngine
         seller.PreferredStarterIds.Remove(player.Id);
         seller.PreferredBenchIds.Remove(player.Id);
 
+        // A completed transfer invalidates all competing bilateral negotiations atomically in the same snapshot/ledger save.
+        foreach (var pending in world.TransferOffers.Where(o => o.PlayerId == player.Id &&
+            o.Status is TransferOfferStatus.Pending or TransferOfferStatus.Countered))
+            pending.Status = TransferOfferStatus.Cancelled;
+
         // Transfer ownership
         player.ClubId = buyer.Id;
         player.IsListedForTransfer = false;

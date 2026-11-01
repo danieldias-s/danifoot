@@ -207,7 +207,9 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
                   11,
                   (i) => {
                     'playerId': 'p-${i + 1}',
-                    'displayName': i == 0 ? 'Carlos Muralha*' : 'Titular ${i + 1}',
+                    'displayName': i == 0
+                        ? 'Carlos Muralha*'
+                        : 'Titular ${i + 1}',
                     'position': i == 0
                         ? 'G'
                         : i <= 4
@@ -639,10 +641,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     isReady = true;
     currentRoundState = 'RUNNING_FIRST_HALF';
     this.roundVersion++;
-    return {
-      'counter': _buildReadyCounter(),
-      'roundStarted': true,
-    };
+    return {'counter': _buildReadyCounter(), 'roundStarted': true};
   }
 
   @override
@@ -652,10 +651,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     required int roundVersion,
   }) async {
     isReady = true;
-    return {
-      'counter': _buildReadyCounter(),
-      'roundStarted': false,
-    };
+    return {'counter': _buildReadyCounter(), 'roundStarted': false};
   }
 
   @override
@@ -690,10 +686,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     confirmedPauseCount = 4;
     currentRoundState = 'RESULTS';
     roundVersion++;
-    return {
-      'resumed': true,
-      'snapshot': await getSnapshot(worldId),
-    };
+    return {'resumed': true, 'snapshot': await getSnapshot(worldId)};
   }
 
   @override
@@ -704,6 +697,13 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     roundVersion++;
     return await getSnapshot(worldId);
   }
+
+  @override
+  Future<void> buyConfirmedListing(
+    String worldId,
+    String coachId,
+    Map<String, dynamic> listing,
+  ) async {}
 
   @override
   Future<void> buyListedPlayer(
@@ -862,8 +862,12 @@ void main() {
         findsOneWidget,
       );
       expect(find.textContaining('PARTIDA EM ANDAMENTO'), findsWidgets);
-      await tester.ensureVisible(find.byKey(const ValueKey('coach-highlighted-match-card')));
-      await tester.tap(find.byKey(const ValueKey('coach-highlighted-match-card')));
+      await tester.ensureVisible(
+        find.byKey(const ValueKey('coach-highlighted-match-card')),
+      );
+      await tester.tap(
+        find.byKey(const ValueKey('coach-highlighted-match-card')),
+      );
       await tester.pumpAndSettle();
       expect(find.textContaining('[GOL]'), findsWidgets);
 
@@ -932,7 +936,12 @@ void main() {
         findsOneWidget,
       );
       expect(find.text('TREINADOR SEM CLUBE'), findsWidgets);
-      expect(find.text('VOCÊ ESTÁ DESEMPREGADO NO MOMENTO — Acompanhe a rodada ou aceite um convite para voltar à ativa.'), findsOneWidget);
+      expect(
+        find.text(
+          'VOCÊ ESTÁ DESEMPREGADO NO MOMENTO — Acompanhe a rodada ou aceite um convite para voltar à ativa.',
+        ),
+        findsOneWidget,
+      );
 
       // Accept club invitation directly from unemployed panel!
       await tester.ensureVisible(find.text('ACEITAR CONVITE'));
@@ -949,10 +958,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byKey(const ValueKey('standings-table')), findsOneWidget);
-      expect(
-        find.byKey(const ValueKey('cup-champion-banner')),
-        findsOneWidget,
-      );
+      expect(find.byKey(const ValueKey('cup-champion-banner')), findsOneWidget);
       expect(
         find.text('CAMPEÃO DA TAÇA NACIONAL: Atlético Verde'),
         findsOneWidget,
@@ -967,12 +973,13 @@ void main() {
       // Switch to Tab 3: 3. MERCADO & LEILÃO
       await tester.tap(find.text('3. MERCADO & LEILÃO'));
       await tester.pumpAndSettle();
-      expect(
-        find.byKey(const ValueKey('market-listings-table')),
-        findsOneWidget,
-      );
+      expect(find.byKey(const ValueKey('market-tab-0')), findsOneWidget);
+      expect(find.textContaining('Goleiro Livre'), findsOneWidget);
       expect(find.text('COMPRA DIRETA'), findsWidgets);
-      expect(find.text('LEILÃO ABERTO'), findsOneWidget);
+      expect(find.textContaining('ABERTO'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('market-tab-1')));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Rivaldo Craque'), findsOneWidget);
       expect(find.textContaining('CONTRAPROPOSTA'), findsWidgets);
 
       // Switch to Tab 4: 4. FINANÇAS & ESTÁDIO
@@ -1007,7 +1014,16 @@ void main() {
   testWidgets(
     'Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows',
     (WidgetTester tester) async {
-      const widths = [320.0, 360.0, 390.0, 430.0, 768.0, 1024.0, 1280.0, 1920.0];
+      const widths = [
+        320.0,
+        360.0,
+        390.0,
+        430.0,
+        768.0,
+        1024.0,
+        1280.0,
+        1920.0,
+      ];
       final fakeApi = FakeGameplay011ApiClient();
 
       await tester.binding.setSurfaceSize(const Size(1280, 900));
@@ -1035,7 +1051,11 @@ void main() {
           await tester.ensureVisible(find.text(tab));
           await tester.tap(find.text(tab));
           await tester.pumpAndSettle();
-          expect(tester.takeException(), isNull, reason: 'Overflow at ${width}px on $tab');
+          expect(
+            tester.takeException(),
+            isNull,
+            reason: 'Overflow at ${width}px on $tab',
+          );
         }
       }
       await tester.binding.setSurfaceSize(null);
@@ -1072,30 +1092,42 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('quick-action-mercado')));
       await tester.pumpAndSettle();
 
-      // 012D: display the negotiated server wage, independently of the fair value.
-      expect(find.text('R\$ 1.234'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('market-tab-1')));
+      await tester.pumpAndSettle();
+      // 012D: the negotiated salary comes from the server.
+      expect(find.textContaining('R\$ 1.234'), findsOneWidget);
       expect(find.text('R\$ 20.300'), findsNothing);
-
-      await tester.ensureVisible(find.text('COMPRAR').first);
-      await tester.tap(find.text('COMPRAR').first);
+      await tester.ensureVisible(find.byKey(const ValueKey('purchase-mkt-1')));
+      await tester.tap(find.byKey(const ValueKey('purchase-mkt-1')));
       await tester.pumpAndSettle();
-      expect(
-        find.text('Jogador contratado com sucesso!'),
-        findsOneWidget,
+      expect(find.text('COMPRAR JOGADOR'), findsWidgets);
+      await tester.tap(find.byKey(const ValueKey('direct-confirm-buy')));
+      await tester.pumpAndSettle();
+      expect(find.text('COMPRA CONFIRMADA.'), findsOneWidget);
+      await tester.ensureVisible(find.byKey(const ValueKey('purchase-mkt-1')));
+      await tester.tap(find.byKey(const ValueKey('purchase-mkt-1')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('direct-custom-offer')));
+      await tester.pumpAndSettle();
+      await tester.enterText(
+        find.byKey(const ValueKey('market-custom-amount')),
+        '540000',
       );
-
-      await tester.ensureVisible(find.text('PROPOR 90%').first);
-      await tester.tap(find.text('PROPOR 90%').first);
+      await tester.tap(find.byKey(const ValueKey('market-confirm-amount')));
       await tester.pumpAndSettle();
-      expect(
-        find.text('Proposta de 90% enviada ao clube vendedor!'),
-        findsOneWidget,
+      expect(find.text('PROPOSTA ENVIADA.'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('market-tab-0')));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(const ValueKey('bid-auc-1')));
+      await tester.tap(find.byKey(const ValueKey('bid-auc-1')));
+      await tester.pumpAndSettle();
+      await tester.enterText(
+        find.byKey(const ValueKey('market-custom-amount')),
+        '185000',
       );
-
-      await tester.ensureVisible(find.textContaining('DAR LANCE'));
-      await tester.tap(find.textContaining('DAR LANCE'));
+      await tester.tap(find.byKey(const ValueKey('market-confirm-amount')));
       await tester.pumpAndSettle();
-      expect(find.textContaining('Lance de R\$'), findsWidgets);
+      expect(find.text('LANCE REGISTRADO.'), findsOneWidget);
 
       // Test Stadium & Finance operations (Renovate, Expand, Loan)
       await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));
@@ -1107,10 +1139,7 @@ void main() {
       );
       await tester.tap(find.byKey(const ValueKey('btn-reformar-estadio')));
       await tester.pumpAndSettle();
-      expect(
-        find.text('Obra de reforma estrutural iniciada!'),
-        findsOneWidget,
-      );
+      expect(find.text('Obra de reforma estrutural iniciada!'), findsOneWidget);
 
       await tester.ensureVisible(
         find.byKey(const ValueKey('btn-ampliar-estadio')),

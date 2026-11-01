@@ -295,15 +295,6 @@ extension _ShellActions on _ElifootShellScreenState {
         snap?['readyCounter']?['participants'] as List<dynamic>? ?? [];
     final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
     final isReady = me?['isReady'] == true;
-    final moraleVal = me?['morale'] ?? _invitationsData?['morale'] ?? 70;
-    final moraleBand =
-        me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE';
-    final moraleColor = moraleBand == 'VERMELHA'
-        ? const Color(0xFFEF5350)
-        : moraleBand == 'AMARELA'
-        ? const Color(0xFFFFD54F)
-        : const Color(0xFF81C784);
-
     final invitations =
         (_invitationsData?['invitations'] as List<dynamic>? ?? [])
             .where((inv) => inv['isAccepted'] != true)
@@ -340,6 +331,7 @@ extension _ShellActions on _ElifootShellScreenState {
                   'VOCÊ ESTÁ DESEMPREGADO NO MOMENTO — Acompanhe a rodada ou aceite um convite para voltar à ativa.',
             ),
             const SizedBox(height: 10),
+            _buildCoachMorale(),
             PlayerStatisticRow(
               items: [
                 PlayerStatItem('TREINADOR', _nickname, highlight: true),
@@ -357,7 +349,6 @@ extension _ShellActions on _ElifootShellScreenState {
                       ? '${myRank['leagueTitles']} Liga / ${myRank['cupTitles']} Taça'
                       : '0 Liga / 0 Taça',
                 ),
-                PlayerStatItem('MORAL', '$moraleVal/100 ($moraleBand)'),
                 PlayerStatItem(
                   'RODADA ATUAL',
                   'T$seasonNumber • R$roundNumber',
@@ -619,21 +610,7 @@ extension _ShellActions on _ElifootShellScreenState {
             runSpacing: 6,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: ClassicTheme.of(context).surface,
-                  border: Border.all(color: moraleColor),
-                ),
-                child: Text(
-                  'MORAL DO CARGO: $moraleVal/100 ($moraleBand)',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: moraleColor,
-                  ),
-                ),
-              ),
+              _buildCoachMorale(),
               if (invitations.isNotEmpty)
                 InkWell(
                   onTap: () => setState(() {

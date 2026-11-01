@@ -1,0 +1,42 @@
+{
+  "Status": "PASS",
+  "Seed": 199801,
+  "Scenario": "All AI with explicit initial bank, legacy and insolvency probes",
+  "SeasonsCompleted": 100,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3264000,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "ContractsPreservedChecks": 5059273,
+  "BilateralAndDebtAuctionPairs": 8888,
+  "AuctionsByReason": {
+    "ContractExpiration": 22992,
+    "FinancialInsolvency": 162
+  },
+  "ReconciledCashByCategory": {
+    "InitialBalance": 138800000,
+    "LoanDisbursement": 1500000,
+    "StadiumRenovation": -108187701,
+    "TicketRevenue": 2459881443.89,
+    "StadiumFixedCost": -415576327.68,
+    "StadiumVariableCost": -132470922.1,
+    "Sponsorship": 571200000.0,
+    "PlayerSalary": -1169766564,
+    "LoanPrincipalRepayment": -1000000,
+    "TransferPurchase": -883362471,
+    "TransferSale": 883362471,
+    "LoanInterestPayment": -3429895.32,
+    "AuctionPurchase": -2512572146,
+    "AuctionSale": 1490000,
+    "ContractRenewal": -55665796.5,
+    "PrizeMoney": 1587000000,
+    "StadiumMaintenance": -209398171.5,
+    "StadiumExpansion": -14450000,
+    "FreeAgentSigning": 0
+  },
+  "InterestCharged": 6200000,
+  "ClassicInterestCharged": 6200000,
+  "InterestPaid": 3429895.32,
+  "PrincipalPaid": 1000000
+}

@@ -30,6 +30,9 @@ public sealed partial class ClubAndMarketApplicationService
             }
             if(!ClassicEconomyEngine.Safe(w))return fail("Operações financeiras disponíveis somente entre partidas.");
             if(coach!.IsReadyForRound&&w.RoundState==RoundState.PREPARING)return fail("Retire o pronto antes de alterar as finanças.");
+            if(operation=="BUY" && Guid.TryParse(payload.Split('|')[0],out var buyingPlayer) &&
+                !w.Players.Any(p=>p.Id==buyingPlayer&&p.IsListedForTransfer&&p.ClubId!=null&&p.AskingPrice.HasValue))
+                return fail("JOGADOR JÁ VENDIDO.");
             if(version.HasValue&&version!=w.RoundVersion)return fail("A sala mudou. Atualize antes de confirmar a operação.");
             ct.ThrowIfCancellationRequested();
             var result=await action(key);
@@ -47,14 +50,35 @@ public sealed partial class ClubAndMarketApplicationService
     }
     public Task<(bool Success,string? Error)> ListPlayerForTransferAsync(Guid worldId,Guid coachId,Guid playerId,decimal askingPrice,CancellationToken ct=default,string? idempotencyKey=null,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"LIST",$"{playerId}:{askingPrice}",idempotencyKey,expectedRoundVersion,e=>(false,e),k=>ListPlayerForTransferCoreAsync(worldId,coachId,playerId,askingPrice,ct),ct);
+    public Task<(bool Success,string? Error)> WithdrawTransferListingAsync(Guid worldId,Guid coachId,Guid playerId,string key,CancellationToken ct=default,long? expectedRoundVersion=null)
+        =>Finance<(bool,string?)>(worldId,coachId,"UNLIST",playerId.ToString(),key,expectedRoundVersion,e=>(false,e),async k=>{
+            var w=(await _repository.GetWorldAsync(worldId,ct))!;
+            var club=w.HumanCoaches.First(h=>h.Id==coachId).CurrentClubId;
+            var p=w.Players.FirstOrDefault(p=>p.Id==playerId&&p.ClubId==club);
+            if(p==null||!p.IsListedForTransfer)return(false,"Anúncio não pertence ao seu clube ou já foi encerrado.");
+            p.IsListedForTransfer=false;p.AskingPrice=null;p.TransferListingVersion++;return(true,null);
+        },ct);
     public Task<(bool Success,string? Error,Guid? AuctionId)> CreateVoluntaryAuctionAsync(Guid worldId,Guid coachId,Guid playerId,
         decimal minimumBid=VoluntaryAuctionDefaults.MinimumBid,int durationRounds=VoluntaryAuctionDefaults.DurationRounds,
         CancellationToken ct=default,string? idempotencyKey=null,long? expectedRoundVersion=null)
         =>Finance<(bool,string?,Guid?)>(worldId,coachId,"CREATE_VOLUNTARY_AUCTION",$"{playerId}:{minimumBid.ToString(System.Globalization.CultureInfo.InvariantCulture)}:{durationRounds}",idempotencyKey,expectedRoundVersion,
             e=>(false,e,null),async k=>{var w=(await _repository.GetWorldAsync(worldId,ct))!;var c=w.Clubs.First(c=>c.HumanCoachId==coachId);
                 return VoluntaryAuctionEngine.Create(w,c,playerId,k,minimumBid,durationRounds);},ct);
-    public Task<(bool Success,string? Error)> BuyListedPlayerAsync(Guid worldId,Guid coachId,Guid playerId,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null)
-        =>Finance(worldId,coachId,"BUY",playerId.ToString(),idempotencyKey,expectedRoundVersion,e=>(false,e),k=>BuyListedPlayerCoreAsync(worldId,coachId,playerId,k,ct),ct);
+    public Task<(bool Success,string? Error)> BuyListedPlayerAsync(Guid worldId,Guid coachId,Guid playerId,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null,
+        long? listingVersion=null,Guid? sellerClubId=null,decimal? askingPrice=null)
+        =>Finance(worldId,coachId,"BUY",listingVersion==null&&sellerClubId==null&&askingPrice==null?playerId.ToString():$"{playerId}|{listingVersion}|{sellerClubId}|{askingPrice}",idempotencyKey,expectedRoundVersion,e=>(false,e),
+            k=>BuyListedPlayerCoreAsync(worldId,coachId,playerId,k,ct,listingVersion,sellerClubId,askingPrice),ct);
+    public Task<(bool Success,string? Error)> CounterTransferOfferAsync(Guid worldId,Guid coachId,Guid offerId,decimal amount,string key,CancellationToken ct=default,long? expectedRoundVersion=null)
+        =>Finance<(bool,string?)>(worldId,coachId,"COUNTER_OFFER",$"{offerId}:{amount}",key,expectedRoundVersion,e=>(false,e),async k=>{
+            var w=(await _repository.GetWorldAsync(worldId,ct))!;
+            var c=w.HumanCoaches.First(h=>h.Id==coachId);
+            var offer=w.TransferOffers.FirstOrDefault(o=>o.Id==offerId);
+            if(offer==null||offer.SellerClubId!=c.CurrentClubId)return(false,"Apenas o vendedor pode apresentar contraproposta.");
+            if(offer.Status!=TransferOfferStatus.Pending)return(false,"A proposta já foi respondida.");
+            if(!w.Players.Any(p=>p.Id==offer.PlayerId&&p.ClubId==offer.SellerClubId))return(false,"JOGADOR JÁ VENDIDO.");
+            if(amount<=0||amount!=Math.Round(amount,2))return(false,"Informe um valor positivo com até duas casas decimais.");
+            offer.CounterAmount=amount;offer.Status=TransferOfferStatus.Countered;return(true,null);
+        },ct);
     public Task<(bool Success,string? Error,TransferOfferDto? Offer)> CreateTransferOfferAsync(Guid worldId,Guid coachId,Guid playerId,decimal offeredAmount,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null)
         =>Finance<(bool,string?,TransferOfferDto?)>(worldId,coachId,"OFFER",$"{playerId}:{offeredAmount}",idempotencyKey,expectedRoundVersion,e=>(false,e,null),k=>CreateTransferOfferCoreAsync(worldId,coachId,playerId,offeredAmount,k,ct),ct);
     public Task<(bool Success,string? Error)> RespondToTransferOfferAsync(Guid worldId,Guid coachId,Guid offerId,bool accept,string idempotencyKey,CancellationToken ct=default,long? expectedRoundVersion=null)

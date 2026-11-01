@@ -98,6 +98,10 @@ void main() {
       );
       await tester.tap(find.byKey(const ValueKey('auction-confirm')));
       await tester.pumpAndSettle();
+      expect(result, isNull);
+      expect(find.text('CONFIRMAR LEILÃO?'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('auction-publish')));
+      await tester.pumpAndSettle();
       expect(result!.minimumBid, 0);
       expect(result!.durationRounds, 3);
       expect(tester.takeException(), isNull);
@@ -155,6 +159,8 @@ void main() {
       );
       await tester.tap(find.byKey(const ValueKey('auction-confirm')));
       await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('auction-publish')));
+      await tester.pumpAndSettle();
       expect(result!.minimumBid, 123.45);
       expect(formatAuctionMoney(123.45), 'R\$ 123,45');
     },
@@ -172,17 +178,20 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('choose-club-club-1')));
       await tester.pumpAndSettle();
-      final button = find.text('LEILOAR').first;
+      final button = find.text('COLOCAR EM LEILÃO').first;
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pumpAndSettle();
       expect(find.text('NOVO LEILÃO VOLUNTÁRIO'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('auction-confirm')));
       await tester.pumpAndSettle();
+      expect(api.minimum, isNull);
+      await tester.tap(find.byKey(const ValueKey('auction-publish')));
+      await tester.pumpAndSettle();
       expect(api.minimum, 500000);
       expect(api.duration, 2);
       expect(api.auctionPlayer, isNotNull);
-      expect(find.text('VENDER'), findsWidgets);
+      expect(find.text('ANUNCIAR'), findsWidgets);
       expect(tester.takeException(), isNull);
     },
   );

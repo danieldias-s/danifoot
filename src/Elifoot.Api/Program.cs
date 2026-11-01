@@ -487,53 +487,10 @@ app.MapGet("/api/worlds/{worldId:guid}/ranking", async (Guid worldId, IWorldRepo
 });
 
 // 5. Market, Auctions, Bilateral Offers, Contracts
-app.MapGet("/api/worlds/{worldId:guid}/market", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
+app.MapGet("/api/worlds/{worldId:guid}/market", async (Guid worldId, ClubAndMarketApplicationService service, CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-
-    var clubDict = world.Clubs.ToDictionary(c => c.Id);
-    var playerDict = world.Players.ToDictionary(p => p.Id);
-
-    var listings = world.Players
-        .Where(p => p.IsListedForTransfer && p.ClubId != null && p.AskingPrice.HasValue)
-        .OrderByDescending(p => p.Strength)
-        .Select(p => new TransferListingDto(
-            p.Id, p.DisplayName, p.Position, p.Strength, p.Behavior.ToDisplayPt(), p.IsStar,
-            p.ClubId, clubDict[p.ClubId!.Value].Name, p.AskingPrice!.Value,
-            MarketAndEconomyEngine.CalculateFairValue(p), p.SalaryPerRound, p.ContractRoundsRemaining, p.ListedAtRound))
-        .ToList();
-
-    var auctions = world.Auctions
-        .OrderBy(a => a.IsClosed)
-        .ThenBy(a => a.ExpiresAtRound)
-        .Where(a => playerDict.ContainsKey(a.PlayerId))
-        .Select(a =>
-        {
-            var p = playerDict[a.PlayerId];
-            string? bidderName = a.HighestBidderClubId != null && clubDict.TryGetValue(a.HighestBidderClubId.Value, out var bc) ? bc.Name : null;
-            return new AuctionItemDto(
-                a.Id, p.Id, p.DisplayName, p.Position, p.Strength, p.Behavior.ToDisplayPt(), p.IsStar,
-                a.MinimumBid, a.CurrentBid, a.HighestBidderClubId, bidderName, a.ExpiresAtRound, a.IsClosed) { Reason=a.Reason,ClosureReason=a.ClosureReason,SalaryPerRound=p.SalaryPerRound,DurationRounds=a.DurationRounds,ExpiresAtSeason=a.ExpiresAtSeason };
-        })
-        .ToList();
-
-    var offers = world.TransferOffers
-        .OrderByDescending(o => o.CreatedAtRound)
-        .Take(50)
-        .Where(o => playerDict.ContainsKey(o.PlayerId))
-        .Select(o =>
-        {
-            var p = playerDict[o.PlayerId];
-            return new TransferOfferDto(
-                o.Id, p.Id, p.DisplayName, p.Position, p.Strength, p.IsStar,
-                o.BuyerClubId, clubDict.GetValueOrDefault(o.BuyerClubId)?.Name ?? "",
-                o.SellerClubId, clubDict.GetValueOrDefault(o.SellerClubId)?.Name ?? "",
-                o.OfferedAmount, o.CounterAmount, o.Status, o.Justification, o.CreatedAtRound);
-        })
-        .ToList();
-
-    return Results.Ok(new { listings, auctions, offers });
+    var data=await service.GetMarketAsync(worldId,ct);
+    return data==null?Results.NotFound():Results.Ok(data);
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/market/list", async (
@@ -550,6 +507,14 @@ app.MapPost("/api/worlds/{worldId:guid}/market/list", async (
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
+app.MapPost("/api/worlds/{worldId:guid}/market/unlist", async (
+    Guid worldId,Guid coachId,Guid playerId,string? idempotencyKey,long? expectedRoundVersion,
+    ClubAndMarketApplicationService service,CancellationToken ct) =>
+{
+    var result=await service.WithdrawTransferListingAsync(worldId,coachId,playerId,idempotencyKey??Guid.NewGuid().ToString("N"),ct,expectedRoundVersion);
+    return result.Success?Results.Ok(new{success=true}):Results.BadRequest(new{error=result.Error});
+});
+
 app.MapPost("/api/worlds/{worldId:guid}/market/auction", async (
     Guid worldId,CreateVoluntaryAuctionCommandDto command,ClubAndMarketApplicationService service,CancellationToken ct) =>
 {
@@ -563,10 +528,13 @@ app.MapPost("/api/worlds/{worldId:guid}/market/buy-listed", async (
     Guid playerId,
     string? idempotencyKey,
     long? expectedRoundVersion,
+    long? listingVersion,
+    Guid? sellerClubId,
+    decimal? askingPrice,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
+    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion, listingVersion, sellerClubId, askingPrice);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
@@ -598,6 +566,14 @@ app.MapPost("/api/worlds/{worldId:guid}/market/offer/{offerId:guid}/respond", as
     var (ok, err) = await service.RespondToTransferOfferAsync(
         worldId, coachId, offerId, accept, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
+});
+
+app.MapPost("/api/worlds/{worldId:guid}/market/offer/{offerId:guid}/counter", async (
+    Guid worldId, Guid offerId, Guid coachId, decimal amount, string? idempotencyKey,
+    long? expectedRoundVersion, ClubAndMarketApplicationService service, CancellationToken ct) =>
+{
+    var result=await service.CounterTransferOfferAsync(worldId,coachId,offerId,amount,idempotencyKey??Guid.NewGuid().ToString("N"),ct,expectedRoundVersion);
+    return result.Success?Results.Ok(new{success=true}):Results.BadRequest(new{error=result.Error});
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/market/auction/{auctionId:guid}/bid", async (

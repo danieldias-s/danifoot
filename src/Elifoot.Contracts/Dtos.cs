@@ -361,7 +361,10 @@ public record TransferListingDto(
     decimal FairValue,
     decimal SalaryPerRound,
     int ContractRoundsRemaining,
-    int ListedAtRound);
+    int ListedAtRound)
+{
+    public long ListingVersion { get; init; }
+}
 
 public record AuctionItemDto(
     Guid AuctionId,
@@ -378,6 +381,9 @@ public record AuctionItemDto(
     int ExpiresAtRound,
     bool IsClosed)
 {
+    public Guid? SellerClubId { get; init; }
+    public string? SellerClubName { get; init; }
+    public int RoundsRemaining { get; init; }
     public int? DurationRounds { get; init; }
     public int? ExpiresAtSeason { get; init; }
     public AuctionReason Reason { get; init; }

@@ -209,7 +209,7 @@ void main() {
   }
   for (final n in [2, 4, 6, 8]) {
     testWidgets(
-      '$n coaches wait for server start, navigate from another tab and retain manual navigation',
+      '$n coaches wait for server start, navigate automatically and block menus until results',
       (tester) async {
         await tester.binding.setSurfaceSize(const Size(1280, 950));
         addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -253,7 +253,7 @@ void main() {
         await tester.pumpAndSettle();
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
-        expect(find.byType(ClassicMatchBoard), findsNothing);
+        expect(find.byType(ClassicMatchBoard), findsOneWidget);
         await api.emit('GLOBAL_PAUSED');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
@@ -384,11 +384,20 @@ void main() {
     );
     await tester.tap(find.textContaining('12 JOGOS'));
     await tester.pumpAndSettle();
-    expect(find.text("2' • [LANCE] Evento específico 0").hitTestable(), findsNothing);
+    expect(
+      find.text("2' • [LANCE] Evento específico 0").hitTestable(),
+      findsNothing,
+    );
     await tester.tap(find.byKey(const ValueKey('match-details-isolated-0')));
     await tester.pumpAndSettle();
-    expect(find.text("2' • [LANCE] Evento específico 0").hitTestable(), findsOneWidget);
-    expect(find.text("2' • [LANCE] Evento específico 1").hitTestable(), findsNothing);
+    expect(
+      find.text("2' • [LANCE] Evento específico 0").hitTestable(),
+      findsOneWidget,
+    );
+    expect(
+      find.text("2' • [LANCE] Evento específico 1").hitTestable(),
+      findsNothing,
+    );
     expect(tester.takeException(), isNull);
   });
   testWidgets(

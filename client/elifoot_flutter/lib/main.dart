@@ -6,6 +6,9 @@ import 'package:flutter/semantics.dart';
 
 import 'api_client.dart';
 import 'auction_config.dart';
+import 'market_screen.dart';
+import 'match_router.dart';
+import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'appearance_settings.dart';
@@ -62,8 +65,19 @@ class ElifootClassicApp extends StatefulWidget {
 class _ElifootClassicAppState extends State<ElifootClassicApp> {
   final appearance = ClubThemeController();
   late final api = widget.apiClient ?? ElifootApiClient();
+  final navigation = MatchNavigationController();
+  late final router = MatchRouterDelegate(
+    navigation,
+    ElifootShellScreen(
+      apiClient: api,
+      appearance: appearance,
+      navigation: navigation,
+    ),
+  );
   @override
   void dispose() {
+    router.dispose();
+    navigation.dispose();
     appearance.dispose();
     super.dispose();
   }
@@ -71,11 +85,12 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
   @override
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: appearance,
-    builder: (context, _) => MaterialApp(
-      title: 'Elifoot Classic Multiplayer',
+    builder: (context, _) => MaterialApp.router(
+      title: 'Elifoot Classic Multiplayer — 015A',
       debugShowCheckedModeBanner: false,
       theme: appearance.theme.material(),
-      home: ElifootShellScreen(apiClient: api, appearance: appearance),
+      routerDelegate: router,
+      routeInformationParser: const MatchRouteParser(),
     ),
   );
 }
@@ -83,10 +98,12 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
 class ElifootShellScreen extends StatefulWidget {
   final ElifootApiClient apiClient;
   final ClubThemeController? appearance;
+  final MatchNavigationController? navigation;
   const ElifootShellScreen({
     super.key,
     required this.apiClient,
     this.appearance,
+    this.navigation,
   });
 
   @override
@@ -180,8 +197,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   // Competition & Market filters
   String _selectedCupStage = 'ALL';
   String _selectedCalendarFilter = 'ALL';
-  String _marketPositionFilter = 'ALL';
-  String _marketSortBy = 'STRENGTH_DESC';
+  final _marketPreferences = MarketPreferences();
 
   // In-match substitution selection state
   String? _subPlayerOutId;
@@ -193,6 +209,28 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   int _activeTabIndex = 0;
   bool _showMatchView = false;
   final _roundView = RoundViewCoordinator();
+  late final _navigation = widget.navigation ?? MatchNavigationController();
+  bool _restoringSession = false;
+  bool get _matchLocked =>
+      RoundViewCoordinator.isLiveMatch(_snapshot?['roundState']?.toString());
+  void _onNavigationRequest() {
+    if (!mounted) return;
+    setState(() {
+      _showMatchView = _matchLocked || _navigation.path == '/partida';
+      final index = MatchNavigationController.paths.indexOf(_navigation.path);
+      if (!_matchLocked && index >= 0) _activeTabIndex = index;
+    });
+  }
+
+  void _navigateToTab(int index) {
+    if (_matchLocked) {
+      _navigation.navigate('/partida');
+      return;
+    }
+    _navigation.navigate(MatchNavigationController.paths[index]);
+    _refreshClubAndSecondaryData();
+  }
+
   String? _statusBanner;
   bool _isLoading = false;
   bool _commandBusy = false;
@@ -214,11 +252,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   @override
   void initState() {
     super.initState();
+    _navigation.addListener(_onNavigationRequest);
     final saved = readSession();
     Map<String, dynamic>? session;
     try {
       if (saved != null) session = jsonDecode(saved);
     } catch (_) {}
+    _restoringSession = session?['worldId'] != null;
     _nickname = session?['nickname'] ?? _nickname;
     _deviceId = session?['deviceId'] ?? _deviceId;
     _nicknameController = TextEditingController(text: _nickname);
@@ -284,14 +324,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     };
     if (session?['worldId'] != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await _performLocalLoginAndLoadWorlds();
-        await _joinSelectedWorld(session!['worldId']);
+        try {
+          await _performLocalLoginAndLoadWorlds();
+          await _joinSelectedWorld(session!['worldId']);
+        } finally {
+          if (mounted) setState(() => _restoringSession = false);
+        }
       });
     }
   }
 
   @override
   void dispose() {
+    _navigation.removeListener(_onNavigationRequest);
+    if (widget.navigation == null) _navigation.dispose();
     _nicknameController.dispose();
     _deviceController.dispose();
     widget.apiClient.disconnectRealtime();
@@ -320,7 +366,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _openCatalogCreator() async {
-    if (_coachId == null) return;
+    if (_coachId == null || _matchLocked) return;
     final created = await Navigator.push<bool>(
       context,
       MaterialPageRoute(
@@ -367,7 +413,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     } catch (e) {
       setState(() => _statusBanner = 'Erro ao entrar na sala: $e');
     } finally {
-      if (mounted) setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _restoringSession = false;
+        });
+      }
     }
   }
 
@@ -458,12 +509,23 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
     final next = _preferLatestSnapshot(incoming);
     if (next != null) {
+      final wasLocked = _navigation.locked;
+      _navigation.acceptStage(next['roundState']?.toString());
+      if (_navigation.locked && !wasLocked) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted && _navigation.locked) {
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          }
+        });
+      }
       switch (_roundView.accept(next)) {
         case RoundViewDecision.match:
           _showMatchView = true;
+          _navigation.navigate('/partida');
         case RoundViewDecision.tactics:
           _showMatchView = false;
           _activeTabIndex = 0;
+          _navigation.navigate('/plantel');
         case RoundViewDecision.none:
           break;
       }
@@ -600,94 +662,100 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_restoringSession) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
     if (_coachId == null || _worldId == null) {
       return _buildLobbyAndHomeScreen();
     }
 
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.sizeOf(context).height * 0.42,
-              ),
-              child: SingleChildScrollView(
-                child: _buildTopSynchronizedHeader(),
-              ),
-            ),
-            if (_statusBanner != null)
-              Container(
-                width: double.infinity,
-                color: ClassicTheme.of(context).surfaceAlternate,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 4,
+    return PopScope(
+      canPop: !_matchLocked,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.42,
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      '[!]',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: ClassicTheme.of(context).accent,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        _statusBanner!,
+                child: SingleChildScrollView(
+                  child: _buildTopSynchronizedHeader(),
+                ),
+              ),
+              if (_statusBanner != null)
+                Container(
+                  width: double.infinity,
+                  color: ClassicTheme.of(context).surfaceAlternate,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        '[!]',
                         style: TextStyle(
                           fontSize: 12,
-                          color: ClassicTheme.of(context).textPrimary,
+                          fontWeight: FontWeight.bold,
+                          color: ClassicTheme.of(context).accent,
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () => setState(() => _statusBanner = null),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 2,
-                        ),
+                      const SizedBox(width: 8),
+                      Expanded(
                         child: Text(
-                          '[X]',
+                          _statusBanner!,
                           style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                            color: ClassicTheme.of(context).accent,
+                            fontSize: 12,
+                            color: ClassicTheme.of(context).textPrimary,
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            if ((_snapshot?['roundState'] == 'PREPARING' ||
-                    _snapshot?['roundState'] == 'ALL_READY') &&
-                ((_snapshot?['readyCounter']?['participants'] as List? ?? [])
-                    .any(
-                      (p) => p['coachId'] == _coachId && p['isReady'] == true,
-                    )))
-              Container(
-                key: const Key('ready-waiting-panel'),
-                width: double.infinity,
-                padding: const EdgeInsets.all(8),
-                color: ClassicTheme.of(context).surfaceAlternate,
-                child: Text(
-                  _isUnemployed
-                      ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
-                      : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                  style: TextStyle(
-                    color: ClassicTheme.of(context).accent,
-                    fontWeight: FontWeight.bold,
+                      InkWell(
+                        onTap: () => setState(() => _statusBanner = null),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
+                          child: Text(
+                            '[X]',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                              color: ClassicTheme.of(context).accent,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            _buildClassicNavigationMenu(),
-            Expanded(child: _buildActiveScreenBody()),
-          ],
+              if ((_snapshot?['roundState'] == 'PREPARING' ||
+                      _snapshot?['roundState'] == 'ALL_READY') &&
+                  ((_snapshot?['readyCounter']?['participants'] as List? ?? [])
+                      .any(
+                        (p) => p['coachId'] == _coachId && p['isReady'] == true,
+                      )))
+                Container(
+                  key: const Key('ready-waiting-panel'),
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(8),
+                  color: ClassicTheme.of(context).surfaceAlternate,
+                  child: Text(
+                    _isUnemployed
+                        ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+                        : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).accent,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              _buildClassicNavigationMenu(),
+              Expanded(child: _buildActiveScreenBody()),
+            ],
+          ),
         ),
       ),
     );
@@ -1050,7 +1118,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   onPressed: () => setState(() => _showMatchView = true),
                   child: const Text('VOLTAR À PARTIDA'),
                 ),
-              if (widget.appearance != null)
+              if (widget.appearance != null && !_matchLocked)
                 OutlinedButton(
                   key: const ValueKey('appearance-menu'),
                   onPressed: () => Navigator.push(
@@ -1142,24 +1210,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
               ],
               OutlinedButton(
-                onPressed: () async {
-                  widget.apiClient.disconnectRealtime();
-                  setState(() {
-                    _worldId = null;
-                    widget.appearance?.activate(
-                      widget.apiClient,
-                      null,
-                      null,
-                      null,
-                      null,
-                    );
-                    _snapshot = null;
-                    _myClubDetail = null;
-                    _myClubId = null;
-                    _selectedStarterIds = [];
-                  });
-                  await _saveSession();
-                },
+                onPressed: _matchLocked
+                    ? null
+                    : () async {
+                        if (_matchLocked) return;
+                        widget.apiClient.disconnectRealtime();
+                        setState(() {
+                          _worldId = null;
+                          widget.appearance?.activate(
+                            widget.apiClient,
+                            null,
+                            null,
+                            null,
+                            null,
+                          );
+                          _snapshot = null;
+                          _myClubDetail = null;
+                          _myClubId = null;
+                          _selectedStarterIds = [];
+                        });
+                        await _saveSession();
+                      },
                 child: const Text(
                   'TROCAR SALA',
                   style: TextStyle(fontSize: 11),
@@ -1275,13 +1346,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             return Padding(
               padding: const EdgeInsets.only(right: 6),
               child: InkWell(
-                onTap: () {
-                  setState(() {
-                    _activeTabIndex = idx;
-                    _showMatchView = false;
-                  });
-                  _refreshClubAndSecondaryData();
-                },
+                key: ValueKey('shell-nav-$idx'),
+                onTap: _matchLocked ? null : () => _navigateToTab(idx),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
@@ -1317,7 +1383,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Widget _buildActiveScreenBody() {
-    if (_showMatchView) return _buildLiveMatchesAndPauseScreen();
+    if (_matchLocked || _showMatchView) {
+      return _buildLiveMatchesAndPauseScreen();
+    }
     switch (_activeTabIndex) {
       case 0:
         return _buildSquadAndTacticsScreen();
@@ -1342,6 +1410,59 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       default:
         return _buildSquadAndTacticsScreen();
     }
+  }
+
+  Future<void> _announceSquadPlayer(
+    Map<String, dynamic> player, {
+    bool direct = false,
+  }) async {
+    if (_matchLocked || _worldId == null || _coachId == null) return;
+    final world = _worldId, coach = _coachId, club = _myClubId;
+    final config = await showDialog<VoluntaryAuctionConfig>(
+      context: context,
+      builder: (_) => AuctionConfigDialog(
+        playerName: player['displayName'] ?? player['name'] ?? '',
+        position: marketPosition(player['position']),
+        strength: player['strength'] as num?,
+        salary: player['salaryPerRound'] as num?,
+        roundNumber: (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1,
+        seasonNumber: (_snapshot?['seasonNumber'] as num?)?.toInt() ?? 1,
+        totalRoundsInSeason:
+            (_snapshot?['totalRoundsInSeason'] as num?)?.toInt() ?? 22,
+        roundAlreadyCompleted: _snapshot?['roundState'] == 'RESULTS',
+        allowDirect: true,
+        initialDirect: direct,
+        directPrice: player['fairValue'] as num? ?? 500000,
+      ),
+    );
+    if (!mounted ||
+        config == null ||
+        _matchLocked ||
+        world != _worldId ||
+        coach != _coachId ||
+        club != _myClubId) {
+      return;
+    }
+    await _runUiCommand(() async {
+      if (config.isDirect) {
+        await widget.apiClient.listPlayerForTransfer(
+          world!,
+          coach!,
+          player['id'].toString(),
+          config.minimumBid,
+        );
+      } else {
+        await widget.apiClient.createVoluntaryAuction(
+          world!,
+          coach!,
+          player['id'].toString(),
+          minimumBid: config.minimumBid,
+          durationRounds: config.durationRounds,
+        );
+      }
+      await _refreshClubAndSecondaryData();
+      if (mounted) setState(() => _statusBanner = 'ANÚNCIO PUBLICADO.');
+    });
   }
 
   /// Tab 0: Painel Principal do Treinador + Plantel, Escalação (11 titulares, até 9 reservas), Táticas e Plano do Técnico IA
@@ -1592,23 +1713,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: _commandBusy
+                    onPressed:
+                        _commandBusy ||
+                            _tacticsLocked &&
+                                _snapshot?['roundState'] != 'RESULTS'
                         ? null
-                        : () => _runUiCommand(() async {
-                            await widget.apiClient.listPlayerForTransfer(
-                              _worldId!,
-                              _coachId!,
-                              pid,
-                              fair,
-                            );
-                            await _refreshClubAndSecondaryData();
-                            setState(
-                              () => _statusBanner =
-                                  '$displayName anunciado no mercado por ${formatClassicMoney(fair)}.',
-                            );
-                          }),
+                        : () => _announceSquadPlayer(
+                            Map<String, dynamic>.from(p),
+                            direct: true,
+                          ),
                     child: const Text(
-                      'VENDER',
+                      'ANUNCIAR',
                       style: TextStyle(fontSize: 10, color: Colors.amberAccent),
                     ),
                   ),
@@ -1616,61 +1731,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     key: ValueKey('create-auction-$pid'),
                     onPressed:
                         _commandBusy ||
-                            (_snapshot?['roundState'] != 'RESULTS' &&
-                                _tacticsLocked)
+                            _tacticsLocked &&
+                                _snapshot?['roundState'] != 'RESULTS'
                         ? null
-                        : () async {
-                            final worldId = _worldId,
-                                coachId = _coachId,
-                                clubId = _myClubId;
-                            final config =
-                                await showDialog<VoluntaryAuctionConfig>(
-                                  context: context,
-                                  builder: (_) => AuctionConfigDialog(
-                                    playerName: displayName,
-                                    roundNumber:
-                                        (_snapshot?['roundNumber'] as num?)
-                                            ?.toInt() ??
-                                        1,
-                                    seasonNumber:
-                                        (_snapshot?['seasonNumber'] as num?)
-                                            ?.toInt() ??
-                                        1,
-                                    totalRoundsInSeason:
-                                        (_snapshot?['totalRoundsInSeason']
-                                                as num?)
-                                            ?.toInt() ??
-                                        22,
-                                    roundAlreadyCompleted:
-                                        _snapshot?['roundState'] == 'RESULTS',
-                                  ),
-                                );
-                            if (!mounted ||
-                                config == null ||
-                                worldId != _worldId ||
-                                coachId != _coachId ||
-                                clubId != _myClubId) {
-                              return;
-                            }
-                            await _runUiCommand(() async {
-                              await widget.apiClient.createVoluntaryAuction(
-                                worldId!,
-                                coachId!,
-                                pid,
-                                minimumBid: config.minimumBid,
-                                durationRounds: config.durationRounds,
-                              );
-                              await _refreshClubAndSecondaryData();
-                              if (mounted) {
-                                setState(
-                                  () => _statusBanner =
-                                      'Leilão voluntário de $displayName criado.',
-                                );
-                              }
-                            });
-                          },
+                        : () => _announceSquadPlayer(
+                            Map<String, dynamic>.from(p),
+                          ),
                     child: const Text(
-                      'LEILOAR',
+                      'COLOCAR EM LEILÃO',
                       style: TextStyle(fontSize: 10),
                     ),
                   ),
@@ -3110,490 +3178,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     );
   }
 
-  String _translateOfferStatus(String raw) {
-    return switch (raw) {
-      'Pending' || '0' => 'OFERTA AGUARDANDO RESPOSTA',
-      'Accepted' || '1' => 'JOGADOR VENDIDO',
-      'Rejected' || '2' => 'PROPOSTA RECUSADA',
-      'Countered' || '3' => 'CONTRAPROPOSTA',
-      _ => raw,
-    };
-  }
+  Widget _buildMarketAndAuctionsScreen() => MarketScreen(
+    key: ValueKey('market-$_worldId'),
+    api: widget.apiClient,
+    worldId: _worldId!,
+    coachId: _coachId!,
+    clubId: _myClubId,
+    snapshot: _snapshot ?? {},
+    data: _marketData ?? {},
+    squad: _myClubDetail?['squad'] as List? ?? [],
+    preferences: _marketPreferences,
+    refresh: _refreshClubAndSecondaryData,
+    locked: _matchLocked,
+  );
 
-  /// Tab 3: Mercado Bilateral, Lista de Transferências, Propostas e Leilões
-  Widget _buildMarketAndAuctionsScreen() {
-    final rawListings = _marketData?['listings'] as List<dynamic>? ?? [];
-    final auctions = _marketData?['auctions'] as List<dynamic>? ?? [];
-    final offers = (_marketData?['offers'] as List<dynamic>? ?? [])
-        .where(
-          (o) =>
-              o['buyerClubId'] == _myClubId || o['sellerClubId'] == _myClubId,
-        )
-        .toList();
-
-    final listings = rawListings.where((item) {
-      final pos = _formatPosition(item['position']);
-      if (_marketPositionFilter != 'ALL' && pos != _marketPositionFilter) {
-        return false;
-      }
-      return true;
-    }).toList();
-
-    if (_marketSortBy == 'STRENGTH_DESC') {
-      listings.sort(
-        (a, b) => ((b['strength'] as num?) ?? 0).compareTo(
-          (a['strength'] as num?) ?? 0,
-        ),
-      );
-    } else if (_marketSortBy == 'PRICE_ASC') {
-      listings.sort(
-        (a, b) => ((a['askingPrice'] as num?) ?? 0).compareTo(
-          (b['askingPrice'] as num?) ?? 0,
-        ),
-      );
-    } else if (_marketSortBy == 'PRICE_DESC') {
-      listings.sort(
-        (a, b) => ((b['askingPrice'] as num?) ?? 0).compareTo(
-          (a['askingPrice'] as num?) ?? 0,
-        ),
-      );
-    }
-
-    final marketPinned = <ClassicPinnedRow>[];
-    final marketRows = <DataRow>[];
-    for (var i = 0; i < listings.length; i++) {
-      final item = listings[i];
-      final pid = item['playerId'].toString();
-      final pos = _formatPosition(item['position']);
-      final ask = (item['askingPrice'] as num).toDouble();
-      final fair = (item['fairValue'] as num).toDouble();
-      final actualSalary = (item['salaryPerRound'] as num?) ?? 0;
-
-      marketPinned.add(
-        ClassicPinnedRow(
-          rank: pos,
-          title: '${item['displayName']}',
-          subtitle: '${item['sellerClubName']} • F:${item['strength']}',
-          isEven: i.isEven,
-        ),
-      );
-
-      marketRows.add(
-        DataRow(
-          color: WidgetStateProperty.all(
-            i.isEven
-                ? ClassicTheme.of(context).tableRow
-                : ClassicTheme.of(context).tableRowAlternate,
-          ),
-          cells: [
-            DataCell(Text(pos)),
-            DataCell(
-              Text(
-                '${item['displayName']}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            DataCell(Text('${item['strength']}')),
-            DataCell(Text('${item['behaviorDisplay']}')),
-            DataCell(Text('${item['sellerClubName']}')),
-            DataCell(
-              Text(
-                formatClassicMoney(ask),
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            DataCell(Text(formatClassicMoney(fair))),
-            DataCell(Text(formatClassicMoney(actualSalary))),
-            DataCell(
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                color: ClassicTheme.of(context).buttonBackground,
-                child: const Text(
-                  'COMPRA DIRETA',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.lightGreenAccent,
-                  ),
-                ),
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ElevatedButton(
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(() async {
-                            await widget.apiClient.buyListedPlayer(
-                              _worldId!,
-                              _coachId!,
-                              pid,
-                            );
-                            await _refreshClubAndSecondaryData();
-                            setState(
-                              () => _statusBanner =
-                                  'Jogador contratado com sucesso!',
-                            );
-                          }),
-                    child: const Text(
-                      'COMPRAR',
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  OutlinedButton(
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(() async {
-                            await widget.apiClient.makeTransferOffer(
-                              _worldId!,
-                              _coachId!,
-                              pid,
-                              ask * 0.90,
-                            );
-                            await _refreshClubAndSecondaryData();
-                            setState(
-                              () => _statusBanner =
-                                  'Proposta de 90% enviada ao clube vendedor!',
-                            );
-                          }),
-                    child: const Text(
-                      'PROPOR 90%',
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'LISTA DE TRANSFERÊNCIAS (COMPRA DIRETA OU PROPOSTA BILATERAL)',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: ClassicTheme.of(context).surface,
-              border: Border.all(color: ClassicTheme.of(context).border),
-            ),
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 6,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Text(
-                  'POSIÇÃO:',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: ClassicTheme.of(context).accent,
-                  ),
-                ),
-                for (final pos in ['ALL', 'G', 'D', 'M', 'A'])
-                  InkWell(
-                    key: ValueKey('filter-market-pos-$pos'),
-                    onTap: () => setState(() => _marketPositionFilter = pos),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _marketPositionFilter == pos
-                            ? ClassicTheme.of(context).selectedBackground
-                            : ClassicTheme.of(context).surface,
-                        border: Border.all(
-                          color: ClassicTheme.of(context).border,
-                        ),
-                      ),
-                      child: Text(
-                        pos == 'ALL' ? 'TODAS' : pos,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: _marketPositionFilter == pos
-                              ? ClassicTheme.of(context).selectedText
-                              : ClassicTheme.of(context).textPrimary,
-                        ),
-                      ),
-                    ),
-                  ),
-                const SizedBox(width: 8),
-                Text(
-                  'ORDENAR:',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: ClassicTheme.of(context).accent,
-                  ),
-                ),
-                for (final srt in [
-                  ('STRENGTH_DESC', 'MAIOR FORÇA'),
-                  ('PRICE_ASC', 'MENOR PREÇO'),
-                  ('PRICE_DESC', 'MAIOR PREÇO'),
-                ])
-                  InkWell(
-                    key: ValueKey('sort-market-${srt.$1}'),
-                    onTap: () => setState(() => _marketSortBy = srt.$1),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _marketSortBy == srt.$1
-                            ? ClassicTheme.of(context).selectedBackground
-                            : ClassicTheme.of(context).surface,
-                        border: Border.all(
-                          color: ClassicTheme.of(context).border,
-                        ),
-                      ),
-                      child: Text(
-                        srt.$2,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: _marketSortBy == srt.$1
-                              ? ClassicTheme.of(context).selectedText
-                              : ClassicTheme.of(context).textPrimary,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 8),
-          ClassicTable(
-            tableKey: 'market-listings-table',
-            pinnedHeader: 'POS / JOGADOR',
-            pinnedRows: marketPinned,
-            numericColumns: const {2, 5, 6, 7},
-            columns: const [
-              'POS',
-              'JOGADOR (*)',
-              'FORÇA',
-              'COMPORTAMENTO',
-              'CLUBE VENDEDOR',
-              'PREÇO PEDIDO',
-              'VALOR JUSTO',
-              'SALÁRIO / PARTIDA',
-              'SITUAÇÃO',
-              'AÇÕES',
-            ],
-            rows: marketRows,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'LEILÕES ATIVOS (ATLETAS EM FIM DE CONTRATO / LIVRES)',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
-          ...auctions.map((a) {
-            final aid = a['auctionId'].toString();
-            final cur = (a['currentBid'] as num).toDouble();
-            final minBid = (a['minimumBid'] as num).toDouble();
-            final nextBid = a['highestBidderClubId'] == null
-                ? minBid
-                : cur + 5000;
-            final closed = a['isClosed'] == true;
-            return Container(
-              margin: const EdgeInsets.only(bottom: 6),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: ClassicTheme.of(context).surface,
-                border: Border.all(color: ClassicTheme.of(context).border),
-              ),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 6,
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    '${a['displayName']} (${_formatPosition(a['position'])}, F:${a['strength']}; salário ${formatClassicMoney(a['salaryPerRound'] ?? 0)}) • ${a['reason'] == 'FinancialInsolvency'
-                        ? 'INSOLVÊNCIA'
-                        : a['reason'] == 'SalaryRenewalRefused'
-                        ? 'RECUSA SALARIAL'
-                        : a['reason'] == 'Voluntary'
-                        ? 'VOLUNTÁRIO'
-                        : 'VENCIMENTO CONTRATUAL'} • ${a['closureReason'] ?? (a['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')} ${a['durationRounds'] != null ? ' • ${a['durationRounds']} rodada(s); encerra após R${a['expiresAtRound']} / T${a['expiresAtSeason']}' : ''} • Lance Mín: ${formatAuctionMoney(minBid)} • Atual: ${formatAuctionMoney(cur)} (${a['highestBidderClubName'] ?? "Sem lances"})',
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                  Wrap(
-                    spacing: 8,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 2,
-                        ),
-                        color: closed
-                            ? Colors.grey.shade800
-                            : ClassicTheme.of(context).buttonBackground,
-                        child: Text(
-                          closed ? 'LEILÃO ENCERRADO' : 'LEILÃO ABERTO',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: closed
-                                ? ClassicTheme.of(context).textSecondary
-                                : Colors.lightGreenAccent,
-                          ),
-                        ),
-                      ),
-                      if (!closed)
-                        ElevatedButton(
-                          onPressed: _commandBusy
-                              ? null
-                              : () => _runUiCommand(() async {
-                                  await widget.apiClient.placeAuctionBid(
-                                    _worldId!,
-                                    aid,
-                                    _coachId!,
-                                    nextBid,
-                                  );
-                                  await _refreshClubAndSecondaryData();
-                                  setState(
-                                    () => _statusBanner =
-                                        'Lance de ${formatClassicMoney(nextBid)} registrado!',
-                                  );
-                                }),
-                          child: Text(
-                            'DAR LANCE ${formatAuctionMoney(nextBid)}',
-                          ),
-                        )
-                      else
-                        const Text(
-                          'ENCERRADO',
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          }),
-          const SizedBox(height: 20),
-          Text(
-            'PROPOSTAS E CONTRAPROPOSTAS BILATERAIS',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
-          if (offers.isEmpty)
-            Text(
-              'Nenhuma proposta bilateral pendente para o seu clube.',
-              style: TextStyle(
-                fontSize: 12,
-                color: ClassicTheme.of(context).textSecondary,
-              ),
-            ),
-          ...offers.map((o) {
-            final oid = o['offerId'].toString();
-            final status = o['status'].toString();
-            final statusLabel = _translateOfferStatus(status);
-            final offeredStr = formatClassicMoney(o['offeredAmount'] as num);
-            final counterStr = o['counterAmount'] != null
-                ? ' | Contraproposta: ${formatClassicMoney(o['counterAmount'] as num)}'
-                : '';
-            return Container(
-              margin: const EdgeInsets.only(bottom: 6),
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: ClassicTheme.of(context).surface,
-                border: Border.all(color: ClassicTheme.of(context).border),
-              ),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 6,
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    '${o['playerDisplayName']} (F:${o['strength']}): ${o['buyerClubName']} -> ${o['sellerClubName']} | Oferta: $offeredStr$counterStr | Situação: $statusLabel',
-                    style: const TextStyle(fontSize: 11),
-                  ),
-                  if (status == 'Pending' ||
-                      status == 'Countered' ||
-                      status == '0' ||
-                      status == '3')
-                    Wrap(
-                      spacing: 6,
-                      children: [
-                        ElevatedButton(
-                          onPressed: _commandBusy
-                              ? null
-                              : () => _runUiCommand(() async {
-                                  await widget.apiClient.respondTransferOffer(
-                                    _worldId!,
-                                    oid,
-                                    _coachId!,
-                                    true,
-                                  );
-                                  await _refreshClubAndSecondaryData();
-                                }),
-                          child: const Text(
-                            'ACEITAR',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                        ),
-                        OutlinedButton(
-                          onPressed: _commandBusy
-                              ? null
-                              : () => _runUiCommand(() async {
-                                  await widget.apiClient.respondTransferOffer(
-                                    _worldId!,
-                                    oid,
-                                    _coachId!,
-                                    false,
-                                  );
-                                  await _refreshClubAndSecondaryData();
-                                }),
-                          child: const Text(
-                            'RECUSAR',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                        ),
-                      ],
-                    ),
-                ],
-              ),
-            );
-          }),
-        ],
-      ),
-    );
-  }
-
-  /// Tab 4: Finanças (Resumo Consolidado, Livro-Caixa, Empréstimos) e Estádio
+  /// Finanças e estádio mantêm os comandos econômicos 012D.
   Widget _buildFinancesAndStadiumScreen() {
     if (_myClubDetail == null) {
       return const Center(
@@ -3996,29 +3595,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final value = me?['morale'] ?? _invitationsData?['morale'] ?? 70;
     final band =
         me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE';
-    final color = band == 'VERMELHA'
-        ? const Color(0xFFEF5350)
-        : band == 'AMARELA'
-        ? const Color(0xFFFFD54F)
-        : const Color(0xFF81C784);
-    return Semantics(
-      label: 'Moral do treinador: $value de 100, $band',
-      child: Container(
-        key: const ValueKey('coach-morale'),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-        decoration: BoxDecoration(
-          color: ClassicTheme.of(context).surface,
-          border: Border.all(color: color),
-        ),
-        child: Text(
-          'MORAL: $value/100 — $band',
-          style: TextStyle(
-            color: color,
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-          ),
-        ),
-      ),
+    return MoraleBar(
+      key: const ValueKey('coach-morale'),
+      value: value as num,
+      band: band.toString(),
     );
   }
 

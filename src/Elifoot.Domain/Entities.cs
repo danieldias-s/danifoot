@@ -140,6 +140,7 @@ public partial class Player
     public bool IsListedForTransfer { get; set; }
     public decimal? AskingPrice { get; set; }
     public int ListedAtRound { get; set; }
+    public long TransferListingVersion { get; set; }
 
     public int InjuryRoundsRemaining { get; set; }
     public int InjuryDaysRemaining { get; set; }

@@ -10,6 +10,16 @@ class RoundViewCoordinator {
     _pause = null;
   }
 
+  static bool isLiveMatch(String? stage) => const {
+    'RUNNING_FIRST_HALF',
+    'HALFTIME_PAUSED',
+    'RUNNING_SECOND_HALF',
+    'GLOBAL_PAUSED',
+    'EXTRA_TIME_BREAK',
+    'RUNNING_EXTRA_TIME',
+    'EXTRA_TIME_HALFTIME',
+  }.contains(stage);
+
   static bool isMatchStage(String? stage) => const {
     'RUNNING_FIRST_HALF',
     'HALFTIME_PAUSED',

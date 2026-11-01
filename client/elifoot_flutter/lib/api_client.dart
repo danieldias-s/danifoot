@@ -24,24 +24,60 @@ class ElifootApiClient {
   void Function(Map<String, dynamic> counter)? onReadyCounterUpdated;
   void Function(String message)? onNotification;
 
-  ElifootApiClient({
-    String? baseUrl,
-    http.Client? httpClient,
-  }) : baseUrl = baseUrl ?? ApiEnvironment.baseUrl,
-       _http = httpClient ?? http.Client();
+  ElifootApiClient({String? baseUrl, http.Client? httpClient})
+    : baseUrl = baseUrl ?? ApiEnvironment.baseUrl,
+      _http = httpClient ?? http.Client();
 
-  Future<dynamic> worldCreator(String coachId, String path, {Map<String, dynamic>? body}) async {
+  Future<dynamic> worldCreator(
+    String coachId,
+    String path, {
+    Map<String, dynamic>? body,
+  }) async {
     final uri = Uri.parse('$baseUrl/api/world-creator/$path');
-    final headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer localdev-${coachId.replaceAll('-', '')}'};
-    final res = body == null ? await _http.get(uri, headers: headers) : await _http.post(uri, headers: headers, body: jsonEncode(body));
-    if (res.statusCode >= 400) throw Exception(res.statusCode == 404 ? (path.startsWith('assemblies') ? 'Montagem não encontrada para este usuário.' : 'Catálogo indisponível: ative o perfil 013A.') : res.body);
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer localdev-${coachId.replaceAll('-', '')}',
+    };
+    final res = body == null
+        ? await _http.get(uri, headers: headers)
+        : await _http.post(uri, headers: headers, body: jsonEncode(body));
+    if (res.statusCode >= 400) {
+      throw Exception(
+        res.statusCode == 404
+            ? (path.startsWith('assemblies')
+                  ? 'Montagem não encontrada para este usuário.'
+                  : 'Catálogo indisponível: ative o perfil 013A.')
+            : res.body,
+      );
+    }
     return res.body.isEmpty ? null : jsonDecode(res.body);
   }
-  Future<Map<String,dynamic>> getAppearance(String owner,String world,String club) async =>
-      Map<String,dynamic>.from(await worldCreator(owner,'appearance/$world/$club') as Map);
-  Future<Map<String,dynamic>> saveAppearance(String owner,String world,String club,Map<String,dynamic> preferences,int version) async =>
-      Map<String,dynamic>.from(await worldCreator(owner,'appearance/$world/$club',body:{'preferences':preferences,'expectedVersion':version}) as Map);
-  Future<Map<String, dynamic>> localLogin(String nickname, String deviceId) async {
+
+  Future<Map<String, dynamic>> getAppearance(
+    String owner,
+    String world,
+    String club,
+  ) async => Map<String, dynamic>.from(
+    await worldCreator(owner, 'appearance/$world/$club') as Map,
+  );
+  Future<Map<String, dynamic>> saveAppearance(
+    String owner,
+    String world,
+    String club,
+    Map<String, dynamic> preferences,
+    int version,
+  ) async => Map<String, dynamic>.from(
+    await worldCreator(
+          owner,
+          'appearance/$world/$club',
+          body: {'preferences': preferences, 'expectedVersion': version},
+        )
+        as Map,
+  );
+  Future<Map<String, dynamic>> localLogin(
+    String nickname,
+    String deviceId,
+  ) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/auth/local-login'),
       headers: {'Content-Type': 'application/json'},
@@ -100,7 +136,9 @@ class ElifootApiClient {
     if (preferredClubId != null && preferredClubId.isNotEmpty) {
       q['preferredClubId'] = preferredClubId;
     }
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/join').replace(queryParameters: q);
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/join',
+    ).replace(queryParameters: q);
     final res = await _http.post(uri);
     return _decodeResponse(res);
   }
@@ -111,30 +149,43 @@ class ElifootApiClient {
     required String nickname,
     required String deviceId,
   }) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/join-by-code').replace(queryParameters: {
-      'inviteCode': inviteCode,
-      'coachId': coachId,
-      'nickname': nickname,
-      'deviceId': deviceId,
-    });
+    final uri = Uri.parse('$baseUrl/api/worlds/join-by-code').replace(
+      queryParameters: {
+        'inviteCode': inviteCode,
+        'coachId': coachId,
+        'nickname': nickname,
+        'deviceId': deviceId,
+      },
+    );
     final res = await _http.post(uri);
     return _decodeResponse(res);
   }
 
   Future<Map<String, dynamic>> getSnapshot(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/snapshot'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/snapshot'),
+    );
     return _decodeResponse(res);
   }
 
   Future<List<dynamic>> getCalendar(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/calendar'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/calendar'),
+    );
     if (res.statusCode >= 400) throw Exception(res.body);
     return jsonDecode(res.body) as List<dynamic>;
   }
 
-  Future<void> saveEditorEntity(String worldId, String kind, Map<String, dynamic> dto) async {
-    final res = await _http.post(Uri.parse('$baseUrl/api/worlds/$worldId/editor/$kind'),
-      headers: {'Content-Type': 'application/json'}, body: jsonEncode(dto));
+  Future<void> saveEditorEntity(
+    String worldId,
+    String kind,
+    Map<String, dynamic> dto,
+  ) async {
+    final res = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/$worldId/editor/$kind'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(dto),
+    );
     _decodeResponse(res);
   }
 
@@ -147,8 +198,13 @@ class ElifootApiClient {
     return jsonDecode(res.body) as List<dynamic>;
   }
 
-  Future<Map<String, dynamic>> getClubDetail(String worldId, String clubId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId'));
+  Future<Map<String, dynamic>> getClubDetail(
+    String worldId,
+    String clubId,
+  ) async {
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId'),
+    );
     return _decodeResponse(res);
   }
 
@@ -169,7 +225,8 @@ class ElifootApiClient {
         'formation': formation,
         'starterPlayerIds': starterIds,
         'benchPlayerIds': benchIds,
-        'idempotencyKey': 'tac-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'tac-$coachId-${DateTime.now().microsecondsSinceEpoch}',
         'expectedRoundVersion': roundVersion,
         'saveAsPreferred': true,
       }),
@@ -188,7 +245,8 @@ class ElifootApiClient {
       body: jsonEncode({
         'gameWorldId': worldId,
         'coachId': coachId,
-        'idempotencyKey': 'unemp-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'unemp-$coachId-${DateTime.now().microsecondsSinceEpoch}',
         'expectedRoundVersion': roundVersion,
       }),
     );
@@ -206,21 +264,26 @@ class ElifootApiClient {
       body: jsonEncode({
         'gameWorldId': worldId,
         'coachId': coachId,
-        'idempotencyKey': 'withdraw-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'withdraw-$coachId-${DateTime.now().microsecondsSinceEpoch}',
         'expectedRoundVersion': roundVersion,
       }),
     );
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> requestGlobalPause(String worldId, String coachId) async {
+  Future<Map<String, dynamic>> requestGlobalPause(
+    String worldId,
+    String coachId,
+  ) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/worlds/$worldId/pause'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'gameWorldId': worldId,
         'coachId': coachId,
-        'idempotencyKey': 'pause-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'pause-$coachId-${DateTime.now().microsecondsSinceEpoch}',
       }),
     );
     return _decodeResponse(res);
@@ -242,37 +305,51 @@ class ElifootApiClient {
         'matchId': matchId,
         'newFormation': newFormation,
         'substitutions': substitutions,
-        'idempotencyKey': 'adj-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'adj-$coachId-${DateTime.now().microsecondsSinceEpoch}',
       }),
     );
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> confirmContinue(String worldId, String coachId) async {
+  Future<Map<String, dynamic>> confirmContinue(
+    String worldId,
+    String coachId,
+  ) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/worlds/$worldId/continue'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'gameWorldId': worldId,
         'coachId': coachId,
-        'idempotencyKey': 'cont-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'idempotencyKey':
+            'cont-$coachId-${DateTime.now().microsecondsSinceEpoch}',
       }),
     );
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> manualTick(String worldId, {int ticks = 1}) async {
-    final res = await _http.post(Uri.parse('$baseUrl/api/worlds/$worldId/tick?ticks=$ticks'));
+  Future<Map<String, dynamic>> manualTick(
+    String worldId, {
+    int ticks = 1,
+  }) async {
+    final res = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/$worldId/tick?ticks=$ticks'),
+    );
     return _decodeResponse(res);
   }
 
   Future<Map<String, dynamic>> advanceToNextRound(String worldId) async {
-    final res = await _http.post(Uri.parse('$baseUrl/api/worlds/$worldId/next-round'));
+    final res = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/$worldId/next-round'),
+    );
     return _decodeResponse(res);
   }
 
   Future<List<dynamic>> getStandings(String worldId, String tier) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/standings/$tier'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/standings/$tier'),
+    );
     if (res.statusCode >= 400) throw Exception(res.body);
     return jsonDecode(res.body) as List<dynamic>;
   }
@@ -284,13 +361,17 @@ class ElifootApiClient {
   }
 
   Future<List<dynamic>> getTopScorers(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/top-scorers'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/top-scorers'),
+    );
     if (res.statusCode >= 400) throw Exception(res.body);
     return jsonDecode(res.body) as List<dynamic>;
   }
 
   Future<Map<String, dynamic>> getRankingAndHistory(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/ranking'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/ranking'),
+    );
     return _decodeResponse(res);
   }
 
@@ -305,125 +386,277 @@ class ElifootApiClient {
       throw ArgumentError('Informe a temporada selecionada.');
     }
     final uri = Uri.parse('$baseUrl/api/worlds/$worldId/player-rankings')
-        .replace(queryParameters: {
-      'category': category,
-      'scope': scope,
-      'period': period,
-      if (period == 'season') 'season': season.toString(),
-    });
+        .replace(
+          queryParameters: {
+            'category': category,
+            'scope': scope,
+            'period': period,
+            if (period == 'season') 'season': season.toString(),
+          },
+        );
     return _decodeResponse(await _http.get(uri));
   }
 
-  Future<Map<String, dynamic>> getPlayerHistory(String worldId, String playerId) async {
-    return _decodeResponse(await _http.get(
-      Uri.parse('$baseUrl/api/worlds/$worldId/players/$playerId/history'),
-    ));
+  Future<Map<String, dynamic>> getPlayerHistory(
+    String worldId,
+    String playerId,
+  ) async {
+    return _decodeResponse(
+      await _http.get(
+        Uri.parse('$baseUrl/api/worlds/$worldId/players/$playerId/history'),
+      ),
+    );
   }
 
-  Future<Map<String, dynamic>> getSeasonTopScorers(String worldId, {int? season}) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/season-top-scorers')
-        .replace(queryParameters: {if (season != null) 'season': '$season'});
+  Future<Map<String, dynamic>> getSeasonTopScorers(
+    String worldId, {
+    int? season,
+  }) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/season-top-scorers',
+    ).replace(queryParameters: {if (season != null) 'season': '$season'});
     return _decodeResponse(await _http.get(uri));
   }
 
   Future<Map<String, dynamic>> getMarket(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/market'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/market'),
+    );
+    final data = _decodeResponse(res);
+    if (data['roundVersion'] is num) {
+      _financeVersions[worldId] = (data['roundVersion'] as num).toInt();
+    }
+    return data;
+  }
+
+  Future<void> listPlayerForTransfer(
+    String worldId,
+    String coachId,
+    String playerId,
+    double price,
+  ) async {
+    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/list').replace(
+      queryParameters: {
+        'coachId': coachId,
+        'playerId': playerId,
+        'askingPrice': price.toStringAsFixed(2),
+      },
+    );
+    final res = await _postFinance(uri);
+    _decodeResponse(res);
+  }
+
+  Future<void> buyListedPlayer(
+    String worldId,
+    String coachId,
+    String playerId,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/market/buy-listed',
+    ).replace(queryParameters: {'coachId': coachId, 'playerId': playerId});
+    final res = await _postFinance(uri);
+    _decodeResponse(res);
+  }
+
+  Future<void> withdrawTransferListing(
+    String worldId,
+    String coachId,
+    String playerId,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/market/unlist',
+    ).replace(queryParameters: {'coachId': coachId, 'playerId': playerId});
+    _decodeResponse(await _postFinance(uri));
+  }
+
+  Future<void> buyConfirmedListing(
+    String worldId,
+    String coachId,
+    Map<String, dynamic> listing,
+  ) async {
+    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/buy-listed')
+        .replace(
+          queryParameters: {
+            'coachId': coachId,
+            'playerId': listing['playerId'].toString(),
+            if (listing['listingVersion'] != null)
+              'listingVersion': listing['listingVersion'].toString(),
+            if (listing['sellerClubId'] != null)
+              'sellerClubId': listing['sellerClubId'].toString(),
+            'askingPrice': (listing['askingPrice'] as num).toStringAsFixed(2),
+          },
+        );
+    _decodeResponse(await _postFinance(uri));
+  }
+
+  Future<void> counterTransferOffer(
+    String worldId,
+    String offerId,
+    String coachId,
+    double amount,
+  ) async {
+    final uri =
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/market/offer/$offerId/counter',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'amount': amount.toStringAsFixed(2),
+          },
+        );
+    _decodeResponse(await _postFinance(uri));
+  }
+
+  Future<Map<String, dynamic>> makeTransferOffer(
+    String worldId,
+    String coachId,
+    String playerId,
+    double amount,
+  ) async {
+    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/offer').replace(
+      queryParameters: {
+        'coachId': coachId,
+        'playerId': playerId,
+        'offeredAmount': amount.toStringAsFixed(2),
+      },
+    );
+    final res = await _postFinance(uri);
     return _decodeResponse(res);
   }
 
-  Future<void> listPlayerForTransfer(String worldId, String coachId, String playerId, double price) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/list').replace(queryParameters: {
-      'coachId': coachId,
-      'playerId': playerId,
-      'askingPrice': price.round().toString(),
-    });
+  Future<void> respondTransferOffer(
+    String worldId,
+    String offerId,
+    String coachId,
+    bool accept,
+  ) async {
+    final uri =
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/market/offer/$offerId/respond',
+        ).replace(
+          queryParameters: {'coachId': coachId, 'accept': accept.toString()},
+        );
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
-  Future<void> buyListedPlayer(String worldId, String coachId, String playerId) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/buy-listed').replace(queryParameters: {
-      'coachId': coachId,
-      'playerId': playerId,
-    });
+  Future<Map<String, dynamic>> createVoluntaryAuction(
+    String worldId,
+    String coachId,
+    String playerId, {
+    double minimumBid = 500000,
+    int durationRounds = 2,
+  }) async {
+    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/auction');
+    return _decodeResponse(
+      await _postFinance(
+        uri,
+        body: {
+          'coachId': coachId,
+          'playerId': playerId,
+          'minimumBid': minimumBid,
+          'durationRounds': durationRounds,
+        },
+      ),
+    );
+  }
+
+  Future<void> placeAuctionBid(
+    String worldId,
+    String auctionId,
+    String coachId,
+    double bidAmount,
+  ) async {
+    final uri =
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/market/auction/$auctionId/bid',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'bidAmount': bidAmount.toStringAsFixed(2),
+          },
+        );
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> makeTransferOffer(String worldId, String coachId, String playerId, double amount) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/offer').replace(queryParameters: {
-      'coachId': coachId,
-      'playerId': playerId,
-      'offeredAmount': amount.round().toString(),
-    });
-    final res = await _postFinance(uri);
-    return _decodeResponse(res);
-  }
-
-  Future<void> respondTransferOffer(String worldId, String offerId, String coachId, bool accept) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/offer/$offerId/respond').replace(queryParameters: {
-      'coachId': coachId,
-      'accept': accept.toString(),
-    });
-    final res = await _postFinance(uri);
-    _decodeResponse(res);
-  }
-
-  Future<Map<String,dynamic>> createVoluntaryAuction(String worldId,String coachId,String playerId,
-      {double minimumBid=500000,int durationRounds=2}) async {
-    final uri=Uri.parse('$baseUrl/api/worlds/$worldId/market/auction');
-    return _decodeResponse(await _postFinance(uri,body:{'coachId':coachId,'playerId':playerId,
-      'minimumBid':minimumBid,'durationRounds':durationRounds}));
-  }
-
-  Future<void> placeAuctionBid(String worldId, String auctionId, String coachId, double bidAmount) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/auction/$auctionId/bid').replace(queryParameters: {
-      'coachId': coachId,
-      'bidAmount': bidAmount.toStringAsFixed(2),
-    });
+  Future<void> renewPlayerContract(
+    String worldId,
+    String playerId,
+    String coachId,
+    int additionalRounds,
+  ) async {
+    final uri =
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/players/$playerId/renew',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'additionalRounds': additionalRounds.toString(),
+          },
+        );
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
-  Future<void> renewPlayerContract(String worldId, String playerId, String coachId, int additionalRounds) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/players/$playerId/renew').replace(queryParameters: {
-      'coachId': coachId,
-      'additionalRounds': additionalRounds.toString(),
-    });
-    final res = await _postFinance(uri);
-    _decodeResponse(res);
-  }
-
-  Future<Map<String, dynamic>> getClubFinances(String worldId, String clubId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/finances'));
+  Future<Map<String, dynamic>> getClubFinances(
+    String worldId,
+    String clubId,
+  ) async {
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/finances'),
+    );
     final data = _decodeResponse(res);
     _financeVersions[worldId] = data['roundVersion'] as int?;
     return data;
   }
 
-  Future<void> takeBankLoan(String worldId, String clubId, String coachId, double amount, int rounds) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/loans').replace(queryParameters: {
-      'coachId': coachId,
-      'amount': amount.round().toString(),
-      'rounds': rounds.toString(),
-    });
+  Future<void> takeBankLoan(
+    String worldId,
+    String clubId,
+    String coachId,
+    double amount,
+    int rounds,
+  ) async {
+    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/loans')
+        .replace(
+          queryParameters: {
+            'coachId': coachId,
+            'amount': amount.round().toString(),
+            'rounds': rounds.toString(),
+          },
+        );
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
-  Future<void> startStadiumRenovation(String worldId, String clubId, String coachId) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/stadium/renovate').replace(queryParameters: {
-      'coachId': coachId,
-    });
+  Future<void> startStadiumRenovation(
+    String worldId,
+    String clubId,
+    String coachId,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/clubs/$clubId/stadium/renovate',
+    ).replace(queryParameters: {'coachId': coachId});
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
-  Future<void> startStadiumExpansion(String worldId, String clubId, String coachId, int seats) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/stadium/expand').replace(queryParameters: {
-      'coachId': coachId,
-      'additionalSeats': seats.toString(),
-    });
+  Future<void> startStadiumExpansion(
+    String worldId,
+    String clubId,
+    String coachId,
+    int seats,
+  ) async {
+    final uri =
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/clubs/$clubId/stadium/expand',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'additionalSeats': seats.toString(),
+          },
+        );
     final res = await _postFinance(uri);
     _decodeResponse(res);
   }
@@ -432,69 +665,126 @@ class ElifootApiClient {
   final Map<String, int?> _financeVersions = {};
   int _financeSequence = 0;
 
-  Future<http.Response> _postFinance(Uri uri, {Map<String, dynamic>? body}) async {
+  Future<http.Response> _postFinance(
+    Uri uri, {
+    Map<String, dynamic>? body,
+  }) async {
     final identity = '$uri:${body == null ? "" : jsonEncode(body)}';
-    final key = _financeKeys.putIfAbsent(identity,
-        () => '${DateTime.now().microsecondsSinceEpoch}-${++_financeSequence}');
+    final key = _financeKeys.putIfAbsent(
+      identity,
+      () => '${DateTime.now().microsecondsSinceEpoch}-${++_financeSequence}',
+    );
     final segments = uri.pathSegments;
     final worldId = segments.length > 2 ? segments[2] : '';
     final version = _financeVersions[worldId];
     final response = body == null
-        ? await _http.post(uri.replace(queryParameters: {
-            ...uri.queryParameters, 'idempotencyKey': key,
-            if (version != null) 'expectedRoundVersion': '$version',
-          }))
-        : await _http.post(uri, headers: {'Content-Type': 'application/json'},
-            body: jsonEncode({...body, 'idempotencyKey': key,
-              'expectedRoundVersion': ?version}));
+        ? await _http.post(
+            uri.replace(
+              queryParameters: {
+                ...uri.queryParameters,
+                'idempotencyKey': key,
+                if (version != null) 'expectedRoundVersion': '$version',
+              },
+            ),
+          )
+        : await _http.post(
+            uri,
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({
+              ...body,
+              'idempotencyKey': key,
+              'expectedRoundVersion': ?version,
+            }),
+          );
     // A transport/server failure may happen after the server committed the operation.
     if (response.statusCode < 500) _financeKeys.remove(identity);
     return response;
   }
 
-  Future<void> repayBankLoan(String worldId, String clubId, String coachId, String loanId) async {
-    final response = await _postFinance(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/loans/$loanId/repay'), body: {'coachId': coachId});
+  Future<void> repayBankLoan(
+    String worldId,
+    String clubId,
+    String coachId,
+    String loanId,
+  ) async {
+    final response = await _postFinance(
+      Uri.parse(
+        '$baseUrl/api/worlds/$worldId/clubs/$clubId/loans/$loanId/repay',
+      ),
+      body: {'coachId': coachId},
+    );
     _decodeResponse(response);
   }
 
-  Future<String?> respondSalaryRequest(String worldId, String clubId, String coachId, String requestId, bool accept) async {
-    final response = await _postFinance(Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/salary-requests/$requestId/respond'),
-        body: {'coachId': coachId, 'accept': accept});
+  Future<String?> respondSalaryRequest(
+    String worldId,
+    String clubId,
+    String coachId,
+    String requestId,
+    bool accept,
+  ) async {
+    final response = await _postFinance(
+      Uri.parse(
+        '$baseUrl/api/worlds/$worldId/clubs/$clubId/salary-requests/$requestId/respond',
+      ),
+      body: {'coachId': coachId, 'accept': accept},
+    );
     return _decodeResponse(response)['message'] as String?;
   }
 
-  Future<Map<String, dynamic>> getInvitations(String worldId, String coachId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$coachId'));
+  Future<Map<String, dynamic>> getInvitations(
+    String worldId,
+    String coachId,
+  ) async {
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$coachId'),
+    );
     return _decodeResponse(res);
   }
 
-  Future<void> acceptInvitation(String worldId, String invitationId, String coachId) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$invitationId/accept').replace(queryParameters: {
-      'coachId': coachId,
-    });
+  Future<void> acceptInvitation(
+    String worldId,
+    String invitationId,
+    String coachId,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/invitations/$invitationId/accept',
+    ).replace(queryParameters: {'coachId': coachId});
     final res = await _http.post(uri);
     _decodeResponse(res);
   }
 
-  Future<void> rejectInvitation(String worldId, String invitationId, String coachId) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$invitationId/reject')
-        .replace(queryParameters: {'coachId': coachId});
+  Future<void> rejectInvitation(
+    String worldId,
+    String invitationId,
+    String coachId,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/invitations/$invitationId/reject',
+    ).replace(queryParameters: {'coachId': coachId});
     _decodeResponse(await _http.post(uri));
   }
 
   Future<String> exportWorldJson(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/editor/export-json'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/editor/export-json'),
+    );
     if (res.statusCode >= 400) throw Exception(res.body);
     return res.body;
   }
 
   Future<String> exportPlayersCsv(String worldId) async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds/$worldId/editor/export-csv'));
+    final res = await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/editor/export-csv'),
+    );
     if (res.statusCode >= 400) throw Exception(res.body);
     return res.body;
   }
 
-  Future<Map<String, dynamic>> validatePackageJson(String worldId, String packageJson) async {
+  Future<Map<String, dynamic>> validatePackageJson(
+    String worldId,
+    String packageJson,
+  ) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/worlds/$worldId/editor/validate-package'),
       headers: {'Content-Type': 'application/json'},
@@ -503,9 +793,13 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> importPackageJson(String packageJson, String newWorldName) async {
-    final uri = Uri.parse('$baseUrl/api/worlds/editor/import-package')
-        .replace(queryParameters: {'newWorldName': newWorldName});
+  Future<Map<String, dynamic>> importPackageJson(
+    String packageJson,
+    String newWorldName,
+  ) async {
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/editor/import-package',
+    ).replace(queryParameters: {'newWorldName': newWorldName});
     final res = await _http.post(
       uri,
       headers: {'Content-Type': 'application/json'},
@@ -514,7 +808,10 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> updatePlayerInEditor(String worldId, Map<String, dynamic> playerDto) async {
+  Future<Map<String, dynamic>> updatePlayerInEditor(
+    String worldId,
+    Map<String, dynamic> playerDto,
+  ) async {
     final res = await _http.post(
       Uri.parse('$baseUrl/api/worlds/$worldId/editor/update-player'),
       headers: {'Content-Type': 'application/json'},
@@ -533,11 +830,16 @@ class ElifootApiClient {
       _signalRConnected = false;
       _reconnectTimer?.cancel();
       _reconnectTimer = Timer(const Duration(seconds: 2), () {
-        if (generation == _connectionGeneration) connectRealtimeRoom(worldId, coachId);
+        if (generation == _connectionGeneration) {
+          connectRealtimeRoom(worldId, coachId);
+        }
       });
     }
+
     try {
-      final wsBase = baseUrl.replaceFirst('http://', 'ws://').replaceFirst('https://', 'wss://');
+      final wsBase = baseUrl
+          .replaceFirst('http://', 'ws://')
+          .replaceFirst('https://', 'wss://');
       _wsChannel = WebSocketChannel.connect(Uri.parse('$wsBase/hubs/gameroom'));
       // SignalR JSON v1 handshake
       _wsChannel!.sink.add('{"protocol":"json","version":1}\x1e');
@@ -547,46 +849,63 @@ class ElifootApiClient {
           'type': 1,
           'invocationId': 'join-1',
           'target': 'JoinRoom',
-          'arguments': [worldId, coachId]
+          'arguments': [worldId, coachId],
         })}\x1e',
       );
 
-      _wsSub = _wsChannel!.stream.listen((raw) {
-        if (raw is! String) return;
-        final frames = raw.split('\x1e');
-        for (final frame in frames) {
-          if (frame.trim().isEmpty) continue;
-          try {
-            final msg = jsonDecode(frame) as Map<String, dynamic>;
-            final type = msg['type'];
-            if (type == 1) {
-              _signalRMessagesReceived++;
-              final target = msg['target'] as String?;
-              final args = msg['arguments'] as List<dynamic>? ?? const [];
-              if (target == 'ReadyCounterUpdated' && args.isNotEmpty) {
-                onReadyCounterUpdated?.call(args[0] as Map<String, dynamic>);
-              } else if ((target == 'RoundStateChanged' || target == 'ClockTick') && args.isNotEmpty) {
-                onSnapshotUpdated?.call(args[0] as Map<String, dynamic>);
-              } else if (target == 'GlobalPause' && args.isNotEmpty) {
-                final payload = args[0] as Map<String, dynamic>;
-                if (payload['snapshot'] != null) {
-                  onSnapshotUpdated?.call(payload['snapshot'] as Map<String, dynamic>);
+      _wsSub = _wsChannel!.stream.listen(
+        (raw) {
+          if (raw is! String) return;
+          final frames = raw.split('\x1e');
+          for (final frame in frames) {
+            if (frame.trim().isEmpty) continue;
+            try {
+              final msg = jsonDecode(frame) as Map<String, dynamic>;
+              final type = msg['type'];
+              if (type == 1) {
+                _signalRMessagesReceived++;
+                final target = msg['target'] as String?;
+                final args = msg['arguments'] as List<dynamic>? ?? const [];
+                if (target == 'ReadyCounterUpdated' && args.isNotEmpty) {
+                  onReadyCounterUpdated?.call(args[0] as Map<String, dynamic>);
+                } else if ((target == 'RoundStateChanged' ||
+                        target == 'ClockTick') &&
+                    args.isNotEmpty) {
+                  onSnapshotUpdated?.call(args[0] as Map<String, dynamic>);
+                } else if (target == 'GlobalPause' && args.isNotEmpty) {
+                  final payload = args[0] as Map<String, dynamic>;
+                  if (payload['snapshot'] != null) {
+                    onSnapshotUpdated?.call(
+                      payload['snapshot'] as Map<String, dynamic>,
+                    );
+                  }
+                } else if (target == 'MarketUpdated' && args.isNotEmpty) {
+                  final payload = args[0] as Map<String, dynamic>;
+                  onNotification?.call(
+                    payload['summaryMessage']?.toString() ??
+                        'Mercado atualizado',
+                  );
                 }
-              } else if (target == 'MarketUpdated' && args.isNotEmpty) {
-                final payload = args[0] as Map<String, dynamic>;
-                onNotification?.call(payload['summaryMessage']?.toString() ?? 'Mercado atualizado');
+              } else if (type == 3 && msg['result'] is Map<String, dynamic>) {
+                _signalRConnected = true;
+                onSnapshotUpdated?.call(msg['result'] as Map<String, dynamic>);
               }
-            } else if (type == 3 && msg['result'] is Map<String, dynamic>) {
-              _signalRConnected = true;
-              onSnapshotUpdated?.call(msg['result'] as Map<String, dynamic>);
-            }
-          } catch (_) {}
-        }
-      }, onError: (_) => reconnect(), onDone: reconnect);
+            } catch (_) {}
+          }
+        },
+        onError: (_) => reconnect(),
+        onDone: reconnect,
+      );
       _pingTimer = Timer.periodic(const Duration(seconds: 10), (_) {
-        try { _wsChannel?.sink.add('{"type":6}\x1e'); } catch (_) { reconnect(); }
+        try {
+          _wsChannel?.sink.add('{"type":6}\x1e');
+        } catch (_) {
+          reconnect();
+        }
       });
-    } catch (_) { reconnect(); }
+    } catch (_) {
+      reconnect();
+    }
 
     // Periodic snapshot reconciliation every 600ms so reconnections or missed frames heal automatically
     _pollTimer = Timer.periodic(const Duration(milliseconds: 600), (_) async {
@@ -595,7 +914,10 @@ class ElifootApiClient {
       try {
         final snap = await getSnapshot(worldId);
         if (generation == _connectionGeneration) onSnapshotUpdated?.call(snap);
-      } catch (_) {} finally { _polling = false; }
+      } catch (_) {
+      } finally {
+        _polling = false;
+      }
     });
   }
 
@@ -620,7 +942,9 @@ class ElifootApiClient {
           throw Exception(err['error'].toString());
         }
       } catch (e) {
-        if (e is Exception && !e.toString().contains('FormatException')) rethrow;
+        if (e is Exception && !e.toString().contains('FormatException')) {
+          rethrow;
+        }
       }
       throw Exception('Erro HTTP ${res.statusCode}: ${res.body}');
     }

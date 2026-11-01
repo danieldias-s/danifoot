@@ -1,0 +1,450 @@
+[
+  {
+    "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+    "name": "Flamengo RJ",
+    "cash": 4875000.25,
+    "squad": [
+      {
+        "id": "d623ed48-8ae1-a04e-8f03-51deabfa4b07",
+        "name": "Atleta fictício Flame-02",
+        "salary": 2037
+      },
+      {
+        "id": "034bf404-23d5-f14c-9a6f-84d7ab17e3b6",
+        "name": "Atleta fictício Flame-13",
+        "salary": 3235
+      },
+      {
+        "id": "a4f99114-7595-2849-b8b6-4b1e74381363",
+        "name": "Atleta fictício Flame-04",
+        "salary": 3068
+      },
+      {
+        "id": "0396b31a-f86f-ce40-881f-bdec53a78eb7",
+        "name": "Atleta fictício Flame-05",
+        "salary": 2906
+      },
+      {
+        "id": "7690ef28-ff21-6a40-9651-5e1cc95fbd54",
+        "name": "Atleta fictício Flame-03",
+        "salary": 2749
+      },
+      {
+        "id": "4965dc17-cbea-fe43-887d-4edad3bf617c",
+        "name": "Atleta fictício Flame-06",
+        "salary": 2749
+      },
+      {
+        "id": "ead6e146-1e5e-d648-a634-6fe954515eb2",
+        "name": "Atleta fictício Flame-16",
+        "salary": 2307
+      },
+      {
+        "id": "2e54bd7f-e973-e94f-b80e-4357852247ff",
+        "name": "Atleta fictício Flame-17*",
+        "salary": 3882
+      },
+      {
+        "id": "42773de4-b479-5447-a259-660b80dd2fe4",
+        "name": "Atleta fictício Flame-09",
+        "salary": 2906
+      },
+      {
+        "id": "528045cd-8c75-2b4f-95a4-6723d2cc00ed",
+        "name": "Atleta fictício Flame-10",
+        "salary": 2449
+      },
+      {
+        "id": "c0382e86-e042-e04a-bec4-ba4a7c14cf53",
+        "name": "Atleta fictício Flame-08",
+        "salary": 2307
+      },
+      {
+        "id": "1c4c42cd-2112-e742-be2b-1c756bb13a27",
+        "name": "Atleta fictício Flame-07",
+        "salary": 1909
+      },
+      {
+        "id": "bb15bb5d-b646-4c41-8d7e-71c372264ca1",
+        "name": "Atleta fictício Flame-14",
+        "salary": 1554
+      },
+      {
+        "id": "008b7f2d-eea5-3341-ac35-9c7d32db1d06",
+        "name": "Atleta fictício Flame-11*",
+        "salary": 4193
+      },
+      {
+        "id": "2d2b9df4-b1bf-c84d-ad19-9704192d1aa9",
+        "name": "Atleta fictício Flame-12",
+        "salary": 3494
+      },
+      {
+        "id": "94f65660-637a-6446-bbe4-49c877f1caa7",
+        "name": "Atleta fictício Flame-15",
+        "salary": 3314
+      },
+      {
+        "id": "3596e10e-d611-1548-95f6-066000e29d3c",
+        "name": "Atleta fictício Flame-18",
+        "salary": 1678
+      }
+    ],
+    "finances": {
+      "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+      "clubName": "Flamengo RJ",
+      "cashBalance": 4875000.25,
+      "availableCash": 4875000.25,
+      "annualSponsorshipBudget": 185000,
+      "sponsorshipInstallments": 22,
+      "salaryPeriod": "OFFICIAL_MATCH",
+      "commercialChangeFromSeason": null,
+      "renovationCostEstimate": 47161,
+      "expansion5kCostEstimate": 425000,
+      "ledger": [
+        {
+          "id": "5be20e97-8570-420e-81ae-d47809956752",
+          "seasonNumber": 1,
+          "roundNumber": 1,
+          "category": "TransferSale",
+          "amount": 675000.25,
+          "balanceAfter": 4875000.25,
+          "description": "Venda de Atleta fictício Flame-01 para FC Porto",
+          "createdAtUtc": "2026-11-01T10:13:39.8143172Z"
+        },
+        {
+          "id": "7b42a434-3944-4480-9777-cca710751ebb",
+          "seasonNumber": 1,
+          "roundNumber": 1,
+          "category": "InitialBalance",
+          "amount": 4200000,
+          "balanceAfter": 4200000,
+          "description": "Saldo inicial de fundação da temporada",
+          "createdAtUtc": "2026-11-01T10:02:59.3349243Z"
+        }
+      ],
+      "loans": [],
+      "credit": {
+        "clubId": "836cea4d-dd81-d24a-805b-c2be06bd2e00",
+        "division": "PrimeiraDivisao",
+        "assetIndicator": 2077750,
+        "loanLimit": 4,
+        "activeLoans": 0,
+        "availableLoans": 4,
+        "outstandingDebt": 0,
+        "interestPerMatch": 0,
+        "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+      },
+      "roundVersion": 16,
+      "salaryRequests": [],
+      "contracts": [],
+      "insolvency": null,
+      "coverageWarnings": []
+    }
+  },
+  {
+    "clubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+    "name": "FC Porto",
+    "cash": 3524999.75,
+    "squad": [
+      {
+        "id": "e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc",
+        "name": "Atleta fictício Flame-01",
+        "salary": 2449
+      },
+      {
+        "id": "dbd89ad5-a2f7-3c43-8ca6-e286dca88ffe",
+        "name": "Atleta fictício FC Po-02",
+        "salary": 2169
+      },
+      {
+        "id": "72a6fb84-0993-1a4f-8675-1a01e974720d",
+        "name": "Atleta fictício FC Po-01",
+        "salary": 1554
+      },
+      {
+        "id": "83f4a84d-ba58-0f4c-9153-754a4c5e7a88",
+        "name": "Atleta fictício FC Po-03",
+        "salary": 3235
+      },
+      {
+        "id": "314c4331-8b4c-5e42-b2be-3dade3d00aed",
+        "name": "Atleta fictício FC Po-13",
+        "salary": 2749
+      },
+      {
+        "id": "f211be64-fc42-c84c-8b3a-83989a8461eb",
+        "name": "Atleta fictício FC Po-05",
+        "salary": 2449
+      },
+      {
+        "id": "22544ddc-ff91-914b-b299-29208b6d4148",
+        "name": "Atleta fictício FC Po-16",
+        "salary": 2307
+      },
+      {
+        "id": "d76bfb03-1f4f-ea4c-9d44-c2e562e25244",
+        "name": "Atleta fictício FC Po-04",
+        "salary": 1786
+      },
+      {
+        "id": "3860436f-0a52-1b43-8da2-7175b66a8864",
+        "name": "Atleta fictício FC Po-06",
+        "salary": 1554
+      },
+      {
+        "id": "1760a7c5-4f3a-d34e-ae33-e00f98956047",
+        "name": "Atleta fictício FC Po-10*",
+        "salary": 3682
+      },
+      {
+        "id": "47051073-1eb4-4e46-a4f4-232a90ae992c",
+        "name": "Atleta fictício FC Po-09",
+        "salary": 2749
+      },
+      {
+        "id": "6a7cb436-26cd-c947-a1d2-a5769486269f",
+        "name": "Atleta fictício FC Po-17",
+        "salary": 2597
+      },
+      {
+        "id": "e7ba7548-4535-fc49-b128-990326a5030f",
+        "name": "Atleta fictício FC Po-07",
+        "salary": 2169
+      },
+      {
+        "id": "6db7d08a-7266-fc4d-b104-0084f5651ad0",
+        "name": "Atleta fictício FC Po-14",
+        "salary": 1786
+      },
+      {
+        "id": "51a5b05a-0a59-6d4c-89b9-eea56877406b",
+        "name": "Atleta fictício FC Po-08",
+        "salary": 1786
+      },
+      {
+        "id": "b521fd1c-0237-554f-8760-8c1b7ae86f49",
+        "name": "Atleta fictício FC Po-12*",
+        "salary": 3766
+      },
+      {
+        "id": "4c3fe694-2c54-4448-a558-b964c2c9122a",
+        "name": "Atleta fictício FC Po-15",
+        "salary": 2969
+      },
+      {
+        "id": "ef8ecfcc-91c2-7c48-88bf-f9f668ea94e5",
+        "name": "Atleta fictício FC Po-18",
+        "salary": 2200
+      },
+      {
+        "id": "6a0de687-1e2e-fb4e-91aa-2891ef9b28ec",
+        "name": "Atleta fictício FC Po-11",
+        "salary": 1929
+      }
+    ],
+    "finances": {
+      "clubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+      "clubName": "FC Porto",
+      "cashBalance": 3524999.75,
+      "availableCash": 2874999.0,
+      "annualSponsorshipBudget": 185000,
+      "sponsorshipInstallments": 22,
+      "salaryPeriod": "OFFICIAL_MATCH",
+      "commercialChangeFromSeason": null,
+      "renovationCostEstimate": 157473,
+      "expansion5kCostEstimate": 425000,
+      "ledger": [
+        {
+          "id": "3800e013-e434-40fe-b78d-5472d044167c",
+          "seasonNumber": 1,
+          "roundNumber": 1,
+          "category": "TransferPurchase",
+          "amount": -675000.25,
+          "balanceAfter": 3524999.75,
+          "description": "Compra de Atleta fictício Flame-01 de Flamengo RJ (Negociação bilateral concluída)",
+          "createdAtUtc": "2026-11-01T10:13:39.8142056Z"
+        },
+        {
+          "id": "23ae8a25-d38d-4ba2-a97f-c80847146384",
+          "seasonNumber": 1,
+          "roundNumber": 1,
+          "category": "InitialBalance",
+          "amount": 4200000,
+          "balanceAfter": 4200000,
+          "description": "Saldo inicial de fundação da temporada",
+          "createdAtUtc": "2026-11-01T10:02:59.3346038Z"
+        }
+      ],
+      "loans": [],
+      "credit": {
+        "clubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+        "division": "PrimeiraDivisao",
+        "assetIndicator": 1907100,
+        "loanLimit": 4,
+        "activeLoans": 0,
+        "availableLoans": 4,
+        "outstandingDebt": 0,
+        "interestPerMatch": 0,
+        "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+      },
+      "roundVersion": 16,
+      "salaryRequests": [],
+      "contracts": [
+        {
+          "key": "transfer:b4ca0ea3-055e-40c1-a6c0-811c0e1a8ae5:587a76db-cf8e-3542-957e-6544812c3aab:e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc:1793528019637000-1:contract",
+          "playerId": "e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc",
+          "clubId": "587a76db-cf8e-3542-957e-6544812c3aab",
+          "season": 1,
+          "round": 1,
+          "previousSalary": 2449,
+          "salary": 2449,
+          "matches": 19,
+          "reason": "TRANSFER_CONTRACT",
+          "signingFee": 0,
+          "commitment": 46531
+        }
+      ],
+      "insolvency": null,
+      "coverageWarnings": []
+    }
+  },
+  {
+    "clubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+    "name": "Arsenal FC",
+    "cash": 4200000,
+    "squad": [
+      {
+        "id": "8d807aef-e042-0e47-a826-a0707126e72d",
+        "name": "Atleta fictício Arsen-02",
+        "salary": 2169
+      },
+      {
+        "id": "c2308c66-e6d2-4a4f-8a64-17940b16178b",
+        "name": "Atleta fictício Arsen-01",
+        "salary": 1554
+      },
+      {
+        "id": "c8d436d8-fe5f-3941-9a38-1710c4131a8e",
+        "name": "Atleta fictício Arsen-13",
+        "salary": 3235
+      },
+      {
+        "id": "791f4ad1-0c55-eb4a-97a8-dc05a3d3dcf6",
+        "name": "Atleta fictício Arsen-03",
+        "salary": 2906
+      },
+      {
+        "id": "c3fcbed6-9f1d-2a4e-848d-e044bf877ed4",
+        "name": "Atleta fictício Arsen-06",
+        "salary": 2597
+      },
+      {
+        "id": "14e2f036-75e2-c44f-bab7-99619ac93d0b",
+        "name": "Atleta fictício Arsen-05",
+        "salary": 2449
+      },
+      {
+        "id": "259e2f53-67f4-7f46-89ef-63064bcf7896",
+        "name": "Atleta fictício Arsen-16",
+        "salary": 1909
+      },
+      {
+        "id": "fa2f5ea5-9d0d-b04c-a799-eaaecb39c82d",
+        "name": "Atleta fictício Arsen-04",
+        "salary": 1554
+      },
+      {
+        "id": "d677f328-f511-8742-b2b2-0c0946241b5e",
+        "name": "Atleta fictício Arsen-07*",
+        "salary": 3882
+      },
+      {
+        "id": "45832c4c-dcd6-df41-bdb0-783e1714f0dd",
+        "name": "Atleta fictício Arsen-17",
+        "salary": 2749
+      },
+      {
+        "id": "ab70f5dd-cf85-3c47-8938-76cc9e9665cc",
+        "name": "Atleta fictício Arsen-08",
+        "salary": 2597
+      },
+      {
+        "id": "c6ea2f61-0ac2-7940-9a2c-6a9c3dbc20df",
+        "name": "Atleta fictício Arsen-09",
+        "salary": 2597
+      },
+      {
+        "id": "19e88cb3-b105-4f40-87b7-d74d8f822a3d",
+        "name": "Atleta fictício Arsen-10",
+        "salary": 1668
+      },
+      {
+        "id": "60af9416-eb5e-2543-925f-00073551a659",
+        "name": "Atleta fictício Arsen-14",
+        "salary": 1554
+      },
+      {
+        "id": "765362da-7e8c-d749-a864-34b8a25f860b",
+        "name": "Atleta fictício Arsen-11*",
+        "salary": 2640
+      },
+      {
+        "id": "b321106f-e61d-5c49-8616-6df3fc980662",
+        "name": "Atleta fictício Arsen-12",
+        "salary": 2061
+      },
+      {
+        "id": "8a6de553-2969-2344-bda8-ba17dea21d41",
+        "name": "Atleta fictício Arsen-18",
+        "salary": 1929
+      },
+      {
+        "id": "90864a89-a925-8c45-815d-364d2eab46ee",
+        "name": "Atleta fictício Arsen-15",
+        "salary": 1561
+      }
+    ],
+    "finances": {
+      "clubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+      "clubName": "Arsenal FC",
+      "cashBalance": 4200000,
+      "availableCash": 4200000,
+      "annualSponsorshipBudget": 185000,
+      "sponsorshipInstallments": 22,
+      "salaryPeriod": "OFFICIAL_MATCH",
+      "commercialChangeFromSeason": null,
+      "renovationCostEstimate": 128790,
+      "expansion5kCostEstimate": 425000,
+      "ledger": [
+        {
+          "id": "272ace9f-88bb-43c1-a87b-be8dc47babd6",
+          "seasonNumber": 1,
+          "roundNumber": 1,
+          "category": "InitialBalance",
+          "amount": 4200000,
+          "balanceAfter": 4200000,
+          "description": "Saldo inicial de fundação da temporada",
+          "createdAtUtc": "2026-11-01T10:02:59.3335857Z"
+        }
+      ],
+      "loans": [],
+      "credit": {
+        "clubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+        "division": "PrimeiraDivisao",
+        "assetIndicator": 1614350,
+        "loanLimit": 3,
+        "activeLoans": 0,
+        "availableLoans": 3,
+        "outstandingDebt": 0,
+        "interestPerMatch": 0,
+        "rule": "CLASSIC_ADAPTED_ASSET_CREDIT_V1"
+      },
+      "roundVersion": 16,
+      "salaryRequests": [],
+      "contracts": [],
+      "insolvency": null,
+      "coverageWarnings": []
+    }
+  }
+]
