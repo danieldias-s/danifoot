@@ -58,14 +58,16 @@ extension _ShellActions on _ElifootShellScreenState {
     return incoming;
   }
 
-  Future<void> _saveSession() {
-    return writeSession(
+  Future<void> _saveSession() async {
+    await writeSession(
       jsonEncode({
         'nickname': _nickname,
+        'coachId': _coachId,
         'deviceId': _deviceId,
         'worldId': _worldId,
       }),
     );
+    if (mounted) setState(() => _savedSessions = readSavedSessions());
   }
 
   Future<void> _joinByCodeDialog() async {
@@ -113,9 +115,17 @@ extension _ShellActions on _ElifootShellScreenState {
           nickname: _nickname,
           deviceId: _deviceId,
         );
+        _coachId = result['coachId']?.toString() ?? _coachId;
         await _joinSelectedWorld(result['worldId']);
       } catch (e) {
-        if (mounted) setState(() => _statusBanner = '$e');
+        if (mounted) {
+          setState(
+            () => _statusBanner = e.toString().replaceFirst(
+              RegExp(r'^Exception: '),
+              '',
+            ),
+          );
+        }
       }
     }
     await Future<void>.delayed(const Duration(milliseconds: 300));
@@ -124,10 +134,21 @@ extension _ShellActions on _ElifootShellScreenState {
 
   Future<void> _chooseClub(String worldId) async {
     try {
+      final membership = _worlds.where((w) => w['id'] == worldId).firstOrNull;
+      if (membership?['reconnectCoachId'] != null) {
+        _coachId = membership['reconnectCoachId'].toString();
+        await _joinSelectedWorld(worldId);
+        return;
+      }
       final snap = await widget.apiClient.getSnapshot(worldId);
       if ((snap['readyCounter']['participants'] as List).any(
         (p) => p['coachId'] == _coachId,
       )) {
+        await _joinSelectedWorld(worldId);
+        return;
+      }
+      final summary = _worlds.where((w) => w['id'] == worldId).firstOrNull;
+      if (summary?['availableSeats'] == 0) {
         await _joinSelectedWorld(worldId);
         return;
       }

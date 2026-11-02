@@ -34,6 +34,8 @@ void main() {
     await tester.pumpWidget(ElifootClassicApp(apiClient: api));
     await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
     await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('ENTRAR COM CLUBE'));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('choose-club-club-1')));

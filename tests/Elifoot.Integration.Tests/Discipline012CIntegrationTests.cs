@@ -59,7 +59,7 @@ public class Discipline012CIntegrationTests
         var coaches=new List<HumanCoach>();
         foreach(var clubId in clubIds)
         {
-            var joined=await orchestrator.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"Coach","disc-client",clubId);
+            var joined=await orchestrator.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"Coach",$"disc-client-{clubId}",clubId);
             coaches.Add(joined.Coach!);
         }
         foreach(var coach in coaches)

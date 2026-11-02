@@ -20,6 +20,7 @@ import 'round_navigation.dart';
 import 'classic_match_board.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
+import 'lobby_room_status.dart';
 
 part 'shell_actions.dart';
 
@@ -122,6 +123,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   late final TextEditingController _deviceController;
   List<dynamic> _calendar = [];
   String? _coachId;
+  String? _authenticatedDeviceId;
+  List<Map<String, dynamic>> _savedSessions = [];
   String? _authWarning;
   String? _worldId;
   String? _myClubId;
@@ -272,6 +275,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _restoringSession = session?['worldId'] != null;
     _nickname = session?['nickname'] ?? _nickname;
     _deviceId = session?['deviceId'] ?? _deviceId;
+    _coachId = session?['coachId'];
+    _authenticatedDeviceId = session?['deviceId'];
+    _savedSessions = readSavedSessions();
     _nicknameController = TextEditingController(text: _nickname);
     _deviceController = TextEditingController(text: _deviceId);
     widget.apiClient.onSnapshotUpdated = (snap) {
@@ -364,7 +370,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final auth = await widget.apiClient.localLogin(_nickname, _deviceId);
       final worlds = await widget.apiClient.listWorlds();
       setState(() {
-        _coachId = auth['coachId']?.toString();
+        _coachId = _authenticatedDeviceId == _deviceId && _coachId != null
+            ? _coachId
+            : auth['coachId']?.toString();
+        _deviceId = auth['deviceId']?.toString() ?? _deviceId.trim();
+        _authenticatedDeviceId = _deviceId;
+        _deviceController.text = _deviceId;
         _authWarning = auth['authModeWarning']?.toString();
         _worlds = worlds;
       });
@@ -414,6 +425,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _roundView.reset();
         }
         _worldId = worldId;
+        _coachId = res['coachId']?.toString() ?? _coachId;
+        _nickname = res['nickname']?.toString() ?? _nickname;
+        _nicknameController.text = _nickname;
         _myClubId = res['clubId']?.toString();
         _isUnemployed = res['isUnemployed'] == true;
         _snapshot = _acceptSnapshot(snap);
@@ -422,7 +436,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       await _saveSession();
       await _refreshClubAndSecondaryData();
     } catch (e) {
-      setState(() => _statusBanner = 'Erro ao entrar na sala: $e');
+      setState(
+        () => _statusBanner =
+            'Não foi possível entrar: ${e.toString().replaceFirst(RegExp(r'^Exception: '), '')}',
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -917,6 +934,55 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         ),
                       ),
                       const SizedBox(height: 12),
+                      if (_savedSessions.isNotEmpty) ...[
+                        DropdownButtonFormField<String>(
+                          key: ValueKey('saved-trainer-$_deviceId'),
+                          initialValue:
+                              _savedSessions.any(
+                                (p) => p['deviceId'] == _deviceId,
+                              )
+                              ? _deviceId
+                              : null,
+                          isExpanded: true,
+                          decoration: const InputDecoration(
+                            labelText: 'RETOMAR TREINADOR SALVO',
+                          ),
+                          items: [
+                            for (final p in _savedSessions)
+                              DropdownMenuItem(
+                                value: p['deviceId'].toString(),
+                                child: Text(
+                                  '${p['nickname']} • ${p['deviceId']}',
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                          ],
+                          onChanged: _isLoading
+                              ? null
+                              : (device) async {
+                                  final p = _savedSessions.firstWhere(
+                                    (p) => p['deviceId'] == device,
+                                  );
+                                  setState(() {
+                                    _nickname =
+                                        p['nickname']?.toString() ??
+                                        'Treinador';
+                                    _deviceId = device!;
+                                    _coachId = p['coachId']?.toString();
+                                    _authenticatedDeviceId = device;
+                                    _nicknameController.text = _nickname;
+                                    _deviceController.text = _deviceId;
+                                    _statusBanner = null;
+                                    _worlds = [];
+                                  });
+                                  await _performLocalLoginAndLoadWorlds();
+                                },
+                        ),
+                        const Text(
+                          'Use a mesma identidade para retornar. Desconectar preserva sua vaga e seu clube.',
+                        ),
+                        const SizedBox(height: 8),
+                      ],
                       Wrap(
                         spacing: 12,
                         runSpacing: 12,
@@ -933,6 +999,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 ),
                               ),
                               controller: _nicknameController,
+                              readOnly: _isLoading,
                               onChanged: (v) => _nickname = v,
                             ),
                           ),
@@ -947,6 +1014,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 ),
                               ),
                               controller: _deviceController,
+                              readOnly: _isLoading,
                               onChanged: (v) => _deviceId = v,
                             ),
                           ),
@@ -955,6 +1023,25 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                 ? null
                                 : _performLocalLoginAndLoadWorlds,
                             child: const Text('ENTRAR NO LOBBY (LOCAL DEV)'),
+                          ),
+                          OutlinedButton(
+                            key: const Key('new-local-trainer'),
+                            onPressed: _isLoading
+                                ? null
+                                : () {
+                                    setState(() {
+                                      _coachId = null;
+                                      _authenticatedDeviceId = null;
+                                      _deviceId =
+                                          'device-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 30)}';
+                                      _nickname = 'Treinador 1';
+                                      _nicknameController.text = _nickname;
+                                      _deviceController.text = _deviceId;
+                                      _worlds = [];
+                                      _authWarning = null;
+                                    });
+                                  },
+                            child: const Text('NOVO TREINADOR'),
                           ),
                         ],
                       ),
@@ -1040,11 +1127,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   else
                     ..._worlds.map((w) {
                       final wid = w['id'].toString();
-                      final counter =
-                          w['readyCounter'] as Map<String, dynamic>?;
-                      final counterLabel =
-                          counter?['counterLabel']?.toString() ??
-                          'TÁTICAS ENVIADAS: 0/0';
                       return Container(
                         margin: const EdgeInsets.only(bottom: 10),
                         padding: const EdgeInsets.all(12),
@@ -1076,25 +1158,36 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    'Temporada ${w['seasonNumber']} • Rodada ${w['roundNumber']} • Estado: ${w['roundState']} • Clubes: ${w['totalClubs']} • $counterLabel',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: ClassicTheme.of(
-                                        context,
-                                      ).textSecondary,
-                                    ),
+                                    'Temporada ${w['seasonNumber']} • Rodada ${w['roundNumber']} • Clubes: ${w['totalClubs']}',
+                                  ),
+                                  LobbyRoomStatus(
+                                    room: Map<String, dynamic>.from(w),
                                   ),
                                 ],
                               ),
                             ),
                             ElevatedButton(
                               key: Key('join-world-$wid'),
-                              onPressed: () => _chooseClub(wid),
-                              child: const Text('ENTRAR COM CLUBE'),
+                              onPressed:
+                                  _isLoading ||
+                                      _authenticatedDeviceId != _deviceId.trim()
+                                  ? null
+                                  : () => _chooseClub(wid),
+                              child: Text(
+                                w['reconnectCoachId'] != null
+                                    ? 'RETOMAR MINHA SESSÃO'
+                                    : 'ENTRAR COM CLUBE',
+                              ),
                             ),
                             OutlinedButton(
-                              onPressed: () =>
-                                  _joinSelectedWorld(wid, joinUnemployed: true),
+                              onPressed:
+                                  _isLoading ||
+                                      _authenticatedDeviceId != _deviceId.trim()
+                                  ? null
+                                  : () => _joinSelectedWorld(
+                                      wid,
+                                      joinUnemployed: true,
+                                    ),
                               child: const Text('ENTRAR DESEMPREGADO'),
                             ),
                           ],

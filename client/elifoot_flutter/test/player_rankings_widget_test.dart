@@ -742,6 +742,8 @@ void main() {
       await tester.pumpWidget(ElifootClassicApp(apiClient: f.api));
       await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
       await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('ENTRAR DESEMPREGADO'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('ENTRAR DESEMPREGADO'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('5. RANKING & CARREIRA'));

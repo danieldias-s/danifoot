@@ -6,6 +6,7 @@ import 'api_environment.dart';
 
 class ElifootApiClient {
   String baseUrl;
+  String? _lobbyCoachId, _lobbyDeviceId;
   final http.Client _http;
   WebSocketChannel? _wsChannel;
   StreamSubscription? _wsSub;
@@ -112,11 +113,24 @@ class ElifootApiClient {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'nickname': nickname, 'deviceId': deviceId}),
     );
-    return _decodeResponse(res);
+    final auth = _decodeResponse(res);
+    _lobbyCoachId = auth['coachId']?.toString();
+    _lobbyDeviceId = auth['deviceId']?.toString();
+    return auth;
   }
 
   Future<List<dynamic>> listWorlds() async {
-    final res = await _http.get(Uri.parse('$baseUrl/api/worlds'));
+    final query = <String, String>{};
+    if (_lobbyCoachId != null) {
+      query['coachId'] = _lobbyCoachId!;
+    }
+    if (_lobbyDeviceId != null) {
+      query['deviceId'] = _lobbyDeviceId!;
+    }
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds',
+    ).replace(queryParameters: query);
+    final res = await _http.get(uri);
     if (res.statusCode >= 400) throw Exception(res.body);
     return jsonDecode(res.body) as List<dynamic>;
   }

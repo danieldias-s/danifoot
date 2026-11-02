@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "sameGameplayAndEconomy": true,
+    "capacityUnchanged": true,
+    "coachIdsUnchanged": true,
+    "noDuplicates": true,
+    "clubAssignmentsUnchanged": true,
+    "roundAndStateUnchanged": true
+  },
+  "gameplaySha256": "0885642fe09378014f72931976010bb457b4dbc50a9f90dff7c4846ca5715fc0",
+  "excludedVolatileFields": [
+    "updatedAtUtc",
+    "roundVersion",
+    "humanCoaches[].isConnected"
+  ],
+  "worldId": "73e11073-a854-487e-bc59-efd9856cab91"
+}

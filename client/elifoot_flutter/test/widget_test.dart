@@ -445,6 +445,8 @@ void main() {
       expect(find.textContaining('Campeonato Brasileiro 98'), findsOneWidget);
 
       // 2. Join room with club
+      await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('ENTRAR COM CLUBE'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Atlético Paulistano'));

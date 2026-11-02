@@ -38,6 +38,8 @@ void main() {
     final api = EconomyApi()..legacy = true..accepted = true;
     await tester.pumpWidget(ElifootClassicApp(apiClient: api));
     await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)')); await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('ENTRAR COM CLUBE')); await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('choose-club-club-1'))); await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));
@@ -52,6 +54,8 @@ void main() {
     final api = EconomyApi();
     await tester.pumpWidget(ElifootClassicApp(apiClient: api));
     await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)')); await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('ENTRAR COM CLUBE')); await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('choose-club-club-1'))); await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('4. FINANÇAS & ESTÁDIO'));

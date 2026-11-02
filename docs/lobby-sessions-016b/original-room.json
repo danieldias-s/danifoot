@@ -1,0 +1,28 @@
+{
+  "id": "73e11073-a854-487e-bc59-efd9856cab91",
+  "name": "016B - Revisão visual",
+  "maxHumans": 2,
+  "currentHumans": 2,
+  "connectedHumans": 1,
+  "availableSeats": 0,
+  "roundNumber": 1,
+  "roundState": "PREPARING",
+  "readyCount": 0,
+  "necessaryTactics": 2,
+  "participants": [
+    {
+      "coachId": "ce20c5d4-7db0-6034-1e20-97f9a9a2d8cd",
+      "nickname": "QA 016B Masculino",
+      "clubName": "Flamengo RJ",
+      "isConnected": true,
+      "isReady": false
+    },
+    {
+      "coachId": "147b833e-3fdf-7338-3d90-23051fa00ba0",
+      "nickname": "QA 016B Vendedor",
+      "clubName": "FC Porto",
+      "isConnected": false,
+      "isReady": false
+    }
+  ]
+}

@@ -46,6 +46,7 @@ else
 bool worldCreator013A = builder.AddWorldCreator013A();
 builder.AddImport016A();
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<RoomConnectionRegistry>();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
 builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
 builder.Services.AddScoped<ClubAndMarketApplicationService>();
@@ -64,6 +65,15 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+var roomConnections = app.Services.GetRequiredService<RoomConnectionRegistry>();
+async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken ct)
+{
+    var sem = MultiplayerRoundOrchestrator.GetRoomLock(world.Id);
+    await sem.WaitAsync(ct);
+    try { return roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world)); }
+    finally { sem.Release(); }
+}
+
 app.UseCors();
 
 // Initialize database schema and seed default 128-club world if configured
@@ -127,30 +137,41 @@ app.MapPost("/api/auth/local-login", (LocalAuthRequest req) =>
 });
 
 // 2. Worlds / Rooms
-app.MapGet("/api/worlds", async (IWorldRepository repo, CancellationToken ct) =>
+app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? deviceId, CancellationToken ct) =>
 {
     var worlds = await repo.ListWorldsAsync(ct);
-    var summaries = worlds.Select(w => new
+    var summaries = new List<object>();
+    foreach (var w in worlds)
     {
-        w.Id,
-        w.Name,
-        w.InviteCode,
-        w.Seed,
-        w.TotalClubs,
-        w.MaxHumans,
-        CurrentHumans = w.HumanCoaches.Count,
-        w.SeasonNumber,
-        w.RoundNumber,
-        RoundState = w.RoundState.ToString(),
-        ReadyCounter = MultiplayerRoundOrchestrator.BuildReadyCounterDto(w)
-    });
+        var sem = MultiplayerRoundOrchestrator.GetRoomLock(w.Id);
+        await sem.WaitAsync(ct);
+        try
+        {
+            var counter = roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildReadyCounterDto(w));
+            var own = w.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+            var device = deviceId?.Trim();
+            if (string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) && own == null && !string.IsNullOrWhiteSpace(device) && device != "dev") {
+                var candidates = w.HumanCoaches.Where(h => string.Equals((h.DeviceId ?? string.Empty).Trim(), device, StringComparison.Ordinal)).ToList();
+                if (candidates.Count == 1) own = candidates[0];
+            }
+            summaries.Add(new {
+                ReconnectCoachId = own?.Id,
+                w.Id, w.Name, w.InviteCode, w.Seed, w.TotalClubs, w.MaxHumans,
+                CurrentHumans = w.HumanCoaches.Count,
+                ConnectedHumans = counter.Participants.Count(p => p.IsConnected),
+                AvailableSeats = Math.Max(0, w.MaxHumans - w.HumanCoaches.Count),
+                w.SeasonNumber, w.RoundNumber, RoundState = w.RoundState.ToString(), ReadyCounter = counter
+            });
+        }
+        finally { sem.Release(); }
+    }
     return Results.Ok(summaries);
 });
 
 app.MapPost("/api/worlds", async (CreateWorldRequest req, MultiplayerRoundOrchestrator orchestrator, CancellationToken ct) =>
 {
     var world = await orchestrator.CreateWorldAsync(req, ct);
-    return Results.Ok(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world));
+    return Results.Ok(await RoomSnapshot(world, ct));
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/join", async (
@@ -164,8 +185,8 @@ app.MapPost("/api/worlds/{worldId:guid}/join", async (
     CancellationToken ct) =>
 {
     var (ok, err, coach, world) = await orchestrator.JoinWorldAndAssignClubAsync(
-        worldId, coachId, nickname, deviceId ?? "dev", preferredClubId, joinUnemployed ?? false, ct);
-    if (!ok || world == null) return Results.BadRequest(new { error = err });
+        worldId, coachId, nickname, deviceId ?? "dev", preferredClubId, joinUnemployed ?? false, ct, allowDeviceReconnect: string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase));
+    if (!ok || world == null) return Results.BadRequest(new { error = err, code = err?.StartsWith("Sala lotada:", StringComparison.Ordinal) == true ? "ROOM_FULL" : "JOIN_REJECTED" });
 
     return Results.Ok(new
     {
@@ -174,7 +195,7 @@ app.MapPost("/api/worlds/{worldId:guid}/join", async (
         clubId = coach.CurrentClubId,
         isUnemployed = coach.IsUnemployed,
         isHost = coach.IsHost,
-        snapshot = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world)
+        snapshot = await RoomSnapshot(world, ct)
     });
 });
 
@@ -192,8 +213,8 @@ app.MapPost("/api/worlds/join-by-code", async (
     if (world == null) return Results.NotFound(new { error = $"Sala com código '{inviteCode}' não encontrada." });
 
     var (ok, err, coach, updatedWorld) = await orchestrator.JoinWorldAndAssignClubAsync(
-        world.Id, coachId, nickname, deviceId ?? "dev", preferredClubId, false, ct);
-    if (!ok || updatedWorld == null) return Results.BadRequest(new { error = err });
+        world.Id, coachId, nickname, deviceId ?? "dev", preferredClubId, false, ct, allowDeviceReconnect: string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase));
+    if (!ok || updatedWorld == null) return Results.BadRequest(new { error = err, code = err?.StartsWith("Sala lotada:", StringComparison.Ordinal) == true ? "ROOM_FULL" : "JOIN_REJECTED" });
 
     return Results.Ok(new
     {
@@ -202,7 +223,7 @@ app.MapPost("/api/worlds/join-by-code", async (
         nickname = coach.Nickname,
         clubId = coach.CurrentClubId,
         isUnemployed = coach.IsUnemployed,
-        snapshot = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(updatedWorld)
+        snapshot = await RoomSnapshot(updatedWorld, ct)
     });
 });
 
@@ -210,7 +231,7 @@ app.MapGet("/api/worlds/{worldId:guid}/snapshot", async (Guid worldId, IWorldRep
 {
     var world = await repo.GetWorldAsync(worldId, ct);
     if (world == null) return Results.NotFound();
-    return Results.Ok(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world));
+    return Results.Ok(await RoomSnapshot(world, ct));
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/calendar", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>

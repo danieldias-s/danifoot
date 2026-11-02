@@ -80,7 +80,7 @@ public sealed class PlayableWorld013CIntegrationTests
         Assert.All(world.Players,p=>Assert.True(p.CatalogIdentity!.Origin is WorldPlayerOrigin.FICTIONAL_GENERATED or WorldPlayerOrigin.REAL_VERIFIED_CURRENT));
         Assert.Equal(128,world.Clubs.Count);Assert.Equal(2304,world.Players.Count);Assert.Equal(128,world.Economy.CreditAssessments.Count);
         var clubs=world.Clubs.Take(2).ToList();var coaches=new[]{owner,Guid.NewGuid()};
-        for(int i=0;i<2;i++)Assert.True((await client.PostAsync($"/api/worlds/{worldId}/join?coachId={coaches[i]}&nickname=Test{i}&deviceId=013c&preferredClubId={clubs[i].Id}",null)).IsSuccessStatusCode);
+        for(int i=0;i<2;i++)Assert.True((await client.PostAsync($"/api/worlds/{worldId}/join?coachId={coaches[i]}&nickname=Test{i}&deviceId=013c-{coaches[i]}&preferredClubId={clubs[i].Id}",null)).IsSuccessStatusCode);
         await using var hub=new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom",o=>o.HttpMessageHandlerFactory=_=>factory.Server.CreateHandler()).Build();
         await hub.StartAsync();await hub.InvokeAsync<LiveRoundSnapshotDto>("JoinRoom",worldId,owner);
         string loan=$"/api/worlds/{worldId}/clubs/{clubs[0].Id}/loans?coachId={owner}&amount=500000&rounds=0&idempotencyKey=013c-unique";

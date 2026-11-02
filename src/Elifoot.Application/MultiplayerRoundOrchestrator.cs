@@ -57,7 +57,8 @@ public sealed class MultiplayerRoundOrchestrator
         string deviceId,
         Guid? preferredClubId = null,
         bool joinUnemployed = false,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        bool allowDeviceReconnect = false)
     {
         var sem = GetLock(worldId);
         await sem.WaitAsync(ct);
@@ -67,9 +68,17 @@ public sealed class MultiplayerRoundOrchestrator
             if (world == null) return (false, "Sala/Mundo não encontrado.", null, null);
 
             var existingCoach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+            var normalizedDevice = deviceId.Trim();
+            // LocalDev device identity survives nickname edits; never guess by nickname or a shared legacy placeholder.
+            if (allowDeviceReconnect && existingCoach == null && normalizedDevice.Length > 0 && normalizedDevice != "dev")
+            {
+                var matches = world.HumanCoaches.Where(h => string.Equals((h.DeviceId ?? string.Empty).Trim(), normalizedDevice, StringComparison.Ordinal)).ToList();
+                if (matches.Count > 1)
+                    return (false, "Mais de um treinador está associado a esse dispositivo. Retome a identidade original; nenhuma vaga foi alterada.", null, world);
+                existingCoach = matches.SingleOrDefault();
+            }
             if (existingCoach != null)
             {
-                existingCoach.IsConnected = true;
                 if (preferredClubId != null && existingCoach.CurrentClubId != preferredClubId)
                 {
                     if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0)
@@ -86,7 +95,7 @@ public sealed class MultiplayerRoundOrchestrator
             }
 
             if (world.HumanCoaches.Count >= world.MaxHumans)
-                return (false, $"A sala atingiu o limite máximo de {world.MaxHumans} treinadores humanos.", null, world);
+                return (false, $"Sala lotada: as {world.MaxHumans} vagas estão ocupadas. Treinadores desconectados mantêm sua vaga e seu clube. Para retornar, use a mesma identidade e o mesmo ID de dispositivo; uma nova identidade precisa de uma vaga livre.", null, world);
             if (world.RoundState != RoundState.PREPARING)
                 return (false, "Aguarde a próxima preparação para entrar na sala.", null, world);
 
@@ -95,10 +104,10 @@ public sealed class MultiplayerRoundOrchestrator
                 Id = coachId == Guid.Empty ? Guid.NewGuid() : coachId,
                 GameWorldId = world.Id,
                 Nickname = string.IsNullOrWhiteSpace(nickname) ? $"Técnico {world.HumanCoaches.Count + 1}" : nickname.Trim(),
-                DeviceId = deviceId,
+                DeviceId = normalizedDevice,
                 SessionToken = Guid.NewGuid().ToString("N"),
                 IsHost = world.HumanCoaches.Count == 0,
-                IsConnected = true
+                IsConnected = false
             };
 
             if (!joinUnemployed)

@@ -1,0 +1,140 @@
+{
+  "transport": "Real HTTP and ClientWebSocket SignalR; no browser UI",
+  "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+  "fullRoomStatus": 400,
+  "status": "PASS",
+  "events": [
+    {
+      "state": "PREPARING",
+      "connected": 0,
+      "occupied": 1,
+      "step": "HTTP join reserves one seat, no live transport",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "First websocket connected",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Two connections of one trainer still count once",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Closing old tab preserves active tab",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 0,
+      "occupied": 1,
+      "step": "Last transport disconnects, reservation survives",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Renamed login recovered canonical coach and same club",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Full room rejects a distinct trainer",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 0,
+      "occupied": 1,
+      "step": "Switch transport leaves only its previous room",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Other room has independent seat count",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "555dbec4-55a2-46dc-bd57-ff033a44cf2a",
+      "capacity": 8
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Wrong-room leave cannot remove current presence",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "555dbec4-55a2-46dc-bd57-ff033a44cf2a",
+      "capacity": 8
+    },
+    {
+      "state": "PREPARING",
+      "connected": 1,
+      "occupied": 1,
+      "step": "Returning to first room restores presence once",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    },
+    {
+      "state": "PREPARING",
+      "connected": 0,
+      "occupied": 1,
+      "step": "Second room membership remains reserved",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "555dbec4-55a2-46dc-bd57-ff033a44cf2a",
+      "capacity": 8
+    },
+    {
+      "state": "PREPARING",
+      "connected": 0,
+      "occupied": 1,
+      "step": "Final disconnect preserves trainer and capacity",
+      "necessary": 1,
+      "ready": 0,
+      "worldId": "a1a6b15b-f4f3-4a20-b430-607eedf829ed",
+      "capacity": 1
+    }
+  ],
+  "coachId": "654741a9-cb4e-e913-4265-b28fa144dd6b",
+  "clubId": "aa19bc4e-83c4-3a40-a83b-5160b1a45a77"
+}
