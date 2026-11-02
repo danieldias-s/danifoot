@@ -14,9 +14,11 @@ import 'match_router.dart';
 import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
+import 'club_crest.dart';
 import 'classic_layout.dart';
 import 'visual_components.dart';
 import 'coach_finance_screens.dart';
+import 'squad_classic.dart';
 import 'mobile_classic.dart';
 import 'live_match_data.dart';
 import 'live_match_view.dart';
@@ -1657,6 +1659,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final cards = <Widget>[
       ClassicSummaryCard(
         icon: Icons.shield_outlined,
+        leading: ClubCrest(
+          club: club?['name']?.toString() ?? 'TREINADOR SEM CLUBE',
+          palette: club?['colorPalette'] is Map
+              ? Map<String, dynamic>.from(club!['colorPalette'])
+              : null,
+          size: 52,
+        ),
         title: club?['name']?.toString() ?? 'TREINADOR SEM CLUBE',
         subtitle: _nickname,
       ),
@@ -1843,7 +1852,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     }
 
     final squad = _myClubDetail!['squad'] as List<dynamic>? ?? [];
-    final aiPlan = _myClubDetail!['aiSquadPlan'] as Map<String, dynamic>?;
 
     // Apply squad filters and sorting
     final filteredSquad = squad.where((p) {
@@ -1888,283 +1896,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     }
 
-    final pinnedRows = <ClassicPinnedRow>[];
-    final tableRows = <DataRow>[];
-    for (var i = 0; i < filteredSquad.length; i++) {
-      final p = filteredSquad[i];
-      final pid = p['id'].toString();
-      final displayName = p['displayName']?.toString() ?? p['name'].toString();
-      final pos = _formatPosition(p['position']);
-      final str = p['strength'] ?? 20;
-      final beh = p['behaviorDisplay']?.toString() ?? '';
-      final goals = p['seasonGoals'] ?? 0;
-      final contract = p['contractRoundsRemaining'] ?? 10;
-      final salary = (p['salaryPerRound'] as num?)?.toDouble() ?? 0;
-      final fair = (p['fairValue'] as num?)?.toDouble() ?? 0;
-      final injuryDays = (p['injuryDaysRemaining'] as num?)?.toInt() ?? 0;
-      final inj =
-          injuryDays + ((p['injuryRoundsRemaining'] as num?)?.toInt() ?? 0);
-      final susp = (p['suspensionRoundsRemaining'] as num?)?.toInt() ?? 0;
-
-      final isStarter = _selectedStarterIds.contains(pid);
-      final isBench = _selectedBenchIds.contains(pid);
-
-      String roleLabel = 'FORA';
-      Color roleColor = Colors.grey;
-      String conditionLabel = 'APTO';
-      if (inj > 0) {
-        roleLabel = 'LES ($inj)';
-        conditionLabel = injuryDays > 0
-            ? 'LESIONADO ($injuryDays dias)'
-            : 'LESIONADO (${inj}r)';
-        roleColor = Colors.redAccent;
-      } else if (susp > 0) {
-        roleLabel = 'SUS ($susp)';
-        conditionLabel = 'SUSPENSO (${susp}r)';
-        roleColor = Colors.orangeAccent;
-      } else if (isStarter) {
-        roleLabel = 'TITULAR';
-        roleColor = Colors.lightGreenAccent;
-      } else if (isBench) {
-        roleLabel = 'RESERVA';
-        roleColor = Colors.cyanAccent;
-      }
-
-      pinnedRows.add(
-        ClassicPinnedRow(
-          rank: pos,
-          title: displayName,
-          subtitle: '$roleLabel • F:$str',
-          highlight: isStarter,
-          isEven: i.isEven,
-          onTap: () => _showPlayerDetailDialog(p as Map<String, dynamic>),
-        ),
-      );
-
-      tableRows.add(
-        DataRow(
-          selected: isStarter,
-          color: WidgetStateProperty.all(
-            isStarter
-                ? ClassicTheme.of(context).surfaceAlternate
-                : (i.isEven
-                      ? ClassicTheme.of(context).tableRow
-                      : ClassicTheme.of(context).tableRowAlternate),
-          ),
-          cells: [
-            DataCell(
-              InkWell(
-                key: ValueKey('toggle-role-$pid'),
-                onTap: (_tacticsLocked || inj > 0 || susp > 0)
-                    ? null
-                    : () => _toggleSquadPlayer(
-                        Map<String, dynamic>.from(p as Map),
-                      ),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6,
-                    vertical: 2,
-                  ),
-                  color: roleColor.withValues(alpha: 0.2),
-                  child: Text(
-                    roleLabel,
-                    style: TextStyle(
-                      color: roleColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                pos,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-            DataCell(
-              InkWell(
-                onTap: () => _showPlayerDetailDialog(p as Map<String, dynamic>),
-                child: Text(
-                  displayName,
-                  style: TextStyle(
-                    fontWeight: displayName.endsWith('*')
-                        ? FontWeight.bold
-                        : FontWeight.normal,
-                    color: displayName.endsWith('*')
-                        ? ClassicTheme.of(context).accent
-                        : ClassicTheme.of(context).textPrimary,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                '$str',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-            DataCell(Text(beh, style: const TextStyle(fontSize: 11))),
-            DataCell(
-              Text(
-                conditionLabel,
-                style: TextStyle(
-                  fontSize: 11,
-                  color: (inj > 0 || susp > 0)
-                      ? Colors.orangeAccent
-                      : Colors.lightGreenAccent,
-                ),
-              ),
-            ),
-            DataCell(Text('$goals', style: const TextStyle(fontSize: 11))),
-            DataCell(
-              Text('${contract}r', style: const TextStyle(fontSize: 11)),
-            ),
-            DataCell(
-              Text(
-                formatClassicMoney(salary),
-                style: const TextStyle(fontSize: 11),
-              ),
-            ),
-            DataCell(
-              Text(
-                formatClassicMoney(fair),
-                style: const TextStyle(fontSize: 11),
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextButton(
-                    onPressed: _commandBusy
-                        ? null
-                        : () => _runUiCommand(() async {
-                            await widget.apiClient.renewPlayerContract(
-                              _worldId!,
-                              pid,
-                              _coachId!,
-                              15,
-                            );
-                            await _refreshClubAndSecondaryData();
-                            setState(
-                              () => _statusBanner =
-                                  'Contrato de $displayName renovado (+15 rodadas).',
-                            );
-                          }),
-                    child: const Text(
-                      'RENOVAR',
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed:
-                        _commandBusy ||
-                            _tacticsLocked &&
-                                _snapshot?['roundState'] != 'RESULTS'
-                        ? null
-                        : () => _announceSquadPlayer(
-                            Map<String, dynamic>.from(p),
-                            direct: true,
-                          ),
-                    child: const Text(
-                      'ANUNCIAR',
-                      style: TextStyle(fontSize: 10, color: Colors.amberAccent),
-                    ),
-                  ),
-                  TextButton(
-                    key: ValueKey('create-auction-$pid'),
-                    onPressed:
-                        _commandBusy ||
-                            _tacticsLocked &&
-                                _snapshot?['roundState'] != 'RESULTS'
-                        ? null
-                        : () => _announceSquadPlayer(
-                            Map<String, dynamic>.from(p),
-                          ),
-                    child: const Text(
-                      'COLOCAR EM LEILÃO',
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    final tacticControls = Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Wrap(
-          spacing: 8,
-          runSpacing: 4,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            const Text(
-              'FORMAÇÃO',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(width: 8),
-            DropdownButton<String>(
-              key: const ValueKey('dropdown-formation'),
-              value: availableFormations.contains(_selectedFormation)
-                  ? _selectedFormation
-                  : '4-4-2',
-              isDense: true,
-              icon: _classicDropdownIcon(context),
-              items: availableFormations
-                  .map(
-                    (f) => DropdownMenuItem(
-                      value: f,
-                      child: Text(
-                        f,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  )
-                  .toList(),
-              onChanged: _tacticsLocked
-                  ? null
-                  : (value) {
-                      if (value != null) {
-                        _changeFormation(value);
-                      }
-                    },
-            ),
-            OutlinedButton(
-              key: const ValueKey('btn-auto-escalar'),
-              onPressed: _tacticsLocked ? null : _autoPickBestLineup,
-              child: const Text(
-                'AUTO-ESCALAR 11 + BANCO',
-                style: TextStyle(fontSize: 10),
-              ),
-            ),
-          ],
-        ),
-        Text(
-          'TITULARES: ${_selectedStarterIds.length}/11  |  BANCO: ${_selectedBenchIds.length}/9  |  ELENCO: ${squad.length}/24',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 11,
-            color: ClassicTheme.of(context).accent,
-          ),
-        ),
-      ],
-    );
     final squadFilters = Wrap(
       spacing: 8,
       runSpacing: 6,
@@ -2281,82 +2012,57 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           ),
       ],
     );
-    final squadTable = ClassicTable(
-      tableKey: 'squad-table',
-      pinnedHeader: 'POS / JOGADOR',
-      pinnedRows: pinnedRows,
-      numericColumns: const {3, 6, 7, 8, 9},
-      columns: const [
-        'STATUS',
-        'POS',
-        'JOGADOR (* = CRAQUE)',
-        'FORÇA',
-        'COMPORTAMENTO',
-        'CONDIÇÃO',
-        'GOLS',
-        'CONTRATO',
-        'SALÁRIO',
-        'VALOR JUSTO',
-        'AÇÕES',
-      ],
-      rows: tableRows,
-    );
-    final extras = <Widget>[
-      if (aiPlan != null) ...[
-        const SizedBox(height: 16),
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: ClassicTheme.of(context).surface,
-            border: Border.all(color: ClassicTheme.of(context).border),
+    Widget rosterFilter() => SizedBox(
+      width: 100,
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton<String>(
+          key: const Key('squad-position-dropdown'),
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: ClassicTheme.of(context).paper.textPrimary,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'RELATÓRIO DA COMISSÃO TÉCNICA / IA (${aiPlan['managerName']} — Perfil: ${aiPlan['tacticalIdentity']})',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Análise: ${aiPlan['selectionReasoning']}',
-                style: const TextStyle(fontSize: 11),
-              ),
-              Text(
-                'Lacunas prioritárias: ${(aiPlan['priorityGaps'] as List<dynamic>? ?? []).join(" | ")}',
-                style: const TextStyle(fontSize: 11, color: Colors.cyanAccent),
-              ),
-            ],
+          isExpanded: true,
+          value: _squadPositionFilter,
+          style: TextStyle(
+            color: ClassicTheme.of(context).paper.textPrimary,
+            fontFamily: 'ClassicCondensed',
+            fontSize: 15,
           ),
+          dropdownColor: ClassicTheme.of(context).paper.surface,
+          items: [
+            for (final p in ['ALL', 'G', 'D', 'M', 'A'])
+              DropdownMenuItem(value: p, child: Text(p == 'ALL' ? 'Todos' : p)),
+          ],
+          onChanged: (v) {
+            if (v != null) setState(() => _squadPositionFilter = v);
+          },
         ),
-      ],
-    ];
+      ),
+    );
+    final typedSquad = squad
+        .map((p) => Map<String, dynamic>.from(p as Map))
+        .toList();
+    final typedFiltered = filteredSquad
+        .map((p) => Map<String, dynamic>.from(p as Map))
+        .toList();
+    final canManage =
+        !_matchLocked &&
+        (!_tacticsLocked || _snapshot?['roundState'] == 'RESULTS');
     return LayoutBuilder(
       builder: (context, viewport) {
         if (viewport.maxWidth < 768) {
           return MobileSquadScreen(
-            squad: squad
-                .map((p) => Map<String, dynamic>.from(p as Map))
-                .toList(),
-            filteredSquad: filteredSquad
-                .map((p) => Map<String, dynamic>.from(p as Map))
-                .toList(),
+            squad: typedSquad,
+            filteredSquad: typedFiltered,
             starters: _selectedStarterIds,
             bench: _selectedBenchIds,
             formations: availableFormations,
             formation: _selectedFormation,
-            requiredStarterCount:
-                (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11,
+            requiredStarterCount: _requiredStarterCount,
             locked: _tacticsLocked,
             busy: _commandBusy,
             tactics: _mobileTacticsView,
-            canManage:
-                !_matchLocked &&
-                (!_tacticsLocked || _snapshot?['roundState'] == 'RESULTS'),
+            canManage: canManage,
             onFormation: _changeFormation,
             onAutoPick: _autoPickBestLineup,
             onDetail: _showPlayerDetailDialog,
@@ -2370,74 +2076,207 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               child: _buildTacticalFieldPreview(squad),
             ),
             filters: squadFilters,
+            rosterFilter: rosterFilter(),
             coachPanel: _buildCoachMainPanel(),
           );
         }
-        final tactical = Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        final round = (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1;
+        final nextFixtureRound =
+            round + (_snapshot?['roundState'] == 'RESULTS' ? 1 : 0);
+        final fixture =
+            (_calendar
+                            .where((r) => r['roundNumber'] == nextFixtureRound)
+                            .firstOrNull?['fixtures']
+                        as List? ??
+                    [])
+                .where(
+                  (f) =>
+                      f['home'] == _myClubDetail?['name'] ||
+                      f['away'] == _myClubDetail?['name'],
+                )
+                .firstOrNull;
+        final opponent = fixture == null
+            ? 'A definir'
+            : '${fixture['home'] == _myClubDetail?['name'] ? fixture['away'] : fixture['home']}';
+        final people =
+            _snapshot?['readyCounter']?['participants'] as List? ?? [];
+        final ready =
+            people
+                .where((p) => p['coachId'] == _coachId)
+                .firstOrNull?['isReady'] ==
+            true;
+        final preparation = _isClassicIdleRound
+            ? 'Sem partida — pronto para acompanhar'
+            : ready
+            ? 'Tática enviada'
+            : '${_selectedStarterIds.length}/$_requiredStarterCount atletas selecionados';
+        Widget shortcuts() => Wrap(
+          spacing: 4,
+          runSpacing: 4,
           children: [
-            _buildCoachMainPanel(),
-            ClassicPanel(
-              key: _tacticsPanelKey,
-              title: 'ESQUEMA TÁTICO',
-              child: tacticControls,
-            ),
-            const SizedBox(height: 8),
-            AbsorbPointer(
-              absorbing: _tacticsLocked,
-              child: _buildTacticalFieldPreview(squad),
-            ),
+            for (final entry in [
+              ('plantel', 'PLANTEL'),
+              ('taticas', 'TÁTICAS ($_selectedFormation)'),
+              ('escalacao', 'ESCALAÇÃO'),
+              ('mercado', 'MERCADO'),
+              ('classificacao', 'CLASSIFICAÇÃO'),
+              ('proxima-partida', 'PRÓXIMA PARTIDA'),
+            ])
+              OutlinedButton(
+                key: ValueKey('quick-action-${entry.$1}'),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(0, 32),
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  textStyle: const TextStyle(
+                    fontFamily: 'ClassicCondensed',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  backgroundColor: entry.$1 == 'plantel'
+                      ? ClassicTheme.of(context).accent
+                      : ClassicTheme.of(context).primary,
+                  foregroundColor: entry.$1 == 'plantel'
+                      ? ClassicTheme.of(context).selectedText
+                      : ClassicTheme.of(context).textPrimary,
+                  disabledForegroundColor: Colors.white60,
+                ),
+                onPressed:
+                    _tacticsLocked &&
+                        (entry.$1 == 'taticas' || entry.$1 == 'escalacao')
+                    ? null
+                    : () {
+                        switch (entry.$1) {
+                          case 'taticas':
+                            _changeFormation(
+                              availableFormations[(availableFormations.indexOf(
+                                        _selectedFormation,
+                                      ) +
+                                      1) %
+                                  availableFormations.length],
+                            );
+                          case 'escalacao':
+                            _autoPickBestLineup();
+                          case 'mercado':
+                            _navigateToTab(2);
+                          case 'classificacao':
+                            _navigateToTab(1);
+                          case 'proxima-partida':
+                            if (RoundViewCoordinator.isMatchStage(
+                              _snapshot?['roundState']?.toString(),
+                            )) {
+                              _navigation.navigate('/partida');
+                            } else {
+                              _navigateToTab(5);
+                            }
+                          default:
+                            break;
+                        }
+                      },
+                child: Text(entry.$2),
+              ),
           ],
         );
-        final roster = ClassicPanel(
-          title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
+        final tactical = SquadPaperPanel(
+          title: 'PLANTEL & TÁTICAS',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              squadFilters,
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Text(
-                  'Clique em STATUS para alternar TITULAR / RESERVA / FORA ou no nome do atleta para abrir a ficha completa.',
-                  style: TextStyle(fontSize: 11),
+              shortcuts(),
+              const SizedBox(height: 7),
+              KeyedSubtree(
+                key: const ValueKey('coach-main-panel'),
+                child: ClassicCoachPreparation(
+                  club: _myClubDetail!,
+                  coach: _nickname,
+                  date: formatClassicDate(_snapshot?['gameDate']),
+                  opponent: opponent,
+                  preparation: preparation,
                 ),
               ),
-              squadTable,
+              const SizedBox(height: 7),
+              ClassicSquadTactics(
+                key: _tacticsPanelKey,
+                squad: typedSquad,
+                starters: _selectedStarterIds,
+                bench: _selectedBenchIds,
+                formations: availableFormations,
+                formation: _selectedFormation,
+                locked: _tacticsLocked,
+                requiredStarters: _requiredStarterCount,
+                shirt: _clubColor(
+                  _myClubDetail?['colorPalette'],
+                  'primaryColor',
+                ),
+                onFormation: _changeFormation,
+                onAutoPick: _autoPickBestLineup,
+                onPlayer: _showPlayerDetailDialog,
+                onSwap: (out, into) {
+                  if (_tacticsLocked) return;
+                  final a = _selectedStarterIds.indexOf(out),
+                      b = _selectedBenchIds.indexOf(into);
+                  if (a < 0 || b < 0) return;
+                  setState(() {
+                    _selectedStarterIds[a] = into;
+                    _selectedBenchIds[b] = out;
+                    _statusBanner = 'Troca realizada entre titular e reserva.';
+                  });
+                },
+              ),
+            ],
+          ),
+        );
+        final roster = SquadPaperPanel(
+          title: 'PLANTEL DE JOGADORES (* = CRAQUE)',
+          trailing: rosterFilter(),
+          padding: const EdgeInsets.only(top: 4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ClassicSquadRoster(
+                players: typedFiltered,
+                starters: _selectedStarterIds,
+                bench: _selectedBenchIds,
+                compact: false,
+                locked: _tacticsLocked,
+                busy: _commandBusy,
+                canManage: canManage,
+                onToggle: _toggleSquadPlayer,
+                onDetail: _showPlayerDetailDialog,
+                onRenew: _renewSquadPlayer,
+                onAuction: _announceSquadPlayer,
+              ),
+              ExpansionTile(
+                key: const Key('desktop-squad-filters'),
+                dense: true,
+                title: const Text(
+                  'FILTROS E ORDENAÇÃO',
+                  style: TextStyle(fontSize: 13),
+                ),
+                children: [squadFilters],
+              ),
             ],
           ),
         );
         return SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const ClassicSectionTitle(
-                title: 'PLANTEL & TÁTICAS',
-                subtitle:
-                    'Prepare o onze inicial, escolha o esquema e envie a tática para a sala.',
-              ),
-              const SizedBox(height: 8),
-              if (viewport.maxWidth >= 1000)
-                Row(
+          key: const Key('desktop-squad-scroll'),
+          padding: const EdgeInsets.all(10),
+          child: viewport.maxWidth >= 1000
+              ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    Expanded(
                       key: const Key('desktop-tactics-column'),
-                      width: (viewport.maxWidth * .34).clamp(330.0, 460.0),
+                      flex: 1,
                       child: tactical,
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(child: roster),
+                    const SizedBox(width: 8),
+                    Expanded(flex: 1, child: roster),
                   ],
                 )
-              else ...[
-                tactical,
-                const SizedBox(height: 10),
-                roster,
-              ],
-              ...extras,
-            ],
-          ),
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [tactical, const SizedBox(height: 8), roster],
+                ),
         );
       },
     );

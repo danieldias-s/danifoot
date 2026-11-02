@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'club_theme.dart';
 import 'club_crest.dart';
 import 'morale_bar.dart';
-import 'player_rankings.dart' show formatClassicMoney;
+import 'squad_classic.dart';
+import 'visual_components.dart' show ClassicPaper;
 
 /// Light roster surfaces are shared by all mobile squad lists.
 abstract final class MobileClassicColors {
@@ -334,7 +335,7 @@ class MobileLightPanel extends StatelessWidget {
                     style: TextStyle(
                       color: t.textPrimary,
                       fontWeight: FontWeight.w800,
-                      fontSize: 14,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -342,7 +343,7 @@ class MobileLightPanel extends StatelessWidget {
               ],
             ),
           ),
-          child,
+          ClassicPaper(builder: (_) => child),
         ],
       ),
     );
@@ -364,6 +365,7 @@ class MobileSquadScreen extends StatelessWidget {
       onAuction;
   final ValueChanged<int> onTab;
   final Widget field, filters, coachPanel;
+  final Widget? rosterFilter;
   const MobileSquadScreen({
     super.key,
     required this.squad,
@@ -388,6 +390,7 @@ class MobileSquadScreen extends StatelessWidget {
     required this.field,
     required this.filters,
     required this.coachPanel,
+    this.rosterFilter,
   });
   String _pos(Map<String, dynamic> p) {
     final raw = p['position'];
@@ -471,7 +474,7 @@ class MobileSquadScreen extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       color: MobileClassicColors.ink,
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -722,6 +725,13 @@ class MobileSquadScreen extends StatelessWidget {
           _lineup(context, 'BANCO', reserves),
           MobileLightPanel(
             title: 'PLANTEL DE JOGADORES (${squad.length})',
+            trailing: rosterFilter == null
+                ? null
+                : Container(
+                    color: MobileClassicColors.surface,
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: rosterFilter,
+                  ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -753,50 +763,18 @@ class MobileSquadScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 360),
-                  child: SingleChildScrollView(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        key: const ValueKey('squad-table'),
-                        showCheckboxColumn: false,
-                        headingRowHeight: 30,
-                        dataRowMinHeight: 44,
-                        dataRowMaxHeight: 44,
-                        horizontalMargin: 6,
-                        columnSpacing: 10,
-                        headingRowColor: const WidgetStatePropertyAll(
-                          MobileClassicColors.alternate,
-                        ),
-                        headingTextStyle: _head,
-                        dataTextStyle: const TextStyle(
-                          color: MobileClassicColors.ink,
-                          fontSize: 11,
-                        ),
-                        columns: [
-                          for (final label in [
-                            'ST',
-                            'POS',
-                            'JOGADOR',
-                            'FORÇA',
-                            'COND.',
-                            'SALÁRIO',
-                            'AÇÕES',
-                            'COMPORTAMENTO',
-                            'CONTRATO',
-                            'GOLS',
-                            'VALOR JUSTO',
-                          ])
-                            DataColumn(label: Text(label)),
-                        ],
-                        rows: [
-                          for (int i = 0; i < filteredSquad.length; i++)
-                            _rosterRow(filteredSquad[i], i),
-                        ],
-                      ),
-                    ),
-                  ),
+                ClassicSquadRoster(
+                  players: filteredSquad,
+                  starters: starters,
+                  bench: bench,
+                  compact: true,
+                  locked: locked,
+                  busy: busy,
+                  canManage: canManage,
+                  onToggle: onToggle,
+                  onDetail: onDetail,
+                  onRenew: onRenew,
+                  onAuction: onAuction,
                 ),
               ],
             ),
@@ -812,113 +790,6 @@ class MobileSquadScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  DataRow _rosterRow(Map<String, dynamic> p, int index) {
-    final id = '${p['id']}';
-    final available = _condition(p) == 'APTO';
-    final role = starters.contains(id)
-        ? 'TITULAR'
-        : bench.contains(id)
-        ? 'RESERVA'
-        : 'FORA';
-    final color = role == 'TITULAR'
-        ? MobileClassicColors.fit
-        : role == 'RESERVA'
-        ? const Color(0xFF0858C7)
-        : MobileClassicColors.muted;
-    return DataRow(
-      color: WidgetStatePropertyAll(
-        index.isEven
-            ? MobileClassicColors.surface
-            : MobileClassicColors.alternate,
-      ),
-      cells: [
-        DataCell(
-          TextButton(
-            key: ValueKey('toggle-role-$id'),
-            onPressed: locked || !available ? null : () => onToggle(p),
-            style: TextButton.styleFrom(
-              backgroundColor: color,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              minimumSize: const Size(54, 32),
-            ),
-            child: Text(
-              role,
-              style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-        DataCell(_position(_pos(p))),
-        DataCell(
-          SizedBox(
-            width: 145,
-            child: InkWell(
-              onTap: () => onDetail(p),
-              child: Text(
-                _name(p),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: MobileClassicColors.ink,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-        ),
-        DataCell(Text('${p['strength'] ?? '—'}')),
-        DataCell(
-          Text(
-            _condition(p),
-            style: TextStyle(
-              color: available
-                  ? MobileClassicColors.fit
-                  : MobileClassicColors.unavailable,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        DataCell(Text(formatClassicMoney(p['salaryPerRound']))),
-        DataCell(
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                tooltip: 'Renovar contrato',
-                onPressed: canManage && !busy ? () => onRenew(p) : null,
-                icon: const Icon(Icons.edit_outlined, size: 19),
-                color: MobileClassicColors.ink,
-              ),
-              IconButton(
-                tooltip: 'Ficha e estatísticas',
-                onPressed: () => onDetail(p),
-                icon: const Icon(Icons.bar_chart, size: 19),
-                color: MobileClassicColors.ink,
-              ),
-              IconButton(
-                tooltip: 'Anunciar preço fixo',
-                onPressed: canManage && !busy ? () => onAnnounce(p) : null,
-                icon: const Icon(Icons.attach_money, size: 19),
-                color: MobileClassicColors.fit,
-              ),
-              IconButton(
-                key: ValueKey('create-auction-$id'),
-                tooltip: 'Colocar em leilão',
-                onPressed: canManage && !busy ? () => onAuction(p) : null,
-                icon: const Icon(Icons.gavel, size: 19),
-                color: MobileClassicColors.ink,
-              ),
-            ],
-          ),
-        ),
-        DataCell(Text('${p['behaviorDisplay'] ?? '—'}')),
-        DataCell(Text('${p['contractRoundsRemaining'] ?? '—'}r')),
-        DataCell(Text('${p['seasonGoals'] ?? '—'}')),
-        DataCell(Text(formatClassicMoney(p['fairValue']))),
-      ],
     );
   }
 }

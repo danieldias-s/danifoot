@@ -831,11 +831,11 @@ void main() {
       await tester.pumpAndSettle();
 
       // 2. Verify Coach Main Panel
-      expect(find.byKey(const ValueKey('coach-main-panel')), findsOneWidget);
       expect(
-        find.textContaining('PAINEL PRINCIPAL DO TREINADOR — Atlético Verde'),
+        find.byKey(const ValueKey('coach-employed-panel')),
         findsOneWidget,
       );
+      expect(find.textContaining('Atlético Verde'), findsWidgets);
       expect(find.text('R\$ 1.850.000'), findsWidgets);
       expect(
         find.byKey(const ValueKey('tactical-field-preview')),
@@ -857,6 +857,11 @@ void main() {
       );
 
       // 4. Test squad filters (Position G, then ALL)
+      await tester.ensureVisible(
+        find.byKey(const Key('desktop-squad-filters')),
+      );
+      await tester.tap(find.byKey(const Key('desktop-squad-filters')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(
         find.byKey(const ValueKey('filter-squad-pos-G')),
       );

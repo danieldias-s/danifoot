@@ -180,7 +180,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byKey(const Key('choose-club-club-1')));
       await tester.pumpAndSettle();
-      final button = find.text('COLOCAR EM LEILÃO').first;
+      final button = find.byTooltip('Colocar em leilão').first;
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pumpAndSettle();
@@ -193,7 +193,7 @@ void main() {
       expect(api.minimum, 500000);
       expect(api.duration, 2);
       expect(api.auctionPlayer, isNotNull);
-      expect(find.text('ANUNCIAR'), findsWidgets);
+      expect(find.byTooltip('Colocar em leilão'), findsWidgets);
       expect(tester.takeException(), isNull);
     },
   );

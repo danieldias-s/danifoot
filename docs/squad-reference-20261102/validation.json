@@ -1,0 +1,66 @@
+{
+  "browser": {
+    "verified": false,
+    "error": "Local browser use is disabled in Work settings"
+  },
+  "manualTestApproved": false,
+  "backendTestsReason": "No .NET source or backend behavior changed in this task",
+  "sourceSha256": {
+    "lib/main.dart": "CE8B5BA924EE2F719B37D55EF10ECB0FF5AB828CDA621164B6885A0F7C20D0E1",
+    "lib/squad_classic.dart": "DF072D691C4D08DBC1EA036D1E05C005C4243D0D5B29C464A8131844BDB78A1B",
+    "test/auction_default_config_test.dart": "F6DBFCA1146DAB6421907B5271C6BA5C9D0FF85A7391EB3AF326C6CF0FDEA6EB",
+    "test/complete_gameplay_011_test.dart": "25DA2B3B3573EC9C5BCB91EA2D0CDF93B54A9D450B41A55065F879B1C0E7D2CD",
+    "lib/classic_layout.dart": "C29C4449641F4CF2F921276E4ECDFCC2610F85744901504A1994F5089A827D24",
+    "lib/mobile_classic.dart": "60414C6082007547BF71C79B051424B93B3062264CAB283F5F6CDADB0E829A21",
+    "tool/squad_reference_capture_test.dart": "27B6E9B30101CC7CBED4393A48DD08B3B1D828F85490D36FE6137B8C0E442DEE"
+  },
+  "checkedAt": "2026-11-02T23:50:37.6877753Z",
+  "productionPublished": false,
+  "backendTestsRun": false,
+  "flutter": {
+    "passed": 273,
+    "exitCode": 0,
+    "failed": 0
+  },
+  "captures": {
+    "widths": [
+      390,
+      1366,
+      1536
+    ],
+    "failed": 0,
+    "images": 5,
+    "type": "Flutter renderer with recorded real API GET responses; not Chrome screenshots",
+    "horizontalSaleActionVerified": true,
+    "passed": 3
+  },
+  "baseCommit": "e335ca48eddfc13a818d3cd37fcfdbed7291b313",
+  "branch": "master",
+  "runtime": {
+    "databaseCommands": 0,
+    "updatedAt": "2026-11-02T23:49:23.6608048Z",
+    "apiPid": 24288,
+    "apiPreserved": true,
+    "httpStatus": 200,
+    "previousSha256": "c186fb92d914a7b532e9b0c4b6cfd3d35ef7be0ec6f2be76b9772336506b2ade",
+    "sha256": "76fb5c1334428bbe156bdc02ab2341bc8da7f989a9e04f976d78bf140ac5c065",
+    "url": "http://127.0.0.1:5182/#/plantel"
+  },
+  "roomAfterUpdate": {
+    "name": "MASTER - Teste manual Daniel",
+    "round": 3,
+    "id": "6878e854-a3fa-4ac7-894f-89490dde4cdd",
+    "state": "RESULTS",
+    "version": 348
+  },
+  "other016bApiStatus": "OK",
+  "webBuild": {
+    "exitCode": 0,
+    "api": "http://127.0.0.1:5181"
+  },
+  "scope": "Flutter presentation only",
+  "analyzer": {
+    "exitCode": 0,
+    "issues": 0
+  }
+}

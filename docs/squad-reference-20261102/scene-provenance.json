@@ -1,0 +1,11 @@
+{
+  "club": "Flamengo RJ",
+  "writes": 0,
+  "version": 348,
+  "state": "RESULTS",
+  "recordedAt": "2026-11-02T23:38:16.5753163Z",
+  "source": "GET-only real API; Flutter renderer, not Chrome",
+  "api": "http://127.0.0.1:5181",
+  "world": "6878e854-a3fa-4ac7-894f-89490dde4cdd",
+  "round": 3
+}

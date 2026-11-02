@@ -617,11 +617,13 @@ class ClassicStatusIndicator extends StatelessWidget {
 
 class ClassicSummaryCard extends StatelessWidget {
   final IconData icon;
+  final Widget? leading;
   final String? title, subtitle;
   final Widget? content;
   const ClassicSummaryCard({
     super.key,
     required this.icon,
+    this.leading,
     this.title,
     this.subtitle,
     this.content,
@@ -678,14 +680,14 @@ class ClassicSummaryCard extends StatelessWidget {
               ? Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(icon, size: 22, color: t.accent),
+                    leading ?? Icon(icon, size: 22, color: t.accent),
                     const SizedBox(height: 4),
                     text,
                   ],
                 )
               : Row(
                   children: [
-                    Icon(icon, size: 32, color: t.accent),
+                    leading ?? Icon(icon, size: 32, color: t.accent),
                     const SizedBox(width: 10),
                     Expanded(child: text),
                   ],
@@ -701,16 +703,18 @@ class ClassicTacticalPitch extends StatelessWidget {
   final List<List<Map<String, dynamic>>> lines;
   final Color shirt, ink;
   final ValueChanged<Map<String, dynamic>> onPlayer;
+  final double aspectRatio;
   const ClassicTacticalPitch({
     super.key,
     required this.lines,
     required this.shirt,
     required this.ink,
     required this.onPlayer,
+    this.aspectRatio = 1.22,
   });
   @override
   Widget build(BuildContext context) => AspectRatio(
-    aspectRatio: 1.22,
+    aspectRatio: aspectRatio,
     child: CustomPaint(
       painter: const _PitchPainter(),
       child: Padding(
@@ -732,9 +736,32 @@ class ClassicTacticalPitch extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                CustomPaint(
-                                  size: const Size(28, 24),
-                                  painter: _JerseyPainter(shirt),
+                                SizedBox(
+                                  width: 38,
+                                  height: 32,
+                                  child: CustomPaint(
+                                    painter: _JerseyPainter(
+                                      p['position'] == 'G'
+                                          ? const Color(0xFFFF981B)
+                                          : shirt,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '${p['strength'] ?? '—'}',
+                                        style: TextStyle(
+                                          color: readableInk(
+                                            p['position'] == 'G'
+                                                ? const Color(0xFFFF981B)
+                                                : shirt,
+                                            Colors.white,
+                                          ),
+                                          fontSize: 13,
+                                          height: 1,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
@@ -744,24 +771,15 @@ class ClassicTacticalPitch extends StatelessWidget {
                                   color: const Color(0xD9002416),
                                   child: Text(
                                     '${p['displayName'] ?? p['name']}'
-                                        .split(' ')
-                                        .last,
+                                        .replaceFirst('Atleta fictício ', ''),
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 9,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                  ),
-                                ),
-                                Text(
-                                  '${p['position']} • ${p['strength']}',
-                                  style: TextStyle(
-                                    color: ink,
-                                    fontSize: 9,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
