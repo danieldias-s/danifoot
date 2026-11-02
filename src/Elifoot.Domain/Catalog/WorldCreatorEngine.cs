@@ -17,7 +17,7 @@ public static class WorldCreatorEngine
         if (!Enum.IsDefined(request.Gender) || !Enum.IsDefined(request.Mode) || !Enum.IsDefined(request.DistrictMode))
             errors.Add("Categoria ou modo desconhecido.");
         if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length > 160) errors.Add("Informe um nome de até 160 caracteres.");
-        if (request.Countries.Count == 0 || request.Countries.Distinct().Count() != request.Countries.Count)
+        if (request.Countries.Count == 0 || request.UseWorldCatalogRules && request.Countries.Count>8 || request.Countries.Distinct().Count() != request.Countries.Count)
             errors.Add("Selecione países sem repetição.");
         if (request.MaxHumans is < 1 or > 8) errors.Add("Selecione de 1 a 8 treinadores.");
         var asOf = DateOnly.FromDateTime(DateTime.UtcNow);
@@ -33,6 +33,21 @@ public static class WorldCreatorEngine
         var eligible = prepared.Where(c => c.Gender == request.Gender && c.Season == request.Season &&
             request.Countries.Contains(c.CountryCode)).ToDictionary(c => c.Key);
         var ordered = eligible.Values.OrderBy(c => c.Rank ?? int.MaxValue).ThenBy(c => c.Key, StringComparer.Ordinal).ToList();
+        if(request.UseWorldCatalogRules) {
+            if(request.GameModeId!="CLASSIC_SYNC") errors.Add("Somente o modo clássico sincronizado está implementado.");
+            if(request.EliteFullSquadRankCutoff is <0 or >1000) errors.Add("Limite de elite inválido.");
+            if(request.FictionalOnly) {
+                if(!request.AllowFictionalTeams || !request.AllowFictionalPlayers)errors.Add("Mundo fictício exige autorização de clubes e atletas gerados.");
+                ordered=[];eligible.Clear();
+            } else {
+                int real=ordered.Count(c=>!PlayableWorldPolicy.Fictional(c));
+                int minimum=request.AllowFictionalTeams?32:128;
+                if(real<minimum)errors.Add($"Há {real} clubes reais elegíveis; faltam {minimum-real} para o mínimo de {minimum}.");
+            }
+            ordered=WorldCatalogRules016B.Order(ordered);
+            ordered=ordered.Select((c,i)=>WorldCatalogRules016B.Prepare(c,i,request.Seed,request.AllowFictionalPlayers,request.EliteFullSquadRankCutoff)).ToList();
+            eligible=ordered.ToDictionary(c=>c.Key);
+        }
         if (ordered.Any(c => c.Rank == null)) warnings.Add("Ranking ausente: clubes sem classificação ficam ao final, ordenados por identificador. Ranking só define a montagem inicial.");
         if (ordered.Count < 128) warnings.Add($"Há {ordered.Count} clubes disponíveis; faltam {128 - ordered.Count} para 128.");
         var assigned = new List<WorldPreviewClub>();
@@ -83,9 +98,10 @@ public static class WorldCreatorEngine
                 if (!used.Add(club.Key)) continue;
                 assigned.Add(new(division, club)); count++;
             }
-            while (count < capacity && request.AllowFictionalTeams && (request.DataMode == null || request.DataMode == WorldDataMode.FREE_WORLD && request.AllowFictionalPlayers))
+            while (count < capacity && request.AllowFictionalTeams && (!request.UseWorldCatalogRules || division==5 || request.FictionalOnly) && (request.DataMode == null || request.DataMode == WorldDataMode.FREE_WORLD && request.AllowFictionalPlayers))
             {
                 var club = Fictional();
+                if(request.UseWorldCatalogRules)club=WorldCatalogRules016B.Prepare(club,assigned.Count,request.Seed,request.AllowFictionalPlayers,0);
                 used.Add(club.Key); assigned.Add(new(division, club)); count++;
             }
         }
@@ -118,6 +134,12 @@ public static class WorldCreatorEngine
         }
         var allPlayers = assigned.SelectMany(c => c.Club.Players.Select(p => p.CanonicalPlayerId ?? $"{p.Source}:{p.PlayerExternalId}")).ToList();
         if (allPlayers.Distinct().Count() != allPlayers.Count) errors.Add("Jogadores duplicados entre elencos.");
+        if(request.UseWorldCatalogRules)foreach(var c in assigned) {
+            if(c.Club.Players.Count!=c.Club.InitialProfile?.TargetInitialSquadSize)
+                errors.Add($"{c.Club.Name}: {c.Club.Players.Count} atletas válidos; alvo {c.Club.InitialProfile?.TargetInitialSquadSize}. Complementação requer autorização.");
+            if(c.Club.Players.Count<11 || !c.Club.Players.Any(p=>p.Position=="G") || c.Club.Players.Count(p=>p.Position!="G")<10)
+                errors.Add($"{c.Club.Name}: elenco sem o mínimo de 1 goleiro e 10 de linha.");
+        }
         foreach (var conflict in assigned.SelectMany(c => c.Club.IdentityConflicts ?? []).Distinct())
             if (assigned.Count(c => c.Club.IdentityConflicts?.Contains(conflict) == true) > 1) errors.Add("Identidades de equipes precisam de revisão antes de usar ambas no mesmo mundo.");
         if (assigned.SelectMany(c => c.Club.Players).Any(p => p.IdentityOrigin == CatalogDataOrigin.Generated)) warnings.Add("Complemento de atletas fictícios autorizado; não são jogadores reais importados.");
@@ -162,6 +184,7 @@ public static class WorldCreatorEngine
         {
             var entry = preview.Clubs[i];
             var club = world.Clubs[i];
+            club.ClubInitialPower=entry.Club.InitialProfile?.ClubInitialPower; club.InitialSquadSize=entry.Club.InitialProfile?.TargetInitialSquadSize;
             club.Name = entry.Club.Name; club.ShortName = entry.Club.ShortName;
             club.ColorPalette = entry.Club.ColorPalette;
             club.Country = entry.Club.CountryName; club.PrimaryColorHex = entry.Club.PrimaryColor;

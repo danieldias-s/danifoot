@@ -1,3 +1,5 @@
+import 'world_initial_lobby_016b.dart';
+import 'world_catalog_status_016b.dart';
 import 'import_admin_016a.dart';
 import 'dart:convert';
 import 'dart:math';
@@ -392,8 +394,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final created = await Navigator.push<bool>(
       context,
       MaterialPageRoute(
-        builder: (_) =>
-            WorldCreatorScreen(api: widget.apiClient, coachId: _coachId!),
+        builder: (_) => WorldCreatorScreen(
+          api: widget.apiClient,
+          coachId: _coachId!,
+          worldCatalogRules: true,
+        ),
       ),
     );
     if (created == true) {
@@ -696,6 +701,40 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     }
     if (_coachId == null || _worldId == null) {
       return _buildLobbyAndHomeScreen();
+    }
+
+    if (_snapshot?['hasInitialLobby'] == true &&
+        _snapshot?['lobbyStarted'] != true) {
+      return WorldInitialLobby016B(
+        api: widget.apiClient,
+        worldId: _worldId!,
+        coachId: _coachId!,
+        onLeave: () async {
+          widget.apiClient.disconnectRealtime();
+          setState(() {
+            _worldId = null;
+            _snapshot = null;
+            _myClubId = null;
+            _myClubDetail = null;
+          });
+          await _saveSession();
+        },
+        onStarted: () async {
+          final snapshot = await widget.apiClient.getSnapshot(_worldId!);
+          if (!mounted) return;
+          final participants =
+              snapshot['readyCounter']?['participants'] as List? ?? [];
+          final me = participants
+              .where((p) => p['coachId'] == _coachId)
+              .firstOrNull;
+          setState(() {
+            _snapshot = _acceptSnapshot(snapshot);
+            _myClubId = me?['clubId']?.toString();
+            _isUnemployed = me?['isUnemployed'] == true;
+          });
+          await _refreshClubAndSecondaryData();
+        },
+      );
     }
 
     return LayoutBuilder(
@@ -1115,6 +1154,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               ),
                             ),
                             child: const Text('DADOS DE CLUBES E JOGADORES'),
+                          ),
+                          OutlinedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => WorldCatalogStatus016B(
+                                  api: widget.apiClient,
+                                  coachId: _coachId!,
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              'CATÁLOGO MUNDIAL • ESTADO POR PAÍS',
+                            ),
                           ),
                         ],
                       ),

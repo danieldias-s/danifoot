@@ -42,7 +42,7 @@ public record EligibleCatalogClub(string Key, string ExternalId, string Provider
     List<CatalogReference> References, bool IsFictional = false, Guid? InternalCatalogClubId = null,
     CatalogRank? RankingInfo = null, List<CatalogClubAlias>? Aliases = null, List<string>? CoverageWarnings = null,
     int? RawRosterCount = null, List<Guid>? IdentityConflicts = null, CatalogClubVerification? Verification = null, int? DocumentedPlayers = null, int? UncertainPlayers = null,
-    List<CatalogAthlete>? ReferencePlayers = null, DateOnly? RosterAsOf = null, CatalogRank? SourceRanking = null, ClubColorPalette? ColorPalette = null);
+    List<CatalogAthlete>? ReferencePlayers = null, DateOnly? RosterAsOf = null, CatalogRank? SourceRanking = null, ClubColorPalette? ColorPalette = null, WorldClubProfile016B? InitialProfile = null);
 public record CatalogCountryOption(string Code, string Name, int MaleClubs, int FemaleClubs);
 public record CatalogSelection(FootballGender Gender, string Season, List<string> Countries,
     List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings, WorldDataSummary? DataSummary = null);
@@ -50,7 +50,7 @@ public record ClubAssignment(string ClubKey, int Division);
 public record WorldCreatorRequest(string Name, FootballGender Gender, string Season, List<string> Countries,
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
-    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null, bool AllowProviderReportedPlayers = false);
+    int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null, bool AllowProviderReportedPlayers = false, bool UseWorldCatalogRules = false, bool FictionalOnly = false, int EliteFullSquadRankCutoff = 20, bool RequireHostStart = false, string GameModeId = "CLASSIC_SYNC");
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
     List<WorldPreviewClub> Clubs, int PendingSlots, List<string> Errors, List<string> Warnings,

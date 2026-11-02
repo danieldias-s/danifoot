@@ -80,11 +80,11 @@ public static class PlayableWorldPolicy
         var calibrated=InitialPlayerStrength.Apply(clubs.Select(c=>c with { Rank=Sporting(c.SourceRanking)?c.SourceRanking!.Rank:null }).ToList(),seed);
         return calibrated.Select(c=>c with {Rank=order[c.Key]}).ToList();
     }
-    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int seed,bool consent)
+    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int seed,bool consent,int targetSize=18,bool requireTarget=false)
     {
         var selected=InitialRosterPolicy.Prepare(club,seed,false).Players;
-        if(!consent || Complete(selected))return club with {Players=selected};
-        int index=0;
+        if(!consent || Complete(selected) && (!requireTarget || selected.Count>=targetSize))return club with {Players=selected};
+        int index=requireTarget?selected.Count:0;
         var raw=club.SourceRanking ?? club.RankingInfo;
         double level=26,confidence=0;
         if(Sporting(raw) && raw!.Score is double score && raw.Method?.Contains("elo",StringComparison.OrdinalIgnoreCase)==true)
@@ -110,7 +110,7 @@ public static class PlayableWorldPolicy
         foreach(var (position,minimum) in new[]{("G",2),("D",4),("M",4),("A",2)})
             while(selected.Count(p=>p.Position==position)<minimum)Add(position);
         string[] cycle=["D","M","A","D","M","A"];
-        for(int i=0;selected.Count<18;i++)Add(cycle[i%cycle.Length]);
+        for(int i=0;selected.Count<targetSize;i++)Add(cycle[i%cycle.Length]);
         return club with {Players=selected.OrderBy(p=>p.Position=="G"?0:p.Position=="D"?1:p.Position=="M"?2:3)
             .ThenByDescending(p=>p.Strength).ThenBy(p=>p.PlayerExternalId,StringComparer.Ordinal).ToList()};
     }

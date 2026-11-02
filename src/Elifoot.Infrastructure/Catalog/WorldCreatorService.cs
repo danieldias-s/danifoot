@@ -23,7 +23,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     public async Task<CatalogSelection> Select(List<string> countries, FootballGender gender, string season, bool saved, CancellationToken ct = default)
     {
-        if (countries == null || countries.Count == 0 || countries.Count > 64 || countries.Distinct().Count() != countries.Count || !Enum.IsDefined(gender) || string.IsNullOrWhiteSpace(season))
+        if (countries == null || countries.Count == 0 || countries.Count > 512 || countries.Distinct().Count() != countries.Count || !Enum.IsDefined(gender) || string.IsNullOrWhiteSpace(season))
             throw new ArgumentException("Seleção de países/categoria/temporada inválida.");
         if (!saved) await sync.RefreshAsync(countries, gender, season, ct);
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
@@ -125,9 +125,23 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         if(colors!=null)unique=await colors.Enrich(unique,ct);
         return new(gender, season, countries, unique, refs, warnings);
     }
+    private async Task<CatalogSelection> SelectionForRequest(WorldCreatorRequest request,CancellationToken ct)
+    {
+        if(!request.UseWorldCatalogRules)return await Select(request.Countries,request.Gender,request.Season,request.UseSavedData,ct);
+        if(request.Countries.Count is <1 or >8 || request.Countries.Distinct().Count()!=request.Countries.Count)throw new ArgumentException("Selecione de 1 a 8 países sem repetição.");
+        using var scope=factory.CreateScope();var db=scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        var service=scope.ServiceProvider.GetService<World016B.WorldCatalogService016B>();
+        if(!request.UseSavedData && service!=null)foreach(var country in request.Countries)await service.Queue(country,request.Gender,request.Season,ct);
+        var allCountries=(await db.Countries.Select(c=>c.Code).ToListAsync(ct)).Concat(request.Countries).Distinct().ToList();
+        var all=await Select(allCountries,request.Gender,request.Season,true,ct);
+        var classified=service==null?WorldCatalogRules016B.Classify(all.Clubs):await service.Project(all.Clubs,ct);
+        // Classification is global in the available catalogue, before filtering the chosen countries.
+        return all with {Countries=request.Countries.ToList(),Clubs=classified.Where(c=>request.Countries.Contains(c.CountryCode)).ToList(),
+            References=all.References.Where(x=>request.Countries.Contains(x.Scope.CountryCode)).ToList()};
+    }
     public async Task<CatalogSelection> SelectForWorld(WorldCreatorRequest request, CancellationToken ct = default)
     {
-        var selection=await Select(request.Countries,request.Gender,request.Season,request.UseSavedData,ct);
+        var selection=await SelectionForRequest(request,ct);
         if(request.DataMode==null)return selection;
         var asOf=DateOnly.FromDateTime(DateTime.UtcNow);var errors=new List<string>();var warnings=selection.Warnings.ToList();
         var eligible=PlayableWorldPolicy.Select(request,selection,asOf,errors,warnings);
@@ -156,7 +170,9 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     public async Task<WorldCreatorPreview> Preview(Guid owner, WorldCreatorRequest request, CancellationToken ct = default)
     {
-        var selection = await Select(request.Countries, request.Gender, request.Season, request.UseSavedData, ct);
+        using var optionsScope=factory.CreateScope();
+        if(request.UseWorldCatalogRules && optionsScope.ServiceProvider.GetService<World016B.WorldCatalogOptions016B>() is {} settings)request=request with {EliteFullSquadRankCutoff=settings.EliteFullSquadRankCutoff};
+        var selection = await SelectionForRequest(request,ct);
         var preview = WorldCreatorEngine.Preview(request, selection);
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         db.Drafts.Add(new() { Id = preview.DraftId, OwnerId = owner, RequestJson = JsonSerializer.Serialize(request, CatalogImportCodec.Json),
@@ -184,6 +200,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             foreach (var reference in preview.References)
                 if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow) is { } issue) throw new ArgumentException(issue);
             var generated = WorldCreatorEngine.Create(request, preview);
+            if(request.RequireHostStart||request.UseWorldCatalogRules)generated.InitialLobby=new(){HostCoachId=owner};
+            generated.GameModeId=request.GameModeId;
             var json = JsonSerializer.Serialize(generated, CatalogImportCodec.Json);
             await db.Drafts.Where(d => d.Id == draftId && d.OwnerId == owner && d.WorldJson == null)
                 .ExecuteUpdateAsync(d => d.SetProperty(x => x.WorldId, generated.Id).SetProperty(x => x.WorldJson, json), ct);

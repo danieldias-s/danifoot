@@ -45,6 +45,7 @@ else
 
 bool worldCreator013A = builder.AddWorldCreator013A();
 builder.AddImport016A();
+builder.AddWorldCatalog016B();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<RoomConnectionRegistry>();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
@@ -110,6 +111,7 @@ app.MapHub<GameRoomHub>("/hubs/gameroom");
 app.MapPlayerRankings();
 if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
 if (builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
+if (builder.Configuration.GetValue<bool>("Catalog016B:Enabled")) {await app.InitializeWorldCatalog016B();app.MapWorldCatalog016B();}
 
 app.MapGet("/api/health", () => Results.Ok(new
 {
@@ -160,7 +162,8 @@ app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? d
                 CurrentHumans = w.HumanCoaches.Count,
                 ConnectedHumans = counter.Participants.Count(p => p.IsConnected),
                 AvailableSeats = Math.Max(0, w.MaxHumans - w.HumanCoaches.Count),
-                w.SeasonNumber, w.RoundNumber, RoundState = w.RoundState.ToString(), ReadyCounter = counter
+                w.SeasonNumber, w.RoundNumber, RoundState = w.RoundState.ToString(), ReadyCounter = counter,
+                w.GameModeId, HasInitialLobby=w.InitialLobby!=null, LobbyStarted=w.InitialLobby?.StartedAt!=null
             });
         }
         finally { sem.Release(); }

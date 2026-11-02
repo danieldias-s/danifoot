@@ -54,6 +54,7 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
     }
     public async Task<WorldAssemblyDto> Create(Guid owner, CreateWorldAssemblyRequest request, CancellationToken ct = default)
     {
+        if(request.UseWorldCatalogRules&&request.Countries.Count is <1 or >8)throw new ArgumentException("Selecione de 1 a 8 países.");
         Name(request.Name); if (!Enum.IsDefined(request.Gender)) throw new ArgumentException("Categoria inválida.");
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var countries = await Countries(db, request.Countries, ct); WorldPackageExportDto source; bool trusted = false;
@@ -70,6 +71,12 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
         {
             if (!request.AllowPersonalizedContent) throw new ArgumentException("Autorize explicitamente clubes e jogadores personalizados.");
             var template = WorldSeedFactory.CreateSeededWorld(request.Name, request.Seed, 128, forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);
+            if(request.UseWorldCatalogRules) {
+                var configuration=new WorldCreatorRequest(request.Name,request.Gender,DateTime.UtcNow.Year.ToString(),request.Countries,
+                    WorldAssemblyMode.Automatic,DistrictFillMode.Ranking,request.Seed,[],AllowFictionalTeams:true,AllowFictionalPlayers:true,
+                    DataMode:WorldDataMode.FREE_WORLD,UseWorldCatalogRules:true,FictionalOnly:true);
+                template=WorldCreatorEngine.Create(configuration,WorldCreatorEngine.Preview(configuration,new(request.Gender,configuration.Season,request.Countries,[],[],[])));
+            }
             source = WorldEditorAndPackageService.ExportWorldToPackage(template) with { Gender = request.Gender };
             source = source with { Players = source.Players.Where(p => p.ClubId != null).ToList() };
             source = source with { Clubs = source.Clubs.Select((c, i) => c with { Country = countries[i % countries.Count].Name }).ToList() };
@@ -110,6 +117,7 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
     }
     public async Task<GameWorld> Confirm(Guid owner, Guid id, ConfirmWorldAssemblyRequest command, CancellationToken ct = default)
     {
+        if(command.GameModeId!="CLASSIC_SYNC")throw new ArgumentException("Modo de jogo não implementado.");
         if (string.IsNullOrWhiteSpace(command.IdempotencyKey) || command.IdempotencyKey.Length > 160 || command.MaxHumans is < 1 or > 8) throw new ArgumentException("Confirmação inválida.");
         var bytes = SHA256.HashData(Encoding.UTF8.GetBytes($"assembly:{owner:N}:{id:N}:{command.IdempotencyKey}")); var receiptId = new Guid(bytes.AsSpan(0, 16));
         var gate = Gates.GetOrAdd(receiptId, _ => new SemaphoreSlim(1, 1)); await gate.WaitAsync(ct);
@@ -123,6 +131,8 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
                 foreach (var reference in dto.Package.CatalogOrigin?.References ?? []) if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow) is string issue) throw new ArgumentException(issue);
                 string name = string.IsNullOrWhiteSpace(command.WorldName) ? row.Name : command.WorldName.Trim(); Name(name);
                 var created = CustomAssemblyPolicy.CreateIndependent(dto.Package, row.Id, row.Version, dto.Countries, name, command.MaxHumans);
+                created.GameModeId=command.GameModeId;
+                if(command.RequireHostStart)created.InitialLobby=new(){HostCoachId=owner};
                 receipt = new() { Id = receiptId, OwnerId = owner, RequestJson = Json(new { assemblyConfirmation = true, assemblyId = id, version = row.Version }), PreviewJson = "{}", WorldId = created.Id, WorldJson = Json(created), ExpiresAt = DateTime.UtcNow.AddYears(100) };
                 db.Drafts.Add(receipt);
                 try { await db.SaveChangesAsync(ct); } catch (DbUpdateException) { db.ChangeTracker.Clear(); receipt = await db.Drafts.AsNoTracking().SingleAsync(d => d.Id == receiptId && d.OwnerId == owner, ct); }

@@ -9,19 +9,21 @@ namespace Elifoot.Application;
 /// Guarantees concurrency safety via per-world locks, idempotent command handling,
 /// synchronized 0/N ready counters, shared match clock ticks, and global pause windows.
 /// </summary>
-public sealed class MultiplayerRoundOrchestrator
+public sealed partial class MultiplayerRoundOrchestrator
 {
     private readonly IWorldRepository _repository;
+    private readonly RoomConnectionRegistry? _connections;
     private readonly IMatchRoomNotificationPublisher _publisher;
     private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> WorldLocks = new();
     private static readonly ConcurrentDictionary<Guid, HashSet<string>> ProcessedIdempotencyKeys = new();
 
     public MultiplayerRoundOrchestrator(
         IWorldRepository repository,
-        IMatchRoomNotificationPublisher publisher)
+        IMatchRoomNotificationPublisher publisher, RoomConnectionRegistry? connections = null)
     {
         _repository = repository;
         _publisher = publisher;
+        _connections = connections;
     }
 
     public static SemaphoreSlim GetRoomLock(Guid worldId) => GetLock(worldId);
@@ -83,10 +85,13 @@ public sealed class MultiplayerRoundOrchestrator
                 {
                     if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0)
                         return (false, "Mudanças de carreira são feitas por convites na aba RANKING & CARREIRA.", existingCoach, world);
+                    if (world.InitialLobby is {StartedAt:null,DrawCompletedAt:not null})
+                        return (false,"O sorteio já foi concluído; as escolhas iniciais estão bloqueadas.",existingCoach,world);
                     if (world.RoundState != RoundState.PREPARING || existingCoach.IsReadyForRound)
                         return (false, "Troque de clube somente entre rodadas e sem pronto.", existingCoach, world);
                     var assignRes = TryAssignClubInternal(world, existingCoach, preferredClubId.Value);
                     if (!assignRes.Success) return (false, assignRes.Error, existingCoach, world);
+                    if(world.InitialLobby is {StartedAt:null} waiting) {waiting.Choices[existingCoach.Id]=new(InitialCareerChoice016B.MANUAL,preferredClubId);waiting.Version++;}
                 }
                 world.RoundVersion++;
                 await _repository.SaveWorldAsync(world, ct);
@@ -94,6 +99,9 @@ public sealed class MultiplayerRoundOrchestrator
                 return (true, null, existingCoach, world);
             }
 
+            if(world.InitialLobby is {StartedAt:null} initial && coachId!=initial.HostCoachId &&
+                !world.HumanCoaches.Any(c=>c.Id==initial.HostCoachId) && world.HumanCoaches.Count>=world.MaxHumans-1)
+                return (false,"A última vaga está reservada ao criador desta sala.",null,world);
             if (world.HumanCoaches.Count >= world.MaxHumans)
                 return (false, $"Sala lotada: as {world.MaxHumans} vagas estão ocupadas. Treinadores desconectados mantêm sua vaga e seu clube. Para retornar, use a mesma identidade e o mesmo ID de dispositivo; uma nova identidade precisa de uma vaga livre.", null, world);
             if (world.RoundState != RoundState.PREPARING)
@@ -106,7 +114,7 @@ public sealed class MultiplayerRoundOrchestrator
                 Nickname = string.IsNullOrWhiteSpace(nickname) ? $"Técnico {world.HumanCoaches.Count + 1}" : nickname.Trim(),
                 DeviceId = normalizedDevice,
                 SessionToken = Guid.NewGuid().ToString("N"),
-                IsHost = world.HumanCoaches.Count == 0,
+                IsHost = world.InitialLobby is { } lobbyHost ? lobbyHost.HostCoachId==coachId : world.HumanCoaches.Count == 0,
                 IsConnected = false
             };
 
@@ -122,7 +130,7 @@ public sealed class MultiplayerRoundOrchestrator
                     if (targetClub.HumanCoachId != null)
                         return (false, $"O clube {targetClub.Name} já é controlado por outro humano.", null, world);
                 }
-                else
+                else if(world.InitialLobby is not {StartedAt:null})
                 {
                     // Auto-pick available division club (preferring 4th/3rd/2nd/1st available)
                     targetClub = world.Clubs
@@ -139,6 +147,11 @@ public sealed class MultiplayerRoundOrchestrator
             }
 
             world.HumanCoaches.Add(coach);
+            if(world.InitialLobby is {StartedAt:null} initialLobby) {
+                initialLobby.Choices[coach.Id]=new(coach.CurrentClubId!=null?InitialCareerChoice016B.MANUAL:
+                    joinUnemployed?InitialCareerChoice016B.UNEMPLOYED:InitialCareerChoice016B.PENDING,coach.CurrentClubId);
+                initialLobby.Version++;
+            }
             world.RoundVersion++;
             await _repository.SaveWorldAsync(world, ct);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, BuildReadyCounterDto(world), ct);
@@ -226,6 +239,8 @@ public sealed class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null, false);
 
+            if(world.InitialLobby is {StartedAt:null})
+                return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world),false);
             if (world.RoundState != RoundState.PREPARING)
                 return (false, $"A rodada já não está em fase de preparação (estado atual: {world.RoundState}).", BuildReadyCounterDto(world), false);
 
@@ -312,6 +327,8 @@ public sealed class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null, false);
 
+            if(world.InitialLobby is {StartedAt:null})
+                return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world),false);
             if (world.RoundState != RoundState.PREPARING)
                 return (false, "A rodada já não está em fase de preparação.", BuildReadyCounterDto(world), false);
 
@@ -373,6 +390,8 @@ public sealed class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null);
 
+            if(world.InitialLobby is {StartedAt:null})
+                return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world));
             if (world.RoundState != RoundState.PREPARING)
                 return (false, "Não é possível retirar o pronto após o início da rodada.", BuildReadyCounterDto(world));
 
@@ -399,6 +418,7 @@ public sealed class MultiplayerRoundOrchestrator
 
     private static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
     {
+        if (world.InitialLobby is {StartedAt:null} || world.InitialLobby!=null && world.HumanCoaches.Count!=world.MaxHumans) return false;
         if (world.RoundState != RoundState.PREPARING) return false;
         if (world.HumanCoaches.Count == 0) return false;
         ClassicForceEvolutionEngine.PrepareRound(world);
@@ -1350,6 +1370,9 @@ public sealed class MultiplayerRoundOrchestrator
             ActivePauseWindow: pauseDto,
             Matches: matchDtos)
         {
+            HasInitialLobby=world.InitialLobby!=null,
+            LobbyStarted=world.InitialLobby?.StartedAt!=null,
+            GameModeId=world.GameModeId,
             TotalRoundsInSeason = world.TotalRoundsInSeason,
             ForceEvolutionMode = world.ForceEvolutionMode,
             DisciplineRulesVersion = world.DisciplineRulesVersion,

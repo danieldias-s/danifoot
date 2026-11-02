@@ -120,6 +120,9 @@ public record LiveRoundSnapshotDto(
     PauseWindowStateDto? ActivePauseWindow,
     List<LiveMatchSummaryDto> Matches)
 {
+    public bool HasInitialLobby { get; init; }
+    public bool LobbyStarted { get; init; }
+    public string GameModeId { get; init; } = "CLASSIC_SYNC";
     public int TotalRoundsInSeason { get; init; }
     public ForceEvolutionMode ForceEvolutionMode { get; init; }
     public int ForceRulesVersion { get; init; }

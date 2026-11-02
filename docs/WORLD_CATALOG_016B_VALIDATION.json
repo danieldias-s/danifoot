@@ -1,0 +1,116 @@
+{
+  "task": "ELIFOOT_WORLD_CATALOG_AND_LOBBY_016B",
+  "status": "PARTIAL",
+  "base": "00b68c5",
+  "branch": "feature/world-catalog-lobby-016b",
+  "dotnetLatestByCase": {
+    "Integration": {
+      "Passed": 254
+    },
+    "Simulation": {
+      "Passed": 28
+    },
+    "Domain": {
+      "Passed": 438
+    },
+    "Application": {
+      "Passed": 7
+    }
+  },
+  "flutter": {
+    "analyzerIssues": 0,
+    "tests": 215,
+    "passed": 215,
+    "buildWeb": "PASS"
+  },
+  "node": {
+    "tests": 2,
+    "passed": 2
+  },
+  "realProvider": {
+    "authenticated": false,
+    "apiKeyPresent": false,
+    "remoteQuotaVerified": false,
+    "realRequests": 0
+  },
+  "browser": {
+    "extensionDetected": true,
+    "pageControl": "BLOCKED: Local browser use is disabled in Work settings",
+    "actualScreenshots": 0
+  },
+  "liveHttpSignalR": "PASS",
+  "postgresRestart": {
+    "version": 144,
+    "registered": 4,
+    "worldId": "c43d1dc4-46e1-4b2e-80ef-3a54ee361056",
+    "status": "PASS",
+    "afterHash": "7CC7C7752732A583750528826F06E337AD85992F175278F7FEC2787D11AF0984",
+    "connected": 0,
+    "drawCompleted": true,
+    "beforeHash": "7CC7C7752732A583750528826F06E337AD85992F175278F7FEC2787D11AF0984",
+    "newApiPid": 22936,
+    "roundState": "RESULTS",
+    "state": "IN_GAME",
+    "oldApiPid": 21608
+  },
+  "originalSaves": {
+    "status": "PASS_GAMEPLAY_PRESERVED",
+    "initialWorlds": 5,
+    "originalWorlds": 5,
+    "identicalToInitialBackup": 4,
+    "originalDatabase": "elifoot_016b_013b_worlds_dev",
+    "comparison": "Semantic JSON against pg_dump captured before mission startup",
+    "byteEquivalentWorlds": 4,
+    "gameplayEquivalentWorlds": 5,
+    "metadataOnlyDifference": {
+      "world": "016B - Revisão visual",
+      "path": "updatedAtUtc",
+      "round": 1,
+      "roundVersion": 17
+    },
+    "explanation": "All gameplay JSON is unchanged; a single existing room has a different save timestamp. No room was deleted or reset."
+  },
+  "manualAccess": {
+    "club": "Flamengo RJ",
+    "gameUrl": "http://127.0.0.1:5176/",
+    "apiUrl": "http://127.0.0.1:5175",
+    "deviceId": "016b-revisao-daniel",
+    "manualTestApproved": false,
+    "verifiedCatalogPalettes": 15,
+    "worldName": "016B - Teste manual Daniel - Catálogo e cores",
+    "inviteCode": "ELI4B3DF49E",
+    "selectedWorldPalettes": 14,
+    "nickname": "Daniel 016B"
+  },
+  "manualTestApproved": false,
+  "simulations100Seasons": {
+    "Male": {
+      "Seasons": 100,
+      "InitialCash": 138800000,
+      "FinalCash": 96636018.48,
+      "FinalDebt": 0,
+      "TotalMatchesCompleted": 35100,
+      "RealMinutesSimulated": 3273660,
+      "InvalidLineupSelectionViolations": 0,
+      "InvalidSquadLimitViolations": 0,
+      "DoubleSettledMatchFinancialViolations": 0,
+      "SalaryRequests": 222,
+      "ForcedAuctions": 49,
+      "Unsold": 6
+    },
+    "Female": {
+      "Seasons": 100,
+      "InitialCash": 138800000,
+      "FinalCash": 93597013.6,
+      "FinalDebt": 3162490.6,
+      "TotalMatchesCompleted": 35100,
+      "RealMinutesSimulated": 3256080,
+      "InvalidLineupSelectionViolations": 0,
+      "InvalidSquadLimitViolations": 0,
+      "DoubleSettledMatchFinancialViolations": 0,
+      "SalaryRequests": 225,
+      "ForcedAuctions": 59,
+      "Unsold": 16
+    }
+  }
+}

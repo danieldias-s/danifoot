@@ -83,6 +83,36 @@ class ElifootApiClient {
     return res.body.isEmpty ? null : jsonDecode(res.body);
   }
 
+  Future<dynamic> world016b(
+    String owner,
+    String area,
+    String path, {
+    Map<String, dynamic>? body,
+    String? adminToken,
+  }) async {
+    if (!['world-catalog-016b', 'world-lobby-016b'].contains(area)) {
+      throw ArgumentError('Área inválida');
+    }
+    final uri = Uri.parse('$baseUrl/api/$area/$path');
+    final headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer localdev-${owner.replaceAll('-', '')}',
+      'X-Catalog-Admin-Token': ?adminToken,
+    };
+    final response = body == null
+        ? await _http.get(uri, headers: headers)
+        : await _http.post(uri, headers: headers, body: jsonEncode(body));
+    final value = response.body.isEmpty ? null : jsonDecode(response.body);
+    if (response.statusCode >= 400) {
+      throw Exception(
+        value is Map
+            ? value['error'] ?? 'Serviço 016B indisponível'
+            : 'Serviço 016B indisponível',
+      );
+    }
+    return value;
+  }
+
   Future<Map<String, dynamic>> getAppearance(
     String owner,
     String world,

@@ -1,3 +1,4 @@
+import 'world_catalog_status_016b.dart';
 import 'club_theme.dart';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
@@ -8,10 +9,12 @@ import 'catalog_provenance.dart';
 class WorldCreatorScreen extends StatefulWidget {
   final ElifootApiClient api;
   final String coachId;
+  final bool worldCatalogRules;
   const WorldCreatorScreen({
     super.key,
     required this.api,
     required this.coachId,
+    this.worldCatalogRules = false,
   });
   @override
   State<WorldCreatorScreen> createState() => _WorldCreatorScreenState();
@@ -28,7 +31,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _search = '',
       _error = '';
   String _creation = 'Automatic';
-  bool _customConsent = false;
+  bool _customConsent = false, _fictionalOnly = false;
   Map<String, dynamic>? _assembly;
   final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
   int _step = 0, _humans = 1;
@@ -136,6 +139,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'includeHistoricalClubs': _includeHistorical,
     'includeUnverifiedClubs': _includeUnverified,
     'useSavedData': _saved,
+    if (widget.worldCatalogRules) ...{
+      'useWorldCatalogRules': true,
+      'fictionalOnly': _fictionalOnly,
+      'requireHostStart': true,
+      'gameModeId': 'CLASSIC_SYNC',
+    },
   };
   void _useLast() {
     _assembly = null;
@@ -174,6 +183,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _includeHistorical = p['includeHistoricalClubs'] == true;
       _includeUnverified = p['includeUnverifiedClubs'] == true;
       _saved = p['useSavedData'] == true;
+      _fictionalOnly = p['fictionalOnly'] == true;
       _preview = null;
     });
   }
@@ -440,6 +450,23 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   Widget _clubList() {
     final ranked = _clubs.where(_clubAllowed).toList()
       ..sort((a, b) {
+        if (widget.worldCatalogRules) {
+          final ap = a['initialProfile'] as Map? ?? {},
+              bp = b['initialProfile'] as Map? ?? {};
+          int power = ((bp['clubInitialPower'] as num?) ?? 1).compareTo(
+            (ap['clubInitialPower'] as num?) ?? 1,
+          );
+          if (power != 0) return power;
+          int score = ((bp['worldRankingScore'] as num?) ?? -1e12).compareTo(
+            (ap['worldRankingScore'] as num?) ?? -1e12,
+          );
+          if (score != 0) return score;
+          int rank = ((ap['worldRank'] as num?) ?? 2147483647).compareTo(
+            (bp['worldRank'] as num?) ?? 2147483647,
+          );
+          if (rank != 0) return rank;
+          return a['key'].toString().compareTo(b['key'].toString());
+        }
         final compare = ((a['rank'] as num?)?.toInt() ?? 2147483647).compareTo(
           (b['rank'] as num?)?.toInt() ?? 2147483647,
         );
@@ -475,7 +502,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${c['name']} • ${c['countryName']} • ranking ${c['rank'] ?? 'ausente'}',
+                  '${c['name']} • ${c['countryName']} • ranking ${c['rank'] ?? 'ausente'}${c['initialProfile'] is Map ? ' • Força clube ${c['initialProfile']['clubInitialPower']}/20' : ''}',
                 ),
                 DropdownButtonFormField<int>(
                   key: ValueKey('$key:$value'),
@@ -720,7 +747,41 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _searchField(),
-            Text('${_countries.length} países selecionados'),
+            Text(
+              '${_countries.length} países selecionados${widget.worldCatalogRules ? ' • máximo 8' : ''}',
+            ),
+            if (widget.worldCatalogRules)
+              Wrap(
+                spacing: 10,
+                children: [
+                  TextButton(
+                    onPressed: _busy
+                        ? null
+                        : () => setState(() {
+                            _countries.clear();
+                            _assignments.clear();
+                            _preview = null;
+                          }),
+                    child: const Text('LIMPAR SELEÇÃO'),
+                  ),
+                  TextButton(
+                    onPressed: _busy
+                        ? null
+                        : () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => WorldCatalogStatus016B(
+                                api: widget.api,
+                                coachId: widget.coachId,
+                                gender: _gender,
+                                season: _season.text.trim(),
+                              ),
+                            ),
+                          ),
+                    child: const Text('CACHE, ATUALIZAÇÕES E COBERTURA'),
+                  ),
+                ],
+              ),
             TextButton(
               onPressed: _busy ? null : _initialize,
               child: const Text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'),
@@ -739,6 +800,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     ? null
                     : (v) => setState(() {
                         if (v!) {
+                          if (widget.worldCatalogRules &&
+                              _countries.length >= 8) {
+                            _error = 'Selecione no máximo oito países.';
+                            return;
+                          }
                           _countries.add(c['code'].toString());
                         } else {
                           _countries.remove(c['code']);
@@ -786,11 +852,47 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     : (v) => setState(() => _customConsent = v == true),
               ),
             if (_creation != 'FullCustom') ...[
-              _choice('Dados do mundo', _dataMode, [
-                ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
-                ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
-                ('FREE_WORLD', 'MUNDO LIVRE'),
-              ], (v) => _dataMode = v),
+              if (widget.worldCatalogRules) ...[
+                _choice('Modo de jogo', 'CLASSIC_SYNC', [
+                  ('CLASSIC_SYNC', 'CLÁSSICO SINCRONIZADO'),
+                ], (_) {}),
+                CheckboxListTile(
+                  key: const Key('fictional-world-016b'),
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text(
+                    'MUNDO TOTALMENTE FICTÍCIO • AUTORIZO 128 CLUBES E ATLETAS GERADOS',
+                  ),
+                  value: _fictionalOnly,
+                  onChanged: _busy
+                      ? null
+                      : (v) => setState(() {
+                          _fictionalOnly = v == true;
+                          _preview = null;
+                          _assignments.clear();
+                          if (_fictionalOnly) {
+                            _dataMode = 'FREE_WORLD';
+                            _fictional = true;
+                            _fictionalPlayers = true;
+                          }
+                        }),
+                ),
+                const Text(
+                  'Classificação dos clubes: 1–20. Elencos iniciais: ciclo de 23 a 17 atletas; clubes de elite podem iniciar com 23. A força individual continua 1–50.',
+                ),
+              ],
+              _choice(
+                'Dados do mundo',
+                _dataMode,
+                [
+                  ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
+                  ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
+                  ('FREE_WORLD', 'MUNDO LIVRE'),
+                ],
+                (v) {
+                  _dataMode = v;
+                  if (v != 'FREE_WORLD') _fictionalOnly = false;
+                },
+              ),
               const Text(
                 'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
               ),
@@ -986,6 +1088,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                             'idempotencyKey': _confirmationKey,
                             'worldName': _name.text.trim(),
                             'maxHumans': _humans,
+                            if (widget.worldCatalogRules) ...{
+                              'requireHostStart': true,
+                              'gameModeId': 'CLASSIC_SYNC',
+                            },
                           },
                         );
                       } else {
@@ -1009,7 +1115,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (_preview!['errors'] as List).isEmpty &&
             _preview!['pendingSlots'] == 0;
   Future<void> _next() => _run(() async {
-    if (_step == 1 && _countries.isEmpty) {
+    if (_step == 1 &&
+        (_countries.isEmpty ||
+            widget.worldCatalogRules && _countries.length > 8)) {
       throw Exception('Selecione pelo menos um país.');
     }
     if (_step == 2) {
@@ -1029,6 +1137,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     'countries': _countries.toList(),
                     'seed': int.tryParse(_seed.text) ?? 199801,
                     'allowPersonalizedContent': true,
+                    if (widget.worldCatalogRules) 'useWorldCatalogRules': true,
                   },
                 )
                 as Map,
