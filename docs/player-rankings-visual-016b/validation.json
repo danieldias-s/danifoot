@@ -1,0 +1,50 @@
+{
+  "status": "PARTIAL",
+  "reason": "Chrome inspection and new browser screenshots pending because automatic tool approval hit the usage limit. No alternate browser automation was used.",
+  "checkedAtUtc": "2026-11-02T18:20:48.650447+00:00",
+  "baseCheckpoint": "cee005829ebc00a0dc346923ed9c838deb8794c5",
+  "preservedVisualCheckpoint": "1e02ad2",
+  "branch": "codex/player-rankings-visual-016b",
+  "flutterAnalyzeIssues": 0,
+  "flutterTests": {
+    "passed": 200,
+    "failed": 0,
+    "newTestsIncluded": 10
+  },
+  "focusedAndRecordedRenderRun": {
+    "passed": 16,
+    "failed": 0,
+    "includesNewWidgetTests": 10,
+    "recordedRenderCases": 6
+  },
+  "widths": [
+    360,
+    390,
+    430,
+    768,
+    1366,
+    1920
+  ],
+  "renderCount": 22,
+  "browserScreenshots": 0,
+  "browserValidation": "pending",
+  "realApiRows": 0,
+  "realSeasonAwards": 0,
+  "populatedCases": "Unit fixtures only; no invented rows in the application or recorded scene",
+  "backendChanged": false,
+  "apiClientChanged": false,
+  "sessionLogicChanged": false,
+  "databaseCommandsSent": 0,
+  "matchEngineChanged": false,
+  "otherWorktreesChanged": false,
+  "productionPublished": false,
+  "buildSha256": "0d65b472e08a853994949b2e5e516e2393d8271c166d83e0d80c1d822472266e",
+  "logSha256": {
+    "analyze-final.log": "3e796120c55bb9c9826ce21145b18589e50e436b368f26ac01e40911500c66c3",
+    "flutter-tests-final.log": "85c9c859ad809a4bf7f3163c3a68de24f93bedfeca08f08146a2fa5767a62b94",
+    "render-capture.log": "3878dca968dff2597fadeed0637817744cbfd0d6c75a8331b5188510cf8fcaa3",
+    "web-build.log": "8fcdcb1d5506941f0c59dad0c915534c859b527f8743c23f111c1664eeaf931c"
+  },
+  "web": "http://127.0.0.1:5174/",
+  "api": "http://127.0.0.1:5173/api/health"
+}

@@ -1,0 +1,10 @@
+{
+  "capturedAtUtc": "2026-11-02T17:53:02.535889+00:00",
+  "base": "http://127.0.0.1:5173/api",
+  "worldId": "73e11073-a854-487e-bc59-efd9856cab91",
+  "sha256": "7119f837fe21b518dc758f06fb0f9f7759444180d2c25b4da048f02494868677",
+  "officialPlayerCount": 0,
+  "awardCount": 0,
+  "snapshotState": "PREPARING",
+  "method": "GET only; no matches simulated or saves modified"
+}

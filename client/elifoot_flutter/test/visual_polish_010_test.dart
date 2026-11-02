@@ -272,8 +272,7 @@ class _Visual010Fixture {
         requests.add(request);
         final path = request.url.path;
         if (path.endsWith('/player-rankings')) {
-          final category =
-              request.url.queryParameters['category'] ?? 'scorers';
+          final category = request.url.queryParameters['category'] ?? 'scorers';
           final rows = switch (category) {
             'goalkeepers' => goalkeepers,
             'defenders' => defenders,
@@ -357,31 +356,34 @@ void main() {
   });
 
   group('010 Unit Formatters (Pluralization, Dates, Money, Historical Club)', () {
-    test('formatTopScorerTitles formats 0, 1, 2, 5, and 10 titles accurately', () {
-      expect(formatTopScorerTitles(0), 'ARTILHEIRO: 0 VEZES');
-      expect(formatTopScorerTitles(1), 'ARTILHEIRO: 1 VEZ');
-      expect(formatTopScorerTitles(2), 'ARTILHEIRO: 2 VEZES');
-      expect(formatTopScorerTitles(5), 'ARTILHEIRO: 5 VEZES');
-      expect(formatTopScorerTitles(10), 'ARTILHEIRO: 10 VEZES');
-    });
+    test(
+      'formatTopScorerTitles formats 0, 1, 2, 5, and 10 titles accurately',
+      () {
+        expect(formatTopScorerTitles(0), 'ARTILHEIRO: 0 VEZES');
+        expect(formatTopScorerTitles(1), 'ARTILHEIRO: 1 VEZ');
+        expect(formatTopScorerTitles(2), 'ARTILHEIRO: 2 VEZES');
+        expect(formatTopScorerTitles(5), 'ARTILHEIRO: 5 VEZES');
+        expect(formatTopScorerTitles(10), 'ARTILHEIRO: 10 VEZES');
+      },
+    );
 
-    test('formatClassicDate formats ISO timestamps with and without time in pt-BR', () {
-      expect(
-        formatClassicDate('2026-10-30T12:51:52.36020317'),
-        '30/10/2026',
-      );
-      expect(
-        formatClassicDate('2026-10-30T12:51:52.36020317Z', includeTime: true),
-        '30/10/2026 12:51',
-      );
-      expect(formatClassicDate('2026-01-05T08:04:00Z'), '05/01/2026');
-      expect(
-        formatClassicDate('2026-01-05T08:04:00Z', includeTime: true),
-        '05/01/2026 08:04',
-      );
-      expect(formatClassicDate(null), '—');
-      expect(formatClassicDate(''), '—');
-    });
+    test(
+      'formatClassicDate formats ISO timestamps with and without time in pt-BR',
+      () {
+        expect(formatClassicDate('2026-10-30T12:51:52.36020317'), '30/10/2026');
+        expect(
+          formatClassicDate('2026-10-30T12:51:52.36020317Z', includeTime: true),
+          '30/10/2026 12:51',
+        );
+        expect(formatClassicDate('2026-01-05T08:04:00Z'), '05/01/2026');
+        expect(
+          formatClassicDate('2026-01-05T08:04:00Z', includeTime: true),
+          '05/01/2026 08:04',
+        );
+        expect(formatClassicDate(null), '—');
+        expect(formatClassicDate(''), '—');
+      },
+    );
 
     test('formatClassicMoney formats R\$ values without altering amounts', () {
       expect(formatClassicMoney(3000000), 'R\$ 3.000.000');
@@ -490,20 +492,17 @@ void main() {
           _inTable('player-season-history', 'Guarani da Serra'),
           findsOneWidget,
         );
-        expect(
-          find.text('f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7'),
-          findsNothing,
-        );
+        expect(find.text('f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7'), findsNothing);
         if (entry.key > 0) {
-          expect(_inTable('player-award-history', '30/10/2026'), findsOneWidget);
+          expect(
+            _inTable('player-award-history', '30/10/2026'),
+            findsOneWidget,
+          );
           expect(
             _inTable('player-award-history', 'R\$ 3.000.000'),
             findsOneWidget,
           );
-          expect(
-            find.textContaining('2026-10-30T12:51:52'),
-            findsNothing,
-          );
+          expect(find.textContaining('2026-10-30T12:51:52'), findsNothing);
         }
 
         await tester.tap(find.text('FECHAR'));
@@ -597,17 +596,23 @@ void main() {
       await tester.tap(_inTable('ranking-table', 'Mateus Alves*'));
       await tester.pumpAndSettle();
 
-      expect(_inTable('player-season-history', 'Guarani da Serra'), findsOneWidget);
-      expect(_inTable('player-season-history', 'Real Pampulha'), findsOneWidget);
-      expect(_inTable('player-season-history', 'Estrela do Sul'), findsOneWidget);
+      expect(
+        _inTable('player-season-history', 'Guarani da Serra'),
+        findsOneWidget,
+      );
+      expect(
+        _inTable('player-season-history', 'Real Pampulha'),
+        findsOneWidget,
+      );
+      expect(
+        _inTable('player-season-history', 'Estrela do Sul'),
+        findsOneWidget,
+      );
       expect(
         _inTable('player-season-history', 'Clube histórico indisponível'),
         findsOneWidget,
       );
-      expect(
-        find.text('deadbeef-dead-4eef-8eef-deadbeef0000'),
-        findsNothing,
-      );
+      expect(find.text('deadbeef-dead-4eef-8eef-deadbeef0000'), findsNothing);
 
       // Close via Escape key (Section 21 accessibility)
       await tester.sendKeyEvent(LogicalKeyboardKey.escape);
@@ -660,7 +665,10 @@ void main() {
       expect(find.text('GOLS SOFRIDOS'), findsWidgets);
       expect(_inTable('ranking-table', 'Pedro Santana*'), findsOneWidget);
       expect(_inTable('not-eligible-table', 'Fábio Moraes'), findsOneWidget);
-      expect(_inTable('not-eligible-table', '4'), findsOneWidget); // 20 - 16 = 4
+      expect(
+        _inTable('not-eligible-table', '4'),
+        findsOneWidget,
+      ); // 20 - 16 = 4
 
       // Defenders >= 20 and < 20
       await _selectFilter(tester, 'ranking-category', 'Defensores');
@@ -669,7 +677,10 @@ void main() {
       expect(find.text('ÍNDICE'), findsWidgets);
       expect(_inTable('ranking-table', 'Lucas Ferraz*'), findsOneWidget);
       expect(_inTable('not-eligible-table', 'Henrique Dias'), findsOneWidget);
-      expect(_inTable('not-eligible-table', '6'), findsOneWidget); // 20 - 14 = 6
+      expect(
+        _inTable('not-eligible-table', '6'),
+        findsOneWidget,
+      ); // 20 - 14 = 6
 
       // Tied top scorer awards in panel
       expect(
@@ -680,10 +691,7 @@ void main() {
         _inTable('season-scorer-awards', 'R\$ 3.000.000'),
         findsNWidgets(2),
       );
-      expect(
-        _inTable('season-club-awards', 'R\$ 3.000.000'),
-        findsNWidgets(2),
-      );
+      expect(_inTable('season-club-awards', 'R\$ 3.000.000'), findsNWidgets(2));
     },
   );
 
@@ -725,19 +733,35 @@ void main() {
         // Verify player name is visible before horizontal scroll
         expect(find.text('Mateus Alves*'), findsWidgets);
 
-        // Horizontal scroll test on ranking table
-        final horizontal = find.byKey(
-          const ValueKey('ranking-table-horizontal'),
-        );
-        await tester.ensureVisible(horizontal);
-        await tester.drag(horizontal, const Offset(-320, 0));
-        await tester.pumpAndSettle();
+        // Compact ranking keeps complete identities visible; desktop tables preserve their internal scrolling.
+        if (width < 700) {
+          final compact = find.byKey(const ValueKey('ranking-table'));
+          await tester.ensureVisible(compact);
+          expect(tester.getRect(compact).right, lessThanOrEqualTo(width));
+          expect(
+            find.byKey(const ValueKey('ranking-table-horizontal')),
+            findsNothing,
+          );
+        } else {
+          final horizontal = find.byKey(
+            const ValueKey('ranking-table-horizontal'),
+          );
+          await tester.ensureVisible(horizontal);
+          await tester.drag(horizontal, const Offset(-320, 0));
+          await tester.pumpAndSettle();
+        }
         expect(tester.takeException(), isNull);
+        expect(find.text('Mateus Alves*'), findsWidgets);
 
-        // On mobile (< 640px) or when scrolled, the pinned player column keeps Mateus Alves* visible and clickable
-        expect(find.text('Mateus Alves*').hitTestable(), findsWidgets);
-
-        // Tap player name (works whether pinned on mobile or full table on desktop)
+        // Return to the identity column on larger tables before opening the full history.
+        if (width >= 700) {
+          await tester.drag(
+            find.byKey(const ValueKey('ranking-table-horizontal')),
+            const Offset(900, 0),
+          );
+          await tester.pumpAndSettle();
+        }
+        // Tap player name in the compact mobile row or full desktop table.
         await tester.tap(find.text('Mateus Alves*').hitTestable().first);
         await tester.pumpAndSettle();
         expect(tester.takeException(), isNull);

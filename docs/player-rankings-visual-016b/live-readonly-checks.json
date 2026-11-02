@@ -1,0 +1,69 @@
+{
+  "checkedAtUtc": "2026-11-02T18:18:45.047366+00:00",
+  "webAccessible": true,
+  "servedBuildMatchesFinal": true,
+  "buildSha256": "0d65b472e08a853994949b2e5e516e2393d8271c166d83e0d80c1d822472266e",
+  "snapshotBusinessFieldsPreserved": {
+    "seasonNumber": true,
+    "roundNumber": true,
+    "roundState": true,
+    "roundVersion": true,
+    "currentMinute": true,
+    "matches": true
+  },
+  "officialPlayerCount": 0,
+  "awardCount": 0,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:5174/",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1249,
+      "sha256": "3751fe51742be0b9ed61f171b9b2bc9dcc1b4ef7d68cabe69b753eb06b888132"
+    },
+    {
+      "url": "http://127.0.0.1:5174/main.dart.js",
+      "method": "GET",
+      "status": 200,
+      "bytes": 3257549,
+      "sha256": "0d65b472e08a853994949b2e5e516e2393d8271c166d83e0d80c1d822472266e"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/worlds/73e11073-a854-487e-bc59-efd9856cab91/snapshot",
+      "method": "GET",
+      "status": 200,
+      "bytes": 381670,
+      "sha256": "350b8c6682c50a2dfaaa18f4e842f83806cf7b6074d744ada77a0cea63b3a515"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/worlds/73e11073-a854-487e-bc59-efd9856cab91/player-rankings?category=scorers&scope=general&period=career",
+      "method": "GET",
+      "status": 200,
+      "bytes": 172,
+      "sha256": "7e714ea51d52ab90ce2130096c0e84c3dddac4ebe1094e73a0facc10048d4f09"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/worlds/73e11073-a854-487e-bc59-efd9856cab91/player-rankings?category=goalkeepers&scope=general&period=career",
+      "method": "GET",
+      "status": 200,
+      "bytes": 177,
+      "sha256": "06b09820b77d90876d294c699788125a3c61e8c2e397f32a7b74a7bcbe1ea2ef"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/worlds/73e11073-a854-487e-bc59-efd9856cab91/player-rankings?category=defenders&scope=general&period=career",
+      "method": "GET",
+      "status": 200,
+      "bytes": 175,
+      "sha256": "5b4e90cf3eea232a848baca7d6c009565fa9928d5e27a0d48ca7240f92acab0a"
+    },
+    {
+      "url": "http://127.0.0.1:5173/api/worlds/73e11073-a854-487e-bc59-efd9856cab91/season-top-scorers",
+      "method": "GET",
+      "status": 200,
+      "bytes": 83,
+      "sha256": "2cffd0acb8b016278497ef2108083153cdf4fbe71e37144d2519956483c3085d"
+    }
+  ],
+  "browserExecuted": false,
+  "businessMutations": 0
+}

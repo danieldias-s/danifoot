@@ -1,0 +1,33 @@
+{
+  "baselineBackup": "D:\\elifoot_98_016B\\artifacts\\016b\\player-rankings\\baseline-web-cee0058",
+  "before": {
+    "app": "ELIFOOT_016B",
+    "api": "http://127.0.0.1:5173",
+    "web": "http://127.0.0.1:5174",
+    "root": "D:\\elifoot_98_016B\\artifacts\\016b\\web",
+    "sha256": "623b3f55ed981473f21e9dd31d9f243e1e952c2505bc0b739127b0a550b21513"
+  },
+  "apiRestarted": false,
+  "after": {
+    "app": "ELIFOOT_016B",
+    "api": "http://127.0.0.1:5173",
+    "web": "http://127.0.0.1:5174",
+    "root": "D:\\elifoot_98_016B\\artifacts\\016b\\web",
+    "sha256": "0d65b472e08a853994949b2e5e516e2393d8271c166d83e0d80c1d822472266e"
+  },
+  "buildSha256": "0d65b472e08a853994949b2e5e516e2393d8271c166d83e0d80c1d822472266e",
+  "apiAfter": {
+    "status": "OK",
+    "authMode": "LocalDev",
+    "dbProvider": "PostgreSQL",
+    "timestampUtc": "2026-11-02T18:17:16.8198424Z"
+  },
+  "databaseModified": false,
+  "apiBefore": {
+    "status": "OK",
+    "authMode": "LocalDev",
+    "dbProvider": "PostgreSQL",
+    "timestampUtc": "2026-11-02T18:17:12.2170456Z"
+  },
+  "checkedAtUtc": "2026-11-02T18:17:16.8673980Z"
+}

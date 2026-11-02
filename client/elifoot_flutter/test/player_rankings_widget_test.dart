@@ -413,7 +413,13 @@ void main() {
       final table = tester.widget<DataTable>(
         find.byKey(const ValueKey('ranking-table')),
       );
-      expect((table.rows.first.cells[1].child as Text).data, 'Mais gols');
+      expect(table.rows, hasLength(2));
+      expect(
+        tester.getTopLeft(inTable('ranking-table', 'Mais gols')).dy,
+        lessThan(
+          tester.getTopLeft(inTable('ranking-table', 'Melhor média')).dy,
+        ),
+      );
       expect(inTable('ranking-table', 'Melhor média'), findsOneWidget);
       expect(find.text('AINDA NÃO ELEGÍVEIS'), findsNothing);
     },
@@ -679,7 +685,7 @@ void main() {
   );
 
   testWidgets(
-    '009 390 pixels: filters, horizontal rankings, player history and awards fit',
+    '009 390 pixels: compact rankings, complete player history and awards fit',
     (tester) async {
       final f = Fixture()..awards = [award(2035)];
       f.history = {
@@ -693,19 +699,19 @@ void main() {
       };
       await openRankings(tester, f, width: 390);
       await select(tester, 'ranking-category', 'Defensores');
-      final horizontal = find.byKey(const ValueKey('ranking-table-horizontal'));
-      await tester.ensureVisible(horizontal);
-      await tester.drag(horizontal, const Offset(-600, 0));
-      await tester.pumpAndSettle();
-      final scrollable = tester.state<ScrollableState>(
-        find
-            .descendant(of: horizontal, matching: find.byType(Scrollable))
-            .first,
+      final compact = find.byKey(const ValueKey('ranking-table'));
+      await tester.ensureVisible(compact);
+      expect(
+        find.byKey(const ValueKey('ranking-table-horizontal')),
+        findsNothing,
       );
-      expect(scrollable.position.pixels, greaterThan(0));
+      expect(
+        inTable('ranking-table', 'Carlos Silva*').hitTestable(),
+        findsOneWidget,
+      );
+      expect(inTable('ranking-table', 'ÍNDICE'), findsOneWidget);
+      expect(tester.getRect(compact).right, lessThanOrEqualTo(390));
       expect(tester.takeException(), isNull);
-      await tester.drag(horizontal, const Offset(900, 0));
-      await tester.pumpAndSettle();
       await tester.tap(inTable('ranking-table', 'Carlos Silva*'));
       await tester.pumpAndSettle();
       expect(find.text('ARTILHEIRO: 5 VEZES'), findsOneWidget);

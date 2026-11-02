@@ -708,8 +708,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             bottomNavigationBar: desktop
                 ? null
                 : ClassicBottomNavigation(
+                    showPlayerRankings:
+                        _activeTabIndex == 6 && !_appearanceOpen,
                     selected: _appearanceOpen
                         ? 4
+                        : _activeTabIndex == 6
+                        ? 3
                         : _activeTabIndex == 2
                         ? 2
                         : (_activeTabIndex == 1 || _activeTabIndex == 5)
@@ -727,7 +731,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                         index == 2
                             ? 2
                             : index == 3
-                            ? 1
+                            ? (_activeTabIndex == 6 ? 6 : 1)
                             : 0,
                       );
                       if (index == 1) {
@@ -1478,15 +1482,28 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   children: [
                     SizedBox(width: double.infinity, child: cards[0]),
                     const SizedBox(height: 4),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (var i = 1; i < cards.length; i++) ...[
-                          if (i > 1) const SizedBox(width: 3),
-                          Expanded(child: cards[i]),
-                        ],
+                    if (_activeTabIndex == 6 && !_appearanceOpen) ...[
+                      for (var i = 1; i < cards.length; i += 2) ...[
+                        if (i > 1) const SizedBox(height: 5),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: cards[i]),
+                            const SizedBox(width: 5),
+                            Expanded(child: cards[i + 1]),
+                          ],
+                        ),
                       ],
-                    ),
+                    ] else
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (var i = 1; i < cards.length; i++) ...[
+                            if (i > 1) const SizedBox(width: 3),
+                            Expanded(child: cards[i]),
+                          ],
+                        ],
+                      ),
                   ],
                 ),
         ),

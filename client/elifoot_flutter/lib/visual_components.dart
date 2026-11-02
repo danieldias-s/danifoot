@@ -37,12 +37,14 @@ class ClassicPaperPanel extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry padding;
   final IconData? icon;
+  final Color? iconColor;
   const ClassicPaperPanel({
     super.key,
     this.title,
     required this.child,
     this.padding = const EdgeInsets.all(12),
     this.icon,
+    this.iconColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,11 @@ class ClassicPaperPanel extends StatelessWidget {
               child: Row(
                 children: [
                   if (icon != null) ...[
-                    Icon(icon, color: global.textPrimary, size: 22),
+                    Icon(
+                      icon,
+                      color: iconColor ?? global.textPrimary,
+                      size: 22,
+                    ),
                     const SizedBox(width: 10),
                   ],
                   Expanded(
@@ -167,21 +173,25 @@ class ClassicSelectionTabs extends StatelessWidget {
 class ClassicBottomNavigation extends StatelessWidget {
   final int selected;
   final bool locked;
+  final bool showPlayerRankings;
   final ValueChanged<int> onSelected;
   const ClassicBottomNavigation({
     super.key,
     required this.selected,
     required this.locked,
     required this.onSelected,
+    this.showPlayerRankings = false,
   });
   @override
   Widget build(BuildContext context) {
     final t = ClassicTheme.of(context);
-    const entries = [
+    final entries = [
       (Icons.checkroom, 'PLANTEL'),
       (Icons.account_tree, 'TÁTICAS'),
       (Icons.swap_horiz, 'MERCADO'),
-      (Icons.emoji_events, 'COMPETIÇÕES'),
+      showPlayerRankings
+          ? (Icons.bar_chart, 'RANKINGS')
+          : (Icons.emoji_events, 'COMPETIÇÕES'),
       (Icons.more_horiz, 'MAIS'),
     ];
     return Container(

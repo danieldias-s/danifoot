@@ -1,5 +1,6 @@
 import 'club_theme.dart';
 import 'classic_layout.dart';
+import 'visual_components.dart';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -337,258 +338,433 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, viewport) {
-        final isCompact = viewport.maxWidth < 420;
-        final horizontalPad = isCompact ? 8.0 : 16.0;
-        return Align(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1160),
-            child: SingleChildScrollView(
-              key: const ValueKey('player-rankings-scroll'),
-              padding: EdgeInsets.symmetric(
-                horizontal: horizontalPad,
-                vertical: 12,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const ClassicSectionTitle(
-                    title: 'RANKINGS DE JOGADORES',
-                    subtitle:
-                        'Somente partidas oficiais concluídas. Toque no jogador para ver o histórico.',
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, viewport) => SingleChildScrollView(
+      key: const ValueKey('player-rankings-scroll'),
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _buildHeading(),
+          const SizedBox(height: 14),
+          LayoutBuilder(
+            builder: (context, available) {
+              final ranking = _buildRankingPanel();
+              final awards = SeasonTopScorersPanel(
+                apiClient: widget.apiClient,
+                worldId: widget.worldId,
+                season: _period == 'season' ? _season : null,
+                revision: widget.revision + _request,
+                currentSeason: widget.currentSeason,
+                framed: true,
+              );
+              return available.maxWidth >= 1000
+                  ? Row(
+                      key: const Key('player-rankings-desktop-columns'),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(flex: 4, child: ranking),
+                        const SizedBox(width: 14),
+                        Expanded(flex: 3, child: awards),
+                      ],
+                    )
+                  : Column(
+                      key: const Key('player-rankings-stacked-panels'),
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [ranking, const SizedBox(height: 14), awards],
+                    );
+            },
+          ),
+          const SizedBox(height: 14),
+          Container(
+            key: const Key('player-rankings-information'),
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: ClassicTheme.of(context).primary,
+              border: Border.all(color: ClassicTheme.of(context).border),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.info_outline,
+                  size: 18,
+                  color: readableInk(
+                    ClassicTheme.of(context).primary,
+                    Colors.white,
                   ),
-                  const SizedBox(height: 10),
-                  _buildFilterBar(viewport.maxWidth),
-                  if (_category != 'scorers') ...[
-                    const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: ClassicTheme.of(context).surface,
-                        border: Border.all(
-                          color: ClassicTheme.of(context).border,
-                        ),
-                      ),
-                      child: Text(
-                        'Mínimo de 20 jogos no recorte consultado.',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: ClassicTheme.of(context).accent,
-                        ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    'Os rankings serão preenchidos conforme as partidas oficiais forem concluídas. Os dados desta tela vêm do jogo.',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: readableInk(
+                        ClassicTheme.of(context).primary,
+                        Colors.white,
                       ),
                     ),
-                  ],
-                  const SizedBox(height: 10),
-                  FutureBuilder<Map<String, dynamic>>(
-                    future: _future,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState != ConnectionState.done) {
-                        return const _Loading('CARREGANDO RANKING...');
-                      }
-                      if (snapshot.hasError) {
-                        return _LoadError('ranking', _reload);
-                      }
-                      final data = snapshot.data!;
-                      final minimum = math.max(
-                        20,
-                        _integer(data['minimumMatches']),
-                      );
-                      final all = _records(data['rows']);
-                      final needsMinimum = _category != 'scorers';
-                      final rows = all
-                          .where(
-                            (p) =>
-                                !needsMinimum ||
-                                _integer(p['matchesPlayed']) >= minimum,
-                          )
-                          .toList();
-                      final seen = <String>{};
-                      final ineligible = needsMinimum
-                          ? [
-                                  ..._records(data['notEligible']),
-                                  ...all.where(
-                                    (p) =>
-                                        _integer(p['matchesPlayed']) < minimum,
-                                  ),
-                                ]
-                                .where(
-                                  (p) =>
-                                      _integer(p['matchesPlayed']) < minimum &&
-                                      seen.add(p['playerId'].toString()),
-                                )
-                                .toList()
-                          : <Map<String, dynamic>>[];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          _CoverageWarnings(data['coverageWarnings']),
-                          ClassicTableHeader(
-                            title: _period == 'career'
-                                ? 'CARREIRA INTEIRA'
-                                : 'TEMPORADA ${data['season'] ?? data['currentSeason'] ?? _season}',
-                            trailing: _categoryBadgeLabel(_category),
-                          ),
-                          const SizedBox(height: 4),
-                          if (rows.isEmpty)
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: ClassicTheme.of(context).surface,
-                                border: Border.all(
-                                  color: ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: const Text(
-                                'Nenhum jogador elegível com estatísticas oficiais neste recorte.',
-                              ),
-                            )
-                          else
-                            _rankingTable(rows),
-                          if (ineligible.isNotEmpty) ...[
-                            const SizedBox(height: 16),
-                            ClassicTableHeader(
-                              title: 'AINDA NÃO ELEGÍVEIS',
-                              subtitle:
-                                  'Faltam jogos para alcançar $minimum neste recorte.',
-                            ),
-                            const SizedBox(height: 4),
-                            _rankingTable(ineligible, minimum: minimum),
-                          ],
-                        ],
-                      );
-                    },
                   ),
-                  const SizedBox(height: 20),
-                  SeasonTopScorersPanel(
-                    apiClient: widget.apiClient,
-                    worldId: widget.worldId,
-                    season: _period == 'season' ? _season : null,
-                    revision: widget.revision + _request,
-                    currentSeason: widget.currentSeason,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        );
-      },
-    );
-  }
-
-  String _categoryBadgeLabel(String category) => switch (category) {
-    'goalkeepers' => 'GOLEIROS (MENOR MÉDIA SOFRIDA)',
-    'defenders' => 'DEFENSORES (MENOR ÍNDICE DISCIPLINAR)',
-    _ => 'ARTILHEIROS (MAIOR Nº DE GOLS)',
-  };
-
-  Widget _buildFilterBar(double maxWidth) {
-    final isNarrow = maxWidth < 520;
-    final isUltraNarrow = maxWidth < 365;
-    final filterWidth = isUltraNarrow
-        ? (maxWidth - 20)
-        : isNarrow
-        ? ((maxWidth - 28) / 2).clamp(140.0, 220.0)
-        : 205.0;
-
-    return Container(
-      padding: EdgeInsets.all(isNarrow ? 8 : 10),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surface,
-        border: Border.all(color: ClassicTheme.of(context).border),
+        ],
       ),
-      child: Wrap(
-        spacing: 10,
-        runSpacing: 10,
-        crossAxisAlignment: WrapCrossAlignment.center,
+    ),
+  );
+
+  Widget _buildHeading() {
+    final t = ClassicTheme.of(context),
+        ink = readableInk(t.primary, Colors.white);
+    return Container(
+      key: const Key('player-rankings-heading'),
+      decoration: BoxDecoration(
+        color: t.primary,
+        border: Border.all(color: t.border),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ClassicFilter(
-            filterKey: 'ranking-category',
-            label: 'CATEGORIA',
-            value: _category,
-            width: filterWidth,
-            options: const {
-              'scorers': 'Artilheiros',
-              'goalkeepers': 'Goleiros',
-              'defenders': 'Defensores',
-            },
-            onChanged: (v) {
-              setState(() {
-                _category = v;
-                _future = _load();
-              });
-            },
-          ),
-          ClassicFilter(
-            filterKey: 'ranking-scope',
-            label: 'COMPETIÇÃO',
-            value: _scope,
-            width: filterWidth,
-            options: const {
-              'general': 'Geral',
-              'division1': '1ª divisão',
-              'division2': '2ª divisão',
-              'division3': '3ª divisão',
-              'division4': '4ª divisão',
-              'cup': 'Taça',
-            },
-            onChanged: (v) {
-              setState(() {
-                _scope = v;
-                _future = _load();
-              });
-            },
-          ),
-          ClassicFilter(
-            filterKey: 'ranking-period',
-            label: 'PERÍODO',
-            value: _period,
-            width: filterWidth,
-            options: const {
-              'career': 'Carreira inteira',
-              'current': 'Temporada atual',
-              'season': 'Temporada selecionada',
-            },
-            onChanged: (v) {
-              setState(() {
-                _period = v;
-                _future = _load();
-              });
-            },
-          ),
-          if (_period == 'season')
-            ClassicFilter(
-              filterKey: 'ranking-season',
-              label: 'TEMPORADA',
-              value: '$_season',
-              width: filterWidth,
-              options: {
-                for (final s in {..._seasons, widget.currentSeason, _season})
-                  '$s': 'Temporada $s',
-              },
-              onChanged: (v) {
-                setState(() {
-                  _season = int.parse(v);
-                  _future = _load();
-                });
-              },
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(
+              children: [
+                Icon(Icons.person, color: t.selectedBackground, size: 28),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'RANKINGS DE JOGADORES',
+                    style: TextStyle(
+                      color: ink,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ClassicActionButton(
-            label: 'ATUALIZAR',
-            iconType: ClassicButtonIcon.refresh,
-            onPressed: _reload,
           ),
+          Divider(height: 1, color: t.border),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Text(
+              'Somente partidas oficiais concluídas. Toque no jogador para ver o histórico.',
+              style: TextStyle(color: ink, fontSize: 15),
+            ),
+          ),
+          Divider(height: 1, color: t.border),
+          _buildFilterBar(),
         ],
       ),
     );
   }
 
-  Widget _rankingTable(List<Map<String, dynamic>> players, {int? minimum}) {
+  String get _categoryTitle => switch (_category) {
+    'goalkeepers' => 'GOLEIROS',
+    'defenders' => 'DEFENSORES',
+    _ => 'ARTILHEIROS',
+  };
+
+  Widget _buildRankingPanel() => FutureBuilder<Map<String, dynamic>>(
+    future: _future,
+    builder: (context, snapshot) {
+      final data = snapshot.data;
+      final periodLabel = _period == 'career'
+          ? 'CARREIRA INTEIRA'
+          : 'TEMPORADA ${data?['season'] ?? data?['currentSeason'] ?? _season}';
+      return ClassicPaperPanel(
+        key: const Key('player-ranking-panel'),
+        title: '$periodLabel — $_categoryTitle',
+        icon: Icons.workspace_premium,
+        iconColor: ClassicTheme.of(context).selectedBackground,
+        padding: EdgeInsets.zero,
+        child: ClassicPaper(
+          builder: (context) {
+            if (snapshot.connectionState != ConnectionState.done) {
+              return const Padding(
+                padding: EdgeInsets.all(20),
+                child: _Loading('CARREGANDO RANKING...'),
+              );
+            }
+            if (snapshot.hasError) {
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: _LoadError('ranking', _reload),
+              );
+            }
+            final payload = snapshot.data!;
+            final minimum = math.max(20, _integer(payload['minimumMatches']));
+            final all = _records(payload['rows']);
+            final needsMinimum = _category != 'scorers';
+            final rows = all
+                .where(
+                  (p) =>
+                      !needsMinimum || _integer(p['matchesPlayed']) >= minimum,
+                )
+                .toList();
+            final seen = <String>{};
+            final ineligible = needsMinimum
+                ? [
+                        ..._records(payload['notEligible']),
+                        ...all.where(
+                          (p) => _integer(p['matchesPlayed']) < minimum,
+                        ),
+                      ]
+                      .where(
+                        (p) =>
+                            _integer(p['matchesPlayed']) < minimum &&
+                            seen.add(p['playerId'].toString()),
+                      )
+                      .toList()
+                : <Map<String, dynamic>>[];
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _CoverageWarnings(payload['coverageWarnings']),
+                if (needsMinimum)
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      'Mínimo de $minimum jogos no recorte consultado.',
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ),
+                if (rows.isEmpty)
+                  const _RankingEmptyState(
+                    icon: Icons.sports_soccer,
+                    title:
+                        'Nenhum jogador elegível com estatísticas oficiais neste recorte.',
+                    description:
+                        'Ainda não há estatísticas oficiais de partidas concluídas para os filtros selecionados.',
+                  )
+                else
+                  _rankingTable(rows, context: context),
+                if (ineligible.isNotEmpty) ...[
+                  const SizedBox(height: 12),
+                  ClassicTableHeader(
+                    title: 'AINDA NÃO ELEGÍVEIS',
+                    subtitle:
+                        'Faltam jogos para alcançar $minimum neste recorte.',
+                  ),
+                  _rankingTable(ineligible, minimum: minimum, context: context),
+                ],
+              ],
+            );
+          },
+        ),
+      );
+    },
+  );
+
+  Widget _buildFilterBar() => LayoutBuilder(
+    builder: (context, constraints) {
+      final width = constraints.maxWidth;
+      Widget category() => _filter(
+        'ranking-category',
+        'CATEGORIA',
+        _category,
+        const {
+          'scorers': 'Artilheiros',
+          'goalkeepers': 'Goleiros',
+          'defenders': 'Defensores',
+        },
+        (value) {
+          setState(() {
+            _category = value;
+            _future = _load();
+          });
+        },
+      );
+      Widget scope() => _filter(
+        'ranking-scope',
+        'COMPETIÇÃO',
+        _scope,
+        const {
+          'general': 'Geral',
+          'division1': '1ª divisão',
+          'division2': '2ª divisão',
+          'division3': '3ª divisão',
+          'division4': '4ª divisão',
+          'cup': 'Taça',
+        },
+        (value) {
+          setState(() {
+            _scope = value;
+            _future = _load();
+          });
+        },
+      );
+      Widget period() => _filter(
+        'ranking-period',
+        'PERÍODO',
+        _period,
+        const {
+          'career': 'Carreira inteira',
+          'current': 'Temporada atual',
+          'season': 'Temporada selecionada',
+        },
+        (value) {
+          setState(() {
+            _period = value;
+            _future = _load();
+          });
+        },
+      );
+      Widget season() => _filter(
+        'ranking-season',
+        'TEMPORADA',
+        '$_season',
+        {
+          for (final value in {..._seasons, widget.currentSeason, _season})
+            '$value': 'Temporada $value',
+        },
+        (value) {
+          setState(() {
+            _season = int.parse(value);
+            _future = _load();
+          });
+        },
+      );
+      final t = ClassicTheme.of(context);
+      final refresh = ElevatedButton.icon(
+        key: const Key('ranking-refresh'),
+        onPressed: _reload,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: t.selectedBackground,
+          foregroundColor: t.selectedText,
+          minimumSize: const Size(44, 48),
+          elevation: 0,
+        ),
+        icon: const Icon(Icons.refresh, size: 20),
+        label: const Text('ATUALIZAR'),
+      );
+      return Padding(
+        padding: const EdgeInsets.all(16),
+        child: width >= 900
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: category()),
+                  const SizedBox(width: 12),
+                  Expanded(child: scope()),
+                  const SizedBox(width: 12),
+                  Expanded(child: period()),
+                  if (_period == 'season') ...[
+                    const SizedBox(width: 12),
+                    Expanded(child: season()),
+                  ],
+                  const SizedBox(width: 12),
+                  SizedBox(width: 154, child: refresh),
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  category(),
+                  const SizedBox(height: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: scope()),
+                      const SizedBox(width: 10),
+                      Expanded(child: period()),
+                    ],
+                  ),
+                  if (_period == 'season') ...[
+                    const SizedBox(height: 10),
+                    season(),
+                  ],
+                  const SizedBox(height: 10),
+                  refresh,
+                ],
+              ),
+      );
+    },
+  );
+
+  Widget _filter(
+    String key,
+    String label,
+    String value,
+    Map<String, String> options,
+    ValueChanged<String> onChanged,
+  ) {
+    final t = ClassicTheme.of(context), paper = t.paper;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.bold,
+            color: t.selectedBackground,
+          ),
+        ),
+        const SizedBox(height: 5),
+        Theme(
+          data: paper.material(),
+          child: DropdownButtonFormField<String>(
+            key: ValueKey(key),
+            initialValue: value,
+            isExpanded: true,
+            isDense: false,
+            itemHeight: null,
+            dropdownColor: paper.surface,
+            iconEnabledColor: paper.textPrimary,
+            style: TextStyle(
+              fontFamily: 'ClassicCondensed',
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
+              color: paper.textPrimary,
+              height: 1.15,
+            ),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: paper.surface,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 0,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+                borderSide: BorderSide(color: paper.border),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+                borderSide: BorderSide(color: paper.border),
+              ),
+            ),
+            items: [
+              for (final entry in options.entries)
+                DropdownMenuItem(
+                  value: entry.key,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    child: Text(entry.value, softWrap: true),
+                  ),
+                ),
+            ],
+            onChanged: (next) {
+              if (next != null) onChanged(next);
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _rankingTable(
+    List<Map<String, dynamic>> players, {
+    int? minimum,
+    required BuildContext context,
+  }) {
+    if (MediaQuery.sizeOf(context).width < 700) {
+      return _compactRankingTable(context, players, minimum: minimum);
+    }
     final columns = <String>[
       '#',
       'JOGADOR',
@@ -604,6 +780,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
 
     return ClassicTable(
       tableKey: minimum == null ? 'ranking-table' : 'not-eligible-table',
+      rankingStyle: true,
       columns: columns,
       numericColumns: numericColumns,
       pinnedHeader: '#  JOGADOR',
@@ -652,8 +829,19 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
                 ),
               ),
             ),
-            _playerCell(context, widget.apiClient, widget.worldId, p),
-            DataCell(Text(_club(p))),
+            _playerCell(
+              context,
+              widget.apiClient,
+              widget.worldId,
+              p,
+              maxWidth: 190,
+            ),
+            DataCell(
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 140),
+                child: Text(_club(p), softWrap: true),
+              ),
+            ),
             DataCell(Text(_value(p['matchesPlayed']))),
             if (_category == 'scorers')
               DataCell(Text(_value(p['goalsScored']))),
@@ -673,31 +861,155 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
       }).toList(),
     );
   }
+
+  Widget _compactRankingTable(
+    BuildContext context,
+    List<Map<String, dynamic>> players, {
+    int? minimum,
+  }) {
+    final t = ClassicTheme.of(context);
+    final metric = switch (_category) {
+      'goalkeepers' => 'G.C.',
+      'defenders' => 'ÍNDICE',
+      _ => 'GOLS',
+    };
+    Widget number(String value, double width, {bool heading = false}) =>
+        SizedBox(
+          width: width,
+          child: Text(
+            value,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: heading ? 14 : 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        );
+    return Column(
+      key: ValueKey(minimum == null ? 'ranking-table' : 'not-eligible-table'),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          color: t.tableHeader,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+          child: Row(
+            children: [
+              number('#', 25, heading: true),
+              const Expanded(
+                child: Text(
+                  'JOGADOR / CLUBE',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+              ),
+              number('J', 30, heading: true),
+              number(metric, 55, heading: true),
+              const SizedBox(width: 18),
+            ],
+          ),
+        ),
+        for (final (index, p) in players.indexed)
+          Material(
+            color: index.isEven ? t.tableRow : t.tableRowAlternate,
+            child: InkWell(
+              key: ValueKey('ranking-player-${p['playerId']}'),
+              onTap: p['playerId'] == null
+                  ? null
+                  : () => showPlayerHistoryDialog(
+                      context: context,
+                      apiClient: widget.apiClient,
+                      worldId: widget.worldId,
+                      playerId: p['playerId'].toString(),
+                    ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 12,
+                ),
+                child: Row(
+                  children: [
+                    number(minimum == null ? _value(p['rank']) : '—', 25),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _playerName(p),
+                            style: TextStyle(
+                              color: t.accent,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                            ),
+                          ),
+                          Text(
+                            _club(p),
+                            style: TextStyle(
+                              color: t.textSecondary,
+                              fontSize: 14,
+                            ),
+                          ),
+                          if (minimum != null)
+                            Text(
+                              'Faltam ${math.max(0, minimum - _integer(p['matchesPlayed']))} jogos',
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                        ],
+                      ),
+                    ),
+                    number(_value(p['matchesPlayed']), 30),
+                    number(
+                      _category == 'defenders'
+                          ? _average(p['average'])
+                          : _value(
+                              p[_category == 'goalkeepers'
+                                  ? 'goalsConceded'
+                                  : 'goalsScored'],
+                            ),
+                      55,
+                    ),
+                    const Icon(Icons.chevron_right, size: 18),
+                  ],
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
 }
 
 DataCell _playerCell(
   BuildContext context,
   ElifootApiClient api,
   String worldId,
-  Map<String, dynamic> player,
-) => DataCell(
-  Text(
+  Map<String, dynamic> player, {
+  double? maxWidth,
+}) {
+  final name = Text(
     _playerName(player),
+    softWrap: true,
     style: TextStyle(
       color: ClassicTheme.of(context).accent,
       decoration: TextDecoration.underline,
       fontWeight: FontWeight.bold,
     ),
-  ),
-  onTap: player['playerId'] == null
-      ? null
-      : () => showPlayerHistoryDialog(
-          context: context,
-          apiClient: api,
-          worldId: worldId,
-          playerId: player['playerId'].toString(),
-        ),
-);
+  );
+  return DataCell(
+    maxWidth == null
+        ? name
+        : ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth),
+            child: name,
+          ),
+    onTap: player['playerId'] == null
+        ? null
+        : () => showPlayerHistoryDialog(
+            context: context,
+            apiClient: api,
+            worldId: worldId,
+            playerId: player['playerId'].toString(),
+          ),
+  );
+}
 
 Future<void> showPlayerHistoryDialog({
   required BuildContext context,
@@ -1171,6 +1483,7 @@ class SeasonTopScorersPanel extends StatefulWidget {
   final int? season;
   final int? currentSeason;
   final int revision;
+  final bool framed;
   const SeasonTopScorersPanel({
     super.key,
     required this.apiClient,
@@ -1178,6 +1491,7 @@ class SeasonTopScorersPanel extends StatefulWidget {
     this.season,
     this.currentSeason,
     this.revision = 0,
+    this.framed = false,
   });
 
   @override
@@ -1216,18 +1530,45 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
   }
 
   @override
-  Widget build(BuildContext context) => FutureBuilder<Map<String, dynamic>>(
+  Widget build(BuildContext context) => widget.framed
+      ? ClassicPaper(builder: (context) => _buildContent(context))
+      : _buildContent(context);
+
+  Widget _frame(BuildContext context, Widget child, {dynamic season}) =>
+      widget.framed
+      ? ClassicPaperPanel(
+          key: const Key('player-season-awards-panel'),
+          title: 'ARTILHEIROS DA TEMPORADA${season == null ? '' : ' $season'}',
+          icon: Icons.emoji_events,
+          iconColor: ClassicTheme.of(context).selectedBackground,
+          padding: EdgeInsets.zero,
+          child: child,
+        )
+      : child;
+
+  Widget _buildContent(
+    BuildContext context,
+  ) => FutureBuilder<Map<String, dynamic>>(
     future: _future,
     builder: (context, snapshot) {
       if (snapshot.connectionState != ConnectionState.done) {
-        return const _Loading('CARREGANDO PREMIAÇÕES...');
+        return _frame(
+          context,
+          const Padding(
+            padding: EdgeInsets.all(20),
+            child: _Loading('CARREGANDO PREMIAÇÕES...'),
+          ),
+        );
       }
       if (snapshot.hasError) {
-        return _LoadError(
-          'premiações',
-          () => setState(() {
-            _future = _load();
-          }),
+        return _frame(
+          context,
+          _LoadError(
+            'premiações',
+            () => setState(() {
+              _future = _load();
+            }),
+          ),
         );
       }
       final data = snapshot.data!;
@@ -1235,142 +1576,206 @@ class _SeasonTopScorersPanelState extends State<SeasonTopScorersPanel> {
       final totals = _records(data['clubTotals']);
       final season = data['season'];
       final isTie = awards.length > 1;
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ClassicSectionTitle(
-            title:
-                'ARTILHEIROS DA TEMPORADA${season == null ? '' : ' $season'}',
-            subtitle: widget.season == null
-                ? 'Última temporada encerrada.'
-                : null,
-          ),
-          _CoverageWarnings(data['coverageWarnings']),
-          if (awards.isEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 6),
-              child: Text(
-                season == null
-                    ? 'Nenhuma temporada encerrada com premiações registradas.'
-                    : 'Nenhuma premiação registrada nesta temporada.',
+      return _frame(
+        context,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (!widget.framed)
+              ClassicSectionTitle(
+                title:
+                    'ARTILHEIROS DA TEMPORADA${season == null ? '' : ' $season'}',
+                subtitle: widget.season == null
+                    ? 'Última temporada encerrada.'
+                    : null,
               ),
-            ),
-          if (awards.isNotEmpty) ...[
-            const SizedBox(height: 6),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: ClassicTheme.of(context).surface,
-                border: Border.all(
-                  color: isTie
-                      ? ClassicTheme.of(context).selectedBackground
-                      : ClassicTheme.of(context).border,
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Todos os empatados em gols recebem o título. Prêmio por artilheiro ao clube: R\$ 3.000.000.',
-                    style: TextStyle(fontSize: 12),
-                  ),
-                  if (isTie)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2),
+            _CoverageWarnings(data['coverageWarnings']),
+            if (awards.isEmpty)
+              widget.framed
+                  ? _RankingEmptyState(
+                      icon: Icons.emoji_events_outlined,
+                      title: season == null
+                          ? 'Nenhuma temporada encerrada com premiações registradas.'
+                          : 'Nenhuma premiação registrada nesta temporada.',
+                      description:
+                          'As premiações de artilheiros aparecem após o encerramento das temporadas.',
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(top: 6),
                       child: Text(
-                        'EMPATE NA ARTILHARIA: ${awards.length} ARTILHEIROS EMPATADOS COM ${_value(awards.first['totalGoals'])} GOLS.',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        season == null
+                            ? 'Nenhuma temporada encerrada com premiações registradas.'
+                            : 'Nenhuma premiação registrada nesta temporada.',
                       ),
                     ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 6),
-            ClassicTable(
-              tableKey: 'season-scorer-awards',
-              columns: const [
-                'JOGADOR',
-                'CLUBE NO ENCERRAMENTO',
-                'GOLS',
-                'JOGOS',
-                'PRÊMIO AO CLUBE',
-              ],
-              numericColumns: const {2, 3, 4},
-              pinnedHeader: 'JOGADOR',
-              pinnedRows: awards.asMap().entries.map((entry) {
-                final idx = entry.key;
-                final a = entry.value;
-                return ClassicPinnedRow(
-                  title: _playerName(a),
-                  subtitle: a['clubNameAtClose']?.toString() ?? 'Sem clube',
-                  highlight: true,
-                  isEven: idx.isEven,
-                  onTap: a['playerId'] == null
-                      ? null
-                      : () => showPlayerHistoryDialog(
-                          context: context,
-                          apiClient: widget.apiClient,
-                          worldId: widget.worldId,
-                          playerId: a['playerId'].toString(),
-                        ),
-                );
-              }).toList(),
-              rows: awards.asMap().entries.map((entry) {
-                final idx = entry.key;
-                final a = entry.value;
-                return DataRow(
-                  color: WidgetStateProperty.all(
-                    idx.isEven
-                        ? ClassicTheme.of(context).surfaceAlternate
-                        : ClassicTheme.of(context).tableRowAlternate,
+            if (awards.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: ClassicTheme.of(context).surface,
+                  border: Border.all(
+                    color: isTie
+                        ? ClassicTheme.of(context).selectedBackground
+                        : ClassicTheme.of(context).border,
                   ),
-                  cells: [
-                    _playerCell(context, widget.apiClient, widget.worldId, a),
-                    DataCell(
-                      Text(a['clubNameAtClose']?.toString() ?? 'Sem clube'),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Todos os empatados em gols recebem o título. Prêmio por artilheiro ao clube: R\$ 3.000.000.',
+                      style: TextStyle(fontSize: 12),
                     ),
-                    DataCell(Text(_value(a['totalGoals']))),
-                    DataCell(Text(_value(a['totalMatches']))),
-                    DataCell(Text(formatClassicMoney(a['awardAmount']))),
+                    if (isTie)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Text(
+                          'EMPATE NA ARTILHARIA: ${awards.length} ARTILHEIROS EMPATADOS COM ${_value(awards.first['totalGoals'])} GOLS.',
+                          style: TextStyle(
+                            color: ClassicTheme.of(context).accent,
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                   ],
-                );
-              }).toList(),
-            ),
+                ),
+              ),
+              const SizedBox(height: 6),
+              ClassicTable(
+                tableKey: 'season-scorer-awards',
+                rankingStyle: widget.framed,
+                columns: const [
+                  'JOGADOR',
+                  'CLUBE NO ENCERRAMENTO',
+                  'GOLS',
+                  'JOGOS',
+                  'PRÊMIO AO CLUBE',
+                ],
+                numericColumns: const {2, 3, 4},
+                pinnedHeader: 'JOGADOR',
+                pinnedRows: awards.asMap().entries.map((entry) {
+                  final idx = entry.key;
+                  final a = entry.value;
+                  return ClassicPinnedRow(
+                    title: _playerName(a),
+                    subtitle: a['clubNameAtClose']?.toString() ?? 'Sem clube',
+                    highlight: true,
+                    isEven: idx.isEven,
+                    onTap: a['playerId'] == null
+                        ? null
+                        : () => showPlayerHistoryDialog(
+                            context: context,
+                            apiClient: widget.apiClient,
+                            worldId: widget.worldId,
+                            playerId: a['playerId'].toString(),
+                          ),
+                  );
+                }).toList(),
+                rows: awards.asMap().entries.map((entry) {
+                  final idx = entry.key;
+                  final a = entry.value;
+                  return DataRow(
+                    color: WidgetStateProperty.all(
+                      idx.isEven
+                          ? ClassicTheme.of(context).surfaceAlternate
+                          : ClassicTheme.of(context).tableRowAlternate,
+                    ),
+                    cells: [
+                      _playerCell(context, widget.apiClient, widget.worldId, a),
+                      DataCell(
+                        Text(a['clubNameAtClose']?.toString() ?? 'Sem clube'),
+                      ),
+                      DataCell(Text(_value(a['totalGoals']))),
+                      DataCell(Text(_value(a['totalMatches']))),
+                      DataCell(Text(formatClassicMoney(a['awardAmount']))),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ],
+            if (totals.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              const ClassicTableHeader(title: 'TOTAL CREDITADO POR CLUBE'),
+              const SizedBox(height: 4),
+              ClassicTable(
+                tableKey: 'season-club-awards',
+                columns: const ['CLUBE', 'TOTAL'],
+                numericColumns: const {1},
+                rows: totals.asMap().entries.map((entry) {
+                  final idx = entry.key;
+                  final c = entry.value;
+                  return DataRow(
+                    color: WidgetStateProperty.all(
+                      idx.isEven
+                          ? ClassicTheme.of(context).tableRow
+                          : ClassicTheme.of(context).tableRowAlternate,
+                    ),
+                    cells: [
+                      DataCell(Text(_value(c['clubName']))),
+                      DataCell(Text(formatClassicMoney(c['amount']))),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ],
           ],
-          if (totals.isNotEmpty) ...[
-            const SizedBox(height: 12),
-            const ClassicTableHeader(title: 'TOTAL CREDITADO POR CLUBE'),
-            const SizedBox(height: 4),
-            ClassicTable(
-              tableKey: 'season-club-awards',
-              columns: const ['CLUBE', 'TOTAL'],
-              numericColumns: const {1},
-              rows: totals.asMap().entries.map((entry) {
-                final idx = entry.key;
-                final c = entry.value;
-                return DataRow(
-                  color: WidgetStateProperty.all(
-                    idx.isEven
-                        ? ClassicTheme.of(context).tableRow
-                        : ClassicTheme.of(context).tableRowAlternate,
-                  ),
-                  cells: [
-                    DataCell(Text(_value(c['clubName']))),
-                    DataCell(Text(formatClassicMoney(c['amount']))),
-                  ],
-                );
-              }).toList(),
-            ),
-          ],
-        ],
+        ),
+        season: season,
       );
     },
   );
+}
+
+class _RankingEmptyState extends StatelessWidget {
+  final IconData icon;
+  final String title, description;
+  const _RankingEmptyState({
+    required this.icon,
+    required this.title,
+    required this.description,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final t = ClassicTheme.of(context);
+    return Container(
+      constraints: const BoxConstraints(minHeight: 230),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 48,
+            color: icon == Icons.sports_soccer
+                ? t.textSecondary
+                : t.selectedBackground,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: t.textPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: t.textSecondary, fontSize: 15, height: 1.3),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 // ============================================================================
@@ -1870,6 +2275,7 @@ class ClassicTable extends StatefulWidget {
   final Set<int> numericColumns;
   final List<ClassicPinnedRow>? pinnedRows;
   final String? pinnedHeader;
+  final bool rankingStyle;
 
   const ClassicTable({
     super.key,
@@ -1879,6 +2285,7 @@ class ClassicTable extends StatefulWidget {
     this.numericColumns = const {},
     this.pinnedRows,
     this.pinnedHeader,
+    this.rankingStyle = false,
   });
 
   @override
@@ -1947,7 +2354,8 @@ class _ClassicTableState extends State<ClassicTable> {
         final hasPinned =
             widget.pinnedRows != null &&
             widget.pinnedRows!.length == widget.rows.length;
-        final showPinnedOverlay = hasPinned && _scrollOffset > 4.0;
+        final showPinnedOverlay =
+            hasPinned && _scrollOffset > 4.0 && !widget.rankingStyle;
 
         final pinnedWidth = isUltraNarrow
             ? 124.0
@@ -1958,7 +2366,11 @@ class _ClassicTableState extends State<ClassicTable> {
             : 190.0;
 
         final headingHeight = isMobile ? 38.0 : 34.0;
-        final rowHeight = isMobile ? 42.0 : 34.0;
+        final rowHeight = widget.rankingStyle
+            ? 44.0
+            : isMobile
+            ? 42.0
+            : 34.0;
 
         final columnSpacing = isMobile
             ? (isUltraNarrow ? 10.0 : 12.0)
@@ -1990,7 +2402,7 @@ class _ClassicTableState extends State<ClassicTable> {
           ),
           headingRowHeight: headingHeight,
           dataRowMinHeight: rowHeight,
-          dataRowMaxHeight: rowHeight,
+          dataRowMaxHeight: widget.rankingStyle ? 104 : rowHeight,
           columnSpacing: columnSpacing,
           horizontalMargin: horizontalMargin,
           border: TableBorder(
@@ -2000,15 +2412,23 @@ class _ClassicTableState extends State<ClassicTable> {
             ),
           ),
           dataTextStyle: TextStyle(
-            fontSize: isUltraNarrow ? 11 : 12,
+            fontSize: widget.rankingStyle
+                ? 16
+                : isUltraNarrow
+                ? 11
+                : 12,
             color: ClassicTheme.of(context).textPrimary,
-            fontFamily: 'Roboto',
+            fontFamily: widget.rankingStyle ? 'ClassicCondensed' : 'Roboto',
           ),
           headingTextStyle: TextStyle(
-            fontSize: isUltraNarrow ? 10 : 11,
+            fontSize: widget.rankingStyle
+                ? 14
+                : isUltraNarrow
+                ? 10
+                : 11,
             fontWeight: FontWeight.bold,
             color: ClassicTheme.of(context).accent,
-            fontFamily: 'Roboto',
+            fontFamily: widget.rankingStyle ? 'ClassicCondensed' : 'Roboto',
           ),
           columns: widget.columns.asMap().entries.map((entry) {
             final idx = entry.key;
