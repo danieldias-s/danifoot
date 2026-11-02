@@ -83,15 +83,15 @@ Future<void> join(
   bool unemployed = false,
 }) async {
   await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+  await tester.ensureVisible(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
   await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
   await tester.pumpAndSettle();
-  await tester.ensureVisible(
-    find.text(unemployed ? 'ENTRAR DESEMPREGADO' : 'ENTRAR COM CLUBE'),
+  final enterRoom = find.text(
+    unemployed ? 'ENTRAR DESEMPREGADO' : 'ENTRAR COM CLUBE',
   );
+  await tester.ensureVisible(enterRoom);
   await tester.pumpAndSettle();
-  await tester.tap(
-    find.text(unemployed ? 'ENTRAR DESEMPREGADO' : 'ENTRAR COM CLUBE'),
-  );
+  await tester.tap(enterRoom);
   await tester.pumpAndSettle();
   if (!unemployed) {
     await tester.tap(find.byKey(const Key('choose-club-club-1')));
@@ -252,8 +252,8 @@ void main() {
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
-        await tester.ensureVisible(find.text('3. MERCADO & LEILÃO'));
-        await tester.tap(find.text('3. MERCADO & LEILÃO'));
+        await tester.ensureVisible(find.byKey(const ValueKey('shell-nav-2')));
+        await tester.tap(find.byKey(const ValueKey('shell-nav-2')));
         await tester.pumpAndSettle();
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();

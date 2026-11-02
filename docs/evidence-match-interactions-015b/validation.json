@@ -1,0 +1,130 @@
+{
+  "date": "2026-11-01",
+  "worktree": "D:\\elifoot_98_015B",
+  "base": "9002054170ee9d2236bc35a0af032d9dad97fd1a",
+  "dotnet": {
+    "passed": 654,
+    "failed": 0,
+    "skipped": 0
+  },
+  "flutter": {
+    "passed": 211,
+    "failed": 0,
+    "skipped": 0,
+    "analyzerIssues": 0
+  },
+  "renderer": {
+    "passed": 1,
+    "pngFiles": 10,
+    "source": "Official recorded QA API responses, Flutter widget renderer; NOT Chrome/device screenshots."
+  },
+  "chrome": {
+    "status": "BLOCKED",
+    "reason": "Local browser use is disabled in Work settings"
+  },
+  "manualPlaytest": "PENDING_USER_CONFIRMATION",
+  "renders": [
+    {
+      "file": "automated-renders\\desktop-halftime.png",
+      "sha256": "2ac9ab99f29f4c6daffcd9b67741a5bb5b23766df3725d4b70e8f196330d4c93"
+    },
+    {
+      "file": "automated-renders\\desktop-penalty-choice.png",
+      "sha256": "e325305d653f2971f0a54f130d65106617e1bd660f335c2fda5baaa06a5c8118"
+    },
+    {
+      "file": "automated-renders\\desktop-penalty-waiting.png",
+      "sha256": "85e8c5d9e6ab8a87ec526e3f1b8ef486c14a323c98a6f31f03bbfca7472b7ab0"
+    },
+    {
+      "file": "automated-renders\\desktop-substitution-applied.png",
+      "sha256": "a81241698ed2a7893899c24f0f9916550afe760ac9ba977802a4f95f15a419a5"
+    },
+    {
+      "file": "automated-renders\\desktop-substitution.png",
+      "sha256": "486c53d11a03710e28184d9fe1506a7bd02891207ccca8965b7d1c30ac335d61"
+    },
+    {
+      "file": "automated-renders\\mobile-halftime.png",
+      "sha256": "5136479eace507f07014ab09d43d7576ee4640cc95c504d3803cf3635d722c94"
+    },
+    {
+      "file": "automated-renders\\mobile-penalty-choice.png",
+      "sha256": "5e624ae233f82313f82554fa2e59a1fca0703b57512de371ee3e71daa2374099"
+    },
+    {
+      "file": "automated-renders\\mobile-penalty-waiting.png",
+      "sha256": "44ed6222491c09097339527ec84cfb303e5e0edae0be71ef7171871db7c3bb43"
+    },
+    {
+      "file": "automated-renders\\mobile-substitution-applied.png",
+      "sha256": "4abec595f9d629c4d1aacded8a1adde71dbf0197a0f58538562b97c0c641f889"
+    },
+    {
+      "file": "automated-renders\\mobile-substitution.png",
+      "sha256": "c221cab04f9426d57140e07e78e9f189a5e5eb249325e8967d0ce4c48727dd4d"
+    }
+  ],
+  "sourceScenes": [
+    {
+      "file": "interactions-halftime-scene.json",
+      "sha256": "d5d666335de71da474f94d32a48a3117ef903ad5106d30cd0002986003e24b76"
+    },
+    {
+      "file": "interactions-penalty-choice-scene.json",
+      "sha256": "72125498146352a6e63043705b124c8b8d39b1a56764368e0679a4c017b9a1cd"
+    },
+    {
+      "file": "interactions-penalty-waiting-scene.json",
+      "sha256": "0a2450275f6376f999266d752bc3693816d9fbaeb5c7e684879fbb6ef773e75d"
+    },
+    {
+      "file": "interactions-substitution-applied-scene.json",
+      "sha256": "4a2fdcb2694c57d52cb51a1b900e1537dcff5ef7d14aff9c0bf50559f4ed040a"
+    },
+    {
+      "file": "interactions-substitution-observer-scene.json",
+      "sha256": "7732f1834e450dc122db39c1b41e749cacec73ff9de6efb948fd53032ce21e65"
+    },
+    {
+      "file": "interactions-substitution-scene.json",
+      "sha256": "414f6d73c7d9aab84f158e3442451c345e6d93e6e4770549c81ac52b67dd425e"
+    }
+  ],
+  "node": {
+    "passed": 2,
+    "failed": 0
+  },
+  "webBuild": "PASS",
+  "runtime": "runtime-health.json",
+  "checks": [
+    {
+      "file": "interactions-flutter-final.log",
+      "sha256": "967155ef63d4dcfc4c7c4716716c6646a77a7049c8bfbc043fd66162f0f0252f"
+    },
+    {
+      "file": "interactions-flutter-analyze-final.log",
+      "sha256": "a8cf2311c321df22785c9ec1990b07828e81925debeaec3b8083d451cf4a1e2c"
+    },
+    {
+      "file": "interactions-web-build-final.log",
+      "sha256": "593df73bb5cfba0b539813abf2474622e565f430273f9ad212ef301276658183"
+    },
+    {
+      "file": "interactions-renderer.log",
+      "sha256": "bf265d1963b3ba1c0fff2e9dd86988a348671d52f62868e7448c7eebc66beb6f"
+    },
+    {
+      "file": "interactions-integration-final.log",
+      "sha256": "4143a124b8465ab5a0104ccd9de02c43a3594806e8416ce93f477d467d69d5b1"
+    },
+    {
+      "file": "interactions-application-final.log",
+      "sha256": "9d46b706d80443446d69d8ec4dfdc282d8815518e42570daf3d48e594cbe49c2"
+    },
+    {
+      "file": "interactions-node.log",
+      "sha256": "f3f5a0a17670757446b467c586e6860e61f2298d396bd8b61035641776d470cd"
+    }
+  ]
+}

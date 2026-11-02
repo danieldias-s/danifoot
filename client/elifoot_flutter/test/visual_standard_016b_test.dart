@@ -2,6 +2,7 @@ import 'package:elifoot_flutter/appearance_settings.dart';
 import 'package:elifoot_flutter/classic_layout.dart';
 import 'package:elifoot_flutter/club_theme.dart';
 import 'package:elifoot_flutter/morale_bar.dart';
+import 'package:elifoot_flutter/mobile_classic.dart';
 import 'package:elifoot_flutter/visual_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +26,11 @@ void main() {
         await join(tester, api);
         final mobile = width < 1024;
         fits(tester, find.byKey(const Key('classic-club-summary')), width);
-        expect(find.byType(ClassicSummaryCard), findsNWidgets(5));
+        if (width < 768) {
+          expect(find.byType(MobileClubOverview), findsOneWidget);
+        } else {
+          expect(find.byType(ClassicSummaryCard), findsNWidgets(5));
+        }
         expect(
           find.descendant(
             of: find.byType(MoraleBar),

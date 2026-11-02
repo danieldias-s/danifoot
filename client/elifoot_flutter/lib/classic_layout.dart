@@ -36,6 +36,7 @@ class AppHeader extends StatelessWidget {
   final String round, date, world;
   final Widget action;
   final VoidCallback? openMenu;
+  final bool live;
   const AppHeader({
     super.key,
     required this.round,
@@ -43,6 +44,7 @@ class AppHeader extends StatelessWidget {
     required this.world,
     required this.action,
     this.openMenu,
+    this.live = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,7 @@ class AppHeader extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              'LIGA CLÁSSICA ',
+              live ? 'ELIFOOT ' : 'LIGA CLÁSSICA ',
               style: TextStyle(
                 color: t.textPrimary,
                 fontSize: compact
@@ -86,7 +88,7 @@ class AppHeader extends StatelessWidget {
               ),
             ),
             Text(
-              '98',
+              live ? '98 ONLINE' : '98',
               style: TextStyle(
                 color: t.accent,
                 fontSize: compact
@@ -100,6 +102,80 @@ class AppHeader extends StatelessWidget {
             ),
           ],
         );
+        if (c.maxWidth < 768) {
+          return Container(
+            key: const Key('classic-app-header'),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            decoration: BoxDecoration(
+              gradient: t.panelGradient,
+              border: Border(bottom: BorderSide(color: t.accent)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: brand,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 5,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: t.border),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      child: Text(
+                        date,
+                        style: TextStyle(
+                          color: t.textPrimary,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 116),
+                      child: DefaultTextStyle.merge(
+                        style: const TextStyle(fontSize: 10),
+                        child: action,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  round,
+                  key: const Key('classic-header-round'),
+                  maxLines: 2,
+                  style: TextStyle(
+                    color: t.textPrimary,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                if (live)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: Text(
+                      world,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: t.textSecondary, fontSize: 10),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        }
         final info = Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -218,7 +294,7 @@ class AppSidebar extends StatelessWidget {
   final int selected;
   final bool locked, showAppearance, appearanceSelected;
   final ValueChanged<int> onSelected;
-  final VoidCallback? appearance, switchRoom;
+  final VoidCallback? appearance, switchRoom, liveMatches;
   const AppSidebar({
     super.key,
     required this.selected,
@@ -226,6 +302,7 @@ class AppSidebar extends StatelessWidget {
     required this.onSelected,
     this.appearance,
     this.switchRoom,
+    this.liveMatches,
     this.showAppearance = true,
     this.appearanceSelected = false,
   });
@@ -262,6 +339,35 @@ class AppSidebar extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  if (liveMatches != null)
+                    InkWell(
+                      key: const Key('open-live-matches'),
+                      onTap: locked ? null : liveMatches,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 14,
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.sports_soccer,
+                              color: t.textPrimary,
+                              size: 23,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              'JOGOS AO VIVO',
+                              style: TextStyle(
+                                color: t.textPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   for (int i = 0; i < classicNavigation.length; i++)
                     Semantics(
                       button: true,

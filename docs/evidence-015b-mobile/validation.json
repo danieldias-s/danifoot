@@ -1,0 +1,90 @@
+{
+  "task": "015B mobile reference layout; morale remains a bar",
+  "recordedAtUtc": "2026-11-01T12:59:00.556178+00:00",
+  "baseCheckpoint": "3ab57cfee2146c20764bc6c8cc53170e32b43be0",
+  "checkpoint": "Git commit containing this validation.json",
+  "flutterRegression": {
+    "passed": 180,
+    "failed": 0,
+    "skipped": 0,
+    "source": "artifacts/015b/mobile-full.log",
+    "sha256": "2eac57c5ab840a01e19a526d2d22a287967637365a5e46cfc0ca0d91199e8cdc"
+  },
+  "flutterAnalyze": {
+    "issues": 0,
+    "source": "artifacts/015b/mobile-analyze.log",
+    "sha256": "840d949a9b1fe0c0190d4394fd36ecf953003fc985e5c491cc57a863921941d2"
+  },
+  "flutterWebBuild": {
+    "result": "PASS",
+    "apiBase": "http://127.0.0.1:5167",
+    "sha256": "af3e6c2d7f3ec0a225542f512e5f75946a0aaf16cafc26f3f85409f73e0955ad",
+    "source": "artifacts/015b/mobile-build-web.log",
+    "logSha256": "6f6c608ed612a73ca0a7a249a64ea9362cd0e12f4e85ed302df878b1c693833d"
+  },
+  "renderer": {
+    "passed": 1,
+    "source": "tool/mobile_reference_capture_015b_test.dart",
+    "transport": "Recorded HTTP responses; no network, mutation or realtime connection",
+    "logSha256": "07304a6547b573021a775517b33cadeb1973080ecb52bb5594d803051fafb5bf"
+  },
+  "scene": {
+    "source": "GET-only API 5167, development PostgreSQL 55440",
+    "sha256": "77ebaabdda7c0df252dc3fe5d2ff613e56a6318edb5f16b2cc5d120909204fb4",
+    "club": "Flamengo RJ",
+    "worldId": "af4dcfb3-5207-48ae-92db-5cd3623e7270",
+    "round": 5,
+    "state": "PREPARING",
+    "squad": 18,
+    "saveReset": false,
+    "tacticSubmitted": false,
+    "roundAdvanced": false
+  },
+  "renders": [
+    {
+      "file": "automated-renders/filtros-390x1800.png",
+      "sha256": "da40b16c614e9cf1273df250c8d57c88f0941d5be26bec014fc4e15928843cf9",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/filtros-390x844.png",
+      "sha256": "04d0a2e116487ab573bdf7dddb1b3a2ea9ffb57bcf446ca6932260022b0b5a86",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/plantel-1440x1000.png",
+      "sha256": "fa94c16aacb2c5a2efe001fabf4be1d5d9561e79bb84dfe54ed686e893c8b4b1",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/plantel-390x1800.png",
+      "sha256": "d58435aaa09c23ec53660e7753207c4f9cb524906793329948c49ac5de526042",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/plantel-390x844.png",
+      "sha256": "3de990e979635f811a7de7436fec39206b8adcbf1b8d20fbaccadff7bc593404",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/taticas-390x1800.png",
+      "sha256": "2b771fe28b585313a9ce7e62287079aa83aeb4b96a0b711304eefac7b6882be0",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    },
+    {
+      "file": "automated-renders/taticas-390x844.png",
+      "sha256": "d693200e088c1e5d78ead62fd6cc93a4405221d4e78c8f9807f183bbbac4b598",
+      "provenance": "Flutter renderer; NOT Chrome/device capture"
+    }
+  ],
+  "browserVisualAudit": {
+    "status": "PARTIAL",
+    "reason": "Local browser use is disabled in Work settings",
+    "workaroundUsed": false
+  },
+  "manualApproval": "Pending owner confirmation; not declared",
+  "backendChanged": false,
+  "previousRegression": "640 .NET / 2 Node / 100-season scenarios recorded previously; not rerun for this UI-only change",
+  "otherWorktreesTrackedChanges": 0,
+  "publication": false
+}

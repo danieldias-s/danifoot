@@ -1,0 +1,110 @@
+{
+  "task": "New live-match screen desktop and mobile",
+  "baseCheckpoint": "f1a5995ec1145fb561fb98c13902675618f434bc",
+  "checkpoint": "Commit containing this report",
+  "validatedAtUtc": "2026-11-01T14:21:57.759462+00:00",
+  "flutterTests": {
+    "passed": 196,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "ffd028b56449a4235147d71b4bf6488dafcc95b33f74a70e8ecef5b2d1293cf6"
+  },
+  "flutterAnalyze": {
+    "issues": 0,
+    "logSha256": "f88f5e13ca366f009ca97318f2803c5e5bc73673521228a3cf406b49e10e5307"
+  },
+  "webBuild": {
+    "result": "PASS",
+    "sha256": "0b0ff1c6043ffe48bd0852d51cba6ae956602f65e5bb52c67d36f4d2c868a697",
+    "logSha256": "ec36e0bac1ab8cb495f2519b167575760fa8d55573588dc599d309b66cbb8617"
+  },
+  "renderTests": [
+    {
+      "log": "live-capture.log",
+      "passed": 1,
+      "sha256": "ee889ec145b1235c226066bba9a141eec080bc1caafa6b74a4b87618d5879907"
+    },
+    {
+      "log": "live-results-capture.log",
+      "passed": 1,
+      "sha256": "a3e009beb2dbf677105ed796d4f94523036bf4ff9f7f592d146bfde758ab1685"
+    }
+  ],
+  "renders": [
+    {
+      "file": "automated-renders/desktop-observing-other.png",
+      "sha256": "6adcbbf67213519a867a048f541f8d587dc327cec8efdc4ab29fbc182f270847",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/desktop-own.png",
+      "sha256": "9b965856fb7e918026e37906d2b91764561cce31233cc35df5d57be91bc9e5e4",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/mobile-expanded-divisions.png",
+      "sha256": "007b7bc9ac35a84ecc82f0ceaaa1e3170d173acfeb8a02458030decd9341a5c3",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/mobile-observing-other.png",
+      "sha256": "1ae970eea53956e821a735b98a792fd5b2404ccf17f98d88593db653780da29e",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/mobile-own.png",
+      "sha256": "03a5e0314c08205c1d2995a710e26a9464e96d09dfaffdc8de318e9067b0df56",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/mobile-statistics.png",
+      "sha256": "0806fa40eea6b5eb230d26763b1164461d62d232b979e7adb8c979ce4499c7b6",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-desktop-observing-other.png",
+      "sha256": "dcc48d101285145b9eca7f1f624410ca3578c81d103389414a79dab42f0ba51c",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-desktop-own.png",
+      "sha256": "6c62534e028fa896792c9ac1f65c54af71576d9370c1efa8320f696b82b0d668",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-mobile-expanded-divisions.png",
+      "sha256": "aeddbd297cfcd3bc8e8e62261277fc251c2d78feafbcd8b876146c5cec40969f",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-mobile-observing-other.png",
+      "sha256": "2883f918d52e018fb2ca544d9276273116847a67035a88f17b85dab9220098a0",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-mobile-own.png",
+      "sha256": "89e3a542dd220544bd616ef72333b2459694319e7cd4d6b36ba32712ce66bf71",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    },
+    {
+      "file": "automated-renders/results-mobile-statistics.png",
+      "sha256": "50c534de51f525e2d4e7fbf19259b954a3c4ae3dc2a284821bbe9e9b65f1be4c",
+      "source": "Flutter rendering of recorded official QA API responses; NOT Chrome/device screenshot"
+    }
+  ],
+  "qaWorld": "f9864efb-943c-4aa5-ad8e-daa6bf185cc0",
+  "ownerRoomsTargetedByQaCommands": false,
+  "backendChanged": false,
+  "browserAudit": {
+    "status": "PARTIAL",
+    "reason": "Local browser use is disabled in Work settings"
+  },
+  "manualApproval": "Not declared",
+  "published": false,
+  "focusedIntegration": {
+    "passed": 16,
+    "includes": "capacity refresh after round settlement while preserving observation",
+    "logSha256": "68660822db5855cf2762bbf7d1abf05e926829aeb65095449ca6467c3e9f584e"
+  },
+  "otherWorktreesTrackedChanges": 0
+}

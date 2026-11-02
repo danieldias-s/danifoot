@@ -171,16 +171,20 @@ class ClassicSelectionTabs extends StatelessWidget {
 }
 
 class ClassicBottomNavigation extends StatelessWidget {
+  final bool compactMenu;
   final int selected;
   final bool locked;
   final bool showPlayerRankings;
+  final bool showCoachRanking;
   final ValueChanged<int> onSelected;
   const ClassicBottomNavigation({
     super.key,
+    this.compactMenu = false,
     required this.selected,
     required this.locked,
     required this.onSelected,
     this.showPlayerRankings = false,
+    this.showCoachRanking = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -189,7 +193,9 @@ class ClassicBottomNavigation extends StatelessWidget {
       (Icons.checkroom, 'PLANTEL'),
       (Icons.account_tree, 'TÁTICAS'),
       (Icons.swap_horiz, 'MERCADO'),
-      showPlayerRankings
+      showCoachRanking
+          ? (Icons.bar_chart, 'RANKING')
+          : showPlayerRankings
           ? (Icons.bar_chart, 'RANKINGS')
           : (Icons.emoji_events, 'COMPETIÇÕES'),
       (Icons.more_horiz, 'MAIS'),
@@ -207,6 +213,9 @@ class ClassicBottomNavigation extends StatelessWidget {
             for (var i = 0; i < entries.length; i++)
               Expanded(
                 child: Semantics(
+                  key: compactMenu && i == 4 && !locked
+                      ? const Key('open-navigation')
+                      : ValueKey('mobile-nav-$i'),
                   selected: selected == i,
                   button: true,
                   enabled: !locked,

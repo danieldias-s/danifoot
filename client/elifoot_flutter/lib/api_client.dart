@@ -385,6 +385,26 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
+  Future<Map<String, dynamic>> choosePenaltyTaker(
+    String worldId,
+    String coachId,
+    String decisionId,
+    String playerId,
+  ) async {
+    final response = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/$worldId/penalty-taker'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'gameWorldId': worldId,
+        'coachId': coachId,
+        'decisionId': decisionId,
+        'playerId': playerId,
+        'idempotencyKey': 'penalty-$coachId-$decisionId-$playerId',
+      }),
+    );
+    return _decodeResponse(response);
+  }
+
   Future<Map<String, dynamic>> confirmContinue(
     String worldId,
     String coachId,

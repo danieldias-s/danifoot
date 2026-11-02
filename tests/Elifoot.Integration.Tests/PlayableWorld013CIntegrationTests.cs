@@ -100,7 +100,7 @@ public sealed class PlayableWorld013CIntegrationTests
                 var snap=await Snapshot(client,worldId);if(snap.RoundState==RoundState.RESULTS)break;
                 if(snap.ActivePauseWindow!=null)
                     foreach(var coach in coaches)Assert.True((await client.PostAsJsonAsync($"/api/worlds/{worldId}/continue",new ConfirmContinueMatchCommand(worldId,coach,$"continue-{round}-{step}-{coach}"))).IsSuccessStatusCode);
-                else Assert.True((await client.PostAsync($"/api/worlds/{worldId}/tick?ticks=125",null)).IsSuccessStatusCode);
+                else Assert.True((await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client,worldId,125)).IsSuccessStatusCode);
             }
             Assert.Equal(RoundState.RESULTS,(await Snapshot(client,worldId)).RoundState);
             Assert.True((await client.PostAsync($"/api/worlds/{worldId}/next-round",null)).IsSuccessStatusCode);

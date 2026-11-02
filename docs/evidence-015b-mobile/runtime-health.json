@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-01T09:58:07.0778247-03:00",
+  "web": {
+    "app": "ELIFOOT_015B",
+    "api": "http://127.0.0.1:5167",
+    "web": "http://127.0.0.1:5168",
+    "root": "D:\\elifoot_98_015B\\artifacts\\015b\\web",
+    "sha256": "af3e6c2d7f3ec0a225542f512e5f75946a0aaf16cafc26f3f85409f73e0955ad"
+  },
+  "httpStatus": 200,
+  "servedSha256": "af3e6c2d7f3ec0a225542f512e5f75946a0aaf16cafc26f3f85409f73e0955ad",
+  "cacheControl": [
+    "no-store"
+  ],
+  "apiPid": 21368,
+  "apiPreserved": true,
+  "postgresPids": 5748,
+  "postgresPreserved": true,
+  "restart": "Only owned Web 5168; API and database kept running"
+}

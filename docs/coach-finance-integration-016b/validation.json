@@ -1,0 +1,178 @@
+{
+  "task": "Integrate 015B into current 016B and match coach/finance reference screens",
+  "target": "feature/world-catalog-lobby-016b",
+  "base": "008c756",
+  "source": "8ed83c3",
+  "sourceCommits": [
+    "3ab57cf",
+    "f1a5995",
+    "9002054",
+    "8ed83c3"
+  ],
+  "status": "PARTIAL: technical validation passed; actual Chrome screenshots and manual approval pending",
+  "flutter": {
+    "passed": 273,
+    "failed": 0,
+    "analyzerIssues": 0,
+    "webBuild": "PASS"
+  },
+  "captures": {
+    "renderer": "Flutter with recorded real API responses; not Chrome screenshots",
+    "source": {
+      "writes": 0,
+      "rankingRows": 34,
+      "note": "Read-only real API scene; Flutter renders are not browser screenshots.",
+      "worldId": "73e11073-a854-487e-bc59-efd9856cab91",
+      "source": "http://127.0.0.1:5175/api/worlds/73e11073-a854-487e-bc59-efd9856cab91",
+      "club": "Flamengo RJ",
+      "ledgerRows": 2,
+      "recordedAt": "2026-11-02T21:54:37.0137363Z"
+    },
+    "files": [
+      "coach-career-1366.png",
+      "coach-career-390.png",
+      "coach-ranking-1366.png",
+      "coach-ranking-390.png",
+      "coach-ranking-complete-390.png",
+      "finances-ledger-390.png",
+      "finances-top-1366.png",
+      "finances-top-390.png"
+    ]
+  },
+  "dotnetRuns": [
+    {
+      "file": "Daniel_DESKTOP-A5J5UME_2026-11-02_18_38_57_net10.0.trx",
+      "counts": {
+        "total": "438",
+        "executed": "438",
+        "passed": "438",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    {
+      "file": "Daniel_DESKTOP-A5J5UME_2026-11-02_18_40_30_net10.0.trx",
+      "counts": {
+        "total": "17",
+        "executed": "17",
+        "passed": "17",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    {
+      "file": "Daniel_DESKTOP-A5J5UME_2026-11-02_18_47_43_net10.0.trx",
+      "counts": {
+        "total": "258",
+        "executed": "258",
+        "passed": "258",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    {
+      "file": "Daniel_DESKTOP-A5J5UME_2026-11-02_18_51_36_net10.0.trx",
+      "counts": {
+        "total": "3",
+        "executed": "3",
+        "passed": "3",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    }
+  ],
+  "manualTestApproved": false,
+  "productionPublished": false,
+  "masterModified": false,
+  "mergeReady": true,
+  "dotnetPassed": 716,
+  "simulations100Seasons": {
+    "Male": {
+      "Seasons": 100,
+      "TotalMatchesCompleted": 35100,
+      "FinalCash": 96636018.48,
+      "FinalDebt": 0,
+      "InvalidLineupSelectionViolations": 0,
+      "InvalidSquadLimitViolations": 0,
+      "DoubleSettledMatchFinancialViolations": 0
+    },
+    "Female": {
+      "Seasons": 100,
+      "TotalMatchesCompleted": 35100,
+      "FinalCash": 93597013.6,
+      "FinalDebt": 3162490.6,
+      "InvalidLineupSelectionViolations": 0,
+      "InvalidSquadLimitViolations": 0,
+      "DoubleSettledMatchFinancialViolations": 0
+    }
+  },
+  "runtime": {
+    "manualTestApproved": false,
+    "api": {
+      "status": "OK",
+      "authMode": "LocalDev",
+      "dbProvider": "PostgreSQL",
+      "timestampUtc": "2026-11-02T22:10:18.2420486Z"
+    },
+    "urls": [
+      "http://127.0.0.1:5176/",
+      "http://127.0.0.1:5175"
+    ],
+    "registered": 4,
+    "sha256": "C31D0EA66E44E883332E2B3BC6F3E9C1E618CB97332A9B21C0EC0287A1385AEE",
+    "lobbyPreserved": true,
+    "web": {
+      "app": "ELIFOOT_WORLD_CATALOG_016B",
+      "api": "http://127.0.0.1:5175",
+      "root": "D:\\elifoot_98_016B\\artifacts\\016b\\world-catalog\\web",
+      "sha256": "c31d0ea66e44e883332e2b3bc6f3e9c1e618cb97332a9b21c0ec0287a1385aee"
+    },
+    "drawCompleted": true
+  },
+  "browserScreenshots": 0,
+  "flutterRenders": 8
+}

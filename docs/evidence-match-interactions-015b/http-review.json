@@ -1,0 +1,21 @@
+{
+  "worldId": "6ceb9f35-2248-4ab9-add1-d73ca37fc6c2",
+  "inviteCode": "ELI0EC6DAC6",
+  "worldName": "015B QA - Pênaltis e substituições",
+  "round": 16,
+  "minute": 16,
+  "openingCostsZero": true,
+  "actualSubstitutionCounts": true,
+  "oneWindowPerEditor": true,
+  "retryNoDuplicate": true,
+  "halftimeSubstitutionCounts": true,
+  "halftimeNoWindowCharge": true,
+  "frozenTicks": 375,
+  "penaltyNaturallyAwarded": true,
+  "ownerSavesModified": false,
+  "penaltyPersistedAcrossProcessRestart": true,
+  "wrongCoachRejected": true,
+  "exactKickRetryIdempotent": true,
+  "decision": "fe917414-1c52-4975-9b95-367a9adf0011",
+  "penaltyMinute": 16
+}

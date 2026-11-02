@@ -82,5 +82,12 @@ if(-not $ApiOnly -and -not(Test-OwnedCatalog016B 5176 'http://127.0.0.1:5176/__w
  if(-not(Test-Path -LiteralPath (Join-Path $taskArea 'web/main.dart.js'))){throw 'Build Web do catálogo ausente.'}
  $process=Start-Process -FilePath (Get-Command node).Source -ArgumentList @((Join-Path $PSScriptRoot 'serve-world-catalog-016b.mjs')) -WorkingDirectory $taskRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $taskArea 'web-5176.log') -RedirectStandardError (Join-Path $taskArea 'web-5176-error.log') -PassThru
  Record-OwnedCatalog016B $process 5176
+ $webReady=$false
+ for($i=0;$i -lt 60;$i++){
+  if($process.HasExited){throw 'Web encerrou; consultar os logs 5176.'}
+  try{$null=Invoke-RestMethod 'http://127.0.0.1:5176/__world_catalog_016b_health' -TimeoutSec 1;$webReady=$true;break}catch{Start-Sleep -Milliseconds 250}
+ }
+ if(-not $webReady){throw 'Web não confirmou o health check.'}
 }
-Write-Output 'Catálogo 016B: http://127.0.0.1:5176 | API http://127.0.0.1:5175 | bancos wc_catalog/wc_worlds isolados.'
+if($ApiOnly){Write-Output 'API catálogo 016B: http://127.0.0.1:5175 | bancos wc_catalog/wc_worlds isolados.'}
+else{Write-Output 'Catálogo 016B: http://127.0.0.1:5176 | API http://127.0.0.1:5175 | bancos wc_catalog/wc_worlds isolados.'}

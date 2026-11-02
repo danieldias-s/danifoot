@@ -20,6 +20,8 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   String moraleBand = 'VERDE';
   int usedSubs = 0;
   int usedPauses = 0;
+  bool editedPause = false;
+  String liveFormation = '4-4-2';
   int confirmedPauseCount = 0;
   double cashBalance = 1850000;
   int builtCapacity = 20000;
@@ -172,6 +174,10 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
           (currentRoundState == 'GLOBAL_PAUSED' ||
               currentRoundState == 'HALFTIME_PAUSED')
           ? {
+              'pauseWindowId': 'pause-$currentRound',
+              'pauseType': currentRoundState,
+              'confirmedCoachIds': <String>[],
+              'editedCoachIds': editedPause ? ['coach-1'] : <String>[],
               'requestedByCoachId': 'coach-1',
               'requestedByCoachName': 'Treinador 1',
               'minute': 42,
@@ -193,7 +199,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
                 'awayGoals': 1,
                 'minute': currentRoundState == 'RESULTS' ? 90 : 42,
                 'isFinished': currentRoundState == 'RESULTS',
-                'homeFormation': '4-4-2',
+                'homeFormation': liveFormation,
                 'awayFormation': '4-3-3',
                 'homeSubCount': usedSubs,
                 'homeMaxSubs': 5,
@@ -660,7 +666,7 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     String coachId,
   ) async {
     currentRoundState = 'GLOBAL_PAUSED';
-    usedPauses = 1;
+    editedPause = false;
     roundVersion++;
     return await getSnapshot(worldId);
   }
@@ -673,6 +679,14 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     String? newFormation,
     required List<Map<String, String>> substitutions,
   }) async {
+    final changed =
+        substitutions.isNotEmpty ||
+        (newFormation != null && newFormation != liveFormation);
+    if (currentRoundState == 'GLOBAL_PAUSED' && changed && !editedPause) {
+      usedPauses++;
+      editedPause = true;
+    }
+    if (newFormation != null) liveFormation = newFormation;
     usedSubs += substitutions.length;
     roundVersion++;
     return await getSnapshot(worldId);
@@ -871,7 +885,8 @@ void main() {
         find.byKey(const ValueKey('coach-highlighted-match-card')),
       );
       await tester.pumpAndSettle();
-      expect(find.textContaining('[GOL]'), findsWidgets);
+      expect(find.byKey(const Key('live-match-events')), findsOneWidget);
+      expect(find.textContaining('GOL de Titular 10'), findsOneWidget);
 
       // 7. Request global pause -> opens interactive substitution panel
       await tester.tap(find.byKey(const Key('btn-pedir-parada')));

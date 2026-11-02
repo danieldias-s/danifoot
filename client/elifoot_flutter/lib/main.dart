@@ -16,10 +16,16 @@ import 'world_creator.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
 import 'visual_components.dart';
+import 'coach_finance_screens.dart';
+import 'mobile_classic.dart';
+import 'live_match_data.dart';
+import 'live_match_view.dart';
+import 'live_match_navigation.dart';
+import 'match_interaction_dialog.dart';
+import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
-import 'classic_match_board.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 import 'lobby_room_status.dart';
@@ -141,10 +147,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   /// MATCH TEAM COLORS directory (014C rebalance): registered club palettes by
   /// club id and by name, used to paint team blocks in cup/calendar lists.
-  /// Loaded once per world; failures leave the lists neutral.
+  /// Refreshed with the secondary queries; failures never mix rooms.
   final Map<String, Map<String, dynamic>> _clubPaletteById = {};
   final Map<String, Map<String, dynamic>> _clubPaletteByName = {};
   String? _clubPaletteWorld;
+  final Map<String, Map<String, dynamic>> _liveClubs = {};
+  final _liveSelection = LiveMatchSelection();
 
   Map<String, dynamic>? _teamPalette({dynamic id, dynamic name}) {
     if (_clubPaletteWorld != _worldId) return null;
@@ -154,7 +162,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _loadClubPalettes(String worldId) async {
-    if (_clubPaletteWorld == worldId) return;
+    // Stadium capacity and club metadata can change between rounds.
     try {
       final clubs = await widget.apiClient.getClubs(worldId);
       if (!mounted || _worldId != worldId) return;
@@ -162,6 +170,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _clubPaletteWorld = worldId;
         _clubPaletteById.clear();
         _clubPaletteByName.clear();
+        _liveClubs.clear();
         final duplicateNames = <String>{};
         final seenNames = <String>{};
         for (final c in clubs) {
@@ -172,6 +181,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           }
         }
         for (final c in clubs) {
+          if (c is Map && c['id'] != null) {
+            _liveClubs['${c['id']}'] = Map<String, dynamic>.from(c);
+          }
           if (c is! Map || c['colorPalette'] is! Map) continue;
           final p = Map<String, dynamic>.from(c['colorPalette'] as Map);
           _clubPaletteById[c['id'].toString()] = p;
@@ -208,16 +220,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   final _marketPreferences = MarketPreferences();
 
   // In-match substitution selection state
-  String? _subPlayerOutId;
-  String? _subPlayerInId;
-  String? _inMatchFormation;
+  String? _matchInteractionNotice;
+  String? _lastInteractionId;
 
   // Editor state
 
   final _shellScaffoldKey = GlobalKey<ScaffoldState>();
+  bool _mobileTacticsView = false;
   int _activeTabIndex = 0;
   bool _showMatchView = false;
-  bool _appearanceOpen = false, _bottomTactics = false;
+  bool _appearanceOpen = false;
   String _competitionTab = 'standings';
   final _tacticsPanelKey = GlobalKey();
   final _roundView = RoundViewCoordinator();
@@ -241,7 +253,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     }
     setState(() {
       _appearanceOpen = false;
-      _bottomTactics = false;
     });
     _navigation.navigate(MatchNavigationController.paths[index]);
     _refreshClubAndSecondaryData();
@@ -274,6 +285,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     try {
       if (saved != null) session = jsonDecode(saved);
     } catch (_) {}
+    if (session?['liveSelection'] is Map) {
+      _liveSelection.restore(
+        Map<String, dynamic>.from(session!['liveSelection'] as Map),
+      );
+    }
     _restoringSession = session?['worldId'] != null;
     _nickname = session?['nickname'] ?? _nickname;
     _deviceId = session?['deviceId'] ?? _deviceId;
@@ -542,6 +558,22 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
     final next = _preferLatestSnapshot(incoming);
     if (next != null) {
+      final interactionId =
+          (next['pendingPenalty']?['decisionId'] ??
+                  next['activePauseWindow']?['pauseWindowId'])
+              ?.toString();
+      if (interactionId != _lastInteractionId) {
+        _lastInteractionId = interactionId;
+        _matchInteractionNotice = null;
+        if (interactionId != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted && _lastInteractionId == interactionId) {
+              _shellScaffoldKey.currentState?.closeDrawer();
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            }
+          });
+        }
+      }
       final wasLocked = _navigation.locked;
       _navigation.acceptStage(next['roundState']?.toString());
       if (_navigation.locked && !wasLocked) {
@@ -567,6 +599,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
     final nextSeason = (next?['seasonNumber'] as num?)?.toInt();
     final worldId = _worldId;
+    if (previousSeason != null &&
+        nextSeason != null &&
+        nextSeason > previousSeason) {
+      _clubPaletteWorld = null;
+    }
     if (worldId != null &&
         previousSeason != null &&
         nextSeason != null &&
@@ -744,156 +781,137 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           canPop: !_matchLocked,
           child: Scaffold(
             key: _shellScaffoldKey,
+            drawerEnableOpenDragGesture: !_matchLocked,
             bottomNavigationBar: desktop
                 ? null
-                : ClassicBottomNavigation(
-                    showPlayerRankings:
-                        _activeTabIndex == 6 && !_appearanceOpen,
-                    selected: _appearanceOpen
-                        ? 4
-                        : _activeTabIndex == 6
-                        ? 3
-                        : _activeTabIndex == 2
-                        ? 2
-                        : (_activeTabIndex == 1 || _activeTabIndex == 5)
-                        ? 3
-                        : _activeTabIndex == 0
-                        ? (_bottomTactics ? 1 : 0)
-                        : 4,
-                    locked: _matchLocked,
-                    onSelected: (index) {
-                      if (index == 4) {
-                        _shellScaffoldKey.currentState?.openDrawer();
-                        return;
-                      }
-                      _navigateToTab(
-                        index == 2
-                            ? 2
-                            : index == 3
-                            ? (_activeTabIndex == 6 ? 6 : 1)
-                            : 0,
-                      );
-                      if (index == 1) {
-                        setState(() => _bottomTactics = true);
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          final target = _tacticsPanelKey.currentContext;
-                          if (mounted && target != null) {
-                            Scrollable.ensureVisible(
-                              target,
-                              duration: const Duration(milliseconds: 200),
-                            );
-                          }
-                        });
-                      }
-                    },
-                  ),
+                : _buildIntegratedBottomNavigation(viewport.maxWidth),
             drawer: desktop
                 ? null
                 : Drawer(
                     width: 250,
                     child: SafeArea(child: _buildClassicNavigationMenu()),
                   ),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: MediaQuery.sizeOf(context).height * 0.42,
-                    ),
-                    child: SingleChildScrollView(
-                      child: _buildTopSynchronizedHeader(),
-                    ),
-                  ),
-                  if (_statusBanner != null)
-                    Container(
-                      width: double.infinity,
-                      color: ClassicTheme.of(context).surfaceAlternate,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
+            body: MatchInteractionOverlay(
+              interaction: _buildMatchInteraction(),
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.42,
                       ),
-                      child: Row(
-                        children: [
-                          Text(
-                            '[!]',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: ClassicTheme.of(context).accent,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              _statusBanner!,
+                      child: SingleChildScrollView(
+                        child: _buildTopSynchronizedHeader(viewport.maxWidth),
+                      ),
+                    ),
+                    if (_statusBanner != null)
+                      Container(
+                        width: double.infinity,
+                        color: ClassicTheme.of(context).surfaceAlternate,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '[!]',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: ClassicTheme.of(context).textPrimary,
+                                fontWeight: FontWeight.bold,
+                                color: ClassicTheme.of(context).accent,
                               ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () => setState(() => _statusBanner = null),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
+                            const SizedBox(width: 8),
+                            Expanded(
                               child: Text(
-                                '[X]',
+                                _statusBanner!,
                                 style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
-                                  color: ClassicTheme.of(context).accent,
+                                  fontSize: 12,
+                                  color: ClassicTheme.of(context).textPrimary,
                                 ),
                               ),
+                            ),
+                            InkWell(
+                              onTap: () => setState(() => _statusBanner = null),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
+                                child: Text(
+                                  '[X]',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: ClassicTheme.of(context).accent,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    if ((_snapshot?['roundState'] == 'PREPARING' ||
+                            _snapshot?['roundState'] == 'ALL_READY') &&
+                        ((_snapshot?['readyCounter']?['participants']
+                                    as List? ??
+                                [])
+                            .any(
+                              (p) =>
+                                  p['coachId'] == _coachId &&
+                                  p['isReady'] == true,
+                            )))
+                      Container(
+                        key: const Key('ready-waiting-panel'),
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(8),
+                        color: ClassicTheme.of(context).surfaceAlternate,
+                        child: Text(
+                          _isUnemployed
+                              ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+                              : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
+                          style: TextStyle(
+                            color: ClassicTheme.of(context).accent,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    if ((_showMatchView || _matchLocked) &&
+                        viewport.maxWidth >= 768)
+                      LiveMatchNavigation(
+                        locked: _matchLocked,
+                        onSelected: (idx) {
+                          if (idx == -1) {
+                            _navigation.navigate('/partida');
+                          } else {
+                            _navigateToTab(idx);
+                          }
+                        },
+                        switchRoom: _matchLocked ? null : _switchRoom,
+                      ),
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (desktop && !_showMatchView && !_matchLocked)
+                            _buildClassicNavigationMenu(),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                if (!_matchLocked &&
+                                    !_showMatchView &&
+                                    !_appearanceOpen)
+                                  _buildClubSummaryStrip(viewport.maxWidth),
+                                Expanded(child: _buildActiveScreenBody()),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  if ((_snapshot?['roundState'] == 'PREPARING' ||
-                          _snapshot?['roundState'] == 'ALL_READY') &&
-                      ((_snapshot?['readyCounter']?['participants'] as List? ??
-                              [])
-                          .any(
-                            (p) =>
-                                p['coachId'] == _coachId &&
-                                p['isReady'] == true,
-                          )))
-                    Container(
-                      key: const Key('ready-waiting-panel'),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(8),
-                      color: ClassicTheme.of(context).surfaceAlternate,
-                      child: Text(
-                        _isUnemployed
-                            ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
-                            : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (desktop) _buildClassicNavigationMenu(),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              if (!_matchLocked && !_showMatchView)
-                                if (!_appearanceOpen) _buildClubSummaryStrip(),
-                              Expanded(child: _buildActiveScreenBody()),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -1262,7 +1280,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   /// Persistent Top Header:
   /// Shows `TÁTICAS ENVIADAS: X/N` + names in preparation, and `MINUTO XX'`, `SUBSTITUIÇÕES X/5`, `PARADAS X/3`, `PEDIR PARADA` in match!
-  Widget _buildTopSynchronizedHeader() {
+  Widget _buildTopSynchronizedHeader(double viewportWidth) {
     final snap = _snapshot;
     final state = snap?['roundState']?.toString() ?? 'PREPARING';
     final people = snap?['readyCounter']?['participants'] as List? ?? [];
@@ -1317,7 +1335,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     } else if (pause != null) {
       action = ElevatedButton(
-        key: const Key('btn-confirmar-continuar'),
+        key: const Key('btn-header-confirmar-continuar'),
         onPressed: _commandBusy
             ? null
             : () => _runUiCommand(_handleConfirmContinue),
@@ -1331,7 +1349,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         onPressed: _commandBusy
             ? null
             : () => _runUiCommand(_handleRequestGlobalPause),
-        child: const Text('PEDIR PARADA'),
+        child: const Text('SUBSTITUIR'),
       );
     } else {
       action = const Text('TEMPORADA ENCERRADA');
@@ -1343,9 +1361,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           round:
               'Temporada ${snap?['seasonNumber'] ?? '—'} | Rodada ${snap?['roundNumber'] ?? '—'} (${snap?['competitionLabel'] ?? ''})',
           date: formatClassicDate(snap?['gameDate']),
-          world: snap?['worldName']?.toString() ?? '',
+          live: _showMatchView || _matchLocked,
+          world: (_showMatchView || _matchLocked)
+              ? '${snap?['worldName'] ?? ''} • ${snap?['readyCounter']?['totalHumans'] ?? people.length} treinadores • ${_myClubDetail?['name'] ?? me?['clubName'] ?? 'Sem clube'}'
+              : snap?['worldName']?.toString() ?? '',
           action: action,
-          openMenu: MediaQuery.sizeOf(context).width < 1024 && !_matchLocked
+          openMenu:
+              viewportWidth >= 768 && viewportWidth < 1024 && !_matchLocked
               ? () => _shellScaffoldKey.currentState?.openDrawer()
               : null,
         ),
@@ -1439,31 +1461,161 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             _shellScaffoldKey.currentState?.closeDrawer();
             setState(() => _appearanceOpen = true);
           },
-    switchRoom: _matchLocked
-        ? null
-        : () async {
-            if (_matchLocked) return;
-            _shellScaffoldKey.currentState?.closeDrawer();
-            widget.apiClient.disconnectRealtime();
-            setState(() {
-              _worldId = null;
-              widget.appearance?.activate(
-                widget.apiClient,
-                null,
-                null,
-                null,
-                null,
-              );
-              _snapshot = null;
-              _myClubDetail = null;
-              _myClubId = null;
-              _selectedStarterIds = [];
-            });
-            await _saveSession();
-          },
+    switchRoom: _matchLocked ? null : _switchRoom,
+    liveMatches: () {
+      _navigation.navigate('/partida');
+      _shellScaffoldKey.currentState?.closeDrawer();
+    },
   );
 
-  Widget _buildClubSummaryStrip() {
+  Future<void> _switchRoom() async {
+    if (_matchLocked) return;
+    _shellScaffoldKey.currentState?.closeDrawer();
+    widget.apiClient.disconnectRealtime();
+    setState(() {
+      _worldId = null;
+      widget.appearance?.activate(widget.apiClient, null, null, null, null);
+      _snapshot = null;
+      _myClubDetail = null;
+      _myClubId = null;
+      _selectedStarterIds = [];
+    });
+    await _saveSession();
+  }
+
+  void _navigateMobile(int destination) {
+    if (_matchLocked) return;
+    if (_showMatchView) {
+      if (destination == 4) {
+        _shellScaffoldKey.currentState?.openDrawer();
+        return;
+      }
+      if (destination == 1) {
+        _navigation.navigate('/partida');
+        return;
+      }
+      _navigateToTab(
+        destination == 0
+            ? 0
+            : destination == 2
+            ? 1
+            : 2,
+      );
+      return;
+    }
+    if (destination == 4) {
+      _shellScaffoldKey.currentState?.openDrawer();
+      return;
+    }
+    if (destination == 0 || destination == 1) {
+      setState(() => _mobileTacticsView = destination == 1);
+      _navigateToTab(0);
+    } else {
+      _navigateToTab(destination == 2 ? 2 : 1);
+    }
+  }
+
+  void _toggleSquadPlayer(Map<String, dynamic> player) {
+    final pid = '${player['id']}';
+    if (_tacticsLocked ||
+        (player['injuryDaysRemaining'] as num? ?? 0) > 0 ||
+        (player['injuryRoundsRemaining'] as num? ?? 0) > 0 ||
+        (player['suspensionRoundsRemaining'] as num? ?? 0) > 0) {
+      return;
+    }
+    setState(() {
+      if (_selectedStarterIds.contains(pid)) {
+        _selectedStarterIds.remove(pid);
+        if (_selectedBenchIds.length < 9) _selectedBenchIds.add(pid);
+      } else if (_selectedBenchIds.contains(pid)) {
+        _selectedBenchIds.remove(pid);
+      } else if (_selectedStarterIds.length < 11) {
+        _selectedStarterIds.add(pid);
+      } else if (_selectedBenchIds.length < 9) {
+        _selectedBenchIds.add(pid);
+      }
+    });
+  }
+
+  void _renewSquadPlayer(Map<String, dynamic> player) {
+    if (_commandBusy || _matchLocked) return;
+    _runUiCommand(() async {
+      await widget.apiClient.renewPlayerContract(
+        _worldId!,
+        '${player['id']}',
+        _coachId!,
+        15,
+      );
+      await _refreshClubAndSecondaryData();
+      if (mounted) {
+        setState(
+          () => _statusBanner =
+              'Contrato de ${player['displayName']} renovado (+15 rodadas).',
+        );
+      }
+    });
+  }
+
+  Widget _buildIntegratedBottomNavigation(double width) {
+    if (_showMatchView || _matchLocked) {
+      return MobileClassicNavigation(
+        liveMode: true,
+        selected: 1,
+        locked: _matchLocked,
+        onSelected: _navigateMobile,
+      );
+    }
+    final selected = _appearanceOpen
+        ? 4
+        : (_activeTabIndex == 6 || _activeTabIndex == 4)
+        ? 3
+        : _activeTabIndex == 2
+        ? 2
+        : (_activeTabIndex == 1 || _activeTabIndex == 5)
+        ? 3
+        : _activeTabIndex == 0
+        ? (_mobileTacticsView ? 1 : 0)
+        : 4;
+    final navigation = ClassicBottomNavigation(
+      compactMenu: width < 768,
+      showCoachRanking: _activeTabIndex == 4 && !_appearanceOpen,
+      showPlayerRankings: _activeTabIndex == 6 && !_appearanceOpen,
+      selected: selected,
+      locked: _matchLocked,
+      onSelected: (index) {
+        if (index == 4) {
+          _shellScaffoldKey.currentState?.openDrawer();
+          return;
+        }
+        if (index == 0 || index == 1) {
+          setState(() {
+            _mobileTacticsView = index == 1;
+          });
+        }
+        _navigateToTab(
+          index == 2
+              ? 2
+              : index == 3
+              ? (_activeTabIndex == 6
+                    ? 6
+                    : _activeTabIndex == 4
+                    ? 4
+                    : 1)
+              : 0,
+        );
+      },
+    );
+    return width < 768
+        ? MobileClassicNavigation(
+            selected: selected,
+            locked: _matchLocked,
+            onSelected: _navigateMobile,
+            child: navigation,
+          )
+        : navigation;
+  }
+
+  Widget _buildClubSummaryStrip(double viewportWidth) {
     final club = _myClubDetail;
     final round = (_snapshot?['roundNumber'] as num?)?.toInt() ?? 1;
     final next = _calendar
@@ -1476,6 +1628,32 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final fixture = (next?['fixtures'] as List? ?? [])
         .where((f) => f['home'] == club?['name'] || f['away'] == club?['name'])
         .firstOrNull;
+    if (viewportWidth < 768 && _activeTabIndex != 6) {
+      final people = _snapshot?['readyCounter']?['participants'] as List? ?? [];
+      final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+      return KeyedSubtree(
+        key: const Key('classic-club-summary'),
+        child: MobileClubOverview(
+          club: club?['name']?.toString() ?? 'TREINADOR SEM CLUBE',
+          coach: _nickname,
+          division: club?['divisionDisplay']?.toString() ?? 'Sem divisão',
+          standing:
+              'Posição: ${_standings.where((s) => s['clubId'] == _myClubId).firstOrNull?['position'] ?? '—'}',
+          cash: club?['cashBalance'] is num
+              ? formatClassicMoney(club!['cashBalance'])
+              : '—',
+          opponent: fixture == null
+              ? 'A definir'
+              : '${fixture['home'] == club?['name'] ? fixture['away'] : fixture['home']} • R${next?['roundNumber']}',
+          morale: (me?['morale'] ?? _invitationsData?['morale'] ?? 70) as num,
+          moraleBand:
+              (me?['moraleBand'] ?? _invitationsData?['moraleBand'] ?? 'VERDE')
+                  .toString(),
+          primary: _clubColor(club?['colorPalette'], 'primaryColor'),
+          secondary: _clubColor(club?['colorPalette'], 'secondaryColor'),
+        ),
+      );
+    }
     final cards = <Widget>[
       ClassicSummaryCard(
         icon: Icons.shield_outlined,
@@ -1779,24 +1957,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 key: ValueKey('toggle-role-$pid'),
                 onTap: (_tacticsLocked || inj > 0 || susp > 0)
                     ? null
-                    : () {
-                        setState(() {
-                          if (isStarter) {
-                            _selectedStarterIds.remove(pid);
-                            if (_selectedBenchIds.length < 9) {
-                              _selectedBenchIds.add(pid);
-                            }
-                          } else if (isBench) {
-                            _selectedBenchIds.remove(pid);
-                          } else {
-                            if (_selectedStarterIds.length < 11) {
-                              _selectedStarterIds.add(pid);
-                            } else if (_selectedBenchIds.length < 9) {
-                              _selectedBenchIds.add(pid);
-                            }
-                          }
-                        });
-                      },
+                    : () => _toggleSquadPlayer(
+                        Map<String, dynamic>.from(p as Map),
+                      ),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 6,
@@ -1978,7 +2141,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ? null
                   : (value) {
                       if (value != null) {
-                        setState(() => _selectedFormation = value);
+                        _changeFormation(value);
                       }
                     },
             ),
@@ -2174,6 +2337,42 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     ];
     return LayoutBuilder(
       builder: (context, viewport) {
+        if (viewport.maxWidth < 768) {
+          return MobileSquadScreen(
+            squad: squad
+                .map((p) => Map<String, dynamic>.from(p as Map))
+                .toList(),
+            filteredSquad: filteredSquad
+                .map((p) => Map<String, dynamic>.from(p as Map))
+                .toList(),
+            starters: _selectedStarterIds,
+            bench: _selectedBenchIds,
+            formations: availableFormations,
+            formation: _selectedFormation,
+            requiredStarterCount:
+                (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11,
+            locked: _tacticsLocked,
+            busy: _commandBusy,
+            tactics: _mobileTacticsView,
+            canManage:
+                !_matchLocked &&
+                (!_tacticsLocked || _snapshot?['roundState'] == 'RESULTS'),
+            onFormation: _changeFormation,
+            onAutoPick: _autoPickBestLineup,
+            onDetail: _showPlayerDetailDialog,
+            onToggle: _toggleSquadPlayer,
+            onRenew: _renewSquadPlayer,
+            onAnnounce: (p) => _announceSquadPlayer(p, direct: true),
+            onAuction: _announceSquadPlayer,
+            onTab: _navigateMobile,
+            field: AbsorbPointer(
+              absorbing: _tacticsLocked,
+              child: _buildTacticalFieldPreview(squad),
+            ),
+            filters: squadFilters,
+            coachPanel: _buildCoachMainPanel(),
+          );
+        }
         final tactical = Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -2350,6 +2549,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     String roundState,
     Map<String, dynamic>? pauseWindow,
   ) {
+    if (_snapshot?['pendingPenalty'] != null) {
+      return 'PÊNALTI • RELÓGIO PARADO';
+    }
     if (roundState == 'RUNNING_FIRST_HALF' ||
         roundState == 'RUNNING_SECOND_HALF' ||
         roundState == 'RUNNING_EXTRA_TIME') {
@@ -2374,515 +2576,141 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return 'PREPARAÇÃO DA RODADA';
   }
 
-  String _formatEventBadge(dynamic event) =>
-      classicEventBadge(Map<String, dynamic>.from(event as Map));
-
-  /// Tab 1: Jogos ao Vivo, Placar Simultâneo, Intervalo (45'), Pausa Global e Substituições (5/3 e 6/4)
   Widget _buildLiveMatchesAndPauseScreen() {
-    final matches = (_snapshot?['matches'] as List? ?? [])
-        .map((m) => Map<String, dynamic>.from(m as Map))
-        .toList();
-    final state = _snapshot?['roundState']?.toString() ?? 'PREPARING';
-    final pause = _snapshot?['activePauseWindow'] as Map<String, dynamic>?;
+    final snap = _snapshot ?? <String, dynamic>{};
+    final matches = (snap['matches'] as List? ?? []).whereType<Map>();
     final mine = matches
         .where(
           (m) => m['homeClubId'] == _myClubId || m['awayClubId'] == _myClubId,
         )
         .firstOrNull;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 940),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'PLACARES DA RODADA • ${_matchVisualStateLabel(state, pause)}',
-                key: const ValueKey('live-match-state-banner'),
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
-              const SizedBox(height: 8),
-              if (pause != null && mine != null)
-                _buildInMatchSubstitutionPanel(mine),
-              if (matches.isEmpty)
-                const Text('Aguardando a rodada confirmada pelo servidor.'),
-              ClassicMatchBoard(
-                matches: matches,
-                competitionType:
-                    _snapshot?['competitionType']?.toString() ?? 'League',
-                competitionLabel:
-                    _snapshot?['competitionLabel']?.toString() ?? '',
-                coachClubId: _myClubId,
-                coachDetails: (match) => _buildHighlightedCoachMatchCard(
-                  match,
-                  _matchVisualStateLabel(state, pause),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHighlightedCoachMatchCard(
-    Map<String, dynamic> myMatch,
-    String visualState,
-  ) {
-    final events = myMatch['events'] as List<dynamic>? ?? [];
-    final penH = myMatch['homePenaltyGoals'];
-    final penA = myMatch['awayPenaltyGoals'];
-    final penText = (penH != null && penA != null)
-        ? ' (Pênaltis: $penH x $penA)'
-        : '';
-    final compLabel = _snapshot?['competitionLabel']?.toString() ?? 'Liga';
-    final roundNum = _snapshot?['roundNumber'] ?? 1;
-
-    return Container(
-      key: const ValueKey('coach-highlighted-match-details'),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surfaceAlternate,
-        border: Border.all(
-          color: ClassicTheme.of(context).selectedBackground,
-          width: 2,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-            spacing: 10,
-            runSpacing: 4,
-            alignment: WrapAlignment.spaceBetween,
-            children: [
-              Text(
-                'SEU JOGO EM DESTAQUE • RODADA $roundNum ($compLabel)',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                color: ClassicTheme.of(context).surface,
-                child: Text(
-                  "$visualState • ${myMatch['minute']}'",
-                  style: const TextStyle(
-                    color: Colors.lightGreenAccent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 11,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            color: ClassicTheme.of(context).surface,
-            child: Wrap(
-              spacing: 12,
-              runSpacing: 6,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Text(
-                  '${myMatch['homeClubName']} [${myMatch['homeFormation']}]${myMatch['homePlayersOnPitch'] == null ? '' : ' • ${myMatch['homePlayersOnPitch']} em campo'}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: ClassicTheme.of(context).textPrimary,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(
-                      color: ClassicTheme.of(context).selectedBackground,
-                    ),
-                  ),
-                  child: Text(
-                    '${myMatch['homeGoals']} x ${myMatch['awayGoals']}$penText',
-                    style: TextStyle(
-                      color: ClassicTheme.of(context).accent,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                Text(
-                  '${myMatch['awayClubName']} [${myMatch['awayFormation']}]${myMatch['awayPlayersOnPitch'] == null ? '' : ' • ${myMatch['awayPlayersOnPitch']} em campo'}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    color: ClassicTheme.of(context).textPrimary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (events.isNotEmpty) ...[
-            const SizedBox(height: 8),
-            Text(
-              'CRONOLOGIA DE EVENTOS DA SUA PARTIDA:',
-              style: TextStyle(
-                color: ClassicTheme.of(context).accent,
-                fontWeight: FontWeight.bold,
-                fontSize: 11,
-              ),
-            ),
-            const SizedBox(height: 4),
-            for (final e in events.reversed)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 1.5),
-                child: Text(
-                  '• ${_formatEventBadge(e)} ${e['description']}',
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: Colors.amberAccent,
-                  ),
-                ),
-              ),
-          ],
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInMatchSubstitutionPanel(Map<String, dynamic> myMatch) {
-    final isHome = myMatch['homeClubId']?.toString() == _myClubId;
-    final starters =
-        (isHome ? myMatch['homeStarters'] : myMatch['awayStarters'])
-            as List<dynamic>? ??
-        [];
-    final bench =
-        (isHome ? myMatch['homeBench'] : myMatch['awayBench'])
-            as List<dynamic>? ??
-        [];
-    final currentForm =
-        (isHome ? myMatch['homeFormation'] : myMatch['awayFormation'])
-            ?.toString() ??
-        '4-4-2';
-    final usedSubs =
-        (isHome ? myMatch['homeSubCount'] : myMatch['awaySubCount']) as int? ??
-        0;
-    final maxSubs =
-        (isHome ? myMatch['homeMaxSubs'] : myMatch['awayMaxSubs']) as int? ?? 5;
-    final remainingSubs = max(0, maxSubs - usedSubs);
-    final usedWins = isHome
-        ? myMatch['homePauseWindowsUsed']
-        : myMatch['awayPauseWindowsUsed'];
-    final maxWins = isHome
-        ? myMatch['homeMaxPauseWindows']
-        : myMatch['awayMaxPauseWindows'];
-
-    final validOutId =
-        starters.any(
-          (p) =>
-              p['isSentOff'] != true &&
-              p['playerId'].toString() == _subPlayerOutId,
-        )
-        ? _subPlayerOutId
-        : null;
-    final validInId =
-        bench.any((p) => p['playerId'].toString() == _subPlayerInId)
-        ? _subPlayerInId
-        : null;
-
-    return Container(
-      key: const ValueKey('in-match-substitution-panel'),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: ClassicTheme.of(context).surfaceAlternate,
-        border: Border.all(
-          color: ClassicTheme.of(context).selectedBackground,
-          width: 2,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'PAINEL DE SUBSTITUIÇÕES E TÁTICA EM JOGO — SUBS: $usedSubs/$maxSubs (RESTANTES: $remainingSubs) | PARADAS: $usedWins/$maxWins',
+    final pause = snap['activePauseWindow'] as Map<String, dynamic>?;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+          child: Text(
+            'PLACARES DA RODADA • ${_matchVisualStateLabel(snap['roundState']?.toString() ?? 'PREPARING', pause)}',
+            key: const ValueKey('live-match-state-banner'),
             style: TextStyle(
               color: ClassicTheme.of(context).accent,
+              fontSize: 11,
               fontWeight: FontWeight.bold,
-              fontSize: 12,
             ),
           ),
-          const SizedBox(height: 8),
-          Wrap(
-            spacing: 12,
-            runSpacing: 8,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              DropdownButton<String>(
-                key: const ValueKey('in-match-formation-dropdown'),
-                dropdownColor: ClassicTheme.of(context).surface,
-                icon: _classicDropdownIcon(context),
-                value:
-                    availableFormations.contains(
-                      _inMatchFormation ?? currentForm,
-                    )
-                    ? (_inMatchFormation ?? currentForm)
-                    : '4-4-2',
-                items: availableFormations
-                    .map(
-                      (f) => DropdownMenuItem(
-                        value: f,
-                        child: Text('Formação: $f'),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (v) => setState(() => _inMatchFormation = v),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 230),
-                child: DropdownButton<String>(
-                  key: const ValueKey('in-match-sub-out-dropdown'),
-                  isExpanded: true,
-                  dropdownColor: ClassicTheme.of(context).surface,
-                  icon: _classicDropdownIcon(context),
-                  hint: const Text('Sai (Em campo)'),
-                  value: validOutId,
-                  items: starters
-                      .where((p) => p['isSentOff'] != true)
-                      .map(
-                        (p) => DropdownMenuItem(
-                          value: p['playerId'].toString(),
-                          child: Text(
-                            'Sai: ${p['displayName']} (F:${p['strength']})',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (v) => setState(() => _subPlayerOutId = v),
-                ),
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 230),
-                child: DropdownButton<String>(
-                  key: const ValueKey('in-match-sub-in-dropdown'),
-                  isExpanded: true,
-                  dropdownColor: ClassicTheme.of(context).surface,
-                  icon: _classicDropdownIcon(context),
-                  hint: const Text('Entra (Banco)'),
-                  value: validInId,
-                  items: bench
-                      .map(
-                        (p) => DropdownMenuItem(
-                          value: p['playerId'].toString(),
-                          child: Text(
-                            'Entra: ${p['displayName']} (F:${p['strength']})',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (v) => setState(() => _subPlayerInId = v),
-                ),
-              ),
-              ElevatedButton(
-                key: const ValueKey('btn-aplicar-ajuste-janela'),
-                onPressed: _commandBusy
-                    ? null
-                    : () => _runUiCommand(() async {
-                        final subs = <Map<String, String>>[];
-                        if (validOutId != null && validInId != null) {
-                          if (remainingSubs <= 0) {
-                            setState(
-                              () => _statusBanner =
-                                  'Limite de substituições ($maxSubs) já atingido nesta partida.',
-                            );
-                            return;
-                          }
-                          subs.add({
-                            'playerOutId': validOutId,
-                            'playerInId': validInId,
-                          });
-                        }
-                        final snap = await widget.apiClient
-                            .submitInMatchAdjustments(
-                              worldId: _worldId!,
-                              coachId: _coachId!,
-                              matchId: myMatch['matchId'].toString(),
-                              newFormation: _inMatchFormation,
-                              substitutions: subs,
-                            );
-                        setState(() {
-                          _snapshot = _acceptSnapshot(snap);
-                          _subPlayerOutId = null;
-                          _subPlayerInId = null;
-                          _statusBanner =
-                              'Ajustes aplicados com sucesso para o próximo minuto!';
-                        });
-                      }),
-                child: const Text('APLICAR AJUSTE NA JANELA'),
-              ),
-            ],
+        ),
+        Expanded(
+          child: LiveMatchScreen(
+            key: ValueKey('live-view-$_worldId-$_coachId'),
+            snapshot: snap,
+            calendar: _calendar,
+            clubs: _clubPaletteWorld == _worldId ? _liveClubs : {},
+            coachId: _coachId ?? '',
+            coachName: _nickname,
+            coachClubId: _myClubId,
+            selection: _liveSelection,
+            onSelectionChanged: _saveSession,
+            onSubstitute:
+                mine != null &&
+                    mine['isFinished'] != true &&
+                    snap['pendingPenalty'] == null &&
+                    !_commandBusy &&
+                    '${snap['roundState']}'.startsWith('RUNNING_')
+                ? () => _runUiCommand(_handleRequestGlobalPause)
+                : null,
           ),
-          const SizedBox(height: 8),
-          // Interactive lists of Starters on Pitch & Bench Reserves
-          Wrap(
-            spacing: 12,
-            runSpacing: 8,
-            children: [
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width < 700
-                    ? double.infinity
-                    : 410,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(color: ClassicTheme.of(context).border),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'EM CAMPO (TOQUE PARA SELECIONAR QUEM SAI)',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 4,
-                        children: starters.map((p) {
-                          final pid = p['playerId'].toString();
-                          final sentOff = p['isSentOff'] == true;
-                          final selected = validOutId == pid;
-                          return InkWell(
-                            key: ValueKey('sub-select-out-$pid'),
-                            onTap: sentOff
-                                ? null
-                                : () => setState(() => _subPlayerOutId = pid),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: selected
-                                    ? ClassicTheme.of(
-                                        context,
-                                      ).selectedBackground
-                                    : (sentOff
-                                          ? Colors.red.shade900
-                                          : ClassicTheme.of(context).surface),
-                                border: Border.all(
-                                  color: selected
-                                      ? ClassicTheme.of(context).textPrimary
-                                      : ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: Text(
-                                '[${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})${sentOff ? " [EXP]" : ""}',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: selected
-                                      ? ClassicTheme.of(context).selectedText
-                                      : ClassicTheme.of(context).textPrimary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width < 700
-                    ? double.infinity
-                    : 410,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: ClassicTheme.of(context).surface,
-                    border: Border.all(color: ClassicTheme.of(context).border),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'RESERVAS (TOQUE PARA SELECIONAR QUEM ENTRA)',
-                        style: TextStyle(
-                          color: ClassicTheme.of(context).accent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 4,
-                        children: bench.map((p) {
-                          final pid = p['playerId'].toString();
-                          final selected = validInId == pid;
-                          return InkWell(
-                            key: ValueKey('sub-select-in-$pid'),
-                            onTap: () => setState(() => _subPlayerInId = pid),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 3,
-                              ),
-                              decoration: BoxDecoration(
-                                color: selected
-                                    ? ClassicTheme.of(
-                                        context,
-                                      ).selectedBackground
-                                    : ClassicTheme.of(context).surface,
-                                border: Border.all(
-                                  color: selected
-                                      ? ClassicTheme.of(context).textPrimary
-                                      : ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: Text(
-                                '[${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: selected
-                                      ? ClassicTheme.of(context).selectedText
-                                      : ClassicTheme.of(context).textPrimary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+
+  Widget? _buildMatchInteraction() {
+    final penalty = _snapshot?['pendingPenalty'];
+    if (penalty is Map) {
+      final value = Map<String, dynamic>.from(penalty);
+      return PenaltyChoiceDialog(
+        key: ValueKey('penalty-${value['decisionId']}'),
+        penalty: value,
+        choosing: value['coachId'] == _coachId,
+        busy: _commandBusy,
+        notice: _matchInteractionNotice,
+        onShoot: (player) => _runUiCommand(() async {
+          try {
+            final snap = await widget.apiClient.choosePenaltyTaker(
+              _worldId!,
+              _coachId!,
+              '${value['decisionId']}',
+              player,
+            );
+            if (mounted) setState(() => _snapshot = _acceptSnapshot(snap));
+          } catch (e) {
+            if (mounted) setState(() => _matchInteractionNotice = '$e');
+            rethrow;
+          }
+        }),
+      );
+    }
+    final pauseRaw = _snapshot?['activePauseWindow'];
+    if (pauseRaw is! Map) return null;
+    final pause = Map<String, dynamic>.from(pauseRaw);
+    final mine = (_snapshot?['matches'] as List? ?? [])
+        .whereType<Map>()
+        .where(
+          (m) => m['homeClubId'] == _myClubId || m['awayClubId'] == _myClubId,
+        )
+        .firstOrNull;
+    final confirmed = (pause['confirmedCoachIds'] as List? ?? []).contains(
+      _coachId,
+    );
+    final child = mine == null || mine['isFinished'] == true
+        ? PauseWaitingContent(
+            pause: pause,
+            confirmed: confirmed,
+            busy: _commandBusy,
+            onContinue: () => _runUiCommand(_handleConfirmContinue),
+          )
+        : SubstitutionChoicePanel(
+            key: ValueKey(
+              'substitution-${pause['pauseWindowId'] ?? '${_snapshot?['roundNumber']}-${pause['minute']}-${_snapshot?['roundState']}'}',
+            ),
+            match: Map<String, dynamic>.from(mine),
+            pause: pause,
+            coachId: _coachId!,
+            isHome: mine['homeClubId'] == _myClubId,
+            busy: _commandBusy,
+            confirmed: confirmed,
+            notice: _matchInteractionNotice,
+            formations: availableFormations,
+            onContinue: () => _runUiCommand(_handleConfirmContinue),
+            onApply: (formation, subs) => _runUiCommand(() async {
+              try {
+                final snap = await widget.apiClient.submitInMatchAdjustments(
+                  worldId: _worldId!,
+                  coachId: _coachId!,
+                  matchId: '${mine['matchId']}',
+                  newFormation: formation,
+                  substitutions: subs,
+                );
+                if (mounted) {
+                  setState(() {
+                    _snapshot = _acceptSnapshot(snap);
+                    _matchInteractionNotice =
+                        'Alterações registradas. Clique em Continuar quando terminar.';
+                  });
+                }
+              } catch (e) {
+                if (mounted) setState(() => _matchInteractionNotice = '$e');
+                rethrow;
+              }
+            }),
+          );
+    return ClassicMatchActionDialog(
+      key: const Key('shared-substitution-dialog'),
+      caption: pause['pauseType'] == 'GLOBAL_PAUSED'
+          ? 'SUBSTITUIÇÕES • ${pause['minute'] ?? _snapshot?['currentMinute']}\''
+          : 'INTERVALO — SUBSTITUIÇÕES',
+      child: child,
     );
   }
 
@@ -3244,8 +3072,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     }
 
-    final stadium = _myClubDetail!['stadium'] as Map<String, dynamic>;
-    final ledger = _financesData?['ledger'] as List<dynamic>? ?? [];
     final loans = _financesData?['loans'] as List<dynamic>? ?? [];
     final credit = _financesData?['credit'] as Map<String, dynamic>?;
     final salaryRequests =
@@ -3267,213 +3093,78 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         425000;
     final cash = (_myClubDetail!['cashBalance'] as num?)?.toDouble() ?? 0.0;
 
-    double totalIncome = 0;
-    double totalExpense = 0;
-    double ticketTotal = 0;
-    double wageTotal = 0;
-    double transferNet = 0;
-    double prizeTotal = 0;
-    double stadiumTotal = 0;
-
-    for (final t in ledger) {
-      final amt = (t['amount'] as num?)?.toDouble() ?? 0.0;
-      final desc = (t['description']?.toString() ?? '').toUpperCase();
-      if (amt >= 0) {
-        totalIncome += amt;
-      } else {
-        totalExpense += amt.abs();
-      }
-      if (desc.contains('BILHETERIA') || desc.contains('INGRESSO')) {
-        ticketTotal += amt;
-      } else if (desc.contains('SALÁRIO') || desc.contains('FOLHA')) {
-        wageTotal += amt;
-      } else if (desc.contains('TRANSFER') ||
-          desc.contains('COMPRA') ||
-          desc.contains('VENDA') ||
-          desc.contains('LEILÃO')) {
-        transferNet += amt;
-      } else if (desc.contains('PREMIA') ||
-          desc.contains('ARTILH') ||
-          desc.contains('TÍTULO') ||
-          desc.contains('CAMPE')) {
-        prizeTotal += amt;
-      } else if (desc.contains('ESTÁDIO') ||
-          desc.contains('MANUTEN') ||
-          desc.contains('REFORMA') ||
-          desc.contains('AMPLIA')) {
-        stadiumTotal += amt;
-      }
-    }
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
+    return ClassicFinanceView(
+      club: _myClubDetail!,
+      data: _financesData ?? {},
+      season: (_snapshot?['seasonNumber'] as num? ?? 1).toInt(),
+      round: (_snapshot?['roundNumber'] as num? ?? 1).toInt(),
+      actions: [
+        ElevatedButton.icon(
+          key: const ValueKey('btn-reformar-estadio'),
+          icon: const Icon(Icons.build, size: 18),
+          onPressed: _commandBusy
+              ? null
+              : () => _runUiCommand(() async {
+                  await widget.apiClient.startStadiumRenovation(
+                    _worldId!,
+                    _myClubId!,
+                    _coachId!,
+                  );
+                  await _refreshClubAndSecondaryData();
+                  setState(
+                    () =>
+                        _statusBanner = 'Obra de reforma estrutural iniciada!',
+                  );
+                }),
+          label: Text('REFORMAR ESTÁDIO (${formatClassicMoney(renoCost)})'),
+        ),
+        ElevatedButton.icon(
+          key: const ValueKey('btn-ampliar-estadio'),
+          icon: const Icon(Icons.stadium, size: 18),
+          onPressed: _commandBusy
+              ? null
+              : () => _runUiCommand(() async {
+                  await widget.apiClient.startStadiumExpansion(
+                    _worldId!,
+                    _myClubId!,
+                    _coachId!,
+                    5000,
+                  );
+                  await _refreshClubAndSecondaryData();
+                  setState(
+                    () =>
+                        _statusBanner = 'Ampliação de +5.000 lugares iniciada!',
+                  );
+                }),
+          label: Text(
+            'AMPLIAR +5.000 LUGARES (${formatClassicMoney(expCost)})',
+          ),
+        ),
+        OutlinedButton.icon(
+          key: const ValueKey('btn-emprestimo-bancario'),
+          icon: const Icon(Icons.toll, size: 18),
+          onPressed: _commandBusy
+              ? null
+              : () => _runUiCommand(() async {
+                  await widget.apiClient.takeBankLoan(
+                    _worldId!,
+                    _myClubId!,
+                    _coachId!,
+                    500000,
+                    0,
+                  );
+                  await _refreshClubAndSecondaryData();
+                  setState(
+                    () => _statusBanner =
+                        'Empréstimo bancário de R\$ 500.000 creditado em caixa.',
+                  );
+                }),
+          label: const Text('EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)'),
+        ),
+      ],
+      obligations: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ClassicSectionTitle(
-            title: 'FINANÇAS & ESTÁDIO',
-            subtitle: 'Caixa, contratos, crédito e patrimônio do clube.',
-          ),
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: ClassicTheme.of(context).surface,
-              border: Border.all(color: ClassicTheme.of(context).border),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const ClassicTableHeader(
-                  title: 'RESUMO FINANCEIRO CONSOLIDADO DO CLUBE',
-                ),
-                const SizedBox(height: 8),
-                PlayerStatisticRow(
-                  items: [
-                    PlayerStatItem(
-                      'SALDO ATUAL EM CAIXA',
-                      formatClassicMoney(cash),
-                      highlight: true,
-                    ),
-                    PlayerStatItem(
-                      'TOTAL RECEITAS',
-                      formatClassicMoney(totalIncome),
-                    ),
-                    PlayerStatItem(
-                      'TOTAL DESPESAS',
-                      formatClassicMoney(totalExpense),
-                    ),
-                    PlayerStatItem(
-                      'BILHETERIA',
-                      formatClassicMoney(ticketTotal),
-                    ),
-                    PlayerStatItem('SALÁRIOS', formatClassicMoney(wageTotal)),
-                    PlayerStatItem(
-                      'TRANSFERÊNCIAS',
-                      formatClassicMoney(transferNet),
-                    ),
-                    PlayerStatItem(
-                      'PREMIAÇÕES',
-                      formatClassicMoney(prizeTotal),
-                    ),
-                    PlayerStatItem(
-                      'CUSTOS DO ESTÁDIO',
-                      formatClassicMoney(stadiumTotal),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: ClassicTheme.of(context).surface,
-              border: Border.all(
-                color: ClassicTheme.of(context).selectedBackground,
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'ESTÁDIO: ${stadium['stadiumName']}',
-                  style: TextStyle(
-                    color: ClassicTheme.of(context).accent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  'Capacidade Construída: ${stadium['builtCapacity']} lugares  |  Capacidade Utilizável: ${stadium['usableCapacity']} lugares  |  Condição Estrutural: ${stadium['conditionPercent']}%',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'Último Ingresso Automático: ${formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0)}  |  Último Público: ${stadium['lastAttendance']}  |  Custo Fixo/Jogo: ${formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0)}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: ClassicTheme.of(context).textSecondary,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 8,
-                  children: [
-                    ElevatedButton(
-                      key: const ValueKey('btn-reformar-estadio'),
-                      onPressed: _commandBusy
-                          ? null
-                          : () => _runUiCommand(() async {
-                              await widget.apiClient.startStadiumRenovation(
-                                _worldId!,
-                                _myClubId!,
-                                _coachId!,
-                              );
-                              await _refreshClubAndSecondaryData();
-                              setState(
-                                () => _statusBanner =
-                                    'Obra de reforma estrutural iniciada!',
-                              );
-                            }),
-                      child: Text(
-                        'REFORMAR ESTÁDIO (${formatClassicMoney(renoCost)})',
-                      ),
-                    ),
-                    ElevatedButton(
-                      key: const ValueKey('btn-ampliar-estadio'),
-                      onPressed: _commandBusy
-                          ? null
-                          : () => _runUiCommand(() async {
-                              await widget.apiClient.startStadiumExpansion(
-                                _worldId!,
-                                _myClubId!,
-                                _coachId!,
-                                5000,
-                              );
-                              await _refreshClubAndSecondaryData();
-                              setState(
-                                () => _statusBanner =
-                                    'Ampliação de +5.000 lugares iniciada!',
-                              );
-                            }),
-                      child: Text(
-                        'AMPLIAR +5.000 LUGARES (${formatClassicMoney(expCost)})',
-                      ),
-                    ),
-                    OutlinedButton(
-                      key: const ValueKey('btn-emprestimo-bancario'),
-                      onPressed: _commandBusy
-                          ? null
-                          : () => _runUiCommand(() async {
-                              await widget.apiClient.takeBankLoan(
-                                _worldId!,
-                                _myClubId!,
-                                _coachId!,
-                                500000,
-                                0,
-                              );
-                              await _refreshClubAndSecondaryData();
-                              setState(
-                                () => _statusBanner =
-                                    'Empréstimo bancário de R\$ 500.000 creditado em caixa.',
-                              );
-                            }),
-                      child: const Text(
-                        'EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)',
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
           if (credit != null) ...[
             if (_financesData?['annualSponsorshipBudget'] != null)
               Text(
@@ -3569,68 +3260,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
-          Text(
-            'LIVRO-CAIXA AUDITÁVEL (TRANSAÇÕES IDEMPOTENTES POR RODADA)',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
-          if (ledger.isEmpty)
-            const Text(
-              'Nenhuma movimentação financeira registrada ainda.',
-              style: TextStyle(fontSize: 12),
-            )
-          else
-            ClassicTable(
-              tableKey: 'finances-ledger-table',
-              numericColumns: const {2},
-              columns: const ['RODADA', 'DESCRIÇÃO', 'VALOR'],
-              rows: ledger.asMap().entries.map((entry) {
-                final i = entry.key;
-                final t = entry.value;
-                final amt = (t['amount'] as num).toDouble();
-                return DataRow(
-                  color: WidgetStateProperty.all(
-                    i.isEven
-                        ? ClassicTheme.of(context).tableRow
-                        : ClassicTheme.of(context).tableRowAlternate,
-                  ),
-                  cells: [
-                    DataCell(
-                      Text(
-                        'T${t['seasonNumber']} R${t['roundNumber']}',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: ClassicTheme.of(context).textSecondary,
-                        ),
-                      ),
-                    ),
-                    DataCell(
-                      Text(
-                        '${t['description']}',
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    ),
-                    DataCell(
-                      Text(
-                        '${amt >= 0 ? "+" : ""}${formatClassicMoney(amt)}',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: amt >= 0
-                              ? Colors.lightGreenAccent
-                              : Colors.redAccent,
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              }).toList(),
-            ),
         ],
       ),
     );
@@ -3699,90 +3328,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final invitations =
         _invitationsData?['invitations'] as List<dynamic>? ?? [];
 
-    final rankingPinned = <ClassicPinnedRow>[];
-    final rankingRows = <DataRow>[];
-    for (var i = 0; i < ranking.length; i++) {
-      final r = ranking[i];
-      final isMe =
-          r['coachId']?.toString() == _coachId ||
-          r['name']?.toString() == _nickname;
-      rankingPinned.add(
-        ClassicPinnedRow(
-          rank: '${r['rank']}º',
-          title: '${r['name']}',
-          subtitle: '${r['currentClubName']} • ${r['coachPoints']} pts',
-          highlight: i == 0 || isMe,
-          isEven: i.isEven,
-          onTap: () =>
-              _showCoachCareerDetailDialog(Map<String, dynamic>.from(r as Map)),
-        ),
-      );
-      rankingRows.add(
-        DataRow(
-          color: WidgetStateProperty.all(
-            isMe
-                ? ClassicTheme.of(context).surfaceAlternate
-                : (i.isEven
-                      ? ClassicTheme.of(context).tableRow
-                      : ClassicTheme.of(context).tableRowAlternate),
-          ),
-          cells: [
-            DataCell(Text('${r['rank']}')),
-            DataCell(
-              InkWell(
-                onTap: () => _showCoachCareerDetailDialog(
-                  Map<String, dynamic>.from(r as Map),
-                ),
-                child: Text(
-                  '${r['name']}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: ClassicTheme.of(context).accent,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ),
-            DataCell(Text(r['isHuman'] == true ? 'HUMANO' : 'IA')),
-            DataCell(Text('${r['currentClubName']}')),
-            DataCell(
-              Text(
-                '${r['leagueTitles']}',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                '${r['cupTitles']}',
-                style: const TextStyle(
-                  color: Colors.cyanAccent,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                '${r['coachPoints']}',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            DataCell(
-              Text(
-                '${r['totalWins']}V ${r['totalDraws']}E ${r['totalLosses']}D',
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return ClassicCoachScreen(
+      ranking: ranking,
+      onCoach: _showCoachCareerDetailDialog,
+      career: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildCoachMorale(),
           const SizedBox(height: 8),
@@ -3885,15 +3435,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             }),
             const SizedBox(height: 16),
           ],
-          Text(
-            'RANKING CLÁSSICO DE TREINADORES (1º CAMPEONATOS, 2º TAÇAS, 3º PONTOS DO TREINADOR)',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 8),
           ...(_invitationsData?['employmentHistory'] as List<dynamic>? ?? [])
               .reversed
               .take(8)
@@ -3904,23 +3445,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 ),
               ),
           const SizedBox(height: 8),
-          ClassicTable(
-            tableKey: 'coach-ranking-table',
-            pinnedHeader: '# / TREINADOR',
-            pinnedRows: rankingPinned,
-            numericColumns: const {0, 4, 5, 6},
-            columns: const [
-              '#',
-              'TREINADOR',
-              'TIPO',
-              'CLUBE ATUAL',
-              'CAMPEONATOS',
-              'TAÇAS',
-              'PTS TREINADOR',
-              'V / E / D',
-            ],
-            rows: rankingRows,
-          ),
           if (seasonHist.isNotEmpty) ...[
             const SizedBox(height: 20),
             Text(

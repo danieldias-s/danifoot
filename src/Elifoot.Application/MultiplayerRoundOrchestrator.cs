@@ -587,6 +587,15 @@ public sealed partial class MultiplayerRoundOrchestrator
 
             var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
             if (coach == null) return (false, "Treinador não pertence à sala.", null);
+            var receiptKey = InteractionKey("pause", command.CoachId, command.IdempotencyKey);
+            var fingerprint = InteractionFingerprint(command);
+            if (receiptKey != null && world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt))
+            {
+                if (receipt.Fingerprint != fingerprint) return (false, "Chave de operação reutilizada com dados diferentes.", null);
+                var previous = world.PauseWindows.FirstOrDefault(w => w.Id == receipt.PauseWindowId);
+                return (true, null, previous == null ? null : BuildPauseWindowDto(world, previous));
+            }
+            if (FirstPendingPenalty(world) != null) return (false, "Aguardando a escolha do cobrador do pênalti.", null);
             if (coach.CurrentClubId == null)
                 return (false, "Treinador desempregado não pode solicitar parada tática.", null);
 
@@ -598,23 +607,12 @@ public sealed partial class MultiplayerRoundOrchestrator
             bool isHome = coachMatch.HomeClubId == coach.CurrentClubId;
             int usedWindows = isHome ? coachMatch.HomeUsedPauseWindows : coachMatch.AwayUsedPauseWindows;
             int maxWindows = isHome ? coachMatch.HomeMaxPauseWindows : coachMatch.AwayMaxPauseWindows;
-            var consumedSet = isHome ? coachMatch.HomeConsumedPauseWindowIds : coachMatch.AwayConsumedPauseWindowIds;
 
             // If already in GLOBAL_PAUSED, merge into the active shared PauseWindow!
             if (world.RoundState == RoundState.GLOBAL_PAUSED && world.ActivePauseWindowId != null)
             {
                 var existingWindow = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
-                if (!consumedSet.Contains(existingWindow.Id))
-                {
-                    if (usedWindows >= maxWindows)
-                        return (false, $"Você já utilizou todas as suas paradas ({usedWindows}/{maxWindows}).", BuildPauseWindowDto(world, existingWindow));
-
-                    if (isHome) coachMatch.HomeUsedPauseWindows++;
-                    else coachMatch.AwayUsedPauseWindows++;
-                    consumedSet.Add(existingWindow.Id);
-                    existingWindow.EditedCoachIds.Add(coach.Id);
-                }
-
+                RecordInteraction(world, receiptKey, fingerprint, existingWindow.Id);
                 world.RoundVersion++;
                 await _repository.SaveWorldAsync(world, ct);
                 var dto = BuildPauseWindowDto(world, existingWindow);
@@ -646,11 +644,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 OpenedAtUtc = DateTime.UtcNow,
                 ExpiresAtUtc = DateTime.UtcNow.AddSeconds(world.PauseTimeoutSeconds)
             };
-            window.EditedCoachIds.Add(coach.Id);
-
-            if (isHome) coachMatch.HomeUsedPauseWindows++;
-            else coachMatch.AwayUsedPauseWindows++;
-            consumedSet.Add(window.Id);
+            RecordInteraction(world, receiptKey, fingerprint, window.Id);
 
             world.PauseWindows.Add(window);
             world.ActivePauseWindowId = window.Id;
@@ -695,6 +689,11 @@ public sealed partial class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null);
 
+            var receiptKey = InteractionKey("adjust", command.CoachId, command.IdempotencyKey);
+            var fingerprint = InteractionFingerprint(command);
+            if (receiptKey != null && world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt))
+                return receipt.Fingerprint == fingerprint ? (true, null, BuildLiveRoundSnapshotDto(world)) : (false, "Chave de operação reutilizada com dados diferentes.", BuildLiveRoundSnapshotDto(world));
+            if (FirstPendingPenalty(world) != null) return (false, "Aguardando a cobrança do pênalti.", BuildLiveRoundSnapshotDto(world));
             if (world.RoundState is not (RoundState.GLOBAL_PAUSED or RoundState.HALFTIME_PAUSED or RoundState.EXTRA_TIME_BREAK or RoundState.EXTRA_TIME_HALFTIME))
             {
                 return (false, "Ajustes em partida só podem ser enviados durante pausa global ou intervalo.", BuildLiveRoundSnapshotDto(world));
@@ -709,20 +708,14 @@ public sealed partial class MultiplayerRoundOrchestrator
                 f.SeasonNumber == world.SeasonNumber &&
                 f.RoundNumber == world.RoundNumber);
 
-            if (match == null || (match.HomeClubId != coach.CurrentClubId && match.AwayClubId != coach.CurrentClubId))
+            if (match == null || match.IsFinished || (match.HomeClubId != coach.CurrentClubId && match.AwayClubId != coach.CurrentClubId))
                 return (false, "Partida inválida ou não pertence ao seu clube.", BuildLiveRoundSnapshotDto(world));
-
-            var idemSet = GetIdempotencySet(world.Id);
-            if (!string.IsNullOrWhiteSpace(command.IdempotencyKey) && idemSet.Contains(command.IdempotencyKey))
-            {
-                return (true, null, BuildLiveRoundSnapshotDto(world));
-            }
 
             bool isHome = match.HomeClubId == coach.CurrentClubId;
             var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
             var playerMap = world.Players.ToDictionary(p => p.Id);
 
-            var (ok, err, _) = MatchSimulationEngine.ApplyInMatchAdjustments(
+            var (ok, err, newEvents) = MatchSimulationEngine.ApplyInMatchAdjustments(
                 match,
                 club,
                 isHome,
@@ -739,14 +732,14 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (world.ActivePauseWindowId != null)
             {
                 var win = world.PauseWindows.FirstOrDefault(w => w.Id == world.ActivePauseWindowId.Value);
-                if (win != null && (!string.IsNullOrWhiteSpace(command.NewFormation) || command.Substitutions.Count > 0))
+                if (win != null && newEvents.Count > 0)
                 {
                     win.EditedCoachIds.Add(coach.Id);
+                    win.ConfirmedCoachIds.Remove(coach.Id);
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(command.IdempotencyKey))
-                idemSet.Add(command.IdempotencyKey);
+            RecordInteraction(world, receiptKey, fingerprint, world.ActivePauseWindowId);
 
             world.RoundVersion++;
             await _repository.SaveWorldAsync(world, ct);
@@ -776,6 +769,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", false, null);
 
+            var receiptKey = InteractionKey("continue", command.CoachId, command.IdempotencyKey);
+            var fingerprint = InteractionFingerprint(command);
+            if (receiptKey != null && world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt))
+                return receipt.Fingerprint == fingerprint ? (true, null, world.ActivePauseWindowId != receipt.PauseWindowId, BuildLiveRoundSnapshotDto(world)) : (false, "Chave de operação reutilizada com dados diferentes.", false, BuildLiveRoundSnapshotDto(world));
             if (world.ActivePauseWindowId == null)
                 return (false, "Não há janela de pausa ou intervalo ativa.", false, BuildLiveRoundSnapshotDto(world));
 
@@ -785,6 +782,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 return (false, "Participante não encontrado na sala.", false, BuildLiveRoundSnapshotDto(world));
 
             window.ConfirmedCoachIds.Add(coach.Id);
+            RecordInteraction(world, receiptKey, fingerprint, window.Id);
 
             // Auto-confirm any coaches in AutoMode
             foreach (var autoCoach in world.HumanCoaches.Where(h => h.IsAutoMode))
@@ -841,6 +839,7 @@ public sealed partial class MultiplayerRoundOrchestrator
     {
         window.IsClosed = true;
         world.ActivePauseWindowId = null;
+        world.RequiresDurableMatchInteractionSave = true;
 
         int m = world.CurrentMatchMinute;
         if (window.PauseType == RoundState.HALFTIME_PAUSED || m == 45)
@@ -888,6 +887,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 return BuildLiveRoundSnapshotDto(world);
             }
 
+            if (FirstPendingPenalty(world) != null) return BuildLiveRoundSnapshotDto(world);
             world.CurrentMatchMinute++;
             int minute = world.CurrentMatchMinute;
 
@@ -908,8 +908,11 @@ public sealed partial class MultiplayerRoundOrchestrator
                 var awayIdentity = awayMgr?.Identity ?? ManagerTacticalIdentity.Equilibrado;
 
                 MatchSimulationEngine.SimulateSingleMinute(
-                    match, homeClub, awayClub, playerMap, homeIdentity, awayIdentity, world.Seed, world.AllowClassic505);
+                    match, homeClub, awayClub, playerMap, homeIdentity, awayIdentity, world.Seed, world.AllowClassic505,
+                    homeHumanPenaltyChoice: RequiresHumanPenaltyChoice(world, homeClub),
+                    awayHumanPenaltyChoice: RequiresHumanPenaltyChoice(world, awayClub));
 
+                if (match.PendingPenalties.Count > 0) continue;
                 // AI in-match reactive adjustments (never opens a global pause window!)
                 if (homeClub.HumanCoachId == null)
                 {
@@ -921,94 +924,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 }
             }
 
-            // Check phase boundary transitions at 45', 90', 105', 120'
-            if (minute == 45 && world.RoundState == RoundState.RUNNING_FIRST_HALF)
-            {
-                OpenFreeIntervalPauseWindow(world, RoundState.HALFTIME_PAUSED, 45);
-                // Let AI teams evaluate halftime adjustments during the free interval
-                EvaluateAllAiTeamsAtFreeInterval(world, roundMatches, clubDict, aiDict, playerMap);
-            }
-            else if (minute == 90 && world.RoundState == RoundState.RUNNING_SECOND_HALF)
-            {
-                bool anyMatchEntersExtraTime = false;
-                foreach (var match in roundMatches.Where(m => !m.IsFinished))
-                {
-                    if (match.RequiresKnockoutResolution && match.HomeGoals == match.AwayGoals)
-                    {
-                        match.EnteredExtraTime = true; // Grants +1 sub (6) and +1 pause window (4)!
-                        anyMatchEntersExtraTime = true;
-                        match.Events.Add(new MatchEventRecord
-                        {
-                            Minute = 90,
-                            EventType = MatchEventType.ExtraTimeStarted,
-                            ClubId = match.HomeClubId,
-                            ClubName = clubDict[match.HomeClubId].Name,
-                            Description = "90' Empate no tempo normal! A partida vai para a PRORROGAÇÃO (+1 substituição e +1 parada)."
-                        });
-                    }
-                    else
-                    {
-                        match.IsFinished = true;
-                        match.WinnerClubId = match.HomeGoals > match.AwayGoals
-                            ? match.HomeClubId
-                            : (match.AwayGoals > match.HomeGoals ? match.AwayClubId : null);
-                    }
-                }
-
-                if (anyMatchEntersExtraTime)
-                {
-                    // Check if any human is participating in the extra time matches, or open free interval break before extra time
-                    bool humanInExtraTime = roundMatches
-                        .Where(m => !m.IsFinished && m.EnteredExtraTime)
-                        .Any(m => clubDict[m.HomeClubId].HumanCoachId != null || clubDict[m.AwayClubId].HumanCoachId != null);
-
-                    EvaluateAllAiTeamsAtFreeInterval(world, roundMatches.Where(m => !m.IsFinished).ToList(), clubDict, aiDict, playerMap);
-
-                    if (humanInExtraTime)
-                    {
-                        OpenFreeIntervalPauseWindow(world, RoundState.EXTRA_TIME_BREAK, 90);
-                    }
-                    else
-                    {
-                        world.RoundState = RoundState.RUNNING_EXTRA_TIME;
-                    }
-                }
-                else
-                {
-                    CompleteAllMatchesAndTransitionToResults(world, roundMatches);
-                }
-            }
-            else if (minute == 105 && world.RoundState == RoundState.RUNNING_EXTRA_TIME)
-            {
-                bool humanInExtraTime = roundMatches
-                    .Where(m => !m.IsFinished && m.EnteredExtraTime)
-                    .Any(m => clubDict[m.HomeClubId].HumanCoachId != null || clubDict[m.AwayClubId].HumanCoachId != null);
-
-                EvaluateAllAiTeamsAtFreeInterval(world, roundMatches.Where(m => !m.IsFinished).ToList(), clubDict, aiDict, playerMap);
-
-                if (humanInExtraTime)
-                {
-                    OpenFreeIntervalPauseWindow(world, RoundState.EXTRA_TIME_HALFTIME, 105);
-                }
-            }
-            else if (minute >= 120 && world.RoundState == RoundState.RUNNING_EXTRA_TIME)
-            {
-                foreach (var match in roundMatches.Where(m => !m.IsFinished))
-                {
-                    if (match.HomeGoals == match.AwayGoals && match.RequiresKnockoutResolution)
-                    {
-                        MatchSimulationEngine.ResolvePenaltyShootout(
-                            match, clubDict[match.HomeClubId], clubDict[match.AwayClubId], playerMap, world.Seed);
-                    }
-                    else
-                    {
-                        match.WinnerClubId = match.HomeGoals > match.AwayGoals ? match.HomeClubId : match.AwayClubId;
-                    }
-                    match.IsFinished = true;
-                }
-
-                CompleteAllMatchesAndTransitionToResults(world, roundMatches);
-            }
+            if (FirstPendingPenalty(world) == null) ApplyCurrentMinuteBoundary(world);
 
             world.RoundVersion++;
             await _repository.SaveWorldAsync(world, ct);
@@ -1373,6 +1289,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             HasInitialLobby=world.InitialLobby!=null,
             LobbyStarted=world.InitialLobby?.StartedAt!=null,
             GameModeId=world.GameModeId,
+            PendingPenalty = BuildPendingPenaltyDto(world),
             TotalRoundsInSeason = world.TotalRoundsInSeason,
             ForceEvolutionMode = world.ForceEvolutionMode,
             DisciplineRulesVersion = world.DisciplineRulesVersion,

@@ -757,6 +757,9 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Técnico 008'), findsOneWidget);
       expect(find.text('12.5'), findsOneWidget);
+      await tester.ensureVisible(find.byKey(const Key('coach-tab-career')));
+      await tester.tap(find.byKey(const Key('coach-tab-career')));
+      await tester.pumpAndSettle();
       expect(find.text('MORAL: 70/100 — VERDE'), findsNothing);
       expect(find.byKey(const ValueKey('morale-bar-fill')), findsNWidgets(2));
       await tester.ensureVisible(find.text('7. RANKINGS DE JOGADORES'));

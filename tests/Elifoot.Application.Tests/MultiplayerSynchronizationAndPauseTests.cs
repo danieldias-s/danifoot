@@ -143,7 +143,7 @@ public class MultiplayerSynchronizationAndPauseTests
         LiveRoundSnapshotDto? snap37 = null;
         for (int m = 1; m <= 37; m++)
         {
-            snap37 = await orchestrator.AdvanceClockTickAsync(worldA.Id);
+            snap37 = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id);
         }
 
         Assert.Equal(37, snap37!.CurrentMinute);
@@ -161,18 +161,18 @@ public class MultiplayerSynchronizationAndPauseTests
         Assert.Equal(37, pauseWin!.Minute);
 
         // Attempting to advance clock while GLOBAL_PAUSED does NOT advance minute 37!
-        var frozenSnap = await orchestrator.AdvanceClockTickAsync(worldA.Id);
+        var frozenSnap = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id);
         Assert.Equal(37, frozenSnap!.CurrentMinute);
         Assert.Equal(RoundState.GLOBAL_PAUSED, frozenSnap.RoundState);
 
         // 12. Room B is completely unaffected by Room A's pause!
-        var snapRoomB = await orchestrator.AdvanceClockTickAsync(worldB.Id);
+        var snapRoomB = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldB.Id);
         Assert.Equal(RoundState.RUNNING_FIRST_HALF, snapRoomB!.RoundState);
         Assert.Equal(1, snapRoomB.CurrentMinute);
 
-        // 3. Coach A has PARADAS: 1/3; Coach B (opponent) and Coach C (observer) have 0/3
+        // 3. Opening/observing spends no pause: Coach A has PARADAS 0/3; Coach B (opponent) and Coach C (observer) have 0/3
         var match0 = frozenSnap.Matches.First(m => m.HomeClubId == coachA.CurrentClubId);
-        Assert.Equal(1, match0.HomePauseWindowsUsed);
+        Assert.Equal(0, match0.HomePauseWindowsUsed);
         Assert.Equal(0, match0.AwayPauseWindowsUsed);
 
         // 5. Coach A makes TWO substitutions in the same pause window -> SUBS 2/5, still only 1/3 pause window used!
@@ -216,7 +216,7 @@ public class MultiplayerSynchronizationAndPauseTests
             await orchestrator.ConfirmContinueMatchAsync(new ConfirmContinueMatchCommand(worldA.Id, h.Id, $"cont-{h.Id}"));
         }
 
-        var snap38 = await orchestrator.AdvanceClockTickAsync(worldA.Id);
+        var snap38 = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id);
         Assert.Equal(38, snap38!.CurrentMinute);
         Assert.Equal(RoundState.RUNNING_FIRST_HALF, snap38.RoundState);
         var matchOfC = snap38.Matches.First(m => m.HomeClubId == coachObserverC.CurrentClubId || m.AwayClubId == coachObserverC.CurrentClubId);
@@ -224,7 +224,7 @@ public class MultiplayerSynchronizationAndPauseTests
 
         // 9. Advance to Halftime (45') -> HALFTIME_PAUSED is FREE (0 pause windows consumed, but subs count toward 5)
         LiveRoundSnapshotDto? snap45 = null;
-        while ((snap45 = await orchestrator.AdvanceClockTickAsync(worldA.Id))!.CurrentMinute < 45) { }
+        while ((snap45 = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id))!.CurrentMinute < 45) { }
         Assert.Equal(45, snap45.CurrentMinute);
         Assert.Equal(RoundState.HALFTIME_PAUSED, snap45.RoundState);
 
@@ -247,17 +247,19 @@ public class MultiplayerSynchronizationAndPauseTests
         }
 
         // 8. Coach A uses 2nd pause at 50' and 3rd pause at 60'; 4th pause in normal time is REJECTED!
-        await orchestrator.AdvanceClockTickAsync(worldA.Id); // 46'
+        await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id); // 46'
         var (p2Ok, _, _) = await orchestrator.RequestGlobalPauseAsync(new RequestPauseCommand(worldA.Id, coachA.Id, "p2"));
         Assert.True(p2Ok);
+        Assert.True((await orchestrator.SubmitInMatchAdjustmentAsync(new(worldA.Id,coachA.Id,match0.MatchId,"4-3-3",new(),"p2-edit"))).Success);
         await orchestrator.ForceExpirePauseWindowIfTimedOutAsync(worldA.Id, ignoreClockForTest: true);
 
-        await orchestrator.AdvanceClockTickAsync(worldA.Id); // 47'
+        await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id); // 47'
         var (p3Ok, _, _) = await orchestrator.RequestGlobalPauseAsync(new RequestPauseCommand(worldA.Id, coachA.Id, "p3"));
         Assert.True(p3Ok);
+        Assert.True((await orchestrator.SubmitInMatchAdjustmentAsync(new(worldA.Id,coachA.Id,match0.MatchId,"4-4-2",new(),"p3-edit"))).Success);
         await orchestrator.ForceExpirePauseWindowIfTimedOutAsync(worldA.Id, ignoreClockForTest: true);
 
-        await orchestrator.AdvanceClockTickAsync(worldA.Id); // 48'
+        await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id); // 48'
         var (p4Ok, p4Err, _) = await orchestrator.RequestGlobalPauseAsync(new RequestPauseCommand(worldA.Id, coachA.Id, "p4"));
         Assert.False(p4Ok);
         Assert.Contains("3/3", p4Err!);
@@ -286,7 +288,7 @@ public class MultiplayerSynchronizationAndPauseTests
         // Simulate to minute 89, force a tie (1x1) at minute 89, and tick to 90'
         for (int m = 1; m <= 89; m++)
         {
-            await orchestrator.AdvanceClockTickAsync(world.Id);
+            await TickWithAutomaticPenaltyChoiceAsync(orchestrator, world.Id);
             if (m == 45)
             {
                 await orchestrator.ConfirmContinueMatchAsync(new ConfirmContinueMatchCommand(world.Id, coachHome.Id, "cup-ht"));
@@ -298,7 +300,7 @@ public class MultiplayerSynchronizationAndPauseTests
         cupFixture.HomeUsedPauseWindows = 3; // Used all 3 normal-time pause windows
         cupFixture.HomeUsedSubstitutions = 5; // Used all 5 normal-time substitutions
 
-        var snap90 = await orchestrator.AdvanceClockTickAsync(world.Id); // 90' -> tied knockout match enters Extra Time!
+        var snap90 = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, world.Id); // 90' -> tied knockout match enters Extra Time!
         Assert.Equal(90, snap90!.CurrentMinute);
         Assert.Equal(RoundState.EXTRA_TIME_BREAK, snap90.RoundState);
 
@@ -324,11 +326,14 @@ public class MultiplayerSynchronizationAndPauseTests
         await orchestrator.ConfirmContinueMatchAsync(new ConfirmContinueMatchCommand(world.Id, coachHome.Id, "et-start"));
         for (int m = 91; m <= 95; m++)
         {
-            await orchestrator.AdvanceClockTickAsync(world.Id);
+            await TickWithAutomaticPenaltyChoiceAsync(orchestrator, world.Id);
         }
 
         var (p4Ok, p4Err, _) = await orchestrator.RequestGlobalPauseAsync(new RequestPauseCommand(world.Id, coachHome.Id, "pause-4-et"));
         Assert.True(p4Ok, p4Err);
+        Assert.Equal(3, cupFixture.HomeUsedPauseWindows);
+        Assert.True((await orchestrator.SubmitInMatchAdjustmentAsync(new(world.Id,coachHome.Id,cupFixture.Id,
+            cupFixture.HomeFormation=="4-3-3"?"4-4-2":"4-3-3",new(),"extra-time-edit"))).Success);
         Assert.Equal(4, cupFixture.HomeUsedPauseWindows);
     }
 
@@ -412,7 +417,7 @@ public class MultiplayerSynchronizationAndPauseTests
             int safetyTicks = 0;
             while (safetyTicks++ < 150)
             {
-                var snap = await orchestrator.AdvanceClockTickAsync(worldA.Id);
+                var snap = await TickWithAutomaticPenaltyChoiceAsync(orchestrator, worldA.Id);
                 Assert.NotNull(snap);
 
                 // Every 3rd round at minute 33, an active coach requests a global pause and makes 1 substitution
@@ -491,5 +496,16 @@ public class MultiplayerSynchronizationAndPauseTests
 
         Assert.True(totalGlobalPausesExecuted >= 10, $"Esperava >= 10 pausas globais nas 100 rodadas, obteve {totalGlobalPausesExecuted}.");
         Assert.True(totalInMatchSubstitutionsExecuted >= 10, $"Esperava >= 10 substituições em partida nas 100 rodadas, obteve {totalInMatchSubstitutionsExecuted}.");
+    }
+    // Legacy match drivers explicitly play the human decisions introduced by this task.
+    private static async Task<LiveRoundSnapshotDto?> TickWithAutomaticPenaltyChoiceAsync(MultiplayerRoundOrchestrator orchestrator, Guid worldId)
+    {
+        var snap=await orchestrator.AdvanceClockTickAsync(worldId);
+        while(snap?.PendingPenalty is { } penalty) {
+            var choice=await orchestrator.ChoosePenaltyTakerAsync(new(worldId,penalty.CoachId,penalty.DecisionId,
+                penalty.EligiblePlayers.OrderByDescending(p=>p.IsStar).ThenByDescending(p=>p.Position==PlayerPosition.A).ThenByDescending(p=>p.Strength).First().PlayerId,$"legacy-driver-{penalty.DecisionId}"));
+            Assert.True(choice.Success,choice.Error);snap=choice.Snapshot;
+        }
+        return snap;
     }
 }

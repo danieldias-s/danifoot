@@ -135,7 +135,9 @@ public sealed class EfWorldRepository : IWorldRepository
             or RoundState.EXTRA_TIME_HALFTIME
             or RoundState.RESULTS
             or RoundState.FINISHED
-            || world.CurrentMatchMinute % 15 == 0;
+            || world.CurrentMatchMinute % 15 == 0
+            || world.RequiresDurableMatchInteractionSave
+            || world.Fixtures.Any(m => m.PendingPenalties.Count > 0);
 
         if (!isCheckpointState) return;
 
@@ -225,6 +227,7 @@ public sealed class EfWorldRepository : IWorldRepository
         }
 
         await db.SaveChangesAsync(ct);
+        world.RequiresDurableMatchInteractionSave = false;
         } finally { gate.Release(); }
     }
 }

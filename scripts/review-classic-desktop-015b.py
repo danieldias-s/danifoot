@@ -53,10 +53,15 @@ def ready(w,p):
         return api('/worlds/'+w+'/tactics',tactics(w,p))
 def finish(w,participants):
     stages=[]
-    for _ in range(20):
+    for _ in range(128):
         snap=api('/worlds/'+w+'/snapshot');stage=snap['roundState'];stages.append(stage)
         if stage in ['RESULTS','FINISHED']:return snap,stages
-        if stage.startswith('RUNNING_'):api('/worlds/'+w+'/tick?ticks=125',{})
+        if snap.get('pendingPenalty'):
+            pending=snap['pendingPenalty']
+            assert pending['coachId'] in [p['auth']['coachId'] for p in participants], 'QA may choose only its own coaches'
+            taker=sorted(pending['eligiblePlayers'],key=lambda p:(-int(p['isStar']),-int(p['position']=='A'),-p['strength'],p['playerId']))[0]
+            api('/worlds/'+w+'/penalty-taker',dict(gameWorldId=w,coachId=pending['coachId'],decisionId=pending['decisionId'],playerId=taker['playerId'],idempotencyKey='qa-penalty-'+pending['decisionId']))
+        elif stage.startswith('RUNNING_'):api('/worlds/'+w+'/tick?ticks=125',{})
         elif stage in ['HALFTIME_PAUSED','GLOBAL_PAUSED','EXTRA_TIME_BREAK','EXTRA_TIME_HALFTIME']:
             for p in participants:
                 api('/worlds/'+w+'/continue',dict(gameWorldId=w,coachId=p['auth']['coachId'],idempotencyKey='015b-'+uuid.uuid4().hex))
@@ -111,7 +116,43 @@ def multiplayer():
         save('multiplayer-http.json',reports)
         print(f'{count} humanos: waiting/start/pause/results verified.',flush=True)
 
+def solo():
+    """Prepare a separate one-human world without altering prior saves or coaches."""
+    path=AREA/'solo-context.json'
+    if path.exists():
+        c=json.loads(path.read_text(encoding='utf-8'))
+    else:
+        auth=api('/auth/local-login',dict(nickname='Daniel 015B',deviceId='015b-daniel'))
+        req=json.loads((AREA/'inputs/Male.input.json').read_text(encoding='utf-8-sig'))['request']
+        req.update(name='015B - Teste individual Daniel',maxHumans=1,seed=199801)
+        preview=api('/world-creator/preview',req,auth['sessionToken'])
+        if preview.get('errors'):raise RuntimeError(preview['errors'])
+        world=api('/world-creator/confirm/'+preview['draftId'],{},auth['sessionToken'])
+        club=next(x for x in api('/worlds/'+world['id']+'/clubs') if x['name']=='Flamengo RJ')
+        query=urllib.parse.urlencode(dict(coachId=auth['coachId'],nickname=auth['nickname'],deviceId=auth['deviceId'],preferredClubId=club['id']))
+        api('/worlds/'+world['id']+'/join?'+query,{})
+        c=dict(world=world,participants=[dict(auth=auth,club=club)])
+        save('solo-context.json',c)
+    w=c['world']['id']
+    for target in [1,2]:
+        snap=api('/worlds/'+w+'/snapshot')
+        if snap['roundNumber']>target:continue
+        assert snap['roundNumber']==target
+        if snap['roundState']=='PREPARING':ready(w,c['participants'][0])
+        finished,_=finish(w,c['participants'])
+        assert finished['roundState']=='RESULTS'
+        api('/worlds/'+w+'/next-round',{})
+    snap=api('/worlds/'+w+'/snapshot')
+    assert snap['readyCounter']['totalHumans']==1
+    public=dict(worldId=w,worldName=c['world']['name'],inviteCode=c['world']['inviteCode'],
+        nickname=c['participants'][0]['auth']['nickname'],deviceId=c['participants'][0]['auth']['deviceId'],
+        clubName=c['participants'][0]['club']['name'],roundNumber=snap['roundNumber'],roundState=snap['roundState'],
+        readyCounter=snap['readyCounter']['counterLabel'])
+    save('solo-playtest.json',public)
+    print(json.dumps(public,ensure_ascii=False))
+
 if __name__=='__main__':
-    if len(sys.argv)>1 and sys.argv[1]=='multiplayer':multiplayer()
+    if len(sys.argv)>1 and sys.argv[1]=='solo':solo()
+    elif len(sys.argv)>1 and sys.argv[1]=='multiplayer':multiplayer()
     elif len(sys.argv)>1 and sys.argv[1]=='preliminaries':preliminaries()
     else:prepare()

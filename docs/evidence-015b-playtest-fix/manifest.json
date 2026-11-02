@@ -1,0 +1,33 @@
+{
+  "verified": "Flutter 173/173 + real API single-human start; visual audit pending",
+  "files": [
+    {
+      "file": "formation-analyze.log.tail.txt",
+      "sha256": "0ff44fc63f377b612a54627f9d30d336c99813f71f544237d6fe0e895354d63b"
+    },
+    {
+      "file": "formation-build-health.json",
+      "sha256": "2c9004e7e2d677e17f0877fc671b5f48778bb01476a47489dbc6a65105f6ec32"
+    },
+    {
+      "file": "formation-build-web.log.tail.txt",
+      "sha256": "3e7845cd7ce127ea8492417a55a270e6ef45114634b701bfec299922ee90e163"
+    },
+    {
+      "file": "formation-flutter-full.log.tail.txt",
+      "sha256": "f5e530ae8c73e93ac746358e60dfbe1754028ef17efb4c6077071dd3aa8a4a60"
+    },
+    {
+      "file": "formation-focused.log.tail.txt",
+      "sha256": "ae8388c8c4534da9d62d5b017bb66085fcd372af4147a9671f4207143ed23217"
+    },
+    {
+      "file": "one-human-proof.json",
+      "sha256": "123edea082ee77961ad6375d3cbd66f367e301092c6d4c83165635e70697e4fd"
+    },
+    {
+      "file": "solo-playtest.json",
+      "sha256": "5a31312d3a988679d66908ed347e1c941a3c2195318e63c38b56c837e9be31a0"
+    }
+  ]
+}
