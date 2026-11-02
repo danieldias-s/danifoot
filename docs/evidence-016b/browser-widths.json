@@ -1,0 +1,38 @@
+[
+  {
+    "documentWidth": 360,
+    "height": 1000,
+    "screen": "Divisões",
+    "width": 360
+  },
+  {
+    "documentWidth": 430,
+    "height": 1000,
+    "screen": "Calendário",
+    "width": 430
+  },
+  {
+    "documentWidth": 768,
+    "height": 1000,
+    "screen": "Mercado",
+    "width": 768
+  },
+  {
+    "documentWidth": 1920,
+    "height": 1080,
+    "screen": "Aparência",
+    "width": 1920
+  },
+  {
+    "documentWidth": 1366,
+    "height": 1000,
+    "screen": "Aparência",
+    "width": 1366
+  },
+  {
+    "documentWidth": 390,
+    "height": 1000,
+    "screen": "Divisões",
+    "width": 390
+  }
+]

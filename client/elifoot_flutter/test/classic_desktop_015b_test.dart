@@ -2,6 +2,7 @@ import 'package:elifoot_flutter/classic_layout.dart';
 import 'package:elifoot_flutter/classic_match_board.dart';
 import 'package:elifoot_flutter/club_theme.dart';
 import 'package:elifoot_flutter/morale_bar.dart';
+import 'package:elifoot_flutter/visual_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'classic_ux_014b_test.dart' show WaitingRoomApi, join;
@@ -187,12 +188,12 @@ void main() {
       await select015B(tester, 5);
       await tester.tap(find.text('RODADA ATUAL (R1)'));
       await tester.pumpAndSettle();
-      final tabs = tester.widget<ClassicTabs>(
+      final tabs = tester.widget<ClassicSelectionTabs>(
         find.byKey(const Key('calendar-filters')),
       );
       expect(tabs.selected, 'CURRENT');
       expect(find.byKey(const ValueKey('calendar-round-2')), findsNothing);
-      await tester.tap(find.text('MEU CLUBE (Atlético Verde)'));
+      await tester.tap(find.text('MEU CLUBE'));
       await tester.pumpAndSettle();
       expect(find.text('Seu clube não disputa esta rodada.'), findsOneWidget);
       expect(tester.takeException(), isNull);

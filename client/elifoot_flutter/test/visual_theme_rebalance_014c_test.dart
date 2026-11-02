@@ -346,6 +346,8 @@ void main() {
       await tester.ensureVisible(cupTab.first);
       await tester.tap(cupTab.first);
       await tester.pumpAndSettle();
+      await tester.tap(find.text('TAÇA NACIONAL'));
+      await tester.pumpAndSettle();
       final finalBlock = find.byKey(
         const ValueKey('team-color-União Imperial (1ª Divisão)'),
       );
@@ -394,6 +396,7 @@ void main() {
           await tester.ensureVisible(
             find.byKey(const ValueKey('match-colors-Neutral')),
           );
+          await tester.pumpAndSettle();
           await tester.tap(find.byKey(const ValueKey('match-colors-Neutral')));
           await tester.pumpAndSettle();
           expect(controller.theme.strongTeamColors, isFalse);
@@ -415,6 +418,10 @@ void main() {
               brightness: 1,
             ).background,
           );
+          await tester.ensureVisible(find.text('OPÇÕES AVANÇADAS'));
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('OPÇÕES AVANÇADAS'));
+          await tester.pumpAndSettle();
           await tester.ensureVisible(find.text('RESTAURAR PADRÃO'));
           await tester.tap(find.text('RESTAURAR PADRÃO'));
           await tester.pumpAndSettle();

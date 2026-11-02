@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'club_theme.dart';
+import 'visual_components.dart';
 
 class AppearanceSettings extends StatefulWidget {
   final ElifootApiClient api;
   final ClubThemeController controller;
+  final bool embedded;
+  final VoidCallback? onClose;
   const AppearanceSettings({
     super.key,
     required this.api,
     required this.controller,
+    this.embedded = false,
+    this.onClose,
   });
   @override
   State<AppearanceSettings> createState() => _AppearanceSettingsState();
@@ -64,12 +69,25 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
     final t = ClassicTheme.of(context);
     return OutlinedButton(
       key: ValueKey(key),
-      style: selected
-          ? OutlinedButton.styleFrom(
-              backgroundColor: t.selectedBackground,
-              foregroundColor: t.selectedText,
-            )
-          : null,
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size(44, 44),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        textStyle: const TextStyle(
+          fontFamily: 'ClassicCondensed',
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+        backgroundColor: selected
+            ? t.selectedBackground
+            : MediaQuery.sizeOf(context).width >= 1024
+            ? t.primary
+            : t.paper.surface,
+        foregroundColor: selected
+            ? t.selectedText
+            : MediaQuery.sizeOf(context).width >= 1024
+            ? t.textPrimary
+            : t.paper.textPrimary,
+      ),
       onPressed: _busy || !_sameClub ? null : onTap,
       child: Text(selected ? '[X] $label' : label),
     );
@@ -122,146 +140,264 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
   }
 
   @override
+  void dispose() {
+    if (widget.embedded && !_saved && _sameClub) {
+      final controller = widget.controller;
+      final original = Map<String, dynamic>.from(_original);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (controller.isActive) controller.preview(original);
+      });
+    }
+    super.dispose();
+  }
+
+  Widget _options(
+    String title,
+    IconData icon,
+    Widget controls, {
+    Widget? footer,
+  }) => ClassicPaperPanel(
+    child: LayoutBuilder(
+      builder: (context, c) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (c.maxWidth >= 760)
+            Row(
+              children: [
+                Icon(
+                  icon,
+                  color: ClassicTheme.of(context).paper.accent,
+                  size: 30,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  flex: 4,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: ClassicTheme.of(context).paper.textPrimary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                Expanded(flex: 6, child: controls),
+              ],
+            )
+          else ...[
+            Container(
+              padding: const EdgeInsets.all(9),
+              color: ClassicTheme.of(context).primary,
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: readableInk(
+                    ClassicTheme.of(context).primary,
+                    Colors.white,
+                  ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            controls,
+          ],
+          if (footer != null) ...[const SizedBox(height: 8), footer],
+        ],
+      ),
+    ),
+  );
+
+  @override
   Widget build(BuildContext context) {
     final t = ClassicTheme.of(context), palette = widget.controller.palette;
-    return PopScope(
-      onPopInvokedWithResult: (didPop, result) {
-        if (didPop && !_saved && _sameClub) {
-          widget.controller.preview(_original);
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(title: const Text('APARÊNCIA')),
-        body: SafeArea(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 720),
-              child: ListView(
-                padding: const EdgeInsets.all(16),
+    Widget choices(List<Widget> buttons) => Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (var i = 0; i < buttons.length; i++) ...[
+          if (i > 0) const SizedBox(width: 6),
+          Expanded(child: buttons[i]),
+        ],
+      ],
+    );
+    final body = SingleChildScrollView(
+      key: const Key('appearance-content'),
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ClassicPaperPanel(
+            child: Row(
+              children: [
+                Icon(Icons.palette_outlined, color: t.paper.accent, size: 40),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'TEMA DO JOGO',
+                        style: TextStyle(
+                          color: t.paper.textPrimary,
+                          fontSize: 29,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        'Aparência e personalização visual da interface',
+                        style: TextStyle(
+                          color: t.paper.textPrimary,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (widget.embedded)
+                  BackButton(
+                    onPressed: widget.onClose,
+                    color: t.paper.textPrimary,
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          ClassicPaperPanel(
+            title: 'TEMA DO JOGO',
+            child: ClassicPaper(
+              builder: (_) => const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('TEMA DO JOGO', style: t.headingStyle),
-                  if (!_sameClub)
-                    const Text(
-                      'CLUBE ALTERADO. Reabra Aparência para configurar o clube atual.',
-                    ),
-                  const Text(
+                  Text(
                     'A interface usa o verde clássico em qualquer clube. As cores dos clubes aparecem nas partidas, confrontos e listas de jogos.',
-                  ),
-                  const Text(
-                    'As escolhas são suas e não alteram o catálogo nem a aparência dos outros treinadores.',
-                  ),
-                  const SizedBox(height: 8),
-                  Text('VARIAÇÃO DO VERDE CLÁSSICO', style: t.headingStyle),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      for (final v in const [
-                        ('Classico', 'CLÁSSICO'),
-                        ('Escuro', 'ESCURO'),
-                        ('AltoContraste', 'ALTO CONTRASTE'),
-                      ])
-                        _choice(
-                          key: 'theme-variant-${v.$1}',
-                          label: v.$2,
-                          selected:
-                              _classic &&
-                              (_draft['themeVariant'] ?? 'Classico') == v.$1,
-                          onTap: () => _classicChange('themeVariant', v.$1),
-                        ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text('BRILHO', style: t.headingStyle),
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    runSpacing: 6,
-                    children: [
-                      OutlinedButton(
-                        key: const ValueKey('brightness-down'),
-                        onPressed: _busy || !_sameClub || _brightness <= -2
-                            ? null
-                            : () =>
-                                  _classicChange('brightness', _brightness - 1),
-                        child: const Text('- BRILHO'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Text(
-                          _brightness == 0
-                              ? 'PADRÃO'
-                              : (_brightness > 0
-                                    ? '+$_brightness'
-                                    : '$_brightness'),
-                          key: const ValueKey('brightness-value'),
-                        ),
-                      ),
-                      OutlinedButton(
-                        key: const ValueKey('brightness-up'),
-                        onPressed: _busy || !_sameClub || _brightness >= 2
-                            ? null
-                            : () =>
-                                  _classicChange('brightness', _brightness + 1),
-                        child: const Text('+ BRILHO'),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Text('CORES DOS CLUBES NAS PARTIDAS', style: t.headingStyle),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      _choice(
-                        key: 'match-colors-Strong',
-                        label: 'CORES FORTES DOS CLUBES',
-                        selected: _draft['matchColors'] != 'Neutral',
-                        onTap: () => _change('matchColors', 'Strong'),
-                      ),
-                      _choice(
-                        key: 'match-colors-Neutral',
-                        label: 'MODO NEUTRO',
-                        selected: _draft['matchColors'] == 'Neutral',
-                        onTap: () => _change('matchColors', 'Neutral'),
-                      ),
-                    ],
+                    style: TextStyle(fontSize: 18),
                   ),
                   Text(
-                    palette == null
-                        ? 'Seu clube não tem cores tradicionais registradas; nas partidas ele aparece neutro.'
-                        : 'Seu clube nas partidas: ${palette['primaryColor']} / ${palette['secondaryColor'] ?? 'não informada'} • ${palette['colorVerified'] == true ? 'VERIFICADAS' : 'PERSONALIZADAS'}',
+                    'As escolhas são suas e não alteram o catálogo nem a aparência dos outros treinadores.',
+                    style: TextStyle(fontSize: 18),
                   ),
-                  if (palette != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: TeamColorName(
-                              name: 'SEU CLUBE',
-                              palette: palette,
-                              textAlign: TextAlign.right,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 64,
-                            child: Text('2 - 1', textAlign: TextAlign.center),
-                          ),
-                          const Expanded(
-                            child: TeamColorName(name: 'ADVERSÁRIO'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  const SizedBox(height: 8),
-                  ExpansionTile(
-                    key: const ValueKey('appearance-advanced'),
-                    initiallyExpanded: !_classic,
-                    tilePadding: EdgeInsets.zero,
-                    title: Text('OPÇÕES AVANÇADAS', style: t.headingStyle),
+                ],
+              ),
+            ),
+          ),
+          if (!_sameClub)
+            const Text(
+              'CLUBE ALTERADO. Reabra Aparência para configurar o clube atual.',
+            ),
+          const SizedBox(height: 12),
+          _options(
+            'VARIAÇÃO DO VERDE CLÁSSICO',
+            Icons.layers,
+            choices([
+              for (final v in const [
+                ('Classico', 'CLÁSSICO'),
+                ('Escuro', 'ESCURO'),
+                ('AltoContraste', 'ALTO CONTRASTE'),
+              ])
+                _choice(
+                  key: 'theme-variant-${v.$1}',
+                  label: v.$2,
+                  selected:
+                      _classic &&
+                      (_draft['themeVariant'] ?? 'Classico') == v.$1,
+                  onTap: () => _classicChange('themeVariant', v.$1),
+                ),
+            ]),
+          ),
+          const SizedBox(height: 12),
+          _options(
+            'BRILHO',
+            Icons.wb_sunny_outlined,
+            choices([
+              OutlinedButton(
+                key: const ValueKey('brightness-down'),
+                onPressed: _busy || !_sameClub || _brightness <= -2
+                    ? null
+                    : () => _classicChange('brightness', _brightness - 1),
+                child: const Text('- BRILHO'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 13),
+                child: Text(
+                  _brightness == 0
+                      ? 'PADRÃO'
+                      : _brightness > 0
+                      ? '+$_brightness'
+                      : '$_brightness',
+                  key: const ValueKey('brightness-value'),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: t.paper.textPrimary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              OutlinedButton(
+                key: const ValueKey('brightness-up'),
+                onPressed: _busy || !_sameClub || _brightness >= 2
+                    ? null
+                    : () => _classicChange('brightness', _brightness + 1),
+                child: const Text('+ BRILHO'),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 12),
+          _options(
+            'CORES DOS CLUBES NAS PARTIDAS',
+            Icons.checkroom,
+            choices([
+              _choice(
+                key: 'match-colors-Strong',
+                label: 'CORES FORTES DOS CLUBES',
+                selected: _draft['matchColors'] != 'Neutral',
+                onTap: () => _change('matchColors', 'Strong'),
+              ),
+              _choice(
+                key: 'match-colors-Neutral',
+                label: 'MODO NEUTRO',
+                selected: _draft['matchColors'] == 'Neutral',
+                onTap: () => _change('matchColors', 'Neutral'),
+              ),
+            ]),
+            footer: Text(
+              palette == null
+                  ? 'Seu clube não tem cores tradicionais registradas; nas partidas ele aparece neutro.'
+                  : 'Seu clube nas partidas: ${palette['primaryColor']} / ${palette['secondaryColor'] ?? 'não informada'} • ${palette['colorVerified'] == true ? 'VERIFICADAS' : 'PERSONALIZADAS'}',
+              style: TextStyle(color: t.paper.textPrimary, fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 12),
+          ClassicPaperPanel(
+            padding: EdgeInsets.zero,
+            child: ExpansionTile(
+              key: const ValueKey('appearance-advanced'),
+              initiallyExpanded: !_classic,
+              backgroundColor: t.primary,
+              collapsedBackgroundColor: t.primary,
+              iconColor: readableInk(t.primary, Colors.white),
+              collapsedIconColor: readableInk(t.primary, Colors.white),
+              title: Text(
+                'OPÇÕES AVANÇADAS',
+                style: TextStyle(
+                  color: readableInk(t.primary, Colors.white),
+                  fontSize: 21,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              childrenPadding: EdgeInsets.zero,
+              children: [
+                Container(
+                  color: t.paper.surface,
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
-                        'Não recomendadas: substituem o verde clássico na interface inteira.',
+                      ClassicPaper(
+                        builder: (_) => const Text(
+                          'Não recomendadas: substituem o verde clássico na interface inteira.',
+                        ),
                       ),
                       Wrap(
                         spacing: 8,
@@ -284,90 +420,156 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
                                 : () => _change('mode', 'Classic'),
                             child: const Text('VOLTAR AO VERDE CLÁSSICO'),
                           ),
+                          OutlinedButton(
+                            onPressed: _busy || !_sameClub
+                                ? null
+                                : () => _save(restore: true),
+                            child: const Text('RESTAURAR PADRÃO'),
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: [
-                      OutlinedButton(
-                        onPressed: _busy || !_sameClub
-                            ? null
-                            : () => _save(restore: true),
-                        child: const Text('RESTAURAR PADRÃO'),
-                      ),
-                    ],
-                  ),
-                  if (_draft['mode'] == 'Custom') ...[
-                    for (final item in const [
-                      ('background', 'COR DE FUNDO'),
-                      ('primary', 'COR PRINCIPAL'),
-                      ('secondary', 'COR SECUNDÁRIA'),
-                      ('text', 'COR DO TEXTO'),
-                      ('accent', 'COR DE DESTAQUE'),
-                    ])
-                      ColorChoice(
-                        label: item.$2,
-                        value: rgbColor(_draft[item.$1])!,
-                        onChanged: _busy || !_sameClub
-                            ? null
-                            : (c) => _change(item.$1, rgbHex(c)),
-                      ),
-                  ],
-                  Container(
-                    key: const ValueKey('appearance-preview'),
-                    margin: const EdgeInsets.symmetric(vertical: 12),
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: t.surface,
-                      border: Border.all(color: t.border),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text('PRÉVIA EM TEMPO REAL', style: t.headingStyle),
-                        Text(
-                          'Plantel • Jogos • Mercado • Finanças',
-                          style: TextStyle(color: t.textPrimary),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          color: t.selectedBackground,
-                          child: Text(
-                            'CLUBE  2 - 1  ADVERSÁRIO',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: t.selectedText),
+                      if (_draft['mode'] == 'Custom')
+                        for (final item in const [
+                          ('background', 'COR DE FUNDO'),
+                          ('primary', 'COR PRINCIPAL'),
+                          ('secondary', 'COR SECUNDÁRIA'),
+                          ('text', 'COR DO TEXTO'),
+                          ('accent', 'COR DE DESTAQUE'),
+                        ])
+                          ColorChoice(
+                            label: item.$2,
+                            value: rgbColor(_draft[item.$1])!,
+                            onChanged: _busy || !_sameClub
+                                ? null
+                                : (c) => _change(item.$1, rgbHex(c)),
                           ),
-                        ),
-                        Text(
-                          'Contraste texto/fundo: ${colorContrast(t.textPrimary, t.background).toStringAsFixed(2)}:1',
-                        ),
-                        const Text(
-                          'Tonalidades visuais podem ser ajustadas para manter a leitura; cores registradas não são alteradas.',
-                        ),
-                      ],
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          ClassicPaperPanel(
+            key: const ValueKey('appearance-preview'),
+            title: 'PRÉVIA EM TEMPO REAL',
+            child: ClassicPaper(
+              builder: (context) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    'Plantel • Jogos • Mercado • Finanças',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    color: t.selectedBackground,
+                    padding: const EdgeInsets.all(12),
+                    child: Text(
+                      'CLUBE  2 - 1  ADVERSÁRIO',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: t.selectedText,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  if (widget.controller.clubId == null)
-                    const Text(
-                      'Selecione um clube para salvar sua preferência.',
-                    ),
-                  if (_error != null) Text('ERRO: $_error'),
-                  if (_busy) const LinearProgressIndicator(),
-                  ElevatedButton(
-                    onPressed:
-                        _busy || !_sameClub || widget.controller.clubId == null
-                        ? null
-                        : () => _save(),
-                    child: const Text('SALVAR APARÊNCIA'),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Contraste texto/fundo: ${colorContrast(t.textPrimary, t.background).toStringAsFixed(2)}:1',
+                    style: const TextStyle(fontSize: 17),
+                  ),
+                  const Text(
+                    'Tonalidades visuais podem ser ajustadas para manter a leitura; cores registradas não são alteradas.',
+                    style: TextStyle(fontSize: 17),
                   ),
                 ],
               ),
             ),
           ),
-        ),
+          const SizedBox(height: 12),
+          ClassicPaperPanel(
+            child: LayoutBuilder(
+              builder: (context, c) {
+                final button = ElevatedButton(
+                  key: const Key('save-appearance'),
+                  onPressed:
+                      _busy || !_sameClub || widget.controller.clubId == null
+                      ? null
+                      : () => _save(),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(44, 52),
+                    backgroundColor: c.maxWidth < 600
+                        ? t.selectedBackground
+                        : t.buttonBackground,
+                    foregroundColor: c.maxWidth < 600
+                        ? t.selectedText
+                        : t.buttonText,
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.save_outlined),
+                      SizedBox(width: 8),
+                      Flexible(
+                        child: Text(
+                          'SALVAR APARÊNCIA',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+                final message = Text(
+                  _error != null
+                      ? 'ERRO: $_error'
+                      : widget.controller.clubId == null
+                      ? 'Selecione um clube para salvar sua preferência.'
+                      : _saved
+                      ? 'Aparência salva para o seu treinador.'
+                      : 'Suas preferências ficam salvas para este clube.',
+                  style: TextStyle(color: t.paper.textPrimary, fontSize: 17),
+                );
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (_busy) const LinearProgressIndicator(),
+                    if (c.maxWidth >= 760)
+                      Row(
+                        children: [
+                          Expanded(child: message),
+                          const SizedBox(width: 12),
+                          SizedBox(width: 340, child: button),
+                        ],
+                      )
+                    else ...[
+                      message,
+                      const SizedBox(height: 10),
+                      button,
+                    ],
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+    if (widget.embedded) return body;
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop && !_saved && _sameClub) {
+          widget.controller.preview(_original);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(title: const Text('APARÊNCIA')),
+        body: SafeArea(child: body),
       ),
     );
   }

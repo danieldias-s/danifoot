@@ -68,6 +68,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
   /// lists). `true` paints each team with its registered palette; `false`
   /// shows a neutral block with only a thin identity stripe.
   final bool strongTeamColors;
+  final bool lightPanels;
   const ClassicTheme({
     required this.background,
     required this.surface,
@@ -86,6 +87,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     required this.tableRow,
     required this.tableRowAlternate,
     this.strongTeamColors = true,
+    this.lightPanels = false,
   });
   static ClassicTheme of(BuildContext context) =>
       Theme.of(context).extension<ClassicTheme>() ?? derive();
@@ -213,6 +215,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       tableRow: surface,
       tableRowAlternate: alternate,
       strongTeamColors: strongTeamColors,
+      lightPanels: variant != 'Escuro' && variant != 'AltoContraste',
     );
   }
 
@@ -298,10 +301,32 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     );
   }
 
+  ClassicTheme get paper => !lightPanels
+      ? this
+      : ClassicTheme(
+          background: background,
+          surface: const Color(0xFFF1F4F2),
+          surfaceAlternate: const Color(0xFFDFEAE2),
+          primary: primary,
+          secondary: secondary,
+          textPrimary: const Color(0xFF102A1C),
+          textSecondary: const Color(0xFF314B3C),
+          accent: const Color(0xFF00512E),
+          border: const Color(0xFFA1BDB1),
+          buttonBackground: buttonBackground,
+          buttonText: buttonText,
+          selectedBackground: selectedBackground,
+          selectedText: selectedText,
+          tableHeader: const Color(0xFFDFE6E1),
+          tableRow: const Color(0xFFF5F7F5),
+          tableRowAlternate: const Color(0xFFE0EAE2),
+          strongTeamColors: strongTeamColors,
+        );
+
   TextStyle get headingStyle => TextStyle(
     color: accent,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Roboto',
+    fontFamily: 'ClassicCondensed',
     letterSpacing: .4,
   );
   ThemeData material() {
@@ -320,16 +345,21 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     );
     final textTheme = ThemeData(
       brightness: scheme.brightness,
-      fontFamily: 'Roboto',
+      fontFamily: 'ClassicCondensed',
     ).textTheme.apply(bodyColor: textPrimary, displayColor: textPrimary);
-    final shape = const RoundedRectangleBorder(borderRadius: BorderRadius.zero);
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5),
+    );
     return ThemeData(
       useMaterial3: false,
       colorScheme: scheme,
       scaffoldBackgroundColor: background,
       primaryColor: primary,
-      fontFamily: 'Roboto',
-      textTheme: textTheme,
+      fontFamily: 'ClassicCondensed',
+      textTheme: textTheme.copyWith(
+        bodyMedium: textTheme.bodyMedium?.copyWith(fontSize: 16),
+        bodySmall: textTheme.bodySmall?.copyWith(fontSize: 14),
+      ),
       extensions: [this],
       visualDensity: VisualDensity.compact,
       dataTableTheme: DataTableThemeData(
@@ -348,7 +378,10 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
       dialogTheme: DialogThemeData(
         backgroundColor: surface,
         titleTextStyle: headingStyle,
-        contentTextStyle: TextStyle(color: textPrimary, fontFamily: 'Roboto'),
+        contentTextStyle: TextStyle(
+          color: textPrimary,
+          fontFamily: 'ClassicCondensed',
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -357,10 +390,11 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
           shape: shape,
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 12,
-            fontFamily: 'Roboto',
+            fontSize: 16,
+            fontFamily: 'ClassicCondensed',
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          minimumSize: const Size(44, 44),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -408,9 +442,12 @@ class ClubThemeController extends ChangeNotifier {
   String? error;
   int _generation = 0;
   bool loading = false;
+  bool _disposed = false;
+  bool get isActive => !_disposed;
   @override
   void dispose() {
     _generation++;
+    _disposed = true;
     super.dispose();
   }
 
@@ -490,12 +527,16 @@ class TeamColorName extends StatelessWidget {
   final Map<String, dynamic>? palette;
   final TextAlign textAlign;
   final bool highlight;
+  final int maxLines;
+  final double fontSize;
   const TeamColorName({
     super.key,
     required this.name,
     this.palette,
     this.textAlign = TextAlign.left,
     this.highlight = false,
+    this.maxLines = 1,
+    this.fontSize = 12,
   });
   @override
   Widget build(BuildContext context) {
@@ -528,11 +569,11 @@ class TeamColorName extends StatelessWidget {
         child: Text(
           name,
           textAlign: textAlign,
-          maxLines: 1,
+          maxLines: maxLines,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: ink,
-            fontSize: 12,
+            fontSize: fontSize,
             fontWeight: highlight ? FontWeight.bold : FontWeight.normal,
           ),
         ),

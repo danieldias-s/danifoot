@@ -23,10 +23,10 @@ extension ClassicLayoutTokens on ClassicTheme {
 }
 
 const classicNavigation = [
-  ('1. PLANTEL & TÁTICAS', Icons.checkroom_outlined),
-  ('2. DIVISÕES & TAÇA', Icons.emoji_events_outlined),
+  ('1. PLANTEL & TÁTICAS', Icons.checkroom),
+  ('2. DIVISÕES & TAÇA', Icons.emoji_events),
   ('3. MERCADO & LEILÃO', Icons.swap_horiz),
-  ('4. FINANÇAS & ESTÁDIO', Icons.account_balance_outlined),
+  ('4. FINANÇAS & ESTÁDIO', Icons.account_balance),
   ('5. RANKING & CARREIRA', Icons.bar_chart),
   ('6. CALENDÁRIO & RESULTADOS', Icons.calendar_month_outlined),
   ('7. RANKINGS DE JOGADORES', Icons.groups_outlined),
@@ -64,14 +64,22 @@ class AppHeader extends StatelessWidget {
             Icon(
               Icons.sports_soccer,
               color: t.textPrimary,
-              size: compact ? 29 : 40,
+              size: compact
+                  ? 29
+                  : c.maxWidth < 1200
+                  ? 40
+                  : 46,
             ),
             const SizedBox(width: 8),
             Text(
               'LIGA CLÁSSICA ',
               style: TextStyle(
                 color: t.textPrimary,
-                fontSize: compact ? 18 : 27,
+                fontSize: compact
+                    ? 22
+                    : c.maxWidth < 1200
+                    ? 26
+                    : 36,
                 fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic,
                 letterSpacing: -.8,
@@ -81,7 +89,11 @@ class AppHeader extends StatelessWidget {
               '98',
               style: TextStyle(
                 color: t.accent,
-                fontSize: compact ? 23 : 34,
+                fontSize: compact
+                    ? 28
+                    : c.maxWidth < 1200
+                    ? 32
+                    : 42,
                 fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic,
               ),
@@ -97,7 +109,7 @@ class AppHeader extends StatelessWidget {
               style: TextStyle(
                 color: t.textPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: compact ? 11 : 13,
+                fontSize: compact ? 14 : 18,
               ),
               maxLines: 2,
             ),
@@ -106,7 +118,7 @@ class AppHeader extends StatelessWidget {
                 world,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: t.textSecondary, fontSize: 10),
+                style: TextStyle(color: t.textSecondary, fontSize: 14),
               ),
           ],
         );
@@ -125,7 +137,13 @@ class AppHeader extends StatelessWidget {
                 color: t.textSecondary,
               ),
               const SizedBox(width: 7),
-              Text(date, style: TextStyle(color: t.textPrimary, fontSize: 12)),
+              Text(
+                date,
+                style: TextStyle(
+                  color: t.textPrimary,
+                  fontSize: c.maxWidth < 1200 ? 14 : 16,
+                ),
+              ),
             ],
           ),
         );
@@ -167,8 +185,8 @@ class AppHeader extends StatelessWidget {
                           Text(
                             date,
                             style: TextStyle(
-                              fontSize: 10,
-                              color: t.textSecondary,
+                              fontSize: 14,
+                              color: t.textPrimary,
                             ),
                           ),
                         ],
@@ -184,7 +202,10 @@ class AppHeader extends StatelessWidget {
                     const SizedBox(width: 10),
                     calendar,
                     const SizedBox(width: 12),
-                    action,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 240),
+                      child: action,
+                    ),
                   ],
                 ),
         );
@@ -195,7 +216,7 @@ class AppHeader extends StatelessWidget {
 
 class AppSidebar extends StatelessWidget {
   final int selected;
-  final bool locked, showAppearance;
+  final bool locked, showAppearance, appearanceSelected;
   final ValueChanged<int> onSelected;
   final VoidCallback? appearance, switchRoom;
   const AppSidebar({
@@ -206,6 +227,7 @@ class AppSidebar extends StatelessWidget {
     this.appearance,
     this.switchRoom,
     this.showAppearance = true,
+    this.appearanceSelected = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -250,7 +272,7 @@ class AppSidebar extends StatelessWidget {
                         onTap: locked ? null : () => onSelected(i),
                         hoverColor: t.buttonHover,
                         child: Container(
-                          height: 51,
+                          constraints: const BoxConstraints(minHeight: 57),
                           padding: const EdgeInsets.symmetric(horizontal: 12),
                           decoration: BoxDecoration(
                             color: selected == i && !locked
@@ -283,7 +305,7 @@ class AppSidebar extends StatelessWidget {
                                         : locked
                                         ? t.textSecondary
                                         : t.textPrimary,
-                                    fontSize: 11,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -305,6 +327,14 @@ class AppSidebar extends StatelessWidget {
                 if (showAppearance)
                   OutlinedButton.icon(
                     key: const ValueKey('appearance-menu'),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: appearanceSelected
+                          ? t.selectedBackground
+                          : null,
+                      foregroundColor: appearanceSelected
+                          ? t.selectedText
+                          : t.accent,
+                    ),
                     onPressed: locked ? null : appearance,
                     icon: const Icon(Icons.settings_outlined, size: 16),
                     label: const Text('APARÊNCIA'),
@@ -491,53 +521,73 @@ class ClassicSummaryCard extends StatelessWidget {
     this.content,
   });
   @override
-  Widget build(BuildContext context) => Container(
-    constraints: const BoxConstraints(minHeight: 66),
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-    decoration: BoxDecoration(
-      gradient: const LinearGradient(
-        colors: [Color(0xFFF5F7F4), Color(0xFFE2E8E2)],
-      ),
-      border: Border.all(color: const Color(0xFFBAC8BC)),
-      borderRadius: BorderRadius.circular(4),
-    ),
-    child: Row(
-      children: [
-        Icon(icon, size: 28, color: const Color(0xFF006B36)),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (title != null)
-                Text(
-                  title!,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Color(0xFF10261A),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w800,
-                  ),
+  Widget build(BuildContext context) {
+    final t = ClassicTheme.of(context).paper;
+    return LayoutBuilder(
+      builder: (context, c) {
+        final compact = c.maxWidth < 145;
+        final text = Column(
+          crossAxisAlignment: compact
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (title != null)
+              Text(
+                title!,
+                textAlign: compact ? TextAlign.center : TextAlign.left,
+                style: TextStyle(
+                  color: t.textPrimary,
+                  fontSize: compact ? 13 : 18,
+                  fontWeight: FontWeight.w700,
+                  height: 1.04,
                 ),
-              if (subtitle != null)
-                Text(
-                  subtitle!,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Color(0xFF334B3A),
-                    fontSize: 11,
-                  ),
+              ),
+            if (subtitle != null)
+              Text(
+                subtitle!,
+                textAlign: compact ? TextAlign.center : TextAlign.left,
+                style: TextStyle(
+                  color: t.textSecondary,
+                  fontSize: compact ? 12 : 15,
+                  height: 1.12,
                 ),
-              ?content,
-            ],
+              ),
+            if (content != null) Theme(data: t.material(), child: content!),
+          ],
+        );
+        return Container(
+          constraints: BoxConstraints(minHeight: compact ? 86 : 68),
+          padding: EdgeInsets.symmetric(
+            horizontal: compact ? 3 : 12,
+            vertical: 8,
           ),
-        ),
-      ],
-    ),
-  );
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [t.surface, t.surfaceAlternate]),
+            border: Border.all(color: t.border),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: compact
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(icon, size: 22, color: t.accent),
+                    const SizedBox(height: 4),
+                    text,
+                  ],
+                )
+              : Row(
+                  children: [
+                    Icon(icon, size: 32, color: t.accent),
+                    const SizedBox(width: 10),
+                    Expanded(child: text),
+                  ],
+                ),
+        );
+      },
+    );
+  }
 }
 
 /// A schematic built from the selected real squad; it never supplies players.
@@ -673,7 +723,13 @@ class _PitchPainter extends CustomPainter {
 class ClassicPageHeader extends StatelessWidget {
   final String title;
   final String? subtitle;
-  const ClassicPageHeader({super.key, required this.title, this.subtitle});
+  final IconData? icon;
+  const ClassicPageHeader({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.icon,
+  });
   @override
   Widget build(BuildContext context) {
     final t = ClassicTheme.of(context);
@@ -685,25 +741,38 @@ class ClassicPageHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         border: Border(bottom: BorderSide(color: t.accent, width: 2)),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: t.accent,
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
+          if (icon != null) ...[
+            Icon(icon, color: t.selectedBackground, size: 30),
+            const SizedBox(width: 12),
+          ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: t.selectedBackground,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                if (subtitle != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 3),
+                    child: Text(
+                      subtitle!,
+                      style: TextStyle(
+                        color: readableInk(t.primary, Colors.white),
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
-          if (subtitle != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 3),
-              child: Text(
-                subtitle!,
-                style: TextStyle(color: t.textSecondary, fontSize: 11),
-              ),
-            ),
         ],
       ),
     );

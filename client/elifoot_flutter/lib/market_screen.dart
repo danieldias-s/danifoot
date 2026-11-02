@@ -3,6 +3,7 @@ import 'api_client.dart';
 import 'auction_config.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
+import 'visual_components.dart';
 
 String marketPosition(dynamic position) => position is num
     ? const ['G', 'D', 'M', 'A'][position.toInt().clamp(0, 3)]
@@ -389,7 +390,7 @@ class _MarketScreenState extends State<MarketScreen> {
 
   Widget _panel(Widget child) => Padding(
     padding: const EdgeInsets.only(bottom: 8),
-    child: ClassicPanel(child: child),
+    child: ClassicPaperPanel(child: child),
   );
 
   @override
@@ -424,7 +425,8 @@ class _MarketScreenState extends State<MarketScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const ClassicPageHeader(
-            title: 'MERCADO E LEILÃO',
+            title: 'MERCADO & LEILÃO',
+            icon: Icons.swap_horiz,
             subtitle:
                 'Anuncie jogadores, acompanhe lances e negocie com os outros clubes.',
           ),
@@ -445,95 +447,229 @@ class _MarketScreenState extends State<MarketScreen> {
                 ),
               ),
             ),
-          _panel(
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
+          LayoutBuilder(
+            builder: (context, c) => Row(
               children: [
-                for (final tab in [(0, 'LEILÃO'), (1, 'COMPRA DIRETA')])
-                  ChoiceChip(
-                    key: ValueKey('market-tab-${tab.$1}'),
-                    label: Text(tab.$2),
-                    selected: pref.tab == tab.$1,
-                    selectedColor: ClassicTheme.of(context).selectedBackground,
-                    backgroundColor: ClassicTheme.of(context).surface,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(3),
-                      side: BorderSide(color: ClassicTheme.of(context).border),
+                for (final tab in [(0, 'LEILÃO'), (1, 'COMPRA DIRETA')]) ...[
+                  if (tab.$1 > 0) const SizedBox(width: 8),
+                  Expanded(
+                    child: SizedBox(
+                      height: 48,
+                      child: ChoiceChip(
+                        key: ValueKey('market-tab-${tab.$1}'),
+                        label: SizedBox(
+                          width: double.infinity,
+                          child: Text(tab.$2, textAlign: TextAlign.center),
+                        ),
+                        selected: pref.tab == tab.$1,
+                        selectedColor: ClassicTheme.of(
+                          context,
+                        ).selectedBackground,
+                        backgroundColor: ClassicTheme.of(context).primary,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                          side: BorderSide(
+                            color: ClassicTheme.of(context).border,
+                          ),
+                        ),
+                        labelStyle: TextStyle(
+                          color: pref.tab == tab.$1
+                              ? ClassicTheme.of(context).selectedText
+                              : readableInk(
+                                  ClassicTheme.of(context).primary,
+                                  Colors.white,
+                                ),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        onSelected: (_) => setState(() {
+                          pref.tab = tab.$1;
+                          _message = null;
+                        }),
+                      ),
                     ),
-                    labelStyle: TextStyle(
-                      color: pref.tab == tab.$1
-                          ? ClassicTheme.of(context).selectedText
-                          : ClassicTheme.of(context).textPrimary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    onSelected: (_) => setState(() {
-                      pref.tab = tab.$1;
-                      _message = null;
-                    }),
                   ),
+                ],
               ],
             ),
           ),
+          const SizedBox(height: 8),
           _panel(
-            Wrap(
-              spacing: 12,
-              runSpacing: 12,
+            LayoutBuilder(
+              builder: (context, c) => Row(
+                children: [
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      key: ValueKey('market-position-${pref.tab}'),
+                      isExpanded: true,
+                      initialValue: pref.positions[pref.tab],
+                      decoration: const InputDecoration(labelText: 'Posição'),
+                      items: const [
+                        DropdownMenuItem(value: 'ALL', child: Text('TODOS')),
+                        DropdownMenuItem(value: 'G', child: Text('GOLEIRO')),
+                        DropdownMenuItem(value: 'D', child: Text('DEFESA')),
+                        DropdownMenuItem(value: 'M', child: Text('MEIO-CAMPO')),
+                        DropdownMenuItem(value: 'A', child: Text('ATAQUE')),
+                      ],
+                      onChanged: (v) {
+                        if (v != null) {
+                          setState(() => pref.positions[pref.tab] = v);
+                        }
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      key: ValueKey('market-sort-${pref.tab}'),
+                      isExpanded: true,
+                      initialValue: pref.sorts[pref.tab],
+                      decoration: const InputDecoration(labelText: 'Ordenação'),
+                      items: const [
+                        DropdownMenuItem(
+                          value: 'PRICE_ASC',
+                          child: Text('MENOR PREÇO'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'PRICE_DESC',
+                          child: Text('MAIOR PREÇO'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'STRENGTH_DESC',
+                          child: Text('MAIOR FORÇA'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'STRENGTH_ASC',
+                          child: Text('MENOR FORÇA'),
+                        ),
+                      ],
+                      onChanged: (v) {
+                        if (v != null) setState(() => pref.sorts[pref.tab] = v);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          ClassicPaperPanel(
+            title:
+                '${auction ? "LEILÕES" : "COMPRA DIRETA"} — ${rows.length} jogador(es)',
+            padding: EdgeInsets.zero,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
-                  width: 195,
-                  child: DropdownButtonFormField<String>(
-                    key: ValueKey('market-position-${pref.tab}'),
-                    isExpanded: true,
-                    initialValue: pref.positions[pref.tab],
-                    decoration: const InputDecoration(labelText: 'Posição'),
-                    items: const [
-                      DropdownMenuItem(value: 'ALL', child: Text('TODOS')),
-                      DropdownMenuItem(value: 'G', child: Text('GOLEIRO')),
-                      DropdownMenuItem(value: 'D', child: Text('DEFESA')),
-                      DropdownMenuItem(value: 'M', child: Text('MEIO-CAMPO')),
-                      DropdownMenuItem(value: 'A', child: Text('ATAQUE')),
-                    ],
-                    onChanged: (v) {
-                      if (v != null) {
-                        setState(() => pref.positions[pref.tab] = v);
-                      }
-                    },
+                if (auction)
+                  const Text(
+                    'Ordenação de preço: maior lance atual; sem lances, usa o lance mínimo.',
                   ),
-                ),
-                SizedBox(
-                  width: 195,
-                  child: DropdownButtonFormField<String>(
-                    key: ValueKey('market-sort-${pref.tab}'),
-                    isExpanded: true,
-                    initialValue: pref.sorts[pref.tab],
-                    decoration: const InputDecoration(labelText: 'Ordenação'),
-                    items: const [
-                      DropdownMenuItem(
-                        value: 'PRICE_ASC',
-                        child: Text('MENOR PREÇO'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'PRICE_DESC',
-                        child: Text('MAIOR PREÇO'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'STRENGTH_DESC',
-                        child: Text('MAIOR FORÇA'),
-                      ),
-                      DropdownMenuItem(
-                        value: 'STRENGTH_ASC',
-                        child: Text('MENOR FORÇA'),
-                      ),
-                    ],
-                    onChanged: (v) {
-                      if (v != null) setState(() => pref.sorts[pref.tab] = v);
-                    },
+                if (rows.isEmpty)
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text('Nenhum jogador corresponde aos filtros.'),
                   ),
-                ),
+                if (MediaQuery.sizeOf(context).width >= 900)
+                  _marketTable(rows, auction),
+                if (MediaQuery.sizeOf(context).width < 900)
+                  for (final (index, p) in rows.indexed)
+                    Container(
+                      color: index.isEven
+                          ? ClassicTheme.of(context).paper.tableRow
+                          : ClassicTheme.of(context).paper.tableRowAlternate,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.zero,
+                        childrenPadding: const EdgeInsets.only(top: 8),
+                        title: Row(
+                          children: [
+                            Expanded(
+                              flex: 5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${p['displayName']}',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    '${marketPosition(p['position'])} | Força: ${p['strength']}',
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              flex: 5,
+                              child: Text(
+                                auction
+                                    ? 'Mín: ${formatAuctionMoney(p['minimumBid'] as num? ?? 0)}\nRodadas: ${_roundsRemaining(p)} • ${p['isClosed'] == true ? 'ENCERRADO' : 'ABERTO'}'
+                                    : '${formatAuctionMoney(p['askingPrice'] as num? ?? 0)}\nSalário: ${formatAuctionMoney(p['salaryPerRound'] as num? ?? 0)}',
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ),
+                            if (auction)
+                              ElevatedButton(
+                                key: ValueKey('bid-${p['auctionId']}'),
+                                onPressed:
+                                    !_canTrade ||
+                                        p['isClosed'] == true ||
+                                        (p['sellerClubId'] == widget.clubId &&
+                                            const [
+                                              'Voluntary',
+                                              'FinancialInsolvency',
+                                            ].contains(p['reason']))
+                                    ? null
+                                    : () => _bid(p),
+                                child: const Text('DAR LANCE'),
+                              ),
+                            if (!auction && p['sellerClubId'] != widget.clubId)
+                              ElevatedButton(
+                                key: ValueKey('purchase-${p['playerId']}'),
+                                onPressed: !_canTrade
+                                    ? null
+                                    : () => _purchase(p),
+                                child: const Text('COMPRAR'),
+                              ),
+                          ],
+                        ),
+                        children: [
+                          _details(p, auction: auction),
+                          if (!auction && p['sellerClubId'] == widget.clubId)
+                            Wrap(
+                              spacing: 8,
+                              children: [
+                                const Text('ANÚNCIO DO MEU CLUBE'),
+                                OutlinedButton(
+                                  onPressed: !_canTrade
+                                      ? null
+                                      : () => _editListing(p),
+                                  child: const Text('ALTERAR PREÇO'),
+                                ),
+                                TextButton(
+                                  onPressed: !_canTrade
+                                      ? null
+                                      : () => _withdrawListing(p),
+                                  child: const Text('RETIRAR ANÚNCIO'),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
               ],
             ),
           ),
+          const SizedBox(height: 12),
           if (widget.clubId != null)
             _panel(
               Column(
@@ -588,105 +724,6 @@ class _MarketScreenState extends State<MarketScreen> {
                 ],
               ),
             ),
-          Text(
-            '${auction ? "LEILÕES" : "COMPRA DIRETA"} • ${rows.length} jogador(es)',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          if (auction)
-            const Text(
-              'Ordenação de preço: maior lance atual; sem lances, usa o lance mínimo.',
-            ),
-          if (rows.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: Text('Nenhum jogador corresponde aos filtros.'),
-            ),
-          if (MediaQuery.sizeOf(context).width >= 900)
-            _marketTable(rows, auction),
-          if (MediaQuery.sizeOf(context).width < 900)
-            for (final p in rows)
-              _panel(
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      '${p['displayName']} • ${marketPosition(p['position'])} • FORÇA ${p['strength']}',
-                      style: TextStyle(
-                        color: ClassicTheme.of(context).accent,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    if (auction) ...[
-                      Text(
-                        'Vendedor: ${p['sellerClubName'] ?? "Atleta livre"} • ${p['reason'] == "Voluntary" ? "VOLUNTÁRIO" : "AUTOMÁTICO"}',
-                      ),
-                      Text(
-                        'Lance mínimo: ${formatAuctionMoney(p['minimumBid'] as num? ?? 0)}',
-                      ),
-                      Text(
-                        'Maior lance atual: ${p['highestBidderClubId'] == null ? "Sem lances" : formatAuctionMoney(p['currentBid'] as num? ?? 0)}',
-                      ),
-                      Text(
-                        'Rodadas restantes: ${_roundsRemaining(p)} • ${p['isClosed'] == true ? "ENCERRADO" : "ABERTO"}',
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: ElevatedButton(
-                          key: ValueKey('bid-${p['auctionId']}'),
-                          onPressed:
-                              !_canTrade ||
-                                  p['isClosed'] == true ||
-                                  (p['sellerClubId'] == widget.clubId &&
-                                      const [
-                                        'Voluntary',
-                                        'FinancialInsolvency',
-                                      ].contains(p['reason']))
-                              ? null
-                              : () => _bid(p),
-                          child: const Text('DAR LANCE'),
-                        ),
-                      ),
-                    ] else ...[
-                      Text('Vendedor: ${p['sellerClubName']}'),
-                      Text(
-                        'Preço fixo: ${formatAuctionMoney(p['askingPrice'] as num? ?? 0)} • Salário: ${formatAuctionMoney(p['salaryPerRound'] as num? ?? 0)} / rodada',
-                      ),
-                      Text(
-                        'Contrato vigente: ${p['contractRoundsRemaining']} rodadas • contratação imediata pelo preço anunciado.',
-                      ),
-                      if (p['sellerClubId'] == widget.clubId)
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
-                          children: [
-                            const Text('ANÚNCIO DO MEU CLUBE'),
-                            OutlinedButton(
-                              onPressed: !_canTrade
-                                  ? null
-                                  : () => _editListing(p),
-                              child: const Text('ALTERAR PREÇO'),
-                            ),
-                            TextButton(
-                              onPressed: !_canTrade
-                                  ? null
-                                  : () => _withdrawListing(p),
-                              child: const Text('RETIRAR ANÚNCIO'),
-                            ),
-                          ],
-                        )
-                      else
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: ElevatedButton(
-                            key: ValueKey('purchase-${p['playerId']}'),
-                            onPressed: !_canTrade ? null : () => _purchase(p),
-                            child: const Text('COMPRAR JOGADOR'),
-                          ),
-                        ),
-                    ],
-                  ],
-                ),
-              ),
           if (!auction) ...[
             const Text(
               'PROPOSTAS E CONTRAPROPOSTAS BILATERAIS',
@@ -748,125 +785,139 @@ class _MarketScreenState extends State<MarketScreen> {
   Widget _marketTable(
     List<Map<String, dynamic>> rows,
     bool auction,
-  ) => SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: DataTable(
-      key: ValueKey(
-        auction ? 'market-auctions-table' : 'market-listings-table',
-      ),
-      headingRowHeight: 36,
-      dataRowMinHeight: 40,
-      dataRowMaxHeight: 56,
-      horizontalMargin: 8,
-      columnSpacing: 14,
-      columns: [
-        for (final label in [
-          'JOGADOR',
-          'POS',
-          'FORÇA',
-          'VENDEDOR',
-          if (auction) ...[
-            'MÍNIMO',
-            'MAIOR LANCE',
-            'RODADAS',
-            'SITUAÇÃO',
-          ] else ...[
-            'PREÇO FIXO',
-            'SALÁRIO',
-            'CONTRATO',
-          ],
-          'AÇÕES',
-        ])
-          DataColumn(label: Text(label)),
-      ],
-      rows: [
-        for (final p in rows)
-          DataRow(
-            key: ValueKey(p[auction ? 'auctionId' : 'playerId']),
-            cells: [
-              DataCell(
-                SizedBox(
-                  width: 165,
-                  child: Text(p['displayName'].toString(), maxLines: 2),
-                ),
-              ),
-              DataCell(Text(marketPosition(p['position']))),
-              DataCell(Text('${p['strength']}')),
-              DataCell(
-                SizedBox(
-                  width: 125,
-                  child: Text(
-                    '${p['sellerClubName'] ?? "Atleta livre"}',
-                    maxLines: 2,
-                  ),
-                ),
-              ),
-              if (auction) ...[
-                DataCell(
-                  Text(formatAuctionMoney(p['minimumBid'] as num? ?? 0)),
-                ),
-                DataCell(
-                  Text(
-                    p['highestBidderClubId'] == null
-                        ? 'Sem lances'
-                        : formatAuctionMoney(p['currentBid'] as num? ?? 0),
-                  ),
-                ),
-                DataCell(Text('${_roundsRemaining(p)}')),
-                DataCell(Text(p['isClosed'] == true ? 'ENCERRADO' : 'ABERTO')),
-                DataCell(
-                  ElevatedButton(
-                    key: ValueKey('bid-${p['auctionId']}'),
-                    onPressed:
-                        !_canTrade ||
-                            p['isClosed'] == true ||
-                            (p['sellerClubId'] == widget.clubId &&
-                                const [
-                                  'Voluntary',
-                                  'FinancialInsolvency',
-                                ].contains(p['reason']))
-                        ? null
-                        : () => _bid(p),
-                    child: const Text('DAR LANCE'),
-                  ),
-                ),
-              ] else ...[
-                DataCell(
-                  Text(formatAuctionMoney(p['askingPrice'] as num? ?? 0)),
-                ),
-                DataCell(
-                  Text(formatAuctionMoney(p['salaryPerRound'] as num? ?? 0)),
-                ),
-                DataCell(Text('${p['contractRoundsRemaining'] ?? "—"}r')),
-                DataCell(
-                  p['sellerClubId'] == widget.clubId
-                      ? Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextButton(
-                              onPressed: !_canTrade
-                                  ? null
-                                  : () => _editListing(p),
-                              child: const Text('ALTERAR PREÇO'),
-                            ),
-                            TextButton(
-                              onPressed: !_canTrade
-                                  ? null
-                                  : () => _withdrawListing(p),
-                              child: const Text('RETIRAR ANÚNCIO'),
-                            ),
-                          ],
-                        )
-                      : ElevatedButton(
-                          key: ValueKey('purchase-${p['playerId']}'),
-                          onPressed: !_canTrade ? null : () => _purchase(p),
-                          child: const Text('COMPRAR JOGADOR'),
-                        ),
-                ),
-              ],
-            ],
+  ) => LayoutBuilder(
+    builder: (context, c) => SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: c.maxWidth),
+        child: DataTable(
+          key: ValueKey(
+            auction ? 'market-auctions-table' : 'market-listings-table',
           ),
-      ],
+          headingRowHeight: 36,
+          dataRowMinHeight: 40,
+          dataRowMaxHeight: 56,
+          horizontalMargin: 8,
+          columnSpacing: 14,
+          columns: [
+            for (final label in [
+              'JOGADOR',
+              'POS',
+              'FORÇA',
+              'VENDEDOR',
+              if (auction) ...[
+                'MÍNIMO',
+                'MAIOR LANCE',
+                'RODADAS',
+                'SITUAÇÃO',
+              ] else ...[
+                'PREÇO FIXO',
+                'SALÁRIO',
+                'CONTRATO',
+              ],
+              'AÇÕES',
+            ])
+              DataColumn(label: Text(label)),
+          ],
+          rows: [
+            for (final (index, p) in rows.indexed)
+              DataRow(
+                color: WidgetStatePropertyAll(
+                  index.isEven
+                      ? ClassicTheme.of(context).tableRow
+                      : ClassicTheme.of(context).paper.tableRowAlternate,
+                ),
+                key: ValueKey(p[auction ? 'auctionId' : 'playerId']),
+                cells: [
+                  DataCell(
+                    SizedBox(
+                      width: 165,
+                      child: Text(p['displayName'].toString(), maxLines: 2),
+                    ),
+                  ),
+                  DataCell(Text(marketPosition(p['position']))),
+                  DataCell(Text('${p['strength']}')),
+                  DataCell(
+                    SizedBox(
+                      width: 125,
+                      child: Text(
+                        '${p['sellerClubName'] ?? "Atleta livre"}',
+                        maxLines: 2,
+                      ),
+                    ),
+                  ),
+                  if (auction) ...[
+                    DataCell(
+                      Text(formatAuctionMoney(p['minimumBid'] as num? ?? 0)),
+                    ),
+                    DataCell(
+                      Text(
+                        p['highestBidderClubId'] == null
+                            ? 'Sem lances'
+                            : formatAuctionMoney(p['currentBid'] as num? ?? 0),
+                      ),
+                    ),
+                    DataCell(Text('${_roundsRemaining(p)}')),
+                    DataCell(
+                      Text(p['isClosed'] == true ? 'ENCERRADO' : 'ABERTO'),
+                    ),
+                    DataCell(
+                      ElevatedButton(
+                        key: ValueKey('bid-${p['auctionId']}'),
+                        onPressed:
+                            !_canTrade ||
+                                p['isClosed'] == true ||
+                                (p['sellerClubId'] == widget.clubId &&
+                                    const [
+                                      'Voluntary',
+                                      'FinancialInsolvency',
+                                    ].contains(p['reason']))
+                            ? null
+                            : () => _bid(p),
+                        child: const Text('DAR LANCE'),
+                      ),
+                    ),
+                  ] else ...[
+                    DataCell(
+                      Text(formatAuctionMoney(p['askingPrice'] as num? ?? 0)),
+                    ),
+                    DataCell(
+                      Text(
+                        formatAuctionMoney(p['salaryPerRound'] as num? ?? 0),
+                      ),
+                    ),
+                    DataCell(Text('${p['contractRoundsRemaining'] ?? "—"}r')),
+                    DataCell(
+                      p['sellerClubId'] == widget.clubId
+                          ? Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextButton(
+                                  onPressed: !_canTrade
+                                      ? null
+                                      : () => _editListing(p),
+                                  child: const Text('ALTERAR PREÇO'),
+                                ),
+                                TextButton(
+                                  onPressed: !_canTrade
+                                      ? null
+                                      : () => _withdrawListing(p),
+                                  child: const Text('RETIRAR ANÚNCIO'),
+                                ),
+                              ],
+                            )
+                          : ElevatedButton(
+                              key: ValueKey('purchase-${p['playerId']}'),
+                              onPressed: !_canTrade ? null : () => _purchase(p),
+                              child: const Text('COMPRAR JOGADOR'),
+                            ),
+                    ),
+                  ],
+                ],
+              ),
+          ],
+        ),
+      ),
     ),
   );
 

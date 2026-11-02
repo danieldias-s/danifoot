@@ -81,6 +81,8 @@ void main() {
           ),
         ),
       );
+      await tester.ensureVisible(find.text('OPÇÕES AVANÇADAS'));
+      await tester.pumpAndSettle();
       await tester.tap(find.text('OPÇÕES AVANÇADAS'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('PERSONALIZAR CORES'));
@@ -368,6 +370,8 @@ void main() {
         await tester.pumpAndSettle();
         expect(api.writes, 2);
         expect(api.prefs.values.single['mode'], 'Classic');
+        await tester.ensureVisible(find.byType(BackButton));
+        await tester.pumpAndSettle();
         await tester.pageBack();
         await tester.pumpAndSettle();
         expect(find.byKey(const ValueKey('coach-main-panel')), findsOneWidget);

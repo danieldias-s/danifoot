@@ -958,6 +958,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byKey(const ValueKey('standings-table')), findsOneWidget);
+      await tester.tap(find.text('TAÇA NACIONAL'));
+      await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('cup-champion-banner')), findsOneWidget);
       expect(
         find.text('CAMPEÃO DA TAÇA NACIONAL: Atlético Verde'),

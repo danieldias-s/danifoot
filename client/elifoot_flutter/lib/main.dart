@@ -13,6 +13,7 @@ import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
+import 'visual_components.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
@@ -211,6 +212,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   final _shellScaffoldKey = GlobalKey<ScaffoldState>();
   int _activeTabIndex = 0;
   bool _showMatchView = false;
+  bool _appearanceOpen = false, _bottomTactics = false;
+  String _competitionTab = 'standings';
+  final _tacticsPanelKey = GlobalKey();
   final _roundView = RoundViewCoordinator();
   late final _navigation = widget.navigation ?? MatchNavigationController();
   bool _restoringSession = false;
@@ -230,6 +234,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       _navigation.navigate('/partida');
       return;
     }
+    setState(() {
+      _appearanceOpen = false;
+      _bottomTactics = false;
+    });
     _navigation.navigate(MatchNavigationController.paths[index]);
     _refreshClubAndSecondaryData();
   }
@@ -680,6 +688,45 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           canPop: !_matchLocked,
           child: Scaffold(
             key: _shellScaffoldKey,
+            bottomNavigationBar: desktop
+                ? null
+                : ClassicBottomNavigation(
+                    selected: _appearanceOpen
+                        ? 4
+                        : _activeTabIndex == 2
+                        ? 2
+                        : (_activeTabIndex == 1 || _activeTabIndex == 5)
+                        ? 3
+                        : _activeTabIndex == 0
+                        ? (_bottomTactics ? 1 : 0)
+                        : 4,
+                    locked: _matchLocked,
+                    onSelected: (index) {
+                      if (index == 4) {
+                        _shellScaffoldKey.currentState?.openDrawer();
+                        return;
+                      }
+                      _navigateToTab(
+                        index == 2
+                            ? 2
+                            : index == 3
+                            ? 1
+                            : 0,
+                      );
+                      if (index == 1) {
+                        setState(() => _bottomTactics = true);
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          final target = _tacticsPanelKey.currentContext;
+                          if (mounted && target != null) {
+                            Scrollable.ensureVisible(
+                              target,
+                              duration: const Duration(milliseconds: 200),
+                            );
+                          }
+                        });
+                      }
+                    },
+                  ),
             drawer: desktop
                 ? null
                 : Drawer(
@@ -778,7 +825,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           child: Column(
                             children: [
                               if (!_matchLocked && !_showMatchView)
-                                _buildClubSummaryStrip(),
+                                if (!_appearanceOpen) _buildClubSummaryStrip(),
                               Expanded(child: _buildActiveScreenBody()),
                             ],
                           ),
@@ -1228,7 +1275,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Widget _buildClassicNavigationMenu() => AppSidebar(
-    selected: _showMatchView ? -1 : _activeTabIndex,
+    selected: _showMatchView || _appearanceOpen ? -1 : _activeTabIndex,
+    appearanceSelected: _appearanceOpen,
     locked: _matchLocked,
     onSelected: (idx) {
       _navigateToTab(idx);
@@ -1239,15 +1287,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         ? null
         : () {
             _shellScaffoldKey.currentState?.closeDrawer();
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => AppearanceSettings(
-                  api: widget.apiClient,
-                  controller: widget.appearance!,
-                ),
-              ),
-            );
+            setState(() => _appearanceOpen = true);
           },
     switchRoom: _matchLocked
         ? null
@@ -1300,6 +1340,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       ),
       ClassicSummaryCard(
         icon: Icons.sentiment_satisfied_alt,
+        title: 'Moral',
         content: _buildCoachMorale(),
       ),
       ClassicSummaryCard(
@@ -1318,37 +1359,57 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       ),
     ];
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+      padding: const EdgeInsets.fromLTRB(10, 9, 10, 0),
       child: LayoutBuilder(
-        builder: (context, c) => c.maxWidth >= 920
-            ? Row(
-                children: [
-                  for (int i = 0; i < cards.length; i++) ...[
-                    if (i > 0) const SizedBox(width: 6),
-                    Expanded(flex: i == 0 ? 5 : 4, child: cards[i]),
-                  ],
-                ],
-              )
-            : SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
+        builder: (context, c) => Container(
+          key: const Key('classic-club-summary'),
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: ClassicTheme.of(context).paper.surface,
+            border: Border.all(
+              color: ClassicTheme.of(context).paper.border,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: c.maxWidth >= 900
+              ? Row(
                   children: [
-                    for (int i = 0; i < cards.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 6),
-                        child: SizedBox(
-                          width: i == 0 || i == 4 ? 205 : 162,
-                          child: cards[i],
-                        ),
-                      ),
+                    for (var i = 0; i < cards.length; i++) ...[
+                      if (i > 0) const SizedBox(width: 5),
+                      Expanded(flex: i == 0 ? 6 : 4, child: cards[i]),
+                    ],
+                  ],
+                )
+              : Column(
+                  children: [
+                    SizedBox(width: double.infinity, child: cards[0]),
+                    const SizedBox(height: 4),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        for (var i = 1; i < cards.length; i++) ...[
+                          if (i > 1) const SizedBox(width: 3),
+                          Expanded(child: cards[i]),
+                        ],
+                      ],
+                    ),
                   ],
                 ),
-              ),
+        ),
       ),
     );
   }
 
   Widget _buildActiveScreenBody() {
+    if (_appearanceOpen && !_matchLocked && widget.appearance != null) {
+      return AppearanceSettings(
+        api: widget.apiClient,
+        controller: widget.appearance!,
+        embedded: true,
+        onClose: () => setState(() => _appearanceOpen = false),
+      );
+    }
     if (_matchLocked || _showMatchView) {
       return _buildLiveMatchesAndPauseScreen();
     }
@@ -1954,7 +2015,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _buildCoachMainPanel(),
-            ClassicPanel(title: 'ESQUEMA TÁTICO', child: tacticControls),
+            ClassicPanel(
+              key: _tacticsPanelKey,
+              title: 'ESQUEMA TÁTICO',
+              child: tacticControls,
+            ),
             const SizedBox(height: 8),
             AbsorbPointer(
               absorbing: _tacticsLocked,
@@ -2671,107 +2736,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         .where((r) => r['roundNumber'] == currentRound + 1)
         .firstOrNull;
 
-    final standingsPinned = <ClassicPinnedRow>[];
-    final standingsRows = <DataRow>[];
-    for (var i = 0; i < _standings.length; i++) {
-      final r = _standings[i];
-      final pos = (r['position'] as num?)?.toInt() ?? (i + 1);
-      final zone = r['zoneStatus']?.toString() ?? '';
-      final isLeader = pos == 1;
-      final isPromo =
-          zone.toUpperCase().contains('ACESSO') ||
-          zone.toUpperCase().contains('PROMO');
-      final isReleg = zone.toUpperCase().contains('REBAIX');
-      final isMyClub =
-          r['clubId']?.toString() == _myClubId ||
-          r['clubName']?.toString() == _myClubDetail?['name'];
-
-      ClubNameDirectory.register(r['clubId'], r['clubName']);
-
-      standingsPinned.add(
-        ClassicPinnedRow(
-          rank: '$posº',
-          title: '${r['clubName']}',
-          subtitle: '${r['points']} pts • $zone',
-          highlight: isLeader || isMyClub,
-          isEven: i.isEven,
-        ),
-      );
-
-      standingsRows.add(
-        DataRow(
-          color: WidgetStateProperty.all(
-            isMyClub
-                ? ClassicTheme.of(context).surfaceAlternate
-                : isLeader
-                ? ClassicTheme.of(context).surfaceAlternate
-                : (i.isEven
-                      ? ClassicTheme.of(context).tableRow
-                      : ClassicTheme.of(context).tableRowAlternate),
-          ),
-          cells: [
-            DataCell(
-              Text(
-                '$pos',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isLeader
-                      ? ClassicTheme.of(context).accent
-                      : ClassicTheme.of(context).textPrimary,
-                ),
-              ),
-            ),
-            DataCell(
-              Text(
-                '${r['clubName']}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isMyClub
-                      ? ClassicTheme.of(context).accent
-                      : ClassicTheme.of(context).textPrimary,
-                ),
-              ),
-            ),
-            DataCell(
-              Text('${r['coachName']}', style: const TextStyle(fontSize: 11)),
-            ),
-            DataCell(
-              Text(
-                '${r['points']}',
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            DataCell(Text('${r['played']}')),
-            DataCell(Text('${r['wins']}')),
-            DataCell(Text('${r['draws']}')),
-            DataCell(Text('${r['losses']}')),
-            DataCell(Text('${r['goalsFor']}')),
-            DataCell(Text('${r['goalsAgainst']}')),
-            DataCell(Text('${r['goalDifference']}')),
-            DataCell(
-              Text(
-                zone,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color: isLeader
-                      ? ClassicTheme.of(context).accent
-                      : isReleg
-                      ? Colors.redAccent
-                      : isPromo
-                      ? Colors.lightGreenAccent
-                      : ClassicTheme.of(context).textSecondary,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
     // Extract distinct Cup stages in chronological order
     final cupStages = <String>[];
     for (final f in _cupFixtures) {
@@ -2801,356 +2765,295 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final cupChampion = finalFixture?['winnerClubName']?.toString();
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(10),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const ClassicSectionTitle(
-            title: 'CAMPEONATO NACIONAL — CLASSIFICAÇÃO POR DIVISÃO',
-            subtitle:
-                '4 Divisões de 8 clubes em turno e returno (14 rodadas de liga).',
+          const ClassicPageHeader(
+            title: 'DIVISÕES & TAÇA',
+            icon: Icons.emoji_events,
           ),
           const SizedBox(height: 8),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              for (final tier in [
+          ClassicSelectionTabs(
+            selected: _competitionTab,
+            items: const [
+              ('standings', 'CLASSIFICAÇÃO'),
+              ('cup', 'TAÇA NACIONAL'),
+            ],
+            onSelected: (value) => setState(() => _competitionTab = value),
+          ),
+          const SizedBox(height: 10),
+          if (_competitionTab == 'standings') ...[
+            ClassicSelectionTabs(
+              selected: _selectedDivisionTier,
+              keyPrefix: 'btn-division-',
+              fontSize: 16,
+              items: const [
                 ('PrimeiraDivisao', '1ª DIVISÃO'),
                 ('SegundaDivisao', '2ª DIVISÃO'),
                 ('TerceiraDivisao', '3ª DIVISÃO'),
                 ('QuartaDivisao', '4ª DIVISÃO'),
-              ])
-                InkWell(
-                  key: ValueKey('btn-division-${tier.$1}'),
-                  onTap: () async {
-                    setState(() => _selectedDivisionTier = tier.$1);
-                    final s = await widget.apiClient.getStandings(
-                      _worldId!,
-                      tier.$1,
-                    );
-                    if (mounted) setState(() => _standings = s);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: _selectedDivisionTier == tier.$1
-                          ? ClassicTheme.of(context).selectedBackground
-                          : ClassicTheme.of(context).buttonBackground,
-                      border: Border.all(
-                        color: ClassicTheme.of(context).selectedBackground,
-                      ),
-                    ),
-                    child: Text(
-                      tier.$2,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: _selectedDivisionTier == tier.$1
-                            ? ClassicTheme.of(context).selectedText
-                            : ClassicTheme.of(context).accent,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          ClassicTable(
-            tableKey: 'standings-table',
-            pinnedHeader: '# / CLUBE',
-            pinnedRows: standingsPinned,
-            numericColumns: const {0, 3, 4, 5, 6, 7, 8, 9, 10},
-            columns: const [
-              '#',
-              'CLUBE',
-              'TÉCNICO',
-              'PTS',
-              'J',
-              'V',
-              'E',
-              'D',
-              'GP',
-              'GC',
-              'SG',
-              'ZONA',
-            ],
-            rows: standingsRows,
-          ),
-          const SizedBox(height: 12),
-          // Round summary strip (Previous / Current / Next)
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: ClassicTheme.of(context).surface,
-              border: Border.all(color: ClassicTheme.of(context).border),
+              ],
+              onSelected: (value) async {
+                setState(() => _selectedDivisionTier = value);
+                final rows = await widget.apiClient.getStandings(
+                  _worldId!,
+                  value,
+                );
+                if (mounted) setState(() => _standings = rows);
+              },
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const ClassicTableHeader(
-                  title: 'RESUMO DE RODADAS (ANTERIOR • ATUAL • PRÓXIMA)',
-                ),
-                const SizedBox(height: 6),
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 8,
+            const SizedBox(height: 10),
+            ClassicStandings(
+              rows: _standings,
+              clubId: _myClubId,
+              title:
+                  '${switch (_selectedDivisionTier) {
+                    'SegundaDivisao' => '2ª',
+                    'TerceiraDivisao' => '3ª',
+                    'QuartaDivisao' => '4ª',
+                    _ => '1ª',
+                  }} DIVISÃO — CLASSIFICAÇÃO',
+            ),
+            const SizedBox(height: 12),
+            ClassicRoundSummary(
+              rounds: [
+                ('RODADA ANTERIOR', prevRound),
+                ('RODADA ATUAL', curRoundCal),
+                ('PRÓXIMA RODADA', nextRound),
+              ],
+            ),
+          ],
+          if (_competitionTab == 'cup')
+            ClassicPaperPanel(
+              child: ClassicPaper(
+                builder: (context) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    for (final entry in [
-                      ('RODADA ANTERIOR', prevRound),
-                      ('RODADA ATUAL', curRoundCal),
-                      ('PRÓXIMA RODADA', nextRound),
-                    ])
-                      if (entry.$2 != null)
-                        Container(
-                          width: MediaQuery.sizeOf(context).width < 680
-                              ? double.infinity
-                              : 290,
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: ClassicTheme.of(context).surface,
-                            border: Border.all(
-                              color: ClassicTheme.of(context).border,
-                            ),
+                    Text(
+                      'TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)',
+                      style: TextStyle(
+                        color: ClassicTheme.of(context).accent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    if (cupChampion != null && cupChampion.isNotEmpty) ...[
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: ClassicTheme.of(context).surfaceAlternate,
+                          border: Border.all(
+                            color: ClassicTheme.of(context).selectedBackground,
+                            width: 1.5,
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${entry.$1}: R${entry.$2['roundNumber']} (${entry.$2['competition']})',
-                                style: TextStyle(
-                                  color: ClassicTheme.of(context).accent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 11,
+                        ),
+                        child: Text(
+                          'CAMPEÃO DA TAÇA NACIONAL: $cupChampion',
+                          key: const ValueKey('cup-champion-banner'),
+                          style: TextStyle(
+                            color: ClassicTheme.of(context).accent,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ],
+                    if (cupStages.isNotEmpty) ...[
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: [
+                          InkWell(
+                            key: const ValueKey('cup-stage-ALL'),
+                            onTap: () =>
+                                setState(() => _selectedCupStage = 'ALL'),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 5,
+                              ),
+                              decoration: BoxDecoration(
+                                color: activeCupStage == 'ALL'
+                                    ? ClassicTheme.of(
+                                        context,
+                                      ).selectedBackground
+                                    : ClassicTheme.of(context).surface,
+                                border: Border.all(
+                                  color: ClassicTheme.of(context).border,
                                 ),
                               ),
-                              const SizedBox(height: 4),
-                              for (final f
-                                  in (entry.$2['fixtures'] as List<dynamic>? ??
-                                          [])
-                                      .take(4))
-                                Text(
-                                  '• ${f['home']} ${f['isFinished'] == true ? "${f['homeGoals']}x${f['awayGoals']}" : "vs"} ${f['away']}',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(fontSize: 10.5),
+                              child: Text(
+                                'TODAS AS FASES (${_cupFixtures.length})',
+                                style: TextStyle(
+                                  fontSize: 10.5,
+                                  fontWeight: FontWeight.bold,
+                                  color: activeCupStage == 'ALL'
+                                      ? ClassicTheme.of(context).selectedText
+                                      : ClassicTheme.of(context).textPrimary,
                                 ),
-                            ],
+                              ),
+                            ),
                           ),
-                        ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 6),
-          if (cupChampion != null && cupChampion.isNotEmpty) ...[
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: ClassicTheme.of(context).surfaceAlternate,
-                border: Border.all(
-                  color: ClassicTheme.of(context).selectedBackground,
-                  width: 1.5,
-                ),
-              ),
-              child: Text(
-                'CAMPEÃO DA TAÇA NACIONAL: $cupChampion',
-                key: const ValueKey('cup-champion-banner'),
-                style: TextStyle(
-                  color: ClassicTheme.of(context).accent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ],
-          if (cupStages.isNotEmpty) ...[
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: [
-                InkWell(
-                  key: const ValueKey('cup-stage-ALL'),
-                  onTap: () => setState(() => _selectedCupStage = 'ALL'),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: activeCupStage == 'ALL'
-                          ? ClassicTheme.of(context).selectedBackground
-                          : ClassicTheme.of(context).surface,
-                      border: Border.all(
-                        color: ClassicTheme.of(context).border,
+                          for (final st in cupStages)
+                            InkWell(
+                              key: ValueKey('cup-stage-$st'),
+                              onTap: () =>
+                                  setState(() => _selectedCupStage = st),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: activeCupStage == st
+                                      ? ClassicTheme.of(
+                                          context,
+                                        ).selectedBackground
+                                      : ClassicTheme.of(context).surface,
+                                  border: Border.all(
+                                    color: ClassicTheme.of(context).border,
+                                  ),
+                                ),
+                                child: Text(
+                                  st,
+                                  style: TextStyle(
+                                    fontSize: 10.5,
+                                    fontWeight: FontWeight.bold,
+                                    color: activeCupStage == st
+                                        ? ClassicTheme.of(context).selectedText
+                                        : ClassicTheme.of(context).textPrimary,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
-                    ),
-                    child: Text(
-                      'TODAS AS FASES (${_cupFixtures.length})',
+                      const SizedBox(height: 8),
+                    ],
+                    if (visibleCupFixtures.isEmpty)
+                      const Text(
+                        'Nenhuma partida da Taça registrada nesta fase ainda.',
+                        style: TextStyle(fontSize: 12),
+                      )
+                    else
+                      ClassicTable(
+                        tableKey: 'cup-fixtures-table',
+                        columns: const [
+                          'FASE',
+                          'MANDANTE',
+                          'PLACAR',
+                          'VISITANTE',
+                          'CLASSIFICADO / SITUAÇÃO',
+                        ],
+                        rows: visibleCupFixtures.asMap().entries.map((entry) {
+                          final i = entry.key;
+                          final f = entry.value;
+                          final penH = f['homePenaltyGoals'];
+                          final penA = f['awayPenaltyGoals'];
+                          final penStr = (penH != null && penA != null)
+                              ? ' (Pên: $penH x $penA)'
+                              : '';
+                          final winner = f['winnerClubName']?.toString();
+                          final scoreStr =
+                              f['isFinished'] == true || winner != null
+                              ? '${f['homeGoals']} x ${f['awayGoals']}$penStr'
+                              : 'vs';
+                          return DataRow(
+                            color: WidgetStateProperty.all(
+                              i.isEven
+                                  ? ClassicTheme.of(context).tableRow
+                                  : ClassicTheme.of(context).tableRowAlternate,
+                            ),
+                            cells: [
+                              DataCell(
+                                Text(
+                                  '${f['stage']}',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: ClassicTheme.of(context).accent,
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                TeamColorName(
+                                  name:
+                                      '${f['homeClubName']} (${f['homeDivision']})',
+                                  palette: _teamPalette(
+                                    id: f['homeClubId'],
+                                    name: f['homeClubName'],
+                                  ),
+                                  textAlign: TextAlign.right,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  scoreStr,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: ClassicTheme.of(context).accent,
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                TeamColorName(
+                                  name:
+                                      '${f['awayClubName']} (${f['awayDivision']})',
+                                  palette: _teamPalette(
+                                    id: f['awayClubId'],
+                                    name: f['awayClubName'],
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  winner != null
+                                      ? 'Vencedor: $winner'
+                                      : 'A disputar',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: winner != null
+                                        ? readableOn(
+                                            Colors.lightGreenAccent,
+                                            ClassicTheme.of(context).tableRow,
+                                          )
+                                        : ClassicTheme.of(
+                                            context,
+                                          ).textSecondary,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'ARTILHARIA DA TEMPORADA',
                       style: TextStyle(
-                        fontSize: 10.5,
+                        color: ClassicTheme.of(context).accent,
                         fontWeight: FontWeight.bold,
-                        color: activeCupStage == 'ALL'
-                            ? ClassicTheme.of(context).selectedText
-                            : ClassicTheme.of(context).textPrimary,
+                        fontSize: 14,
                       ),
                     ),
-                  ),
-                ),
-                for (final st in cupStages)
-                  InkWell(
-                    key: ValueKey('cup-stage-$st'),
-                    onTap: () => setState(() => _selectedCupStage = st),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: activeCupStage == st
-                            ? ClassicTheme.of(context).selectedBackground
-                            : ClassicTheme.of(context).surface,
-                        border: Border.all(
-                          color: ClassicTheme.of(context).border,
+                    const SizedBox(height: 6),
+                    ..._topScorers.take(15).map((s) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2),
+                        child: Text(
+                          '${s['rank']}º ${s['displayName']} (${s['clubName']}) — ${(s['seasonGoals'] as num? ?? 0) + (s['cupGoals'] as num? ?? 0)} gols (Liga: ${s['seasonGoals']}, Taça: ${s['cupGoals']})',
+                          style: const TextStyle(fontSize: 12),
                         ),
-                      ),
-                      child: Text(
-                        st,
-                        style: TextStyle(
-                          fontSize: 10.5,
-                          fontWeight: FontWeight.bold,
-                          color: activeCupStage == st
-                              ? ClassicTheme.of(context).selectedText
-                              : ClassicTheme.of(context).textPrimary,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(height: 8),
-          ],
-          if (visibleCupFixtures.isEmpty)
-            const Text(
-              'Nenhuma partida da Taça registrada nesta fase ainda.',
-              style: TextStyle(fontSize: 12),
-            )
-          else
-            ClassicTable(
-              tableKey: 'cup-fixtures-table',
-              columns: const [
-                'FASE',
-                'MANDANTE',
-                'PLACAR',
-                'VISITANTE',
-                'CLASSIFICADO / SITUAÇÃO',
-              ],
-              rows: visibleCupFixtures.asMap().entries.map((entry) {
-                final i = entry.key;
-                final f = entry.value;
-                final penH = f['homePenaltyGoals'];
-                final penA = f['awayPenaltyGoals'];
-                final penStr = (penH != null && penA != null)
-                    ? ' (Pên: $penH x $penA)'
-                    : '';
-                final winner = f['winnerClubName']?.toString();
-                final scoreStr = f['isFinished'] == true || winner != null
-                    ? '${f['homeGoals']} x ${f['awayGoals']}$penStr'
-                    : 'vs';
-                return DataRow(
-                  color: WidgetStateProperty.all(
-                    i.isEven
-                        ? ClassicTheme.of(context).tableRow
-                        : ClassicTheme.of(context).tableRowAlternate,
-                  ),
-                  cells: [
-                    DataCell(
-                      Text(
-                        '${f['stage']}',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: ClassicTheme.of(context).accent,
-                        ),
-                      ),
-                    ),
-                    DataCell(
-                      TeamColorName(
-                        name: '${f['homeClubName']} (${f['homeDivision']})',
-                        palette: _teamPalette(
-                          id: f['homeClubId'],
-                          name: f['homeClubName'],
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    DataCell(
-                      Text(
-                        scoreStr,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: ClassicTheme.of(context).accent,
-                        ),
-                      ),
-                    ),
-                    DataCell(
-                      TeamColorName(
-                        name: '${f['awayClubName']} (${f['awayDivision']})',
-                        palette: _teamPalette(
-                          id: f['awayClubId'],
-                          name: f['awayClubName'],
-                        ),
-                      ),
-                    ),
-                    DataCell(
-                      Text(
-                        winner != null ? 'Vencedor: $winner' : 'A disputar',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: winner != null
-                              ? Colors.lightGreenAccent
-                              : ClassicTheme.of(context).textSecondary,
-                        ),
-                      ),
-                    ),
+                      );
+                    }),
                   ],
-                );
-              }).toList(),
-            ),
-          const SizedBox(height: 20),
-          Text(
-            'ARTILHARIA DA TEMPORADA',
-            style: TextStyle(
-              color: ClassicTheme.of(context).accent,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
-          ),
-          const SizedBox(height: 6),
-          ..._topScorers.take(15).map((s) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              child: Text(
-                '${s['rank']}º ${s['displayName']} (${s['clubName']}) — ${(s['seasonGoals'] as num? ?? 0) + (s['cupGoals'] as num? ?? 0)} gols (Liga: ${s['seasonGoals']}, Taça: ${s['cupGoals']})',
-                style: const TextStyle(fontSize: 12),
+                ),
               ),
-            );
-          }),
+            ),
         ],
       ),
     );

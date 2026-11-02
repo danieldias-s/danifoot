@@ -16,17 +16,21 @@ class MoraleBar extends StatelessWidget {
       label: 'Moral do treinador',
       value: '${value.clamp(0, 100)} de 100, $band',
       child: ExcludeSemantics(
-        child: Container(
-          width: 104,
-          height: 16,
-          decoration: BoxDecoration(border: Border.all(color: Colors.white54)),
-          padding: const EdgeInsets.all(2),
-          child: LinearProgressIndicator(
-            key: const ValueKey('morale-bar-fill'),
-            value: value.clamp(0, 100) / 100,
-            color: color,
-            backgroundColor: const Color(0xFF26352D),
-            minHeight: 10,
+        child: LayoutBuilder(
+          builder: (context, c) => Container(
+            width: c.maxWidth.isFinite ? c.maxWidth.clamp(28.0, 104.0) : 104,
+            height: 16,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white54),
+            ),
+            padding: const EdgeInsets.all(2),
+            child: LinearProgressIndicator(
+              key: const ValueKey('morale-bar-fill'),
+              value: value.clamp(0, 100) / 100,
+              color: color,
+              backgroundColor: const Color(0xFF55665B),
+              minHeight: 10,
+            ),
           ),
         ),
       ),

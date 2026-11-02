@@ -1204,28 +1204,31 @@ extension _ShellActions on _ElifootShellScreenState {
         )
         .toList();
     return ListView(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(10),
       children: [
-        const ClassicSectionTitle(
+        const ClassicPageHeader(
           title: 'CALENDÁRIO DA TEMPORADA E RESULTADOS',
+          icon: Icons.calendar_month,
           subtitle:
-              'Consulte os confrontos realizados e os jogos futuros da Liga e da Taça.',
+              'Veja o calendário completo da temporada e os resultados das partidas já disputadas.',
         ),
-        const SizedBox(height: 8),
-        ClassicTabs(
+        const SizedBox(height: 10),
+        ClassicSelectionTabs(
           key: const Key('calendar-filters'),
           selected: _selectedCalendarFilter,
           items: [
             ('ALL', 'TODAS AS RODADAS'),
             ('CURRENT', 'RODADA ATUAL (R$currentRound)'),
-            if (myClubName != null) ('MY_CLUB', 'MEU CLUBE ($myClubName)'),
+            if (myClubName != null) ('MY_CLUB', 'MEU CLUBE'),
           ],
           onSelected: (value) =>
               setState(() => _selectedCalendarFilter = value),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
         if (rounds.isEmpty)
-          const ClassicPanel(child: Text('Calendário ainda não disponível.')),
+          const ClassicPaperPanel(
+            child: Text('Calendário ainda não disponível.'),
+          ),
         for (final r in rounds)
           Builder(
             builder: (context) {
@@ -1241,8 +1244,8 @@ extension _ShellActions on _ElifootShellScreenState {
                   .toList();
               final current = r['roundNumber'] == currentRound;
               return Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: ClassicPanel(
+                padding: const EdgeInsets.only(bottom: 7),
+                child: ClassicPaperPanel(
                   padding: EdgeInsets.zero,
                   child: ExpansionTile(
                     key: PageStorageKey(
@@ -1250,120 +1253,53 @@ extension _ShellActions on _ElifootShellScreenState {
                     ),
                     initiallyExpanded:
                         current || _selectedCalendarFilter != 'ALL',
-                    tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+                    tilePadding: const EdgeInsets.symmetric(horizontal: 10),
                     title: Text(
-                      'Rodada ${r['roundNumber']} • ${r['competition']}${current ? ' [ATUAL]' : ''}',
+                      'Rodada ${r['roundNumber']} • ${classicCompetition(r['competition'])}${current ? ' [ATUAL]' : ''}',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 19,
                         fontWeight: FontWeight.bold,
-                        color: current
-                            ? ClassicTheme.of(context).accent
-                            : ClassicTheme.of(context).textPrimary,
                       ),
                     ),
+                    backgroundColor: ClassicTheme.of(context).primary,
+                    collapsedBackgroundColor: ClassicTheme.of(
+                      context,
+                    ).paper.surface,
+                    textColor: current
+                        ? ClassicTheme.of(context).selectedBackground
+                        : ClassicTheme.of(context).textPrimary,
+                    collapsedTextColor: ClassicTheme.of(
+                      context,
+                    ).paper.textPrimary,
+                    iconColor: ClassicTheme.of(context).selectedBackground,
+                    collapsedIconColor: ClassicTheme.of(context).paper.accent,
                     children: [
                       if (fixtures.isEmpty)
-                        Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Text(
-                            _selectedCalendarFilter == 'MY_CLUB' &&
-                                    (r['fixtures'] as List? ?? []).isNotEmpty
-                                ? 'Seu clube não disputa esta rodada.'
-                                : 'Confrontos definidos após a fase anterior da Taça.',
+                        ClassicPaper(
+                          builder: (_) => Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: Text(
+                              _selectedCalendarFilter == 'MY_CLUB' &&
+                                      (r['fixtures'] as List? ?? []).isNotEmpty
+                                  ? 'Seu clube não disputa esta rodada.'
+                                  : 'Confrontos definidos após a fase anterior da Taça.',
+                            ),
                           ),
                         )
                       else
                         ConstrainedBox(
-                          constraints: const BoxConstraints(maxHeight: 440),
+                          constraints: BoxConstraints(
+                            maxHeight: MediaQuery.sizeOf(context).width < 700
+                                ? 280
+                                : 440,
+                          ),
                           child: SingleChildScrollView(
-                            child: ClassicTable(
+                            child: ClassicFixtureList(
+                              fixtures: fixtures,
                               tableKey: 'calendar-round-${r['roundNumber']}',
-                              columns: const [
-                                '#',
-                                'MANDANTE',
-                                'VISITANTE',
-                                'PLACAR',
-                                'SITUAÇÃO',
-                              ],
-                              numericColumns: const {0},
-                              rows: [
-                                for (int i = 0; i < fixtures.length; i++)
-                                  DataRow(
-                                    color: WidgetStatePropertyAll(
-                                      i.isEven
-                                          ? ClassicTheme.of(context).tableRow
-                                          : ClassicTheme.of(
-                                              context,
-                                            ).tableRowAlternate,
-                                    ),
-                                    cells: [
-                                      DataCell(Text('${i + 1}')),
-                                      DataCell(
-                                        SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width <
-                                                  600
-                                              ? 155
-                                              : 225,
-                                          child: TeamColorName(
-                                            name: '${fixtures[i]['home']}',
-                                            palette: _teamPalette(
-                                              id: fixtures[i]['homeClubId'],
-                                              name: fixtures[i]['home'],
-                                            ),
-                                            highlight:
-                                                fixtures[i]['home'] ==
-                                                myClubName,
-                                          ),
-                                        ),
-                                      ),
-                                      DataCell(
-                                        SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width <
-                                                  600
-                                              ? 155
-                                              : 225,
-                                          child: TeamColorName(
-                                            name: '${fixtures[i]['away']}',
-                                            palette: _teamPalette(
-                                              id: fixtures[i]['awayClubId'],
-                                              name: fixtures[i]['away'],
-                                            ),
-                                            highlight:
-                                                fixtures[i]['away'] ==
-                                                myClubName,
-                                          ),
-                                        ),
-                                      ),
-                                      DataCell(
-                                        Text(
-                                          fixtures[i]['isFinished'] == true
-                                              ? '${fixtures[i]['homeGoals']} x ${fixtures[i]['awayGoals']}'
-                                              : '— x —',
-                                          style: TextStyle(
-                                            color: ClassicTheme.of(
-                                              context,
-                                            ).accent,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      DataCell(
-                                        ClassicStatusIndicator(
-                                          completed:
-                                              fixtures[i]['isFinished'] == true,
-                                          label:
-                                              fixtures[i]['isFinished'] == true
-                                              ? 'FINALIZADO'
-                                              : current && _matchLocked
-                                              ? 'EM ANDAMENTO'
-                                              : 'PREPARANDO',
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                              ],
+                              live: current && _matchLocked,
+                              palette: (id, name) =>
+                                  _teamPalette(id: id, name: name),
                             ),
                           ),
                         ),

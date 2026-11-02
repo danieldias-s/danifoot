@@ -1,0 +1,211 @@
+{
+  "base": "244c79a3f1e721c6cc994af11baaeef851e4a04f",
+  "branch": "codex/visual-web-mobile-016b",
+  "web": "http://127.0.0.1:5174",
+  "api": "http://127.0.0.1:5173",
+  "webSha256": "f1b419d95416e0008cc6cc9b27ebaf44767ed0d2948a2119befff2ef4e37927c",
+  "viewports": [
+    {
+      "documentWidth": 360,
+      "height": 1000,
+      "screen": "Divisões",
+      "width": 360
+    },
+    {
+      "documentWidth": 430,
+      "height": 1000,
+      "screen": "Calendário",
+      "width": 430
+    },
+    {
+      "documentWidth": 768,
+      "height": 1000,
+      "screen": "Mercado",
+      "width": 768
+    },
+    {
+      "documentWidth": 1920,
+      "height": 1080,
+      "screen": "Aparência",
+      "width": 1920
+    },
+    {
+      "documentWidth": 1366,
+      "height": 1000,
+      "screen": "Aparência",
+      "width": 1366
+    },
+    {
+      "documentWidth": 390,
+      "height": 1000,
+      "screen": "Divisões",
+      "width": 390
+    }
+  ],
+  "flutterTests": 179,
+  "dotnetTests": {
+    "projects": [
+      {
+        "file": "016b-regression_net10.0_20261102115452.trx",
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "notExecuted": 0
+      },
+      {
+        "file": "016b-regression_net10.0_20261102115529.trx",
+        "total": 425,
+        "passed": 425,
+        "failed": 0,
+        "notExecuted": 0
+      },
+      {
+        "file": "016b-integration.trx",
+        "total": 222,
+        "passed": 222,
+        "failed": 0,
+        "notExecuted": 0
+      },
+      {
+        "file": "016b-regression_net10.0_20261102124802.trx",
+        "total": 26,
+        "passed": 26,
+        "failed": 0,
+        "notExecuted": 0
+      }
+    ],
+    "totalPassed": 680,
+    "failed": 0,
+    "fullIntegrationRerun": true,
+    "initialFailures": "Four test-environment allowlist checks did not yet recognize isolated port 55442; all 222 integration cases passed after updating only the allowlist and its own test database prefixes."
+  },
+  "financialChecks": {
+    "checks": {
+      "buyerDebited": true,
+      "sellerCredited": true,
+      "cashConserved": true,
+      "playerMoved": true,
+      "negotiatedSalaryPreserved": true,
+      "listingRemoved": true
+    },
+    "price": 650000,
+    "salary": 2645,
+    "buyerAfter": 3550000,
+    "sellerAfter": 4850000,
+    "worldId": "73e11073-a854-487e-bc59-efd9856cab91"
+  },
+  "screenshots": [
+    {
+      "file": "browser/016b-appearance-desktop-1366.jpg",
+      "bytes": 155879,
+      "sha256": "06a7da8018962766ab6546e9382195aafd0653b87663b127cbcc2f5e5501e3f9"
+    },
+    {
+      "file": "browser/016b-appearance-desktop-1920.jpg",
+      "bytes": 184534,
+      "sha256": "13319c6f259336ace736b4b4b0fbf905d680520f17433608c18a4453c1e173ed"
+    },
+    {
+      "file": "browser/016b-appearance-mobile-390-bottom.jpg",
+      "bytes": 74390,
+      "sha256": "89c7ce0d0db1a8d7b0da565cb78cc54082911fa6312becfb6e0c79c4f3f7fa8b"
+    },
+    {
+      "file": "browser/016b-appearance-mobile-390-top.jpg",
+      "bytes": 71164,
+      "sha256": "78552190ca8708ff577b82f6595e309f678ce59e55855ef41d51aca4503c8048"
+    },
+    {
+      "file": "browser/016b-appearance-mobile-saved.jpg",
+      "bytes": 71325,
+      "sha256": "1bc310afead7df5dbcb553615c6675a9ac57d6d680c9d1a768b530e9488c67b8"
+    },
+    {
+      "file": "browser/016b-bid-confirmed-desktop.jpg",
+      "bytes": 135786,
+      "sha256": "57df537844c5bfe14851191c9f44cb6d6e148cd7b49b4d8a596c7f0b04e23209"
+    },
+    {
+      "file": "browser/016b-bid-desktop-1366.jpg",
+      "bytes": 99976,
+      "sha256": "67a3e53c722a76513c10bc32c56ac72a7383cfd25c2ae2163ca89c71bfab15ef"
+    },
+    {
+      "file": "browser/016b-bid-mobile-390.jpg",
+      "bytes": 46660,
+      "sha256": "199e780e4551474cd5326f92eb714f90930eef076cec40e3e7af1b861d104917"
+    },
+    {
+      "file": "browser/016b-calendar-desktop-1366.jpg",
+      "bytes": 166189,
+      "sha256": "4e65bcc9efd6356ed48fb9cc767d3f49d7fc27034216a4473095e752361df298"
+    },
+    {
+      "file": "browser/016b-calendar-mobile-390.jpg",
+      "bytes": 76519,
+      "sha256": "9ef5ba130cc65b8cd96e2ccbe99090e98269f7fb7964c07e7df268ee9feb0e2c"
+    },
+    {
+      "file": "browser/016b-calendar-mobile-430.jpg",
+      "bytes": 77929,
+      "sha256": "3c53bc0d582feaef4ad6750bc870605c6bb0d8e235e772a4a08a16a8642080cd"
+    },
+    {
+      "file": "browser/016b-cup-desktop-1366.jpg",
+      "bytes": 175238,
+      "sha256": "093afa0fb337c991b071cc8a330f674f86ea86b5c8a9c528df57cb8f83c7276c"
+    },
+    {
+      "file": "browser/016b-direct-desktop-1366.jpg",
+      "bytes": 132141,
+      "sha256": "37a86b696162bdbc72119ad6c960481bb7182e6a399c42c67f8c405f6140c875"
+    },
+    {
+      "file": "browser/016b-direct-mobile-390.jpg",
+      "bytes": 66993,
+      "sha256": "a7fb75e51c678c7f016a00f211953a6a1547f5359c207f0910be5aeea62fad16"
+    },
+    {
+      "file": "browser/016b-divisions-desktop-1366.jpg",
+      "bytes": 156824,
+      "sha256": "29233296f8c40341f83d8d81726d6a4d76308520b221935348af2d5e6dbe3ba8"
+    },
+    {
+      "file": "browser/016b-divisions-mobile-360.jpg",
+      "bytes": 68172,
+      "sha256": "b058e8921bc2ecf0a5d537a92490c21c3c80d51914e7bb601d83c3dae3fe5e0e"
+    },
+    {
+      "file": "browser/016b-divisions-mobile-390.jpg",
+      "bytes": 69920,
+      "sha256": "e389c0d13547fc373a381b9a3d89ab22a0d7f4f9ebf13b27f6c19cd568e44eaa"
+    },
+    {
+      "file": "browser/016b-market-desktop-1366.jpg",
+      "bytes": 125370,
+      "sha256": "3fd3faadade447a34a1d7edb6bc5c0fdd47df750cb2029b138c947b5f169e862"
+    },
+    {
+      "file": "browser/016b-market-mobile-390.jpg",
+      "bytes": 68830,
+      "sha256": "c3b5df685ba9baea96fd3b4e68d3002d51d67c8b86ab8e6b2e4402f72c3f50d7"
+    },
+    {
+      "file": "browser/016b-market-tablet-768.jpg",
+      "bytes": 86007,
+      "sha256": "6727b77e35356520c25e92f5916a8feea5735e9811bdb11bfff8cd800d431c50"
+    },
+    {
+      "file": "browser/016b-purchase-confirmed-mobile.jpg",
+      "bytes": 64398,
+      "sha256": "d3c1e43710d64fe630e9776178b25ad05db9b469193f1e90df2918d6414293dc"
+    },
+    {
+      "file": "browser/016b-purchase-mobile-390.jpg",
+      "bytes": 51025,
+      "sha256": "2788e279d1c7da6739914d52766980fee1a6732b2c2de07189fd6bbbd5f712ce"
+    }
+  ],
+  "inspection": "Actual Chromium browser with real local API; responsive emulation; no physical mobile device claimed.",
+  "status": "PASS"
+}
