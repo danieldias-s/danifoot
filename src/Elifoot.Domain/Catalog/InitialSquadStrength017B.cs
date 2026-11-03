@@ -7,18 +7,11 @@ namespace Elifoot.Domain;
 
 internal static class InitialSquadStrength017B
 {
-    private static readonly int[][] References =
-    [
-        [50, 50, 50, 46, 44, 42, 40, 39],
-        [38, 37, 36, 34, 32, 30, 28, 27],
-        [25, 24, 23, 21, 19, 17, 15, 14],
-        [12, 11, 10, 8, 6, 4, 2, 1]
-    ];
     private static readonly (int Minimum, int Maximum)[] DivisionRanges = [(39, 50), (26, 38), (13, 25), (1, 12)];
 
     public static InitialSquadReference017B Reference(int division, int position)
     {
-        int strength = References[division - 1][position - 1];
+        int strength = ChampionshipStrengthLimits.For((DivisionTier)division, position);
         var (minimum, maximum) = DivisionRanges[division - 1];
         return division == 1 && position <= 3
             ? new(position, strength, 47, 50)

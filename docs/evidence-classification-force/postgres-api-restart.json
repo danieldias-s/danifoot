@@ -1,0 +1,14 @@
+{
+  "worldId": "93990698-1353-45ea-846e-285455e23e31",
+  "round": 1,
+  "state": "RESULTS",
+  "postgresPort": 55441,
+  "apiPort": 5199,
+  "apiPids": [
+    32096,
+    30340
+  ],
+  "playersCompared": 18,
+  "sha256Before": "b637a1fb9708aee6d34d24228640ba61ac4b0b0f9cf5a94e4187bbf7f03bf59c",
+  "sha256After": "b637a1fb9708aee6d34d24228640ba61ac4b0b0f9cf5a94e4187bbf7f03bf59c"
+}

@@ -8,14 +8,7 @@ public static class ClassicForceEvolutionEngine
 {
     public const string Rule = "CLASSIC_ADAPTED_FORCE_EVOLUTION";
     public const int Version = 1;
-    public const double PlayedDeclineProbability = 0.15;
-    private static readonly int[][] Ceilings =
-    [
-        [50, 50, 50, 49, 48, 47, 46, 44],
-        [44, 42, 42, 39, 37, 34, 31, 28],
-        [28, 26, 26, 23, 21, 18, 15, 12],
-        [12, 10, 10, 8, 6, 4, 2, 1]
-    ];
+    public const double PlayedDeclineProbability = 0.50;
     // Exact probabilities in units of 0.5%, not floating point intervals.
     public static IReadOnlyList<int> DurationWeights { get; } = Array.AsReadOnly(new[] { 26, 26, 24, 24, 22, 20, 18, 12, 8, 6, 5, 4, 3, 2 });
     public static bool IsActive(GameWorld w)
@@ -25,11 +18,7 @@ public static class ClassicForceEvolutionEngine
         return w.ForceEvolutionMode == ForceEvolutionMode.ClassicAdapted;
     }
     public static int GrowthCeiling(DivisionTier division, int position)
-        => division is >= DivisionTier.PrimeiraDivisao and <= DivisionTier.QuartaDivisao
-            ? Ceilings[(int)division - 1][Math.Clamp(position, 1, 8) - 1] : 1;
-
-    public static double ReserveProbability(int force, int ceiling)
-        => force >= ceiling ? 0 : 0.15 + 0.70 * Math.Clamp((ceiling - force - 1.0) / Math.Max(1, ceiling - 2), 0, 1);
+        => ChampionshipStrengthLimits.For(division, position);
 
     public static int DurationFromRoll(int roll)
     {
@@ -196,50 +185,74 @@ public static class ClassicForceEvolutionEngine
 
     public static void ApplyFinishedRound(GameWorld w, IReadOnlyList<MatchFixture> matches)
     {
-        if (!IsActive(w) || matches.Any(m => !m.IsFinished)) return;
+        bool classicInjuries = IsActive(w);
+        if (matches.Count == 0 || matches.Any(m => !m.IsFinished)) return;
         if (matches.Any(m => m.SeasonNumber != w.SeasonNumber || m.RoundNumber != w.RoundNumber))
             throw new InvalidOperationException("Force processing requires the current sporting round.");
-        if (w.ClassicForce.GuardSeason != w.SeasonNumber || w.ClassicForce.GuardRound != w.RoundNumber)
-        {
-            w.ClassicForce.ProcessedRoundPlayers.Clear();
-            w.ClassicForce.GuardSeason = w.SeasonNumber;
-            w.ClassicForce.GuardRound = w.RoundNumber;
-        }
-        var players = w.Players.ToDictionary(p => p.Id);
-        var clubs = w.Clubs.ToDictionary(c => c.Id);
-        var played = matches.ToDictionary(m => m.Id, ParticipationMinutes);
-        var league = matches.Any(m => m.CompetitionType == CompetitionType.League && m.CurrentMinute > 0);
-        if (league)
-            foreach (var tier in Ceilings.Select((_, i) => (DivisionTier)(i + 1)))
-                foreach (var row in CompetitionAndSeasonEngine.GetDivisionStandings(w, tier))
-                    w.ClassicForce.CompletedLeaguePositions[row.ClubId] = row.Position;
+        var state = w.ClassicForce;
+        if (state.GuardSeason > w.SeasonNumber || (state.GuardSeason == w.SeasonNumber && state.GuardRound >= w.RoundNumber))
+            return;
 
-        // If ownership changed during the round, an actual appearance takes precedence over a reserve slot.
-        var candidates = matches.Where(m => m.CurrentMinute > 0 && !w.ClassicForce.ProcessedMatches.Contains(m.Id))
-            .SelectMany(m => m.ForceRoster.Select(p => (Match: m, Roster: p, Minutes: played[m.Id].GetValueOrDefault(p.PlayerId))))
-            .OrderByDescending(x => x.Minutes > 0).ThenBy(x => x.Match.DeterministicMatchIndex).ThenBy(x => x.Roster.PlayerId);
-        foreach (var x in candidates)
+        var playedMatches = matches.Where(m => m.CurrentMinute > 0).ToList();
+        if (playedMatches.Count == 0) return;
+        var clubs = w.Clubs.ToDictionary(c => c.Id);
+        bool league = playedMatches.Any(m => m.CompetitionType == CompetitionType.League);
+        foreach (var tier in w.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital && c.LeaguePlayed > 0)
+                     .Select(c => c.DivisionTier).Distinct())
         {
-            if (!players.TryGetValue(x.Roster.PlayerId, out var p) || !clubs.TryGetValue(x.Roster.ClubId, out var club)) continue;
-            string roundKey = $"{w.Id}:S{w.SeasonNumber}:R{w.RoundNumber}:P{p.Id}";
-            if (!w.ClassicForce.ProcessedRoundPlayers.Add(roundKey)) continue;
-            var context = ClubContext(w, club);
-            string reason = x.Minutes > 0 ? "PLAYED_MATCH_DECLINE" : "RESERVE_PROGRESS";
-            string key = $"{roundKey}:M{x.Match.Id}:{reason}";
-            int before = p.Strength;
-            var rng = DeterministicRng.FromContext(w.Seed, w.SeasonNumber, w.RoundNumber,
-                x.Match.DeterministicMatchIndex, PlayerToken(p.Id), x.Minutes > 0 ? 12042 : 12041);
-            bool injuredInMatch = x.Match.HomeInjuredInMatchIds.Contains(p.Id) || x.Match.AwayInjuredInMatchIds.Contains(p.Id);
-            if (x.Minutes > 0)
-            {
-                if (!injuredInMatch && p.Strength > 1 && rng.NextBool(PlayedDeclineProbability)) p.Strength--;
-            }
-            else if (x.Match.CompetitionType == CompetitionType.League && club.DivisionTier != DivisionTier.Distrital
-                && p.Strength < context.Ceiling && rng.NextBool(ReserveProbability(p.Strength, context.Ceiling))) p.Strength++;
-            if (before != p.Strength) Record(w, p, club, context.Position, context.Ceiling, before, reason, key);
+            // A legacy save may have valid standings but no cached ranks when its first new round is a Cup round.
+            if (!league && w.Clubs.Any(c => c.DivisionTier == tier && state.CompletedLeaguePositions.ContainsKey(c.Id))) continue;
+            foreach (var row in CompetitionAndSeasonEngine.GetDivisionStandings(w, tier))
+                state.CompletedLeaguePositions[row.ClubId] = row.Position;
         }
-        foreach (var m in matches) w.ClassicForce.ProcessedMatches.Add(m.Id);
-        if (league) CaptureTurns(w);
+
+        var appeared = new HashSet<Guid>();
+        var injured = new HashSet<Guid>();
+        foreach (var match in playedMatches)
+        {
+            appeared.UnionWith(match.StatisticsInitialLineup.Where(p => p.IsStarter).Select(p => p.PlayerId));
+            appeared.UnionWith(match.Events.Where(e => e.EventType == MatchEventType.Substitution)
+                .Select(e => e.PrimaryPlayerId).OfType<Guid>());
+            if (!match.StatisticsLineupCaptured)
+            {
+                // Older active fixtures may predate kickoff statistics.
+                appeared.UnionWith(match.HomeActiveStarterIds.Concat(match.AwayActiveStarterIds));
+                appeared.UnionWith(match.HomeSubstitutedInIds.Concat(match.AwaySubstitutedInIds));
+                appeared.UnionWith(match.HomeSubstitutedOutIds.Concat(match.AwaySubstitutedOutIds));
+                appeared.UnionWith(match.HomeSentOffIds.Concat(match.AwaySentOffIds));
+                appeared.UnionWith(match.HomeInjuredInMatchIds.Concat(match.AwayInjuredInMatchIds));
+            }
+            if (classicInjuries)
+                injured.UnionWith(match.HomeInjuredInMatchIds.Concat(match.AwayInjuredInMatchIds));
+        }
+
+        w.PlayerStrengthHistoryStartSeason ??= w.SeasonNumber;
+        w.PlayerStrengthHistoryStartRound ??= w.RoundNumber;
+        foreach (var p in w.Players)
+        {
+            var club = p.ClubId is Guid id ? clubs.GetValueOrDefault(id) : null;
+            var context = ClubContext(w, club);
+            int before = p.Strength;
+            bool played = appeared.Contains(p.Id);
+            if (played)
+            {
+                // A new day-based injury already owns the strength loss for this episode.
+                if (before > 1 && !injured.Contains(p.Id) && DeterministicRng.FromContext(
+                    w.Seed, w.SeasonNumber, w.RoundNumber, PlayerToken(p.Id), 0, 12042).NextBool(PlayedDeclineProbability))
+                    p.Strength--;
+            }
+            else if (before < context.Ceiling) p.Strength++;
+
+            if (before != p.Strength)
+            {
+                string reason = played ? "PLAYED_MATCH_DECLINE" : "RESERVE_PROGRESS";
+                Record(w, p, club, context.Position, context.Ceiling, before, reason,
+                    $"{w.Id}:S{w.SeasonNumber}:R{w.RoundNumber}:P{p.Id}:{reason}");
+            }
+        }
+        state.GuardSeason = w.SeasonNumber;
+        state.GuardRound = w.RoundNumber;
+        if (league && classicInjuries) CaptureTurns(w);
     }
 
     public static (int Position, int Ceiling) ClubContext(GameWorld w, Club? club)
@@ -250,15 +263,18 @@ public static class ClassicForceEvolutionEngine
 
     private static void CaptureTurns(GameWorld w)
     {
+        ILookup<Guid?, PlayerStrengthChangeDto>? changesByClub = null;
         foreach (var club in w.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital))
         {
             int half = club.LeaguePlayed == 7 ? 1 : club.LeaguePlayed == 14 ? 2 : 0;
             if (half == 0 || w.ClassicForce.TurnSnapshots.Any(s => s.Season == w.SeasonNumber && s.Half == half && s.ClubId == club.Id)) continue;
             var context = ClubContext(w, club);
-            var changes = w.PlayerStrengthHistory.Where(e => e.Season == w.SeasonNumber && e.ClubId == club.Id && e.Rule == Rule).ToList();
+            changesByClub ??= w.PlayerStrengthHistory.Where(e => e.Season == w.SeasonNumber && e.Rule == Rule).ToLookup(e => e.ClubId);
+            var changes = changesByClub[club.Id];
+            var byPlayer = changes.ToLookup(e => e.PlayerId);
             var roster = w.Players.Where(p => p.ClubId == club.Id).Select(p =>
             {
-                var events = changes.Where(e => e.PlayerId == p.Id).ToList();
+                var events = byPlayer[p.Id];
                 return new ForceTurnPlayer(p.Id, w.ClassicForce.SeasonStartingStrengths.GetValueOrDefault(p.Id, p.Strength), p.Strength,
                     events.Sum(e => e.ReserveGrowth), events.Where(e => e.ChangeReason == "PLAYED_MATCH_DECLINE").Sum(e => e.StrengthBefore - e.StrengthAfter), events.Sum(e => e.DailyInjuryLoss));
             }).ToList();
@@ -275,7 +291,8 @@ public static class ClassicForceEvolutionEngine
         w.PlayerStrengthHistory.Add(new(key, p.Id, w.SeasonNumber, w.RoundNumber, club?.Id, club?.Name ?? "Sem clube",
             club?.DivisionTier, before, p.Strength, reason, injury?.Id, Rule, reason)
         {
-            WorldId = w.Id, GameDate = date ?? w.ClassicForce.GameDate, LeaguePosition = rank, GrowthCeiling = ceiling,
+            WorldId = w.Id, GameDate = date ?? (w.ForceEvolutionMode == ForceEvolutionMode.ClassicAdapted ? w.ClassicForce.GameDate : null),
+            LeaguePosition = rank, GrowthCeiling = ceiling,
             InjuryDuration = injury?.Duration, DailyInjuryLoss = reason == "INJURY_DAILY_LOSS" ? before - p.Strength : 0,
             ReserveGrowth = reason == "RESERVE_PROGRESS" ? p.Strength - before : 0
         });

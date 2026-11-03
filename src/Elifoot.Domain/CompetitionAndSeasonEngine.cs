@@ -306,9 +306,9 @@ public static class CompetitionAndSeasonEngine
         GameWorld world,
         IReadOnlyList<MatchFixture> roundMatches)
     {
+        var official = world.Fixtures.Where(m => m.SeasonNumber == world.SeasonNumber && m.RoundNumber == world.RoundNumber).ToList();
         if (ClassicForceEvolutionEngine.IsActive(world))
         {
-            var official = world.Fixtures.Where(m => m.SeasonNumber == world.SeasonNumber && m.RoundNumber == world.RoundNumber).ToList();
             if (official.Count == 0 || official.Any(m => !m.IsFinished)) return;
             if (official.Any(m => m.CurrentMinute > 0 && (!m.StatisticsLineupCaptured || m.ForceRoster.Count == 0)))
                 throw new InvalidOperationException("Classic force requires captured kickoff lineups and rosters.");
@@ -379,7 +379,9 @@ public static class CompetitionAndSeasonEngine
             updated = true;
         }
 
-        ClassicForceEvolutionEngine.ApplyFinishedRound(world, roundMatches);
+        // Already settled results from an older save are read as history and do not trigger the new rule.
+        if (updated && official.Count > 0 && official.All(m => m.IsFinished && (m.CurrentMinute == 0 || m.CareerResultsApplied)))
+            ClassicForceEvolutionEngine.ApplyFinishedRound(world, official);
         ClassicEconomyEngine.AfterSportingRound(world,roundMatches);
         if (!updated) return;
         CoachCareerEngine.AwardCompletedLeagues(world);
@@ -556,8 +558,7 @@ public static class CompetitionAndSeasonEngine
         ClassicEconomyEngine.RegisterPromotions(world,promotedIds);
         // The table position from another division is no longer a valid growth reference,
         // including injury history produced during the transition days before season initialization.
-        if (ClassicForceEvolutionEngine.IsActive(world))
-            foreach (var id in promotedIds.Concat(relegatedIds)) world.ClassicForce.CompletedLeaguePositions.Remove(id);
+        world.ClassicForce.CompletedLeaguePositions.Clear();
 
         // AI Manager evaluation & rotation for relegated/underperforming AI clubs
         foreach (var relegated in rel1.Concat(rel2).Concat(rel3).Concat(rel4))
@@ -567,9 +568,6 @@ public static class CompetitionAndSeasonEngine
         // Increment seasons managed
         foreach (var h in world.HumanCoaches) h.SeasonsManaged++;
         foreach (var ai in world.AiManagers.Where(m => m.CurrentClubId != null)) ai.SeasonsManaged++;
-
-        // Process seasonal player strength evolution & equilibrium
-        PlayerStrengthEvolutionEngine.ApplySeasonEnd(world);
 
         // Process seasonal stadium structural wear & AI stadium projects
         MarketAndEconomyEngine.ProcessSeasonalStadiumWearAndAiProjects(world);

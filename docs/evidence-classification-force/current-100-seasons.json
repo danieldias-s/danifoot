@@ -1,0 +1,5595 @@
+{
+  "Seed": 199801,
+  "SeasonsCompleted": 100,
+  "TotalMatchesCompleted": 35100,
+  "RealMinutesSimulated": 3314580,
+  "TotalPurchases": 8800,
+  "AuctionsWon": 4,
+  "InvalidLineupSelectionViolations": 0,
+  "InvalidSquadLimitViolations": 0,
+  "DoubleSettledMatchFinancialViolations": 0,
+  "Seasons": [
+    {
+      "Season": 0,
+      "OverallMean": 18.14991334488735,
+      "At1": 12,
+      "At50": 13,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 144,
+          "Mean": 44.645833333333336,
+          "WeakestTeamMean": 39.44444444444444,
+          "StrongestTeamMean": 48.77777777777778,
+          "At1": 0,
+          "At50": 13
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 32.65972222222222,
+          "WeakestTeamMean": 26.77777777777778,
+          "StrongestTeamMean": 37.5,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 144,
+          "Mean": 19.854166666666668,
+          "WeakestTeamMean": 14.333333333333334,
+          "StrongestTeamMean": 24.666666666666668,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 144,
+          "Mean": 6.75,
+          "WeakestTeamMean": 1.6111111111111112,
+          "StrongestTeamMean": 11.38888888888889,
+          "At1": 12,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1728,
+          "Mean": 15.505787037037036,
+          "WeakestTeamMean": 13.944444444444445,
+          "StrongestTeamMean": 17.333333333333332,
+          "At1": 0,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 1,
+      "OverallMean": 17.18890814558059,
+      "At1": 23,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 150,
+          "Mean": 41.88,
+          "WeakestTeamMean": 38.5,
+          "StrongestTeamMean": 44.42857142857143,
+          "At1": 0,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 30.485714285714284,
+          "WeakestTeamMean": 26.41176470588235,
+          "StrongestTeamMean": 34.529411764705884,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 18.69655172413793,
+          "WeakestTeamMean": 13.333333333333334,
+          "StrongestTeamMean": 22.5,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 152,
+          "Mean": 6.4605263157894735,
+          "WeakestTeamMean": 1.65,
+          "StrongestTeamMean": 11.222222222222221,
+          "At1": 23,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1721,
+          "Mean": 14.775711795467751,
+          "WeakestTeamMean": 13.11111111111111,
+          "StrongestTeamMean": 16.944444444444443,
+          "At1": 0,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 2,
+      "OverallMean": 16.29159445407279,
+      "At1": 39,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 40.11643835616438,
+          "WeakestTeamMean": 35.05882352941177,
+          "StrongestTeamMean": 45.26315789473684,
+          "At1": 0,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 30.028169014084508,
+          "WeakestTeamMean": 23.05,
+          "StrongestTeamMean": 34.833333333333336,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 149,
+          "Mean": 17.651006711409394,
+          "WeakestTeamMean": 11.681818181818182,
+          "StrongestTeamMean": 21.944444444444443,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 151,
+          "Mean": 7.364238410596027,
+          "WeakestTeamMean": 2.7142857142857144,
+          "StrongestTeamMean": 11.38888888888889,
+          "At1": 15,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1720,
+          "Mean": 13.801162790697674,
+          "WeakestTeamMean": 1.55,
+          "StrongestTeamMean": 16.375,
+          "At1": 24,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 3,
+      "OverallMean": 15.435008665511265,
+      "At1": 58,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 38.4054054054054,
+          "WeakestTeamMean": 31.210526315789473,
+          "StrongestTeamMean": 44.388888888888886,
+          "At1": 0,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 136,
+          "Mean": 29.49264705882353,
+          "WeakestTeamMean": 21.94736842105263,
+          "StrongestTeamMean": 34.333333333333336,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 146,
+          "Mean": 18.643835616438356,
+          "WeakestTeamMean": 11.777777777777779,
+          "StrongestTeamMean": 24.61111111111111,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 157,
+          "Mean": 7.063694267515924,
+          "WeakestTeamMean": 2.15,
+          "StrongestTeamMean": 11.176470588235293,
+          "At1": 18,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1721,
+          "Mean": 12.84020918070889,
+          "WeakestTeamMean": 1.45,
+          "StrongestTeamMean": 15.5,
+          "At1": 40,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 4,
+      "OverallMean": 14.639081455805892,
+      "At1": 78,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 139,
+          "Mean": 38.62589928057554,
+          "WeakestTeamMean": 33.06666666666667,
+          "StrongestTeamMean": 44.333333333333336,
+          "At1": 0,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 28.79861111111111,
+          "WeakestTeamMean": 24.333333333333332,
+          "StrongestTeamMean": 32.9375,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 152,
+          "Mean": 17.57894736842105,
+          "WeakestTeamMean": 11.666666666666666,
+          "StrongestTeamMean": 22.80952380952381,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 148,
+          "Mean": 6.912162162162162,
+          "WeakestTeamMean": 2.3157894736842106,
+          "StrongestTeamMean": 11.11111111111111,
+          "At1": 16,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1725,
+          "Mean": 11.928115942028985,
+          "WeakestTeamMean": 1.4,
+          "StrongestTeamMean": 14.88888888888889,
+          "At1": 62,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 5,
+      "OverallMean": 13.895580589254767,
+      "At1": 102,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 38.60144927536232,
+          "WeakestTeamMean": 27.125,
+          "StrongestTeamMean": 44.13333333333333,
+          "At1": 0,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 27.56081081081081,
+          "WeakestTeamMean": 22.90909090909091,
+          "StrongestTeamMean": 32.68421052631579,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 17.193103448275863,
+          "WeakestTeamMean": 12.666666666666666,
+          "StrongestTeamMean": 21.25,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 151,
+          "Mean": 6.867549668874172,
+          "WeakestTeamMean": 1.9473684210526316,
+          "StrongestTeamMean": 9.95,
+          "At1": 15,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1726,
+          "Mean": 11.086326767091542,
+          "WeakestTeamMean": 1.4,
+          "StrongestTeamMean": 14.61111111111111,
+          "At1": 87,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 6,
+      "OverallMean": 13.200173310225303,
+      "At1": 128,
+      "At50": 9,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 134,
+          "Mean": 38.76865671641791,
+          "WeakestTeamMean": 29.9375,
+          "StrongestTeamMean": 44.36842105263158,
+          "At1": 0,
+          "At50": 9
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 26.31756756756757,
+          "WeakestTeamMean": 17.833333333333332,
+          "StrongestTeamMean": 31.59090909090909,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 149,
+          "Mean": 18.20805369127517,
+          "WeakestTeamMean": 11.235294117647058,
+          "StrongestTeamMean": 23.636363636363637,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 147,
+          "Mean": 6.612244897959184,
+          "WeakestTeamMean": 2.6,
+          "StrongestTeamMean": 10.9375,
+          "At1": 17,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1730,
+          "Mean": 10.226011560693642,
+          "WeakestTeamMean": 1.3,
+          "StrongestTeamMean": 14.222222222222221,
+          "At1": 111,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 7,
+      "OverallMean": 12.574090121317157,
+      "At1": 160,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 139,
+          "Mean": 37.37410071942446,
+          "WeakestTeamMean": 29.36842105263158,
+          "StrongestTeamMean": 44.388888888888886,
+          "At1": 0,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 27.52027027027027,
+          "WeakestTeamMean": 22.210526315789473,
+          "StrongestTeamMean": 35.333333333333336,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 143,
+          "Mean": 17.454545454545453,
+          "WeakestTeamMean": 12.266666666666667,
+          "StrongestTeamMean": 22.5625,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 146,
+          "Mean": 6.4520547945205475,
+          "WeakestTeamMean": 1.6111111111111112,
+          "StrongestTeamMean": 10.947368421052632,
+          "At1": 19,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1732,
+          "Mean": 9.41974595842956,
+          "WeakestTeamMean": 1.3,
+          "StrongestTeamMean": 13.555555555555555,
+          "At1": 141,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 8,
+      "OverallMean": 11.893847487001732,
+      "At1": 195,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 36.76056338028169,
+          "WeakestTeamMean": 28.235294117647058,
+          "StrongestTeamMean": 43.375,
+          "At1": 0,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 28.418439716312058,
+          "WeakestTeamMean": 22.833333333333332,
+          "StrongestTeamMean": 33.05,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 151,
+          "Mean": 16.271523178807946,
+          "WeakestTeamMean": 10.772727272727273,
+          "StrongestTeamMean": 22.285714285714285,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 142,
+          "Mean": 6.654929577464789,
+          "WeakestTeamMean": 1.894736842105263,
+          "StrongestTeamMean": 10.444444444444445,
+          "At1": 13,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1732,
+          "Mean": 8.557736720554272,
+          "WeakestTeamMean": 1.25,
+          "StrongestTeamMean": 12.666666666666666,
+          "At1": 182,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 9,
+      "OverallMean": 11.261698440207972,
+      "At1": 237,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 134,
+          "Mean": 37.66417910447761,
+          "WeakestTeamMean": 32.06666666666667,
+          "StrongestTeamMean": 42.470588235294116,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 27.29861111111111,
+          "WeakestTeamMean": 20.307692307692307,
+          "StrongestTeamMean": 32.8235294117647,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 149,
+          "Mean": 17.79194630872483,
+          "WeakestTeamMean": 12.470588235294118,
+          "StrongestTeamMean": 22.352941176470587,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 151,
+          "Mean": 6.596026490066225,
+          "WeakestTeamMean": 1.8823529411764706,
+          "StrongestTeamMean": 10.777777777777779,
+          "At1": 14,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1730,
+          "Mean": 7.726589595375723,
+          "WeakestTeamMean": 1.25,
+          "StrongestTeamMean": 11.555555555555555,
+          "At1": 223,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 10,
+      "OverallMean": 10.59792027729636,
+      "At1": 288,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 36.97902097902098,
+          "WeakestTeamMean": 28.045454545454547,
+          "StrongestTeamMean": 43.13333333333333,
+          "At1": 0,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 26.12857142857143,
+          "WeakestTeamMean": 19.77777777777778,
+          "StrongestTeamMean": 31.3,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 17.02112676056338,
+          "WeakestTeamMean": 9.736842105263158,
+          "StrongestTeamMean": 23.375,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 150,
+          "Mean": 6.3933333333333335,
+          "WeakestTeamMean": 3.2857142857142856,
+          "StrongestTeamMean": 10.0625,
+          "At1": 11,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1733,
+          "Mean": 7.004039238315061,
+          "WeakestTeamMean": 1.2222222222222223,
+          "StrongestTeamMean": 10.714285714285714,
+          "At1": 277,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 11,
+      "OverallMean": 10.045493934142115,
+      "At1": 334,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 133,
+          "Mean": 37.53383458646616,
+          "WeakestTeamMean": 28.933333333333334,
+          "StrongestTeamMean": 42.357142857142854,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 26.604166666666668,
+          "WeakestTeamMean": 19.555555555555557,
+          "StrongestTeamMean": 32.06666666666667,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 146,
+          "Mean": 17.21232876712329,
+          "WeakestTeamMean": 11.105263157894736,
+          "StrongestTeamMean": 21.94736842105263,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 149,
+          "Mean": 6.12751677852349,
+          "WeakestTeamMean": 2.95,
+          "StrongestTeamMean": 10,
+          "At1": 16,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1736,
+          "Mean": 6.299539170506913,
+          "WeakestTeamMean": 1.1666666666666667,
+          "StrongestTeamMean": 9.75,
+          "At1": 318,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 12,
+      "OverallMean": 9.458838821490469,
+      "At1": 412,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 131,
+          "Mean": 37.412213740458014,
+          "WeakestTeamMean": 30.53846153846154,
+          "StrongestTeamMean": 43.53846153846154,
+          "At1": 0,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 146,
+          "Mean": 26.575342465753426,
+          "WeakestTeamMean": 21.75,
+          "StrongestTeamMean": 31.25,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 140,
+          "Mean": 16.87857142857143,
+          "WeakestTeamMean": 11.266666666666667,
+          "StrongestTeamMean": 21.8,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 153,
+          "Mean": 6.03921568627451,
+          "WeakestTeamMean": 2.1578947368421053,
+          "StrongestTeamMean": 10.5625,
+          "At1": 21,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1738,
+          "Mean": 5.617376294591485,
+          "WeakestTeamMean": 1.1111111111111112,
+          "StrongestTeamMean": 9.11111111111111,
+          "At1": 391,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 13,
+      "OverallMean": 8.834488734835356,
+      "At1": 501,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 35.56617647058823,
+          "WeakestTeamMean": 32.22222222222222,
+          "StrongestTeamMean": 39.333333333333336,
+          "At1": 0,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 25.83941605839416,
+          "WeakestTeamMean": 18.842105263157894,
+          "StrongestTeamMean": 31.42105263157895,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 143,
+          "Mean": 17.223776223776223,
+          "WeakestTeamMean": 11.31578947368421,
+          "StrongestTeamMean": 23.4,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 147,
+          "Mean": 6.068027210884353,
+          "WeakestTeamMean": 2.6666666666666665,
+          "StrongestTeamMean": 10.944444444444445,
+          "At1": 10,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1745,
+          "Mean": 4.961604584527221,
+          "WeakestTeamMean": 1.0555555555555556,
+          "StrongestTeamMean": 8.470588235294118,
+          "At1": 491,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 14,
+      "OverallMean": 8.34792027729636,
+      "At1": 587,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 137,
+          "Mean": 34.25547445255474,
+          "WeakestTeamMean": 30.58823529411765,
+          "StrongestTeamMean": 38.5,
+          "At1": 0,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 146,
+          "Mean": 26.19178082191781,
+          "WeakestTeamMean": 19.6875,
+          "StrongestTeamMean": 33.55555555555556,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 136,
+          "Mean": 16.49264705882353,
+          "WeakestTeamMean": 10.705882352941176,
+          "StrongestTeamMean": 21.72222222222222,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 141,
+          "Mean": 5.49645390070922,
+          "WeakestTeamMean": 1.631578947368421,
+          "StrongestTeamMean": 9.35,
+          "At1": 22,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1748,
+          "Mean": 4.423340961098398,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 7.8125,
+          "At1": 565,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 15,
+      "OverallMean": 7.951473136915078,
+      "At1": 691,
+      "At50": 0,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 139,
+          "Mean": 35.143884892086334,
+          "WeakestTeamMean": 29.944444444444443,
+          "StrongestTeamMean": 42.26315789473684,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 25.1294964028777,
+          "WeakestTeamMean": 22.263157894736842,
+          "StrongestTeamMean": 28.533333333333335,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 16.746478873239436,
+          "WeakestTeamMean": 10.764705882352942,
+          "StrongestTeamMean": 22.05,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 145,
+          "Mean": 5.779310344827586,
+          "WeakestTeamMean": 2,
+          "StrongestTeamMean": 10,
+          "At1": 26,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1743,
+          "Mean": 3.8772231784279976,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 7.5,
+          "At1": 665,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 16,
+      "OverallMean": 7.581455805892547,
+      "At1": 783,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 135,
+          "Mean": 34.355555555555554,
+          "WeakestTeamMean": 23.846153846153847,
+          "StrongestTeamMean": 42.55555555555556,
+          "At1": 0,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 150,
+          "Mean": 25.553333333333335,
+          "WeakestTeamMean": 20.41176470588235,
+          "StrongestTeamMean": 29.095238095238095,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 136,
+          "Mean": 16.53676470588235,
+          "WeakestTeamMean": 11.5,
+          "StrongestTeamMean": 23.4375,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 144,
+          "Mean": 5.756944444444445,
+          "WeakestTeamMean": 2,
+          "StrongestTeamMean": 9.368421052631579,
+          "At1": 21,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1743,
+          "Mean": 3.413080895008606,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 6.4375,
+          "At1": 761,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 17,
+      "OverallMean": 7.241334488734835,
+      "At1": 888,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 34.48951048951049,
+          "WeakestTeamMean": 30.166666666666668,
+          "StrongestTeamMean": 43.75,
+          "At1": 0,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 26.1,
+          "WeakestTeamMean": 22,
+          "StrongestTeamMean": 31.529411764705884,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 15.340579710144928,
+          "WeakestTeamMean": 9.235294117647058,
+          "StrongestTeamMean": 20.133333333333333,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.7622377622377625,
+          "WeakestTeamMean": 2.142857142857143,
+          "StrongestTeamMean": 10,
+          "At1": 21,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 2.9736238532110093,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 5.176470588235294,
+          "At1": 864,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 18,
+      "OverallMean": 6.868717504332755,
+      "At1": 990,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 34.23076923076923,
+          "WeakestTeamMean": 28.68421052631579,
+          "StrongestTeamMean": 40.8,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 25.131386861313867,
+          "WeakestTeamMean": 21.294117647058822,
+          "StrongestTeamMean": 31.058823529411764,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 135,
+          "Mean": 15.911111111111111,
+          "WeakestTeamMean": 10.333333333333334,
+          "StrongestTeamMean": 22.058823529411764,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 145,
+          "Mean": 5.6482758620689655,
+          "WeakestTeamMean": 1.4444444444444444,
+          "StrongestTeamMean": 9.85,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1748,
+          "Mean": 2.601830663615561,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 4.5,
+          "At1": 959,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 19,
+      "OverallMean": 6.631282495667245,
+      "At1": 1078,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 34.05714285714286,
+          "WeakestTeamMean": 28.375,
+          "StrongestTeamMean": 41,
+          "At1": 0,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 25.851063829787233,
+          "WeakestTeamMean": 23.055555555555557,
+          "StrongestTeamMean": 30.5,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 14.840579710144928,
+          "WeakestTeamMean": 10.26086956521739,
+          "StrongestTeamMean": 20.714285714285715,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 147,
+          "Mean": 5.517006802721088,
+          "WeakestTeamMean": 1.3636363636363635,
+          "StrongestTeamMean": 10.933333333333334,
+          "At1": 26,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1742,
+          "Mean": 2.315154994259472,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 4.071428571428571,
+          "At1": 1052,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 20,
+      "OverallMean": 6.402512998266897,
+      "At1": 1168,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 33.7,
+          "WeakestTeamMean": 27.157894736842106,
+          "StrongestTeamMean": 40,
+          "At1": 0,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 135,
+          "Mean": 25.962962962962962,
+          "WeakestTeamMean": 21,
+          "StrongestTeamMean": 29.27777777777778,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 135,
+          "Mean": 15.148148148148149,
+          "WeakestTeamMean": 9.6,
+          "StrongestTeamMean": 20.352941176470587,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 152,
+          "Mean": 5.782894736842105,
+          "WeakestTeamMean": 1.4210526315789473,
+          "StrongestTeamMean": 10.75,
+          "At1": 22,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1746,
+          "Mean": 2.0790378006872854,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 3.6666666666666665,
+          "At1": 1145,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 21,
+      "OverallMean": 6.244367417677643,
+      "At1": 1269,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 33.30882352941177,
+          "WeakestTeamMean": 30.555555555555557,
+          "StrongestTeamMean": 37.666666666666664,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 25.528169014084508,
+          "WeakestTeamMean": 20.11111111111111,
+          "StrongestTeamMean": 30.444444444444443,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 133,
+          "Mean": 16.360902255639097,
+          "WeakestTeamMean": 10.526315789473685,
+          "StrongestTeamMean": 22.2,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 149,
+          "Mean": 5.630872483221476,
+          "WeakestTeamMean": 1.1666666666666667,
+          "StrongestTeamMean": 9.5,
+          "At1": 23,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1748,
+          "Mean": 1.8546910755148742,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 3.5,
+          "At1": 1246,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 22,
+      "OverallMean": 6.047660311958405,
+      "At1": 1359,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 139,
+          "Mean": 32.43884892086331,
+          "WeakestTeamMean": 25.904761904761905,
+          "StrongestTeamMean": 40.2,
+          "At1": 1,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 135,
+          "Mean": 25.874074074074073,
+          "WeakestTeamMean": 22.0625,
+          "StrongestTeamMean": 34.3125,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 144,
+          "Mean": 15.583333333333334,
+          "WeakestTeamMean": 10.285714285714286,
+          "StrongestTeamMean": 21.571428571428573,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.385714285714286,
+          "WeakestTeamMean": 1.6818181818181819,
+          "StrongestTeamMean": 10.928571428571429,
+          "At1": 23,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1750,
+          "Mean": 1.6902857142857144,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 3.3333333333333335,
+          "At1": 1335,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 23,
+      "OverallMean": 5.8760831889081455,
+      "At1": 1431,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 32.92028985507246,
+          "WeakestTeamMean": 26.15,
+          "StrongestTeamMean": 36.9375,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 23.49645390070922,
+          "WeakestTeamMean": 18.666666666666668,
+          "StrongestTeamMean": 31.235294117647058,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 133,
+          "Mean": 16.55639097744361,
+          "WeakestTeamMean": 8.65,
+          "StrongestTeamMean": 22.57894736842105,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 146,
+          "Mean": 5.184931506849315,
+          "WeakestTeamMean": 1.2105263157894737,
+          "StrongestTeamMean": 9.333333333333334,
+          "At1": 25,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1750,
+          "Mean": 1.5697142857142856,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 3.2222222222222223,
+          "At1": 1406,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 24,
+      "OverallMean": 5.848353552859619,
+      "At1": 1490,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 133,
+          "Mean": 32.45112781954887,
+          "WeakestTeamMean": 28.58823529411765,
+          "StrongestTeamMean": 38.42857142857143,
+          "At1": 1,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 143,
+          "Mean": 25.412587412587413,
+          "WeakestTeamMean": 17.94736842105263,
+          "StrongestTeamMean": 35.6875,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 16.330985915492956,
+          "WeakestTeamMean": 9.473684210526315,
+          "StrongestTeamMean": 21.90909090909091,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 4.942857142857143,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.125,
+          "At1": 32,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1750,
+          "Mean": 1.4497142857142857,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.7777777777777777,
+          "At1": 1457,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 25,
+      "OverallMean": 5.701906412478336,
+      "At1": 1546,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 134,
+          "Mean": 31.649253731343283,
+          "WeakestTeamMean": 26.789473684210527,
+          "StrongestTeamMean": 37.75,
+          "At1": 6,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 152,
+          "Mean": 25.907894736842106,
+          "WeakestTeamMean": 23.210526315789473,
+          "StrongestTeamMean": 30.473684210526315,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 132,
+          "Mean": 14.409090909090908,
+          "WeakestTeamMean": 7.461538461538462,
+          "StrongestTeamMean": 19,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 5.158273381294964,
+          "WeakestTeamMean": 1.0526315789473684,
+          "StrongestTeamMean": 10.214285714285714,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1751,
+          "Mean": 1.3489434608794975,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.588235294117647,
+          "At1": 1507,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 26,
+      "OverallMean": 5.688908145580589,
+      "At1": 1591,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 31.4468085106383,
+          "WeakestTeamMean": 26.4,
+          "StrongestTeamMean": 38.55555555555556,
+          "At1": 3,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 136,
+          "Mean": 25.71323529411765,
+          "WeakestTeamMean": 19.58823529411765,
+          "StrongestTeamMean": 33.111111111111114,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 15.310344827586206,
+          "WeakestTeamMean": 6.266666666666667,
+          "StrongestTeamMean": 23.789473684210527,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 136,
+          "Mean": 5.411764705882353,
+          "WeakestTeamMean": 1.4210526315789473,
+          "StrongestTeamMean": 11.071428571428571,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1750,
+          "Mean": 1.2817142857142858,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.4705882352941178,
+          "At1": 1552,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 27,
+      "OverallMean": 5.706239168110918,
+      "At1": 1630,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 144,
+          "Mean": 31.333333333333332,
+          "WeakestTeamMean": 25.705882352941178,
+          "StrongestTeamMean": 39.333333333333336,
+          "At1": 5,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 26.19148936170213,
+          "WeakestTeamMean": 20.11764705882353,
+          "StrongestTeamMean": 31.6875,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 136,
+          "Mean": 15.588235294117647,
+          "WeakestTeamMean": 9.875,
+          "StrongestTeamMean": 20.625,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 136,
+          "Mean": 5.022058823529412,
+          "WeakestTeamMean": 1.2352941176470589,
+          "StrongestTeamMean": 10.25,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1751,
+          "Mean": 1.2347230154197602,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.3333333333333335,
+          "At1": 1590,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 28,
+      "OverallMean": 5.661611785095321,
+      "At1": 1662,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 30.5,
+          "WeakestTeamMean": 23.529411764705884,
+          "StrongestTeamMean": 38.8,
+          "At1": 4,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 27.01388888888889,
+          "WeakestTeamMean": 18.65,
+          "StrongestTeamMean": 33.23529411764706,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 137,
+          "Mean": 15.313868613138686,
+          "WeakestTeamMean": 9.375,
+          "StrongestTeamMean": 21.583333333333332,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.045454545454546,
+          "WeakestTeamMean": 1.4444444444444444,
+          "StrongestTeamMean": 8.6,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1753,
+          "Mean": 1.1876782658300058,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2777777777777777,
+          "At1": 1618,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 29,
+      "OverallMean": 5.607019064124783,
+      "At1": 1676,
+      "At50": 0,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 33.141843971631204,
+          "WeakestTeamMean": 31.227272727272727,
+          "StrongestTeamMean": 36.733333333333334,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 2,
+          "Count": 149,
+          "Mean": 24.86577181208054,
+          "WeakestTeamMean": 21.263157894736842,
+          "StrongestTeamMean": 30.94736842105263,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.079136690647482,
+          "WeakestTeamMean": 9.052631578947368,
+          "StrongestTeamMean": 19.15,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 126,
+          "Mean": 4.5476190476190474,
+          "WeakestTeamMean": 1.0555555555555556,
+          "StrongestTeamMean": 8.923076923076923,
+          "At1": 28,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1753,
+          "Mean": 1.1597261836851112,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2777777777777777,
+          "At1": 1640,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 30,
+      "OverallMean": 5.5333622183708835,
+      "At1": 1698,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 32.50714285714286,
+          "WeakestTeamMean": 23.7,
+          "StrongestTeamMean": 37.294117647058826,
+          "At1": 0,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 23.83783783783784,
+          "WeakestTeamMean": 19.36842105263158,
+          "StrongestTeamMean": 29,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 128,
+          "Mean": 15.53125,
+          "WeakestTeamMean": 8.368421052631579,
+          "StrongestTeamMean": 24.473684210526315,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 138,
+          "Mean": 5.253623188405797,
+          "WeakestTeamMean": 1.3333333333333333,
+          "StrongestTeamMean": 9.263157894736842,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1754,
+          "Mean": 1.128278221208666,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2222222222222223,
+          "At1": 1660,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 31,
+      "OverallMean": 5.547660311958405,
+      "At1": 1705,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 135,
+          "Mean": 33.51851851851852,
+          "WeakestTeamMean": 27.444444444444443,
+          "StrongestTeamMean": 44.0625,
+          "At1": 0,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 24.695945945945947,
+          "WeakestTeamMean": 21.5,
+          "StrongestTeamMean": 28.94736842105263,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 14.866197183098592,
+          "WeakestTeamMean": 9.166666666666666,
+          "StrongestTeamMean": 19.157894736842106,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 131,
+          "Mean": 4.312977099236641,
+          "WeakestTeamMean": 1.368421052631579,
+          "StrongestTeamMean": 8.2,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1752,
+          "Mean": 1.1118721461187215,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.0555555555555554,
+          "At1": 1668,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 32,
+      "OverallMean": 5.608752166377816,
+      "At1": 1711,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 33.27536231884058,
+          "WeakestTeamMean": 27.176470588235293,
+          "StrongestTeamMean": 42.666666666666664,
+          "At1": 1,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 146,
+          "Mean": 25.041095890410958,
+          "WeakestTeamMean": 21.047619047619047,
+          "StrongestTeamMean": 33.111111111111114,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 137,
+          "Mean": 15.116788321167883,
+          "WeakestTeamMean": 8,
+          "StrongestTeamMean": 19.45,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.207407407407407,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.5,
+          "At1": 32,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1752,
+          "Mean": 1.0976027397260273,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9444444444444444,
+          "At1": 1677,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 33,
+      "OverallMean": 5.584055459272097,
+      "At1": 1722,
+      "At50": 12,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 33.661764705882355,
+          "WeakestTeamMean": 28.823529411764707,
+          "StrongestTeamMean": 44.5,
+          "At1": 1,
+          "At50": 12
+        },
+        {
+          "Division": 2,
+          "Count": 151,
+          "Mean": 23.834437086092716,
+          "WeakestTeamMean": 19,
+          "StrongestTeamMean": 28.2,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 15.18705035971223,
+          "WeakestTeamMean": 10.444444444444445,
+          "StrongestTeamMean": 22.11764705882353,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.207407407407407,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 8.846153846153847,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1747,
+          "Mean": 1.0858614768174013,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9444444444444444,
+          "At1": 1684,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 34,
+      "OverallMean": 5.561091854419411,
+      "At1": 1732,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 32.83098591549296,
+          "WeakestTeamMean": 27.823529411764707,
+          "StrongestTeamMean": 43,
+          "At1": 0,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 24.26950354609929,
+          "WeakestTeamMean": 19.210526315789473,
+          "StrongestTeamMean": 29.285714285714285,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.39568345323741,
+          "WeakestTeamMean": 8.866666666666667,
+          "StrongestTeamMean": 21.22222222222222,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 137,
+          "Mean": 6.313868613138686,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.9375,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1749,
+          "Mean": 1.0777587192681533,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9444444444444444,
+          "At1": 1695,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 35,
+      "OverallMean": 5.5684575389948,
+      "At1": 1743,
+      "At50": 10,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 151,
+          "Mean": 32.51655629139073,
+          "WeakestTeamMean": 23.285714285714285,
+          "StrongestTeamMean": 41.22222222222222,
+          "At1": 1,
+          "At50": 10
+        },
+        {
+          "Division": 2,
+          "Count": 130,
+          "Mean": 23.9,
+          "WeakestTeamMean": 18.75,
+          "StrongestTeamMean": 31.692307692307693,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 143,
+          "Mean": 15.265734265734265,
+          "WeakestTeamMean": 11.136363636363637,
+          "StrongestTeamMean": 19.235294117647058,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 137,
+          "Mean": 5.795620437956204,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.529411764705882,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1747,
+          "Mean": 1.0635374928448769,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9444444444444444,
+          "At1": 1700,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 36,
+      "OverallMean": 5.503899480069324,
+      "At1": 1736,
+      "At50": 9,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 33.07857142857143,
+          "WeakestTeamMean": 26.444444444444443,
+          "StrongestTeamMean": 39.5,
+          "At1": 0,
+          "At50": 9
+        },
+        {
+          "Division": 2,
+          "Count": 148,
+          "Mean": 23.12837837837838,
+          "WeakestTeamMean": 17.571428571428573,
+          "StrongestTeamMean": 31.529411764705884,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 137,
+          "Mean": 14.562043795620438,
+          "WeakestTeamMean": 8.9375,
+          "StrongestTeamMean": 20.529411764705884,
+          "At1": 9,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.6573426573426575,
+          "WeakestTeamMean": 1.2173913043478262,
+          "StrongestTeamMean": 10.285714285714286,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1740,
+          "Mean": 1.0603448275862069,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1690,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 37,
+      "OverallMean": 5.524696707105719,
+      "At1": 1748,
+      "At50": 9,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 147,
+          "Mean": 34.42857142857143,
+          "WeakestTeamMean": 31.75,
+          "StrongestTeamMean": 38.26315789473684,
+          "At1": 0,
+          "At50": 9
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 22.27338129496403,
+          "WeakestTeamMean": 18.363636363636363,
+          "StrongestTeamMean": 29.11764705882353,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.29496402877698,
+          "WeakestTeamMean": 8.823529411764707,
+          "StrongestTeamMean": 19.22222222222222,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.5851851851851855,
+          "WeakestTeamMean": 1.0555555555555556,
+          "StrongestTeamMean": 10.4375,
+          "At1": 39,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1748,
+          "Mean": 1.0600686498855836,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1700,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 38,
+      "OverallMean": 5.579722703639515,
+      "At1": 1746,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 33.65714285714286,
+          "WeakestTeamMean": 26.571428571428573,
+          "StrongestTeamMean": 38.333333333333336,
+          "At1": 2,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 24.697841726618705,
+          "WeakestTeamMean": 18.25,
+          "StrongestTeamMean": 34.22222222222222,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 147,
+          "Mean": 14.83673469387755,
+          "WeakestTeamMean": 8.529411764705882,
+          "StrongestTeamMean": 19.09090909090909,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 138,
+          "Mean": 5.159420289855072,
+          "WeakestTeamMean": 1.4583333333333333,
+          "StrongestTeamMean": 10.384615384615385,
+          "At1": 39,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 1.055045871559633,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1701,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 39,
+      "OverallMean": 5.561958405545927,
+      "At1": 1753,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 137,
+          "Mean": 34.57664233576642,
+          "WeakestTeamMean": 31.88888888888889,
+          "StrongestTeamMean": 38.8235294117647,
+          "At1": 4,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 147,
+          "Mean": 23.476190476190474,
+          "WeakestTeamMean": 19.25,
+          "StrongestTeamMean": 26.727272727272727,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 143,
+          "Mean": 15,
+          "WeakestTeamMean": 9.65,
+          "StrongestTeamMean": 21.466666666666665,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 4.940740740740741,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 7.526315789473684,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1746,
+          "Mean": 1.052119129438717,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1705,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 40,
+      "OverallMean": 5.540727902946274,
+      "At1": 1752,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 32.28169014084507,
+          "WeakestTeamMean": 23.3,
+          "StrongestTeamMean": 38.285714285714285,
+          "At1": 2,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 24.899280575539567,
+          "WeakestTeamMean": 18.625,
+          "StrongestTeamMean": 33.94117647058823,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 134,
+          "Mean": 14.902985074626866,
+          "WeakestTeamMean": 7.714285714285714,
+          "StrongestTeamMean": 20.25,
+          "At1": 15,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 148,
+          "Mean": 6.1824324324324325,
+          "WeakestTeamMean": 2.4285714285714284,
+          "StrongestTeamMean": 11.38888888888889,
+          "At1": 23,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1745,
+          "Mean": 1.0492836676217765,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.4375,
+          "At1": 1710,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 41,
+      "OverallMean": 5.516031195840554,
+      "At1": 1746,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 32.05072463768116,
+          "WeakestTeamMean": 26.526315789473685,
+          "StrongestTeamMean": 34.8,
+          "At1": 3,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 145,
+          "Mean": 23.896551724137932,
+          "WeakestTeamMean": 16.65,
+          "StrongestTeamMean": 30.352941176470587,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 136,
+          "Mean": 15.911764705882353,
+          "WeakestTeamMean": 9.235294117647058,
+          "StrongestTeamMean": 23.333333333333332,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 146,
+          "Mean": 5.636986301369863,
+          "WeakestTeamMean": 1.4444444444444444,
+          "StrongestTeamMean": 11.411764705882353,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1743,
+          "Mean": 1.0648307515777395,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2857142857142856,
+          "At1": 1705,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 42,
+      "OverallMean": 5.588388214904679,
+      "At1": 1743,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 32.391891891891895,
+          "WeakestTeamMean": 27.789473684210527,
+          "StrongestTeamMean": 35.4375,
+          "At1": 6,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 138,
+          "Mean": 25.21014492753623,
+          "WeakestTeamMean": 21.27777777777778,
+          "StrongestTeamMean": 27.941176470588236,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 133,
+          "Mean": 14.62406015037594,
+          "WeakestTeamMean": 8.6875,
+          "StrongestTeamMean": 19.875,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 147,
+          "Mean": 5.714285714285714,
+          "WeakestTeamMean": 1.5789473684210527,
+          "StrongestTeamMean": 10.375,
+          "At1": 28,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1742,
+          "Mean": 1.0562571756601606,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.142857142857143,
+          "At1": 1703,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 43,
+      "OverallMean": 5.49263431542461,
+      "At1": 1749,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 150,
+          "Mean": 31.613333333333333,
+          "WeakestTeamMean": 26.473684210526315,
+          "StrongestTeamMean": 35.11764705882353,
+          "At1": 3,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 131,
+          "Mean": 24.786259541984734,
+          "WeakestTeamMean": 17.571428571428573,
+          "StrongestTeamMean": 29.133333333333333,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 14.768115942028986,
+          "WeakestTeamMean": 9.5,
+          "StrongestTeamMean": 22.352941176470587,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 148,
+          "Mean": 5.527027027027027,
+          "WeakestTeamMean": 1.5217391304347827,
+          "StrongestTeamMean": 9.947368421052632,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1741,
+          "Mean": 1.0522688110281448,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.85,
+          "At1": 1710,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 44,
+      "OverallMean": 5.558058925476603,
+      "At1": 1748,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 32.36879432624114,
+          "WeakestTeamMean": 23.866666666666667,
+          "StrongestTeamMean": 35.73684210526316,
+          "At1": 6,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 147,
+          "Mean": 25.047619047619047,
+          "WeakestTeamMean": 20.05,
+          "StrongestTeamMean": 28.473684210526315,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 136,
+          "Mean": 14.625,
+          "WeakestTeamMean": 8.705882352941176,
+          "StrongestTeamMean": 20.05263157894737,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 144,
+          "Mean": 5.368055555555555,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.058823529411764,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1740,
+          "Mean": 1.0459770114942528,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1706,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 45,
+      "OverallMean": 5.568890814558059,
+      "At1": 1757,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 139,
+          "Mean": 30.381294964028775,
+          "WeakestTeamMean": 21.375,
+          "StrongestTeamMean": 38.833333333333336,
+          "At1": 9,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 26.577464788732396,
+          "WeakestTeamMean": 17.88235294117647,
+          "StrongestTeamMean": 31.25,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 146,
+          "Mean": 14.684931506849315,
+          "WeakestTeamMean": 10.052631578947368,
+          "StrongestTeamMean": 20.473684210526315,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 138,
+          "Mean": 6.536231884057971,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 14.923076923076923,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1743,
+          "Mean": 1.038439472174412,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1711,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 46,
+      "OverallMean": 5.582755632582322,
+      "At1": 1765,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 31.288732394366196,
+          "WeakestTeamMean": 27.8,
+          "StrongestTeamMean": 37.27777777777778,
+          "At1": 5,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 25.077464788732396,
+          "WeakestTeamMean": 20.5,
+          "StrongestTeamMean": 33.333333333333336,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 15.876811594202898,
+          "WeakestTeamMean": 8.307692307692308,
+          "StrongestTeamMean": 25.41176470588235,
+          "At1": 8,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 6.302158273381295,
+          "WeakestTeamMean": 1.4210526315789473,
+          "StrongestTeamMean": 12.842105263157896,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1747,
+          "Mean": 1.038351459645106,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1717,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 47,
+      "OverallMean": 5.631715771230502,
+      "At1": 1757,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 31.610294117647058,
+          "WeakestTeamMean": 28.894736842105264,
+          "StrongestTeamMean": 36.578947368421055,
+          "At1": 3,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 25.73758865248227,
+          "WeakestTeamMean": 19.764705882352942,
+          "StrongestTeamMean": 28.72222222222222,
+          "At1": 10,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 155,
+          "Mean": 15.832258064516129,
+          "WeakestTeamMean": 8.105263157894736,
+          "StrongestTeamMean": 21,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 6.0606060606060606,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 12.307692307692308,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 1.0412844036697249,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1709,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 48,
+      "OverallMean": 5.640381282495667,
+      "At1": 1761,
+      "At50": 0,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 145,
+          "Mean": 30.427586206896553,
+          "WeakestTeamMean": 25.05,
+          "StrongestTeamMean": 33.94736842105263,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 27.148936170212767,
+          "WeakestTeamMean": 23.227272727272727,
+          "StrongestTeamMean": 32.76470588235294,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 137,
+          "Mean": 15.751824817518248,
+          "WeakestTeamMean": 9.285714285714286,
+          "StrongestTeamMean": 20.6875,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.741258741258742,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1742,
+          "Mean": 1.0327210103329507,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1712,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 49,
+      "OverallMean": 5.638648180242634,
+      "At1": 1747,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 29.931506849315067,
+          "WeakestTeamMean": 25.652173913043477,
+          "StrongestTeamMean": 33.88235294117647,
+          "At1": 5,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 24.949640287769785,
+          "WeakestTeamMean": 17.761904761904763,
+          "StrongestTeamMean": 30.944444444444443,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 17.806896551724137,
+          "WeakestTeamMean": 11.071428571428571,
+          "StrongestTeamMean": 23.73913043478261,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.933333333333334,
+          "WeakestTeamMean": 1.5,
+          "StrongestTeamMean": 12.666666666666666,
+          "At1": 21,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1743,
+          "Mean": 1.0286861732644865,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1717,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 50,
+      "OverallMean": 5.630849220103986,
+      "At1": 1753,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 145,
+          "Mean": 30.848275862068967,
+          "WeakestTeamMean": 27.571428571428573,
+          "StrongestTeamMean": 35.77777777777778,
+          "At1": 4,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 25.676056338028168,
+          "WeakestTeamMean": 21.647058823529413,
+          "StrongestTeamMean": 30.473684210526315,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 16.556338028169016,
+          "WeakestTeamMean": 12.6,
+          "StrongestTeamMean": 20.764705882352942,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.37037037037037,
+          "WeakestTeamMean": 1.6666666666666667,
+          "StrongestTeamMean": 10.066666666666666,
+          "At1": 29,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 1.0326834862385321,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1716,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 51,
+      "OverallMean": 5.639948006932409,
+      "At1": 1749,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 31.445945945945947,
+          "WeakestTeamMean": 26.142857142857142,
+          "StrongestTeamMean": 37.44444444444444,
+          "At1": 4,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 24.77857142857143,
+          "WeakestTeamMean": 21.88888888888889,
+          "StrongestTeamMean": 28.11111111111111,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 15.741007194244604,
+          "WeakestTeamMean": 10.944444444444445,
+          "StrongestTeamMean": 21.666666666666668,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 6.485714285714286,
+          "WeakestTeamMean": 1.3333333333333333,
+          "StrongestTeamMean": 12.75,
+          "At1": 26,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1741,
+          "Mean": 1.0327398047099368,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7777777777777777,
+          "At1": 1714,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 52,
+      "OverallMean": 5.625649913344887,
+      "At1": 1746,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 154,
+          "Mean": 31.38961038961039,
+          "WeakestTeamMean": 25.714285714285715,
+          "StrongestTeamMean": 35.64705882352941,
+          "At1": 0,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 143,
+          "Mean": 24.6013986013986,
+          "WeakestTeamMean": 21.176470588235293,
+          "StrongestTeamMean": 32.55555555555556,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 15.297101449275363,
+          "WeakestTeamMean": 10.8125,
+          "StrongestTeamMean": 21.25,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.507575757575758,
+          "WeakestTeamMean": 1.1666666666666667,
+          "StrongestTeamMean": 11.166666666666666,
+          "At1": 28,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1741,
+          "Mean": 1.0304422745548536,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.6666666666666667,
+          "At1": 1712,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 53,
+      "OverallMean": 5.631715771230502,
+      "At1": 1759,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 33.013513513513516,
+          "WeakestTeamMean": 24,
+          "StrongestTeamMean": 39.8421052631579,
+          "At1": 5,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 144,
+          "Mean": 24.541666666666668,
+          "WeakestTeamMean": 18.77777777777778,
+          "StrongestTeamMean": 28,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 140,
+          "Mean": 14.071428571428571,
+          "WeakestTeamMean": 10.25,
+          "StrongestTeamMean": 19.705882352941178,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 129,
+          "Mean": 6.333333333333333,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.375,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1747,
+          "Mean": 1.025186033199771,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.6111111111111112,
+          "At1": 1723,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 54,
+      "OverallMean": 5.621317157712305,
+      "At1": 1752,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 32.34931506849315,
+          "WeakestTeamMean": 26.727272727272727,
+          "StrongestTeamMean": 42.93333333333333,
+          "At1": 2,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 149,
+          "Mean": 23.838926174496645,
+          "WeakestTeamMean": 16.238095238095237,
+          "StrongestTeamMean": 32.55555555555556,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 132,
+          "Mean": 15.969696969696969,
+          "WeakestTeamMean": 12.176470588235293,
+          "StrongestTeamMean": 19.571428571428573,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 137,
+          "Mean": 5.854014598540146,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.947368421052632,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 1.025802752293578,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.6111111111111112,
+          "At1": 1719,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 55,
+      "OverallMean": 5.5823223570190645,
+      "At1": 1775,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 147,
+          "Mean": 32.98639455782313,
+          "WeakestTeamMean": 24.083333333333332,
+          "StrongestTeamMean": 40.23529411764706,
+          "At1": 1,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 22.95035460992908,
+          "WeakestTeamMean": 20.38888888888889,
+          "StrongestTeamMean": 26.933333333333334,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 135,
+          "Mean": 15.807407407407407,
+          "WeakestTeamMean": 9.5,
+          "StrongestTeamMean": 19.714285714285715,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 6.273381294964029,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 12.166666666666666,
+          "At1": 40,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1746,
+          "Mean": 1.026918671248568,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.8,
+          "At1": 1729,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 56,
+      "OverallMean": 5.5506932409012135,
+      "At1": 1765,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 137,
+          "Mean": 32.27007299270073,
+          "WeakestTeamMean": 23.68421052631579,
+          "StrongestTeamMean": 39.625,
+          "At1": 4,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 24.271428571428572,
+          "WeakestTeamMean": 17.285714285714285,
+          "StrongestTeamMean": 34,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 147,
+          "Mean": 16.3265306122449,
+          "WeakestTeamMean": 13,
+          "StrongestTeamMean": 22.31578947368421,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.742857142857143,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.625,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1744,
+          "Mean": 1.025229357798165,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.65,
+          "At1": 1730,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 57,
+      "OverallMean": 5.474436741767764,
+      "At1": 1767,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 135,
+          "Mean": 33.148148148148145,
+          "WeakestTeamMean": 24.77777777777778,
+          "StrongestTeamMean": 41.666666666666664,
+          "At1": 1,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 24.27857142857143,
+          "WeakestTeamMean": 18.75,
+          "StrongestTeamMean": 28.266666666666666,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 14.689655172413794,
+          "WeakestTeamMean": 9.375,
+          "StrongestTeamMean": 21.823529411764707,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 142,
+          "Mean": 5.887323943661972,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.76923076923077,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1746,
+          "Mean": 1.0280641466208476,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.6,
+          "At1": 1729,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 58,
+      "OverallMean": 5.495667244367418,
+      "At1": 1762,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 130,
+          "Mean": 33.97692307692308,
+          "WeakestTeamMean": 25.53846153846154,
+          "StrongestTeamMean": 43,
+          "At1": 4,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 25.042857142857144,
+          "WeakestTeamMean": 17.571428571428573,
+          "StrongestTeamMean": 33.333333333333336,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 144,
+          "Mean": 14.75,
+          "WeakestTeamMean": 10.526315789473685,
+          "StrongestTeamMean": 19.63157894736842,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 145,
+          "Mean": 5.889655172413793,
+          "WeakestTeamMean": 1.3333333333333333,
+          "StrongestTeamMean": 11.055555555555555,
+          "At1": 25,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1749,
+          "Mean": 1.0194396798170382,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.5263157894736843,
+          "At1": 1731,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 59,
+      "OverallMean": 5.474870017331023,
+      "At1": 1778,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 33.875,
+          "WeakestTeamMean": 30.533333333333335,
+          "StrongestTeamMean": 38.13333333333333,
+          "At1": 6,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 133,
+          "Mean": 23.458646616541355,
+          "WeakestTeamMean": 18.210526315789473,
+          "StrongestTeamMean": 33.23076923076923,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 145,
+          "Mean": 16.137931034482758,
+          "WeakestTeamMean": 11.68421052631579,
+          "StrongestTeamMean": 24.2,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.454545454545454,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.176470588235293,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1751,
+          "Mean": 1.02170188463735,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.8235294117647058,
+          "At1": 1731,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 60,
+      "OverallMean": 5.305892547660312,
+      "At1": 1776,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 127,
+          "Mean": 33.14173228346457,
+          "WeakestTeamMean": 25.714285714285715,
+          "StrongestTeamMean": 40.266666666666666,
+          "At1": 6,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 24.828358208955223,
+          "WeakestTeamMean": 19.05,
+          "StrongestTeamMean": 29.76923076923077,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 141,
+          "Mean": 13.709219858156029,
+          "WeakestTeamMean": 9.95,
+          "StrongestTeamMean": 19.5625,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 155,
+          "Mean": 6.354838709677419,
+          "WeakestTeamMean": 1.0833333333333333,
+          "StrongestTeamMean": 11.722222222222221,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1751,
+          "Mean": 1.0234151913192462,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.736842105263158,
+          "At1": 1734,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 61,
+      "OverallMean": 5.130849220103986,
+      "At1": 1777,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 126,
+          "Mean": 30.833333333333332,
+          "WeakestTeamMean": 22.94736842105263,
+          "StrongestTeamMean": 35.266666666666666,
+          "At1": 2,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 129,
+          "Mean": 23.426356589147286,
+          "WeakestTeamMean": 16.3,
+          "StrongestTeamMean": 28.352941176470587,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 148,
+          "Mean": 15.432432432432432,
+          "WeakestTeamMean": 10.210526315789474,
+          "StrongestTeamMean": 20.789473684210527,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 147,
+          "Mean": 5.666666666666667,
+          "WeakestTeamMean": 1.4285714285714286,
+          "StrongestTeamMean": 10.352941176470589,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1758,
+          "Mean": 1.0341296928327646,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.9,
+          "At1": 1736,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 62,
+      "OverallMean": 5.17894280762565,
+      "At1": 1777,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 121,
+          "Mean": 32.40495867768595,
+          "WeakestTeamMean": 27.88888888888889,
+          "StrongestTeamMean": 37.42857142857143,
+          "At1": 2,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 22.154929577464788,
+          "WeakestTeamMean": 17.764705882352942,
+          "StrongestTeamMean": 27.285714285714285,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 142,
+          "Mean": 16.056338028169016,
+          "WeakestTeamMean": 11.157894736842104,
+          "StrongestTeamMean": 21,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 142,
+          "Mean": 5.422535211267606,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.277777777777779,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1761,
+          "Mean": 1.0425894378194207,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.5,
+          "At1": 1736,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 63,
+      "OverallMean": 5.16897746967071,
+      "At1": 1782,
+      "At50": 1,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 124,
+          "Mean": 30.903225806451612,
+          "WeakestTeamMean": 23.842105263157894,
+          "StrongestTeamMean": 39.30769230769231,
+          "At1": 7,
+          "At50": 1
+        },
+        {
+          "Division": 2,
+          "Count": 133,
+          "Mean": 23.646616541353385,
+          "WeakestTeamMean": 17.933333333333334,
+          "StrongestTeamMean": 27.625,
+          "At1": 8,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 140,
+          "Mean": 15.657142857142857,
+          "WeakestTeamMean": 10.11111111111111,
+          "StrongestTeamMean": 19.153846153846153,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 149,
+          "Mean": 6.25503355704698,
+          "WeakestTeamMean": 1.7,
+          "StrongestTeamMean": 11.842105263157896,
+          "At1": 25,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0380249716231555,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2,
+          "At1": 1740,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 64,
+      "OverallMean": 5.160311958405546,
+      "At1": 1791,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 126,
+          "Mean": 30.88095238095238,
+          "WeakestTeamMean": 23.285714285714285,
+          "StrongestTeamMean": 36.2,
+          "At1": 11,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 22.99270072992701,
+          "WeakestTeamMean": 20.214285714285715,
+          "StrongestTeamMean": 26.473684210526315,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 140,
+          "Mean": 16.285714285714285,
+          "WeakestTeamMean": 11.444444444444445,
+          "StrongestTeamMean": 21.764705882352942,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.454545454545454,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.944444444444445,
+          "At1": 32,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0266742338251986,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.8,
+          "At1": 1744,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 65,
+      "OverallMean": 5.152512998266897,
+      "At1": 1780,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 126,
+          "Mean": 30.849206349206348,
+          "WeakestTeamMean": 23.80952380952381,
+          "StrongestTeamMean": 34.875,
+          "At1": 5,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 23.791044776119403,
+          "WeakestTeamMean": 19.3125,
+          "StrongestTeamMean": 27.53846153846154,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 146,
+          "Mean": 15.061643835616438,
+          "WeakestTeamMean": 8.3125,
+          "StrongestTeamMean": 19.157894736842106,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 141,
+          "Mean": 5.673758865248227,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.071428571428571,
+          "At1": 40,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1761,
+          "Mean": 1.0323679727427597,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.1578947368421053,
+          "At1": 1732,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 66,
+      "OverallMean": 5.1468804159445405,
+      "At1": 1782,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 128,
+          "Mean": 30.5546875,
+          "WeakestTeamMean": 26.076923076923077,
+          "StrongestTeamMean": 36.375,
+          "At1": 9,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 22.95744680851064,
+          "WeakestTeamMean": 17.75,
+          "StrongestTeamMean": 27.095238095238095,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 132,
+          "Mean": 16.15909090909091,
+          "WeakestTeamMean": 10.357142857142858,
+          "StrongestTeamMean": 21.125,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 145,
+          "Mean": 5.468965517241379,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.9375,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0244040862656072,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9473684210526316,
+          "At1": 1738,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 67,
+      "OverallMean": 5.195840554592721,
+      "At1": 1778,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 134,
+          "Mean": 31.238805970149254,
+          "WeakestTeamMean": 28,
+          "StrongestTeamMean": 36.875,
+          "At1": 6,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 133,
+          "Mean": 23.353383458646615,
+          "WeakestTeamMean": 17.75,
+          "StrongestTeamMean": 29.875,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 140,
+          "Mean": 15.971428571428572,
+          "WeakestTeamMean": 9.941176470588236,
+          "StrongestTeamMean": 20,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 142,
+          "Mean": 4.746478873239437,
+          "WeakestTeamMean": 1.05,
+          "StrongestTeamMean": 9.25,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1759,
+          "Mean": 1.0176236498010234,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.631578947368421,
+          "At1": 1740,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 68,
+      "OverallMean": 5.217504332755633,
+      "At1": 1792,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 137,
+          "Mean": 30.394160583941606,
+          "WeakestTeamMean": 27.181818181818183,
+          "StrongestTeamMean": 36,
+          "At1": 4,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 131,
+          "Mean": 24.885496183206108,
+          "WeakestTeamMean": 22.333333333333332,
+          "StrongestTeamMean": 28.41176470588235,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 134,
+          "Mean": 15.298507462686567,
+          "WeakestTeamMean": 9.333333333333334,
+          "StrongestTeamMean": 18.285714285714285,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 141,
+          "Mean": 5.50354609929078,
+          "WeakestTeamMean": 1.3333333333333333,
+          "StrongestTeamMean": 11.866666666666667,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0152974504249292,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.2857142857142858,
+          "At1": 1748,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 69,
+      "OverallMean": 5.2352686308492205,
+      "At1": 1807,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 31.297101449275363,
+          "WeakestTeamMean": 28.294117647058822,
+          "StrongestTeamMean": 37.125,
+          "At1": 9,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 140,
+          "Mean": 24.057142857142857,
+          "WeakestTeamMean": 19.57894736842105,
+          "StrongestTeamMean": 27.91304347826087,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 126,
+          "Mean": 15.428571428571429,
+          "WeakestTeamMean": 8,
+          "StrongestTeamMean": 22.125,
+          "At1": 9,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 4.805755395683454,
+          "WeakestTeamMean": 1.35,
+          "StrongestTeamMean": 8.461538461538462,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0107648725212464,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.2777777777777777,
+          "At1": 1755,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 70,
+      "OverallMean": 5.232668977469671,
+      "At1": 1793,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 147,
+          "Mean": 31.197278911564627,
+          "WeakestTeamMean": 25.681818181818183,
+          "StrongestTeamMean": 37.1578947368421,
+          "At1": 7,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 126,
+          "Mean": 24.126984126984127,
+          "WeakestTeamMean": 21.5,
+          "StrongestTeamMean": 28.785714285714285,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 130,
+          "Mean": 15.038461538461538,
+          "WeakestTeamMean": 7.6,
+          "StrongestTeamMean": 21.375,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 137,
+          "Mean": 5.0583941605839415,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 8.714285714285714,
+          "At1": 37,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.0197963800904977,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2,
+          "At1": 1746,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 71,
+      "OverallMean": 5.222703639514731,
+      "At1": 1797,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 30.465753424657535,
+          "WeakestTeamMean": 24,
+          "StrongestTeamMean": 37.3125,
+          "At1": 3,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 24.83582089552239,
+          "WeakestTeamMean": 19.41176470588235,
+          "StrongestTeamMean": 30.625,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 127,
+          "Mean": 14.716535433070867,
+          "WeakestTeamMean": 8.285714285714286,
+          "StrongestTeamMean": 19.714285714285715,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 4.606060606060606,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 8.307692307692308,
+          "At1": 38,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1769,
+          "Mean": 1.0180893159977389,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9047619047619047,
+          "At1": 1745,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 72,
+      "OverallMean": 5.207105719237435,
+      "At1": 1777,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 29.80851063829787,
+          "WeakestTeamMean": 19.58823529411765,
+          "StrongestTeamMean": 35.25,
+          "At1": 7,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 128,
+          "Mean": 25.0078125,
+          "WeakestTeamMean": 18.941176470588236,
+          "StrongestTeamMean": 28.375,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 132,
+          "Mean": 15.378787878787879,
+          "WeakestTeamMean": 9.588235294117647,
+          "StrongestTeamMean": 21.45,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 143,
+          "Mean": 5.545454545454546,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.842105263157896,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1764,
+          "Mean": 1.0153061224489797,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.7619047619047619,
+          "At1": 1742,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 73,
+      "OverallMean": 5.243067590987868,
+      "At1": 1805,
+      "At50": 8,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 30.916083916083917,
+          "WeakestTeamMean": 27.789473684210527,
+          "StrongestTeamMean": 36.11764705882353,
+          "At1": 10,
+          "At50": 8
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 23.795620437956206,
+          "WeakestTeamMean": 19.65,
+          "StrongestTeamMean": 29.157894736842106,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 128,
+          "Mean": 15.4375,
+          "WeakestTeamMean": 7.625,
+          "StrongestTeamMean": 21.6,
+          "At1": 10,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 130,
+          "Mean": 4.930769230769231,
+          "WeakestTeamMean": 1.0555555555555556,
+          "StrongestTeamMean": 9.153846153846153,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1770,
+          "Mean": 1.0186440677966102,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.1052631578947367,
+          "At1": 1747,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 74,
+      "OverallMean": 5.27209705372617,
+      "At1": 1796,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 152,
+          "Mean": 30.638157894736842,
+          "WeakestTeamMean": 28.5,
+          "StrongestTeamMean": 33.333333333333336,
+          "At1": 8,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 23.708955223880597,
+          "WeakestTeamMean": 18.647058823529413,
+          "StrongestTeamMean": 31.625,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 132,
+          "Mean": 14.727272727272727,
+          "WeakestTeamMean": 8.5,
+          "StrongestTeamMean": 20.2,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 125,
+          "Mean": 4.824,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.666666666666666,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0124645892351274,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.6842105263157894,
+          "At1": 1749,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 75,
+      "OverallMean": 5.273830155979203,
+      "At1": 1803,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 154,
+          "Mean": 29.974025974025974,
+          "WeakestTeamMean": 25.047619047619047,
+          "StrongestTeamMean": 37.0625,
+          "At1": 11,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 127,
+          "Mean": 24.41732283464567,
+          "WeakestTeamMean": 17.526315789473685,
+          "StrongestTeamMean": 28.466666666666665,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 134,
+          "Mean": 14.694029850746269,
+          "WeakestTeamMean": 8.947368421052632,
+          "StrongestTeamMean": 19.625,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.371212121212121,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.461538461538462,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1761,
+          "Mean": 1.0090857467348098,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.4210526315789473,
+          "At1": 1747,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 76,
+      "OverallMean": 5.295060658578856,
+      "At1": 1803,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 30.748251748251747,
+          "WeakestTeamMean": 23.857142857142858,
+          "StrongestTeamMean": 38.375,
+          "At1": 12,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 24.18978102189781,
+          "WeakestTeamMean": 20.125,
+          "StrongestTeamMean": 27.4,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 131,
+          "Mean": 15.396946564885496,
+          "WeakestTeamMean": 7.666666666666667,
+          "StrongestTeamMean": 18.95,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 136,
+          "Mean": 5.25,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.833333333333334,
+          "At1": 41,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1761,
+          "Mean": 1.010221465076661,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.3181818181818181,
+          "At1": 1744,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 77,
+      "OverallMean": 5.3323223570190645,
+      "At1": 1786,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 31.0472972972973,
+          "WeakestTeamMean": 25.952380952380953,
+          "StrongestTeamMean": 35.06666666666667,
+          "At1": 4,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 143,
+          "Mean": 22.958041958041957,
+          "WeakestTeamMean": 17.470588235294116,
+          "StrongestTeamMean": 28.823529411764707,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 122,
+          "Mean": 15.442622950819672,
+          "WeakestTeamMean": 9.266666666666667,
+          "StrongestTeamMean": 20.285714285714285,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 128,
+          "Mean": 5.953125,
+          "WeakestTeamMean": 1.5,
+          "StrongestTeamMean": 12.071428571428571,
+          "At1": 23,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1767,
+          "Mean": 1.0090548953027731,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.5263157894736843,
+          "At1": 1755,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 78,
+      "OverallMean": 5.324090121317158,
+      "At1": 1774,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 152,
+          "Mean": 29.94078947368421,
+          "WeakestTeamMean": 26.68421052631579,
+          "StrongestTeamMean": 33.68421052631579,
+          "At1": 1,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 135,
+          "Mean": 24.044444444444444,
+          "WeakestTeamMean": 16.5625,
+          "StrongestTeamMean": 30.2,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 124,
+          "Mean": 15.919354838709678,
+          "WeakestTeamMean": 10.466666666666667,
+          "StrongestTeamMean": 19.833333333333332,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.474074074074074,
+          "WeakestTeamMean": 1.7894736842105263,
+          "StrongestTeamMean": 11.357142857142858,
+          "At1": 20,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0090805902383655,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.3157894736842106,
+          "At1": 1748,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 79,
+      "OverallMean": 5.214038128249567,
+      "At1": 1784,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 30.867132867132867,
+          "WeakestTeamMean": 25.714285714285715,
+          "StrongestTeamMean": 36.73684210526316,
+          "At1": 6,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 135,
+          "Mean": 22.85925925925926,
+          "WeakestTeamMean": 18.846153846153847,
+          "StrongestTeamMean": 26.19047619047619,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 129,
+          "Mean": 15.224806201550388,
+          "WeakestTeamMean": 11.666666666666666,
+          "StrongestTeamMean": 18.76923076923077,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 5.58273381294964,
+          "WeakestTeamMean": 1.15,
+          "StrongestTeamMean": 12.470588235294118,
+          "At1": 32,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.018161180476731,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.736842105263158,
+          "At1": 1739,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 80,
+      "OverallMean": 5.090121317157712,
+      "At1": 1792,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 130,
+          "Mean": 30.130769230769232,
+          "WeakestTeamMean": 22.23076923076923,
+          "StrongestTeamMean": 35.22222222222222,
+          "At1": 7,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 142,
+          "Mean": 22.528169014084508,
+          "WeakestTeamMean": 18,
+          "StrongestTeamMean": 27.058823529411764,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.877697841726619,
+          "WeakestTeamMean": 11.25,
+          "StrongestTeamMean": 20.11764705882353,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 131,
+          "Mean": 5.893129770992366,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 13.538461538461538,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1766,
+          "Mean": 1.014722536806342,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.5263157894736843,
+          "At1": 1747,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 81,
+      "OverallMean": 5.012131715771231,
+      "At1": 1805,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 137,
+          "Mean": 29.525547445255473,
+          "WeakestTeamMean": 25.90909090909091,
+          "StrongestTeamMean": 32.875,
+          "At1": 6,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 22.171641791044777,
+          "WeakestTeamMean": 18.42105263157895,
+          "StrongestTeamMean": 26.25,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 133,
+          "Mean": 15.436090225563909,
+          "WeakestTeamMean": 10.285714285714286,
+          "StrongestTeamMean": 22.72222222222222,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 139,
+          "Mean": 5.151079136690647,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.133333333333333,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0101983002832862,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.3157894736842106,
+          "At1": 1752,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 82,
+      "OverallMean": 5.060225303292894,
+      "At1": 1800,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 147,
+          "Mean": 29.217687074829932,
+          "WeakestTeamMean": 25.125,
+          "StrongestTeamMean": 32.625,
+          "At1": 1,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 121,
+          "Mean": 24.669421487603305,
+          "WeakestTeamMean": 20.333333333333332,
+          "StrongestTeamMean": 30.666666666666668,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 130,
+          "Mean": 13.384615384615385,
+          "WeakestTeamMean": 9.933333333333334,
+          "StrongestTeamMean": 19.8,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 142,
+          "Mean": 6.176056338028169,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 13.4375,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.007918552036199,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.263157894736842,
+          "At1": 1756,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 83,
+      "OverallMean": 5.091854419410745,
+      "At1": 1800,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 29.617021276595743,
+          "WeakestTeamMean": 24.954545454545453,
+          "StrongestTeamMean": 34.416666666666664,
+          "At1": 7,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 137,
+          "Mean": 23.1021897810219,
+          "WeakestTeamMean": 14.473684210526315,
+          "StrongestTeamMean": 30.307692307692307,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 126,
+          "Mean": 14.96031746031746,
+          "WeakestTeamMean": 11.142857142857142,
+          "StrongestTeamMean": 21.076923076923077,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.235714285714286,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.4375,
+          "At1": 35,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1764,
+          "Mean": 1.0164399092970522,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.3333333333333335,
+          "At1": 1750,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 84,
+      "OverallMean": 5.071923743500866,
+      "At1": 1800,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 140,
+          "Mean": 29.55,
+          "WeakestTeamMean": 25.05,
+          "StrongestTeamMean": 35,
+          "At1": 6,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 127,
+          "Mean": 24.448818897637796,
+          "WeakestTeamMean": 20.1875,
+          "StrongestTeamMean": 29.352941176470587,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 138,
+          "Mean": 14.079710144927537,
+          "WeakestTeamMean": 11.272727272727273,
+          "StrongestTeamMean": 19.25,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 135,
+          "Mean": 5.392592592592592,
+          "WeakestTeamMean": 1.0588235294117647,
+          "StrongestTeamMean": 9.736842105263158,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.0141402714932126,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2222222222222223,
+          "At1": 1757,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 85,
+      "OverallMean": 5.110485268630849,
+      "At1": 1801,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 29.86986301369863,
+          "WeakestTeamMean": 24.523809523809526,
+          "StrongestTeamMean": 38.75,
+          "At1": 6,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 127,
+          "Mean": 23.015748031496063,
+          "WeakestTeamMean": 16.36842105263158,
+          "StrongestTeamMean": 29.285714285714285,
+          "At1": 8,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 135,
+          "Mean": 14.681481481481482,
+          "WeakestTeamMean": 9.666666666666666,
+          "StrongestTeamMean": 20.833333333333332,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.314285714285714,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 13.5,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1760,
+          "Mean": 1.0142045454545454,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2222222222222223,
+          "At1": 1749,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 86,
+      "OverallMean": 5.131282495667245,
+      "At1": 1795,
+      "At50": 3,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 29.76027397260274,
+          "WeakestTeamMean": 25.533333333333335,
+          "StrongestTeamMean": 41.13333333333333,
+          "At1": 9,
+          "At50": 3
+        },
+        {
+          "Division": 2,
+          "Count": 128,
+          "Mean": 23.203125,
+          "WeakestTeamMean": 17.375,
+          "StrongestTeamMean": 29.785714285714285,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.956834532374101,
+          "WeakestTeamMean": 10,
+          "StrongestTeamMean": 19.066666666666666,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 128,
+          "Mean": 5.125,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.6875,
+          "At1": 27,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1767,
+          "Mean": 1.0147142048670061,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.0555555555555554,
+          "At1": 1754,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 87,
+      "OverallMean": 5.091421143847487,
+      "At1": 1795,
+      "At50": 2,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 28.425675675675677,
+          "WeakestTeamMean": 24,
+          "StrongestTeamMean": 39.53333333333333,
+          "At1": 6,
+          "At50": 2
+        },
+        {
+          "Division": 2,
+          "Count": 129,
+          "Mean": 23.410852713178294,
+          "WeakestTeamMean": 18.17391304347826,
+          "StrongestTeamMean": 29.866666666666667,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 130,
+          "Mean": 15.038461538461538,
+          "WeakestTeamMean": 12.095238095238095,
+          "StrongestTeamMean": 20.416666666666668,
+          "At1": 0,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 134,
+          "Mean": 5.91044776119403,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 11.411764705882353,
+          "At1": 28,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1767,
+          "Mean": 1.0056593095642332,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.5,
+          "At1": 1759,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 88,
+      "OverallMean": 5.059358752166378,
+      "At1": 1804,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 28.73049645390071,
+          "WeakestTeamMean": 21.153846153846153,
+          "StrongestTeamMean": 41.714285714285715,
+          "At1": 6,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 23.14179104477612,
+          "WeakestTeamMean": 18.8,
+          "StrongestTeamMean": 27.058823529411764,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 134,
+          "Mean": 15.171641791044776,
+          "WeakestTeamMean": 10.125,
+          "StrongestTeamMean": 18.789473684210527,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 130,
+          "Mean": 5.446153846153846,
+          "WeakestTeamMean": 1.0588235294117647,
+          "StrongestTeamMean": 9.411764705882353,
+          "At1": 32,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1769,
+          "Mean": 1.00847936687394,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.5789473684210527,
+          "At1": 1758,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 89,
+      "OverallMean": 5.09055459272097,
+      "At1": 1810,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 144,
+          "Mean": 30.15972222222222,
+          "WeakestTeamMean": 26.19047619047619,
+          "StrongestTeamMean": 42.25,
+          "At1": 11,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 138,
+          "Mean": 22.028985507246375,
+          "WeakestTeamMean": 18.952380952380953,
+          "StrongestTeamMean": 31.071428571428573,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 125,
+          "Mean": 14.984,
+          "WeakestTeamMean": 9.266666666666667,
+          "StrongestTeamMean": 20.470588235294116,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 133,
+          "Mean": 5.338345864661654,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.4,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.0084841628959276,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.4210526315789473,
+          "At1": 1757,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 90,
+      "OverallMean": 5.074956672443674,
+      "At1": 1805,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 29.781690140845072,
+          "WeakestTeamMean": 23.88235294117647,
+          "StrongestTeamMean": 39.61538461538461,
+          "At1": 4,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 134,
+          "Mean": 22.52238805970149,
+          "WeakestTeamMean": 19.333333333333332,
+          "StrongestTeamMean": 26.25,
+          "At1": 11,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 127,
+          "Mean": 15.299212598425196,
+          "WeakestTeamMean": 11.133333333333333,
+          "StrongestTeamMean": 22.8125,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.292857142857143,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 9.785714285714286,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0096317280453257,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.3157894736842106,
+          "At1": 1752,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 91,
+      "OverallMean": 5.064124783362218,
+      "At1": 1807,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 136,
+          "Mean": 30.389705882352942,
+          "WeakestTeamMean": 27,
+          "StrongestTeamMean": 37.083333333333336,
+          "At1": 7,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 130,
+          "Mean": 22.076923076923077,
+          "WeakestTeamMean": 18.3,
+          "StrongestTeamMean": 25.4375,
+          "At1": 9,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 133,
+          "Mean": 15.368421052631579,
+          "WeakestTeamMean": 10.866666666666667,
+          "StrongestTeamMean": 18,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 141,
+          "Mean": 6.049645390070922,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.722222222222221,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.01131221719457,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.3157894736842106,
+          "At1": 1751,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 92,
+      "OverallMean": 5.08102253032929,
+      "At1": 1805,
+      "At50": 4,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 142,
+          "Mean": 29.443661971830984,
+          "WeakestTeamMean": 26.1875,
+          "StrongestTeamMean": 34.416666666666664,
+          "At1": 5,
+          "At50": 4
+        },
+        {
+          "Division": 2,
+          "Count": 129,
+          "Mean": 23.007751937984494,
+          "WeakestTeamMean": 19.5,
+          "StrongestTeamMean": 28.3125,
+          "At1": 9,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 139,
+          "Mean": 14.906474820143885,
+          "WeakestTeamMean": 9.083333333333334,
+          "StrongestTeamMean": 21.045454545454547,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.46969696969697,
+          "WeakestTeamMean": 1.0526315789473684,
+          "StrongestTeamMean": 10.461538461538462,
+          "At1": 34,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1766,
+          "Mean": 1.0101925254813138,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.4210526315789473,
+          "At1": 1751,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 93,
+      "OverallMean": 5.18630849220104,
+      "At1": 1797,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 149,
+          "Mean": 29.906040268456376,
+          "WeakestTeamMean": 25.105263157894736,
+          "StrongestTeamMean": 32.65,
+          "At1": 9,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 131,
+          "Mean": 23.87786259541985,
+          "WeakestTeamMean": 17.0625,
+          "StrongestTeamMean": 32.57142857142857,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 129,
+          "Mean": 14.472868217054264,
+          "WeakestTeamMean": 10.68421052631579,
+          "StrongestTeamMean": 19.066666666666666,
+          "At1": 1,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 131,
+          "Mean": 5.595419847328245,
+          "WeakestTeamMean": 1.411764705882353,
+          "StrongestTeamMean": 10.25,
+          "At1": 31,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1768,
+          "Mean": 1.010180995475113,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.4,
+          "At1": 1751,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 94,
+      "OverallMean": 5.136048526863085,
+      "At1": 1800,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 148,
+          "Mean": 30.72972972972973,
+          "WeakestTeamMean": 26.8,
+          "StrongestTeamMean": 35.0625,
+          "At1": 4,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 136,
+          "Mean": 22.970588235294116,
+          "WeakestTeamMean": 20.6,
+          "StrongestTeamMean": 26.785714285714285,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 124,
+          "Mean": 13.661290322580646,
+          "WeakestTeamMean": 9.461538461538462,
+          "StrongestTeamMean": 15.722222222222221,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 133,
+          "Mean": 5.142857142857143,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 8.588235294117647,
+          "At1": 38,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1767,
+          "Mean": 1.0209394453876628,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.2222222222222223,
+          "At1": 1746,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 95,
+      "OverallMean": 5.065424610051993,
+      "At1": 1796,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 138,
+          "Mean": 29.55072463768116,
+          "WeakestTeamMean": 23.0625,
+          "StrongestTeamMean": 33.125,
+          "At1": 5,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 139,
+          "Mean": 22.719424460431654,
+          "WeakestTeamMean": 16.9,
+          "StrongestTeamMean": 29.8,
+          "At1": 6,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 129,
+          "Mean": 14.286821705426357,
+          "WeakestTeamMean": 7.375,
+          "StrongestTeamMean": 19.944444444444443,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 140,
+          "Mean": 5.857142857142857,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 12.666666666666666,
+          "At1": 37,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0170261066969353,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.111111111111111,
+          "At1": 1746,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 96,
+      "OverallMean": 5.137781629116118,
+      "At1": 1797,
+      "At50": 6,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 143,
+          "Mean": 30.405594405594407,
+          "WeakestTeamMean": 27.857142857142858,
+          "StrongestTeamMean": 34.93333333333333,
+          "At1": 10,
+          "At50": 6
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 23.46808510638298,
+          "WeakestTeamMean": 20.31578947368421,
+          "StrongestTeamMean": 29.333333333333332,
+          "At1": 2,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 130,
+          "Mean": 13.261538461538462,
+          "WeakestTeamMean": 8.0625,
+          "StrongestTeamMean": 16.77777777777778,
+          "At1": 10,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.166666666666667,
+          "WeakestTeamMean": 1.0476190476190477,
+          "StrongestTeamMean": 9.4375,
+          "At1": 33,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0187287173666288,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.0555555555555554,
+          "At1": 1742,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 97,
+      "OverallMean": 5.195407279029463,
+      "At1": 1799,
+      "At50": 5,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 146,
+          "Mean": 29.876712328767123,
+          "WeakestTeamMean": 25.8125,
+          "StrongestTeamMean": 36,
+          "At1": 9,
+          "At50": 5
+        },
+        {
+          "Division": 2,
+          "Count": 141,
+          "Mean": 23.872340425531913,
+          "WeakestTeamMean": 16.88888888888889,
+          "StrongestTeamMean": 29.733333333333334,
+          "At1": 3,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 127,
+          "Mean": 14.614173228346457,
+          "WeakestTeamMean": 8.666666666666666,
+          "StrongestTeamMean": 19.38888888888889,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 4.613636363636363,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 8.25,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1762,
+          "Mean": 1.0204313280363224,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.9444444444444444,
+          "At1": 1747,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 98,
+      "OverallMean": 5.217504332755633,
+      "At1": 1796,
+      "At50": 11,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 153,
+          "Mean": 30.03267973856209,
+          "WeakestTeamMean": 22.105263157894736,
+          "StrongestTeamMean": 37.35294117647059,
+          "At1": 6,
+          "At50": 11
+        },
+        {
+          "Division": 2,
+          "Count": 138,
+          "Mean": 22.934782608695652,
+          "WeakestTeamMean": 17.27777777777778,
+          "StrongestTeamMean": 29.666666666666668,
+          "At1": 11,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 127,
+          "Mean": 14.78740157480315,
+          "WeakestTeamMean": 6.461538461538462,
+          "StrongestTeamMean": 23.285714285714285,
+          "At1": 12,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 125,
+          "Mean": 4.88,
+          "WeakestTeamMean": 1.4705882352941178,
+          "StrongestTeamMean": 7.916666666666667,
+          "At1": 20,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0164305949008499,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.8888888888888888,
+          "At1": 1747,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 99,
+      "OverallMean": 5.234835355285962,
+      "At1": 1789,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 141,
+          "Mean": 32.43971631205674,
+          "WeakestTeamMean": 28.318181818181817,
+          "StrongestTeamMean": 36.705882352941174,
+          "At1": 6,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 145,
+          "Mean": 21.586206896551722,
+          "WeakestTeamMean": 18.470588235294116,
+          "StrongestTeamMean": 26.333333333333332,
+          "At1": 4,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 129,
+          "Mean": 14.689922480620154,
+          "WeakestTeamMean": 9.882352941176471,
+          "StrongestTeamMean": 19.22222222222222,
+          "At1": 7,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 132,
+          "Mean": 5.053030303030303,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 12.133333333333333,
+          "At1": 36,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1761,
+          "Mean": 1.0312322544009085,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 2.4,
+          "At1": 1736,
+          "At50": 0
+        }
+      ]
+    },
+    {
+      "Season": 100,
+      "OverallMean": 5.234402079722703,
+      "At1": 1790,
+      "At50": 7,
+      "Divisions": [
+        {
+          "Division": 1,
+          "Count": 152,
+          "Mean": 30.05921052631579,
+          "WeakestTeamMean": 22.055555555555557,
+          "StrongestTeamMean": 37.411764705882355,
+          "At1": 2,
+          "At50": 7
+        },
+        {
+          "Division": 2,
+          "Count": 138,
+          "Mean": 23.471014492753625,
+          "WeakestTeamMean": 20.05263157894737,
+          "StrongestTeamMean": 29.785714285714285,
+          "At1": 5,
+          "At50": 0
+        },
+        {
+          "Division": 3,
+          "Count": 124,
+          "Mean": 14.491935483870968,
+          "WeakestTeamMean": 5.416666666666667,
+          "StrongestTeamMean": 21.46153846153846,
+          "At1": 11,
+          "At50": 0
+        },
+        {
+          "Division": 4,
+          "Count": 129,
+          "Mean": 5.178294573643411,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 10.357142857142858,
+          "At1": 30,
+          "At50": 0
+        },
+        {
+          "Division": 5,
+          "Count": 1765,
+          "Mean": 1.0243626062322946,
+          "WeakestTeamMean": 1,
+          "StrongestTeamMean": 1.95,
+          "At1": 1742,
+          "At50": 0
+        }
+      ]
+    }
+  ],
+  "Rounds": [
+    {
+      "Competition": "League",
+      "Rounds": 1400,
+      "Appearances": 593292,
+      "Starters": 491751,
+      "BenchEntries": 101541,
+      "StarterLosses": 234085,
+      "BenchLosses": 46084,
+      "ReserveGains": 112193,
+      "InjuryPoints": 10287
+    },
+    {
+      "Competition": "CupPreliminary1",
+      "Rounds": 100,
+      "Appearances": 87527,
+      "Starters": 70396,
+      "BenchEntries": 17131,
+      "StarterLosses": 6725,
+      "BenchLosses": 1139,
+      "ReserveGains": 42009,
+      "InjuryPoints": 0
+    },
+    {
+      "Competition": "CupPreliminary2",
+      "Rounds": 100,
+      "Appearances": 87209,
+      "Starters": 70394,
+      "BenchEntries": 16815,
+      "StarterLosses": 6784,
+      "BenchLosses": 1214,
+      "ReserveGains": 39786,
+      "InjuryPoints": 41
+    },
+    {
+      "Competition": "CupRoundOf64",
+      "Rounds": 100,
+      "Appearances": 86791,
+      "Starters": 70343,
+      "BenchEntries": 16448,
+      "StarterLosses": 20776,
+      "BenchLosses": 4289,
+      "ReserveGains": 7543,
+      "InjuryPoints": 735
+    },
+    {
+      "Competition": "CupRoundOf32",
+      "Rounds": 100,
+      "Appearances": 43023,
+      "Starters": 35133,
+      "BenchEntries": 7890,
+      "StarterLosses": 13298,
+      "BenchLosses": 2754,
+      "ReserveGains": 14832,
+      "InjuryPoints": 1065
+    },
+    {
+      "Competition": "CupRoundOf16",
+      "Rounds": 100,
+      "Appearances": 21413,
+      "Starters": 17558,
+      "BenchEntries": 3855,
+      "StarterLosses": 7737,
+      "BenchLosses": 1603,
+      "ReserveGains": 23573,
+      "InjuryPoints": 780
+    },
+    {
+      "Competition": "CupQuarterFinal",
+      "Rounds": 100,
+      "Appearances": 10682,
+      "Starters": 8773,
+      "BenchEntries": 1909,
+      "StarterLosses": 4135,
+      "BenchLosses": 843,
+      "ReserveGains": 30615,
+      "InjuryPoints": 924
+    },
+    {
+      "Competition": "CupSemiFinal",
+      "Rounds": 100,
+      "Appearances": 5350,
+      "Starters": 4395,
+      "BenchEntries": 955,
+      "StarterLosses": 2060,
+      "BenchLosses": 427,
+      "ReserveGains": 34831,
+      "InjuryPoints": 691
+    },
+    {
+      "Competition": "CupFinal",
+      "Rounds": 100,
+      "Appearances": 2687,
+      "Starters": 2199,
+      "BenchEntries": 488,
+      "StarterLosses": 1071,
+      "BenchLosses": 227,
+      "ReserveGains": 36917,
+      "InjuryPoints": 939
+    }
+  ],
+  "ClubChanges": [
+    {
+      "From": 1,
+      "To": 1,
+      "Count": 604,
+      "MeanStrengthAtObservation": 32.95364238410596,
+      "At40": 82
+    },
+    {
+      "From": 1,
+      "To": 2,
+      "Count": 433,
+      "MeanStrengthAtObservation": 27.318706697459586,
+      "At40": 46
+    },
+    {
+      "From": 1,
+      "To": 3,
+      "Count": 218,
+      "MeanStrengthAtObservation": 24.990825688073393,
+      "At40": 28
+    },
+    {
+      "From": 1,
+      "To": 4,
+      "Count": 87,
+      "MeanStrengthAtObservation": 27.816091954022987,
+      "At40": 15
+    },
+    {
+      "From": 2,
+      "To": 1,
+      "Count": 444,
+      "MeanStrengthAtObservation": 28.88738738738739,
+      "At40": 5
+    },
+    {
+      "From": 2,
+      "To": 2,
+      "Count": 564,
+      "MeanStrengthAtObservation": 25.070921985815602,
+      "At40": 2
+    },
+    {
+      "From": 2,
+      "To": 3,
+      "Count": 555,
+      "MeanStrengthAtObservation": 22.127927927927928,
+      "At40": 7
+    },
+    {
+      "From": 2,
+      "To": 4,
+      "Count": 193,
+      "MeanStrengthAtObservation": 24.310880829015545,
+      "At40": 2
+    },
+    {
+      "From": 3,
+      "To": 1,
+      "Count": 173,
+      "MeanStrengthAtObservation": 20.485549132947977,
+      "At40": 0
+    },
+    {
+      "From": 3,
+      "To": 2,
+      "Count": 692,
+      "MeanStrengthAtObservation": 20.004335260115607,
+      "At40": 0
+    },
+    {
+      "From": 3,
+      "To": 3,
+      "Count": 1263,
+      "MeanStrengthAtObservation": 15.591448931116389,
+      "At40": 0
+    },
+    {
+      "From": 3,
+      "To": 4,
+      "Count": 916,
+      "MeanStrengthAtObservation": 13.407205240174672,
+      "At40": 0
+    },
+    {
+      "From": 4,
+      "To": 1,
+      "Count": 38,
+      "MeanStrengthAtObservation": 16.789473684210527,
+      "At40": 0
+    },
+    {
+      "From": 4,
+      "To": 2,
+      "Count": 98,
+      "MeanStrengthAtObservation": 15.928571428571429,
+      "At40": 0
+    },
+    {
+      "From": 4,
+      "To": 3,
+      "Count": 1128,
+      "MeanStrengthAtObservation": 11.593971631205674,
+      "At40": 0
+    },
+    {
+      "From": 4,
+      "To": 4,
+      "Count": 903,
+      "MeanStrengthAtObservation": 10.93576965669989,
+      "At40": 0
+    },
+    {
+      "From": 5,
+      "To": 3,
+      "Count": 27,
+      "MeanStrengthAtObservation": 14.37037037037037,
+      "At40": 0
+    },
+    {
+      "From": 5,
+      "To": 4,
+      "Count": 22,
+      "MeanStrengthAtObservation": 9.727272727272727,
+      "At40": 0
+    }
+  ]
+}

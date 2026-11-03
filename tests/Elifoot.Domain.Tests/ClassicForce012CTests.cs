@@ -1,24 +1,24 @@
 using System.Text.Json;
 using Elifoot.Contracts;
 using Elifoot.Domain;
+using Xunit.Abstractions;
 
 namespace Elifoot.Domain.Tests;
 
-public class ClassicForce012CTests
+public class ClassicForce012CTests(ITestOutputHelper output)
 {
     public static IEnumerable<object[]> CeilingRows => new[]
     {
-        new object[] { DivisionTier.PrimeiraDivisao, new[] {50,50,50,49,48,47,46,44} },
-        new object[] { DivisionTier.SegundaDivisao, new[] {44,42,42,39,37,34,31,28} },
-        new object[] { DivisionTier.TerceiraDivisao, new[] {28,26,26,23,21,18,15,12} },
-        new object[] { DivisionTier.QuartaDivisao, new[] {12,10,10,8,6,4,2,1} }
+        new object[] { DivisionTier.PrimeiraDivisao, new[] {50,50,50,46,44,42,40,39} },
+        new object[] { DivisionTier.SegundaDivisao, new[] {38,37,36,34,32,30,28,27} },
+        new object[] { DivisionTier.TerceiraDivisao, new[] {25,24,23,21,19,17,15,14} },
+        new object[] { DivisionTier.QuartaDivisao, new[] {12,11,10,8,6,4,2,1} }
     };
 
     [Theory, MemberData(nameof(CeilingRows))]
     public void ApprovedCeilingsForAllEightPlaces(DivisionTier tier, int[] expected)
     {
         Assert.Equal(expected, Enumerable.Range(1, 8).Select(rank => ClassicForceEvolutionEngine.GrowthCeiling(tier, rank)));
-        Assert.Equal(expected[1], expected[2]);
     }
 
     [Fact]
@@ -37,14 +37,18 @@ public class ClassicForce012CTests
     }
 
     [Fact]
-    public void ReserveChanceDecreasesNearCeilingAndIsNeverAutomatic()
+    public void FourthDivisionFifthPlaceGrowsExactlyOnceWithUnusedAndSuspendedPlayers()
     {
-        var chances = Enumerable.Range(1,49).Select(s => ClassicForceEvolutionEngine.ReserveProbability(s,50)).ToArray();
-        Assert.Equal(0.85, chances[0], 10);
-        Assert.Equal(0.15, chances[^1], 10);
-        Assert.All(chances, p => Assert.InRange(p, 0.15, 0.85));
-        Assert.True(chances.Zip(chances.Skip(1)).All(p => p.First >= p.Second));
-        Assert.Equal(0, ClassicForceEvolutionEngine.ReserveProbability(50,50));
+        var (w,p,club)=World(5,DivisionTier.QuartaDivisao,5);
+        var suspended=new Player { Id=Guid.NewGuid(),ClubId=club.Id,Strength=1,SuspensionMatchesRemaining=1 };
+        var atLimit=new Player { Id=Guid.NewGuid(),ClubId=club.Id,Strength=6 };
+        var strong=new Player { Id=Guid.NewGuid(),ClubId=club.Id,Strength=25 };
+        w.Players.AddRange([suspended,atLimit,strong]);
+        var round=PolicyFixture(w,p,club,false,CompetitionType.League);
+        ClassicForceEvolutionEngine.ApplyFinishedRound(w,[round]);
+        ClassicForceEvolutionEngine.ApplyFinishedRound(w,[round]);
+        Assert.Equal(new[] { 6,2,6,25 },w.Players.Select(x=>x.Strength));
+        Assert.Equal(1,suspended.SuspensionMatchesRemaining);
     }
 
     [Theory]
@@ -104,7 +108,11 @@ public class ClassicForce012CTests
 
     [Theory]
     [InlineData(DivisionTier.QuartaDivisao,1,1,12)]
-    [InlineData(DivisionTier.TerceiraDivisao,8,5,12)]
+    [InlineData(DivisionTier.TerceiraDivisao,8,5,14)]
+    [InlineData(DivisionTier.TerceiraDivisao,1,24,25)]
+    [InlineData(DivisionTier.SegundaDivisao,1,37,38)]
+    [InlineData(DivisionTier.PrimeiraDivisao,1,49,50)]
+    [InlineData(DivisionTier.PrimeiraDivisao,2,49,50)]
     [InlineData(DivisionTier.PrimeiraDivisao,3,40,50)]
     public void NonParticipantCanReachApprovedCeiling(DivisionTier tier,int rank,int initial,int ceiling)
     {
@@ -137,15 +145,22 @@ public class ClassicForce012CTests
     [InlineData(CompetitionType.CupRoundOf64)] [InlineData(CompetitionType.CupRoundOf32)]
     [InlineData(CompetitionType.CupRoundOf16)] [InlineData(CompetitionType.CupQuarterFinal)]
     [InlineData(CompetitionType.CupSemiFinal)] [InlineData(CompetitionType.CupFinal)]
-    public void EveryCupStageForbidsReserveGrowth(CompetitionType competition)
+    public void EveryCupStageUsesLastValidLeagueRankIncludingClubsWithNoFixture(CompetitionType competition)
     {
         var (w,p,club)=World(1,DivisionTier.PrimeiraDivisao,1);
+        var byeClub=w.Clubs[2];
+        w.ClassicForce.CompletedLeaguePositions[byeClub.Id]=8;
+        foreach(var team in w.Clubs)team.LeaguePlayed=1;
+        byeClub.LeagueWins=99; // An unofficial change must not replace the cached Cup reference.
+        var idle=new Player { Id=Guid.NewGuid(),ClubId=byeClub.Id,Strength=38 };
+        w.Players.Add(idle);
         var m=PolicyFixture(w,p,club,false,competition);
         m.CurrentMinute=120;
         m.HomePenaltyGoals=5;m.AwayPenaltyGoals=4;
         ClassicForceEvolutionEngine.ApplyFinishedRound(w,[m]);
-        Assert.Equal(1,p.Strength);
-        Assert.Empty(w.PlayerStrengthHistory);
+        Assert.Equal(2,p.Strength);
+        Assert.Equal(39,idle.Strength);
+        Assert.All(w.PlayerStrengthHistory,e=>Assert.Equal("RESERVE_PROGRESS",e.ChangeReason));
     }
 
     [Theory]
@@ -161,7 +176,8 @@ public class ClassicForce012CTests
             Assert.InRange(p.Strength,29,30);
             if(p.Strength==29)losses++;
         }
-        Assert.InRange(losses,100,200);
+        Assert.InRange(losses,440,560);
+        output.WriteLine($"{competition}: {losses} perdas e {1000-losses} manutenções em 1000 sorteios elegíveis.");
         Assert.All(w.PlayerStrengthHistory,e=>Assert.Equal("PLAYED_MATCH_DECLINE",e.ChangeReason));
     }
 
@@ -177,8 +193,83 @@ public class ClassicForce012CTests
         Assert.Equal(45,ClassicForceEvolutionEngine.ParticipationMinutes(m)[p.Id]);
         m.Events[0].Minute=90;
         Assert.Equal(0,ClassicForceEvolutionEngine.ParticipationMinutes(m)[p.Id]);
+        ClassicForceEvolutionEngine.ApplyFinishedRound(w,[m]);
+        Assert.InRange(p.Strength,29,30);
         m.Events.Clear();
         Assert.False(ClassicForceEvolutionEngine.ParticipationMinutes(m).ContainsKey(p.Id));
+    }
+
+    [Fact]
+    public void AnAppearanceInTwoEventsTakesOneDecisionAndTransferUsesCurrentDivision()
+    {
+        var (w,p,club)=World(25,DivisionTier.PrimeiraDivisao,1);
+        var reserve=new Player { Id=Guid.NewGuid(),ClubId=club.Id,Strength=25 };
+        w.Players.Add(reserve);
+        var destination=w.Clubs[2];
+        destination.DivisionTier=DivisionTier.QuartaDivisao;
+        p.ClubId=reserve.ClubId=destination.Id;
+        for (int round=1;round<=32;round++)
+        {
+            w.RoundNumber=round;
+            p.Strength=25;
+            var first=PolicyFixture(w,p,club,true,CompetitionType.League);
+            var second=PolicyFixture(w,p,club,true,CompetitionType.League);
+            ClassicForceEvolutionEngine.ApplyFinishedRound(w,[first,second]);
+            Assert.InRange(p.Strength,24,25);
+        }
+        Assert.Equal(25,reserve.Strength);
+        Assert.NotEmpty(w.PlayerStrengthHistory);
+        Assert.All(w.PlayerStrengthHistory,e=>Assert.Equal(DivisionTier.QuartaDivisao,e.Division));
+        Assert.All(w.PlayerStrengthHistory.GroupBy(e=>e.Round), group=>Assert.Single(group));
+    }
+
+    [Fact]
+    public void LeagueUsesNewPositionAfterAllScoresAreApplied()
+    {
+        var world=WorldSeedFactory.CreateSeededWorld(forceEvolutionMode:ForceEvolutionMode.ClassicAdapted);
+        world.RoundNumber=3;
+        ClassicForceEvolutionEngine.PrepareRound(world);
+        var tier=DivisionTier.QuartaDivisao;
+        var clubs=world.Clubs.Where(c=>c.DivisionTier==tier).ToList();
+        for (int i=0;i<clubs.Count;i++) { clubs[i].LeaguePlayed=9; clubs[i].LeagueWins=9-i; }
+        var target=clubs[4];
+        var fourth=clubs[3];
+        world.ClassicForce.CompletedLeaguePositions[target.Id]=5;
+        var reserve=world.Players.First(p=>p.ClubId==target.Id && p.Position==PlayerPosition.G);
+        reserve.Strength=6;
+        var round=world.Fixtures.Where(m=>m.SeasonNumber==world.SeasonNumber && m.RoundNumber==3).ToList();
+        foreach(var match in round)
+        {
+            FinishFixture(world,match);
+            if(match.HomeClubId==target.Id || match.AwayClubId==fourth.Id)match.HomeGoals=20;
+            else if(match.AwayClubId==target.Id || match.HomeClubId==fourth.Id)match.AwayGoals=20;
+        }
+        Assert.DoesNotContain(round.SelectMany(m=>m.StatisticsInitialLineup),p=>p.IsStarter && p.PlayerId==reserve.Id);
+        CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(world,round);
+        Assert.Equal((4,8),ClassicForceEvolutionEngine.ClubContext(world,target));
+        Assert.Equal(7,reserve.Strength);
+    }
+
+    [Fact]
+    public void APreviouslySettledLegacyRoundIsSkippedAndItsNextCupRoundUsesPersistedStandings()
+    {
+        var (w,p,club)=World(5,DivisionTier.QuartaDivisao,5);
+        w.ForceEvolutionMode=ForceEvolutionMode.LegacySeasonal;
+        w.ClassicForce=new();
+        foreach(var c in w.Clubs)c.LeaguePlayed=1;
+        var old=PolicyFixture(w,p,club,false,CompetitionType.CupPreliminary1);
+        old.CareerResultsApplied=true;
+        w.Fixtures.Add(old);
+        CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(w,[old]);
+        Assert.Equal(5,p.Strength);
+        Assert.Empty(w.PlayerStrengthHistory);
+
+        w.RoundNumber++;
+        var next=PolicyFixture(w,p,club,false,CompetitionType.CupPreliminary2);
+        w.Fixtures.Add(next);
+        CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(w,[next]);
+        Assert.Equal(6,p.Strength);
+        Assert.Equal(5,w.ClassicForce.CompletedLeaguePositions[club.Id]);
     }
 
     [Fact]
@@ -268,7 +359,7 @@ public class ClassicForce012CTests
         var transitionInjury=Injury(w,promotedPlayer,2,1);
         CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance(w);
         Assert.All(w.PlayerStrengthHistory.Where(e=>e.InjuryId==transitionInjury.Id),e=>{
-            Assert.Equal(DivisionTier.PrimeiraDivisao,e.Division);Assert.Equal(4,e.LeaguePosition);Assert.Equal(49,e.GrowthCeiling);
+            Assert.Equal(DivisionTier.PrimeiraDivisao,e.Division);Assert.Equal(4,e.LeaguePosition);Assert.Equal(46,e.GrowthCeiling);
         });
         Assert.Equal(49,promotedPlayer.Strength);
         Assert.Equal(snapshot,JsonSerializer.Serialize(w.ClassicForce.TurnSnapshots));
