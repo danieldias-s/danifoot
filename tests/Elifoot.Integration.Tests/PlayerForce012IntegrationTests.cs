@@ -77,20 +77,23 @@ public class PlayerForce012IntegrationTests
     }
 
     [Fact]
-    public async Task ConcurrentSeasonAdvanceAndReconnectDoNotDuplicatePlayerProgress()
+    public async Task ConcurrentSeasonAdvanceAndReconnectLeaveSettledLegacyStrengthHistoryUntouched()
     {
         var w = WorldSeedFactory.CreateSeededWorld(seed: 199812);
         var p = w.Players[0];
         p.Strength = 1; p.SeasonGoals = 6;
+        PlayerStrengthEvolutionEngine.ApplySeasonEnd(w);
+        w.SeasonNumber = 2;
+        var historicalChange = Assert.Single(w.PlayerStrengthHistory, e => e.PlayerId == p.Id);
         w.RoundNumber = w.TotalRoundsInSeason;
         w.RoundState = RoundState.RESULTS;
         var repo = new InMemoryWorldRepository();
         await repo.SaveWorldAsync(w);
         var orchestrator = new MultiplayerRoundOrchestrator(repo, NullMatchRoomNotificationPublisher.Instance);
         await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => orchestrator.AdvanceToNextRoundPreparationAsync(w.Id)));
-        Assert.Equal(2, w.SeasonNumber);
+        Assert.Equal(3, w.SeasonNumber);
         Assert.Equal(2, p.Strength);
-        Assert.Single(w.PlayerStrengthHistory, e => e.PlayerId == p.Id);
+        Assert.Equal(historicalChange, Assert.Single(w.PlayerStrengthHistory, e => e.PlayerId == p.Id));
         var loaded = JsonSerializer.Deserialize<GameWorld>(JsonSerializer.Serialize(w))!;
         await repo.SaveWorldAsync(loaded);
         var queries = new PlayerRankingsApplicationService(repo);
@@ -99,7 +102,7 @@ public class PlayerForce012IntegrationTests
         Assert.All(replies, reply =>
         {
             Assert.Equal(2, reply!.Player.Strength);
-            Assert.Single(reply.StrengthHistory);
+            Assert.Equal(historicalChange, Assert.Single(reply.StrengthHistory));
         });
         Assert.Equal(1, loaded.EvolvedPlayerStrengthSeasons.Single());
     }
