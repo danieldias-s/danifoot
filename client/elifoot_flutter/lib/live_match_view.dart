@@ -114,6 +114,14 @@ class SelectedMatchScoreboard extends StatelessWidget {
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, c) {
       final t = ClassicTheme.of(context), small = c.maxWidth < 600;
+      final minute = match['minute'];
+      final clockWidth = small ? 72.0 : 94.0;
+      final numberStyle = TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: small ? 26 : 34,
+        fontWeight: FontWeight.w900,
+        height: 1,
+      );
       Widget club(String side) => Expanded(
         child: Tooltip(
           message: '${match['${side}ClubName'] ?? '—'}',
@@ -153,12 +161,7 @@ class SelectedMatchScoreboard extends StatelessWidget {
         child: FittedBox(
           child: Text(
             '${match['${side}Goals'] ?? '—'}',
-            style: TextStyle(
-              fontFamily: 'Roboto',
-              fontSize: small ? 26 : 34,
-              fontWeight: FontWeight.w900,
-              color: t.selectedText,
-            ),
+            style: numberStyle.copyWith(color: t.selectedText),
           ),
         ),
       );
@@ -172,14 +175,38 @@ class SelectedMatchScoreboard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text(
-              'RODADA $round • $competition',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                if (minute != null) SizedBox(width: clockWidth),
+                Expanded(
+                  child: Text(
+                    'RODADA $round • $competition',
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                if (minute != null)
+                  SizedBox(
+                    width: clockWidth,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "$minute′",
+                          semanticsLabel: 'Minuto $minute',
+                          style: numberStyle.copyWith(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
             const SizedBox(height: 7),
             Row(
@@ -208,9 +235,9 @@ class SelectedMatchScoreboard extends StatelessWidget {
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                if (match['minute'] != null)
-                  Text(
-                    "${match['minute']}'${match['isExtraTime'] == true ? ' • Prorrogação' : ''}",
+                if (match['isExtraTime'] == true)
+                  const Text(
+                    'Prorrogação',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
