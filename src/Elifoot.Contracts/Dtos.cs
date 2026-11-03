@@ -238,6 +238,10 @@ public record PlayerDto(
     public WorldPlayerProvenance? CatalogIdentity { get; init; }
     public decimal ReferenceSalaryPerRound { get; init; }
     public bool NegotiatedContractProtected { get; init; }
+    public bool ContractRenewedForSeason { get; init; }
+    public int? ContractThroughSeason { get; init; }
+    public decimal SeasonRenewalFee { get; init; }
+    public bool SeasonContractsEnabled { get; init; }
     public int InjuryDaysRemaining { get; init; }
     public int TotalYellowCards { get; init; }
     public int YellowCardsInCurrentCycle { get; init; }
@@ -276,6 +280,7 @@ public record ClubDetailDto(
     public int? GrowthLeaguePosition { get; init; }
     public bool GrowthPositionIsProvisional { get; init; }
     public int RequiredStarterCount { get; init; } = 11;
+    public bool AllowClassic505 { get; init; } = true;
 }
 
 public record StadiumDto(
@@ -483,7 +488,8 @@ public record PlayerExportDto(
     string? PhotoLicense,
     string? PhotoCredit,
     bool? NegotiatedContractProtected = null,
-    WorldPlayerProvenance? CatalogIdentity = null);
+    WorldPlayerProvenance? CatalogIdentity = null,
+    int? RenewedForSeason = null);
 
 public record AiManagerExportDto(
     Guid Id,

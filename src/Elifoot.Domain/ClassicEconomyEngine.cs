@@ -11,6 +11,28 @@ public static partial class ClassicEconomyEngine
     public static bool Safe(GameWorld w)=>w.RoundState is RoundState.PREPARING or RoundState.RESULTS;
     public static void EnsureMigrated(GameWorld w,bool isNewWorld=false)
     {
+        if(!w.Economy.SeasonalDebtRulesInitialized)
+        {
+            w.Economy.OverdraftInterestRounds.UnionWith(w.SettledFinancialRounds);
+            if (w.Economy.Rules.SeasonContractsEnabled)
+            {
+                var latestAgreements = w.Economy.ContractHistory
+                    .Where(entry => entry.Season == w.SeasonNumber)
+                    .GroupBy(entry => entry.PlayerId)
+                    .ToDictionary(group => group.Key, group => group.Last());
+                foreach (var player in w.Players.Where(player => player.ClubId.HasValue))
+                {
+                    if (latestAgreements.TryGetValue(player.Id, out var entry)
+                        && entry.ClubId == player.ClubId && player.ContractRoundsRemaining > 0
+                        && (entry.Reason == "PREVENTIVE_RENEWAL" || entry.Reason.EndsWith("_ACCEPTED", StringComparison.Ordinal)
+                            || entry.Reason == "MANDATORY_MINIMUM_SQUAD"))
+                    {
+                        ProtectSeasonContract(w, player);
+                    }
+                }
+            }
+            w.Economy.SeasonalDebtRulesInitialized=true;
+        }
         if(w.Economy.Version==Version)return;
         if(w.Economy.Version!=0)throw new InvalidOperationException("Unsupported economy version.");
         foreach(var p in w.Players)

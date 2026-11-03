@@ -29,7 +29,15 @@ public class ClassicEconomy012DIntegrationTests
         Assert.NotEmpty(a.PrivateAiMaxBids);Assert.NotNull(a.HighestBidderClubId);
         var results=await Task.WhenAll(humans.Skip(1).Select((h,i)=>service.PlaceAuctionBidAsync(w.Id,h.Id,a.Id,5000000+i*1000000,idempotencyKey:"human-bid-"+i)));
         Assert.Contains(results,r=>r.Success);Assert.Equal(7000000,a.CurrentBid);Assert.Equal(w.Clubs[3].Id,a.HighestBidderClubId);
-        await gate.WaitAsync();try{MarketAndEconomyEngine.SettleAuction(w,a);MarketAndEconomyEngine.SettleAuction(w,a);}finally{gate.Release();}
+        await gate.WaitAsync();
+        try
+        {
+            w.RoundState=RoundState.RESULTS;
+            w.SettledFinancialRounds.Add($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}");
+            MarketAndEconomyEngine.SettleAuction(w,a);
+            MarketAndEconomyEngine.SettleAuction(w,a);
+        }
+        finally{gate.Release();}
         Assert.Equal(w.Clubs[3].Id,p.ClubId);Assert.Equal(6900000,seller.CashBalance);
         Assert.Single(w.Economy.AuctionHistory,r=>r.AuctionId==a.Id&&r.Outcome=="SOLD");
         var tx=w.Transactions.Where(t=>t.PlayerId==p.Id&&t.TransactionType=="FinancialInsolvency").ToList();Assert.Equal(2,tx.Count);Assert.Equal(0,tx.Sum(t=>t.Amount));

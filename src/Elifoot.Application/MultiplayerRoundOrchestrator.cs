@@ -217,7 +217,7 @@ public sealed partial class MultiplayerRoundOrchestrator
         var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
         if (club.PreferredStarterIds.Count != 11)
         {
-            var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+            var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
             var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
             club.PreferredStarterIds = starters;
             club.PreferredBenchIds = bench;
@@ -347,7 +347,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             {
                 var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
-                var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+                var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
                 var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
                 coach.SubmittedFormation = spec.Code;
                 coach.SubmittedStarterIds = starters;
@@ -431,7 +431,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             {
                 var club = world.Clubs.First(c => c.Id == autoHuman.CurrentClubId.Value);
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
-                var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation, TacticalFormations.All["4-4-2"]);
+                var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
                 var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
                 autoHuman.SubmittedFormation = spec.Code;
                 autoHuman.SubmittedStarterIds = starters;
@@ -454,7 +454,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (valid.IsValid) continue;
             if (human.IsAutoMode)
             {
-                var spec = TacticalFormations.All.GetValueOrDefault(human.SubmittedFormation ?? "4-4-2", TacticalFormations.All["4-4-2"]);
+                var spec = TacticalFormations.Resolve(human.SubmittedFormation, world.AllowClassic505);
                 var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
                 human.SubmittedFormation = spec.Code; human.SubmittedStarterIds = starters; human.SubmittedBenchIds = bench;
                 if (SquadValidator.ValidatePreMatchLineup(spec.Code, starters, bench, squad, world.AllowClassic505).IsValid) continue;

@@ -80,7 +80,7 @@ public static class AiManagerBrain
 
         foreach (var code in candidateCodes)
         {
-            var spec = TacticalFormations.All[code];
+            var spec = TacticalFormations.Resolve(code, allowClassic505);
             var prefEntry = prefs.FirstOrDefault(p => string.Equals(p.Formation, code, StringComparison.OrdinalIgnoreCase));
             double preferencePrior = (prefEntry?.WeightPercent ?? 5) * 0.45; // 0..45 pts
 
@@ -177,7 +177,7 @@ public static class AiManagerBrain
         }
 
         // Build 11 starters and up to 9 bench players for bestFormation
-        var chosenSpec = TacticalFormations.All[bestFormation];
+        var chosenSpec = TacticalFormations.Resolve(bestFormation, allowClassic505);
         var (starters, bench) = BuildStartersAndBench(clubSquad, chosenSpec);
 
         // Identify squad gaps & surplus for the ManagerSquadPlan
@@ -419,7 +419,7 @@ public static class AiManagerBrain
                 projected.RemoveAll(p => p.Id == sub.PlayerOutId);
                 projected.Add(worldPlayers[sub.PlayerInId]);
             }
-            var currentSpec = TacticalFormations.All[currentFormation];
+            var currentSpec = TacticalFormations.Resolve(currentFormation, allowClassic505);
             int Shortage(FormationSpec spec, IEnumerable<Player> squad)
             {
                 var needs = SectorNeeds(spec, projected.Count);
@@ -427,7 +427,7 @@ public static class AiManagerBrain
             }
             var candidate = manager.PreferredFormations
                 .Where(p => TacticalFormations.TryGet(p.Formation, allowClassic505, out _) && p.Formation != currentFormation)
-                .Select(p => new { Preference = p, Spec = TacticalFormations.All[p.Formation] })
+                .Select(p => new { Preference = p, Spec = TacticalFormations.Resolve(p.Formation, allowClassic505) })
                 .Where(x => (chasing && (x.Spec.Attackers > currentSpec.Attackers
                         || x.Spec.Attackers == currentSpec.Attackers && x.Spec.Defenders < currentSpec.Defenders))
                     || (protecting && (x.Spec.Defenders > currentSpec.Defenders

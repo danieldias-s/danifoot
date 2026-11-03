@@ -113,6 +113,7 @@ public class MatchMarket015ATests
     public async Task NoFundsExpiredContractLastGoalkeeperAndMaximumSquadCannotBeBought()
     {
         var(w,c,p)=Seed();var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);var svc=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
+        w.Economy.Rules.SeasonContractsEnabled=false;
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"list")).Success);
         w.Clubs[1].CashBalance=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"no-cash")).Success);w.Clubs[1].CashBalance=10_000_000;
         p.ContractRoundsRemaining=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"expired")).Success);p.ContractRoundsRemaining=20;
@@ -122,5 +123,26 @@ public class MatchMarket015ATests
         w.Players.RemoveAll(x=>x.ClubId==c[0].CurrentClubId&&x.Position==PlayerPosition.G&&x.Id!=keeper.Id);
         Assert.False((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,keeper.Id,1,idempotencyKey:"last-keeper")).Success);
         Assert.DoesNotContain(w.Transactions,t=>t.Category is FinancialTransactionCategory.TransferPurchase or FinancialTransactionCategory.TransferSale);
+    }
+
+    [Fact]
+    public async Task UnrenewedAthleteCanBeSoldAndRenewalClosesTheListing()
+    {
+        var (world, coaches, player) = Seed();
+        var repo = new InMemoryWorldRepository();
+        await repo.SaveWorldAsync(world);
+        var service = new ClubAndMarketApplicationService(repo, NullMatchRoomNotificationPublisher.Instance);
+        player.ContractRoundsRemaining = 0;
+        Assert.True((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "list")).Success);
+        Assert.True((await service.RenewPlayerContractAsync(world.Id, coaches[0].Id, player.Id, 0, idempotencyKey: "renew")).Success);
+        Assert.False((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "stale-buy")).Success);
+        Assert.False((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "protected")).Success);
+
+        world.SeasonNumber++;
+        world.RoundNumber = 1;
+        player.ContractRoundsRemaining = 0;
+        Assert.True((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "next-list")).Success);
+        Assert.True((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "buy")).Success);
+        Assert.Equal(coaches[1].CurrentClubId, player.ClubId);
     }
 }

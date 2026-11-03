@@ -357,7 +357,6 @@ class MobileSquadScreen extends StatelessWidget {
   final int requiredStarterCount;
   final bool locked, busy, canManage, tactics;
   final ValueChanged<String> onFormation;
-  final VoidCallback onAutoPick;
   final ValueChanged<Map<String, dynamic>> onDetail,
       onToggle,
       onRenew,
@@ -366,6 +365,9 @@ class MobileSquadScreen extends StatelessWidget {
   final ValueChanged<int> onTab;
   final Widget field, filters, coachPanel;
   final Widget? rosterFilter;
+  final String? swapPickedId;
+  final ValueChanged<Map<String, dynamic>> onSwapPick;
+  final ValueChanged<String> onBest;
   const MobileSquadScreen({
     super.key,
     required this.squad,
@@ -380,7 +382,6 @@ class MobileSquadScreen extends StatelessWidget {
     required this.canManage,
     required this.tactics,
     required this.onFormation,
-    required this.onAutoPick,
     required this.onDetail,
     required this.onToggle,
     required this.onRenew,
@@ -391,6 +392,9 @@ class MobileSquadScreen extends StatelessWidget {
     required this.filters,
     required this.coachPanel,
     this.rosterFilter,
+    this.swapPickedId,
+    required this.onSwapPick,
+    required this.onBest,
   });
   String _pos(Map<String, dynamic> p) {
     final raw = p['position'];
@@ -444,7 +448,7 @@ class MobileSquadScreen extends StatelessWidget {
               Expanded(child: Text('JOGADOR', style: _head)),
               SizedBox(width: 35, child: Text('FORÇA', style: _head)),
               SizedBox(width: 53, child: Text('COND.', style: _head)),
-              SizedBox(width: 36),
+              SizedBox(width: 68),
             ],
           ),
         ),
@@ -456,9 +460,32 @@ class MobileSquadScreen extends StatelessWidget {
               style: TextStyle(color: MobileClassicColors.muted),
             ),
           ),
-        for (int i = 0; i < players.length; i++)
+        for (int i = 0; i < players.length; i++) ...[
+          if (title == 'BANCO' &&
+              (i == 0 || _pos(players[i]) != _pos(players[i - 1])))
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Text(
+                  {
+                        'G': 'GOLEIRO',
+                        'D': 'DEFESA',
+                        'M': 'MEIA',
+                        'A': 'ATACANTE',
+                      }[_pos(players[i])] ??
+                      '',
+                  style: const TextStyle(
+                    color: MobileClassicColors.ink,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
           Container(
-            color: i.isEven
+            color: swapPickedId == '${players[i]['id']}'
+                ? const Color(0xFFFFE885)
+                : i.isEven
                 ? MobileClassicColors.surface
                 : MobileClassicColors.alternate,
             padding: const EdgeInsets.symmetric(horizontal: 6),
@@ -468,14 +495,17 @@ class MobileSquadScreen extends StatelessWidget {
                 _position(_pos(players[i])),
                 const SizedBox(width: 6),
                 Expanded(
-                  child: Text(
-                    _name(players[i]),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: MobileClassicColors.ink,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                  child: InkWell(
+                    onTap: locked ? null : () => onSwapPick(players[i]),
+                    child: Text(
+                      '${_name(players[i])} (${players[i]['strength'] ?? '—'})',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: MobileClassicColors.ink,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -487,6 +517,24 @@ class MobileSquadScreen extends StatelessWidget {
                       color: MobileClassicColors.ink,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 32,
+                  child: IconButton(
+                    key: ValueKey('swap-pick-${players[i]['id']}'),
+                    tooltip: 'Selecionar para troca',
+                    padding: EdgeInsets.zero,
+                    onPressed: locked || _condition(players[i]) != 'APTO'
+                        ? null
+                        : () => onSwapPick(players[i]),
+                    icon: Icon(
+                      swapPickedId == '${players[i]['id']}'
+                          ? Icons.check_circle
+                          : Icons.swap_horiz,
+                      size: 21,
+                      color: MobileClassicColors.ink,
                     ),
                   ),
                 ),
@@ -519,6 +567,7 @@ class MobileSquadScreen extends StatelessWidget {
               ],
             ),
           ),
+        ],
       ],
     ),
   );
@@ -561,7 +610,15 @@ class MobileSquadScreen extends StatelessWidget {
     final selected = squad
         .where((p) => starters.contains('${p['id']}'))
         .toList();
-    final reserves = squad.where((p) => bench.contains('${p['id']}')).toList();
+    final reserves = squad.where((p) => bench.contains('${p['id']}')).toList()
+      ..sort(
+        (a, b) => [
+          'G',
+          'D',
+          'M',
+          'A',
+        ].indexOf(_pos(a)).compareTo(['G', 'D', 'M', 'A'].indexOf(_pos(b))),
+      );
     final t = ClassicTheme.of(context);
     return SingleChildScrollView(
       key: ValueKey(tactics ? 'mobile-tactics-scroll' : 'mobile-squad-scroll'),
@@ -693,18 +750,7 @@ class MobileSquadScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(6, 0, 6, 4),
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: OutlinedButton(
-                      key: const ValueKey('btn-auto-escalar'),
-                      onPressed: locked ? null : onAutoPick,
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: MobileClassicColors.ink,
-                        minimumSize: const Size(0, 36),
-                      ),
-                      child: const Text(
-                        'AUTO-ESCALAR 11 + BANCO',
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    ),
+                    child: BestLineupPicker(locked: locked, onSelected: onBest),
                   ),
                 ),
               ],

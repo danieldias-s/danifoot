@@ -8,6 +8,55 @@ String _position(Map<String, dynamic> player) {
 
 List<int> _sectors(String formation) =>
     formation.split('-').map(int.parse).toList();
+bool isValidTacticalFormation(String formation) {
+  final parts = formation.split('-').map(int.tryParse).toList();
+  return parts.length == 3 &&
+      parts.every((n) => n != null && n >= 0 && n <= 10) &&
+      parts.cast<int>().reduce((a, b) => a + b) == 10 &&
+      parts.join('-') == formation;
+}
+
+String formationFromPlayers(
+  List<Map<String, dynamic>> players,
+  String fallback,
+) {
+  if (players.length != 11 ||
+      players.where((p) => _position(p) == 'G').length != 1) {
+    return fallback;
+  }
+  return [
+    'D',
+    'M',
+    'A',
+  ].map((pos) => players.where((p) => _position(p) == pos).length).join('-');
+}
+
+({List<String> starters, List<String> bench, String formation})?
+swapSquadPlayers(
+  List<Map<String, dynamic>> squad,
+  List<String> starters,
+  List<String> bench,
+  String playerOut,
+  String playerIn,
+  String formation,
+) {
+  if (!starters.contains(playerOut) || !bench.contains(playerIn)) return null;
+  final incoming = squad.where((p) => '${p['id']}' == playerIn).firstOrNull;
+  if (incoming == null || !_available(incoming)) return null;
+  final next = [for (final id in starters) id == playerOut ? playerIn : id];
+  final selected = squad.where((p) => next.contains('${p['id']}')).toList();
+  final availableGk = squad.any((p) => _position(p) == 'G' && _available(p));
+  if (selected.where((p) => _position(p) == 'G').length !=
+      (availableGk ? 1 : 0)) {
+    return null;
+  }
+  return (
+    starters: next,
+    bench: [for (final id in bench) id == playerIn ? playerOut : id],
+    formation: formationFromPlayers(selected, formation),
+  );
+}
+
 bool _available(Map<String, dynamic> player) =>
     (player['injuryDaysRemaining'] as num? ?? 0) == 0 &&
     (player['injuryRoundsRemaining'] as num? ?? 0) == 0 &&
@@ -62,6 +111,44 @@ bool _available(Map<String, dynamic> player) =>
   return (
     starters: ids.toList(),
     bench: unused.take(9).map((p) => '${p['id']}').toList(),
+  );
+}
+
+({List<String> starters, List<String> bench, String formation}) bestSquadLineup(
+  List<Map<String, dynamic>> squad,
+  String currentFormation, {
+  required bool preferGoals,
+}) {
+  final eligible = squad.where(_available).toList();
+  int compareStrength(Map<String, dynamic> a, Map<String, dynamic> b) {
+    final strength = (b['strength'] as num? ?? 0).compareTo(
+      a['strength'] as num? ?? 0,
+    );
+    return strength == 0 ? '${a['id']}'.compareTo('${b['id']}') : strength;
+  }
+
+  final keepers = eligible.where((p) => _position(p) == 'G').toList()
+    ..sort(compareStrength);
+  final outfield = eligible.where((p) => _position(p) != 'G').toList()
+    ..sort((a, b) {
+      if (preferGoals) {
+        final goals = (b['seasonGoals'] as num? ?? 0).compareTo(
+          a['seasonGoals'] as num? ?? 0,
+        );
+        if (goals != 0) return goals;
+      }
+      return compareStrength(a, b);
+    });
+  final starters = [...keepers.take(1), ...outfield.take(10)];
+  final reserves = [
+    ...keepers.skip(1).take(1),
+    ...outfield.skip(10),
+    ...keepers.skip(2),
+  ].take(9);
+  return (
+    starters: starters.map((p) => '${p['id']}').toList(),
+    bench: reserves.map((p) => '${p['id']}').toList(),
+    formation: formationFromPlayers(starters, currentFormation),
   );
 }
 

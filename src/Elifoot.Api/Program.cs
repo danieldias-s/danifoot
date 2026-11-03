@@ -691,6 +691,11 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
         salaryRequests=world.Economy.SalaryRequests.Where(r=>r.ClubId==clubId).OrderByDescending(r=>r.Season).ThenByDescending(r=>r.Round).ToList(),
         contracts=world.Economy.ContractHistory.Where(r=>r.ClubId==clubId).ToList(),
         insolvency=world.Economy.Crises.GetValueOrDefault(clubId),
+        negativeCash=new {
+            principal=Math.Max(0,-club.CashBalance),
+            interestRatePerRound=world.Economy.Rules.NegativeCashInterestPerRound,
+            estimatedNextRoundInterest=Math.Round(Math.Max(0,-club.CashBalance)*world.Economy.Rules.NegativeCashInterestPerRound,2)
+        },
         coverageWarnings=world.Economy.CoverageWarnings
     },new System.Text.Json.JsonSerializerOptions{PropertyNamingPolicy=System.Text.Json.JsonNamingPolicy.CamelCase}));
     } finally {gate.Release();}

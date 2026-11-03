@@ -52,7 +52,7 @@ public static class WorldEditorAndPackageService
                 p.PhotoUrl,
                 p.PhotoLicense,
                 p.PhotoCredit,
-                p.NegotiatedContractProtected, p.CatalogIdentity)).ToList(),
+                p.NegotiatedContractProtected, p.CatalogIdentity, p.RenewedForSeason)).ToList(),
             AiManagers: world.AiManagers.Select(m => new AiManagerExportDto(
                 m.Id,
                 m.CurrentClubId,
@@ -81,7 +81,7 @@ public static class WorldEditorAndPackageService
     public static string ExportPlayersToCsv(GameWorld world)
     {
         var sb = new StringBuilder();
-        sb.AppendLine("Id,ClubId,Name,Position,Strength,Behavior,IsStar,ContractRounds,SalaryPerRound,MarketPrice,PhotoUrl,PhotoLicense,PhotoCredit,NegotiatedContractProtected,CatalogIdentityJson");
+        sb.AppendLine("Id,ClubId,Name,Position,Strength,Behavior,IsStar,ContractRounds,SalaryPerRound,MarketPrice,PhotoUrl,PhotoLicense,PhotoCredit,NegotiatedContractProtected,CatalogIdentityJson,RenewedForSeason");
         foreach (var p in world.Players)
         {
             sb.AppendLine(string.Join(",",
@@ -99,7 +99,8 @@ public static class WorldEditorAndPackageService
                 EscapeCsv(p.PhotoLicense ?? ""),
                 EscapeCsv(p.PhotoCredit ?? ""),
                 p.NegotiatedContractProtected ? "true" : "false",
-                EscapeCsv(p.CatalogIdentity == null ? "" : JsonSerializer.Serialize(p.CatalogIdentity, new JsonSerializerOptions {PropertyNamingPolicy=JsonNamingPolicy.CamelCase}))));
+                EscapeCsv(p.CatalogIdentity == null ? "" : JsonSerializer.Serialize(p.CatalogIdentity, new JsonSerializerOptions {PropertyNamingPolicy=JsonNamingPolicy.CamelCase})),
+                p.RenewedForSeason?.ToString(CultureInfo.InvariantCulture) ?? ""));
         }
         return sb.ToString();
     }
@@ -163,7 +164,8 @@ public static class WorldEditorAndPackageService
                 catch(JsonException) { errors.Add($"Linha {i+1}: origem do atleta inválida."); continue; }
             }
             players.Add(new PlayerExportDto(id, clubId, name, pos, strength, behavior, isStar,
-                Math.Max(1, contractRounds), Math.Max(0m, salary), Math.Max(0m, price), photoUrl, photoLic, photoCred,protection,identity));
+                Math.Max(0, contractRounds), Math.Max(0m, salary), Math.Max(0m, price), photoUrl, photoLic, photoCred,protection,identity,
+                cols.Count>15&&int.TryParse(cols[15],out var renewedSeason)&&renewedSeason>0?renewedSeason:null));
         }
 
         return (players, errors);
@@ -347,6 +349,7 @@ public static class WorldEditorAndPackageService
                 ContractRoundsRemaining = pDto.ContractRoundsRemaining,
                 SalaryPerRound = pDto.SalaryPerRound,
                 NegotiatedContractProtected = pDto.NegotiatedContractProtected ?? (pDto.ContractRoundsRemaining > 0),
+                RenewedForSeason = pDto.RenewedForSeason,
                 MarketPrice = pDto.MarketPrice,
                 PhotoUrl = pDto.PhotoUrl,
                 PhotoLicense = pDto.PhotoLicense,

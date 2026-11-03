@@ -20,6 +20,8 @@ public class ClassicEconomyState
     public HashSet<string> SalaryRequestRounds { get; set; } = new();
     public HashSet<string> AiFinancialRounds { get; set; } = new();
     public int StrengthHistoryCursor { get; set; }
+    public bool SeasonalDebtRulesInitialized { get; set; }
+    public HashSet<string> OverdraftInterestRounds { get; set; } = new();
     public List<string> CoverageWarnings { get; set; } = new();
     [JsonIgnore] public HashSet<string> ContractKeys { get; } = new();
     [JsonIgnore] public int PendingCacheCount { get; set; } = -1;
@@ -27,6 +29,8 @@ public class ClassicEconomyState
 }
 public class ClassicEconomyRules
 {
+    public bool SeasonContractsEnabled { get; set; } = true;
+    public decimal NegativeCashInterestPerRound { get; set; } = .02m;
     public decimal LoanPrincipal { get; set; } = 500_000m;
     public decimal InterestPerMatch { get; set; } = 25_000m;
     public decimal StadiumAssetPerUsableSeat { get; set; } = 50m;

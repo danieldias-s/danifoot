@@ -54,6 +54,8 @@ public sealed class Integration014ATests
             .OrderByDescending(p => p.Strength).ThenByDescending(p => p.SalaryPerRound).ThenBy(p => p.Id).First();
         ClassicEconomyEngine.EvaluateInsolvency(world); var auction = Assert.Single(world.Auctions);
         Assert.Equal(expected.Id, auction.PlayerId); Assert.Equal(0, auction.MinimumBid); Assert.Equal(club.Id, expected.ClubId);
+        world.RoundState = RoundState.RESULTS;
+        world.SettledFinancialRounds.Add($"round_settled:S{world.SeasonNumber}:R{world.RoundNumber}");
         decimal before = club.CashBalance; ClassicEconomyEngine.SettleSpecialAuction(world, auction);
         Assert.Equal(before, club.CashBalance); Assert.Equal(club.Id, expected.ClubId); Assert.True(auction.IsClosed);
         var keep = squad.Where(p => p.Position == PlayerPosition.G).Take(1).Concat(squad.Where(p => p.Position != PlayerPosition.G).Take(10)).Select(p => p.Id).ToHashSet();
@@ -147,9 +149,12 @@ public sealed class Integration014ATests
             Assert.True((await service.ListPlayerForTransferAsync(world.Id, sellerCoach, target.Id, price, idempotencyKey: "014a-list")).Success);
             Assert.True((await service.BuyListedPlayerAsync(world.Id, buyerCoach, target.Id, "014a-buy")).Success);
             Assert.Equal(sellerBefore + price, seller.CashBalance); Assert.Equal(buyer.Id, target.ClubId);
-            var renewal = world.Players.First(p => p.ClubId == buyer.Id); decimal salary = renewal.SalaryPerRound; int contract = renewal.ContractRoundsRemaining;
+            var renewal = world.Players.First(p => p.ClubId == buyer.Id);
+            decimal salary = renewal.SalaryPerRound;
             Assert.True((await service.RenewPlayerContractAsync(world.Id, buyerCoach, renewal.Id, 5, idempotencyKey: "014a-renew")).Success);
-            Assert.Equal(salary, renewal.SalaryPerRound); Assert.Equal(contract + 5, renewal.ContractRoundsRemaining);
+            Assert.Equal(salary, renewal.SalaryPerRound);
+            Assert.Equal(world.TotalRoundsInSeason - world.RoundNumber + 1, renewal.ContractRoundsRemaining);
+            Assert.True(ClassicEconomyEngine.IsSeasonRenewed(world, renewal));
             var takes = await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => service.TakeBankLoanAsync(world.Id, buyerCoach, 500000, 0, idempotencyKey: "014a-loan")));
             Assert.All(takes, result => Assert.True(result.Success)); var loan = Assert.Single(world.BankLoans);
             Assert.Equal(500000, loan.RemainingBalance); Assert.Equal(25000, loan.InterestPerMatch);
@@ -176,6 +181,7 @@ public sealed class Integration014ATests
             EfWorldRepository.ClearCacheForTesting(); await using var restarted = Provider(catalogConnection.ConnectionString, worldConnection.ConnectionString);
             var restored = (await restarted.GetRequiredService<IWorldRepository>().GetWorldAsync(world.Id))!;
             Assert.Equal(salary, restored.Players.Single(p => p.Id == renewal.Id).SalaryPerRound);
+            Assert.True(ClassicEconomyEngine.IsSeasonRenewed(restored, restored.Players.Single(p => p.Id == renewal.Id)));
             Assert.Equal(0, restored.BankLoans.Single().RemainingBalance); Assert.Equal(25000, restored.BankLoans.Single().InterestCharged);
             Assert.Equal(buyer.CashBalance, restored.Clubs.Single(c => c.Id == buyer.Id).CashBalance);
             Assert.Equal(preview.DataHash, restored.CatalogOrigin!.DataHash); Assert.Equal(gender, restored.Gender);

@@ -138,6 +138,7 @@ public partial class Player
     public decimal SalaryPerRound { get; set; } = 8_000m;
     public decimal ReferenceSalaryPerRound => MarketAndEconomyEngine.CalculateFairSalaryPerRound(this);
     public bool NegotiatedContractProtected { get; set; }
+    public int? RenewedForSeason { get; set; }
     public decimal MarketPrice { get; set; } = 250_000m;
     public bool IsListedForTransfer { get; set; }
     public decimal? AskingPrice { get; set; }

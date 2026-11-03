@@ -34,14 +34,17 @@ public static partial class ClassicEconomyEngine
         if(receipt.Found)return(receipt.Valid,receipt.Valid?null:"Chave usada por outra operação.");
         if(string.IsNullOrWhiteSpace(key)||!Safe(w)||p.ClubId!=c.Id)return(false,"Renovação inválida ou indisponível durante a partida.");
         if(AuctionReserved(w,p.Id))return(false,"Jogador está reservado para um leilão em andamento.");
-        additionalMatches=Math.Clamp(additionalMatches,5,30);
+        if(IsSeasonRenewed(w,p))return(false,"Contrato já renovado até o fim desta temporada.");
+        additionalMatches=w.Economy.Rules.SeasonContractsEnabled?SeasonContractRounds(w):Math.Clamp(additionalMatches,5,30);
         decimal previous=p.SalaryPerRound,negotiated=salary??previous;
         if(negotiated<0)return(false,"Salário inválido.");
         decimal fee=Math.Round(negotiated*(additionalMatches/10m),2);
-        if(AvailableCash(w,c)<fee)return(false,$"Saldo insuficiente para luvas de renovação (R$ {fee:N0}).");
+        if(!w.Economy.Rules.SeasonContractsEnabled&&AvailableCash(w,c)<fee)return(false,$"Saldo insuficiente para luvas de renovação (R$ {fee:N0}).");
         MarketAndEconomyEngine.TryRecordTransaction(w,c,FinancialTransactionCategory.ContractRenewal,-fee,
             $"Renovação negociada de {p.DisplayName}",$"contract:{p.Id}:{key}:fee");
-        p.SalaryPerRound=negotiated;p.ContractRoundsRemaining+=additionalMatches;
+        p.SalaryPerRound=negotiated;
+        if(w.Economy.Rules.SeasonContractsEnabled)ProtectSeasonContract(w,p);
+        else p.ContractRoundsRemaining+=additionalMatches;
         RecordContract(w,p,previous,"PREVENTIVE_RENEWAL",$"{w.Id}:{c.Id}:{key}",fee);
         Remember(w,c,key,"RENEW_CONTRACT",payload,p.Id);return(true,null);
     }
@@ -121,6 +124,7 @@ public static partial class ClassicEconomyEngine
         {
             decimal previous=p.SalaryPerRound;p.SalaryPerRound=request.RequestedSalary;
             p.ContractRoundsRemaining=Math.Max(p.ContractRoundsRemaining,request.RenewalMatches);
+            if(w.Economy.Rules.SeasonContractsEnabled)ProtectSeasonContract(w,p);
             request.Status=SalaryRequestStatus.ACCEPTED;request.Resolution=mandatory&&!accept?"MANDATORY_MINIMUM_SQUAD":actor+"_ACCEPTED";
             RecordContract(w,p,previous,request.Resolution,$"salary:{request.Id}:accepted");
             string? message=mandatory&&!accept?"RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.":null;
@@ -134,7 +138,7 @@ public static partial class ClassicEconomyEngine
     }
     public static void AfterSportingRound(GameWorld w,IReadOnlyList<MatchFixture> matches)
     {
-        GenerateSalaryRequests(w,matches);ProcessAiFinances(w);EvaluateInsolvency(w);
+        GenerateSalaryRequests(w,matches);ProcessAiFinances(w);SettleNegativeCashInterest(w);EvaluateInsolvency(w);
     }
     public static void ProcessAiFinances(GameWorld w)
     {

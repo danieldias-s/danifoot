@@ -671,14 +671,11 @@ extension _ShellActions on _ElifootShellScreenState {
                 onPressed: _tacticsLocked
                     ? null
                     : () {
-                        final idx = _ElifootShellScreenState.availableFormations
-                            .indexOf(_selectedFormation);
-                        final nextIdx =
-                            (idx + 1) %
-                            _ElifootShellScreenState.availableFormations.length;
-                        _changeFormation(
-                          _ElifootShellScreenState.availableFormations[nextIdx],
+                        final idx = availableFormations.indexOf(
+                          _selectedFormation,
                         );
+                        final nextIdx = (idx + 1) % availableFormations.length;
+                        _changeFormation(availableFormations[nextIdx]);
                       },
               ),
               ClassicActionButton(
@@ -716,7 +713,7 @@ extension _ShellActions on _ElifootShellScreenState {
 
   void _changeFormation(String formation) {
     if (_tacticsLocked ||
-        !_ElifootShellScreenState.availableFormations.contains(formation) ||
+        !isValidTacticalFormation(formation) ||
         formation == _selectedFormation) {
       return;
     }
@@ -750,11 +747,12 @@ extension _ShellActions on _ElifootShellScreenState {
               (p['suspensionRoundsRemaining'] ?? 0) == 0,
         )
         .toList();
-    avail.sort(
-      (a, b) => ((b['strength'] as num?) ?? 0).compareTo(
-        (a['strength'] as num?) ?? 0,
-      ),
-    );
+    avail.sort((a, b) {
+      final strength = (b['strength'] as num? ?? 0).compareTo(
+        a['strength'] as num? ?? 0,
+      );
+      return strength != 0 ? strength : '${a['id']}'.compareTo('${b['id']}');
+    });
     final parts = _selectedFormation
         .split('-')
         .map((n) => int.tryParse(n) ?? 0)
@@ -939,7 +937,7 @@ extension _ShellActions on _ElifootShellScreenState {
                       border: Border.all(color: Colors.lightGreenAccent),
                     ),
                     child: Text(
-                      '[$pos] $name (F:$str)',
+                      '[$pos] $name ($str)',
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -1071,7 +1069,7 @@ extension _ShellActions on _ElifootShellScreenState {
                             (p) => DropdownMenuItem(
                               value: p['id'].toString(),
                               child: Text(
-                                'Sai Titular: [${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})',
+                                'Sai Titular: [${_formatPosition(p['position'])}] ${p['displayName']} (${p['strength']})',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(fontSize: 11),
@@ -1095,7 +1093,7 @@ extension _ShellActions on _ElifootShellScreenState {
                             (p) => DropdownMenuItem(
                               value: p['id'].toString(),
                               child: Text(
-                                'Entra Reserva: [${_formatPosition(p['position'])}] ${p['displayName']} (F:${p['strength']})',
+                                'Entra Reserva: [${_formatPosition(p['position'])}] ${p['displayName']} (${p['strength']})',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(fontSize: 11),
@@ -1114,22 +1112,7 @@ extension _ShellActions on _ElifootShellScreenState {
                           validSwapReserve == null) {
                         return;
                       }
-                      setState(() {
-                        final sIdx = _selectedStarterIds.indexOf(
-                          validSwapStarter,
-                        );
-                        final bIdx = _selectedBenchIds.indexOf(
-                          validSwapReserve,
-                        );
-                        if (sIdx >= 0 && bIdx >= 0) {
-                          _selectedStarterIds[sIdx] = validSwapReserve;
-                          _selectedBenchIds[bIdx] = validSwapStarter;
-                          _swapStarterId = validSwapReserve;
-                          _swapReserveId = validSwapStarter;
-                          _statusBanner =
-                              'Troca realizada entre titular e reserva.';
-                        }
-                      });
+                      _swapSquadPlayers(validSwapStarter, validSwapReserve);
                     },
                   ),
                 ],

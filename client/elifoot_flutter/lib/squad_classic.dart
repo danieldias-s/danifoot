@@ -141,6 +141,7 @@ class ClassicSquadRoster extends StatelessWidget {
               ? 46
               : 50,
         ),
+        ('CT', 24),
         ('POS', compact || tight ? 20 : 24),
         ('JOGADOR', null),
         ('FORÇA', compact || tight ? 28 : 34),
@@ -274,6 +275,22 @@ class ClassicSquadRoster extends StatelessWidget {
                         ),
                       ),
                     ),
+                    DataCell(
+                      Tooltip(
+                        message: players[i]['contractRenewedForSeason'] == true
+                            ? 'Renovado até o fim da temporada ${players[i]['contractThroughSeason']}. Protegido de vendas e leilões.'
+                            : 'Sem contrato da temporada. O atleta continua vinculado ao clube.',
+                        child: text(
+                          players[i]['contractRenewedForSeason'] == true
+                              ? '✓'
+                              : '—',
+                          color: players[i]['contractRenewedForSeason'] == true
+                              ? const Color(0xFF087825)
+                              : null,
+                          bold: true,
+                        ),
+                      ),
+                    ),
                     DataCell(text(squadPosition(players[i]), bold: true)),
                     DataCell(
                       InkWell(
@@ -317,8 +334,15 @@ class ClassicSquadRoster extends StatelessWidget {
                         children: [
                           action(
                             icon: Icons.edit_outlined,
-                            tooltip: 'Renovar contrato',
-                            onPressed: canManage && !busy
+                            tooltip:
+                                players[i]['contractRenewedForSeason'] == true
+                                ? 'Contrato já renovado nesta temporada'
+                                : 'Renovar contrato',
+                            onPressed:
+                                canManage &&
+                                    !busy &&
+                                    players[i]['contractRenewedForSeason'] !=
+                                        true
                                 ? () => onRenew(players[i])
                                 : null,
                           ),
@@ -330,9 +354,16 @@ class ClassicSquadRoster extends StatelessWidget {
                           action(
                             key: ValueKey('create-auction-${players[i]['id']}'),
                             icon: Icons.attach_money,
-                            tooltip: 'Colocar em leilão',
+                            tooltip:
+                                players[i]['contractRenewedForSeason'] == true
+                                ? 'Renovado: venda e leilão bloqueados'
+                                : 'Colocar em leilão',
                             sale: true,
-                            onPressed: canManage && !busy
+                            onPressed:
+                                canManage &&
+                                    !busy &&
+                                    players[i]['contractRenewedForSeason'] !=
+                                        true
                                 ? () => onAuction(players[i])
                                 : null,
                           ),
@@ -357,9 +388,11 @@ class ClassicSquadTactics extends StatelessWidget {
   final int requiredStarters;
   final Color shirt;
   final ValueChanged<String> onFormation;
-  final VoidCallback onAutoPick;
   final ValueChanged<Map<String, dynamic>> onPlayer;
   final void Function(String, String) onSwap;
+  final String? swapPickedId;
+  final ValueChanged<Map<String, dynamic>> onSwapPick;
+  final ValueChanged<String> onBest;
   const ClassicSquadTactics({
     super.key,
     required this.squad,
@@ -371,9 +404,11 @@ class ClassicSquadTactics extends StatelessWidget {
     required this.requiredStarters,
     required this.shirt,
     required this.onFormation,
-    required this.onAutoPick,
     required this.onPlayer,
     required this.onSwap,
+    required this.onSwapPick,
+    required this.onBest,
+    this.swapPickedId,
   });
   @override
   Widget build(BuildContext context) {
@@ -495,11 +530,7 @@ class ClassicSquadTactics extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  OutlinedButton(
-                    key: const ValueKey('btn-auto-escalar'),
-                    onPressed: locked ? null : onAutoPick,
-                    child: const Text('AUTO-ESCALAR 11 + BANCO'),
-                  ),
+                  BestLineupPicker(locked: locked, onSelected: onBest),
                 ],
               ),
               Text(
@@ -525,6 +556,44 @@ class ClassicSquadTactics extends StatelessWidget {
               onPlayer: onPlayer,
               aspectRatio: 1.15,
             );
+            Widget playerLine(Map<String, dynamic> p) => Container(
+              color: swapPickedId == '${p['id']}'
+                  ? t.selectedBackground.withValues(alpha: .2)
+                  : null,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: locked ? null : () => onSwapPick(p),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
+                          '${squadPlayerName(p)} (${p['strength'] ?? '—'})',
+                          style: const TextStyle(fontSize: 14),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    key: ValueKey('swap-pick-${p['id']}'),
+                    tooltip: swapPickedId == '${p['id']}'
+                        ? 'Cancelar seleção de troca'
+                        : 'Selecionar para troca',
+                    onPressed: locked || squadCondition(p) != 'APTO'
+                        ? null
+                        : () => onSwapPick(p),
+                    icon: Icon(
+                      swapPickedId == '${p['id']}'
+                          ? Icons.check_circle
+                          : Icons.swap_horiz,
+                      size: 21,
+                    ),
+                  ),
+                ],
+              ),
+            );
             Widget sectorList() => Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -536,38 +605,43 @@ class ClassicSquadTactics extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  for (final p in lines[i])
-                    InkWell(
-                      onTap: () => onPlayer(p),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 3),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.checkroom,
-                              size: 15,
-                              color: squadPosition(p) == 'G'
-                                  ? const Color(0xFFAF6100)
-                                  : shirt,
-                            ),
-                            const SizedBox(width: 5),
-                            Expanded(
-                              child: Text(
-                                '${squadPlayerName(p)} (F:${p['strength'] ?? '—'})',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize: 13),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  for (final p in lines[i]) playerLine(p),
                   const SizedBox(height: 8),
+                ],
+                const Divider(),
+                Text(
+                  'RESERVAS (${reserves.length})',
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                for (final sector in [
+                  ('G', 'GOLEIRO'),
+                  ('D', 'DEFESA'),
+                  ('M', 'MEIA'),
+                  ('A', 'ATACANTE'),
+                ]) ...[
+                  Text(
+                    sector.$2,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  for (final p in reserves.where(
+                    (p) => squadPosition(p) == sector.$1,
+                  ))
+                    playerLine(p),
+                  if (!reserves.any((p) => squadPosition(p) == sector.$1))
+                    const Text('Sem reserva', style: TextStyle(fontSize: 12)),
+                  const SizedBox(height: 7),
                 ],
               ],
             );
-            if (c.maxWidth < 470) return pitch;
+            if (c.maxWidth < 470) {
+              return Column(children: [pitch, sectorList()]);
+            }
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -588,6 +662,44 @@ class ClassicSquadTactics extends StatelessWidget {
       ],
     );
   }
+}
+
+class BestLineupPicker extends StatelessWidget {
+  final bool locked;
+  final ValueChanged<String> onSelected;
+  const BestLineupPicker({
+    super.key,
+    required this.locked,
+    required this.onSelected,
+  });
+  @override
+  Widget build(BuildContext context) => PopupMenuButton<String>(
+    key: const ValueKey('btn-auto-escalar'),
+    enabled: !locked,
+    onSelected: onSelected,
+    tooltip: 'Escolher os melhores jogadores',
+    itemBuilder: (_) => const [
+      PopupMenuItem(value: 'strength', child: Text('MAIOR FORÇA')),
+      PopupMenuItem(value: 'goals', child: Text('MAIS GOLS NA TEMPORADA')),
+    ],
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.star_outline, size: 18),
+          const SizedBox(width: 5),
+          Text(
+            'MELHORES',
+            style: TextStyle(
+              color: locked ? Theme.of(context).disabledColor : null,
+            ),
+          ),
+          const Icon(Icons.arrow_drop_down, size: 18),
+        ],
+      ),
+    ),
+  );
 }
 
 class ClassicQuickSquadSwap extends StatefulWidget {

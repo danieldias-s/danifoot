@@ -609,9 +609,13 @@ public static class CompetitionAndSeasonEngine
         if (ClassicForceEvolutionEngine.IsActive(world))
             ClassicForceEvolutionEngine.AdvanceToDate(world, world.ClassicForce.GameDate.AddDays(21));
         world.SeasonNumber++;
+        if(world.Economy.Rules.SeasonContractsEnabled)
+            foreach(var player in world.Players.Where(player=>player.ClubId.HasValue))
+                player.ContractRoundsRemaining=0;
         OperatingEconomyEngine.EnsureScheduledRules(world);
         InitializeSeasonFixtures(world);
         GenerateJobInvitationsForUnemployedHumans(world);
+        if(world.Economy.Rules.SeasonContractsEnabled)ClassicEconomyEngine.EvaluateInsolvency(world);
 
         return historyEntry;
     }

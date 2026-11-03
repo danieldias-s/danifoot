@@ -16,6 +16,7 @@ public static class VoluntaryAuctionEngine
         if(durationRounds is <1 or >3)return(false,"Duração deve ser de 1, 2 ou 3 rodadas globais concluídas.",null);
         var player=world.Players.FirstOrDefault(p=>p.Id==playerId&&p.ClubId==seller.Id);
         if(player==null)return(false,"Jogador não pertence ao seu clube.",null);
+        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado não pode ser vendido ou leiloado nesta temporada.",null);
         if(ClassicEconomyEngine.AuctionReserved(world,playerId))return(false,"Jogador já está em leilão.",null);
         // Do not promise more outgoing players than a legal squad can release.
         var available=world.Players.Where(p=>p.ClubId==seller.Id&&!ClassicEconomyEngine.AuctionReserved(world,p.Id)).ToList();

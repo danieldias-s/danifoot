@@ -120,7 +120,9 @@ public class ClassicEconomy012DTests
         var strong=squad.Last();strong.Strength=50;strong.NegotiatedContractProtected=true;
         ClassicEconomyEngine.EvaluateInsolvency(w);var a=Assert.Single(w.Auctions);Assert.Equal(strong.Id,a.PlayerId);Assert.Equal(c.Id,strong.ClubId);Assert.Equal(0,a.MinimumBid);
         var buyer=w.Clubs.First(x=>x.Id!=c.Id);decimal before=buyer.CashBalance;
-        Assert.True(ClassicEconomyEngine.PlaceBid(w,buyer,a.Id,60000,"bid").Success);MarketAndEconomyEngine.SettleAuction(w,a);MarketAndEconomyEngine.SettleAuction(w,a);
+        Assert.True(ClassicEconomyEngine.PlaceBid(w,buyer,a.Id,60000,"bid").Success);
+        w.RoundState=RoundState.RESULTS;w.SettledFinancialRounds.Add($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}");
+        MarketAndEconomyEngine.SettleAuction(w,a);MarketAndEconomyEngine.SettleAuction(w,a);
         Assert.Equal(10000,c.CashBalance);Assert.Equal(before-60000,buyer.CashBalance);Assert.Equal(buyer.Id,strong.ClubId);
         var tx=w.Transactions.Where(t=>t.PlayerId==strong.Id&&t.TransactionType=="FinancialInsolvency").ToList();Assert.Equal(2,tx.Count);Assert.Equal(0,tx.Sum(t=>t.Amount));
         ClassicEconomyEngine.EvaluateInsolvency(w);Assert.False(w.Economy.Crises[c.Id].IsInsolvent);
@@ -128,6 +130,7 @@ public class ClassicEconomy012DTests
     [Fact] public void UnsoldDebtAuctionKeepsOwnershipAndDebtAndDoesNotLoop()
     {
         var(w,c)=World();c.CashBalance=-50000;ClassicEconomyEngine.EvaluateInsolvency(w);var a=Assert.Single(w.Auctions);var p=w.Players.First(p=>p.Id==a.PlayerId);
+        w.RoundState=RoundState.RESULTS;w.SettledFinancialRounds.Add($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}");
         MarketAndEconomyEngine.SettleAuction(w,a);Assert.Equal(c.Id,p.ClubId);Assert.Equal("AUCTION_UNSOLD",a.ClosureReason);
         for(int i=0;i<10;i++)ClassicEconomyEngine.EvaluateInsolvency(w);Assert.Single(w.Auctions);Assert.Equal(-50000,c.CashBalance);
         w.RoundNumber+=2;ClassicEconomyEngine.EvaluateInsolvency(w);Assert.Equal(2,w.Auctions.Count);
@@ -182,6 +185,7 @@ public class ClassicEconomy012DTests
     [Fact] public void ExpiringContractCannotReleaseAPlayerReservedForDebtAuction()
     {
         var(w,c)=World();c.CashBalance=-9999999;var p=w.Players.Last(p=>p.ClubId==c.Id);p.Strength=50;p.ContractRoundsRemaining=1;
+        w.Economy.Rules.SeasonContractsEnabled=false;
         ClassicEconomyEngine.EvaluateInsolvency(w);var a=Assert.Single(w.Auctions);Assert.Equal(p.Id,a.PlayerId);
         MarketAndEconomyEngine.SettleMatchAndRoundFinancials(w,[Match(w,c)]);Assert.Equal(c.Id,p.ClubId);Assert.True(p.ContractRoundsRemaining>0);Assert.Single(w.Auctions);
     }

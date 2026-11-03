@@ -11,6 +11,13 @@ public static partial class ClassicEconomyEngine
         var auction=new AuctionItem{Id=id,GameWorldId=w.Id,PlayerId=p.Id,FormerClubId=former.Id,Reason=reason,
             MinimumBid=0,CurrentBid=0,CreatedAtSeason=w.SeasonNumber,CreatedAtRound=w.RoundNumber,
             ExpiresAtRound=w.RoundNumber+w.Economy.Rules.AuctionDurationRounds};
+        if(reason==AuctionReason.FinancialInsolvency&&w.Economy.Rules.SeasonContractsEnabled)
+        {
+            int total=Math.Max(1,w.TotalRoundsInSeason);
+            int target=w.RoundNumber+(w.SettledFinancialRounds.Contains($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}")?1:0);
+            auction.DurationRounds=1;auction.ExpiresAtSeason=w.SeasonNumber+(target-1)/total;
+            auction.ExpiresAtRound=(target-1)%total+1;
+        }
         w.Auctions.Add(auction);return auction;
     }
     public static void EvaluateInsolvency(GameWorld w)
@@ -31,9 +38,11 @@ public static partial class ClassicEconomyEngine
             if(!crisis.IsInsolvent){Record("INSOLVENT");crisis.FirstCrisisSeason=w.SeasonNumber;}
             crisis.IsInsolvent=true;
             if(w.Auctions.Any(a=>!a.IsClosed&&a.FormerClubId==c.Id&&a.Reason==AuctionReason.FinancialInsolvency))continue;
-            if(Ordinal(w)-crisis.LastAuctionOrdinal<w.Economy.Rules.InsolvencyAuctionCooldownRounds)continue;
+            if(w.Auctions.Any(a=>a.FormerClubId==c.Id&&a.Reason==AuctionReason.FinancialInsolvency
+                &&a.CreatedAtSeason==w.SeasonNumber&&a.CreatedAtRound==w.RoundNumber))continue;
+            if(!w.Economy.Rules.SeasonContractsEnabled&&Ordinal(w)-crisis.LastAuctionOrdinal<w.Economy.Rules.InsolvencyAuctionCooldownRounds)continue;
             var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
-            var p=squad.Where(p=>!AuctionReserved(w,p.Id)&&SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove)
+            var p=squad.Where(p=>!IsSeasonRenewed(w,p)&&!AuctionReserved(w,p.Id)&&SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove)
                 .OrderByDescending(p=>p.Strength).ThenByDescending(p=>p.SalaryPerRound).ThenBy(p=>p.Id).FirstOrDefault();
             if(p==null){Record("NO_ELIGIBLE_PLAYER");continue;}
             foreach(var r in w.Economy.SalaryRequests.Where(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING))
@@ -46,6 +55,7 @@ public static partial class ClassicEconomyEngine
     public static void SettleSpecialAuction(GameWorld w,AuctionItem auction,List<string>? logs=null)
     {
         if(auction.IsClosed)return;
+        if(auction.ExpiresAtSeason.HasValue&&!IsSpecialAuctionDue(w,auction))return;
         var p=w.Players.FirstOrDefault(p=>p.Id==auction.PlayerId);
         var buyer=w.Clubs.FirstOrDefault(c=>c.Id==auction.HighestBidderClubId);
         bool sold=false;

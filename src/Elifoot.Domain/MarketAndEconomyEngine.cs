@@ -328,6 +328,14 @@ public static class MarketAndEconomyEngine
                     if (!injuredToday) p.InjuryRoundsRemaining--;
                 }
 
+                if(world.Economy.Rules.SeasonContractsEnabled)
+                {
+                    // The seasonal agreement is not the player's club ownership.
+                    // Unrenewed players stay employed, paid and available for sale.
+                    p.ContractRoundsRemaining=ClassicEconomyEngine.IsSeasonRenewed(world,p)
+                        ?Math.Max(0,world.TotalRoundsInSeason-world.RoundNumber):0;
+                    continue;
+                }
                 p.ContractRoundsRemaining--;
                 if (p.ContractRoundsRemaining <= 0)
                 {
@@ -545,7 +553,9 @@ public static class MarketAndEconomyEngine
             // List surplus players if allowed by squad rules
             foreach (var surplusId in plan.SurplusPlayerIds.Take(2))
             {
-                if (!playerDict.TryGetValue(surplusId, out var p) || p.IsListedForTransfer) continue;
+                if (!playerDict.TryGetValue(surplusId, out var p) || p.IsListedForTransfer
+                    || ClassicEconomyEngine.IsSeasonRenewed(world, p)
+                    || ClassicEconomyEngine.AuctionReserved(world, p.Id)) continue;
                 var (canRemove, _) = SquadValidator.CanRemovePlayerFromSquad(squad, p.Id);
                 if (!canRemove) continue;
 
@@ -789,7 +799,7 @@ public static class MarketAndEconomyEngine
 
             // Close auction if expired
             if (auction.Reason==AuctionReason.Voluntary ? VoluntaryAuctionEngine.IsDue(world,auction)
-                : world.SeasonNumber > auction.CreatedAtSeason || world.RoundNumber >= auction.ExpiresAtRound)
+                : ClassicEconomyEngine.IsSpecialAuctionDue(world,auction))
             {
                 SettleAuction(world, auction, logs);
             }
@@ -829,6 +839,7 @@ public static class MarketAndEconomyEngine
 
         if (player.ClubId != seller.Id)
             return (false, "O jogador não pertence mais ao clube vendedor.");
+        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado está protegido de qualquer venda ou leilão nesta temporada.");
 
         bool auctionSale=settlingAuctionId is Guid aid&&world.Auctions.Any(a=>a.Id==aid&&!a.IsClosed&&a.PlayerId==playerId&&a.FormerClubId==sellerClubId&&a.Reason is (AuctionReason.FinancialInsolvency or AuctionReason.Voluntary)&&a.HighestBidderClubId==buyerClubId&&a.CurrentBid==price);
         if(ClassicEconomyEngine.AuctionReserved(world,playerId)&&!auctionSale)return(false,"Jogador reservado para leilão.");
@@ -879,6 +890,7 @@ public static class MarketAndEconomyEngine
         player.IsListedForTransfer = false;
         player.AskingPrice = null;
         player.ContractRoundsRemaining = Math.Max(player.ContractRoundsRemaining, 16);
+        player.RenewedForSeason=null;
         player.MarketPrice = CalculateFairValue(player);
         decimal previousSalary=player.SalaryPerRound;
         player.SalaryPerRound = CalculateFairSalaryPerRound(player);

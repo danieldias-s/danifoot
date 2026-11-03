@@ -40,9 +40,24 @@ public static class TacticalFormations
             spec = found;
             return true;
         }
+        var parts = (code ?? string.Empty).Split('-');
+        if (parts.Length == 3 && parts.All(p => p.Length is >= 1 and <= 2 && p.All(char.IsAsciiDigit))
+            && int.TryParse(parts[0], out int defenders) && int.TryParse(parts[1], out int midfielders)
+            && int.TryParse(parts[2], out int attackers)
+            && defenders <= 10 && midfielders <= 10 && attackers <= 10
+            && defenders + midfielders + attackers == 10
+            && code == $"{defenders}-{midfielders}-{attackers}"
+            && (allowClassic505 || code != "5-0-5"))
+        {
+            spec = new(code, defenders, midfielders, attackers);
+            return true;
+        }
         spec = default!;
         return false;
     }
+
+    public static FormationSpec Resolve(string? code, bool allowClassic505 = true)
+        => TryGet(code ?? string.Empty, allowClassic505, out var spec) ? spec : All["4-4-2"];
 
     public static IReadOnlyList<FormationSpec> GetAvailable(bool allowClassic505)
         => All.Values.Where(f => allowClassic505 || !f.IsClassic505).ToList();

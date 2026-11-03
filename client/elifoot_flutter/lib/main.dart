@@ -265,7 +265,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   bool _commandBusy = false;
   final Set<String> _shownSeasonAwards = {};
 
-  static const List<String> availableFormations = [
+  String? _swapPickedPlayerId;
+  static const List<String> standardFormations = [
     '4-4-2',
     '4-3-3',
     '3-4-3',
@@ -276,6 +277,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     '4-2-4',
     '3-6-1',
     '5-0-5',
+  ];
+  List<String> get availableFormations => [
+    ...standardFormations.where(
+      (shape) => shape != '5-0-5' || _myClubDetail?['allowClassic505'] != false,
+    ),
+    if (!standardFormations.contains(_selectedFormation) &&
+        isValidTacticalFormation(_selectedFormation))
+      _selectedFormation,
   ];
 
   @override
@@ -1539,20 +1548,136 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     });
   }
 
-  void _renewSquadPlayer(Map<String, dynamic> player) {
-    if (_commandBusy || _matchLocked) return;
-    _runUiCommand(() async {
+  void _swapSquadPlayers(String out, String into) {
+    if (_tacticsLocked) return;
+    final squad = (_myClubDetail?['squad'] as List? ?? [])
+        .map((p) => Map<String, dynamic>.from(p as Map))
+        .toList();
+    final result = swapSquadPlayers(
+      squad,
+      _selectedStarterIds,
+      _selectedBenchIds,
+      out,
+      into,
+      _selectedFormation,
+    );
+    setState(() {
+      _swapPickedPlayerId = null;
+      if (result == null) {
+        _statusBanner =
+            'Troca inválida: escolha um reserva apto e preserve o goleiro.';
+        return;
+      }
+      _selectedStarterIds = result.starters;
+      _selectedBenchIds = result.bench;
+      if (result.formation != '5-0-5' ||
+          _myClubDetail?['allowClassic505'] != false) {
+        _selectedFormation = result.formation;
+      }
+      _statusBanner = 'Troca realizada entre titular e reserva.';
+    });
+  }
+
+  void _pickBestSquad(String mode) {
+    if (_tacticsLocked) return;
+    final squad = (_myClubDetail?['squad'] as List? ?? [])
+        .map((p) => Map<String, dynamic>.from(p as Map))
+        .toList();
+    final result = bestSquadLineup(
+      squad,
+      _selectedFormation,
+      preferGoals: mode == 'goals',
+    );
+    setState(() {
+      _selectedStarterIds = result.starters;
+      _selectedBenchIds = result.bench;
+      if (result.formation != '5-0-5' ||
+          _myClubDetail?['allowClassic505'] != false) {
+        _selectedFormation = result.formation;
+      }
+      _swapPickedPlayerId = null;
+      _statusBanner =
+          'Melhores por ${mode == 'goals' ? 'gols na temporada' : 'força'} escalados. Formação $_selectedFormation.';
+    });
+  }
+
+  void _pickSquadSwapPlayer(Map<String, dynamic> player) {
+    if (_tacticsLocked) return;
+    final id = '${player['id']}';
+    final wasStarter = _selectedStarterIds.contains(_swapPickedPlayerId);
+    final wasReserve = _selectedBenchIds.contains(_swapPickedPlayerId);
+    final isStarter = _selectedStarterIds.contains(id),
+        isReserve = _selectedBenchIds.contains(id);
+    if (_swapPickedPlayerId != id &&
+        ((wasStarter && isReserve) || (wasReserve && isStarter))) {
+      _swapSquadPlayers(
+        wasStarter ? _swapPickedPlayerId! : id,
+        wasStarter ? id : _swapPickedPlayerId!,
+      );
+      return;
+    }
+    setState(() {
+      _swapPickedPlayerId = _swapPickedPlayerId == id ? null : id;
+      _statusBanner = _swapPickedPlayerId == null
+          ? 'Seleção de troca cancelada.'
+          : '${player['displayName'] ?? player['name']} (${player['strength']}) selecionado. Escolha ${isStarter ? 'um reserva' : 'um titular'} para trocar.';
+    });
+  }
+
+  Future<void> _renewSquadPlayer(Map<String, dynamic> player) async {
+    final world = _worldId, coach = _coachId, club = _myClubId;
+    if (_commandBusy || _matchLocked || world == null || coach == null) return;
+    if (player['contractRenewedForSeason'] == true) return;
+    final season = (_snapshot?['seasonNumber'] as num?)?.toInt() ?? 1;
+    final annual = player['seasonContractsEnabled'] == true;
+    if (annual) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('RENOVAR ATÉ O FIM DA TEMPORADA'),
+          content: Text(
+            '${player['displayName'] ?? player['name']}\n'
+            'Salário por partida: ${formatClassicMoney(player['salaryPerRound'])}\n'
+            'Luvas: ${formatClassicMoney(player['seasonRenewalFee'])}\n'
+            'Validade: fim da temporada $season.\n'
+            'O atleta não poderá ser vendido ou leiloado, inclusive por dívida, nesta temporada.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('CANCELAR'),
+            ),
+            ElevatedButton(
+              key: const Key('confirm-season-renewal'),
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('RENOVAR'),
+            ),
+          ],
+        ),
+      );
+      if (confirmed != true ||
+          !mounted ||
+          _matchLocked ||
+          world != _worldId ||
+          coach != _coachId ||
+          club != _myClubId ||
+          season != _snapshot?['seasonNumber']) {
+        return;
+      }
+    }
+    await _runUiCommand(() async {
       await widget.apiClient.renewPlayerContract(
-        _worldId!,
+        world,
         '${player['id']}',
-        _coachId!,
-        15,
+        coach,
+        annual ? 0 : 15,
       );
       await _refreshClubAndSecondaryData();
       if (mounted) {
         setState(
-          () => _statusBanner =
-              'Contrato de ${player['displayName']} renovado (+15 rodadas).',
+          () => _statusBanner = annual
+              ? '✓ ${player['displayName']} renovado até o fim da temporada $season.'
+              : 'Contrato de ${player['displayName']} renovado (+15 rodadas).',
         );
       }
     });
@@ -1794,6 +1919,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     bool direct = false,
   }) async {
     if (_matchLocked || _worldId == null || _coachId == null) return;
+    if (player['contractRenewedForSeason'] == true) {
+      setState(
+        () => _statusBanner =
+            'Jogador renovado: venda e leilão bloqueados até o fim da temporada.',
+      );
+      return;
+    }
     final world = _worldId, coach = _coachId, club = _myClubId;
     final config = await showDialog<VoluntaryAuctionConfig>(
       context: context,
@@ -2064,7 +2196,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             tactics: _mobileTacticsView,
             canManage: canManage,
             onFormation: _changeFormation,
-            onAutoPick: _autoPickBestLineup,
+            swapPickedId: _swapPickedPlayerId,
+            onSwapPick: _pickSquadSwapPlayer,
+            onBest: _pickBestSquad,
             onDetail: _showPlayerDetailDialog,
             onToggle: _toggleSquadPlayer,
             onRenew: _renewSquadPlayer,
@@ -2208,19 +2342,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   'primaryColor',
                 ),
                 onFormation: _changeFormation,
-                onAutoPick: _autoPickBestLineup,
                 onPlayer: _showPlayerDetailDialog,
-                onSwap: (out, into) {
-                  if (_tacticsLocked) return;
-                  final a = _selectedStarterIds.indexOf(out),
-                      b = _selectedBenchIds.indexOf(into);
-                  if (a < 0 || b < 0) return;
-                  setState(() {
-                    _selectedStarterIds[a] = into;
-                    _selectedBenchIds[b] = out;
-                    _statusBanner = 'Troca realizada entre titular e reserva.';
-                  });
-                },
+                onSwap: _swapSquadPlayers,
+                swapPickedId: _swapPickedPlayerId,
+                onSwapPick: _pickSquadSwapPlayer,
+                onBest: _pickBestSquad,
               ),
             ],
           ),
@@ -2349,7 +2475,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               'Gols na Temporada: ${player['seasonGoals']}  |  Carreira: ${player['careerGoals']}',
             ),
             Text(
-              'Contrato restante: ${player['contractRoundsRemaining']} rodadas',
+              player['seasonContractsEnabled'] == true
+                  ? player['contractRenewedForSeason'] == true
+                        ? '✓ Contrato renovado até o fim da temporada ${player['contractThroughSeason']}.'
+                        : 'SEM CONTRATO DA TEMPORADA. O vínculo com o clube é mantido.'
+                  : 'Contrato restante: ${player['contractRoundsRemaining']} rodadas',
             ),
             const Divider(),
             Text(
@@ -3017,8 +3147,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               'CRÉDITO INDIVIDUAL: ${credit['activeLoans']}/${credit['loanLimit']} empréstimos; disponíveis: ${credit['availableLoans']}',
             ),
             Text(
-              'DÍVIDA TOTAL: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}',
+              'DÍVIDA BANCÁRIA: ${formatClassicMoney(credit['outstandingDebt'] ?? 0)} | JUROS CLÁSSICOS POR PARTIDA: ${formatClassicMoney(credit['interestPerMatch'] ?? 0)}',
             ),
+            if (_financesData?['negativeCash'] is Map)
+              Text(
+                'CAIXA NEGATIVO: ${formatClassicMoney(_financesData!['negativeCash']['principal'])} | '
+                'JUROS: 2% por rodada global concluída; estimativa: ${formatClassicMoney(_financesData!['negativeCash']['estimatedNextRoundInterest'])}. '
+                'Separados dos juros do empréstimo.',
+              ),
           ],
           ...loans
               .where((l) => l['isPaidOff'] != true)
