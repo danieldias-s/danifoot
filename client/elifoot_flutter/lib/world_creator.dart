@@ -5,6 +5,7 @@ import 'api_client.dart';
 import 'custom_assembly_editor.dart';
 import 'classic_match_board.dart';
 import 'catalog_provenance.dart';
+import 'creator_visual.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
   final ElifootApiClient api;
@@ -408,34 +409,103 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     String value,
     List<(String, String)> choices,
     void Function(String) change,
-  ) => DropdownButtonFormField<String>(
-    key: ValueKey('$label:$value'),
-    initialValue: value,
-    isExpanded: true,
-    decoration: InputDecoration(labelText: label),
-    items: choices
-        .map((c) => DropdownMenuItem(value: c.$1, child: Text(c.$2)))
-        .toList(),
-    onChanged: _busy
-        ? null
-        : (v) => setState(() {
-            change(v!);
-            if (label == 'Categoria' || label == 'Dados do mundo') {
-              _fictional = false;
-              _fictionalPlayers = false;
-              _includeHistorical = false;
-              _includeUnverified = false;
-              _assignments.clear();
-              _clubs = [];
-              _dataSummary = null;
-            }
-            _preview = null;
-            if (label != 'Treinadores') _assembly = null;
-          }),
-  );
+  ) {
+    final field = DropdownButtonFormField<String>(
+      key: ValueKey('$label:$value'),
+      initialValue: value,
+      isExpanded: true,
+      isDense: _step != 2,
+      decoration: InputDecoration(labelText: label),
+      dropdownColor: ClassicTheme.of(context).paper.surface,
+      style: const TextStyle(
+        fontFamily: 'ClassicCondensed',
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+      ),
+      selectedItemBuilder: (_) => choices
+          .map(
+            (choice) => Builder(
+              builder: (context) => Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  choice.$2,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Theme.of(
+                      context,
+                    ).inputDecorationTheme.labelStyle?.color,
+                  ),
+                ),
+              ),
+            ),
+          )
+          .toList(),
+      items: choices
+          .map(
+            (c) => DropdownMenuItem(
+              value: c.$1,
+              child: Text(
+                c.$2,
+                style: TextStyle(
+                  color: ClassicTheme.of(context).paper.textPrimary,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          )
+          .toList(),
+      onChanged: _busy
+          ? null
+          : (v) => setState(() {
+              change(v!);
+              if (label == 'Categoria' || label == 'Dados do mundo') {
+                _fictional = false;
+                _fictionalPlayers = false;
+                _includeHistorical = false;
+                _includeUnverified = false;
+                _assignments.clear();
+                _clubs = [];
+                _dataSummary = null;
+              }
+              _preview = null;
+              if (label != 'Treinadores') _assembly = null;
+            }),
+    );
+    if (_step != 2) return field;
+    return CreatorField(
+      icon: switch (label) {
+        'Como montar' => Icons.layers_outlined,
+        'Modo de jogo' => Icons.sports_esports_outlined,
+        'Dados do mundo' => Icons.storage_outlined,
+        _ => Icons.settings_outlined,
+      },
+      prominent: label == 'Dados do mundo' || label == 'Montagem',
+      child: field,
+    );
+  }
+
   Widget _searchField() => TextField(
     key: ValueKey('search-$_step'),
-    decoration: const InputDecoration(labelText: 'Pesquisar'),
+    decoration: InputDecoration(
+      labelText: _step == 1 ? 'Pesquisar país' : 'Pesquisar',
+      labelStyle: const TextStyle(fontSize: 22),
+      prefixIcon: const Icon(Icons.search),
+      filled: true,
+      fillColor: ClassicTheme.of(context).paper.surfaceAlternate,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: ClassicTheme.of(context).paper.border),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color: ClassicTheme.of(context).paper.accent,
+          width: 2,
+        ),
+      ),
+    ),
     onChanged: (v) => setState(() => _search = v.toLowerCase()),
   );
   bool _clubAllowed(Map<String, dynamic> club) {
@@ -559,13 +629,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   Widget _dataConsentChoices() => Column(
     children: [
-      CheckboxListTile(
+      CreatorConsent(
         key: const Key('allow-provider-reported-016a'),
-        contentPadding: EdgeInsets.zero,
-        title: const Text('USAR elencos atuais reportados pelo fornecedor'),
-        subtitle: const Text(
-          'Vínculo reportado não é verificação independente. A origem e a data ficam no snapshot. Em SOMENTE DADOS REAIS COMPLETOS, apenas vínculos verificados são aceitos.',
-        ),
+        icon: Icons.link_outlined,
+        title: 'USAR elencos atuais reportados pelo fornecedor',
+        description:
+            'Vínculo reportado não é verificação independente. A origem e a data ficam no snapshot. Em SOMENTE DADOS REAIS COMPLETOS, apenas vínculos verificados são aceitos.',
         value: _providerReported && _dataMode != 'REAL_COMPLETE',
         onChanged: _busy || _dataMode == 'REAL_COMPLETE'
             ? null
@@ -574,14 +643,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 _preview = null;
               }),
       ),
-      CheckboxListTile(
-        contentPadding: EdgeInsets.zero,
-        title: const Text(
-          'AUTORIZO atletas fictícios para completar elencos reais insuficientes',
-        ),
-        subtitle: const Text(
-          'A origem fictícia e a força estimada ficam identificadas no mundo.',
-        ),
+      CreatorConsent(
+        icon: Icons.edit_outlined,
+        title:
+            'AUTORIZO atletas fictícios para completar elencos reais insuficientes',
+        description:
+            'A origem fictícia e a força estimada ficam identificadas no mundo.',
         value: _fictionalPlayers,
         onChanged: _busy || _dataMode == 'REAL_COMPLETE'
             ? null
@@ -590,11 +657,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 _preview = null;
               }),
       ),
-      CheckboxListTile(
-        contentPadding: EdgeInsets.zero,
-        title: const Text(
-          'AUTORIZO completar vagas com equipes e atletas fictícios',
-        ),
+      CreatorConsent(
+        icon: Icons.groups_outlined,
+        title: 'AUTORIZO completar vagas com equipes e atletas fictícios',
         value: _fictional,
         onChanged: _busy || _dataMode != 'FREE_WORLD'
             ? null
@@ -673,6 +738,406 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     );
   }
 
+  Widget _countryCard(Map<String, dynamic> country) {
+    final theme = ClassicTheme.of(context).paper;
+    final selected = _countries.contains(country['code']);
+    return Container(
+      key: ValueKey('country-card-${country['code']}'),
+      margin: const EdgeInsets.only(bottom: 10),
+      constraints: const BoxConstraints(minHeight: 70),
+      decoration: BoxDecoration(
+        color: selected
+            ? Color.lerp(theme.surface, theme.selectedBackground, .12)
+            : theme.surface,
+        border: Border.all(
+          color: selected ? theme.selectedBackground : theme.border,
+          width: selected ? 2 : 1,
+        ),
+        borderRadius: BorderRadius.circular(11),
+      ),
+      child: CheckboxListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+        secondary: CreatorCountryFlag(code: country['code'].toString()),
+        title: Row(
+          children: [
+            Expanded(
+              flex: 4,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  country['name'].toString(),
+                  maxLines: 1,
+                  style: TextStyle(
+                    color: theme.textPrimary,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 23,
+                    height: 1.05,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: 1,
+              height: 34,
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              color: theme.border,
+            ),
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: [
+                  Icon(Icons.shield_outlined, size: 19, color: theme.accent),
+                  const SizedBox(width: 5),
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) => FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '${country[_gender == 'Male' ? 'maleClubs' : 'femaleClubs']} clubes${constraints.maxWidth < 120 ? '\n' : ' '}disponíveis',
+                          style: TextStyle(
+                            color: theme.textPrimary,
+                            fontSize: 17,
+                            height: 1.1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        activeColor: theme.primary,
+        checkColor: readableInk(theme.primary),
+        checkboxShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        value: selected,
+        onChanged: _busy
+            ? null
+            : (value) => setState(() {
+                if (value!) {
+                  if (widget.worldCatalogRules && _countries.length >= 8) {
+                    _error = 'Selecione no máximo oito países.';
+                    return;
+                  }
+                  _countries.add(country['code'].toString());
+                } else {
+                  _countries.remove(country['code']);
+                }
+                _assembly = null;
+                _assignments.clear();
+                _fictional = false;
+                _fictionalPlayers = false;
+                _dataSummary = null;
+                _preview = null;
+              }),
+      ),
+    );
+  }
+
+  Widget _countriesPanel() {
+    final countries =
+        _options
+            .where(
+              (country) =>
+                  country['name'].toString().toLowerCase().contains(_search),
+            )
+            .toList()
+          ..sort(
+            (a, b) => a['name'].toString().compareTo(b['name'].toString()),
+          );
+    final theme = ClassicTheme.of(context).paper;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _searchField(),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 14,
+          runSpacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+              decoration: BoxDecoration(
+                color: theme.primary,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                '${_countries.length} países selecionados${widget.worldCatalogRules ? ' • máximo 8' : ''}',
+                style: TextStyle(
+                  color: readableInk(theme.primary, Colors.white),
+                  fontSize: 21,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            if (widget.worldCatalogRules) ...[
+              TextButton.icon(
+                onPressed: _busy
+                    ? null
+                    : () => setState(() {
+                        _countries.clear();
+                        _assignments.clear();
+                        _preview = null;
+                      }),
+                icon: const Icon(Icons.delete_outline),
+                label: const Text('LIMPAR SELEÇÃO'),
+              ),
+              TextButton.icon(
+                onPressed: _busy
+                    ? null
+                    : () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => WorldCatalogStatus016B(
+                            api: widget.api,
+                            coachId: widget.coachId,
+                            gender: _gender,
+                            season: _season.text.trim(),
+                          ),
+                        ),
+                      ),
+                icon: const Icon(Icons.sync),
+                label: const Text('CACHE, ATUALIZAÇÕES E COBERTURA'),
+              ),
+            ],
+            TextButton.icon(
+              onPressed: _busy ? null : _initialize,
+              icon: const Icon(Icons.calendar_month_outlined),
+              label: const Text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 18),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 900) {
+              return Column(children: countries.map(_countryCard).toList());
+            }
+            final half = (countries.length / 2).ceil();
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: countries.take(half).map(_countryCard).toList(),
+                  ),
+                ),
+                const SizedBox(width: 22),
+                Expanded(
+                  child: Column(
+                    children: countries.skip(half).map(_countryCard).toList(),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+        const SizedBox(height: 2),
+        const Text(
+          'Zero indica ausência de cobertura válida nesta categoria e temporada.',
+          style: TextStyle(fontSize: 15),
+        ),
+      ],
+    );
+  }
+
+  Widget _modePanel() => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      LayoutBuilder(
+        builder: (context, constraints) {
+          final assembly = _choice(
+            'Como montar',
+            _creation,
+            [
+              ('Automatic', 'GERAR MUNDO AUTOMÁTICO'),
+              ('Choose', 'ESCOLHER CLUBES E DIVISÕES'),
+              ('FullCustom', 'CRIAR MUNDO PERSONALIZADO'),
+            ],
+            (value) {
+              _creation = value;
+              _mode = value == 'Choose' ? 'Custom' : 'Automatic';
+              _assembly = null;
+            },
+          );
+          if (_creation == 'FullCustom' || !widget.worldCatalogRules) {
+            return assembly;
+          }
+          final gameplay = _choice('Modo de jogo', 'CLASSIC_SYNC', [
+            ('CLASSIC_SYNC', 'CLÁSSICO SINCRONIZADO'),
+          ], (_) {});
+          return constraints.maxWidth < 700
+              ? Column(children: [assembly, gameplay])
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: assembly),
+                    const SizedBox(width: 20),
+                    Expanded(child: gameplay),
+                  ],
+                );
+        },
+      ),
+      if (_creation == 'FullCustom')
+        CreatorConsent(
+          icon: Icons.edit_note,
+          title: 'AUTORIZO CLUBES E JOGADORES PERSONALIZADOS',
+          description:
+              'Começar com 128 clubes fictícios editáveis, usando os países e a categoria selecionados.',
+          value: _customConsent,
+          onChanged: _busy
+              ? null
+              : (value) => setState(() => _customConsent = value == true),
+        ),
+      if (_creation != 'FullCustom') ...[
+        if (widget.worldCatalogRules)
+          Container(
+            margin: const EdgeInsets.only(bottom: 18),
+            decoration: BoxDecoration(
+              border: Border.all(color: ClassicTheme.of(context).paper.border),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SwitchListTile.adaptive(
+              dense: true,
+              visualDensity: const VisualDensity(vertical: -2),
+              key: const Key('fictional-world-016b'),
+              secondary: const Icon(Icons.language, size: 28),
+              title: const Text(
+                'MUNDO TOTALMENTE FICTÍCIO • AUTORIZO 128 CLUBES E ATLETAS GERADOS',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  height: 1.1,
+                ),
+              ),
+              subtitle: const Text(
+                'Classificação dos clubes: 1–20. Elencos iniciais: ciclo de 23 a 17 atletas; clubes de elite podem iniciar com 23. A força individual continua 1–50.',
+                style: TextStyle(fontSize: 15, height: 1.15),
+              ),
+              value: _fictionalOnly,
+              onChanged: _busy
+                  ? null
+                  : (value) => setState(() {
+                      _fictionalOnly = value;
+                      _preview = null;
+                      _assignments.clear();
+                      if (_fictionalOnly) {
+                        _dataMode = 'FREE_WORLD';
+                        _fictional = true;
+                        _fictionalPlayers = true;
+                      }
+                    }),
+            ),
+          ),
+        _choice(
+          'Dados do mundo',
+          _dataMode,
+          [
+            ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
+            ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
+            ('FREE_WORLD', 'MUNDO LIVRE'),
+          ],
+          (value) {
+            _dataMode = value;
+            if (value != 'FREE_WORLD') _fictionalOnly = false;
+          },
+        ),
+        Builder(
+          builder: (context) {
+            final theme = ClassicTheme.of(context);
+            final background = Color.lerp(
+              theme.surface,
+              theme.selectedBackground,
+              .22,
+            )!;
+            return Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: background,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.info_outline,
+                    color: readableInk(background),
+                    size: 23,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
+                      style: TextStyle(
+                        color: readableInk(background),
+                        fontSize: 17,
+                        fontWeight: FontWeight.w700,
+                        height: 1.1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        _dataConsentChoices(),
+        const SizedBox(height: 18),
+        _choice('Montagem', _mode, [
+          ('Automatic', 'AUTOMÁTICO POR RANKING'),
+          ('Custom', 'ESCOLHER CLUBES E DIVISÕES'),
+        ], (value) => _mode = value),
+        CreatorConsent(
+          icon: Icons.save_outlined,
+          title: 'Usar imediatamente os dados salvos',
+          description:
+              'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
+          value: _saved,
+          onChanged: _busy ? null : (value) => setState(() => _saved = value!),
+        ),
+        CreatorConsent(
+          icon: Icons.history,
+          title: 'INCLUIR clubes históricos, com referência passada explícita',
+          value: _includeHistorical,
+          onChanged: _busy || _dataMode != 'FREE_WORLD'
+              ? null
+              : (value) => setState(() {
+                  _includeHistorical = value!;
+                  _preview = null;
+                  _assignments.clear();
+                }),
+        ),
+        CreatorConsent(
+          icon: Icons.fact_check_outlined,
+          title: 'INCLUIR clubes sem verificação de atividade',
+          description:
+              'Listas antigas não comprovam participação na temporada atual.',
+          value: _includeUnverified,
+          onChanged: _busy || _dataMode != 'FREE_WORLD'
+              ? null
+              : (value) => setState(() {
+                  _includeUnverified = value!;
+                  _preview = null;
+                  _assignments.clear();
+                }),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 12),
+          child: Text(
+            '4 divisões de 8 clubes e 96 distritais. Ranking define apenas a distribuição inicial.',
+            style: TextStyle(fontSize: 15),
+          ),
+        ),
+      ],
+    ],
+  );
+
   Widget _body() {
     if (_assembly != null && _step >= 3 && _step <= 5) return _assemblyPanel();
     switch (_step) {
@@ -743,210 +1208,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           ],
         );
       case 1:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _searchField(),
-            Text(
-              '${_countries.length} países selecionados${widget.worldCatalogRules ? ' • máximo 8' : ''}',
-            ),
-            if (widget.worldCatalogRules)
-              Wrap(
-                spacing: 10,
-                children: [
-                  TextButton(
-                    onPressed: _busy
-                        ? null
-                        : () => setState(() {
-                            _countries.clear();
-                            _assignments.clear();
-                            _preview = null;
-                          }),
-                    child: const Text('LIMPAR SELEÇÃO'),
-                  ),
-                  TextButton(
-                    onPressed: _busy
-                        ? null
-                        : () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => WorldCatalogStatus016B(
-                                api: widget.api,
-                                coachId: widget.coachId,
-                                gender: _gender,
-                                season: _season.text.trim(),
-                              ),
-                            ),
-                          ),
-                    child: const Text('CACHE, ATUALIZAÇÕES E COBERTURA'),
-                  ),
-                ],
-              ),
-            TextButton(
-              onPressed: _busy ? null : _initialize,
-              child: const Text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'),
-            ),
-            for (final c in _options.where(
-              (c) => c['name'].toString().toLowerCase().contains(_search),
-            ))
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(c['name'].toString()),
-                subtitle: Text(
-                  '${c[_gender == 'Male' ? 'maleClubs' : 'femaleClubs']} clubes disponíveis',
-                ),
-                value: _countries.contains(c['code']),
-                onChanged: _busy
-                    ? null
-                    : (v) => setState(() {
-                        if (v!) {
-                          if (widget.worldCatalogRules &&
-                              _countries.length >= 8) {
-                            _error = 'Selecione no máximo oito países.';
-                            return;
-                          }
-                          _countries.add(c['code'].toString());
-                        } else {
-                          _countries.remove(c['code']);
-                        }
-                        _assembly = null;
-                        _assignments.clear();
-                        _fictional = false;
-                        _fictionalPlayers = false;
-                        _dataSummary = null;
-                        _preview = null;
-                      }),
-              ),
-            const Text(
-              'Zero indica ausência de cobertura válida nesta categoria e temporada.',
-            ),
-          ],
-        );
+        return _countriesPanel();
       case 2:
-        return Column(
-          children: [
-            _choice(
-              'Como montar',
-              _creation,
-              [
-                ('Automatic', 'GERAR MUNDO AUTOMÁTICO'),
-                ('Choose', 'ESCOLHER CLUBES E DIVISÕES'),
-                ('FullCustom', 'CRIAR MUNDO PERSONALIZADO'),
-              ],
-              (v) {
-                _creation = v;
-                _mode = v == 'Choose' ? 'Custom' : 'Automatic';
-                _assembly = null;
-              },
-            ),
-            if (_creation == 'FullCustom')
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: const Text('AUTORIZO CLUBES E JOGADORES PERSONALIZADOS'),
-                subtitle: const Text(
-                  'Começar com 128 clubes fictícios editáveis, usando os países e a categoria selecionados.',
-                ),
-                value: _customConsent,
-                onChanged: _busy
-                    ? null
-                    : (v) => setState(() => _customConsent = v == true),
-              ),
-            if (_creation != 'FullCustom') ...[
-              if (widget.worldCatalogRules) ...[
-                _choice('Modo de jogo', 'CLASSIC_SYNC', [
-                  ('CLASSIC_SYNC', 'CLÁSSICO SINCRONIZADO'),
-                ], (_) {}),
-                CheckboxListTile(
-                  key: const Key('fictional-world-016b'),
-                  contentPadding: EdgeInsets.zero,
-                  title: const Text(
-                    'MUNDO TOTALMENTE FICTÍCIO • AUTORIZO 128 CLUBES E ATLETAS GERADOS',
-                  ),
-                  value: _fictionalOnly,
-                  onChanged: _busy
-                      ? null
-                      : (v) => setState(() {
-                          _fictionalOnly = v == true;
-                          _preview = null;
-                          _assignments.clear();
-                          if (_fictionalOnly) {
-                            _dataMode = 'FREE_WORLD';
-                            _fictional = true;
-                            _fictionalPlayers = true;
-                          }
-                        }),
-                ),
-                const Text(
-                  'Classificação dos clubes: 1–20. Elencos iniciais: ciclo de 23 a 17 atletas; clubes de elite podem iniciar com 23. A força individual continua 1–50.',
-                ),
-              ],
-              _choice(
-                'Dados do mundo',
-                _dataMode,
-                [
-                  ('REAL_COMPLETE', 'SOMENTE DADOS REAIS COMPLETOS'),
-                  ('REAL_CLUBS_SIMULATED', 'CLUBES REAIS + ELENCOS SIMULADOS'),
-                  ('FREE_WORLD', 'MUNDO LIVRE'),
-                ],
-                (v) {
-                  _dataMode = v;
-                  if (v != 'FREE_WORLD') _fictionalOnly = false;
-                },
-              ),
-              const Text(
-                'O modo somente real bloqueia a criação se faltarem elencos atuais comprovados. Complementação depende de autorização explícita.',
-              ),
-              _dataConsentChoices(),
-              _choice('Montagem', _mode, [
-                ('Automatic', 'AUTOMÁTICO POR RANKING'),
-                ('Custom', 'ESCOLHER CLUBES E DIVISÕES'),
-              ], (v) => _mode = v),
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: const Text('Usar imediatamente os dados salvos'),
-                subtitle: const Text(
-                  'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
-                ),
-                value: _saved,
-                onChanged: _busy ? null : (v) => setState(() => _saved = v!),
-              ),
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: const Text(
-                  'INCLUIR clubes históricos, com referência passada explícita',
-                ),
-                value: _includeHistorical,
-                onChanged: _busy || _dataMode != 'FREE_WORLD'
-                    ? null
-                    : (v) => setState(() {
-                        _includeHistorical = v!;
-                        _preview = null;
-                        _assignments.clear();
-                      }),
-              ),
-              CheckboxListTile(
-                contentPadding: EdgeInsets.zero,
-                title: const Text(
-                  'INCLUIR clubes sem verificação de atividade',
-                ),
-                subtitle: const Text(
-                  'Listas antigas não comprovam participação na temporada atual.',
-                ),
-                value: _includeUnverified,
-                onChanged: _busy || _dataMode != 'FREE_WORLD'
-                    ? null
-                    : (v) => setState(() {
-                        _includeUnverified = v!;
-                        _preview = null;
-                        _assignments.clear();
-                      }),
-              ),
-              const Text(
-                '4 divisões de 8 clubes e 96 distritais. Ranking define apenas a distribuição inicial.',
-              ),
-            ],
-          ],
-        );
+        return _modePanel();
       case 3:
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1157,70 +1421,19 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   });
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: ClassicTheme.of(context).surface,
-    appBar: AppBar(
-      title: const Text('CRIADOR DE MUNDOS', style: TextStyle(fontSize: 16)),
-      backgroundColor: ClassicTheme.of(context).surface,
-    ),
-    body: SafeArea(
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 980),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  '${_step + 1}/8 • ${_steps[_step]}',
-                  style: const TextStyle(color: Colors.amber, fontSize: 18),
-                ),
-              ),
-              if (_busy) const LinearProgressIndicator(),
-              if (_error.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    _error,
-                    maxLines: 6,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Colors.orangeAccent),
-                  ),
-                ),
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: _body(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Wrap(
-                  spacing: 16,
-                  children: [
-                    TextButton(
-                      onPressed: _busy || _step == 0
-                          ? null
-                          : () => setState(() {
-                              _step--;
-                              _search = '';
-                            }),
-                      child: const Text('VOLTAR'),
-                    ),
-                    if (_step < 7)
-                      ElevatedButton(
-                        onPressed: _busy || (_step == 6 && !_validPreview)
-                            ? null
-                            : _next,
-                        child: const Text('CONTINUAR'),
-                      ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
+  Widget build(BuildContext context) => CreatorFrame(
+    steps: _steps,
+    step: _step,
+    countryCount: _countries.length,
+    busy: _busy,
+    error: _error,
+    body: _body(),
+    back: _busy || _step == 0
+        ? null
+        : () => setState(() {
+            _step--;
+            _search = '';
+          }),
+    next: _busy || (_step == 6 && !_validPreview) ? null : _next,
   );
 }

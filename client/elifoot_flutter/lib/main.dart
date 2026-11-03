@@ -15,6 +15,7 @@ import 'morale_bar.dart';
 import 'world_creator.dart';
 import 'club_theme.dart';
 import 'club_crest.dart';
+import 'club_selection_dialog.dart';
 import 'classic_layout.dart';
 import 'visual_components.dart';
 import 'coach_finance_screens.dart';
