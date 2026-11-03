@@ -66,7 +66,7 @@ public static class WorldCreatorEngine
             assigned.Add(new(a.Division, club));
         }
         int fictionalIndex = 0;
-        EligibleCatalogClub Fictional()
+        EligibleCatalogClub Fictional(DivisionTier seedTier)
         {
             var country = request.Countries.FirstOrDefault() ?? "XX";
             string id = $"fictional-{++fictionalIndex}";
@@ -77,11 +77,12 @@ public static class WorldCreatorEngine
                 var club=new EligibleCatalogClub(ClubKey(country,request.Gender,"fictional013c",id),id,"fictional013c",$"Equipe fictícia {country}-{fictionalIndex:000}",
                     $"F{fictionalIndex:000}",country,selection.Clubs.FirstOrDefault(c=>c.CountryCode==country)?.CountryName??country,request.Gender,"Fictícia",request.Season,
                     "#006400","#FFFFFF",null,[],[],true,Verification:new(CatalogClubVerificationStatus.FICTIONAL_CLUB,"Complemento fictício autorizado",DateTime.UnixEpoch));
-                return PlayableWorldPolicy.Prepare(club,request.Seed,request.AllowFictionalPlayers);
+                return PlayableWorldPolicy.Prepare(club,request.Seed,request.AllowFictionalPlayers,fictionalSeedTier:seedTier);
             }
             var positions = new[] { "G", "G", "D", "D", "D", "D", "D", "D", "M", "M", "M", "M", "M", "M", "A", "A", "A", "A" };
+            var rng = new DeterministicRng(((long)request.Seed << 32) ^ fictionalIndex);
             var players = positions.Select((p, i) => new CatalogAthlete($"{id}-p{i}", id, "fictional", request.Gender,
-                request.Season, $"Atleta fictício {fictionalIndex}-{i + 1}", p, 15 + ((i + fictionalIndex) % 16),
+                request.Season, $"Atleta fictício {fictionalIndex}-{i + 1}", p, InitialFictionalStrength.FromDraw(seedTier, rng.NextUInt64()),
                 "Fictício autorizado", DateTime.UnixEpoch)).ToList();
             return new(ClubKey(country, request.Gender, "fictional", id), id, "fictional", $"Equipe fictícia {fictionalIndex:000}",
                 $"F{fictionalIndex:000}", country, country, request.Gender, "Fictícia", request.Season,
@@ -100,8 +101,11 @@ public static class WorldCreatorEngine
             }
             while (count < capacity && request.AllowFictionalTeams && (!request.UseWorldCatalogRules || division==5 || request.FictionalOnly) && (request.DataMode == null || request.DataMode == WorldDataMode.FREE_WORLD && request.AllowFictionalPlayers))
             {
-                var club = Fictional();
-                if(request.UseWorldCatalogRules)club=WorldCatalogRules016B.Prepare(club,assigned.Count,request.Seed,request.AllowFictionalPlayers,0);
+                // Only fresh placeholders inherit the seed distribution of the slot they fill.
+                // Clubs already in the catalogue keep their calibration through manual placement.
+                var seedTier = (DivisionTier)division;
+                var club = Fictional(seedTier);
+                if(request.UseWorldCatalogRules)club=WorldCatalogRules016B.Prepare(club,assigned.Count,request.Seed,request.AllowFictionalPlayers,0,seedTier);
                 used.Add(club.Key); assigned.Add(new(division, club)); count++;
             }
         }

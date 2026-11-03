@@ -18,6 +18,51 @@ namespace Elifoot.Integration.Tests;
 public class ClassicForce012CIntegrationTests
 {
     [Fact]
+    public async Task NewFictionalGenerationDoesNotRecalibrateAnExistingSqliteSave()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+        var services = new ServiceCollection();
+        services.AddDbContext<ElifootDbContext>(options => options.UseSqlite(connection));
+        services.AddSingleton<IWorldRepository, EfWorldRepository>();
+        await using var provider = services.BuildServiceProvider();
+        using (var scope = provider.CreateScope())
+            await scope.ServiceProvider.GetRequiredService<ElifootDbContext>().Database.EnsureCreatedAsync();
+        var repository = provider.GetRequiredService<IWorldRepository>();
+
+        var request = new WorldCreatorRequest("Fictional strength", FootballGender.Male, "2026", ["PT"],
+            WorldAssemblyMode.Automatic, DistrictFillMode.Ranking, 199801, [], AllowFictionalTeams: true,
+            AllowFictionalPlayers: true, DataMode: WorldDataMode.FREE_WORLD, UseWorldCatalogRules: true, FictionalOnly: true);
+        var selection = new CatalogSelection(request.Gender, request.Season, request.Countries, [], [], []);
+        var preview = WorldCreatorEngine.Preview(request, selection);
+        var legacyClubs = preview.Clubs.Select(c => c.Division != 4 ? c : c with
+        {
+            Club = c.Club with
+            {
+                Players = c.Club.Players.Select(p => p with
+                {
+                    Strength = p.Strength + 8,
+                    StrengthEstimate = p.StrengthEstimate! with { Method = "generated-club-level-v1" }
+                }).ToList()
+            }
+        }).ToList();
+        var legacy = WorldCreatorEngine.Create(request, preview with { Clubs = legacyClubs });
+        var savedStrengths = legacy.Players.Select(p => (p.Id, p.Strength, p.SalaryPerRound, p.ContractRoundsRemaining)).ToArray();
+        await repository.SaveWorldAsync(legacy);
+
+        var fresh = WorldCreatorEngine.Create(request, WorldCreatorEngine.Preview(request, selection));
+        await repository.SaveWorldAsync(fresh);
+        EfWorldRepository.ClearCacheForTesting();
+        var loaded = await repository.GetWorldAsync(legacy.Id);
+        Assert.NotNull(loaded);
+        Assert.NotSame(legacy, loaded);
+        Assert.Equal(savedStrengths, loaded.Players.Select(p => (p.Id, p.Strength, p.SalaryPerRound, p.ContractRoundsRemaining)));
+        var fourth = loaded.Clubs.Where(c => c.DivisionTier == DivisionTier.QuartaDivisao).Select(c => c.Id).ToHashSet();
+        Assert.Contains(loaded.Players, p => fourth.Contains(p.ClubId!.Value) && p.Strength == 34);
+        Assert.All(fresh.Players.Where(p => fourth.Contains(p.ClubId!.Value)), p => Assert.InRange(p.Strength, 16, 26));
+    }
+
+    [Fact]
     public async Task SqlitePersistsDailyLossDatesRecoveryAndHistoryWithoutReapplying()
     {
         await using var connection=new SqliteConnection("Data Source=:memory:");await connection.OpenAsync();

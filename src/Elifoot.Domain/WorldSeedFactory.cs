@@ -164,14 +164,15 @@ public static class WorldSeedFactory
                 stadiumName = $"Municipal de {city}";
             }
 
-            var (builtCap, cash, rep, minStr, maxStr) = tier switch
+            var (builtCap, cash, rep) = tier switch
             {
-                DivisionTier.PrimeiraDivisao => (rng.NextInt(32_000, 52_000), 4_200_000m, rng.NextInt(78, 95), 34, 48),
-                DivisionTier.SegundaDivisao => (rng.NextInt(18_000, 30_000), 2_600_000m, rng.NextInt(62, 77), 27, 39),
-                DivisionTier.TerceiraDivisao => (rng.NextInt(10_000, 18_000), 1_650_000m, rng.NextInt(48, 61), 21, 32),
-                DivisionTier.QuartaDivisao => (rng.NextInt(6_000, 11_000), 1_100_000m, rng.NextInt(35, 47), 16, 26),
-                _ => (rng.NextInt(3_000, 6_500), 650_000m, rng.NextInt(18, 34), 10, 21)
+                DivisionTier.PrimeiraDivisao => (rng.NextInt(32_000, 52_000), 4_200_000m, rng.NextInt(78, 95)),
+                DivisionTier.SegundaDivisao => (rng.NextInt(18_000, 30_000), 2_600_000m, rng.NextInt(62, 77)),
+                DivisionTier.TerceiraDivisao => (rng.NextInt(10_000, 18_000), 1_650_000m, rng.NextInt(48, 61)),
+                DivisionTier.QuartaDivisao => (rng.NextInt(6_000, 11_000), 1_100_000m, rng.NextInt(35, 47)),
+                _ => (rng.NextInt(3_000, 6_500), 650_000m, rng.NextInt(18, 34))
             };
+            var (minStr, maxStr) = InitialFictionalStrength.Range(tier);
 
             double cond = Math.Round(rng.NextDouble(88.0, 99.0), 1);
             int usableCap = (int)Math.Round(builtCap * (cond / 100.0));

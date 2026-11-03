@@ -80,7 +80,8 @@ public static class PlayableWorldPolicy
         var calibrated=InitialPlayerStrength.Apply(clubs.Select(c=>c with { Rank=Sporting(c.SourceRanking)?c.SourceRanking!.Rank:null }).ToList(),seed);
         return calibrated.Select(c=>c with {Rank=order[c.Key]}).ToList();
     }
-    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int seed,bool consent,int targetSize=18,bool requireTarget=false)
+    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int seed,bool consent,int targetSize=18,bool requireTarget=false,
+        DivisionTier? fictionalSeedTier=null)
     {
         var selected=InitialRosterPolicy.Prepare(club,seed,false).Players;
         if(!consent || Complete(selected) && (!requireTarget || selected.Count>=targetSize))return club with {Players=selected};
@@ -100,11 +101,17 @@ public static class PlayableWorldPolicy
                 if(removable==null)return;selected.Remove(removable);
             }
             int n=++index;string identity=$"generated013c:{Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(club.Key)))[..16]}:{seed}:{n}";
-            double variation=(Key(seed,$"{club.Key}:{position}:{n}")/(double)ulong.MaxValue*2-1)*7;
-            int force=Math.Clamp((int)Math.Round(level+variation+(position=="M"?1:0),MidpointRounding.AwayFromZero),1,50);
+            ulong draw=Key(seed,$"{club.Key}:{position}:{n}");
+            double variation=(draw/(double)ulong.MaxValue*2-1)*7;
+            int force=fictionalSeedTier is { } tier
+                ? InitialFictionalStrength.FromDraw(tier,draw)
+                : Math.Clamp((int)Math.Round(level+variation+(position=="M"?1:0),MidpointRounding.AwayFromZero),1,50);
+            var estimate=fictionalSeedTier is { } seedTier
+                ? new PlayerStrengthEstimate("generated-classic-seed-v1",CatalogDataOrigin.Generated,0,
+                    $"{identity}:tier:{(int)seedTier}",.5,null)
+                : new PlayerStrengthEstimate("generated-club-level-v1",CatalogDataOrigin.Generated,confidence,identity,.5,null);
             selected.Add(new(identity,club.ExternalId,club.Provider,club.Gender,club.Season,$"Atleta fictício {club.ShortName}-{n:00}",position,
-                force,"generated013c",DateTime.UnixEpoch,identity,CatalogDataOrigin.Generated,
-                new("generated-club-level-v1",CatalogDataOrigin.Generated,confidence,identity,.5,null),
+                force,"generated013c",DateTime.UnixEpoch,identity,CatalogDataOrigin.Generated,estimate,
                 PlayerOrigin:WorldPlayerOrigin.FICTIONAL_GENERATED));
         }
         foreach(var (position,minimum) in new[]{("G",2),("D",4),("M",4),("A",2)})

@@ -109,17 +109,24 @@ public sealed class PlayableWorld013CTests
         Assert.DoesNotContain(result.Clubs.SelectMany(c=>c.Club.Players),x=>x.CanonicalPlayerId==p.CanonicalPlayerId);
         Assert.Contains(result.Clubs[0].Club.ReferencePlayers!,x=>x.PlayerOrigin==WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE);
     }
-    [Fact]
-    public void VerifiedPlayerIsKeptOnceAndManualPlacementDoesNotChangeStrength()
+    [Theory][InlineData(false)][InlineData(true)]
+    public void VerifiedPlayerIsKeptOnceAndManualPlacementDoesNotChangeStrength(bool catalogRules)
     {
         var s=Selection(FootballGender.Female);s.Clubs[0]=s.Clubs[0] with {Players=Selection(FootballGender.Female,1,1).Clubs[0].Players};
-        var request=Request(FootballGender.Female,WorldDataMode.REAL_CLUBS_SIMULATED,true);var a=WorldCreatorEngine.Preview(request,s);
-        Assert.Equal(1,a.DataSummary!.RealCurrentPlayers);Assert.Equal(2303,a.DataSummary.GeneratedPlayers);
+        var request=Request(FootballGender.Female,WorldDataMode.REAL_CLUBS_SIMULATED,true) with {UseWorldCatalogRules=catalogRules};
+        if(catalogRules)s=s with {Clubs=WorldCatalogRules016B.Classify(s.Clubs)};
+        var a=WorldCreatorEngine.Preview(request,s);
+        Assert.Equal(1,a.DataSummary!.RealCurrentPlayers);
+        Assert.Equal(a.Clubs.Sum(c=>c.Club.Players.Count)-1,a.DataSummary.GeneratedPlayers);
         var assignments=a.Clubs.Select(c=>new ClubAssignment(c.Club.Key,c.Division)).ToList();
         assignments[0]=assignments[0] with {Division=4};assignments[24]=assignments[24] with {Division=1};
         var manual=WorldCreatorEngine.Preview(request with {Mode=WorldAssemblyMode.Custom,DistrictMode=DistrictFillMode.Manual,Assignments=assignments,FillRemainingDivisions=false},s);
         Assert.Empty(manual.Errors);Assert.Equal(96,manual.Clubs.Count(c=>c.Division==5));
         foreach(var c in a.Clubs)Assert.Equal(c.Club.Players.Select(p=>(p.CanonicalPlayerId,p.Strength)),manual.Clubs.Single(m=>m.Club.Key==c.Club.Key).Club.Players.Select(p=>(p.CanonicalPlayerId,p.Strength)));
+        var elite=WorldCreatorEngine.Create(request with {Mode=WorldAssemblyMode.Custom},manual);
+        var moved=Assert.Single(elite.Clubs,c=>c.Name==a.Clubs[0].Club.Name);
+        Assert.Equal(DivisionTier.QuartaDivisao,moved.DivisionTier);
+        Assert.Contains(elite.Players,p=>p.ClubId==moved.Id&&p.Strength>34);
     }
     [Fact]
     public void ProvisionalOrderingUsesSavedSeedAndIsNeverPresentedAsSportingRanking()

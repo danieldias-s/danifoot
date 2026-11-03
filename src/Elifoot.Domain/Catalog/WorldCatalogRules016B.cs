@@ -46,12 +46,14 @@ public static class WorldCatalogRules016B
         return selected.OrderBy(p=>p.Position=="G"?0:p.Position=="D"?1:p.Position=="M"?2:3)
             .ThenByDescending(Score).ThenBy(p=>p.PlayerExternalId,StringComparer.Ordinal).ToList();
     }
-    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int ordinal,int seed,bool allowGenerated,int eliteCutoff)
+    public static EligibleCatalogClub Prepare(EligibleCatalogClub club,int ordinal,int seed,bool allowGenerated,int eliteCutoff,
+        DivisionTier? fictionalSeedTier=null)
     {
         bool elite=club.InitialProfile is {WorldRank:>0,RankingConfidence:>0} profile && profile.WorldRank<=eliteCutoff;
         int target=elite?23:SquadSizeAt(ordinal);
         var selected=SelectRoster(club.Players,target);
-        var prepared=PlayableWorldPolicy.Prepare(club with {Players=selected},seed,allowGenerated,target,requireTarget:true);
+        var prepared=PlayableWorldPolicy.Prepare(club with {Players=selected},seed,allowGenerated,target,requireTarget:true,
+            fictionalSeedTier:fictionalSeedTier);
         selected=SelectRoster(prepared.Players,target);
         var initial=club.InitialProfile ?? new(1,ordinal+1,null,"elifoot-stable-order-unranked",DateTime.UnixEpoch,0);
         return prepared with {Players=selected,InitialProfile=initial with {TargetInitialSquadSize=target,EliteRuleApplied=elite}};
