@@ -1,0 +1,321 @@
+{
+  "status": "PASS",
+  "humanVisualApproval": "pending",
+  "date": "2026-11-03",
+  "branch": "codex/world-creator-visual",
+  "baseCheckpoint": "2ef9c09",
+  "implementationCheckpoint": "311e3591871131d5be9f492dad8a9c68c1d8c4df",
+  "preview": {
+    "web": "http://127.0.0.1:5222",
+    "api": "http://127.0.0.1:5221",
+    "worldId": "657ca9b6-02b4-493b-88c1-de4d23f20d44",
+    "isolatedSqlite": true,
+    "catalogEmpty": true
+  },
+  "browser": {
+    "engine": "Chromium / installed Chrome in own headless process",
+    "deviceScaleFactor": 1,
+    "physicalDevice": false
+  },
+  "tests": {
+    "flutter": 284,
+    "added": 8,
+    "flutterPassed": true,
+    "analyze": {
+      "errors": 0,
+      "warnings": 0,
+      "existingInfo": "unnecessary_const at lib/live_match_view.dart:241:28",
+      "noFatalInfos": true
+    },
+    "webBuild": "release passed",
+    "backendFilesChanged": 0
+  },
+  "functionalChecks": {
+    "providerBlockedInRealComplete": true,
+    "deselectCounter": true,
+    "reselectCounter": true,
+    "search": true,
+    "zeroCountriesBlocked": true,
+    "consultAvailability": {
+      "status": 200,
+      "path": "/api/world-creator/countries"
+    },
+    "cachePage": true,
+    "freeWorldProviderEnabled": true,
+    "fictionSwitch": true,
+    "changeHow": true,
+    "gameModeOnlyApproved": true,
+    "backCountriesRetained": true,
+    "forwardModeRetained": true,
+    "clubScroll": true,
+    "cancelUnassigned": true,
+    "assumeClub": {
+      "name": "Atlético Paulistano",
+      "id": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+      "totalHumans": 1
+    },
+    "reloadReconnect": {
+      "sameClubVisible": true,
+      "totalHumans": 1,
+      "participantCount": 1
+    },
+    "multiplayer": {
+      "totalHumans": 2,
+      "connected": 2,
+      "clubs": [
+        "Atlético Paulistano",
+        "Grêmio Guanabara"
+      ]
+    }
+  },
+  "countries": {
+    "status": 200,
+    "response": [
+      {
+        "code": "DE",
+        "name": "Alemanha",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "AR",
+        "name": "Argentina",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "BR",
+        "name": "Brasil",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "ES",
+        "name": "Espanha",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "FR",
+        "name": "França",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "GB",
+        "name": "Inglaterra",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "IT",
+        "name": "Itália",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      },
+      {
+        "code": "PT",
+        "name": "Portugal",
+        "maleClubs": 0,
+        "femaleClubs": 0
+      }
+    ]
+  },
+  "captures": [
+    {
+      "screen": "countries",
+      "width": 360,
+      "height": 1400,
+      "file": "countries-360.png",
+      "documentWidth": 360,
+      "viewportWidth": 360,
+      "sha256": "dd978be637b90560e9d47de595010daa0466df6d01d7d2a8ab8e5dff325e7749",
+      "bytes": 234356
+    },
+    {
+      "screen": "countries",
+      "width": 390,
+      "height": 1400,
+      "file": "countries-390.png",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "sha256": "96a781b0109dc37e6b0fe6ff0f8e068d5e5635b252d2bd196258d710b73d1eff",
+      "bytes": 249884
+    },
+    {
+      "screen": "countries",
+      "width": 430,
+      "height": 1400,
+      "file": "countries-430.png",
+      "documentWidth": 430,
+      "viewportWidth": 430,
+      "sha256": "571506ee4652049d4cbd81387e240828ff5e28d5723764f1f397d0493ae13884",
+      "bytes": 293607
+    },
+    {
+      "screen": "countries",
+      "width": 768,
+      "height": 1150,
+      "file": "countries-768.png",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "sha256": "05b6e93d7f6196a22c26cdbfe02b07c78fe6ce19710603ce98f6b1323ab49f7a",
+      "bytes": 245290
+    },
+    {
+      "screen": "countries",
+      "width": 1366,
+      "height": 1080,
+      "file": "countries-1366.png",
+      "documentWidth": 1366,
+      "viewportWidth": 1366,
+      "sha256": "ebcc8589477f55d39f0ced95f7291c5a7305b59fab7009cfdbf5483a175f643f",
+      "bytes": 860301
+    },
+    {
+      "screen": "countries",
+      "width": 1920,
+      "height": 1080,
+      "file": "countries-1920.png",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "sha256": "ad4630c0d226675f78637deb334bacc8f31f473a2d769bc516c0a074253dbb84",
+      "bytes": 1371262
+    },
+    {
+      "screen": "mode",
+      "width": 360,
+      "height": 1800,
+      "file": "mode-360.png",
+      "documentWidth": 360,
+      "viewportWidth": 360,
+      "sha256": "ffc5bef613c0c7d7462fab93ccead67552a6c1e317f69d786fd2bccd5a248563",
+      "bytes": 270686
+    },
+    {
+      "screen": "mode",
+      "width": 390,
+      "height": 1800,
+      "file": "mode-390.png",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "sha256": "d30ef1f9aef5146924824afb78b751e519214c124cc1a3477d77f551b53ac6b6",
+      "bytes": 345012
+    },
+    {
+      "screen": "mode",
+      "width": 430,
+      "height": 1800,
+      "file": "mode-430.png",
+      "documentWidth": 430,
+      "viewportWidth": 430,
+      "sha256": "c7aa0d98f0d029532a245229ec0296ddbd4040d740f3c54fc18128631bdc9d0c",
+      "bytes": 403389
+    },
+    {
+      "screen": "mode",
+      "width": 768,
+      "height": 1350,
+      "file": "mode-768.png",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "sha256": "5573a0db0805833b8c2ba15bb0bb882566da48e49c51228e8cfcb2af79f15692",
+      "bytes": 562561
+    },
+    {
+      "screen": "mode",
+      "width": 1366,
+      "height": 1200,
+      "file": "mode-1366.png",
+      "documentWidth": 1366,
+      "viewportWidth": 1366,
+      "sha256": "18d0df5724e96a1a8c2dbd6503414fa9d24bb7d8107db461341344ec43df493b",
+      "bytes": 776450
+    },
+    {
+      "screen": "mode",
+      "width": 1920,
+      "height": 1200,
+      "file": "mode-1920.png",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "sha256": "2f5c7b72bda387e6063df4ad28cb7c5525b4927587c145199e8c02002f1f5acd",
+      "bytes": 1378989
+    },
+    {
+      "screen": "clubs",
+      "width": 360,
+      "height": 900,
+      "file": "clubs-360.png",
+      "cancelVisible": true,
+      "documentWidth": 360,
+      "viewportWidth": 360,
+      "sha256": "82c915d86074c32505dce3fa221ea67f5618b555c6f2e381f8307c66b3c137c9",
+      "bytes": 115191
+    },
+    {
+      "screen": "clubs",
+      "width": 390,
+      "height": 900,
+      "file": "clubs-390.png",
+      "cancelVisible": true,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "sha256": "c878c662a1cebe562171bc48e00c648454d7f49a671ba73c54094a7ad35c25d4",
+      "bytes": 117177
+    },
+    {
+      "screen": "clubs",
+      "width": 430,
+      "height": 900,
+      "file": "clubs-430.png",
+      "cancelVisible": true,
+      "documentWidth": 430,
+      "viewportWidth": 430,
+      "sha256": "ef33a2cdade9e793842b1d52a3b966914fcf4e5827051bbd62e9c4994f2e9c05",
+      "bytes": 119796
+    },
+    {
+      "screen": "clubs",
+      "width": 768,
+      "height": 1000,
+      "file": "clubs-768.png",
+      "cancelVisible": true,
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "sha256": "ef6450bff6086615165c3ebbb4974216bdd22a0f3afb1a863e16606fdf58744e",
+      "bytes": 237924
+    },
+    {
+      "screen": "clubs",
+      "width": 1366,
+      "height": 1080,
+      "file": "clubs-1366.png",
+      "cancelVisible": true,
+      "documentWidth": 1366,
+      "viewportWidth": 1366,
+      "sha256": "e2b39307550a32d76fc77925561d13f53690fac0c384bfc7919184fbef2b4943",
+      "bytes": 647099
+    },
+    {
+      "screen": "clubs",
+      "width": 1920,
+      "height": 1080,
+      "file": "clubs-1920.png",
+      "cancelVisible": true,
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "sha256": "649445309e86e8ef62227faf47c925cd393978052adb125393bd7b543ffdc993",
+      "bytes": 1193159
+    }
+  ],
+  "knownLimits": [
+    "Human visual approval pending",
+    "Mobile viewports emulated, no physical-device test",
+    "Existing unnecessary_const info retained",
+    "Empty isolated real-data catalog displays zero"
+  ],
+  "merge": false,
+  "push": false,
+  "published": false
+}
