@@ -1,0 +1,64 @@
+{
+  "DomainConfiguration": "Debug",
+  "FlutterTests": 276,
+  "Tests": {
+    "IntegrationWide": {
+      "Passed": 260,
+      "File": "cup-integration-final_net10.0_20261103160038.trx",
+      "Total": 261,
+      "Failed": 1
+    },
+    "Domain": {
+      "Passed": 466,
+      "File": "cup-domain-complete_net10.0_20261103155722.trx",
+      "Total": 466,
+      "Failed": 0
+    },
+    "CalendarRelease": {
+      "Passed": 10,
+      "File": "cup-calendar-final_net10.0_20261103160215.trx",
+      "Total": 10,
+      "Failed": 0
+    },
+    "Application": {
+      "Passed": 17,
+      "File": "cup-application_net10.0_20261103154743.trx",
+      "Total": 17,
+      "Failed": 0
+    },
+    "IntegrationFocused": {
+      "Passed": 7,
+      "File": "cup-focused-final_net10.0_20261103160253.trx",
+      "Total": 7,
+      "Failed": 0
+    },
+    "Simulation100": {
+      "Passed": 1,
+      "File": "cup-100-seasons_net10.0_20261103155108.trx",
+      "Total": 1,
+      "Failed": 0
+    }
+  },
+  "CupAbsenceGains": 0,
+  "NodeTests": 2,
+  "CodeCheckpoint": "9af02bc",
+  "IntegrationDistinctCasesPassed": 261,
+  "ReleaseBuild": {
+    "Errors": 0,
+    "Warnings": 0
+  },
+  "IntegrationIdentity": "VSTest testId, including distinct parameterized tests whose display names are truncated.",
+  "Matches": 35100,
+  "CupParticipationLosses": 0,
+  "IntegrationWideFailure": "Test import database name omitted the required 013b marker. Corrected the test connection and reran seven integration cases successfully.",
+  "Seasons": 100,
+  "ManualPlaytest": {
+    "Url": "http://127.0.0.1:5200",
+    "TotalRounds": 21,
+    "FirstRound": "League",
+    "LastRound": "CupFinal",
+    "WorldName": "Teste Liga e Taça - 21 rodadas",
+    "WorldId": "ebbba96c-6e44-44da-9c85-e9a2693c4262"
+  },
+  "FlutterWebBuild": "Passed"
+}

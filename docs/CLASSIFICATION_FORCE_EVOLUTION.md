@@ -50,6 +50,13 @@ O cenário de 100 temporadas foi reexecutado com seed 199801 e a fundação 017B
 
 A média global final foi 4,07. Houve 196.181 perdas de titulares, 35.917 de reservas utilizados e 210.135 ganhos por ausência, todos na Liga. A força 1 apareceu em 1.373 dos 2.308 atletas. Entre os distritais, 1.234 dos 1.697 atletas ficaram no piso, 72,7%. Essa execução mede a mesma seed com o novo calendário e as novas regras da Taça.
 
+## Regressão do calendário e da Taça
+
+- Os 466 testes de domínio passaram em Debug. A execução Release anterior passou 465 casos, seguida dos dez testes de calendário no build final. Passaram também os 17 testes de aplicação. O build final Release completou com zero avisos e erros.
+- A execução ampla de integração passou 260 dos 261 casos. O caso de importação PostgreSQL recebeu um nome de banco sem o marcador `013b` exigido pelo criador. Corrigida a conexão do ambiente de teste, a reexecução final aprovou sete casos, incluindo o de importação, o calendário e a persistência da Taça. A união dos resultados aprovados cobre os 261 casos distintos.
+- O teste da Taça pelo fluxo oficial da API fechou 64 partidas, comparou as forças de todo o mundo e verificou refresh, reconexão SignalR e nova instância da API com PostgreSQL. Um teste separado confirmou que o treinador de clube eliminado pode acompanhar a rodada sem escalar o elenco.
+- Flutter aprovou 276 testes e compilou para web. Node aprovou dois testes. A sala local `Teste Liga e Taça - 21 rodadas`, código `TEST21`, foi conferida na API e permaneceu disponível após reiniciar o processo com o build final. [Registro dos testes](evidence-classification-force/cup-regression.json)
+
 ## Medição anterior ao ajuste da Taça
 
 Foram executadas duas simulações de 100 temporadas, com 35.100 partidas cada. Ambas usaram seed 199801, a mesma geração inicial da 017B, 128 clubes e controle por IA. A execução anterior foi compilada de `1ecfc6a` em uma cópia descartável. As médias abaixo são ponderadas por atleta e medidas antes das promoções e rebaixamentos. [Simulação anterior](evidence-classification-force/baseline-100-seasons.json) · [Simulação nova](evidence-classification-force/current-100-seasons.json)
