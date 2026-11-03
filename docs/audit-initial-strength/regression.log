@@ -1,0 +1,103 @@
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Application\bin\Release\net10.0\Elifoot.Application.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+  Elifoot.Infrastructure -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Infrastructure\bin\Release\net10.0\Elifoot.Infrastructure.dll
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Application.Tests -> D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Application.Tests\bin\Release\net10.0\Elifoot.Application.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Simulation.Tests -> D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Simulation.Tests\bin\Release\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+  Elifoot.Api -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Api\bin\Release\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\.worktrees\initial-player-strength-audit\artifacts\initial-strength-regression\regression_net10.0_20261103085249.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    17, Ignorado:     0, Total:    17, Duração: 28 s - Elifoot.Application.Tests.dll (net10.0)
+Arquivo de resultados: D:\elifoot_98\.worktrees\initial-player-strength-audit\artifacts\initial-strength-regression\regression_net10.0_20261103085313.trx
+
+Aprovado!  – Com falha:     0, Aprovado:   448, Ignorado:     0, Total:   448, Duração: 52 s - Elifoot.Domain.Tests.dll (net10.0)
+[xUnit.net 00:01:26.17]     Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots [FAIL]
+  Com falha Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots [4 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Set ELIFOOT_013A_TEST_PG to the isolated 013A test database.
+  Rastreamento de pilha:
+     at Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.CreateDbContextOptions[TContext](IServiceProvider applicationServiceProvider)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Elifoot.Integration.Tests.WorldCreator013ATests.Harness.Initialize(Boolean fixtures) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\WorldCreator013ATests.cs:line 51
+   at Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots() in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\WorldCreator013ATests.cs:line 219
+   at Elifoot.Integration.Tests.WorldCreator013ATests.PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots() in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\WorldCreator013ATests.cs:line 243
+--- End of stack trace from previous location ---
+[xUnit.net 00:03:40.10]     Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18 [FAIL]
+  Com falha Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18 [2 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Configure ELIFOOT_013A_LEGACY_PG via o runner isolado 013A/013B; o teste não usará o PostgreSQL principal.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18() in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\ApiAndSignalREndToEndTests.cs:line 191
+--- End of stack trace from previous location ---
+[xUnit.net 00:04:02.21]     Elifoot.Integration.Tests.RealImport016ATests.DryRunApplyCacheAndIdempotentRestartPreserveAll26CatalogAthletesAndOldSnapshots(postgres: True) [FAIL]
+  Com falha Elifoot.Integration.Tests.RealImport016ATests.DryRunApplyCacheAndIdempotentRestartPreserveAll26CatalogAthletesAndOldSnapshots(postgres: True) [6 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use isolated 016A runner.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.RealImport016ATests.DryRunApplyCacheAndIdempotentRestartPreserveAll26CatalogAthletesAndOldSnapshots(Boolean postgres) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\RealImport016ATests.cs:line 82
+--- End of stack trace from previous location ---
+[xUnit.net 00:04:31.71]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [FAIL]
+[xUnit.net 00:04:31.71]     Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Male) [14 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use PostgreSQL 013C runner.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 53
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(gender: Female) [< 1 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use PostgreSQL 013C runner.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.PlayableWorld013CIntegrationTests.ModesConsentActualMatchesPostgresRestartAndCatalogIndependence(FootballGender gender) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\PlayableWorld013CIntegrationTests.cs:line 53
+--- End of stack trace from previous location ---
+[xUnit.net 00:04:33.87]     Elifoot.Integration.Tests.MatchMarket015ATests.FirstValidBuyerWinsAndDurableLedgerReceiptAndCancelledOffersSurviveRestart(postgres: True) [FAIL]
+[xUnit.net 00:04:33.97]     Elifoot.Integration.Tests.MatchInteractionPersistenceTests.PendingHumanPenaltyFreezesRoomAcrossDatabaseRestartAndConcurrentHttpChoicesSettleExactlyOnce(postgres: True) [FAIL]
+  Com falha Elifoot.Integration.Tests.MatchMarket015ATests.FirstValidBuyerWinsAndDurableLedgerReceiptAndCancelledOffersSurviveRestart(postgres: True) [< 1 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use o runner isolado 015A.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.MatchMarket015ATests.FirstValidBuyerWinsAndDurableLedgerReceiptAndCancelledOffersSurviveRestart(Boolean postgres) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\MatchMarket015ATests.cs:line 33
+--- End of stack trace from previous location ---
+  Com falha Elifoot.Integration.Tests.MatchInteractionPersistenceTests.PendingHumanPenaltyFreezesRoomAcrossDatabaseRestartAndConcurrentHttpChoicesSettleExactlyOnce(postgres: True) [88 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use the isolated 015B test runner.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.MatchInteractionPersistenceTests.PendingHumanPenaltyFreezesRoomAcrossDatabaseRestartAndConcurrentHttpChoicesSettleExactlyOnce(Boolean postgres) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\MatchInteractionPersistenceTests.cs:line 46
+--- End of stack trace from previous location ---
+[xUnit.net 00:04:39.43]     Elifoot.Integration.Tests.MatchInteractionPersistenceTests.OpeningAndActualSubstitutionReceiptsSurviveRestartWithoutReopeningOrChargingTwice(postgres: True) [FAIL]
+  Com falha Elifoot.Integration.Tests.MatchInteractionPersistenceTests.OpeningAndActualSubstitutionReceiptsSurviveRestartWithoutReopeningOrChargingTwice(postgres: True) [< 1 ms]
+  Mensagem de erro:
+   System.InvalidOperationException : Use the isolated 015B runner.
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.MatchInteractionPersistenceTests.OpeningAndActualSubstitutionReceiptsSurviveRestartWithoutReopeningOrChargingTwice(Boolean postgres) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\MatchInteractionPersistenceTests.cs:line 107
+--- End of stack trace from previous location ---
+[xUnit.net 00:04:41.52]     Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart [FAIL]
+  Com falha Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart [167 ms]
+  Mensagem de erro:
+   Assert.Equal() Failure: Strings differ
+Expected: "127.0.0.1"
+Actual:   null
+  Rastreamento de pilha:
+     at Elifoot.Integration.Tests.Integration014ATests.Provider(String catalogConnection, String worldConnection) in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\Integration014ATests.cs:line 109
+   at Elifoot.Integration.Tests.Integration014ATests.PostgresCreatedWorldsPreserveContractsDebtTradeCashAndSnapshotsAcrossRepositoryRestart() in D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\Integration014ATests.cs:line 127
+--- End of stack trace from previous location ---
+Arquivo de resultados: D:\elifoot_98\.worktrees\initial-player-strength-audit\artifacts\initial-strength-regression\regression_net10.0_20261103085730.trx
+
+Com falha! – Com falha:     9, Aprovado:   246, Ignorado:     0, Total:   255, Duração: 5 m 1 s - Elifoot.Integration.Tests.dll (net10.0)

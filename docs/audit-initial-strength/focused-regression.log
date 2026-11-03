@@ -1,0 +1,5 @@
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Integration.Tests\bin\Debug\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\.worktrees\initial-player-strength-audit\artifacts\initial-strength-focused\focused_net10.0_20261103085736.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    29, Ignorado:     0, Total:    29, Duração: 57 s - Elifoot.Integration.Tests.dll (net10.0)

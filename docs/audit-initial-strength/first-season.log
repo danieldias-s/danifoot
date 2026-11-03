@@ -1,0 +1,10 @@
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Contracts\bin\Debug\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Domain\bin\Debug\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Application\bin\Debug\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\.worktrees\initial-player-strength-audit\src\Elifoot.Infrastructure\bin\Debug\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Simulation.Tests -> D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Simulation.Tests\bin\Debug\net10.0\Elifoot.Simulation.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\initial-player-strength-audit\tests\Elifoot.Simulation.Tests\bin\Debug\net10.0\Elifoot.Simulation.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\.worktrees\initial-player-strength-audit\artifacts\initial-strength-sim-focused\first-season_net10.0_20261103085905.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     2, Ignorado:     0, Total:     2, Duração: 11 s - Elifoot.Simulation.Tests.dll (net10.0)
