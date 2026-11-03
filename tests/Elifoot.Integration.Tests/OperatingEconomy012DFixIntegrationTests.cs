@@ -22,7 +22,7 @@ public class OperatingEconomy012DFixIntegrationTests
         var settlements=Enumerable.Range(0,participants).Select(_=>Settle());
         var commands=Enumerable.Range(0,participants).Select(_=>service.TakeBankLoanAsync(world.Id,coach.Id,500000,0,idempotencyKey:"same-bank-command"));
         await Task.WhenAll(settlements.Cast<Task>().Concat(commands));
-        Assert.Single(world.BankLoans);Assert.Equal(before+500000+8409.09m,club.CashBalance);
+        Assert.Single(world.BankLoans);Assert.Equal(before+500000+Math.Round(185000m/world.TotalRoundsInSeason,2),club.CashBalance);
         Assert.Single(world.Transactions,t=>t.ClubId==club.Id&&t.Category==FinancialTransactionCategory.Sponsorship);
         Assert.Single(world.Transactions,t=>t.ClubId==club.Id&&t.Category==FinancialTransactionCategory.LoanDisbursement);
         Assert.Equal(0,world.BankLoans[0].InterestCharged);Assert.Equal(500000,world.BankLoans[0].RemainingBalance);

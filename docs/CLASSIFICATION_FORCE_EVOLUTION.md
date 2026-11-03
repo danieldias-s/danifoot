@@ -1,6 +1,20 @@
 # Evolução de força por classificação
 
-A rodada oficial produz uma decisão por atleta depois de aplicar todos os resultados. A posição é a classificação esportiva do clube dentro da divisão. A Taça usa a última classificação válida da liga. Antes da primeira rodada de liga, o sistema conserva a referência provisória do 4º lugar. Ao iniciar outra temporada, a classificação anterior deixa de servir de referência.
+A rodada da Liga produz uma decisão por atleta depois de aplicar todos os resultados. A posição é a classificação esportiva do clube dentro da divisão. Na Taça, titulares, reservas e atletas de clubes eliminados conservam a força em relação à participação. O relógio e as perdas por lesão seguem o calendário. Cartões, expulsões e cumprimento de suspensões seguem o processamento disciplinar oficial.
+
+O mundo de 128 clubes tem 21 rodadas. Cada bloco contém duas rodadas da Liga e uma eliminatória da Taça. Todos os 128 clubes entram na primeira eliminatória. Cada vencedor participa da seguinte, até a final que encerra a temporada.
+
+| Bloco | Rodadas da Liga | Rodada da Taça | Clubes na Taça |
+| ---: | --- | ---: | ---: |
+| 1 | 1 e 2 | 3 | 128 |
+| 2 | 4 e 5 | 6 | 64 |
+| 3 | 7 e 8 | 9 | 32 |
+| 4 | 10 e 11 | 12 | 16 |
+| 5 | 13 e 14 | 15 | 8 |
+| 6 | 16 e 17 | 18 | 4 |
+| 7 | 19 e 20 | 21, final | 2 |
+
+O formato é registrado no snapshot por `LeagueFirstSchedule`. Saves com a temporada já iniciada conservam seu calendário e usam o novo formato na próxima temporada. A nova regra de força da Taça passa a valer nos fechamentos futuros. Os tamanhos 64, 256, 512 e 1024 também usam chaveamento com todos os clubes, com a final após a Liga. A alternância exata de dois para um corresponde ao mundo de 128. Montagens antigas com outras quantidades conservam a geração anterior.
 
 | Posição | 4ª divisão | 3ª divisão | 2ª divisão | 1ª divisão |
 | ---: | ---: | ---: | ---: | ---: |
@@ -15,14 +29,28 @@ A rodada oficial produz uma decisão por atleta depois de aplicar todos os resul
 
 `ChampionshipStrengthLimits` é a tabela de domínio compartilhada com a referência de fundação da 017B. As faixas do sorteio de fundação continuam na 017B. `ClubInitialPower` continua sendo a métrica de ordenação do catálogo.
 
-- Quem ficou fora ganha exatamente um ponto se estiver abaixo do limite do clube atual. Isso inclui banco não utilizado, suspensão, lesão que impediu a entrada e clube de folga na Taça. Força no limite ou acima dele permanece igual. Distritais e agentes livres têm referência 1, sem possibilidade de ganho pela regra.
-- Quem começou em campo ou entrou por substituição oficial tem uma decisão determinística de 50% para perder um ponto. A chance usa seed, temporada, rodada e identidade do atleta. A força 1 é o piso. Uma entrada registrada no último minuto conta mesmo sem minuto inteiro decorrente. Participações repetidas na rodada dão uma decisão só. Em transferências vale o clube atual no fechamento para o contexto do histórico e o limite de crescimento.
-- No modo clássico, as perdas diárias de uma lesão são aplicadas pelo calendário antes do fechamento esportivo e continuam até a data de recuperação. Se o atleta se lesionou em campo na rodada, o episódio de lesão tem precedência e não recebe também a perda de participação. Quem já estava lesionado e ficou fora segue a regra de ausência sobre a força após perdas diárias. Recuperar a disponibilidade não restaura pontos. A suspensão tem seu próprio processamento e contador.
+- Na Liga, quem ficou fora ganha exatamente um ponto se estiver abaixo do limite do clube atual. Isso inclui banco não utilizado, suspensão e lesão que impediu a entrada. Força no limite ou acima dele permanece igual. Distritais e agentes livres têm referência 1, sem possibilidade de ganho pela regra.
+- Na Liga, quem começou em campo ou entrou por substituição oficial tem uma decisão determinística de 50% para perder um ponto. A chance usa seed, temporada, rodada e identidade do atleta. A força 1 é o piso. Uma entrada registrada no último minuto conta mesmo sem minuto inteiro decorrente. Participações repetidas na rodada dão uma decisão só. Em transferências vale o clube atual no fechamento para o contexto do histórico e o limite de crescimento.
+- No modo clássico, as perdas diárias de uma lesão são aplicadas pelo calendário antes do fechamento esportivo e continuam até a data de recuperação. Se o atleta se lesionou em campo na Liga, o episódio de lesão tem precedência sobre a perda de participação. Quem já estava lesionado e ficou fora da Liga segue a regra de ausência sobre a força após perdas diárias. Na Taça aplica-se somente o efeito da lesão sobre a força. Recuperar a disponibilidade não restaura pontos. A suspensão tem seu próprio processamento e contador.
 - Saves legados conservam seu relógio e regras de lesão. A nova decisão passa a valer no próximo fechamento, incluindo o legado que usava evolução sazonal. O calendário oficial deixa de aplicar o ajuste antigo no fim da temporada. A reabertura de uma rodada já contabilizada preserva seus resultados e forças. A marca de temporada e rodada no snapshot impede repetir as decisões.
 
 O fechamento preserva os valores de salário e de contrato e usa o cálculo de valor de mercado existente para refletir a nova força. Nenhum arquivo do MatchEngine, da disciplina, da economia ou dos layouts foi alterado.
 
-## Resultado no motor real
+## Medição com a evolução exclusiva da Liga
+
+O cenário de 100 temporadas foi reexecutado com seed 199801 e a fundação 017B. Foram concluídas 35.100 partidas. As 700 rodadas de Taça tiveram zero ganhos por ausência e zero perdas por participação. O calendário registrou perdas diárias por lesão também nessas datas. A execução registrou zero violações de escalação, tamanho de elenco e liquidação financeira duplicada. [Evidência atual](evidence-classification-force/league-only-cup-100-seasons.json)
+
+| Divisão | Média inicial | Média ao fim da temporada 100 | Atletas força 1 | Atletas força 50 |
+| --- | ---: | ---: | ---: | ---: |
+| 1ª | 44,65 | 18,01 | 23 | 1 |
+| 2ª | 32,66 | 12,27 | 24 | 0 |
+| 3ª | 19,85 | 9,54 | 33 | 0 |
+| 4ª | 6,75 | 4,42 | 59 | 0 |
+| Distrital | 15,51 | 1,57 | 1.234 | 0 |
+
+A média global final foi 4,07. Houve 196.181 perdas de titulares, 35.917 de reservas utilizados e 210.135 ganhos por ausência, todos na Liga. A força 1 apareceu em 1.373 dos 2.308 atletas. Entre os distritais, 1.234 dos 1.697 atletas ficaram no piso, 72,7%. Essa execução mede a mesma seed com o novo calendário e as novas regras da Taça.
+
+## Medição anterior ao ajuste da Taça
 
 Foram executadas duas simulações de 100 temporadas, com 35.100 partidas cada. Ambas usaram seed 199801, a mesma geração inicial da 017B, 128 clubes e controle por IA. A execução anterior foi compilada de `1ecfc6a` em uma cópia descartável. As médias abaixo são ponderadas por atleta e medidas antes das promoções e rebaixamentos. [Simulação anterior](evidence-classification-force/baseline-100-seasons.json) · [Simulação nova](evidence-classification-force/current-100-seasons.json)
 
@@ -48,7 +76,7 @@ Foram executadas duas simulações de 100 temporadas, com 35.100 partidas cada. 
 - As duas execuções registraram 8.800 compras e quatro arremates. Foram observadas **5.024** mudanças de clube entre divisões na regra nova, ante **5.565** na anterior. Entre essas mudanças, **103** ocorreram com força 40 ou mais, ante **9**. A medição compara o clube nos fechamentos consecutivos e exclui promoções e rebaixamentos. O limite restringe novos ganhos e conserva a força ao transferir.
 - No teste isolado, as mesmas 1.000 seeds produziram **491 perdas e 509 manutenções** tanto na Liga como na Taça. Os totais de perdas da simulação longa incluem a exposição a piso e lesões. A regra continua usando 50% para cada decisão elegível.
 
-## Evidências de regressão
+## Evidências anteriores ao ajuste da Taça
 
 - .NET Release registrou 453 testes de domínio e 17 de aplicação aprovados. A seleção de seis regressões de simulação incluiu o cenário clássico de 100 temporadas. Os dois cenários comparativos de 100 temporadas foram executados separadamente, com 35.100 partidas cada e zero violações de escalação, tamanho de elenco ou liquidação financeira duplicada.
 - A suíte de integração Release registrou 260 aprovações entre 261 casos na execução ampla. O único caso divergente ainda esperava a concessão de força na virada da temporada. Ele foi atualizado para verificar que oito avanços concorrentes seguidos de oito leituras após recarregar o save preservam exatamente a força e o evento legado. A reexecução em Release aprovou esse caso e os outros dois testes de integração de força, completando a cobertura dos 261 casos.

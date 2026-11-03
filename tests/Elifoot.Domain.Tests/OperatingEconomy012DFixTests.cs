@@ -41,7 +41,7 @@ public class OperatingEconomy012DFixTests
         Assert.Equal(before+72000,club.CashBalance);
         restored.RoundNumber=23;MarketAndEconomyEngine.SettleMatchAndRoundFinancials(restored,[]);Assert.Equal(before+72000,club.CashBalance);
         restored.SeasonNumber=2;restored.RoundNumber=1;MarketAndEconomyEngine.SettleMatchAndRoundFinancials(restored,[]);
-        Assert.Equal(before+72000+8409.09m,club.CashBalance);Assert.Equal(185000,restored.Economy.SponsorshipBudgets[$"S2:{club.Id}"].AnnualBudget);
+        Assert.Equal(before+72000+Math.Round(185000m/restored.TotalRoundsInSeason,2),club.CashBalance);Assert.Equal(185000,restored.Economy.SponsorshipBudgets[$"S2:{club.Id}"].AnnualBudget);
     }
     [Fact] public void OffMatchCommercialInstallmentDoesNotGenerateBankInterest()
     {

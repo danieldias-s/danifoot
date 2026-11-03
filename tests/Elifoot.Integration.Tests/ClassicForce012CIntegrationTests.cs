@@ -60,12 +60,22 @@ public class ClassicForce012CIntegrationTests
     }
 
     [Fact]
-    public async Task IdleCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays()
+    public async Task EliminatedCupCoachCanBeReadyWithoutFieldingInjuredPlayersOrAdvancingTheirDays()
     {
         var repo=new InMemoryWorldRepository();
         var orchestrator=new MultiplayerRoundOrchestrator(repo,NullMatchRoomNotificationPublisher.Instance);
         var w=await orchestrator.CreateWorldAsync(new CreateWorldRequest("Idle012C"));
+        w.RoundNumber=3;
+        CompetitionAndSeasonEngine.EnsureCupFixturesForRound(w,3);
         var club=w.Clubs.First(c=>c.DivisionTier==DivisionTier.PrimeiraDivisao);
+        foreach(var match in w.Fixtures.Where(m=>m.RoundNumber==3))
+        {
+            match.IsFinished=true;
+            match.WinnerClubId=match.AwayClubId==club.Id?match.HomeClubId:match.AwayClubId;
+        }
+        w.RoundNumber=6;
+        CompetitionAndSeasonEngine.EnsureCupFixturesForRound(w,6);
+        ClassicForceEvolutionEngine.PrepareRound(w);
         var (_,_,coach,_)=await orchestrator.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"Idle coach","idle-012c",club.Id);
         foreach(var p in w.Players.Where(p=>p.ClubId==club.Id))p.InjuryDaysRemaining=15;
         var date=w.ClassicForce.GameDate;
@@ -75,7 +85,7 @@ public class ClassicForce012CIntegrationTests
         Assert.Empty(coach.SubmittedStarterIds);
         Assert.DoesNotContain(MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(w),m=>m.HomeClubId==club.Id||m.AwayClubId==club.Id);
         Assert.Empty(w.PlayerStrengthHistory);
-        w.RoundState=RoundState.PREPARING;w.RoundNumber=3;coach.IsReadyForRound=false;
+        w.RoundState=RoundState.PREPARING;w.RoundNumber=7;coach.IsReadyForRound=false;
         var rejected=await orchestrator.SubmitTacticsAsync(new SubmitTacticsRequest(w.Id,coach.Id,"4-4-2",[],[],"playing-needs-eleven",w.RoundVersion));
         Assert.False(rejected.Success);Assert.False(coach.IsReadyForRound);
     }

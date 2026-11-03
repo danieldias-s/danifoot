@@ -66,10 +66,10 @@ public class ApiAndSignalREndToEndTests
         Assert.NotNull(initialSnap);
         Guid worldId = initialSnap!.GameWorldId;
 
-        // Advance past the 2 District Preliminary rounds to Round 3 (League Round 1) so all division clubs play
+        // The first round is a League round with all division clubs playing.
         var repo = factory.Services.GetRequiredService<IWorldRepository>();
         var worldEntity = await repo.GetWorldAsync(worldId);
-        worldEntity!.RoundNumber = 3;
+        worldEntity!.RoundNumber = 1;
         await repo.SaveWorldAsync(worldEntity);
 
         // 3. Connect SignalR Hub client to observe real-time ReadyCounterUpdated & GlobalPause events
@@ -300,7 +300,7 @@ public class ApiAndSignalREndToEndTests
                 Assert.NotNull(worldEntity.CatalogOrigin);
                 Assert.Equal(OperatingEconomyEngine.CurrentPolicy, worldEntity.Economy.OperatingRules.Name);
             }
-            worldEntity.RoundNumber = 3;
+            worldEntity.RoundNumber = 1;
             await repo.SaveWorldAsync(worldEntity);
 
             var round3Fixtures = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(worldEntity);
@@ -458,7 +458,7 @@ public class ApiAndSignalREndToEndTests
             var nextRoundRes = await httpClients[0].PostAsync($"/api/worlds/{worldId}/next-round", null);
             nextRoundRes.EnsureSuccessStatusCode();
             var nextSnap = (await nextRoundRes.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
-            Assert.Equal(4, nextSnap.RoundNumber);
+            Assert.Equal(2, nextSnap.RoundNumber);
             Assert.Equal(RoundState.PREPARING, nextSnap.RoundState);
             Assert.Equal(0, nextSnap.ReadyCounter.ReadyCount);
             Assert.Equal(coachCount, nextSnap.ReadyCounter.TotalHumans);

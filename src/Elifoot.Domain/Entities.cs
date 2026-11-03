@@ -19,6 +19,7 @@ public partial class GameWorld
     public int SeasonNumber { get; set; } = 1;
     public int RoundNumber { get; set; } = 1;
     public int TotalRoundsInSeason { get; set; } = 22;
+    public bool LeagueFirstSchedule { get; set; }
     public RoundState RoundState { get; set; } = RoundState.PREPARING;
     public long RoundVersion { get; set; } = 1;
     public int CurrentMatchMinute { get; set; } = 0;

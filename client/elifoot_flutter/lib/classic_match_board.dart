@@ -21,6 +21,10 @@ String _additionalDivisionLabel(dynamic tier) {
 
 String classicCupLabel(String type) => switch (type) {
   'CupPreliminary1' => 'TAÇA - PRELIMINAR 1',
+  'CupRoundOf128' => 'TAÇA - 128 CLUBES',
+  'CupRoundOf256' => 'TAÇA - 256 CLUBES',
+  'CupRoundOf512' => 'TAÇA - 512 CLUBES',
+  'CupRoundOf1024' => 'TAÇA - 1024 CLUBES',
   'CupPreliminary2' => 'TAÇA - PRELIMINAR 2',
   'CupRoundOf64' => 'TAÇA - 1ª ELIMINATÓRIA',
   'CupRoundOf32' => 'TAÇA - 2ª ELIMINATÓRIA',

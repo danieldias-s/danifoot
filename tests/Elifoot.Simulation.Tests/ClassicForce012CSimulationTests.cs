@@ -144,7 +144,7 @@ public partial class MultiSeasonAndBenchmarkTests
         Assert.Equal(35_100, result.TotalMatchesCompleted);
         Assert.Equal(0, result.InvalidLineupSelectionViolations);
         Assert.Equal(0, result.DoubleSettledMatchFinancialViolations);
-        Assert.True(cupGrowth > 0);
+        Assert.Equal(0,cupGrowth);
         Assert.True(reserveEvents > 0 && playedLosses > 0 && dailyLosses > 0);
         Assert.Equal(6_400, snapshots);
     }

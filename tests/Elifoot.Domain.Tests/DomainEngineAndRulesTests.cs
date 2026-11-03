@@ -465,8 +465,8 @@ public class DomainEngineAndRulesTests
 
         // 2. Regression Test BUG-001: 3rd Yellow Card Suspension must NOT be cleared at the end of the same match
         var world = WorldSeedFactory.CreateSeededWorld(seed: 199801, totalClubs: 128);
-        world.RoundNumber = 3; // League Round 1
-        var leagueMatch = world.Fixtures.First(f => f.SeasonNumber == 1 && f.RoundNumber == 3);
+        world.RoundNumber = 1; // League Round 1
+        var leagueMatch = world.Fixtures.First(f => f.SeasonNumber == 1 && f.RoundNumber == 1);
         var homeClub = world.Clubs.First(c => c.Id == leagueMatch.HomeClubId);
         var homePlayer = world.Players.First(p => p.ClubId == homeClub.Id && p.Position == PlayerPosition.D);
 
@@ -475,10 +475,10 @@ public class DomainEngineAndRulesTests
         leagueMatch.HomeSuspendedByYellowInMatchIds.Add(homePlayer.Id);
         leagueMatch.IsFinished = true;
 
-        foreach (var m in world.Fixtures.Where(f => f.SeasonNumber == 1 && f.RoundNumber == 3))
+        foreach (var m in world.Fixtures.Where(f => f.SeasonNumber == 1 && f.RoundNumber == 1))
             m.IsFinished = true;
 
-        MarketAndEconomyEngine.SettleMatchAndRoundFinancials(world, world.Fixtures.Where(f => f.SeasonNumber == 1 && f.RoundNumber == 3).ToList());
+        MarketAndEconomyEngine.SettleMatchAndRoundFinancials(world, world.Fixtures.Where(f => f.SeasonNumber == 1 && f.RoundNumber == 1).ToList());
         Assert.Equal(1, homePlayer.SuspensionRoundsRemaining); // Still suspended for the NEXT match!
 
         // In the next round (Round 4), when the player does NOT receive a new suspension, it decrements to 0
@@ -496,9 +496,9 @@ public class DomainEngineAndRulesTests
         int diffScores = 0;
         for (int idx = 0; idx < 16; idx++)
         {
-            var m1 = world1.Fixtures.Where(f => f.RoundNumber == 3).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
-            var m2 = world2.Fixtures.Where(f => f.RoundNumber == 3).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
-            var m3 = worldDiff.Fixtures.Where(f => f.RoundNumber == 3).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
+            var m1 = world1.Fixtures.Where(f => f.RoundNumber == 1).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
+            var m2 = world2.Fixtures.Where(f => f.RoundNumber == 1).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
+            var m3 = worldDiff.Fixtures.Where(f => f.RoundNumber == 1).OrderBy(f => f.DeterministicMatchIndex).ElementAt(idx);
 
             SimulateOneLeagueMatch(world1, m1);
             SimulateOneLeagueMatch(world2, m2);

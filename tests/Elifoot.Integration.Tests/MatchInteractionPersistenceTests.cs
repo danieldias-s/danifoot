@@ -22,7 +22,7 @@ public class MatchInteractionPersistenceTests
         var repository = new InMemoryWorldRepository();
         var service = new MultiplayerRoundOrchestrator(repository, NullMatchRoomNotificationPublisher.Instance);
         var world = await service.CreateWorldAsync(new("Match interaction HTTP QA", TotalClubs:128));
-        world.RoundNumber = 3;
+        world.RoundNumber = 1;
         var match = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world)[0];
         var a = (await service.JoinWorldAndAssignClubAsync(world.Id, Guid.NewGuid(), "QA Home", "qa-home", match.HomeClubId)).Coach!;
         var b = (await service.JoinWorldAndAssignClubAsync(world.Id, Guid.NewGuid(), "QA Away", "qa-away", match.AwayClubId)).Coach!;

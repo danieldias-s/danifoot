@@ -11,7 +11,7 @@ public class CoachCareer008ReadinessTests
     public async Task ReadyCoachWhoseStarterWasSoldMustResubmitBeforeTheRoomCanStart()
     {
         var repo=new InMemoryWorldRepository();var o=new MultiplayerRoundOrchestrator(repo,NullMatchRoomNotificationPublisher.Instance);
-        var w=await o.CreateWorldAsync(new("Escalação preservada",MaxHumans:2));w.RoundNumber=3;
+        var w=await o.CreateWorldAsync(new("Escalação preservada",MaxHumans:2));w.RoundNumber=1;
         var a=(await o.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"A","a",w.Clubs[0].Id)).Coach!;
         var b=(await o.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"B","b",w.Clubs[1].Id)).Coach!;
         var ca=w.Clubs[0];var cb=w.Clubs[1];

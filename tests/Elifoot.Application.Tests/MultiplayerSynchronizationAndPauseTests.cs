@@ -111,8 +111,8 @@ public class MultiplayerSynchronizationAndPauseTests
         var worldA = await orchestrator.CreateWorldAsync(new CreateWorldRequest("Sala A (8 Humanos)", MaxHumans: 8, TotalClubs: 128, Seed: 199801));
         var worldB = await orchestrator.CreateWorldAsync(new CreateWorldRequest("Sala B Independente", MaxHumans: 2, TotalClubs: 128, Seed: 199802));
 
-        // Move World A to Round 3 (League Round 1 where all 1st division clubs play 4 simultaneous matches)
-        worldA.RoundNumber = 3;
+        // Move World A to Round 1 (League Round 1 where all 1st division clubs play 4 simultaneous matches)
+        worldA.RoundNumber = 1;
         await repo.SaveWorldAsync(worldA);
 
         var round3Fixtures = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(worldA);
@@ -273,10 +273,10 @@ public class MultiplayerSynchronizationAndPauseTests
 
         var world = await orchestrator.CreateWorldAsync(new CreateWorldRequest("Sala Taça Prorrogação", MaxHumans: 2, TotalClubs: 128, Seed: 199801));
 
-        // Round 5 is CupRoundOf64 (knockout with extra time)
-        world.RoundNumber = 5;
-        CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world, 5);
-        var cupFixture = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world).First();
+        world.RoundNumber = 3;
+        CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world, 3);
+        var cupFixture = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world)
+            .First(m => world.Clubs.Single(c=>c.Id==m.HomeClubId).DivisionTier!=DivisionTier.Distrital);
 
         var (_, _, coachHome, _) = await orchestrator.JoinWorldAndAssignClubAsync(
             world.Id, Guid.NewGuid(), "Técnico Copa", "dev-cup", cupFixture.HomeClubId);

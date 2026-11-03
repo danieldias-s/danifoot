@@ -242,7 +242,7 @@ app.MapGet("/api/worlds/{worldId:guid}/calendar", async (Guid worldId, IWorldRep
     var w = await repo.GetWorldAsync(worldId, ct);
     if (w == null) return Results.NotFound();
     var clubs = w.Clubs.ToDictionary(c => c.Id);
-    var schedule = CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(w.TotalClubs);
+    var schedule = CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(w);
     return Results.Ok(schedule.Select((type, i) => new {
         roundNumber = i + 1, competition = type.ToString(),
         fixtures = w.Fixtures.Where(f => f.SeasonNumber == w.SeasonNumber && f.RoundNumber == i + 1)

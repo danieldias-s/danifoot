@@ -86,7 +86,7 @@ public sealed class Integration014ATests
         Assert.Equal(world.Clubs.Sum(c => c.CashBalance), clone.Clubs.Sum(c => c.CashBalance));
         Assert.Equal(128, clone.Transactions.Count); Assert.Equal(clone.Clubs.Sum(c => c.CashBalance), clone.Transactions.Sum(t => t.Amount));
         MarketAndEconomyEngine.SettleMatchAndRoundFinancials(clone, []);
-        Assert.Equal(8409.09m, clone.Transactions.Single(t => t.ClubId == clone.Clubs[0].Id && t.Category == FinancialTransactionCategory.Sponsorship).Amount);
+        Assert.Equal(Math.Round(185000m/clone.TotalRoundsInSeason,2), clone.Transactions.Single(t => t.ClubId == clone.Clubs[0].Id && t.Category == FinancialTransactionCategory.Sponsorship).Amount);
         Assert.Equal(new[] {1,2}, clone.Clubs.Where(c => c.DivisionTier == DivisionTier.QuartaDivisao).Select(c => ClassicEconomyEngine.AssessCredit(clone,c).LoanLimit).Distinct().Order());
         var oldJson = System.Text.Json.Nodes.JsonNode.Parse(json)!.AsObject();
         oldJson.Remove("forceEvolutionMode");
@@ -138,7 +138,7 @@ public sealed class Integration014ATests
             var owner = Guid.NewGuid(); var request = Imported014AWorlds.Request(gender);
             Assert.Equal(160, (await creator.Select(request.Countries, gender, "2026", true)).Clubs.Count);
             var preview = await creator.Preview(owner, request); Assert.Empty(preview.Errors);
-            var world = await creator.Confirm(owner, preview.DraftId); world.RoundNumber = 3;
+            var world = await creator.Confirm(owner, preview.DraftId); world.RoundNumber = 1;
             var orchestrator = new MultiplayerRoundOrchestrator(repo, NullMatchRoomNotificationPublisher.Instance);
             var sellerCoach = Guid.NewGuid(); var buyerCoach = Guid.NewGuid(); var seller = world.Clubs[1]; var buyer = world.Clubs[0];
             Assert.True((await orchestrator.JoinWorldAndAssignClubAsync(world.Id, sellerCoach, "Vendedor", "014a-seller", seller.Id)).Success);
@@ -158,7 +158,7 @@ public sealed class Integration014ATests
             var takes = await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => service.TakeBankLoanAsync(world.Id, buyerCoach, 500000, 0, idempotencyKey: "014a-loan")));
             Assert.All(takes, result => Assert.True(result.Success)); var loan = Assert.Single(world.BankLoans);
             Assert.Equal(500000, loan.RemainingBalance); Assert.Equal(25000, loan.InterestPerMatch);
-            var match = world.Fixtures.First(m => m.SeasonNumber == 1 && m.RoundNumber == 3 && (m.HomeClubId == buyer.Id || m.AwayClubId == buyer.Id));
+            var match = world.Fixtures.First(m => m.SeasonNumber == 1 && m.RoundNumber == 1 && (m.HomeClubId == buyer.Id || m.AwayClubId == buyer.Id));
             ClassicForceEvolutionEngine.PrepareRound(world);
             var home = world.Clubs.Single(c => c.Id == match.HomeClubId); var away = world.Clubs.Single(c => c.Id == match.AwayClubId);
             int minutes = MatchSimulationEngine.SimulateFullMatchReal(match, home, away,

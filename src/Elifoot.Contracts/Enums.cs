@@ -73,7 +73,11 @@ public enum CompetitionType
     CupRoundOf16 = 5,
     CupQuarterFinal = 6,
     CupSemiFinal = 7,
-    CupFinal = 8
+    CupFinal = 8,
+    CupRoundOf128 = 9,
+    CupRoundOf256 = 10,
+    CupRoundOf512 = 11,
+    CupRoundOf1024 = 12
 }
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -162,6 +166,10 @@ public static class EnumExtensions
         CompetitionType.League => "Campeonato Nacional",
         CompetitionType.CupPreliminary1 => "Taça - Preliminar 1",
         CompetitionType.CupPreliminary2 => "Taça - Preliminar 2",
+        CompetitionType.CupRoundOf128 => "Taça - 128 clubes",
+        CompetitionType.CupRoundOf256 => "Taça - 256 clubes",
+        CompetitionType.CupRoundOf512 => "Taça - 512 clubes",
+        CompetitionType.CupRoundOf1024 => "Taça - 1024 clubes",
         CompetitionType.CupRoundOf64 => "Taça - 32-avos de Final (64)",
         CompetitionType.CupRoundOf32 => "Taça - 16-avos de Final (32)",
         CompetitionType.CupRoundOf16 => "Taça - Oitavas de Final",

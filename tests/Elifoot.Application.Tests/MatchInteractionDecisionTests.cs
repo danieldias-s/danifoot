@@ -10,7 +10,7 @@ public class MatchInteractionDecisionTests
     private static async Task<(GameWorld W, InMemoryWorldRepository R, MultiplayerRoundOrchestrator S, MatchFixture M, HumanCoach A, HumanCoach B)> Room()
     {
         var r=new InMemoryWorldRepository();var s=new MultiplayerRoundOrchestrator(r,NullMatchRoomNotificationPublisher.Instance);
-        var w=await s.CreateWorldAsync(new("Interaction QA",TotalClubs:128));w.RoundNumber=3;
+        var w=await s.CreateWorldAsync(new("Interaction QA",TotalClubs:128));w.RoundNumber=1;
         var m=MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(w)[0];
         var a=(await s.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"Home","a",m.HomeClubId)).Coach!;
         var b=(await s.JoinWorldAndAssignClubAsync(w.Id,Guid.NewGuid(),"Away","b",m.AwayClubId)).Coach!;

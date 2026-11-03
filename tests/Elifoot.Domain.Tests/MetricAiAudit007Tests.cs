@@ -159,7 +159,7 @@ public class MetricAiAudit007Tests
         Assert.Equal(0, club.Stadium.ExpansionRoundsRemaining); Assert.Equal(built, club.Stadium.BuiltCapacity);
         var before = club.CashBalance;
         for (int r = 1; r <= 3; r++) { w.RoundNumber = r; MarketAndEconomyEngine.SettleMatchAndRoundFinancials(w, []); }
-        Assert.Equal(before + 25_227.27m,club.CashBalance);
+        Assert.Equal(before + Math.Round(185_000m*3/w.TotalRoundsInSeason,2),club.CashBalance);
         Assert.True(club.CashBalance < 350_000); // Three installments cannot issue three annual budgets.
         Assert.Equal(before + w.Transactions.Where(t => t.ClubId == club.Id && t.Category == FinancialTransactionCategory.Sponsorship).Sum(t => t.Amount), club.CashBalance);
         Assert.DoesNotContain(w.Transactions, t => t.ClubId == club.Id && t.Category == FinancialTransactionCategory.LoanDisbursement);

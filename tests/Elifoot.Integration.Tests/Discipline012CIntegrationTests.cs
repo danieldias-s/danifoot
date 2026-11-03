@@ -52,7 +52,7 @@ public class Discipline012CIntegrationTests
         var orchestrator=scope.ServiceProvider.GetRequiredService<MultiplayerRoundOrchestrator>();
         var repo=factory.Services.GetRequiredService<IWorldRepository>();
         var w=await orchestrator.CreateWorldAsync(new CreateWorldRequest($"Discipline {count}",MaxHumans:count));
-        w.RoundNumber=3;ClassicForceEvolutionEngine.PrepareRound(w);
+        w.RoundNumber=1;ClassicForceEvolutionEngine.PrepareRound(w);
         foreach(var p in w.Players)p.Behavior=PlayerBehavior.FairPlay;
         var fixtures=MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(w);
         var clubIds=fixtures.Take(count/2).SelectMany(m=>new[]{m.HomeClubId,m.AwayClubId}).ToList();

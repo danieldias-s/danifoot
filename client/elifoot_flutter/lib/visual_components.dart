@@ -3,6 +3,10 @@ import 'club_theme.dart';
 
 String classicCompetition(dynamic raw) => switch (raw?.toString()) {
   'CupPreliminary1' => 'Taça - Preliminar 1',
+  'CupRoundOf128' => 'Taça - 128 clubes',
+  'CupRoundOf256' => 'Taça - 256 clubes',
+  'CupRoundOf512' => 'Taça - 512 clubes',
+  'CupRoundOf1024' => 'Taça - 1024 clubes',
   'CupPreliminary2' => 'Taça - Preliminar 2',
   'League' => 'Campeonato Nacional',
   'CupRoundOf64' || 'CupRound64' => 'Taça - 64 clubes',

@@ -193,18 +193,13 @@ public static class ClassicForceEvolutionEngine
         if (state.GuardSeason > w.SeasonNumber || (state.GuardSeason == w.SeasonNumber && state.GuardRound >= w.RoundNumber))
             return;
 
-        var playedMatches = matches.Where(m => m.CurrentMinute > 0).ToList();
+        var playedMatches = matches.Where(m => m.CompetitionType == CompetitionType.League && m.CurrentMinute > 0).ToList();
         if (playedMatches.Count == 0) return;
         var clubs = w.Clubs.ToDictionary(c => c.Id);
-        bool league = playedMatches.Any(m => m.CompetitionType == CompetitionType.League);
         foreach (var tier in w.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital && c.LeaguePlayed > 0)
                      .Select(c => c.DivisionTier).Distinct())
-        {
-            // A legacy save may have valid standings but no cached ranks when its first new round is a Cup round.
-            if (!league && w.Clubs.Any(c => c.DivisionTier == tier && state.CompletedLeaguePositions.ContainsKey(c.Id))) continue;
             foreach (var row in CompetitionAndSeasonEngine.GetDivisionStandings(w, tier))
                 state.CompletedLeaguePositions[row.ClubId] = row.Position;
-        }
 
         var appeared = new HashSet<Guid>();
         var injured = new HashSet<Guid>();
@@ -252,7 +247,7 @@ public static class ClassicForceEvolutionEngine
         }
         state.GuardSeason = w.SeasonNumber;
         state.GuardRound = w.RoundNumber;
-        if (league && classicInjuries) CaptureTurns(w);
+        if (classicInjuries) CaptureTurns(w);
     }
 
     public static (int Position, int Ceiling) ClubContext(GameWorld w, Club? club)

@@ -48,7 +48,9 @@ public class PlayableQaRegressionTests
         var invalid = await c.PostAsJsonAsync($"/api/worlds/{id}/editor/update-player", player with { Strength = 51 });
         Assert.Equal(System.Net.HttpStatusCode.BadRequest, invalid.StatusCode);
         var calendar = JsonDocument.Parse(await c.GetStringAsync($"/api/worlds/{id}/calendar"));
-        Assert.Equal(22, calendar.RootElement.GetArrayLength());
+        Assert.Equal(21, calendar.RootElement.GetArrayLength());
+        Assert.Equal("League",calendar.RootElement[0].GetProperty("competition").GetString());
+        Assert.Equal("CupFinal",calendar.RootElement[20].GetProperty("competition").GetString());
         (await c.PostAsJsonAsync($"/api/worlds/{id}/editor/create-club", club with { Name = "Novo Distrital" })).EnsureSuccessStatusCode();
         var expanded = (await c.GetFromJsonAsync<WorldPackageExportDto>($"/api/worlds/{id}/editor/export-json"))!;
         Assert.Equal(129, expanded.Clubs.Count);

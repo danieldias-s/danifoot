@@ -4,65 +4,67 @@ namespace Elifoot.Domain;
 
 public static class CompetitionAndSeasonEngine
 {
-    /// <summary>
-    /// Computes the ordered schedule of round types for a season.
-    /// For 128 clubs (96 district clubs): 2 Cup Preliminary rounds + 14 League rounds + 6 Main Cup rounds = 22 rounds.
-    /// Scales automatically for 256, 512, and 1024 clubs by adding the required Cup Preliminary rounds.
-    /// </summary>
     public static List<CompetitionType> BuildSeasonRoundSchedule(int totalClubs)
-    {
-        int districtCount = Math.Max(0, totalClubs - 32);
-        var schedule = new List<CompetitionType>();
-
-        if (districtCount > 32)
+        => BuildSeasonRoundSchedule(new GameWorld
         {
+            TotalClubs = totalClubs,
+            LeagueFirstSchedule = totalClubs is 64 or 128 or 256 or 512 or 1024
+        });
+
+    public static List<CompetitionType> BuildSeasonRoundSchedule(GameWorld world)
+    {
+        List<CompetitionType> cupRounds =
+        [
+            CompetitionType.CupRoundOf64, CompetitionType.CupRoundOf32,
+            CompetitionType.CupRoundOf16, CompetitionType.CupQuarterFinal,
+            CompetitionType.CupSemiFinal, CompetitionType.CupFinal
+        ];
+        var schedule = new List<CompetitionType>();
+        if (world.LeagueFirstSchedule)
+        {
+            if (world.TotalClubs >= 128) cupRounds.Insert(0, CompetitionType.CupRoundOf128);
+            if (world.TotalClubs >= 256) cupRounds.Insert(0, CompetitionType.CupRoundOf256);
+            if (world.TotalClubs >= 512) cupRounds.Insert(0, CompetitionType.CupRoundOf512);
+            if (world.TotalClubs >= 1024) cupRounds.Insert(0, CompetitionType.CupRoundOf1024);
+        }
+        else if (world.TotalClubs - 32 > 32)
+        {
+            // A loaded season keeps the round numbers of its persisted fixtures.
             schedule.Add(CompetitionType.CupPreliminary1);
             schedule.Add(CompetitionType.CupPreliminary2);
         }
 
-        // Interleave 14 League rounds (double round-robin of 8 clubs per division) and 6 Main Cup rounds
-        schedule.Add(CompetitionType.League);          // L1
-        schedule.Add(CompetitionType.League);          // L2
-        schedule.Add(CompetitionType.CupRoundOf64);    // Cup 64 (32 Div + 32 Dist)
-        schedule.Add(CompetitionType.League);          // L3
-        schedule.Add(CompetitionType.League);          // L4
-        schedule.Add(CompetitionType.CupRoundOf32);    // Cup 32
-        schedule.Add(CompetitionType.League);          // L5
-        schedule.Add(CompetitionType.League);          // L6
-        schedule.Add(CompetitionType.CupRoundOf16);    // Cup 16
-        schedule.Add(CompetitionType.League);          // L7 (End of 1st half)
-        schedule.Add(CompetitionType.League);          // L8
-        schedule.Add(CompetitionType.CupQuarterFinal); // Cup QF
-        schedule.Add(CompetitionType.League);          // L9
-        schedule.Add(CompetitionType.League);          // L10
-        schedule.Add(CompetitionType.CupSemiFinal);    // Cup SF
-        schedule.Add(CompetitionType.League);          // L11
-        schedule.Add(CompetitionType.League);          // L12
-        schedule.Add(CompetitionType.CupFinal);        // Cup Final
-        schedule.Add(CompetitionType.League);          // L13
-        schedule.Add(CompetitionType.League);          // L14 (End of League)
-
+        int cupIndex = 0;
+        int interleavedCupRounds = world.LeagueFirstSchedule ? cupRounds.Count - 1 : cupRounds.Count;
+        for (int pair = 0; pair < 7; pair++)
+        {
+            schedule.Add(CompetitionType.League);
+            schedule.Add(CompetitionType.League);
+            if (cupIndex < interleavedCupRounds) schedule.Add(cupRounds[cupIndex++]);
+        }
+        if (world.LeagueFirstSchedule) schedule.AddRange(cupRounds.Skip(cupIndex));
         return schedule;
     }
 
     public static CompetitionType GetCompetitionTypeForRound(GameWorld world, int roundNumber)
     {
-        var schedule = BuildSeasonRoundSchedule(world.TotalClubs);
+        var schedule = BuildSeasonRoundSchedule(world);
         int idx = Math.Clamp(roundNumber - 1, 0, schedule.Count - 1);
         return schedule[idx];
     }
 
     /// <summary>
     /// Generates all 14 double round-robin League rounds for the 4 divisions (8 clubs each = 4 matches per division per league round = 16 matches per league round)
-    /// plus the initial Cup Preliminary 1 fixtures at the start of a season.
+    /// for the season.
     /// Cup knockout rounds are generated dynamically as previous Cup rounds conclude.
     /// </summary>
     public static void InitializeSeasonFixtures(GameWorld world)
     {
         DisciplineEngine.EnsureMigrated(world);
         world.Fixtures.RemoveAll(f => f.SeasonNumber == world.SeasonNumber);
+        world.LeagueFirstSchedule = world.TotalClubs is 64 or 128 or 256 or 512 or 1024;
 
-        var schedule = BuildSeasonRoundSchedule(world.TotalClubs);
+        var schedule = BuildSeasonRoundSchedule(world);
         world.TotalRoundsInSeason = schedule.Count;
         world.RoundNumber = 1;
         world.RoundState = RoundState.PREPARING;
@@ -133,8 +135,7 @@ public static class CompetitionAndSeasonEngine
             }
         }
 
-        // Generate Cup Round 1 fixtures
-        EnsureCupFixturesForRound(world, 1);
+        EnsureCupFixturesForRound(world,1);
         ClassicForceEvolutionEngine.InitializeSeason(world);
         ClassicForceEvolutionEngine.PrepareRound(world);
     }
@@ -199,7 +200,27 @@ public static class CompetitionAndSeasonEngine
 
         List<Club> participants = new();
 
-        if (compType == CompetitionType.CupPreliminary1)
+        if (world.LeagueFirstSchedule)
+        {
+            var cupStages = BuildSeasonRoundSchedule(world).Where(c => c != CompetitionType.League).ToList();
+            int stage = cupStages.IndexOf(compType);
+            if (stage == 0)
+            {
+                participants = world.Clubs.OrderBy(c => c.DeterministicIndex).ToList();
+                rng.Shuffle(participants);
+            }
+            else
+            {
+                var previous = world.Fixtures.Where(f => f.SeasonNumber == world.SeasonNumber
+                    && f.CompetitionType == cupStages[stage - 1]).ToList();
+                if (previous.Count == 0 || previous.Any(f => !f.IsFinished || !f.WinnerClubId.HasValue))
+                    throw new InvalidOperationException("Conclua a eliminatória anterior antes de gerar a próxima fase da Taça.");
+                participants = GetRoundWinners(world, cupStages[stage - 1]);
+            }
+            if (participants.Count % 2 != 0)
+                throw new InvalidOperationException("A eliminatória da Taça precisa de um número par de clubes.");
+        }
+        else if (compType == CompetitionType.CupPreliminary1)
         {
             // For 96 district clubs (or general D > 64):
             // We want 64 clubs remaining after Preliminary 1 so Preliminary 2 is 64 -> 32.

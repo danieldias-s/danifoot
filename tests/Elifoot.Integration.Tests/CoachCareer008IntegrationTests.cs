@@ -20,7 +20,7 @@ public class CoachCareer008IntegrationTests
     {
         var auth=await client.PostAsJsonAsync("/api/auth/local-login",new LocalAuthRequest("Carreira 008","qa008-web"));
         var identity=(await auth.Content.ReadFromJsonAsync<LocalAuthResponse>())!;
-        var w=WorldSeedFactory.CreateSeededWorld("Carreira 008 — validação privada",199801,tickIntervalMs:100,pauseTimeoutSeconds:60,inviteCode:"CAREER008");w.RoundNumber=3;
+        var w=WorldSeedFactory.CreateSeededWorld("Carreira 008 — validação privada",199801,tickIntervalMs:100,pauseTimeoutSeconds:60,inviteCode:"CAREER008");w.RoundNumber=1;
         var repo=f.Services.GetRequiredService<IWorldRepository>();await repo.SaveWorldAsync(w);
         var o=new MultiplayerRoundOrchestrator(repo,NullMatchRoomNotificationPublisher.Instance);
         var join=await o.JoinWorldAndAssignClubAsync(w.Id,identity.CoachId,identity.Nickname,identity.DeviceId,joinUnemployed:true);

@@ -42,6 +42,11 @@ public partial class MultiSeasonAndBenchmarkTests
                     totals.ReserveGains += changes.Sum(e => e.ReserveGrowth);
                     totals.InjuryPoints += changes.Sum(e => e.DailyInjuryLoss);
                     var participationLosses = changes.Where(e => e.ChangeReason == "PLAYED_MATCH_DECLINE").ToList();
+                    if (roundType != CompetitionType.League)
+                    {
+                        Assert.Empty(participationLosses);
+                        Assert.All(changes, e => Assert.Equal(0,e.ReserveGrowth));
+                    }
                     totals.StarterLosses += participationLosses.Count(e => starters.Contains(e.PlayerId));
                     totals.BenchLosses += participationLosses.Count(e => benchEntries.Contains(e.PlayerId));
                     Assert.All(participationLosses, e => Assert.True(starters.Contains(e.PlayerId) || benchEntries.Contains(e.PlayerId)));

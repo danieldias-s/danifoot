@@ -14,7 +14,7 @@ namespace Elifoot.Integration.Tests;
 public sealed class ClassificationForcePostgresTests
 {
     [Fact]
-    public async Task CupRoundPersistsOnceAcrossRefreshReconnectAndPostgresApiRestart()
+    public async Task CupPreservesStrengthAcrossRefreshReconnectAndPostgresApiRestart()
     {
         var connection = new NpgsqlConnectionStringBuilder(
             Environment.GetEnvironmentVariable("ELIFOOT_013A_LEGACY_PG")
@@ -34,7 +34,7 @@ public sealed class ClassificationForcePostgresTests
             new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom",
                 options => options.HttpMessageHandlerFactory = _ => api.Server.CreateHandler()).Build();
 
-        Guid worldId, playerId, byeClubId;
+        Guid worldId, playerId, clubId;
         Guid coachId = Guid.NewGuid();
         (Guid Id, int Strength)[] strengths;
         string[] changeKeys;
@@ -47,24 +47,29 @@ public sealed class ClassificationForcePostgresTests
             worldId = (await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
             var repository = api.Services.GetRequiredService<IWorldRepository>();
             var world = (await repository.GetWorldAsync(worldId))!;
+            world.RoundNumber=3;
+            CompetitionAndSeasonEngine.EnsureCupFixturesForRound(world,3);
+            ClassicForceEvolutionEngine.PrepareRound(world);
             var cup = MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world);
-            var bye = world.Clubs.First(c => c.DivisionTier == DivisionTier.PrimeiraDivisao);
-            Assert.DoesNotContain(cup, m => m.HomeClubId == bye.Id || m.AwayClubId == bye.Id);
-            byeClubId = bye.Id;
-            var reserve = world.Players.First(p => p.ClubId == bye.Id);
+            Assert.Equal(64,cup.Count);
+            var club = world.Clubs.First(c => c.DivisionTier == DivisionTier.PrimeiraDivisao);
+            Assert.Contains(cup, m => m.HomeClubId == club.Id || m.AwayClubId == club.Id);
+            clubId = club.Id;
+            var reserve = world.Players.First(p => p.ClubId == club.Id);
             reserve.Strength = 1;
             playerId = reserve.Id;
             contractedSalary = reserve.SalaryPerRound;
+            var before = world.Players.Select(p => (p.Id,p.Strength)).OrderBy(p=>p.Id).ToArray();
             await repository.SaveWorldAsync(world);
 
-            string join = $"/api/worlds/{worldId}/join?coachId={coachId}&nickname=ForcePG&deviceId=force-pg&preferredClubId={bye.Id}";
+            string join = $"/api/worlds/{worldId}/join?coachId={coachId}&nickname=ForcePG&deviceId=force-pg&preferredClubId={club.Id}";
             (await client.PostAsync(join, null)).EnsureSuccessStatusCode();
             await using var hub = Hub(api);
             await hub.StartAsync();
             await hub.InvokeAsync<LiveRoundSnapshotDto>("JoinRoom", worldId, coachId);
             var ready = await client.PostAsJsonAsync($"/api/worlds/{worldId}/tactics",
-                new SubmitTacticsRequest(worldId, coachId, bye.PreferredFormation, bye.PreferredStarterIds,
-                    bye.PreferredBenchIds, "classification-ready", world.RoundVersion));
+                new SubmitTacticsRequest(worldId, coachId, club.PreferredFormation, club.PreferredStarterIds,
+                    club.PreferredBenchIds, "classification-ready", world.RoundVersion));
             ready.EnsureSuccessStatusCode();
 
             for (int step = 0; step < 20; step++)
@@ -79,9 +84,10 @@ public sealed class ClassificationForcePostgresTests
             }
             Assert.Equal(RoundState.RESULTS, world.RoundState);
             Assert.All(cup, m => Assert.True(m.IsFinished));
-            Assert.Equal(2, reserve.Strength);
+            Assert.Equal(1, reserve.Strength);
             Assert.Equal(contractedSalary, reserve.SalaryPerRound);
-            Assert.Single(world.PlayerStrengthHistory, e => e.PlayerId == playerId && e.ReserveGrowth == 1);
+            Assert.Equal(before,world.Players.Select(p=>(p.Id,p.Strength)).OrderBy(p=>p.Id));
+            Assert.DoesNotContain(world.PlayerStrengthHistory,e=>e.ChangeReason is "RESERVE_PROGRESS" or "PLAYED_MATCH_DECLINE");
             strengths = world.Players.Select(p => (p.Id, p.Strength)).OrderBy(p => p.Id).ToArray();
             changeKeys = world.PlayerStrengthHistory.Select(e => e.IdempotencyKey).ToArray();
         }
@@ -91,8 +97,8 @@ public sealed class ClassificationForcePostgresTests
         using var refreshed = restarted.CreateClient();
         for (int refresh = 0; refresh < 2; refresh++)
         {
-            var detail = (await refreshed.GetFromJsonAsync<ClubDetailDto>($"/api/worlds/{worldId}/clubs/{byeClubId}"))!;
-            Assert.Equal(2, Assert.Single(detail.Squad, p => p.Id == playerId).Strength);
+            var detail = (await refreshed.GetFromJsonAsync<ClubDetailDto>($"/api/worlds/{worldId}/clubs/{clubId}"))!;
+            Assert.Equal(1, Assert.Single(detail.Squad, p => p.Id == playerId).Strength);
         }
         await using var reconnected = Hub(restarted);
         await reconnected.StartAsync();

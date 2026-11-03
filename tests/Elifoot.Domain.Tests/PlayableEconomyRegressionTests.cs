@@ -54,7 +54,7 @@ public class PlayableEconomyRegressionTests
         var before = club.CashBalance;
         MarketAndEconomyEngine.SettleMatchAndRoundFinancials(w, []);
         MarketAndEconomyEngine.SettleMatchAndRoundFinancials(w, []);
-        Assert.Equal(before + 909.09m, club.CashBalance); // One of 22 installments of the annual R$20,000 contract.
+        Assert.Equal(before + Math.Round(20_000m / w.TotalRoundsInSeason,2), club.CashBalance);
         Assert.Single(w.Transactions, t => t.ClubId == club.Id && t.Category == FinancialTransactionCategory.Sponsorship);
     }
 
