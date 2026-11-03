@@ -70,6 +70,37 @@ public sealed class CustomWorldAssembly014BTests
         Assert.Equal(one.Id, (await h.Service.Confirm(owner, a.Id, new("first"))).Id);
     }
     [Fact]
+    public async Task ManualDivisionUses017BReferenceAndKeepsContractedSalary()
+    {
+        await using var h = new Harness();
+        await h.Init();
+        var owner = Guid.NewGuid();
+        var draft = await h.Service.Create(owner, Request() with { UseWorldCatalogRules = true });
+        var first = draft.Package.Clubs.First(c => c.DivisionTier == DivisionTier.PrimeiraDivisao);
+        var fourth = draft.Package.Clubs.First(c => c.DivisionTier == DivisionTier.QuartaDivisao);
+        var player = draft.Package.Players.First(p => p.ClubId == first.Id);
+        var edited = draft.Package with
+        {
+            Clubs = draft.Package.Clubs.Select(c => c.Id == first.Id ? c with { DivisionTier = DivisionTier.QuartaDivisao }
+                : c.Id == fourth.Id ? c with { DivisionTier = DivisionTier.PrimeiraDivisao } : c).ToList(),
+            Players = draft.Package.Players.Select(p => p.Id == player.Id
+                ? p with { Strength = 50, SalaryPerRound = 12345, ContractRoundsRemaining = 45 } : p).ToList()
+        };
+        draft = await h.Service.Update(owner, draft.Id, Update(draft, edited));
+        Assert.True(draft.Validation.IsValid, string.Join(";", draft.Validation.Errors));
+        var world = await h.Service.Confirm(owner, draft.Id, new("manual-017b"));
+        var club = Assert.Single(world.Clubs, c => c.Name == first.Name);
+        Assert.Equal(DivisionTier.QuartaDivisao, club.DivisionTier);
+        Assert.Equal(new InitialSquadReference017B(1, 12, 11, 12), club.InitialSquadReference);
+        var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+        Assert.All(squad, p => Assert.InRange(p.Strength, 11, 12));
+        var signed = Assert.Single(squad, p => p.Name == player.Name);
+        Assert.Equal(12345m, signed.SalaryPerRound);
+        Assert.Equal(45, signed.ContractRoundsRemaining);
+        Assert.Equal(signed.Strength, world.CatalogOrigin!.Clubs.Single(c => c.Club.Name == club.Name).Club.Players.Single(p => p.PlayerName == signed.Name).Strength);
+    }
+
+    [Fact]
     public async Task OwnershipConsentAndOptimisticConcurrencyAreEnforced()
     {
         await using var h = new Harness(); await h.Init(); var owner = Guid.NewGuid();

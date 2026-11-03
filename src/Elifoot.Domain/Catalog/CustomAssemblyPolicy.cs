@@ -105,12 +105,57 @@ public static class CustomAssemblyPolicy
     }
     public static GameWorld CreateIndependent(WorldPackageExportDto package, Guid assemblyId, int version, List<string> countries, string name, int maxHumans)
     {
+        var references = new Dictionary<Guid, InitialSquadReference017B>();
+        var sourceSquads = package.Players.ToLookup(p => p.ClubId);
+        var strengthByPlayer = new Dictionary<Guid, int>();
+        foreach (var division in package.Clubs.Where(c => (int)c.DivisionTier is >= 1 and <= 4).GroupBy(c => c.DivisionTier))
+        {
+            int position = 0;
+            foreach (var club in division)
+            {
+                var reference = InitialSquadStrength017B.Reference((int)division.Key, ++position);
+                references.Add(club.Id, reference);
+                var squad = sourceSquads[club.Id].ToList();
+                var strengths = InitialSquadStrength017B.Draw(package.Seed, club.Id.ToString("N"), reference,
+                    squad.Select(p => p.Id.ToString("N")));
+                for (int i = 0; i < squad.Count; i++) strengthByPlayer.Add(squad[i].Id, strengths[i]);
+            }
+        }
+
         var clubIds = package.Clubs.ToDictionary(c => c.Id, _ => Guid.NewGuid());
-        var players = package.Players.Select(p => p with { Id = Guid.NewGuid(), ClubId = p.ClubId is Guid id ? clubIds[id] : null }).ToList();
+        var calibrated = package.Players.Select(p =>
+        {
+            if (!strengthByPlayer.TryGetValue(p.Id, out int strength)) return p;
+            var value = new Player { Position = p.Position, Strength = strength, IsStar = p.IsStar,
+                Behavior = p.Behavior, ContractRoundsRemaining = p.ContractRoundsRemaining };
+            return p with { Strength = strength, MarketPrice = MarketAndEconomyEngine.CalculateFairValue(value) };
+        }).ToList();
+        if (package.CatalogOrigin is { } origin)
+        {
+            // Prepare writes the catalog rows in package club and player order.
+            var rows = package.Clubs.Zip(origin.Clubs, (club, entry) =>
+                !references.TryGetValue(club.Id, out var reference) ? entry : entry with
+                {
+                    InitialSquadReference = reference,
+                    Club = entry.Club with
+                    {
+                        Players = entry.Club.Players.Zip(sourceSquads[club.Id],
+                            (athlete, player) => athlete with { Strength = strengthByPlayer[player.Id] }).ToList()
+                    }
+                }).ToList();
+            string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new
+            {
+                package.Seed, package.Gender, package.Clubs, Players = calibrated, Rows = rows
+            })));
+            package = package with { CatalogOrigin = origin with { Clubs = rows, DataHash = hash } };
+        }
+        var players = calibrated.Select(p => p with { Id = Guid.NewGuid(), ClubId = p.ClubId is Guid id ? clubIds[id] : null }).ToList();
         var clubs = package.Clubs.Select(c => c with { Id = clubIds[c.Id] }).ToList();
         var managers = package.AiManagers.Select(m => m with { Id = Guid.NewGuid(), AssignedClubId = m.AssignedClubId is Guid id ? clubIds.GetValueOrDefault(id) : null }).ToList();
         var result = WorldEditorAndPackageService.CreateWorldFromPackage(package with { Clubs = clubs, Players = players, AiManagers = managers }, name);
         if (result.World == null) throw new ArgumentException(string.Join("; ", result.Validation.Errors));
+        foreach (var club in result.World.Clubs.Zip(package.Clubs))
+            club.First.InitialSquadReference = references.GetValueOrDefault(club.Second.Id);
         result.World.MaxHumans = Math.Clamp(maxHumans, 1, 8);
         result.World.CustomAssemblyOrigin = new(assemblyId, version, package.CatalogOrigin?.DataHash ?? "", countries.ToList(), DateTime.UtcNow);
         return result.World;

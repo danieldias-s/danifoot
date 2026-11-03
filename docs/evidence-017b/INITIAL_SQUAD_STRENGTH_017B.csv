@@ -1,0 +1,695 @@
+﻿WorldId,Seed,Division,InitialPosition,ClubId,ClubName,ReferenceStrength,PlayerId,PlayerName,PlayerPosition,PlayerStrength,SquadRole,PlayerOrigin
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,c2308c66-e6d2-4a4f-8a64-17940b16178b,Atleta fictício FC Po-02,G,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,8d807aef-e042-0e47-a826-a0707126e72d,Atleta fictício FC Po-01,G,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,d677f328-f511-8742-b2b2-0c0946241b5e,Atleta fictício FC Po-05,D,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,791f4ad1-0c55-eb4a-97a8-dc05a3d3dcf6,Atleta fictício FC Po-16,D,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,c3fcbed6-9f1d-2a4e-848d-e044bf877ed4,Atleta fictício FC Po-19,D,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,259e2f53-67f4-7f46-89ef-63064bcf7896,Atleta fictício FC Po-03,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,fa2f5ea5-9d0d-b04c-a799-eaaecb39c82d,Atleta fictício FC Po-04,D,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,45832c4c-dcd6-df41-bdb0-783e1714f0dd,Atleta fictício FC Po-06,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,c8d436d8-fe5f-3941-9a38-1710c4131a8e,Atleta fictício FC Po-13,D,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,14e2f036-75e2-c44f-bab7-99619ac93d0b,Atleta fictício FC Po-22,D,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,b321106f-e61d-5c49-8616-6df3fc980662,Atleta fictício FC Po-07,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,8a6de553-2969-2344-bda8-ba17dea21d41,Atleta fictício FC Po-08,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,765362da-7e8c-d749-a864-34b8a25f860b,Atleta fictício FC Po-23,M,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,c6ea2f61-0ac2-7940-9a2c-6a9c3dbc20df,Atleta fictício FC Po-14,M,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,90864a89-a925-8c45-815d-364d2eab46ee,Atleta fictício FC Po-09,M,49,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,ab70f5dd-cf85-3c47-8938-76cc9e9665cc,Atleta fictício FC Po-10,M,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,19e88cb3-b105-4f40-87b7-d74d8f822a3d,Atleta fictício FC Po-17,M,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,60af9416-eb5e-2543-925f-00073551a659,Atleta fictício FC Po-20,M,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,3e395b9c-6317-0847-8a58-819105507d7e,Atleta fictício FC Po-12,A,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,754d70bf-fa1e-e24b-9c04-4694fdaa5f0a,Atleta fictício FC Po-15,A,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,8012c62f-9e0a-c740-94e9-36ad45f49931,Atleta fictício FC Po-21,A,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,934aaa72-f6b7-e84c-979e-7d37015bbb79,Atleta fictício FC Po-11,A,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,1,8fc90ff8-0ff9-754a-9194-2e9a056ead61,FC Porto,50,6a8c71da-a584-1f4d-ac1d-29136329d24e,Atleta fictício FC Po-18,A,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,b5d237b6-c436-d04c-a3ff-98bda76ba1d7,Atleta fictício FC Ba-01,G,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,fd442c87-4d46-004d-b165-716d78b38488,Atleta fictício FC Ba-02,G,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,c91c34e7-ecbb-6d42-969a-0cafb978379b,Atleta fictício FC Ba-13,D,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,c95a0e74-f05d-d042-a04a-845f71018348,Atleta fictício FC Ba-19,D,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,26365810-6a18-6d4e-87aa-92e2f868316f,Atleta fictício FC Ba-22,D,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,d306ae4a-6e0d-944f-a484-1a6884469958,Atleta fictício FC Ba-06,D,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,373af654-38b9-1147-870d-be78d102ac67,Atleta fictício FC Ba-16,D,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,6ec41de1-df13-b244-86c9-3ebb2a1f2726,Atleta fictício FC Ba-03,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,99f71cc8-9296-cc43-a875-f3ae605da018,Atleta fictício FC Ba-04,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,fc6bf924-92d5-1246-a60c-90efa991f014,Atleta fictício FC Ba-05,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,5e49cd7f-4c02-3f4a-a1f6-532b2a69971e,Atleta fictício FC Ba-09,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,cf835f2c-4393-f74a-8214-f27e93232489,Atleta fictício FC Ba-10,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,0c41f12b-f0b9-3d48-875e-e728160267d0,Atleta fictício FC Ba-20,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,50f8032c-e59d-4c43-9415-045c0571d1d4,Atleta fictício FC Ba-08,M,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,97391b87-f43d-8d44-bcc9-9f52b0166133,Atleta fictício FC Ba-14,M,49,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,bea2427d-5558-ef45-9d63-39f0d5e61c09,Atleta fictício FC Ba-07,M,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,01f0335d-72a0-9644-a0d9-a5dbd599e13b,Atleta fictício FC Ba-17,M,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,60e6bf29-a1ec-5f4a-a851-f58717ec7858,Atleta fictício FC Ba-23,M,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,0e767704-5f77-8647-83c1-4b129e3126a0,Atleta fictício FC Ba-12,A,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,48494930-8882-4e4e-b522-223a0ba0dc94,Atleta fictício FC Ba-15,A,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,2f599898-7cd6-f248-982c-11e9bcb28ade,Atleta fictício FC Ba-21,A,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,428d25c6-949b-0b4f-b194-dfc70db936d7,Atleta fictício FC Ba-11,A,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,2,a3f16faa-c3c4-5842-81ea-b0e68ee551b8,FC Barcelona,50,e27af27d-3e0d-484f-8778-cb8d5bff406f,Atleta fictício FC Ba-18,A,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,dbd89ad5-a2f7-3c43-8ca6-e286dca88ffe,Atleta fictício Bayer-01,G,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,72a6fb84-0993-1a4f-8675-1a01e974720d,Atleta fictício Bayer-02,G,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,83f4a84d-ba58-0f4c-9153-754a4c5e7a88,Atleta fictício Bayer-13,D,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,22544ddc-ff91-914b-b299-29208b6d4148,Atleta fictício Bayer-22,D,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,3860436f-0a52-1b43-8da2-7175b66a8864,Atleta fictício Bayer-04,D,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,d76bfb03-1f4f-ea4c-9d44-c2e562e25244,Atleta fictício Bayer-03,D,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,1760a7c5-4f3a-d34e-ae33-e00f98956047,Atleta fictício Bayer-05,D,49,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,f211be64-fc42-c84c-8b3a-83989a8461eb,Atleta fictício Bayer-19,D,49,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,47051073-1eb4-4e46-a4f4-232a90ae992c,Atleta fictício Bayer-06,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,314c4331-8b4c-5e42-b2be-3dade3d00aed,Atleta fictício Bayer-16,D,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,6a0de687-1e2e-fb4e-91aa-2891ef9b28ec,Atleta fictício Bayer-09,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,e7ba7548-4535-fc49-b128-990326a5030f,Atleta fictício Bayer-14,M,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,4c3fe694-2c54-4448-a558-b964c2c9122a,Atleta fictício Bayer-07,M,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,ef8ecfcc-91c2-7c48-88bf-f9f668ea94e5,Atleta fictício Bayer-08,M,48,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,51a5b05a-0a59-6d4c-89b9-eea56877406b,Atleta fictício Bayer-20,M,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,b521fd1c-0237-554f-8760-8c1b7ae86f49,Atleta fictício Bayer-23,M,48,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,6a7cb436-26cd-c947-a1d2-a5769486269f,Atleta fictício Bayer-10,M,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,6db7d08a-7266-fc4d-b104-0084f5651ad0,Atleta fictício Bayer-17,M,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,197a0447-97f3-0e4f-afef-79d2d9fe6283,Atleta fictício Bayer-11,A,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,82e36b61-debf-c04c-b663-56f743a21fef,Atleta fictício Bayer-12,A,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,43191308-3835-8844-9ee5-1cb7c41bb3f8,Atleta fictício Bayer-15,A,50,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,5e3f046a-3e41-9348-ad52-dd53a9925a5a,Atleta fictício Bayer-18,A,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,3,587a76db-cf8e-3542-957e-6544812c3aab,Bayern München,50,5f89d0e6-b2cd-a845-bd6e-f23c503cad45,Atleta fictício Bayer-21,A,50,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,ba49ea0d-4903-8f46-981f-1126296b15c2,Atleta fictício SL Be-01,G,46,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,3c7c670d-931b-7b47-a7e9-7620163738b3,Atleta fictício SL Be-02,G,46,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,1cab2dec-1901-1d42-b0c2-54699d6c210f,Atleta fictício SL Be-03,D,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,0e82e710-b9ca-8744-92ab-05d6410baae5,Atleta fictício SL Be-13,D,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,c4966e31-a160-604c-b0a8-0917c922860b,Atleta fictício SL Be-19,D,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,7a44d867-39aa-fa46-b82d-88a6a472750e,Atleta fictício SL Be-05,D,46,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,cf9e8d2d-b096-9c4c-ac3e-00d8e75dd49e,Atleta fictício SL Be-06,D,46,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,dea62677-8483-2a4d-bb74-98cb437a5c0f,Atleta fictício SL Be-22,D,46,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,3e7e64e4-2955-fb45-bdbe-6eb642cd2ea5,Atleta fictício SL Be-04,D,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,9d9257b3-3beb-4848-bc94-45c61afb9876,Atleta fictício SL Be-16,D,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,b3d3fdd5-b505-1d48-a3d0-60dc753c80f9,Atleta fictício SL Be-07,M,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,3d6303a5-f949-074e-98a0-fc662f79e96f,Atleta fictício SL Be-08,M,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,c473c3ff-63ea-9344-b527-af625e83af9f,Atleta fictício SL Be-09,M,45,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,ae838f90-cbe9-9d48-a65c-719a28378481,Atleta fictício SL Be-20,M,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,550c7c34-7470-c148-ad51-19d6319d55cf,Atleta fictício SL Be-17,M,46,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,ea453f0d-b93a-324e-8f7c-fb2e766ff1a6,Atleta fictício SL Be-23,M,46,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,b12f5a24-54d7-a54d-a525-cae31888d94a,Atleta fictício SL Be-10,M,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,2157ce23-a8a3-fe4b-b84a-2f814bd45967,Atleta fictício SL Be-14,M,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,82388c0e-fb0e-cb46-94c1-ba5a29cea38f,Atleta fictício SL Be-11,A,46,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,d4cbc75c-741b-0344-be19-ecfb92bdecbc,Atleta fictício SL Be-18,A,46,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,ed7b12b8-0d27-fa4f-8bd6-6421563b7120,Atleta fictício SL Be-12,A,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,8a375852-3363-da4d-8d72-ed2dd61f5c7e,Atleta fictício SL Be-15,A,47,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,4,9b6949ae-103a-f041-b5cc-990093f3bca6,SL Benfica,46,1f49d530-dbf0-c542-897c-bc03d6479c2f,Atleta fictício SL Be-21,A,47,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,e1fefb5b-a3cb-dd49-b37f-c9e6358e9cfc,Atleta fictício FC In-01,G,44,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,d623ed48-8ae1-a04e-8f03-51deabfa4b07,Atleta fictício FC In-02,G,44,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,ead6e146-1e5e-d648-a634-6fe954515eb2,Atleta fictício FC In-04,D,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,2e54bd7f-e973-e94f-b80e-4357852247ff,Atleta fictício FC In-05,D,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,0396b31a-f86f-ce40-881f-bdec53a78eb7,Atleta fictício FC In-19,D,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,034bf404-23d5-f14c-9a6f-84d7ab17e3b6,Atleta fictício FC In-13,D,44,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,a4f99114-7595-2849-b8b6-4b1e74381363,Atleta fictício FC In-16,D,44,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,4965dc17-cbea-fe43-887d-4edad3bf617c,Atleta fictício FC In-03,D,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,42773de4-b479-5447-a259-660b80dd2fe4,Atleta fictício FC In-06,D,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,7690ef28-ff21-6a40-9651-5e1cc95fbd54,Atleta fictício FC In-22,D,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,2d2b9df4-b1bf-c84d-ad19-9704192d1aa9,Atleta fictício FC In-07,M,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,1c4c42cd-2112-e742-be2b-1c756bb13a27,Atleta fictício FC In-17,M,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,bb15bb5d-b646-4c41-8d7e-71c372264ca1,Atleta fictício FC In-20,M,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,008b7f2d-eea5-3341-ac35-9c7d32db1d06,Atleta fictício FC In-23,M,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,3596e10e-d611-1548-95f6-066000e29d3c,Atleta fictício FC In-09,M,44,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,94f65660-637a-6446-bbe4-49c877f1caa7,Atleta fictício FC In-08,M,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,528045cd-8c75-2b4f-95a4-6723d2cc00ed,Atleta fictício FC In-10,M,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,c0382e86-e042-e04a-bec4-ba4a7c14cf53,Atleta fictício FC In-14,M,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,e74f00df-5b08-0841-8391-a1226acb525a,Atleta fictício FC In-12,A,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,18937730-792e-384d-b1b2-4d8b9dd38fb5,Atleta fictício FC In-15,A,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,4dc752bc-0fbc-a74c-bad6-1ce9f8fac278,Atleta fictício FC In-18,A,44,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,155d14e6-a81b-944c-af37-f5e8d4451c22,Atleta fictício FC In-11,A,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,5,836cea4d-dd81-d24a-805b-c2be06bd2e00,FC Internazionale Milano,44,59c72d4d-54f5-bb46-b095-3ba40ce2b13c,Atleta fictício FC In-21,A,45,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,8120469f-7634-cf4f-aa49-f3f5a780910b,Atleta fictício Flame-01,G,42,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,7d1a4cf8-73b0-7543-b55e-fde0ab8b5926,Atleta fictício Flame-02,G,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,591e2d00-7760-994d-b20f-bae4c4fa1ba8,Atleta fictício Flame-19,D,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,4f05984d-b321-2446-8868-cab80e92f91c,Atleta fictício Flame-03,D,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,6fb6fa93-22fe-b945-903b-425157b22872,Atleta fictício Flame-04,D,42,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,2c14f078-2b48-7c4d-b5dc-150e00b295b7,Atleta fictício Flame-06,D,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,c5eef59a-1f84-8e4d-98e6-294a4049abe9,Atleta fictício Flame-05,D,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,0e35065a-3347-c34d-982e-1e82c41a7b15,Atleta fictício Flame-13,D,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,1ae71102-07fd-d24d-b860-4777f1a56f38,Atleta fictício Flame-16,D,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,3a6d7e11-ede4-f24f-bc2e-d1a67b0092b2,Atleta fictício Flame-22,D,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,eb857a5b-2356-ae47-bc7b-f96ecd6afc3c,Atleta fictício Flame-08,M,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,ab22c359-84f4-7f4a-8a9e-36ab0d287da6,Atleta fictício Flame-14,M,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,e771f507-c805-bb4d-8547-c82745e6dfe9,Atleta fictício Flame-09,M,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,37766abb-da1b-f642-9101-2195a1f7b293,Atleta fictício Flame-10,M,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,7389b22e-9a81-6048-abe3-b440afb62190,Atleta fictício Flame-17,M,42,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,1d7329ec-3d03-1140-9cf0-a9feb3134d9d,Atleta fictício Flame-23,M,42,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,135ed4c4-808b-db4c-8c58-5e27744e5b43,Atleta fictício Flame-07,M,43,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,007050bc-b305-b54d-b7df-a373db6d40e9,Atleta fictício Flame-20,M,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,f8be6d0e-08c3-0e44-9ff7-182abda61170,Atleta fictício Flame-21,A,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,07a2e5b6-45cf-aa46-b84c-326e65fa5152,Atleta fictício Flame-12,A,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,af1b38f4-7c22-4a4a-b251-e84b27fd6b0d,Atleta fictício Flame-15,A,42,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,e878ac25-02d5-ee40-a4ea-f3f677fa1b69,Atleta fictício Flame-11,A,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,6,6ef7f5f2-cab0-fb47-883e-66b317189dae,Flamengo RJ,42,cf740798-3604-4340-9f59-66f229adf0ac,Atleta fictício Flame-18,A,43,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,04b7f092-3089-5947-bd8a-a8e051079cc3,Atleta fictício Sport-01,G,41,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,816a7c71-77b9-b549-85ce-cc757007fd2a,Atleta fictício Sport-02,G,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,abdd0165-b1bb-3447-ba37-c4ab012d1484,Atleta fictício Sport-22,D,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,1bf0521e-d9ab-b84b-a1e8-1060757148bb,Atleta fictício Sport-04,D,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,b64bb08a-ae73-1645-aade-10ffc00b82bd,Atleta fictício Sport-06,D,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,8d212749-f662-a84b-a3f3-9d33b203dd4a,Atleta fictício Sport-13,D,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,6241847b-dcc6-9340-a60a-b6b37e16c628,Atleta fictício Sport-16,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,69ba29b9-f589-a241-8fc4-56ce918e6624,Atleta fictício Sport-19,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,0fa58058-25fe-a04e-9c4b-c0df94efca79,Atleta fictício Sport-03,D,41,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,d4a55721-3d44-e749-af4b-16e0b71b6da1,Atleta fictício Sport-05,D,41,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,96561ba0-543e-c547-b49e-5d80daa29555,Atleta fictício Sport-08,M,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,c66708ad-5fe2-494f-9581-31f13083705f,Atleta fictício Sport-10,M,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,79549124-4ca0-0e48-9c5e-fefd458a4aed,Atleta fictício Sport-23,M,39,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,a7e65c35-2fc8-ca45-b6e1-07167dc9af82,Atleta fictício Sport-07,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,3db1e9f8-985a-b242-ad92-f2a15330d530,Atleta fictício Sport-09,M,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,385804d1-923d-344a-8ac3-fb37ab158919,Atleta fictício Sport-17,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,dd68f670-b27a-804e-b2b9-63c6d3501dd5,Atleta fictício Sport-20,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,10835a5c-04de-c54c-8a97-0551b121cbff,Atleta fictício Sport-14,M,41,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,3e6e7ba8-ef74-0448-831f-6bd940a9a3cc,Atleta fictício Sport-11,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,033e703f-e04d-6347-90e0-9b95e87bf95c,Atleta fictício Sport-12,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,62f51c5e-09e9-a943-9952-0d404e257a92,Atleta fictício Sport-15,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,d60c6085-2942-164b-9abd-06254d5f992a,Atleta fictício Sport-18,A,41,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,7,26ef89e3-56c6-0b4e-b6cf-24e47db55ef9,Sporting CP,40,e8abba91-999d-5449-89de-54c643c3637f,Atleta fictício Sport-21,A,41,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,5bc53448-36ce-1242-820e-f97ed1cf84a5,Atleta fictício Arsen-01,G,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,20558548-55b9-6244-922f-2c7a7262b5c6,Atleta fictício Arsen-02,G,39,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,70b80739-6fae-554e-bf81-16746d95d2e7,Atleta fictício Arsen-04,D,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,aebc7e54-c4b1-974b-8236-f1fc3d86a9ec,Atleta fictício Arsen-06,D,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,b06b63a0-096e-d449-ab08-6764d7e7daeb,Atleta fictício Arsen-19,D,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,1c08eb55-03d7-134b-bb35-773d037d6f24,Atleta fictício Arsen-03,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,a40b2396-9826-994e-aeae-50102bb93e04,Atleta fictício Arsen-05,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,0d916980-f23f-d34a-b7f1-c798a4794834,Atleta fictício Arsen-13,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,998ca8ee-728c-3446-bfbb-247ca8f3bf93,Atleta fictício Arsen-16,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,97b009dc-a5f9-414e-8dc7-26f7cd2c3831,Atleta fictício Arsen-22,D,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,b7fc41c6-4cf1-484c-82ea-d3390dbb2292,Atleta fictício Arsen-08,M,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,5b143ec5-1bee-f541-b5bb-51bae7e119a6,Atleta fictício Arsen-23,M,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,9f8d9d34-71f3-b640-b213-db75c53e6067,Atleta fictício Arsen-07,M,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,e89d702a-9180-9049-967e-c3cf56f788f5,Atleta fictício Arsen-09,M,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,dbba517d-f223-7848-a996-b52f690b369f,Atleta fictício Arsen-10,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,b5aa4f97-afa3-1046-92e5-ad8cc6bd1a16,Atleta fictício Arsen-14,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,0a827484-7045-d249-b7bf-cc724fc8e964,Atleta fictício Arsen-17,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,6b380572-43de-5d44-bfc6-09f82c8da051,Atleta fictício Arsen-20,M,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,d3e40586-8123-d242-aa59-c0cddef99564,Atleta fictício Arsen-11,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,abdc5623-ef8b-4148-8c7d-173591fe97be,Atleta fictício Arsen-15,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,d95b8319-cec7-4141-abca-bb48cc12d575,Atleta fictício Arsen-18,A,39,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,adb5f32b-4021-4f45-91dc-9b929c5766b6,Atleta fictício Arsen-12,A,40,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,1,8,f6fb282c-e699-ff46-9e26-89d14c694538,Arsenal FC,39,8e58018b-a95d-ba4e-b953-4101082e094a,Atleta fictício Arsen-21,A,40,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,5eff26fb-2342-884f-b0f0-3f126d8712e0,Atleta fictício Manch-01,G,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,455005d7-721c-304f-9014-8159d6fd614e,Atleta fictício Manch-02,G,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,b17ded85-d47c-5141-aae2-6d48fd6e760c,Atleta fictício Manch-03,D,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,8df38852-3924-4447-a488-cdc0e2e034aa,Atleta fictício Manch-04,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,25bcca74-f68b-8f45-88f9-ac27b2929b0e,Atleta fictício Manch-05,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,1eb91a2e-cac7-3047-9894-5c45a35c0c2a,Atleta fictício Manch-06,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,9c41cb3c-e16e-0a4b-8594-9d77747634a3,Atleta fictício Manch-16,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,b618833e-0672-7946-a698-69ec96de10a7,Atleta fictício Manch-13,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,bc517a36-de38-e24f-89f1-c343fd334ff5,Atleta fictício Manch-19,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,809adcba-7f92-7749-9fd8-633baf4c02e8,Atleta fictício Manch-22,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,4c188b91-9e11-064c-a300-e64a03d95579,Atleta fictício Manch-08,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,d8c3d1f1-c7cb-684c-b3bc-0405afb18e62,Atleta fictício Manch-20,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,b89a89cb-f415-ab4a-801d-cab70d10913c,Atleta fictício Manch-07,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,79f7f4ed-2d95-a448-a3d4-c8e9ef5044c3,Atleta fictício Manch-09,M,38,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,2b37cd53-bc44-be44-afb0-b0aa7dcbe504,Atleta fictício Manch-10,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,69851973-1810-5b46-a59e-3bb6f9e60a81,Atleta fictício Manch-14,M,38,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,400e49ca-d2c1-e146-a1a5-38a19314c415,Atleta fictício Manch-17,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,a2012735-f9e0-1144-8d53-2b857b719441,Atleta fictício Manch-23,M,38,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,e15512ed-edcf-df47-98e6-b1e081efb213,Atleta fictício Manch-11,A,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,c70e2167-1cf6-6443-b095-0b861f228686,Atleta fictício Manch-12,A,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,01c65b87-abc2-074c-9242-c118c72d74b6,Atleta fictício Manch-15,A,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,1b41f68b-286a-dc45-80ba-d322200fa9bc,Atleta fictício Manch-21,A,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,1,62f367b0-ad6d-f84e-b10f-e2f77d022954,Manchester City FC,38,175530ee-b1e8-7843-9cb4-c277d575e7b1,Atleta fictício Manch-18,A,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,216a20b6-4ca6-4242-b115-d807be85cb45,Atleta fictício Palme-01,G,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,a37d0e70-82d2-8e4f-8d70-087f45a7d046,Atleta fictício Palme-02,G,38,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,423f5cfd-3576-7b4f-995a-65ccf7fae613,Atleta fictício Palme-06,D,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,5b3c5538-ce76-284f-b4a2-70e2e818f41a,Atleta fictício Palme-13,D,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,a775cedb-f343-ba41-8b0f-becdb0178fa3,Atleta fictício Palme-22,D,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,97ff5f08-18cd-c14d-8b62-48d2ff6bdf82,Atleta fictício Palme-03,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,61357184-1d45-5641-8cf6-2674f7fc3436,Atleta fictício Palme-19,D,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,06f87c01-dffe-8f46-bc9a-b1df3ac2e0d5,Atleta fictício Palme-04,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,0ac651a8-d45b-2c47-bdf3-278b973e86cd,Atleta fictício Palme-05,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,9b48a965-7359-494c-86c3-38a88f650c61,Atleta fictício Palme-16,D,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,fd990e30-4c81-934a-b70f-3f7bb7486dee,Atleta fictício Palme-08,M,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,434e694f-7e21-5c4e-bb92-cd87f03c6981,Atleta fictício Palme-07,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,b43377f2-c3d4-3f42-9b84-67328f628d2a,Atleta fictício Palme-10,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,e7ccd0ef-0256-4142-bfc5-cd6c19991f51,Atleta fictício Palme-23,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,0648275e-955b-174e-b39b-830bd5050070,Atleta fictício Palme-09,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,25de1a65-4334-a146-93c9-b273d603bb34,Atleta fictício Palme-14,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,b15ef608-2366-d540-ba2e-a63558796aa4,Atleta fictício Palme-17,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,a7ea8981-a202-8540-9248-9e8ea5840eb9,Atleta fictício Palme-20,M,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,c2499fef-ce5f-474c-9ed6-c115bc4c0f93,Atleta fictício Palme-12,A,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,7cfbf0d6-ccfd-394b-ad47-2238d768af1d,Atleta fictício Palme-15,A,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,f68553aa-022d-bf4b-a193-599e52fda1fe,Atleta fictício Palme-11,A,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,cae8b34a-4346-de4b-8d62-76c700c7fe11,Atleta fictício Palme-18,A,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,2,41f10264-8393-6348-b0b6-da8006dccab9,Palmeiras SP,37,1f72a293-32f4-484b-aae1-e4414c7cef55,Atleta fictício Palme-21,A,38,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,32ec4c8c-2a32-154c-b39b-09f180ff1cee,Atleta fictício Borus-01,G,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,63df226a-3698-aa4c-ad73-6237dc522de8,Atleta fictício Borus-02,G,36,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,b1e4a660-d18c-0545-a922-2bbe004c27a3,Atleta fictício Borus-04,D,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,a716d801-9692-6347-9959-594fdaf7d376,Atleta fictício Borus-05,D,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,3675778c-2137-e04a-a153-df927eca8e60,Atleta fictício Borus-13,D,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,e37fb700-f922-ba4a-bd31-348ee7dbab07,Atleta fictício Borus-06,D,36,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,57c7bbf7-0cd4-2a48-9466-c2b8541e58ac,Atleta fictício Borus-22,D,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,3c54aefa-bb7b-2647-a14a-62a2a8cf00c7,Atleta fictício Borus-03,D,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,f584a44c-0a6b-584f-987b-9ad32e25a38c,Atleta fictício Borus-16,D,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,54d7486d-28f6-8e49-9569-18d2a29032e7,Atleta fictício Borus-19,D,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,147bd349-796b-cd4a-bd7e-98dc023ebacf,Atleta fictício Borus-17,M,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,8f6e6dd1-a623-3e47-86ef-116b14de58ad,Atleta fictício Borus-20,M,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,54003aae-002c-8f4c-a926-4338697003f6,Atleta fictício Borus-07,M,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,8f0e2165-7147-da47-9b2f-b43a0f82687c,Atleta fictício Borus-14,M,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,52736a8c-2c94-9442-a4f9-7652b881c7e3,Atleta fictício Borus-08,M,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,d7d72385-faef-764d-aba1-9512bce00a0a,Atleta fictício Borus-09,M,37,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,8a2d3259-d76d-3d4a-80d0-83b9b470fb63,Atleta fictício Borus-10,M,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,c1d27c03-23ba-c24a-b656-ee8236a9eb29,Atleta fictício Borus-23,M,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,22cfa77f-f897-a742-b95d-0527b2e87bb0,Atleta fictício Borus-11,A,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,9dbfd264-2d04-2649-a68a-128e92dc5190,Atleta fictício Borus-18,A,36,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,505a1029-cbb0-c848-87db-217b585c3385,Atleta fictício Borus-12,A,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,5232bf0b-70ad-ba48-ba6d-6babf5777b27,Atleta fictício Borus-15,A,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,3,95eaa5e6-5869-f343-90df-a128995d2585,Borussia Dortmund,36,098c06df-7de7-1d43-91b6-c6de152fa42b,Atleta fictício Borus-21,A,37,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,da709a9e-d9c9-0a4a-87f2-1660eb45e055,Atleta fictício Real -01,G,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,bcbb2542-9f09-2f41-b623-81124ac04b02,Atleta fictício Real -02,G,35,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,b032674b-a089-a040-8c88-b750d6ddba1f,Atleta fictício Real -03,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,fbed02e7-46a3-684b-a455-8a616c49d331,Atleta fictício Real -04,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,656ad1fc-3d6e-134d-80f8-fb5bc5d0724b,Atleta fictício Real -16,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,dbdc8b41-b017-6c45-b2e8-f20a4e5fb862,Atleta fictício Real -22,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,1983b613-e11d-0740-8c1c-f0c5c51272ee,Atleta fictício Real -06,D,34,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,260928d1-f7c6-304e-82e3-80a45be1316d,Atleta fictício Real -19,D,34,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,1fbb6f45-6641-d14f-9919-3b8edb5dff2d,Atleta fictício Real -05,D,35,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,032c31f7-c1de-7644-bb82-54ede45f28c8,Atleta fictício Real -13,D,35,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,7fe6f300-33b8-8f45-845a-dc8cbabbaac4,Atleta fictício Real -07,M,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,b5b88f45-f8b2-2343-ab6d-c14aa110d812,Atleta fictício Real -08,M,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,37be2108-ab1a-f642-8039-f92835e026cf,Atleta fictício Real -09,M,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,9c357e56-55f2-7949-a93f-bd75956e1712,Atleta fictício Real -10,M,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,f4add653-7dd0-4144-b298-6617b584be8c,Atleta fictício Real -17,M,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,7d2b0412-04c0-164a-a537-3ec982e3cd2b,Atleta fictício Real -14,M,34,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,071316e1-55b2-2943-8b2c-be7ad5f45f50,Atleta fictício Real -20,M,34,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,55016698-5dfd-d648-887b-a5b6c6e9039c,Atleta fictício Real -23,M,34,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,af31ccb3-9f98-0748-978a-06195dd38e81,Atleta fictício Real -15,A,34,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,5197ec70-2dad-e74c-8f82-4ff4686fddc6,Atleta fictício Real -11,A,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,7fa125ea-a2b8-7c47-b2de-d7d761784c6f,Atleta fictício Real -12,A,35,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,1171e297-65af-ce4d-81c3-2d436bdd1aeb,Atleta fictício Real -18,A,35,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,4,dffd7032-985b-3d4f-a33e-f48461cd4855,Real Madrid,34,ba57d9f8-fa82-bf48-92d0-20a2055fc3ba,Atleta fictício Real -21,A,35,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,9fae6f63-12a9-2141-b5b0-01c93320eec0,Atleta fictício AS Ro-02,G,32,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,eab5d726-dfea-e846-ac07-29d662ab93d3,Atleta fictício AS Ro-01,G,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,cb547982-4cda-e54e-8f77-1f87185443c2,Atleta fictício AS Ro-03,D,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,51404d0f-3a6c-514c-835d-02dc52be56ff,Atleta fictício AS Ro-05,D,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,d2ff4e69-a659-7f4f-b173-fdcb0b542893,Atleta fictício AS Ro-19,D,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,0f46e5b0-1608-9e46-80ed-4a7039f87805,Atleta fictício AS Ro-16,D,32,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,65ed713d-8d19-1046-8397-dafaaa865639,Atleta fictício AS Ro-04,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,f74cb7cb-40ef-8e47-817e-f49340cffb9f,Atleta fictício AS Ro-06,D,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,48467b91-c604-1f48-9330-94b5a8edfc2f,Atleta fictício AS Ro-13,D,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,d2e54325-fe39-7444-b170-9b13bf5ae860,Atleta fictício AS Ro-22,D,33,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,81392093-91f2-f649-b256-5b34c643f87f,Atleta fictício AS Ro-07,M,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,ea699b5d-affe-f142-a647-f0e726b550b9,Atleta fictício AS Ro-10,M,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,44b69bf2-33d6-644f-9c26-6ab47b71e9df,Atleta fictício AS Ro-14,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,e6eea406-84b6-d741-8bba-fab09c97b249,Atleta fictício AS Ro-20,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,08e7a0a7-557b-7e40-b8c4-a0ca2fe9413a,Atleta fictício AS Ro-23,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,b82b1c5f-01bb-e942-ab0c-405819bbbf07,Atleta fictício AS Ro-09,M,32,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,cca949c0-bf3e-ec4b-b26b-f97f76f9d479,Atleta fictício AS Ro-17,M,32,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,ed642758-494d-a642-90cf-ac4ed02440d0,Atleta fictício AS Ro-08,M,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,e3a6c145-cc5c-b147-a2df-4200ac377710,Atleta fictício AS Ro-11,A,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,07e430d9-bdec-5149-9845-ca0411002b04,Atleta fictício AS Ro-15,A,32,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,14c9f2e3-c869-eb40-af79-e210f0495cb7,Atleta fictício AS Ro-18,A,32,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,8721e9bd-cd63-f249-90f6-651a8be66702,Atleta fictício AS Ro-21,A,32,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,5,430ce72b-e718-fb4f-aab6-605b5c169633,AS Roma,32,42efd332-4a07-654a-8a28-32a8b832ad8c,Atleta fictício AS Ro-12,A,33,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,0cf964e3-63fe-4340-ac57-ab9f97c6ef44,Atleta fictício Paris-01,G,30,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,4f18cedf-45cf-5d4d-8bf4-12a39d2d5437,Atleta fictício Paris-02,G,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,1222b951-d680-e742-b002-3be415db8511,Atleta fictício Paris-03,D,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,2abbbf23-ee1a-af44-935c-dfcb5fd11b62,Atleta fictício Paris-05,D,30,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,1c801090-8efc-d949-99ba-2eec1ba9e22f,Atleta fictício Paris-13,D,30,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,82e3b51d-56b2-474d-94c3-64afed02f9e5,Atleta fictício Paris-16,D,30,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,fc27a9c0-5080-4043-abc5-d79156e1c639,Atleta fictício Paris-04,D,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,6a18b724-0bc0-834d-a044-a17c04daaabe,Atleta fictício Paris-06,D,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,43e2f6bf-a83c-be42-87c6-6d684036287f,Atleta fictício Paris-19,D,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,8683333d-fbf4-da4c-8c59-d63f34e87c23,Atleta fictício Paris-22,D,31,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,f239a17a-b0f0-1c47-89f9-1e2bbf6485b8,Atleta fictício Paris-09,M,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,88087db2-f211-ef4c-858e-0c066753e39a,Atleta fictício Paris-10,M,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,df8b437c-8950-d443-be22-9399d01fadef,Atleta fictício Paris-14,M,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,18d161ef-3830-594e-8a90-7b3d8faefa93,Atleta fictício Paris-07,M,30,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,21c4fcde-7524-5449-b8d0-76a9b36164a6,Atleta fictício Paris-08,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,c77c0c44-9cc8-5646-b4de-8f826f988d0c,Atleta fictício Paris-17,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,9e3d02a9-36b9-da45-9432-10511fe4bbba,Atleta fictício Paris-20,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,474a1ac5-6ddc-3245-93bf-d17cea39da4d,Atleta fictício Paris-23,M,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,e1d3e83a-52c4-3043-a30d-58d711753042,Atleta fictício Paris-15,A,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,d2b92191-020b-b44e-a9e4-2f0ef5c9fb53,Atleta fictício Paris-21,A,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,aac99ed0-b280-7448-871e-3e3357595111,Atleta fictício Paris-11,A,30,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,ae133668-d428-8f40-bea0-a0a7006dfd85,Atleta fictício Paris-12,A,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,6,b93369d6-1df1-3642-9ad5-08aefebd0eb5,Paris Saint-Germain,30,07cf21b5-3186-ca49-8aa3-8874fd852e40,Atleta fictício Paris-18,A,31,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,7036bcec-34db-a34a-82b0-550333651f2f,Atleta fictício Frosi-01,G,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,ebc3148f-005d-6049-acae-7bb0fcb2c2fa,Atleta fictício Frosi-02,G,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,65b791b6-99de-5f48-90dc-342568c28f21,Atleta fictício Frosi-04,D,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,7addbb38-d800-5c44-a86b-19611d822164,Atleta fictício Frosi-03,D,28,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,9936a082-ab88-5a42-9db6-f7184072e3b7,Atleta fictício Frosi-05,D,28,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,a3457e76-c1f6-6748-ac5d-3f88931bab56,Atleta fictício Frosi-06,D,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,8f17b441-f3c8-7c40-a996-6811eaae3704,Atleta fictício Frosi-13,D,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,35d7df00-d160-844a-a74b-e48d0d7f4819,Atleta fictício Frosi-16,D,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,2719431b-2cc5-464a-9092-1bca51e25b15,Atleta fictício Frosi-19,D,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,99e1644c-1b50-844e-8959-68a7fe668505,Atleta fictício Frosi-22,D,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,af0b1482-2083-5142-954d-1f3647c31d33,Atleta fictício Frosi-07,M,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,6e494af0-c095-2b45-a097-6d1d8cd20e73,Atleta fictício Frosi-17,M,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,1b8dce03-3e04-174b-a9e4-f304a8b015b9,Atleta fictício Frosi-09,M,28,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,f15990a2-e802-2b47-b389-f6abe1e6b2b9,Atleta fictício Frosi-23,M,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,56b07fe2-4d21-4b4c-ba0d-91534332eef9,Atleta fictício Frosi-08,M,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,97389c2c-9734-6f41-b4f2-8905920d1b56,Atleta fictício Frosi-10,M,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,6f8f7f48-0475-a34a-b33d-f23ee6383aa9,Atleta fictício Frosi-14,M,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,2dbeda13-5bd2-fe43-b97b-94f4c095087a,Atleta fictício Frosi-20,M,29,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,21ae5765-00d2-8c4e-a672-b17474ad85a9,Atleta fictício Frosi-11,A,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,7072252d-0bc9-ba42-8673-c8f185e95127,Atleta fictício Frosi-12,A,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,f5caa48e-01e8-7342-90d1-db98a93f3778,Atleta fictício Frosi-21,A,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,59f63600-e750-5649-ba6c-3b86ea2b787e,Atleta fictício Frosi-15,A,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,7,f7ca895f-a395-994f-a2e4-8b0fc7ad8fb7,Frosinone Calcio,28,37b1a5ff-7221-1d4b-ae2c-9dea85e97b59,Atleta fictício Frosi-18,A,29,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,4c062c16-a739-e64f-84c5-4941146bf8db,Atleta fictício Como -01,G,27,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,98b93c1e-42a2-d549-a853-3a4424b4c2cc,Atleta fictício Como -02,G,27,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,34477270-2927-9b43-97af-cff04ed01025,Atleta fictício Como -03,D,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,a685428f-1d56-4d47-9338-6974c4facd59,Atleta fictício Como -04,D,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,779ba662-b231-8f49-a10d-a62968f15813,Atleta fictício Como -05,D,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,5fc411e8-c09b-8f42-9104-80c969d5c4f2,Atleta fictício Como -06,D,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,e6a2f5ce-6357-6c4f-a90b-dcb583f53da4,Atleta fictício Como -13,D,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,49046081-8bf8-9d43-8110-6696859f9da8,Atleta fictício Como -16,D,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,4a3935c8-9ed1-4944-838c-b4c881cce294,Atleta fictício Como -19,D,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,e44a6b26-2f33-da4d-8c8e-4e4259296788,Atleta fictício Como -22,D,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,87bc6c6c-255c-0244-9b72-61c61944d9c7,Atleta fictício Como -09,M,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,004d1750-ddd6-1d4a-a3de-57b016e3b43d,Atleta fictício Como -14,M,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,4ac0da84-ca0d-2848-a978-09da832529f5,Atleta fictício Como -17,M,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,8f4cb98d-0381-2a4f-8ead-ae833d78c815,Atleta fictício Como -20,M,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,cd20dcc5-5397-6c48-8b30-5064c470bdb6,Atleta fictício Como -23,M,26,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,e909beee-85f1-ad49-acee-4ee39c4ac915,Atleta fictício Como -10,M,27,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,2276f4d1-3cda-7c4f-885d-9febb10c8923,Atleta fictício Como -07,M,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,78eb28fe-9a23-704a-be7d-81059ca12948,Atleta fictício Como -08,M,28,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,4997fa34-5d71-1446-9ed9-6ed05d1cec70,Atleta fictício Como -11,A,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,9598dca9-196f-3c49-b471-7e5518143eb1,Atleta fictício Como -12,A,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,1f3ecc94-d765-bf48-b2b2-b049cbe29476,Atleta fictício Como -15,A,26,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,b9983e12-ce91-114b-b210-9c9bf2c8a44d,Atleta fictício Como -18,A,27,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,2,8,45d44389-0c3f-8d4c-9e0d-bf2ea48fb2fa,Como 1907,27,dad5d4df-73ac-c045-a55d-26cdfd4e078c,Atleta fictício Como -21,A,28,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,08375cbb-9089-2a49-b935-bdf2300803e6,Atleta fictício South-01,G,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,df24428a-31c4-3e41-bd75-2c071193854e,Atleta fictício South-02,G,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,67150a06-f485-0240-9066-472c0c636cd6,Atleta fictício South-05,D,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,017c83ab-8b46-d44b-a898-d6a7ea25bbbc,Atleta fictício South-06,D,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,26b2a93f-e7e4-9c4a-8e8d-f18914052581,Atleta fictício South-22,D,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,4a1c5282-49f3-ae43-90e3-3f290fb5f41b,Atleta fictício South-03,D,25,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,856b07f8-7615-bf4a-b8dc-7bef3e8f168f,Atleta fictício South-04,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,05ec8f05-399f-3c42-809a-4973cba1e7b6,Atleta fictício South-13,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,9518dc76-6a88-ae43-9e7b-7da4a64c7a9f,Atleta fictício South-16,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,81cdb01e-ef42-9145-ac61-f4a4f07d4e15,Atleta fictício South-19,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,6b1538cf-bdb2-934d-bf5f-86216a43c662,Atleta fictício South-07,M,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,b3e58a73-e9a2-854a-b4bd-f5bc7ec5c101,Atleta fictício South-08,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,fb13d66b-a227-a346-bfb9-036f4f678c07,Atleta fictício South-14,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,c38fc703-fd32-b749-b1af-46c1b1944709,Atleta fictício South-17,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,b3ea73e8-27ca-c94c-81a6-5e0b735a2ebc,Atleta fictício South-20,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,b60fc878-dccb-ca42-bb2c-97b7a4320121,Atleta fictício South-09,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,d24d0846-f84e-4848-b197-f9d97d6f4a4a,Atleta fictício South-10,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,762b6600-2937-e747-9313-29e4df86058a,Atleta fictício South-23,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,5136881f-df84-2f41-9353-9413b562c7b3,Atleta fictício South-15,A,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,7709ad84-df9e-e149-b32a-578032e74851,Atleta fictício South-18,A,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,ebef7462-b1c8-f841-99a9-221834fc866e,Atleta fictício South-21,A,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,3b00a137-2f75-2a45-bc4e-11468a985355,Atleta fictício South-11,A,25,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,1,381c79d0-fe18-6f46-8857-5972411565dd,Southampton FC,25,32616bfb-f05a-5a4f-8c9e-8474b04394e7,Atleta fictício South-12,A,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,fe2c1ecf-f95e-7c46-8604-183af419eb68,Atleta fictício Coven-02,G,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,f73da8b3-1d6f-e349-a91d-751175684317,Atleta fictício Coven-01,G,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,9ea0db47-af8a-4243-bead-348561f6143c,Atleta fictício Coven-04,D,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,65e78fbc-cc81-e244-8cd0-a0616a0f0628,Atleta fictício Coven-13,D,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,7c4c5aef-871b-ed40-8fbf-f8260301c687,Atleta fictício Coven-16,D,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,3d87d5cc-87a2-ed41-86da-8ae180ce6dcb,Atleta fictício Coven-19,D,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,c9b1ed87-a8a5-7b42-9247-531a2dc5e3c3,Atleta fictício Coven-22,D,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,4f549b1f-3151-4747-bde5-e282416d6c90,Atleta fictício Coven-03,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,1886aa9b-d01c-5d43-969a-2e0b05c47198,Atleta fictício Coven-05,D,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,234f3720-fa43-7a47-8479-c752d8f86d05,Atleta fictício Coven-06,D,25,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,7085b8e1-6214-bb43-963a-dfa819a98e14,Atleta fictício Coven-07,M,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,45d8beaf-f79c-f44e-8442-217bf255d947,Atleta fictício Coven-09,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,166e27c1-9ad9-0043-99ed-a246379c7c2e,Atleta fictício Coven-17,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,1e512d56-e8c9-274d-9e19-4b2c7734f0d0,Atleta fictício Coven-23,M,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,25d1233d-9333-5f40-b1c2-d109ba222be8,Atleta fictício Coven-08,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,9b195c2e-0c4c-f543-94a2-dfc3426077cd,Atleta fictício Coven-10,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,e9ffa445-44e7-6b4c-be4b-932abb6cc926,Atleta fictício Coven-14,M,25,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,4cba479b-1f80-7340-b527-b77dc4fb087b,Atleta fictício Coven-20,M,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,f3f78ee4-3dec-434e-8e18-55a14bb15d0b,Atleta fictício Coven-12,A,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,6ae20dc0-6f63-6d4f-b28b-79924d9761d5,Atleta fictício Coven-11,A,24,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,76fce823-9694-a54e-9e76-25ae3ec40560,Atleta fictício Coven-15,A,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,bbc54d07-e463-dd44-a14b-c2430ae2381f,Atleta fictício Coven-18,A,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,2,14ee43af-d453-a343-8209-724f783c3912,Coventry City FC,24,7251829e-7834-2e4e-a1ab-22234a903bca,Atleta fictício Coven-21,A,25,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,f8815cbf-d318-174a-8760-4139b8fccc2c,Atleta fictício Cruze-01,G,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,6a0092c1-856e-d640-b21b-043e117d76e9,Atleta fictício Cruze-02,G,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,1086a1e1-ae89-b34c-a0e0-2800abaf84f7,Atleta fictício Cruze-06,D,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,292d8c66-1b6e-4044-bcd9-aad011bd5013,Atleta fictício Cruze-13,D,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,2e9b3c8d-b12c-774e-a82e-d7a68fddbfa1,Atleta fictício Cruze-16,D,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,7d19c823-7975-0143-ae3e-ee881e0beab6,Atleta fictício Cruze-19,D,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,2610c772-beca-e94c-87fc-903cb21de59b,Atleta fictício Cruze-03,D,23,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,0e1a52ec-7ab4-9849-95da-b698a7121c32,Atleta fictício Cruze-04,D,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,3f24db17-1ff9-7740-9c8f-481015c50e38,Atleta fictício Cruze-05,D,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,06fcfc92-dc06-1348-b223-1bb3774fd77c,Atleta fictício Cruze-08,M,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,362799a2-9afc-574f-90a5-ec698b4ea93d,Atleta fictício Cruze-10,M,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,321502c1-9ca0-a74d-b6b9-4d107cff6ecc,Atleta fictício Cruze-14,M,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,12131017-2b0d-1949-9568-d9740a2844a6,Atleta fictício Cruze-17,M,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,6e6a86cb-5b9d-0246-b035-fd246ec909dd,Atleta fictício Cruze-20,M,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,444c7882-3636-cb4a-a38e-1d3550d3b331,Atleta fictício Cruze-07,M,23,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,ce08ae01-cc93-2446-9237-ccc70f18e8af,Atleta fictício Cruze-09,M,23,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,81a009c9-9344-6348-a8d7-14558f5c9755,Atleta fictício Cruze-12,A,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,2572a0e5-611d-584f-861f-703bc6b284e6,Atleta fictício Cruze-18,A,22,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,f8b05ddb-125a-9742-934e-ac6ae9ea8cb8,Atleta fictício Cruze-11,A,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,e6b67c93-179a-f241-a12d-019054b64538,Atleta fictício Cruze-15,A,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,3,ae2c86bd-e501-074c-99ea-e23c1881b528,Cruzeiro MG,23,4756e7ee-c2f1-2249-a43e-0c9086c072f4,Atleta fictício Cruze-21,A,24,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,32fa7a6c-866c-2447-b565-d028da0b3be3,Atleta fictício Juven-01,G,21,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,441de96e-21f1-9a40-89a3-b828fe171b0b,Atleta fictício Juven-02,G,21,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,9e454fc6-61bc-6140-ab1e-230cc8d49bad,Atleta fictício Juven-05,D,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,529447cd-c669-9344-8b20-322b7b1995e1,Atleta fictício Juven-13,D,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,357e612e-018b-5245-a71d-549b68de2488,Atleta fictício Juven-16,D,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,60c757b6-748c-e045-9bf6-89b2a6d8d447,Atleta fictício Juven-04,D,21,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,6803b6be-1710-9442-b1bb-9f33d1bbfecd,Atleta fictício Juven-03,D,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,dd4702a5-f7b0-ef4f-927d-c1873aefb499,Atleta fictício Juven-06,D,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,a2616295-0c18-0e47-9b6f-9e8c0465a14f,Atleta fictício Juven-19,D,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,12817d40-0c20-a744-83e3-855f64d875b5,Atleta fictício Juven-07,M,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,25e7ea68-214b-ba4b-8c8e-555553f88c18,Atleta fictício Juven-08,M,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,9eb85188-ee9f-9440-b3f6-de614be9e9c6,Atleta fictício Juven-14,M,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,4cbdfbff-a3d4-424f-a9cb-773832b5d936,Atleta fictício Juven-10,M,21,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,db39b467-c622-694e-be31-20b17dc95832,Atleta fictício Juven-17,M,21,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,856c842f-f45b-9b49-b510-483a7ce4deef,Atleta fictício Juven-20,M,21,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,fa560a6b-7741-e847-8790-547ffcd2dd26,Atleta fictício Juven-09,M,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,ad9fa0bc-7854-394e-87df-a17da489cfe6,Atleta fictício Juven-21,A,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,111b989f-9dc6-234c-bb68-fd3084d7ecf0,Atleta fictício Juven-11,A,21,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,7f9df28d-8439-e74f-9aae-5e9b5ca01556,Atleta fictício Juven-12,A,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,9fcdbdaa-218a-ff4e-b365-6083f0c9739f,Atleta fictício Juven-15,A,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,4,dade9b8e-1939-2444-9907-94543ab0928b,Juventus,21,796b9213-3aec-e84c-873a-e291d70ba3be,Atleta fictício Juven-18,A,22,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,a1458c54-e2bb-364b-bde1-ae5abd2acc26,Atleta fictício Flumi-01,G,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,e583b82e-274d-2b4a-b26c-bf69f30711fb,Atleta fictício Flumi-02,G,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,c0be9123-987b-e445-9b16-2dbb202d723e,Atleta fictício Flumi-04,D,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,235bb527-6ecf-8a43-a074-c0de5b50739f,Atleta fictício Flumi-16,D,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,f297b647-b5e0-884b-bd2b-79230624590a,Atleta fictício Flumi-03,D,19,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,ffa04365-13d5-9c42-9b55-03d29945bd55,Atleta fictício Flumi-05,D,19,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,80915abb-b271-6749-8ee8-fa273ed87a36,Atleta fictício Flumi-06,D,19,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,fe94c3ed-019d-a547-8aab-2ab035dd5a91,Atleta fictício Flumi-13,D,19,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,1fe4ca2f-1b13-d442-b15d-105f724621c5,Atleta fictício Flumi-19,D,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,62833e16-e647-a941-a8f9-4ae4264bb8dc,Atleta fictício Flumi-07,M,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,a3b75f5b-6b1e-154f-b029-3f729b693238,Atleta fictício Flumi-14,M,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,cc11b407-7454-a543-a4cd-bd928fe28459,Atleta fictício Flumi-17,M,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,6f5c03a1-0bb9-8e4f-a4ae-6a7ce5e3c794,Atleta fictício Flumi-20,M,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,c0f69462-19c1-bf45-aef9-f0d6adde2401,Atleta fictício Flumi-08,M,19,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,b74a1b42-2212-3e4c-a1b7-10fe42aa502f,Atleta fictício Flumi-09,M,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,02f3d6b4-1563-704a-a4af-c6a54e1e2f61,Atleta fictício Flumi-10,M,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,a8028eef-d5b0-1e48-8f76-f35bb67d2e26,Atleta fictício Flumi-11,A,19,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,0361bf8e-94d8-2545-9b87-44a16d7ac012,Atleta fictício Flumi-12,A,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,998eff48-03d1-2d48-82b7-d9b613966580,Atleta fictício Flumi-15,A,20,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,5,d5f0ecd5-de1b-804d-bbe2-7407f5a1a446,Fluminense RJ,19,7fc6a4e3-f2ab-7840-8c65-85b3232c28bc,Atleta fictício Flumi-18,A,20,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,9275880b-221c-2741-88b7-9b0ac7dddc76,Atleta fictício SSC N-01,G,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,502c2926-69d8-5e48-93f6-1c482dd08c90,Atleta fictício SSC N-02,G,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,c65b6395-7bbb-6747-9e07-f8e5ff583a45,Atleta fictício SSC N-04,D,16,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,ac1b920f-c779-9246-95d0-94a6733fc828,Atleta fictício SSC N-06,D,17,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,5cd8bb6c-7442-cc48-9085-80fb662e31bf,Atleta fictício SSC N-03,D,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,8b4a3010-ba92-454d-bd83-441c4e81031e,Atleta fictício SSC N-05,D,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,1fdd4801-83fa-6e46-909f-e5a4e295ba63,Atleta fictício SSC N-13,D,18,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,d378393a-63ae-da41-b421-aa0f09cfda79,Atleta fictício SSC N-16,D,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,a193547c-b97f-af45-872c-b698d2ad0fb3,Atleta fictício SSC N-19,D,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,cbac465f-d966-1342-91f7-79b7538c4601,Atleta fictício SSC N-09,M,16,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,0f83677f-3ca4-b54b-88ee-12343b9c6cb1,Atleta fictício SSC N-17,M,16,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,4e5d805a-6c2d-1441-824d-bd33c1e24fe4,Atleta fictício SSC N-07,M,17,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,1a7dab1d-3d1b-bb4a-b02c-eff8aa159268,Atleta fictício SSC N-08,M,17,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,6b60d3b3-01f9-534f-b29a-142c429ef436,Atleta fictício SSC N-20,M,17,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,a24f4aa2-908e-844e-9273-b6beb93bc54f,Atleta fictício SSC N-10,M,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,0842c9e0-32cc-ea49-ae38-02e901f1a7d4,Atleta fictício SSC N-14,M,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,48e5564b-b0f0-2149-8282-9918bea5e0ca,Atleta fictício SSC N-11,A,16,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,e3dd5d35-db19-5448-ace5-2f068215b7be,Atleta fictício SSC N-12,A,16,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,b2fc22cf-70bb-434d-9813-da99a8863410,Atleta fictício SSC N-15,A,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,6,72073afd-c047-4645-bc87-a7da14cbc4b2,SSC Napoli,17,2b2efb85-cbbc-c04b-a016-1178d69f983d,Atleta fictício SSC N-18,A,18,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,905761ae-f074-ce45-8618-28752101bb05,Atleta fictício Atlét-01,G,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,f704d2bf-f589-1845-b932-808ca7aaac39,Atleta fictício Atlét-02,G,15,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,60636926-407b-bf4b-be90-e73b07b22ed6,Atleta fictício Atlét-04,D,14,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,701d1ae6-3ee8-574a-a9d6-be742d0ac373,Atleta fictício Atlét-05,D,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,bbc1f8eb-8a0b-dc4d-ba79-fb4f5e3d5b9f,Atleta fictício Atlét-06,D,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,e6e1dce4-0c52-1045-a9f7-ea6dba880f41,Atleta fictício Atlét-16,D,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,d0ede4f2-814b-f242-a94f-95217f8bafd5,Atleta fictício Atlét-03,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,f6feb02c-eba8-054f-af2d-d443d99e9847,Atleta fictício Atlét-13,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,d20eb67b-65f7-124c-97be-3a897558c99b,Atleta fictício Atlét-19,D,16,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,3b3a3f08-5fb2-b643-8515-f1e23b68b04a,Atleta fictício Atlét-07,M,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,55ca39d4-5852-3942-afc6-7e184deca453,Atleta fictício Atlét-08,M,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,4a476fe7-d89b-5242-beb5-8a5287ebbe10,Atleta fictício Atlét-14,M,14,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,9e120d33-cc14-ca45-8789-4ceef74d8d8a,Atleta fictício Atlét-10,M,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,47c21e3f-b763-b944-afd7-ebd73e98fe41,Atleta fictício Atlét-09,M,16,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,edb33eb0-8e5f-2e4c-a37f-076e476f8d76,Atleta fictício Atlét-17,M,16,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,4a140909-d9f8-9e4c-b6c5-8c59922e82b6,Atleta fictício Atlét-11,A,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,bd2010ae-446a-5e45-a304-5cb11ca80478,Atleta fictício Atlét-15,A,14,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,1b2bf9e3-f2a6-3b4d-81e8-d5284bb12427,Atleta fictício Atlét-18,A,14,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,7,3924402e-a6da-d044-86c6-4d77db344c1d,Atlético Madrid,15,efb3c1e4-9803-5b43-8473-87ac8cf65bbc,Atleta fictício Atlét-12,A,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,e700e755-9e48-2e44-b632-b961ca1722cd,Atleta fictício Manch-02,G,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,2c8a017f-6ea3-a342-8587-6df12071e2ba,Atleta fictício Manch-01,G,14,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,5f542d9e-15df-704e-b23d-0a66c5e0e4bf,Atleta fictício Manch-05,D,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,4bb720a8-26d6-5346-b302-e9bfc6d90a86,Atleta fictício Manch-06,D,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,81280b06-63f1-6f43-8259-c278cdbb7fa4,Atleta fictício Manch-13,D,13,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,b94a9d0c-e6f1-2846-ad7b-020e5cee248f,Atleta fictício Manch-03,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,bb261dc4-4a95-0147-8a29-9d77985df1b8,Atleta fictício Manch-04,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,4730e7e2-6941-3e4b-ac18-4dd063d2feb7,Atleta fictício Manch-16,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,496f286b-bd1d-db4b-bc62-6f592ed281bb,Atleta fictício Manch-19,D,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,e349fccb-0212-2c46-84b9-c354e55dc868,Atleta fictício Manch-09,M,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,c518d940-29d0-084b-b5f1-2f3dd23acacd,Atleta fictício Manch-07,M,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,ec8480f8-f28d-e344-be94-b536e3017e37,Atleta fictício Manch-08,M,15,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,c57b091c-b28a-1742-9382-5145128f406f,Atleta fictício Manch-10,M,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,e34e5039-9eb5-0948-b0ab-6c1ae31dcfc7,Atleta fictício Manch-14,M,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,a697cdd4-3469-9c47-a131-bf8b357bb8b0,Atleta fictício Manch-17,M,15,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,b3bf5bd4-1da2-cb4b-8e75-1b1305787989,Atleta fictício Manch-15,A,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,c82d1229-2650-4943-bfaa-8af8d4e40fc1,Atleta fictício Manch-18,A,13,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,1eba7bfb-4d43-2b4c-b03d-1776c43e5b8c,Atleta fictício Manch-11,A,14,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,3,8,0b1785c6-b2f9-8643-ab97-4b0a659276a8,Manchester United FC,14,6ce2da73-2469-4740-91a1-fec24868a867,Atleta fictício Manch-12,A,15,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,0305d799-a9c4-6c47-81d8-6ee581742783,Atleta fictício Real -01,G,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,03eea5b0-2cd1-8d4b-aa45-81253d8cdafb,Atleta fictício Real -02,G,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,ed23ebb2-36b8-4148-aa61-5383942fddd3,Atleta fictício Real -04,D,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,38725305-7df5-7948-ac38-4789a9898af2,Atleta fictício Real -06,D,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,49010ce0-9a98-3440-af99-0cd0f42e1558,Atleta fictício Real -03,D,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,2993cd0a-db91-7b40-b859-9d20e3bfdc59,Atleta fictício Real -05,D,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,5c203a39-a390-3342-96ed-4d7310bb97a2,Atleta fictício Real -13,D,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,553a5f6a-bb25-aa4e-ab5b-9e61747d77ee,Atleta fictício Real -16,D,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,f652551d-5e29-7a4c-8488-1a32767819c5,Atleta fictício Real -10,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,5fb39450-970d-d942-bffb-03a724bc1fa7,Atleta fictício Real -14,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,9223bb19-bd53-dc4f-aa99-ff652135f8c7,Atleta fictício Real -17,M,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,e482773d-1380-e34b-8316-d359c0cf7787,Atleta fictício Real -07,M,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,fa697644-1c59-0945-b6af-c206552fd157,Atleta fictício Real -08,M,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,8307e6c8-5c78-a24c-89f3-caff87c110fe,Atleta fictício Real -09,M,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,7d0712c7-e9da-cb4e-a640-f545f5003792,Atleta fictício Real -11,A,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,83f5a187-9e59-8146-8f99-a44f54c54af4,Atleta fictício Real -12,A,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,5cade6e6-3fb0-434e-abb8-d73dd3a748f1,Atleta fictício Real -15,A,12,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,1,31a61e64-9d61-5141-9483-32857d3ccecc,Real Betis,12,f34ebfa5-9bea-524c-b92e-2c36bd6ffbe6,Atleta fictício Real -18,A,12,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,a36a66b7-2945-bc41-b768-37896a729747,Atleta fictício Lille-01,G,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,e2693633-9279-1d40-aa6b-6ea0b2969e31,Atleta fictício Lille-02,G,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,389d1f7d-443a-f54f-8417-7c9add41c3e8,Atleta fictício Lille-04,D,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,1a14cc44-f39c-db4a-964e-c4c0f6eb155b,Atleta fictício Lille-05,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,4ffcf6f0-d6f9-9347-bd6d-e79dae3d14ef,Atleta fictício Lille-13,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,97456f89-6711-6c48-8f53-e9c8bd75a969,Atleta fictício Lille-16,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,c7b5e13b-c9fc-b441-a44f-e14714b48e95,Atleta fictício Lille-06,D,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,547306ad-58be-d44f-bc5d-b3ed610c4162,Atleta fictício Lille-03,D,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,2b404011-31f5-db4c-983e-752318b72d25,Atleta fictício Lille-07,M,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,0d26d527-4989-3744-8e27-cc19056f6273,Atleta fictício Lille-10,M,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,ae4d699a-680f-8548-b63a-dc633aa43fd7,Atleta fictício Lille-17,M,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,0cc7efab-38a8-654a-9d42-bfa345d8c346,Atleta fictício Lille-08,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,35304f35-1d26-0541-adfe-7e714e7389d7,Atleta fictício Lille-14,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,1c7bfbb4-8bf9-5b4f-bb69-a7c5b2a192ae,Atleta fictício Lille-09,M,12,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,c5a8b1ba-bde8-c84e-9265-d314aa45e9e0,Atleta fictício Lille-12,A,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,000e8f60-1f9e-7549-9f8d-d58d67628354,Atleta fictício Lille-15,A,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,751b4e5d-922e-074d-95e5-824e2b67d98f,Atleta fictício Lille-18,A,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,2,8caadb71-1ee1-c641-910f-dc52b617a6c5,Lille OSC,11,342cf739-e557-0742-94b3-858e42b233b1,Atleta fictício Lille-11,A,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,584a736f-906b-cb49-8851-7f178e6f38e1,Atleta fictício AC Mi-01,G,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,0dd0c42a-80c5-9046-8809-db6761eefca9,Atleta fictício AC Mi-02,G,11,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,26fd2697-0935-4349-b4ca-1ff5c4443488,Atleta fictício AC Mi-13,D,9,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,aca54508-5450-7943-aaa6-9b7760324533,Atleta fictício AC Mi-16,D,9,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,c443879b-08b3-0044-acc8-09ba56a46729,Atleta fictício AC Mi-04,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,fb25a6b3-52f7-ed46-9964-875a9fc4279e,Atleta fictício AC Mi-05,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,bfcf3daf-ad32-5548-97a2-0965f3845222,Atleta fictício AC Mi-06,D,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,5ec9d1bb-7a6d-c049-a0a5-ec2b69c1b1cb,Atleta fictício AC Mi-03,D,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,ea11ad77-2b2b-1f4c-bf50-c2a78e2c642a,Atleta fictício AC Mi-07,M,9,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,daf4035c-172d-8a4b-9af6-449a9738e75f,Atleta fictício AC Mi-08,M,9,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,c14382db-b440-2d43-a4b9-e7557386f9c8,Atleta fictício AC Mi-14,M,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,6646bff7-39c3-e742-aba7-e44cc969ccfb,Atleta fictício AC Mi-10,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,ece4aad5-21dc-da4f-8b4e-98c51c1e140e,Atleta fictício AC Mi-17,M,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,20fa98a8-30a1-d04b-962b-c71ec516ecb0,Atleta fictício AC Mi-11,A,10,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,77f6e151-45f0-ff49-9127-feddff981fc3,Atleta fictício AC Mi-12,A,10,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,9858b6d6-c6f5-1d42-8954-109ad72d780a,Atleta fictício AC Mi-15,A,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,3,2c754cf2-b0ed-214a-82c7-0a979b7e6b72,AC Milan,10,a22f316d-e732-1c49-afc5-e63e4dbb8c3c,Atleta fictício AC Mi-18,A,11,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,80e1f5ab-8031-354b-be55-7402cce8714f,Atleta fictício Ipswi-01,G,7,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,4a0d1f5b-ee71-fd4f-a708-9904174c4aaa,Atleta fictício Ipswi-02,G,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,f938a1cf-8a7e-854a-b0e9-59036112e894,Atleta fictício Ipswi-04,D,7,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,81b3d6db-9bf5-4446-b02a-929bb7c54957,Atleta fictício Ipswi-03,D,8,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,0d6d6e04-b724-7d40-a934-ea51c3188a4c,Atleta fictício Ipswi-06,D,8,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,17109639-3b2f-9741-8ce1-b6efcdfa82ef,Atleta fictício Ipswi-16,D,8,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,56775bf9-632b-5547-840a-88fe3ddcb270,Atleta fictício Ipswi-05,D,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,b89baa25-3370-9b47-96a2-ea61fc62ae4a,Atleta fictício Ipswi-13,D,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,7caec3d2-a111-064d-96a4-a9e369d58e2f,Atleta fictício Ipswi-10,M,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,041a659c-11ae-9546-9a2d-5a6fdb55ae7f,Atleta fictício Ipswi-14,M,8,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,ac7c1589-1261-d348-8a1d-edfa3ca6deb9,Atleta fictício Ipswi-17,M,8,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,abefdc0a-3d77-c941-97bf-04df3942a142,Atleta fictício Ipswi-07,M,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,cef94f05-7fc8-e14f-b280-924e7517bd4d,Atleta fictício Ipswi-08,M,9,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,94dc6a01-3081-dd40-aed2-0feda297038a,Atleta fictício Ipswi-11,A,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,4f0f0404-aa3f-bb40-a6cf-2c884981da1c,Atleta fictício Ipswi-12,A,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,63aa69f7-6734-634a-adee-d705f9203f37,Atleta fictício Ipswi-15,A,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,4,56241ac1-4216-c54f-89ad-a2c2be150e0c,Ipswich Town FC,8,027c3b70-3123-7e4e-a9bf-829b1d85caae,Atleta fictício Ipswi-18,A,7,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,3f0e4f15-09ec-be49-889b-098ede36aac2,Atleta fictício Olymp-01,G,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,f533a756-8d8f-034d-89cb-ca97af512ddd,Atleta fictício Olymp-02,G,7,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,6ed09929-c668-484a-9602-4345e315df84,Atleta fictício Olymp-04,D,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,84244749-3049-1b47-a0fd-f7b5eae45657,Atleta fictício Olymp-05,D,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,920a19e4-dd59-1c44-9e09-8d9c8cb69d59,Atleta fictício Olymp-06,D,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,ad953225-f311-6e42-8812-88e7e0a51072,Atleta fictício Olymp-19,D,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,ba98e9c8-36f0-994f-91f8-901ccd67d079,Atleta fictício Olymp-22,D,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,3dbd38b3-3e98-ed4c-9519-90f63f69b1e1,Atleta fictício Olymp-03,D,6,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,3c89b113-e4fe-b548-be40-5dc75c07a171,Atleta fictício Olymp-13,D,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,4caf2793-8ad6-314d-acba-8a980c9233d9,Atleta fictício Olymp-16,D,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,083ee7b9-1a6b-d845-9d3d-6bd8c3b5af24,Atleta fictício Olymp-09,M,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,b675135b-7cff-e546-bf9a-ecdf385b31dd,Atleta fictício Olymp-10,M,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,1a57a779-81d9-8647-a5dd-9e114ee162a8,Atleta fictício Olymp-07,M,6,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,7b2b6c53-5323-5346-9750-7f380c880227,Atleta fictício Olymp-08,M,6,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,50d0b472-5d18-b343-9486-c63f6c3abb01,Atleta fictício Olymp-14,M,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,2d228e76-4c8f-934d-9bae-d3790ca60a12,Atleta fictício Olymp-17,M,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,ddb3d752-e7c0-8b45-994d-59dcca5c36d4,Atleta fictício Olymp-20,M,7,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,9bee5fbc-756c-8045-a0c0-70021164cc72,Atleta fictício Olymp-23,M,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,9e4b44f3-291e-2544-b5b4-fcd9dd51c2c1,Atleta fictício Olymp-12,A,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,4f2f64c5-12b4-7d4d-ac6c-ccbd095ae954,Atleta fictício Olymp-15,A,5,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,ae534b2a-5b87-1e40-ac3a-c5477692268b,Atleta fictício Olymp-21,A,6,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,934c7b49-c3cc-bc40-a612-3b3ae2ee8be8,Atleta fictício Olymp-11,A,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,5,5a3c066d-5e44-ab47-b352-19f7aae52e18,Olympique Lyonnais,6,3f7131c0-ec22-9345-8bef-5c0811d4b606,Atleta fictício Olymp-18,A,7,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,5da038d3-a5f3-1646-8c69-00cf2a4b0513,Atleta fictício Stade-01,G,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,25adf909-de69-944d-af0a-f730806ad54e,Atleta fictício Stade-02,G,3,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,2e9bba7b-0c6a-9743-8dc2-22da7e000ad6,Atleta fictício Stade-04,D,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,6b92edc1-8acc-7c4b-904a-c6936a336333,Atleta fictício Stade-19,D,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,1530a2d0-f6fa-a740-b8ce-1b81597d3585,Atleta fictício Stade-03,D,4,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,226f1d01-256d-674e-a14d-5da71901ce53,Atleta fictício Stade-06,D,4,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,3b39a872-2d33-e74a-b367-2b65f63a44b8,Atleta fictício Stade-13,D,4,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,19652a73-e1df-244b-8ffc-a7679d5a81cf,Atleta fictício Stade-16,D,4,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,cb34788b-5e8d-6648-b7ba-01fdc5e2b2c3,Atleta fictício Stade-05,D,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,47fdedb5-b13e-5145-980b-f642eab90868,Atleta fictício Stade-22,D,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,550c2ab8-2531-2f43-92c3-b8c5f2561dcb,Atleta fictício Stade-08,M,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,8a137171-aabb-ed4a-a664-711d22ff6be1,Atleta fictício Stade-20,M,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,750a5738-8bff-8e42-8c24-779429ef95b2,Atleta fictício Stade-23,M,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,267f8185-1998-7740-852d-75a5ba6b34eb,Atleta fictício Stade-09,M,4,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,a94cbe3a-abda-6a43-85c5-aa794d5a63ca,Atleta fictício Stade-10,M,4,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,a3d0f8bc-f2af-7847-a2f2-dcea28f472a5,Atleta fictício Stade-14,M,4,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,06fa9d6a-d1fc-654b-881e-d7d627377099,Atleta fictício Stade-17,M,4,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,b4aed1e2-9055-894e-a189-48b5b85da2cb,Atleta fictício Stade-07,M,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,0b7ff720-42ca-9a4e-8ad3-eda57d33dbe2,Atleta fictício Stade-18,A,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,6d8c3f66-be53-cd49-adbb-c9bc3abe662a,Atleta fictício Stade-21,A,3,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,bbff6a33-16af-e143-9def-2695b017e6e6,Atleta fictício Stade-12,A,4,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,4dbb1bf5-e904-7b4c-b5c4-1c575c16ef49,Atleta fictício Stade-11,A,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,6,6d8e4ad7-4947-4145-8e23-a05f31f5ac06,Stade Rennais FC,4,f56baede-ddd5-ce4d-955a-9f5eafc81acc,Atleta fictício Stade-15,A,5,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,dbdd9c90-dc3b-044a-b7a4-57680b793ab3,Atleta fictício AC Mo-01,G,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,4abe1659-73f5-9243-b352-1fab92a81258,Atleta fictício AC Mo-02,G,1,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,a5a07988-a094-4d4e-8af2-330136137f0f,Atleta fictício AC Mo-03,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,20d60c52-565f-ab40-b6ff-e5dfaff2cd34,Atleta fictício AC Mo-16,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,65a8b888-eed6-c44c-ab52-15a54fd05770,Atleta fictício AC Mo-19,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,a2cc3a40-0cf3-c74a-9a21-a7d0663aaab6,Atleta fictício AC Mo-04,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,6316a90d-d3f5-5d4d-8b8b-60ad4af40f02,Atleta fictício AC Mo-05,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,2665f961-0703-414c-b708-1f6dfd584a14,Atleta fictício AC Mo-06,D,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,74f125e2-e4c5-244d-80bf-0deb49963e0b,Atleta fictício AC Mo-13,D,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,b68bbcd5-7d46-394d-84ea-1f51854a87e4,Atleta fictício AC Mo-22,D,3,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,59472364-6aff-e143-83e5-d0df351db295,Atleta fictício AC Mo-08,M,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,68085cc2-f7e1-f243-9778-c5eaa60b10f1,Atleta fictício AC Mo-10,M,1,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,9e238c67-74d4-ab4f-9942-42438b990745,Atleta fictício AC Mo-14,M,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,42610f2c-ed9e-5043-8532-34998b77b990,Atleta fictício AC Mo-17,M,1,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,0b8ef451-2cb7-7b46-bf2c-f39ce707d61d,Atleta fictício AC Mo-07,M,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,e292058c-3e94-274d-98d1-704803094189,Atleta fictício AC Mo-09,M,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,b6ae6ff9-78cb-d34c-99e0-9a639c9684fb,Atleta fictício AC Mo-20,M,3,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,5310fcce-657c-7c49-a8dd-5b8283ed264e,Atleta fictício AC Mo-11,A,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,02de0ef9-0bd4-da47-8b01-8095a6917ef9,Atleta fictício AC Mo-12,A,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,f41bc62a-42d3-6d4c-9957-6ea849eb9475,Atleta fictício AC Mo-18,A,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,e2c814e7-ea07-7548-9d56-6325edc926cb,Atleta fictício AC Mo-15,A,3,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,7,588631ad-80e6-6744-bad0-2fc1119253a4,AC Monza,2,a4b68a8f-7215-9c40-bd97-09dac01f341e,Atleta fictício AC Mo-21,A,3,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,c611b650-ea42-5940-b71c-81a8b3ee76d5,Atleta fictício AS Mo-01,G,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,40ab0833-a605-8841-8304-94741e314109,Atleta fictício AS Mo-02,G,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,2f85bfb4-e4e7-5d48-b2fe-bc87e08bbf9e,Atleta fictício AS Mo-03,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,b13bbad5-4590-4749-89ff-6fe3ea497cde,Atleta fictício AS Mo-06,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,bfbfaa9d-b1b0-754d-8bcb-25293d0299ad,Atleta fictício AS Mo-13,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,af66a33c-3221-4543-954c-d2c4cac5e35f,Atleta fictício AS Mo-19,D,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,68b4ea92-61bb-374e-919a-2cbf23fcbf42,Atleta fictício AS Mo-04,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,a8f33f39-ced0-5942-ae12-cecfb38b217f,Atleta fictício AS Mo-05,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,11c47c00-25bb-5f49-80aa-a47639612b0b,Atleta fictício AS Mo-16,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,9079fbaa-b462-5f4f-8cc5-049972c07bfd,Atleta fictício AS Mo-22,D,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,e0a319a1-123d-3746-ae23-4d6c4015f487,Atleta fictício AS Mo-07,M,1,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,1b9e9ff7-ef67-a344-9edd-4af37a8ca9d6,Atleta fictício AS Mo-10,M,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,1bc72913-3e8e-be49-9d0e-afa6d5bf119e,Atleta fictício AS Mo-17,M,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,8cb84786-3b2b-1742-8226-fe2296962f88,Atleta fictício AS Mo-08,M,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,f945c9a2-0743-5f4e-b8e1-9d883a1325c4,Atleta fictício AS Mo-09,M,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,fae27a6e-1cde-f24d-9832-0fb1b0f5028e,Atleta fictício AS Mo-14,M,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,4c78d24a-f982-6645-b817-dced31d9e233,Atleta fictício AS Mo-20,M,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,ebf8633a-605d-e946-9e9f-b6957ee9273b,Atleta fictício AS Mo-12,A,1,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,f29ba5c5-a1f6-664e-9a4a-44ddef60c371,Atleta fictício AS Mo-11,A,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,1d5621b8-7a69-fe45-9303-a5e8f9575fee,Atleta fictício AS Mo-15,A,2,Reserva,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,b728faaf-b2ad-5d4b-9747-c0618874d226,Atleta fictício AS Mo-18,A,2,Titular,FICTIONAL_GENERATED
+2118dbd0-3bfa-4a78-af2c-fb4471de8ba4,199801,4,8,b2addc73-a58b-224e-a3f3-c7dbdc7b8219,AS Monaco FC,1,10ba2bab-ddff-a04a-9bbc-996ce7736496,Atleta fictício AS Mo-21,A,2,Titular,FICTIONAL_GENERATED

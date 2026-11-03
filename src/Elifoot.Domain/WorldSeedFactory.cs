@@ -101,7 +101,8 @@ public static class WorldSeedFactory
         int pauseTimeoutSeconds = 60,
         bool allowClassic505 = true,
         string? inviteCode = null,
-        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal)
+        ForceEvolutionMode forceEvolutionMode = ForceEvolutionMode.LegacySeasonal,
+        bool applyInitialSquadStrength = false)
     {
         totalClubs = Math.Max(64, totalClubs);
         var rng = new DeterministicRng(seed);
@@ -187,6 +188,8 @@ public static class WorldSeedFactory
                 PrimaryColorHex = primaryColor,
                 SecondaryColorHex = secondaryColor,
                 DivisionTier = tier,
+                InitialSquadReference = applyInitialSquadStrength && i < 32
+                    ? InitialSquadStrength017B.Reference((int)tier, i % 8 + 1) : null,
                 CashBalance = cash,
                 Reputation = rep,
                 Stadium = new Stadium
@@ -204,7 +207,8 @@ public static class WorldSeedFactory
             };
 
             // Create AI Manager for the club
-            var profile = TacticalProfiles[(i + seed) % TacticalProfiles.Length];
+            int profileIndex = (int)(((long)i + seed) % TacticalProfiles.Length);
+            var profile = TacticalProfiles[(profileIndex + TacticalProfiles.Length) % TacticalProfiles.Length];
             string mgrName = $"{FirstNames[(i * 3 + 5) % FirstNames.Length]} {LastNames[(i * 5 + 11) % LastNames.Length]}";
             var aiMgr = new AiManager
             {
@@ -238,10 +242,15 @@ public static class WorldSeedFactory
             ];
 
             var clubSquad = new List<Player>(squadTemplate.Length);
+            var initialStrengths = club.InitialSquadReference is { } reference
+                ? InitialSquadStrength017B.Draw(seed, club.Id.ToString("N"), reference,
+                    Enumerable.Range(0, squadTemplate.Length).Select(p => CreateDeterministicGuid(seed, 4, i * 100 + p + 1).ToString("N")))
+                : null;
             for (int pIdx = 0; pIdx < squadTemplate.Length; pIdx++)
             {
                 var pos = squadTemplate[pIdx];
                 int strength = rng.NextInt(minStr, maxStr + 1);
+                if (initialStrengths != null) strength = initialStrengths[pIdx];
                 bool isStar = (pIdx == 8 || pIdx == 14) && rng.NextDouble() < (tier == DivisionTier.PrimeiraDivisao ? 0.65 : 0.35);
 
                 // Behavior distribution covering FairPlay..Sarrafeiro

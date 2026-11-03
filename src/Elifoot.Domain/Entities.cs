@@ -68,6 +68,7 @@ public partial class GameWorld
 public class Club
 {
     public int? ClubInitialPower { get; set; }
+    public InitialSquadReference017B? InitialSquadReference { get; set; }
     public int? InitialSquadSize { get; set; }
     public ClubColorPalette? ColorPalette { get; set; }
     public Guid Id { get; set; } = Guid.NewGuid();

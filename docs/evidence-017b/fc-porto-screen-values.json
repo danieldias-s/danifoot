@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Atleta fictício FC Po-01",
+    "strength": 49,
+    "position": "G"
+  },
+  {
+    "name": "Atleta fictício FC Po-02",
+    "strength": 47,
+    "position": "G"
+  },
+  {
+    "name": "Atleta fictício FC Po-13",
+    "strength": 50,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-22",
+    "strength": 50,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-03",
+    "strength": 50,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-04",
+    "strength": 50,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-06",
+    "strength": 50,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-16",
+    "strength": 48,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-19",
+    "strength": 48,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-05",
+    "strength": 48,
+    "position": "D"
+  },
+  {
+    "name": "Atleta fictício FC Po-10",
+    "strength": 49,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-17",
+    "strength": 49,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-20",
+    "strength": 49,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-09",
+    "strength": 49,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-14",
+    "strength": 48,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-23",
+    "strength": 47,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-07",
+    "strength": 47,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-08",
+    "strength": 47,
+    "position": "M"
+  },
+  {
+    "name": "Atleta fictício FC Po-11",
+    "strength": 49,
+    "position": "A"
+  },
+  {
+    "name": "Atleta fictício FC Po-18",
+    "strength": 49,
+    "position": "A"
+  },
+  {
+    "name": "Atleta fictício FC Po-12",
+    "strength": 48,
+    "position": "A"
+  },
+  {
+    "name": "Atleta fictício FC Po-15",
+    "strength": 48,
+    "position": "A"
+  },
+  {
+    "name": "Atleta fictício FC Po-21",
+    "strength": 48,
+    "position": "A"
+  }
+]

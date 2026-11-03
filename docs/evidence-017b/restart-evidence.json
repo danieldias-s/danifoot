@@ -1,0 +1,17 @@
+{
+  "oldApiPid": 14964,
+  "newApiPid": 24556,
+  "dbProvider": "PostgreSQL",
+  "newWorldId": "2118dbd0-3bfa-4a78-af2c-fb4471de8ba4",
+  "legacyWorldId": "d590da15-4701-4df8-8b5f-5e0d5b657a28",
+  "legacyClub": "Criciúma Carvoeiro",
+  "legacyPlayersVerified": 18,
+  "storedHashesBefore": [
+    "2118dbd0-3bfa-4a78-af2c-fb4471de8ba4|e04d7d8b0268d1f23bf08438e7917ad16ce04c81b4689dc2b314b6d5cbe83b7f",
+    "d590da15-4701-4df8-8b5f-5e0d5b657a28|3f1e73f6ea831e16334d2c74dd437e2ae95133df8b003b1c91e0ed45c0b22470"
+  ],
+  "storedHashesAfter": [
+    "2118dbd0-3bfa-4a78-af2c-fb4471de8ba4|e04d7d8b0268d1f23bf08438e7917ad16ce04c81b4689dc2b314b6d5cbe83b7f",
+    "d590da15-4701-4df8-8b5f-5e0d5b657a28|3f1e73f6ea831e16334d2c74dd437e2ae95133df8b003b1c91e0ed45c0b22470"
+  ]
+}

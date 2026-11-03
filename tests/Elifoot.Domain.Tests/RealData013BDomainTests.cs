@@ -41,7 +41,7 @@ public sealed class RealData013BDomainTests
         selection.Clubs[0].Players.Clear(); Assert.Equal(json, JsonSerializer.Serialize(world));
     }
     [Fact]
-    public void ManualPlacementDoesNotReduceForcesAndGendersUseIdenticalScale()
+    public void CatalogEstimatesUseIdenticalScaleByGenderAndManualWorldUsesItsDivision()
     {
         var male = Selection(FootballGender.Male); var female = Selection(FootballGender.Female);
         // Same identities/performance/seed isolate gender from all other inputs.
@@ -55,7 +55,10 @@ public sealed class RealData013BDomainTests
             Assignments = assignments, FillRemainingDivisions = false }, male);
         Assert.Empty(manual.Errors);
         var moved = manual.Clubs.Single(c => c.Club.Key == automatic.Clubs[0].Club.Key); Assert.Equal(4, moved.Division);
-        Assert.Equal(automatic.Clubs[0].Club.Players.Select(p => p.Strength), moved.Club.Players.Select(p => p.Strength));
+        Assert.Equal(automatic.Clubs[0].Club.Players.Select(p => p with { Strength = 0 }),
+            moved.Club.Players.Select(p => p with { Strength = 0 }));
+        Assert.Equal(new InitialSquadReference017B(1, 12, 11, 12), moved.InitialSquadReference);
+        Assert.All(moved.Club.Players, p => Assert.InRange(p.Strength, 11, 12));
     }
     [Fact]
     public void MissingIndividualDataIsAnExplicitEstimateAndNeverAnOfficialRating()

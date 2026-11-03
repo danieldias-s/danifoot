@@ -46,7 +46,8 @@ public sealed partial class MultiplayerRoundOrchestrator
             pauseTimeoutSeconds: Math.Clamp(request.PauseTimeoutSeconds, 5, 3600),
             allowClassic505: request.AllowClassic505,
             inviteCode: request.InviteCode,
-            forceEvolutionMode: request.ForceEvolutionMode);
+            forceEvolutionMode: request.ForceEvolutionMode,
+            applyInitialSquadStrength: true);
 
         await _repository.SaveWorldAsync(world, ct);
         return world;

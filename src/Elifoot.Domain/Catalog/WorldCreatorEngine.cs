@@ -144,20 +144,28 @@ public static class WorldCreatorEngine
             if (assigned.Count(c => c.Club.IdentityConflicts?.Contains(conflict) == true) > 1) errors.Add("Identidades de equipes precisam de revisão antes de usar ambas no mesmo mundo.");
         if (assigned.SelectMany(c => c.Club.Players).Any(p => p.IdentityOrigin == CatalogDataOrigin.Generated)) warnings.Add("Complemento de atletas fictícios autorizado; não são jogadores reais importados.");
         if (assigned.Any(c => c.Club.IsFictional)) warnings.Add("Complemento fictício autorizado nesta configuração.");
-        var result = assigned.OrderBy(c => c.Division).ToList();
+        var result = InitialSquadStrength017B.Apply(assigned.OrderBy(c => c.Division), request.Seed);
         var usedReferences = result.SelectMany(c => c.Club.References).DistinctBy(r => r.SnapshotId).ToList();
-        string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, References = usedReferences })));
+        string hash = SnapshotHash(request, result, usedReferences);
         return new(Guid.NewGuid(), request.Name, request.Gender, request.Seed, result,
             Math.Max(0, 128 - result.Count), errors.Distinct().ToList(), warnings.Distinct().ToList(),
             usedReferences, DateTime.UtcNow, hash,request.DataMode,request.DataMode==null?null:asOf,
             request.DataMode==null?null:PlayableWorldPolicy.Summary(request,selection,result,asOf));
     }
 
+    private static string SnapshotHash(WorldCreatorRequest request, List<WorldPreviewClub> result, List<CatalogReference> references) =>
+        Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, References = references })));
+
     public static GameWorld Create(WorldCreatorRequest request, WorldCreatorPreview preview)
     {
         if (preview.DataMode != request.DataMode) throw new ArgumentException("Modo de dados difere da prévia persistida.");
         if (preview.Errors.Count > 0 || preview.PendingSlots != 0 || preview.Clubs.Count != 128)
             throw new ArgumentException("Resolva as vagas e os elencos antes de confirmar.");
+        if (preview.Clubs.Any(c => c.Division is >= 1 and <= 4 && c.InitialSquadReference == null))
+        {
+            var clubs = InitialSquadStrength017B.Apply(preview.Clubs, request.Seed);
+            preview = preview with { Clubs = clubs, DataHash = SnapshotHash(request, clubs, preview.References) };
+        }
         if(request.DataMode!=null)
         {
             if(preview.Seed!=request.Seed || preview.Gender!=request.Gender) throw new ArgumentException("Categoria ou seed difere da prévia.");
@@ -185,6 +193,7 @@ public static class WorldCreatorEngine
             var entry = preview.Clubs[i];
             var club = world.Clubs[i];
             club.ClubInitialPower=entry.Club.InitialProfile?.ClubInitialPower; club.InitialSquadSize=entry.Club.InitialProfile?.TargetInitialSquadSize;
+            club.InitialSquadReference = entry.InitialSquadReference;
             club.Name = entry.Club.Name; club.ShortName = entry.Club.ShortName;
             club.ColorPalette = entry.Club.ColorPalette;
             club.Country = entry.Club.CountryName; club.PrimaryColorHex = entry.Club.PrimaryColor;
