@@ -1,0 +1,119 @@
+{
+  "releaseBuild": {
+    "errors": 0,
+    "log": "artifacts/017b/dotnet-build.log",
+    "warnings": 0
+  },
+  "dotnet": {
+    "application": {
+      "file": "artifacts/017b/tests/regression_net10.0_20261103140331.trx",
+      "passed": 17,
+      "failed": 0,
+      "total": 17
+    },
+    "simulation": {
+      "shards": [
+        {
+          "file": "artifacts/017b/shards/benchmark/benchmark_net10.0_20261103142209.trx",
+          "passed": 1,
+          "failed": 0,
+          "total": 1
+        },
+        {
+          "file": "artifacts/017b/shards/career/career_net10.0_20261103142338.trx",
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        },
+        {
+          "file": "artifacts/017b/shards/controlled/controlled_net10.0_20261103141944.trx",
+          "passed": 15,
+          "failed": 0,
+          "total": 15
+        },
+        {
+          "file": "artifacts/017b/shards/economy/economy_net10.0_20261103142708.trx",
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        },
+        {
+          "file": "artifacts/017b/shards/force/force_net10.0_20261103142537.trx",
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        },
+        {
+          "file": "artifacts/017b/shards/imported/imported_net10.0_20261103142747.trx",
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        },
+        {
+          "file": "artifacts/017b/shards/worldcatalog/worldcatalog_net10.0_20261103142812.trx",
+          "passed": 2,
+          "failed": 0,
+          "total": 2
+        }
+      ],
+      "validated": 28,
+      "seriesFromSolutionRun": [
+        {
+          "file": "artifacts/017b/test-output/integration-014b/Female/summary.json",
+          "gender": "Female",
+          "seasons": 100,
+          "completedMatches": 35100
+        },
+        {
+          "file": "artifacts/017b/test-output/integration-014b/Male/summary.json",
+          "gender": "Male",
+          "seasons": 100,
+          "completedMatches": 35100
+        }
+      ]
+    },
+    "initialSolutionLog": "artifacts/017b/dotnet-test.log",
+    "domain": {
+      "file": "artifacts/017b/tests/domain-final_net10.0_20261103140911.trx",
+      "passed": 446,
+      "failed": 0,
+      "total": 446
+    },
+    "validatedCases": 751,
+    "integration": {
+      "file": "artifacts/017b/tests/regression_net10.0_20261103141405.trx",
+      "passed": 260,
+      "failed": 0,
+      "total": 260
+    }
+  },
+  "flutter": {
+    "logs": [
+      "artifacts/017b/flutter-test.log",
+      "artifacts/017b/flutter-build.log",
+      "artifacts/017b/flutter-analyze.log"
+    ],
+    "analyzer": {
+      "preexisting": true,
+      "code": "unnecessary_const",
+      "information": 1,
+      "file": "client/elifoot_flutter/lib/live_match_view.dart:241"
+    },
+    "buildWeb": true,
+    "passed": 276
+  },
+  "node": {
+    "passed": 2,
+    "log": "artifacts/017b/node-test.log"
+  },
+  "persistence": {
+    "postgresHashesMatch": true,
+    "legacyPlayersCheckedAfterRestart": 18,
+    "apiPlayersCheckedAfterRestart": 694
+  },
+  "csv": {
+    "sha256": "E0DE466B6C72BA1CA5EB890A1D1764A35BA705F60030857F5DC11AF9193026AE",
+    "rows": 694,
+    "columns": 13
+  }
+}

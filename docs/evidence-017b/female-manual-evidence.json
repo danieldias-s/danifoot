@@ -1,0 +1,24 @@
+{
+  "gender": "Female",
+  "seed": 199802,
+  "realClubs": 128,
+  "realPlayers": 1,
+  "automaticDivision": 5,
+  "manualDivision": 4,
+  "initialPosition": 1,
+  "referenceStrength": 12,
+  "initialPlayerStrength": 11,
+  "playerOrigin": "REAL_CURRENT_VERIFIED",
+  "preservedFields": [
+    "canonicalPlayerId",
+    "playerExternalId",
+    "playerName",
+    "position",
+    "clubExternalId",
+    "clubProvider",
+    "gender",
+    "source",
+    "playerOrigin",
+    "membershipEvidence"
+  ]
+}

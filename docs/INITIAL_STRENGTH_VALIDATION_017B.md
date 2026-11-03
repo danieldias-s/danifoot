@@ -15,10 +15,27 @@ O FC Porto, o FC Barcelona e o Bayern München tiveram os quatro valores 47, 48,
 
 No Chrome, dois treinadores do mesmo campeonato assumiram o Real Betis (4ª divisão) e o FC Porto (1ª divisão). O anfitrião iniciou a sala e ambos abriram Plantel & Táticas. As tabelas renderizadas conferiram com o CSV em nome, posição e força para os 18 atletas do Betis e os 23 do Porto. [Real Betis](evidence-017b/plantel-real-betis.jpg) · [FC Porto](evidence-017b/plantel-fc-porto.jpg)
 
-A API foi reiniciada e recarregou o campeonato e uma cópia histórica do save «Rankings 009 — temporada real» em PostgreSQL. Os hashes gravados permaneceram iguais nos dois registros. A consulta a Criciúma Carvoeiro devolveu as 18 forças do elenco histórico. O banco do save do Flamengo ficou fora do ambiente 017B. [Evidência de reinício](evidence-017b/restart-evidence.json)
+A API foi reiniciada e recarregou o campeonato e uma cópia histórica do save «Rankings 009 — temporada real» em PostgreSQL. Os hashes gravados permaneceram iguais nos dois registros. A API devolveu as 694 forças do campeonato e as 18 forças históricas do Criciúma Carvoeiro iguais às gravadas. O Chrome reabriu Plantel & Táticas do FC Porto após a atualização. O banco do save do Flamengo ficou fora do ambiente 017B. [Evidência de reinício](evidence-017b/restart-evidence.json)
+
+O catálogo feminino também foi validado em prévia pela API real, com seed 199802 e 128 clubes verificados. Na montagem manual, a equipe com a atleta de vínculo atual comprovado passou dos distritais para a primeira posição de referência da 4ª divisão. A atleta recebeu força 11, com o mesmo nome, posição, IDs, categoria, origem e evidência de vínculo. [Evidência da montagem manual](evidence-017b/female-manual-evidence.json)
 
 O exportador recebe o resultado de `SELECT json_build_object('createdAtUtc', "CreatedAtUtc", 'world', "SnapshotJson"::json) FROM ef_worlds WHERE "Id" = <world-id>` e o JSON da prévia. Ele confere as faixas e a identidade dos atletas antes de emitir os dois arquivos.
 
 ```powershell
 node scripts/export-initial-squad-strength-017b.mjs artifacts/017b/audit-persisted.json artifacts/017b/audit-preview.json docs/evidence-017b
 ```
+
+## Regressão
+
+| Verificação | Resultado |
+| --- | --- |
+| Build .NET Release | 0 avisos, 0 erros |
+| Domínio .NET | 446 aprovados na reexecução após atualizar a expectativa antiga de montagem manual |
+| Aplicação .NET | 17 aprovados |
+| Integração .NET | 260 aprovados, incluindo PostgreSQL DEV |
+| Simulação .NET | 28 casos validados pela execução da solução e pelos grupos em paralelo |
+| Flutter | 276 testes aprovados e build web concluído |
+| Flutter Analyze | 1 aviso informativo preexistente, `unnecessary_const` |
+| Node | 2 testes aprovados e exportador conferido contra o PostgreSQL |
+
+As duas séries de 100 temporadas do catálogo 016B e as duas séries da integração 014B completaram 35.100 partidas cada. A primeira execução da solução registrou uma asserção da 013B que esperava conservar a força depois da troca manual de divisão. O teste atualizado conserva as verificações de identidade e de escala por categoria e exige a faixa da divisão escolhida. A suíte de domínio foi reexecutada inteira. A execução inicial forneceu os resultados de aplicação, integração e das duas séries 014B. Os grupos com saídas independentes validaram os demais casos de simulação. A fila duplicada da primeira execução foi encerrada após a cobertura dos 28 casos de simulação. [Resultados e caminhos dos logs](evidence-017b/regression-evidence.json)
