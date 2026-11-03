@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class LobbyRoomStatus extends StatelessWidget {
   final Map<String, dynamic> room;
-  const LobbyRoomStatus({super.key, required this.room});
+  final String? currentCoachId;
+  const LobbyRoomStatus({super.key, required this.room, this.currentCoachId});
   @override
   Widget build(BuildContext context) {
     final counter = room['readyCounter'] as Map? ?? {};
@@ -51,7 +52,15 @@ class LobbyRoomStatus extends StatelessWidget {
               for (final p in people)
                 ListTile(
                   dense: true,
-                  title: Text('${p['nickname']}'),
+                  selected:
+                      currentCoachId != null && p['coachId'] == currentCoachId,
+                  leading:
+                      currentCoachId != null && p['coachId'] == currentCoachId
+                      ? const Icon(Icons.account_circle)
+                      : null,
+                  title: Text(
+                    '${p['nickname']}${currentCoachId != null && p['coachId'] == currentCoachId ? ' • VOCÊ' : ''}',
+                  ),
                   subtitle: Text(
                     '${p['clubName'] ?? 'Sem clube'} • ${p['isConnected'] == true ? 'CONECTADO' : 'DESCONECTADO'} • ${p['isReady'] == true ? 'TÁTICA ENVIADA' : 'TÁTICA PENDENTE'}',
                   ),

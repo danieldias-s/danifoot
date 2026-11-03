@@ -59,16 +59,108 @@ extension _ShellActions on _ElifootShellScreenState {
   }
 
   Future<void> _saveSession() async {
+    final previous = _savedSessions
+        .where((p) => p['deviceId'] == _deviceId)
+        .firstOrNull;
+    final people = _snapshot?['readyCounter']?['participants'] as List? ?? [];
+    final me = people
+        .whereType<Map>()
+        .where((p) => p['coachId'] == _coachId)
+        .firstOrNull;
     await writeSession(
       jsonEncode({
         'nickname': _nickname,
         'coachId': _coachId,
         'deviceId': _deviceId,
         'worldId': _worldId,
+        'lastWorldName': _snapshot?['worldName'] ?? previous?['lastWorldName'],
+        'lastClubName':
+            me?['clubName'] ??
+            (_isUnemployed && _worldId != null
+                ? 'Sem clube'
+                : previous?['lastClubName']),
         'liveSelection': _liveSelection.toJson(),
       }),
     );
     if (mounted) setState(() => _savedSessions = readSavedSessions());
+  }
+
+  String _localTrainerDetail(String deviceId, {String? coachId}) {
+    final profile = _savedSessions
+        .where((p) => p['deviceId'] == deviceId)
+        .firstOrNull;
+    final id = coachId ?? profile?['coachId'];
+    if (id != null) {
+      for (final world in _worlds) {
+        final people = world['readyCounter']?['participants'] as List? ?? [];
+        final person = people
+            .whereType<Map>()
+            .where((p) => p['coachId'] == id)
+            .firstOrNull;
+        if (person != null) {
+          return '${person['clubName'] ?? 'Sem clube'} • ${world['name']}';
+        }
+      }
+    }
+    final detail = [
+      profile?['lastClubName'],
+      profile?['lastWorldName'],
+    ].whereType<String>().where((s) => s.isNotEmpty).join(' • ');
+    if (detail.isNotEmpty) return detail;
+    final ids = _savedSessions.map((p) => p['deviceId'].toString()).toList()
+      ..sort();
+    final index = ids.indexOf(deviceId);
+    return index >= 0
+        ? 'Perfil ${index + 1} salvo neste navegador'
+        : 'Novo acesso local';
+  }
+
+  Future<void> _selectLocalTrainer(String deviceId) async {
+    final profile = _savedSessions.firstWhere((p) => p['deviceId'] == deviceId);
+    await _activateLocalTrainer(Map<String, dynamic>.from(profile));
+  }
+
+  Future<void> _activateLocalTrainer(Map<String, dynamic> profile) async {
+    setState(() {
+      _nickname = profile['nickname']?.toString() ?? 'Treinador';
+      _deviceId = profile['deviceId'].toString();
+      _coachId = profile['coachId']?.toString();
+      _authenticatedDeviceId = _coachId == null ? null : _deviceId;
+      _worlds = [];
+      _statusBanner = null;
+      _authWarning = null;
+    });
+    await _performLocalLoginAndLoadWorlds();
+  }
+
+  Future<void> _createLocalTrainer() async {
+    var number = 1;
+    while (_savedSessions.any((p) => p['nickname'] == 'Treinador $number')) {
+      number++;
+    }
+    final result = await showDialog<Map<String, String>>(
+      context: context,
+      builder: (_) => TrainerAccessDialog(initialName: 'Treinador $number'),
+    );
+    if (!mounted || result == null) return;
+    await _activateLocalTrainer({
+      'nickname': result['nickname'],
+      'deviceId':
+          'device-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 30)}',
+    });
+  }
+
+  Future<void> _recoverLocalTrainer() async {
+    final result = await showDialog<Map<String, String>>(
+      context: context,
+      builder: (_) =>
+          TrainerAccessDialog(initialName: _nickname, recovery: true),
+    );
+    if (!mounted || result == null) return;
+    final existing = _savedSessions
+        .where((p) => p['deviceId'] == result['deviceId'])
+        .firstOrNull;
+    await _activateLocalTrainer({...?existing, ...result});
   }
 
   Future<void> _joinByCodeDialog() async {

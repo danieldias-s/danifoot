@@ -32,6 +32,7 @@ import 'round_navigation.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 import 'lobby_room_status.dart';
+import 'local_trainer_panel.dart';
 
 part 'shell_actions.dart';
 
@@ -130,8 +131,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   String _nickname = 'Treinador 1';
   String _deviceId =
       'device-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 30)}';
-  late final TextEditingController _nicknameController;
-  late final TextEditingController _deviceController;
   List<dynamic> _calendar = [];
   String? _coachId;
   String? _authenticatedDeviceId;
@@ -308,8 +307,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _coachId = session?['coachId'];
     _authenticatedDeviceId = session?['deviceId'];
     _savedSessions = readSavedSessions();
-    _nicknameController = TextEditingController(text: _nickname);
-    _deviceController = TextEditingController(text: _deviceId);
     widget.apiClient.onSnapshotUpdated = (snap) {
       if (!mounted) return;
       if (_worldId != null &&
@@ -385,8 +382,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   void dispose() {
     _navigation.removeListener(_onNavigationRequest);
     if (widget.navigation == null) _navigation.dispose();
-    _nicknameController.dispose();
-    _deviceController.dispose();
     widget.apiClient.disconnectRealtime();
     super.dispose();
   }
@@ -398,18 +393,18 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     });
     try {
       final auth = await widget.apiClient.localLogin(_nickname, _deviceId);
-      final worlds = await widget.apiClient.listWorlds();
+      if (!mounted) return;
       setState(() {
         _coachId = _authenticatedDeviceId == _deviceId && _coachId != null
             ? _coachId
             : auth['coachId']?.toString();
         _deviceId = auth['deviceId']?.toString() ?? _deviceId.trim();
         _authenticatedDeviceId = _deviceId;
-        _deviceController.text = _deviceId;
         _authWarning = auth['authModeWarning']?.toString();
-        _worlds = worlds;
       });
       await _saveSession();
+      final worlds = await widget.apiClient.listWorlds();
+      if (mounted) setState(() => _worlds = worlds);
     } catch (e) {
       setState(() => _statusBanner = 'Erro ao conectar na API: $e');
     } finally {
@@ -460,7 +455,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _worldId = worldId;
         _coachId = res['coachId']?.toString() ?? _coachId;
         _nickname = res['nickname']?.toString() ?? _nickname;
-        _nicknameController.text = _nickname;
         _myClubId = res['clubId']?.toString();
         _isUnemployed = res['isUnemployed'] == true;
         _snapshot = _acceptSnapshot(snap);
@@ -949,6 +943,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           if (_coachId != null)
             Center(
               child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.sizeOf(context).width < 600 ? 120 : 240,
+                ),
                 margin: const EdgeInsets.symmetric(horizontal: 12),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
@@ -958,7 +955,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
                 child: Text(
-                  'Técnico: $_nickname',
+                  'VOCÊ: $_nickname',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
@@ -989,7 +988,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'GESTÃO CLÁSSICA DE FUTEBOL • MULTIPLAYER ATÉ 8 TÉCNICOS • MOTOR AUTORITATIVO',
+                        'ESCOLHA SEU TREINADOR PARA ENTRAR',
                         style: TextStyle(
                           color: ClassicTheme.of(context).accent,
                           fontWeight: FontWeight.bold,
@@ -998,125 +997,36 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '• 128 Clubes no Brasil (4 Divisões de 8 + 96 Distritais na Taça)\n'
-                        '• Contador Sincronizado (TÁTICAS ENVIADAS: 0/6) e Parada Global compartilhada\n'
-                        '• Técnicos de IA com filosofia tática persistente e mercado bilateral racional',
+                        'Use um treinador salvo ou crie um novo. Depois, escolha seu campeonato.',
                         style: TextStyle(
                           fontSize: 12,
                           color: ClassicTheme.of(context).textSecondary,
                         ),
                       ),
                       const SizedBox(height: 12),
-                      if (_savedSessions.isNotEmpty) ...[
-                        DropdownButtonFormField<String>(
-                          key: ValueKey('saved-trainer-$_deviceId'),
-                          initialValue:
-                              _savedSessions.any(
-                                (p) => p['deviceId'] == _deviceId,
-                              )
-                              ? _deviceId
-                              : null,
-                          isExpanded: true,
-                          decoration: const InputDecoration(
-                            labelText: 'RETOMAR TREINADOR SALVO',
-                          ),
-                          items: [
-                            for (final p in _savedSessions)
-                              DropdownMenuItem(
-                                value: p['deviceId'].toString(),
-                                child: Text(
-                                  '${p['nickname']} • ${p['deviceId']}',
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                          ],
-                          onChanged: _isLoading
-                              ? null
-                              : (device) async {
-                                  final p = _savedSessions.firstWhere(
-                                    (p) => p['deviceId'] == device,
-                                  );
-                                  setState(() {
-                                    _nickname =
-                                        p['nickname']?.toString() ??
-                                        'Treinador';
-                                    _deviceId = device!;
-                                    _coachId = p['coachId']?.toString();
-                                    _authenticatedDeviceId = device;
-                                    _nicknameController.text = _nickname;
-                                    _deviceController.text = _deviceId;
-                                    _statusBanner = null;
-                                    _worlds = [];
-                                  });
-                                  await _performLocalLoginAndLoadWorlds();
-                                },
+                      LocalTrainerPanel(
+                        nickname: _nickname,
+                        deviceId: _deviceId,
+                        detail: _localTrainerDetail(
+                          _deviceId,
+                          coachId: _coachId,
                         ),
-                        const Text(
-                          'Use a mesma identidade para retornar. Desconectar preserva sua vaga e seu clube.',
-                        ),
-                        const SizedBox(height: 8),
-                      ],
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 12,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 220,
-                            child: TextField(
-                              decoration: const InputDecoration(
-                                labelText: 'Apelido do Treinador (Nickname)',
-                                isDense: true,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                ),
+                        connected: _coachId != null,
+                        busy: _isLoading,
+                        profiles: [
+                          for (final profile in _savedSessions)
+                            LocalTrainerChoice(
+                              profile['deviceId'].toString(),
+                              profile['nickname']?.toString() ?? 'Treinador',
+                              _localTrainerDetail(
+                                profile['deviceId'].toString(),
                               ),
-                              controller: _nicknameController,
-                              readOnly: _isLoading,
-                              onChanged: (v) => _nickname = v,
                             ),
-                          ),
-                          SizedBox(
-                            width: 190,
-                            child: TextField(
-                              decoration: const InputDecoration(
-                                labelText: 'ID Dispositivo (Sessão)',
-                                isDense: true,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                ),
-                              ),
-                              controller: _deviceController,
-                              readOnly: _isLoading,
-                              onChanged: (v) => _deviceId = v,
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: _isLoading
-                                ? null
-                                : _performLocalLoginAndLoadWorlds,
-                            child: const Text('ENTRAR NO LOBBY (LOCAL DEV)'),
-                          ),
-                          OutlinedButton(
-                            key: const Key('new-local-trainer'),
-                            onPressed: _isLoading
-                                ? null
-                                : () {
-                                    setState(() {
-                                      _coachId = null;
-                                      _authenticatedDeviceId = null;
-                                      _deviceId =
-                                          'device-${DateTime.now().microsecondsSinceEpoch}-${Random().nextInt(1 << 30)}';
-                                      _nickname = 'Treinador 1';
-                                      _nicknameController.text = _nickname;
-                                      _deviceController.text = _deviceId;
-                                      _worlds = [];
-                                      _authWarning = null;
-                                    });
-                                  },
-                            child: const Text('NOVO TREINADOR'),
-                          ),
                         ],
+                        enter: _performLocalLoginAndLoadWorlds,
+                        create: _createLocalTrainer,
+                        select: _selectLocalTrainer,
+                        recover: _recoverLocalTrainer,
                       ),
                       if (_authWarning != null) ...[
                         const SizedBox(height: 8),
@@ -1249,6 +1159,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                   ),
                                   LobbyRoomStatus(
                                     room: Map<String, dynamic>.from(w),
+                                    currentCoachId:
+                                        w['reconnectCoachId']?.toString() ??
+                                        _coachId,
                                   ),
                                 ],
                               ),
@@ -1383,6 +1296,28 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ? () => _shellScaffoldKey.currentState?.openDrawer()
               : null,
         ),
+        if (me != null)
+          Container(
+            key: const Key('active-trainer-in-room'),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            color: t.selectedBackground,
+            child: Row(
+              children: [
+                Icon(Icons.account_circle, size: 20, color: t.selectedText),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'VOCÊ • ${me['nickname']} • ${me['clubName'] ?? 'Sem clube'}',
+                    style: TextStyle(
+                      color: t.selectedText,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         Container(
           color: t.surface,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -1401,7 +1336,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
                 const SizedBox(width: 16),
-                for (final person in people)
+                for (final person in people.where(
+                  (p) => p['coachId'] != _coachId,
+                ))
                   Padding(
                     padding: const EdgeInsets.only(right: 12),
                     child: Text(

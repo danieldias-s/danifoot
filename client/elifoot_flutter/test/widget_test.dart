@@ -438,7 +438,7 @@ void main() {
         find.textContaining('ELIFOOT CLASSIC MULTIPLAYER'),
         findsOneWidget,
       );
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
 
       expect(find.textContaining('MODO LOCAL_DEV'), findsOneWidget);
@@ -554,7 +554,7 @@ void main() {
         }),
       );
       await tester.pumpWidget(ElifootClassicApp(apiClient: api));
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       expect(find.textContaining('Sala no telefone'), findsOneWidget);

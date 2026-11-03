@@ -172,7 +172,7 @@ void main() {
       await tester.binding.setSurfaceSize(const Size(1366, 1000));
       addTearDown(() => tester.binding.setSurfaceSize(null));
       await tester.pumpWidget(ElifootClassicApp(apiClient: api));
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
       await tester.pumpAndSettle();

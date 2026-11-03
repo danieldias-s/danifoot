@@ -83,8 +83,8 @@ Future<void> join(
   bool unemployed = false,
 }) async {
   await tester.pumpWidget(ElifootClassicApp(apiClient: api));
-  await tester.ensureVisible(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
-  await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+  await tester.ensureVisible(find.text('ENTRAR NO LOBBY'));
+  await tester.tap(find.text('ENTRAR NO LOBBY'));
   await tester.pumpAndSettle();
   final enterRoom = find.text(
     unemployed ? 'ENTRAR DESEMPREGADO' : 'ENTRAR COM CLUBE',

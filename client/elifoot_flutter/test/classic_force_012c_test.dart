@@ -32,7 +32,7 @@ void main() {
     addTearDown(() => tester.binding.setSurfaceSize(null));
     final api = IdleClassicApi();
     await tester.pumpWidget(ElifootClassicApp(apiClient: api));
-    await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+    await tester.tap(find.text('ENTRAR NO LOBBY'));
     await tester.pumpAndSettle();
     await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
     await tester.pumpAndSettle();

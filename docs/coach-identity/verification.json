@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-03",
+  "branch": "codex/coach-identity-ux",
+  "base": "0a562e0",
+  "tests": {
+    "passed": 294,
+    "added": 10,
+    "analyze": "existing unnecessary_const info only",
+    "webBuild": "release passed"
+  },
+  "liveChecks": {
+    "legacyProfileRetained": true,
+    "oldDeviceFieldHidden": true,
+    "createdByName": true,
+    "newIdentityDistinct": true,
+    "originalStillSaved": true,
+    "profileCount": 2,
+    "browserClosedAndReopened": true,
+    "restoredOriginalIdentity": true,
+    "selfBannerVisible": true,
+    "noDuplicateRoomParticipant": true,
+    "sameClubAfterReturn": true,
+    "lobbyMarksSelfByCoachId": true
+  },
+  "browserWidths": [
+    {
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "width": 1920,
+      "documentWidth": 1920
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/active-trainer-desktop.png",
+      "sha256": "c3b0721e9dee7aa65fc25fe3c8d942856d772b5f39cd062d715b50fea1b965df"
+    },
+    {
+      "file": "captures/active-trainer-mobile.png",
+      "sha256": "8d38eb2594ca856839ff486da36b996f0e7a24c2cc9cbfeea73a839600257f4c"
+    },
+    {
+      "file": "captures/create-mobile.png",
+      "sha256": "c1e1a81f73b0b23883ebdecb543ce2daf2ec7d7311ca10857b5147694ae5530a"
+    },
+    {
+      "file": "captures/lobby-desktop.png",
+      "sha256": "6233782d62c201885ce7680fe01411a452674bc2c5fac3fb620865ca85602d9f"
+    },
+    {
+      "file": "captures/lobby-mobile.png",
+      "sha256": "902c5836e0f4e2f8b6251bfb7377bf4be8c05b2c6d22307b6212bb8a50142beb"
+    },
+    {
+      "file": "captures/saved-trainers-desktop.png",
+      "sha256": "ceda03253bce6c3861f1ba45a4504fdbc79685a8a913185f17f0b527ed05d291"
+    }
+  ],
+  "environment": "Chromium headless in own QA profile; real localhost API with isolated SQLite; no access to personal browser storage",
+  "preview": "http://127.0.0.1:5222",
+  "backendChanged": false
+}

@@ -817,7 +817,7 @@ void main() {
       await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
 
       // 1. Login and choose club
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
 
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
@@ -946,7 +946,7 @@ void main() {
       final fakeApi = FakeGameplay011ApiClient();
       await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
 
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
 
       // Join unemployed first to verify TREINADOR SEM CLUBE panel
@@ -1060,7 +1060,7 @@ void main() {
 
       await tester.binding.setSurfaceSize(const Size(1280, 900));
       await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
       await tester.pumpAndSettle();
@@ -1109,7 +1109,7 @@ void main() {
       final fakeApi = FakeGameplay011ApiClient();
       await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
 
-      await tester.tap(find.text('ENTRAR NO LOBBY (LOCAL DEV)'));
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
       await tester.pumpAndSettle();
