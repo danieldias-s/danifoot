@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'classic_layout.dart';
+import 'club_theme.dart';
+import 'squad_classic.dart' show squadPosition;
+import 'tactical_formation.dart';
 
 const _paper = Color(0xFFF2F2EF),
     _ink = Color(0xFF294E7F),
@@ -469,6 +473,15 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
             style: TextStyle(color: Colors.red, fontSize: 11),
           ),
         const SizedBox(height: 8),
+        if (ClassicTheme.of(context).classicPresentation)
+          MatchTeamTacticalPitch(
+            match: widget.match,
+            side: side,
+            formationOverride: formation,
+            onPlayer: active && hasWindow && used < max
+                ? (id) => setState(() => outId = id)
+                : null,
+          ),
         LayoutBuilder(
           builder: (context, c) {
             final left = _MatchPlayerList(
@@ -616,5 +629,161 @@ class PauseWaitingContent extends StatelessWidget {
         onPressed: confirmed || busy ? null : onContinue,
       ),
     ],
+  );
+}
+
+/// The same live lineup schematic is used for observation and substitutions.
+class MatchTeamTacticalPitch extends StatelessWidget {
+  final Map<String, dynamic> match;
+  final String side;
+  final String? formationOverride;
+  final ValueChanged<String>? onPlayer;
+  const MatchTeamTacticalPitch({
+    super.key,
+    required this.match,
+    required this.side,
+    this.formationOverride,
+    this.onPlayer,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final formation =
+        formationOverride ?? match['${side}Formation']?.toString();
+    final players = (match['${side}Starters'] as List? ?? [])
+        .whereType<Map>()
+        .where(
+          (p) =>
+              p['isSentOff'] != true &&
+              p['wasSubstitutedOut'] != true &&
+              p['isOnPitch'] != false,
+        )
+        .map((p) => Map<String, dynamic>.from(p))
+        .toList();
+    if (formation == null ||
+        !isValidTacticalFormation(formation) ||
+        players.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(8),
+        child: Text('Tática ou escalação não informada nesta partida.'),
+      );
+    }
+    final normalized = players
+        .map((p) => {...p, 'position': squadPosition(p)})
+        .toList();
+    final colors = matchTeamColors(
+      ClassicTheme.of(context),
+      match['${side}ColorPalette'] as Map?,
+    );
+    return Column(
+      key: ValueKey('live-team-tactics-${match['${side}ClubId'] ?? side}'),
+      children: [
+        Text(
+          '${match['${side}ClubName'] ?? ''} • Formação $formation • ${players.length} em campo',
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 6),
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 360),
+            child: AbsorbPointer(
+              absorbing: onPlayer == null,
+              child: ClassicTacticalPitch(
+                lines: tacticalPitchLines(normalized, formation),
+                shirt: colors.background,
+                ink: colors.ink,
+                aspectRatio: 1.35,
+                onPlayer: (p) => onPlayer?.call('${p['playerId']}'),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+      ],
+    );
+  }
+}
+
+class LiveTeamInspectionDialog extends StatelessWidget {
+  final Map<String, dynamic> match;
+  final String side;
+  final int minute;
+  final VoidCallback onClose;
+  const LiveTeamInspectionDialog({
+    super.key,
+    required this.match,
+    required this.side,
+    required this.minute,
+    required this.onClose,
+  });
+  @override
+  Widget build(BuildContext context) => ClassicMatchActionDialog(
+    key: const Key('live-team-inspection-dialog'),
+    caption: '${match['${side}ClubName'] ?? 'Equipe'} — Tática e jogadores',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                match['isFinished'] == true
+                    ? 'PARTIDA ENCERRADA • CONSULTA'
+                    : 'CONSULTA • Minuto $minute′ • O relógio continua',
+                style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            IconButton(
+              key: const Key('close-team-inspection'),
+              tooltip: 'Fechar consulta',
+              onPressed: onClose,
+              icon: const Icon(Icons.close),
+            ),
+          ],
+        ),
+        MatchTeamTacticalPitch(match: match, side: side),
+        LayoutBuilder(
+          builder: (context, c) {
+            final starters = _MatchPlayerList(
+              title: 'EM CAMPO',
+              players: (match['${side}Starters'] as List? ?? [])
+                  .whereType<Map>()
+                  .toList(),
+              playerKeyPrefix: 'observe-starter',
+              selected: null,
+              enabled: false,
+              onSelect: (_) {},
+            );
+            final bench = _MatchPlayerList(
+              title: 'RESERVAS DA PARTIDA',
+              players: (match['${side}Bench'] as List? ?? [])
+                  .whereType<Map>()
+                  .toList(),
+              playerKeyPrefix: 'observe-bench',
+              selected: null,
+              enabled: false,
+              onSelect: (_) {},
+            );
+            return c.maxWidth >= 500
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: starters),
+                      const SizedBox(width: 10),
+                      Expanded(child: bench),
+                    ],
+                  )
+                : Column(
+                    children: [starters, const SizedBox(height: 8), bench],
+                  );
+          },
+        ),
+        const SizedBox(height: 8),
+        _actionButton(label: 'FECHAR', icon: Icons.close, onPressed: onClose),
+      ],
+    ),
   );
 }

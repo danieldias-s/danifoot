@@ -392,6 +392,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       RetroTitle(
+                        backgroundColor: _matchLocked
+                            ? const Color(0xFF000080)
+                            : null,
                         title: mobile
                             ? 'LIGA CLÁSSICA 98'
                             : 'LIGA CLÁSSICA 98 — $clubName',
@@ -434,9 +437,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
                           ),
                         ),
                       if (_waitingForRound) _buildReadyWaitingPanel(),
-                      if (_showMatchView ||
-                          _matchLocked ||
-                          _snapshot?['roundState'] == 'RESULTS')
+                      if (!_matchLocked &&
+                          (_showMatchView ||
+                              _snapshot?['roundState'] == 'RESULTS'))
                         Container(
                           color: ClassicTheme.of(context).surface,
                           padding: const EdgeInsets.all(8),

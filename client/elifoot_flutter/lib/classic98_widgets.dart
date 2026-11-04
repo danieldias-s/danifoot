@@ -164,10 +164,16 @@ class RetroButton extends StatelessWidget {
 class RetroTitle extends StatelessWidget {
   final String title;
   final Widget? trailing;
-  const RetroTitle({super.key, required this.title, this.trailing});
+  final Color? backgroundColor;
+  const RetroTitle({
+    super.key,
+    required this.title,
+    this.trailing,
+    this.backgroundColor,
+  });
   @override
   Widget build(BuildContext context) => Container(
-    color: ClassicTheme.of(context).primary,
+    color: backgroundColor ?? ClassicTheme.of(context).primary,
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
     child: Row(
       children: [

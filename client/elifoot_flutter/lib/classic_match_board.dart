@@ -1,4 +1,5 @@
 import 'club_theme.dart';
+import 'classic_live_round.dart';
 import 'match_gate.dart';
 import 'package:flutter/material.dart';
 
@@ -64,6 +65,9 @@ class ClassicMatchBoard extends StatelessWidget {
   final String? selectedMatchId;
   final ValueChanged<Map<String, dynamic>>? onSelected;
   final bool mobile;
+  final bool referenceStyle;
+  final Map<String, Map<String, dynamic>> clubs;
+  final void Function(Map<String, dynamic>, String)? onClubTap;
   final String selectionScope;
   final Widget Function(Map<String, dynamic>)? coachDetails;
   const ClassicMatchBoard({
@@ -75,6 +79,9 @@ class ClassicMatchBoard extends StatelessWidget {
     this.selectedMatchId,
     this.onSelected,
     this.mobile = false,
+    this.referenceStyle = false,
+    this.clubs = const {},
+    this.onClubTap,
     this.selectionScope = '',
     this.coachDetails,
   });
@@ -104,6 +111,17 @@ class ClassicMatchBoard extends StatelessWidget {
         final ai = order.indexOf(a.key), bi = order.indexOf(b.key);
         return (ai < 0 ? 99 : ai).compareTo(bi < 0 ? 99 : bi);
       });
+    if (referenceStyle && onClubTap != null && onSelected != null) {
+      return ClassicReferenceMatchList(
+        groups: entries,
+        clubs: clubs,
+        mobile: mobile,
+        selectedMatchId: selectedMatchId,
+        coachClubId: coachClubId,
+        onSelected: onSelected!,
+        onClubTap: onClubTap!,
+      );
+    }
     if (onSelected != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

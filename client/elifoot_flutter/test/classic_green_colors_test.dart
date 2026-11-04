@@ -284,14 +284,19 @@ void main() {
           ),
         );
         await t.pumpAndSettle();
-        Color block(String side) =>
-            (t
-                        .widget<Container>(
-                          find.byKey(ValueKey('selected-$side-team-colors')),
-                        )
-                        .decoration
-                    as BoxDecoration)
-                .color!;
+        Color block(String side) => width < 1000
+            ? t
+                  .widget<Material>(
+                    find.byKey(ValueKey('classic-team-color-m-$side')),
+                  )
+                  .color!
+            : (t
+                          .widget<Container>(
+                            find.byKey(ValueKey('selected-$side-team-colors')),
+                          )
+                          .decoration
+                      as BoxDecoration)
+                  .color!;
         expect(block('home'), const Color(0xFF006400));
         expect(block('away'), const Color(0xFFFFD700));
         for (final finder in [
@@ -310,21 +315,45 @@ void main() {
         }
         expect(
           t
-              .widget<Text>(find.byKey(const ValueKey('selected-home-name')))
+              .widget<Text>(
+                find.byKey(
+                  ValueKey(
+                    width < 1000
+                        ? 'classic-team-name-m-home'
+                        : 'selected-home-name',
+                  ),
+                ),
+              )
               .style!
               .fontFamily,
           'ClassicCondensed',
         );
         expect(
           t
-              .widget<Text>(find.byKey(const ValueKey('selected-home-name')))
+              .widget<Text>(
+                find.byKey(
+                  ValueKey(
+                    width < 1000
+                        ? 'classic-team-name-m-home'
+                        : 'selected-home-name',
+                  ),
+                ),
+              )
               .style!
               .color,
           Colors.white,
         );
         expect(
           t
-              .widget<Text>(find.byKey(const ValueKey('selected-away-name')))
+              .widget<Text>(
+                find.byKey(
+                  ValueKey(
+                    width < 1000
+                        ? 'classic-team-name-m-away'
+                        : 'selected-away-name',
+                  ),
+                ),
+              )
               .style!
               .color,
           const Color(0xFF000066),

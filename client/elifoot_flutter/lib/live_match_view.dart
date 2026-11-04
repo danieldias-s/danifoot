@@ -4,6 +4,7 @@ import 'club_crest.dart';
 import 'club_theme.dart';
 import 'live_match_data.dart';
 import 'match_gate.dart';
+import 'match_interaction_dialog.dart';
 import 'player_rankings.dart' show formatClassicMoney;
 
 String liveNumber(dynamic value) => value is num
@@ -112,12 +113,14 @@ class SelectedMatchScoreboard extends StatelessWidget {
   final Map<String, dynamic> match;
   final String stage, competition;
   final int round;
+  final ValueChanged<String>? onClubTap;
   const SelectedMatchScoreboard({
     super.key,
     required this.match,
     required this.stage,
     required this.competition,
     required this.round,
+    this.onClubTap,
   });
   @override
   Widget build(BuildContext context) => LayoutBuilder(
@@ -134,38 +137,41 @@ class SelectedMatchScoreboard extends StatelessWidget {
       Widget club(String side) {
         final colors = matchTeamColors(t, livePalette(match, side));
         return Expanded(
-          child: Tooltip(
-            message: '${match['${side}ClubName'] ?? '—'}',
-            child: Container(
-              key: ValueKey('selected-$side-team-colors'),
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: colors.background,
-                borderRadius: BorderRadius.circular(3),
-              ),
-              child: Column(
-                children: [
-                  ClubCrest(
-                    club: '${match['${side}ClubName'] ?? ''}',
-                    palette: livePalette(match, side),
-                    size: small ? 30 : 42,
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    '${match['${side}ClubName'] ?? '—'}',
-                    key: ValueKey('selected-$side-name'),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: t.classicPresentation
-                          ? 'ClassicCondensed'
-                          : 'Roboto',
-                      fontWeight: FontWeight.w900,
-                      color: colors.ink,
-                    ).copyWith(fontSize: small ? 14 : 23),
-                  ),
-                ],
+          child: GestureDetector(
+            onTap: onClubTap == null ? null : () => onClubTap!(side),
+            child: Tooltip(
+              message: '${match['${side}ClubName'] ?? '—'}',
+              child: Container(
+                key: ValueKey('selected-$side-team-colors'),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: colors.background,
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                child: Column(
+                  children: [
+                    ClubCrest(
+                      club: '${match['${side}ClubName'] ?? ''}',
+                      palette: livePalette(match, side),
+                      size: small ? 30 : 42,
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '${match['${side}ClubName'] ?? '—'}',
+                      key: ValueKey('selected-$side-name'),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: t.classicPresentation
+                            ? 'ClassicCondensed'
+                            : 'Roboto',
+                        fontWeight: FontWeight.w900,
+                        color: colors.ink,
+                      ).copyWith(fontSize: small ? 14 : 23),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -695,6 +701,8 @@ class LiveMatchScreen extends StatefulWidget {
 
 class _LiveMatchScreenState extends State<LiveMatchScreen> {
   int? _viewedRound;
+  String? _inspectedMatch;
+  String _inspectedSide = 'home';
   String? _filter;
   int _detailTab = 0;
   double? _returnOffset;
@@ -708,14 +716,148 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
   @override
   void didUpdateWidget(covariant LiveMatchScreen old) {
     super.didUpdateWidget(old);
+    if (widget.snapshot['activePauseWindow'] != null ||
+        widget.snapshot['pendingPenalty'] != null) {
+      _inspectedMatch = null;
+    }
     if (old.snapshot['gameWorldId'] != widget.snapshot['gameWorldId'] ||
         old.snapshot['seasonNumber'] != widget.snapshot['seasonNumber'] ||
         old.snapshot['roundNumber'] != widget.snapshot['roundNumber']) {
+      _inspectedMatch = null;
       _viewedRound = null;
       _filter = null;
       _detailTab = 0;
       _returnOffset = null;
     }
+  }
+
+  void _openLiveClub(Map<String, dynamic> match, String side) {
+    if (match['${side}ClubId'] == widget.coachClubId &&
+        widget.onSubstitute != null) {
+      setState(() {
+        _inspectedMatch = null;
+        widget.selection.select(match);
+      });
+      widget.onSelectionChanged();
+      widget.onSubstitute!();
+      return;
+    }
+    if (match['${side}ClubId'] == widget.coachClubId &&
+        '${widget.snapshot['roundState']}'.startsWith('RUNNING_')) {
+      return;
+    }
+    setState(() {
+      _inspectedMatch = matchIdentity(match);
+      _inspectedSide = side;
+      widget.selection.select(match);
+    });
+    widget.onSelectionChanged();
+  }
+
+  Widget _classicRoundView(
+    BuildContext context,
+    bool desktop,
+    List<Map<String, dynamic>> games,
+    Map<String, dynamic>? selected,
+    String stage,
+    String type,
+    String label,
+    int round,
+    String competition,
+  ) {
+    final inspected = games
+        .where((m) => matchIdentity(m) == _inspectedMatch)
+        .firstOrNull;
+    final minute =
+        (widget.snapshot['currentMinute'] as num?)?.toInt() ??
+        (selected?['minute'] as num?)?.toInt() ??
+        0;
+    final total = widget.snapshot['totalRoundsInSeason'];
+    final status = selected == null
+        ? 'Aguardando partida'
+        : matchStatus(selected, stage);
+    return MatchInteractionOverlay(
+      interaction: inspected == null
+          ? null
+          : LiveTeamInspectionDialog(
+              match: inspected,
+              side: _inspectedSide,
+              minute: minute,
+              onClose: () => setState(() => _inspectedMatch = null),
+            ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (desktop && selected != null)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 3, 6, 4),
+              child: SelectedMatchScoreboard(
+                match: selected,
+                stage: stage,
+                competition: competition,
+                round: round,
+                onClubTap: (side) => _openLiveClub(selected, side),
+              ),
+            ),
+          Container(
+            key: const Key('classic-live-round-status'),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: const Color(0xFFD6D6D6),
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Rodada $round${total == null ? '' : ' / $total'} • $status',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Text(
+                  '$minute′',
+                  key: const Key('classic-round-clock'),
+                  style: const TextStyle(
+                    color: Color(0xFF000080),
+                    fontSize: 23,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                if (widget.onSubstitute != null)
+                  IconButton(
+                    key: const Key('btn-pedir-parada'),
+                    tooltip: 'SUBSTITUIR',
+                    onPressed: widget.onSubstitute,
+                    icon: const Icon(Icons.swap_horiz, color: Colors.black),
+                  ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              key: const Key('live-match-screen'),
+              controller: _scroll,
+              child: ClassicMatchBoard(
+                matches: games,
+                competitionType: type,
+                competitionLabel: label,
+                coachClubId: widget.coachClubId,
+                selectedMatchId: widget.selection.matchId,
+                onSelected: _select,
+                mobile: !desktop,
+                referenceStyle: true,
+                clubs: widget.clubs,
+                onClubTap: _openLiveClub,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void _select(Map<String, dynamic> m) {
@@ -794,6 +936,19 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
       final competition = selected == null
           ? label
           : matchGroup(selected, type, label);
+      if (t.classicPresentation) {
+        return _classicRoundView(
+          context,
+          desktop,
+          games,
+          selected,
+          stage,
+          type,
+          label,
+          round,
+          competition,
+        );
+      }
       Widget myGame() => OutlinedButton.icon(
         key: const Key('my-live-match'),
         onPressed: mine == null
