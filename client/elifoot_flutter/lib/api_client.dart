@@ -1020,7 +1020,10 @@ class ElifootApiClient {
       final wsBase = baseUrl
           .replaceFirst('http://', 'ws://')
           .replaceFirst('https://', 'wss://');
-      _wsChannel = WebSocketChannel.connect(Uri.parse('$wsBase/hubs/gameroom'));
+      final socketUri = Uri.parse('$wsBase/hubs/gameroom');
+      _wsChannel = _http.enabled
+          ? createAccountSocket(socketUri, _http.inner)
+          : WebSocketChannel.connect(socketUri);
       // SignalR JSON v1 handshake
       _wsChannel!.sink.add('{"protocol":"json","version":1}\x1e');
       // Invoke JoinRoom(worldId, coachId)

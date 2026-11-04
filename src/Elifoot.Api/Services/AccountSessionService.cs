@@ -19,12 +19,24 @@ public sealed class AccountSessionService(ElifootDbContext db, IPasswordHasher<A
     {
         var normalized = Normalize(username);
         if (await db.Accounts.AnyAsync(x => x.NormalizedUsername == normalized, ct)) return null;
-        var account = new AccountRecord { Id = Guid.NewGuid(), Username = username.Trim(), NormalizedUsername = normalized,
-            DisplayName = displayName.Trim(), CreatedAtUtc = DateTime.UtcNow };
+        var account = new AccountRecord
+        {
+            Id = Guid.NewGuid(),
+            Username = username.Trim(),
+            NormalizedUsername = normalized,
+            DisplayName = displayName.Trim(),
+            CreatedAtUtc = DateTime.UtcNow
+        };
         account.PasswordHash = hasher.HashPassword(account, password);
         db.Accounts.Add(account);
-        db.AccountCoaches.Add(new() { CoachId = Guid.NewGuid(), AccountId = account.Id, DisplayName = account.DisplayName,
-            IsPrimary = true, CreatedAtUtc = DateTime.UtcNow });
+        db.AccountCoaches.Add(new()
+        {
+            CoachId = Guid.NewGuid(),
+            AccountId = account.Id,
+            DisplayName = account.DisplayName,
+            IsPrimary = true,
+            CreatedAtUtc = DateTime.UtcNow
+        });
         try { await db.SaveChangesAsync(ct); return account; }
         catch (DbUpdateException) { db.ChangeTracker.Clear(); return null; }
     }
@@ -89,8 +101,14 @@ public sealed class AccountSessionService(ElifootDbContext db, IPasswordHasher<A
         if (!exists || await db.AccountCoaches.AnyAsync(x => x.CoachId == coachId, ct))
         { await Audit(account.Id, coachId, "Rejected", "Identidade ausente ou já vinculada.", ct); return null; }
         var token = Token();
-        db.AccountLinkGrants.Add(new() { TokenHash = Hash(token), AccountId = account.Id, CoachId = coachId,
-            ExpiresAtUtc = DateTime.UtcNow.AddMinutes(30), Reason = reason });
+        db.AccountLinkGrants.Add(new()
+        {
+            TokenHash = Hash(token),
+            AccountId = account.Id,
+            CoachId = coachId,
+            ExpiresAtUtc = DateTime.UtcNow.AddMinutes(30),
+            Reason = reason
+        });
         await Audit(account.Id, coachId, "Issued", reason, ct);
         return token;
     }
@@ -106,12 +124,21 @@ public sealed class AccountSessionService(ElifootDbContext db, IPasswordHasher<A
             .ExecuteUpdateAsync(x => x.SetProperty(g => g.ConsumedAtUtc, DateTime.UtcNow), ct);
         if (changed != 1 || await db.AccountCoaches.AnyAsync(x => x.CoachId == grant.CoachId, ct))
         { await transaction.RollbackAsync(ct); await Audit(accountId, grant.CoachId, "Rejected", "Conflito de vínculo.", ct); return false; }
-        db.AccountCoaches.Add(new() { AccountId = accountId, CoachId = grant.CoachId, IsPrimary = false,
-            DisplayName = "Treinador vinculado", CreatedAtUtc = DateTime.UtcNow });
-        try {
+        db.AccountCoaches.Add(new()
+        {
+            AccountId = accountId,
+            CoachId = grant.CoachId,
+            IsPrimary = false,
+            DisplayName = "Treinador vinculado",
+            CreatedAtUtc = DateTime.UtcNow
+        });
+        try
+        {
             await db.SaveChangesAsync(ct); await transaction.CommitAsync(ct);
             await Audit(accountId, grant.CoachId, "Linked", grant.Reason, ct); return true;
-        } catch (DbUpdateException) {
+        }
+        catch (DbUpdateException)
+        {
             await transaction.RollbackAsync(ct); db.ChangeTracker.Clear();
             await Audit(accountId, grant.CoachId, "Rejected", "Conflito de vínculo.", ct); return false;
         }
@@ -119,8 +146,15 @@ public sealed class AccountSessionService(ElifootDbContext db, IPasswordHasher<A
 
     private async Task Audit(Guid account, Guid? coach, string outcome, string reason, CancellationToken ct)
     {
-        db.AccountLinkAudit.Add(new() { Id = Guid.NewGuid(), AccountId = account, CoachId = coach,
-            CreatedAtUtc = DateTime.UtcNow, Outcome = outcome, Reason = reason });
+        db.AccountLinkAudit.Add(new()
+        {
+            Id = Guid.NewGuid(),
+            AccountId = account,
+            CoachId = coach,
+            CreatedAtUtc = DateTime.UtcNow,
+            Outcome = outcome,
+            Reason = reason
+        });
         await db.SaveChangesAsync(ct);
     }
 }

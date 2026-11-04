@@ -39,6 +39,28 @@ Map<String, dynamic> room(String id, {bool mine = false, bool full = false}) =>
     };
 
 void main() {
+  test(
+    'Falha de conexão no login informa indisponibilidade sem expor detalhes técnicos',
+    () async {
+      final api = ElifootApiClient(
+        baseUrl: 'http://localhost',
+        httpClient: MockClient(
+          (_) async => throw http.ClientException('internal transport details'),
+        ),
+      );
+      api.enableAccountSession();
+      await expectLater(
+        api.signInAccount('treinador', 'Senha-local98!'),
+        throwsA(
+          predicate(
+            (e) =>
+                e.toString().contains('Conexão indisponível') &&
+                !e.toString().contains('internal transport'),
+          ),
+        ),
+      );
+    },
+  );
   for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
     testWidgets('Login, início e lobby acessíveis em $width px', (t) async {
       t.view.physicalSize = Size(width, 1000);
@@ -51,7 +73,7 @@ void main() {
       expect(find.text('Entre na sua conta'), findsOneWidget);
       expect(find.byKey(const Key('account-username')), findsOneWidget);
       expect(find.byKey(const Key('account-password')), findsOneWidget);
-      expect(find.text('CRIAR CAMPEONATO →'), findsNothing);
+      expect(find.text('CRIAR CAMPEONATO'), findsNothing);
       expect(find.textContaining('deviceId'), findsNothing);
       expect(find.textContaining('accountId'), findsNothing);
       expect(t.takeException(), isNull);
@@ -91,16 +113,22 @@ void main() {
       await t.tap(find.text('RETOMAR MINHA SESSÃO'));
       await t.pump();
       expect(resumed, 1);
-      await t.ensureVisible(find.text('CRIAR CAMPEONATO →'));
-      await t.tap(find.text('CRIAR CAMPEONATO →'));
+      final createAction = width < 1000
+          ? find.byKey(const ValueKey('account-action-CRIAR CAMPEONATO'))
+          : find.text('CRIAR CAMPEONATO');
+      await t.ensureVisible(createAction);
+      await t.tap(createAction);
       expect(created, 1);
-      await t.ensureVisible(find.text('VER SALAS →'));
-      await t.tap(find.text('VER SALAS →'));
+      final lobbyAction = width < 1000
+          ? find.byKey(const ValueKey('account-action-VER SALAS'))
+          : find.text('VER SALAS');
+      await t.ensureVisible(lobbyAction);
+      await t.tap(lobbyAction);
       await t.pumpAndSettle();
       expect(find.text('Lobby de campeonatos'), findsOneWidget);
       expect(find.text('Campeonato aberto'), findsOneWidget);
-      await t.ensureVisible(find.text('★ MINHAS SALAS'));
-      await t.tap(find.text('★ MINHAS SALAS'));
+      await t.ensureVisible(find.text('MINHAS SALAS'));
+      await t.tap(find.text('MINHAS SALAS'));
       await t.pumpAndSettle();
       expect(find.text('Campeonato aberto'), findsNothing);
       expect(find.text('Campeonato meu'), findsOneWidget);
@@ -110,8 +138,8 @@ void main() {
       await t.pumpAndSettle();
       expect(find.text('Campeonato meu'), findsNothing);
       expect(find.text('Campeonato aberto'), findsOneWidget);
-      await t.ensureVisible(find.text('ENTRAR →'));
-      await t.tap(find.text('ENTRAR →'));
+      await t.ensureVisible(find.text('ENTRAR'));
+      await t.tap(find.text('ENTRAR'));
       expect(entered, 1);
       expect(t.takeException(), isNull);
       await t.pumpWidget(const SizedBox());
@@ -205,7 +233,7 @@ void main() {
       await t.pumpWidget(ElifootClassicApp(apiClient: api));
       await t.pumpAndSettle();
       expect(find.text('Entre na sua conta'), findsOneWidget);
-      expect(find.text('CRIAR CAMPEONATO →'), findsNothing);
+      expect(find.text('CRIAR CAMPEONATO'), findsNothing);
       await t.enterText(find.byKey(const Key('account-username')), 'treinador');
       await t.enterText(
         find.byKey(const Key('account-password')),

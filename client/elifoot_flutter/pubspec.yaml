@@ -65,6 +65,11 @@ flutter:
   assets:
     - assets/images/creator-stadium.png
   fonts:
+    - family: AccountSans
+      fonts:
+        - asset: assets/fonts/account-sans-regular.ttf
+        - asset: assets/fonts/account-sans-bold.ttf
+          weight: 700
     - family: ClassicCondensed
       fonts:
         - asset: assets/fonts/BarlowCondensed-Regular.ttf

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 /// Every game API shares the same cookie transport and antiforgery protection.
-/// Session secrets are never read by Dart or written to browser storage.
+/// Web session secrets remain in HttpOnly cookies; native cookies stay in memory.
 class AccountHttpClient extends http.BaseClient {
   final http.Client inner;
   bool enabled = false;
@@ -10,6 +10,19 @@ class AccountHttpClient extends http.BaseClient {
   AccountHttpClient(this.inner);
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    try {
+      return await _send(request);
+    } on http.ClientException {
+      if (enabled) {
+        throw Exception(
+          'Conexão indisponível. Confira o servidor de teste e tente novamente.',
+        );
+      }
+      rethrow;
+    }
+  }
+
+  Future<http.StreamedResponse> _send(http.BaseRequest request) async {
     if (enabled) {
       request.headers.remove('Authorization');
       request.headers.remove('authorization');

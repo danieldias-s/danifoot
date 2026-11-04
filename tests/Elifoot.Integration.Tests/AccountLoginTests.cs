@@ -24,7 +24,8 @@ public sealed class AccountLoginTests
     {
         await using var fixture = new Fixture();
         Guid id, coach;
-        using (var client = fixture.Server.CreateClient()) {
+        using (var client = fixture.Server.CreateClient())
+        {
             var response = await Send(client, "/api/auth/register", new { username = "Daniel@example.test", displayName = "Daniel", password = Password, accountId = Guid.Empty });
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync(); var account = JsonDocument.Parse(json).RootElement;
@@ -59,6 +60,9 @@ public sealed class AccountLoginTests
         Assert.Equal(HttpStatusCode.NotFound, (await client.PostAsJsonAsync("/api/auth/local-login", new { nickname = "Daniel", deviceId = "old" })).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await client.PostAsJsonAsync("/api/auth/register", new { username = "new", displayName = "Nome", password = Password })).StatusCode);
         var account = await Register(client, "conta", "Treinador Conta");
+        // The existing Flutter creator sends Content-Type on GET with no body/length.
+        using (var noBodyGet = new HttpRequestMessage(HttpMethod.Get, "/api/worlds") { Content = new UnknownLengthJson() })
+            Assert.Equal(HttpStatusCode.OK, (await client.SendAsync(noBodyGet)).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await client.PostAsync("/api/auth/logout", null)).StatusCode);
         using var wrong = fixture.Server.CreateClient();
         var invalid = await Send(wrong, "/api/auth/login", new { username = "conta", password = "errada" });
@@ -108,7 +112,8 @@ public sealed class AccountLoginTests
     {
         await using var fixture = new Fixture();
         Guid world, legacyCoach = Guid.NewGuid(); string legacySave, legacyDevice = "preserve-this-legacy-device";
-        using (var scope = fixture.Server.Services.CreateScope()) {
+        using (var scope = fixture.Server.Services.CreateScope())
+        {
             var game = scope.ServiceProvider.GetRequiredService<MultiplayerRoundOrchestrator>();
             world = (await game.CreateWorldAsync(new CreateWorldRequest("Legado", 1, 128, 199801))).Id;
             var joined = await game.JoinWorldAndAssignClubAsync(world, legacyCoach, "Mesmo Nome", legacyDevice);
@@ -126,14 +131,16 @@ public sealed class AccountLoginTests
         Assert.Equal(HttpStatusCode.Conflict, (await Send(stranger, "/api/accounts/legacy-link", new { code })).StatusCode);
         (await Send(owner, "/api/accounts/legacy-link", new { code })).EnsureSuccessStatusCode();
         Assert.Equal(HttpStatusCode.Conflict, (await Send(owner, "/api/accounts/legacy-link", new { code })).StatusCode);
-        using (var scope = fixture.Server.Services.CreateScope()) {
+        using (var scope = fixture.Server.Services.CreateScope())
+        {
             var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
             Assert.Equal(legacySave, await db.Worlds.Where(x => x.Id == world).Select(x => x.SnapshotJson).SingleAsync());
             Assert.True(await db.AccountLinkAudit.AnyAsync(x => x.Outcome == "Rejected"));
         }
         (await Send(owner, "/api/auth/profile", new { coachId = legacyCoach })).EnsureSuccessStatusCode();
         (await Send(owner, $"/api/worlds/{world}/join?coachId={legacyCoach}")).EnsureSuccessStatusCode();
-        using (var scope = fixture.Server.Services.CreateScope()) {
+        using (var scope = fixture.Server.Services.CreateScope())
+        {
             var saved = await scope.ServiceProvider.GetRequiredService<IWorldRepository>().GetWorldAsync(world);
             Assert.Single(saved!.HumanCoaches); Assert.Equal(legacyDevice, saved.HumanCoaches.Single().DeviceId);
         }
@@ -153,9 +160,11 @@ public sealed class AccountLoginTests
         var world = (await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
         var coach = owner.GetProperty("coachId").GetGuid();
         (await Send(first, $"/api/worlds/{world}/join?coachId={coach}")).EnsureSuccessStatusCode();
-        async Task<HubConnection> Connect(HttpClient client, CookieContainer cookies) {
+        async Task<HubConnection> Connect(HttpClient client, CookieContainer cookies)
+        {
             var csrf = (await client.GetFromJsonAsync<JsonElement>("/api/auth/csrf")).GetProperty("csrfToken").GetString()!;
-            var hub = new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom", options => {
+            var hub = new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom", options =>
+            {
                 options.Transports = HttpTransportType.LongPolling;
                 options.HttpMessageHandlerFactory = _ => fixture.Server.Server.CreateHandler();
                 options.Headers["Cookie"] = cookies.GetCookieHeader(new Uri("http://localhost"));
@@ -194,35 +203,48 @@ public sealed class AccountLoginTests
         Assert.Contains(registered.Headers.GetValues("Set-Cookie"), c => c.StartsWith("lc98.account=") && c.Contains("secure", StringComparison.OrdinalIgnoreCase));
     }
 
-    private static async Task<JsonElement> Register(HttpClient client, string username, string displayName) {
+    private static async Task<JsonElement> Register(HttpClient client, string username, string displayName)
+    {
         var response = await Send(client, "/api/auth/register", new { username, displayName, password = Password }); response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
-    private static async Task<JsonElement> Login(HttpClient client, string username) {
+    private static async Task<JsonElement> Login(HttpClient client, string username)
+    {
         var response = await Send(client, "/api/auth/login", new { username, password = Password }); response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<JsonElement>();
     }
-    internal static async Task<HttpResponseMessage> Send(HttpClient client, string path, object? body = null, HttpMethod? method = null) {
+    internal static async Task<HttpResponseMessage> Send(HttpClient client, string path, object? body = null, HttpMethod? method = null)
+    {
         var token = await client.GetFromJsonAsync<JsonElement>("/api/auth/csrf");
         using var request = new HttpRequestMessage(method ?? HttpMethod.Post, path);
         request.Headers.Add("X-CSRF-TOKEN", token.GetProperty("csrfToken").GetString());
         if (body != null) request.Content = JsonContent.Create(body);
         return await client.SendAsync(request);
     }
-    private sealed class CaptureCookies(CookieContainer cookies) : DelegatingHandler {
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct) {
+    private sealed class CaptureCookies(CookieContainer cookies) : DelegatingHandler
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
             var cookie = cookies.GetCookieHeader(request.RequestUri!); if (cookie.Length > 0) request.Headers.TryAddWithoutValidation("Cookie", cookie);
             var response = await base.SendAsync(request, ct);
             if (response.Headers.TryGetValues("Set-Cookie", out var values)) foreach (var value in values) cookies.SetCookies(request.RequestUri!, value);
             return response;
         }
     }
-    private sealed class Fixture : IAsyncDisposable {
+    private sealed class UnknownLengthJson : HttpContent
+    {
+        public UnknownLengthJson() => Headers.ContentType = new("application/json");
+        protected override Task SerializeToStreamAsync(Stream stream, TransportContext? context) => Task.CompletedTask;
+        protected override bool TryComputeLength(out long length) { length = 0; return false; }
+    }
+    private sealed class Fixture : IAsyncDisposable
+    {
         private readonly string _file = Path.Combine(Path.GetTempPath(), $"elifoot-account-{Guid.NewGuid():N}.db");
         public string AdminToken { get; } = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
         public WebApplicationFactory<Program> Server { get; private set; }
         public Fixture() => Server = Start();
-        private WebApplicationFactory<Program> Start() => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
+        private WebApplicationFactory<Program> Start() => new WebApplicationFactory<Program>().WithWebHostBuilder(b =>
+        {
             b.UseEnvironment("Development"); b.UseSetting("Elifoot:AuthMode", "AccountTest"); b.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
             b.UseSetting("ConnectionStrings:DefaultConnection", $"Data Source={_file};Pooling=False"); b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             b.UseSetting("Elifoot:DisableBackgroundClock", "true"); b.UseSetting("Catalog013A:Enabled", "false"); b.UseSetting("Catalog016A:Enabled", "false"); b.UseSetting("Catalog016B:Enabled", "false");

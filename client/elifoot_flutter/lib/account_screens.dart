@@ -12,7 +12,7 @@ abstract final class AccountColors {
       muted = Color(0xFF466C5A);
   static ThemeData theme() => ThemeData(
     useMaterial3: false,
-    fontFamily: 'ClassicCondensed',
+    fontFamily: 'AccountSans',
     scaffoldBackgroundColor: tint,
     colorScheme: const ColorScheme.light(
       primary: action,
@@ -22,7 +22,7 @@ abstract final class AccountColors {
       onPrimary: Colors.white,
     ),
     textTheme: ThemeData.light().textTheme.apply(
-      fontFamily: 'ClassicCondensed',
+      fontFamily: 'AccountSans',
       bodyColor: ink,
       displayColor: ink,
     ),
@@ -51,7 +51,7 @@ abstract final class AccountColors {
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         textStyle: const TextStyle(
-          fontFamily: 'ClassicCondensed',
+          fontFamily: 'AccountSans',
           fontWeight: FontWeight.bold,
           fontSize: 17,
         ),
@@ -105,6 +105,35 @@ class AccountBrand extends StatelessWidget {
           ),
         ),
       ),
+    ],
+  );
+}
+
+class AccountActionLabel extends StatelessWidget {
+  final String label;
+  final bool arrow, star;
+  final TextStyle? style;
+  const AccountActionLabel(
+    this.label, {
+    super.key,
+    this.arrow = false,
+    this.star = false,
+    this.style,
+  });
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      if (star) ...[
+        Icon(Icons.star, size: style?.fontSize ?? 18, color: style?.color),
+        const SizedBox(width: 5),
+      ],
+      Flexible(child: Text(label, style: style)),
+      if (arrow) ...[
+        const SizedBox(width: 6),
+        const Icon(Icons.arrow_forward, size: 18),
+      ],
     ],
   );
 }
@@ -376,12 +405,13 @@ class _AccountLoginScreenState extends State<AccountLoginScreen> {
                                     ElevatedButton(
                                       key: const Key('account-submit'),
                                       onPressed: _busy ? null : _submit,
-                                      child: Text(
+                                      child: AccountActionLabel(
                                         _busy
                                             ? 'AGUARDE...'
                                             : _register
                                             ? 'CRIAR CONTA DE TESTE'
-                                            : 'ENTRAR →',
+                                            : 'ENTRAR',
+                                        arrow: !_busy && !_register,
                                       ),
                                     ),
                                     const SizedBox(height: 10),
@@ -542,19 +572,20 @@ class _AccountPortalState extends State<AccountPortal> {
                           color: Colors.white,
                         ),
                         const SizedBox(width: 8),
-                        if (box.maxWidth >= 430)
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 170),
-                            child: Text(
-                              '${widget.account['displayName']}',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: mobile ? 65 : 170,
+                          ),
+                          child: Text(
+                            '${widget.account['displayName']}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
+                        ),
                         const Icon(Icons.expand_more, color: Colors.white),
                       ],
                     ),
@@ -563,6 +594,7 @@ class _AccountPortalState extends State<AccountPortal> {
               ],
             ),
             body: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 if (!mobile)
                   Container(
@@ -693,7 +725,7 @@ class _AccountPortalState extends State<AccountPortal> {
                                   children: [
                                     for (final option in [
                                       ('all', 'TODAS AS SALAS'),
-                                      ('mine', '★ MINHAS SALAS'),
+                                      ('mine', 'MINHAS SALAS'),
                                       ('vacancies', 'COM VAGAS'),
                                     ])
                                       OutlinedButton(
@@ -707,7 +739,10 @@ class _AccountPortalState extends State<AccountPortal> {
                                               ? Colors.white
                                               : AccountColors.dark,
                                         ),
-                                        child: Text(option.$2),
+                                        child: AccountActionLabel(
+                                          option.$2,
+                                          star: option.$1 == 'mine',
+                                        ),
                                       ),
                                     OutlinedButton(
                                       onPressed: widget.busy
@@ -760,8 +795,9 @@ class _AccountPortalState extends State<AccountPortal> {
                                   alignment: WrapAlignment.spaceBetween,
                                   crossAxisAlignment: WrapCrossAlignment.center,
                                   children: [
-                                    const Text(
-                                      '★ Meus campeonatos',
+                                    const AccountActionLabel(
+                                      'Meus campeonatos',
+                                      star: true,
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 23,
@@ -769,7 +805,10 @@ class _AccountPortalState extends State<AccountPortal> {
                                     ),
                                     TextButton(
                                       onPressed: widget.openLobby,
-                                      child: const Text('Ver todas as salas →'),
+                                      child: const AccountActionLabel(
+                                        'Ver todas as salas',
+                                        arrow: true,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -867,7 +906,7 @@ class _AccountPortalState extends State<AccountPortal> {
       'Criar campeonato',
       'Abra o criador de mundos atual, escolha os países e as regras.',
       Icons.emoji_events_outlined,
-      'CRIAR CAMPEONATO →',
+      'CRIAR CAMPEONATO',
       widget.create,
     ),
     _action(
@@ -875,7 +914,7 @@ class _AccountPortalState extends State<AccountPortal> {
       'Entrar no lobby',
       'Veja as salas existentes e retome seu time ou entre como treinador.',
       Icons.groups_outlined,
-      'VER SALAS →',
+      'VER SALAS',
       widget.openLobby,
     ),
     _action(
@@ -894,79 +933,167 @@ class _AccountPortalState extends State<AccountPortal> {
     IconData icon,
     String label,
     VoidCallback? action,
-  ) => Container(
-    constraints: mobile ? null : const BoxConstraints(minHeight: 250),
-    padding: const EdgeInsets.all(22),
-    decoration: BoxDecoration(
-      color: action == null ? const Color(0xFFFFFAE9) : const Color(0xFFFAFFFC),
-      borderRadius: BorderRadius.circular(16),
-      border: Border.all(
-        color: action == null ? const Color(0xFFEAD99F) : AccountColors.border,
-      ),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: action == null
-                    ? const Color(0xFFFFEBAB)
-                    : AccountColors.tint,
-                borderRadius: BorderRadius.circular(12),
+  ) {
+    if (mobile) {
+      return Material(
+        color: action == null
+            ? const Color(0xFFFFFAE9)
+            : const Color(0xFFFAFFFC),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(
+            color: action == null
+                ? const Color(0xFFEAD99F)
+                : AccountColors.border,
+          ),
+        ),
+        child: Semantics(
+          button: action != null,
+          child: InkWell(
+            key: ValueKey('account-action-$label'),
+            borderRadius: BorderRadius.circular(16),
+            onTap: widget.busy ? null : action,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: action == null
+                          ? const Color(0xFFFFEBAB)
+                          : AccountColors.tint,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(icon, color: AccountColors.dark, size: 26),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          action == null ? 'Pagamento' : title,
+                          style: const TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        if (action == null)
+                          const Padding(
+                            padding: EdgeInsets.only(top: 3),
+                            child: Text(
+                              'EM BREVE',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xFF705A19),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        const SizedBox(height: 5),
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            height: 1.3,
+                            color: AccountColors.muted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (action != null)
+                    const Icon(
+                      Icons.chevron_right,
+                      color: AccountColors.action,
+                    ),
+                ],
               ),
-              child: Icon(icon, color: AccountColors.dark, size: 28),
             ),
-            if (mobile) ...[
-              const SizedBox(width: 12),
-              Expanded(
+          ),
+        ),
+      );
+    }
+    return Container(
+      constraints: mobile ? null : const BoxConstraints(minHeight: 250),
+      padding: const EdgeInsets.all(22),
+      decoration: BoxDecoration(
+        color: action == null
+            ? const Color(0xFFFFFAE9)
+            : const Color(0xFFFAFFFC),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: action == null
+              ? const Color(0xFFEAD99F)
+              : AccountColors.border,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: action == null
+                      ? const Color(0xFFFFEBAB)
+                      : AccountColors.tint,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: AccountColors.dark, size: 28),
+              ),
+              if (mobile) ...[
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+          if (!mobile) ...[
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+            ),
+          ],
+          const SizedBox(height: 10),
+          Text(
+            description,
+            style: const TextStyle(color: AccountColors.muted, fontSize: 16),
+          ),
+          const SizedBox(height: 18),
+          if (action != null)
+            ElevatedButton(
+              onPressed: widget.busy ? null : action,
+              child: AccountActionLabel(label, arrow: true),
+            )
+          else
+            const SizedBox(
+              height: 48,
+              child: Center(
                 child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 22,
+                  'EM BREVE',
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    color: Color(0xFF776323),
                   ),
                 ),
               ),
-            ],
-          ],
-        ),
-        if (!mobile) ...[
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-          ),
-        ],
-        const SizedBox(height: 10),
-        Text(
-          description,
-          style: const TextStyle(color: AccountColors.muted, fontSize: 16),
-        ),
-        const SizedBox(height: 18),
-        if (action != null)
-          ElevatedButton(
-            onPressed: widget.busy ? null : action,
-            child: Text(label),
-          )
-        else
-          const SizedBox(
-            height: 48,
-            child: Center(
-              child: Text(
-                'EM BREVE',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF776323),
-                ),
-              ),
             ),
-          ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
+
   List<Widget> _rooms(bool mobile, {required bool mineOnly}) {
     final rooms =
         widget.worlds
@@ -1027,8 +1154,9 @@ class _AccountPortalState extends State<AccountPortal> {
                 ),
               ),
               if (mine)
-                const Text(
-                  '★ VOCÊ É TREINADOR',
+                const AccountActionLabel(
+                  'VOCÊ É TREINADOR',
+                  star: true,
                   style: TextStyle(
                     color: AccountColors.action,
                     fontWeight: FontWeight.bold,
@@ -1055,12 +1183,13 @@ class _AccountPortalState extends State<AccountPortal> {
         onPressed: widget.busy || (!mine && full)
             ? null
             : () => mine ? widget.resume(room) : widget.enter(room),
-        child: Text(
+        child: AccountActionLabel(
           mine
               ? 'RETOMAR MINHA SESSÃO'
               : full
               ? 'SALA LOTADA'
-              : 'ENTRAR →',
+              : 'ENTRAR',
+          arrow: !mine && !full,
         ),
       );
       return Container(

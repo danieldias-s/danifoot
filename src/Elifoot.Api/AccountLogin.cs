@@ -44,12 +44,14 @@ public static class AccountLogin
         builder.Services.AddSingleton<AccountConnections>();
         builder.Services.AddDataProtection().SetApplicationName("LigaClassica98.AccountTest");
         builder.Services.AddAntiforgery(o => { o.HeaderName = "X-CSRF-TOKEN"; o.Cookie.Name = "lc98.csrf"; o.Cookie.HttpOnly = true; o.Cookie.SameSite = SameSiteMode.Strict; o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; });
-        builder.Services.AddAuthentication(Scheme).AddCookie(Scheme, o => {
+        builder.Services.AddAuthentication(Scheme).AddCookie(Scheme, o =>
+        {
             o.Cookie.Name = "lc98.account"; o.Cookie.HttpOnly = true; o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             o.Cookie.SameSite = SameSiteMode.Strict; o.ExpireTimeSpan = TimeSpan.FromHours(12); o.SlidingExpiration = false;
             o.Events.OnRedirectToLogin = c => { c.Response.StatusCode = 401; return Task.CompletedTask; };
             o.Events.OnRedirectToAccessDenied = c => { c.Response.StatusCode = 403; return Task.CompletedTask; };
-            o.Events.OnValidatePrincipal = async c => {
+            o.Events.OnValidatePrincipal = async c =>
+            {
                 var service = c.HttpContext.RequestServices.GetRequiredService<AccountSessionService>();
                 var token = c.Principal?.FindFirstValue("sid");
                 var session = token == null ? null : await service.Session(token, c.HttpContext.RequestAborted);
@@ -60,10 +62,16 @@ public static class AccountLogin
             };
         });
         builder.Services.AddAuthorization();
-        builder.Services.AddRateLimiter(o => {
+        builder.Services.AddRateLimiter(o =>
+        {
             o.RejectionStatusCode = 429;
-            o.AddPolicy("account-auth", c => RateLimitPartition.GetFixedWindowLimiter(c.Connection.RemoteIpAddress?.ToString() ?? "local", _ => new FixedWindowRateLimiterOptions {
-                PermitLimit = 20, Window = TimeSpan.FromMinutes(5), QueueLimit = 0, AutoReplenishment = true }));
+            o.AddPolicy("account-auth", c => RateLimitPartition.GetFixedWindowLimiter(c.Connection.RemoteIpAddress?.ToString() ?? "local", _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 20,
+                Window = TimeSpan.FromMinutes(5),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
         });
     }
 
@@ -71,7 +79,8 @@ public static class AccountLogin
     {
         if (!Enabled(app.Configuration)) return;
         app.UseAuthentication(); app.UseAuthorization(); app.UseRateLimiter();
-        app.Use(async (http, next) => {
+        app.Use(async (http, next) =>
+        {
             var path = http.Request.Path.Value ?? "";
             if (!path.StartsWith("/api/") && !path.StartsWith("/hubs/")) { await next(); return; }
             http.Response.Headers.CacheControl = "no-store";
@@ -81,11 +90,13 @@ public static class AccountLogin
             if (path == "/api/auth/local-login") { http.Response.StatusCode = 404; return; }
             var anonymous = path is "/api/health" or "/api/auth/csrf" or "/api/auth/login" or "/api/auth/register";
             if (!anonymous && http.User.Identity?.IsAuthenticated != true) { http.Response.StatusCode = 401; return; }
-            if (!HttpMethods.IsGet(http.Request.Method) && !HttpMethods.IsHead(http.Request.Method) && !HttpMethods.IsOptions(http.Request.Method)) {
+            if (!HttpMethods.IsGet(http.Request.Method) && !HttpMethods.IsHead(http.Request.Method) && !HttpMethods.IsOptions(http.Request.Method))
+            {
                 try { await http.RequestServices.GetRequiredService<IAntiforgery>().ValidateRequestAsync(http); }
                 catch (AntiforgeryValidationException) { http.Response.StatusCode = 400; await http.Response.WriteAsJsonAsync(new { error = "Sessão de formulário expirada. Atualize a página.", code = "CSRF_INVALID" }); return; }
             }
-            if (!anonymous && !path.StartsWith("/api/auth/") && !path.StartsWith("/api/accounts/")) {
+            if (!anonymous && !path.StartsWith("/api/auth/") && !path.StartsWith("/api/accounts/"))
+            {
                 if (!await AuthorizeRequest(http)) { http.Response.StatusCode = 403; await http.Response.WriteAsJsonAsync(new { error = "Esta conta não pode controlar esse treinador ou recurso." }); return; }
             }
             await next();
@@ -99,21 +110,28 @@ public static class AccountLogin
         var requestedActors = new List<Guid>();
         foreach (var pair in http.Request.Query.Where(x => x.Key.Equals("coachId", StringComparison.OrdinalIgnoreCase)))
             foreach (var value in pair.Value) { if (!Guid.TryParse(value, out var id)) return false; requestedActors.Add(id); }
-        if (http.Request.RouteValues.TryGetValue("coachId", out var routeCoach)) {
+        if (http.Request.RouteValues.TryGetValue("coachId", out var routeCoach))
+        {
             if (!Guid.TryParse(routeCoach?.ToString(), out var id)) return false; requestedActors.Add(id);
         }
         if (http.Request.Query.TryGetValue("accountId", out var suppliedAccount) && suppliedAccount.ToString() != account.ToString()) return false;
-        if (http.Request.HasJsonContentType() && http.Request.ContentLength != 0) {
+        if (!HttpMethods.IsGet(http.Request.Method) && !HttpMethods.IsHead(http.Request.Method) && http.Request.HasJsonContentType() && http.Request.ContentLength != 0)
+        {
             http.Request.EnableBuffering();
-            try {
+            try
+            {
                 using var json = await JsonDocument.ParseAsync(http.Request.Body, cancellationToken: ct);
-                if (json.RootElement.ValueKind == JsonValueKind.Object) foreach (var field in json.RootElement.EnumerateObject()) {
+                if (json.RootElement.ValueKind == JsonValueKind.Object) foreach (var field in json.RootElement.EnumerateObject())
+                {
                     if (field.Name.Equals("accountId", StringComparison.OrdinalIgnoreCase) && field.Value.GetString() != account.ToString()) return false;
-                    if (field.Name.Equals("coachId", StringComparison.OrdinalIgnoreCase) || field.Name.Equals("hostCoachId", StringComparison.OrdinalIgnoreCase)) {
+                    if (field.Name.Equals("coachId", StringComparison.OrdinalIgnoreCase) || field.Name.Equals("hostCoachId", StringComparison.OrdinalIgnoreCase))
+                    {
                         if (!Guid.TryParse(field.Value.ToString(), out var id)) return false; requestedActors.Add(id);
                     }
                 }
-            } catch (JsonException) { return false; } finally { http.Request.Body.Position = 0; }
+            }
+            catch (JsonException) { return false; }
+            finally { http.Request.Body.Position = 0; }
         }
         foreach (var id in requestedActors) if (!await service.Owns(account, id, ct)) return false;
         if (requestedActors.Count > 0) actor = requestedActors[0];
@@ -125,7 +143,8 @@ public static class AccountLogin
         query["nickname"] = (await service.Account(account, ct)).DisplayName;
         http.Request.QueryString = QueryString.Create(query.SelectMany(x => x.Value.Select(v => new KeyValuePair<string, string?>(x.Key, v))));
         if (path.EndsWith("/tick", StringComparison.Ordinal)) return false; // Clock is driven by the existing server worker.
-        if (http.Request.RouteValues.TryGetValue("worldId", out var worldRoute) && Guid.TryParse(worldRoute?.ToString(), out var worldId)) {
+        if (http.Request.RouteValues.TryGetValue("worldId", out var worldRoute) && Guid.TryParse(worldRoute?.ToString(), out var worldId))
+        {
             var repo = http.RequestServices.GetRequiredService<IWorldRepository>();
             var world = await repo.GetWorldAsync(worldId, ct);
             if (world == null) return true;
@@ -144,34 +163,40 @@ public static class AccountLogin
     {
         if (!Enabled(app.Configuration)) return;
         app.MapGet("/api/auth/csrf", (HttpContext http, IAntiforgery antiforgery) => Results.Ok(new { csrfToken = antiforgery.GetAndStoreTokens(http).RequestToken }));
-        app.MapPost("/api/auth/register", async (RegisterAccount request, HttpContext http, AccountSessionService service, CancellationToken ct) => {
+        app.MapPost("/api/auth/register", async (RegisterAccount request, HttpContext http, AccountSessionService service, CancellationToken ct) =>
+        {
             if (!ValidUsername(request.Username) || string.IsNullOrWhiteSpace(request.DisplayName) || request.DisplayName.Trim().Length is < 2 or > 60 || request.Password == null || request.Password.Length is < 10 or > 128)
                 return Results.BadRequest(new { error = "Informe usuário de 3 a 80 caracteres, nome de 2 a 60 e senha de 10 a 128 caracteres." });
             var account = await service.Register(request.Username, request.DisplayName, request.Password, ct);
             if (account == null) return Results.Conflict(new { error = "Usuário indisponível. Escolha outro." });
             return await SignIn(http, service, account, ct);
         }).RequireRateLimiting("account-auth");
-        app.MapPost("/api/auth/login", async (LoginAccount request, HttpContext http, AccountSessionService service, CancellationToken ct) => {
+        app.MapPost("/api/auth/login", async (LoginAccount request, HttpContext http, AccountSessionService service, CancellationToken ct) =>
+        {
             if (!ValidUsername(request.Username) || request.Password == null || request.Password.Length is < 1 or > 128) return InvalidLogin();
             var account = await service.Login(request.Username, request.Password, ct);
             return account == null ? InvalidLogin() : await SignIn(http, service, account, ct);
         }).RequireRateLimiting("account-auth");
         app.MapGet("/api/auth/session", async (HttpContext http, AccountSessionService service, CancellationToken ct) => await View(http, service, ct));
-        app.MapPost("/api/auth/logout", async (HttpContext http, AccountSessionService service, AccountConnections connections, CancellationToken ct) => {
+        app.MapPost("/api/auth/logout", async (HttpContext http, AccountSessionService service, AccountConnections connections, CancellationToken ct) =>
+        {
             var token = SessionToken(http); await service.Revoke(token, ct); connections.Revoke(AccountSessionService.Hash(token));
             await http.SignOutAsync(Scheme); return Results.Ok(new { success = true });
         });
-        app.MapPost("/api/auth/profile", async (SelectAccountProfile request, HttpContext http, AccountSessionService service, CancellationToken ct) => {
+        app.MapPost("/api/auth/profile", async (SelectAccountProfile request, HttpContext http, AccountSessionService service, CancellationToken ct) =>
+        {
             if (!await service.SelectProfile(SessionToken(http), request.CoachId, ct)) return Results.StatusCode(403);
             ((ClaimsIdentity)http.User.Identity!).RemoveClaim(http.User.FindFirst("coach")!);
             ((ClaimsIdentity)http.User.Identity!).AddClaim(new("coach", request.CoachId.ToString()));
             return await View(http, service, ct);
         });
-        app.MapPost("/api/accounts/legacy-link", async (ConsumeLegacyLink request, HttpContext http, AccountSessionService service, CancellationToken ct) => {
+        app.MapPost("/api/accounts/legacy-link", async (ConsumeLegacyLink request, HttpContext http, AccountSessionService service, CancellationToken ct) =>
+        {
             if (request.Code?.Length != 64 || !await service.ConsumeGrant(AccountId(http), request.Code, ct)) return Results.Conflict(new { error = "Código de vínculo inválido, expirado ou em conflito. Nenhuma vaga foi transferida." });
             return await View(http, service, ct);
         }).RequireRateLimiting("account-auth");
-        app.MapPost("/api/accounts/legacy-link-grants", async (IssueLegacyLink request, HttpContext http, AccountSessionService service, IWorldRepository worlds, CancellationToken ct) => {
+        app.MapPost("/api/accounts/legacy-link-grants", async (IssueLegacyLink request, HttpContext http, AccountSessionService service, IWorldRepository worlds, CancellationToken ct) =>
+        {
             var configured = app.Configuration["Accounts:MigrationAdminToken"];
             var supplied = http.Request.Headers["X-Account-Migration-Token"].ToString();
             if (string.IsNullOrWhiteSpace(configured) || !CryptographicOperations.FixedTimeEquals(SHA256.HashData(Encoding.UTF8.GetBytes(configured)), SHA256.HashData(Encoding.UTF8.GetBytes(supplied)))) return Results.StatusCode(403);
@@ -183,17 +208,26 @@ public static class AccountLogin
 
     private static bool ValidUsername(string? username) => username != null && username.Trim().Length is >= 3 and <= 80 && Regex.IsMatch(username.Trim(), @"\A[a-zA-Z0-9._@+\-]+\z");
     private static IResult InvalidLogin() => Results.Json(new { error = "Credenciais inválidas ou acesso temporariamente indisponível." }, statusCode: 401);
-    private static async Task<IResult> SignIn(HttpContext http, AccountSessionService service, AccountRecord account, CancellationToken ct) {
+    private static async Task<IResult> SignIn(HttpContext http, AccountSessionService service, AccountRecord account, CancellationToken ct)
+    {
         var (token, expires) = await service.CreateSession(account, ct);
         var profile = (await service.Profiles(account.Id, ct)).Single(x => x.IsPrimary);
         var principal = new ClaimsPrincipal(new ClaimsIdentity([new(ClaimTypes.NameIdentifier, account.Id.ToString()), new(ClaimTypes.Name, account.DisplayName), new("coach", profile.CoachId.ToString()), new("sid", token)], Scheme));
         await http.SignInAsync(Scheme, principal, new AuthenticationProperties { IsPersistent = true, ExpiresUtc = expires }); http.User = principal;
         return await View(http, service, ct);
     }
-    private static async Task<IResult> View(HttpContext http, AccountSessionService service, CancellationToken ct) {
+    private static async Task<IResult> View(HttpContext http, AccountSessionService service, CancellationToken ct)
+    {
         var account = await service.Account(AccountId(http), ct); var profiles = await service.Profiles(account.Id, ct);
-        return Results.Ok(new { accountId = account.Id, username = account.Username, displayName = account.DisplayName, coachId = CoachId(http),
-            profiles = profiles.Select(p => new { p.CoachId, p.DisplayName, p.IsPrimary }), authMode = Scheme });
+        return Results.Ok(new
+        {
+            accountId = account.Id,
+            username = account.Username,
+            displayName = account.DisplayName,
+            coachId = CoachId(http),
+            profiles = profiles.Select(p => new { p.CoachId, p.DisplayName, p.IsPrimary }),
+            authMode = Scheme
+        });
     }
     public sealed record RegisterAccount(string Username, string DisplayName, string Password);
     public sealed record LoginAccount(string Username, string Password);

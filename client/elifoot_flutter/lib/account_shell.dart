@@ -380,9 +380,21 @@ extension _AccountShell on _ElifootShellScreenState {
     notice: _statusBanner,
     appearancePicker: widget.presentation == null
         ? const SizedBox.shrink()
-        : PresentationVersionSelector(
-            api: widget.apiClient,
-            controller: widget.presentation!,
+        : ListenableBuilder(
+            listenable: widget.presentation!,
+            builder: (context, _) => ExpansionTile(
+              tilePadding: EdgeInsets.zero,
+              title: Text(
+                'Aparência: ${widget.presentation!.version.label}',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              children: [
+                PresentationVersionSelector(
+                  api: widget.apiClient,
+                  controller: widget.presentation!,
+                ),
+              ],
+            ),
           ),
     home: () => setState(() => _accountLobby = false),
     openLobby: () {
