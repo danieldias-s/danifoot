@@ -2,11 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'visual_components.dart';
+import 'presentation_version.dart';
+import 'presentation_widgets.dart';
 
 class WorldInitialLobby016B extends StatefulWidget {
   final ElifootApiClient api;
   final String worldId, coachId;
   final Future<void> Function() onStarted, onLeave;
+  final PresentationController? presentation;
   const WorldInitialLobby016B({
     super.key,
     required this.api,
@@ -14,6 +17,7 @@ class WorldInitialLobby016B extends StatefulWidget {
     required this.coachId,
     required this.onStarted,
     required this.onLeave,
+    this.presentation,
   });
   @override
   State<WorldInitialLobby016B> createState() => _WorldInitialLobby016BState();
@@ -109,9 +113,9 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
   }
 
   static String choiceName(dynamic x) => switch (x) {
-    'MANUAL' => 'Assumir clube',
-    'FOURTH_DIVISION_DRAW' => 'Sorteio da 4ª divisão',
-    'UNEMPLOYED' => 'Desempregado',
+    'MANUAL' => 'ASSUMIR CLUBE',
+    'FOURTH_DIVISION_DRAW' => 'SORTEAR CLUBE DA 4ª DIVISÃO',
+    'UNEMPLOYED' => 'COMEÇAR DESEMPREGADO',
     _ => 'Opção pendente',
   };
   @override
@@ -201,6 +205,13 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        if (widget.presentation != null) ...[
+                          PresentationVersionSelector(
+                            api: widget.api,
+                            controller: widget.presentation!,
+                          ),
+                          const Divider(),
+                        ],
                         DropdownButtonFormField<String>(
                           key: const Key('initial-career-choice'),
                           initialValue: _choice,
@@ -211,8 +222,8 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
                           items: [
                             for (final value in [
                               'MANUAL',
-                              'UNEMPLOYED',
                               'FOURTH_DIVISION_DRAW',
+                              'UNEMPLOYED',
                             ])
                               DropdownMenuItem(
                                 value: value,

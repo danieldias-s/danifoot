@@ -5,6 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// Fake API client for comprehensive Task 011 gameplay UI & functional validation.
 class FakeGameplay011ApiClient extends ElifootApiClient {
+  final profileVersions = <String, String>{};
+  @override
+  Future<String> profileAppearance(String owner, {String? version}) async {
+    if (version != null) profileVersions[owner] = version;
+    return profileVersions[owner] ?? 'CURRENT';
+  }
+
   FakeGameplay011ApiClient() : super(baseUrl: 'http://localhost:5000');
 
   String currentRoundState = 'PREPARING';

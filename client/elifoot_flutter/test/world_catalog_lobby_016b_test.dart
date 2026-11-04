@@ -261,7 +261,7 @@ void main() {
       await t.pumpAndSettle();
       await t.tap(find.byKey(const Key('initial-career-choice')));
       await t.pumpAndSettle();
-      await t.tap(find.text('Assumir clube').last);
+      await t.tap(find.text('ASSUMIR CLUBE').last);
       await t.pumpAndSettle();
       expect(find.text('Fixture distrital proibido'), findsNothing);
       final selector = find.byWidgetPredicate(

@@ -33,6 +33,8 @@ import 'player_rankings.dart';
 import 'session_store.dart';
 import 'lobby_room_status.dart';
 import 'local_trainer_panel.dart';
+import 'presentation_version.dart';
+import 'presentation_widgets.dart';
 
 part 'shell_actions.dart';
 
@@ -80,6 +82,7 @@ class ElifootClassicApp extends StatefulWidget {
 
 class _ElifootClassicAppState extends State<ElifootClassicApp> {
   final appearance = ClubThemeController();
+  final presentation = PresentationController();
   late final api = widget.apiClient ?? ElifootApiClient();
   final navigation = MatchNavigationController();
   late final router = MatchRouterDelegate(
@@ -87,6 +90,7 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
     ElifootShellScreen(
       apiClient: api,
       appearance: appearance,
+      presentation: presentation,
       navigation: navigation,
     ),
   );
@@ -95,18 +99,24 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
     router.dispose();
     navigation.dispose();
     appearance.dispose();
+    presentation.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => ListenableBuilder(
-    listenable: appearance,
-    builder: (context, _) => MaterialApp.router(
-      title: 'Liga Clássica 98 — 015B',
-      debugShowCheckedModeBanner: false,
-      theme: appearance.theme.material(),
-      routerDelegate: router,
-      routeInformationParser: const MatchRouteParser(),
+  Widget build(BuildContext context) => PresentationScope(
+    controller: presentation,
+    child: ListenableBuilder(
+      listenable: appearance,
+      builder: (context, _) => MaterialApp.router(
+        title: 'Liga Clássica 98 — 015B',
+        debugShowCheckedModeBanner: false,
+        theme: appearance.theme.material(),
+        routerDelegate: router,
+        routeInformationParser: const MatchRouteParser(),
+        builder: (_, child) =>
+            PresentationHost(child: child ?? const SizedBox.shrink()),
+      ),
     ),
   );
 }
@@ -114,11 +124,13 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
 class ElifootShellScreen extends StatefulWidget {
   final ElifootApiClient apiClient;
   final ClubThemeController? appearance;
+  final PresentationController? presentation;
   final MatchNavigationController? navigation;
   const ElifootShellScreen({
     super.key,
     required this.apiClient,
     this.appearance,
+    this.presentation,
     this.navigation,
   });
 
@@ -403,6 +415,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _authWarning = auth['authModeWarning']?.toString();
       });
       await _saveSession();
+      if (_coachId != null) {
+        await widget.presentation?.activate(widget.apiClient, _coachId!);
+      }
       final worlds = await widget.apiClient.listWorlds();
       if (mounted) setState(() => _worlds = worlds);
     } catch (e) {
@@ -460,6 +475,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _snapshot = _acceptSnapshot(snap);
       });
       widget.apiClient.connectRealtimeRoom(worldId, _coachId!);
+      await widget.presentation?.activate(widget.apiClient, _coachId!);
       await _saveSession();
       await _refreshClubAndSecondaryData();
     } catch (e) {
@@ -743,7 +759,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     if (_coachId == null || _worldId == null) {
-      return _buildLobbyAndHomeScreen();
+      return PresentationSurface(
+        screen: PresentationScreen.lobby,
+        current: _buildLobbyAndHomeScreen(),
+      );
     }
 
     if (_snapshot?['hasInitialLobby'] == true &&
@@ -752,6 +771,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         api: widget.apiClient,
         worldId: _worldId!,
         coachId: _coachId!,
+        presentation: widget.presentation,
         onLeave: () async {
           widget.apiClient.disconnectRealtime();
           setState(() {
@@ -1114,6 +1134,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     ],
                   ),
                   const SizedBox(height: 8),
+                  if (widget.presentation != null)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: PresentationVersionSelector(
+                        api: widget.apiClient,
+                        controller: widget.presentation!,
+                      ),
+                    ),
                   if (_worlds.isEmpty)
                     const Padding(
                       padding: EdgeInsets.all(24),
@@ -1176,20 +1204,26 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                               child: Text(
                                 w['reconnectCoachId'] != null
                                     ? 'RETOMAR MINHA SESSÃO'
+                                    : w['hasInitialLobby'] == true &&
+                                          w['lobbyStarted'] != true
+                                    ? 'ENTRAR NA SALA'
                                     : 'ENTRAR COM CLUBE',
                               ),
                             ),
-                            OutlinedButton(
-                              onPressed:
-                                  _isLoading ||
-                                      _authenticatedDeviceId != _deviceId.trim()
-                                  ? null
-                                  : () => _joinSelectedWorld(
-                                      wid,
-                                      joinUnemployed: true,
-                                    ),
-                              child: const Text('ENTRAR DESEMPREGADO'),
-                            ),
+                            if (w['hasInitialLobby'] != true ||
+                                w['lobbyStarted'] == true)
+                              OutlinedButton(
+                                onPressed:
+                                    _isLoading ||
+                                        _authenticatedDeviceId !=
+                                            _deviceId.trim()
+                                    ? null
+                                    : () => _joinSelectedWorld(
+                                        wid,
+                                        joinUnemployed: true,
+                                      ),
+                                child: const Text('ENTRAR DESEMPREGADO'),
+                              ),
                           ],
                         ),
                       );
@@ -1815,10 +1849,33 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Widget _buildActiveScreenBody() {
+    return PresentationSurface(
+      screen: _matchLocked || _showMatchView
+          ? PresentationScreen.match
+          : _appearanceOpen
+          ? PresentationScreen.settings
+          : switch (_activeTabIndex) {
+              0 =>
+                _mobileTacticsView
+                    ? PresentationScreen.tactics
+                    : PresentationScreen.squad,
+              2 => PresentationScreen.market,
+              1 => PresentationScreen.divisions,
+              3 => PresentationScreen.finances,
+              5 => PresentationScreen.calendar,
+              _ => PresentationScreen.rankings,
+            },
+      current: _buildSharedScreenBody(),
+    );
+  }
+
+  Widget _buildSharedScreenBody() {
     if (_appearanceOpen && !_matchLocked && widget.appearance != null) {
       return AppearanceSettings(
         api: widget.apiClient,
         controller: widget.appearance!,
+        presentation: widget.presentation,
+        locked: _matchLocked,
         embedded: true,
         onClose: () => setState(() => _appearanceOpen = false),
       );

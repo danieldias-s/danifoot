@@ -120,6 +120,28 @@ class ElifootApiClient {
   ) async => Map<String, dynamic>.from(
     await worldCreator(owner, 'appearance/$world/$club') as Map,
   );
+
+  Future<String> profileAppearance(String owner, {String? version}) async {
+    final uri = Uri.parse('$baseUrl/api/profile/appearance');
+    final headers = {
+      'Authorization': 'Bearer localdev-${owner.replaceAll('-', '')}',
+      'Content-Type': 'application/json',
+    };
+    final response = version == null
+        ? await _http.get(uri, headers: headers)
+        : await _http.put(
+            uri,
+            headers: headers,
+            body: jsonEncode({'mode': version}),
+          );
+    if (response.statusCode != 200) {
+      throw Exception(
+        'Preferência visual indisponível (${response.statusCode}).',
+      );
+    }
+    return jsonDecode(response.body)['mode'] as String;
+  }
+
   Future<Map<String, dynamic>> saveAppearance(
     String owner,
     String world,

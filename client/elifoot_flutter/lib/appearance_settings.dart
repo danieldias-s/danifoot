@@ -2,18 +2,24 @@ import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'club_theme.dart';
 import 'visual_components.dart';
+import 'presentation_version.dart';
+import 'presentation_widgets.dart';
 
 class AppearanceSettings extends StatefulWidget {
   final ElifootApiClient api;
   final ClubThemeController controller;
   final bool embedded;
   final VoidCallback? onClose;
+  final PresentationController? presentation;
+  final bool locked;
   const AppearanceSettings({
     super.key,
     required this.api,
     required this.controller,
     this.embedded = false,
     this.onClose,
+    this.presentation,
+    this.locked = false,
   });
   @override
   State<AppearanceSettings> createState() => _AppearanceSettingsState();
@@ -263,6 +269,17 @@ class _AppearanceSettingsState extends State<AppearanceSettings> {
             ),
           ),
           const SizedBox(height: 12),
+          if (widget.presentation != null) ...[
+            ClassicPaperPanel(
+              child: PresentationVersionSelector(
+                api: widget.api,
+                controller: widget.presentation!,
+                title: 'APARÊNCIA',
+                locked: widget.locked,
+              ),
+            ),
+            const SizedBox(height: 12),
+          ],
           ClassicPaperPanel(
             title: 'TEMA DO JOGO',
             child: ClassicPaper(

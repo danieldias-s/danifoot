@@ -84,6 +84,7 @@ using (var scope = app.Services.CreateScope())
     {
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
         await db.Database.EnsureCreatedAsync();
+        await ProfileAppearanceStore.EnsureSchema(db);
     }
 
     bool autoSeed = builder.Configuration.GetValue<bool>("Elifoot:AutoSeedDefaultWorld", true);
@@ -109,6 +110,9 @@ using (var scope = app.Services.CreateScope())
 
 app.MapHub<GameRoomHub>("/hubs/gameroom");
 app.MapPlayerRankings();
+app.MapProfileAppearance(
+    string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase),
+    !string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase));
 if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
 if (builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
 if (builder.Configuration.GetValue<bool>("Catalog016B:Enabled")) {await app.InitializeWorldCatalog016B();app.MapWorldCatalog016B();}

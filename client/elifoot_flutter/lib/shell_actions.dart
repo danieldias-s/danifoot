@@ -121,6 +121,7 @@ extension _ShellActions on _ElifootShellScreenState {
   }
 
   Future<void> _activateLocalTrainer(Map<String, dynamic> profile) async {
+    widget.presentation?.clear();
     setState(() {
       _nickname = profile['nickname']?.toString() ?? 'Treinador';
       _deviceId = profile['deviceId'].toString();
@@ -181,11 +182,23 @@ extension _ShellActions on _ElifootShellScreenState {
             fontSize: 14,
           ),
         ),
-        content: TextField(
-          controller: code,
-          decoration: const InputDecoration(
-            labelText: 'Código do convite',
-            border: OutlineInputBorder(borderRadius: BorderRadius.zero),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.presentation != null)
+                PresentationVersionSelector(
+                  api: widget.apiClient,
+                  controller: widget.presentation!,
+                ),
+              TextField(
+                controller: code,
+                decoration: const InputDecoration(
+                  labelText: 'Código do convite',
+                  border: OutlineInputBorder(borderRadius: BorderRadius.zero),
+                ),
+              ),
+            ],
           ),
         ),
         actions: [
@@ -234,6 +247,10 @@ extension _ShellActions on _ElifootShellScreenState {
         return;
       }
       final snap = await widget.apiClient.getSnapshot(worldId);
+      if (snap['hasInitialLobby'] == true && snap['lobbyStarted'] != true) {
+        await _joinSelectedWorld(worldId);
+        return;
+      }
       if ((snap['readyCounter']['participants'] as List).any(
         (p) => p['coachId'] == _coachId,
       )) {
@@ -258,6 +275,8 @@ extension _ShellActions on _ElifootShellScreenState {
       final selected = await showDialog<String>(
         context: context,
         builder: (ctx) => ClubSelectionDialog(
+          api: widget.apiClient,
+          presentation: widget.presentation,
           clubs: availableClubs
               .map((club) => Map<String, dynamic>.from(club as Map))
               .toList(),

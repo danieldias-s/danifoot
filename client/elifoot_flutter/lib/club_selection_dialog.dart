@@ -4,10 +4,20 @@ import 'club_crest.dart';
 import 'club_theme.dart';
 import 'creator_visual.dart';
 import 'visual_components.dart';
+import 'api_client.dart';
+import 'presentation_version.dart';
+import 'presentation_widgets.dart';
 
 class ClubSelectionDialog extends StatefulWidget {
   final List<Map<String, dynamic>> clubs;
-  const ClubSelectionDialog({super.key, required this.clubs});
+  final ElifootApiClient? api;
+  final PresentationController? presentation;
+  const ClubSelectionDialog({
+    super.key,
+    required this.clubs,
+    this.api,
+    this.presentation,
+  });
 
   @override
   State<ClubSelectionDialog> createState() => _ClubSelectionDialogState();
@@ -95,6 +105,20 @@ class _ClubSelectionDialogState extends State<ClubSelectionDialog> {
                           ],
                         ),
                       ),
+                      if (widget.api != null && widget.presentation != null)
+                        ClassicPaper(
+                          builder: (context) => Container(
+                            color: ClassicTheme.of(context).surface,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            child: PresentationVersionSelector(
+                              api: widget.api!,
+                              controller: widget.presentation!,
+                            ),
+                          ),
+                        ),
                       Expanded(
                         child: ClassicPaper(
                           builder: (context) {
