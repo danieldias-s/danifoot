@@ -155,12 +155,7 @@ void main() {
 
         if (width >= 1024) {
           for (int i = 0; i < 7; i++) {
-            expect(
-              tester
-                  .widget<InkWell>(find.byKey(ValueKey('shell-nav-$i')))
-                  .onTap,
-              isNull,
-            );
+            expect(find.byKey(ValueKey('shell-nav-$i')), findsNothing);
           }
         }
         await api.emit('RESULTS');

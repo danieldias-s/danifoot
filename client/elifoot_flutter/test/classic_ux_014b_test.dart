@@ -175,7 +175,7 @@ void main() {
         RoundViewDecision.none,
       );
       expect(nav.accept(snap('RUNNING_SECOND_HALF')), RoundViewDecision.none);
-      expect(nav.accept(snap('RESULTS')), RoundViewDecision.match);
+      expect(nav.accept(snap('RESULTS')), RoundViewDecision.standings);
       expect(nav.accept(snap('RESULTS')), RoundViewDecision.none);
       expect(
         nav.accept(snap('PREPARING', round: 2)),
@@ -209,7 +209,9 @@ void main() {
       'Refresh/reconnect restores $state from snapshot',
       () => expect(
         RoundViewCoordinator().accept(snap(state)),
-        RoundViewDecision.match,
+        state == 'RESULTS' || state == 'FINISHED'
+            ? RoundViewDecision.standings
+            : RoundViewDecision.match,
       ),
     );
   }
@@ -254,9 +256,7 @@ void main() {
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
-        await tester.ensureVisible(find.byKey(const ValueKey('shell-nav-2')));
-        await tester.tap(find.byKey(const ValueKey('shell-nav-2')));
-        await tester.pumpAndSettle();
+        expect(find.byKey(const ValueKey('shell-nav-2')), findsNothing);
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
@@ -269,7 +269,8 @@ void main() {
         );
         await api.emit('RESULTS');
         await tester.pumpAndSettle();
-        expect(find.textContaining('PARTIDA FINALIZADA'), findsWidgets);
+        expect(find.text('CLASSIFICAÇÃO'), findsWidgets);
+        expect(find.byType(ClassicMatchBoard), findsNothing);
         api.currentRound = 2;
         api.ready = 0;
         api.isReady = false;

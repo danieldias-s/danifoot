@@ -395,7 +395,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         title: mobile
                             ? 'LIGA CLÁSSICA 98'
                             : 'LIGA CLÁSSICA 98 — $clubName',
-                        trailing: mobile
+                        trailing: mobile && !_matchLocked
                             ? IconButton(
                                 tooltip: 'Abrir menus',
                                 onPressed: _matchLocked
@@ -406,6 +406,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                   color: Colors.white,
                                 ),
                               )
+                            : mobile
+                            ? null
                             : const Text(
                                 'VERSÃO CLÁSSICA (ANTIGA)',
                                 style: TextStyle(
@@ -414,7 +416,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                 ),
                               ),
                       ),
-                      if (!mobile)
+                      if (!mobile && !_matchLocked)
                         Container(
                           color: ClassicTheme.of(context).surface,
                           child: Row(
@@ -431,7 +433,10 @@ extension _Classic98Shell on _ElifootShellScreenState {
                             ],
                           ),
                         ),
-                      if (_showMatchView || _matchLocked)
+                      if (_waitingForRound) _buildReadyWaitingPanel(),
+                      if (_showMatchView ||
+                          _matchLocked ||
+                          _snapshot?['roundState'] == 'RESULTS')
                         Container(
                           color: ClassicTheme.of(context).surface,
                           padding: const EdgeInsets.all(8),
@@ -931,10 +936,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
           backgroundColor: ClassicTheme.of(context).surface,
         ),
         const SizedBox(height: 22),
-        KeyedSubtree(
-          key: const Key('retro-match-action'),
-          child: _buildRoundPrimaryAction(),
-        ),
+        if (state != 'RESULTS')
+          KeyedSubtree(
+            key: const Key('retro-match-action'),
+            child: _buildRoundPrimaryAction(),
+          ),
         if (ready && state == 'PREPARING')
           const Text('AGUARDANDO OUTROS TREINADORES.'),
         Text(

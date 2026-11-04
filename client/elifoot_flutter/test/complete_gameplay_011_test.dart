@@ -939,7 +939,7 @@ void main() {
       await tester.tap(find.byKey(const Key('btn-confirmar-continuar')));
       await tester.pumpAndSettle();
 
-      expect(find.textContaining('PARTIDA FINALIZADA'), findsWidgets);
+      expect(find.text('CLASSIFICAÇÃO'), findsWidgets);
       await tester.tap(find.byKey(const Key('btn-proxima-rodada')));
       await tester.pumpAndSettle();
       expect(find.textContaining('Rodada 2'), findsWidgets);

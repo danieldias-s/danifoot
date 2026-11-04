@@ -1,4 +1,4 @@
-enum RoundViewDecision { none, match, tactics }
+enum RoundViewDecision { none, match, tactics, standings, coach }
 
 /// Navigation follows authoritative snapshots, never ready counters or HTTP optimism.
 class RoundViewCoordinator {
@@ -53,7 +53,10 @@ class RoundViewCoordinator {
     if ((stage == 'RESULTS' || stage == 'FINISHED') && _resultRound != key) {
       _resultRound = key;
       _openedRound = key;
-      return RoundViewDecision.match;
+      final type = '${snapshot['competitionType'] ?? 'League'}';
+      return type == 'League' || type == '0'
+          ? RoundViewDecision.standings
+          : RoundViewDecision.coach;
     }
     if (pauseKey != null && pauseKey != _pause) {
       _pause = pauseKey;

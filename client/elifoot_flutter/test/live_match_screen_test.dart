@@ -472,6 +472,9 @@ void main() {
       api.capacity = 31000;
       await api.emit('RESULTS');
       await tester.pumpAndSettle();
+      expect(find.byType(ClassicMatchBoard), findsNothing);
+      await tester.tap(find.byKey(const Key('return-to-match')));
+      await tester.pumpAndSettle();
       expect(
         tester
             .widget<SelectedMatchVenue>(find.byType(SelectedMatchVenue))

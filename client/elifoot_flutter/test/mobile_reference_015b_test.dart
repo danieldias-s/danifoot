@@ -127,10 +127,7 @@ void main() {
       expect(find.byType(AppSidebar), findsNothing);
       expect(find.byKey(const Key('open-navigation')), findsNothing);
       for (var i = 0; i < 5; i++) {
-        expect(
-          tester.widget<InkWell>(find.byKey(ValueKey('mobile-nav-$i'))).onTap,
-          isNull,
-        );
+        expect(find.byKey(ValueKey('mobile-nav-$i')), findsNothing);
       }
       await api.emit('RESULTS');
       await tester.pumpAndSettle();

@@ -276,9 +276,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   void _onNavigationRequest() {
     if (!mounted) return;
     setState(() {
-      _showMatchView = _matchLocked || _navigation.path == '/partida';
+      _showMatchView = _navigation.locked || _navigation.path == '/partida';
       final index = MatchNavigationController.paths.indexOf(_navigation.path);
-      if (!_matchLocked && index >= 0) {
+      if (!_navigation.locked && index >= 0) {
         _activeTabIndex = index;
         _classicPage = null;
       }
@@ -595,6 +595,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     .toList();
           }
         }
+        if (clubDetail != null) {
+          final squadIds = (clubDetail['squad'] as List)
+              .map((p) => p['id'].toString())
+              .toSet();
+          _selectedBenchIds.removeWhere((id) => !squadIds.contains(id));
+        }
         if (finances != null) {
           _financesData = finances;
         }
@@ -644,9 +650,39 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       }
       switch (_roundView.accept(next)) {
         case RoundViewDecision.match:
+          _appearanceOpen = false;
+          _classicPage = null;
           _showMatchView = true;
           _navigation.navigate('/partida');
+        case RoundViewDecision.standings:
+          _showMatchView = false;
+          _appearanceOpen = false;
+          _classicPage = null;
+          _competitionTab = 'standings';
+          _activeTabIndex = 1;
+          final myMatch = (next['matches'] as List? ?? [])
+              .where(
+                (m) =>
+                    _myClubId != null &&
+                    (m['homeClubId'] == _myClubId ||
+                        m['awayClubId'] == _myClubId),
+              )
+              .firstOrNull;
+          _selectedDivisionTier =
+              _myClubDetail?['divisionTier']?.toString() ??
+              myMatch?['divisionTier']?.toString() ??
+              _selectedDivisionTier;
+          _statusBanner = 'RODADA CONCLUÍDA';
+          _navigation.navigate('/divisoes');
+        case RoundViewDecision.coach:
         case RoundViewDecision.tactics:
+          if (next['roundState'] == 'RESULTS' ||
+              next['roundState'] == 'FINISHED') {
+            _statusBanner = 'JOGOS DA TAÇA CONCLUÍDOS';
+          }
+          _appearanceOpen = false;
+          _classicPage = null;
+          _mobileTacticsView = false;
           _showMatchView = false;
           _activeTabIndex = 0;
           _navigation.navigate('/plantel');
@@ -678,6 +714,36 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       });
     }
     return next;
+  }
+
+  bool get _waitingForRound =>
+      const ['PREPARING', 'ALL_READY'].contains(_snapshot?['roundState']) &&
+      (_snapshot?['readyCounter']?['participants'] as List? ?? []).any(
+        (p) => p['coachId'] == _coachId && p['isReady'] == true,
+      );
+
+  Widget _buildReadyWaitingPanel() {
+    final counter = _snapshot?['readyCounter'];
+    final allReady =
+        (counter?['totalHumans'] as num? ?? 0) > 0 &&
+        counter?['readyCount'] == counter?['totalHumans'];
+    return Container(
+      key: const Key('ready-waiting-panel'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(8),
+      color: ClassicTheme.of(context).surfaceAlternate,
+      child: Text(
+        '${counter?['counterLabel'] ?? 'TÁTICAS ENVIADAS'} • ${allReady
+            ? 'AGUARDANDO O INÍCIO DA RODADA.'
+            : _isUnemployed
+            ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
+            : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.'}',
+        style: TextStyle(
+          color: ClassicTheme.of(context).accent,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 
   int get _requiredStarterCount =>
@@ -862,14 +928,18 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           child: Scaffold(
             key: _shellScaffoldKey,
             drawerEnableOpenDragGesture: !_matchLocked,
-            bottomNavigationBar: desktop
+            bottomNavigationBar: desktop || _matchLocked
                 ? null
                 : _buildIntegratedBottomNavigation(viewport.maxWidth),
             drawer: desktop
                 ? null
                 : Drawer(
                     width: 250,
-                    child: SafeArea(child: _buildClassicNavigationMenu()),
+                    child: SafeArea(
+                      child: _matchLocked
+                          ? const SizedBox.shrink()
+                          : _buildClassicNavigationMenu(),
+                    ),
                   ),
             body: MatchInteractionOverlay(
               interaction: _buildMatchInteraction(),
@@ -932,32 +1002,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                           ],
                         ),
                       ),
-                    if ((_snapshot?['roundState'] == 'PREPARING' ||
-                            _snapshot?['roundState'] == 'ALL_READY') &&
-                        ((_snapshot?['readyCounter']?['participants']
-                                    as List? ??
-                                [])
-                            .any(
-                              (p) =>
-                                  p['coachId'] == _coachId &&
-                                  p['isReady'] == true,
-                            )))
-                      Container(
-                        key: const Key('ready-waiting-panel'),
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(8),
-                        color: ClassicTheme.of(context).surfaceAlternate,
-                        child: Text(
-                          _isUnemployed
-                              ? 'PRONTO PARA ACOMPANHAR. AGUARDANDO OUTROS TREINADORES.'
-                              : 'TÁTICA ENVIADA. AGUARDANDO OUTROS TREINADORES.',
-                          style: TextStyle(
-                            color: ClassicTheme.of(context).accent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    if ((_showMatchView || _matchLocked) &&
+                    if (_waitingForRound) _buildReadyWaitingPanel(),
+                    if (_showMatchView &&
+                        !_matchLocked &&
                         viewport.maxWidth >= 768)
                       LiveMatchNavigation(
                         locked: _matchLocked,

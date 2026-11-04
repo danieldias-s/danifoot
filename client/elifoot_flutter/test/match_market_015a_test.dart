@@ -353,14 +353,7 @@ void main() {
         await api.emit('RUNNING_FIRST_HALF');
         await tester.pumpAndSettle();
         expect(find.byType(ClassicMatchBoard), findsOneWidget);
-        expect(
-          tester
-              .widget<OutlinedButton>(
-                find.widgetWithText(OutlinedButton, 'TROCAR SALA'),
-              )
-              .onPressed,
-          isNull,
-        );
+        expect(find.text('TROCAR SALA'), findsNothing);
         for (final path in MatchNavigationController.paths) {
           await router.setNewRoutePath(path);
           await tester.pumpAndSettle();
