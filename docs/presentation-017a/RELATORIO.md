@@ -6,7 +6,7 @@ Prévia local: <http://127.0.0.1:5232/>. API: porta 5231. PostgreSQL de revisão
 
 Branch: `codex/presentation-versions-017a`.
 Worktree: `D:/elifoot_98/.worktrees/presentation-versions-017a`.
-Base preservada: `298252e`. Checkpoint da preferência individual: `422003e`.
+Base preservada: `298252e`. Checkpoint da preferência individual: `422003e`. Checkpoint da interface e evidências: `634fd8b`.
 Nenhum merge, push ou publicação em produção foi realizado.
 
 ## O que funciona
