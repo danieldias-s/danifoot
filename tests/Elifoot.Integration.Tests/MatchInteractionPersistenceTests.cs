@@ -39,6 +39,68 @@ public class MatchInteractionPersistenceTests
         }
         return (world, match, a, b);
     }
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task HalftimeWaitsOnlyForPlayingHumansAcrossRestart(bool playingHuman)
+    {
+        string file = Path.Combine(Path.GetTempPath(), $"elifoot-interval-participation-{Guid.NewGuid():N}.db");
+        string connection = $"Data Source={file};Pooling=False";
+        var (world, _, a, b) = await Room();
+        foreach (var observer in playingHuman ? new[] { b } : new[] { a, b })
+        {
+            world.Clubs.First(c => c.Id == observer.CurrentClubId).HumanCoachId = null;
+            observer.CurrentClubId = null;
+        }
+        world.CurrentMatchMinute = 44;
+        foreach (var fixture in MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world))
+            fixture.CurrentMinute = fixture.LastSimulatedMinute = 44;
+        try
+        {
+            await using (var initial = Factory(connection, false))
+            {
+                using var client = initial.CreateClient();
+                await initial.Services.GetRequiredService<IWorldRepository>().SaveWorldAsync(world);
+                var reached = await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client, world.Id, 1);
+                reached.EnsureSuccessStatusCode();
+                var snapshot = (await reached.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
+                Assert.Equal(45, snapshot.CurrentMinute);
+                Assert.Equal(playingHuman ? RoundState.HALFTIME_PAUSED : RoundState.RUNNING_SECOND_HALF, snapshot.RoundState);
+            }
+            EfWorldRepository.ClearCacheForTesting();
+            await using (var restarted = Factory(connection, false))
+            {
+                using var client = restarted.CreateClient();
+                var snapshot = (await client.GetFromJsonAsync<LiveRoundSnapshotDto>($"/api/worlds/{world.Id}/snapshot"))!;
+                Assert.Equal(45, snapshot.CurrentMinute);
+                if (playingHuman)
+                {
+                    Assert.Contains(b.Id, snapshot.ActivePauseWindow!.ConfirmedCoachIds);
+                    Assert.DoesNotContain(a.Id, snapshot.ActivePauseWindow.ConfirmedCoachIds);
+                    // Only the playing coach confirms; the spectator never sends a command.
+                    (await client.PostAsJsonAsync($"/api/worlds/{world.Id}/continue",
+                        new ConfirmContinueMatchCommand(world.Id, a.Id, "continue-player"))).EnsureSuccessStatusCode();
+                }
+                else
+                {
+                    Assert.Null(snapshot.ActivePauseWindow);
+                    Assert.Equal(RoundState.RUNNING_SECOND_HALF, snapshot.RoundState);
+                }
+                var advanced = await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client, world.Id, 1);
+                advanced.EnsureSuccessStatusCode();
+                var secondHalf = (await advanced.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
+                Assert.Equal(46, secondHalf.CurrentMinute);
+                Assert.Equal(RoundState.RUNNING_SECOND_HALF, secondHalf.RoundState);
+                Assert.Null(secondHalf.ActivePauseWindow);
+            }
+        }
+        finally
+        {
+            EfWorldRepository.ClearCacheForTesting();
+            if (File.Exists(file)) File.Delete(file);
+        }
+    }
+
     [Theory][InlineData(false)][InlineData(true)]
     public async Task PendingHumanPenaltyFreezesRoomAcrossDatabaseRestartAndConcurrentHttpChoicesSettleExactlyOnce(bool postgres)
     {

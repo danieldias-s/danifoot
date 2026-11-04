@@ -84,9 +84,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             // Check phase boundary transitions at 45', 90', 105', 120'
             if (minute == 45 && world.RoundState == RoundState.RUNNING_FIRST_HALF)
             {
-                OpenFreeIntervalPauseWindow(world, RoundState.HALFTIME_PAUSED, 45);
                 // Let AI teams evaluate halftime adjustments during the free interval
+                world.RoundState = RoundState.HALFTIME_PAUSED;
                 EvaluateAllAiTeamsAtFreeInterval(world, roundMatches, clubDict, aiDict, playerMap);
+                OpenFreeIntervalPauseWindow(world, RoundState.HALFTIME_PAUSED, 45);
             }
             else if (minute == 90 && world.RoundState == RoundState.RUNNING_SECOND_HALF)
             {

@@ -628,8 +628,8 @@ class PauseWaitingContent extends StatelessWidget {
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
       ),
       const SizedBox(height: 10),
-      Text(
-        'Janela compartilhada de substituições. ${pause['requestedByCoachName'] ?? 'Os treinadores'} estão preparando alterações.',
+      const Text(
+        'Os treinadores com partida em andamento estão preparando alterações. O jogo continua assim que terminarem.',
         textAlign: TextAlign.center,
       ),
       const SizedBox(height: 10),

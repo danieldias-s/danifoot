@@ -785,11 +785,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             window.ConfirmedCoachIds.Add(coach.Id);
             RecordInteraction(world, receiptKey, fingerprint, window.Id);
 
-            // Auto-confirm any coaches in AutoMode
-            foreach (var autoCoach in world.HumanCoaches.Where(h => h.IsAutoMode))
-            {
-                window.ConfirmedCoachIds.Add(autoCoach.Id);
-            }
+            AutoConfirmPauseObservers(world, window);
 
             bool allConfirmed = world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id));
             if (allConfirmed)
@@ -821,9 +817,12 @@ public sealed partial class MultiplayerRoundOrchestrator
             var window = world.PauseWindows.FirstOrDefault(w => w.Id == world.ActivePauseWindowId.Value);
             if (window == null || window.IsClosed) return false;
 
-            if (!ignoreClockForTest && DateTime.UtcNow < window.ExpiresAtUtc)
+            bool intervalReady = IsFreeInterval(window.PauseType) && IntervalDecisionCoaches(world)
+                .All(h => window.ConfirmedCoachIds.Contains(h.Id));
+            if (!ignoreClockForTest && DateTime.UtcNow < window.ExpiresAtUtc && !intervalReady)
                 return false;
 
+            AutoConfirmPauseObservers(world, window);
             ResumeFromPauseWindowInternal(world, window);
             world.RoundVersion++;
             await _repository.SaveWorldAsync(world, ct);
@@ -963,6 +962,26 @@ public sealed partial class MultiplayerRoundOrchestrator
         }
     }
 
+    private static bool IsFreeInterval(RoundState state) => state is
+        RoundState.HALFTIME_PAUSED or RoundState.EXTRA_TIME_BREAK or RoundState.EXTRA_TIME_HALFTIME;
+
+    private static List<HumanCoach> IntervalDecisionCoaches(GameWorld world)
+    {
+        var activeClubs = GetCurrentRoundFixtures(world).Where(m => !m.IsFinished)
+            .SelectMany(m => new[] { m.HomeClubId, m.AwayClubId }).ToHashSet();
+        return world.HumanCoaches.Where(h => !h.IsAutoMode && h.CurrentClubId is Guid clubId && activeClubs.Contains(clubId)).ToList();
+    }
+
+    private static void AutoConfirmPauseObservers(GameWorld world, PauseWindow window)
+    {
+        // Spectators cannot edit an interval lineup and must not hold up those who can.
+        var decisionCoaches = IsFreeInterval(window.PauseType)
+            ? IntervalDecisionCoaches(world).Select(h => h.Id).ToHashSet()
+            : world.HumanCoaches.Where(h => !h.IsAutoMode).Select(h => h.Id).ToHashSet();
+        foreach (var coach in world.HumanCoaches.Where(h => !decisionCoaches.Contains(h.Id)))
+            window.ConfirmedCoachIds.Add(coach.Id);
+    }
+
     private static void OpenFreeIntervalPauseWindow(GameWorld world, RoundState pauseState, int minute)
     {
         var window = new PauseWindow
@@ -979,16 +998,13 @@ public sealed partial class MultiplayerRoundOrchestrator
             ExpiresAtUtc = DateTime.UtcNow.AddSeconds(world.PauseTimeoutSeconds)
         };
 
-        foreach (var autoHuman in world.HumanCoaches.Where(h => h.IsAutoMode))
-        {
-            window.ConfirmedCoachIds.Add(autoHuman.Id);
-        }
+        AutoConfirmPauseObservers(world, window);
 
         world.PauseWindows.Add(window);
         world.ActivePauseWindowId = window.Id;
         world.RoundState = pauseState;
 
-        if (world.HumanCoaches.Count > 0 && world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id)))
+        if (world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id)))
         {
             ResumeFromPauseWindowInternal(world, window);
         }
