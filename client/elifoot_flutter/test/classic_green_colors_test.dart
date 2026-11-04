@@ -44,15 +44,25 @@ void main() {
     }
     expect(
       t.widget<DataTable>(find.byType(DataTable)).headingTextStyle!.color,
-      Colors.white,
+      readableInk(classic98Palette.tableHeader, classic98Palette.textPrimary),
     );
     expect(t.widget<Icon>(find.byIcon(Icons.people)).color, Colors.white);
     expect(t.takeException(), isNull);
   });
 
-  test('Paleta das telas segue o papel claro e verde da referência', () {
-    expect(classic98Palette.background, const Color(0xFFF7F5E9));
-    expect(classic98Palette.tableHeader, const Color(0xFF00542E));
+  test('Paleta clássica compartilha as cores dos painéis da versão atual', () {
+    final current = ClassicTheme.derive();
+    expect(classic98Palette.background, current.paper.surface);
+    expect(classic98Palette.tableHeader, current.paper.tableHeader);
+    expect(classic98Palette.primary, current.primary);
+    expect(classic98Palette.buttonBackground, current.buttonBackground);
+    for (final variant in ['Classico', 'Escuro', 'AltoContraste']) {
+      final source = ClassicTheme.classicGreen(variant: variant);
+      final classic = classic98PresentationPalette(source);
+      expect(classic.surface, source.paper.surface);
+      expect(classic.tableRow, source.paper.tableRow);
+      expect(classic.selectedBackground, source.paper.selectedBackground);
+    }
     for (final background in [
       classic98Palette.background,
       classic98Palette.surfaceAlternate,
@@ -66,7 +76,10 @@ void main() {
       );
     }
     expect(
-      colorContrast(Colors.white, classic98Palette.tableHeader),
+      colorContrast(
+        readableInk(classic98Palette.tableHeader),
+        classic98Palette.tableHeader,
+      ),
       greaterThanOrEqualTo(4.5),
     );
   });

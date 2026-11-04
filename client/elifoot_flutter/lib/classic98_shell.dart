@@ -52,6 +52,149 @@ extension _Classic98Shell on _ElifootShellScreenState {
       ? '–'
       : '·';
 
+  Widget _retroRoleControl(Map<String, dynamic> player) {
+    final id = '${player['id']}';
+    final starter = _selectedStarterIds.contains(id),
+        reserve = _selectedBenchIds.contains(id);
+    final available = _retroCondition(player) == 'Apto';
+    final role = !available
+        ? _retroCondition(player)
+        : starter
+        ? 'Titular'
+        : reserve
+        ? 'Reserva'
+        : 'Fora dos relacionados';
+    return Row(
+      children: [
+        PopupMenuButton<String>(
+          key: ValueKey('retro-role-$id'),
+          tooltip:
+              '${player['displayName'] ?? player['name']}: $role — alterar escalação',
+          enabled: !_tacticsLocked && !_commandBusy && available,
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(minWidth: 210),
+          itemBuilder: (_) => [
+            const PopupMenuItem(value: 'starter', child: Text('Titular')),
+            const PopupMenuItem(value: 'reserve', child: Text('Reserva')),
+            const PopupMenuItem(
+              value: 'out',
+              child: Text('Fora dos relacionados'),
+            ),
+          ],
+          onSelected: (value) => _retroAssignRole(player, value),
+          child: SizedBox(
+            width: 44,
+            height: 44,
+            child: Icon(
+              !available
+                  ? Icons.block
+                  : starter
+                  ? Icons.circle
+                  : reserve
+                  ? Icons.radio_button_checked
+                  : Icons.radio_button_unchecked,
+              size: 15,
+              color: readableOn(
+                !available
+                    ? Colors.red
+                    : starter
+                    ? const Color(0xFF14851F)
+                    : reserve
+                    ? const Color(0xFFB07800)
+                    : Colors.grey,
+                ClassicTheme.of(context).tableRow,
+              ),
+            ),
+          ),
+        ),
+        Flexible(
+          child: Text(
+            _formatPosition(player['position']),
+            overflow: TextOverflow.clip,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _retroAssignRole(
+    Map<String, dynamic> player,
+    String role,
+  ) async {
+    if (_tacticsLocked || _commandBusy || _retroCondition(player) != 'Apto') {
+      return;
+    }
+    final id = '${player['id']}';
+    final starter = _selectedStarterIds.contains(id),
+        reserve = _selectedBenchIds.contains(id);
+    if (role == 'starter' &&
+        !starter &&
+        _selectedStarterIds.length >= _requiredStarterCount) {
+      if (reserve) {
+        await _retroSwapReserve(player);
+      } else {
+        setState(
+          () => _statusBanner =
+              'Retire um titular antes de escalar este jogador, ou coloque-o entre os reservas para trocar.',
+        );
+      }
+      return;
+    }
+    if (role == 'reserve' && !reserve && _selectedBenchIds.length >= 9) {
+      setState(
+        () => _statusBanner =
+            'Os nove lugares de reserva estão ocupados. Retire um reserva antes de incluir outro.',
+      );
+      return;
+    }
+    if (role == 'starter' && !starter) {
+      final hasKeeper = _retroSquad.any(
+        (p) =>
+            _selectedStarterIds.contains('${p['id']}') &&
+            _formatPosition(p['position']) == 'G',
+      );
+      final isKeeper = _formatPosition(player['position']) == 'G';
+      final keeperAvailable = _retroSquad.any(
+        (p) =>
+            _formatPosition(p['position']) == 'G' &&
+            _retroCondition(p) == 'Apto',
+      );
+      if ((isKeeper && hasKeeper) ||
+          (!isKeeper &&
+              !hasKeeper &&
+              keeperAvailable &&
+              _selectedStarterIds.length == _requiredStarterCount - 1)) {
+        setState(
+          () => _statusBanner =
+              'A escalação precisa manter um goleiro. Escolha uma troca compatível.',
+        );
+        return;
+      }
+    }
+    setState(() {
+      _selectedStarterIds.remove(id);
+      _selectedBenchIds.remove(id);
+      if (role == 'starter') _selectedStarterIds.add(id);
+      if (role == 'reserve') _selectedBenchIds.add(id);
+      _classicSelectedPlayerId = id;
+      final formation = formationFromPlayers(
+        _retroSquad
+            .where((p) => _selectedStarterIds.contains('${p['id']}'))
+            .toList(),
+        _selectedFormation,
+      );
+      if (formation != '5-0-5' || _myClubDetail?['allowClassic505'] != false) {
+        _selectedFormation = formation;
+      }
+      _statusBanner =
+          '${player['displayName'] ?? player['name']}: ${role == 'starter'
+              ? 'titular'
+              : role == 'reserve'
+              ? 'reserva'
+              : 'fora dos relacionados'}. Confira a escalação antes de enviar a tática.';
+    });
+  }
+
   List<(String, VoidCallback?)> _retroMenu(String menu) {
     final locked = _matchLocked;
     final player = _retroSelected;
@@ -90,7 +233,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
       case 'Equipa':
         return [
           ('Mercado & Leilão...', nav('market', 2)),
-          ('Banco (Reservas)...', nav('bench')),
+          ('Reservas do elenco...', nav('bench')),
+          ('Banco — Empréstimos...', nav('bank', 3)),
           ('Estádio...', nav('stadium', 3)),
           ('Finanças...', nav('finances', 3)),
           ('História — Em breve', null),
@@ -187,7 +331,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
-        backgroundColor: classicButtonColor,
+        backgroundColor: ClassicTheme.of(context).surface,
         builder: (ctx) => SafeArea(
           child: SizedBox(
             height: MediaQuery.sizeOf(ctx).height * .8,
@@ -237,7 +381,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
       return PopScope(
         canPop: !_matchLocked,
         child: Scaffold(
-          backgroundColor: const Color(0xFF004528),
+          backgroundColor: ClassicTheme.of(context).secondary,
           body: MatchInteractionOverlay(
             interaction: _buildMatchInteraction(),
             child: SafeArea(
@@ -272,7 +416,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                       ),
                       if (!mobile)
                         Container(
-                          color: classicButtonColor,
+                          color: ClassicTheme.of(context).surface,
                           child: Row(
                             children: [
                               for (final title in [
@@ -289,7 +433,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       if (_showMatchView || _matchLocked)
                         Container(
-                          color: classicPaperColor,
+                          color: ClassicTheme.of(context).surface,
                           padding: const EdgeInsets.all(8),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -311,7 +455,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       if (_statusBanner != null)
                         Container(
-                          color: classicSoftGreenColor,
+                          color: ClassicTheme.of(context).surfaceAlternate,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Row(
                             children: [
@@ -332,13 +476,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       Expanded(
                         child: ColoredBox(
-                          color: classicPaperColor,
+                          color: ClassicTheme.of(context).surface,
                           child: _retroBody(ctx, mobile),
                         ),
                       ),
                       if (!_matchLocked)
                         Container(
-                          color: classicButtonColor,
+                          color: ClassicTheme.of(context).surface,
                           padding: const EdgeInsets.all(3),
                           child: Row(
                             children: [
@@ -364,10 +508,10 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                             2,
                                           ),
                                           (
-                                            'Campeonato',
-                                            Icons.emoji_events_outlined,
-                                            'standings',
-                                            1,
+                                            'Banco',
+                                            Icons.account_balance,
+                                            'bank',
+                                            3,
                                           ),
                                           ('Mais', Icons.more_horiz, 'more', 0),
                                         ]
@@ -390,7 +534,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                             'market',
                                             2,
                                           ),
-                                          ('Banco', Icons.groups, 'bench', 0),
+                                          (
+                                            'Banco',
+                                            Icons.account_balance,
+                                            'bank',
+                                            3,
+                                          ),
                                           (
                                             'Estádio',
                                             Icons.stadium_outlined,
@@ -455,6 +604,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
         return _retroTactics();
       case 'bench':
         return _retroBench(mobile);
+      case 'bank':
+        return _buildFinancesAndStadiumScreen();
       case 'player':
       case 'statistics':
       case 'contract':
@@ -516,7 +667,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         title: 'ESCOLHA A APARÊNCIA:',
                       ),
                     const Text(
-                      'A versão clássica utiliza a paleta fixa desta interface. As cores registradas dos clubes são preservadas.',
+                      'A versão clássica usa as mesmas cores da versão atual. As cores dos clubes continuam preservadas.',
                     ),
                     const SizedBox(height: 12),
                     RetroButton(
@@ -545,7 +696,10 @@ extension _Classic98Shell on _ElifootShellScreenState {
       headers: mobile
           ? ['POS', 'JOGADOR', 'FORÇA']
           : ['POS', 'JOGADOR', 'FORÇA', 'VALOR'],
-      flex: mobile ? [2, 8, 2] : [2, 9, 2, 4],
+      flex: mobile ? [4, 8, 2] : [2, 9, 2, 4],
+      leadingCells: {
+        for (final (i, p) in squad.indexed) i: _retroRoleControl(p),
+      },
       rows: [
         for (final p in squad)
           [
@@ -575,16 +729,19 @@ extension _Classic98Shell on _ElifootShellScreenState {
         else
           table,
         Container(
-          color: classicPaperColor,
+          color: ClassicTheme.of(context).surface,
           padding: const EdgeInsets.all(8),
-          child: const Row(
+          child: Row(
             children: [
               Icon(Icons.circle, size: 9, color: Color(0xFF14851F)),
               SizedBox(width: 5),
               Flexible(
                 child: Text(
                   'Titular   – Banco   · Fora do banco   ! Indisponível',
-                  style: TextStyle(color: classicInkColor, fontSize: 14),
+                  style: TextStyle(
+                    color: ClassicTheme.of(context).textPrimary,
+                    fontSize: 14,
+                  ),
                 ),
               ),
             ],
@@ -728,7 +885,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         RetroSection(
           title: 'Próximo adversário',
           child: Container(
-            color: classicSoftGreenColor,
+            color: ClassicTheme.of(context).surfaceAlternate,
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -771,7 +928,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           value: morale is num ? (morale / 100).clamp(0, 1).toDouble() : 0,
           minHeight: 18,
           color: const Color(0xFF50A550),
-          backgroundColor: classicButtonColor,
+          backgroundColor: ClassicTheme.of(context).surface,
         ),
         const SizedBox(height: 22),
         KeyedSubtree(
@@ -878,7 +1035,17 @@ extension _Classic98Shell on _ElifootShellScreenState {
         title: const Text('Trocar com titular'),
         children: [
           for (final p in _retroSquad.where(
-            (p) => _selectedStarterIds.contains('${p['id']}'),
+            (p) =>
+                _selectedStarterIds.contains('${p['id']}') &&
+                swapSquadPlayers(
+                      _retroSquad,
+                      _selectedStarterIds,
+                      _selectedBenchIds,
+                      '${p['id']}',
+                      '${reserve['id']}',
+                      _selectedFormation,
+                    ) !=
+                    null,
           ))
             SimpleDialogOption(
               onPressed: () => Navigator.pop(ctx, '${p['id']}'),

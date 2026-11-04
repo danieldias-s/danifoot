@@ -903,7 +903,9 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
           child: DefaultTextStyle.merge(
             style: TextStyle(
-              color: t.classicPresentation ? Colors.white : null,
+              color: t.classicPresentation
+                  ? readableInk(t.tableHeader, t.textPrimary)
+                  : null,
             ),
             child: Row(
               children: [
@@ -2470,7 +2472,10 @@ class _ClassicTableState extends State<ClassicTable> {
                 : 11,
             fontWeight: FontWeight.bold,
             color: ClassicTheme.of(context).classicPresentation
-                ? Colors.white
+                ? readableInk(
+                    ClassicTheme.of(context).tableHeader,
+                    ClassicTheme.of(context).textPrimary,
+                  )
                 : ClassicTheme.of(context).accent,
             fontFamily:
                 (widget.rankingStyle ||

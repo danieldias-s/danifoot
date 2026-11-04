@@ -246,7 +246,9 @@ void main() {
       );
       final starterName = roster.rows.firstWhere((r) => r.first == '● G')[1];
       final rosterCount = roster.rows.length;
-      await t.tap(find.text('Banco'));
+      await t.tap(find.text('Equipa'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Reservas do elenco...'));
       await t.pumpAndSettle();
       var bank = t.widget<RetroTable>(find.byType(RetroTable));
       final count = bank.rows.length;
@@ -307,6 +309,7 @@ void main() {
       expect(api.announcements, 0);
       await t.tap(find.text('Estádio'));
       await t.pumpAndSettle();
+      await t.ensureVisible(find.byKey(const ValueKey('btn-reformar-estadio')));
       await t.tap(find.byKey(const ValueKey('btn-reformar-estadio')));
       await t.pumpAndSettle();
       expect(find.text('Confirmar operação financeira'), findsOneWidget);
@@ -362,11 +365,11 @@ void main() {
         await t.pumpAndSettle();
         await t.tap(find.text('Equipa'));
         await t.pumpAndSettle();
-        await t.tap(find.text('Banco (Reservas)...'));
+        await t.tap(find.text('Reservas do elenco...'));
       } else {
         await t.tap(find.text('Equipa'));
         await t.pumpAndSettle();
-        await t.tap(find.text('Banco (Reservas)...'));
+        await t.tap(find.text('Reservas do elenco...'));
       }
       await t.pumpAndSettle();
       expect(find.text('BANCO (RESERVAS)'), findsOneWidget);

@@ -3,6 +3,7 @@ import 'classic98_widgets.dart';
 import 'club_theme.dart';
 import 'visual_components.dart';
 import 'player_rankings.dart' show formatClassicMoney, ClassicSectionTitle;
+import 'stadium_visual.dart';
 
 /// Presentation only: ranking order and all figures come from the server.
 class ClassicCoachScreen extends StatefulWidget {
@@ -376,7 +377,7 @@ Map<String, num> financeSummaryForRound(
 }
 
 class ClassicFinanceView extends StatelessWidget {
-  final bool compactClassic, stadiumOnly;
+  final bool compactClassic, stadiumOnly, bankOnly;
   final Map<String, dynamic> club, data;
   final int season, round;
   final List<Widget> actions;
@@ -385,6 +386,7 @@ class ClassicFinanceView extends StatelessWidget {
     super.key,
     this.compactClassic = false,
     this.stadiumOnly = false,
+    this.bankOnly = false,
     required this.club,
     required this.data,
     required this.season,
@@ -399,6 +401,44 @@ class ClassicFinanceView extends StatelessWidget {
     final stadium = club['stadium'] as Map? ?? {};
     final t = ClassicTheme.of(context);
     if (compactClassic) {
+      if (bankOnly) {
+        return SingleChildScrollView(
+          key: const Key('classic-bank-screen'),
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text(
+                'BANCO — EMPRÉSTIMOS',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              RetroSection(
+                title: 'Crédito do clube',
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
+                    ),
+                    const Text(
+                      'Consulte as condições e os empréstimos em aberto antes de contratar.',
+                    ),
+                  ],
+                ),
+              ),
+              for (final action in actions.where(
+                (a) => a.key == const ValueKey('btn-emprestimo-bancario'),
+              ))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: _confirmClassicAction(context, action),
+                ),
+              obligations,
+            ],
+          ),
+        );
+      }
       return SingleChildScrollView(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -409,6 +449,10 @@ class ClassicFinanceView extends StatelessWidget {
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
+            if (stadiumOnly) ...[
+              ClassicStadiumView(stadium: stadium),
+              const SizedBox(height: 12),
+            ],
             RetroSection(
               title: '${stadium['stadiumName'] ?? 'Estádio'}',
               child: Column(
@@ -436,7 +480,11 @@ class ClassicFinanceView extends StatelessWidget {
                 ],
               ),
             ),
-            for (final action in actions)
+            for (final action in actions.where(
+              (a) =>
+                  !stadiumOnly ||
+                  a.key != const ValueKey('btn-emprestimo-bancario'),
+            ))
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: _confirmClassicAction(context, action),

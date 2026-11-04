@@ -172,7 +172,7 @@ class _MarketScreenState extends State<MarketScreen> {
     children: [
       Text(
         '${p['displayName'] ?? p['playerDisplayName'] ?? ""}',
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       Text(
         'Posição: ${marketPosition(p['position'])} • Força: ${p['strength']}',
@@ -603,14 +603,14 @@ class _MarketScreenState extends State<MarketScreen> {
                                 children: [
                                   Text(
                                     '${p['displayName']}',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
                                     '${marketPosition(p['position'])} | Força: ${p['strength']}',
-                                    style: const TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 14),
                                   ),
                                 ],
                               ),
@@ -621,7 +621,7 @@ class _MarketScreenState extends State<MarketScreen> {
                                 auction
                                     ? 'Mín: ${formatAuctionMoney(p['minimumBid'] as num? ?? 0)}\nRodadas: ${_roundsRemaining(p)} • ${p['isClosed'] == true ? 'ENCERRADO' : 'ABERTO'}'
                                     : '${formatAuctionMoney(p['askingPrice'] as num? ?? 0)}\nSalário: ${formatAuctionMoney(p['salaryPerRound'] as num? ?? 0)}',
-                                style: const TextStyle(fontSize: 14),
+                                style: TextStyle(fontSize: 14),
                               ),
                             ),
                             if (auction)
@@ -892,31 +892,33 @@ class _MarketScreenState extends State<MarketScreen> {
           else
             for (final p in rows)
               Container(
-                color: classicPaperColor,
+                color: ClassicTheme.of(context).surface,
                 child: Theme(
                   data: Theme.of(context).copyWith(
                     textTheme: Theme.of(context).textTheme.apply(
-                      bodyColor: classicInkColor,
-                      displayColor: classicInkColor,
+                      bodyColor: ClassicTheme.of(context).textPrimary,
+                      displayColor: ClassicTheme.of(context).textPrimary,
                     ),
-                    expansionTileTheme: const ExpansionTileThemeData(
-                      iconColor: classicInkColor,
-                      collapsedIconColor: classicInkColor,
-                      textColor: classicInkColor,
-                      collapsedTextColor: classicInkColor,
+                    expansionTileTheme: ExpansionTileThemeData(
+                      iconColor: ClassicTheme.of(context).textPrimary,
+                      collapsedIconColor: ClassicTheme.of(context).textPrimary,
+                      textColor: ClassicTheme.of(context).textPrimary,
+                      collapsedTextColor: ClassicTheme.of(context).textPrimary,
                     ),
                   ),
                   child: ExpansionTile(
                     title: Text(
                       '${p['displayName']} (${marketPosition(p['position'])})',
-                      style: const TextStyle(
-                        color: classicInkColor,
+                      style: TextStyle(
+                        color: ClassicTheme.of(context).textPrimary,
                         fontSize: 16,
                       ),
                     ),
                     subtitle: Text(
                       'Força: ${p['strength']} • ${formatAuctionMoney((auction ? p['minimumBid'] : p['askingPrice']) as num? ?? 0)}\n${p['sellerClubName'] ?? 'Livre'}',
-                      style: const TextStyle(color: classicInkColor),
+                      style: TextStyle(
+                        color: ClassicTheme.of(context).textPrimary,
+                      ),
                     ),
                     childrenPadding: const EdgeInsets.all(10),
                     children: [

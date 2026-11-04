@@ -346,7 +346,9 @@ class _ClassicStandingsState extends State<ClassicStandings> {
                   ),
                   child: DefaultTextStyle.merge(
                     style: TextStyle(
-                      color: t.classicPresentation ? Colors.white : null,
+                      color: t.classicPresentation
+                          ? readableInk(t.tableHeader, t.textPrimary)
+                          : null,
                     ),
                     child: line([
                       number('#'),
@@ -605,7 +607,9 @@ class ClassicFixtureList extends StatelessWidget {
                   ),
                   child: DefaultTextStyle.merge(
                     style: TextStyle(
-                      color: t.classicPresentation ? Colors.white : null,
+                      color: t.classicPresentation
+                          ? readableInk(t.tableHeader, t.textPrimary)
+                          : null,
                     ),
                     child: Row(
                       children: [

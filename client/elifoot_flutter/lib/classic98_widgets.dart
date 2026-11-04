@@ -1,72 +1,77 @@
 import 'package:flutter/material.dart';
 import 'club_theme.dart';
 
-const classicPaperColor = Color(0xFFF7F5E9);
-const classicInkColor = Color(0xFF102E1B);
-const classicGreenColor = Color(0xFF00542E);
-const classicSoftGreenColor = Color(0xFFDEEDD0);
-const classicButtonColor = Color(0xFFE7E9E2);
+/// Same color source as the current presentation, with the classic layout.
+ClassicTheme classic98PresentationPalette(ClassicTheme current) {
+  final p = current.paper;
+  return ClassicTheme(
+    background: p.surface,
+    surface: p.surface,
+    surfaceAlternate: p.surfaceAlternate,
+    primary: current.primary,
+    secondary: current.secondary,
+    textPrimary: p.textPrimary,
+    textSecondary: p.textSecondary,
+    accent: p.accent,
+    border: p.border,
+    buttonBackground: current.buttonBackground,
+    buttonText: current.buttonText,
+    selectedBackground: p.selectedBackground,
+    selectedText: p.selectedText,
+    tableHeader: p.tableHeader,
+    tableRow: p.tableRow,
+    tableRowAlternate: p.tableRowAlternate,
+    strongTeamColors: current.strongTeamColors,
+    classicPresentation: true,
+  );
+}
 
-/// Presentation palette only. Never written to club colors or world state.
-const classic98Palette = ClassicTheme(
-  background: classicPaperColor,
-  surface: classicPaperColor,
-  surfaceAlternate: classicSoftGreenColor,
-  primary: classicGreenColor,
-  secondary: Color(0xFF003D2B),
-  textPrimary: classicInkColor,
-  textSecondary: Color(0xFF31563B),
-  accent: classicGreenColor,
-  border: Color(0xFF8BA88D),
-  buttonBackground: classicButtonColor,
-  buttonText: classicInkColor,
-  selectedBackground: Color(0xFFB8DDA0),
-  selectedText: classicInkColor,
-  tableHeader: classicGreenColor,
-  tableRow: classicPaperColor,
-  tableRowAlternate: Color(0xFFE4EED8),
-  classicPresentation: true,
-);
+final classic98Palette = classic98PresentationPalette(ClassicTheme.derive());
 
-ThemeData classic98Theme() => classic98Palette.material().copyWith(
-  textTheme: ThemeData.light().textTheme.apply(
-    fontFamily: 'ClassicCondensed',
-    bodyColor: classicInkColor,
-    displayColor: classicInkColor,
-  ),
-  scaffoldBackgroundColor: classicPaperColor,
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: classic98Palette.material().elevatedButtonTheme.style?.copyWith(
-      shape: const WidgetStatePropertyAll(BeveledRectangleBorder()),
-      minimumSize: const WidgetStatePropertyAll(Size(44, 44)),
-    ),
-  ),
-  popupMenuTheme: const PopupMenuThemeData(
-    color: classicButtonColor,
-    shape: BeveledRectangleBorder(),
-    textStyle: TextStyle(
+ThemeData classic98Theme({ClassicTheme? current}) {
+  final palette = current == null
+      ? classic98Palette
+      : classic98PresentationPalette(current);
+  return palette.material().copyWith(
+    textTheme: ThemeData.light().textTheme.apply(
       fontFamily: 'ClassicCondensed',
-      color: classicInkColor,
-      fontSize: 15,
+      bodyColor: palette.textPrimary,
+      displayColor: palette.textPrimary,
     ),
-  ),
-);
+    scaffoldBackgroundColor: palette.surface,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: palette.material().elevatedButtonTheme.style?.copyWith(
+        shape: const WidgetStatePropertyAll(BeveledRectangleBorder()),
+        minimumSize: const WidgetStatePropertyAll(Size(44, 44)),
+      ),
+    ),
+    popupMenuTheme: PopupMenuThemeData(
+      color: palette.surface,
+      shape: const BeveledRectangleBorder(),
+      textStyle: TextStyle(
+        fontFamily: 'ClassicCondensed',
+        color: palette.textPrimary,
+        fontSize: 15,
+      ),
+    ),
+  );
+}
 
 class RetroBevel extends StatelessWidget {
   final Widget child;
-  final Color color;
+  final Color? color;
   final EdgeInsetsGeometry padding;
   const RetroBevel({
     super.key,
     required this.child,
-    this.color = classicButtonColor,
+    this.color,
     this.padding = const EdgeInsets.all(3),
   });
   @override
   Widget build(BuildContext context) => Container(
     padding: padding,
     decoration: BoxDecoration(
-      color: color,
+      color: color ?? ClassicTheme.of(context).surface,
       border: const Border(
         top: BorderSide(color: Colors.white, width: 2),
         left: BorderSide(color: Colors.white, width: 2),
@@ -95,10 +100,11 @@ class RetroButton extends StatelessWidget {
     button: true,
     enabled: onPressed != null,
     child: Material(
-      color: classicButtonColor,
+      color: ClassicTheme.of(context).buttonBackground,
       child: InkWell(
         onTap: onPressed,
         child: RetroBevel(
+          color: ClassicTheme.of(context).buttonBackground,
           padding: EdgeInsets.symmetric(
             horizontal: compact ? 3 : 10,
             vertical: 8,
@@ -113,7 +119,9 @@ class RetroButton extends StatelessWidget {
                   Icon(
                     icon,
                     size: 23,
-                    color: onPressed == null ? Colors.grey : classicInkColor,
+                    color: onPressed == null
+                        ? Colors.grey
+                        : ClassicTheme.of(context).buttonText,
                   ),
                   const SizedBox(width: 6),
                 ],
@@ -123,10 +131,13 @@ class RetroButton extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: Text(
                             label,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style:
+                                const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ).copyWith(
+                                  color: ClassicTheme.of(context).buttonText,
+                                ),
                           ),
                         )
                       : Text(
@@ -137,7 +148,7 @@ class RetroButton extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: onPressed == null
                                 ? const Color(0xFF666666)
-                                : classicInkColor,
+                                : ClassicTheme.of(context).buttonText,
                           ),
                         ),
                 ),
@@ -156,7 +167,7 @@ class RetroTitle extends StatelessWidget {
   const RetroTitle({super.key, required this.title, this.trailing});
   @override
   Widget build(BuildContext context) => Container(
-    color: const Color(0xFF073B94),
+    color: ClassicTheme.of(context).primary,
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
     child: Row(
       children: [
@@ -189,19 +200,22 @@ class RetroSection extends StatelessWidget {
   Widget build(BuildContext context) => Container(
     margin: const EdgeInsets.only(bottom: 10),
     decoration: BoxDecoration(
-      color: classicPaperColor,
-      border: Border.all(color: classic98Palette.border),
+      color: ClassicTheme.of(context).surface,
+      border: Border.all(color: ClassicTheme.of(context).border),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          color: classicGreenColor,
+          color: ClassicTheme.of(context).primary,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
           child: Text(
             title,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: readableInk(
+                ClassicTheme.of(context).primary,
+                Colors.white,
+              ),
               fontSize: 19,
               fontWeight: FontWeight.bold,
             ),
@@ -222,6 +236,7 @@ class RetroTable extends StatelessWidget {
   final void Function(int)? onSelect;
   final Set<int> cyanRows;
   final bool dense;
+  final Map<int, Widget> leadingCells;
   const RetroTable({
     super.key,
     required this.headers,
@@ -231,40 +246,49 @@ class RetroTable extends StatelessWidget {
     this.onSelect,
     this.cyanRows = const {},
     this.dense = false,
+    this.leadingCells = const {},
   });
   @override
   Widget build(BuildContext context) => Container(
-    color: classicPaperColor,
+    color: ClassicTheme.of(context).surface,
     padding: const EdgeInsets.all(4),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _line(headers, -1, header: true),
+        _line(context, headers, -1, header: true),
         if (rows.isEmpty)
-          const Padding(
-            padding: EdgeInsets.all(18),
+          Padding(
+            padding: const EdgeInsets.all(18),
             child: Text(
               'Nenhum registro disponível.',
-              style: TextStyle(color: classicInkColor),
+              style: TextStyle(color: ClassicTheme.of(context).textPrimary),
             ),
           ),
-        for (var i = 0; i < rows.length; i++) _line(rows[i], i),
+        for (var i = 0; i < rows.length; i++) _line(context, rows[i], i),
       ],
     ),
   );
-  Widget _line(List<String> cells, int index, {bool header = false}) {
+  Widget _line(
+    BuildContext context,
+    List<String> cells,
+    int index, {
+    bool header = false,
+  }) {
+    final t = ClassicTheme.of(context);
     final background = header
-        ? classic98Palette.tableHeader
+        ? t.tableHeader
         : selected == index
-        ? classic98Palette.selectedBackground
+        ? t.selectedBackground
         : index.isEven
-        ? classic98Palette.tableRow
-        : classic98Palette.tableRowAlternate;
+        ? t.tableRow
+        : t.tableRowAlternate;
     final ink = header
-        ? Colors.white
+        ? readableInk(background, t.textPrimary)
         : cyanRows.contains(index)
         ? readableOn(const Color(0xFF00BDCF), background)
-        : classicInkColor;
+        : selected == index
+        ? t.selectedText
+        : t.textPrimary;
     final content = Container(
       constraints: BoxConstraints(
         minHeight: header
@@ -278,7 +302,7 @@ class RetroTable extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
         color: background,
-        border: Border(bottom: BorderSide(color: classic98Palette.border)),
+        border: Border(bottom: BorderSide(color: t.border)),
       ),
       child: Row(
         children: [
@@ -287,7 +311,9 @@ class RetroTable extends StatelessWidget {
               flex: flex?[i] ?? 1,
               child: Padding(
                 padding: const EdgeInsets.only(right: 4),
-                child: i == 0 && cells[i].startsWith('● ')
+                child: !header && i == 0 && leadingCells.containsKey(index)
+                    ? leadingCells[index]!
+                    : i == 0 && cells[i].startsWith('● ')
                     ? Row(
                         children: [
                           const Icon(

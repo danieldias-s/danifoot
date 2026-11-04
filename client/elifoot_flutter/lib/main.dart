@@ -123,7 +123,7 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
         title: 'Liga Clássica 98 — 015B',
         debugShowCheckedModeBanner: false,
         theme: presentation.version == PresentationVersion.classic
-            ? classic98Theme()
+            ? classic98Theme(current: appearance.theme)
             : appearance.theme.material(),
         routerDelegate: router,
         routeInformationParser: const MatchRouteParser(),
@@ -847,7 +847,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
     if (widget.presentation?.version == PresentationVersion.classic) {
       return Theme(
-        data: classic98Theme(),
+        data: classic98Theme(
+          current: widget.appearance?.theme ?? ClassicTheme.derive(),
+        ),
         child: Builder(builder: _buildClassic98Shell),
       );
     }
@@ -3130,6 +3132,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       compactClassic:
           widget.presentation?.version == PresentationVersion.classic,
       stadiumOnly: _classicPage == 'stadium',
+      bankOnly: _classicPage == 'bank',
       club: _myClubDetail!,
       data: _financesData ?? {},
       season: (_snapshot?['seasonNumber'] as num? ?? 1).toInt(),
