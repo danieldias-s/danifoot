@@ -77,7 +77,11 @@ class ClassicPaperPanel extends StatelessWidget {
                   if (icon != null) ...[
                     Icon(
                       icon,
-                      color: iconColor ?? global.textPrimary,
+                      color:
+                          iconColor ??
+                          (global.classicPresentation
+                              ? Colors.white
+                              : global.textPrimary),
                       size: 22,
                     ),
                     const SizedBox(width: 10),
@@ -340,34 +344,39 @@ class _ClassicStandingsState extends State<ClassicStandings> {
                     horizontal: 6,
                     vertical: 9,
                   ),
-                  child: line([
-                    number('#'),
-                    Expanded(
-                      flex: 4,
-                      child: Text(
-                        'CLUBE',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                  child: DefaultTextStyle.merge(
+                    style: TextStyle(
+                      color: t.classicPresentation ? Colors.white : null,
                     ),
-                    if (!mobile)
-                      const Expanded(
-                        flex: 3,
+                    child: line([
+                      number('#'),
+                      Expanded(
+                        flex: 4,
                         child: Text(
-                          'TÉCNICO',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          'CLUBE',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                    for (final label in labels) number(label),
-                    if (!mobile)
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          'ZONA',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                      if (!mobile)
+                        const Expanded(
+                          flex: 3,
+                          child: Text(
+                            'TÉCNICO',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                  ]),
+                      for (final label in labels) number(label),
+                      if (!mobile)
+                        const Expanded(
+                          flex: 2,
+                          child: Text(
+                            'ZONA',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                    ]),
+                  ),
                 ),
                 if (widget.rows.isEmpty)
                   const Padding(
@@ -594,31 +603,39 @@ class ClassicFixtureList extends StatelessWidget {
                     horizontal: 10,
                     vertical: 7,
                   ),
-                  child: Row(
-                    children: [
-                      SizedBox(width: 35, child: cell('#', heading: true)),
-                      Expanded(flex: 4, child: cell('MANDANTE', heading: true)),
-                      Expanded(
-                        flex: 4,
-                        child: cell('VISITANTE', heading: true),
-                      ),
-                      SizedBox(
-                        width: 90,
-                        child: cell(
-                          'PLACAR',
-                          heading: true,
-                          align: TextAlign.center,
+                  child: DefaultTextStyle.merge(
+                    style: TextStyle(
+                      color: t.classicPresentation ? Colors.white : null,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 35, child: cell('#', heading: true)),
+                        Expanded(
+                          flex: 4,
+                          child: cell('MANDANTE', heading: true),
                         ),
-                      ),
-                      SizedBox(
-                        width: 150,
-                        child: cell(
-                          'SITUAÇÃO',
-                          heading: true,
-                          align: TextAlign.center,
+                        Expanded(
+                          flex: 4,
+                          child: cell('VISITANTE', heading: true),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 90,
+                          child: cell(
+                            'PLACAR',
+                            heading: true,
+                            align: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 150,
+                          child: cell(
+                            'SITUAÇÃO',
+                            heading: true,
+                            align: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               for (var i = 0; i < fixtures.length; i++)

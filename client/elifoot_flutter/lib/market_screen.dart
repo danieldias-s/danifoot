@@ -892,31 +892,31 @@ class _MarketScreenState extends State<MarketScreen> {
           else
             for (final p in rows)
               Container(
-                color: Colors.black,
+                color: classicPaperColor,
                 child: Theme(
                   data: Theme.of(context).copyWith(
                     textTheme: Theme.of(context).textTheme.apply(
-                      bodyColor: const Color(0xFFFFE13B),
-                      displayColor: const Color(0xFFFFE13B),
+                      bodyColor: classicInkColor,
+                      displayColor: classicInkColor,
                     ),
                     expansionTileTheme: const ExpansionTileThemeData(
-                      iconColor: Color(0xFFFFE13B),
-                      collapsedIconColor: Color(0xFFFFE13B),
-                      textColor: Color(0xFFFFE13B),
-                      collapsedTextColor: Color(0xFFFFE13B),
+                      iconColor: classicInkColor,
+                      collapsedIconColor: classicInkColor,
+                      textColor: classicInkColor,
+                      collapsedTextColor: classicInkColor,
                     ),
                   ),
                   child: ExpansionTile(
                     title: Text(
                       '${p['displayName']} (${marketPosition(p['position'])})',
                       style: const TextStyle(
-                        color: Color(0xFFFFE13B),
+                        color: classicInkColor,
                         fontSize: 16,
                       ),
                     ),
                     subtitle: Text(
                       'Força: ${p['strength']} • ${formatAuctionMoney((auction ? p['minimumBid'] : p['askingPrice']) as num? ?? 0)}\n${p['sellerClubName'] ?? 'Livre'}',
-                      style: const TextStyle(color: Color(0xFFFFE13B)),
+                      style: const TextStyle(color: classicInkColor),
                     ),
                     childrenPadding: const EdgeInsets.all(10),
                     children: [

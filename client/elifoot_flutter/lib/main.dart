@@ -202,8 +202,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           if (c is Map && c['id'] != null) {
             _liveClubs['${c['id']}'] = Map<String, dynamic>.from(c);
           }
-          if (c is! Map || c['colorPalette'] is! Map) continue;
-          final p = Map<String, dynamic>.from(c['colorPalette'] as Map);
+          if (c is! Map) continue;
+          final p = clubMatchPalette(c);
+          if (p == null) continue;
           _clubPaletteById[c['id'].toString()] = p;
           if (c['name'] != null &&
               !duplicateNames.contains(c['name'].toString())) {

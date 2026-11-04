@@ -187,7 +187,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
-        backgroundColor: const Color(0xFFC0C0C0),
+        backgroundColor: classicButtonColor,
         builder: (ctx) => SafeArea(
           child: SizedBox(
             height: MediaQuery.sizeOf(ctx).height * .8,
@@ -272,7 +272,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                       ),
                       if (!mobile)
                         Container(
-                          color: const Color(0xFFC0C0C0),
+                          color: classicButtonColor,
                           child: Row(
                             children: [
                               for (final title in [
@@ -289,7 +289,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       if (_showMatchView || _matchLocked)
                         Container(
-                          color: const Color(0xFFFFCC00),
+                          color: classicPaperColor,
                           padding: const EdgeInsets.all(8),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -311,7 +311,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       if (_statusBanner != null)
                         Container(
-                          color: const Color(0xFFFFE894),
+                          color: classicSoftGreenColor,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Row(
                             children: [
@@ -332,13 +332,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         ),
                       Expanded(
                         child: ColoredBox(
-                          color: const Color(0xFFFFCC00),
+                          color: classicPaperColor,
                           child: _retroBody(ctx, mobile),
                         ),
                       ),
                       if (!_matchLocked)
                         Container(
-                          color: const Color(0xFFC0C0C0),
+                          color: classicButtonColor,
                           padding: const EdgeInsets.all(3),
                           child: Row(
                             children: [
@@ -575,16 +575,16 @@ extension _Classic98Shell on _ElifootShellScreenState {
         else
           table,
         Container(
-          color: Colors.black,
+          color: classicPaperColor,
           padding: const EdgeInsets.all(8),
           child: const Row(
             children: [
-              Icon(Icons.circle, size: 9, color: Color(0xFF32DD32)),
+              Icon(Icons.circle, size: 9, color: Color(0xFF14851F)),
               SizedBox(width: 5),
               Flexible(
                 child: Text(
                   'Titular   – Banco   · Fora do banco   ! Indisponível',
-                  style: TextStyle(color: Color(0xFFFFE13B), fontSize: 14),
+                  style: TextStyle(color: classicInkColor, fontSize: 14),
                 ),
               ),
             ],
@@ -624,9 +624,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         if (club != null)
           ClubCrest(
             club: club['name'].toString(),
-            palette: club['colorPalette'] is Map
-                ? Map<String, dynamic>.from(club['colorPalette'])
-                : null,
+            palette: clubMatchPalette(club),
             size: 56,
           ),
         const SizedBox(width: 10),
@@ -730,7 +728,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         RetroSection(
           title: 'Próximo adversário',
           child: Container(
-            color: const Color(0xFFFF8600),
+            color: classicSoftGreenColor,
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -773,7 +771,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           value: morale is num ? (morale / 100).clamp(0, 1).toDouble() : 0,
           minHeight: 18,
           color: const Color(0xFF50A550),
-          backgroundColor: const Color(0xFFC0C0C0),
+          backgroundColor: classicButtonColor,
         ),
         const SizedBox(height: 22),
         KeyedSubtree(

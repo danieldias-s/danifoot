@@ -69,6 +69,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
   /// shows a neutral block with only a thin identity stripe.
   final bool strongTeamColors;
   final bool lightPanels;
+  final bool classicPresentation;
   const ClassicTheme({
     required this.background,
     required this.surface,
@@ -88,6 +89,7 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
     required this.tableRowAlternate,
     this.strongTeamColors = true,
     this.lightPanels = false,
+    this.classicPresentation = false,
   });
   static ClassicTheme of(BuildContext context) =>
       Theme.of(context).extension<ClassicTheme>() ?? derive();
@@ -435,6 +437,53 @@ class ClassicTheme extends ThemeExtension<ClassicTheme> {
   ClassicTheme lerp(covariant ClassicTheme? other, double t) => other ?? this;
 }
 
+/// Read-only presentation fallback for saves that predate catalog palettes.
+/// Registered legacy colors are not promoted to catalog-verified colors.
+Map<String, dynamic>? clubMatchPalette(Map? club) {
+  if (club == null) return null;
+  final palette = club['colorPalette'] is Map
+      ? Map<String, dynamic>.from(club['colorPalette'])
+      : null;
+  if (palette != null &&
+      (palette['colorVerified'] == true || palette['isPersonalized'] == true) &&
+      rgbColor(palette['primaryColor']) != null) {
+    return palette;
+  }
+  if (rgbColor(club['primaryColorHex']) == null) return palette;
+  return {
+    'primaryColor': club['primaryColorHex'],
+    if (rgbColor(club['secondaryColorHex']) != null)
+      'secondaryColor': club['secondaryColorHex'],
+    'registeredClubColors': true,
+  };
+}
+
+/// Preserve the registered background; adjust only rendered text for contrast.
+({Color background, Color ink}) matchTeamColors(
+  ClassicTheme theme,
+  Map? palette,
+) {
+  final known =
+      palette != null &&
+      (palette['colorVerified'] == true ||
+          palette['isPersonalized'] == true ||
+          palette['registeredClubColors'] == true);
+  final primary = rgbColor(known ? palette['primaryColor'] : null);
+  if (!theme.strongTeamColors || primary == null) {
+    return (
+      background: theme.surface,
+      ink: readableInk(theme.surface, theme.textPrimary),
+    );
+  }
+  final secondary = rgbColor(palette?['secondaryColor']);
+  return (
+    background: primary,
+    ink: secondary == null
+        ? readableInk(primary)
+        : readableOn(secondary, primary),
+  );
+}
+
 class ClubThemeController extends ChangeNotifier {
   Map<String, dynamic>? palette;
   Map<String, dynamic> preferences = {'mode': 'Club', 'version': 0};
@@ -543,7 +592,9 @@ class TeamColorName extends StatelessWidget {
     final t = ClassicTheme.of(context), p = palette;
     final known =
         p != null &&
-        (p['colorVerified'] == true || p['isPersonalized'] == true);
+        (p['colorVerified'] == true ||
+            p['isPersonalized'] == true ||
+            p['registeredClubColors'] == true);
     final teamPrimary = rgbColor(known ? p['primaryColor'] : null);
     final secondary = rgbColor(known ? p['secondaryColor'] : null);
     // Neutral match mode keeps only a thin identity stripe in the team color.
@@ -555,7 +606,11 @@ class TeamColorName extends StatelessWidget {
     final ink = preferred != null && preferred != primary
         ? preferred
         : readableInk(primary);
-    final background = readableSurface(primary, ink);
+    final classic = matchTeamColors(t, p);
+    final background = t.classicPresentation
+        ? classic.background
+        : readableSurface(primary, ink);
+    final textInk = t.classicPresentation ? classic.ink : ink;
     final stripe = strong ? (secondary ?? t.border) : (teamPrimary ?? t.border);
     return Tooltip(
       message: name,
@@ -572,7 +627,7 @@ class TeamColorName extends StatelessWidget {
           maxLines: maxLines,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            color: ink,
+            color: textInk,
             fontSize: fontSize,
             fontWeight: highlight ? FontWeight.bold : FontWeight.normal,
           ),

@@ -1,5 +1,30 @@
 import 'dart:convert';
 import 'classic_match_board.dart' show classicDivisionLabel, classicCupLabel;
+import 'club_theme.dart' show clubMatchPalette;
+
+/// Copy only visual metadata, joining by club ID rather than display name.
+Map<String, dynamic> matchWithClubColors(
+  Map<String, dynamic> match,
+  Map<String, Map<String, dynamic>> clubs,
+) {
+  Map<String, dynamic>? palette(String side) {
+    final supplied = match['${side}ColorPalette'];
+    if (supplied is Map &&
+        (supplied['colorVerified'] == true ||
+            supplied['isPersonalized'] == true ||
+            supplied['registeredClubColors'] == true)) {
+      return Map<String, dynamic>.from(supplied);
+    }
+    return clubMatchPalette(clubs['${match['${side}ClubId']}']) ??
+        (supplied is Map ? Map<String, dynamic>.from(supplied) : null);
+  }
+
+  return {
+    ...match,
+    'homeColorPalette': palette('home'),
+    'awayColorPalette': palette('away'),
+  };
+}
 
 String matchIdentity(Map<String, dynamic> match) =>
     '${match['matchId'] ?? match['id'] ?? '${match['homeClubId']}:${match['awayClubId']}'}';
@@ -113,8 +138,8 @@ List<Map<String, dynamic>> calendarRoundMatches(
     'awayClubName': f['away'],
     'competitionType': round['competition'],
     'divisionTier': h?['divisionTier'],
-    'homeColorPalette': h?['colorPalette'],
-    'awayColorPalette': a?['colorPalette'],
+    'homeColorPalette': clubMatchPalette(h),
+    'awayColorPalette': clubMatchPalette(a),
     '_calendarOnly': true,
   };
 }).toList();

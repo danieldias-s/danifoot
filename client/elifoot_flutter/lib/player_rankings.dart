@@ -901,19 +901,24 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
         Container(
           color: t.tableHeader,
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          child: Row(
-            children: [
-              number('#', 25, heading: true),
-              const Expanded(
-                child: Text(
-                  'JOGADOR / CLUBE',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          child: DefaultTextStyle.merge(
+            style: TextStyle(
+              color: t.classicPresentation ? Colors.white : null,
+            ),
+            child: Row(
+              children: [
+                number('#', 25, heading: true),
+                const Expanded(
+                  child: Text(
+                    'JOGADOR / CLUBE',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              number('J', 30, heading: true),
-              number(metric, 55, heading: true),
-              const SizedBox(width: 18),
-            ],
+                number('J', 30, heading: true),
+                number(metric, 55, heading: true),
+                const SizedBox(width: 18),
+              ],
+            ),
           ),
         ),
         for (final (index, p) in players.indexed)
@@ -1818,6 +1823,7 @@ class ClassicTableHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = ClassicTheme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
@@ -1833,13 +1839,20 @@ class ClassicTableHeader extends StatelessWidget {
             alignment: WrapAlignment.spaceBetween,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Text(title, style: ClassicTheme.of(context).headingStyle),
+              Text(
+                title,
+                style: t.headingStyle.copyWith(
+                  color: t.classicPresentation ? Colors.white : null,
+                ),
+              ),
               if (trailing != null)
                 Text(
                   trailing!,
                   style: TextStyle(
                     fontSize: 10,
-                    color: ClassicTheme.of(context).textSecondary,
+                    color: t.classicPresentation
+                        ? Colors.white
+                        : t.textSecondary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -1847,7 +1860,13 @@ class ClassicTableHeader extends StatelessWidget {
           ),
           if (subtitle != null) ...[
             const SizedBox(height: 2),
-            Text(subtitle!, style: const TextStyle(fontSize: 11)),
+            Text(
+              subtitle!,
+              style: TextStyle(
+                fontSize: 11,
+                color: t.classicPresentation ? Colors.white : null,
+              ),
+            ),
           ],
         ],
       ),
@@ -2436,7 +2455,9 @@ class _ClassicTableState extends State<ClassicTable> {
                 ? 10
                 : 11,
             fontWeight: FontWeight.bold,
-            color: ClassicTheme.of(context).accent,
+            color: ClassicTheme.of(context).classicPresentation
+                ? Colors.white
+                : ClassicTheme.of(context).accent,
             fontFamily: widget.rankingStyle ? 'ClassicCondensed' : 'Roboto',
           ),
           columns: widget.columns.asMap().entries.map((entry) {

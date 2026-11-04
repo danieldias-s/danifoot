@@ -307,11 +307,13 @@ class ClassicMatchBoard extends StatelessWidget {
                   width: mobile ? 58 : 66,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 3),
-                  color: t.accent,
+                  color: t.classicPresentation ? Colors.black : t.accent,
                   child: Text(
                     '${match['homeGoals'] ?? '—'} x ${match['awayGoals'] ?? '—'}',
                     style: TextStyle(
-                      color: t.selectedText,
+                      color: t.classicPresentation
+                          ? Colors.white
+                          : t.selectedText,
                       fontWeight: FontWeight.w900,
                       fontSize: mobile ? 12 : 14,
                     ),

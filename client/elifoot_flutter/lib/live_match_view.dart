@@ -32,6 +32,7 @@ class LivePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = ClassicTheme.of(context);
+    final header = t.classicPresentation ? t.primary : liveBlue;
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
@@ -45,7 +46,7 @@ class LivePanel extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             decoration: BoxDecoration(
-              color: liveBlue,
+              color: header,
               border: Border(bottom: BorderSide(color: t.accent)),
             ),
             child: Row(
@@ -56,7 +57,10 @@ class LivePanel extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w900,
-                      color: t.accent,
+                      color: readableInk(
+                        header,
+                        t.classicPresentation ? Colors.white : t.accent,
+                      ),
                     ),
                   ),
                 ),
@@ -122,46 +126,60 @@ class SelectedMatchScoreboard extends StatelessWidget {
         fontWeight: FontWeight.w900,
         height: 1,
       );
-      Widget club(String side) => Expanded(
-        child: Tooltip(
-          message: '${match['${side}ClubName'] ?? '—'}',
-          child: Column(
-            children: [
-              ClubCrest(
-                club: '${match['${side}ClubName'] ?? ''}',
-                palette: livePalette(match, side),
-                size: small ? 30 : 42,
+      Widget club(String side) {
+        final colors = matchTeamColors(t, livePalette(match, side));
+        return Expanded(
+          child: Tooltip(
+            message: '${match['${side}ClubName'] ?? '—'}',
+            child: Container(
+              key: ValueKey('selected-$side-team-colors'),
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: colors.background,
+                borderRadius: BorderRadius.circular(3),
               ),
-              const SizedBox(height: 3),
-              Text(
-                '${match['${side}ClubName'] ?? '—'}',
-                key: ValueKey('selected-$side-name'),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                ).copyWith(fontSize: small ? 14 : 23),
+              child: Column(
+                children: [
+                  ClubCrest(
+                    club: '${match['${side}ClubName'] ?? ''}',
+                    palette: livePalette(match, side),
+                    size: small ? 30 : 42,
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    '${match['${side}ClubName'] ?? '—'}',
+                    key: ValueKey('selected-$side-name'),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w900,
+                      color: colors.ink,
+                    ).copyWith(fontSize: small ? 14 : 23),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      );
+        );
+      }
+
       Widget score(String side) => Container(
         width: small ? 37 : 56,
         height: small ? 36 : 46,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: t.accent,
+          color: t.classicPresentation ? Colors.black : t.accent,
           borderRadius: BorderRadius.circular(3),
         ),
         padding: const EdgeInsets.all(4),
         child: FittedBox(
           child: Text(
             '${match['${side}Goals'] ?? '—'}',
-            style: numberStyle.copyWith(color: t.selectedText),
+            style: numberStyle.copyWith(
+              color: t.classicPresentation ? Colors.white : t.selectedText,
+            ),
           ),
         ),
       );
@@ -169,7 +187,11 @@ class SelectedMatchScoreboard extends StatelessWidget {
         key: const Key('selected-match-scoreboard'),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(colors: [liveBlue, Color(0xFF030E49)]),
+          gradient: LinearGradient(
+            colors: t.classicPresentation
+                ? [t.secondary, const Color(0xFF002E20)]
+                : const [liveBlue, Color(0xFF030E49)],
+          ),
           border: Border.all(color: t.accent),
           borderRadius: BorderRadius.circular(4),
         ),
@@ -238,7 +260,7 @@ class SelectedMatchScoreboard extends StatelessWidget {
                 if (match['isExtraTime'] == true)
                   const Text(
                     'Prorrogação',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -249,7 +271,10 @@ class SelectedMatchScoreboard extends StatelessWidget {
                     match['awayPenaltyGoals'] != null)
                   Text(
                     'Pênaltis: ${match['homePenaltyGoals']} x ${match['awayPenaltyGoals']}',
-                    style: TextStyle(color: t.accent, fontSize: 11),
+                    style: TextStyle(
+                      color: t.classicPresentation ? Colors.white : t.accent,
+                      fontSize: 11,
+                    ),
                   ),
               ],
             ),
@@ -712,7 +737,12 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
       final cal = calendar.where((r) => r['roundNumber'] == round).firstOrNull;
       final games = round == current
           ? (snapshot['matches'] as List? ?? [])
-                .map((e) => Map<String, dynamic>.from(e as Map))
+                .map(
+                  (e) => matchWithClubColors(
+                    Map<String, dynamic>.from(e as Map),
+                    widget.clubs,
+                  ),
+                )
                 .toList()
           : cal == null
           ? <Map<String, dynamic>>[]
