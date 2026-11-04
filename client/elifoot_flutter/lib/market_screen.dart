@@ -4,6 +4,7 @@ import 'auction_config.dart';
 import 'club_theme.dart';
 import 'classic_layout.dart';
 import 'visual_components.dart';
+import 'classic98_widgets.dart';
 
 String marketPosition(dynamic position) => position is num
     ? const ['G', 'D', 'M', 'A'][position.toInt().clamp(0, 3)]
@@ -60,6 +61,7 @@ class MarketScreen extends StatefulWidget {
   final List<dynamic> squad;
   final MarketPreferences preferences;
   final bool locked;
+  final bool compactClassic;
   final Future<void> Function() refresh;
   const MarketScreen({
     super.key,
@@ -73,6 +75,7 @@ class MarketScreen extends StatefulWidget {
     required this.preferences,
     required this.refresh,
     this.locked = false,
+    this.compactClassic = false,
   });
   @override
   State<MarketScreen> createState() => _MarketScreenState();
@@ -80,6 +83,7 @@ class MarketScreen extends StatefulWidget {
 
 class _MarketScreenState extends State<MarketScreen> {
   bool _busy = false;
+  bool _classicOffersOnly = false;
   String? _message, _ownPlayerId;
   MarketPreferences get pref => widget.preferences;
   bool get _safe =>
@@ -419,6 +423,9 @@ class _MarketScreenState extends State<MarketScreen> {
               o['sellerClubId'] == widget.clubId,
         )
         .toList();
+    if (widget.compactClassic) {
+      return _classicMarket(rows, ownPlayers, offers, auction);
+    }
     return SingleChildScrollView(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -780,6 +787,289 @@ class _MarketScreenState extends State<MarketScreen> {
         ],
       ),
     );
+  }
+
+  /// Compact view reuses all existing commands, guards and confirmations above.
+  Widget _classicMarket(
+    List<Map<String, dynamic>> rows,
+    List<dynamic> ownPlayers,
+    List<dynamic> offers,
+    bool auction,
+  ) => SingleChildScrollView(
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text(
+          'MERCADO & LEILÃO',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        if (!_safe) const Text('Mercado disponível somente entre partidas.'),
+        if (widget.clubId == null)
+          const Text(
+            'Sem clube: consulta disponível; negociações exigem um clube.',
+          ),
+        if (_message != null)
+          Text(_message!, key: const Key('market-feedback')),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            for (final tab in [(0, 'Leilão'), (1, 'Compra direta')])
+              Expanded(
+                child: RetroButton(
+                  label: tab.$2,
+                  compact: true,
+                  onPressed: () => setState(() {
+                    pref.tab = tab.$1;
+                    _classicOffersOnly = false;
+                  }),
+                ),
+              ),
+            Expanded(
+              child: RetroButton(
+                label: 'Minhas ofertas',
+                compact: true,
+                onPressed: () => setState(() => _classicOffersOnly = true),
+              ),
+            ),
+          ],
+        ),
+        if (!_classicOffersOnly) ...[
+          DropdownButtonFormField<String>(
+            key: ValueKey('market-position-${pref.tab}'),
+            initialValue: pref.positions[pref.tab],
+            decoration: const InputDecoration(labelText: 'Posição'),
+            items: [
+              for (final p in ['ALL', 'G', 'D', 'M', 'A'])
+                DropdownMenuItem(
+                  value: p,
+                  child: Text(p == 'ALL' ? 'Todos' : p),
+                ),
+            ],
+            onChanged: (v) {
+              if (v != null) setState(() => pref.positions[pref.tab] = v);
+            },
+          ),
+          const SizedBox(height: 10),
+          if (rows.isEmpty)
+            const Text('Nenhum jogador corresponde aos filtros.'),
+          if (MediaQuery.sizeOf(context).width >= 1024)
+            RetroTable(
+              headers: const [
+                'JOGADOR',
+                'POS',
+                'FORÇA',
+                'CLUBE',
+                'VALOR',
+                'SITUAÇÃO',
+              ],
+              flex: const [5, 1, 1, 4, 3, 2],
+              rows: [
+                for (final p in rows)
+                  [
+                    '${p['displayName']}',
+                    marketPosition(p['position']),
+                    '${p['strength']}',
+                    '${p['sellerClubName'] ?? 'Livre'}',
+                    formatAuctionMoney(
+                      (auction
+                                  ? p['highestBidderClubId'] == null
+                                        ? p['minimumBid']
+                                        : p['currentBid']
+                                  : p['askingPrice'])
+                              as num? ??
+                          0,
+                    ),
+                    auction
+                        ? p['isClosed'] == true
+                              ? 'Encerrado'
+                              : 'Em leilão'
+                        : 'Preço fixo',
+                  ],
+              ],
+              onSelect: (i) => _classicMarketDetails(rows[i], auction),
+            )
+          else
+            for (final p in rows)
+              Container(
+                color: Colors.black,
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    textTheme: Theme.of(context).textTheme.apply(
+                      bodyColor: const Color(0xFFFFE13B),
+                      displayColor: const Color(0xFFFFE13B),
+                    ),
+                    expansionTileTheme: const ExpansionTileThemeData(
+                      iconColor: Color(0xFFFFE13B),
+                      collapsedIconColor: Color(0xFFFFE13B),
+                      textColor: Color(0xFFFFE13B),
+                      collapsedTextColor: Color(0xFFFFE13B),
+                    ),
+                  ),
+                  child: ExpansionTile(
+                    title: Text(
+                      '${p['displayName']} (${marketPosition(p['position'])})',
+                      style: const TextStyle(
+                        color: Color(0xFFFFE13B),
+                        fontSize: 16,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'Força: ${p['strength']} • ${formatAuctionMoney((auction ? p['minimumBid'] : p['askingPrice']) as num? ?? 0)}\n${p['sellerClubName'] ?? 'Livre'}',
+                      style: const TextStyle(color: Color(0xFFFFE13B)),
+                    ),
+                    childrenPadding: const EdgeInsets.all(10),
+                    children: [
+                      _details(p, auction: auction),
+                      RetroButton(
+                        label: auction ? 'Dar lance...' : 'Comprar / propor...',
+                        onPressed:
+                            !_canTrade ||
+                                p['sellerClubId'] == widget.clubId ||
+                                p['isClosed'] == true
+                            ? null
+                            : () => auction ? _bid(p) : _purchase(p),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          const SizedBox(height: 14),
+          if (widget.clubId != null)
+            RetroSection(
+              title: 'Anunciar jogador',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  DropdownButtonFormField<String>(
+                    key: ValueKey('market-own-player-$_ownPlayerId'),
+                    initialValue: _ownPlayerId,
+                    isExpanded: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Jogador do seu clube',
+                    ),
+                    items: [
+                      for (final p in ownPlayers)
+                        DropdownMenuItem(
+                          value: '${p['id']}',
+                          child: Text(
+                            '${p['displayName']} (${p['strength']})',
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                    ],
+                    onChanged: !_canTrade
+                        ? null
+                        : (v) => setState(() => _ownPlayerId = v),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      RetroButton(
+                        key: const Key('market-create-auction'),
+                        label: 'Leilão...',
+                        onPressed: !_canTrade || _ownPlayerId == null
+                            ? null
+                            : () => _announce(false),
+                      ),
+                      RetroButton(
+                        key: const Key('market-create-direct'),
+                        label: 'Preço fixo...',
+                        onPressed: !_canTrade || _ownPlayerId == null
+                            ? null
+                            : () => _announce(true),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+        ],
+        RetroSection(
+          title: 'Minhas ofertas',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (offers.isEmpty)
+                const Text('Nenhuma proposta para o seu clube.'),
+              for (final o in offers)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${o['playerDisplayName']} • ${formatAuctionMoney(o['offeredAmount'] as num? ?? 0)} • ${_offerStatus(o['status'].toString())}',
+                    ),
+                    if (o['status'] == 'Pending' &&
+                            o['sellerClubId'] == widget.clubId ||
+                        o['status'] == 'Countered' &&
+                            o['buyerClubId'] == widget.clubId)
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: [
+                          RetroButton(
+                            label: 'Aceitar...',
+                            onPressed: !_canTrade
+                                ? null
+                                : () => _respond(o, true),
+                          ),
+                          RetroButton(
+                            label: 'Recusar...',
+                            onPressed: !_canTrade
+                                ? null
+                                : () => _respond(o, false),
+                          ),
+                          if (o['status'] == 'Pending')
+                            RetroButton(
+                              label: 'Contraproposta...',
+                              onPressed: !_canTrade ? null : () => _counter(o),
+                            ),
+                        ],
+                      ),
+                  ],
+                ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Future<void> _classicMarketDetails(
+    Map<String, dynamic> player,
+    bool auction,
+  ) async {
+    final proceed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Jogador no mercado'),
+        content: _details(player, auction: auction),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('FECHAR'),
+          ),
+          ElevatedButton(
+            onPressed:
+                !_canTrade ||
+                    player['sellerClubId'] == widget.clubId ||
+                    player['isClosed'] == true
+                ? null
+                : () => Navigator.pop(ctx, true),
+            child: Text(auction ? 'DAR LANCE...' : 'COMPRAR / PROPOR...'),
+          ),
+        ],
+      ),
+    );
+    if (proceed == true && mounted && _canTrade) {
+      if (auction) {
+        await _bid(player);
+      } else {
+        await _purchase(player);
+      }
+    }
   }
 
   Widget _marketTable(

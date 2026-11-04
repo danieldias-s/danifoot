@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'api_client.dart';
-import 'club_theme.dart';
 import 'presentation_version.dart';
 
 class PresentationScope extends InheritedNotifier<PresentationController> {
@@ -28,7 +27,7 @@ enum PresentationScreen {
   worldCreator,
 }
 
-/// Future reference-based classic screens plug in here. Their builders must use
+/// Reference-based classic screens plug in here. Their builders must use
 /// the existing application state/actions, not a second game implementation.
 class PresentationSurface extends StatelessWidget {
   final PresentationScreen screen;
@@ -57,49 +56,15 @@ class PresentationHost extends StatelessWidget {
   const PresentationHost({super.key, required this.child});
   @override
   Widget build(BuildContext context) {
-    final preparing =
-        PresentationScope.maybeOf(context)?.version ==
-        PresentationVersion.classic;
-    final theme = ClassicTheme.of(context);
     return Column(
       children: [
-        preparing
-            ? SafeArea(
-                bottom: false,
-                child: Material(
-                  key: const Key('classic-presentation-pending'),
-                  color: theme.selectedBackground,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.construction,
-                          size: 22,
-                          color: theme.selectedText,
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            'VERSÃO CLÁSSICA (ANTIGA) em preparação. Exibindo as telas da VERSÃO ATUAL enquanto aguardamos as referências do proprietário.',
-                            style: TextStyle(
-                              color: theme.selectedText,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            : const SizedBox.shrink(),
         Expanded(
           key: const Key('shared-game-navigation'),
-          child: Semantics(container: true, explicitChildNodes: true, child: child),
+          child: Semantics(
+            container: true,
+            explicitChildNodes: true,
+            child: child,
+          ),
         ),
       ],
     );
@@ -151,7 +116,7 @@ class PresentationVersionSelector extends StatelessWidget {
                     title: Text(value.label),
                     subtitle: value == PresentationVersion.classic
                         ? const Text(
-                            'Visual em preparação. Por enquanto, serão exibidas as telas atuais.',
+                            'Interface compacta inspirada no Elifoot 98. Mesmo jogo e mesmos dados.',
                           )
                         : null,
                   ),

@@ -1,0 +1,5 @@
+Execução de teste para D:\elifoot_98\.worktrees\presentation-versions-017a\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\.worktrees\presentation-versions-017a\artifacts\presentation-017a\dotnet-tests\classic-closing.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    29, Ignorado:     0, Total:    29, Duração: 10 s - Elifoot.Integration.Tests.dll (net10.0)

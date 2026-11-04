@@ -35,8 +35,10 @@ import 'lobby_room_status.dart';
 import 'local_trainer_panel.dart';
 import 'presentation_version.dart';
 import 'presentation_widgets.dart';
+import 'classic98_widgets.dart';
 
 part 'shell_actions.dart';
+part 'classic98_shell.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -107,11 +109,13 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
   Widget build(BuildContext context) => PresentationScope(
     controller: presentation,
     child: ListenableBuilder(
-      listenable: appearance,
+      listenable: Listenable.merge([appearance, presentation]),
       builder: (context, _) => MaterialApp.router(
         title: 'Liga Clássica 98 — 015B',
         debugShowCheckedModeBanner: false,
-        theme: appearance.theme.material(),
+        theme: presentation.version == PresentationVersion.classic
+            ? classic98Theme()
+            : appearance.theme.material(),
         routerDelegate: router,
         routeInformationParser: const MatchRouteParser(),
         builder: (_, child) =>
@@ -244,6 +248,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   int _activeTabIndex = 0;
   bool _showMatchView = false;
   bool _appearanceOpen = false;
+  String? _classicPage;
+  String? _classicSelectedPlayerId;
+  String? _classicRankingCategory;
   String _competitionTab = 'standings';
   final _tacticsPanelKey = GlobalKey();
   final _roundView = RoundViewCoordinator();
@@ -256,7 +263,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     setState(() {
       _showMatchView = _matchLocked || _navigation.path == '/partida';
       final index = MatchNavigationController.paths.indexOf(_navigation.path);
-      if (!_matchLocked && index >= 0) _activeTabIndex = index;
+      if (!_matchLocked && index >= 0) {
+        _activeTabIndex = index;
+        _classicPage = null;
+      }
     });
   }
 
@@ -800,6 +810,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     }
 
+    if (widget.presentation?.version == PresentationVersion.classic) {
+      return Theme(
+        data: classic98Theme(),
+        child: Builder(builder: _buildClassic98Shell),
+      );
+    }
+
     return LayoutBuilder(
       builder: (context, viewport) {
         final desktop = viewport.maxWidth >= 1024;
@@ -1239,14 +1256,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   /// Persistent Top Header:
   /// Shows `TÁTICAS ENVIADAS: X/N` + names in preparation, and `MINUTO XX'`, `SUBSTITUIÇÕES X/5`, `PARADAS X/3`, `PEDIR PARADA` in match!
-  Widget _buildTopSynchronizedHeader(double viewportWidth) {
+  /// Both presentations use the identical round action and server commands.
+  Widget _buildRoundPrimaryAction() {
     final snap = _snapshot;
     final state = snap?['roundState']?.toString() ?? 'PREPARING';
     final people = snap?['readyCounter']?['participants'] as List? ?? [];
     final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
     final ready = me?['isReady'] == true;
     final pause = snap?['activePauseWindow'] as Map?;
-    final t = ClassicTheme.of(context);
     Widget action;
     if (state == 'PREPARING') {
       action = ready
@@ -1313,6 +1330,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     } else {
       action = const Text('TEMPORADA ENCERRADA');
     }
+    return action;
+  }
+
+  Widget _buildTopSynchronizedHeader(double viewportWidth) {
+    final snap = _snapshot;
+    final state = snap?['roundState']?.toString() ?? 'PREPARING';
+    final people = snap?['readyCounter']?['participants'] as List? ?? [];
+    final me = people.where((p) => p['coachId'] == _coachId).firstOrNull;
+    final pause = snap?['activePauseWindow'] as Map?;
+    final t = ClassicTheme.of(context);
+    final action = _buildRoundPrimaryAction();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1898,6 +1926,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         return _buildCalendarScreen();
       case 6:
         return PlayerRankingsScreen(
+          requestedCategory: _classicRankingCategory,
           key: ValueKey('player-rankings-$_worldId'),
           apiClient: widget.apiClient,
           worldId: _worldId!,
@@ -3015,6 +3044,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Widget _buildMarketAndAuctionsScreen() => MarketScreen(
+    compactClassic: widget.presentation?.version == PresentationVersion.classic,
     key: ValueKey('market-$_worldId'),
     api: widget.apiClient,
     worldId: _worldId!,
@@ -3058,6 +3088,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final cash = (_myClubDetail!['cashBalance'] as num?)?.toDouble() ?? 0.0;
 
     return ClassicFinanceView(
+      compactClassic:
+          widget.presentation?.version == PresentationVersion.classic,
+      stadiumOnly: _classicPage == 'stadium',
       club: _myClubDetail!,
       data: _financesData ?? {},
       season: (_snapshot?['seasonNumber'] as num? ?? 1).toInt(),

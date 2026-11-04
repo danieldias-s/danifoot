@@ -270,6 +270,7 @@ class PlayerRankingsScreen extends StatefulWidget {
   final String worldId;
   final int currentSeason;
   final int revision;
+  final String? requestedCategory;
 
   const PlayerRankingsScreen({
     super.key,
@@ -277,6 +278,7 @@ class PlayerRankingsScreen extends StatefulWidget {
     required this.worldId,
     required this.currentSeason,
     this.revision = 0,
+    this.requestedCategory,
   });
 
   @override
@@ -295,6 +297,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
   @override
   void initState() {
     super.initState();
+    _category = widget.requestedCategory ?? _category;
     _season = widget.currentSeason;
     _future = _load();
   }
@@ -302,6 +305,12 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
   @override
   void didUpdateWidget(PlayerRankingsScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (widget.requestedCategory != null &&
+        oldWidget.requestedCategory != widget.requestedCategory) {
+      _category = widget.requestedCategory!;
+      _future = _load();
+      return;
+    }
     if (oldWidget.worldId != widget.worldId ||
         oldWidget.currentSeason != widget.currentSeason ||
         oldWidget.revision != widget.revision) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classic98_widgets.dart';
 import 'club_theme.dart';
 import 'visual_components.dart';
 import 'player_rankings.dart' show formatClassicMoney, ClassicSectionTitle;
@@ -375,12 +376,15 @@ Map<String, num> financeSummaryForRound(
 }
 
 class ClassicFinanceView extends StatelessWidget {
+  final bool compactClassic, stadiumOnly;
   final Map<String, dynamic> club, data;
   final int season, round;
   final List<Widget> actions;
   final Widget obligations;
   const ClassicFinanceView({
     super.key,
+    this.compactClassic = false,
+    this.stadiumOnly = false,
     required this.club,
     required this.data,
     required this.season,
@@ -394,6 +398,76 @@ class ClassicFinanceView extends StatelessWidget {
     final summary = financeSummaryForRound(ledger, season, round);
     final stadium = club['stadium'] as Map? ?? {};
     final t = ClassicTheme.of(context);
+    if (compactClassic) {
+      return SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              stadiumOnly ? 'ESTÁDIO' : 'FINANÇAS',
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            RetroSection(
+              title: '${stadium['stadiumName'] ?? 'Estádio'}',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Capacidade construída: ${stadium['builtCapacity'] ?? '—'} lugares',
+                  ),
+                  Text(
+                    'Capacidade utilizável: ${stadium['usableCapacity'] ?? '—'} lugares',
+                  ),
+                  Text(
+                    'Condição estrutural: ${stadium['conditionPercent'] ?? '—'}%',
+                  ),
+                  Text('Último público: ${stadium['lastAttendance'] ?? '—'}'),
+                  Text(
+                    'Ingresso: ${formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0)}',
+                  ),
+                  Text(
+                    'Manutenção por jogo: ${formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0)}',
+                  ),
+                  Text(
+                    'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
+                  ),
+                ],
+              ),
+            ),
+            for (final action in actions)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: _confirmClassicAction(context, action),
+              ),
+            if (!stadiumOnly) ...[
+              RetroSection(
+                title: 'Resumo da rodada $round',
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final key in [
+                      'income',
+                      'expenses',
+                      'tickets',
+                      'wages',
+                      'transfers',
+                      'prizes',
+                      'stadium',
+                    ])
+                      Text(
+                        '${const {'income': 'Receitas', 'expenses': 'Despesas', 'tickets': 'Bilheteria', 'wages': 'Salários', 'transfers': 'Transferências', 'prizes': 'Premiações', 'stadium': 'Estádio'}[key]}: ${formatClassicMoney(summary[key])}',
+                      ),
+                  ],
+                ),
+              ),
+              obligations,
+            ],
+          ],
+        ),
+      );
+    }
     return SingleChildScrollView(
       key: const Key('finance-screen-scroll'),
       padding: const EdgeInsets.all(12),
@@ -604,6 +678,36 @@ class ClassicFinanceView extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _confirmClassicAction(BuildContext context, Widget action) {
+    if (action is! ButtonStyleButton) return action;
+    return ElevatedButton(
+      key: action.key,
+      onPressed: action.onPressed == null
+          ? null
+          : () async {
+              final confirmed = await showDialog<bool>(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: const Text('Confirmar operação financeira'),
+                  content: action.child,
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(ctx, false),
+                      child: const Text('CANCELAR'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pop(ctx, true),
+                      child: const Text('CONFIRMAR'),
+                    ),
+                  ],
+                ),
+              );
+              if (confirmed == true && context.mounted) action.onPressed!();
+            },
+      child: action.child,
     );
   }
 

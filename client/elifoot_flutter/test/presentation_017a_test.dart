@@ -11,6 +11,9 @@ import 'package:elifoot_flutter/presentation_widgets.dart';
 import 'package:elifoot_flutter/world_initial_lobby_016b.dart';
 import 'package:elifoot_flutter/main.dart';
 import 'package:elifoot_flutter/squad_classic.dart';
+import 'package:elifoot_flutter/classic98_widgets.dart';
+import 'package:elifoot_flutter/classic_layout.dart';
+import 'package:elifoot_flutter/market_screen.dart';
 import 'classic_ux_014b_test.dart' show WaitingRoomApi, join;
 import 'world_catalog_lobby_016b_test.dart' show Fixture016B, owner;
 
@@ -58,6 +61,7 @@ class PendingApi extends ProfileApi {
 
 class GameplayPresentationApi extends WaitingRoomApi {
   int connects = 0, disconnects = 0;
+  int announcements = 0, renovations = 0;
   GameplayPresentationApi() : super(2);
   @override
   void connectRealtimeRoom(String worldId, String coachId) {
@@ -67,6 +71,25 @@ class GameplayPresentationApi extends WaitingRoomApi {
   @override
   void disconnectRealtime() {
     disconnects++;
+  }
+
+  @override
+  Future<void> listPlayerForTransfer(
+    String worldId,
+    String coachId,
+    String playerId,
+    double price,
+  ) async {
+    announcements++;
+  }
+
+  @override
+  Future<void> startStadiumRenovation(
+    String worldId,
+    String clubId,
+    String coachId,
+  ) async {
+    renovations++;
   }
 }
 
@@ -174,6 +197,212 @@ Future<void> close(WidgetTester t) async {
 
 void main() {
   testWidgets(
+    'Clássica usa envio, pausa e próxima rodada do fluxo compartilhado',
+    (t) async {
+      t.view.physicalSize = const Size(1366, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(t, api);
+      final controller = PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!;
+      await controller.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      final round = api.currentRound;
+      await t.tap(find.byKey(const Key('btn-enviar-tatica')));
+      await t.pumpAndSettle();
+      expect(api.currentRound, round);
+      expect(find.byKey(const Key('btn-retirar-pronto')), findsOneWidget);
+      await api.emit('RUNNING_FIRST_HALF');
+      await t.pumpAndSettle();
+      expect(find.byKey(const Key('btn-pedir-parada')), findsOneWidget);
+      expect(find.byType(PresentationVersionSelector), findsNothing);
+      await api.emit('RESULTS');
+      await t.pumpAndSettle();
+      await t.tap(find.byKey(const Key('btn-proxima-rodada')));
+      await t.pumpAndSettle();
+      expect(api.currentRound, round + 1);
+      await close(t);
+    },
+  );
+  testWidgets(
+    'Banco clássico troca goleiros pela validação compartilhada e retira reserva',
+    (t) async {
+      t.view.physicalSize = const Size(1366, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(t, api);
+      final controller = PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!;
+      await controller.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      final roster = t.widget<RetroTable>(
+        find.byKey(const Key('retro-roster')),
+      );
+      final starterName = roster.rows.firstWhere((r) => r.first == '● G')[1];
+      final rosterCount = roster.rows.length;
+      await t.tap(find.text('Banco'));
+      await t.pumpAndSettle();
+      var bank = t.widget<RetroTable>(find.byType(RetroTable));
+      final count = bank.rows.length;
+      final reserve = bank.rows.indexWhere((r) => r.first == 'G');
+      final reserveName = bank.rows[reserve][1];
+      bank.onSelect!(reserve);
+      await t.pumpAndSettle();
+      await t.tap(find.text('Promover / trocar com titular'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('$starterName (G)'));
+      await t.pumpAndSettle();
+      bank = t.widget<RetroTable>(find.byType(RetroTable));
+      expect(bank.rows.length, count);
+      expect(bank.rows.any((r) => r[1] == reserveName), isFalse);
+      expect(bank.rows.any((r) => r[1] == starterName), isTrue);
+      bank.onSelect!(bank.rows.indexWhere((r) => r[1] == starterName));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Retirar do banco'));
+      await t.pumpAndSettle();
+      expect(
+        t.widget<RetroTable>(find.byType(RetroTable)).rows.length,
+        count - 1,
+      );
+      await t.tap(find.text('Jogo'));
+      await t.pumpAndSettle();
+      expect(
+        t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).rows.length,
+        rosterCount,
+      );
+      expect(t.takeException(), isNull);
+      await close(t);
+    },
+  );
+  testWidgets(
+    'Operações econômicas clássicas exigem confirmação e seleção não anuncia',
+    (t) async {
+      t.view.physicalSize = const Size(1366, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(t, api);
+      final controller = PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!;
+      await controller.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).onSelect!(0);
+      await t.pumpAndSettle();
+      expect(api.announcements, 0);
+      await t.tap(find.text('Jogador'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Mercado...').last);
+      await t.pumpAndSettle();
+      expect(api.announcements, 0);
+      await t.tap(find.text('CANCELAR').last);
+      await t.pumpAndSettle();
+      expect(api.announcements, 0);
+      await t.tap(find.text('Estádio'));
+      await t.pumpAndSettle();
+      await t.tap(find.byKey(const ValueKey('btn-reformar-estadio')));
+      await t.pumpAndSettle();
+      expect(find.text('Confirmar operação financeira'), findsOneWidget);
+      expect(api.renovations, 0);
+      await t.tap(find.text('CANCELAR'));
+      await t.pumpAndSettle();
+      expect(api.renovations, 0);
+      await t.tap(find.byKey(const ValueKey('btn-reformar-estadio')));
+      await t.pumpAndSettle();
+      await t.tap(find.text('CONFIRMAR'));
+      await t.pumpAndSettle();
+      expect(api.renovations, 1);
+      await close(t);
+    },
+  );
+  for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
+    testWidgets('Telas clássicas reais e menus sem overflow em $width px', (
+      t,
+    ) async {
+      t.view.physicalSize = Size(width, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(t, api);
+      final shell = t.state(find.byType(ElifootShellScreen));
+      final controller = PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!;
+      await controller.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      expect(find.byKey(const Key('retro-roster')), findsOneWidget);
+      expect(find.byType(ClassicSquadTactics), findsNothing);
+      final roster = t.widget<RetroTable>(
+        find.byKey(const Key('retro-roster')),
+      );
+      final rowsBefore = roster.rows.map((r) => List<String>.of(r)).toList();
+      final version = api.roundVersion;
+      roster.onSelect!(0);
+      await t.pumpAndSettle();
+      expect(
+        t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).selected,
+        0,
+      );
+      expect(
+        t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).rows,
+        rowsBefore,
+      );
+      expect(api.roundVersion, version);
+      expect(t.state(find.byType(ElifootShellScreen)), same(shell));
+      if (width < 1024) {
+        await t.tap(find.byTooltip('Abrir menus'));
+        await t.pumpAndSettle();
+        await t.tap(find.text('Equipa'));
+        await t.pumpAndSettle();
+        await t.tap(find.text('Banco (Reservas)...'));
+      } else {
+        await t.tap(find.text('Equipa'));
+        await t.pumpAndSettle();
+        await t.tap(find.text('Banco (Reservas)...'));
+      }
+      await t.pumpAndSettle();
+      expect(find.text('BANCO (RESERVAS)'), findsOneWidget);
+      final bank = t.widget<RetroTable>(find.byType(RetroTable));
+      expect(
+        bank.rows.length,
+        rowsBefore.where((r) => r.first.startsWith('–')).length,
+      );
+      expect(t.takeException(), isNull);
+      await t.tap(find.text('Táticas').last);
+      await t.pumpAndSettle();
+      expect(find.byType(ClassicTacticalPitch), findsOneWidget);
+      expect(
+        t.getTopLeft(find.byKey(const Key('retro-roster'))).dy,
+        greaterThanOrEqualTo(
+          t.getBottomLeft(find.byType(ClassicTacticalPitch)).dy,
+        ),
+      );
+      expect(t.takeException(), isNull);
+      await t.tap(
+        find.text(width < 1024 ? 'Mercado' : 'Mercado & Leilão').last,
+      );
+      await t.pumpAndSettle();
+      expect(
+        t.widget<MarketScreen>(find.byType(MarketScreen)).compactClassic,
+        isTrue,
+      );
+      expect(t.takeException(), isNull);
+      await controller.select(api, PresentationVersion.current);
+      await t.pumpAndSettle();
+      expect(find.byKey(const Key('retro-roster')), findsNothing);
+      expect(t.takeException(), isNull);
+      await close(t);
+    });
+  }
+  testWidgets(
     'Entrar em sala com lobby inicial apresenta aparência e opções antes de atribuir clube',
     (t) async {
       t.view.physicalSize = const Size(1366, 1000);
@@ -238,6 +467,16 @@ void main() {
       await t.pumpAndSettle();
       await t.tap(find.byType(BackButton));
       await t.pumpAndSettle();
+      expect(find.byKey(const Key('retro-roster')), findsOneWidget);
+      await t.tap(find.text('Configurações'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('Aparência...'));
+      await t.pumpAndSettle();
+      await t.tap(find.byKey(const ValueKey('presentation-CURRENT')));
+      await t.pumpAndSettle();
+      await t.ensureVisible(find.byType(BackButton));
+      await t.tap(find.byType(BackButton));
+      await t.pumpAndSettle();
       final after = t.widget<ClassicSquadTactics>(
         find.byType(ClassicSquadTactics),
       );
@@ -257,10 +496,10 @@ void main() {
         t.element(find.byType(ElifootShellScreen)),
       )!;
       expect(
-        await controller.select(api, PresentationVersion.current, locked: true),
+        await controller.select(api, PresentationVersion.classic, locked: true),
         isFalse,
       );
-      expect(controller.version, PresentationVersion.classic);
+      expect(controller.version, PresentationVersion.current);
       expect(api.connects, connects);
       expect(api.disconnects, disconnects);
       await close(t);
@@ -320,7 +559,7 @@ void main() {
     },
   );
   testWidgets(
-    'Fallback explícito mantém Navigator e estado compartilhado ao alternar versões',
+    'Contêiner mantém Navigator e estado compartilhado ao alternar versões',
     (t) async {
       final api = ProfileApi(), controller = PresentationController();
       await controller.activate(api, owner);
@@ -340,9 +579,8 @@ void main() {
       await t.pumpAndSettle();
       expect(
         find.byKey(const Key('classic-presentation-pending')),
-        findsOneWidget,
+        findsNothing,
       );
-      expect(find.textContaining('em preparação'), findsOneWidget);
       expect(t.state(find.byType(CounterGame)), same(state));
       expect(state.count, 1);
       expect(
@@ -476,9 +714,7 @@ void main() {
     },
   );
   for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
-    testWidgets('Seleção e aviso de preparação são legíveis em $width px', (
-      t,
-    ) async {
+    testWidgets('Seleção da aparência é legível em $width px', (t) async {
       final api = ProfileApi(), controller = PresentationController();
       await controller.activate(api, owner);
       await harness(
@@ -500,7 +736,7 @@ void main() {
       await t.pumpAndSettle();
       expect(
         find.byKey(const Key('classic-presentation-pending')),
-        findsOneWidget,
+        findsNothing,
       );
       expect(t.takeException(), isNull);
       expect(

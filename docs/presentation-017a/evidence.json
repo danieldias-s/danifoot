@@ -1,0 +1,76 @@
+{
+  "worldId": "979db9ee-0aed-47a0-974b-ebc22eb84d94",
+  "provider": "PostgreSQL 18",
+  "sameWorld": true,
+  "trainerACurrent": true,
+  "preferences": {
+    "a": "CURRENT",
+    "b": "CLASSIC_98"
+  },
+  "snapshotBeforeHash": "c53f5f9a0bf25c73ee8999e1ab651bf6d0c480cf378a030089196316fef5f2fa",
+  "snapshotAfterHash": "c53f5f9a0bf25c73ee8999e1ab651bf6d0c480cf378a030089196316fef5f2fa",
+  "snapshotUnchanged": true,
+  "gameWritesDuringAppearanceSwitch": [],
+  "widths": [
+    {
+      "width": 360,
+      "viewport": 360,
+      "documentWidth": 360,
+      "hasRoster": true
+    },
+    {
+      "width": 390,
+      "viewport": 390,
+      "documentWidth": 390,
+      "hasRoster": true
+    },
+    {
+      "width": 430,
+      "viewport": 430,
+      "documentWidth": 430,
+      "hasRoster": true
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "documentWidth": 768,
+      "hasRoster": true
+    },
+    {
+      "width": 1366,
+      "viewport": 1366,
+      "documentWidth": 1366,
+      "hasRoster": true
+    },
+    {
+      "width": 1920,
+      "viewport": 1920,
+      "documentWidth": 1920,
+      "hasRoster": true
+    }
+  ],
+  "reconnectionRestoredClassic": true,
+  "cancelAnnouncementWithoutGameWrite": true,
+  "connectedParticipants": [
+    {
+      "nickname": "QA Atual",
+      "connected": true
+    },
+    {
+      "nickname": "QA Clássica",
+      "connected": true
+    }
+  ],
+  "rawPostgreSqlSave": {
+    "before": "8d31941352a7a9bd18a1b89406660705",
+    "after": "8d31941352a7a9bd18a1b89406660705",
+    "unchanged": true
+  },
+  "validation": {
+    "flutter": 320,
+    "dotnet": 29,
+    "analyze": "Sem erros ou novos avisos; 1 info preexistente em live_match_view.dart:241",
+    "webBuild": "release",
+    "roundControls": "Mesma ação compartilhada em preparação, jogo em andamento e resultados"
+  }
+}

@@ -1,0 +1,5 @@
+Analyzing elifoot_flutter...                                    
+
+   info - Unnecessary 'const' keyword - lib\live_match_view.dart:241:28 - unnecessary_const
+
+1 issue found. (ran in 5.6s)
