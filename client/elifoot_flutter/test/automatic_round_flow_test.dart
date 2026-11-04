@@ -4,7 +4,6 @@ import 'package:elifoot_flutter/classic_layout.dart';
 import 'package:elifoot_flutter/classic_match_board.dart';
 import 'package:elifoot_flutter/live_match_navigation.dart';
 import 'package:elifoot_flutter/main.dart';
-import 'package:elifoot_flutter/market_screen.dart';
 import 'package:elifoot_flutter/match_router.dart';
 import 'package:elifoot_flutter/mobile_classic.dart';
 import 'package:elifoot_flutter/presentation_version.dart';
@@ -17,6 +16,21 @@ class AutomaticRoundApi extends WaitingRoomApi {
   String competition = 'League';
   bool reserveLeftClub = false;
   List<String> sentBench = [];
+  final advances = <(int?, int?)>[];
+  @override
+  Future<Map<String, dynamic>> advanceToNextRound(
+    String worldId, {
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
+  }) {
+    advances.add((expectedSeasonNumber, expectedRoundNumber));
+    return super.advanceToNextRound(
+      worldId,
+      expectedSeasonNumber: expectedSeasonNumber,
+      expectedRoundNumber: expectedRoundNumber,
+    );
+  }
+
   final requestedTiers = <String>[];
   AutomaticRoundApi(super.humans);
   @override
@@ -199,18 +213,20 @@ void main() {
             expect(find.byType(ClassicMatchBoard), findsNothing);
             expect(find.text('CLASSIFICAÇÃO'), findsWidgets);
             expect(api.requestedTiers.last, 'QuartaDivisao');
-            expect(find.byKey(const Key('btn-proxima-rodada')), findsOneWidget);
-            await router.setNewRoutePath('/mercado');
-            await t.pumpAndSettle();
+            expect(find.byKey(const Key('btn-proxima-rodada')), findsNothing);
+            expect(api.advances, isEmpty);
+            await t.pump(const Duration(seconds: 4));
             await api.emit('RESULTS');
             await t.pumpAndSettle();
-            expect(
-              find.byType(MarketScreen),
-              findsOneWidget,
-              reason: 'Repeated snapshots must not pull the trainer back',
-            );
+            expect(router.currentConfiguration, '/divisoes');
+            expect(api.advances, isEmpty);
+            await t.pump(const Duration(seconds: 1));
+            await t.pumpAndSettle();
+            expect(router.currentConfiguration, '/plantel');
+            expect(api.currentRound, 2);
+            expect(api.advances, [(1, 1)]);
+            expect(find.byKey(const Key('btn-enviar-tatica')), findsOneWidget);
             api.competition = 'CupRoundOf32';
-            api.currentRound++;
             api.ready = 0;
             api.isReady = false;
             await api.emit('PREPARING');
@@ -226,8 +242,10 @@ void main() {
             await t.pumpAndSettle();
             expect(router.currentConfiguration, '/plantel');
             expect(find.byType(ClassicMatchBoard), findsNothing);
-            expect(find.text('JOGOS DA TAÇA CONCLUÍDOS'), findsOneWidget);
-            expect(find.byKey(const Key('btn-proxima-rodada')), findsOneWidget);
+            expect(api.currentRound, 3);
+            expect(api.advances, [(1, 1), (1, 2)]);
+            expect(find.byKey(const Key('btn-proxima-rodada')), findsNothing);
+            expect(find.byKey(const Key('btn-enviar-tatica')), findsOneWidget);
             if (classic) {
               expect(find.byKey(const Key('retro-roster')), findsOneWidget);
             } else if (width < 768) {

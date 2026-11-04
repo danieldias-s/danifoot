@@ -391,6 +391,7 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(MarketScreen), findsOneWidget);
         expect(tester.takeException(), isNull);
+        await tester.pumpWidget(const SizedBox());
       },
     );
   }

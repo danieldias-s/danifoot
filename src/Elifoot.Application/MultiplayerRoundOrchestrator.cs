@@ -1014,7 +1014,7 @@ public sealed partial class MultiplayerRoundOrchestrator
     /// (or concludes the season and starts Season + 1 if it was the final round).
     /// Resets the human ReadyCounter back to 0/N.
     /// </summary>
-    public async Task<LiveRoundSnapshotDto?> AdvanceToNextRoundPreparationAsync(Guid worldId, CancellationToken ct = default)
+    public async Task<LiveRoundSnapshotDto?> AdvanceToNextRoundPreparationAsync(Guid worldId, CancellationToken ct = default, int? expectedSeasonNumber = null, int? expectedRoundNumber = null)
     {
         var sem = GetLock(worldId);
         await sem.WaitAsync(ct);
@@ -1022,6 +1022,11 @@ public sealed partial class MultiplayerRoundOrchestrator
         {
             var world = await _repository.GetWorldAsync(worldId, ct);
             if (world == null) return null;
+
+            // A delayed automatic request must never advance a later completed round.
+            if ((expectedSeasonNumber.HasValue && world.SeasonNumber != expectedSeasonNumber) ||
+                (expectedRoundNumber.HasValue && world.RoundNumber != expectedRoundNumber))
+                return BuildLiveRoundSnapshotDto(world);
 
             if (world.RoundState is not (RoundState.RESULTS or RoundState.FINISHED))
             {

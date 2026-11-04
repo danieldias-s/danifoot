@@ -70,6 +70,20 @@ class WaitingRoomApi extends FakeGameplay011ApiClient {
     required String coachId,
     required int roundVersion,
   }) => _ready(worldId);
+  @override
+  Future<Map<String, dynamic>> advanceToNextRound(
+    String worldId, {
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
+  }) async {
+    ready = 0;
+    return super.advanceToNextRound(
+      worldId,
+      expectedSeasonNumber: expectedSeasonNumber,
+      expectedRoundNumber: expectedRoundNumber,
+    );
+  }
+
   Future<void> emit(String stage) async {
     currentRoundState = stage;
     roundVersion++;
@@ -271,11 +285,10 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.text('CLASSIFICAÇÃO'), findsWidgets);
         expect(find.byType(ClassicMatchBoard), findsNothing);
-        api.currentRound = 2;
-        api.ready = 0;
-        api.isReady = false;
-        await api.emit('PREPARING');
+        await tester.pump(const Duration(seconds: 5));
         await tester.pumpAndSettle();
+        expect(api.currentRound, 2);
+        expect(api.currentRoundState, 'PREPARING');
         expect(find.byType(ClassicMatchBoard), findsNothing);
         expect(find.byKey(const ValueKey('coach-main-panel')), findsOneWidget);
         expect(tester.takeException(), isNull);

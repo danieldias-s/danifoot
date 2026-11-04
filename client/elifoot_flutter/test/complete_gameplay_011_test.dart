@@ -711,7 +711,16 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   }
 
   @override
-  Future<Map<String, dynamic>> advanceToNextRound(String worldId) async {
+  Future<Map<String, dynamic>> advanceToNextRound(
+    String worldId, {
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
+  }) async {
+    if ((expectedSeasonNumber != null &&
+            expectedSeasonNumber != currentSeason) ||
+        (expectedRoundNumber != null && expectedRoundNumber != currentRound)) {
+      return getSnapshot(worldId);
+    }
     currentRound++;
     currentRoundState = 'PREPARING';
     isReady = false;
@@ -940,7 +949,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('CLASSIFICAÇÃO'), findsWidgets);
-      await tester.tap(find.byKey(const Key('btn-proxima-rodada')));
+      expect(find.byKey(const Key('btn-proxima-rodada')), findsNothing);
+      await tester.pump(const Duration(seconds: 5));
       await tester.pumpAndSettle();
       expect(find.textContaining('Rodada 2'), findsWidgets);
     },

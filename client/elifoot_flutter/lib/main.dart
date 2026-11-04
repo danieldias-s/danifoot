@@ -1,6 +1,7 @@
 import 'world_initial_lobby_016b.dart';
 import 'world_catalog_status_016b.dart';
 import 'import_admin_016a.dart';
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
@@ -269,6 +270,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   String _competitionTab = 'standings';
   final _tacticsPanelKey = GlobalKey();
   final _roundView = RoundViewCoordinator();
+  Timer? _postRoundTimer;
+  String? _postRoundKey;
+  bool _holdingClassification = false;
+  bool _autoPreparingRound = false;
   late final _navigation = widget.navigation ?? MatchNavigationController();
   bool _restoringSession = false;
   bool get _matchLocked =>
@@ -424,6 +429,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   @override
   void dispose() {
+    _cancelPostRoundPreparation();
     _navigation.removeListener(_onNavigationRequest);
     if (widget.navigation == null) _navigation.dispose();
     widget.apiClient.disconnectRealtime();
@@ -501,6 +507,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       setState(() {
         if (_worldId != worldId) {
           _snapshot = null;
+          _cancelPostRoundPreparation();
           _roundView.reset();
         }
         _worldId = worldId;
@@ -650,6 +657,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       }
       switch (_roundView.accept(next)) {
         case RoundViewDecision.match:
+          _cancelPostRoundPreparation();
           _appearanceOpen = false;
           _classicPage = null;
           _showMatchView = true;
@@ -675,20 +683,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _statusBanner = 'RODADA CONCLUÍDA';
           _navigation.navigate('/divisoes');
         case RoundViewDecision.coach:
+          _statusBanner = 'JOGOS DA TAÇA CONCLUÍDOS';
+          _returnToCoachHome();
         case RoundViewDecision.tactics:
-          if (next['roundState'] == 'RESULTS' ||
-              next['roundState'] == 'FINISHED') {
-            _statusBanner = 'JOGOS DA TAÇA CONCLUÍDOS';
-          }
-          _appearanceOpen = false;
-          _classicPage = null;
-          _mobileTacticsView = false;
-          _showMatchView = false;
-          _activeTabIndex = 0;
-          _navigation.navigate('/plantel');
+          _statusBanner = null;
+          _selectedStarterIds = [];
+          _selectedBenchIds = [];
+          if (!_holdingClassification) _returnToCoachHome();
         case RoundViewDecision.none:
           break;
       }
+      _schedulePostRoundPreparation(next);
     }
     final previousSeason = (_snapshot?['seasonNumber'] as num?)?.toInt();
     final nextSeason = (next?['seasonNumber'] as num?)?.toInt();
@@ -714,6 +719,98 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       });
     }
     return next;
+  }
+
+  void _returnToCoachHome() {
+    _appearanceOpen = false;
+    _classicPage = null;
+    _mobileTacticsView = false;
+    _showMatchView = false;
+    _activeTabIndex = 0;
+    _navigation.navigate('/plantel');
+  }
+
+  void _cancelPostRoundPreparation() {
+    _postRoundTimer?.cancel();
+    _postRoundTimer = null;
+    _postRoundKey = null;
+    _holdingClassification = false;
+    _autoPreparingRound = false;
+  }
+
+  bool _sameCompletedRound(String world, int season, int round) =>
+      _worldId == world &&
+      _snapshot?['seasonNumber'] == season &&
+      _snapshot?['roundNumber'] == round &&
+      const ['RESULTS', 'FINISHED'].contains(_snapshot?['roundState']);
+
+  void _schedulePostRoundPreparation(Map<String, dynamic> completed) {
+    if (!const ['RESULTS', 'FINISHED'].contains(completed['roundState'])) {
+      return;
+    }
+    final world = _worldId;
+    if (world == null) return;
+    final season = (completed['seasonNumber'] as num).toInt();
+    final round = (completed['roundNumber'] as num).toInt();
+    final key = '$world:$season:$round';
+    if (_postRoundKey == key) return;
+    _cancelPostRoundPreparation();
+    _postRoundKey = key;
+    final type = '${completed['competitionType'] ?? 'League'}';
+    _holdingClassification = type == 'League' || type == '0';
+    _postRoundTimer = Timer(
+      _holdingClassification ? const Duration(seconds: 5) : Duration.zero,
+      () {
+        if (!mounted || _worldId != world || _postRoundKey != key) return;
+        setState(() {
+          _holdingClassification = false;
+          _returnToCoachHome();
+        });
+        _prepareFollowingRound(world, season, round, key);
+      },
+    );
+  }
+
+  Future<void> _prepareFollowingRound(
+    String world,
+    int season,
+    int round,
+    String key,
+  ) async {
+    if (!mounted ||
+        _postRoundKey != key ||
+        _autoPreparingRound ||
+        !_sameCompletedRound(world, season, round)) {
+      return;
+    }
+    setState(() => _autoPreparingRound = true);
+    try {
+      final next = await widget.apiClient.advanceToNextRound(
+        world,
+        expectedSeasonNumber: season,
+        expectedRoundNumber: round,
+      );
+      if (!mounted || _worldId != world || _postRoundKey != key) return;
+      setState(() => _snapshot = _acceptSnapshot(next));
+      await _refreshClubAndSecondaryData();
+    } catch (_) {
+      if (mounted &&
+          _postRoundKey == key &&
+          _sameCompletedRound(world, season, round)) {
+        setState(
+          () =>
+              _statusBanner = 'Reconectando para preparar a próxima rodada...',
+        );
+        _postRoundTimer = Timer(
+          const Duration(seconds: 2),
+          () => _prepareFollowingRound(world, season, round, key),
+        );
+      }
+    } finally {
+      if (mounted && _worldId == world && _postRoundKey == key) {
+        setState(() => _autoPreparingRound = false);
+      }
+    }
   }
 
   bool get _waitingForRound =>
@@ -750,6 +847,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
 
   bool get _tacticsLocked =>
+      _holdingClassification ||
+      _autoPreparingRound ||
       _snapshot?['roundState'] != 'PREPARING' ||
       (_snapshot?['readyCounter']?['participants'] as List? ?? []).any(
         (p) => p['coachId'] == _coachId && p['isReady'] == true,
@@ -1349,7 +1448,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final ready = me?['isReady'] == true;
     final pause = snap?['activePauseWindow'] as Map?;
     Widget action;
-    if (state == 'PREPARING') {
+    if (_holdingClassification || _autoPreparingRound || state == 'RESULTS') {
+      action = Text(
+        _holdingClassification
+            ? 'CLASSIFICAÇÃO • RETORNO AO TREINADOR EM 5 SEGUNDOS'
+            : 'PREPARANDO PRÓXIMA RODADA...',
+      );
+    } else if (state == 'PREPARING') {
       action = ready
           ? OutlinedButton(
               key: const Key('btn-retirar-pronto'),
@@ -1375,24 +1480,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                     : 'ENVIAR TÁTICA',
               ),
             );
-    } else if (state == 'RESULTS') {
-      action = ElevatedButton(
-        key: const Key('btn-proxima-rodada'),
-        onPressed: _commandBusy
-            ? null
-            : () => _runUiCommand(() async {
-                final next = await widget.apiClient.advanceToNextRound(
-                  _worldId!,
-                );
-                setState(() {
-                  _snapshot = _acceptSnapshot(next);
-                  _activeTabIndex = 0;
-                  _selectedStarterIds = [];
-                });
-                await _refreshClubAndSecondaryData();
-              }),
-        child: const Text('AVANÇAR PRÓXIMA RODADA'),
-      );
     } else if (pause != null) {
       action = ElevatedButton(
         key: const Key('btn-header-confirmar-continuar'),
@@ -1565,6 +1652,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Future<void> _switchRoom() async {
     if (_matchLocked) return;
+    _cancelPostRoundPreparation();
     _shellScaffoldKey.currentState?.closeDrawer();
     widget.apiClient.disconnectRealtime();
     setState(() {

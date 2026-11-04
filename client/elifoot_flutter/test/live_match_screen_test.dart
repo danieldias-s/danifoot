@@ -483,6 +483,7 @@ void main() {
         reason: 'Stadium metadata refreshes after round settlement.',
       );
       expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
     },
   );
   testWidgets(

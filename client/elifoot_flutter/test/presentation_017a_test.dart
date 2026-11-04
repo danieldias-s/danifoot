@@ -221,7 +221,8 @@ void main() {
       expect(find.byType(PresentationVersionSelector), findsNothing);
       await api.emit('RESULTS');
       await t.pumpAndSettle();
-      await t.tap(find.byKey(const Key('btn-proxima-rodada')));
+      expect(find.byKey(const Key('btn-proxima-rodada')), findsNothing);
+      await t.pump(const Duration(seconds: 5));
       await t.pumpAndSettle();
       expect(api.currentRound, round + 1);
       await close(t);

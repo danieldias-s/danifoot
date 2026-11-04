@@ -519,9 +519,20 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
-  Future<Map<String, dynamic>> advanceToNextRound(String worldId) async {
+  Future<Map<String, dynamic>> advanceToNextRound(
+    String worldId, {
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
+  }) async {
     final res = await _http.post(
-      Uri.parse('$baseUrl/api/worlds/$worldId/next-round'),
+      Uri.parse('$baseUrl/api/worlds/$worldId/next-round').replace(
+        queryParameters: {
+          if (expectedSeasonNumber != null)
+            'expectedSeasonNumber': '$expectedSeasonNumber',
+          if (expectedRoundNumber != null)
+            'expectedRoundNumber': '$expectedRoundNumber',
+        },
+      ),
     );
     return _decodeResponse(res);
   }

@@ -417,10 +417,12 @@ app.MapPost("/api/worlds/{worldId:guid}/tick", async (
 
 app.MapPost("/api/worlds/{worldId:guid}/next-round", async (
     Guid worldId,
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
-    var snap = await orchestrator.AdvanceToNextRoundPreparationAsync(worldId, ct);
+    var snap = await orchestrator.AdvanceToNextRoundPreparationAsync(worldId, ct, expectedSeasonNumber, expectedRoundNumber);
     return snap == null ? Results.NotFound() : Results.Ok(snap);
 });
 

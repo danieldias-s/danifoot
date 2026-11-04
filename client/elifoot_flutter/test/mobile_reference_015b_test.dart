@@ -135,6 +135,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(MobileSquadScreen), findsOneWidget);
       expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox());
     },
   );
 }
