@@ -1,0 +1,59 @@
+{
+  "worldId": "e3a03240-5710-4230-a9d1-f396551d42ac",
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 1000
+    }
+  ],
+  "foreignInspection": {
+    "club": "Atlético Paulistano",
+    "minuteBefore": 18,
+    "minuteAfter": 20,
+    "stateBefore": "RUNNING_FIRST_HALF",
+    "stateAfter": "RUNNING_FIRST_HALF",
+    "pauseRequests": 0,
+    "webOpen": 1,
+    "mobileOpen": 1
+  },
+  "ownInspection": {
+    "state": "GLOBAL_PAUSED",
+    "minuteBefore": 36,
+    "minuteAfter": 36,
+    "pauseRequests": 1
+  },
+  "substitution": {
+    "state": "GLOBAL_PAUSED",
+    "out": "João Gomes",
+    "in": "Paulo Carvalho",
+    "subCount": 1,
+    "pauseWindowsUsed": 1,
+    "outStillPlaying": false,
+    "inPlaying": true
+  },
+  "resume": {
+    "state": "RUNNING_FIRST_HALF",
+    "minute": 38
+  },
+  "browserErrors": [],
+  "afterRound": {
+    "state": "PREPARING",
+    "round": 2,
+    "urls": [
+      "http://127.0.0.1:5242/#/plantel",
+      "http://127.0.0.1:5242/#/plantel"
+    ]
+  },
+  "finalBuild": {
+    "round": 2,
+    "foreignClub": "Palestra Verde",
+    "consultationTextPresent": true,
+    "pauseRequestsDuringConsultation": 0,
+    "ownPauseState": "GLOBAL_PAUSED",
+    "ownPanelText": true
+  }
+}

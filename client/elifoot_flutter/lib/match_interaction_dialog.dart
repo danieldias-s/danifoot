@@ -12,6 +12,11 @@ String _pos(dynamic value) => value is num
     ? const ['G', 'D', 'M', 'A'][value.toInt().clamp(0, 3)]
     : '${value ?? ''}';
 
+String _dialogFont(BuildContext context) =>
+    ClassicTheme.of(context).classicPresentation
+    ? 'ClassicCondensed'
+    : 'Roboto';
+
 class MatchInteractionOverlay extends StatelessWidget {
   final Widget child;
   final Widget? interaction;
@@ -60,7 +65,11 @@ class ClassicMatchActionDialog extends StatelessWidget {
         maxHeight: MediaQuery.sizeOf(context).height * .90,
       ),
       child: DefaultTextStyle(
-        style: const TextStyle(fontFamily: 'Roboto', fontSize: 12, color: _ink),
+        style: TextStyle(
+          fontFamily: _dialogFont(context),
+          fontSize: 12,
+          color: _ink,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -96,24 +105,26 @@ Widget _actionButton({
   required String label,
   required IconData icon,
   required VoidCallback? onPressed,
-}) => OutlinedButton.icon(
-  key: key,
-  onPressed: onPressed,
-  icon: Icon(icon, size: 19),
-  label: Text(
-    label,
-    style: const TextStyle(
-      fontFamily: 'Roboto',
-      fontSize: 11,
-      fontWeight: FontWeight.bold,
+}) => Builder(
+  builder: (context) => OutlinedButton.icon(
+    key: key,
+    onPressed: onPressed,
+    icon: Icon(icon, size: 19),
+    label: Text(
+      label,
+      style: TextStyle(
+        fontFamily: _dialogFont(context),
+        fontSize: 11,
+        fontWeight: FontWeight.bold,
+      ),
     ),
-  ),
-  style: OutlinedButton.styleFrom(
-    backgroundColor: Colors.white,
-    foregroundColor: _ink,
-    disabledForegroundColor: Colors.grey,
-    side: const BorderSide(color: _line),
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+    style: OutlinedButton.styleFrom(
+      backgroundColor: Colors.white,
+      foregroundColor: _ink,
+      disabledForegroundColor: Colors.grey,
+      side: const BorderSide(color: _line),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+    ),
   ),
 );
 
@@ -178,11 +189,11 @@ class _PenaltyChoiceDialogState extends State<PenaltyChoiceDialog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+          Text(
             'PÊNALTI',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Roboto',
+              fontFamily: _dialogFont(context),
               fontSize: 36,
               letterSpacing: 5,
               fontWeight: FontWeight.w900,
@@ -524,8 +535,8 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
                   ? formation
                   : '4-4-2',
               dropdownColor: Colors.white,
-              style: const TextStyle(
-                fontFamily: 'Roboto',
+              style: TextStyle(
+                fontFamily: _dialogFont(context),
                 color: _ink,
                 fontSize: 12,
               ),
