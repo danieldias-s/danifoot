@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-04",
+  "scope": "Contas e mundos de QA criados exclusivamente para esta validação",
+  "singleHuman": {
+    "worldId": "d2d37f09-555e-49d4-ace1-eba865f0d4bf",
+    "start": "RUNNING_FIRST_HALF",
+    "result": "RESULTS",
+    "competition": "League",
+    "automaticStartUrl": "/#/partida",
+    "automaticEndUrl": "/#/divisoes"
+  },
+  "twoHumans": {
+    "worldId": "d7c9ffc5-8b3b-4b61-a6fe-fc1aefb7dfcc",
+    "participants": 2,
+    "presentations": [
+      "CURRENT",
+      "CLASSIC_98"
+    ],
+    "waitingStage": "PREPARING",
+    "waitingReadyCount": 1,
+    "totalHumans": 2,
+    "startedStage": "RUNNING_FIRST_HALF",
+    "blockedRouteAttempts": {
+      "a": "http://127.0.0.1:5242/#/partida",
+      "b": "http://127.0.0.1:5242/#/partida"
+    },
+    "leagueEndedStage": "RESULTS",
+    "leagueEndUrls": {
+      "current": "/#/divisoes",
+      "classic": "/#/divisoes"
+    },
+    "cupRound": 3,
+    "cupType": "CupRoundOf64",
+    "cupFinishedMinute": 120,
+    "cupStage": "RESULTS",
+    "cupEndUrls": {
+      "current": "http://127.0.0.1:5242/#/plantel",
+      "classic": "http://127.0.0.1:5242/#/plantel"
+    },
+    "completedCupReloadUrls": {
+      "current": "http://127.0.0.1:5242/#/plantel",
+      "classic": "http://127.0.0.1:5242/#/plantel"
+    },
+    "observedCupStages": [
+      "HALFTIME_PAUSED",
+      "RUNNING_SECOND_HALF",
+      "RUNNING_EXTRA_TIME",
+      "RESULTS"
+    ]
+  },
+  "pendingPenaltyRestoredAfterReload": true,
+  "qaPenaltyHelpers": [],
+  "pageErrors": [],
+  "tests": "Matriz Flutter: duas aparências, um/dois humanos e larguras 390/1366; fases de taça e finalização cobertas no coordenador.",
+  "deviceLimit": "Web responsiva em Chromium; nenhum telefone físico utilizado."
+}
