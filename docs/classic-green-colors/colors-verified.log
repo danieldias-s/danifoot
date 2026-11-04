@@ -1,0 +1,31 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Cabeçalhos compartilhados mantêm contraste no visual clássico
+00:01 +1: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta das telas segue o papel claro e verde da referência
+00:01 +2: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Cores antigas são lidas sem alterar cadastro nem inventar verificação
+00:01 +3: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Partidas atuais e calendário consultam o clube por ID e preservam os placares
+00:01 +4: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta verificada prevalece sobre campos antigos; cores secundárias prevalecem sobre tinta preferida
+00:01 +5: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Baixo contraste ajusta apenas a tinta renderizada e mantém as cores salvas
+00:01 +6: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 360.0 px
+00:01 +7: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 390.0 px
+00:01 +8: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 430.0 px
+00:01 +9: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 768.0 px
+00:02 +10: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1366.0 px
+00:02 +11: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1920.0 px
+00:02 +12: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart
+00:03 +12: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Selection survives snapshots and reload, resets across coach room club season and round
+00:03 +13: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Official full snapshots are replaced and same-minute order is retained without inventing event identities
+00:03 +14: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 320.0
+00:06 +15: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 390.0
+00:06 +16: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 768.0
+00:07 +17: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1024.0
+00:08 +18: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1440.0
+00:08 +19: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1920.0
+00:09 +20: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Round browser is read-only, calendar facts do not inherit live data; next official round resets selection
+00:10 +21: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: No own game, no events, before kickoff, interval and final state
+00:10 +22: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Observing another game exposes no controls; own game restores own-club controls
+00:10 +23: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Shell isolates room updates, preserves observation during ticks and handles route lock
+00:13 +24: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Division filter retains selection, updates and My Game restores all groups
+00:14 +25: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Mobile expansion and selection preserve list scroll, with return to scoreboard and list
+00:14 +26: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Additional division labels adapt to numeric divisions supplied by the server
+00:14 +27: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Gate placeholders stay pending until figures are reported, including legitimate settled zero
+00:14 +28: All tests passed!

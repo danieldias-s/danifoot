@@ -1,0 +1,68 @@
+{
+  "worldId": "979db9ee-0aed-47a0-974b-ebc22eb84d94",
+  "appearance": "CLASSIC_98",
+  "widths": [
+    {
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "width": 1920,
+      "documentWidth": 1920
+    }
+  ],
+  "registeredTeams": [
+    {
+      "id": "5ca67f91-767c-ef47-a08b-018b93020615",
+      "name": "Atlético Paulistano",
+      "primaryColorHex": "#C8102E",
+      "secondaryColorHex": "#FFFFFF",
+      "colorPalette": null
+    },
+    {
+      "id": "2bd84f69-6a14-c247-8424-7e53986f26e8",
+      "name": "Grêmio Guanabara",
+      "primaryColorHex": "#000000",
+      "secondaryColorHex": "#CC0000",
+      "colorPalette": null
+    }
+  ],
+  "snapshotBeforeSha256": "e6a086bb4b34f3a15721c5b16a2474f4499e6246d836b6b26e293748238d981b",
+  "snapshotAfterSha256": "e6a086bb4b34f3a15721c5b16a2474f4499e6246d836b6b26e293748238d981b",
+  "worldWritesDuringVisualNavigation": [],
+  "reconnectionRequests": [
+    {
+      "method": "POST",
+      "path": "/api/worlds/979db9ee-0aed-47a0-974b-ebc22eb84d94/join"
+    },
+    {
+      "method": "POST",
+      "path": "/api/worlds/979db9ee-0aed-47a0-974b-ebc22eb84d94/join"
+    }
+  ],
+  "browserErrors": [],
+  "snapshotUnchanged": true,
+  "validation": {
+    "fullFlutterTests": 332,
+    "affectedRegressionTests": 65,
+    "finalMatchTests": 28,
+    "analyze": "No issues found",
+    "webBuild": "release, succeeded"
+  }
+}

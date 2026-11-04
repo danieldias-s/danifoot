@@ -1,0 +1,71 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Cabeçalhos compartilhados mantêm contraste no visual clássico
+00:01 +1: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta das telas segue o papel claro e verde da referência
+00:01 +2: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Cores antigas são lidas sem alterar cadastro nem inventar verificação
+00:01 +3: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Partidas atuais e calendário consultam o clube por ID e preservam os placares
+00:01 +4: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta verificada prevalece sobre campos antigos; cores secundárias prevalecem sobre tinta preferida
+00:01 +5: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Baixo contraste ajusta apenas a tinta renderizada e mantém as cores salvas
+00:01 +6: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 360.0 px
+00:01 +7: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 390.0 px
+00:01 +8: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 430.0 px
+00:01 +9: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 768.0 px
+00:02 +10: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1366.0 px
+00:02 +11: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1920.0 px
+00:02 +12: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart
+00:03 +12: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Selection survives snapshots and reload, resets across coach room club season and round
+00:03 +13: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Official full snapshots are replaced and same-minute order is retained without inventing event identities
+00:03 +14: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 320.0
+00:06 +15: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 390.0
+00:07 +16: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 768.0
+00:07 +17: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1024.0
+00:08 +18: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1440.0
+00:08 +19: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1920.0
+00:09 +20: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Round browser is read-only, calendar facts do not inherit live data; next official round resets selection
+00:10 +21: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: No own game, no events, before kickoff, interval and final state
+00:10 +22: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Observing another game exposes no controls; own game restores own-club controls
+00:11 +23: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Shell isolates room updates, preserves observation during ticks and handles route lock
+00:14 +24: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Division filter retains selection, updates and My Game restores all groups
+00:14 +25: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Mobile expansion and selection preserve list scroll, with return to scoreboard and list
+00:15 +26: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Additional division labels adapt to numeric divisions supplied by the server
+00:15 +27: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/live_match_screen_test.dart: Gate placeholders stay pending until figures are reported, including legitimate settled zero
+00:15 +28: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart
+00:16 +28: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 filters request the selected category, all competitions and season periods
+00:20 +29: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Goleiros: 20 matches rank, 19 and 1 remain unranked with missing matches
+00:20 +30: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+00:21 +31: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 scorers have no match minimum and preserve server goal-first order
+00:21 +32: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 legacy null averages show a dash and coverage, with honest empty and retry states
+00:21 +33: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 stale responses never replace the most recent filter selection
+00:21 +34: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 player click shows exact ARTILHEIRO: 5 VEZES, five awards and historic divisions after transfer
+00:22 +35: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 season final displays every tied winner, unequal matches, 3 million each and 6 million club total
+00:22 +36: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 unassigned scorer keeps the title and no invented club credit
+00:22 +37: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 history can retry an immediate HTTP failure without losing the player identity
+00:22 +38: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 award errors retry independently without showing a false empty season
+00:22 +39: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 390 pixels: compact rankings, complete player history and awards fit
+00:23 +40: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 shell menu preserves career008 and opens the season final once after rollover
+00:25 +41: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart
+00:25 +41: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 360.0
+00:28 +42: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 390.0
+00:29 +43: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 430.0
+00:30 +44: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 768.0
+00:31 +45: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 1366.0
+00:32 +46: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 1920.0
+00:33 +47: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved Classico theme and remain readable
+00:33 +48: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved Escuro theme and remain readable
+00:33 +49: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved AltoContraste theme and remain readable
+00:33 +50: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Mobile shell highlights players, keeps sessions and exposes two rows of club facts
+00:34 +51: loading D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart
+00:35 +51: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green clube vermelho: derive() ignores club palette for the app
+00:35 +52: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green clube azul: derive() ignores club palette for the app
+00:35 +53: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube vermelho at 390.0
+00:40 +54: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube azul at 390.0
+00:41 +55: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube vermelho at 1366.0
+00:42 +56: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube azul at 1366.0
+00:44 +57: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green variants and brightness stay green and legible
+00:44 +58: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green existing saved preferences keep working
+00:44 +59: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club Flamengo red/black and blue club blue/white at 390.0
+00:44 +60: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club Flamengo red/black and blue club blue/white at 1366.0
+00:44 +61: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club neutral match mode keeps only an identity stripe
+00:44 +62: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club calendar and cup lists paint each team with its own colors
+00:45 +63: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APARÊNCIA menu green variants, brightness and match colors persist at 390.0
+00:46 +64: D:/elifoot_98/.worktrees/presentation-versions-017a/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APARÊNCIA menu green variants, brightness and match colors persist at 1366.0
+00:47 +65: All tests passed!
