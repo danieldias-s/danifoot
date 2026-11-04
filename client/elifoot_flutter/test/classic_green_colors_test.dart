@@ -281,6 +281,27 @@ void main() {
                 .color!;
         expect(block('home'), const Color(0xFF006400));
         expect(block('away'), const Color(0xFFFFD700));
+        for (final finder in [
+          find.widgetWithText(OutlinedButton, 'TODOS'),
+          find.byKey(const ValueKey('live-detail-tab-0')),
+        ]) {
+          if (finder.evaluate().isEmpty) continue;
+          final button = t.widget<OutlinedButton>(finder);
+          expect(
+            colorContrast(
+              button.style!.foregroundColor!.resolve({})!,
+              button.style!.backgroundColor!.resolve({})!,
+            ),
+            greaterThanOrEqualTo(4.5),
+          );
+        }
+        expect(
+          t
+              .widget<Text>(find.byKey(const ValueKey('selected-home-name')))
+              .style!
+              .fontFamily,
+          'ClassicCondensed',
+        );
         expect(
           t
               .widget<Text>(find.byKey(const ValueKey('selected-home-name')))

@@ -1914,7 +1914,9 @@ class ClassicFilter extends StatelessWidget {
         style: TextStyle(
           fontSize: 12,
           color: ClassicTheme.of(context).textPrimary,
-          fontFamily: 'Roboto',
+          fontFamily: ClassicTheme.of(context).classicPresentation
+              ? 'ClassicCondensed'
+              : 'Roboto',
         ),
         decoration: InputDecoration(
           labelText: label,
@@ -1922,7 +1924,9 @@ class ClassicFilter extends StatelessWidget {
             color: ClassicTheme.of(context).accent,
             fontSize: 11,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Roboto',
+            fontFamily: ClassicTheme.of(context).classicPresentation
+                ? 'ClassicCondensed'
+                : 'Roboto',
           ),
           filled: true,
           fillColor: ClassicTheme.of(context).surface,
@@ -1963,7 +1967,9 @@ class ClassicFilter extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     color: ClassicTheme.of(context).textPrimary,
-                    fontFamily: 'Roboto',
+                    fontFamily: ClassicTheme.of(context).classicPresentation
+                        ? 'ClassicCondensed'
+                        : 'Roboto',
                   ),
                 ),
               ),
@@ -2045,7 +2051,9 @@ class ClassicActionButton extends StatelessWidget {
                 color: ClassicTheme.of(context).accent,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto',
+                fontFamily: ClassicTheme.of(context).classicPresentation
+                    ? 'ClassicCondensed'
+                    : 'Roboto',
               ),
             ),
           ),
@@ -2248,7 +2256,9 @@ class ClassicDialog extends StatelessWidget {
                     color: ClassicTheme.of(context).accent,
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto',
+                    fontFamily: ClassicTheme.of(context).classicPresentation
+                        ? 'ClassicCondensed'
+                        : 'Roboto',
                   ),
                 ),
               ),
@@ -2446,7 +2456,11 @@ class _ClassicTableState extends State<ClassicTable> {
                 ? 11
                 : 12,
             color: ClassicTheme.of(context).textPrimary,
-            fontFamily: widget.rankingStyle ? 'ClassicCondensed' : 'Roboto',
+            fontFamily:
+                (widget.rankingStyle ||
+                    ClassicTheme.of(context).classicPresentation)
+                ? 'ClassicCondensed'
+                : 'Roboto',
           ),
           headingTextStyle: TextStyle(
             fontSize: widget.rankingStyle
@@ -2458,7 +2472,11 @@ class _ClassicTableState extends State<ClassicTable> {
             color: ClassicTheme.of(context).classicPresentation
                 ? Colors.white
                 : ClassicTheme.of(context).accent,
-            fontFamily: widget.rankingStyle ? 'ClassicCondensed' : 'Roboto',
+            fontFamily:
+                (widget.rankingStyle ||
+                    ClassicTheme.of(context).classicPresentation)
+                ? 'ClassicCondensed'
+                : 'Roboto',
           ),
           columns: widget.columns.asMap().entries.map((entry) {
             final idx = entry.key;
@@ -2582,7 +2600,9 @@ class _PinnedPlayerColumn extends StatelessWidget {
                 fontSize: compact ? 10 : 11,
                 fontWeight: FontWeight.bold,
                 color: ClassicTheme.of(context).accent,
-                fontFamily: 'Roboto',
+                fontFamily: ClassicTheme.of(context).classicPresentation
+                    ? 'ClassicCondensed'
+                    : 'Roboto',
               ),
             ),
           ),
@@ -2623,7 +2643,10 @@ class _PinnedPlayerColumn extends StatelessWidget {
                             fontWeight: row.highlight
                                 ? FontWeight.bold
                                 : FontWeight.normal,
-                            fontFamily: 'Roboto',
+                            fontFamily:
+                                ClassicTheme.of(context).classicPresentation
+                                ? 'ClassicCondensed'
+                                : 'Roboto',
                           ),
                         ),
                       ),
@@ -2645,7 +2668,10 @@ class _PinnedPlayerColumn extends StatelessWidget {
                               decoration: row.onTap != null
                                   ? TextDecoration.underline
                                   : TextDecoration.none,
-                              fontFamily: 'Roboto',
+                              fontFamily:
+                                  ClassicTheme.of(context).classicPresentation
+                                  ? 'ClassicCondensed'
+                                  : 'Roboto',
                             ),
                           ),
                           if (row.subtitle != null &&
@@ -2657,7 +2683,10 @@ class _PinnedPlayerColumn extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: compact ? 8.5 : 9.5,
                                 color: ClassicTheme.of(context).textSecondary,
-                                fontFamily: 'Roboto',
+                                fontFamily:
+                                    ClassicTheme.of(context).classicPresentation
+                                    ? 'ClassicCondensed'
+                                    : 'Roboto',
                               ),
                             ),
                           ],

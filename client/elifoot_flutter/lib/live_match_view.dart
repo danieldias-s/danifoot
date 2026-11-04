@@ -77,14 +77,19 @@ class LivePanel extends StatelessWidget {
 
 class LiveMatchStatus extends StatelessWidget {
   final String status;
-  const LiveMatchStatus({super.key, required this.status});
+  final bool onDark;
+  const LiveMatchStatus({super.key, required this.status, this.onDark = false});
   @override
   Widget build(BuildContext context) {
-    final color = switch (status) {
+    final indicator = switch (status) {
       'Em andamento' => const Color(0xFF76E36D),
       'Intervalo' || 'Pausada' => const Color(0xFFFFD700),
       _ => const Color(0xFFD2DCD5),
     };
+    final t = ClassicTheme.of(context);
+    final color = t.classicPresentation && !onDark
+        ? readableOn(indicator, t.surface)
+        : indicator;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -121,7 +126,7 @@ class SelectedMatchScoreboard extends StatelessWidget {
       final minute = match['minute'];
       final clockWidth = small ? 72.0 : 94.0;
       final numberStyle = TextStyle(
-        fontFamily: 'Roboto',
+        fontFamily: t.classicPresentation ? 'ClassicCondensed' : 'Roboto',
         fontSize: small ? 26 : 34,
         fontWeight: FontWeight.w900,
         height: 1,
@@ -153,7 +158,9 @@ class SelectedMatchScoreboard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Roboto',
+                      fontFamily: t.classicPresentation
+                          ? 'ClassicCondensed'
+                          : 'Roboto',
                       fontWeight: FontWeight.w900,
                       color: colors.ink,
                     ).copyWith(fontSize: small ? 14 : 23),
@@ -266,7 +273,10 @@ class SelectedMatchScoreboard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                LiveMatchStatus(status: matchStatus(match, stage)),
+                LiveMatchStatus(
+                  status: matchStatus(match, stage),
+                  onDark: true,
+                ),
                 if (match['homePenaltyGoals'] != null &&
                     match['awayPenaltyGoals'] != null)
                   Text(
@@ -877,7 +887,7 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
                               ? t.accent
                               : t.surface,
                           foregroundColor: filter == name
-                              ? t.selectedText
+                              ? readableInk(t.accent, t.selectedText)
                               : t.textPrimary,
                         ),
                         onPressed: () => setState(() => _filter = name),
@@ -964,7 +974,9 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
               value: round,
               dropdownColor: t.surface,
               style: TextStyle(
-                fontFamily: 'Roboto',
+                fontFamily: t.classicPresentation
+                    ? 'ClassicCondensed'
+                    : 'Roboto',
                 color: t.textPrimary,
                 fontSize: 12,
               ),
@@ -1149,7 +1161,7 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
                                       ? t.accent
                                       : t.surface,
                                   foregroundColor: _detailTab == i
-                                      ? t.selectedText
+                                      ? readableInk(t.accent, t.selectedText)
                                       : t.textPrimary,
                                 ),
                                 onPressed: () => setState(() => _detailTab = i),

@@ -30,6 +30,15 @@ if (-not (Test-PreviewPort 55436)) {
     Start-Process -FilePath 'C:/Program Files/PostgreSQL/18/bin/postgres.exe' -ArgumentList @('-D', "`"$pgData`"", '-p', '55436', '-h', '127.0.0.1') -WorkingDirectory $taskRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $runtimeDir "pg-$stamp.log") -RedirectStandardError (Join-Path $runtimeDir "pg-$stamp-error.log") | Out-Null
 }
 Wait-PreviewPort 55436
+$pgDeadline = [DateTime]::UtcNow.AddMinutes(3)
+do {
+    & 'C:/Program Files/PostgreSQL/18/bin/pg_isready.exe' -h 127.0.0.1 -p 55436 -U qa017a -t 1 | Out-Null
+    $pgReady = $LASTEXITCODE -eq 0
+    if (-not $pgReady) {
+        if ([DateTime]::UtcNow -gt $pgDeadline) { throw 'O PostgreSQL ainda esta recuperando o desligamento. Consulte os logs e tente novamente.' }
+        Start-Sleep -Milliseconds 500
+    }
+} until ($pgReady)
 
 if (-not (Test-PreviewPort 5231)) {
     & (Join-Path $runtimeDir 'start-preview.ps1')
