@@ -1,0 +1,203 @@
+{
+  "accountId": "cadee5f5-fab8-4147-9775-15ee6b34d928",
+  "coachId": "63482d97-9d73-4fa9-84a4-e1dddc7c125a",
+  "worldId": "1bfdbaab-f6c7-4131-8f65-18cad64073cd",
+  "sameAccountOnSecondBrowser": true,
+  "sameCoachOnSecondBrowser": true,
+  "occupiedSeatsAfterTwoLogins": 1,
+  "participants": [
+    {
+      "coachId": "63482d97-9d73-4fa9-84a4-e1dddc7c125a",
+      "clubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+      "clubName": "Equipe fictícia GB-030",
+      "isConnected": true
+    }
+  ],
+  "readyCount": 0,
+  "roundState": "PREPARING",
+  "appearanceAfterDraw": {
+    "mode": "CLASSIC_98"
+  },
+  "originalEightStepCreatorCompleted": true,
+  "otherAccountRegistered": true,
+  "forgedCoachRejected": 403,
+  "forgedAccountRejected": 403,
+  "missingCsrfRejected": 400,
+  "otherAppearance": {
+    "mode": "CURRENT"
+  },
+  "reloadPreservedClub": true,
+  "reloadPreservedCoach": true,
+  "reloadSeatCount": 1,
+  "storageContainsPassword": false,
+  "cookies": [
+    {
+      "name": "lc98.csrf",
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "lc98.account",
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    }
+  ],
+  "widths": [
+    {
+      "page": "login",
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "page": "lobby",
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "page": "login",
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "page": "lobby",
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "page": "login",
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "page": "lobby",
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "page": "login",
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "page": "lobby",
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "page": "login",
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "page": "lobby",
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "page": "login",
+      "width": 1920,
+      "documentWidth": 1920
+    },
+    {
+      "page": "lobby",
+      "width": 1920,
+      "documentWidth": 1920
+    },
+    {
+      "page": "home",
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "page": "home",
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "page": "home",
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "page": "home",
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "page": "home",
+      "width": 1920,
+      "documentWidth": 1920
+    }
+  ],
+  "keyboardFocus": [
+    {
+      "tag": "INPUT",
+      "role": null,
+      "label": "Usuário ou e-mail\nDigite seu usuário ou e-mail"
+    },
+    {
+      "tag": "INPUT",
+      "role": null,
+      "label": "Senha\nDigite sua senha"
+    },
+    {
+      "tag": "FLT-SEMANTICS",
+      "role": "button",
+      "label": null
+    },
+    {
+      "tag": "FLT-SEMANTICS",
+      "role": "button",
+      "label": null
+    },
+    {
+      "tag": "FLT-SEMANTICS",
+      "role": "button",
+      "label": null
+    }
+  ],
+  "finalBrowserErrors": [],
+  "logoutThroughUI": true,
+  "privateRoomsAfterLogout": 401,
+  "otherDeviceStillAuthenticated": true,
+  "wrongPasswordRejectedThroughUI": true,
+  "validation": {
+    "flutterFull": {
+      "passed": 341
+    },
+    "flutterFinalFocused": {
+      "passed": 10
+    },
+    "dotnetDomain": {
+      "passed": 466
+    },
+    "dotnetApplication": {
+      "passed": 17
+    },
+    "dotnetIntegrationFull": {
+      "passed": 266,
+      "failed": 2,
+      "total": 268,
+      "failures": [
+        "PostgreSQL legacy read timeout under load",
+        "Missing copied historical real-season-world.json fixture"
+      ]
+    },
+    "dotnetIntegrationRetry": {
+      "passed": 2,
+      "failed": 0
+    },
+    "newAccountIntegrationCases": {
+      "passed": 6
+    },
+    "flutterAnalyze": "No issues found",
+    "webBuild": "release succeeded"
+  }
+}

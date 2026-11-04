@@ -1,0 +1,10 @@
+  Determinando os projetos a serem restaurados...
+  D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj restaurado (em 581 ms).
+  2 de 3 projetos estão atualizados para restauração.
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Contracts\bin\Release\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Domain\bin\Release\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Release\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:   466, Ignorado:     0, Total:   466, Duração: 40 s - Elifoot.Domain.Tests.dll (net10.0)

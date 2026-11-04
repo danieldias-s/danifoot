@@ -1,0 +1,44 @@
+Execução de teste para D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\bin\Release\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:05:42.38]     Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18 [FAIL]
+  Com falha Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18 [32 s]
+  Mensagem de erro:
+   System.InvalidOperationException : An exception has been raised that is likely due to a transient failure.
+---- Npgsql.NpgsqlException : Exception while reading from stream
+-------- System.TimeoutException : Timeout during reading attempt
+  Rastreamento de pilha:
+     at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQueryAsync(IReadOnlyList`1 migrationCommands, IRelationalConnection connection, MigrationExecutionState executionState, Boolean commitTransaction, Nullable`1 isolationLevel, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.DeleteAsync(CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.DeleteAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureDeletedAsync(CancellationToken cancellationToken)
+   at Elifoot.Integration.Tests.ApiAndSignalREndToEndTests.PostgreSQL_Persistence_RoundtripAndCrashRecovery_WorksAgainstLivePostgres18() in D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\ApiAndSignalREndToEndTests.cs:line 227
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteNonQuery(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteAsync(IReadOnlyList`1 migrationCommands, IRelationalConnection connection, MigrationExecutionState executionState, Boolean beginTransaction, Boolean commitTransaction, Nullable`1 isolationLevel, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteAsync(IReadOnlyList`1 migrationCommands, IRelationalConnection connection, MigrationExecutionState executionState, Boolean beginTransaction, Boolean commitTransaction, Nullable`1 isolationLevel, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+----- Inner Stack Trace -----
+
+[xUnit.net 00:06:37.51]     Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload [FAIL]
+  Com falha Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload [6 ms]
+  Mensagem de erro:
+   System.IO.FileNotFoundException : Could not find file 'D:\elifoot_98\.worktrees\account-login-lobby\artifacts\account-login\regression-audits\real-season-world.json'.
+  Rastreamento de pilha:
+     at System.IO.File.OpenHandle(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.File.ReadAllBytesAsync(String path, CancellationToken cancellationToken)
+   at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.CreateRealSeasonQaFixtureAsync(String sourcePath) in D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 355
+   at Elifoot.Integration.Tests.PlayerRankings009IntegrationTests.RealSeasonArtifactExportsQaSqliteAndProductionRoutesSurviveReload() in D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\PlayerRankings009IntegrationTests.cs:line 314
+--- End of stack trace from previous location ---
+
+Com falha! – Com falha:     2, Aprovado:   266, Ignorado:     0, Total:   268, Duração: 9 m 52 s - Elifoot.Integration.Tests.dll (net10.0)

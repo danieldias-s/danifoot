@@ -1,0 +1,13 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Falha de conexão no login informa indisponibilidade sem expor detalhes técnicos
+00:00 +1: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 360.0 px
+00:03 +2: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 390.0 px
+00:03 +3: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 430.0 px
+00:04 +4: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 768.0 px
+00:05 +5: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 1366.0 px
+00:05 +6: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 1920.0 px
+00:06 +7: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Senha pode ser mostrada, erro é anunciado e teclado não oculta a ação
+00:06 +8: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Aplicação abre com conta, autentica e só depois mostra ações de campeonato
+00:07 +9: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_transport_test.dart
+00:08 +9: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_transport_test.dart: Native HTTP and WebSocket share cookies in memory and respect expiry, path and HTTPS
+00:08 +10: All tests passed!
