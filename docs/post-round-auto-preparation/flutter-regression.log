@@ -1,0 +1,432 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Falha de conexão no login informa indisponibilidade sem expor detalhes técnicos
+00:00 +1: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 360.0 px
+00:02 +2: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 390.0 px
+00:03 +3: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 430.0 px
+00:03 +4: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 768.0 px
+00:04 +5: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 1366.0 px
+00:04 +6: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Login, início e lobby acessíveis em 1920.0 px
+00:05 +7: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Senha pode ser mostrada, erro é anunciado e teclado não oculta a ação
+00:05 +8: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_entry_test.dart: Aplicação abre com conta, autentica e só depois mostra ações de campeonato
+00:05 +9: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_transport_test.dart
+00:06 +9: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/account_transport_test.dart: Native HTTP and WebSocket share cookies in memory and respect expiry, path and HTTPS
+00:06 +10: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart
+00:07 +10: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart: Android DEV reaches the host through the emulator gateway
+00:07 +11: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart: An explicit API origin supports USB reverse and LAN devices
+00:07 +12: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart: Web DEV uses its host and the API port
+00:07 +13: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart: Native release requires an explicit HTTPS origin
+00:07 +14: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/api_environment_test.dart: Invalid origins and embedded credentials are rejected
+00:07 +15: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart
+00:08 +15: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: New voluntary defaults and editable zero/three at 320.0
+00:11 +16: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: New voluntary defaults and editable zero/three at 390.0
+00:11 +17: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: New voluntary defaults and editable zero/three at 1366.0
+00:12 +18: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: Results do not reuse a completed round, and valid cents are accepted
+00:12 +19: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: Squad voluntary action sends default settings without changing fixed-price sell
+00:16 +20: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/auction_default_config_test.dart: Auction API defaults, custom cents, and lost-response replay share financial command keys
+00:16 +21: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart
+00:17 +21: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: League and every cup stage restore the correct completed destination once
+00:17 +22: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=1 width=390.0
+00:24 +23: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=1 width=1366.0
+00:27 +24: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=2 width=390.0
+00:31 +25: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=2 width=1366.0
+00:34 +26: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=1 width=390.0
+00:36 +27: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=1 width=1366.0
+00:37 +28: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=2 width=390.0
+00:39 +29: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=2 width=1366.0
+00:41 +30: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/career_api_test.dart
+00:42 +30: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/career_api_test.dart: Career rejection sends the invitation and coach identity to the reject route
+00:42 +31: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/career_api_test.dart: Career response preserves half-point ranking and pending invitations
+00:42 +32: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart
+00:43 +32: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 360.0
+00:49 +33: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 390.0
+00:52 +34: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 768.0
+00:54 +35: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 1024.0
+00:56 +36: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 1440.0
+00:57 +37: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B real shell, navigation and seven screens at 1920.0
+00:59 +38: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B sidebar/drawer cannot escape server match lock at 390.0
+01:00 +39: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B sidebar/drawer cannot escape server match lock at 1440.0
+01:02 +40: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B division tabs fetch authoritative data and calendar keeps active filter
+01:03 +41: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_desktop_015b_test.dart: 015B classic design tokens remain legible
+01:03 +42: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_force_012c_test.dart
+01:04 +42: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_force_012c_test.dart: Classic cup bye permits ready with an injured incomplete squad
+01:08 +43: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_force_012c_test.dart: Adapted force history separates injury and reserve at 320.0
+01:08 +44: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_force_012c_test.dart: Adapted force history separates injury and reserve at 390.0
+01:08 +45: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_force_012c_test.dart: Adapted force history separates injury and reserve at 1280.0
+01:08 +46: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart
+01:09 +46: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Cabeçalhos compartilhados mantêm contraste no visual clássico
+01:10 +47: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta clássica compartilha as cores dos painéis da versão atual
+01:10 +48: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Cores antigas são lidas sem alterar cadastro nem inventar verificação
+01:10 +49: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Partidas atuais e calendário consultam o clube por ID e preservam os placares
+01:10 +50: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Paleta verificada prevalece sobre campos antigos; cores secundárias prevalecem sobre tinta preferida
+01:10 +51: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Baixo contraste ajusta apenas a tinta renderizada e mantém as cores salvas
+01:10 +52: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 360.0 px
+01:11 +53: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 390.0 px
+01:11 +54: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 430.0 px
+01:11 +55: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 768.0 px
+01:11 +56: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1366.0 px
+01:11 +57: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_green_colors_test.dart: Placar e lista usam fundos e textos próprios dos dois times em 1920.0 px
+01:12 +58: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart
+01:13 +58: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha respeita limite de reservas e bloqueio após enviar tática
+01:18 +59: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 360.0 px
+01:20 +60: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 390.0 px
+01:21 +61: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 430.0 px
+01:23 +62: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 768.0 px
+01:24 +63: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 1366.0 px
+01:25 +64: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 1920.0 px
+01:26 +65: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Desenho do estádio muda com ampliação, conservação e obras reais
+01:26 +66: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart
+01:27 +66: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Event labels follow actual eventType, including goals for Palestra
+01:27 +67: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Only authoritative started snapshots open matches, once per transition
+01:27 +68: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Switching worlds and rejoining restore an already running match
+01:27 +69: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores RUNNING_FIRST_HALF from snapshot
+01:27 +70: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores HALFTIME_PAUSED from snapshot
+01:27 +71: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores RUNNING_SECOND_HALF from snapshot
+01:27 +72: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores GLOBAL_PAUSED from snapshot
+01:27 +73: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores EXTRA_TIME_BREAK from snapshot
+01:27 +74: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores RUNNING_EXTRA_TIME from snapshot
+01:27 +75: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores EXTRA_TIME_HALFTIME from snapshot
+01:27 +76: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores RESULTS from snapshot
+01:27 +77: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Refresh/reconnect restores FINISHED from snapshot
+01:27 +78: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: 2 coaches wait for server start, navigate automatically and block menus until results
+01:32 +79: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: 4 coaches wait for server start, navigate automatically and block menus until results
+01:34 +80: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: 6 coaches wait for server start, navigate automatically and block menus until results
+01:36 +81: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: 8 coaches wait for server start, navigate automatically and block menus until results
+01:38 +82: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Unemployed coach waits and follows authoritative start
+01:38 +83: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Classic board has four real fixtures per division, live scores and no overflow at 320.0
+01:38 +84: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Classic board has four real fixtures per division, live scores and no overflow at 390.0
+01:39 +85: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Classic board has four real fixtures per division, live scores and no overflow at 1366.0
+01:39 +86: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Cup group expansion does not open every match detail
+01:39 +87: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_ux_014b_test.dart: Cup preliminary keeps all district fixtures under actual cup stage
+01:39 +88: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart
+01:40 +88: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Open appearance draft cannot overwrite another club after a live job change
+01:42 +89: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Every imported traditional palette remains legible when team colors are paired
+01:42 +90: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {primaryColor: #C3281E, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+01:42 +91: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {primaryColor: #0000FF, secondaryColor: #FFFFFF, preferredTextColor: #FFFFFF, colorVerified: true, colorSource: Reviewed fixture}
+01:42 +92: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {primaryColor: #FFFFFF, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+01:42 +93: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {primaryColor: #FFFF00, secondaryColor: #000000, preferredTextColor: #000000, colorVerified: true, colorSource: Reviewed fixture}
+01:42 +94: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {primaryColor: #002366, secondaryColor: null, preferredTextColor: null, colorVerified: true, colorSource: Reviewed fixture}
+01:42 +95: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: All semantic text tokens meet contrast for {}
+01:42 +96: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Custom black-on-red adjusts only rendered background and keeps registered colors
+01:42 +97: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Preferences restore after controller restart, isolate trainers/worlds and return to previous club
+01:42 +98: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Match teams keep independent colors and scores remain centered
+01:42 +99: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Global theme stays classic green for Flamengo; picker, persistence and restore at 390.0
+01:47 +100: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/club_theme_014c_test.dart: Global theme stays classic green for Flamengo; picker, persistence and restore at 1366.0
+01:50 +101: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart
+01:51 +101: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 320.0
+01:53 +102: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 320.0
+01:53 +103: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 360.0
+01:53 +104: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 360.0
+01:53 +105: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 390.0
+01:53 +106: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 390.0
+01:53 +107: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 430.0
+01:54 +108: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 430.0
+01:54 +109: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 768.0
+01:54 +110: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 768.0
+01:54 +111: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 1366.0
+01:54 +112: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 1366.0
+01:54 +113: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Coach ranking preview, complete list and career at 1920.0
+01:54 +114: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Finance paper panels, round totals and stadium actions at 1920.0
+01:55 +115: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/coach_finance_reference_test.dart: Round summary excludes earlier rounds and seasons without altering the ledger
+01:55 +116: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart
+01:56 +116: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow
+
+Warning: A call to tap() with finder "Found 1 widget with key [<'filter-squad-pos-ALL'>]: [
+  InkWell-[<'filter-squad-pos-ALL'>],
+]" derived an Offset (Offset(941.0, -391.5)) that would not hit test on the specified widget.
+Maybe the widget is actually off-screen, or another widget is obscuring it, or the widget cannot receive pointer events.
+Indeed, Offset(941.0, -391.5) is outside the bounds of the root of the render tree, Size(1280.0, 900.0).
+The finder corresponds to this RenderBox: RenderSemanticsAnnotations#15a60 relayoutBoundary=up29
+The hit test result at that offset is: HitTestResult(HitTestEntry<HitTestTarget>#4a757(_ReusableRenderView#73b03), HitTestEntry<HitTestTarget>#958bd(<AutomatedTestWidgetsFlutterBinding>))
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2081:25)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1865:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1045:7)
+#3      main.<anonymous closure> (file:///D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart:890:20)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+#6      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+To silence this warning, pass "warnIfMissed: false" to "tap()".
+To make this warning fatal, set WidgetController.hitTestWarningShouldBeFatal to true.
+
+02:02 +117: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Divisions, Non-Truncated Cup Stage Navigation, Market, Finances & Unemployed Flow
+02:04 +118: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: Responsive Viewport Matrix (320px..1920px) Renders Zero Overflows
+02:14 +119: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/complete_gameplay_011_test.dart: Task 011: All 10 Tactical Formations (4-4-2..5-0-5), Market Actions & Stadium/Finance Operations
+02:18 +120: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart
+02:19 +120: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 360.0 px
+02:22 +121: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 390.0 px
+02:23 +122: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 430.0 px
+02:24 +123: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 768.0 px
+02:25 +124: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 1366.0 px
+02:25 +125: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Países, Modo e clube mantêm controles acessíveis em 1920.0 px
+02:26 +126: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Pesquisa, limite de oito e limpar usam o estado real dos países
+02:27 +127: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/creator_visual_test.dart: Modo mantém permissões, dados salvos e payload de criação
+02:28 +128: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/custom_assembly_014b_test.dart
+02:29 +128: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/custom_assembly_014b_test.dart: Pre-save editor keeps invalid drafts and saves actual edited club/player fields at 320.0
+02:33 +129: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/custom_assembly_014b_test.dart: Pre-save editor keeps invalid drafts and saves actual edited club/player fields at 1366.0
+02:34 +130: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/custom_assembly_014b_test.dart: Saved assembly is restored only on request and confirms through private assembly endpoint
+02:34 +131: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/discipline_012c_test.dart
+02:35 +131: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/discipline_012c_test.dart: Server allows ten eligible starters and shows real players on pitch at 390.0
+02:40 +132: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/discipline_012c_test.dart: Server allows ten eligible starters and shows real players on pitch at 1280.0
+02:42 +133: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_api_test.dart
+02:42 +133: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_api_test.dart: 012D preserves the command key when a server error follows a possible commit
+02:42 +134: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_api_test.dart: 012D reuses loan command key after a lost response and sends room version
+02:42 +135: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_api_test.dart: 012D salary decisions and debt repayments preserve authoritative command bodies
+02:43 +136: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_widget_test.dart
+02:44 +136: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_widget_test.dart: 012D displays the original legacy interest rate and installment
+02:48 +137: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_widget_test.dart: 012D authoritative debt and salary proposals remain usable at 320 and 1280 pixels
+02:50 +138: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart
+02:51 +138: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart: 5-3-2 updates the actual eleven and one human starts live automatically at 390.0
+02:57 +139: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart: 5-3-2 updates the actual eleven and one human starts live automatically at 1440.0
+02:59 +140: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart: Quick tactics button rebalances the pitch too
+03:00 +141: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart: Formation shortage never selects an injured or suspended player or invents one
+03:00 +142: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/formation_playtest_015b_test.dart: Pitch uses formation slots while preserving nominal position and all manually chosen players
+03:00 +143: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart
+03:01 +143: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart: Admin importer has explicit dry run/apply, fixture labeling and no automatic calls at 320.0
+03:04 +144: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart: Admin importer has explicit dry run/apply, fixture labeling and no automatic calls at 390.0
+03:04 +145: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart: Admin importer has explicit dry run/apply, fixture labeling and no automatic calls at 1440.0
+03:05 +146: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart: Provider-reported athlete is never labeled verified
+03:05 +147: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/import_016a_test.dart: Admin API sends only admin token and never a provider key
+03:05 +148: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart
+03:06 +148: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Selection survives snapshots and reload, resets across coach room club season and round
+03:06 +149: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Official full snapshots are replaced and same-minute order is retained without inventing event identities
+03:06 +150: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 320.0
+03:09 +151: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 390.0
+03:10 +152: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 768.0
+03:10 +153: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1024.0
+03:11 +154: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1440.0
+03:12 +155: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Own match, observation, official venue/events/stats and update selection at 1920.0
+03:12 +156: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Round browser is read-only, calendar facts do not inherit live data; next official round resets selection
+03:13 +157: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: No own game, no events, before kickoff, interval and final state
+03:14 +158: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Observing another game exposes no controls; own game restores own-club controls
+03:14 +159: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Shell isolates room updates, preserves observation during ticks and handles route lock
+03:17 +160: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Division filter retains selection, updates and My Game restores all groups
+03:18 +161: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Mobile expansion and selection preserve list scroll, with return to scoreboard and list
+03:19 +162: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Additional division labels adapt to numeric divisions supplied by the server
+03:19 +163: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/live_match_screen_test.dart: Gate placeholders stay pending until figures are reported, including legitimate settled zero
+03:19 +164: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart
+03:20 +164: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby requests use the authenticated device without exposing it in room data
+03:20 +165: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: A full room restores the canonical trainer and realtime identity without choosing another club
+03:24 +166: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Closed browser/tab restores identity, while eight tabs remain independent
+03:24 +167: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Legacy per-tab identity is migrated without changing its device or coach
+03:24 +168: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Corrupted profile index does not prevent a valid per-tab return
+03:24 +169: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 360.0 / 1
+03:24 +170: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 360.0 / 2
+03:24 +171: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 360.0 / 8
+03:24 +172: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 1366.0 / 1
+03:24 +173: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 1366.0 / 2
+03:24 +174: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/lobby_sessions_016b_test.dart: Lobby separates connected, occupied, ready and state at 1366.0 / 8
+03:24 +175: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart
+03:25 +175: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Criar, cancelar, fechar e trocar mantêm os acessos anteriores pelo nome
+03:29 +176: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Recuperação manual usa o identificador antigo sem criar outra identidade
+03:30 +177: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: VOCÊ usa a identidade da sessão e o clube continua salvo ao sair da sala
+03:33 +178: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Acesso autenticado fica salvo mesmo se a consulta das salas falhar
+03:33 +179: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 360.0 px
+03:33 +180: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 390.0 px
+03:33 +181: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 430.0 px
+03:33 +182: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 768.0 px
+03:33 +183: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 1366.0 px
+03:34 +184: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/local_trainer_ux_test.dart: Painel identifica treinador e ações em 1920.0 px
+03:34 +185: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart
+03:35 +185: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Finished club observes another clubs extra-time break without edit controls
+03:38 +186: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Human chooses a real on-pitch taker, waiting until CHUTAR at 320.0
+03:39 +187: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Other coaches see only AGUARDE for a human penalty at 320.0
+03:39 +188: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Easy Substituir opens shared two-list dialog, opening is free, actual substitution counts at 320.0
+03:41 +189: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Human chooses a real on-pitch taker, waiting until CHUTAR at 390.0
+03:41 +190: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Other coaches see only AGUARDE for a human penalty at 390.0
+03:42 +191: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Easy Substituir opens shared two-list dialog, opening is free, actual substitution counts at 390.0
+03:43 +192: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Human chooses a real on-pitch taker, waiting until CHUTAR at 768.0
+03:44 +193: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Other coaches see only AGUARDE for a human penalty at 768.0
+03:44 +194: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Easy Substituir opens shared two-list dialog, opening is free, actual substitution counts at 768.0
+03:45 +195: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Human chooses a real on-pitch taker, waiting until CHUTAR at 1440.0
+03:46 +196: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Other coaches see only AGUARDE for a human penalty at 1440.0
+03:46 +197: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Easy Substituir opens shared two-list dialog, opening is free, actual substitution counts at 1440.0
+03:47 +198: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Halftime substitution counts once but consumes no tactical opportunity
+03:48 +199: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_interaction_dialog_test.dart: Penalty choice HTTP body uses actual decision/player and stable idempotency for retry
+03:48 +200: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart
+03:49 +200: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Counteroffer uses actual listing price and contracted salary
+03:51 +201: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 20 at 390.0
+03:51 +202: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 50 at 390.0
+03:51 +203: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 70 at 390.0
+03:51 +204: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Purchase and offer are separate confirmed commands at 390.0
+03:52 +205: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Custom bid validates increment and cancellation at 390.0
+03:52 +206: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 20 at 1366.0
+03:53 +207: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 50 at 1366.0
+03:53 +208: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Morale bar only and accessible real value 70 at 1366.0
+03:53 +209: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Purchase and offer are separate confirmed commands at 1366.0
+03:53 +210: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Custom bid validates increment and cancellation at 1366.0
+03:54 +211: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort PRICE_ASC auction=false
+03:54 +212: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort PRICE_ASC auction=true
+03:54 +213: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort PRICE_DESC auction=false
+03:54 +214: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort PRICE_DESC auction=true
+03:54 +215: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort STRENGTH_ASC auction=false
+03:54 +216: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort STRENGTH_ASC auction=true
+03:54 +217: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort STRENGTH_DESC auction=false
+03:54 +218: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Numeric stable sort STRENGTH_DESC auction=true
+03:54 +219: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Server start locks internal URL back and menus; results release 2 humans
+03:57 +220: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Server start locks internal URL back and menus; results release 4 humans
+03:59 +221: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Server start locks internal URL back and menus; results release 6 humans
+04:01 +222: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Server start locks internal URL back and menus; results release 8 humans
+04:03 +223: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/match_market_015a_test.dart: Only authoritative live phases lock; preparation/results/finished release
+04:03 +224: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart
+04:04 +224: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Reference mobile roster, real counts, actions and bottom navigation at 320.0
+04:10 +225: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Reference mobile roster, real counts, actions and bottom navigation at 360.0
+04:13 +226: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Reference mobile roster, real counts, actions and bottom navigation at 390.0
+04:15 +227: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Reference mobile roster, real counts, actions and bottom navigation at 430.0
+04:17 +228: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Reference mobile roster, real counts, actions and bottom navigation at 600.0
+04:19 +229: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Mobile list opens player facts and retains contracted salary, filters and auction access
+04:21 +230: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/mobile_reference_015b_test.dart: Bottom navigation and More drawer stay locked during a live round
+04:22 +231: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart
+04:23 +231: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C strict mode starts without consent and blocks incomplete real squads
+04:26 +232: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C real clubs and simulated squads require consent and preview labels at 390.0
+04:29 +233: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C real clubs and simulated squads require consent and preview labels at 1366.0
+04:31 +234: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C changing mode clears prior consents and keeps strict mode explicit
+04:32 +235: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C free world consent explicitly covers generated teams and players
+04:32 +236: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/playable_worlds_013c_test.dart: 013C provenance distinguishes current, historical reference and generated identities
+04:33 +237: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart
+04:33 +237: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 sends every category, competition and period using the stable query contract
+04:33 +238: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 requires the selected season instead of silently querying a different period
+04:33 +239: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 preserves exact averages, null legacy average and coverage warnings
+04:33 +240: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 history and awards use official read-only endpoints and optional season
+04:34 +241: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_api_test.dart: 009 surfaces API failures without substituting invented empty rankings
+04:34 +242: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart
+04:34 +242: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 360.0
+04:37 +243: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 390.0
+04:39 +244: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 430.0
+04:39 +245: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 768.0
+04:40 +246: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 1366.0
+04:42 +247: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Player ranking empty panels, open filters and full names fit 1920.0
+04:42 +248: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved Classico theme and remain readable
+04:42 +249: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved Escuro theme and remain readable
+04:43 +250: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Ranking panels respect saved AltoContraste theme and remain readable
+04:43 +251: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_visual_016b_test.dart: Mobile shell highlights players, keeps sessions and exposes two rows of club facts
+04:44 +252: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart
+04:45 +252: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 filters request the selected category, all competitions and season periods
+04:49 +253: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Goleiros: 20 matches rank, 19 and 1 remain unranked with missing matches
+04:50 +254: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 Defensores: 20 matches rank, 19 and 1 remain unranked with missing matches
+04:50 +255: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 scorers have no match minimum and preserve server goal-first order
+04:50 +256: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 legacy null averages show a dash and coverage, with honest empty and retry states
+04:51 +257: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 stale responses never replace the most recent filter selection
+04:51 +258: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 player click shows exact ARTILHEIRO: 5 VEZES, five awards and historic divisions after transfer
+04:52 +259: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 season final displays every tied winner, unequal matches, 3 million each and 6 million club total
+04:52 +260: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 unassigned scorer keeps the title and no invented club credit
+04:52 +261: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 history can retry an immediate HTTP failure without losing the player identity
+04:52 +262: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 award errors retry independently without showing a false empty season
+04:52 +263: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 390 pixels: compact rankings, complete player history and awards fit
+04:53 +264: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_rankings_widget_test.dart: 009 shell menu preserves career008 and opens the season final once after rollover
+04:54 +265: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_strength_012_test.dart
+04:55 +265: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_strength_012_test.dart: Legacy profile has an honest empty force history
+04:56 +266: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_strength_012_test.dart: Force events retain original club and fit width 320.0
+04:57 +267: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_strength_012_test.dart: Force events retain original club and fit width 390.0
+04:57 +268: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_strength_012_test.dart: Force events retain original club and fit width 1280.0
+04:57 +269: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart
+04:58 +269: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Automatic preparation sends the completed season and round in the request
+04:58 +270: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Peer preparation keeps the full five seconds classic=false
+05:04 +271: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Peer preparation keeps the full five seconds classic=true
+05:06 +272: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Leaving the screen cancels the pending preparation
+05:07 +273: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Preparation retries a connection failure without an advance button
+05:09 +274: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart
+05:10 +274: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Clássica usa envio, pausa e próxima rodada do fluxo compartilhado
+05:16 +275: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Banco clássico troca goleiros pela validação compartilhada e retira reserva
+05:18 +276: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Operações econômicas clássicas exigem confirmação e seleção não anuncia
+05:20 +277: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 360.0 px
+05:23 +278: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 390.0 px
+05:25 +279: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 430.0 px
+05:26 +280: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 768.0 px
+05:28 +281: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 1366.0 px
+05:30 +282: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 1920.0 px
+05:31 +283: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Entrar em sala com lobby inicial apresenta aparência e opções antes de atribuir clube
+05:32 +284: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Troca no jogo preserva escalação, formação, clube e conexão e respeita partida travada
+05:35 +285: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Duas preferências independentes restauram por treinador e não por clube
+05:35 +286: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Resposta atrasada de outro treinador não substitui a preferência atual
+05:35 +287: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Falha de gravação mantém a seleção anterior e informa o erro
+05:35 +288: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Contêiner mantém Navigator e estado compartilhado ao alternar versões
+05:35 +289: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de MANUAL e sobrevive às ações originais da sala
+05:35 +290: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de FOURTH_DIVISION_DRAW e sobrevive às ações originais da sala
+05:35 +291: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de UNEMPLOYED e sobrevive às ações originais da sala
+05:36 +292: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Configurações salvam versão sem clube e respeitam bloqueio sem alterar as cores
+05:36 +293: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 360.0 px
+05:36 +294: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 390.0 px
+05:36 +295: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 430.0 px
+05:36 +296: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 768.0 px
+05:36 +297: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 1366.0 px
+05:36 +298: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 1920.0 px
+05:36 +299: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção aparece antes de assumir um clube no modal existente
+05:36 +300: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart
+05:37 +300: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: New configuration clears previously saved consent to generated athletes
+05:40 +301: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: Real identity and estimated strength are clearly different labels
+05:40 +302: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: Generated athletes and estimated rankings cannot look official
+05:40 +303: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: Pending calibration is never shown as an official force value
+05:40 +304: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: Historical clubs and undated activity are visible separately
+05:40 +305: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/real_data_013b_test.dart: A technical identifier tie break is labeled unranked
+05:40 +306: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/session_store_test.dart
+05:41 +306: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/session_store_test.dart: Native session reloads from preferences after cache initialization
+05:41 +307: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/squad_swap_season_test.dart
+05:42 +307: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/squad_swap_season_test.dart: Two clicks exchange a midfielder for a defender at 390.0
+05:48 +308: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/squad_swap_season_test.dart: Two clicks exchange a midfielder for a defender at 1440.0
+05:51 +309: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/squad_swap_season_test.dart: Best lineup can select ten defenders or prefer the leading scorer
+05:51 +310: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart
+05:52 +310: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) formatTopScorerTitles formats 0, 1, 2, 5, and 10 titles accurately
+05:52 +311: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) formatClassicDate formats ISO timestamps with and without time in pt-BR
+05:52 +312: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) formatClassicMoney formats R$ values without altering amounts
+05:52 +313: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 Unit Formatters (Pluralization, Dates, Money, Historical Club) resolveHistoricalClubName resolves explicit clubName, exact clubId, and friendly fallback without leaking raw GUIDs
+[Elifoot010] Clube histórico indisponível para clubId=11111111-2222-4333-8444-555555555555 (season=1, player=p1)
+05:52 +314: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 player history renders 1 VEZ, 0 VEZES, 2 VEZES, 5 VEZES and formatted dates & money
+05:55 +315: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 historical clubs: same club, club transfer, division change, two clubs in same season, and unknown GUID fallback
+[Elifoot010] Clube histórico indisponível para clubId=deadbeef-dead-4eef-8eef-deadbeef0000 (season=0, player=p1)
+05:56 +316: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 filters, competitions, periods, goalkeepers >=20 & <20, defenders >=20 & <20, and tied season awards
+05:58 +317: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 320px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+05:59 +318: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 360px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+05:59 +319: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 390px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+05:59 +320: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 430px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+06:00 +321: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 768px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+06:00 +322: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 1024px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+06:00 +323: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_polish_010_test.dart: 010 responsive layout at 1280px: zero overflow, readable tables, pinned player name on mobile scroll, and long names
+06:01 +324: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart
+06:02 +324: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 360.0
+06:08 +325: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 390.0
+06:11 +326: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 430.0
+06:13 +327: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 768.0
+06:16 +328: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 1366.0
+06:18 +329: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_standard_016b_test.dart: 016B priority screens and persistent mobile navigation at 1920.0
+06:20 +330: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart
+06:21 +330: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green clube vermelho: derive() ignores club palette for the app
+06:21 +331: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green clube azul: derive() ignores club palette for the app
+06:21 +332: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube vermelho at 390.0
+06:25 +333: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube azul at 390.0
+06:27 +334: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube vermelho at 1366.0
+06:28 +335: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green shell is green for clube azul at 1366.0
+06:30 +336: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green variants and brightness stay green and legible
+06:30 +337: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APP THEME stays classic green existing saved preferences keep working
+06:30 +338: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club Flamengo red/black and blue club blue/white at 390.0
+06:30 +339: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club Flamengo red/black and blue club blue/white at 1366.0
+06:30 +340: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club neutral match mode keeps only an identity stripe
+06:30 +341: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: MATCH TEAM COLORS by club calendar and cup lists paint each team with its own colors
+06:32 +342: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APARÊNCIA menu green variants, brightness and match colors persist at 390.0
+06:33 +343: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/visual_theme_rebalance_014c_test.dart: APARÊNCIA menu green variants, brightness and match colors persist at 1366.0
+06:33 +344: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/widget_test.dart
+06:34 +344: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/widget_test.dart: Elifoot Classic UI E2E flow: Login LocalDev, Lobby, 0/6 Ready Counter, Literal * Star Names, Global Pause & Tabs
+06:40 +345: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/widget_test.dart: Phone width: login, room list and create dialog fit 390 pixels
+06:41 +346: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart
+06:42 +346: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 360.0
+06:44 +347: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 360.0 without invented coverage
+06:44 +348: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 390.0
+06:45 +349: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 390.0 without invented coverage
+06:45 +350: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 430.0
+06:45 +351: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 430.0 without invented coverage
+06:45 +352: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 768.0
+06:46 +353: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 768.0 without invented coverage
+06:46 +354: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 1366.0
+06:46 +355: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 1366.0 without invented coverage
+06:46 +356: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Initial lobby uses authoritative counters and fits 1920.0
+06:46 +357: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Country status and no-key report fit 1920.0 without invented coverage
+06:47 +358: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Career choice is explicit, excludes districts and preserves rejection message
+06:47 +359: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: Host draw then start use server state, even when a command is repeated
+06:48 +360: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_catalog_lobby_016b_test.dart: New creator sends catalogue rules, host lifecycle and explicit fictional consent
+06:49 +361: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_creator_013a_test.dart
+06:50 +361: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 390.0
+06:55 +362: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator completes female flow and preserves ownership at width 1366.0
+06:58 +363: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/world_creator_013a_test.dart: World creator reports unavailable catalog and keeps navigation usable
+06:58 +364: All tests passed!

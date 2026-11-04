@@ -1,0 +1,17 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: League and every cup stage restore the correct completed destination once
+00:00 +1: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=1 width=390.0
+00:06 +2: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=1 width=1366.0
+00:09 +3: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=2 width=390.0
+00:12 +4: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=false humans=2 width=1366.0
+00:15 +5: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=1 width=390.0
+00:17 +6: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=1 width=1366.0
+00:19 +7: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=2 width=390.0
+00:20 +8: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/automatic_round_flow_test.dart: Automatic flow classic=true humans=2 width=1366.0
+00:22 +9: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart
+00:23 +9: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Automatic preparation sends the completed season and round in the request
+00:23 +10: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Peer preparation keeps the full five seconds classic=false
+00:29 +11: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Peer preparation keeps the full five seconds classic=true
+00:31 +12: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Leaving the screen cancels the pending preparation
+00:33 +13: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/post_round_preparation_test.dart: Preparation retries a connection failure without an advance button
+00:34 +14: All tests passed!

@@ -1,0 +1,272 @@
+{
+  "date": "2026-11-04",
+  "worldId": "ed304bb3-cf8d-417c-b722-43cd8b6b9ac1",
+  "scope": "Sala e duas contas novas de QA; nenhum save do proprietário foi usado para simular partidas.",
+  "presentations": [
+    "CURRENT",
+    "CLASSIC_98"
+  ],
+  "humans": 2,
+  "leagueTimingMeasurements": [
+    {
+      "presentation": "classic",
+      "classificationVisibleMs": 4997
+    },
+    {
+      "presentation": "current",
+      "classificationVisibleMs": 5152
+    },
+    {
+      "presentation": "classic",
+      "classificationVisibleMs": 4993
+    },
+    {
+      "presentation": "current",
+      "classificationVisibleMs": 5216
+    }
+  ],
+  "automaticPreparationRequests": [
+    {
+      "presentation": "classic",
+      "time": 1793823502182,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=1"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823502417,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=1"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823591688,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=2"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823592026,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=2"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823699891,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=3"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823700206,
+      "url": "http://127.0.0.1:5241/api/worlds/ed304bb3-cf8d-417c-b722-43cd8b6b9ac1/next-round?expectedSeasonNumber=1&expectedRoundNumber=3"
+    }
+  ],
+  "finalRound": 4,
+  "finalState": "PREPARING",
+  "readyToSubmit": {
+    "current": true,
+    "classic": true
+  },
+  "advanceButtonCounts": {
+    "current": 0,
+    "classic": 0
+  },
+  "routes": [
+    {
+      "presentation": "current",
+      "time": 1793823462474,
+      "url": "http://127.0.0.1:5242/"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823462497,
+      "url": "http://127.0.0.1:5242/"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823466677,
+      "url": "http://127.0.0.1:5242/"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823466677,
+      "url": "http://127.0.0.1:5242/"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823466779,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823466785,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823468472,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823468998,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823471263,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823471284,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823483586,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823483643,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823497172,
+      "url": "http://127.0.0.1:5242/#/divisoes"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823497245,
+      "url": "http://127.0.0.1:5242/#/divisoes"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823502169,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823502397,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823502441,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823502587,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823560285,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823560350,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823572681,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823572725,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823586688,
+      "url": "http://127.0.0.1:5242/#/divisoes"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823586787,
+      "url": "http://127.0.0.1:5242/#/divisoes"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823591681,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823592003,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823592024,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823592208,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823663212,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823663246,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823675801,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823675935,
+      "url": "http://127.0.0.1:5242/#/partida"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823699845,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823699881,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823700066,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "classic",
+      "time": 1793823700160,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    },
+    {
+      "presentation": "current",
+      "time": 1793823700338,
+      "url": "http://127.0.0.1:5242/#/plantel"
+    }
+  ],
+  "statesObservedByPolling": [
+    "1:RUNNING_FIRST_HALF",
+    "1:HALFTIME_PAUSED",
+    "1:RUNNING_SECOND_HALF",
+    "2:PREPARING",
+    "2:RUNNING_FIRST_HALF",
+    "2:HALFTIME_PAUSED",
+    "2:RUNNING_SECOND_HALF",
+    "3:RUNNING_FIRST_HALF",
+    "3:HALFTIME_PAUSED",
+    "3:RUNNING_SECOND_HALF"
+  ],
+  "pageErrors": [],
+  "validation": "Duas rodadas da liga e uma de taça concluídas; seis pedidos automáticos avançaram da rodada 1 à preparação da rodada 4, sem avanço manual.",
+  "notes": "A medição usa eventos de navegação do Chromium; o temporizador de 5 segundos também foi validado com relógio controlado nos testes Flutter. Pênaltis e intervalos foram resolvidos apenas nesta sala de QA."
+}
