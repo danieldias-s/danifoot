@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-04",
+  "preview": "http://127.0.0.1:5242/",
+  "worldId": "f00e91fa-9027-4d0c-a3e3-0e2370abeb24",
+  "clubId": "897134b8-00f3-6845-a4f9-f646f53bb7dc",
+  "clubName": "Ferroviária Grená",
+  "scope": "Sala e conta de QA criadas exclusivamente para validar esta interface; nenhum save do proprietário usado.",
+  "roleActions": {
+    "reserveToStarterSwap": true,
+    "swapRestored": true,
+    "starterRemoved": true,
+    "starterRestored": true,
+    "appearanceSwitchPreservedLineup": true
+  },
+  "bank": {
+    "footerOpensLoans": true,
+    "reservesSeparateMenu": true,
+    "confirmationOpened": true,
+    "confirmationCancelled": true,
+    "loanExecuted": false
+  },
+  "stadium": {
+    "clubId": "897134b8-00f3-6845-a4f9-f646f53bb7dc",
+    "stadiumName": "Fonte Luminosa",
+    "builtCapacity": 7247,
+    "usableCapacity": 7109,
+    "conditionPercent": 98.1,
+    "maintenanceReservePerSeason": 32612,
+    "fixedCostPerMatch": 5072.9,
+    "variableCostPerAttendee": 1.1,
+    "lastCalculatedTicketPrice": 14,
+    "lastAttendance": 3554,
+    "expansionTargetSeats": 0,
+    "expansionRoundsRemaining": 0,
+    "renovationRoundsRemaining": 0
+  },
+  "checks": {
+    "snapshotUnchanged": true,
+    "clubsUnchanged": true,
+    "clubDetailUnchanged": true,
+    "snapshotBeforeSha256": "08a3e234cb4a757e84c2d42ad69e3c87e704c243410e336f57f56286101f95aa",
+    "snapshotAfterSha256": "08a3e234cb4a757e84c2d42ad69e3c87e704c243410e336f57f56286101f95aa",
+    "clubDetailBeforeSha256": "7af0d3ae08c9c7e1231154e4c5d375b4aa09c12c4bc9e3c6d00d98547db5ef34",
+    "clubDetailAfterSha256": "7af0d3ae08c9c7e1231154e4c5d375b4aa09c12c4bc9e3c6d00d98547db5ef34"
+  },
+  "gameWriteRequests": [],
+  "pageErrors": [],
+  "widths": [
+    {
+      "screen": "plantel",
+      "width": 360,
+      "documentWidth": 360
+    },
+    {
+      "screen": "plantel",
+      "width": 390,
+      "documentWidth": 390
+    },
+    {
+      "screen": "plantel",
+      "width": 430,
+      "documentWidth": 430
+    },
+    {
+      "screen": "plantel",
+      "width": 768,
+      "documentWidth": 768
+    },
+    {
+      "screen": "plantel",
+      "width": 1366,
+      "documentWidth": 1366
+    },
+    {
+      "screen": "plantel",
+      "width": 1920,
+      "documentWidth": 1920
+    }
+  ],
+  "deviceLimit": "Web responsiva em Chromium e testes Flutter; nenhum telefone físico foi utilizado."
+}
