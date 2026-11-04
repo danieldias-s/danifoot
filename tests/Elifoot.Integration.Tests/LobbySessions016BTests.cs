@@ -13,7 +13,7 @@ namespace Elifoot.Integration.Tests;
 public class LobbySessions016BTests
 {
     private static WebApplicationFactory<Program> Factory() => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
-        b.UseSetting("Elifoot:DatabaseProvider", "InMemory");
+        b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider", "InMemory");
         b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
         b.UseSetting("Elifoot:DisableBackgroundClock", "true");
     });

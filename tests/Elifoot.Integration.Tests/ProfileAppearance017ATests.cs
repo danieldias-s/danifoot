@@ -73,7 +73,7 @@ public class ProfileAppearance017ATests
     private static WebApplicationFactory<Program> Start(string connection) =>
         new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
-            builder.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
             builder.UseSetting("ConnectionStrings:DefaultConnection", connection);
             builder.UseSetting("Elifoot:AuthMode", "LocalDev");
             builder.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");

@@ -59,6 +59,10 @@ extension _ShellActions on _ElifootShellScreenState {
   }
 
   Future<void> _saveSession() async {
+    if (widget.useAccountLogin) {
+      await _saveAccountNavigation();
+      return;
+    }
     final previous = _savedSessions
         .where((p) => p['deviceId'] == _deviceId)
         .firstOrNull;

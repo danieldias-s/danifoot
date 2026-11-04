@@ -17,7 +17,7 @@ public class WorldLobby016BTests
     private static WebApplicationFactory<Program> Factory() {
         string file=Path.Combine(Path.GetTempPath(),"elifoot-world-lobby-016b-"+Guid.NewGuid()+".db");
         return new WebApplicationFactory<Program>().WithWebHostBuilder(b=> {
-            b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
+            b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
             b.UseSetting("Catalog013A:Enabled","true");b.UseSetting("Catalog013A:DatabaseProvider","Sqlite");b.UseSetting("ConnectionStrings:Catalog013A","Data Source="+file);
             b.UseSetting("Catalog013A:LoadFixtures","false");b.UseSetting("Catalog016A:Enabled","true");b.UseSetting("Catalog016B:Enabled","true");
         });

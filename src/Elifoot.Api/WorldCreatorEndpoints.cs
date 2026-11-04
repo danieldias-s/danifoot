@@ -76,9 +76,7 @@ public static class WorldCreatorEndpoints
         // Follows the existing LocalDev identity contract. Production identity integration is deliberately gated.
         group.AddEndpointFilter(async (context, next) =>
         {
-            if (app.Configuration["Elifoot:AuthMode"] is not (null or "LocalDev")) return Results.StatusCode(503);
-            string auth = context.HttpContext.Request.Headers.Authorization.ToString();
-            if (!auth.StartsWith("Bearer localdev-", StringComparison.Ordinal) || !Guid.TryParseExact(auth[16..], "N", out var owner) || owner == Guid.Empty)
+            if (!AccountLogin.TryOwner(context.HttpContext, app.Configuration, out var owner))
                 return Results.Unauthorized();
             context.HttpContext.Items["creatorOwner"] = owner;
             try { return await next(context); }

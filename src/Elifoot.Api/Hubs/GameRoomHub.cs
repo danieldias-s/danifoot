@@ -1,6 +1,8 @@
 using Elifoot.Application;
 using Elifoot.Contracts;
 using Microsoft.AspNetCore.SignalR;
+using Elifoot.Api.Services;
+using System.Security.Claims;
 
 namespace Elifoot.Api.Hubs;
 
@@ -8,11 +10,30 @@ public sealed class GameRoomHub : Hub
 {
     private readonly IWorldRepository _repository;
     private readonly RoomConnectionRegistry _connections;
-    public GameRoomHub(IWorldRepository repository, RoomConnectionRegistry connections)
-    { _repository = repository; _connections = connections; }
+    private readonly IConfiguration _configuration;
+    public GameRoomHub(IWorldRepository repository, RoomConnectionRegistry connections, IConfiguration configuration)
+    { _repository = repository; _connections = connections; _configuration = configuration; }
+
+    public override async Task OnConnectedAsync()
+    {
+        if (AccountLogin.Enabled(_configuration)) {
+            var http = Context.GetHttpContext()!;
+            var service = http.RequestServices.GetRequiredService<AccountSessionService>();
+            var token = Context.User?.FindFirstValue("sid");
+            if (token == null || await service.Session(token) == null) { Context.Abort(); return; }
+            http.RequestServices.GetRequiredService<AccountConnections>().Bind(Context.ConnectionId, AccountSessionService.Hash(token), Context.Abort);
+        }
+        await base.OnConnectedAsync();
+    }
 
     public async Task<LiveRoundSnapshotDto?> JoinRoom(Guid worldId, Guid coachId)
     {
+        if (AccountLogin.Enabled(_configuration)) {
+            var service = Context.GetHttpContext()!.RequestServices.GetRequiredService<AccountSessionService>();
+            var token = Context.User?.FindFirstValue("sid");
+            var session = token == null ? null : await service.Session(token);
+            if (session == null || !await service.Owns(session.AccountId, coachId)) throw new HubException("A conta não controla este treinador.");
+        }
         // Validate the target before detaching a valid current room.
         var validation = MultiplayerRoundOrchestrator.GetRoomLock(worldId);
         await validation.WaitAsync();
@@ -65,6 +86,7 @@ public sealed class GameRoomHub : Hub
 
     public override async Task OnDisconnectedAsync(Exception? exception)
     {
+        if (AccountLogin.Enabled(_configuration)) Context.GetHttpContext()!.RequestServices.GetRequiredService<AccountConnections>().Remove(Context.ConnectionId);
         if (_connections.Find(Context.ConnectionId) is { } member)
             await LeaveRoom(member.WorldId, member.CoachId);
         await base.OnDisconnectedAsync(exception);

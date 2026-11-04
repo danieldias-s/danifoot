@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'api_environment.dart';
+import 'account_http_client.dart';
+import 'account_transport.dart';
 
 class ElifootApiClient {
   String baseUrl;
   String? _lobbyCoachId, _lobbyDeviceId;
-  final http.Client _http;
+  final AccountHttpClient _http;
   WebSocketChannel? _wsChannel;
   StreamSubscription? _wsSub;
   Timer? _pollTimer;
@@ -27,7 +29,70 @@ class ElifootApiClient {
 
   ElifootApiClient({String? baseUrl, http.Client? httpClient})
     : baseUrl = baseUrl ?? ApiEnvironment.baseUrl,
-      _http = httpClient ?? http.Client();
+      _http = AccountHttpClient(httpClient ?? createAccountTransport());
+
+  void enableAccountSession({void Function()? onExpired}) {
+    _http.enabled = true;
+    _http.onExpired = onExpired;
+  }
+
+  Future<Map<String, dynamic>?> accountSession() async {
+    final response = await _http.get(Uri.parse('$baseUrl/api/auth/session'));
+    if (response.statusCode == 401) return null;
+    final account = _decodeResponse(response);
+    _lobbyCoachId = account['coachId']?.toString();
+    _lobbyDeviceId = null;
+    return account;
+  }
+
+  Future<Map<String, dynamic>> signInAccount(
+    String username,
+    String password, {
+    String? displayName,
+  }) async {
+    final response = await _http.post(
+      Uri.parse(
+        '$baseUrl/api/auth/${displayName == null ? 'login' : 'register'}',
+      ),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'username': username,
+        'password': password,
+        'displayName': ?displayName,
+      }),
+    );
+    final account = _decodeResponse(response);
+    _lobbyCoachId = account['coachId']?.toString();
+    _lobbyDeviceId = null;
+    return account;
+  }
+
+  Future<void> signOutAccount() async {
+    _decodeResponse(await _http.post(Uri.parse('$baseUrl/api/auth/logout')));
+    disconnectRealtime();
+    _lobbyCoachId = null;
+    _lobbyDeviceId = null;
+  }
+
+  Future<Map<String, dynamic>> selectAccountProfile(String coachId) async {
+    final response = await _http.post(
+      Uri.parse('$baseUrl/api/auth/profile'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'coachId': coachId}),
+    );
+    final account = _decodeResponse(response);
+    _lobbyCoachId = account['coachId']?.toString();
+    return account;
+  }
+
+  Future<Map<String, dynamic>> linkLegacyAccount(String code) async =>
+      _decodeResponse(
+        await _http.post(
+          Uri.parse('$baseUrl/api/accounts/legacy-link'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({'code': code}),
+        ),
+      );
 
   Future<dynamic> import016a(
     String adminToken,

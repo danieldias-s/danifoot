@@ -431,7 +431,9 @@ void main() {
       tester.view.devicePixelRatio = 1.0;
       addTearDown(tester.view.resetPhysicalSize);
 
-      await tester.pumpWidget(ElifootClassicApp(apiClient: client));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: client),
+      );
 
       // 1. Login LocalDev
       expect(
@@ -553,7 +555,9 @@ void main() {
           );
         }),
       );
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);

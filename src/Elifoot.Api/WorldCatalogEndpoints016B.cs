@@ -26,9 +26,8 @@ public static class WorldCatalogEndpoints016B
     private static RouteGroupBuilder AuthGroup(WebApplication app,string path) {
         var group=app.MapGroup(path);
         group.AddEndpointFilter(async(context,next)=> {
-            if(app.Environment.IsProduction()||app.Configuration["Elifoot:AuthMode"] is not (null or "LocalDev"))return Results.StatusCode(503);
-            var auth=context.HttpContext.Request.Headers.Authorization.ToString();
-            if(!auth.StartsWith("Bearer localdev-",StringComparison.Ordinal)||!Guid.TryParseExact(auth[16..],"N",out var owner)||owner==Guid.Empty)return Results.Unauthorized();
+            if(app.Environment.IsProduction())return Results.StatusCode(503);
+            if(!AccountLogin.TryOwner(context.HttpContext,app.Configuration,out var owner))return Results.Unauthorized();
             context.HttpContext.Items["owner016b"]=owner;
             try{return await next(context);}
             catch(ArgumentException e){return Results.BadRequest(new{error=e.Message});}

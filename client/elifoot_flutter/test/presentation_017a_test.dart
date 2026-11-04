@@ -410,7 +410,9 @@ void main() {
       addTearDown(t.view.resetPhysicalSize);
       addTearDown(t.view.resetDevicePixelRatio);
       final api = InitialRoomApi();
-      await t.pumpWidget(ElifootClassicApp(apiClient: api));
+      await t.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await t.tap(find.byKey(const Key('enter-local-lobby')));
       await t.pumpAndSettle();
       await t.ensureVisible(find.text('ENTRAR NA SALA'));

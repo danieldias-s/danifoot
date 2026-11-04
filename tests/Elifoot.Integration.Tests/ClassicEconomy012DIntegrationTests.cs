@@ -46,7 +46,7 @@ public class ClassicEconomy012DIntegrationTests
     public async Task HttpAndSignalRFinanceShareRoomLockAndIdempotency(int humans)
     {
         await using var factory=new WebApplicationFactory<Program>().WithWebHostBuilder(b=>{
-            b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");});
+            b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");});
         using var client=factory.CreateClient();var repo=factory.Services.GetRequiredService<IWorldRepository>();
         var w=WorldSeedFactory.CreateSeededWorld();w.Auctions.Clear();var coaches=new List<HumanCoach>();
         foreach(var c in w.Clubs.Take(humans))

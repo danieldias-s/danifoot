@@ -14,10 +14,7 @@ internal static class ProfileAppearanceEndpoints
 
             // Same LocalDev owner token contract as the existing appearance API.
             var http = context.HttpContext;
-            var authorization = http.Request.Headers.Authorization.ToString();
-            const string prefix = "Bearer localdev-";
-            if (!authorization.StartsWith(prefix, StringComparison.Ordinal) ||
-                !Guid.TryParseExact(authorization[prefix.Length..], "N", out var owner) || owner == Guid.Empty)
+            if (!AccountLogin.TryOwner(http, app.Configuration, out var owner))
                 return Results.Unauthorized();
 
             http.Items[typeof(ProfileAppearanceEndpoints)] = owner;

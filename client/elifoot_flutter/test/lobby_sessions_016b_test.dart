@@ -85,7 +85,9 @@ void main() {
     'A full room restores the canonical trainer and realtime identity without choosing another club',
     (tester) async {
       final api = RestoredIdentityApi();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('RETOMAR MINHA SESSÃO'));

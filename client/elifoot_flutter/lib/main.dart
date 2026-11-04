@@ -36,9 +36,12 @@ import 'local_trainer_panel.dart';
 import 'presentation_version.dart';
 import 'presentation_widgets.dart';
 import 'classic98_widgets.dart';
+import 'account_screens.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'shell_actions.dart';
 part 'classic98_shell.dart';
+part 'account_shell.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,7 +80,12 @@ class _PlayerSilhouettePainter extends CustomPainter {
 
 class ElifootClassicApp extends StatefulWidget {
   final ElifootApiClient? apiClient;
-  const ElifootClassicApp({super.key, this.apiClient});
+  final bool accountLogin;
+  const ElifootClassicApp({
+    super.key,
+    this.apiClient,
+    this.accountLogin = true,
+  });
   @override
   State<ElifootClassicApp> createState() => _ElifootClassicAppState();
 }
@@ -94,6 +102,7 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
       appearance: appearance,
       presentation: presentation,
       navigation: navigation,
+      useAccountLogin: widget.accountLogin,
     ),
   );
   @override
@@ -130,12 +139,14 @@ class ElifootShellScreen extends StatefulWidget {
   final ClubThemeController? appearance;
   final PresentationController? presentation;
   final MatchNavigationController? navigation;
+  final bool useAccountLogin;
   const ElifootShellScreen({
     super.key,
     required this.apiClient,
     this.appearance,
     this.presentation,
     this.navigation,
+    this.useAccountLogin = false,
   });
 
   @override
@@ -143,6 +154,9 @@ class ElifootShellScreen extends StatefulWidget {
 }
 
 class _ElifootShellScreenState extends State<ElifootShellScreen> {
+  Map<String, dynamic>? _account;
+  bool _accountLobby = false;
+  String? _accountNotice;
   // Session & World state
   String _nickname = 'Treinador 1';
   String _deviceId =
@@ -314,7 +328,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   void initState() {
     super.initState();
     _navigation.addListener(_onNavigationRequest);
-    final saved = readSession();
+    if (widget.useAccountLogin) {
+      widget.apiClient.enableAccountSession(onExpired: _expireAccountSession);
+    }
+    final saved = widget.useAccountLogin ? null : readSession();
     Map<String, dynamic>? session;
     try {
       if (saved != null) session = jsonDecode(saved);
@@ -324,12 +341,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         Map<String, dynamic>.from(session!['liveSelection'] as Map),
       );
     }
-    _restoringSession = session?['worldId'] != null;
+    _restoringSession = widget.useAccountLogin || session?['worldId'] != null;
     _nickname = session?['nickname'] ?? _nickname;
     _deviceId = session?['deviceId'] ?? _deviceId;
     _coachId = session?['coachId'];
     _authenticatedDeviceId = session?['deviceId'];
-    _savedSessions = readSavedSessions();
+    _savedSessions = widget.useAccountLogin ? [] : readSavedSessions();
     widget.apiClient.onSnapshotUpdated = (snap) {
       if (!mounted) return;
       if (_worldId != null &&
@@ -389,7 +406,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       setState(() => _statusBanner = msg);
       _refreshClubAndSecondaryData();
     };
-    if (session?['worldId'] != null) {
+    if (widget.useAccountLogin) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _restoreAccountSession(),
+      );
+    } else if (session?['worldId'] != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         try {
           await _performLocalLoginAndLoadWorlds();
@@ -410,6 +431,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _performLocalLoginAndLoadWorlds() async {
+    if (widget.useAccountLogin) {
+      await _reloadAccountWorlds();
+      return;
+    }
     setState(() {
       _isLoading = true;
       _statusBanner = null;
@@ -768,6 +793,15 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Widget build(BuildContext context) {
     if (_restoringSession) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    if (widget.useAccountLogin && _account == null) {
+      return AccountLoginScreen(
+        submit: _authenticateAccount,
+        notice: _accountNotice,
+      );
+    }
+    if (widget.useAccountLogin && _worldId == null) {
+      return _buildAccountPortal();
     }
     if (_coachId == null || _worldId == null) {
       return PresentationSurface(
@@ -1493,6 +1527,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       _selectedStarterIds = [];
     });
     await _saveSession();
+    if (widget.useAccountLogin) {
+      _accountLobby = true;
+      await _reloadAccountWorlds();
+    }
   }
 
   void _navigateMobile(int destination) {

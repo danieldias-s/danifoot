@@ -821,7 +821,9 @@ void main() {
       addTearDown(() => tester.binding.setSurfaceSize(null));
 
       final fakeApi = FakeGameplay011ApiClient();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: fakeApi),
+      );
 
       // 1. Login and choose club
       await tester.tap(find.text('ENTRAR NO LOBBY'));
@@ -951,7 +953,9 @@ void main() {
       addTearDown(() => tester.binding.setSurfaceSize(null));
 
       final fakeApi = FakeGameplay011ApiClient();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: fakeApi),
+      );
 
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
@@ -1066,7 +1070,9 @@ void main() {
       final fakeApi = FakeGameplay011ApiClient();
 
       await tester.binding.setSurfaceSize(const Size(1280, 900));
-      await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: fakeApi),
+      );
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
@@ -1114,7 +1120,9 @@ void main() {
       addTearDown(() => tester.binding.setSurfaceSize(null));
 
       final fakeApi = FakeGameplay011ApiClient();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: fakeApi));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: fakeApi),
+      );
 
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();

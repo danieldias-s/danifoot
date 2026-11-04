@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string authMode = builder.Configuration["Elifoot:AuthMode"] ?? "LocalDev";
-if (!string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) &&
+string authMode = builder.Configuration["Elifoot:AuthMode"] ?? AccountLogin.Scheme;
+if (!string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) && authMode != AccountLogin.Scheme &&
     string.IsNullOrWhiteSpace(builder.Configuration["Elifoot:ProductionJwtSecret"]))
 {
     throw new InvalidOperationException(
@@ -44,6 +44,7 @@ else
 }
 
 bool worldCreator013A = builder.AddWorldCreator013A();
+builder.AddAccountLogin();
 builder.AddImport016A();
 builder.AddWorldCatalog016B();
 builder.Services.AddSignalR();
@@ -58,8 +59,10 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.SetIsOriginAllowed(_ => true)
-              .AllowAnyHeader()
+        if (AccountLogin.Enabled(builder.Configuration))
+            policy.WithOrigins(builder.Configuration.GetSection("Accounts:AllowedOrigins").Get<string[]>() ?? ["http://127.0.0.1:5242", "http://localhost:5242"]);
+        else policy.SetIsOriginAllowed(_ => true);
+        policy.AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
@@ -75,7 +78,9 @@ async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken
     finally { sem.Release(); }
 }
 
+app.UseRouting();
 app.UseCors();
+app.UseAccountLogin();
 
 // Initialize database schema and seed default 128-club world if configured
 using (var scope = app.Services.CreateScope())
@@ -85,6 +90,7 @@ using (var scope = app.Services.CreateScope())
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
         await db.Database.EnsureCreatedAsync();
         await ProfileAppearanceStore.EnsureSchema(db);
+        if (AccountLogin.Enabled(app.Configuration)) await AccountSchema.Ensure(db);
     }
 
     bool autoSeed = builder.Configuration.GetValue<bool>("Elifoot:AutoSeedDefaultWorld", true);
@@ -108,10 +114,11 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.MapHub<GameRoomHub>("/hubs/gameroom");
+app.MapHub<GameRoomHub>("/hubs/gameroom", options => options.CloseOnAuthenticationExpiration = AccountLogin.Enabled(app.Configuration));
+app.MapAccountLogin();
 app.MapPlayerRankings();
 app.MapProfileAppearance(
-    string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase),
+    string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) || AccountLogin.Enabled(app.Configuration),
     !string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase));
 if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
 if (builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
@@ -143,8 +150,11 @@ app.MapPost("/api/auth/local-login", (LocalAuthRequest req) =>
 });
 
 // 2. Worlds / Rooms
-app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? deviceId, CancellationToken ct) =>
+app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? deviceId, HttpContext http, CancellationToken ct) =>
 {
+    var ownedProfiles = AccountLogin.Enabled(app.Configuration)
+        ? (await http.RequestServices.GetRequiredService<AccountSessionService>().Profiles(AccountLogin.AccountId(http), ct)).Select(p => p.CoachId).ToHashSet()
+        : null;
     var worlds = await repo.ListWorldsAsync(ct);
     var summaries = new List<object>();
     foreach (var w in worlds)
@@ -154,7 +164,8 @@ app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? d
         try
         {
             var counter = roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildReadyCounterDto(w));
-            var own = w.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+            var own = w.HumanCoaches.FirstOrDefault(h => h.Id == coachId && (ownedProfiles == null || ownedProfiles.Contains(h.Id)))
+                ?? (ownedProfiles == null ? null : w.HumanCoaches.FirstOrDefault(h => ownedProfiles.Contains(h.Id)));
             var device = deviceId?.Trim();
             if (string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) && own == null && !string.IsNullOrWhiteSpace(device) && device != "dev") {
                 var candidates = w.HumanCoaches.Where(h => string.Equals((h.DeviceId ?? string.Empty).Trim(), device, StringComparison.Ordinal)).ToList();
@@ -162,6 +173,9 @@ app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? d
             }
             summaries.Add(new {
                 ReconnectCoachId = own?.Id,
+                AccountOwnsSeat = ownedProfiles != null && own != null,
+                MyClubName = own?.CurrentClubId is Guid clubId ? w.Clubs.FirstOrDefault(c => c.Id == clubId)?.Name : null,
+                OwnedCoachIds = ownedProfiles == null ? Array.Empty<Guid>() : w.HumanCoaches.Where(h => ownedProfiles.Contains(h.Id)).Select(h => h.Id).ToArray(),
                 w.Id, w.Name, w.InviteCode, w.Seed, w.TotalClubs, w.MaxHumans,
                 CurrentHumans = w.HumanCoaches.Count,
                 ConnectedHumans = counter.Participants.Count(p => p.IsConnected),
@@ -213,11 +227,17 @@ app.MapPost("/api/worlds/join-by-code", async (
     string? deviceId,
     Guid? preferredClubId,
     IWorldRepository repo,
+    HttpContext http,
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
     var world = await repo.GetWorldByInviteCodeAsync(inviteCode, ct);
     if (world == null) return Results.NotFound(new { error = $"Sala com código '{inviteCode}' não encontrada." });
+    if (AccountLogin.Enabled(app.Configuration)) {
+        var owned = (await http.RequestServices.GetRequiredService<AccountSessionService>().Profiles(AccountLogin.AccountId(http), ct)).Select(p => p.CoachId).ToHashSet();
+        if (world.HumanCoaches.Any(c => owned.Contains(c.Id)) && !world.HumanCoaches.Any(c => c.Id == coachId && owned.Contains(c.Id)))
+            return Results.Conflict(new { error = "Você já participa desta sala. Use RETOMAR MINHA SESSÃO com o perfil vinculado." });
+    }
 
     var (ok, err, coach, updatedWorld) = await orchestrator.JoinWorldAndAssignClubAsync(
         world.Id, coachId, nickname, deviceId ?? "dev", preferredClubId, false, ct, allowDeviceReconnect: string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase));

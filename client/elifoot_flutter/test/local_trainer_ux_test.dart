@@ -65,7 +65,9 @@ void main() {
         }),
       );
       final api = TrainerAccessApi();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.pumpAndSettle();
       expect(find.textContaining('original-device'), findsNothing);
       await tester.tap(find.byKey(const Key('new-local-trainer')));
@@ -98,7 +100,9 @@ void main() {
       expect(find.textContaining(newDevice), findsNothing);
 
       await tester.pumpWidget(const SizedBox());
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.pumpAndSettle();
       expect(
         tester
@@ -131,7 +135,9 @@ void main() {
         }),
       );
       final api = TrainerAccessApi();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.text('Recuperação de acesso'));
       await tester.pumpAndSettle();
@@ -156,7 +162,9 @@ void main() {
     (tester) async {
       desktop(tester);
       final api = WaitingRoomApi(2);
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.tap(find.byKey(const Key('enter-local-lobby')));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));
@@ -193,7 +201,9 @@ void main() {
     (tester) async {
       desktop(tester);
       final api = TrainerAccessApi()..failWorldList = true;
-      await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
       await tester.tap(find.byKey(const Key('new-local-trainer')));
       await tester.pumpAndSettle();
       await tester.enterText(find.byKey(const Key('trainer-name')), 'Daniel');

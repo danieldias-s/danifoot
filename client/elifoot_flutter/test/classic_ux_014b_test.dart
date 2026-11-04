@@ -82,7 +82,9 @@ Future<void> join(
   WaitingRoomApi api, {
   bool unemployed = false,
 }) async {
-  await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+  await tester.pumpWidget(
+    ElifootClassicApp(accountLogin: false, apiClient: api),
+  );
   await tester.ensureVisible(find.text('ENTRAR NO LOBBY'));
   await tester.tap(find.text('ENTRAR NO LOBBY'));
   await tester.pumpAndSettle();

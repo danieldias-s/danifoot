@@ -317,7 +317,7 @@ public sealed class PlayerRankings009IntegrationTests(ITestOutputHelper output)
         var source = JsonSerializer.Deserialize<GameWorld>(await File.ReadAllBytesAsync(sourcePath), Json)!;
         EfWorldRepository.ClearCacheForTesting();
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder => {
-            builder.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
             builder.UseSetting("ConnectionStrings:DefaultConnection", $"Data Source={database}");
             builder.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             builder.UseSetting("Elifoot:DisableBackgroundClock", "true");

@@ -51,7 +51,9 @@ class ThemedApi extends FakeGameplay011ApiClient {
 }
 
 Future<void> join(WidgetTester tester, ThemedApi api) async {
-  await tester.pumpWidget(ElifootClassicApp(apiClient: api));
+  await tester.pumpWidget(
+    ElifootClassicApp(accountLogin: false, apiClient: api),
+  );
   await tester.tap(find.text('ENTRAR NO LOBBY'));
   await tester.pumpAndSettle();
   await tester.ensureVisible(find.text('ENTRAR COM CLUBE'));

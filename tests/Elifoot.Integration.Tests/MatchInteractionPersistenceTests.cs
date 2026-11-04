@@ -12,7 +12,7 @@ namespace Elifoot.Integration.Tests;
 public class MatchInteractionPersistenceTests
 {
     private static WebApplicationFactory<Program> Factory(string connection, bool postgres) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
-        b.UseSetting("Elifoot:DatabaseProvider", postgres ? "PostgreSQL" : "Sqlite");
+        b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider", postgres ? "PostgreSQL" : "Sqlite");
         b.UseSetting("ConnectionStrings:DefaultConnection", connection);
         b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
         b.UseSetting("Elifoot:DisableBackgroundClock", "true");

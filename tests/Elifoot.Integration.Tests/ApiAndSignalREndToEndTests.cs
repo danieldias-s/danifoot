@@ -37,7 +37,7 @@ public class ApiAndSignalREndToEndTests
     {
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
-            builder.UseSetting("Elifoot:DatabaseProvider", "InMemory");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "InMemory");
             builder.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             builder.UseSetting("Elifoot:DisableBackgroundClock", "true");
         });
@@ -242,7 +242,7 @@ public class ApiAndSignalREndToEndTests
     {
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
-            builder.UseSetting("Elifoot:DatabaseProvider", "InMemory");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "InMemory");
             builder.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             builder.UseSetting("Elifoot:DisableBackgroundClock", "true");
         });

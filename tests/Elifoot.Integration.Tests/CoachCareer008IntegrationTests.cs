@@ -13,7 +13,7 @@ namespace Elifoot.Integration.Tests;
 public class CoachCareer008IntegrationTests
 {
     private static WebApplicationFactory<Program> Factory()=>new WebApplicationFactory<Program>().WithWebHostBuilder(b=>{
-        b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
+        b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
     });
 
     private static async Task<(GameWorld W,HumanCoach H)> Prepare(WebApplicationFactory<Program> f,HttpClient client)

@@ -16,7 +16,7 @@ public sealed class PlayableWorld013CIntegrationTests
 {
     private static readonly CatalogUsageRights TestRights=new("Synthetic repository fixture","Invented integration-test data; no external provider rights claimed",true,true,true,true,true,true,true);
     private static WebApplicationFactory<Program> Factory(string catalog,string worlds) => new WebApplicationFactory<Program>().WithWebHostBuilder(b=>{
-        b.UseSetting("Elifoot:DatabaseProvider","PostgreSQL"); b.UseSetting("ConnectionStrings:DefaultConnection",worlds);
+        b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","PostgreSQL"); b.UseSetting("ConnectionStrings:DefaultConnection",worlds);
         b.UseSetting("ConnectionStrings:Catalog013A",catalog); b.UseSetting("Catalog013A:Enabled","true");
         b.UseSetting("Catalog013B:Enabled","true"); b.UseSetting("Catalog013A:LoadFixtures","false");
         b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");b.UseSetting("Elifoot:AuthMode","LocalDev");

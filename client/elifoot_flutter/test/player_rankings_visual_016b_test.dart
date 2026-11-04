@@ -160,7 +160,9 @@ void main() {
       await tester.binding.setSurfaceSize(const Size(390, 1000));
       addTearDown(() => tester.binding.setSurfaceSize(null));
       final fixture = Fixture();
-      await tester.pumpWidget(ElifootClassicApp(apiClient: fixture.api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: fixture.api),
+      );
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR DESEMPREGADO'));

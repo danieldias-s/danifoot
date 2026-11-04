@@ -13,7 +13,7 @@ namespace Elifoot.Integration.Tests;
 public class VoluntaryAuctionIntegrationTests
 {
     private static WebApplicationFactory<Program> Factory(string? file=null)=>new WebApplicationFactory<Program>().WithWebHostBuilder(b=>{
-        b.UseSetting("Elifoot:DatabaseProvider",file==null?"InMemory":"Sqlite");
+        b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider",file==null?"InMemory":"Sqlite");
         if(file!=null)b.UseSetting("ConnectionStrings:DefaultConnection",$"Data Source={file};Pooling=False");
         b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
     });

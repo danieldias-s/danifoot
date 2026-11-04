@@ -46,7 +46,7 @@ public class Discipline012CIntegrationTests
     public async Task IndependentHttpClientsSeeTheSameRealInjuryManDownCountAndOnePersistedEpisode(int count)
     {
         await using var factory=new WebApplicationFactory<Program>().WithWebHostBuilder(builder=>{
-            builder.UseSetting("Elifoot:DatabaseProvider","InMemory");builder.UseSetting("Elifoot:AutoSeedDefaultWorld","false");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider","InMemory");builder.UseSetting("Elifoot:AutoSeedDefaultWorld","false");
             builder.UseSetting("Elifoot:DisableBackgroundClock","true");});
         using var scope=factory.Services.CreateScope();
         var orchestrator=scope.ServiceProvider.GetRequiredService<MultiplayerRoundOrchestrator>();

@@ -70,9 +70,35 @@ public class ElifootDbContext : DbContext
     public DbSet<ClubSummaryRecord> ClubSummaries => Set<ClubSummaryRecord>();
     public DbSet<FinancialLedgerRecord> FinancialLedger => Set<FinancialLedgerRecord>();
     public DbSet<SeasonHistoryRecord> SeasonHistories => Set<SeasonHistoryRecord>();
+    public DbSet<AccountRecord> Accounts => Set<AccountRecord>();
+    public DbSet<AccountCoachRecord> AccountCoaches => Set<AccountCoachRecord>();
+    public DbSet<AccountSessionRecord> AccountSessions => Set<AccountSessionRecord>();
+    public DbSet<LegacyAccountGrantRecord> AccountLinkGrants => Set<LegacyAccountGrantRecord>();
+    public DbSet<AccountLinkAuditRecord> AccountLinkAudit => Set<AccountLinkAuditRecord>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AccountRecord>(b => {
+            b.ToTable("ef_accounts"); b.HasKey(x => x.Id);
+            b.HasIndex(x => x.NormalizedUsername).IsUnique();
+            b.Property(x => x.NormalizedUsername).HasMaxLength(80);
+            b.Property(x => x.PasswordHash).HasMaxLength(1000);
+        });
+        modelBuilder.Entity<AccountCoachRecord>(b => {
+            b.ToTable("ef_account_coaches"); b.HasKey(x => x.CoachId);
+            b.HasIndex(x => x.AccountId);
+            b.HasOne<AccountRecord>().WithMany().HasForeignKey(x => x.AccountId).OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<AccountSessionRecord>(b => {
+            b.ToTable("ef_account_sessions"); b.HasKey(x => x.IdHash);
+            b.HasOne<AccountRecord>().WithMany().HasForeignKey(x => x.AccountId).OnDelete(DeleteBehavior.Restrict);
+            b.HasOne<AccountCoachRecord>().WithMany().HasForeignKey(x => x.CoachId).OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<LegacyAccountGrantRecord>(b => {
+            b.ToTable("ef_account_link_grants"); b.HasKey(x => x.TokenHash);
+            b.HasOne<AccountRecord>().WithMany().HasForeignKey(x => x.AccountId).OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<AccountLinkAuditRecord>(b => { b.ToTable("ef_account_link_audit"); b.HasKey(x => x.Id); });
         modelBuilder.Entity<WorldRecord>(b =>
         {
             b.ToTable("ef_worlds");

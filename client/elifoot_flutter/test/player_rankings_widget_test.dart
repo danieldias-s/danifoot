@@ -745,7 +745,9 @@ void main() {
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
-      await tester.pumpWidget(ElifootClassicApp(apiClient: f.api));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: f.api),
+      );
       await tester.tap(find.text('ENTRAR NO LOBBY'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('ENTRAR DESEMPREGADO'));

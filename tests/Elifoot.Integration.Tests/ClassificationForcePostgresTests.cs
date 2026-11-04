@@ -25,7 +25,7 @@ public sealed class ClassificationForcePostgresTests
 
         WebApplicationFactory<Program> Api() => new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
-            builder.UseSetting("Elifoot:DatabaseProvider", "PostgreSQL");
+            builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "PostgreSQL");
             builder.UseSetting("ConnectionStrings:DefaultConnection", connection.ConnectionString);
             builder.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             builder.UseSetting("Elifoot:DisableBackgroundClock", "true");
