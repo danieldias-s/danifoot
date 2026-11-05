@@ -1,0 +1,8 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/player_scouting_test.dart
+00:00 +0: Faixas inclusivas, sobrepostas e combinadas com posição, nome e observados
+00:00 +1: Falha ao salvar não inventa observação confirmada
+00:00 +2: Mercado e busca observam e restauram jogador classic=true width=390.0
+00:02 +3: Mercado e busca observam e restauram jogador classic=true width=1366.0
+00:03 +4: Mercado e busca observam e restauram jogador classic=false width=390.0
+00:04 +5: Mercado e busca observam e restauram jogador classic=false width=1366.0
+00:05 +6: All tests passed!

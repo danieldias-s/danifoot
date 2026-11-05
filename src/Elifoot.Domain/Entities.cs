@@ -219,6 +219,7 @@ public class HumanCoach
     public bool IsAutoMode { get; set; }
     public Guid? CurrentClubId { get; set; }
     public bool IsUnemployed => CurrentClubId == null;
+    public List<Guid> ObservedPlayerIds { get; set; } = new();
 
     // Ready state for current round preparation
     public bool IsReadyForRound { get; set; }

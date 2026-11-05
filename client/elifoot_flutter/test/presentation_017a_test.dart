@@ -62,6 +62,13 @@ class PendingApi extends ProfileApi {
 class GameplayPresentationApi extends WaitingRoomApi {
   int connects = 0, disconnects = 0;
   int announcements = 0, renovations = 0;
+  @override
+  Future<Map<String, dynamic>> getPlayerScouting(
+    String world,
+    String coach, {
+    String name = '',
+    bool observedOnly = false,
+  }) async => {'observedPlayerIds': <String>[], 'players': <dynamic>[]};
   GameplayPresentationApi() : super(2);
   @override
   void connectRealtimeRoom(String worldId, String coachId) {
@@ -228,61 +235,56 @@ void main() {
       await close(t);
     },
   );
-  testWidgets(
-    'Banco clássico troca goleiros pela validação compartilhada e retira reserva',
-    (t) async {
-      t.view.physicalSize = const Size(1366, 1000);
-      t.view.devicePixelRatio = 1;
-      addTearDown(t.view.resetPhysicalSize);
-      addTearDown(t.view.resetDevicePixelRatio);
-      final api = GameplayPresentationApi();
-      await join(t, api);
-      final controller = PresentationScope.maybeOf(
-        t.element(find.byType(ElifootShellScreen)),
-      )!;
-      await controller.select(api, PresentationVersion.classic);
+  testWidgets('Bolinhas trocam goleiros sem o submenu de reservas', (t) async {
+    t.view.physicalSize = const Size(1366, 1000);
+    t.view.devicePixelRatio = 1;
+    addTearDown(t.view.resetPhysicalSize);
+    addTearDown(t.view.resetDevicePixelRatio);
+    final api = GameplayPresentationApi();
+    await join(t, api);
+    await PresentationScope.maybeOf(
+      t.element(find.byType(ElifootShellScreen)),
+    )!.select(api, PresentationVersion.classic);
+    await t.pumpAndSettle();
+    final before = t
+        .widget<RetroTable>(find.byKey(const Key('retro-roster')))
+        .rows
+        .length;
+    Future<void> dot(String id) async {
+      final finder = find.byKey(ValueKey('retro-role-$id'));
+      await t.ensureVisible(finder);
+      await t.tap(finder);
       await t.pumpAndSettle();
-      final roster = t.widget<RetroTable>(
-        find.byKey(const Key('retro-roster')),
-      );
-      final starterName = roster.rows.firstWhere((r) => r.first == '● G')[1];
-      final rosterCount = roster.rows.length;
-      await t.tap(find.text('Equipa'));
-      await t.pumpAndSettle();
-      await t.tap(find.text('Reservas do elenco...'));
-      await t.pumpAndSettle();
-      var bank = t.widget<RetroTable>(find.byType(RetroTable));
-      final count = bank.rows.length;
-      final reserve = bank.rows.indexWhere((r) => r.first == 'G');
-      final reserveName = bank.rows[reserve][1];
-      bank.onSelect!(reserve);
-      await t.pumpAndSettle();
-      await t.tap(find.text('Promover / trocar com titular'));
-      await t.pumpAndSettle();
-      await t.tap(find.text('$starterName (G)'));
-      await t.pumpAndSettle();
-      bank = t.widget<RetroTable>(find.byType(RetroTable));
-      expect(bank.rows.length, count);
-      expect(bank.rows.any((r) => r[1] == reserveName), isFalse);
-      expect(bank.rows.any((r) => r[1] == starterName), isTrue);
-      bank.onSelect!(bank.rows.indexWhere((r) => r[1] == starterName));
-      await t.pumpAndSettle();
-      await t.tap(find.text('Retirar do banco'));
-      await t.pumpAndSettle();
-      expect(
-        t.widget<RetroTable>(find.byType(RetroTable)).rows.length,
-        count - 1,
-      );
-      await t.tap(find.text('Jogo'));
-      await t.pumpAndSettle();
-      expect(
-        t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).rows.length,
-        rosterCount,
-      );
-      expect(t.takeException(), isNull);
-      await close(t);
-    },
-  );
+    }
+
+    await dot('p-12');
+    await dot('p-12');
+    expect(
+      t
+          .widget<ElevatedButton>(find.byKey(const Key('btn-enviar-tatica')))
+          .onPressed,
+      isNull,
+    );
+    await dot('p-1');
+    expect(
+      t
+          .widget<ElevatedButton>(find.byKey(const Key('btn-enviar-tatica')))
+          .onPressed,
+      isNotNull,
+    );
+    await dot('p-1');
+    expect(
+      t.widget<RetroTable>(find.byKey(const Key('retro-roster'))).rows.length,
+      before,
+    );
+    await t.tap(find.text('Equipa'));
+    await t.pumpAndSettle();
+    expect(find.text('Reservas do elenco...'), findsNothing);
+    await t.tapAt(const Offset(1100, 800));
+    await t.pumpAndSettle();
+    expect(t.takeException(), isNull);
+    await close(t);
+  });
   testWidgets(
     'Operações econômicas clássicas exigem confirmação e seleção não anuncia',
     (t) async {
@@ -364,22 +366,16 @@ void main() {
       if (width < 1024) {
         await t.tap(find.byTooltip('Abrir menus'));
         await t.pumpAndSettle();
-        await t.tap(find.text('Equipa'));
-        await t.pumpAndSettle();
-        await t.tap(find.text('Reservas do elenco...'));
-      } else {
-        await t.tap(find.text('Equipa'));
-        await t.pumpAndSettle();
-        await t.tap(find.text('Reservas do elenco...'));
       }
+      await t.tap(find.text('Jogador'));
       await t.pumpAndSettle();
-      expect(find.text('BANCO (RESERVAS)'), findsOneWidget);
-      final bank = t.widget<RetroTable>(find.byType(RetroTable));
-      expect(
-        bank.rows.length,
-        rowsBefore.where((r) => r.first.startsWith('–')).length,
-      );
+      expect(find.text('Reservas do elenco...'), findsNothing);
+      await t.tap(find.text('Jogadores observados...'));
+      await t.pumpAndSettle();
+      expect(find.text('JOGADORES OBSERVADOS'), findsOneWidget);
       expect(t.takeException(), isNull);
+      await t.tap(find.byTooltip('Voltar'));
+      await t.pumpAndSettle();
       await t.tap(find.text('Táticas').last);
       await t.pumpAndSettle();
       expect(find.byType(ClassicTacticalPitch), findsOneWidget);

@@ -1,0 +1,11 @@
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Contracts\bin\Debug\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Domain\bin\Debug\net10.0\Elifoot.Domain.dll
+  Elifoot.Application -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Application\bin\Debug\net10.0\Elifoot.Application.dll
+  Elifoot.Infrastructure -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Infrastructure\bin\Debug\net10.0\Elifoot.Infrastructure.dll
+  Elifoot.Api -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Api\bin\Debug\net10.0\Elifoot.Api.dll
+  Elifoot.Integration.Tests -> D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\bin\Debug\net10.0\Elifoot.Integration.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Integration.Tests\bin\Debug\net10.0\Elifoot.Integration.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+Arquivo de resultados: D:\elifoot_98\.worktrees\account-login-lobby\artifacts\scouting\account-scouting.trx
+
+Aprovado!  – Com falha:     0, Aprovado:     7, Ignorado:     0, Total:     7, Duração: 35 s - Elifoot.Integration.Tests.dll (net10.0)

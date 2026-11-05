@@ -620,6 +620,39 @@ class ElifootApiClient {
     return data;
   }
 
+  Future<Map<String, dynamic>> getPlayerScouting(
+    String worldId,
+    String coachId, {
+    String name = '',
+    bool observedOnly = false,
+  }) async => _decodeResponse(
+    await _http.get(
+      Uri.parse('$baseUrl/api/worlds/$worldId/players/scouting').replace(
+        queryParameters: {
+          'coachId': coachId,
+          'name': name,
+          'observedOnly': '$observedOnly',
+        },
+      ),
+    ),
+  );
+
+  Future<List<String>> setPlayerObservation(
+    String worldId,
+    String coachId,
+    String playerId,
+    bool observed,
+  ) async {
+    final data = _decodeResponse(
+      await _http.put(
+        Uri.parse('$baseUrl/api/worlds/$worldId/players/$playerId/observation'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'coachId': coachId, 'isObserved': observed}),
+      ),
+    );
+    return (data['observedPlayerIds'] as List).map((id) => '$id').toList();
+  }
+
   Future<void> listPlayerForTransfer(
     String worldId,
     String coachId,

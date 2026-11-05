@@ -1181,6 +1181,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('market-confirm-amount')));
       await tester.pumpAndSettle();
       expect(find.text('PROPOSTA ENVIADA.'), findsOneWidget);
+      await tester.ensureVisible(find.byKey(const ValueKey('market-tab-0')));
       await tester.tap(find.byKey(const ValueKey('market-tab-0')));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const ValueKey('bid-auc-1')));

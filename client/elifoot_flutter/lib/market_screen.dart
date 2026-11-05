@@ -5,6 +5,7 @@ import 'club_theme.dart';
 import 'classic_layout.dart';
 import 'visual_components.dart';
 import 'classic98_widgets.dart';
+import 'player_scouting.dart';
 
 String marketPosition(dynamic position) => position is num
     ? const ['G', 'D', 'M', 'A'][position.toInt().clamp(0, 3)]
@@ -15,6 +16,11 @@ class MarketPreferences {
   int tab = 0;
   final positions = ['ALL', 'ALL'];
   final sorts = ['STRENGTH_DESC', 'STRENGTH_DESC'];
+  final strengthRanges = ['ALL', 'ALL'];
+  final names = ['', ''];
+  final observedOnly = [false, false];
+  final observations = PlayerObservationController();
+  bool? discovery;
 }
 
 List<Map<String, dynamic>> orderedMarketPlayers(
@@ -22,12 +28,29 @@ List<Map<String, dynamic>> orderedMarketPlayers(
   required bool auction,
   required String position,
   required String order,
+  String strengthRange = 'ALL',
+  String name = '',
+  Set<String>? observedPlayerIds,
 }) {
   final rows = source
       .whereType<Map>()
       .map((r) => Map<String, dynamic>.from(r))
       .where(
         (r) => position == 'ALL' || marketPosition(r['position']) == position,
+      )
+      .where((r) => matchesScoutingStrength(r['strength'], strengthRange))
+      .where(
+        (r) =>
+            name.trim().isEmpty ||
+            name.trim().length >= 3 &&
+                '${r['displayName']}'.toLowerCase().contains(
+                  name.trim().toLowerCase(),
+                ),
+      )
+      .where(
+        (r) =>
+            observedPlayerIds == null ||
+            observedPlayerIds.contains('${r['playerId']}'),
       )
       .toList();
   num price(Map<String, dynamic> r) => auction
@@ -82,6 +105,32 @@ class MarketScreen extends StatefulWidget {
 }
 
 class _MarketScreenState extends State<MarketScreen> {
+  @override
+  void initState() {
+    super.initState();
+    pref.observations.addListener(_observationChanged);
+    pref.observations.load(widget.api, widget.worldId, widget.coachId);
+  }
+
+  void _observationChanged() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void didUpdateWidget(covariant MarketScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.worldId != widget.worldId ||
+        oldWidget.coachId != widget.coachId) {
+      pref.observations.load(widget.api, widget.worldId, widget.coachId);
+    }
+  }
+
+  @override
+  void dispose() {
+    pref.observations.removeListener(_observationChanged);
+    super.dispose();
+  }
+
   bool _busy = false;
   bool _classicOffersOnly = false;
   String? _message, _ownPlayerId;
@@ -98,6 +147,81 @@ class _MarketScreenState extends State<MarketScreen> {
               .any(
                 (p) => p['coachId'] == widget.coachId && p['isReady'] == true,
               ));
+
+  Widget _observe(Map<String, dynamic> player) => ObservePlayerButton(
+    controller: pref.observations,
+    api: widget.api,
+    world: widget.worldId,
+    coach: widget.coachId,
+    player: '${player['playerId']}',
+    name: '${player['displayName']}',
+  );
+
+  Widget _discoveryFilters() => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      const SizedBox(height: 8),
+      Row(
+        children: [
+          Expanded(
+            child: ScoutingStrengthFilter(
+              key: ValueKey('market-strength-${pref.tab}'),
+              value: pref.strengthRanges[pref.tab],
+              onChanged: (v) =>
+                  setState(() => pref.strengthRanges[pref.tab] = v),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: TextFormField(
+              key: ValueKey('market-name-${pref.tab}'),
+              initialValue: pref.names[pref.tab],
+              decoration: const InputDecoration(
+                labelText: 'Nome nesta lista',
+                hintText: 'Pelo menos 3 letras',
+              ),
+              onChanged: (v) => setState(() => pref.names[pref.tab] = v),
+            ),
+          ),
+        ],
+      ),
+      CheckboxListTile(
+        key: ValueKey('market-observed-only-${pref.tab}'),
+        contentPadding: EdgeInsets.zero,
+        title: const Text('Somente observados'),
+        value: pref.observedOnly[pref.tab],
+        onChanged: (v) =>
+            setState(() => pref.observedOnly[pref.tab] = v ?? false),
+      ),
+      Wrap(
+        spacing: 8,
+        runSpacing: 4,
+        children: [
+          OutlinedButton.icon(
+            onPressed: () => setState(() => pref.discovery = false),
+            icon: const Icon(Icons.search),
+            label: const Text('PROCURAR JOGADORES'),
+          ),
+          OutlinedButton.icon(
+            onPressed: () => setState(() => pref.discovery = true),
+            icon: const Icon(Icons.star),
+            label: const Text('JOGADORES OBSERVADOS'),
+          ),
+        ],
+      ),
+      if (pref.observations.loading) const LinearProgressIndicator(),
+      if (pref.observations.error != null)
+        TextButton(
+          onPressed: () => pref.observations.load(
+            widget.api,
+            widget.worldId,
+            widget.coachId,
+          ),
+          child: Text('${pref.observations.error} Atualizar'),
+        ),
+      const SizedBox(height: 8),
+    ],
+  );
 
   Future<void> _command(Future<String> Function() action) async {
     if (!_canTrade) return;
@@ -399,12 +523,30 @@ class _MarketScreenState extends State<MarketScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (pref.discovery != null) {
+      return PlayerScoutingScreen(
+        key: ValueKey(
+          'scouting-${widget.worldId}-${widget.coachId}-${pref.discovery}',
+        ),
+        api: widget.api,
+        world: widget.worldId,
+        coach: widget.coachId,
+        observations: pref.observations,
+        observedOnly: pref.discovery!,
+        onClose: () => setState(() => pref.discovery = null),
+      );
+    }
     final auction = pref.tab == 0;
     final rows = orderedMarketPlayers(
       widget.data[auction ? 'auctions' : 'listings'] as List? ?? [],
       auction: auction,
       position: pref.positions[pref.tab],
       order: pref.sorts[pref.tab],
+      strengthRange: pref.strengthRanges[pref.tab],
+      name: pref.names[pref.tab],
+      observedPlayerIds: pref.observedOnly[pref.tab]
+          ? pref.observations.ids
+          : null,
     );
     final ownPlayers = widget.squad
         .where(
@@ -563,6 +705,7 @@ class _MarketScreenState extends State<MarketScreen> {
               ),
             ),
           ),
+          _discoveryFilters(),
           ClassicPaperPanel(
             title:
                 '${auction ? "LEILÕES" : "COMPRA DIRETA"} — ${rows.length} jogador(es)',
@@ -596,6 +739,7 @@ class _MarketScreenState extends State<MarketScreen> {
                         childrenPadding: const EdgeInsets.only(top: 8),
                         title: Row(
                           children: [
+                            _observe(p),
                             Expanded(
                               flex: 5,
                               child: Column(
@@ -835,6 +979,7 @@ class _MarketScreenState extends State<MarketScreen> {
           ],
         ),
         if (!_classicOffersOnly) ...[
+          _discoveryFilters(),
           DropdownButtonFormField<String>(
             key: ValueKey('market-position-${pref.tab}'),
             initialValue: pref.positions[pref.tab],
@@ -855,6 +1000,21 @@ class _MarketScreenState extends State<MarketScreen> {
             const Text('Nenhum jogador corresponde aos filtros.'),
           if (MediaQuery.sizeOf(context).width >= 1024)
             RetroTable(
+              leadingCells: {
+                for (final (i, p) in rows.indexed)
+                  i: Row(
+                    children: [
+                      _observe(p),
+                      Expanded(
+                        child: Text(
+                          '${p['displayName']}',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+              },
               headers: const [
                 'JOGADOR',
                 'POS',
@@ -907,6 +1067,7 @@ class _MarketScreenState extends State<MarketScreen> {
                     ),
                   ),
                   child: ExpansionTile(
+                    leading: _observe(p),
                     title: Text(
                       '${p['displayName']} (${marketPosition(p['position'])})',
                       style: TextStyle(
@@ -1123,8 +1284,18 @@ class _MarketScreenState extends State<MarketScreen> {
                 cells: [
                   DataCell(
                     SizedBox(
-                      width: 165,
-                      child: Text(p['displayName'].toString(), maxLines: 2),
+                      width: 210,
+                      child: Row(
+                        children: [
+                          _observe(p),
+                          Expanded(
+                            child: Text(
+                              p['displayName'].toString(),
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   DataCell(Text(marketPosition(p['position']))),

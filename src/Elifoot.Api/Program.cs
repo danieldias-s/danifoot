@@ -545,6 +545,20 @@ app.MapGet("/api/worlds/{worldId:guid}/ranking", async (Guid worldId, IWorldRepo
 });
 
 // 5. Market, Auctions, Bilateral Offers, Contracts
+app.MapGet("/api/worlds/{worldId:guid}/players/scouting", async (
+    Guid worldId, Guid coachId, string? name, bool? observedOnly, ClubAndMarketApplicationService service, CancellationToken ct) =>
+{
+    var data = await service.GetPlayerScoutingAsync(worldId, coachId, name, observedOnly ?? false, ct);
+    return data == null ? Results.NotFound() : Results.Ok(data);
+});
+
+app.MapPut("/api/worlds/{worldId:guid}/players/{playerId:guid}/observation", async (
+    Guid worldId, Guid playerId, PlayerObservationRequest request, ClubAndMarketApplicationService service, CancellationToken ct) =>
+{
+    var result = await service.SetPlayerObservationAsync(worldId, request.CoachId, playerId, request.IsObserved, ct);
+    return result.Success ? Results.Ok(new { observedPlayerIds = result.ObservedPlayerIds }) : Results.BadRequest(new { error = result.Error });
+});
+
 app.MapGet("/api/worlds/{worldId:guid}/market", async (Guid worldId, ClubAndMarketApplicationService service, CancellationToken ct) =>
 {
     var data=await service.GetMarketAsync(worldId,ct);

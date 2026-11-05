@@ -28,6 +28,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
 
   void _retroOpen(String page, [int index = 0]) {
     if (_matchLocked) return;
+    if (page == 'market') _marketPreferences.discovery = null;
     _navigateToTab(index);
     setState(() {
       _classicPage = page;
@@ -187,10 +188,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         ];
       case 'Equipa':
         return [
-          ('Mercado & Leilão...', nav('market', 2)),
-          ('Reservas do elenco...', nav('bench')),
-          ('Banco — Empréstimos...', nav('bank', 3)),
-          ('Estádio...', nav('stadium', 3)),
+          ('Jogadores...', nav('squad')),
           ('Finanças...', nav('finances', 3)),
           ('História — Em breve', null),
         ];
@@ -206,7 +204,24 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ),
           ('Contrato...', player == null ? null : nav('contract')),
           ('Histórico — Em breve', null),
-          ('Procurar jogadores...', nav('market', 2)),
+          (
+            'Procurar jogadores...',
+            locked
+                ? null
+                : () {
+                    _retroOpen('market', 2);
+                    setState(() => _marketPreferences.discovery = false);
+                  },
+          ),
+          (
+            'Jogadores observados...',
+            locked
+                ? null
+                : () {
+                    _retroOpen('market', 2);
+                    setState(() => _marketPreferences.discovery = true);
+                  },
+          ),
         ];
       case 'Campeonato':
         return [
@@ -474,6 +489,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                             'Banco',
                                             Icons.account_balance,
                                             'bank',
+                                            3,
+                                          ),
+                                          (
+                                            'Estádio',
+                                            Icons.stadium_outlined,
+                                            'stadium',
                                             3,
                                           ),
                                           ('Mais', Icons.more_horiz, 'more', 0),

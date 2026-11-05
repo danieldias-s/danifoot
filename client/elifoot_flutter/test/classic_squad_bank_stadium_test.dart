@@ -155,15 +155,7 @@ void main() {
           find.byKey(const ValueKey('btn-reformar-estadio')),
           findsNothing,
         );
-        if (width < 1024) {
-          await t.tap(find.byTooltip('Abrir menus'));
-          await t.pumpAndSettle();
-          await t.tap(find.text('Equipa'));
-          await t.pumpAndSettle();
-          await t.tap(find.text('Estádio...'));
-        } else {
-          await t.tap(find.text('Estádio'));
-        }
+        await t.tap(find.text('Estádio'));
         await t.pumpAndSettle();
         expect(find.byType(ClassicStadiumView), findsOneWidget);
         expect(

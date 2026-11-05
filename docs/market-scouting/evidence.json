@@ -1,0 +1,27 @@
+{
+  "worldId": "41939789-ddcd-4cef-b3c4-2b33d243a0a7",
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 1000
+    }
+  ],
+  "search": {
+    "query": "Dan",
+    "matches": 42,
+    "shortQueryRequests": 0,
+    "includesUnlisted": true
+  },
+  "observations": {
+    "saved": 2,
+    "otherCoachList": 0,
+    "includesAuction": true,
+    "includesSearch": true,
+    "restoredAfterReload": true
+  },
+  "browserErrors": []
+}

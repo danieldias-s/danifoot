@@ -1,0 +1,36 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha aceita excesso no rascunho e bloqueia envio até corrigir sem trocar outro atleta
+00:06 +1: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha aceita excesso no rascunho e bloqueia envio até corrigir sem trocar outro atleta
+00:06 +2: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Bolinhas trocam goleiros sem o submenu de reservas
+00:09 +3: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 360.0 px
+00:09 +4: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Operações econômicas clássicas exigem confirmação e seleção não anuncia
+00:11 +5: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Operações econômicas clássicas exigem confirmação e seleção não anuncia
+00:12 +6: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 430.0 px
+00:13 +7: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 360.0 px
+00:15 +8: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 360.0 px
+00:16 +9: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/classic_squad_bank_stadium_test.dart: Bolinha permite retirar e escalar; Banco abre empréstimos em 1366.0 px
+00:17 +10: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 390.0 px
+00:18 +11: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 390.0 px
+00:18 +12: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 390.0 px
+00:18 +13: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 430.0 px
+00:20 +14: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 768.0 px
+00:23 +15: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 1366.0 px
+00:25 +16: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Telas clássicas reais e menus sem overflow em 1920.0 px
+00:27 +17: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Entrar em sala com lobby inicial apresenta aparência e opções antes de atribuir clube
+00:27 +18: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Troca no jogo preserva escalação, formação, clube e conexão e respeita partida travada
+00:30 +19: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Duas preferências independentes restauram por treinador e não por clube
+00:30 +20: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Resposta atrasada de outro treinador não substitui a preferência atual
+00:30 +21: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Falha de gravação mantém a seleção anterior e informa o erro
+00:30 +22: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Contêiner mantém Navigator e estado compartilhado ao alternar versões
+00:30 +23: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de MANUAL e sobrevive às ações originais da sala
+00:30 +24: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de FOURTH_DIVISION_DRAW e sobrevive às ações originais da sala
+00:31 +25: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Aparência vem antes de UNEMPLOYED e sobrevive às ações originais da sala
+00:31 +26: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Configurações salvam versão sem clube e respeitam bloqueio sem alterar as cores
+00:31 +27: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 360.0 px
+00:31 +28: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 390.0 px
+00:31 +29: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 430.0 px
+00:31 +30: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 768.0 px
+00:31 +31: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 1366.0 px
+00:31 +32: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção da aparência é legível em 1920.0 px
+00:32 +33: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/presentation_017a_test.dart: Seleção aparece antes de assumir um clube no modal existente
+00:32 +34: All tests passed!

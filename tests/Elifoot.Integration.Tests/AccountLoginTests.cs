@@ -20,6 +20,45 @@ public sealed class AccountLoginTests
     private const string Password = "Teste-local-98!";
 
     [Fact]
+    public async Task PersonalObservedPlayersPersistAfterRestartAndCannotBeReadOrChangedByAnotherAccount()
+    {
+        await using var fixture = new Fixture();
+        using var first = fixture.Server.CreateClient();
+        using var second = fixture.Server.CreateClient();
+        var a = (await Register(first, "scout-a", "Scout A")).GetProperty("coachId").GetGuid();
+        var b = (await Register(second, "scout-b", "Scout B")).GetProperty("coachId").GetGuid();
+        var create = await Send(first, "/api/worlds", new CreateWorldRequest("Scouting", MaxHumans: 2));
+        create.EnsureSuccessStatusCode();
+        var world = (await create.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
+        (await Send(first, $"/api/worlds/{world}/join?joinUnemployed=true")).EnsureSuccessStatusCode();
+        (await Send(second, $"/api/worlds/{world}/join?joinUnemployed=true")).EnsureSuccessStatusCode();
+        var repository = fixture.Server.Services.GetRequiredService<IWorldRepository>();
+        var w = (await repository.GetWorldAsync(world))!;
+        var player = w.Players[0].Id;
+        w.Players[0].Name = "Daniel Dias";
+        await repository.SaveWorldAsync(w);
+        var query = $"/api/worlds/{world}/players/scouting?coachId={a}";
+        Assert.Empty((await first.GetFromJsonAsync<PlayerScoutingDto>(query + "&name=Da"))!.Players);
+        Assert.Contains((await first.GetFromJsonAsync<PlayerScoutingDto>(query + "&name=Dan"))!.Players, p => p.PlayerId == player);
+        var observe = $"/api/worlds/{world}/players/{player}/observation";
+        var request = new PlayerObservationRequest(a, true);
+        (await Send(first, observe, request, HttpMethod.Put)).EnsureSuccessStatusCode();
+        (await Send(first, observe, request, HttpMethod.Put)).EnsureSuccessStatusCode();
+        Assert.Single((await first.GetFromJsonAsync<PlayerScoutingDto>(query + "&observedOnly=true"))!.Players);
+        Assert.Equal(HttpStatusCode.Forbidden, (await second.GetAsync(query + "&observedOnly=true")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await Send(second, observe, request, HttpMethod.Put)).StatusCode);
+        Assert.Empty((await second.GetFromJsonAsync<PlayerScoutingDto>($"/api/worlds/{world}/players/scouting?coachId={b}&observedOnly=true"))!.Players);
+
+        await fixture.Restart();
+        EfWorldRepository.ClearCacheForTesting();
+        using var reconnected = fixture.Server.CreateClient();
+        await Login(reconnected, "scout-a");
+        Assert.Equal(player, Assert.Single((await reconnected.GetFromJsonAsync<PlayerScoutingDto>(query + "&observedOnly=true"))!.Players).PlayerId);
+        (await Send(reconnected, observe, request with { IsObserved = false }, HttpMethod.Put)).EnsureSuccessStatusCode();
+        Assert.Empty((await reconnected.GetFromJsonAsync<PlayerScoutingDto>(query + "&observedOnly=true"))!.Players);
+    }
+
+    [Fact]
     public async Task RegistrationHashesPasswordsAssignsServerIdsAndSurvivesRestart()
     {
         await using var fixture = new Fixture();
