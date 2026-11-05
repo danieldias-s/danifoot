@@ -12,11 +12,17 @@ import 'package:http/testing.dart';
 
 class _CreatorFixture {
   final requests = <http.Request>[];
+  int countryFailures = 0;
+  bool failLastConfiguration = false;
   late final api = ElifootApiClient(
     httpClient: MockClient((request) async {
       requests.add(request);
       final dynamic data;
       if (request.url.path.endsWith('/countries')) {
+        if (countryFailures > 0) {
+          countryFailures--;
+          return http.Response('{"error":"Catálogo indisponível"}', 503);
+        }
         data = [
           for (final row in [
             ('DE', 'Alemanha', 18),
@@ -37,6 +43,9 @@ class _CreatorFixture {
             },
         ];
       } else if (request.url.path.endsWith('/last-configuration')) {
+        if (failLastConfiguration) {
+          return http.Response('{"error":"Configuração indisponível"}', 503);
+        }
         data = null;
       } else if (request.url.path.endsWith('/catalog')) {
         data = {'clubs': [], 'references': [], 'warnings': []};
@@ -81,6 +90,47 @@ Future<void> _next(WidgetTester tester) async {
 }
 
 void main() {
+  testWidgets(
+    'Países continuam selecionáveis quando a última configuração falha',
+    (tester) async {
+      final fixture = _CreatorFixture()..failLastConfiguration = true;
+      await _creator(tester, fixture, 1366);
+      expect(find.text('Seed dos sorteios'), findsNothing);
+      await _next(tester);
+      await tester.tap(find.text('LIMPAR SELEÇÃO'));
+      await tester.pumpAndSettle();
+      final brazil = find.descendant(
+        of: find.byKey(const ValueKey('country-card-BR')),
+        matching: find.byType(CheckboxListTile),
+      );
+      await tester.ensureVisible(brazil);
+      await tester.tap(brazil);
+      await tester.pumpAndSettle();
+      expect(find.text('1/8 • Países'), findsOneWidget);
+      await _next(tester);
+      expect(find.text('3/8 • MODO'), findsOneWidget);
+    },
+  );
+
+  testWidgets('Falha no catálogo tem recuperação na etapa de países', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..countryFailures = 2;
+    await _creator(tester, fixture, 1366);
+    await _next(tester);
+    expect(
+      find.textContaining('A lista de países não está disponível'),
+      findsOneWidget,
+    );
+    await tester.tap(find.text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('country-card-BR')), findsOneWidget);
+    expect(
+      find.textContaining('A lista de países não está disponível'),
+      findsNothing,
+    );
+  });
+
   for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
     testWidgets('Países, Modo e clube mantêm controles acessíveis em $width px', (
       tester,

@@ -30,6 +30,7 @@ void main() {
         addTearDown(tester.view.resetPhysicalSize);
         addTearDown(tester.view.resetDevicePixelRatio);
         String gender = 'Male';
+        int? seed;
         Map<String, dynamic>? confirmed;
         Map<String, dynamic> club(int i) => {
           'key': 'club-$i',
@@ -69,6 +70,8 @@ void main() {
               response = null;
             } else if (request.url.path.endsWith('/catalog')) {
               final body = jsonDecode(request.body) as Map;
+              seed = body['seed'] as int;
+              expect(seed, inInclusiveRange(1, 2147483647));
               gender = body['gender'].toString();
               expect(body['countries'], hasLength(8));
               response = {
@@ -89,6 +92,7 @@ void main() {
                 'warnings': ['FIXTURES — dados fictícios'],
               };
             } else if (request.url.path.endsWith('/preview')) {
+              expect((jsonDecode(request.body) as Map)['seed'], seed);
               expect(
                 (jsonDecode(request.body) as Map)['allowFictionalTeams'],
                 false,

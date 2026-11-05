@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'world_catalog_status_016b.dart';
 import 'club_theme.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,9 @@ class WorldCreatorScreen extends StatefulWidget {
 class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   final _name = TextEditingController(text: 'Liga Mundial 98');
   final _season = TextEditingController(text: '2026');
-  final _seed = TextEditingController(text: '199801');
+  static int _drawSeed() => Random.secure().nextInt(2147483647) + 1;
+  int _seed = _drawSeed();
+  String? _countriesSeason;
   String _gender = 'Male',
       _dataMode = 'REAL_COMPLETE',
       _mode = 'Automatic',
@@ -77,7 +81,6 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   void dispose() {
     _name.dispose();
     _season.dispose();
-    _seed.dispose();
     super.dispose();
   }
 
@@ -106,14 +109,25 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
-  Future<void> _initialize() => _run(() async {
-    final options = await _call(
-      'countries?season=${Uri.encodeQueryComponent(_season.text)}',
+  Future<void> _loadCountries() async {
+    final season = _season.text.trim();
+    final options = _maps(
+      await _call('countries?season=${Uri.encodeQueryComponent(season)}'),
     );
+    if (!mounted) return;
+    final available = options.map((country) => country['code']).toSet();
+    setState(() {
+      _options = options;
+      _countriesSeason = season;
+      _countries.retainWhere(available.contains);
+    });
+  }
+
+  Future<void> _initialize() => _run(() async {
+    await _loadCountries();
     final last = await _call('last-configuration');
     if (mounted) {
       setState(() {
-        _options = _maps(options);
         _last = last == null ? null : Map<String, dynamic>.from(last as Map);
       });
     }
@@ -126,7 +140,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'countries': _countries.toList()..sort(),
     'mode': _mode,
     'districtMode': _district,
-    'seed': int.tryParse(_seed.text) ?? 199801,
+    'seed': _seed,
     'maxHumans': _humans,
     'assignments': _assignments.entries
         .where((a) => _mode == 'Custom' || a.value == 5)
@@ -161,7 +175,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               ? 'REAL_CLUBS_SIMULATED'
               : 'REAL_COMPLETE');
       _season.text = p['season'].toString();
-      _seed.text = p['seed'].toString();
+      _seed = (p['seed'] as num?)?.toInt() ?? _seed;
       _mode = p['mode'].toString();
       _district = p['districtMode'].toString();
       _humans = (p['maxHumans'] as num?)?.toInt() ?? 1;
@@ -238,7 +252,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   void _applyAssembly(Map<String, dynamic> data) {
     _assembly = data;
     _gender = data['gender'].toString();
-    _seed.text = data['seed'].toString();
+    _seed = (data['seed'] as num?)?.toInt() ?? _seed;
     _countries
       ..clear()
       ..addAll((data['countries'] as List).cast<String>());
@@ -273,7 +287,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 'name': _name.text,
                 'gender': _gender,
                 'countries': _countries.toList(),
-                'seed': int.tryParse(_seed.text) ?? 199801,
+                'seed': _seed,
                 'sourcePreviewId': _preview!['draftId'],
               },
             )
@@ -300,7 +314,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               (a) => SimpleDialogOption(
                 onPressed: () => Navigator.pop(ctx, a['id'].toString()),
                 child: Text(
-                  '${a['name']} • ${a['gender'] == 'Female' ? 'FEMININO' : 'MASCULINO'} • seed ${a['seed']}',
+                  '${a['name']} • ${a['gender'] == 'Female' ? 'FEMININO' : 'MASCULINO'}',
                 ),
               ),
             )
@@ -326,7 +340,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${a['name']} • ${clubs.length}/128 clubes • ${players.length} atletas • seed ${a['seed']}',
+          '${a['name']} • ${clubs.length}/128 clubes • ${players.length} atletas',
         ),
         Text(
           a['isSaved'] == true
@@ -689,7 +703,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         ),
         _dataCounts(summary),
         if (p['dataAsOf'] != null)
-          Text('Vínculos conferidos em ${p['dataAsOf']} • seed ${p['seed']}'),
+          Text('Vínculos conferidos em ${p['dataAsOf']}'),
         for (final reference in _maps(p['references']))
           Text(
             '${(reference['scope'] as Map)['provider']} • referência ${reference['updatedAt']} • versão ${reference['version']}\n'
@@ -907,7 +921,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               ),
             ],
             TextButton.icon(
-              onPressed: _busy ? null : _initialize,
+              onPressed: _busy ? null : () => _run(_loadCountries),
               icon: const Icon(Icons.calendar_month_outlined),
               label: const Text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'),
             ),
@@ -939,10 +953,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           },
         ),
         const SizedBox(height: 2),
-        const Text(
-          'Zero indica ausência de cobertura válida nesta categoria e temporada.',
-          style: TextStyle(fontSize: 15),
-        ),
+        if (_options.isEmpty && !_busy)
+          const Text(
+            'A lista de países não está disponível. Consulte a disponibilidade da temporada para tentar novamente.',
+          )
+        else if (countries.isEmpty && !_busy)
+          const Text('Nenhum país corresponde à pesquisa.')
+        else
+          const Text(
+            'Zero indica ausência de cobertura válida nesta categoria e temporada.',
+            style: TextStyle(fontSize: 15),
+          ),
       ],
     );
   }
@@ -1157,11 +1178,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               onPressed: _busy
                   ? null
                   : () => setState(() {
+                      _assembly = null;
+                      _seed = _drawSeed();
                       _assignments.clear();
                       _dataMode = 'REAL_COMPLETE';
                       _dataSummary = null;
                       _fictional = false;
                       _fictionalPlayers = false;
+                      _fictionalOnly = false;
                       _includeHistorical = false;
                       _includeUnverified = false;
                       _preview = null;
@@ -1192,12 +1216,6 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               decoration: const InputDecoration(
                 labelText: 'Temporada do catálogo',
               ),
-            ),
-            TextField(
-              controller: _seed,
-              onChanged: (_) => setState(() => _preview = null),
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Seed dos sorteios'),
             ),
             _choice('Treinadores', '$_humans', [
               for (int i = 1; i <= 8; i++) ('$i', '$i'),
@@ -1334,9 +1352,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             Text(
               '${_name.text} • ${_gender == 'Female' ? 'FEMININO' : 'MASCULINO'} • ${_season.text}',
             ),
-            Text(
-              'Países: ${_countries.join(', ')} • seed ${_seed.text} • modo $_dataMode',
-            ),
+            Text('Países: ${_countries.join(', ')} • modo $_dataMode'),
             _previewPanel(),
             const Text(
               'A confirmação copia os dados desta prévia para um mundo independente e salva sua configuração.',
@@ -1379,6 +1395,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (_preview!['errors'] as List).isEmpty &&
             _preview!['pendingSlots'] == 0;
   Future<void> _next() => _run(() async {
+    if (_step == 0 && _countriesSeason != _season.text.trim()) {
+      setState(() {
+        _step = 1;
+        _search = '';
+        _options = [];
+      });
+      await _loadCountries();
+      return;
+    }
     if (_step == 1 &&
         (_countries.isEmpty ||
             widget.worldCatalogRules && _countries.length > 8)) {
@@ -1399,7 +1424,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     'name': _name.text,
                     'gender': _gender,
                     'countries': _countries.toList(),
-                    'seed': int.tryParse(_seed.text) ?? 199801,
+                    'seed': _seed,
                     'allowPersonalizedContent': true,
                     if (widget.worldCatalogRules) 'useWorldCatalogRules': true,
                   },
@@ -1434,6 +1459,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             _step--;
             _search = '';
           }),
-    next: _busy || (_step == 6 && !_validPreview) ? null : _next,
+    next:
+        _busy ||
+            (_step == 1 && _options.isEmpty) ||
+            (_step == 6 && !_validPreview)
+        ? null
+        : _next,
   );
 }

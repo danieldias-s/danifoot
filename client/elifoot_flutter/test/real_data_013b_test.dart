@@ -16,7 +16,14 @@ void main() {
         httpClient: MockClient((request) async {
           dynamic result;
           if (request.url.path.endsWith('/countries')) {
-            result = [];
+            result = [
+              {
+                'code': 'ES',
+                'name': 'Espanha',
+                'maleClubs': 20,
+                'femaleClubs': 20,
+              },
+            ];
           } else if (request.url.path.endsWith('/last-configuration')) {
             result = {
               'name': 'Configuração sintética',
