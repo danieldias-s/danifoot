@@ -66,23 +66,20 @@ extension _Classic98Shell on _ElifootShellScreenState {
         : 'Fora dos relacionados';
     return Row(
       children: [
-        PopupMenuButton<String>(
+        IconButton(
           key: ValueKey('retro-role-$id'),
           tooltip:
-              '${player['displayName'] ?? player['name']}: $role — alterar escalação',
-          enabled: !_tacticsLocked && !_commandBusy && available,
+              '${player['displayName'] ?? player['name']}: $role — clique para ${starter
+                  ? 'Reserva'
+                  : reserve
+                  ? 'Fora dos relacionados'
+                  : 'Titular'}',
+          onPressed: !_tacticsLocked && !_commandBusy && available
+              ? () => _retroCycleRole(player)
+              : null,
           padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 210),
-          itemBuilder: (_) => [
-            const PopupMenuItem(value: 'starter', child: Text('Titular')),
-            const PopupMenuItem(value: 'reserve', child: Text('Reserva')),
-            const PopupMenuItem(
-              value: 'out',
-              child: Text('Fora dos relacionados'),
-            ),
-          ],
-          onSelected: (value) => _retroAssignRole(player, value),
-          child: SizedBox(
+          constraints: const BoxConstraints(minWidth: 44, minHeight: 44),
+          icon: SizedBox(
             width: 44,
             height: 44,
             child: Icon(
@@ -117,60 +114,18 @@ extension _Classic98Shell on _ElifootShellScreenState {
     );
   }
 
-  Future<void> _retroAssignRole(
-    Map<String, dynamic> player,
-    String role,
-  ) async {
+  void _retroCycleRole(Map<String, dynamic> player) {
     if (_tacticsLocked || _commandBusy || _retroCondition(player) != 'Apto') {
       return;
     }
     final id = '${player['id']}';
     final starter = _selectedStarterIds.contains(id),
         reserve = _selectedBenchIds.contains(id);
-    if (role == 'starter' &&
-        !starter &&
-        _selectedStarterIds.length >= _requiredStarterCount) {
-      if (reserve) {
-        await _retroSwapReserve(player);
-      } else {
-        setState(
-          () => _statusBanner =
-              'Retire um titular antes de escalar este jogador, ou coloque-o entre os reservas para trocar.',
-        );
-      }
-      return;
-    }
-    if (role == 'reserve' && !reserve && _selectedBenchIds.length >= 9) {
-      setState(
-        () => _statusBanner =
-            'Os nove lugares de reserva estão ocupados. Retire um reserva antes de incluir outro.',
-      );
-      return;
-    }
-    if (role == 'starter' && !starter) {
-      final hasKeeper = _retroSquad.any(
-        (p) =>
-            _selectedStarterIds.contains('${p['id']}') &&
-            _formatPosition(p['position']) == 'G',
-      );
-      final isKeeper = _formatPosition(player['position']) == 'G';
-      final keeperAvailable = _retroSquad.any(
-        (p) =>
-            _formatPosition(p['position']) == 'G' &&
-            _retroCondition(p) == 'Apto',
-      );
-      if ((isKeeper && hasKeeper) ||
-          (!isKeeper &&
-              !hasKeeper &&
-              keeperAvailable &&
-              _selectedStarterIds.length == _requiredStarterCount - 1)) {
-        setState(
-          () => _statusBanner =
-              'A escalação precisa manter um goleiro. Escolha uma troca compatível.',
-        );
-        return;
-      }
-    }
+    final role = starter
+        ? 'reserve'
+        : reserve
+        ? 'out'
+        : 'starter';
     setState(() {
       _selectedStarterIds.remove(id);
       _selectedBenchIds.remove(id);
@@ -191,7 +146,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               ? 'titular'
               : role == 'reserve'
               ? 'reserva'
-              : 'fora dos relacionados'}. Confira a escalação antes de enviar a tática.';
+              : 'fora dos relacionados'}. ${_tacticsSelectionError ?? 'Escalação pronta para enviar.'}';
     });
   }
 
@@ -745,7 +700,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               SizedBox(width: 5),
               Flexible(
                 child: Text(
-                  'Titular   – Banco   · Fora do banco   ! Indisponível',
+                  'Titular   – Banco   · Fora dos relacionados   ! Indisponível',
                   style: TextStyle(
                     color: ClassicTheme.of(context).textPrimary,
                     fontSize: 14,
@@ -753,6 +708,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 ),
               ),
             ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            'Titulares: ${_selectedStarterIds.length}/$_requiredStarterCount • Banco: ${_selectedBenchIds.length}/9',
+            key: const Key('retro-roster-counts'),
           ),
         ),
         if (_retroSelected != null)
@@ -1025,7 +987,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             label: 'Alterar relação do jogador selecionado',
             onPressed: _tacticsLocked
                 ? null
-                : () => _toggleSquadPlayer(_retroSelected!),
+                : () => _retroCycleRole(_retroSelected!),
           ),
         const SizedBox(height: 8),
         RetroButton(

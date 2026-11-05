@@ -846,6 +846,38 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   int get _requiredStarterCount =>
       (_myClubDetail?['requiredStarterCount'] as num?)?.toInt() ?? 11;
 
+  String? get _tacticsSelectionError {
+    if (_requiredStarterCount < 1 ||
+        _selectedStarterIds.length != _requiredStarterCount) {
+      return 'Titulares: ${_selectedStarterIds.length}/$_requiredStarterCount. Ajuste os titulares para enviar a tática.';
+    }
+    if (_selectedBenchIds.length > 9) {
+      return 'Banco: ${_selectedBenchIds.length}/9. Retire um reserva para enviar a tática.';
+    }
+    final squad = (_myClubDetail?['squad'] as List? ?? []).whereType<Map>();
+    bool available(Map p) =>
+        (p['injuryDaysRemaining'] as num? ?? 0) == 0 &&
+        (p['injuryRoundsRemaining'] as num? ?? 0) == 0 &&
+        (p['suspensionRoundsRemaining'] as num? ?? 0) == 0;
+    final selected = [..._selectedStarterIds, ..._selectedBenchIds];
+    if (selected.toSet().length != selected.length ||
+        selected.any(
+          (id) => !squad.any((p) => '${p['id']}' == id && available(p)),
+        )) {
+      return 'Confira os jogadores relacionados: há atleta repetido ou indisponível.';
+    }
+    final keepers = squad.where(
+      (p) => _formatPosition(p['position']) == 'G' && available(p),
+    );
+    final selectedKeepers = keepers
+        .where((p) => _selectedStarterIds.contains('${p['id']}'))
+        .length;
+    if (selectedKeepers != (keepers.isEmpty ? 0 : 1)) {
+      return 'Selecione um único goleiro titular para enviar a tática.';
+    }
+    return null;
+  }
+
   bool get _tacticsLocked =>
       _holdingClassification ||
       _autoPreparingRound ||
@@ -865,6 +897,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Future<void> _handleSendTacticsOrReady() async {
     if (_worldId == null || _coachId == null || _snapshot == null) return;
+    if (!_isUnemployed &&
+        !_isClassicIdleRound &&
+        _tacticsSelectionError != null) {
+      setState(() => _statusBanner = _tacticsSelectionError);
+      return;
+    }
     final roundVersion = (_snapshot!['roundVersion'] as num?)?.toInt() ?? 1;
     try {
       Map<String, dynamic> res;
@@ -1469,9 +1507,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   _commandBusy ||
                       (!_isUnemployed &&
                           !_isClassicIdleRound &&
-                          (_requiredStarterCount < 1 ||
-                              _selectedStarterIds.length !=
-                                  _requiredStarterCount))
+                          _tacticsSelectionError != null)
                   ? null
                   : () => _runUiCommand(_handleSendTacticsOrReady),
               child: Text(

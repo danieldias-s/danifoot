@@ -1,0 +1,126 @@
+{
+  "worldId": "8a0c89c4-eb9c-45ca-a198-578cebe23994",
+  "selection": {
+    "reserveToOut": true,
+    "outToStarterBlockedSend": true,
+    "manualRemovalReenabled": true,
+    "menuOpened": 0,
+    "writeRequests": 0,
+    "restoredValid": true
+  },
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 1100
+    },
+    {
+      "width": 390,
+      "height": 1000
+    }
+  ],
+  "intervalWithPlayer": {
+    "stateAt45": "HALFTIME_PAUSED",
+    "observerAlreadyConfirmed": true,
+    "resumedState": "RUNNING_SECOND_HALF",
+    "resumedMinute": 46,
+    "continueRequests": 1
+  },
+  "onlyObserverWorldId": "61d02315-9e2e-4bab-b0eb-da7abcf6bec4",
+  "onlyObserver": {
+    "samples": [
+      {
+        "minute": 40,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 40,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 40,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 41,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 41,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 42,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 42,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 43,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 43,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 43,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 44,
+        "state": "RUNNING_FIRST_HALF",
+        "pause": false
+      },
+      {
+        "minute": 45,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      },
+      {
+        "minute": 45,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      },
+      {
+        "minute": 46,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      },
+      {
+        "minute": 46,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      },
+      {
+        "minute": 46,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      },
+      {
+        "minute": 47,
+        "state": "RUNNING_SECOND_HALF",
+        "pause": false
+      }
+    ],
+    "waitingModal": 0,
+    "continueButton": 0
+  },
+  "browserErrors": [],
+  "preview": {
+    "webStatus": 200,
+    "apiStatus": 200,
+    "intervalBuildInstalled": true
+  }
+}

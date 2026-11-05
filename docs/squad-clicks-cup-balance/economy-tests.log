@@ -1,0 +1,9 @@
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Contracts\bin\Debug\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Domain\bin\Debug\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+AVISO: sobrescrevendo o arquivo de resultados: D:\elifoot_98\.worktrees\account-login-lobby\artifacts\squad-clicks-cup-balance\economy.trx
+Arquivo de resultados: D:\elifoot_98\.worktrees\account-login-lobby\artifacts\squad-clicks-cup-balance\economy.trx
+
+Aprovado!  – Com falha:     0, Aprovado:    52, Ignorado:     0, Total:    52, Duração: 3 s - Elifoot.Domain.Tests.dll (net10.0)

@@ -18,7 +18,7 @@ class FullBenchApi extends GameplayPresentationApi {
   ) async {
     final club = await super.getClubDetail(worldId, clubId);
     final squad = club['squad'] as List;
-    for (var i = 19; i <= 22; i++) {
+    for (var i = 19; i <= 23; i++) {
       squad.add({
         ...Map<String, dynamic>.from(squad[12] as Map),
         'id': 'p-$i',
@@ -35,7 +35,7 @@ class FullBenchApi extends GameplayPresentationApi {
 
 void main() {
   testWidgets(
-    'Bolinha respeita limite de reservas e bloqueio após enviar tática',
+    'Bolinha aceita excesso no rascunho e bloqueia envio até corrigir sem trocar outro atleta',
     (t) async {
       t.view.physicalSize = const Size(1366, 1000);
       t.view.devicePixelRatio = 1;
@@ -50,46 +50,46 @@ void main() {
       await t.pumpAndSettle();
       RetroTable roster() =>
           t.widget<RetroTable>(find.byKey(const Key('retro-roster')));
-      final name = roster().rows.firstWhere((r) => r.first == '● G')[1];
-      Future<void> choose(String playerName, String choice) async {
-        final table = roster();
-        final index = table.rows.indexWhere((r) => r[1] == playerName);
-        final key =
-            ((table.leadingCells[index] as Row).children.first
-                    as PopupMenuButton)
-                .key!;
-        await t.ensureVisible(find.byKey(key));
-        await t.tap(find.byKey(key));
-        await t.pumpAndSettle();
-        await t.tap(find.text(choice).last);
+      bool canSend() =>
+          t
+              .widget<ElevatedButton>(
+                find.byKey(const Key('btn-enviar-tatica')),
+              )
+              .onPressed !=
+          null;
+      Future<void> click(String id) async {
+        final dot = find.byKey(ValueKey('retro-role-$id'));
+        await t.ensureVisible(dot);
+        await t.tap(dot);
         await t.pumpAndSettle();
       }
 
-      await choose(name, 'Reserva');
-      expect(
-        find.textContaining('nove lugares de reserva estão ocupados'),
-        findsOneWidget,
-      );
-      expect(roster().rows.firstWhere((r) => r[1] == name).first, '● G');
-      final benchName = roster().rows.firstWhere((r) => r.first == '– G')[1];
-      await choose(benchName, 'Titular');
-      expect(find.text('Trocar com titular'), findsOneWidget);
-      await t.tap(find.text('$name (G)'));
-      await t.pumpAndSettle();
-      expect(roster().rows.firstWhere((r) => r[1] == name).first, '– G');
-      await choose(name, 'Fora dos relacionados');
-      await choose(benchName, 'Reserva');
-      expect(roster().rows.firstWhere((r) => r[1] == benchName).first, '– G');
+      expect(canSend(), isTrue);
+      await click('p-23');
+      expect(find.textContaining('Titulares: 12/11'), findsWidgets);
+      expect(canSend(), isFalse);
+      expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2').first, '● D');
+      expect(find.text('Trocar com titular'), findsNothing);
+      expect(find.byType(PopupMenuItem<String>), findsNothing);
+      await click('p-2');
+      expect(find.textContaining('Banco: 10/9'), findsWidgets);
+      expect(canSend(), isFalse);
+      await click('p-2');
+      expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2').first, '· D');
+      expect(canSend(), isTrue);
+      await click('p-23');
+      expect(canSend(), isFalse);
+      await click('p-23');
+      expect(canSend(), isFalse);
+      await click('p-2');
+      expect(canSend(), isTrue);
       api.ready = 1;
       api.isReady = true;
       api.roundVersion++;
       api.onSnapshotUpdated?.call(await api.getSnapshot('world-011'));
       await t.pumpAndSettle();
       for (final cell in roster().leadingCells.values) {
-        expect(
-          ((cell as Row).children.first as PopupMenuButton).enabled,
-          isFalse,
-        );
+        expect(((cell as Row).children.first as IconButton).onPressed, isNull);
       }
       expect(t.takeException(), isNull);
       await t.pumpWidget(const SizedBox());
@@ -117,13 +117,13 @@ void main() {
         final starter = before.rows.indexWhere((r) => r.first == '● G');
         final name = before.rows[starter][1];
         final lead = before.leadingCells[starter]! as Row;
-        final popup = lead.children.first as PopupMenuButton<String>;
+        final dot = lead.children.first as IconButton;
         final version = api.roundVersion;
-        final finder = find.byKey(popup.key!);
+        final finder = find.byKey(dot.key!);
         await t.ensureVisible(finder);
         await t.tap(finder);
         await t.pumpAndSettle();
-        await t.tap(find.text('Fora dos relacionados').last);
+        await t.tap(finder);
         await t.pumpAndSettle();
         var roster = t.widget<RetroTable>(
           find.byKey(const Key('retro-roster')),
@@ -132,11 +132,9 @@ void main() {
         final removedIndex = roster.rows.indexWhere((r) => r[1] == name);
         final roleKey =
             ((roster.leadingCells[removedIndex] as Row).children.first
-                    as PopupMenuButton)
+                    as IconButton)
                 .key!;
         await t.tap(find.byKey(roleKey));
-        await t.pumpAndSettle();
-        await t.tap(find.text('Titular').last);
         await t.pumpAndSettle();
         roster = t.widget<RetroTable>(find.byKey(const Key('retro-roster')));
         expect(roster.rows.firstWhere((r) => r[1] == name).first, '● G');

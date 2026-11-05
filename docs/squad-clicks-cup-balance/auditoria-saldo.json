@@ -1,0 +1,28 @@
+{
+  "source": "Consulta SQL somente leitura em account018_013a_worlds, ef_worlds.SnapshotJson",
+  "worldId": "79c853a6-4bec-4497-a67c-173946774bea",
+  "worldName": "Daniel",
+  "clubId": "6d8e4ad7-4947-4145-8e23-a05f31f5ac06",
+  "clubName": "Equipe fictícia GB-030",
+  "seasonNumber": 1,
+  "auditedRound": 6,
+  "competitionType": "CupRoundOf64",
+  "totalCupFixtures": 32,
+  "clubFixturesInRound": 0,
+  "policy": "CLASSIC_OPERATING_BALANCE_012D_FIX_V2",
+  "annualSponsorship": true,
+  "annualBudget": 72000.00,
+  "installments": 21,
+  "balanceBefore": 676427.28,
+  "roundTransactions": [
+    {
+      "category": "Sponsorship",
+      "amount": 3428.57,
+      "balanceAfter": 679855.85,
+      "description": "Patrocínio anual R$ 72.000,00: parcela 6/21"
+    }
+  ],
+  "balanceAfter": 679855.85,
+  "economyRulesChanged": false,
+  "saveModifiedByAudit": false
+}
