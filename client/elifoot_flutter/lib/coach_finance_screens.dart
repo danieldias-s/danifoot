@@ -410,7 +410,8 @@ class ClassicFinanceView extends StatelessWidget {
             children: [
               const Text(
                 'BANCO — EMPRÉSTIMOS',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 10),
               RetroSection(
@@ -420,6 +421,10 @@ class ClassicFinanceView extends StatelessWidget {
                   children: [
                     Text(
                       'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
+                      style: const TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     const Text(
                       'Consulte as condições e os empréstimos em aberto antes de contratar.',
@@ -434,8 +439,100 @@ class ClassicFinanceView extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 12),
                   child: _confirmClassicAction(context, action),
                 ),
-              obligations,
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE5E4DF),
+                  border: Border.all(color: t.textPrimary),
+                ),
+                child: DefaultTextStyle.merge(
+                  style: TextStyle(color: t.textPrimary, fontSize: 17),
+                  child: obligations,
+                ),
+              ),
             ],
+          ),
+        );
+      }
+      if (stadiumOnly) {
+        final details = Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RetroSection(
+              title: '${stadium['stadiumName'] ?? 'Estádio'}',
+              child: Column(
+                key: const Key('classic-stadium-details'),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Capacidade construída: ${stadium['builtCapacity'] ?? '—'} lugares',
+                  ),
+                  Text(
+                    'Capacidade utilizável: ${stadium['usableCapacity'] ?? '—'} lugares',
+                  ),
+                  Text(
+                    'Condição estrutural: ${stadium['conditionPercent'] ?? '—'}%',
+                  ),
+                  Text('Último público: ${stadium['lastAttendance'] ?? '—'}'),
+                  Text(
+                    'Ingresso: ${formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0)}',
+                  ),
+                  Text(
+                    'Manutenção por jogo: ${formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0)}',
+                  ),
+                  Text(
+                    'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            for (final action in actions.where(
+              (a) => a.key != const ValueKey('btn-emprestimo-bancario'),
+            ))
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: _confirmClassicAction(context, action),
+              ),
+            const Text(
+              'Novas obras: conclusão após uma rodada. O jogo atual usa a capacidade anterior; o seguinte usa a obra concluída.',
+            ),
+          ],
+        );
+        return LayoutBuilder(
+          builder: (context, c) => SingleChildScrollView(
+            key: const Key('classic-stadium-screen'),
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  'ESTÁDIO',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                if (c.maxWidth >= 900)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 6,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 680),
+                          child: ClassicStadiumView(stadium: stadium),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(flex: 4, child: details),
+                    ],
+                  )
+                else ...[
+                  ClassicStadiumView(stadium: stadium),
+                  const SizedBox(height: 12),
+                  details,
+                ],
+              ],
+            ),
           ),
         );
       }
@@ -733,6 +830,22 @@ class ClassicFinanceView extends StatelessWidget {
     if (action is! ButtonStyleButton) return action;
     return ElevatedButton(
       key: action.key,
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size(double.infinity, 48),
+        backgroundColor: action.key == const ValueKey('btn-reformar-estadio')
+            ? const Color(0xFF155A9A)
+            : action.key == const ValueKey('btn-ampliar-estadio')
+            ? const Color(0xFFF5C400)
+            : const Color(0xFF006620),
+        foregroundColor: action.key == const ValueKey('btn-ampliar-estadio')
+            ? const Color(0xFF152B1D)
+            : Colors.white,
+        textStyle: const TextStyle(
+          fontFamily: 'ClassicCondensed',
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+      ),
       onPressed: action.onPressed == null
           ? null
           : () async {

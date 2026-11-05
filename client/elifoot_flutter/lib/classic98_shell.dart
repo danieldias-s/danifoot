@@ -28,6 +28,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
 
   void _retroOpen(String page, [int index = 0]) {
     if (_matchLocked) return;
+    if (page == 'bank' || page == 'stadium') _statusBanner = null;
     if (page == 'market') _marketPreferences.discovery = null;
     _navigateToTab(index);
     setState(() {
@@ -232,8 +233,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ('Taça Nacional...', nav('cup', 1)),
           for (final category in [
             ('scorers', 'Artilheiros...'),
+            ('assists', 'Assistências...'),
             ('goalkeepers', 'Goleiros...'),
-            ('defenders', 'Defensores...'),
           ])
             (
               category.$2,
@@ -245,7 +246,6 @@ extension _Classic98Shell on _ElifootShellScreenState {
                     },
             ),
           ('Rankings de Jogadores...', nav('playerRankings', 6)),
-          ('Jogos ao vivo...', () => _navigation.navigate('/partida')),
         ];
       case 'Treinador':
         return [
@@ -1463,45 +1463,75 @@ extension _Classic98Shell on _ElifootShellScreenState {
     ),
   );
 
-  Widget _retroCalendar(bool results) => SingleChildScrollView(
-    padding: const EdgeInsets.all(10),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          results ? 'RESULTADOS' : 'CALENDÁRIO',
-          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-        for (final r in _calendar)
-          if (!results ||
-              (r['fixtures'] as List? ?? []).any(
-                (f) => f['isFinished'] == true,
-              ))
-            RetroSection(
-              title:
-                  'Rodada ${r['roundNumber']} • ${classicCompetition(r['competition'])}',
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (final f in r['fixtures'] as List? ?? [])
-                    if (!results || f['isFinished'] == true)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Text(
-                          '${f['home']}  ${f['isFinished'] == true ? '${f['homeGoals']} x ${f['awayGoals']}' : '×'}  ${f['away']}',
+  Widget _retroCalendar(bool results) {
+    bool belongsToClub(Map fixture) =>
+        _myClubId != null &&
+        (fixture['homeClubId'] == _myClubId ||
+            fixture['awayClubId'] == _myClubId ||
+            fixture['homeClubId'] == null &&
+                fixture['awayClubId'] == null &&
+                _myClubDetail != null &&
+                (fixture['home'] == _myClubDetail!['name'] ||
+                    fixture['away'] == _myClubDetail!['name']));
+    final rounds = _calendar
+        .map(
+          (r) => {
+            ...r as Map,
+            'fixtures': (r['fixtures'] as List? ?? [])
+                .where(
+                  (f) => results
+                      ? f['isFinished'] == true
+                      : belongsToClub(f as Map),
+                )
+                .toList(),
+          },
+        )
+        .where((r) => (r['fixtures'] as List).isNotEmpty)
+        .toList();
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            results ? 'RESULTADOS' : 'CALENDÁRIO — MEU CLUBE',
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          for (final r in rounds)
+            if (!results ||
+                (r['fixtures'] as List? ?? []).any(
+                  (f) => f['isFinished'] == true,
+                ))
+              RetroSection(
+                title:
+                    'Rodada ${r['roundNumber']} • ${classicCompetition(r['competition'])}',
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final f in r['fixtures'] as List? ?? [])
+                      if (!results || f['isFinished'] == true)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Text(
+                            '${f['home']}  ${f['isFinished'] == true ? '${f['homeGoals']} x ${f['awayGoals']}' : '×'}  ${f['away']}',
+                          ),
                         ),
-                      ),
-                ],
+                  ],
+                ),
               ),
+          if (results &&
+              !rounds.any(
+                (r) => (r['fixtures'] as List? ?? []).any(
+                  (f) => f['isFinished'] == true,
+                ),
+              ))
+            const Text('Nenhuma partida concluída.'),
+          if (!results && rounds.isEmpty)
+            const Text(
+              'Nenhum jogo definido para a sua equipe. Os confrontos da taça aparecerão aqui quando forem definidos.',
             ),
-        if (results &&
-            !_calendar.any(
-              (r) => (r['fixtures'] as List? ?? []).any(
-                (f) => f['isFinished'] == true,
-              ),
-            ))
-          const Text('Nenhuma partida concluída.'),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

@@ -15,6 +15,8 @@ public class PlayerCompetitionStatistics
     public PlayerPosition Position { get; set; }
     public int MatchesPlayed { get; set; }
     public int GoalsScored { get; set; }
+    public int Assists { get; set; }
+    public bool HasIncompleteAssists { get; set; } = true;
     public int GoalsConceded { get; set; }
     public int YellowCards { get; set; }
     public int RedCards { get; set; }

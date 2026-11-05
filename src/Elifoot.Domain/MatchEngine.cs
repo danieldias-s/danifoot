@@ -274,7 +274,8 @@ public static partial class MatchSimulationEngine
             minute: minute,
             rng: rng,
             events: events,
-            deferPenaltyChoice: homeHumanPenaltyChoice);
+            deferPenaltyChoice: homeHumanPenaltyChoice,
+            assistSeed: worldSeed);
 
         // Away attack chance
         TryResolveAttackAttempt(
@@ -288,7 +289,8 @@ public static partial class MatchSimulationEngine
             minute: minute,
             rng: rng,
             events: events,
-            deferPenaltyChoice: awayHumanPenaltyChoice);
+            deferPenaltyChoice: awayHumanPenaltyChoice,
+            assistSeed: worldSeed);
 
         return events;
     }
@@ -478,7 +480,8 @@ public static partial class MatchSimulationEngine
         int minute,
         DeterministicRng rng,
         List<MatchEventRecord> events,
-        bool deferPenaltyChoice = false)
+        bool deferPenaltyChoice = false,
+        int assistSeed = 0)
     {
         if (attackingPlayers.Count == 0) return;
 
@@ -576,7 +579,13 @@ public static partial class MatchSimulationEngine
 
         if (rng.NextDouble() < goalProb)
         {
-            RecordGoalScored(match, attackingClub, shooter, isHomeAttacking, minute, isPenalty: false, events);
+            // Describe the final pass with an independent stream: sporting RNG and outcomes are unchanged.
+            // Selecting the shooter represents a solo finish; every position may supply the pass.
+            var passRng = DeterministicRng.FromContext(assistSeed ^ 0x41535349, match.SeasonNumber,
+                match.RoundNumber, match.DeterministicMatchIndex * 2 + (isHomeAttacking ? 0 : 1), minute);
+            var passer = attackingPlayers[(int)(passRng.NextDouble() * attackingPlayers.Count)];
+            RecordGoalScored(match, attackingClub, shooter, isHomeAttacking, minute, isPenalty: false, events,
+                passer.Id == shooter.Id ? null : passer);
         }
     }
 
@@ -587,7 +596,8 @@ public static partial class MatchSimulationEngine
         bool isHomeAttacking,
         int minute,
         bool isPenalty,
-        List<MatchEventRecord> events)
+        List<MatchEventRecord> events,
+        Player? assister = null)
     {
         if (isHomeAttacking)
         {
@@ -619,6 +629,9 @@ public static partial class MatchSimulationEngine
             ClubName = attackingClub.Name,
             PrimaryPlayerId = scorer.Id,
             PrimaryPlayerDisplayName = scorer.DisplayName,
+            AssistPlayerId = !isPenalty ? assister?.Id : null,
+            AssistPlayerDisplayName = !isPenalty ? assister?.DisplayName : null,
+            HasAssistCoverage = true,
             Description = $"{minute}' GOOOL! {scorer.DisplayName}{penSuffix} marca para {attackingClub.Name}! ({match.HomeGoals}x{match.AwayGoals})"
         };
         match.Events.Add(goalEvt);

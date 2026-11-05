@@ -3,7 +3,11 @@ namespace Elifoot.Contracts;
 public record PlayerRankingRowDto(int Rank, Guid PlayerId, string DisplayName, PlayerPosition Position,
     int Strength, string BehaviorDisplay, bool IsStar, Guid? CurrentClubId, string CurrentClubName,
     int MatchesPlayed, int GoalsScored, int GoalsConceded, int YellowCards, int RedCards, int MinutesPlayed,
-    decimal? Average, decimal RedRate, decimal YellowRate, int MatchesRemaining, int SeasonTopScorerTitles);
+    decimal? Average, decimal RedRate, decimal YellowRate, int MatchesRemaining, int SeasonTopScorerTitles)
+{
+    public int Assists { get; init; }
+    public bool HasIncompleteAssists { get; init; }
+}
 public record PlayerRankingsDto(string Category, string Scope, string Period, int? Season, int CurrentSeason,
     int MinimumMatches, List<PlayerRankingRowDto> Rows, List<PlayerRankingRowDto> NotEligible,
     List<int> Seasons, List<string> CoverageWarnings);

@@ -18,8 +18,8 @@ public static class PlayerRankingsEndpoints
         Guid worldId, HttpRequest request, PlayerRankingsApplicationService queries, CancellationToken ct)
     {
         if (!TryRead(request, "category", "scorers", out var category) ||
-            category is not ("scorers" or "goalkeepers" or "defenders"))
-            return Invalid("category deve ser scorers, goalkeepers ou defenders.");
+            category is not ("scorers" or "assists" or "goalkeepers" or "defenders"))
+            return Invalid("category deve ser scorers, assists, goalkeepers ou defenders.");
         if (!TryRead(request, "scope", "general", out var scope) ||
             scope is not ("general" or "division1" or "division2" or "division3" or "division4" or "cup"))
             return Invalid("scope deve ser general, division1, division2, division3, division4 ou cup.");

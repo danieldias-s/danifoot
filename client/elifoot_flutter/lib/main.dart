@@ -3423,59 +3423,60 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
               ),
-          ...salaryRequests.map(
-            (r) => Card(
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}',
-                    ),
-                    Text(
-                      'Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}',
-                    ),
-                    Text(
-                      '${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato',
-                    ),
-                    Text(
-                      'Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}',
-                    ),
-                    if (r['mandatory'] == true)
-                      const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
-                    Wrap(
-                      spacing: 8,
-                      children: [
-                        for (final accept in [true, false])
-                          OutlinedButton(
-                            onPressed:
-                                _commandBusy ||
-                                    !accept && r['mandatory'] == true
-                                ? null
-                                : () => _runUiCommand(() async {
-                                    final message = await widget.apiClient
-                                        .respondSalaryRequest(
-                                          _worldId!,
-                                          _myClubId!,
-                                          _coachId!,
-                                          r['id'] as String,
-                                          accept,
-                                        );
-                                    await _refreshClubAndSecondaryData();
-                                    if (message != null) {
-                                      setState(() => _statusBanner = message);
-                                    }
-                                  }),
-                            child: Text(accept ? 'ACEITAR' : 'RECUSAR'),
-                          ),
-                      ],
-                    ),
-                  ],
+          if (_classicPage != 'bank')
+            ...salaryRequests.map(
+              (r) => Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}',
+                      ),
+                      Text(
+                        'Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}',
+                      ),
+                      Text(
+                        '${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato',
+                      ),
+                      Text(
+                        'Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}',
+                      ),
+                      if (r['mandatory'] == true)
+                        const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
+                      Wrap(
+                        spacing: 8,
+                        children: [
+                          for (final accept in [true, false])
+                            OutlinedButton(
+                              onPressed:
+                                  _commandBusy ||
+                                      !accept && r['mandatory'] == true
+                                  ? null
+                                  : () => _runUiCommand(() async {
+                                      final message = await widget.apiClient
+                                          .respondSalaryRequest(
+                                            _worldId!,
+                                            _myClubId!,
+                                            _coachId!,
+                                            r['id'] as String,
+                                            accept,
+                                          );
+                                      await _refreshClubAndSecondaryData();
+                                      if (message != null) {
+                                        setState(() => _statusBanner = message);
+                                      }
+                                    }),
+                              child: Text(accept ? 'ACEITAR' : 'RECUSAR'),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );

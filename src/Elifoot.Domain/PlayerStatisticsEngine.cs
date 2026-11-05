@@ -79,7 +79,7 @@ public static class PlayerStatisticsEngine
     {
         public PlayerLineupSnapshot Snapshot { get; } = snapshot;
         public bool Played { get; set; }
-        public int Minutes, Goals, Conceded, Yellow, Red;
+        public int Minutes, Goals, Assists, Conceded, Yellow, Red;
     }
 
     private static void ApplyOne(GameWorld w, MatchFixture m, IReadOnlyDictionary<Guid, Player> players)
@@ -89,6 +89,7 @@ public static class PlayerStatisticsEngine
         var appearances = m.StatisticsInitialLineup.DistinctBy(x => x.PlayerId).ToDictionary(x => x.PlayerId, x => new Appearance(x) { Played = x.IsStarter });
         bool complete = m.StatisticsLineupCaptured;
         bool goalsComplete = true;
+        bool assistsComplete = true;
         var active = new Dictionary<Guid, List<Guid>> {
             [m.HomeClubId] = m.StatisticsInitialLineup.Where(x => x.IsStarter && x.ClubId == m.HomeClubId).Select(x => x.PlayerId).ToList(),
             [m.AwayClubId] = m.StatisticsInitialLineup.Where(x => x.IsStarter && x.ClubId == m.AwayClubId).Select(x => x.PlayerId).ToList()
@@ -113,6 +114,13 @@ public static class PlayerStatisticsEngine
                 case MatchEventType.Goal:
                     bool validScorer = a != null && a.Snapshot.ClubId == e.ClubId && (!complete || active[e.ClubId].Contains(a.Snapshot.PlayerId));
                     if (!e.IsOwnGoal && validScorer) a!.Goals++;
+                    if (!e.HasAssistCoverage) assistsComplete = false;
+                    if (!e.IsOwnGoal && e.AssistPlayerId is Guid assistId)
+                    {
+                        if (assistId != e.PrimaryPlayerId && appearances.TryGetValue(assistId, out var assist) &&
+                            assist.Snapshot.ClubId == e.ClubId && active[e.ClubId].Contains(assistId)) assist.Assists++;
+                        else assistsComplete = false;
+                    }
                     if (!e.IsOwnGoal && !validScorer)
                     {
                         goalsComplete = false;
@@ -159,12 +167,15 @@ public static class PlayerStatisticsEngine
             if (!w.PlayerStatisticsIndex.TryGetValue(key, out var bucket))
             {
                 bucket = new() { PlayerId = p.PlayerId, Season = m.SeasonNumber, CompetitionType = m.CompetitionType,
-                    Division = m.CompetitionType == CompetitionType.League ? m.DivisionTier : null, ClubId = p.ClubId, ClubName = clubName, Position = p.Position };
+                    Division = m.CompetitionType == CompetitionType.League ? m.DivisionTier : null, ClubId = p.ClubId, ClubName = clubName, Position = p.Position,
+                    HasIncompleteAssists = false };
                 w.PlayerStatistics.Add(bucket);w.PlayerStatisticsIndex.Add(key, bucket);
             }
             if (!bucket.AppliedMatchIds.Add(m.Id)) continue;
             if (string.IsNullOrWhiteSpace(bucket.ClubName) && !string.IsNullOrWhiteSpace(clubName)) bucket.ClubName = clubName;
             bucket.MatchesPlayed++; bucket.GoalsScored += a.Goals; bucket.GoalsConceded += a.Conceded;
+            bucket.Assists += a.Assists;
+            bucket.HasIncompleteAssists |= !assistsComplete;
             bucket.YellowCards += a.Yellow; bucket.RedCards += a.Red; bucket.MinutesPlayed += a.Minutes;
             bucket.HasIncompleteAppearances |= !complete;
             bucket.HasIncompleteGoals |= !goalsComplete;
@@ -182,7 +193,8 @@ public static class PlayerStatisticsEngine
     }
     private static void Warn(GameWorld w, string warning) { if (!w.PlayerStatisticsCoverageWarnings.Contains(warning)) w.PlayerStatisticsCoverageWarnings.Add(warning); }
 
-    private sealed record Total(Player Player, int Matches, int Goals, int Conceded, int Yellow, int Red, int Minutes, bool Incomplete);
+    private sealed record Total(Player Player, int Matches, int Goals, int Conceded, int Yellow, int Red, int Minutes, bool Incomplete,
+        int Assists = 0, bool IncompleteAssists = false);
     private static List<Total> Totals(GameWorld w, string scope, int? season, string category = "scorers")
     {
         var source = w.PlayerStatistics.Where(s => season == null || s.Season == season);
@@ -195,16 +207,19 @@ public static class PlayerStatisticsEngine
         if (category == "defenders") source = source.Where(s => s.Position == PlayerPosition.D);
         var players = w.Players.ToDictionary(p => p.Id);
         return source.GroupBy(s => s.PlayerId).Where(g => players.ContainsKey(g.Key)).Select(g => new Total(players[g.Key],
-            g.Sum(s => s.MatchesPlayed),g.Sum(s => s.GoalsScored),g.Sum(s => s.GoalsConceded),g.Sum(s => s.YellowCards),g.Sum(s => s.RedCards),g.Sum(s => s.MinutesPlayed),g.Any(s => s.HasIncompleteAppearances))).ToList();
+            g.Sum(s => s.MatchesPlayed),g.Sum(s => s.GoalsScored),g.Sum(s => s.GoalsConceded),g.Sum(s => s.YellowCards),g.Sum(s => s.RedCards),g.Sum(s => s.MinutesPlayed),g.Any(s => s.HasIncompleteAppearances),
+            g.Sum(s => s.Assists), g.Any(s => s.HasIncompleteAssists))).ToList();
     }
     private static int Ratio(long a, int b, long c, int d) => ((BigInteger)a * Math.Max(1,d)).CompareTo((BigInteger)c * Math.Max(1,b));
     private static int Compare(Total a, Total b, string category)
     {
         int value;
-        if (category == "scorers") {
-            value = b.Goals.CompareTo(a.Goals); if (value != 0) return value;
-            value = a.Incomplete.CompareTo(b.Incomplete); if (value != 0) return value;
-            value = Ratio(b.Goals,b.Matches,a.Goals,a.Matches); if(value != 0)return value;
+        if (category is "scorers" or "assists") {
+            int Count(Total t) => category == "assists" ? t.Assists : t.Goals;
+            bool Incomplete(Total t) => t.Incomplete || category == "assists" && t.IncompleteAssists;
+            value = Count(b).CompareTo(Count(a)); if (value != 0) return value;
+            value = Incomplete(a).CompareTo(Incomplete(b)); if (value != 0) return value;
+            value = Ratio(Count(b),b.Matches,Count(a),a.Matches); if(value != 0)return value;
         } else if (category == "goalkeepers") {
             value = Ratio(a.Conceded,a.Matches,b.Conceded,b.Matches); if(value != 0)return value;
             value = b.Matches.CompareTo(a.Matches);if(value != 0)return value;
@@ -220,24 +235,28 @@ public static class PlayerStatisticsEngine
     private static PlayerRankingRowDto Row(GameWorld w, Total t, int rank, string category)
     {
         var p=t.Player;
-        decimal? average=t.Incomplete ? null : (category=="scorers"?t.Goals:category=="goalkeepers"?t.Conceded:t.Yellow+3L*t.Red)/(decimal)Math.Max(1,t.Matches);
+        decimal? average=t.Incomplete || category=="assists"&&t.IncompleteAssists ? null : (category=="assists"?t.Assists:category=="scorers"?t.Goals:category=="goalkeepers"?t.Conceded:t.Yellow+3L*t.Red)/(decimal)Math.Max(1,t.Matches);
         return new(rank,p.Id,p.DisplayName,p.Position,p.Strength,p.Behavior.ToDisplayPt(),p.IsStar,p.ClubId,
             w.Clubs.FirstOrDefault(c=>c.Id==p.ClubId)?.Name??"Sem clube",t.Matches,t.Goals,t.Conceded,t.Yellow,t.Red,t.Minutes,average,
-            t.Red/(decimal)Math.Max(1,t.Matches),t.Yellow/(decimal)Math.Max(1,t.Matches),category=="scorers"?0:Math.Max(0,20-t.Matches),p.SeasonTopScorerTitles);
+            t.Red/(decimal)Math.Max(1,t.Matches),t.Yellow/(decimal)Math.Max(1,t.Matches),category is "scorers" or "assists"?0:Math.Max(0,20-t.Matches),p.SeasonTopScorerTitles)
+            { Assists = t.Assists, HasIncompleteAssists = t.IncompleteAssists };
     }
     public static PlayerRankingsDto GetRankings(GameWorld w, string category="scorers", string scope="general", string period="career", int? season=null)
     {
-        if (!new[]{"scorers","goalkeepers","defenders"}.Contains(category) || !new[]{"general","division1","division2","division3","division4","cup"}.Contains(scope)
+        if (!new[]{"scorers","assists","goalkeepers","defenders"}.Contains(category) || !new[]{"general","division1","division2","division3","division4","cup"}.Contains(scope)
             || !new[]{"career","current","season"}.Contains(period) || (period=="season" && (season is null or <1 || season>w.SeasonNumber))) throw new ArgumentException("Filtro de ranking inválido.");
         EnsureMigrated(w);
         int? selected = period=="career"?null:period=="current"?w.SeasonNumber:season;
         var totals=Totals(w,scope,selected,category);totals.Sort((a,b)=>Compare(a,b,category));
-        bool Eligible(Total t)=>category=="scorers"?t.Goals>0:t.Matches>=20&&!t.Incomplete;
-        return new(category,scope,period,selected,w.SeasonNumber,category=="scorers"?0:20,
+        bool Eligible(Total t)=>category=="assists"?t.Assists>0:category=="scorers"?t.Goals>0:t.Matches>=20&&!t.Incomplete;
+        var warnings = w.PlayerStatisticsCoverageWarnings.ToList();
+        if (category == "assists" && totals.Any(t => t.IncompleteAssists))
+            warnings.Add("Assistências anteriores à atualização não possuem registro completo do passe; não foram reconstruídas. O ranking soma somente assistências registradas.");
+        return new(category,scope,period,selected,w.SeasonNumber,category is "scorers" or "assists"?0:20,
             totals.Where(Eligible).Select((t,i)=>Row(w,t,i+1,category)).ToList(),
-            category=="scorers"?new():totals.Where(t=>!Eligible(t)).Select(t=>Row(w,t,0,category)).ToList(),
+            category is "scorers" or "assists"?new():totals.Where(t=>!Eligible(t)).Select(t=>Row(w,t,0,category)).ToList(),
             w.PlayerStatistics.Select(s=>s.Season).Concat(w.SeasonHistories.Select(h=>h.SeasonNumber)).Append(w.SeasonNumber).Distinct().OrderByDescending(x=>x).ToList(),
-            w.PlayerStatisticsCoverageWarnings.ToList());
+            warnings);
     }
     public static string ResolveHistoricalClubName(GameWorld w, Guid clubId, string? recordedName = null)
     {

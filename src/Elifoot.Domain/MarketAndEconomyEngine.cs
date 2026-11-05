@@ -286,6 +286,8 @@ public static class MarketAndEconomyEngine
                 $"sponsor:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
 
             bool playedThisRound = roundMatches.Any(m => ClassicEconomyEngine.Played(m) && (m.HomeClubId == club.Id || m.AwayClubId == club.Id));
+            // New one-round works finish after gate settlement, so this round keeps its original capacity.
+            ProgressStadiumWorks(club, playedThisRound);
             if (!playedThisRound)
             {
                 continue;
@@ -295,28 +297,6 @@ public static class MarketAndEconomyEngine
             string salKey = $"salary:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}";
             TryRecordTransaction(world, club, FinancialTransactionCategory.PlayerSalary,
                 -totalSalary, $"Folha salarial da rodada ({squad.Count} atletas)", salKey);
-
-            // Progress stadium works
-            if (club.Stadium.ExpansionRoundsRemaining > 0)
-            {
-                club.Stadium.ExpansionRoundsRemaining--;
-                if (club.Stadium.ExpansionRoundsRemaining == 0 && club.Stadium.ExpansionTargetSeats > 0)
-                {
-                    club.Stadium.BuiltCapacity += club.Stadium.ExpansionTargetSeats;
-                    club.Stadium.UsableCapacity += club.Stadium.ExpansionTargetSeats;
-                    club.Stadium.ExpansionTargetSeats = 0;
-                }
-            }
-
-            if (club.Stadium.RenovationRoundsRemaining > 0)
-            {
-                club.Stadium.RenovationRoundsRemaining--;
-                if (club.Stadium.RenovationRoundsRemaining == 0)
-                {
-                    club.Stadium.ConditionPercent = Math.Min(100.0, club.Stadium.ConditionPercent + 15.0);
-                    club.Stadium.UsableCapacity = (int)Math.Round(club.Stadium.BuiltCapacity * (club.Stadium.ConditionPercent / 100.0));
-                }
-            }
 
             // Decrement player injury/suspension & contract rounds
             var matchForClub = roundMatches.First(m => m.HomeClubId == club.Id || m.AwayClubId == club.Id);
@@ -470,6 +450,30 @@ public static class MarketAndEconomyEngine
         return Math.Round(additionalSeats * 85m, 0);
     }
 
+    private static void ProgressStadiumWorks(Club club, bool played)
+    {
+        var stadium = club.Stadium;
+        if (stadium.ExpansionRoundsRemaining > 0 && (played || stadium.ExpansionProgressesEachRound))
+        {
+            stadium.ExpansionRoundsRemaining--;
+            if (stadium.ExpansionRoundsRemaining == 0 && stadium.ExpansionTargetSeats > 0)
+            {
+                stadium.BuiltCapacity += stadium.ExpansionTargetSeats;
+                stadium.UsableCapacity += stadium.ExpansionTargetSeats;
+                stadium.ExpansionTargetSeats = 0;
+            }
+        }
+        if (stadium.RenovationRoundsRemaining > 0 && (played || stadium.RenovationProgressesEachRound))
+        {
+            stadium.RenovationRoundsRemaining--;
+            if (stadium.RenovationRoundsRemaining == 0)
+            {
+                stadium.ConditionPercent = Math.Min(100.0, stadium.ConditionPercent + 15.0);
+                stadium.UsableCapacity = (int)Math.Round(stadium.BuiltCapacity * stadium.ConditionPercent / 100.0);
+            }
+        }
+    }
+
     public static (bool Success, string? ErrorMessage) StartStadiumRenovation(GameWorld world, Club club)
     {
         if (club.Stadium.RenovationRoundsRemaining > 0)
@@ -485,7 +489,8 @@ public static class MarketAndEconomyEngine
             -cost, $"Obra de reforma estrutural do estádio ({club.Stadium.Name})",
             $"reno:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
 
-        club.Stadium.RenovationRoundsRemaining = 3;
+        club.Stadium.RenovationRoundsRemaining = 1;
+        club.Stadium.RenovationProgressesEachRound = true;
         return (true, null);
     }
 
@@ -505,7 +510,8 @@ public static class MarketAndEconomyEngine
             $"exp:{club.Id}:S{world.SeasonNumber}:R{world.RoundNumber}");
 
         club.Stadium.ExpansionTargetSeats = additionalSeats;
-        club.Stadium.ExpansionRoundsRemaining = 5;
+        club.Stadium.ExpansionRoundsRemaining = 1;
+        club.Stadium.ExpansionProgressesEachRound = true;
         return (true, null);
     }
 

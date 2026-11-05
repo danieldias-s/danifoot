@@ -104,6 +104,10 @@ bool isRawGuid(String? value) {
 /// Session-scoped registry of club IDs to club names observed from official API payloads.
 /// Used only as an exact-ID fallback for legacy snapshots where `clubName` was not embedded
 /// on historical row DTOs; never substitutes a player's current club for a different club ID.
+String _rankingPosition(dynamic value) => value is num
+    ? const ['G', 'D', 'M', 'A'][value.toInt().clamp(0, 3)]
+    : '${value ?? '—'}';
+
 class ClubNameDirectory {
   static final Map<String, String> _byId = <String, String>{};
 
@@ -359,6 +363,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
           LayoutBuilder(
             builder: (context, available) {
               final ranking = _buildRankingPanel();
+              if (_category == 'assists') return ranking;
               final awards = SeasonTopScorersPanel(
                 apiClient: widget.apiClient,
                 worldId: widget.worldId,
@@ -472,6 +477,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
   }
 
   String get _categoryTitle => switch (_category) {
+    'assists' => 'ASSISTÊNCIAS',
     'goalkeepers' => 'GOLEIROS',
     'defenders' => 'DEFENSORES',
     _ => 'ARTILHEIROS',
@@ -507,7 +513,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
             final payload = snapshot.data!;
             final minimum = math.max(20, _integer(payload['minimumMatches']));
             final all = _records(payload['rows']);
-            final needsMinimum = _category != 'scorers';
+            final needsMinimum = !['scorers', 'assists'].contains(_category);
             final rows = all
                 .where(
                   (p) =>
@@ -577,6 +583,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
         _category,
         const {
           'scorers': 'Artilheiros',
+          'assists': 'Assistências',
           'goalkeepers': 'Goleiros',
           'defenders': 'Defensores',
         },
@@ -777,15 +784,17 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
     final columns = <String>[
       '#',
       'JOGADOR',
+      'POSIÇÃO',
       'CLUBE ATUAL',
       'JOGOS',
       if (_category == 'scorers') 'GOLS',
+      if (_category == 'assists') 'ASSISTÊNCIAS',
       if (_category == 'goalkeepers') 'GOLS SOFRIDOS',
       if (_category == 'defenders') ...['AMARELOS', 'VERMELHOS'],
       _category == 'defenders' ? 'ÍNDICE' : 'MÉDIA',
       if (minimum != null) 'JOGOS FALTANTES',
     ];
-    final numericColumns = <int>{0, for (var i = 3; i < columns.length; i++) i};
+    final numericColumns = <int>{0, for (var i = 4; i < columns.length; i++) i};
 
     return ClassicTable(
       tableKey: minimum == null ? 'ranking-table' : 'not-eligible-table',
@@ -845,6 +854,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
               p,
               maxWidth: 190,
             ),
+            DataCell(Text(_rankingPosition(p['position']))),
             DataCell(
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 140),
@@ -854,6 +864,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
             DataCell(Text(_value(p['matchesPlayed']))),
             if (_category == 'scorers')
               DataCell(Text(_value(p['goalsScored']))),
+            if (_category == 'assists') DataCell(Text(_value(p['assists']))),
             if (_category == 'goalkeepers')
               DataCell(Text(_value(p['goalsConceded']))),
             if (_category == 'defenders') ...[
@@ -878,6 +889,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
   }) {
     final t = ClassicTheme.of(context);
     final metric = switch (_category) {
+      'assists' => 'ASS.',
       'goalkeepers' => 'G.C.',
       'defenders' => 'ÍNDICE',
       _ => 'GOLS',
@@ -917,6 +929,7 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
                   ),
                 ),
                 number('J', 30, heading: true),
+                number('POS', 32, heading: true),
                 number(metric, 55, heading: true),
                 const SizedBox(width: 18),
               ],
@@ -972,12 +985,15 @@ class _PlayerRankingsScreenState extends State<PlayerRankingsScreen> {
                       ),
                     ),
                     number(_value(p['matchesPlayed']), 30),
+                    number(_rankingPosition(p['position']), 32),
                     number(
                       _category == 'defenders'
                           ? _average(p['average'])
                           : _value(
                               p[_category == 'goalkeepers'
                                   ? 'goalsConceded'
+                                  : _category == 'assists'
+                                  ? 'assists'
                                   : 'goalsScored'],
                             ),
                       55,

@@ -1,0 +1,60 @@
+{
+  "worldId": "2049d567-737d-4b33-8c3a-26c17cdcd26f",
+  "stadium": {
+    "beforeBuilt": 36240,
+    "afterRequestBuilt": 36240,
+    "remaining": 1,
+    "afterRoundBuilt": 41240,
+    "remainingAfterRound": 0
+  },
+  "bank": {
+    "salaryRequestCardPresent": false,
+    "creditVisible": true
+  },
+  "browserErrors": [],
+  "roundStates": [
+    {
+      "state": "HALFTIME_PAUSED",
+      "minute": 45,
+      "round": 1
+    },
+    {
+      "state": "RUNNING_SECOND_HALF",
+      "minute": 46,
+      "round": 1
+    },
+    {
+      "state": "RESULTS",
+      "minute": 90,
+      "round": 1
+    },
+    {
+      "state": "PREPARING",
+      "minute": 0,
+      "round": 2
+    }
+  ],
+  "rankings": {
+    "assistsRows": 31,
+    "totalAssists": 34,
+    "positions": [
+      "M",
+      "D",
+      "A"
+    ],
+    "minimumMatches": 0,
+    "scorerPositions": [
+      "M",
+      "A",
+      "D"
+    ]
+  },
+  "calendar": {
+    "visibleKnownOwnFixtures": 14,
+    "scope": "MY_CLUB"
+  },
+  "preview": {
+    "webStatus": 200,
+    "apiStatus": 200
+  }
+}

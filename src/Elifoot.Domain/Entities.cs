@@ -124,6 +124,8 @@ public class Stadium
     public int ExpansionTargetSeats { get; set; } = 0;
     public int ExpansionRoundsRemaining { get; set; } = 0;
     public int RenovationRoundsRemaining { get; set; } = 0;
+    public bool ExpansionProgressesEachRound { get; set; }
+    public bool RenovationProgressesEachRound { get; set; }
 }
 
 public partial class Player
@@ -376,6 +378,9 @@ public class MatchEventRecord
     public string? PrimaryPlayerDisplayName { get; set; }
     public Guid? SecondaryPlayerId { get; set; }
     public string? SecondaryPlayerDisplayName { get; set; }
+    public Guid? AssistPlayerId { get; set; }
+    public string? AssistPlayerDisplayName { get; set; }
+    public bool HasAssistCoverage { get; set; }
     public string Description { get; set; } = string.Empty;
 }
 
