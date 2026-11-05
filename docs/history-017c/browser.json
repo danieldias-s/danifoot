@@ -1,0 +1,26 @@
+{
+  "browser": "Chrome via Playwright",
+  "world": "dc11f3d0-270e-4e50-bc51-381d4c8d4de2",
+  "club": "Atlético Paulistano",
+  "clubHistoryIdentical": true,
+  "playedGames": 1,
+  "coachAppearances": [
+    "CURRENT",
+    "CLASSIC_98"
+  ],
+  "viewports": [
+    {
+      "width": 1366,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 1000
+    }
+  ],
+  "clubDialog": true,
+  "standingsClubHistory": true,
+  "rankingsPlayerHistory": "Pedro Vieira",
+  "marketPlayerHistory": true,
+  "pageErrors": []
+}

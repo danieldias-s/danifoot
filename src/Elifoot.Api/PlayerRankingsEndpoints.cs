@@ -11,6 +11,15 @@ public static class PlayerRankingsEndpoints
         app.MapGet("/api/worlds/{worldId:guid}/player-rankings", GetRankingsAsync);
         app.MapGet("/api/worlds/{worldId:guid}/players/{playerId:guid}/history", GetHistoryAsync);
         app.MapGet("/api/worlds/{worldId:guid}/season-top-scorers", GetAwardsAsync);
+        app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/history", async (
+            Guid worldId,Guid clubId,HttpRequest request,PlayerRankingsApplicationService queries,CancellationToken ct)=> {
+                if(!TryReadSeason(request,out var season))return Invalid("season deve ser inteiro positivo.");
+                return await queries.ReadWorldAsync<IResult>(worldId,w=> {
+                    if(season>w.SeasonNumber)return Invalid("Temporada futura não disponível.");
+                    var history=HistoryEngine.GetClubHistory(w,clubId,season);
+                    return history==null?Results.NotFound():Results.Ok(history);
+                },ct)??Results.NotFound();
+            });
         return app;
     }
 

@@ -33,6 +33,10 @@ public sealed class EfWorldRepository : IWorldRepository
             return cached;
         }
 
+        var loadGate=SaveLocks.GetOrAdd(worldId,_=>new SemaphoreSlim(1,1));
+        await loadGate.WaitAsync(ct);
+        try {
+        if(MemoryCache.TryGetValue(worldId,out cached))return cached;
         using var scope = _scopeFactory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
         var record = await db.Worlds.AsNoTracking().FirstOrDefaultAsync(w => w.Id == worldId, ct);
@@ -46,9 +50,11 @@ public sealed class EfWorldRepository : IWorldRepository
             DisciplineEngine.EnsureMigrated(world);
             ClassicEconomyEngine.EnsureMigrated(world);
             OperatingEconomyEngine.EnsureScheduledRules(world);
+            HistoryEngine.Observe(world);
             MemoryCache[world.Id] = world;
         }
         return world;
+        } finally {loadGate.Release();}
     }
 
     public async Task<GameWorld?> GetWorldByInviteCodeAsync(string inviteCode, CancellationToken ct = default)
@@ -63,56 +69,27 @@ public sealed class EfWorldRepository : IWorldRepository
 
         using var scope = _scopeFactory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
-        WorldRecord? record = null;
+        Guid? foundId = null;
         if (Guid.TryParse(normalized, out var parsedId))
         {
-            record = await db.Worlds.AsNoTracking().FirstOrDefaultAsync(w => w.Id == parsedId, ct);
+            foundId = await db.Worlds.AsNoTracking().Where(w=>w.Id==parsedId).Select(w=>(Guid?)w.Id).FirstOrDefaultAsync(ct);
         }
-        record ??= await db.Worlds.AsNoTracking()
-            .FirstOrDefaultAsync(w => w.InviteCode.ToUpper() == normalized.ToUpper(), ct);
-
-        if (record == null) return null;
-
-        var world = JsonSerializer.Deserialize<GameWorld>(record.SnapshotJson, JsonOptions);
-        if (world != null)
-        {
-            CoachCareerEngine.EnsureMigrated(world);
-            PlayerStatisticsEngine.EnsureMigrated(world);
-            DisciplineEngine.EnsureMigrated(world);
-            ClassicEconomyEngine.EnsureMigrated(world);
-            OperatingEconomyEngine.EnsureScheduledRules(world);
-            MemoryCache[world.Id] = world;
-        }
-        return world;
+        foundId ??= await db.Worlds.AsNoTracking().Where(w=>w.InviteCode.ToUpper()==normalized.ToUpper()).Select(w=>(Guid?)w.Id).FirstOrDefaultAsync(ct);
+        return foundId is Guid id?await GetWorldAsync(id,ct):null;
     }
 
     public async Task<List<GameWorld>> ListWorldsAsync(CancellationToken ct = default)
     {
         using var scope = _scopeFactory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
-        var records = await db.Worlds.AsNoTracking().OrderByDescending(w => w.UpdatedAtUtc).ToListAsync(ct);
+        // The room list needs identities first. Warm worlds must not download huge snapshots again.
+        var ids = await db.Worlds.AsNoTracking().OrderByDescending(w => w.UpdatedAtUtc).Select(w=>w.Id).ToListAsync(ct);
 
-        var result = new List<GameWorld>(records.Count);
-        foreach (var r in records)
+        var result = new List<GameWorld>(ids.Count);
+        foreach (var id in ids)
         {
-            if (MemoryCache.TryGetValue(r.Id, out var mem))
-            {
-                result.Add(mem);
-            }
-            else
-            {
-                var w = JsonSerializer.Deserialize<GameWorld>(r.SnapshotJson, JsonOptions);
-                if (w != null)
-                {
-                    CoachCareerEngine.EnsureMigrated(w);
-                    PlayerStatisticsEngine.EnsureMigrated(w);
-                    DisciplineEngine.EnsureMigrated(w);
-                    ClassicEconomyEngine.EnsureMigrated(w);
-                    OperatingEconomyEngine.EnsureScheduledRules(w);
-                    MemoryCache[w.Id] = w;
-                    result.Add(w);
-                }
-            }
+            var world=await GetWorldAsync(id,ct);
+            if(world!=null)result.Add(world);
         }
         return result;
     }
@@ -140,12 +117,18 @@ public sealed class EfWorldRepository : IWorldRepository
             || world.Fixtures.Any(m => m.PendingPenalties.Count > 0);
 
         if (!isCheckpointState) return;
+        HistoryEngine.Observe(world);
 
         using var scope = _scopeFactory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
 
         string json = JsonSerializer.Serialize(world, JsonOptions);
-        var existing = await db.Worlds.FirstOrDefaultAsync(w => w.Id == world.Id, ct);
+        // Track the actual concurrency token and scalar header without reading SnapshotJson.
+        var existing = await db.Worlds.AsNoTracking().Where(w=>w.Id==world.Id).Select(w=>new WorldRecord {
+            Id=w.Id,Name=w.Name,InviteCode=w.InviteCode,Seed=w.Seed,TotalClubs=w.TotalClubs,
+            SeasonNumber=w.SeasonNumber,RoundNumber=w.RoundNumber,RoundState=w.RoundState,RoundVersion=w.RoundVersion,
+            CurrentMatchMinute=w.CurrentMatchMinute,CreatedAtUtc=w.CreatedAtUtc,UpdatedAtUtc=w.UpdatedAtUtc
+        }).FirstOrDefaultAsync(ct);
         if (existing == null)
         {
             db.Worlds.Add(new WorldRecord
@@ -167,6 +150,7 @@ public sealed class EfWorldRepository : IWorldRepository
         }
         else
         {
+            db.Worlds.Attach(existing);
             existing.Name = world.Name;
             existing.InviteCode = world.InviteCode;
             existing.SeasonNumber = world.SeasonNumber;
@@ -252,6 +236,7 @@ public sealed class InMemoryWorldRepository : IWorldRepository
 
     public Task SaveWorldAsync(GameWorld world, CancellationToken ct = default)
     {
+        if(CoachCareerEngine.IsSafe(world))HistoryEngine.Observe(world);
         world.UpdatedAtUtc = DateTime.UtcNow;
         _worlds[world.Id] = world;
         return Task.CompletedTask;

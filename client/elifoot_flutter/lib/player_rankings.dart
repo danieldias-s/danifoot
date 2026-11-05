@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'api_client.dart';
+import 'history_views.dart';
 
 final _guidPattern = RegExp(
   r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
@@ -1335,6 +1336,7 @@ class _PlayerHistoryDialogState extends State<_PlayerHistoryDialog> {
               ),
               _CoverageWarnings(data['coverageWarnings']),
               PlayerStrengthHistoryPanel(data: data),
+              PlayerCareerHistoryPanels(data: data),
               if (statistics.any((s) => s['hasIncompleteAppearances'] == true))
                 Padding(
                   padding: EdgeInsets.only(top: 4),
@@ -2071,7 +2073,7 @@ class ClassicActionButton extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontFamily: ClassicTheme.of(context).classicPresentation
                     ? 'ClassicCondensed'
-                    : 'Roboto',
+                    : Theme.of(context).textTheme.bodyMedium?.fontFamily,
               ),
             ),
           ),
@@ -2276,7 +2278,7 @@ class ClassicDialog extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontFamily: ClassicTheme.of(context).classicPresentation
                         ? 'ClassicCondensed'
-                        : 'Roboto',
+                        : Theme.of(context).textTheme.bodyMedium?.fontFamily,
                   ),
                 ),
               ),

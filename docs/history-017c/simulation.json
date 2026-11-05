@@ -1,0 +1,33 @@
+{
+  "SeasonsCompleted": 100,
+  "TotalMatchesCompleted": 28700,
+  "RealMinutesSimulated": 2617710,
+  "historyMatches": 28700,
+  "retainedFixtures": 798,
+  "snapshots": [
+    {
+      "seasons": 1,
+      "matches": 287,
+      "clubSeasons": 128,
+      "transfers": 84,
+      "titles": 10,
+      "playerGoals": 0
+    },
+    {
+      "seasons": 10,
+      "matches": 2870,
+      "clubSeasons": 704,
+      "transfers": 804,
+      "titles": 100,
+      "playerGoals": 0
+    },
+    {
+      "seasons": 100,
+      "matches": 28700,
+      "clubSeasons": 6464,
+      "transfers": 7995,
+      "titles": 1000,
+      "playerGoals": 1
+    }
+  ]
+}

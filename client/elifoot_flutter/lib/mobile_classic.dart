@@ -365,6 +365,7 @@ class MobileSquadScreen extends StatelessWidget {
   final ValueChanged<int> onTab;
   final Widget field, filters, coachPanel;
   final Widget? rosterFilter;
+  final VoidCallback? onClubHistory;
   final String? swapPickedId;
   final ValueChanged<Map<String, dynamic>> onSwapPick;
   final ValueChanged<String> onBest;
@@ -392,6 +393,7 @@ class MobileSquadScreen extends StatelessWidget {
     required this.filters,
     required this.coachPanel,
     this.rosterFilter,
+    this.onClubHistory,
     this.swapPickedId,
     required this.onSwapPick,
     required this.onBest,
@@ -627,6 +629,15 @@ class MobileSquadScreen extends StatelessWidget {
         key: const Key('mobile-squad-content'),
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (onClubHistory != null)
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
+                onPressed: onClubHistory,
+                icon: const Icon(Icons.menu_book),
+                label: const Text('HISTÓRIA DO CLUBE'),
+              ),
+            ),
           Container(
             key: const Key('mobile-squad-screen'),
             margin: const EdgeInsets.only(bottom: 8),

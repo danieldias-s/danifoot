@@ -31,6 +31,7 @@ import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
 import 'salary_request_modal.dart';
+import 'history_views.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 import 'lobby_room_status.dart';
@@ -2495,6 +2496,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             ),
             filters: squadFilters,
             rosterFilter: rosterFilter(),
+            onClubHistory: _matchLocked || _myClubId == null
+                ? null
+                : () => _openClubHistory(_myClubId!),
             coachPanel: _buildCoachMainPanel(),
           );
         }
@@ -2600,6 +2604,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               shortcuts(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton.icon(
+                  onPressed: _matchLocked || _myClubId == null
+                      ? null
+                      : () => _openClubHistory(_myClubId!),
+                  icon: const Icon(Icons.menu_book),
+                  label: const Text('HISTÓRIA DO CLUBE'),
+                ),
+              ),
               const SizedBox(height: 7),
               KeyedSubtree(
                 key: const ValueKey('coach-main-panel'),
@@ -2787,7 +2801,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   playerId: (player['id'] ?? player['playerId']).toString(),
                 );
               },
-              child: const Text('HISTÓRICO & ARTILHARIAS'),
+              child: const Text('VER HISTÓRICO'),
             ),
           TextButton(
             onPressed: () => Navigator.pop(ctx),
@@ -3050,6 +3064,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             const SizedBox(height: 10),
             ClassicStandings(
               rows: _standings,
+              onClubSelected: _matchLocked ? null : _openClubHistory,
               clubId: _myClubId,
               title:
                   '${switch (_selectedDivisionTier) {

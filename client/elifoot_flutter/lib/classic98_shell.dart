@@ -4,6 +4,16 @@ part of 'main.dart';
 /// A presentation adapter over the SAME shell state, command methods and models.
 /// Selecting a row has no game-side effect. No API mutation is implemented here.
 extension _Classic98Shell on _ElifootShellScreenState {
+  void _openClubHistory(String id) {
+    if (_matchLocked || _worldId == null) return;
+    showClubHistoryDialog(
+      context: context,
+      api: widget.apiClient,
+      worldId: _worldId!,
+      clubId: id,
+    );
+  }
+
   List<Map<String, dynamic>> get _retroSquad =>
       (_myClubDetail?['squad'] as List? ?? [])
           .whereType<Map>()
@@ -191,7 +201,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
         return [
           ('Jogadores...', nav('squad')),
           ('Finanças...', nav('finances', 3)),
-          ('História — Em breve', null),
+          (
+            'História do clube...',
+            locked || _myClubId == null
+                ? null
+                : () => _openClubHistory(_myClubId!),
+          ),
         ];
       case 'Jogador':
         return [
@@ -204,7 +219,17 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 : () => _announceSquadPlayer(player),
           ),
           ('Contrato...', player == null ? null : nav('contract')),
-          ('Histórico — Em breve', null),
+          (
+            'VER HISTÓRICO',
+            locked || player == null
+                ? null
+                : () => showPlayerHistoryDialog(
+                    context: context,
+                    apiClient: widget.apiClient,
+                    worldId: _worldId!,
+                    playerId: '${player['id']}',
+                  ),
+          ),
           (
             'Procurar jogadores...',
             locked
@@ -531,7 +556,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                             3,
                                           ),
                                           (
-                                            'História — Em breve',
+                                            'História',
                                             Icons.menu_book,
                                             'history',
                                             0,
@@ -543,7 +568,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                     label: entry.$1,
                                     icon: mobile ? null : entry.$2,
                                     onPressed: entry.$3 == 'history'
-                                        ? null
+                                        ? (_myClubId == null || _matchLocked
+                                              ? null
+                                              : () => _openClubHistory(
+                                                  _myClubId!,
+                                                ))
                                         : () => entry.$3 == 'more'
                                               ? _retroMobileMenu(ctx)
                                               : _retroOpen(entry.$3, entry.$4),
@@ -1233,9 +1262,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
         ),
         const SizedBox(height: 10),
         RetroTable(
-          onSelect: mobile
-              ? (i) => _retroStandingDetails(_standings[i] as Map)
-              : null,
+          onSelect: _matchLocked
+              ? null
+              : (i) => _retroStandingDetails(_standings[i] as Map),
           headers: mobile
               ? ['#', 'CLUBE', 'PTS', 'J', 'SG']
               : ['#', 'CLUBE', 'PTS', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'],
@@ -1288,6 +1317,16 @@ extension _Classic98Shell on _ElifootShellScreenState {
         ],
       ),
       actions: [
+        if (row['clubId'] != null)
+          TextButton(
+            onPressed: _matchLocked
+                ? null
+                : () {
+                    Navigator.pop(ctx);
+                    _openClubHistory('${row['clubId']}');
+                  },
+            child: const Text('HISTÓRIA DO CLUBE'),
+          ),
         TextButton(
           onPressed: () => Navigator.pop(ctx),
           child: const Text('FECHAR'),

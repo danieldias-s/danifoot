@@ -276,8 +276,8 @@ public static class PlayerStatisticsEngine
         EnsureMigrated(w);var p=w.Players.FirstOrDefault(p=>p.Id==playerId);if(p==null)return null;
         var total=Totals(w,"general",null).FirstOrDefault(t=>t.Player.Id==playerId)??new(p,0,0,0,0,0,0,false);
         var row=Row(w,total,0,"scorers");
-        return new(row,row,w.PlayerStatistics.Where(s=>s.PlayerId==playerId).OrderByDescending(s=>s.Season).ThenBy(s=>s.CompetitionType).ThenBy(s=>s.ClubId)
-            .Select(s=>new PlayerStatisticsRowDto(s.Season,s.CompetitionType,s.Division,s.ClubId,s.MatchesPlayed,s.GoalsScored,s.GoalsConceded,s.YellowCards,s.RedCards,s.MinutesPlayed,s.HasIncompleteAppearances,s.HasIncompleteGoals,ResolveHistoricalClubName(w,s.ClubId,s.ClubName))).ToList(),
+        return HistoryEngine.EnrichPlayer(w,new(row,row,w.PlayerStatistics.Where(s=>s.PlayerId==playerId).OrderByDescending(s=>s.Season).ThenBy(s=>s.CompetitionType).ThenBy(s=>s.ClubId)
+            .Select(s=>new PlayerStatisticsRowDto(s.Season,s.CompetitionType,s.Division,s.ClubId,s.MatchesPlayed,s.GoalsScored,s.GoalsConceded,s.YellowCards,s.RedCards,s.MinutesPlayed,s.HasIncompleteAppearances,s.HasIncompleteGoals,ResolveHistoricalClubName(w,s.ClubId,s.ClubName)){Assists=s.Assists,HasIncompleteAssists=s.HasIncompleteAssists}).ToList(),
             w.SeasonTopScorerAwards.Where(a=>a.PlayerId==playerId).OrderByDescending(a=>a.Season).Select(AwardDto).ToList(),w.PlayerStatisticsCoverageWarnings.Concat(w.DisciplineCoverageWarnings).Distinct().ToList())
         {
             StrengthHistory = w.PlayerStrengthHistory.Where(e => e.PlayerId == playerId)
@@ -286,7 +286,7 @@ public static class PlayerStatisticsEngine
             StrengthHistoryStartRound = w.PlayerStrengthHistoryStartRound,
             CardHistory = p.CardHistory.ToList(),
             SuspensionHistory = p.SuspensionHistory.ToList()
-        };
+        });
     }
     private static PlayerAwardDto AwardDto(SeasonTopScorerAward a)=>new(a.AwardId,a.PlayerId,a.DisplayName,a.Season,a.TotalGoals,a.TotalMatches,a.ClubId,a.ClubNameAtClose,a.AwardAmount,a.AwardGrantedAt,a.IdempotencyKey);
     public static SeasonTopScorerAwardsDto GetSeasonAwards(GameWorld w,int? season=null)

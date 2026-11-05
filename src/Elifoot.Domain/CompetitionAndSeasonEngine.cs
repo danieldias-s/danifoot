@@ -138,6 +138,7 @@ public static class CompetitionAndSeasonEngine
         EnsureCupFixturesForRound(world,1);
         ClassicForceEvolutionEngine.InitializeSeason(world);
         ClassicForceEvolutionEngine.PrepareRound(world);
+        HistoryEngine.Observe(world, beginningSeason:true);
     }
 
     private static List<List<(Club Home, Club Away)>> GenerateRoundRobin8(List<Club> teams)
@@ -404,6 +405,7 @@ public static class CompetitionAndSeasonEngine
         if (updated && official.Count > 0 && official.All(m => m.IsFinished && (m.CurrentMinute == 0 || m.CareerResultsApplied)))
             ClassicForceEvolutionEngine.ApplyFinishedRound(world, official);
         ClassicEconomyEngine.AfterSportingRound(world,roundMatches);
+        HistoryEngine.Observe(world);
         if (!updated) return;
         CoachCareerEngine.AwardCompletedLeagues(world);
         CoachCareerEngine.RecoverUnemployed(world);
@@ -471,6 +473,7 @@ public static class CompetitionAndSeasonEngine
     /// </summary>
     public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world)
     {
+        HistoryEngine.Observe(world);
         OperatingEconomyEngine.EnsureScheduledRules(world);
         CoachCareerEngine.EnsureMigrated(world);
         var scorerAwards = PlayerStatisticsEngine.AwardSeason(world, world.SeasonNumber);
@@ -627,6 +630,7 @@ public static class CompetitionAndSeasonEngine
         // Advance to next season
         if (ClassicForceEvolutionEngine.IsActive(world))
             ClassicForceEvolutionEngine.AdvanceToDate(world, world.ClassicForce.GameDate.AddDays(21));
+        HistoryEngine.CloseSeason(world,historyEntry,new[]{div1,div2,div3,div4});
         world.SeasonNumber++;
         if(world.Economy.Rules.SeasonContractsEnabled)
             foreach(var player in world.Players.Where(player=>player.ClubId.HasValue))

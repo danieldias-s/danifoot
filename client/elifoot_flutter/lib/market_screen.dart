@@ -6,6 +6,7 @@ import 'classic_layout.dart';
 import 'visual_components.dart';
 import 'classic98_widgets.dart';
 import 'player_scouting.dart';
+import 'player_rankings.dart' show showPlayerHistoryDialog;
 
 String marketPosition(dynamic position) => position is num
     ? const ['G', 'D', 'M', 'A'][position.toInt().clamp(0, 3)]
@@ -318,6 +319,19 @@ class _MarketScreenState extends State<MarketScreen> {
           'Salário: ${formatAuctionMoney(p['salaryPerRound'] as num)} / rodada',
         ),
       Text('Vendedor: ${p['sellerClubName'] ?? "Atleta livre"}'),
+      if (p['playerId'] != null)
+        TextButton.icon(
+          onPressed: !_safe
+              ? null
+              : () => showPlayerHistoryDialog(
+                  context: context,
+                  apiClient: widget.api,
+                  worldId: widget.worldId,
+                  playerId: '${p['playerId']}',
+                ),
+          icon: const Icon(Icons.history),
+          label: const Text('VER HISTÓRICO'),
+        ),
     ],
   );
 

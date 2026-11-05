@@ -7,6 +7,17 @@ import 'account_http_client.dart';
 import 'account_transport.dart';
 
 class ElifootApiClient {
+  Future<Map<String, dynamic>> getClubHistory(
+    String world,
+    String club, {
+    int? season,
+  }) async => _decodeResponse(
+    await _http.get(
+      Uri.parse(
+        '$baseUrl/api/worlds/$world/clubs/$club/history',
+      ).replace(queryParameters: season == null ? null : {'season': '$season'}),
+    ),
+  );
   String baseUrl;
   String? _lobbyCoachId, _lobbyDeviceId;
   final AccountHttpClient _http;

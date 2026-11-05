@@ -276,6 +276,7 @@ class ClassicBottomNavigation extends StatelessWidget {
 }
 
 class ClassicStandings extends StatefulWidget {
+  final ValueChanged<String>? onClubSelected;
   final List<dynamic> rows;
   final String title;
   final String? clubId;
@@ -284,6 +285,7 @@ class ClassicStandings extends StatefulWidget {
     required this.rows,
     required this.title,
     this.clubId,
+    this.onClubSelected,
   });
   @override
   State<ClassicStandings> createState() => _ClassicStandingsState();
@@ -417,11 +419,16 @@ class _ClassicStandingsState extends State<ClassicStandings> {
                                 number('${r['position'] ?? i + 1}'),
                                 Expanded(
                                   flex: 4,
-                                  child: Text(
-                                    '${r['clubName']}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: mobile ? 14 : 17,
+                                  child: InkWell(
+                                    onTap: widget.onClubSelected == null
+                                        ? null
+                                        : () => widget.onClubSelected!(id),
+                                    child: Text(
+                                      '${r['clubName']}',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: mobile ? 14 : 17,
+                                      ),
                                     ),
                                   ),
                                 ),
