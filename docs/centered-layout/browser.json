@@ -1,0 +1,424 @@
+{
+  "base": "17e9770",
+  "browser": "Chrome / Playwright",
+  "viewportMeasurements": [
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1920,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 280,
+      "right": 280,
+      "gameHeight": 1000,
+      "documentWidth": 1920
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1600,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 120,
+      "right": 120,
+      "gameHeight": 1000,
+      "documentWidth": 1600
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 40,
+      "right": 40,
+      "gameHeight": 1000,
+      "documentWidth": 1440
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1360,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1360
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1280,
+      "innerHeight": 1000,
+      "gameWidth": 1280,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1280
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 1024,
+      "innerHeight": 1000,
+      "gameWidth": 1024,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1024
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 768,
+      "innerHeight": 1000,
+      "gameWidth": 768,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 768
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "plantel",
+      "innerWidth": 360,
+      "innerHeight": 1000,
+      "gameWidth": 360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 360
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1920,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 280,
+      "right": 280,
+      "gameHeight": 1000,
+      "documentWidth": 1920
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1600,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 120,
+      "right": 120,
+      "gameHeight": 1000,
+      "documentWidth": 1600
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1440,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 40,
+      "right": 40,
+      "gameHeight": 1000,
+      "documentWidth": 1440
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1360,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1360
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1280,
+      "innerHeight": 1000,
+      "gameWidth": 1280,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1280
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 1024,
+      "innerHeight": 1000,
+      "gameWidth": 1024,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1024
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 768,
+      "innerHeight": 1000,
+      "gameWidth": 768,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 768
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "plantel",
+      "innerWidth": 360,
+      "innerHeight": 1000,
+      "gameWidth": 360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 360
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "mercado",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "mercado",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "lobby",
+      "innerWidth": 1920,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 280,
+      "right": 280,
+      "gameHeight": 1000,
+      "documentWidth": 1920
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "lobby",
+      "innerWidth": 1360,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1360
+    },
+    {
+      "mode": "CURRENT",
+      "screen": "lobby",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "lobby",
+      "innerWidth": 1920,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 280,
+      "right": 280,
+      "gameHeight": 1000,
+      "documentWidth": 1920
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "lobby",
+      "innerWidth": 1360,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1360
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "lobby",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "partida clássica",
+      "innerWidth": 1920,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 280,
+      "right": 280,
+      "gameHeight": 1000,
+      "documentWidth": 1920
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "partida clássica",
+      "innerWidth": 1360,
+      "innerHeight": 1000,
+      "gameWidth": 1360,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 1360
+    },
+    {
+      "mode": "CLASSIC_98",
+      "screen": "partida clássica",
+      "innerWidth": 390,
+      "innerHeight": 1000,
+      "gameWidth": 390,
+      "left": 0,
+      "right": 0,
+      "gameHeight": 1000,
+      "documentWidth": 390
+    }
+  ],
+  "scrollChecks": {
+    "CURRENT": {
+      "lastPlayer": "Gustavo Freitas",
+      "scrollToLastPlayer": true
+    },
+    "CLASSIC_98": {
+      "lastPlayer": "Sérgio Barbosa",
+      "scrollToLastPlayer": true,
+      "footer": {
+        "x": 1397.3333740234375,
+        "y": 928,
+        "width": 218.65625,
+        "height": 48
+      }
+    }
+  },
+  "modalChecks": [
+    {
+      "size": {
+        "width": 1920,
+        "height": 1000
+      },
+      "panel": {
+        "x": 600,
+        "y": 273,
+        "width": 720,
+        "height": 480
+      },
+      "reserveBounds": {
+        "x": 966,
+        "y": 654,
+        "width": 341,
+        "height": 31
+      },
+      "continueBounds": {
+        "x": 839.0239868164062,
+        "y": 703,
+        "width": 95.890625,
+        "height": 28
+      }
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 500
+      },
+      "panel": {
+        "x": 600,
+        "y": 38,
+        "width": 720,
+        "height": 450
+      },
+      "reserveBounds": {
+        "x": 966,
+        "y": 389,
+        "width": 341,
+        "height": 31
+      },
+      "continueBounds": {
+        "x": 839.0239868164062,
+        "y": 438,
+        "width": 95.890625,
+        "height": 28
+      }
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "panel": {
+        "x": 12,
+        "y": 38,
+        "width": 336,
+        "height": 590
+      },
+      "reserveBounds": {
+        "x": 25,
+        "y": 494,
+        "width": 310,
+        "height": 31
+      },
+      "continueBounds": {
+        "x": 24,
+        "y": 588,
+        "width": 95.890625,
+        "height": 28
+      }
+    }
+  ],
+  "liveMenusHidden": true,
+  "livePresentation": "fixtures from QA API with temporary client-only live and halftime responses",
+  "renderErrors": [],
+  "pageErrors": [],
+  "classicMatchScrollToFourthDivision": true,
+  "mobileMarketLastAction": {
+    "footerTop": 934,
+    "actionBottom": 888.7000122070312
+  }
+}

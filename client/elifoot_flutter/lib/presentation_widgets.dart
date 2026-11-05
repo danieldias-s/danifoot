@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api_client.dart';
+import 'game_viewport.dart';
 import 'presentation_version.dart';
 
 class PresentationScope extends InheritedNotifier<PresentationController> {
@@ -55,20 +56,14 @@ class PresentationHost extends StatelessWidget {
   final Widget child;
   const PresentationHost({super.key, required this.child});
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          key: const Key('shared-game-navigation'),
-          child: Semantics(
-            container: true,
-            explicitChildNodes: true,
-            child: child,
-          ),
-        ),
-      ],
-    );
-  }
+  Widget build(BuildContext context) => GameViewport(
+    child: Semantics(
+      key: const Key('shared-game-navigation'),
+      container: true,
+      explicitChildNodes: true,
+      child: child,
+    ),
+  );
 }
 
 class PresentationVersionSelector extends StatelessWidget {

@@ -60,10 +60,8 @@ class ClassicMatchActionDialog extends StatelessWidget {
     backgroundColor: _paper,
     shape: const RoundedRectangleBorder(),
     child: ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: maxWidth,
-        maxHeight: MediaQuery.sizeOf(context).height * .90,
-      ),
+      // Dialog accounts for window insets and the keyboard.
+      constraints: BoxConstraints(maxWidth: maxWidth),
       child: DefaultTextStyle(
         style: TextStyle(
           fontFamily: _dialogFont(context),
@@ -90,6 +88,7 @@ class ClassicMatchActionDialog extends StatelessWidget {
             ),
             Flexible(
               child: SingleChildScrollView(
+                primary: false,
                 child: Padding(padding: const EdgeInsets.all(12), child: child),
               ),
             ),
