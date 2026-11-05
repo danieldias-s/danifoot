@@ -4,7 +4,7 @@ namespace Elifoot.Domain;
 public static partial class ClassicEconomyEngine
 {
     public static bool IsSeasonRenewed(GameWorld w, Player p)
-        => w.Economy.Rules.SeasonContractsEnabled && p.ClubId.HasValue && p.RenewedForSeason==w.SeasonNumber;
+        => p.ClubId.HasValue && p.RenewedForSeason==w.SeasonNumber;
 
     public static int SeasonContractRounds(GameWorld w)
         => Math.Max(1,w.TotalRoundsInSeason-w.RoundNumber+(w.RoundState==RoundState.RESULTS?0:1));

@@ -63,6 +63,7 @@ public static partial class ClassicEconomyEngine
     public static void GenerateSalaryRequests(GameWorld w,IReadOnlyList<MatchFixture> matches)
     {
         EnsureMigrated(w);
+        if(matches.Count==0||matches.Any(m=>!m.IsFinished)||!matches.Any(Played))return;
         foreach(var e in w.PlayerStrengthHistory.Skip(w.Economy.StrengthHistoryCursor))
         {
             if(e.StrengthAfter<=e.StrengthBefore)continue;
@@ -76,10 +77,11 @@ public static partial class ClassicEconomyEngine
         foreach(var c in w.Clubs.Where(c=>clubsPlaying.Contains(c.Id)).OrderBy(c=>c.Id))
         {
             string roundKey=$"{c.Id}:S{w.SeasonNumber}:R{w.RoundNumber}";
+            if(!w.Economy.SalaryRequestCheckedRounds.Add(roundKey))continue;
             if(w.Economy.SalaryRequestRounds.Contains(roundKey))continue;
             if(clubsWithPending.Contains(c.Id))continue;
-            var candidates=w.Players.Where(p=>p.ClubId==c.Id&&(!p.NegotiatedContractProtected||p.ContractRoundsRemaining<=0)
-                    &&!AuctionReserved(w,p.Id)&&w.Economy.SalaryEligibility.TryGetValue(p.Id,out var e)&&e.ClubId==c.Id&&e.FromSeason<=w.SeasonNumber)
+            var candidates=w.Players.Where(p=>p.ClubId==c.Id&&p.ContractRoundsRemaining<=0&&!IsSeasonRenewed(w,p)
+                    &&!p.IsListedForTransfer&&!AuctionReserved(w,p.Id)&&w.Economy.SalaryEligibility.TryGetValue(p.Id,out var e)&&e.ClubId==c.Id&&e.FromSeason<=w.SeasonNumber)
                 .Select(p=>new {Player=p,Requested=RequestedSalary(w,c,p),Trigger=w.Economy.SalaryEligibility[p.Id]})
                 .Where(x=>x.Requested>x.Player.SalaryPerRound)
                 .OrderByDescending(x=>(x.Requested-x.Player.SalaryPerRound)/Math.Max(1,x.Player.SalaryPerRound))
@@ -90,7 +92,7 @@ public static partial class ClassicEconomyEngine
             w.Economy.SalaryRequests.Add(new(){Id=CoachCareerEngine.StableId($"salary:{w.Id}:{roundKey}"),WorldId=w.Id,ClubId=c.Id,PlayerId=player.Id,
                 Season=w.SeasonNumber,Round=w.RoundNumber,CurrentSalary=player.SalaryPerRound,RequestedSalary=chosen.Requested,
                 ReferenceSalary=MarketAndEconomyEngine.CalculateFairSalaryPerRound(player),RenewalMatches=w.Economy.Rules.RenewalMatches,
-                Reason=chosen.Trigger.Reason,TriggerKey=chosen.Trigger.Key,Mandatory=!SquadValidator.CanRemovePlayerFromSquad(squad,player.Id).CanRemove});
+                CreatedAtUtc=DateTime.UtcNow,Reason=chosen.Trigger.Reason,TriggerKey=chosen.Trigger.Key,Mandatory=!SquadValidator.CanRemovePlayerFromSquad(squad,player.Id).CanRemove});
             w.Economy.SalaryRequestRounds.Add(roundKey);w.Economy.SalaryEligibility.Remove(player.Id);
         }
     }
@@ -116,24 +118,29 @@ public static partial class ClassicEconomyEngine
         }
         var p=w.Players.FirstOrDefault(p=>p.Id==request.PlayerId&&p.ClubId==c.Id);
         if(p==null)return(false,"O jogador já não pertence a este clube.");
+        if(request.Season!=0&&request.Season!=w.SeasonNumber)return(false,"Pedido pertence a outra temporada.");
+        if(p.ContractRoundsRemaining>0||IsSeasonRenewed(w,p))return(false,"Jogador já possui contrato vigente.");
         if(AuctionReserved(w,p.Id))return(false,"Jogador já está em leilão.");
         var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
         bool mandatory=!SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove;
         request.Mandatory=mandatory;
-        if(accept||mandatory)
+        if(accept||mandatory&&actor=="AI")
         {
             decimal previous=p.SalaryPerRound;p.SalaryPerRound=request.RequestedSalary;
-            p.ContractRoundsRemaining=Math.Max(p.ContractRoundsRemaining,request.RenewalMatches);
             if(w.Economy.Rules.SeasonContractsEnabled)ProtectSeasonContract(w,p);
+            else p.RenewedForSeason=w.SeasonNumber;
             request.Status=SalaryRequestStatus.ACCEPTED;request.Resolution=mandatory&&!accept?"MANDATORY_MINIMUM_SQUAD":actor+"_ACCEPTED";
+            request.ResolvedAtUtc=DateTime.UtcNow;request.ResolvedBy=actor;request.DecisionVersion++;
             RecordContract(w,p,previous,request.Resolution,$"salary:{request.Id}:accepted");
             string? message=mandatory&&!accept?"RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.":null;
             Remember(w,c,key,"SALARY_DECISION",payload,request.Id,message);return(true,message);
         }
+        if(mandatory)return(false,"Elenco mínimo: recomponha o elenco antes de recusar este pedido.");
+        var auction=NewSpecialAuction(w,p,c,AuctionReason.SalaryRenewalRefused,$"salary:{request.Id}:refused");
         request.Status=SalaryRequestStatus.REFUSED;request.Resolution=actor+"_REFUSED";
+        request.ResolvedAtUtc=DateTime.UtcNow;request.ResolvedBy=actor;request.DecisionVersion++;
         c.PreferredStarterIds.Remove(p.Id);c.PreferredBenchIds.Remove(p.Id);
         p.ClubId=null;p.ContractRoundsRemaining=0;p.NegotiatedContractProtected=false;p.IsListedForTransfer=false;p.AskingPrice=null;
-        var auction=NewSpecialAuction(w,p,c,AuctionReason.SalaryRenewalRefused,$"salary:{request.Id}:refused");
         request.AuctionId=auction.Id;Remember(w,c,key,"SALARY_DECISION",payload,request.Id);return(true,null);
     }
     public static void AfterSportingRound(GameWorld w,IReadOnlyList<MatchFixture> matches)

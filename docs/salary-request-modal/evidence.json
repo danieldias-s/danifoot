@@ -1,0 +1,13 @@
+{
+  "worldId": "f760e230-e506-4785-987b-4630bfd26b10",
+  "clubId": "8fc90ff8-0ff9-754a-9194-2e9a056ead61",
+  "playerId": "765362da-7e8c-d749-a864-34b8a25f860b",
+  "requestId": "09e4f0f4-ae65-4e43-8d09-c089ba0ffb1f",
+  "status": "REFUSED",
+  "auctionId": "1c5e9a50-1d43-50bd-9782-6a12ae790485",
+  "decisionVersion": 1,
+  "accountRecorded": true,
+  "restartedApiBeforeModal": true,
+  "refreshedBothPresentations": true,
+  "browserErrors": []
+}

@@ -111,7 +111,7 @@ void main() {
     },
   );
   testWidgets(
-    '012D authoritative debt and salary proposals remain usable at 320 and 1280 pixels',
+    'Debt view remains usable at 320 and 1280 pixels without salary decisions',
     (tester) async {
       addTearDown(() => tester.binding.setSurfaceSize(null));
       await tester.binding.setSurfaceSize(const Size(1280, 900));
@@ -144,18 +144,8 @@ void main() {
           findsOneWidget,
         );
         expect(find.textContaining('R\$ 525.000'), findsWidgets);
-        expect(
-          find.text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
-          findsOneWidget,
-        );
+        expect(find.text('PEDIDO DE AUMENTO SALARIAL'), findsNothing);
       }
-      final refuse = find.widgetWithText(OutlinedButton, 'RECUSAR');
-      expect(tester.widget<OutlinedButton>(refuse).onPressed, isNull);
-      await tester.ensureVisible(find.text('ACEITAR'));
-      await tester.tap(find.text('ACEITAR'));
-      await tester.pumpAndSettle();
-      expect(api.accepted, isTrue);
-      expect(find.text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'), findsNothing);
       await tester.ensureVisible(find.text('QUITAR'));
       await tester.tap(find.text('QUITAR'));
       await tester.pumpAndSettle();

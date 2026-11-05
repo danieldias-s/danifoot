@@ -92,9 +92,13 @@ public sealed partial class ClubAndMarketApplicationService
     public Task<(bool Success,string? Error)> RepayBankLoanAsync(Guid worldId,Guid coachId,Guid clubId,Guid loanId,string key,CancellationToken ct=default,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"REPAY",loanId.ToString(),key,expectedRoundVersion,e=>(false,e),async k=>{
             var w=(await _repository.GetWorldAsync(worldId,ct))!;return ClassicEconomyEngine.RepayLoan(w,w.Clubs.First(c=>c.Id==clubId),loanId,k);},ct,clubId);
-    public Task<(bool Success,string? Error)> RespondSalaryAsync(Guid worldId,Guid coachId,Guid clubId,Guid requestId,bool accept,string key,CancellationToken ct=default,long? expectedRoundVersion=null)
+    public Task<(bool Success,string? Error)> RespondSalaryAsync(Guid worldId,Guid coachId,Guid clubId,Guid requestId,bool accept,string key,CancellationToken ct=default,long? expectedRoundVersion=null,Guid? accountId=null)
         =>Finance(worldId,coachId,"SALARY",$"{requestId}:{accept}",key,expectedRoundVersion,e=>(false,e),async k=>{
-            var w=(await _repository.GetWorldAsync(worldId,ct))!;return ClassicEconomyEngine.RespondSalary(w,w.Clubs.First(c=>c.Id==clubId),requestId,accept,k);},ct,clubId);
+            var w=(await _repository.GetWorldAsync(worldId,ct))!;
+            var result=ClassicEconomyEngine.RespondSalary(w,w.Clubs.First(c=>c.Id==clubId),requestId,accept,k);
+            var request=w.Economy.SalaryRequests.FirstOrDefault(r=>r.Id==requestId);
+            if(result.Success&&request!=null)request.ResolvedByAccountId??=accountId;
+            return result;},ct,clubId);
     public Task<(bool Success,string? Error)> StadiumCommandAsync(Guid worldId,Guid coachId,Guid clubId,bool expand,int seats,string key,CancellationToken ct=default,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"STADIUM",$"{expand}:{seats}",key,expectedRoundVersion,e=>(false,e),async k=>{
             var w=(await _repository.GetWorldAsync(worldId,ct))!;var c=w.Clubs.First(c=>c.Id==clubId);

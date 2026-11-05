@@ -31,7 +31,7 @@ public class ClassicEconomy012DTests
     private static MatchFixture Match(GameWorld w,Club c,int round=1)=>new(){GameWorldId=w.Id,SeasonNumber=w.SeasonNumber,RoundNumber=round,
         HomeClubId=c.Id,AwayClubId=w.Clubs.First(x=>x.Id!=c.Id).Id,IsFinished=true,CurrentMinute=90,CompetitionType=CompetitionType.League};
     private static SalaryRaiseRequest Request(GameWorld w,Club c,Player p)
-    {var r=new SalaryRaiseRequest{Id=Guid.NewGuid(),ClubId=c.Id,PlayerId=p.Id,CurrentSalary=p.SalaryPerRound,RequestedSalary=p.SalaryPerRound+100,RenewalMatches=20};w.Economy.SalaryRequests.Add(r);return r;}
+    {p.ContractRoundsRemaining=0;var r=new SalaryRaiseRequest{Id=Guid.NewGuid(),ClubId=c.Id,PlayerId=p.Id,CurrentSalary=p.SalaryPerRound,RequestedSalary=p.SalaryPerRound+100,RenewalMatches=20};w.Economy.SalaryRequests.Add(r);return r;}
     [Fact] public void LegacyTermCannotEraseResidualDebt()
     {
         var(w,c)=World();var l=new BankLoan{ClubId=c.Id,PrincipalAmount=500000,RemainingBalance=500000,RemainingRounds=20,InstallmentPerRound=28750};w.BankLoans.Add(l);
@@ -83,8 +83,8 @@ public class ClassicEconomy012DTests
     [Fact] public void RequestsArePersistentLimitedToOneAndDoNotOverrideNegotiatedTerms()
     {
         var(w,c)=World();var players=w.Players.Where(p=>p.ClubId==c.Id).Take(3).ToList();
-        foreach(var p in players){p.Strength=20;p.SalaryPerRound=100;w.PlayerStrengthHistory.Add(new(Guid.NewGuid().ToString(),p.Id,1,1,c.Id,c.Name,c.DivisionTier,19,20,"RESERVE_PROGRESS",null,"test","test"));}
-        var protectedPlayer=players[0];ClassicEconomyEngine.RecordContract(w,protectedPlayer,100,"NEGOTIATED","protect");
+        foreach(var p in players){p.Strength=20;p.SalaryPerRound=100;p.ContractRoundsRemaining=0;p.IsListedForTransfer=false;w.PlayerStrengthHistory.Add(new(Guid.NewGuid().ToString(),p.Id,1,1,c.Id,c.Name,c.DivisionTier,19,20,"RESERVE_PROGRESS",null,"test","test"));}
+        var protectedPlayer=players[0];protectedPlayer.ContractRoundsRemaining=20;ClassicEconomyEngine.RecordContract(w,protectedPlayer,100,"NEGOTIATED","protect");
         var m=Match(w,c);ClassicEconomyEngine.GenerateSalaryRequests(w,[m]);ClassicEconomyEngine.GenerateSalaryRequests(w,[m]);
         var r=Assert.Single(w.Economy.SalaryRequests);Assert.NotEqual(protectedPlayer.Id,r.PlayerId);Assert.Equal(SalaryRequestStatus.PENDING,r.Status);
         Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,true,"accept").Success);Assert.Equal(SalaryRequestStatus.ACCEPTED,r.Status);
@@ -93,7 +93,7 @@ public class ClassicEconomy012DTests
     }
     [Fact] public void PromotionCanTriggerRequestButOnlyInTheNewSeason()
     {
-        var(w,c)=World();foreach(var p in w.Players.Where(p=>p.ClubId==c.Id)){p.SalaryPerRound=10;p.NegotiatedContractProtected=false;}
+        var(w,c)=World();foreach(var p in w.Players.Where(p=>p.ClubId==c.Id)){p.SalaryPerRound=10;p.NegotiatedContractProtected=false;p.ContractRoundsRemaining=0;p.IsListedForTransfer=false;}
         c.DivisionTier=DivisionTier.TerceiraDivisao;ClassicEconomyEngine.RegisterPromotions(w,[c.Id]);
         ClassicEconomyEngine.GenerateSalaryRequests(w,[Match(w,c)]);Assert.Empty(w.Economy.SalaryRequests);
         w.SeasonNumber++;ClassicEconomyEngine.GenerateSalaryRequests(w,[Match(w,c)]);Assert.Equal("DIVISION_PROMOTION",Assert.Single(w.Economy.SalaryRequests).Reason);
@@ -104,14 +104,14 @@ public class ClassicEconomy012DTests
         Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"refuse").Success);Assert.Null(p.ClubId);
         var a=Assert.Single(w.Auctions);Assert.Equal(0,a.MinimumBid);Assert.Equal(AuctionReason.SalaryRenewalRefused,a.Reason);
         var buyer=w.Clubs.First(x=>x.Id!=c.Id);Assert.True(ClassicEconomyEngine.PlaceBid(w,buyer,a.Id,0,"bid").Success);
-        MarketAndEconomyEngine.SettleAuction(w,a);Assert.Equal(buyer.Id,p.ClubId);Assert.Equal(oldCash,c.CashBalance);Assert.Equal("SOLD",a.ClosureReason);
+        w.RoundNumber=a.ExpiresAtRound;w.SeasonNumber=a.ExpiresAtSeason!.Value;w.RoundState=RoundState.RESULTS;w.SettledFinancialRounds.Add($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}");MarketAndEconomyEngine.SettleAuction(w,a);Assert.Equal(buyer.Id,p.ClubId);Assert.Equal(oldCash,c.CashBalance);Assert.Equal("SOLD",a.ClosureReason);
         Assert.DoesNotContain(w.Transactions,t=>t.Category==FinancialTransactionCategory.AuctionSale&&t.PlayerId==p.Id);
     }
     [Fact] public void MinimumSquadMakesRefusalAMandatoryRenewalEvenWithoutCash()
     {
         var(w,c)=World();var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();var keep=squad.Where(p=>p.Position==PlayerPosition.G).Take(1).Concat(squad.Where(p=>p.Position!=PlayerPosition.G).Take(10)).ToList();
         foreach(var p in squad.Except(keep))p.ClubId=null;c.CashBalance=-100;var player=keep[0];var r=Request(w,c,player);
-        var result=ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"refuse");Assert.True(result.Success);Assert.Contains("OBRIGATÓRIA",result.Error);
+        var result=ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"refuse",actor:"AI");Assert.True(result.Success);Assert.Contains("OBRIGATÓRIA",result.Error);
         Assert.Equal(c.Id,player.ClubId);Assert.Empty(w.Auctions);Assert.Equal(-100,c.CashBalance);Assert.Equal(SalaryRequestStatus.ACCEPTED,r.Status);
     }
     [Fact] public void DebtAuctionPrioritizesForceThenSalaryThenStableIdAndReconcilesActualSale()

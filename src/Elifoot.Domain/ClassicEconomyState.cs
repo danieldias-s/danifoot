@@ -18,6 +18,7 @@ public class ClassicEconomyState
     public List<FinancialCrisisRecord> CrisisHistory { get; set; } = new();
     public List<SpecialAuctionResult> AuctionHistory { get; set; } = new();
     public HashSet<string> SalaryRequestRounds { get; set; } = new();
+    public HashSet<string> SalaryRequestCheckedRounds { get; set; } = new();
     public HashSet<string> AiFinancialRounds { get; set; } = new();
     public int StrengthHistoryCursor { get; set; }
     public bool SeasonalDebtRulesInitialized { get; set; }
@@ -66,6 +67,11 @@ public class SalaryRaiseRequest
     public string? Resolution { get; set; }
     public Guid? AuctionId { get; set; }
     public bool Mandatory { get; set; }
+    public DateTime? CreatedAtUtc { get; set; }
+    public DateTime? ResolvedAtUtc { get; set; }
+    public string? ResolvedBy { get; set; }
+    public Guid? ResolvedByAccountId { get; set; }
+    public int DecisionVersion { get; set; }
 }
 public record SalaryEligibility(string Key,string Reason,int StrengthBefore,int StrengthAfter,Guid ClubId,int FromSeason=0);
 public record PlayerContractRecord(string Key,Guid PlayerId,Guid? ClubId,int Season,int Round,

@@ -1,0 +1,10 @@
+00:00 +0: loading D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart
+00:00 +0: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: pending request opens at team home only, classic=true
+00:04 +1: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: pending request opens at team home only, classic=true
+00:05 +2: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/economy_012d_widget_test.dart: Debt view remains usable at 320 and 1280 pixels without salary decisions
+00:07 +3: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: pending request opens at team home only, classic=false
+00:07 +4: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: salary modal true at 390.0 keeps pending and sends one decision
+00:08 +5: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: salary modal true at 1366.0 keeps pending and sends one decision
+00:08 +6: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: salary modal false at 390.0 keeps pending and sends one decision
+00:08 +7: D:/elifoot_98/.worktrees/account-login-lobby/client/elifoot_flutter/test/salary_request_modal_test.dart: salary modal false at 1366.0 keeps pending and sends one decision
+00:08 +8: All tests passed!

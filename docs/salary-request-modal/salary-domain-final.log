@@ -1,0 +1,8 @@
+D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\Elifoot.Domain.Tests.csproj : warning NU1900: Ocorreu um erro ao obter os dados de vulnerabilidade do pacote: Não é possível carregar o índice de serviço para a origem https://api.nuget.org/v3/index.json.
+  Elifoot.Contracts -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Contracts\bin\Debug\net10.0\Elifoot.Contracts.dll
+  Elifoot.Domain -> D:\elifoot_98\.worktrees\account-login-lobby\src\Elifoot.Domain\bin\Debug\net10.0\Elifoot.Domain.dll
+  Elifoot.Domain.Tests -> D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll
+Execução de teste para D:\elifoot_98\.worktrees\account-login-lobby\tests\Elifoot.Domain.Tests\bin\Debug\net10.0\Elifoot.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+1 arquivos de teste no total corresponderam ao padrão especificado.
+
+Aprovado!  – Com falha:     0, Aprovado:   500, Ignorado:     0, Total:   500, Duração: 49 s - Elifoot.Domain.Tests.dll (net10.0)

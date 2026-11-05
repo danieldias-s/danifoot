@@ -74,7 +74,7 @@ public class ClassicEconomy012DIntegrationTests
         club.CashBalance=100000;
         var bidResponses=await Task.WhenAll(bids.Select((a,i)=>client.PostAsync($"/api/worlds/{w.Id}/market/auction/{a.Id}/bid?coachId={coaches[0].Id}&bidAmount=60000&idempotencyKey=bid{i}",null)));
         Assert.Single(bidResponses,r=>r.IsSuccessStatusCode);Assert.Equal(60000,ClassicEconomyEngine.ReservedAuctionCash(w,club.Id));
-        var player=w.Players.First(p=>p.ClubId==club.Id);var request=new SalaryRaiseRequest{Id=Guid.NewGuid(),ClubId=club.Id,PlayerId=player.Id,
+        var player=w.Players.First(p=>p.ClubId==club.Id);player.ContractRoundsRemaining=0;var request=new SalaryRaiseRequest{Id=Guid.NewGuid(),ClubId=club.Id,PlayerId=player.Id,
             CurrentSalary=player.SalaryPerRound,RequestedSalary=player.SalaryPerRound+10,RenewalMatches=20};w.Economy.SalaryRequests.Add(request);
         var decisions=await Task.WhenAll(Enumerable.Range(0,humans).Select(_=>client.PostAsJsonAsync($"/api/worlds/{w.Id}/clubs/{club.Id}/salary-requests/{request.Id}/respond",
             new SalaryDecisionCommandDto(coaches[0].Id,true,"salary-repeat",w.RoundVersion))));
@@ -97,7 +97,7 @@ public class ClassicEconomy012DIntegrationTests
         var service=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         Assert.True((await service.TakeBankLoanAsync(w.Id,h.Id,500000,0,idempotencyKey:"persist")).Success);
         var legacy=new BankLoan{ClubId=c.Id,RemainingBalance=8654,RemainingRounds=0,InterestRatePerRound=.015m,InstallmentPerRound=28750,LegacyOpeningBalance=8654};w.BankLoans.Add(legacy);
-        var p=w.Players.First(p=>p.ClubId==c.Id);decimal salary=p.SalaryPerRound;
+        var p=w.Players.First(p=>p.ClubId==c.Id);p.ContractRoundsRemaining=0;decimal salary=p.SalaryPerRound;
         var request=new SalaryRaiseRequest{Id=Guid.NewGuid(),ClubId=c.Id,PlayerId=p.Id,CurrentSalary=salary,RequestedSalary=salary+100,RenewalMatches=20};w.Economy.SalaryRequests.Add(request);
         await repo.SaveWorldAsync(w);decimal cash=c.CashBalance;EfWorldRepository.ClearCacheForTesting();
         var restored=(await repo.GetWorldAsync(w.Id))!;Assert.Equal(2,restored.BankLoans.Count);Assert.False(restored.BankLoans.Single(l=>l.Id==legacy.Id).IsPaidOff);

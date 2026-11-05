@@ -30,6 +30,7 @@ import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
+import 'salary_request_modal.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
 import 'lobby_room_status.dart';
@@ -994,6 +995,53 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final game = _buildGame(context);
+    final pending = (_financesData?['salaryRequests'] as List? ?? [])
+        .where((r) => r['status'] == 'PENDING' && r['clubId'] == _myClubId)
+        .firstOrNull;
+    final safeHome =
+        _worldId != null &&
+        _myClubDetail != null &&
+        !_matchLocked &&
+        !_showMatchView &&
+        !_appearanceOpen &&
+        !_mobileTacticsView &&
+        _activeTabIndex == 0 &&
+        (_classicPage == null || _classicPage == 'squad') &&
+        _snapshot?['roundState'] == 'PREPARING' &&
+        !(_snapshot?['hasInitialLobby'] == true &&
+            _snapshot?['lobbyStarted'] != true);
+    if (!safeHome || pending == null) return game;
+    final player = (_myClubDetail!['squad'] as List? ?? [])
+        .where((p) => p['id'] == pending['playerId'])
+        .firstOrNull;
+    if (player == null) return game;
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        game,
+        SalaryRequestModal(
+          key: ValueKey(pending['id']),
+          request: Map<String, dynamic>.from(pending),
+          player: Map<String, dynamic>.from(player),
+          club: _myClubDetail!,
+          classic: widget.presentation?.version == PresentationVersion.classic,
+          onDecision: (accept) async {
+            await widget.apiClient.respondSalaryRequest(
+              _worldId!,
+              _myClubId!,
+              _coachId!,
+              pending['id'],
+              accept,
+            );
+            await _refreshClubAndSecondaryData();
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGame(BuildContext context) {
     if (_restoringSession) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
@@ -3280,10 +3328,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
     final loans = _financesData?['loans'] as List<dynamic>? ?? [];
     final credit = _financesData?['credit'] as Map<String, dynamic>?;
-    final salaryRequests =
-        (_financesData?['salaryRequests'] as List<dynamic>? ?? [])
-            .where((r) => r['status'] == 'PENDING')
-            .toList();
     String loanInterest(dynamic loan) {
       if (loan['mode'] == 'ClassicFixed') {
         return '${formatClassicMoney(loan['interestPerMatch'] ?? 0)} por partida';
@@ -3423,60 +3467,6 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                   ),
                 ),
               ),
-          if (_classicPage != 'bank')
-            ...salaryRequests.map(
-              (r) => Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'PEDIDO SALARIAL — ${r['reason'] == "DIVISION_PROMOTION" ? "ACESSO DE DIVISÃO" : "EVOLUÇÃO DE FORÇA"}',
-                      ),
-                      Text(
-                        'Jogador: ${(_myClubDetail!['squad'] as List<dynamic>).where((p) => p['id'] == r['playerId']).map((p) => p['displayName']).firstOrNull ?? r['playerId']}',
-                      ),
-                      Text(
-                        '${formatClassicMoney(r['currentSalary'])} → ${formatClassicMoney(r['requestedSalary'])} por partida; ${r['renewalMatches']} partidas de contrato',
-                      ),
-                      Text(
-                        'Acréscimo por partida: ${formatClassicMoney(r['differencePerMatch'] ?? 0)} | Compromisso salarial: ${formatClassicMoney(r['totalSalaryCommitment'] ?? 0)}',
-                      ),
-                      if (r['mandatory'] == true)
-                        const Text('RENOVAÇÃO OBRIGATÓRIA: ELENCO MÍNIMO.'),
-                      Wrap(
-                        spacing: 8,
-                        children: [
-                          for (final accept in [true, false])
-                            OutlinedButton(
-                              onPressed:
-                                  _commandBusy ||
-                                      !accept && r['mandatory'] == true
-                                  ? null
-                                  : () => _runUiCommand(() async {
-                                      final message = await widget.apiClient
-                                          .respondSalaryRequest(
-                                            _worldId!,
-                                            _myClubId!,
-                                            _coachId!,
-                                            r['id'] as String,
-                                            accept,
-                                          );
-                                      await _refreshClubAndSecondaryData();
-                                      if (message != null) {
-                                        setState(() => _statusBanner = message);
-                                      }
-                                    }),
-                              child: Text(accept ? 'ACEITAR' : 'RECUSAR'),
-                            ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

@@ -775,9 +775,10 @@ app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/loans/{loanId:guid}/
     return ok?Results.Ok(new{success=true}):Results.BadRequest(new{error=err});
 });
 app.MapPost("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/salary-requests/{requestId:guid}/respond", async (
-    Guid worldId,Guid clubId,Guid requestId,SalaryDecisionCommandDto command,ClubAndMarketApplicationService service,CancellationToken ct)=>
+    Guid worldId,Guid clubId,Guid requestId,SalaryDecisionCommandDto command,ClubAndMarketApplicationService service,HttpContext http,IConfiguration configuration,CancellationToken ct)=>
 {
-    var(ok,err)=await service.RespondSalaryAsync(worldId,command.CoachId,clubId,requestId,command.Accept,command.IdempotencyKey,ct,command.ExpectedRoundVersion);
+    var(ok,err)=await service.RespondSalaryAsync(worldId,command.CoachId,clubId,requestId,command.Accept,command.IdempotencyKey,ct,command.ExpectedRoundVersion,
+        AccountLogin.Enabled(configuration)?AccountLogin.AccountId(http):null);
     return ok?Results.Ok(new{success=true,message=err}):Results.BadRequest(new{error=err});
 });
 

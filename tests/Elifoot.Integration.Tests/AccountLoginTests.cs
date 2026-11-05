@@ -17,6 +17,29 @@ namespace Elifoot.Integration.Tests;
 
 public sealed class AccountLoginTests
 {
+    [Fact]
+    public async Task SalaryDecisionIsOwnedPersistentAndConcurrentTabsProduceOnlyOneAuction()
+    {
+        await using var fixture=new Fixture();using var first=fixture.Server.CreateClient();using var second=fixture.Server.CreateClient();
+        var coach=(await Register(first,"salary-owner","Owner")).GetProperty("coachId").GetGuid();
+        await Register(second,"salary-other","Other");
+        var created=await Send(first,"/api/worlds",new CreateWorldRequest("Salary QA"));created.EnsureSuccessStatusCode();
+        var id=(await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
+        (await Send(first,$"/api/worlds/{id}/join")).EnsureSuccessStatusCode();
+        var repo=fixture.Server.Services.GetRequiredService<IWorldRepository>();var w=(await repo.GetWorldAsync(id))!;
+        var c=w.Clubs.First(c=>c.HumanCoachId==coach);var p=w.Players.Last(p=>p.ClubId==c.Id);p.ContractRoundsRemaining=0;
+        w.Auctions.Clear();var r=new Elifoot.Domain.SalaryRaiseRequest{Id=Guid.NewGuid(),WorldId=id,ClubId=c.Id,PlayerId=p.Id,Season=w.SeasonNumber,Round=w.RoundNumber,CurrentSalary=p.SalaryPerRound,RequestedSalary=p.SalaryPerRound+10};
+        w.Economy.SalaryRequests.Add(r);await repo.SaveWorldAsync(w);
+        var url=$"/api/worlds/{id}/clubs/{c.Id}/salary-requests/{r.Id}/respond";
+        Assert.Equal(HttpStatusCode.Forbidden,(await Send(second,url,new SalaryDecisionCommandDto(coach,false,"unauthorized"))).StatusCode);
+        var responses=await Task.WhenAll(Enumerable.Range(0,2).Select(i=>Send(first,url,new SalaryDecisionCommandDto(coach,false,"tab"+i))));
+        Assert.All(responses,x=>Assert.True(x.IsSuccessStatusCode));Assert.Single(w.Auctions,a=>a.Id==r.AuctionId);
+        Assert.NotNull(r.ResolvedByAccountId);Assert.Equal(1,r.DecisionVersion);Assert.Null(p.ClubId);
+        await fixture.Restart();EfWorldRepository.ClearCacheForTesting();
+        var restored=(await fixture.Server.Services.GetRequiredService<IWorldRepository>().GetWorldAsync(id))!;
+        var saved=Assert.Single(restored.Economy.SalaryRequests);Assert.Equal(SalaryRequestStatus.REFUSED,saved.Status);
+        Assert.Single(restored.Auctions,a=>a.Id==saved.AuctionId);Assert.InRange(restored.Auctions.Single(a=>a.Id==saved.AuctionId).DurationRounds!.Value,1,3);
+    }
     private const string Password = "Teste-local-98!";
 
     [Fact]

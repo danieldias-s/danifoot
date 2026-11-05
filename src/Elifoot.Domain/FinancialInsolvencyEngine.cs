@@ -18,6 +18,16 @@ public static partial class ClassicEconomyEngine
             auction.DurationRounds=1;auction.ExpiresAtSeason=w.SeasonNumber+(target-1)/total;
             auction.ExpiresAtRound=(target-1)%total+1;
         }
+        if(reason==AuctionReason.SalaryRenewalRefused)
+        {
+            // Same permitted durations as voluntary auctions; independent of sporting RNG.
+            var rng=DeterministicRng.FromContext(w.Seed,w.SeasonNumber,w.RoundNumber,
+                BitConverter.ToInt32(id.ToByteArray(),0),subStep:0x53414C);
+            int duration=rng.NextInt(1,4),total=Math.Max(1,w.TotalRoundsInSeason);
+            int target=w.RoundNumber+duration-1+(w.RoundState==RoundState.RESULTS?1:0);
+            auction.DurationRounds=duration;auction.ExpiresAtSeason=w.SeasonNumber+(target-1)/total;
+            auction.ExpiresAtRound=(target-1)%total+1;
+        }
         w.Auctions.Add(auction);return auction;
     }
     public static void EvaluateInsolvency(GameWorld w)
