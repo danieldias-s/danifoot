@@ -174,6 +174,13 @@ Future<void> _next(WidgetTester tester) async {
   expect(tester.takeException(), isNull);
 }
 
+Future<void> _openAdvancedSources(WidgetTester tester) async {
+  final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
+  await tester.ensureVisible(advanced);
+  await tester.tap(advanced);
+  await tester.pumpAndSettle();
+}
+
 Finder _districtControl(String key) => find.byKey(ValueKey(key));
 
 Finder _districtRow(int index) => _districtControl('district-test-$index');
@@ -768,6 +775,7 @@ void main() {
     await _next(tester);
     await _next(tester);
     expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+    await _openAdvancedSources(tester);
     final provider = find.byKey(const Key('allow-provider-reported-016a'));
     expect(tester.widget<CreatorConsent>(provider).onChanged, isNull);
     await tester.ensureVisible(find.text('SOMENTE DADOS REAIS COMPLETOS'));
@@ -781,6 +789,9 @@ void main() {
     await tester.tap(find.text('VOLTAR'));
     await tester.pumpAndSettle();
     await _next(tester);
+    if (find.text('MUNDO LIVRE').evaluate().isEmpty) {
+      await _openAdvancedSources(tester);
+    }
     expect(find.text('MUNDO LIVRE'), findsOneWidget);
     await _next(tester);
     final payload =
@@ -820,6 +831,7 @@ void main() {
     await _next(tester);
     await _next(tester);
     expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+    await _openAdvancedSources(tester);
     expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     final request = fixture.requests.singleWhere(
       (request) => request.url.path.endsWith('/catalog'),
@@ -855,6 +867,7 @@ void main() {
     await tester.ensureVisible(adjust);
     await tester.tap(adjust);
     await tester.pumpAndSettle();
+    await _openAdvancedSources(tester);
     final consent = find.byKey(const Key('fictional-world-016b'));
     await tester.ensureVisible(consent);
     await tester.tap(consent);

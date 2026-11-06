@@ -64,6 +64,12 @@ Future<void> mode(WidgetTester tester, String text) async {
         w is DropdownButtonFormField<String> &&
         w.key.toString().contains('Dados do mundo:'),
   );
+  if (finder.evaluate().isEmpty) {
+    final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
+    await tester.ensureVisible(advanced);
+    await tester.tap(advanced);
+    await tester.pumpAndSettle();
+  }
   await tester.ensureVisible(finder);
   await tester.tap(finder);
   await tester.pumpAndSettle();
@@ -163,6 +169,7 @@ void main() {
     (tester) async {
       final calls = <Map<String, dynamic>>[];
       await open(tester, calls, reject: true);
+      await mode(tester, 'SOMENTE DADOS REAIS COMPLETOS');
       expect(find.text('SOMENTE DADOS REAIS COMPLETOS'), findsOneWidget);
       final boxes = tester
           .widgetList<CheckboxListTile>(find.byType(CheckboxListTile))
@@ -238,6 +245,65 @@ void main() {
       );
     },
   );
+  for (final (width, fictionalRoster) in [(1366.0, false), (390.0, true)]) {
+    testWidgets('Etapa 5 preserva clubes ao escolher elenco a $width px', (
+      tester,
+    ) async {
+      tester.view.physicalSize = Size(width, 900);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final calls = <Map<String, dynamic>>[];
+      await open(tester, calls);
+      expect(find.text('USAR ELENCO REAL'), findsOneWidget);
+      expect(find.text('USAR ELENCO FICTÍCIO'), findsOneWidget);
+      final real = find.byKey(const ValueKey('source-real'));
+      final fictional = find.byKey(const ValueKey('source-generated'));
+      Finder selected(Finder card) => find.descendant(
+        of: card,
+        matching: find.byIcon(Icons.radio_button_checked),
+      );
+      expect(selected(real), findsOneWidget);
+      expect(selected(fictional), findsNothing);
+      final realRect = tester.getRect(real);
+      final fictionalRect = tester.getRect(fictional);
+      if (width == 1366) {
+        expect(realRect.top, fictionalRect.top);
+        expect(realRect.right, lessThan(fictionalRect.left));
+      } else {
+        expect(realRect.left, fictionalRect.left);
+        expect(realRect.bottom, lessThan(fictionalRect.top));
+      }
+      expect(
+        calls.any((call) => call['path'].toString().endsWith('/preview')),
+        isFalse,
+      );
+      if (fictionalRoster) {
+        await tester.ensureVisible(fictional);
+        await tester.tap(fictional);
+        await tester.pumpAndSettle();
+        expect(selected(fictional), findsOneWidget);
+        await tester.tap(find.text('VOLTAR'));
+        await tester.pumpAndSettle();
+        await next(tester);
+        expect(selected(fictional), findsOneWidget);
+      }
+      await next(tester);
+      final preview = calls.last;
+      expect(preview['path'], endsWith('/preview'));
+      expect(preview['dataMode'], 'REAL_CLUBS_SIMULATED');
+      expect(preview['allowFictionalPlayers'], isTrue);
+      expect(preview['allowFictionalTeams'], isFalse);
+      expect(preview['generateAllRosterPlayers'] == true, fictionalRoster);
+      expect(preview['countries'], unorderedEquals(countries));
+      expect(preview['assignments'], [
+        for (var i = 0; i < 32; i++)
+          {'clubKey': 'real-test-$i', 'division': i ~/ 8 + 1},
+      ]);
+      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  }
   for (final width in [390.0, 1366.0]) {
     testWidgets(
       '013C real clubs and simulated squads require consent and preview labels at $width',

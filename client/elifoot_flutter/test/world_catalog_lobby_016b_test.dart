@@ -380,6 +380,10 @@ void main() {
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
       expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+      final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
+      await t.ensureVisible(advanced);
+      await t.tap(advanced);
+      await t.pumpAndSettle();
       final consent = find.byKey(const Key('fictional-world-016b'));
       await t.ensureVisible(consent);
       await t.pumpAndSettle();

@@ -12,6 +12,7 @@ public static class WorldCreatorEngine
     public static WorldCreatorPreview Preview(WorldCreatorRequest request, CatalogSelection selection)
     {
         if (request.Assignments == null || request.Countries == null || request.Season == null) throw new ArgumentException("Configuração incompleta.");
+        ValidateRosterGeneration(request);
         var errors = new List<string>();
         var warnings = selection.Warnings.ToList();
         if (!Enum.IsDefined(request.Gender) || !Enum.IsDefined(request.Mode) || !Enum.IsDefined(request.DistrictMode))
@@ -159,6 +160,13 @@ public static class WorldCreatorEngine
     private static string SnapshotHash(WorldCreatorRequest request, List<WorldPreviewClub> result, List<CatalogReference> references) =>
         Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, References = references })));
 
+    private static void ValidateRosterGeneration(WorldCreatorRequest request)
+    {
+        if (request.GenerateAllRosterPlayers && (!request.AllowFictionalPlayers ||
+            request.DataMode is not (WorldDataMode.REAL_CLUBS_SIMULATED or WorldDataMode.FREE_WORLD)))
+            throw new ArgumentException("Gerar todos os atletas requer autorização explícita e um modo que permita elencos simulados.");
+    }
+
     private static List<WorldPreviewClub> ApplyRankedSquadStrengths(IEnumerable<WorldPreviewClub> assigned,
         List<EligibleCatalogClub> ranked, int seed)
     {
@@ -172,6 +180,7 @@ public static class WorldCreatorEngine
 
     public static GameWorld Create(WorldCreatorRequest request, WorldCreatorPreview preview)
     {
+        ValidateRosterGeneration(request);
         if (preview.DataMode != request.DataMode) throw new ArgumentException("Modo de dados difere da prévia persistida.");
         if (preview.Errors.Count > 0 || preview.PendingSlots != 0 || preview.Clubs.Count != 128)
             throw new ArgumentException("Resolva as vagas e os elencos antes de confirmar.");
@@ -190,6 +199,8 @@ public static class WorldCreatorEngine
                     throw new ArgumentException("Clube fictício sem autorização.");
                 foreach(var player in entry.Club.Players)
                 {
+                    if (request.GenerateAllRosterPlayers && player.PlayerOrigin != WorldPlayerOrigin.FICTIONAL_GENERATED)
+                        throw new ArgumentException("A prévia de elencos totalmente simulados contém um atleta não gerado.");
                     if(player.PlayerOrigin==WorldPlayerOrigin.FICTIONAL_GENERATED)
                     {if(request.DataMode==WorldDataMode.REAL_COMPLETE || !request.AllowFictionalPlayers)throw new ArgumentException("Atleta fictício sem autorização.");}
                     else if(!(player.PlayerOrigin==WorldPlayerOrigin.REAL_VERIFIED_CURRENT && PlayableWorldPolicy.Current(player,entry.Club,preview.DataAsOf!.Value)) &&

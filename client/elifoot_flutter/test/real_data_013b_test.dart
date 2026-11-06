@@ -9,9 +9,9 @@ import 'package:elifoot_flutter/catalog_provenance.dart';
 
 void main() {
   testWidgets(
-    'New configuration clears previously saved consent to generated athletes',
+    'Nova configuração limpa permissões avançadas do preset anterior',
     (tester) async {
-      bool? consent, historical, unverified;
+      Map<String, dynamic>? preview;
       final api = ElifootApiClient(
         httpClient: MockClient((request) async {
           dynamic result;
@@ -62,10 +62,7 @@ void main() {
               'warnings': [],
             };
           } else if (request.url.path.endsWith('/preview')) {
-            final body = jsonDecode(request.body) as Map;
-            consent = body['allowFictionalPlayers'] as bool;
-            historical = body['includeHistoricalClubs'] as bool;
-            unverified = body['includeUnverifiedClubs'] as bool;
+            preview = jsonDecode(request.body) as Map<String, dynamic>;
             result = {
               'draftId': 'empty-test-preview',
               'clubs': [],
@@ -93,15 +90,23 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('CRIAR NOVA CONFIGURAÇÃO'));
       await tester.pumpAndSettle();
-      for (var step = 0; step < 5; step++) {
+      for (var step = 0; step < 4; step++) {
         final next = find.text('CONTINUAR');
         await tester.ensureVisible(next);
         await tester.tap(next);
         await tester.pumpAndSettle();
       }
-      expect(consent, false);
-      expect(historical, false);
-      expect(unverified, false);
+      expect(find.text('USAR ELENCO REAL'), findsOneWidget);
+      expect(preview, isNull);
+      final next = find.text('CONTINUAR');
+      await tester.ensureVisible(next);
+      await tester.tap(next);
+      await tester.pumpAndSettle();
+      expect(preview?['allowFictionalPlayers'], isTrue);
+      expect(preview?['allowFictionalTeams'], isFalse);
+      expect(preview?['generateAllRosterPlayers'] == true, isFalse);
+      expect(preview?['includeHistoricalClubs'], isFalse);
+      expect(preview?['includeUnverifiedClubs'], isFalse);
       expect(tester.takeException(), isNull);
       api.disconnectRealtime();
     },

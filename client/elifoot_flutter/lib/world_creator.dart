@@ -10,6 +10,7 @@ import 'catalog_provenance.dart';
 import 'creator_divisions.dart';
 import 'creator_district_list.dart';
 import 'creator_districts.dart';
+import 'creator_roster_sources.dart';
 import 'creator_visual.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
@@ -40,6 +41,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _search = '',
       _error = '';
   bool _fictionalOnly = false;
+  bool _rosterPolicyConfigured = false, _generateAllRosterPlayers = false;
   int? _sourcesReturnStep;
   Map<String, dynamic>? _assembly;
   final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
@@ -234,6 +236,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'preserveRankedSquadStrengths': true,
     'allowFictionalTeams': _fictional,
     'allowFictionalPlayers': _fictionalPlayers,
+    if (_generateAllRosterPlayers) 'generateAllRosterPlayers': true,
     'allowProviderReportedPlayers':
         _providerReported && _dataMode != 'REAL_COMPLETE',
     'includeHistoricalClubs': _includeHistorical,
@@ -284,6 +287,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       }
       _fictional = p['allowFictionalTeams'] == true;
       _fictionalPlayers = p['allowFictionalPlayers'] == true;
+      _rosterPolicyConfigured = true;
+      _generateAllRosterPlayers = p['generateAllRosterPlayers'] == true;
       _providerReported = p['allowProviderReportedPlayers'] == true;
       _includeHistorical = p['includeHistoricalClubs'] == true;
       _includeUnverified = p['includeUnverifiedClubs'] == true;
@@ -297,7 +302,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     final data = Map<String, dynamic>.from(
       await _call(
             'catalog',
-            body: {..._request(), 'dataMode': null, 'useSavedData': true},
+            body: {
+              ..._request(),
+              'dataMode': null,
+              'useSavedData': true,
+              'generateAllRosterPlayers': false,
+            },
           )
           as Map,
     );
@@ -331,6 +341,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _fictionalPlayers = true;
       _fictional = false;
       _fictionalOnly = false;
+      _rosterPolicyConfigured = true;
+      _generateAllRosterPlayers = false;
       _preview = null;
     });
     if (mounted) await _makePreview();
@@ -666,6 +678,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 _fictionalPlayers = false;
                 _fictionalOnly = false;
                 _providerReported = false;
+                _rosterPolicyConfigured = false;
+                _generateAllRosterPlayers = false;
                 _includeHistorical = false;
                 _includeUnverified = false;
               }
@@ -882,10 +896,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         description:
             'Vínculo reportado não é verificação independente. A origem e a data ficam no snapshot. Em SOMENTE DADOS REAIS COMPLETOS, apenas vínculos verificados são aceitos.',
         value: _providerReported && _dataMode != 'REAL_COMPLETE',
-        onChanged: _busy || _dataMode == 'REAL_COMPLETE'
+        onChanged:
+            _busy || _dataMode == 'REAL_COMPLETE' || _generateAllRosterPlayers
             ? null
             : (v) => setState(() {
                 _providerReported = v!;
+                _rosterPolicyConfigured = true;
                 _preview = null;
               }),
       ),
@@ -900,7 +916,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             ? null
             : (value) => setState(() {
                 _fictionalPlayers = value!;
+                _rosterPolicyConfigured = true;
                 if (!_fictionalPlayers) {
+                  _generateAllRosterPlayers = false;
                   _fictional = false;
                   _fictionalOnly = false;
                 }
@@ -915,6 +933,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             ? null
             : (value) => setState(() {
                 _fictional = value!;
+                _rosterPolicyConfigured = true;
                 if (value) _fictionalPlayers = true;
                 if (!value) _fictionalOnly = false;
                 _preview = null;
@@ -948,6 +967,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         Text(
           _fictionalOnly
               ? 'Mundo totalmente fictício autorizado.'
+              : _generateAllRosterPlayers
+              ? 'Elencos totalmente fictícios autorizados.'
               : _fictional
               ? 'Complementos autorizados: clubes e atletas fictícios.'
               : _fictionalPlayers
@@ -1139,6 +1160,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 _fictionalOnly = false;
                 _fictional = false;
                 _fictionalPlayers = false;
+                _rosterPolicyConfigured = false;
+                _generateAllRosterPlayers = false;
               }),
       ),
     );
@@ -1263,7 +1286,26 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     if (mounted) await _run(_loadCountries);
   }
 
-  Widget _sourcesPanel() => Column(
+  void _chooseRosterOrigin(bool generated) => setState(() {
+    _rosterPolicyConfigured = true;
+    _generateAllRosterPlayers = generated;
+    if (_fictionalOnly) _fictional = false;
+    _fictionalOnly = false;
+    if (_dataMode != 'FREE_WORLD') _dataMode = 'REAL_CLUBS_SIMULATED';
+    _fictionalPlayers = true;
+    if (generated) _providerReported = false;
+    _preview = null;
+  });
+
+  Widget _sourcesPanel() => CreatorRosterSources(
+    generatedOnly: _generateAllRosterPlayers,
+    completeMissing: !_rosterPolicyConfigured || _fictionalPlayers,
+    fictionalWorld: _fictionalOnly,
+    onChooseGenerated: _busy ? null : _chooseRosterOrigin,
+    advanced: _advancedSourcesPanel(),
+  );
+
+  Widget _advancedSourcesPanel() => Column(
     crossAxisAlignment: CrossAxisAlignment.stretch,
     children: [
       _choice(
@@ -1276,6 +1318,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         ],
         (value) {
           _dataMode = value;
+          _rosterPolicyConfigured = true;
+          _generateAllRosterPlayers = false;
           if (value != 'FREE_WORLD') {
             _fictionalOnly = false;
             _fictional = false;
@@ -1349,6 +1393,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   _fictionalOnly = value;
                   _fictional = value;
                   _fictionalPlayers = value;
+                  _rosterPolicyConfigured = value;
+                  _generateAllRosterPlayers = false;
                   if (value) _dataMode = 'FREE_WORLD';
                   _preview = null;
                 }),
@@ -1363,6 +1409,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           onChanged: _busy ? null : (value) => setState(() => _saved = value!),
         ),
       ExpansionTile(
+        key: const PageStorageKey('roster-catalog-sources'),
         title: const Text('Fontes e avisos do catálogo'),
         children: [
           for (final warning in _warnings)
@@ -1408,6 +1455,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                       _fictional = false;
                       _fictionalPlayers = false;
                       _fictionalOnly = false;
+                      _rosterPolicyConfigured = false;
+                      _generateAllRosterPlayers = false;
                       _includeHistorical = false;
                       _includeUnverified = false;
                       _providerReported = false;
@@ -1564,6 +1613,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _returnToSetup(3);
         return;
       }
+      if (_assembly == null && !_rosterPolicyConfigured) {
+        _chooseRosterOrigin(false);
+      }
       await _makePreview();
     }
     if (mounted) {
@@ -1607,6 +1659,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     busy: _busy,
     error: _error,
     divisionSummary: _divisionSummary,
+    forceStadium: _step == 4 && _assembly == null,
     stageDescription: _step == 3 && _assembly == null
         ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
         : null,

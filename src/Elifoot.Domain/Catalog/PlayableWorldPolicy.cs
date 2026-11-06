@@ -52,7 +52,9 @@ public static class PlayableWorldPolicy
                 (Fictional(c) && request.AllowFictionalTeams || c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL && request.IncludeHistoricalClubs ||
                  c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_UNVERIFIED && request.IncludeUnverifiedClubs)).ToList();
         var prepared = candidates.Select(c => {
-            var current = CurrentPlayers(c, asOf, request.AllowProviderReportedPlayers && request.DataMode!=WorldDataMode.REAL_COMPLETE);
+            List<CatalogAthlete> current = request.GenerateAllRosterPlayers
+                ? []
+                : CurrentPlayers(c, asOf, request.AllowProviderReportedPlayers && request.DataMode != WorldDataMode.REAL_COMPLETE);
             var reference = (c.ReferencePlayers ?? []).Where(p=>p.IdentityOrigin==CatalogDataOrigin.Real).Concat(c.Players.Where(p => p.IdentityOrigin == CatalogDataOrigin.Real && !Current(p,c,asOf) && !(request.AllowProviderReportedPlayers && ProviderReported(p,c,asOf))))
                 .DistinctBy(p => p.CanonicalPlayerId ?? $"{p.Source}:{p.PlayerExternalId}")
                 .Select(p => p with { PlayerOrigin = WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE }).ToList();

@@ -82,6 +82,7 @@ class CreatorFrame extends StatelessWidget {
   final String error;
   final ({int clubs, int divisions, int capacity})? divisionSummary;
   final String? stageDescription;
+  final bool forceStadium;
   final String nextLabel;
   final VoidCallback? back, next;
   const CreatorFrame({
@@ -96,6 +97,7 @@ class CreatorFrame extends StatelessWidget {
     this.next,
     this.divisionSummary,
     this.stageDescription,
+    this.forceStadium = false,
     this.nextLabel = 'CONTINUAR',
   });
 
@@ -220,7 +222,8 @@ class CreatorFrame extends StatelessWidget {
         final mobile = constraints.maxWidth < 1024;
         final summary = divisionSummary;
         final divisionStage = summary != null;
-        final stadiumStage = divisionStage || stageDescription != null;
+        final stadiumStage =
+            divisionStage || stageDescription != null || forceStadium;
         final frameInk = stadiumStage
             ? readableInk(theme.primary, Colors.white)
             : theme.textPrimary;

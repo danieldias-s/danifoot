@@ -83,6 +83,59 @@ public sealed class PlayableWorld013CTests
         var c=WorldCreatorEngine.Preview(request with {DataMode=WorldDataMode.FREE_WORLD,AllowFictionalTeams=true},Selection(FootballGender.Male,2));
         Assert.NotEmpty(c.Errors);Assert.Equal(2,c.Clubs.Count);Assert.Empty(c.Clubs.SelectMany(c=>c.Club.Players));
     }
+
+    [Theory]
+    [InlineData(WorldDataMode.REAL_CLUBS_SIMULATED)]
+    [InlineData(WorldDataMode.FREE_WORLD)]
+    public void GenerateAllRosterPlayersPreservesClubPlacementAndUsesOnlyGeneratedPlayers(WorldDataMode mode)
+    {
+        var selection = Selection(FootballGender.Female, players: 11);
+        var request = Request(FootballGender.Female, mode, players: true) with
+        {
+            UseWorldCatalogRules = true,
+            PreserveRankedSquadStrengths = true,
+            Mode = WorldAssemblyMode.Custom,
+            DistrictMode = DistrictFillMode.Manual,
+            FillRemainingDivisions = false,
+            Assignments = selection.Clubs.AsEnumerable().Reverse().Select((club, index) =>
+                new ClubAssignment(club.Key, index < 32 ? index / 8 + 1 : 5)).ToList(),
+        };
+        var hybrid = WorldCreatorEngine.Preview(request, selection);
+        Assert.Empty(hybrid.Errors);
+        Assert.True(hybrid.DataSummary!.RealCurrentPlayers > 0);
+
+        var generatedRequest = request with { GenerateAllRosterPlayers = true };
+        var preview = WorldCreatorEngine.Preview(generatedRequest, selection);
+        Assert.Empty(preview.Errors);
+        Assert.Equal(request.Assignments.Select(a => (a.ClubKey, a.Division)),
+            preview.Clubs.Select(c => (c.Club.Key, c.Division)));
+        Assert.Equal(0, preview.DataSummary!.RealCurrentPlayers);
+        Assert.All(preview.Clubs, club =>
+        {
+            Assert.Equal(club.Club.InitialProfile!.TargetInitialSquadSize, club.Club.Players.Count);
+            Assert.All(club.Club.Players, player => Assert.Equal(WorldPlayerOrigin.FICTIONAL_GENERATED, player.PlayerOrigin));
+        });
+
+        var world = WorldCreatorEngine.Create(generatedRequest, preview);
+        Assert.All(world.Players, player => Assert.Equal(WorldPlayerOrigin.FICTIONAL_GENERATED, player.CatalogIdentity!.Origin));
+        Assert.Throws<ArgumentException>(() => WorldCreatorEngine.Create(generatedRequest, hybrid));
+    }
+
+    [Fact]
+    public void GenerateAllRosterPlayersRequiresConsentAndACompatibleMode()
+    {
+        var selection = Selection(FootballGender.Male);
+        var legacy = Request(FootballGender.Male, WorldDataMode.REAL_CLUBS_SIMULATED, players: true);
+        var legacyJson = JsonSerializer.Serialize(legacy);
+        Assert.DoesNotContain(nameof(WorldCreatorRequest.GenerateAllRosterPlayers), legacyJson);
+        Assert.False(JsonSerializer.Deserialize<WorldCreatorRequest>(legacyJson)!.GenerateAllRosterPlayers);
+
+        var request = legacy with { GenerateAllRosterPlayers = true };
+        Assert.Throws<ArgumentException>(() => WorldCreatorEngine.Preview(request with { AllowFictionalPlayers = false }, selection));
+        Assert.Throws<ArgumentException>(() => WorldCreatorEngine.Preview(request with { DataMode = WorldDataMode.REAL_COMPLETE }, selection));
+        Assert.Throws<ArgumentException>(() => WorldCreatorEngine.Preview(request with { DataMode = null }, selection));
+    }
+
     [Theory][InlineData(FootballGender.Male)][InlineData(FootballGender.Female)]
     public void OneCountryFreeWorldNeedsConsentAndNeverDuplicatesIdentities(FootballGender gender)
     {

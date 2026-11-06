@@ -200,9 +200,14 @@ void main() {
         expect(find.textContaining('AUTORIZO completar'), findsNothing);
         await next();
         expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+        final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
+        await tester.ensureVisible(advanced);
+        await tester.tap(advanced);
+        await tester.pumpAndSettle();
         expect(find.textContaining('AUTORIZO completar'), findsOneWidget);
         final sources = find.text('Fontes e avisos do catálogo');
         await tester.ensureVisible(sources);
+        await tester.pumpAndSettle();
         await tester.tap(sources);
         await tester.pumpAndSettle();
         expect(find.textContaining('FIXTURES'), findsOneWidget);

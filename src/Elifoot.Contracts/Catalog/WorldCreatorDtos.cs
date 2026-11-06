@@ -52,7 +52,8 @@ public record WorldCreatorRequest(string Name, FootballGender Gender, string Sea
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
     int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null, bool AllowProviderReportedPlayers = false, bool UseWorldCatalogRules = false, bool FictionalOnly = false, int EliteFullSquadRankCutoff = 20, bool RequireHostStart = false, string GameModeId = "CLASSIC_SYNC",
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool PreserveRankedSquadStrengths = false);
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool PreserveRankedSquadStrengths = false,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool GenerateAllRosterPlayers = false);
 public record InitialSquadReference017B(int Position, int Strength, int Minimum, int Maximum);
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club, InitialSquadReference017B? InitialSquadReference = null);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
