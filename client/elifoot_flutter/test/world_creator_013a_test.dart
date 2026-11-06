@@ -108,6 +108,8 @@ void main() {
               expect(body['countries'], unorderedEquals(countries));
               expect(body['maxHumans'], maxHumans);
               expect(body['allowFictionalTeams'], isFalse);
+              expect(body['allowFictionalPlayers'], isTrue);
+              expect(body['generateAllRosterPlayers'], isTrue);
               response = {
                 'draftId': 'draft013a',
                 'errors': [],
@@ -200,21 +202,21 @@ void main() {
         expect(find.textContaining('AUTORIZO completar'), findsNothing);
         await next();
         expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
-        final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
-        await tester.ensureVisible(advanced);
-        await tester.tap(advanced);
+        expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
+        final generated = find.byKey(const ValueKey('source-generated'));
+        await tester.ensureVisible(generated);
+        await tester.tap(generated);
         await tester.pumpAndSettle();
-        expect(find.textContaining('AUTORIZO completar'), findsOneWidget);
-        final sources = find.text('Fontes e avisos do catálogo');
-        await tester.ensureVisible(sources);
-        await tester.pumpAndSettle();
-        await tester.tap(sources);
-        await tester.pumpAndSettle();
-        expect(find.textContaining('FIXTURES'), findsOneWidget);
         await next();
         expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
         expect(find.text('128/128 clubes • 0 vagas pendentes'), findsOneWidget);
         expect(find.text('DISTRITAIS • 96/96'), findsOneWidget);
+        final warnings = find.text('Avisos e pendências da prévia');
+        await tester.ensureVisible(warnings);
+        await tester.tap(warnings);
+        await tester.pumpAndSettle();
+        expect(find.textContaining('FIXTURES'), findsOneWidget);
+        await tester.ensureVisible(find.text('CONTINUAR'));
         if (const bool.fromEnvironment('CAPTURE_013A')) {
           final boundary = tester.renderObject<RenderRepaintBoundary>(
             find.byKey(boundaryKey),

@@ -102,11 +102,12 @@ void main() {
       await tester.ensureVisible(next);
       await tester.tap(next);
       await tester.pumpAndSettle();
-      expect(preview?['allowFictionalPlayers'], isTrue);
+      expect(preview?['dataMode'], 'REAL_COMPLETE');
+      expect(preview?['allowFictionalPlayers'], isFalse);
       expect(preview?['allowFictionalTeams'], isFalse);
       expect(preview?['generateAllRosterPlayers'] == true, isFalse);
-      expect(preview?['includeHistoricalClubs'], isFalse);
-      expect(preview?['includeUnverifiedClubs'], isFalse);
+      expect(preview?['includeHistoricalClubs'], isNot(true));
+      expect(preview?['includeUnverifiedClubs'], isNot(true));
       expect(tester.takeException(), isNull);
       api.disconnectRealtime();
     },

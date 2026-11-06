@@ -616,65 +616,6 @@ class CreatorField extends StatelessWidget {
   }
 }
 
-class CreatorConsent extends StatelessWidget {
-  final String title;
-  final String? description;
-  final IconData icon;
-  final bool value;
-  final ValueChanged<bool?>? onChanged;
-  const CreatorConsent({
-    super.key,
-    required this.title,
-    this.description,
-    required this.icon,
-    required this.value,
-    required this.onChanged,
-  });
-  @override
-  Widget build(BuildContext context) {
-    final theme = ClassicTheme.of(context);
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: theme.border.withValues(alpha: .6)),
-        ),
-      ),
-      child: CheckboxListTile(
-        dense: true,
-        visualDensity: const VisualDensity(vertical: -2),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        secondary: Icon(icon, color: theme.accent, size: 27),
-        title: Text(
-          title,
-          style: TextStyle(
-            color: theme.textPrimary,
-            fontWeight: FontWeight.w700,
-            fontSize: 19,
-            height: 1.15,
-          ),
-        ),
-        subtitle: description == null
-            ? null
-            : Text(
-                description!,
-                style: TextStyle(
-                  color: theme.textSecondary,
-                  fontSize: 15,
-                  height: 1.15,
-                ),
-              ),
-        value: value,
-        onChanged: onChanged,
-        activeColor: theme.primary,
-        checkColor: readableInk(theme.primary),
-        checkboxShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3),
-        ),
-      ),
-    );
-  }
-}
-
 class CreatorCountryFlag extends StatelessWidget {
   final String code;
   final String? countryName;

@@ -21,6 +21,7 @@ class _CreatorFixture {
   int seasonFailures = 0;
   int countryFailures = 0;
   int clubCount = 32;
+  bool validPreview = false;
   final clubPowers = <int, int>{};
   bool includeOutsideClub = false;
   bool longClubName = false;
@@ -113,11 +114,26 @@ class _CreatorFixture {
           'warnings': [],
         };
       } else if (request.url.path.endsWith('/preview')) {
+        final body = jsonDecode(request.body) as Map;
+        final countries = body['countries'] as List;
         data = {
-          'draftId': 'incomplete-test',
-          'clubs': [],
-          'pendingSlots': 96,
-          'errors': ['Faltam 96 clubes.'],
+          'draftId': 'preview-test',
+          'clubs': [
+            if (validPreview)
+              for (var i = 0; i < 128; i++)
+                {
+                  'division': i < 32 ? i ~/ 8 + 1 : 5,
+                  'club': {
+                    'key': 'test-$i',
+                    'name': 'Clube de teste $i',
+                    'countryCode': countries[i % countries.length],
+                    'verification': {'status': 'REAL_CLUB_VERIFIED'},
+                    'players': [],
+                  },
+                },
+          ],
+          'pendingSlots': validPreview ? 0 : 96,
+          'errors': validPreview ? [] : ['Faltam 96 clubes.'],
           'warnings': [],
         };
       } else {
@@ -174,10 +190,10 @@ Future<void> _next(WidgetTester tester) async {
   expect(tester.takeException(), isNull);
 }
 
-Future<void> _openAdvancedSources(WidgetTester tester) async {
-  final advanced = find.text('OPÇÕES AVANÇADAS E FONTES');
-  await tester.ensureVisible(advanced);
-  await tester.tap(advanced);
+Future<void> _chooseFictionalRoster(WidgetTester tester) async {
+  final generated = find.byKey(const ValueKey('source-generated'));
+  await tester.ensureVisible(generated);
+  await tester.tap(generated);
   await tester.pumpAndSettle();
 }
 
@@ -765,7 +781,7 @@ void main() {
     },
   );
 
-  testWidgets('Elencos e fontes preservam permissões ao voltar e avançar', (
+  testWidgets('Elencos e fontes preservam a escolha ao voltar e avançar', (
     tester,
   ) async {
     final fixture = _CreatorFixture()..clubCount = 128;
@@ -775,24 +791,18 @@ void main() {
     await _next(tester);
     await _next(tester);
     expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
-    await _openAdvancedSources(tester);
-    final provider = find.byKey(const Key('allow-provider-reported-016a'));
-    expect(tester.widget<CreatorConsent>(provider).onChanged, isNull);
-    await tester.ensureVisible(find.text('SOMENTE DADOS REAIS COMPLETOS'));
-    await tester.tap(find.text('SOMENTE DADOS REAIS COMPLETOS'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('MUNDO LIVRE').last);
-    await tester.pumpAndSettle();
-    await tester.ensureVisible(provider);
-    await tester.tap(provider);
-    await tester.pumpAndSettle();
+    expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
+    await _chooseFictionalRoster(tester);
     await tester.tap(find.text('VOLTAR'));
     await tester.pumpAndSettle();
     await _next(tester);
-    if (find.text('MUNDO LIVRE').evaluate().isEmpty) {
-      await _openAdvancedSources(tester);
-    }
-    expect(find.text('MUNDO LIVRE'), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byKey(const ValueKey('source-generated')),
+        matching: find.byIcon(Icons.radio_button_checked),
+      ),
+      findsOneWidget,
+    );
     await _next(tester);
     final payload =
         jsonDecode(
@@ -801,8 +811,10 @@ void main() {
                   .body,
             )
             as Map;
-    expect(payload['dataMode'], 'FREE_WORLD');
-    expect(payload['allowProviderReportedPlayers'], true);
+    expect(payload['dataMode'], 'REAL_CLUBS_SIMULATED');
+    expect(payload['allowProviderReportedPlayers'], isNot(true));
+    expect(payload['generateAllRosterPlayers'], true);
+    expect(payload['allowFictionalTeams'], false);
     expect(payload['useSavedData'], true);
     expect(payload['countries'], hasLength(7));
     fixture.api.disconnectRealtime();
@@ -831,7 +843,7 @@ void main() {
     await _next(tester);
     await _next(tester);
     expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
-    await _openAdvancedSources(tester);
+    expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
     expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     final request = fixture.requests.singleWhere(
       (request) => request.url.path.endsWith('/catalog'),
@@ -867,11 +879,7 @@ void main() {
     await tester.ensureVisible(adjust);
     await tester.tap(adjust);
     await tester.pumpAndSettle();
-    await _openAdvancedSources(tester);
-    final consent = find.byKey(const Key('fictional-world-016b'));
-    await tester.ensureVisible(consent);
-    await tester.tap(consent);
-    await tester.pumpAndSettle();
+    await _chooseFictionalRoster(tester);
     final apply = find.text('APLICAR OPÇÕES');
     await tester.ensureVisible(apply);
     await tester.tap(apply);
@@ -881,6 +889,20 @@ void main() {
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNotNull);
     await _next(tester);
     expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+    await _next(tester);
+    expect(
+      find.textContaining('128 clubes e todos os atletas fictícios'),
+      findsOneWidget,
+    );
+    await _next(tester);
+    final preview = fixture.requests.singleWhere(
+      (request) => request.url.path.endsWith('/preview'),
+    );
+    final payload = jsonDecode(preview.body) as Map;
+    expect(payload['fictionalOnly'], true);
+    expect(payload['generateAllRosterPlayers'], true);
+    expect(payload['allowFictionalTeams'], true);
+    expect(payload['assignments'], isEmpty);
   });
 
   testWidgets(
@@ -993,7 +1015,9 @@ void main() {
   testWidgets('Trocas são enviadas à prévia na ordem das quatro divisões', (
     tester,
   ) async {
-    final fixture = _CreatorFixture()..clubCount = 128;
+    final fixture = _CreatorFixture()
+      ..clubCount = 128
+      ..validPreview = true;
     await _creator(tester, fixture, 1366);
     await _next(tester);
     await _next(tester);

@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'club_theme.dart';
 
 class CreatorRosterSources extends StatelessWidget {
-  final bool generatedOnly, completeMissing, fictionalWorld;
+  final bool generatedOnly, fillClubVacancies, fictionalWorld;
+  final String? problem;
   final ValueChanged<bool>? onChooseGenerated;
-  final Widget advanced;
 
   const CreatorRosterSources({
     super.key,
     required this.generatedOnly,
-    required this.completeMissing,
+    required this.fillClubVacancies,
     required this.fictionalWorld,
+    required this.problem,
     required this.onChooseGenerated,
-    required this.advanced,
   });
 
   Widget _choice(ClassicTheme theme, bool generated, bool compact) {
-    final selected = generated == (generatedOnly || fictionalWorld);
+    final selected = generated == generatedOnly;
     final accent = readableOn(theme.accent, theme.surface);
     final fill = selected
         ? Color.lerp(theme.surface, const Color(0xFFBCE9CB), .53)!
@@ -85,7 +85,7 @@ class CreatorRosterSources extends StatelessWidget {
                       Text(
                         generated
                             ? 'Gera elencos totalmente fictícios para todos os clubes.'
-                            : 'Utiliza os elencos do catálogo (dados reais).',
+                            : 'Utiliza apenas jogadores reais do catálogo.',
                         style: TextStyle(
                           color: readableOn(theme.textPrimary, fill),
                           fontSize: compact ? 16 : 19,
@@ -187,13 +187,13 @@ class CreatorRosterSources extends StatelessWidget {
                   SizedBox(width: compact ? 10 : 14),
                   Expanded(
                     child: Text(
-                      fictionalWorld
-                          ? 'Mundo totalmente fictício autorizado nas opções avançadas. Os clubes e os elencos serão gerados.'
-                          : generatedOnly
-                          ? 'O jogo gera todos os atletas. Os clubes escolhidos na montagem são preservados.'
-                          : completeMissing
-                          ? 'Ao continuar com USAR ELENCO REAL, você autoriza o jogo a completar com jogadores fictícios os elencos que não tiverem dados completos.'
-                          : 'As opções avançadas exigem elencos reais sem complemento fictício. Escolha USAR ELENCO REAL para autorizar o complemento.',
+                      !generatedOnly
+                          ? 'Modo real exige 128 clubes com elencos reais completos.'
+                          : fictionalWorld
+                          ? 'O catálogo tem menos de 32 clubes para as divisões. Esta opção gera um mundo com 128 clubes e todos os atletas fictícios.'
+                          : fillClubVacancies
+                          ? 'O jogo preserva os clubes escolhidos, gera todos os atletas e preenche as vagas de clubes com equipes fictícias.'
+                          : 'O jogo gera todos os atletas e preserva os clubes escolhidos na montagem.',
                       style: TextStyle(
                         color: readableOn(theme.textPrimary, notice),
                         fontSize: compact ? 16 : 20,
@@ -204,19 +204,16 @@ class CreatorRosterSources extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 8),
-            ExpansionTile(
-              key: const PageStorageKey('roster-advanced'),
-              tilePadding: const EdgeInsets.symmetric(horizontal: 8),
-              title: Text(
-                'OPÇÕES AVANÇADAS E FONTES',
+            if (problem case final message?) ...[
+              const SizedBox(height: 12),
+              Text(
+                message,
                 style: TextStyle(
-                  color: theme.accent,
+                  color: theme.textPrimary,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              children: [advanced],
-            ),
+            ],
           ],
         );
       },
