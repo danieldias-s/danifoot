@@ -9,7 +9,6 @@ void main() {
   const steps = [
     'Categoria',
     'Países',
-    'Modo',
     'Divisões',
     'Distritais',
     'Elencos / fontes',
@@ -59,6 +58,7 @@ void main() {
       );
       final back = find.widgetWithText(OutlinedButton, 'VOLTAR');
       final next = find.widgetWithText(ElevatedButton, 'CONTINUAR');
+      expect(find.text('1/7 • CATEGORIA'), findsOneWidget);
 
       Material backMaterial() => tester.widget<Material>(
         find.descendant(of: back, matching: find.byType(Material)),
@@ -97,6 +97,7 @@ void main() {
       expect(tester.widget<OutlinedButton>(back).onPressed, isNull);
       await tester.tap(next);
       await tester.pumpAndSettle();
+      expect(find.text('2/7 • PAÍSES'), findsOneWidget);
       expectReadableBack();
       expect(
         colorContrast(inactiveFill, backMaterial().color!),

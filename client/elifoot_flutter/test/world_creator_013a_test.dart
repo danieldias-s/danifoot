@@ -21,9 +21,9 @@ void main() {
     'França',
     'Portugal',
   ];
-  for (final width in [390.0, 1366.0]) {
+  for (final (width, maxHumans) in [(390.0, 1), (1366.0, 8)]) {
     testWidgets(
-      'World creator completes female flow and preserves ownership at width $width',
+      'World creator completes female flow for $maxHumans coaches at $width',
       (tester) async {
         tester.view.physicalSize = Size(width, 900);
         tester.view.devicePixelRatio = 1;
@@ -35,9 +35,11 @@ void main() {
         Map<String, dynamic> club(int i) => {
           'key': 'club-$i',
           'name': 'Clube fictício $i',
+          'countryCode': countries[i % 8],
           'countryName': names[i % 8],
           'rank': i + 1,
           'isFictional': false,
+          'verification': {'status': 'REAL_CLUB_VERIFIED'},
           'players': List.generate(
             18,
             (p) => {
@@ -75,7 +77,10 @@ void main() {
               seed = body['seed'] as int;
               expect(seed, inInclusiveRange(1, 2147483647));
               gender = body['gender'].toString();
-              expect(body['countries'], hasLength(8));
+              expect(body['season'], '2026');
+              expect(body['countries'], unorderedEquals(countries));
+              expect(body['dataMode'], isNull);
+              expect(body['useSavedData'], isTrue);
               response = {
                 'clubs': List.generate(160, club),
                 'references': [
@@ -94,11 +99,13 @@ void main() {
                 'warnings': ['FIXTURES — dados fictícios'],
               };
             } else if (request.url.path.endsWith('/preview')) {
-              expect((jsonDecode(request.body) as Map)['seed'], seed);
-              expect(
-                (jsonDecode(request.body) as Map)['allowFictionalTeams'],
-                false,
-              );
+              final body = jsonDecode(request.body) as Map;
+              expect(body['seed'], seed);
+              expect(body['gender'], 'Female');
+              expect(body['season'], '2026');
+              expect(body['countries'], unorderedEquals(countries));
+              expect(body['maxHumans'], maxHumans);
+              expect(body['allowFictionalTeams'], isFalse);
               response = {
                 'draftId': 'draft013a',
                 'errors': [],
@@ -160,6 +167,14 @@ void main() {
         await tester.pumpAndSettle();
         await tester.tap(find.text('FEMININO').last);
         await tester.pumpAndSettle();
+        if (maxHumans == 8) {
+          final trainers = find.byKey(const ValueKey('Treinadores:1'));
+          await tester.ensureVisible(trainers);
+          await tester.tap(trainers);
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('8').last);
+          await tester.pumpAndSettle();
+        }
         Future<void> next() async {
           await tester.tap(find.text('CONTINUAR'));
           await tester.pumpAndSettle();
@@ -167,7 +182,7 @@ void main() {
         }
 
         await next();
-        expect(find.text('8 países selecionados'), findsOneWidget);
+        expect(find.text('8 países selecionados • máximo 8'), findsOneWidget);
         final search = find.byType(TextField);
         await tester.enterText(search, 'Brasil');
         await tester.pump();
@@ -176,14 +191,23 @@ void main() {
         await tester.enterText(search, '');
         await tester.pump();
         await next();
+        expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+        expect(find.text('Como montar'), findsNothing);
         await next();
-        expect(find.textContaining('160 clubes disponíveis'), findsOneWidget);
+        expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+        expect(find.textContaining('AUTORIZO completar'), findsNothing);
         await next();
+        expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
         expect(find.textContaining('AUTORIZO completar'), findsOneWidget);
-        await next();
+        final sources = find.text('Fontes e avisos do catálogo');
+        await tester.ensureVisible(sources);
+        await tester.tap(sources);
+        await tester.pumpAndSettle();
         expect(find.textContaining('FIXTURES'), findsOneWidget);
         await next();
+        expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
         expect(find.text('128/128 clubes • 0 vagas pendentes'), findsOneWidget);
+        expect(find.text('DISTRITAIS • 96/96'), findsOneWidget);
         if (const bool.fromEnvironment('CAPTURE_013A')) {
           final boundary = tester.renderObject<RenderRepaintBoundary>(
             find.byKey(boundaryKey),
@@ -200,6 +224,7 @@ void main() {
           });
         }
         await next();
+        expect(find.text('7/7 • CONFIRMAR'), findsOneWidget);
         await tester.ensureVisible(find.text('CONFIRMAR CRIAÇÃO'));
         await tester.tap(find.text('CONFIRMAR CRIAÇÃO'));
         await tester.pumpAndSettle();

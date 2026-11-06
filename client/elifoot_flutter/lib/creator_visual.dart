@@ -90,10 +90,10 @@ class CreatorFrame extends StatelessWidget {
   void _guide(BuildContext context) => showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
-      title: const Text('GUIA DO MODO'),
+      title: const Text('GUIA DO CRIADOR'),
       content: SingleChildScrollView(
         child: Text(
-          'Avance pelas oito etapas para conferir a montagem antes de confirmar.\n\n'
+          'Avance pelas ${steps.length} etapas para conferir a montagem antes de confirmar.\n\n'
           '${steps.asMap().entries.map((e) => '${e.key + 1}. ${e.value}').join('\n')}\n\n'
           'Os totais de clubes vêm do catálogo da categoria e do ano escolhidos. '
           'As opções de dados exibem as autorizações necessárias e os motivos de bloqueio.',
@@ -277,7 +277,7 @@ class CreatorFrame extends StatelessWidget {
                         ],
                         if (mobile)
                           IconButton(
-                            tooltip: 'GUIA DO MODO',
+                            tooltip: 'GUIA DO CRIADOR',
                             onPressed: () => _guide(context),
                             icon: const Icon(Icons.menu_book_outlined),
                             color: theme.selectedBackground,
@@ -296,7 +296,7 @@ class CreatorFrame extends StatelessWidget {
                               ),
                             ),
                             icon: const Icon(Icons.menu_book_outlined),
-                            label: const Text('GUIA DO MODO'),
+                            label: const Text('GUIA DO CRIADOR'),
                           ),
                       ],
                     ),
@@ -406,36 +406,25 @@ class CreatorFrame extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text(
-                                      step == 1
-                                          ? 'CRIADOR DE MUNDOS'
-                                          : '${step + 1}/8 • ${steps[step].toUpperCase()}',
+                                      '${step + 1}/${steps.length} • ${steps[step].toUpperCase()}',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: theme.textPrimary,
-                                        fontSize: step == 1
-                                            ? (mobile ? 32 : 48)
-                                            : (mobile ? 30 : 36),
+                                        fontSize: mobile ? 30 : 36,
                                         fontWeight: FontWeight.w700,
-                                        fontStyle: step == 1
-                                            ? FontStyle.italic
-                                            : FontStyle.normal,
                                         height: 1.1,
                                       ),
                                     ),
-                                    if (step == 1 || step == 2) ...[
+                                    if (step == 1) ...[
                                       const SizedBox(height: 8),
                                       Text(
-                                        step == 1
-                                            ? 'Escolha até 8 países para compor o seu mundo.'
-                                            : 'Defina como seu mundo será montado e quais dados serão usados.',
+                                        'Escolha até 8 países para compor o seu mundo.',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: theme.textPrimary,
                                           fontSize: mobile ? 17 : 19,
                                         ),
                                       ),
-                                    ],
-                                    if (step == 1) ...[
                                       const SizedBox(height: 12),
                                       Container(
                                         padding: const EdgeInsets.symmetric(

@@ -19,6 +19,7 @@ class _CreatorFixture {
   int uruguayClubs = 0;
   int seasonFailures = 0;
   int countryFailures = 0;
+  int clubCount = 32;
   bool failLastConfiguration = false;
   Map<String, dynamic>? lastConfiguration;
   late final api = ElifootApiClient(
@@ -66,7 +67,33 @@ class _CreatorFixture {
         }
         data = lastConfiguration;
       } else if (request.url.path.endsWith('/catalog')) {
-        data = {'clubs': [], 'references': [], 'warnings': []};
+        final countries =
+            (jsonDecode(request.body) as Map)['countries'] as List;
+        data = {
+          'clubs': [
+            for (var i = 0; i < clubCount; i++)
+              {
+                'key': 'test-$i',
+                'name': 'Clube de teste $i',
+                'countryCode': countries[i % countries.length],
+                'countryName': countries[i % countries.length],
+                'rank': i + 1,
+                'initialProfile': {'clubInitialPower': 20, 'worldRank': i + 1},
+                'verification': {'status': 'REAL_CLUB_VERIFIED'},
+                'players': [],
+              },
+          ],
+          'references': [],
+          'warnings': [],
+        };
+      } else if (request.url.path.endsWith('/preview')) {
+        data = {
+          'draftId': 'incomplete-test',
+          'clubs': [],
+          'pendingSlots': 96,
+          'errors': ['Faltam 96 clubes.'],
+          'warnings': [],
+        };
       } else {
         throw StateError('Rota inesperada ${request.url}');
       }
@@ -279,13 +306,12 @@ void main() {
     expect(find.text('29 clubes disponíveis'), findsNothing);
     expect(find.text('1/8 • Países'), findsOneWidget);
     await _next(tester);
-    await _next(tester);
-
     final catalog = fixture.requests.singleWhere(
       (r) => r.url.path.endsWith('/catalog'),
     );
     expect(jsonDecode(catalog.body), containsPair('season', '2023'));
     expect(jsonDecode(catalog.body), containsPair('countries', ['BR']));
+    expect(jsonDecode(catalog.body), containsPair('dataMode', null));
     final countries = fixture.requests.where(
       (r) => r.url.path.endsWith('/countries'),
     );
@@ -346,7 +372,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('1/8 • Países'), findsOneWidget);
       await _next(tester);
-      expect(find.text('3/8 • MODO'), findsOneWidget);
+      expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
     },
   );
 
@@ -370,99 +396,94 @@ void main() {
   });
 
   for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
-    testWidgets('Países, Modo e clube mantêm controles acessíveis em $width px', (
-      tester,
-    ) async {
-      final fixture = _CreatorFixture();
-      await _creator(tester, fixture, width);
-      await _next(tester);
-      expect(find.text('7/8 • Países'), findsOneWidget);
-      expect(_countryCard('AR'), findsNothing);
-      expect(_countryCard('UY'), findsNothing);
-      final germany = tester.getRect(
-        find.byKey(const ValueKey('country-card-DE')),
-      );
-      final france = tester.getRect(
-        find.byKey(const ValueKey('country-card-GB')),
-      );
-      if (width >= 1366) {
-        expect(france.left, greaterThan(germany.left));
-      } else {
-        expect(france.left, germany.left);
-      }
-      await _next(tester);
-      expect(find.text('3/8 • MODO'), findsOneWidget);
-      final provider = tester.widget<CreatorConsent>(
-        find.byKey(const Key('allow-provider-reported-016a')),
-      );
-      expect(provider.onChanged, isNull);
-      await tester.ensureVisible(
-        find.text('INCLUIR clubes sem verificação de atividade'),
-      );
-      await tester.pumpAndSettle();
-      expect(tester.takeException(), isNull);
-      expect(
-        tester.getRect(find.text('CONTINUAR')).bottom,
-        lessThanOrEqualTo(900),
-      );
-      await tester.tap(find.text('VOLTAR'));
-      await tester.pumpAndSettle();
-      expect(find.text('7/8 • Países'), findsOneWidget);
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: ClassicTheme.classicGreen().material(),
-          home: Builder(
-            builder: (context) => Scaffold(
-              body: TextButton(
-                onPressed: () => showDialog<String>(
-                  context: context,
-                  builder: (_) => ClubSelectionDialog(
-                    clubs: [
-                      for (int i = 0; i < 32; i++)
-                        {
-                          'id': 'club-$i',
-                          'name':
-                              'Equipe de nome comprido para verificar a leitura no celular $i',
-                          'divisionDisplay': '${i ~/ 8 + 1}ª Divisão',
-                          'cashBalance': 4200000,
-                          'primaryColorHex': '#C8102E',
-                          'secondaryColorHex': '#FFFFFF',
-                          if (i == 1)
-                            'colorPalette': {
-                              'primaryColor': '#006437',
-                              'secondaryColor': '#FFFFFF',
-                            },
-                        },
-                    ],
+    testWidgets(
+      'Países, Divisões e clube mantêm controles acessíveis em $width px',
+      (tester) async {
+        final fixture = _CreatorFixture();
+        await _creator(tester, fixture, width);
+        await _next(tester);
+        expect(find.text('7/8 • Países'), findsOneWidget);
+        expect(_countryCard('AR'), findsNothing);
+        expect(_countryCard('UY'), findsNothing);
+        final germany = tester.getRect(
+          find.byKey(const ValueKey('country-card-DE')),
+        );
+        final france = tester.getRect(
+          find.byKey(const ValueKey('country-card-GB')),
+        );
+        if (width >= 1366) {
+          expect(france.left, greaterThan(germany.left));
+        } else {
+          expect(france.left, germany.left);
+        }
+        await _next(tester);
+        expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+        expect(find.text('Como montar'), findsNothing);
+        expect(find.text('Modo de jogo'), findsNothing);
+        expect(tester.takeException(), isNull);
+        expect(
+          tester.getRect(find.text('CONTINUAR')).bottom,
+          lessThanOrEqualTo(900),
+        );
+        await tester.tap(find.text('VOLTAR'));
+        await tester.pumpAndSettle();
+        expect(find.text('7/8 • Países'), findsOneWidget);
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: ClassicTheme.classicGreen().material(),
+            home: Builder(
+              builder: (context) => Scaffold(
+                body: TextButton(
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (_) => ClubSelectionDialog(
+                      clubs: [
+                        for (int i = 0; i < 32; i++)
+                          {
+                            'id': 'club-$i',
+                            'name':
+                                'Equipe de nome comprido para verificar a leitura no celular $i',
+                            'divisionDisplay': '${i ~/ 8 + 1}ª Divisão',
+                            'cashBalance': 4200000,
+                            'primaryColorHex': '#C8102E',
+                            'secondaryColorHex': '#FFFFFF',
+                            if (i == 1)
+                              'colorPalette': {
+                                'primaryColor': '#006437',
+                                'secondaryColor': '#FFFFFF',
+                              },
+                          },
+                      ],
+                    ),
                   ),
+                  child: const Text('ABRIR'),
                 ),
-                child: const Text('ABRIR'),
               ),
             ),
           ),
-        ),
-      );
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('ABRIR'));
-      await tester.pumpAndSettle();
-      expect(find.text('SELECIONE SEU CLUBE'), findsOneWidget);
-      expect(find.text('CANCELAR'), findsOneWidget);
-      final crests = tester.widgetList<ClubCrest>(find.byType(ClubCrest));
-      expect(crests.first.palette?['primaryColor'], '#C8102E');
-      expect(crests.elementAt(1).palette?['primaryColor'], '#006437');
-      expect(tester.takeException(), isNull);
-      await tester.drag(
-        find.byKey(const Key('club-selection-list')),
-        const Offset(0, -1400),
-      );
-      await tester.pumpAndSettle();
-      expect(find.text('CANCELAR'), findsOneWidget);
-      expect(tester.takeException(), isNull);
-      await tester.tap(find.text('CANCELAR'));
-      await tester.pumpAndSettle();
-      expect(find.byKey(const Key('club-selection-dialog')), findsNothing);
-      fixture.api.disconnectRealtime();
-    });
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('ABRIR'));
+        await tester.pumpAndSettle();
+        expect(find.text('SELECIONE SEU CLUBE'), findsOneWidget);
+        expect(find.text('CANCELAR'), findsOneWidget);
+        final crests = tester.widgetList<ClubCrest>(find.byType(ClubCrest));
+        expect(crests.first.palette?['primaryColor'], '#C8102E');
+        expect(crests.elementAt(1).palette?['primaryColor'], '#006437');
+        expect(tester.takeException(), isNull);
+        await tester.drag(
+          find.byKey(const Key('club-selection-list')),
+          const Offset(0, -1400),
+        );
+        await tester.pumpAndSettle();
+        expect(find.text('CANCELAR'), findsOneWidget);
+        expect(tester.takeException(), isNull);
+        await tester.tap(find.text('CANCELAR'));
+        await tester.pumpAndSettle();
+        expect(find.byKey(const Key('club-selection-dialog')), findsNothing);
+        fixture.api.disconnectRealtime();
+      },
+    );
   }
 
   testWidgets(
@@ -510,18 +531,23 @@ void main() {
     },
   );
 
-  testWidgets('Modo mantém permissões, dados salvos e payload de criação', (
+  testWidgets('Elencos e fontes preservam permissões ao voltar e avançar', (
     tester,
   ) async {
     final fixture = _CreatorFixture();
     await _creator(tester, fixture, 1366);
     await _next(tester);
     await _next(tester);
+    await _next(tester);
+    await _next(tester);
+    expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+    final provider = find.byKey(const Key('allow-provider-reported-016a'));
+    expect(tester.widget<CreatorConsent>(provider).onChanged, isNull);
+    await tester.ensureVisible(find.text('SOMENTE DADOS REAIS COMPLETOS'));
     await tester.tap(find.text('SOMENTE DADOS REAIS COMPLETOS'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('MUNDO LIVRE').last);
     await tester.pumpAndSettle();
-    final provider = find.byKey(const Key('allow-provider-reported-016a'));
     await tester.ensureVisible(provider);
     await tester.tap(provider);
     await tester.pumpAndSettle();
@@ -533,7 +559,7 @@ void main() {
     final payload =
         jsonDecode(
               fixture.requests
-                  .lastWhere((r) => r.url.path.endsWith('/catalog'))
+                  .lastWhere((r) => r.url.path.endsWith('/preview'))
                   .body,
             )
             as Map;
@@ -563,12 +589,129 @@ void main() {
     await _next(tester);
     expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsOneWidget);
     await _next(tester);
-    expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     await _next(tester);
+    await _next(tester);
+    expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     final request = fixture.requests.singleWhere(
       (request) => request.url.path.endsWith('/catalog'),
     );
     expect(jsonDecode(request.body), containsPair('useSavedData', true));
     expect(jsonDecode(request.body), containsPair('countries', ['AT']));
+  });
+
+  testWidgets('Trocas são enviadas à prévia na ordem das quatro divisões', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..clubCount = 33;
+    await _creator(tester, fixture, 1366);
+    await _next(tester);
+    await _next(tester);
+
+    Future<void> swap(int position, int candidate) async {
+      final button = find.byKey(ValueKey('swap-division-1-position-$position'));
+      await tester.ensureVisible(button);
+      await tester.tap(button);
+      await tester.pumpAndSettle();
+      await tester.enterText(
+        find.byKey(const ValueKey('division-swap-search')),
+        'Clube de teste $candidate',
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(
+        find.byKey(ValueKey('division-swap-option-test-$candidate')),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    void expectSlot(int position, int club) {
+      expect(
+        find.descendant(
+          of: find.byKey(ValueKey('division-1-position-$position')),
+          matching: find.text('Clube de teste $club'),
+        ),
+        findsOneWidget,
+      );
+    }
+
+    expectSlot(1, 0);
+    await swap(1, 1);
+    expectSlot(1, 1);
+    expectSlot(2, 0);
+    await swap(1, 8);
+    await swap(3, 32);
+    expectSlot(1, 8);
+    expectSlot(3, 32);
+
+    await _next(tester);
+    expect(find.text('Faltam 95 clubes distritais.'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('Distritais:Ranking')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Escolher os 96 manualmente').last);
+    await tester.pumpAndSettle();
+    final returnedClub = find.byKey(const ValueKey('district-test-2'));
+    expect(returnedClub, findsOneWidget);
+    expect(find.byKey(const ValueKey('district-test-32')), findsNothing);
+    await tester.ensureVisible(returnedClub);
+    await tester.tap(returnedClub);
+    await tester.pumpAndSettle();
+    await _next(tester);
+    await _next(tester);
+    final previews = fixture.requests.where(
+      (r) => r.url.path.endsWith('/preview'),
+    );
+    final edited = jsonDecode(previews.single.body) as Map;
+    final assignments = (edited['assignments'] as List).cast<Map>();
+    expect(edited['preserveRankedSquadStrengths'], isTrue);
+    expect(assignments, hasLength(33));
+    expect(assignments.map((a) => a['clubKey']).toSet(), hasLength(33));
+    expect(
+      assignments.singleWhere((a) => a['division'] == 5)['clubKey'],
+      'test-2',
+    );
+    for (var division = 1; division <= 4; division++) {
+      expect(assignments.where((a) => a['division'] == division), hasLength(8));
+    }
+    expect(
+      assignments.where((a) => a['division'] == 1).map((a) => a['clubKey']),
+      [
+        'test-8',
+        'test-0',
+        'test-32',
+        'test-3',
+        'test-4',
+        'test-5',
+        'test-6',
+        'test-7',
+      ],
+    );
+    expect(
+      assignments.firstWhere((a) => a['division'] == 2)['clubKey'],
+      'test-1',
+    );
+
+    final editDivisions = find.text('EDITAR DIVISÕES');
+    await tester.ensureVisible(editDivisions);
+    await tester.tap(editDivisions);
+    await tester.pumpAndSettle();
+    expectSlot(1, 8);
+    expectSlot(3, 32);
+    final restore = find.byKey(const ValueKey('restore-automatic-divisions'));
+    await tester.ensureVisible(restore);
+    await tester.tap(restore);
+    await tester.pumpAndSettle();
+    expect(find.text('Restaurar distribuição automática?'), findsOneWidget);
+    await tester.tap(find.text('RESTAURAR'));
+    await tester.pumpAndSettle();
+    expectSlot(1, 0);
+    expectSlot(3, 2);
+
+    await _next(tester);
+    await _next(tester);
+    await _next(tester);
+    final restored = jsonDecode(previews.last.body) as Map;
+    expect(restored['seed'], edited['seed']);
+    expect((restored['assignments'] as List).map((a) => a['clubKey']), [
+      for (var i = 0; i < 32; i++) 'test-$i',
+    ]);
   });
 }

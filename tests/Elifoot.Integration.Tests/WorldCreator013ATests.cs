@@ -218,7 +218,18 @@ public sealed class WorldCreator013ATests
     public async Task PostgreSql013A_PersistenceRestartOfflineWorldAndCatalogSnapshots()
     {
         await using var h = new Harness(postgres: true); await h.Initialize(); var owner = Guid.NewGuid();
-        var preview = await h.Creator.Preview(owner, Request()); var world = await h.Creator.Confirm(owner, preview.DraftId);
+        var request = Request() with { PreserveRankedSquadStrengths = true };
+        var automatic = await h.Creator.Preview(owner, request);
+        var slots = automatic.Clubs.Take(32).Select(c => c.Club.Key).ToArray();
+        (slots[0], slots[3]) = (slots[3], slots[0]);
+        (slots[6], slots[15]) = (slots[15], slots[6]);
+        slots[21] = automatic.Clubs[32].Club.Key;
+        var preview = await h.Creator.Preview(owner, request with
+        {
+            Mode = WorldAssemblyMode.Custom,
+            Assignments = slots.Select((key, index) => new ClubAssignment(key, index / 8 + 1)).ToList()
+        });
+        var world = await h.Creator.Confirm(owner, preview.DraftId);
         var connection = Environment.GetEnvironmentVariable("ELIFOOT_013A_WORLD_PG")!;
         var isolated = new Npgsql.NpgsqlConnectionStringBuilder(connection);
         Assert.True(isolated.Database!.Contains("013a") && isolated.Port == 55433 || isolated.Database.Contains("013b") && isolated.Port == 55434
@@ -236,9 +247,15 @@ public sealed class WorldCreator013ATests
         var repo = provider.GetRequiredService<IWorldRepository>(); await repo.SaveWorldAsync(world); EfWorldRepository.ClearCacheForTesting();
         var loaded = await repo.GetWorldAsync(world.Id); Assert.NotNull(loaded); Assert.Equal(FootballGender.Female, loaded.Gender);
         Assert.Equal(world.CatalogOrigin!.DataHash, loaded.CatalogOrigin!.DataHash); Assert.Equal(2304, loaded.Players.Count);
+        Assert.Equal(slots, loaded.CatalogOrigin.Clubs.Take(32).Select(c => c.Club.Key));
+        Assert.Equal(96, loaded.CatalogOrigin.Clubs.Count(c => c.Division == 5));
+        Assert.Equal(preview.Clubs.SelectMany(c => c.Club.Players).Select(p => p.Strength), loaded.Players.Select(p => p.Strength));
         var restarted = new WorldCreatorService(h.Provider.GetRequiredService<IServiceScopeFactory>(), h.Sync, repo);
         var selection = await restarted.Select(Countries, FootballGender.Female, "2026", true); Assert.Equal(160, selection.Clubs.Count);
-        Assert.NotNull(await restarted.LastConfiguration(owner)); Assert.Equal(world.Id, (await restarted.Confirm(owner, preview.DraftId)).Id);
+        var preset = await restarted.LastConfiguration(owner);
+        Assert.True(preset?.PreserveRankedSquadStrengths);
+        Assert.Equal(slots, preset!.Assignments.Select(a => a.ClubKey));
+        Assert.Equal(world.Id, (await restarted.Confirm(owner, preview.DraftId)).Id);
         var existing = WorldSeedFactory.CreateSeededWorld("Existing 012C", forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);
         await repo.SaveWorldAsync(existing); EfWorldRepository.ClearCacheForTesting();
         Assert.Null((await repo.GetWorldAsync(existing.Id))!.CatalogOrigin);

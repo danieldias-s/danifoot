@@ -22,7 +22,8 @@ Map<String, dynamic> summary({int selected = 0, int generated = 0}) => {
 Map<String, dynamic> club(int i) => {
   'key': 'real-test-$i',
   'name': 'Test verified club $i',
-  'countryName': 'Brasil',
+  'countryCode': countries[i % countries.length],
+  'countryName': countries[i % countries.length],
   'rank': i + 1,
   'isFictional': false,
   'verification': {
@@ -49,7 +50,9 @@ Map<String, dynamic> club(int i) => {
   ),
 };
 Future<void> next(WidgetTester tester) async {
-  await tester.tap(find.widgetWithText(ElevatedButton, 'CONTINUAR'));
+  final button = find.widgetWithText(ElevatedButton, 'CONTINUAR');
+  await tester.ensureVisible(button);
+  await tester.tap(button);
   await tester.pumpAndSettle();
 }
 
@@ -93,7 +96,7 @@ ElifootApiClient api(
               body['allowFictionalPlayers'] != true);
       if (request.url.path.endsWith('/catalog')) {
         response = {
-          'clubs': blocked ? [] : List.generate(128, club),
+          'clubs': List.generate(128, club),
           'references': [],
           'warnings': [],
           'dataSummary': summary(),
@@ -147,6 +150,9 @@ Future<void> open(
   await tester.pumpAndSettle();
   await next(tester);
   await next(tester);
+  await next(tester);
+  await next(tester);
+  expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
 }
 
 void main() {
@@ -156,22 +162,18 @@ void main() {
       final calls = <Map<String, dynamic>>[];
       await open(tester, calls, reject: true);
       expect(find.text('SOMENTE DADOS REAIS COMPLETOS'), findsOneWidget);
-      final boxes = tester.widgetList<CheckboxListTile>(
-        find.byType(CheckboxListTile),
-      );
+      final boxes = tester
+          .widgetList<CheckboxListTile>(find.byType(CheckboxListTile))
+          .where(
+            (w) =>
+                w.title is Text &&
+                (w.title as Text).data!.startsWith('AUTORIZO'),
+          );
+      expect(boxes, isNotEmpty);
       expect(
-        boxes
-            .where(
-              (w) =>
-                  w.title is Text &&
-                  (w.title as Text).data!.startsWith('AUTORIZO'),
-            )
-            .every((w) => w.value == false && w.onChanged == null),
+        boxes.every((w) => w.value == false && w.onChanged == null),
         isTrue,
       );
-      await next(tester);
-      await next(tester);
-      await next(tester);
       await next(tester);
       expect(
         find.textContaining('nenhum tem elenco real completo'),
@@ -193,13 +195,14 @@ void main() {
       expect(
         calls.every(
           (c) =>
-              c['dataMode'] == 'REAL_COMPLETE' &&
               c['allowFictionalPlayers'] == false &&
               c['allowFictionalTeams'] == false,
         ),
         isTrue,
       );
       final strict = calls.last;
+      expect(strict['path'], endsWith('/preview'));
+      expect(strict['dataMode'], 'REAL_COMPLETE');
       final authorize = find.text('AUTORIZAR ATLETAS SIMULADOS E GERAR PRÉVIA');
       await tester.ensureVisible(authorize);
       await tester.tap(authorize);
@@ -220,7 +223,7 @@ void main() {
       ]) {
         expect(regenerated[key], strict[key], reason: key);
       }
-      expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
+      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
       expect(find.textContaining('128/128 clubes'), findsOneWidget);
       expect(authorize, findsNothing);
       expect(
@@ -252,9 +255,6 @@ void main() {
         await tester.ensureVisible(consent);
         await tester.tap(consent);
         await tester.pumpAndSettle();
-        await next(tester);
-        await next(tester);
-        await next(tester);
         await next(tester);
         expect(
           calls

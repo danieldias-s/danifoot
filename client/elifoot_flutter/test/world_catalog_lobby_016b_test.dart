@@ -147,6 +147,14 @@ class Fixture016B {
         value = null;
       } else if (r.url.path.endsWith('/catalog')) {
         value = {'clubs': [], 'references': [], 'warnings': []};
+      } else if (r.url.path.endsWith('/preview')) {
+        value = {
+          'draftId': 'fixture-preview',
+          'clubs': [],
+          'pendingSlots': 128,
+          'errors': ['Faltam 128 clubes.'],
+          'warnings': [],
+        };
       } else {
         throw StateError('Unexpected fixture route ${r.url}');
       }
@@ -347,6 +355,13 @@ void main() {
       await t.pumpAndSettle();
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
+      expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+      expect(find.byKey(const Key('fictional-world-016b')), findsNothing);
+      await t.tap(find.text('CONTINUAR'));
+      await t.pumpAndSettle();
+      await t.tap(find.text('CONTINUAR'));
+      await t.pumpAndSettle();
+      expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
       final consent = find.byKey(const Key('fictional-world-016b'));
       await t.ensureVisible(consent);
       await t.pumpAndSettle();
@@ -357,7 +372,7 @@ void main() {
       final request =
           jsonDecode(
                 f.requests
-                    .lastWhere((r) => r.url.path.endsWith('/catalog'))
+                    .lastWhere((r) => r.url.path.endsWith('/preview'))
                     .body,
               )
               as Map;

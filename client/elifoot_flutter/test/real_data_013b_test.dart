@@ -42,12 +42,22 @@ void main() {
               'includeHistoricalClubs': true,
               'includeUnverifiedClubs': true,
             };
-          } else {
+          } else if (request.url.path.endsWith('/catalog')) {
+            result = {'clubs': [], 'references': [], 'warnings': []};
+          } else if (request.url.path.endsWith('/preview')) {
             final body = jsonDecode(request.body) as Map;
             consent = body['allowFictionalPlayers'] as bool;
             historical = body['includeHistoricalClubs'] as bool;
             unverified = body['includeUnverifiedClubs'] as bool;
-            result = {'clubs': [], 'references': [], 'warnings': []};
+            result = {
+              'draftId': 'empty-test-preview',
+              'clubs': [],
+              'pendingSlots': 128,
+              'errors': ['Faltam 128 clubes.'],
+              'warnings': [],
+            };
+          } else {
+            throw StateError('Rota inesperada ${request.url}');
           }
           return http.Response.bytes(
             utf8.encode(jsonEncode(result)),
@@ -66,7 +76,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('CRIAR NOVA CONFIGURAÇÃO'));
       await tester.pumpAndSettle();
-      for (var step = 0; step < 3; step++) {
+      for (var step = 0; step < 5; step++) {
         final next = find.text('CONTINUAR');
         await tester.ensureVisible(next);
         await tester.tap(next);

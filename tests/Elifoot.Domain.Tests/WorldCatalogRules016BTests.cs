@@ -53,6 +53,50 @@ public class WorldCatalogRules016BTests
         Assert.All(selected.Players,p=>Assert.Equal(WorldPlayerOrigin.FICTIONAL_GENERATED,p.PlayerOrigin));
         Assert.All(selected.Players,p=>Assert.InRange(p.Strength,1,50));
     }
+
+    [Fact]
+    public void OrderedDivisionSwapsKeepRankedSquadsAndRecomputeEligibleDistricts()
+    {
+        var clubs = WorldCatalogRules016B.Classify(Enumerable.Range(0, 130).Reverse().Select(n => Club(n, 0) with
+        {
+            Verification = new(CatalogClubVerificationStatus.REAL_CLUB_VERIFIED, "Test catalog", DateTime.UnixEpoch)
+        }));
+        var request = new WorldCreatorRequest("Ordenação manual", FootballGender.Male, "2026", ["ES"],
+            WorldAssemblyMode.Automatic, DistrictFillMode.Ranking, 1998, [], MaxHumans: 1, AllowFictionalPlayers: true,
+            DataMode: WorldDataMode.REAL_CLUBS_SIMULATED, UseWorldCatalogRules: true, PreserveRankedSquadStrengths: true);
+        var selection = new CatalogSelection(request.Gender, request.Season, request.Countries, clubs, [], []);
+        var automatic = WorldCreatorEngine.Preview(request, selection);
+        var original = WorldCreatorEngine.Preview(request with { PreserveRankedSquadStrengths = false }, selection);
+        Assert.Empty(automatic.Errors);
+        Assert.Equal(clubs.Take(32).Select(c => c.Key), automatic.Clubs.Take(32).Select(c => c.Club.Key));
+        Assert.Equal(original.Clubs.SelectMany(c => c.Club.Players).Select(p => p.Strength),
+            automatic.Clubs.SelectMany(c => c.Club.Players).Select(p => p.Strength));
+
+        var slots = automatic.Clubs.Take(32).Select(c => c.Club.Key).ToArray();
+        (slots[0], slots[7]) = (slots[7], slots[0]);
+        (slots[1], slots[8]) = (slots[8], slots[1]);
+        var released = slots[15];
+        slots[15] = automatic.Clubs[32].Club.Key;
+        var plan = request with
+        {
+            Mode = WorldAssemblyMode.Custom,
+            Assignments = slots.Select((key, index) => new ClubAssignment(key, index / 8 + 1)).ToList()
+        };
+        var preview = WorldCreatorEngine.Preview(plan, selection);
+        Assert.Empty(preview.Errors);
+        Assert.Equal(new[] { 8, 8, 8, 8, 96 }, preview.Clubs.GroupBy(c => c.Division).Select(group => group.Count()));
+        Assert.Equal(128, preview.Clubs.Select(c => c.Club.Key).Distinct().Count());
+        Assert.Equal(slots, preview.Clubs.Take(32).Select(c => c.Club.Key));
+        Assert.Contains(preview.Clubs, c => c.Club.Key == released && c.Division == 5);
+        var beforeByKey = automatic.Clubs.ToDictionary(c => c.Club.Key);
+        Assert.All(preview.Clubs, c => Assert.Equal(beforeByKey[c.Club.Key].Club.Players.Select(p => (p.CanonicalPlayerId, p.Strength)),
+            c.Club.Players.Select(p => (p.CanonicalPlayerId, p.Strength))));
+
+        var world = WorldCreatorEngine.Create(plan, preview);
+        Assert.Equal(slots, world.CatalogOrigin!.Clubs.Take(32).Select(c => c.Club.Key));
+        Assert.Equal(preview.Clubs.SelectMany(c => c.Club.Players).Select(p => p.Strength), world.Players.Select(p => p.Strength));
+    }
+
     [Fact] public void FictionalWorldPreviewPersistsVariableRosterAnd128UniqueClubs() {
         var request=new WorldCreatorRequest("Fixture 016B",FootballGender.Male,"2026",["ES"],WorldAssemblyMode.Automatic,DistrictFillMode.Ranking,1998,[],
             AllowFictionalTeams:true,AllowFictionalPlayers:true,DataMode:WorldDataMode.FREE_WORLD,UseWorldCatalogRules:true,FictionalOnly:true);
