@@ -109,9 +109,16 @@ class CreatorFrame extends StatelessWidget {
   );
 
   Widget _navigation(ClassicTheme theme, bool mobile) {
-    final backInk = readableInk(theme.primary, theme.textPrimary);
+    final backFill = Color.lerp(Colors.white, theme.primary, .12)!;
+    final backInk = readableInk(backFill);
+    final inactiveBackFill = Color.lerp(backInk, theme.primary, .30)!;
+    final inactiveBackInk = readableInk(inactiveBackFill);
     final mutedInk = readableOn(
-      Color.lerp(backInk, theme.primary, .3)!,
+      Color.lerp(
+        readableInk(theme.primary, theme.textPrimary),
+        theme.primary,
+        .3,
+      )!,
       theme.primary,
     );
     final shape = RoundedRectangleBorder(
@@ -131,11 +138,16 @@ class CreatorFrame extends StatelessWidget {
                 onPressed: back,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: backInk,
-                  disabledForegroundColor: mutedInk,
-                  backgroundColor: theme.primary,
-                  disabledBackgroundColor: theme.primary,
+                  disabledForegroundColor: inactiveBackInk,
+                  iconColor: backInk,
+                  disabledIconColor: inactiveBackInk,
+                  backgroundColor: backFill,
+                  disabledBackgroundColor: inactiveBackFill,
                   side: BorderSide(
-                    color: back == null ? mutedInk : theme.selectedBackground,
+                    color: back == null
+                        ? Color.lerp(inactiveBackFill, inactiveBackInk, .45)!
+                        : backInk,
+                    width: back == null ? 1 : 2,
                   ),
                   shape: shape,
                 ),

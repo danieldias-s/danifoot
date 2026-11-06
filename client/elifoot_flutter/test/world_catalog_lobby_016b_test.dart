@@ -141,7 +141,7 @@ class Fixture016B {
       } else if (r.url.path.endsWith('/countries')) {
         value = [
           for (final c in ['BR', 'AR', 'GB', 'ES', 'DE', 'IT', 'FR', 'PT'])
-            {'code': c, 'name': c, 'maleClubs': 0, 'femaleClubs': 0},
+            {'code': c, 'name': c, 'maleClubs': 20, 'femaleClubs': 20},
         ];
       } else if (r.url.path.endsWith('/last-configuration')) {
         value = null;

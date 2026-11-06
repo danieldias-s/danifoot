@@ -292,6 +292,58 @@ public sealed class WorldCreator013ATests
         Assert.Equal(new[] { "2026", "2025" }, await client.GetFromJsonAsync<string[]>(route));
     }
     [Fact]
+    public async Task HttpCountriesFiltersYearAndGenderAndReflectsLocalImports()
+    {
+        var templates = CatalogFixtureFactory.Packages().Where(p => p.Scope.DataType == CatalogDataType.Clubs).ToList();
+        CatalogImportPackage Clubs(string code, FootballGender gender, string season, int count)
+        {
+            var template = templates.Single(p => p.Scope.CountryCode == code && p.Scope.Gender == gender);
+            return template with { Scope = template.Scope with { Season = season }, ExpectedItems = count, Clubs = template.Clubs.Take(count).ToList() };
+        }
+
+        var brazil = Clubs("BR", FootballGender.Male, "2025", 2);
+        var providerCalls = 0;
+        await using var h = new Harness([new Source(brazil.Scope, _ =>
+        {
+            providerCalls++;
+            throw new HttpRequestException("A lista de países deve consultar apenas o catálogo local.");
+        })]);
+        await h.Initialize(false);
+        await h.Sync.ImportAsync(brazil);
+        await h.Sync.ImportAsync(Clubs("GB", FootballGender.Female, "2025", 3));
+        await h.Sync.ImportAsync(Clubs("GB", FootballGender.Male, "2026", 4));
+        var argentina = Clubs("AR", FootballGender.Male, "2025", 1);
+        await h.Sync.ImportAsync(argentina with
+        {
+            Scope = argentina.Scope with { DataType = CatalogDataType.Countries },
+            Clubs = [], CountryData = [new(argentina.Scope.CountryCode, argentina.CountryName)]
+        });
+        await h.Read(db => db.Scopes.Where(s => s.Key == brazil.Scope.Key)
+            .ExecuteUpdateAsync(update => update.SetProperty(s => s.NextAttempt, DateTime.UtcNow.AddDays(-1))));
+
+        var builder = WebApplication.CreateBuilder(); builder.WebHost.UseTestServer();
+        builder.Configuration["Elifoot:AuthMode"] = "LocalDev";
+        builder.Services.AddSingleton(h.Creator); builder.Services.AddSingleton(h.Sync);
+        await using var app = builder.Build(); app.MapWorldCreator013A(); await app.StartAsync();
+        using var client = app.GetTestClient();
+        client.DefaultRequestHeaders.Authorization = new("Bearer", $"localdev-{Guid.NewGuid():N}");
+        async Task<CatalogCountryOption[]> CountriesFor(string season, FootballGender? gender = null) =>
+            (await client.GetFromJsonAsync<CatalogCountryOption[]>(
+                $"/api/world-creator/countries?season={season}" + (gender == null ? "" : $"&gender={gender}")))!;
+
+        Assert.Equal(new CatalogCountryOption("BR", "Brasil", 2, 0), Assert.Single(await CountriesFor("2025", FootballGender.Male)));
+        Assert.Equal(new CatalogCountryOption("GB", "Inglaterra", 0, 3), Assert.Single(await CountriesFor("2025", FootballGender.Female)));
+        Assert.Equal(new CatalogCountryOption("GB", "Inglaterra", 4, 0), Assert.Single(await CountriesFor("2026", FootballGender.Male)));
+        Assert.Empty(await CountriesFor("2026", FootballGender.Female));
+        Assert.Equal(HttpStatusCode.BadRequest, (await client.GetAsync("/api/world-creator/countries?season=2025&gender=99")).StatusCode);
+        Assert.Equal(new CatalogCountryOption("AR", "Argentina", 0, 0), (await CountriesFor("2025")).Single(c => c.Code == "AR"));
+
+        await h.Sync.ImportAsync(argentina);
+        Assert.Equal([new CatalogCountryOption("AR", "Argentina", 1, 0), new CatalogCountryOption("BR", "Brasil", 2, 0)],
+            await CountriesFor("2025", FootballGender.Male));
+        Assert.Equal(0, providerCalls);
+    }
+    [Fact]
     public async Task HttpPreviewConfirmationIsOwnedAndDoesNotRequeryChangedCatalog()
     {
         await using var h = new Harness(); await h.Initialize();

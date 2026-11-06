@@ -40,15 +40,36 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         return years.OrderDescending(StringComparer.Ordinal).ToList();
     }
 
-    public async Task<List<CatalogCountryOption>> Countries(string season, CancellationToken ct = default)
+    public Task<List<CatalogCountryOption>> Countries(string season, CancellationToken ct = default) =>
+        Countries(season, null, ct);
+
+    public async Task<List<CatalogCountryOption>> Countries(string season, FootballGender? gender, CancellationToken ct)
     {
-        using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        if (gender is { } requestedGender && !Enum.IsDefined(requestedGender))
+            throw new ArgumentException("Categoria inválida.");
+
+        using var scope = factory.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var countries = await db.Countries.AsNoTracking().ToListAsync(ct);
         if (countries.Count == 0) return [];
-        var male = await Select(countries.Select(x => x.Code).ToList(), FootballGender.Male, season, true, ct);
-        var female = await Select(countries.Select(x => x.Code).ToList(), FootballGender.Female, season, true, ct);
-        return countries.OrderBy(c => c.Name).Select(c => new CatalogCountryOption(c.Code, c.Name,
-            male.Clubs.Count(x => x.CountryCode == c.Code && (x.Verification == null || x.Verification.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED)), female.Clubs.Count(x => x.CountryCode == c.Code && (x.Verification == null || x.Verification.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED)))).ToList();
+
+        var codes = countries.Select(country => country.Code).ToList();
+        async Task<Dictionary<string, int>> AvailableClubs(FootballGender category)
+        {
+            var selection = await Select(codes, category, season, saved: true, ct);
+            return selection.Clubs
+                .Where(club => club.Verification == null || club.Verification.Status == CatalogClubVerificationStatus.REAL_CLUB_VERIFIED)
+                .GroupBy(club => club.CountryCode)
+                .ToDictionary(group => group.Key, group => group.Count());
+        }
+
+        Dictionary<string, int> male = gender is null or FootballGender.Male ? await AvailableClubs(FootballGender.Male) : [];
+        Dictionary<string, int> female = gender is null or FootballGender.Female ? await AvailableClubs(FootballGender.Female) : [];
+        return countries.OrderBy(country => country.Name)
+            .Select(country => new CatalogCountryOption(country.Code, country.Name,
+                male.GetValueOrDefault(country.Code), female.GetValueOrDefault(country.Code)))
+            .Where(country => gender == null || country.MaleClubs > 0 || country.FemaleClubs > 0)
+            .ToList();
     }
     public async Task<CatalogSelection> Select(List<string> countries, FootballGender gender, string season, bool saved, CancellationToken ct = default)
     {

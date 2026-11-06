@@ -27,7 +27,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   final _name = TextEditingController(text: 'Liga Mundial 98');
   String? _season;
   List<String> _seasons = [];
-  bool _seasonLoadFailed = false;
+  bool _seasonLoadFailed = false, _countryLoadFailed = false;
+  static const _maxCountries = 8;
   static int _drawSeed() => Random.secure().nextInt(2147483647) + 1;
   int _seed = _drawSeed();
   String _gender = 'Male',
@@ -135,6 +136,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   void _selectSeason(String? season) {
     if (_season == season) return;
     _season = season;
+    _clearCatalogDraft();
+  }
+
+  void _clearCatalogDraft() {
     _assembly = null;
     _clubs = [];
     _references = [];
@@ -144,18 +149,46 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _assignments.clear();
   }
 
+  int _clubCount(Map<String, dynamic> country) =>
+      (country[_gender == 'Male' ? 'maleClubs' : 'femaleClubs'] as num?)
+          ?.toInt() ??
+      0;
+
+  int get _selectedCountryCount => _options.isEmpty ? 0 : _countries.length;
+
+  bool get _canAdvanceFromCountries =>
+      !_countryLoadFailed && _selectedCountryCount > 0;
+
   Future<void> _loadCountries() async {
     final season = _season;
     if (season == null) return;
-    final options = _maps(
-      await _call('countries?season=${Uri.encodeQueryComponent(season)}'),
+    final path = Uri(
+      path: 'countries',
+      queryParameters: {'season': season, 'gender': _gender},
     );
-    if (!mounted) return;
-    final available = options.map((country) => country['code']).toSet();
-    setState(() {
-      _options = options;
-      _countries.retainWhere(available.contains);
-    });
+    try {
+      final options = _maps(
+        await _call(path.toString()),
+      ).where((country) => _clubCount(country) > 0).toList();
+      if (!mounted) return;
+      final available = options.map((country) => country['code']).toSet();
+      final validSelection = _countries
+          .where(available.contains)
+          .take(_maxCountries)
+          .toList();
+      setState(() {
+        _countryLoadFailed = false;
+        _options = options;
+        if (validSelection.length != _countries.length) {
+          _countries
+            ..clear()
+            ..addAll(validSelection);
+          _clearCatalogDraft();
+        }
+      });
+    } catch (_) {
+      if (mounted) setState(() => _countryLoadFailed = true);
+    }
   }
 
   Future<void> _initialize() => _run(() async {
@@ -890,7 +923,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          '${country[_gender == 'Male' ? 'maleClubs' : 'femaleClubs']} clubes${constraints.maxWidth < 120 ? '\n' : ' '}disponíveis',
+                          '${_clubCount(country)} clubes${constraints.maxWidth < 120 ? '\n' : ' '}disponíveis',
                           style: TextStyle(
                             color: theme.textPrimary,
                             fontSize: 17,
@@ -915,7 +948,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             ? null
             : (value) => setState(() {
                 if (value!) {
-                  if (widget.worldCatalogRules && _countries.length >= 8) {
+                  if (_countries.length >= _maxCountries) {
                     _error = 'Selecione no máximo oito países.';
                     return;
                   }
@@ -923,6 +956,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 } else {
                   _countries.remove(country['code']);
                 }
+                _error = '';
                 _assembly = null;
                 _assignments.clear();
                 _fictional = false;
@@ -963,7 +997,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                '${_countries.length} países selecionados${widget.worldCatalogRules ? ' • máximo 8' : ''}',
+                '$_selectedCountryCount países selecionados • máximo $_maxCountries',
                 style: TextStyle(
                   color: readableInk(theme.primary, Colors.white),
                   fontSize: 21,
@@ -977,8 +1011,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     ? null
                     : () => setState(() {
                         _countries.clear();
-                        _assignments.clear();
-                        _preview = null;
+                        _clearCatalogDraft();
+                        _error = '';
                       }),
                 icon: const Icon(Icons.delete_outline),
                 label: const Text('LIMPAR SELEÇÃO'),
@@ -1022,17 +1056,16 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           },
         ),
         const SizedBox(height: 2),
-        if (_options.isEmpty && !_busy)
+        if (!_busy && _countryLoadFailed)
           const Text(
             'A lista de países não está disponível. Consulte a disponibilidade da temporada para tentar novamente.',
           )
-        else if (countries.isEmpty && !_busy)
-          const Text('Nenhum país corresponde à pesquisa.')
-        else
+        else if (!_busy && _options.isEmpty)
           const Text(
-            'Zero indica ausência de cobertura válida nesta categoria e temporada.',
-            style: TextStyle(fontSize: 15),
-          ),
+            'Nenhum país com clubes disponíveis para o catálogo selecionado.',
+          )
+        else if (!_busy && countries.isEmpty)
+          const Text('Nenhum país corresponde à pesquisa.'),
       ],
     );
   }
@@ -1291,9 +1324,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               _gender,
               [('Male', 'MASCULINO'), ('Female', 'FEMININO')],
               (v) {
+                if (_gender == v) return;
                 _gender = v;
-                _assignments.clear();
-                _clubs = [];
+                _clearCatalogDraft();
               },
             ),
             _choice(
@@ -1501,15 +1534,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _step = 1;
         _search = '';
         _options = [];
+        _countryLoadFailed = false;
       });
       await _loadCountries();
       return;
     }
-    if (_step == 1 &&
-        (_countries.isEmpty ||
-            widget.worldCatalogRules && _countries.length > 8)) {
-      throw Exception('Selecione pelo menos um país.');
-    }
+    if (_step == 1 && !_canAdvanceFromCountries) return;
     if (_step == 2) {
       if (_creation == 'FullCustom') {
         if (!_customConsent) {
@@ -1553,13 +1583,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _search = '';
     });
     if (_step == 0) await _run(_loadSeasons);
+    if (_step == 1) await _run(_loadCountries);
   }
 
   @override
   Widget build(BuildContext context) => CreatorFrame(
     steps: _steps,
     step: _step,
-    countryCount: _countries.length,
+    countryCount: _selectedCountryCount,
     busy: _busy,
     error: _error,
     body: _body(),
@@ -1567,7 +1598,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     next:
         _busy ||
             (_step == 0 && (_season == null || _seasonLoadFailed)) ||
-            (_step == 1 && _options.isEmpty) ||
+            (_step == 1 && !_canAdvanceFromCountries) ||
             (_step == 6 && !_validPreview)
         ? null
         : _next,

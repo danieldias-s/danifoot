@@ -60,12 +60,22 @@ void main() {
       final back = find.widgetWithText(OutlinedButton, 'VOLTAR');
       final next = find.widgetWithText(ElevatedButton, 'CONTINUAR');
 
-      double backContrast(Set<WidgetState> states) {
-        final style = tester.widget<OutlinedButton>(back).style!;
-        return colorContrast(
-          style.foregroundColor!.resolve(states)!,
-          style.backgroundColor!.resolve(states)!,
+      Material backMaterial() => tester.widget<Material>(
+        find.descendant(of: back, matching: find.byType(Material)),
+      );
+      void expectReadableBack() {
+        final label = tester.widget<RichText>(
+          find.descendant(
+            of: find.text('VOLTAR'),
+            matching: find.byType(RichText),
+          ),
         );
+        final arrow = tester.element(
+          find.descendant(of: back, matching: find.byIcon(Icons.arrow_back)),
+        );
+        final fill = backMaterial().color!;
+        expect(colorContrast(label.text.style!.color!, fill), greaterThan(7));
+        expect(colorContrast(IconTheme.of(arrow).color!, fill), greaterThan(7));
       }
 
       for (final size in sizes) {
@@ -79,13 +89,19 @@ void main() {
         expect(backButton.top - form.bottom, inInclusiveRange(12, 32));
         expect(nextButton.right, lessThanOrEqualTo(size.width));
         expect(nextButton.bottom, lessThanOrEqualTo(size.height));
-        expect(backContrast({WidgetState.disabled}), greaterThanOrEqualTo(4.5));
+        expectReadableBack();
         expect(tester.takeException(), isNull, reason: 'viewport $size');
       }
 
+      final inactiveFill = backMaterial().color!;
+      expect(tester.widget<OutlinedButton>(back).onPressed, isNull);
       await tester.tap(next);
       await tester.pumpAndSettle();
-      expect(backContrast({}), greaterThanOrEqualTo(4.5));
+      expectReadableBack();
+      expect(
+        colorContrast(inactiveFill, backMaterial().color!),
+        greaterThan(3),
+      );
       await tester.tap(back);
       await tester.pumpAndSettle();
       expect(step, 0);

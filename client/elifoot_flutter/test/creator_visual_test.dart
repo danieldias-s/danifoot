@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:elifoot_flutter/api_client.dart';
+import 'package:elifoot_flutter/classic98_widgets.dart';
 import 'package:elifoot_flutter/club_selection_dialog.dart';
 import 'package:elifoot_flutter/club_crest.dart';
 import 'package:elifoot_flutter/club_theme.dart';
@@ -14,6 +15,8 @@ class _CreatorFixture {
   final requests = <http.Request>[];
   List<String> seasons = ['2026', '2025'];
   final Map<String, int> brazilClubsByYear = {};
+  final countryRowsByYear = <String, List<(String, String, int, int)>>{};
+  int uruguayClubs = 0;
   int seasonFailures = 0;
   int countryFailures = 0;
   bool failLastConfiguration = false;
@@ -33,28 +36,28 @@ class _CreatorFixture {
           countryFailures--;
           return http.Response('{"error":"Catálogo indisponível"}', 503);
         }
+        final year = request.url.queryParameters['season'];
+        final brazilClubs = brazilClubsByYear[year] ?? 20;
         data = [
-          for (final row in [
-            ('DE', 'Alemanha', 18),
-            ('AR', 'Argentina', 0),
-            ('AT', 'Áustria', 28),
-            (
-              'BR',
-              'Brasil',
-              brazilClubsByYear[request.url.queryParameters['season']] ?? 20,
-            ),
-            ('ES', 'Espanha', 20),
-            ('FR', 'França', 18),
-            ('GB', 'Inglaterra', 44),
-            ('IT', 'Itália', 20),
-            ('PT', 'Portugal', 18),
-            ('UY', 'Uruguai', 0),
-          ])
+          for (final row
+              in countryRowsByYear[year] ??
+                  [
+                    ('DE', 'Alemanha', 18, 18),
+                    ('AR', 'Argentina', 0, 0),
+                    ('AT', 'Áustria', 28, 28),
+                    ('BR', 'Brasil', brazilClubs, brazilClubs),
+                    ('ES', 'Espanha', 20, 20),
+                    ('FR', 'França', 18, 18),
+                    ('GB', 'Inglaterra', 44, 44),
+                    ('IT', 'Itália', 20, 20),
+                    ('PT', 'Portugal', 18, 18),
+                    ('UY', 'Uruguai', uruguayClubs, uruguayClubs),
+                  ])
             {
               'code': row.$1,
               'name': row.$2,
               'maleClubs': row.$3,
-              'femaleClubs': row.$3,
+              'femaleClubs': row.$4,
             },
         ];
       } else if (request.url.path.endsWith('/last-configuration')) {
@@ -79,15 +82,19 @@ class _CreatorFixture {
 Future<void> _creator(
   WidgetTester tester,
   _CreatorFixture fixture,
-  double width,
-) async {
+  double width, {
+  bool classic = false,
+}) async {
   tester.view.physicalSize = Size(width, 900);
   tester.view.devicePixelRatio = 1;
   addTearDown(tester.view.resetPhysicalSize);
   addTearDown(tester.view.resetDevicePixelRatio);
+  final currentTheme = ClassicTheme.classicGreen();
   await tester.pumpWidget(
     MaterialApp(
-      theme: ClassicTheme.classicGreen().material(),
+      theme:
+          (classic ? classic98PresentationPalette(currentTheme) : currentTheme)
+              .material(),
       home: WorldCreatorScreen(
         api: fixture.api,
         coachId: '11111111-1111-1111-1111-111111111111',
@@ -97,6 +104,8 @@ Future<void> _creator(
   );
   await tester.pumpAndSettle();
 }
+
+Finder _countryCard(String code) => find.byKey(ValueKey('country-card-$code'));
 
 Future<void> _next(WidgetTester tester) async {
   await tester.tap(find.text('CONTINUAR'));
@@ -110,6 +119,106 @@ void main() {
     'ANO DO CATÁLOGO',
   );
   final continueButton = find.widgetWithText(ElevatedButton, 'CONTINUAR');
+
+  for (final classic in [false, true]) {
+    testWidgets(
+      'Países seguem categoria e ano, com atualização (clássica=$classic)',
+      (tester) async {
+        final fixture = _CreatorFixture()
+          ..countryRowsByYear.addAll({
+            '2026': [
+              ('BR', 'Brasil', 9, 1),
+              ('DE', 'Alemanha', 4, 0),
+              ('AR', 'Argentina', 0, 3),
+            ],
+            '2025': [('BR', 'Brasil', 14, 0)],
+          });
+        await _creator(tester, fixture, classic ? 390 : 1366, classic: classic);
+        await _next(tester);
+        expect(_countryCard('BR'), findsOneWidget);
+        expect(_countryCard('DE'), findsOneWidget);
+        expect(_countryCard('AR'), findsNothing);
+        expect(find.text('2/8 • Países'), findsOneWidget);
+
+        await tester.tap(find.text('VOLTAR'));
+        await tester.pumpAndSettle();
+        await tester.tap(
+          find.widgetWithText(DropdownButtonFormField<String>, 'Categoria'),
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('FEMININO').last);
+        await tester.pumpAndSettle();
+        await _next(tester);
+        expect(_countryCard('BR'), findsOneWidget);
+        expect(_countryCard('DE'), findsNothing);
+        expect(_countryCard('AR'), findsOneWidget);
+        expect(
+          find.textContaining(RegExp(r'^3 clubes\s+disponíveis$')),
+          findsOneWidget,
+        );
+        expect(find.text('1/8 • Países'), findsOneWidget);
+
+        await tester.tap(find.text('VOLTAR'));
+        await tester.pumpAndSettle();
+        await tester.tap(yearDropdown);
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('2025').last);
+        await tester.pumpAndSettle();
+        await _next(tester);
+        expect(_countryCard('BR'), findsNothing);
+        expect(find.text('0/8 • Países'), findsOneWidget);
+        expect(
+          find.text(
+            'Nenhum país com clubes disponíveis para o catálogo selecionado.',
+          ),
+          findsOneWidget,
+        );
+        expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+
+        fixture.countryRowsByYear['2025'] = [('BR', 'Brasil', 14, 5)];
+        final refresh = find.text('CONSULTAR DISPONIBILIDADE DA TEMPORADA');
+        await tester.ensureVisible(refresh);
+        await tester.tap(refresh);
+        await tester.pumpAndSettle();
+        expect(_countryCard('BR'), findsOneWidget);
+        expect(
+          find.textContaining(RegExp(r'^5 clubes\s+disponíveis$')),
+          findsOneWidget,
+        );
+        expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+        await tester.ensureVisible(_countryCard('BR'));
+        await tester.tap(
+          find.descendant(
+            of: _countryCard('BR'),
+            matching: find.byType(CheckboxListTile),
+          ),
+        );
+        await tester.pumpAndSettle();
+        expect(find.text('1/8 • Países'), findsOneWidget);
+        expect(
+          tester.widget<ElevatedButton>(continueButton).onPressed,
+          isNotNull,
+        );
+
+        expect(
+          fixture.requests
+              .where((r) => r.url.path.endsWith('/countries'))
+              .map(
+                (r) => (
+                  r.url.queryParameters['season'],
+                  r.url.queryParameters['gender'],
+                ),
+              ),
+          [
+            ('2026', 'Male'),
+            ('2026', 'Female'),
+            ('2025', 'Female'),
+            ('2025', 'Female'),
+          ],
+        );
+      },
+    );
+  }
 
   testWidgets('Sem catálogo, o Criador bloqueia a próxima etapa', (
     tester,
@@ -267,8 +376,9 @@ void main() {
       final fixture = _CreatorFixture();
       await _creator(tester, fixture, width);
       await _next(tester);
-      expect(find.text('8/8 • Países'), findsOneWidget);
-      expect(find.textContaining('0 clubes'), findsWidgets);
+      expect(find.text('7/8 • Países'), findsOneWidget);
+      expect(_countryCard('AR'), findsNothing);
+      expect(_countryCard('UY'), findsNothing);
       final germany = tester.getRect(
         find.byKey(const ValueKey('country-card-DE')),
       );
@@ -297,7 +407,7 @@ void main() {
       );
       await tester.tap(find.text('VOLTAR'));
       await tester.pumpAndSettle();
-      expect(find.text('8/8 • Países'), findsOneWidget);
+      expect(find.text('7/8 • Países'), findsOneWidget);
       await tester.pumpWidget(
         MaterialApp(
           theme: ClassicTheme.classicGreen().material(),
@@ -358,35 +468,40 @@ void main() {
   testWidgets(
     'Pesquisa, limite de oito e limpar usam o estado real dos países',
     (tester) async {
-      final fixture = _CreatorFixture();
+      final fixture = _CreatorFixture()..uruguayClubs = 10;
       await _creator(tester, fixture, 390);
       await _next(tester);
+      await tester.enterText(find.byType(TextField), 'Argentina');
+      await tester.pumpAndSettle();
+      expect(_countryCard('AR'), findsNothing);
+      expect(find.text('Nenhum país corresponde à pesquisa.'), findsOneWidget);
+      expect(find.text('7/8 • Países'), findsOneWidget);
+      await tester.enterText(find.byType(TextField), 'Áustria');
+      await tester.pumpAndSettle();
+      await tester.tap(_countryCard('AT'));
+      await tester.pumpAndSettle();
+      expect(find.text('8/8 • Países'), findsOneWidget);
       await tester.enterText(find.byType(TextField), 'Uruguai');
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('country-card-UY')));
+      await tester.tap(_countryCard('UY'));
       await tester.pumpAndSettle();
       expect(find.text('Selecione no máximo oito países.'), findsOneWidget);
       expect(find.text('8/8 • Países'), findsOneWidget);
       await tester.enterText(find.byType(TextField), 'Brasil');
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('country-card-BR')));
+      await tester.tap(_countryCard('BR'));
       await tester.pumpAndSettle();
       expect(find.text('7/8 • Países'), findsOneWidget);
       await tester.enterText(find.byType(TextField), 'Uruguai');
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const ValueKey('country-card-UY')));
+      await tester.tap(_countryCard('UY'));
       await tester.pumpAndSettle();
       expect(find.text('8/8 • Países'), findsOneWidget);
       await tester.ensureVisible(find.text('LIMPAR SELEÇÃO'));
       await tester.tap(find.text('LIMPAR SELEÇÃO'));
       await tester.pumpAndSettle();
       expect(find.text('0/8 • Países'), findsOneWidget);
-      await tester.tap(find.text('CONTINUAR'));
-      await tester.pumpAndSettle();
-      expect(
-        find.textContaining('Selecione pelo menos um país.'),
-        findsOneWidget,
-      );
+      expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
       expect(
         fixture.requests.where((r) => r.url.path.endsWith('/catalog')),
         isEmpty,
@@ -425,7 +540,7 @@ void main() {
     expect(payload['dataMode'], 'FREE_WORLD');
     expect(payload['allowProviderReportedPlayers'], true);
     expect(payload['useSavedData'], true);
-    expect(payload['countries'], hasLength(8));
+    expect(payload['countries'], hasLength(7));
     fixture.api.disconnectRealtime();
   });
 
