@@ -22,8 +22,8 @@ void main() {
               {
                 'code': 'ES',
                 'name': 'Espanha',
-                'maleClubs': 32,
-                'femaleClubs': 32,
+                'maleClubs': 128,
+                'femaleClubs': 128,
               },
             ];
           } else if (request.url.path.endsWith('/last-configuration')) {
@@ -33,7 +33,7 @@ void main() {
               'season': '2026',
               'seed': 1,
               'mode': 'Custom',
-              'districtMode': 'Manual',
+              'districtMode': 'Ranking',
               'maxHumans': 1,
               'countries': ['ES'],
               'assignments': [],
@@ -46,7 +46,7 @@ void main() {
             final body = jsonDecode(request.body) as Map;
             result = {
               'clubs': [
-                for (var i = 0; i < 32; i++)
+                for (var i = 0; i < 128; i++)
                   {
                     'key': 'ES-$i',
                     'name': 'Clube de teste $i',

@@ -21,6 +21,8 @@ class _CreatorFixture {
   int seasonFailures = 0;
   int countryFailures = 0;
   int clubCount = 32;
+  final clubPowers = <int, int>{};
+  bool includeOutsideClub = false;
   bool longClubName = false;
   final unavailableClubIds = <int>{};
   bool failLastConfiguration = false;
@@ -87,12 +89,25 @@ class _CreatorFixture {
                   'season': body['season'],
                   'rank': i + 1,
                   'initialProfile': {
-                    'clubInitialPower': 20,
+                    'clubInitialPower': clubPowers[i] ?? 20,
                     'worldRank': i + 1,
                   },
                   'verification': {'status': 'REAL_CLUB_VERIFIED'},
                   'players': [],
                 },
+            if (includeOutsideClub)
+              {
+                'key': 'outside-test',
+                'name': 'Clube de país não selecionado',
+                'countryCode': 'UY',
+                'countryName': 'Uruguai',
+                'gender': body['gender'],
+                'season': body['season'],
+                'rank': 999,
+                'initialProfile': {'clubInitialPower': 1, 'worldRank': 999},
+                'verification': {'status': 'REAL_CLUB_VERIFIED'},
+                'players': [],
+              },
           ],
           'references': [],
           'warnings': [],
@@ -159,7 +174,121 @@ Future<void> _next(WidgetTester tester) async {
   expect(tester.takeException(), isNull);
 }
 
+Finder _districtControl(String key) => find.byKey(ValueKey(key));
+
+Finder _districtRow(int index) => _districtControl('district-test-$index');
+
+Future<void> _openDistricts(WidgetTester tester) async {
+  for (var step = 0; step < 3; step++) {
+    await _next(tester);
+  }
+  expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+}
+
+Future<void> _tapVisible(WidgetTester tester, Finder finder) async {
+  await tester.ensureVisible(finder);
+  await tester.tap(finder);
+  await tester.pumpAndSettle();
+  expect(tester.takeException(), isNull);
+}
+
+void _districtMetric(String key, String value) {
+  expect(
+    find.descendant(of: _districtControl(key), matching: find.text(value)),
+    findsOneWidget,
+  );
+}
+
 void main() {
+  for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
+    testWidgets('Distritais mostra os dados e controles em $width px', (
+      tester,
+    ) async {
+      final fixture = _CreatorFixture()
+        ..clubCount = 128
+        ..includeOutsideClub = true;
+      await _creator(
+        tester,
+        fixture,
+        width,
+        classic: width == 390 || width == 1920,
+      );
+      await _openDistricts(tester);
+      _districtMetric('districts-count', '96/96');
+      _districtMetric('districts-available-count', '96');
+      _districtMetric('districts-division-count', '4');
+      expect(
+        _districtControl(
+          width >= 1366 ? 'district-desktop-table' : 'district-mobile-cards',
+        ),
+        findsOneWidget,
+      );
+      expect(_districtRow(0), findsNothing);
+      expect(_districtControl('district-outside-test'), findsNothing);
+      expect(_districtControl('district-crest-test-32'), findsOneWidget);
+      expect(
+        tester
+            .widget<CreatorCountryFlag>(
+              _districtControl('district-flag-test-32'),
+            )
+            .code,
+        isNotEmpty,
+      );
+      await _tapVisible(tester, _districtControl('district-page-next'));
+      expect(find.text('Mostrando 11–20 de 96 clubes'), findsOneWidget);
+      expect(_districtRow(42), findsOneWidget);
+      expect(_districtRow(32), findsNothing);
+    });
+  }
+
+  testWidgets('Consulta distrital preserva filtro, página e escolhas manuais', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..clubCount = 136;
+    await _creator(tester, fixture, 1366);
+    await _openDistricts(tester);
+
+    await _tapVisible(tester, _districtControl('district-country-filter'));
+    await _tapVisible(tester, find.text('Espanha').last);
+    await _tapVisible(tester, _districtControl('district-order-filter'));
+    await _tapVisible(tester, find.text('Força').last);
+    await _tapVisible(tester, _districtControl('district-page-next'));
+    final range = tester
+        .widget<Text>(_districtControl('district-page-range'))
+        .data;
+    expect(range, startsWith('Mostrando 11–'));
+    await _tapVisible(tester, find.text('VOLTAR'));
+    await _next(tester);
+    expect(
+      tester.widget<Text>(_districtControl('district-page-range')).data,
+      range,
+    );
+
+    await _tapVisible(tester, _districtControl('Distritais:Ranking'));
+    await _tapVisible(tester, find.text('Escolher os 96 manualmente').last);
+    await _tapVisible(tester, _districtControl('district-country-filter'));
+    await _tapVisible(tester, find.text('Todos os países').last);
+    final search = _districtControl('district-search');
+    await tester.enterText(search, 'clube inexistente');
+    await tester.pumpAndSettle();
+    expect(_districtControl('district-empty'), findsOneWidget);
+    await tester.enterText(search, 'Clube de teste 127');
+    await tester.pumpAndSettle();
+    await _tapVisible(tester, _districtControl('district-checkbox-test-127'));
+    _districtMetric('districts-count', '1/96');
+    await _tapVisible(tester, _districtControl('district-status-filter'));
+    await _tapVisible(tester, find.text('Selecionados').last);
+    expect(_districtRow(127), findsOneWidget);
+    expect(
+      tester
+          .widget<ElevatedButton>(
+            find.widgetWithText(ElevatedButton, 'CONTINUAR'),
+          )
+          .onPressed,
+      isNull,
+    );
+  });
+
   final yearDropdown = find.widgetWithText(
     DropdownButtonFormField<String>,
     'ANO DO CATÁLOGO',
@@ -632,7 +761,7 @@ void main() {
   testWidgets('Elencos e fontes preservam permissões ao voltar e avançar', (
     tester,
   ) async {
-    final fixture = _CreatorFixture();
+    final fixture = _CreatorFixture()..clubCount = 128;
     await _creator(tester, fixture, 1366);
     await _next(tester);
     await _next(tester);
@@ -672,6 +801,7 @@ void main() {
     tester,
   ) async {
     final fixture = _CreatorFixture()
+      ..clubCount = 128
       ..lastConfiguration = {
         'name': 'Liga austríaca',
         'gender': 'Male',
@@ -689,6 +819,7 @@ void main() {
     await _next(tester);
     await _next(tester);
     await _next(tester);
+    expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
     expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     final request = fixture.requests.singleWhere(
       (request) => request.url.path.endsWith('/catalog'),
@@ -849,7 +980,7 @@ void main() {
   testWidgets('Trocas são enviadas à prévia na ordem das quatro divisões', (
     tester,
   ) async {
-    final fixture = _CreatorFixture()..clubCount = 33;
+    final fixture = _CreatorFixture()..clubCount = 128;
     await _creator(tester, fixture, 1366);
     await _next(tester);
     await _next(tester);
@@ -915,17 +1046,10 @@ void main() {
     expectSlot(3, 32);
 
     await _next(tester);
-    expect(find.text('Faltam 95 clubes distritais.'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('Distritais:Ranking')));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Escolher os 96 manualmente').last);
-    await tester.pumpAndSettle();
+    expect(find.text('96/96'), findsOneWidget);
     final returnedClub = find.byKey(const ValueKey('district-test-2'));
     expect(returnedClub, findsOneWidget);
     expect(find.byKey(const ValueKey('district-test-32')), findsNothing);
-    await tester.ensureVisible(returnedClub);
-    await tester.tap(returnedClub);
-    await tester.pumpAndSettle();
     await _next(tester);
     await _next(tester);
     final previews = fixture.requests.where(
@@ -934,12 +1058,8 @@ void main() {
     final edited = jsonDecode(previews.single.body) as Map;
     final assignments = (edited['assignments'] as List).cast<Map>();
     expect(edited['preserveRankedSquadStrengths'], isTrue);
-    expect(assignments, hasLength(33));
-    expect(assignments.map((a) => a['clubKey']).toSet(), hasLength(33));
-    expect(
-      assignments.singleWhere((a) => a['division'] == 5)['clubKey'],
-      'test-2',
-    );
+    expect(assignments, hasLength(32));
+    expect(assignments.map((a) => a['clubKey']).toSet(), hasLength(32));
     for (var division = 1; division <= 4; division++) {
       expect(assignments.where((a) => a['division'] == division), hasLength(8));
     }

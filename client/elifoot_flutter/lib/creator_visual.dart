@@ -81,6 +81,7 @@ class CreatorFrame extends StatelessWidget {
   final bool busy;
   final String error;
   final ({int clubs, int divisions, int capacity})? divisionSummary;
+  final String? stageDescription;
   final String nextLabel;
   final VoidCallback? back, next;
   const CreatorFrame({
@@ -94,6 +95,7 @@ class CreatorFrame extends StatelessWidget {
     this.back,
     this.next,
     this.divisionSummary,
+    this.stageDescription,
     this.nextLabel = 'CONTINUAR',
   });
 
@@ -218,13 +220,14 @@ class CreatorFrame extends StatelessWidget {
         final mobile = constraints.maxWidth < 1024;
         final summary = divisionSummary;
         final divisionStage = summary != null;
-        final frameInk = divisionStage
+        final stadiumStage = divisionStage || stageDescription != null;
+        final frameInk = stadiumStage
             ? readableInk(theme.primary, Colors.white)
             : theme.textPrimary;
         return Scaffold(
           backgroundColor: theme.background,
           body: CreatorBackdrop(
-            stadium: divisionStage,
+            stadium: stadiumStage,
             child: SafeArea(
               child: Column(
                 children: [
@@ -411,7 +414,7 @@ class CreatorFrame extends StatelessWidget {
                           constraints: BoxConstraints(
                             maxWidth: step == 0
                                 ? 720
-                                : (divisionStage ? 1340 : 1280),
+                                : (stadiumStage ? 1340 : 1280),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -436,6 +439,18 @@ class CreatorFrame extends StatelessWidget {
                                         height: 1.1,
                                       ),
                                     ),
+                                    if (stageDescription
+                                        case final description?) ...[
+                                      const SizedBox(height: 6),
+                                      Text(
+                                        description,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: frameInk,
+                                          fontSize: mobile ? 16 : 19,
+                                        ),
+                                      ),
+                                    ],
                                     if (step == 1 || summary != null) ...[
                                       const SizedBox(height: 8),
                                       Text(
