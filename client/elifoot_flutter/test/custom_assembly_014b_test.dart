@@ -172,7 +172,9 @@ void main() {
         httpClient: MockClient((req) async {
           expect(req.headers['Authorization'], 'Bearer localdev-privateowner');
           dynamic response;
-          if (req.url.path.endsWith('/countries')) {
+          if (req.url.path.endsWith('/seasons')) {
+            response = ['2026'];
+          } else if (req.url.path.endsWith('/countries')) {
             response = [
               {
                 'code': 'BR',

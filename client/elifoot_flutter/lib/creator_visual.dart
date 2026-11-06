@@ -95,7 +95,7 @@ class CreatorFrame extends StatelessWidget {
         child: Text(
           'Avance pelas oito etapas para conferir a montagem antes de confirmar.\n\n'
           '${steps.asMap().entries.map((e) => '${e.key + 1}. ${e.value}').join('\n')}\n\n'
-          'Os totais de clubes vêm do catálogo da categoria e temporada escolhidas. '
+          'Os totais de clubes vêm do catálogo da categoria e do ano escolhidos. '
           'As opções de dados exibem as autorizações necessárias e os motivos de bloqueio.',
         ),
       ),
@@ -107,6 +107,86 @@ class CreatorFrame extends StatelessWidget {
       ],
     ),
   );
+
+  Widget _navigation(ClassicTheme theme, bool mobile) {
+    final backInk = readableInk(theme.primary, theme.textPrimary);
+    final mutedInk = readableOn(
+      Color.lerp(backInk, theme.primary, .3)!,
+      theme.primary,
+    );
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    );
+    const labelStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 12, 0, mobile ? 12 : 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
+            child: SizedBox(
+              width: 220,
+              height: 48,
+              child: OutlinedButton(
+                onPressed: back,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: backInk,
+                  disabledForegroundColor: mutedInk,
+                  backgroundColor: theme.primary,
+                  disabledBackgroundColor: theme.primary,
+                  side: BorderSide(
+                    color: back == null ? mutedInk : theme.selectedBackground,
+                  ),
+                  shape: shape,
+                ),
+                child: const FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.arrow_back, size: 20),
+                      SizedBox(width: 6),
+                      Text('VOLTAR', style: labelStyle),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          if (step < steps.length - 1) ...[
+            SizedBox(width: mobile ? 12 : 16),
+            Flexible(
+              child: SizedBox(
+                width: 260,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: next,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.selectedBackground,
+                    foregroundColor: theme.selectedText,
+                    disabledBackgroundColor: theme.primary,
+                    disabledForegroundColor: mutedInk,
+                    shape: shape,
+                  ),
+                  child: const FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('CONTINUAR', style: labelStyle),
+                        SizedBox(width: 6),
+                        Icon(Icons.arrow_forward, size: 20),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +220,7 @@ class CreatorFrame extends StatelessWidget {
                           tooltip: 'VOLTAR À SALA',
                           onPressed: () => Navigator.maybePop(context),
                           icon: const Icon(Icons.arrow_back),
-                          color: theme.textPrimary,
+                          color: readableInk(theme.primary, theme.textPrimary),
                         ),
                         Expanded(
                           child: Align(
@@ -301,7 +381,9 @@ class CreatorFrame extends StatelessWidget {
                       ),
                       child: Center(
                         child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 1280),
+                          constraints: BoxConstraints(
+                            maxWidth: step == 0 ? 720 : 1280,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -397,83 +479,18 @@ class CreatorFrame extends StatelessWidget {
                                 ),
                                 child: ClassicPaper(builder: (_) => body),
                               ),
+                              if (step == 0) _navigation(theme, mobile),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(16, 8, 16, mobile ? 12 : 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: SizedBox(
-                            width: 220,
-                            height: mobile ? 48 : 52,
-                            child: OutlinedButton(
-                              onPressed: back,
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor: theme.textPrimary,
-                                backgroundColor: theme.primary,
-                                side: BorderSide(
-                                  color: theme.selectedBackground,
-                                  width: 2,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              child: const Text(
-                                'VOLTAR',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (step < steps.length - 1) ...[
-                          SizedBox(width: mobile ? 12 : 24),
-                          Flexible(
-                            child: SizedBox(
-                              width: 260,
-                              height: mobile ? 48 : 52,
-                              child: ElevatedButton(
-                                onPressed: next,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: theme.selectedBackground,
-                                  foregroundColor: theme.selectedText,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                child: const FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'CONTINUAR',
-                                        style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(width: 6),
-                                      Icon(Icons.chevron_right),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ],
+                  if (step != 0)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: _navigation(theme, mobile),
                     ),
-                  ),
                 ],
               ),
             ),

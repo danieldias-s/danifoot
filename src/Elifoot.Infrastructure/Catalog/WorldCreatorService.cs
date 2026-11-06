@@ -11,6 +11,35 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
 {
     public static readonly (string Code, string Name)[] PriorityCountries = [("BR", "Brasil"), ("AR", "Argentina"),
         ("GB", "Inglaterra"), ("ES", "Espanha"), ("DE", "Alemanha"), ("IT", "Itália"), ("FR", "França"), ("PT", "Portugal")];
+
+    public async Task<List<string>> Seasons(CancellationToken ct = default)
+    {
+        using var scope = factory.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        var candidates = await (from catalogScope in db.Scopes.AsNoTracking()
+            where catalogScope.DataType == CatalogDataType.Clubs && catalogScope.Season.Length == 4
+            join snapshot in db.Snapshots.AsNoTracking() on catalogScope.ActiveSnapshotId equals (Guid?)snapshot.Id
+            where catalogScope.Key == snapshot.ScopeKey
+            select new { Scope = catalogScope, Snapshot = snapshot }).ToListAsync(ct);
+
+        var now = DateTime.UtcNow;
+        var years = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var candidate in candidates)
+        {
+            var year = candidate.Scope.Season;
+            if (years.Contains(year) || year == "0000" || !year.All(char.IsAsciiDigit)) continue;
+
+            var snapshot = candidate.Snapshot;
+            var package = CatalogImportCodec.ReadJson(snapshot.PayloadJson);
+            var reference = new CatalogReference(snapshot.Id, candidate.Scope.ToKey(), snapshot.Version,
+                snapshot.UpdatedAt, snapshot.ValidatedAt, snapshot.IsFixture, "Saved", null, package.Rights);
+            if (package.Clubs.Count > 0 && CatalogRightsPolicy.StorageIssue(package, now) == null &&
+                CatalogRightsPolicy.WorldIssue(reference, now) == null)
+                years.Add(year);
+        }
+        return years.OrderDescending(StringComparer.Ordinal).ToList();
+    }
+
     public async Task<List<CatalogCountryOption>> Countries(string season, CancellationToken ct = default)
     {
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();

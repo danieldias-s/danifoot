@@ -25,10 +25,11 @@ class WorldCreatorScreen extends StatefulWidget {
 
 class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   final _name = TextEditingController(text: 'Liga Mundial 98');
-  final _season = TextEditingController(text: '2026');
+  String? _season;
+  List<String> _seasons = [];
+  bool _seasonLoadFailed = false;
   static int _drawSeed() => Random.secure().nextInt(2147483647) + 1;
   int _seed = _drawSeed();
-  String? _countriesSeason;
   String _gender = 'Male',
       _dataMode = 'REAL_COMPLETE',
       _mode = 'Automatic',
@@ -80,7 +81,6 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   @override
   void dispose() {
     _name.dispose();
-    _season.dispose();
     super.dispose();
   }
 
@@ -109,8 +109,44 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
+  Future<void> _loadSeasons() async {
+    try {
+      final seasons = List<String>.from(await _call('seasons') as List);
+      if (!mounted) return;
+      setState(() {
+        _seasonLoadFailed = false;
+        final firstAvailableCatalog = _seasons.isEmpty;
+        _seasons = seasons;
+        if (firstAvailableCatalog) {
+          _selectSeason(seasons.firstOrNull);
+        } else if (_season != null && !seasons.contains(_season)) {
+          _selectSeason(null);
+          if (seasons.isNotEmpty) {
+            _error =
+                'O ano selecionado não está mais disponível. Escolha outro ano do catálogo.';
+          }
+        }
+      });
+    } catch (_) {
+      if (mounted) setState(() => _seasonLoadFailed = true);
+    }
+  }
+
+  void _selectSeason(String? season) {
+    if (_season == season) return;
+    _season = season;
+    _assembly = null;
+    _clubs = [];
+    _references = [];
+    _warnings = [];
+    _dataSummary = null;
+    _preview = null;
+    _assignments.clear();
+  }
+
   Future<void> _loadCountries() async {
-    final season = _season.text.trim();
+    final season = _season;
+    if (season == null) return;
     final options = _maps(
       await _call('countries?season=${Uri.encodeQueryComponent(season)}'),
     );
@@ -118,13 +154,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     final available = options.map((country) => country['code']).toSet();
     setState(() {
       _options = options;
-      _countriesSeason = season;
       _countries.retainWhere(available.contains);
     });
   }
 
   Future<void> _initialize() => _run(() async {
-    await _loadCountries();
+    await _loadSeasons();
+    if (!mounted || _seasonLoadFailed) return;
     final last = await _call('last-configuration');
     if (mounted) {
       setState(() {
@@ -136,7 +172,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     'name': _name.text.trim(),
     'gender': _gender,
     'dataMode': _dataMode,
-    'season': _season.text.trim(),
+    'season': _season,
     'countries': _countries.toList()..sort(),
     'mode': _mode,
     'districtMode': _district,
@@ -153,7 +189,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _providerReported && _dataMode != 'REAL_COMPLETE',
     'includeHistoricalClubs': _includeHistorical,
     'includeUnverifiedClubs': _includeUnverified,
-    'useSavedData': _saved,
+    'useSavedData': widget.worldCatalogRules || _saved,
     if (widget.worldCatalogRules) ...{
       'useWorldCatalogRules': true,
       'fictionalOnly': _fictionalOnly,
@@ -174,7 +210,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               : p['allowFictionalPlayers'] == true
               ? 'REAL_CLUBS_SIMULATED'
               : 'REAL_COMPLETE');
-      _season.text = p['season'].toString();
+      final presetSeason = p['season']?.toString();
+      _selectSeason(_seasons.contains(presetSeason) ? presetSeason : null);
+      _error = _season == null
+          ? 'O ano da última configuração não está disponível. Escolha um ano do catálogo.'
+          : '';
       _seed = (p['seed'] as num?)?.toInt() ?? _seed;
       _mode = p['mode'].toString();
       _district = p['districtMode'].toString();
@@ -247,6 +287,18 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         }
       });
     }
+  }
+
+  Future<void> _previewWithSimulatedSquads() async {
+    setState(() {
+      _dataMode = 'REAL_CLUBS_SIMULATED';
+      _fictionalPlayers = true;
+      _fictional = false;
+      _fictionalOnly = false;
+      _preview = null;
+    });
+    await _catalog();
+    if (mounted) await _makePreview();
   }
 
   void _applyAssembly(Map<String, dynamic> data) {
@@ -420,7 +472,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   Widget _choice(
     String label,
-    String value,
+    String? value,
     List<(String, String)> choices,
     void Function(String) change,
   ) {
@@ -469,7 +521,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             ),
           )
           .toList(),
-      onChanged: _busy
+      onChanged: _busy || choices.isEmpty
           ? null
           : (v) => setState(() {
               change(v!);
@@ -695,12 +747,47 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     final summary = p['dataSummary'] is Map
         ? Map<String, dynamic>.from(p['dataSummary'] as Map)
         : null;
+    final clubCount = Text(
+      '${clubs.length}/128 clubes • ${p['pendingSlots']} vagas pendentes',
+    );
+    final details = [
+      for (final e in p['errors'] as List? ?? [])
+        Text(e.toString(), style: const TextStyle(color: Colors.orangeAccent)),
+      for (final w in p['warnings'] as List? ?? [])
+        Text(w.toString(), style: const TextStyle(color: Colors.amber)),
+    ];
+    final verifiedClubs = summary?['verifiedRealClubs'] as num? ?? 0;
+    if (_step == 6 &&
+        _dataMode == 'REAL_COMPLETE' &&
+        clubs.isEmpty &&
+        verifiedClubs >= 128 &&
+        summary?['completeRealSquads'] == 0) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          clubCount,
+          Text(
+            'Há $verifiedClubs clubes reais verificados nesta seleção, mas nenhum tem '
+            'elenco real completo na temporada. Para jogar com esses clubes, você pode '
+            'autorizar atletas simulados para completar os elencos.',
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton(
+            onPressed: _busy ? null : () => _run(_previewWithSimulatedSquads),
+            child: const Text('AUTORIZAR ATLETAS SIMULADOS E GERAR PRÉVIA'),
+          ),
+          if (details.isNotEmpty)
+            ExpansionTile(
+              title: const Text('Detalhes da prévia'),
+              children: details,
+            ),
+        ],
+      );
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '${clubs.length}/128 clubes • ${p['pendingSlots']} vagas pendentes',
-        ),
+        clubCount,
         _dataCounts(summary),
         if (p['dataAsOf'] != null)
           Text('Vínculos conferidos em ${p['dataAsOf']}'),
@@ -713,13 +800,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           Text(
             '${summary['selectedRealClubs']} clubes reais selecionados • ${summary['selectedFictionalClubs']} fictícios • ${summary['realCurrentPlayers']} atletas reais confirmados • ${summary['generatedPlayers']} fictícios gerados',
           ),
-        for (final e in p['errors'] as List? ?? [])
-          Text(
-            e.toString(),
-            style: const TextStyle(color: Colors.orangeAccent),
-          ),
-        for (final w in p['warnings'] as List? ?? [])
-          Text(w.toString(), style: const TextStyle(color: Colors.amber)),
+        ...details,
         for (int d = 1; d <= 5; d++)
           ExpansionTile(
             title: Text(
@@ -903,19 +984,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 label: const Text('LIMPAR SELEÇÃO'),
               ),
               TextButton.icon(
-                onPressed: _busy
-                    ? null
-                    : () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => WorldCatalogStatus016B(
-                            api: widget.api,
-                            coachId: widget.coachId,
-                            gender: _gender,
-                            season: _season.text.trim(),
-                          ),
-                        ),
-                      ),
+                onPressed: _busy ? null : _openCatalogStatus,
                 icon: const Icon(Icons.sync),
                 label: const Text('CACHE, ATUALIZAÇÕES E COBERTURA'),
               ),
@@ -966,6 +1035,23 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           ),
       ],
     );
+  }
+
+  Future<void> _openCatalogStatus() async {
+    final season = _season;
+    if (season == null) return;
+    await Navigator.push<void>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => WorldCatalogStatus016B(
+          api: widget.api,
+          coachId: widget.coachId,
+          gender: _gender,
+          season: season,
+        ),
+      ),
+    );
+    if (mounted) await _run(_loadCountries);
   }
 
   Widget _modePanel() => Column(
@@ -1114,14 +1200,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           ('Automatic', 'AUTOMÁTICO POR RANKING'),
           ('Custom', 'ESCOLHER CLUBES E DIVISÕES'),
         ], (value) => _mode = value),
-        CreatorConsent(
-          icon: Icons.save_outlined,
-          title: 'Usar imediatamente os dados salvos',
-          description:
-              'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
-          value: _saved,
-          onChanged: _busy ? null : (value) => setState(() => _saved = value!),
-        ),
+        if (!widget.worldCatalogRules)
+          CreatorConsent(
+            icon: Icons.save_outlined,
+            title: 'Usar imediatamente os dados salvos',
+            description:
+                'As datas serão exibidas. Desmarque para tentar atualizar fontes autorizadas.',
+            value: _saved,
+            onChanged: _busy
+                ? null
+                : (value) => setState(() => _saved = value!),
+          ),
         CreatorConsent(
           icon: Icons.history,
           title: 'INCLUIR clubes históricos, com referência passada explícita',
@@ -1207,16 +1296,26 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 _clubs = [];
               },
             ),
-            TextField(
-              controller: _season,
-              onChanged: (_) => setState(() {
-                _preview = null;
-                _assignments.clear();
-              }),
-              decoration: const InputDecoration(
-                labelText: 'Temporada do catálogo',
-              ),
+            _choice(
+              'ANO DO CATÁLOGO',
+              _season,
+              [for (final year in _seasons) (year, year)],
+              (year) {
+                _selectSeason(year);
+                _error = '';
+              },
             ),
+            if (!_busy && (_seasons.isEmpty || _seasonLoadFailed)) ...[
+              Text(
+                _seasonLoadFailed
+                    ? 'Não foi possível consultar os anos do catálogo.'
+                    : 'Nenhum catálogo disponível.',
+              ),
+              TextButton(
+                onPressed: _initialize,
+                child: const Text('TENTAR NOVAMENTE'),
+              ),
+            ],
             _choice('Treinadores', '$_humans', [
               for (int i = 1; i <= 8; i++) ('$i', '$i'),
             ], (v) => _humans = int.parse(v)),
@@ -1350,7 +1449,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${_name.text} • ${_gender == 'Female' ? 'FEMININO' : 'MASCULINO'} • ${_season.text}',
+              '${_name.text} • ${_gender == 'Female' ? 'FEMININO' : 'MASCULINO'} • ${_season ?? '—'}',
             ),
             Text('Países: ${_countries.join(', ')} • modo $_dataMode'),
             _previewPanel(),
@@ -1395,7 +1494,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (_preview!['errors'] as List).isEmpty &&
             _preview!['pendingSlots'] == 0;
   Future<void> _next() => _run(() async {
-    if (_step == 0 && _countriesSeason != _season.text.trim()) {
+    if (_step == 0) {
+      await _loadSeasons();
+      if (!mounted || _seasonLoadFailed || _season == null) return;
       setState(() {
         _step = 1;
         _search = '';
@@ -1445,6 +1546,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       });
     }
   });
+
+  Future<void> _back() async {
+    setState(() {
+      _step--;
+      _search = '';
+    });
+    if (_step == 0) await _run(_loadSeasons);
+  }
+
   @override
   Widget build(BuildContext context) => CreatorFrame(
     steps: _steps,
@@ -1453,14 +1563,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     busy: _busy,
     error: _error,
     body: _body(),
-    back: _busy || _step == 0
-        ? null
-        : () => setState(() {
-            _step--;
-            _search = '';
-          }),
+    back: _busy || _step == 0 ? null : _back,
     next:
         _busy ||
+            (_step == 0 && (_season == null || _seasonLoadFailed)) ||
             (_step == 1 && _options.isEmpty) ||
             (_step == 6 && !_validPreview)
         ? null

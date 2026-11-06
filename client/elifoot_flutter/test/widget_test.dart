@@ -523,6 +523,9 @@ void main() {
               200,
             );
           }
+          if (req.url.path.endsWith('world-creator/seasons')) {
+            return http.Response('["2026"]', 200);
+          }
           if (req.url.path.contains('world-creator/countries')) {
             return http.Response(
               jsonEncode([

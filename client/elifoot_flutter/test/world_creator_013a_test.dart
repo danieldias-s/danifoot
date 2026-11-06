@@ -56,7 +56,9 @@ void main() {
               'Bearer localdev-11111111111111111111111111111111',
             );
             dynamic response;
-            if (request.url.path.endsWith('/countries')) {
+            if (request.url.path.endsWith('/seasons')) {
+              response = ['2026'];
+            } else if (request.url.path.endsWith('/countries')) {
               response = List.generate(
                 8,
                 (i) => {
@@ -219,7 +221,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.textContaining('Catálogo indisponível'), findsOneWidget);
+      expect(
+        find.text('Não foi possível consultar os anos do catálogo.'),
+        findsOneWidget,
+      );
       expect(tester.takeException(), isNull);
       api.disconnectRealtime();
     },

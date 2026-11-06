@@ -15,7 +15,9 @@ void main() {
       final api = ElifootApiClient(
         httpClient: MockClient((request) async {
           dynamic result;
-          if (request.url.path.endsWith('/countries')) {
+          if (request.url.path.endsWith('/seasons')) {
+            result = ['2026'];
+          } else if (request.url.path.endsWith('/countries')) {
             result = [
               {
                 'code': 'ES',
@@ -65,7 +67,9 @@ void main() {
       await tester.tap(find.text('CRIAR NOVA CONFIGURAÇÃO'));
       await tester.pumpAndSettle();
       for (var step = 0; step < 3; step++) {
-        await tester.tap(find.text('CONTINUAR'));
+        final next = find.text('CONTINUAR');
+        await tester.ensureVisible(next);
+        await tester.tap(next);
         await tester.pumpAndSettle();
       }
       expect(consent, false);

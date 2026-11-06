@@ -12,13 +12,23 @@ import 'package:http/testing.dart';
 
 class _CreatorFixture {
   final requests = <http.Request>[];
+  List<String> seasons = ['2026', '2025'];
+  final Map<String, int> brazilClubsByYear = {};
+  int seasonFailures = 0;
   int countryFailures = 0;
   bool failLastConfiguration = false;
+  Map<String, dynamic>? lastConfiguration;
   late final api = ElifootApiClient(
     httpClient: MockClient((request) async {
       requests.add(request);
       final dynamic data;
-      if (request.url.path.endsWith('/countries')) {
+      if (request.url.path.endsWith('/seasons')) {
+        if (seasonFailures > 0) {
+          seasonFailures--;
+          return http.Response('Catálogo indisponível', 503);
+        }
+        data = seasons;
+      } else if (request.url.path.endsWith('/countries')) {
         if (countryFailures > 0) {
           countryFailures--;
           return http.Response('{"error":"Catálogo indisponível"}', 503);
@@ -27,7 +37,12 @@ class _CreatorFixture {
           for (final row in [
             ('DE', 'Alemanha', 18),
             ('AR', 'Argentina', 0),
-            ('BR', 'Brasil', 20),
+            ('AT', 'Áustria', 28),
+            (
+              'BR',
+              'Brasil',
+              brazilClubsByYear[request.url.queryParameters['season']] ?? 20,
+            ),
             ('ES', 'Espanha', 20),
             ('FR', 'França', 18),
             ('GB', 'Inglaterra', 44),
@@ -46,7 +61,7 @@ class _CreatorFixture {
         if (failLastConfiguration) {
           return http.Response('{"error":"Configuração indisponível"}', 503);
         }
-        data = null;
+        data = lastConfiguration;
       } else if (request.url.path.endsWith('/catalog')) {
         data = {'clubs': [], 'references': [], 'warnings': []};
       } else {
@@ -90,6 +105,120 @@ Future<void> _next(WidgetTester tester) async {
 }
 
 void main() {
+  final yearDropdown = find.widgetWithText(
+    DropdownButtonFormField<String>,
+    'ANO DO CATÁLOGO',
+  );
+  final continueButton = find.widgetWithText(ElevatedButton, 'CONTINUAR');
+
+  testWidgets('Sem catálogo, o Criador bloqueia a próxima etapa', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..seasons = [];
+    await _creator(tester, fixture, 1366);
+
+    expect(find.text('Nenhum catálogo disponível.'), findsOneWidget);
+    expect(
+      tester.widget<DropdownButtonFormField<String>>(yearDropdown).onChanged,
+      isNull,
+    );
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    expect(
+      fixture.requests.where((r) => r.url.path.endsWith('/countries')),
+      isEmpty,
+    );
+  });
+
+  testWidgets('O ano escolhido filtra países e catálogo ao voltar e avançar', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()
+      ..seasons = ['2027', '2023']
+      ..brazilClubsByYear.addAll({'2027': 31, '2023': 29});
+    await _creator(tester, fixture, 1366);
+
+    expect(find.text('2027'), findsOneWidget);
+    await tester.tap(yearDropdown);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('2023').last);
+    await tester.pumpAndSettle();
+    await _next(tester);
+    expect(find.text('29 clubes disponíveis'), findsOneWidget);
+    expect(find.text('31 clubes disponíveis'), findsNothing);
+    await tester.tap(find.text('LIMPAR SELEÇÃO'));
+    await tester.pumpAndSettle();
+    await tester.tap(
+      find.descendant(
+        of: find.byKey(const ValueKey('country-card-BR')),
+        matching: find.byType(CheckboxListTile),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    fixture.seasons = ['2028', '2027', '2023'];
+    fixture.brazilClubsByYear['2023'] = 30;
+    await tester.tap(find.text('VOLTAR'));
+    await tester.pumpAndSettle();
+    expect(find.text('2023'), findsOneWidget);
+    await tester.tap(yearDropdown);
+    await tester.pumpAndSettle();
+    expect(find.text('2028'), findsOneWidget);
+    await tester.tap(find.text('2023').last);
+    await tester.pumpAndSettle();
+    await _next(tester);
+    expect(find.text('30 clubes disponíveis'), findsOneWidget);
+    expect(find.text('29 clubes disponíveis'), findsNothing);
+    expect(find.text('1/8 • Países'), findsOneWidget);
+    await _next(tester);
+    await _next(tester);
+
+    final catalog = fixture.requests.singleWhere(
+      (r) => r.url.path.endsWith('/catalog'),
+    );
+    expect(jsonDecode(catalog.body), containsPair('season', '2023'));
+    expect(jsonDecode(catalog.body), containsPair('countries', ['BR']));
+    final countries = fixture.requests.where(
+      (r) => r.url.path.endsWith('/countries'),
+    );
+    expect(countries.map((r) => r.url.queryParameters['season']), [
+      '2023',
+      '2023',
+    ]);
+  });
+
+  testWidgets('Ano removido ou consulta com falha exige nova seleção válida', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..seasons = ['2027'];
+    await _creator(tester, fixture, 1366);
+    expect(find.text('2027'), findsOneWidget);
+    await _next(tester);
+
+    fixture.seasonFailures = 1;
+    fixture.seasons = ['2024'];
+    await tester.tap(find.text('VOLTAR'));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('Não foi possível consultar os anos do catálogo.'),
+      findsOneWidget,
+    );
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await tester.tap(find.text('TENTAR NOVAMENTE'));
+    await tester.pumpAndSettle();
+    expect(
+      find.textContaining('O ano selecionado não está mais disponível'),
+      findsOneWidget,
+    );
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await tester.tap(yearDropdown);
+    await tester.pumpAndSettle();
+    expect(find.text('2027'), findsNothing);
+    await tester.tap(find.text('2024').last);
+    await tester.pumpAndSettle();
+    await _next(tester);
+    expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsOneWidget);
+  });
+
   testWidgets(
     'Países continuam selecionáveis quando a última configuração falha',
     (tester) async {
@@ -115,7 +244,7 @@ void main() {
   testWidgets('Falha no catálogo tem recuperação na etapa de países', (
     tester,
   ) async {
-    final fixture = _CreatorFixture()..countryFailures = 2;
+    final fixture = _CreatorFixture()..countryFailures = 1;
     await _creator(tester, fixture, 1366);
     await _next(tester);
     expect(
@@ -281,9 +410,6 @@ void main() {
     await tester.ensureVisible(provider);
     await tester.tap(provider);
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Usar imediatamente os dados salvos'));
-    await tester.tap(find.text('Usar imediatamente os dados salvos'));
-    await tester.pumpAndSettle();
     await tester.tap(find.text('VOLTAR'));
     await tester.pumpAndSettle();
     await _next(tester);
@@ -301,5 +427,33 @@ void main() {
     expect(payload['useSavedData'], true);
     expect(payload['countries'], hasLength(8));
     fixture.api.disconnectRealtime();
+  });
+
+  testWidgets('Criador mundial usa catálogo salvo mesmo com preset legado', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()
+      ..lastConfiguration = {
+        'name': 'Liga austríaca',
+        'gender': 'Male',
+        'season': '2025',
+        'countries': ['AT'],
+        'mode': 'Automatic',
+        'districtMode': 'Ranking',
+        'useSavedData': false,
+      };
+    await _creator(tester, fixture, 1366);
+    await tester.tap(find.text('USAR ÚLTIMA CONFIGURAÇÃO'));
+    await tester.pumpAndSettle();
+    await _next(tester);
+    expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsOneWidget);
+    await _next(tester);
+    expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
+    await _next(tester);
+    final request = fixture.requests.singleWhere(
+      (request) => request.url.path.endsWith('/catalog'),
+    );
+    expect(jsonDecode(request.body), containsPair('useSavedData', true));
+    expect(jsonDecode(request.body), containsPair('countries', ['AT']));
   });
 }

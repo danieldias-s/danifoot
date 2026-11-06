@@ -136,6 +136,8 @@ class Fixture016B {
             ],
           };
         }
+      } else if (r.url.path.endsWith('/seasons')) {
+        value = ['2026'];
       } else if (r.url.path.endsWith('/countries')) {
         value = [
           for (final c in ['BR', 'AR', 'GB', 'ES', 'DE', 'IT', 'FR', 'PT'])

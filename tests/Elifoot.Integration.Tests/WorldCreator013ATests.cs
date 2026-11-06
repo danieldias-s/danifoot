@@ -32,11 +32,12 @@ public sealed class WorldCreator013ATests
         public WorldCreatorService Creator => Provider.GetRequiredService<WorldCreatorService>();
         public IWorldRepository Worlds => Provider.GetRequiredService<IWorldRepository>();
         private readonly string _file = Path.Combine(Path.GetTempPath(), $"elifoot-013a-{Guid.NewGuid():N}.db");
-        public Harness(IEnumerable<ICatalogSource>? sources = null, bool postgres = false)
+        public Harness(IEnumerable<ICatalogSource>? sources = null, bool postgres = false, string? catalogConnection = null)
         {
             var services = new ServiceCollection();
             services.AddDbContext<CatalogDbContext>(o => {
-                if (postgres) o.UseNpgsql(Environment.GetEnvironmentVariable("ELIFOOT_013A_TEST_PG") ?? throw new InvalidOperationException("Set ELIFOOT_013A_TEST_PG to the isolated 013A test database."));
+                if (catalogConnection != null) o.UseNpgsql(catalogConnection);
+                else if (postgres) o.UseNpgsql(Environment.GetEnvironmentVariable("ELIFOOT_013A_TEST_PG") ?? throw new InvalidOperationException("Set ELIFOOT_013A_TEST_PG to the isolated 013A test database."));
                 else o.UseSqlite($"Data Source={_file};Default Timeout=15;Pooling=False");
             });
             services.AddSingleton<IWorldRepository, InMemoryWorldRepository>();
@@ -241,6 +242,54 @@ public sealed class WorldCreator013ATests
         var existing = WorldSeedFactory.CreateSeededWorld("Existing 012C", forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);
         await repo.SaveWorldAsync(existing); EfWorldRepository.ClearCacheForTesting();
         Assert.Null((await repo.GetWorldAsync(existing.Id))!.CatalogOrigin);
+    }
+    [Fact]
+    public async Task HttpSeasonsListsOnlyUsableActiveClubYearsAndReflectsNewImports()
+    {
+        var catalogConnection = Environment.GetEnvironmentVariable("ELIFOOT_CREATOR_YEARS_TEST_PG");
+        if (catalogConnection != null)
+        {
+            var isolated = new Npgsql.NpgsqlConnectionStringBuilder(catalogConnection);
+            Assert.Equal("127.0.0.1", isolated.Host);
+            Assert.StartsWith("elifoot_creator_years_test", isolated.Database);
+        }
+        await using var h = new Harness(catalogConnection: catalogConnection); await h.Initialize(false);
+        var builder = WebApplication.CreateBuilder(); builder.WebHost.UseTestServer();
+        builder.Configuration["Elifoot:AuthMode"] = "LocalDev";
+        builder.Services.AddSingleton(h.Creator); builder.Services.AddSingleton(h.Sync);
+        await using var app = builder.Build(); app.MapWorldCreator013A(); await app.StartAsync();
+        using var client = app.GetTestClient();
+        const string route = "/api/world-creator/seasons";
+        Assert.Equal(HttpStatusCode.Unauthorized, (await client.GetAsync(route)).StatusCode);
+        client.DefaultRequestHeaders.Authorization = new("Bearer", $"localdev-{Guid.NewGuid():N}");
+        Assert.Empty((await client.GetFromJsonAsync<string[]>(route))!);
+
+        var template = CatalogFixtureFactory.Packages().First(p => p.Scope.DataType == CatalogDataType.Clubs);
+        var rights = new CatalogUsageRights("Test data", "Synthetic coverage test", true, true, true, true, false, true, false);
+        CatalogImportPackage ClubsAt(string season) => template with
+        {
+            Scope = template.Scope with { Season = season }, IsFixture = false, Rights = rights
+        };
+        var metadataOnly = ClubsAt("2028");
+        await h.Sync.ImportAsync(metadataOnly with
+        {
+            Scope = metadataOnly.Scope with { DataType = CatalogDataType.Countries },
+            Clubs = [], ExpectedItems = 1, CountryData = [new(metadataOnly.Scope.CountryCode, metadataOnly.CountryName)]
+        });
+        await h.Sync.ImportAsync(ClubsAt("2027") with { Rights = rights with { DisplayAllowed = false } });
+        await h.Sync.ImportAsync(ClubsAt("2024/25"));
+        var inactive = ClubsAt("2029");
+        await h.Sync.ImportAsync(inactive);
+        await h.Read(db => db.Scopes.Where(s => s.Key == inactive.Scope.Key)
+            .ExecuteUpdateAsync(u => u.SetProperty(s => s.ActiveSnapshotId, (Guid?)null)));
+        Assert.Empty((await client.GetFromJsonAsync<string[]>(route))!);
+
+        var older = ClubsAt("2025");
+        await h.Sync.ImportAsync(older);
+        Assert.Equal(new[] { "2025" }, await client.GetFromJsonAsync<string[]>(route));
+        await h.Sync.ImportAsync(older with { Scope = older.Scope with { Gender = FootballGender.Female } });
+        await h.Sync.ImportAsync(ClubsAt("2026"));
+        Assert.Equal(new[] { "2026", "2025" }, await client.GetFromJsonAsync<string[]>(route));
     }
     [Fact]
     public async Task HttpPreviewConfirmationIsOwnedAndDoesNotRequeryChangedCatalog()

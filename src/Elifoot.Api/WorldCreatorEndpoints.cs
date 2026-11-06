@@ -88,6 +88,7 @@ public static class WorldCreatorEndpoints
             catch (FormatException) { return Results.BadRequest(new { error = "Formato JSON/CSV inválido." }); }
         });
         Guid Owner(HttpContext c) => (Guid)c.Items["creatorOwner"]!;
+        group.MapGet("/seasons", async (WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Seasons(ct)));
         group.MapGet("/countries", async (string season, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Countries(season, ct)));
         group.MapPost("/coverage", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Coverage(request.Countries, request.Gender, request.Season, ct)));
         group.MapPost("/catalog", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) =>

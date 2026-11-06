@@ -72,7 +72,9 @@ ElifootApiClient api(
 }) => ElifootApiClient(
   httpClient: MockClient((request) async {
     dynamic response;
-    if (request.url.path.endsWith('/countries')) {
+    if (request.url.path.endsWith('/seasons')) {
+      response = ['2026'];
+    } else if (request.url.path.endsWith('/countries')) {
       response = countries
           .map(
             (c) => {'code': c, 'name': c, 'maleClubs': 128, 'femaleClubs': 128},
@@ -85,9 +87,13 @@ ElifootApiClient api(
           ? <String, dynamic>{}
           : Map<String, dynamic>.from(jsonDecode(request.body) as Map);
       calls.add({'path': request.url.path, ...body});
+      final blocked =
+          reject &&
+          (body['dataMode'] != 'REAL_CLUBS_SIMULATED' ||
+              body['allowFictionalPlayers'] != true);
       if (request.url.path.endsWith('/catalog')) {
         response = {
-          'clubs': reject ? [] : List.generate(128, club),
+          'clubs': blocked ? [] : List.generate(128, club),
           'references': [],
           'warnings': [],
           'dataSummary': summary(),
@@ -95,20 +101,20 @@ ElifootApiClient api(
       } else if (request.url.path.endsWith('/preview')) {
         response = {
           'draftId': 'draft-013c',
-          'clubs': reject
+          'clubs': blocked
               ? []
               : List.generate(
                   128,
                   (i) => {'division': i < 32 ? i ~/ 8 + 1 : 5, 'club': club(i)},
                 ),
-          'pendingSlots': reject ? 128 : 0,
-          'errors': reject
+          'pendingSlots': blocked ? 128 : 0,
+          'errors': blocked
               ? ['Elencos reais atuais insuficientes; criação bloqueada.']
               : [],
           'warnings': [],
           'dataSummary': summary(
-            selected: reject ? 0 : 128,
-            generated: reject ? 0 : 2304,
+            selected: blocked ? 0 : 128,
+            generated: blocked ? 0 : 2304,
           ),
         };
       } else if (request.url.path.contains('/confirm/')) {
@@ -145,7 +151,7 @@ Future<void> open(
 
 void main() {
   testWidgets(
-    '013C strict mode starts without consent and blocks incomplete real squads',
+    'Prévia explica a falta de elencos e só regenera após consentimento',
     (tester) async {
       final calls = <Map<String, dynamic>>[];
       await open(tester, calls, reject: true);
@@ -167,7 +173,11 @@ void main() {
       await next(tester);
       await next(tester);
       await next(tester);
-      expect(find.textContaining('criação bloqueada'), findsOneWidget);
+      expect(
+        find.textContaining('nenhum tem elenco real completo'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('criação bloqueada'), findsNothing);
       expect(
         tester
             .widget<ElevatedButton>(
@@ -188,6 +198,38 @@ void main() {
               c['allowFictionalTeams'] == false,
         ),
         isTrue,
+      );
+      final strict = calls.last;
+      final authorize = find.text('AUTORIZAR ATLETAS SIMULADOS E GERAR PRÉVIA');
+      await tester.ensureVisible(authorize);
+      await tester.tap(authorize);
+      await tester.pumpAndSettle();
+      final regenerated = calls.last;
+      expect(regenerated['path'], endsWith('/preview'));
+      expect(regenerated['dataMode'], 'REAL_CLUBS_SIMULATED');
+      expect(regenerated['allowFictionalPlayers'], isTrue);
+      expect(regenerated['allowFictionalTeams'], isFalse);
+      for (final key in [
+        'name',
+        'season',
+        'countries',
+        'seed',
+        'mode',
+        'districtMode',
+        'assignments',
+      ]) {
+        expect(regenerated[key], strict[key], reason: key);
+      }
+      expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
+      expect(find.textContaining('128/128 clubes'), findsOneWidget);
+      expect(authorize, findsNothing);
+      expect(
+        tester
+            .widget<ElevatedButton>(
+              find.widgetWithText(ElevatedButton, 'CONTINUAR'),
+            )
+            .onPressed,
+        isNotNull,
       );
     },
   );
