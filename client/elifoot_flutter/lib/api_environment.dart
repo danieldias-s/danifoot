@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 
 /// One API origin shared by REST and SignalR. Overrides are build-time settings.
 class ApiEnvironment {
+  static const _localWebHosts = {'localhost', '127.0.0.1'};
+
   static String get baseUrl => resolve(
     configured: const String.fromEnvironment('API_BASE_URL'),
     isWeb: kIsWeb,
@@ -31,7 +33,17 @@ class ApiEnvironment {
       if (!isWeb && isRelease && uri.scheme != 'https') {
         throw StateError('O Android release exige API_BASE_URL com HTTPS.');
       }
-      return configured.trim().replaceAll(RegExp(r'/+$'), '');
+      // Local cookie authentication needs the page and API on the same site.
+      final usePageHost =
+          isWeb &&
+          uri.scheme == 'http' &&
+          webOrigin?.scheme == 'http' &&
+          _localWebHosts.contains(uri.host) &&
+          _localWebHosts.contains(webOrigin?.host);
+      final apiUrl = usePageHost
+          ? uri.replace(host: webOrigin!.host).toString()
+          : configured.trim();
+      return apiUrl.replaceAll(RegExp(r'/+$'), '');
     }
     if (!isWeb && isRelease) {
       throw StateError('Defina API_BASE_URL com HTTPS para a versão release.');
