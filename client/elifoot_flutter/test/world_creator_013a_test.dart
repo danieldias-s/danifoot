@@ -37,6 +37,8 @@ void main() {
           'name': 'Clube fictício $i',
           'countryCode': countries[i % 8],
           'countryName': names[i % 8],
+          'season': '2026',
+          'gender': gender,
           'rank': i + 1,
           'isFictional': false,
           'verification': {'status': 'REAL_CLUB_VERIFIED'},

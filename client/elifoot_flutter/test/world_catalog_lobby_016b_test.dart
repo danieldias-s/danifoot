@@ -146,7 +146,25 @@ class Fixture016B {
       } else if (r.url.path.endsWith('/last-configuration')) {
         value = null;
       } else if (r.url.path.endsWith('/catalog')) {
-        value = {'clubs': [], 'references': [], 'warnings': []};
+        final body = jsonDecode(r.body) as Map;
+        final countries = body['countries'] as List;
+        value = {
+          'clubs': [
+            for (var i = 0; i < 32; i++)
+              {
+                'key': 'catalog-$i',
+                'name': 'Clube de teste $i',
+                'countryCode': countries[i % countries.length],
+                'countryName': countries[i % countries.length],
+                'season': body['season'],
+                'gender': body['gender'],
+                'initialProfile': {'clubInitialPower': 20, 'worldRank': i + 1},
+                'verification': {'status': 'REAL_CLUB_VERIFIED'},
+              },
+          ],
+          'references': [],
+          'warnings': [],
+        };
       } else if (r.url.path.endsWith('/preview')) {
         value = {
           'draftId': 'fixture-preview',

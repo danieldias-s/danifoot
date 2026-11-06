@@ -37,7 +37,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _district = 'Ranking',
       _search = '',
       _error = '';
-  bool _fictionalOnly = false;
+  bool _fictionalOnly = false, _editingSourcesFromDivisions = false;
   Map<String, dynamic>? _assembly;
   final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
   int _step = 0, _humans = 1;
@@ -139,12 +139,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _clearCatalogDraft();
   }
 
-  void _clearCatalogDraft() {
+  void _clearCatalogDraft({bool keepPlacement = false}) {
     _assembly = null;
     _clubs = [];
     _references = [];
     _warnings = [];
     _preview = null;
+    if (keepPlacement) return;
     _districtClubs.clear();
     _divisionSlots = List.filled(32, null);
     _automaticSlots = List.filled(32, null);
@@ -184,7 +185,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           _countries
             ..clear()
             ..addAll(validSelection);
-          _clearCatalogDraft();
+          _clearCatalogDraft(keepPlacement: true);
         }
       });
     } catch (_) {
@@ -482,13 +483,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       (i) => i < ranked.length ? ranked[i] : null,
     );
     if (keepPositions) {
-      final retained = <String>{};
-      _divisionSlots = [
-        for (final key in _divisionSlots)
-          key != null && available.contains(key) && retained.add(key)
-              ? key
-              : null,
-      ];
+      // Preserve explicit choices even if a catalog change invalidates them.
+      // The editor shows the affected slots and lets the coach restore the ranking.
+      final retained = _divisionSlots.whereType<String>().toSet();
       final remaining = ranked.where((key) => !retained.contains(key)).iterator;
       for (var i = 0; i < _divisionSlots.length; i++) {
         if (_divisionSlots[i] == null && remaining.moveNext()) {
@@ -521,9 +518,46 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _preview = null;
   });
 
+  String? get _divisionProblem {
+    if (_assembly != null || _fictionalOnly) return null;
+    final clubs = {for (final club in _eligibleClubs) club['key']: club};
+    final assigned = _divisionSlots.whereType<String>().toList();
+    if (assigned.toSet().length != assigned.length) {
+      return 'Há clubes repetidos nas divisões. Restaure a distribuição automática.';
+    }
+    if (assigned.any((key) => !clubs.containsKey(key))) {
+      return 'Alguns clubes da montagem deixaram de estar disponíveis neste catálogo. Revise os países ou restaure a distribuição automática.';
+    }
+    if (assigned.any(
+      (key) => !_countries.contains(clubs[key]!['countryCode']),
+    )) {
+      return 'Há clubes de fora dos países selecionados. Revise os países ou restaure a distribuição.';
+    }
+    if (assigned.any(_districtClubs.contains)) {
+      return 'Um clube aparece nas divisões e nos distritais. Revise a distribuição.';
+    }
+    final missing = _divisionSlots.length - assigned.length;
+    if (missing > 0) {
+      return 'Faltam $missing clubes para preencher as divisões. Selecione mais países ou ajuste as fontes.';
+    }
+    return null;
+  }
+
+  ({int clubs, int divisions, int capacity})? get _divisionSummary {
+    if (_step != 2 || _assembly != null) return null;
+    final available = _eligibleClubs.map((club) => club['key']).toSet();
+    return (
+      clubs: _divisionSlots.where(available.contains).toSet().length,
+      divisions: _divisionSlots.length ~/ 8,
+      capacity: 8,
+    );
+  }
+
   Widget _divisionsPanel() {
     final eligible = _eligibleClubs;
     final byKey = {for (final club in eligible) club['key']: club};
+    final problem = _divisionProblem;
+    final missingOverall = 128 - eligible.length;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -545,6 +579,28 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           onSwap: _swapDivisionClub,
           onRestore: _restoreDivisions,
         ),
+        if (problem != null) ...[
+          const SizedBox(height: 12),
+          Text(problem, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              onPressed: _busy
+                  ? null
+                  : () => setState(() {
+                      _editingSourcesFromDivisions = true;
+                      _step = 4;
+                      _search = '';
+                    }),
+              child: const Text('AJUSTAR ELENCOS E FONTES'),
+            ),
+          ),
+        ] else if (!_fictionalOnly && missingOverall > 0) ...[
+          const SizedBox(height: 12),
+          Text(
+            'Faltam $missingOverall clubes no catálogo para chegar a 128. Revise a seleção ou as opções em Elencos / fontes.',
+          ),
+        ],
       ],
     );
   }
@@ -932,7 +988,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       ),
       child: CheckboxListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-        secondary: CreatorCountryFlag(code: country['code'].toString()),
+        secondary: CreatorCountryFlag(
+          code: country['code'].toString(),
+          countryName: country['name']?.toString(),
+        ),
         title: Row(
           children: [
             Expanded(
@@ -1004,7 +1063,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   _countries.remove(country['code']);
                 }
                 _error = '';
-                _clearCatalogDraft();
+                _clearCatalogDraft(keepPlacement: true);
+                _fictionalOnly = false;
                 _fictional = false;
                 _fictionalPlayers = false;
               }),
@@ -1055,7 +1115,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                     ? null
                     : () => setState(() {
                         _countries.clear();
-                        _clearCatalogDraft();
+                        _clearCatalogDraft(keepPlacement: true);
                         _error = '';
                       }),
                 icon: const Icon(Icons.delete_outline),
@@ -1401,6 +1461,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (_preview!['errors'] as List).isEmpty &&
             _preview!['pendingSlots'] == 0;
   Future<void> _next() => _run(() async {
+    if (_editingSourcesFromDivisions) {
+      _returnToDivisions();
+      return;
+    }
     if (_step == 0) {
       await _loadSeasons();
       if (!mounted || _seasonLoadFailed || _season == null) return;
@@ -1417,7 +1481,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       if (!_canAdvanceFromCountries) return;
       if (_assembly == null) await _catalog();
     }
-    if (_step == 4) await _makePreview();
+    if (_step == 2 && _divisionProblem != null) return;
+    if (_step == 4) {
+      if (_divisionProblem != null) {
+        _returnToDivisions();
+        return;
+      }
+      await _makePreview();
+    }
     if (mounted) {
       setState(() {
         _step++;
@@ -1426,7 +1497,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   });
 
+  void _returnToDivisions() => setState(() {
+    _editingSourcesFromDivisions = false;
+    _step = 2;
+    _search = '';
+  });
+
   Future<void> _back() async {
+    if (_editingSourcesFromDivisions) {
+      _returnToDivisions();
+      return;
+    }
     setState(() {
       _step--;
       _search = '';
@@ -1442,12 +1523,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     countryCount: _selectedCountryCount,
     busy: _busy,
     error: _error,
+    divisionSummary: _divisionSummary,
+    nextLabel: _editingSourcesFromDivisions ? 'APLICAR OPÇÕES' : 'CONTINUAR',
     body: _body(),
     back: _busy || _step == 0 ? null : _back,
     next:
         _busy ||
             (_step == 0 && (_season == null || _seasonLoadFailed)) ||
             (_step == 1 && !_canAdvanceFromCountries) ||
+            (_step == 2 && _divisionProblem != null) ||
             (_step == 5 && !_validPreview)
         ? null
         : _next,

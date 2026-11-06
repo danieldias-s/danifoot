@@ -5,15 +5,16 @@ import 'visual_components.dart';
 
 class CreatorBackdrop extends StatelessWidget {
   final Widget child;
-  const CreatorBackdrop({super.key, required this.child});
+  final bool stadium;
+  const CreatorBackdrop({super.key, required this.child, this.stadium = false});
 
   @override
   Widget build(BuildContext context) {
     final theme = ClassicTheme.of(context);
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: theme.background,
-        image: theme.lightPanels
+        color: stadium ? theme.primary : theme.background,
+        image: stadium || theme.lightPanels
             ? const DecorationImage(
                 image: AssetImage('assets/images/creator-stadium.png'),
                 fit: BoxFit.cover,
@@ -30,14 +31,19 @@ class CreatorBackdrop extends StatelessWidget {
 
 class CreatorBrand extends StatelessWidget {
   final double size;
-  const CreatorBrand({super.key, this.size = 32});
+  final Color? ink;
+  const CreatorBrand({super.key, this.size = 32, this.ink});
   @override
   Widget build(BuildContext context) {
     final theme = ClassicTheme.of(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(Icons.sports_soccer, color: theme.textPrimary, size: size + 7),
+        Icon(
+          Icons.sports_soccer,
+          color: ink ?? theme.textPrimary,
+          size: size + 7,
+        ),
         const SizedBox(width: 9),
         Text(
           'LIGA CLÁSSICA ',
@@ -47,7 +53,7 @@ class CreatorBrand extends StatelessWidget {
             fontWeight: FontWeight.w700,
             fontStyle: FontStyle.italic,
             decoration: TextDecoration.none,
-            color: theme.textPrimary,
+            color: ink ?? theme.textPrimary,
             height: 1,
           ),
         ),
@@ -74,6 +80,8 @@ class CreatorFrame extends StatelessWidget {
   final Widget body;
   final bool busy;
   final String error;
+  final ({int clubs, int divisions, int capacity})? divisionSummary;
+  final String nextLabel;
   final VoidCallback? back, next;
   const CreatorFrame({
     super.key,
@@ -85,6 +93,8 @@ class CreatorFrame extends StatelessWidget {
     required this.error,
     this.back,
     this.next,
+    this.divisionSummary,
+    this.nextLabel = 'CONTINUAR',
   });
 
   void _guide(BuildContext context) => showDialog<void>(
@@ -180,14 +190,14 @@ class CreatorFrame extends StatelessWidget {
                     disabledForegroundColor: mutedInk,
                     shape: shape,
                   ),
-                  child: const FittedBox(
+                  child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('CONTINUAR', style: labelStyle),
-                        SizedBox(width: 6),
-                        Icon(Icons.arrow_forward, size: 20),
+                        Text(nextLabel, style: labelStyle),
+                        const SizedBox(width: 6),
+                        const Icon(Icons.arrow_forward, size: 20),
                       ],
                     ),
                   ),
@@ -206,9 +216,15 @@ class CreatorFrame extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final mobile = constraints.maxWidth < 1024;
+        final summary = divisionSummary;
+        final divisionStage = summary != null;
+        final frameInk = divisionStage
+            ? readableInk(theme.primary, Colors.white)
+            : theme.textPrimary;
         return Scaffold(
           backgroundColor: theme.background,
           body: CreatorBackdrop(
+            stadium: divisionStage,
             child: SafeArea(
               child: Column(
                 children: [
@@ -243,14 +259,17 @@ class CreatorFrame extends StatelessWidget {
                               children: [
                                 FittedBox(
                                   fit: BoxFit.scaleDown,
-                                  child: CreatorBrand(size: mobile ? 25 : 34),
+                                  child: CreatorBrand(
+                                    size: mobile ? 25 : 34,
+                                    ink: frameInk,
+                                  ),
                                 ),
                                 if (mobile)
                                   Text(
                                     'CRIADOR DE MUNDOS',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: theme.textPrimary,
+                                      color: frameInk,
                                     ),
                                   ),
                               ],
@@ -258,16 +277,12 @@ class CreatorFrame extends StatelessWidget {
                           ),
                         ),
                         if (!mobile) ...[
-                          Icon(
-                            Icons.language,
-                            color: theme.textPrimary,
-                            size: 30,
-                          ),
+                          Icon(Icons.language, color: frameInk, size: 30),
                           const SizedBox(width: 12),
                           Text(
                             'CRIADOR DE MUNDOS',
                             style: TextStyle(
-                              color: theme.textPrimary,
+                              color: frameInk,
                               fontSize: 25,
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.italic,
@@ -286,7 +301,7 @@ class CreatorFrame extends StatelessWidget {
                           OutlinedButton.icon(
                             onPressed: () => _guide(context),
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: theme.textPrimary,
+                              foregroundColor: frameInk,
                               side: BorderSide(
                                 color: theme.selectedBackground,
                                 width: 2,
@@ -337,7 +352,7 @@ class CreatorFrame extends StatelessWidget {
                                             ? Icon(
                                                 Icons.check,
                                                 size: 16,
-                                                color: theme.textPrimary,
+                                                color: frameInk,
                                               )
                                             : Text(
                                                 '${index + 1}',
@@ -345,7 +360,7 @@ class CreatorFrame extends StatelessWidget {
                                                   fontWeight: FontWeight.bold,
                                                   color: index == step
                                                       ? theme.selectedText
-                                                      : theme.textPrimary,
+                                                      : frameInk,
                                                 ),
                                               ),
                                       ),
@@ -360,7 +375,7 @@ class CreatorFrame extends StatelessWidget {
                                               height: 1.05,
                                               color: index == step
                                                   ? theme.selectedBackground
-                                                  : theme.textPrimary,
+                                                  : frameInk,
                                             ),
                                           ),
                                         ),
@@ -394,14 +409,18 @@ class CreatorFrame extends StatelessWidget {
                       child: Center(
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
-                            maxWidth: step == 0 ? 720 : 1280,
+                            maxWidth: step == 0
+                                ? 720
+                                : (divisionStage ? 1340 : 1280),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: mobile ? 12 : 8,
+                                  vertical: mobile
+                                      ? 12
+                                      : (divisionStage ? 16 : 8),
                                 ),
                                 child: Column(
                                   children: [
@@ -409,26 +428,32 @@ class CreatorFrame extends StatelessWidget {
                                       '${step + 1}/${steps.length} • ${steps[step].toUpperCase()}',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: theme.textPrimary,
-                                        fontSize: mobile ? 30 : 36,
+                                        color: frameInk,
+                                        fontSize: mobile
+                                            ? 30
+                                            : (divisionStage ? 40 : 36),
                                         fontWeight: FontWeight.w700,
                                         height: 1.1,
                                       ),
                                     ),
-                                    if (step == 1) ...[
+                                    if (step == 1 || summary != null) ...[
                                       const SizedBox(height: 8),
                                       Text(
-                                        'Escolha até 8 países para compor o seu mundo.',
+                                        summary == null
+                                            ? 'Escolha até 8 países para compor o seu mundo.'
+                                            : 'Revise a distribuição automática dos clubes e troque equipes entre divisões.',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: theme.textPrimary,
+                                          color: frameInk,
                                           fontSize: mobile ? 17 : 19,
                                         ),
                                       ),
                                       const SizedBox(height: 12),
                                       Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 38,
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: summary != null && mobile
+                                              ? 14
+                                              : 30,
                                           vertical: 4,
                                         ),
                                         decoration: BoxDecoration(
@@ -442,10 +467,16 @@ class CreatorFrame extends StatelessWidget {
                                           color: theme.primary,
                                         ),
                                         child: Text(
-                                          '$countryCount/8 • Países',
+                                          summary == null
+                                              ? '$countryCount/8 • Países'
+                                              : '${summary.clubs} clubes • ${summary.divisions} divisões'
+                                                    '${mobile ? '' : ' • ${summary.capacity} clubes por divisão'}',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
-                                            fontSize: 26,
+                                            fontSize: summary != null && mobile
+                                                ? 20
+                                                : 25,
                                             color: theme.selectedBackground,
                                           ),
                                         ),
@@ -628,16 +659,50 @@ class CreatorConsent extends StatelessWidget {
 
 class CreatorCountryFlag extends StatelessWidget {
   final String code;
-  const CreatorCountryFlag({super.key, required this.code});
+  final String? countryName;
+  final double width, height;
+  const CreatorCountryFlag({
+    super.key,
+    required this.code,
+    this.countryName,
+    this.width = 46,
+    this.height = 32,
+  });
+
   @override
-  Widget build(BuildContext context) => SizedBox(
-    width: 46,
-    height: 32,
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(5),
-      child: CustomPaint(painter: _FlagPainter(code)),
-    ),
-  );
+  Widget build(BuildContext context) {
+    final normalized = code.trim().toUpperCase();
+    final name = countryName?.trim().toLowerCase();
+    // The football catalog uses GB for England. An explicit UK entry is distinct.
+    final flagCode = switch (normalized) {
+      'GB'
+          when const {
+            'reino unido',
+            'united kingdom',
+            'great britain',
+          }.contains(name) =>
+        'UK',
+      'GB' || 'ENG' || 'GB-ENG' || 'EN' => 'ENG',
+      _ => normalized,
+    };
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(math.min(5, height / 8)),
+        child: flagCode.isEmpty
+            ? ColoredBox(
+                color: const Color(0xFFDCE8E0),
+                child: Icon(
+                  Icons.flag_outlined,
+                  color: const Color(0xFF314B3C),
+                  size: height * .8,
+                ),
+              )
+            : CustomPaint(painter: _FlagPainter(flagCode)),
+      ),
+    );
+  }
 }
 
 class _FlagPainter extends CustomPainter {
@@ -666,6 +731,9 @@ class _FlagPainter extends CustomPainter {
         yellow = Color(0xFFFFD400);
     rectangle(white, 0, 0, 1, 1);
     switch (code) {
+      case 'AT':
+        rectangle(red, 0, 0, 1, 1 / 3);
+        rectangle(red, 0, 2 / 3, 1, 1 / 3);
       case 'DE':
         rectangle(Colors.black, 0, 0, 1, 1 / 3);
         rectangle(red, 0, 1 / 3, 1, 1 / 3);
@@ -680,9 +748,28 @@ class _FlagPainter extends CustomPainter {
           1,
         );
         rectangle(red, 2 / 3, 0, 1 / 3, 1);
-      case 'GB':
+      case 'ENG':
         rectangle(red, .41, 0, .18, 1);
         rectangle(red, 0, .38, 1, .24);
+      case 'UK':
+        rectangle(const Color(0xFF012169), 0, 0, 1, 1);
+        final topRight = Offset(size.width, 0);
+        final bottomLeft = Offset(0, size.height);
+        final bottomRight = Offset(size.width, size.height);
+        final diagonal = Paint()
+          ..color = white
+          ..strokeWidth = size.height * .20;
+        canvas.drawLine(Offset.zero, bottomRight, diagonal);
+        canvas.drawLine(topRight, bottomLeft, diagonal);
+        diagonal
+          ..color = red
+          ..strokeWidth = size.height * .08;
+        canvas.drawLine(Offset.zero, bottomRight, diagonal);
+        canvas.drawLine(topRight, bottomLeft, diagonal);
+        rectangle(white, .40, 0, .20, 1);
+        rectangle(white, 0, .33, 1, .34);
+        rectangle(red, .44, 0, .12, 1);
+        rectangle(red, 0, .40, 1, .20);
       case 'ES':
         rectangle(red, 0, 0, 1, .25);
         rectangle(yellow, 0, .25, 1, .5);
@@ -734,9 +821,12 @@ class _FlagPainter extends CustomPainter {
         final text = TextPainter(
           text: TextSpan(
             text: code,
-            style: const TextStyle(
-              color: Color(0xFF102A1C),
-              fontSize: 15,
+            style: TextStyle(
+              color: const Color(0xFF102A1C),
+              fontSize: math.min(
+                size.height * .50,
+                size.width * 1.4 / code.length,
+              ),
               fontWeight: FontWeight.bold,
             ),
           ),

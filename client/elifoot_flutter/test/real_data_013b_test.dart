@@ -22,8 +22,8 @@ void main() {
               {
                 'code': 'ES',
                 'name': 'Espanha',
-                'maleClubs': 20,
-                'femaleClubs': 20,
+                'maleClubs': 32,
+                'femaleClubs': 32,
               },
             ];
           } else if (request.url.path.endsWith('/last-configuration')) {
@@ -43,7 +43,24 @@ void main() {
               'includeUnverifiedClubs': true,
             };
           } else if (request.url.path.endsWith('/catalog')) {
-            result = {'clubs': [], 'references': [], 'warnings': []};
+            final body = jsonDecode(request.body) as Map;
+            result = {
+              'clubs': [
+                for (var i = 0; i < 32; i++)
+                  {
+                    'key': 'ES-$i',
+                    'name': 'Clube de teste $i',
+                    'countryCode': 'ES',
+                    'countryName': 'Espanha',
+                    'season': body['season'],
+                    'gender': body['gender'],
+                    'rank': i + 1,
+                    'verification': {'status': 'REAL_CLUB_VERIFIED'},
+                  },
+              ],
+              'references': [],
+              'warnings': [],
+            };
           } else if (request.url.path.endsWith('/preview')) {
             final body = jsonDecode(request.body) as Map;
             consent = body['allowFictionalPlayers'] as bool;

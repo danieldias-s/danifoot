@@ -24,6 +24,8 @@ Map<String, dynamic> club(int i) => {
   'name': 'Test verified club $i',
   'countryCode': countries[i % countries.length],
   'countryName': countries[i % countries.length],
+  'season': '2026',
+  'gender': 'Male',
   'rank': i + 1,
   'isFictional': false,
   'verification': {

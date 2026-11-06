@@ -4,6 +4,7 @@ import 'package:elifoot_flutter/classic98_widgets.dart';
 import 'package:elifoot_flutter/club_selection_dialog.dart';
 import 'package:elifoot_flutter/club_crest.dart';
 import 'package:elifoot_flutter/club_theme.dart';
+import 'package:elifoot_flutter/creator_divisions.dart';
 import 'package:elifoot_flutter/creator_visual.dart';
 import 'package:elifoot_flutter/world_creator.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class _CreatorFixture {
   int seasonFailures = 0;
   int countryFailures = 0;
   int clubCount = 32;
+  bool longClubName = false;
+  final unavailableClubIds = <int>{};
   bool failLastConfiguration = false;
   Map<String, dynamic>? lastConfiguration;
   late final api = ElifootApiClient(
@@ -67,21 +70,29 @@ class _CreatorFixture {
         }
         data = lastConfiguration;
       } else if (request.url.path.endsWith('/catalog')) {
-        final countries =
-            (jsonDecode(request.body) as Map)['countries'] as List;
+        final body = jsonDecode(request.body) as Map;
+        final countries = body['countries'] as List;
         data = {
           'clubs': [
             for (var i = 0; i < clubCount; i++)
-              {
-                'key': 'test-$i',
-                'name': 'Clube de teste $i',
-                'countryCode': countries[i % countries.length],
-                'countryName': countries[i % countries.length],
-                'rank': i + 1,
-                'initialProfile': {'clubInitialPower': 20, 'worldRank': i + 1},
-                'verification': {'status': 'REAL_CLUB_VERIFIED'},
-                'players': [],
-              },
+              if (!unavailableClubIds.contains(i))
+                {
+                  'key': 'test-$i',
+                  'name': longClubName && i == 0
+                      ? 'Clube de Futebol com um nome comprido para leitura no celular'
+                      : 'Clube de teste $i',
+                  'countryCode': countries[i % countries.length],
+                  'countryName': countries[i % countries.length],
+                  'gender': body['gender'],
+                  'season': body['season'],
+                  'rank': i + 1,
+                  'initialProfile': {
+                    'clubInitialPower': 20,
+                    'worldRank': i + 1,
+                  },
+                  'verification': {'status': 'REAL_CLUB_VERIFIED'},
+                  'players': [],
+                },
           ],
           'references': [],
           'warnings': [],
@@ -134,8 +145,16 @@ Future<void> _creator(
 
 Finder _countryCard(String code) => find.byKey(ValueKey('country-card-$code'));
 
+Finder _divisionSlot(int division, int position) =>
+    find.byKey(ValueKey('division-$division-position-$position'));
+
+Finder _swapButton(int division, int position) =>
+    find.byKey(ValueKey('swap-division-$division-position-$position'));
+
 Future<void> _next(WidgetTester tester) async {
-  await tester.tap(find.text('CONTINUAR'));
+  final button = find.text('CONTINUAR');
+  await tester.ensureVisible(button);
+  await tester.tap(button);
   await tester.pumpAndSettle();
   expect(tester.takeException(), isNull);
 }
@@ -399,7 +418,7 @@ void main() {
     testWidgets(
       'Países, Divisões e clube mantêm controles acessíveis em $width px',
       (tester) async {
-        final fixture = _CreatorFixture();
+        final fixture = _CreatorFixture()..longClubName = true;
         await _creator(tester, fixture, width);
         await _next(tester);
         expect(find.text('7/8 • Países'), findsOneWidget);
@@ -418,6 +437,85 @@ void main() {
         }
         await _next(tester);
         expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+        final planner = tester.widget<CreatorDivisions>(
+          find.byType(CreatorDivisions),
+        );
+        expect(planner.divisions.expand((division) => division), hasLength(32));
+        final desktop = width >= 1366;
+        expect(
+          find.text(
+            desktop
+                ? '32 clubes • 4 divisões • 8 clubes por divisão'
+                : '32 clubes • 4 divisões',
+          ),
+          findsOneWidget,
+        );
+        if (desktop) {
+          expect(find.byKey(const ValueKey('division-tab-1')), findsNothing);
+          final firstRows = [
+            for (var division = 1; division <= 4; division++)
+              tester.getRect(_divisionSlot(division, 1)),
+          ];
+          for (var division = 1; division < firstRows.length; division++) {
+            expect(
+              firstRows[division].left,
+              greaterThanOrEqualTo(firstRows[division - 1].right),
+            );
+            expect(firstRows[division].top, firstRows.first.top);
+          }
+        }
+        for (var division = 1; division <= 4; division++) {
+          if (!desktop) {
+            final tab = find.byKey(ValueKey('division-tab-$division'));
+            await tester.ensureVisible(tab);
+            await tester.tap(tab);
+            await tester.pumpAndSettle();
+            expect(_divisionSlot(division == 1 ? 2 : 1, 1), findsNothing);
+          }
+          for (var position = 1; position <= 8; position++) {
+            final row = _divisionSlot(division, position);
+            final flag = find.descendant(
+              of: row,
+              matching: find.byType(CreatorCountryFlag),
+            );
+            final club = planner.divisions[division - 1][position - 1]!;
+            expect(
+              tester.widget<CreatorCountryFlag>(flag).code,
+              club['countryCode'],
+            );
+            final name = find.descendant(
+              of: row,
+              matching: find.text(club['name'] as String),
+            );
+            expect(
+              tester.getRect(flag).right,
+              lessThan(tester.getRect(name).left),
+            );
+            final button = tester.getRect(_swapButton(division, position));
+            expect(button.right, lessThanOrEqualTo(width));
+            if (!desktop) expect(button.height, greaterThanOrEqualTo(44));
+          }
+          expect(_divisionSlot(division, 9), findsNothing);
+          expect(tester.takeException(), isNull);
+        }
+        final swap = _swapButton(desktop ? 1 : 4, 1);
+        await tester.ensureVisible(swap);
+        await tester.tap(swap);
+        await tester.pumpAndSettle();
+        expect(find.text('TROCAR CLUBE'), findsOneWidget);
+        if (desktop) {
+          expect(find.byType(Dialog), findsOneWidget);
+        } else if (width <= 430) {
+          expect(find.byType(BottomSheet), findsOneWidget);
+        }
+        final modalConfirm = tester.getRect(
+          find.byKey(const ValueKey('division-swap-confirm')),
+        );
+        expect(modalConfirm.right, lessThanOrEqualTo(width));
+        expect(modalConfirm.bottom, lessThanOrEqualTo(900));
+        expect(tester.takeException(), isNull);
+        await tester.tap(find.byKey(const ValueKey('division-swap-cancel')));
+        await tester.pumpAndSettle();
         expect(find.text('Como montar'), findsNothing);
         expect(find.text('Modo de jogo'), findsNothing);
         expect(tester.takeException(), isNull);
@@ -599,6 +697,155 @@ void main() {
     expect(jsonDecode(request.body), containsPair('countries', ['AT']));
   });
 
+  testWidgets('Uma vaga bloqueia Continuar até haver uma opção autorizada', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()..clubCount = 31;
+    await _creator(tester, fixture, 1366);
+    await _next(tester);
+    await _next(tester);
+    expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+    expect(_divisionSlot(4, 8), findsOneWidget);
+    expect(_swapButton(4, 8), findsNothing);
+    expect(find.text('Vaga disponível'), findsOneWidget);
+    expect(
+      find.textContaining(
+        RegExp(r'Faltam? 1 clubes? para preencher as divisões'),
+      ),
+      findsOneWidget,
+    );
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    expect(
+      fixture.requests.where((r) => r.url.path.endsWith('/preview')),
+      isEmpty,
+    );
+
+    final adjust = find.text('AJUSTAR ELENCOS E FONTES');
+    await tester.ensureVisible(adjust);
+    await tester.tap(adjust);
+    await tester.pumpAndSettle();
+    final consent = find.byKey(const Key('fictional-world-016b'));
+    await tester.ensureVisible(consent);
+    await tester.tap(consent);
+    await tester.pumpAndSettle();
+    final apply = find.text('APLICAR OPÇÕES');
+    await tester.ensureVisible(apply);
+    await tester.tap(apply);
+    await tester.pumpAndSettle();
+    expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+    expect(find.textContaining('O mundo totalmente fictício'), findsOneWidget);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNotNull);
+    await _next(tester);
+    expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+  });
+
+  testWidgets(
+    'Seletor mobile filtra clubes, confirma e consulta não escalados',
+    (tester) async {
+      final fixture = _CreatorFixture()..clubCount = 34;
+      await _creator(tester, fixture, 390, classic: true);
+      await _next(tester);
+      await _next(tester);
+
+      final firstSwap = _swapButton(1, 1);
+      await tester.ensureVisible(firstSwap);
+      await tester.tap(firstSwap);
+      await tester.pumpAndSettle();
+      expect(find.byType(BottomSheet), findsOneWidget);
+      expect(find.text('TROCAR CLUBE'), findsOneWidget);
+      expect(find.text('1ª Divisão • Posição 1'), findsOneWidget);
+
+      final search = find.byKey(const ValueKey('division-swap-search'));
+      final filter = find.byKey(const ValueKey('division-swap-filter'));
+      final confirm = find.byKey(const ValueKey('division-swap-confirm'));
+      final club8 = find.byKey(const ValueKey('division-swap-option-test-8'));
+      await tester.tap(filter);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('2ª Divisão').last);
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('division-swap-option-test-1')),
+        findsNothing,
+      );
+      await tester.enterText(search, 'Clube de teste 8');
+      await tester.pumpAndSettle();
+      expect(club8, findsOneWidget);
+
+      tester.view.viewInsets = const FakeViewPadding(bottom: 325);
+      addTearDown(tester.view.resetViewInsets);
+      await tester.pumpAndSettle();
+      expect(tester.getRect(confirm).bottom, lessThanOrEqualTo(575));
+      expect(tester.takeException(), isNull);
+      tester.view.resetViewInsets();
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(club8);
+      await tester.tap(club8);
+      await tester.pumpAndSettle();
+      expect(tester.widget<ListTile>(club8).selected, isTrue);
+      expect(find.text('Entra: Clube de teste 8'), findsOneWidget);
+      expect(find.text('CONFIRMAR TROCA'), findsOneWidget);
+      await tester.tap(confirm);
+      await tester.pumpAndSettle();
+
+      Finder clubInSlot(int division, int index, int club) => find.descendant(
+        of: _divisionSlot(division, index),
+        matching: find.text('Clube de teste $club'),
+      );
+      expect(clubInSlot(1, 1, 8), findsOneWidget);
+      final secondDivision = find.byKey(const ValueKey('division-tab-2'));
+      await tester.ensureVisible(secondDivision);
+      await tester.tap(secondDivision);
+      await tester.pumpAndSettle();
+      expect(clubInSlot(2, 1, 0), findsOneWidget);
+      expect(clubInSlot(1, 1, 8), findsNothing);
+
+      final unassigned = find.text('VER CLUBES NÃO ESCALADOS');
+      await tester.ensureVisible(unassigned);
+      await tester.tap(unassigned);
+      await tester.pumpAndSettle();
+      expect(find.text('2 clubes disponíveis'), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('division-unassigned-test-32')),
+        findsOneWidget,
+      );
+      expect(
+        find.byKey(const ValueKey('division-unassigned-test-0')),
+        findsNothing,
+      );
+      await tester.enterText(
+        find.byKey(const ValueKey('division-unassigned-search')),
+        'Clube de teste 33',
+      );
+      await tester.pumpAndSettle();
+      final result = find.byKey(const ValueKey('division-unassigned-test-33'));
+      expect(result, findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('division-unassigned-test-32')),
+        findsNothing,
+      );
+      expect(
+        find.descendant(of: result, matching: find.byType(CreatorCountryFlag)),
+        findsOneWidget,
+      );
+      expect(find.textContaining('Não escalado'), findsOneWidget);
+      expect(confirm, findsNothing);
+      await tester.tap(find.text('FECHAR'));
+      await tester.pumpAndSettle();
+      expect(clubInSlot(2, 1, 0), findsOneWidget);
+
+      tester.view.physicalSize = const Size(1366, 900);
+      await tester.pumpAndSettle();
+      expect(clubInSlot(1, 1, 8), findsOneWidget);
+      expect(clubInSlot(2, 1, 0), findsOneWidget);
+      tester.view.physicalSize = const Size(390, 900);
+      await tester.pumpAndSettle();
+      expect(clubInSlot(2, 1, 0), findsOneWidget);
+      expect(clubInSlot(1, 1, 8), findsNothing);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
   testWidgets('Trocas são enviadas à prévia na ordem das quatro divisões', (
     tester,
   ) async {
@@ -607,19 +854,35 @@ void main() {
     await _next(tester);
     await _next(tester);
 
-    Future<void> swap(int position, int candidate) async {
-      final button = find.byKey(ValueKey('swap-division-1-position-$position'));
+    Future<void> swap(
+      int position,
+      int candidate, {
+      bool confirm = true,
+    }) async {
+      final button = _swapButton(1, position);
       await tester.ensureVisible(button);
       await tester.tap(button);
       await tester.pumpAndSettle();
+      expect(find.byType(Dialog), findsOneWidget);
+      expect(find.text('TROCAR CLUBES'), findsOneWidget);
+      final confirmButton = find.byKey(const ValueKey('division-swap-confirm'));
+      expect(tester.widget<ButtonStyleButton>(confirmButton).onPressed, isNull);
       await tester.enterText(
         find.byKey(const ValueKey('division-swap-search')),
         'Clube de teste $candidate',
       );
       await tester.pumpAndSettle();
-      await tester.tap(
-        find.byKey(ValueKey('division-swap-option-test-$candidate')),
+      final option = find.byKey(
+        ValueKey('division-swap-option-test-$candidate'),
       );
+      await tester.ensureVisible(option);
+      await tester.tap(option);
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<ButtonStyleButton>(confirmButton).onPressed,
+        isNotNull,
+      );
+      await tester.tap(confirm ? confirmButton : find.text('CANCELAR'));
       await tester.pumpAndSettle();
     }
 
@@ -634,11 +897,20 @@ void main() {
     }
 
     expectSlot(1, 0);
+    await swap(1, 1, confirm: false);
+    expectSlot(1, 0);
     await swap(1, 1);
     expectSlot(1, 1);
     expectSlot(2, 0);
     await swap(1, 8);
     await swap(3, 32);
+    expectSlot(1, 8);
+    expectSlot(3, 32);
+
+    await tester.tap(find.text('VOLTAR'));
+    await tester.pumpAndSettle();
+    expect(find.text('7/8 • Países'), findsOneWidget);
+    await _next(tester);
     expectSlot(1, 8);
     expectSlot(3, 32);
 
@@ -699,7 +971,15 @@ void main() {
     await tester.ensureVisible(restore);
     await tester.tap(restore);
     await tester.pumpAndSettle();
-    expect(find.text('Restaurar distribuição automática?'), findsOneWidget);
+    expect(
+      find.text('Deseja restaurar a distribuição automática?'),
+      findsOneWidget,
+    );
+    await tester.tap(find.text('CANCELAR'));
+    await tester.pumpAndSettle();
+    expectSlot(1, 8);
+    await tester.tap(restore);
+    await tester.pumpAndSettle();
     await tester.tap(find.text('RESTAURAR'));
     await tester.pumpAndSettle();
     expectSlot(1, 0);
@@ -713,5 +993,21 @@ void main() {
     expect((restored['assignments'] as List).map((a) => a['clubKey']), [
       for (var i = 0; i < 32; i++) 'test-$i',
     ]);
+
+    await tester.ensureVisible(editDivisions);
+    await tester.tap(editDivisions);
+    await tester.pumpAndSettle();
+    await swap(1, 1);
+    fixture.unavailableClubIds.add(1);
+    await tester.tap(find.text('VOLTAR'));
+    await tester.pumpAndSettle();
+    await _next(tester);
+    expect(
+      find.textContaining('deixaram de estar disponíveis'),
+      findsOneWidget,
+    );
+    expect(_swapButton(1, 1), findsNothing);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    expect(previews, hasLength(2));
   });
 }
