@@ -1314,15 +1314,29 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   String _invalidRosterPreview() {
     final count = (_preview?['clubs'] as List?)?.length ?? 0;
+    const switchHint =
+        'Para jogar agora, selecione USAR ELENCO FICTÍCIO e clique em CONTINUAR.';
+    final summary = _preview?['dataSummary'] as Map?;
+    final complete = summary?['completeRealSquads'] as int?;
+    if (!_generateAllRosterPlayers &&
+        complete != null &&
+        complete < _worldCapacity) {
+      final verified = summary?['verifiedRealClubs'] ?? _eligibleClubs.length;
+      final coverage = complete == 0
+          ? 'ainda não tem elencos reais completos'
+          : 'oferece $complete dos $_worldCapacity elencos reais completos necessários';
+      return 'Nos países escolhidos, o catálogo tem $verified clubes reais e $coverage.\n'
+          '$switchHint';
+    }
     if (count == _worldCapacity) {
       final errors = _preview?['errors'] as List?;
       return errors?.firstOrNull?.toString() ??
           'A montagem tem vagas pendentes. Revise os clubes escolhidos.';
     }
-    final selected = 'A montagem ficou com $count/$_worldCapacity clubes.';
     return _generateAllRosterPlayers
-        ? '$selected Revise as divisões e os distritais.'
-        : '$selected Revise os clubes escolhidos ou use elencos fictícios.';
+        ? 'A montagem ficou com $count/$_worldCapacity clubes. Revise as divisões e os distritais.'
+        : '$count dos $_worldCapacity clubes da montagem passaram na validação dos elencos reais. '
+              'Revise os clubes escolhidos.\n$switchHint';
   }
 
   Future<void> _next() => _run(() async {

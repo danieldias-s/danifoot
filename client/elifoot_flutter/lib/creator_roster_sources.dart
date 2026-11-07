@@ -206,11 +206,14 @@ class CreatorRosterSources extends StatelessWidget {
             ),
             if (problem case final message?) ...[
               const SizedBox(height: 12),
-              Text(
-                message,
-                style: TextStyle(
-                  color: theme.textPrimary,
-                  fontWeight: FontWeight.w700,
+              Semantics(
+                liveRegion: true,
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    color: theme.textPrimary,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ],

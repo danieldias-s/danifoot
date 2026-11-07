@@ -155,42 +155,62 @@ Future<void> open(
 }
 
 void main() {
-  testWidgets('127 elencos reais bloqueiam a saída da etapa de fontes', (
-    tester,
-  ) async {
-    final calls = <Map<String, dynamic>>[];
-    await open(tester, calls, completeRealSquads: 127);
-    expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
+  for (final complete in [0, 127]) {
+    testWidgets('$complete elencos reais bloqueiam o avanço e explicam a falta', (
+      tester,
+    ) async {
+      final calls = <Map<String, dynamic>>[];
+      await open(tester, calls, completeRealSquads: complete);
+      expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
 
-    await next(tester);
-    final strict = calls.last;
-    expect(strict['path'], endsWith('/preview'));
-    expect(strict['dataMode'], 'REAL_COMPLETE');
-    expect(strict['allowFictionalPlayers'], isFalse);
-    expect(strict['allowFictionalTeams'], isFalse);
-    expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
-    expect(find.text('6/7 • PRÉVIA'), findsNothing);
-    expect(
-      find.textContaining(
-        'Modo real exige 128 clubes com elencos reais completos.',
-      ),
-      findsOneWidget,
-    );
-    expect(find.textContaining('127/128'), findsOneWidget);
+      await next(tester);
+      final strict = calls.last;
+      expect(strict['path'], endsWith('/preview'));
+      expect(strict['dataMode'], 'REAL_COMPLETE');
+      expect(strict['allowFictionalPlayers'], isFalse);
+      expect(strict['allowFictionalTeams'], isFalse);
+      expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+      expect(find.text('6/7 • PRÉVIA'), findsNothing);
+      expect(
+        find.text('Modo real exige 128 clubes com elencos reais completos.'),
+        findsOneWidget,
+      );
+      final coverage = complete == 0
+          ? 'ainda não tem elencos reais completos.'
+          : 'oferece $complete dos 128 elencos reais completos necessários.';
+      expect(
+        find.textContaining(
+          'Nos países escolhidos, o catálogo tem 128 clubes reais e $coverage',
+        ),
+        findsOneWidget,
+      );
+      expect(
+        find.textContaining(
+          'Para jogar agora, selecione USAR ELENCO FICTÍCIO e clique em CONTINUAR.',
+        ),
+        findsOneWidget,
+      );
+      expect(find.textContaining('$complete/128 clubes'), findsNothing);
 
-    await choose(tester, find.byKey(const ValueKey('source-generated')));
-    await next(tester);
-    final generated = calls.last;
-    expect(generated['path'], endsWith('/preview'));
-    expect(generated['dataMode'], 'REAL_CLUBS_SIMULATED');
-    expect(generated['allowFictionalPlayers'], isTrue);
-    expect(generated['allowFictionalTeams'], isFalse);
-    expect(generated['generateAllRosterPlayers'], isTrue);
-    expect(generated['assignments'], strict['assignments']);
-    expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
-    expect(find.textContaining('128/128 clubes'), findsOneWidget);
-    expect(find.textContaining('2304 fictícios gerados'), findsOneWidget);
-  });
+      await choose(tester, find.byKey(const ValueKey('source-generated')));
+      expect(
+        find.textContaining('o catálogo tem 128 clubes reais'),
+        findsNothing,
+      );
+      await next(tester);
+      final generated = calls.last;
+      expect(generated['path'], endsWith('/preview'));
+      expect(generated['dataMode'], 'REAL_CLUBS_SIMULATED');
+      expect(generated['allowFictionalPlayers'], isTrue);
+      expect(generated['allowFictionalTeams'], isFalse);
+      expect(generated['generateAllRosterPlayers'], isTrue);
+      expect(generated['countries'], strict['countries']);
+      expect(generated['assignments'], strict['assignments']);
+      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+      expect(find.textContaining('128/128 clubes'), findsOneWidget);
+      expect(find.textContaining('2304 fictícios gerados'), findsOneWidget);
+    });
+  }
 
   for (final (width, fictionalRoster) in [(1366.0, false), (390.0, true)]) {
     testWidgets('Etapa 5 preserva clubes ao escolher elenco a $width px', (
