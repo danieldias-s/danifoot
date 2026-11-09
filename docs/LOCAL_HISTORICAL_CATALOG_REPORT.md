@@ -36,6 +36,16 @@ A implementação está no checkpoint `1348bfb`, a partir de `1921e3c`. A worktr
 
 ## Arquivos e operações
 
+Para abrir a prévia já compilada nesta máquina, execute `INICIAR-CATALOGO-LOCAL.cmd` na raiz desta worktree, pelo Windows. O iniciador verifica o PostgreSQL, reutiliza os bancos de QA existentes, inicia API e Web nas portas 5281 e 5282 e abre o navegador. A verificação inclui o token CSRF, o cookie de formulário e a origem permitida da tela, além do status geral da API. Se o banco estiver se recuperando após um desligamento, aguarde a mensagem `Sistema pronto`. A prévia usa dados sintéticos de QA; os arquivos canônicos continuam em `catalogo`.
+
+Uma API iniciada dentro do ambiente restrito do agente pode responder ao status geral e falhar ao acessar as chaves Data Protection do perfil Windows. Nesse caso, o iniciador informa a falha de autenticação. A correção local validada foi reiniciar somente o processo desta API sob o usuário normal; as chaves, contas, bancos e saves foram preservados. Após o reinício, o endpoint de formulário respondeu com HTTP 200 e a sessão de QA existente voltou a abrir o jogo no navegador.
+
+Pelo PowerShell:
+
+```powershell
+& 'D:\elifoot_98\.worktrees\local-historical-catalog\INICIAR-CATALOGO-LOCAL.cmd'
+```
+
 Os sete documentos da missão estão em `docs`. A validação e a importação podem ser executadas da raiz da worktree.
 
 ```powershell
