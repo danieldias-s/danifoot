@@ -244,28 +244,31 @@ class CreatorFrame extends StatelessWidget {
     int index,
     bool mobile,
     Color frameInk,
-  ) => Container(
-    key: ValueKey('creator-step-marker-$index'),
-    width: mobile ? 24 : 29,
-    height: mobile ? 24 : 29,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: index == step ? theme.selectedBackground : theme.primary,
-      border: Border.all(
-        color: index == step ? theme.selectedBackground : theme.border,
+  ) {
+    final markerInk = readableInk(theme.primary, Colors.white);
+    return Container(
+      key: ValueKey('creator-step-marker-$index'),
+      width: mobile ? 24 : 29,
+      height: mobile ? 24 : 29,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: index == step ? theme.selectedBackground : theme.primary,
+        border: Border.all(
+          color: index == step ? theme.selectedBackground : theme.border,
+        ),
       ),
-    ),
-    alignment: Alignment.center,
-    child: index < step
-        ? Icon(Icons.check, size: 16, color: frameInk)
-        : Text(
-            '${index + 1}',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: index == step ? theme.selectedText : frameInk,
+      alignment: Alignment.center,
+      child: index < step
+          ? Icon(Icons.check, size: 16, color: markerInk)
+          : Text(
+              '${index + 1}',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: index == step ? theme.selectedText : markerInk,
+              ),
             ),
-          ),
-  );
+    );
+  }
 
   String _compactStepName(String name) => switch (name.toLowerCase()) {
     'categoria' => 'Cat.',
@@ -290,9 +293,9 @@ class CreatorFrame extends StatelessWidget {
         final divisionStage = summary != null;
         final stadiumStage =
             divisionStage || stageDescription != null || forceStadium;
-        final frameInk = stadiumStage
-            ? readableInk(theme.primary, Colors.white)
-            : theme.textPrimary;
+        final headerInk = readableInk(theme.primary, Colors.white);
+        final frameInk = stadiumStage ? headerInk : theme.textPrimary;
+        final yearsStage = stadiumStage && steps.length == 8 && step == 2;
         return Scaffold(
           backgroundColor: theme.background,
           body: CreatorBackdrop(
@@ -320,7 +323,7 @@ class CreatorFrame extends StatelessWidget {
                           tooltip: 'VOLTAR À SALA',
                           onPressed: () => Navigator.maybePop(context),
                           icon: const Icon(Icons.arrow_back),
-                          color: readableInk(theme.primary, theme.textPrimary),
+                          color: headerInk,
                         ),
                         Expanded(
                           child: Align(
@@ -333,7 +336,7 @@ class CreatorFrame extends StatelessWidget {
                                   fit: BoxFit.scaleDown,
                                   child: CreatorBrand(
                                     size: mobile ? 25 : 34,
-                                    ink: frameInk,
+                                    ink: headerInk,
                                   ),
                                 ),
                                 if (mobile)
@@ -341,7 +344,7 @@ class CreatorFrame extends StatelessWidget {
                                     'CRIADOR DE MUNDOS',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: frameInk,
+                                      color: headerInk,
                                     ),
                                   ),
                               ],
@@ -349,12 +352,12 @@ class CreatorFrame extends StatelessWidget {
                           ),
                         ),
                         if (!mobile) ...[
-                          Icon(Icons.language, color: frameInk, size: 30),
+                          Icon(Icons.language, color: headerInk, size: 30),
                           const SizedBox(width: 12),
                           Text(
                             'CRIADOR DE MUNDOS',
                             style: TextStyle(
-                              color: frameInk,
+                              color: headerInk,
                               fontSize: 25,
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.italic,
@@ -373,7 +376,7 @@ class CreatorFrame extends StatelessWidget {
                           OutlinedButton.icon(
                             onPressed: () => _guide(context),
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: frameInk,
+                              foregroundColor: headerInk,
                               side: BorderSide(
                                 color: theme.selectedBackground,
                                 width: 2,
@@ -488,7 +491,9 @@ class CreatorFrame extends StatelessWidget {
                           constraints: BoxConstraints(
                             maxWidth: step == 0
                                 ? 720
-                                : (stadiumStage ? 1340 : 1280),
+                                : (yearsStage
+                                      ? 920
+                                      : (stadiumStage ? 1340 : 1280)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -497,22 +502,69 @@ class CreatorFrame extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                   vertical: mobile
                                       ? 12
-                                      : (divisionStage ? 16 : 8),
+                                      : (divisionStage || yearsStage ? 16 : 8),
                                 ),
                                 child: Column(
                                   children: [
-                                    Text(
-                                      '${step + 1}/${steps.length} • ${steps[step].toUpperCase()}',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: frameInk,
-                                        fontSize: mobile
-                                            ? 30
-                                            : (divisionStage ? 40 : 36),
-                                        fontWeight: FontWeight.w700,
-                                        height: 1.1,
+                                    if (yearsStage)
+                                      FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            _LaurelBranch(
+                                              color: theme.selectedBackground,
+                                              height: mobile ? 34 : 46,
+                                            ),
+                                            SizedBox(width: mobile ? 10 : 16),
+                                            Text(
+                                              '${step + 1}/${steps.length} • ${steps[step].toUpperCase()}',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: frameInk,
+                                                fontSize: mobile ? 30 : 40,
+                                                fontWeight: FontWeight.w700,
+                                                height: 1.1,
+                                              ),
+                                            ),
+                                            SizedBox(width: mobile ? 10 : 16),
+                                            _LaurelBranch(
+                                              color: theme.selectedBackground,
+                                              height: mobile ? 34 : 46,
+                                              mirrored: true,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    else
+                                      Text(
+                                        '${step + 1}/${steps.length} • ${steps[step].toUpperCase()}',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: frameInk,
+                                          fontSize: mobile
+                                              ? 30
+                                              : (divisionStage ? 40 : 36),
+                                          fontWeight: FontWeight.w700,
+                                          height: 1.1,
+                                        ),
                                       ),
-                                    ),
+                                    if (yearsStage) ...[
+                                      const SizedBox(height: 8),
+                                      Container(
+                                        width: mobile ? 150 : 240,
+                                        height: 2,
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              Colors.transparent,
+                                              theme.selectedBackground,
+                                              Colors.transparent,
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                     if (stageDescription
                                         case final description?) ...[
                                       const SizedBox(height: 6),
@@ -895,4 +947,224 @@ class _CornerAccent extends CustomPainter {
 
   @override
   bool shouldRepaint(_CornerAccent oldDelegate) => oldDelegate.color != color;
+}
+
+class _LaurelBranch extends StatelessWidget {
+  final Color color;
+  final double height;
+  final bool mirrored;
+  const _LaurelBranch({
+    required this.color,
+    this.height = 44,
+    this.mirrored = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: height * .64,
+      height: height,
+      child: CustomPaint(
+        painter: _LaurelPainter(color: color, mirrored: mirrored),
+      ),
+    );
+  }
+}
+
+class _LaurelPainter extends CustomPainter {
+  final Color color;
+  final bool mirrored;
+  const _LaurelPainter({required this.color, required this.mirrored});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (mirrored) {
+      canvas.translate(size.width, 0);
+      canvas.scale(-1, 1);
+    }
+    final stemPaint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.height * .045
+      ..strokeCap = StrokeCap.round;
+    final stem = Path()
+      ..moveTo(size.width * .82, size.height * .92)
+      ..quadraticBezierTo(
+        size.width * .18,
+        size.height * .56,
+        size.width * .62,
+        size.height * .08,
+      );
+    canvas.drawPath(stem, stemPaint);
+
+    final leafPaint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+    const steps = 5;
+    for (var i = 0; i < steps; i++) {
+      final t = (i + .45) / (steps + .4);
+      final u = 1 - t;
+      final cx =
+          u * u * (size.width * .82) +
+          2 * u * t * (size.width * .18) +
+          t * t * (size.width * .62);
+      final cy =
+          u * u * (size.height * .92) +
+          2 * u * t * (size.height * .56) +
+          t * t * (size.height * .08);
+      final leafLen = size.height * (.17 - i * .012);
+      final leafWidth = leafLen * .46;
+
+      for (final side in [-1.0, 1.0]) {
+        canvas.save();
+        canvas.translate(cx, cy);
+        canvas.rotate((-0.95 + t * 0.65) + side * 0.58);
+        final leaf = Path()
+          ..moveTo(0, 0)
+          ..quadraticBezierTo(
+            leafLen * .5,
+            -leafWidth * side,
+            leafLen,
+            -leafWidth * .18 * side,
+          )
+          ..quadraticBezierTo(leafLen * .5, leafWidth * .35 * side, 0, 0)
+          ..close();
+        canvas.drawPath(leaf, leafPaint);
+        canvas.restore();
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_LaurelPainter oldDelegate) =>
+      oldDelegate.color != color || oldDelegate.mirrored != mirrored;
+}
+
+class CreatorCalendarYearBadge extends StatelessWidget {
+  final String year;
+  final Color color;
+  final Color surfaceColor;
+  final bool compact;
+  const CreatorCalendarYearBadge({
+    super.key,
+    required this.year,
+    required this.color,
+    required this.surfaceColor,
+    this.compact = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final width = compact ? 50.0 : 62.0;
+    final height = compact ? 48.0 : 58.0;
+    return SizedBox(
+      width: width,
+      height: height,
+      child: CustomPaint(
+        painter: _CalendarYearPainter(
+          year: year,
+          color: color,
+          surfaceColor: surfaceColor,
+        ),
+      ),
+    );
+  }
+}
+
+class _CalendarYearPainter extends CustomPainter {
+  final String year;
+  final Color color;
+  final Color surfaceColor;
+  const _CalendarYearPainter({
+    required this.year,
+    required this.color,
+    required this.surfaceColor,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final stroke = size.width * .048;
+    final ringTop = size.height * .02;
+    final bodyTop = size.height * .12;
+    final headerHeight = size.height * .23;
+    final radius = Radius.circular(size.width * .16);
+    final bodyRect = RRect.fromLTRBR(
+      stroke / 2,
+      bodyTop,
+      size.width - stroke / 2,
+      size.height - stroke / 2,
+      radius,
+    );
+
+    canvas.drawRRect(bodyRect, Paint()..color = surfaceColor);
+
+    canvas.save();
+    canvas.clipRRect(bodyRect);
+    canvas.drawRect(
+      Rect.fromLTWH(0, bodyTop, size.width, headerHeight),
+      Paint()..color = color,
+    );
+    canvas.restore();
+
+    canvas.drawRRect(
+      bodyRect,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke,
+    );
+
+    final ringWidth = size.width * .11;
+    final ringHeight = size.height * .20;
+    for (final x in [size.width * .28, size.width * .72]) {
+      final cutoutRect = RRect.fromRectAndRadius(
+        Rect.fromCenter(
+          center: Offset(x, ringTop + ringHeight * .52),
+          width: ringWidth + stroke * 1.1,
+          height: ringHeight + stroke * .8,
+        ),
+        Radius.circular(ringWidth),
+      );
+      canvas.drawRRect(cutoutRect, Paint()..color = surfaceColor);
+      final ringRect = RRect.fromRectAndRadius(
+        Rect.fromCenter(
+          center: Offset(x, ringTop + ringHeight * .48),
+          width: ringWidth,
+          height: ringHeight,
+        ),
+        Radius.circular(ringWidth),
+      );
+      canvas.drawRRect(ringRect, Paint()..color = color);
+    }
+
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: year,
+        style: TextStyle(
+          fontFamily: 'ClassicCondensed',
+          color: color,
+          fontSize: size.height * .36,
+          fontWeight: FontWeight.w800,
+          height: 1,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout(maxWidth: size.width - stroke * 2);
+
+    final bodyContentTop = bodyTop + headerHeight;
+    final bodyContentHeight = size.height - stroke / 2 - bodyContentTop;
+    textPainter.paint(
+      canvas,
+      Offset(
+        (size.width - textPainter.width) / 2,
+        bodyContentTop + (bodyContentHeight - textPainter.height) / 2,
+      ),
+    );
+  }
+
+  @override
+  bool shouldRepaint(_CalendarYearPainter oldDelegate) =>
+      oldDelegate.year != year ||
+      oldDelegate.color != color ||
+      oldDelegate.surfaceColor != surfaceColor;
 }

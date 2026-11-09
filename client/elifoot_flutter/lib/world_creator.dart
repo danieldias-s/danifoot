@@ -1285,21 +1285,73 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       for (final country in _options)
         country['code'].toString(): country['name'].toString(),
     };
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text('Selecione os anos que deseja reunir no campeonato.'),
-        const SizedBox(height: 12),
-        if (!_busy && _yearsLoadFailed) ...[
-          const Text('Não foi possível consultar os anos do catálogo local.'),
-          TextButton(
-            onPressed: () => _run(_loadYears),
-            child: const Text('TENTAR NOVAMENTE'),
-          ),
-        ] else if (!_busy && _yearOptions.isEmpty)
-          const Text('Nenhum ano com clubes nos países selecionados.'),
-        for (final item in _yearOptions) _yearCard(theme, item, names),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final mobile =
+            MediaQuery.sizeOf(context).width < 1024 ||
+            constraints.maxWidth < 560;
+        final selectedCount = _years.length;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Selecione os anos que deseja reunir no campeonato.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: theme.textPrimary,
+                fontSize: mobile ? 16 : 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(height: mobile ? 12 : 16),
+            if (!_busy && _yearsLoadFailed) ...[
+              const Text(
+                'Não foi possível consultar os anos do catálogo local.',
+              ),
+              TextButton(
+                onPressed: () => _run(_loadYears),
+                child: const Text('TENTAR NOVAMENTE'),
+              ),
+            ] else if (!_busy && _yearOptions.isEmpty)
+              const Text('Nenhum ano com clubes nos países selecionados.'),
+            for (final item in _yearOptions)
+              _yearCard(theme, item, names, mobile),
+            if (_yearOptions.isNotEmpty)
+              Container(
+                key: const ValueKey('catalog-years-summary'),
+                margin: const EdgeInsets.only(top: 4),
+                padding: EdgeInsets.symmetric(
+                  horizontal: mobile ? 14 : 18,
+                  vertical: mobile ? 10 : 12,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDCE7DF),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.layers_outlined,
+                      color: theme.primary,
+                      size: mobile ? 20 : 24,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        '$selectedCount ${selectedCount == 1 ? 'ano selecionado' : 'anos selecionados'}',
+                        style: TextStyle(
+                          color: theme.textPrimary,
+                          fontSize: mobile ? 16 : 19,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 
@@ -1307,37 +1359,168 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     ClassicTheme theme,
     Map<String, dynamic> item,
     Map<String, String> names,
+    bool mobile,
   ) {
     final year = item['year'].toString();
     final coverage = _maps(item['countries']);
     final covered = coverage.map((country) => country['code']).toSet();
-    final missing = _countries.where((country) => !covered.contains(country));
+    final missing = _countries
+        .where((country) => !covered.contains(country))
+        .toList();
     final count = _clubCount(item);
-    return CheckboxListTile(
-      key: ValueKey('catalog-year-$year'),
-      title: Text('$year • $count ${count == 1 ? 'clube' : 'clubes'}'),
-      subtitle: Text(
-        [
-          for (final country in coverage)
-            '${country['name'] ?? names[country['code']]} (${_clubCount(country)})',
-          if (missing.isNotEmpty)
-            'Sem clubes em ${missing.map((code) => names[code] ?? code).join(', ')}',
-        ].join(' • '),
+    final selected = _years.contains(year);
+    const cardSurface = Color(0xFFF7F9F7);
+    final subtitleItems = <Widget>[
+      for (final country in coverage)
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CreatorCountryFlag(
+              code: (country['code'] ?? '').toString(),
+              countryName: (country['name'] ?? names[country['code']])
+                  ?.toString(),
+              width: mobile ? 18 : 22,
+              height: mobile ? 13 : 15,
+            ),
+            const SizedBox(width: 6),
+            Flexible(
+              child: Text(
+                '${country['name'] ?? names[country['code']]} (${_clubCount(country)})',
+                style: TextStyle(
+                  color: theme.textSecondary,
+                  fontSize: mobile ? 14 : 17,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+      if (missing.isNotEmpty)
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.block,
+              size: mobile ? 16 : 18,
+              color: theme.textSecondary.withValues(alpha: .65),
+            ),
+            const SizedBox(width: 6),
+            Flexible(
+              child: Text(
+                'Sem clubes em ${missing.map((code) => names[code] ?? code).join(', ')}',
+                style: TextStyle(
+                  color: theme.textSecondary,
+                  fontSize: mobile ? 14 : 17,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+    ];
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: cardSurface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: selected ? theme.primary.withValues(alpha: .35) : theme.border,
+          width: 1.2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: .04),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
-      value: _years.contains(year),
-      activeColor: theme.primary,
-      checkColor: readableInk(theme.primary),
-      onChanged: _busy || _yearsLoadFailed
-          ? null
-          : (selected) => setState(() {
-              if (selected == true) {
-                _years.add(year);
-              } else {
-                _years.remove(year);
-              }
-              _clearCatalogDraft(keepPlacement: true);
-              _error = '';
-            }),
+      child: CheckboxListTile(
+        key: ValueKey('catalog-year-$year'),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: mobile ? 12 : 20,
+          vertical: mobile ? 6 : 10,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        checkboxShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
+        secondary: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CreatorCalendarYearBadge(
+              year: year,
+              color: theme.primary,
+              surfaceColor: cardSurface,
+              compact: mobile,
+            ),
+            if (!mobile)
+              Container(
+                margin: const EdgeInsets.only(left: 16),
+                width: 1,
+                height: 50,
+                color: theme.border,
+              ),
+          ],
+        ),
+        title: Text(
+          '$year • $count ${count == 1 ? 'clube' : 'clubes'}',
+          style: TextStyle(
+            color: theme.textPrimary,
+            fontSize: mobile ? 19 : 25,
+            fontWeight: FontWeight.w800,
+            height: 1.15,
+          ),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: mobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (var i = 0; i < subtitleItems.length; i++)
+                      Padding(
+                        padding: EdgeInsets.only(top: i == 0 ? 0 : 4),
+                        child: subtitleItems[i],
+                      ),
+                  ],
+                )
+              : Wrap(
+                  spacing: 8,
+                  runSpacing: 4,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    for (var i = 0; i < subtitleItems.length; i++) ...[
+                      if (i > 0)
+                        Text(
+                          '•',
+                          style: TextStyle(
+                            color: theme.textSecondary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      subtitleItems[i],
+                    ],
+                  ],
+                ),
+        ),
+        value: selected,
+        activeColor: theme.primary,
+        checkColor: readableInk(theme.primary, Colors.white),
+        onChanged: _busy || _yearsLoadFailed
+            ? null
+            : (checked) => setState(() {
+                if (checked == true) {
+                  _years.add(year);
+                } else {
+                  _years.remove(year);
+                }
+                _clearCatalogDraft(keepPlacement: true);
+                _error = '';
+              }),
+      ),
     );
   }
 
@@ -1620,6 +1803,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   @override
   Widget build(BuildContext context) {
     final reviewStage = _step >= _previewStep;
+    final modernStage =
+        reviewStage || _step == _yearsStep && _assembly == null;
     final frame = CreatorFrame(
       steps: _steps,
       step: _step,
@@ -1627,7 +1812,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       busy: _busy,
       error: _error,
       divisionSummary: _divisionSummary,
-      forceStadium: reviewStage || _step == _sourcesStep && _assembly == null,
+      forceStadium:
+          modernStage || _step == _sourcesStep && _assembly == null,
       stageDescription: _step == _districtsStep && _assembly == null
           ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
           : null,
@@ -1653,8 +1839,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           ? _confirm
           : _next,
     );
-    // Review and confirmation belong to the modern creator in both game skins.
-    return reviewStage
+    // Years, review, and confirmation belong to the modern creator in both game skins.
+    return modernStage
         ? Theme(data: ClassicTheme.classicGreen().material(), child: frame)
         : frame;
   }

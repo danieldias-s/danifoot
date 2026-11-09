@@ -493,9 +493,13 @@ void main() {
     await _pressContinue(tester);
     expect(find.text('2025 • 35 clubes'), findsOneWidget);
     expect(find.text('1998 • 18 clubes'), findsOneWidget);
-    expect(find.text('Portugal (18) • Sem clubes em Espanha'), findsOneWidget);
+    expect(find.text('Portugal (18)'), findsOneWidget);
+    expect(find.text('Sem clubes em Espanha'), findsOneWidget);
+    expect(find.byType(CreatorCalendarYearBadge), findsNWidgets(2));
+    expect(find.text('0 anos selecionados'), findsOneWidget);
     expect(historicalYear('2000'), findsNothing);
     await selectHistoricalYear(tester, '1998');
+    expect(find.text('1 ano selecionado'), findsOneWidget);
 
     fixture.seasons.add('1985');
     fixture.countryRowsByYear['1985'] = [('ES', 'Espanha', 1, 0)];
@@ -505,6 +509,7 @@ void main() {
     expect(tester.widget<CheckboxListTile>(historicalYear('1998')).value, true);
     expect(find.text('1985 • 1 clube'), findsOneWidget);
     await selectHistoricalYear(tester, '2025');
+    expect(find.text('2 anos selecionados'), findsOneWidget);
     await _pressContinue(tester);
 
     final request = fixture.requests.singleWhere(
