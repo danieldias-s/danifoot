@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clube por ano do catálogo local Elifoot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ClubId", "ClubName", "Country", "CountryCode", "CatalogYear", "Category", "InitialRanking", "RankingScore", "PrimaryColor", "SecondaryColor", "Players"],
+  "properties": {
+    "ClubId": { "$ref": "#/$defs/id" },
+    "ClubName": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "ShortName": { "type": ["string", "null"], "minLength": 1, "maxLength": 80 },
+    "Country": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "CountryCode": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "CatalogYear": { "type": "integer", "minimum": 1 },
+    "Category": { "enum": ["Masculino", "Feminino"] },
+    "League": { "type": ["string", "null"], "minLength": 1, "maxLength": 160 },
+    "InitialRanking": { "type": "integer", "minimum": 1 },
+    "RankingScore": { "type": "number" },
+    "PrimaryColor": { "$ref": "#/$defs/color" },
+    "SecondaryColor": { "$ref": "#/$defs/color" },
+    "Players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["PlayerId", "Name", "Position"],
+        "properties": {
+          "PlayerId": { "$ref": "#/$defs/id" },
+          "Name": { "type": "string", "minLength": 1, "maxLength": 160 },
+          "Position": { "enum": ["G", "D", "M", "A"] },
+          "Number": { "type": ["integer", "null"], "minimum": 0, "maximum": 999 },
+          "Source": { "type": ["string", "null"], "minLength": 1, "maxLength": 500 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$" },
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+  }
+}

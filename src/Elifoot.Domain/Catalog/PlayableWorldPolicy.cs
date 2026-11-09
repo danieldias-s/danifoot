@@ -47,6 +47,11 @@ public static class PlayableWorldPolicy
             errors.Add("SOMENTE DADOS REAIS COMPLETOS não autoriza complementação fictícia. Escolha outro modo explicitamente.");
         if (request.DataMode == WorldDataMode.REAL_CLUBS_SIMULATED && request.AllowFictionalTeams)
             errors.Add("CLUBES REAIS + ELENCOS SIMULADOS permite somente clubes reais verificados.");
+        if (request.CatalogYears != null)
+            return selection.Clubs.Where(c => HistoricalCatalogPolicy.MatchesScope(request, c) && HistoricalCatalogPolicy.IsLocalClub(c))
+                .Select(c => c with { Players = request.GenerateAllRosterPlayers ? [] : HistoricalCatalogPolicy.Roster(c) })
+                .Where(c => request.DataMode != WorldDataMode.REAL_COMPLETE || Complete(c.Players))
+                .ToList();
         var candidates = selection.Clubs.Where(c => c.Gender == request.Gender && c.Season == request.Season && request.Countries.Contains(c.CountryCode))
             .Where(c => Verified(c) || request.DataMode == WorldDataMode.FREE_WORLD &&
                 (Fictional(c) && request.AllowFictionalTeams || c.Verification?.Status == CatalogClubVerificationStatus.REAL_CLUB_HISTORICAL && request.IncludeHistoricalClubs ||
@@ -118,14 +123,18 @@ public static class PlayableWorldPolicy
     }
     public static WorldDataSummary Summary(WorldCreatorRequest request,CatalogSelection selection,List<WorldPreviewClub> assigned,DateOnly asOf)
     {
-        var compatible=selection.Clubs.Where(c=>c.Gender==request.Gender&&c.Season==request.Season&&request.Countries.Contains(c.CountryCode)).ToList();
-        var verified=compatible.Where(Verified).ToList();int complete=verified.Count(c=>Complete(CurrentPlayers(c,asOf)));
+        bool historical = request.CatalogYears != null;
+        var compatible = selection.Clubs.Where(c => HistoricalCatalogPolicy.MatchesScope(request, c)).ToList();
+        var verified = compatible.Where(c => historical ? HistoricalCatalogPolicy.IsLocalClub(c) : Verified(c)).ToList();
+        var completeKeys = verified.Where(c => Complete(historical ? HistoricalCatalogPolicy.Roster(c) : CurrentPlayers(c, asOf)))
+            .Select(c => c.Key).ToHashSet();
+        int complete = completeKeys.Count;
         int eligible=request.DataMode==WorldDataMode.REAL_COMPLETE?complete:verified.Count;
         return new(verified.Count,verified.Count(c=>c.Verification!.CurrentSeasonConfirmed),complete,verified.Count-complete,
             Math.Max(0,128-eligible),assigned.Count(c=>Verified(c.Club)),assigned.Count(c=>Fictional(c.Club)),
-            assigned.Sum(c=>c.Club.Players.Count(p=>p.PlayerOrigin==WorldPlayerOrigin.REAL_VERIFIED_CURRENT)),
+            assigned.Sum(c=>c.Club.Players.Count(p=>p.PlayerOrigin is WorldPlayerOrigin.REAL_VERIFIED_CURRENT or WorldPlayerOrigin.REAL_HISTORICAL_CATALOG)),
             assigned.Sum(c=>c.Club.Players.Count(p=>p.PlayerOrigin==WorldPlayerOrigin.FICTIONAL_GENERATED)),
-            assigned.Count(c=>!compatible.Any(s=>s.Key==c.Club.Key&&Complete(CurrentPlayers(s,asOf)))),
+            assigned.Count(c=>!completeKeys.Contains(c.Club.Key)),
             assigned.Count(c=>!Verified(c.Club)&&!Fictional(c.Club)));
     }
 }

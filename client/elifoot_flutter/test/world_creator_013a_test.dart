@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'historical_creator_test_support.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
@@ -60,9 +61,9 @@ void main() {
               'Bearer localdev-11111111111111111111111111111111',
             );
             dynamic response;
-            if (request.url.path.endsWith('/seasons')) {
-              response = ['2026'];
-            } else if (request.url.path.endsWith('/countries')) {
+            if (request.url.path.endsWith('/historical-years')) {
+              response = historicalYearResponse(request.url, '2026');
+            } else if (request.url.path.endsWith('/historical-countries')) {
               response = List.generate(
                 8,
                 (i) => {
@@ -186,6 +187,7 @@ void main() {
         }
 
         await next();
+        await selectHistoricalCountries(tester, countries);
         expect(find.text('8 países selecionados • máximo 8'), findsOneWidget);
         final search = find.byType(TextField);
         await tester.enterText(search, 'Brasil');
@@ -195,20 +197,22 @@ void main() {
         await tester.enterText(search, '');
         await tester.pump();
         await next();
-        expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+        await selectHistoricalYear(tester, '2026');
+        await next();
+        expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
         expect(find.text('Como montar'), findsNothing);
         await next();
-        expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+        expect(find.text('5/8 • DISTRITAIS'), findsOneWidget);
         expect(find.textContaining('AUTORIZO completar'), findsNothing);
         await next();
-        expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+        expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
         expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
         final generated = find.byKey(const ValueKey('source-generated'));
         await tester.ensureVisible(generated);
         await tester.tap(generated);
         await tester.pumpAndSettle();
         await next();
-        expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+        expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
         expect(find.text('128/128 clubes • 0 vagas pendentes'), findsOneWidget);
         expect(find.text('DISTRITAIS • 96/96'), findsOneWidget);
         final warnings = find.text('Avisos e pendências da prévia');
@@ -233,7 +237,7 @@ void main() {
           });
         }
         await next();
-        expect(find.text('7/7 • CONFIRMAR'), findsOneWidget);
+        expect(find.text('8/8 • CONFIRMAR'), findsOneWidget);
         await tester.ensureVisible(find.text('CONFIRMAR CRIAÇÃO'));
         await tester.tap(find.text('CONFIRMAR CRIAÇÃO'));
         await tester.pumpAndSettle();
@@ -255,8 +259,12 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
+      final next = find.text('CONTINUAR');
+      await tester.ensureVisible(next);
+      await tester.tap(next);
+      await tester.pumpAndSettle();
       expect(
-        find.text('Não foi possível consultar os anos do catálogo.'),
+        find.text('Não foi possível consultar os países do catálogo local.'),
         findsOneWidget,
       );
       expect(tester.takeException(), isNull);

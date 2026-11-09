@@ -7,7 +7,7 @@ public sealed class WorldPlayerOriginJsonConverter : JsonConverter<WorldPlayerOr
 {
     public override WorldPlayerOrigin Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt32(out int value) && value is >= 0 and <= 3)
+        if (reader.TokenType == JsonTokenType.Number && reader.TryGetInt32(out int value) && value is >= 0 and <= 4)
             return (WorldPlayerOrigin)value;
         if (reader.TokenType != JsonTokenType.String) throw new JsonException("Origem de atleta inválida.");
         return reader.GetString()?.ToUpperInvariant() switch
@@ -16,6 +16,7 @@ public sealed class WorldPlayerOriginJsonConverter : JsonConverter<WorldPlayerOr
             "REAL_HISTORICAL" or "REAL_HISTORICAL_REFERENCE" => WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE,
             "FICTIONAL_GENERATED" => WorldPlayerOrigin.FICTIONAL_GENERATED,
             "REAL_CURRENT_PROVIDER_REPORTED" => WorldPlayerOrigin.REAL_CURRENT_PROVIDER_REPORTED,
+            "REAL_HISTORICAL_CATALOG" => WorldPlayerOrigin.REAL_HISTORICAL_CATALOG,
             _ => throw new JsonException("Origem de atleta inválida.")
         };
     }
@@ -26,6 +27,7 @@ public sealed class WorldPlayerOriginJsonConverter : JsonConverter<WorldPlayerOr
             WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE => "REAL_HISTORICAL_REFERENCE",
             WorldPlayerOrigin.FICTIONAL_GENERATED => "FICTIONAL_GENERATED",
             WorldPlayerOrigin.REAL_CURRENT_PROVIDER_REPORTED => "REAL_CURRENT_PROVIDER_REPORTED",
+            WorldPlayerOrigin.REAL_HISTORICAL_CATALOG => "REAL_HISTORICAL_CATALOG",
             _ => throw new JsonException("Origem de atleta inválida.")
         });
 }

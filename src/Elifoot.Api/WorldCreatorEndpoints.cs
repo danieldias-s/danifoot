@@ -9,14 +9,54 @@ namespace Elifoot.Api;
 
 public static class WorldCreatorEndpoints
 {
+    public static bool UsesLocalHistoricalCatalog(IConfiguration config) =>
+        config.GetValue<bool>("Catalog013A:Enabled") &&
+        !config.GetValue<bool>("CatalogLocal:UseLegacyProviders");
+
     public static bool AddWorldCreator013A(this WebApplicationBuilder builder)
     {
         var c = builder.Configuration.GetSection("Catalog013A");
         if (!c.GetValue<bool>("Enabled")) return false;
+        builder.AddCatalogDatabase();
+        var local = UsesLocalHistoricalCatalog(builder.Configuration);
+        if (local) builder.Services.AddSingleton<LocalHistoricalCatalog>();
+        var options = new CatalogSyncOptions();
+        options.Timeout = TimeSpan.FromSeconds(Math.Clamp(c.GetValue("TimeoutSeconds", 2), 1, 5));
+        foreach (var type in Enum.GetValues<CatalogDataType>())
+            options.Frequencies[type] = TimeSpan.FromMinutes(Math.Max(1, c.GetValue($"FrequencyMinutes:{type}", options.Frequencies[type].TotalMinutes)));
+        builder.Services.AddSingleton(options);
+        if (!local)
+        {
+            foreach (var entry in c.GetSection("Sources").GetChildren())
+            {
+                var key = entry.GetSection("Scope").Get<CatalogScopeKey>() ?? throw new InvalidOperationException("Escopo ausente.");
+                var endpoint = new Uri(entry["Endpoint"]!);
+                if (endpoint.Scheme != "https") throw new InvalidOperationException("Fontes externas exigem HTTPS.");
+                builder.Services.AddSingleton<ICatalogSource>(new AuthorizedJsonCatalogSource(new HttpClient { Timeout = Timeout.InfiniteTimeSpan }, key,
+                    endpoint, entry.GetValue<bool>("StorageAuthorized"), entry.GetValue<bool>("CommercialUseAuthorized"),
+                    entry["LicenseReference"] ?? "", entry["BearerToken"]));
+            }
+            builder.AddRealDataProviders013B();
+        }
+        builder.Services.AddSingleton<CatalogSyncService>();
+        builder.Services.AddSingleton<WorldCreatorService>();
+        builder.Services.AddSingleton<WorldAssemblyService>();
+        builder.Services.AddSingleton<ClubColorService>();
+        if(!local && builder.Configuration.GetValue<bool>("Catalog014C:OnlineColorResearch")) {
+            var client=new HttpClient{BaseAddress=new Uri("https://www.wikidata.org/"),Timeout=TimeSpan.FromSeconds(12)};
+            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.WikidataClubColorSource(new(client,Elifoot.Infrastructure.Catalog.Providers.FootballProviderKind.Wikidata,null)));
+        }
+        if(builder.Configuration["Catalog014C:ColorFile"] is string colorFile)
+            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.SavedClubColorSource(Path.GetFullPath(colorFile)));
+        return true;
+    }
+
+    internal static void AddCatalogDatabase(this WebApplicationBuilder builder)
+    {
         string connection = builder.Configuration.GetConnectionString("Catalog013A")
             ?? throw new InvalidOperationException("Configure um banco exclusivo ConnectionStrings:Catalog013A.");
         string isolatedSuffix = builder.Configuration.GetValue<bool>("Catalog013B:Enabled") ? "013b" : "013a";
-        string provider = c["DatabaseProvider"] ?? "PostgreSQL";
+        string provider = builder.Configuration["Catalog013A:DatabaseProvider"] ?? "PostgreSQL";
         if (provider != "Sqlite" && !new Npgsql.NpgsqlConnectionStringBuilder(connection).Database!.Contains(isolatedSuffix, StringComparison.OrdinalIgnoreCase))
             throw new InvalidOperationException("A 013A exige nome de banco exclusivo contendo 013a.");
         if (provider is not ("Sqlite" or "PostgreSQL")) throw new InvalidOperationException("Provedor de banco do catálogo inválido.");
@@ -31,32 +71,6 @@ public static class WorldCreatorEndpoints
                 throw new InvalidOperationException("Use bancos de mundos e catálogo separados, ambos exclusivos da 013A.");
         }
         builder.Services.AddDbContext<CatalogDbContext>(o => { if (provider == "Sqlite") o.UseSqlite(connection); else o.UseNpgsql(connection); });
-        var options = new CatalogSyncOptions();
-        options.Timeout = TimeSpan.FromSeconds(Math.Clamp(c.GetValue("TimeoutSeconds", 2), 1, 5));
-        foreach (var type in Enum.GetValues<CatalogDataType>())
-            options.Frequencies[type] = TimeSpan.FromMinutes(Math.Max(1, c.GetValue($"FrequencyMinutes:{type}", options.Frequencies[type].TotalMinutes)));
-        builder.Services.AddSingleton(options);
-        foreach (var entry in c.GetSection("Sources").GetChildren())
-        {
-            var key = entry.GetSection("Scope").Get<CatalogScopeKey>() ?? throw new InvalidOperationException("Escopo ausente.");
-            var endpoint = new Uri(entry["Endpoint"]!);
-            if (endpoint.Scheme != "https") throw new InvalidOperationException("Fontes externas exigem HTTPS.");
-            builder.Services.AddSingleton<ICatalogSource>(new AuthorizedJsonCatalogSource(new HttpClient { Timeout = Timeout.InfiniteTimeSpan }, key,
-                endpoint, entry.GetValue<bool>("StorageAuthorized"), entry.GetValue<bool>("CommercialUseAuthorized"),
-                entry["LicenseReference"] ?? "", entry["BearerToken"]));
-        }
-        builder.AddRealDataProviders013B();
-        builder.Services.AddSingleton<CatalogSyncService>();
-        builder.Services.AddSingleton<WorldCreatorService>();
-        builder.Services.AddSingleton<WorldAssemblyService>();
-        builder.Services.AddSingleton<ClubColorService>();
-        if(builder.Configuration.GetValue<bool>("Catalog014C:OnlineColorResearch")) {
-            var client=new HttpClient{BaseAddress=new Uri("https://www.wikidata.org/"),Timeout=TimeSpan.FromSeconds(12)};
-            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.WikidataClubColorSource(new(client,Elifoot.Infrastructure.Catalog.Providers.FootballProviderKind.Wikidata,null)));
-        }
-        if(builder.Configuration["Catalog014C:ColorFile"] is string colorFile)
-            builder.Services.AddSingleton<IClubColorSource>(new Elifoot.Infrastructure.Catalog.Providers.SavedClubColorSource(Path.GetFullPath(colorFile)));
-        return true;
     }
     public static async Task InitializeWorldCreator013A(this WebApplication app)
     {
@@ -64,6 +78,18 @@ public static class WorldCreatorEndpoints
         await db.Database.EnsureCreatedAsync();
         await WorldAssemblyService.EnsureSchema(db);
         await ClubColorService.EnsureSchema(db);
+        if (UsesLocalHistoricalCatalog(app.Configuration))
+        {
+            await LocalHistoricalCatalog.EnsureSchemaAsync(db);
+            if (app.Configuration.GetValue<bool>("CatalogLocal:ReindexOnStartup"))
+            {
+                var catalog = app.Services.GetRequiredService<LocalHistoricalCatalog>();
+                var result = await catalog.ReindexAsync(LocalCatalogCommand.Root(app.Configuration, app.Environment));
+                if (!result.Valid)
+                    app.Logger.LogError("Catálogo local não atualizado. {Errors}", string.Join(Environment.NewLine, result.Errors));
+            }
+            return;
+        }
         foreach (var country in WorldCreatorService.PriorityCountries)
             if (!await db.Countries.AnyAsync(c => c.Code == country.Code)) db.Countries.Add(new() { Code = country.Code, Name = country.Name });
         await db.SaveChangesAsync();
@@ -91,6 +117,10 @@ public static class WorldCreatorEndpoints
         group.MapGet("/seasons", async (WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Seasons(ct)));
         group.MapGet("/countries", async (string season, FootballGender? gender, WorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.Countries(season, gender, ct)));
+        group.MapGet("/historical-countries", async (FootballGender gender, WorldCreatorService service, CancellationToken ct) =>
+            Results.Ok(await service.HistoricalCountries(gender, ct)));
+        group.MapGet("/historical-years", async (FootballGender gender, string countries, WorldCreatorService service, CancellationToken ct) =>
+            Results.Ok(await service.HistoricalYears(gender, countries.Split(',', StringSplitOptions.TrimEntries), ct)));
         group.MapPost("/coverage", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Coverage(request.Countries, request.Gender, request.Season, ct)));
         group.MapPost("/catalog", async (WorldCreatorRequest request, WorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.SelectForWorld(request, ct)));
@@ -159,7 +189,8 @@ public static class WorldCreatorEndpoints
         admin.MapPost("/import", async (CatalogImportPackage package, CatalogSyncService sync, CancellationToken ct) => Results.Ok(new { snapshotId = await sync.ImportAsync(package, ct) }));
         admin.MapPost("/import-csv", async (CatalogCsvRequest request, CatalogSyncService sync, CancellationToken ct) =>
             Results.Ok(new { snapshotId = await sync.ImportAsync(CatalogImportCodec.ReadCsv(request.Manifest, request.Csv), ct) }));
-        admin.MapPost("/run-due", async (CatalogSyncService sync, CancellationToken ct) => { await sync.RunDueAsync(ct); return Results.Ok(new { status = "Completed" }); });
+        if (!UsesLocalHistoricalCatalog(app.Configuration))
+            admin.MapPost("/run-due", async (CatalogSyncService sync, CancellationToken ct) => { await sync.RunDueAsync(ct); return Results.Ok(new { status = "Completed" }); });
     }
 }
 public record CatalogCsvRequest(CatalogImportPackage Manifest, string Csv);

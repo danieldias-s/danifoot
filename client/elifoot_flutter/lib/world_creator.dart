@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'world_catalog_status_016b.dart';
 import 'club_theme.dart';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
@@ -29,30 +28,22 @@ class WorldCreatorScreen extends StatefulWidget {
 
 class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   final _name = TextEditingController(text: 'Liga Mundial 98');
-  String? _season;
-  List<String> _seasons = [];
-  bool _seasonLoadFailed = false, _countryLoadFailed = false;
+  final _years = <String>{};
+  List<Map<String, dynamic>> _yearOptions = [];
+  bool _yearsLoadFailed = false, _countryLoadFailed = false;
   static const _maxCountries = 8;
   static int _drawSeed() => Random.secure().nextInt(2147483647) + 1;
   int _seed = _drawSeed();
   String _gender = 'Male', _district = 'Ranking', _search = '', _error = '';
   bool _generateAllRosterPlayers = false;
+  bool _repairUnavailableAssignments = false;
   String? _rosterProblem;
   int? _sourcesReturnStep;
   Map<String, dynamic>? _assembly;
   final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
   int _step = 0, _humans = 1;
   bool _busy = false, _saved = false;
-  final Set<String> _countries = {
-    'BR',
-    'AR',
-    'GB',
-    'ES',
-    'DE',
-    'IT',
-    'FR',
-    'PT',
-  };
+  final _countries = <String>{};
   List<Map<String, dynamic>> _options = [], _clubs = [];
   final _districtClubs = <String>{};
   final _districtView = CreatorDistrictViewState();
@@ -64,12 +55,20 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   static const _steps = [
     'Categoria',
     'Países',
+    'Escolher anos',
     'Divisões',
     'Distritais',
     'Elencos / fontes',
     'Prévia',
     'Confirmar',
   ];
+  static const _categoryStep = 0;
+  static const _countriesStep = 1;
+  static const _yearsStep = 2;
+  static const _divisionsStep = 3;
+  static const _districtsStep = 4;
+  static const _sourcesStep = 5;
+  static const _previewStep = 6;
   @override
   void initState() {
     super.initState();
@@ -108,40 +107,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
-  Future<void> _loadSeasons() async {
-    try {
-      final seasons = List<String>.from(await _call('seasons') as List);
-      if (!mounted) return;
-      setState(() {
-        _seasonLoadFailed = false;
-        final firstAvailableCatalog = _seasons.isEmpty;
-        _seasons = seasons;
-        if (firstAvailableCatalog) {
-          _selectSeason(seasons.firstOrNull);
-        } else if (_season != null && !seasons.contains(_season)) {
-          _selectSeason(null);
-          if (seasons.isNotEmpty) {
-            _error =
-                'O ano selecionado não está mais disponível. Escolha outro ano do catálogo.';
-          }
-        }
-      });
-    } catch (_) {
-      if (mounted) setState(() => _seasonLoadFailed = true);
-    }
-  }
-
-  void _selectSeason(String? season) {
-    if (_season == season) return;
-    _season = season;
-    _clearCatalogDraft();
-  }
-
   void _clearCatalogDraft({bool keepPlacement = false}) {
     _assembly = null;
     _clubs = [];
     _preview = null;
     _rosterProblem = null;
+    _repairUnavailableAssignments = keepPlacement;
     if (keepPlacement) return;
     _districtView.reset();
     _districtClubs.clear();
@@ -150,7 +121,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   int _clubCount(Map<String, dynamic> country) =>
-      (country[_gender == 'Male' ? 'maleClubs' : 'femaleClubs'] as num?)
+      ((country['clubCount'] ??
+                  country[_gender == 'Male' ? 'maleClubs' : 'femaleClubs'])
+              as num?)
           ?.toInt() ??
       0;
 
@@ -160,11 +133,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       !_countryLoadFailed && _selectedCountryCount > 0;
 
   Future<void> _loadCountries() async {
-    final season = _season;
-    if (season == null) return;
     final path = Uri(
-      path: 'countries',
-      queryParameters: {'season': season, 'gender': _gender},
+      path: 'historical-countries',
+      queryParameters: {'gender': _gender},
     );
     try {
       final options = _maps(
@@ -191,9 +162,44 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
+  List<String> get _orderedYears =>
+      _years.toList()..sort((a, b) => int.parse(b).compareTo(int.parse(a)));
+
+  Future<void> _loadYears() async {
+    final path = Uri(
+      path: 'historical-years',
+      queryParameters: {
+        'gender': _gender,
+        'countries': (_countries.toList()..sort()).join(','),
+      },
+    );
+    try {
+      final options =
+          _maps(
+            await _call(path.toString()),
+          ).where((option) => _clubCount(option) > 0).toList()..sort(
+            (a, b) => int.parse(
+              b['year'].toString(),
+            ).compareTo(int.parse(a['year'].toString())),
+          );
+      if (!mounted) return;
+      setState(() {
+        _yearsLoadFailed = false;
+        _yearOptions = options;
+        final available = options
+            .map((item) => item['year'].toString())
+            .toSet();
+        if (!_years.every(available.contains)) {
+          _years.removeWhere((year) => !available.contains(year));
+          _clearCatalogDraft(keepPlacement: true);
+        }
+      });
+    } catch (_) {
+      if (mounted) setState(() => _yearsLoadFailed = true);
+    }
+  }
+
   Future<void> _initialize() => _run(() async {
-    await _loadSeasons();
-    if (!mounted || _seasonLoadFailed) return;
     final last = await _call('last-configuration');
     if (mounted) {
       setState(() {
@@ -220,7 +226,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         : _fillClubVacancies
         ? 'FREE_WORLD'
         : 'REAL_CLUBS_SIMULATED',
-    'season': _season,
+    'season': _orderedYears.firstOrNull,
+    'catalogYears': _orderedYears,
     'countries': _countries.toList()..sort(),
     'mode': !_fictionalOnly && _divisionSlots.any((key) => key != null)
         ? 'Custom'
@@ -258,11 +265,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _clearCatalogDraft();
       _name.text = p['name'].toString();
       _gender = p['gender'].toString();
-      final presetSeason = p['season']?.toString();
-      _selectSeason(_seasons.contains(presetSeason) ? presetSeason : null);
-      _error = _season == null
-          ? 'O ano da última configuração não está disponível. Escolha um ano do catálogo.'
-          : '';
+      final savedYears = p['catalogYears'] as List? ?? [];
+      _years
+        ..clear()
+        ..addAll(
+          (savedYears.isNotEmpty ? savedYears : [p['season']])
+              .map((year) => year.toString())
+              .where((year) => int.tryParse(year) != null),
+        );
+      _error = '';
       _seed = (p['seed'] as num?)?.toInt() ?? _seed;
       _district = p['districtMode'].toString();
       _humans = (p['maxHumans'] as num?)?.toInt() ?? 1;
@@ -284,6 +295,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _generateAllRosterPlayers =
           p['generateAllRosterPlayers'] == true || p['fictionalOnly'] == true;
       _saved = p['useSavedData'] == true;
+      _repairUnavailableAssignments = true;
       _preview = null;
     });
   }
@@ -304,6 +316,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     if (mounted) {
       setState(() {
         _clubs = _maps(data['clubs'])..sort(_compareClubs);
+        for (final club in _clubs) {
+          club['name'] = _catalogClubName(club);
+        }
         _reconcileDivisions();
       });
     }
@@ -380,7 +395,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     if (mounted) {
       setState(() {
         _applyAssembly(data);
-        _step = 5;
+        _step = _previewStep;
       });
     }
   });
@@ -439,30 +454,30 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   List<Map<String, dynamic>> get _eligibleClubs =>
       _clubs.where(_clubAllowed).toList();
 
-  int _compareClubs(Map<String, dynamic> a, Map<String, dynamic> b) {
-    if (widget.worldCatalogRules) {
-      final first = a['initialProfile'] as Map? ?? {};
-      final second = b['initialProfile'] as Map? ?? {};
-      final power = (second['clubInitialPower'] as num? ?? 1).compareTo(
-        first['clubInitialPower'] as num? ?? 1,
-      );
-      if (power != 0) return power;
-      final score =
-          (second['worldRankingScore'] as num? ?? double.negativeInfinity)
-              .compareTo(
-                first['worldRankingScore'] as num? ?? double.negativeInfinity,
-              );
-      if (score != 0) return score;
-      final rank = (first['worldRank'] as num? ?? 2147483647).compareTo(
-        second['worldRank'] as num? ?? 2147483647,
-      );
-      if (rank != 0) return rank;
-    } else {
-      final rank = (a['rank'] as num? ?? 2147483647).compareTo(
-        b['rank'] as num? ?? 2147483647,
-      );
-      if (rank != 0) return rank;
+  String _catalogClubName(Map club) {
+    final name = club['name'].toString();
+    final year = club['season']?.toString();
+    if (_years.length < 2 || year == null || name.endsWith(' ($year)')) {
+      return name;
     }
+    return '$name ($year)';
+  }
+
+  int _compareClubs(Map<String, dynamic> a, Map<String, dynamic> b) {
+    num rankFor(Map<String, dynamic> club) =>
+        (club['rank'] ?? (club['initialProfile'] as Map?)?['worldRank'])
+            as num? ??
+        double.infinity;
+    final rank = rankFor(a).compareTo(rankFor(b));
+    if (rank != 0) return rank;
+    final score =
+        ((b['rankingInfo'] as Map?)?['score'] as num? ??
+                double.negativeInfinity)
+            .compareTo(
+              (a['rankingInfo'] as Map?)?['score'] as num? ??
+                  double.negativeInfinity,
+            );
+    if (score != 0) return score;
     return a['key'].toString().compareTo(b['key'].toString());
   }
 
@@ -477,8 +492,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       (i) => i < ranked.length ? ranked[i] : null,
     );
     if (keepPositions) {
-      // Preserve explicit choices even if a catalog change invalidates them.
-      // The editor shows the affected slots and lets the coach restore the ranking.
+      if (_repairUnavailableAssignments) {
+        // Keep compatible manual choices when a country or year changes.
+        for (var i = 0; i < _divisionSlots.length; i++) {
+          if (!available.contains(_divisionSlots[i])) _divisionSlots[i] = null;
+        }
+      }
       final retained = _divisionSlots.whereType<String>().toSet();
       final remaining = ranked.where((key) => !retained.contains(key)).iterator;
       for (var i = 0; i < _divisionSlots.length; i++) {
@@ -489,6 +508,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     } else {
       _divisionSlots = List.of(_automaticSlots);
     }
+    _repairUnavailableAssignments = false;
     _districtClubs.removeWhere(
       (key) => !available.contains(key) || _divisionSlots.contains(key),
     );
@@ -538,7 +558,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   ({int clubs, int divisions, int capacity})? get _divisionSummary {
-    if (_step != 2 || _assembly != null) return null;
+    if (_step != _divisionsStep || _assembly != null) return null;
     final available = _eligibleClubs.map((club) => club['key']).toSet();
     return (
       clubs: _divisionSlots.where(available.contains).toSet().length,
@@ -662,7 +682,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   Widget _searchField() => TextField(
     key: ValueKey('search-$_step'),
     decoration: InputDecoration(
-      labelText: _step == 1 ? 'Pesquisar país' : 'Pesquisar',
+      labelText: 'Pesquisar país',
       labelStyle: const TextStyle(fontSize: 22),
       prefixIcon: const Icon(Icons.search),
       filled: true,
@@ -821,7 +841,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   Widget _dataCounts(Map<String, dynamic>? summary) {
     if (summary == null) return const SizedBox.shrink();
     return Text(
-      '${summary['verifiedRealClubs']} clubes reais verificados • ${summary['currentSeasonConfirmedClubs']} com temporada atual comprovada\n'
+      '${summary['verifiedRealClubs']} versões de clubes no catálogo local\n'
       '${summary['completeRealSquads']} elencos reais completos • ${summary['incompleteRealSquads']} incompletos • ${summary['missingClubSlots']} vagas a completar no catálogo',
     );
   }
@@ -862,7 +882,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     final contextSummary = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${_name.text} • Ano do catálogo: ${_season ?? '—'}'),
+        Text('${_name.text} • Anos do catálogo ${_orderedYears.join(', ')}'),
         Text(
           'Países: ${_countries.map((code) => names[code] ?? code).join(', ')}',
         ),
@@ -887,11 +907,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         contextSummary,
         clubCount,
         _dataCounts(summary),
-        if (p['dataAsOf'] != null)
-          Text('Vínculos conferidos em ${p['dataAsOf']}'),
+        if (p['dataAsOf'] != null) Text('Prévia validada em ${p['dataAsOf']}'),
         if (summary != null)
           Text(
-            '${summary['selectedRealClubs']} clubes reais selecionados • ${summary['selectedFictionalClubs']} fictícios • ${summary['realCurrentPlayers']} atletas reais confirmados • ${summary['generatedPlayers']} fictícios gerados',
+            '${summary['selectedRealClubs']} clubes do catálogo selecionados • ${summary['selectedFictionalClubs']} fictícios • ${summary['realCurrentPlayers']} jogadores do catálogo • ${summary['generatedPlayers']} fictícios gerados',
           ),
         if (details.isNotEmpty)
           ExpansionTile(
@@ -908,7 +927,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 .where((c) => c['division'] == d)
                 .map(
                   (c) => ExpansionTile(
-                    title: Text((c['club'] as Map)['name'].toString()),
+                    title: Text(_catalogClubName(c['club'] as Map)),
                     subtitle: Text(
                       '${_rosterLabel(c['club'] as Map)} • ${((c['club'] as Map)['players'] as List).length} atletas',
                     ),
@@ -1069,28 +1088,16 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 ),
               ),
             ),
-            if (widget.worldCatalogRules) ...[
-              TextButton.icon(
-                onPressed: _busy
-                    ? null
-                    : () => setState(() {
-                        _countries.clear();
-                        _clearCatalogDraft(keepPlacement: true);
-                        _error = '';
-                      }),
-                icon: const Icon(Icons.delete_outline),
-                label: const Text('LIMPAR SELEÇÃO'),
-              ),
-              TextButton.icon(
-                onPressed: _busy ? null : _openCatalogStatus,
-                icon: const Icon(Icons.sync),
-                label: const Text('CACHE, ATUALIZAÇÕES E COBERTURA'),
-              ),
-            ],
             TextButton.icon(
-              onPressed: _busy ? null : () => _run(_loadCountries),
-              icon: const Icon(Icons.calendar_month_outlined),
-              label: const Text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'),
+              onPressed: _busy || _countries.isEmpty
+                  ? null
+                  : () => setState(() {
+                      _countries.clear();
+                      _clearCatalogDraft(keepPlacement: true);
+                      _error = '';
+                    }),
+              icon: const Icon(Icons.delete_outline),
+              label: const Text('LIMPAR SELEÇÃO'),
             ),
           ],
         ),
@@ -1120,11 +1127,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           },
         ),
         const SizedBox(height: 2),
-        if (!_busy && _countryLoadFailed)
-          const Text(
-            'A lista de países não está disponível. Consulte a disponibilidade da temporada para tentar novamente.',
-          )
-        else if (!_busy && _options.isEmpty)
+        if (!_busy && _countryLoadFailed) ...[
+          const Text('Não foi possível consultar os países do catálogo local.'),
+          TextButton(
+            onPressed: () => _run(_loadCountries),
+            child: const Text('TENTAR NOVAMENTE'),
+          ),
+        ] else if (!_busy && _options.isEmpty)
           const Text(
             'Nenhum país com clubes disponíveis para o catálogo selecionado.',
           )
@@ -1134,21 +1143,66 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     );
   }
 
-  Future<void> _openCatalogStatus() async {
-    final season = _season;
-    if (season == null) return;
-    await Navigator.push<void>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => WorldCatalogStatus016B(
-          api: widget.api,
-          coachId: widget.coachId,
-          gender: _gender,
-          season: season,
-        ),
-      ),
+  Widget _yearsPanel() {
+    final theme = ClassicTheme.of(context).paper;
+    final names = {
+      for (final country in _options)
+        country['code'].toString(): country['name'].toString(),
+    };
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text('Selecione os anos que deseja reunir no campeonato.'),
+        const SizedBox(height: 12),
+        if (!_busy && _yearsLoadFailed) ...[
+          const Text('Não foi possível consultar os anos do catálogo local.'),
+          TextButton(
+            onPressed: () => _run(_loadYears),
+            child: const Text('TENTAR NOVAMENTE'),
+          ),
+        ] else if (!_busy && _yearOptions.isEmpty)
+          const Text('Nenhum ano com clubes nos países selecionados.'),
+        for (final item in _yearOptions) _yearCard(theme, item, names),
+      ],
     );
-    if (mounted) await _run(_loadCountries);
+  }
+
+  Widget _yearCard(
+    ClassicTheme theme,
+    Map<String, dynamic> item,
+    Map<String, String> names,
+  ) {
+    final year = item['year'].toString();
+    final coverage = _maps(item['countries']);
+    final covered = coverage.map((country) => country['code']).toSet();
+    final missing = _countries.where((country) => !covered.contains(country));
+    final count = _clubCount(item);
+    return CheckboxListTile(
+      key: ValueKey('catalog-year-$year'),
+      title: Text('$year • $count ${count == 1 ? 'clube' : 'clubes'}'),
+      subtitle: Text(
+        [
+          for (final country in coverage)
+            '${country['name'] ?? names[country['code']]} (${_clubCount(country)})',
+          if (missing.isNotEmpty)
+            'Sem clubes em ${missing.map((code) => names[code] ?? code).join(', ')}',
+        ].join(' • '),
+      ),
+      value: _years.contains(year),
+      activeColor: theme.primary,
+      checkColor: readableInk(theme.primary),
+      onChanged: _busy || _yearsLoadFailed
+          ? null
+          : (selected) => setState(() {
+              if (selected == true) {
+                _years.add(year);
+              } else {
+                _years.remove(year);
+              }
+              _clearCatalogDraft(keepPlacement: true);
+              _error = '';
+            }),
+    );
   }
 
   void _chooseRosterOrigin(bool generated) => setState(() {
@@ -1167,9 +1221,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   );
 
   Widget _body() {
-    if (_assembly != null && _step >= 2 && _step <= 4) return _assemblyPanel();
+    if (_assembly != null && _step >= _yearsStep && _step <= _sourcesStep) {
+      return _assemblyPanel();
+    }
     switch (_step) {
-      case 0:
+      case _categoryStep:
         return Column(
           children: [
             TextButton(
@@ -1186,6 +1242,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   ? null
                   : () => setState(() {
                       _clearCatalogDraft();
+                      _countries.clear();
+                      _years.clear();
+                      _yearOptions = [];
                       _seed = _drawSeed();
                       _generateAllRosterPlayers = false;
                       _saved = false;
@@ -1204,29 +1263,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               (v) {
                 if (_gender == v) return;
                 _gender = v;
+                _years.clear();
+                _yearOptions = [];
                 _clearCatalogDraft();
               },
             ),
-            _choice(
-              'ANO DO CATÁLOGO',
-              _season,
-              [for (final year in _seasons) (year, year)],
-              (year) {
-                _selectSeason(year);
-                _error = '';
-              },
-            ),
-            if (!_busy && (_seasons.isEmpty || _seasonLoadFailed)) ...[
-              Text(
-                _seasonLoadFailed
-                    ? 'Não foi possível consultar os anos do catálogo.'
-                    : 'Nenhum catálogo disponível.',
-              ),
-              TextButton(
-                onPressed: _initialize,
-                child: const Text('TENTAR NOVAMENTE'),
-              ),
-            ],
             _choice('Treinadores', '$_humans', [
               for (int i = 1; i <= 8; i++) ('$i', '$i'),
             ], (v) => _humans = int.parse(v)),
@@ -1235,15 +1276,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             ),
           ],
         );
-      case 1:
+      case _countriesStep:
         return _countriesPanel();
-      case 2:
+      case _yearsStep:
+        return _yearsPanel();
+      case _divisionsStep:
         return _divisionsPanel();
-      case 3:
+      case _districtsStep:
         return _districtsPanel();
-      case 4:
+      case _sourcesStep:
         return _sourcesPanel();
-      case 5:
+      case _previewStep:
         return Column(
           children: [
             Wrap(
@@ -1256,7 +1299,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                 ),
                 if (_assembly == null)
                   TextButton.icon(
-                    onPressed: _busy ? null : () => setState(() => _step = 2),
+                    onPressed: _busy
+                        ? null
+                        : () => setState(() => _step = _divisionsStep),
                     icon: const Icon(Icons.edit_outlined),
                     label: const Text('EDITAR DIVISÕES'),
                   ),
@@ -1344,11 +1389,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _returnToSetup(returnStep);
       return;
     }
-    if (_step == 0) {
-      await _loadSeasons();
-      if (!mounted || _seasonLoadFailed || _season == null) return;
+    if (_step == _categoryStep) {
       setState(() {
-        _step = 1;
+        _step = _countriesStep;
         _search = '';
         _options = [];
         _countryLoadFailed = false;
@@ -1356,13 +1399,24 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       await _loadCountries();
       return;
     }
-    if (_step == 1) {
+    if (_step == _countriesStep) {
       if (!_canAdvanceFromCountries) return;
-      if (_assembly == null) await _catalog();
+      setState(() {
+        _step = _yearsStep;
+        _search = '';
+        _yearOptions = [];
+        _yearsLoadFailed = false;
+      });
+      if (_assembly == null) await _loadYears();
+      return;
     }
-    if (_step == 2 && _divisionProblem != null) return;
-    if (_step == 3 && _districtProblem != null) return;
-    if (_step == 4) {
+    if (_step == _yearsStep && _assembly == null) {
+      if (_yearsLoadFailed || _years.isEmpty) return;
+      await _catalog();
+    }
+    if (_step == _divisionsStep && _divisionProblem != null) return;
+    if (_step == _districtsStep && _districtProblem != null) return;
+    if (_step == _sourcesStep) {
       final problem = _divisionProblem ?? _districtProblem;
       if (problem != null) {
         setState(() => _rosterProblem = problem);
@@ -1389,7 +1443,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   void _openSourcesFromSetup() => setState(() {
     _sourcesReturnStep = _step;
     _rosterProblem = null;
-    _step = 4;
+    _step = _sourcesStep;
     _search = '';
   });
 
@@ -1409,8 +1463,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _search = '';
       _rosterProblem = null;
     });
-    if (_step == 0) await _run(_loadSeasons);
-    if (_step == 1) await _run(_loadCountries);
+    if (_step == _countriesStep && _assembly == null) {
+      await _run(_loadCountries);
+    }
   }
 
   @override
@@ -1421,20 +1476,22 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     busy: _busy,
     error: _error,
     divisionSummary: _divisionSummary,
-    forceStadium: _step == 4 && _assembly == null,
-    stageDescription: _step == 3 && _assembly == null
+    forceStadium: _step == _sourcesStep && _assembly == null,
+    stageDescription: _step == _districtsStep && _assembly == null
         ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
         : null,
     nextLabel: _sourcesReturnStep != null ? 'APLICAR OPÇÕES' : 'CONTINUAR',
     body: _body(),
-    back: _busy || _step == 0 ? null : _back,
+    back: _busy || _step == _categoryStep ? null : _back,
     next:
         _busy ||
-            (_step == 0 && (_season == null || _seasonLoadFailed)) ||
-            (_step == 1 && !_canAdvanceFromCountries) ||
-            (_step == 2 && _divisionProblem != null) ||
-            (_step == 3 && _districtProblem != null) ||
-            (_step == 5 && !_validPreview)
+            (_step == _countriesStep && !_canAdvanceFromCountries) ||
+            (_step == _yearsStep &&
+                _assembly == null &&
+                (_yearsLoadFailed || _years.isEmpty)) ||
+            (_step == _divisionsStep && _divisionProblem != null) ||
+            (_step == _districtsStep && _districtProblem != null) ||
+            (_step == _previewStep && !_validPreview)
         ? null
         : _next,
   );

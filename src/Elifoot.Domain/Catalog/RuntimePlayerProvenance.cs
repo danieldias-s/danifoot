@@ -14,7 +14,7 @@ public static class RuntimePlayerProvenance
             string id = player.Id.ToString("N");
             player.CatalogIdentity = new(WorldPlayerOrigin.FICTIONAL_GENERATED, "elifoot-game-generated", id,
                 "game-generated:" + id, initialClub?.Key ?? "GAME_FREE_AGENT", initialClub?.CountryCode ?? "XX",
-                world.Gender, world.CatalogOrigin.Season, world.UpdatedAtUtc, world.ClassicForce.GameDate, [],
+                world.Gender, initialClub?.Season ?? world.CatalogOrigin.Season, world.UpdatedAtUtc, world.ClassicForce.GameDate, [],
                 GeneratedSeed: world.Seed, CreatedInGameSeason: world.SeasonNumber);
         }
     }

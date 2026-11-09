@@ -19,6 +19,7 @@ public sealed class PlayableWorld013CIntegrationTests
         b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","PostgreSQL"); b.UseSetting("ConnectionStrings:DefaultConnection",worlds);
         b.UseSetting("ConnectionStrings:Catalog013A",catalog); b.UseSetting("Catalog013A:Enabled","true");
         b.UseSetting("Catalog013B:Enabled","true"); b.UseSetting("Catalog013A:LoadFixtures","false");
+        b.UseSetting("CatalogLocal:UseLegacyProviders", "true");
         b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");b.UseSetting("Elifoot:AuthMode","LocalDev");
     });
     private static async Task Populate(CatalogSyncService sync,FootballGender gender)

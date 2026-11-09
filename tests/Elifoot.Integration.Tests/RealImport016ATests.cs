@@ -61,6 +61,7 @@ public class RealImport016ATests
         return new WebApplicationFactory<Program>().WithWebHostBuilder(b=>{
             b.UseEnvironment("Development");b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider","InMemory");b.UseSetting("Elifoot:AutoSeedDefaultWorld","false");b.UseSetting("Elifoot:DisableBackgroundClock","true");
             b.UseSetting("Catalog013A:Enabled","true");b.UseSetting("Catalog013B:Enabled","true");b.UseSetting("Catalog013A:DatabaseProvider",postgres?"PostgreSQL":"Sqlite");b.UseSetting("ConnectionStrings:Catalog013A",connection);b.UseSetting("Catalog013A:LoadFixtures","false");b.UseSetting("Catalog016A:Enabled","true");b.UseSetting("Catalog016A:AdminToken",Admin);
+            b.UseSetting("CatalogLocal:UseLegacyProviders", "true");
             b.ConfigureServices(services=>{
                 var options=new Import016AOptions{Enabled=true,FixtureData=true,AdminToken=Admin,ApiFootballKey=key?"fixture-provider-key-never-returned":null,DailyRequestBudget=budget,MinimumIntervalMilliseconds=0,Retries=0,ApiFootballRights=new("TEST-ONLY","Synthetic protocol fixture; no real data",true,true,true,true,true,true,true)};
                 services.RemoveAll<Import016AOptions>();services.AddSingleton(options);services.RemoveAll<ImportHttp016A>();

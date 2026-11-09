@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'historical_creator_test_support.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -76,9 +77,9 @@ ElifootApiClient api(
 }) => ElifootApiClient(
   httpClient: MockClient((request) async {
     dynamic response;
-    if (request.url.path.endsWith('/seasons')) {
-      response = ['2026'];
-    } else if (request.url.path.endsWith('/countries')) {
+    if (request.url.path.endsWith('/historical-years')) {
+      response = historicalYearResponse(request.url, '2026');
+    } else if (request.url.path.endsWith('/historical-countries')) {
       response = countries
           .map(
             (c) => {'code': c, 'name': c, 'maleClubs': 128, 'femaleClubs': 128},
@@ -148,10 +149,13 @@ Future<void> open(
   );
   await tester.pumpAndSettle();
   await next(tester);
+  await selectHistoricalCountries(tester, countries);
+  await next(tester);
+  await selectHistoricalYear(tester, '2026');
   await next(tester);
   await next(tester);
   await next(tester);
-  expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+  expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
 }
 
 void main() {
@@ -169,8 +173,8 @@ void main() {
       expect(strict['dataMode'], 'REAL_COMPLETE');
       expect(strict['allowFictionalPlayers'], isFalse);
       expect(strict['allowFictionalTeams'], isFalse);
-      expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
-      expect(find.text('6/7 • PRÉVIA'), findsNothing);
+      expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
+      expect(find.text('7/8 • PRÉVIA'), findsNothing);
       expect(
         find.text('Modo real exige 128 clubes com elencos reais completos.'),
         findsOneWidget,
@@ -206,16 +210,14 @@ void main() {
       expect(generated['generateAllRosterPlayers'], isTrue);
       expect(generated['countries'], strict['countries']);
       expect(generated['assignments'], strict['assignments']);
-      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+      expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
       expect(find.textContaining('128/128 clubes'), findsOneWidget);
       expect(find.textContaining('2304 fictícios gerados'), findsOneWidget);
     });
   }
 
   for (final (width, fictionalRoster) in [(1366.0, false), (390.0, true)]) {
-    testWidgets('Etapa 5 preserva clubes ao escolher elenco a $width px', (
-      tester,
-    ) async {
+    testWidgets('Elencos e fontes preserva clubes a $width px', (tester) async {
       tester.view.physicalSize = Size(width, 900);
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.resetPhysicalSize);
@@ -273,7 +275,7 @@ void main() {
         for (var i = 0; i < 32; i++)
           {'clubKey': 'real-test-$i', 'division': i ~/ 8 + 1},
       ]);
-      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+      expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
       expect(find.textContaining('128/128 clubes'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });

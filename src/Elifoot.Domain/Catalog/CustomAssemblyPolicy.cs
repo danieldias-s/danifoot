@@ -14,38 +14,54 @@ public static class CustomAssemblyPolicy
         var originals = baseline.Players.GroupBy(p => p.Id).ToDictionary(g => g.Key, g => g.First());
         var originalClubs = baseline.Clubs.GroupBy(c => c.Id).ToDictionary(g => g.Key, g => g.First());
         var sourceRows = baseline.CatalogOrigin?.Clubs ?? [];
+        var catalogYears = trustedCatalog ? baseline.CatalogOrigin?.CatalogYears : null;
         var sourceById = new Dictionary<Guid, EligibleCatalogClub>();
         if (trustedCatalog && sourceRows.Count == baseline.Clubs.Count)
             for (int i = 0; i < baseline.Clubs.Count; i++) sourceById[baseline.Clubs[i].Id] = sourceRows[i].Club;
+        string ClubYear(Guid id) => sourceById.GetValueOrDefault(id)?.Season ?? baseline.CatalogOrigin?.Season ?? "PERSONALIZADO";
+
+        var ordered = edited.Clubs.OrderBy(c => (int)c.DivisionTier).Select(c => catalogYears is { Count: > 1 }
+            ? c with
+            {
+                Name = HistoricalCatalogPolicy.DisplayName(c.Name, ClubYear(c.Id), catalogYears),
+                ShortName = HistoricalCatalogPolicy.DisplayName(c.ShortName, ClubYear(c.Id), catalogYears)
+            }
+            : c).ToList();
         var players = edited.Players.Select(p =>
         {
             originals.TryGetValue(p.Id, out var old);
             bool same = old != null && old.Name == p.Name && old.Position == p.Position && old.ClubId == p.ClubId && baseline.Gender == edited.Gender;
             bool sameClub = p.ClubId is Guid clubId && originalClubs.TryGetValue(clubId, out var club) &&
-                edited.Clubs.Any(c => c.Id == clubId && c.Name == club.Name && c.Country == club.Country);
+                ordered.Any(c => c.Id == clubId && c.Name == club.Name && c.Country == club.Country);
             var identity = same && trustedCatalog ? old!.CatalogIdentity : null;
-            if (identity?.Origin == WorldPlayerOrigin.REAL_CURRENT_VERIFIED && !sameClub)
+            if (identity?.Origin is (WorldPlayerOrigin.REAL_CURRENT_VERIFIED or WorldPlayerOrigin.REAL_HISTORICAL_CATALOG) && !sameClub)
                 identity = identity with { Origin = WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE };
             if (identity == null)
             {
-                if (!trustedCatalog && p.CatalogIdentity?.Origin is WorldPlayerOrigin.REAL_CURRENT_VERIFIED or WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE)
+                if (!trustedCatalog && p.CatalogIdentity?.Origin is (WorldPlayerOrigin.REAL_CURRENT_VERIFIED or WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE or WorldPlayerOrigin.REAL_HISTORICAL_CATALOG))
                     identity = p.CatalogIdentity with { Origin = WorldPlayerOrigin.REAL_HISTORICAL_REFERENCE };
                 else identity = new(WorldPlayerOrigin.FICTIONAL_GENERATED, "custom014b", p.Id.ToString("N"),
                     $"custom:{assemblyId:N}:{p.Id:N}", $"custom-club:{p.ClubId}", "XX", edited.Gender,
-                    baseline.CatalogOrigin?.Season ?? "PERSONALIZADO", DateTime.UtcNow, DateOnly.FromDateTime(DateTime.UtcNow), [], GeneratedSeed: edited.Seed);
+                    ClubYear(p.ClubId ?? Guid.Empty), DateTime.UtcNow, DateOnly.FromDateTime(DateTime.UtcNow), [], GeneratedSeed: edited.Seed);
             }
             var reference = new Player { Position = p.Position, Strength = p.Strength, IsStar = p.IsStar, Behavior = p.Behavior, ContractRoundsRemaining = p.ContractRoundsRemaining };
             return p with { CatalogIdentity = identity, MarketPrice = MarketAndEconomyEngine.CalculateFairValue(reference), NegotiatedContractProtected = true };
         }).ToList();
-        var ordered = edited.Clubs.OrderBy(c => (int)c.DivisionTier).ToList();
         var foundation = WorldSeedFactory.CreateSeededWorld(seed: edited.Seed, forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);
         var clubs = ordered.Select((c, i) => c with { ColorPalette=ClubColorPolicy.ForAssembly(c,originalClubs.GetValueOrDefault(c.Id),trustedCatalog,edited.Gender,countries.FirstOrDefault(x=>x.Code.Equals(c.Country,StringComparison.OrdinalIgnoreCase)||x.Name.Equals(c.Country,StringComparison.OrdinalIgnoreCase))?.Code), CashBalance = i < foundation.Clubs.Count ? foundation.Clubs[i].CashBalance : c.CashBalance }).ToList();
         var rows = clubs.Select((c, i) =>
         {
             var country = countries.FirstOrDefault(x => string.Equals(x.Name, c.Country, StringComparison.OrdinalIgnoreCase) || string.Equals(x.Code, c.Country, StringComparison.OrdinalIgnoreCase));
             sourceById.TryGetValue(c.Id, out var previous);
-            bool unchanged = previous != null && previous.Name == c.Name && previous.Gender == edited.Gender && previous.CountryCode == country?.Code;
+            string year = ClubYear(c.Id);
+            bool unchanged = previous != null &&
+                HistoricalCatalogPolicy.DisplayName(previous.Name, year, catalogYears) == c.Name &&
+                previous.Gender == edited.Gender && previous.CountryCode == country?.Code;
             string key = unchanged ? previous!.Key : $"custom:{assemblyId:N}:{c.Id:N}";
+            string baseName = unchanged ? previous!.Name : HistoricalCatalogPolicy.BaseName(c.Name, year, catalogYears);
+            string baseShortName = unchanged && HistoricalCatalogPolicy.DisplayName(previous!.ShortName, year, catalogYears) == c.ShortName
+                ? previous.ShortName
+                : HistoricalCatalogPolicy.BaseName(c.ShortName, year, catalogYears);
             var athletes = players.Where(p => p.ClubId == c.Id).Select(p =>
             {
                 var identity = p.CatalogIdentity!;
@@ -53,20 +69,21 @@ public static class CustomAssemblyPolicy
                 return original != null && identity.Origin != WorldPlayerOrigin.FICTIONAL_GENERATED
                     ? original with { PlayerName = p.Name, Position = p.Position.ToString(), Strength = p.Strength, PlayerOrigin = identity.Origin }
                     : new CatalogAthlete(p.Id.ToString("N"), c.Id.ToString("N"), "custom014b", edited.Gender,
-                        baseline.CatalogOrigin?.Season ?? "PERSONALIZADO", p.Name, p.Position.ToString(), p.Strength, "custom014b", DateTime.UtcNow,
+                        year, p.Name, p.Position.ToString(), p.Strength, "custom014b", DateTime.UtcNow,
                         identity.CanonicalIdentity, identity.Origin == WorldPlayerOrigin.FICTIONAL_GENERATED ? CatalogDataOrigin.Generated : CatalogDataOrigin.Real,
-                        PlayerOrigin: identity.Origin);
+                        PlayerOrigin: identity.Origin, Number: identity.Number);
             }).ToList();
-            var record = unchanged ? previous! with { Name = c.Name, ShortName = c.ShortName, Players = athletes,PrimaryColor=c.PrimaryColorHex,SecondaryColor=c.SecondaryColorHex,ColorPalette=c.ColorPalette } :
-                new EligibleCatalogClub(key, c.Id.ToString("N"), "custom014b", c.Name, c.ShortName, country?.Code ?? "INVALID", country?.Name ?? c.Country,
-                    edited.Gender, "Montagem personalizada", baseline.CatalogOrigin?.Season ?? "PERSONALIZADO", c.PrimaryColorHex, c.SecondaryColorHex, i + 1, athletes, [], true,
+            var record = unchanged ? previous! with { ShortName = baseShortName, Players = athletes,PrimaryColor=c.PrimaryColorHex,SecondaryColor=c.SecondaryColorHex,ColorPalette=c.ColorPalette } :
+                new EligibleCatalogClub(key, c.Id.ToString("N"), "custom014b", baseName, baseShortName, country?.Code ?? "INVALID", country?.Name ?? c.Country,
+                    edited.Gender, "Montagem personalizada", year, c.PrimaryColorHex, c.SecondaryColorHex, i + 1, athletes, [], true,
                     Verification: new(CatalogClubVerificationStatus.FICTIONAL_CLUB, "Clube personalizado pelo proprietário", DateTime.UtcNow),ColorPalette:c.ColorPalette);
             return new WorldPreviewClub((int)c.DivisionTier, record);
         }).ToList();
         string hash = Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { edited.Seed, edited.Gender, clubs, players })));
         var refs = trustedCatalog ? baseline.CatalogOrigin?.References ?? [] : [];
         var origin = new WorldCreationOrigin(edited.Gender, baseline.CatalogOrigin?.Season ?? "PERSONALIZADO", countries.Select(c => c.Code).ToList(), edited.Seed,
-            DateTime.UtcNow, hash, rows, refs, WorldDataMode.FREE_WORLD, edited.Seed, DateOnly.FromDateTime(DateTime.UtcNow));
+            DateTime.UtcNow, hash, rows, refs, WorldDataMode.FREE_WORLD, edited.Seed, DateOnly.FromDateTime(DateTime.UtcNow),
+            CatalogYears: catalogYears?.ToList());
         return edited with { Clubs = clubs, Players = players, CatalogOrigin = origin, ForceEvolutionMode = ForceEvolutionMode.ClassicAdapted };
     }
     public static PackageValidationResultDto Validate(WorldPackageExportDto package, List<CatalogCountryEntry> countries,

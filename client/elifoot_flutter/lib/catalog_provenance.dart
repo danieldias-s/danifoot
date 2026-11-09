@@ -11,6 +11,8 @@ String catalogIdentityOrigin(Map<String, dynamic> player) {
           : 'REAL — VÍNCULO ATUAL COMPROVADO',
     'REAL_CURRENT_PROVIDER_REPORTED' =>
       'REAL — VÍNCULO ATUAL REPORTADO PELO FORNECEDOR, NÃO VERIFICADO',
+    'REAL_HISTORICAL_CATALOG' =>
+      'ELENCO REAL DO CATÁLOGO • ${(identity is Map ? identity['season'] : player['season']) ?? 'ano não informado'}',
     'REAL_HISTORICAL' ||
     'REAL_HISTORICAL_REFERENCE' => 'REFERÊNCIA REAL — NÃO É ELENCO ATUAL',
     'FICTIONAL_GENERATED' => 'FICTÍCIO GERADO',
@@ -36,7 +38,7 @@ String catalogStrengthDescription(Map<String, dynamic> player) {
 Widget catalogPlayerRow(Map<String, dynamic> player) => ListTile(
   dense: true,
   title: Text(
-    '${player['position']} • ${player['playerName']} • ${catalogStrengthDescription(player)}',
+    '${player['position']} • ${player['playerName']}${player['number'] is int ? ' • Nº ${player['number']}' : ''} • ${catalogStrengthDescription(player)}',
   ),
   subtitle: Text(
     '${catalogIdentityOrigin(player)} • ${player['source']} • ${player['playerOrigin'] == 'FICTIONAL_GENERATED' ? 'geração determinística; seed salva' : player['updatedAt']}',
@@ -45,6 +47,11 @@ Widget catalogPlayerRow(Map<String, dynamic> player) => ListTile(
 
 Widget catalogRankingLabel(Map<String, dynamic> club) {
   final rank = club['rankingInfo'];
+  if (rank is Map && rank['method'] == 'LocalHistoricalInitialRanking') {
+    return Text(
+      'Ranking inicial do catálogo • posição ${rank['rank']} • pontuação ${rank['score']}',
+    );
+  }
   if (rank is Map && rank['method'] == 'ProvisionalSeededOrder-v1') {
     return const Text(
       'CLASSIFICAÇÃO PROVISÓRIA • baixa confiança • desempate por seed, sem ranking esportivo comprovado.',
@@ -68,6 +75,9 @@ Widget catalogRankingLabel(Map<String, dynamic> club) {
 }
 
 Widget catalogClubStatus(Map<String, dynamic> club) {
+  if (club['provider'] == 'local-historical') {
+    return Text('CLUBE DO CATÁLOGO LOCAL • ${club['season']}');
+  }
   final verification = club['verification'];
   if (verification is! Map) return const SizedBox.shrink();
   return Text(

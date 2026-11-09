@@ -8,6 +8,7 @@ using Elifoot.Domain;
 using Elifoot.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
+if (await LocalCatalogCommand.TryRunAsync(args)) return;
 var builder = WebApplication.CreateBuilder(args);
 
 string authMode = builder.Configuration["Elifoot:AuthMode"] ?? AccountLogin.Scheme;
@@ -44,9 +45,13 @@ else
 }
 
 bool worldCreator013A = builder.AddWorldCreator013A();
+bool localHistoricalCatalog = WorldCreatorEndpoints.UsesLocalHistoricalCatalog(builder.Configuration);
 builder.AddAccountLogin();
-builder.AddImport016A();
-builder.AddWorldCatalog016B();
+if (!localHistoricalCatalog)
+{
+    builder.AddImport016A();
+    builder.AddWorldCatalog016B();
+}
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<RoomConnectionRegistry>();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
@@ -121,8 +126,14 @@ app.MapProfileAppearance(
     string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) || AccountLogin.Enabled(app.Configuration),
     !string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase));
 if (worldCreator013A) { await app.InitializeWorldCreator013A(); app.MapWorldCreator013A(); }
-if (builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
-if (builder.Configuration.GetValue<bool>("Catalog016B:Enabled")) {await app.InitializeWorldCatalog016B();app.MapWorldCatalog016B();}
+if (!localHistoricalCatalog && builder.Configuration.GetValue<bool>("Catalog016A:Enabled")) {await app.InitializeImport016A();app.MapImport016A();}
+if (localHistoricalCatalog)
+    app.MapWorldCatalog016B(includeExternalCatalog: false);
+else if (builder.Configuration.GetValue<bool>("Catalog016B:Enabled"))
+{
+    await app.InitializeWorldCatalog016B();
+    app.MapWorldCatalog016B();
+}
 
 app.MapGet("/api/health", () => Results.Ok(new
 {

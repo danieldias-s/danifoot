@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using Elifoot.Application;
 using Elifoot.Contracts;
@@ -7,13 +8,95 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Elifoot.Infrastructure.Catalog;
 
-public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyncService sync, IWorldRepository worlds)
+public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyncService sync, IWorldRepository worlds,
+    LocalHistoricalCatalog? localCatalog = null)
 {
     public static readonly (string Code, string Name)[] PriorityCountries = [("BR", "Brasil"), ("AR", "Argentina"),
         ("GB", "Inglaterra"), ("ES", "Espanha"), ("DE", "Alemanha"), ("IT", "Itália"), ("FR", "França"), ("PT", "Portugal")];
 
+    public async Task<List<CatalogCountryOption>> HistoricalCountries(FootballGender gender, CancellationToken ct)
+    {
+        if (!Enum.IsDefined(gender)) throw new ArgumentException("Categoria inválida.");
+        var catalog = localCatalog ?? throw new KeyNotFoundException("Catálogo histórico local desativado.");
+        return LocalCountries((await catalog.GetAsync(ct)).Clubs, gender);
+    }
+
+    public async Task<List<HistoricalYearOption>> HistoricalYears(FootballGender gender, string[] countries, CancellationToken ct)
+    {
+        ValidateHistoricalCountries(countries, gender);
+        var catalog = localCatalog ?? throw new KeyNotFoundException("Catálogo histórico local desativado.");
+        var index = await catalog.GetAsync(ct);
+        return index.Clubs.Where(c => c.Gender == gender && countries.Contains(c.CountryCode))
+            .GroupBy(c => c.Season)
+            .OrderByDescending(year => int.Parse(year.Key, CultureInfo.InvariantCulture))
+            .Select(year => new HistoricalYearOption(year.Key, year.Count(), year.GroupBy(c => c.CountryCode)
+                .OrderBy(country => country.First().CountryName, StringComparer.OrdinalIgnoreCase)
+                .Select(country => new HistoricalYearCountry(country.Key, country.First().CountryName, country.Count())).ToList()))
+            .ToList();
+    }
+
+    private static List<CatalogCountryOption> LocalCountries(IEnumerable<EligibleCatalogClub> clubs, FootballGender? gender) =>
+        clubs.Where(c => gender == null || c.Gender == gender)
+            .GroupBy(c => c.CountryCode)
+            .Select(country => new CatalogCountryOption(country.Key, country.First().CountryName,
+                country.Count(c => c.Gender == FootballGender.Male), country.Count(c => c.Gender == FootballGender.Female)))
+            .OrderBy(country => country.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+    private static void ValidateHistoricalCountries(IReadOnlyCollection<string>? countries, FootballGender gender)
+    {
+        if (!Enum.IsDefined(gender)) throw new ArgumentException("Categoria inválida.");
+        if (countries == null || countries.Count is < 1 or > 8 ||
+            countries.Any(string.IsNullOrWhiteSpace) || countries.Distinct(StringComparer.Ordinal).Count() != countries.Count)
+            throw new ArgumentException("Selecione de 1 a 8 países sem repetição.");
+    }
+
+    private WorldCreatorRequest NormalizeCatalogRequest(WorldCreatorRequest request)
+    {
+        if (localCatalog == null)
+        {
+            if (request.CatalogYears != null)
+                throw new ArgumentException("A seleção de anos exige o catálogo histórico local.");
+            return request;
+        }
+
+        ValidateHistoricalCountries(request.Countries, request.Gender);
+        var years = request.CatalogYears ?? [request.Season];
+        if (years.Count == 0 || years.Any(year => !int.TryParse(year, NumberStyles.None, CultureInfo.InvariantCulture, out var value) ||
+                value <= 0 || year != value.ToString(CultureInfo.InvariantCulture)) ||
+            years.Distinct(StringComparer.Ordinal).Count() != years.Count)
+            throw new ArgumentException("Selecione pelo menos um ano válido do catálogo, sem repetição.");
+
+        var ordered = years.OrderByDescending(year => int.Parse(year, CultureInfo.InvariantCulture)).ToList();
+        return request with { Season = ordered[0], CatalogYears = ordered, UseSavedData = true };
+    }
+
+    private static CatalogSelection SelectLocal(LocalHistoricalCatalogIndex index, List<string> countries, FootballGender gender,
+        string season, IReadOnlyCollection<string> years, bool validateCoverage = false)
+    {
+        var category = index.Clubs.Where(c => c.Gender == gender).ToList();
+        var clubs = category.Where(c => countries.Contains(c.CountryCode) && years.Contains(c.Season)).ToList();
+        if (validateCoverage && countries.Any(code => !category.Any(c => c.CountryCode == code)))
+            throw new ArgumentException("Um dos países escolhidos ficou sem clubes nesta categoria. Revise os países.");
+        if (validateCoverage && years.Any(year => !clubs.Any(c => c.Season == year)))
+            throw new ArgumentException("Um dos anos escolhidos ficou sem clubes para esses países. Revise os anos.");
+
+        var references = clubs.SelectMany(c => c.References).DistinctBy(reference => reference.SnapshotId).ToList();
+        var warnings = countries.Where(code => !clubs.Any(c => c.CountryCode == code))
+            .Select(code => $"Sem clubes nos anos escolhidos para {category.FirstOrDefault(c => c.CountryCode == code)?.CountryName ?? code}.")
+            .ToList();
+        return new(gender, season, countries, HistoricalCatalogPolicy.Classify(clubs), references, warnings);
+    }
+
     public async Task<List<string>> Seasons(CancellationToken ct = default)
     {
+        if (localCatalog != null)
+        {
+            var index = await localCatalog.GetAsync(ct);
+            return index.Clubs.Select(c => c.Season).Distinct()
+                .OrderByDescending(year => int.Parse(year, CultureInfo.InvariantCulture)).ToList();
+        }
+
         using var scope = factory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var candidates = await (from catalogScope in db.Scopes.AsNoTracking()
@@ -48,6 +131,12 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         if (gender is { } requestedGender && !Enum.IsDefined(requestedGender))
             throw new ArgumentException("Categoria inválida.");
 
+        if (localCatalog != null)
+        {
+            var index = await localCatalog.GetAsync(ct);
+            return LocalCountries(index.Clubs.Where(c => c.Season == season), gender);
+        }
+
         using var scope = factory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var countries = await db.Countries.AsNoTracking().ToListAsync(ct);
@@ -75,6 +164,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     {
         if (countries == null || countries.Count == 0 || countries.Count > 512 || countries.Distinct().Count() != countries.Count || !Enum.IsDefined(gender) || string.IsNullOrWhiteSpace(season))
             throw new ArgumentException("Seleção de países/categoria/temporada inválida.");
+        if (localCatalog != null)
+            return SelectLocal(await localCatalog.GetAsync(ct), countries, gender, season, new[] { season });
         if (!saved) await sync.RefreshAsync(countries, gender, season, ct);
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var states = await db.Scopes.AsNoTracking().Where(s => countries.Contains(s.CountryCode) && s.Gender == gender && s.Season == season).ToListAsync(ct);
@@ -177,6 +268,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     private async Task<CatalogSelection> SelectionForRequest(WorldCreatorRequest request,CancellationToken ct)
     {
+        if (localCatalog != null)
+            return SelectLocal(await localCatalog.GetAsync(ct), request.Countries, request.Gender, request.Season, request.CatalogYears!, validateCoverage: true);
         if(!request.UseWorldCatalogRules)return await Select(request.Countries,request.Gender,request.Season,request.UseSavedData,ct);
         if(request.Countries.Count is <1 or >8 || request.Countries.Distinct().Count()!=request.Countries.Count)throw new ArgumentException("Selecione de 1 a 8 países sem repetição.");
         using var scope=factory.CreateScope();var db=scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
@@ -191,6 +284,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     public async Task<CatalogSelection> SelectForWorld(WorldCreatorRequest request, CancellationToken ct = default)
     {
+        request = NormalizeCatalogRequest(request);
         var selection=await SelectionForRequest(request,ct);
         if(request.DataMode==null)return selection;
         var asOf=DateOnly.FromDateTime(DateTime.UtcNow);var errors=new List<string>();var warnings=selection.Warnings.ToList();
@@ -220,6 +314,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     public async Task<WorldCreatorPreview> Preview(Guid owner, WorldCreatorRequest request, CancellationToken ct = default)
     {
+        request = NormalizeCatalogRequest(request);
         using var optionsScope=factory.CreateScope();
         if(request.UseWorldCatalogRules && optionsScope.ServiceProvider.GetService<World016B.WorldCatalogOptions016B>() is {} settings)request=request with {EliteFullSquadRankCutoff=settings.EliteFullSquadRankCutoff};
         var selection = await SelectionForRequest(request,ct);
@@ -248,7 +343,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         {
             var preview = JsonSerializer.Deserialize<WorldCreatorPreview>(draft.PreviewJson, CatalogImportCodec.Json)!;
             foreach (var reference in preview.References)
-                if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow) is { } issue) throw new ArgumentException(issue);
+                if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow, request.CatalogYears != null) is { } issue)
+                    throw new ArgumentException(issue);
             var generated = WorldCreatorEngine.Create(request, preview);
             if(request.RequireHostStart||request.UseWorldCatalogRules)generated.InitialLobby=new(){HostCoachId=owner};
             generated.GameModeId=request.GameModeId;

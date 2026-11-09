@@ -213,7 +213,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(lists, 1);
       expect(find.text('MONTAGEM SALVA NA SUA CONTA'), findsOneWidget);
-      expect(find.text('6/7 • PRÉVIA'), findsOneWidget);
+      expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
       await tester.tap(find.text('CONTINUAR'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('CONFIRMAR CRIAÇÃO'));

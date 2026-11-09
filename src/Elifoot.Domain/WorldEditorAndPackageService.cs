@@ -191,6 +191,12 @@ public static class WorldEditorAndPackageService
         if (package.Clubs.Select(c => c.Id).Distinct().Count() != package.Clubs.Count)
             errors.Add("Existem IDs de clubes duplicados no pacote.");
 
+        if (package.CatalogOrigin is { CatalogYears: { } years } origin &&
+            (years.Count == 0 || origin.Clubs.Count != package.Clubs.Count ||
+             origin.Clubs.Any(entry => !years.Contains(entry.Club.Season)) ||
+             origin.Clubs.Select(entry => entry.Club.Key).Distinct(StringComparer.Ordinal).Count() != package.Clubs.Count))
+            errors.Add("O catálogo do pacote contém versões repetidas, ausentes ou de anos não selecionados.");
+
         if (package.Players.Select(p => p.Id).Distinct().Count() != package.Players.Count)
             errors.Add("Existem IDs de jogadores duplicados no pacote.");
 
@@ -306,16 +312,21 @@ public static class WorldEditorAndPackageService
             RoundState = RoundState.PREPARING
         };
 
+        var historical = package.CatalogOrigin is { CatalogYears: not null } ? package.CatalogOrigin : null;
         int idx = 1;
         foreach (var cDto in package.Clubs)
         {
+            var variant = historical?.Clubs[idx - 1];
             world.Clubs.Add(new Club
             {
                 Id = cDto.Id,
                 GameWorldId = world.Id,
                 DeterministicIndex = idx++,
-                Name = cDto.Name,
-                ShortName = cDto.ShortName,
+                Name = variant == null ? cDto.Name : HistoricalCatalogPolicy.DisplayName(cDto.Name, variant.Club.Season, historical!.CatalogYears),
+                ShortName = variant == null ? cDto.ShortName : HistoricalCatalogPolicy.DisplayName(cDto.ShortName, variant.Club.Season, historical!.CatalogYears),
+                ClubInitialPower = variant?.Club.InitialProfile?.ClubInitialPower,
+                InitialSquadSize = variant?.Club.InitialProfile?.TargetInitialSquadSize,
+                InitialSquadReference = variant?.InitialSquadReference,
                 Country = cDto.Country,
                 ColorPalette = cDto.ColorPalette,
                 PrimaryColorHex = cDto.PrimaryColorHex,

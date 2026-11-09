@@ -24,7 +24,8 @@ public record CatalogAthlete(string PlayerExternalId, string ClubExternalId, str
     FootballGender Gender, string Season, string PlayerName, string Position, int Strength, string Source,
     DateTime UpdatedAt, string? CanonicalPlayerId = null, CatalogDataOrigin? IdentityOrigin = null,
     PlayerStrengthEstimate? StrengthEstimate = null, CatalogPlayerPerformance? Performance = null,
-    DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null, CatalogMembershipEvidence? MembershipEvidence = null, WorldPlayerOrigin? PlayerOrigin = null);
+    DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null, CatalogMembershipEvidence? MembershipEvidence = null, WorldPlayerOrigin? PlayerOrigin = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? Number = null);
 public record CatalogRank(string ClubExternalId, string ClubProvider, FootballGender Gender, string Season,
     int Rank, string Source, DateTime UpdatedAt, double? Score = null, string? Method = null,
     double? Confidence = null, string? ComparableGroup = null, CatalogDataOrigin? Origin = null);
@@ -53,7 +54,8 @@ public record WorldCreatorRequest(string Name, FootballGender Gender, string Sea
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
     int MaxHumans = 8, bool AllowFictionalPlayers = false, bool IncludeHistoricalClubs = false, bool IncludeUnverifiedClubs = false, WorldDataMode? DataMode = null, bool AllowProviderReportedPlayers = false, bool UseWorldCatalogRules = false, bool FictionalOnly = false, int EliteFullSquadRankCutoff = 20, bool RequireHostStart = false, string GameModeId = "CLASSIC_SYNC",
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool PreserveRankedSquadStrengths = false,
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool GenerateAllRosterPlayers = false);
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool GenerateAllRosterPlayers = false,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] List<string>? CatalogYears = null);
 public record InitialSquadReference017B(int Position, int Strength, int Minimum, int Maximum);
 public record WorldPreviewClub(int Division, EligibleCatalogClub Club, InitialSquadReference017B? InitialSquadReference = null);
 public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gender, int Seed,
@@ -63,4 +65,5 @@ public record WorldCreatorPreview(Guid DraftId, string Name, FootballGender Gend
 public record WorldCreationOrigin(FootballGender Gender, string Season, List<string> Countries, int Seed,
     DateTime CreatedAt, string DataHash, List<WorldPreviewClub> Clubs, List<CatalogReference> References,
     WorldDataMode? DataMode = null, int? GeneratedPlayerSeed = null, DateOnly? DataAsOf = null,
-    WorldDataSummary? DataSummary = null, List<CatalogRank>? RankingSnapshot = null);
+    WorldDataSummary? DataSummary = null, List<CatalogRank>? RankingSnapshot = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] List<string>? CatalogYears = null);

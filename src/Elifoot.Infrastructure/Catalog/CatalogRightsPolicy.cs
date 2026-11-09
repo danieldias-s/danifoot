@@ -14,9 +14,11 @@ public static class CatalogRightsPolicy
         if (r.UseUntil <= now) return "Licença/direito de retenção expirado.";
         return null;
     }
-    public static string? WorldIssue(CatalogReference reference, DateTime now)
+    public static string? WorldIssue(CatalogReference reference, DateTime now, bool trustedLocalCatalog = false)
     {
-        if (reference.IsFixture) return null;
+        if (reference.IsFixture ||
+            trustedLocalCatalog && reference.Scope.Provider == LocalHistoricalCatalogSource.Provider)
+            return null;
         var r = reference.Rights;
         if (r == null || !r.DisplayAllowed || !r.CommercialUseAllowed || !r.OfflineWorldsAllowed || r.RetainUntil != null || r.UseUntil <= now)
             return $"{reference.Scope.Provider}: direitos insuficientes/expirados para um mundo independente permanente.";

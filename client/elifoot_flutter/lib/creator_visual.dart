@@ -109,7 +109,7 @@ class CreatorFrame extends StatelessWidget {
         child: Text(
           'Avance pelas ${steps.length} etapas para conferir a montagem antes de confirmar.\n\n'
           '${steps.asMap().entries.map((e) => '${e.key + 1}. ${e.value}').join('\n')}\n\n'
-          'Os totais de clubes vêm do catálogo da categoria e do ano escolhidos. '
+          'Os totais de clubes vêm do catálogo da categoria, dos países e dos anos escolhidos. '
           'As opções de dados exibem as autorizações necessárias e os motivos de bloqueio.',
         ),
       ),

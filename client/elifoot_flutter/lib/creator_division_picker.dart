@@ -92,6 +92,7 @@ class _DivisionPickerState extends State<_DivisionPicker> {
   String _query = '';
   String? _selectedKey;
   int _filter = _allDivisions;
+  String _countryFilter = '', _yearFilter = '';
 
   bool get _exploring => widget.currentClub == null;
 
@@ -117,6 +118,11 @@ class _DivisionPickerState extends State<_DivisionPicker> {
 
   String _country(Map<String, dynamic> club) =>
       (club['countryName'] ?? club['countryCode'] ?? '').toString();
+
+  String _countryCode(Map<String, dynamic> club) =>
+      club['countryCode']?.toString() ?? '';
+
+  String _year(Map<String, dynamic> club) => club['season']?.toString() ?? '';
 
   String _location(_DivisionPosition? location) => location == null
       ? 'Não escalado'
@@ -175,6 +181,86 @@ class _DivisionPickerState extends State<_DivisionPicker> {
       if (value != null) setState(() => _filter = value);
     },
   );
+
+  Widget _catalogFilter(
+    ClassicTheme theme, {
+    required String key,
+    required String label,
+    required String value,
+    required Map<String, String> options,
+    required ValueChanged<String> onChanged,
+  }) => DropdownButtonFormField<String>(
+    key: ValueKey(key),
+    initialValue: value,
+    isExpanded: true,
+    dropdownColor: theme.surface,
+    decoration: InputDecoration(
+      labelText: label,
+      constraints: const BoxConstraints(minHeight: 46),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(9),
+        borderSide: BorderSide(color: theme.border),
+      ),
+    ),
+    items: [
+      for (final entry in options.entries)
+        DropdownMenuItem(
+          value: entry.key,
+          child: Text(entry.value, overflow: TextOverflow.ellipsis),
+        ),
+    ],
+    onChanged: (choice) {
+      if (choice != null) onChanged(choice);
+    },
+  );
+
+  Widget _catalogFilters(ClassicTheme theme) {
+    final countries = {
+      for (final club in _candidates)
+        if (_countryCode(club).isNotEmpty) _countryCode(club): _country(club),
+    }.entries.toList()..sort((a, b) => a.value.compareTo(b.value));
+    final years =
+        _candidates.map(_year).where((year) => year.isNotEmpty).toSet().toList()
+          ..sort(
+            (a, b) => (int.tryParse(b) ?? 0).compareTo(int.tryParse(a) ?? 0),
+          );
+    if (countries.isEmpty && years.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        children: [
+          if (countries.isNotEmpty)
+            Expanded(
+              child: _catalogFilter(
+                theme,
+                key: 'division-swap-country',
+                label: 'País',
+                value: _countryFilter,
+                options: {'': 'Todos os países', ...Map.fromEntries(countries)},
+                onChanged: (choice) => setState(() => _countryFilter = choice),
+              ),
+            ),
+          if (countries.isNotEmpty && years.isNotEmpty)
+            const SizedBox(width: 10),
+          if (years.isNotEmpty)
+            Expanded(
+              child: _catalogFilter(
+                theme,
+                key: 'division-swap-year',
+                label: 'Ano',
+                value: _yearFilter,
+                options: {
+                  '': 'Todos os anos',
+                  for (final year in years) year: year,
+                },
+                onChanged: (choice) => setState(() => _yearFilter = choice),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 
   Widget _currentClub(ClassicTheme theme, Map<String, dynamic> club) =>
       Container(
@@ -352,7 +438,11 @@ class _DivisionPickerState extends State<_DivisionPicker> {
               ? location == null
               : location?.division == _filter);
       return matchesFilter &&
-          '${club['name']} ${_country(club)}'.toLowerCase().contains(_query);
+          (_countryFilter.isEmpty || _countryCode(club) == _countryFilter) &&
+          (_yearFilter.isEmpty || _year(club) == _yearFilter) &&
+          '${club['name']} ${_country(club)} ${_year(club)}'
+              .toLowerCase()
+              .contains(_query);
     }).toList();
     final selected = visible
         .where((club) => club['key'].toString() == _selectedKey)
@@ -434,6 +524,7 @@ class _DivisionPickerState extends State<_DivisionPicker> {
                             Expanded(flex: 2, child: _divisionFilter(theme)),
                           ],
                         ),
+                      _catalogFilters(theme),
                     ],
                   ),
                 ),

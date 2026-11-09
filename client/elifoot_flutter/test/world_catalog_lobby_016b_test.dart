@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'historical_creator_test_support.dart';
 import 'package:elifoot_flutter/api_client.dart';
 import 'package:elifoot_flutter/club_theme.dart';
 import 'package:elifoot_flutter/world_initial_lobby_016b.dart';
@@ -136,9 +137,9 @@ class Fixture016B {
             ],
           };
         }
-      } else if (r.url.path.endsWith('/seasons')) {
-        value = ['2026'];
-      } else if (r.url.path.endsWith('/countries')) {
+      } else if (r.url.path.endsWith('/historical-years')) {
+        value = historicalYearResponse(r.url, '2026');
+      } else if (r.url.path.endsWith('/historical-countries')) {
         value = [
           for (final c in ['BR', 'AR', 'GB', 'ES', 'DE', 'IT', 'FR', 'PT'])
             {'code': c, 'name': c, 'maleClubs': 20, 'femaleClubs': 20},
@@ -371,15 +372,28 @@ void main() {
       );
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
+      await selectHistoricalCountries(t, [
+        'BR',
+        'AR',
+        'GB',
+        'ES',
+        'DE',
+        'IT',
+        'FR',
+        'PT',
+      ]);
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
-      expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+      await selectHistoricalYear(t, '2026');
+      await t.tap(find.text('CONTINUAR'));
+      await t.pumpAndSettle();
+      expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
       expect(find.byKey(const Key('fictional-world-016b')), findsNothing);
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
       await t.tap(find.text('CONTINUAR'));
       await t.pumpAndSettle();
-      expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+      expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
       expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
       final generated = find.byKey(const ValueKey('source-generated'));
       await t.ensureVisible(generated);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'historical_creator_test_support.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:elifoot_flutter/api_client.dart';
@@ -15,9 +16,9 @@ void main() {
       final api = ElifootApiClient(
         httpClient: MockClient((request) async {
           dynamic result;
-          if (request.url.path.endsWith('/seasons')) {
-            result = ['2026'];
-          } else if (request.url.path.endsWith('/countries')) {
+          if (request.url.path.endsWith('/historical-years')) {
+            result = historicalYearResponse(request.url, '2026');
+          } else if (request.url.path.endsWith('/historical-countries')) {
             result = [
               {
                 'code': 'ES',
@@ -90,7 +91,9 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('CRIAR NOVA CONFIGURAÇÃO'));
       await tester.pumpAndSettle();
-      for (var step = 0; step < 4; step++) {
+      for (var step = 0; step < 5; step++) {
+        if (step == 1) await selectHistoricalCountries(tester, ['ES']);
+        if (step == 2) await selectHistoricalYear(tester, '2026');
         final next = find.text('CONTINUAR');
         await tester.ensureVisible(next);
         await tester.tap(next);

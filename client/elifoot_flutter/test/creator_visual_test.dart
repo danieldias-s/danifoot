@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'historical_creator_test_support.dart';
 import 'package:elifoot_flutter/api_client.dart';
 import 'package:elifoot_flutter/classic98_widgets.dart';
 import 'package:elifoot_flutter/club_selection_dialog.dart';
@@ -25,6 +26,7 @@ class _CreatorFixture {
   final clubPowers = <int, int>{};
   bool includeOutsideClub = false;
   bool longClubName = false;
+  bool sameClubInDifferentYears = false;
   final unavailableClubIds = <int>{};
   bool failLastConfiguration = false;
   Map<String, dynamic>? lastConfiguration;
@@ -32,41 +34,52 @@ class _CreatorFixture {
     httpClient: MockClient((request) async {
       requests.add(request);
       final dynamic data;
-      if (request.url.path.endsWith('/seasons')) {
+      final male = request.url.queryParameters['gender'] != 'Female';
+      if (request.url.path.endsWith('/historical-years')) {
         if (seasonFailures > 0) {
           seasonFailures--;
           return http.Response('Catálogo indisponível', 503);
         }
-        data = seasons;
-      } else if (request.url.path.endsWith('/countries')) {
+        final selected = request.url.queryParameters['countries']!.split(',');
+        data = [
+          for (final year in seasons)
+            if (_rows(year).any(
+              (row) =>
+                  selected.contains(row.$1) && (male ? row.$3 : row.$4) > 0,
+            ))
+              {
+                'year': year,
+                'clubCount': _rows(year)
+                    .where((row) => selected.contains(row.$1))
+                    .fold(0, (total, row) => total + (male ? row.$3 : row.$4)),
+                'countries': [
+                  for (final row in _rows(year))
+                    if (selected.contains(row.$1) &&
+                        (male ? row.$3 : row.$4) > 0)
+                      {
+                        'code': row.$1,
+                        'name': row.$2,
+                        'clubCount': male ? row.$3 : row.$4,
+                      },
+                ],
+              },
+        ];
+      } else if (request.url.path.endsWith('/historical-countries')) {
         if (countryFailures > 0) {
           countryFailures--;
           return http.Response('{"error":"Catálogo indisponível"}', 503);
         }
-        final year = request.url.queryParameters['season'];
-        final brazilClubs = brazilClubsByYear[year] ?? 20;
-        data = [
-          for (final row
-              in countryRowsByYear[year] ??
-                  [
-                    ('DE', 'Alemanha', 18, 18),
-                    ('AR', 'Argentina', 0, 0),
-                    ('AT', 'Áustria', 28, 28),
-                    ('BR', 'Brasil', brazilClubs, brazilClubs),
-                    ('ES', 'Espanha', 20, 20),
-                    ('FR', 'França', 18, 18),
-                    ('GB', 'Inglaterra', 44, 44),
-                    ('IT', 'Itália', 20, 20),
-                    ('PT', 'Portugal', 18, 18),
-                    ('UY', 'Uruguai', uruguayClubs, uruguayClubs),
-                  ])
-            {
-              'code': row.$1,
-              'name': row.$2,
-              'maleClubs': row.$3,
-              'femaleClubs': row.$4,
-            },
-        ];
+        final rows = <String, Map<String, dynamic>>{};
+        for (final year in seasons) {
+          for (final row in _rows(year)) {
+            final option = rows.putIfAbsent(
+              row.$1,
+              () => {'code': row.$1, 'name': row.$2, 'clubCount': 0},
+            );
+            option['clubCount'] += male ? row.$3 : row.$4;
+          }
+        }
+        data = rows.values.toList();
       } else if (request.url.path.endsWith('/last-configuration')) {
         if (failLastConfiguration) {
           return http.Response('{"error":"Configuração indisponível"}', 503);
@@ -75,6 +88,7 @@ class _CreatorFixture {
       } else if (request.url.path.endsWith('/catalog')) {
         final body = jsonDecode(request.body) as Map;
         final countries = body['countries'] as List;
+        final years = body['catalogYears'] as List;
         data = {
           'clubs': [
             for (var i = 0; i < clubCount; i++)
@@ -83,11 +97,13 @@ class _CreatorFixture {
                   'key': 'test-$i',
                   'name': longClubName && i == 0
                       ? 'Clube de Futebol com um nome comprido para leitura no celular'
+                      : sameClubInDifferentYears && (i == 0 || i == 33)
+                      ? 'Clube da ponte'
                       : 'Clube de teste $i',
                   'countryCode': countries[i % countries.length],
                   'countryName': countries[i % countries.length],
                   'gender': body['gender'],
-                  'season': body['season'],
+                  'season': years[i % years.length],
                   'rank': i + 1,
                   'initialProfile': {
                     'clubInitialPower': clubPowers[i] ?? 20,
@@ -146,6 +162,23 @@ class _CreatorFixture {
       );
     }),
   );
+
+  List<(String, String, int, int)> _rows(String year) {
+    final brazilClubs = brazilClubsByYear[year] ?? 20;
+    return countryRowsByYear[year] ??
+        [
+          ('DE', 'Alemanha', 18, 18),
+          ('AR', 'Argentina', 0, 0),
+          ('AT', 'Áustria', 28, 28),
+          ('BR', 'Brasil', brazilClubs, brazilClubs),
+          ('ES', 'Espanha', 20, 20),
+          ('FR', 'França', 18, 18),
+          ('GB', 'Inglaterra', 44, 44),
+          ('IT', 'Itália', 20, 20),
+          ('PT', 'Portugal', 18, 18),
+          ('UY', 'Uruguai', uruguayClubs, uruguayClubs),
+        ];
+  }
 }
 
 Future<void> _creator(
@@ -182,12 +215,33 @@ Finder _divisionSlot(int division, int position) =>
 Finder _swapButton(int division, int position) =>
     find.byKey(ValueKey('swap-division-$division-position-$position'));
 
-Future<void> _next(WidgetTester tester) async {
+Future<void> _pressContinue(WidgetTester tester) async {
   final button = find.text('CONTINUAR');
   await tester.ensureVisible(button);
   await tester.tap(button);
   await tester.pumpAndSettle();
   expect(tester.takeException(), isNull);
+}
+
+Future<void> _next(WidgetTester tester) async {
+  final fromCategory = find.text('1/8 • CATEGORIA').evaluate().isNotEmpty;
+  final fromCountries = find.text('2/8 • PAÍSES').evaluate().isNotEmpty;
+  await _pressContinue(tester);
+  if (fromCategory && find.text('0/8 • Países').evaluate().isNotEmpty) {
+    await selectHistoricalCountries(tester, [
+      for (final code in ['DE', 'BR', 'ES', 'FR', 'GB', 'IT', 'PT'])
+        if (_countryCard(code).evaluate().isNotEmpty) code,
+    ]);
+  }
+  if (fromCountries && find.text('3/8 • ESCOLHER ANOS').evaluate().isNotEmpty) {
+    final yearCards = tester.widgetList<CheckboxListTile>(
+      find.byType(CheckboxListTile),
+    );
+    if (yearCards.isNotEmpty && !yearCards.any((card) => card.value == true)) {
+      await _tapVisible(tester, find.byKey(yearCards.first.key!));
+    }
+    await _pressContinue(tester);
+  }
 }
 
 Future<void> _chooseFictionalRoster(WidgetTester tester) async {
@@ -205,7 +259,7 @@ Future<void> _openDistricts(WidgetTester tester) async {
   for (var step = 0; step < 3; step++) {
     await _next(tester);
   }
-  expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+  expect(find.text('5/8 • DISTRITAIS'), findsOneWidget);
 }
 
 Future<void> _tapVisible(WidgetTester tester, Finder finder) async {
@@ -312,184 +366,120 @@ void main() {
     );
   });
 
-  final yearDropdown = find.widgetWithText(
-    DropdownButtonFormField<String>,
-    'ANO DO CATÁLOGO',
-  );
   final continueButton = find.widgetWithText(ElevatedButton, 'CONTINUAR');
 
   for (final classic in [false, true]) {
-    testWidgets(
-      'Países seguem categoria e ano, com atualização (clássica=$classic)',
-      (tester) async {
-        final fixture = _CreatorFixture()
-          ..countryRowsByYear.addAll({
-            '2026': [
-              ('BR', 'Brasil', 9, 1),
-              ('DE', 'Alemanha', 4, 0),
-              ('AR', 'Argentina', 0, 3),
-            ],
-            '2025': [('BR', 'Brasil', 14, 0)],
-          });
-        await _creator(tester, fixture, classic ? 390 : 1366, classic: classic);
-        await _next(tester);
-        expect(_countryCard('BR'), findsOneWidget);
-        expect(_countryCard('DE'), findsOneWidget);
-        expect(_countryCard('AR'), findsNothing);
-        expect(find.text('2/8 • Países'), findsOneWidget);
-
-        await tester.tap(find.text('VOLTAR'));
-        await tester.pumpAndSettle();
-        await tester.tap(
-          find.widgetWithText(DropdownButtonFormField<String>, 'Categoria'),
-        );
-        await tester.pumpAndSettle();
-        await tester.tap(find.text('FEMININO').last);
-        await tester.pumpAndSettle();
-        await _next(tester);
-        expect(_countryCard('BR'), findsOneWidget);
-        expect(_countryCard('DE'), findsNothing);
-        expect(_countryCard('AR'), findsOneWidget);
-        expect(
-          find.textContaining(RegExp(r'^3 clubes\s+disponíveis$')),
-          findsOneWidget,
-        );
-        expect(find.text('1/8 • Países'), findsOneWidget);
-
-        await tester.tap(find.text('VOLTAR'));
-        await tester.pumpAndSettle();
-        await tester.tap(yearDropdown);
-        await tester.pumpAndSettle();
-        await tester.tap(find.text('2025').last);
-        await tester.pumpAndSettle();
-        await _next(tester);
-        expect(_countryCard('BR'), findsNothing);
-        expect(find.text('0/8 • Países'), findsOneWidget);
-        expect(
-          find.text(
-            'Nenhum país com clubes disponíveis para o catálogo selecionado.',
-          ),
-          findsOneWidget,
-        );
-        expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-
-        fixture.countryRowsByYear['2025'] = [('BR', 'Brasil', 14, 5)];
-        final refresh = find.text('CONSULTAR DISPONIBILIDADE DA TEMPORADA');
-        await tester.ensureVisible(refresh);
-        await tester.tap(refresh);
-        await tester.pumpAndSettle();
-        expect(_countryCard('BR'), findsOneWidget);
-        expect(
-          find.textContaining(RegExp(r'^5 clubes\s+disponíveis$')),
-          findsOneWidget,
-        );
-        expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-        await tester.ensureVisible(_countryCard('BR'));
-        await tester.tap(
-          find.descendant(
-            of: _countryCard('BR'),
-            matching: find.byType(CheckboxListTile),
-          ),
-        );
-        await tester.pumpAndSettle();
-        expect(find.text('1/8 • Países'), findsOneWidget);
-        expect(
-          tester.widget<ElevatedButton>(continueButton).onPressed,
-          isNotNull,
-        );
-
-        expect(
-          fixture.requests
-              .where((r) => r.url.path.endsWith('/countries'))
-              .map(
-                (r) => (
-                  r.url.queryParameters['season'],
-                  r.url.queryParameters['gender'],
-                ),
-              ),
-          [
-            ('2026', 'Male'),
-            ('2026', 'Female'),
-            ('2025', 'Female'),
-            ('2025', 'Female'),
+    testWidgets('Países locais respeitam a categoria ($classic)', (
+      tester,
+    ) async {
+      final fixture = _CreatorFixture()
+        ..countryRowsByYear.addAll({
+          '2026': [
+            ('BR', 'Brasil', 9, 1),
+            ('DE', 'Alemanha', 4, 0),
+            ('AR', 'Argentina', 0, 3),
           ],
-        );
-      },
-    );
+          '2025': [('BR', 'Brasil', 14, 0)],
+        });
+      await _creator(tester, fixture, classic ? 390 : 1366, classic: classic);
+      expect(find.text('ANO DO CATÁLOGO'), findsNothing);
+      await _pressContinue(tester);
+      expect(_countryCard('BR'), findsOneWidget);
+      expect(_countryCard('DE'), findsOneWidget);
+      expect(_countryCard('AR'), findsNothing);
+      expect(find.text('0/8 • Países'), findsOneWidget);
+      expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsNothing);
+      expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+
+      await _tapVisible(tester, find.text('VOLTAR'));
+      await _tapVisible(
+        tester,
+        find.widgetWithText(DropdownButtonFormField<String>, 'Categoria'),
+      );
+      await _tapVisible(tester, find.text('FEMININO').last);
+      await _pressContinue(tester);
+      expect(_countryCard('BR'), findsOneWidget);
+      expect(_countryCard('DE'), findsNothing);
+      expect(_countryCard('AR'), findsOneWidget);
+      expect(
+        find.textContaining(RegExp(r'^3 clubes\s+disponíveis$')),
+        findsOneWidget,
+      );
+      await selectHistoricalCountries(tester, ['AR']);
+      expect(find.text('1/8 • Países'), findsOneWidget);
+      await _pressContinue(tester);
+      expect(historicalYear('2026'), findsOneWidget);
+      expect(historicalYear('2025'), findsNothing);
+      expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+
+      expect(
+        fixture.requests
+            .where((r) => r.url.path.endsWith('/historical-countries'))
+            .map((r) => r.url.queryParameters),
+        [
+          {'gender': 'Male'},
+          {'gender': 'Female'},
+        ],
+      );
+    });
   }
 
-  testWidgets('Sem catálogo, o Criador bloqueia a próxima etapa', (
+  testWidgets('Sem clubes, o Criador bloqueia a etapa de países', (
     tester,
   ) async {
     final fixture = _CreatorFixture()..seasons = [];
     await _creator(tester, fixture, 1366);
-
-    expect(find.text('Nenhum catálogo disponível.'), findsOneWidget);
+    await _pressContinue(tester);
     expect(
-      tester.widget<DropdownButtonFormField<String>>(yearDropdown).onChanged,
-      isNull,
+      find.text(
+        'Nenhum país com clubes disponíveis para o catálogo selecionado.',
+      ),
+      findsOneWidget,
     );
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-    expect(
-      fixture.requests.where((r) => r.url.path.endsWith('/countries')),
-      isEmpty,
-    );
   });
 
-  testWidgets('O ano escolhido filtra países e catálogo ao voltar e avançar', (
+  testWidgets('Dois países exibem cobertura e anos dinâmicos ao voltar', (
     tester,
   ) async {
     final fixture = _CreatorFixture()
-      ..seasons = ['2027', '2023']
-      ..brazilClubsByYear.addAll({'2027': 31, '2023': 29});
+      ..seasons = ['2025', '1998', '2000']
+      ..countryRowsByYear.addAll({
+        '2025': [('PT', 'Portugal', 20, 0), ('ES', 'Espanha', 15, 0)],
+        '2000': [('AR', 'Argentina', 15, 0)],
+        '1998': [('PT', 'Portugal', 18, 0)],
+      });
     await _creator(tester, fixture, 1366);
+    await _pressContinue(tester);
+    await selectHistoricalCountries(tester, ['PT', 'ES']);
+    await _pressContinue(tester);
+    expect(find.text('2025 • 35 clubes'), findsOneWidget);
+    expect(find.text('1998 • 18 clubes'), findsOneWidget);
+    expect(find.text('Portugal (18) • Sem clubes em Espanha'), findsOneWidget);
+    expect(historicalYear('2000'), findsNothing);
+    await selectHistoricalYear(tester, '1998');
 
-    expect(find.text('2027'), findsOneWidget);
-    await tester.tap(yearDropdown);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('2023').last);
-    await tester.pumpAndSettle();
-    await _next(tester);
-    expect(find.text('29 clubes disponíveis'), findsOneWidget);
-    expect(find.text('31 clubes disponíveis'), findsNothing);
-    await tester.tap(find.text('LIMPAR SELEÇÃO'));
-    await tester.pumpAndSettle();
-    await tester.tap(
-      find.descendant(
-        of: find.byKey(const ValueKey('country-card-BR')),
-        matching: find.byType(CheckboxListTile),
-      ),
-    );
-    await tester.pumpAndSettle();
+    fixture.seasons.add('1985');
+    fixture.countryRowsByYear['1985'] = [('ES', 'Espanha', 1, 0)];
+    await _tapVisible(tester, find.text('VOLTAR'));
+    expect(find.text('2/8 • Países'), findsOneWidget);
+    await _pressContinue(tester);
+    expect(tester.widget<CheckboxListTile>(historicalYear('1998')).value, true);
+    expect(find.text('1985 • 1 clube'), findsOneWidget);
+    await selectHistoricalYear(tester, '2025');
+    await _pressContinue(tester);
 
-    fixture.seasons = ['2028', '2027', '2023'];
-    fixture.brazilClubsByYear['2023'] = 30;
-    await tester.tap(find.text('VOLTAR'));
-    await tester.pumpAndSettle();
-    expect(find.text('2023'), findsOneWidget);
-    await tester.tap(yearDropdown);
-    await tester.pumpAndSettle();
-    expect(find.text('2028'), findsOneWidget);
-    await tester.tap(find.text('2023').last);
-    await tester.pumpAndSettle();
-    await _next(tester);
-    expect(find.text('30 clubes disponíveis'), findsOneWidget);
-    expect(find.text('29 clubes disponíveis'), findsNothing);
-    expect(find.text('1/8 • Países'), findsOneWidget);
-    await _next(tester);
-    final catalog = fixture.requests.singleWhere(
+    final request = fixture.requests.singleWhere(
       (r) => r.url.path.endsWith('/catalog'),
     );
-    expect(jsonDecode(catalog.body), containsPair('season', '2023'));
-    expect(jsonDecode(catalog.body), containsPair('countries', ['BR']));
-    expect(jsonDecode(catalog.body), containsPair('dataMode', null));
-    final countries = fixture.requests.where(
-      (r) => r.url.path.endsWith('/countries'),
+    expect(jsonDecode(request.body), containsPair('season', '2025'));
+    expect(
+      jsonDecode(request.body),
+      containsPair('catalogYears', ['2025', '1998']),
     );
-    expect(countries.map((r) => r.url.queryParameters['season']), [
-      '2023',
-      '2023',
-    ]);
+    expect(jsonDecode(request.body), containsPair('countries', ['ES', 'PT']));
+    expect(find.text('Clube de teste 0 (2025)'), findsOneWidget);
+    expect(find.text('Clube de teste 1 (1998)'), findsOneWidget);
   });
 
   testWidgets('Ano removido ou consulta com falha exige nova seleção válida', (
@@ -497,56 +487,96 @@ void main() {
   ) async {
     final fixture = _CreatorFixture()..seasons = ['2027'];
     await _creator(tester, fixture, 1366);
-    expect(find.text('2027'), findsOneWidget);
-    await _next(tester);
+    await _pressContinue(tester);
+    await selectHistoricalCountries(tester, ['BR']);
+    await _pressContinue(tester);
+    await selectHistoricalYear(tester, '2027');
+    await _tapVisible(tester, find.text('VOLTAR'));
 
     fixture.seasonFailures = 1;
     fixture.seasons = ['2024'];
-    await tester.tap(find.text('VOLTAR'));
-    await tester.pumpAndSettle();
+    await _pressContinue(tester);
     expect(
-      find.text('Não foi possível consultar os anos do catálogo.'),
+      find.text('Não foi possível consultar os anos do catálogo local.'),
       findsOneWidget,
     );
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-    await tester.tap(find.text('TENTAR NOVAMENTE'));
+    await _tapVisible(tester, find.text('TENTAR NOVAMENTE'));
+    expect(historicalYear('2027'), findsNothing);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await selectHistoricalYear(tester, '2024');
+    await _pressContinue(tester);
+    expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
+    expect(find.text('Clube de teste 0'), findsOneWidget);
+    expect(find.text('Clube de teste 0 (2024)'), findsNothing);
+  });
+
+  testWidgets('Troca a variante de um clube e devolve a anterior', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()
+      ..clubCount = 34
+      ..sameClubInDifferentYears = true;
+    await _creator(tester, fixture, 1366);
+    await _pressContinue(tester);
+    await selectHistoricalCountries(tester, ['BR']);
+    await _pressContinue(tester);
+    await selectHistoricalYear(tester, '2026');
+    await selectHistoricalYear(tester, '2025');
+    await _pressContinue(tester);
+    expect(find.text('Clube da ponte (2026)'), findsOneWidget);
+    expect(find.text('Clube de teste 1 (2025)'), findsOneWidget);
+
+    await _tapVisible(tester, _swapButton(1, 1));
+    final countryFilter = find.byKey(const ValueKey('division-swap-country'));
+    final yearFilter = find.byKey(const ValueKey('division-swap-year'));
+    await _tapVisible(tester, countryFilter);
+    await _tapVisible(tester, find.text('BR').last);
+    await _tapVisible(tester, yearFilter);
+    await _tapVisible(tester, find.text('2025').last);
+    await tester.enterText(
+      find.byKey(const ValueKey('division-swap-search')),
+      'Clube da ponte',
+    );
     await tester.pumpAndSettle();
+    await _tapVisible(
+      tester,
+      find.byKey(const ValueKey('division-swap-option-test-33')),
+    );
+    await _tapVisible(
+      tester,
+      find.byKey(const ValueKey('division-swap-confirm')),
+    );
     expect(
-      find.textContaining('O ano selecionado não está mais disponível'),
+      find.descendant(
+        of: _divisionSlot(1, 1),
+        matching: find.text('Clube da ponte (2025)'),
+      ),
       findsOneWidget,
     );
-    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-    await tester.tap(yearDropdown);
-    await tester.pumpAndSettle();
-    expect(find.text('2027'), findsNothing);
-    await tester.tap(find.text('2024').last);
-    await tester.pumpAndSettle();
-    await _next(tester);
-    expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsOneWidget);
+    expect(_divisionSlot(1, 9), findsNothing);
+    await _tapVisible(tester, find.text('VER CLUBES NÃO ESCALADOS'));
+    expect(
+      find.byKey(const ValueKey('division-unassigned-test-0')),
+      findsOneWidget,
+    );
+    expect(
+      find.byKey(const ValueKey('division-unassigned-test-33')),
+      findsNothing,
+    );
   });
 
   testWidgets(
-    'Países continuam selecionáveis quando a última configuração falha',
+    'Países podem ser escolhidos quando a configuração anterior falha',
     (tester) async {
       final fixture = _CreatorFixture()..failLastConfiguration = true;
       await _creator(tester, fixture, 1366);
-      expect(find.text('Seed dos sorteios'), findsNothing);
+      await _pressContinue(tester);
+      await selectHistoricalCountries(tester, ['BR']);
       await _next(tester);
-      await tester.tap(find.text('LIMPAR SELEÇÃO'));
-      await tester.pumpAndSettle();
-      final brazil = find.descendant(
-        of: find.byKey(const ValueKey('country-card-BR')),
-        matching: find.byType(CheckboxListTile),
-      );
-      await tester.ensureVisible(brazil);
-      await tester.tap(brazil);
-      await tester.pumpAndSettle();
-      expect(find.text('1/8 • Países'), findsOneWidget);
-      await _next(tester);
-      expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+      expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
     },
   );
-
   testWidgets('Falha no catálogo tem recuperação na etapa de países', (
     tester,
   ) async {
@@ -554,14 +584,14 @@ void main() {
     await _creator(tester, fixture, 1366);
     await _next(tester);
     expect(
-      find.textContaining('A lista de países não está disponível'),
+      find.text('Não foi possível consultar os países do catálogo local.'),
       findsOneWidget,
     );
-    await tester.tap(find.text('CONSULTAR DISPONIBILIDADE DA TEMPORADA'));
+    await tester.tap(find.text('TENTAR NOVAMENTE'));
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('country-card-BR')), findsOneWidget);
     expect(
-      find.textContaining('A lista de países não está disponível'),
+      find.text('Não foi possível consultar os países do catálogo local.'),
       findsNothing,
     );
   });
@@ -588,7 +618,7 @@ void main() {
           expect(france.left, germany.left);
         }
         await _next(tester);
-        expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+        expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
         final planner = tester.widget<CreatorDivisions>(
           find.byType(CreatorDivisions),
         );
@@ -675,6 +705,9 @@ void main() {
           tester.getRect(find.text('CONTINUAR')).bottom,
           lessThanOrEqualTo(900),
         );
+        await tester.tap(find.text('VOLTAR'));
+        await tester.pumpAndSettle();
+        expect(find.text('3/8 • ESCOLHER ANOS'), findsOneWidget);
         await tester.tap(find.text('VOLTAR'));
         await tester.pumpAndSettle();
         expect(find.text('7/8 • Países'), findsOneWidget);
@@ -790,7 +823,7 @@ void main() {
     await _next(tester);
     await _next(tester);
     await _next(tester);
-    expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+    expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
     expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
     await _chooseFictionalRoster(tester);
     await tester.tap(find.text('VOLTAR'));
@@ -838,11 +871,11 @@ void main() {
     await tester.tap(find.text('USAR ÚLTIMA CONFIGURAÇÃO'));
     await tester.pumpAndSettle();
     await _next(tester);
-    expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsOneWidget);
+    expect(find.text('CACHE, ATUALIZAÇÕES E COBERTURA'), findsNothing);
     await _next(tester);
     await _next(tester);
     await _next(tester);
-    expect(find.text('5/7 • ELENCOS / FONTES'), findsOneWidget);
+    expect(find.text('6/8 • ELENCOS / FONTES'), findsOneWidget);
     expect(find.text('OPÇÕES AVANÇADAS E FONTES'), findsNothing);
     expect(find.text('Usar imediatamente os dados salvos'), findsNothing);
     final request = fixture.requests.singleWhere(
@@ -850,6 +883,7 @@ void main() {
     );
     expect(jsonDecode(request.body), containsPair('useSavedData', true));
     expect(jsonDecode(request.body), containsPair('countries', ['AT']));
+    expect(jsonDecode(request.body), containsPair('catalogYears', ['2025']));
   });
 
   testWidgets('Uma vaga bloqueia Continuar até haver uma opção autorizada', (
@@ -859,7 +893,7 @@ void main() {
     await _creator(tester, fixture, 1366);
     await _next(tester);
     await _next(tester);
-    expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+    expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
     expect(_divisionSlot(4, 8), findsOneWidget);
     expect(_swapButton(4, 8), findsNothing);
     expect(find.text('Vaga disponível'), findsOneWidget);
@@ -884,11 +918,11 @@ void main() {
     await tester.ensureVisible(apply);
     await tester.tap(apply);
     await tester.pumpAndSettle();
-    expect(find.text('3/7 • DIVISÕES'), findsOneWidget);
+    expect(find.text('4/8 • DIVISÕES'), findsOneWidget);
     expect(find.textContaining('O mundo totalmente fictício'), findsOneWidget);
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNotNull);
     await _next(tester);
-    expect(find.text('4/7 • DISTRITAIS'), findsOneWidget);
+    expect(find.text('5/8 • DISTRITAIS'), findsOneWidget);
     await _next(tester);
     expect(
       find.textContaining('128 clubes e todos os atletas fictícios'),
@@ -1077,7 +1111,7 @@ void main() {
 
     await tester.tap(find.text('VOLTAR'));
     await tester.pumpAndSettle();
-    expect(find.text('7/8 • Países'), findsOneWidget);
+    expect(find.text('3/8 • ESCOLHER ANOS'), findsOneWidget);
     await _next(tester);
     expectSlot(1, 8);
     expectSlot(3, 32);

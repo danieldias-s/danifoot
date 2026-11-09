@@ -92,6 +92,8 @@ public sealed class CatalogDbContext(DbContextOptions<CatalogDbContext> options)
         b.Entity<WorldCreationPreset>().HasKey(x => x.OwnerId);
         b.Entity<WorldCreationDraft>().HasKey(x => x.Id);
         b.Entity<WorldCreationDraft>().HasIndex(x => new { x.OwnerId, x.ExpiresAt });
+        b.Entity<LocalHistoricalCatalogRow>().HasKey(x => x.Id);
+        b.Entity<LocalHistoricalCatalogAudit>().HasKey(x => x.Id);
         b.Entity<CatalogClubIdentity>().HasKey(x => x.Id);
         b.Entity<CatalogClubIdentity>().HasIndex(x => x.CanonicalKey).IsUnique();
         b.Entity<CatalogClubIdentity>().HasIndex(x => new { x.CountryCode, x.Gender, x.NormalizedName });

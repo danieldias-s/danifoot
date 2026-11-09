@@ -39,6 +39,12 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
         if (countries.Count != codes.Count) throw new ArgumentException("País não encontrado no catálogo.");
         return countries.Select(c => new CatalogCountryEntry(c.Code, c.Name)).ToList();
     }
+    private static List<CatalogCountryEntry> SnapshotCountryNames(List<CatalogCountryEntry> countries, WorldCreationOrigin? origin)
+    {
+        if (origin?.CatalogYears == null) return countries;
+        return countries.Select(country => new CatalogCountryEntry(country.Code,
+            origin.Clubs.FirstOrDefault(entry => entry.Club.CountryCode == country.Code)?.Club.CountryName ?? country.Name)).ToList();
+    }
     private static void Shape(WorldPackageExportDto package)
     { if (package.Clubs == null || package.Players == null || package.AiManagers == null) throw new ArgumentException("Pacote incompleto: informe clubes, jogadores e técnicos."); }
     private static void Name(string value)
@@ -49,6 +55,7 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
     {
         var countries = Read<List<string>>(row.CountriesJson); var available = await Countries(db, countries, ct);
         var package = Read<WorldPackageExportDto>(row.PackageJson); var baseline = Read<WorldPackageExportDto>(row.SourceJson);
+        if (row.TrustedCatalog) available = SnapshotCountryNames(available, baseline.CatalogOrigin);
         return new(row.Id, row.Name, package.Gender, countries, package.Seed, package, row.Version, row.IsSaved, row.Personalized,
             CustomAssemblyPolicy.Validate(package, available, baseline, row.Personalized));
     }
@@ -63,7 +70,9 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
             var draft = await db.Drafts.AsNoTracking().SingleOrDefaultAsync(d => d.Id == previewId && d.OwnerId == owner, ct) ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
             if (draft.ExpiresAt < DateTime.UtcNow) throw new ArgumentException("A prévia expirou; gere outra antes de editar.");
             var preview = Read<WorldCreatorPreview>(draft.PreviewJson); var config = Read<WorldCreatorRequest>(draft.RequestJson);
-            foreach (var reference in preview.References) if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow) is string issue) throw new ArgumentException(issue);
+            foreach (var reference in preview.References)
+                if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow, config.CatalogYears != null) is string issue)
+                    throw new ArgumentException(issue);
             source = WorldEditorAndPackageService.ExportWorldToPackage(WorldCreatorEngine.Create(config, preview)); trusted = true;
         }
         else if (request.Package != null) { Shape(request.Package); source = request.Package; if (!request.AllowPersonalizedContent) throw new ArgumentException("Autorize o conteúdo personalizado para importar uma montagem."); }
@@ -81,7 +90,9 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
             source = source with { Players = source.Players.Where(p => p.ClubId != null).ToList() };
             source = source with { Clubs = source.Clubs.Select((c, i) => c with { Country = countries[i % countries.Count].Name }).ToList() };
         }
-        Shape(source); var row = new CustomWorldAssembly
+        Shape(source);
+        if (trusted) countries = SnapshotCountryNames(countries, source.CatalogOrigin);
+        var row = new CustomWorldAssembly
         {
             Id = Guid.NewGuid(),
             OwnerId = owner,
@@ -110,6 +121,7 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
         Name(request.Name); Shape(request.Package); using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         var row = await Owned(db, owner, id, ct); if (row.Version != request.ExpectedVersion) throw new AssemblyConflictException("A montagem foi alterada em outra janela. Recarregue para comparar; suas alterações locais foram mantidas.");
         var countries = await Countries(db, request.Countries, ct); var source = Read<WorldPackageExportDto>(row.SourceJson);
+        if (row.TrustedCatalog) countries = SnapshotCountryNames(countries, source.CatalogOrigin);
         row.PackageJson = Json(CustomAssemblyPolicy.Prepare(request.Package, source, id, countries, row.TrustedCatalog, request.AllowPersonalizedContent));
         row.Name = request.Name.Trim(); row.CountriesJson = Json(request.Countries); row.Personalized = request.AllowPersonalizedContent; row.IsSaved |= request.SavePreset; row.Version++; row.UpdatedAtUtc = DateTime.UtcNow;
         try { await db.SaveChangesAsync(ct); } catch (DbUpdateConcurrencyException) { throw new AssemblyConflictException("A montagem mudou em outra janela. As alterações locais não foram descartadas."); }
@@ -128,7 +140,10 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
             if (receipt == null)
             {
                 var dto = await Dto(db, row, ct); if (!dto.Validation.IsValid) throw new ArgumentException(string.Join("; ", dto.Validation.Errors));
-                foreach (var reference in dto.Package.CatalogOrigin?.References ?? []) if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow) is string issue) throw new ArgumentException(issue);
+                var origin = dto.Package.CatalogOrigin;
+                foreach (var reference in origin?.References ?? [])
+                    if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow, row.TrustedCatalog && origin?.CatalogYears != null) is string issue)
+                        throw new ArgumentException(issue);
                 string name = string.IsNullOrWhiteSpace(command.WorldName) ? row.Name : command.WorldName.Trim(); Name(name);
                 var created = CustomAssemblyPolicy.CreateIndependent(dto.Package, row.Id, row.Version, dto.Countries, name, command.MaxHumans);
                 created.GameModeId=command.GameModeId;

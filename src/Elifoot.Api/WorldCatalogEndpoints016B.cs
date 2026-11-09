@@ -37,7 +37,17 @@ public static class WorldCatalogEndpoints016B
         });return group;
     }
     private static Guid Owner(HttpContext c)=>(Guid)c.Items["owner016b"]!;
-    public static void MapWorldCatalog016B(this WebApplication app) {
+    public static void MapWorldCatalog016B(this WebApplication app, bool includeExternalCatalog = true) {
+        if (includeExternalCatalog) MapExternalCatalog(app);
+        var lobby=AuthGroup(app,"/api/world-lobby-016b");
+        lobby.MapGet("/{id:guid}",async(Guid id,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.InitialLobbyView(id,ct)));
+        lobby.MapPost("/{id:guid}/choice",async(Guid id,LobbyChoice016B choice,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.ChooseInitialCareer(id,Owner(c),choice,ct)));
+        lobby.MapPost("/{id:guid}/draw",async(Guid id,LobbyCommand016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.DrawInitialClubs(id,Owner(c),command.IdempotencyKey,ct)));
+        lobby.MapPost("/{id:guid}/start",async(Guid id,LobbyCommand016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.StartInitialChampionship(id,Owner(c),command.IdempotencyKey,ct)));
+        lobby.MapPost("/{id:guid}/capacity",async(Guid id,LobbyCapacity016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.ConfigureInitialCapacity(id,Owner(c),command,ct)));
+    }
+
+    private static void MapExternalCatalog(WebApplication app) {
         var group=AuthGroup(app,"/api/world-catalog-016b");
         group.MapGet("/countries",async(FootballGender gender,string season,WorldCatalogService016B service,CancellationToken ct)=>
             Results.Ok(new{Countries=await service.Directory(ct),States=await service.Status(gender,season,ct)}));
@@ -54,12 +64,6 @@ public static class WorldCatalogEndpoints016B
         });
         admin.MapPost("/review-league",async(ReviewCountryLeague016B request,WorldCatalogService016B service,CancellationToken ct)=>{await service.ReviewLeague(request,ct);return Results.Ok(new{status="REVIEWED"});});
         admin.MapPost("/club-power",async(ManualClubPower016B command,WorldCatalogService016B service,CancellationToken ct)=>{await service.ManualPower(command,ct);return Results.Ok(new{status="REVIEWED"});});
-        var lobby=AuthGroup(app,"/api/world-lobby-016b");
-        lobby.MapGet("/{id:guid}",async(Guid id,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.InitialLobbyView(id,ct)));
-        lobby.MapPost("/{id:guid}/choice",async(Guid id,LobbyChoice016B choice,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.ChooseInitialCareer(id,Owner(c),choice,ct)));
-        lobby.MapPost("/{id:guid}/draw",async(Guid id,LobbyCommand016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.DrawInitialClubs(id,Owner(c),command.IdempotencyKey,ct)));
-        lobby.MapPost("/{id:guid}/start",async(Guid id,LobbyCommand016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.StartInitialChampionship(id,Owner(c),command.IdempotencyKey,ct)));
-        lobby.MapPost("/{id:guid}/capacity",async(Guid id,LobbyCapacity016B command,HttpContext c,MultiplayerRoundOrchestrator service,CancellationToken ct)=>Results.Ok(await service.ConfigureInitialCapacity(id,Owner(c),command,ct)));
     }
 }
 public sealed class CountryCatalogWorker016B(WorldCatalogService016B service,ILogger<CountryCatalogWorker016B> log):BackgroundService

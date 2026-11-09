@@ -1,0 +1,13 @@
+{
+  "ClubId": "PREENCHER_CLUBE_ID",
+  "ClubName": "Preencher nome do clube",
+  "Country": "Nome do País",
+  "CountryCode": "XX",
+  "CatalogYear": 2000,
+  "Category": "Masculino",
+  "InitialRanking": 1,
+  "RankingScore": 0,
+  "PrimaryColor": "#005033",
+  "SecondaryColor": "#FFFFFF",
+  "Players": []
+}
