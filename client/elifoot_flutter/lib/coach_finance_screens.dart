@@ -442,8 +442,8 @@ class ClassicFinanceView extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE5E4DF),
-                  border: Border.all(color: t.textPrimary),
+                  color: ClassicColors.creamLight,
+                  border: Border.all(color: ClassicColors.border),
                 ),
                 child: DefaultTextStyle.merge(
                   style: TextStyle(color: t.textPrimary, fontSize: 17),
@@ -833,12 +833,12 @@ class ClassicFinanceView extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(double.infinity, 48),
         backgroundColor: action.key == const ValueKey('btn-reformar-estadio')
-            ? const Color(0xFF155A9A)
+            ? ClassicColors.titleBarBlue
             : action.key == const ValueKey('btn-ampliar-estadio')
-            ? const Color(0xFFF5C400)
-            : const Color(0xFF006620),
+            ? ClassicColors.softGold
+            : ClassicColors.actionGreen,
         foregroundColor: action.key == const ValueKey('btn-ampliar-estadio')
-            ? const Color(0xFF152B1D)
+            ? ClassicColors.rosterBlack
             : Colors.white,
         textStyle: const TextStyle(
           fontFamily: 'ClassicCondensed',
@@ -852,7 +852,11 @@ class ClassicFinanceView extends StatelessWidget {
               final confirmed = await showDialog<bool>(
                 context: context,
                 builder: (ctx) => AlertDialog(
-                  title: const Text('Confirmar operação financeira'),
+                  backgroundColor: ClassicColors.cream,
+                  titlePadding: EdgeInsets.zero,
+                  title: const RetroTitle(
+                    title: 'Confirmar operação financeira',
+                  ),
                   content: action.child,
                   actions: [
                     TextButton(
@@ -860,6 +864,10 @@ class ClassicFinanceView extends StatelessWidget {
                       child: const Text('CANCELAR'),
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ClassicColors.actionGreen,
+                        foregroundColor: Colors.white,
+                      ),
                       onPressed: () => Navigator.pop(ctx, true),
                       child: const Text('CONFIRMAR'),
                     ),

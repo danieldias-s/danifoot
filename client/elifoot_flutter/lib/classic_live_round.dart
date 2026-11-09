@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classic98_widgets.dart';
 import 'club_theme.dart';
 import 'live_match_data.dart';
 import 'match_gate.dart';
@@ -44,10 +45,10 @@ class ClassicReferenceMatchList extends StatelessWidget {
     this.coachClubId,
   });
 
-  static const silver = Color(0xFFC9C9CD),
-      navy = Color(0xFF000080),
-      green = Color(0xFF004B13),
-      cream = Color(0xFFF3F3DC);
+  static const silver = ClassicColors.retroGray,
+      navy = ClassicColors.titleBarBlue,
+      green = ClassicColors.outerGreen,
+      cream = ClassicColors.cream;
 
   String _clubName(Map<String, dynamic> match, String side) {
     final full = '${match['${side}ClubName'] ?? '—'}';

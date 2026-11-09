@@ -50,18 +50,21 @@ void main() {
     expect(t.takeException(), isNull);
   });
 
-  test('Paleta clássica compartilha as cores dos painéis da versão atual', () {
-    final current = ClassicTheme.derive();
-    expect(classic98Palette.background, current.paper.surface);
-    expect(classic98Palette.tableHeader, current.paper.tableHeader);
-    expect(classic98Palette.primary, current.primary);
-    expect(classic98Palette.buttonBackground, current.buttonBackground);
+  test('Paleta clássica aplica os tokens oficiais da Versão Clássica 98', () {
+    expect(classic98Palette.background, ClassicColors.cream);
+    expect(classic98Palette.surface, ClassicColors.creamLight);
+    expect(classic98Palette.tableHeader, ClassicColors.softGold);
+    expect(classic98Palette.primary, ClassicColors.titleBarBlue);
+    expect(classic98Palette.secondary, ClassicColors.outerGreen);
+    expect(classic98Palette.buttonBackground, ClassicColors.actionGreen);
     for (final variant in ['Classico', 'Escuro', 'AltoContraste']) {
       final source = ClassicTheme.classicGreen(variant: variant);
       final classic = classic98PresentationPalette(source);
-      expect(classic.surface, source.paper.surface);
-      expect(classic.tableRow, source.paper.tableRow);
-      expect(classic.selectedBackground, source.paper.selectedBackground);
+      expect(classic.background, ClassicColors.cream);
+      expect(classic.surface, ClassicColors.creamLight);
+      expect(classic.primary, ClassicColors.titleBarBlue);
+      expect(classic.tableHeader, ClassicColors.softGold);
+      expect(classic.selectedBackground, ClassicColors.softGold);
     }
     for (final background in [
       classic98Palette.background,

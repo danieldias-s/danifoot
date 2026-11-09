@@ -121,26 +121,36 @@ class HistoryTable extends StatelessWidget {
   );
 }
 
-Widget historySection(String title, Widget child) => Padding(
-  padding: const EdgeInsets.only(top: 14),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      Container(
-        color: const Color(0xFF003D2C),
-        padding: const EdgeInsets.all(9),
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xFFFFD700),
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
+Widget historySection(String title, Widget child) => Builder(
+  builder: (context) {
+    final classic =
+        PresentationScope.maybeOf(context)?.version ==
+            PresentationVersion.classic ||
+        ClassicTheme.of(context).classicPresentation;
+    return Padding(
+      padding: const EdgeInsets.only(top: 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            color: classic
+                ? ClassicColors.titleBarBlue
+                : const Color(0xFF003D2C),
+            padding: const EdgeInsets.all(9),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: classic ? Colors.white : const Color(0xFFFFD700),
+                fontSize: 19,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-        ),
+          child,
+        ],
       ),
-      child,
-    ],
-  ),
+    );
+  },
 );
 
 Widget historyTransfers(dynamic source) => HistoryTable(

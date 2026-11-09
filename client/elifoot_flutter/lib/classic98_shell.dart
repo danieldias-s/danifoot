@@ -64,11 +64,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
       ? '–'
       : '·';
 
-  Widget _retroRoleControl(Map<String, dynamic> player) {
+  Widget _retroRoleControl(Map<String, dynamic> player, {bool mobile = false}) {
     final id = '${player['id']}';
     final starter = _selectedStarterIds.contains(id),
         reserve = _selectedBenchIds.contains(id);
     final available = _retroCondition(player) == 'Apto';
+    final isSelected = id == _classicSelectedPlayerId;
     final role = !available
         ? _retroCondition(player)
         : starter
@@ -90,29 +91,29 @@ extension _Classic98Shell on _ElifootShellScreenState {
               ? () => _retroCycleRole(player)
               : null,
           padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 44, minHeight: 44),
+          constraints: BoxConstraints(
+            minWidth: mobile ? 26 : 34,
+            minHeight: mobile ? 28 : 34,
+          ),
           icon: SizedBox(
-            width: 44,
-            height: 44,
+            width: mobile ? 26 : 34,
+            height: mobile ? 28 : 34,
             child: Icon(
               !available
                   ? Icons.block
                   : starter
                   ? Icons.circle
                   : reserve
-                  ? Icons.radio_button_checked
+                  ? Icons.remove_circle_outline
                   : Icons.radio_button_unchecked,
-              size: 15,
-              color: readableOn(
-                !available
-                    ? Colors.red
-                    : starter
-                    ? const Color(0xFF14851F)
-                    : reserve
-                    ? const Color(0xFFB07800)
-                    : Colors.grey,
-                ClassicTheme.of(context).tableRow,
-              ),
+              size: mobile ? 12 : 14,
+              color: !available
+                  ? const Color(0xFFFF5252)
+                  : starter
+                  ? ClassicColors.starterGreen
+                  : reserve
+                  ? ClassicColors.softGold
+                  : const Color(0xFF9AA8A1),
             ),
           ),
         ),
@@ -120,6 +121,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
           child: Text(
             _formatPosition(player['position']),
             overflow: TextOverflow.clip,
+            style: TextStyle(
+              color: isSelected
+                  ? ClassicColors.softGold
+                  : ClassicColors.rosterText,
+              fontWeight: FontWeight.bold,
+              fontSize: mobile ? 14 : 15.5,
+            ),
           ),
         ),
       ],
@@ -287,7 +295,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
   Future<void> _retroHelp() => showDialog<void>(
     context: context,
     builder: (ctx) => AlertDialog(
-      title: const Text('Ajuda — VERSÃO CLÁSSICA (ANTIGA)'),
+      backgroundColor: ClassicColors.cream,
+      titlePadding: EdgeInsets.zero,
+      title: const RetroTitle(title: 'Ajuda — VERSÃO CLÁSSICA (ANTIGA)'),
       content: const Text(
         'Selecione um atleta para usar o menu Jogador. ● indica titular; – indica banco; · indica fora dos relacionados; ! indica indisponível.\n\nTáticas e mercado usam as mesmas regras da VERSÃO ATUAL. A rodada é sincronizada pela sala. Altere o visual em Configurações > Aparência.',
       ),
@@ -300,7 +310,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
     ),
   );
 
-  Widget _retroMenuButton(String title) => PopupMenuButton<int>(
+  Widget _retroMenuButton(
+    String title, {
+    String? displayLabel,
+    bool richLabel = false,
+    bool compact = false,
+  }) => PopupMenuButton<int>(
     tooltip: '',
     enabled: !_matchLocked || title == 'Campeonato',
     onSelected: (i) => _retroMenu(title)[i].$2?.call(),
@@ -309,16 +324,43 @@ extension _Classic98Shell on _ElifootShellScreenState {
         PopupMenuItem(
           value: i,
           enabled: entry.$2 != null,
-          height: 38,
+          height: 36,
           child: Text(entry.$1),
         ),
     ],
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    child: Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: compact ? 8 : 14,
+        vertical: compact ? 6 : 7,
       ),
+      decoration: const BoxDecoration(
+        color: ClassicColors.retroGray,
+        border: Border(
+          top: BorderSide(color: ClassicColors.bevelLight, width: 1.5),
+          left: BorderSide(color: ClassicColors.bevelLight, width: 1.5),
+          bottom: BorderSide(color: ClassicColors.bevelDark, width: 1.5),
+          right: BorderSide(color: ClassicColors.bevelDark, width: 1.5),
+        ),
+      ),
+      child: richLabel
+          ? RichText(
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              text: TextSpan(
+                text: displayLabel ?? title,
+                style: ClassicTypography.menuLabel.copyWith(
+                  fontSize: compact ? 13.5 : 16,
+                ),
+              ),
+            )
+          : Text(
+              displayLabel ?? title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: ClassicTypography.menuLabel.copyWith(
+                fontSize: compact ? 13.5 : 16,
+              ),
+            ),
     ),
   );
 
@@ -326,13 +368,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
-        backgroundColor: ClassicTheme.of(context).surface,
+        backgroundColor: ClassicColors.cream,
         builder: (ctx) => SafeArea(
           child: SizedBox(
             height: MediaQuery.sizeOf(ctx).height * .8,
             child: ListView(
               children: [
-                const RetroTitle(title: 'Menus'),
+                const RetroTitle(title: 'Menus — Liga Clássica 98'),
                 for (final title in [
                   'Configurações',
                   'Táticas',
@@ -344,14 +386,24 @@ extension _Classic98Shell on _ElifootShellScreenState {
                   ExpansionTile(
                     title: Text(
                       title,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: ClassicColors.rosterBlack,
+                      ),
                     ),
                     children: [
                       for (final entry in _retroMenu(title))
                         ListTile(
                           dense: true,
                           enabled: entry.$2 != null,
-                          title: Text(entry.$1),
+                          title: Text(
+                            entry.$1,
+                            style: TextStyle(
+                              color: entry.$2 != null
+                                  ? ClassicColors.rosterBlack
+                                  : const Color(0xFF777777),
+                            ),
+                          ),
                           onTap: entry.$2 == null
                               ? null
                               : () {
@@ -373,217 +425,284 @@ extension _Classic98Shell on _ElifootShellScreenState {
       final clubName =
           _myClubDetail?['name']?.toString() ??
           (_myClubId == null ? 'Treinador sem clube' : 'Carregando clube...');
+      final windowContent = RetroBevel(
+        color: ClassicColors.retroGray,
+        padding: const EdgeInsets.all(3),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RetroTitle(
+              backgroundColor: _matchLocked
+                  ? ClassicColors.titleBarBlue
+                  : ClassicColors.titleBarBlue,
+              title: mobile
+                  ? 'LIGA CLÁSSICA 98'
+                  : 'LIGA CLÁSSICA 98 — $clubName',
+              subtitle: mobile ? clubName : null,
+              showWindowControls: !mobile,
+              trailing: Text(
+                mobile
+                    ? 'VERSÃO\nCLÁSSICA\n(ANTIGA)'
+                    : 'VERSÃO CLÁSSICA (ANTIGA)',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: mobile ? 10 : 13,
+                  height: 1.05,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            if (!mobile && !_matchLocked)
+              Container(
+                color: ClassicColors.retroGray,
+                padding: const EdgeInsets.fromLTRB(2, 2, 2, 3),
+                child: Row(
+                  children: [
+                    for (final title in [
+                      'Configurações',
+                      'Táticas',
+                      'Equipa',
+                      'Jogador',
+                      'Campeonato',
+                      'Treinador',
+                    ])
+                      _retroMenuButton(title),
+                  ],
+                ),
+              ),
+            if (mobile && !_matchLocked)
+              Container(
+                color: ClassicColors.retroGray,
+                padding: const EdgeInsets.fromLTRB(2, 2, 2, 3),
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: ClassicColors.retroGray,
+                        border: Border(
+                          top: BorderSide(
+                            color: ClassicColors.bevelLight,
+                            width: 1.5,
+                          ),
+                          left: BorderSide(
+                            color: ClassicColors.bevelLight,
+                            width: 1.5,
+                          ),
+                          bottom: BorderSide(
+                            color: ClassicColors.bevelDark,
+                            width: 1.5,
+                          ),
+                          right: BorderSide(
+                            color: ClassicColors.bevelDark,
+                            width: 1.5,
+                          ),
+                        ),
+                      ),
+                      child: IconButton(
+                        tooltip: 'Abrir menus',
+                        constraints: const BoxConstraints(
+                          minWidth: 34,
+                          minHeight: 30,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 4,
+                        ),
+                        onPressed: _matchLocked
+                            ? null
+                            : () => _retroMobileMenu(ctx),
+                        icon: const Icon(
+                          Icons.menu,
+                          size: 18,
+                          color: ClassicColors.rosterBlack,
+                        ),
+                      ),
+                    ),
+                    for (final item in const [
+                      ('Táticas', 'Táticas'),
+                      ('Equipa', 'Equipa'),
+                      ('Jogador', 'Jogador'),
+                      ('Campeonato', 'Camp.'),
+                      ('Treinador', 'Trein.'),
+                    ])
+                      Expanded(
+                        child: _retroMenuButton(
+                          item.$1,
+                          displayLabel: item.$2,
+                          richLabel: true,
+                          compact: true,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            if (_waitingForRound) _buildReadyWaitingPanel(),
+            if (!_matchLocked &&
+                (_showMatchView || _snapshot?['roundState'] == 'RESULTS'))
+              Container(
+                color: ClassicColors.creamBox,
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      _matchVisualStateLabel(
+                        _snapshot?['roundState']?.toString() ?? 'PREPARING',
+                        _snapshot?['activePauseWindow'] is Map
+                            ? Map<String, dynamic>.from(
+                                _snapshot!['activePauseWindow'],
+                              )
+                            : null,
+                      ),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: ClassicColors.rosterBlack,
+                      ),
+                    ),
+                    _buildRoundPrimaryAction(),
+                  ],
+                ),
+              ),
+            if (_statusBanner != null)
+              Container(
+                color: ClassicColors.creamBox,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        _statusBanner!,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: ClassicColors.rosterBlack,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Fechar aviso',
+                      onPressed: () => setState(() => _statusBanner = null),
+                      icon: const Icon(
+                        Icons.close,
+                        size: 18,
+                        color: ClassicColors.rosterBlack,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            Expanded(
+              child: ColoredBox(
+                color: ClassicColors.cream,
+                child: _retroBody(ctx, mobile),
+              ),
+            ),
+            if (!_matchLocked)
+              Container(
+                decoration: const BoxDecoration(
+                  color: ClassicColors.retroGray,
+                  border: Border(
+                    top: BorderSide(color: ClassicColors.border, width: 1.2),
+                  ),
+                ),
+                padding: const EdgeInsets.all(3),
+                child: Row(
+                  children: [
+                    for (final (idx, entry)
+                        in (mobile
+                                ? [
+                                    ('Jogo', Icons.sports_soccer, 'squad', 0),
+                                    (
+                                      'Táticas',
+                                      Icons.sports_soccer_outlined,
+                                      'tactics',
+                                      0,
+                                    ),
+                                    ('Mercado', Icons.swap_horiz, 'market', 2),
+                                    (
+                                      'Banco',
+                                      Icons.account_balance,
+                                      'bank',
+                                      3,
+                                    ),
+                                    (
+                                      'Estádio',
+                                      Icons.stadium_outlined,
+                                      'stadium',
+                                      3,
+                                    ),
+                                    ('História', Icons.menu_book, 'history', 0),
+                                  ]
+                                : [
+                                    ('Jogo', Icons.sports_soccer, 'squad', 0),
+                                    (
+                                      'Táticas',
+                                      Icons.sports_soccer_outlined,
+                                      'tactics',
+                                      0,
+                                    ),
+                                    (
+                                      'Mercado & Leilão',
+                                      Icons.swap_horiz,
+                                      'market',
+                                      2,
+                                    ),
+                                    (
+                                      'Banco',
+                                      Icons.account_balance,
+                                      'bank',
+                                      3,
+                                    ),
+                                    (
+                                      'Estádio',
+                                      Icons.stadium_outlined,
+                                      'stadium',
+                                      3,
+                                    ),
+                                    ('História', Icons.menu_book, 'history', 0),
+                                  ])
+                            .indexed) ...[
+                      if (idx > 0) const SizedBox(width: 3),
+                      Expanded(
+                        child: RetroButton(
+                          compact: mobile,
+                          stackIconOnCompact: mobile,
+                          label: entry.$1,
+                          icon: entry.$2,
+                          onPressed: entry.$3 == 'history'
+                              ? (_myClubId == null || _matchLocked
+                                    ? null
+                                    : () => _openClubHistory(_myClubId!))
+                              : () => _retroOpen(entry.$3, entry.$4),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+          ],
+        ),
+      );
       return PopScope(
         canPop: !_matchLocked,
         child: Scaffold(
-          backgroundColor: ClassicTheme.of(context).secondary,
+          backgroundColor: ClassicColors.outerGreen,
           body: MatchInteractionOverlay(
             interaction: _buildMatchInteraction(),
             child: SafeArea(
               child: Padding(
-                padding: EdgeInsets.all(mobile ? 0 : 16),
-                child: RetroBevel(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      RetroTitle(
-                        backgroundColor: _matchLocked
-                            ? const Color(0xFF000080)
-                            : null,
-                        title: mobile
-                            ? 'LIGA CLÁSSICA 98'
-                            : 'LIGA CLÁSSICA 98 — $clubName',
-                        trailing: mobile && !_matchLocked
-                            ? IconButton(
-                                tooltip: 'Abrir menus',
-                                onPressed: _matchLocked
-                                    ? null
-                                    : () => _retroMobileMenu(ctx),
-                                icon: const Icon(
-                                  Icons.menu,
-                                  color: Colors.white,
-                                ),
-                              )
-                            : mobile
-                            ? null
-                            : const Text(
-                                'VERSÃO CLÁSSICA (ANTIGA)',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                      ),
-                      if (!mobile && !_matchLocked)
-                        Container(
-                          color: ClassicTheme.of(context).surface,
-                          child: Row(
-                            children: [
-                              for (final title in [
-                                'Configurações',
-                                'Táticas',
-                                'Equipa',
-                                'Jogador',
-                                'Campeonato',
-                                'Treinador',
-                              ])
-                                _retroMenuButton(title),
-                            ],
-                          ),
-                        ),
-                      if (_waitingForRound) _buildReadyWaitingPanel(),
-                      if (!_matchLocked &&
-                          (_showMatchView ||
-                              _snapshot?['roundState'] == 'RESULTS'))
-                        Container(
-                          color: ClassicTheme.of(context).surface,
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                _matchVisualStateLabel(
-                                  _snapshot?['roundState']?.toString() ??
-                                      'PREPARING',
-                                  _snapshot?['activePauseWindow'] is Map
-                                      ? Map<String, dynamic>.from(
-                                          _snapshot!['activePauseWindow'],
-                                        )
-                                      : null,
-                                ),
-                              ),
-                              _buildRoundPrimaryAction(),
-                            ],
-                          ),
-                        ),
-                      if (_statusBanner != null)
-                        Container(
-                          color: ClassicTheme.of(context).surfaceAlternate,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  _statusBanner!,
-                                  style: const TextStyle(fontSize: 13),
-                                ),
-                              ),
-                              IconButton(
-                                tooltip: 'Fechar aviso',
-                                onPressed: () =>
-                                    setState(() => _statusBanner = null),
-                                icon: const Icon(Icons.close, size: 18),
-                              ),
-                            ],
-                          ),
-                        ),
-                      Expanded(
-                        child: ColoredBox(
-                          color: ClassicTheme.of(context).surface,
-                          child: _retroBody(ctx, mobile),
-                        ),
-                      ),
-                      if (!_matchLocked)
-                        Container(
-                          color: ClassicTheme.of(context).surface,
-                          padding: const EdgeInsets.all(3),
-                          child: Row(
-                            children: [
-                              for (final entry
-                                  in mobile
-                                      ? [
-                                          (
-                                            'Jogo',
-                                            Icons.sports_soccer,
-                                            'squad',
-                                            0,
-                                          ),
-                                          (
-                                            'Táticas',
-                                            Icons.sports_soccer_outlined,
-                                            'tactics',
-                                            0,
-                                          ),
-                                          (
-                                            'Mercado',
-                                            Icons.swap_horiz,
-                                            'market',
-                                            2,
-                                          ),
-                                          (
-                                            'Banco',
-                                            Icons.account_balance,
-                                            'bank',
-                                            3,
-                                          ),
-                                          (
-                                            'Estádio',
-                                            Icons.stadium_outlined,
-                                            'stadium',
-                                            3,
-                                          ),
-                                          ('Mais', Icons.more_horiz, 'more', 0),
-                                        ]
-                                      : [
-                                          (
-                                            'Jogo',
-                                            Icons.sports_soccer,
-                                            'squad',
-                                            0,
-                                          ),
-                                          (
-                                            'Táticas',
-                                            Icons.sports_soccer_outlined,
-                                            'tactics',
-                                            0,
-                                          ),
-                                          (
-                                            'Mercado & Leilão',
-                                            Icons.swap_horiz,
-                                            'market',
-                                            2,
-                                          ),
-                                          (
-                                            'Banco',
-                                            Icons.account_balance,
-                                            'bank',
-                                            3,
-                                          ),
-                                          (
-                                            'Estádio',
-                                            Icons.stadium_outlined,
-                                            'stadium',
-                                            3,
-                                          ),
-                                          (
-                                            'História',
-                                            Icons.menu_book,
-                                            'history',
-                                            0,
-                                          ),
-                                        ])
-                                Expanded(
-                                  child: RetroButton(
-                                    compact: mobile,
-                                    label: entry.$1,
-                                    icon: mobile ? null : entry.$2,
-                                    onPressed: entry.$3 == 'history'
-                                        ? (_myClubId == null || _matchLocked
-                                              ? null
-                                              : () => _openClubHistory(
-                                                  _myClubId!,
-                                                ))
-                                        : () => entry.$3 == 'more'
-                                              ? _retroMobileMenu(ctx)
-                                              : _retroOpen(entry.$3, entry.$4),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                    ],
-                  ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: mobile ? 4 : 20,
+                  vertical: mobile ? 4 : 16,
                 ),
+                child: mobile
+                    ? windowContent
+                    : Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 1180),
+                          child: windowContent,
+                        ),
+                      ),
               ),
             ),
           ),
@@ -647,6 +766,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 540),
         child: RetroBevel(
+          color: ClassicColors.cream,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -680,7 +800,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                         title: 'ESCOLHA A APARÊNCIA:',
                       ),
                     const Text(
-                      'A versão clássica usa as mesmas cores da versão atual. As cores dos clubes continuam preservadas.',
+                      'A versão clássica aplica o tema oficial retrô em todas as telas da sessão. As cores dos clubes continuam preservadas nas partidas.',
                     ),
                     const SizedBox(height: 12),
                     RetroButton(
@@ -704,14 +824,16 @@ extension _Classic98Shell on _ElifootShellScreenState {
   }) {
     final squad = players ?? _retroSquad;
     final table = RetroTable(
-      dense: !mobile,
+      darkRoster: true,
+      dense: true,
       key: const Key('retro-roster'),
-      headers: mobile
-          ? ['POS', 'JOGADOR', 'FORÇA']
-          : ['POS', 'JOGADOR', 'FORÇA', 'VALOR'],
-      flex: mobile ? [4, 8, 2] : [2, 9, 2, 4],
+      headers: const ['POS', 'JOGADOR', 'FORÇA', 'VALOR'],
+      flex: mobile ? const [3, 8, 2, 4] : const [2, 8, 2, 4],
+      centerAlignedColumns: const {2},
+      rightAlignedColumns: const {3},
       leadingCells: {
-        for (final (i, p) in squad.indexed) i: _retroRoleControl(p),
+        for (final (i, p) in squad.indexed)
+          i: _retroRoleControl(p, mobile: mobile),
       },
       rows: [
         for (final p in squad)
@@ -719,7 +841,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             '${_retroRole(p)} ${_formatPosition(p['position'])}',
             '${p['displayName'] ?? p['name']}${p['isStar'] == true && !'${p['displayName']}'.contains('*') ? '*' : ''}',
             '${p['strength']}',
-            if (!mobile) formatClassicMoney(p['fairValue']),
+            formatClassicMoney(p['fairValue']),
           ],
       ],
       selected: squad.indexWhere(
@@ -735,25 +857,30 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight:
-                  MediaQuery.sizeOf(context).height * (mobile ? .40 : .64),
+                  MediaQuery.sizeOf(context).height * (mobile ? .29 : .64),
             ),
             child: SingleChildScrollView(child: table),
           )
         else
           table,
         Container(
-          color: ClassicTheme.of(context).surface,
-          padding: const EdgeInsets.all(8),
+          color: ClassicColors.cream,
+          padding: const EdgeInsets.fromLTRB(4, 6, 4, 2),
           child: Row(
             children: [
-              Icon(Icons.circle, size: 9, color: Color(0xFF14851F)),
-              SizedBox(width: 5),
+              const Icon(
+                Icons.circle,
+                size: 10,
+                color: ClassicColors.starterGreen,
+              ),
+              const SizedBox(width: 5),
               Flexible(
                 child: Text(
                   'Titular   – Banco   · Fora dos relacionados   ! Indisponível',
                   style: TextStyle(
-                    color: ClassicTheme.of(context).textPrimary,
-                    fontSize: 14,
+                    color: ClassicColors.rosterBlack,
+                    fontSize: mobile ? 12.5 : 14.5,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -761,10 +888,15 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           child: Text(
             'Titulares: ${_selectedStarterIds.length}/$_requiredStarterCount • Banco: ${_selectedBenchIds.length}/9',
             key: const Key('retro-roster-counts'),
+            style: TextStyle(
+              color: ClassicColors.rosterBlack,
+              fontSize: mobile ? 13 : 15,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         if (_retroSelected != null)
@@ -796,36 +928,61 @@ extension _Classic98Shell on _ElifootShellScreenState {
 
   Widget _retroHome(BuildContext ctx, bool mobile) {
     final club = _myClubDetail;
-    final header = Row(
-      children: [
-        if (club != null)
-          ClubCrest(
-            club: club['name'].toString(),
-            palette: clubMatchPalette(club),
-            size: 56,
-          ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '${club?['name'] ?? 'Treinador sem clube'}',
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text('${club?['divisionDisplay'] ?? 'Sem clube'} • $_nickname'),
-            ],
-          ),
+    final header = Container(
+      padding: const EdgeInsets.only(bottom: 8),
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: ClassicColors.border, width: 1),
         ),
-        if (!mobile)
-          Text(
-            'Temporada ${_snapshot?['seasonNumber'] ?? 1}\n${formatClassicDate(_snapshot?['gameDate'])}',
-            textAlign: TextAlign.right,
+      ),
+      child: Row(
+        children: [
+          if (club != null)
+            ClubCrest(
+              club: club['name'].toString(),
+              palette: clubMatchPalette(club),
+              size: mobile ? 44 : 56,
+            ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${club?['name'] ?? 'Treinador sem clube'}',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: mobile ? 20 : 28,
+                    fontWeight: FontWeight.w900,
+                    color: ClassicColors.rosterBlack,
+                    height: 1.05,
+                  ),
+                ),
+                Text(
+                  '${club?['divisionDisplay'] ?? 'Sem clube'} • $_nickname',
+                  style: TextStyle(
+                    fontSize: mobile ? 13 : 16,
+                    fontWeight: FontWeight.w600,
+                    color: ClassicColors.rosterBlack,
+                  ),
+                ),
+              ],
+            ),
           ),
-      ],
+          Text(
+            mobile
+                ? 'Temp. ${_snapshot?['seasonNumber'] ?? 1}\n${formatClassicDate(_snapshot?['gameDate'])}'
+                : 'Temporada ${_snapshot?['seasonNumber'] ?? 1}\n${formatClassicDate(_snapshot?['gameDate'])}',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: mobile ? 13 : 16,
+              fontWeight: FontWeight.w600,
+              color: ClassicColors.rosterBlack,
+            ),
+          ),
+        ],
+      ),
     );
     final roster = club == null
         ? const Padding(
@@ -836,22 +993,22 @@ extension _Classic98Shell on _ElifootShellScreenState {
           )
         : _retroRoster(mobile, bounded: true);
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(mobile ? 8 : 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           header,
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           if (mobile) ...[
             roster,
-            const SizedBox(height: 8),
-            _retroSummary(),
+            const SizedBox(height: 6),
+            _retroSummary(mobile: true),
           ] else
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 7, child: roster),
-                const SizedBox(width: 16),
+                const SizedBox(width: 14),
                 Expanded(flex: 4, child: _retroSummary()),
               ],
             ),
@@ -860,7 +1017,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
     );
   }
 
-  Widget _retroSummary() {
+  Widget _retroSummary({bool mobile = false}) {
     final round = _snapshot?['roundNumber'] ?? 1;
     final club = _myClubDetail;
     final matches = (_snapshot?['matches'] as List? ?? []).whereType<Map>();
@@ -899,22 +1056,27 @@ extension _Classic98Shell on _ElifootShellScreenState {
     final ready = me?['isReady'] == true;
     final state = _snapshot?['roundState'];
     final morale = me?['morale'] ?? _invitationsData?['morale'];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        RetroSection(
-          title: 'Próximo adversário',
-          child: Container(
-            color: ClassicTheme.of(context).surfaceAlternate,
-            padding: const EdgeInsets.all(12),
+    return RetroSection(
+      title: 'Próximo adversário',
+      padding: EdgeInsets.all(mobile ? 8 : 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: EdgeInsets.all(mobile ? 7 : 10),
+            decoration: BoxDecoration(
+              color: ClassicColors.creamBox,
+              border: Border.all(color: ClassicColors.border, width: 1.2),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   '${opponent ?? 'A definir'}',
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                  style: TextStyle(
+                    fontSize: mobile ? 18 : 21,
+                    fontWeight: FontWeight.w900,
+                    color: ClassicColors.rosterBlack,
                   ),
                 ),
                 Text(
@@ -923,46 +1085,89 @@ extension _Classic98Shell on _ElifootShellScreenState {
                       : home
                       ? 'Casa'
                       : 'Fora'} • Rodada $round',
+                  style: TextStyle(
+                    fontSize: mobile ? 13.5 : 15,
+                    fontWeight: FontWeight.w600,
+                    color: ClassicColors.rosterBlack,
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-        Text(
-          'Divisão: ${club?['divisionDisplay'] ?? 'Sem clube'}',
-          style: const TextStyle(fontSize: 18),
-        ),
-        const SizedBox(height: 12),
-        Text(
-          'Rodada: $round • ${classicCompetition(_snapshot?['competitionType'])}',
-        ),
-        const SizedBox(height: 12),
-        Text(
-          'Caixa: ${club == null ? '—' : formatClassicMoney(club['cashBalance'])}',
-          style: const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 12),
-        Text('Moral: ${morale ?? 'A definir'}'),
-        const SizedBox(height: 5),
-        LinearProgressIndicator(
-          value: morale is num ? (morale / 100).clamp(0, 1).toDouble() : 0,
-          minHeight: 18,
-          color: const Color(0xFF50A550),
-          backgroundColor: ClassicTheme.of(context).surface,
-        ),
-        const SizedBox(height: 22),
-        if (state != 'RESULTS')
-          KeyedSubtree(
-            key: const Key('retro-match-action'),
-            child: _buildRoundPrimaryAction(),
+          SizedBox(height: mobile ? 5 : 10),
+          Text(
+            'Divisão: ${club?['divisionDisplay'] ?? 'Sem clube'}',
+            style: TextStyle(
+              fontSize: mobile ? 14.5 : 17,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        if (ready && state == 'PREPARING')
-          const Text('AGUARDANDO OUTROS TREINADORES.'),
-        Text(
-          'Sala: ${_snapshot?['worldName'] ?? _worldId}\nRodada compartilhada • ${_snapshot?['roundState'] ?? 'Carregando'}',
-          style: const TextStyle(fontSize: 12),
-        ),
-      ],
+          SizedBox(height: mobile ? 2 : 4),
+          Text(
+            'Rodada: $round • ${classicCompetition(_snapshot?['competitionType'])}',
+            style: TextStyle(
+              fontSize: mobile ? 14 : 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: mobile ? 4 : 8),
+          Text(
+            'Caixa: ${club == null ? '—' : formatClassicMoney(club['cashBalance'])}',
+            style: TextStyle(
+              fontSize: mobile ? 18 : 21,
+              fontWeight: FontWeight.w900,
+              color: ClassicColors.rosterBlack,
+            ),
+          ),
+          SizedBox(height: mobile ? 4 : 8),
+          Text(
+            'Moral: ${morale ?? 'A definir'}',
+            style: TextStyle(
+              fontSize: mobile ? 14 : 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: mobile ? 3 : 4),
+          Container(
+            decoration: BoxDecoration(
+              color: ClassicColors.creamBox,
+              border: Border.all(color: ClassicColors.bevelDark, width: 1.3),
+            ),
+            child: LinearProgressIndicator(
+              value: morale is num ? (morale / 100).clamp(0, 1).toDouble() : 0,
+              minHeight: mobile ? 12 : 16,
+              color: ClassicColors.moraleGreen,
+              backgroundColor: ClassicColors.creamBox,
+            ),
+          ),
+          SizedBox(height: mobile ? 8 : 14),
+          if (state != 'RESULTS')
+            KeyedSubtree(
+              key: const Key('retro-match-action'),
+              child: RetroBevel(
+                color: ClassicColors.actionGreen,
+                padding: const EdgeInsets.all(2),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: _buildRoundPrimaryAction(),
+                ),
+              ),
+            ),
+          if (ready && state == 'PREPARING')
+            const Padding(
+              padding: EdgeInsets.only(top: 6),
+              child: Text(
+                'AGUARDANDO OUTROS TREINADORES.',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          const SizedBox(height: 6),
+          Text(
+            'Sala: ${_snapshot?['worldName'] ?? _worldId} • ${_snapshot?['roundState'] ?? 'Carregando'}',
+            style: const TextStyle(fontSize: 12, color: Color(0xFF42504A)),
+          ),
+        ],
+      ),
     );
   }
 
@@ -971,64 +1176,73 @@ extension _Classic98Shell on _ElifootShellScreenState {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text(
-          'TÁTICAS',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-        ),
-        DropdownButtonFormField<String>(
-          initialValue: _selectedFormation,
-          decoration: const InputDecoration(labelText: 'Formação'),
-          items: [
-            for (final f in availableFormations)
-              DropdownMenuItem(value: f, child: Text(f)),
-          ],
-          onChanged: _tacticsLocked
-              ? null
-              : (f) {
-                  if (f != null) _changeFormation(f);
-                },
-        ),
-        const SizedBox(height: 10),
-        Wrap(
-          spacing: 6,
-          runSpacing: 6,
-          children: [
-            RetroButton(
-              label: 'Automática',
-              onPressed: _tacticsLocked ? null : _autoPickBestLineup,
-            ),
-            RetroButton(
-              label: 'Melhores',
-              onPressed: _tacticsLocked
-                  ? null
-                  : () => _pickBestSquad('strength'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 420),
-            child: ClassicTacticalPitch(
-              lines: tacticalPitchLines(
-                _retroSquad
-                    .where((p) => _selectedStarterIds.contains('${p['id']}'))
-                    .map(
-                      (p) => {...p, 'position': _formatPosition(p['position'])},
-                    )
-                    .toList(),
-                _selectedFormation,
+        RetroSection(
+          title: 'TÁTICAS E FORMAÇÃO',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              DropdownButtonFormField<String>(
+                initialValue: _selectedFormation,
+                decoration: const InputDecoration(labelText: 'Formação'),
+                items: [
+                  for (final f in availableFormations)
+                    DropdownMenuItem(value: f, child: Text(f)),
+                ],
+                onChanged: _tacticsLocked
+                    ? null
+                    : (f) {
+                        if (f != null) _changeFormation(f);
+                      },
               ),
-              shirt: const Color(0xFFEEEEEE),
-              ink: Colors.black,
-              onPlayer: (p) =>
-                  setState(() => _classicSelectedPlayerId = '${p['id']}'),
-            ),
+              const SizedBox(height: 10),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  RetroButton(
+                    label: 'Automática',
+                    onPressed: _tacticsLocked ? null : _autoPickBestLineup,
+                  ),
+                  RetroButton(
+                    label: 'Melhores',
+                    onPressed: _tacticsLocked
+                        ? null
+                        : () => _pickBestSquad('strength'),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 420),
+                  child: ClassicTacticalPitch(
+                    lines: tacticalPitchLines(
+                      _retroSquad
+                          .where(
+                            (p) => _selectedStarterIds.contains('${p['id']}'),
+                          )
+                          .map(
+                            (p) => {
+                              ...p,
+                              'position': _formatPosition(p['position']),
+                            },
+                          )
+                          .toList(),
+                      _selectedFormation,
+                    ),
+                    shirt: const Color(0xFFEEEEEE),
+                    ink: Colors.black,
+                    onPlayer: (p) =>
+                        setState(() => _classicSelectedPlayerId = '${p['id']}'),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 10),
         Text(
           'Titulares: ${_selectedStarterIds.length}/$_requiredStarterCount • Banco: ${_selectedBenchIds.length}/9',
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 6),
         _retroRoster(MediaQuery.sizeOf(context).width < 768),
@@ -1053,7 +1267,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
     final starter = await showDialog<String>(
       context: context,
       builder: (ctx) => SimpleDialog(
-        title: const Text('Trocar com titular'),
+        backgroundColor: ClassicColors.cream,
+        title: const RetroTitle(title: 'Trocar com titular'),
         children: [
           for (final p in _retroSquad.where(
             (p) =>
@@ -1098,6 +1313,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           Text('${bench.length}/9 relacionados • selecione um reserva'),
           const SizedBox(height: 10),
           RetroTable(
+            darkRoster: true,
             headers: const ['POS', 'JOGADOR', 'FORÇA', 'CONDIÇÃO'],
             flex: mobile ? [1, 5, 2, 3] : [1, 5, 1, 2],
             rows: [
@@ -1211,6 +1427,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                   ? null
                   : () => _renewSquadPlayer(p),
             ),
+          const SizedBox(height: 6),
           RetroButton(
             label: 'Mercado / anunciar...',
             onPressed:
@@ -1235,6 +1452,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           'CLASSIFICAÇÃO',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 6),
         Wrap(
           spacing: 4,
           runSpacing: 4,
@@ -1246,6 +1464,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
               ('QuartaDivisao', '4ª'),
             ])
               RetroButton(
+                backgroundColor: _selectedDivisionTier == d.$1
+                    ? ClassicColors.titleBarBlue
+                    : ClassicColors.actionGreen,
                 label: '${d.$2} Divisão',
                 onPressed: () async {
                   setState(() => _selectedDivisionTier = d.$1);
@@ -1262,6 +1483,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
         ),
         const SizedBox(height: 10),
         RetroTable(
+          selected: _standings.indexWhere(
+            (r) => r is Map && r['clubId'] == _myClubId,
+          ),
           onSelect: _matchLocked
               ? null
               : (i) => _retroStandingDetails(_standings[i] as Map),
@@ -1288,8 +1512,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ],
         ),
         if (mobile)
-          const Text(
-            'Toque no clube para ver vitórias, empates, derrotas e gols.',
+          const Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Text(
+              'Toque no clube para ver vitórias, empates, derrotas e gols.',
+            ),
           ),
       ],
     ),
@@ -1298,7 +1525,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
   Future<void> _retroStandingDetails(Map row) => showDialog<void>(
     context: context,
     builder: (ctx) => AlertDialog(
-      title: Text('${row['clubName']}'),
+      backgroundColor: ClassicColors.cream,
+      titlePadding: EdgeInsets.zero,
+      title: RetroTitle(title: '${row['clubName']}'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1372,7 +1601,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               for (final inv
                   in _invitationsData?['invitations'] as List? ?? []) ...[
                 Text('${inv['clubName']} • ${inv['divisionDisplay']}'),
-                Text('Aceitar transfere seu comando para este clube.'),
+                const Text('Aceitar transfere seu comando para este clube.'),
                 if (inv['isAccepted'] != true)
                   Wrap(
                     spacing: 8,
@@ -1459,16 +1688,23 @@ extension _Classic98Shell on _ElifootShellScreenState {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(_nickname),
+          Text(_nickname, style: const TextStyle(fontWeight: FontWeight.bold)),
           Text('Clube: ${_myClubDetail?['name'] ?? 'Sem clube'}'),
           const Text('Tipo: HUMANO'),
-          RetroButton(
-            label: 'História / carreira',
-            onPressed: () => _retroOpen('career', 4),
-          ),
-          RetroButton(
-            label: 'Ranking',
-            onPressed: () => _retroOpen('coachRanking', 4),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              RetroButton(
+                label: 'História / carreira',
+                onPressed: () => _retroOpen('career', 4),
+              ),
+              RetroButton(
+                label: 'Ranking',
+                onPressed: () => _retroOpen('coachRanking', 4),
+              ),
+            ],
           ),
         ],
       ),
@@ -1484,6 +1720,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           'TAÇA NACIONAL',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
+        const SizedBox(height: 8),
         RetroTable(
           headers: const ['FASE', 'CONFRONTO', 'RESULTADO'],
           flex: const [2, 6, 2],
@@ -1536,6 +1773,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             results ? 'RESULTADOS' : 'CALENDÁRIO — MEU CLUBE',
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
+          const SizedBox(height: 8),
           for (final r in rounds)
             if (!results ||
                 (r['fixtures'] as List? ?? []).any(
@@ -1553,6 +1791,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                           padding: const EdgeInsets.symmetric(vertical: 6),
                           child: Text(
                             '${f['home']}  ${f['isFinished'] == true ? '${f['homeGoals']} x ${f['awayGoals']}' : '×'}  ${f['away']}',
+                            style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
                         ),
                   ],

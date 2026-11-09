@@ -2025,13 +2025,15 @@ class ClassicActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = ClassicTheme.of(context);
+    final fg = t.classicPresentation ? t.buttonText : t.accent;
     return TextButton(
       key: buttonKey,
       autofocus: autofocus,
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        foregroundColor: ClassicTheme.of(context).accent,
-        backgroundColor: ClassicTheme.of(context).buttonBackground,
+        foregroundColor: fg,
+        backgroundColor: t.buttonBackground,
         minimumSize: Size(
           72,
           MediaQuery.sizeOf(context).width < 1024 ? 44 : 32,
@@ -2039,7 +2041,7 @@ class ClassicActionButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
-          side: BorderSide(color: ClassicTheme.of(context).border, width: 1.2),
+          side: BorderSide(color: t.border, width: 1.2),
         ),
       ),
       child: Row(
@@ -2047,18 +2049,14 @@ class ClassicActionButton extends StatelessWidget {
         children: [
           if (iconType == ClassicButtonIcon.refresh) ...[
             CustomPaint(
-              size: Size(12, 12),
-              painter: _ClassicRefreshIconPainter(
-                ClassicTheme.of(context).accent,
-              ),
+              size: const Size(12, 12),
+              painter: _ClassicRefreshIconPainter(fg),
             ),
             const SizedBox(width: 6),
           ] else if (iconType == ClassicButtonIcon.close) ...[
             CustomPaint(
-              size: Size(10, 10),
-              painter: _ClassicCloseIconPainter(
-                ClassicTheme.of(context).accent,
-              ),
+              size: const Size(10, 10),
+              painter: _ClassicCloseIconPainter(fg),
             ),
             const SizedBox(width: 6),
           ],
@@ -2068,10 +2066,10 @@ class ClassicActionButton extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: ClassicTheme.of(context).accent,
+                color: fg,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                fontFamily: ClassicTheme.of(context).classicPresentation
+                fontFamily: t.classicPresentation
                     ? 'ClassicCondensed'
                     : Theme.of(context).textTheme.bodyMedium?.fontFamily,
               ),
@@ -2259,7 +2257,9 @@ class ClassicDialog extends StatelessWidget {
         title: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: ClassicTheme.of(context).surface,
+            color: ClassicTheme.of(context).classicPresentation
+                ? ClassicTheme.of(context).primary
+                : ClassicTheme.of(context).surface,
             border: Border(
               bottom: BorderSide(
                 color: ClassicTheme.of(context).selectedBackground,
@@ -2273,8 +2273,12 @@ class ClassicDialog extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    color: ClassicTheme.of(context).accent,
-                    fontSize: 14,
+                    color: ClassicTheme.of(context).classicPresentation
+                        ? Colors.white
+                        : ClassicTheme.of(context).accent,
+                    fontSize: ClassicTheme.of(context).classicPresentation
+                        ? 17
+                        : 14,
                     fontWeight: FontWeight.bold,
                     fontFamily: ClassicTheme.of(context).classicPresentation
                         ? 'ClassicCondensed'

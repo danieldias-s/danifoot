@@ -1044,54 +1044,65 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     if (_restoringSession) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
+    final modernTheme = (widget.appearance?.theme ?? ClassicTheme.derive())
+        .material();
     if (widget.useAccountLogin && _account == null) {
-      return AccountLoginScreen(
-        submit: _authenticateAccount,
-        notice: _accountNotice,
+      return Theme(
+        data: modernTheme,
+        child: AccountLoginScreen(
+          submit: _authenticateAccount,
+          notice: _accountNotice,
+        ),
       );
     }
     if (widget.useAccountLogin && _worldId == null) {
-      return _buildAccountPortal();
+      return Theme(data: modernTheme, child: _buildAccountPortal());
     }
     if (_coachId == null || _worldId == null) {
-      return PresentationSurface(
-        screen: PresentationScreen.lobby,
-        current: _buildLobbyAndHomeScreen(),
+      return Theme(
+        data: modernTheme,
+        child: PresentationSurface(
+          screen: PresentationScreen.lobby,
+          current: _buildLobbyAndHomeScreen(),
+        ),
       );
     }
 
     if (_snapshot?['hasInitialLobby'] == true &&
         _snapshot?['lobbyStarted'] != true) {
-      return WorldInitialLobby016B(
-        api: widget.apiClient,
-        worldId: _worldId!,
-        coachId: _coachId!,
-        presentation: widget.presentation,
-        onLeave: () async {
-          widget.apiClient.disconnectRealtime();
-          setState(() {
-            _worldId = null;
-            _snapshot = null;
-            _myClubId = null;
-            _myClubDetail = null;
-          });
-          await _saveSession();
-        },
-        onStarted: () async {
-          final snapshot = await widget.apiClient.getSnapshot(_worldId!);
-          if (!mounted) return;
-          final participants =
-              snapshot['readyCounter']?['participants'] as List? ?? [];
-          final me = participants
-              .where((p) => p['coachId'] == _coachId)
-              .firstOrNull;
-          setState(() {
-            _snapshot = _acceptSnapshot(snapshot);
-            _myClubId = me?['clubId']?.toString();
-            _isUnemployed = me?['isUnemployed'] == true;
-          });
-          await _refreshClubAndSecondaryData();
-        },
+      return Theme(
+        data: modernTheme,
+        child: WorldInitialLobby016B(
+          api: widget.apiClient,
+          worldId: _worldId!,
+          coachId: _coachId!,
+          presentation: widget.presentation,
+          onLeave: () async {
+            widget.apiClient.disconnectRealtime();
+            setState(() {
+              _worldId = null;
+              _snapshot = null;
+              _myClubId = null;
+              _myClubDetail = null;
+            });
+            await _saveSession();
+          },
+          onStarted: () async {
+            final snapshot = await widget.apiClient.getSnapshot(_worldId!);
+            if (!mounted) return;
+            final participants =
+                snapshot['readyCounter']?['participants'] as List? ?? [];
+            final me = participants
+                .where((p) => p['coachId'] == _coachId)
+                .firstOrNull;
+            setState(() {
+              _snapshot = _acceptSnapshot(snapshot);
+              _myClubId = me?['clubId']?.toString();
+              _isUnemployed = me?['isUnemployed'] == true;
+            });
+            await _refreshClubAndSecondaryData();
+          },
+        ),
       );
     }
 

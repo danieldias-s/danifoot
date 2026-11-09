@@ -147,7 +147,7 @@ class ClassicSelectionTabs extends StatelessWidget {
                   ),
                   foregroundColor: selected == item.$1
                       ? t.selectedText
-                      : t.textPrimary,
+                      : readableInk(t.primary, t.textPrimary),
                   backgroundColor: selected == item.$1
                       ? t.selectedBackground
                       : t.primary,

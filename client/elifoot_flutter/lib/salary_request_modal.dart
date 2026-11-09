@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'classic98_widgets.dart';
 import 'club_crest.dart';
 import 'player_rankings.dart' show formatClassicMoney;
 
@@ -48,11 +49,19 @@ class _SalaryRequestModalState extends State<SalaryRequestModal> {
         onPressed: busy ? null : () => decide(accept),
         style: ElevatedButton.styleFrom(
           backgroundColor: accept
-              ? const Color(0xFF006620)
-              : const Color(0xFFE3E0DB),
+              ? (widget.classic
+                    ? ClassicColors.actionGreen
+                    : const Color(0xFF006620))
+              : (widget.classic
+                    ? ClassicColors.retroGray
+                    : const Color(0xFFE3E0DB)),
           foregroundColor: accept ? Colors.white : const Color(0xFF800000),
           side: BorderSide(
-            color: accept ? const Color(0xFF004410) : const Color(0xFF800000),
+            color: accept
+                ? (widget.classic
+                      ? ClassicColors.outerGreen
+                      : const Color(0xFF004410))
+                : const Color(0xFF800000),
             width: 2,
           ),
           shape: RoundedRectangleBorder(
@@ -76,13 +85,20 @@ class _SalaryRequestModalState extends State<SalaryRequestModal> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 640),
                 child: Material(
-                  color: const Color(0xFFF6F4EC),
+                  color: widget.classic
+                      ? ClassicColors.cream
+                      : const Color(0xFFF6F4EC),
                   elevation: 18,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                       widget.classic ? 3 : 14,
                     ),
-                    side: const BorderSide(color: Colors.white, width: 3),
+                    side: BorderSide(
+                      color: widget.classic
+                          ? ClassicColors.border
+                          : Colors.white,
+                      width: widget.classic ? 2 : 3,
+                    ),
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: SingleChildScrollView(
@@ -92,7 +108,7 @@ class _SalaryRequestModalState extends State<SalaryRequestModal> {
                       children: [
                         Container(
                           color: widget.classic
-                              ? const Color(0xFF000080)
+                              ? ClassicColors.titleBarBlue
                               : const Color(0xFF003C2B),
                           padding: const EdgeInsets.all(16),
                           child: const Text(
