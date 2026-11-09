@@ -64,6 +64,16 @@ void main() {
         await t.pumpAndSettle();
       }
 
+      expect(
+        roster().headers,
+        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+      );
+      expect(roster().sectionHeaders, isNotEmpty);
+      expect(
+        roster().sectionHeaders.values.first[1],
+        startsWith('BANCO ('),
+      );
+      expect(roster().rows.first.length, 5);
       expect(canSend(), isTrue);
       await click('p-23');
       expect(find.textContaining('Titulares: 12/11'), findsWidgets);
@@ -76,12 +86,32 @@ void main() {
       expect(canSend(), isFalse);
       await click('p-2');
       expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2').first, '· D');
+      expect(
+        roster().headers,
+        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+      );
+      expect(roster().sectionHeaders, isNotEmpty);
+      expect(
+        roster().sectionHeaders.values.first[1],
+        startsWith('BANCO ('),
+      );
+      expect(roster().rows.first.length, 5);
       expect(canSend(), isTrue);
       await click('p-23');
       expect(canSend(), isFalse);
       await click('p-23');
       expect(canSend(), isFalse);
       await click('p-2');
+      expect(
+        roster().headers,
+        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+      );
+      expect(roster().sectionHeaders, isNotEmpty);
+      expect(
+        roster().sectionHeaders.values.first[1],
+        startsWith('BANCO ('),
+      );
+      expect(roster().rows.first.length, 5);
       expect(canSend(), isTrue);
       api.ready = 1;
       api.isReady = true;

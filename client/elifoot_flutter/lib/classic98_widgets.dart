@@ -421,6 +421,8 @@ class RetroTable extends StatelessWidget {
   final Set<int> rightAlignedColumns;
   final Set<int> centerAlignedColumns;
   final Map<int, Widget> leadingCells;
+  final Map<int, List<String>> sectionHeaders;
+  final String? emptySectionMessage;
   const RetroTable({
     super.key,
     required this.headers,
@@ -434,6 +436,8 @@ class RetroTable extends StatelessWidget {
     this.rightAlignedColumns = const {},
     this.centerAlignedColumns = const {},
     this.leadingCells = const {},
+    this.sectionHeaders = const {},
+    this.emptySectionMessage,
   });
   @override
   Widget build(BuildContext context) => Container(
@@ -459,7 +463,35 @@ class RetroTable extends StatelessWidget {
               ),
             ),
           ),
-        for (var i = 0; i < rows.length; i++) _line(context, rows[i], i),
+        for (var i = 0; i < rows.length; i++) ...[
+          if (sectionHeaders.containsKey(i))
+            _line(context, sectionHeaders[i]!, -2 - i, header: true),
+          _line(context, rows[i], i),
+        ],
+        if (rows.isNotEmpty && sectionHeaders.containsKey(rows.length)) ...[
+          _line(
+            context,
+            sectionHeaders[rows.length]!,
+            -2 - rows.length,
+            header: true,
+          ),
+          if (emptySectionMessage != null)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              color: darkRoster
+                  ? ClassicColors.rosterBlack
+                  : ClassicTheme.of(context).surface,
+              child: Text(
+                emptySectionMessage!,
+                style: TextStyle(
+                  color: darkRoster
+                      ? ClassicColors.rosterText
+                      : ClassicTheme.of(context).textPrimary,
+                  fontSize: 13.5,
+                ),
+              ),
+            ),
+        ],
       ],
     ),
   );
@@ -493,17 +525,24 @@ class RetroTable extends StatelessWidget {
     final dividerColor = darkRoster
         ? (isSelected ? ClassicColors.softGold : ClassicColors.rosterBorder)
         : t.border;
+    final compactRoster =
+        darkRoster &&
+        cells.length >= 5 &&
+        MediaQuery.sizeOf(context).width < 600;
     final content = Container(
       constraints: BoxConstraints(
         minHeight: header
-            ? 32
+            ? (compactRoster ? 28 : 32)
             : dense
-            ? 30
+            ? (compactRoster ? 27 : 30)
             : onSelect != null
             ? (darkRoster ? 34 : 42)
             : 32,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      padding: EdgeInsets.symmetric(
+        horizontal: compactRoster ? 4 : 6,
+        vertical: 3,
+      ),
       decoration: BoxDecoration(
         color: background,
         border: Border(
@@ -516,7 +555,7 @@ class RetroTable extends StatelessWidget {
             Expanded(
               flex: flex?[i] ?? 1,
               child: Padding(
-                padding: const EdgeInsets.only(right: 4),
+                padding: EdgeInsets.only(right: compactRoster ? 2 : 4),
                 child: !header && i == 0 && leadingCells.containsKey(index)
                     ? leadingCells[index]!
                     : i == 0 && cells[i].startsWith('● ')
@@ -547,7 +586,9 @@ class RetroTable extends StatelessWidget {
                             : TextAlign.left,
                         style: TextStyle(
                           color: ink,
-                          fontSize: header ? 15 : 15.5,
+                          fontSize: compactRoster
+                              ? (header ? 12.5 : 13)
+                              : (header ? 15 : 15.5),
                           fontWeight: header || isSelected
                               ? FontWeight.bold
                               : FontWeight.w500,

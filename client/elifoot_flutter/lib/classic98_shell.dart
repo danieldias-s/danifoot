@@ -14,23 +14,27 @@ extension _Classic98Shell on _ElifootShellScreenState {
     );
   }
 
-  List<Map<String, dynamic>> get _retroSquad =>
-      (_myClubDetail?['squad'] as List? ?? [])
-          .whereType<Map>()
-          .map((p) => Map<String, dynamic>.from(p))
-          .toList()
-        ..sort(
-          (a, b) => const ['G', 'D', 'M', 'A']
-              .indexOf(_formatPosition(a['position']))
-              .compareTo(
-                const [
-                  'G',
-                  'D',
-                  'M',
-                  'A',
-                ].indexOf(_formatPosition(b['position'])),
-              ),
-        );
+  List<Map<String, dynamic>> get _retroSquad {
+    final list = (_myClubDetail?['squad'] as List? ?? [])
+        .whereType<Map>()
+        .map((p) => Map<String, dynamic>.from(p))
+        .toList();
+    int roleRank(Map<String, dynamic> p) {
+      final id = '${p['id']}';
+      if (_selectedStarterIds.contains(id)) return 0;
+      if (_selectedBenchIds.contains(id)) return 1;
+      return 2;
+    }
+
+    int posRank(Map<String, dynamic> p) =>
+        const ['G', 'D', 'M', 'A'].indexOf(_formatPosition(p['position']));
+    list.sort((a, b) {
+      final r = roleRank(a).compareTo(roleRank(b));
+      if (r != 0) return r;
+      return posRank(a).compareTo(posRank(b));
+    });
+    return list;
+  }
 
   Map<String, dynamic>? get _retroSelected => _retroSquad
       .where((p) => '${p['id']}' == _classicSelectedPlayerId)
@@ -54,6 +58,20 @@ extension _Classic98Shell on _ElifootShellScreenState {
     }
     if ((p['suspensionRoundsRemaining'] as num? ?? 0) > 0) return 'Suspenso';
     return 'Apto';
+  }
+
+  String _retroBehavior(Map p) {
+    final display = p['behaviorDisplay']?.toString().trim();
+    if (display != null && display.isNotEmpty) return display;
+    return switch (p['behavior']?.toString()) {
+      'FairPlay' || '0' => 'Fair Play',
+      'Cordeirinho' || '1' => 'Cordeirinho',
+      'Cavalheiro' || '2' => 'Cavalheiro',
+      'Caneleiro' || '3' => 'Caneleiro',
+      'Caceteiro' || '4' => 'Caceteiro',
+      'Sarrafeiro' || '5' => 'Sarrafeiro',
+      _ => 'Cavalheiro',
+    };
   }
 
   String _retroRole(Map p) => _retroCondition(p) != 'Apto'
@@ -823,14 +841,28 @@ extension _Classic98Shell on _ElifootShellScreenState {
     bool bounded = false,
   }) {
     final squad = players ?? _retroSquad;
+    final benchStartIndex = squad.indexWhere(
+      (p) => !_selectedStarterIds.contains('${p['id']}'),
+    );
+    final sectionRow = benchStartIndex >= 0 ? benchStartIndex : squad.length;
     final table = RetroTable(
       darkRoster: true,
       dense: true,
       key: const Key('retro-roster'),
-      headers: const ['POS', 'JOGADOR', 'FORÇA', 'VALOR'],
-      flex: mobile ? const [3, 8, 2, 4] : const [2, 8, 2, 4],
-      centerAlignedColumns: const {2},
-      rightAlignedColumns: const {3},
+      headers: const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO'],
+      sectionHeaders: {
+        sectionRow: [
+          'POS',
+          'BANCO (${_selectedBenchIds.length}/9)',
+          'FORÇA',
+          'ESTILO',
+          'SALÁRIO',
+        ],
+      },
+      emptySectionMessage: 'Sem jogadores reservas no banco.',
+      flex: mobile ? const [3, 6, 2, 4, 4] : const [2, 6, 2, 4, 4],
+      centerAlignedColumns: const {2, 3},
+      rightAlignedColumns: const {4},
       leadingCells: {
         for (final (i, p) in squad.indexed)
           i: _retroRoleControl(p, mobile: mobile),
@@ -841,7 +873,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
             '${_retroRole(p)} ${_formatPosition(p['position'])}',
             '${p['displayName'] ?? p['name']}${p['isStar'] == true && !'${p['displayName']}'.contains('*') ? '*' : ''}',
             '${p['strength']}',
-            formatClassicMoney(p['fairValue']),
+            _retroBehavior(p),
+            formatClassicMoney(p['salaryPerRound']),
           ],
       ],
       selected: squad.indexWhere(
@@ -853,16 +886,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (bounded)
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight:
-                  MediaQuery.sizeOf(context).height * (mobile ? .29 : .64),
-            ),
-            child: SingleChildScrollView(child: table),
-          )
-        else
-          table,
+        table,
         Container(
           color: ClassicColors.cream,
           padding: const EdgeInsets.fromLTRB(4, 6, 4, 2),
@@ -1314,15 +1338,18 @@ extension _Classic98Shell on _ElifootShellScreenState {
           const SizedBox(height: 10),
           RetroTable(
             darkRoster: true,
-            headers: const ['POS', 'JOGADOR', 'FORÇA', 'CONDIÇÃO'],
-            flex: mobile ? [1, 5, 2, 3] : [1, 5, 1, 2],
+            headers: const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO'],
+            flex: mobile ? const [2, 6, 2, 4, 4] : const [1, 6, 2, 3, 3],
+            centerAlignedColumns: const {2, 3},
+            rightAlignedColumns: const {4},
             rows: [
               for (final p in bench)
                 [
                   _formatPosition(p['position']),
                   '${p['displayName']}',
                   '${p['strength']}',
-                  _retroCondition(p),
+                  _retroBehavior(p),
+                  formatClassicMoney(p['salaryPerRound']),
                 ],
             ],
             selected: bench.indexWhere(
@@ -1401,6 +1428,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 Text('Clube: ${_myClubDetail?['name']}'),
                 Text('Posição: ${_formatPosition(p['position'])}'),
                 Text('Força: ${p['strength']}'),
+                Text('Estilo: ${_retroBehavior(p)}'),
                 Text('Condição: ${_retroCondition(p)}'),
                 Text(
                   'Salário por partida: ${formatClassicMoney(p['salaryPerRound'])}',
