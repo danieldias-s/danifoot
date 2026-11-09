@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -33,7 +34,485 @@ class FullBenchApi extends GameplayPresentationApi {
   }
 }
 
+class ClassicPlayerStatsPanelApi extends GameplayPresentationApi {
+  String currentDivisionTier = 'QuartaDivisao';
+  String currentDivisionDisplay = '4ª Divisão';
+  final List<String> requestedPlayerHistoryIds = [];
+  final Map<String, Completer<Map<String, dynamic>>> pendingHistory = {};
+
+  @override
+  Future<Map<String, dynamic>> getClubDetail(
+    String worldId,
+    String clubId,
+  ) async {
+    final club = await super.getClubDetail(worldId, clubId);
+    club['divisionTier'] = currentDivisionTier;
+    club['divisionDisplay'] = currentDivisionDisplay;
+    final squad = (club['squad'] as List)
+        .map((e) => Map<String, dynamic>.from(e as Map))
+        .toList();
+
+    // p-1: Starter craque (star player) with complete career, division, red card and injury occurrence data
+    squad[0] = {
+      ...squad[0],
+      'id': 'p-1',
+      'name': 'Atleta sintético 1985-23-7',
+      'displayName': 'Atleta sintético 1985-23-7*',
+      'isStar': true,
+      'careerMatches': 128,
+      'seasonGoals': 3,
+      'cupGoals': 1,
+      'seasonAssists': 5,
+      'currentDivisionTier': currentDivisionTier,
+      'currentDivisionDisplay': currentDivisionDisplay,
+      'currentDivisionGoals': currentDivisionTier == 'QuartaDivisao' ? 37 : 15,
+      'currentDivisionAssists': currentDivisionTier == 'QuartaDivisao' ? 18 : 8,
+      'divisionGoals': {
+        'PrimeiraDivisao': 0,
+        'SegundaDivisao': 0,
+        'TerceiraDivisao': 15,
+        'QuartaDivisao': 37,
+      },
+      'divisionAssists': {
+        'PrimeiraDivisao': 0,
+        'SegundaDivisao': 0,
+        'TerceiraDivisao': 8,
+        'QuartaDivisao': 18,
+      },
+      'careerGoals': 56,
+      'careerAssists': 23,
+      'careerRedCards': 3,
+      'careerInjuries': 2,
+      'injuryRoundsRemaining': 0,
+      'injuryDaysRemaining': 0,
+    };
+
+    // p-2: Starter non-star with identical name to p-3 to verify ID-based lookup
+    squad[1] = {
+      ...squad[1],
+      'id': 'p-2',
+      'name': 'Homônimo Clássico',
+      'displayName': 'Homônimo Clássico',
+      'isStar': false,
+      'careerMatches': 40,
+      'seasonGoals': 2,
+      'cupGoals': 0,
+      'seasonAssists': 1,
+      'currentDivisionTier': currentDivisionTier,
+      'currentDivisionDisplay': currentDivisionDisplay,
+      'currentDivisionGoals': 10,
+      'currentDivisionAssists': 4,
+      'divisionGoals': {'QuartaDivisao': 10, 'TerceiraDivisao': 0},
+      'divisionAssists': {'QuartaDivisao': 4, 'TerceiraDivisao': 0},
+      'careerGoals': 10,
+      'careerAssists': 4,
+      'careerRedCards': 1,
+      'careerInjuries': 0,
+    };
+
+    // p-3: Starter non-star with same name as p-2 but different ID and stats
+    squad[2] = {
+      ...squad[2],
+      'id': 'p-3',
+      'name': 'Homônimo Clássico',
+      'displayName': 'Homônimo Clássico',
+      'isStar': false,
+      'careerMatches': 95,
+      'seasonGoals': 9,
+      'cupGoals': 2,
+      'seasonAssists': 7,
+      'currentDivisionTier': currentDivisionTier,
+      'currentDivisionDisplay': currentDivisionDisplay,
+      'currentDivisionGoals': 28,
+      'currentDivisionAssists': 14,
+      'divisionGoals': {'QuartaDivisao': 28, 'TerceiraDivisao': 6},
+      'divisionAssists': {'QuartaDivisao': 14, 'TerceiraDivisao': 3},
+      'careerGoals': 36,
+      'careerAssists': 17,
+      'careerRedCards': 4,
+      'careerInjuries': 3,
+      'injuryRoundsRemaining': 0,
+      'injuryDaysRemaining': 0,
+    };
+    squad[17] = {
+      ...squad[17],
+      'id': 'p-18',
+      'careerInjuries': 1,
+      'injuryRoundsRemaining': 9,
+      'injuryDaysRemaining': 21,
+    };
+
+    // p-12: Reserve craque with very long name
+    squad[11] = {
+      ...squad[11],
+      'id': 'p-12',
+      'name': 'Maximiliano Albuquerque de Bragança Neto 1985-99',
+      'displayName': '★ Maximiliano Albuquerque de Bragança Neto 1985-99*',
+      'isStar': true,
+      'careerMatches': 12,
+      'seasonGoals': 1,
+      'cupGoals': 0,
+      'seasonAssists': 2,
+      'careerGoals': 1,
+      'careerAssists': 2,
+      'careerRedCards': 0,
+      'careerInjuries': 1,
+    };
+
+    // p-17: Unrelated (out of bench) craque
+    squad[16] = {
+      ...squad[16],
+      'id': 'p-17',
+      'name': 'Fora Relacionados Craque 17',
+      'displayName': 'Fora Relacionados Craque 17*',
+      'isStar': true,
+      'careerMatches': 5,
+      'seasonGoals': 0,
+      'cupGoals': 0,
+      'seasonAssists': 0,
+      'careerGoals': 0,
+      'careerAssists': 0,
+      'careerRedCards': 0,
+      'careerInjuries': 0,
+    };
+
+    club['squad'] = squad;
+    return club;
+  }
+
+  @override
+  Future<Map<String, dynamic>> getPlayerHistory(
+    String worldId,
+    String playerId,
+  ) async {
+    requestedPlayerHistoryIds.add(playerId);
+    if (pendingHistory.containsKey(playerId)) {
+      return pendingHistory[playerId]!.future;
+    }
+    if (playerId == 'p-1') {
+      return {
+        'playerId': 'p-1',
+        'currentSeason': 1,
+        'currentDivisionTier': currentDivisionTier,
+        'currentDivisionDisplay': currentDivisionDisplay,
+        'careerMatches': 128,
+        'seasonGoals': 4,
+        'seasonAssists': 5,
+        'currentDivisionGoals': currentDivisionTier == 'QuartaDivisao'
+            ? 37
+            : 15,
+        'currentDivisionAssists': currentDivisionTier == 'QuartaDivisao'
+            ? 18
+            : 8,
+        'divisionGoals': {
+          'PrimeiraDivisao': 0,
+          'SegundaDivisao': 0,
+          'TerceiraDivisao': 15,
+          'QuartaDivisao': 37,
+        },
+        'divisionAssists': {
+          'PrimeiraDivisao': 0,
+          'SegundaDivisao': 0,
+          'TerceiraDivisao': 8,
+          'QuartaDivisao': 18,
+        },
+        'careerGoals': 56,
+        'careerAssists': 23,
+        'careerRedCards': 3,
+        'careerInjuries': 2,
+        'rows': const [],
+      };
+    }
+    if (playerId == 'p-2') {
+      return {
+        'playerId': 'p-2',
+        'currentSeason': 1,
+        'currentDivisionTier': currentDivisionTier,
+        'currentDivisionDisplay': currentDivisionDisplay,
+        'careerMatches': 40,
+        'seasonGoals': 2,
+        'seasonAssists': 1,
+        'currentDivisionGoals': 10,
+        'currentDivisionAssists': 4,
+        'divisionGoals': {'QuartaDivisao': 10, 'TerceiraDivisao': 0},
+        'divisionAssists': {'QuartaDivisao': 4, 'TerceiraDivisao': 0},
+        'careerGoals': 10,
+        'careerAssists': 4,
+        'careerRedCards': 1,
+        'careerInjuries': 0,
+        'rows': const [],
+      };
+    }
+    if (playerId == 'p-3') {
+      return {
+        'playerId': 'p-3',
+        'currentSeason': 1,
+        'currentDivisionTier': currentDivisionTier,
+        'currentDivisionDisplay': currentDivisionDisplay,
+        'careerMatches': 95,
+        'seasonGoals': 11,
+        'seasonAssists': 7,
+        'currentDivisionGoals': 28,
+        'currentDivisionAssists': 14,
+        'divisionGoals': {'QuartaDivisao': 28, 'TerceiraDivisao': 6},
+        'divisionAssists': {'QuartaDivisao': 14, 'TerceiraDivisao': 3},
+        'careerGoals': 36,
+        'careerAssists': 17,
+        'careerRedCards': 4,
+        'careerInjuries': 3,
+        'rows': const [],
+      };
+    }
+    return {
+      'playerId': playerId,
+      'currentSeason': 1,
+      'rows': const [],
+    };
+  }
+}
+
 void main() {
+  testWidgets(
+    'Estrela de craque após o nome e painel Dados do Jogador com 9 estatísticas na ordem oficial (Web e Mobile)',
+    (t) async {
+      for (final width in [1366.0, 390.0]) {
+        t.view.physicalSize = Size(width, 1000);
+        t.view.devicePixelRatio = 1;
+        addTearDown(t.view.resetPhysicalSize);
+        addTearDown(t.view.resetDevicePixelRatio);
+
+        final api = ClassicPlayerStatsPanelApi();
+        await join(t, api);
+        final controller = PresentationScope.maybeOf(
+          t.element(find.byType(ElifootShellScreen)),
+        )!;
+        await controller.select(api, PresentationVersion.classic);
+        await t.pumpAndSettle();
+
+        // 1. Dados do Jogador above Próximo Adversário
+        final playerPanelTop = t
+            .getTopLeft(find.byKey(const Key('retro-player-data-panel')))
+            .dy;
+        final nextOpponentTop = t
+            .getTopLeft(find.byKey(const Key('retro-next-opponent-panel')))
+            .dy;
+        expect(playerPanelTop, lessThan(nextOpponentTop));
+
+        // 2. Unselected state shows exact message
+        expect(
+          find.byKey(const Key('retro-player-data-empty')),
+          findsOneWidget,
+        );
+        expect(
+          find.text('Selecione um jogador para ver seus dados.'),
+          findsOneWidget,
+        );
+
+        // 3. Star ★ appears AFTER name in starters, bench, and unrelated squad players; never before name, never '*'
+        final roster = t.widget<RetroTable>(
+          find.byKey(const Key('retro-roster')),
+        );
+        final starterCraqueRow = roster.rows[0][1];
+        final commonPlayerRow = roster.rows[1][1];
+        final benchCraqueRow = roster.rows.firstWhere(
+          (r) => r[1].contains('Maximiliano'),
+        )[1];
+        final outCraqueRow = roster.rows.firstWhere(
+          (r) => r[1].contains('Fora Relacionados'),
+        )[1];
+
+        expect(starterCraqueRow, equals('Atleta sintético 1985-23-7 ★'));
+        expect(starterCraqueRow.startsWith('★'), isFalse);
+        expect(starterCraqueRow.contains('*'), isFalse);
+        expect('★'.allMatches(starterCraqueRow).length, equals(1));
+
+        expect(commonPlayerRow, equals('Homônimo Clássico'));
+        expect(commonPlayerRow.contains('★'), isFalse);
+        expect(commonPlayerRow.contains('*'), isFalse);
+
+        expect(
+          benchCraqueRow,
+          equals('Maximiliano Albuquerque de Bragança Neto 1985-99 ★'),
+        );
+        expect(benchCraqueRow.startsWith('★'), isFalse);
+        expect(benchCraqueRow.contains('*'), isFalse);
+        expect('★'.allMatches(benchCraqueRow).length, equals(1));
+
+        expect(outCraqueRow, equals('Fora Relacionados Craque 17 ★'));
+        expect(outCraqueRow.contains('*'), isFalse);
+
+        // Verify softGold (#D9B65B) on ClassicPlayerNameText
+        final starNameWidgets = t
+            .widgetList<ClassicPlayerNameText>(
+              find.byType(ClassicPlayerNameText),
+            )
+            .toList();
+        expect(starNameWidgets, isNotEmpty);
+        for (final w in starNameWidgets) {
+          expect(w.starColor, equals(const Color(0xFFD9B65B)));
+        }
+
+        // 4. Select starter craque (p-1) and verify header + 9 statistics in exact order
+        final starterFinder = find.text('Atleta sintético 1985-23-7 ★').first;
+        await t.ensureVisible(starterFinder);
+        await t.tap(starterFinder);
+        await t.pumpAndSettle();
+
+        final headerName = t.widget<ClassicPlayerNameText>(
+          find.byKey(const Key('classic-player-data-name')),
+        );
+        expect(headerName.data, equals('Atleta sintético 1985-23-7 ★'));
+        expect(headerName.starColor, equals(const Color(0xFFD9B65B)));
+
+        final expectedStats = [
+          ('Jogos (carreira):', '128'),
+          ('Gols (temporada):', '4'),
+          ('Assistências (temporada):', '5'),
+          ('Gols na 4ª Divisão:', '37'),
+          ('Assistências na 4ª Divisão:', '18'),
+          ('Gols (total):', '56'),
+          ('Assistências (total):', '23'),
+          ('Cartões vermelhos:', '3'),
+          ('Lesões (total):', '2'), // 2 occurrences, NOT 9 missed rounds
+        ];
+        for (var i = 0; i < expectedStats.length; i++) {
+          final label = t.widget<Text>(
+            find.byKey(ValueKey('classic-player-stat-label-$i')),
+          );
+          final value = t.widget<Text>(
+            find.byKey(ValueKey('classic-player-stat-value-$i')),
+          );
+          expect(label.data, equals(expectedStats[i].$1));
+          expect(value.data, equals(expectedStats[i].$2));
+          expect(value.textAlign, equals(TextAlign.right));
+        }
+
+        // 5. Division change preserves division history and returning to previous division restores accumulated totals
+        api.currentDivisionTier = 'TerceiraDivisao';
+        api.currentDivisionDisplay = '3ª Divisão';
+        api.onNotification?.call('Promovido para a 3ª Divisão');
+        await t.pumpAndSettle();
+
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-label-3')),
+              )
+              .data,
+          equals('Gols na 3ª Divisão:'),
+        );
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-3')),
+              )
+              .data,
+          equals('15'),
+        );
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-label-4')),
+              )
+              .data,
+          equals('Assistências na 3ª Divisão:'),
+        );
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-4')),
+              )
+              .data,
+          equals('8'),
+        );
+
+        // Return to 4ª Divisão
+        api.currentDivisionTier = 'QuartaDivisao';
+        api.currentDivisionDisplay = '4ª Divisão';
+        api.onNotification?.call('Retorno para a 4ª Divisão');
+        await t.pumpAndSettle();
+
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-label-3')),
+              )
+              .data,
+          equals('Gols na 4ª Divisão:'),
+        );
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-3')),
+              )
+              .data,
+          equals('37'),
+        );
+
+        // 6. Selecting players with identical names queries by real ID and prevents stale async responses from overwriting
+        final slowP2 = Completer<Map<String, dynamic>>();
+        api.pendingHistory['p-2'] = slowP2;
+
+        final homonimoRows = find.text('Homônimo Clássico');
+        await t.ensureVisible(homonimoRows.first);
+        await t.tap(homonimoRows.first); // selects p-2
+        await t.pump();
+
+        await t.ensureVisible(homonimoRows.at(1));
+        await t.tap(homonimoRows.at(1)); // selects p-3
+        await t.pumpAndSettle();
+
+        expect(api.requestedPlayerHistoryIds, containsAll(['p-2', 'p-3']));
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-0')),
+              )
+              .data,
+          equals('95'),
+        );
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-8')),
+              )
+              .data,
+          equals('3'),
+        );
+
+        // Complete stale p-2 response after p-3 is already selected; p-3 data must remain
+        slowP2.complete({
+          'playerId': 'p-2',
+          'currentSeason': 1,
+          'careerMatches': 40,
+          'seasonGoals': 2,
+          'seasonAssists': 1,
+          'currentDivisionGoals': 10,
+          'currentDivisionAssists': 4,
+          'careerGoals': 10,
+          'careerAssists': 4,
+          'careerRedCards': 1,
+          'careerInjuries': 0,
+          'rows': const [],
+        });
+        await t.pumpAndSettle();
+
+        expect(
+          t
+              .widget<Text>(
+                find.byKey(const ValueKey('classic-player-stat-value-0')),
+              )
+              .data,
+          equals('95'),
+        );
+        expect(t.takeException(), isNull);
+
+        await t.pumpWidget(const SizedBox());
+        api.disconnectRealtime();
+      }
+    },
+  );
+
   testWidgets(
     'Bolinha aceita excesso no rascunho e bloqueia envio até corrigir sem trocar outro atleta',
     (t) async {

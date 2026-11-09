@@ -924,7 +924,7 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/update-player", async (
 
     world.RoundVersion++;
     await repo.SaveWorldAsync(world, ct);
-    return Results.Ok(ClubAndMarketApplicationService.MapPlayerDto(player, null));
+    return Results.Ok(ClubAndMarketApplicationService.MapPlayerDto(player, null, world));
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/editor/update-manager", async (

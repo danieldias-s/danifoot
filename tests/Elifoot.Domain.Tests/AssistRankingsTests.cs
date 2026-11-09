@@ -94,4 +94,128 @@ public class AssistRankingsTests
         Assert.Equal(1,Assert.Single(PlayerStatisticsEngine.GetRankings(w,"assists").Rows).Assists);
         Assert.Contains(PlayerStatisticsEngine.GetRankings(w,"assists").CoverageWarnings,s=>s.Contains("não foram reconstruídas"));
     }
+
+    [Fact]
+    public void PlayerPanelStatisticsAndHistoryProvideExactNineClassicMetricsAndPreserveDivisionHistoryAndInjuryOccurrences()
+    {
+        var w = WorldSeedFactory.CreateSeededWorld();
+        w.PlayerStatisticsVersion = 9;
+        w.SeasonNumber = 3;
+        var club = w.Clubs.First(c => c.DivisionTier == DivisionTier.QuartaDivisao);
+        var player = w.Players.First(p => p.ClubId == club.Id);
+
+        // Season 1 in 4th Division: 40 matches, 20 goals, 10 assists, 1 red, 1 injury
+        var matchS1 = Guid.NewGuid();
+        var bucketS1 = new PlayerCompetitionStatistics
+        {
+            PlayerId = player.Id,
+            ClubId = club.Id,
+            Position = player.Position,
+            Season = 1,
+            CompetitionType = CompetitionType.League,
+            Division = DivisionTier.QuartaDivisao,
+            MatchesPlayed = 40,
+            GoalsScored = 20,
+            Assists = 10,
+            RedCards = 1,
+            Injuries = 1,
+            HasIncompleteAssists = false
+        };
+        bucketS1.AppliedMatchIds.Add(matchS1);
+        w.PlayerStatistics.Add(bucketS1);
+
+        // Season 2 in 3rd Division: 44 matches, 15 goals, 8 assists, 1 red, 0 injuries
+        w.PlayerStatistics.Add(new PlayerCompetitionStatistics
+        {
+            PlayerId = player.Id,
+            ClubId = club.Id,
+            Position = player.Position,
+            Season = 2,
+            CompetitionType = CompetitionType.League,
+            Division = DivisionTier.TerceiraDivisao,
+            MatchesPlayed = 44,
+            GoalsScored = 15,
+            Assists = 8,
+            RedCards = 1,
+            Injuries = 0,
+            HasIncompleteAssists = false
+        });
+
+        // Season 3 back in 4th Division + Cup: 40 league (17 goals, 8 assists) + 4 cup (4 goals, 0 assists)
+        var matchS3 = Guid.NewGuid();
+        var bucketS3 = new PlayerCompetitionStatistics
+        {
+            PlayerId = player.Id,
+            ClubId = club.Id,
+            Position = player.Position,
+            Season = 3,
+            CompetitionType = CompetitionType.League,
+            Division = DivisionTier.QuartaDivisao,
+            MatchesPlayed = 40,
+            GoalsScored = 17,
+            Assists = 8,
+            RedCards = 1,
+            Injuries = 1,
+            HasIncompleteAssists = false
+        };
+        bucketS3.AppliedMatchIds.Add(matchS3);
+        w.PlayerStatistics.Add(bucketS3);
+        w.PlayerStatistics.Add(new PlayerCompetitionStatistics
+        {
+            PlayerId = player.Id,
+            ClubId = club.Id,
+            Position = player.Position,
+            Season = 3,
+            CompetitionType = CompetitionType.CupQuarterFinal,
+            Division = null,
+            MatchesPlayed = 4,
+            GoalsScored = 4,
+            Assists = 0,
+            RedCards = 0,
+            Injuries = 0,
+            HasIncompleteAssists = false
+        });
+
+        // Set missed rounds/days to large numbers to verify they are NOT treated as injury count
+        player.InjuryRoundsRemaining = 9;
+        player.InjuryDaysRemaining = 21;
+        player.ForceInjuries.Add(new() { MatchId = matchS1, Season = 1, Round = 5 });
+        player.ForceInjuries.Add(new() { MatchId = matchS3, Season = 3, Round = 12 });
+
+        var panelInDiv4 = PlayerStatisticsEngine.GetPanelStatistics(w, player);
+        Assert.Equal(128, panelInDiv4.CareerMatches);
+        Assert.Equal(21, panelInDiv4.SeasonGoals);
+        Assert.Equal(8, panelInDiv4.SeasonAssists);
+        Assert.Equal(DivisionTier.QuartaDivisao, panelInDiv4.CurrentDivisionTier);
+        Assert.Equal("4ª Divisão", panelInDiv4.CurrentDivisionDisplay);
+        Assert.Equal(37, panelInDiv4.CurrentDivisionGoals); // 20 (S1) + 17 (S3)
+        Assert.Equal(18, panelInDiv4.CurrentDivisionAssists); // 10 (S1) + 8 (S3)
+        Assert.Equal(56, panelInDiv4.CareerGoals); // 20 + 15 + 17 + 4
+        Assert.Equal(26, panelInDiv4.CareerAssists); // 10 + 8 + 8
+        Assert.Equal(3, panelInDiv4.CareerRedCards);
+        Assert.Equal(2, panelInDiv4.CareerInjuries); // 2 episodes, NOT 9 missed rounds
+
+        // When club changes to 3rd Division, 3rd Division totals are shown and 4th Division totals remain preserved
+        club.DivisionTier = DivisionTier.TerceiraDivisao;
+        var panelInDiv3 = PlayerStatisticsEngine.GetPanelStatistics(w, player);
+        Assert.Equal(DivisionTier.TerceiraDivisao, panelInDiv3.CurrentDivisionTier);
+        Assert.Equal("3ª Divisão", panelInDiv3.CurrentDivisionDisplay);
+        Assert.Equal(15, panelInDiv3.CurrentDivisionGoals);
+        Assert.Equal(8, panelInDiv3.CurrentDivisionAssists);
+        Assert.Equal(37, panelInDiv3.DivisionGoals[nameof(DivisionTier.QuartaDivisao)]);
+        Assert.Equal(18, panelInDiv3.DivisionAssists[nameof(DivisionTier.QuartaDivisao)]);
+
+        // Returning to 4th Division restores the accumulated 4th Division totals
+        club.DivisionTier = DivisionTier.QuartaDivisao;
+        var history = PlayerStatisticsEngine.GetHistory(w, player.Id)!;
+        Assert.Equal(128, history.CareerMatches);
+        Assert.Equal(21, history.SeasonGoals);
+        Assert.Equal(8, history.SeasonAssists);
+        Assert.Equal(37, history.CurrentDivisionGoals);
+        Assert.Equal(18, history.CurrentDivisionAssists);
+        Assert.Equal(56, history.CareerGoals);
+        Assert.Equal(26, history.CareerAssists);
+        Assert.Equal(3, history.CareerRedCards);
+        Assert.Equal(2, history.CareerInjuries);
+    }
 }

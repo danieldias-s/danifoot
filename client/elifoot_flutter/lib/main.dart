@@ -266,6 +266,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   bool _appearanceOpen = false;
   String? _classicPage;
   String? _classicSelectedPlayerId;
+  Map<String, dynamic>? _classicSelectedPlayerHistory;
+  int _classicPlayerStatsRequestSeq = 0;
   String? _classicRankingCategory;
   String _competitionTab = 'standings';
   final _tacticsPanelKey = GlobalKey();
@@ -607,11 +609,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               .map((p) => p['id'].toString())
               .toSet();
           _selectedBenchIds.removeWhere((id) => !squadIds.contains(id));
+          if (_classicSelectedPlayerId != null &&
+              !squadIds.contains(_classicSelectedPlayerId)) {
+            _classicSelectedPlayerId = null;
+            _classicSelectedPlayerHistory = null;
+            _classicPlayerStatsRequestSeq++;
+          }
         }
         if (finances != null) {
           _financesData = finances;
         }
       });
+      if (_classicSelectedPlayerId != null) {
+        unawaited(_loadClassicSelectedPlayerHistory(_classicSelectedPlayerId!));
+      }
       await widget.appearance?.activate(
         widget.apiClient,
         _coachId,

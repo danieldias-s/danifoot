@@ -17,6 +17,7 @@ public record PlayerStatisticsRowDto(int Season, CompetitionType CompetitionType
 {
     public int Assists { get; init; }
     public bool HasIncompleteAssists { get; init; }
+    public int Injuries { get; init; }
 }
 public record PlayerAwardDto(Guid AwardId, Guid PlayerId, string DisplayName, int Season, int TotalGoals,
     int TotalMatches, Guid? ClubId, string ClubNameAtClose, decimal AwardAmount, DateTime AwardGrantedAt,
@@ -38,6 +39,20 @@ public record PlayerHistoryDto(PlayerRankingRowDto Player, PlayerRankingRowDto C
     public int MostGoalsInSeason { get; init; }
     public int MostGamesInSeason { get; init; }
     public List<HistoryPlayerSeasonTotalsDto> SeasonTotals { get; init; } = new();
+    public int CurrentSeason { get; init; }
+    public DivisionTier? CurrentDivisionTier { get; init; }
+    public string? CurrentDivisionDisplay { get; init; }
+    public int CareerMatches { get; init; }
+    public int SeasonGoals { get; init; }
+    public int SeasonAssists { get; init; }
+    public int CurrentDivisionGoals { get; init; }
+    public int CurrentDivisionAssists { get; init; }
+    public Dictionary<string, int> DivisionGoals { get; init; } = new();
+    public Dictionary<string, int> DivisionAssists { get; init; } = new();
+    public int CareerGoals { get; init; }
+    public int CareerAssists { get; init; }
+    public int CareerRedCards { get; init; }
+    public int CareerInjuries { get; init; }
 }
 public record AwardClubTotalDto(Guid ClubId, string ClubName, decimal Amount);
 public record SeasonTopScorerAwardsDto(int CurrentSeason, int? Season, List<PlayerAwardDto> Awards,

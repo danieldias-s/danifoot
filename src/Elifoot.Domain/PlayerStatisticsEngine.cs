@@ -79,7 +79,7 @@ public static class PlayerStatisticsEngine
     {
         public PlayerLineupSnapshot Snapshot { get; } = snapshot;
         public bool Played { get; set; }
-        public int Minutes, Goals, Assists, Conceded, Yellow, Red;
+        public int Minutes, Goals, Assists, Conceded, Yellow, Red, Injuries;
     }
 
     private static void ApplyOne(GameWorld w, MatchFixture m, IReadOnlyDictionary<Guid, Player> players)
@@ -106,7 +106,7 @@ public static class PlayerStatisticsEngine
             if (e.Minute > end || e.Minute < 0 || !active.ContainsKey(e.ClubId)) continue;
             Advance(e.Minute);
             if (!complete && e.PrimaryPlayerId is Guid known && players.TryGetValue(known, out var p) && !appearances.ContainsKey(known)
-                && e.EventType is MatchEventType.Goal or MatchEventType.YellowCard or MatchEventType.SecondYellowRedCard or MatchEventType.DirectRedCard or MatchEventType.Substitution)
+                && e.EventType is MatchEventType.Goal or MatchEventType.YellowCard or MatchEventType.SecondYellowRedCard or MatchEventType.DirectRedCard or MatchEventType.Substitution or MatchEventType.Injury)
                 appearances.Add(known, new(new(known, e.IsOwnGoal ? (e.ClubId == m.HomeClubId ? m.AwayClubId : m.HomeClubId) : e.ClubId, p.Position, p.Strength, false)) { Played = true });
             appearances.TryGetValue(e.PrimaryPlayerId ?? Guid.Empty, out var a);
             switch (e.EventType)
@@ -140,8 +140,8 @@ public static class PlayerStatisticsEngine
                 case MatchEventType.DirectRedCard:
                     if (a != null) { a.Red++; active[e.ClubId].Remove(a.Snapshot.PlayerId); }
                     break;
-                case MatchEventType.Injury when m.ForceRulesVersion == ClassicForceEvolutionEngine.Version || m.Discipline.KickoffCaptured:
-                    if (a != null) active[e.ClubId].Remove(a.Snapshot.PlayerId);
+                case MatchEventType.Injury:
+                    if (a != null) { a.Injuries = 1; if (m.ForceRulesVersion == ClassicForceEvolutionEngine.Version || m.Discipline.KickoffCaptured) active[e.ClubId].Remove(a.Snapshot.PlayerId); }
                     break;
                 case MatchEventType.Substitution:
                     if (e.SecondaryPlayerId is Guid outgoing) active[e.ClubId].Remove(outgoing);
@@ -158,6 +158,8 @@ public static class PlayerStatisticsEngine
             goalsComplete = false;
             Warn(w, $"Temporada {m.SeasonNumber}: placar e eventos de gols divergentes; não foram inventados autores ou gols sofridos.");
         }
+        foreach (var injuredId in m.HomeInjuredInMatchIds.Concat(m.AwayInjuredInMatchIds))
+            if (appearances.TryGetValue(injuredId, out var injApp)) injApp.Injuries = 1;
         EnsureIndex(w);
         foreach (var a in appearances.Values.Where(x => x.Played))
         {
@@ -176,7 +178,7 @@ public static class PlayerStatisticsEngine
             bucket.MatchesPlayed++; bucket.GoalsScored += a.Goals; bucket.GoalsConceded += a.Conceded;
             bucket.Assists += a.Assists;
             bucket.HasIncompleteAssists |= !assistsComplete;
-            bucket.YellowCards += a.Yellow; bucket.RedCards += a.Red; bucket.MinutesPlayed += a.Minutes;
+            bucket.YellowCards += a.Yellow; bucket.RedCards += a.Red; bucket.Injuries += a.Injuries; bucket.MinutesPlayed += a.Minutes;
             bucket.HasIncompleteAppearances |= !complete;
             bucket.HasIncompleteGoals |= !goalsComplete;
         }
@@ -271,13 +273,74 @@ public static class PlayerStatisticsEngine
         if (!string.IsNullOrWhiteSpace(employmentName)) return employmentName!;
         return "Clube histórico indisponível";
     }
+    public sealed record PlayerPanelStatisticsSnapshot(
+        int CareerMatches,
+        int SeasonGoals,
+        int SeasonAssists,
+        DivisionTier? CurrentDivisionTier,
+        string? CurrentDivisionDisplay,
+        int CurrentDivisionGoals,
+        int CurrentDivisionAssists,
+        Dictionary<string, int> DivisionGoals,
+        Dictionary<string, int> DivisionAssists,
+        int CareerGoals,
+        int CareerAssists,
+        int CareerRedCards,
+        int CareerInjuries);
+
+    public static PlayerPanelStatisticsSnapshot GetPanelStatistics(GameWorld? w, Player p, DivisionTier? clubDivision = null)
+    {
+        if (w != null)
+        {
+            EnsureMigrated(w);
+            DisciplineEngine.EnsureMigrated(w);
+        }
+        DivisionTier? division = clubDivision ?? (p.ClubId is Guid cid && w != null ? w.Clubs.FirstOrDefault(c => c.Id == cid)?.DivisionTier : null);
+        string? divisionDisplay = division?.ToDisplayPt();
+        var stats = w?.PlayerStatistics.Where(s => s.PlayerId == p.Id).ToList() ?? [];
+        int currentSeason = w?.SeasonNumber ?? 1;
+        int careerMatches = Math.Max(p.CareerMatches, stats.Sum(s => s.MatchesPlayed));
+        int seasonGoals = Math.Max(p.SeasonGoals + p.CupGoals, stats.Where(s => s.Season == currentSeason).Sum(s => s.GoalsScored));
+        int seasonAssists = stats.Where(s => s.Season == currentSeason).Sum(s => s.Assists);
+        var divisionGoals = new Dictionary<string, int>();
+        var divisionAssists = new Dictionary<string, int>();
+        foreach (var tier in Enum.GetValues<DivisionTier>())
+        {
+            var divStats = stats.Where(s => s.CompetitionType == CompetitionType.League && s.Division == tier).ToList();
+            divisionGoals[tier.ToString()] = divStats.Sum(s => s.GoalsScored);
+            divisionAssists[tier.ToString()] = divStats.Sum(s => s.Assists);
+        }
+        int currentDivisionGoals = division is DivisionTier d ? divisionGoals.GetValueOrDefault(d.ToString(), 0) : 0;
+        int currentDivisionAssists = division is DivisionTier d2 ? divisionAssists.GetValueOrDefault(d2.ToString(), 0) : 0;
+        int careerGoals = Math.Max(p.CareerGoals, stats.Sum(s => s.GoalsScored));
+        int careerAssists = stats.Sum(s => s.Assists);
+        int disciplineReds = p.TotalDirectRedCards + p.TotalSecondYellowDismissals + p.UnclassifiedHistoricalRedCards;
+        int cardHistoryReds = p.CardHistory.Count(c => c.Card is MatchEventType.DirectRedCard or MatchEventType.SecondYellowRedCard);
+        int statsReds = stats.Sum(s => s.RedCards);
+        int careerRedCards = Math.Max(Math.Max(disciplineReds, cardHistoryReds), Math.Max(p.SeasonReds, statsReds));
+        var injuryMatchIds = new HashSet<Guid>(p.ForceInjuries.Where(i => i.MatchId != Guid.Empty).Select(i => i.MatchId));
+        if (w != null)
+        {
+            foreach (var m in w.Fixtures.Where(m => m.HomeInjuredInMatchIds.Contains(p.Id) || m.AwayInjuredInMatchIds.Contains(p.Id) || m.Events.Any(e => e.EventType == MatchEventType.Injury && e.PrimaryPlayerId == p.Id)))
+                injuryMatchIds.Add(m.Id);
+        }
+        var appliedMatchIds = stats.SelectMany(s => s.AppliedMatchIds).ToHashSet();
+        int bucketInjuries = stats.Sum(s => Math.Max(s.Injuries, s.AppliedMatchIds.Count(id => injuryMatchIds.Contains(id))));
+        int unappliedMatchInjuries = injuryMatchIds.Count(id => !appliedMatchIds.Contains(id));
+        int unlinkedForceInjuries = p.ForceInjuries.Count(i => i.MatchId == Guid.Empty);
+        int careerInjuries = bucketInjuries + unappliedMatchInjuries + unlinkedForceInjuries;
+        return new(careerMatches, seasonGoals, seasonAssists, division, divisionDisplay, currentDivisionGoals, currentDivisionAssists,
+            divisionGoals, divisionAssists, careerGoals, careerAssists, careerRedCards, careerInjuries);
+    }
+
     public static PlayerHistoryDto? GetHistory(GameWorld w, Guid playerId)
     {
         EnsureMigrated(w);var p=w.Players.FirstOrDefault(p=>p.Id==playerId);if(p==null)return null;
         var total=Totals(w,"general",null).FirstOrDefault(t=>t.Player.Id==playerId)??new(p,0,0,0,0,0,0,false);
         var row=Row(w,total,0,"scorers");
+        var panel=GetPanelStatistics(w,p);
         return HistoryEngine.EnrichPlayer(w,new(row,row,w.PlayerStatistics.Where(s=>s.PlayerId==playerId).OrderByDescending(s=>s.Season).ThenBy(s=>s.CompetitionType).ThenBy(s=>s.ClubId)
-            .Select(s=>new PlayerStatisticsRowDto(s.Season,s.CompetitionType,s.Division,s.ClubId,s.MatchesPlayed,s.GoalsScored,s.GoalsConceded,s.YellowCards,s.RedCards,s.MinutesPlayed,s.HasIncompleteAppearances,s.HasIncompleteGoals,ResolveHistoricalClubName(w,s.ClubId,s.ClubName)){Assists=s.Assists,HasIncompleteAssists=s.HasIncompleteAssists}).ToList(),
+            .Select(s=>new PlayerStatisticsRowDto(s.Season,s.CompetitionType,s.Division,s.ClubId,s.MatchesPlayed,s.GoalsScored,s.GoalsConceded,s.YellowCards,s.RedCards,s.MinutesPlayed,s.HasIncompleteAppearances,s.HasIncompleteGoals,ResolveHistoricalClubName(w,s.ClubId,s.ClubName)){Assists=s.Assists,HasIncompleteAssists=s.HasIncompleteAssists,Injuries=s.Injuries}).ToList(),
             w.SeasonTopScorerAwards.Where(a=>a.PlayerId==playerId).OrderByDescending(a=>a.Season).Select(AwardDto).ToList(),w.PlayerStatisticsCoverageWarnings.Concat(w.DisciplineCoverageWarnings).Distinct().ToList())
         {
             StrengthHistory = w.PlayerStrengthHistory.Where(e => e.PlayerId == playerId)
@@ -285,7 +348,21 @@ public static class PlayerStatisticsEngine
             StrengthHistoryStartSeason = w.PlayerStrengthHistoryStartSeason,
             StrengthHistoryStartRound = w.PlayerStrengthHistoryStartRound,
             CardHistory = p.CardHistory.ToList(),
-            SuspensionHistory = p.SuspensionHistory.ToList()
+            SuspensionHistory = p.SuspensionHistory.ToList(),
+            CurrentSeason = w.SeasonNumber,
+            CurrentDivisionTier = panel.CurrentDivisionTier,
+            CurrentDivisionDisplay = panel.CurrentDivisionDisplay,
+            CareerMatches = panel.CareerMatches,
+            SeasonGoals = panel.SeasonGoals,
+            SeasonAssists = panel.SeasonAssists,
+            CurrentDivisionGoals = panel.CurrentDivisionGoals,
+            CurrentDivisionAssists = panel.CurrentDivisionAssists,
+            DivisionGoals = panel.DivisionGoals,
+            DivisionAssists = panel.DivisionAssists,
+            CareerGoals = panel.CareerGoals,
+            CareerAssists = panel.CareerAssists,
+            CareerRedCards = panel.CareerRedCards,
+            CareerInjuries = panel.CareerInjuries
         });
     }
     private static PlayerAwardDto AwardDto(SeasonTopScorerAward a)=>new(a.AwardId,a.PlayerId,a.DisplayName,a.Season,a.TotalGoals,a.TotalMatches,a.ClubId,a.ClubNameAtClose,a.AwardAmount,a.AwardGrantedAt,a.IdempotencyKey);

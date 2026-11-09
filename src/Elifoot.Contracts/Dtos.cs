@@ -250,6 +250,16 @@ public record PlayerDto(
     public int SuspensionMatchesRemaining { get; init; }
     public string? SuspensionReason { get; init; }
     public DateOnly? InjuryRecoveryDate { get; init; }
+    public int SeasonAssists { get; init; }
+    public int CareerAssists { get; init; }
+    public DivisionTier? CurrentDivisionTier { get; init; }
+    public string? CurrentDivisionDisplay { get; init; }
+    public int CurrentDivisionGoals { get; init; }
+    public int CurrentDivisionAssists { get; init; }
+    public Dictionary<string, int> DivisionGoals { get; init; } = new();
+    public Dictionary<string, int> DivisionAssists { get; init; } = new();
+    public int CareerRedCards { get; init; }
+    public int CareerInjuries { get; init; }
 }
 
 public record ClubDetailDto(

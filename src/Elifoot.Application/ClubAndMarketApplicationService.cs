@@ -100,6 +100,7 @@ public sealed partial class ClubAndMarketApplicationService
     public static PlayerDto MapPlayerDto(Player p, string? clubName, GameWorld? world=null)
     {
         decimal fair = MarketAndEconomyEngine.CalculateFairValue(p);
+        var panel = PlayerStatisticsEngine.GetPanelStatistics(world, p);
         return new PlayerDto(
             Id: p.Id,
             ClubId: p.ClubId,
@@ -120,10 +121,10 @@ public sealed partial class ClubAndMarketApplicationService
             InjuryRoundsRemaining: p.InjuryRoundsRemaining,
             SuspensionRoundsRemaining: p.SuspensionRoundsRemaining,
             YellowCardsAccumulated: p.YellowCardsAccumulated,
-            SeasonGoals: p.SeasonGoals + p.CupGoals,
+            SeasonGoals: panel.SeasonGoals,
             SeasonMatches: p.SeasonMatches,
-            CareerGoals: p.CareerGoals,
-            CareerMatches: p.CareerMatches,
+            CareerGoals: panel.CareerGoals,
+            CareerMatches: panel.CareerMatches,
             PhotoUrl: p.PhotoUrl,
             PhotoLicense: p.PhotoLicense,
             PhotoCredit: p.PhotoCredit)
@@ -139,7 +140,17 @@ public sealed partial class ClubAndMarketApplicationService
             TotalYellowCards = p.TotalYellowCards, YellowCardsInCurrentCycle = p.YellowCardsInCurrentCycle,
             TotalDirectRedCards = p.TotalDirectRedCards, TotalSecondYellowDismissals = p.TotalSecondYellowDismissals,
             SuspensionMatchesRemaining = p.SuspensionMatchesRemaining, SuspensionReason = p.SuspensionReason,
-            InjuryRecoveryDate = p.InjuryDaysRemaining > 0 ? p.ForceInjuries.LastOrDefault()?.EndDate : null
+            InjuryRecoveryDate = p.InjuryDaysRemaining > 0 ? p.ForceInjuries.LastOrDefault()?.EndDate : null,
+            SeasonAssists = panel.SeasonAssists,
+            CareerAssists = panel.CareerAssists,
+            CurrentDivisionTier = panel.CurrentDivisionTier,
+            CurrentDivisionDisplay = panel.CurrentDivisionDisplay,
+            CurrentDivisionGoals = panel.CurrentDivisionGoals,
+            CurrentDivisionAssists = panel.CurrentDivisionAssists,
+            DivisionGoals = panel.DivisionGoals,
+            DivisionAssists = panel.DivisionAssists,
+            CareerRedCards = panel.CareerRedCards,
+            CareerInjuries = panel.CareerInjuries
         };
     }
 

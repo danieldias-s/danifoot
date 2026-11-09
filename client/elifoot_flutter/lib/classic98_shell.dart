@@ -40,6 +40,410 @@ extension _Classic98Shell on _ElifootShellScreenState {
       .where((p) => '${p['id']}' == _classicSelectedPlayerId)
       .firstOrNull;
 
+  void _selectClassicPlayer(String? playerId) {
+    final normalized = playerId?.trim();
+    if (normalized == null || normalized.isEmpty) {
+      setState(() {
+        _classicSelectedPlayerId = null;
+        _classicSelectedPlayerHistory = null;
+        _classicPlayerStatsRequestSeq++;
+      });
+      return;
+    }
+    setState(() {
+      _classicSelectedPlayerId = normalized;
+      final cachedId =
+          '${_classicSelectedPlayerHistory?['playerId'] ?? (_classicSelectedPlayerHistory?['career'] as Map?)?['playerId'] ?? ''}';
+      if (cachedId != normalized) {
+        _classicSelectedPlayerHistory = null;
+      }
+    });
+    unawaited(_loadClassicSelectedPlayerHistory(normalized));
+  }
+
+  Future<void> _loadClassicSelectedPlayerHistory(String playerId) async {
+    final worldId = _worldId;
+    if (worldId == null || playerId.isEmpty) return;
+    final requestSeq = ++_classicPlayerStatsRequestSeq;
+    try {
+      final history = await widget.apiClient.getPlayerHistory(
+        worldId,
+        playerId,
+      );
+      if (!mounted ||
+          _worldId != worldId ||
+          _classicSelectedPlayerId != playerId ||
+          _classicPlayerStatsRequestSeq != requestSeq) {
+        return;
+      }
+      setState(() {
+        _classicSelectedPlayerHistory = history;
+      });
+    } catch (_) {
+      // Fallback to PlayerDto statistics if history endpoint is unavailable.
+    }
+  }
+
+  String _normalizeClassicDivisionTier(dynamic raw) {
+    final v = '${raw ?? ''}'.trim();
+    return switch (v) {
+      'PrimeiraDivisao' ||
+      '1' ||
+      '1ª Divisão' ||
+      '1a Divisão' ||
+      '1ª Divisao' => 'PrimeiraDivisao',
+      'SegundaDivisao' ||
+      '2' ||
+      '2ª Divisão' ||
+      '2a Divisão' ||
+      '2ª Divisao' => 'SegundaDivisao',
+      'TerceiraDivisao' ||
+      '3' ||
+      '3ª Divisão' ||
+      '3a Divisão' ||
+      '3ª Divisao' => 'TerceiraDivisao',
+      'QuartaDivisao' ||
+      '4' ||
+      '4ª Divisão' ||
+      '4a Divisão' ||
+      '4ª Divisao' => 'QuartaDivisao',
+      'Distrital' || '5' || 'Divisão Distrital' => 'Distrital',
+      _ => '',
+    };
+  }
+
+  String _classicDivisionDisplayFromTier(String tier, [String? fallback]) {
+    return switch (tier) {
+      'PrimeiraDivisao' => '1ª Divisão',
+      'SegundaDivisao' => '2ª Divisão',
+      'TerceiraDivisao' => '3ª Divisão',
+      'QuartaDivisao' => '4ª Divisão',
+      'Distrital' => 'Divisão Distrital',
+      _ =>
+        (fallback != null && fallback.trim().isNotEmpty)
+            ? fallback.trim()
+            : '4ª Divisão',
+    };
+  }
+
+  bool _isClassicLeagueCompetition(dynamic raw) {
+    if (raw == null) return true;
+    final v = '$raw'.trim();
+    return v == 'League' || v == '0' || v == 'Campeonato Nacional';
+  }
+
+  List<(String, int)> _retroPlayerPanelStats(Map<String, dynamic> player) {
+    final id = '${player['id']}';
+    final h = _classicSelectedPlayerHistory;
+    final historyPlayerId =
+        '${h?['playerId'] ?? (h?['career'] as Map?)?['playerId'] ?? ''}';
+    final validHistory = h != null && historyPlayerId == id ? h : null;
+    final careerRow = validHistory?['career'] is Map
+        ? Map<String, dynamic>.from(validHistory!['career'] as Map)
+        : null;
+    final rows = (validHistory?['rows'] as List? ?? const [])
+        .whereType<Map>()
+        .map((r) => Map<String, dynamic>.from(r))
+        .toList();
+
+    final clubDivRaw =
+        _myClubDetail?['divisionTier'] ??
+        _myClubDetail?['divisionDisplay'] ??
+        validHistory?['currentDivisionTier'] ??
+        validHistory?['currentDivisionDisplay'] ??
+        player['currentDivisionTier'] ??
+        player['currentDivisionDisplay'];
+    final divisionTier = _normalizeClassicDivisionTier(clubDivRaw);
+    final divisionDisplay = _classicDivisionDisplayFromTier(
+      divisionTier,
+      (_myClubDetail?['divisionDisplay'] ??
+              validHistory?['currentDivisionDisplay'] ??
+              player['currentDivisionDisplay'])
+          ?.toString(),
+    );
+
+    int asInt(dynamic v) => v is num ? v.toInt() : int.tryParse('$v') ?? 0;
+    int maxOf(Iterable<int> values) =>
+        values.fold<int>(0, (acc, v) => v > acc ? v : acc);
+
+    final currentSeason =
+        (_snapshot?['seasonNumber'] as num?)?.toInt() ??
+        (validHistory?['currentSeason'] as num?)?.toInt() ??
+        1;
+
+    final rowsMatches = rows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['matchesPlayed']),
+    );
+    final careerMatches = maxOf([
+      asInt(validHistory?['careerMatches']),
+      asInt(player['careerMatches']),
+      asInt(careerRow?['matchesPlayed']),
+      rowsMatches,
+    ]);
+
+    final seasonRows = rows
+        .where((r) => asInt(r['season']) == currentSeason)
+        .toList();
+    final rowsSeasonGoals = seasonRows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['goalsScored']),
+    );
+    final dtoSeasonGoals =
+        asInt(player['seasonGoals']) + asInt(player['cupGoals']);
+    final seasonGoals = maxOf([
+      asInt(validHistory?['seasonGoals']),
+      dtoSeasonGoals,
+      rowsSeasonGoals,
+    ]);
+
+    final rowsSeasonAssists = seasonRows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['assists']),
+    );
+    final seasonAssists = maxOf([
+      asInt(validHistory?['seasonAssists']),
+      asInt(player['seasonAssists']),
+      rowsSeasonAssists,
+    ]);
+
+    int mapDivisionStat(dynamic rawMap, String tier) {
+      if (rawMap is! Map || tier.isEmpty) return 0;
+      for (final entry in rawMap.entries) {
+        if (_normalizeClassicDivisionTier(entry.key) == tier) {
+          return asInt(entry.value);
+        }
+      }
+      return 0;
+    }
+
+    final divisionRows = divisionTier.isEmpty
+        ? const <Map<String, dynamic>>[]
+        : rows
+              .where(
+                (r) =>
+                    _isClassicLeagueCompetition(r['competitionType']) &&
+                    _normalizeClassicDivisionTier(r['division']) ==
+                        divisionTier,
+              )
+              .toList();
+    final rowsDivisionGoals = divisionRows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['goalsScored']),
+    );
+    final rowsDivisionAssists = divisionRows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['assists']),
+    );
+
+    final playerTier = _normalizeClassicDivisionTier(
+      player['currentDivisionTier'] ?? player['currentDivisionDisplay'],
+    );
+    final historyTier = _normalizeClassicDivisionTier(
+      validHistory?['currentDivisionTier'] ??
+          validHistory?['currentDivisionDisplay'],
+    );
+
+    final currentDivisionGoals = maxOf([
+      mapDivisionStat(validHistory?['divisionGoals'], divisionTier),
+      mapDivisionStat(player['divisionGoals'], divisionTier),
+      if (historyTier == divisionTier)
+        asInt(validHistory?['currentDivisionGoals']),
+      if (playerTier == divisionTier) asInt(player['currentDivisionGoals']),
+      rowsDivisionGoals,
+    ]);
+
+    final currentDivisionAssists = maxOf([
+      mapDivisionStat(validHistory?['divisionAssists'], divisionTier),
+      mapDivisionStat(player['divisionAssists'], divisionTier),
+      if (historyTier == divisionTier)
+        asInt(validHistory?['currentDivisionAssists']),
+      if (playerTier == divisionTier) asInt(player['currentDivisionAssists']),
+      rowsDivisionAssists,
+    ]);
+
+    final rowsCareerGoals = rows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['goalsScored']),
+    );
+    final careerGoals = maxOf([
+      asInt(validHistory?['careerGoals']),
+      asInt(player['careerGoals']),
+      asInt(careerRow?['goalsScored']),
+      rowsCareerGoals,
+    ]);
+
+    final rowsCareerAssists = rows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['assists']),
+    );
+    final careerAssists = maxOf([
+      asInt(validHistory?['careerAssists']),
+      asInt(player['careerAssists']),
+      asInt(careerRow?['assists']),
+      rowsCareerAssists,
+    ]);
+
+    final rowsRedCards = rows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['redCards']),
+    );
+    final cardHistoryReds =
+        (validHistory?['cardHistory'] as List? ??
+                player['cardHistory'] as List? ??
+                const [])
+            .whereType<Map>()
+            .where((c) {
+              final card = '${c['card'] ?? c['eventType'] ?? ''}';
+              return card == 'DirectRedCard' ||
+                  card == 'SecondYellowRedCard' ||
+                  card == '2' ||
+                  card == '3';
+            })
+            .length;
+    final disciplineReds =
+        asInt(player['totalDirectRedCards']) +
+        asInt(player['totalSecondYellowDismissals']) +
+        asInt(player['unclassifiedHistoricalRedCards']);
+    final careerRedCards = maxOf([
+      asInt(validHistory?['careerRedCards']),
+      asInt(player['careerRedCards']),
+      asInt(careerRow?['redCards']),
+      rowsRedCards,
+      cardHistoryReds,
+      disciplineReds,
+      asInt(player['seasonReds']),
+    ]);
+
+    final rowsInjuries = rows.fold<int>(
+      0,
+      (sum, r) => sum + asInt(r['injuries']),
+    );
+    final forceInjuriesCount = (player['forceInjuries'] as List?)?.length ?? 0;
+    final careerInjuries = maxOf([
+      asInt(validHistory?['careerInjuries']),
+      asInt(player['careerInjuries']),
+      rowsInjuries,
+      forceInjuriesCount,
+    ]);
+
+    return [
+      ('Jogos (carreira):', careerMatches),
+      ('Gols (temporada):', seasonGoals),
+      ('Assistências (temporada):', seasonAssists),
+      ('Gols na $divisionDisplay:', currentDivisionGoals),
+      ('Assistências na $divisionDisplay:', currentDivisionAssists),
+      ('Gols (total):', careerGoals),
+      ('Assistências (total):', careerAssists),
+      ('Cartões vermelhos:', careerRedCards),
+      ('Lesões (total):', careerInjuries),
+    ];
+  }
+
+  Widget _retroPlayerDataPanel({bool mobile = false}) {
+    final player = _retroSelected;
+    return RetroSection(
+      key: const Key('retro-player-data-panel'),
+      title: 'Dados do Jogador',
+      padding: EdgeInsets.all(mobile ? 7 : 8),
+      child: player == null
+          ? Container(
+              key: const Key('retro-player-data-empty'),
+              padding: EdgeInsets.symmetric(
+                horizontal: mobile ? 8 : 10,
+                vertical: mobile ? 10 : 12,
+              ),
+              decoration: BoxDecoration(
+                color: ClassicColors.creamBox,
+                border: Border.all(color: ClassicColors.border, width: 1.2),
+              ),
+              child: Text(
+                'Selecione um jogador para ver seus dados.',
+                style: TextStyle(
+                  fontSize: mobile ? 14 : 15,
+                  fontWeight: FontWeight.w600,
+                  color: ClassicColors.rosterBlack,
+                ),
+              ),
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: mobile ? 8 : 9,
+                    vertical: mobile ? 5 : 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: ClassicColors.creamBox,
+                    border: Border.all(color: ClassicColors.border, width: 1.2),
+                  ),
+                  child: ClassicPlayerNameText(
+                    formatClassicPlayerName(player),
+                    key: const Key('classic-player-data-name'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: mobile ? 16.5 : 18.5,
+                      fontWeight: FontWeight.w900,
+                      color: ClassicColors.rosterBlack,
+                      height: 1.1,
+                    ),
+                  ),
+                ),
+                SizedBox(height: mobile ? 3 : 4),
+                for (final (idx, stat)
+                    in _retroPlayerPanelStats(player).indexed)
+                  Container(
+                    key: ValueKey('classic-player-stat-row-$idx'),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 2,
+                      vertical: mobile ? 2.5 : 2.5,
+                    ),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: ClassicColors.border,
+                          width: 0.8,
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            stat.$1,
+                            key: ValueKey('classic-player-stat-label-$idx'),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: mobile ? 13.5 : 14.5,
+                              fontWeight: FontWeight.w700,
+                              color: ClassicColors.rosterBlack,
+                              height: 1.15,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          '${stat.$2}',
+                          key: ValueKey('classic-player-stat-value-$idx'),
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: mobile ? 14 : 15,
+                            fontWeight: FontWeight.w900,
+                            color: ClassicColors.rosterBlack,
+                            height: 1.15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+    );
+  }
+
   void _retroOpen(String page, [int index = 0]) {
     if (_matchLocked) return;
     if (page == 'bank' || page == 'stadium') _statusBanner = null;
@@ -100,7 +504,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         IconButton(
           key: ValueKey('retro-role-$id'),
           tooltip:
-              '${player['displayName'] ?? player['name']}: $role — clique para ${starter
+              '${formatClassicPlayerName(player)}: $role — clique para ${starter
                   ? 'Reserva'
                   : reserve
                   ? 'Fora dos relacionados'
@@ -180,12 +584,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
         _selectedFormation = formation;
       }
       _statusBanner =
-          '${player['displayName'] ?? player['name']}: ${role == 'starter'
+          '${formatClassicPlayerName(player)}: ${role == 'starter'
               ? 'titular'
               : role == 'reserve'
               ? 'reserva'
               : 'fora dos relacionados'}. ${_tacticsSelectionError ?? 'Escalação pronta para enviar.'}';
     });
+    _selectClassicPlayer(id);
   }
 
   List<(String, VoidCallback?)> _retroMenu(String menu) {
@@ -871,7 +1276,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
         for (final p in squad)
           [
             '${_retroRole(p)} ${_formatPosition(p['position'])}',
-            '${p['displayName'] ?? p['name']}${p['isStar'] == true && !'${p['displayName']}'.contains('*') ? '*' : ''}',
+            formatClassicPlayerName(p),
             '${p['strength']}',
             _retroBehavior(p),
             formatClassicMoney(p['salaryPerRound']),
@@ -880,8 +1285,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
       selected: squad.indexWhere(
         (p) => '${p['id']}' == _classicSelectedPlayerId,
       ),
-      onSelect: (i) =>
-          setState(() => _classicSelectedPlayerId = '${squad[i]['id']}'),
+      onSelect: (i) => _selectClassicPlayer('${squad[i]['id']}'),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1026,6 +1430,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
           if (mobile) ...[
             roster,
             const SizedBox(height: 6),
+            _retroPlayerDataPanel(mobile: true),
             _retroSummary(mobile: true),
           ] else
             Row(
@@ -1033,7 +1438,13 @@ extension _Classic98Shell on _ElifootShellScreenState {
               children: [
                 Expanded(flex: 7, child: roster),
                 const SizedBox(width: 14),
-                Expanded(flex: 4, child: _retroSummary()),
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [_retroPlayerDataPanel(), _retroSummary()],
+                  ),
+                ),
               ],
             ),
         ],
@@ -1081,13 +1492,14 @@ extension _Classic98Shell on _ElifootShellScreenState {
     final state = _snapshot?['roundState'];
     final morale = me?['morale'] ?? _invitationsData?['morale'];
     return RetroSection(
+      key: const Key('retro-next-opponent-panel'),
       title: 'Próximo adversário',
-      padding: EdgeInsets.all(mobile ? 8 : 10),
+      padding: EdgeInsets.all(mobile ? 8 : 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            padding: EdgeInsets.all(mobile ? 7 : 10),
+            padding: EdgeInsets.all(mobile ? 7 : 8),
             decoration: BoxDecoration(
               color: ClassicColors.creamBox,
               border: Border.all(color: ClassicColors.border, width: 1.2),
@@ -1098,7 +1510,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 Text(
                   '${opponent ?? 'A definir'}',
                   style: TextStyle(
-                    fontSize: mobile ? 18 : 21,
+                    fontSize: mobile ? 18 : 20,
                     fontWeight: FontWeight.w900,
                     color: ClassicColors.rosterBlack,
                   ),
@@ -1110,7 +1522,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                       ? 'Casa'
                       : 'Fora'} • Rodada $round',
                   style: TextStyle(
-                    fontSize: mobile ? 13.5 : 15,
+                    fontSize: mobile ? 13.5 : 14.5,
                     fontWeight: FontWeight.w600,
                     color: ClassicColors.rosterBlack,
                   ),
@@ -1118,40 +1530,40 @@ extension _Classic98Shell on _ElifootShellScreenState {
               ],
             ),
           ),
-          SizedBox(height: mobile ? 5 : 10),
+          SizedBox(height: mobile ? 5 : 6),
           Text(
             'Divisão: ${club?['divisionDisplay'] ?? 'Sem clube'}',
             style: TextStyle(
-              fontSize: mobile ? 14.5 : 17,
+              fontSize: mobile ? 14.5 : 16,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: mobile ? 2 : 4),
+          SizedBox(height: mobile ? 2 : 3),
           Text(
             'Rodada: $round • ${classicCompetition(_snapshot?['competitionType'])}',
             style: TextStyle(
-              fontSize: mobile ? 14 : 16,
+              fontSize: mobile ? 14 : 15,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: mobile ? 4 : 8),
+          SizedBox(height: mobile ? 4 : 5),
           Text(
             'Caixa: ${club == null ? '—' : formatClassicMoney(club['cashBalance'])}',
             style: TextStyle(
-              fontSize: mobile ? 18 : 21,
+              fontSize: mobile ? 18 : 20,
               fontWeight: FontWeight.w900,
               color: ClassicColors.rosterBlack,
             ),
           ),
-          SizedBox(height: mobile ? 4 : 8),
+          SizedBox(height: mobile ? 4 : 5),
           Text(
             'Moral: ${morale ?? 'A definir'}',
             style: TextStyle(
-              fontSize: mobile ? 14 : 16,
+              fontSize: mobile ? 14 : 15,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: mobile ? 3 : 4),
+          SizedBox(height: mobile ? 3 : 3),
           Container(
             decoration: BoxDecoration(
               color: ClassicColors.creamBox,
@@ -1159,12 +1571,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
             ),
             child: LinearProgressIndicator(
               value: morale is num ? (morale / 100).clamp(0, 1).toDouble() : 0,
-              minHeight: mobile ? 12 : 16,
+              minHeight: mobile ? 12 : 14,
               color: ClassicColors.moraleGreen,
               backgroundColor: ClassicColors.creamBox,
             ),
           ),
-          SizedBox(height: mobile ? 8 : 14),
+          SizedBox(height: mobile ? 8 : 8),
           if (state != 'RESULTS')
             KeyedSubtree(
               key: const Key('retro-match-action'),
@@ -1248,6 +1660,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
                           .map(
                             (p) => {
                               ...p,
+                              'name': cleanClassicPlayerName(p),
+                              'displayName': formatClassicPlayerName(p),
                               'position': _formatPosition(p['position']),
                             },
                           )
@@ -1256,8 +1670,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                     ),
                     shirt: const Color(0xFFEEEEEE),
                     ink: Colors.black,
-                    onPlayer: (p) =>
-                        setState(() => _classicSelectedPlayerId = '${p['id']}'),
+                    onPlayer: (p) => _selectClassicPlayer('${p['id']}'),
                   ),
                 ),
               ),
@@ -1310,7 +1723,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             SimpleDialogOption(
               onPressed: () => Navigator.pop(ctx, '${p['id']}'),
               child: Text(
-                '${p['displayName']} (${_formatPosition(p['position'])})',
+                '${formatClassicPlayerName(p)} (${_formatPosition(p['position'])})',
               ),
             ),
         ],
@@ -1346,7 +1759,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               for (final p in bench)
                 [
                   _formatPosition(p['position']),
-                  '${p['displayName']}',
+                  formatClassicPlayerName(p),
                   '${p['strength']}',
                   _retroBehavior(p),
                   formatClassicMoney(p['salaryPerRound']),
@@ -1355,8 +1768,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             selected: bench.indexWhere(
               (p) => '${p['id']}' == _classicSelectedPlayerId,
             ),
-            onSelect: (i) =>
-                setState(() => _classicSelectedPlayerId = '${bench[i]['id']}'),
+            onSelect: (i) => _selectClassicPlayer('${bench[i]['id']}'),
           ),
           const SizedBox(height: 10),
           if (_retroSelected != null &&
@@ -1398,8 +1810,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            '${p['displayName']}',
+          ClassicPlayerNameText(
+            formatClassicPlayerName(p),
             style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),

@@ -20,6 +20,7 @@ public class PlayerCompetitionStatistics
     public int GoalsConceded { get; set; }
     public int YellowCards { get; set; }
     public int RedCards { get; set; }
+    public int Injuries { get; set; }
     public int MinutesPlayed { get; set; }
     public bool HasIncompleteAppearances { get; set; }
     public bool HasIncompleteGoals { get; set; }

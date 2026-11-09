@@ -25,6 +25,105 @@ abstract final class ClassicColors {
   static const Color bevelDark = Color(0xFF404040);
 }
 
+bool isClassicStarPlayer(Map p) {
+  if (p['isStar'] == true) return true;
+  final display = '${p['displayName'] ?? ''}'.trim();
+  final name = '${p['name'] ?? ''}'.trim();
+  return display.endsWith('*') ||
+      display.endsWith('★') ||
+      display.startsWith('★') ||
+      name.endsWith('*') ||
+      name.endsWith('★') ||
+      name.startsWith('★');
+}
+
+String cleanClassicPlayerName(Map p) {
+  final raw = '${p['name'] ?? p['displayName'] ?? ''}'.trim();
+  return raw
+      .replaceFirst(RegExp(r'^[★*]+\s*'), '')
+      .replaceFirst(RegExp(r'(\s*[★*]+)+$'), '')
+      .trim();
+}
+
+String formatClassicPlayerName(Map p) {
+  final base = cleanClassicPlayerName(p);
+  if (base.isEmpty) return '';
+  return isClassicStarPlayer(p) ? '$base ★' : base;
+}
+
+class ClassicPlayerNameText extends Text {
+  final Color starColor;
+
+  const ClassicPlayerNameText(
+    super.data, {
+    super.key,
+    super.style,
+    super.textAlign,
+    super.overflow,
+    super.maxLines,
+    super.softWrap,
+    this.starColor = ClassicColors.softGold,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final raw = data ?? '';
+    if (!raw.endsWith(' ★')) {
+      return super.build(context);
+    }
+    final baseName = raw.substring(0, raw.length - 2);
+    final defaultTextStyle = DefaultTextStyle.of(context);
+    var effectiveTextStyle = style;
+    if (style == null || style!.inherit) {
+      effectiveTextStyle = defaultTextStyle.style.merge(style);
+    }
+    if (MediaQuery.boldTextOf(context)) {
+      effectiveTextStyle = effectiveTextStyle!.merge(
+        const TextStyle(fontWeight: FontWeight.bold),
+      );
+    }
+    final scaler = textScaler ?? MediaQuery.textScalerOf(context);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: RichText(
+            textAlign:
+                textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start,
+            softWrap: softWrap ?? defaultTextStyle.softWrap,
+            overflow:
+                overflow ??
+                effectiveTextStyle?.overflow ??
+                defaultTextStyle.overflow,
+            maxLines: maxLines ?? defaultTextStyle.maxLines,
+            textScaler: scaler,
+            text: TextSpan(style: effectiveTextStyle, text: baseName),
+          ),
+        ),
+        RichText(
+          maxLines: 1,
+          softWrap: false,
+          textScaler: scaler,
+          text: TextSpan(
+            style: effectiveTextStyle?.copyWith(
+              color: starColor,
+              fontWeight: FontWeight.bold,
+              fontFamilyFallback: const [
+                'Segoe UI Symbol',
+                'Segoe UI',
+                'Arial Unicode MS',
+                'Noto Sans Symbols',
+                'sans-serif',
+              ],
+            ),
+            text: ' ★',
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 /// Official typography tokens for VERSÃO CLÁSSICA (ANTIGA).
 abstract final class ClassicTypography {
   static const String fontFamily = 'ClassicCondensed';
@@ -93,6 +192,17 @@ ThemeData classic98Theme({ClassicTheme? current}) {
     canvasColor: palette.surface,
     cardColor: palette.surface,
     dividerColor: palette.border,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ClassicColors.actionGreen,
+        foregroundColor: Colors.white,
+        textStyle: const TextStyle(
+          fontFamily: ClassicTypography.fontFamily,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
   );
 }
 
@@ -574,6 +684,26 @@ class RetroTable extends StatelessWidget {
                             ),
                           ),
                         ],
+                      )
+                    : !header && cells[i].endsWith(' ★')
+                    ? ClassicPlayerNameText(
+                        cells[i],
+                        maxLines: darkRoster ? 1 : 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: rightAlignedColumns.contains(i)
+                            ? TextAlign.right
+                            : centerAlignedColumns.contains(i)
+                            ? TextAlign.center
+                            : TextAlign.left,
+                        style: TextStyle(
+                          color: ink,
+                          fontSize: compactRoster
+                              ? (header ? 12.5 : 13)
+                              : (header ? 15 : 15.5),
+                          fontWeight: header || isSelected
+                              ? FontWeight.bold
+                              : FontWeight.w500,
+                        ),
                       )
                     : Text(
                         cells[i],
