@@ -140,16 +140,27 @@ public static class WorldCreatorEngine
         }
         if (request.DistrictMode != DistrictFillMode.Manual)
         {
-            var remaining = ordered.Where(c => !used.Contains(c.Key)).ToList();
-            if (request.DistrictMode == DistrictFillMode.Random)
-            {
-                var rng = new DeterministicRng(request.Seed);
-                for (int i = remaining.Count - 1; i > 0; i--)
-                { int j = rng.NextInt(0, i + 1); (remaining[i], remaining[j]) = (remaining[j], remaining[i]); }
-            }
-            Fill(5, remaining);
+            Fill(5, OrderDistrictCandidates(request, ordered.Where(c => !used.Contains(c.Key)), request.DistrictMode));
         }
         if (assigned.Count(c => c.Division == 5) != 96) errors.Add("Distritais precisam de exatamente 96 clubes.");
+        errors.AddRange(SnapshotClubIssues(request, assigned));
+        if (assigned.SelectMany(c => c.Club.Players).Any(p => p.IdentityOrigin == CatalogDataOrigin.Generated)) warnings.Add("Complemento de atletas fictícios autorizado; não são jogadores reais importados.");
+        if (assigned.Any(c => c.Club.IsFictional)) warnings.Add("Complemento fictício autorizado nesta configuração.");
+        var byDivision = assigned.OrderBy(c => c.Division);
+        var result = request.PreserveRankedSquadStrengths && !request.FictionalOnly
+            ? ApplyRankedSquadStrengths(byDivision, ordered, request.Seed)
+            : InitialSquadStrength017B.Apply(byDivision, request.Seed);
+        var usedReferences = result.SelectMany(c => c.Club.References).DistinctBy(r => r.SnapshotId).ToList();
+        string hash = SnapshotHash(request, result, usedReferences);
+        return new(Guid.NewGuid(), request.Name, request.Gender, request.Seed, result,
+            Math.Max(0, 128 - result.Count), errors.Distinct().ToList(), warnings.Distinct().ToList(),
+            usedReferences, DateTime.UtcNow, hash,request.DataMode,request.DataMode==null?null:asOf,
+            request.DataMode==null?null:PlayableWorldPolicy.Summary(request,selection,result,asOf));
+    }
+
+    private static List<string> SnapshotClubIssues(WorldCreatorRequest request, List<WorldPreviewClub> assigned)
+    {
+        var errors = new List<string>();
         foreach (var item in assigned)
         {
             var c = item.Club;
@@ -170,27 +181,34 @@ public static class WorldCreatorEngine
         }
         foreach (var conflict in assigned.SelectMany(c => c.Club.IdentityConflicts ?? []).Distinct())
             if (assigned.Count(c => c.Club.IdentityConflicts?.Contains(conflict) == true) > 1) errors.Add("Identidades de equipes precisam de revisão antes de usar ambas no mesmo mundo.");
-        if (assigned.SelectMany(c => c.Club.Players).Any(p => p.IdentityOrigin == CatalogDataOrigin.Generated)) warnings.Add("Complemento de atletas fictícios autorizado; não são jogadores reais importados.");
-        if (assigned.Any(c => c.Club.IsFictional)) warnings.Add("Complemento fictício autorizado nesta configuração.");
-        var byDivision = assigned.OrderBy(c => c.Division);
-        var result = request.PreserveRankedSquadStrengths && !request.FictionalOnly
-            ? ApplyRankedSquadStrengths(byDivision, ordered, request.Seed)
-            : InitialSquadStrength017B.Apply(byDivision, request.Seed);
-        var usedReferences = result.SelectMany(c => c.Club.References).DistinctBy(r => r.SnapshotId).ToList();
-        string hash = SnapshotHash(request, result, usedReferences);
-        return new(Guid.NewGuid(), request.Name, request.Gender, request.Seed, result,
-            Math.Max(0, 128 - result.Count), errors.Distinct().ToList(), warnings.Distinct().ToList(),
-            usedReferences, DateTime.UtcNow, hash,request.DataMode,request.DataMode==null?null:asOf,
-            request.DataMode==null?null:PlayableWorldPolicy.Summary(request,selection,result,asOf));
+        return errors;
     }
 
     private static string SnapshotHash(WorldCreatorRequest request, List<WorldPreviewClub> result, List<CatalogReference> references) =>
         Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { request, result, References = references })));
 
+    private static List<EligibleCatalogClub> OrderDistrictCandidates(WorldCreatorRequest request,
+        IEnumerable<EligibleCatalogClub> candidates, DistrictFillMode mode)
+    {
+        var ordered = request.UseWorldCatalogRules && request.CatalogYears == null
+            ? WorldCatalogRules016B.Order(candidates)
+            : candidates.OrderBy(club => club.Rank ?? int.MaxValue).ThenBy(club => club.Key, StringComparer.Ordinal).ToList();
+        if (mode == DistrictFillMode.Random)
+        {
+            var rng = new DeterministicRng(request.Seed);
+            for (int i = ordered.Count - 1; i > 0; i--)
+            { int j = rng.NextInt(0, i + 1); (ordered[i], ordered[j]) = (ordered[j], ordered[i]); }
+        }
+        return ordered;
+    }
+
     private static void ValidateRosterGeneration(WorldCreatorRequest request)
     {
         if (request.CatalogYears is { } years &&
-            (years.Count == 0 || years.Any(string.IsNullOrWhiteSpace) || years.Distinct(StringComparer.Ordinal).Count() != years.Count))
+            (years.Count == 0 || years.Any(year => !int.TryParse(year, System.Globalization.NumberStyles.None,
+                System.Globalization.CultureInfo.InvariantCulture, out var value) || value <= 0 ||
+                year != value.ToString(System.Globalization.CultureInfo.InvariantCulture)) ||
+             years.Distinct(StringComparer.Ordinal).Count() != years.Count))
             throw new ArgumentException("Selecione anos do catálogo sem repetição.");
         if (request.CatalogYears != null && request.DataMode == null)
             throw new ArgumentException("Escolha a origem dos elencos.");
@@ -210,25 +228,83 @@ public static class WorldCreatorEngine
             : entry).ToList();
     }
 
-    public static GameWorld Create(WorldCreatorRequest request, WorldCreatorPreview preview)
+    /// <summary>Moves only the frozen variants already reviewed by the coach; never regenerates a roster or ranking.</summary>
+    public static (WorldCreatorRequest Request, WorldCreatorPreview Preview) Reassign(WorldCreatorRequest request,
+        WorldCreatorPreview preview, WorldCreatorReassignRequest command)
+    {
+        ValidatePreparedPreview(request, preview);
+        var assignments = command.Assignments;
+        if (assignments == null || assignments.Count != 128 ||
+            assignments.Any(a => a == null || string.IsNullOrWhiteSpace(a.ClubKey) || a.Division is < 1 or > 5) ||
+            assignments.Select(a => a.ClubKey).Distinct(StringComparer.Ordinal).Count() != 128)
+            throw new ArgumentException("A troca deve manter os mesmos 128 clubes, sem repetições ou vagas vazias.");
+        var original = preview.Clubs.ToDictionary(entry => entry.Club.Key, StringComparer.Ordinal);
+        if (assignments.Any(assignment => !original.ContainsKey(assignment.ClubKey)))
+            throw new ArgumentException("A troca contém um clube que não pertence a esta prévia.");
+        if (command.DistrictMode is { } districtMode)
+        {
+            if (!Enum.IsDefined(districtMode)) throw new ArgumentException("Modo distrital inválido.");
+            if (districtMode != DistrictFillMode.Manual)
+            {
+                using var districtOrder = OrderDistrictCandidates(request,
+                    assignments.Where(assignment => assignment.Division == 5).Select(assignment => original[assignment.ClubKey].Club),
+                    districtMode).Select(club => club.Key).GetEnumerator();
+                assignments = assignments.Select(assignment =>
+                    assignment.Division == 5 && districtOrder.MoveNext()
+                        ? assignment with { ClubKey = districtOrder.Current }
+                        : assignment).ToList();
+            }
+        }
+        var updatedRequest = request with
+        {
+            Name = command.Name?.Trim() ?? request.Name,
+            MaxHumans = command.MaxHumans ?? request.MaxHumans,
+            Mode = WorldAssemblyMode.Custom,
+            DistrictMode = DistrictFillMode.Manual,
+            FillRemainingDivisions = false,
+            PreserveRankedSquadStrengths = true,
+            Assignments = assignments.ToList()
+        };
+        // Stable ordering within each division is the position selected in the UI.
+        var clubs = assignments.OrderBy(assignment => assignment.Division)
+            .Select(assignment => original[assignment.ClubKey] with { Division = assignment.Division }).ToList();
+        var updated = preview with
+        {
+            DraftId = Guid.NewGuid(), Name = updatedRequest.Name, Clubs = clubs,
+            DataHash = SnapshotHash(updatedRequest, clubs, preview.References)
+        };
+        ValidatePreparedPreview(updatedRequest, updated);
+        return (updatedRequest, updated);
+    }
+
+    private static void ValidatePreparedPreview(WorldCreatorRequest request, WorldCreatorPreview preview)
     {
         ValidateRosterGeneration(request);
+        if (string.IsNullOrWhiteSpace(request.Name) || request.Name.Length > 160 || request.MaxHumans is < 1 or > 8 ||
+            !Enum.IsDefined(request.Gender) || !Enum.IsDefined(request.Mode) || !Enum.IsDefined(request.DistrictMode) ||
+            request.DataMode is { } dataMode && !Enum.IsDefined(dataMode) ||
+            request.Countries == null || request.Countries.Count == 0 || request.UseWorldCatalogRules && request.Countries.Count > 8 ||
+            request.Countries.Any(string.IsNullOrWhiteSpace) || request.Countries.Distinct(StringComparer.Ordinal).Count() != request.Countries.Count)
+            throw new ArgumentException("Revise o nome, os países, a categoria e a quantidade de treinadores.");
+        if (request.UseWorldCatalogRules && request.GameModeId != "CLASSIC_SYNC")
+            throw new ArgumentException("Somente o modo clássico sincronizado está implementado.");
         if (preview.DataMode != request.DataMode) throw new ArgumentException("Modo de dados difere da prévia persistida.");
         if (preview.Errors.Count > 0 || preview.PendingSlots != 0 || preview.Clubs.Count != 128)
             throw new ArgumentException("Resolva as vagas e os elencos antes de confirmar.");
-        if (request.CatalogYears != null &&
-            (preview.Clubs.Any(entry => !HistoricalCatalogPolicy.MatchesScope(request, entry.Club)) ||
-             preview.Clubs.Select(entry => entry.Club.Key).Distinct(StringComparer.Ordinal).Count() != preview.Clubs.Count))
+        if (preview.Name != request.Name || preview.Seed != request.Seed || preview.Gender != request.Gender)
+            throw new ArgumentException("Nome, categoria ou seed difere da prévia.");
+        if (preview.Clubs.Any(entry => entry.Division is < 1 or > 5) ||
+            Enumerable.Range(1, 5).Any(division => preview.Clubs.Count(entry => entry.Division == division) != (division == 5 ? 96 : 8)))
+            throw new ArgumentException("A prévia precisa de quatro divisões com 8 clubes e 96 distritais.");
+        if (preview.Clubs.Any(entry => !HistoricalCatalogPolicy.MatchesScope(request, entry.Club)) ||
+            preview.Clubs.Select(entry => entry.Club.Key).Distinct(StringComparer.Ordinal).Count() != preview.Clubs.Count)
             throw new ArgumentException("A prévia contém versões repetidas ou fora dos países e anos selecionados.");
-        if ((!request.PreserveRankedSquadStrengths || request.FictionalOnly) &&
-            preview.Clubs.Any(c => c.Division is >= 1 and <= 4 && c.InitialSquadReference == null))
-        {
-            var clubs = InitialSquadStrength017B.Apply(preview.Clubs, request.Seed);
-            preview = preview with { Clubs = clubs, DataHash = SnapshotHash(request, clubs, preview.References) };
-        }
+        var issues = SnapshotClubIssues(request, preview.Clubs);
+        if (issues.Count > 0) throw new ArgumentException(string.Join("; ", issues.Distinct()));
         if(request.DataMode!=null)
         {
-            if(preview.Seed!=request.Seed || preview.Gender!=request.Gender) throw new ArgumentException("Categoria ou seed difere da prévia.");
+            if (request.CatalogYears == null && preview.DataAsOf == null)
+                throw new ArgumentException("A prévia não informa a data de referência dos elencos.");
             foreach(var entry in preview.Clubs)
             {
                 if(PlayableWorldPolicy.Fictional(entry.Club) && (request.DataMode!=WorldDataMode.FREE_WORLD || !request.AllowFictionalTeams))
@@ -249,6 +325,17 @@ public static class WorldCreatorEngine
                         throw new ArgumentException("Atleta sem vínculo atual verificado no elenco inicial.");
                 }
             }
+        }
+    }
+
+    public static GameWorld Create(WorldCreatorRequest request, WorldCreatorPreview preview)
+    {
+        ValidatePreparedPreview(request, preview);
+        if (!request.PreserveRankedSquadStrengths &&
+            preview.Clubs.Any(c => c.Division is >= 1 and <= 4 && c.InitialSquadReference == null))
+        {
+            var clubs = InitialSquadStrength017B.Apply(preview.Clubs, request.Seed);
+            preview = preview with { Clubs = clubs, DataHash = SnapshotHash(request, clubs, preview.References) };
         }
         var world = WorldSeedFactory.CreateSeededWorld(request.Name, request.Seed, 128, request.MaxHumans,
             forceEvolutionMode: ForceEvolutionMode.ClassicAdapted);

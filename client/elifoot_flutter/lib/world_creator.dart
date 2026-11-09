@@ -1,16 +1,19 @@
 import 'dart:math';
+import 'dart:convert';
 
 import 'club_theme.dart';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
 import 'custom_assembly_editor.dart';
 import 'classic_match_board.dart';
-import 'catalog_provenance.dart';
 import 'creator_divisions.dart';
 import 'creator_district_list.dart';
 import 'creator_districts.dart';
 import 'creator_roster_sources.dart';
 import 'creator_visual.dart';
+import 'creator_club_placement.dart';
+import 'creator_division_picker.dart';
+import 'creator_world_review.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
   final ElifootApiClient api;
@@ -52,6 +55,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   List<String?> _divisionSlots = List.filled(32, null);
   List<String?> _automaticSlots = List.filled(32, null);
   Map<String, dynamic>? _last, _preview;
+  Map<String, dynamic>? _reviewDraft;
+  String? _reviewScope;
   static const _steps = [
     'Categoria',
     'Países',
@@ -69,6 +74,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   static const _districtsStep = 4;
   static const _sourcesStep = 5;
   static const _previewStep = 6;
+  static const _confirmStep = 7;
   @override
   void initState() {
     super.initState();
@@ -111,6 +117,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _assembly = null;
     _clubs = [];
     _preview = null;
+    _reviewDraft = null;
+    _reviewScope = null;
     _rosterProblem = null;
     _repairUnavailableAssignments = keepPlacement;
     if (keepPlacement) return;
@@ -301,6 +309,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   Future<void> _catalog() async {
+    if (_hasReviewDraft) return;
     final data = Map<String, dynamic>.from(
       await _call(
             'catalog',
@@ -332,14 +341,175 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       if (mounted) setState(() => _applyAssembly(data));
       return;
     }
+    if (_hasReviewDraft) {
+      await _saveReviewPlacement(
+        _currentReviewPlacement,
+        keepDistrictMode: true,
+      );
+      return;
+    }
     final data = Map<String, dynamic>.from(
       await _call('preview', body: _request()) as Map,
     );
-    if (mounted) setState(() => _preview = data);
+    if (mounted) {
+      setState(() {
+        _preview = data;
+        if (_validPreview) _adoptReviewPlacement(data, keepDistrictMode: true);
+      });
+    }
+  }
+
+  // Placement changes use the server's existing snapshot. This includes its
+  // generated clubs and strengths; revisiting a step never regenerates them.
+  String get _reviewScopeKey => jsonEncode({
+    'gender': _gender,
+    'countries': _countries.toList()..sort(),
+    'years': _orderedYears,
+    'seed': _seed,
+    'generatedPlayers': _generateAllRosterPlayers,
+  });
+
+  bool get _hasReviewDraft =>
+      _reviewDraft != null && _reviewScope == _reviewScopeKey;
+
+  List<Map<String, dynamic>> get _reviewClubs => _maps(
+    _reviewDraft?['clubs'],
+  ).map((entry) => Map<String, dynamic>.from(entry['club'] as Map)).toList();
+
+  CreatorClubPlacement get _currentReviewPlacement {
+    final byKey = {for (final club in _reviewClubs) club['key']: club};
+    final districts = _hasReviewDraft || _district == 'Manual'
+        ? _districtClubs.toList()
+        : _reviewClubs
+              .where((club) => !_divisionSlots.contains(club['key']))
+              .map((club) => club['key'].toString())
+              .toList();
+    return CreatorClubPlacement.fromPreview([
+      for (final (index, key) in _divisionSlots.indexed)
+        {'division': index ~/ 8 + 1, 'club': byKey[key]},
+      for (final key in districts) {'division': 5, 'club': byKey[key]},
+    ]);
+  }
+
+  void _adoptReviewPlacement(
+    Map<String, dynamic> data, {
+    bool keepDistrictMode = false,
+  }) {
+    final placement = CreatorClubPlacement.fromPreview(_maps(data['clubs']));
+    _reviewDraft = data;
+    _reviewScope = _reviewScopeKey;
+    _divisionSlots = placement.divisions
+        .take(4)
+        .expand((keys) => keys)
+        .toList();
+    if (!keepDistrictMode) _district = 'Manual';
+    _districtClubs
+      ..clear()
+      ..addAll(placement.divisions[4]);
+    _preview = data;
+  }
+
+  Future<void> _saveReviewPlacement(
+    CreatorClubPlacement placement, {
+    bool keepDistrictMode = false,
+    String? districtMode,
+  }) async {
+    final draft = _reviewDraft ?? _preview;
+    if (draft == null) {
+      throw Exception('Atualize a prévia antes de trocar clubes.');
+    }
+    final data = Map<String, dynamic>.from(
+      await _call(
+            'preview/${draft['draftId']}/reassign',
+            body: {
+              'assignments': placement.assignments,
+              'name': _name.text.trim(),
+              'maxHumans': _humans,
+              'districtMode': ?districtMode,
+            },
+          )
+          as Map,
+    );
+    try {
+      CreatorClubPlacement.fromPreview(_maps(data['clubs']));
+    } on FormatException {
+      if (mounted) setState(() => _preview = data);
+      rethrow;
+    }
+    if (mounted) {
+      setState(() {
+        if (districtMode != null) _district = districtMode;
+        _adoptReviewPlacement(data, keepDistrictMode: keepDistrictMode);
+      });
+    }
+  }
+
+  void _chooseDistrictMode(String mode) {
+    if (!_hasReviewDraft) {
+      setState(() {
+        _district = mode;
+        _preview = null;
+      });
+    } else if (mode == 'Manual') {
+      setState(() => _district = mode);
+    } else {
+      _run(
+        () => _saveReviewPlacement(
+          _currentReviewPlacement,
+          districtMode: mode,
+          keepDistrictMode: true,
+        ),
+      );
+    }
+  }
+
+  Future<void> _pickReviewClub(String clubKey) async {
+    if (_busy || _preview == null) return;
+    final entries = _maps(_preview!['clubs']);
+    final clubs = [
+      for (final entry in entries)
+        {
+          ...Map<String, dynamic>.from(entry['club'] as Map),
+          'name': _catalogClubName(entry['club'] as Map),
+        },
+    ];
+    final current = clubs.where((club) => club['key'] == clubKey).firstOrNull;
+    if (current == null) return;
+    final picked = await showCreatorDivisionPicker(
+      context,
+      divisions: [
+        for (var division = 1; division <= 4; division++)
+          [
+            for (final entry in entries)
+              if (entry['division'] == division)
+                clubs.firstWhere(
+                  (club) => club['key'] == (entry['club'] as Map)['key'],
+                ),
+          ],
+      ],
+      districtClubs: [
+        for (final entry in entries)
+          if (entry['division'] == 5)
+            clubs.firstWhere(
+              (club) => club['key'] == (entry['club'] as Map)['key'],
+            ),
+      ],
+      eligibleClubs: clubs,
+      currentClub: current,
+      assignedOnly: true,
+    );
+    if (!mounted || _busy || picked == null) return;
+    await _run(
+      () => _saveReviewPlacement(
+        CreatorClubPlacement.fromPreview(entries).swap(clubKey, picked),
+      ),
+    );
   }
 
   void _applyAssembly(Map<String, dynamic> data) {
     _assembly = data;
+    _reviewDraft = null;
+    _reviewScope = null;
     _gender = data['gender'].toString();
     _seed = (data['seed'] as num?)?.toInt() ?? _seed;
     _countries
@@ -451,8 +621,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     (entry) => entry.$2 != _automaticSlots[entry.$1],
   );
 
-  List<Map<String, dynamic>> get _eligibleClubs =>
-      _clubs.where(_clubAllowed).toList();
+  List<Map<String, dynamic>> get _eligibleClubs => _hasReviewDraft
+      ? _reviewClubs
+            .map((club) => {...club, 'name': _catalogClubName(club)})
+            .toList()
+      : _clubs.where(_clubAllowed).toList();
 
   String _catalogClubName(Map club) {
     final name = club['name'].toString();
@@ -517,6 +690,16 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   void _swapDivisionClub(int division, int position, String key) {
     final target = division * 8 + position;
+    if (_hasReviewDraft) {
+      final current = _divisionSlots[target];
+      if (current != null && !_busy) {
+        _run(
+          () =>
+              _saveReviewPlacement(_currentReviewPlacement.swap(current, key)),
+        );
+      }
+      return;
+    }
     final previous = _divisionSlots.indexOf(key);
     setState(() {
       if (previous >= 0) _divisionSlots[previous] = _divisionSlots[target];
@@ -527,7 +710,34 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   void _restoreDivisions() => setState(() {
+    if (_hasReviewDraft &&
+        !_automaticSlots.whereType<String>().every(
+          _reviewClubs.map((club) => club['key'].toString()).toSet().contains,
+        )) {
+      _reviewDraft = null;
+      _reviewScope = null;
+    }
     _divisionSlots = List.of(_automaticSlots);
+    if (_hasReviewDraft) {
+      final retained = _divisionSlots.whereType<String>().toSet();
+      final remaining = _reviewClubs
+          .map((club) => club['key'].toString())
+          .where((key) => !retained.contains(key))
+          .iterator;
+      for (var index = 0; index < _divisionSlots.length; index++) {
+        if (_divisionSlots[index] == null && remaining.moveNext()) {
+          _divisionSlots[index] = remaining.current;
+        }
+      }
+      _district = 'Manual';
+      _districtClubs
+        ..clear()
+        ..addAll(
+          _reviewClubs
+              .map((club) => club['key'].toString())
+              .where((key) => !_divisionSlots.contains(key)),
+        );
+    }
     _districtClubs.removeWhere(_divisionSlots.contains);
     _preview = null;
   });
@@ -791,13 +1001,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       availableCount: available.length,
       divisionCount: _divisionSlots.length ~/ 8,
       mode: _fictionalOnly ? 'Ranking' : _district,
-      onModeChanged: _busy || _fictionalOnly
-          ? null
-          : (mode) => setState(() {
-              _district = mode;
-              _preview = null;
-              _error = '';
-            }),
+      onModeChanged: _busy || _fictionalOnly ? null : _chooseDistrictMode,
       notice: problem != null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -838,115 +1042,47 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     );
   }
 
-  Widget _dataCounts(Map<String, dynamic>? summary) {
-    if (summary == null) return const SizedBox.shrink();
-    return Text(
-      '${summary['verifiedRealClubs']} versões de clubes no catálogo local\n'
-      '${summary['completeRealSquads']} elencos reais completos • ${summary['incompleteRealSquads']} incompletos • ${summary['missingClubSlots']} vagas a completar no catálogo',
-    );
-  }
-
-  String _rosterLabel(Map club) {
-    final generated = (club['players'] as List? ?? [])
-        .where(
-          (p) =>
-              p['playerOrigin'] == 'FICTIONAL_GENERATED' ||
-              p['identityOrigin'] == 'Generated',
-        )
-        .length;
-    final verified =
-        (club['verification'] as Map?)?['status'] == 'REAL_CLUB_VERIFIED';
-    return verified && generated > 0
-        ? 'CLUBE REAL — ELENCO SIMULADO'
-        : club['isFictional'] == true
-        ? 'CLUBE FICTÍCIO — ELENCO SIMULADO'
-        : 'Confira a origem de cada atleta';
-  }
-
-  Widget _previewPanel() {
+  Widget _previewPanel({bool confirmation = false}) {
     if (_assembly != null) return _assemblyPanel();
-    final p = _preview;
-    if (p == null) {
-      return const Text('Gere a prévia para conferir clubes e elencos.');
+    final preview = _preview;
+    if (preview == null) {
+      return const Text('Atualize a prévia para conferir clubes e elencos.');
     }
-    final clubs = _maps(p['clubs']);
-    final summary = p['dataSummary'] is Map
-        ? Map<String, dynamic>.from(p['dataSummary'] as Map)
-        : null;
-    final clubCount = Text(
-      '${clubs.length}/$_worldCapacity clubes • ${p['pendingSlots']} vagas pendentes',
-    );
-    final names = {
-      for (final country in _options) country['code']: country['name'],
-    };
-    final contextSummary = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('${_name.text} • Anos do catálogo ${_orderedYears.join(', ')}'),
-        Text(
-          'Países: ${_countries.map((code) => names[code] ?? code).join(', ')}',
-        ),
-        Text(
-          _fictionalOnly
-              ? 'Mundo totalmente fictício autorizado.'
-              : _generateAllRosterPlayers
-              ? 'Elencos totalmente fictícios autorizados.'
-              : 'Elencos reais completos.',
-        ),
-      ],
-    );
-    final details = [
-      for (final e in p['errors'] as List? ?? [])
-        Text(e.toString(), style: const TextStyle(color: Colors.orangeAccent)),
-      for (final w in p['warnings'] as List? ?? [])
-        Text(w.toString(), style: const TextStyle(color: Colors.amber)),
-    ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        contextSummary,
-        clubCount,
-        _dataCounts(summary),
-        if (p['dataAsOf'] != null) Text('Prévia validada em ${p['dataAsOf']}'),
-        if (summary != null)
-          Text(
-            '${summary['selectedRealClubs']} clubes do catálogo selecionados • ${summary['selectedFictionalClubs']} fictícios • ${summary['realCurrentPlayers']} jogadores do catálogo • ${summary['generatedPlayers']} fictícios gerados',
-          ),
-        if (details.isNotEmpty)
-          ExpansionTile(
-            initiallyExpanded: (p['errors'] as List? ?? []).isNotEmpty,
-            title: const Text('Avisos e pendências da prévia'),
-            children: details,
-          ),
-        for (int d = 1; d <= 5; d++)
-          ExpansionTile(
-            title: Text(
-              '${d == 5 ? 'DISTRITAIS' : 'DIV$d'} • ${clubs.where((c) => c['division'] == d).length}/${d == 5 ? 96 : 8}',
-            ),
-            children: clubs
-                .where((c) => c['division'] == d)
-                .map(
-                  (c) => ExpansionTile(
-                    title: Text(_catalogClubName(c['club'] as Map)),
-                    subtitle: Text(
-                      '${_rosterLabel(c['club'] as Map)} • ${((c['club'] as Map)['players'] as List).length} atletas',
-                    ),
-                    children: [
-                      catalogClubStatus(
-                        Map<String, dynamic>.from(c['club'] as Map),
-                      ),
-                      catalogRankingLabel(
-                        Map<String, dynamic>.from(c['club'] as Map),
-                      ),
-                      ..._maps(
-                        (c['club'] as Map)['players'],
-                      ).map(catalogPlayerRow),
-                    ],
-                  ),
-                )
-                .toList(),
-          ),
-      ],
+    return CreatorWorldReview(
+      preview: {
+        ...preview,
+        'errors': {
+          ...preview['errors'] as List? ?? [],
+          ?_previewStructureProblem,
+        }.toList(),
+        'clubs': [
+          for (final entry in _maps(preview['clubs']))
+            {
+              ...entry,
+              'club': {
+                ...Map<String, dynamic>.from(entry['club'] as Map),
+                'name': _catalogClubName(entry['club'] as Map),
+              },
+            },
+        ],
+      },
+      worldName: _name.text.trim(),
+      years: _orderedYears,
+      countries: {
+        for (final option in _options)
+          if (_countries.contains(option['code']))
+            option['code'].toString(): option['name'].toString(),
+      },
+      rosterMode: _generateAllRosterPlayers ? 'Fictício' : 'Real',
+      maxHumans: _humans,
+      synchronized: widget.worldCatalogRules,
+      confirmation: confirmation,
+      busy: _busy,
+      onRefresh: _busy ? null : () => _run(_makePreview),
+      onEditDivisions: _busy
+          ? null
+          : () => setState(() => _step = _divisionsStep),
+      onSwapClub: _busy || !confirmation ? null : _pickReviewClub,
     );
   }
 
@@ -1206,7 +1342,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   void _chooseRosterOrigin(bool generated) => setState(() {
+    if (generated == _generateAllRosterPlayers) return;
     _generateAllRosterPlayers = generated;
+    if (_hasReviewDraft || _reviewDraft != null) {
+      _reviewDraft = null;
+      _reviewScope = null;
+      _repairUnavailableAssignments = true;
+      _reconcileDivisions();
+    }
     _rosterProblem = null;
     _error = '';
     _preview = null;
@@ -1287,67 +1430,33 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       case _sourcesStep:
         return _sourcesPanel();
       case _previewStep:
-        return Column(
-          children: [
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 12,
-              children: [
-                TextButton(
-                  onPressed: _busy ? null : () => _run(_makePreview),
-                  child: const Text('ATUALIZAR PRÉVIA'),
-                ),
-                if (_assembly == null)
-                  TextButton.icon(
-                    onPressed: _busy
-                        ? null
-                        : () => setState(() => _step = _divisionsStep),
-                    icon: const Icon(Icons.edit_outlined),
-                    label: const Text('EDITAR DIVISÕES'),
-                  ),
-              ],
-            ),
-            _previewPanel(),
-          ],
-        );
+        return _previewPanel();
       default:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _previewPanel(),
-            const Text(
-              'A confirmação copia os dados desta prévia para um mundo independente e salva sua configuração.',
-            ),
-            ElevatedButton(
-              onPressed: _busy || !_validPreview
-                  ? null
-                  : () => _run(() async {
-                      if (_assembly != null) {
-                        await _call(
-                          'assemblies/${_assembly!['id']}/confirm',
-                          body: {
-                            'idempotencyKey': _confirmationKey,
-                            'worldName': _name.text.trim(),
-                            'maxHumans': _humans,
-                            if (widget.worldCatalogRules) ...{
-                              'requireHostStart': true,
-                              'gameModeId': 'CLASSIC_SYNC',
-                            },
-                          },
-                        );
-                      } else {
-                        await _call(
-                          'confirm/${_preview!['draftId']}',
-                          body: {},
-                        );
-                      }
-                      if (mounted) Navigator.pop(context, true);
-                    }),
-              child: const Text('CONFIRMAR CRIAÇÃO'),
-            ),
-          ],
-        );
+        return _previewPanel(confirmation: true);
     }
+  }
+
+  Future<void> _confirm() async {
+    if (_busy || !_validPreview) return;
+    await _run(() async {
+      if (_assembly != null) {
+        await _call(
+          'assemblies/${_assembly!['id']}/confirm',
+          body: {
+            'idempotencyKey': _confirmationKey,
+            'worldName': _name.text.trim(),
+            'maxHumans': _humans,
+            if (widget.worldCatalogRules) ...{
+              'requireHostStart': true,
+              'gameModeId': 'CLASSIC_SYNC',
+            },
+          },
+        );
+      } else {
+        await _call('confirm/${_preview!['draftId']}', body: {});
+      }
+      if (mounted) Navigator.pop(context, true);
+    });
   }
 
   bool get _validPreview => _assembly != null
@@ -1355,7 +1464,42 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       : _preview != null &&
             (_preview!['errors'] as List?)?.isEmpty == true &&
             _preview!['pendingSlots'] == 0 &&
-            (_preview!['clubs'] as List?)?.length == _worldCapacity;
+            _previewStructureProblem == null;
+
+  String? get _previewStructureProblem {
+    if (_preview == null) return 'Atualize a prévia antes de continuar.';
+    if (_name.text.trim().isEmpty ||
+        _name.text.trim().length > 160 ||
+        _humans < 1 ||
+        _humans > 8 ||
+        _countries.isEmpty ||
+        _countries.length > _maxCountries ||
+        _years.isEmpty) {
+      return 'Revise o nome do mundo, os treinadores, os países e os anos selecionados.';
+    }
+    final entries = _maps(_preview!['clubs']);
+    try {
+      CreatorClubPlacement.fromPreview(entries);
+    } on FormatException catch (error) {
+      return error.message;
+    }
+    for (final entry in entries) {
+      final club = entry['club'] as Map;
+      if (!_countries.contains(club['countryCode']) ||
+          !_years.contains(club['season']?.toString())) {
+        return 'Há clubes fora dos países ou anos selecionados. Atualize a prévia.';
+      }
+      if (!_generateAllRosterPlayers &&
+          (club['players'] as List? ?? []).any(
+            (player) =>
+                player['playerOrigin'] == 'FICTIONAL_GENERATED' ||
+                player['identityOrigin'] == 'Generated',
+          )) {
+        return 'O modo real contém atletas fictícios. Revise a origem dos elencos.';
+      }
+    }
+    return null;
+  }
 
   String _invalidRosterPreview() {
     final count = (_preview?['clubs'] as List?)?.length ?? 0;
@@ -1416,6 +1560,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
     if (_step == _divisionsStep && _divisionProblem != null) return;
     if (_step == _districtsStep && _districtProblem != null) return;
+    if (_step == _previewStep && !_validPreview) {
+      throw Exception(
+        _previewStructureProblem ?? 'Resolva as pendências da prévia.',
+      );
+    }
     if (_step == _sourcesStep) {
       final problem = _divisionProblem ?? _districtProblem;
       if (problem != null) {
@@ -1469,30 +1618,44 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => CreatorFrame(
-    steps: _steps,
-    step: _step,
-    countryCount: _selectedCountryCount,
-    busy: _busy,
-    error: _error,
-    divisionSummary: _divisionSummary,
-    forceStadium: _step == _sourcesStep && _assembly == null,
-    stageDescription: _step == _districtsStep && _assembly == null
-        ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
-        : null,
-    nextLabel: _sourcesReturnStep != null ? 'APLICAR OPÇÕES' : 'CONTINUAR',
-    body: _body(),
-    back: _busy || _step == _categoryStep ? null : _back,
-    next:
-        _busy ||
-            (_step == _countriesStep && !_canAdvanceFromCountries) ||
-            (_step == _yearsStep &&
-                _assembly == null &&
-                (_yearsLoadFailed || _years.isEmpty)) ||
-            (_step == _divisionsStep && _divisionProblem != null) ||
-            (_step == _districtsStep && _districtProblem != null) ||
-            (_step == _previewStep && !_validPreview)
-        ? null
-        : _next,
-  );
+  Widget build(BuildContext context) {
+    final reviewStage = _step >= _previewStep;
+    final frame = CreatorFrame(
+      steps: _steps,
+      step: _step,
+      countryCount: _selectedCountryCount,
+      busy: _busy,
+      error: _error,
+      divisionSummary: _divisionSummary,
+      forceStadium: reviewStage || _step == _sourcesStep && _assembly == null,
+      stageDescription: _step == _districtsStep && _assembly == null
+          ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
+          : null,
+      nextLabel: _step == _confirmStep
+          ? 'CONFIRMAR CRIAÇÃO'
+          : _sourcesReturnStep != null
+          ? 'APLICAR OPÇÕES'
+          : 'CONTINUAR',
+      finalAction: _step == _confirmStep,
+      body: _body(),
+      back: _busy || _step == _categoryStep ? null : _back,
+      next:
+          _busy ||
+              (_step == _countriesStep && !_canAdvanceFromCountries) ||
+              (_step == _yearsStep &&
+                  _assembly == null &&
+                  (_yearsLoadFailed || _years.isEmpty)) ||
+              (_step == _divisionsStep && _divisionProblem != null) ||
+              (_step == _districtsStep && _districtProblem != null) ||
+              (_step >= _previewStep && !_validPreview)
+          ? null
+          : _step == _confirmStep
+          ? _confirm
+          : _next,
+    );
+    // Review and confirmation belong to the modern creator in both game skins.
+    return reviewStage
+        ? Theme(data: ClassicTheme.classicGreen().material(), child: frame)
+        : frame;
+  }
 }

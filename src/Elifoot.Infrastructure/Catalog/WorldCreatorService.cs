@@ -1,4 +1,7 @@
 using System.Globalization;
+using System.Collections.Concurrent;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using Elifoot.Application;
 using Elifoot.Contracts;
@@ -11,6 +14,7 @@ namespace Elifoot.Infrastructure.Catalog;
 public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyncService sync, IWorldRepository worlds,
     LocalHistoricalCatalog? localCatalog = null)
 {
+    private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> ConfirmationGates = new();
     public static readonly (string Code, string Name)[] PriorityCountries = [("BR", "Brasil"), ("AR", "Argentina"),
         ("GB", "Inglaterra"), ("ES", "Espanha"), ("DE", "Alemanha"), ("IT", "Itália"), ("FR", "França"), ("PT", "Portugal")];
 
@@ -324,6 +328,30 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             PreviewJson = JsonSerializer.Serialize(preview, CatalogImportCodec.Json), ExpiresAt = DateTime.UtcNow.AddHours(2) });
         await db.SaveChangesAsync(ct); return preview;
     }
+    public async Task<WorldCreatorPreview> Reassign(Guid owner, Guid draftId, WorldCreatorReassignRequest command, CancellationToken ct = default)
+    {
+        using var scope = factory.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        var source = await db.Drafts.AsNoTracking().SingleOrDefaultAsync(d => d.Id == draftId && d.OwnerId == owner, ct)
+            ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
+        if (source.ExpiresAt < DateTime.UtcNow) throw new ArgumentException("Prévia expirada; gere uma nova.");
+        if (source.WorldJson != null) throw new ArgumentException("Este mundo já foi criado. Inicie outra configuração para criar um novo.");
+        using var receiptType = JsonDocument.Parse(source.RequestJson);
+        if (receiptType.RootElement.TryGetProperty("assemblyConfirmation", out _))
+            throw new ArgumentException("Use o editor da montagem privada.");
+        var request = JsonSerializer.Deserialize<WorldCreatorRequest>(source.RequestJson, CatalogImportCodec.Json)!;
+        var preview = JsonSerializer.Deserialize<WorldCreatorPreview>(source.PreviewJson, CatalogImportCodec.Json)!;
+        var updated = WorldCreatorEngine.Reassign(request, preview, command);
+        db.Drafts.Add(new()
+        {
+            Id = updated.Preview.DraftId, OwnerId = owner,
+            RequestJson = JsonSerializer.Serialize(updated.Request, CatalogImportCodec.Json),
+            PreviewJson = JsonSerializer.Serialize(updated.Preview, CatalogImportCodec.Json),
+            ExpiresAt = DateTime.UtcNow.AddHours(2)
+        });
+        await db.SaveChangesAsync(ct);
+        return updated.Preview;
+    }
     public async Task<WorldCreatorRequest?> LastConfiguration(Guid owner, CancellationToken ct = default)
     {
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
@@ -332,7 +360,23 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
     }
     public async Task<GameWorld> Confirm(Guid owner, Guid draftId, CancellationToken ct = default)
     {
+        var gate = ConfirmationGates.GetOrAdd(draftId, _ => new SemaphoreSlim(1, 1));
+        await gate.WaitAsync(ct);
+        try
+        {
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+        // The databases are separate. A durable draft receipt keeps the same world ID on a retry;
+        // the advisory lock prevents two API processes from publishing its initial snapshot at once.
+        bool postgres = db.Database.IsNpgsql(), locked = false;
+        long lockKey = BitConverter.ToInt64(SHA256.HashData(Encoding.UTF8.GetBytes($"world-creator-confirm:{draftId:N}")));
+        try
+        {
+        if (postgres)
+        {
+            await db.Database.OpenConnectionAsync(ct);
+            await db.Database.ExecuteSqlInterpolatedAsync($"SELECT pg_advisory_lock({lockKey})", ct);
+            locked = true;
+        }
         var draft = await db.Drafts.AsNoTracking().SingleOrDefaultAsync(d => d.Id == draftId && d.OwnerId == owner, ct)
             ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
         if (draft.ExpiresAt < DateTime.UtcNow && draft.WorldJson == null) throw new ArgumentException("Prévia expirada; gere uma nova.");
@@ -361,5 +405,16 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         }
         await db.Database.ExecuteSqlInterpolatedAsync($"INSERT INTO \"wc013a_WorldCreationPreset\" (\"OwnerId\", \"RequestJson\", \"UpdatedAt\") VALUES ({owner}, {draft.RequestJson}, {DateTime.UtcNow}) ON CONFLICT (\"OwnerId\") DO UPDATE SET \"RequestJson\" = EXCLUDED.\"RequestJson\", \"UpdatedAt\" = EXCLUDED.\"UpdatedAt\"", ct);
         return world;
+        }
+        finally
+        {
+            if (postgres)
+            {
+                try { if (locked) await db.Database.ExecuteSqlInterpolatedAsync($"SELECT pg_advisory_unlock({lockKey})", CancellationToken.None); }
+                finally { await db.Database.CloseConnectionAsync(); }
+            }
+        }
+        }
+        finally { gate.Release(); }
     }
 }

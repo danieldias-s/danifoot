@@ -126,6 +126,8 @@ public static class WorldCreatorEndpoints
             Results.Ok(await service.SelectForWorld(request, ct)));
         group.MapGet("/last-configuration", async (HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.LastConfiguration(Owner(c), ct)));
         group.MapPost("/preview", async (WorldCreatorRequest request, HttpContext c, WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Preview(Owner(c), request, ct)));
+        group.MapPost("/preview/{draftId:guid}/reassign", async (Guid draftId, WorldCreatorReassignRequest request, HttpContext c, WorldCreatorService service, CancellationToken ct) =>
+            Results.Ok(await service.Reassign(Owner(c), draftId, request, ct)));
         group.MapPost("/confirm/{draftId:guid}", async (Guid draftId, HttpContext c, WorldCreatorService service, CancellationToken ct) =>
         {
             var world = await service.Confirm(Owner(c), draftId, ct);

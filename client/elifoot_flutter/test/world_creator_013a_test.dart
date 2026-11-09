@@ -213,9 +213,21 @@ void main() {
         await tester.pumpAndSettle();
         await next();
         expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
-        expect(find.text('128/128 clubes • 0 vagas pendentes'), findsOneWidget);
-        expect(find.text('DISTRITAIS • 96/96'), findsOneWidget);
-        final warnings = find.text('Avisos e pendências da prévia');
+        expect(
+          find.descendant(
+            of: find.byKey(const ValueKey('review-summary-clubs')),
+            matching: find.text('128'),
+          ),
+          findsOneWidget,
+        );
+        expect(
+          find.descendant(
+            of: find.byKey(const ValueKey('review-division-count-5')),
+            matching: find.text('96/96'),
+          ),
+          findsOneWidget,
+        );
+        final warnings = find.text('AVISOS IMPORTANTES');
         await tester.ensureVisible(warnings);
         await tester.tap(warnings);
         await tester.pumpAndSettle();

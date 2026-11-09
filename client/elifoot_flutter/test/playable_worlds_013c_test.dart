@@ -211,7 +211,13 @@ void main() {
       expect(generated['countries'], strict['countries']);
       expect(generated['assignments'], strict['assignments']);
       expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
-      expect(find.textContaining('128/128 clubes'), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('review-summary-clubs')),
+          matching: find.text('128'),
+        ),
+        findsOneWidget,
+      );
       expect(find.textContaining('2304 fictícios gerados'), findsOneWidget);
     });
   }
@@ -276,7 +282,13 @@ void main() {
           {'clubKey': 'real-test-$i', 'division': i ~/ 8 + 1},
       ]);
       expect(find.text('7/8 • PRÉVIA'), findsOneWidget);
-      expect(find.textContaining('128/128 clubes'), findsOneWidget);
+      expect(
+        find.descendant(
+          of: find.byKey(const ValueKey('review-summary-clubs')),
+          matching: find.text('128'),
+        ),
+        findsOneWidget,
+      );
       expect(tester.takeException(), isNull);
     });
   }

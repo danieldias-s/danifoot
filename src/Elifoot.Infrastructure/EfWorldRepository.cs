@@ -101,7 +101,6 @@ public sealed class EfWorldRepository : IWorldRepository
         try {
         world.UpdatedAtUtc = DateTime.UtcNow;
         RuntimePlayerProvenance.EnsureGeneratedPlayers(world);
-        MemoryCache[world.Id] = world;
 
         // Avoid serializing full snapshot on every intermediate live match minute except checkpoints (0, 45, 90, 105, 120) or paused/preparing states
         bool isCheckpointState = world.RoundState is RoundState.PREPARING
@@ -116,7 +115,7 @@ public sealed class EfWorldRepository : IWorldRepository
             || world.RequiresDurableMatchInteractionSave
             || world.Fixtures.Any(m => m.PendingPenalties.Count > 0);
 
-        if (!isCheckpointState) return;
+        if (!isCheckpointState) { MemoryCache[world.Id] = world; return; }
         HistoryEngine.Observe(world);
 
         using var scope = _scopeFactory.CreateScope();
@@ -211,6 +210,8 @@ public sealed class EfWorldRepository : IWorldRepository
         }
 
         await db.SaveChangesAsync(ct);
+        // A failed first save must never make an unpersisted world visible to confirmation retries.
+        MemoryCache[world.Id] = world;
         world.RequiresDurableMatchInteractionSave = false;
         } finally { gate.Release(); }
     }

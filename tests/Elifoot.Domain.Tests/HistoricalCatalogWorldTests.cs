@@ -201,6 +201,56 @@ public class HistoricalCatalogWorldTests
             DistrictFillMode.Ranking, 791, [], DataMode: WorldDataMode.REAL_COMPLETE, UseWorldCatalogRules: true,
             PreserveRankedSquadStrengths: true, CatalogYears: years);
 
+    [Fact]
+    public void ReviewedSwapKeepsCountryYearIdentityRosterAndOriginalStrengths()
+    {
+        var request = Request(["1985", "2025"], ["PT", "ES"]);
+        var preview = WorldCreatorEngine.Preview(request, Selection(MixedCatalog(), request));
+        var assignments = preview.Clubs.Select(entry => new ClubAssignment(entry.Club.Key, entry.Division)).ToList();
+        (assignments[0], assignments[40]) =
+            (assignments[40] with { Division = 1 }, assignments[0] with { Division = 5 });
+        var updated = WorldCreatorEngine.Reassign(request, preview, new(assignments));
+        Assert.Equal(preview.Clubs[40].Club.Key, updated.Preview.Clubs[0].Club.Key);
+        Assert.Equal(preview.Clubs[0].Club.Key, updated.Preview.Clubs[40].Club.Key);
+        foreach (var original in preview.Clubs)
+        {
+            var moved = updated.Preview.Clubs.Single(entry => entry.Club.Key == original.Club.Key);
+            Assert.Equal(JsonSerializer.Serialize(original.Club), JsonSerializer.Serialize(moved.Club));
+        }
+        var world = WorldCreatorEngine.Create(updated.Request, updated.Preview);
+        Assert.Equal(["1985", "2025"], world.CatalogOrigin!.CatalogYears);
+        Assert.All(world.Clubs, club => Assert.Matches(@" \((1985|2025)\)$", club.Name));
+        Assert.Equal(128, world.CatalogOrigin.Clubs.Select(entry => entry.Club.Key).Distinct().Count());
+    }
+
+    [Theory]
+    [InlineData(DistrictFillMode.Ranking)] [InlineData(DistrictFillMode.Random)]
+    public void DistrictModeAfterReviewUsesTheExistingOrderingAndKeepsManualPrincipalDivisions(DistrictFillMode mode)
+    {
+        var request = Request(["1985", "2025"], ["PT", "ES"]);
+        var catalog = MixedCatalog();
+        var preview = WorldCreatorEngine.Preview(request, Selection(catalog, request));
+        var assignments = preview.Clubs.Select(entry => new ClubAssignment(entry.Club.Key, entry.Division)).ToList();
+        // A reciprocal manual swap between principal divisions must survive the district mode change.
+        (assignments[0], assignments[8]) =
+            (assignments[8] with { Division = 1 }, assignments[0] with { Division = 2 });
+        var changed = WorldCreatorEngine.Reassign(request, preview, new(assignments));
+        var reversedDistricts = changed.Preview.Clubs.Select(entry => new ClubAssignment(entry.Club.Key, entry.Division)).ToList();
+        reversedDistricts.Reverse(32, 96);
+        var updated = WorldCreatorEngine.Reassign(changed.Request, changed.Preview, new(reversedDistricts, DistrictMode: mode));
+        var expected = WorldCreatorEngine.Preview(request with { DistrictMode = mode }, Selection(catalog, request));
+
+        Assert.Equal(changed.Preview.Clubs.Where(entry => entry.Division < 5), updated.Preview.Clubs.Where(entry => entry.Division < 5));
+        Assert.Equal(expected.Clubs.Where(entry => entry.Division == 5).Select(entry => entry.Club.Key),
+            updated.Preview.Clubs.Where(entry => entry.Division == 5).Select(entry => entry.Club.Key));
+        Assert.Equal(changed.Preview.Clubs.Select(entry => entry.Club.Key).Order(), updated.Preview.Clubs.Select(entry => entry.Club.Key).Order());
+        foreach (var club in updated.Preview.Clubs)
+            Assert.Equal(JsonSerializer.Serialize(changed.Preview.Clubs.Single(entry => entry.Club.Key == club.Club.Key).Club),
+                JsonSerializer.Serialize(club.Club));
+        var repeated = WorldCreatorEngine.Reassign(changed.Request, changed.Preview, new(reversedDistricts, DistrictMode: mode));
+        Assert.Equal(updated.Preview.Clubs.Select(entry => entry.Club.Key), repeated.Preview.Clubs.Select(entry => entry.Club.Key));
+    }
+
     private static CatalogSelection Selection(List<EligibleCatalogClub> clubs, WorldCreatorRequest request) =>
         new(request.Gender, request.Season, request.Countries, clubs, [], []);
 

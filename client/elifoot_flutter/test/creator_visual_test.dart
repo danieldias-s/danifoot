@@ -30,6 +30,8 @@ class _CreatorFixture {
   final unavailableClubIds = <int>{};
   bool failLastConfiguration = false;
   Map<String, dynamic>? lastConfiguration;
+  Map<String, dynamic>? previewSnapshot;
+  int reassignmentCount = 0;
   late final api = ElifootApiClient(
     httpClient: MockClient((request) async {
       requests.add(request);
@@ -132,17 +134,27 @@ class _CreatorFixture {
       } else if (request.url.path.endsWith('/preview')) {
         final body = jsonDecode(request.body) as Map;
         final countries = body['countries'] as List;
+        final years = body['catalogYears'] as List;
+        final assigned = (body['assignments'] as List).cast<Map>();
+        final selectedKeys = assigned.map((entry) => entry['clubKey']).toSet();
+        final orderedKeys = [
+          ...assigned.map((entry) => entry['clubKey'].toString()),
+          for (var i = 0; i < 128; i++)
+            if (!selectedKeys.contains('test-$i')) 'test-$i',
+        ];
         data = {
           'draftId': 'preview-test',
           'clubs': [
             if (validPreview)
-              for (var i = 0; i < 128; i++)
+              for (var position = 0; position < 128; position++)
                 {
-                  'division': i < 32 ? i ~/ 8 + 1 : 5,
+                  'division': position < 32 ? position ~/ 8 + 1 : 5,
                   'club': {
-                    'key': 'test-$i',
-                    'name': 'Clube de teste $i',
-                    'countryCode': countries[i % countries.length],
+                    'key': orderedKeys[position],
+                    'name':
+                        'Clube de teste ${orderedKeys[position].split('-').last}',
+                    'countryCode': countries[position % countries.length],
+                    'season': years[position % years.length],
                     'verification': {'status': 'REAL_CLUB_VERIFIED'},
                     'players': [],
                   },
@@ -152,6 +164,32 @@ class _CreatorFixture {
           'errors': validPreview ? [] : ['Faltam 96 clubes.'],
           'warnings': [],
         };
+        previewSnapshot = Map<String, dynamic>.from(data);
+      } else if (request.url.path.endsWith('/reassign')) {
+        final body = jsonDecode(request.body) as Map;
+        final previous = previewSnapshot!;
+        final clubsByKey = {
+          for (final entry in previous['clubs'] as List)
+            (entry['club'] as Map)['key']: entry['club'],
+        };
+        final assignments = (body['assignments'] as List).cast<Map>();
+        expect(assignments, hasLength(128));
+        expect(
+          assignments.map((entry) => entry['clubKey']).toSet(),
+          clubsByKey.keys.toSet(),
+        );
+        data = {
+          ...previous,
+          'draftId': 'preview-test-reassigned-${++reassignmentCount}',
+          'clubs': [
+            for (final assignment in assignments)
+              {
+                'division': assignment['division'],
+                'club': clubsByKey[assignment['clubKey']],
+              },
+          ],
+        };
+        previewSnapshot = Map<String, dynamic>.from(data);
       } else {
         throw StateError('Rota inesperada ${request.url}');
       }
@@ -1179,11 +1217,17 @@ void main() {
     await _next(tester);
     await _next(tester);
     await _next(tester);
-    final restored = jsonDecode(previews.last.body) as Map;
-    expect(restored['seed'], edited['seed']);
-    expect((restored['assignments'] as List).map((a) => a['clubKey']), [
-      for (var i = 0; i < 32; i++) 'test-$i',
-    ]);
+    final reassigned = fixture.requests.where(
+      (request) => request.url.path.endsWith('/reassign'),
+    );
+    final restored = jsonDecode(reassigned.last.body) as Map;
+    expect(restored.containsKey('seed'), isFalse);
+    expect(
+      (restored['assignments'] as List)
+          .where((assignment) => assignment['division'] != 5)
+          .map((assignment) => assignment['clubKey']),
+      [for (var i = 0; i < 32; i++) 'test-$i'],
+    );
 
     await tester.ensureVisible(editDivisions);
     await tester.tap(editDivisions);
@@ -1193,12 +1237,12 @@ void main() {
     await tester.tap(find.text('VOLTAR'));
     await tester.pumpAndSettle();
     await _next(tester);
-    expect(
-      find.textContaining('deixaram de estar disponíveis'),
-      findsOneWidget,
-    );
-    expect(_swapButton(1, 1), findsNothing);
-    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-    expect(previews, hasLength(2));
+    // A catalog update does not remove identities from an already validated
+    // preview. Returning through unchanged countries/years uses that snapshot.
+    expectSlot(1, 1);
+    expect(find.textContaining('deixaram de estar disponíveis'), findsNothing);
+    expect(_swapButton(1, 1), findsOneWidget);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNotNull);
+    expect(previews, hasLength(1));
   });
 }

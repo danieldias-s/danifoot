@@ -5,10 +5,15 @@ import 'creator_visual.dart';
 
 /// Opens the swap picker. With no [currentClub], it lists unassigned clubs
 /// without offering any changes to the lineup.
+/// [districtClubs] adds the selected district positions to the same picker.
+/// [assignedOnly] limits a final-review swap to occupied positions; the caller
+/// remains responsible for applying the reciprocal swap to the shared draft.
 Future<String?> showCreatorDivisionPicker(
   BuildContext context, {
   required List<List<Map<String, dynamic>?>> divisions,
   required List<Map<String, dynamic>> eligibleClubs,
+  List<Map<String, dynamic>> districtClubs = const [],
+  bool assignedOnly = false,
   Map<String, dynamic>? currentClub,
   bool? mobile,
 }) {
@@ -23,6 +28,8 @@ Future<String?> showCreatorDivisionPicker(
     child: _DivisionPicker(
       divisions: divisions,
       eligibleClubs: eligibleClubs,
+      districtClubs: districtClubs,
+      assignedOnly: assignedOnly,
       currentClub: currentClub,
       mobile: compact,
     ),
@@ -70,12 +77,16 @@ typedef _DivisionPosition = ({int division, int position});
 class _DivisionPicker extends StatefulWidget {
   final List<List<Map<String, dynamic>?>> divisions;
   final List<Map<String, dynamic>> eligibleClubs;
+  final List<Map<String, dynamic>> districtClubs;
+  final bool assignedOnly;
   final Map<String, dynamic>? currentClub;
   final bool mobile;
 
   const _DivisionPicker({
     required this.divisions,
     required this.eligibleClubs,
+    required this.districtClubs,
+    required this.assignedOnly,
     required this.currentClub,
     required this.mobile,
   });
@@ -107,11 +118,20 @@ class _DivisionPickerState extends State<_DivisionPicker> {
         }
       }
     }
+    for (final (position, club) in widget.districtClubs.indexed) {
+      final key = club['key']?.toString();
+      if (key != null) {
+        _positions[key] = (division: 5, position: position + 1);
+      }
+    }
     final currentKey = widget.currentClub?['key']?.toString();
+    final seen = <String>{};
     _candidates = widget.eligibleClubs.where((club) {
       final key = club['key']?.toString();
       return key != null &&
+          seen.add(key) &&
           key != currentKey &&
+          (!widget.assignedOnly || _positions.containsKey(key)) &&
           (!_exploring || !_positions.containsKey(key));
     }).toList();
   }
@@ -126,7 +146,12 @@ class _DivisionPickerState extends State<_DivisionPicker> {
 
   String _location(_DivisionPosition? location) => location == null
       ? 'Não escalado'
-      : '${location.division}ª Divisão • Posição ${location.position}';
+      : '${location.division == 5 ? 'Distritais' : '${location.division}ª Divisão'} • Posição ${location.position}';
+
+  String _catalogContext(Map<String, dynamic> club) => [
+    if (_country(club).isNotEmpty) _country(club),
+    if (_year(club).isNotEmpty) 'Ano ${_year(club)}',
+  ].join(' • ');
 
   Widget _flag(Map<String, dynamic> club) => CreatorCountryFlag(
     code: club['countryCode']?.toString() ?? '',
@@ -175,7 +200,13 @@ class _DivisionPickerState extends State<_DivisionPicker> {
           value: index + 1,
           child: Text('${index + 1}ª Divisão'),
         ),
-      const DropdownMenuItem(value: _unassigned, child: Text('Não escalados')),
+      if (widget.districtClubs.isNotEmpty)
+        const DropdownMenuItem(value: 5, child: Text('Distritais')),
+      if (!widget.assignedOnly)
+        const DropdownMenuItem(
+          value: _unassigned,
+          child: Text('Não escalados'),
+        ),
     ],
     onChanged: (value) {
       if (value != null) setState(() => _filter = value);
@@ -294,7 +325,15 @@ class _DivisionPickerState extends State<_DivisionPicker> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Text(_location(_positions[club['key']?.toString()])),
+                  Text(
+                    _location(_positions[club['key']?.toString()]),
+                    style: TextStyle(color: theme.textSecondary),
+                  ),
+                  if (_catalogContext(club).isNotEmpty)
+                    Text(
+                      _catalogContext(club),
+                      style: TextStyle(color: theme.textSecondary),
+                    ),
                 ],
               ),
             ),
@@ -327,6 +366,7 @@ class _DivisionPickerState extends State<_DivisionPicker> {
       subtitle: Text(
         [
           if (country.isNotEmpty) country,
+          if (_year(club).isNotEmpty) 'Ano ${_year(club)}',
           _location(_positions[clubKey]),
         ].join(' • '),
         style: TextStyle(color: theme.textSecondary),
@@ -352,79 +392,102 @@ class _DivisionPickerState extends State<_DivisionPicker> {
     );
   }
 
-  Widget _actions(ClassicTheme theme, Map<String, dynamic>? selected) =>
-      DecoratedBox(
-        decoration: BoxDecoration(
-          color: theme.surface,
-          border: Border(top: BorderSide(color: theme.border)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 8, 14, 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (selected != null) ...[
-                if (widget.mobile && widget.currentClub != null)
-                  Text(
-                    'Sai: ${widget.currentClub!['name']}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: theme.textSecondary),
-                  ),
-                Text(
-                  'Entra: ${selected['name']}',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: theme.accent,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 6),
-              ],
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    key: const ValueKey('division-swap-cancel'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: theme.accent,
-                      minimumSize: const Size(76, 44),
-                      visualDensity: VisualDensity.standard,
-                    ),
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(_exploring ? 'FECHAR' : 'CANCELAR'),
-                  ),
-                  if (!_exploring) ...[
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: ElevatedButton(
-                        key: const ValueKey('division-swap-confirm'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.selectedBackground,
-                          foregroundColor: theme.selectedText,
-                          minimumSize: const Size(44, 44),
-                          visualDensity: VisualDensity.standard,
-                        ),
-                        onPressed: selected == null
-                            ? null
-                            : () => Navigator.pop(
-                                context,
-                                selected['key'].toString(),
-                              ),
-                        child: Text(
-                          widget.mobile ? 'CONFIRMAR TROCA' : 'TROCAR CLUBES',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+  Widget _actions(
+    ClassicTheme theme,
+    Map<String, dynamic>? selected,
+  ) => DecoratedBox(
+    decoration: BoxDecoration(
+      color: theme.surface,
+      border: Border(top: BorderSide(color: theme.border)),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(14, 8, 14, 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (selected != null) ...[
+            if (widget.currentClub != null)
+              Text(
+                'Sai: ${widget.currentClub!['name']}',
+                key: const ValueKey('division-swap-outgoing'),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: theme.textSecondary),
+              ),
+            if (widget.assignedOnly && widget.currentClub != null)
+              Text(
+                _location(_positions[widget.currentClub!['key']?.toString()]),
+                style: TextStyle(color: theme.textSecondary, fontSize: 13),
+              ),
+            Text(
+              'Entra: ${selected['name']}',
+              key: const ValueKey('division-swap-incoming'),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: theme.accent,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            if (widget.assignedOnly) ...[
+              Text(
+                _location(_positions[selected['key']?.toString()]),
+                style: TextStyle(color: theme.textSecondary, fontSize: 13),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Os clubes trocarão de posição, mantendo as vagas preenchidas.',
+                key: const ValueKey('division-swap-reciprocal-note'),
+                style: TextStyle(color: theme.textSecondary, fontSize: 13),
               ),
             ],
+            const SizedBox(height: 6),
+          ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                key: const ValueKey('division-swap-cancel'),
+                style: TextButton.styleFrom(
+                  foregroundColor: theme.accent,
+                  minimumSize: const Size(76, 44),
+                  visualDensity: VisualDensity.standard,
+                ),
+                onPressed: () => Navigator.pop(context),
+                child: Text(_exploring ? 'FECHAR' : 'CANCELAR'),
+              ),
+              if (!_exploring) ...[
+                const SizedBox(width: 8),
+                Flexible(
+                  child: ElevatedButton(
+                    key: const ValueKey('division-swap-confirm'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: theme.selectedBackground,
+                      foregroundColor: theme.selectedText,
+                      minimumSize: const Size(44, 44),
+                      visualDensity: VisualDensity.standard,
+                    ),
+                    onPressed: selected == null
+                        ? null
+                        : () => Navigator.pop(
+                            context,
+                            selected['key'].toString(),
+                          ),
+                    child: Text(
+                      widget.mobile || widget.assignedOnly
+                          ? 'CONFIRMAR TROCA'
+                          : 'TROCAR CLUBES',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {

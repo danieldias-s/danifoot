@@ -83,6 +83,7 @@ class CreatorFrame extends StatelessWidget {
   final ({int clubs, int divisions, int capacity})? divisionSummary;
   final String? stageDescription;
   final bool forceStadium;
+  final bool finalAction;
   final String nextLabel;
   final VoidCallback? back, next;
   const CreatorFrame({
@@ -98,6 +99,7 @@ class CreatorFrame extends StatelessWidget {
     this.divisionSummary,
     this.stageDescription,
     this.forceStadium = false,
+    this.finalAction = false,
     this.nextLabel = 'CONTINUAR',
   });
 
@@ -179,7 +181,7 @@ class CreatorFrame extends StatelessWidget {
               ),
             ),
           ),
-          if (step < steps.length - 1) ...[
+          if (step < steps.length - 1 || finalAction) ...[
             SizedBox(width: mobile ? 12 : 16),
             Flexible(
               child: SizedBox(
@@ -194,17 +196,40 @@ class CreatorFrame extends StatelessWidget {
                     disabledForegroundColor: mutedInk,
                     shape: shape,
                   ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(nextLabel, style: labelStyle),
-                        const SizedBox(width: 6),
-                        const Icon(Icons.arrow_forward, size: 20),
-                      ],
-                    ),
-                  ),
+                  child: finalAction && mobile
+                      ? Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.check, size: 20),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                nextLabel,
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(nextLabel, style: labelStyle),
+                              const SizedBox(width: 6),
+                              Icon(
+                                finalAction ? Icons.check : Icons.arrow_forward,
+                                size: 20,
+                              ),
+                            ],
+                          ),
+                        ),
                 ),
               ),
             ),
@@ -214,12 +239,53 @@ class CreatorFrame extends StatelessWidget {
     );
   }
 
+  Widget _stepMarker(
+    ClassicTheme theme,
+    int index,
+    bool mobile,
+    Color frameInk,
+  ) => Container(
+    key: ValueKey('creator-step-marker-$index'),
+    width: mobile ? 24 : 29,
+    height: mobile ? 24 : 29,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: index == step ? theme.selectedBackground : theme.primary,
+      border: Border.all(
+        color: index == step ? theme.selectedBackground : theme.border,
+      ),
+    ),
+    alignment: Alignment.center,
+    child: index < step
+        ? Icon(Icons.check, size: 16, color: frameInk)
+        : Text(
+            '${index + 1}',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: index == step ? theme.selectedText : frameInk,
+            ),
+          ),
+  );
+
+  String _compactStepName(String name) => switch (name.toLowerCase()) {
+    'categoria' => 'Cat.',
+    'países' => 'Países',
+    'escolher anos' => 'Anos',
+    'divisões' => 'Div.',
+    'distritais' => 'Distr.',
+    'elencos / fontes' => 'Elenc.',
+    'prévia' => 'Prévia',
+    'confirmar' => 'Conf.',
+    _ => name,
+  };
+
   @override
   Widget build(BuildContext context) {
     final theme = ClassicTheme.of(context);
     return LayoutBuilder(
       builder: (context, constraints) {
         final mobile = constraints.maxWidth < 1024;
+        final reviewProgress = mobile && steps.length == 8 && step >= 6;
         final summary = divisionSummary;
         final divisionStage = summary != null;
         final stadiumStage =
@@ -337,64 +403,69 @@ class CreatorFrame extends StatelessWidget {
                                 child: Semantics(
                                   label: '${index + 1}. ${steps[index]}',
                                   selected: index == step,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: mobile ? 24 : 29,
-                                        height: mobile ? 24 : 29,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: index == step
-                                              ? theme.selectedBackground
-                                              : theme.primary,
-                                          border: Border.all(
-                                            color: index == step
-                                                ? theme.selectedBackground
-                                                : theme.border,
-                                          ),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: index < step
-                                            ? Icon(
-                                                Icons.check,
-                                                size: 16,
-                                                color: frameInk,
-                                              )
-                                            : Text(
-                                                '${index + 1}',
+                                  child: reviewProgress
+                                      ? Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            _stepMarker(
+                                              theme,
+                                              index,
+                                              mobile,
+                                              frameInk,
+                                            ),
+                                            const SizedBox(height: 4),
+                                            FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Text(
+                                                _compactStepName(steps[index]),
+                                                key: ValueKey(
+                                                  'creator-step-short-$index',
+                                                ),
+                                                maxLines: 1,
                                                 style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 11,
                                                   color: index == step
-                                                      ? theme.selectedText
+                                                      ? theme.selectedBackground
                                                       : frameInk,
                                                 ),
                                               ),
-                                      ),
-                                      if (!mobile) ...[
-                                        const SizedBox(width: 6),
-                                        Expanded(
-                                          child: Text(
-                                            steps[index],
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              height: 1.05,
-                                              color: index == step
-                                                  ? theme.selectedBackground
-                                                  : frameInk,
                                             ),
-                                          ),
+                                          ],
+                                        )
+                                      : Row(
+                                          children: [
+                                            _stepMarker(
+                                              theme,
+                                              index,
+                                              mobile,
+                                              frameInk,
+                                            ),
+                                            if (!mobile) ...[
+                                              const SizedBox(width: 6),
+                                              Expanded(
+                                                child: Text(
+                                                  steps[index],
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    height: 1.05,
+                                                    color: index == step
+                                                        ? theme
+                                                              .selectedBackground
+                                                        : frameInk,
+                                                  ),
+                                                ),
+                                              ),
+                                            ] else if (index < steps.length - 1)
+                                              Expanded(
+                                                child: Divider(
+                                                  color: theme.border,
+                                                  indent: 3,
+                                                  endIndent: 3,
+                                                ),
+                                              ),
+                                          ],
                                         ),
-                                      ] else if (index < steps.length - 1)
-                                        Expanded(
-                                          child: Divider(
-                                            color: theme.border,
-                                            indent: 3,
-                                            endIndent: 3,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
                                 ),
                               ),
                           ],

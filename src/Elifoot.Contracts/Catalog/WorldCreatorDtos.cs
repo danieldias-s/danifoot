@@ -49,6 +49,8 @@ public record CatalogSelection(FootballGender Gender, string Season, List<string
     List<EligibleCatalogClub> Clubs, List<CatalogReference> References, List<string> Warnings, WorldDataSummary? DataSummary = null);
 // In a custom assembly, the order of assignments within each division defines its slots.
 public record ClubAssignment(string ClubKey, int Division);
+public record WorldCreatorReassignRequest(List<ClubAssignment> Assignments, string? Name = null, int? MaxHumans = null,
+    DistrictFillMode? DistrictMode = null);
 public record WorldCreatorRequest(string Name, FootballGender Gender, string Season, List<string> Countries,
     WorldAssemblyMode Mode, DistrictFillMode DistrictMode, int Seed, List<ClubAssignment> Assignments,
     bool FillRemainingDivisions = true, bool AllowFictionalTeams = false, bool UseSavedData = false,
