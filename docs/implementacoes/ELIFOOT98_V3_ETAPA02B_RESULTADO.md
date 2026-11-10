@@ -2,7 +2,7 @@
 
 Projeto: D:/elifoot_98. Branch main. Base preservada: ced4e43d649470188ebcc0e59e62dbc0414a6ea9. Nova autorização aplicada em 10/11/2026, America/Sao_Paulo.
 
-**Validação técnica: PASS — 997 casos .NET distintos, incluindo as 31 simulações, 504 testes Flutter e analyze sem problemas. A política dos pedidos antigos foi aprovada e implementada. O registro do commit local está em andamento.**
+**Status final: PASS — 997 casos .NET distintos, incluindo as 31 simulações, 504 testes Flutter e analyze sem problemas. A política dos pedidos antigos foi aprovada e implementada. Commit local de implementação registrado na seção 21.**
 
 ## 1. Resumo executivo
 
@@ -226,12 +226,16 @@ Estados arbitrariamente corrompidos não são reparados com transferências, sal
 
 ## 20. Status e pendências
 
-**PASS técnico, com registro do commit local em andamento.** A regra de negócio pendente da revisão anterior foi resolvida pela autorização atual e implementada. Os 997 casos .NET distintos, os 504 testes Flutter, o analyze e os builds estão aprovados, sem falhas pendentes. Os 48 arquivos do escopo foram conferidos; ambos os clusters temporários estão encerrados, com dados preservados. Não resta requisito de implementação ou teste pendente.
+**PASS.** A regra de negócio pendente da revisão anterior foi resolvida pela autorização atual e implementada. Os 997 casos .NET distintos, os 504 testes Flutter, o analyze e os builds estão aprovados, sem falhas pendentes. Os 48 arquivos do escopo foram conferidos e incluídos no commit local de implementação; ambos os clusters temporários estão encerrados, com dados preservados. Não resta requisito de implementação, teste ou decisão de negócio pendente.
 
-Nenhuma atividade das Etapas 02C ou 02D foi iniciada. Resta apenas concluir o registro dos hashes locais nesta seção e a conferência posterior ao commit.
+Nenhuma atividade das Etapas 02C ou 02D foi iniciada. A entrega encerra a Etapa 02B, sem push.
 
 ## 21. Commit
 
-Todas as validações exigidas e a conferência de preservação foram aprovadas. O commit local de implementação será criado com a mensagem autorizada feat(elifoot98): implement V3 stage 02B salary and contracts, adicionando somente os 48 arquivos do inventário. Seu hash será registrado no fechamento documental imediatamente após a criação.
+Commit local de implementação: **8df9b0cf6de65291af9e2cdd6ecb29104412082f**.
+
+Mensagem: feat(elifoot98): implement V3 stage 02B salary and contracts.
+
+Foram incluídos exatamente os 48 arquivos do inventário, após aprovação de todas as validações e da conferência de preservação. Este fechamento documental registra o hash em commit separado, alterando somente este relatório. A branch permanece main; arquivos preexistentes alheios à etapa continuam preservados fora desses commits.
 
 Base mantida durante a validação: ced4e43d649470188ebcc0e59e62dbc0414a6ea9, branch main. Nenhum push, reset --hard ou reescrita dos checkpoints anteriores.
