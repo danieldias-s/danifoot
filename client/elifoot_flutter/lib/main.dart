@@ -1836,26 +1836,59 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     });
   }
 
-  void _pickBestSquad(String mode) {
-    if (_tacticsLocked) return;
-    final squad = (_myClubDetail?['squad'] as List? ?? [])
-        .map((p) => Map<String, dynamic>.from(p as Map))
-        .toList();
-    final result = bestSquadLineup(
-      squad,
-      _selectedFormation,
-      preferGoals: mode == 'goals',
-    );
-    setState(() {
-      _selectedStarterIds = result.starters;
-      _selectedBenchIds = result.bench;
-      if (result.formation != '5-0-5' ||
-          _myClubDetail?['allowClassic505'] != false) {
-        _selectedFormation = result.formation;
+  Future<void> _pickBestSquad(String mode) =>
+      _selectServerLineup(mode == 'automatic' ? 'Automatic' : 'Best');
+
+  Future<void> _selectServerLineup(String mode) async {
+    if (_tacticsLocked ||
+        _commandBusy ||
+        _worldId == null ||
+        _coachId == null ||
+        _myClubId == null) {
+      return;
+    }
+    final world = _worldId!, coach = _coachId!, club = _myClubId;
+    final formation = _selectedFormation;
+    final season = _snapshot?['seasonNumber'],
+        round = _snapshot?['roundNumber'];
+    final current = List<String>.from(_selectedStarterIds);
+    final revision = (_snapshot?['roundVersion'] as num?)?.toInt() ?? 1;
+    await _runUiCommand(() async {
+      final selection = await widget.apiClient.selectLineup(
+        worldId: world,
+        coachId: coach,
+        formation: formation,
+        mode: mode,
+        currentStarterIds: current,
+        roundVersion: revision,
+      );
+      if (!mounted ||
+          _worldId != world ||
+          _myClubId != club ||
+          _snapshot?['seasonNumber'] != season ||
+          _snapshot?['roundNumber'] != round ||
+          _tacticsLocked ||
+          _selectedFormation != formation) {
+        return;
       }
-      _swapPickedPlayerId = null;
-      _statusBanner =
-          'Melhores por ${mode == 'goals' ? 'gols na temporada' : 'força'} escalados. Formação $_selectedFormation.';
+      setState(() {
+        _selectedStarterIds = (selection['starterPlayerIds'] as List)
+            .map((id) => id.toString())
+            .toList();
+        _selectedBenchIds = (selection['benchPlayerIds'] as List)
+            .map((id) => id.toString())
+            .toList();
+        final version =
+            (selection['roundVersion'] as num?)?.toInt() ?? revision;
+        if (_snapshot != null &&
+            version > (_snapshot!['roundVersion'] as num? ?? 0)) {
+          _snapshot = {..._snapshot!, 'roundVersion': version};
+        }
+        _swapPickedPlayerId = null;
+        _statusBanner = mode == 'Automatic'
+            ? 'Automático (A): força e desempenho da temporada. Formação $formation.'
+            : 'Melhores (M): força atual. Formação $formation.';
+      });
     });
   }
 

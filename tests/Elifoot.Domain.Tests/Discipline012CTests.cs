@@ -324,7 +324,9 @@ public class Discipline012CTests
         var w=WorldSeedFactory.CreateSeededWorld(forceEvolutionMode:ForceEvolutionMode.ClassicAdapted);
         foreach(var p in w.Players){p.Behavior=PlayerBehavior.FairPlay;p.Strength=50;p.IsStar=false;}
         var club=w.Clubs.First(c=>c.DivisionTier==DivisionTier.PrimeiraDivisao);
-        return(w,w.Players.First(p=>p.ClubId==club.Id&&p.Position==PlayerPosition.D));
+        // The disciplinary subject must be an actual starter, independently of lineup tie rules.
+        var lineup=AiManagerBrain.BuildStartersAndBench(w.Players.Where(p=>p.ClubId==club.Id).ToList(),TacticalFormations.All["4-4-2"]);
+        return(w,w.Players.First(p=>lineup.Starters.Contains(p.Id)&&p.Position==PlayerPosition.D));
     }
     internal static MatchFixture Fixture(GameWorld w,int round,CompetitionType type=CompetitionType.League,Guid? home=null)
     {

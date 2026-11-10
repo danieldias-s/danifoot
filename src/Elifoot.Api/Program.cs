@@ -334,6 +334,13 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/create-club", async (
 });
 
 // 3. Synchronized Preparation (0/N Ready Counter) & Match Controls
+app.MapPost("/api/worlds/{worldId:guid}/lineup-selection", async (
+    Guid worldId, SelectLineupRequest request, MultiplayerRoundOrchestrator orchestrator, CancellationToken ct) =>
+{
+    var (ok, error, selection) = await orchestrator.SelectLineupAsync(worldId, request, ct);
+    return ok ? Results.Ok(selection) : Results.BadRequest(new { error });
+});
+
 app.MapPost("/api/worlds/{worldId:guid}/tactics", async (
     Guid worldId,
     SubmitTacticsRequest req,

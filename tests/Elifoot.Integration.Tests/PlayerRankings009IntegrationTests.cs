@@ -315,6 +315,13 @@ public sealed class PlayerRankings009IntegrationTests(ITestOutputHelper output)
         using var manifest = JsonDocument.Parse(await File.ReadAllTextAsync(manifestPath));
         string database = manifest.RootElement.GetProperty("databasePath").GetString()!;
         var source = JsonSerializer.Deserialize<GameWorld>(await File.ReadAllBytesAsync(sourcePath), Json)!;
+        // Verify against official match events, independently of the exported rankings/awards.
+        var goalsByPlayer = source.Fixtures.Where(m => m.SeasonNumber == 1 && m.IsFinished && m.CurrentMinute > 0)
+            .SelectMany(m => m.Events).Where(e => e.EventType == MatchEventType.Goal && !e.IsOwnGoal && e.PrimaryPlayerId.HasValue)
+            .GroupBy(e => e.PrimaryPlayerId!.Value).ToDictionary(g => g.Key, g => g.Count());
+        Assert.NotEmpty(goalsByPlayer);
+        int expectedGoals = goalsByPlayer.Values.Max();
+        var expectedWinners = goalsByPlayer.Where(p => p.Value == expectedGoals).Select(p => p.Key).Order().ToList();
         EfWorldRepository.ClearCacheForTesting();
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder => {
             builder.UseSetting("Elifoot:AuthMode", "LocalDev"); builder.UseSetting("Elifoot:DatabaseProvider", "Sqlite");
@@ -324,13 +331,13 @@ public sealed class PlayerRankings009IntegrationTests(ITestOutputHelper output)
         });
         using var client = factory.CreateClient();
         var awards = await client.GetFromJsonAsync<SeasonTopScorerAwardsDto>($"/api/worlds/{source.Id}/season-top-scorers?season=1");
-        Assert.Equal(2, awards!.Awards.Count);
-        Assert.All(awards.Awards, a => { Assert.Equal(10, a.TotalGoals); Assert.Equal(3_000_000m, a.AwardAmount); });
-        Assert.Equal(6_000_000m, awards.ClubTotals.Sum(c => c.Amount));
+        Assert.Equal(expectedWinners, awards!.Awards.Select(a => a.PlayerId).Order().ToList());
+        Assert.All(awards.Awards, a => { Assert.Equal(expectedGoals, a.TotalGoals); Assert.Equal(3_000_000m, a.AwardAmount); });
+        Assert.Equal(3_000_000m * expectedWinners.Count, awards.ClubTotals.Sum(c => c.Amount));
         Assert.Empty(awards.CoverageWarnings);
         var career = await client.GetFromJsonAsync<PlayerRankingsDto>($"/api/worlds/{source.Id}/player-rankings");
-        Assert.Equal(10, career!.Rows[0].GoalsScored);
-        Assert.Equal(2, career.Rows.Count(r => r.GoalsScored == 10));
+        Assert.Equal(expectedGoals, career!.Rows[0].GoalsScored);
+        Assert.Equal(expectedWinners, career.Rows.Where(r => r.GoalsScored == expectedGoals).Select(r => r.PlayerId).Order().ToList());
         var legacy = await client.GetFromJsonAsync<List<TopScorerDto>>($"/api/worlds/{source.Id}/top-scorers");
         Assert.Empty(legacy!); // The artifact already advanced to T2; no current-season goals exist yet.
         var repository = factory.Services.GetRequiredService<IWorldRepository>();
@@ -343,7 +350,7 @@ public sealed class PlayerRankings009IntegrationTests(ITestOutputHelper output)
         using var scope = factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
         var ledger = await db.FinancialLedger.Where(t => t.GameWorldId == source.Id && t.IdempotencyKey.StartsWith("season_top_scorer:")).ToListAsync();
-        Assert.Equal(2, ledger.Count);
+        Assert.Equal(expectedWinners.Count, ledger.Count);
         Assert.All(ledger, t => Assert.Equal(3_000_000m, t.Amount));
         Assert.Equal(source.Transactions.Count, await db.FinancialLedger.CountAsync(t => t.GameWorldId == source.Id));
         output.WriteLine($"Real-season browser fixture: {manifestPath}; SQLite: {database}");

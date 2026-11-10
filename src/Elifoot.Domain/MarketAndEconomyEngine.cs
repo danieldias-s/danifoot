@@ -536,7 +536,7 @@ public static class MarketAndEconomyEngine
             if (club.AiManagerId != null && managerDict.TryGetValue(club.AiManagerId.Value, out var mgr))
             {
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
-                AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                 OperatingEconomyEngine.ApplyAiCapitalBudget(world,club);
             }
         }

@@ -63,7 +63,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 var players=world.Players.ToDictionary(p=>p.Id);
                 foreach(bool home in new[]{true,false}) {
                     var side=world.Clubs.First(c=>c.Id==(home?match.HomeClubId:match.AwayClubId));
-                    if(side.HumanCoachId==null) AiManagerBrain.EvaluateAiInMatchReaction(match,side,world.AiManagers.FirstOrDefault(m=>m.Id==side.AiManagerId),home,world.RoundState,players,world.AllowClassic505);
+                    if(side.HumanCoachId==null) AiManagerBrain.EvaluateAiInMatchReaction(match,side,world.AiManagers.FirstOrDefault(m=>m.Id==side.AiManagerId),home,world.RoundState,players,world.AllowClassic505,world);
                 }
             }
             if(FirstPendingPenalty(world)==null) ApplyCurrentMinuteBoundary(world);

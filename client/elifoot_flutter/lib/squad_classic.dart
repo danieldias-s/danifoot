@@ -677,10 +677,16 @@ class BestLineupPicker extends StatelessWidget {
     key: const ValueKey('btn-auto-escalar'),
     enabled: !locked,
     onSelected: onSelected,
-    tooltip: 'Escolher os melhores jogadores',
+    tooltip: 'Escolher modo de escalação',
     itemBuilder: (_) => const [
-      PopupMenuItem(value: 'strength', child: Text('MAIOR FORÇA')),
-      PopupMenuItem(value: 'goals', child: Text('MAIS GOLS NA TEMPORADA')),
+      PopupMenuItem(
+        value: 'strength',
+        child: Text('M — MELHORES (FORÇA ATUAL)'),
+      ),
+      PopupMenuItem(
+        value: 'automatic',
+        child: Text('A — AUTOMÁTICO (FORÇA + MÉRITO)'),
+      ),
     ],
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -690,7 +696,7 @@ class BestLineupPicker extends StatelessWidget {
           const Icon(Icons.star_outline, size: 18),
           const SizedBox(width: 5),
           Text(
-            'MELHORES',
+            'ESCALAR',
             style: TextStyle(
               color: locked ? Theme.of(context).disabledColor : null,
             ),

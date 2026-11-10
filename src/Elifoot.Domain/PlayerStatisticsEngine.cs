@@ -300,7 +300,10 @@ public static class PlayerStatisticsEngine
         var stats = w?.PlayerStatistics.Where(s => s.PlayerId == p.Id).ToList() ?? [];
         int currentSeason = w?.SeasonNumber ?? 1;
         int careerMatches = Math.Max(p.CareerMatches, stats.Sum(s => s.MatchesPlayed));
-        int seasonGoals = Math.Max(p.SeasonGoals + p.CupGoals, stats.Where(s => s.Season == currentSeason).Sum(s => s.GoalsScored));
+        // SeasonGoals is the total of league AND cup; CupGoals is its cup subset.
+        // Keep legacy evidence without changing stored counters or historical buckets.
+        int seasonGoals = Math.Max(Math.Max(p.SeasonGoals, p.CupGoals),
+            stats.Where(s => s.Season == currentSeason).Sum(s => s.GoalsScored));
         int seasonAssists = stats.Where(s => s.Season == currentSeason).Sum(s => s.Assists);
         var divisionGoals = new Dictionary<string, int>();
         var divisionAssists = new Dictionary<string, int>();

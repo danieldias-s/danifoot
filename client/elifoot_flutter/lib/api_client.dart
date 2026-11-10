@@ -379,6 +379,32 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
+  Future<Map<String, dynamic>> selectLineup({
+    required String worldId,
+    required String coachId,
+    required String formation,
+    required String mode,
+    required List<String> currentStarterIds,
+    required int roundVersion,
+    String? idempotencyKey,
+  }) async {
+    final response = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/$worldId/lineup-selection'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'coachId': coachId,
+        'formation': formation,
+        'mode': mode,
+        'currentStarterPlayerIds': currentStarterIds,
+        'expectedRoundVersion': roundVersion,
+        'idempotencyKey':
+            idempotencyKey ??
+            'lineup-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+      }),
+    );
+    return _decodeResponse(response);
+  }
+
   Future<Map<String, dynamic>> submitTactics({
     required String worldId,
     required String coachId,

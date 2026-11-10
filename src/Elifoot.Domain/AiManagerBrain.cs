@@ -19,7 +19,8 @@ public static class AiManagerBrain
         int worldSeed,
         int seasonNumber,
         int roundNumber,
-        bool allowClassic505 = true)
+        bool allowClassic505 = true,
+        GameWorld? world = null)
     {
         var rng = DeterministicRng.FromContext(worldSeed, seasonNumber, roundNumber, club.DeterministicIndex, 0, 17);
 
@@ -54,7 +55,7 @@ public static class AiManagerBrain
         var available = clubSquad.Where(p => p.IsAvailableForMatch).ToList();
         var availByPos = available
             .GroupBy(p => p.Position)
-            .ToDictionary(g => g.Key, g => g.OrderByDescending(p => GetSelectionScore(p)).ToList());
+            .ToDictionary(g => g.Key, g => g.OrderByDescending(p => GetPlanningScore(p)).ToList());
 
         int AvailCount(PlayerPosition pos) => availByPos.TryGetValue(pos, out var list) ? list.Count : 0;
 
@@ -178,7 +179,7 @@ public static class AiManagerBrain
 
         // Build 11 starters and up to 9 bench players for bestFormation
         var chosenSpec = TacticalFormations.Resolve(bestFormation, allowClassic505);
-        var (starters, bench) = BuildStartersAndBench(clubSquad, chosenSpec);
+        var (starters, bench) = BuildStartersAndBench(clubSquad, chosenSpec, world, LineupSelectionMode.Automatic, club.PreferredStarterIds);
 
         // Identify squad gaps & surplus for the ManagerSquadPlan
         var priorityGaps = new List<PlayerPosition>();
@@ -186,7 +187,7 @@ public static class AiManagerBrain
 
         var allByPos = clubSquad
             .GroupBy(p => p.Position)
-            .ToDictionary(g => g.Key, g => g.OrderByDescending(p => GetSelectionScore(p)).ToList());
+            .ToDictionary(g => g.Key, g => g.OrderByDescending(p => GetPlanningScore(p)).ToList());
 
         foreach (var pos in new[] { PlayerPosition.G, PlayerPosition.A, PlayerPosition.D, PlayerPosition.M })
         {
@@ -257,82 +258,19 @@ public static class AiManagerBrain
     }
 
     public static (List<Guid> Starters, List<Guid> Bench) BuildStartersAndBench(
-        IReadOnlyCollection<Player> clubSquad,
-        FormationSpec spec)
-    {
-        var available = clubSquad.Where(p => p.IsAvailableForMatch).ToList();
-        var starters = new List<Player>(11);
-
-        // 1. Pick best Goalkeeper (G): prefer available G, otherwise least-unavailable G in squad
-        var gk = available
-            .Where(p => p.Position == PlayerPosition.G)
-            .OrderByDescending(GetSelectionScore)
-            .FirstOrDefault()
-            ?? available.OrderByDescending(GetSelectionScore).FirstOrDefault();
-
-        if (gk != null)
-        {
-            starters.Add(gk);
-        }
-
-        var remaining = available.Where(p => gk == null || p.Id != gk.Id).ToList();
-
-        void PickSector(PlayerPosition pos, int needed)
-        {
-            var exact = remaining
-                .Where(p => p.Position == pos)
-                .OrderByDescending(GetSelectionScore)
-                .Take(needed)
-                .ToList();
-            foreach (var p in exact)
-            {
-                starters.Add(p);
-                remaining.Remove(p);
-            }
-        }
-
-        PickSector(PlayerPosition.D, spec.Defenders);
-        PickSector(PlayerPosition.M, spec.Midfielders);
-        PickSector(PlayerPosition.A, spec.Attackers);
-
-        // Fill any missing outfield slots up to 11 with best remaining available outfield players (never adding a 2nd goalkeeper)
-        foreach (var nextOutfield in remaining.Where(p => p.Position != PlayerPosition.G).OrderByDescending(GetSelectionScore).ToList())
-        {
-            if (starters.Count >= 11) break;
-            starters.Add(nextOutfield);
-            remaining.Remove(nextOutfield);
-        }
-
-        // Build balanced bench (up to 9: 1 G, 2-3 D, 2-3 M, 2-3 A)
-        var bench = new List<Player>(9);
-        var backupGk = remaining
-            .Where(p => p.Position == PlayerPosition.G)
-            .OrderByDescending(GetSelectionScore)
-            .FirstOrDefault();
-        if (backupGk != null)
-        {
-            bench.Add(backupGk);
-            remaining.Remove(backupGk);
-        }
-
-        foreach (var p in remaining.OrderByDescending(GetSelectionScore).Take(SquadValidator.MaxBenchSize - bench.Count))
-        {
-            bench.Add(p);
-        }
-
-        return (starters.Select(p => p.Id).ToList(), bench.Select(p => p.Id).ToList());
-    }
+        IReadOnlyCollection<Player> clubSquad, FormationSpec spec, GameWorld? world = null,
+        LineupSelectionMode mode = LineupSelectionMode.Automatic, IEnumerable<Guid>? currentStarters = null)
+        => LineupSelectionEngine.Select(clubSquad, spec, mode, currentStarters, world);
 
     public static double GetSelectionScore(Player p)
+        => LineupSelectionEngine.Score(p, LineupSelectionMode.Automatic);
+
+    // Preserve the pre-existing financial squad-planning policy; it is not lineup priority.
+    private static double GetPlanningScore(Player p)
     {
         double score = p.Strength;
-        if (p.IsStar)
-        {
-            score += p.Position is PlayerPosition.A or PlayerPosition.M ? 5.5 : 3.5;
-        }
-        // Slight discipline preference against Sarrafeiro when strength is equal
-        score -= (int)p.Behavior * 0.25;
-        return score;
+        if (p.IsStar) score += p.Position is PlayerPosition.A or PlayerPosition.M ? 5.5 : 3.5;
+        return score - (int)p.Behavior * .25;
     }
 
     /// <summary>
@@ -346,8 +284,13 @@ public static class AiManagerBrain
         bool isHomeTeam,
         RoundState currentRoundState,
         IReadOnlyDictionary<Guid, Player> worldPlayers,
-        bool allowClassic505 = true)
+        bool allowClassic505 = true,
+        GameWorld? world = null)
     {
+        Dictionary<Guid, LineupSelectionEngine.Performance>? performance = null;
+        double SelectionScore(Player p) => LineupSelectionEngine.Score(p, LineupSelectionMode.Automatic,
+            (performance ??= LineupSelectionEngine.CurrentPerformance(world)).GetValueOrDefault(p.Id));
+
         int minute = match.CurrentMinute;
         bool isFreeInterval = SquadValidator.IsFreeIntervalState(currentRoundState);
 
@@ -391,7 +334,7 @@ public static class AiManagerBrain
 
             var replacement = availableBench
                 .OrderByDescending(p => p.Position == injuredPlayer.Position)
-                .ThenByDescending(GetSelectionScore)
+                .ThenByDescending(SelectionScore)
                 .FirstOrDefault(p => injuredPlayer.Position != PlayerPosition.G || p.Position == PlayerPosition.G);
 
             if (replacement != null)
@@ -445,11 +388,11 @@ public static class AiManagerBrain
                 {
                     while (projected.Count(p => p.Position == pos) < count && usedSubs + subsToMake.Count < maxSubs)
                     {
-                        var incoming = availableBench.Where(p => p.Position == pos).OrderByDescending(GetSelectionScore).FirstOrDefault();
+                        var incoming = availableBench.Where(p => p.Position == pos).OrderByDescending(SelectionScore).FirstOrDefault();
                         var outgoing = projected.Where(p => p.Position != PlayerPosition.G
                                 && projected.Count(s => s.Position == p.Position) > needs.GetValueOrDefault(p.Position)
                                 && subsToMake.All(s => s.PlayerInId != p.Id))
-                            .OrderBy(GetSelectionScore).FirstOrDefault();
+                            .OrderBy(SelectionScore).FirstOrDefault();
                         if (incoming == null || outgoing == null) break;
                         subsToMake.Add(new(outgoing.Id, incoming.Id)); availableBench.Remove(incoming);
                         projected.Remove(outgoing); projected.Add(incoming);
@@ -478,7 +421,7 @@ public static class AiManagerBrain
                 bool hasYellowRisk = yellowMap.ContainsKey(candidateOut.Id);
                 var replacement = availableBench
                     .Where(p => p.Position == candidateOut.Position)
-                    .OrderByDescending(GetSelectionScore)
+                    .OrderByDescending(SelectionScore)
                     .FirstOrDefault(p => p.Strength >= candidateOut.Strength - (hasYellowRisk ? 4 : 1));
 
                 if (replacement != null)

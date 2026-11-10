@@ -965,7 +965,8 @@ public static partial class MatchSimulationEngine
         IReadOnlyList<Player> awaySquad,
         IReadOnlyDictionary<Guid, Player> worldPlayers,
         int worldSeed,
-        bool allowClassic505 = true)
+        bool allowClassic505 = true,
+        GameWorld? world = null)
     {
         if(match.IsFinished||match.IsCancelled||match.IsPostponed)return 0;
         // 1. Prepare initial lineups via AI Manager Brain if not already locked by a Human Coach
@@ -975,14 +976,15 @@ public static partial class MatchSimulationEngine
             {
                 var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
                     homeMgr, homeClub, homeSquad, awayClub, awaySquad, isHomeMatch: true,
-                    worldSeed, match.SeasonNumber, match.RoundNumber, allowClassic505);
+                    worldSeed, match.SeasonNumber, match.RoundNumber, allowClassic505, world);
                 match.HomeFormation = form;
                 match.HomeActiveStarterIds = starters;
                 match.HomeBenchIds = bench;
             }
             else
             {
-                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(homeSquad, TacticalFormations.All["4-4-2"]);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(homeSquad, TacticalFormations.All["4-4-2"], world,
+                    homeClub.HumanCoachId == null ? LineupSelectionMode.Automatic : homeClub.LineupSelectionMode, homeClub.PreferredStarterIds);
                 match.HomeFormation = "4-4-2";
                 match.HomeActiveStarterIds = starters;
                 match.HomeBenchIds = bench;
@@ -995,14 +997,15 @@ public static partial class MatchSimulationEngine
             {
                 var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
                     awayMgr, awayClub, awaySquad, homeClub, homeSquad, isHomeMatch: false,
-                    worldSeed, match.SeasonNumber, match.RoundNumber, allowClassic505);
+                    worldSeed, match.SeasonNumber, match.RoundNumber, allowClassic505, world);
                 match.AwayFormation = form;
                 match.AwayActiveStarterIds = starters;
                 match.AwayBenchIds = bench;
             }
             else
             {
-                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(awaySquad, TacticalFormations.All["4-4-2"]);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(awaySquad, TacticalFormations.All["4-4-2"], world,
+                    awayClub.HumanCoachId == null ? LineupSelectionMode.Automatic : awayClub.LineupSelectionMode, awayClub.PreferredStarterIds);
                 match.AwayFormation = "4-4-2";
                 match.AwayActiveStarterIds = starters;
                 match.AwayBenchIds = bench;
@@ -1028,16 +1031,16 @@ public static partial class MatchSimulationEngine
             match.CurrentMinute = m;
             SimulateSingleMinute(match, homeClub, awayClub, worldPlayers, homeIdentity, awayIdentity, worldSeed, allowClassic505);
             if (homeClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_FIRST_HALF, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_FIRST_HALF, worldPlayers, allowClassic505, world);
             if (awayClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_FIRST_HALF, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_FIRST_HALF, worldPlayers, allowClassic505, world);
         }
 
         // 3. Free Halftime Interval at 45'
         if (homeClub.HumanCoachId == null)
-            AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.HALFTIME_PAUSED, worldPlayers, allowClassic505);
+            AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.HALFTIME_PAUSED, worldPlayers, allowClassic505, world);
         if (awayClub.HumanCoachId == null)
-            AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.HALFTIME_PAUSED, worldPlayers, allowClassic505);
+            AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.HALFTIME_PAUSED, worldPlayers, allowClassic505, world);
 
         // 4. Second Half (Minutes 46..90)
         for (int m = 46; m <= 90; m++)
@@ -1045,9 +1048,9 @@ public static partial class MatchSimulationEngine
             match.CurrentMinute = m;
             SimulateSingleMinute(match, homeClub, awayClub, worldPlayers, homeIdentity, awayIdentity, worldSeed, allowClassic505);
             if (homeClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_SECOND_HALF, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_SECOND_HALF, worldPlayers, allowClassic505, world);
             if (awayClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_SECOND_HALF, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_SECOND_HALF, worldPlayers, allowClassic505, world);
         }
 
         int simulatedMinutes = 90;
@@ -1067,9 +1070,9 @@ public static partial class MatchSimulationEngine
 
             // Free break before Extra Time (90')
             if (homeClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.EXTRA_TIME_BREAK, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.EXTRA_TIME_BREAK, worldPlayers, allowClassic505, world);
             if (awayClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.EXTRA_TIME_BREAK, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.EXTRA_TIME_BREAK, worldPlayers, allowClassic505, world);
 
             // First Half of Extra Time (91..105)
             for (int m = 91; m <= 105; m++)
@@ -1077,16 +1080,16 @@ public static partial class MatchSimulationEngine
                 match.CurrentMinute = m;
                 SimulateSingleMinute(match, homeClub, awayClub, worldPlayers, homeIdentity, awayIdentity, worldSeed, allowClassic505);
                 if (homeClub.HumanCoachId == null)
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505, world);
                 if (awayClub.HumanCoachId == null)
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505, world);
             }
 
             // Free Halftime of Extra Time (105')
             if (homeClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.EXTRA_TIME_HALFTIME, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.EXTRA_TIME_HALFTIME, worldPlayers, allowClassic505, world);
             if (awayClub.HumanCoachId == null)
-                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.EXTRA_TIME_HALFTIME, worldPlayers, allowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.EXTRA_TIME_HALFTIME, worldPlayers, allowClassic505, world);
 
             // Second Half of Extra Time (106..120)
             for (int m = 106; m <= 120; m++)
@@ -1094,9 +1097,9 @@ public static partial class MatchSimulationEngine
                 match.CurrentMinute = m;
                 SimulateSingleMinute(match, homeClub, awayClub, worldPlayers, homeIdentity, awayIdentity, worldSeed, allowClassic505);
                 if (homeClub.HumanCoachId == null)
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, true, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505, world);
                 if (awayClub.HumanCoachId == null)
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, false, RoundState.RUNNING_EXTRA_TIME, worldPlayers, allowClassic505, world);
             }
 
             simulatedMinutes = 120;

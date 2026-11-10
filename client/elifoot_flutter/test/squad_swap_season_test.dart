@@ -1,5 +1,4 @@
 import 'package:elifoot_flutter/classic_layout.dart';
-import 'package:elifoot_flutter/tactical_formation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'classic_ux_014b_test.dart' show WaitingRoomApi, join;
@@ -36,26 +35,4 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   }
-
-  test('Best lineup can select ten defenders or prefer the leading scorer', () {
-    final squad = <Map<String, dynamic>>[
-      {'id': 'g', 'position': 'G', 'strength': 45},
-      for (var i = 0; i < 10; i++)
-        {'id': 'd$i', 'position': 'D', 'strength': 40 - i},
-      {'id': 'scorer', 'position': 'A', 'strength': 20, 'seasonGoals': 12},
-      {
-        'id': 'injured',
-        'position': 'A',
-        'strength': 50,
-        'seasonGoals': 50,
-        'injuryDaysRemaining': 1,
-      },
-    ];
-    final strongest = bestSquadLineup(squad, '4-4-2', preferGoals: false);
-    expect(strongest.formation, '10-0-0');
-    final scorers = bestSquadLineup(squad, '4-4-2', preferGoals: true);
-    expect(scorers.formation, '9-0-1');
-    expect(scorers.starters, contains('scorer'));
-    expect(scorers.starters, isNot(contains('injured')));
-  });
 }

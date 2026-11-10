@@ -47,7 +47,7 @@ public partial class MultiSeasonAndBenchmarkTests
         File.WriteAllText(path, JsonSerializer.Serialize(report, json));
         Assert.Equal(100, result.SeasonsCompleted);
         Assert.Equal(35_100, result.TotalMatchesCompleted);
-        Assert.Equal(2_200, observations);
+        Assert.Equal(100 * CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(128).Count, observations);
         Assert.Equal(0, result.InvalidLineupSelectionViolations);
         Assert.Equal(0, result.DoubleSettledMatchFinancialViolations);
         string baselinePath = Path.Combine(folder, "baseline-100-seasons.json");

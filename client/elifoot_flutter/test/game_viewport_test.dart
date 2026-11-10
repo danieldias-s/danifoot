@@ -7,6 +7,8 @@ import 'package:elifoot_flutter/match_interaction_dialog.dart';
 import 'package:elifoot_flutter/presentation_version.dart';
 import 'package:elifoot_flutter/presentation_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'classic_ux_014b_test.dart' show WaitingRoomApi, join;
@@ -103,6 +105,69 @@ void main() {
   }
 
   testWidgets(
+    'Classic desktop menus stay readable and usable at tablet widths',
+    (tester) async {
+      tester.view.physicalSize = const Size(1360, 900);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(tester, api);
+      await _selectClassic(tester, api);
+
+      for (final size in [
+        const Size(1024, 640),
+        const Size(1072, 768),
+        const Size(1280, 720),
+        const Size(1360, 900),
+      ]) {
+        tester.view.physicalSize = size;
+        await tester.pumpAndSettle();
+        final title = tester.getRect(find.byType(RetroTitle).first);
+        final footer = tester.getRect(find.widgetWithText(RetroButton, 'Jogo'));
+        for (final label in [
+          'Configurações',
+          'Táticas',
+          'Equipa',
+          'Jogador',
+          'Campeonato',
+          'Treinador',
+        ]) {
+          final menu = find.widgetWithText(PopupMenuButton<int>, label);
+          final bounds = tester.getRect(menu);
+          expect(
+            bounds.left,
+            greaterThanOrEqualTo(title.left),
+            reason: '$label at $size',
+          );
+          expect(
+            bounds.right,
+            lessThanOrEqualTo(title.right),
+            reason: '$label at $size',
+          );
+          expect(bounds.top, greaterThanOrEqualTo(title.bottom));
+          expect(bounds.bottom, lessThan(footer.top));
+          final text = find.descendant(of: menu, matching: find.text(label));
+          expect(
+            tester.renderObject<RenderParagraph>(text).didExceedMaxLines,
+            isFalse,
+          );
+          expect(menu.hitTestable(), findsOneWidget);
+          await tester.tap(menu);
+          await tester.pumpAndSettle();
+          expect(find.byType(PopupMenuItem<int>), findsWidgets);
+          await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+          await tester.pumpAndSettle();
+          expect(find.byType(PopupMenuItem<int>), findsNothing);
+          expect(tester.takeException(), isNull, reason: '$label at $size');
+        }
+      }
+      await tester.pumpWidget(const SizedBox());
+      await tester.pumpAndSettle();
+    },
+  );
+
+  testWidgets(
     'Classic substitutions stay centered and scroll to the ninth reserve',
     (tester) async {
       tester.view.physicalSize = const Size(1360, 900);
@@ -115,7 +180,7 @@ void main() {
       await api.emit('HALFTIME_PAUSED');
       await tester.pumpAndSettle();
       final modal = find.byKey(const Key('shared-substitution-dialog'));
-    expect(tester.widget(modal), isA<ClassicMatchActionDialog>());
+      expect(tester.widget(modal), isA<ClassicMatchActionDialog>());
       final lastReserve = find.byKey(const ValueKey('sub-select-in-extra-8'));
 
       for (final size in [const Size(1920, 500), const Size(360, 640)]) {

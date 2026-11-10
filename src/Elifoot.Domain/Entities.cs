@@ -88,6 +88,7 @@ public class Club
     public Guid? AiManagerId { get; set; }
 
     public string PreferredFormation { get; set; } = "4-4-2";
+    public LineupSelectionMode LineupSelectionMode { get; set; } = LineupSelectionMode.Automatic;
     public List<Guid> PreferredStarterIds { get; set; } = new();
     public List<Guid> PreferredBenchIds { get; set; } = new();
 

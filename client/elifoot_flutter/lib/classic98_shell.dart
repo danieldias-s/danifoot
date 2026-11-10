@@ -189,8 +189,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
       0,
       (sum, r) => sum + asInt(r['goalsScored']),
     );
-    final dtoSeasonGoals =
-        asInt(player['seasonGoals']) + asInt(player['cupGoals']);
+    // Player seasonGoals already includes the cup subset.
+    final dtoSeasonGoals = maxOf([
+      asInt(player['seasonGoals']),
+      asInt(player['cupGoals']),
+    ]);
     final seasonGoals = maxOf([
       asInt(validHistory?['seasonGoals']),
       dtoSeasonGoals,
@@ -392,8 +395,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
                   ),
                 ),
                 SizedBox(height: mobile ? 3 : 4),
-                for (final (idx, stat)
-                    in _retroPlayerPanelStats(player).indexed)
+                for (final (idx, stat) in _retroPlayerPanelStats(
+                  player,
+                ).indexed)
                   Container(
                     key: ValueKey('classic-player-stat-row-$idx'),
                     padding: EdgeInsets.symmetric(
@@ -621,9 +625,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
         return [
           for (final shape in availableFormations)
             (shape, _tacticsLocked ? null : () => _changeFormation(shape)),
-          ('Automática', _tacticsLocked ? null : _autoPickBestLineup),
+          ('Automático (A)', _tacticsLocked ? null : _autoPickBestLineup),
           (
-            'Melhores',
+            'Melhores (M)',
             _tacticsLocked ? null : () => _pickBestSquad('strength'),
           ),
           ('Abrir táticas...', nav('tactics')),
@@ -880,7 +884,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               Container(
                 color: ClassicColors.retroGray,
                 padding: const EdgeInsets.fromLTRB(2, 2, 2, 3),
-                child: Row(
+                child: Wrap(
                   children: [
                     for (final title in [
                       'Configurações',
@@ -1042,12 +1046,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                       0,
                                     ),
                                     ('Mercado', Icons.swap_horiz, 'market', 2),
-                                    (
-                                      'Banco',
-                                      Icons.account_balance,
-                                      'bank',
-                                      3,
-                                    ),
+                                    ('Banco', Icons.account_balance, 'bank', 3),
                                     (
                                       'Estádio',
                                       Icons.stadium_outlined,
@@ -1070,12 +1069,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                                       'market',
                                       2,
                                     ),
-                                    (
-                                      'Banco',
-                                      Icons.account_balance,
-                                      'bank',
-                                      3,
-                                    ),
+                                    ('Banco', Icons.account_balance, 'bank', 3),
                                     (
                                       'Estádio',
                                       Icons.stadium_outlined,
@@ -1636,11 +1630,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 runSpacing: 6,
                 children: [
                   RetroButton(
-                    label: 'Automática',
+                    label: 'Automático (A)',
                     onPressed: _tacticsLocked ? null : _autoPickBestLineup,
                   ),
                   RetroButton(
-                    label: 'Melhores',
+                    label: 'Melhores (M)',
                     onPressed: _tacticsLocked
                         ? null
                         : () => _pickBestSquad('strength'),

@@ -219,7 +219,7 @@ public sealed partial class MultiplayerRoundOrchestrator
         if (club.PreferredStarterIds.Count != 11)
         {
             var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
-            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
             club.PreferredStarterIds = starters;
             club.PreferredBenchIds = bench;
         }
@@ -349,7 +349,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
                 var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
-                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
                 coach.SubmittedFormation = spec.Code;
                 coach.SubmittedStarterIds = starters;
                 coach.SubmittedBenchIds = bench;
@@ -433,7 +433,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 var club = world.Clubs.First(c => c.Id == autoHuman.CurrentClubId.Value);
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
                 var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
-                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
                 autoHuman.SubmittedFormation = spec.Code;
                 autoHuman.SubmittedStarterIds = starters;
                 autoHuman.SubmittedBenchIds = bench;
@@ -455,8 +455,9 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (valid.IsValid) continue;
             if (human.IsAutoMode)
             {
+                var club = world.Clubs.First(c => c.Id == human.CurrentClubId);
                 var spec = TacticalFormations.Resolve(human.SubmittedFormation, world.AllowClassic505);
-                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec);
+                var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
                 human.SubmittedFormation = spec.Code; human.SubmittedStarterIds = starters; human.SubmittedBenchIds = bench;
                 if (SquadValidator.ValidatePreMatchLineup(spec.Code, starters, bench, squad, world.AllowClassic505).IsValid) continue;
             }
@@ -506,14 +507,14 @@ public sealed partial class MultiplayerRoundOrchestrator
                 {
                     var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
                         mgr, homeClub, homeSquad, awayClub, awaySquad, isHomeMatch: true,
-                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                     match.HomeFormation = form;
                     match.HomeActiveStarterIds = starters;
                     match.HomeBenchIds = bench;
                 }
                 else
                 {
-                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(homeSquad, TacticalFormations.All["4-4-2"]);
+                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(homeSquad, TacticalFormations.All["4-4-2"], world, LineupSelectionMode.Automatic, homeClub.PreferredStarterIds);
                     match.HomeFormation = "4-4-2";
                     match.HomeActiveStarterIds = starters;
                     match.HomeBenchIds = bench;
@@ -534,14 +535,14 @@ public sealed partial class MultiplayerRoundOrchestrator
                 {
                     var (form, starters, bench, _) = AiManagerBrain.PlanAndSelectLineup(
                         mgr, awayClub, awaySquad, homeClub, homeSquad, isHomeMatch: false,
-                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                        world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                     match.AwayFormation = form;
                     match.AwayActiveStarterIds = starters;
                     match.AwayBenchIds = bench;
                 }
                 else
                 {
-                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(awaySquad, TacticalFormations.All["4-4-2"]);
+                    var (starters, bench) = AiManagerBrain.BuildStartersAndBench(awaySquad, TacticalFormations.All["4-4-2"], world, LineupSelectionMode.Automatic, awayClub.PreferredStarterIds);
                     match.AwayFormation = "4-4-2";
                     match.AwayActiveStarterIds = starters;
                     match.AwayBenchIds = bench;
@@ -916,11 +917,11 @@ public sealed partial class MultiplayerRoundOrchestrator
                 // AI in-match reactive adjustments (never opens a global pause window!)
                 if (homeClub.HumanCoachId == null)
                 {
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, isHomeTeam: true, world.RoundState, playerMap, world.AllowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, homeClub, homeMgr, isHomeTeam: true, world.RoundState, playerMap, world.AllowClassic505, world);
                 }
                 if (awayClub.HumanCoachId == null)
                 {
-                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, isHomeTeam: false, world.RoundState, playerMap, world.AllowClassic505);
+                    AiManagerBrain.EvaluateAiInMatchReaction(match, awayClub, awayMgr, isHomeTeam: false, world.RoundState, playerMap, world.AllowClassic505, world);
                 }
             }
 
@@ -952,12 +953,12 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (home.HumanCoachId == null)
             {
                 var mgr = home.AiManagerId != null ? aiDict.GetValueOrDefault(home.AiManagerId.Value) : null;
-                AiManagerBrain.EvaluateAiInMatchReaction(match, home, mgr, true, world.RoundState, playerMap, world.AllowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, home, mgr, true, world.RoundState, playerMap, world.AllowClassic505, world);
             }
             if (away.HumanCoachId == null)
             {
                 var mgr = away.AiManagerId != null ? aiDict.GetValueOrDefault(away.AiManagerId.Value) : null;
-                AiManagerBrain.EvaluateAiInMatchReaction(match, away, mgr, false, world.RoundState, playerMap, world.AllowClassic505);
+                AiManagerBrain.EvaluateAiInMatchReaction(match, away, mgr, false, world.RoundState, playerMap, world.AllowClassic505, world);
             }
         }
     }
@@ -1077,12 +1078,12 @@ public sealed partial class MultiplayerRoundOrchestrator
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
                 if (club.HumanCoachId == null && club.AiManagerId != null && aiDict.TryGetValue(club.AiManagerId.Value, out var mgr))
                 {
-                    AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                    AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                 }
                 else if (club.HumanCoachId != null)
                 {
                     TacticalFormations.TryGet(club.PreferredFormation, world.AllowClassic505, out var spec);
-                    var (s, b) = AiManagerBrain.BuildStartersAndBench(squad, spec ?? TacticalFormations.All["4-4-2"]);
+                    var (s, b) = AiManagerBrain.BuildStartersAndBench(squad, spec ?? TacticalFormations.All["4-4-2"], world, club.LineupSelectionMode, club.PreferredStarterIds);
                     club.PreferredStarterIds = s;
                     club.PreferredBenchIds = b;
                 }

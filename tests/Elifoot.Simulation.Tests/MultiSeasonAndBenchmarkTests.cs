@@ -72,7 +72,7 @@ public partial class MultiSeasonAndBenchmarkTests
         Assert.Equal(100, expA.SeasonsCompleted);
         Assert.Equal(35_100, expA.TotalMatchesScheduled);
         Assert.Equal(35_100, expA.TotalMatchesCompleted);
-        Assert.Equal(2_200, expA.TotalRoundsCompleted);
+        Assert.Equal(100 * CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(128).Count, expA.TotalRoundsCompleted);
         Assert.True(expA.RealMinutesSimulated >= 3_159_000);
 
         foreach (var exp in new[] { expA, expB, expC })
@@ -988,7 +988,7 @@ public partial class MultiSeasonAndBenchmarkTests
             if (home.HumanCoachId == null && homeAi != null)
             {
                 var (f, s, b, _) = AiManagerBrain.PlanAndSelectLineup(
-                    homeAi, home, homeSquad, away, awaySquad, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                    homeAi, home, homeSquad, away, awaySquad, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                 match.HomeFormation = f;
                 match.HomeActiveStarterIds = new List<Guid>(s);
                 match.HomeBenchIds = new List<Guid>(b);
@@ -1005,7 +1005,7 @@ public partial class MultiSeasonAndBenchmarkTests
             else
             {
                 TacticalFormations.TryGet(home.PreferredFormation, world.AllowClassic505, out var specH);
-                var (s, b) = AiManagerBrain.BuildStartersAndBench(homeSquad, specH ?? TacticalFormations.All["4-4-2"]);
+                var (s, b) = AiManagerBrain.BuildStartersAndBench(homeSquad, specH ?? TacticalFormations.All["4-4-2"], world, LineupSelectionMode.Automatic, home.PreferredStarterIds);
                 match.HomeFormation = (specH ?? TacticalFormations.All["4-4-2"]).Code;
                 match.HomeActiveStarterIds = s;
                 match.HomeBenchIds = b;
@@ -1014,7 +1014,7 @@ public partial class MultiSeasonAndBenchmarkTests
             if (away.HumanCoachId == null && awayAi != null)
             {
                 var (f, s, b, _) = AiManagerBrain.PlanAndSelectLineup(
-                    awayAi, away, awaySquad, home, homeSquad, false, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505);
+                    awayAi, away, awaySquad, home, homeSquad, false, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
                 match.AwayFormation = f;
                 match.AwayActiveStarterIds = new List<Guid>(s);
                 match.AwayBenchIds = new List<Guid>(b);
@@ -1031,7 +1031,7 @@ public partial class MultiSeasonAndBenchmarkTests
             else
             {
                 TacticalFormations.TryGet(away.PreferredFormation, world.AllowClassic505, out var specA);
-                var (s, b) = AiManagerBrain.BuildStartersAndBench(awaySquad, specA ?? TacticalFormations.All["4-4-2"]);
+                var (s, b) = AiManagerBrain.BuildStartersAndBench(awaySquad, specA ?? TacticalFormations.All["4-4-2"], world, LineupSelectionMode.Automatic, away.PreferredStarterIds);
                 match.AwayFormation = (specA ?? TacticalFormations.All["4-4-2"]).Code;
                 match.AwayActiveStarterIds = s;
                 match.AwayBenchIds = b;
@@ -1053,7 +1053,7 @@ public partial class MultiSeasonAndBenchmarkTests
                 awaySquad,
                 playerDict,
                 world.Seed,
-                world.AllowClassic505);
+                world.AllowClassic505, world);
 
             result.RealMinutesSimulated += minutesSimulated;
             result.Capture?.ObserveMatch(match, home, away, playerDict, auditHome!, auditAway!, initialHomeFormation, initialAwayFormation, minutesSimulated);
@@ -1484,7 +1484,7 @@ public partial class MultiSeasonAndBenchmarkTests
 
             TacticalFormations.TryGet(chosenFormation, world.AllowClassic505, out var chosenSpec);
             var activeSpec = chosenSpec ?? TacticalFormations.All["4-4-2"];
-            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, activeSpec);
+            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, activeSpec, world, club.LineupSelectionMode, club.PreferredStarterIds);
             club.PreferredFormation = activeSpec.Code;
             club.PreferredStarterIds = starters;
             club.PreferredBenchIds = bench;
@@ -1498,7 +1498,7 @@ public partial class MultiSeasonAndBenchmarkTests
             var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
             if (SquadValidator.ValidatePreMatchLineup(club.PreferredFormation,club.PreferredStarterIds,club.PreferredBenchIds,squad,world.AllowClassic505).IsValid) continue;
             var spec = TacticalFormations.All.GetValueOrDefault(club.PreferredFormation,TacticalFormations.All["4-4-2"]);
-            var (starters,bench)=AiManagerBrain.BuildStartersAndBench(squad,spec);
+            var (starters,bench)=AiManagerBrain.BuildStartersAndBench(squad,spec,world,club.LineupSelectionMode,club.PreferredStarterIds);
             club.PreferredStarterIds=starters;club.PreferredBenchIds=bench;
         }
     }

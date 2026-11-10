@@ -18,6 +18,33 @@ namespace Elifoot.Integration.Tests;
 public sealed class AccountLoginTests
 {
     [Fact]
+    public async Task V3LineupEndpointChecksOwnerAndPersistsModeAndIdempotencyAcrossSqliteRestart()
+    {
+        await using var fixture = new Fixture(); using var first = fixture.Server.CreateClient(); using var other = fixture.Server.CreateClient();
+        var coach = (await Register(first, "v3-owner", "Owner")).GetProperty("coachId").GetGuid();
+        await Register(other, "v3-other", "Other");
+        var created = await Send(first, "/api/worlds", new CreateWorldRequest("V3 lineup", MaxHumans: 2)); created.EnsureSuccessStatusCode();
+        var id = (await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
+        (await Send(first, $"/api/worlds/{id}/join")).EnsureSuccessStatusCode();
+        var repo = fixture.Server.Services.GetRequiredService<IWorldRepository>(); var w = (await repo.GetWorldAsync(id))!;
+        var club = w.Clubs.Single(c => c.HumanCoachId == coach);
+        var request = new SelectLineupRequest(coach, "4-4-2", LineupSelectionMode.Best, null, "v3-persisted-click", w.RoundVersion);
+        string url = $"/api/worlds/{id}/lineup-selection";
+        Assert.Equal(HttpStatusCode.Forbidden, (await Send(other, url, request)).StatusCode);
+        var response = await Send(first, url, request); response.EnsureSuccessStatusCode();
+        var selection = (await response.Content.ReadFromJsonAsync<LineupSelectionDto>())!;
+        Assert.Equal(LineupSelectionMode.Best, selection.Mode); Assert.Equal(11, selection.StarterPlayerIds.Count);
+        Assert.All(selection.StarterPlayerIds, player => Assert.Equal(club.Id, w.Players.Single(p => p.Id == player).ClubId));
+        await fixture.Restart(); EfWorldRepository.ClearCacheForTesting();
+        using var reconnected = fixture.Server.CreateClient(); await Login(reconnected, "v3-owner");
+        var restored = (await fixture.Server.Services.GetRequiredService<IWorldRepository>().GetWorldAsync(id))!;
+        Assert.Equal(LineupSelectionMode.Best, restored.Clubs.Single(c => c.Id == club.Id).LineupSelectionMode);
+        var replay = await Send(reconnected, url, request); replay.EnsureSuccessStatusCode();
+        var again = (await replay.Content.ReadFromJsonAsync<LineupSelectionDto>())!;
+        Assert.Equal(selection.RoundVersion, again.RoundVersion); Assert.Equal(selection.StarterPlayerIds, again.StarterPlayerIds);
+    }
+
+    [Fact]
     public async Task SalaryDecisionIsOwnedPersistentAndConcurrentTabsProduceOnlyOneAuction()
     {
         await using var fixture=new Fixture();using var first=fixture.Server.CreateClient();using var second=fixture.Server.CreateClient();

@@ -14,6 +14,25 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
 
   FakeGameplay011ApiClient() : super(baseUrl: 'http://localhost:5000');
 
+  @override
+  Future<Map<String, dynamic>> selectLineup({
+    required String worldId,
+    required String coachId,
+    required String formation,
+    required String mode,
+    required List<String> currentStarterIds,
+    required int roundVersion,
+    String? idempotencyKey,
+  }) async => {
+    'gameWorldId': worldId,
+    'clubId': myClubId,
+    'formation': formation,
+    'mode': mode,
+    'starterPlayerIds': List.generate(11, (i) => 'p-${i + 1}'),
+    'benchPlayerIds': List.generate(5, (i) => 'p-${i + 12}'),
+    'roundVersion': ++this.roundVersion,
+  };
+
   String currentRoundState = 'PREPARING';
   int currentRound = 1;
   int currentSeason = 1;

@@ -114,44 +114,6 @@ bool _available(Map<String, dynamic> player) =>
   );
 }
 
-({List<String> starters, List<String> bench, String formation}) bestSquadLineup(
-  List<Map<String, dynamic>> squad,
-  String currentFormation, {
-  required bool preferGoals,
-}) {
-  final eligible = squad.where(_available).toList();
-  int compareStrength(Map<String, dynamic> a, Map<String, dynamic> b) {
-    final strength = (b['strength'] as num? ?? 0).compareTo(
-      a['strength'] as num? ?? 0,
-    );
-    return strength == 0 ? '${a['id']}'.compareTo('${b['id']}') : strength;
-  }
-
-  final keepers = eligible.where((p) => _position(p) == 'G').toList()
-    ..sort(compareStrength);
-  final outfield = eligible.where((p) => _position(p) != 'G').toList()
-    ..sort((a, b) {
-      if (preferGoals) {
-        final goals = (b['seasonGoals'] as num? ?? 0).compareTo(
-          a['seasonGoals'] as num? ?? 0,
-        );
-        if (goals != 0) return goals;
-      }
-      return compareStrength(a, b);
-    });
-  final starters = [...keepers.take(1), ...outfield.take(10)];
-  final reserves = [
-    ...keepers.skip(1).take(1),
-    ...outfield.skip(10),
-    ...keepers.skip(2),
-  ].take(9);
-  return (
-    starters: starters.map((p) => '${p['id']}').toList(),
-    bench: reserves.map((p) => '${p['id']}').toList(),
-    formation: formationFromPlayers(starters, currentFormation),
-  );
-}
-
 /// Slots follow the chosen shape, including legal out-of-position players.
 /// Every selected player remains present once, with their actual nominal position.
 List<List<Map<String, dynamic>>> tacticalPitchLines(
