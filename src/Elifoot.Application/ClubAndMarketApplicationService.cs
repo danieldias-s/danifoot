@@ -171,16 +171,11 @@ public sealed partial class ClubAndMarketApplicationService
 
         var player = world.Players.FirstOrDefault(p => p.Id == playerId && p.ClubId == coach.CurrentClubId);
         if (player == null) return (false, "Jogador não pertence ao seu clube.");
-        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado não pode sair do clube nesta temporada.");
-
-        var squad = world.Players.Where(p => p.ClubId == coach.CurrentClubId).ToList();
-        var (canRemove, err) = SquadValidator.CanRemovePlayerFromSquad(squad, player.Id);
-        if (!canRemove) return (false, err);
+        var sale=MarketValidationEngine.ValidateSale(world,coach.CurrentClubId.Value,player.Id);
+        if(!sale.Success)return sale;
 
         if (askingPrice <= 0m) return (false, "O preço pedido deve ser maior que zero.");
 
-        if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.");
-        if (player.ContractRoundsRemaining <= 0&&!world.Economy.Rules.SeasonContractsEnabled) return (false, "Contrato do jogador encerrado.");
         if (askingPrice != Math.Round(askingPrice, 2)) return (false, "Preço deve ter até duas casas decimais.");
         player.TransferListingVersion++;
         player.IsListedForTransfer = true;
@@ -204,9 +199,6 @@ public sealed partial class ClubAndMarketApplicationService
             sellerClubId.HasValue && player.ClubId != sellerClubId ||
             askingPrice.HasValue && player.AskingPrice != askingPrice)
             return (false, "O anúncio mudou. Atualize antes de confirmar a compra.");
-        if (player.ContractRoundsRemaining <= 0&&!world.Economy.Rules.SeasonContractsEnabled) return (false, "Contrato do jogador encerrado.");
-        if (world.Players.Count(p=>p.ClubId==coach.CurrentClubId)+world.Auctions.Count(a=>!a.IsClosed&&a.HighestBidderClubId==coach.CurrentClubId)>=SquadValidator.MaxSquadSize)
-            return (false,"Limite de elenco reservado por contratações em andamento.");
         return MarketAndEconomyEngine.ExecuteTransfer(world, coach.CurrentClubId.Value, player.ClubId.Value,
             player.Id, player.AskingPrice.Value, "Compra direta pelo preço anunciado", idempotencyKey);
     }
@@ -231,16 +223,9 @@ public sealed partial class ClubAndMarketApplicationService
         var player = world.Players.FirstOrDefault(p => p.Id == playerId);
         if (player == null || player.ClubId == null || player.ClubId == buyer.Id)
             return (false, "Jogador inválido para proposta.", null);
-        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado não pode ser negociado nesta temporada.",null);
-
-        if (offeredAmount <= 0m || offeredAmount != Math.Round(offeredAmount,2) || ClassicEconomyEngine.AvailableCash(world,buyer) < offeredAmount)
-            return (false, "Saldo insuficiente para sustentar a proposta.", null);
-
-        if(ClassicEconomyEngine.AuctionReserved(world,player.Id))return(false,"Jogador reservado para leilão.",null);
+        var validation=MarketValidationEngine.ValidatePurchase(world,buyer.Id,player.ClubId.Value,player.Id,offeredAmount);
+        if(!validation.Success)return(false,validation.Error,null);
         var seller = world.Clubs.First(c => c.Id == player.ClubId.Value);
-        var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
-        var (canRemove, remErr) = SquadValidator.CanRemovePlayerFromSquad(sellerSquad, player.Id);
-        if (!canRemove) return (false, remErr, null);
 
         var offer = new TransferOffer
         {

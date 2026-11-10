@@ -145,7 +145,8 @@ public class ClassicEconomy012DTests
     [Fact] public void BidsReserveCashAndRepaymentCannotSpendItTwice()
     {
         var(w,c)=World();ClassicEconomyEngine.TakeClassicLoan(w,c,"loan");c.CashBalance=500000;
-        var p=w.Players.First(p=>p.ClubId!=c.Id);p.ClubId=null;var a=new AuctionItem{PlayerId=p.Id,MinimumBid=0,Reason=AuctionReason.SalaryRenewalRefused};w.Auctions.Add(a);
+        var p=w.Players.First(p=>p.ClubId!=c.Id);p.ClubId=null;var a=new AuctionItem{PlayerId=p.Id,MinimumBid=0,Reason=AuctionReason.SalaryRenewalRefused,
+            CreatedAtSeason=w.SeasonNumber,CreatedAtRound=w.RoundNumber,ExpiresAtRound=w.RoundNumber+2};w.Auctions.Add(a);
         Assert.True(ClassicEconomyEngine.PlaceBid(w,c,a.Id,10000,"bid").Success);Assert.True(ClassicEconomyEngine.PlaceBid(w,c,a.Id,10000,"bid").Success);
         Assert.False(ClassicEconomyEngine.RepayLoan(w,c,w.BankLoans[0].Id,"repay").Success);Assert.Equal(490000,ClassicEconomyEngine.AvailableCash(w,c));
         Assert.False(ClassicEconomyEngine.PlaceBid(w,c,a.Id,10000,"newbid").Success);

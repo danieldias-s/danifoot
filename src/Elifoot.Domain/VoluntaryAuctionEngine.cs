@@ -8,6 +8,7 @@ public static class VoluntaryAuctionEngine
         decimal minimumBid=VoluntaryAuctionDefaults.MinimumBid,int durationRounds=VoluntaryAuctionDefaults.DurationRounds)
     {
         if(string.IsNullOrWhiteSpace(key))return(false,"Identificador da operação é obrigatório.",null);
+        if(!world.Clubs.Contains(seller))return(false,"MARKET_AUTHORITY: Clube não pertence a esta sala.",null);
         var id=CoachCareerEngine.StableId($"voluntary-auction:{world.Id}:{seller.Id}:{key}");
         var previous=world.Auctions.FirstOrDefault(a=>a.Id==id);
         if(previous!=null){bool same=previous.PlayerId==playerId&&previous.MinimumBid==minimumBid&&previous.DurationRounds==durationRounds;return(same,same?null:"Chave usada por outra operação.",same?id:null);}
@@ -16,9 +17,9 @@ public static class VoluntaryAuctionEngine
         if(durationRounds is <1 or >3)return(false,"Duração deve ser de 1, 2 ou 3 rodadas globais concluídas.",null);
         var player=world.Players.FirstOrDefault(p=>p.Id==playerId&&p.ClubId==seller.Id);
         if(player==null)return(false,"Jogador não pertence ao seu clube.",null);
-        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado não pode ser vendido ou leiloado nesta temporada.",null);
-        if(ClassicEconomyEngine.AuctionReserved(world,playerId))return(false,"Jogador já está em leilão.",null);
-        // Do not promise more outgoing players than a legal squad can release.
+        var sale=MarketValidationEngine.ValidateSale(world,seller.Id,player.Id);
+        if(!sale.Success)return(false,sale.Error,null);
+        // Preserve the existing, stricter outgoing reservation budget specifically at voluntary creation.
         var available=world.Players.Where(p=>p.ClubId==seller.Id&&!ClassicEconomyEngine.AuctionReserved(world,p.Id)).ToList();
         var removal=SquadValidator.CanRemovePlayerFromSquad(available,player.Id);
         if(!removal.CanRemove)return(false,removal.ErrorMessage,null);
@@ -43,10 +44,16 @@ public static class VoluntaryAuctionEngine
         if(!IsDue(world,auction))return;
         var player=world.Players.FirstOrDefault(p=>p.Id==auction.PlayerId);
         var buyer=world.Clubs.FirstOrDefault(c=>c.Id==auction.HighestBidderClubId);
-        bool sold=player?.ClubId==auction.FormerClubId&&player?.ClubId is Guid seller&&buyer!=null&&buyer.Id!=seller
-            &&auction.CurrentBid>=auction.MinimumBid&&auction.CurrentBid>=0
-            &&MarketAndEconomyEngine.ExecuteTransfer(world,buyer.Id,seller,player.Id,auction.CurrentBid,
-                "Leilão voluntário",$"auction:{auction.Id}","VoluntaryAuction",auction.Id).Success;
+        bool sold=false;
+        if(player?.ClubId==auction.FormerClubId&&player?.ClubId is Guid seller&&buyer!=null&&buyer.Id!=seller
+            &&MarketValidationEngine.ValidateAuctionWinner(world,auction).Success)
+        {
+            var result=MarketAndEconomyEngine.ExecuteTransfer(world,buyer.Id,seller,player.Id,auction.CurrentBid,
+                "Leilão voluntário",$"auction:{auction.Id}","VoluntaryAuction",auction.Id);
+            if(result.ErrorMessage?.StartsWith("MARKET_TRANSFER_FAILED",StringComparison.Ordinal)==true)
+            {logs?.Add(result.ErrorMessage);return;}
+            sold=result.Success;
+        }
         auction.IsClosed=true;auction.ClosureReason=sold?"SOLD":"AUCTION_UNSOLD";
         world.Economy.AuctionHistory.Add(new(auction.Id,auction.PlayerId,auction.Reason,auction.FormerClubId,
             sold?buyer!.Id:null,world.SeasonNumber,world.RoundNumber,sold?auction.CurrentBid:0,auction.ClosureReason));

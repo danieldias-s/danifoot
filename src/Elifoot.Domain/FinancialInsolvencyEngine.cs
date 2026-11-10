@@ -64,30 +64,25 @@ public static partial class ClassicEconomyEngine
     }
     public static void SettleSpecialAuction(GameWorld w,AuctionItem auction,List<string>? logs=null)
     {
-        if(auction.IsClosed)return;
-        if(auction.ExpiresAtSeason.HasValue&&!IsSpecialAuctionDue(w,auction))return;
+        if(auction.IsClosed||!MarketValidationEngine.IsDue(w,auction))return;
         var p=w.Players.FirstOrDefault(p=>p.Id==auction.PlayerId);
         var buyer=w.Clubs.FirstOrDefault(c=>c.Id==auction.HighestBidderClubId);
         bool sold=false;
-        if(p!=null&&buyer!=null&&auction.CurrentBid>=auction.MinimumBid&&auction.CurrentBid>=0
-            &&AvailableCash(w,buyer,auction.Id)>=auction.CurrentBid&&w.Players.Count(p=>p.ClubId==buyer.Id)<SquadValidator.MaxSquadSize)
+        if(p!=null&&buyer!=null&&MarketValidationEngine.ValidateAuctionWinner(w,auction).Success)
         {
+            (bool Success,string? Error) result=(false,null);
             if(auction.Reason==AuctionReason.FinancialInsolvency&&p.ClubId==auction.FormerClubId&&p.ClubId is Guid sellerId)
-                sold=MarketAndEconomyEngine.ExecuteTransfer(w,buyer.Id,sellerId,p.Id,auction.CurrentBid,"Leilão por insolvência",
-                    $"auction:{auction.Id}","FinancialInsolvency",auction.Id).Success;
+                result=MarketAndEconomyEngine.ExecuteTransfer(w,buyer.Id,sellerId,p.Id,auction.CurrentBid,"Leilão por insolvência",
+                    $"auction:{auction.Id}","FinancialInsolvency",auction.Id);
             else if(auction.Reason==AuctionReason.SalaryRenewalRefused&&p.ClubId==null)
             {
-                sold=MarketAndEconomyEngine.TryRecordTransaction(w,buyer,FinancialTransactionCategory.AuctionPurchase,-auction.CurrentBid,
-                    $"Leilão de atleta livre: {p.DisplayName}",$"auction:{auction.Id}:win");
-                if(sold)
-                {
-                    var tx=w.Transactions[^1];tx.PlayerId=p.Id;tx.BuyerClubId=buyer.Id;tx.TransferTransactionId=tx.Id;
-                    tx.TransactionType="SalaryRefusalFreeAgent";
-                    decimal previous=p.SalaryPerRound;p.ClubId=buyer.Id;p.ContractRoundsRemaining=20;
-                    p.SalaryPerRound=MarketAndEconomyEngine.CalculateFairSalaryPerRound(p);
-                    RecordContract(w,p,previous,"FREE_AGENT_AUCTION",$"auction:{auction.Id}:contract");
-                }
+                result=MarketAndEconomyEngine.SignAuctionFreeAgent(w,auction,buyer,p,20,"FREE_AGENT_AUCTION",
+                    "SalaryRefusalFreeAgent",FinancialTransactionCategory.AuctionPurchase,auction.CurrentBid,
+                    $"auction:{auction.Id}:win",$"Leilão de atleta livre: {p.DisplayName}",true);
             }
+            if(result.Error?.StartsWith("MARKET_TRANSFER_FAILED",StringComparison.Ordinal)==true)
+            {logs?.Add(result.Error);return;}
+            sold=result.Success;
         }
         auction.IsClosed=true;auction.ClosureReason=sold?"SOLD":"AUCTION_UNSOLD";
         w.Economy.AuctionHistory.Add(new(auction.Id,auction.PlayerId,auction.Reason,auction.FormerClubId,
@@ -101,14 +96,18 @@ public static partial class ClassicEconomyEngine
         EnsureMigrated(w);string payload=$"{auctionId}:{amount.ToString(System.Globalization.CultureInfo.InvariantCulture)}";
         var receipt=Receipt(w,c,key,"AUCTION_BID",payload);
         if(receipt.Found)return(receipt.Valid,receipt.Valid?null:"Chave usada por outra operação.");
-        if(string.IsNullOrWhiteSpace(key)||!Safe(w))return(false,"Lances disponíveis somente entre partidas.");
+        if(string.IsNullOrWhiteSpace(key))return(false,"Identificador da operação é obrigatório.");
+        var result=TryPlaceBid(w,c,auctionId,amount);
+        if(result.Success)Remember(w,c,key,"AUCTION_BID",payload,auctionId);
+        return result;
+    }
+    internal static (bool Success,string? Error) TryPlaceBid(GameWorld w,Club c,Guid auctionId,decimal amount)
+    {
+        if(!w.Clubs.Contains(c))return(false,"MARKET_AUTHORITY: Clube não pertence a esta sala.");
         var a=w.Auctions.FirstOrDefault(a=>a.Id==auctionId&&!a.IsClosed);
         if(a==null)return(false,"Leilão encerrado ou inexistente.");
-        if(w.Players.Any(p=>p.Id==a.PlayerId&&p.ClubId==c.Id))return(false,"O clube já possui este jogador.");
-        if(w.Players.Count(p=>p.ClubId==c.Id)+w.Auctions.Count(a=>!a.IsClosed&&a.Id!=auctionId&&a.HighestBidderClubId==c.Id)>=SquadValidator.MaxSquadSize)
-            return(false,"Limite de elenco reservado por contratações em andamento.");
-        if(amount!=Math.Round(amount,a.Reason==AuctionReason.Voluntary?2:0)||amount<NextBid(a))return(false,"LANCE INSUFICIENTE. Respeite o mínimo, o incremento e a precisão do leilão.");
-        if(AvailableCash(w,c,a.Id)<amount)return(false,"SALDO INSUFICIENTE.");
-        a.CurrentBid=amount;a.HighestBidderClubId=c.Id;Remember(w,c,key,"AUCTION_BID",payload,a.Id);return(true,null);
+        var validation=MarketValidationEngine.ValidateBid(w,c.Id,a,amount);
+        if(!validation.Success)return validation;
+        a.CurrentBid=amount;a.HighestBidderClubId=c.Id;return(true,null);
     }
 }

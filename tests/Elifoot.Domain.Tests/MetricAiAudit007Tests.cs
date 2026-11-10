@@ -129,6 +129,9 @@ public class MetricAiAudit007Tests
         w.Auctions.Add(auction); MarketAndEconomyEngine.ProcessWeeklyAiMarketBatch(w);
         Assert.Contains(w.AuditLogs, a => a.ActionType == "AiAuctionBid");
         Assert.DoesNotContain(w.Transactions, t => t.Category == FinancialTransactionCategory.AuctionPurchase);
+        MarketAndEconomyEngine.SettleAuction(w, auction);
+        Assert.False(auction.IsClosed); // The settlement command must respect the deadline too.
+        w.RoundNumber = auction.ExpiresAtRound;
         MarketAndEconomyEngine.SettleAuction(w, auction); MarketAndEconomyEngine.SettleAuction(w, auction);
         var win = Assert.Single(w.Transactions, t => t.Category == FinancialTransactionCategory.AuctionPurchase);
         Assert.Equal("Auction", win.TransactionType); Assert.Null(win.SellerClubId); Assert.Equal(buyer.AiManagerId, win.ManagerId);

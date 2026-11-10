@@ -86,6 +86,20 @@ async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken
 app.UseRouting();
 app.UseCors();
 app.UseAccountLogin();
+// A failed market save must remain a server failure so clients retain the original command key.
+// Finance keeps the complete receipt for a durability retry; no incomplete operation is acknowledged.
+app.Use(async (context, next) =>
+{
+    try { await next(context); }
+    catch (Exception error) when (!context.Response.HasStarted
+        && context.Request.Path.StartsWithSegments("/api/worlds")
+        && context.Request.Path.Value?.Contains("/market/", StringComparison.Ordinal) == true
+        && error is IOException or DbUpdateException)
+    {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        await context.Response.WriteAsJsonAsync(new { error = "MARKET_PERSISTENCE_FAILED: A operação não foi confirmada. Repita com a mesma chave." });
+    }
+});
 
 // Initialize database schema and seed default 128-club world if configured
 using (var scope = app.Services.CreateScope())

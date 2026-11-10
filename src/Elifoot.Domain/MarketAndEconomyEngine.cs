@@ -531,7 +531,7 @@ public static class MarketAndEconomyEngine
         var playerDict = world.Players.ToDictionary(p => p.Id);
 
         // Update all AI squad plans first
-        foreach (var club in world.Clubs.Where(c => c.HumanCoachId == null && c.DivisionTier != DivisionTier.Distrital))
+        foreach (var club in world.Clubs.Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital))
         {
             if (club.AiManagerId != null && managerDict.TryGetValue(club.AiManagerId.Value, out var mgr))
             {
@@ -542,7 +542,7 @@ public static class MarketAndEconomyEngine
         }
 
         // 1. AI clubs list surplus players or discount stale listings
-        foreach (var club in world.Clubs.Where(c => c.HumanCoachId == null && c.DivisionTier != DivisionTier.Distrital))
+        foreach (var club in world.Clubs.Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital))
         {
             var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
             var plan = club.LatestSquadPlan;
@@ -562,8 +562,7 @@ public static class MarketAndEconomyEngine
                 if (!playerDict.TryGetValue(surplusId, out var p) || p.IsListedForTransfer
                     || ClassicEconomyEngine.IsSeasonRenewed(world, p)
                     || ClassicEconomyEngine.AuctionReserved(world, p.Id)) continue;
-                var (canRemove, _) = SquadValidator.CanRemovePlayerFromSquad(squad, p.Id);
-                if (!canRemove) continue;
+                if (!MarketValidationEngine.ValidateSale(world,club.Id,p.Id).Success) continue;
 
                 decimal fair = CalculateFairValue(p);
                 p.IsListedForTransfer = true;
@@ -575,7 +574,7 @@ public static class MarketAndEconomyEngine
         // 2. AI clubs respond to pending transfer offers where Seller is AI
         foreach (var offer in world.TransferOffers.Where(o => o.Status == TransferOfferStatus.Pending).ToList())
         {
-            if (!clubDict.TryGetValue(offer.SellerClubId, out var seller) || seller.HumanCoachId != null)
+            if (!clubDict.TryGetValue(offer.SellerClubId, out var seller) || !MarketValidationEngine.CanActAsAi(world,seller))
                 continue;
 
             if (!playerDict.TryGetValue(offer.PlayerId, out var player) || player.ClubId != seller.Id)
@@ -584,9 +583,7 @@ public static class MarketAndEconomyEngine
                 continue;
             }
 
-            var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
-            var (canRemove, _) = SquadValidator.CanRemovePlayerFromSquad(sellerSquad, player.Id);
-            if (!canRemove)
+            if (!MarketValidationEngine.ValidatePurchase(world,offer.BuyerClubId,seller.Id,player.Id,offer.OfferedAmount).Success)
             {
                 offer.Status = TransferOfferStatus.Rejected;
                 continue;
@@ -618,7 +615,7 @@ public static class MarketAndEconomyEngine
         // 3. AI clubs actively seek tactical reinforcements (up to max 1 signing per club per round)
         // Order by tactical need (PriorityGapPositions.Count) + deterministic round rotation so all divisions participate
         var buyerCandidates = world.Clubs
-            .Where(c => c.HumanCoachId == null && c.DivisionTier != DivisionTier.Distrital)
+            .Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital)
             .OrderByDescending(c => c.LatestSquadPlan?.PriorityGapPositions.Count ?? 0)
             .ThenBy(c => (c.DeterministicIndex + world.RoundNumber * 5) % 32)
             .ToList();
@@ -694,6 +691,8 @@ public static class MarketAndEconomyEngine
                 bool signedOrOffered = false;
                 foreach (var bestTarget in candidates)
                 {
+                    if (!MarketValidationEngine.ValidatePurchase(world,buyer.Id,bestTarget.Player.ClubId!.Value,
+                        bestTarget.Player.Id,bestTarget.Price).Success) continue;
                     RecordAiMarketAction(world, buyer, "AiPurchaseEvaluation", bestTarget.Player.Id, bestTarget.Price);
                     var seller = clubDict[bestTarget.Player.ClubId!.Value];
                     var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
@@ -789,17 +788,19 @@ public static class MarketAndEconomyEngine
                     auction.PrivateAiMaxBids[aiClub.Id] = privateMax;
                 }
 
+                if(auction.CurrentBid>privateMax)continue;
                 decimal nextRequiredBid = auction.Reason!=AuctionReason.ContractExpiration ? ClassicEconomyEngine.NextBid(auction) : auction.CurrentBid == 0m
                     ? auction.MinimumBid
                     : Math.Round(auction.CurrentBid * 1.06m, 0);
+                // Keep the legacy 6% strategy, subject to the same existing legal increment as human bids.
+                nextRequiredBid=Math.Max(nextRequiredBid,ClassicEconomyEngine.NextBid(auction));
 
                 if (auction.HighestBidderClubId != aiClub.Id
                     && nextRequiredBid <= privateMax
                     && ClassicEconomyEngine.AvailableCash(world,aiClub,auction.Id) >= nextRequiredBid + plan.EmergencyCashReserve)
                 {
-                    auction.CurrentBid = nextRequiredBid;
-                    auction.HighestBidderClubId = aiClub.Id;
-                    RecordAiMarketAction(world, aiClub, "AiAuctionBid", auction.PlayerId, nextRequiredBid, auction.Id);
+                    if(ClassicEconomyEngine.TryPlaceBid(world,aiClub,auction.Id,nextRequiredBid).Success)
+                        RecordAiMarketAction(world, aiClub, "AiAuctionBid", auction.PlayerId, nextRequiredBid, auction.Id);
                 }
             }
 
@@ -826,15 +827,12 @@ public static class MarketAndEconomyEngine
         string transactionType = "DirectPurchase",
         Guid? settlingAuctionId = null)
     {
-        if (buyerClubId == sellerClubId)
-            return (false, "O clube comprador e vendedor são o mesmo.");
-
-        var buyer = world.Clubs.FirstOrDefault(c => c.Id == buyerClubId);
-        var seller = world.Clubs.FirstOrDefault(c => c.Id == sellerClubId);
-        var player = world.Players.FirstOrDefault(p => p.Id == playerId);
-
-        if (buyer == null || seller == null || player == null)
-            return (false, "Clube ou jogador não encontrado.");
+        if (string.IsNullOrWhiteSpace(idempotencyKey)) return (false, "MARKET_KEY: Identificador da operação é obrigatório.");
+        var validation = MarketValidationEngine.ValidatePurchase(world, buyerClubId, sellerClubId, playerId, price, settlingAuctionId);
+        if (!validation.Success) return validation;
+        var buyer = world.Clubs.First(c => c.Id == buyerClubId);
+        var seller = world.Clubs.First(c => c.Id == sellerClubId);
+        var player = world.Players.First(p => p.Id == playerId);
 
         EnsureTransactionKeys(world);
         if (world.AppliedTransactionKeys.Contains($"{buyer.Id}:{idempotencyKey}:buy")
@@ -843,25 +841,15 @@ public static class MarketAndEconomyEngine
 
         RecordAiMarketAction(world, buyer, "AiPurchaseAttempt", player.Id, price);
 
-        if (player.ClubId != seller.Id)
-            return (false, "O jogador não pertence mais ao clube vendedor.");
-        if(ClassicEconomyEngine.IsSeasonRenewed(world,player))return(false,"Jogador renovado está protegido de qualquer venda ou leilão nesta temporada.");
-
-        bool auctionSale=settlingAuctionId is Guid aid&&world.Auctions.Any(a=>a.Id==aid&&!a.IsClosed&&a.PlayerId==playerId&&a.FormerClubId==sellerClubId&&a.Reason is (AuctionReason.FinancialInsolvency or AuctionReason.Voluntary)&&a.HighestBidderClubId==buyerClubId&&a.CurrentBid==price);
-        if(ClassicEconomyEngine.AuctionReserved(world,playerId)&&!auctionSale)return(false,"Jogador reservado para leilão.");
-        if (price < 0m || price == 0m&&!auctionSale || ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId) < price)
-            return (false, "Saldo insuficiente no clube comprador.");
+        bool auctionSale = settlingAuctionId.HasValue;
         if(OperatingEconomyEngine.AiDebtReserve(world,buyer)>0&&ClassicEconomyEngine.AvailableCash(world,buyer,settlingAuctionId)-OperatingEconomyEngine.AiDebtReserve(world,buyer)<price)
             return(false,"A IA preserva o saldo necessário à quitação antes de contratar reforços.");
 
-        var buyerSquad = world.Players.Where(p => p.ClubId == buyer.Id).ToList();
-        var (canAdd, addErr) = SquadValidator.CanAddPlayerToSquad(buyerSquad);
-        if (!canAdd) return (false, addErr);
-
-        var sellerSquad = world.Players.Where(p => p.ClubId == seller.Id).ToList();
-        var (canRemove, remErr) = SquadValidator.CanRemovePlayerFromSquad(sellerSquad, player.Id);
-        if (!canRemove) return (false, remErr);
-
+        string contractKey = $"transfer:{world.Id}:{buyer.Id}:{player.Id}:{idempotencyKey}:contract";
+        using var mutation = new MarketTransferMutation(world, player, buyer, seller, contractKey,
+            $"{buyer.Id}:{idempotencyKey}:buy", $"{seller.Id}:{idempotencyKey}:sell");
+        try
+        {
         // Record financial transactions idempotently
         if (!TryRecordTransaction(world, buyer, auctionSale?FinancialTransactionCategory.AuctionPurchase:FinancialTransactionCategory.TransferPurchase,
                 -price, $"Compra de {player.DisplayName} de {seller.Name} ({justification})", $"{idempotencyKey}:buy"))
@@ -869,8 +857,9 @@ public static class MarketAndEconomyEngine
             return (false, "Transação já processada anteriormente.");
         }
 
-        TryRecordTransaction(world, seller, auctionSale?FinancialTransactionCategory.AuctionSale:FinancialTransactionCategory.TransferSale,
-            price, $"Venda de {player.DisplayName} para {buyer.Name}", $"{idempotencyKey}:sell");
+        if (!TryRecordTransaction(world, seller, auctionSale?FinancialTransactionCategory.AuctionSale:FinancialTransactionCategory.TransferSale,
+            price, $"Venda de {player.DisplayName} para {buyer.Name}", $"{idempotencyKey}:sell"))
+            return (false, "MARKET_TRANSFER_FAILED: Crédito da transferência não foi concluído.");
 
         var buyTransaction = world.Transactions[^2];
         var sellTransaction = world.Transactions[^1];
@@ -900,40 +889,34 @@ public static class MarketAndEconomyEngine
         player.MarketPrice = CalculateFairValue(player);
         decimal previousSalary=player.SalaryPerRound;
         player.SalaryPerRound = CalculateFairSalaryPerRound(player);
-        ClassicEconomyEngine.RecordContract(world,player,previousSalary,"TRANSFER_CONTRACT",$"transfer:{world.Id}:{buyer.Id}:{player.Id}:{idempotencyKey}:contract");
-
+        ClassicEconomyEngine.RecordContract(world,player,previousSalary,"TRANSFER_CONTRACT",contractKey);
+        mutation.Commit();
         return (true, null);
+        }
+        catch (Exception error) when (error is ArithmeticException or InvalidOperationException or ArgumentException or NullReferenceException)
+        {
+            return (false, $"MARKET_TRANSFER_FAILED: Transferência não concluída ({error.GetType().Name}).");
+        }
     }
 
     public static void SettleAuction(GameWorld world, AuctionItem auction, List<string>? logs = null)
     {
-        if (auction.IsClosed) return;
+        if (auction.IsClosed || !MarketValidationEngine.IsDue(world, auction)) return;
         if(auction.Reason==AuctionReason.Voluntary){VoluntaryAuctionEngine.Settle(world,auction,logs);return;}
         if(auction.Reason!=AuctionReason.ContractExpiration){ClassicEconomyEngine.SettleSpecialAuction(world,auction,logs);return;}
-        auction.IsClosed = true;
-
         var player = world.Players.FirstOrDefault(p => p.Id == auction.PlayerId);
-        if (player == null || player.ClubId!=null) return;
+        if (player == null || player.ClubId!=null) { auction.IsClosed = true; return; }
 
         if (auction.HighestBidderClubId != null && auction.CurrentBid > 0m)
         {
             var winner = world.Clubs.FirstOrDefault(c => c.Id == auction.HighestBidderClubId.Value);
-            var winnerSquad = winner != null ? world.Players.Where(p => p.ClubId == winner.Id).ToList() : new List<Player>();
-
-            if (winner != null && ClassicEconomyEngine.AvailableCash(world,winner,auction.Id) >= auction.CurrentBid && winnerSquad.Count < SquadValidator.MaxSquadSize)
+            if (winner != null && MarketValidationEngine.ValidateAuctionWinner(world,auction).Success)
             {
-                if (!TryRecordTransaction(world, winner, FinancialTransactionCategory.AuctionPurchase,
-                    -auction.CurrentBid, $"Arremate em leilão de {player.DisplayName}", $"auction:{auction.Id}:win")) return;
-                // Expired contracts are free agents. The former club is not a selling counterparty.
-                StampTransfer(world, world.Transactions[^1], winner, null, player, "Auction", auction.CurrentBid, "Leilão");
-
-                player.ClubId = winner.Id;
-                player.ContractRoundsRemaining = 20;
-                player.IsListedForTransfer = false;
-                player.AskingPrice = null;
-                player.MarketPrice = CalculateFairValue(player);
-                player.SalaryPerRound = CalculateFairSalaryPerRound(player);
-                ClassicEconomyEngine.RecordContract(world,player,player.SalaryPerRound,"EXPIRATION_AUCTION",$"auction:{auction.Id}:contract");
+                var signing=SignAuctionFreeAgent(world,auction,winner,player,20,"EXPIRATION_AUCTION","Auction",
+                    FinancialTransactionCategory.AuctionPurchase,auction.CurrentBid,$"auction:{auction.Id}:win",
+                    $"Arremate em leilão de {player.DisplayName}",false);
+                if(!signing.Success) { logs?.Add(signing.Error!); return; }
+                auction.IsClosed=true;
                 logs?.Add($"Leilão encerrado: {winner.ShortName} arrematou {player.DisplayName} por R$ {auction.CurrentBid:N0}.");
                 return;
             }
@@ -941,10 +924,10 @@ public static class MarketAndEconomyEngine
 
         // If no valid bidder won, assign to a club needing depth in that position that can afford a minimum contract
         var fallbackClub = world.Clubs
-            .Where(c => c.HumanCoachId == null && c.DivisionTier != DivisionTier.Distrital)
+            .Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital)
             .Select(c => new { Club = c, Squad = world.Players.Where(p => p.ClubId == c.Id).ToList() })
             .Where(x => (x.Squad.Count < 18 || x.Squad.Count(p => p.Position == player.Position) < 3)
-                        && x.Squad.Count < SquadValidator.MaxSquadSize
+                        && MarketValidationEngine.ValidateBuyer(world,x.Club.Id,0,auction.Id).Success
                         && x.Club.CashBalance > (x.Squad.Sum(p => p.SalaryPerRound) + player.SalaryPerRound) * 6m)
             .OrderBy(x => x.Squad.Count(p => p.Position == player.Position))
             .ThenBy(x => x.Squad.Count)
@@ -952,14 +935,46 @@ public static class MarketAndEconomyEngine
 
         if (fallbackClub != null)
         {
-            if (!TryRecordTransaction(world, fallbackClub, FinancialTransactionCategory.FreeAgentSigning, 0m,
-                $"Contrato sem lance de {player.DisplayName}", $"auction:{auction.Id}:free")) return;
-            StampTransfer(world, world.Transactions[^1], fallbackClub, null, player, "FreeAgentAssignment", 0m, "Contrato sem lance");
-            player.ClubId = fallbackClub.Id;
-            player.ContractRoundsRemaining = 14;
-            player.MarketPrice = CalculateFairValue(player);
-            player.SalaryPerRound = CalculateFairSalaryPerRound(player);
-            ClassicEconomyEngine.RecordContract(world,player,player.SalaryPerRound,"EXPIRATION_FREE_ASSIGNMENT",$"auction:{auction.Id}:contract");
+            var signing=SignAuctionFreeAgent(world,auction,fallbackClub,player,14,"EXPIRATION_FREE_ASSIGNMENT","FreeAgentAssignment",
+                FinancialTransactionCategory.FreeAgentSigning,0,$"auction:{auction.Id}:free",$"Contrato sem lance de {player.DisplayName}",false);
+            if(!signing.Success) { logs?.Add(signing.Error!); return; }
+        }
+        auction.IsClosed=true;
+    }
+
+    internal static (bool Success,string? Error) SignAuctionFreeAgent(GameWorld world,AuctionItem auction,Club buyer,Player player,
+        int rounds,string reason,string transactionType,FinancialTransactionCategory category,decimal price,string key,string description,
+        bool preservePreviousSalary)
+    {
+        var available=MarketValidationEngine.ValidateAuctionPlayer(world,auction);
+        if(!available.Success)return available;
+        if(!MarketValidationEngine.IsDue(world,auction)||player.ClubId!=null)return(false,"MARKET_AUCTION_INVALID: Liquidação inválida ou antecipada.");
+        var capacity=MarketValidationEngine.ValidateBuyer(world,buyer.Id,price,auction.Id);
+        if(!capacity.Success)return capacity;
+        EnsureTransactionKeys(world);
+        string transactionKey=$"{buyer.Id}:{key}",contractKey=$"auction:{auction.Id}:contract";
+        if(world.AppliedTransactionKeys.Contains(transactionKey))return(false,"MARKET_DUPLICATE: Transação já processada.");
+        using var mutation=new MarketTransferMutation(world,player,buyer,null,contractKey,transactionKey);
+        try
+        {
+            if(!TryRecordTransaction(world,buyer,category,-price,description,key))return(false,"MARKET_DUPLICATE: Transação já processada.");
+            var tx=world.Transactions[^1];
+            if(preservePreviousSalary)
+            {
+                tx.PlayerId=player.Id;tx.BuyerClubId=buyer.Id;tx.TransferTransactionId=tx.Id;tx.TransactionType=transactionType;
+            }
+            else StampTransfer(world,tx,buyer,null,player,transactionType,price,description);
+            decimal previous=player.SalaryPerRound;
+            player.ClubId=buyer.Id;player.ContractRoundsRemaining=rounds;
+            player.IsListedForTransfer=false;player.AskingPrice=null;
+            if(!preservePreviousSalary)player.MarketPrice=CalculateFairValue(player);
+            player.SalaryPerRound=CalculateFairSalaryPerRound(player);
+            ClassicEconomyEngine.RecordContract(world,player,preservePreviousSalary?previous:player.SalaryPerRound,reason,contractKey);
+            mutation.Commit();return(true,null);
+        }
+        catch(Exception error) when(error is ArithmeticException or InvalidOperationException or ArgumentException or NullReferenceException)
+        {
+            return(false,$"MARKET_TRANSFER_FAILED: Contratação não concluída ({error.GetType().Name}).");
         }
     }
 

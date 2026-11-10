@@ -70,7 +70,8 @@ public class ClassicEconomy012DIntegrationTests
         Assert.False(wrongClub.IsSuccessStatusCode);
         var bids=new List<AuctionItem>();
         foreach(var p in w.Players.Where(p=>p.ClubId==w.Clubs.Last().Id).Take(humans).ToList())
-        {p.ClubId=null;var a=new AuctionItem{PlayerId=p.Id,Reason=AuctionReason.SalaryRenewalRefused};w.Auctions.Add(a);bids.Add(a);}
+        {p.ClubId=null;var a=new AuctionItem{PlayerId=p.Id,Reason=AuctionReason.SalaryRenewalRefused,
+            CreatedAtSeason=w.SeasonNumber,CreatedAtRound=w.RoundNumber,ExpiresAtRound=w.RoundNumber+2};w.Auctions.Add(a);bids.Add(a);}
         club.CashBalance=100000;
         var bidResponses=await Task.WhenAll(bids.Select((a,i)=>client.PostAsync($"/api/worlds/{w.Id}/market/auction/{a.Id}/bid?coachId={coaches[0].Id}&bidAmount=60000&idempotencyKey=bid{i}",null)));
         Assert.Single(bidResponses,r=>r.IsSuccessStatusCode);Assert.Equal(60000,ClassicEconomyEngine.ReservedAuctionCash(w,club.Id));
