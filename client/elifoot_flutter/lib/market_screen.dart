@@ -316,8 +316,19 @@ class _MarketScreenState extends State<MarketScreen> {
         ),
       if (p['salaryPerRound'] is num)
         Text(
-          'Salário: ${formatAuctionMoney(p['salaryPerRound'] as num)} / rodada',
+          'Salário atual: ${formatAuctionMoney(p['salaryPerRound'] as num)} / rodada',
         ),
+      if (p['signingSalaryPerRound'] is num) ...[
+        Text(
+          '${auction ? "Prévia de salário" : "Salário após contratação"}: ${formatAuctionMoney(p['signingSalaryPerRound'] as num)} / rodada',
+        ),
+        if (auction)
+          const Text('Estimativa atual; salário revalidado na liquidação.'),
+        Text('Comprador: ${p['buyerClubName'] ?? "—"}'),
+        Text(
+          'Custos adicionais: ${formatAuctionMoney(p['additionalCosts'] as num? ?? 0)}',
+        ),
+      ],
       Text('Vendedor: ${p['sellerClubName'] ?? "Atleta livre"}'),
       if (p['playerId'] != null)
         TextButton.icon(
@@ -432,7 +443,33 @@ class _MarketScreenState extends State<MarketScreen> {
     return result;
   }
 
+  Future<Map<String, dynamic>?> _contractPreview(
+    Map<String, dynamic> player, {
+    String? offerId,
+    String? auctionId,
+  }) async {
+    try {
+      return await widget.api.getTransferContractPreview(
+        widget.worldId,
+        widget.coachId,
+        '${player['playerId']}',
+        offerId: offerId,
+        auctionId: auctionId,
+      );
+    } catch (error) {
+      if (mounted) {
+        setState(
+          () => _message = error.toString().replaceFirst('Exception: ', ''),
+        );
+      }
+      return null;
+    }
+  }
+
   Future<void> _bid(Map<String, dynamic> p) async {
+    final preview = await _contractPreview(p, auctionId: '${p['auctionId']}');
+    if (preview == null || !mounted || !_canTrade) return;
+    p = {...p, ...preview, 'salaryPerRound': preview['currentSalaryPerRound']};
     final next = p['highestBidderClubId'] == null
         ? p['minimumBid'] as num? ?? 0
         : (p['currentBid'] as num? ?? 0) + 5000;
@@ -457,6 +494,19 @@ class _MarketScreenState extends State<MarketScreen> {
   }
 
   Future<void> _purchase(Map<String, dynamic> p) async {
+    final preview = await _contractPreview(p);
+    if (preview == null || !mounted || !_canTrade) return;
+    if (preview['askingPrice'] is! num) {
+      setState(
+        () => _message =
+            'ANÚNCIO ALTERADO. Atualize o mercado antes de confirmar a compra.',
+      );
+      try {
+        await widget.refresh();
+      } catch (_) {}
+      return;
+    }
+    p = {...p, ...preview, 'salaryPerRound': preview['currentSalaryPerRound']};
     final action = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -514,6 +564,7 @@ class _MarketScreenState extends State<MarketScreen> {
           widget.coachId,
           p['playerId'].toString(),
           value,
+          salaryTermsToken: p['salaryTermsToken'] as String?,
         );
         return switch (response['status']) {
           'Accepted' => 'COMPRA CONFIRMADA.',
@@ -1464,12 +1515,34 @@ class _MarketScreenState extends State<MarketScreen> {
     _ => s,
   };
   Future<void> _respond(dynamic offer, bool accept) async {
+    Map<String, dynamic>? preview;
+    if (accept) {
+      preview = await _contractPreview(
+        Map<String, dynamic>.from(offer),
+        offerId: '${offer['offerId']}',
+      );
+      if (preview == null || !mounted || !_canTrade) return;
+    }
     final approved = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(accept ? 'CONFIRMAR NEGOCIAÇÃO?' : 'RECUSAR PROPOSTA?'),
-        content: Text(
-          '${offer['playerDisplayName']} • ${formatAuctionMoney((offer['counterAmount'] ?? offer['offeredAmount']) as num)}',
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${offer['playerDisplayName']} • ${formatAuctionMoney((preview?['askingPrice'] ?? offer['counterAmount'] ?? offer['offeredAmount']) as num)}',
+              ),
+              if (preview != null)
+                _details({
+                  ...Map<String, dynamic>.from(offer),
+                  ...preview,
+                  'salaryPerRound': preview['currentSalaryPerRound'],
+                }),
+            ],
+          ),
         ),
         actions: [
           TextButton(
@@ -1490,6 +1563,8 @@ class _MarketScreenState extends State<MarketScreen> {
         offer['offerId'].toString(),
         widget.coachId,
         accept,
+        salaryTermsToken: preview?['salaryTermsToken'] as String?,
+        expectedPrice: preview?['askingPrice'] as num?,
       );
       return accept ? 'COMPRA CONFIRMADA.' : 'PROPOSTA RECUSADA.';
     });

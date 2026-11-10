@@ -707,16 +707,44 @@ class ElifootApiClient {
     _decodeResponse(res);
   }
 
+  Future<Map<String, dynamic>> getTransferContractPreview(
+    String worldId,
+    String coachId,
+    String playerId, {
+    String? offerId,
+    String? auctionId,
+  }) async {
+    final preview = _decodeResponse(
+      await _http.get(
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/market/contract-preview',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'playerId': playerId,
+            'offerId': ?offerId,
+            'auctionId': ?auctionId,
+          },
+        ),
+      ),
+    );
+    if (preview['roundVersion'] is num) {
+      _financeVersions[worldId] = (preview['roundVersion'] as num).toInt();
+    }
+    return preview;
+  }
+
   Future<void> buyListedPlayer(
     String worldId,
     String coachId,
     String playerId,
   ) async {
-    final uri = Uri.parse(
-      '$baseUrl/api/worlds/$worldId/market/buy-listed',
-    ).replace(queryParameters: {'coachId': coachId, 'playerId': playerId});
-    final res = await _postFinance(uri);
-    _decodeResponse(res);
+    final preview = await getTransferContractPreview(
+      worldId,
+      coachId,
+      playerId,
+    );
+    await buyConfirmedListing(worldId, coachId, preview);
   }
 
   Future<void> withdrawTransferListing(
@@ -745,6 +773,8 @@ class ElifootApiClient {
             if (listing['sellerClubId'] != null)
               'sellerClubId': listing['sellerClubId'].toString(),
             'askingPrice': (listing['askingPrice'] as num).toStringAsFixed(2),
+            if (listing['salaryTermsToken'] != null)
+              'salaryTermsToken': '${listing['salaryTermsToken']}',
           },
         );
     _decodeResponse(await _postFinance(uri));
@@ -772,13 +802,15 @@ class ElifootApiClient {
     String worldId,
     String coachId,
     String playerId,
-    double amount,
-  ) async {
+    double amount, {
+    String? salaryTermsToken,
+  }) async {
     final uri = Uri.parse('$baseUrl/api/worlds/$worldId/market/offer').replace(
       queryParameters: {
         'coachId': coachId,
         'playerId': playerId,
         'offeredAmount': amount.toStringAsFixed(2),
+        'salaryTermsToken': ?salaryTermsToken,
       },
     );
     final res = await _postFinance(uri);
@@ -789,13 +821,21 @@ class ElifootApiClient {
     String worldId,
     String offerId,
     String coachId,
-    bool accept,
-  ) async {
+    bool accept, {
+    String? salaryTermsToken,
+    num? expectedPrice,
+  }) async {
     final uri =
         Uri.parse(
           '$baseUrl/api/worlds/$worldId/market/offer/$offerId/respond',
         ).replace(
-          queryParameters: {'coachId': coachId, 'accept': accept.toString()},
+          queryParameters: {
+            'coachId': coachId,
+            'accept': accept.toString(),
+            'salaryTermsToken': ?salaryTermsToken,
+            if (expectedPrice != null)
+              'expectedPrice': expectedPrice.toStringAsFixed(2),
+          },
         );
     final res = await _postFinance(uri);
     _decodeResponse(res);
@@ -841,12 +881,31 @@ class ElifootApiClient {
     _decodeResponse(res);
   }
 
+  Future<Map<String, dynamic>> getRenewalContractPreview(
+    String worldId,
+    String playerId,
+    String coachId,
+  ) async {
+    final preview = _decodeResponse(
+      await _http.get(
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/players/$playerId/renew-preview',
+        ).replace(queryParameters: {'coachId': coachId}),
+      ),
+    );
+    if (preview['roundVersion'] is num) {
+      _financeVersions[worldId] = (preview['roundVersion'] as num).toInt();
+    }
+    return preview;
+  }
+
   Future<void> renewPlayerContract(
     String worldId,
     String playerId,
     String coachId,
-    int additionalRounds,
-  ) async {
+    int additionalRounds, {
+    String? renewalTermsToken,
+  }) async {
     final uri =
         Uri.parse(
           '$baseUrl/api/worlds/$worldId/players/$playerId/renew',
@@ -854,6 +913,7 @@ class ElifootApiClient {
           queryParameters: {
             'coachId': coachId,
             'additionalRounds': additionalRounds.toString(),
+            'renewalTermsToken': ?renewalTermsToken,
           },
         );
     final res = await _postFinance(uri);

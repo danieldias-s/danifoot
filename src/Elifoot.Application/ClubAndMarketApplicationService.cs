@@ -186,7 +186,7 @@ public sealed partial class ClubAndMarketApplicationService
 
     private async Task<(bool Success, string? Error)> BuyListedPlayerCoreAsync(
         Guid worldId, Guid coachId, Guid playerId, string idempotencyKey,
-        CancellationToken ct = default, long? listingVersion = null, Guid? sellerClubId = null, decimal? askingPrice = null)
+        CancellationToken ct = default, long? listingVersion = null, Guid? sellerClubId = null, decimal? askingPrice = null,string? salaryTermsToken=null)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
         if (world == null) return (false, "Sala não encontrada.");
@@ -199,6 +199,7 @@ public sealed partial class ClubAndMarketApplicationService
             sellerClubId.HasValue && player.ClubId != sellerClubId ||
             askingPrice.HasValue && player.AskingPrice != askingPrice)
             return (false, "O anúncio mudou. Atualize antes de confirmar a compra.");
+        if(MarketContractTermsEngine.ValidateConfirmation(world,player,salaryTermsToken) is string termsError)return(false,termsError);
         return MarketAndEconomyEngine.ExecuteTransfer(world, coach.CurrentClubId.Value, player.ClubId.Value,
             player.Id, player.AskingPrice.Value, "Compra direta pelo preço anunciado", idempotencyKey);
     }
@@ -209,7 +210,7 @@ public sealed partial class ClubAndMarketApplicationService
         Guid playerId,
         decimal offeredAmount,
         string idempotencyKey,
-        CancellationToken ct = default)
+        CancellationToken ct = default,string? salaryTermsToken=null)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
         if (world == null) return (false, "Sala não encontrada.", null);
@@ -226,9 +227,11 @@ public sealed partial class ClubAndMarketApplicationService
         var validation=MarketValidationEngine.ValidatePurchase(world,buyer.Id,player.ClubId.Value,player.Id,offeredAmount);
         if(!validation.Success)return(false,validation.Error,null);
         var seller = world.Clubs.First(c => c.Id == player.ClubId.Value);
+        if(MarketContractTermsEngine.ValidateConfirmation(world,player,salaryTermsToken) is string termsError)return(false,termsError,null);
 
         var offer = new TransferOffer
         {
+            SalaryTermsToken=salaryTermsToken,
             SubmittedByManagerId = coach.Id,
             GameWorldId = world.Id,
             PlayerId = player.Id,
@@ -284,7 +287,7 @@ public sealed partial class ClubAndMarketApplicationService
         Guid offerId,
         bool accept,
         string idempotencyKey,
-        CancellationToken ct = default)
+        CancellationToken ct = default,string? salaryTermsToken=null,decimal? expectedPrice=null)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
         if (world == null) return (false, "Sala não encontrada.");
@@ -315,6 +318,16 @@ public sealed partial class ClubAndMarketApplicationService
         if (offer.Status == TransferOfferStatus.Countered && offer.BuyerClubId != coach.CurrentClubId)
             return (false, "Apenas o clube comprador pode aceitar esta contraproposta.");
 
+        var player=world.Players.FirstOrDefault(p=>p.Id==offer.PlayerId);
+        if(player==null)return(false,"Jogador não encontrado.");
+        if(expectedPrice.HasValue&&expectedPrice.Value!=finalPrice)return(false,"CONTRACT_TERMS_CHANGED: O preço da proposta mudou. Confirme novamente.");
+        if(MarketContractTermsEngine.ValidateConfirmation(world,player,salaryTermsToken) is string termsError)return(false,termsError);
+        bool buyerConfirms=coach.CurrentClubId==offer.BuyerClubId;
+        var buyer=world.Clubs.FirstOrDefault(c=>c.Id==offer.BuyerClubId);
+        if(!buyerConfirms&&!(buyer!=null&&MarketValidationEngine.CanActAsAi(world,buyer))
+            &&MarketContractTermsEngine.ValidateConfirmation(world,player,offer.SalaryTermsToken) is string buyerTermsError)
+            return(false,buyerTermsError+" O comprador deve rever sua proposta.");
+
         var (ok, err) = MarketAndEconomyEngine.ExecuteTransfer(
             world, offer.BuyerClubId, offer.SellerClubId, offer.PlayerId, finalPrice,
             "Negociação bilateral concluída", idempotencyKey, "AcceptedOffer");
@@ -322,6 +335,7 @@ public sealed partial class ClubAndMarketApplicationService
         if (!ok) return (false, err);
 
         offer.Status = TransferOfferStatus.Accepted;
+        offer.SalaryTermsToken=salaryTermsToken;
         return (true, null);
     }
 
@@ -351,7 +365,7 @@ public sealed partial class ClubAndMarketApplicationService
         Guid playerId,
         int additionalRounds,
         string commandKey,
-        CancellationToken ct = default)
+        CancellationToken ct = default,string? renewalTermsToken=null)
     {
         var world = await _repository.GetWorldAsync(worldId, ct);
         if (world == null) return (false, "Sala não encontrada.");
@@ -363,7 +377,7 @@ public sealed partial class ClubAndMarketApplicationService
         var player = world.Players.FirstOrDefault(p => p.Id == playerId && p.ClubId == club.Id);
         if (player == null) return (false, "Jogador não pertence ao seu clube.");
 
-        var result=ClassicEconomyEngine.RenewContract(world,club,player,additionalRounds,commandKey);
+        var result=ClassicEconomyEngine.RenewContract(world,club,player,additionalRounds,commandKey,termsToken:renewalTermsToken);
         return result;
     }
 

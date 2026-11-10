@@ -65,7 +65,7 @@ public sealed class AccountLoginTests
         await fixture.Restart();EfWorldRepository.ClearCacheForTesting();
         var restored=(await fixture.Server.Services.GetRequiredService<IWorldRepository>().GetWorldAsync(id))!;
         var saved=Assert.Single(restored.Economy.SalaryRequests);Assert.Equal(SalaryRequestStatus.REFUSED,saved.Status);
-        Assert.Single(restored.Auctions,a=>a.Id==saved.AuctionId);Assert.InRange(restored.Auctions.Single(a=>a.Id==saved.AuctionId).DurationRounds!.Value,1,3);
+        Assert.Single(restored.Auctions,a=>a.Id==saved.AuctionId);Assert.Equal(1,restored.Auctions.Single(a=>a.Id==saved.AuctionId).DurationRounds);
     }
     private const string Password = "Teste-local-98!";
 

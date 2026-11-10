@@ -471,8 +471,12 @@ public static class CompetitionAndSeasonEngine
     /// 4. Applies seasonal stadium wear (1%..6% without maintenance, 0%..1% with maintenance) and AI stadium projects.
     /// 5. Advances SeasonNumber and initializes the next season's fixtures.
     /// </summary>
-    public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world)
+    public static SeasonHistoryEntry FinalizeSeasonAndAdvance(GameWorld world,int? expectedSeasonNumber=null)
     {
+        if(expectedSeasonNumber is int expected&&expected!=world.SeasonNumber)
+            return world.SeasonHistories.FirstOrDefault(h=>h.SeasonNumber==expected)
+                ?? throw new InvalidOperationException("SEASON_VERSION: Temporada não corresponde à transição solicitada.");
+        SalarySeasonTransitionEngine.RequireResolved(world);
         HistoryEngine.Observe(world);
         OperatingEconomyEngine.EnsureScheduledRules(world);
         CoachCareerEngine.EnsureMigrated(world);
@@ -634,7 +638,11 @@ public static class CompetitionAndSeasonEngine
         world.SeasonNumber++;
         if(world.Economy.Rules.SeasonContractsEnabled)
             foreach(var player in world.Players.Where(player=>player.ClubId.HasValue))
+            {
                 player.ContractRoundsRemaining=0;
+                player.RenewedForSeason=null;
+                player.NegotiatedContractProtected=false;
+            }
         OperatingEconomyEngine.EnsureScheduledRules(world);
         InitializeSeasonFixtures(world);
         GenerateJobInvitationsForUnemployedHumans(world);

@@ -7,7 +7,7 @@ namespace Elifoot.Domain.Tests;
 public class SeasonContractsAndDebtTests
 {
     [Fact]
-    public void RenewalKeepsOwnershipAndWageAndBlocksSalesUntilSeasonChanges()
+    public void RenewalKeepsOwnershipAndConfirmedWageAndBlocksSalesUntilSeasonChanges()
     {
         var world = WorldSeedFactory.CreateSeededWorld();
         var seller = world.Clubs[0];
@@ -15,12 +15,13 @@ public class SeasonContractsAndDebtTests
         var player = world.Players.Last(p => p.ClubId == seller.Id);
         world.Auctions.Clear();
         world.RoundNumber = 8;
-        var wage = player.SalaryPerRound;
         player.IsListedForTransfer = true;
         player.AskingPrice = 50_000;
         seller.CashBalance = 0;
-        Assert.True(ClassicEconomyEngine.RenewContract(world, seller, player, 200, "renew").Success);
-        Assert.True(ClassicEconomyEngine.RenewContract(world, seller, player, 200, "renew").Success);
+        var quote=ClassicEconomyEngine.PreviewRenewal(world,seller,player);
+        var wage=quote.RequiredSalary;
+        Assert.True(ClassicEconomyEngine.RenewContract(world, seller, player, 200, "renew",termsToken:quote.TermsToken).Success);
+        Assert.True(ClassicEconomyEngine.RenewContract(world, seller, player, 200, "renew",termsToken:quote.TermsToken).Success);
         Assert.False(ClassicEconomyEngine.RenewContract(world, seller, player, 20, "again").Success);
         Assert.Equal(world.TotalRoundsInSeason - 7, player.ContractRoundsRemaining);
         Assert.Equal(wage, player.SalaryPerRound);

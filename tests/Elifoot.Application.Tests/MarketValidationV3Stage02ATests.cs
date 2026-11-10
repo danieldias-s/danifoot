@@ -38,12 +38,12 @@ public class MarketValidationV3Stage02ATests
     {
         var(w,b,s,p)=Setup();var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);
         var service=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
-        var offer=await service.CreateTransferOfferAsync(w.Id,b.Id,p.Id,90_000,"offer");
+        var offer=await service.CreateTransferOfferAsync(w.Id,b.Id,p.Id,90_000,"offer",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p));
         Assert.True(offer.Success,offer.Error); FillTo23(w,b);
         var a=Auction(w); var buyer=w.Clubs.Single(c=>c.Id==b.CurrentClubId);
         Assert.True(ClassicEconomyEngine.PlaceBid(w,buyer,a.Id,0,"reserve").Success);
-        var accepted=await service.RespondToTransferOfferAsync(w.Id,s.Id,offer.Offer!.OfferId,true,"accept");
-        var direct=await service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"direct");
+        var accepted=await service.RespondToTransferOfferAsync(w.Id,s.Id,offer.Offer!.OfferId,true,"accept",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p));
+        var direct=await service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"direct",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p));
         Assert.False(accepted.Success);Assert.Contains("MARKET_SQUAD_FULL",accepted.Error);
         Assert.False(direct.Success);Assert.Contains("MARKET_SQUAD_FULL",direct.Error);
         Assert.Equal(s.CurrentClubId,p.ClubId);Assert.Equal(TransferOfferStatus.Pending,w.TransferOffers.Single().Status);
@@ -57,7 +57,7 @@ public class MarketValidationV3Stage02ATests
         var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);
         var service=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         var results=await Task.WhenAll(service.PlaceAuctionBidAsync(w.Id,b.Id,a.Id,0,idempotencyKey:"bid"),
-            service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"buy"));
+            service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"buy",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p)));
         Assert.Single(results,r=>r.Success);
         Assert.Equal(24,w.Players.Count(x=>x.ClubId==b.CurrentClubId)+w.Auctions.Count(x=>!x.IsClosed&&x.HighestBidderClubId==b.CurrentClubId));
         Assert.Equal(p.ClubId==b.CurrentClubId?2:0,w.Transactions.Count(t=>t.PlayerId==p.Id));
@@ -72,7 +72,8 @@ public class MarketValidationV3Stage02ATests
         var initial=JsonSerializer.Deserialize<GameWorld>(repo.DurableSnapshot)!;
         decimal buyerCash=w.Clubs.Single(c=>c.Id==b.CurrentClubId).CashBalance,sellerCash=w.Clubs.Single(c=>c.Id==s.CurrentClubId).CashBalance;
         long version=w.RoundVersion;
-        await Assert.ThrowsAsync<IOException>(()=>service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version));
+        string terms=MarketContractTermsEngine.SalaryTermsToken(w,p);
+        await Assert.ThrowsAsync<IOException>(()=>service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version,salaryTermsToken:terms));
         var durableBeforeRetry=JsonSerializer.Deserialize<GameWorld>(repo.DurableSnapshot)!;
         Assert.Equal(s.CurrentClubId,durableBeforeRetry.Players.Single(x=>x.Id==p.Id).ClubId);
         Assert.DoesNotContain(durableBeforeRetry.Transactions,t=>t.PlayerId==p.Id);
@@ -80,11 +81,11 @@ public class MarketValidationV3Stage02ATests
         Assert.Equal(2,w.Transactions.Count(t=>t.PlayerId==p.Id)); // Complete in-memory receipt, never half of a transfer.
         Assert.Equal(buyerCash-100_000,w.Clubs.Single(c=>c.Id==b.CurrentClubId).CashBalance);
         Assert.Equal(sellerCash+100_000,w.Clubs.Single(c=>c.Id==s.CurrentClubId).CashBalance);
-        Assert.True((await service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version)).Success);
+        Assert.True((await service.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version,salaryTermsToken:terms)).Success);
         var restored=JsonSerializer.Deserialize<GameWorld>(repo.DurableSnapshot)!;
         var restart=new InMemoryWorldRepository();await restart.SaveWorldAsync(restored);
         var restartedService=new ClubAndMarketApplicationService(restart,NullMatchRoomNotificationPublisher.Instance);
-        Assert.True((await restartedService.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version)).Success);
+        Assert.True((await restartedService.BuyListedPlayerAsync(w.Id,b.Id,p.Id,"same",expectedRoundVersion:version,salaryTermsToken:terms)).Success);
         Assert.Equal(2,restored.Transactions.Count(t=>t.PlayerId==p.Id));
         Assert.Single(restored.Economy.ContractHistory,h=>h.PlayerId==p.Id);
         Assert.Equal(b.CurrentClubId,restored.Players.Single(x=>x.Id==p.Id).ClubId);

@@ -107,12 +107,15 @@ public class ClassicEconomy012DTests
         w.RoundNumber=a.ExpiresAtRound;w.SeasonNumber=a.ExpiresAtSeason!.Value;w.RoundState=RoundState.RESULTS;w.SettledFinancialRounds.Add($"round_settled:S{w.SeasonNumber}:R{w.RoundNumber}");MarketAndEconomyEngine.SettleAuction(w,a);Assert.Equal(buyer.Id,p.ClubId);Assert.Equal(oldCash,c.CashBalance);Assert.Equal("SOLD",a.ClosureReason);
         Assert.DoesNotContain(w.Transactions,t=>t.Category==FinancialTransactionCategory.AuctionSale&&t.PlayerId==p.Id);
     }
-    [Fact] public void MinimumSquadMakesRefusalAMandatoryRenewalEvenWithoutCash()
+    [Fact] public void MinimumSquadPreventsRefusalAndAcceptingRaiseDoesNotForceRenewal()
     {
-        var(w,c)=World();var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();var keep=squad.Where(p=>p.Position==PlayerPosition.G).Take(1).Concat(squad.Where(p=>p.Position!=PlayerPosition.G).Take(10)).ToList();
+        var(w,c)=World();c.HumanCoachId=null;var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();var keep=squad.Where(p=>p.Position==PlayerPosition.G).Take(1).Concat(squad.Where(p=>p.Position!=PlayerPosition.G).Take(10)).ToList();
         foreach(var p in squad.Except(keep))p.ClubId=null;c.CashBalance=-100;var player=keep[0];var r=Request(w,c,player);
-        var result=ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"refuse",actor:"AI");Assert.True(result.Success);Assert.Contains("OBRIGATÓRIA",result.Error);
+        var result=ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"refuse",actor:"AI");Assert.False(result.Success);Assert.Contains("Elenco mínimo",result.Error);
+        Assert.Equal(SalaryRequestStatus.PENDING,r.Status);Assert.Equal(-100,c.CashBalance);
+        Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,true,"accept",actor:"AI").Success);
         Assert.Equal(c.Id,player.ClubId);Assert.Empty(w.Auctions);Assert.Equal(-100,c.CashBalance);Assert.Equal(SalaryRequestStatus.ACCEPTED,r.Status);
+        Assert.False(ClassicEconomyEngine.IsSeasonRenewed(w,player));
     }
     [Fact] public void DebtAuctionPrioritizesForceThenSalaryThenStableIdAndReconcilesActualSale()
     {

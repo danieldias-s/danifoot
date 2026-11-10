@@ -26,6 +26,7 @@ public class ClassicEconomyState
     public List<string> CoverageWarnings { get; set; } = new();
     [JsonIgnore] public HashSet<string> ContractKeys { get; } = new();
     [JsonIgnore] public int PendingCacheCount { get; set; } = -1;
+    [JsonIgnore] public bool AiSalaryRecoveryNeedsSave { get; set; }
     [JsonIgnore] public Dictionary<Guid,List<SalaryRaiseRequest>> PendingByPlayer { get; set; } = new();
 }
 public class ClassicEconomyRules

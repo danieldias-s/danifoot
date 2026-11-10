@@ -101,124 +101,151 @@ class _SalaryRequestModalState extends State<SalaryRequestModal> {
                     ),
                   ),
                   clipBehavior: Clip.antiAlias,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          color: widget.classic
-                              ? ClassicColors.titleBarBlue
-                              : const Color(0xFF003C2B),
-                          padding: const EdgeInsets.all(16),
-                          child: const Text(
-                            'PEDIDO DE AUMENTO SALARIAL',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(mobile ? 16 : 28),
-                          child: DefaultTextStyle(
-                            style: const TextStyle(
-                              color: Color(0xFF102C1D),
-                              fontSize: 19,
-                              height: 1.35,
-                              fontFamily: 'ClassicCondensed',
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Row(
-                                  children: [
-                                    ClubCrest(
-                                      club: '${widget.club['name'] ?? ''}',
-                                      size: 64,
-                                      palette:
-                                          widget.club['colorPalette'] is Map
-                                          ? Map<String, dynamic>.from(
-                                              widget.club['colorPalette'],
-                                            )
-                                          : null,
-                                    ),
-                                    const SizedBox(width: 18),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Container(
+                                color: widget.classic
+                                    ? ClassicColors.titleBarBlue
+                                    : const Color(0xFF003C2B),
+                                padding: const EdgeInsets.all(16),
+                                child: const Text(
+                                  'PEDIDO DE AUMENTO SALARIAL',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(mobile ? 16 : 28),
+                                child: DefaultTextStyle(
+                                  style: const TextStyle(
+                                    color: Color(0xFF102C1D),
+                                    fontSize: 19,
+                                    height: 1.35,
+                                    fontFamily: 'ClassicCondensed',
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Row(
                                         children: [
-                                          Text(
-                                            '${widget.player['displayName'] ?? widget.player['name']}',
-                                            style: const TextStyle(
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.bold,
+                                          ClubCrest(
+                                            club:
+                                                '${widget.club['name'] ?? ''}',
+                                            size: 64,
+                                            palette:
+                                                widget.club['colorPalette']
+                                                    is Map
+                                                ? Map<String, dynamic>.from(
+                                                    widget.club['colorPalette'],
+                                                  )
+                                                : null,
+                                          ),
+                                          const SizedBox(width: 18),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  '${widget.player['displayName'] ?? widget.player['name']}',
+                                                  style: const TextStyle(
+                                                    fontSize: 24,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Posição: ${widget.player['position'] ?? '—'}',
+                                                ),
+                                                const Chip(
+                                                  label: Text(
+                                                    'PEDIDO ESPONTÂNEO',
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ),
-                                          Text(
-                                            'Posição: ${widget.player['position'] ?? '—'}',
-                                          ),
-                                          const Chip(
-                                            label: Text('SEM CONTRATO'),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                const Divider(height: 28),
-                                Text(
-                                  'Salário atual: ${formatClassicMoney(current)} / jogo',
-                                ),
-                                Text(
-                                  'Salário solicitado: ${formatClassicMoney(requested)} / jogo',
-                                ),
-                                Text(
-                                  'Aumento: +${formatClassicMoney(requested - current)} / jogo',
-                                ),
-                                const Divider(height: 28),
-                                const Text(
-                                  'Aceitar: atualiza o salário e marca RENOVADO nesta temporada.',
-                                ),
-                                const SizedBox(height: 10),
-                                const Text(
-                                  'Recusar: o jogador vai automaticamente para leilão.',
-                                ),
-                                if (error != null)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: Text(
-                                      error!,
-                                      style: const TextStyle(
-                                        color: Color(0xFF800000),
+                                      const Divider(height: 28),
+                                      Text(
+                                        'Força: ${widget.player['strength'] ?? '—'}',
                                       ),
-                                    ),
-                                  ),
-                                const SizedBox(height: 24),
-                                if (busy) const LinearProgressIndicator(),
-                                if (mobile) ...[
-                                  button(true),
-                                  const SizedBox(height: 12),
-                                  button(false),
-                                ] else
-                                  Row(
-                                    children: [
-                                      Expanded(child: button(true)),
-                                      const SizedBox(width: 16),
-                                      Expanded(child: button(false)),
+                                      Text(
+                                        'Salário atual: ${formatClassicMoney(current)} / jogo',
+                                      ),
+                                      Text(
+                                        'Salário solicitado: ${formatClassicMoney(requested)} / jogo',
+                                      ),
+                                      Text(
+                                        'Aumento: +${formatClassicMoney(requested - current)} / jogo',
+                                      ),
+                                      const Divider(height: 28),
+                                      const Text(
+                                        'Aceitar: aplica o salário exigido e mantém o jogador no clube. Este pedido não é uma renovação voluntária.',
+                                      ),
+                                      const SizedBox(height: 10),
+                                      const Text(
+                                        'Recusar: respeitado o elenco mínimo, o jogador fica livre e entra em leilão obrigatório por 1 rodada, com lance mínimo R\$ 0. O ex-clube não recebe o arremate.',
+                                      ),
+                                      if (widget.request['mandatory'] == true)
+                                        const Text(
+                                          'Elenco mínimo: aceite o pedido ou recomponha o elenco antes de recusar.',
+                                        ),
+                                      if (error != null)
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                          ),
+                                          child: Text(
+                                            error!,
+                                            style: const TextStyle(
+                                              color: Color(0xFF800000),
+                                            ),
+                                          ),
+                                        ),
                                     ],
                                   ),
-                              ],
-                            ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(mobile ? 16 : 28),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (busy) const LinearProgressIndicator(),
+                            if (mobile) ...[
+                              button(true),
+                              const SizedBox(height: 12),
+                              button(false),
+                            ] else
+                              Row(
+                                children: [
+                                  Expanded(child: button(true)),
+                                  const SizedBox(width: 16),
+                                  Expanded(child: button(false)),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

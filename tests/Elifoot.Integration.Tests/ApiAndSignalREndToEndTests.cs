@@ -12,6 +12,21 @@ namespace Elifoot.Integration.Tests;
 
 public class ApiAndSignalREndToEndTests
 {
+    internal static async Task ResolveHumanSalaryRequestsAsync(IWorldRepository repository,Guid worldId,
+        IReadOnlyDictionary<Guid,HttpClient> clients)
+    {
+        var world=(await repository.GetWorldAsync(worldId))!;
+        foreach(var request in world.Economy.SalaryRequests.Where(r=>r.Status==SalaryRequestStatus.PENDING).ToList())
+        {
+            var owner=world.HumanCoaches.FirstOrDefault(h=>h.CurrentClubId==request.ClubId
+                &&world.Clubs.Any(c=>c.Id==request.ClubId&&c.HumanCoachId==h.Id));
+            if(owner==null||!clients.TryGetValue(owner.Id,out var client))continue;
+            var response=await client.PostAsJsonAsync($"/api/worlds/{worldId}/clubs/{request.ClubId}/salary-requests/{request.Id}/respond",
+                new SalaryDecisionCommandDto(owner.Id,true,$"lifecycle-human-salary:{request.Id}"));
+            response.EnsureSuccessStatusCode();
+        }
+    }
+
     // Lifecycle test driver explicitly supplies the new human decision; production never auto-chooses it.
     internal static async Task<HttpResponseMessage> TickWithAutomaticPenaltyChoices(HttpClient client, Guid worldId, int ticks)
     {
@@ -167,6 +182,7 @@ public class ApiAndSignalREndToEndTests
         Assert.Equal(RoundState.RESULTS, snap90!.RoundState);
 
         // 6. Advance to next round preparation and verify Market, Stadium, Ranking, and Editor endpoints
+        await ResolveHumanSalaryRequestsAsync(repo,worldId,coachIds.ToDictionary(id=>id,_=>client));
         var nextRes = await client.PostAsync($"/api/worlds/{worldId}/next-round", null);
         nextRes.EnsureSuccessStatusCode();
 
@@ -455,6 +471,8 @@ public class ApiAndSignalREndToEndTests
             }
 
             // Step 15: Advance to next round and verify counter resets to 0/N
+            await ResolveHumanSalaryRequestsAsync(factory.Services.GetRequiredService<IWorldRepository>(),worldId,
+                coachIds.Select((id,index)=>(id,index)).ToDictionary(x=>x.id,x=>httpClients[x.index]));
             var nextRoundRes = await httpClients[0].PostAsync($"/api/worlds/{worldId}/next-round", null);
             nextRoundRes.EnsureSuccessStatusCode();
             var nextSnap = (await nextRoundRes.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;

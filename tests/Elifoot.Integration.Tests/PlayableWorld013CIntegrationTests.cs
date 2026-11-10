@@ -104,6 +104,7 @@ public sealed class PlayableWorld013CIntegrationTests
                 else Assert.True((await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client,worldId,125)).IsSuccessStatusCode);
             }
             Assert.Equal(RoundState.RESULTS,(await Snapshot(client,worldId)).RoundState);
+            await ApiAndSignalREndToEndTests.ResolveHumanSalaryRequestsAsync(repo,worldId,coaches.ToDictionary(id=>id,_=>client));
             Assert.True((await client.PostAsync($"/api/worlds/{worldId}/next-round",null)).IsSuccessStatusCode);
         }
         Assert.Contains(world.Fixtures,m=>m.CurrentMinute>=90&&m.IsFinished&&(m.HomeClubId==clubs[0].Id||m.AwayClubId==clubs[0].Id));

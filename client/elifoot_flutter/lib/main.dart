@@ -29,6 +29,7 @@ import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
 import 'round_navigation.dart';
 import 'salary_request_modal.dart';
+import 'voluntary_renewal_dialog.dart';
 import 'history_views.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
@@ -804,7 +805,19 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       if (!mounted || _worldId != world || _postRoundKey != key) return;
       setState(() => _snapshot = _acceptSnapshot(next));
       await _refreshClubAndSecondaryData();
-    } catch (_) {
+    } catch (error) {
+      if (error.toString().contains('SALARY_PENDING_')) {
+        if (mounted) {
+          setState(
+            () => _statusBanner = error.toString().replaceFirst(
+              'Exception: ',
+              '',
+            ),
+          );
+        }
+        await _refreshClubAndSecondaryData();
+        return;
+      }
       if (mounted &&
           _postRoundKey == key &&
           _sameCompletedRound(world, season, round)) {
@@ -1014,11 +1027,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _myClubDetail != null &&
         !_matchLocked &&
         !_showMatchView &&
-        !_appearanceOpen &&
-        !_mobileTacticsView &&
-        _activeTabIndex == 0 &&
-        (_classicPage == null || _classicPage == 'squad') &&
-        _snapshot?['roundState'] == 'PREPARING' &&
+        const [
+          'PREPARING',
+          'RESULTS',
+          'FINISHED',
+        ].contains(_snapshot?['roundState']) &&
         !(_snapshot?['hasInitialLobby'] == true &&
             _snapshot?['lobbyStarted'] != true);
     if (!safeHome || pending == null) return game;
@@ -1045,6 +1058,33 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               accept,
             );
             await _refreshClubAndSecondaryData();
+            if (const [
+              'RESULTS',
+              'FINISHED',
+            ].contains(_snapshot?['roundState'])) {
+              try {
+                final next = await widget.apiClient.advanceToNextRound(
+                  _worldId!,
+                  expectedSeasonNumber: (_snapshot!['seasonNumber'] as num)
+                      .toInt(),
+                  expectedRoundNumber: (_snapshot!['roundNumber'] as num)
+                      .toInt(),
+                );
+                if (mounted) {
+                  setState(() => _snapshot = _acceptSnapshot(next));
+                }
+                await _refreshClubAndSecondaryData();
+              } catch (error) {
+                if (mounted) {
+                  setState(
+                    () => _statusBanner = error.toString().replaceFirst(
+                      'Exception: ',
+                      '',
+                    ),
+                  );
+                }
+              }
+            }
           },
         ),
       ],
@@ -1921,30 +1961,28 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     if (player['contractRenewedForSeason'] == true) return;
     final season = (_snapshot?['seasonNumber'] as num?)?.toInt() ?? 1;
     final annual = player['seasonContractsEnabled'] == true;
+    String? renewalToken;
     if (annual) {
+      Map<String, dynamic>? preview;
+      await _runUiCommand(() async {
+        preview = await widget.apiClient.getRenewalContractPreview(
+          world,
+          '${player['id']}',
+          coach,
+        );
+      });
+      if (preview == null) return;
+      if (!mounted ||
+          _matchLocked ||
+          world != _worldId ||
+          coach != _coachId ||
+          club != _myClubId) {
+        return;
+      }
       final confirmed = await showDialog<bool>(
         context: context,
-        builder: (ctx) => AlertDialog(
-          title: const Text('RENOVAR ATÉ O FIM DA TEMPORADA'),
-          content: Text(
-            '${player['displayName'] ?? player['name']}\n'
-            'Salário por partida: ${formatClassicMoney(player['salaryPerRound'])}\n'
-            'Luvas: ${formatClassicMoney(player['seasonRenewalFee'])}\n'
-            'Validade: fim da temporada $season.\n'
-            'O atleta não poderá ser vendido ou leiloado, inclusive por dívida, nesta temporada.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx, false),
-              child: const Text('CANCELAR'),
-            ),
-            ElevatedButton(
-              key: const Key('confirm-season-renewal'),
-              onPressed: () => Navigator.pop(ctx, true),
-              child: const Text('RENOVAR'),
-            ),
-          ],
-        ),
+        builder: (ctx) =>
+            VoluntaryRenewalDialog(player: player, preview: preview!),
       );
       if (confirmed != true ||
           !mounted ||
@@ -1955,6 +1993,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           season != _snapshot?['seasonNumber']) {
         return;
       }
+      renewalToken = preview!['termsToken'] as String;
     }
     await _runUiCommand(() async {
       await widget.apiClient.renewPlayerContract(
@@ -1962,6 +2001,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         '${player['id']}',
         coach,
         annual ? 0 : 15,
+        renewalTermsToken: renewalToken,
       );
       await _refreshClubAndSecondaryData();
       if (mounted) {
@@ -2806,7 +2846,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               player['seasonContractsEnabled'] == true
                   ? player['contractRenewedForSeason'] == true
                         ? '✓ Contrato renovado até o fim da temporada ${player['contractThroughSeason']}.'
-                        : 'SEM CONTRATO DA TEMPORADA. O vínculo com o clube é mantido.'
+                        : 'SEM RENOVAÇÃO ATIVA. O jogador continua pertencendo ao clube.'
                   : 'Contrato restante: ${player['contractRoundsRemaining']} rodadas',
             ),
             const Divider(),

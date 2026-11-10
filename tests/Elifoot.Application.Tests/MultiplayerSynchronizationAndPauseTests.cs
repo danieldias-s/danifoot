@@ -478,6 +478,15 @@ public class MultiplayerSynchronizationAndPauseTests
 
                 if (snap.RoundState == RoundState.RESULTS)
                 {
+                    currentWorld=(await repo.GetWorldAsync(worldA.Id))!;
+                    var finances=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
+                    foreach(var request in currentWorld.Economy.SalaryRequests.Where(r=>r.Status==SalaryRequestStatus.PENDING).ToList())
+                    {
+                        var owner=currentWorld.HumanCoaches.FirstOrDefault(h=>h.CurrentClubId==request.ClubId);
+                        if(owner==null)continue;
+                        var decision=await finances.RespondSalaryAsync(worldA.Id,owner.Id,request.ClubId,request.Id,true,$"test-human-salary:{request.Id}");
+                        Assert.True(decision.Success,decision.Error);
+                    }
                     await orchestrator.AdvanceToNextRoundPreparationAsync(worldA.Id);
                     break;
                 }

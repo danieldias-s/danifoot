@@ -595,6 +595,10 @@ public static class MarketAndEconomyEngine
 
             if (offer.OfferedAmount >= minAccept)
             {
+                if(clubDict.TryGetValue(offer.BuyerClubId,out var offeringClub)&&MarketValidationEngine.CanActAsAi(world,offeringClub))
+                    offer.SalaryTermsToken=MarketContractTermsEngine.SalaryTermsToken(world,player);
+                else if(MarketContractTermsEngine.ValidateConfirmation(world,player,offer.SalaryTermsToken)!=null)
+                    continue;
                 var transferResult = ExecuteTransfer(world, offer.BuyerClubId, seller.Id, player.Id, offer.OfferedAmount,
                     $"Oferta aceita ({offer.Justification})", $"offer:{offer.Id}", "AcceptedOffer");
                 offer.Status = transferResult.Success ? TransferOfferStatus.Accepted : TransferOfferStatus.Cancelled;
@@ -725,6 +729,7 @@ public static class MarketAndEconomyEngine
                         {
                             world.TransferOffers.Add(new TransferOffer
                             {
+                                SalaryTermsToken = MarketContractTermsEngine.SalaryTermsToken(world,bestTarget.Player),
                                 SubmittedByManagerId = buyer.AiManagerId,
                                 GameWorldId = world.Id,
                                 PlayerId = bestTarget.Player.Id,
@@ -888,7 +893,7 @@ public static class MarketAndEconomyEngine
         player.RenewedForSeason=null;
         player.MarketPrice = CalculateFairValue(player);
         decimal previousSalary=player.SalaryPerRound;
-        player.SalaryPerRound = CalculateFairSalaryPerRound(player);
+        player.SalaryPerRound = MarketContractTermsEngine.SigningSalary(player);
         ClassicEconomyEngine.RecordContract(world,player,previousSalary,"TRANSFER_CONTRACT",contractKey);
         mutation.Commit();
         return (true, null);
@@ -968,7 +973,7 @@ public static class MarketAndEconomyEngine
             player.ClubId=buyer.Id;player.ContractRoundsRemaining=rounds;
             player.IsListedForTransfer=false;player.AskingPrice=null;
             if(!preservePreviousSalary)player.MarketPrice=CalculateFairValue(player);
-            player.SalaryPerRound=CalculateFairSalaryPerRound(player);
+            player.SalaryPerRound=MarketContractTermsEngine.SigningSalary(player);
             ClassicEconomyEngine.RecordContract(world,player,preservePreviousSalary?previous:player.SalaryPerRound,reason,contractKey);
             mutation.Commit();return(true,null);
         }

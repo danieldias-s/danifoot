@@ -762,6 +762,7 @@ public partial class MultiSeasonAndBenchmarkTests
             // Track human coaches before season finalization to detect relegation dismissals
             var employedHumansBefore = world.HumanCoaches.Where(h => h.CurrentClubId != null).Select(h => h.Id).ToHashSet();
 
+            ResolveAutomatedHumanSalaryRequests(world);
             var historyEntry = CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance(world);
 
             // Harvest end-of-season prize money and stadium maintenance/renovation/expansion transactions
@@ -1404,11 +1405,25 @@ public partial class MultiSeasonAndBenchmarkTests
         else tracker.Draws++;
     }
 
+    // Explicit policy of the synthetic human agents, not an automatic production decision at turnover.
+    private static void ResolveAutomatedHumanSalaryRequests(GameWorld world)
+    {
+        var humanClubs=world.HumanCoaches.Where(h=>h.CurrentClubId!=null).Select(h=>h.CurrentClubId!.Value).ToHashSet();
+        foreach(var request in world.Economy.SalaryRequests.Where(r=>r.Status==SalaryRequestStatus.PENDING
+            &&humanClubs.Contains(r.ClubId)&&(r.Season==0||r.Season==world.SeasonNumber)).ToList())
+        {
+            var club=world.Clubs.First(c=>c.Id==request.ClubId);
+            var result=ClassicEconomyEngine.RespondSalary(world,club,request.Id,true,$"human-agent-salary:{request.Id}");
+            Assert.True(result.Success,result.Error);
+        }
+    }
+
     private static void RunAutomatedHumanCoachAgentsRoundPrep(
         GameWorld world,
         Dictionary<Guid, (string PolicyName, string PrimaryFormation, string SecondaryFormation, decimal SpendCapRatio)> policies,
         ExperimentResult result)
     {
+        ResolveAutomatedHumanSalaryRequests(world);
         foreach (var hc in world.HumanCoaches.Where(h => h.CurrentClubId != null))
         {
             var club = world.Clubs.First(c => c.Id == hc.CurrentClubId);

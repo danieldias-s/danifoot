@@ -17,12 +17,17 @@ internal sealed class MarketTransferMutation : IDisposable
     private readonly decimal salary, marketPrice;
     private readonly int rounds;
     private readonly int? renewed;
+    private readonly long listingVersion;
     private readonly Guid[] starters, bench;
     private readonly int transactions, contracts, audits;
     private readonly (TransferOffer Offer, TransferOfferStatus Status)[] offers;
-    private readonly (SalaryRaiseRequest Request, SalaryRequestStatus Status, string? Resolution)[] requests;
+    private readonly SalarySnapshot[] requests;
+    private readonly int auctions;
+    private string? commandKey;
+    private FinancialCommandReceipt? previousCommand;
     private readonly SalaryEligibility? eligibility;
     private readonly string[] transactionKeys;
+    private readonly HashSet<string> previousTransactionKeys;
     private readonly string contractKey;
     private readonly bool hadContractKey;
     private bool committed;
@@ -32,21 +37,31 @@ internal sealed class MarketTransferMutation : IDisposable
     {
         this.world = world; this.player = player; this.buyer = buyer; this.seller = seller;
         this.contractKey = contractKey; this.transactionKeys = transactionKeys;
+        previousTransactionKeys=transactionKeys.Where(key=>world.AppliedTransactionKeys.Contains(key)
+            ||world.AppliedTransactionKeys.Count==0&&world.Transactions.Any(t=>$"{t.ClubId}:{t.IdempotencyKey}"==key)).ToHashSet(StringComparer.Ordinal);
         buyerCash = buyer.CashBalance; sellerCash = seller?.CashBalance ?? 0;
         owner = player.ClubId; listed = player.IsListedForTransfer; asking = player.AskingPrice;
         protectedContract = player.NegotiatedContractProtected; salary = player.SalaryPerRound;
         marketPrice = player.MarketPrice; rounds = player.ContractRoundsRemaining; renewed = player.RenewedForSeason;
+        listingVersion = player.TransferListingVersion; auctions = world.Auctions.Count;
         starters = seller?.PreferredStarterIds.ToArray() ?? []; bench = seller?.PreferredBenchIds.ToArray() ?? [];
         transactions = world.Transactions.Count; contracts = world.Economy.ContractHistory.Count; audits = world.AuditLogs.Count;
         offers = world.TransferOffers.Where(o => o.PlayerId == player.Id).Select(o => (o, o.Status)).ToArray();
         requests = world.Economy.SalaryRequests.Where(r => r.PlayerId == player.Id)
-            .Select(r => (r, r.Status, r.Resolution)).ToArray();
+            .Select(r => new SalarySnapshot(r,r.Status,r.Resolution,r.Mandatory,r.AuctionId,r.ResolvedAtUtc,
+                r.ResolvedBy,r.ResolvedByAccountId,r.DecisionVersion)).ToArray();
         eligibility = world.Economy.SalaryEligibility.GetValueOrDefault(player.Id);
         hadContractKey = world.Economy.ContractKeys.Contains(contractKey)
             || world.Economy.ContractKeys.Count == 0 && world.Economy.ContractHistory.Any(h => h.Key == contractKey);
     }
 
     public void Commit() => committed = true;
+
+    public void TrackCommand(Club club,string key)
+    {
+        commandKey=$"C{club.Id}:{key}";
+        previousCommand=world.Economy.Commands.GetValueOrDefault(commandKey);
+    }
 
     public void Dispose()
     {
@@ -61,14 +76,35 @@ internal sealed class MarketTransferMutation : IDisposable
         player.ClubId = owner; player.IsListedForTransfer = listed; player.AskingPrice = asking;
         player.NegotiatedContractProtected = protectedContract; player.SalaryPerRound = salary;
         player.MarketPrice = marketPrice; player.ContractRoundsRemaining = rounds; player.RenewedForSeason = renewed;
+        player.TransferListingVersion = listingVersion;
+        world.Auctions.RemoveRange(auctions,world.Auctions.Count-auctions);
         world.Transactions.RemoveRange(transactions, world.Transactions.Count - transactions);
         world.Economy.ContractHistory.RemoveRange(contracts, world.Economy.ContractHistory.Count - contracts);
         world.AuditLogs.RemoveRange(audits, world.AuditLogs.Count - audits);
-        foreach (var key in transactionKeys) world.AppliedTransactionKeys.Remove(key);
+        foreach (var key in transactionKeys)
+        {
+            if(previousTransactionKeys.Contains(key))world.AppliedTransactionKeys.Add(key);
+            else world.AppliedTransactionKeys.Remove(key);
+        }
         if (!hadContractKey) world.Economy.ContractKeys.Remove(contractKey);
         if (eligibility != null) world.Economy.SalaryEligibility[player.Id] = eligibility;
         else world.Economy.SalaryEligibility.Remove(player.Id);
         foreach (var (offer, status) in offers) offer.Status = status;
-        foreach (var (request, status, resolution) in requests) { request.Status = status; request.Resolution = resolution; }
+        foreach (var r in requests)
+        {
+            r.Request.Status=r.Status;r.Request.Resolution=r.Resolution;r.Request.Mandatory=r.Mandatory;
+            r.Request.AuctionId=r.AuctionId;r.Request.ResolvedAtUtc=r.ResolvedAt;r.Request.ResolvedBy=r.ResolvedBy;
+            r.Request.ResolvedByAccountId=r.Account;r.Request.DecisionVersion=r.Version;
+        }
+        world.Economy.PendingCacheCount=-1;
+        world.Economy.PendingByPlayer.Clear();
+        if(commandKey!=null)
+        {
+            if(previousCommand!=null)world.Economy.Commands[commandKey]=previousCommand;
+            else world.Economy.Commands.Remove(commandKey);
+        }
     }
+
+    private sealed record SalarySnapshot(SalaryRaiseRequest Request,SalaryRequestStatus Status,string? Resolution,
+        bool Mandatory,Guid? AuctionId,DateTime? ResolvedAt,string? ResolvedBy,Guid? Account,int Version);
 }

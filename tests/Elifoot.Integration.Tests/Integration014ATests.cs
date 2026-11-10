@@ -147,11 +147,12 @@ public sealed class Integration014ATests
             var target = world.Players.Last(p => p.ClubId == seller.Id && p.Position == PlayerPosition.A);
             decimal price = MarketAndEconomyEngine.CalculateFairValue(target); decimal sellerBefore = seller.CashBalance;
             Assert.True((await service.ListPlayerForTransferAsync(world.Id, sellerCoach, target.Id, price, idempotencyKey: "014a-list")).Success);
-            Assert.True((await service.BuyListedPlayerAsync(world.Id, buyerCoach, target.Id, "014a-buy")).Success);
+            Assert.True((await service.BuyListedPlayerAsync(world.Id, buyerCoach, target.Id, "014a-buy",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(world,target))).Success);
             Assert.Equal(sellerBefore + price, seller.CashBalance); Assert.Equal(buyer.Id, target.ClubId);
             var renewal = world.Players.First(p => p.ClubId == buyer.Id);
-            decimal salary = renewal.SalaryPerRound;
-            Assert.True((await service.RenewPlayerContractAsync(world.Id, buyerCoach, renewal.Id, 5, idempotencyKey: "014a-renew")).Success);
+            var renewalQuote=ClassicEconomyEngine.PreviewRenewal(world,buyer,renewal);
+            decimal salary = renewalQuote.RequiredSalary;
+            Assert.True((await service.RenewPlayerContractAsync(world.Id, buyerCoach, renewal.Id, 5, idempotencyKey: "014a-renew",renewalTermsToken:renewalQuote.TermsToken)).Success);
             Assert.Equal(salary, renewal.SalaryPerRound);
             Assert.Equal(world.TotalRoundsInSeason - world.RoundNumber + 1, renewal.ContractRoundsRemaining);
             Assert.True(ClassicEconomyEngine.IsSeasonRenewed(world, renewal));

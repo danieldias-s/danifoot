@@ -7,7 +7,12 @@ public static partial class ClassicEconomyEngine
     {
         var id=CoachCareerEngine.StableId($"auction:{w.Id}:{key}");
         var existing=w.Auctions.FirstOrDefault(a=>a.Id==id);
-        if(existing!=null)return existing;
+        if(existing!=null)
+        {
+            if(existing.PlayerId!=p.Id||existing.FormerClubId!=former.Id||existing.Reason!=reason||existing.IsClosed)
+                throw new InvalidOperationException("AUCTION_CONFLICT: A identidade do leilão já pertence a outra operação.");
+            return existing;
+        }
         var auction=new AuctionItem{Id=id,GameWorldId=w.Id,PlayerId=p.Id,FormerClubId=former.Id,Reason=reason,
             MinimumBid=0,CurrentBid=0,CreatedAtSeason=w.SeasonNumber,CreatedAtRound=w.RoundNumber,
             ExpiresAtRound=w.RoundNumber+w.Economy.Rules.AuctionDurationRounds};
@@ -20,12 +25,10 @@ public static partial class ClassicEconomyEngine
         }
         if(reason==AuctionReason.SalaryRenewalRefused)
         {
-            // Same permitted durations as voluntary auctions; independent of sporting RNG.
-            var rng=DeterministicRng.FromContext(w.Seed,w.SeasonNumber,w.RoundNumber,
-                BitConverter.ToInt32(id.ToByteArray(),0),subStep:0x53414C);
-            int duration=rng.NextInt(1,4),total=Math.Max(1,w.TotalRoundsInSeason);
-            int target=w.RoundNumber+duration-1+(w.RoundState==RoundState.RESULTS?1:0);
-            auction.DurationRounds=duration;auction.ExpiresAtSeason=w.SeasonNumber+(target-1)/total;
+            // Exactly one playable round, including a crossing into the next season.
+            int total=Math.Max(1,w.TotalRoundsInSeason);
+            int target=w.RoundNumber+(w.RoundState is RoundState.RESULTS or RoundState.FINISHED?1:0);
+            auction.DurationRounds=1;auction.ExpiresAtSeason=w.SeasonNumber+(target-1)/total;
             auction.ExpiresAtRound=(target-1)%total+1;
         }
         w.Auctions.Add(auction);return auction;
@@ -52,7 +55,9 @@ public static partial class ClassicEconomyEngine
                 &&a.CreatedAtSeason==w.SeasonNumber&&a.CreatedAtRound==w.RoundNumber))continue;
             if(!w.Economy.Rules.SeasonContractsEnabled&&Ordinal(w)-crisis.LastAuctionOrdinal<w.Economy.Rules.InsolvencyAuctionCooldownRounds)continue;
             var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
-            var p=squad.Where(p=>!IsSeasonRenewed(w,p)&&!AuctionReserved(w,p.Id)&&SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove)
+            var p=squad.Where(p=>!IsSeasonRenewed(w,p)&&!AuctionReserved(w,p.Id)
+                    &&!w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING)
+                    &&SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove)
                 .OrderByDescending(p=>p.Strength).ThenByDescending(p=>p.SalaryPerRound).ThenBy(p=>p.Id).FirstOrDefault();
             if(p==null){Record("NO_ELIGIBLE_PLAYER");continue;}
             foreach(var r in w.Economy.SalaryRequests.Where(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING))

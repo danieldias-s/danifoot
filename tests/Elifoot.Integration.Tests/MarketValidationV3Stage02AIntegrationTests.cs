@@ -40,7 +40,7 @@ public class MarketValidationV3Stage02AIntegrationTests
         string file=Path.Combine(Path.GetTempPath(),$"elifoot-v3-02a-failure-{Guid.NewGuid():N}.db");
         try
         {
-            var(w,c,p)=Setup();string url=$"/api/worlds/{w.Id}/market/buy-listed?coachId={c[0].Id}&playerId={p.Id}&idempotencyKey=retry&expectedRoundVersion={w.RoundVersion}";
+            var(w,c,p)=Setup();string url=$"/api/worlds/{w.Id}/market/buy-listed?coachId={c[0].Id}&playerId={p.Id}&idempotencyKey=retry&expectedRoundVersion={w.RoundVersion}&salaryTermsToken={MarketContractTermsEngine.SalaryTermsToken(w,p)}";
             await using(var factory=Factory(file))
             {
                 using var client=factory.CreateClient();await factory.Services.GetRequiredService<IWorldRepository>().SaveWorldAsync(w);

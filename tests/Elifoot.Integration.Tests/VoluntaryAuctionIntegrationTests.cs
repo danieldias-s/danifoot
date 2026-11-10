@@ -23,6 +23,14 @@ public class VoluntaryAuctionIntegrationTests
         foreach(var c in w.Clubs)c.HumanCoachId=Guid.NewGuid(); // No AI market mutation in this controlled acceptance case.
         var a=new HumanCoach{CurrentClubId=w.Clubs[0].Id,Nickname="Seller",IsConnected=true};var b=new HumanCoach{CurrentClubId=w.Clubs[1].Id,Nickname="Buyer",IsConnected=true};
         w.Clubs[0].HumanCoachId=a.Id;w.Clubs[1].HumanCoachId=b.Id;w.HumanCoaches.AddRange([a,b]);
+        // This two-client scenario starts in R7. Other squads have already renewed,
+        // so the fixture's synthetic owners cannot leave unanswerable salary requests.
+        foreach(var player in w.Players.Where(p=>p.ClubId!=a.CurrentClubId&&p.ClubId!=b.CurrentClubId))
+        {
+            player.RenewedForSeason=w.SeasonNumber;
+            player.ContractRoundsRemaining=ClassicEconomyEngine.SeasonContractRounds(w);
+            player.NegotiatedContractProtected=true;
+        }
         return(w,a,b,w.Players.Last(p=>p.ClubId==a.CurrentClubId));
     }
     [Fact]
@@ -60,7 +68,13 @@ public class VoluntaryAuctionIntegrationTests
                 else Assert.True((await ApiAndSignalREndToEndTests.TickWithAutomaticPenaltyChoices(client,w.Id,125)).IsSuccessStatusCode);
             }
             Assert.Equal(RoundState.RESULTS,w.RoundState);Assert.Equal(round==8,a.IsClosed);
-            if(round==7){Assert.Equal(owner.CurrentClubId,p.ClubId);Assert.True((await client.PostAsync($"/api/worlds/{w.Id}/next-round",null)).IsSuccessStatusCode);Assert.False(a.IsClosed);}
+            if(round==7){
+                Assert.Equal(owner.CurrentClubId,p.ClubId);
+                await ApiAndSignalREndToEndTests.ResolveHumanSalaryRequestsAsync(repo,w.Id,
+                    new[]{owner,bidder}.ToDictionary(h=>h.Id,_=>client));
+                var advance=await client.PostAsync($"/api/worlds/{w.Id}/next-round",null);
+                Assert.True(advance.IsSuccessStatusCode,await advance.Content.ReadAsStringAsync());Assert.False(a.IsClosed);
+            }
         }
         Assert.Equal(bidder.CurrentClubId,p.ClubId);Assert.Equal("SOLD",a.ClosureReason);
         var tx=w.Transactions.Where(t=>t.PlayerId==p.Id&&t.TransactionType=="VoluntaryAuction").ToList();Assert.Equal(2,tx.Count);Assert.Equal(0,tx.Sum(t=>t.Amount));

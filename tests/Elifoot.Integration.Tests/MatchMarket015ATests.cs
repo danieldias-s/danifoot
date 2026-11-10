@@ -37,11 +37,11 @@ public class MatchMarket015ATests
                 using var client=factory.CreateClient();await factory.Services.GetRequiredService<IWorldRepository>().SaveWorldAsync(w);
                 using var serviceScope=factory.Services.CreateScope();var svc=serviceScope.ServiceProvider.GetRequiredService<ClubAndMarketApplicationService>();
                 Assert.True((await svc.ListPlayerForTransferAsync(w.Id,coaches[0].Id,p.Id,price,idempotencyKey:"list")).Success);
-                Assert.True((await svc.CreateTransferOfferAsync(w.Id,coaches[1].Id,p.Id,100000,"pending")).Success);
+                Assert.True((await svc.CreateTransferOfferAsync(w.Id,coaches[1].Id,p.Id,100000,"pending",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
                 Assert.Equal(TransferOfferStatus.Pending,Assert.Single(w.TransferOffers).Status);
                 var listing=(await client.GetFromJsonAsync<JsonElement>($"/api/worlds/{w.Id}/market")).GetProperty("listings").EnumerateArray().Single(x=>x.GetProperty("playerId").GetGuid()==p.Id);
                 long version=w.RoundVersion;long listingVersion=listing.GetProperty("listingVersion").GetInt64();
-                string Buy(HumanCoach c)=>$"/api/worlds/{w.Id}/market/buy-listed?coachId={c.Id}&playerId={p.Id}&listingVersion={listingVersion}&sellerClubId={coaches[0].CurrentClubId}&askingPrice=123456.78&idempotencyKey=buy-{c.Id}&expectedRoundVersion={version}";
+                string Buy(HumanCoach c)=>$"/api/worlds/{w.Id}/market/buy-listed?coachId={c.Id}&playerId={p.Id}&listingVersion={listingVersion}&sellerClubId={coaches[0].CurrentClubId}&askingPrice=123456.78&idempotencyKey=buy-{c.Id}&expectedRoundVersion={version}&salaryTermsToken={MarketContractTermsEngine.SalaryTermsToken(w,p)}";
                 var urls=coaches.Skip(1).Select(Buy).ToArray();
                 var attempts=await Task.WhenAll(urls.Select(u=>client.PostAsync(u,null)));
                 Assert.Single(attempts,r=>r.IsSuccessStatusCode);
@@ -54,7 +54,7 @@ public class MatchMarket015ATests
                 var ledger=w.Transactions.Where(t=>t.PlayerId==p.Id&&t.TransactionType=="DirectPurchase").ToList();
                 Assert.Equal(2,ledger.Count);Assert.Equal(0,ledger.Sum(t=>t.Amount));
                 Assert.True((await client.PostAsync(winningUrl,null)).IsSuccessStatusCode);Assert.Equal(2,w.Transactions.Count(t=>t.PlayerId==p.Id));
-                Assert.False((await svc.RespondToTransferOfferAsync(w.Id,coaches[0].Id,w.TransferOffers.Single().Id,true,"stale-offer")).Success);
+                Assert.False((await svc.RespondToTransferOfferAsync(w.Id,coaches[0].Id,w.TransferOffers.Single().Id,true,"stale-offer",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
             }
             EfWorldRepository.ClearCacheForTesting();
             await using(var restart=Factory(conn,postgres)){
@@ -75,12 +75,12 @@ public class MatchMarket015ATests
         var(w,c,p)=Seed();var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);var svc=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"list")).Success);long old=p.TransferListingVersion;
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,250000,idempotencyKey:"reprice")).Success);
-        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"stale-price",listingVersion:old,sellerClubId:c[0].CurrentClubId,askingPrice:200000)).Success);
-        var offer=await svc.CreateTransferOfferAsync(w.Id,c[1].Id,p.Id,170000,"offer");Assert.True(offer.Success);Assert.Equal(c[0].CurrentClubId,p.ClubId);Assert.Equal(250000,p.AskingPrice);
+        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"stale-price",listingVersion:old,sellerClubId:c[0].CurrentClubId,askingPrice:200000,salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
+        var offer=await svc.CreateTransferOfferAsync(w.Id,c[1].Id,p.Id,170000,"offer",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p));Assert.True(offer.Success);Assert.Equal(c[0].CurrentClubId,p.ClubId);Assert.Equal(250000,p.AskingPrice);
         Assert.False((await svc.CounterTransferOfferAsync(w.Id,c[1].Id,offer.Offer!.OfferId,190000,"not-seller")).Success);
         Assert.True((await svc.CounterTransferOfferAsync(w.Id,c[0].Id,offer.Offer!.OfferId,190000,"counter")).Success);Assert.Equal(250000,p.AskingPrice);
-        Assert.False((await svc.RespondToTransferOfferAsync(w.Id,c[0].Id,offer.Offer.OfferId,true,"seller-cannot-accept-own-counter")).Success);
-        Assert.True((await svc.RespondToTransferOfferAsync(w.Id,c[1].Id,offer.Offer.OfferId,true,"accept")).Success);
+        Assert.False((await svc.RespondToTransferOfferAsync(w.Id,c[0].Id,offer.Offer.OfferId,true,"seller-cannot-accept-own-counter",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
+        Assert.True((await svc.RespondToTransferOfferAsync(w.Id,c[1].Id,offer.Offer.OfferId,true,"accept",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
         Assert.Equal(c[1].CurrentClubId,p.ClubId);Assert.Equal(TransferOfferStatus.Accepted,w.TransferOffers.Single().Status);Assert.Equal(2,w.Transactions.Count(t=>t.PlayerId==p.Id));
     }
     [Fact]
@@ -90,7 +90,7 @@ public class MatchMarket015ATests
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"list")).Success);long old=p.TransferListingVersion;
         Assert.True((await svc.WithdrawTransferListingAsync(w.Id,c[0].Id,p.Id,"withdraw")).Success);Assert.False(p.IsListedForTransfer);
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"relist")).Success);
-        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"stale",listingVersion:old)).Success);Assert.DoesNotContain(w.Transactions,t=>t.Category is FinancialTransactionCategory.TransferPurchase or FinancialTransactionCategory.TransferSale);
+        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"stale",listingVersion:old,salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);Assert.DoesNotContain(w.Transactions,t=>t.Category is FinancialTransactionCategory.TransferPurchase or FinancialTransactionCategory.TransferSale);
         Assert.True((await svc.WithdrawTransferListingAsync(w.Id,c[0].Id,p.Id,"withdraw-again")).Success);
         Assert.True((await svc.CreateVoluntaryAuctionAsync(w.Id,c[0].Id,p.Id,idempotencyKey:"auction")).Success);
         Assert.False((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"incompatible")).Success);
@@ -102,12 +102,12 @@ public class MatchMarket015ATests
     {
         var(w,c,p)=Seed();var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);var svc=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"list")).Success);w.RoundState=stage;
-        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"buy")).Success);
+        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"buy",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
         Assert.False((await svc.WithdrawTransferListingAsync(w.Id,c[0].Id,p.Id,"withdraw")).Success);
-        Assert.False((await svc.CreateTransferOfferAsync(w.Id,c[1].Id,p.Id,170000,"offer")).Success);
+        Assert.False((await svc.CreateTransferOfferAsync(w.Id,c[1].Id,p.Id,170000,"offer",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
         Assert.False((await svc.TakeBankLoanAsync(w.Id,c[0].Id,500000,0,idempotencyKey:"loan")).Success);
         Assert.Equal(c[0].CurrentClubId,p.ClubId);Assert.DoesNotContain(w.Transactions,t=>t.Category is FinancialTransactionCategory.TransferPurchase or FinancialTransactionCategory.TransferSale);
-        w.RoundState=RoundState.RESULTS;Assert.True((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"buy-results")).Success);
+        w.RoundState=RoundState.RESULTS;Assert.True((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"buy-results",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
     }
     [Fact]
     public async Task NoFundsExpiredContractLastGoalkeeperAndMaximumSquadCannotBeBought()
@@ -115,10 +115,10 @@ public class MatchMarket015ATests
         var(w,c,p)=Seed();var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(w);var svc=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         w.Economy.Rules.SeasonContractsEnabled=false;
         Assert.True((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,p.Id,200000,idempotencyKey:"list")).Success);
-        w.Clubs[1].CashBalance=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"no-cash")).Success);w.Clubs[1].CashBalance=10_000_000;
-        p.ContractRoundsRemaining=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"expired")).Success);p.ContractRoundsRemaining=20;
+        w.Clubs[1].CashBalance=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"no-cash",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);w.Clubs[1].CashBalance=10_000_000;
+        p.ContractRoundsRemaining=0;Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"expired",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);p.ContractRoundsRemaining=20;
         while(w.Players.Count(x=>x.ClubId==c[1].CurrentClubId)<24)w.Players.Add(new Player{GameWorldId=w.Id,ClubId=c[1].CurrentClubId});
-        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"full")).Success);
+        Assert.False((await svc.BuyListedPlayerAsync(w.Id,c[1].Id,p.Id,"full",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(w,p))).Success);
         var keeper=w.Players.First(x=>x.ClubId==c[0].CurrentClubId&&x.Position==PlayerPosition.G);
         w.Players.RemoveAll(x=>x.ClubId==c[0].CurrentClubId&&x.Position==PlayerPosition.G&&x.Id!=keeper.Id);
         Assert.False((await svc.ListPlayerForTransferAsync(w.Id,c[0].Id,keeper.Id,1,idempotencyKey:"last-keeper")).Success);
@@ -134,15 +134,16 @@ public class MatchMarket015ATests
         var service = new ClubAndMarketApplicationService(repo, NullMatchRoomNotificationPublisher.Instance);
         player.ContractRoundsRemaining = 0;
         Assert.True((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "list")).Success);
-        Assert.True((await service.RenewPlayerContractAsync(world.Id, coaches[0].Id, player.Id, 0, idempotencyKey: "renew")).Success);
-        Assert.False((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "stale-buy")).Success);
+        var renewal=ClassicEconomyEngine.PreviewRenewal(world,world.Clubs.First(c=>c.Id==player.ClubId),player);
+        Assert.True((await service.RenewPlayerContractAsync(world.Id, coaches[0].Id, player.Id, 0, idempotencyKey: "renew",renewalTermsToken:renewal.TermsToken)).Success);
+        Assert.False((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "stale-buy",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(world,player))).Success);
         Assert.False((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "protected")).Success);
 
         world.SeasonNumber++;
         world.RoundNumber = 1;
         player.ContractRoundsRemaining = 0;
         Assert.True((await service.ListPlayerForTransferAsync(world.Id, coaches[0].Id, player.Id, 200_000, idempotencyKey: "next-list")).Success);
-        Assert.True((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "buy")).Success);
+        Assert.True((await service.BuyListedPlayerAsync(world.Id, coaches[1].Id, player.Id, "buy",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(world,player))).Success);
         Assert.Equal(coaches[1].CurrentClubId, player.ClubId);
     }
 }

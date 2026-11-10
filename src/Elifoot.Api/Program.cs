@@ -93,11 +93,15 @@ app.Use(async (context, next) =>
     try { await next(context); }
     catch (Exception error) when (!context.Response.HasStarted
         && context.Request.Path.StartsWithSegments("/api/worlds")
-        && context.Request.Path.Value?.Contains("/market/", StringComparison.Ordinal) == true
+        && (context.Request.Path.Value?.Contains("/market/", StringComparison.Ordinal) == true
+            ||context.Request.Path.Value?.Contains("/salary-requests/",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/renew",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/next-round",StringComparison.Ordinal)==true)
         && error is IOException or DbUpdateException)
     {
         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-        await context.Response.WriteAsJsonAsync(new { error = "MARKET_PERSISTENCE_FAILED: A operação não foi confirmada. Repita com a mesma chave." });
+        string code=context.Request.Path.Value?.Contains("/market/",StringComparison.Ordinal)==true?"MARKET_PERSISTENCE_FAILED":"CONTRACT_PERSISTENCE_FAILED";
+        await context.Response.WriteAsJsonAsync(new { error = code+": A operação não foi confirmada. Repita com a mesma chave." });
     }
 });
 
@@ -454,8 +458,15 @@ app.MapPost("/api/worlds/{worldId:guid}/next-round", async (
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
-    var snap = await orchestrator.AdvanceToNextRoundPreparationAsync(worldId, ct, expectedSeasonNumber, expectedRoundNumber);
-    return snap == null ? Results.NotFound() : Results.Ok(snap);
+    try
+    {
+        var snap = await orchestrator.AdvanceToNextRoundPreparationAsync(worldId, ct, expectedSeasonNumber, expectedRoundNumber);
+        return snap == null ? Results.NotFound() : Results.Ok(snap);
+    }
+    catch(SalarySeasonTransitionException error)
+    {
+        return Results.Conflict(new{error=error.Message});
+    }
 });
 
 // 4. Clubs, Squads, Divisions, Cup, Top Scorers, Ranking
@@ -626,6 +637,14 @@ app.MapPost("/api/worlds/{worldId:guid}/market/auction", async (
     return result.Success?Results.Ok(new{success=true,auctionId=result.AuctionId}):Results.BadRequest(new{error=result.Error});
 });
 
+app.MapGet("/api/worlds/{worldId:guid}/market/contract-preview",async (
+    Guid worldId,Guid coachId,Guid playerId,Guid? offerId,Guid? auctionId,
+    ClubAndMarketApplicationService service,CancellationToken ct)=>
+{
+    var result=await service.GetTransferContractPreviewAsync(worldId,coachId,playerId,offerId,auctionId,ct);
+    return result.Preview==null?Results.BadRequest(new{error=result.Error}):Results.Ok(result.Preview);
+});
+
 app.MapPost("/api/worlds/{worldId:guid}/market/buy-listed", async (
     Guid worldId,
     Guid coachId,
@@ -635,10 +654,11 @@ app.MapPost("/api/worlds/{worldId:guid}/market/buy-listed", async (
     long? listingVersion,
     Guid? sellerClubId,
     decimal? askingPrice,
+    string? salaryTermsToken,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion, listingVersion, sellerClubId, askingPrice);
+    var (ok, err) = await service.BuyListedPlayerAsync(worldId, coachId, playerId, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion, listingVersion, sellerClubId, askingPrice,salaryTermsToken);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
@@ -647,13 +667,14 @@ app.MapPost("/api/worlds/{worldId:guid}/market/offer", async (
     Guid coachId,
     Guid playerId,
     decimal offeredAmount,
+    string? salaryTermsToken,
     string? idempotencyKey,
     long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
     var (ok, err, offer) = await service.CreateTransferOfferAsync(
-        worldId, coachId, playerId, offeredAmount, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
+        worldId, coachId, playerId, offeredAmount, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion,salaryTermsToken);
     return ok ? Results.Ok(offer) : Results.BadRequest(new { error = err });
 });
 
@@ -662,13 +683,14 @@ app.MapPost("/api/worlds/{worldId:guid}/market/offer/{offerId:guid}/respond", as
     Guid offerId,
     Guid coachId,
     bool accept,
+    string? salaryTermsToken,decimal? expectedPrice,
     string? idempotencyKey,
     long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
     var (ok, err) = await service.RespondToTransferOfferAsync(
-        worldId, coachId, offerId, accept, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion);
+        worldId, coachId, offerId, accept, idempotencyKey ?? Guid.NewGuid().ToString("N"), ct, expectedRoundVersion,salaryTermsToken,expectedPrice);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
@@ -694,6 +716,13 @@ app.MapPost("/api/worlds/{worldId:guid}/market/auction/{auctionId:guid}/bid", as
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
+app.MapGet("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew-preview", async (
+    Guid worldId,Guid playerId,Guid coachId,ClubAndMarketApplicationService service,CancellationToken ct)=>
+{
+    var(preview,error)=await service.GetRenewalContractPreviewAsync(worldId,coachId,playerId,ct);
+    return preview==null?Results.BadRequest(new{error}):Results.Ok(preview);
+});
+
 app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (
     Guid worldId,
     Guid playerId,
@@ -701,10 +730,11 @@ app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (
     int additionalRounds,
     string? idempotencyKey,
     long? expectedRoundVersion,
+    string? renewalTermsToken,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.RenewPlayerContractAsync(worldId, coachId, playerId, additionalRounds, ct, idempotencyKey, expectedRoundVersion);
+    var (ok, err) = await service.RenewPlayerContractAsync(worldId, coachId, playerId, additionalRounds, ct, idempotencyKey, expectedRoundVersion,renewalTermsToken);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 

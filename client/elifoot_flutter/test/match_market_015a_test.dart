@@ -11,6 +11,25 @@ class Market015Api extends ElifootApiClient {
   int buys = 0, bids = 0, offers = 0;
   double? lastBid;
   @override
+  Future<Map<String, dynamic>> getTransferContractPreview(
+    String w,
+    String c,
+    String p, {
+    String? offerId,
+    String? auctionId,
+  }) async => {
+    'playerId': p,
+    'askingPrice': 200000,
+    'currentSalaryPerRound': 4321,
+    'signingSalaryPerRound': 5000,
+    'salaryTermsToken': 'server-terms',
+    'additionalCosts': 0,
+    'buyerClubName': 'Comprador',
+    'sellerClubId': 'seller',
+    'sellerClubName': 'Vendedor',
+    'listingVersion': 3,
+  };
+  @override
   Future<void> buyConfirmedListing(
     String w,
     String c,
@@ -35,8 +54,9 @@ class Market015Api extends ElifootApiClient {
     String w,
     String c,
     String p,
-    double amount,
-  ) async {
+    double amount, {
+    String? salaryTermsToken,
+  }) async {
     offers++;
     return {'status': 'Pending'};
   }
@@ -141,7 +161,7 @@ void main() {
     await tester.tap(find.text('CONTRAPROPOSTA'));
     await tester.pumpAndSettle();
     expect(find.text('Preço fixo: R\$ 200.000'), findsOneWidget);
-    expect(find.text('Salário: R\$ 4.321 / rodada'), findsOneWidget);
+    expect(find.text('Salário atual: R\$ 4.321 / rodada'), findsOneWidget);
     expect(find.text('Preço fixo: R\$ 0'), findsNothing);
     await tester.tap(find.text('CANCELAR'));
     await tester.pumpAndSettle();

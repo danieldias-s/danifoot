@@ -97,7 +97,7 @@ void main() {
               ),
             ),
           );
-          expect(find.text('SEM CONTRATO'), findsOneWidget);
+          expect(find.text('PEDIDO ESPONTÂNEO'), findsOneWidget);
           expect(find.textContaining('Posição: D'), findsOneWidget);
           expect(find.textContaining('R\$ 254'), findsOneWidget);
           await tester.tap(find.text('ACEITAR'));

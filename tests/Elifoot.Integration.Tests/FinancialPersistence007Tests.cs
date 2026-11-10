@@ -29,7 +29,7 @@ public class FinancialPersistence007Tests
         var repo=new InMemoryWorldRepository();await repo.SaveWorldAsync(world);
         var service=new ClubAndMarketApplicationService(repo,NullMatchRoomNotificationPublisher.Instance);
         var seller=world.Clubs.Single(c=>c.Id==offer.SellerClubId);
-        var result=await service.RespondToTransferOfferAsync(world.Id,seller.HumanCoachId!.Value,offer.Id,true,"007-ai-human-offer");
+        var result=await service.RespondToTransferOfferAsync(world.Id,seller.HumanCoachId!.Value,offer.Id,true,"007-ai-human-offer",salaryTermsToken:MarketContractTermsEngine.SalaryTermsToken(world,world.Players.Single(x=>x.Id==offer.PlayerId)));
         Assert.True(result.Success,result.Error);
         var after=AiMarketMetrics.FromRecords(buyer.AiManagerId.Value,world.Transactions,world.AuditLogs,world.TransferOffers);
         Assert.Equal(1,after.AiOffersSubmitted);Assert.Equal(1,after.AiOffersAccepted);Assert.Equal(1,after.AiPurchasesCompleted);

@@ -755,6 +755,30 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   ) async {}
 
   @override
+  Future<Map<String, dynamic>> getTransferContractPreview(
+    String worldId,
+    String coachId,
+    String playerId, {
+    String? offerId,
+    String? auctionId,
+  }) async {
+    final market = await getMarket(worldId);
+    final listing = (market['listings'] as List)
+        .where((p) => p['playerId'] == playerId)
+        .firstOrNull;
+    return {
+      'playerId': playerId,
+      'askingPrice': listing?['askingPrice'] ?? 390000,
+      'currentSalaryPerRound': listing?['salaryPerRound'] ?? 1234,
+      'signingSalaryPerRound': 2000,
+      'salaryTermsToken': 'server-salary-terms',
+      'additionalCosts': 0,
+      'buyerClubName': 'Comprador',
+      'sellerClubName': listing?['sellerClubName'] ?? 'Vendedor',
+    };
+  }
+
+  @override
   Future<void> buyListedPlayer(
     String worldId,
     String coachId,
@@ -766,8 +790,9 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     String worldId,
     String coachId,
     String playerId,
-    double amount,
-  ) async {
+    double amount, {
+    String? salaryTermsToken,
+  }) async {
     return {'status': 'Pending'};
   }
 
@@ -784,8 +809,10 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
     String worldId,
     String offerId,
     String coachId,
-    bool accept,
-  ) async {}
+    bool accept, {
+    String? salaryTermsToken,
+    num? expectedPrice,
+  }) async {}
 
   @override
   Future<void> startStadiumRenovation(
@@ -812,12 +839,27 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   ) async {}
 
   @override
+  Future<Map<String, dynamic>> getRenewalContractPreview(
+    String worldId,
+    String playerId,
+    String coachId,
+  ) async => {
+    'currentSalary': 500,
+    'requiredSalary': 500,
+    'signingFee': 1000,
+    'season': 1,
+    'requiresRaise': false,
+    'termsToken': 'test-renewal',
+  };
+
+  @override
   Future<void> renewPlayerContract(
     String worldId,
     String playerId,
     String coachId,
-    int additionalRounds,
-  ) async {}
+    int additionalRounds, {
+    String? renewalTermsToken,
+  }) async {}
 
   @override
   Future<void> listPlayerForTransfer(

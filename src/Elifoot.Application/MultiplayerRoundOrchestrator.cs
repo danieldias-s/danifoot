@@ -249,6 +249,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (coach == null)
                 return (false, "Treinador humano não pertence a esta sala.", BuildReadyCounterDto(world), false);
 
+            await RecoverAiSalaryDecisionsAsync(world);
+            if(SalarySeasonTransitionEngine.BlockingReason(world) is string salaryError)
+                return(false,salaryError,BuildReadyCounterDto(world),false);
+
             // Idempotency: if the same idempotency key was already processed, return current counter without mutating
             var idemSet = GetIdempotencySet(world.Id);
             if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
@@ -337,6 +341,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (coach == null)
                 return (false, "Participante não encontrado na sala.", BuildReadyCounterDto(world), false);
 
+            await RecoverAiSalaryDecisionsAsync(world);
+            if(SalarySeasonTransitionEngine.BlockingReason(world) is string salaryError)
+                return(false,salaryError,BuildReadyCounterDto(world),false);
+
             var idemSet = GetIdempotencySet(world.Id);
             if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
             {
@@ -417,11 +425,28 @@ public sealed partial class MultiplayerRoundOrchestrator
         => !ClassicForceEvolutionEngine.IsActive(world) || GetCurrentRoundFixtures(world)
             .Any(m => m.HomeClubId == clubId || m.AwayClubId == clubId);
 
+    private async Task RecoverAiSalaryDecisionsAsync(GameWorld world)
+    {
+        if(!world.Economy.SalaryRequests.Any(r=>r.Status==SalaryRequestStatus.PENDING)&&!world.Economy.AiSalaryRecoveryNeedsSave)return;
+        if(ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world)>0)
+        {
+            world.RoundVersion++;
+            world.Economy.AiSalaryRecoveryNeedsSave=true;
+        }
+        // Also retries durability when a previous AI recovery changed the cache but its save failed.
+        if(world.Economy.AiSalaryRecoveryNeedsSave)
+        {
+            await _repository.SaveWorldAsync(world,CancellationToken.None);
+            world.Economy.AiSalaryRecoveryNeedsSave=false;
+        }
+    }
+
     private static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
     {
         if (world.InitialLobby is {StartedAt:null} || world.InitialLobby!=null && world.HumanCoaches.Count!=world.MaxHumans) return false;
         if (world.RoundState != RoundState.PREPARING) return false;
         if (world.HumanCoaches.Count == 0) return false;
+        if(SalarySeasonTransitionEngine.BlockingReason(world)!=null)return false;
         ClassicForceEvolutionEngine.PrepareRound(world);
         DisciplineEngine.EnsureMigrated(world);
 
@@ -1043,12 +1068,19 @@ public sealed partial class MultiplayerRoundOrchestrator
             // A delayed automatic request must never advance a later completed round.
             if ((expectedSeasonNumber.HasValue && world.SeasonNumber != expectedSeasonNumber) ||
                 (expectedRoundNumber.HasValue && world.RoundNumber != expectedRoundNumber))
+            {
+                // A retry after a failed save must durably confirm the complete cached transition.
+                await _repository.SaveWorldAsync(world,CancellationToken.None);
                 return BuildLiveRoundSnapshotDto(world);
+            }
 
             if (world.RoundState is not (RoundState.RESULTS or RoundState.FINISHED))
             {
                 return BuildLiveRoundSnapshotDto(world);
             }
+
+            await RecoverAiSalaryDecisionsAsync(world);
+            SalarySeasonTransitionEngine.RequireResolved(world);
 
             foreach (var h in world.HumanCoaches)
             {
@@ -1060,7 +1092,7 @@ public sealed partial class MultiplayerRoundOrchestrator
 
             if (world.RoundNumber >= world.TotalRoundsInSeason)
             {
-                CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance(world);
+                CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance(world,world.SeasonNumber);
             }
             else
             {
@@ -1090,7 +1122,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             }
 
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            await _repository.SaveWorldAsync(world, CancellationToken.None);
             var snapshot = BuildLiveRoundSnapshotDto(world);
             await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snapshot.ReadyCounter, ct);

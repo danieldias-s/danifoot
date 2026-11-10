@@ -404,6 +404,7 @@ public class PauseWindow
 
 public class TransferOffer
 {
+    public string? SalaryTermsToken { get; set; }
     public Guid? SubmittedByManagerId { get; set; }
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }

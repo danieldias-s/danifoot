@@ -36,8 +36,8 @@ public class SalaryRequestSafetyTests
         Assert.True(ClassicEconomyEngine.RespondSalary(restored,club,r.Id,true,"accept").Success);
         Assert.True(ClassicEconomyEngine.RespondSalary(restored,club,r.Id,true,"second-tab").Success);
         Assert.False(ClassicEconomyEngine.RespondSalary(restored,club,r.Id,false,"opposite").Success);
-        Assert.Equal(requested,player.SalaryPerRound);Assert.Equal(restored.SeasonNumber,player.RenewedForSeason);
-        Assert.Equal(ClassicEconomyEngine.SeasonContractRounds(restored),player.ContractRoundsRemaining);
+        Assert.Equal(requested,player.SalaryPerRound);Assert.Null(player.RenewedForSeason);
+        Assert.Equal(0,player.ContractRoundsRemaining);
         ClassicEconomyEngine.GenerateSalaryRequests(restored,[m]);Assert.Single(restored.Economy.SalaryRequests);
         Assert.Single(restored.Economy.ContractHistory);Assert.Equal(1,restored.Economy.SalaryRequests[0].DecisionVersion);
     }
@@ -46,7 +46,7 @@ public class SalaryRequestSafetyTests
         var(w,c,p,m)=Setup();ClassicEconomyEngine.GenerateSalaryRequests(w,[m]);var r=Assert.Single(w.Economy.SalaryRequests);
         Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"no").Success);
         Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,false,"other-tab").Success);
-        var a=Assert.Single(w.Auctions);Assert.Equal(r.AuctionId,a.Id);Assert.InRange(a.DurationRounds!.Value,1,3);
+        var a=Assert.Single(w.Auctions);Assert.Equal(r.AuctionId,a.Id);Assert.Equal(1,a.DurationRounds);
         Assert.Equal(0,a.MinimumBid);Assert.Equal(AuctionReason.SalaryRenewalRefused,a.Reason);
         var buyer=w.Clubs[1];Assert.True(ClassicEconomyEngine.PlaceBid(w,buyer,a.Id,0,"bid").Success);
         MarketAndEconomyEngine.SettleAuction(w,a);Assert.False(a.IsClosed);Assert.Null(p.ClubId);

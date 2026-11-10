@@ -110,11 +110,17 @@ public partial class MultiSeasonAndBenchmarkTests
                 }
                 w.RoundState=RoundState.RESULTS;
                 MarketAndEconomyEngine.SettleMatchAndRoundFinancials(w,fixtures);
+                ResolveAutomatedHumanSalaryRequests(w);
                 CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(w,fixtures);
                 string careerBefore=CareerSignature(w);
                 CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(w,fixtures);
                 Assert.Equal(careerBefore,CareerSignature(w));
                 if(round%2==0)MarketAndEconomyEngine.ProcessWeeklyAiMarketBatch(w);
+                // Career/market processing can change the responsible coach after the first decisions.
+                // Mirror the room's final salary preflight before this driver advances another round.
+                ResolveAutomatedHumanSalaryRequests(w);
+                ClassicEconomyEngine.ResolvePendingAiSalaryRequests(w);
+                Assert.Null(SalarySeasonTransitionEngine.BlockingReason(w));
                 CheckOwnership(w);
                 Assert.All(CoachCareerEngine.Coaches(w),c=>Assert.InRange(c.State.Morale,0,100));
             }
