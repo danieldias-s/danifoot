@@ -8,6 +8,7 @@
   - Etapa 02A: `2402e99`, `ced4e43`
   - Etapa 02B: `8df9b0c`, `b3fc9e3`
   - Subfase 02C-1 (Implementação da Economia Clássica): `82bdadb` (`feat(elifoot98): implement V3 stage 02C classical economy`)
+  - Subfase 02C-2 (Validação Multi-Temporada): `f678e85` (`test(elifoot98): validate V3 economy across seasons`)
 - **Escopo:** Subfase `02C-1` (Auditoria de engenharia reversa no binário original `ELIFOOT.EXE` + implementação dos cálculos econômicos clássicos) e Subfase `02C-2` (Validação de longo prazo em `1`, `3`, `5`, `10` e `20` temporadas + suíte completa de regressão .NET e Flutter).
 
 ---
