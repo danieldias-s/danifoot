@@ -1507,6 +1507,7 @@ public partial class MultiSeasonAndBenchmarkTests
 
         // Later agents can buy a previously prepared club's listed starter. Finalize all human
         // lineups only after every agent's market actions, matching the server's kickoff validation.
+        ClassicForceEvolutionEngine.PrepareRound(world);
         foreach (var hc in world.HumanCoaches.Where(h => h.CurrentClubId != null))
         {
             var club = world.Clubs.Single(c => c.Id == hc.CurrentClubId);

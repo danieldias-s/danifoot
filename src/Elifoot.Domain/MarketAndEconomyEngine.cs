@@ -735,6 +735,18 @@ public static class MarketAndEconomyEngine
                     if (bestTarget.Player.Position == PlayerPosition.G && sellerSquad.Count(p => p.Position == PlayerPosition.G) < 2)
                         continue;
 
+                    if (!bestTarget.Player.IsListedForTransfer && ClassicPlayerEconomyEngine.IsClassicalNationalityPricingEnabled(world))
+                    {
+                        int minPosKeep = bestTarget.Player.Position switch
+                        {
+                            PlayerPosition.G => 2,
+                            PlayerPosition.A => 4,
+                            _ => 5
+                        };
+                        if (sellerSquad.Count <= 15 || sellerSquad.Count(p => p.Position == bestTarget.Player.Position) <= minPosKeep)
+                            continue;
+                    }
+
                     string justification = $"{needCategory} para {plan.TargetPrimaryFormation} na posição {pos} (força {bestTarget.Player.Strength})";
 
                     if (bestTarget.Player.IsListedForTransfer)
