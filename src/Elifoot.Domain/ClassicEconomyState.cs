@@ -6,6 +6,12 @@ public class ClassicEconomyState
 {
     public int Version { get; set; }
     public ClassicEconomyRules Rules { get; set; } = new();
+    public ClassicPlayerEconomyRules PlayerEconomyRules { get; set; } = new();
+    public double InflationIndex { get; set; } = ClassicPlayerEconomyEngine.InitialInflationIndex;
+    [JsonIgnore] public int InflationDisplayIndex => ClassicPlayerEconomyEngine.CalculateInflationDisplay(InflationIndex);
+    public int EconomyYearCounter { get; set; } = ClassicPlayerEconomyEngine.InitialEconomyYearCounter;
+    public List<InflationHistoryEntry> InflationHistory { get; set; } = new();
+    public Dictionary<Guid,double> ClubFactorsR { get; set; } = new();
     public OperatingEconomyRules OperatingRules { get; set; } = new();
     public int? OperatingUpgradeSeason { get; set; }
     public Dictionary<string,SponsorSeasonBudget> SponsorshipBudgets { get; set; } = new();
@@ -89,3 +95,14 @@ public record BankLoanEntry(string Key,int Season,int Round,Guid? MatchId,string
     decimal InterestCharged,decimal InterestPaid,decimal PrincipalPaid,decimal CashChange,decimal DebtBefore,decimal DebtAfter);
 public record SpecialAuctionResult(Guid AuctionId,Guid PlayerId,AuctionReason Reason,Guid? FormerClubId,
     Guid? BuyerClubId,int Season,int Round,decimal Price,string Outcome);
+
+public class ClassicPlayerEconomyRules
+{
+    public string Policy { get; set; } = ClassicPlayerEconomyEngine.CalibratedMultiplayerPolicy;
+    public int CurrencyFactorC { get; set; } = ClassicPlayerEconomyEngine.DefaultCurrencyFactorC;
+    public bool UseClassicalSalaryFormula { get; set; }
+    public bool UseClassicalMarketValuation { get; set; }
+    public bool UseClassicalNationalityPricing { get; set; }
+    public bool UseClassicalAiHiringInterest { get; set; }
+    public bool UseSeasonalInflationEvolution { get; set; } = true;
+}

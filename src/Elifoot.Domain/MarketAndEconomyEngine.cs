@@ -8,7 +8,12 @@ public static class MarketAndEconomyEngine
     /// Convex FairValue curve for strength 1..50, modulated by Star (*), discipline (Behavior),
     /// position demand, and remaining contract rounds. Calibrated to internal game economy.
     /// </summary>
-    public static decimal CalculateFairValue(Player player)
+    public static decimal CalculateFairValue(Player player) => CalculateCalibratedFairValue(player);
+
+    public static decimal CalculateFairValue(GameWorld? world, Player player) =>
+        ClassicPlayerEconomyEngine.CalculateMarketValue(world, player);
+
+    public static decimal CalculateCalibratedFairValue(Player player)
     {
         int s = Math.Clamp(player.Strength, 1, 50);
         // Convex curve: strength 10 ~ 45k, strength 25 ~ 280k, strength 38 ~ 950k, strength 50 ~ 2.45M
@@ -53,6 +58,9 @@ public static class MarketAndEconomyEngine
 
     public static decimal CalculateFairSalaryPerRound(Player player) =>
         CalculateFairSalaryPerRound(player.Strength, player.IsStar, player.Position);
+
+    public static decimal CalculateFairSalaryPerRound(GameWorld? world, Player player, Club? club = null) =>
+        ClassicPlayerEconomyEngine.CalculateReferenceSalaryPerRound(world, player, club);
 
     public static decimal CalculateFairSalaryPerRound(int strength, bool isStar, PlayerPosition position)
     {
@@ -330,8 +338,8 @@ public static class MarketAndEconomyEngine
                     {
                         decimal previousSalary=p.SalaryPerRound;
                         p.ContractRoundsRemaining = 20;
-                        p.SalaryPerRound = CalculateFairSalaryPerRound(p);
-                        p.MarketPrice = CalculateFairValue(p);
+                        p.SalaryPerRound = CalculateFairSalaryPerRound(world, p, club);
+                        p.MarketPrice = CalculateFairValue(world, p);
                         decimal bonus = Math.Round(p.SalaryPerRound * 1.5m, 2);
                         TryRecordTransaction(world, club, FinancialTransactionCategory.ContractRenewal,
                             -bonus, $"Renovação contratual de {p.DisplayName}",
@@ -349,9 +357,9 @@ public static class MarketAndEconomyEngine
                         p.IsListedForTransfer = false;
                         p.AskingPrice = null;
                         p.ContractRoundsRemaining = 20;
-                        decimal fair = CalculateFairValue(p);
+                        decimal fair = CalculateFairValue(world, p);
                         p.MarketPrice = fair;
-                        p.SalaryPerRound = CalculateFairSalaryPerRound(p);
+                        p.SalaryPerRound = CalculateFairSalaryPerRound(world, p, club);
                         world.Auctions.Add(new AuctionItem
                         {
                             GameWorldId = world.Id,
@@ -551,7 +559,7 @@ public static class MarketAndEconomyEngine
             // Discount listings that haven't sold after 3+ rounds
             foreach (var listed in squad.Where(p => p.IsListedForTransfer && world.RoundNumber - p.ListedAtRound >= 3))
             {
-                decimal fair = CalculateFairValue(listed);
+                decimal fair = CalculateFairValue(world, listed);
                 listed.AskingPrice = Math.Round(Math.Max(fair * 0.78m, (listed.AskingPrice ?? fair) * 0.90m), 0);
                 listed.ListedAtRound = world.RoundNumber;
             }
@@ -564,7 +572,7 @@ public static class MarketAndEconomyEngine
                     || ClassicEconomyEngine.AuctionReserved(world, p.Id)) continue;
                 if (!MarketValidationEngine.ValidateSale(world,club.Id,p.Id).Success) continue;
 
-                decimal fair = CalculateFairValue(p);
+                decimal fair = CalculateFairValue(world, p);
                 p.IsListedForTransfer = true;
                 p.AskingPrice = Math.Round(fair * (club.CashBalance < plan.EmergencyCashReserve ? 0.88m : 1.04m), 0);
                 p.ListedAtRound = world.RoundNumber;
@@ -589,9 +597,13 @@ public static class MarketAndEconomyEngine
                 continue;
             }
 
-            decimal fair = CalculateFairValue(player);
+            decimal fair = CalculateFairValue(world, player);
             bool isSurplus = seller.LatestSquadPlan?.SurplusPlayerIds.Contains(player.Id) == true;
-            decimal minAccept = isSurplus ? fair * 0.88m : fair * 1.12m;
+            var buyerClubForOffer = clubDict.GetValueOrDefault(offer.BuyerClubId);
+            decimal baseAsk = ClassicPlayerEconomyEngine.IsClassicalNationalityPricingEnabled(world)
+                ? ClassicPlayerEconomyEngine.CalculateCandidateSigningPrice(world, player, buyerClubForOffer, seller)
+                : fair * 1.12m;
+            decimal minAccept = isSurplus ? fair * 0.88m : baseAsk;
 
             if (offer.OfferedAmount >= minAccept)
             {
@@ -677,18 +689,34 @@ public static class MarketAndEconomyEngine
                 // Look at listed players first (including human-listed players!)
                 var candidates = world.Players
                     .Where(p => p.ClubId != null && p.ClubId != buyer.Id && p.Position == pos && p.Strength >= minStrengthNeeded && !ClassicEconomyEngine.AuctionReserved(world,p.Id))
-                    .Select(p => new
+                    .Select(p =>
                     {
-                        Player = p,
-                        Fair = CalculateFairValue(p),
-                        Price = p.IsListedForTransfer && p.AskingPrice.HasValue
+                        decimal fair = CalculateFairValue(world, p);
+                        var sellerClub = clubDict.GetValueOrDefault(p.ClubId!.Value);
+                        decimal price = p.IsListedForTransfer && p.AskingPrice.HasValue
                             ? p.AskingPrice.Value
-                            : Math.Round(CalculateFairValue(p) * 1.12m, 0)
+                            : ClassicPlayerEconomyEngine.IsClassicalNationalityPricingEnabled(world)
+                                ? ClassicPlayerEconomyEngine.CalculateCandidateSigningPrice(world, p, buyer, sellerClub)
+                                : Math.Round(fair * 1.12m, 0);
+                        decimal maxReasonable = ClassicPlayerEconomyEngine.IsClassicalNationalityPricingEnabled(world)
+                            ? Math.Max(fair * 1.25m, price)
+                            : fair * 1.25m;
+                        double interestFactor = ClassicPlayerEconomyEngine.IsClassicalAiHiringInterestEnabled(world)
+                            ? (double)ClassicPlayerEconomyEngine.CalculateAiHiringInterestFactor(world, p, buyer, sellerClub)
+                            : 1.0;
+                        return new
+                        {
+                            Player = p,
+                            Fair = fair,
+                            Price = price,
+                            MaxReasonable = maxReasonable,
+                            InterestFactor = interestFactor
+                        };
                     })
-                    .Where(x => x.Price <= plan.MaxSingleSigningBudget && x.Price <= x.Fair * 1.25m)
-                    // Rational Utility: prefer listed players first, then maximize (Strength + StarBonus) / Price
+                    .Where(x => x.Price <= plan.MaxSingleSigningBudget && x.Price <= x.MaxReasonable)
+                    // Rational Utility: prefer listed players first, then maximize ((Strength + StarBonus) * InterestFactor) / Price
                     .OrderByDescending(x => x.Player.IsListedForTransfer ? 1 : 0)
-                    .ThenByDescending(x => (x.Player.Strength + (x.Player.IsStar ? 6 : 0)) / (double)Math.Max(10_000m, x.Price))
+                    .ThenByDescending(x => ((x.Player.Strength + (x.Player.IsStar ? 6 : 0)) * x.InterestFactor) / (double)Math.Max(10_000m, x.Price))
                     .Take(6)
                     .ToList();
 
@@ -771,7 +799,7 @@ public static class MarketAndEconomyEngine
         foreach (var auction in world.Auctions.Where(a => !a.IsClosed).ToList())
         {
             if (!playerDict.TryGetValue(auction.PlayerId, out var auctionPlayer)) continue;
-            decimal fair = CalculateFairValue(auctionPlayer);
+            decimal fair = CalculateFairValue(world, auctionPlayer);
 
             foreach (var aiClub in buyerCandidates.Take(10))
             {
@@ -891,9 +919,9 @@ public static class MarketAndEconomyEngine
         player.AskingPrice = null;
         player.ContractRoundsRemaining = Math.Max(player.ContractRoundsRemaining, 16);
         player.RenewedForSeason=null;
-        player.MarketPrice = CalculateFairValue(player);
+        player.MarketPrice = CalculateFairValue(world, player);
         decimal previousSalary=player.SalaryPerRound;
-        player.SalaryPerRound = MarketContractTermsEngine.SigningSalary(player);
+        player.SalaryPerRound = MarketContractTermsEngine.SigningSalary(world, player, buyer);
         ClassicEconomyEngine.RecordContract(world,player,previousSalary,"TRANSFER_CONTRACT",contractKey);
         mutation.Commit();
         return (true, null);
@@ -972,8 +1000,8 @@ public static class MarketAndEconomyEngine
             decimal previous=player.SalaryPerRound;
             player.ClubId=buyer.Id;player.ContractRoundsRemaining=rounds;
             player.IsListedForTransfer=false;player.AskingPrice=null;
-            if(!preservePreviousSalary)player.MarketPrice=CalculateFairValue(player);
-            player.SalaryPerRound=MarketContractTermsEngine.SigningSalary(player);
+            if(!preservePreviousSalary)player.MarketPrice=CalculateFairValue(world, player);
+            player.SalaryPerRound=MarketContractTermsEngine.SigningSalary(world, player, buyer);
             ClassicEconomyEngine.RecordContract(world,player,preservePreviousSalary?previous:player.SalaryPerRound,reason,contractKey);
             mutation.Commit();return(true,null);
         }
@@ -1011,7 +1039,7 @@ public static class MarketAndEconomyEngine
             : player.Strength > (positionSquad.Take(starters).LastOrDefault()?.Strength ?? 0) ? "REINFORCEMENT_STARTER" : "MARKET_OPPORTUNITY";
         tx.SigningDecision = new(reason, buyer.LatestSquadPlan?.TargetPrimaryFormation ?? buyer.PreferredFormation,
             player.Position, player.Strength, positionSquad.Take(starters).LastOrDefault()?.Strength,
-            positionSquad.Skip(starters).FirstOrDefault()?.Strength, amount, CalculateFairValue(player),
-            CalculateFairSalaryPerRound(player), player.Behavior, player.IsStar, buyer.CashBalance + amount, buyer.CashBalance);
+            positionSquad.Skip(starters).FirstOrDefault()?.Strength, amount, CalculateFairValue(world, player),
+            CalculateFairSalaryPerRound(world, player, buyer), player.Behavior, player.IsStar, buyer.CashBalance + amount, buyer.CashBalance);
     }
 }

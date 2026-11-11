@@ -99,7 +99,7 @@ public sealed partial class ClubAndMarketApplicationService
 
     public static PlayerDto MapPlayerDto(Player p, string? clubName, GameWorld? world=null)
     {
-        decimal fair = MarketAndEconomyEngine.CalculateFairValue(p);
+        decimal fair = MarketAndEconomyEngine.CalculateFairValue(world, p);
         var panel = PlayerStatisticsEngine.GetPanelStatistics(world, p);
         return new PlayerDto(
             Id: p.Id,
@@ -130,7 +130,7 @@ public sealed partial class ClubAndMarketApplicationService
             PhotoCredit: p.PhotoCredit)
         {
             CatalogIdentity = p.CatalogIdentity,
-            ReferenceSalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(p),
+            ReferenceSalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(world, p),
             NegotiatedContractProtected = p.NegotiatedContractProtected,
             ContractRenewedForSeason = world!=null&&ClassicEconomyEngine.IsSeasonRenewed(world,p),
             ContractThroughSeason = p.RenewedForSeason,
@@ -248,9 +248,12 @@ public sealed partial class ClubAndMarketApplicationService
         // If Seller is AI, evaluate immediately so the user gets instant negotiation feedback (Accepted / Countered / Rejected)
         if (seller.HumanCoachId == null)
         {
-            decimal fair = MarketAndEconomyEngine.CalculateFairValue(player);
+            decimal fair = MarketAndEconomyEngine.CalculateFairValue(world, player);
             bool isSurplus = seller.LatestSquadPlan?.SurplusPlayerIds.Contains(player.Id) == true || player.IsListedForTransfer;
-            decimal askRef = player.AskingPrice ?? (isSurplus ? fair * 0.92m : fair * 1.12m);
+            decimal baseAsk = ClassicPlayerEconomyEngine.IsClassicalNationalityPricingEnabled(world)
+                ? ClassicPlayerEconomyEngine.CalculateCandidateSigningPrice(world, player, buyer, seller)
+                : fair * 1.12m;
+            decimal askRef = player.AskingPrice ?? (isSurplus ? fair * 0.92m : baseAsk);
 
             if (offer.OfferedAmount >= askRef)
             {

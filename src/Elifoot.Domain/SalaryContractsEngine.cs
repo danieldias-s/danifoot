@@ -116,7 +116,7 @@ public static partial class ClassicEconomyEngine
             var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
             w.Economy.SalaryRequests.Add(new(){Id=CoachCareerEngine.StableId($"salary:{w.Id}:{roundKey}"),WorldId=w.Id,ClubId=c.Id,PlayerId=player.Id,
                 Season=w.SeasonNumber,Round=w.RoundNumber,CurrentSalary=player.SalaryPerRound,RequestedSalary=chosen.Requested,
-                ReferenceSalary=MarketAndEconomyEngine.CalculateFairSalaryPerRound(player),RenewalMatches=w.Economy.Rules.RenewalMatches,
+                ReferenceSalary=MarketAndEconomyEngine.CalculateFairSalaryPerRound(w,player,c),RenewalMatches=w.Economy.Rules.RenewalMatches,
                 CreatedAtUtc=DateTime.UtcNow,Reason=chosen.Trigger.Reason,TriggerKey=chosen.Trigger.Key,Mandatory=!SquadValidator.CanRemovePlayerFromSquad(squad,player.Id).CanRemove});
             w.Economy.SalaryRequestRounds.Add(roundKey);w.Economy.SalaryEligibility.Remove(player.Id);
         }
@@ -124,7 +124,7 @@ public static partial class ClassicEconomyEngine
     private static decimal RequestedSalary(GameWorld w,Club c,Player p)
     {
         decimal division=c.DivisionTier switch{DivisionTier.PrimeiraDivisao=>1.10m,DivisionTier.SegundaDivisao=>1.05m,DivisionTier.TerceiraDivisao=>1m,DivisionTier.QuartaDivisao=>.95m,_=>.9m};
-        decimal reference=MarketAndEconomyEngine.CalculateFairSalaryPerRound(p)*division;
+        decimal reference=MarketAndEconomyEngine.CalculateFairSalaryPerRound(w,p,c)*division;
         decimal cap=w.Economy.Rules.MaximumSalaryRaiseFraction*(c.CashBalance<0?.5m:1m);
         return Math.Round(Math.Min(reference,Math.Max(p.SalaryPerRound+1,p.SalaryPerRound*(1+cap))),0);
     }

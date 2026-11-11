@@ -8,10 +8,13 @@ public static class MarketContractTermsEngine
 {
     public static decimal SigningSalary(Player player)=>MarketAndEconomyEngine.CalculateFairSalaryPerRound(player);
 
+    public static decimal SigningSalary(GameWorld? world,Player player,Club? buyerClub=null)=>
+        MarketAndEconomyEngine.CalculateFairSalaryPerRound(world,player,buyerClub);
+
     // Consent fingerprint, not an authorization credential. Ownership and finances are validated separately.
     public static string SalaryTermsToken(GameWorld world,Player player)
     {
-        string terms=FormattableString.Invariant($"salary-v1:{world.Id}:{player.Id}:{player.ClubId}:{player.SalaryPerRound}:{SigningSalary(player)}:{player.ContractRoundsRemaining}");
+        string terms=FormattableString.Invariant($"salary-v1:{world.Id}:{player.Id}:{player.ClubId}:{player.SalaryPerRound}:{SigningSalary(world,player)}:{player.ContractRoundsRemaining}");
         return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(terms)));
     }
 

@@ -644,6 +644,7 @@ public static class CompetitionAndSeasonEngine
                 player.NegotiatedContractProtected=false;
             }
         OperatingEconomyEngine.EnsureScheduledRules(world);
+        ClassicPlayerEconomyEngine.AdvanceWorldInflationAtSeasonEnd(world, world.SeasonNumber - 1);
         InitializeSeasonFixtures(world);
         GenerateJobInvitationsForUnemployedHumans(world);
         if(world.Economy.Rules.SeasonContractsEnabled)ClassicEconomyEngine.EvaluateInsolvency(world);

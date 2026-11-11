@@ -58,11 +58,27 @@ public sealed partial class ClubAndMarketApplicationService
                 if(auction==null)return(null,"Leilão encerrado ou inexistente.");
                 sellerId=auction.FormerClubId;price=ClassicEconomyEngine.NextBid(auction);
             }
+            var sellerClub=sellerId is Guid sid?world.Clubs.FirstOrDefault(c=>c.Id==sid):null;
+            var breakdown=ClassicPlayerEconomyEngine.EvaluatePlayerEconomy(world,player,buyer,sellerClub,price);
             return(new(player.Id,player.DisplayName,buyer.Id,buyer.Name,sellerId,
-                sellerId is Guid sid?world.Clubs.FirstOrDefault(c=>c.Id==sid)?.Name:null,price,player.SalaryPerRound,
-                MarketContractTermsEngine.SigningSalary(player),0,MarketContractTermsEngine.SalaryTermsToken(world,player),
+                sellerClub?.Name,price,player.SalaryPerRound,
+                MarketContractTermsEngine.SigningSalary(world,player,buyer),0,MarketContractTermsEngine.SalaryTermsToken(world,player),
                 player.TransferListingVersion,auctionId.HasValue?20:Math.Max(16,player.ContractRoundsRemaining),
-                auctionId.HasValue,world.RoundVersion),null);
+                auctionId.HasValue,world.RoundVersion)
+            {
+                CalculatedBaseSalary=breakdown.CalculatedBaseSalary,
+                MarketValue=breakdown.IndividualMarketValue,
+                CandidateSigningPrice=breakdown.CandidateSigningPrice,
+                NationalityClass=breakdown.NationalityClass switch
+                {
+                    ClassicalNationalityClass.SameCountry=>"SAME_COUNTRY",
+                    ClassicalNationalityClass.EquivalentCountry=>"EQUIVALENT_COUNTRY",
+                    _=>"FOREIGNER"
+                },
+                AiHiringInterestFactor=breakdown.AiHiringInterestFactor,
+                InflationIndex=breakdown.InflationIndex,
+                InflationDisplay=breakdown.InflationDisplayIndex
+            },null);
         }
         finally{gate.Release();}
     }

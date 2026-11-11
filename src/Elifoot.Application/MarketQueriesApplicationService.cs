@@ -21,7 +21,7 @@ public sealed partial class ClubAndMarketApplicationService
         .Select(p => new TransferListingDto(
             p.Id, p.DisplayName, p.Position, p.Strength, p.Behavior.ToDisplayPt(), p.IsStar,
             p.ClubId, clubDict[p.ClubId!.Value].Name, p.AskingPrice!.Value,
-            MarketAndEconomyEngine.CalculateFairValue(p), p.SalaryPerRound, p.ContractRoundsRemaining, p.ListedAtRound) { ListingVersion=p.TransferListingVersion })
+            MarketAndEconomyEngine.CalculateFairValue(world, p), p.SalaryPerRound, p.ContractRoundsRemaining, p.ListedAtRound) { ListingVersion=p.TransferListingVersion })
         .ToList();
 
     var auctions = world.Auctions
@@ -55,7 +55,7 @@ public sealed partial class ClubAndMarketApplicationService
         })
         .ToList();
 
-    return new { listings, auctions, offers, world.RoundVersion, world.SeasonNumber, world.RoundNumber, totalRoundsInSeason=world.TotalRoundsInSeason };
+    return new { listings, auctions, offers, world.RoundVersion, world.SeasonNumber, world.RoundNumber, totalRoundsInSeason=world.TotalRoundsInSeason, inflationIndex=world.Economy.InflationIndex, inflationDisplay=ClassicPlayerEconomyEngine.CalculateInflationDisplay(world.Economy.InflationIndex) };
         } finally {gate.Release();}
     }
 }

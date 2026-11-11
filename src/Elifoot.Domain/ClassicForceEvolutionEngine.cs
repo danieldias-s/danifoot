@@ -282,7 +282,7 @@ public static class ClassicForceEvolutionEngine
     private static void Record(GameWorld w, Player p, Club? club, int rank, int ceiling, int before, string reason,
         string key, ForceInjury? injury = null, DateOnly? date = null)
     {
-        p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(p);
+        p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(w, p);
         w.PlayerStrengthHistory.Add(new(key, p.Id, w.SeasonNumber, w.RoundNumber, club?.Id, club?.Name ?? "Sem clube",
             club?.DivisionTier, before, p.Strength, reason, injury?.Id, Rule, reason)
         {
