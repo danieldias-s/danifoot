@@ -408,10 +408,19 @@ public sealed partial class ClubAndMarketApplicationService
         Guid worldId,
         Guid coachId,
         Guid invitationId,
-        CancellationToken ct = default)
-        => await RespondJobInvitationAsync(worldId, coachId, invitationId, true, ct);
+        CancellationToken ct = default,
+        string? idempotencyKey = null,
+        long? expectedRoundVersion = null)
+        => await RespondJobInvitationAsync(worldId, coachId, invitationId, true, ct, idempotencyKey, expectedRoundVersion);
 
-    public async Task<(bool Success, string? Error)> RespondJobInvitationAsync(Guid worldId, Guid coachId, Guid invitationId, bool accept, CancellationToken ct = default)
+    public async Task<(bool Success, string? Error)> RespondJobInvitationAsync(
+        Guid worldId,
+        Guid coachId,
+        Guid invitationId,
+        bool accept,
+        CancellationToken ct = default,
+        string? idempotencyKey = null,
+        long? expectedRoundVersion = null)
     {
         var gate = MultiplayerRoundOrchestrator.GetLock(worldId);
         await gate.WaitAsync(ct);
@@ -419,13 +428,47 @@ public sealed partial class ClubAndMarketApplicationService
         {
             var world = await _repository.GetWorldAsync(worldId, ct);
             if (world == null) return (false, "Sala não encontrada.");
+            ClassicEconomyEngine.EnsureMigrated(world);
+            CoachCareerEngine.EnsureMigrated(world);
+            string? receiptKey = string.IsNullOrWhiteSpace(idempotencyKey) ? null : $"INV:{coachId}:{idempotencyKey.Trim()}";
+            string payload = $"{invitationId}:{accept}";
+            if (receiptKey != null && world.Economy.Commands.TryGetValue(receiptKey, out var receipt) && receipt.ResultJson != null)
+            {
+                if (receipt.Operation != "APP:INVITATION_RESPOND" || receipt.Payload != payload)
+                    return (false, "Chave usada por outra operação.");
+                await _repository.SaveWorldAsync(world, CancellationToken.None);
+                return System.Text.Json.JsonSerializer.Deserialize<(bool Success, string? Error)>(receipt.ResultJson, CommandJson)!;
+            }
+            if (expectedRoundVersion.HasValue && expectedRoundVersion.Value != world.RoundVersion)
+                return (false, "A sala mudou. Atualize antes de confirmar a operação.");
             var coach = world.HumanCoaches.FirstOrDefault(c => c.Id == coachId);
             if (world.RoundState == RoundState.PREPARING && coach?.IsReadyForRound == true)
                 return (false, "Retire o pronto antes de mudar de clube.");
             var result = CoachCareerEngine.Respond(world, coachId, invitationId, accept);
             if (!result.Success) return result;
+            ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world);
+            if (accept && coach?.CurrentClubId is Guid newClubId)
+            {
+                var club = world.Clubs.FirstOrDefault(c => c.Id == newClubId);
+                if (club != null)
+                {
+                    var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+                    var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
+                    if (!SquadValidator.ValidatePreMatchLineup(spec.Code, club.PreferredStarterIds, club.PreferredBenchIds, squad, world.AllowClassic505).IsValid)
+                    {
+                        var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
+                        club.PreferredFormation = spec.Code;
+                        club.PreferredStarterIds = starters;
+                        club.PreferredBenchIds = bench;
+                    }
+                }
+            }
+            if (receiptKey != null)
+            {
+                world.Economy.Commands[receiptKey] = new("APP:INVITATION_RESPOND", payload, null, null, System.Text.Json.JsonSerializer.Serialize(result, CommandJson));
+            }
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            await _repository.SaveWorldAsync(world, CancellationToken.None);
             var snap = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snap.ReadyCounter, ct);
             await _publisher.PublishRoundStateChangedAsync(world.Id, snap, ct);
@@ -434,7 +477,7 @@ public sealed partial class ClubAndMarketApplicationService
         finally { gate.Release(); }
     }
 
-    public async Task<object?> GetCareerAsync(Guid worldId, Guid coachId, CancellationToken ct = default)
+    public async Task<CoachCareerSnapshotDto?> GetCareerAsync(Guid worldId, Guid coachId, CancellationToken ct = default)
     {
         var gate = MultiplayerRoundOrchestrator.GetLock(worldId); await gate.WaitAsync(ct);
         try
@@ -451,10 +494,27 @@ public sealed partial class ClubAndMarketApplicationService
                         i.Explanation, CoachCareerEngine.TablePosition(w,c), Math.Round(CoachCareerEngine.Strength(w,c),1), c.Stadium.BuiltCapacity,
                         c.Reputation >= 75 ? "Disputar títulos" : c.Reputation >= 45 ? "Buscar acesso e estabilidade" : "Permanência e desenvolvimento", i.ProjectImprovement);
                 }).ToList();
-            return new { invitations = list, employmentHistory = coach?.Employment ?? new(), morale = coach?.State.Morale ?? 70,
-                moraleBand = w.CoachMoraleRules.Band(coach?.State.Morale ?? 70), moraleHistory = coach?.State.MoraleHistory ?? new(),
-                currentClubId = coach?.ClubId, currentProjectScore = coach?.ClubId is Guid id ? CoachCareerEngine.ProjectScore(w,w.Clubs.Single(c=>c.Id==id)) : 0m,
-                careerRules = w.CoachMoraleRules, titles = w.CoachTitles.Where(t=>t.CoachId==coachId).ToList() };
+            var employmentHistory = (coach?.Employment ?? new())
+                .Select(e => new CoachEmploymentRecordDto(e.ClubId, e.ClubName, e.StartSeason, e.StartRound, e.EndSeason, e.EndRound, e.ReasonForLeaving))
+                .ToList();
+            var moraleHistory = (coach?.State.MoraleHistory ?? new())
+                .Select(m => new CoachMoraleEntryDto(m.Season, m.Round, m.MatchId, m.Before, m.After, m.Reason))
+                .ToList();
+            var titles = w.CoachTitles.Where(t => t.CoachId == coachId)
+                .Select(t => new CoachTitleRecordDto(t.Season, t.Division, t.ClubId, t.CoachId, t.TitleType))
+                .ToList();
+            int morale = coach?.State.Morale ?? 70;
+            return new CoachCareerSnapshotDto(
+                Invitations: list,
+                EmploymentHistory: employmentHistory,
+                Morale: morale,
+                MoraleBand: w.CoachMoraleRules.Band(morale),
+                MoraleHistory: moraleHistory,
+                CurrentClubId: coach?.ClubId,
+                CurrentProjectScore: coach?.ClubId is Guid id ? CoachCareerEngine.ProjectScore(w, w.Clubs.Single(c => c.Id == id)) : 0m,
+                CareerRules: new CoachMoraleRulesDto(w.CoachMoraleRules.GreenMinimum, w.CoachMoraleRules.YellowMinimum, w.CoachMoraleRules.UnemployedRecoveryPerRound),
+                Titles: titles,
+                RoundVersion: w.RoundVersion);
         }
         finally { gate.Release(); }
     }
@@ -478,28 +538,35 @@ public sealed partial class ClubAndMarketApplicationService
         bool autoMode,
         CancellationToken ct = default)
     {
-        var world = await _repository.GetWorldAsync(worldId, ct);
-        if (world == null) return (false, "Sala não encontrada.");
-
-        var host = world.HumanCoaches.FirstOrDefault(h => h.Id == hostCoachId);
-        if (host == null || !host.IsHost)
-            return (false, "Apenas o host da sala pode alterar o modo automático de participantes.");
-
-        var target = world.HumanCoaches.FirstOrDefault(h => h.Id == targetCoachId);
-        if (target == null) return (false, "Participante não encontrado.");
-
-        target.IsAutoMode = autoMode;
-        world.AuditLogs.Add(new AuditLogEntry
+        var gate = MultiplayerRoundOrchestrator.GetLock(worldId);
+        await gate.WaitAsync(ct);
+        try
         {
-            GameWorldId = world.Id,
-            SeasonNumber = world.SeasonNumber,
-            RoundNumber = world.RoundNumber,
-            ActionType = "HOST_SET_AUTO_MODE",
-            ActorCoachId = host.Id,
-            Description = $"Host {host.Nickname} alterou modo automático de {target.Nickname} para {autoMode}."
-        });
+            var world = await _repository.GetWorldAsync(worldId, ct);
+            if (world == null) return (false, "Sala não encontrada.");
 
-        await _repository.SaveWorldAsync(world, ct);
-        return (true, null);
+            var host = world.HumanCoaches.FirstOrDefault(h => h.Id == hostCoachId);
+            if (host == null || !host.IsHost)
+                return (false, "Apenas o host da sala pode alterar o modo automático de participantes.");
+
+            var target = world.HumanCoaches.FirstOrDefault(h => h.Id == targetCoachId);
+            if (target == null) return (false, "Participante não encontrado.");
+
+            target.IsAutoMode = autoMode;
+            world.AuditLogs.Add(new AuditLogEntry
+            {
+                GameWorldId = world.Id,
+                SeasonNumber = world.SeasonNumber,
+                RoundNumber = world.RoundNumber,
+                ActionType = "HOST_SET_AUTO_MODE",
+                ActorCoachId = host.Id,
+                Description = $"Host {host.Nickname} alterou modo automático de {target.Nickname} para {autoMode}."
+            });
+
+            world.RoundVersion++;
+            await _repository.SaveWorldAsync(world, ct);
+            return (true, null);
+        }
+        finally { gate.Release(); }
     }
 }

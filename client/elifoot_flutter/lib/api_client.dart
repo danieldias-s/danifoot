@@ -1060,7 +1060,11 @@ class ElifootApiClient {
     final res = await _http.get(
       Uri.parse('$baseUrl/api/worlds/$worldId/invitations/$coachId'),
     );
-    return _decodeResponse(res);
+    final data = _decodeResponse(res);
+    if (data['roundVersion'] is num) {
+      _financeVersions[worldId] = (data['roundVersion'] as num).toInt();
+    }
+    return data;
   }
 
   Future<void> acceptInvitation(
@@ -1071,7 +1075,7 @@ class ElifootApiClient {
     final uri = Uri.parse(
       '$baseUrl/api/worlds/$worldId/invitations/$invitationId/accept',
     ).replace(queryParameters: {'coachId': coachId});
-    final res = await _http.post(uri);
+    final res = await _postFinance(uri);
     _decodeResponse(res);
   }
 
@@ -1083,7 +1087,7 @@ class ElifootApiClient {
     final uri = Uri.parse(
       '$baseUrl/api/worlds/$worldId/invitations/$invitationId/reject',
     ).replace(queryParameters: {'coachId': coachId});
-    _decodeResponse(await _http.post(uri));
+    _decodeResponse(await _postFinance(uri));
   }
 
   Future<String> exportWorldJson(String worldId) async {

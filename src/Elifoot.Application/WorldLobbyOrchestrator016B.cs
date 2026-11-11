@@ -31,6 +31,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 if(!result.Success)throw new ArgumentException(result.Error);
             } else if(coach.CurrentClubId is Guid old) {
                 var club=w.Clubs.Single(c=>c.Id==old);club.HumanCoachId=null;coach.CurrentClubId=null;
+                coach.IsReadyForRound=false;coach.SubmittedFormation=null;coach.SubmittedStarterIds.Clear();coach.SubmittedBenchIds.Clear();
                 var job=coach.EmploymentHistory.LastOrDefault(e=>e.EndSeason==null);
                 if(job!=null){job.EndSeason=w.SeasonNumber;job.EndRound=w.RoundNumber;job.ReasonForLeaving="INITIAL_LOBBY_CHOICE";}
                 CoachCareerEngine.OpenVacancy(w,club);CoachCareerEngine.EnsureProvisional(w,club);

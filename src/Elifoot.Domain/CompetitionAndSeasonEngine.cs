@@ -476,6 +476,8 @@ public static class CompetitionAndSeasonEngine
         if(expectedSeasonNumber is int expected&&expected!=world.SeasonNumber)
             return world.SeasonHistories.FirstOrDefault(h=>h.SeasonNumber==expected)
                 ?? throw new InvalidOperationException("SEASON_VERSION: Temporada não corresponde à transição solicitada.");
+        if(world.SeasonHistories.FirstOrDefault(h=>h.SeasonNumber==world.SeasonNumber) is SeasonHistoryEntry existingSeasonHistory)
+            return existingSeasonHistory;
         SalarySeasonTransitionEngine.RequireResolved(world);
         HistoryEngine.Observe(world);
         OperatingEconomyEngine.EnsureScheduledRules(world);

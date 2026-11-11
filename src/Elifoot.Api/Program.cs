@@ -95,6 +95,7 @@ app.Use(async (context, next) =>
         && context.Request.Path.StartsWithSegments("/api/worlds")
         && (context.Request.Path.Value?.Contains("/market/", StringComparison.Ordinal) == true
             ||context.Request.Path.Value?.Contains("/salary-requests/",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.Contains("/invitations/",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/renew",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/next-round",StringComparison.Ordinal)==true)
         && error is IOException or DbUpdateException)
@@ -859,17 +860,25 @@ app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/accept",
     Guid worldId,
     Guid invitationId,
     Guid coachId,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var (ok, err) = await service.AcceptJobInvitationAsync(worldId, coachId, invitationId, ct);
+    var (ok, err) = await service.AcceptJobInvitationAsync(worldId, coachId, invitationId, ct, idempotencyKey, expectedRoundVersion);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/invitations/{invitationId:guid}/reject", async (
-    Guid worldId, Guid invitationId, Guid coachId, ClubAndMarketApplicationService service, CancellationToken ct) =>
+    Guid worldId,
+    Guid invitationId,
+    Guid coachId,
+    string? idempotencyKey,
+    long? expectedRoundVersion,
+    ClubAndMarketApplicationService service,
+    CancellationToken ct) =>
 {
-    var (ok, err) = await service.RespondJobInvitationAsync(worldId, coachId, invitationId, false, ct);
+    var (ok, err) = await service.RespondJobInvitationAsync(worldId, coachId, invitationId, false, ct, idempotencyKey, expectedRoundVersion);
     return ok ? Results.Ok(new { success = true, message = err }) : Results.BadRequest(new { error = err });
 });
 

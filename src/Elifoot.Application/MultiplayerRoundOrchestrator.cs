@@ -84,7 +84,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             {
                 if (preferredClubId != null && existingCoach.CurrentClubId != preferredClubId)
                 {
-                    if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0)
+                    if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0 || existingCoach.EmploymentHistory.Count > 0)
                         return (false, "Mudanças de carreira são feitas por convites na aba RANKING & CARREIRA.", existingCoach, world);
                     if (world.InitialLobby is {StartedAt:null,DrawCompletedAt:not null})
                         return (false,"O sorteio já foi concluído; as escolhas iniciais estão bloqueadas.",existingCoach,world);
@@ -206,6 +206,10 @@ public sealed partial class MultiplayerRoundOrchestrator
         club.CareerVacancyId = null; club.HasProvisionalManager = false;
         club.HumanCoachId = coach.Id;
         coach.CurrentClubId = club.Id;
+        coach.IsReadyForRound = false;
+        coach.SubmittedFormation = null;
+        coach.SubmittedStarterIds.Clear();
+        coach.SubmittedBenchIds.Clear();
         coach.EmploymentHistory.Add(new CoachEmploymentRecord
         {
             ClubId = club.Id,
@@ -446,6 +450,7 @@ public sealed partial class MultiplayerRoundOrchestrator
         if (world.InitialLobby is {StartedAt:null} || world.InitialLobby!=null && world.HumanCoaches.Count!=world.MaxHumans) return false;
         if (world.RoundState != RoundState.PREPARING) return false;
         if (world.HumanCoaches.Count == 0) return false;
+        ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world);
         if(SalarySeasonTransitionEngine.BlockingReason(world)!=null)return false;
         ClassicForceEvolutionEngine.PrepareRound(world);
         DisciplineEngine.EnsureMigrated(world);
@@ -1046,6 +1051,7 @@ public sealed partial class MultiplayerRoundOrchestrator
 
         // 2. Update standings, coach career points, and job invitations
         CompetitionAndSeasonEngine.ApplyFinishedRoundResultsToStandingsAndCareers(world, roundMatches);
+        ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world);
 
         // 3. Process weekly AI market batch (listings, transfers, auctions)
         MarketAndEconomyEngine.ProcessWeeklyAiMarketBatch(world);

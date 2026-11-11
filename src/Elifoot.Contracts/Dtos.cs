@@ -452,6 +452,47 @@ public record JobInvitationDto(
     string Objective = "",
     decimal ProjectImprovement = 0);
 
+public record CoachEmploymentRecordDto(
+    Guid ClubId,
+    string ClubName,
+    int StartSeason,
+    int StartRound,
+    int? EndSeason,
+    int? EndRound,
+    string? ReasonForLeaving);
+
+public record CoachMoraleEntryDto(
+    int Season,
+    int Round,
+    Guid? MatchId,
+    int Before,
+    int After,
+    string Reason);
+
+public record CoachMoraleRulesDto(
+    int GreenMinimum,
+    int YellowMinimum,
+    int UnemployedRecoveryPerRound);
+
+public record CoachTitleRecordDto(
+    int Season,
+    DivisionTier? Division,
+    Guid ClubId,
+    Guid CoachId,
+    string TitleType);
+
+public record CoachCareerSnapshotDto(
+    List<JobInvitationDto> Invitations,
+    List<CoachEmploymentRecordDto> EmploymentHistory,
+    int Morale,
+    string MoraleBand,
+    List<CoachMoraleEntryDto> MoraleHistory,
+    Guid? CurrentClubId,
+    decimal CurrentProjectScore,
+    CoachMoraleRulesDto CareerRules,
+    List<CoachTitleRecordDto> Titles,
+    long RoundVersion = 0);
+
 public record WorldPackageExportDto(
     string FormatVersion,
     string PackageName,

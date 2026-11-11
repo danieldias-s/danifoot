@@ -302,7 +302,7 @@ public static class CoachCareerEngine
         club.HumanCoachId = c.Human?.Id; club.AiManagerId = c.Ai?.Id; c.ClubId = club.Id;
         c.State.LastMoveOrdinal = Ordinal(w); c.State.WinlessMatches = 0; c.State.RecentResults.Clear();
         c.Employment.Add(new CoachEmploymentRecord { ClubId = club.Id, ClubName = club.Name, StartSeason = w.SeasonNumber, StartRound = w.RoundNumber });
-        if (c.Human != null) c.Human.IsReadyForRound = false;
+        if (c.Human != null) { c.Human.IsReadyForRound = false; c.Human.SubmittedStarterIds.Clear(); c.Human.SubmittedBenchIds.Clear(); c.Human.SubmittedFormation = null; }
         invitation.IsAccepted = true;
         foreach (var other in w.JobInvitations.Where(i => !i.IsAccepted && (i.VacancyId == invitation.VacancyId || i.CoachId == c.Id))) other.IsExpired = true;
         club.CareerVacancyId = null; club.HasProvisionalManager = false;
