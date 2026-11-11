@@ -1240,6 +1240,9 @@ extension _ShellActions on _ElifootShellScreenState {
                                 : 440,
                           ),
                           child: SingleChildScrollView(
+                            key: PageStorageKey(
+                              'calendar-fixtures-$_selectedCalendarFilter-${r['roundNumber']}',
+                            ),
                             child: ClassicFixtureList(
                               fixtures: fixtures,
                               tableKey: 'calendar-round-${r['roundNumber']}',

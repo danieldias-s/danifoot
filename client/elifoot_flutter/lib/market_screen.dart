@@ -1141,7 +1141,11 @@ class _MarketScreenState extends State<MarketScreen> {
                       ),
                     ),
                     subtitle: Text(
-                      'Força: ${p['strength']} • ${formatAuctionMoney((auction ? p['minimumBid'] : p['askingPrice']) as num? ?? 0)}\n${p['sellerClubName'] ?? 'Livre'}',
+                      'Força: ${p['strength']} • ${formatAuctionMoney((auction
+                                  ? p['highestBidderClubId'] == null
+                                        ? p['minimumBid']
+                                        : p['currentBid']
+                                  : p['askingPrice']) as num? ?? 0)}\n${p['sellerClubName'] ?? 'Livre'}',
                       style: TextStyle(
                         color: ClassicTheme.of(context).textPrimary,
                       ),
