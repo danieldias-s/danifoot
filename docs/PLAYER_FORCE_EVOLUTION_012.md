@@ -1,5 +1,7 @@
 # Evolução de força — 012
 
+> **REGISTRO HISTÓRICO — política sazonal 012/005, não o fluxo atual de produção.** Este texto conserva a investigação e os testes da época. No código de `f1764fb`, `PlayerStrengthEvolutionEngine.ApplySeasonEnd` permanece para caracterização, sem chamada de produção em `src/`; fechamentos futuros da Liga usam +1 por ausência elegível e sorteio de 50% de -1 por participação, inclusive nos saves legados. Regras atuais e fontes: [referência oficial](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). Não houve reexecução ou alteração da implementação nesta revisão documental.
+
 **STATUS: PARTIAL.** Implementada uma correção de escala e rastreabilidade; a evolução original por rodada continua sem reconstrução validada. [Pesquisa e classificação](ORIGINAL_PLAYER_FORCE_RESEARCH_012.md).
 
 ## Auditoria exata do sistema anterior

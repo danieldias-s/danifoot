@@ -1,5 +1,7 @@
 # Lesões e perda de força — 012
 
+> **REGISTRO HISTÓRICO DA ETAPA 012.** A descrição abaixo foi observada antes da política clássica de lesões diárias; não representa todos os modos atuais. Em `f1764fb`, ClassicAdapted registra episódios de 2..15 dias virtuais e perdas graduais; LegacySeasonal conserva o contador legado por jogos. O limiar de ocorrência segue 0,0018 por equipe/minuto. Fórmulas e calendário atuais: [referência oficial](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). A pesquisa original e suas limitações foram preservadas.
+
 **STATUS: PARTIAL. Prioridade histórica ainda não resolvida.** Há relato de perda grande por contusão; a pesquisa não encontrou fórmula verificável de magnitude, severidade ou recuperação. Nenhum desconto fixo, percentual ou distribuição nova foi implantado. [Fontes e proveniência](ORIGINAL_PLAYER_FORCE_RESEARCH_012.md).
 
 ## Comportamento local inspecionado e testado

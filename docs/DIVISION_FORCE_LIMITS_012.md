@@ -1,5 +1,7 @@
 # Divisões e limites de força — 012
 
+> **REGISTRO HISTÓRICO — alvos sazonais legados.** Os alvos e observações abaixo pertencem à política 005/012 e não substituem `ChampionshipStrengthLimits` nem as bandas iniciais 017B. A rotina sazonal permanece como caracterização, sem chamada de produção em `src/` no HEAD `f1764fb`. Tetos atuais por posição, sorteio inicial e evolução após criação estão na [referência oficial](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). Nenhum número histórico foi recalculado nesta revisão documental.
+
 **STATUS: PARTIAL.** Testados limites do projeto; fórmula original de nível-base do clube não confirmada. [Pesquisa](ORIGINAL_PLAYER_FORCE_RESEARCH_012.md).
 
 | Divisão | Alvo sazonal local preservado da 005 | É teto de evolução? |

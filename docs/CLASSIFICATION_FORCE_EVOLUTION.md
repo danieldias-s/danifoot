@@ -1,5 +1,7 @@
 # Evolução de força por classificação
 
+Regras conferidas no código de `f1764fb` em 12/11/2026. A [referência oficial de força e integração V1.1](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md) reúne fórmulas, fontes, modos e bandas 017B. As tabelas de medição e contagens de testes mais abaixo são evidências de suas execuções originais; não foram reexecutadas nesta correção documental.
+
 A rodada da Liga produz uma decisão por atleta depois de aplicar todos os resultados. A posição é a classificação esportiva do clube dentro da divisão. Na Taça, titulares, reservas e atletas de clubes eliminados conservam a força em relação à participação. O relógio e as perdas por lesão seguem o calendário. Cartões, expulsões e cumprimento de suspensões seguem o processamento disciplinar oficial.
 
 O mundo de 128 clubes tem 21 rodadas. Cada bloco contém duas rodadas da Liga e uma eliminatória da Taça. Todos os 128 clubes entram na primeira eliminatória. Cada vencedor participa da seguinte, até a final que encerra a temporada.
@@ -28,6 +30,8 @@ O formato é registrado no snapshot por `LeagueFirstSchedule`. Saves com a tempo
 | 8 | 1 | 14 | 27 | 39 |
 
 `ChampionshipStrengthLimits` é a tabela de domínio compartilhada com a referência de fundação da 017B. As faixas do sorteio de fundação continuam na 017B. `ClubInitialPower` continua sendo a métrica de ordenação do catálogo.
+
+Força coletiva 1..20 e ranking ordenam a criação inicial; `Player.Strength` 1..50 é o atributo individual. Após criar o mundo, os ganhos usam a posição esportiva atual, não repetem o ranking de fundação nem o sorteio inicial. O calendário clássico alterna normalmente intervalos de 4 e 3 dias, pode adiar a rodada por elenco lesionado e avança mais 21 dias na transição de temporada. O limiar de lesão em `MatchSimulationEngine.ProcessInjuryTick` é 0,0018 por equipe/minuto com atletas ativos. Perdas de lesão continuam em datas da Taça.
 
 - Na Liga, quem ficou fora ganha exatamente um ponto se estiver abaixo do limite do clube atual. Isso inclui banco não utilizado, suspensão e lesão que impediu a entrada. Força no limite ou acima dele permanece igual. Distritais e agentes livres têm referência 1, sem possibilidade de ganho pela regra.
 - Na Liga, quem começou em campo ou entrou por substituição oficial tem uma decisão determinística de 50% para perder um ponto. A chance usa seed, temporada, rodada e identidade do atleta. A força 1 é o piso. Uma entrada registrada no último minuto conta mesmo sem minuto inteiro decorrente. Participações repetidas na rodada dão uma decisão só. Em transferências vale o clube atual no fechamento para o contexto do histórico e o limite de crescimento.

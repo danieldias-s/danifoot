@@ -3,7 +3,9 @@
 **Projeto:** Elifoot 98 Multiplayer (`D:\elifoot_98`)  
 **Branch:** `main`  
 **HEAD Auditado:** `aa5130b9220967d363c66c631f4770ce01783ecc` (`feat(elifoot98): add offline catalog v1.1 and behavior classifier`)  
-**Tipo de Execução:** Auditoria estrita somente-leitura (`READ-ONLY AUDIT`) — zero modificações em código, JSON ou saves.
+**Tipo da execução original:** auditoria somente leitura, sem alterações de implementação, JSON ou saves.
+
+**Errata documental — 12/11/2026:** as regras de força foram conferidas diretamente nos fontes de `f1764fb`. O HEAD `aa5130b`, o estado de bloqueio e os resultados da auditoria original continuam registrados como históricos; `bf43cd4` integrou depois a criação V1.1. A descrição vigente de evolução, modos, fórmulas e bandas está em [ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md](ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). Esta errata modifica apenas documentação; não é uma nova execução das suítes ou das simulações citadas.
 
 ---
 
@@ -29,14 +31,14 @@ A presente auditoria investigou integralmente o código-fonte, a documentação 
    - **Redução por Participação (`PLAYED_MATCH_DECLINE`):** todo jogador que **atuou na rodada da Liga** (`appeared.Contains(p.Id)` — titular ou reserva que entrou em qualquer minuto, inclusive aos 90') sofre sorteio determinístico com **probabilidade de `50%` (`PlayedDeclineProbability = 0.50`)** para perder **`-1` ponto de força** (ou `50%` para manter a força inalterada), respeitando o piso mínimo `1` e desde que não tenha sofrido nova lesão na própria partida.
    - **Redução Diária por Lesão (`INJURY_DAILY_LOSS`):** quando `ForceEvolutionMode == ClassicAdapted`, uma lesão em partida sorteia duração `D` entre `2..15` dias (pesos `[26, 26, 24, 24, 22, 20, 18, 12, 8, 6, 5, 4, 3, 2]` em `200`) e perda total `TotalLoss` uniforme em `0..MaximumLoss(force, D)`, onde `MaximumLoss(force, D) = Math.Min(force - 1, force * D / 30)` (até `50%` da força inicial em lesão de 15 dias). A perda é descontada gradualmente dia a dia conforme o calendário virtual avança (`ScheduledCumulativeLoss(totalLoss, duration, day) = totalLoss * day / duration`), com piso `1`. A recuperação zera `InjuryDaysRemaining`, mas **não restaura** automaticamente a força perdida.
 3. **Motor Sazonal Legado Desativado (`PlayerStrengthEvolutionEngine`):**
-   - O antigo motor de fim de temporada (`PlayerStrengthEvolutionEngine.ApplyEndOfSeasonEvolution`, que envelhecia `Age++` e variava força por faixa etária `<=23`, `24..29`, `>=30`) possui guarda explícita `if (ClassicForceEvolutionEngine.IsActive(world)) return;` e **não é chamado** por `CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance`.
-4. **Bloqueio Intencional do Catálogo Offline V1.1 (`OfflineCatalogRanking.ForceBlock`):**
+   - O método real é `PlayerStrengthEvolutionEngine.ApplySeasonEnd`. Sua política de caracterização usa gols, aparições, alvos de divisão e sorteios, não faixas etárias nem `Age++`. Tem guarda `if (ClassicForceEvolutionEngine.IsActive(world)) return;` e **não possui chamada de produção em `src/`**. O fechamento futuro da Liga aplica a regra atual de participação também aos saves `LegacySeasonal`; estes conservam suas regras de lesão. Não confundir o nome do modo com execução automática da rotina sazonal.
+4. **Bloqueio histórico do Catálogo Offline V1.1 em `aa5130b` (`OfflineCatalogRanking.ForceBlock`):**
    - O Catálogo Offline `V1.0` traz `players[].strength` literal (`1..50`) no JSON e funciona em `OfflineWorldFactory`.
-   - O Catálogo Offline `V1.1` define `teamStrength` (`1..20`) no clube e proíbe `players[].strength` no JSON. Como `OfflineWorldFactory` ainda não conecta `InitialSquadStrength017B` (nem possui uma fórmula direta `teamStrength 1..20 -> player.Strength 1..50` aprovada para `V1.1`), `OfflineWorldFactory.Preview` e `OfflineWorldFactory.Create` bloqueiam explicitamente a criação de mundo `V1.1` com a mensagem `OfflineCatalogRanking.ForceBlock`.
+   - O Catálogo Offline `V1.1` define `teamStrength` (`1..20`) no clube e proíbe `players[].strength`. Na auditoria de `aa5130b`, `OfflineWorldFactory` ainda não conectava a geração e bloqueava a criação com `ForceBlock`. **Estado posterior, em `bf43cd4`:** gera por `InitialPlayerStrength.Apply`, substitui as forças dos 32 clubes principais com 017B e conserva as estimativas nos 96 distritais. Não introduz conversão aritmética direta de teamStrength para força individual nem altera a evolução posterior.
 
 ---
 
-## 2. Estado do Repositório
+## 2. Estado histórico do Repositório na auditoria original
 
 - **Diretório:** `D:\elifoot_98`
 - **Branch ativa:** `main`
@@ -98,7 +100,7 @@ A presente auditoria investigou integralmente o código-fonte, a documentação 
 - [`src/Elifoot.Contracts/Enums.cs`](file:///d:/elifoot_98/src/Elifoot.Contracts/Enums.cs#L1-L120) — `DivisionTier`, `PlayerPosition`, `PlayerBehavior`, `ForceEvolutionMode`, `LineupSelectionMode`.
 - [`src/Elifoot.Contracts/WorldCatalogDtos.cs`](file:///d:/elifoot_98/src/Elifoot.Contracts/WorldCatalogDtos.cs#L1-L120) — `ClubInitialProfile016B`, `InitialSquadReference017B`.
 - [`src/Elifoot.Contracts/OfflineCatalogV11Dtos.cs`](file:///d:/elifoot_98/src/Elifoot.Contracts/OfflineCatalogV11Dtos.cs#L1-L80) — `OfflineClubV11` (`TeamStrength` `1..20`), `OfflinePlayerV11` (sem campo `Strength`).
-- [`src/Elifoot.Contracts/MatchAndTelemetryDtos.cs`](file:///d:/elifoot_98/src/Elifoot.Contracts/MatchAndTelemetryDtos.cs#L48-L65) — `PlayerStrengthChangeEvent`.
+- [src/Elifoot.Contracts/PlayerStrengthDtos.cs](../../src/Elifoot.Contracts/PlayerStrengthDtos.cs) — `PlayerStrengthChangeDto`.
 
 ### Documentação Analisada (`docs/`)
 - [`docs/CLUB_INITIAL_POWER_016B.md`](file:///d:/elifoot_98/docs/CLUB_INITIAL_POWER_016B.md)
@@ -116,13 +118,13 @@ A presente auditoria investigou integralmente o código-fonte, a documentação 
 | Conceito Procurado | Classe / Arquivo Real no Projeto | Métodos Principais e Linhas | Status |
 | :--- | :--- | :--- | :--- |
 | `ChampionshipStrengthLimits` | [`ChampionshipStrengthLimits`](file:///d:/elifoot_98/src/Elifoot.Domain/ChampionshipStrengthLimits.cs#L5-L17) | `For(DivisionTier tier, int position)` (L15-16) | **ATIVO** |
-| `ClubInitialPower` (`1..20`) | [`WorldCatalogRules016B`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs#L5-L58) | `PowerAt(int zeroBasedRank)` (L7), `SquadSizeAt(int zeroBasedRank)` (L9), `Score` (L10-18), `Classify` (L19-28), `Order` (L29-34), `Prepare` (L35-43), `SelectRoster` (L44-57) | **ATIVO** |
-| `teamStrength` (`1..20` V1.1) | [`OfflineCatalogRanking`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs#L5-L52) | `Strength(EligibleCatalogClub)` (L27-28), `Order` (L19-25), `BoundaryConflicts` (L39-51) | **ATIVO (Criação bloqueada por `ForceBlock`)** |
+| `ClubInitialPower` (`1..20`) | [WorldCatalogRules016B](../../src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs) | `PowerAt` 7, `SquadSizeAt` 8, `Classify` 9, `Order` 22, `SelectRoster` 26, `Prepare` 49 | **ATIVO** |
+| `teamStrength` (`1..20` V1.1) | [OfflineCatalogRanking](../../src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs) | `IsV11`, `Order`, `Warnings`, `BoundaryErrors` | **ATIVO; bloqueio existia apenas antes de bf43cd4** |
 | `InitialStrength` / `PlayerGeneration` (Regra `017B`) | [`InitialSquadStrength017B`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/InitialSquadStrength017B.cs#L8-L66) | `Reference(int division, int position)` (L14-21), `Hash(int seed, string clubKey, string playerKey)` (L23-25), `Draw(...)` (L27-46), `Apply(...)` (L48-65) | **ATIVO** |
-| `InitialPlayerStrength` (Importação Provedor) | [`InitialPlayerStrength`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs#L6-L49) | `ClubScore` (L10-17), `Apply` (L19-49) | **ATIVO (pré-017B / Distrital)** |
-| `PlayerGeneration` (Fábrica Rápida / Seed) | [`WorldSeedFactory`](file:///d:/elifoot_98/src/Elifoot.Domain/WorldSeedFactory.cs#L7-L349) | `CreateSeededWorld` (L21-308), `ApplyInitialSquadStrength` (L310-335) | **ATIVO** |
-| `Evolution` / `Regression` (Por Rodada e Lesão Diária) | [`ClassicForceEvolutionEngine`](file:///d:/elifoot_98/src/Elifoot.Domain/ClassicForceEvolutionEngine.cs#L5-L296) | `GrowthCeiling` (L24-25), `DurationFromRoll` (L32-43), `MaximumLoss` (L45-49), `ScheduledCumulativeLoss` (L51-53), `InitializeSeason` (L60-74), `PrepareRound` (L76-96), `RegisterInjury` (L98-123), `AdvanceToDate` (L125-152), `ParticipationMinutes` (L159-184), `ApplyFinishedRound` (L186-251) | **ATIVO (Padrão)** |
-| `PlayerProgression` / `SeasonTransition` (Legado) | [`PlayerStrengthEvolutionEngine`](file:///d:/elifoot_98/src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs#L5-L73) | `ApplyEndOfSeasonEvolution(GameWorld world)` (L15-72) | **LEGADO / DESATIVADO** |
+| `InitialPlayerStrength` (Importação Provedor) | [InitialPlayerStrength](../../src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs) | `Unit`, `Percentile`, `Apply` (linha 18) | **ATIVO (pré-017B / Distrital)** |
+| `PlayerGeneration` (Fábrica Rápida / Seed) | [WorldSeedFactory](../../src/Elifoot.Domain/WorldSeedFactory.cs) | `CreateSeededWorld`; usa `InitialSquadStrength017B.Reference`/`Draw` quando solicitado | **ATIVO** |
+| `Evolution` / `Regression` (Por Rodada e Lesão Diária) | [ClassicForceEvolutionEngine](../../src/Elifoot.Domain/ClassicForceEvolutionEngine.cs) | Linhas de `f1764fb`: `GrowthCeiling` 20, `DurationFromRoll` 23, `MaximumLoss` 35, `ScheduledCumulativeLoss` 36, `InitializeSeason` 39, `PrepareRound` 60, `RegisterInjury` 135, `AdvanceToDate` 98, `ParticipationMinutes` 161, `ApplyFinishedRound` 186 | **ATIVO** |
+| `PlayerProgression` / `SeasonTransition` (Legado) | [PlayerStrengthEvolutionEngine](../../src/Elifoot.Domain/PlayerStrengthEvolutionEngine.cs) | `ApplySeasonEnd(GameWorld world)` (linha 14) | **CARACTERIZAÇÃO LEGADA; SEM CHAMADOR DE PRODUÇÃO** |
 | `Training` | *Inexistente no código* | Não existe sistema de treino manual ou automático de força no projeto. | **NÃO EXISTE** |
 
 ---
@@ -137,26 +139,16 @@ A presente auditoria investigou integralmente o código-fonte, a documentação 
 | **RANKING DO CLUBE** (`WorldRank` / `Score` / `HistoricalRanking`) | Contínua (`Score`/`Rating`) ou Posição (`1..N`) | [`WorldCatalogRules016B.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs#L10-L34) / [`OfflineCatalogRanking.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs#L19-L37) | Calcula `ClubInitialPower` quando não há override manual (`016B`) e **desempata clubes** com mesma força `1..20`. |
 | **FORÇA INDIVIDUAL** (`Player.Strength`) | **`1..50`** | [`InitialSquadStrength017B.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/InitialSquadStrength017B.cs#L14-L65) / [`WorldSeedFactory.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/WorldSeedFactory.cs#L168-L283) | Atributo individual de cada jogador usado na partida (`MatchSimulationEngine`), escalação (`LineupSelectionEngine`) e economia (`ClassicPlayerEconomyEngine` / `MarketAndEconomyEngine`). |
 
-### 6.2. Fórmula da Regra `016B` (`WorldCatalogRules016B`)
-Em [`src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs#L7-L34):
-1. **Pontuação de Ranking (`Score`, L10-18):**
-   - Se o clube possui `RankingInfo`: `1_000_000 + (RankingInfo.Rating ?? Math.Max(0, 10_000 - RankingInfo.Position * 10))`.
-   - Caso contrário, se possui atletas com força: média das 16 maiores forças (`top.Average()`).
-   - Caso contrário: `Math.Max(1, 500 - LeagueOrder)`.
-2. **Atribuição Automática de `ClubInitialPower` (`PowerAt`, L7):**
-   $$\text{ClubInitialPower}(\text{zeroBasedRank}) = \max\left(1,\; 20 - \left\lfloor \frac{\max(0, \text{zeroBasedRank})}{2} \right\rfloor\right)$$
-   - Ranks `0, 1` (1º e 2º) $\rightarrow 20$
-   - Ranks `2, 3` (3º e 4º) $\rightarrow 19$
-   - ...
-   - Ranks `36, 37` (37º e 38º) $\rightarrow 2$
-   - Ranks $\ge 38$ (39º em diante) $\rightarrow 1$
-   - Se `ManualPower == true`, o valor manual ajustado entre `1..20` (`Math.Clamp(..., 1, 20)`) é preservado (L24).
-3. **Ordenação dos Clubes (`Order`, L29-34):**
-   - Ordena por `ClubInitialPower` decrescente $\rightarrow$ `Score` decrescente $\rightarrow$ `RankingInfo.Position` crescente $\rightarrow$ `LeagueOrder` crescente $\rightarrow$ `CountryCode` $\rightarrow$ `Name` $\rightarrow$ `Key`.
-4. **Tamanho Inicial do Elenco (`SquadSizeAt`, L9 e `Prepare`, L35-43):**
-   $$\text{SquadSizeAt}(\text{zeroBasedRank}) = 23 - \left\lfloor \frac{\max(0, \text{zeroBasedRank}) \bmod 14}{2} \right\rfloor$$
-   - Gera o ciclo repetido de 14 posições: `[23, 23, 22, 22, 21, 21, 20, 20, 19, 19, 18, 18, 17, 17]`.
-   - **Regra de Elite (`L37`):** se o clube pertence à elite (`ClubInitialPower >= maxPower - 1`, isto é, forças `20` e `19` quando o máximo é `20`), `target` passa a ser `Math.Max(baseSize, 22)` (mínimo de 22 atletas).
+### 6.2. Regra 016B conferida no código
+
+Fonte: [WorldCatalogRules016B.cs](../../src/Elifoot.Domain/Catalog/WorldCatalogRules016B.cs).
+
+1. `Classify` ordena por `SourceRanking.Score` ou `RankingInfo.Score` decrescente, depois por `Rank` crescente e `Key` ordinal. Não existe o método `Score` transcrito na primeira versão deste relatório.
+2. `PowerAt(r) = max(1, 20 - floor(max(0,r)/2))`: pares de posições recebem 20, 19, ... até 1. Se `InitialProfile.ManualPower` estiver ativo, `Classify` preserva o valor manual existente; não aplica o `Math.Clamp` anteriormente atribuído a esse trecho.
+3. `Order` usa `InitialProfile.ClubInitialPower DESC`, `WorldRankingScore DESC`, `WorldRank ASC`, `Key ASC`. Não são os nomes do clube nem `LeagueOrder` que compõem esse comparador.
+4. `SquadSizeAt(r) = 23 - floor((max(0,r) mod 14)/2)`, ciclo `[23,23,22,22,21,21,20,20,19,19,18,18,17,17]`. `Prepare` usa alvo 23 para elite com `WorldRank > 0`, `RankingConfidence > 0` e `WorldRank <= eliteCutoff`; fora disso usa o ciclo. Não há mínimo 22 determinado apenas por força coletiva 20/19.
+
+Esses procedimentos de preparo não completam o catálogo offline V1.1. Seu elenco é o fornecido no JSON, com 11..23 atletas para READY. Força coletiva, ranking e força individual são atributos distintos; a evolução posterior usa a classificação esportiva atual.
 
 ### 6.3. Regra no Catálogo Offline `V1.1` (`OfflineCatalogRanking`)
 Em [`src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs#L19-L51):
@@ -185,8 +177,8 @@ Não existe um único gerador no projeto; existem **4 mecanismos implementados**
 - **Arquivos e Métodos:**
   - [`src/Elifoot.Domain/Catalog/InitialSquadStrength017B.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/InitialSquadStrength017B.cs#L8-L66) (`Reference`, `Hash`, `Draw`, `Apply`)
   - [`src/Elifoot.Domain/ChampionshipStrengthLimits.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/ChampionshipStrengthLimits.cs#L7-L17) (`For`)
-  - Chamado em [`WorldCreatorEngine.Preview`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs#L150-L152), [`WorldCreatorEngine.Create`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs#L169-L170) e [`WorldSeedFactory.ApplyInitialSquadStrength`](file:///d:/elifoot_98/src/Elifoot.Domain/WorldSeedFactory.cs#L310-L335).
-- **Tabela de Referência (`ChampionshipStrengthLimits.Table`) e Faixas por Divisão e Posição (`InitialSquadStrength017B.Reference`, L14-21):**
+  - Chamado em [`WorldCreatorEngine.Preview`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs#L150-L152), [`WorldCreatorEngine.Create`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/WorldCreatorEngine.cs#L169-L170) e [`WorldSeedFactory.CreateSeededWorld`](file:///d:/elifoot_98/src/Elifoot.Domain/WorldSeedFactory.cs#L310-L335).
+- **Tabela de Referência (`ChampionshipStrengthLimits.Limits`) e Faixas por Divisão e Posição (`InitialSquadStrength017B.Reference`, L14-21):**
 
 | Posição Inicial na Divisão | 1ª Divisão (Faixa `39..50`) | 2ª Divisão (Faixa `26..38`) | 3ª Divisão (Faixa `13..25`) | 4ª Divisão (Faixa `1..12`) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -209,7 +201,7 @@ Não existe um único gerador no projeto; existem **4 mecanismos implementados**
      - Seleciona os 4 atletas do elenco com os menores valores de $\text{hash}_i$ (`OrderBy(i => hashes[i]).ThenBy(i => i).Take(4)`) e atribui a eles `47 + offset`, incrementando `offset = (offset + 1) % 4`. Isso garante que todo clube entre os 3 primeiros da 1ª Divisão possua pelo menos um jogador de força `47`, um `48`, um `49` e um `50`.
 - **Influência de outros atributos em `InitialSquadStrength017B`:**
   - **Posição (`G`, `D`, `M`, `A`):** **Nenhuma** na geração da força `017B` (todos os atletas do clube são sorteados na mesma banda `[Minimum, Maximum]`).
-  - **Titulares vs Reservas:** `InitialSquadStrength017B` sorteia as forças de todo o elenco na mesma banda; em seguida, em `WorldSeedFactory.ApplyInitialSquadStrength` (L330), `AiManagerBrain.BuildStartersAndBench` seleciona os 11 titulares escolhendo os de maior `Score`/`Strength` em cada posição. Portanto, titulares tendem a ter `ref + 1` e reservas `ref - 1` ou `ref` por efeito da escalação pós-sorteio, e não por sorteio separado.
+  - **Titulares vs Reservas:** `InitialSquadStrength017B` sorteia as forças de todo o elenco na mesma banda; em seguida, em `WorldSeedFactory.CreateSeededWorld` (L330), `AiManagerBrain.BuildStartersAndBench` seleciona os 11 titulares escolhendo os de maior `Score`/`Strength` em cada posição. Portanto, titulares tendem a ter `ref + 1` e reservas `ref - 1` ou `ref` por efeito da escalação pós-sorteio, e não por sorteio separado.
   - **Idade, Asterisco (`IsStar`), Comportamento (`Behavior`), Nacionalidade:** **Nenhuma influência** sobre a força sorteada na `017B`.
   - **Clubes do Distrital (`Division == 5`):** `InitialSquadStrength017B.Apply` ignora `entry.Division == 5` (L54: `if (entry.Division == 5) return entry;`), mantendo nos clubes distritais a força oriunda da etapa anterior (`PlayableWorldPolicy` / `InitialPlayerStrength` ou `WorldSeedFactory`).
 
@@ -222,20 +214,29 @@ Não existe um único gerador no projeto; existem **4 mecanismos implementados**
   - **4ª Divisão:** `16..26`
   - **Distrital:** `10..21`
 
-### 7.3. Mecanismo de Estimativa de Catálogo Importado e Preenchimento Fictício (`InitialPlayerStrength` & `PlayableWorldPolicy`)
-- **Arquivos e Linhas:**
-  - [`src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs#L19-L49)
-  - [`src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs#L90-L123)
-  - [`src/Elifoot.Domain/Catalog/HistoricalCatalogPolicy.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/HistoricalCatalogPolicy.cs#L58-L77)
-- **Como funciona:**
-  - `InitialPlayerStrength.Apply` calcula percentis de `Rating`, `Minutes` e `ClubScore`, combinando `score = 0.58 * individual + 0.37 * clubPercentile + 0.05 * noise` e mapeando para `Math.Clamp((int)Math.Round(1 + 49 * Math.Pow(Math.Clamp(score, 0, 1), 1.08)), 1, 50)` (L42-43).
-  - `PlayableWorldPolicy.Prepare` gera jogadores fictícios faltantes com `level = RankingInfo.Rating != null ? Clamp((Rating - 1250)/16, 10, 44) : Clamp(42 - Position/2, 10, 42)` e `strength = Clamp((int)Round(level + delta + (slot < 11 ? 2 : -1)), 8, 48)` (L93-95, L111).
-  - **Importante:** No fluxo `WorldCreatorEngine.Preview` (L128-152), `InitialSquadStrength017B.Apply` é chamado na linha 151 **sobrescrevendo** todas as forças dos 32 clubes das divisões `1..4`, de modo que `InitialPlayerStrength` / `PlayableWorldPolicy` permanecem efetivos apenas para os **96 clubes do Distrital** (ou quando `PreserveRankedSquadStrengths` recarrega forças já salvas).
+### 7.3. Estimativa de catálogo e preenchimento fictício
+
+Fontes: [InitialPlayerStrength.cs](../../src/Elifoot.Domain/Catalog/InitialPlayerStrength.cs), [PlayableWorldPolicy.cs](../../src/Elifoot.Domain/Catalog/PlayableWorldPolicy.cs).
+
+`InitialPlayerStrength.Apply` processa atletas cujo método de estimativa começa por `relative-v1`. A coorte usa gênero, temporada, posição e escala de rating. Usa percentil de rating quando há pelo menos três amostras; senão, percentil de minutos com pelo menos três amostras; senão, mantém estimativa individual neutra. O percentil do clube vem de `Rank`, não de uma conversão direta de teamStrength.
+
+Com `noise = Unit(chave,seed)*2-1` e `c = clubPercentile ?? 0.5`, o código usa:
+
+```text
+raw = confidence > 0.2
+    ? 12 + 37*individual + 2*(c-0.5) + noise
+    : 26 + 16*(c-0.5) + 7*noise
+strength = clamp(round(raw, AwayFromZero), 1, 50)
+```
+
+A chave canônica/seed alimenta SHA-256; o método grava a proveniência da estimativa. A combinação de pesos 0.58/0.37/0.05 e potência 1.08 transcrita na versão original deste relatório não corresponde a esse código e foi corrigida documentalmente, sem alterar a implementação.
+
+`PlayableWorldPolicy.Prepare` é um caminho separado para preenchimento fictício consentido, usando nível do clube e variação determinística. Não é chamado pelo criador offline para inventar atletas faltantes. No fluxo 017B, as forças dos clubes das divisões 1..4 são substituídas por suas bandas; a estimativa anterior permanece nos distritais. A integração offline de `bf43cd4` conectou `InitialPlayerStrength.Apply` e 017B, preservando todos os atletas cadastrados e congelando suas forças na prévia.
 
 ### 7.4. Mecanismo do Catálogo Offline (`OfflineWorldFactory`)
 - **Arquivo e Linhas:** [`src/Elifoot.Domain/Catalog/OfflineWorldFactory.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineWorldFactory.cs#L18-L20), [`L62`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineWorldFactory.cs#L62), [`L75`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineWorldFactory.cs#L75), [`L130-L137`](file:///d:/elifoot_98/src/Elifoot.Domain/Catalog/OfflineWorldFactory.cs#L130-L137).
 - **Catálogo V1.0 (`schemaVersion == "1.0"`):** lê diretamente `p.Strength!.Value` (`1..50`) gravado no arquivo JSON de cada clube e copia sem alteração para `CatalogAthlete` (L19) e `Player.Strength` (L133).
-- **Catálogo V1.1 (`schemaVersion == "1.1"`):** os jogadores não possuem `strength` no JSON (`OfflinePlayerV11`), e `OfflineWorldFactory.Eligible` cria `Players = []` (L18). Tanto `Preview` (L62) quanto `Create` (L75) bloqueiam a operação com `OfflineCatalogRanking.ForceBlock`.
+- **Catálogo V1.1 na auditoria histórica de `aa5130b` (`schemaVersion == "1.1"`):** os jogadores não possuem `strength` no JSON (`OfflinePlayerV11`), e `OfflineWorldFactory.Eligible` cria `Players = []` (L18). Tanto `Preview` (L62) quanto `Create` (L75) bloqueiam a operação com `OfflineCatalogRanking.ForceBlock`.
 
 ---
 
@@ -244,13 +245,11 @@ Não existe um único gerador no projeto; existem **4 mecanismos implementados**
 ### 8.1. Motor Ativo: `ClassicForceEvolutionEngine.ApplyFinishedRound`
 - **Arquivo:** [`src/Elifoot.Domain/ClassicForceEvolutionEngine.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/ClassicForceEvolutionEngine.cs#L186-L251).
 - **Ponto de Chamada:** [`src/Elifoot.Domain/CompetitionAndSeasonEngine.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/CompetitionAndSeasonEngine.cs#L405-L406) ao concluir todas as partidas oficiais da rodada atual (`ApplyFinishedRoundResultsToStandingsAndCareers`).
-- **Guarda de Idempotência por Rodada (`L192-194`, `L207`):**
-  - `if (w.ClassicForce.GuardSeason == w.SeasonNumber && w.ClassicForce.GuardRound == w.RoundNumber) return;`
-  - Além disso, cada evento gera `IdempotencyKey = $"force:round:{w.Id}:S{w.SeasonNumber}:R{w.RoundNumber}:P{p.Id}"` (L227-228), impedindo dupla aplicação mesmo em caso de repetição de chamada ou reload de save.
+- **Guarda de Idempotência por Rodada (`L192-194`):** retorna se `GuardSeason > SeasonNumber` ou se a temporada é igual e `GuardRound >= RoundNumber`. Após processar a Liga, grava as duas marcas. O evento usa chave `$"{w.Id}:S{w.SeasonNumber}:R{w.RoundNumber}:P{p.Id}:{reason}"` (`L245`). Não é a existência de um evento que permite reprocessar a rodada: as marcas persistidas protegem também decisões sem mudança de força.
 - **Condições Estritas para Ganho de Força (`RESERVE_PROGRESS`, L196-240):**
-  1. **Apenas Rodadas da Liga (`L196`):** `bool isLeagueRound = official.All(m => m.CompetitionType == CompetitionType.League);` — se a rodada for da Taça (`CompetitionType != League`), **nenhum jogador ganha força** (`L219`: `if (!isLeagueRound) continue;`).
+  1. **Partidas da Liga (`L196-197`):** filtra `matches.Where(m => m.CompetitionType == CompetitionType.League && m.CurrentMinute > 0)` e retorna se a lista ficar vazia. Rodadas exclusivamente da Taça não recebem ganho/perda por participação. Lesões seguem pelo calendário.
   2. **Não Ter Entrado em Campo na Rodada (`L226`, `L239`):** `!appeared.Contains(p.Id)`.
-     - Quem é considerado `appeared` (`ParticipationMinutes`, L159-184)? Todo atleta no `StatisticsInitialLineup` com `IsStarter == true` e todo atleta que entrou via evento `MatchEventType.Substitution` (`PrimaryPlayerId`), mesmo que tenha entrado no último minuto (`Minute == 90`, `minutes == 0`).
+     - `appeared` é montado diretamente em `ApplyFinishedRound` (`L204-218`): titulares de `StatisticsInitialLineup` e entradas por `Substitution.PrimaryPlayerId`, inclusive aos 90 minutos sem minuto completo decorrido. Não depende de `ParticipationMinutes > 0`; há fallback das listas de participantes para fixtures antigos sem captura inicial.
      - Quem **não** está em `appeared` (e portanto é elegível ao ganho `+1`)?
        - Reservas no banco que não entraram na partida;
        - Jogadores do elenco fora do banco (não relacionados);
@@ -267,7 +266,7 @@ Não existe um único gerador no projeto; existem **4 mecanismos implementados**
      - **Distrital ou Sem Clube (`null`):** `1` (nunca ganham força).
   6. **Ordem de Cálculo da Posição na Tabela (`CompetitionAndSeasonEngine.cs:360-406` e `ClassicForceEvolutionEngine.cs:200-206`):**
      - Primeiro os placares da rodada da Liga atualizam pontos, vitórias e saldo de gols de todos os clubes (`L361-391`);
-     - Em seguida, `UpdateCompletedLeaguePositions(w)` (`L202`) lê `CompetitionAndSeasonEngine.GetDivisionStandings(w, tier)` com a classificação **já atualizada pela rodada encerrada** e aplica o novo teto imediatamente.
+     - Em seguida, o laço de `ApplyFinishedRound` (`L199-202`) lê `CompetitionAndSeasonEngine.GetDivisionStandings(w, tier)` com a classificação **já atualizada pela rodada encerrada** e preenche `CompletedLeaguePositions`. Não existe método separado `UpdateCompletedLeaguePositions` nesse fluxo. Sem posição concluída, `ClubContext` usa referência provisória de 4º lugar.
   7. **Jogadores Acima do Teto:** Se um jogador já possui `Strength >= Ceiling` (por exemplo, um atleta de força `48` cujo clube caiu para 8º lugar da 1ª Divisão com teto `39`, ou foi transferido para a 4ª Divisão com teto `12`), ele **não perde força pelo teto** (o teto jamais reduz ou "clampa" a força existente; apenas impede novos ganhos `RESERVE_PROGRESS`, conforme comprovado em `CeilingNeverClampsAStrongNonparticipant`, [`ClassicForce012CTests.cs:135-141`](file:///d:/elifoot_98/tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs#L135-L141)).
 
 ---
@@ -288,7 +287,7 @@ Existem **duas** formas ativas de redução de força individual em `ClassicForc
         w.Seed, w.SeasonNumber, w.RoundNumber, PlayerToken(p.Id), 0, 12042)
         .NextBool(PlayedDeclineProbability); // PlayedDeclineProbability = 0.50
     ```
-    onde `PlayerToken(Guid id)` (`L290-295`) converte os primeiros 4 bytes do `Guid` para um inteiro positivo `1..int.MaxValue`.
+    onde `PlayerToken(Guid id)` (linha 296) lê os primeiros quatro bytes em little-endian e aplica `& 0x3fffffff`, produzindo inteiro entre 0 e 1073741823.
   - **Resultado:**
     - Com **50% de probabilidade**: `p.Strength = Math.Max(1, before - 1)` (`ChangeReason = "PLAYED_MATCH_DECLINE"`).
     - Com **50% de probabilidade**: `p.Strength` permanece inalterado (`before`).
@@ -297,11 +296,11 @@ Existem **duas** formas ativas de redução de força individual em `ClassicForc
 
 ### 9.2. Redução Gradual Diária por Lesão (`INJURY_DAILY_LOSS`)
 - **Arquivo e Linhas:** [`src/Elifoot.Domain/ClassicForceEvolutionEngine.cs`](file:///d:/elifoot_98/src/Elifoot.Domain/ClassicForceEvolutionEngine.cs#L16-L18), [`L32-L53`](file:///d:/elifoot_98/src/Elifoot.Domain/ClassicForceEvolutionEngine.cs#L32-L53), [`L98-L152`](file:///d:/elifoot_98/src/Elifoot.Domain/ClassicForceEvolutionEngine.cs#L98-L152).
-- **Quando Ocorre uma Lesão em Partida (`MatchEngine.cs:452-498` -> `ClassicForceEvolutionEngine.RegisterInjury`, L98-123):**
-  - Em cada minuto de partida, cada time tem `0.0022` (`0.22%`) de chance por minuto de sofrer evento de lesão em um jogador ativo (`MatchEngine.cs:465`).
+- **Quando ocorre uma lesão (`MatchSimulationEngine.ProcessInjuryTick`, `MatchEngine.cs:439-454` → `ClassicForceEvolutionEngine.RegisterInjury`, linha 135):**
+  - O limiar é `0.0018`, ou **0,18% por equipe/minuto**, quando há atletas ativos (`MatchEngine.cs:442`). Não é taxa por jogador. Uma tentativa que selecione atleta já marcado como lesionado na mesma partida não gera novo episódio.
   - Quando `ClassicForceEvolutionEngine.IsActive(world)` (`ForceEvolutionMode == ClassicAdapted`):
     1. **Sorteio da Duração em Dias (`DurationFromRoll`, L32-43):**
-       - Sorteia `roll = rng.NextInt(0, 200)` usando `DeterministicRng.FromContext(w.Seed, m.SeasonNumber, m.RoundNumber, m.DeterministicMatchIndex, minute, PlayerToken(p.Id) ^ 1201)`.
+        - Sorteia `roll = rng.NextInt(0, 200)` com `DeterministicRng.FromContext(worldSeed, match.SeasonNumber, match.RoundNumber, match.DeterministicMatchIndex, match.CurrentMinute, 12031 + PlayerToken(p.Id))` (`RegisterInjury`, linhas 139-142).
        - Pesos para `2..15` dias (`DurationWeights`, soma = `200`):
          - `2 dias`: 26/200 (`13,0%`)
          - `3 dias`: 26/200 (`13,0%`)
@@ -323,14 +322,14 @@ Existem **duas** formas ativas de redução de força individual em `ClassicForc
        - Para `duration = 15` dias, `MaximumLoss` chega a $\lfloor \text{force} \times 15 / 30 \rfloor = \lfloor \text{force} / 2 \rfloor$ (até **50% da força inicial**; ex.: força `50` $\rightarrow$ perda máxima de `25` pontos).
        - Como o sorteio começa em `0`, uma lesão também pode ter `TotalLoss = 0` ou perda parcial.
     3. **Desconto Diário pelo Calendário Virtual (`AdvanceToDate`, L125-152):**
-       - O calendário virtual inicia a Temporada 1 em `1998-01-01` (`SeasonStartDate`, L57) e avança **3 dias por rodada** (`DaysPerRound = 3`, L17; `RoundDate`, L59).
+       - O estado padrão inicia em **01/08/1998** (`ClassicForceState.SeasonStartDate`/`GameDate`). `RoundDate` (`L54-57`) usa `gaps=max(0,round-1)` e deslocamento `floor(gaps/2)*7 + (gaps ímpar ? 4 : 0)`: intervalos normais **4 e 3 dias alternados**, com possíveis adiamentos em `PrepareRound`. Não existe constante `DaysPerRound = 3` no código conferido. A data de saves existentes é preservada.
        - Para cada dia $d \in \{1, \dots, \text{duration}\}$ alcançado pelo calendário virtual:
          $$\text{ScheduledCumulativeLoss}(\text{TotalLoss}, \text{duration}, d) = \left\lfloor \frac{\text{TotalLoss} \times d}{\text{duration}} \right\rfloor$$
          $$\text{DailyLoss}_d = \text{ScheduledCumulativeLoss}(d) - \text{ScheduledCumulativeLoss}(d - 1)$$
          $$\text{Strength}_{\text{after}} = \max(1,\; \text{Strength}_{\text{before}} - \text{DailyLoss}_d)$$
-       - Cada redução diária real (`loss > 0`) grava um `PlayerStrengthChangeEvent` com `ChangeReason = "INJURY_DAILY_LOSS"`, recalcula `p.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(w, p)` e preserva `p.SalaryPerRound` contratado.
+       - Cada redução real grava um `PlayerStrengthChangeDto` com `ChangeReason = "INJURY_DAILY_LOSS"`, data e episódio, recalcula o valor de mercado existente e preserva o salário contratado. A parcela pode ser zero ou maior que um; não é desconto fixo por rodada. Novas lesões e perdas diárias também ocorrem em datas da Taça.
     4. **Recuperação da Lesão (`L135`, `L150`):**
-       - Ao atingir `EndDate` (`ProcessedDays == DurationDays`), `p.InjuryDaysRemaining` e `p.InjuryRoundsRemaining` voltam a `0`, tornando o atleta novamente escalável (`IsAvailableForMatch == true`), mas **a força perdida durante a lesão não é restaurada automaticamente** (ele precisará recuperá-la gradualmente via `RESERVE_PROGRESS` nas rodadas de Liga seguintes, respeitando o teto do clube).
+       - Ao atingir `EndDate`, com `ProcessedDays == Duration`, `AdvanceToDate` zera `InjuryDaysRemaining`. Esse método não zera `InjuryRoundsRemaining`, que pertence à política legada, nem remove suspensões. A disponibilidade depende de todos esses impedimentos. **A força perdida não é restaurada automaticamente**; o atleta pode receber ganhos de reserva elegíveis na Liga.
 
 ---
 
@@ -344,12 +343,12 @@ Em [`CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance`](file:///d:/elifoot_98
    - `world.ClassicForce.CompletedLeaguePositions.Clear();` — limpa o cache de posições da temporada encerrada para que a posição da divisão antiga não sirva de referência na nova temporada.
 3. **Avanço de 21 Dias de Pré-Temporada no Calendário Virtual (`L637-638`):**
    - `if (ClassicForceEvolutionEngine.IsActive(world)) ClassicForceEvolutionEngine.AdvanceToDate(world, world.ClassicForce.GameDate.AddDays(21));`
-   - Como qualquer lesão dura no máximo `15` dias (`MaxInjuryDays = 15`), avançar `21` dias na intertemporada liquida integralmente todas as perdas diárias pendentes de lesões sofridas nas rodadas finais da temporada anterior e garante que todos os jogadores iniciem a nova temporada curados (`InjuryDaysRemaining == 0`).
+   - Como os episódios clássicos duram no máximo `15` dias, os `21` dias liquidam suas parcelas restantes e zeram `InjuryDaysRemaining`. Isso não equivale a restaurar força ou eliminar impedimentos de outras políticas.
 4. **Inicialização da Nova Temporada (`InitializeSeasonFixtures`, L139-140):**
    - Chama `ClassicForceEvolutionEngine.InitializeSeason(world)` e `ClassicForceEvolutionEngine.PrepareRound(world)`.
-   - `CompletedLeaguePositions` é inicializado na Rodada 1 da nova temporada pela ordem de `DeterministicIndex` dentro de cada divisão (`ClassicForceEvolutionEngine.cs:65-72`).
+   - `InitializeSeason` limpa `CompletedLeaguePositions`; até a primeira classificação concluída, `ClubContext` usa a referência provisória de 4º lugar (`L253-256`), não uma posição deduzida do `DeterministicIndex`.
 5. **Não há Envelhecimento ou Regressão Sazonal no Modo Ativo:**
-   - `PlayerStrengthEvolutionEngine.ApplyEndOfSeasonEvolution` **não é chamado** em `FinalizeSeasonAndAdvance`, e mesmo se chamado diretamente, retorna imediatamente na linha 17 (`if (ClassicForceEvolutionEngine.IsActive(world)) return;`).
+   - `PlayerStrengthEvolutionEngine.ApplySeasonEnd` **não é chamado** em `FinalizeSeasonAndAdvance`; se chamado diretamente para um mundo ClassicAdapted, retorna na guarda da linha 16. `ClassicForce.SeasonStartingStrengths` serve aos snapshots; não impõe piso de força inicial menos três.
 
 ---
 
@@ -361,7 +360,7 @@ Em [`CompetitionAndSeasonEngine.FinalizeSeasonAndAdvance`](file:///d:/elifoot_98
 - **Na Evolução e Regressão Ativa (`ClassicForceEvolutionEngine`):**
   - **Nenhuma relação.** A idade (`Player.Age`) não afeta o ganho `+1` no banco (`RESERVE_PROGRESS`), não afeta a chance de `50%` de queda `-1` ao jogar (`PLAYED_MATCH_DECLINE`) e não afeta a perda por lesão (`INJURY_DAILY_LOSS`). Além disso, `Player.Age` não é incrementado na virada de temporada quando `ClassicForceEvolutionEngine` está ativo.
 - **No Motor Legado Inativo (`PlayerStrengthEvolutionEngine.cs:31-52`):**
-  - Apenas no modo legado `ForceEvolutionMode.LegacySeasonal` (desativado por padrão, já que `GameWorld.ForceEvolutionMode` tem default `ForceEvolutionMode.ClassicAdapted` em `Entities.cs:29`) a idade era incrementada (`p.Age++`) e usada nas faixas `<= 23` (`-1..+3`), `24..29` (`-1..+2`), `30..32` (`-2..+1`) e `>= 33` (`-3..0`).
+  - `ApplySeasonEnd` não incrementa idade nem contém essas faixas etárias. `GameWorld.ForceEvolutionMode` sem valor explícito assume zero (`LegacySeasonal`); o pedido de criação da API, por sua vez, tem padrão ClassicAdapted. Saves antigos sem campo permanecem legados. Não há chamada de produção da rotina sazonal; a regra de participação atual vale nos fechamentos futuros da Liga também para o legado.
 
 ---
 
@@ -497,15 +496,11 @@ Abaixo estão os resultados exatos reproduzidos pelo algoritmo real `InitialSqua
   - Na Rodada 3 (Taça Nacional), Jogador B joga os 90 minutos: **0% de chance de perda por participação**, pois a Taça não aplica `PLAYED_MATCH_DECLINE`.
   - Ao longo de 14 rodadas de Liga jogando todas sem se lesionar, a perda esperada é de $14 \times 0,50 = 7,0$ pontos de força.
 - **Caso B2 — Regressão Gradual Diária por Lesão (`INJURY_DAILY_LOSS`):**
-  - Suponha que um jogador de força `50` sofra uma lesão grave de `duration = 15` dias com perda máxima sorteada:
+  - Suponha força `50` e lesão de `duration = 15` dias; o máximo permitido é:
     $$\text{MaximumLoss}(50, 15) = \min\left(49,\; \left\lfloor \frac{50 \times 15}{30} \right\rfloor\right) = 25$$
   - Caso o sorteio `rng.NextInt(0, 26)` retorne `TotalLoss = 15` pontos ao longo de `15` dias:
-    - Para cada dia $d \in \{1..15\}$, $\text{ScheduledCumulativeLoss}(15, 15, d) = \lfloor 15 \times d / 15 \rfloor = d$, descontando **1 ponto de força por dia** (`3` pontos a cada rodada de 3 dias):
-      - Após Dia 3 (1 rodada): `Strength = 47`, `InjuryDaysRemaining = 12`
-      - Após Dia 6 (2 rodadas): `Strength = 44`, `InjuryDaysRemaining = 9`
-      - Após Dia 9 (3 rodadas): `Strength = 41`, `InjuryDaysRemaining = 6`
-      - Após Dia 12 (4 rodadas): `Strength = 38`, `InjuryDaysRemaining = 3`
-      - Após Dia 15 (5 rodadas): `Strength = 35`, `InjuryDaysRemaining = 0` (atleta volta a ficar apto para jogo com força `35`).
+    - Neste sorteio **parcial específico**, `floor(15*d/15)=d`: exatamente um ponto por dia. Não é a regra geral nem um desconto por rodada. Sem ganhos intermediários, dias 3/6/9/12/15 resultam em forças 47/44/41/38/35; são marcos de dias, não cinco rodadas fixas. Os intervalos esportivos normais alternam 4/3 dias e podem ser adiados.
+    - Se o sorteio fosse máximo, `TotalLoss=25`, as parcelas seriam `1,2,2,1,2,2,1,2,2,1,2,2,1,2,2`, total 25 e força final 25 sem outros ganhos. Recuperar-se não devolve os pontos. O atleta ainda pode receber crescimento de reserva elegível em fechamentos da Liga durante o episódio.
 
 ---
 
@@ -515,14 +510,16 @@ Abaixo estão os resultados exatos reproduzidos pelo algoritmo real `InitialSqua
 | :--- | :--- | :--- |
 | [`tests/Elifoot.Domain.Tests/InitialSquadStrength017BTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Domain.Tests/InitialSquadStrength017BTests.cs#L6-L81) | `CatalogGenerationPersistsAll32ReferenceSlotsAndReplays`, `QuickCreationUsesSameRulesAndKeepsHistoricFactoryProfileAvailable` | Valida todas as 32 referências `017B` (divisões `1..4`, posições `1..8`), bandas `[min, max]`, garantia dos 4 valores `47, 48, 49, 50` nos 3 primeiros da 1ª Divisão e determinismo por `seed`. |
 | [`tests/Elifoot.Domain.Tests/WorldCatalogRules016BTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Domain.Tests/WorldCatalogRules016BTests.cs#L4-L116) | `GlobalPowerUsesPairsKeepsDetailedOrderAndMinimumBeyondForty`, `ManualTiesRemainAndAutomaticOrderUsesScore`, `SquadCycleRepeatsAfterFourteenAndEliteHasPriority`, `SelectionBalancesPositionsDeduplicatesAndDoesNotChangeStrength`, `OrderedDivisionSwapsKeepRankedSquadsAndRecomputeEligibleDistricts` | Valida `ClubInitialPower` (`1..20`) em pares (`20 - rank/2`), ciclo de tamanho de elenco `23..17`, prioridade de elite (`>=22` atletas) e preservação de elencos em trocas manuais de divisão. |
-| [`tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs#L8-L543) | `ApprovedCeilingsForAllEightPlaces`, `DurationHasExactCumulativeBoundariesAndLossMaximum`, `FourthDivisionFifthPlaceGrowsExactlyOnceWithUnusedAndSuspendedPlayers`, `DailyLossIsGradualExactAndRecoversOnVirtualDate`, `PartialAndZeroInjuryLossDoNotBecomeMaximumOrAutomaticRestoration`, `StrengthOneNeverFallsBelowOneEvenAcrossAnInterruptedSave`, `NonParticipantCanReachApprovedCeiling`, `CeilingNeverClampsAStrongNonparticipant`, `EveryCupStagePreservesStrengthForStartersUsedAndUnusedBenchAndEliminatedClubs`, `LeagueParticipantCanMaintainOrLoseOneButNeverReceivesReserveGain`, `ActualMinutesDistinguishUnusedBenchLateEntryAndZeroMinuteEntry`, `LeagueUsesNewPositionAfterAllScoresAreApplied` | Valida tetos `1..50` nas 4 divisões, ganho `+1` determinístico para reservas/suspensos na Liga, preservação total na Taça, queda de `50%` (`440..560` em 1000) para participantes da Liga, perda gradual por lesão e piso `1`. |
+| [`tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Domain.Tests/ClassicForce012CTests.cs#L8-L543) | `ApprovedCeilingsForAllEightPlaces`, `DurationHasExactCumulativeBoundariesAndLossMaximum`, `FourthDivisionFifthPlaceGrowsExactlyOnceWithUnusedAndSuspendedPlayers`, `DailyLossIsGradualExactAndRecoversOnVirtualDate`, `PartialAndZeroInjuryLossDoNotBecomeMaximumOrAutomaticRestoration`, `StrengthOneNeverFallsBelowOneEvenAcrossAnInterruptedSave`, `NonParticipantCanReachApprovedCeiling`, `CeilingNeverClampsAStrongNonparticipant`, `EveryCupStagePreservesStrengthForStartersUsedAndUnusedBenchAndEliminatedClubs`, `LeagueParticipantCanMaintainOrLoseOneButNeverReceivesReserveGain`, `ActualMinutesDistinguishUnusedBenchLateEntryAndZeroMinuteEntry`, `LeagueUsesNewPositionAfterAllScoresAreApplied` | Valida tetos `1..50` nas 4 divisões, ganho `+1` determinístico para reservas/suspensos na Liga, preservação na Taça quanto à participação (lesões seguem o calendário), queda de `50%` (`440..560` em 1000) para participantes da Liga, perda gradual por lesão e piso `1`. |
 | [`tests/Elifoot.Integration.Tests/ClassificationForcePostgresTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Integration.Tests/ClassificationForcePostgresTests.cs#L14-L112) | `CupPreservesStrengthAcrossRefreshReconnectAndPostgresApiRestart` | Valida em PostgreSQL real + SignalR que rodadas da Taça não alteram força nem salário após refresh, reconexão e restart da API. |
 | [`tests/Elifoot.Integration.Tests/OfflineCatalogV11Tests.cs`](file:///d:/elifoot_98/tests/Elifoot.Integration.Tests/OfflineCatalogV11Tests.cs#L9-L247) | `NineForce20RankByComparableRatingAndNinthKeeps20InSecondDivision`, `InvalidV11PlayersAreRejected`, `TeamStrengthRange` | Valida `teamStrength` `1..20`, proibição de `strength` individual no JSON V1.1, ordenação por `teamStrength` + `historicalRanking` e bloqueio `OfflineCatalogRanking.ForceBlock`. |
 | [`tests/Elifoot.Simulation.Tests/ClassificationForceSimulationTests.cs`](file:///d:/elifoot_98/tests/Elifoot.Simulation.Tests/ClassificationForceSimulationTests.cs#L9-L121) | `ClassificationForce_100SeasonsOn017BWorld` | Simula **100 temporadas completas** (`35.100` partidas) num mundo `017B` com `ClassicAdapted`, validando invariantes de força `1..50`, zero ganhos/perdas de participação na Taça e equilíbrio de longo prazo entre divisões. |
 
 ---
 
-## 19. Divergências e Pontos de Atenção Encontrados (Sem Modificar Código)
+## 19. Registro histórico de divergências da auditoria em `aa5130b`
+
+Os estados PASS/PARTIAL desta tabela pertencem à auditoria original. Em especial, a linha 3 descreve o bloqueio anterior a `bf43cd4`, não um bloqueio atual. Evolução, calendário e bandas foram corrigidos no corpo deste documento e confrontados com `f1764fb`.
 
 | Item Auditado | Regra Documentada / Esperada | Implementação Real no Código | Classificação | Observação Técnica |
 | :--- | :--- | :--- | :---: | :--- |
@@ -536,7 +533,13 @@ Abaixo estão os resultados exatos reproduzidos pelo algoritmo real `InitialSqua
 
 ---
 
-## 20. Conclusão da Auditoria
+## 20. Conclusão histórica da auditoria original
 
 - **Status Geral da Auditoria:** **`PARTIAL`** (com **`PASS`** integral em todas as regras implementadas de força inicial `016B`/`017B` e evolução/regressão `ClassicForceEvolutionEngine`, e **`PARTIAL`** exclusivamente porque o Catálogo Offline `V1.1` permanece intencionalmente bloqueado por `OfflineCatalogRanking.ForceBlock` aguardando conexão/definição da geração de força inicial dos atletas V1.1 — em especial para os 96 clubes do Distrital que `InitialSquadStrength017B` não sobrescreve).
-- Todas as fórmulas, arquivos, classes, métodos, linhas de código, sementes determinísticas e testes foram identificados e documentados sem qualquer alteração no repositório.
+- A execução original foi somente leitura. As transcrições incorretas de métodos, calendário e fórmulas foram objeto da errata documental posterior; não devem ser tomadas como código literal de `f1764fb`.
+
+## 21. Resultado da conferência documental em `f1764fb`
+
+As regras efetivas são +1 por rodada da Liga sem participação abaixo do teto da posição atual; sorteio determinístico de 50% de -1 para quem entrou na Liga, piso 1; exceção de nova lesão na partida clássica; perdas diárias de episódios de 2..15 dias; intervalos normais 4/3 dias com adiamentos; Taça sem ganho/queda por participação, preservando lesões pelo calendário. As bandas 017B da seção 7.1 foram conferidas contra `Reference` e `ChampionshipStrengthLimits.For`.
+
+As descrições de cinco/dez jogos, piso relativo à força inicial e perda fixa por rodada lesionado em outros documentos eram erros documentais. Não foram comprovadas como regras anteriormente implementadas. Os seis arquivos de evolução, limites, 017B, rotina sazonal, fechamento e orquestração têm os mesmos blobs entre `bf43cd4^` (`73ae459`) e `f1764fb`. O desbloqueio V1.1 alterou geração inicial, não essas regras. Registros e resultados antigos permanecem históricos; esta revisão não executou testes, simulações ou operações de banco.

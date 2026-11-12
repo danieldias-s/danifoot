@@ -5,6 +5,8 @@
 **HEAD Inicial:** `aa5130b9220967d363c66c631f4770ce01783ecc` (`feat(elifoot98): add offline catalog v1.1 and behavior classifier`)  
 **Referências Base:** Catálogo V1.0 (`3f4adf6`), Catálogo V1.1 (`aa5130b`)
 
+**Nota documental de 12/11/2026:** inventário, hashes e resultados de testes abaixo registram a execução original de consolidação. A descrição de evolução de força foi corrigida por conferência no código de `f1764fb`; nenhuma suíte foi reexecutada nesta revisão exclusivamente documental. Os hashes da seção 3 são históricos, anteriores às correções dos documentos. Regras vigentes em [ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md](../catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md).
+
 ---
 
 ## 1. Inventário Completo de Pendências Git
@@ -34,7 +36,7 @@ Nenhuma operação destrutiva (`git reset --hard`, `git clean`, `git push`, remo
    - **`016B` (`WorldCatalogRules016B`):** Força coletiva inicial do clube (`1..20`) e `ClubInitialPower`.
    - **`017B` (`InitialSquadStrength017B` + `ChampionshipStrengthLimits`):** Faixas de força inicial dos jogadores nas 4 divisões (`39..50` na 1ª Divisão com `[47..50]` e garantia dos 4 valores `47, 48, 49, 50` nos 3 primeiros clubes; `26..38` na 2ª Divisão; `13..25` na 3ª Divisão; `1..12` na 4ª Divisão).
    - **Clubes Distritais (`Division == 5`, 96 clubes):** Aplicação determinística de `InitialPlayerStrength.Apply` (`relative-v1`, escala `1..50`) a partir do ranking inicial (`1..128`) e da `Seed`.
-   - **Evolução e Regressão (`ClassicForceEvolutionEngine`):** `RESERVE_PROGRESS` (`+1` a cada 5 jogos de liga sem atuar como titular até o teto da divisão), `PLAYED_MATCH_DECLINE` (`-1` ao completar 10 jogos como titular na liga, piso `SeasonInitialStrength - 3`), `INJURY_DAILY_LOSS` (`-1` por rodada de liga lesionado) e preservação da Taça sem contar jogos.
+   - **Evolução e Regressão (`ClassicForceEvolutionEngine`):** `RESERVE_PROGRESS`: `+1` por rodada oficial da Liga sem entrar em campo, se abaixo do teto da posição atual do clube. `PLAYED_MATCH_DECLINE`: chance determinística de `50%` de `-1` para titulares e reservas utilizados na Liga, piso 1; nova lesão na própria partida clássica não acumula essa queda. `INJURY_DAILY_LOSS`: orçamento sorteado para lesão de `2..15` dias virtuais e distribuído por diferenças dos acumulados diários; recuperação não restaura pontos. Intervalos normais alternam `4/3` dias, com possíveis adiamentos. Na Taça não há ganho de reserva nem queda por participação, mas lesões continuam pelo calendário. A ocorrência usa `0.0018` por equipe/minuto (`0,18%`), conforme `MatchEngine`.
 2. **Desbloqueio do Criador de Mundos V1.1 (`OfflineWorldFactory`):**
    - Removido `OfflineCatalogRanking.ForceBlock`.
    - `OfflineWorldFactory.Preview` gera e congela as forças individuais `1..50` de todos os 128 clubes V1.1 (`InitialPlayerStrength.Apply` + `InitialSquadStrength017B.Apply`).
@@ -72,3 +74,7 @@ Nenhuma operação destrutiva (`git reset --hard`, `git clean`, `git push`, remo
 1. `73ae459` — `feat(elifoot98): consolidate V3 UI and squad contract renewal negotiation`
 2. `bf43cd4` — `feat(elifoot98): integrate V1.1 initial player strengths and unlock world creation`
 3. Commit de documentação oficial (`docs(elifoot98): add official V1.1 catalog and strength integration documentation`)
+
+## 6. Errata preservada
+
+As afirmações de ganho a cada cinco jogos, perda a cada dez titularidades, piso relativo à força inicial da temporada e perda fixa de um por rodada lesionado, presentes no texto original de `f1764fb`, foram corrigidas na seção 2. Eram descrições sem correspondência na implementação, não fórmulas alteradas pela integração. O registro original permanece no Git. A geração inicial de forças V1.1 foi integrada em `bf43cd4`; as fórmulas de evolução/regressão existentes permaneceram iguais.

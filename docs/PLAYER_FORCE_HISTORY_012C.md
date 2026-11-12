@@ -1,5 +1,7 @@
 # Histórico individual de força — 012C
 
+> **REGISTRO HISTÓRICO DA IMPLEMENTAÇÃO 012C.** Os campos e números abaixo preservam a entrega original. A proteção esportiva atual de `ApplyFinishedRound` usa `GuardSeason`/`GuardRound` e chave por mundo/temporada/rodada/jogador/motivo; não depende dos conjuntos `ProcessedMatches`/`ProcessedRoundPlayers` descritos na versão antiga. A perda por lesão mantém episódio/data e `ProcessedDays`. Regras vigentes e fontes conferidas em `f1764fb`: [referência oficial](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). As medições históricas não foram reexecutadas nesta correção.
+
 STATUS: PASS. O histórico 012 é estendido com campos opcionais, preservando os registros antigos e a rota GET /api/worlds/{worldId}/players/{playerId}/history.
 
 | Campo | Conteúdo |

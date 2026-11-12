@@ -1,5 +1,7 @@
 # Balanceamento: 100 temporadas reais — 012C
 
+> **MEDIÇÃO HISTÓRICA — não é previsão do motor atual.** As 100 temporadas e números abaixo foram medidos na configuração original 012C, anterior às mudanças de participação/classificação e Taça de `8e9ee25`/`9af02bc`. Os resultados permanecem intactos e não foram reexecutados nesta revisão. Para regras atuais, consulte [a referência oficial](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md); para medições posteriores, [CLASSIFICATION_FORCE_EVOLUTION.md](CLASSIFICATION_FORCE_EVOLUTION.md).
+
 STATUS: PASS nos critérios funcionais e de regressão. O equilíbrio tem as limitações observadas abaixo. Adaptação autorizada, sem pretensão histórica exata.
 
 Seed 199801; cenário todos IA; motor minuto a minuto; 35.100 partidas, 3.255.840 minutos, 109.687 gols, 11.866 lesões. Oito atletas existentes foram ajustados para força 1 (G/A, um par por divisão) antes da primeira rodada para acompanhar evolução a partir do piso; o restante da população, economia e IA usam a configuração existente. A simulação não força esses oito a ficar na reserva.

@@ -1,5 +1,7 @@
 # CLASSIC_ADAPTED_FORCE_EVOLUTION — 012C
 
+> **REGISTRO HISTÓRICO — regras parcialmente superadas.** Este documento conserva a etapa 012C original, seus tetos, probabilidades e resultados. As decisões de participação, os tetos e o calendário de competições descritos nessa etapa foram posteriormente alterados por `8e9ee25` e `9af02bc`; não são a especificação atual. As perdas diárias por lesão continuam conforme o motor. Consulte [regras vigentes conferidas em f1764fb](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md) e [evolução por classificação](CLASSIFICATION_FORCE_EVOLUTION.md). PASS e contagens abaixo pertencem à execução histórica, sem reexecução nesta correção documental.
+
 TASK: ELIFOOT_CLASSIC_FORCE_EVOLUTION_012C  
 STATUS: PASS  
 Adaptação autorizada pelo proprietário; não é uma afirmação da fórmula histórica exata do Elifoot 98. Regras versão 1.

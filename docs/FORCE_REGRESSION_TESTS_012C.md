@@ -1,5 +1,7 @@
 # Regressão da força adaptada — 012C
 
+> **EVIDÊNCIA HISTÓRICA DA ETAPA 012C.** Contagens, nomes de testes, métricas e comandos abaixo pertencem àquela execução. Referências à antiga chance de crescimento, participação por minutos e regras anteriores da Taça não especificam o comportamento atual. Foram superadas pelos ajustes de classificação/Liga de `8e9ee25` e `9af02bc`. Preserve os artefatos originais; regras vigentes em [ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md](catalogos/ELIFOOT98_REGRAS_FORCAS_E_INTEGRACAO_V11.md). Esta correção documental não reexecutou essas suítes.
+
 STATUS: PASS. Evidências reais, geradas localmente sem publicar em produção.
 
 - dotnet build Elifoot.slnx -c Release: zero avisos e zero erros.
