@@ -361,7 +361,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                   ),
                   if (_clubs.any((c) => c['offlineSource']?['v11'] != null))
                     const Text(
-                      '1.1: força ↓, rating comparável ↓, prioridade ↑. Fontes e datas incompatíveis exigem prioridade manual. A prévia identifica empates entre divisões. Criação bloqueada até aprovar o gerador de forças individuais.',
+                      '1.1: força ↓, rating comparável ↓, prioridade ↑. Fontes e datas incompatíveis exigem prioridade manual. A prévia identifica empates entre divisões e gera as forças individuais 1..50.',
                     ),
                   const Text(
                     'Divisão automática respeita a divisão inicial do arquivo. Para substituir, escolha outra divisão. A prévia valida todas as vagas.',
@@ -455,7 +455,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     '${d == 5 ? 'Distritais' : '$dª Divisão'}: ${previewClubs.where((c) => c['division'] == d).length}/${d == 5 ? 96 : 8}',
                   ),
                 const Text(
-                  'Prévia congelada. 1.0 conserva forças literais; 1.1 não cria mundo enquanto o gerador de forças estiver pendente. Identidade, elenco, comportamento, estrela e treinador ficam congelados na prévia.',
+                  'Prévia congelada. 1.0 conserva forças literais; 1.1 gera e congela forças individuais 1..50 na prévia. Identidade, elenco, comportamento, estrela e treinador ficam congelados na prévia.',
                 ),
                 for (final c in previewClubs)
                   ListTile(

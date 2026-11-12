@@ -164,11 +164,58 @@ public sealed class OfflineCatalogV11Tests
         using var files = new Files(); var candidates = await Candidates(files, 128);
         var preview = OfflineWorldFactory.Preview(Request(), candidates.AsEnumerable().Reverse().ToList());
         Assert.Equal(Enumerable.Range(0, 8).Select(i => $"c-{i:000}"), preview.Clubs.Where(c => c.Division == 1).Select(c => c.Club.Key));
-        var ninth = preview.Clubs.Single(c => c.Club.Key == "c-008"); Assert.Equal(2, ninth.Division); Assert.Equal(20, ninth.Club.OfflineSource!.V11!.TeamStrength);
+        var ninth = preview.Clubs.Single(c => c.Club.Key == "c-008");
+        Assert.Equal(2, ninth.Division);
+        Assert.Equal(20, ninth.Club.OfflineSource!.V11!.TeamStrength);
+        Assert.Equal(20, ninth.Club.InitialProfile!.ClubInitialPower);
+        Assert.All(ninth.Club.Players, p => Assert.InRange(p.Strength, 37, 38));
         Assert.Equal([8,8,8,8,96], Enumerable.Range(1,5).Select(d => preview.Clubs.Count(c => c.Division == d)));
-        Assert.Equal([OfflineCatalogRanking.ForceBlock], preview.Errors);
-        Assert.Contains("bloqueada", Assert.Throws<ArgumentException>(() => OfflineWorldFactory.Create(Request(), preview)).Message);
-        Assert.All(preview.Clubs, c => Assert.Empty(c.Club.Players));
+        Assert.Empty(preview.Errors);
+        Assert.All(preview.Clubs, c =>
+        {
+            Assert.Equal(11, c.Club.Players.Count);
+            Assert.All(c.Club.Players, p => Assert.InRange(p.Strength, 1, 50));
+        });
+        foreach (var top in preview.Clubs.Where(c => c.Division == 1).Take(3))
+        {
+            Assert.All(top.Club.Players, p => Assert.InRange(p.Strength, 47, 50));
+            Assert.Equal([47, 48, 49, 50], top.Club.Players.Select(p => p.Strength).Distinct().OrderBy(x => x));
+        }
+        Assert.All(preview.Clubs.Where(c => c.Division == 1).SelectMany(c => c.Club.Players), p => Assert.InRange(p.Strength, 39, 50));
+        Assert.All(preview.Clubs.Where(c => c.Division == 2).SelectMany(c => c.Club.Players), p => Assert.InRange(p.Strength, 26, 38));
+        Assert.All(preview.Clubs.Where(c => c.Division == 3).SelectMany(c => c.Club.Players), p => Assert.InRange(p.Strength, 13, 25));
+        Assert.All(preview.Clubs.Where(c => c.Division == 4).SelectMany(c => c.Club.Players), p => Assert.InRange(p.Strength, 1, 12));
+        Assert.All(preview.Clubs.Where(c => c.Division == 5).SelectMany(c => c.Club.Players), p => Assert.InRange(p.Strength, 1, 50));
+
+        var sameSeedPreview = OfflineWorldFactory.Preview(Request(), candidates);
+        Assert.Equal(
+            preview.Clubs.SelectMany(c => c.Club.Players.Select(p => p.Strength)),
+            sameSeedPreview.Clubs.SelectMany(c => c.Club.Players.Select(p => p.Strength)));
+        var otherSeedPreview = OfflineWorldFactory.Preview(Request() with { Seed = 999 }, candidates);
+        Assert.NotEqual(
+            preview.Clubs.SelectMany(c => c.Club.Players.Select(p => p.Strength)),
+            otherSeedPreview.Clubs.SelectMany(c => c.Club.Players.Select(p => p.Strength)));
+
+        var world = OfflineWorldFactory.Create(Request(), preview);
+        Assert.Equal(128, world.Clubs.Count);
+        Assert.Equal(128 * 11, world.Players.Count);
+        Assert.Equal("1.1", world.OfflineCatalogOrigin!.SchemaVersion);
+        var ninthWorldClub = world.Clubs[8];
+        Assert.Equal(2, (int)ninthWorldClub.DivisionTier);
+        Assert.Equal(20, ninthWorldClub.ClubInitialPower);
+        Assert.All(world.Players.Where(p => p.ClubId == ninthWorldClub.Id), p => Assert.InRange(p.Strength, 37, 38));
+        Assert.All(world.Players, p =>
+        {
+            Assert.InRange(p.Strength, 1, 50);
+            Assert.True(p.SalaryPerRound > 0);
+            Assert.True(p.MarketPrice > 0);
+            Assert.NotNull(p.OfflineIdentity);
+        });
+        Assert.All(world.Clubs, c =>
+        {
+            Assert.Equal(11, c.PreferredStarterIds.Count);
+            Assert.NotNull(c.OfflineIdentity);
+        });
     }
 
     [Fact]
@@ -206,8 +253,10 @@ public sealed class OfflineCatalogV11Tests
         candidates = candidates.Select((c, i) => c with { OfflineSource = c.OfflineSource! with { V11 = c.OfflineSource!.V11! with {
             HistoricalRanking = null, TieBreakPriority = i < 2 ? 0 : i } } }).ToList();
         var preview = OfflineWorldFactory.Preview(Request(), candidates);
-        Assert.Equal([OfflineCatalogRanking.ForceBlock], preview.Errors);
+        Assert.Empty(preview.Errors);
         Assert.Equal(candidates[0].Key, preview.Clubs[0].Club.Key);
+        var world = OfflineWorldFactory.Create(Request(), preview);
+        Assert.Equal(128, world.Clubs.Count);
         await files.Edit(files.Annual, n => { n["historicalRanking"] = null; n["tieBreakPriority"] = 1; });
         Assert.True((await files.Load()).Catalogs[0].Ready);
     }
@@ -243,5 +292,43 @@ public sealed class OfflineCatalogV11Tests
         Assert.All(selected.Take(128), c => Assert.Equal("ES", c.CountryCode)); // no quota
         Assert.Equal("synthetic-000", selected[0].OfflineSource!.V11!.Identity.CatalogClubId);
         Assert.Equal("synthetic-383", selected[^1].OfflineSource!.V11!.Identity.CatalogClubId);
+        var chosenKeys = selected.Take(128).Select(c => c.Key).ToList();
+        var req = new OfflineWorldRequest("Mundo V1.1 Três Países", ["ES", "GB", "IT"], 1998, 2, chosenKeys);
+        var preview = OfflineWorldFactory.Preview(req, selected);
+        Assert.Empty(preview.Errors);
+        var world = OfflineWorldFactory.Create(req, preview);
+        Assert.Equal(128, world.Clubs.Count);
+        Assert.Equal(128 * 11, world.Players.Count);
+        Assert.All(world.Players, p =>
+        {
+            Assert.InRange(p.Strength, 1, 50);
+            Assert.Equal(p.Strength, world.ClassicForce.SeasonStartingStrengths[p.Id]);
+        });
+        string snapshot = JsonSerializer.Serialize(world, CatalogImportCodec.Json);
+        var restored = JsonSerializer.Deserialize<GameWorld>(snapshot, CatalogImportCodec.Json)!;
+        Assert.Equal(snapshot, JsonSerializer.Serialize(restored, CatalogImportCodec.Json));
+    }
+
+    [Fact]
+    public async Task BehaviorAndStarNeverAlterInitialStrengthDraw()
+    {
+        using var files = new Files(); var candidatesA = await Candidates(files, 128);
+        var candidatesB = candidatesA.Select(c =>
+        {
+            var def = c.OfflineSource!.Definition;
+            var flippedPlayers = def.Players!.Select(p => p with
+            {
+                Behavior = 5 - p.Behavior!.Value,
+                IsStar = p.Position is "M" or "A" ? !p.IsStar!.Value : false
+            }).ToList();
+            return c with { OfflineSource = c.OfflineSource with { Definition = def with { Players = flippedPlayers } } };
+        }).ToList();
+        var previewA = OfflineWorldFactory.Preview(Request(), candidatesA);
+        var previewB = OfflineWorldFactory.Preview(Request(), candidatesB);
+        var worldA = OfflineWorldFactory.Create(Request(), previewA);
+        var worldB = OfflineWorldFactory.Create(Request(), previewB);
+        Assert.Equal(worldA.Players.Select(p => p.Strength), worldB.Players.Select(p => p.Strength));
+        Assert.NotEqual(worldA.Players.Select(p => p.Behavior), worldB.Players.Select(p => p.Behavior));
+        Assert.NotEqual(worldA.Players.Select(p => p.IsStar), worldB.Players.Select(p => p.IsStar));
     }
 }

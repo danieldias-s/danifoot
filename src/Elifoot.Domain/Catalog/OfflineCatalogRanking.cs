@@ -5,7 +5,6 @@ namespace Elifoot.Domain;
 /// <summary>Initial placement only. Never calibrates player strength or changes match rules.</summary>
 public static class OfflineCatalogRanking
 {
-    public const string ForceBlock = "Catálogo 1.1: criação bloqueada até aprovar a conversão teamStrength 1..20 para forças individuais 1..50. Nenhuma força foi inventada.";
     public static bool IsV11(EligibleCatalogClub club) => club.OfflineSource?.Definition.SchemaVersion == "1.1";
     private static bool Comparable(IEnumerable<EligibleCatalogClub> clubs)
     {

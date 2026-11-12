@@ -38,6 +38,28 @@ public static class OfflineWorldFactory
                 throw new ArgumentException("Seleção de clubes repetida ou fora do catálogo.");
             clubs = clubs.Where(c => keys.Contains(c.Key)).ToList();
         }
+        bool isV11 = clubs.Any(OfflineCatalogRanking.IsV11);
+        if (isV11)
+        {
+            clubs = InitialPlayerStrength.Apply(clubs.Select((c, i) =>
+            {
+                var source = c.OfflineSource!;
+                var def = source.Definition;
+                var v11 = source.V11!;
+                int rank = i + 1;
+                return c with
+                {
+                    Rank = rank,
+                    InitialProfile = new(v11.TeamStrength!.Value, rank, v11.HistoricalRanking?.Rating,
+                        v11.HistoricalRanking?.Source ?? "offline-v1.1", DateTime.UnixEpoch, 1.0,
+                        TargetInitialSquadSize: def.Players?.Count ?? 0, SquadSelectionMethod: "offline-v1.1"),
+                    Players = (def.Players ?? []).Select(p => new CatalogAthlete(p.Id!, def.CatalogClubId!, "offline-v1.1", c.Gender,
+                        source.Year.ToString(), p.Name!, p.Position!, 1, "Arquivo local fornecido pelo proprietário",
+                        DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.CountryCode}:{source.Year}:{def.CatalogClubId}:{p.Id}",
+                        StrengthEstimate: new(InitialPlayerStrength.Version, CatalogDataOrigin.Estimated, 0, "", .5, null))).ToList()
+                };
+            }).ToList(), request.Seed);
+        }
         if (clubs.Count != 128) errors.Add($"Selecione exatamente 128 clubes; há {clubs.Count}. Não serão gerados clubes ou jogadores.");
         var assigned = new List<WorldPreviewClub>();
         var explicitAssignments = request.Assignments ?? [];
@@ -59,9 +81,9 @@ public static class OfflineWorldFactory
             if (assigned.Count(a => a.Division == d) != (d == 5 ? 96 : 8))
                 errors.Add(d == 5 ? "Distritais exigem 96 clubes." : $"Divisão {d} exige 8 clubes.");
         errors.AddRange(OfflineCatalogRanking.BoundaryErrors(clubs, assigned, explicitAssignments));
-        if (clubs.Any(OfflineCatalogRanking.IsV11)) errors.Add(OfflineCatalogRanking.ForceBlock);
         var order = clubs.Select((c, i) => (c.Key, i)).ToDictionary(x => x.Key, x => x.i);
         assigned = assigned.OrderBy(a => a.Division).ThenBy(a => order[a.Club.Key]).ToList();
+        if (isV11) assigned = InitialSquadStrength017B.Apply(assigned, request.Seed);
         string hash = Hash(request, assigned);
         return new(Guid.NewGuid(), request.Name, available[0].Gender, request.Seed, assigned,
             Math.Max(0, 128 - assigned.Count), errors.Distinct().ToList(), warnings, [], DateTime.UtcNow, hash);
@@ -72,7 +94,6 @@ public static class OfflineWorldFactory
 
     public static GameWorld Create(OfflineWorldRequest request, WorldCreatorPreview preview)
     {
-        if (preview.Clubs.Any(c => OfflineCatalogRanking.IsV11(c.Club))) throw new ArgumentException(OfflineCatalogRanking.ForceBlock);
         if (preview.Errors.Count > 0 || preview.PendingSlots != 0 || preview.DataHash != Hash(request, preview.Clubs) ||
             preview.Clubs.Count != 128 || preview.Clubs.Select(c => c.Club.Key).Distinct().Count() != 128)
             throw new ArgumentException("Prévia incompleta ou modificada; valide novamente.");
@@ -81,6 +102,8 @@ public static class OfflineWorldFactory
             var source = entry.Club.OfflineSource ?? throw new ArgumentException("Clube sem origem offline.");
             if (source.Definition.Status != "READY" || OfflineCatalogRules.ValidateClub(source.Definition, entry.Club.Key).Count > 0)
                 throw new ArgumentException("Clube incompleto na prévia.");
+            if (entry.Club.Players.Count != source.Definition.Players!.Count || entry.Club.Players.Any(p => p.Strength is < 1 or > 50))
+                throw new ArgumentException("Forças individuais inválidas ou ausentes na prévia.");
         }
         for (int d = 1; d <= 5; d++)
             if (preview.Clubs.Count(c => c.Division == d) != (d == 5 ? 96 : 8)) throw new ArgumentException("Distribuição inválida.");
@@ -98,10 +121,17 @@ public static class OfflineWorldFactory
             var entry = preview.Clubs[i]; var source = entry.Club.OfflineSource!; var c = source.Definition;
             var template = foundation.Clubs[i];
             var stadium = template.Stadium;
-            stadium.Name = c.Stadium!.Name!; stadium.BuiltCapacity = c.Stadium.Capacity!.Value;
-            stadium.UsableCapacity = (int)Math.Round(stadium.BuiltCapacity * stadium.ConditionPercent / 100);
-            stadium.MaintenanceReservePerSeason = Math.Round(stadium.BuiltCapacity * 4.5m, 0);
-            stadium.LastAttendance = stadium.UsableCapacity / 2;
+            if (c.Stadium != null)
+            {
+                stadium.Name = c.Stadium.Name!; stadium.BuiltCapacity = c.Stadium.Capacity!.Value;
+                stadium.UsableCapacity = (int)Math.Round(stadium.BuiltCapacity * stadium.ConditionPercent / 100);
+                stadium.MaintenanceReservePerSeason = Math.Round(stadium.BuiltCapacity * 4.5m, 0);
+                stadium.LastAttendance = stadium.UsableCapacity / 2;
+            }
+            else
+            {
+                stadium.Name = $"Estádio de {c.Name}";
+            }
             var club = new Club
             {
                 Id = Guid.NewGuid(), GameWorldId = world.Id, DeterministicIndex = i + 1,
@@ -109,6 +139,8 @@ public static class OfflineWorldFactory
                 PrimaryColorHex = c.Colors![0], SecondaryColorHex = c.Colors[1],
                 DivisionTier = (DivisionTier)entry.Division, Stadium = stadium,
                 CashBalance = template.CashBalance, Reputation = template.Reputation, InitialSquadSize = c.Players!.Count,
+                ClubInitialPower = source.V11?.TeamStrength ?? entry.Club.InitialProfile?.ClubInitialPower,
+                InitialSquadReference = entry.InitialSquadReference,
                 OfflineIdentity = new(source.CatalogId, c.CatalogClubId!, source.CountryCode, source.Year,
                     c.ShortName!, c.Abbreviation!, source.SourceHash, source.CrestDataUrl)
             };
@@ -124,15 +156,16 @@ public static class OfflineWorldFactory
             };
             club.AiManagerId = manager.Id; world.Clubs.Add(club); world.AiManagers.Add(manager);
             var contractDefaults = foundation.Players.Where(p => p.ClubId == template.Id).ToList();
-            int j = 0;
-            foreach (var p in c.Players)
+            for (int j = 0; j < c.Players.Count; j++)
             {
+                var p = c.Players[j];
+                int strength = p.Strength ?? entry.Club.Players[j].Strength;
                 var player = new Player
                 {
                     Id = Guid.NewGuid(), GameWorldId = world.Id, ClubId = club.Id, Name = p.Name!,
-                    Position = Enum.Parse<PlayerPosition>(p.Position!), Strength = p.Strength!.Value,
+                    Position = Enum.Parse<PlayerPosition>(p.Position!), Strength = strength,
                     Behavior = (PlayerBehavior)p.Behavior!.Value, IsStar = p.IsStar!.Value, Nationality = p.Nationality,
-                    ContractRoundsRemaining = contractDefaults[j++ % contractDefaults.Count].ContractRoundsRemaining,
+                    ContractRoundsRemaining = contractDefaults[j % contractDefaults.Count].ContractRoundsRemaining,
                     OfflineIdentity = new(source.CatalogId, p.Id!, source.CountryCode, source.Year)
                 };
                 player.SalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(player);
@@ -156,7 +189,8 @@ public static class OfflineWorldFactory
         world.SetCatalogOrigin(new(preview.Gender, preview.Clubs[0].Club.Season,
             preview.Clubs.Select(c => c.Club.CountryCode).Distinct().ToList(), request.Seed, preview.CreatedAt,
             preview.DataHash, preview.Clubs, [], CatalogYears: preview.Clubs.Select(c => c.Club.Season).Distinct().ToList()));
-        var origin = new OfflineWorldOrigin(OfflineCatalogRules.Version, preview.DataHash, preview.CreatedAt, preview.Clubs);
+        string schemaVersion = preview.Clubs.Any(c => OfflineCatalogRanking.IsV11(c.Club)) ? "1.1" : OfflineCatalogRules.Version;
+        var origin = new OfflineWorldOrigin(schemaVersion, preview.DataHash, preview.CreatedAt, preview.Clubs);
         world.OfflineCatalogOrigin = JsonSerializer.Deserialize<OfflineWorldOrigin>(JsonSerializer.Serialize(origin));
         world.History = new(); HistoryEngine.Observe(world, beginningSeason: true);
         return world;
