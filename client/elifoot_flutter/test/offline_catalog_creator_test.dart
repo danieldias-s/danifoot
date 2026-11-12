@@ -59,11 +59,12 @@ void main() {
       final api = ElifootApiClient(
         baseUrl: 'http://localhost',
         httpClient: MockClient((r) async {
-          if (r.url.path.endsWith('/catalogs'))
+          if (r.url.path.endsWith('/catalogs')) {
             return jsonResponse({
               'catalogs': [catalog(ready: true)],
               'issues': [],
             });
+          }
           if (r.url.path.endsWith('/clubs')) return jsonResponse(rows);
           if (r.url.path.endsWith('/preview')) {
             submitted = Map<String, dynamic>.from(jsonDecode(r.body));
