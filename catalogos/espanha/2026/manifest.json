@@ -11,5 +11,7 @@
   "name": "Espanha 2026 — preencher",
   "status": "DRAFT",
   "gender": "Male",
-  "clubs": []
+  "clubs": [
+    "clubes/real-madrid.json"
+  ]
 }

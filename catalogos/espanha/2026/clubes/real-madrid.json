@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-madrid",
+  "country": "ES",
+  "year": 2026,
+  "teamStrength": null,
+  "historicalRanking": null,
+  "tieBreakPriority": null,
+  "stadium": null,
+  "coach": null,
+  "players": [
+    {
+      "id": "real-madrid-2026-001",
+      "name": "Thibaut Courtois",
+      "position": "G",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-002",
+      "name": "Andriy Lunin",
+      "position": "G",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-003",
+      "name": "Dean Huijsen",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-004",
+      "name": "Ibrahima Konaté",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-005",
+      "name": "Éder Militão",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-006",
+      "name": "Trent Alexander-Arnold",
+      "position": "D",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-007",
+      "name": "Marc Cucurella",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-008",
+      "name": "Álvaro Carreras",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-009",
+      "name": "Antonio Rüdiger",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-010",
+      "name": "Jude Bellingham",
+      "position": "M",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-011",
+      "name": "Eduardo Camavinga",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-012",
+      "name": "Federico Valverde",
+      "position": "M",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-013",
+      "name": "Aurélien Tchouaméni",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-014",
+      "name": "Arda Güler",
+      "position": "M",
+      "nationality": "TR",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-015",
+      "name": "Bernardo Silva",
+      "position": "M",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-016",
+      "name": "Vinícius Júnior",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-017",
+      "name": "Endrick",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-018",
+      "name": "Kylian Mbappé",
+      "position": "A",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-2026-019",
+      "name": "Rodrygo",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-020",
+      "name": "Brahim Díaz",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-021",
+      "name": "Yan Diomande",
+      "position": "A",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-022",
+      "name": "Raúl Asencio",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-2026-023",
+      "name": "Carlos Espí",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ],
+  "status": "DRAFT"
+}
