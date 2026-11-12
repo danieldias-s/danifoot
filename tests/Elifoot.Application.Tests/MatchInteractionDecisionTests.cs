@@ -54,6 +54,25 @@ public class MatchInteractionDecisionTests
         Assert.Equal(0,m.HomeUsedPauseWindows);Assert.Equal(0,m.HomeUsedSubstitutions);Assert.Empty(w.PauseWindows.Last().EditedCoachIds);
         Assert.True((await s.ConfirmContinueMatchAsync(new(w.Id,a.Id,"continue"))).Success);
     }
+    [Fact] public async Task SubstitutionRequestedAsHalftimeStartsUsesTheExistingFreePause()
+    {
+        var (world, _, service, match, coach, _) = await Room();
+        world.CurrentMatchMinute = 44;
+        foreach (var fixture in MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world))
+            fixture.LastSimulatedMinute = fixture.CurrentMinute = 44;
+        var halftime = await service.AdvanceClockTickAsync(world.Id);
+        Assert.Equal(RoundState.HALFTIME_PAUSED, halftime!.RoundState);
+
+        var result = await service.RequestGlobalPauseAsync(new(world.Id, coach.Id, "substitute-at-halftime"));
+        Assert.True(result.Success, result.Error);
+        var confirmed = Assert.IsType<PauseWindowStateDto>(result.PauseWindow);
+        Assert.Equal(halftime.ActivePauseWindow!.PauseWindowId, confirmed.PauseWindowId);
+        Assert.Equal(RoundState.HALFTIME_PAUSED, confirmed.Snapshot!.RoundState);
+        Assert.Equal(45, confirmed.Snapshot.CurrentMinute);
+        Assert.Equal(45, (await service.AdvanceClockTickAsync(world.Id))!.CurrentMinute);
+        Assert.Single(world.PauseWindows);
+        Assert.Equal(0, match.HomeUsedPauseWindows);
+    }
     [Fact] public async Task EverySubCountsIncludingHalfTimeButHalfTimeDoesNotSpendWindows()
     {
         var(w,r,s,m,a,b)=await Room();await s.RequestGlobalPauseAsync(new(w.Id,a.Id,"pause"));

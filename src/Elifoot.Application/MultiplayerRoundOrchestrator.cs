@@ -627,11 +627,18 @@ public sealed partial class MultiplayerRoundOrchestrator
             {
                 if (receipt.Fingerprint != fingerprint) return (false, "Chave de operação reutilizada com dados diferentes.", null);
                 var previous = world.PauseWindows.FirstOrDefault(w => w.Id == receipt.PauseWindowId);
-                return (true, null, previous == null ? null : BuildPauseWindowDto(world, previous));
+                if (world.RequiresDurableMatchInteractionSave)
+                    await _repository.SaveWorldAsync(world, CancellationToken.None);
+                return (true, null, previous == null ? null : BuildPauseWindowDto(world, previous) with
+                {
+                    Snapshot = BuildLiveRoundSnapshotDto(world)
+                });
             }
             if (FirstPendingPenalty(world) != null) return (false, "Aguardando a escolha do cobrador do pênalti.", null);
             if (coach.CurrentClubId == null)
                 return (false, "Treinador desempregado não pode solicitar parada tática.", null);
+            var club = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId && c.HumanCoachId == coach.Id);
+            if (club == null) return (false, "Você não controla o clube desta partida.", null);
 
             var roundMatches = GetCurrentRoundFixtures(world);
             var coachMatch = roundMatches.FirstOrDefault(m => m.HomeClubId == coach.CurrentClubId || m.AwayClubId == coach.CurrentClubId);
@@ -642,16 +649,19 @@ public sealed partial class MultiplayerRoundOrchestrator
             int usedWindows = isHome ? coachMatch.HomeUsedPauseWindows : coachMatch.AwayUsedPauseWindows;
             int maxWindows = isHome ? coachMatch.HomeMaxPauseWindows : coachMatch.AwayMaxPauseWindows;
 
-            // If already in GLOBAL_PAUSED, merge into the active shared PauseWindow!
-            if (world.RoundState == RoundState.GLOBAL_PAUSED && world.ActivePauseWindowId != null)
+            // A request can arrive just after another coach pauses or the clock reaches an interval.
+            if ((world.RoundState == RoundState.GLOBAL_PAUSED || IsFreeInterval(world.RoundState))
+                && world.ActivePauseWindowId != null)
             {
                 var existingWindow = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
                 RecordInteraction(world, receiptKey, fingerprint, existingWindow.Id);
                 world.RoundVersion++;
-                await _repository.SaveWorldAsync(world, ct);
-                var dto = BuildPauseWindowDto(world, existingWindow);
-                await _publisher.PublishGlobalPauseAsync(world.Id, dto, BuildLiveRoundSnapshotDto(world), ct);
-                return (true, null, dto);
+                await _repository.SaveWorldAsync(world, CancellationToken.None);
+                var snapshot = BuildLiveRoundSnapshotDto(world);
+                var dto = snapshot.ActivePauseWindow!;
+                if (world.RoundState == RoundState.GLOBAL_PAUSED)
+                    await _publisher.PublishGlobalPauseAsync(world.Id, dto, snapshot, ct);
+                return (true, null, dto with { Snapshot = snapshot });
             }
 
             if (world.RoundState is not (RoundState.RUNNING_FIRST_HALF or RoundState.RUNNING_SECOND_HALF or RoundState.RUNNING_EXTRA_TIME))
@@ -685,7 +695,6 @@ public sealed partial class MultiplayerRoundOrchestrator
             world.RoundState = RoundState.GLOBAL_PAUSED;
             world.RoundVersion++;
 
-            var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
             coachMatch.Events.Add(new MatchEventRecord
             {
                 Minute = world.CurrentMatchMinute,
@@ -695,11 +704,11 @@ public sealed partial class MultiplayerRoundOrchestrator
                 Description = $"{world.CurrentMatchMinute}' PARADA GLOBAL solicitada por {coach.Nickname} ({club.ShortName})."
             });
 
-            await _repository.SaveWorldAsync(world, ct);
-            var winDto = BuildPauseWindowDto(world, window);
+            await _repository.SaveWorldAsync(world, CancellationToken.None);
             var snapDto = BuildLiveRoundSnapshotDto(world);
+            var winDto = snapDto.ActivePauseWindow!;
             await _publisher.PublishGlobalPauseAsync(world.Id, winDto, snapDto, ct);
-            return (true, null, winDto);
+            return (true, null, winDto with { Snapshot = snapDto });
         }
         finally
         {

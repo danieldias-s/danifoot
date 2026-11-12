@@ -161,6 +161,14 @@ public class ApiAndSignalREndToEndTests
 
         var pauseRes = await client.PostAsJsonAsync($"/api/worlds/{worldId}/pause", new RequestPauseCommand(worldId, coachIds[0], "pause-79"));
         pauseRes.EnsureSuccessStatusCode();
+        var pause = (await pauseRes.Content.ReadFromJsonAsync<PauseWindowStateDto>())!;
+        Assert.Equal(pause.PauseWindowId, pause.Snapshot!.ActivePauseWindow!.PauseWindowId);
+        Assert.Equal(RoundState.GLOBAL_PAUSED, pause.Snapshot.RoundState);
+        Assert.Equal(79, pause.Snapshot.CurrentMinute);
+        var blockedTicks = await client.PostAsync($"/api/worlds/{worldId}/tick?ticks=3", null);
+        var frozen = (await blockedTicks.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!;
+        Assert.Equal(pause.Snapshot.Matches.Select(m => m.Minute), frozen.Matches.Select(m => m.Minute));
+        Assert.Equal(79, frozen.CurrentMinute);
         await Task.Delay(50);
         Assert.True(globalPauseReceived);
 

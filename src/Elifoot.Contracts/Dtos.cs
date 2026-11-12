@@ -109,7 +109,11 @@ public record PauseWindowStateDto(
     int TotalHumans,
     int RemainingSeconds,
     List<Guid> ConfirmedCoachIds,
-    List<Guid> EditedCoachIds);
+    List<Guid> EditedCoachIds)
+{
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public LiveRoundSnapshotDto? Snapshot { get; init; }
+}
 
 public record LiveRoundSnapshotDto(
     Guid GameWorldId,

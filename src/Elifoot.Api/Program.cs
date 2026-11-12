@@ -405,6 +405,8 @@ app.MapPost("/api/worlds/{worldId:guid}/pause", async (
 {
     var (ok, err, pauseWin) = await orchestrator.RequestGlobalPauseAsync(cmd with { GameWorldId = worldId }, ct);
     if (!ok) return Results.BadRequest(new { error = err, pauseWindow = pauseWin });
+    if (pauseWin?.Snapshot is { } snapshot)
+        pauseWin = pauseWin with { Snapshot = roomConnections.WithPresence(snapshot) };
     return Results.Ok(pauseWin);
 });
 

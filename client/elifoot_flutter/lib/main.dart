@@ -989,17 +989,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _handleRequestGlobalPause() async {
-    if (_worldId == null || _coachId == null) return;
+    final world = _worldId, coach = _coachId;
+    if (world == null || coach == null) return;
+    setState(() => _statusBanner = 'Solicitando pausa para substituir...');
     try {
-      await widget.apiClient.requestGlobalPause(_worldId!, _coachId!);
-      final snap = await widget.apiClient.getSnapshot(_worldId!);
+      final response = await widget.apiClient.requestGlobalPause(world, coach);
+      final snap =
+          response['snapshot'] as Map<String, dynamic>? ??
+          (response.containsKey('roundState')
+              ? response
+              : await widget.apiClient.getSnapshot(world));
+      if (!mounted || _worldId != world || _coachId != coach) return;
       setState(() {
         _snapshot = _acceptSnapshot(snap);
-        _statusBanner =
-            'PARADA GLOBAL ATIVADA! Todas as partidas da sala foram congeladas.';
+        _statusBanner = _snapshot?['activePauseWindow'] != null
+            ? null
+            : 'A pausa já terminou. Solicite outra para substituir.';
       });
     } catch (e) {
-      setState(() => _statusBanner = 'Parada recusada: $e');
+      if (mounted && _worldId == world && _coachId == coach) {
+        setState(() => _statusBanner = 'Não foi possível pausar: $e');
+      }
     }
   }
 

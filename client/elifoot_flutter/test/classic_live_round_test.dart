@@ -71,9 +71,12 @@ Future<void> renderClassic(
 
 class ClubClickApi extends WaitingRoomApi {
   int pauses = 0;
+  bool _pauseResponseReturned = false;
+  int snapshotReadsAfterPause = 0;
   ClubClickApi() : super(2);
   @override
   Future<Map<String, dynamic>> getSnapshot(String world) async {
+    if (_pauseResponseReturned) snapshotReadsAfterPause++;
     final snap = await super.getSnapshot(world);
     final matches = List<dynamic>.from(snap['matches'] as List);
     snap['matches'] = matches;
@@ -94,9 +97,11 @@ class ClubClickApi extends WaitingRoomApi {
   Future<Map<String, dynamic>> requestGlobalPause(
     String worldId,
     String coachId,
-  ) {
+  ) async {
     pauses++;
-    return super.requestGlobalPause(worldId, coachId);
+    final snapshot = await super.requestGlobalPause(worldId, coachId);
+    _pauseResponseReturned = true;
+    return {'snapshot': snapshot};
   }
 }
 
@@ -226,6 +231,7 @@ void main() {
         await t.tap(own);
         await t.pumpAndSettle();
         expect(api.pauses, 1);
+        expect(api.snapshotReadsAfterPause, 0);
         expect(api.currentRoundState, 'GLOBAL_PAUSED');
         expect(
           find.byKey(const Key('shared-substitution-dialog')),
