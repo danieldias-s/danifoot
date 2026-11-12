@@ -69,11 +69,18 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     });
   }
 
+  bool _applyV16 = true;
+  bool _surplus = false;
+  bool get _hasV11 => _clubs.any((c) => c['offlineSource']?['v11'] != null);
+  int get _realLimit => _surplus ? 127 : 128;
+
   Map<String, dynamic> _request() => {
     'name': _name.text.trim(),
     'catalogIds': _catalogIds.toList(),
     'seed': _seed,
     'maxHumans': _humans,
+    if (_hasV11 && _applyV16) 'applyV16RosterPolicy': true,
+    if (_hasV11 && _applyV16 && _surplus) 'includeSurplusClub': true,
     'clubKeys': _clubKeys.toList(),
     'assignments': [
       for (final key in _clubKeys)
@@ -88,7 +95,8 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     setState(() {
       _clubs = clubs;
       _clubKeys.clear();
-      _clubKeys.addAll(clubs.take(128).map((c) => c['key'] as String));
+      if (!_hasV11) _surplus = false;
+      _clubKeys.addAll(clubs.take(_realLimit).map((c) => c['key'] as String));
       _divisions.clear();
       _preview = null;
     });
@@ -113,6 +121,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
       _catalogIds.remove(id);
     }
     _clubs = [];
+    _surplus = false;
     _clubKeys.clear();
     _divisions.clear();
     _preview = null;
@@ -159,6 +168,12 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
         Text(
           '${(definition['players'] as List? ?? c['players'] as List? ?? []).length} atletas • ${definition['coach']?['name'] ?? ''}',
         ),
+        if (c['referencePlayers'] != null)
+          Text(
+            'Selecionados: ${(c['players'] as List? ?? []).length} • Candidatos preservados: ${(c['referencePlayers'] as List).length}',
+          ),
+        for (final warning in (c['coverageWarnings'] as List? ?? []))
+          Text(warning.toString()),
         if (v11 != null) ...[
           Text(
             'Força coletiva: ${v11['teamStrength']}/20 • Prioridade: ${v11['tieBreakPriority'] ?? 'não definida'}',
@@ -352,12 +367,61 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                 ),
                 if (_clubs.isNotEmpty) ...[
                   const Divider(),
-                  Text('Clubes selecionados: ${_clubKeys.length}/128'),
+                  if (_hasV11) ...[
+                    CheckboxListTile(
+                      key: const Key('offline-v16-roster'),
+                      contentPadding: EdgeInsets.zero,
+                      title: const Text(
+                        'Selecionar elenco por divisão inicial (V1.6)',
+                      ),
+                      subtitle: const Text(
+                        'Preserva o catálogo completo; cortes e selecionados ficam na prévia.',
+                      ),
+                      value: _applyV16,
+                      onChanged: _busy
+                          ? null
+                          : (value) => setState(() {
+                              _applyV16 = value ?? false;
+                              if (!_applyV16) {
+                                _surplus = false;
+                                _clubKeys.addAll(
+                                  _clubs
+                                      .take(128)
+                                      .map((c) => c['key'] as String),
+                                );
+                              }
+                            }),
+                    ),
+                    CheckboxListTile(
+                      key: const Key('offline-v16-surplus'),
+                      contentPadding: EdgeInsets.zero,
+                      title: const Text(
+                        'Incluir clube fictício de excedentes: 127 reais + 1',
+                      ),
+                      subtitle: const Text(
+                        'Exige 23 atletas cortados, incluindo 3 goleiros reais. Sem candidatos suficientes, a prévia bloqueia a criação.',
+                      ),
+                      value: _surplus,
+                      onChanged: _busy || !_applyV16
+                          ? null
+                          : (value) => setState(() {
+                              _surplus = value ?? false;
+                              _clubKeys.clear();
+                              _clubKeys.addAll(
+                                _clubs
+                                    .take(_realLimit)
+                                    .map((c) => c['key'] as String),
+                              );
+                              _divisions.clear();
+                            }),
+                    ),
+                  ],
+                  Text('Clubes selecionados: ${_clubKeys.length}/$_realLimit'),
                   Text(
-                    'Classificação geral: ${_clubs.length} candidatos • Primeiros ${min(128, _clubs.length)} • Excedentes: ${max(0, _clubs.length - 128)}',
+                    'Classificação geral: ${_clubs.length} candidatos • Primeiros ${min(_realLimit, _clubs.length)} • Excedentes: ${max(0, _clubs.length - _realLimit)}',
                   ),
-                  const Text(
-                    'Os primeiros 128 estão pré-selecionados. Todos os excedentes permanecem abaixo para seleção manual. Nenhum clube é apagado.',
+                  Text(
+                    'Os primeiros $_realLimit estão pré-selecionados. Todos os excedentes permanecem abaixo para seleção manual. Nenhum clube é apagado.',
                   ),
                   if (_clubs.any((c) => c['offlineSource']?['v11'] != null))
                     const Text(
@@ -430,7 +494,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                       ),
                     ),
                   FilledButton(
-                    onPressed: _busy || _clubKeys.length != 128
+                    onPressed: _busy || _clubKeys.length != _realLimit
                         ? null
                         : () => _run(_makePreview),
                     child: const Text('VALIDAR PRÉVIA'),

@@ -46,6 +46,86 @@ http.Response jsonResponse(dynamic data, {int code = 200}) => http.Response(
 );
 
 void main() {
+  testWidgets(
+    'V16 surplus toggle submits 127 real clubs and preserves server block',
+    (tester) async {
+      Map<String, dynamic>? submitted;
+      final rows = clubs();
+      for (final row in rows) {
+        row['offlineSource'] = Map<String, dynamic>.from(
+          row['offlineSource'] as Map,
+        )..['v11'] = {'teamStrength': 20};
+      }
+      final api = ElifootApiClient(
+        baseUrl: 'http://localhost',
+        httpClient: MockClient((r) async {
+          if (r.url.path.endsWith('/catalogs'))
+            return jsonResponse({
+              'catalogs': [catalog(ready: true)],
+              'issues': [],
+            });
+          if (r.url.path.endsWith('/clubs')) return jsonResponse(rows);
+          if (r.url.path.endsWith('/preview')) {
+            submitted = Map<String, dynamic>.from(jsonDecode(r.body));
+            return jsonResponse({
+              'name': 'V16',
+              'draftId': 'blocked',
+              'errors': ['Excedentes insuficientes: 3 G reais necessários.'],
+              'pendingSlots': 1,
+              'clubs': [],
+            });
+          }
+          fail('Unexpected write ${r.url.path}');
+        }),
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: OfflineCatalogCreator(api: api, coachId: 'owner'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(CheckboxListTile));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('CARREGAR CLUBES'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('CARREGAR CLUBES'));
+      await tester.pumpAndSettle();
+      final surplusControl = find.descendant(
+        of: find.byKey(const Key('offline-v16-surplus')),
+        matching: find.byType(Checkbox),
+      );
+      await tester.scrollUntilVisible(
+        surplusControl,
+        200,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
+      expect(surplusControl.hitTestable(), findsOneWidget);
+      await tester.tap(surplusControl);
+      await tester.pumpAndSettle();
+      expect(find.text('Clubes selecionados: 127/127'), findsOneWidget);
+      await tester.scrollUntilVisible(
+        find.text('VALIDAR PRÉVIA'),
+        1000,
+        maxScrolls: 100,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('VALIDAR PRÉVIA'));
+      await tester.pumpAndSettle();
+      expect(submitted!['applyV16RosterPolicy'], isTrue);
+      expect(submitted!['includeSurplusClub'], isTrue);
+      expect((submitted!['clubKeys'] as List).length, 127);
+      expect(find.textContaining('Excedentes insuficientes'), findsOneWidget);
+      final button = tester.widget<FilledButton>(
+        find.widgetWithText(FilledButton, 'CRIAR NOVO MUNDO'),
+      );
+      expect(button.onPressed, isNull);
+      expect(tester.takeException(), isNull);
+    },
+  );
   for (final width in [360.0, 768.0, 1024.0, 1440.0]) {
     testWidgets(
       'V11 ranking, metadata and 384 candidates fit ${width.toInt()}px',

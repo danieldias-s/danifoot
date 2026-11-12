@@ -66,6 +66,17 @@ public sealed class OfflineRosterV16Tests
         Assert.Equal(JsonSerializer.Serialize(new {request.Name,request.CatalogIds,request.Seed,request.MaxHumans,request.ClubKeys,request.Assignments}),JsonSerializer.Serialize(request));
     }
     [Fact]
+    public void DifferentInitialDivisionSelectsAgainOnlyForNewPreview()
+    {
+        var clubs=Enumerable.Range(0,128).Select(i=>Club(i)).ToList();
+        var request=new OfflineWorldRequest("Synthetic",["synthetic"],72,ApplyV16RosterPolicy:true);
+        var first=OfflineWorldFactory.Preview(request,clubs);
+        var next=OfflineWorldFactory.Preview(request with {Assignments=[new(clubs[0].Key,4),new(clubs[24].Key,1)]},clubs);
+        Assert.Empty(next.Errors);Assert.NotEqual(first.DataHash,next.DataHash);
+        Assert.InRange(next.Clubs.Single(c=>c.Club.Key==clubs[0].Key).Club.Players.Count,17,19);
+        Assert.InRange(first.Clubs.Single(c=>c.Club.Key==clubs[0].Key).Club.Players.Count,20,21);
+    }
+    [Fact]
     public void PreviewCreateFreezeSelectedAndExcludedAndSaveRestoresWithoutRecalculation()
     {
         var clubs=Enumerable.Range(0,128).Select(i=>Club(i)).ToList();

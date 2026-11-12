@@ -30,6 +30,9 @@ public static class OfflineWorldFactory
             throw new ArgumentException("Escolha uma categoria e até oito países.");
         var errors = new List<string>();
         var clubs = OfflineCatalogRanking.Order(available);
+        var rankedCandidates = clubs;
+        if (request.IncludeSurplusClub && !request.ApplyV16RosterPolicy)
+            throw new ArgumentException("Clube de excedentes exige corte de elenco V1.6.");
         var warnings = OfflineCatalogRanking.Warnings(clubs);
         if (request.ClubKeys != null)
         {
@@ -41,6 +44,13 @@ public static class OfflineWorldFactory
         bool isV11 = clubs.Any(OfflineCatalogRanking.IsV11);
         if (isV11)
         {
+            // Preserve the same calibration cohort as 128-real selection whenever the next real club exists.
+            var chosen = clubs.Select(c => c.Key).ToHashSet();
+            if (request.IncludeSurplusClub && clubs.Count == 127)
+            {
+                var calibration = rankedCandidates.FirstOrDefault(c => !chosen.Contains(c.Key));
+                if (calibration != null) clubs = clubs.Append(calibration).ToList();
+            }
             clubs = InitialPlayerStrength.Apply(clubs.Select((c, i) =>
             {
                 var source = c.OfflineSource!;
@@ -59,8 +69,10 @@ public static class OfflineWorldFactory
                         StrengthEstimate: new(InitialPlayerStrength.Version, CatalogDataOrigin.Estimated, 0, "", .5, null))).ToList()
                 };
             }).ToList(), request.Seed);
+            if (request.IncludeSurplusClub) clubs = clubs.Where(c => chosen.Contains(c.Key)).ToList();
         }
-        if (clubs.Count != 128) errors.Add($"Selecione exatamente 128 clubes; há {clubs.Count}. Não serão gerados clubes ou jogadores.");
+        int realCount = request.IncludeSurplusClub ? 127 : 128;
+        if (clubs.Count != realCount) errors.Add($"Selecione exatamente {realCount} clubes reais; há {clubs.Count}. Não serão gerados clubes ou jogadores.");
         var assigned = new List<WorldPreviewClub>();
         var explicitAssignments = request.Assignments ?? [];
         if (explicitAssignments.Select(a => a.ClubKey).Distinct().Count() != explicitAssignments.Count ||
@@ -78,7 +90,7 @@ public static class OfflineWorldFactory
             assigned.Add(new(division, c));
         }
         for (int d = 1; d <= 5; d++)
-            if (assigned.Count(a => a.Division == d) != (d == 5 ? 96 : 8))
+            if (assigned.Count(a => a.Division == d) != (d == 5 ? 96 - (request.IncludeSurplusClub ? 1 : 0) : 8))
                 errors.Add(d == 5 ? "Distritais exigem 96 clubes." : $"Divisão {d} exige 8 clubes.");
         errors.AddRange(OfflineCatalogRanking.BoundaryErrors(clubs, assigned, explicitAssignments));
         var order = clubs.Select((c, i) => (c.Key, i)).ToDictionary(x => x.Key, x => x.i);
@@ -92,6 +104,11 @@ public static class OfflineWorldFactory
                 try { return OfflineRosterV16.Select(entry, request.Seed, request.RetentionEvidence); }
                 catch (ArgumentException error) { errors.Add(error.Message); return entry; }
             }).ToList();
+        }
+        if (request.IncludeSurplusClub && errors.Count == 0)
+        {
+            try { assigned.Add(OfflineSurplusV16.Build(assigned, request.Seed)); }
+            catch (ArgumentException error) { errors.Add(error.Message); }
         }
         if (isV11) assigned = InitialSquadStrength017B.Apply(assigned, request.Seed);
         string hash = Hash(request, assigned);
@@ -170,7 +187,11 @@ public static class OfflineWorldFactory
             var contractDefaults = foundation.Players.Where(p => p.ClubId == template.Id).ToList();
             for (int j = 0; j < entry.Club.Players.Count; j++)
             {
-                var p = c.Players!.Single(p => p.Id == entry.Club.Players[j].PlayerExternalId);
+                var selected = entry.Club.Players[j];
+                var originalSource = request.IncludeSurplusClub && entry.Club.IsFictional
+                    ? preview.Clubs.Where(e => !e.Club.IsFictional).Select(e => e.Club.OfflineSource!).Single(s => s.Definition.Players!.Any(p => p.Id == selected.PlayerExternalId))
+                    : source;
+                var p = originalSource.Definition.Players!.Single(p => p.Id == selected.PlayerExternalId);
                 int strength = p.Strength ?? entry.Club.Players[j].Strength;
                 var player = new Player
                 {
@@ -178,7 +199,7 @@ public static class OfflineWorldFactory
                     Position = Enum.Parse<PlayerPosition>(p.Position!), Strength = strength,
                     Behavior = (PlayerBehavior)p.Behavior!.Value, IsStar = p.IsStar!.Value, Nationality = p.Nationality,
                     ContractRoundsRemaining = contractDefaults[j % contractDefaults.Count].ContractRoundsRemaining,
-                    OfflineIdentity = new(source.CatalogId, p.Id!, source.CountryCode, source.Year)
+                    OfflineIdentity = new(originalSource.CatalogId, p.Id!, originalSource.CountryCode, originalSource.Year)
                 };
                 player.SalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(player);
                 player.MarketPrice = MarketAndEconomyEngine.CalculateFairValue(player);
