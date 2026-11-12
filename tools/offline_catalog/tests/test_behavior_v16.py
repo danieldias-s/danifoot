@@ -1,10 +1,12 @@
 import copy
 import json
 import sys
+import tempfile
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from behavior_v16 import classify,DEFAULT_CONFIG
+from behavior_v16 import classify,main,DEFAULT_CONFIG
 
 
 def row(i,**changes):
@@ -55,3 +57,18 @@ class BehaviorV16Tests(unittest.TestCase):
         for changes in [dict(minutes=-1),dict(fouls=float('nan')),dict(position='X'),dict(baseBehavior=6),dict(comparisonGroup='')]:
             with self.subTest(changes=changes),self.assertRaises(ValueError): classify([row(1,**changes)])
         with self.assertRaises(ValueError):classify([row(1),row(1)])
+        with self.assertRaises(ValueError):classify([None])
+
+    def test_export_persists_proposal_only_under_research_without_overwrite(self):
+        with tempfile.TemporaryDirectory(prefix='elifoot-v16-behavior-') as directory:
+            root=Path(directory);source=root/'input.json';source.write_text(json.dumps([row(1)]),encoding='utf-8')
+            untouched=root/'club.json';untouched.write_bytes(b'{"behavior":2}')
+            args=['behavior_v16','--input',str(source),'--root',str(root),'--output','_pesquisa/proposal.json']
+            with patch.object(sys,'argv',args):main()
+            output=root/'_pesquisa/proposal.json';first=output.read_bytes()
+            self.assertFalse(first.startswith(b'\xef\xbb\xbf'))
+            self.assertEqual(2,json.loads(first)['results'][0]['baseBehavior'])
+            with patch.object(sys,'argv',args),self.assertRaises(FileExistsError):main()
+            self.assertEqual(first,output.read_bytes());self.assertEqual(b'{"behavior":2}',untouched.read_bytes())
+            args[-1]='club.json'
+            with patch.object(sys,'argv',args),self.assertRaises(ValueError):main()

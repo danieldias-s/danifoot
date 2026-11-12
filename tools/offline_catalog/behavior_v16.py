@@ -31,6 +31,8 @@ def classify(rows, config=None):
         raise ValueError('Informe até 100000 amostras.')
     result=[]; cohorts=defaultdict(list); identities=set()
     for row in rows:
+        if not isinstance(row,dict):
+            raise ValueError('Cada amostra deve ser um objeto JSON.')
         identity=row.get('playerCatalogId')
         if not isinstance(identity,str) or not identity.strip() or identity in identities:
             raise ValueError('Identidades devem ser únicas e não vazias.')
