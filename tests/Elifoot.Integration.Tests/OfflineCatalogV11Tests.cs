@@ -331,4 +331,39 @@ public sealed class OfflineCatalogV11Tests
         Assert.NotEqual(worldA.Players.Select(p => p.Behavior), worldB.Players.Select(p => p.Behavior));
         Assert.NotEqual(worldA.Players.Select(p => p.IsStar), worldB.Players.Select(p => p.IsStar));
     }
+
+    [Fact]
+    public async Task UpdatedCatalogBehaviorIsUsedOnlyByNewPreviewsAndWorlds()
+    {
+        using var files = new Files();
+        var candidates = await Candidates(files, 128);
+        var request = Request();
+        var originalPreview = OfflineWorldFactory.Preview(request, candidates);
+        var originalWorld = OfflineWorldFactory.Create(request, originalPreview);
+        string originalSave = JsonSerializer.Serialize(originalWorld, CatalogImportCodec.Json);
+
+        await files.Edit(files.Annual, club => club["players"]![0]!["behavior"] = 5);
+        var updatedSource = Assert.Single(Clubs(await files.Load())).OfflineSource!;
+        var first = candidates[0];
+        candidates[0] = first with
+        {
+            OfflineSource = first.OfflineSource! with
+            {
+                Definition = updatedSource.Definition,
+                SourceHash = updatedSource.SourceHash,
+            },
+        };
+        var newPreview = OfflineWorldFactory.Preview(request, candidates);
+        var newWorld = OfflineWorldFactory.Create(request, newPreview);
+        var restored = JsonSerializer.Deserialize<GameWorld>(originalSave, CatalogImportCodec.Json)!;
+        var oldFromFrozenPreview = OfflineWorldFactory.Create(request, originalPreview);
+
+        Assert.NotEqual(originalPreview.DataHash, newPreview.DataHash);
+        Assert.Equal(originalSave, JsonSerializer.Serialize(restored, CatalogImportCodec.Json));
+        Assert.Equal(originalWorld.Players.Select(p => p.Behavior), oldFromFrozenPreview.Players.Select(p => p.Behavior));
+        Assert.Equal(originalWorld.Players.Select(p => p.Strength), newWorld.Players.Select(p => p.Strength));
+        Assert.Equal(originalWorld.Players.Select(p => p.OfflineIdentity), newWorld.Players.Select(p => p.OfflineIdentity));
+        Assert.Equal(0, (int)restored.Players[0].Behavior);
+        Assert.Equal(5, (int)newWorld.Players[0].Behavior);
+    }
 }
