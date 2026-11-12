@@ -588,7 +588,7 @@
                     "pattern": "^(10|[0-9])-(10|[0-9])-(10|[0-9])$",
                     "description": "O validador do motor tambem exige que D+M+A seja dez."
                   },
-                  "minItems": 2,
+                  "minItems": 0,
                   "maxItems": 2,
                   "uniqueItems": true
                 },
@@ -599,7 +599,7 @@
                     "pattern": "^(10|[0-9])-(10|[0-9])-(10|[0-9])$",
                     "description": "O validador do motor tambem exige que D+M+A seja dez."
                   },
-                  "minItems": 2,
+                  "minItems": 0,
                   "maxItems": 2,
                   "uniqueItems": true
                 }
@@ -1026,7 +1026,31 @@
           "coach": {
             "not": {
               "type": "null"
-            }
+            },
+            "allOf": [
+              {
+                "properties": {
+                  "preferredTactics": {
+                    "anyOf": [
+                      {
+                        "properties": {
+                          "home": {
+                            "minItems": 1
+                          }
+                        }
+                      },
+                      {
+                        "properties": {
+                          "away": {
+                            "minItems": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
           },
           "players": {
             "type": "array",

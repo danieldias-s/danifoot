@@ -150,7 +150,7 @@ public static class OfflineWorldFactory
                 Id = Guid.NewGuid(), GameWorldId = world.Id, CurrentClubId = club.Id, Name = coach.Name!,
                 Identity = profile.Identity, Pragmatism = profile.Pragmatism, Adaptability = profile.Adaptability,
                 FinancialAggressiveness = profile.FinancialAggressiveness, YouthPatience = profile.YouthPatience,
-                PreferredFormations = coach.PreferredTactics!.Home!.Select(f => new FormationPreferenceWeightDto(f, 50)).ToList(),
+                PreferredFormations = (coach.PreferredTactics!.Home!.Count > 0 ? coach.PreferredTactics.Home : coach.PreferredTactics.Away!).Select(f => new FormationPreferenceWeightDto(f, 50)).ToList(),
                 OfflineIdentity = new(source.CatalogId, coach.Id!, source.CountryCode, source.Year, coach.Nationality!,
                     coach.PreferredTactics.Home!.ToList(), coach.PreferredTactics.Away!.ToList())
             };

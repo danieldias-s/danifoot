@@ -31,8 +31,11 @@ public static class OfflineCatalogRules
         var coach = c.Coach;
         Check(coach != null && Id(coach.Id) && Text(coach.Name) && Country(coach.Nationality), "COACH", "coach", "Treinador exige ID, nome e nacionalidade ISO.");
         foreach (var (context, list) in new[] { ("home", coach?.PreferredTactics?.Home), ("away", coach?.PreferredTactics?.Away) })
-            Check(list is { Count: 2 } && list.Distinct(StringComparer.Ordinal).Count() == 2 && list.All(t => t != null && TacticalFormations.TryGet(t, true, out var spec) && spec.Code == t),
-                "TACTICS", "coach.preferredTactics." + context, "Exige exatamente duas formações distintas e válidas por contexto.");
+            Check((v11 ? list != null && list.Count <= 2 : list is { Count: 2 }) &&
+                list!.Distinct(StringComparer.Ordinal).Count() == list.Count && list.All(t => t != null && TacticalFormations.TryGet(t, true, out var spec) && spec.Code == t),
+                "TACTICS", "coach.preferredTactics." + context, v11 ? "Use lista de 0..2 formações distintas e válidas por contexto." : "Exige exatamente duas formações distintas e válidas por contexto.");
+        if (v11) Check((coach?.PreferredTactics?.Home?.Count ?? 0) + (coach?.PreferredTactics?.Away?.Count ?? 0) >= 1,
+            "TACTICS_MINIMUM", "coach.preferredTactics", "READY exige pelo menos uma tática válida no total, sem inventar preferências.");
         var players = c.Players ?? [];
         Check(players.Count is >= 11 and <= MaximumPlayers && players.Any(p => p?.Position == "G") && players.Count(p => p?.Position is "D" or "M" or "A") >= 10,
             "ROSTER", "players", "Elenco exige 11..23 atletas, pelo menos 1 G e 10 de linha; nenhum atleta será inventado.");
