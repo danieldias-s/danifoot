@@ -83,6 +83,16 @@ public static class OfflineWorldFactory
         errors.AddRange(OfflineCatalogRanking.BoundaryErrors(clubs, assigned, explicitAssignments));
         var order = clubs.Select((c, i) => (c.Key, i)).ToDictionary(x => x.Key, x => x.i);
         assigned = assigned.OrderBy(a => a.Division).ThenBy(a => order[a.Club.Key]).ToList();
+        if (request.ApplyV16RosterPolicy)
+        {
+            if ((request.RetentionEvidence ?? []).Any(e => clubs.All(c => c.Key != e.ClubKey)))
+                throw new ArgumentException("Pesquisa de retenção aponta clube fora da seleção.");
+            assigned = assigned.Select(entry =>
+            {
+                try { return OfflineRosterV16.Select(entry, request.Seed, request.RetentionEvidence); }
+                catch (ArgumentException error) { errors.Add(error.Message); return entry; }
+            }).ToList();
+        }
         if (isV11) assigned = InitialSquadStrength017B.Apply(assigned, request.Seed);
         string hash = Hash(request, assigned);
         return new(Guid.NewGuid(), request.Name, available[0].Gender, request.Seed, assigned,
@@ -102,7 +112,9 @@ public static class OfflineWorldFactory
             var source = entry.Club.OfflineSource ?? throw new ArgumentException("Clube sem origem offline.");
             if (source.Definition.Status != "READY" || OfflineCatalogRules.ValidateClub(source.Definition, entry.Club.Key).Count > 0)
                 throw new ArgumentException("Clube incompleto na prévia.");
-            if (entry.Club.Players.Count != source.Definition.Players!.Count || entry.Club.Players.Any(p => p.Strength is < 1 or > 50))
+            if ((!request.ApplyV16RosterPolicy && entry.Club.Players.Count != source.Definition.Players!.Count) ||
+                entry.Club.Players.Any(p => p.Strength is < 1 or > 50 || source.Definition.Players!.All(s => s.Id != p.PlayerExternalId)) ||
+                entry.Club.Players.Select(p => p.PlayerExternalId).Distinct().Count() != entry.Club.Players.Count)
                 throw new ArgumentException("Forças individuais inválidas ou ausentes na prévia.");
         }
         for (int d = 1; d <= 5; d++)
@@ -138,7 +150,7 @@ public static class OfflineWorldFactory
                 Name = c.Name!, ShortName = c.ShortName!, Country = source.CountryCode,
                 PrimaryColorHex = c.Colors![0], SecondaryColorHex = c.Colors[1],
                 DivisionTier = (DivisionTier)entry.Division, Stadium = stadium,
-                CashBalance = template.CashBalance, Reputation = template.Reputation, InitialSquadSize = c.Players!.Count,
+                CashBalance = template.CashBalance, Reputation = template.Reputation, InitialSquadSize = entry.Club.Players.Count,
                 ClubInitialPower = source.V11?.TeamStrength ?? entry.Club.InitialProfile?.ClubInitialPower,
                 InitialSquadReference = entry.InitialSquadReference,
                 OfflineIdentity = new(source.CatalogId, c.CatalogClubId!, source.CountryCode, source.Year,
@@ -156,9 +168,9 @@ public static class OfflineWorldFactory
             };
             club.AiManagerId = manager.Id; world.Clubs.Add(club); world.AiManagers.Add(manager);
             var contractDefaults = foundation.Players.Where(p => p.ClubId == template.Id).ToList();
-            for (int j = 0; j < c.Players.Count; j++)
+            for (int j = 0; j < entry.Club.Players.Count; j++)
             {
-                var p = c.Players[j];
+                var p = c.Players!.Single(p => p.Id == entry.Club.Players[j].PlayerExternalId);
                 int strength = p.Strength ?? entry.Club.Players[j].Strength;
                 var player = new Player
                 {

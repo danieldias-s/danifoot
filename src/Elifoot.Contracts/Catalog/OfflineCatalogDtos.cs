@@ -31,7 +31,12 @@ public record OfflineCatalogReport(List<OfflineLoadedCatalog> Catalogs, List<Off
     public bool Valid => Issues.All(i => !i.IsError) && Catalogs.All(c => c.Valid);
 }
 public record OfflineWorldRequest(string Name, List<string> CatalogIds, int Seed, int MaxHumans = 1,
-    List<string>? ClubKeys = null, List<ClubAssignment>? Assignments = null);
+    List<string>? ClubKeys = null, List<ClubAssignment>? Assignments = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] bool ApplyV16RosterPolicy = false,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] List<OfflineRetentionEvidence>? RetentionEvidence = null);
+// New-creation input only; no change to the save contract. Missing research never implies prodigy/starter status.
+public record OfflineRetentionEvidence(string ClubKey, string PlayerId, string Evidence,
+    bool IsProdigy = false, bool ImportantStarter = false, int? Minutes = null);
 public record OfflineWorldOrigin(string SchemaVersion, string DataHash, DateTime ImportedAt,
     List<WorldPreviewClub> Clubs);
 public record OfflineClubIdentity(string CatalogId, string CatalogClubId, string CountryCode, int Year,
