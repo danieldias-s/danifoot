@@ -4,6 +4,11 @@ namespace Elifoot.Domain;
 
 public static class AiManagerBrain
 {
+    private static List<FormationPreferenceWeightDto> ContextPreferences(AiManager manager, bool home) =>
+        manager.OfflineIdentity is { } catalog
+            ? (home ? catalog.OriginalHome : catalog.OriginalAway).Select(f => new FormationPreferenceWeightDto(f, 50)).ToList()
+            : manager.PreferredFormations;
+
     /// <summary>
     /// Evaluates the AI Manager's squad, preferred formations, opponent strength, home/away context,
     /// injuries/suspensions, and club budget to produce a weekly ManagerSquadPlan and select the best
@@ -25,8 +30,9 @@ public static class AiManagerBrain
         var rng = DeterministicRng.FromContext(worldSeed, seasonNumber, roundNumber, club.DeterministicIndex, 0, 17);
 
         // Normalize preferred formations
-        var prefs = manager.PreferredFormations.Count > 0
-            ? manager.PreferredFormations
+        var contextual = ContextPreferences(manager, isHomeMatch);
+        var prefs = contextual.Count > 0
+            ? contextual
             : GetDefaultPreferencesForIdentity(manager.Identity);
 
         var primaryPref = prefs.OrderByDescending(p => p.WeightPercent).First();
@@ -67,6 +73,7 @@ public static class AiManagerBrain
         // Candidate formations: manager's preferred formations + fallback formations (4-4-2, 4-5-1, 5-3-2)
         var candidateCodes = prefs.Select(p => p.Formation)
             .Concat(new[] { "4-4-2", "4-5-1", "5-3-2", "4-3-3", "3-5-2" })
+            .Concat(manager.OfflineIdentity != null ? TacticalFormations.All.Keys : Enumerable.Empty<string>())
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .Where(c => TacticalFormations.TryGet(c, allowClassic505, out _))
             .ToList();
@@ -349,7 +356,7 @@ public static class AiManagerBrain
         string? newFormation = null;
         int adaptability = manager?.Adaptability ?? 50;
 
-        if (manager != null && manager.PreferredFormations.Count > 0)
+        if (manager != null && ContextPreferences(manager, isHomeTeam).Count > 0)
         {
             // Adaptability changes reaction timing gradually; an extreme deficit can move even a conservative coach.
             double chasingMinute = Math.Clamp(84 - adaptability * 0.28 - Math.Max(0, -scoreDiff - 1) * 8, 55, 84);
@@ -368,7 +375,11 @@ public static class AiManagerBrain
                 var needs = SectorNeeds(spec, projected.Count);
                 return needs.Sum(k => Math.Max(0, k.Value - squad.Count(p => p.Position == k.Key)));
             }
-            var candidate = manager.PreferredFormations
+            var reactionPreferences = ContextPreferences(manager, isHomeTeam);
+            var candidate = reactionPreferences
+                .Concat(manager.OfflineIdentity != null
+                    ? TacticalFormations.All.Keys.Where(f => reactionPreferences.All(p => p.Formation != f)).Select(f => new FormationPreferenceWeightDto(f, 5))
+                    : Enumerable.Empty<FormationPreferenceWeightDto>())
                 .Where(p => TacticalFormations.TryGet(p.Formation, allowClassic505, out _) && p.Formation != currentFormation)
                 .Select(p => new { Preference = p, Spec = TacticalFormations.Resolve(p.Formation, allowClassic505) })
                 .Where(x => (chasing && (x.Spec.Attackers > currentSpec.Attackers

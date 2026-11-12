@@ -69,6 +69,9 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
         {
             var draft = await db.Drafts.AsNoTracking().SingleOrDefaultAsync(d => d.Id == previewId && d.OwnerId == owner, ct) ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
             if (draft.ExpiresAt < DateTime.UtcNow) throw new ArgumentException("A prévia expirou; gere outra antes de editar.");
+            using var kind = JsonDocument.Parse(draft.RequestJson);
+            if (kind.RootElement.TryGetProperty("offlineCatalogVersion", out _))
+                throw new ArgumentException("O editor anterior não preserva todos os campos do catálogo offline; edite os arquivos JSON.");
             var preview = Read<WorldCreatorPreview>(draft.PreviewJson); var config = Read<WorldCreatorRequest>(draft.RequestJson);
             foreach (var reference in preview.References)
                 if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow, config.CatalogYears != null) is string issue)

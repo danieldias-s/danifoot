@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "targetCountries": 8,
+  "countries": [
+    {
+      "code": "BR",
+      "slug": "brasil"
+    },
+    {
+      "code": "PT",
+      "slug": "portugal"
+    },
+    {
+      "code": "ES",
+      "slug": "espanha"
+    },
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "note": "Cinco paises ainda nao definidos pelo proprietario. Nenhum elenco real cadastrado."
+}

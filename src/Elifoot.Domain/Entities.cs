@@ -66,7 +66,7 @@ public partial class GameWorld
     public HashSet<string> AppliedTransactionKeys { get; } = new();
 }
 
-public class Club
+public partial class Club
 {
     public int? ClubInitialPower { get; set; }
     public InitialSquadReference017B? InitialSquadReference { get; set; }
@@ -183,7 +183,7 @@ public partial class Player
     public bool IsAvailableForMatch => InjuryRoundsRemaining <= 0 && InjuryDaysRemaining <= 0 && SuspensionRoundsRemaining <= 0;
 }
 
-public class AiManager
+public partial class AiManager
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid GameWorldId { get; set; }

@@ -1,0 +1,19 @@
+{
+  "$schema": "../_schemas/clube-1.0.schema.json",
+  "schemaVersion": "1.0",
+  "catalogClubId": "preencher-id-estavel",
+  "country": "BR",
+  "year": 1998,
+  "name": null,
+  "shortName": null,
+  "abbreviation": null,
+  "colors": [
+    "#184687",
+    "#FFFFFF"
+  ],
+  "stadium": null,
+  "initialDivision": null,
+  "coach": null,
+  "players": [],
+  "status": "DRAFT"
+}

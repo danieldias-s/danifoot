@@ -337,6 +337,8 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
         if (source.ExpiresAt < DateTime.UtcNow) throw new ArgumentException("Prévia expirada; gere uma nova.");
         if (source.WorldJson != null) throw new ArgumentException("Este mundo já foi criado. Inicie outra configuração para criar um novo.");
         using var receiptType = JsonDocument.Parse(source.RequestJson);
+        if (receiptType.RootElement.TryGetProperty("offlineCatalogVersion", out _))
+            throw new ArgumentException("Use a prévia do catálogo offline.");
         if (receiptType.RootElement.TryGetProperty("assemblyConfirmation", out _))
             throw new ArgumentException("Use o editor da montagem privada.");
         var request = JsonSerializer.Deserialize<WorldCreatorRequest>(source.RequestJson, CatalogImportCodec.Json)!;
@@ -381,6 +383,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
             ?? throw new KeyNotFoundException("Prévia não encontrada para este usuário.");
         if (draft.ExpiresAt < DateTime.UtcNow && draft.WorldJson == null) throw new ArgumentException("Prévia expirada; gere uma nova.");
         using var receiptType=JsonDocument.Parse(draft.RequestJson);
+        if(receiptType.RootElement.TryGetProperty("offlineCatalogVersion",out _))throw new ArgumentException("Use a confirmação do catálogo offline.");
         if(receiptType.RootElement.TryGetProperty("assemblyConfirmation",out _))throw new ArgumentException("Use a confirmação da montagem privada.");
         var request = JsonSerializer.Deserialize<WorldCreatorRequest>(draft.RequestJson, CatalogImportCodec.Json)!;
         if (draft.WorldJson == null)

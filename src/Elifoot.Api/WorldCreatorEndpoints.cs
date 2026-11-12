@@ -18,6 +18,8 @@ public static class WorldCreatorEndpoints
         var c = builder.Configuration.GetSection("Catalog013A");
         if (!c.GetValue<bool>("Enabled")) return false;
         builder.AddCatalogDatabase();
+        builder.Services.AddSingleton(new OfflineCatalogLoader(OfflineCatalogFeature.Root(builder.Configuration, builder.Environment)));
+        builder.Services.AddSingleton<OfflineWorldCreatorService>();
         var local = UsesLocalHistoricalCatalog(builder.Configuration);
         if (local) builder.Services.AddSingleton<LocalHistoricalCatalog>();
         var options = new CatalogSyncOptions();
@@ -114,6 +116,7 @@ public static class WorldCreatorEndpoints
             catch (FormatException) { return Results.BadRequest(new { error = "Formato JSON/CSV inválido." }); }
         });
         Guid Owner(HttpContext c) => (Guid)c.Items["creatorOwner"]!;
+        if (app.Services.GetService<OfflineCatalogLoader>() != null) group.MapOffline();
         group.MapGet("/seasons", async (WorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Seasons(ct)));
         group.MapGet("/countries", async (string season, FootballGender? gender, WorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.Countries(season, gender, ct)));

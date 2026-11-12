@@ -1,0 +1,15 @@
+{
+  "$schema": "../_schemas/manifest-1.0.schema.json",
+  "schemaVersion": "1.0",
+  "catalogId": "preencher-catalogo-id",
+  "country": {
+    "code": "BR",
+    "name": "Brasil",
+    "slug": "brasil"
+  },
+  "year": 1998,
+  "name": "Preencher nome do catalogo",
+  "status": "DRAFT",
+  "gender": "Male",
+  "clubs": []
+}

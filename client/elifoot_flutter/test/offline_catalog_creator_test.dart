@@ -1,0 +1,216 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:elifoot_flutter/api_client.dart';
+import 'package:elifoot_flutter/offline_catalog_creator.dart';
+
+Map<String, dynamic> catalog({bool ready = false}) => {
+  'path': 'brasil/1998/manifest.json',
+  'manifest': {
+    'catalogId': 'br-1998',
+    'name': 'Catálogo sintético Brasil',
+    'year': 1998,
+    'country': {'code': 'BR', 'name': 'Brasil'},
+  },
+  'ready': ready,
+  'clubs': List.generate(ready ? 128 : 0, (_) => {}),
+  'issues': ready
+      ? []
+      : [
+          {'message': 'Rascunho sem clubes; não está pronto para criar mundo.'},
+        ],
+};
+
+List<Map<String, dynamic>> clubs() => List.generate(
+  128,
+  (i) => {
+    'key': 'offline:BR:1998:c-$i',
+    'name': 'Clube sintético $i',
+    'countryCode': 'BR',
+    'season': '1998',
+    'players': List.generate(11, (_) => {}),
+    'offlineSource': {
+      'definition': {
+        'coach': {'name': 'Treinador sintético $i'},
+      },
+    },
+  },
+);
+
+http.Response jsonResponse(dynamic data, {int code = 200}) => http.Response(
+  jsonEncode(data),
+  code,
+  headers: {'content-type': 'application/json'},
+);
+
+void main() {
+  for (final width in [360.0, 768.0, 1024.0, 1440.0]) {
+    testWidgets('Offline draft is blocked and fits ${width.toInt()}px', (
+      tester,
+    ) async {
+      tester.view.devicePixelRatio = 1;
+      tester.view.physicalSize = Size(width, 768);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetPhysicalSize);
+      final api = ElifootApiClient(
+        baseUrl: 'http://localhost',
+        httpClient: MockClient(
+          (r) async => jsonResponse({
+            'catalogs': [catalog()],
+            'issues': [],
+          }),
+        ),
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: OfflineCatalogCreator(api: api, coachId: 'owner'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.textContaining('RASCUNHO / INVÁLIDO'), findsOneWidget);
+      final checkbox = tester.widget<CheckboxListTile>(
+        find.byType(CheckboxListTile),
+      );
+      expect(checkbox.onChanged, isNull);
+      await tester.scrollUntilVisible(
+        find.text('CARREGAR CLUBES'),
+        200,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(
+        tester
+            .widget<FilledButton>(
+              find.widgetWithText(FilledButton, 'CARREGAR CLUBES'),
+            )
+            .onPressed,
+        isNull,
+      );
+      expect(tester.takeException(), isNull);
+    });
+  }
+
+  testWidgets(
+    'User selects ready catalog, reviews 128 clubs and explicitly confirms new world',
+    (tester) async {
+      tester.view.devicePixelRatio = 1;
+      tester.view.physicalSize = const Size(1024, 768);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetPhysicalSize);
+      final requests = <http.Request>[];
+      final rows = clubs();
+      final api = ElifootApiClient(
+        baseUrl: 'http://localhost',
+        httpClient: MockClient((r) async {
+          requests.add(r);
+          if (r.url.path.endsWith('/catalogs')) {
+            return jsonResponse({
+              'catalogs': [catalog(ready: true)],
+              'issues': [],
+            });
+          }
+          if (r.url.path.endsWith('/clubs')) return jsonResponse(rows);
+          if (r.url.path.endsWith('/preview')) {
+            final request = jsonDecode(r.body) as Map;
+            expect(request['catalogIds'], ['br-1998']);
+            expect((request['clubKeys'] as List).length, 128);
+            expect(request['maxHumans'], 1);
+            return jsonResponse({
+              'draftId': 'draft-1',
+              'name': 'Liga offline 98',
+              'pendingSlots': 0,
+              'errors': [],
+              'clubs': [
+                for (int i = 0; i < 128; i++)
+                  {'division': i < 32 ? i ~/ 8 + 1 : 5, 'club': rows[i]},
+              ],
+            });
+          }
+          if (r.url.path.endsWith('/confirm/draft-1')) {
+            return jsonResponse({'id': 'new-world'});
+          }
+          return jsonResponse({'error': 'Unexpected path'}, code: 400);
+        }),
+      );
+      bool? created;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () async {
+                  created = await Navigator.push<bool>(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          OfflineCatalogCreator(api: api, coachId: 'owner'),
+                    ),
+                  );
+                },
+                child: const Text('ABRIR'),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('ABRIR'));
+      await tester.pumpAndSettle();
+      expect(requests.where((r) => r.method == 'POST'), isEmpty);
+      await tester.tap(find.byType(CheckboxListTile));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('CARREGAR CLUBES'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('CARREGAR CLUBES'));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(
+        find.text('VALIDAR PRÉVIA'),
+        1000,
+        maxScrolls: 80,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.text('VALIDAR PRÉVIA'));
+      await tester.pumpAndSettle();
+      expect(requests.where((r) => r.url.path.contains('/confirm/')), isEmpty);
+      await tester.scrollUntilVisible(
+        find.text('CRIAR NOVO MUNDO'),
+        1000,
+        maxScrolls: 80,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.tap(find.text('CRIAR NOVO MUNDO'));
+      await tester.pumpAndSettle();
+      expect(created, isTrue);
+      expect(
+        requests.where((r) => r.url.path.endsWith('/confirm/draft-1')).length,
+        1,
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets('Server read error is visible and creates no world', (
+    tester,
+  ) async {
+    int confirms = 0;
+    final api = ElifootApiClient(
+      baseUrl: 'http://localhost',
+      httpClient: MockClient((r) async {
+        if (r.url.path.contains('/confirm/')) confirms++;
+        return jsonResponse({'error': 'Arquivo JSON inválido'}, code: 400);
+      }),
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: OfflineCatalogCreator(api: api, coachId: 'owner'),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Arquivo JSON inválido'), findsOneWidget);
+    expect(confirms, 0);
+  });
+}

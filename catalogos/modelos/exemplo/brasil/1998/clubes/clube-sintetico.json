@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../../../_schemas/clube-1.0.schema.json",
+  "schemaVersion": "1.0",
+  "catalogClubId": "demo-clube-001",
+  "country": "BR",
+  "year": 1998,
+  "name": "Clube Exemplo Sintetico",
+  "shortName": "Exemplo Sintetico",
+  "abbreviation": "EXS",
+  "colors": [
+    "#184687",
+    "#FFFFFF"
+  ],
+  "stadium": {
+    "name": "Estadio Exemplo Sintetico",
+    "capacity": 10000
+  },
+  "initialDivision": null,
+  "coach": {
+    "id": "demo-tecnico-001",
+    "name": "Treinador Exemplo Sintetico",
+    "nationality": "BR",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-3-3"
+      ],
+      "away": [
+        "5-3-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "demo-atleta-001",
+      "name": "Atleta Exemplo Sintetico 01",
+      "position": "G",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 0,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-002",
+      "name": "Atleta Exemplo Sintetico 02",
+      "position": "D",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 1,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-003",
+      "name": "Atleta Exemplo Sintetico 03",
+      "position": "D",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 2,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-004",
+      "name": "Atleta Exemplo Sintetico 04",
+      "position": "D",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 3,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-005",
+      "name": "Atleta Exemplo Sintetico 05",
+      "position": "D",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 4,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-006",
+      "name": "Atleta Exemplo Sintetico 06",
+      "position": "M",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 5,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-007",
+      "name": "Atleta Exemplo Sintetico 07",
+      "position": "M",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 0,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-008",
+      "name": "Atleta Exemplo Sintetico 08",
+      "position": "M",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 1,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-009",
+      "name": "Atleta Exemplo Sintetico 09",
+      "position": "M",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 2,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-010",
+      "name": "Atleta Exemplo Sintetico 10",
+      "position": "A",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 3,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-011",
+      "name": "Atleta Exemplo Sintetico 11",
+      "position": "A",
+      "strength": 25,
+      "nationality": "BR",
+      "behavior": 4,
+      "isStar": true
+    }
+  ],
+  "status": "READY"
+}

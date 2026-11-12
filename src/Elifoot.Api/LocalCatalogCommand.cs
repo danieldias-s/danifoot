@@ -8,6 +8,7 @@ internal static class LocalCatalogCommand
 {
     public static async Task<bool> TryRunAsync(string[] args)
     {
+        if (await OfflineCatalogFeature.TryRun(args)) return true;
         if (args.FirstOrDefault() is not ("catalog-validate" or "catalog-reindex"))
             return false;
 

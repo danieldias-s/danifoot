@@ -14,6 +14,7 @@ import 'creator_visual.dart';
 import 'creator_club_placement.dart';
 import 'creator_division_picker.dart';
 import 'creator_world_review.dart';
+import 'offline_catalog_creator.dart';
 
 class WorldCreatorScreen extends StatefulWidget {
   final ElifootApiClient api;
@@ -1555,6 +1556,25 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         return Column(
           children: [
             TextButton(
+              onPressed: _busy
+                  ? null
+                  : () async {
+                      final created = await Navigator.push<bool>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => OfflineCatalogCreator(
+                            api: widget.api,
+                            coachId: widget.coachId,
+                          ),
+                        ),
+                      );
+                      if (created == true && mounted) {
+                        Navigator.pop(context, true);
+                      }
+                    },
+              child: const Text('USAR CATÁLOGO OFFLINE'),
+            ),
+            TextButton(
               onPressed: _busy ? null : _restoreAssembly,
               child: const Text('USAR MONTAGEM SALVA'),
             ),
@@ -1803,8 +1823,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   @override
   Widget build(BuildContext context) {
     final reviewStage = _step >= _previewStep;
-    final modernStage =
-        reviewStage || _step == _yearsStep && _assembly == null;
+    final modernStage = reviewStage || _step == _yearsStep && _assembly == null;
     final frame = CreatorFrame(
       steps: _steps,
       step: _step,
@@ -1812,8 +1831,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       busy: _busy,
       error: _error,
       divisionSummary: _divisionSummary,
-      forceStadium:
-          modernStage || _step == _sourcesStep && _assembly == null,
+      forceStadium: modernStage || _step == _sourcesStep && _assembly == null,
       stageDescription: _step == _districtsStep && _assembly == null
           ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
           : null,

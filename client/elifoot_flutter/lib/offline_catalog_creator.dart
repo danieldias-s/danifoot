@@ -1,0 +1,429 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'api_client.dart';
+
+/// Separate import path: the old private assembly editor cannot round-trip this schema.
+class OfflineCatalogCreator extends StatefulWidget {
+  final ElifootApiClient api;
+  final String coachId;
+  const OfflineCatalogCreator({
+    super.key,
+    required this.api,
+    required this.coachId,
+  });
+
+  @override
+  State<OfflineCatalogCreator> createState() => _OfflineCatalogCreatorState();
+}
+
+class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
+  final _name = TextEditingController(text: 'Liga offline 98');
+  final _catalogIds = <String>{}, _clubKeys = <String>{};
+  final _divisions = <String, int>{};
+  final _seed = Random.secure().nextInt(2147483646) + 1;
+  List<Map<String, dynamic>> _catalogs = [], _clubs = [];
+  Map<String, dynamic>? _preview;
+  String? _country, _year;
+  String _error = '';
+  int _humans = 1;
+  bool _busy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _run(_load);
+  }
+
+  @override
+  void dispose() {
+    _name.dispose();
+    super.dispose();
+  }
+
+  List<Map<String, dynamic>> _maps(dynamic data) => (data as List? ?? [])
+      .map((x) => Map<String, dynamic>.from(x as Map))
+      .toList();
+  Future<dynamic> _call(String path, {Map<String, dynamic>? body}) =>
+      widget.api.worldCreator(widget.coachId, 'offline/$path', body: body);
+  Future<void> _run(Future<void> Function() action) async {
+    setState(() {
+      _busy = true;
+      _error = '';
+    });
+    try {
+      await action();
+    } catch (e) {
+      if (mounted) setState(() => _error = e.toString());
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _load() async {
+    final report = Map<String, dynamic>.from(await _call('catalogs') as Map);
+    if (!mounted) return;
+    setState(() {
+      _catalogs = _maps(report['catalogs']);
+      _error = _maps(report['issues']).map((i) => i['message']).join('\n');
+    });
+  }
+
+  Map<String, dynamic> _request() => {
+    'name': _name.text.trim(),
+    'catalogIds': _catalogIds.toList(),
+    'seed': _seed,
+    'maxHumans': _humans,
+    'clubKeys': _clubKeys.toList(),
+    'assignments': [
+      for (final key in _clubKeys)
+        if ((_divisions[key] ?? 0) > 0)
+          {'clubKey': key, 'division': _divisions[key]},
+    ],
+  };
+
+  Future<void> _loadClubs() async {
+    final clubs = _maps(await _call('clubs', body: _request()));
+    if (!mounted) return;
+    setState(() {
+      _clubs = clubs;
+      _clubKeys.clear();
+      _clubKeys.addAll(clubs.map((c) => c['key'] as String));
+      _divisions.clear();
+      _preview = null;
+    });
+  }
+
+  Future<void> _makePreview() async {
+    final preview = Map<String, dynamic>.from(
+      await _call('preview', body: _request()) as Map,
+    );
+    if (mounted) setState(() => _preview = preview);
+  }
+
+  Future<void> _confirm() async {
+    await _call('confirm/${_preview!['draftId']}', body: {});
+    if (mounted) Navigator.pop(context, true);
+  }
+
+  void _changeCatalog(String id, bool selected) => setState(() {
+    if (selected) {
+      _catalogIds.add(id);
+    } else {
+      _catalogIds.remove(id);
+    }
+    _clubs = [];
+    _clubKeys.clear();
+    _divisions.clear();
+    _preview = null;
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final manifests = _catalogs.where((c) => c['manifest'] != null).toList();
+    final countries = <String, String>{};
+    for (final c in manifests) {
+      final country = c['manifest']['country'];
+      if (country != null && country['code'] != null) {
+        countries[country['code'].toString()] = country['name'].toString();
+      }
+    }
+    final years =
+        manifests
+            .where(
+              (c) =>
+                  _country == null ||
+                  c['manifest']['country']?['code'] == _country,
+            )
+            .map((c) => c['manifest']['year'].toString())
+            .toSet()
+            .toList()
+          ..sort();
+    final filtered = manifests
+        .where(
+          (c) =>
+              (_country == null ||
+                  c['manifest']['country']?['code'] == _country) &&
+              (_year == null || c['manifest']['year'].toString() == _year),
+        )
+        .toList();
+    final previewClubs = _maps(_preview?['clubs']);
+    final errors = (_preview?['errors'] as List? ?? [])
+        .map((x) => x.toString())
+        .toList();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Catálogo histórico offline')),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1180),
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              const Text(
+                'Arquivos locais • Novos mundos • Forças fornecidas pelo catálogo',
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'O formato atual exige 128 clubes: quatro divisões de 8 e 96 distritais. Rascunhos não criam mundos. Nenhum elenco será completado automaticamente.',
+              ),
+              if (_busy) const LinearProgressIndicator(),
+              if (_error.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Text(
+                    _error,
+                    key: const Key('offline-error'),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  ),
+                ),
+              if (_preview == null) ...[
+                TextField(
+                  controller: _name,
+                  enabled: !_busy,
+                  maxLength: 160,
+                  decoration: const InputDecoration(
+                    labelText: 'Nome do novo mundo',
+                  ),
+                ),
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 12,
+                  children: [
+                    SizedBox(
+                      width: 240,
+                      child: DropdownButtonFormField<String>(
+                        initialValue: _country,
+                        isExpanded: true,
+                        decoration: const InputDecoration(labelText: 'País'),
+                        items: [
+                          const DropdownMenuItem(
+                            value: '',
+                            child: Text('Todos os países'),
+                          ),
+                          for (final c in countries.entries)
+                            DropdownMenuItem(
+                              value: c.key,
+                              child: Text(c.value),
+                            ),
+                        ],
+                        onChanged: _busy
+                            ? null
+                            : (v) => setState(() {
+                                _country = v == '' ? null : v;
+                                _year = null;
+                              }),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 160,
+                      child: DropdownButtonFormField<String>(
+                        key: ValueKey('year-$_country'),
+                        initialValue: _year,
+                        isExpanded: true,
+                        decoration: const InputDecoration(labelText: 'Ano'),
+                        items: [
+                          const DropdownMenuItem(
+                            value: '',
+                            child: Text('Todos os anos'),
+                          ),
+                          for (final y in years)
+                            DropdownMenuItem(value: y, child: Text(y)),
+                        ],
+                        onChanged: _busy
+                            ? null
+                            : (v) => setState(() => _year = v == '' ? null : v),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 180,
+                      child: DropdownButtonFormField<int>(
+                        initialValue: _humans,
+                        decoration: const InputDecoration(
+                          labelText: 'Treinadores humanos',
+                        ),
+                        items: [
+                          for (int n = 1; n <= 8; n++)
+                            DropdownMenuItem(value: n, child: Text('$n')),
+                        ],
+                        onChanged: _busy
+                            ? null
+                            : (v) => setState(() => _humans = v ?? 1),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Text('Catálogos selecionados: ${_catalogIds.length}'),
+                if (filtered.isEmpty)
+                  const Text('Nenhum catálogo para este país/ano.'),
+                for (final c in filtered)
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    value: _catalogIds.contains(c['manifest']['catalogId']),
+                    title: Text(
+                      '${c['manifest']['name']} • ${c['manifest']['year']}',
+                    ),
+                    subtitle: Text(
+                      '${c['ready'] == true ? 'READY' : 'RASCUNHO / INVÁLIDO'} • ${(c['clubs'] as List? ?? []).length} clubes\n${_maps(c['issues']).map((i) => i['message']).join('\n')}',
+                    ),
+                    onChanged: _busy || c['ready'] != true
+                        ? null
+                        : (v) => _changeCatalog(
+                            c['manifest']['catalogId'].toString(),
+                            v ?? false,
+                          ),
+                  ),
+                for (final c in _catalogs.where((c) => c['manifest'] == null))
+                  Text(
+                    'Arquivo inválido: ${c['path']}\n${_maps(c['issues']).map((i) => i['message']).join('\n')}',
+                  ),
+                Wrap(
+                  spacing: 12,
+                  children: [
+                    OutlinedButton(
+                      onPressed: _busy ? null : () => _run(_load),
+                      child: const Text('RELER ARQUIVOS'),
+                    ),
+                    FilledButton(
+                      onPressed: _busy || _catalogIds.isEmpty
+                          ? null
+                          : () => _run(_loadClubs),
+                      child: const Text('CARREGAR CLUBES'),
+                    ),
+                  ],
+                ),
+                if (_clubs.isNotEmpty) ...[
+                  const Divider(),
+                  Text('Clubes selecionados: ${_clubKeys.length}/128'),
+                  const Text(
+                    'Divisão automática respeita a divisão inicial do arquivo. Para substituir, escolha outra divisão. A prévia valida todas as vagas.',
+                  ),
+                  for (final c in _clubs)
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: LayoutBuilder(
+                          builder: (context, constraints) => Wrap(
+                            spacing: 16,
+                            runSpacing: 8,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: min(620, constraints.maxWidth),
+                                child: CheckboxListTile(
+                                  contentPadding: EdgeInsets.zero,
+                                  value: _clubKeys.contains(c['key']),
+                                  title: Text(
+                                    '${c['name']} • ${c['countryCode']} ${c['season']}',
+                                  ),
+                                  subtitle: Text(
+                                    '${(c['players'] as List).length} atletas • ${c['offlineSource']['definition']['coach']['name']}',
+                                  ),
+                                  onChanged: _busy
+                                      ? null
+                                      : (v) => setState(() {
+                                          if (v == true) {
+                                            _clubKeys.add(c['key']);
+                                          } else {
+                                            _clubKeys.remove(c['key']);
+                                          }
+                                        }),
+                                ),
+                              ),
+                              SizedBox(
+                                width: min(200, constraints.maxWidth),
+                                child: DropdownButtonFormField<int>(
+                                  initialValue: _divisions[c['key']] ?? 0,
+                                  isExpanded: true,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Divisão',
+                                  ),
+                                  items: [
+                                    const DropdownMenuItem(
+                                      value: 0,
+                                      child: Text('Automática / arquivo'),
+                                    ),
+                                    for (int d = 1; d <= 5; d++)
+                                      DropdownMenuItem(
+                                        value: d,
+                                        child: Text(
+                                          d == 5 ? 'Distrital' : '$dª Divisão',
+                                        ),
+                                      ),
+                                  ],
+                                  onChanged: _busy
+                                      ? null
+                                      : (v) => setState(
+                                          () => _divisions[c['key']] = v ?? 0,
+                                        ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  FilledButton(
+                    onPressed: _busy || _clubKeys.length != 128
+                        ? null
+                        : () => _run(_makePreview),
+                    child: const Text('VALIDAR PRÉVIA'),
+                  ),
+                ],
+              ] else ...[
+                Text(
+                  _preview!['name'].toString(),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                for (final e in errors)
+                  Text(
+                    e,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  ),
+                for (int d = 1; d <= 5; d++)
+                  Text(
+                    '${d == 5 ? 'Distritais' : '$dª Divisão'}: ${previewClubs.where((c) => c['division'] == d).length}/${d == 5 ? 96 : 8}',
+                  ),
+                const Text(
+                  'Prévia congelada. Força, comportamento, estrela, nacionalidade e treinador serão copiados dos arquivos validados. Alterações posteriores nos arquivos não atualizam este mundo.',
+                ),
+                for (final c in previewClubs)
+                  ListTile(
+                    dense: true,
+                    title: Text(c['club']['name'].toString()),
+                    subtitle: Text(
+                      '${c['club']['countryCode']} ${c['club']['season']} • divisão ${c['division']} • ${(c['club']['players'] as List).length} atletas',
+                    ),
+                  ),
+                Wrap(
+                  spacing: 12,
+                  children: [
+                    OutlinedButton(
+                      onPressed: _busy
+                          ? null
+                          : () => setState(() => _preview = null),
+                      child: const Text('VOLTAR À DISTRIBUIÇÃO'),
+                    ),
+                    FilledButton(
+                      onPressed:
+                          _busy ||
+                              errors.isNotEmpty ||
+                              _preview!['pendingSlots'] != 0
+                          ? null
+                          : () => _run(_confirm),
+                      child: const Text('CRIAR NOVO MUNDO'),
+                    ),
+                  ],
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
