@@ -899,6 +899,53 @@ class ElifootApiClient {
     return preview;
   }
 
+  Future<Map<String, dynamic>> getRenewalOfferPreview(
+    String worldId,
+    String playerId,
+    String coachId,
+    double offeredSalary,
+  ) async {
+    final preview = _decodeResponse(
+      await _http.get(
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/players/$playerId/renew-preview',
+        ).replace(
+          queryParameters: {
+            'coachId': coachId,
+            'offeredSalary': offeredSalary.toStringAsFixed(2),
+          },
+        ),
+      ),
+    );
+    if (preview['roundVersion'] is num) {
+      _financeVersions[worldId] = (preview['roundVersion'] as num).toInt();
+    }
+    return preview;
+  }
+
+  Future<void> decideRenewalOffer(
+    String worldId,
+    String playerId,
+    String coachId,
+    double offeredSalary,
+    bool accept,
+    String termsToken,
+  ) async {
+    _decodeResponse(
+      await _postFinance(
+        Uri.parse(
+          '$baseUrl/api/worlds/$worldId/players/$playerId/renew-negotiation',
+        ),
+        body: {
+          'coachId': coachId,
+          'offeredSalary': offeredSalary,
+          'accept': accept,
+          'termsToken': termsToken,
+        },
+      ),
+    );
+  }
+
   Future<void> renewPlayerContract(
     String worldId,
     String playerId,

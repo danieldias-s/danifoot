@@ -382,6 +382,7 @@ class ClassicFinanceView extends StatelessWidget {
   final int season, round;
   final List<Widget> actions;
   final Widget obligations;
+  final ValueChanged<String>? onRepayLoan;
   const ClassicFinanceView({
     super.key,
     this.compactClassic = false,
@@ -393,6 +394,7 @@ class ClassicFinanceView extends StatelessWidget {
     required this.round,
     required this.actions,
     required this.obligations,
+    this.onRepayLoan,
   });
   @override
   Widget build(BuildContext context) {
@@ -402,139 +404,10 @@ class ClassicFinanceView extends StatelessWidget {
     final t = ClassicTheme.of(context);
     if (compactClassic) {
       if (bankOnly) {
-        return SingleChildScrollView(
-          key: const Key('classic-bank-screen'),
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Text(
-                'BANCO — EMPRÉSTIMOS',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-              ),
-              const SizedBox(height: 10),
-              RetroSection(
-                title: 'Crédito do clube',
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
-                      style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text(
-                      'Consulte as condições e os empréstimos em aberto antes de contratar.',
-                    ),
-                  ],
-                ),
-              ),
-              for (final action in actions.where(
-                (a) => a.key == const ValueKey('btn-emprestimo-bancario'),
-              ))
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: _confirmClassicAction(context, action),
-                ),
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: ClassicColors.creamLight,
-                  border: Border.all(color: ClassicColors.border),
-                ),
-                child: DefaultTextStyle.merge(
-                  style: TextStyle(color: t.textPrimary, fontSize: 17),
-                  child: obligations,
-                ),
-              ),
-            ],
-          ),
-        );
+        return _buildClassicBankScreen(context);
       }
       if (stadiumOnly) {
-        final details = Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            RetroSection(
-              title: '${stadium['stadiumName'] ?? 'Estádio'}',
-              child: Column(
-                key: const Key('classic-stadium-details'),
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Capacidade construída: ${stadium['builtCapacity'] ?? '—'} lugares',
-                  ),
-                  Text(
-                    'Capacidade utilizável: ${stadium['usableCapacity'] ?? '—'} lugares',
-                  ),
-                  Text(
-                    'Condição estrutural: ${stadium['conditionPercent'] ?? '—'}%',
-                  ),
-                  Text('Último público: ${stadium['lastAttendance'] ?? '—'}'),
-                  Text(
-                    'Ingresso: ${formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0)}',
-                  ),
-                  Text(
-                    'Manutenção por jogo: ${formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0)}',
-                  ),
-                  Text(
-                    'Caixa: ${formatClassicMoney(club['cashBalance'] ?? 0)}',
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10),
-            for (final action in actions.where(
-              (a) => a.key != const ValueKey('btn-emprestimo-bancario'),
-            ))
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: _confirmClassicAction(context, action),
-              ),
-            const Text(
-              'Novas obras: conclusão após uma rodada. O jogo atual usa a capacidade anterior; o seguinte usa a obra concluída.',
-            ),
-          ],
-        );
-        return LayoutBuilder(
-          builder: (context, c) => SingleChildScrollView(
-            key: const Key('classic-stadium-screen'),
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text(
-                  'ESTÁDIO',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                if (c.maxWidth >= 900)
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 680),
-                          child: ClassicStadiumView(stadium: stadium),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(flex: 4, child: details),
-                    ],
-                  )
-                else ...[
-                  ClassicStadiumView(stadium: stadium),
-                  const SizedBox(height: 12),
-                  details,
-                ],
-              ],
-            ),
-          ),
-        );
+        return _buildClassicStadiumScreen(context, stadium);
       }
       return SingleChildScrollView(
         padding: const EdgeInsets.all(12),
@@ -826,6 +699,1330 @@ class ClassicFinanceView extends StatelessWidget {
     );
   }
 
+  static const Color _bankGreen = Color(0xFF006822);
+  static const Color _bankRed = Color(0xFFB8141A);
+
+  String _classicLoanInterestText(Map loan) {
+    if (loan['mode'] == 'ClassicFixed') {
+      return '${formatClassicMoney(loan['interestPerMatch'] ?? 0)} por partida';
+    }
+    final rate = ((loan['interestRatePerRound'] as num?) ?? 0) * 100;
+    return '${rate.toStringAsFixed(2).replaceAll('.', ',')}% sobre o saldo; prestação ${formatClassicMoney(loan['installmentPerRound'] ?? 0)}';
+  }
+
+  Widget _buildClassicBankScreen(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final mobile = constraints.maxWidth < 640;
+        final cash =
+            (data['availableCash'] as num?) ??
+            (club['cashBalance'] as num?) ??
+            0;
+        final availableCash = cash;
+        final credit = data['credit'] is Map
+            ? Map<String, dynamic>.from(data['credit'] as Map)
+            : const <String, dynamic>{};
+        final activeLoans = (data['loans'] as List? ?? const [])
+            .whereType<Map>()
+            .where((l) => l['isPaidOff'] != true)
+            .map((l) => Map<String, dynamic>.from(l))
+            .toList();
+        final activeLoanCount = credit['activeLoans'] ?? activeLoans.length;
+        final loanLimit = credit['loanLimit'] ?? 2;
+        final availableLoanCount =
+            credit['availableLoans'] ??
+            ((loanLimit is num && activeLoanCount is num)
+                ? (loanLimit - activeLoanCount).clamp(0, loanLimit)
+                : 0);
+        final outstandingDebt = (credit['outstandingDebt'] as num?) ?? 0;
+        final interestPerMatch = (credit['interestPerMatch'] as num?) ?? 0;
+        final sponsorshipBudget =
+            (data['annualSponsorshipBudget'] as num?) ??
+            (club['annualSponsorshipBudget'] as num?) ??
+            72000;
+        final sponsorshipInstallments =
+            (data['sponsorshipInstallments'] as num?) ??
+            (club['sponsorshipInstallments'] as num?) ??
+            21;
+        final negCash = data['negativeCash'] is Map
+            ? Map<String, dynamic>.from(data['negativeCash'] as Map)
+            : const <String, dynamic>{};
+        final negPrincipal =
+            (negCash['principal'] as num?) ??
+            (availableCash < 0 ? availableCash.abs() : 0);
+        final negEstimate =
+            (negCash['estimatedNextRoundInterest'] as num?) ?? 0;
+
+        final summaryRows = <(Widget, String, Widget)>[
+          (
+            Icon(
+              Icons.handshake_outlined,
+              size: mobile ? 18 : 21,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Patrocínio anual:',
+            Text(
+              '${formatClassicMoney(sponsorshipBudget)} em $sponsorshipInstallments parcelas',
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 14.5 : 17,
+                fontWeight: FontWeight.w600,
+                color: ClassicColors.rosterBlack,
+              ),
+            ),
+          ),
+          (
+            Icon(
+              Icons.groups,
+              size: mobile ? 18 : 21,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Folha salarial:',
+            Text(
+              'por partida oficial disputada',
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 14.5 : 16.5,
+                fontWeight: FontWeight.w500,
+                color: ClassicColors.rosterBlack,
+              ),
+            ),
+          ),
+          (
+            _ClassicBanknoteIcon(color: _bankGreen, size: mobile ? 19 : 23),
+            'Saldo disponível:',
+            Text(
+              formatClassicMoney(availableCash),
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 15 : 17.5,
+                fontWeight: FontWeight.w900,
+                color: availableCash < 0 ? _bankRed : _bankGreen,
+              ),
+            ),
+          ),
+          (
+            _ClassicCoinsIcon(
+              color: ClassicColors.rosterBlack,
+              size: mobile ? 18 : 21,
+            ),
+            'Crédito individual:',
+            Text(
+              '$activeLoanCount/$loanLimit empréstimos; disponíveis: $availableLoanCount',
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 14.5 : 16.5,
+                fontWeight: FontWeight.w500,
+                color: ClassicColors.rosterBlack,
+              ),
+            ),
+          ),
+          (
+            _ClassicCoinsIcon(color: _bankRed, size: mobile ? 18 : 21),
+            'Dívida bancária:',
+            Text(
+              formatClassicMoney(outstandingDebt),
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 15 : 17.5,
+                fontWeight: FontWeight.w900,
+                color: _bankRed,
+              ),
+            ),
+          ),
+          (
+            Text(
+              '%',
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 17 : 20,
+                fontWeight: FontWeight.w900,
+                color: _bankRed,
+                height: 1,
+              ),
+            ),
+            'Juros clássicos por partida:',
+            Text(
+              formatClassicMoney(interestPerMatch),
+              style: TextStyle(
+                fontFamily: ClassicTypography.fontFamily,
+                fontSize: mobile ? 15 : 17.5,
+                fontWeight: FontWeight.w900,
+                color: _bankRed,
+              ),
+            ),
+          ),
+          (
+            _ClassicCalendarGridIcon(
+              color: ClassicColors.rosterBlack,
+              size: mobile ? 17 : 20,
+            ),
+            'Caixa negativo:',
+            Text.rich(
+              TextSpan(
+                style: TextStyle(
+                  fontFamily: ClassicTypography.fontFamily,
+                  fontSize: mobile ? 14 : 16.5,
+                  color: ClassicColors.rosterBlack,
+                ),
+                children: [
+                  TextSpan(
+                    text: formatClassicMoney(negPrincipal),
+                    style: const TextStyle(
+                      color: _bankRed,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const TextSpan(
+                    text:
+                        ' | Juros: 2% por rodada global concluída; estimativa: ',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  TextSpan(
+                    text: formatClassicMoney(negEstimate),
+                    style: const TextStyle(
+                      color: _bankRed,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ];
+
+        return SingleChildScrollView(
+          key: const Key('classic-bank-screen'),
+          padding: EdgeInsets.symmetric(
+            horizontal: mobile ? 8 : 14,
+            vertical: mobile ? 8 : 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'BANCO — EMPRÉSTIMOS',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: ClassicTypography.fontFamily,
+                  fontSize: mobile ? 24 : 31,
+                  fontWeight: FontWeight.w900,
+                  color: ClassicColors.rosterBlack,
+                  letterSpacing: 0.3,
+                  height: 1.05,
+                ),
+              ),
+              SizedBox(height: mobile ? 8 : 10),
+              RetroSection(
+                key: const Key('classic-bank-credit-section'),
+                title: 'Crédito do clube',
+                padding: EdgeInsets.symmetric(
+                  horizontal: mobile ? 10 : 14,
+                  vertical: mobile ? 10 : 12,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: mobile ? 52 : 64,
+                      height: mobile ? 46 : 56,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE6DFCE),
+                        borderRadius: BorderRadius.circular(3),
+                        border: Border.all(
+                          color: const Color(0xFFB5AD9B),
+                          width: 1.2,
+                        ),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x33000000),
+                            offset: Offset(0, 1),
+                            blurRadius: 1,
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                              color: ClassicColors.bevelLight,
+                              width: 1.4,
+                            ),
+                            left: BorderSide(
+                              color: ClassicColors.bevelLight,
+                              width: 1.4,
+                            ),
+                            bottom: BorderSide(
+                              color: Color(0xFF9C9482),
+                              width: 1.4,
+                            ),
+                            right: BorderSide(
+                              color: Color(0xFF9C9482),
+                              width: 1.4,
+                            ),
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: _ClassicBankIcon(
+                          color: ClassicColors.titleBarBlue,
+                          size: mobile ? 32 : 40,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: mobile ? 10 : 14),
+                    Container(
+                      width: 1.2,
+                      height: mobile ? 44 : 52,
+                      color: ClassicColors.border,
+                    ),
+                    SizedBox(width: mobile ? 10 : 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Caixa: ${formatClassicMoney(cash)}',
+                            key: const Key('classic-bank-cash-headline'),
+                            style: TextStyle(
+                              fontFamily: ClassicTypography.fontFamily,
+                              fontSize: mobile ? 23 : 31,
+                              fontWeight: FontWeight.w900,
+                              color: cash < 0 ? _bankRed : _bankGreen,
+                              height: 1.02,
+                            ),
+                          ),
+                          const SizedBox(height: 3),
+                          Text(
+                            'Consulte as condições e os empréstimos em aberto antes de contratar.',
+                            style: TextStyle(
+                              fontFamily: ClassicTypography.fontFamily,
+                              fontSize: mobile ? 13 : 15.5,
+                              fontWeight: FontWeight.w500,
+                              color: ClassicColors.rosterBlack,
+                              height: 1.15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              for (final action in actions.where(
+                (a) => a.key == const ValueKey('btn-emprestimo-bancario'),
+              ))
+                Padding(
+                  padding: EdgeInsets.only(bottom: mobile ? 8 : 10),
+                  child: _confirmClassicLoanButton(context, action, mobile),
+                ),
+              RetroSection(
+                key: const Key('classic-bank-summary-section'),
+                title: 'Resumo financeiro do clube',
+                padding: EdgeInsets.all(mobile ? 6 : 8),
+                child: Container(
+                  key: const Key('classic-bank-summary-table'),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ClassicColors.border, width: 1.2),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (final (idx, row) in summaryRows.indexed)
+                        Container(
+                          key: ValueKey('classic-bank-summary-row-$idx'),
+                          decoration: BoxDecoration(
+                            color: idx.isEven
+                                ? ClassicColors.creamLight
+                                : ClassicColors.creamRowAlt,
+                            border: idx < summaryRows.length - 1
+                                ? const Border(
+                                    bottom: BorderSide(
+                                      color: ClassicColors.border,
+                                      width: 1,
+                                    ),
+                                  )
+                                : null,
+                          ),
+                          child: IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                SizedBox(
+                                  width: mobile ? 34 : 46,
+                                  child: Center(child: row.$1),
+                                ),
+                                Container(
+                                  width: 1,
+                                  color: ClassicColors.border,
+                                ),
+                                if (mobile)
+                                  Expanded(
+                                    flex: 5,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 7,
+                                        vertical: 5,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          row.$2,
+                                          style: const TextStyle(
+                                            fontFamily:
+                                                ClassicTypography.fontFamily,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w800,
+                                            color: ClassicColors.rosterBlack,
+                                            height: 1.12,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                else
+                                  SizedBox(
+                                    width: 245,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12,
+                                        vertical: 5.5,
+                                      ),
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          row.$2,
+                                          style: const TextStyle(
+                                            fontFamily:
+                                                ClassicTypography.fontFamily,
+                                            fontSize: 16.5,
+                                            fontWeight: FontWeight.w800,
+                                            color: ClassicColors.rosterBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                Container(
+                                  width: 1,
+                                  color: ClassicColors.border,
+                                ),
+                                Expanded(
+                                  flex: mobile ? 6 : 1,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: mobile ? 7 : 12,
+                                      vertical: mobile ? 5 : 5.5,
+                                    ),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: row.$3,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+              RetroSection(
+                key: const Key('classic-bank-active-loan-section'),
+                title: 'Empréstimo ativo',
+                padding: EdgeInsets.all(mobile ? 6 : 8),
+                child: activeLoans.isEmpty
+                    ? Container(
+                        key: const Key('classic-bank-no-active-loan'),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: mobile ? 10 : 12,
+                          vertical: mobile ? 10 : 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: ClassicColors.creamLight,
+                          border: Border.all(
+                            color: ClassicColors.border,
+                            width: 1.1,
+                          ),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Text(
+                          'Nenhum empréstimo ativo em aberto.',
+                          style: TextStyle(
+                            fontFamily: ClassicTypography.fontFamily,
+                            fontSize: mobile ? 14.5 : 16,
+                            fontWeight: FontWeight.w600,
+                            color: ClassicColors.rosterBlack,
+                          ),
+                        ),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (final (idx, loan) in activeLoans.indexed) ...[
+                            if (idx > 0) const SizedBox(height: 8),
+                            _buildClassicActiveLoanCard(
+                              context,
+                              loan,
+                              idx,
+                              mobile,
+                            ),
+                          ],
+                        ],
+                      ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildClassicActiveLoanCard(
+    BuildContext context,
+    Map<String, dynamic> loan,
+    int index,
+    bool mobile,
+  ) {
+    final loanId = '${loan['id'] ?? index}';
+    final isClassic = loan['mode'] == 'ClassicFixed';
+    final loanTitle = isClassic
+        ? 'Empréstimo clássico'
+        : 'Empréstimo legado em prestações';
+    final remainingDebt = formatClassicMoney(loan['remainingBalance'] ?? 0);
+    final rows = <(String, String, bool)>[
+      (
+        'Principal contratado:',
+        formatClassicMoney(loan['principalAmount'] ?? 0),
+        false,
+      ),
+      (
+        'Principal pendente:',
+        loan['outstandingPrincipal'] == null
+            ? 'composição anterior indisponível'
+            : formatClassicMoney(loan['outstandingPrincipal']),
+        true,
+      ),
+      ('Juros:', _classicLoanInterestText(loan), true),
+      ('Juros pagos:', formatClassicMoney(loan['interestPaid'] ?? 0), true),
+      (
+        'Juros pendentes:',
+        formatClassicMoney(loan['unpaidInterest'] ?? 0),
+        true,
+      ),
+    ];
+
+    final detailsTable = Container(
+      key: ValueKey('classic-loan-table-$loanId'),
+      decoration: BoxDecoration(
+        border: Border.all(color: ClassicColors.border, width: 1.2),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final (rIdx, r) in rows.indexed)
+            Container(
+              decoration: BoxDecoration(
+                color: rIdx.isEven
+                    ? ClassicColors.creamLight
+                    : ClassicColors.creamRowAlt,
+                border: rIdx < rows.length - 1
+                    ? const Border(
+                        bottom: BorderSide(
+                          color: ClassicColors.border,
+                          width: 1,
+                        ),
+                      )
+                    : null,
+              ),
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (mobile)
+                      Expanded(
+                        flex: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4.5,
+                          ),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              r.$1,
+                              style: const TextStyle(
+                                fontFamily: ClassicTypography.fontFamily,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: ClassicColors.rosterBlack,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    else
+                      SizedBox(
+                        width: 230,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 4.5,
+                          ),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              r.$1,
+                              style: const TextStyle(
+                                fontFamily: ClassicTypography.fontFamily,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w800,
+                                color: ClassicColors.rosterBlack,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    Container(width: 1, color: ClassicColors.border),
+                    Expanded(
+                      flex: mobile ? 6 : 1,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: mobile ? 8 : 12,
+                          vertical: 4.5,
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            r.$2,
+                            style: TextStyle(
+                              fontFamily: ClassicTypography.fontFamily,
+                              fontSize: mobile ? 14.5 : 16.5,
+                              fontWeight: FontWeight.w900,
+                              color: r.$3
+                                  ? _bankRed
+                                  : ClassicColors.rosterBlack,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+
+    final quitarButton = Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: const Color(0xFF4A463D), width: 1.3),
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFF3EFE4), Color(0xFFD8D0BE)],
+        ),
+      ),
+      child: OutlinedButton(
+        key: ValueKey('btn-quitar-emprestimo-$loanId'),
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: ClassicColors.titleBarBlue,
+          disabledForegroundColor: const Color(0xFF7D786C),
+          side: const BorderSide(color: ClassicColors.bevelLight, width: 1.2),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+          minimumSize: Size(mobile ? double.infinity : 122, 36),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+          textStyle: TextStyle(
+            fontFamily: ClassicTypography.fontFamily,
+            fontSize: mobile ? 16.5 : 18.5,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 0.4,
+          ),
+        ),
+        onPressed: onRepayLoan == null ? null : () => onRepayLoan!(loanId),
+        child: const Text('QUITAR'),
+      ),
+    );
+
+    return Container(
+      key: ValueKey('classic-active-loan-$loanId'),
+      padding: EdgeInsets.all(mobile ? 8 : 12),
+      decoration: BoxDecoration(
+        color: ClassicColors.creamLight,
+        border: Border.all(color: ClassicColors.border, width: 1.1),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              _ClassicCoinsIcon(color: _bankRed, size: mobile ? 24 : 30),
+              SizedBox(width: mobile ? 8 : 12),
+              Container(
+                width: 1.2,
+                height: mobile ? 22 : 26,
+                color: ClassicColors.border,
+              ),
+              SizedBox(width: mobile ? 8 : 12),
+              Expanded(
+                child: Text.rich(
+                  TextSpan(
+                    style: TextStyle(
+                      fontFamily: ClassicTypography.fontFamily,
+                      fontSize: mobile ? 17 : 21,
+                      fontWeight: FontWeight.w900,
+                      height: 1.1,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '$loanTitle — ',
+                        style: const TextStyle(
+                          color: ClassicColors.rosterBlack,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'dívida $remainingDebt',
+                        style: const TextStyle(color: _bankRed),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: mobile ? 8 : 10),
+          if (mobile) ...[
+            detailsTable,
+            const SizedBox(height: 8),
+            quitarButton,
+          ] else
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: detailsTable),
+                const SizedBox(width: 18),
+                Container(width: 1.2, height: 126, color: ClassicColors.border),
+                SizedBox(width: 180, child: Center(child: quitarButton)),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _confirmClassicLoanButton(
+    BuildContext context,
+    Widget action,
+    bool mobile,
+  ) {
+    if (action is! ButtonStyleButton) return action;
+    final enabled = action.onPressed != null;
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: const Color(0xFF4A0709), width: 1.3),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: enabled
+              ? const [Color(0xFFC91A20), Color(0xFFA31015)]
+              : const [Color(0xFF8C6B6C), Color(0xFF6E5253)],
+        ),
+      ),
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Color(0xFFE55B60), width: 1.5),
+            left: BorderSide(color: Color(0xFFE55B60), width: 1.5),
+            bottom: BorderSide(color: Color(0xFF6B080B), width: 1.5),
+            right: BorderSide(color: Color(0xFF6B080B), width: 1.5),
+          ),
+        ),
+        child: ElevatedButton(
+          key: action.key,
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            disabledBackgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white70,
+            minimumSize: Size(double.infinity, mobile ? 42 : 46),
+            padding: EdgeInsets.symmetric(
+              horizontal: mobile ? 8 : 16,
+              vertical: mobile ? 6 : 8,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          onPressed: !enabled
+              ? null
+              : () async {
+                  final confirmed = await showDialog<bool>(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      backgroundColor: ClassicColors.cream,
+                      titlePadding: EdgeInsets.zero,
+                      title: const RetroTitle(
+                        title: 'Confirmar operação financeira',
+                      ),
+                      content: action.child,
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(ctx, false),
+                          child: const Text('CANCELAR'),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: ClassicColors.actionGreen,
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: () => Navigator.pop(ctx, true),
+                          child: const Text('CONFIRMAR'),
+                        ),
+                      ],
+                    ),
+                  );
+                  if (confirmed == true && context.mounted) action.onPressed!();
+                },
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _ClassicCoinsIcon(color: Colors.white, size: mobile ? 20 : 25),
+                SizedBox(width: mobile ? 8 : 10),
+                Text(
+                  'EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)',
+                  style: TextStyle(
+                    fontFamily: ClassicTypography.fontFamily,
+                    fontSize: mobile ? 17 : 21,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 0.3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClassicStadiumScreen(BuildContext context, Map stadium) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final mobile = constraints.maxWidth < 720;
+        final desktopTwoCol = constraints.maxWidth >= 720;
+        final cash =
+            (data['availableCash'] as num?) ??
+            (club['cashBalance'] as num?) ??
+            0;
+        final rawStadiumName = (stadium['stadiumName'] ?? '').toString().trim();
+        final clubName = (club['name'] ?? '').toString().trim();
+        final stadiumTitle = rawStadiumName.isNotEmpty
+            ? rawStadiumName
+            : (clubName.isNotEmpty ? 'Estádio de $clubName' : 'Estádio');
+
+        final rows = <(Widget, String, String, bool)>[
+          (
+            Icon(
+              Icons.groups,
+              size: mobile ? 18 : 20,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Capacidade construída:',
+            '${stadium['builtCapacity'] ?? '—'} lugares',
+            false,
+          ),
+          (
+            Icon(
+              Icons.event_seat,
+              size: mobile ? 17 : 19,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Capacidade utilizável:',
+            '${stadium['usableCapacity'] ?? '—'} lugares',
+            false,
+          ),
+          (
+            Icon(
+              Icons.build,
+              size: mobile ? 17 : 18,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Condição estrutural:',
+            '${stadium['conditionPercent'] ?? '—'}%',
+            false,
+          ),
+          (
+            Icon(
+              Icons.groups,
+              size: mobile ? 18 : 20,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Último público:',
+            '${stadium['lastAttendance'] ?? '—'}',
+            false,
+          ),
+          (
+            Icon(
+              Icons.confirmation_number_outlined,
+              size: mobile ? 17 : 19,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Ingresso:',
+            formatClassicMoney(stadium['lastCalculatedTicketPrice'] ?? 0),
+            false,
+          ),
+          (
+            Icon(
+              Icons.handyman,
+              size: mobile ? 17 : 19,
+              color: ClassicColors.rosterBlack,
+            ),
+            'Manutenção por jogo:',
+            formatClassicMoney(stadium['fixedCostPerMatch'] ?? 0),
+            false,
+          ),
+          (
+            _ClassicCoinsIcon(
+              color: cash < 0 ? _bankRed : _bankGreen,
+              size: mobile ? 17 : 19,
+            ),
+            'Caixa:',
+            formatClassicMoney(cash),
+            true,
+          ),
+        ];
+
+        final detailsColumn = Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              key: const Key('classic-stadium-summary-card'),
+              decoration: BoxDecoration(
+                color: ClassicColors.creamLight,
+                border: Border.all(color: ClassicColors.border, width: 1.2),
+              ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      color: ClassicColors.bevelLight,
+                      width: 1.3,
+                    ),
+                    left: BorderSide(
+                      color: ClassicColors.bevelLight,
+                      width: 1.3,
+                    ),
+                    bottom: BorderSide(
+                      color: ClassicColors.bevelDark,
+                      width: 1.3,
+                    ),
+                    right: BorderSide(
+                      color: ClassicColors.bevelDark,
+                      width: 1.3,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.all(2),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: mobile ? 10 : 12,
+                        vertical: mobile ? 6 : 7,
+                      ),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            ClassicColors.titleBarBlue,
+                            ClassicColors.titleBarBlueLight,
+                          ],
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          _ClassicStadiumIcon(
+                            color: Colors.white,
+                            size: mobile ? 20 : 22,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              stadiumTitle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontFamily: ClassicTypography.fontFamily,
+                                fontSize: mobile ? 17 : 19,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                                height: 1.05,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: mobile ? 8 : 10,
+                        vertical: 2,
+                      ),
+                      child: Column(
+                        key: const Key('classic-stadium-details'),
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (final (idx, row) in rows.indexed) ...[
+                            if (idx > 0)
+                              Container(
+                                height: 1,
+                                color: const Color(0xFFD5CEBE),
+                              ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: mobile ? 4.5 : 5,
+                              ),
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: mobile ? 24 : 28,
+                                    child: Center(child: row.$1),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      row.$2,
+                                      style: TextStyle(
+                                        fontFamily:
+                                            ClassicTypography.fontFamily,
+                                        fontSize: mobile ? 14.5 : 15.5,
+                                        fontWeight: FontWeight.w800,
+                                        color: ClassicColors.rosterBlack,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    row.$3,
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                      fontFamily: ClassicTypography.fontFamily,
+                                      fontSize: row.$4
+                                          ? (mobile ? 16 : 17.5)
+                                          : (mobile ? 14.5 : 15.5),
+                                      fontWeight: row.$4
+                                          ? FontWeight.w900
+                                          : FontWeight.w600,
+                                      color: row.$4
+                                          ? (cash < 0 ? _bankRed : _bankGreen)
+                                          : ClassicColors.rosterBlack,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: mobile ? 8 : 10),
+            for (final action in actions.where(
+              (a) => a.key != const ValueKey('btn-emprestimo-bancario'),
+            ))
+              Padding(
+                padding: EdgeInsets.only(bottom: mobile ? 8 : 10),
+                child: _confirmClassicStadiumButton(
+                  context,
+                  action,
+                  stadium,
+                  mobile,
+                ),
+              ),
+            Container(
+              key: const Key('classic-stadium-info-note'),
+              padding: EdgeInsets.symmetric(
+                horizontal: mobile ? 10 : 12,
+                vertical: mobile ? 8 : 10,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xFFEDE8DA),
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: const Color(0xFFA69F8E), width: 1.1),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 1),
+                    child: Icon(
+                      Icons.info_outline,
+                      size: mobile ? 20 : 21,
+                      color: ClassicColors.titleBarBlue,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Novas obras: conclusão após uma rodada. O jogo atual usa a capacidade anterior; o seguinte usa a obra concluída.',
+                      style: TextStyle(
+                        fontFamily: ClassicTypography.fontFamily,
+                        fontSize: mobile ? 13 : 13.5,
+                        fontStyle: FontStyle.italic,
+                        color: const Color(0xFF2B2923),
+                        height: 1.22,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+
+        return SingleChildScrollView(
+          key: const Key('classic-stadium-screen'),
+          padding: EdgeInsets.symmetric(
+            horizontal: mobile ? 8 : 14,
+            vertical: mobile ? 8 : 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                key: const Key('classic-stadium-header'),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _ClassicStadiumIcon(
+                    color: ClassicColors.rosterBlack,
+                    size: mobile ? 28 : 34,
+                  ),
+                  SizedBox(width: mobile ? 8 : 12),
+                  Container(
+                    width: 1.4,
+                    height: mobile ? 22 : 28,
+                    color: ClassicColors.border,
+                  ),
+                  SizedBox(width: mobile ? 8 : 12),
+                  Text(
+                    'ESTÁDIO',
+                    style: TextStyle(
+                      fontFamily: ClassicTypography.fontFamily,
+                      fontSize: mobile ? 23 : 29,
+                      fontWeight: FontWeight.w900,
+                      color: ClassicColors.rosterBlack,
+                      letterSpacing: 0.4,
+                      height: 1,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: mobile ? 6 : 8),
+              Container(height: 1.5, color: const Color(0xFFB58C24)),
+              const SizedBox(height: 1.5),
+              Container(height: 1.2, color: const Color(0xFF8C6B18)),
+              SizedBox(height: mobile ? 8 : 12),
+              if (desktopTwoCol)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 55,
+                      child: ClassicStadiumView(stadium: stadium),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(flex: 45, child: detailsColumn),
+                  ],
+                )
+              else ...[
+                ClassicStadiumView(stadium: stadium),
+                const SizedBox(height: 10),
+                detailsColumn,
+              ],
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _confirmClassicStadiumButton(
+    BuildContext context,
+    Widget action,
+    Map stadium,
+    bool mobile,
+  ) {
+    if (action is! ButtonStyleButton) return action;
+    final enabled = action.onPressed != null;
+    final isRenovate = action.key == const ValueKey('btn-reformar-estadio');
+    final isExpand = action.key == const ValueKey('btn-ampliar-estadio');
+
+    final renoCost =
+        (data['renovationCostEstimate'] as num?) ??
+        (stadium['renovationCostEstimate'] as num?) ??
+        50000;
+    final expCost =
+        (data['expansion5kCostEstimate'] as num?) ??
+        (stadium['expansion5kCostEstimate'] as num?) ??
+        425000;
+
+    final String labelText;
+    if (action.child is Text && (action.child as Text).data != null) {
+      labelText = (action.child as Text).data!;
+    } else if (isRenovate) {
+      labelText = 'REFORMAR ESTÁDIO (${formatClassicMoney(renoCost)})';
+    } else if (isExpand) {
+      labelText = 'AMPLIAR +5.000 LUGARES (${formatClassicMoney(expCost)})';
+    } else {
+      labelText = '';
+    }
+
+    final bgColor = isRenovate
+        ? const Color(0xFF0A3494)
+        : isExpand
+        ? const Color(0xFFE8BE3B)
+        : ClassicColors.actionGreen;
+    final fgColor = isExpand ? ClassicColors.rosterBlack : Colors.white;
+    final borderOuter = isRenovate
+        ? const Color(0xFF041642)
+        : isExpand
+        ? const Color(0xFF594408)
+        : const Color(0xFF0E3D1C);
+    final bevelTop = isRenovate
+        ? const Color(0xFF4F7DE8)
+        : isExpand
+        ? const Color(0xFFFCE48E)
+        : const Color(0xFF56B870);
+    final bevelBottom = isRenovate
+        ? const Color(0xFF051C57)
+        : isExpand
+        ? const Color(0xFF9C7610)
+        : const Color(0xFF0F4A20);
+
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: borderOuter, width: 1.3),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: !enabled
+              ? const [Color(0xFF8C887D), Color(0xFF6E6A60)]
+              : isRenovate
+              ? const [Color(0xFF1242A8), Color(0xFF082A78)]
+              : isExpand
+              ? const [Color(0xFFF2CA4B), Color(0xFFD9AC26)]
+              : const [Color(0xFF1F7A39), Color(0xFF145927)],
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: bevelTop, width: 1.4),
+            left: BorderSide(color: bevelTop, width: 1.4),
+            bottom: BorderSide(color: bevelBottom, width: 1.4),
+            right: BorderSide(color: bevelBottom, width: 1.4),
+          ),
+        ),
+        child: ElevatedButton(
+          key: action.key,
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: bgColor,
+            disabledBackgroundColor: const Color(0xFF7D796E),
+            shadowColor: Colors.transparent,
+            foregroundColor: fgColor,
+            disabledForegroundColor: Colors.white70,
+            minimumSize: Size(double.infinity, mobile ? 42 : 44),
+            padding: EdgeInsets.symmetric(
+              horizontal: mobile ? 10 : 14,
+              vertical: mobile ? 6 : 8,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          onPressed: !enabled
+              ? null
+              : () async {
+                  final confirmed = await showDialog<bool>(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      backgroundColor: ClassicColors.cream,
+                      titlePadding: EdgeInsets.zero,
+                      title: const RetroTitle(
+                        title: 'Confirmar operação financeira',
+                      ),
+                      content: action.child,
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(ctx, false),
+                          child: const Text('CANCELAR'),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: ClassicColors.actionGreen,
+                            foregroundColor: Colors.white,
+                          ),
+                          onPressed: () => Navigator.pop(ctx, true),
+                          child: const Text('CONFIRMAR'),
+                        ),
+                      ],
+                    ),
+                  );
+                  if (confirmed == true && context.mounted) action.onPressed!();
+                },
+          child: labelText.isEmpty
+              ? action.child
+              : FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (isRenovate)
+                        Icon(
+                          Icons.build,
+                          color: fgColor,
+                          size: mobile ? 20 : 22,
+                        )
+                      else if (isExpand)
+                        _ClassicStadiumIcon(
+                          color: fgColor,
+                          size: mobile ? 22 : 24,
+                        ),
+                      if (isRenovate || isExpand)
+                        SizedBox(width: mobile ? 8 : 10),
+                      Text(
+                        labelText,
+                        style: TextStyle(
+                          fontFamily: ClassicTypography.fontFamily,
+                          fontSize: mobile ? 17 : 19.5,
+                          fontWeight: FontWeight.w900,
+                          color: fgColor,
+                          letterSpacing: 0.3,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        ),
+      ),
+    );
+  }
+
   Widget _confirmClassicAction(BuildContext context, Widget action) {
     if (action is! ButtonStyleButton) return action;
     return ElevatedButton(
@@ -1033,4 +2230,373 @@ class _StadiumIllustration extends CustomPainter {
   @override
   bool shouldRepaint(covariant _StadiumIllustration old) =>
       old.primary != primary || old.secondary != secondary;
+}
+
+class _ClassicBankIcon extends StatelessWidget {
+  final Color color;
+  final double size;
+  const _ClassicBankIcon({required this.color, required this.size});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size,
+    height: size,
+    child: CustomPaint(painter: _ClassicBankPainter(color)),
+  );
+}
+
+class _ClassicBankPainter extends CustomPainter {
+  final Color color;
+  const _ClassicBankPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final fill = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+    final stroke = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.width * 0.055;
+
+    final w = size.width;
+    final h = size.height;
+
+    // Outer roof triangle (pediment)
+    final roof = Path()
+      ..moveTo(w * 0.08, h * 0.36)
+      ..lineTo(w * 0.50, h * 0.08)
+      ..lineTo(w * 0.92, h * 0.36)
+      ..close();
+    canvas.drawPath(roof, fill);
+
+    // Inner pediment cut-out triangle
+    final innerRoof = Path()
+      ..moveTo(w * 0.23, h * 0.31)
+      ..lineTo(w * 0.50, h * 0.14)
+      ..lineTo(w * 0.77, h * 0.31)
+      ..close();
+    canvas.drawPath(
+      innerRoof,
+      Paint()
+        ..color = const Color(0xFFE6DFCE)
+        ..style = PaintingStyle.fill,
+    );
+
+    // Architrave bar under roof
+    canvas.drawRect(
+      Rect.fromLTWH(w * 0.12, h * 0.37, w * 0.76, h * 0.06),
+      fill,
+    );
+
+    // Three pillars with capitals and bases
+    for (final cx in [0.25, 0.50, 0.75]) {
+      final px = w * cx;
+      canvas.drawRect(
+        Rect.fromCenter(
+          center: Offset(px, h * 0.45),
+          width: w * 0.16,
+          height: h * 0.045,
+        ),
+        fill,
+      );
+      canvas.drawRect(
+        Rect.fromCenter(
+          center: Offset(px, h * 0.61),
+          width: w * 0.105,
+          height: h * 0.28,
+        ),
+        fill,
+      );
+      canvas.drawRect(
+        Rect.fromCenter(
+          center: Offset(px, h * 0.76),
+          width: w * 0.16,
+          height: h * 0.045,
+        ),
+        fill,
+      );
+    }
+
+    // Stepped base
+    canvas.drawRect(
+      Rect.fromLTWH(w * 0.11, h * 0.80, w * 0.78, h * 0.055),
+      fill,
+    );
+    canvas.drawRect(
+      Rect.fromLTWH(w * 0.06, h * 0.87, w * 0.88, h * 0.065),
+      fill,
+    );
+    canvas.drawLine(
+      Offset(w * 0.06, h * 0.36),
+      Offset(w * 0.94, h * 0.36),
+      stroke,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClassicBankPainter old) => old.color != color;
+}
+
+class _ClassicCoinsIcon extends StatelessWidget {
+  final Color color;
+  final double size;
+  const _ClassicCoinsIcon({required this.color, required this.size});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size,
+    height: size * 0.88,
+    child: CustomPaint(painter: _ClassicCoinsPainter(color)),
+  );
+}
+
+class _ClassicCoinsPainter extends CustomPainter {
+  final Color color;
+  const _ClassicCoinsPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final fill = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+    final w = size.width;
+    final h = size.height;
+
+    void drawCoinDisc(double cx, double cy, double cw, double ch) {
+      final rrect = RRect.fromRectAndRadius(
+        Rect.fromCenter(center: Offset(cx, cy), width: cw, height: ch),
+        Radius.circular(ch * 0.48),
+      );
+      canvas.drawRRect(rrect, fill);
+    }
+
+    // Back/right taller stack (3 discs)
+    final rightX = w * 0.66;
+    final rightW = w * 0.52;
+    final discH = h * 0.165;
+    drawCoinDisc(rightX, h * 0.20, rightW, discH * 1.15);
+    drawCoinDisc(rightX, h * 0.40, rightW, discH);
+    drawCoinDisc(rightX, h * 0.59, rightW, discH);
+
+    // Front/left stack (3 discs)
+    final leftX = w * 0.35;
+    final leftW = w * 0.56;
+    drawCoinDisc(leftX, h * 0.44, leftW, discH * 1.15);
+    drawCoinDisc(leftX, h * 0.64, leftW, discH);
+    drawCoinDisc(leftX, h * 0.84, leftW, discH);
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClassicCoinsPainter old) => old.color != color;
+}
+
+class _ClassicBanknoteIcon extends StatelessWidget {
+  final Color color;
+  final double size;
+  const _ClassicBanknoteIcon({required this.color, required this.size});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size,
+    height: size * 0.68,
+    child: CustomPaint(painter: _ClassicBanknotePainter(color)),
+  );
+}
+
+class _ClassicBanknotePainter extends CustomPainter {
+  final Color color;
+  const _ClassicBanknotePainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final stroke = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = h * 0.11;
+    final fill = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(w * 0.04, h * 0.08, w * 0.92, h * 0.84),
+        Radius.circular(h * 0.10),
+      ),
+      stroke,
+    );
+    canvas.drawCircle(Offset(w * 0.50, h * 0.50), h * 0.21, stroke);
+    canvas.drawCircle(Offset(w * 0.22, h * 0.50), h * 0.065, fill);
+    canvas.drawCircle(Offset(w * 0.78, h * 0.50), h * 0.065, fill);
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClassicBanknotePainter old) =>
+      old.color != color;
+}
+
+class _ClassicCalendarGridIcon extends StatelessWidget {
+  final Color color;
+  final double size;
+  const _ClassicCalendarGridIcon({required this.color, required this.size});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size,
+    height: size,
+    child: CustomPaint(painter: _ClassicCalendarGridPainter(color)),
+  );
+}
+
+class _ClassicCalendarGridPainter extends CustomPainter {
+  final Color color;
+  const _ClassicCalendarGridPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final stroke = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = w * 0.085;
+    final fill = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(w * 0.10, h * 0.12, w * 0.80, h * 0.76),
+        Radius.circular(w * 0.10),
+      ),
+      stroke,
+    );
+    canvas.drawLine(
+      Offset(w * 0.12, h * 0.34),
+      Offset(w * 0.88, h * 0.34),
+      stroke,
+    );
+    for (final y in [0.51, 0.70]) {
+      for (final x in [0.29, 0.50, 0.71]) {
+        canvas.drawRect(
+          Rect.fromCenter(
+            center: Offset(w * x, h * y),
+            width: w * 0.11,
+            height: h * 0.10,
+          ),
+          fill,
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClassicCalendarGridPainter old) =>
+      old.color != color;
+}
+
+class _ClassicStadiumIcon extends StatelessWidget {
+  final Color color;
+  final double size;
+  const _ClassicStadiumIcon({required this.color, required this.size});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size * 1.15,
+    height: size * 0.90,
+    child: CustomPaint(painter: _ClassicStadiumIconPainter(color)),
+  );
+}
+
+class _ClassicStadiumIconPainter extends CustomPainter {
+  final Color color;
+  const _ClassicStadiumIconPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final stroke = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = w * 0.065;
+    final fill = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    // 4 small flags along top rim
+    for (final fx in [0.22, 0.40, 0.60, 0.78]) {
+      final px = w * fx;
+      canvas.drawLine(
+        Offset(px, h * 0.06),
+        Offset(px, h * 0.25),
+        Paint()
+          ..color = color
+          ..strokeWidth = w * 0.045,
+      );
+      final flag = Path()
+        ..moveTo(px, h * 0.06)
+        ..lineTo(px + w * 0.11, h * 0.11)
+        ..lineTo(px, h * 0.17)
+        ..close();
+      canvas.drawPath(flag, fill);
+    }
+
+    // Top oval stadium rim
+    canvas.drawOval(
+      Rect.fromLTWH(w * 0.06, h * 0.22, w * 0.88, h * 0.26),
+      stroke,
+    );
+
+    // Stadium body wall
+    final bodyPath = Path()
+      ..moveTo(w * 0.06, h * 0.35)
+      ..lineTo(w * 0.08, h * 0.84)
+      ..quadraticBezierTo(w * 0.50, h * 0.98, w * 0.92, h * 0.84)
+      ..lineTo(w * 0.94, h * 0.35)
+      ..quadraticBezierTo(w * 0.50, h * 0.50, w * 0.06, h * 0.35)
+      ..close();
+    canvas.drawPath(bodyPath, fill);
+
+    // Cutout windows & entrance in contrasting color
+    final cutoutColor = color.computeLuminance() > 0.6
+        ? ClassicColors.titleBarBlue
+        : ClassicColors.creamLight;
+    final cutout = Paint()
+      ..color = cutoutColor
+      ..style = PaintingStyle.fill;
+
+    for (final wx in [0.20, 0.35, 0.65, 0.80]) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromCenter(
+            center: Offset(w * wx, h * 0.61),
+            width: w * 0.08,
+            height: h * 0.13,
+          ),
+          Radius.circular(w * 0.02),
+        ),
+        cutout,
+      );
+    }
+    // Central entrance arch
+    canvas.drawRRect(
+      RRect.fromRectAndCorners(
+        Rect.fromCenter(
+          center: Offset(w * 0.50, h * 0.77),
+          width: w * 0.16,
+          height: h * 0.22,
+        ),
+        topLeft: Radius.circular(w * 0.04),
+        topRight: Radius.circular(w * 0.04),
+      ),
+      cutout,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _ClassicStadiumIconPainter old) =>
+      old.color != color;
 }

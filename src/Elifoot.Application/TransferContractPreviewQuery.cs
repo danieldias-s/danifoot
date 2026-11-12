@@ -6,7 +6,7 @@ namespace Elifoot.Application;
 public sealed partial class ClubAndMarketApplicationService
 {
     public async Task<(RenewalContractPreviewDto? Preview,string? Error)> GetRenewalContractPreviewAsync(
-        Guid worldId,Guid coachId,Guid playerId,CancellationToken ct=default)
+        Guid worldId,Guid coachId,Guid playerId,CancellationToken ct=default,decimal? offeredSalary=null)
     {
         var gate=MultiplayerRoundOrchestrator.GetLock(worldId);await gate.WaitAsync(ct);
         try
@@ -23,7 +23,9 @@ public sealed partial class ClubAndMarketApplicationService
             if(w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING))
                 return(null,"SALARY_PENDING_DECISION: Resolva primeiro o pedido espontâneo.");
             if(p.SalaryPerRound<0||p.SalaryPerRound!=Math.Round(p.SalaryPerRound,2))return(null,"CONTRACT_VALUE_INVALID: Salário vigente inválido.");
-            try{return(ClassicEconomyEngine.PreviewRenewal(w,c,p),null);}
+            if(offeredSalary is decimal offer&&(offer<0||offer!=Math.Round(offer,2)))
+                return(null,"CONTRACT_VALUE_INVALID: Informe salário válido com até duas casas decimais.");
+            try{return(ClassicEconomyEngine.PreviewRenewal(w,c,p,offeredSalary),null);}
             catch(OverflowException){return(null,"CONTRACT_VALUE_INVALID: Salário excede o limite financeiro.");}
         }
         finally{gate.Release();}

@@ -634,7 +634,6 @@ extension _Classic98Shell on _ElifootShellScreenState {
         ];
       case 'Equipa':
         return [
-          ('Jogadores...', nav('squad')),
           ('Finanças...', nav('finances', 3)),
           (
             'História do clube...',
@@ -687,7 +686,6 @@ extension _Classic98Shell on _ElifootShellScreenState {
       case 'Campeonato':
         return [
           ('Classificação...', nav('standings', 1)),
-          ('Tabela de jogos...', nav('calendar', 5)),
           ('Calendário...', nav('calendar', 5)),
           ('Resultados...', nav('results', 5)),
           ('Taça Nacional...', nav('cup', 1)),
@@ -742,20 +740,8 @@ extension _Classic98Shell on _ElifootShellScreenState {
     String? displayLabel,
     bool richLabel = false,
     bool compact = false,
-  }) => PopupMenuButton<int>(
-    tooltip: '',
-    enabled: !_matchLocked || title == 'Campeonato',
-    onSelected: (i) => _retroMenu(title)[i].$2?.call(),
-    itemBuilder: (_) => [
-      for (final (i, entry) in _retroMenu(title).indexed)
-        PopupMenuItem(
-          value: i,
-          enabled: entry.$2 != null,
-          height: 36,
-          child: Text(entry.$1),
-        ),
-    ],
-    child: Container(
+  }) {
+    final button = Container(
       padding: EdgeInsets.symmetric(
         horizontal: compact ? 8 : 14,
         vertical: compact ? 6 : 7,
@@ -788,8 +774,31 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 fontSize: compact ? 13.5 : 16,
               ),
             ),
-    ),
-  );
+    );
+    if (title == 'Jogo') {
+      return InkWell(
+        onTap: _matchLocked ? null : () => _retroOpen('squad'),
+        child: button,
+      );
+    }
+    return PopupMenuButton<int>(
+      tooltip: '',
+      position: PopupMenuPosition.under,
+      menuPadding: EdgeInsets.zero,
+      enabled: !_matchLocked || title == 'Campeonato',
+      onSelected: (i) => _retroMenu(title)[i].$2?.call(),
+      itemBuilder: (_) => [
+        for (final (i, entry) in _retroMenu(title).indexed)
+          PopupMenuItem(
+            value: i,
+            enabled: entry.$2 != null,
+            height: 36,
+            child: Text(entry.$1),
+          ),
+      ],
+      child: button,
+    );
+  }
 
   Future<void> _retroMobileMenu(BuildContext context) =>
       showModalBottomSheet<void>(
@@ -888,6 +897,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                   children: [
                     for (final title in [
                       'Configurações',
+                      'Jogo',
                       'Táticas',
                       'Equipa',
                       'Jogador',
@@ -1248,7 +1258,14 @@ extension _Classic98Shell on _ElifootShellScreenState {
       darkRoster: true,
       dense: true,
       key: const Key('retro-roster'),
-      headers: const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO'],
+      headers: const [
+        'POS',
+        'JOGADOR',
+        'FORÇA',
+        'ESTILO',
+        'SALÁRIO',
+        'CONTRATO',
+      ],
       sectionHeaders: {
         sectionRow: [
           'POS',
@@ -1256,11 +1273,12 @@ extension _Classic98Shell on _ElifootShellScreenState {
           'FORÇA',
           'ESTILO',
           'SALÁRIO',
+          'CONTRATO',
         ],
       },
       emptySectionMessage: 'Sem jogadores reservas no banco.',
-      flex: mobile ? const [3, 6, 2, 4, 4] : const [2, 6, 2, 4, 4],
-      centerAlignedColumns: const {2, 3},
+      flex: mobile ? const [3, 7, 2, 4, 4, 4] : const [2, 6, 2, 3, 3, 3],
+      centerAlignedColumns: const {2, 3, 5},
       rightAlignedColumns: const {4},
       leadingCells: {
         for (final (i, p) in squad.indexed)
@@ -1274,6 +1292,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             '${p['strength']}',
             _retroBehavior(p),
             formatClassicMoney(p['salaryPerRound']),
+            p['contractRenewedForSeason'] == true ? 'RENOVADO' : '—',
           ],
       ],
       selected: squad.indexWhere(
@@ -1284,7 +1303,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        table,
+        _scrollRetroRoster(table, mobile: mobile),
         Container(
           color: ClassicColors.cream,
           padding: const EdgeInsets.fromLTRB(4, 6, 4, 2),
@@ -1329,11 +1348,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
               runSpacing: 4,
               children: [
                 RetroButton(
-                  label: 'Informações',
-                  onPressed: () => _retroOpen('player'),
-                ),
-                RetroButton(
-                  label: 'Mercado...',
+                  label: 'Listar Jogador',
                   onPressed:
                       _commandBusy ||
                           (_tacticsLocked &&
@@ -1341,12 +1356,32 @@ extension _Classic98Shell on _ElifootShellScreenState {
                       ? null
                       : () => _announceSquadPlayer(_retroSelected!),
                 ),
+                RetroButton(
+                  key: const Key('retro-renew-contract'),
+                  label: 'Renovar contrato',
+                  onPressed:
+                      _contractNegotiationLocked ||
+                          _retroSelected!['contractRenewedForSeason'] == true
+                      ? null
+                      : () => _negotiateSquadContract(_retroSelected!),
+                ),
               ],
             ),
           ),
       ],
     );
   }
+
+  Widget _scrollRetroRoster(Widget table, {required bool mobile}) =>
+      LayoutBuilder(
+        builder: (context, constraints) =>
+            constraints.maxWidth >= (mobile ? 640 : 560)
+            ? table
+            : SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(width: mobile ? 640 : 560, child: table),
+              ),
+      );
 
   Widget _retroHome(BuildContext ctx, bool mobile) {
     final club = _myClubDetail;
@@ -1485,6 +1520,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
     final ready = me?['isReady'] == true;
     final state = _snapshot?['roundState'];
     final morale = me?['morale'] ?? _invitationsData?['morale'];
+    final cash = club?['cashBalance'];
     return RetroSection(
       key: const Key('retro-next-opponent-panel'),
       title: 'Próximo adversário',
@@ -1546,18 +1582,14 @@ extension _Classic98Shell on _ElifootShellScreenState {
             style: TextStyle(
               fontSize: mobile ? 18 : 20,
               fontWeight: FontWeight.w900,
-              color: ClassicColors.rosterBlack,
+              color: cash is num
+                  ? cash < 0
+                        ? const Color(0xFFB61922)
+                        : ClassicColors.actionGreen
+                  : ClassicColors.rosterBlack,
             ),
           ),
           SizedBox(height: mobile ? 4 : 5),
-          Text(
-            'Moral: ${morale ?? 'A definir'}',
-            style: TextStyle(
-              fontSize: mobile ? 14 : 15,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          SizedBox(height: mobile ? 3 : 3),
           Container(
             decoration: BoxDecoration(
               color: ClassicColors.creamBox,
@@ -1743,26 +1775,39 @@ extension _Classic98Shell on _ElifootShellScreenState {
           ),
           Text('${bench.length}/9 relacionados • selecione um reserva'),
           const SizedBox(height: 10),
-          RetroTable(
-            darkRoster: true,
-            headers: const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO'],
-            flex: mobile ? const [2, 6, 2, 4, 4] : const [1, 6, 2, 3, 3],
-            centerAlignedColumns: const {2, 3},
-            rightAlignedColumns: const {4},
-            rows: [
-              for (final p in bench)
-                [
-                  _formatPosition(p['position']),
-                  formatClassicPlayerName(p),
-                  '${p['strength']}',
-                  _retroBehavior(p),
-                  formatClassicMoney(p['salaryPerRound']),
-                ],
-            ],
-            selected: bench.indexWhere(
-              (p) => '${p['id']}' == _classicSelectedPlayerId,
+          _scrollRetroRoster(
+            RetroTable(
+              darkRoster: true,
+              headers: const [
+                'POS',
+                'JOGADOR',
+                'FORÇA',
+                'ESTILO',
+                'SALÁRIO',
+                'CONTRATO',
+              ],
+              flex: mobile
+                  ? const [2, 6, 2, 4, 4, 4]
+                  : const [1, 6, 2, 3, 3, 3],
+              centerAlignedColumns: const {2, 3, 5},
+              rightAlignedColumns: const {4},
+              rows: [
+                for (final p in bench)
+                  [
+                    _formatPosition(p['position']),
+                    formatClassicPlayerName(p),
+                    '${p['strength']}',
+                    _retroBehavior(p),
+                    formatClassicMoney(p['salaryPerRound']),
+                    p['contractRenewedForSeason'] == true ? 'RENOVADO' : '—',
+                  ],
+              ],
+              selected: bench.indexWhere(
+                (p) => '${p['id']}' == _classicSelectedPlayerId,
+              ),
+              onSelect: (i) => _selectClassicPlayer('${bench[i]['id']}'),
             ),
-            onSelect: (i) => _selectClassicPlayer('${bench[i]['id']}'),
+            mobile: mobile,
           ),
           const SizedBox(height: 10),
           if (_retroSelected != null &&

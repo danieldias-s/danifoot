@@ -97,6 +97,7 @@ app.Use(async (context, next) =>
             ||context.Request.Path.Value?.Contains("/salary-requests/",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.Contains("/invitations/",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/renew",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/renew-negotiation",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/next-round",StringComparison.Ordinal)==true)
         && error is IOException or DbUpdateException)
     {
@@ -718,10 +719,19 @@ app.MapPost("/api/worlds/{worldId:guid}/market/auction/{auctionId:guid}/bid", as
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew-preview", async (
-    Guid worldId,Guid playerId,Guid coachId,ClubAndMarketApplicationService service,CancellationToken ct)=>
+    Guid worldId,Guid playerId,Guid coachId,decimal? offeredSalary,ClubAndMarketApplicationService service,CancellationToken ct)=>
 {
-    var(preview,error)=await service.GetRenewalContractPreviewAsync(worldId,coachId,playerId,ct);
+    var(preview,error)=await service.GetRenewalContractPreviewAsync(worldId,coachId,playerId,ct,offeredSalary);
     return preview==null?Results.BadRequest(new{error}):Results.Ok(preview);
+});
+
+app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew-negotiation", async (
+    Guid worldId, Guid playerId, RenewalNegotiationCommandDto command,
+    ClubAndMarketApplicationService service, CancellationToken ct) =>
+{
+    var result = await service.DecidePlayerRenewalOfferAsync(worldId, playerId, command, ct);
+    return result.Success ? Results.Ok(new { success = true, auctionId = result.AuctionId })
+        : Results.BadRequest(new { error = result.Error });
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (

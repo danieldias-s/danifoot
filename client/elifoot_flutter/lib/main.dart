@@ -30,6 +30,7 @@ import 'catalog_provenance.dart';
 import 'round_navigation.dart';
 import 'salary_request_modal.dart';
 import 'voluntary_renewal_dialog.dart';
+import 'contract_negotiation_dialog.dart';
 import 'history_views.dart';
 import 'player_rankings.dart';
 import 'session_store.dart';
@@ -122,7 +123,7 @@ class _ElifootClassicAppState extends State<ElifootClassicApp> {
     child: ListenableBuilder(
       listenable: Listenable.merge([appearance, presentation]),
       builder: (context, _) => MaterialApp.router(
-        title: 'Liga Clássica 98 — 015B',
+        title: 'Liga Clássica 98 — V3',
         debugShowCheckedModeBanner: false,
         theme: presentation.version == PresentationVersion.classic
             ? classic98Theme(current: appearance.theme)
@@ -1027,6 +1028,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _myClubDetail != null &&
         !_matchLocked &&
         !_showMatchView &&
+        !_holdingClassification &&
+        !_appearanceOpen &&
+        !_mobileTacticsView &&
+        _activeTabIndex == 0 &&
+        (_classicPage == null || _classicPage == 'squad') &&
+        _navigation.path == '/plantel' &&
         const [
           'PREPARING',
           'RESULTS',
@@ -1953,6 +1960,85 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           ? 'Seleção de troca cancelada.'
           : '${player['displayName'] ?? player['name']} (${player['strength']}) selecionado. Escolha ${isStarter ? 'um reserva' : 'um titular'} para trocar.';
     });
+  }
+
+  bool get _contractNegotiationLocked =>
+      _commandBusy ||
+      _matchLocked ||
+      _holdingClassification ||
+      _autoPreparingRound ||
+      _waitingForRound ||
+      !const ['PREPARING', 'RESULTS'].contains(_snapshot?['roundState']);
+
+  Future<void> _negotiateSquadContract(Map<String, dynamic> player) async {
+    final world = _worldId, coach = _coachId, club = _myClubId;
+    if (_contractNegotiationLocked ||
+        world == null ||
+        coach == null ||
+        player['contractRenewedForSeason'] == true) {
+      return;
+    }
+    if (player['seasonContractsEnabled'] != true) {
+      await _renewSquadPlayer(player);
+      return;
+    }
+    final season = _snapshot?['seasonNumber'];
+    bool sameSession() =>
+        mounted &&
+        !_matchLocked &&
+        world == _worldId &&
+        coach == _coachId &&
+        club == _myClubId &&
+        season == _snapshot?['seasonNumber'];
+    Map<String, dynamic>? initial;
+    await _runUiCommand(() async {
+      initial = await widget.apiClient.getRenewalContractPreview(
+        world,
+        '${player['id']}',
+        coach,
+      );
+    });
+    if (!mounted || initial == null || !sameSession()) return;
+    await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => ContractNegotiationDialog(
+        player: player,
+        initialPreview: initial!,
+        onQuote: (salary) async {
+          if (!sameSession()) {
+            throw Exception('A sessão mudou. Abra a negociação novamente.');
+          }
+          return widget.apiClient.getRenewalOfferPreview(
+            world,
+            '${player['id']}',
+            coach,
+            salary,
+          );
+        },
+        onDecision: (salary, accept, quote) async {
+          if (!sameSession()) {
+            throw Exception('A sessão mudou. Abra a negociação novamente.');
+          }
+          await widget.apiClient.decideRenewalOffer(
+            world,
+            '${player['id']}',
+            coach,
+            salary,
+            accept,
+            quote['termsToken'] as String,
+          );
+          await _refreshClubAndSecondaryData();
+          if (sameSession()) {
+            setState(
+              () => _statusBanner = accept
+                  ? '✓ ${player['displayName']} renovado até o fim da temporada $season.'
+                  : '${player['displayName']}: contraproposta recusada. Jogador enviado a leilão.',
+            );
+          }
+        },
+      ),
+    );
   }
 
   Future<void> _renewSquadPlayer(Map<String, dynamic> player) async {
@@ -3437,6 +3523,17 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       data: _financesData ?? {},
       season: (_snapshot?['seasonNumber'] as num? ?? 1).toInt(),
       round: (_snapshot?['roundNumber'] as num? ?? 1).toInt(),
+      onRepayLoan: _commandBusy
+          ? null
+          : (loanId) => _runUiCommand(() async {
+              await widget.apiClient.repayBankLoan(
+                _worldId!,
+                _myClubId!,
+                _coachId!,
+                loanId,
+              );
+              await _refreshClubAndSecondaryData();
+            }),
       actions: [
         ElevatedButton.icon(
           key: const ValueKey('btn-reformar-estadio'),

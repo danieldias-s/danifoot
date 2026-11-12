@@ -11,6 +11,23 @@ import 'package:elifoot_flutter/presentation_widgets.dart';
 import 'presentation_017a_test.dart' show GameplayPresentationApi;
 import 'classic_ux_014b_test.dart' show join;
 
+class SeasonContractRosterApi extends GameplayPresentationApi {
+  bool renewed = true;
+
+  @override
+  Future<Map<String, dynamic>> getClubDetail(
+    String world,
+    String clubId,
+  ) async {
+    final club = await super.getClubDetail(world, clubId);
+    for (final p in club['squad'] as List) {
+      p['contractRenewedForSeason'] =
+          renewed && (p['id'] == 'p-1' || p['id'] == 'p-12');
+    }
+    return club;
+  }
+}
+
 class FullBenchApi extends GameplayPresentationApi {
   @override
   Future<Map<String, dynamic>> getClubDetail(
@@ -263,15 +280,338 @@ class ClassicPlayerStatsPanelApi extends GameplayPresentationApi {
         'rows': const [],
       };
     }
-    return {
-      'playerId': playerId,
-      'currentSeason': 1,
-      'rows': const [],
-    };
+    return {'playerId': playerId, 'currentSeason': 1, 'rows': const []};
+  }
+}
+
+class ClassicBankScreenApi extends GameplayPresentationApi {
+  bool loanPaid = false;
+  final List<String> repaidLoanIds = [];
+
+  @override
+  Future<Map<String, dynamic>> getClubFinances(
+    String worldId,
+    String clubId,
+  ) async => {
+    ...await super.getClubFinances(worldId, clubId),
+    'availableCash': loanPaid ? 1100000 : 1600000,
+    'annualSponsorshipBudget': 72000,
+    'sponsorshipInstallments': 21,
+    'credit': {
+      'activeLoans': loanPaid ? 0 : 1,
+      'loanLimit': 2,
+      'availableLoans': loanPaid ? 2 : 1,
+      'outstandingDebt': loanPaid ? 0 : 500000,
+      'interestPerMatch': loanPaid ? 0 : 25000,
+      'negativeCashPrincipal': 0,
+      'negativeCashEstimatePerGlobalRound': 0,
+    },
+    'loans': [
+      {
+        'id': 'loan-classic-1',
+        'mode': 'ClassicFixed',
+        'principalAmount': 500000,
+        'remainingBalance': 500000,
+        'outstandingPrincipal': 500000,
+        'interestPerMatch': 25000,
+        'interestPaid': 0,
+        'unpaidInterest': 0,
+        'isPaidOff': loanPaid,
+      },
+    ],
+  };
+
+  @override
+  Future<void> repayBankLoan(
+    String worldId,
+    String clubId,
+    String coachId,
+    String loanId,
+  ) async {
+    repaidLoanIds.add(loanId);
+    loanPaid = true;
   }
 }
 
 void main() {
+  for (final width in [390.0, 768.0, 1024.0, 1366.0]) {
+    testWidgets('Contrato depois do salário para titular e reserva em $width', (
+      t,
+    ) async {
+      t.view.physicalSize = Size(width, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = SeasonContractRosterApi();
+      await join(t, api);
+      await PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      RetroTable roster() =>
+          t.widget<RetroTable>(find.byKey(const Key('retro-roster')));
+      expect(roster().headers.sublist(4), ['SALÁRIO', 'CONTRATO']);
+      expect(roster().sectionHeaders.values.first.sublist(4), [
+        'SALÁRIO',
+        'CONTRATO',
+      ]);
+      expect(roster().rows.every((r) => r.length == 6), isTrue);
+      expect(roster().rows.where((r) => r[5] == 'RENOVADO').length, 2);
+      expect(
+        roster().rows.firstWhere((r) => r[1].startsWith('Carlos Muralha'))[5],
+        'RENOVADO',
+      );
+      expect(
+        roster().rows.firstWhere((r) => r[1] == 'Atleta 12')[5],
+        'RENOVADO',
+      );
+      expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2')[5], '—');
+      if (width >= 768) {
+        expect(
+          find.text('CONTRATO').first.hitTestable(),
+          findsOneWidget,
+          reason:
+              'Desktop and tablet show the contract column without scrolling',
+        );
+        expect(
+          t.getSize(find.byKey(const Key('retro-roster'))).width,
+          lessThanOrEqualTo(width == 1024 ? 610 : width),
+        );
+      }
+      await t.ensureVisible(find.text('CONTRATO').first);
+      await t.pumpAndSettle();
+      expect(
+        t.getCenter(find.text('CONTRATO').first).dx,
+        greaterThan(t.getCenter(find.text('SALÁRIO').first).dx),
+      );
+      expect(find.text('CONTRATO').first.hitTestable(), findsOneWidget);
+      // A fresh server response clears the mark; salary alone never means renewal.
+      api.renewed = false;
+      api.onNotification?.call('Contrato atualizado');
+      await t.pumpAndSettle();
+      expect(roster().rows.every((r) => r[5] == '—'), isTrue);
+      expect(t.takeException(), isNull);
+      await t.pumpWidget(const SizedBox());
+      api.disconnectRealtime();
+    });
+  }
+
+  for (final width in [1024.0, 1366.0]) {
+    testWidgets('Jogo entre menus e dropdown abaixo do botão em $width', (
+      t,
+    ) async {
+      t.view.physicalSize = Size(width, 1000);
+      t.view.devicePixelRatio = 1;
+      addTearDown(t.view.resetPhysicalSize);
+      addTearDown(t.view.resetDevicePixelRatio);
+      final api = GameplayPresentationApi();
+      await join(t, api);
+      final controller = PresentationScope.maybeOf(
+        t.element(find.byType(ElifootShellScreen)),
+      )!;
+      await controller.select(api, PresentationVersion.classic);
+      await t.pumpAndSettle();
+      final game = find.text('Jogo').first;
+      final tactics = find.text('Táticas').first;
+      expect(
+        t.getCenter(game).dx,
+        greaterThan(t.getCenter(find.text('Configurações')).dx),
+      );
+      expect(t.getCenter(game).dx, lessThan(t.getCenter(tactics).dx));
+      await t.tap(find.text('Banco'));
+      await t.pumpAndSettle();
+      expect(find.byKey(const Key('classic-bank-screen')), findsOneWidget);
+      await t.tap(game);
+      await t.pumpAndSettle();
+      expect(find.byKey(const Key('retro-roster')), findsOneWidget);
+      expect(find.byKey(const Key('classic-bank-screen')), findsNothing);
+      final menuBottom = t.getBottomLeft(tactics).dy;
+      await t.tap(tactics);
+      await t.pumpAndSettle();
+      final menuItems = find.byType(PopupMenuItem<int>);
+      expect(menuItems, findsWidgets);
+      expect(
+        t.getTopLeft(menuItems.first).dy,
+        greaterThanOrEqualTo(menuBottom),
+      );
+      expect(find.text('Automático (A)'), findsOneWidget);
+      expect(find.text('Melhores (M)'), findsOneWidget);
+      await t.tapAt(const Offset(0, 0));
+      await t.pumpAndSettle();
+      expect(t.takeException(), isNull);
+      await t.pumpWidget(const SizedBox());
+      api.disconnectRealtime();
+    });
+  }
+
+  testWidgets(
+    'Tela clássica Banco — Empréstimos renderiza Crédito do clube, Resumo financeiro, Empréstimo ativo e QUITAR no desktop e mobile',
+    (t) async {
+      for (final width in [1366.0, 390.0]) {
+        t.view.physicalSize = Size(width, 1000);
+        t.view.devicePixelRatio = 1;
+        addTearDown(t.view.resetPhysicalSize);
+        addTearDown(t.view.resetDevicePixelRatio);
+
+        final api = ClassicBankScreenApi();
+        await join(t, api);
+        final controller = PresentationScope.maybeOf(
+          t.element(find.byType(ElifootShellScreen)),
+        )!;
+        await controller.select(api, PresentationVersion.classic);
+        await t.pumpAndSettle();
+
+        if (width < 1024) {
+          await t.tap(find.text('Banco').last);
+        } else {
+          await t.tap(find.text('Banco'));
+        }
+        await t.pumpAndSettle();
+
+        expect(find.byKey(const Key('classic-bank-screen')), findsOneWidget);
+        expect(find.text('BANCO — EMPRÉSTIMOS'), findsOneWidget);
+        expect(
+          find.byKey(const Key('classic-bank-credit-section')),
+          findsOneWidget,
+        );
+        expect(find.text('Caixa: R\$ 1.600.000'), findsOneWidget);
+        expect(
+          find.text(
+            'Consulte as condições e os empréstimos em aberto antes de contratar.',
+          ),
+          findsOneWidget,
+        );
+        expect(
+          find.byKey(const ValueKey('btn-emprestimo-bancario')),
+          findsOneWidget,
+        );
+        expect(
+          find.text('EMPRÉSTIMO (+R\$ 500.000; JUROS R\$ 25.000/JOGO)'),
+          findsOneWidget,
+        );
+
+        // Resumo financeiro do clube (7 linhas)
+        expect(
+          find.byKey(const Key('classic-bank-summary-section')),
+          findsOneWidget,
+        );
+        for (var i = 0; i < 7; i++) {
+          expect(
+            find.byKey(ValueKey('classic-bank-summary-row-$i')),
+            findsOneWidget,
+          );
+        }
+        expect(find.text('Patrocínio anual:'), findsOneWidget);
+        expect(find.text('R\$ 72.000 em 21 parcelas'), findsOneWidget);
+        expect(find.text('Folha salarial:'), findsOneWidget);
+        expect(find.text('por partida oficial disputada'), findsOneWidget);
+        expect(find.text('Saldo disponível:'), findsOneWidget);
+        expect(find.text('Crédito individual:'), findsOneWidget);
+        expect(find.text('1/2 empréstimos; disponíveis: 1'), findsOneWidget);
+        expect(find.text('Dívida bancária:'), findsOneWidget);
+        expect(find.text('Juros clássicos por partida:'), findsOneWidget);
+        expect(find.text('Caixa negativo:'), findsOneWidget);
+        expect(
+          find.textContaining(
+            'Juros: 2% por rodada global concluída; estimativa:',
+          ),
+          findsOneWidget,
+        );
+
+        // Empréstimo ativo + QUITAR
+        expect(
+          find.byKey(const Key('classic-bank-active-loan-section')),
+          findsOneWidget,
+        );
+        expect(
+          find.byKey(const ValueKey('classic-active-loan-loan-classic-1')),
+          findsOneWidget,
+        );
+        expect(find.textContaining('Empréstimo clássico'), findsOneWidget);
+        expect(find.text('Principal contratado:'), findsOneWidget);
+        expect(find.text('Principal pendente:'), findsOneWidget);
+        expect(find.text('Juros:'), findsOneWidget);
+        expect(find.text('R\$ 25.000 por partida'), findsOneWidget);
+        expect(find.text('Juros pagos:'), findsOneWidget);
+        expect(find.text('Juros pendentes:'), findsOneWidget);
+
+        final quitarFinder = find.byKey(
+          const ValueKey('btn-quitar-emprestimo-loan-classic-1'),
+        );
+        expect(quitarFinder, findsOneWidget);
+        await t.ensureVisible(quitarFinder);
+        await t.tap(quitarFinder);
+        await t.pumpAndSettle();
+
+        expect(api.repaidLoanIds, equals(['loan-classic-1']));
+        expect(
+          find.byKey(const Key('classic-bank-no-active-loan')),
+          findsOneWidget,
+        );
+        expect(find.text('Nenhum empréstimo ativo em aberto.'), findsOneWidget);
+
+        // Abre Estádio e valida layout web (2 colunas) e mobile (empilhado)
+        if (width < 1024) {
+          await t.tap(find.text('Estádio').last);
+        } else {
+          await t.tap(find.text('Estádio'));
+        }
+        await t.pumpAndSettle();
+
+        expect(find.byKey(const Key('classic-stadium-screen')), findsOneWidget);
+        expect(find.byKey(const Key('classic-stadium-header')), findsOneWidget);
+        expect(find.text('ESTÁDIO'), findsOneWidget);
+        final visualFinder = find.byKey(const Key('classic-stadium-visual'));
+        final summaryFinder = find.byKey(
+          const Key('classic-stadium-summary-card'),
+        );
+        expect(visualFinder, findsOneWidget);
+        expect(summaryFinder, findsOneWidget);
+        expect(find.textContaining('Visão do estádio •'), findsOneWidget);
+        expect(
+          find.text(
+            'Arquibancadas acompanham a capacidade construída. Setores escuros indicam lugares não utilizáveis.',
+          ),
+          findsOneWidget,
+        );
+        expect(find.text('Capacidade construída:'), findsOneWidget);
+        expect(find.text('Capacidade utilizável:'), findsOneWidget);
+        expect(find.text('Condição estrutural:'), findsOneWidget);
+        expect(find.text('Último público:'), findsOneWidget);
+        expect(find.text('Ingresso:'), findsOneWidget);
+        expect(find.text('Manutenção por jogo:'), findsOneWidget);
+        expect(find.text('Caixa:'), findsOneWidget);
+        expect(
+          find.byKey(const ValueKey('btn-reformar-estadio')),
+          findsOneWidget,
+        );
+        expect(
+          find.byKey(const ValueKey('btn-ampliar-estadio')),
+          findsOneWidget,
+        );
+        expect(
+          find.byKey(const Key('classic-stadium-info-note')),
+          findsOneWidget,
+        );
+        if (width >= 720) {
+          expect(
+            t.getTopLeft(summaryFinder).dx,
+            greaterThan(t.getTopRight(visualFinder).dx),
+          );
+        } else {
+          expect(
+            t.getTopLeft(summaryFinder).dy,
+            greaterThan(t.getBottomLeft(visualFinder).dy),
+          );
+        }
+        expect(t.takeException(), isNull);
+
+        await t.pumpWidget(const SizedBox());
+        api.disconnectRealtime();
+      }
+    },
+  );
+
   testWidgets(
     'Estrela de craque após o nome e painel Dados do Jogador com 9 estatísticas na ordem oficial (Web e Mobile)',
     (t) async {
@@ -545,14 +885,18 @@ void main() {
 
       expect(
         roster().headers,
-        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+        equals(const [
+          'POS',
+          'JOGADOR',
+          'FORÇA',
+          'ESTILO',
+          'SALÁRIO',
+          'CONTRATO',
+        ]),
       );
       expect(roster().sectionHeaders, isNotEmpty);
-      expect(
-        roster().sectionHeaders.values.first[1],
-        startsWith('BANCO ('),
-      );
-      expect(roster().rows.first.length, 5);
+      expect(roster().sectionHeaders.values.first[1], startsWith('BANCO ('));
+      expect(roster().rows.first.length, 6);
       expect(canSend(), isTrue);
       await click('p-23');
       expect(find.textContaining('Titulares: 12/11'), findsWidgets);
@@ -567,14 +911,18 @@ void main() {
       expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2').first, '· D');
       expect(
         roster().headers,
-        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+        equals(const [
+          'POS',
+          'JOGADOR',
+          'FORÇA',
+          'ESTILO',
+          'SALÁRIO',
+          'CONTRATO',
+        ]),
       );
       expect(roster().sectionHeaders, isNotEmpty);
-      expect(
-        roster().sectionHeaders.values.first[1],
-        startsWith('BANCO ('),
-      );
-      expect(roster().rows.first.length, 5);
+      expect(roster().sectionHeaders.values.first[1], startsWith('BANCO ('));
+      expect(roster().rows.first.length, 6);
       expect(canSend(), isTrue);
       await click('p-23');
       expect(canSend(), isFalse);
@@ -583,14 +931,18 @@ void main() {
       await click('p-2');
       expect(
         roster().headers,
-        equals(const ['POS', 'JOGADOR', 'FORÇA', 'ESTILO', 'SALÁRIO']),
+        equals(const [
+          'POS',
+          'JOGADOR',
+          'FORÇA',
+          'ESTILO',
+          'SALÁRIO',
+          'CONTRATO',
+        ]),
       );
       expect(roster().sectionHeaders, isNotEmpty);
-      expect(
-        roster().sectionHeaders.values.first[1],
-        startsWith('BANCO ('),
-      );
-      expect(roster().rows.first.length, 5);
+      expect(roster().sectionHeaders.values.first[1], startsWith('BANCO ('));
+      expect(roster().rows.first.length, 6);
       expect(canSend(), isTrue);
       api.ready = 1;
       api.isReady = true;

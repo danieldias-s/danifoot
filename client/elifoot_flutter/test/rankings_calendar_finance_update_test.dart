@@ -120,7 +120,7 @@ void main() {
       expect(find.byKey(const Key('classic-bank-screen')), findsOneWidget);
       expect(find.textContaining('PEDIDO SALARIAL'), findsNothing);
       expect(find.textContaining('Carlos Muralha'), findsNothing);
-      expect(find.textContaining('PATROCÍNIO ANUAL'), findsOneWidget);
+      expect(find.textContaining('Patrocínio anual:'), findsOneWidget);
       await t.tap(find.text('Estádio').last);
       await t.pumpAndSettle();
       final stadium = find.byKey(const Key('classic-stadium-visual'));
@@ -166,8 +166,16 @@ void main() {
         t.element(find.byType(ElifootShellScreen)),
       )!.select(api, PresentationVersion.classic);
       await t.pumpAndSettle();
+      await t.tap(find.text('Equipa'));
+      await t.pumpAndSettle();
+      expect(find.text('Jogadores...'), findsNothing);
+      expect(find.text('Finanças...'), findsOneWidget);
+      expect(find.text('História do clube...'), findsOneWidget);
+      await t.tapAt(const Offset(1100, 800));
+      await t.pumpAndSettle();
       await t.tap(find.text('Campeonato'));
       await t.pumpAndSettle();
+      expect(find.text('Tabela de jogos...'), findsNothing);
       expect(find.text('Defensores...'), findsNothing);
       expect(find.text('Jogos ao vivo...'), findsNothing);
       expect(find.text('Assistências...'), findsOneWidget);

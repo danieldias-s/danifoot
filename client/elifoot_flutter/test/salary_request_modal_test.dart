@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:elifoot_flutter/salary_request_modal.dart';
 import 'package:elifoot_flutter/main.dart';
+import 'package:elifoot_flutter/match_router.dart';
 import 'package:elifoot_flutter/presentation_version.dart';
 import 'package:elifoot_flutter/presentation_widgets.dart';
 import 'classic_ux_014b_test.dart' show join;
@@ -43,7 +44,87 @@ class PendingSalaryApi extends GameplayPresentationApi {
   }
 }
 
+class PostRoundSalaryApi extends PendingSalaryApi {
+  int blockedAdvances = 0;
+  int successfulAdvances = 0;
+
+  @override
+  Future<Map<String, dynamic>> advanceToNextRound(
+    String worldId, {
+    int? expectedSeasonNumber,
+    int? expectedRoundNumber,
+  }) async {
+    if (pending && !resolved) {
+      blockedAdvances++;
+      throw Exception('SALARY_PENDING_TRANSITION: Decisão salarial pendente.');
+    }
+    successfulAdvances++;
+    return super.advanceToNextRound(
+      worldId,
+      expectedSeasonNumber: expectedSeasonNumber,
+      expectedRoundNumber: expectedRoundNumber,
+    );
+  }
+}
+
 void main() {
+  for (final classic in [true, false]) {
+    for (final completed in ['RESULTS', 'FINISHED']) {
+      testWidgets(
+        'Salary waits for classification exit and preserves round guard: $classic $completed',
+        (tester) async {
+          tester.view.physicalSize = const Size(1024, 1000);
+          tester.view.devicePixelRatio = 1;
+          addTearDown(tester.view.resetPhysicalSize);
+          addTearDown(tester.view.resetDevicePixelRatio);
+          final api = PostRoundSalaryApi();
+          await join(tester, api);
+          if (classic) {
+            await PresentationScope.maybeOf(
+              tester.element(find.byType(ElifootShellScreen)),
+            )!.select(api, PresentationVersion.classic);
+            await tester.pumpAndSettle();
+          }
+          final router =
+              tester
+                      .widget<MaterialApp>(find.byType(MaterialApp))
+                      .routerDelegate!
+                  as MatchRouterDelegate;
+          await api.emit('RUNNING_FIRST_HALF');
+          await tester.pumpAndSettle();
+          api.pending = true;
+          await api.emit(completed);
+          api.onNotification?.call('Atualização salarial');
+          await tester.pumpAndSettle();
+          expect(router.currentConfiguration, '/divisoes');
+          expect(find.byType(SalaryRequestModal), findsNothing);
+          await tester.pump(const Duration(seconds: 3));
+          await tester.pumpAndSettle();
+          expect(router.currentConfiguration, '/divisoes');
+          expect(find.byType(SalaryRequestModal), findsNothing);
+          expect(api.resolved, isFalse);
+          await tester.pump(const Duration(seconds: 2));
+          await tester.pumpAndSettle();
+          expect(router.currentConfiguration, '/plantel');
+          expect(find.byType(SalaryRequestModal), findsOneWidget);
+          expect(api.blockedAdvances, 1);
+          expect(api.successfulAdvances, 0);
+          expect(api.resolved, isFalse);
+          await tester.tap(find.text('ACEITAR'));
+          await tester.pumpAndSettle();
+          expect(api.resolved, isTrue);
+          expect(api.successfulAdvances, 1);
+          expect(api.currentRound, 2);
+          expect(router.currentConfiguration, '/plantel');
+          expect(find.byType(SalaryRequestModal), findsNothing);
+          expect(tester.takeException(), isNull);
+          await tester.pumpWidget(const SizedBox());
+          api.disconnectRealtime();
+        },
+      );
+    }
+  }
+
   for (final classic in [true, false]) {
     testWidgets('pending request opens at team home only, classic=$classic', (
       tester,
