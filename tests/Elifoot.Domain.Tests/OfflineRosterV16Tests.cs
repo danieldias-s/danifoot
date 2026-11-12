@@ -66,6 +66,17 @@ public sealed class OfflineRosterV16Tests
         Assert.Equal(JsonSerializer.Serialize(new {request.Name,request.CatalogIds,request.Seed,request.MaxHumans,request.ClubKeys,request.Assignments}),JsonSerializer.Serialize(request));
     }
     [Fact]
+    public void ProtectsAllEligibleStarsEvenWhenFirstFormationWouldCutSome()
+    {
+        var input=Club(goalkeepers:2);
+        string Position(int i)=>i<2?"G":i<7?"D":i<14?"M":"A";
+        var original=input.OfflineSource!;
+        input=input with {Players=input.Players.Select((p,i)=>p with {Position=Position(i)}).ToList(),
+            OfflineSource=original with {Definition=original.Definition with {Players=original.Definition.Players!.Select((p,i)=>p with {Position=Position(i),IsStar=i>=14}).ToList()}}};
+        for(int seed=0;seed<10;seed++)
+            Assert.Equal(9,OfflineRosterV16.Select(new(4,input),seed).Club.Players.Count(p=>p.Position=="A"));
+    }
+    [Fact]
     public void DifferentInitialDivisionSelectsAgainOnlyForNewPreview()
     {
         var clubs=Enumerable.Range(0,128).Select(i=>Club(i)).ToList();

@@ -40,23 +40,40 @@ public static class OfflineRosterV16
             .ThenByDescending(p => byId.GetValueOrDefault(p.PlayerExternalId)?.Minutes ?? -1)
             .ThenByDescending(p => p.Strength).ThenBy(p => Draw(seed, club.Key, p.PlayerExternalId))
             .ThenBy(p => p.PlayerExternalId, StringComparer.Ordinal).ToList();
-        var selected = ordered.Where(p => p.Position == "G").Take(keepG).ToList();
-        // Guarantee at least one playable native formation, favoring the verified coach's formations.
+        var keepers = ordered.Where(p => p.Position == "G").Take(keepG).ToList();
+        // Search feasible rosters rather than sacrificing a protected athlete to the first formation.
+        // This does not change the coach's actual preferences or the world's tactical rules.
         var tactics = club.OfflineSource.Definition.Coach!.PreferredTactics!;
-        var codes = tactics.Home!.Concat(tactics.Away!).Concat(new[] { "4-4-2", "4-3-3", "3-4-3", "5-3-2", "4-5-1", "3-5-2", "4-2-4", "3-6-1", "5-4-1", "5-0-5" }).Distinct();
-        List<CatalogAthlete>? functional = null;
+        var codes = tactics.Home!.Concat(tactics.Away!).Concat(TacticalFormations.GetAvailable(false).Select(f => f.Code)).Distinct();
+        List<CatalogAthlete>? selected = null;
+        List<long>? bestScore = null;
+        List<long> Preservation(List<CatalogAthlete> proposed)
+        {
+            var ids = proposed.Select(p => p.PlayerExternalId).ToHashSet();
+            return new List<long> {
+                proposed.Count(p => source[p.PlayerExternalId].IsStar == true),
+                proposed.Count(p => byId.GetValueOrDefault(p.PlayerExternalId)?.IsProdigy == true),
+                proposed.Count(p => byId.GetValueOrDefault(p.PlayerExternalId)?.ImportantStarter == true),
+                proposed.Sum(p => (long)(byId.GetValueOrDefault(p.PlayerExternalId)?.Minutes ?? 0))
+            }.Concat(ordered.Select(p => ids.Contains(p.PlayerExternalId) ? 1L : 0L)).ToList();
+        }
         foreach (var code in codes)
         {
-            var parts = code.Split('-').Select(int.Parse).ToArray();
-            var trial = new List<CatalogAthlete>();
-            foreach (var (position, count) in new[] { ("D",parts[0]), ("M",parts[1]), ("A",parts[2]) })
+            if (!TacticalFormations.TryGet(code, false, out var formation)) continue;
+            var trial = keepers.ToList();
+            foreach (var (position, count) in new[] { ("D",formation.Defenders), ("M",formation.Midfielders), ("A",formation.Attackers) })
                 trial.AddRange(ordered.Where(p => p.Position == position).Take(count));
-            if (trial.Count == 10) { functional = trial; break; }
+            if (trial.Count != keepG+10) continue;
+            var used = trial.Select(p => p.PlayerExternalId).ToHashSet();
+            trial.AddRange(ordered.Where(p => p.Position != "G" && !used.Contains(p.PlayerExternalId)).Take(target-trial.Count));
+            var score = Preservation(trial);
+            bool better = bestScore == null;
+            if (bestScore != null)
+                for (int i=0;i<score.Count;i++)
+                    if (score[i] != bestScore[i]) { better=score[i]>bestScore[i]; break; }
+            if (better) { selected=trial; bestScore=score; }
         }
-        if (functional == null) throw new ArgumentException($"{club.Name}: posições insuficientes para uma formação nativa.");
-        // Required positions reserve slots; remaining places follow the preservation order.
-        selected.AddRange(functional);
-        selected.AddRange(ordered.Where(p => p.Position != "G" && selected.All(s => s.PlayerExternalId != p.PlayerExternalId)).Take(target-selected.Count));
+        if (selected == null) throw new ArgumentException($"{club.Name}: posições insuficientes para uma formação nativa habilitada.");
         var keys = selected.Select(p => p.PlayerExternalId).ToHashSet();
         var retained = candidates.Where(p => keys.Contains(p.PlayerExternalId)).ToList();
         var excluded = candidates.Where(p => !keys.Contains(p.PlayerExternalId)).Select(p => p.PlayerExternalId);
