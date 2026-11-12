@@ -10,8 +10,9 @@ public static class OfflineCatalogRanking
     {
         var metadata = clubs.Select(c => c.OfflineSource?.V11).ToList();
         return metadata.All(m => m?.HistoricalRanking?.Rating != null) &&
-            metadata.Select(m => (m!.HistoricalRanking!.Source, m.HistoricalRanking.ReferenceDate)).Distinct().Count() == 1;
+            metadata.Select(m => (Family(m!.HistoricalRanking!.Source), m.HistoricalRanking.ReferenceDate)).Distinct().Count() == 1;
     }
+    private static string? Family(string? source) => source is "OPTA" or "OPTA_INTERPOLATED" ? "OPTA" : source;
     public static List<EligibleCatalogClub> Order(IEnumerable<EligibleCatalogClub> input)
     {
         var clubs = input.ToList();
