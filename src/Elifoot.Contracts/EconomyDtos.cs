@@ -4,7 +4,7 @@ namespace Elifoot.Contracts;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum BankLoanMode { LegacyInstallment = 0, ClassicFixed = 1 }
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum SalaryRequestStatus { PENDING = 0, ACCEPTED = 1, REFUSED = 2 }
+public enum SalaryRequestStatus { PENDING = 0, ACCEPTED = 1, REFUSED = 2, QUEUED = 3, CANCELLED = 4 }
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum AuctionReason { ContractExpiration = 0, SalaryRenewalRefused = 1, FinancialInsolvency = 2, Voluntary = 3 }
 

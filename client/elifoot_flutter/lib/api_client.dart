@@ -20,6 +20,7 @@ class ElifootApiClient {
   );
   String baseUrl;
   String? _lobbyCoachId, _lobbyDeviceId;
+  String? _roomCoachId;
   final AccountHttpClient _http;
   WebSocketChannel? _wsChannel;
   StreamSubscription? _wsSub;
@@ -971,8 +972,14 @@ class ElifootApiClient {
     String worldId,
     String clubId,
   ) async {
+    final coachId = _roomCoachId ?? _lobbyCoachId;
+    final uri = Uri.parse(
+      '$baseUrl/api/worlds/$worldId/clubs/$clubId/finances',
+    );
     final res = await _http.get(
-      Uri.parse('$baseUrl/api/worlds/$worldId/clubs/$clubId/finances'),
+      coachId == null
+          ? uri
+          : uri.replace(queryParameters: {'coachId': coachId}),
     );
     final data = _decodeResponse(res);
     _financeVersions[worldId] = data['roundVersion'] as int?;
@@ -1036,6 +1043,7 @@ class ElifootApiClient {
   Future<http.Response> _postFinance(
     Uri uri, {
     Map<String, dynamic>? body,
+    bool checkRoundVersion = true,
   }) async {
     final identity = '$uri:${body == null ? "" : jsonEncode(body)}';
     final key = _financeKeys.putIfAbsent(
@@ -1044,7 +1052,7 @@ class ElifootApiClient {
     );
     final segments = uri.pathSegments;
     final worldId = segments.length > 2 ? segments[2] : '';
-    final version = _financeVersions[worldId];
+    final version = checkRoundVersion ? _financeVersions[worldId] : null;
     final response = body == null
         ? await _http.post(
             uri.replace(
@@ -1096,6 +1104,7 @@ class ElifootApiClient {
         '$baseUrl/api/worlds/$worldId/clubs/$clubId/salary-requests/$requestId/respond',
       ),
       body: {'coachId': coachId, 'accept': accept},
+      checkRoundVersion: false,
     );
     return _decodeResponse(response)['message'] as String?;
   }
@@ -1196,6 +1205,7 @@ class ElifootApiClient {
   /// with automatic snapshot reconciliation.
   void connectRealtimeRoom(String worldId, String coachId) {
     disconnectRealtime();
+    _roomCoachId = coachId;
     final generation = _connectionGeneration;
     void reconnect() {
       if (generation != _connectionGeneration) return;
@@ -1297,6 +1307,7 @@ class ElifootApiClient {
   }
 
   void disconnectRealtime() {
+    _roomCoachId = null;
     _signalRConnected = false;
     _connectionGeneration++;
     _pingTimer?.cancel();

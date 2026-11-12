@@ -110,7 +110,21 @@ public class SalaryContractsV3Stage02BTests
         var match=new MatchFixture{HomeClubId=c.Id,AwayClubId=other.Id,IsFinished=true,CurrentMinute=90};
         ClassicEconomyEngine.GenerateSalaryRequests(w,[match]);ClassicEconomyEngine.GenerateSalaryRequests(w,[match]);
         Assert.Equal(2,w.Economy.SalaryRequests.Count);Assert.All(w.Economy.SalaryRequests.GroupBy(x=>x.ClubId),g=>Assert.Single(g));
-        w.RoundNumber++;ClassicEconomyEngine.GenerateSalaryRequests(w,[match]);Assert.Equal(2,w.Economy.SalaryRequests.Count);
+        var first = w.Economy.SalaryRequests.Single(x => x.ClubId == c.Id);
+        var stillPending = w.Economy.SalaryRequests.Single(x => x.ClubId == other.Id);
+        Assert.True(ClassicEconomyEngine.RespondSalary(w, c, first.Id, true, "first").Success);
+        w.Economy.SalaryRequestCheckedRounds.Clear();
+        w.Economy.SalaryRequestRounds.Clear();
+        ClassicEconomyEngine.GenerateSalaryRequests(w, [match]);
+        Assert.Equal(2, w.Economy.SalaryRequests.Count);
+
+        w.RoundNumber++;
+        ClassicEconomyEngine.GenerateSalaryRequests(w, [match]);
+        var newRequest = Assert.Single(w.Economy.SalaryRequests, x => x.Round == w.RoundNumber);
+        Assert.Equal(c.Id, newRequest.ClubId);
+        Assert.Equal(SalaryRequestStatus.PENDING, stillPending.Status);
+        Assert.All(w.Economy.SalaryRequests.Where(x => x.Status == SalaryRequestStatus.PENDING).GroupBy(x => x.ClubId),
+            requests => Assert.Single(requests));
     }
 
     [Theory][InlineData(false)][InlineData(true)]
@@ -173,6 +187,24 @@ public class SalaryContractsV3Stage02BTests
         Assert.True(ClassicEconomyEngine.RespondSalary(w,c,r.Id,true,"explicit-human-decision").Success);
         Assert.Equal(SalaryRequestStatus.ACCEPTED,r.Status);Assert.Equal(110,p.SalaryPerRound);
         Assert.Null(SalarySeasonTransitionEngine.BlockingReason(w));Assert.Equal(1,r.Season);
+    }
+
+    [Fact] public void LegacyRequestFromRenewedPlayerLeavesTransitionWithoutFinancialEffects()
+    {
+        var (world, club, player, request) = Setup();
+        player.RenewedForSeason = world.SeasonNumber;
+
+        Assert.True(ClassicEconomyEngine.ReconcileSalaryRequests(world));
+        Assert.False(ClassicEconomyEngine.ReconcileSalaryRequests(world));
+        Assert.Null(SalarySeasonTransitionEngine.BlockingReason(world));
+        Assert.Equal(SalaryRequestStatus.CANCELLED, request.Status);
+        Assert.Equal("CONTRACT_IN_FORCE", request.Resolution);
+        Assert.Equal(0, request.DecisionVersion);
+        Assert.Equal(100, player.SalaryPerRound);
+        Assert.Equal(club.Id, player.ClubId);
+        Assert.True(ClassicEconomyEngine.IsSeasonRenewed(world, player));
+        Assert.Empty(world.Auctions);
+        Assert.Empty(world.Economy.ContractHistory);
     }
 
     [Fact] public void ActiveSalaryAuctionKeepsItsIdentityAndDeadlineAcrossSeasonBoundary()

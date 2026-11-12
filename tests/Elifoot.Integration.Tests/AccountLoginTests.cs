@@ -4,6 +4,7 @@ using System.Text.Json;
 using Elifoot.Api;
 using Elifoot.Application;
 using Elifoot.Contracts;
+using Elifoot.Domain;
 using Elifoot.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,100 @@ namespace Elifoot.Integration.Tests;
 
 public sealed class AccountLoginTests
 {
+    [Fact]
+    public async Task TwoClubsResolveSalaryRequestsIndependentlyAndRecoverLegacyQueueAfterRestart()
+    {
+        await using var fixture = new Fixture();
+        using var first = fixture.Server.CreateClient();
+        using var second = fixture.Server.CreateClient();
+        var coachA = (await Register(first, "salarios-a", "Treinador A")).GetProperty("coachId").GetGuid();
+        var coachB = (await Register(second, "salarios-b", "Treinador B")).GetProperty("coachId").GetGuid();
+        var created = await Send(first, "/api/worlds", new CreateWorldRequest("Pedidos simultâneos", 2, 32));
+        created.EnsureSuccessStatusCode();
+        var worldId = (await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
+        (await Send(first, $"/api/worlds/{worldId}/join")).EnsureSuccessStatusCode();
+        (await Send(second, $"/api/worlds/{worldId}/join")).EnsureSuccessStatusCode();
+        var repo = fixture.Server.Services.GetRequiredService<IWorldRepository>();
+        var world = (await repo.GetWorldAsync(worldId))!;
+        var clubA = world.Clubs.Single(c => c.HumanCoachId == coachA);
+        var clubB = world.Clubs.Single(c => c.HumanCoachId == coachB);
+        world.Auctions.Clear();
+        world.RoundState = RoundState.RESULTS;
+        world.RoundNumber = 3;
+
+        SalaryRaiseRequest AddRequest(Club club, int round, int order)
+        {
+            var player = world.Players.Where(p => p.ClubId == club.Id && p.Position == PlayerPosition.A)
+                .First(p => world.Economy.SalaryRequests.All(r => r.PlayerId != p.Id));
+            player.ContractRoundsRemaining = 0;
+            var request = new SalaryRaiseRequest
+            {
+                Id = Guid.NewGuid(), WorldId = worldId, ClubId = club.Id, PlayerId = player.Id,
+                Season = world.SeasonNumber, Round = round, CreatedAtUtc = DateTime.UnixEpoch.AddSeconds(order),
+                CurrentSalary = player.SalaryPerRound, RequestedSalary = player.SalaryPerRound + 10
+            };
+            world.Economy.SalaryRequests.Add(request);
+            return request;
+        }
+
+        var a = AddRequest(clubA, 1, 1);
+        var duplicate = AddRequest(clubA, 1, 2);
+        var later = AddRequest(clubA, 2, 3);
+        var b = AddRequest(clubB, 1, 1);
+        await repo.SaveWorldAsync(world);
+
+        string Finances(Guid club) => $"/api/worlds/{worldId}/clubs/{club}/finances";
+        string Decision(SalaryRaiseRequest request) => $"/api/worlds/{worldId}/clubs/{request.ClubId}/salary-requests/{request.Id}/respond";
+        string advance = $"/api/worlds/{worldId}/next-round?expectedSeasonNumber={world.SeasonNumber}&expectedRoundNumber=3";
+        async Task<Guid> Pending(HttpClient client, Guid club)
+        {
+            var finance = await client.GetFromJsonAsync<JsonElement>(Finances(club));
+            var requests = finance.GetProperty("salaryRequests").EnumerateArray().ToList();
+            Assert.All(requests, r => Assert.Equal(club, r.GetProperty("clubId").GetGuid()));
+            return Assert.Single(requests, r => r.GetProperty("status").GetString() == "PENDING").GetProperty("id").GetGuid();
+        }
+
+        Assert.Equal(a.Id, await Pending(first, clubA.Id));
+        Assert.Equal(b.Id, await Pending(second, clubB.Id));
+        Assert.Equal(SalaryRequestStatus.CANCELLED, duplicate.Status);
+        Assert.Equal(SalaryRequestStatus.QUEUED, later.Status);
+        Assert.Equal(HttpStatusCode.Forbidden, (await second.GetAsync(Finances(clubA.Id))).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await Send(second, Decision(a), new SalaryDecisionCommandDto(coachB, true, "foreign"))).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await Send(first, Decision(later), new SalaryDecisionCommandDto(coachA, true, "early"))).StatusCode);
+        var blocked = await Send(second, advance);
+        Assert.Equal(HttpStatusCode.Conflict, blocked.StatusCode);
+        var error = (await blocked.Content.ReadFromJsonAsync<JsonElement>()).GetProperty("error").GetString();
+        Assert.DoesNotContain(clubA.Name, error);
+        Assert.DoesNotContain(clubB.Name, error);
+        var version = world.RoundVersion;
+        (await Send(first, Decision(a), new SalaryDecisionCommandDto(coachA, true, "first", version))).EnsureSuccessStatusCode();
+
+        await fixture.Restart();
+        EfWorldRepository.ClearCacheForTesting();
+        using var reconnectA = fixture.Server.CreateClient();
+        using var reconnectB = fixture.Server.CreateClient();
+        await Login(reconnectA, "salarios-a");
+        await Login(reconnectB, "salarios-b");
+        Assert.Equal(later.Id, await Pending(reconnectA, clubA.Id));
+        Assert.Equal(b.Id, await Pending(reconnectB, clubB.Id));
+        Assert.Equal(HttpStatusCode.Conflict, (await Send(reconnectA, advance)).StatusCode);
+
+        var decisions = await Task.WhenAll(
+            Send(reconnectA, Decision(later), new SalaryDecisionCommandDto(coachA, true, "later", version)),
+            Send(reconnectB, Decision(b), new SalaryDecisionCommandDto(coachB, false, "refuse", version)));
+        Assert.All(decisions, response => response.EnsureSuccessStatusCode());
+        var advances = await Task.WhenAll(Send(reconnectA, advance), Send(reconnectB, advance));
+        foreach (var response in advances)
+            Assert.Equal(4, (await response.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.RoundNumber);
+
+        var restored = (await fixture.Server.Services.GetRequiredService<IWorldRepository>().GetWorldAsync(worldId))!;
+        Assert.DoesNotContain(restored.Economy.SalaryRequests, r => r.IsUnresolved);
+        Assert.Equal(b.PlayerId, Assert.Single(restored.Auctions).PlayerId);
+        Assert.Equal(2, restored.Economy.ContractHistory.Count);
+        Assert.All(restored.Economy.SalaryRequests.Where(r => r.Status != SalaryRequestStatus.CANCELLED),
+            request => Assert.Equal(1, request.DecisionVersion));
+    }
+
     [Fact]
     public async Task V3LineupEndpointChecksOwnerAndPersistsModeAndIdempotencyAcrossSqliteRestart()
     {

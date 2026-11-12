@@ -253,23 +253,21 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (coach == null)
                 return (false, "Treinador humano não pertence a esta sala.", BuildReadyCounterDto(world), false);
 
-            await RecoverAiSalaryDecisionsAsync(world);
-            if(SalarySeasonTransitionEngine.BlockingReason(world) is string salaryError)
-                return(false,salaryError,BuildReadyCounterDto(world),false);
-
-            // Idempotency: if the same idempotency key was already processed, return current counter without mutating
-            var idemSet = GetIdempotencySet(world.Id);
-            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
-            {
-                return (true, null, BuildReadyCounterDto(world), world.RoundState != RoundState.PREPARING);
-            }
-
             if (coach.CurrentClubId == null)
                 return (false, "Treinador está desempregado; use a ação 'Pronto para acompanhar'.", BuildReadyCounterDto(world), false);
 
             var club = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId.Value);
             if (club == null || club.HumanCoachId != coach.Id)
                 return (false, "Propriedade do clube inválida.", BuildReadyCounterDto(world), false);
+
+            await RecoverSalaryDecisionsAsync(world, _repository);
+            if (SalarySeasonTransitionEngine.BlockingReason(world, club.Id) is string salaryError)
+                return (false, salaryError, BuildReadyCounterDto(world), false);
+
+            // Idempotency: if the same idempotency key was already processed, return current counter without mutating
+            var idemSet = GetIdempotencySet(world.Id);
+            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
+                return (true, null, BuildReadyCounterDto(world), false);
 
             var clubSquad = world.Players.Where(p => p.ClubId == club.Id).ToList();
             bool needsLineup = NeedsCurrentRoundLineup(world, club.Id);
@@ -345,9 +343,12 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (coach == null)
                 return (false, "Participante não encontrado na sala.", BuildReadyCounterDto(world), false);
 
-            await RecoverAiSalaryDecisionsAsync(world);
-            if(SalarySeasonTransitionEngine.BlockingReason(world) is string salaryError)
-                return(false,salaryError,BuildReadyCounterDto(world),false);
+            await RecoverSalaryDecisionsAsync(world, _repository);
+            var club = world.Clubs.FirstOrDefault(c => c.Id == coach.CurrentClubId && c.HumanCoachId == coach.Id);
+            if (coach.CurrentClubId != null && club == null)
+                return (false, "Propriedade do clube inválida.", BuildReadyCounterDto(world), false);
+            if (club != null && SalarySeasonTransitionEngine.BlockingReason(world, club.Id) is string salaryError)
+                return (false, salaryError, BuildReadyCounterDto(world), false);
 
             var idemSet = GetIdempotencySet(world.Id);
             if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
@@ -356,9 +357,8 @@ public sealed partial class MultiplayerRoundOrchestrator
             }
 
             // If coach actually has a club and auto-submits via PRONTO, validate/auto-build their preferred lineup
-            if (coach.CurrentClubId != null)
+            if (club != null)
             {
-                var club = world.Clubs.First(c => c.Id == coach.CurrentClubId.Value);
                 var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
                 var spec = TacticalFormations.Resolve(club.PreferredFormation, world.AllowClassic505);
                 var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, spec, world, club.LineupSelectionMode, club.PreferredStarterIds);
@@ -429,28 +429,30 @@ public sealed partial class MultiplayerRoundOrchestrator
         => !ClassicForceEvolutionEngine.IsActive(world) || GetCurrentRoundFixtures(world)
             .Any(m => m.HomeClubId == clubId || m.AwayClubId == clubId);
 
-    private async Task RecoverAiSalaryDecisionsAsync(GameWorld world)
+    // The caller holds the room lock. A club-scoped recovery prepares that club's inbox.
+    public static async Task RecoverSalaryDecisionsAsync(GameWorld world, IWorldRepository repository, Guid? clubId = null)
     {
-        if(!world.Economy.SalaryRequests.Any(r=>r.Status==SalaryRequestStatus.PENDING)&&!world.Economy.AiSalaryRecoveryNeedsSave)return;
-        if(ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world)>0)
+        if (!world.Economy.SalaryRequests.Any(r => r.IsUnresolved) && !world.Economy.SalaryRecoveryNeedsSave) return;
+        bool changed = ClassicEconomyEngine.ReconcileSalaryRequests(world, clubId);
+        if (clubId == null)
+            changed |= ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world) > 0;
+        if (changed)
         {
             world.RoundVersion++;
-            world.Economy.AiSalaryRecoveryNeedsSave=true;
+            world.Economy.SalaryRecoveryNeedsSave = true;
         }
-        // Also retries durability when a previous AI recovery changed the cache but its save failed.
-        if(world.Economy.AiSalaryRecoveryNeedsSave)
+        if (world.Economy.SalaryRecoveryNeedsSave)
         {
-            await _repository.SaveWorldAsync(world,CancellationToken.None);
-            world.Economy.AiSalaryRecoveryNeedsSave=false;
+            await repository.SaveWorldAsync(world, CancellationToken.None);
+            world.Economy.SalaryRecoveryNeedsSave = false;
         }
     }
 
-    private static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
+    internal static bool CheckAndStartRoundIfAllReadyInternal(GameWorld world)
     {
         if (world.InitialLobby is {StartedAt:null} || world.InitialLobby!=null && world.HumanCoaches.Count!=world.MaxHumans) return false;
         if (world.RoundState != RoundState.PREPARING) return false;
         if (world.HumanCoaches.Count == 0) return false;
-        ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world);
         if(SalarySeasonTransitionEngine.BlockingReason(world)!=null)return false;
         ClassicForceEvolutionEngine.PrepareRound(world);
         DisciplineEngine.EnsureMigrated(world);
@@ -1085,7 +1087,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 return BuildLiveRoundSnapshotDto(world);
             }
 
-            await RecoverAiSalaryDecisionsAsync(world);
+            await RecoverSalaryDecisionsAsync(world, _repository);
             SalarySeasonTransitionEngine.RequireResolved(world);
 
             foreach (var h in world.HumanCoaches)

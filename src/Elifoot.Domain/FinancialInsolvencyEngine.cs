@@ -56,7 +56,7 @@ public static partial class ClassicEconomyEngine
             if(!w.Economy.Rules.SeasonContractsEnabled&&Ordinal(w)-crisis.LastAuctionOrdinal<w.Economy.Rules.InsolvencyAuctionCooldownRounds)continue;
             var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
             var p=squad.Where(p=>!IsSeasonRenewed(w,p)&&!AuctionReserved(w,p.Id)
-                    &&!w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING)
+                    &&!w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.IsUnresolved)
                     &&SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove)
                 .OrderByDescending(p=>p.Strength).ThenByDescending(p=>p.SalaryPerRound).ThenBy(p=>p.Id).FirstOrDefault();
             if(p==null){Record("NO_ELIGIBLE_PLAYER");continue;}

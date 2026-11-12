@@ -32,7 +32,7 @@ public class ClassicEconomyState
     public List<string> CoverageWarnings { get; set; } = new();
     [JsonIgnore] public HashSet<string> ContractKeys { get; } = new();
     [JsonIgnore] public int PendingCacheCount { get; set; } = -1;
-    [JsonIgnore] public bool AiSalaryRecoveryNeedsSave { get; set; }
+    [JsonIgnore] public bool SalaryRecoveryNeedsSave { get; set; }
     [JsonIgnore] public Dictionary<Guid,List<SalaryRaiseRequest>> PendingByPlayer { get; set; } = new();
 }
 public class ClassicEconomyRules
@@ -71,6 +71,7 @@ public class SalaryRaiseRequest
     public string Reason { get; set; } = "";
     public string TriggerKey { get; set; } = "";
     public SalaryRequestStatus Status { get; set; }
+    [JsonIgnore] public bool IsUnresolved => Status is SalaryRequestStatus.PENDING or SalaryRequestStatus.QUEUED;
     public string? Resolution { get; set; }
     public Guid? AuctionId { get; set; }
     public bool Mandatory { get; set; }

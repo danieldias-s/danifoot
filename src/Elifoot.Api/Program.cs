@@ -753,6 +753,8 @@ app.MapPost("/api/worlds/{worldId:guid}/players/{playerId:guid}/renew", async (
 app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
     Guid worldId,
     Guid clubId,
+    Guid? coachId,
+    IConfiguration configuration,
     IWorldRepository repo,
     CancellationToken ct) =>
 {
@@ -765,6 +767,12 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
     if (club == null) return Results.NotFound();
 
     ClassicEconomyEngine.EnsureMigrated(world);
+    bool controlsClub = coachId.HasValue && club.HumanCoachId == coachId
+        && world.HumanCoaches.Any(c => c.Id == coachId && c.CurrentClubId == clubId);
+    if (!controlsClub && AccountLogin.Enabled(configuration))
+        return Results.StatusCode(StatusCodes.Status403Forbidden);
+    if (controlsClub) await MultiplayerRoundOrchestrator.RecoverSalaryDecisionsAsync(world, repo, clubId);
+
     var credit=ClassicEconomyEngine.AssessCredit(world,club);
     var ledger = world.Transactions
         .Where(t => t.ClubId == clubId)
@@ -801,8 +809,10 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}/finances", async (
         loans,
         credit,
         roundVersion=world.RoundVersion,
-        salaryRequests=world.Economy.SalaryRequests.Where(r=>r.ClubId==clubId).OrderByDescending(r=>r.Season).ThenByDescending(r=>r.Round).ToList(),
-        contracts=world.Economy.ContractHistory.Where(r=>r.ClubId==clubId).ToList(),
+        salaryRequests=controlsClub ? world.Economy.SalaryRequests
+            .Where(r=>r.ClubId==clubId&&r.Status!=SalaryRequestStatus.QUEUED)
+            .OrderByDescending(r=>r.Season).ThenByDescending(r=>r.Round).ToList() : [],
+        contracts=controlsClub ? world.Economy.ContractHistory.Where(r=>r.ClubId==clubId).ToList() : [],
         insolvency=world.Economy.Crises.GetValueOrDefault(clubId),
         negativeCash=new {
             principal=Math.Max(0,-club.CashBalance),

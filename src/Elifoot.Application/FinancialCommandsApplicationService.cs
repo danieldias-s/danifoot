@@ -28,21 +28,32 @@ public sealed partial class ClubAndMarketApplicationService
                 await _repository.SaveWorldAsync(w,CancellationToken.None);
                 return JsonSerializer.Deserialize<T>(receipt.ResultJson,CommandJson)!;
             }
-            if(!ClassicEconomyEngine.Safe(w)&&!(operation=="SALARY"&&w.RoundState==RoundState.FINISHED&&w.RoundNumber>=w.TotalRoundsInSeason))
+            bool salaryDecision = operation == "SALARY";
+            if (!(salaryDecision ? ClassicEconomyEngine.CanRespondSalary(w) : ClassicEconomyEngine.Safe(w)))
                 return fail("Operações financeiras disponíveis somente entre partidas.");
-            if(operation!="SALARY"&&coach!.IsReadyForRound&&w.RoundState==RoundState.PREPARING)return fail("Retire o pronto antes de alterar as finanças.");
+            if(!salaryDecision&&coach!.IsReadyForRound&&w.RoundState==RoundState.PREPARING)return fail("Retire o pronto antes de alterar as finanças.");
             if(operation=="BUY" && Guid.TryParse(payload.Split('|')[0],out var buyingPlayer) &&
                 !w.Players.Any(p=>p.Id==buyingPlayer&&p.IsListedForTransfer&&p.ClubId!=null&&p.AskingPrice.HasValue))
                 return fail("JOGADOR JÁ VENDIDO.");
-            if(version.HasValue&&version!=w.RoundVersion)return fail("A sala mudou. Atualize antes de confirmar a operação.");
+            // Salary decisions are scoped to the persisted request and revalidate its terms under this lock.
+            if(!salaryDecision&&version.HasValue&&version!=w.RoundVersion)return fail("A sala mudou. Atualize antes de confirmar a operação.");
+            if (salaryDecision) await MultiplayerRoundOrchestrator.RecoverSalaryDecisionsAsync(w, _repository, c.Id);
             ct.ThrowIfCancellationRequested();
             var result=await action(key);
             if(result is ITuple tuple&&tuple[0] is true)
             {
                 w.Economy.Commands[receiptKey]=new("APP:"+operation,payload,null,null,JsonSerializer.Serialize(result,CommandJson));
                 w.RoundVersion++;
+                bool checkReady = salaryDecision && w.RoundState == RoundState.PREPARING
+                    && SalarySeasonTransitionEngine.BlockingReason(w) == null
+                    && w.HumanCoaches.All(h => h.IsReadyForRound || h.IsAutoMode);
+                bool started = checkReady && MultiplayerRoundOrchestrator.CheckAndStartRoundIfAllReadyInternal(w);
                 // Once accepted under the room lock, a disconnected client cannot cancel durability.
                 await _repository.SaveWorldAsync(w,CancellationToken.None);
+                if (started)
+                    await _publisher.PublishRoundStateChangedAsync(w.Id, MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(w), ct);
+                if (checkReady)
+                    await _publisher.PublishReadyCounterUpdatedAsync(w.Id, MultiplayerRoundOrchestrator.BuildReadyCounterDto(w), ct);
                 await _publisher.PublishMarketUpdatedAsync(w.Id,"Finanças atualizadas.",ct);
             }
             return result;
@@ -97,7 +108,8 @@ public sealed partial class ClubAndMarketApplicationService
         =>Finance(worldId,coachId,"SALARY",$"{requestId}:{accept}",key,expectedRoundVersion,e=>(false,e),async k=>{
             var w=(await _repository.GetWorldAsync(worldId,ct))!;
             var result=ClassicEconomyEngine.RespondSalary(w,w.Clubs.First(c=>c.Id==clubId),requestId,accept,k);
-            var request=w.Economy.SalaryRequests.FirstOrDefault(r=>r.Id==requestId);
+            var request=w.Economy.SalaryRequests.FirstOrDefault(r=>r.Id==requestId&&r.ClubId==clubId
+                &&r.Status is SalaryRequestStatus.ACCEPTED or SalaryRequestStatus.REFUSED);
             if(result.Success&&request!=null)request.ResolvedByAccountId??=accountId;
             return result;},ct,clubId);
     public Task<(bool Success,string? Error)> StadiumCommandAsync(Guid worldId,Guid coachId,Guid clubId,bool expand,int seats,string key,CancellationToken ct=default,long? expectedRoundVersion=null)

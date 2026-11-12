@@ -237,6 +237,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   List<dynamic> _topScorers = [];
   Map<String, dynamic>? _marketData;
   Map<String, dynamic>? _financesData;
+  int _secondaryDataRequest = 0;
+  int _appliedSecondaryDataRequest = 0;
   Map<String, dynamic>? _rankingData;
   Map<String, dynamic>? _invitationsData;
 
@@ -368,7 +370,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         return;
       }
       final previousClub = _myClubId;
-      final prevState = _snapshot?['roundState'];
+      final previousVersion = _snapshot?['roundVersion'] as num? ?? 0;
       final newState = snap['roundState'];
       setState(() {
         _snapshot = _acceptSnapshot(snap);
@@ -391,8 +393,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         );
         _refreshClubAndSecondaryData();
       }
-      if (prevState != newState &&
-          (newState == 'PREPARING' || newState == 'RESULTS')) {
+      if (previousClub == _myClubId &&
+          const ['PREPARING', 'RESULTS', 'FINISHED'].contains(newState) &&
+          (snap['roundVersion'] as num? ?? 0) > previousVersion) {
         _refreshClubAndSecondaryData();
       }
     };
@@ -511,6 +514,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       setState(() {
         if (_worldId != worldId) {
           _snapshot = null;
+          _financesData = null;
+          _myClubDetail = null;
           _cancelPostRoundPreparation();
           _roundView.reset();
         }
@@ -541,43 +546,41 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _refreshClubAndSecondaryData() async {
-    if (_worldId == null) return;
-    final appearanceWorld = _worldId, appearanceClub = _myClubId;
+    final world = _worldId, club = _myClubId, coach = _coachId;
+    if (world == null) return;
+    final request = ++_secondaryDataRequest;
     try {
       final standings = await widget.apiClient.getStandings(
-        _worldId!,
+        world,
         _selectedDivisionTier,
       );
-      final cup = await widget.apiClient.getCupFixtures(_worldId!);
-      final scorers = await widget.apiClient.getTopScorers(_worldId!);
-      final market = await widget.apiClient.getMarket(_worldId!);
-      final ranking = await widget.apiClient.getRankingAndHistory(_worldId!);
-      final calendar = await widget.apiClient.getCalendar(_worldId!);
-      await _loadClubPalettes(_worldId!);
+      final cup = await widget.apiClient.getCupFixtures(world);
+      final scorers = await widget.apiClient.getTopScorers(world);
+      final market = await widget.apiClient.getMarket(world);
+      final ranking = await widget.apiClient.getRankingAndHistory(world);
+      final calendar = await widget.apiClient.getCalendar(world);
+      await _loadClubPalettes(world);
 
       Map<String, dynamic>? clubDetail;
       Map<String, dynamic>? finances;
-      if (_myClubId != null && _myClubId!.isNotEmpty) {
-        clubDetail = await widget.apiClient.getClubDetail(
-          _worldId!,
-          _myClubId!,
-        );
-        finances = await widget.apiClient.getClubFinances(
-          _worldId!,
-          _myClubId!,
-        );
+      if (club != null && club.isNotEmpty) {
+        clubDetail = await widget.apiClient.getClubDetail(world, club);
+        finances = await widget.apiClient.getClubFinances(world, club);
       }
 
       Map<String, dynamic>? invites;
-      if (_coachId != null) {
-        invites = await widget.apiClient.getInvitations(_worldId!, _coachId!);
+      if (coach != null) {
+        invites = await widget.apiClient.getInvitations(world, coach);
       }
 
       if (!mounted ||
-          _worldId != appearanceWorld ||
-          _myClubId != appearanceClub) {
+          _worldId != world ||
+          _myClubId != club ||
+          _coachId != coach ||
+          request < _appliedSecondaryDataRequest) {
         return;
       }
+      _appliedSecondaryDataRequest = request;
       setState(() {
         _standings = standings;
         _cupFixtures = cup;
@@ -627,15 +630,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       }
       await widget.appearance?.activate(
         widget.apiClient,
-        _coachId,
-        _worldId,
-        _myClubId,
+        coach,
+        world,
+        club,
         clubDetail?['colorPalette'] is Map
             ? Map<String, dynamic>.from(clubDetail!['colorPalette'] as Map)
             : null,
       );
     } catch (e) {
-      if (mounted) setState(() => _statusBanner = 'Aviso: $e');
+      if (mounted &&
+          _worldId == world &&
+          _myClubId == club &&
+          _coachId == coach &&
+          request >= _appliedSecondaryDataRequest) {
+        setState(() => _statusBanner = 'Aviso: $e');
+      }
     }
   }
 
@@ -796,6 +805,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         !_sameCompletedRound(world, season, round)) {
       return;
     }
+    _postRoundTimer?.cancel();
     setState(() => _autoPreparingRound = true);
     try {
       final next = await widget.apiClient.advanceToNextRound(
@@ -807,29 +817,20 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       setState(() => _snapshot = _acceptSnapshot(next));
       await _refreshClubAndSecondaryData();
     } catch (error) {
-      if (error.toString().contains('SALARY_PENDING_')) {
-        if (mounted) {
-          setState(
-            () => _statusBanner = error.toString().replaceFirst(
-              'Exception: ',
-              '',
-            ),
-          );
-        }
-        await _refreshClubAndSecondaryData();
-        return;
-      }
       if (mounted &&
           _postRoundKey == key &&
           _sameCompletedRound(world, season, round)) {
+        final waitingForSalary = error.toString().contains('SALARY_PENDING_');
         setState(
-          () =>
-              _statusBanner = 'Reconectando para preparar a próxima rodada...',
+          () => _statusBanner = waitingForSalary
+              ? error.toString().replaceFirst('Exception: ', '')
+              : 'Reconectando para preparar a próxima rodada...',
         );
         _postRoundTimer = Timer(
-          const Duration(seconds: 2),
+          Duration(seconds: waitingForSalary ? 5 : 2),
           () => _prepareFollowingRound(world, season, round, key),
         );
+        if (waitingForSalary) unawaited(_refreshClubAndSecondaryData());
       }
     } finally {
       if (mounted && _worldId == world && _postRoundKey == key) {
@@ -1020,11 +1021,14 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   @override
   Widget build(BuildContext context) {
     final game = _buildGame(context);
+    final world = _worldId, club = _myClubId, coach = _coachId;
     final pending = (_financesData?['salaryRequests'] as List? ?? [])
-        .where((r) => r['status'] == 'PENDING' && r['clubId'] == _myClubId)
+        .where((r) => r['status'] == 'PENDING' && r['clubId'] == club)
         .firstOrNull;
     final safeHome =
-        _worldId != null &&
+        world != null &&
+        club != null &&
+        coach != null &&
         _myClubDetail != null &&
         !_matchLocked &&
         !_showMatchView &&
@@ -1058,39 +1062,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           classic: widget.presentation?.version == PresentationVersion.classic,
           onDecision: (accept) async {
             await widget.apiClient.respondSalaryRequest(
-              _worldId!,
-              _myClubId!,
-              _coachId!,
+              world,
+              club,
+              coach,
               pending['id'],
               accept,
             );
+            if (!mounted ||
+                _worldId != world ||
+                _myClubId != club ||
+                _coachId != coach) {
+              return;
+            }
             await _refreshClubAndSecondaryData();
-            if (const [
-              'RESULTS',
-              'FINISHED',
-            ].contains(_snapshot?['roundState'])) {
-              try {
-                final next = await widget.apiClient.advanceToNextRound(
-                  _worldId!,
-                  expectedSeasonNumber: (_snapshot!['seasonNumber'] as num)
-                      .toInt(),
-                  expectedRoundNumber: (_snapshot!['roundNumber'] as num)
-                      .toInt(),
-                );
-                if (mounted) {
-                  setState(() => _snapshot = _acceptSnapshot(next));
-                }
-                await _refreshClubAndSecondaryData();
-              } catch (error) {
-                if (mounted) {
-                  setState(
-                    () => _statusBanner = error.toString().replaceFirst(
-                      'Exception: ',
-                      '',
-                    ),
-                  );
-                }
-              }
+            final key = _postRoundKey;
+            if (key != null) {
+              await _prepareFollowingRound(
+                world,
+                (_snapshot!['seasonNumber'] as num).toInt(),
+                (_snapshot!['roundNumber'] as num).toInt(),
+                key,
+              );
             }
           },
         ),

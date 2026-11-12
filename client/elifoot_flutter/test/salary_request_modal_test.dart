@@ -47,6 +47,28 @@ class PendingSalaryApi extends GameplayPresentationApi {
 class PostRoundSalaryApi extends PendingSalaryApi {
   int blockedAdvances = 0;
   int successfulAdvances = 0;
+  bool otherPending = false;
+
+  @override
+  Future<Map<String, dynamic>> getClubFinances(
+    String world,
+    String club,
+  ) async {
+    final data = await super.getClubFinances(world, club);
+    return {
+      ...data,
+      'salaryRequests': [
+        if (otherPending)
+          {
+            'id': 'other-request',
+            'clubId': 'club-other',
+            'playerId': 'p-1',
+            'status': 'PENDING',
+          },
+        ...data['salaryRequests'] as List,
+      ],
+    };
+  }
 
   @override
   Future<Map<String, dynamic>> advanceToNextRound(
@@ -54,7 +76,7 @@ class PostRoundSalaryApi extends PendingSalaryApi {
     int? expectedSeasonNumber,
     int? expectedRoundNumber,
   }) async {
-    if (pending && !resolved) {
+    if ((pending && !resolved) || otherPending) {
       blockedAdvances++;
       throw Exception('SALARY_PENDING_TRANSITION: Decisão salarial pendente.');
     }
@@ -68,6 +90,42 @@ class PostRoundSalaryApi extends PendingSalaryApi {
 }
 
 void main() {
+  testWidgets('Other club does not reopen the modal or strand the round', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1024, 1000);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final api = PostRoundSalaryApi();
+    await join(tester, api);
+    await api.emit('RUNNING_FIRST_HALF');
+    await tester.pumpAndSettle();
+    api.pending = true;
+    api.otherPending = true;
+    await api.emit('RESULTS');
+    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 5));
+    await tester.pumpAndSettle();
+    expect(find.byType(SalaryRequestModal), findsOneWidget);
+
+    await tester.tap(find.text('ACEITAR'));
+    await tester.pumpAndSettle();
+    expect(api.resolved, isTrue);
+    expect(api.successfulAdvances, 0);
+    expect(find.byType(SalaryRequestModal), findsNothing);
+
+    // The other client committed its decision and disconnected before requesting the next round.
+    api.otherPending = false;
+    await tester.pump(const Duration(seconds: 5));
+    await tester.pumpAndSettle();
+    expect(api.successfulAdvances, 1);
+    expect(api.currentRound, 2);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox());
+    api.disconnectRealtime();
+  });
+
   for (final classic in [true, false]) {
     for (final completed in ['RESULTS', 'FINISHED']) {
       testWidgets(

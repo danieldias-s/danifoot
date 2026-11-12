@@ -19,7 +19,7 @@ public static class MarketValidationEngine
         if (seller == null) return Fail("MARKET_CLUB_NOT_FOUND", "Clube vendedor não encontrado.");
         if (player == null) return Fail("MARKET_PLAYER_NOT_FOUND", "Jogador não encontrado.");
         if (player.ClubId != sellerId) return Fail("MARKET_OWNERSHIP", "O jogador não pertence mais ao clube vendedor.");
-        if(world.Economy.SalaryRequests.Any(r=>r.PlayerId==playerId&&r.Status==SalaryRequestStatus.PENDING))
+        if(world.Economy.SalaryRequests.Any(r=>r.PlayerId==playerId&&r.IsUnresolved))
             return Fail("SALARY_PENDING_DECISION", "Resolva o pedido espontâneo antes de vender este jogador.");
         if (ClassicEconomyEngine.IsSeasonRenewed(world, player))
             return Fail("MARKET_RENEWED", "Jogador renovado está protegido de qualquer venda ou leilão nesta temporada.");

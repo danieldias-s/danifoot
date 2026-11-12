@@ -20,7 +20,7 @@ public sealed partial class ClubAndMarketApplicationService
             if(!ClassicEconomyEngine.Safe(w)||coach!.IsReadyForRound)return(null,"Renovação disponível entre partidas e sem pronto.");
             if(ClassicEconomyEngine.IsSeasonRenewed(w,p))return(null,"Jogador já renovado nesta temporada.");
             if(w.Auctions.Any(a=>!a.IsClosed&&a.PlayerId==p.Id))return(null,"Jogador reservado para leilão.");
-            if(w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.Status==SalaryRequestStatus.PENDING))
+            if(w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.IsUnresolved))
                 return(null,"SALARY_PENDING_DECISION: Resolva primeiro o pedido espontâneo.");
             if(p.SalaryPerRound<0||p.SalaryPerRound!=Math.Round(p.SalaryPerRound,2))return(null,"CONTRACT_VALUE_INVALID: Salário vigente inválido.");
             if(offeredSalary is decimal offer&&(offer<0||offer!=Math.Round(offer,2)))

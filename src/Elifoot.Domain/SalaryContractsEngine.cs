@@ -7,11 +7,11 @@ public static partial class ClassicEconomyEngine
     {
         if(w.Economy.PendingCacheCount!=w.Economy.SalaryRequests.Count)
         {
-            w.Economy.PendingByPlayer=w.Economy.SalaryRequests.Where(r=>r.Status==SalaryRequestStatus.PENDING)
+            w.Economy.PendingByPlayer=w.Economy.SalaryRequests.Where(r=>r.IsUnresolved)
                 .GroupBy(r=>r.PlayerId).ToDictionary(g=>g.Key,g=>g.ToList());
             w.Economy.PendingCacheCount=w.Economy.SalaryRequests.Count;
         }
-        return w.Economy.PendingByPlayer.GetValueOrDefault(playerId)?.Where(r=>r.Status==SalaryRequestStatus.PENDING)??[];
+        return w.Economy.PendingByPlayer.GetValueOrDefault(playerId)?.Where(r=>r.IsUnresolved)??[];
     }
     public static void RecordContract(GameWorld w,Player p,decimal previousSalary,string reason,string key,decimal signingFee=0)
     {
@@ -21,7 +21,7 @@ public static partial class ClassicEconomyEngine
         w.Economy.ContractHistory.Add(new(key,p.Id,p.ClubId,w.SeasonNumber,w.RoundNumber,previousSalary,p.SalaryPerRound,
             p.ContractRoundsRemaining,reason,signingFee,p.SalaryPerRound*Math.Max(0,p.ContractRoundsRemaining)));
         w.Economy.SalaryEligibility.Remove(p.Id);
-        foreach(var pending in PendingForPlayer(w,p.Id))
+        foreach(var pending in PendingForPlayer(w,p.Id).Where(r=>r.Status==SalaryRequestStatus.PENDING))
         {
             pending.Status=pending.ClubId==p.ClubId?SalaryRequestStatus.ACCEPTED:SalaryRequestStatus.REFUSED;
             pending.Resolution=pending.ClubId==p.ClubId?"SUPERSEDED_BY_NEGOTIATED_CONTRACT":"PLAYER_TRANSFERRED";
@@ -98,12 +98,14 @@ public static partial class ClassicEconomyEngine
         }
         w.Economy.StrengthHistoryCursor=w.PlayerStrengthHistory.Count;
         var clubsPlaying=matches.Where(Played).SelectMany(m=>new[]{m.HomeClubId,m.AwayClubId}).ToHashSet();
-        var clubsWithPending=w.Economy.SalaryRequests.Where(r=>r.Status==SalaryRequestStatus.PENDING).Select(r=>r.ClubId).ToHashSet();
+        var clubsWithPending=w.Economy.SalaryRequests.Where(r=>r.IsUnresolved).Select(r=>r.ClubId).ToHashSet();
+        var clubsWithRequestThisRound=w.Economy.SalaryRequests
+            .Where(r=>r.Season==w.SeasonNumber&&r.Round==w.RoundNumber).Select(r=>r.ClubId).ToHashSet();
         foreach(var c in w.Clubs.Where(c=>clubsPlaying.Contains(c.Id)).OrderBy(c=>c.Id))
         {
             string roundKey=$"{c.Id}:S{w.SeasonNumber}:R{w.RoundNumber}";
             if(!w.Economy.SalaryRequestCheckedRounds.Add(roundKey))continue;
-            if(w.Economy.SalaryRequestRounds.Contains(roundKey))continue;
+            if(w.Economy.SalaryRequestRounds.Contains(roundKey)||clubsWithRequestThisRound.Contains(c.Id))continue;
             if(clubsWithPending.Contains(c.Id))continue;
             var candidates=w.Players.Where(p=>p.ClubId==c.Id&&p.ContractRoundsRemaining<=0&&!IsSeasonRenewed(w,p)
                     &&!p.IsListedForTransfer&&!AuctionReserved(w,p.Id)&&w.Economy.SalaryEligibility.TryGetValue(p.Id,out var e)&&e.ClubId==c.Id&&e.FromSeason<=w.SeasonNumber)
@@ -128,33 +130,98 @@ public static partial class ClassicEconomyEngine
         decimal cap=w.Economy.Rules.MaximumSalaryRaiseFraction*(c.CashBalance<0?.5m:1m);
         return Math.Round(Math.Min(reference,Math.Max(p.SalaryPerRound+1,p.SalaryPerRound*(1+cap))),0);
     }
+    public static bool CanRespondSalary(GameWorld world) => Safe(world) || world.RoundState == RoundState.FINISHED;
+
+    private static (string Code, string Message)? ValidateSalaryRequest(GameWorld w, SalaryRaiseRequest request, Player? player)
+    {
+        if (player == null || player.ClubId != request.ClubId)
+            return ("PLAYER_LEFT_CLUB", "O jogador já não pertence a este clube.");
+        if (request.WorldId != Guid.Empty && request.WorldId != w.Id)
+            return ("SALARY_AUTHORITY", "SALARY_AUTHORITY: Pedido pertence a outro mundo.");
+        if (request.Season > w.SeasonNumber)
+            return ("SALARY_SEASON_INVALID", "SALARY_SEASON_INVALID: Pedido pertence a uma temporada futura.");
+        if ((!w.Economy.Rules.SeasonContractsEnabled && player.ContractRoundsRemaining > 0) || IsSeasonRenewed(w, player))
+            return ("CONTRACT_IN_FORCE", "Jogador já possui contrato vigente.");
+        if (AuctionReserved(w, player.Id))
+            return ("PLAYER_IN_AUCTION", "Jogador já está em leilão.");
+        if (request.CurrentSalary < 0 || request.RequestedSalary <= request.CurrentSalary
+            || request.RequestedSalary != Math.Round(request.RequestedSalary, 2))
+            return ("SALARY_VALUE_INVALID", "SALARY_VALUE_INVALID: Salário solicitado inválido.");
+        if (player.SalaryPerRound != request.CurrentSalary)
+            return ("SALARY_TERMS_CHANGED", "SALARY_TERMS_CHANGED: O salário vigente mudou; o pedido foi preservado para revisão.");
+        try { _ = request.RequestedSalary * SeasonContractRounds(w); }
+        catch (OverflowException) { return ("SALARY_VALUE_INVALID", "SALARY_VALUE_INVALID: Salário excede o limite financeiro."); }
+        return null;
+    }
+
+    // Older saves can contain overlapping requests. Keep valid requests from distinct rounds in order.
+    public static bool ReconcileSalaryRequests(GameWorld world, Guid? clubId = null)
+    {
+        if (!CanRespondSalary(world)) return false;
+        var requests = world.Economy.SalaryRequests;
+        var unresolved = requests.Where(r => r.IsUnresolved && (clubId == null || r.ClubId == clubId))
+            .OrderBy(r => r.Season).ThenBy(r => r.Round).ThenBy(r => r.CreatedAtUtc).ThenBy(r => r.Id).ToList();
+        if (unresolved.Count == 0) return false;
+
+        var decided = requests.Where(r => r.Status is SalaryRequestStatus.ACCEPTED or SalaryRequestStatus.REFUSED).ToList();
+        var usedRounds = decided.Select(r => (r.ClubId, r.Season, r.Round)).ToHashSet();
+        var usedIds = decided.Select(r => (r.ClubId, r.Id)).ToHashSet();
+        var clubs = world.Clubs.Select(c => c.Id).ToHashSet();
+        var activeClubs = new HashSet<Guid>();
+        bool changed = false;
+        foreach (var request in unresolved)
+        {
+            var round = (request.ClubId, request.Season, request.Round);
+            var id = (request.ClubId, request.Id);
+            bool knownRound = request.Season > 0 && request.Round > 0;
+            string? cancellation;
+            if (!clubs.Contains(request.ClubId))
+                cancellation = "CLUB_NOT_FOUND";
+            else if ((knownRound && usedRounds.Contains(round)) || usedIds.Contains(id))
+                cancellation = "DUPLICATE_SALARY_REQUEST";
+            else
+                cancellation = ValidateSalaryRequest(world, request, world.Players.FirstOrDefault(p => p.Id == request.PlayerId))?.Code;
+            if (cancellation != null)
+            {
+                request.Status = SalaryRequestStatus.CANCELLED;
+                request.Resolution = cancellation;
+                request.ResolvedBy = "SYSTEM";
+                request.ResolvedAtUtc = DateTime.UtcNow;
+                changed = true;
+                continue;
+            }
+
+            if (knownRound) usedRounds.Add(round);
+            usedIds.Add(id);
+            var status = activeClubs.Add(request.ClubId) ? SalaryRequestStatus.PENDING : SalaryRequestStatus.QUEUED;
+            if (request.Status == status) continue;
+            request.Status = status;
+            changed = true;
+        }
+        return changed;
+    }
+
     public static (bool Success,string? Error) RespondSalary(GameWorld w,Club c,Guid requestId,bool accept,string key,string actor="HUMAN")
     {
         if(!w.Clubs.Contains(c)||actor=="AI"&&!MarketValidationEngine.CanActAsAi(w,c))return(false,"SALARY_AUTHORITY: Responsável não controla este clube.");
         EnsureMigrated(w);string payload=$"{requestId}:{accept}";var receipt=Receipt(w,c,key,"SALARY_DECISION",payload);
         if(receipt.Found)return(receipt.Valid,receipt.Valid?receipt.Receipt?.Message:"Chave usada por outra operação.");
-        if(string.IsNullOrWhiteSpace(key)||!Safe(w)&&!(w.RoundState==RoundState.FINISHED&&w.RoundNumber>=w.TotalRoundsInSeason))return(false,"Resposta salarial disponível somente entre partidas.");
-        var request=w.Economy.SalaryRequests.FirstOrDefault(r=>r.Id==requestId&&r.ClubId==c.Id);
-        if(!w.Clubs.Contains(c))return(false,"SALARY_AUTHORITY: Clube não pertence a este mundo.");
+        if(string.IsNullOrWhiteSpace(key)||!CanRespondSalary(w))return(false,"Resposta salarial disponível somente entre partidas.");
+        var request=w.Economy.SalaryRequests.FirstOrDefault(r=>r.Id==requestId&&r.ClubId==c.Id&&r.Status!=SalaryRequestStatus.CANCELLED);
         if(request==null)return(false,"Pedido não pertence ao clube.");
+        if(request.Status==SalaryRequestStatus.QUEUED)return(false,"Resolva primeiro o pedido salarial pendente do seu clube.");
         if(request.Status!=SalaryRequestStatus.PENDING)
         {
             bool same=accept?request.Status==SalaryRequestStatus.ACCEPTED:request.Status==SalaryRequestStatus.REFUSED;
             if(same)Remember(w,c,key,"SALARY_DECISION",payload,request.Id);
             return(same,same?null:"Pedido já resolvido.");
         }
-        var p=w.Players.FirstOrDefault(p=>p.Id==request.PlayerId&&p.ClubId==c.Id);
-        if(p==null)return(false,"O jogador já não pertence a este clube.");
-        if(request.WorldId!=Guid.Empty&&request.WorldId!=w.Id)return(false,"SALARY_AUTHORITY: Pedido pertence a outro mundo.");
-        if(request.Season>w.SeasonNumber)return(false,"SALARY_SEASON_INVALID: Pedido pertence a uma temporada futura.");
-        if(!w.Economy.Rules.SeasonContractsEnabled&&p.ContractRoundsRemaining>0||IsSeasonRenewed(w,p))return(false,"Jogador já possui contrato vigente.");
-        if(AuctionReserved(w,p.Id))return(false,"Jogador já está em leilão.");
-        if(request.CurrentSalary<0||request.RequestedSalary<=request.CurrentSalary
-            ||request.RequestedSalary<0||request.RequestedSalary!=Math.Round(request.RequestedSalary,2))
-            return(false,"SALARY_VALUE_INVALID: Salário solicitado inválido.");
-        if(p.SalaryPerRound!=request.CurrentSalary)return(false,"SALARY_TERMS_CHANGED: O salário vigente mudou; o pedido foi preservado para revisão.");
-        try { _=request.RequestedSalary*Math.Max(1,SeasonContractRounds(w)); }
-        catch(OverflowException){return(false,"SALARY_VALUE_INVALID: Salário excede o limite financeiro.");}
+        var player=w.Players.FirstOrDefault(p=>p.Id==request.PlayerId&&p.ClubId==c.Id);
+        if (ValidateSalaryRequest(w, request, player) is { } validation) return (false, validation.Message);
+        ReconcileSalaryRequests(w, c.Id);
+        if (request.Status != SalaryRequestStatus.PENDING)
+            return (false, "Resolva primeiro o pedido salarial pendente do seu clube.");
+        var p=player!;
         var squad=w.Players.Where(p=>p.ClubId==c.Id).ToList();
         bool mandatory=!SquadValidator.CanRemovePlayerFromSquad(squad,p.Id).CanRemove;
         string contractKey=$"salary:{request.Id}:accepted";
@@ -162,25 +229,40 @@ public static partial class ClassicEconomyEngine
         mutation.TrackCommand(c,key);
         try
         {
-        request.Mandatory=mandatory;
-        if(accept)
-        {
-            decimal previous=p.SalaryPerRound;p.SalaryPerRound=request.RequestedSalary;
-            request.Status=SalaryRequestStatus.ACCEPTED;request.Resolution="SPONTANEOUS_"+actor+"_ACCEPTED";
-            request.ResolvedAtUtc=DateTime.UtcNow;request.ResolvedBy=actor;request.DecisionVersion++;
-            RecordContract(w,p,previous,request.Resolution,contractKey);
-            Remember(w,c,key,"SALARY_DECISION",payload,request.Id);mutation.Commit();return(true,null);
-        }
-        if(mandatory)return(false,"Elenco mínimo: recomponha o elenco antes de recusar este pedido.");
-        var auction=NewSpecialAuction(w,p,c,AuctionReason.SalaryRenewalRefused,$"salary:{request.Id}:refused");
-        request.Status=SalaryRequestStatus.REFUSED;request.Resolution=actor+"_REFUSED";
-        request.ResolvedAtUtc=DateTime.UtcNow;request.ResolvedBy=actor;request.DecisionVersion++;
-        c.PreferredStarterIds.Remove(p.Id);c.PreferredBenchIds.Remove(p.Id);
-        p.ClubId=null;p.ContractRoundsRemaining=0;p.NegotiatedContractProtected=false;p.IsListedForTransfer=false;p.AskingPrice=null;
-        request.AuctionId=auction.Id;Remember(w,c,key,"SALARY_DECISION",payload,request.Id);mutation.Commit();return(true,null);
+            request.Mandatory = mandatory;
+            if (accept)
+            {
+                decimal previous = p.SalaryPerRound;
+                p.SalaryPerRound = request.RequestedSalary;
+                request.Status = SalaryRequestStatus.ACCEPTED;
+                request.Resolution = "SPONTANEOUS_" + actor + "_ACCEPTED";
+                RecordContract(w, p, previous, request.Resolution, contractKey);
+            }
+            else
+            {
+                if (mandatory) return (false, "Elenco mínimo: recomponha o elenco antes de recusar este pedido.");
+                var auction = NewSpecialAuction(w, p, c, AuctionReason.SalaryRenewalRefused, $"salary:{request.Id}:refused");
+                request.Status = SalaryRequestStatus.REFUSED;
+                request.Resolution = actor + "_REFUSED";
+                c.PreferredStarterIds.Remove(p.Id);
+                c.PreferredBenchIds.Remove(p.Id);
+                p.ClubId = null;
+                p.ContractRoundsRemaining = 0;
+                p.NegotiatedContractProtected = false;
+                p.IsListedForTransfer = false;
+                p.AskingPrice = null;
+                request.AuctionId = auction.Id;
+            }
+            request.ResolvedAtUtc = DateTime.UtcNow;
+            request.ResolvedBy = actor;
+            request.DecisionVersion++;
+            Remember(w, c, key, "SALARY_DECISION", payload, request.Id);
+            mutation.Commit();
         }
         catch(Exception error) when(error is ArithmeticException or InvalidOperationException or ArgumentException or NullReferenceException or IndexOutOfRangeException)
         {return(false,$"SALARY_OPERATION_FAILED: Decisão não concluída ({error.GetType().Name}).");}
+        ReconcileSalaryRequests(w, c.Id);
+        return (true, null);
     }
     public static void AfterSportingRound(GameWorld w,IReadOnlyList<MatchFixture> matches)
     {
@@ -188,19 +270,20 @@ public static partial class ClassicEconomyEngine
     }
     public static int ResolvePendingAiSalaryRequests(GameWorld w)
     {
-        if(!Safe(w)&&!(w.RoundState==RoundState.FINISHED&&w.RoundNumber>=w.TotalRoundsInSeason))return 0;
+        if(!CanRespondSalary(w))return 0;
         int resolved=0;
-        foreach(var c in w.Clubs.Where(c=>MarketValidationEngine.CanActAsAi(w,c)).OrderBy(c=>c.Id))
+        var pendingClubs = w.Economy.SalaryRequests.Where(r => r.IsUnresolved).Select(r => r.ClubId).ToHashSet();
+        foreach(var c in w.Clubs.Where(c=>pendingClubs.Contains(c.Id)&&MarketValidationEngine.CanActAsAi(w,c)).OrderBy(c=>c.Id))
         {
-            var pending=w.Economy.SalaryRequests.Where(r=>r.ClubId==c.Id&&r.Status==SalaryRequestStatus.PENDING).ToList();
-            if(pending.Count==0)continue;
+            ReconcileSalaryRequests(w, c.Id);
             decimal payroll=w.Players.Where(p=>p.ClubId==c.Id).Sum(p=>p.SalaryPerRound);
             var credit=AssessCredit(w,c);decimal reserve=payroll*3+credit.InterestPerMatch*2+c.Stadium.BuiltCapacity*.7m;
-            foreach(var r in pending)
+            while (w.Economy.SalaryRequests.FirstOrDefault(r => r.ClubId == c.Id && r.Status == SalaryRequestStatus.PENDING) is { } r)
             {
                 bool afford=c.CashBalance>=reserve+(r.RequestedSalary-r.CurrentSalary)*r.RenewalMatches;
                 bool canRemove=SquadValidator.CanRemovePlayerFromSquad(w.Players.Where(p=>p.ClubId==c.Id).ToList(),r.PlayerId).CanRemove;
-                if(RespondSalary(w,c,r.Id,afford||!canRemove,"ai-salary:"+r.Id,"AI").Success)resolved++;
+                if(!RespondSalary(w,c,r.Id,afford||!canRemove,"ai-salary:"+r.Id,"AI").Success || r.IsUnresolved)break;
+                resolved++;
             }
         }
         return resolved;

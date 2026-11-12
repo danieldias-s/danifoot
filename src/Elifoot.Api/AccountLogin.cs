@@ -152,7 +152,7 @@ public static class AccountLogin
             var memberships = world.HumanCoaches.Where(x => owned.Contains(x.Id)).ToList();
             if (path.EndsWith("/join", StringComparison.Ordinal)) return memberships.Count == 0 || memberships.Any(x => x.Id == actor);
             if (path.Contains("/finances", StringComparison.Ordinal) && http.Request.RouteValues.TryGetValue("clubId", out var club))
-                return memberships.Any(x => x.CurrentClubId?.ToString() == club?.ToString());
+                return memberships.Any(x => x.Id == actor && x.CurrentClubId?.ToString() == club?.ToString());
             if (path.Contains("/editor/", StringComparison.Ordinal)) return memberships.Any(x => x.IsHost) || (world.InitialLobby != null && owned.Contains(world.InitialLobby.HostCoachId));
             if (!HttpMethods.IsGet(http.Request.Method) && memberships.All(x => x.Id != actor)) return false;
         }

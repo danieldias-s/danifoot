@@ -161,6 +161,48 @@ public class SalaryContractsV3Stage02BTests
         Assert.Equal(110,p.SalaryPerRound);Assert.False(ClassicEconomyEngine.IsSeasonRenewed(w,p));
     }
 
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task AnotherClubsRequestDoesNotPreventReadyButStillPreventsKickoff(bool withoutTactics)
+    {
+        var (world, otherCoach, owner, player, request) = Setup();
+        var ownerClub = world.Clubs.Single(c => c.Id == owner.CurrentClubId);
+        var otherClub = world.Clubs.Single(c => c.Id == otherCoach.CurrentClubId);
+        var repo = new InMemoryWorldRepository();
+        await repo.SaveWorldAsync(world);
+        var rounds = new MultiplayerRoundOrchestrator(repo, NullMatchRoomNotificationPublisher.Instance);
+
+        SubmitTacticsRequest Tactics(HumanCoach coach, Club club)
+        {
+            var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+            var formation = TacticalFormations.Resolve("4-4-2", world.AllowClassic505);
+            var (starters, bench) = AiManagerBrain.BuildStartersAndBench(squad, formation, world, club.LineupSelectionMode);
+            return new(world.Id, coach.Id, formation.Code, starters, bench, $"ready:{club.Id}", world.RoundVersion);
+        }
+
+        var blocked = await rounds.SubmitTacticsAsync(Tactics(owner, ownerClub));
+        Assert.False(blocked.Success);
+        Assert.Contains("SALARY_PENDING_TRANSITION", blocked.Error);
+        var ready = withoutTactics
+            ? await rounds.SubmitUnemployedReadyAsync(new(world.Id, otherCoach.Id, "ready", world.RoundVersion))
+            : await rounds.SubmitTacticsAsync(Tactics(otherCoach, otherClub));
+        Assert.True(ready.Success, ready.Error);
+        Assert.False(ready.RoundStarted);
+        Assert.True(otherCoach.IsReadyForRound);
+        Assert.Equal(RoundState.PREPARING, world.RoundState);
+
+        // A legacy save can contain submitted tactics even though the owner's request is still pending.
+        var ownerTactics = Tactics(owner, ownerClub);
+        owner.IsReadyForRound = true;
+        owner.SubmittedFormation = ownerTactics.Formation;
+        owner.SubmittedStarterIds = ownerTactics.StarterPlayerIds;
+        owner.SubmittedBenchIds = ownerTactics.BenchPlayerIds;
+        Assert.True((await Service(repo).RespondSalaryAsync(world.Id, owner.Id, ownerClub.Id, request.Id, true, "decision")).Success);
+        Assert.Equal(110, player.SalaryPerRound);
+        Assert.Equal(RoundState.RUNNING_FIRST_HALF, world.RoundState);
+    }
+
     [Fact] public async Task AdvanceRecoversOnlyAiLegacyRequestsAndNeverChoosesForAHuman()
     {
         var(w,b,s,p,r)=Setup();w.SeasonNumber=2;r.Season=1;w.RoundState=RoundState.RESULTS;w.RoundNumber=2;
@@ -188,12 +230,12 @@ public class SalaryContractsV3Stage02BTests
             Season=1,Round=1,CurrentSalary=100,RequestedSalary=110,RenewalMatches=20};w.Economy.SalaryRequests.Add(ai);
         var repo=new FailsOnce(w);var rounds=new MultiplayerRoundOrchestrator(repo,NullMatchRoomNotificationPublisher.Instance);
         await Assert.ThrowsAsync<IOException>(()=>rounds.AdvanceToNextRoundPreparationAsync(w.Id));
-        Assert.Equal(1,ai.DecisionVersion);Assert.True(w.Economy.AiSalaryRecoveryNeedsSave);
+        Assert.Equal(1,ai.DecisionVersion);Assert.True(w.Economy.SalaryRecoveryNeedsSave);
         Assert.All(JsonSerializer.Deserialize<GameWorld>(repo.Durable)!.Economy.SalaryRequests,x=>Assert.Equal(SalaryRequestStatus.PENDING,x.Status));
         await Assert.ThrowsAsync<SalarySeasonTransitionException>(()=>rounds.AdvanceToNextRoundPreparationAsync(w.Id));
         var durable=JsonSerializer.Deserialize<GameWorld>(repo.Durable)!;
         Assert.Equal(ai.Status,durable.Economy.SalaryRequests.Single(x=>x.Id==ai.Id).Status);
-        Assert.Equal(1,ai.DecisionVersion);Assert.False(w.Economy.AiSalaryRecoveryNeedsSave);
+        Assert.Equal(1,ai.DecisionVersion);Assert.False(w.Economy.SalaryRecoveryNeedsSave);
         Assert.Equal(SalaryRequestStatus.PENDING,durable.Economy.SalaryRequests.Single(x=>x.Id==r.Id).Status);
         Assert.Equal(2,w.RoundNumber);
     }
