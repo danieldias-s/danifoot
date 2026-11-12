@@ -9,7 +9,7 @@
   "tieBreakPriority": 108,
   "historicalRanking": {
     "rating": 69.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -108,7 +108,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "bergantinos-fc-2026-011",

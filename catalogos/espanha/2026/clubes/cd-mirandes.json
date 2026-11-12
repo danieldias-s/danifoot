@@ -9,7 +9,7 @@
   "tieBreakPriority": 58,
   "historicalRanking": {
     "rating": 74.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "cd-mirandes-2026-005",
-      "name": "Peru Rodríguez",
+      "name": "Iker Pedernales",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "cd-mirandes-2026-006",
-      "name": "Iker Pedernales",
+      "name": "Peru Rodríguez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-mirandes-2026-019",
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-mirandes-2026-020",
@@ -194,7 +194,7 @@
     },
     {
       "id": "cd-mirandes-2026-021",
-      "name": "Aitor Uzkudun",
+      "name": "Nico Espinosa",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,7 +202,7 @@
     },
     {
       "id": "cd-mirandes-2026-022",
-      "name": "Josué Dorrio",
+      "name": "Aitor Uzkudun",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,9 +210,9 @@
     },
     {
       "id": "cd-mirandes-2026-023",
-      "name": "Arón Rodrigo",
+      "name": "Josué Dorrio",
       "position": "A",
-      "nationality": "AD",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

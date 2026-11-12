@@ -9,7 +9,7 @@
   "tieBreakPriority": 141,
   "historicalRanking": {
     "rating": 67.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "coruxo-fc-2026-003",
-      "name": "Álvaro Naveira",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "coruxo-fc-2026-004",
       "name": "Juan Rodríguez",
       "position": "D",
       "nationality": "ES",
@@ -65,8 +57,16 @@
       "isStar": false
     },
     {
-      "id": "coruxo-fc-2026-005",
+      "id": "coruxo-fc-2026-004",
       "name": "Xavier Cidre",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-005",
+      "name": "Álvaro Naveira",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "coruxo-fc-2026-018",
@@ -178,7 +178,7 @@
     },
     {
       "id": "coruxo-fc-2026-019",
-      "name": "Santos Fonterigo",
+      "name": "Ivan Breñé",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,7 +186,7 @@
     },
     {
       "id": "coruxo-fc-2026-020",
-      "name": "Hugo Matos",
+      "name": "Santos Fonterigo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "coruxo-fc-2026-021",
-      "name": "Dani Rosas",
+      "name": "Hugo Matos",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,7 +202,7 @@
     },
     {
       "id": "coruxo-fc-2026-022",
-      "name": "Jon Arruabarrena",
+      "name": "Dani Rosas",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,7 +210,7 @@
     },
     {
       "id": "coruxo-fc-2026-023",
-      "name": "Ivan Breñé",
+      "name": "Jon Arruabarrena",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

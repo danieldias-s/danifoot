@@ -9,7 +9,7 @@
   "tieBreakPriority": 61,
   "historicalRanking": {
     "rating": 73.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -74,7 +74,7 @@
     },
     {
       "id": "cultural-y-deportiva-leonesa-2026-006",
-      "name": "Iago López",
+      "name": "Guzmán Ortega",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "cultural-y-deportiva-leonesa-2026-007",
-      "name": "Guzmán Ortega",
+      "name": "Iago López",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -130,14 +130,6 @@
     },
     {
       "id": "cultural-y-deportiva-leonesa-2026-013",
-      "name": "Ángel Algobia",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cultural-y-deportiva-leonesa-2026-014",
       "name": "Sergi Maestre",
       "position": "M",
       "nationality": "ES",
@@ -145,8 +137,16 @@
       "isStar": false
     },
     {
+      "id": "cultural-y-deportiva-leonesa-2026-014",
+      "name": "Ángel Algobia",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "cultural-y-deportiva-leonesa-2026-015",
-      "name": "Jon García",
+      "name": "Álex Cardero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "cultural-y-deportiva-leonesa-2026-016",
-      "name": "Álex Cardero",
+      "name": "Jon García",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cultural-y-deportiva-leonesa-2026-019",

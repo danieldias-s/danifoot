@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1331,
+        "minutes": 2100,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,
@@ -366,9 +366,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2905,
+        "minutes": 2985,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 3,
@@ -385,7 +385,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1739,
+        "minutes": 2276,
         "redCards": 0,
         "yellowCards": 5
       },
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 551,
+        "minutes": 1739,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 480,
+        "minutes": 551,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -442,7 +442,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 183,
+        "minutes": 480,
         "redCards": 0,
         "yellowCards": 0
       },

@@ -9,7 +9,7 @@
   "tieBreakPriority": 152,
   "historicalRanking": {
     "rating": 66.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -57,7 +57,7 @@
     },
     {
       "id": "atletico-astorga-2026-004",
-      "name": "Sergio Peláez",
+      "name": "Gabriel Rabanillo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -65,7 +65,7 @@
     },
     {
       "id": "atletico-astorga-2026-005",
-      "name": "Gabriel Rabanillo",
+      "name": "Sergio Peláez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -161,9 +161,9 @@
     },
     {
       "id": "atletico-astorga-2026-017",
-      "name": "Adnan Bennasar",
-      "position": "M",
-      "nationality": "MA",
+      "name": "Álex Ribeiro",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -173,18 +173,10 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "atletico-astorga-2026-019",
-      "name": "Álex Ribeiro",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "atletico-astorga-2026-020",
       "name": "Jesús Hoyos",
       "position": "A",
       "nationality": "ES",
@@ -192,7 +184,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-astorga-2026-021",
+      "id": "atletico-astorga-2026-020",
       "name": "Guillem Hernández",
       "position": "A",
       "nationality": "ES",
@@ -200,7 +192,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-astorga-2026-022",
+      "id": "atletico-astorga-2026-021",
       "name": "David Cabezas",
       "position": "A",
       "nationality": "ES",
@@ -208,10 +200,18 @@
       "isStar": false
     },
     {
-      "id": "atletico-astorga-2026-023",
+      "id": "atletico-astorga-2026-022",
       "name": "Isam Ahmed",
       "position": "A",
       "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-023",
+      "name": "Martín Crespo",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

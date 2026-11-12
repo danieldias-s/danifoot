@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2712,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -214,25 +214,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-010",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2776,
         "redCards": 0,
         "yellowCards": 9
@@ -240,7 +221,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-011",
+      "playerCatalogId": "sd-huesca-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +240,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-012",
+      "playerCatalogId": "sd-huesca-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +259,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-013",
+      "playerCatalogId": "sd-huesca-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-014",
+      "playerCatalogId": "sd-huesca-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-015",
+      "playerCatalogId": "sd-huesca-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-016",
+      "playerCatalogId": "sd-huesca-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +335,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "sd-huesca-2026-017",
+      "playerCatalogId": "sd-huesca-2026-016",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,6 +354,25 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
+      "playerCatalogId": "sd-huesca-2026-017",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1645,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
       "playerCatalogId": "sd-huesca-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -386,7 +386,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1486,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,

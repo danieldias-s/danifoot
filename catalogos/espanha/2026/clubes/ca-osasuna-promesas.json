@@ -9,7 +9,7 @@
   "tieBreakPriority": 93,
   "historicalRanking": {
     "rating": 70.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -81,7 +81,7 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-007",
-      "name": "Lucas Ibañez",
+      "name": "Ander Alonso",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-008",
-      "name": "Ander Alonso",
+      "name": "Lucas Ibañez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-013",
-      "name": "Bruno Pérez",
+      "name": "Aimar Bonel",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -137,7 +137,7 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-014",
-      "name": "Yoel Villamayor",
+      "name": "Bruno Pérez",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -145,7 +145,7 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-015",
-      "name": "Aimar Bonel",
+      "name": "Yoel Villamayor",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -169,14 +169,6 @@
     },
     {
       "id": "ca-osasuna-promesas-2026-018",
-      "name": "Asier Bonel",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ca-osasuna-promesas-2026-019",
       "name": "Xabier Roldan",
       "position": "A",
       "nationality": "ES",
@@ -184,8 +176,16 @@
       "isStar": false
     },
     {
-      "id": "ca-osasuna-promesas-2026-020",
+      "id": "ca-osasuna-promesas-2026-019",
       "name": "Asier Arocena",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ca-osasuna-promesas-2026-020",
+      "name": "Asier Bonel",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

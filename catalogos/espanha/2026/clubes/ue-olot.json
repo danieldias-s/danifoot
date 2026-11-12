@@ -9,7 +9,7 @@
   "tieBreakPriority": 106,
   "historicalRanking": {
     "rating": 70.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -132,7 +132,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ue-olot-2026-014",
@@ -180,7 +180,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ue-olot-2026-020",
@@ -200,7 +200,7 @@
     },
     {
       "id": "ue-olot-2026-022",
-      "name": "Marti Puigbert",
+      "name": "Walid Meddeb",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -208,7 +208,7 @@
     },
     {
       "id": "ue-olot-2026-023",
-      "name": "Walid Meddeb",
+      "name": "Marti Puigbert",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

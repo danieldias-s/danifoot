@@ -9,7 +9,7 @@
   "tieBreakPriority": 12,
   "historicalRanking": {
     "rating": 84.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -42,9 +42,9 @@
     },
     {
       "id": "valencia-cf-2026-002",
-      "name": "Kayne van Oevelen",
+      "name": "Cristian Rivero",
       "position": "G",
-      "nationality": "NL",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -58,14 +58,6 @@
     },
     {
       "id": "valencia-cf-2026-004",
-      "name": "Arnau Martínez",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "valencia-cf-2026-005",
       "name": "César Tárrega",
       "position": "D",
       "nationality": "ES",
@@ -73,15 +65,15 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-2026-006",
-      "name": "José Gayà",
+      "id": "valencia-cf-2026-005",
+      "name": "Arnau Martínez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "valencia-cf-2026-007",
+      "id": "valencia-cf-2026-006",
       "name": "Pablo Maffeo",
       "position": "D",
       "nationality": "AR",
@@ -89,8 +81,16 @@
       "isStar": false
     },
     {
+      "id": "valencia-cf-2026-007",
+      "name": "José Gayà",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "valencia-cf-2026-008",
-      "name": "Iker Córdoba",
+      "name": "José Copete",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,6 +98,22 @@
     },
     {
       "id": "valencia-cf-2026-009",
+      "name": "Jesús Vázquez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-010",
+      "name": "Iker Córdoba",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-011",
       "name": "Dimitri Foulquier",
       "position": "D",
       "nationality": "GP",
@@ -105,31 +121,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-2026-010",
-      "name": "Mouctar Diakhaby",
-      "position": "D",
-      "nationality": "GN",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "valencia-cf-2026-011",
-      "name": "Pepelu",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "valencia-cf-2026-012",
-      "name": "Javi Guerra",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "valencia-cf-2026-013",
       "name": "Aliou Dieng",
       "position": "M",
       "nationality": "ML",
@@ -137,7 +129,23 @@
       "isStar": false
     },
     {
+      "id": "valencia-cf-2026-013",
+      "name": "Pepelu",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "valencia-cf-2026-014",
+      "name": "Javi Guerra",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-015",
       "name": "Filip Ugrinic",
       "position": "M",
       "nationality": "CH",
@@ -145,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-2026-015",
+      "id": "valencia-cf-2026-016",
       "name": "Guido Rodríguez",
       "position": "M",
       "nationality": "AR",
@@ -153,32 +161,24 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-2026-016",
-      "name": "Aarón Mayol",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "valencia-cf-2026-017",
-      "name": "Harvey Elliott",
-      "position": "M",
-      "nationality": "GB",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "valencia-cf-2026-018",
       "name": "Luis Rioja",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
+    },
+    {
+      "id": "valencia-cf-2026-018",
+      "name": "Hugo Duro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "valencia-cf-2026-019",
-      "name": "Hugo Duro",
+      "name": "Diego López",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,17 +202,17 @@
     },
     {
       "id": "valencia-cf-2026-022",
-      "name": "Umar Sadiq",
+      "name": "Ryunosuke Sato",
       "position": "A",
-      "nationality": "NG",
+      "nationality": "JP",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "valencia-cf-2026-023",
-      "name": "Dani Raba",
+      "name": "Umar Sadiq",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "NG",
       "behavior": null,
       "isStar": false
     }

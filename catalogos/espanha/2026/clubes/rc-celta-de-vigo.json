@@ -9,7 +9,7 @@
   "tieBreakPriority": 9,
   "historicalRanking": {
     "rating": 85.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -105,7 +105,7 @@
     },
     {
       "id": "rc-celta-de-vigo-2026-010",
-      "name": "Álvaro Núñez",
+      "name": "Javi Galán",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -113,7 +113,7 @@
     },
     {
       "id": "rc-celta-de-vigo-2026-011",
-      "name": "Javi Galán",
+      "name": "Álvaro Núñez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -157,7 +157,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rc-celta-de-vigo-2026-017",
@@ -165,7 +165,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rc-celta-de-vigo-2026-018",
@@ -177,14 +177,6 @@
     },
     {
       "id": "rc-celta-de-vigo-2026-019",
-      "name": "Williot Swedberg",
-      "position": "A",
-      "nationality": "SE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rc-celta-de-vigo-2026-020",
       "name": "Iago Aspas",
       "position": "A",
       "nationality": "ES",
@@ -192,8 +184,16 @@
       "isStar": false
     },
     {
+      "id": "rc-celta-de-vigo-2026-020",
+      "name": "Williot Swedberg",
+      "position": "A",
+      "nationality": "SE",
+      "behavior": null,
+      "isStar": true
+    },
+    {
       "id": "rc-celta-de-vigo-2026-021",
-      "name": "Pablo Durán",
+      "name": "Hugo Álvarez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -201,9 +201,9 @@
     },
     {
       "id": "rc-celta-de-vigo-2026-022",
-      "name": "Couhaib Driouech",
+      "name": "Pablo Durán",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

@@ -9,7 +9,7 @@
   "tieBreakPriority": 57,
   "historicalRanking": {
     "rating": 74.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -126,7 +126,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "zamora-cf-2026-013",
@@ -162,22 +162,6 @@
     },
     {
       "id": "zamora-cf-2026-017",
-      "name": "Izan Yurrieta",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "zamora-cf-2026-018",
-      "name": "Fabián Urzain",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "zamora-cf-2026-019",
       "name": "Mario Losada",
       "position": "A",
       "nationality": "ES",
@@ -185,8 +169,24 @@
       "isStar": false
     },
     {
+      "id": "zamora-cf-2026-018",
+      "name": "Pau Mascaró",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "zamora-cf-2026-019",
+      "name": "Izan Yurrieta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "zamora-cf-2026-020",
-      "name": "Javier Carbonell",
+      "name": "Fabián Urzain",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "zamora-cf-2026-021",
-      "name": "Pau Mascaró",
+      "name": "Javier Carbonell",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

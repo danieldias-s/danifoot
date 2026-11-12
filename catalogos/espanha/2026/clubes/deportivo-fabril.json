@@ -9,7 +9,7 @@
   "tieBreakPriority": 84,
   "historicalRanking": {
     "rating": 71.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,15 +106,15 @@
     },
     {
       "id": "deportivo-fabril-2026-010",
-      "name": "Ferran Seco",
-      "position": "D",
+      "name": "Jairo Noriega",
+      "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "deportivo-fabril-2026-011",
-      "name": "Jairo Noriega",
+      "name": "Noé Carrillo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -130,14 +130,6 @@
     },
     {
       "id": "deportivo-fabril-2026-013",
-      "name": "Noé Carrillo",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportivo-fabril-2026-014",
       "name": "Dani Estévez",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-fabril-2026-015",
+      "id": "deportivo-fabril-2026-014",
       "name": "Rubén López",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-fabril-2026-016",
+      "id": "deportivo-fabril-2026-015",
       "name": "Manu Ferreiro",
       "position": "M",
       "nationality": "ES",
@@ -161,12 +153,20 @@
       "isStar": false
     },
     {
-      "id": "deportivo-fabril-2026-017",
-      "name": "Álvaro Fraga",
+      "id": "deportivo-fabril-2026-016",
+      "name": "Yayo González",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-017",
+      "name": "Adrián Guerrero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "deportivo-fabril-2026-018",
@@ -194,17 +194,17 @@
     },
     {
       "id": "deportivo-fabril-2026-021",
-      "name": "Rodrigue Dipanda",
-      "position": "A",
-      "nationality": "CM",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportivo-fabril-2026-022",
       "name": "Martín Ochoa",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "deportivo-fabril-2026-022",
+      "name": "Rodrigue Dipanda",
+      "position": "A",
+      "nationality": "CM",
       "behavior": null,
       "isStar": false
     },

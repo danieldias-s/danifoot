@@ -9,7 +9,7 @@
   "tieBreakPriority": 40,
   "historicalRanking": {
     "rating": 76.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "real-sociedad-b-2026-003",
-      "name": "Lander Olasagasti",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-sociedad-b-2026-004",
       "name": "Jon Balda",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-005",
+      "id": "real-sociedad-b-2026-004",
       "name": "Kazunari Kita",
       "position": "D",
       "nationality": "JP",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-006",
+      "id": "real-sociedad-b-2026-005",
       "name": "Unax Agote",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-007",
+      "id": "real-sociedad-b-2026-006",
       "name": "Jon Garro",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-008",
+      "id": "real-sociedad-b-2026-007",
       "name": "Unax Ayo",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-009",
+      "id": "real-sociedad-b-2026-008",
       "name": "Iker Ropero",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-010",
+      "id": "real-sociedad-b-2026-009",
       "name": "Iker Calderón",
       "position": "D",
       "nationality": "ES",
@@ -113,15 +105,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-011",
-      "name": "Iñaki Rupérez",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-sociedad-b-2026-012",
+      "id": "real-sociedad-b-2026-010",
       "name": "Tomy Carbonell",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-013",
+      "id": "real-sociedad-b-2026-011",
       "name": "Gorka Gorosabel",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-014",
+      "id": "real-sociedad-b-2026-012",
       "name": "Ibai Aguirre",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-015",
+      "id": "real-sociedad-b-2026-013",
       "name": "Jon Eceizabarrena",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-016",
+      "id": "real-sociedad-b-2026-014",
       "name": "Joan Oleaga",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-017",
+      "id": "real-sociedad-b-2026-015",
       "name": "Alex Lebarbier",
       "position": "M",
       "nationality": "FR",
@@ -169,15 +153,15 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-018",
+      "id": "real-sociedad-b-2026-016",
       "name": "Gorka Carrera",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "real-sociedad-b-2026-019",
+      "id": "real-sociedad-b-2026-017",
       "name": "Lander Astiazaran",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-020",
+      "id": "real-sociedad-b-2026-018",
       "name": "Arkaitz Mariezkurrena",
       "position": "A",
       "nationality": "ES",
@@ -193,15 +177,15 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-021",
+      "id": "real-sociedad-b-2026-019",
       "name": "Javier Soroeta",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "real-sociedad-b-2026-022",
+      "id": "real-sociedad-b-2026-020",
       "name": "Dani Díaz",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +193,26 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-b-2026-023",
+      "id": "real-sociedad-b-2026-021",
       "name": "Ekain Orobengoa",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-b-2026-022",
+      "name": "Sydney Osazuwa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-b-2026-023",
+      "name": "Andrews Adjabeng",
+      "position": "A",
+      "nationality": "GH",
       "behavior": null,
       "isStar": false
     }

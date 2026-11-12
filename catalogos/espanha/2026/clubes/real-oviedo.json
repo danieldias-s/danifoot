@@ -9,7 +9,7 @@
   "tieBreakPriority": 28,
   "historicalRanking": {
     "rating": 79.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -121,17 +121,17 @@
     },
     {
       "id": "real-oviedo-2026-012",
-      "name": "Alberto Reina",
+      "name": "Youness Lachhab",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-oviedo-2026-013",
-      "name": "Youness Lachhab",
+      "name": "Alberto Reina",
       "position": "M",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -153,7 +153,7 @@
     },
     {
       "id": "real-oviedo-2026-016",
-      "name": "Aritz Aldasoro",
+      "name": "Mikel Goti",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -161,7 +161,7 @@
     },
     {
       "id": "real-oviedo-2026-017",
-      "name": "Mikel Goti",
+      "name": "Aritz Aldasoro",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -173,7 +173,7 @@
       "position": "A",
       "nationality": "RO",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-oviedo-2026-019",
@@ -185,11 +185,11 @@
     },
     {
       "id": "real-oviedo-2026-020",
-      "name": "Ilyas Chaira",
+      "name": "Carlos Fernández",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-oviedo-2026-021",
@@ -197,19 +197,19 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-oviedo-2026-022",
-      "name": "Pablo Sáenz",
+      "name": "Ilyas Chaira",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-oviedo-2026-023",
-      "name": "Estanis Pedrola",
+      "name": "Pablo Sáenz",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

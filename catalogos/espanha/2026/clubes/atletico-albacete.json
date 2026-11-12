@@ -9,7 +9,7 @@
   "tieBreakPriority": 162,
   "historicalRanking": {
     "rating": 66.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,22 +106,14 @@
     },
     {
       "id": "atletico-albacete-2026-010",
-      "name": "Luis López",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "atletico-albacete-2026-011",
       "name": "Hugo Busto",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "atletico-albacete-2026-012",
+      "id": "atletico-albacete-2026-011",
       "name": "Capi",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-013",
+      "id": "atletico-albacete-2026-012",
       "name": "Javi Navarro",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-014",
+      "id": "atletico-albacete-2026-013",
       "name": "Antonio David",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-015",
+      "id": "atletico-albacete-2026-014",
       "name": "Alonso Chillerón",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-016",
+      "id": "atletico-albacete-2026-015",
       "name": "Diego Rodríguez",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-017",
+      "id": "atletico-albacete-2026-016",
       "name": "Alberto Morientes",
       "position": "M",
       "nationality": "ES",
@@ -169,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-018",
+      "id": "atletico-albacete-2026-017",
       "name": "Tomás Inglés",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-019",
+      "id": "atletico-albacete-2026-018",
       "name": "Fran Gómez",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-020",
+      "id": "atletico-albacete-2026-019",
       "name": "Marc Torra",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-021",
+      "id": "atletico-albacete-2026-020",
       "name": "Adrián Rosell",
       "position": "A",
       "nationality": "ES",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-022",
+      "id": "atletico-albacete-2026-021",
       "name": "Pablo Trigo",
       "position": "A",
       "nationality": "ES",
@@ -209,8 +201,16 @@
       "isStar": false
     },
     {
-      "id": "atletico-albacete-2026-023",
+      "id": "atletico-albacete-2026-022",
       "name": "Fabio García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-albacete-2026-023",
+      "name": "Rubén Martínez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

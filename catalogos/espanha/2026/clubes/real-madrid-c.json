@@ -9,7 +9,7 @@
   "tieBreakPriority": 151,
   "historicalRanking": {
     "rating": 66.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -73,7 +73,7 @@
     },
     {
       "id": "real-madrid-c-2026-006",
-      "name": "Ariel Nkoghe",
+      "name": "Álvaro Lezcano",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -81,7 +81,7 @@
     },
     {
       "id": "real-madrid-c-2026-007",
-      "name": "Melvin Ukpeigbe",
+      "name": "Ariel Nkoghe",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "real-madrid-c-2026-008",
-      "name": "Pablo Bellosillo",
+      "name": "Melvin Ukpeigbe",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -97,7 +97,7 @@
     },
     {
       "id": "real-madrid-c-2026-009",
-      "name": "Paulo de Almeida",
+      "name": "Pablo Bellosillo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -105,7 +105,7 @@
     },
     {
       "id": "real-madrid-c-2026-010",
-      "name": "Aimar García",
+      "name": "Paulo de Almeida",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -113,14 +113,6 @@
     },
     {
       "id": "real-madrid-c-2026-011",
-      "name": "Beto",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-madrid-c-2026-012",
       "name": "Gabri Castrelo",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +120,23 @@
       "isStar": false
     },
     {
+      "id": "real-madrid-c-2026-012",
+      "name": "Beto",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "real-madrid-c-2026-013",
+      "name": "Diego Lacosta",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-madrid-c-2026-014",
       "name": "Kalifa Camara",
       "position": "M",
       "nationality": "CI",
@@ -136,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-c-2026-014",
+      "id": "real-madrid-c-2026-015",
       "name": "Carlos Díez",
       "position": "M",
       "nationality": "ES",
@@ -144,7 +152,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-c-2026-015",
+      "id": "real-madrid-c-2026-016",
       "name": "Pol Durán",
       "position": "M",
       "nationality": "ES",
@@ -152,16 +160,8 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-c-2026-016",
-      "name": "Ignacio Gascón",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "real-madrid-c-2026-017",
-      "name": "Marcos Viega",
+      "name": "Ignacio Gascón",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -189,11 +189,11 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-madrid-c-2026-021",
-      "name": "Gabri Valero",
+      "name": "Fran Santamaría",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -201,17 +201,17 @@
     },
     {
       "id": "real-madrid-c-2026-022",
-      "name": "Rayan Zinebi",
+      "name": "Gabri Valero",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-madrid-c-2026-023",
-      "name": "Jorge Rajado",
+      "name": "Rayan Zinebi",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     }

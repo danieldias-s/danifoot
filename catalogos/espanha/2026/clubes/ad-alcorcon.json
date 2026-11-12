@@ -9,7 +9,7 @@
   "tieBreakPriority": 45,
   "historicalRanking": {
     "rating": 75.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -48,7 +48,7 @@
     },
     {
       "id": "ad-alcorcon-2026-003",
-      "name": "Javi Lancho",
+      "name": "Álvaro Mayorga",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -56,7 +56,7 @@
     },
     {
       "id": "ad-alcorcon-2026-004",
-      "name": "Álvaro Mayorga",
+      "name": "Javi Lancho",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -80,7 +80,7 @@
     },
     {
       "id": "ad-alcorcon-2026-007",
-      "name": "Arnau Gaixas",
+      "name": "Xabi Irurita",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -88,7 +88,7 @@
     },
     {
       "id": "ad-alcorcon-2026-008",
-      "name": "Xabi Irurita",
+      "name": "Arnau Gaixas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -164,7 +164,7 @@
       "position": "A",
       "nationality": "MA",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ad-alcorcon-2026-018",
@@ -172,7 +172,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ad-alcorcon-2026-019",

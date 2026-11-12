@@ -9,7 +9,7 @@
   "tieBreakPriority": 4,
   "historicalRanking": {
     "rating": 89.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -97,6 +97,14 @@
     },
     {
       "id": "real-betis-2026-009",
+      "name": "Fran García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-010",
       "name": "Junior Firpo",
       "position": "D",
       "nationality": "DO",
@@ -104,15 +112,15 @@
       "isStar": false
     },
     {
-      "id": "real-betis-2026-010",
+      "id": "real-betis-2026-011",
       "name": "Pablo Fornals",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "real-betis-2026-011",
+      "id": "real-betis-2026-012",
       "name": "Marc Roca",
       "position": "M",
       "nationality": "ES",
@@ -120,31 +128,7 @@
       "isStar": false
     },
     {
-      "id": "real-betis-2026-012",
-      "name": "Nelson Deossa",
-      "position": "M",
-      "nationality": "CO",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "real-betis-2026-013",
-      "name": "Iker Losada",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-betis-2026-014",
-      "name": "Facundo Bernal",
-      "position": "M",
-      "nationality": "UY",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-betis-2026-015",
       "name": "Álvaro Fidalgo",
       "position": "M",
       "nationality": "MX",
@@ -152,8 +136,24 @@
       "isStar": false
     },
     {
+      "id": "real-betis-2026-014",
+      "name": "Giovani Lo Celso",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-015",
+      "name": "Nelson Deossa",
+      "position": "M",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "real-betis-2026-016",
-      "name": "Dani Ceballos",
+      "name": "Iker Losada",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -161,9 +161,9 @@
     },
     {
       "id": "real-betis-2026-017",
-      "name": "Isco",
+      "name": "Facundo Bernal",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "UY",
       "behavior": null,
       "isStar": false
     },

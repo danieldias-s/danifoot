@@ -9,7 +9,7 @@
   "tieBreakPriority": 38,
   "historicalRanking": {
     "rating": 77.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -56,7 +56,7 @@
     },
     {
       "id": "real-zaragoza-2026-004",
-      "name": "Marco Sangalli",
+      "name": "Hugo Barrachina",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -64,7 +64,7 @@
     },
     {
       "id": "real-zaragoza-2026-005",
-      "name": "Rubén Iranzo",
+      "name": "Marco Sangalli",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -72,7 +72,7 @@
     },
     {
       "id": "real-zaragoza-2026-006",
-      "name": "Raúl Pereira",
+      "name": "Rubén Iranzo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -80,7 +80,7 @@
     },
     {
       "id": "real-zaragoza-2026-007",
-      "name": "Tachi",
+      "name": "Raúl Pereira",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -88,7 +88,7 @@
     },
     {
       "id": "real-zaragoza-2026-008",
-      "name": "Sergio Escudero",
+      "name": "Tachi",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -96,7 +96,7 @@
     },
     {
       "id": "real-zaragoza-2026-009",
-      "name": "Jokin Gabilondo",
+      "name": "Sergio Escudero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -104,7 +104,7 @@
     },
     {
       "id": "real-zaragoza-2026-010",
-      "name": "Hugo Barrachina",
+      "name": "Jokin Gabilondo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -116,7 +116,7 @@
       "position": "M",
       "nationality": "NG",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-zaragoza-2026-012",
@@ -144,7 +144,7 @@
     },
     {
       "id": "real-zaragoza-2026-015",
-      "name": "Ander Herrera",
+      "name": "Lucas Terrer",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -152,7 +152,7 @@
     },
     {
       "id": "real-zaragoza-2026-016",
-      "name": "Lucas Terrer",
+      "name": "Ander Herrera",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -164,7 +164,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-zaragoza-2026-018",
@@ -172,7 +172,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-zaragoza-2026-019",
@@ -184,14 +184,6 @@
     },
     {
       "id": "real-zaragoza-2026-020",
-      "name": "Marcos Cuenca",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-zaragoza-2026-021",
       "name": "Óscar Ureña",
       "position": "A",
       "nationality": "DO",
@@ -199,8 +191,16 @@
       "isStar": false
     },
     {
+      "id": "real-zaragoza-2026-021",
+      "name": "Marcos Cuenca",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "real-zaragoza-2026-022",
-      "name": "Pau Sans",
+      "name": "Iker Vadillo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -208,7 +208,7 @@
     },
     {
       "id": "real-zaragoza-2026-023",
-      "name": "Iker Vadillo",
+      "name": "Pau Sans",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

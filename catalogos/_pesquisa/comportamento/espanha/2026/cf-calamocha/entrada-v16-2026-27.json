@@ -23,17 +23,6 @@
   },
   {
     "playerCatalogId": "cf-calamocha-2026-003",
-    "position": "G",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cf-calamocha-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 540,
@@ -44,7 +33,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-calamocha-2026-005",
+    "playerCatalogId": "cf-calamocha-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 525,
@@ -55,12 +44,23 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-calamocha-2026-006",
+    "playerCatalogId": "cf-calamocha-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 481,
     "yellowCards": 2,
-    "redCards": 1,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cf-calamocha-2026-006",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 180,
+    "yellowCards": 2,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -69,8 +69,8 @@
     "playerCatalogId": "cf-calamocha-2026-007",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 180,
-    "yellowCards": 2,
+    "minutes": 0,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,

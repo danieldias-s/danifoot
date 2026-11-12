@@ -36,6 +36,17 @@
     "playerCatalogId": "real-sociedad-2026-004",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 3263,
+    "yellowCards": 5,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-sociedad-2026-005",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 2850,
     "yellowCards": 6,
     "redCards": 0,
@@ -44,7 +55,18 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-005",
+    "playerCatalogId": "real-sociedad-2026-006",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 2467,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-sociedad-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2383,
@@ -55,18 +77,18 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-006",
+    "playerCatalogId": "real-sociedad-2026-008",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2004,
     "yellowCards": 3,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-007",
+    "playerCatalogId": "real-sociedad-2026-009",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1214,
@@ -77,33 +99,11 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-008",
+    "playerCatalogId": "real-sociedad-2026-010",
     "position": "D",
     "baseBehavior": null,
     "minutes": 623,
     "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-sociedad-2026-009",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 439,
-    "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-sociedad-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 294,
-    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -168,17 +168,6 @@
     "playerCatalogId": "real-sociedad-2026-016",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 674,
-    "yellowCards": 3,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-sociedad-2026-017",
-    "position": "M",
-    "baseBehavior": null,
     "minutes": 696,
     "yellowCards": 3,
     "redCards": 0,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-018",
+    "playerCatalogId": "real-sociedad-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3195,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-sociedad-2026-019",
+    "playerCatalogId": "real-sociedad-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2329,
@@ -209,11 +198,22 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
+    "playerCatalogId": "real-sociedad-2026-019",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 1996,
+    "yellowCards": 6,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
     "playerCatalogId": "real-sociedad-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1671,
-    "yellowCards": 8,
+    "minutes": 1746,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -223,8 +223,8 @@
     "playerCatalogId": "real-sociedad-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1746,
-    "yellowCards": 3,
+    "minutes": 1671,
+    "yellowCards": 8,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,

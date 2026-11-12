@@ -9,7 +9,7 @@
   "tieBreakPriority": 114,
   "historicalRanking": {
     "rating": 69.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "cd-estepona-2026-003",
-      "name": "Alfonso Candelas",
+      "name": "José Antonio Caro",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -58,7 +58,7 @@
     },
     {
       "id": "cd-estepona-2026-004",
-      "name": "José Antonio Caro",
+      "name": "Alfonso Candelas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,25 +98,25 @@
     },
     {
       "id": "cd-estepona-2026-009",
-      "name": "Álvaro Díaz",
-      "position": "D",
+      "name": "Pablo Arriaza",
+      "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-estepona-2026-010",
-      "name": "Álex Claverías",
+      "name": "Sandji Baradji",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "ML",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-estepona-2026-011",
-      "name": "Sandji Baradji",
+      "name": "Álex Claverías",
       "position": "M",
-      "nationality": "ML",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -130,17 +130,17 @@
     },
     {
       "id": "cd-estepona-2026-013",
-      "name": "Maxi Benites",
+      "name": "Samu Expósito",
       "position": "M",
-      "nationality": "AR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-estepona-2026-014",
-      "name": "Samu Expósito",
+      "name": "Maxi Benites",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "AR",
       "behavior": null,
       "isStar": false
     },
@@ -162,22 +162,14 @@
     },
     {
       "id": "cd-estepona-2026-017",
-      "name": "Pablo Arriaza",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-estepona-2026-018",
       "name": "David Ballarín",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "cd-estepona-2026-019",
+      "id": "cd-estepona-2026-018",
       "name": "Ariel Herrero",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "cd-estepona-2026-020",
+      "id": "cd-estepona-2026-019",
       "name": "Héber Pena",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "cd-estepona-2026-021",
+      "id": "cd-estepona-2026-020",
       "name": "Roi Tato",
       "position": "A",
       "nationality": "ES",
@@ -201,10 +193,18 @@
       "isStar": false
     },
     {
-      "id": "cd-estepona-2026-022",
+      "id": "cd-estepona-2026-021",
       "name": "Baka Sow",
       "position": "A",
       "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-022",
+      "name": "Pablo Aguilar",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

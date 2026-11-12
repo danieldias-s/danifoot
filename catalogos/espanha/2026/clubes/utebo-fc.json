@@ -9,7 +9,7 @@
   "tieBreakPriority": 98,
   "historicalRanking": {
     "rating": 70.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -122,6 +122,14 @@
     },
     {
       "id": "utebo-fc-2026-012",
+      "name": "Carlos Llamas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "utebo-fc-2026-013",
       "name": "Ronald Gbizie",
       "position": "M",
       "nationality": "CI",
@@ -129,16 +137,8 @@
       "isStar": false
     },
     {
-      "id": "utebo-fc-2026-013",
-      "name": "Javi Tudela",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "utebo-fc-2026-014",
-      "name": "Carlos Llamas",
+      "name": "Javi Tudela",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,22 +154,14 @@
     },
     {
       "id": "utebo-fc-2026-016",
-      "name": "Alejandro Bueso",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "utebo-fc-2026-017",
       "name": "Diego Suárez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "utebo-fc-2026-018",
+      "id": "utebo-fc-2026-017",
       "name": "David Aparicio",
       "position": "A",
       "nationality": "ES",
@@ -177,10 +169,18 @@
       "isStar": false
     },
     {
-      "id": "utebo-fc-2026-019",
+      "id": "utebo-fc-2026-018",
       "name": "Fran Viñuela",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "utebo-fc-2026-019",
+      "name": "William de Camargo",
+      "position": "A",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     },
@@ -202,17 +202,17 @@
     },
     {
       "id": "utebo-fc-2026-022",
-      "name": "William de Camargo",
+      "name": "Álvaro Barrero",
       "position": "A",
-      "nationality": "BR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "utebo-fc-2026-023",
-      "name": "Álvaro Barrero",
+      "name": "Daniel Lyubomirov",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "BG",
       "behavior": null,
       "isStar": false
     }

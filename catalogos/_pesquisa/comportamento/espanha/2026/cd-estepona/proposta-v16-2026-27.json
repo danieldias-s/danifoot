@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3109,
+        "minutes": 3130,
         "redCards": 0,
-        "yellowCards": 10
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3130,
+        "minutes": 3109,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 4,
@@ -195,33 +195,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 90,
+        "minutes": 2472,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 12
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "cd-estepona-2026-009",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1780,
-        "redCards": 0,
-        "yellowCards": 5
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,6 +221,25 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
+      "playerCatalogId": "cd-estepona-2026-010",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1780,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
       "playerCatalogId": "cd-estepona-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -253,7 +253,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1667,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 6
       },
       "index": null,
@@ -271,9 +271,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1293,
-        "redCards": 1,
-        "yellowCards": 4
+        "minutes": 1346,
+        "redCards": 0,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1346,
-        "redCards": 0,
-        "yellowCards": 3
+        "minutes": 1293,
+        "redCards": 1,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -328,33 +328,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 415,
+        "minutes": 800,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "cd-estepona-2026-016",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 90,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-017",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-018",
+      "playerCatalogId": "cd-estepona-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-019",
+      "playerCatalogId": "cd-estepona-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-020",
+      "playerCatalogId": "cd-estepona-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +411,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-estepona-2026-021",
+      "playerCatalogId": "cd-estepona-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -445,6 +426,25 @@
         "minutes": 386,
         "redCards": 1,
         "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-estepona-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 333,
+        "redCards": 0,
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,

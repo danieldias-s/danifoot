@@ -9,7 +9,7 @@
   "tieBreakPriority": 80,
   "historicalRanking": {
     "rating": 72.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,6 +50,14 @@
     },
     {
       "id": "cd-numancia-2026-003",
+      "name": "Sébastien Lauture",
+      "position": "D",
+      "nationality": "HT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-004",
       "name": "Borja López",
       "position": "D",
       "nationality": "ES",
@@ -57,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "cd-numancia-2026-004",
+      "id": "cd-numancia-2026-005",
       "name": "Marcos Fernández",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "cd-numancia-2026-005",
+      "id": "cd-numancia-2026-006",
       "name": "Fran González",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "cd-numancia-2026-006",
+      "id": "cd-numancia-2026-007",
       "name": "Marcos Lopes",
       "position": "D",
       "nationality": "ES",
@@ -81,18 +89,10 @@
       "isStar": false
     },
     {
-      "id": "cd-numancia-2026-007",
+      "id": "cd-numancia-2026-008",
       "name": "Rafa Roldán",
       "position": "D",
       "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-numancia-2026-008",
-      "name": "Sébastien Lauture",
-      "position": "D",
-      "nationality": "HT",
       "behavior": null,
       "isStar": false
     },
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-numancia-2026-018",

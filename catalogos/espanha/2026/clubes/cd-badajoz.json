@@ -9,7 +9,7 @@
   "tieBreakPriority": 122,
   "historicalRanking": {
     "rating": 69.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "cd-badajoz-2026-003",
-      "name": "Mario Gómez",
+      "name": "Jesús Ocaña",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -58,7 +58,7 @@
     },
     {
       "id": "cd-badajoz-2026-004",
-      "name": "Jesús Ocaña",
+      "name": "Mario Gómez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -150,11 +150,11 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-badajoz-2026-016",
-      "name": "José Manuel Bermúdez",
+      "name": "Nacho Sánchez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -162,7 +162,7 @@
     },
     {
       "id": "cd-badajoz-2026-017",
-      "name": "Álex Alegría",
+      "name": "José Manuel Bermúdez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -170,7 +170,7 @@
     },
     {
       "id": "cd-badajoz-2026-018",
-      "name": "Nacho Sánchez",
+      "name": "Álex Alegría",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

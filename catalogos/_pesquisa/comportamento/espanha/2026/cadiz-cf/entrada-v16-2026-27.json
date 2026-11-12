@@ -69,8 +69,8 @@
     "playerCatalogId": "cadiz-cf-2026-007",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1635,
-    "yellowCards": 5,
+    "minutes": 1698,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -80,8 +80,8 @@
     "playerCatalogId": "cadiz-cf-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1116,
-    "yellowCards": 3,
+    "minutes": 1635,
+    "yellowCards": 5,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -91,7 +91,7 @@
     "playerCatalogId": "cadiz-cf-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 573,
+    "minutes": 1273,
     "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
@@ -102,8 +102,8 @@
     "playerCatalogId": "cadiz-cf-2026-010",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 122,
-    "yellowCards": 0,
+    "minutes": 1116,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -111,10 +111,10 @@
   },
   {
     "playerCatalogId": "cadiz-cf-2026-011",
-    "position": "M",
+    "position": "D",
     "baseBehavior": null,
-    "minutes": 2215,
-    "yellowCards": 4,
+    "minutes": 891,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -122,6 +122,17 @@
   },
   {
     "playerCatalogId": "cadiz-cf-2026-012",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 2230,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cadiz-cf-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2147,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-013",
+    "playerCatalogId": "cadiz-cf-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1443,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-014",
+    "playerCatalogId": "cadiz-cf-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1348,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-015",
+    "playerCatalogId": "cadiz-cf-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1348,
@@ -165,18 +176,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-016",
+    "playerCatalogId": "cadiz-cf-2026-017",
     "position": "M",
     "baseBehavior": null,
     "minutes": 865,
     "yellowCards": 8,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-017",
+    "playerCatalogId": "cadiz-cf-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3309,
@@ -187,7 +198,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-018",
+    "playerCatalogId": "cadiz-cf-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2782,
@@ -198,7 +209,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-019",
+    "playerCatalogId": "cadiz-cf-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2256,
@@ -209,7 +220,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-020",
+    "playerCatalogId": "cadiz-cf-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1755,
@@ -220,22 +231,11 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cadiz-cf-2026-021",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 911,
-    "yellowCards": 3,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
     "playerCatalogId": "cadiz-cf-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 611,
-    "yellowCards": 1,
+    "minutes": 1301,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -245,7 +245,7 @@
     "playerCatalogId": "cadiz-cf-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 346,
+    "minutes": 911,
     "yellowCards": 3,
     "redCards": 0,
     "fouls": null,

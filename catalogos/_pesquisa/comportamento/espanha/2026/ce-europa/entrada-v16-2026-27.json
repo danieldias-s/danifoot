@@ -27,7 +27,7 @@
     "baseBehavior": null,
     "minutes": 3234,
     "yellowCards": 5,
-    "redCards": 3,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -60,7 +60,7 @@
     "baseBehavior": null,
     "minutes": 1431,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"

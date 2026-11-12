@@ -9,7 +9,7 @@
   "tieBreakPriority": 26,
   "historicalRanking": {
     "rating": 80.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "UA",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "girona-fc-2026-017",
@@ -194,6 +194,14 @@
     },
     {
       "id": "girona-fc-2026-021",
+      "name": "Oleksandr Pyshchur",
+      "position": "A",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-022",
       "name": "Portu",
       "position": "A",
       "nationality": "ES",
@@ -201,18 +209,10 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-2026-022",
+      "id": "girona-fc-2026-023",
       "name": "Cristhian Stuani",
       "position": "A",
       "nationality": "UY",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "girona-fc-2026-023",
-      "name": "Abel Ruiz",
-      "position": "A",
-      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

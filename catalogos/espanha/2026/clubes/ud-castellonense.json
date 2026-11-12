@@ -9,7 +9,7 @@
   "tieBreakPriority": 135,
   "historicalRanking": {
     "rating": 68.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "ud-castellonense-2026-003",
-      "name": "Borja Reyes",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-castellonense-2026-004",
       "name": "Miguel Operé",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-005",
+      "id": "ud-castellonense-2026-004",
       "name": "Joan Pulpón",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-006",
+      "id": "ud-castellonense-2026-005",
       "name": "Marc Lachèvre",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-007",
+      "id": "ud-castellonense-2026-006",
       "name": "Primi Férriz",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-008",
+      "id": "ud-castellonense-2026-007",
       "name": "Sergi García",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-009",
+      "id": "ud-castellonense-2026-008",
       "name": "Ian Jové",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-010",
+      "id": "ud-castellonense-2026-009",
       "name": "Carlos Badal",
       "position": "D",
       "nationality": "ES",
@@ -113,15 +105,15 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-011",
+      "id": "ud-castellonense-2026-010",
       "name": "Rubén Murcia",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "ud-castellonense-2026-012",
+      "id": "ud-castellonense-2026-011",
       "name": "Josué Samper",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-013",
+      "id": "ud-castellonense-2026-012",
       "name": "Javi Misffut",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-014",
+      "id": "ud-castellonense-2026-013",
       "name": "Agustín Murillo",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-015",
+      "id": "ud-castellonense-2026-014",
       "name": "Hugo de Mateo",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-016",
+      "id": "ud-castellonense-2026-015",
       "name": "Marc Abril",
       "position": "M",
       "nationality": "ES",
@@ -161,9 +153,17 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-017",
+      "id": "ud-castellonense-2026-016",
       "name": "Fer Sastre",
       "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-castellonense-2026-017",
+      "name": "Diego de Pedro",
+      "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -178,14 +178,6 @@
     },
     {
       "id": "ud-castellonense-2026-019",
-      "name": "Diego de Pedro",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-castellonense-2026-020",
       "name": "Didac Castellá",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-021",
+      "id": "ud-castellonense-2026-020",
       "name": "Adama Sangaré",
       "position": "A",
       "nationality": "ML",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-022",
+      "id": "ud-castellonense-2026-021",
       "name": "Iker Garijo",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +201,18 @@
       "isStar": false
     },
     {
-      "id": "ud-castellonense-2026-023",
+      "id": "ud-castellonense-2026-022",
       "name": "Joe Winstanley",
       "position": "A",
       "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-castellonense-2026-023",
+      "name": "Marc Álvarez",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

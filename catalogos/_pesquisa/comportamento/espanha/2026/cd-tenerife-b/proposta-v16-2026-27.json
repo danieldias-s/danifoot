@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2448,
+        "minutes": 2512,
         "redCards": 0,
-        "yellowCards": 10
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2512,
+        "minutes": 2448,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 4,
@@ -157,9 +157,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 628,
-        "redCards": 1,
-        "yellowCards": 3
+        "minutes": 689,
+        "redCards": 0,
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,
@@ -176,9 +176,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 689,
+        "minutes": 628,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
@@ -233,6 +233,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-tenerife-b-2026-011",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2121,
         "redCards": 0,
         "yellowCards": 11
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-tenerife-b-2026-011",
+      "playerCatalogId": "cd-tenerife-b-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-tenerife-b-2026-012",
+      "playerCatalogId": "cd-tenerife-b-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-tenerife-b-2026-013",
+      "playerCatalogId": "cd-tenerife-b-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-tenerife-b-2026-014",
+      "playerCatalogId": "cd-tenerife-b-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -312,25 +331,6 @@
         "minutes": 252,
         "redCards": 0,
         "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-tenerife-b-2026-015",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,

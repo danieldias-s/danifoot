@@ -9,7 +9,7 @@
   "tieBreakPriority": 67,
   "historicalRanking": {
     "rating": 73.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "sestao-river-2026-004",
-      "name": "Jon Rojo",
+      "name": "Gaizka Argente",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "sestao-river-2026-005",
-      "name": "Gaizka Argente",
+      "name": "Jon Rojo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -166,10 +166,18 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sestao-river-2026-018",
+      "name": "Ander Castillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "sestao-river-2026-019",
       "name": "Adri Carrión",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "sestao-river-2026-019",
+      "id": "sestao-river-2026-020",
       "name": "Pau Miguélez",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "sestao-river-2026-020",
+      "id": "sestao-river-2026-021",
       "name": "Ieltxu García",
       "position": "A",
       "nationality": "ES",
@@ -193,16 +201,8 @@
       "isStar": false
     },
     {
-      "id": "sestao-river-2026-021",
-      "name": "Andoni Arzak",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "sestao-river-2026-022",
-      "name": "Ander Castillo",
+      "name": "Andoni Arzak",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

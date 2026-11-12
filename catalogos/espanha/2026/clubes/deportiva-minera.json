@@ -9,7 +9,7 @@
   "tieBreakPriority": 90,
   "historicalRanking": {
     "rating": 71.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,7 +106,7 @@
     },
     {
       "id": "deportiva-minera-2026-010",
-      "name": "Mohamed Kamal",
+      "name": "David Ramos",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -114,7 +114,7 @@
     },
     {
       "id": "deportiva-minera-2026-011",
-      "name": "David Ramos",
+      "name": "Mohamed Kamal",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -146,14 +146,6 @@
     },
     {
       "id": "deportiva-minera-2026-015",
-      "name": "Aarón Piñán",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportiva-minera-2026-016",
       "name": "Pipo",
       "position": "A",
       "nationality": "ES",
@@ -161,8 +153,16 @@
       "isStar": false
     },
     {
+      "id": "deportiva-minera-2026-016",
+      "name": "Aarón Piñán",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "deportiva-minera-2026-017",
-      "name": "Maikel Villajos",
+      "name": "Miguel Serrano",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -174,11 +174,11 @@
       "position": "A",
       "nationality": "CI",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "deportiva-minera-2026-019",
-      "name": "Miguel Serrano",
+      "name": "Maikel Villajos",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2545,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 8
       },
       "index": null,
@@ -119,6 +119,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2211,
+        "redCards": 0,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "linares-deportivo-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2042,
         "redCards": 1,
         "yellowCards": 3
@@ -126,7 +145,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "linares-deportivo-2026-005",
+      "playerCatalogId": "linares-deportivo-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "linares-deportivo-2026-006",
+      "playerCatalogId": "linares-deportivo-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +183,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "linares-deportivo-2026-007",
+      "playerCatalogId": "linares-deportivo-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -179,25 +198,6 @@
         "minutes": 1047,
         "redCards": 0,
         "yellowCards": 3
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "linares-deportivo-2026-008",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1036,
-        "redCards": 0,
-        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -366,9 +366,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1524,
+        "minutes": 1682,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1372,
+        "minutes": 1524,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,
@@ -423,7 +423,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 979,
+        "minutes": 1372,
         "redCards": 0,
         "yellowCards": 3
       },

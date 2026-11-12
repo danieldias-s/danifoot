@@ -36,8 +36,8 @@
     "playerCatalogId": "cd-castellon-b-2026-004",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1189,
-    "yellowCards": 5,
+    "minutes": 1490,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -47,7 +47,7 @@
     "playerCatalogId": "cd-castellon-b-2026-005",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1490,
+    "minutes": 1211,
     "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
@@ -58,8 +58,8 @@
     "playerCatalogId": "cd-castellon-b-2026-006",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1211,
-    "yellowCards": 4,
+    "minutes": 1189,
+    "yellowCards": 5,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -82,7 +82,7 @@
     "baseBehavior": null,
     "minutes": 153,
     "yellowCards": 1,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -177,17 +177,6 @@
   },
   {
     "playerCatalogId": "cd-castellon-b-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-castellon-b-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1593,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-castellon-b-2026-019",
+    "playerCatalogId": "cd-castellon-b-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1468,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-castellon-b-2026-020",
+    "playerCatalogId": "cd-castellon-b-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1262,
@@ -220,7 +209,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-castellon-b-2026-021",
+    "playerCatalogId": "cd-castellon-b-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1208,
@@ -231,7 +220,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-castellon-b-2026-022",
+    "playerCatalogId": "cd-castellon-b-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 752,
@@ -242,10 +231,21 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-castellon-b-2026-023",
+    "playerCatalogId": "cd-castellon-b-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 210,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-castellon-b-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 0,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

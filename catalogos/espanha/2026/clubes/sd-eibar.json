@@ -9,7 +9,7 @@
   "tieBreakPriority": 24,
   "historicalRanking": {
     "rating": 81.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -88,7 +88,7 @@
     },
     {
       "id": "sd-eibar-2026-008",
-      "name": "Unai Elgezabal",
+      "name": "Álvaro Rodríguez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -96,7 +96,7 @@
     },
     {
       "id": "sd-eibar-2026-009",
-      "name": "Juan Bernat",
+      "name": "Unai Elgezabal",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -160,8 +160,8 @@
     },
     {
       "id": "sd-eibar-2026-017",
-      "name": "Iván Gil",
-      "position": "M",
+      "name": "Jon Bautista",
+      "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -172,7 +172,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sd-eibar-2026-019",
@@ -184,14 +184,6 @@
     },
     {
       "id": "sd-eibar-2026-020",
-      "name": "Jon Bautista",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sd-eibar-2026-021",
       "name": "Elijah Gift",
       "position": "A",
       "nationality": "ES",
@@ -199,8 +191,16 @@
       "isStar": false
     },
     {
-      "id": "sd-eibar-2026-022",
+      "id": "sd-eibar-2026-021",
       "name": "Adu Ares",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-022",
+      "name": "Eric Pérez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

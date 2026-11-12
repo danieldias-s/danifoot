@@ -9,7 +9,7 @@
   "tieBreakPriority": 60,
   "historicalRanking": {
     "rating": 73.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -89,7 +89,7 @@
     },
     {
       "id": "hercules-cf-2026-008",
-      "name": "Jorge Galvañ",
+      "name": "Rubén Cantero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -97,7 +97,7 @@
     },
     {
       "id": "hercules-cf-2026-009",
-      "name": "Yago Cantero",
+      "name": "Jorge Galvañ",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -105,6 +105,14 @@
     },
     {
       "id": "hercules-cf-2026-010",
+      "name": "Yago Cantero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-011",
       "name": "Nassourou Ben Hamed",
       "position": "M",
       "nationality": "CM",
@@ -112,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-011",
+      "id": "hercules-cf-2026-012",
       "name": "Alejandro Fidalgo",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-012",
+      "id": "hercules-cf-2026-013",
       "name": "Manu Rico",
       "position": "M",
       "nationality": "ES",
@@ -128,23 +136,23 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-013",
+      "id": "hercules-cf-2026-014",
       "name": "Andy Escudero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "hercules-cf-2026-014",
-      "name": "Roger Colomina",
+      "id": "hercules-cf-2026-015",
+      "name": "Mehdi Puch",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "DZ",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-015",
+      "id": "hercules-cf-2026-016",
       "name": "Aitor Gismera",
       "position": "M",
       "nationality": "ES",
@@ -152,16 +160,8 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-016",
-      "name": "Rafaël De Palmas",
-      "position": "M",
-      "nationality": "FR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "hercules-cf-2026-017",
-      "name": "Oriol Soldevila",
+      "name": "Roger Colomina",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -169,6 +169,14 @@
     },
     {
       "id": "hercules-cf-2026-018",
+      "name": "Rafaël De Palmas",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-019",
       "name": "Isaac Obeng",
       "position": "A",
       "nationality": "GH",
@@ -176,15 +184,15 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-019",
+      "id": "hercules-cf-2026-020",
       "name": "Fran Sol",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "hercules-cf-2026-020",
+      "id": "hercules-cf-2026-021",
       "name": "Alex Jiménez",
       "position": "A",
       "nationality": "ES",
@@ -192,7 +200,7 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-021",
+      "id": "hercules-cf-2026-022",
       "name": "Antoñín",
       "position": "A",
       "nationality": "ES",
@@ -200,16 +208,8 @@
       "isStar": false
     },
     {
-      "id": "hercules-cf-2026-022",
-      "name": "Víctor Narro",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "hercules-cf-2026-023",
-      "name": "Alberto Toril",
+      "name": "Víctor Narro",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

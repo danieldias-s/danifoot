@@ -9,7 +9,7 @@
   "tieBreakPriority": 166,
   "historicalRanking": {
     "rating": 65.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -130,7 +130,7 @@
     },
     {
       "id": "penya-deportiva-2026-013",
-      "name": "Isra García",
+      "name": "Fran Callejón",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -138,7 +138,7 @@
     },
     {
       "id": "penya-deportiva-2026-014",
-      "name": "Samu Pinto",
+      "name": "Isra García",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -146,6 +146,14 @@
     },
     {
       "id": "penya-deportiva-2026-015",
+      "name": "Samu Pinto",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "penya-deportiva-2026-016",
       "name": "Jules-Nde Foutey Fonkam",
       "position": "M",
       "nationality": "LU",
@@ -153,16 +161,8 @@
       "isStar": false
     },
     {
-      "id": "penya-deportiva-2026-016",
-      "name": "Marc Fraile",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "penya-deportiva-2026-017",
-      "name": "Fran Callejón",
+      "name": "Marc Fraile",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "penya-deportiva-2026-019",

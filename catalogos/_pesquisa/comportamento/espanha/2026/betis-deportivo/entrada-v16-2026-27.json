@@ -111,10 +111,10 @@
   },
   {
     "playerCatalogId": "betis-deportivo-2026-011",
-    "position": "D",
+    "position": "M",
     "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
+    "minutes": 1825,
+    "yellowCards": 5,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -124,26 +124,15 @@
     "playerCatalogId": "betis-deportivo-2026-012",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1825,
-    "yellowCards": 5,
-    "redCards": 1,
+    "minutes": 1258,
+    "yellowCards": 3,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
     "playerCatalogId": "betis-deportivo-2026-013",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 1258,
-    "yellowCards": 3,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "betis-deportivo-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1127,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-015",
+    "playerCatalogId": "betis-deportivo-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 154,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-016",
+    "playerCatalogId": "betis-deportivo-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 25,
@@ -176,40 +165,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "betis-deportivo-2026-018",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "betis-deportivo-2026-019",
+    "playerCatalogId": "betis-deportivo-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2287,
     "yellowCards": 4,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-020",
+    "playerCatalogId": "betis-deportivo-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2025,
@@ -220,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-021",
+    "playerCatalogId": "betis-deportivo-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2012,
@@ -231,11 +198,44 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "betis-deportivo-2026-022",
+    "playerCatalogId": "betis-deportivo-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 764,
     "yellowCards": 2,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "betis-deportivo-2026-020",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 365,
+    "yellowCards": 1,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "betis-deportivo-2026-021",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 280,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "betis-deportivo-2026-022",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 78,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,

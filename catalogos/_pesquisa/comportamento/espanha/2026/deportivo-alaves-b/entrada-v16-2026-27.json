@@ -60,7 +60,7 @@
     "baseBehavior": null,
     "minutes": 831,
     "yellowCards": 1,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -89,17 +89,6 @@
   },
   {
     "playerCatalogId": "deportivo-alaves-b-2026-009",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "deportivo-alaves-b-2026-010",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2658,
@@ -110,7 +99,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-011",
+    "playerCatalogId": "deportivo-alaves-b-2026-010",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2311,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-012",
+    "playerCatalogId": "deportivo-alaves-b-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1030,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-013",
+    "playerCatalogId": "deportivo-alaves-b-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 973,
@@ -143,7 +132,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-014",
+    "playerCatalogId": "deportivo-alaves-b-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 312,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-015",
+    "playerCatalogId": "deportivo-alaves-b-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 120,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-016",
+    "playerCatalogId": "deportivo-alaves-b-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 0,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-alaves-b-2026-017",
+    "playerCatalogId": "deportivo-alaves-b-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2109,
@@ -187,11 +176,22 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
+    "playerCatalogId": "deportivo-alaves-b-2026-017",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 1883,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
     "playerCatalogId": "deportivo-alaves-b-2026-018",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1524,
-    "yellowCards": 1,
+    "minutes": 1529,
+    "yellowCards": 8,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -201,8 +201,8 @@
     "playerCatalogId": "deportivo-alaves-b-2026-019",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1529,
-    "yellowCards": 8,
+    "minutes": 1524,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -223,7 +223,7 @@
     "playerCatalogId": "deportivo-alaves-b-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 515,
+    "minutes": 830,
     "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
@@ -234,8 +234,8 @@
     "playerCatalogId": "deportivo-alaves-b-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 72,
-    "yellowCards": 0,
+    "minutes": 515,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -245,7 +245,7 @@
     "playerCatalogId": "deportivo-alaves-b-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 0,
+    "minutes": 72,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

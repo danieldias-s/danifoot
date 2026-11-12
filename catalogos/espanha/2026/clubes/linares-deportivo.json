@@ -9,7 +9,7 @@
   "tieBreakPriority": 119,
   "historicalRanking": {
     "rating": 69.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "linares-deportivo-2026-005",
-      "name": "Iker Pérez",
+      "name": "Monty",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "linares-deportivo-2026-006",
-      "name": "David Argüelles",
+      "name": "Iker Pérez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "linares-deportivo-2026-007",
-      "name": "Eu Gutiérrez",
+      "name": "David Argüelles",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "linares-deportivo-2026-008",
-      "name": "Rafa Ortiz",
+      "name": "Eu Gutiérrez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,7 +98,7 @@
     },
     {
       "id": "linares-deportivo-2026-009",
-      "name": "Monty",
+      "name": "Rafa Ortiz",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -118,7 +118,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "linares-deportivo-2026-012",
@@ -170,9 +170,9 @@
     },
     {
       "id": "linares-deportivo-2026-018",
-      "name": "Tommy Montenegro",
+      "name": "Giovanni Navarro",
       "position": "A",
-      "nationality": "AR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -186,15 +186,15 @@
     },
     {
       "id": "linares-deportivo-2026-020",
-      "name": "Juanma Domínguez",
+      "name": "Tommy Montenegro",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "AR",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "linares-deportivo-2026-021",
-      "name": "Giovanni Navarro",
+      "name": "Juanma Domínguez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

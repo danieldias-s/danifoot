@@ -9,7 +9,7 @@
   "tieBreakPriority": 19,
   "historicalRanking": {
     "rating": 83.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -57,7 +57,7 @@
     },
     {
       "id": "racing-de-santander-2026-004",
-      "name": "Álvaro Mantilla",
+      "name": "Manu Hernando",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -73,7 +73,7 @@
     },
     {
       "id": "racing-de-santander-2026-006",
-      "name": "Manu Hernando",
+      "name": "Álvaro Mantilla",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -129,17 +129,17 @@
     },
     {
       "id": "racing-de-santander-2026-013",
-      "name": "Maguette Gueye",
+      "name": "Matteo Prati",
       "position": "M",
-      "nationality": "SN",
+      "nationality": "IT",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "racing-de-santander-2026-014",
-      "name": "Matteo Prati",
+      "name": "Maguette Gueye",
       "position": "M",
-      "nationality": "IT",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
@@ -165,7 +165,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "racing-de-santander-2026-018",
@@ -173,21 +173,21 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "racing-de-santander-2026-019",
-      "name": "Iker Luque",
+      "name": "Giorgi Guliashvili",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "GE",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "racing-de-santander-2026-020",
-      "name": "Giorgi Guliashvili",
+      "name": "Iker Luque",
       "position": "A",
-      "nationality": "GE",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -201,17 +201,17 @@
     },
     {
       "id": "racing-de-santander-2026-022",
-      "name": "Juan Carlos Arana",
+      "name": "Yassir Zabiri",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "racing-de-santander-2026-023",
-      "name": "Yassir Zabiri",
+      "name": "Pablo García",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

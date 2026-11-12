@@ -38,7 +38,7 @@
     "baseBehavior": null,
     "minutes": 1594,
     "yellowCards": 6,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -100,10 +100,10 @@
   },
   {
     "playerCatalogId": "rayo-cantabria-2026-010",
-    "position": "D",
+    "position": "M",
     "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
+    "minutes": 2107,
+    "yellowCards": 7,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -113,9 +113,9 @@
     "playerCatalogId": "rayo-cantabria-2026-011",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 2107,
-    "yellowCards": 7,
-    "redCards": 1,
+    "minutes": 1980,
+    "yellowCards": 9,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -124,9 +124,9 @@
     "playerCatalogId": "rayo-cantabria-2026-012",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1980,
-    "yellowCards": 9,
-    "redCards": 1,
+    "minutes": 886,
+    "yellowCards": 3,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -135,8 +135,8 @@
     "playerCatalogId": "rayo-cantabria-2026-013",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 397,
-    "yellowCards": 2,
+    "minutes": 7,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -146,7 +146,7 @@
     "playerCatalogId": "rayo-cantabria-2026-014",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 7,
+    "minutes": 0,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -177,17 +177,6 @@
   },
   {
     "playerCatalogId": "rayo-cantabria-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "rayo-cantabria-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 948,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "rayo-cantabria-2026-019",
+    "playerCatalogId": "rayo-cantabria-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 789,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "rayo-cantabria-2026-020",
+    "playerCatalogId": "rayo-cantabria-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 167,
@@ -220,18 +209,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "rayo-cantabria-2026-021",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 66,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "rayo-cantabria-2026-022",
+    "playerCatalogId": "rayo-cantabria-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 114,
@@ -242,12 +220,34 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "rayo-cantabria-2026-023",
+    "playerCatalogId": "rayo-cantabria-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 86,
     "yellowCards": 1,
     "redCards": 1,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "rayo-cantabria-2026-022",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 66,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "rayo-cantabria-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 24,
+    "yellowCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"

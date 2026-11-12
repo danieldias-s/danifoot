@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2729,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 4
       },
       "index": null,
@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1581,
+        "minutes": 1693,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -138,9 +138,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1693,
+        "minutes": 1581,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1475,
+        "minutes": 1715,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,
@@ -271,9 +271,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1715,
-        "redCards": 1,
-        "yellowCards": 4
+        "minutes": 1475,
+        "redCards": 0,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1179,
+        "minutes": 1247,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 3,
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1247,
-        "redCards": 1,
-        "yellowCards": 6
+        "minutes": 1179,
+        "redCards": 0,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -347,25 +347,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "cp-cacereno-2026-017",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2187,
         "redCards": 0,
         "yellowCards": 3
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cp-cacereno-2026-018",
+      "playerCatalogId": "cp-cacereno-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cp-cacereno-2026-019",
+      "playerCatalogId": "cp-cacereno-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cp-cacereno-2026-020",
+      "playerCatalogId": "cp-cacereno-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,6 +411,25 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
+      "playerCatalogId": "cp-cacereno-2026-020",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 984,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
       "playerCatalogId": "cp-cacereno-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -443,7 +443,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 932,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 2
       },
       "index": null,
@@ -461,7 +461,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 364,
         "redCards": 0,
         "yellowCards": 0
       },

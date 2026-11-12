@@ -9,7 +9,7 @@
   "tieBreakPriority": 78,
   "historicalRanking": {
     "rating": 72.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ce-europa-2026-017",

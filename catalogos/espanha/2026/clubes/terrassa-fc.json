@@ -9,7 +9,7 @@
   "tieBreakPriority": 103,
   "historicalRanking": {
     "rating": 70.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "terrassa-fc-2026-005",
-      "name": "Ferran Ruiz",
+      "name": "Adrián Beamonte",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "terrassa-fc-2026-006",
-      "name": "Adrián Beamonte",
+      "name": "Ferran Ruiz",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "terrassa-fc-2026-008",
-      "name": "Gabriel Clemente",
+      "name": "Aser Palacios",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,6 +98,14 @@
     },
     {
       "id": "terrassa-fc-2026-009",
+      "name": "Gabriel Clemente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "terrassa-fc-2026-010",
       "name": "Sem Dirks",
       "position": "D",
       "nationality": "NL",
@@ -105,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-010",
+      "id": "terrassa-fc-2026-011",
       "name": "Iker Reche",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-011",
+      "id": "terrassa-fc-2026-012",
       "name": "Jaime Barrero",
       "position": "M",
       "nationality": "ES",
@@ -121,31 +129,7 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-012",
-      "name": "Sergio Montero",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "terrassa-fc-2026-013",
-      "name": "Ekaitz Molina",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "terrassa-fc-2026-014",
-      "name": "Sergio Cortés",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "terrassa-fc-2026-015",
       "name": "Álex López",
       "position": "M",
       "nationality": "ES",
@@ -153,8 +137,24 @@
       "isStar": false
     },
     {
+      "id": "terrassa-fc-2026-014",
+      "name": "Sergio Montero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "terrassa-fc-2026-015",
+      "name": "Ekaitz Molina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "terrassa-fc-2026-016",
-      "name": "Cristhian Mármol",
+      "name": "Sergio Cortés",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -162,7 +162,7 @@
     },
     {
       "id": "terrassa-fc-2026-017",
-      "name": "Albert Celma",
+      "name": "Cristhian Mármol",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -170,6 +170,14 @@
     },
     {
       "id": "terrassa-fc-2026-018",
+      "name": "Albert Celma",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "terrassa-fc-2026-019",
       "name": "Alberto Guti",
       "position": "A",
       "nationality": "ES",
@@ -177,23 +185,7 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-019",
-      "name": "Marcos Mendes",
-      "position": "A",
-      "nationality": "GW",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "terrassa-fc-2026-020",
-      "name": "Max Marcet",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "terrassa-fc-2026-021",
       "name": "Alfredo Sualdea",
       "position": "A",
       "nationality": "ES",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-022",
+      "id": "terrassa-fc-2026-021",
       "name": "Nahuel Arroyo",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +201,18 @@
       "isStar": false
     },
     {
-      "id": "terrassa-fc-2026-023",
-      "name": "Dano Lourens",
+      "id": "terrassa-fc-2026-022",
+      "name": "Marcos Mendes",
       "position": "A",
-      "nationality": "NL",
+      "nationality": "GW",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "terrassa-fc-2026-023",
+      "name": "Max Marcet",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

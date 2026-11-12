@@ -9,7 +9,7 @@
   "tieBreakPriority": 129,
   "historicalRanking": {
     "rating": 68.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -190,7 +190,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "atletico-sanluqueno-2026-021",

@@ -9,7 +9,7 @@
   "tieBreakPriority": 159,
   "historicalRanking": {
     "rating": 66.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,14 +106,6 @@
     },
     {
       "id": "atletico-central-2026-010",
-      "name": "Antonio Santos",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "atletico-central-2026-011",
       "name": "Fausto Tienza",
       "position": "M",
       "nationality": "ES",
@@ -121,15 +113,15 @@
       "isStar": false
     },
     {
-      "id": "atletico-central-2026-012",
+      "id": "atletico-central-2026-011",
       "name": "Jesús Alfaro",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "atletico-central-2026-013",
+      "id": "atletico-central-2026-012",
       "name": "Esteban Sachetti",
       "position": "M",
       "nationality": "AR",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-central-2026-014",
+      "id": "atletico-central-2026-013",
       "name": "Jaime de las Marinas",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-central-2026-015",
+      "id": "atletico-central-2026-014",
       "name": "Hugo Pech",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-central-2026-016",
+      "id": "atletico-central-2026-015",
       "name": "Nacho Sainz",
       "position": "M",
       "nationality": "ES",
@@ -161,9 +153,17 @@
       "isStar": false
     },
     {
-      "id": "atletico-central-2026-017",
+      "id": "atletico-central-2026-016",
       "name": "José Pablo Condan",
       "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-017",
+      "name": "Hugo Esteban",
+      "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -210,7 +210,7 @@
     },
     {
       "id": "atletico-central-2026-023",
-      "name": "Hugo Esteban",
+      "name": "Manuel Gavilán",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

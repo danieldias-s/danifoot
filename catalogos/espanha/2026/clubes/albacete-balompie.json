@@ -9,7 +9,7 @@
   "tieBreakPriority": 37,
   "historicalRanking": {
     "rating": 77.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -74,14 +74,6 @@
     },
     {
       "id": "albacete-balompie-2026-006",
-      "name": "Pepe Sánchez",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "albacete-balompie-2026-007",
       "name": "Lorenzo Aguado",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "albacete-balompie-2026-008",
+      "id": "albacete-balompie-2026-007",
       "name": "Javi Moreno",
       "position": "D",
       "nationality": "ES",
@@ -97,8 +89,16 @@
       "isStar": false
     },
     {
+      "id": "albacete-balompie-2026-008",
+      "name": "Pepe Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "albacete-balompie-2026-009",
-      "name": "Dani Bernabéu",
+      "name": "Lluís López",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -106,7 +106,7 @@
     },
     {
       "id": "albacete-balompie-2026-010",
-      "name": "Lluís López",
+      "name": "Dani Bernabéu",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -122,7 +122,7 @@
     },
     {
       "id": "albacete-balompie-2026-012",
-      "name": "Agus Medina",
+      "name": "Antonio Pacheco",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -130,7 +130,7 @@
     },
     {
       "id": "albacete-balompie-2026-013",
-      "name": "Antonio Pacheco",
+      "name": "Agus Medina",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "albacete-balompie-2026-017",
@@ -166,18 +166,10 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "albacete-balompie-2026-018",
-      "name": "Munir El Haddadi",
-      "position": "A",
-      "nationality": "MA",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "albacete-balompie-2026-019",
       "name": "Antonio Puertas",
       "position": "A",
       "nationality": "ES",
@@ -185,8 +177,16 @@
       "isStar": false
     },
     {
+      "id": "albacete-balompie-2026-019",
+      "name": "Munir El Haddadi",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "albacete-balompie-2026-020",
-      "name": "Victor Valverde",
+      "name": "Rober González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,7 +202,7 @@
     },
     {
       "id": "albacete-balompie-2026-022",
-      "name": "Higinio Marín",
+      "name": "Victor Valverde",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,9 +210,9 @@
     },
     {
       "id": "albacete-balompie-2026-023",
-      "name": "Agustín Albarracín",
+      "name": "Samuel Obeng",
       "position": "A",
-      "nationality": "UY",
+      "nationality": "GH",
       "behavior": null,
       "isStar": false
     }

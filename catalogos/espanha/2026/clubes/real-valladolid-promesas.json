@@ -9,7 +9,7 @@
   "tieBreakPriority": 113,
   "historicalRanking": {
     "rating": 69.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -124,7 +124,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-valladolid-promesas-2026-013",
@@ -160,22 +160,6 @@
     },
     {
       "id": "real-valladolid-promesas-2026-017",
-      "name": "Nemi Junior",
-      "position": "M",
-      "nationality": "CM",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-valladolid-promesas-2026-018",
-      "name": "Brain Obosso",
-      "position": "A",
-      "nationality": "NG",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-valladolid-promesas-2026-019",
       "name": "César Porras",
       "position": "A",
       "nationality": "ES",
@@ -183,7 +167,7 @@
       "isStar": false
     },
     {
-      "id": "real-valladolid-promesas-2026-020",
+      "id": "real-valladolid-promesas-2026-018",
       "name": "Tommy Fernández",
       "position": "A",
       "nationality": "ES",
@@ -191,7 +175,15 @@
       "isStar": false
     },
     {
-      "id": "real-valladolid-promesas-2026-021",
+      "id": "real-valladolid-promesas-2026-019",
+      "name": "Brain Obosso",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-promesas-2026-020",
       "name": "Mario Domínguez",
       "position": "A",
       "nationality": "ES",
@@ -199,7 +191,7 @@
       "isStar": false
     },
     {
-      "id": "real-valladolid-promesas-2026-022",
+      "id": "real-valladolid-promesas-2026-021",
       "name": "Sani Buhari",
       "position": "A",
       "nationality": "NG",
@@ -207,8 +199,16 @@
       "isStar": false
     },
     {
-      "id": "real-valladolid-promesas-2026-023",
+      "id": "real-valladolid-promesas-2026-022",
       "name": "Hugo Calvo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-promesas-2026-023",
+      "name": "Nouhoun Sylla",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

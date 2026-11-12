@@ -9,7 +9,7 @@
   "tieBreakPriority": 126,
   "historicalRanking": {
     "rating": 68.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,7 +49,7 @@
     },
     {
       "id": "sd-compostela-2026-003",
-      "name": "Jordan Sánchez",
+      "name": "Miguel Prado",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -57,7 +57,7 @@
     },
     {
       "id": "sd-compostela-2026-004",
-      "name": "Miguel Prado",
+      "name": "Jordan Sánchez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -161,15 +161,15 @@
     },
     {
       "id": "sd-compostela-2026-017",
-      "name": "Álex Gil",
+      "name": "Edu González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sd-compostela-2026-018",
-      "name": "Edu González",
+      "name": "Álex Gil",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -185,7 +185,7 @@
     },
     {
       "id": "sd-compostela-2026-020",
-      "name": "Antón Guisande",
+      "name": "Adrián Armental",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -193,7 +193,7 @@
     },
     {
       "id": "sd-compostela-2026-021",
-      "name": "Adrián Armental",
+      "name": "Antón Guisande",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

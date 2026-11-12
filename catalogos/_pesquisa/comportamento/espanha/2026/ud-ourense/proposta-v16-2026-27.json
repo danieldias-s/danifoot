@@ -101,32 +101,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2431,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
       "playerCatalogId": "ud-ourense-2026-004",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2021,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "ud-ourense-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +126,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ud-ourense-2026-006",
+      "playerCatalogId": "ud-ourense-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -157,14 +138,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1898,
+        "minutes": 2021,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ud-ourense-2026-007",
+      "playerCatalogId": "ud-ourense-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,6 +164,25 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
+      "playerCatalogId": "ud-ourense-2026-007",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1898,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
       "playerCatalogId": "ud-ourense-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 793,
+        "minutes": 1535,
         "redCards": 0,
         "yellowCards": 5
       },
@@ -214,8 +214,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2699,
-        "redCards": 0,
+        "minutes": 2759,
+        "redCards": 1,
         "yellowCards": 5
       },
       "index": null,
@@ -233,8 +233,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2759,
-        "redCards": 1,
+        "minutes": 2699,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,

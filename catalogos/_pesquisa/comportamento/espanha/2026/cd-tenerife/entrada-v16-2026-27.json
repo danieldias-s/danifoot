@@ -38,7 +38,7 @@
     "baseBehavior": null,
     "minutes": 3271,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -82,7 +82,7 @@
     "baseBehavior": null,
     "minutes": 1725,
     "yellowCards": 6,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -93,24 +93,13 @@
     "baseBehavior": null,
     "minutes": 1622,
     "yellowCards": 4,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-tenerife-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 180,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-011",
+    "playerCatalogId": "cd-tenerife-2026-010",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2747,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-012",
+    "playerCatalogId": "cd-tenerife-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2528,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-013",
+    "playerCatalogId": "cd-tenerife-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2077,
@@ -143,7 +132,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-014",
+    "playerCatalogId": "cd-tenerife-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1745,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-015",
+    "playerCatalogId": "cd-tenerife-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1392,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-016",
+    "playerCatalogId": "cd-tenerife-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 773,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-017",
+    "playerCatalogId": "cd-tenerife-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2753,
@@ -187,11 +176,22 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-tenerife-2026-018",
+    "playerCatalogId": "cd-tenerife-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2646,
     "yellowCards": 11,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-tenerife-2026-018",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2345,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -212,8 +212,8 @@
     "playerCatalogId": "cd-tenerife-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1365,
-    "yellowCards": 1,
+    "minutes": 2127,
+    "yellowCards": 6,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -223,7 +223,7 @@
     "playerCatalogId": "cd-tenerife-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1012,
+    "minutes": 1655,
     "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
@@ -234,8 +234,8 @@
     "playerCatalogId": "cd-tenerife-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 602,
-    "yellowCards": 2,
+    "minutes": 1365,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -245,8 +245,8 @@
     "playerCatalogId": "cd-tenerife-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 116,
-    "yellowCards": 1,
+    "minutes": 1222,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,

@@ -120,7 +120,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2611,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -176,6 +176,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 1782,
+        "redCards": 0,
+        "yellowCards": 8
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "ca-osasuna-2026-008",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1747,
         "redCards": 1,
         "yellowCards": 5
@@ -183,7 +202,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-008",
+      "playerCatalogId": "ca-osasuna-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +221,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-009",
+      "playerCatalogId": "ca-osasuna-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,7 +240,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-010",
+      "playerCatalogId": "ca-osasuna-2026-011",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-011",
+      "playerCatalogId": "ca-osasuna-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-012",
+      "playerCatalogId": "ca-osasuna-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-013",
+      "playerCatalogId": "ca-osasuna-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-014",
+      "playerCatalogId": "ca-osasuna-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -312,25 +331,6 @@
         "minutes": 1478,
         "redCards": 0,
         "yellowCards": 4
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-015",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1308,
-        "redCards": 1,
-        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 1,
@@ -366,6 +366,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 1308,
+        "redCards": 1,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "ca-osasuna-2026-018",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 3025,
         "redCards": 2,
         "yellowCards": 4
@@ -373,7 +392,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-018",
+      "playerCatalogId": "ca-osasuna-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +411,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-019",
+      "playerCatalogId": "ca-osasuna-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +430,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-020",
+      "playerCatalogId": "ca-osasuna-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,25 +449,6 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "ca-osasuna-2026-021",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 623,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
       "playerCatalogId": "ca-osasuna-2026-022",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 691,
-        "redCards": 0,
-        "yellowCards": 4
+        "minutes": 1384,
+        "redCards": 1,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,

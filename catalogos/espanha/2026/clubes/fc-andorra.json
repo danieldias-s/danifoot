@@ -9,7 +9,7 @@
   "tieBreakPriority": 33,
   "historicalRanking": {
     "rating": 78.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,14 +49,6 @@
     },
     {
       "id": "fc-andorra-2026-003",
-      "name": "Nico Ratti",
-      "position": "G",
-      "nationality": "AR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-andorra-2026-004",
       "name": "Andoni López",
       "position": "D",
       "nationality": "ES",
@@ -64,7 +56,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-005",
+      "id": "fc-andorra-2026-004",
       "name": "Gael Alonso",
       "position": "D",
       "nationality": "ES",
@@ -72,7 +64,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-006",
+      "id": "fc-andorra-2026-005",
       "name": "Thomas Carrique",
       "position": "D",
       "nationality": "FR",
@@ -80,7 +72,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-007",
+      "id": "fc-andorra-2026-006",
       "name": "Lautaro Spatz",
       "position": "D",
       "nationality": "AR",
@@ -88,7 +80,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-008",
+      "id": "fc-andorra-2026-007",
       "name": "Martí Vilà",
       "position": "D",
       "nationality": "ES",
@@ -96,7 +88,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-009",
+      "id": "fc-andorra-2026-008",
       "name": "Diego Alende",
       "position": "D",
       "nationality": "ES",
@@ -104,7 +96,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-010",
+      "id": "fc-andorra-2026-009",
       "name": "Juan Sebastián",
       "position": "D",
       "nationality": "ES",
@@ -112,7 +104,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-011",
+      "id": "fc-andorra-2026-010",
       "name": "Marc Bombardó",
       "position": "D",
       "nationality": "ES",
@@ -120,7 +112,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-012",
+      "id": "fc-andorra-2026-011",
       "name": "Nacho Quintana",
       "position": "M",
       "nationality": "ES",
@@ -128,8 +120,16 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-013",
+      "id": "fc-andorra-2026-012",
       "name": "Sergio Molina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-andorra-2026-013",
+      "name": "Marc Doménech",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -153,6 +153,14 @@
     },
     {
       "id": "fc-andorra-2026-016",
+      "name": "Diego Díaz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-andorra-2026-017",
       "name": "Efe Akman",
       "position": "M",
       "nationality": "TR",
@@ -160,7 +168,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-017",
+      "id": "fc-andorra-2026-018",
       "name": "Théo Le Normand",
       "position": "M",
       "nationality": "FR",
@@ -168,15 +176,15 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-018",
+      "id": "fc-andorra-2026-019",
       "name": "Jordi Cano",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "fc-andorra-2026-019",
+      "id": "fc-andorra-2026-020",
       "name": "Moró Sidibe",
       "position": "A",
       "nationality": "ES",
@@ -184,7 +192,7 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-020",
+      "id": "fc-andorra-2026-021",
       "name": "Lautaro de León",
       "position": "A",
       "nationality": "UY",
@@ -192,26 +200,18 @@
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-021",
-      "name": "Álex Calvo",
+      "id": "fc-andorra-2026-022",
+      "name": "Hugo López",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "fc-andorra-2026-022",
-      "name": "Julian Rijkhoff",
-      "position": "A",
-      "nationality": "NL",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "fc-andorra-2026-023",
-      "name": "Enes Sali",
+      "name": "Álex Calvo",
       "position": "A",
-      "nationality": "RO",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

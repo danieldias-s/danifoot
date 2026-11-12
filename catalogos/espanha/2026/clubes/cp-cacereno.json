@@ -9,7 +9,7 @@
   "tieBreakPriority": 73,
   "historicalRanking": {
     "rating": 73.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "cp-cacereno-2026-005",
-      "name": "Manolo Molina",
+      "name": "José Manuel Alonso",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "cp-cacereno-2026-006",
-      "name": "José Manuel Alonso",
+      "name": "Manolo Molina",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -122,14 +122,6 @@
     },
     {
       "id": "cp-cacereno-2026-012",
-      "name": "Nico Conesa",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cp-cacereno-2026-013",
       "name": "Luis Sánchez",
       "position": "M",
       "nationality": "ES",
@@ -137,8 +129,16 @@
       "isStar": false
     },
     {
+      "id": "cp-cacereno-2026-013",
+      "name": "Nico Conesa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "cp-cacereno-2026-014",
-      "name": "Deco",
+      "name": "Toño Calvo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -146,7 +146,7 @@
     },
     {
       "id": "cp-cacereno-2026-015",
-      "name": "Toño Calvo",
+      "name": "Deco",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -162,14 +162,6 @@
     },
     {
       "id": "cp-cacereno-2026-017",
-      "name": "Antonio Marchena",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cp-cacereno-2026-018",
       "name": "Runy",
       "position": "A",
       "nationality": "ES",
@@ -177,15 +169,15 @@
       "isStar": false
     },
     {
-      "id": "cp-cacereno-2026-019",
+      "id": "cp-cacereno-2026-018",
       "name": "Ignacio Tellechea",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "cp-cacereno-2026-020",
+      "id": "cp-cacereno-2026-019",
       "name": "Álex Monerris",
       "position": "A",
       "nationality": "ES",
@@ -193,8 +185,16 @@
       "isStar": false
     },
     {
-      "id": "cp-cacereno-2026-021",
+      "id": "cp-cacereno-2026-020",
       "name": "Iván Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cp-cacereno-2026-021",
+      "name": "Juan Artola",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,7 +210,7 @@
     },
     {
       "id": "cp-cacereno-2026-023",
-      "name": "José González",
+      "name": "Sergio Navarro",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

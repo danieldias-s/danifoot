@@ -9,7 +9,7 @@
   "tieBreakPriority": 148,
   "historicalRanking": {
     "rating": 67.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -126,7 +126,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-logrones-b-2026-013",

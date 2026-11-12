@@ -9,7 +9,7 @@
   "tieBreakPriority": 172,
   "historicalRanking": {
     "rating": 64.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": null,
@@ -47,14 +47,6 @@
     },
     {
       "id": "cf-calamocha-2026-003",
-      "name": "Iñaki Serrano",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cf-calamocha-2026-004",
       "name": "Dani Solbes",
       "position": "D",
       "nationality": "ES",
@@ -62,7 +54,7 @@
       "isStar": false
     },
     {
-      "id": "cf-calamocha-2026-005",
+      "id": "cf-calamocha-2026-004",
       "name": "Roberto Pérez",
       "position": "D",
       "nationality": "ES",
@@ -70,7 +62,7 @@
       "isStar": false
     },
     {
-      "id": "cf-calamocha-2026-006",
+      "id": "cf-calamocha-2026-005",
       "name": "Tayler Carrington",
       "position": "D",
       "nationality": "GI",
@@ -78,8 +70,16 @@
       "isStar": false
     },
     {
-      "id": "cf-calamocha-2026-007",
+      "id": "cf-calamocha-2026-006",
       "name": "Carlos Ferruz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-calamocha-2026-007",
+      "name": "Alejandro Escuín",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -207,9 +207,9 @@
     },
     {
       "id": "cf-calamocha-2026-023",
-      "name": "Javi Bellmunt",
+      "name": "Celes Abesó",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "GQ",
       "behavior": null,
       "isStar": false
     }

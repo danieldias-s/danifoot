@@ -9,7 +9,7 @@
   "tieBreakPriority": 79,
   "historicalRanking": {
     "rating": 72.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-004",
-      "name": "Jordi Méndez",
+      "name": "Carlos Blanco",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-006",
-      "name": "Javi Gómez",
+      "name": "Jordi Méndez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-007",
-      "name": "Andreu Hernández",
+      "name": "Javi Gómez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-008",
-      "name": "Félix Garreta",
+      "name": "Andreu Hernández",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,7 +98,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-009",
-      "name": "Nil Jiménez",
+      "name": "Félix Garreta",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -106,7 +106,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-010",
-      "name": "Joan Anaya",
+      "name": "Nil Jiménez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -114,15 +114,15 @@
     },
     {
       "id": "ue-sant-andreu-2026-011",
-      "name": "Oscar Carrasco",
-      "position": "M",
+      "name": "Joan Anaya",
+      "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ue-sant-andreu-2026-012",
-      "name": "Marc Delgado",
+      "name": "Oscar Carrasco",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -138,7 +138,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-014",
-      "name": "Albertito",
+      "name": "Marc Delgado",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-016",
-      "name": "Pablo Agudín",
+      "name": "Albertito",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -162,7 +162,7 @@
     },
     {
       "id": "ue-sant-andreu-2026-017",
-      "name": "Noel Carbonell",
+      "name": "Pablo Agudín",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -170,22 +170,30 @@
     },
     {
       "id": "ue-sant-andreu-2026-018",
-      "name": "Jaume Tovar",
-      "position": "A",
+      "name": "Noel Carbonell",
+      "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ue-sant-andreu-2026-019",
+      "name": "Jaume Tovar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ue-sant-andreu-2026-020",
       "name": "Alexis García",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "ue-sant-andreu-2026-020",
+      "id": "ue-sant-andreu-2026-021",
       "name": "Sergi Serrano",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +201,7 @@
       "isStar": false
     },
     {
-      "id": "ue-sant-andreu-2026-021",
+      "id": "ue-sant-andreu-2026-022",
       "name": "Sergi Armero",
       "position": "A",
       "nationality": "ES",
@@ -201,18 +209,10 @@
       "isStar": false
     },
     {
-      "id": "ue-sant-andreu-2026-022",
+      "id": "ue-sant-andreu-2026-023",
       "name": "Carles Garrido",
       "position": "A",
       "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ue-sant-andreu-2026-023",
-      "name": "Jeremy de León",
-      "position": "A",
-      "nationality": "PR",
       "behavior": null,
       "isStar": false
     }

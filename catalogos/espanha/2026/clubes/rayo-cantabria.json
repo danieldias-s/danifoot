@@ -9,7 +9,7 @@
   "tieBreakPriority": 116,
   "historicalRanking": {
     "rating": 69.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,14 +106,6 @@
     },
     {
       "id": "rayo-cantabria-2026-010",
-      "name": "Pablo Gaitán",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rayo-cantabria-2026-011",
       "name": "Mario Solórzano",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-012",
+      "id": "rayo-cantabria-2026-011",
       "name": "Andrés Vallecillo",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-013",
+      "id": "rayo-cantabria-2026-012",
       "name": "Hugo Martín",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-014",
+      "id": "rayo-cantabria-2026-013",
       "name": "Javi Carmona",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-015",
+      "id": "rayo-cantabria-2026-014",
       "name": "Junior Bita",
       "position": "M",
       "nationality": "GQ",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-016",
+      "id": "rayo-cantabria-2026-015",
       "name": "Jorge Castellanos",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-017",
+      "id": "rayo-cantabria-2026-016",
       "name": "Enzo Juan",
       "position": "M",
       "nationality": "BR",
@@ -169,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-018",
+      "id": "rayo-cantabria-2026-017",
       "name": "Rodrigo Ramos",
       "position": "A",
       "nationality": "ES",
@@ -177,15 +169,15 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-019",
+      "id": "rayo-cantabria-2026-018",
       "name": "Javi García",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "rayo-cantabria-2026-020",
+      "id": "rayo-cantabria-2026-019",
       "name": "Yaroslav Boyko",
       "position": "A",
       "nationality": "UA",
@@ -193,15 +185,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-021",
-      "name": "Souleymane Diouf",
-      "position": "A",
-      "nationality": "SN",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rayo-cantabria-2026-022",
+      "id": "rayo-cantabria-2026-020",
       "name": "Manu Márquez",
       "position": "A",
       "nationality": "ES",
@@ -209,8 +193,24 @@
       "isStar": false
     },
     {
-      "id": "rayo-cantabria-2026-023",
+      "id": "rayo-cantabria-2026-021",
       "name": "Gabi Jiménez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-022",
+      "name": "Souleymane Diouf",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-023",
+      "name": "Róber Bringas",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

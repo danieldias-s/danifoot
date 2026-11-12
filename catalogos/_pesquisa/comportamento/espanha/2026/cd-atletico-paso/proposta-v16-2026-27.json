@@ -119,6 +119,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 1498,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-atletico-paso-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1147,
         "redCards": 0,
         "yellowCards": 2
@@ -126,7 +145,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-005",
+      "playerCatalogId": "cd-atletico-paso-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-006",
+      "playerCatalogId": "cd-atletico-paso-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -160,25 +179,6 @@
         "minutes": 761,
         "redCards": 0,
         "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-007",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,
@@ -233,6 +233,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-atletico-paso-2026-011",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2583,
         "redCards": 0,
         "yellowCards": 15
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-011",
+      "playerCatalogId": "cd-atletico-paso-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -253,13 +272,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1740,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-012",
+      "playerCatalogId": "cd-atletico-paso-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-013",
+      "playerCatalogId": "cd-atletico-paso-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -293,25 +312,6 @@
         "minutes": 146,
         "redCards": 0,
         "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-atletico-paso-2026-014",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,

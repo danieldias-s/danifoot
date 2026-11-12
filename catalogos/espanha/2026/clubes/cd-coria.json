@@ -9,7 +9,7 @@
   "tieBreakPriority": 81,
   "historicalRanking": {
     "rating": 72.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,8 +49,8 @@
     },
     {
       "id": "cd-coria-2026-003",
-      "name": "Nico López",
-      "position": "G",
+      "name": "Alberto Trapero",
+      "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -97,15 +97,15 @@
     },
     {
       "id": "cd-coria-2026-009",
-      "name": "Jaime Calleja",
+      "name": "Benji Núñez",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "DO",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-coria-2026-010",
-      "name": "Alberto Trapero",
+      "name": "Jaime Calleja",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -121,7 +121,7 @@
     },
     {
       "id": "cd-coria-2026-012",
-      "name": "Edu Llorente",
+      "name": "Javi Tapia",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,6 +129,14 @@
     },
     {
       "id": "cd-coria-2026-013",
+      "name": "Edu Llorente",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-coria-2026-014",
       "name": "Sergio Gómez",
       "position": "M",
       "nationality": "ES",
@@ -136,16 +144,8 @@
       "isStar": false
     },
     {
-      "id": "cd-coria-2026-014",
-      "name": "Alberto Moreno",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-coria-2026-015",
-      "name": "Javi Tapia",
+      "name": "Alberto Moreno",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -185,7 +185,7 @@
     },
     {
       "id": "cd-coria-2026-020",
-      "name": "Álex Toper",
+      "name": "Iván Ramos",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -193,7 +193,7 @@
     },
     {
       "id": "cd-coria-2026-021",
-      "name": "Iván Ramos",
+      "name": "Álex Toper",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -113,7 +113,7 @@
     "playerCatalogId": "penya-deportiva-2026-011",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 360,
+    "minutes": 390,
     "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
@@ -135,6 +135,17 @@
     "playerCatalogId": "penya-deportiva-2026-013",
     "position": "M",
     "baseBehavior": null,
+    "minutes": 726,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "penya-deportiva-2026-014",
+    "position": "M",
+    "baseBehavior": null,
     "minutes": 535,
     "yellowCards": 1,
     "redCards": 1,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "penya-deportiva-2026-014",
+    "playerCatalogId": "penya-deportiva-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 400,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "penya-deportiva-2026-015",
+    "playerCatalogId": "penya-deportiva-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 389,
@@ -165,21 +176,10 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "penya-deportiva-2026-016",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 368,
-    "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
     "playerCatalogId": "penya-deportiva-2026-017",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 295,
+    "minutes": 368,
     "yellowCards": 1,
     "redCards": 0,
     "fouls": null,

@@ -60,7 +60,7 @@
     "baseBehavior": null,
     "minutes": 2572,
     "yellowCards": 12,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "cf-lorca-deportiva-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cf-lorca-deportiva-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2729,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-012",
+    "playerCatalogId": "cf-lorca-deportiva-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2302,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-013",
+    "playerCatalogId": "cf-lorca-deportiva-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2047,
@@ -143,18 +132,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-014",
+    "playerCatalogId": "cf-lorca-deportiva-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1350,
     "yellowCards": 7,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-015",
+    "playerCatalogId": "cf-lorca-deportiva-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1203,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-016",
+    "playerCatalogId": "cf-lorca-deportiva-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1032,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-017",
+    "playerCatalogId": "cf-lorca-deportiva-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 0,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-018",
+    "playerCatalogId": "cf-lorca-deportiva-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2840,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-019",
+    "playerCatalogId": "cf-lorca-deportiva-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2548,
@@ -209,12 +198,23 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cf-lorca-deportiva-2026-020",
+    "playerCatalogId": "cf-lorca-deportiva-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2408,
     "yellowCards": 10,
     "redCards": 1,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cf-lorca-deportiva-2026-020",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2254,
+    "yellowCards": 2,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -234,8 +234,8 @@
     "playerCatalogId": "cf-lorca-deportiva-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2254,
-    "yellowCards": 2,
+    "minutes": 1899,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -245,9 +245,9 @@
     "playerCatalogId": "cf-lorca-deportiva-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1899,
-    "yellowCards": 1,
-    "redCards": 1,
+    "minutes": 1531,
+    "yellowCards": 2,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"

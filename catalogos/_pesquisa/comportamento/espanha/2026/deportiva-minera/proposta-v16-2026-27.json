@@ -214,9 +214,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1663,
-        "redCards": 1,
-        "yellowCards": 8
+        "minutes": 1973,
+        "redCards": 0,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1973,
-        "redCards": 0,
-        "yellowCards": 3
+        "minutes": 1663,
+        "redCards": 1,
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 4,
@@ -309,7 +309,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1728,
+        "minutes": 1758,
         "redCards": 0,
         "yellowCards": 2
       },
@@ -328,7 +328,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1758,
+        "minutes": 1728,
         "redCards": 0,
         "yellowCards": 2
       },
@@ -347,9 +347,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1108,
-        "redCards": 1,
-        "yellowCards": 3
+        "minutes": 1712,
+        "redCards": 0,
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -366,8 +366,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 832,
-        "redCards": 0,
+        "minutes": 1541,
+        "redCards": 1,
         "yellowCards": 2
       },
       "index": null,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 798,
-        "redCards": 0,
-        "yellowCards": 1
+        "minutes": 1108,
+        "redCards": 1,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,

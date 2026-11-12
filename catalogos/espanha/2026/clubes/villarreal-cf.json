@@ -9,7 +9,7 @@
   "tieBreakPriority": 5,
   "historicalRanking": {
     "rating": 88.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,14 +114,6 @@
     },
     {
       "id": "villarreal-cf-2026-011",
-      "name": "Logan Costa",
-      "position": "D",
-      "nationality": "CV",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "villarreal-cf-2026-012",
       "name": "Santi Comesaña",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-013",
+      "id": "villarreal-cf-2026-012",
       "name": "Nathan Saliba",
       "position": "M",
       "nationality": "CA",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-014",
+      "id": "villarreal-cf-2026-013",
       "name": "Alassane Diatta",
       "position": "M",
       "nationality": "SN",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-015",
+      "id": "villarreal-cf-2026-014",
       "name": "Pape Gueye",
       "position": "M",
       "nationality": "SN",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-016",
+      "id": "villarreal-cf-2026-015",
       "name": "Carlos Macià",
       "position": "M",
       "nationality": "ES",
@@ -161,10 +153,18 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-017",
+      "id": "villarreal-cf-2026-016",
       "name": "Nicolas Pépé",
       "position": "A",
       "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-2026-017",
+      "name": "Georges Mikautadze",
+      "position": "A",
+      "nationality": "GE",
       "behavior": null,
       "isStar": false
     },
@@ -174,18 +174,10 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "villarreal-cf-2026-019",
-      "name": "Georges Mikautadze",
-      "position": "A",
-      "nationality": "GE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "villarreal-cf-2026-020",
       "name": "Tajon Buchanan",
       "position": "A",
       "nationality": "CA",
@@ -193,10 +185,18 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-2026-021",
+      "id": "villarreal-cf-2026-020",
       "name": "Ayoze Pérez",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-2026-021",
+      "name": "Tani Oluwaseyi",
+      "position": "A",
+      "nationality": "CA",
       "behavior": null,
       "isStar": false
     },
@@ -210,9 +210,9 @@
     },
     {
       "id": "villarreal-cf-2026-023",
-      "name": "Tani Oluwaseyi",
+      "name": "Ilias Akhomach",
       "position": "A",
-      "nationality": "CA",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     }

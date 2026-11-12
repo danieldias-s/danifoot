@@ -9,7 +9,7 @@
   "tieBreakPriority": 32,
   "historicalRanking": {
     "rating": 78.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "ce-sabadell-2026-003",
-      "name": "Marc Vidal",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ce-sabadell-2026-004",
       "name": "Arthur Bonaldo",
       "position": "D",
       "nationality": "BR",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-005",
+      "id": "ce-sabadell-2026-004",
       "name": "Miki Codina",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-006",
+      "id": "ce-sabadell-2026-005",
       "name": "Genar Fornés",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-007",
+      "id": "ce-sabadell-2026-006",
       "name": "Kaiser",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-008",
+      "id": "ce-sabadell-2026-007",
       "name": "José Luis Català",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-009",
+      "id": "ce-sabadell-2026-008",
       "name": "Pipa",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-010",
+      "id": "ce-sabadell-2026-009",
       "name": "Edgar González",
       "position": "D",
       "nationality": "ES",
@@ -113,8 +105,16 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-011",
+      "id": "ce-sabadell-2026-010",
       "name": "Pere Pons",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-011",
+      "name": "Albert Orriols",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -130,14 +130,6 @@
     },
     {
       "id": "ce-sabadell-2026-013",
-      "name": "Albert Orriols",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ce-sabadell-2026-014",
       "name": "Óscar Sanz",
       "position": "M",
       "nationality": "ES",
@@ -145,15 +137,15 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-015",
+      "id": "ce-sabadell-2026-014",
       "name": "Alain Ribeiro",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "ce-sabadell-2026-016",
+      "id": "ce-sabadell-2026-015",
       "name": "Eneko Aguilar",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-017",
+      "id": "ce-sabadell-2026-016",
       "name": "Yussif Owusu",
       "position": "M",
       "nationality": "GB",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-018",
+      "id": "ce-sabadell-2026-017",
       "name": "Joel Priego",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-018",
+      "name": "Javi López",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,22 +186,6 @@
     },
     {
       "id": "ce-sabadell-2026-020",
-      "name": "Yanis Rahmani",
-      "position": "A",
-      "nationality": "FR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ce-sabadell-2026-021",
-      "name": "Gastón Valles",
-      "position": "A",
-      "nationality": "UY",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ce-sabadell-2026-022",
       "name": "Ángel Baena",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +193,26 @@
       "isStar": false
     },
     {
-      "id": "ce-sabadell-2026-023",
-      "name": "Nicholas Gioacchini",
+      "id": "ce-sabadell-2026-021",
+      "name": "Yanis Rahmani",
       "position": "A",
-      "nationality": "US",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-022",
+      "name": "Gastón Valles",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-023",
+      "name": "Xavi Moreno",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

@@ -214,25 +214,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "atletico-central-2026-010",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 1838,
         "redCards": 1,
         "yellowCards": 7
@@ -240,7 +221,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-011",
+      "playerCatalogId": "atletico-central-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +240,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-012",
+      "playerCatalogId": "atletico-central-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +259,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-013",
+      "playerCatalogId": "atletico-central-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-014",
+      "playerCatalogId": "atletico-central-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-015",
+      "playerCatalogId": "atletico-central-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-016",
+      "playerCatalogId": "atletico-central-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,8 +335,27 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-central-2026-017",
+      "playerCatalogId": "atletico-central-2026-016",
       "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 874,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "atletico-central-2026-017",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 299,
+        "minutes": 29,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,

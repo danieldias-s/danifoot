@@ -9,7 +9,7 @@
   "tieBreakPriority": 138,
   "historicalRanking": {
     "rating": 67.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -122,7 +122,7 @@
     },
     {
       "id": "yeclano-deportivo-2026-012",
-      "name": "Marcos Montero",
+      "name": "Joselu Guerra",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -130,7 +130,7 @@
     },
     {
       "id": "yeclano-deportivo-2026-013",
-      "name": "Joselu Guerra",
+      "name": "Marcos Montero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "yeclano-deportivo-2026-018",
@@ -186,7 +186,7 @@
     },
     {
       "id": "yeclano-deportivo-2026-020",
-      "name": "Javi Borrego",
+      "name": "Jorge Borona",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "yeclano-deportivo-2026-021",
-      "name": "Jorge Borona",
+      "name": "Javi Borrego",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

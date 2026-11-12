@@ -9,7 +9,7 @@
   "tieBreakPriority": 21,
   "historicalRanking": {
     "rating": 82.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "getafe-cf-2026-003",
-      "name": "Dakonam Djené",
-      "position": "D",
-      "nationality": "TG",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "getafe-cf-2026-004",
       "name": "Johan Mojica",
       "position": "D",
       "nationality": "CO",
@@ -65,18 +57,26 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-2026-005",
-      "name": "Kiko Femenía",
+      "id": "getafe-cf-2026-004",
+      "name": "Dakonam Djené",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "TG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-005",
+      "name": "Jean Ives Valou",
+      "position": "D",
+      "nationality": "CI",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "getafe-cf-2026-006",
-      "name": "Jean Ives Valou",
+      "name": "Kiko Femenía",
       "position": "D",
-      "nationality": "CI",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -98,7 +98,7 @@
     },
     {
       "id": "getafe-cf-2026-009",
-      "name": "Davinchi",
+      "name": "Daniel Carvajal",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -106,17 +106,17 @@
     },
     {
       "id": "getafe-cf-2026-010",
-      "name": "Sebastián Boselli",
+      "name": "Davinchi",
       "position": "D",
-      "nationality": "UY",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "getafe-cf-2026-011",
-      "name": "Saba Sazonov",
+      "name": "Sebastián Boselli",
       "position": "D",
-      "nationality": "GE",
+      "nationality": "UY",
       "behavior": null,
       "isStar": false
     },
@@ -126,7 +126,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "getafe-cf-2026-013",
@@ -146,7 +146,7 @@
     },
     {
       "id": "getafe-cf-2026-015",
-      "name": "Ramón Terrats",
+      "name": "Alberto Risco",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "getafe-cf-2026-016",
-      "name": "Alberto Risco",
+      "name": "Ramón Terrats",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -170,17 +170,17 @@
     },
     {
       "id": "getafe-cf-2026-018",
-      "name": "Iván Azón",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "getafe-cf-2026-019",
       "name": "Martín Satriano",
       "position": "A",
       "nationality": "UY",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "getafe-cf-2026-019",
+      "name": "Iván Azón",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

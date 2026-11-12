@@ -23,17 +23,6 @@
   },
   {
     "playerCatalogId": "orihuela-cf-2026-003",
-    "position": "G",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "orihuela-cf-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 3150,
@@ -44,18 +33,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-005",
+    "playerCatalogId": "orihuela-cf-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2177,
     "yellowCards": 2,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-006",
+    "playerCatalogId": "orihuela-cf-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1287,
@@ -66,7 +55,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-007",
+    "playerCatalogId": "orihuela-cf-2026-006",
     "position": "D",
     "baseBehavior": null,
     "minutes": 855,
@@ -77,11 +66,22 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-008",
+    "playerCatalogId": "orihuela-cf-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 285,
     "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "orihuela-cf-2026-008",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 0,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -111,17 +111,6 @@
   },
   {
     "playerCatalogId": "orihuela-cf-2026-011",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "orihuela-cf-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2760,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-013",
+    "playerCatalogId": "orihuela-cf-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2722,
@@ -143,29 +132,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-014",
+    "playerCatalogId": "orihuela-cf-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2284,
     "yellowCards": 10,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-015",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 2083,
-    "yellowCards": 4,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "orihuela-cf-2026-016",
+    "playerCatalogId": "orihuela-cf-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2166,
@@ -176,7 +154,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-017",
+    "playerCatalogId": "orihuela-cf-2026-015",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 2083,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "orihuela-cf-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1241,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-018",
+    "playerCatalogId": "orihuela-cf-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3264,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-019",
+    "playerCatalogId": "orihuela-cf-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2663,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-020",
+    "playerCatalogId": "orihuela-cf-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1772,
@@ -220,7 +209,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-021",
+    "playerCatalogId": "orihuela-cf-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1337,
@@ -231,7 +220,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-022",
+    "playerCatalogId": "orihuela-cf-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1113,
@@ -242,10 +231,21 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "orihuela-cf-2026-023",
+    "playerCatalogId": "orihuela-cf-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 268,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "orihuela-cf-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 0,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

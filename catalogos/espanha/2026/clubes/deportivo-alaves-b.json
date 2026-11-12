@@ -9,7 +9,7 @@
   "tieBreakPriority": 65,
   "historicalRanking": {
     "rating": 73.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -97,14 +97,6 @@
     },
     {
       "id": "deportivo-alaves-b-2026-009",
-      "name": "Igor Ortiz",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportivo-alaves-b-2026-010",
       "name": "Lander Pinillos",
       "position": "M",
       "nationality": "ES",
@@ -112,7 +104,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-011",
+      "id": "deportivo-alaves-b-2026-010",
       "name": "Iván Garrido",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +112,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-012",
+      "id": "deportivo-alaves-b-2026-011",
       "name": "Carlo Viso",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-013",
+      "id": "deportivo-alaves-b-2026-012",
       "name": "Ander Varona",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-014",
+      "id": "deportivo-alaves-b-2026-013",
       "name": "Tomás Mendes",
       "position": "M",
       "nationality": "GW",
@@ -144,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-015",
+      "id": "deportivo-alaves-b-2026-014",
       "name": "Eduardo Fontana",
       "position": "M",
       "nationality": "BR",
@@ -152,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-016",
+      "id": "deportivo-alaves-b-2026-015",
       "name": "Oihan Vicente",
       "position": "M",
       "nationality": "ES",
@@ -160,26 +152,34 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-b-2026-017",
+      "id": "deportivo-alaves-b-2026-016",
       "name": "Iñaki Alberca",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
+    },
+    {
+      "id": "deportivo-alaves-b-2026-017",
+      "name": "Chema Aragües",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "deportivo-alaves-b-2026-018",
-      "name": "Izei Hernández",
+      "name": "Tazghat Bouguettaya",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "DZ",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "deportivo-alaves-b-2026-019",
-      "name": "Tazghat Bouguettaya",
+      "name": "Izei Hernández",
       "position": "A",
-      "nationality": "DZ",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -193,7 +193,7 @@
     },
     {
       "id": "deportivo-alaves-b-2026-021",
-      "name": "Pablo Goitia",
+      "name": "Aimar González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -201,7 +201,7 @@
     },
     {
       "id": "deportivo-alaves-b-2026-022",
-      "name": "Dennis Rufo",
+      "name": "Pablo Goitia",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -209,7 +209,7 @@
     },
     {
       "id": "deportivo-alaves-b-2026-023",
-      "name": "Flavio Ferullo",
+      "name": "Dennis Rufo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

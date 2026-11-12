@@ -9,7 +9,7 @@
   "tieBreakPriority": 115,
   "historicalRanking": {
     "rating": 69.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "sevilla-atletico-2026-003",
-      "name": "Sergio Recio",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sevilla-atletico-2026-004",
       "name": "Iker Muñoz",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-005",
+      "id": "sevilla-atletico-2026-004",
       "name": "Sergio Martínez",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-006",
+      "id": "sevilla-atletico-2026-005",
       "name": "Valentino Fattore",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-007",
+      "id": "sevilla-atletico-2026-006",
       "name": "Robert Jălade",
       "position": "D",
       "nationality": "RO",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-008",
+      "id": "sevilla-atletico-2026-007",
       "name": "Jorge Moreno",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-009",
+      "id": "sevilla-atletico-2026-008",
       "name": "Tamiou Kpebane",
       "position": "D",
       "nationality": "DE",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-010",
+      "id": "sevilla-atletico-2026-009",
       "name": "Marc Fernández",
       "position": "D",
       "nationality": "ES",
@@ -113,23 +105,23 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-011",
-      "name": "Adrián Pérez",
+      "id": "sevilla-atletico-2026-010",
+      "name": "Antonio Soriano",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-012",
+      "id": "sevilla-atletico-2026-011",
       "name": "Nico Guillén",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "sevilla-atletico-2026-013",
+      "id": "sevilla-atletico-2026-012",
       "name": "Edu Altozano",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-014",
+      "id": "sevilla-atletico-2026-013",
       "name": "Jesús Cruz",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-015",
+      "id": "sevilla-atletico-2026-014",
       "name": "Viktor Chumachenko",
       "position": "M",
       "nationality": "UA",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-016",
+      "id": "sevilla-atletico-2026-015",
       "name": "Aitor Caballero",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-017",
+      "id": "sevilla-atletico-2026-016",
       "name": "Ibra Sow",
       "position": "A",
       "nationality": "SN",
@@ -169,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-018",
+      "id": "sevilla-atletico-2026-017",
       "name": "Manuel Ángel Castillo",
       "position": "A",
       "nationality": "ES",
@@ -177,8 +169,16 @@
       "isStar": false
     },
     {
-      "id": "sevilla-atletico-2026-019",
+      "id": "sevilla-atletico-2026-018",
       "name": "Jesuly",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-atletico-2026-019",
+      "name": "Eric Alcaide",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "sevilla-atletico-2026-021",
-      "name": "Eric Alcaide",
+      "name": "Iker Villar",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,7 +202,7 @@
     },
     {
       "id": "sevilla-atletico-2026-022",
-      "name": "Iker Villar",
+      "name": "Francisco Lóciga",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

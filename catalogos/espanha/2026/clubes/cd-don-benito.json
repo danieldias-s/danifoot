@@ -9,7 +9,7 @@
   "tieBreakPriority": 125,
   "historicalRanking": {
     "rating": 68.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -57,17 +57,17 @@
     },
     {
       "id": "cd-don-benito-2026-004",
-      "name": "Samu Gomis",
+      "name": "Raúl Castro",
       "position": "D",
-      "nationality": "SN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-don-benito-2026-005",
-      "name": "Raúl Castro",
+      "name": "Samu Gomis",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
@@ -161,7 +161,7 @@
     },
     {
       "id": "cd-don-benito-2026-017",
-      "name": "Gorka Santamaría",
+      "name": "Sergio Alonso",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -169,11 +169,11 @@
     },
     {
       "id": "cd-don-benito-2026-018",
-      "name": "Sergio Alonso",
+      "name": "Gorka Santamaría",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-don-benito-2026-019",

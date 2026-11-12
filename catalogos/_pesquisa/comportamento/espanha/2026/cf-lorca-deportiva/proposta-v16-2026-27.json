@@ -139,7 +139,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2572,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 12
       },
       "index": null,
@@ -214,25 +214,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-010",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2729,
         "redCards": 1,
         "yellowCards": 10
@@ -240,7 +221,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-011",
+      "playerCatalogId": "cf-lorca-deportiva-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +240,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-012",
+      "playerCatalogId": "cf-lorca-deportiva-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +259,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-013",
+      "playerCatalogId": "cf-lorca-deportiva-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -291,13 +272,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1350,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-014",
+      "playerCatalogId": "cf-lorca-deportiva-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-015",
+      "playerCatalogId": "cf-lorca-deportiva-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-016",
+      "playerCatalogId": "cf-lorca-deportiva-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +335,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-017",
+      "playerCatalogId": "cf-lorca-deportiva-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-018",
+      "playerCatalogId": "cf-lorca-deportiva-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-lorca-deportiva-2026-019",
+      "playerCatalogId": "cf-lorca-deportiva-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -407,6 +388,25 @@
         "minutes": 2408,
         "redCards": 1,
         "yellowCards": 10
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cf-lorca-deportiva-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2254,
+        "redCards": 0,
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2254,
+        "minutes": 1899,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1899,
-        "redCards": 1,
-        "yellowCards": 1
+        "minutes": 1531,
+        "redCards": 0,
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,

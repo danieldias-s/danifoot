@@ -9,7 +9,7 @@
   "tieBreakPriority": 154,
   "historicalRanking": {
     "rating": 66.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -48,14 +48,6 @@
     },
     {
       "id": "salerm-puente-genil-2026-003",
-      "name": "Juan Pajuelo",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "salerm-puente-genil-2026-004",
       "name": "Marcos Pérez",
       "position": "D",
       "nationality": "ES",
@@ -63,7 +55,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-005",
+      "id": "salerm-puente-genil-2026-004",
       "name": "Rafita Álvarez",
       "position": "D",
       "nationality": "ES",
@@ -71,7 +63,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-006",
+      "id": "salerm-puente-genil-2026-005",
       "name": "Andreu Talarn",
       "position": "D",
       "nationality": "ES",
@@ -79,7 +71,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-007",
+      "id": "salerm-puente-genil-2026-006",
       "name": "Antonio Pajuelo",
       "position": "D",
       "nationality": "ES",
@@ -87,7 +79,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-008",
+      "id": "salerm-puente-genil-2026-007",
       "name": "Connor Ruane",
       "position": "D",
       "nationality": "GB",
@@ -95,7 +87,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-009",
+      "id": "salerm-puente-genil-2026-008",
       "name": "Ginés González",
       "position": "D",
       "nationality": "ES",
@@ -103,7 +95,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-010",
+      "id": "salerm-puente-genil-2026-009",
       "name": "Salvi Vera",
       "position": "D",
       "nationality": "ES",
@@ -111,7 +103,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-011",
+      "id": "salerm-puente-genil-2026-010",
       "name": "Pepelu",
       "position": "D",
       "nationality": "ES",
@@ -119,7 +111,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-012",
+      "id": "salerm-puente-genil-2026-011",
       "name": "Salva Vegas",
       "position": "M",
       "nationality": "ES",
@@ -127,7 +119,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-013",
+      "id": "salerm-puente-genil-2026-012",
       "name": "Lalo Hernández",
       "position": "M",
       "nationality": "ES",
@@ -135,7 +127,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-014",
+      "id": "salerm-puente-genil-2026-013",
       "name": "Polaco",
       "position": "M",
       "nationality": "ES",
@@ -143,7 +135,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-015",
+      "id": "salerm-puente-genil-2026-014",
       "name": "Adrián Virtudes",
       "position": "M",
       "nationality": "ES",
@@ -151,7 +143,7 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-016",
+      "id": "salerm-puente-genil-2026-015",
       "name": "Juan Rosa",
       "position": "M",
       "nationality": "ES",
@@ -159,9 +151,17 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-017",
+      "id": "salerm-puente-genil-2026-016",
       "name": "Topo",
       "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-017",
+      "name": "Manu Viana",
+      "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -172,11 +172,11 @@
       "position": "A",
       "nationality": "MX",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "salerm-puente-genil-2026-019",
-      "name": "Manu Viana",
+      "name": "Loren Bianco",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -192,14 +192,6 @@
     },
     {
       "id": "salerm-puente-genil-2026-021",
-      "name": "Loren Bianco",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "salerm-puente-genil-2026-022",
       "name": "Bugui",
       "position": "A",
       "nationality": "ES",
@@ -207,8 +199,16 @@
       "isStar": false
     },
     {
-      "id": "salerm-puente-genil-2026-023",
+      "id": "salerm-puente-genil-2026-022",
       "name": "Víctor Juliá",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-023",
+      "name": "Josemi Prieto",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

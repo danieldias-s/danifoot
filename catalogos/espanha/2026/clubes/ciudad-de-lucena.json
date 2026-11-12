@@ -9,7 +9,7 @@
   "tieBreakPriority": 120,
   "historicalRanking": {
     "rating": 69.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -117,7 +117,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ciudad-de-lucena-2026-012",

@@ -9,7 +9,7 @@
   "tieBreakPriority": 49,
   "historicalRanking": {
     "rating": 75.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "ud-ibiza-2026-003",
-      "name": "Rareș Vlad",
-      "position": "G",
-      "nationality": "RO",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-ibiza-2026-004",
       "name": "David Astals",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-005",
+      "id": "ud-ibiza-2026-004",
       "name": "Ismael Fadel",
       "position": "D",
       "nationality": "MA",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-006",
+      "id": "ud-ibiza-2026-005",
       "name": "Erik Ruiz",
       "position": "D",
       "nationality": "ES",
@@ -81,8 +73,16 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-007",
+      "id": "ud-ibiza-2026-006",
       "name": "Hugo San Modesto",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ibiza-2026-007",
+      "name": "Eric Curbelo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,14 +98,6 @@
     },
     {
       "id": "ud-ibiza-2026-009",
-      "name": "Eric Curbelo",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-ibiza-2026-010",
       "name": "Jérémy Blasco",
       "position": "D",
       "nationality": "FR",
@@ -113,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-011",
+      "id": "ud-ibiza-2026-010",
       "name": "Pablo Busto",
       "position": "D",
       "nationality": "ES",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-012",
+      "id": "ud-ibiza-2026-011",
       "name": "Gonzalo Almenara",
       "position": "D",
       "nationality": "ES",
@@ -129,10 +121,18 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-013",
+      "id": "ud-ibiza-2026-012",
       "name": "Théo Valls",
       "position": "M",
       "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ibiza-2026-013",
+      "name": "Genaro Rodríguez",
+      "position": "M",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -146,14 +146,6 @@
     },
     {
       "id": "ud-ibiza-2026-015",
-      "name": "Genaro Rodríguez",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-ibiza-2026-016",
       "name": "Pedro Ortiz",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-017",
+      "id": "ud-ibiza-2026-016",
       "name": "Iván del Olmo",
       "position": "M",
       "nationality": "ES",
@@ -169,10 +161,18 @@
       "isStar": false
     },
     {
-      "id": "ud-ibiza-2026-018",
+      "id": "ud-ibiza-2026-017",
       "name": "Ander Yoldi",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ud-ibiza-2026-018",
+      "name": "Georges Nsukula",
+      "position": "A",
+      "nationality": "FR",
       "behavior": null,
       "isStar": false
     },
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-ibiza-2026-020",
@@ -202,7 +202,7 @@
     },
     {
       "id": "ud-ibiza-2026-022",
-      "name": "Iker Varela",
+      "name": "Liberto Beltrán",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,9 +210,9 @@
     },
     {
       "id": "ud-ibiza-2026-023",
-      "name": "Georges Nsukula",
+      "name": "Iker Varela",
       "position": "A",
-      "nationality": "FR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

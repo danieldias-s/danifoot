@@ -9,7 +9,7 @@
   "tieBreakPriority": 92,
   "historicalRanking": {
     "rating": 71.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "aguilas-fc-2026-003",
-      "name": "Johan Terranova",
-      "position": "D",
-      "nationality": "CO",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "aguilas-fc-2026-004",
       "name": "Álex Revuelta",
       "position": "D",
       "nationality": "ES",
@@ -65,8 +57,16 @@
       "isStar": false
     },
     {
+      "id": "aguilas-fc-2026-004",
+      "name": "Johan Terranova",
+      "position": "D",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "aguilas-fc-2026-005",
-      "name": "Héctor Martínez",
+      "name": "José Mas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,9 +74,9 @@
     },
     {
       "id": "aguilas-fc-2026-006",
-      "name": "Fromsa",
+      "name": "Héctor Martínez",
       "position": "D",
-      "nationality": "ET",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -90,9 +90,9 @@
     },
     {
       "id": "aguilas-fc-2026-008",
-      "name": "José Mas",
+      "name": "Fromsa",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "ET",
       "behavior": null,
       "isStar": false
     },
@@ -106,7 +106,7 @@
     },
     {
       "id": "aguilas-fc-2026-010",
-      "name": "Mario Abenza",
+      "name": "Adrián Pérez",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -114,7 +114,7 @@
     },
     {
       "id": "aguilas-fc-2026-011",
-      "name": "Adri Heredia",
+      "name": "Mario Abenza",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -122,7 +122,7 @@
     },
     {
       "id": "aguilas-fc-2026-012",
-      "name": "Alberto Collado",
+      "name": "Adri Heredia",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -130,7 +130,7 @@
     },
     {
       "id": "aguilas-fc-2026-013",
-      "name": "Yasser El Arbaoui",
+      "name": "Alberto Collado",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -138,7 +138,7 @@
     },
     {
       "id": "aguilas-fc-2026-014",
-      "name": "Adrián Pérez",
+      "name": "Yasser El Arbaoui",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "aguilas-fc-2026-019",
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "aguilas-fc-2026-020",

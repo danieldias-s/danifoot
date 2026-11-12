@@ -9,7 +9,7 @@
   "tieBreakPriority": 147,
   "historicalRanking": {
     "rating": 67.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -108,7 +108,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "marino-de-luanco-2026-011",
@@ -184,7 +184,7 @@
     },
     {
       "id": "marino-de-luanco-2026-020",
-      "name": "Samuel Montes",
+      "name": "Berto González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -192,7 +192,7 @@
     },
     {
       "id": "marino-de-luanco-2026-021",
-      "name": "Berto González",
+      "name": "Samuel Montes",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

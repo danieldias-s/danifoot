@@ -9,7 +9,7 @@
   "tieBreakPriority": 31,
   "historicalRanking": {
     "rating": 78.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "cordoba-cf-2026-004",
-      "name": "Egoitz Muñoz",
+      "name": "Daniel Budesca",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "cordoba-cf-2026-005",
-      "name": "Carlos Albarrán",
+      "name": "Egoitz Muñoz",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,9 +74,9 @@
     },
     {
       "id": "cordoba-cf-2026-006",
-      "name": "Nélson Monte",
+      "name": "Carlos Albarrán",
       "position": "D",
-      "nationality": "PT",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -90,15 +90,15 @@
     },
     {
       "id": "cordoba-cf-2026-008",
-      "name": "Rubén Alves",
+      "name": "Nélson Monte",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "PT",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cordoba-cf-2026-009",
-      "name": "Jacobo Martí",
+      "name": "Rubén Alves",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -114,9 +114,9 @@
     },
     {
       "id": "cordoba-cf-2026-011",
-      "name": "Franck Fomeyem",
+      "name": "Jacobo Martí",
       "position": "D",
-      "nationality": "CM",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -162,14 +162,6 @@
     },
     {
       "id": "cordoba-cf-2026-017",
-      "name": "Cristian Carracedo",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cordoba-cf-2026-018",
       "name": "Adnane Ghailan",
       "position": "A",
       "nationality": "MA",
@@ -177,12 +169,20 @@
       "isStar": false
     },
     {
+      "id": "cordoba-cf-2026-018",
+      "name": "Cristian Carracedo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
       "id": "cordoba-cf-2026-019",
       "name": "Ibai Sanz",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cordoba-cf-2026-020",
@@ -202,7 +202,7 @@
     },
     {
       "id": "cordoba-cf-2026-022",
-      "name": "Diego Bri",
+      "name": "Kevin Medina",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,7 +210,7 @@
     },
     {
       "id": "cordoba-cf-2026-023",
-      "name": "Diego Percan",
+      "name": "Diego Bri",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

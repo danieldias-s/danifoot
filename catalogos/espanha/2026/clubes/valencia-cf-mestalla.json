@@ -9,7 +9,7 @@
   "tieBreakPriority": 146,
   "historicalRanking": {
     "rating": 67.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -113,6 +113,14 @@
     },
     {
       "id": "valencia-cf-mestalla-2026-011",
+      "name": "Iker Herrera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-mestalla-2026-012",
       "name": "Adrián Ruiz",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-mestalla-2026-012",
+      "id": "valencia-cf-mestalla-2026-013",
       "name": "Mario Guilabert",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-mestalla-2026-013",
+      "id": "valencia-cf-mestalla-2026-014",
       "name": "Jaume Durá",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-mestalla-2026-014",
+      "id": "valencia-cf-mestalla-2026-015",
       "name": "Mario González",
       "position": "M",
       "nationality": "ES",
@@ -144,7 +152,7 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-mestalla-2026-015",
+      "id": "valencia-cf-mestalla-2026-016",
       "name": "Alejandro Estévez",
       "position": "M",
       "nationality": "ES",
@@ -152,18 +160,10 @@
       "isStar": false
     },
     {
-      "id": "valencia-cf-mestalla-2026-016",
+      "id": "valencia-cf-mestalla-2026-017",
       "name": "Gabriel Gera",
       "position": "M",
       "nationality": "RO",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "valencia-cf-mestalla-2026-017",
-      "name": "Hugo Guijarro",
-      "position": "M",
-      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -173,7 +173,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "valencia-cf-mestalla-2026-019",

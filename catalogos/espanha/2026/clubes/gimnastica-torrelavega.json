@@ -9,7 +9,7 @@
   "tieBreakPriority": 165,
   "historicalRanking": {
     "rating": 65.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -112,15 +112,15 @@
     },
     {
       "id": "gimnastica-torrelavega-2026-011",
-      "name": "Javi Cobo",
+      "name": "Álex Aguado",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "gimnastica-torrelavega-2026-012",
-      "name": "Álex Aguado",
+      "name": "Javi Cobo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

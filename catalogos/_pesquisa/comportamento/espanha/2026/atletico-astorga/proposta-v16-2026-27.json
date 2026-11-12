@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1526,
+        "minutes": 1546,
         "redCards": 0,
-        "yellowCards": 7
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,
@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1546,
+        "minutes": 1526,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,
@@ -347,15 +347,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
+        "minutes": 1219,
+        "redCards": 1,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "atletico-astorga-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -385,25 +385,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1219,
-        "redCards": 1,
-        "yellowCards": 3
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "atletico-astorga-2026-019",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 226,
         "redCards": 0,
         "yellowCards": 1
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-astorga-2026-020",
+      "playerCatalogId": "atletico-astorga-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +411,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "atletico-astorga-2026-021",
+      "playerCatalogId": "atletico-astorga-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -445,6 +426,25 @@
         "minutes": 37,
         "redCards": 0,
         "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "atletico-astorga-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,

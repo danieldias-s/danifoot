@@ -157,9 +157,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1635,
+        "minutes": 1698,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 2,
@@ -176,9 +176,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1116,
+        "minutes": 1635,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 2,
@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 573,
+        "minutes": 1273,
         "redCards": 0,
         "yellowCards": 1
       },
@@ -214,9 +214,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 122,
+        "minutes": 1116,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 2,
@@ -233,14 +233,33 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2215,
+        "minutes": 891,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cadiz-cf-2026-011",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2230,
         "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-011",
+      "playerCatalogId": "cadiz-cf-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-012",
+      "playerCatalogId": "cadiz-cf-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-013",
+      "playerCatalogId": "cadiz-cf-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-014",
+      "playerCatalogId": "cadiz-cf-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +335,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-015",
+      "playerCatalogId": "cadiz-cf-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -329,13 +348,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 865,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 8
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-016",
+      "playerCatalogId": "cadiz-cf-2026-017",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +373,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-017",
+      "playerCatalogId": "cadiz-cf-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +392,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-018",
+      "playerCatalogId": "cadiz-cf-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +411,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-019",
+      "playerCatalogId": "cadiz-cf-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,25 +430,6 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "cadiz-cf-2026-020",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier2-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 911,
-        "redCards": 0,
-        "yellowCards": 3
-      },
-      "index": null,
-      "initialDivision": 2,
-      "percentile": null,
       "playerCatalogId": "cadiz-cf-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 611,
+        "minutes": 1301,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 2,
@@ -461,7 +461,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 346,
+        "minutes": 911,
         "redCards": 0,
         "yellowCards": 3
       },

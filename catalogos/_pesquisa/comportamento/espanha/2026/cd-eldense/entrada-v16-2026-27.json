@@ -5,7 +5,7 @@
     "baseBehavior": null,
     "minutes": 3229,
     "yellowCards": 0,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -91,8 +91,8 @@
     "playerCatalogId": "cd-eldense-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1874,
-    "yellowCards": 3,
+    "minutes": 1976,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -102,8 +102,8 @@
     "playerCatalogId": "cd-eldense-2026-010",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1976,
-    "yellowCards": 2,
+    "minutes": 1874,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -111,17 +111,28 @@
   },
   {
     "playerCatalogId": "cd-eldense-2026-011",
-    "position": "M",
+    "position": "D",
     "baseBehavior": null,
-    "minutes": 2630,
+    "minutes": 854,
     "yellowCards": 5,
-    "redCards": 2,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
     "playerCatalogId": "cd-eldense-2026-012",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 2630,
+    "yellowCards": 5,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-eldense-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2220,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-013",
+    "playerCatalogId": "cd-eldense-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1963,
@@ -143,21 +154,10 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-014",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 1311,
-    "yellowCards": 2,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
     "playerCatalogId": "cd-eldense-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1025,
+    "minutes": 1311,
     "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
@@ -179,8 +179,8 @@
     "playerCatalogId": "cd-eldense-2026-017",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 720,
-    "yellowCards": 5,
+    "minutes": 1025,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -188,6 +188,17 @@
   },
   {
     "playerCatalogId": "cd-eldense-2026-018",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 3004,
+    "yellowCards": 9,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-eldense-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2766,
@@ -198,7 +209,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-019",
+    "playerCatalogId": "cd-eldense-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2265,
@@ -209,7 +220,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-020",
+    "playerCatalogId": "cd-eldense-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1505,
@@ -220,7 +231,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-021",
+    "playerCatalogId": "cd-eldense-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1367,
@@ -231,22 +242,11 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-eldense-2026-022",
+    "playerCatalogId": "cd-eldense-2026-023",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1285,
     "yellowCards": 5,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-eldense-2026-023",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 99,
-    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,

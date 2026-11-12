@@ -9,7 +9,7 @@
   "tieBreakPriority": 163,
   "historicalRanking": {
     "rating": 66.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -186,19 +186,19 @@
     },
     {
       "id": "elche-ilicitano-2026-020",
-      "name": "Juan Piera",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "elche-ilicitano-2026-021",
       "name": "Mateo Sciancalepore",
       "position": "A",
       "nationality": "AR",
       "behavior": null,
       "isStar": false
+    },
+    {
+      "id": "elche-ilicitano-2026-021",
+      "name": "Juan Piera",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "elche-ilicitano-2026-022",

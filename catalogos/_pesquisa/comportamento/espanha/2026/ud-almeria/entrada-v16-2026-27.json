@@ -27,7 +27,7 @@
     "baseBehavior": null,
     "minutes": 3464,
     "yellowCards": 4,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -157,8 +157,8 @@
     "playerCatalogId": "ud-almeria-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 826,
-    "yellowCards": 0,
+    "minutes": 829,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -168,8 +168,8 @@
     "playerCatalogId": "ud-almeria-2026-016",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 829,
-    "yellowCards": 2,
+    "minutes": 826,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -177,10 +177,10 @@
   },
   {
     "playerCatalogId": "ud-almeria-2026-017",
-    "position": "M",
+    "position": "A",
     "baseBehavior": null,
-    "minutes": 87,
-    "yellowCards": 1,
+    "minutes": 3186,
+    "yellowCards": 7,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -188,17 +188,6 @@
   },
   {
     "playerCatalogId": "ud-almeria-2026-018",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 3186,
-    "yellowCards": 7,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "ud-almeria-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2723,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-almeria-2026-020",
+    "playerCatalogId": "ud-almeria-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2660,
@@ -220,18 +209,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-almeria-2026-021",
+    "playerCatalogId": "ud-almeria-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2111,
-    "yellowCards": 7,
-    "redCards": 1,
+    "minutes": 2273,
+    "yellowCards": 3,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-almeria-2026-022",
+    "playerCatalogId": "ud-almeria-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2250,
@@ -242,12 +231,23 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
+    "playerCatalogId": "ud-almeria-2026-022",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2111,
+    "yellowCards": 7,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
     "playerCatalogId": "ud-almeria-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2273,
-    "yellowCards": 3,
-    "redCards": 0,
+    "minutes": 906,
+    "yellowCards": 4,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"

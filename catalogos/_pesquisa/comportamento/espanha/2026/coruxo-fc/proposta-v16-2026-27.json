@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1582,
+        "minutes": 1806,
         "redCards": 0,
-        "yellowCards": 8
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1806,
+        "minutes": 1686,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1686,
+        "minutes": 1582,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 4,
@@ -385,6 +385,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 742,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "coruxo-fc-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 737,
         "redCards": 0,
         "yellowCards": 4
@@ -392,7 +411,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "coruxo-fc-2026-019",
+      "playerCatalogId": "coruxo-fc-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +430,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "coruxo-fc-2026-020",
+      "playerCatalogId": "coruxo-fc-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +449,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "coruxo-fc-2026-021",
+      "playerCatalogId": "coruxo-fc-2026-022",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -445,25 +464,6 @@
         "minutes": 459,
         "redCards": 0,
         "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "coruxo-fc-2026-022",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 742,
-        "redCards": 0,
-        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,

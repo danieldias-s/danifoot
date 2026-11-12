@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 32,
         "redCards": 0,
         "yellowCards": 0
       },
@@ -347,15 +347,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 1793,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "cd-basconia-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -366,7 +366,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1793,
+        "minutes": 1636,
         "redCards": 0,
         "yellowCards": 5
       },
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1636,
+        "minutes": 1187,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,

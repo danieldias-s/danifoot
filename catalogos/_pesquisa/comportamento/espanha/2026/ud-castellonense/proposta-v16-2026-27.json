@@ -81,33 +81,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "ud-castellonense-2026-003",
-      "position": "G",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2301,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "ud-castellonense-2026-004",
+      "playerCatalogId": "ud-castellonense-2026-003",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,7 +107,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "ud-castellonense-2026-005",
+      "playerCatalogId": "ud-castellonense-2026-004",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +126,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "ud-castellonense-2026-006",
+      "playerCatalogId": "ud-castellonense-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -160,6 +141,25 @@
         "minutes": 1247,
         "redCards": 1,
         "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "ud-castellonense-2026-006",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,
@@ -214,15 +214,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 2591,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "ud-castellonense-2026-010",
-      "position": "D",
+      "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2591,
+        "minutes": 0,
         "redCards": 0,
-        "yellowCards": 7
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,
@@ -347,15 +347,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 1431,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "ud-castellonense-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1431,
+        "minutes": 524,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 524,
+        "minutes": 101,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,
@@ -423,7 +423,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 101,
+        "minutes": 0,
         "redCards": 0,
         "yellowCards": 0
       },

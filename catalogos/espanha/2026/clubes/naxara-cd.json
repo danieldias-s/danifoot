@@ -9,7 +9,7 @@
   "tieBreakPriority": 158,
   "historicalRanking": {
     "rating": 66.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "naxara-cd-2026-004",
-      "name": "Miguel Rodríguez",
+      "name": "Víctor Martínez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "naxara-cd-2026-005",
-      "name": "Víctor Martínez",
+      "name": "Miguel Rodríguez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "naxara-cd-2026-018",

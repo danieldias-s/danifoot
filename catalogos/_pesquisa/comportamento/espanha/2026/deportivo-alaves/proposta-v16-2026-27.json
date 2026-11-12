@@ -195,25 +195,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-009",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 3239,
         "redCards": 0,
         "yellowCards": 9
@@ -221,7 +202,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-010",
+      "playerCatalogId": "deportivo-alaves-2026-009",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,26 +221,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-011",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2184,
-        "redCards": 2,
-        "yellowCards": 14
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-012",
+      "playerCatalogId": "deportivo-alaves-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +240,26 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-013",
+      "playerCatalogId": "deportivo-alaves-2026-011",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2184,
+        "redCards": 1,
+        "yellowCards": 14
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "deportivo-alaves-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-014",
+      "playerCatalogId": "deportivo-alaves-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-015",
+      "playerCatalogId": "deportivo-alaves-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -329,13 +310,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 993,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-016",
+      "playerCatalogId": "deportivo-alaves-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -348,13 +329,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 655,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-017",
+      "playerCatalogId": "deportivo-alaves-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-alaves-2026-018",
+      "playerCatalogId": "deportivo-alaves-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,6 +373,25 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
+      "playerCatalogId": "deportivo-alaves-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2278,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
       "playerCatalogId": "deportivo-alaves-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -405,7 +405,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1998,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 3
       },
       "index": null,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1721,
+        "minutes": 1731,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 1,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1731,
+        "minutes": 1721,
         "redCards": 0,
-        "yellowCards": 8
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,

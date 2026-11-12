@@ -80,7 +80,7 @@
     "playerCatalogId": "antequera-cf-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2126,
+    "minutes": 2141,
     "yellowCards": 6,
     "redCards": 1,
     "fouls": null,
@@ -91,9 +91,9 @@
     "playerCatalogId": "antequera-cf-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2141,
+    "minutes": 2126,
     "yellowCards": 6,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -146,8 +146,8 @@
     "playerCatalogId": "antequera-cf-2026-014",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1735,
-    "yellowCards": 4,
+    "minutes": 1952,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -157,8 +157,8 @@
     "playerCatalogId": "antequera-cf-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1952,
-    "yellowCards": 3,
+    "minutes": 1735,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -177,17 +177,6 @@
   },
   {
     "playerCatalogId": "antequera-cf-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "antequera-cf-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2397,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "antequera-cf-2026-019",
+    "playerCatalogId": "antequera-cf-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1825,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "antequera-cf-2026-020",
+    "playerCatalogId": "antequera-cf-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1710,
@@ -220,7 +209,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "antequera-cf-2026-021",
+    "playerCatalogId": "antequera-cf-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1516,
@@ -231,7 +220,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "antequera-cf-2026-022",
+    "playerCatalogId": "antequera-cf-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1024,
@@ -242,11 +231,22 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "antequera-cf-2026-023",
+    "playerCatalogId": "antequera-cf-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 751,
     "yellowCards": 1,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "antequera-cf-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 681,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

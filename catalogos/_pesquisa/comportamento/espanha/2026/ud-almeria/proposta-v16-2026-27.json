@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3464,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 826,
+        "minutes": 829,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 2,
@@ -328,9 +328,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 829,
+        "minutes": 826,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 2,
@@ -347,33 +347,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 87,
-        "redCards": 0,
-        "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 2,
-      "percentile": null,
-      "playerCatalogId": "ud-almeria-2026-017",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier2-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 3186,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 7
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "ud-almeria-2026-018",
+      "playerCatalogId": "ud-almeria-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "ud-almeria-2026-019",
+      "playerCatalogId": "ud-almeria-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "ud-almeria-2026-020",
+      "playerCatalogId": "ud-almeria-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -423,14 +404,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2111,
-        "redCards": 1,
-        "yellowCards": 7
+        "minutes": 2273,
+        "redCards": 0,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "ud-almeria-2026-021",
+      "playerCatalogId": "ud-almeria-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -449,6 +430,25 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
+      "playerCatalogId": "ud-almeria-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2111,
+        "redCards": 1,
+        "yellowCards": 7
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
       "playerCatalogId": "ud-almeria-2026-022",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2273,
-        "redCards": 0,
-        "yellowCards": 3
+        "minutes": 906,
+        "redCards": 1,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 2,

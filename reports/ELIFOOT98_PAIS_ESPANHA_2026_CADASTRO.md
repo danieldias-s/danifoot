@@ -1,140 +1,82 @@
-# ELIFOOT 98 — Cadastro Offline Schema V1.1: Espanha 2026/27 (`ES`)
+# Elifoot 98 — Relatório de Cadastro e Revisão V1.6: Espanha 2026/27 (`es-2026-principal`)
 
-**Situação Geral: `DRAFT` (172/172 clubes estruturados e validados, `errors = 0`).**  
-Nenhum comportamento foi autoaprovado (`players[].behavior = null` nos 171 novos clubes) e nenhuma nova estrela foi promovida (`players[].isStar = false` nos 171 novos clubes). Os arquivos pré-existentes de `real-madrid` foram preservados byte a byte, com divergências documentadas para revisão humana.
-
----
-
-## 1. Escopo, Parâmetros e Corte Temporal
-
-| Campo | Valor Adotado |
-|---|---|
-| País / Código / Slug | Espanha / `ES` / `espanha` |
-| Ano do Catálogo / Temporada-Alvo | `2026` / `2026/27` |
-| Temporada de Referência (desempenho/disciplina/V16) | `2025/26` (pesquisada inclusive no clube anterior para transferidos) |
-| Data de Corte (`squadSnapshotDate` & `rankingReferenceDate`) | `2026-11-12` |
-| Gênero | `Male` |
-| Schema | V1.1 (`identidade-1.1`, `manifest-1.1`, `clube-1.1`), UTF-8 sem BOM |
-| Manifest | [`catalogos/espanha/2026/manifest.json`](../catalogos/espanha/2026/manifest.json) (`status: "DRAFT"`, `name: "Espanha 2026/27"`, `172` clubes) |
-
-**Justificativa da data de corte (`2026-11-12`):** alinha a pesquisa pré-existente de `real-madrid` (`2026-11-12`, ~12ª rodada de LaLiga) ao snapshot ao vivo do **Opta Power Rankings** (`Last updated Nov 12, 2026`) e atende à exigência estrutural de `OfflineCatalogV11Loader` (`historicalRanking.referenceDate` dentro do ano de catálogo `2026`). Estatísticas de minutagem, titularidades, gols, assistências e cartões mantêm como base a temporada concluída **2025/26**, inclusive via coleta de **450** clubes externos de origem de transferências de verão de 2026 (`0` erros de coleta).
+**Data de referência / revisão V1.6:** `2026-11-12`  
+**Plano de referência principal:** `ELIFOOT98_PLANO_MESTRE_IMPORTACAO_V1_6_FINAL_PARA_VALIDACAO.md` (priorizando decisões aprovadas nas Seções 11–21 e Aditivo Final Seção 18 de `12/11/2026`).  
+**Status do catálogo:** `DRAFT` (`valid: true`, `ready: false` apenas pela ausência de faltas individuais 2025/26 no Transfermarkt -> `behavior: null` e campos nulos pré-existentes do `real-madrid`).
 
 ---
 
-## 2. Cobertura da Pirâmide Espanhola (`172` Clubes em `4` Categorias)
+## 1. Resumo Executivo da Revisão V1.6
 
-Cruzamento triplo entre listas oficiais **LaLiga / RFEF**, **Transfermarkt 2026/27** e **Wikipédia EN/ES 2026–27** em [`inventario_clubes.csv`](../catalogos/_pesquisa/espanha/2026/inventario_clubes.csv):
+O catálogo **Espanha 2026/27** (`172` clubes: `1` baseline pré-existente `real-madrid` + `171` clubes novos nas 4 categorias oficiais da Espanha) foi auditado e corrigido conforme o **Plano Mestre V1.6**, reutilizando integralmente os dados já coletados em cache local sem refazer o scraping/importação completa.
 
-| Categoria Nacional | Competição Oficial | Grupos | Clubes | Clubes Filiais B/C | Atletas Selecionados | G | D | M | A |
-|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| **1** | Primera División (La Liga EA Sports) | 1 | **20** | 0 | **460** | 45 | 160 | 129 | 126 |
-| **2** | Segunda División (La Liga Hypermotion) | 1 | **22** | 2 | **506** | 50 | 171 | 144 | 141 |
-| **3** | Primera Federación | 2 | **40** | 5 | **909** | 91 | 314 | 242 | 262 |
-| **4** | Segunda Federación | 5 | **90** | 24 | **2.031** | 197 | 686 | 572 | 576 |
-| **Total** | **4 divisões** | **9** | **172** | **31** | **3.906** | **383** | **1.331** | **1.087** | **1.105** |
+### Principais entregas e correções aplicadas
 
-Observações documentadas de elegibilidade:
-- **Rebaixamentos/vagas administrativas (2026-07-01):** `real-madrid-c` (assumiu vaga de CD Arenteiro) e `cd-castellon-b` (assumiu vaga de SD Tarazona) em Segunda Federación, registrados em [`fontes.csv`](../catalogos/_pesquisa/espanha/2026/fontes.csv).
-- **FC Andorra (`fc-andorra`):** clube sediado em Andorra filiado à RFEF e participante da Segunda División; utiliza `country: "ES"` no JSON de clube por exigência do carregador `OfflineCatalogV11Loader` (documentado em [`pendencias.csv`](../catalogos/_pesquisa/espanha/2026/pendencias.csv) e [`metadados.json`](../catalogos/_pesquisa/espanha/2026/metadados.json)).
-- **Clubes Filiais (`31` entidades):** inventariados em `Segunda División` (2: `celta-fortuna`, `real-sociedad-b`), `Primera Federación` (5) e `Segunda Federación` (24) com vínculo `parentClubId` registrado no inventário e sem sobreposição física de atletas no recorte de 23 jogadores.
-
----
-
-## 3. Identidades Visuais e Estádios (Lote B)
-
-- **172/172** arquivos `catalogos/identidades/<clubId>/identidade.json` válidos no schema `identidade-1.1.schema.json` (1 preservado para `real-madrid` + 171 novos gerados).
-- **Abreviações:** `172/172` únicas (corrigidas colisões iniciais e evitados códigos de playoff `GP1..GP5` da Wikipédia).
-- **Contraste WCAG (>= 4.5:1):** `172/172` aprovados (`low_contrast = []`), preservando identidade real de camisa titular e evitando uso acidental de uniformes reserva.
-- **Estádios:** `171/172` com nome e capacidade oficiais preenchidos; **`cf-calamocha`** (`Polideportivo Jumaya, Calamocha`) teve `stadium: null` por ausência de capacidade oficial confirmada (registrado em `pendencias.csv` com severidade `HIGH`).
-
----
-
-## 4. Ranking Opta Ao Vivo `2026-11-12` e Força dos Clubes (Lote C)
-
-- **Fonte primária única em JSON:** Opta Power Rankings ao vivo em [`dataviz.theanalyst.com/opta-power-rankings/`](https://dataviz.theanalyst.com/opta-power-rankings/) (`Europe (UEFA)`, última atualização `2026-11-12`, `94` páginas totais, `9.369` clubes europeus).
-- **Cobertura atingida:** **`172 / 172` clubes espanhóis (`100%`)** ranqueados com verificação cruzada por **`optaId` permanente** (`142/146` IDs presentes na auditoria histórica `tonyelhabr/club-rankings`), eliminando riscos de homônimos (por exemplo: `Peña` EU #1212 confirmado por `optaId = ap7vwm0xiauem4rjqmzjeqprn` como `Peña Deportiva`, não `Penya` EU #2440 de rating `57.5`; `Gimnástica` EU #1201 confirmado por `optaId = 9jfjd6rherahv4z9s7tgtvm2b` como `Gimnástica Torrelavega`; `Badajoz` confirmado em EU #855 `2dro8et4pwdlwsgy0pm7voge4`).
-- **Auditoria secundária (`tonyelhabr/opta-club-rankings.csv`, corte `2026-01-14`):** usada exclusivamente para conferência de histórico/nomenclatura e registrada em [`fontes.csv`](../catalogos/_pesquisa/espanha/2026/fontes.csv), **sem mistura de datas ou ratings nos JSONs de 2026-11-12**.
-
-Top 5 e Base do Ranking Nacional ([`ranking_nacional.csv`](../catalogos/_pesquisa/espanha/2026/ranking_nacional.csv)):
-
-| Pos. Nac. | `catalogClubId` | Cat. | Opta EU | Opta Global | Rating Opta | `teamStrength` |
-|---:|---|---:|---:|---:|---:|---:|
-| 1 | `fc-barcelona` | 1 | 4 | 4 | 97.5 | 20 |
-| 2 | `real-madrid` | 1 | 6 | 6 | 96.4 | 20 *(preservado `null` no JSON)* |
-| 3 | `atletico-de-madrid` | 1 | 20 | 20 | 91.9 | 19 |
-| 4 | `real-betis` | 1 | 33 | 34 | 89.6 | 19 |
-| 5 | `villarreal-cf` | 1 | 49 | 52 | 88.1 | 18 |
-| ... | ... | ... | ... | ... | ... | ... |
-| 171 | `ud-tamaraceite` | 4 | 1360 | 2659 | 64.3 | 1 |
-| 172 | `cf-calamocha` | 4 | 1368 | 2675 | 64.2 | 1 |
-
-Distribuição de `teamStrength` nos 172 JSONs: `20` (1: Barcelona; Real Madrid preservado `null`), `19..5` (2 clubes por nível = 30 clubes, posições nacionais 3..32), `1` (`140` clubes das posições nacionais `33..172`), `null` (1: `real-madrid` preservado).
+1. **Correção da seleção até 23 jogadores (Seções 11.3 e 17):**
+   - Removido o viés anterior em que `wiki_conf` (afetado por colchetes `[[` residuais do parser da Wikipédia) e `shirt <= 25` precediam minutagem/titularidade, e em que tetos posicionais estreitos (`A <= 6` / `D <= 8`) descartavam titulares de `1.500–2.305` minutos em favor de atletas com `0–336` minutos.
+   - Aplicada prioridade esportiva V1.6: `isStar (AWARD_OR_BEST_XI / destaque forte)` > `minutes > 0` > `regularStarter (>=1500 min ou >=18 titularidades)` > `protectedProspect (idade <=21 com >=600 min, >=7 titularidades ou >=4 G+A)` > `minutes` > `starts` > `appearances` > `goals+assists` > `1 <= shirt <= 25` > `-shirt` > `wikiConfirmed` > `-tmPlayerId`.
+   - Auditoria contra os `124` cortes sinalizados em `ELIFOOT98_ESPANHA_2026_CORTES_PARA_REVISAR.csv`: **`115` jogadores agora retidos** (`Dani Vivian`, `Alberto Jiménez`, `Sergio Gómez`, `Fidel`, `Alex Camacho`, `Rafita Garrido`, `Chupe`, `Anthony Gordon`, `Giovani Lo Celso`, entre outros); nos **`9` casos restantes** (`96..1026` min), o jogador de menor minutagem comparado anteriormente também foi excluído, restando **`0` excluídos com `>= 1500` min** em toda a Espanha e apenas `2` retenções por `protectedProspect` U21 (`Buba Sangaré` 19a/541m > `Bambo Diaby` 28a/794m no `elche-cf`; `Jones El-Abdellaoui` 20a/1169m > `Couhaib Driouech` 24a/1323m no `rc-celta-de-vigo`).
+   - Aplicado teto de **`2..3` goleiros por elenco** (`{2: 151, 3: 20}` nos `171` clubes novos), removendo o 4º goleiro do `real-madrid-castilla` (`Javi Navarro`, U19, `EXCLUIDO_LIMITE_3_GOLEIROS_V16`).
+2. **Padronização de `historicalRanking.source` para `"OPTA"`:**
+   - Todos os `171` clubes novos foram atualizados de `"Opta Power Rankings"` para `"OPTA"`, compatibilizando com `OfflineCatalogRanking.Family` (`src/Elifoot.Domain/Catalog/OfflineCatalogRanking.cs`).
+3. **Atribuição de estrelas (`isStar`) conforme Seção 18.2 aprovada em `12/11/2026`:**
+   - `G` e `D` permanecem **sempre `isStar = false`**.
+   - `13` atletas em `M`/`A` com prêmios/seleções comprovadas 2025/26 marcados como `AWARD_OR_BEST_XI` sem teto artificial (`fc-barcelona`: Lamine Yamal, Pedri, Fermín López, Raphinha; `racing-de-santander`: Andrés Martín, Iñigo Vicente; `atletico-de-madrid`: Arnau Ortiz; `real-betis`: Pablo Fornals; `villarreal-cf`: Alberto Moleiro; `real-sociedad`: Mikel Oyarzabal; `ud-almeria`: Sergio Arribas; `fc-andorra`: Jordi Cano; `cd-tenerife`: Enric Gallego).
+   - `226` atletas em `M`/`A` marcados como `LOCAL_HIGHLIGHT` (`1` a `3` apenas quando sustentado por dados verificáveis de 2025/26 em clubes sem `AWARD_OR_BEST_XI`).
+   - `7` clubes da Tier 4 permaneceram com **`0` estrelas** por insuficiência de minutagem/dados verificáveis (`< 720` min no TM: `arosa-sc`, `atletico-de-madrid-c`, `cd-arnedo`, `cf-calamocha`, `pena-sport-fc`, `rcd-mallorca-b`, `real-murcia-imperial`).
+   - Total: **`239` estrelas** nos `171` clubes novos (**`245`** no catálogo completo com as `6` pré-existentes do `real-madrid`).
+4. **Esquema completo em `selecao_jogadores.csv` (Seção 11.5) e pesquisa disciplinar:**
+   - `catalogos/_pesquisa/espanha/2026/selecao_jogadores.csv` atualizado com `4.179` linhas (`3.905` retidos `candidate=true` e `274` excluídos `candidate=false`: `260` `EXCLUIDO_LIMITE_23_MENOR_MINUTAGEM_2025_26`, `13` `EXCLUIDO_DUPLA_INSCRICAO_FILIAL`, `1` `EXCLUIDO_LIMITE_3_GOLEIROS_V16`), incluindo `protectedStar`, `protectedProspect`, `starClassification`, `retentionEvidence`, `sourceUrls`, `candidate`, `excludedReason` e `confidence`.
+   - `jogadores_excluidos.csv`, `pendencias.csv`, `metadados.json` e as `171` pastas em `catalogos/_pesquisa/comportamento/espanha/2026/<cid>/` regenerados via `tools/offline_catalog/behavior_v16.py`, preservando `behavior: null` e `status: "REVISAO"` pela ausência de `fouls` no Transfermarkt.
+5. **Preservação absoluta do `real-madrid` e das fórmulas do motor:**
+   - `catalogos/identidades/real-madrid/identidade.json` (`SHA256: 5B8A8E2E57495DC4126465A8EF4E6531DAA66E6C4F3C43320B70DEAE44A6DFA0`), `catalogos/espanha/2026/clubes/real-madrid.json` (`SHA256: 52132E4C3D8B61FB5B23BC4F5E68DB9757B18CEB43F9A86BF4F2D96DB02EFD81`) e todos os arquivos em `catalogos/_pesquisa/comportamento/espanha/2026/real-madrid/` preservados byte a byte.
+   - Nenhuma fórmula do motor (`InitialSquadStrength017B`, `InitialPlayerStrength`, `ClassicForceEvolutionEngine`, `MatchEngine`, `MarketAndEconomyEngine`, `ChampionshipStrengthLimits`) foi modificada.
 
 ---
 
-## 5. Elencos, Estatísticas 2025/26, Treinadores e Táticas (Lotes D–E)
+## 2. Comparação Plano Mestre V1.6 vs. Código Atual e Conflitos Técnicos
 
-- **Atletas selecionados:** **`3.906`** (`100%` dentro de `13..23` jogadores por clube e `>= 2` goleiros em todos os 172 elencos).
-- **Exclusões documentadas (`273` registros em [`jogadores_excluidos.csv`](../catalogos/_pesquisa/espanha/2026/jogadores_excluidos.csv)):**
-  - `260` por corte determinístico no limite de `23` atletas (priorizando confirmação na Wikipédia `1.993` atletas, dorsal principal, minutagem/titularidades em `2025/26`).
-  - `13` por dupla inscrição parent/filial no Transfermarkt (ex.: atletas de dorsal `26+` convocados pontualmente ao time principal foram mantidos em seus clubes filiais onde possuem dorsal `<=25` e minutagem principal).
-- **Origem das estatísticas 2025/26 (`selecao_jogadores.csv`):**
-  - `TM_ES_2025_26`: **2.826** atletas com histórico direto em clubes da base espanhola.
-  - `TM_EXT_PRIOR_2025_26`: **504** atletas com estatísticas 2025/26 recuperadas em **450** clubes anteriores fora dos 172 espanhóis.
-  - `TM_ES_0MIN_2025_26`: **249** atletas registrados em 2025/26 com `0` minutos.
-  - `NONE_2025_26_REGISTERED_YOUTH_OR_NEW`: **304** atletas jovens/recém-promovidos sem registro prévio em 2025/26.
-  - `PRESERVED_REAL_MADRID_JSON`: **23** atletas preservados de `real-madrid.json`.
-- **Correção de parser aplicada e auditada:** na auditoria inicial do Lote H, identificou-se que capitães/lesionados/suspensos no Transfermarkt tinham `<span ...>` dentro de `<a ...profil/spieler/...>`, capturando temporariamente o valor de mercado (`€...`). O parser `fix_kader_names_172.py` corrigiu todos os **172** caches (`bad_names = 0`), mantendo apenas 1 homônimo real distinto em `atletico-central` (`Antonio Santos` `G` 2002 vs `Antonio Santos` `D` 2007).
-- **Caso `Amir Saipi` (`cd-castellon`):** dupla nacionalidade Kosovo/Suíça; adotado `CH` porque `XK` não integra o enum ISO-3166 do schema `clube-1.1.schema.json` (registrado em `pendencias.csv`).
-- **Treinadores e Táticas (`171/171` novos clubes):** `100%` com técnico, nacionalidade ISO válida e `preferredTactics.home` / `away` preenchidos com `1..2` táticas. Em **158** clubes houve conversão documentada de sistemas de 4 linhas (como `4-2-3-1`, `4-1-4-1`, `3-4-2-1`, `5-2-3`) para formações de 3 linhas compatíveis (`4-5-1`: 293 ocorrências; `4-4-2`: 157; `4-3-3`: 65; `5-4-1`: 46; `5-3-2`: 17; `3-5-2`: 11; `3-6-1`: 8; `3-4-3`: 3). Divergências nominais de técnicos recentes entre Transfermarkt (`2026-11-12`) e Wikipédia em Tier 2 foram confirmadas via busca web (Cádiz CF: Borja Jiménez em 22/10/2026; UD Las Palmas: Albert Sánchez em 29/10/2026; AD Ceuta FC: Sergio Lobera em 08/11/2026).
-
----
-
-## 6. Classificação Disciplinar V16 e Candidatas a Estrela (Lote F)
-
-- **Classificador V16 (`tools/offline_catalog/behavior_v16.py`):** executado para todos os **171** novos clubes com geração exclusiva sob [`catalogos/_pesquisa/comportamento/espanha/2026/<clubId>/`](../catalogos/_pesquisa/comportamento/espanha/2026/) (`disciplina-2026-27.csv`, `entrada-v16-2026-27.json`, `proposta-v16-2026-27.json`), deixando `behavior = null` em `100%` dos novos clubes.
-- Como o Transfermarkt não disponibiliza `total_fouls_conceded` (faltas cometidas) para a temporada 2025/26, manteve-se `fouls = null`, resultando em `status = "REVISAO"` e `effectiveBehaviorProposal = null` para todos os atletas novos, em conformidade estrita com `ELIFOOT98_V16_APROVACAO_PROVENIENCIA.md`.
-- **Candidatas a Estrela (mantidas `isStar: false` para revisão humana):** identificadas **111** candidatas em Tier 1 e Tier 2 (excluídos `G`/`D` conforme regra `allOf` do schema `clube-1.1`), anotadas em `selecao_jogadores.csv` e `pendencias.csv`. Destaques em 2025/26:
-
-| Clube | Atleta | Pos. | Nac. | Gols + Assist. (2025/26) | Minutos | Origem dos Dados |
-|---|---|---:|---:|---:|---:|---|
-| `real-betis` | Troy Parrott | A | IE | 31 + 12 (43) | 3.770 | `TM_EXT_PRIOR_2025_26 (az-alkmaar)` |
-| `fc-barcelona` | Lamine Yamal | A | ES | 24 + 18 (42) | 3.702 | `TM_ES_2025_26 (fc-barcelona)` |
-| `ud-almeria` | Sergio Arribas | M | ES | 26 + 7 (33) | 3.830 | `TM_ES_2025_26 (ud-almeria)` |
-| `racing-de-santander` | Andrés Martín | A | ES | 23 + 9 (32) | 3.486 | `TM_ES_2025_26 (racing-de-santander)` |
-| `fc-andorra` | Jordi Cano | A | ES | 26 + 5 (31) | 3.510 | `TM_ES_2025_26 (ce-europa)` |
-| `racing-de-santander` | Iñigo Vicente | A | ES | 9 + 21 (30) | 3.297 | `TM_ES_2025_26 (racing-de-santander)` |
-| `fc-barcelona` | Fermín López | M | ES | 13 + 17 (30) | 3.053 | `TM_ES_2025_26 (fc-barcelona)` |
-| `atletico-de-madrid` | Julián Álvarez | A | AR | 20 + 9 (29) | 3.549 | `TM_ES_2025_26 (atletico-de-madrid)` |
-| `fc-barcelona` | Raphinha | A | BR | 21 + 8 (29) | 2.194 | `TM_ES_2025_26 (fc-barcelona)` |
-| `sporting-de-gijon` | Nikita Iosifov | A | RU | 16 + 12 (28) | 4.063 | `TM_EXT_PRIOR_2025_26 (nk-celje)` |
+| Tema / Regra V1.6 | Estado no Código Atual (`main`) | Status / Ação Tomada | Conflito Técnico / Observação |
+| --- | --- | --- | --- |
+| Táticas 1..4 por técnico (`home`/`away`, sem duplicar) | Implementado e validado em `clube-1.1.schema.json`, `OfflineCatalogRules.cs:33-38`, `AiManagerBrain.cs:7-16` (`OfflineTacticsV16Tests`: 16 testes na baseline) | Preservado; 171 clubes novos com `(1,1):21, (1,2):28, (2,1):14, (2,2):108` e `0` fallbacks | Sem conflito |
+| Elenco variável por divisão + seed determinística | Implementado e validado em `OfflineRosterV16.cs:29-37`, `OfflineWorldFactory.cs:98-107` (`OfflineRosterV16Tests`: 19 testes na baseline) | Preservado no código C#; `real-madrid-castilla` limitado a `<= 3 GKs` no catálogo | **Conflito 1:** `OfflineRosterV16.cs:32-33` usa `keepG=3` só em `target==23` na D5 (`1..2G` se `target<23`). Se um clube com `22` atletas reais (`3G + 19 linha`: `penya-deportiva` [#166] e `real-madrid-castilla` [#44]) cair na D5 e sortear `target==22` com `keepG=2`, `22-3=19 < 20` lançaria `ArgumentException`. Mantidos os dados reais e código validado sem alterar lógica C#. |
+| Mínimo de elenco V1.1 vs. D5 (`13`) | `OfflineCatalogRules.cs:40` aceita `11..23`; `OfflineRosterV16.cs:29` exige `13..23` na criação do mundo | Preservado conforme Seção 16 (V1.1 continua `11..23`, evitando quebrar testes V1.1 como `OfflineTacticsV16Tests`) | **Conflito 2:** Validador estático V1.1 (`11..23`) difere do piso distrital D5 (`13`); todos os 172 clubes da Espanha possuem `20..23` atletas. |
+| Excedente único slot 128 (`OfflineSurplusV16`) | Implementado em `OfflineSurplusV16.cs:16-18`, `OfflineWorldFactory.cs:108-112`, `client/elifoot_flutter/lib/offline_catalog_creator.dart` | Preservado | **Conflito 3:** `OfflineSurplusV16.cs` ordena cortes por `Strength` (`InitialPlayerStrength`) sem consultar `IsStar` ou `RetentionEvidence`. |
+| Ranking Opta (`"OPTA"` / `"OPTA_INTERPOLATED"`) | `OfflineCatalogRanking.cs:15` aceita apenas `"OPTA"` e `"OPTA_INTERPOLATED"` como família `"OPTA"` | **Corrigido no catálogo:** 171 clubes alterados para `"source": "OPTA"` | Conflito resolvido sem afrouxar o domínio validado |
+| Nacionalidade / país do clube (`fc-andorra`) | `OfflineCatalogV11Loader.cs:65` exige `club.Country == manifest.Country.Code` | Mantido `country: "ES"` em `fc-andorra.json` | **Conflito 4:** Clube andorrano filiado à RFEF exige `"ES"` por restrição estrutural do loader. |
+| Comportamento V1.6 (proposta pendente) | Recalibração experimental isolada em `tools/offline_catalog/behavior_v16.py` + fluxo manual (`behavior_approval_v16.py`, `behavior_apply_v16.py`); `OfflineWorldFactory.cs:200` lê `p.Behavior!.Value` | **Não implementado no runtime** (proposta pendente); `behavior: null` e `status: "DRAFT"` mantidos | TM não fornece `fouls` (`total_fouls_conceded`); nenhuma aprovação automática realizada. |
+| Evidências de retenção `_pesquisa/.../selecao_jogadores.csv` | `OfflineWorldCreatorService.cs` aceita `OfflineRetentionEvidence` via `OfflineWorldRequest` | CSV completo gerado com colunas V1.6 Seção 11.5 | **Conflito 5:** Loader não lê `_pesquisa` automaticamente; evidências dependem de envio na requisição ou integração futura. |
+| Limite de `128` clubes do mundo atual | `OfflineWorldFactory.cs:74-94` mantém `128` clubes (`20+22+22+22+42`) | Preservado sem alterar limite nem fórmulas do motor | Catálogo entrega todos os `172` clubes da Espanha (pronto para futura expansão para 256). |
+| Compilação `dotnet test` na árvore atual | Alterações pré-existentes fora de escopo em `src/Elifoot.Domain/AiVoluntaryAuctionEngine.cs` (linhas 63, 85, 112) impedem `dotnet test` local | Código C# fora de escopo preservado intacto | **Bloqueio pré-existente registrado:** `AiVoluntaryAuctionEngine.cs` (`Club.ShortName`, `AiFixedAskingPrice`, `AiAuctionValuation`) impede recompilação da suíte de testes `.NET` nesta árvore; validação do catálogo executada com `artifacts/local-play/api/Elifoot.Api.dll` e suíte Python. |
 
 ---
 
-## 7. Comparativo `real-madrid` Preservado vs. Snapshot `2026-11-12`
+## 3. Distribuição Atualizada do Catálogo Espanha 2026/27
 
-Os arquivos [`real-madrid.json`](../catalogos/espanha/2026/clubes/real-madrid.json), [`identidade.json`](../catalogos/identidades/real-madrid/identidade.json) e [`_pesquisa/comportamento/espanha/2026/real-madrid/`](../catalogos/_pesquisa/comportamento/espanha/2026/real-madrid/) permaneceram **inalterados** (SHA-256 verificado antes e após a execução dos lotes). Diferenças observadas contra a coleta de `2026-11-12`:
-- **Ranking / Força:** JSON preservado mantém `teamStrength: null`, `historicalRanking: null`, `tieBreakPriority: null`; o Opta ao vivo em `2026-11-12` coloca o clube em **EU #6 / Global #6** (`rating: 96.4`, 2º na Espanha, `teamStrength` equivalente = `20`).
-- **Treinador e Estádio:** JSON preservado mantém `coach: null`, `stadium: null`; no snapshot `2026-11-12` constam treinador **José Mourinho** (`PT`) e estádio **Bernabéu** (capacidade `83.186`).
-- **Elenco:** JSON preservado mantém `23` atletas (incluindo `6` estrelas `isStar: true` pré-existentes); o elenco `kader` do Transfermarkt em `2026-11-12` lista `27` nomes (adicionando `Denzel Dumfries`, `Ferland Mendy`, `Thiago Pitarch` e `Jorge Cestero` — esses dois últimos com atuação principal em `real-madrid-castilla`, onde permaneceram alocados no catálogo).
-
----
-
-## 8. Lacunas Documentadas entre Código e Regras Aprovadas
-
-Durante a execução e validação oficial com `Elifoot.Api.dll offline-catalog-validate`, registraram-se os seguintes pontos entre regras aprovadas e comportamento atual do motor/carregador:
-1. **`READY` vs. `DRAFT` para táticas (`TACTICS_MINIMUM`):** o validador .NET reporta `TACTICS_MINIMUM` (`READY exige pelo menos uma tática válida no total`) como aviso quando `home + away == 0` (observado hoje apenas no `real-madrid.json` preservado); os 171 novos clubes possuem táticas reais tanto em `home` quanto em `away`.
-2. **Andorra na pirâmide espanhola (`fc-andorra`):** o carregador exige `country == manifest.country.code` (`ES`), exigindo uso de `"ES"` em vez de `"AD"` para o `FC Andorra`.
-3. **Coexistência de 31 clubes filiais B/C:** os 31 times B/C (Tier 2–4) foram inventariados e estruturados como clubes distintos com `parentClubId` documentado em pesquisa, sem alterar regras de competição/elegibilidade do motor.
-4. **Faltas ausentes e `BEHAVIOR` obrigatório em `READY`:** os 3.906 jogadores sem `behavior` atribuído (3.883 novos + 23 preservados) geram avisos `BEHAVIOR` (`Comportamento obrigatório: 0..5`) no validador oficial, mantendo `valid: true`, `ready: false` e `errors: 0` conforme esperado em `DRAFT`.
+- **Total de clubes:** `172` (`19` Tier 1 novos + `real-madrid` + `22` Tier 2 + `40` Tier 3 + `90` Tier 4; inclui `31` filiais/equipes B/C inventariadas em `metadados.json`).
+- **Total de jogadores no catálogo:** `3.905` (`3.882` nos `171` clubes novos + `23` em `real-madrid`).
+- **Tamanhos de elenco nos 171 novos clubes:** `20` atletas (`5`), `21` (`7`), `22` (`22`), `23` (`137`).
+- **Goleiros nos 171 novos clubes:** `2` GKs (`151` clubes), `3` GKs (`20` clubes), `4` GKs (`0` clubes).
+- **Estrelas (`isStar: true`) por tier nos 171 novos clubes:**
+  - Tier 1 (`19` novos): `{1: 6, 2: 9, 3: 3, 4: 1}` (`real-madrid`: `6` pré-existentes)
+  - Tier 2 (`22`): `{1: 12, 2: 6, 3: 4}`
+  - Tier 3 (`40`): `{1: 15, 2: 22, 3: 3}`
+  - Tier 4 (`90`): `{0: 7, 1: 68, 2: 15}`
+- **Fonte de `historicalRanking` nos 171 novos clubes:** `OPTA` (`171/171`, `0` nulos — todas as equipes cobertas na janela `2026-11-12` ou interpoladas anteriormente conforme metodologia Opta).
+- **Táticas (`preferredTactics`) nos 171 novos clubes:** `(home, away)` = `(1, 1): 21`, `(1, 2): 28`, `(2, 1): 14`, `(2, 2): 108`.
 
 ---
 
-## 9. Resultados Consolidados de Validação (Lote H)
+## 4. Validações Executadas Após a Revisão Final
 
-| Verificação | Escopo | Resultado |
-|---|---|---|
-| `validate_batch_h.py` (Schema V1.1 + BOM + invariantes) | 172 identidades, 1 manifest, 172 clubes, 8 arquivos `_pesquisa` | **PASS** — `errors = 0`, `boms = 0`, `dup_abbrs = 0`, `low_contrast = 0` (`>= 4.5:1`), `guardrails = 0` |
-| `Elifoot.Api.dll offline-catalog-validate` | Raiz `D:\elifoot_98\catalogos` (`espanha/2026` + demais) | **PASS** (exit `0`) — `valid: True`, `ready: False`, `errors = 0`, `warnings = 3.912` (`3.906` `BEHAVIOR` + `6` apenas em `real-madrid.json` preservado) |
-| `unittest discover -s tools/offline_catalog/tests` | Scripts Python V16 e ranking Opta | **PASS** — `66` testes (`OK`, `skipped = 1`) |
-| Integridade `real-madrid` | JSON + 5 arquivos de comportamento pré-existentes | **PASS** — SHA-256 idêntico antes e depois dos lotes |
+- **Validador oficial da API (`dotnet D:\elifoot_98\artifacts\local-play\api\Elifoot.Api.dll offline-catalog-validate --CatalogOffline:Root=D:\elifoot_98\catalogos`):**
+  - `root_valid: True`, `root_issues: 0`
+  - `espanha/2026/manifest.json`: `valid: True`, `ready: False`, `clubs: 172`, `errors: 0`, `warnings: 3911` (`BEHAVIOR: 3905` esperados em `DRAFT`, `COACH: 1`, `TACTICS: 2`, `TACTICS_MINIMUM: 1`, `TEAM_STRENGTH: 1`, `RANKING_RESOLUTION: 1` exclusivamente do `real-madrid`), `sourceHash: 451125F6B2A95255066100AFF44AACB391361A1246281F2FC078C3967F1609D4`.
+- **Auditoria Python de invariantes e schemas (`validate_batch_h.py` + `audit_v16_post.py`):**
+  - `Identities: total=172, schema_errs=0, boms=0, dup_abbrs={}, low_contrast=[]`
+  - `Clubs: total=172, schema_errs=0, boms=0, guardrails=0, squad_out_13_23=[], gk_lt_2=[], beh_missing=[]`
+  - `Excluded >= 1500 min: []` (`0` excluídos); apenas `2` retenções onde atleta U21 (`protectedProspect`) superou companheiro da mesma posição com mais minutos (`Buba Sangaré` no Elche; `Jones El-Abdellaoui` no Celta de Vigo).
+- **Suíte Python `tools/offline_catalog/tests` (`python -m unittest discover -s D:\elifoot_98\tools\offline_catalog\tests -v`):**
+  - `66` testes executados após as correções (`65 ok`, `1 skipped` — `test_real_validator_accepts_draft_then_ready_and_preserves_v10` ignorado por exigir variável/binário configurado de integração local).
+- **Pacote ZIP de exportação (`exports/ELIFOOT98_CATALOGO_ESPANHA_2026.zip`):**
+  - Regenerado com os arquivos corrigidos e verificado por `testzip() == None` e manifesto SHA-256 atualizado em `exports/EXPORT_MANIFEST_SHA256.txt`.

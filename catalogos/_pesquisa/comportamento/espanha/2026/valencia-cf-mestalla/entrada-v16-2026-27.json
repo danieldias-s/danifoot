@@ -60,7 +60,7 @@
     "baseBehavior": null,
     "minutes": 1225,
     "yellowCards": 2,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -111,6 +111,17 @@
   },
   {
     "playerCatalogId": "valencia-cf-mestalla-2026-011",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 104,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "valencia-cf-mestalla-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2086,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "valencia-cf-mestalla-2026-012",
+    "playerCatalogId": "valencia-cf-mestalla-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1447,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "valencia-cf-mestalla-2026-013",
+    "playerCatalogId": "valencia-cf-mestalla-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 788,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "valencia-cf-mestalla-2026-014",
+    "playerCatalogId": "valencia-cf-mestalla-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 589,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "valencia-cf-mestalla-2026-015",
+    "playerCatalogId": "valencia-cf-mestalla-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 115,
@@ -165,21 +176,10 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "valencia-cf-mestalla-2026-016",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 111,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
     "playerCatalogId": "valencia-cf-mestalla-2026-017",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 0,
+    "minutes": 111,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

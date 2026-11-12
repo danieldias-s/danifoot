@@ -9,7 +9,7 @@
   "tieBreakPriority": 104,
   "historicalRanking": {
     "rating": 70.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -102,11 +102,11 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-guadalajara-2026-010",
-      "name": "Curro Bonilla",
+      "name": "Javi Robles",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -114,7 +114,7 @@
     },
     {
       "id": "cd-guadalajara-2026-011",
-      "name": "Javi Robles",
+      "name": "Curro Bonilla",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -150,7 +150,7 @@
       "position": "A",
       "nationality": "CO",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-guadalajara-2026-016",

@@ -9,7 +9,7 @@
   "tieBreakPriority": 94,
   "historicalRanking": {
     "rating": 70.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -124,7 +124,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rcd-espanyol-b-2026-013",

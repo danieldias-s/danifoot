@@ -9,7 +9,7 @@
   "tieBreakPriority": 117,
   "historicalRanking": {
     "rating": 69.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -82,7 +82,7 @@
     },
     {
       "id": "real-oviedo-vetusta-2026-007",
-      "name": "Martín Lavilla",
+      "name": "Arturo Arribas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "real-oviedo-vetusta-2026-008",
-      "name": "Arturo Arribas",
+      "name": "Martín Lavilla",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-oviedo-vetusta-2026-017",
@@ -186,7 +186,7 @@
     },
     {
       "id": "real-oviedo-vetusta-2026-020",
-      "name": "Óscar de la Hera",
+      "name": "Miguel Clavería",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "real-oviedo-vetusta-2026-021",
-      "name": "Miguel Clavería",
+      "name": "Óscar de la Hera",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

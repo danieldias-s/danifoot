@@ -80,8 +80,8 @@
     "playerCatalogId": "hercules-cf-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 958,
-    "yellowCards": 3,
+    "minutes": 1244,
+    "yellowCards": 5,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -91,15 +91,26 @@
     "playerCatalogId": "hercules-cf-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 812,
-    "yellowCards": 1,
-    "redCards": 2,
+    "minutes": 958,
+    "yellowCards": 3,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
     "playerCatalogId": "hercules-cf-2026-010",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 812,
+    "yellowCards": 1,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "hercules-cf-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2580,
@@ -110,7 +121,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-011",
+    "playerCatalogId": "hercules-cf-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1968,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-012",
+    "playerCatalogId": "hercules-cf-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1704,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-013",
+    "playerCatalogId": "hercules-cf-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1577,
@@ -143,18 +154,18 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-014",
+    "playerCatalogId": "hercules-cf-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1133,
-    "yellowCards": 6,
+    "minutes": 1515,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-015",
+    "playerCatalogId": "hercules-cf-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1348,
@@ -165,7 +176,18 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-016",
+    "playerCatalogId": "hercules-cf-2026-017",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1133,
+    "yellowCards": 6,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "hercules-cf-2026-018",
     "position": "M",
     "baseBehavior": null,
     "minutes": 674,
@@ -176,18 +198,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 541,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "hercules-cf-2026-018",
+    "playerCatalogId": "hercules-cf-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2546,
@@ -198,7 +209,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-019",
+    "playerCatalogId": "hercules-cf-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2278,
@@ -209,18 +220,18 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-020",
+    "playerCatalogId": "hercules-cf-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2267,
     "yellowCards": 4,
-    "redCards": 2,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-021",
+    "playerCatalogId": "hercules-cf-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1741,
@@ -231,22 +242,11 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "hercules-cf-2026-022",
+    "playerCatalogId": "hercules-cf-2026-023",
     "position": "A",
     "baseBehavior": null,
     "minutes": 890,
     "yellowCards": 5,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "hercules-cf-2026-023",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 301,
-    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

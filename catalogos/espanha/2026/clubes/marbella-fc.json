@@ -9,7 +9,7 @@
   "tieBreakPriority": 128,
   "historicalRanking": {
     "rating": 68.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "GH",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "marbella-fc-2026-018",
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "marbella-fc-2026-019",

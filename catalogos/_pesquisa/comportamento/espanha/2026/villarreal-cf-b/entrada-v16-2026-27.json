@@ -60,7 +60,7 @@
     "baseBehavior": null,
     "minutes": 1718,
     "yellowCards": 6,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -82,7 +82,7 @@
     "baseBehavior": null,
     "minutes": 631,
     "yellowCards": 1,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -111,6 +111,17 @@
   },
   {
     "playerCatalogId": "villarreal-cf-b-2026-011",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "villarreal-cf-b-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1786,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-012",
+    "playerCatalogId": "villarreal-cf-b-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1158,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-013",
+    "playerCatalogId": "villarreal-cf-b-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 641,
@@ -143,10 +154,10 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-014",
+    "playerCatalogId": "villarreal-cf-b-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 25,
+    "minutes": 40,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-015",
+    "playerCatalogId": "villarreal-cf-b-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2014,
@@ -165,7 +176,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-016",
+    "playerCatalogId": "villarreal-cf-b-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1646,
@@ -176,21 +187,10 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "villarreal-cf-b-2026-017",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 1204,
-    "yellowCards": 2,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
     "playerCatalogId": "villarreal-cf-b-2026-018",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1272,
+    "minutes": 1347,
     "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
@@ -201,9 +201,9 @@
     "playerCatalogId": "villarreal-cf-b-2026-019",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1101,
+    "minutes": 1204,
     "yellowCards": 2,
-    "redCards": 0,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -223,8 +223,8 @@
     "playerCatalogId": "villarreal-cf-b-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 504,
-    "yellowCards": 1,
+    "minutes": 1101,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -234,8 +234,8 @@
     "playerCatalogId": "villarreal-cf-b-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 120,
-    "yellowCards": 0,
+    "minutes": 504,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -245,8 +245,8 @@
     "playerCatalogId": "villarreal-cf-b-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 12,
-    "yellowCards": 0,
+    "minutes": 192,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

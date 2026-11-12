@@ -9,7 +9,7 @@
   "tieBreakPriority": 11,
   "historicalRanking": {
     "rating": 85.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,17 +66,17 @@
     },
     {
       "id": "sevilla-fc-2026-005",
-      "name": "Arouna Sangante",
+      "name": "Julio Díaz",
       "position": "D",
-      "nationality": "SN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "sevilla-fc-2026-006",
-      "name": "Julio Díaz",
+      "name": "Arouna Sangante",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
@@ -106,9 +106,9 @@
     },
     {
       "id": "sevilla-fc-2026-010",
-      "name": "Fábio Cardoso",
+      "name": "Marcão",
       "position": "D",
-      "nationality": "PT",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     },
@@ -166,18 +166,26 @@
       "position": "A",
       "nationality": "BE",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sevilla-fc-2026-018",
-      "name": "Robbie Ure",
+      "name": "Miguel Sierra",
       "position": "A",
-      "nationality": "GB",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "sevilla-fc-2026-019",
+      "name": "Robbie Ure",
+      "position": "A",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "sevilla-fc-2026-020",
       "name": "Isaac Romero",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "sevilla-fc-2026-020",
+      "id": "sevilla-fc-2026-021",
       "name": "Rubén Vargas",
       "position": "A",
       "nationality": "CH",
@@ -193,16 +201,8 @@
       "isStar": false
     },
     {
-      "id": "sevilla-fc-2026-021",
-      "name": "Peque Fernández",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "sevilla-fc-2026-022",
-      "name": "Alfon González",
+      "name": "Peque Fernández",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -81,25 +81,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-003",
-      "position": "G",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2246,
         "redCards": 0,
         "yellowCards": 2
@@ -107,7 +88,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-004",
+      "playerCatalogId": "getafe-cf-b-2026-003",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,7 +107,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-005",
+      "playerCatalogId": "getafe-cf-b-2026-004",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +126,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-006",
+      "playerCatalogId": "getafe-cf-b-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +145,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-007",
+      "playerCatalogId": "getafe-cf-b-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +164,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-008",
+      "playerCatalogId": "getafe-cf-b-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +183,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-009",
+      "playerCatalogId": "getafe-cf-b-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,7 +202,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-010",
+      "playerCatalogId": "getafe-cf-b-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +221,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-011",
+      "playerCatalogId": "getafe-cf-b-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -253,13 +234,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2036,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 10
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-012",
+      "playerCatalogId": "getafe-cf-b-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -272,13 +253,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1888,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-013",
+      "playerCatalogId": "getafe-cf-b-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "getafe-cf-b-2026-014",
+      "playerCatalogId": "getafe-cf-b-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -310,6 +291,25 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 39,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "getafe-cf-b-2026-014",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
         "redCards": 0,
         "yellowCards": 0
       },
@@ -347,15 +347,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
+        "minutes": 2275,
+        "redCards": 1,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "getafe-cf-b-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -366,8 +366,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2275,
-        "redCards": 1,
+        "minutes": 990,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 990,
+        "minutes": 950,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 4,

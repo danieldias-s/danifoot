@@ -9,7 +9,7 @@
   "tieBreakPriority": 133,
   "historicalRanking": {
     "rating": 68.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -158,21 +158,21 @@
       "position": "A",
       "nationality": "MX",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "gimnastica-segoviana-2026-017",
-      "name": "Enzo Facchin",
+      "name": "David Álvarez",
       "position": "A",
-      "nationality": "UY",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "gimnastica-segoviana-2026-018",
-      "name": "David Álvarez",
+      "name": "Enzo Facchin",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "UY",
       "behavior": null,
       "isStar": false
     },

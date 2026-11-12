@@ -81,33 +81,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 2,
-      "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-003",
-      "position": "G",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier2-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2668,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 11
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-004",
+      "playerCatalogId": "real-sociedad-b-2026-003",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,7 +107,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-005",
+      "playerCatalogId": "real-sociedad-b-2026-004",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +126,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-006",
+      "playerCatalogId": "real-sociedad-b-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +145,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-007",
+      "playerCatalogId": "real-sociedad-b-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +164,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-008",
+      "playerCatalogId": "real-sociedad-b-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +183,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-009",
+      "playerCatalogId": "real-sociedad-b-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,26 +202,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-010",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier2-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 2,
-      "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-011",
+      "playerCatalogId": "real-sociedad-b-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +221,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-012",
+      "playerCatalogId": "real-sociedad-b-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -272,13 +234,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1990,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 13
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-013",
+      "playerCatalogId": "real-sociedad-b-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +259,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-014",
+      "playerCatalogId": "real-sociedad-b-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +278,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-015",
+      "playerCatalogId": "real-sociedad-b-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +297,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-016",
+      "playerCatalogId": "real-sociedad-b-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +316,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-017",
+      "playerCatalogId": "real-sociedad-b-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +335,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-018",
+      "playerCatalogId": "real-sociedad-b-2026-016",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +354,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-019",
+      "playerCatalogId": "real-sociedad-b-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +373,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-020",
+      "playerCatalogId": "real-sociedad-b-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +392,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-021",
+      "playerCatalogId": "real-sociedad-b-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -449,7 +411,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "real-sociedad-b-2026-022",
+      "playerCatalogId": "real-sociedad-b-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -462,6 +424,44 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 460,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "real-sociedad-b-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 263,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "real-sociedad-b-2026-022",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 56,
         "redCards": 0,
         "yellowCards": 0
       },

@@ -9,7 +9,7 @@
   "tieBreakPriority": 66,
   "historicalRanking": {
     "rating": 73.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -130,14 +130,6 @@
     },
     {
       "id": "real-aviles-industrial-2026-013",
-      "name": "Pablo Larrea",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-aviles-industrial-2026-014",
       "name": "Isi Gómez",
       "position": "M",
       "nationality": "ES",
@@ -145,8 +137,16 @@
       "isStar": false
     },
     {
+      "id": "real-aviles-industrial-2026-014",
+      "name": "Mangel Prendes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "real-aviles-industrial-2026-015",
-      "name": "Samu Mayo",
+      "name": "Pablo Larrea",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "real-aviles-industrial-2026-016",
-      "name": "Mangel Prendes",
+      "name": "Samu Mayo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-aviles-industrial-2026-019",
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-aviles-industrial-2026-020",
@@ -210,7 +210,7 @@
     },
     {
       "id": "real-aviles-industrial-2026-023",
-      "name": "Dani Lidueña",
+      "name": "Natalio",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

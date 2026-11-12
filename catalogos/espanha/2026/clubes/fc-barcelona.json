@@ -9,7 +9,7 @@
   "tieBreakPriority": 1,
   "historicalRanking": {
     "rating": 97.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,9 +49,9 @@
     },
     {
       "id": "fc-barcelona-2026-003",
-      "name": "Dominik Livakovic",
-      "position": "G",
-      "nationality": "HR",
+      "name": "Pau Cubarsí",
+      "position": "D",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -65,14 +65,6 @@
     },
     {
       "id": "fc-barcelona-2026-005",
-      "name": "Pau Cubarsí",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-barcelona-2026-006",
       "name": "Jules Koundé",
       "position": "D",
       "nationality": "FR",
@@ -80,7 +72,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-007",
+      "id": "fc-barcelona-2026-006",
       "name": "Gerard Martín",
       "position": "D",
       "nationality": "ES",
@@ -88,7 +80,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-008",
+      "id": "fc-barcelona-2026-007",
       "name": "Alejandro Balde",
       "position": "D",
       "nationality": "ES",
@@ -96,7 +88,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-009",
+      "id": "fc-barcelona-2026-008",
       "name": "João Cancelo",
       "position": "D",
       "nationality": "PT",
@@ -104,7 +96,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-010",
+      "id": "fc-barcelona-2026-009",
       "name": "Xavi Espart",
       "position": "D",
       "nationality": "ES",
@@ -112,39 +104,23 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-011",
-      "name": "Andreas Christensen",
-      "position": "D",
-      "nationality": "DK",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-barcelona-2026-012",
+      "id": "fc-barcelona-2026-010",
       "name": "Pedri",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "fc-barcelona-2026-013",
+      "id": "fc-barcelona-2026-011",
       "name": "Fermín López",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "fc-barcelona-2026-014",
-      "name": "Brian Fariñas",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-barcelona-2026-015",
+      "id": "fc-barcelona-2026-012",
       "name": "Dani Olmo",
       "position": "M",
       "nationality": "ES",
@@ -152,7 +128,15 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-016",
+      "id": "fc-barcelona-2026-013",
+      "name": "Brian Fariñas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-014",
       "name": "Frenkie de Jong",
       "position": "M",
       "nationality": "NL",
@@ -160,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-017",
+      "id": "fc-barcelona-2026-015",
       "name": "Rodri",
       "position": "M",
       "nationality": "ES",
@@ -168,7 +152,7 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-018",
+      "id": "fc-barcelona-2026-016",
       "name": "Marc Bernal",
       "position": "M",
       "nationality": "ES",
@@ -176,10 +160,26 @@
       "isStar": false
     },
     {
-      "id": "fc-barcelona-2026-019",
+      "id": "fc-barcelona-2026-017",
+      "name": "Gavi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-018",
       "name": "Lamine Yamal",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "fc-barcelona-2026-019",
+      "name": "Anthony Gordon",
+      "position": "A",
+      "nationality": "GB",
       "behavior": null,
       "isStar": false
     },
@@ -189,7 +189,7 @@
       "position": "A",
       "nationality": "BR",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "fc-barcelona-2026-021",
@@ -201,17 +201,17 @@
     },
     {
       "id": "fc-barcelona-2026-022",
-      "name": "Roony Bardghji",
+      "name": "Gabriel Jesus",
       "position": "A",
-      "nationality": "SE",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "fc-barcelona-2026-023",
-      "name": "Gabriel Jesus",
+      "name": "Roony Bardghji",
       "position": "A",
-      "nationality": "BR",
+      "nationality": "SE",
       "behavior": null,
       "isStar": false
     }

@@ -9,7 +9,7 @@
   "tieBreakPriority": 69,
   "historicalRanking": {
     "rating": 73.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -81,7 +81,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-007",
-      "name": "Eric Monjonell",
+      "name": "Saúl García",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-008",
-      "name": "Saúl García",
+      "name": "Eric Monjonell",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -121,7 +121,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-012",
-      "name": "Vicente Esquerdo",
+      "name": "Fabio González",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-013",
-      "name": "Fabio González",
+      "name": "Vicente Esquerdo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -149,7 +149,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "racing-de-ferrol-2026-016",
@@ -157,7 +157,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "racing-de-ferrol-2026-017",
@@ -169,7 +169,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-018",
-      "name": "Endika Buján",
+      "name": "Dani Ojeda",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -177,7 +177,7 @@
     },
     {
       "id": "racing-de-ferrol-2026-019",
-      "name": "Dani Ojeda",
+      "name": "Endika Buján",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -9,7 +9,7 @@
   "tieBreakPriority": 95,
   "historicalRanking": {
     "rating": 70.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "arenas-club-2026-003",
-      "name": "Eric Benítez",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "arenas-club-2026-004",
       "name": "Ander Dufur",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-005",
+      "id": "arenas-club-2026-004",
       "name": "Julen Zubelzu",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-006",
+      "id": "arenas-club-2026-005",
       "name": "Eneko Zabaleta",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-007",
+      "id": "arenas-club-2026-006",
       "name": "Adrián Lekuna",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-008",
+      "id": "arenas-club-2026-007",
       "name": "Beñat Arratibel",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-009",
+      "id": "arenas-club-2026-008",
       "name": "Jon Larrauri",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-010",
+      "id": "arenas-club-2026-009",
       "name": "Eneko Ebro",
       "position": "D",
       "nationality": "ES",
@@ -113,9 +105,17 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-011",
+      "id": "arenas-club-2026-010",
       "name": "Erlantz Palacín",
       "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "arenas-club-2026-011",
+      "name": "Iñaki Telletxea",
+      "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -130,7 +130,7 @@
     },
     {
       "id": "arenas-club-2026-013",
-      "name": "Iñaki Telletxea",
+      "name": "Ibon Badiola",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,22 +154,14 @@
     },
     {
       "id": "arenas-club-2026-016",
-      "name": "Ibon Badiola",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "arenas-club-2026-017",
       "name": "Rubén Torres",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "arenas-club-2026-018",
+      "id": "arenas-club-2026-017",
       "name": "José Luis Cortés",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-019",
+      "id": "arenas-club-2026-018",
       "name": "Ekaitz Redondo",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-020",
+      "id": "arenas-club-2026-019",
       "name": "Martin Pedroarena",
       "position": "A",
       "nationality": "ES",
@@ -193,8 +185,16 @@
       "isStar": false
     },
     {
-      "id": "arenas-club-2026-021",
+      "id": "arenas-club-2026-020",
       "name": "Julen Lartitegi",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "arenas-club-2026-021",
+      "name": "Álex Oyón",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,7 +210,7 @@
     },
     {
       "id": "arenas-club-2026-023",
-      "name": "Álex Oyón",
+      "name": "Suso Sánchez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

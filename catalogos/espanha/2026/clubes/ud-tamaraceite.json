@@ -9,7 +9,7 @@
   "tieBreakPriority": 171,
   "historicalRanking": {
     "rating": 64.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -101,7 +101,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-tamaraceite-2026-010",
@@ -129,7 +129,7 @@
     },
     {
       "id": "ud-tamaraceite-2026-013",
-      "name": "Aitor Brito",
+      "name": "Bruno García",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -137,7 +137,7 @@
     },
     {
       "id": "ud-tamaraceite-2026-014",
-      "name": "Bruno García",
+      "name": "Aitor Brito",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

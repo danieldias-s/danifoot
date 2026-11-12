@@ -9,7 +9,7 @@
   "tieBreakPriority": 51,
   "historicalRanking": {
     "rating": 75.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "sd-ponferradina-2026-003",
-      "name": "Álex Domínguez",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sd-ponferradina-2026-004",
       "name": "Emi Hernández",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-005",
+      "id": "sd-ponferradina-2026-004",
       "name": "Aymane Jelbat",
       "position": "D",
       "nationality": "MA",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-006",
+      "id": "sd-ponferradina-2026-005",
       "name": "José Luis Aranda",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-007",
+      "id": "sd-ponferradina-2026-006",
       "name": "Aleix Roig",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-008",
+      "id": "sd-ponferradina-2026-007",
       "name": "Koke Iglesias",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-009",
+      "id": "sd-ponferradina-2026-008",
       "name": "David Andújar",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-010",
+      "id": "sd-ponferradina-2026-009",
       "name": "Sergio Nieto",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-011",
+      "id": "sd-ponferradina-2026-010",
       "name": "Lucas Macazaga",
       "position": "D",
       "nationality": "BO",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-012",
+      "id": "sd-ponferradina-2026-011",
       "name": "Eneko Undabarrena",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-013",
+      "id": "sd-ponferradina-2026-012",
       "name": "Óscar Vacas",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-014",
+      "id": "sd-ponferradina-2026-013",
       "name": "Ntji Tounkara",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-015",
+      "id": "sd-ponferradina-2026-014",
       "name": "Arturo Molina",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-016",
+      "id": "sd-ponferradina-2026-015",
       "name": "Fede San Emeterio",
       "position": "M",
       "nationality": "ES",
@@ -161,16 +153,24 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-017",
+      "id": "sd-ponferradina-2026-016",
       "name": "Borja Valle",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
+    },
+    {
+      "id": "sd-ponferradina-2026-017",
+      "name": "Pablo Muñoz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "sd-ponferradina-2026-018",
-      "name": "Pablo Muñoz",
+      "name": "Carlos Calderón",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,6 +194,14 @@
     },
     {
       "id": "sd-ponferradina-2026-021",
+      "name": "José de León",
+      "position": "A",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-ponferradina-2026-022",
       "name": "Serigne Faye",
       "position": "A",
       "nationality": "SN",
@@ -201,18 +209,10 @@
       "isStar": false
     },
     {
-      "id": "sd-ponferradina-2026-022",
+      "id": "sd-ponferradina-2026-023",
       "name": "Josué Chibozo",
       "position": "A",
       "nationality": "BJ",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sd-ponferradina-2026-023",
-      "name": "Unai Sabroso",
-      "position": "A",
-      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

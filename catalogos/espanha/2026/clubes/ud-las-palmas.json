@@ -9,7 +9,7 @@
   "tieBreakPriority": 30,
   "historicalRanking": {
     "rating": 79.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,17 +58,17 @@
     },
     {
       "id": "ud-las-palmas-2026-004",
-      "name": "Marvin Park",
+      "name": "Nicholas Opoku",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "GH",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ud-las-palmas-2026-005",
-      "name": "Nicholas Opoku",
+      "name": "Marvin Park",
       "position": "D",
-      "nationality": "GH",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -82,7 +82,7 @@
     },
     {
       "id": "ud-las-palmas-2026-007",
-      "name": "Valentín Pezzolesi",
+      "name": "Andrés Rodríguez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "ud-las-palmas-2026-008",
-      "name": "Juanma Herzog",
+      "name": "Álex Suárez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,22 +98,30 @@
     },
     {
       "id": "ud-las-palmas-2026-009",
-      "name": "Giovanni Bonfanti",
+      "name": "Valentín Pezzolesi",
       "position": "D",
-      "nationality": "IT",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ud-las-palmas-2026-010",
-      "name": "Iván Medina",
-      "position": "M",
+      "name": "Juanma Herzog",
+      "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ud-las-palmas-2026-011",
+      "name": "Iván Medina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ud-las-palmas-2026-012",
       "name": "Enzo Loiodice",
       "position": "M",
       "nationality": "FR",
@@ -121,7 +129,15 @@
       "isStar": false
     },
     {
-      "id": "ud-las-palmas-2026-012",
+      "id": "ud-las-palmas-2026-013",
+      "name": "Sergio Ruiz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-014",
       "name": "Kirian Rodríguez",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "ud-las-palmas-2026-013",
+      "id": "ud-las-palmas-2026-015",
       "name": "Aboubacar Bassinga",
       "position": "M",
       "nationality": "BF",
@@ -137,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "ud-las-palmas-2026-014",
+      "id": "ud-las-palmas-2026-016",
       "name": "Mateo Acimovic",
       "position": "M",
       "nationality": "SI",
@@ -145,24 +161,8 @@
       "isStar": false
     },
     {
-      "id": "ud-las-palmas-2026-015",
-      "name": "Iñaki González",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-las-palmas-2026-016",
-      "name": "Edward Cedeño",
-      "position": "M",
-      "nationality": "PA",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "ud-las-palmas-2026-017",
-      "name": "Iván Jaime",
+      "name": "Iñaki González",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,11 +174,11 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-las-palmas-2026-019",
-      "name": "Jefté Betancor",
+      "name": "Elías Romero",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,6 +186,22 @@
     },
     {
       "id": "ud-las-palmas-2026-020",
+      "name": "Jefté Betancor",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ud-las-palmas-2026-021",
+      "name": "Ale García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-022",
       "name": "Jesé",
       "position": "A",
       "nationality": "ES",
@@ -193,26 +209,10 @@
       "isStar": false
     },
     {
-      "id": "ud-las-palmas-2026-021",
+      "id": "ud-las-palmas-2026-023",
       "name": "Taisei Miyashiro",
       "position": "A",
       "nationality": "JP",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-las-palmas-2026-022",
-      "name": "Jeremía Recoba",
-      "position": "A",
-      "nationality": "UY",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-las-palmas-2026-023",
-      "name": "Sandro Ramírez",
-      "position": "A",
-      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

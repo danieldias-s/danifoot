@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1487,
+        "minutes": 1676,
         "redCards": 0,
         "yellowCards": 5
       },
@@ -214,15 +214,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 912,
+        "minutes": 3672,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "rcd-espanyol-2026-010",
-      "position": "D",
+      "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3672,
+        "minutes": 3268,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 12
       },
       "index": null,
       "initialDivision": 1,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3268,
+        "minutes": 2745,
         "redCards": 0,
-        "yellowCards": 12
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 1,
@@ -290,33 +290,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2745,
-        "redCards": 0,
-        "yellowCards": 7
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "rcd-espanyol-2026-014",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2170,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 10
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "rcd-espanyol-2026-015",
+      "playerCatalogId": "rcd-espanyol-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "rcd-espanyol-2026-016",
+      "playerCatalogId": "rcd-espanyol-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +335,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "rcd-espanyol-2026-017",
+      "playerCatalogId": "rcd-espanyol-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "rcd-espanyol-2026-018",
+      "playerCatalogId": "rcd-espanyol-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -386,8 +367,27 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2464,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "rcd-espanyol-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2444,
+        "redCards": 0,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1420,
+        "minutes": 1878,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 983,
+        "minutes": 1611,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 1,
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 678,
+        "minutes": 983,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,

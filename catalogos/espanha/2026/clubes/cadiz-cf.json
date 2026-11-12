@@ -9,7 +9,7 @@
   "tieBreakPriority": 48,
   "historicalRanking": {
     "rating": 75.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -82,6 +82,14 @@
     },
     {
       "id": "cadiz-cf-2026-007",
+      "name": "Noah Ukwuije",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cadiz-cf-2026-008",
       "name": "Sergio Arribas",
       "position": "D",
       "nationality": "ES",
@@ -89,23 +97,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-008",
-      "name": "Manu Fernández",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cadiz-cf-2026-009",
-      "name": "Cristian Gutiérrez",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cadiz-cf-2026-010",
       "name": "Giorgi Gocholeishvili",
       "position": "D",
       "nationality": "GE",
@@ -113,7 +105,23 @@
       "isStar": false
     },
     {
+      "id": "cadiz-cf-2026-010",
+      "name": "Manu Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "cadiz-cf-2026-011",
+      "name": "Juan Díaz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cadiz-cf-2026-012",
       "name": "Dilan Zárate",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-012",
+      "id": "cadiz-cf-2026-013",
       "name": "Ibon Sánchez",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-013",
+      "id": "cadiz-cf-2026-014",
       "name": "Aïmen Moueffek",
       "position": "M",
       "nationality": "MA",
@@ -137,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-014",
+      "id": "cadiz-cf-2026-015",
       "name": "Jandro Orellana",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-015",
+      "id": "cadiz-cf-2026-016",
       "name": "Damián Rodríguez",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-016",
+      "id": "cadiz-cf-2026-017",
       "name": "Marc-Olivier Doué",
       "position": "M",
       "nationality": "FR",
@@ -161,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-017",
+      "id": "cadiz-cf-2026-018",
       "name": "Borja Vázquez",
       "position": "A",
       "nationality": "ES",
@@ -169,23 +177,23 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-018",
+      "id": "cadiz-cf-2026-019",
       "name": "Álvaro García Pascual",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "cadiz-cf-2026-019",
+      "id": "cadiz-cf-2026-020",
       "name": "Vladyslav Kopotun",
       "position": "A",
       "nationality": "UA",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "cadiz-cf-2026-020",
+      "id": "cadiz-cf-2026-021",
       "name": "Gonzalo Petit",
       "position": "A",
       "nationality": "UY",
@@ -193,26 +201,18 @@
       "isStar": false
     },
     {
-      "id": "cadiz-cf-2026-021",
-      "name": "Iuri Tabatadze",
-      "position": "A",
-      "nationality": "GE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cadiz-cf-2026-022",
-      "name": "Efe Aghama",
+      "name": "Antoñito Cordero",
       "position": "A",
-      "nationality": "NG",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cadiz-cf-2026-023",
-      "name": "Urko Izeta",
+      "name": "Iuri Tabatadze",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "GE",
       "behavior": null,
       "isStar": false
     }

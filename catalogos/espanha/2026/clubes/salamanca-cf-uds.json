@@ -9,7 +9,7 @@
   "tieBreakPriority": 112,
   "historicalRanking": {
     "rating": 69.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -65,7 +65,7 @@
     },
     {
       "id": "salamanca-cf-uds-2026-005",
-      "name": "Iker San Vicente",
+      "name": "Sergio Rivas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -73,7 +73,7 @@
     },
     {
       "id": "salamanca-cf-uds-2026-006",
-      "name": "Imanol Torre",
+      "name": "Iker San Vicente",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -81,6 +81,14 @@
     },
     {
       "id": "salamanca-cf-uds-2026-007",
+      "name": "Imanol Torre",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-008",
       "name": "Juancho Villegas",
       "position": "D",
       "nationality": "UY",
@@ -88,16 +96,8 @@
       "isStar": false
     },
     {
-      "id": "salamanca-cf-uds-2026-008",
-      "name": "Markel Ucín",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "salamanca-cf-uds-2026-009",
-      "name": "Sergio Rivas",
+      "name": "Markel Ucín",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -145,7 +145,7 @@
     },
     {
       "id": "salamanca-cf-uds-2026-015",
-      "name": "Marc Prat",
+      "name": "William Peña",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -153,15 +153,15 @@
     },
     {
       "id": "salamanca-cf-uds-2026-016",
-      "name": "Álex Caramelo",
+      "name": "Marc Prat",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "salamanca-cf-uds-2026-017",
-      "name": "William Peña",
+      "name": "Álex Caramelo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

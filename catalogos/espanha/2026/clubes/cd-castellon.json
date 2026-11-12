@@ -9,7 +9,7 @@
   "tieBreakPriority": 18,
   "historicalRanking": {
     "rating": 83.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,6 +50,14 @@
     },
     {
       "id": "cd-castellon-2026-003",
+      "name": "Sergi Torner",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-2026-004",
       "name": "Juanjo Nieto",
       "position": "D",
       "nationality": "ES",
@@ -57,16 +65,8 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-004",
-      "name": "Jérémy Mellot",
-      "position": "D",
-      "nationality": "FR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-castellon-2026-005",
-      "name": "Lucas Alcázar",
+      "name": "Alberto Jiménez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,6 +74,22 @@
     },
     {
       "id": "cd-castellon-2026-006",
+      "name": "Jérémy Mellot",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-2026-007",
+      "name": "Lucas Alcázar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-2026-008",
       "name": "Fabrizio Brignani",
       "position": "D",
       "nationality": "IT",
@@ -81,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-007",
+      "id": "cd-castellon-2026-009",
       "name": "Agustín Sienra",
       "position": "D",
       "nationality": "AR",
@@ -89,31 +105,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-008",
-      "name": "Federico Ceccherini",
-      "position": "D",
-      "nationality": "IT",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-2026-009",
-      "name": "Tincho Conde",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-castellon-2026-010",
-      "name": "Ilias Kostis",
-      "position": "D",
-      "nationality": "GR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-2026-011",
       "name": "Diego Barri",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-012",
+      "id": "cd-castellon-2026-011",
       "name": "Antonio Gala",
       "position": "M",
       "nationality": "IT",
@@ -129,16 +121,24 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-013",
+      "id": "cd-castellon-2026-012",
       "name": "Jari Vlak",
       "position": "M",
       "nationality": "NL",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-castellon-2026-013",
+      "name": "Fran Castillo",
+      "position": "M",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-castellon-2026-014",
-      "name": "Fran Castillo",
+      "name": "Israel Suero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,22 +154,6 @@
     },
     {
       "id": "cd-castellon-2026-016",
-      "name": "Israel Suero",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-2026-017",
-      "name": "Matías Orozco",
-      "position": "M",
-      "nationality": "CO",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-2026-018",
       "name": "Iñigo Córdoba",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-019",
+      "id": "cd-castellon-2026-017",
       "name": "Ousmane Camara",
       "position": "A",
       "nationality": "GN",
@@ -185,15 +169,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-020",
-      "name": "Pablo Santiago",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-2026-021",
+      "id": "cd-castellon-2026-018",
       "name": "Adam Jakobsen",
       "position": "A",
       "nationality": "DK",
@@ -201,18 +177,42 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-2026-022",
+      "id": "cd-castellon-2026-019",
+      "name": "Pablo Santiago",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-2026-020",
       "name": "David Nzanza",
       "position": "A",
       "nationality": "AO",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-castellon-2026-021",
+      "name": "Álvaro García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-castellon-2026-022",
+      "name": "Hamza Bellari",
+      "position": "A",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-castellon-2026-023",
-      "name": "Hamza Bellari",
+      "name": "Raúl Sánchez",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3067,
+        "minutes": 3090,
         "redCards": 0,
-        "yellowCards": 10
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 3,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3090,
+        "minutes": 3067,
         "redCards": 0,
-        "yellowCards": 6
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 3,
@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2183,
+        "minutes": 2210,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 3,
@@ -138,9 +138,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2050,
+        "minutes": 2183,
         "redCards": 0,
-        "yellowCards": 8
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,
@@ -176,7 +176,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2210,
+        "minutes": 2050,
         "redCards": 0,
         "yellowCards": 8
       },
@@ -214,6 +214,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 3139,
+        "redCards": 0,
+        "yellowCards": 13
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "aguilas-fc-2026-010",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2859,
         "redCards": 0,
         "yellowCards": 15
@@ -221,7 +240,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "aguilas-fc-2026-010",
+      "playerCatalogId": "aguilas-fc-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "aguilas-fc-2026-011",
+      "playerCatalogId": "aguilas-fc-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "aguilas-fc-2026-012",
+      "playerCatalogId": "aguilas-fc-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -274,25 +293,6 @@
         "minutes": 1595,
         "redCards": 0,
         "yellowCards": 10
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "aguilas-fc-2026-013",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1279,
-        "redCards": 0,
-        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,
@@ -405,7 +405,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1896,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,

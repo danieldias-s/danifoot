@@ -177,7 +177,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1560,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 8
       },
       "index": null,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2467,
+        "minutes": 2577,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 4,
@@ -271,9 +271,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2577,
+        "minutes": 2467,
         "redCards": 0,
-        "yellowCards": 10
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -310,7 +310,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2016,
-        "redCards": 2,
+        "redCards": 0,
         "yellowCards": 3
       },
       "index": null,
@@ -347,6 +347,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 1124,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "rsd-alcala-2026-017",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1044,
         "redCards": 0,
         "yellowCards": 3
@@ -354,7 +373,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "rsd-alcala-2026-017",
+      "playerCatalogId": "rsd-alcala-2026-018",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,25 +392,6 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "rsd-alcala-2026-018",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 35,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
       "playerCatalogId": "rsd-alcala-2026-019",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1196,
+        "minutes": 2037,
         "redCards": 0,
-        "yellowCards": 7
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 855,
+        "minutes": 1196,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,

@@ -23,17 +23,6 @@
   },
   {
     "playerCatalogId": "ud-ibiza-2026-003",
-    "position": "G",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "ud-ibiza-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2865,
@@ -44,7 +33,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-005",
+    "playerCatalogId": "ud-ibiza-2026-004",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2799,
@@ -55,7 +44,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-006",
+    "playerCatalogId": "ud-ibiza-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2556,
@@ -66,11 +55,22 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-007",
+    "playerCatalogId": "ud-ibiza-2026-006",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2142,
     "yellowCards": 2,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "ud-ibiza-2026-007",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 1462,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -91,17 +91,6 @@
     "playerCatalogId": "ud-ibiza-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1462,
-    "yellowCards": 3,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "ud-ibiza-2026-010",
-    "position": "D",
-    "baseBehavior": null,
     "minutes": 1148,
     "yellowCards": 1,
     "redCards": 1,
@@ -110,7 +99,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-011",
+    "playerCatalogId": "ud-ibiza-2026-010",
     "position": "D",
     "baseBehavior": null,
     "minutes": 764,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-012",
+    "playerCatalogId": "ud-ibiza-2026-011",
     "position": "D",
     "baseBehavior": null,
     "minutes": 625,
@@ -132,12 +121,23 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-013",
+    "playerCatalogId": "ud-ibiza-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1613,
     "yellowCards": 4,
     "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "ud-ibiza-2026-013",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1439,
+    "yellowCards": 9,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -157,17 +157,6 @@
     "playerCatalogId": "ud-ibiza-2026-015",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 1439,
-    "yellowCards": 9,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "ud-ibiza-2026-016",
-    "position": "M",
-    "baseBehavior": null,
     "minutes": 956,
     "yellowCards": 7,
     "redCards": 0,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-017",
+    "playerCatalogId": "ud-ibiza-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 701,
@@ -187,11 +176,22 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "ud-ibiza-2026-018",
+    "playerCatalogId": "ud-ibiza-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2655,
     "yellowCards": 7,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "ud-ibiza-2026-018",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 1896,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -234,8 +234,8 @@
     "playerCatalogId": "ud-ibiza-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 942,
-    "yellowCards": 2,
+    "minutes": 1212,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -245,8 +245,8 @@
     "playerCatalogId": "ud-ibiza-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 749,
-    "yellowCards": 1,
+    "minutes": 942,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

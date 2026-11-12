@@ -9,7 +9,7 @@
   "tieBreakPriority": 35,
   "historicalRanking": {
     "rating": 77.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,6 +114,14 @@
     },
     {
       "id": "villarreal-cf-b-2026-011",
+      "name": "Moussa Diallo",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-012",
       "name": "Facundo Viveros",
       "position": "M",
       "nationality": "AR",
@@ -121,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-b-2026-012",
+      "id": "villarreal-cf-b-2026-013",
       "name": "Cheikh Tidiane Thiam",
       "position": "M",
       "nationality": "SN",
@@ -129,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-b-2026-013",
+      "id": "villarreal-cf-b-2026-014",
       "name": "Pablo Pascual",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-b-2026-014",
+      "id": "villarreal-cf-b-2026-015",
       "name": "Álvaro Alcaide",
       "position": "M",
       "nationality": "ES",
@@ -145,24 +153,16 @@
       "isStar": false
     },
     {
-      "id": "villarreal-cf-b-2026-015",
+      "id": "villarreal-cf-b-2026-016",
       "name": "Albert García",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "villarreal-cf-b-2026-016",
-      "name": "Joselillo Gaitán",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "villarreal-cf-b-2026-017",
-      "name": "Valen Gómez",
+      "name": "Joselillo Gaitán",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -178,7 +178,7 @@
     },
     {
       "id": "villarreal-cf-b-2026-019",
-      "name": "Nízar El Jmili",
+      "name": "Valen Gómez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,15 +194,15 @@
     },
     {
       "id": "villarreal-cf-b-2026-021",
-      "name": "Mahamoud Barry",
+      "name": "Nízar El Jmili",
       "position": "A",
-      "nationality": "ML",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "villarreal-cf-b-2026-022",
-      "name": "Douga Fofana",
+      "name": "Mahamoud Barry",
       "position": "A",
       "nationality": "ML",
       "behavior": null,

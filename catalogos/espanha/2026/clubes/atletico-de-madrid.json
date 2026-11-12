@@ -9,7 +9,7 @@
   "tieBreakPriority": 3,
   "historicalRanking": {
     "rating": 91.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -90,9 +90,9 @@
     },
     {
       "id": "atletico-de-madrid-2026-008",
-      "name": "Cristian Romero",
+      "name": "Robin Le Normand",
       "position": "D",
-      "nationality": "AR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -106,9 +106,9 @@
     },
     {
       "id": "atletico-de-madrid-2026-010",
-      "name": "Robin Le Normand",
+      "name": "Cristian Romero",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "AR",
       "behavior": null,
       "isStar": false
     },
@@ -138,17 +138,17 @@
     },
     {
       "id": "atletico-de-madrid-2026-014",
-      "name": "Johnny Cardoso",
+      "name": "Kang-in Lee",
       "position": "M",
-      "nationality": "US",
+      "nationality": "KR",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "atletico-de-madrid-2026-015",
-      "name": "Kang-in Lee",
+      "name": "Johnny Cardoso",
       "position": "M",
-      "nationality": "KR",
+      "nationality": "US",
       "behavior": null,
       "isStar": false
     },
@@ -162,14 +162,6 @@
     },
     {
       "id": "atletico-de-madrid-2026-017",
-      "name": "Obed Vargas",
-      "position": "M",
-      "nationality": "MX",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "atletico-de-madrid-2026-018",
       "name": "Giuliano Simeone",
       "position": "A",
       "nationality": "AR",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-de-madrid-2026-019",
+      "id": "atletico-de-madrid-2026-018",
       "name": "Julián Álvarez",
       "position": "A",
       "nationality": "AR",
@@ -185,18 +177,26 @@
       "isStar": false
     },
     {
-      "id": "atletico-de-madrid-2026-020",
+      "id": "atletico-de-madrid-2026-019",
       "name": "Arnau Ortiz",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "atletico-de-madrid-2026-020",
+      "name": "Alexander Sørloth",
+      "position": "A",
+      "nationality": "NO",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "atletico-de-madrid-2026-021",
-      "name": "Álex Baena",
+      "name": "Ademola Lookman",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "NG",
       "behavior": null,
       "isStar": false
     },
@@ -210,9 +210,9 @@
     },
     {
       "id": "atletico-de-madrid-2026-023",
-      "name": "Alexander Sørloth",
+      "name": "Álex Baena",
       "position": "A",
-      "nationality": "NO",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

@@ -9,7 +9,7 @@
   "tieBreakPriority": 155,
   "historicalRanking": {
     "rating": 66.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -160,14 +160,6 @@
     },
     {
       "id": "arosa-sc-2026-017",
-      "name": "Lucas Castro",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "arosa-sc-2026-018",
       "name": "Jorge Maceira",
       "position": "A",
       "nationality": "ES",
@@ -175,7 +167,7 @@
       "isStar": false
     },
     {
-      "id": "arosa-sc-2026-019",
+      "id": "arosa-sc-2026-018",
       "name": "Gabri Palmás",
       "position": "A",
       "nationality": "ES",
@@ -183,7 +175,7 @@
       "isStar": false
     },
     {
-      "id": "arosa-sc-2026-020",
+      "id": "arosa-sc-2026-019",
       "name": "José Rivera",
       "position": "A",
       "nationality": "ES",
@@ -191,7 +183,7 @@
       "isStar": false
     },
     {
-      "id": "arosa-sc-2026-021",
+      "id": "arosa-sc-2026-020",
       "name": "Martín Diz",
       "position": "A",
       "nationality": "ES",
@@ -199,7 +191,7 @@
       "isStar": false
     },
     {
-      "id": "arosa-sc-2026-022",
+      "id": "arosa-sc-2026-021",
       "name": "Álex Rey",
       "position": "A",
       "nationality": "ES",
@@ -207,8 +199,16 @@
       "isStar": false
     },
     {
-      "id": "arosa-sc-2026-023",
+      "id": "arosa-sc-2026-022",
       "name": "Adrián Lombao",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "arosa-sc-2026-023",
+      "name": "Álex Coira",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

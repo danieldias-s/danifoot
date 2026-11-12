@@ -139,7 +139,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2917,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 12
       },
       "index": null,
@@ -233,15 +233,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 28,
-        "redCards": 0,
-        "yellowCards": 0
+        "minutes": 3152,
+        "redCards": 1,
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "villarreal-cf-2026-011",
-      "position": "D",
+      "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3152,
-        "redCards": 1,
-        "yellowCards": 6
+        "minutes": 3061,
+        "redCards": 0,
+        "yellowCards": 14
       },
       "index": null,
       "initialDivision": 1,
@@ -271,33 +271,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3061,
-        "redCards": 1,
-        "yellowCards": 14
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "villarreal-cf-2026-013",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2914,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 13
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "villarreal-cf-2026-014",
+      "playerCatalogId": "villarreal-cf-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "villarreal-cf-2026-015",
+      "playerCatalogId": "villarreal-cf-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "villarreal-cf-2026-016",
+      "playerCatalogId": "villarreal-cf-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -350,6 +331,25 @@
         "minutes": 3183,
         "redCards": 0,
         "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "villarreal-cf-2026-016",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2874,
+        "redCards": 0,
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2694,
+        "minutes": 2331,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 9
       },
       "index": null,
       "initialDivision": 1,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2331,
+        "minutes": 1583,
         "redCards": 0,
-        "yellowCards": 9
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1583,
+        "minutes": 1535,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1535,
+        "minutes": 1353,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 1,

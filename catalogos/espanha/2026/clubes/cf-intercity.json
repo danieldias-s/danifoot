@@ -9,7 +9,7 @@
   "tieBreakPriority": 137,
   "historicalRanking": {
     "rating": 67.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -129,7 +129,7 @@
     },
     {
       "id": "cf-intercity-2026-013",
-      "name": "Óscar Plano",
+      "name": "David Timor",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -137,7 +137,7 @@
     },
     {
       "id": "cf-intercity-2026-014",
-      "name": "David Timor",
+      "name": "Óscar Plano",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -161,15 +161,15 @@
     },
     {
       "id": "cf-intercity-2026-017",
-      "name": "Pol Roigé",
+      "name": "Javi Delgado",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cf-intercity-2026-018",
-      "name": "Sito Pascual",
+      "name": "Álvaro Hernáiz",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -177,7 +177,7 @@
     },
     {
       "id": "cf-intercity-2026-019",
-      "name": "Javi Delgado",
+      "name": "Sito Pascual",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -185,7 +185,7 @@
     },
     {
       "id": "cf-intercity-2026-020",
-      "name": "Álvaro Hernáiz",
+      "name": "Pol Roigé",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

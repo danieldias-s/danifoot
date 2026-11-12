@@ -9,7 +9,7 @@
   "tieBreakPriority": 39,
   "historicalRanking": {
     "rating": 77.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -98,14 +98,6 @@
     },
     {
       "id": "cd-eldense-2026-009",
-      "name": "Julien Yanda",
-      "position": "D",
-      "nationality": "DE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-eldense-2026-010",
       "name": "Alejandro Ibarrondo",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +105,23 @@
       "isStar": false
     },
     {
+      "id": "cd-eldense-2026-010",
+      "name": "Julien Yanda",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "cd-eldense-2026-011",
+      "name": "Jordi Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-012",
       "name": "Guillermo Macho",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-012",
+      "id": "cd-eldense-2026-013",
       "name": "Marcos Bustillo",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-013",
+      "id": "cd-eldense-2026-014",
       "name": "Justin Smith",
       "position": "M",
       "nationality": "CA",
@@ -137,16 +145,8 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-014",
-      "name": "Borja Calvo",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-eldense-2026-015",
-      "name": "Roberto López",
+      "name": "Borja Calvo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -162,7 +162,7 @@
     },
     {
       "id": "cd-eldense-2026-017",
-      "name": "Carlos Guirao",
+      "name": "Roberto López",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -170,6 +170,14 @@
     },
     {
       "id": "cd-eldense-2026-018",
+      "name": "Fidel",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-eldense-2026-019",
       "name": "Jorge Rastrojo",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-019",
+      "id": "cd-eldense-2026-020",
       "name": "Mariano Carmona",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-020",
+      "id": "cd-eldense-2026-021",
       "name": "Manu Nieto",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +201,7 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-021",
+      "id": "cd-eldense-2026-022",
       "name": "Waldo Rubio",
       "position": "A",
       "nationality": "ES",
@@ -201,16 +209,8 @@
       "isStar": false
     },
     {
-      "id": "cd-eldense-2026-022",
-      "name": "Aingeru Olabarrieta",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-eldense-2026-023",
-      "name": "Pau Cabanes",
+      "name": "Aingeru Olabarrieta",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

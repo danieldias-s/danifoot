@@ -9,7 +9,7 @@
   "tieBreakPriority": 107,
   "historicalRanking": {
     "rating": 69.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "cda-navalcarnero-2026-004",
-      "name": "Aitor Larrañaga",
+      "name": "Victor Rodriguez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "cda-navalcarnero-2026-005",
-      "name": "Eneko Azurmendi",
+      "name": "Aitor Larrañaga",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "cda-navalcarnero-2026-006",
-      "name": "Victor Rodriguez",
+      "name": "Eneko Azurmendi",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -118,7 +118,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cda-navalcarnero-2026-012",
@@ -146,7 +146,7 @@
     },
     {
       "id": "cda-navalcarnero-2026-015",
-      "name": "Aarón Fernández",
+      "name": "Mario Sánchez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "cda-navalcarnero-2026-016",
-      "name": "Mario Sánchez",
+      "name": "Aarón Fernández",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,9 +210,9 @@
     },
     {
       "id": "cda-navalcarnero-2026-023",
-      "name": "Álvaro Domínguez",
+      "name": "Denis Corceovei",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "RO",
       "behavior": null,
       "isStar": false
     }

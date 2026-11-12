@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2923,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 16
       },
       "index": null,
@@ -158,7 +158,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1266,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 3
       },
       "index": null,
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2278,
+        "minutes": 2490,
         "redCards": 0,
-        "yellowCards": 15
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2490,
-        "redCards": 1,
-        "yellowCards": 3
+        "minutes": 2278,
+        "redCards": 0,
+        "yellowCards": 15
       },
       "index": null,
       "initialDivision": 3,
@@ -272,7 +272,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2077,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 7
       },
       "index": null,
@@ -329,32 +329,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2401,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 1
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
       "playerCatalogId": "algeciras-cf-2026-016",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1693,
-        "redCards": 0,
-        "yellowCards": 5
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "algeciras-cf-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "algeciras-cf-2026-018",
+      "playerCatalogId": "algeciras-cf-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -388,6 +369,25 @@
         "minutes": 1843,
         "redCards": 0,
         "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "algeciras-cf-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1693,
+        "redCards": 0,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -442,7 +442,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 97,
+        "minutes": 155,
         "redCards": 0,
         "yellowCards": 0
       },

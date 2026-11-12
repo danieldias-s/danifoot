@@ -3,8 +3,8 @@
     "playerCatalogId": "real-jaen-2026-001",
     "position": "G",
     "baseBehavior": null,
-    "minutes": 990,
-    "yellowCards": 1,
+    "minutes": 1500,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -49,7 +49,7 @@
     "baseBehavior": null,
     "minutes": 3218,
     "yellowCards": 7,
-    "redCards": 2,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -91,6 +91,17 @@
     "playerCatalogId": "real-jaen-2026-009",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 2630,
+    "yellowCards": 5,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-jaen-2026-010",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 1457,
     "yellowCards": 8,
     "redCards": 0,
@@ -99,7 +110,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-010",
+    "playerCatalogId": "real-jaen-2026-011",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1330,
@@ -110,7 +121,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-011",
+    "playerCatalogId": "real-jaen-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2541,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-012",
+    "playerCatalogId": "real-jaen-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2493,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-013",
+    "playerCatalogId": "real-jaen-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2061,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-014",
+    "playerCatalogId": "real-jaen-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1989,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-015",
+    "playerCatalogId": "real-jaen-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1978,
@@ -165,7 +176,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-016",
+    "playerCatalogId": "real-jaen-2026-017",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1917,
@@ -176,7 +187,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-017",
+    "playerCatalogId": "real-jaen-2026-018",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1477,
@@ -187,7 +198,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-018",
+    "playerCatalogId": "real-jaen-2026-019",
     "position": "M",
     "baseBehavior": null,
     "minutes": 294,
@@ -198,18 +209,29 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-019",
+    "playerCatalogId": "real-jaen-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2937,
-    "yellowCards": 4,
-    "redCards": 1,
+    "minutes": 2996,
+    "yellowCards": 3,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-020",
+    "playerCatalogId": "real-jaen-2026-021",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2937,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-jaen-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2593,
@@ -220,33 +242,11 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-jaen-2026-021",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 1385,
-    "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-jaen-2026-022",
+    "playerCatalogId": "real-jaen-2026-023",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1279,
     "yellowCards": 5,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-jaen-2026-023",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 110,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

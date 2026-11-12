@@ -115,7 +115,7 @@
     "baseBehavior": null,
     "minutes": 2961,
     "yellowCards": 14,
-    "redCards": 2,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -137,7 +137,7 @@
     "baseBehavior": null,
     "minutes": 1877,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -201,9 +201,9 @@
     "playerCatalogId": "pontevedra-cf-2026-019",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1319,
-    "yellowCards": 3,
-    "redCards": 1,
+    "minutes": 1364,
+    "yellowCards": 6,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -212,9 +212,9 @@
     "playerCatalogId": "pontevedra-cf-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1364,
-    "yellowCards": 6,
-    "redCards": 0,
+    "minutes": 1319,
+    "yellowCards": 3,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"

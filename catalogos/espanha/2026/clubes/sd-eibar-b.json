@@ -9,7 +9,7 @@
   "tieBreakPriority": 82,
   "historicalRanking": {
     "rating": 72.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -100,7 +100,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sd-eibar-b-2026-010",
@@ -160,7 +160,7 @@
     },
     {
       "id": "sd-eibar-b-2026-017",
-      "name": "Miguel Álvarez",
+      "name": "Unai Garcés",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -168,7 +168,7 @@
     },
     {
       "id": "sd-eibar-b-2026-018",
-      "name": "Beñat Alejo",
+      "name": "Miguel Álvarez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -176,7 +176,7 @@
     },
     {
       "id": "sd-eibar-b-2026-019",
-      "name": "Unai Garcés",
+      "name": "Beñat Alejo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

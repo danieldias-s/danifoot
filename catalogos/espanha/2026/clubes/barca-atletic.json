@@ -9,7 +9,7 @@
   "tieBreakPriority": 71,
   "historicalRanking": {
     "rating": 73.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -48,8 +48,8 @@
     },
     {
       "id": "barca-atletic-2026-003",
-      "name": "Iker Rodríguez",
-      "position": "G",
+      "name": "Àlex Campos",
+      "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -64,9 +64,9 @@
     },
     {
       "id": "barca-atletic-2026-005",
-      "name": "Àlex Campos",
+      "name": "Patricio Pacífico",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "UY",
       "behavior": null,
       "isStar": false
     },
@@ -80,14 +80,6 @@
     },
     {
       "id": "barca-atletic-2026-007",
-      "name": "Landry Farré",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "barca-atletic-2026-008",
       "name": "Alex Walton",
       "position": "D",
       "nationality": "ES",
@@ -95,24 +87,32 @@
       "isStar": false
     },
     {
-      "id": "barca-atletic-2026-009",
-      "name": "Hafiz Gariba",
+      "id": "barca-atletic-2026-008",
+      "name": "Landry Farré",
       "position": "D",
-      "nationality": "GH",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-009",
+      "name": "Javi Castro",
+      "position": "D",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "barca-atletic-2026-010",
-      "name": "Juwensley Onstein",
-      "position": "D",
-      "nationality": "NL",
+      "name": "Juan Ybarra",
+      "position": "M",
+      "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "barca-atletic-2026-011",
-      "name": "Juan Ybarra",
+      "name": "Juan Hernández",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -128,7 +128,7 @@
     },
     {
       "id": "barca-atletic-2026-013",
-      "name": "Adam Argemí",
+      "name": "Pedro Rodríguez",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -136,7 +136,7 @@
     },
     {
       "id": "barca-atletic-2026-014",
-      "name": "Pedro Rodríguez",
+      "name": "Adam Argemí",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -152,30 +152,6 @@
     },
     {
       "id": "barca-atletic-2026-016",
-      "name": "Dani Ávila",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "barca-atletic-2026-017",
-      "name": "Orian Goren",
-      "position": "M",
-      "nationality": "IL",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "barca-atletic-2026-018",
-      "name": "Jesse Bisiwu",
-      "position": "A",
-      "nationality": "BE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "barca-atletic-2026-019",
       "name": "Aziz Issah",
       "position": "A",
       "nationality": "GH",
@@ -183,10 +159,34 @@
       "isStar": false
     },
     {
-      "id": "barca-atletic-2026-020",
+      "id": "barca-atletic-2026-017",
+      "name": "Jesse Bisiwu",
+      "position": "A",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-018",
+      "name": "Sama Nomoko",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-019",
       "name": "Shane Kluivert",
       "position": "A",
       "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-020",
+      "name": "Joni Hernández",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

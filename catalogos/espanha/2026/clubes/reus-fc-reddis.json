@@ -9,7 +9,7 @@
   "tieBreakPriority": 124,
   "historicalRanking": {
     "rating": 69.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "reus-fc-reddis-2026-005",
-      "name": "Alberto Benito",
+      "name": "Pol Fernández",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "reus-fc-reddis-2026-006",
-      "name": "Pol Fernández",
+      "name": "Alberto Benito",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -182,10 +182,18 @@
       "position": "A",
       "nationality": "PT",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "reus-fc-reddis-2026-020",
+      "name": "Óscar Jiménez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "reus-fc-reddis-2026-021",
       "name": "Alya Camara",
       "position": "A",
       "nationality": "GN",
@@ -193,16 +201,8 @@
       "isStar": false
     },
     {
-      "id": "reus-fc-reddis-2026-021",
-      "name": "Aitor Serrano",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "reus-fc-reddis-2026-022",
-      "name": "Óscar Jiménez",
+      "name": "Aitor Serrano",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

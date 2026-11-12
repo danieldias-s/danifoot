@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3206,
+        "minutes": 3278,
         "redCards": 0,
-        "yellowCards": 8
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 1,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3278,
+        "minutes": 3206,
         "redCards": 0,
-        "yellowCards": 10
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 1,
@@ -176,7 +176,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 288,
+        "minutes": 362,
         "redCards": 0,
         "yellowCards": 1
       },
@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 218,
+        "minutes": 288,
         "redCards": 0,
         "yellowCards": 1
       },
@@ -233,25 +233,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "levante-ud-2026-011",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 3086,
         "redCards": 0,
         "yellowCards": 2
@@ -259,7 +240,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-012",
+      "playerCatalogId": "levante-ud-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +259,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-013",
+      "playerCatalogId": "levante-ud-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-014",
+      "playerCatalogId": "levante-ud-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-015",
+      "playerCatalogId": "levante-ud-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-016",
+      "playerCatalogId": "levante-ud-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +335,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-017",
+      "playerCatalogId": "levante-ud-2026-016",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "levante-ud-2026-018",
+      "playerCatalogId": "levante-ud-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -388,6 +369,25 @@
         "minutes": 1304,
         "redCards": 1,
         "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "levante-ud-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1220,
+        "redCards": 0,
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 822,
+        "minutes": 855,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 855,
+        "minutes": 822,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,

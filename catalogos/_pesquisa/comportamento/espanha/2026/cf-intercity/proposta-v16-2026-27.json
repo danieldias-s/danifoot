@@ -120,7 +120,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2362,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 9
       },
       "index": null,
@@ -271,8 +271,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1437,
-        "redCards": 0,
+        "minutes": 1448,
+        "redCards": 1,
         "yellowCards": 3
       },
       "index": null,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 608,
+        "minutes": 1437,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 4,
@@ -329,51 +329,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2839,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "cf-intercity-2026-016",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1896,
-        "redCards": 1,
-        "yellowCards": 6
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cf-intercity-2026-017",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1922,
-        "redCards": 1,
-        "yellowCards": 5
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cf-intercity-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +354,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cf-intercity-2026-019",
+      "playerCatalogId": "cf-intercity-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -405,6 +367,44 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1954,
+        "redCards": 1,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cf-intercity-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1922,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cf-intercity-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1896,
         "redCards": 1,
         "yellowCards": 6
       },

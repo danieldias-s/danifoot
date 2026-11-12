@@ -9,7 +9,7 @@
   "tieBreakPriority": 161,
   "historicalRanking": {
     "rating": 66.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-llanera-2026-018",

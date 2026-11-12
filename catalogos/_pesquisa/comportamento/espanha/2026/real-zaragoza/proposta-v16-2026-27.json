@@ -100,6 +100,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2404,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "real-zaragoza-2026-004",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1872,
         "redCards": 0,
         "yellowCards": 7
@@ -107,7 +126,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-004",
+      "playerCatalogId": "real-zaragoza-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,7 +145,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-005",
+      "playerCatalogId": "real-zaragoza-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-006",
+      "playerCatalogId": "real-zaragoza-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +183,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-007",
+      "playerCatalogId": "real-zaragoza-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +202,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-008",
+      "playerCatalogId": "real-zaragoza-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,25 +221,6 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "real-zaragoza-2026-009",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 104,
-        "redCards": 0,
-        "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
       "playerCatalogId": "real-zaragoza-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -234,7 +234,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3120,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -272,7 +272,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1959,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
@@ -290,7 +290,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 692,
+        "minutes": 1444,
         "redCards": 0,
         "yellowCards": 1
       },
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 537,
+        "minutes": 1431,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -328,9 +328,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 171,
+        "minutes": 537,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 3,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1453,
-        "redCards": 1,
-        "yellowCards": 5
+        "minutes": 1489,
+        "redCards": 0,
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 3,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1489,
-        "redCards": 0,
-        "yellowCards": 1
+        "minutes": 1453,
+        "redCards": 1,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 546,
+        "minutes": 857,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,
@@ -461,7 +461,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 126,
+        "minutes": 546,
         "redCards": 0,
         "yellowCards": 1
       },

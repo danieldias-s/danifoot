@@ -9,7 +9,7 @@
   "tieBreakPriority": 13,
   "historicalRanking": {
     "rating": 84.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,17 +50,17 @@
     },
     {
       "id": "levante-ud-2026-003",
-      "name": "Jeremy Toljan",
+      "name": "Aïssa Mandi",
       "position": "D",
-      "nationality": "DE",
+      "nationality": "DZ",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "levante-ud-2026-004",
-      "name": "Aïssa Mandi",
+      "name": "Jeremy Toljan",
       "position": "D",
-      "nationality": "DZ",
+      "nationality": "DE",
       "behavior": null,
       "isStar": false
     },
@@ -90,17 +90,17 @@
     },
     {
       "id": "levante-ud-2026-008",
-      "name": "Axel Tape",
+      "name": "Nacho Pérez",
       "position": "D",
-      "nationality": "FR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "levante-ud-2026-009",
-      "name": "Nacho Pérez",
+      "name": "Axel Tape",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "FR",
       "behavior": null,
       "isStar": false
     },
@@ -114,22 +114,14 @@
     },
     {
       "id": "levante-ud-2026-011",
-      "name": "Marc Santos",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "levante-ud-2026-012",
       "name": "Enzo Bardeli",
       "position": "M",
       "nationality": "FR",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "levante-ud-2026-013",
+      "id": "levante-ud-2026-012",
       "name": "Dani Requena",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-014",
+      "id": "levante-ud-2026-013",
       "name": "Jon Ander Olasagasti",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-015",
+      "id": "levante-ud-2026-014",
       "name": "Hugo Sotelo",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-016",
+      "id": "levante-ud-2026-015",
       "name": "Oriol Rey",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-017",
+      "id": "levante-ud-2026-016",
       "name": "Iván Romero",
       "position": "A",
       "nationality": "ES",
@@ -169,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-018",
+      "id": "levante-ud-2026-017",
       "name": "Karl Etta Eyong",
       "position": "A",
       "nationality": "CM",
@@ -177,10 +169,18 @@
       "isStar": false
     },
     {
-      "id": "levante-ud-2026-019",
+      "id": "levante-ud-2026-018",
       "name": "Yanis Musuayi",
       "position": "A",
       "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-019",
+      "name": "Víctor García",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -194,17 +194,17 @@
     },
     {
       "id": "levante-ud-2026-021",
-      "name": "Thiago Fernández",
+      "name": "Paco Cortés",
       "position": "A",
-      "nationality": "AR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "levante-ud-2026-022",
-      "name": "Paco Cortés",
+      "name": "Thiago Fernández",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "AR",
       "behavior": null,
       "isStar": false
     },

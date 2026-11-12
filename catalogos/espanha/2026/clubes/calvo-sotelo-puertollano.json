@@ -9,7 +9,7 @@
   "tieBreakPriority": 168,
   "historicalRanking": {
     "rating": 65.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -150,7 +150,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "calvo-sotelo-puertollano-2026-016",

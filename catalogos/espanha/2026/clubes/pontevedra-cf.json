@@ -9,7 +9,7 @@
   "tieBreakPriority": 50,
   "historicalRanking": {
     "rating": 75.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -110,7 +110,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "pontevedra-cf-2026-011",
@@ -178,7 +178,7 @@
     },
     {
       "id": "pontevedra-cf-2026-019",
-      "name": "Alberto Gil",
+      "name": "Álex González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,7 +186,7 @@
     },
     {
       "id": "pontevedra-cf-2026-020",
-      "name": "Álex González",
+      "name": "Alberto Gil",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

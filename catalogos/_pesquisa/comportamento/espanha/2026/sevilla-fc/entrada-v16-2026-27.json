@@ -47,9 +47,9 @@
     "playerCatalogId": "sevilla-fc-2026-005",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2425,
-    "yellowCards": 4,
-    "redCards": 2,
+    "minutes": 2487,
+    "yellowCards": 9,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
@@ -58,9 +58,9 @@
     "playerCatalogId": "sevilla-fc-2026-006",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2487,
-    "yellowCards": 9,
-    "redCards": 0,
+    "minutes": 2425,
+    "yellowCards": 4,
+    "redCards": 2,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
@@ -102,8 +102,8 @@
     "playerCatalogId": "sevilla-fc-2026-010",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 388,
-    "yellowCards": 0,
+    "minutes": 937,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -190,6 +190,17 @@
     "playerCatalogId": "sevilla-fc-2026-018",
     "position": "A",
     "baseBehavior": null,
+    "minutes": 1891,
+    "yellowCards": 5,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "sevilla-fc-2026-019",
+    "position": "A",
+    "baseBehavior": null,
     "minutes": 1826,
     "yellowCards": 0,
     "redCards": 0,
@@ -198,7 +209,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "sevilla-fc-2026-019",
+    "playerCatalogId": "sevilla-fc-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1670,
@@ -209,7 +220,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "sevilla-fc-2026-020",
+    "playerCatalogId": "sevilla-fc-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1620,
@@ -220,22 +231,11 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "sevilla-fc-2026-021",
+    "playerCatalogId": "sevilla-fc-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1148,
     "yellowCards": 7,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "sevilla-fc-2026-022",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 793,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,

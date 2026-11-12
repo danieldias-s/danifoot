@@ -9,7 +9,7 @@
   "tieBreakPriority": 136,
   "historicalRanking": {
     "rating": 68.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -122,17 +122,17 @@
     },
     {
       "id": "cd-tudelano-2026-012",
-      "name": "Juan Alegre",
+      "name": "Zakarya Maiga",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "ML",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-tudelano-2026-013",
-      "name": "Zakarya Maiga",
+      "name": "Juan Alegre",
       "position": "M",
-      "nationality": "ML",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-tudelano-2026-017",

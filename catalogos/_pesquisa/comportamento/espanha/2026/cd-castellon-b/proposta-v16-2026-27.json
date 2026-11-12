@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1189,
+        "minutes": 1490,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -119,7 +119,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1490,
+        "minutes": 1211,
         "redCards": 0,
         "yellowCards": 4
       },
@@ -138,9 +138,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1211,
+        "minutes": 1189,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -177,7 +177,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 153,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 1
       },
       "index": null,
@@ -347,25 +347,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-017",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 1593,
         "redCards": 0,
         "yellowCards": 5
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-018",
+      "playerCatalogId": "cd-castellon-b-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-019",
+      "playerCatalogId": "cd-castellon-b-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-020",
+      "playerCatalogId": "cd-castellon-b-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +411,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-021",
+      "playerCatalogId": "cd-castellon-b-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -449,7 +430,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-castellon-b-2026-022",
+      "playerCatalogId": "cd-castellon-b-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -462,6 +443,25 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 210,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-b-2026-022",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
         "redCards": 0,
         "yellowCards": 0
       },

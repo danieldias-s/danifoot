@@ -9,7 +9,7 @@
   "tieBreakPriority": 63,
   "historicalRanking": {
     "rating": 73.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,7 +114,7 @@
     },
     {
       "id": "algeciras-cf-2026-011",
-      "name": "Iván Turrillo",
+      "name": "Jony Álamo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -122,7 +122,7 @@
     },
     {
       "id": "algeciras-cf-2026-012",
-      "name": "Jony Álamo",
+      "name": "Iván Turrillo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -158,18 +158,10 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "algeciras-cf-2026-017",
-      "name": "Pau Martínez",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "algeciras-cf-2026-018",
       "name": "Raúl Rubio",
       "position": "A",
       "nationality": "ES",
@@ -177,8 +169,16 @@
       "isStar": false
     },
     {
-      "id": "algeciras-cf-2026-019",
+      "id": "algeciras-cf-2026-018",
       "name": "Diego Iglesias",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "algeciras-cf-2026-019",
+      "name": "Pau Martínez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

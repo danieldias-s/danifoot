@@ -4,7 +4,7 @@
 - Ano do Catálogo: `2026` (temporada-alvo `2026/27`, estatísticas de referência `2025/26`)
 - Data de Corte (`squadSnapshotDate` / `rankingReferenceDate`): `2026-11-12`
 - Gênero: `Male`
-- Status: `DRAFT` (`behavior: null` nos 171 novos clubes, `isStar: false` sem aprovação automática; cadastro pré-existente de `real-madrid` preservado intacto)
+- Status: `DRAFT` (`behavior: null` nos 171 novos clubes pela ausência de faltas no TM; `isStar` aplicado conforme Plano Mestre V1.6 Seção 18.2 com `239` estrelas nos `171` novos clubes e `6` pré-existentes no `real-madrid` preservado intacto)
 - Categorias inventariadas: 4 divisões, 172 clubes (20 LaLiga + 22 Segunda + 40 Primera Federación + 90 Segunda Federación), incluindo 31 clubes filiais/B/C documentados.
 
 ## Conteúdo do Pacote

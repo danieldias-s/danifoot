@@ -119,14 +119,33 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1045,
-        "redCards": 1,
-        "yellowCards": 1
+        "minutes": 1288,
+        "redCards": 0,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "salamanca-cf-uds-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1045,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "salamanca-cf-uds-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "salamanca-cf-uds-2026-006",
+      "playerCatalogId": "salamanca-cf-uds-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +183,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "salamanca-cf-uds-2026-007",
+      "playerCatalogId": "salamanca-cf-uds-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -179,25 +198,6 @@
         "minutes": 210,
         "redCards": 0,
         "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
-      "playerCatalogId": "salamanca-cf-uds-2026-008",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 9,
-        "redCards": 0,
-        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 4,
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1624,
+        "minutes": 2199,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -328,9 +328,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1376,
-        "redCards": 1,
-        "yellowCards": 1
+        "minutes": 1624,
+        "redCards": 0,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -347,9 +347,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1066,
+        "minutes": 1376,
         "redCards": 1,
-        "yellowCards": 4
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 4,

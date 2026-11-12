@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 4206,
-        "redCards": 2,
+        "redCards": 0,
         "yellowCards": 7
       },
       "index": null,
@@ -101,7 +101,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3060,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 13
       },
       "index": null,
@@ -119,9 +119,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2114,
-        "redCards": 1,
-        "yellowCards": 3
+        "minutes": 2301,
+        "redCards": 0,
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 1,
@@ -138,9 +138,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2301,
-        "redCards": 1,
-        "yellowCards": 7
+        "minutes": 2114,
+        "redCards": 0,
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 794,
+        "minutes": 541,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -214,7 +214,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 541,
+        "minutes": 2640,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -222,7 +222,7 @@
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "elche-cf-2026-010",
-      "position": "D",
+      "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -233,7 +233,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2640,
+        "minutes": 1529,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -252,7 +252,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1529,
+        "minutes": 1363,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -290,7 +290,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1363,
+        "minutes": 718,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 718,
+        "minutes": 518,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
@@ -328,34 +328,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 518,
+        "minutes": 2917,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "elche-cf-2026-016",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 501,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "elche-cf-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "elche-cf-2026-018",
+      "playerCatalogId": "elche-cf-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -385,14 +366,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2917,
-        "redCards": 1,
-        "yellowCards": 6
+        "minutes": 1800,
+        "redCards": 0,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "elche-cf-2026-019",
+      "playerCatalogId": "elche-cf-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "elche-cf-2026-020",
+      "playerCatalogId": "elche-cf-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +411,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "elche-cf-2026-021",
+      "playerCatalogId": "elche-cf-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -449,6 +430,25 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
+      "playerCatalogId": "elche-cf-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 841,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
       "playerCatalogId": "elche-cf-2026-022",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -461,7 +461,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 399,
+        "minutes": 666,
         "redCards": 0,
         "yellowCards": 1
       },

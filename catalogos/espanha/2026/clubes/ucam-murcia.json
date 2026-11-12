@@ -9,7 +9,7 @@
   "tieBreakPriority": 86,
   "historicalRanking": {
     "rating": 71.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -117,7 +117,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ucam-murcia-2026-012",
@@ -161,6 +161,14 @@
     },
     {
       "id": "ucam-murcia-2026-017",
+      "name": "Dani Aquino",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "ucam-murcia-2026-018",
       "name": "Mati Castillo",
       "position": "A",
       "nationality": "ES",
@@ -168,16 +176,8 @@
       "isStar": false
     },
     {
-      "id": "ucam-murcia-2026-018",
-      "name": "Karim El Kounni",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "ucam-murcia-2026-019",
-      "name": "Dani Aquino",
+      "name": "Karim El Kounni",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -9,7 +9,7 @@
   "tieBreakPriority": 156,
   "historicalRanking": {
     "rating": 66.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,7 +49,7 @@
     },
     {
       "id": "cd-tenerife-b-2026-003",
-      "name": "Kevin Martel",
+      "name": "Giovani García",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -57,7 +57,7 @@
     },
     {
       "id": "cd-tenerife-b-2026-004",
-      "name": "Giovani García",
+      "name": "Kevin Martel",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -81,7 +81,7 @@
     },
     {
       "id": "cd-tenerife-b-2026-007",
-      "name": "Alberto Cordero",
+      "name": "Jesús Belza",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "cd-tenerife-b-2026-008",
-      "name": "Jesús Belza",
+      "name": "Alberto Cordero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -113,6 +113,14 @@
     },
     {
       "id": "cd-tenerife-b-2026-011",
+      "name": "Nehuén Monserrat",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-b-2026-012",
       "name": "Joel Pérez",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-b-2026-012",
+      "id": "cd-tenerife-b-2026-013",
       "name": "Dylan Perera",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-b-2026-013",
+      "id": "cd-tenerife-b-2026-014",
       "name": "Yerover Gómez",
       "position": "M",
       "nationality": "ES",
@@ -136,24 +144,16 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-b-2026-014",
+      "id": "cd-tenerife-b-2026-015",
       "name": "Manu Vila",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-tenerife-b-2026-015",
-      "name": "Juliano de Souza",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-tenerife-b-2026-016",
-      "name": "José Yanes",
+      "name": "Juliano de Souza",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

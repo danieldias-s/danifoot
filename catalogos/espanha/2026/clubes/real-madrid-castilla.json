@@ -9,7 +9,7 @@
   "tieBreakPriority": 44,
   "historicalRanking": {
     "rating": 75.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,14 +58,6 @@
     },
     {
       "id": "real-madrid-castilla-2026-004",
-      "name": "Javi Navarro",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-madrid-castilla-2026-005",
       "name": "Oscar Naasei",
       "position": "D",
       "nationality": "GH",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-006",
+      "id": "real-madrid-castilla-2026-005",
       "name": "Joan Martínez",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-007",
+      "id": "real-madrid-castilla-2026-006",
       "name": "Diego Aguado",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-008",
+      "id": "real-madrid-castilla-2026-007",
       "name": "Lamini Fati",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-009",
+      "id": "real-madrid-castilla-2026-008",
       "name": "Mario Rivas",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-010",
+      "id": "real-madrid-castilla-2026-009",
       "name": "Jesús Fortea",
       "position": "D",
       "nationality": "ES",
@@ -113,12 +105,20 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-011",
+      "id": "real-madrid-castilla-2026-010",
       "name": "Jorge Cestero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
+    },
+    {
+      "id": "real-madrid-castilla-2026-011",
+      "name": "Pol Fortuny",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "real-madrid-castilla-2026-012",
@@ -130,14 +130,6 @@
     },
     {
       "id": "real-madrid-castilla-2026-013",
-      "name": "Pol Fortuny",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-madrid-castilla-2026-014",
       "name": "Daniel Mesonero",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-015",
+      "id": "real-madrid-castilla-2026-014",
       "name": "Sergio Martínez",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-016",
+      "id": "real-madrid-castilla-2026-015",
       "name": "Izan Regueira",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-017",
+      "id": "real-madrid-castilla-2026-016",
       "name": "Roberto Martín",
       "position": "M",
       "nationality": "ES",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-018",
+      "id": "real-madrid-castilla-2026-017",
       "name": "Ángel Carvajal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-madrid-castilla-2026-018",
+      "name": "Álvaro Leiva",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,14 +186,6 @@
     },
     {
       "id": "real-madrid-castilla-2026-020",
-      "name": "Álvaro Leiva",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-madrid-castilla-2026-021",
       "name": "Alexis Ciria",
       "position": "A",
       "nationality": "ES",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-022",
+      "id": "real-madrid-castilla-2026-021",
       "name": "Rachad Fettal",
       "position": "A",
       "nationality": "ES",
@@ -209,7 +201,7 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-castilla-2026-023",
+      "id": "real-madrid-castilla-2026-022",
       "name": "Hugo de Llanos",
       "position": "A",
       "nationality": "ES",

@@ -9,7 +9,7 @@
   "tieBreakPriority": 46,
   "historicalRanking": {
     "rating": 75.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "real-murcia-2026-004",
-      "name": "Víctor Olmedo",
+      "name": "Cristo Romero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "real-murcia-2026-005",
-      "name": "Cristo Romero",
+      "name": "Víctor Olmedo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -154,14 +154,6 @@
     },
     {
       "id": "real-murcia-2026-016",
-      "name": "Alonso Yoldi",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-murcia-2026-017",
       "name": "Javi Mier",
       "position": "M",
       "nationality": "ES",
@@ -169,18 +161,26 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-2026-018",
-      "name": "Javi Moreno",
-      "position": "A",
+      "id": "real-murcia-2026-017",
+      "name": "Alonso Yoldi",
+      "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "real-murcia-2026-019",
+      "id": "real-murcia-2026-018",
       "name": "David Flakus Bosilj",
       "position": "A",
       "nationality": "SI",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "real-murcia-2026-019",
+      "name": "Javi Moreno",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -190,11 +190,11 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-murcia-2026-021",
-      "name": "Joel Jorquera",
+      "name": "Álvaro Bustos",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,7 +202,7 @@
     },
     {
       "id": "real-murcia-2026-022",
-      "name": "Álvaro Bustos",
+      "name": "Joel Jorquera",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

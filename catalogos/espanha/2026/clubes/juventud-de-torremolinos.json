@@ -9,7 +9,7 @@
   "tieBreakPriority": 89,
   "historicalRanking": {
     "rating": 71.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "juventud-de-torremolinos-2026-005",
-      "name": "Manu Sánchez",
+      "name": "Matías Barboza",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,14 +74,6 @@
     },
     {
       "id": "juventud-de-torremolinos-2026-006",
-      "name": "Rodrigo Ajegun",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "juventud-de-torremolinos-2026-007",
       "name": "Martín Krug",
       "position": "D",
       "nationality": "PA",
@@ -89,7 +81,23 @@
       "isStar": false
     },
     {
+      "id": "juventud-de-torremolinos-2026-007",
+      "name": "Rodrigo Ajegun",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "juventud-de-torremolinos-2026-008",
+      "name": "Manu Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-009",
       "name": "Mamadouba Diaby",
       "position": "D",
       "nationality": "GN",
@@ -97,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "juventud-de-torremolinos-2026-009",
+      "id": "juventud-de-torremolinos-2026-010",
       "name": "Daniel Igweike",
       "position": "D",
       "nationality": "NG",
@@ -105,18 +113,10 @@
       "isStar": false
     },
     {
-      "id": "juventud-de-torremolinos-2026-010",
+      "id": "juventud-de-torremolinos-2026-011",
       "name": "Max Petersson",
       "position": "D",
       "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "juventud-de-torremolinos-2026-011",
-      "name": "Emin Grozdanić",
-      "position": "D",
-      "nationality": "SE",
       "behavior": null,
       "isStar": false
     },
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "juventud-de-torremolinos-2026-019",
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "DK",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "juventud-de-torremolinos-2026-020",

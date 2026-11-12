@@ -9,7 +9,7 @@
   "tieBreakPriority": 130,
   "historicalRanking": {
     "rating": 68.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "getafe-cf-b-2026-003",
-      "name": "Djordjije Medenica",
-      "position": "G",
-      "nationality": "CZ",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "getafe-cf-b-2026-004",
       "name": "Ian Olivera",
       "position": "D",
       "nationality": "AD",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-005",
+      "id": "getafe-cf-b-2026-004",
       "name": "Curro Burgos",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-006",
+      "id": "getafe-cf-b-2026-005",
       "name": "Jorge Montes",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-007",
+      "id": "getafe-cf-b-2026-006",
       "name": "Mohamed Hamdoune",
       "position": "D",
       "nationality": "MA",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-008",
+      "id": "getafe-cf-b-2026-007",
       "name": "Hugo García",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-009",
+      "id": "getafe-cf-b-2026-008",
       "name": "Ivan Vasiljevic",
       "position": "D",
       "nationality": "RS",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-010",
+      "id": "getafe-cf-b-2026-009",
       "name": "Agus Moreno",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-011",
+      "id": "getafe-cf-b-2026-010",
       "name": "Vladyslav Kysil",
       "position": "D",
       "nationality": "UA",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-012",
+      "id": "getafe-cf-b-2026-011",
       "name": "Jesús Martínez",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-013",
+      "id": "getafe-cf-b-2026-012",
       "name": "Adrián Riquelme",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-014",
+      "id": "getafe-cf-b-2026-013",
       "name": "Ginés Sorroche",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-015",
+      "id": "getafe-cf-b-2026-014",
       "name": "Adrián Martín",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-016",
+      "id": "getafe-cf-b-2026-015",
       "name": "Mady Macalou",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-017",
+      "id": "getafe-cf-b-2026-016",
       "name": "Óscar López",
       "position": "M",
       "nationality": "BO",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "getafe-cf-b-2026-018",
+      "id": "getafe-cf-b-2026-017",
       "name": "Joselu Pérez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "getafe-cf-b-2026-018",
+      "name": "George Andrews",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -178,7 +178,7 @@
     },
     {
       "id": "getafe-cf-b-2026-019",
-      "name": "George Andrews",
+      "name": "Sebas Salazar",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

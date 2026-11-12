@@ -177,7 +177,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2394,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 2
       },
       "index": null,
@@ -214,9 +214,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1984,
+        "minutes": 2044,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2044,
+        "minutes": 1984,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 1,
@@ -329,7 +329,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2710,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 7
       },
       "index": null,
@@ -385,7 +385,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1975,
+        "minutes": 2047,
         "redCards": 0,
         "yellowCards": 6
       },
@@ -404,7 +404,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2047,
+        "minutes": 1975,
         "redCards": 0,
         "yellowCards": 6
       },
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1876,
+        "minutes": 1922,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1323,
+        "minutes": 1876,
         "redCards": 0,
-        "yellowCards": 6
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,

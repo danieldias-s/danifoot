@@ -9,7 +9,7 @@
   "tieBreakPriority": 10,
   "historicalRanking": {
     "rating": 85.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -97,14 +97,6 @@
     },
     {
       "id": "deportivo-alaves-2026-009",
-      "name": "Nicolás Valentini",
-      "position": "D",
-      "nationality": "AR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportivo-alaves-2026-010",
       "name": "Antonio Blanco",
       "position": "M",
       "nationality": "ES",
@@ -112,8 +104,16 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-2026-011",
+      "id": "deportivo-alaves-2026-010",
       "name": "Pablo Ibáñez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-2026-011",
+      "name": "Carles Aleñá",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,14 +129,6 @@
     },
     {
       "id": "deportivo-alaves-2026-013",
-      "name": "Carles Aleñá",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "deportivo-alaves-2026-014",
       "name": "Selu Diallo",
       "position": "M",
       "nationality": "GN",
@@ -144,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-2026-015",
+      "id": "deportivo-alaves-2026-014",
       "name": "Denis Suárez",
       "position": "M",
       "nationality": "ES",
@@ -152,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-2026-016",
+      "id": "deportivo-alaves-2026-015",
       "name": "Ander Guevara",
       "position": "M",
       "nationality": "ES",
@@ -160,7 +152,7 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-2026-017",
+      "id": "deportivo-alaves-2026-016",
       "name": "Carlos Protesoni",
       "position": "M",
       "nationality": "UY",
@@ -168,8 +160,16 @@
       "isStar": false
     },
     {
-      "id": "deportivo-alaves-2026-018",
+      "id": "deportivo-alaves-2026-017",
       "name": "Toni Martínez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "deportivo-alaves-2026-018",
+      "name": "Ángel Pérez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -177,7 +177,7 @@
     },
     {
       "id": "deportivo-alaves-2026-019",
-      "name": "Ángel Pérez",
+      "name": "Miguel Rodríguez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -193,17 +193,17 @@
     },
     {
       "id": "deportivo-alaves-2026-021",
-      "name": "Aitor Mañas",
+      "name": "Abde Rebbach",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "DZ",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "deportivo-alaves-2026-022",
-      "name": "Abde Rebbach",
+      "name": "Aitor Mañas",
       "position": "A",
-      "nationality": "DZ",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

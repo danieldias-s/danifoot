@@ -9,7 +9,7 @@
   "tieBreakPriority": 62,
   "historicalRanking": {
     "rating": 73.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "ad-merida-2026-003",
-      "name": "Álex Gil",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ad-merida-2026-004",
       "name": "Hugo Sanz",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-005",
+      "id": "ad-merida-2026-004",
       "name": "Fito",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-006",
+      "id": "ad-merida-2026-005",
       "name": "Chechu Martínez",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-007",
+      "id": "ad-merida-2026-006",
       "name": "Álex Barbu",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-008",
+      "id": "ad-merida-2026-007",
       "name": "Hugo Carrillo",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-009",
+      "id": "ad-merida-2026-008",
       "name": "Nacho González",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-010",
+      "id": "ad-merida-2026-009",
       "name": "Adrián Salguero",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-011",
+      "id": "ad-merida-2026-010",
       "name": "Alejandro Jay",
       "position": "D",
       "nationality": "ES",
@@ -121,8 +113,16 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-012",
+      "id": "ad-merida-2026-011",
       "name": "Martín Solar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-012",
+      "name": "Raúl Beneit",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -138,14 +138,6 @@
     },
     {
       "id": "ad-merida-2026-014",
-      "name": "Raúl Beneit",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ad-merida-2026-015",
       "name": "Benny Dibrani",
       "position": "M",
       "nationality": "AL",
@@ -153,10 +145,18 @@
       "isStar": false
     },
     {
-      "id": "ad-merida-2026-016",
+      "id": "ad-merida-2026-015",
       "name": "Antonio Aranda",
       "position": "M",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-016",
+      "name": "Gio Almeida",
+      "position": "M",
+      "nationality": "PT",
       "behavior": null,
       "isStar": false
     },
@@ -198,7 +198,7 @@
       "position": "A",
       "nationality": "CI",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ad-merida-2026-022",

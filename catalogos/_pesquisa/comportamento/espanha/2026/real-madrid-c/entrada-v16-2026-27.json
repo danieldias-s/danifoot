@@ -27,7 +27,7 @@
     "baseBehavior": null,
     "minutes": 1966,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -58,6 +58,17 @@
     "playerCatalogId": "real-madrid-c-2026-006",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 1548,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-madrid-c-2026-007",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 720,
     "yellowCards": 2,
     "redCards": 1,
@@ -66,7 +77,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-007",
+    "playerCatalogId": "real-madrid-c-2026-008",
     "position": "D",
     "baseBehavior": null,
     "minutes": 395,
@@ -77,7 +88,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-008",
+    "playerCatalogId": "real-madrid-c-2026-009",
     "position": "D",
     "baseBehavior": null,
     "minutes": 251,
@@ -88,7 +99,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-009",
+    "playerCatalogId": "real-madrid-c-2026-010",
     "position": "D",
     "baseBehavior": null,
     "minutes": 6,
@@ -99,29 +110,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
     "playerCatalogId": "real-madrid-c-2026-011",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 1439,
-    "yellowCards": 2,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-madrid-c-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1470,
@@ -132,7 +121,29 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
+    "playerCatalogId": "real-madrid-c-2026-012",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1439,
+    "yellowCards": 2,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
     "playerCatalogId": "real-madrid-c-2026-013",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 816,
+    "yellowCards": 2,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-madrid-c-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 317,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-014",
+    "playerCatalogId": "real-madrid-c-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 56,
@@ -154,21 +165,10 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-madrid-c-2026-015",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 29,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
     "playerCatalogId": "real-madrid-c-2026-016",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 0,
+    "minutes": 29,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -223,7 +223,7 @@
     "playerCatalogId": "real-madrid-c-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 305,
+    "minutes": 338,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -234,7 +234,7 @@
     "playerCatalogId": "real-madrid-c-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 68,
+    "minutes": 305,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -245,7 +245,7 @@
     "playerCatalogId": "real-madrid-c-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 0,
+    "minutes": 68,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

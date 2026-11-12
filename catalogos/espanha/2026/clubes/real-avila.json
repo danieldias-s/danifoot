@@ -9,7 +9,7 @@
   "tieBreakPriority": 164,
   "historicalRanking": {
     "rating": 65.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -82,17 +82,17 @@
     },
     {
       "id": "real-avila-2026-007",
-      "name": "Boubacar Diallo",
+      "name": "Asier Grande",
       "position": "D",
-      "nationality": "ML",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-avila-2026-008",
-      "name": "Babacar Fall",
+      "name": "Boubacar Diallo",
       "position": "D",
-      "nationality": "SN",
+      "nationality": "ML",
       "behavior": null,
       "isStar": false
     },
@@ -106,9 +106,9 @@
     },
     {
       "id": "real-avila-2026-010",
-      "name": "Asier Grande",
+      "name": "Babacar Fall",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
@@ -126,7 +126,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-avila-2026-013",
@@ -174,21 +174,21 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "real-avila-2026-019",
-      "name": "Guillermo Castrillejo",
+      "name": "Darius Fustos",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "RO",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-avila-2026-020",
-      "name": "Mamadou Sarr",
+      "name": "Guillermo Castrillejo",
       "position": "A",
-      "nationality": "SN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -202,15 +202,15 @@
     },
     {
       "id": "real-avila-2026-022",
-      "name": "Darius Fustos",
+      "name": "Mamadou Sarr",
       "position": "A",
-      "nationality": "RO",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-avila-2026-023",
-      "name": "Luis Ángel Forcén",
+      "name": "Moha Ndiaye",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

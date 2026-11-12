@@ -81,6 +81,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 3548,
+        "redCards": 0,
+        "yellowCards": 8
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "malaga-cf-2026-003",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 3520,
         "redCards": 1,
         "yellowCards": 10
@@ -88,7 +107,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-003",
+      "playerCatalogId": "malaga-cf-2026-004",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -107,7 +126,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-004",
+      "playerCatalogId": "malaga-cf-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,25 +145,6 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-005",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1947,
-        "redCards": 1,
-        "yellowCards": 4
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
       "playerCatalogId": "malaga-cf-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -157,9 +157,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 652,
+        "minutes": 1947,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
@@ -176,9 +176,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 180,
+        "minutes": 1159,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 1,
@@ -195,33 +195,14 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 34,
+        "minutes": 429,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "malaga-cf-2026-009",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +221,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-011",
+      "playerCatalogId": "malaga-cf-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +240,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-012",
+      "playerCatalogId": "malaga-cf-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +259,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-013",
+      "playerCatalogId": "malaga-cf-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +278,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-014",
+      "playerCatalogId": "malaga-cf-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-015",
+      "playerCatalogId": "malaga-cf-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-016",
+      "playerCatalogId": "malaga-cf-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -348,13 +329,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 957,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-017",
+      "playerCatalogId": "malaga-cf-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "malaga-cf-2026-018",
+      "playerCatalogId": "malaga-cf-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -386,6 +367,25 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3010,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "malaga-cf-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3008,
         "redCards": 0,
         "yellowCards": 4
       },

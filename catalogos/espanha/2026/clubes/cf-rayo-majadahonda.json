@@ -9,7 +9,7 @@
   "tieBreakPriority": 85,
   "historicalRanking": {
     "rating": 71.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,19 +114,19 @@
     },
     {
       "id": "cf-rayo-majadahonda-2026-011",
-      "name": "Yuya Yoshimura",
-      "position": "M",
-      "nationality": "JP",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cf-rayo-majadahonda-2026-012",
       "name": "Antonio Amaro",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
+    },
+    {
+      "id": "cf-rayo-majadahonda-2026-012",
+      "name": "Yuya Yoshimura",
+      "position": "M",
+      "nationality": "JP",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "cf-rayo-majadahonda-2026-013",
@@ -162,22 +162,6 @@
     },
     {
       "id": "cf-rayo-majadahonda-2026-017",
-      "name": "Raúl Hernández",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cf-rayo-majadahonda-2026-018",
-      "name": "José Cambra",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cf-rayo-majadahonda-2026-019",
       "name": "Manín Gonzaga",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +169,31 @@
       "isStar": false
     },
     {
+      "id": "cf-rayo-majadahonda-2026-018",
+      "name": "Raúl Hernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-rayo-majadahonda-2026-019",
+      "name": "José Cambra",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "cf-rayo-majadahonda-2026-020",
+      "name": "Joshua Farrell",
+      "position": "A",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-rayo-majadahonda-2026-021",
       "name": "Gonzalo Calçada",
       "position": "A",
       "nationality": "ES",
@@ -193,16 +201,8 @@
       "isStar": false
     },
     {
-      "id": "cf-rayo-majadahonda-2026-021",
-      "name": "Ismael Álvarez",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cf-rayo-majadahonda-2026-022",
-      "name": "Jeremy Jorge",
+      "name": "Ismael Álvarez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

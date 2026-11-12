@@ -9,7 +9,7 @@
   "tieBreakPriority": 47,
   "historicalRanking": {
     "rating": 75.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -122,14 +122,6 @@
     },
     {
       "id": "ud-logrones-2026-012",
-      "name": "Anai Morales",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-logrones-2026-013",
       "name": "Mikel Zabala",
       "position": "M",
       "nationality": "ES",
@@ -137,12 +129,20 @@
       "isStar": false
     },
     {
+      "id": "ud-logrones-2026-013",
+      "name": "Anai Morales",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
       "id": "ud-logrones-2026-014",
       "name": "Quique Rivero",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-logrones-2026-015",
@@ -162,14 +162,6 @@
     },
     {
       "id": "ud-logrones-2026-017",
-      "name": "Mario Maroto",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-logrones-2026-018",
       "name": "Ismael Santana",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "ud-logrones-2026-019",
+      "id": "ud-logrones-2026-018",
       "name": "Papa Ba",
       "position": "A",
       "nationality": "SN",
@@ -185,12 +177,20 @@
       "isStar": false
     },
     {
-      "id": "ud-logrones-2026-020",
+      "id": "ud-logrones-2026-019",
       "name": "Ibai Asenjo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
+    },
+    {
+      "id": "ud-logrones-2026-020",
+      "name": "Berto Rosas",
+      "position": "A",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "ud-logrones-2026-021",

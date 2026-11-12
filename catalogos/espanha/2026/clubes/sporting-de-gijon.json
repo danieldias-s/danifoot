@@ -9,7 +9,7 @@
   "tieBreakPriority": 29,
   "historicalRanking": {
     "rating": 79.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,7 +114,7 @@
     },
     {
       "id": "sporting-de-gijon-2026-011",
-      "name": "César Gelabert",
+      "name": "Àlex Corredera",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -122,11 +122,11 @@
     },
     {
       "id": "sporting-de-gijon-2026-012",
-      "name": "Àlex Corredera",
+      "name": "César Gelabert",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sporting-de-gijon-2026-013",
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "RU",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sporting-de-gijon-2026-018",
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "CO",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sporting-de-gijon-2026-019",

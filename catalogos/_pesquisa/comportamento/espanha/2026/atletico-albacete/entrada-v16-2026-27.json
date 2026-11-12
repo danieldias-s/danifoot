@@ -38,7 +38,7 @@
     "baseBehavior": null,
     "minutes": 424,
     "yellowCards": 1,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "atletico-albacete-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "atletico-albacete-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1686,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-012",
+    "playerCatalogId": "atletico-albacete-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1234,
@@ -132,18 +121,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-013",
+    "playerCatalogId": "atletico-albacete-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1168,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-014",
+    "playerCatalogId": "atletico-albacete-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 900,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-015",
+    "playerCatalogId": "atletico-albacete-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 540,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-016",
+    "playerCatalogId": "atletico-albacete-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 378,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-017",
+    "playerCatalogId": "atletico-albacete-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 162,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-018",
+    "playerCatalogId": "atletico-albacete-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 617,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-019",
+    "playerCatalogId": "atletico-albacete-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 494,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-020",
+    "playerCatalogId": "atletico-albacete-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 196,
@@ -220,7 +209,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-021",
+    "playerCatalogId": "atletico-albacete-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 180,
@@ -231,7 +220,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-022",
+    "playerCatalogId": "atletico-albacete-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 178,
@@ -242,10 +231,21 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-albacete-2026-023",
+    "playerCatalogId": "atletico-albacete-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 36,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "atletico-albacete-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 21,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

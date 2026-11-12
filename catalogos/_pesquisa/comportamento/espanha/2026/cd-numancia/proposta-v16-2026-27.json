@@ -81,9 +81,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2474,
+        "minutes": 2506,
         "redCards": 0,
-        "yellowCards": 7
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -100,14 +100,33 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1769,
-        "redCards": 1,
-        "yellowCards": 4
+        "minutes": 2474,
+        "redCards": 0,
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 4,
       "percentile": null,
       "playerCatalogId": "cd-numancia-2026-004",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1769,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "cd-numancia-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -126,7 +145,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-numancia-2026-005",
+      "playerCatalogId": "cd-numancia-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,25 +164,6 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "cd-numancia-2026-006",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 1211,
-        "redCards": 0,
-        "yellowCards": 3
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
       "playerCatalogId": "cd-numancia-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -176,7 +176,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1349,
+        "minutes": 1211,
         "redCards": 0,
         "yellowCards": 3
       },

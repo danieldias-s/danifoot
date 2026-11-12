@@ -23,10 +23,10 @@
   },
   {
     "playerCatalogId": "fc-andorra-2026-003",
-    "position": "G",
+    "position": "D",
     "baseBehavior": null,
-    "minutes": 225,
-    "yellowCards": 0,
+    "minutes": 3314,
+    "yellowCards": 10,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -34,17 +34,6 @@
   },
   {
     "playerCatalogId": "fc-andorra-2026-004",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 3314,
-    "yellowCards": 10,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "fc-andorra-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 3222,
@@ -55,7 +44,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-006",
+    "playerCatalogId": "fc-andorra-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 3143,
@@ -66,7 +55,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-007",
+    "playerCatalogId": "fc-andorra-2026-006",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2854,
@@ -77,7 +66,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-008",
+    "playerCatalogId": "fc-andorra-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1952,
@@ -88,7 +77,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-009",
+    "playerCatalogId": "fc-andorra-2026-008",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1878,
@@ -99,7 +88,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-010",
+    "playerCatalogId": "fc-andorra-2026-009",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1450,
@@ -110,7 +99,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-011",
+    "playerCatalogId": "fc-andorra-2026-010",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1325,
@@ -121,12 +110,23 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-012",
+    "playerCatalogId": "fc-andorra-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2917,
     "yellowCards": 11,
-    "redCards": 1,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "fc-andorra-2026-012",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 2654,
+    "yellowCards": 8,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -135,8 +135,8 @@
     "playerCatalogId": "fc-andorra-2026-013",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 2654,
-    "yellowCards": 8,
+    "minutes": 2369,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -168,6 +168,17 @@
     "playerCatalogId": "fc-andorra-2026-016",
     "position": "M",
     "baseBehavior": null,
+    "minutes": 2098,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "fc-andorra-2026-017",
+    "position": "M",
+    "baseBehavior": null,
     "minutes": 1638,
     "yellowCards": 4,
     "redCards": 0,
@@ -176,7 +187,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-017",
+    "playerCatalogId": "fc-andorra-2026-018",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1194,
@@ -187,7 +198,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-018",
+    "playerCatalogId": "fc-andorra-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3510,
@@ -198,18 +209,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-019",
+    "playerCatalogId": "fc-andorra-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2922,
     "yellowCards": 11,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-020",
+    "playerCatalogId": "fc-andorra-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2412,
@@ -220,22 +231,11 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "fc-andorra-2026-021",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 781,
-    "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
     "playerCatalogId": "fc-andorra-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
+    "minutes": 1924,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
@@ -245,8 +245,8 @@
     "playerCatalogId": "fc-andorra-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
+    "minutes": 781,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,

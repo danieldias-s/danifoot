@@ -9,7 +9,7 @@
   "tieBreakPriority": 23,
   "historicalRanking": {
     "rating": 81.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,14 +49,6 @@
     },
     {
       "id": "rcd-mallorca-2026-003",
-      "name": "Iván Cuéllar",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rcd-mallorca-2026-004",
       "name": "Martin Valjent",
       "position": "D",
       "nationality": "SK",
@@ -64,7 +56,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-005",
+      "id": "rcd-mallorca-2026-004",
       "name": "Antonio Raíllo",
       "position": "D",
       "nationality": "ES",
@@ -72,7 +64,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-006",
+      "id": "rcd-mallorca-2026-005",
       "name": "Alberto Moreno",
       "position": "D",
       "nationality": "ES",
@@ -80,8 +72,16 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-007",
+      "id": "rcd-mallorca-2026-006",
       "name": "David López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-007",
+      "name": "John Donald",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -97,14 +97,6 @@
     },
     {
       "id": "rcd-mallorca-2026-009",
-      "name": "John Donald",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rcd-mallorca-2026-010",
       "name": "Aboubaka Soumahoro",
       "position": "D",
       "nationality": "FR",
@@ -112,15 +104,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-011",
-      "name": "Miguel Calatayud",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rcd-mallorca-2026-012",
+      "id": "rcd-mallorca-2026-010",
       "name": "Sergi Darder",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +112,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-013",
+      "id": "rcd-mallorca-2026-011",
       "name": "Manu Morlanes",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-014",
+      "id": "rcd-mallorca-2026-012",
       "name": "Pablo Torre",
       "position": "M",
       "nationality": "ES",
@@ -144,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-015",
+      "id": "rcd-mallorca-2026-013",
       "name": "Antonio Sánchez",
       "position": "M",
       "nationality": "ES",
@@ -152,7 +136,15 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-016",
+      "id": "rcd-mallorca-2026-014",
+      "name": "Guille Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-015",
       "name": "Jan Salas",
       "position": "M",
       "nationality": "ES",
@@ -160,16 +152,24 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-017",
-      "name": "Álex Sala",
-      "position": "M",
+      "id": "rcd-mallorca-2026-016",
+      "name": "Adrián Fuentes",
+      "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "rcd-mallorca-2026-017",
+      "name": "Daniel Luna",
+      "position": "A",
+      "nationality": "CO",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "rcd-mallorca-2026-018",
-      "name": "Adrián Fuentes",
+      "name": "Adrián Liso",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -177,9 +177,9 @@
     },
     {
       "id": "rcd-mallorca-2026-019",
-      "name": "Daniel Luna",
+      "name": "Arnau Puigmal",
       "position": "A",
-      "nationality": "CO",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -193,14 +193,6 @@
     },
     {
       "id": "rcd-mallorca-2026-021",
-      "name": "Arnau Puigmal",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rcd-mallorca-2026-022",
       "name": "Adam Buksa",
       "position": "A",
       "nationality": "PL",
@@ -208,10 +200,18 @@
       "isStar": false
     },
     {
-      "id": "rcd-mallorca-2026-023",
+      "id": "rcd-mallorca-2026-022",
       "name": "Zito Luvumbo",
       "position": "A",
       "nationality": "AO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-023",
+      "name": "Abdón Prats",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

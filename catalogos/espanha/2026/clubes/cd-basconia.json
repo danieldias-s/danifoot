@@ -9,7 +9,7 @@
   "tieBreakPriority": 101,
   "historicalRanking": {
     "rating": 70.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -97,17 +97,17 @@
     },
     {
       "id": "cd-basconia-2026-009",
-      "name": "Aitor León",
+      "name": "Mikel Urrestarazu",
       "position": "D",
-      "nationality": "PE",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-basconia-2026-010",
-      "name": "Testimony Onukwuru",
+      "name": "Aitor León",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "PE",
       "behavior": null,
       "isStar": false
     },
@@ -161,23 +161,23 @@
     },
     {
       "id": "cd-basconia-2026-017",
-      "name": "Iñigo Sainz",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-basconia-2026-018",
       "name": "Aitor Torrico",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
+    },
+    {
+      "id": "cd-basconia-2026-018",
+      "name": "Diego Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "cd-basconia-2026-019",
-      "name": "Diego Fernández",
+      "name": "Unax Urzaiz",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -209,7 +209,7 @@
     },
     {
       "id": "cd-basconia-2026-023",
-      "name": "Manasse Kiese",
+      "name": "Danel Narvarte",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

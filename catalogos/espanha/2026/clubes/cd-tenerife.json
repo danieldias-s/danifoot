@@ -9,7 +9,7 @@
   "tieBreakPriority": 36,
   "historicalRanking": {
     "rating": 77.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,14 +106,6 @@
     },
     {
       "id": "cd-tenerife-2026-010",
-      "name": "Marc Mateu",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-tenerife-2026-011",
       "name": "Jesús Álvarez",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-012",
+      "id": "cd-tenerife-2026-011",
       "name": "Juanjo Sánchez",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-013",
+      "id": "cd-tenerife-2026-012",
       "name": "Fabricio",
       "position": "M",
       "nationality": "BR",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-014",
+      "id": "cd-tenerife-2026-013",
       "name": "Mauro Pittón",
       "position": "M",
       "nationality": "AR",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-015",
+      "id": "cd-tenerife-2026-014",
       "name": "Anes Krdzalic",
       "position": "M",
       "nationality": "BA",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-016",
+      "id": "cd-tenerife-2026-015",
       "name": "Dani Fernández",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-017",
+      "id": "cd-tenerife-2026-016",
       "name": "Martin Pecar",
       "position": "A",
       "nationality": "SI",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "cd-tenerife-2026-018",
+      "id": "cd-tenerife-2026-017",
       "name": "Enric Gallego",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-tenerife-2026-018",
+      "name": "Víctor Moreno",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,7 +186,7 @@
     },
     {
       "id": "cd-tenerife-2026-020",
-      "name": "Noel López",
+      "name": "Baba Diocou",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,15 +194,15 @@
     },
     {
       "id": "cd-tenerife-2026-021",
-      "name": "Gerard Valentín",
+      "name": "Alassan Manjam",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "GW",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-tenerife-2026-022",
-      "name": "Iván Chapela",
+      "name": "Noel López",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -210,9 +210,9 @@
     },
     {
       "id": "cd-tenerife-2026-023",
-      "name": "Grant-Leon Ranos",
+      "name": "Christian Gomis",
       "position": "A",
-      "nationality": "AM",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     }

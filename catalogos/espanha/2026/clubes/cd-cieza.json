@@ -9,7 +9,7 @@
   "tieBreakPriority": 118,
   "historicalRanking": {
     "rating": 69.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -121,7 +121,7 @@
     },
     {
       "id": "cd-cieza-2026-012",
-      "name": "Marçal Casadevall",
+      "name": "Aitor Hidalgo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "cd-cieza-2026-013",
-      "name": "Aitor Hidalgo",
+      "name": "Marçal Casadevall",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -161,6 +161,14 @@
     },
     {
       "id": "cd-cieza-2026-017",
+      "name": "Álex Castro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "cd-cieza-2026-018",
       "name": "Dawda Dambelleh",
       "position": "A",
       "nationality": "ES",
@@ -168,16 +176,8 @@
       "isStar": false
     },
     {
-      "id": "cd-cieza-2026-018",
-      "name": "Álex Castro",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-cieza-2026-019",
-      "name": "Diego Rodríguez",
+      "name": "Pitu Fernández",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -185,11 +185,11 @@
     },
     {
       "id": "cd-cieza-2026-020",
-      "name": "Pitu Fernández",
+      "name": "Diego Rodríguez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-cieza-2026-021",

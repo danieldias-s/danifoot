@@ -9,7 +9,7 @@
   "tieBreakPriority": 6,
   "historicalRanking": {
     "rating": 87.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "real-sociedad-2026-004",
-      "name": "Jon Martín",
+      "name": "Sergio Gómez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "real-sociedad-2026-005",
-      "name": "Igor Zubeldia",
+      "name": "Jon Martín",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "real-sociedad-2026-006",
-      "name": "Jon Pacheco",
+      "name": "Luken Beitia",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "real-sociedad-2026-007",
-      "name": "Aihen Muñoz",
+      "name": "Igor Zubeldia",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "real-sociedad-2026-008",
-      "name": "Héctor Fort",
+      "name": "Jon Pacheco",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,7 +98,7 @@
     },
     {
       "id": "real-sociedad-2026-009",
-      "name": "Álvaro Odriozola",
+      "name": "Aihen Muñoz",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -106,9 +106,9 @@
     },
     {
       "id": "real-sociedad-2026-010",
-      "name": "Mamadou Sarr",
+      "name": "Héctor Fort",
       "position": "D",
-      "nationality": "SN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -154,14 +154,6 @@
     },
     {
       "id": "real-sociedad-2026-016",
-      "name": "Yangel Herrera",
-      "position": "M",
-      "nationality": "VE",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-sociedad-2026-017",
       "name": "Arsen Zakharyan",
       "position": "M",
       "nationality": "RU",
@@ -169,15 +161,15 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-2026-018",
+      "id": "real-sociedad-2026-017",
       "name": "Mikel Oyarzabal",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "real-sociedad-2026-019",
+      "id": "real-sociedad-2026-018",
       "name": "Gonçalo Guedes",
       "position": "A",
       "nationality": "PT",
@@ -185,18 +177,26 @@
       "isStar": false
     },
     {
-      "id": "real-sociedad-2026-020",
-      "name": "Job Ochieng",
+      "id": "real-sociedad-2026-019",
+      "name": "Ander Barrenetxea",
       "position": "A",
-      "nationality": "KE",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-020",
+      "name": "Takefusa Kubo",
+      "position": "A",
+      "nationality": "JP",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-sociedad-2026-021",
-      "name": "Takefusa Kubo",
+      "name": "Job Ochieng",
       "position": "A",
-      "nationality": "JP",
+      "nationality": "KE",
       "behavior": null,
       "isStar": false
     },

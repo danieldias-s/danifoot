@@ -47,5 +47,18 @@
     "FC Andorra (sede em Andorra, filiado à RFEF e participante da Segunda División) utiliza country='ES' no clube JSON V1.1 por exigência estrutural de OfflineCatalogV11Loader.cs (SCOPE).",
     "Transfermarkt fornece minutos, jogos, titularidades (Appearances menos Substitutions on) e cartões de 2025/26 nas 4 categorias; faltas cometidas (total_fouls_conceded) de 2025/26 só são reportadas integralmente quando disponíveis na fonte Opta/LaLiga, gerando REVIEW_REQUIRED no V16 quando ausentes.",
     "Clubes abaixo do corte pesquisado no Opta Power Rankings ao vivo permanecem com historicalRanking=null e status=DRAFT conforme regra anti-invenção."
-  ]
+  ],
+  "v16ComplianceUpdate": {
+    "updatedAt": "2026-11-12",
+    "masterPlanRef": "ELIFOOT98_PLANO_MESTRE_IMPORTACAO_V1_6_FINAL_PARA_VALIDACAO.md (Secoes 11-21 / Aditivo Final 18)",
+    "historicalRankingSource": "OPTA (padronizado nos 171 clubes novos para alinhamento com OfflineCatalogRanking.cs)",
+    "squadCutPolicy": "Estrelas (M/A) > minutagem/titularidade regular 2025/26 > promessa protegida U21 com lastro >=600min/7tit > minutagem/starts/aparicoes/G+A; limite G<=3; removido vies wiki_conf/shirt<=25.",
+    "starsPolicy": "Secao 18.2 aplicada: G/D sempre false; AWARD_OR_BEST_XI sem limite artificial quando comprovado; LOCAL_HIGHLIGHT (1..3, ou 0 sem lastro verificavel) apenas para clubes sem premio comprovado.",
+    "starsSummary171NewClubs": {
+      "totalStars": 239,
+      "awardOrBestXi": 13,
+      "localHighlight": 226,
+      "clubsWithZeroStarsDueToInsufficientEvidence": 7
+    }
+  }
 }

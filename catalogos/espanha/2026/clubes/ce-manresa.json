@@ -9,7 +9,7 @@
   "tieBreakPriority": 139,
   "historicalRanking": {
     "rating": 67.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -157,7 +157,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ce-manresa-2026-017",

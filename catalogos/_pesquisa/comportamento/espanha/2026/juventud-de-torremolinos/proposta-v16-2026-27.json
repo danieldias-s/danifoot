@@ -119,14 +119,33 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 180,
-        "redCards": 0,
-        "yellowCards": 0
+        "minutes": 813,
+        "redCards": 1,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
       "playerCatalogId": "juventud-de-torremolinos-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 450,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "juventud-de-torremolinos-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -145,25 +164,6 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "juventud-de-torremolinos-2026-006",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 90,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
       "playerCatalogId": "juventud-de-torremolinos-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -176,7 +176,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 45,
+        "minutes": 180,
         "redCards": 0,
         "yellowCards": 0
       },
@@ -195,7 +195,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 45,
         "redCards": 0,
         "yellowCards": 0
       },
@@ -291,7 +291,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 408,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 1
       },
       "index": null,

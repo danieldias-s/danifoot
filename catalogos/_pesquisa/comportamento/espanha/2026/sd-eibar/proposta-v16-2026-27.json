@@ -176,9 +176,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1023,
+        "minutes": 1181,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 2,
@@ -195,9 +195,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 216,
+        "minutes": 1023,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 2,
@@ -347,15 +347,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 935,
+        "minutes": 2256,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 2,
       "percentile": null,
       "playerCatalogId": "sd-eibar-2026-017",
-      "position": "M",
+      "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -404,7 +404,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2256,
+        "minutes": 1877,
         "redCards": 0,
         "yellowCards": 3
       },
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1877,
+        "minutes": 1768,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 2,
@@ -442,7 +442,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1768,
+        "minutes": 1697,
         "redCards": 0,
         "yellowCards": 5
       },

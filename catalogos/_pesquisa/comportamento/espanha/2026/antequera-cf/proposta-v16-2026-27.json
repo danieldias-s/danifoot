@@ -176,7 +176,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2126,
+        "minutes": 2141,
         "redCards": 1,
         "yellowCards": 6
       },
@@ -195,8 +195,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2141,
-        "redCards": 1,
+        "minutes": 2126,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1735,
+        "minutes": 1952,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1952,
+        "minutes": 1735,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,
@@ -347,25 +347,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-017",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 2397,
         "redCards": 0,
         "yellowCards": 14
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-018",
+      "playerCatalogId": "antequera-cf-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-019",
+      "playerCatalogId": "antequera-cf-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +392,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-020",
+      "playerCatalogId": "antequera-cf-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +411,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-021",
+      "playerCatalogId": "antequera-cf-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -449,7 +430,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "antequera-cf-2026-022",
+      "playerCatalogId": "antequera-cf-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -464,6 +445,25 @@
         "minutes": 751,
         "redCards": 0,
         "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "antequera-cf-2026-022",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 681,
+        "redCards": 0,
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 3,

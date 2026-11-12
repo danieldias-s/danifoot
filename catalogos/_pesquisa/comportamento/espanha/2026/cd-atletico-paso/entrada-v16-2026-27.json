@@ -47,6 +47,17 @@
     "playerCatalogId": "cd-atletico-paso-2026-005",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 1498,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-atletico-paso-2026-006",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 1147,
     "yellowCards": 2,
     "redCards": 0,
@@ -55,7 +66,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-atletico-paso-2026-006",
+    "playerCatalogId": "cd-atletico-paso-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 830,
@@ -66,22 +77,11 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-atletico-paso-2026-007",
+    "playerCatalogId": "cd-atletico-paso-2026-008",
     "position": "D",
     "baseBehavior": null,
     "minutes": 761,
     "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-atletico-paso-2026-008",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -111,6 +111,17 @@
   },
   {
     "playerCatalogId": "cd-atletico-paso-2026-011",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 0,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-atletico-paso-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2583,
@@ -121,18 +132,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-atletico-paso-2026-012",
+    "playerCatalogId": "cd-atletico-paso-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1740,
     "yellowCards": 7,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-atletico-paso-2026-013",
+    "playerCatalogId": "cd-atletico-paso-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 238,
@@ -143,22 +154,11 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-atletico-paso-2026-014",
+    "playerCatalogId": "cd-atletico-paso-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 146,
     "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-atletico-paso-2026-015",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,

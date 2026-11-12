@@ -9,7 +9,7 @@
   "tieBreakPriority": 88,
   "historicalRanking": {
     "rating": 71.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -74,7 +74,7 @@
     },
     {
       "id": "cf-talavera-de-la-reina-2026-006",
-      "name": "Fermín Ruiz",
+      "name": "Enzo Ojeda",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "cf-talavera-de-la-reina-2026-007",
-      "name": "Enzo Ojeda",
+      "name": "Fermín Ruiz",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -106,15 +106,15 @@
     },
     {
       "id": "cf-talavera-de-la-reina-2026-010",
-      "name": "Cristian Delgado",
+      "name": "Carlos Benítez",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cf-talavera-de-la-reina-2026-011",
-      "name": "Carlos Benítez",
+      "name": "Cristian Delgado",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

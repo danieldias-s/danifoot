@@ -91,7 +91,7 @@
     "playerCatalogId": "cd-basconia-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 0,
+    "minutes": 32,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -177,17 +177,6 @@
   },
   {
     "playerCatalogId": "cd-basconia-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "cd-basconia-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1793,
@@ -198,11 +187,22 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-basconia-2026-019",
+    "playerCatalogId": "cd-basconia-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1636,
     "yellowCards": 5,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-basconia-2026-019",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 1187,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,

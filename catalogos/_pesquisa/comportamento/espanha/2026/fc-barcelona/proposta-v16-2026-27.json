@@ -81,15 +81,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
+        "minutes": 3978,
+        "redCards": 1,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
       "playerCatalogId": "fc-barcelona-2026-003",
-      "position": "G",
+      "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -119,25 +119,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 3978,
-        "redCards": 1,
-        "yellowCards": 4
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-005",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 3529,
         "redCards": 0,
         "yellowCards": 7
@@ -145,7 +126,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-006",
+      "playerCatalogId": "fc-barcelona-2026-005",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +145,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-007",
+      "playerCatalogId": "fc-barcelona-2026-006",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +164,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-008",
+      "playerCatalogId": "fc-barcelona-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +183,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-009",
+      "playerCatalogId": "fc-barcelona-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,26 +202,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-010",
-      "position": "D",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 543,
-        "redCards": 0,
-        "yellowCards": 2
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-011",
+      "playerCatalogId": "fc-barcelona-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -253,13 +215,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3094,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 1
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-012",
+      "playerCatalogId": "fc-barcelona-2026-010",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,26 +240,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-013",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2799,
-        "redCards": 0,
-        "yellowCards": 6
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-014",
+      "playerCatalogId": "fc-barcelona-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +259,26 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-015",
+      "playerCatalogId": "fc-barcelona-2026-012",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2799,
+        "redCards": 0,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "fc-barcelona-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -329,13 +291,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2569,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 6
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-016",
+      "playerCatalogId": "fc-barcelona-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -348,13 +310,13 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2185,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 6
       },
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-017",
+      "playerCatalogId": "fc-barcelona-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +335,26 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "fc-barcelona-2026-018",
+      "playerCatalogId": "fc-barcelona-2026-016",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 700,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "fc-barcelona-2026-017",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -388,6 +369,25 @@
         "minutes": 3702,
         "redCards": 0,
         "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "fc-barcelona-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2869,
+        "redCards": 1,
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 1,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 872,
+        "minutes": 988,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 988,
+        "minutes": 872,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 1,

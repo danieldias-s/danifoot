@@ -25,6 +25,17 @@
     "playerCatalogId": "malaga-cf-2026-003",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 3548,
+    "yellowCards": 8,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "malaga-cf-2026-004",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 3520,
     "yellowCards": 10,
     "redCards": 1,
@@ -33,7 +44,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-004",
+    "playerCatalogId": "malaga-cf-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2948,
@@ -44,7 +55,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-005",
+    "playerCatalogId": "malaga-cf-2026-006",
     "position": "D",
     "baseBehavior": null,
     "minutes": 2240,
@@ -55,22 +66,11 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-006",
+    "playerCatalogId": "malaga-cf-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1947,
     "yellowCards": 4,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "malaga-cf-2026-007",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 652,
-    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -80,8 +80,8 @@
     "playerCatalogId": "malaga-cf-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 180,
-    "yellowCards": 1,
+    "minutes": 1159,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -91,8 +91,8 @@
     "playerCatalogId": "malaga-cf-2026-009",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 34,
-    "yellowCards": 0,
+    "minutes": 429,
+    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "malaga-cf-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "malaga-cf-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 3024,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-012",
+    "playerCatalogId": "malaga-cf-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2813,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-013",
+    "playerCatalogId": "malaga-cf-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2753,
@@ -143,7 +132,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-014",
+    "playerCatalogId": "malaga-cf-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1959,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-015",
+    "playerCatalogId": "malaga-cf-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1548,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-016",
+    "playerCatalogId": "malaga-cf-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1280,
@@ -176,18 +165,18 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-017",
+    "playerCatalogId": "malaga-cf-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 957,
     "yellowCards": 6,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-018",
+    "playerCatalogId": "malaga-cf-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3644,
@@ -198,10 +187,21 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "malaga-cf-2026-019",
+    "playerCatalogId": "malaga-cf-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3010,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "malaga-cf-2026-019",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 3008,
     "yellowCards": 4,
     "redCards": 0,
     "fouls": null,

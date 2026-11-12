@@ -9,7 +9,7 @@
   "tieBreakPriority": 144,
   "historicalRanking": {
     "rating": 67.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -49,14 +49,6 @@
     },
     {
       "id": "orihuela-cf-2026-003",
-      "name": "José Luis Nicolás",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "orihuela-cf-2026-004",
       "name": "Javi Ramírez",
       "position": "D",
       "nationality": "ES",
@@ -64,7 +56,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-005",
+      "id": "orihuela-cf-2026-004",
       "name": "Juan Carlos Sabater",
       "position": "D",
       "nationality": "ES",
@@ -72,7 +64,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-006",
+      "id": "orihuela-cf-2026-005",
       "name": "Diego Ruiz",
       "position": "D",
       "nationality": "ES",
@@ -80,7 +72,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-007",
+      "id": "orihuela-cf-2026-006",
       "name": "Álvaro Espínola",
       "position": "D",
       "nationality": "ES",
@@ -88,7 +80,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-008",
+      "id": "orihuela-cf-2026-007",
       "name": "Javi Pamies",
       "position": "D",
       "nationality": "ES",
@@ -96,7 +88,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-009",
+      "id": "orihuela-cf-2026-008",
       "name": "Bilal Errahaly",
       "position": "D",
       "nationality": "MA",
@@ -104,7 +96,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-010",
+      "id": "orihuela-cf-2026-009",
       "name": "Eloy Gil",
       "position": "D",
       "nationality": "ES",
@@ -112,7 +104,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-011",
+      "id": "orihuela-cf-2026-010",
       "name": "Pablo Hernández",
       "position": "D",
       "nationality": "ES",
@@ -120,7 +112,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-012",
+      "id": "orihuela-cf-2026-011",
       "name": "Urtzi Urzelay",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-013",
+      "id": "orihuela-cf-2026-012",
       "name": "Gonzalo Miranda",
       "position": "M",
       "nationality": "UY",
@@ -136,10 +128,18 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-014",
+      "id": "orihuela-cf-2026-013",
       "name": "Dani Satoca",
       "position": "M",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "orihuela-cf-2026-014",
+      "name": "Louis Booker",
+      "position": "M",
+      "nationality": "GB",
       "behavior": null,
       "isStar": false
     },
@@ -153,14 +153,6 @@
     },
     {
       "id": "orihuela-cf-2026-016",
-      "name": "Louis Booker",
-      "position": "M",
-      "nationality": "GB",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "orihuela-cf-2026-017",
       "name": "Imanol Alonso",
       "position": "M",
       "nationality": "ES",
@@ -168,23 +160,23 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-018",
+      "id": "orihuela-cf-2026-017",
       "name": "Omar Perdomo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "orihuela-cf-2026-019",
+      "id": "orihuela-cf-2026-018",
       "name": "Javi Solsona",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "orihuela-cf-2026-020",
+      "id": "orihuela-cf-2026-019",
       "name": "Rubén Solano",
       "position": "A",
       "nationality": "ES",
@@ -192,7 +184,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-021",
+      "id": "orihuela-cf-2026-020",
       "name": "Loren Burón",
       "position": "A",
       "nationality": "ES",
@@ -200,7 +192,7 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-022",
+      "id": "orihuela-cf-2026-021",
       "name": "Usama Arhoun",
       "position": "A",
       "nationality": "MA",
@@ -208,8 +200,16 @@
       "isStar": false
     },
     {
-      "id": "orihuela-cf-2026-023",
+      "id": "orihuela-cf-2026-022",
       "name": "Aday Alcalde",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "orihuela-cf-2026-023",
+      "name": "David Conejero",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

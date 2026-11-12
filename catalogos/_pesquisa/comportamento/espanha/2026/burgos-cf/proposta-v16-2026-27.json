@@ -138,6 +138,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2322,
+        "redCards": 0,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "burgos-cf-2026-006",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2092,
         "redCards": 0,
         "yellowCards": 8
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-006",
+      "playerCatalogId": "burgos-cf-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +183,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-007",
+      "playerCatalogId": "burgos-cf-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +202,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-008",
+      "playerCatalogId": "burgos-cf-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +221,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-009",
+      "playerCatalogId": "burgos-cf-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,7 +240,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-010",
+      "playerCatalogId": "burgos-cf-2026-011",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-011",
+      "playerCatalogId": "burgos-cf-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-012",
+      "playerCatalogId": "burgos-cf-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-013",
+      "playerCatalogId": "burgos-cf-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 2,
       "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-014",
+      "playerCatalogId": "burgos-cf-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -312,25 +331,6 @@
         "minutes": 433,
         "redCards": 0,
         "yellowCards": 2
-      },
-      "index": null,
-      "initialDivision": 2,
-      "percentile": null,
-      "playerCatalogId": "burgos-cf-2026-015",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier2-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 240,
-        "redCards": 0,
-        "yellowCards": 0
       },
       "index": null,
       "initialDivision": 2,
@@ -461,7 +461,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 153,
+        "minutes": 429,
         "redCards": 0,
         "yellowCards": 0
       },

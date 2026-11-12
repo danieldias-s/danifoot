@@ -9,7 +9,7 @@
   "tieBreakPriority": 109,
   "historicalRanking": {
     "rating": 69.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -110,7 +110,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-poblense-2026-011",

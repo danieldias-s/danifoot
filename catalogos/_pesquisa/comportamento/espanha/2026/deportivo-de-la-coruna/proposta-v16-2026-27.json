@@ -214,6 +214,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 1547,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "deportivo-de-la-coruna-2026-010",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1521,
         "redCards": 0,
         "yellowCards": 4
@@ -221,7 +240,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-010",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-011",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,7 +259,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-011",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-012",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -259,7 +278,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-012",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-013",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-014",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,7 +335,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-015",
+      "playerCatalogId": "deportivo-de-la-coruna-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -335,25 +354,6 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "deportivo-de-la-coruna-2026-016",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 0,
-        "redCards": 0,
-        "yellowCards": 0
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
       "playerCatalogId": "deportivo-de-la-coruna-2026-017",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -367,7 +367,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3027,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2626,
+        "minutes": 2762,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 1,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2762,
+        "minutes": 2626,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 1,

@@ -9,7 +9,7 @@
   "tieBreakPriority": 41,
   "historicalRanking": {
     "rating": 76.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -121,23 +121,23 @@
     },
     {
       "id": "celta-fortuna-2026-012",
-      "name": "Óscar Marcos",
-      "position": "M",
-      "nationality": "ES",
+      "name": "Seyni Ndiaye",
+      "position": "D",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "celta-fortuna-2026-013",
-      "name": "Hugo Burcio",
+      "name": "Óscar Marcos",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "celta-fortuna-2026-014",
-      "name": "Adrià Capdevila",
+      "name": "Hugo Burcio",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -153,17 +153,17 @@
     },
     {
       "id": "celta-fortuna-2026-016",
-      "name": "Hugo Cuenca",
+      "name": "Adrià Capdevila",
       "position": "M",
-      "nationality": "PY",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "celta-fortuna-2026-017",
-      "name": "Stefan Bajčetić",
+      "name": "Hugo Cuenca",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "PY",
       "behavior": null,
       "isStar": false
     },
@@ -201,17 +201,17 @@
     },
     {
       "id": "celta-fortuna-2026-022",
-      "name": "Aldrine Kibet",
+      "name": "Vlad",
       "position": "A",
-      "nationality": "KE",
+      "nationality": "PT",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "celta-fortuna-2026-023",
-      "name": "Ángel Davila",
+      "name": "Aldrine Kibet",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "KE",
       "behavior": null,
       "isStar": false
     }

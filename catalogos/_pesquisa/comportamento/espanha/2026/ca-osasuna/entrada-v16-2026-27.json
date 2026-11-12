@@ -49,7 +49,7 @@
     "baseBehavior": null,
     "minutes": 2611,
     "yellowCards": 4,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
@@ -80,6 +80,17 @@
     "playerCatalogId": "ca-osasuna-2026-008",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 1782,
+    "yellowCards": 8,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "ca-osasuna-2026-009",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 1747,
     "yellowCards": 5,
     "redCards": 1,
@@ -88,7 +99,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-009",
+    "playerCatalogId": "ca-osasuna-2026-010",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1667,
@@ -99,7 +110,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-010",
+    "playerCatalogId": "ca-osasuna-2026-011",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1439,
@@ -110,7 +121,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-011",
+    "playerCatalogId": "ca-osasuna-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 3201,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-012",
+    "playerCatalogId": "ca-osasuna-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2915,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-013",
+    "playerCatalogId": "ca-osasuna-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2395,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-014",
+    "playerCatalogId": "ca-osasuna-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2154,
@@ -154,23 +165,12 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-015",
+    "playerCatalogId": "ca-osasuna-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1478,
     "yellowCards": 4,
     "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "ca-osasuna-2026-016",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 1308,
-    "yellowCards": 5,
-    "redCards": 1,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
@@ -188,6 +188,17 @@
   },
   {
     "playerCatalogId": "ca-osasuna-2026-018",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1308,
+    "yellowCards": 5,
+    "redCards": 1,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "ca-osasuna-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3025,
@@ -198,7 +209,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-019",
+    "playerCatalogId": "ca-osasuna-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3013,
@@ -209,7 +220,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-020",
+    "playerCatalogId": "ca-osasuna-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2736,
@@ -220,7 +231,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-021",
+    "playerCatalogId": "ca-osasuna-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2383,
@@ -231,23 +242,12 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "ca-osasuna-2026-022",
-    "position": "A",
-    "baseBehavior": null,
-    "minutes": 623,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
     "playerCatalogId": "ca-osasuna-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 691,
-    "yellowCards": 4,
-    "redCards": 0,
+    "minutes": 1384,
+    "yellowCards": 3,
+    "redCards": 1,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"

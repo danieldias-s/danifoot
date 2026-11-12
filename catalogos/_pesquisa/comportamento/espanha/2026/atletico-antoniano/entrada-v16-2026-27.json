@@ -38,35 +38,13 @@
     "baseBehavior": null,
     "minutes": 1823,
     "yellowCards": 3,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "atletico-antoniano-2026-005",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 1286,
-    "yellowCards": 3,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-antoniano-2026-006",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 1232,
-    "yellowCards": 6,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "atletico-antoniano-2026-007",
+    "playerCatalogId": "atletico-antoniano-2026-005",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1293,
@@ -77,10 +55,32 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
+    "playerCatalogId": "atletico-antoniano-2026-006",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 1286,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "atletico-antoniano-2026-007",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 1232,
+    "yellowCards": 6,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
     "playerCatalogId": "atletico-antoniano-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 71,
+    "minutes": 103,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -93,7 +93,7 @@
     "baseBehavior": null,
     "minutes": 2566,
     "yellowCards": 12,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
@@ -166,17 +166,6 @@
   },
   {
     "playerCatalogId": "atletico-antoniano-2026-016",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "atletico-antoniano-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1966,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-antoniano-2026-018",
+    "playerCatalogId": "atletico-antoniano-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 396,
@@ -198,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-antoniano-2026-019",
+    "playerCatalogId": "atletico-antoniano-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 329,
@@ -209,7 +198,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-antoniano-2026-020",
+    "playerCatalogId": "atletico-antoniano-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 23,
@@ -220,10 +209,21 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-antoniano-2026-021",
+    "playerCatalogId": "atletico-antoniano-2026-020",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "atletico-antoniano-2026-021",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 0,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

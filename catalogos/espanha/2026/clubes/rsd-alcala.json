@@ -9,7 +9,7 @@
   "tieBreakPriority": 140,
   "historicalRanking": {
     "rating": 67.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -121,7 +121,7 @@
     },
     {
       "id": "rsd-alcala-2026-012",
-      "name": "Sergio Marcos",
+      "name": "Aitor González",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "rsd-alcala-2026-013",
-      "name": "Aitor González",
+      "name": "Sergio Marcos",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -141,7 +141,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rsd-alcala-2026-015",
@@ -149,7 +149,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rsd-alcala-2026-016",
@@ -161,22 +161,6 @@
     },
     {
       "id": "rsd-alcala-2026-017",
-      "name": "Jaime Garrido",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rsd-alcala-2026-018",
-      "name": "Miguel Sánchez",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rsd-alcala-2026-019",
       "name": "Ato",
       "position": "M",
       "nationality": "ES",
@@ -184,8 +168,24 @@
       "isStar": false
     },
     {
+      "id": "rsd-alcala-2026-018",
+      "name": "Jaime Garrido",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rsd-alcala-2026-019",
+      "name": "Miguel Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "rsd-alcala-2026-020",
-      "name": "Kevin Manzano",
+      "name": "Alberto Alburquerque",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -193,7 +193,7 @@
     },
     {
       "id": "rsd-alcala-2026-021",
-      "name": "Alberto Alburquerque",
+      "name": "Kevin Manzano",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

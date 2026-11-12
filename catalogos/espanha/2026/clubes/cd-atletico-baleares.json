@@ -9,7 +9,7 @@
   "tieBreakPriority": 83,
   "historicalRanking": {
     "rating": 72.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -82,17 +82,17 @@
     },
     {
       "id": "cd-atletico-baleares-2026-007",
-      "name": "Hugo Anglada",
+      "name": "Fabrice Montcheu",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "DE",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-atletico-baleares-2026-008",
-      "name": "Fabrice Montcheu",
+      "name": "Hugo Anglada",
       "position": "D",
-      "nationality": "DE",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -106,7 +106,7 @@
     },
     {
       "id": "cd-atletico-baleares-2026-010",
-      "name": "Jofre Cherta",
+      "name": "Martí Payeras",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -114,7 +114,7 @@
     },
     {
       "id": "cd-atletico-baleares-2026-011",
-      "name": "Martí Payeras",
+      "name": "Jofre Cherta",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -162,15 +162,15 @@
     },
     {
       "id": "cd-atletico-baleares-2026-017",
-      "name": "Izan Llinares",
+      "name": "Raúl Caballero",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-atletico-baleares-2026-018",
-      "name": "Raúl Caballero",
+      "name": "Izan Llinares",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

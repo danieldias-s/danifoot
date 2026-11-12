@@ -9,7 +9,7 @@
   "tieBreakPriority": 91,
   "historicalRanking": {
     "rating": 71.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -114,14 +114,6 @@
     },
     {
       "id": "betis-deportivo-2026-011",
-      "name": "Curro Macías",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "betis-deportivo-2026-012",
       "name": "Cristo Muñoz",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-013",
+      "id": "betis-deportivo-2026-012",
       "name": "Iván Corralejo",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-014",
+      "id": "betis-deportivo-2026-013",
       "name": "Ismael Barea",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-015",
+      "id": "betis-deportivo-2026-014",
       "name": "Rica Fúnez",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-016",
+      "id": "betis-deportivo-2026-015",
       "name": "Miguel Romero",
       "position": "M",
       "nationality": "ES",
@@ -161,31 +153,15 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-017",
-      "name": "Enzo Fierro",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "betis-deportivo-2026-018",
-      "name": "Marcos Mora",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "betis-deportivo-2026-019",
+      "id": "betis-deportivo-2026-016",
       "name": "Borja Alonso",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "betis-deportivo-2026-020",
+      "id": "betis-deportivo-2026-017",
       "name": "José Antonio Morante",
       "position": "A",
       "nationality": "ES",
@@ -193,8 +169,32 @@
       "isStar": false
     },
     {
-      "id": "betis-deportivo-2026-021",
+      "id": "betis-deportivo-2026-018",
       "name": "Rodrigo Marina",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "betis-deportivo-2026-019",
+      "name": "Kwame Sosu",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "betis-deportivo-2026-020",
+      "name": "Antonio Toral",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "betis-deportivo-2026-021",
+      "name": "Rubén de Sá",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,9 +202,9 @@
     },
     {
       "id": "betis-deportivo-2026-022",
-      "name": "Kwame Sosu",
+      "name": "Antonio González",
       "position": "A",
-      "nationality": "GH",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

@@ -9,7 +9,7 @@
   "tieBreakPriority": 99,
   "historicalRanking": {
     "rating": 70.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -141,7 +141,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-ebro-2026-015",
@@ -161,17 +161,17 @@
     },
     {
       "id": "cd-ebro-2026-017",
-      "name": "Javirro",
+      "name": "Stéphane Emaná",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "CM",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-ebro-2026-018",
-      "name": "Stéphane Emaná",
+      "name": "Javirro",
       "position": "A",
-      "nationality": "CM",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

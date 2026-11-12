@@ -27,7 +27,7 @@
     "baseBehavior": null,
     "minutes": 2712,
     "yellowCards": 4,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "sd-huesca-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "sd-huesca-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2776,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-012",
+    "playerCatalogId": "sd-huesca-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2587,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-013",
+    "playerCatalogId": "sd-huesca-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2523,
@@ -143,7 +132,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-014",
+    "playerCatalogId": "sd-huesca-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2340,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-015",
+    "playerCatalogId": "sd-huesca-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1697,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-016",
+    "playerCatalogId": "sd-huesca-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1240,
@@ -176,7 +165,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-017",
+    "playerCatalogId": "sd-huesca-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2023,
@@ -187,7 +176,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "sd-huesca-2026-018",
+    "playerCatalogId": "sd-huesca-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1783,
@@ -198,12 +187,23 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
+    "playerCatalogId": "sd-huesca-2026-018",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 1645,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
     "playerCatalogId": "sd-huesca-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1486,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"

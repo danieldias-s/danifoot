@@ -27,7 +27,7 @@
     "baseBehavior": null,
     "minutes": 2148,
     "yellowCards": 2,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -49,7 +49,7 @@
     "baseBehavior": null,
     "minutes": 1927,
     "yellowCards": 1,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
@@ -100,10 +100,10 @@
   },
   {
     "playerCatalogId": "deportivo-fabril-2026-010",
-    "position": "D",
+    "position": "M",
     "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
+    "minutes": 2182,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -111,28 +111,6 @@
   },
   {
     "playerCatalogId": "deportivo-fabril-2026-011",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 2182,
-    "yellowCards": 1,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "deportivo-fabril-2026-012",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 1820,
-    "yellowCards": 4,
-    "redCards": 1,
-    "fouls": null,
-    "initialDivision": 3,
-    "comparisonGroup": "es-2026-tier3-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "deportivo-fabril-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1876,
@@ -143,7 +121,18 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-fabril-2026-014",
+    "playerCatalogId": "deportivo-fabril-2026-012",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1820,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "deportivo-fabril-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1494,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-fabril-2026-015",
+    "playerCatalogId": "deportivo-fabril-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1049,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-fabril-2026-016",
+    "playerCatalogId": "deportivo-fabril-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 737,
@@ -176,11 +165,22 @@
     "comparisonGroup": "es-2026-tier3-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-fabril-2026-017",
+    "playerCatalogId": "deportivo-fabril-2026-016",
     "position": "M",
     "baseBehavior": null,
-    "minutes": 72,
-    "yellowCards": 0,
+    "minutes": 647,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 3,
+    "comparisonGroup": "es-2026-tier3-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "deportivo-fabril-2026-017",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2803,
+    "yellowCards": 7,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -223,8 +223,8 @@
     "playerCatalogId": "deportivo-fabril-2026-021",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1324,
-    "yellowCards": 4,
+    "minutes": 1703,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,
@@ -234,8 +234,8 @@
     "playerCatalogId": "deportivo-fabril-2026-022",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 1021,
-    "yellowCards": 1,
+    "minutes": 1324,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 3,

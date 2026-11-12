@@ -9,7 +9,7 @@
   "tieBreakPriority": 153,
   "historicalRanking": {
     "rating": 66.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,6 +66,14 @@
     },
     {
       "id": "cd-atletico-paso-2026-005",
+      "name": "Omar Jaiteh",
+      "position": "D",
+      "nationality": "GM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-paso-2026-006",
       "name": "Aridane Hernández",
       "position": "D",
       "nationality": "ES",
@@ -73,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-006",
+      "id": "cd-atletico-paso-2026-007",
       "name": "Ángel López",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-007",
+      "id": "cd-atletico-paso-2026-008",
       "name": "Izan Muñoz",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-008",
+      "id": "cd-atletico-paso-2026-009",
       "name": "Carlos Barreda",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-009",
+      "id": "cd-atletico-paso-2026-010",
       "name": "Izan Hernández",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-010",
+      "id": "cd-atletico-paso-2026-011",
       "name": "Matías Pezzolesi",
       "position": "D",
       "nationality": "AR",
@@ -113,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-011",
+      "id": "cd-atletico-paso-2026-012",
       "name": "Fran Rivera",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-012",
+      "id": "cd-atletico-paso-2026-013",
       "name": "Álex Ortolà",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-013",
+      "id": "cd-atletico-paso-2026-014",
       "name": "Nili Perdomo",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-014",
+      "id": "cd-atletico-paso-2026-015",
       "name": "Fran Gómez",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-015",
+      "id": "cd-atletico-paso-2026-016",
       "name": "Enrique Castaño",
       "position": "M",
       "nationality": "ES",
@@ -153,16 +161,8 @@
       "isStar": false
     },
     {
-      "id": "cd-atletico-paso-2026-016",
-      "name": "Samuel Casais",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "cd-atletico-paso-2026-017",
-      "name": "Guillermo Roque",
+      "name": "Samuel Casais",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-atletico-paso-2026-019",

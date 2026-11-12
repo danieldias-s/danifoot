@@ -9,7 +9,7 @@
   "tieBreakPriority": 121,
   "historicalRanking": {
     "rating": 69.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,14 +58,6 @@
     },
     {
       "id": "cd-castellon-b-2026-004",
-      "name": "Andrés Caro",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-b-2026-005",
       "name": "Iago Parente",
       "position": "D",
       "nationality": "ES",
@@ -73,8 +65,16 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-006",
+      "id": "cd-castellon-b-2026-005",
       "name": "Dennis Almiñana",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-b-2026-006",
+      "name": "Andrés Caro",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -118,7 +118,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-castellon-b-2026-012",
@@ -162,14 +162,6 @@
     },
     {
       "id": "cd-castellon-b-2026-017",
-      "name": "Jae-hyeon Lee",
-      "position": "M",
-      "nationality": "KR",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-castellon-b-2026-018",
       "name": "Miguel Ferrer",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-019",
+      "id": "cd-castellon-b-2026-018",
       "name": "Nico Font",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-020",
+      "id": "cd-castellon-b-2026-019",
       "name": "Jacobo de Oro",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-021",
+      "id": "cd-castellon-b-2026-020",
       "name": "Jaime Pérez",
       "position": "A",
       "nationality": "ES",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-022",
+      "id": "cd-castellon-b-2026-021",
       "name": "Fer Martínez",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +201,18 @@
       "isStar": false
     },
     {
-      "id": "cd-castellon-b-2026-023",
+      "id": "cd-castellon-b-2026-022",
       "name": "Derek Cuevas",
       "position": "A",
       "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-castellon-b-2026-023",
+      "name": "Julián Rodríguez",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

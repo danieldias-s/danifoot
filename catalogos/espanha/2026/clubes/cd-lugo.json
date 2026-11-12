@@ -9,7 +9,7 @@
   "tieBreakPriority": 42,
   "historicalRanking": {
     "rating": 76.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,14 +50,6 @@
     },
     {
       "id": "cd-lugo-2026-003",
-      "name": "Jorge Candal",
-      "position": "G",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-lugo-2026-004",
       "name": "Hugo Pascual",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +57,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-005",
+      "id": "cd-lugo-2026-004",
       "name": "Rufino Lucero",
       "position": "D",
       "nationality": "AR",
@@ -73,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-006",
+      "id": "cd-lugo-2026-005",
       "name": "Simón Luca Pérez",
       "position": "D",
       "nationality": "ES",
@@ -81,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-007",
+      "id": "cd-lugo-2026-006",
       "name": "Pol Moreno",
       "position": "D",
       "nationality": "ES",
@@ -89,7 +81,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-008",
+      "id": "cd-lugo-2026-007",
       "name": "Ibaider Garriz",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +89,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-009",
+      "id": "cd-lugo-2026-008",
       "name": "Kike Hermoso",
       "position": "D",
       "nationality": "ES",
@@ -105,7 +97,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-010",
+      "id": "cd-lugo-2026-009",
       "name": "Pere Haro",
       "position": "D",
       "nationality": "ES",
@@ -113,15 +105,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-011",
-      "name": "Achore Sánchez",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-lugo-2026-012",
+      "id": "cd-lugo-2026-010",
       "name": "Pablo Parrilla",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-013",
+      "id": "cd-lugo-2026-011",
       "name": "Guille Berzal",
       "position": "M",
       "nationality": "ES",
@@ -137,15 +121,15 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-014",
+      "id": "cd-lugo-2026-012",
       "name": "Mario Nájera",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "cd-lugo-2026-015",
+      "id": "cd-lugo-2026-013",
       "name": "Kevin Presa",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-016",
+      "id": "cd-lugo-2026-014",
       "name": "Alberto Ulloa",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-017",
+      "id": "cd-lugo-2026-015",
       "name": "Antonio Perera",
       "position": "M",
       "nationality": "ES",
@@ -169,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-018",
+      "id": "cd-lugo-2026-016",
       "name": "Chiqui",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +161,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-019",
+      "id": "cd-lugo-2026-017",
       "name": "Arturo Palma",
       "position": "A",
       "nationality": "MX",
@@ -185,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-020",
+      "id": "cd-lugo-2026-018",
       "name": "Álex Costa",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-021",
+      "id": "cd-lugo-2026-019",
       "name": "Álex Gallar",
       "position": "A",
       "nationality": "ES",
@@ -201,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-022",
+      "id": "cd-lugo-2026-020",
       "name": "Alan Godoy",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +193,26 @@
       "isStar": false
     },
     {
-      "id": "cd-lugo-2026-023",
+      "id": "cd-lugo-2026-021",
+      "name": "Mo Dauda",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-022",
       "name": "Tornike Morchiladze",
       "position": "A",
       "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-023",
+      "name": "Mateo Muñoz",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

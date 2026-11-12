@@ -9,7 +9,7 @@
   "tieBreakPriority": 160,
   "historicalRanking": {
     "rating": 66.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -105,14 +105,6 @@
     },
     {
       "id": "sd-logrones-2026-010",
-      "name": "René Reyes",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sd-logrones-2026-011",
       "name": "Jaime Requés",
       "position": "M",
       "nationality": "ES",
@@ -120,8 +112,16 @@
       "isStar": false
     },
     {
+      "id": "sd-logrones-2026-011",
+      "name": "René Reyes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
       "id": "sd-logrones-2026-012",
-      "name": "Oscar Caro",
+      "name": "Unai Ayensa",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -129,7 +129,7 @@
     },
     {
       "id": "sd-logrones-2026-013",
-      "name": "Unai Ayensa",
+      "name": "Oscar Caro",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

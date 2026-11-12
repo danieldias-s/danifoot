@@ -234,7 +234,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2467,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 11
       },
       "index": null,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1299,
+        "minutes": 1554,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -271,9 +271,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1554,
+        "minutes": 1299,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -347,9 +347,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2056,
+        "minutes": 2386,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -366,9 +366,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2386,
+        "minutes": 2056,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 4,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1741,
+        "minutes": 1853,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 4,
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1447,
+        "minutes": 1741,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 4,
@@ -443,7 +443,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 63,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 0
       },
       "index": null,

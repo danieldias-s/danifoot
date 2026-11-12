@@ -9,7 +9,7 @@
   "tieBreakPriority": 157,
   "historicalRanking": {
     "rating": 66.5,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -64,7 +64,7 @@
     },
     {
       "id": "atletico-antoniano-2026-005",
-      "name": "Antonio Fernández",
+      "name": "Álvaro Caro",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -72,7 +72,7 @@
     },
     {
       "id": "atletico-antoniano-2026-006",
-      "name": "Pedro Melli",
+      "name": "Antonio Fernández",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -80,7 +80,7 @@
     },
     {
       "id": "atletico-antoniano-2026-007",
-      "name": "Álvaro Caro",
+      "name": "Pedro Melli",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -152,22 +152,14 @@
     },
     {
       "id": "atletico-antoniano-2026-016",
-      "name": "Rodrigo Márquez",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "atletico-antoniano-2026-017",
       "name": "Pablo Gálvez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "atletico-antoniano-2026-018",
+      "id": "atletico-antoniano-2026-017",
       "name": "Michael Makuemimo",
       "position": "A",
       "nationality": "FR",
@@ -175,7 +167,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-antoniano-2026-019",
+      "id": "atletico-antoniano-2026-018",
       "name": "Nacho Cordero",
       "position": "A",
       "nationality": "ES",
@@ -183,7 +175,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-antoniano-2026-020",
+      "id": "atletico-antoniano-2026-019",
       "name": "Juan Almeida",
       "position": "A",
       "nationality": "ES",
@@ -191,7 +183,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-antoniano-2026-021",
+      "id": "atletico-antoniano-2026-020",
       "name": "Pablo Arana",
       "position": "A",
       "nationality": "ES",
@@ -199,7 +191,7 @@
       "isStar": false
     },
     {
-      "id": "atletico-antoniano-2026-022",
+      "id": "atletico-antoniano-2026-021",
       "name": "Álvaro González",
       "position": "A",
       "nationality": "ES",
@@ -207,8 +199,16 @@
       "isStar": false
     },
     {
-      "id": "atletico-antoniano-2026-023",
+      "id": "atletico-antoniano-2026-022",
       "name": "Nando Raposo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-023",
+      "name": "Ale Rico",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -120,7 +120,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2791,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
@@ -233,9 +233,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2711,
-        "redCards": 1,
-        "yellowCards": 8
+        "minutes": 2811,
+        "redCards": 0,
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 3,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2811,
-        "redCards": 0,
-        "yellowCards": 7
+        "minutes": 2711,
+        "redCards": 1,
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 3,
@@ -291,7 +291,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1681,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -347,6 +347,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2331,
+        "redCards": 0,
+        "yellowCards": 7
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "cf-rayo-majadahonda-2026-017",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2275,
         "redCards": 0,
         "yellowCards": 4
@@ -354,7 +373,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cf-rayo-majadahonda-2026-017",
+      "playerCatalogId": "cf-rayo-majadahonda-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,25 +392,6 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cf-rayo-majadahonda-2026-018",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2331,
-        "redCards": 0,
-        "yellowCards": 7
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
       "playerCatalogId": "cf-rayo-majadahonda-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -404,9 +404,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 751,
+        "minutes": 906,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 661,
+        "minutes": 817,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 1
       },
       "index": null,
       "initialDivision": 3,
@@ -442,9 +442,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 362,
+        "minutes": 661,
         "redCards": 0,
-        "yellowCards": 1
+        "yellowCards": 4
       },
       "index": null,
       "initialDivision": 3,

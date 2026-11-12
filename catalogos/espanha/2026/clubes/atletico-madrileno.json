@@ -9,7 +9,7 @@
   "tieBreakPriority": 53,
   "historicalRanking": {
     "rating": 74.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -172,11 +172,11 @@
       "position": "A",
       "nationality": "FR",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "atletico-madrileno-2026-019",
-      "name": "Miguel Cubo",
+      "name": "Álvaro Santos",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -184,6 +184,14 @@
     },
     {
       "id": "atletico-madrileno-2026-020",
+      "name": "Miguel Cubo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "atletico-madrileno-2026-021",
       "name": "Koke Mota",
       "position": "A",
       "nationality": "ES",
@@ -191,16 +199,8 @@
       "isStar": false
     },
     {
-      "id": "atletico-madrileno-2026-021",
-      "name": "Marc Domènech",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "atletico-madrileno-2026-022",
-      "name": "Álvaro Santos",
+      "name": "Marc Domènech",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

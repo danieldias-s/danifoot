@@ -9,7 +9,7 @@
   "tieBreakPriority": 100,
   "historicalRanking": {
     "rating": 70.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -74,7 +74,7 @@
     },
     {
       "id": "cd-teruel-2026-006",
-      "name": "Goyo Medina",
+      "name": "Pablo Felipe",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "cd-teruel-2026-007",
-      "name": "Pablo Felipe",
+      "name": "Goyo Medina",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -162,7 +162,7 @@
     },
     {
       "id": "cd-teruel-2026-017",
-      "name": "Sergio Moreno",
+      "name": "Edu Gallardo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -170,7 +170,7 @@
     },
     {
       "id": "cd-teruel-2026-018",
-      "name": "Edu Gallardo",
+      "name": "Sergio Moreno",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "CV",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-teruel-2026-020",

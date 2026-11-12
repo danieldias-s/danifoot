@@ -9,7 +9,7 @@
   "tieBreakPriority": 87,
   "historicalRanking": {
     "rating": 71.4,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "sd-amorebieta-2026-003",
-      "name": "Javier Entreca",
+      "name": "Joseba Muguruza",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -58,7 +58,7 @@
     },
     {
       "id": "sd-amorebieta-2026-004",
-      "name": "Joseba Muguruza",
+      "name": "Javier Entreca",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -142,7 +142,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "sd-amorebieta-2026-015",

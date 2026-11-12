@@ -9,7 +9,7 @@
   "tieBreakPriority": 64,
   "historicalRanking": {
     "rating": 73.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,17 +58,17 @@
     },
     {
       "id": "cd-extremadura-2026-004",
-      "name": "Ismael Bekhoucha",
+      "name": "Álex Macías",
       "position": "D",
-      "nationality": "MA",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-extremadura-2026-005",
-      "name": "Álex Macías",
+      "name": "Ismael Bekhoucha",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
@@ -150,7 +150,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-extremadura-2026-016",
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-extremadura-2026-018",
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-extremadura-2026-020",

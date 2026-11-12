@@ -82,7 +82,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3302,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 5
       },
       "index": null,
@@ -100,9 +100,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2587,
+        "minutes": 2706,
         "redCards": 0,
-        "yellowCards": 9
+        "yellowCards": 10
       },
       "index": null,
       "initialDivision": 3,
@@ -138,6 +138,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2587,
+        "redCards": 0,
+        "yellowCards": 9
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "ue-sant-andreu-2026-006",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 2505,
         "redCards": 1,
         "yellowCards": 8
@@ -145,7 +164,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-006",
+      "playerCatalogId": "ue-sant-andreu-2026-007",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -164,7 +183,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-007",
+      "playerCatalogId": "ue-sant-andreu-2026-008",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -183,7 +202,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-008",
+      "playerCatalogId": "ue-sant-andreu-2026-009",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -202,7 +221,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-009",
+      "playerCatalogId": "ue-sant-andreu-2026-010",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -221,7 +240,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-010",
+      "playerCatalogId": "ue-sant-andreu-2026-011",
       "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -240,25 +259,6 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-011",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2553,
-        "redCards": 0,
-        "yellowCards": 5
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
       "playerCatalogId": "ue-sant-andreu-2026-012",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -272,7 +272,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2556,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 10
       },
       "index": null,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2020,
+        "minutes": 2553,
         "redCards": 0,
-        "yellowCards": 8
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -328,6 +328,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 2020,
+        "redCards": 0,
+        "yellowCards": 8
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "ue-sant-andreu-2026-016",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 1592,
         "redCards": 0,
         "yellowCards": 1
@@ -335,7 +354,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-016",
+      "playerCatalogId": "ue-sant-andreu-2026-017",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -354,7 +373,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-017",
+      "playerCatalogId": "ue-sant-andreu-2026-018",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -373,7 +392,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-018",
+      "playerCatalogId": "ue-sant-andreu-2026-019",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +411,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-019",
+      "playerCatalogId": "ue-sant-andreu-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,7 +430,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-020",
+      "playerCatalogId": "ue-sant-andreu-2026-021",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -430,7 +449,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-021",
+      "playerCatalogId": "ue-sant-andreu-2026-022",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -445,25 +464,6 @@
         "minutes": 1483,
         "redCards": 0,
         "yellowCards": 3
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "ue-sant-andreu-2026-022",
-      "position": "A",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 597,
-        "redCards": 1,
-        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,

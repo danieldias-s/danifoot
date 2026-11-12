@@ -81,15 +81,15 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 0,
+        "minutes": 3330,
         "redCards": 0,
-        "yellowCards": 0
+        "yellowCards": 6
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
       "playerCatalogId": "cd-coria-2026-003",
-      "position": "G",
+      "position": "D",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
     },
@@ -195,9 +195,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1992,
+        "minutes": 2086,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 3,
@@ -214,9 +214,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1800,
+        "minutes": 1992,
         "redCards": 0,
-        "yellowCards": 4
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 3,
@@ -252,14 +252,33 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2653,
-        "redCards": 1,
-        "yellowCards": 6
+        "minutes": 2683,
+        "redCards": 0,
+        "yellowCards": 9
       },
       "index": null,
       "initialDivision": 3,
       "percentile": null,
       "playerCatalogId": "cd-coria-2026-012",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier3-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2653,
+        "redCards": 0,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 3,
+      "percentile": null,
+      "playerCatalogId": "cd-coria-2026-013",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 3,
       "percentile": null,
-      "playerCatalogId": "cd-coria-2026-013",
+      "playerCatalogId": "cd-coria-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -293,25 +312,6 @@
         "minutes": 2402,
         "redCards": 0,
         "yellowCards": 4
-      },
-      "index": null,
-      "initialDivision": 3,
-      "percentile": null,
-      "playerCatalogId": "cd-coria-2026-014",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier3-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 2683,
-        "redCards": 0,
-        "yellowCards": 9
       },
       "index": null,
       "initialDivision": 3,
@@ -404,7 +404,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1060,
+        "minutes": 1133,
         "redCards": 1,
         "yellowCards": 3
       },
@@ -423,7 +423,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1133,
+        "minutes": 1060,
         "redCards": 1,
         "yellowCards": 3
       },

@@ -9,7 +9,7 @@
   "tieBreakPriority": 52,
   "historicalRanking": {
     "rating": 74.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -118,7 +118,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ad-ceuta-fc-2026-012",
@@ -162,14 +162,30 @@
     },
     {
       "id": "ad-ceuta-fc-2026-017",
-      "name": "Gabriel Okoro",
-      "position": "M",
-      "nationality": "NG",
+      "name": "Alex Camacho",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ad-ceuta-fc-2026-018",
+      "name": "Kialy Koné",
+      "position": "A",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-019",
+      "name": "Anuar",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-020",
       "name": "Umaru Konaré",
       "position": "A",
       "nationality": "ES",
@@ -177,15 +193,7 @@
       "isStar": false
     },
     {
-      "id": "ad-ceuta-fc-2026-019",
-      "name": "Cedric Teguia",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ad-ceuta-fc-2026-020",
+      "id": "ad-ceuta-fc-2026-021",
       "name": "Jordi Escobar",
       "position": "A",
       "nationality": "ES",
@@ -193,26 +201,18 @@
       "isStar": false
     },
     {
-      "id": "ad-ceuta-fc-2026-021",
-      "name": "Kenneth Mamah",
-      "position": "A",
-      "nationality": "NG",
-      "behavior": null,
-      "isStar": false
-    },
-    {
       "id": "ad-ceuta-fc-2026-022",
-      "name": "Edgar Sevikyan",
+      "name": "Cedric Teguia",
       "position": "A",
-      "nationality": "AM",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "ad-ceuta-fc-2026-023",
-      "name": "Omar Sadik",
+      "name": "Kenneth Mamah",
       "position": "A",
-      "nationality": "MA",
+      "nationality": "NG",
       "behavior": null,
       "isStar": false
     }

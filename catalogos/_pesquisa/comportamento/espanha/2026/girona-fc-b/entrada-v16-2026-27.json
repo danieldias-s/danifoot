@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "girona-fc-b-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "girona-fc-b-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2351,
@@ -121,18 +110,18 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-012",
+    "playerCatalogId": "girona-fc-b-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1763,
     "yellowCards": 9,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-013",
+    "playerCatalogId": "girona-fc-b-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 164,
@@ -143,10 +132,21 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-014",
+    "playerCatalogId": "girona-fc-b-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 46,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "girona-fc-b-2026-014",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 0,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
@@ -166,28 +166,6 @@
   },
   {
     "playerCatalogId": "girona-fc-b-2026-016",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "girona-fc-b-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "girona-fc-b-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1842,
@@ -198,7 +176,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-019",
+    "playerCatalogId": "girona-fc-b-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1168,
@@ -209,7 +187,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-020",
+    "playerCatalogId": "girona-fc-b-2026-018",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1066,
@@ -220,10 +198,32 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "girona-fc-b-2026-021",
+    "playerCatalogId": "girona-fc-b-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 171,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "girona-fc-b-2026-020",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 156,
+    "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "girona-fc-b-2026-021",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 109,
     "yellowCards": 0,
     "redCards": 0,
     "fouls": null,

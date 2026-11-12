@@ -139,7 +139,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 3861,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 8
       },
       "index": null,
@@ -176,9 +176,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2657,
-        "redCards": 2,
-        "yellowCards": 11
+        "minutes": 2845,
+        "redCards": 0,
+        "yellowCards": 8
       },
       "index": null,
       "initialDivision": 1,
@@ -214,9 +214,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2845,
-        "redCards": 0,
-        "yellowCards": 8
+        "minutes": 2657,
+        "redCards": 1,
+        "yellowCards": 11
       },
       "index": null,
       "initialDivision": 1,
@@ -290,9 +290,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1715,
+        "minutes": 1843,
         "redCards": 0,
-        "yellowCards": 5
+        "yellowCards": 3
       },
       "index": null,
       "initialDivision": 1,
@@ -309,9 +309,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1843,
+        "minutes": 1715,
         "redCards": 0,
-        "yellowCards": 3
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 1,
@@ -347,25 +347,6 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 750,
-        "redCards": 0,
-        "yellowCards": 2
-      },
-      "index": null,
-      "initialDivision": 1,
-      "percentile": null,
-      "playerCatalogId": "atletico-de-madrid-2026-017",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier1-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
         "minutes": 3803,
         "redCards": 0,
         "yellowCards": 5
@@ -373,7 +354,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "atletico-de-madrid-2026-018",
+      "playerCatalogId": "atletico-de-madrid-2026-017",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -392,7 +373,7 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
-      "playerCatalogId": "atletico-de-madrid-2026-019",
+      "playerCatalogId": "atletico-de-madrid-2026-018",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -411,6 +392,25 @@
       "index": null,
       "initialDivision": 1,
       "percentile": null,
+      "playerCatalogId": "atletico-de-madrid-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier1-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2816,
+        "redCards": 1,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
       "playerCatalogId": "atletico-de-madrid-2026-020",
       "position": "A",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -423,9 +423,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2305,
+        "minutes": 2621,
         "redCards": 0,
-        "yellowCards": 9
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 1,
@@ -461,9 +461,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 2816,
-        "redCards": 1,
-        "yellowCards": 5
+        "minutes": 2305,
+        "redCards": 0,
+        "yellowCards": 9
       },
       "index": null,
       "initialDivision": 1,

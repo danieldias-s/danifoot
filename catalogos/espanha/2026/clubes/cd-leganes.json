@@ -9,7 +9,7 @@
   "tieBreakPriority": 43,
   "historicalRanking": {
     "rating": 75.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "cd-leganes-2026-004",
-      "name": "Lalo Aguilar",
+      "name": "Álvaro Tejero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "cd-leganes-2026-005",
-      "name": "Álvaro Tejero",
+      "name": "Lalo Aguilar",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,14 +90,6 @@
     },
     {
       "id": "cd-leganes-2026-008",
-      "name": "Rubén Peña",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-leganes-2026-009",
       "name": "Enric Franquesa",
       "position": "D",
       "nationality": "ES",
@@ -105,15 +97,15 @@
       "isStar": false
     },
     {
-      "id": "cd-leganes-2026-010",
-      "name": "Rubén Pulido",
+      "id": "cd-leganes-2026-009",
+      "name": "Rubén Peña",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "cd-leganes-2026-011",
+      "id": "cd-leganes-2026-010",
       "name": "Miguel Atienza",
       "position": "M",
       "nationality": "ES",
@@ -121,10 +113,18 @@
       "isStar": false
     },
     {
-      "id": "cd-leganes-2026-012",
+      "id": "cd-leganes-2026-011",
       "name": "Amadou Diawara",
       "position": "M",
       "nationality": "GN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-leganes-2026-012",
+      "name": "Zico Buurmeester",
+      "position": "M",
+      "nationality": "NL",
       "behavior": null,
       "isStar": false
     },
@@ -146,14 +146,6 @@
     },
     {
       "id": "cd-leganes-2026-015",
-      "name": "Zico Buurmeester",
-      "position": "M",
-      "nationality": "NL",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "cd-leganes-2026-016",
       "name": "Andrés Campos",
       "position": "M",
       "nationality": "ES",
@@ -161,16 +153,24 @@
       "isStar": false
     },
     {
-      "id": "cd-leganes-2026-017",
+      "id": "cd-leganes-2026-016",
       "name": "Naim García",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
+    },
+    {
+      "id": "cd-leganes-2026-017",
+      "name": "Álex Millán",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
     },
     {
       "id": "cd-leganes-2026-018",
-      "name": "Álex Millán",
+      "name": "Álvaro Morata",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,7 +186,7 @@
     },
     {
       "id": "cd-leganes-2026-020",
-      "name": "Álvaro Morata",
+      "name": "Álex Sancris",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -202,17 +202,17 @@
     },
     {
       "id": "cd-leganes-2026-022",
-      "name": "Álex Sancris",
+      "name": "Ismaël Gharbi",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "TN",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "cd-leganes-2026-023",
-      "name": "Ismaël Gharbi",
+      "name": "Sule El Haddadi",
       "position": "A",
-      "nationality": "TN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }

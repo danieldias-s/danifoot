@@ -9,7 +9,7 @@
   "tieBreakPriority": 169,
   "historicalRanking": {
     "rating": 65.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -178,7 +178,7 @@
     },
     {
       "id": "cd-arnedo-2026-019",
-      "name": "Mario García",
+      "name": "Khitthi",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -186,7 +186,7 @@
     },
     {
       "id": "cd-arnedo-2026-020",
-      "name": "Unai Martínez",
+      "name": "Mario García",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "cd-arnedo-2026-021",
-      "name": "Khitthi",
+      "name": "Unai Martínez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -100,17 +100,6 @@
   },
   {
     "playerCatalogId": "atletico-central-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "atletico-central-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1838,
@@ -121,7 +110,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-012",
+    "playerCatalogId": "atletico-central-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1375,
@@ -132,7 +121,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-013",
+    "playerCatalogId": "atletico-central-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 420,
@@ -143,7 +132,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-014",
+    "playerCatalogId": "atletico-central-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 227,
@@ -154,7 +143,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-015",
+    "playerCatalogId": "atletico-central-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 38,
@@ -165,7 +154,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-016",
+    "playerCatalogId": "atletico-central-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 32,
@@ -176,11 +165,22 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "atletico-central-2026-017",
+    "playerCatalogId": "atletico-central-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 0,
     "yellowCards": 0,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "atletico-central-2026-017",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 874,
+    "yellowCards": 1,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -245,8 +245,8 @@
     "playerCatalogId": "atletico-central-2026-023",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 299,
-    "yellowCards": 1,
+    "minutes": 29,
+    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,

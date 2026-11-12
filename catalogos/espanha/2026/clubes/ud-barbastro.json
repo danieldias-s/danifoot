@@ -9,7 +9,7 @@
   "tieBreakPriority": 134,
   "historicalRanking": {
     "rating": 68.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -146,7 +146,7 @@
     },
     {
       "id": "ud-barbastro-2026-015",
-      "name": "Diego Royo",
+      "name": "Diego Tena",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "ud-barbastro-2026-016",
-      "name": "Diego Tena",
+      "name": "Diego Royo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-barbastro-2026-020",

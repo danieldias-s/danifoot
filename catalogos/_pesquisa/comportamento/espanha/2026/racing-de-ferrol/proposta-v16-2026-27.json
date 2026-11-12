@@ -139,7 +139,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 2155,
-        "redCards": 2,
+        "redCards": 1,
         "yellowCards": 7
       },
       "index": null,
@@ -157,8 +157,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1370,
-        "redCards": 1,
+        "minutes": 1473,
+        "redCards": 0,
         "yellowCards": 4
       },
       "index": null,
@@ -176,8 +176,8 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1473,
-        "redCards": 0,
+        "minutes": 1370,
+        "redCards": 1,
         "yellowCards": 4
       },
       "index": null,
@@ -234,7 +234,7 @@
       "historicalStatistics": {
         "fouls": null,
         "minutes": 1529,
-        "redCards": 1,
+        "redCards": 0,
         "yellowCards": 3
       },
       "index": null,
@@ -252,9 +252,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1210,
+        "minutes": 1222,
         "redCards": 0,
-        "yellowCards": 2
+        "yellowCards": 7
       },
       "index": null,
       "initialDivision": 3,
@@ -271,9 +271,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1222,
+        "minutes": 1210,
         "redCards": 0,
-        "yellowCards": 7
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,
@@ -366,9 +366,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1408,
-        "redCards": 1,
-        "yellowCards": 2
+        "minutes": 1456,
+        "redCards": 0,
+        "yellowCards": 5
       },
       "index": null,
       "initialDivision": 3,
@@ -385,9 +385,9 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 1456,
-        "redCards": 0,
-        "yellowCards": 5
+        "minutes": 1408,
+        "redCards": 1,
+        "yellowCards": 2
       },
       "index": null,
       "initialDivision": 3,

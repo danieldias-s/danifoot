@@ -233,7 +233,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 360,
+        "minutes": 390,
         "redCards": 0,
         "yellowCards": 2
       },
@@ -271,6 +271,25 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
+        "minutes": 726,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 4,
+      "percentile": null,
+      "playerCatalogId": "penya-deportiva-2026-013",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier4-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
         "minutes": 535,
         "redCards": 1,
         "yellowCards": 1
@@ -278,7 +297,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "penya-deportiva-2026-013",
+      "playerCatalogId": "penya-deportiva-2026-014",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -297,7 +316,7 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "penya-deportiva-2026-014",
+      "playerCatalogId": "penya-deportiva-2026-015",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
       "status": "REVISAO"
@@ -316,25 +335,6 @@
       "index": null,
       "initialDivision": 4,
       "percentile": null,
-      "playerCatalogId": "penya-deportiva-2026-015",
-      "position": "M",
-      "reason": "Dados ausentes ou menos de 900 minutos.",
-      "status": "REVISAO"
-    },
-    {
-      "baseBehavior": null,
-      "classification": "GAMEPLAY_ESTIMATE",
-      "comparisonGroup": "es-2026-tier4-tm-2025-26",
-      "effectiveBehaviorProposal": null,
-      "historicalStatistics": {
-        "fouls": null,
-        "minutes": 368,
-        "redCards": 0,
-        "yellowCards": 1
-      },
-      "index": null,
-      "initialDivision": 4,
-      "percentile": null,
       "playerCatalogId": "penya-deportiva-2026-016",
       "position": "M",
       "reason": "Dados ausentes ou menos de 900 minutos.",
@@ -347,7 +347,7 @@
       "effectiveBehaviorProposal": null,
       "historicalStatistics": {
         "fouls": null,
-        "minutes": 295,
+        "minutes": 368,
         "redCards": 0,
         "yellowCards": 1
       },

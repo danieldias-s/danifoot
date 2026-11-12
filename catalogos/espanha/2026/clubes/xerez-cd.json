@@ -9,7 +9,7 @@
   "tieBreakPriority": 97,
   "historicalRanking": {
     "rating": 70.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -57,7 +57,7 @@
     },
     {
       "id": "xerez-cd-2026-004",
-      "name": "Guille Campos",
+      "name": "Manu Galán",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -65,7 +65,7 @@
     },
     {
       "id": "xerez-cd-2026-005",
-      "name": "Manu Galán",
+      "name": "Guille Campos",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -81,7 +81,7 @@
     },
     {
       "id": "xerez-cd-2026-007",
-      "name": "Víctor López",
+      "name": "Josete Malagón",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "xerez-cd-2026-008",
-      "name": "Josete Malagón",
+      "name": "Víctor López",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -113,7 +113,7 @@
     },
     {
       "id": "xerez-cd-2026-011",
-      "name": "Bittor Isuskiza",
+      "name": "Ismael Gutiérrez",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -121,7 +121,7 @@
     },
     {
       "id": "xerez-cd-2026-012",
-      "name": "Ismael Gutiérrez",
+      "name": "Bittor Isuskiza",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -157,7 +157,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "xerez-cd-2026-017",
@@ -169,7 +169,7 @@
     },
     {
       "id": "xerez-cd-2026-018",
-      "name": "Zelu",
+      "name": "Óscar Lorenzo",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -177,7 +177,7 @@
     },
     {
       "id": "xerez-cd-2026-019",
-      "name": "Chuma",
+      "name": "Zelu",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -185,7 +185,7 @@
     },
     {
       "id": "xerez-cd-2026-020",
-      "name": "Julito Martínez",
+      "name": "Chuma",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -193,7 +193,7 @@
     },
     {
       "id": "xerez-cd-2026-021",
-      "name": "Óscar Lorenzo",
+      "name": "Julito Martínez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -9,7 +9,7 @@
   "tieBreakPriority": 123,
   "historicalRanking": {
     "rating": 69.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -96,7 +96,7 @@
     },
     {
       "id": "club-portugalete-2026-009",
-      "name": "Gorka Tapiador",
+      "name": "Unai Lechosa",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -104,7 +104,7 @@
     },
     {
       "id": "club-portugalete-2026-010",
-      "name": "Unai Lechosa",
+      "name": "Gorka Tapiador",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -116,7 +116,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "club-portugalete-2026-012",
@@ -152,7 +152,7 @@
     },
     {
       "id": "club-portugalete-2026-016",
-      "name": "Unax Odriozola",
+      "name": "Ander Honrado",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -160,7 +160,7 @@
     },
     {
       "id": "club-portugalete-2026-017",
-      "name": "Yeray Cuello",
+      "name": "Unax Odriozola",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -168,7 +168,7 @@
     },
     {
       "id": "club-portugalete-2026-018",
-      "name": "Iker Llamazares",
+      "name": "Yeray Cuello",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -176,7 +176,7 @@
     },
     {
       "id": "club-portugalete-2026-019",
-      "name": "Ander Honrado",
+      "name": "Iker Llamazares",
       "position": "M",
       "nationality": "ES",
       "behavior": null,

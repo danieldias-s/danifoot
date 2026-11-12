@@ -9,7 +9,7 @@
   "tieBreakPriority": 111,
   "historicalRanking": {
     "rating": 69.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -158,7 +158,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-alcoyano-2026-017",
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cd-alcoyano-2026-018",
@@ -186,7 +186,7 @@
     },
     {
       "id": "cd-alcoyano-2026-020",
-      "name": "Kenneth Soler",
+      "name": "Sergio Chinchilla",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -194,7 +194,7 @@
     },
     {
       "id": "cd-alcoyano-2026-021",
-      "name": "Sergio Chinchilla",
+      "name": "Kenneth Soler",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

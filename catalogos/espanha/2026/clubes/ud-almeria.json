@@ -9,7 +9,7 @@
   "tieBreakPriority": 20,
   "historicalRanking": {
     "rating": 82.7,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -116,7 +116,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "ud-almeria-2026-012",
@@ -144,14 +144,6 @@
     },
     {
       "id": "ud-almeria-2026-015",
-      "name": "Javi Muñoz",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "ud-almeria-2026-016",
       "name": "Mikel Vesga",
       "position": "M",
       "nationality": "ES",
@@ -159,15 +151,15 @@
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-017",
-      "name": "Quim Junyent",
+      "id": "ud-almeria-2026-016",
+      "name": "Javi Muñoz",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-018",
+      "id": "ud-almeria-2026-017",
       "name": "Adrián Embarba",
       "position": "A",
       "nationality": "ES",
@@ -175,7 +167,7 @@
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-019",
+      "id": "ud-almeria-2026-018",
       "name": "Miguel de la Fuente",
       "position": "A",
       "nationality": "ES",
@@ -183,7 +175,7 @@
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-020",
+      "id": "ud-almeria-2026-019",
       "name": "Álex Sola",
       "position": "A",
       "nationality": "ES",
@@ -191,15 +183,15 @@
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-021",
-      "name": "Léo Baptistão",
+      "id": "ud-almeria-2026-020",
+      "name": "Jon Morcillo",
       "position": "A",
-      "nationality": "BR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-022",
+      "id": "ud-almeria-2026-021",
       "name": "Brian Cipenga",
       "position": "A",
       "nationality": "CD",
@@ -207,10 +199,18 @@
       "isStar": false
     },
     {
-      "id": "ud-almeria-2026-023",
-      "name": "Jon Morcillo",
+      "id": "ud-almeria-2026-022",
+      "name": "Léo Baptistão",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-023",
+      "name": "Thalys",
+      "position": "A",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     }

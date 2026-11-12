@@ -9,7 +9,7 @@
   "tieBreakPriority": 131,
   "historicalRanking": {
     "rating": 68.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -112,7 +112,7 @@
     },
     {
       "id": "mijas-las-lagunas-2026-011",
-      "name": "José Manuel Lara",
+      "name": "Adri Peral",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -120,7 +120,7 @@
     },
     {
       "id": "mijas-las-lagunas-2026-012",
-      "name": "Adri Peral",
+      "name": "José Manuel Lara",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -136,17 +136,17 @@
     },
     {
       "id": "mijas-las-lagunas-2026-014",
-      "name": "Kanta Morihisa",
+      "name": "Manu López",
       "position": "M",
-      "nationality": "JP",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "mijas-las-lagunas-2026-015",
-      "name": "Manu López",
+      "name": "Kanta Morihisa",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "JP",
       "behavior": null,
       "isStar": false
     },
@@ -180,7 +180,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "mijas-las-lagunas-2026-020",

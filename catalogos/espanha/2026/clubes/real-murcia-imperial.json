@@ -9,7 +9,7 @@
   "tieBreakPriority": 167,
   "historicalRanking": {
     "rating": 65.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -57,17 +57,17 @@
     },
     {
       "id": "real-murcia-imperial-2026-004",
-      "name": "Kayode Adebayo",
+      "name": "Rubén Vila",
       "position": "D",
-      "nationality": "NG",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-murcia-imperial-2026-005",
-      "name": "Rubén Vila",
+      "name": "Kayode Adebayo",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "NG",
       "behavior": null,
       "isStar": false
     },
@@ -97,17 +97,17 @@
     },
     {
       "id": "real-murcia-imperial-2026-009",
-      "name": "Binjamin Doto",
-      "position": "D",
-      "nationality": "TG",
+      "name": "João Costa",
+      "position": "M",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "real-murcia-imperial-2026-010",
-      "name": "João Costa",
+      "name": "Carlos Torres",
       "position": "M",
-      "nationality": "BR",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -121,14 +121,6 @@
     },
     {
       "id": "real-murcia-imperial-2026-012",
-      "name": "Carlos Torres",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-murcia-imperial-2026-013",
       "name": "Joselu Alcaraz",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-014",
+      "id": "real-murcia-imperial-2026-013",
       "name": "Manu Lara",
       "position": "M",
       "nationality": "ES",
@@ -144,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-015",
+      "id": "real-murcia-imperial-2026-014",
       "name": "Hugo Porras",
       "position": "M",
       "nationality": "ES",
@@ -152,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-016",
+      "id": "real-murcia-imperial-2026-015",
       "name": "Aitor Sarabia",
       "position": "M",
       "nationality": "ES",
@@ -160,9 +152,17 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-017",
+      "id": "real-murcia-imperial-2026-016",
       "name": "Izan Segura",
       "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-murcia-imperial-2026-017",
+      "name": "Óscar Zorrilla",
+      "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
@@ -177,14 +177,6 @@
     },
     {
       "id": "real-murcia-imperial-2026-019",
-      "name": "Óscar Zorrilla",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "real-murcia-imperial-2026-020",
       "name": "Divine Yeboah",
       "position": "A",
       "nationality": "GH",
@@ -192,7 +184,7 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-021",
+      "id": "real-murcia-imperial-2026-020",
       "name": "Raúl Martínez",
       "position": "A",
       "nationality": "ES",
@@ -200,8 +192,16 @@
       "isStar": false
     },
     {
-      "id": "real-murcia-imperial-2026-022",
+      "id": "real-murcia-imperial-2026-021",
       "name": "Arturo Pedreño",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-murcia-imperial-2026-022",
+      "name": "Pablo Reyes",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

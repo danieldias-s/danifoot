@@ -9,7 +9,7 @@
   "tieBreakPriority": 59,
   "historicalRanking": {
     "rating": 74.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -90,6 +90,14 @@
     },
     {
       "id": "fc-cartagena-2026-008",
+      "name": "Amet Korça",
+      "position": "D",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-cartagena-2026-009",
       "name": "Marc Jurado",
       "position": "D",
       "nationality": "ES",
@@ -97,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-009",
+      "id": "fc-cartagena-2026-010",
       "name": "Grégory Kelo",
       "position": "D",
       "nationality": "FR",
@@ -105,18 +113,10 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-010",
+      "id": "fc-cartagena-2026-011",
       "name": "Adrián Corral",
       "position": "D",
       "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-cartagena-2026-011",
-      "name": "Javier Ajenjo",
-      "position": "M",
-      "nationality": "PL",
       "behavior": null,
       "isStar": false
     },
@@ -130,6 +130,14 @@
     },
     {
       "id": "fc-cartagena-2026-013",
+      "name": "Javier Ajenjo",
+      "position": "M",
+      "nationality": "PL",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "fc-cartagena-2026-014",
       "name": "Jean Jules",
       "position": "M",
       "nationality": "CM",
@@ -137,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-014",
+      "id": "fc-cartagena-2026-015",
       "name": "Pablo Clavería",
       "position": "M",
       "nationality": "ES",
@@ -145,18 +153,10 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-015",
+      "id": "fc-cartagena-2026-016",
       "name": "Boston Billups",
       "position": "M",
       "nationality": "MT",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-cartagena-2026-016",
-      "name": "Iker Abellán",
-      "position": "M",
-      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -166,7 +166,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "fc-cartagena-2026-018",
@@ -178,14 +178,6 @@
     },
     {
       "id": "fc-cartagena-2026-019",
-      "name": "Álex Guti",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "fc-cartagena-2026-020",
       "name": "Raúl Dacosta",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-021",
+      "id": "fc-cartagena-2026-020",
       "name": "Abdel Lah Mohamed",
       "position": "A",
       "nationality": "ES",
@@ -201,16 +193,24 @@
       "isStar": false
     },
     {
-      "id": "fc-cartagena-2026-022",
-      "name": "Rubén Richarte",
+      "id": "fc-cartagena-2026-021",
+      "name": "Álex Guti",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
+      "id": "fc-cartagena-2026-022",
+      "name": "Marcelo dos Santos",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
       "id": "fc-cartagena-2026-023",
-      "name": "Toni Villa",
+      "name": "Rubén Richarte",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

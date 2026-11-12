@@ -9,7 +9,7 @@
   "tieBreakPriority": 25,
   "historicalRanking": {
     "rating": 81.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -73,7 +73,7 @@
     },
     {
       "id": "burgos-cf-2026-006",
-      "name": "Sergio González",
+      "name": "Iván Martínez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -81,7 +81,7 @@
     },
     {
       "id": "burgos-cf-2026-007",
-      "name": "Ignasi Vilarrasa",
+      "name": "Sergio González",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -89,7 +89,7 @@
     },
     {
       "id": "burgos-cf-2026-008",
-      "name": "Brais Martínez",
+      "name": "Ignasi Vilarrasa",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -97,7 +97,7 @@
     },
     {
       "id": "burgos-cf-2026-009",
-      "name": "Oier Luengo",
+      "name": "Brais Martínez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -105,6 +105,14 @@
     },
     {
       "id": "burgos-cf-2026-010",
+      "name": "Oier Luengo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-011",
       "name": "Kévin Appin",
       "position": "M",
       "nationality": "MQ",
@@ -112,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "burgos-cf-2026-011",
+      "id": "burgos-cf-2026-012",
       "name": "Unai Vencedor",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "burgos-cf-2026-012",
+      "id": "burgos-cf-2026-013",
       "name": "José Gragera",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "burgos-cf-2026-013",
+      "id": "burgos-cf-2026-014",
       "name": "Saúl del Cerro",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "burgos-cf-2026-014",
+      "id": "burgos-cf-2026-015",
       "name": "Marcelo Expósito",
       "position": "M",
       "nationality": "ES",
@@ -144,18 +152,10 @@
       "isStar": false
     },
     {
-      "id": "burgos-cf-2026-015",
+      "id": "burgos-cf-2026-016",
       "name": "Mario Cantero",
       "position": "M",
       "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "burgos-cf-2026-016",
-      "name": "Santiago Lencina",
-      "position": "M",
-      "nationality": "AR",
       "behavior": null,
       "isStar": false
     },
@@ -173,7 +173,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "burgos-cf-2026-019",
@@ -209,7 +209,7 @@
     },
     {
       "id": "burgos-cf-2026-023",
-      "name": "Jon Karrikaburu",
+      "name": "Javi Llabrés",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

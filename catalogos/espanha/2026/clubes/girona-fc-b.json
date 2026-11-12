@@ -9,7 +9,7 @@
   "tieBreakPriority": 102,
   "historicalRanking": {
     "rating": 70.2,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -105,14 +105,6 @@
     },
     {
       "id": "girona-fc-b-2026-010",
-      "name": "Anartz Segurola",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "girona-fc-b-2026-011",
       "name": "Javi Sarasa",
       "position": "M",
       "nationality": "ES",
@@ -120,7 +112,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-012",
+      "id": "girona-fc-b-2026-011",
       "name": "Pol Trigueros",
       "position": "M",
       "nationality": "ES",
@@ -128,7 +120,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-013",
+      "id": "girona-fc-b-2026-012",
       "name": "Joan Raventós",
       "position": "M",
       "nationality": "ES",
@@ -136,7 +128,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-014",
+      "id": "girona-fc-b-2026-013",
       "name": "Aimar García",
       "position": "M",
       "nationality": "ES",
@@ -144,7 +136,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-015",
+      "id": "girona-fc-b-2026-014",
       "name": "Enric García",
       "position": "M",
       "nationality": "ES",
@@ -152,7 +144,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-016",
+      "id": "girona-fc-b-2026-015",
       "name": "Darío Frey",
       "position": "M",
       "nationality": "ES",
@@ -160,23 +152,15 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-017",
-      "name": "Ricard Artero",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "girona-fc-b-2026-018",
+      "id": "girona-fc-b-2026-016",
       "name": "Javi González",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "girona-fc-b-2026-019",
+      "id": "girona-fc-b-2026-017",
       "name": "Juan Arango",
       "position": "A",
       "nationality": "VE",
@@ -184,7 +168,7 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-020",
+      "id": "girona-fc-b-2026-018",
       "name": "Mohammed Hamony",
       "position": "A",
       "nationality": "MA",
@@ -192,10 +176,26 @@
       "isStar": false
     },
     {
-      "id": "girona-fc-b-2026-021",
+      "id": "girona-fc-b-2026-019",
       "name": "Adam El Mokhles",
       "position": "A",
       "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-020",
+      "name": "Lou White",
+      "position": "A",
+      "nationality": "CH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-021",
+      "name": "Toni López",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },

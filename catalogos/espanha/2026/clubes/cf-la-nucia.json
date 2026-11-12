@@ -9,7 +9,7 @@
   "tieBreakPriority": 150,
   "historicalRanking": {
     "rating": 66.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -74,7 +74,7 @@
     },
     {
       "id": "cf-la-nucia-2026-006",
-      "name": "Ferrán Zarzoso",
+      "name": "Jon Ander Amelibia",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "cf-la-nucia-2026-007",
-      "name": "Jon Ander Amelibia",
+      "name": "Ferrán Zarzoso",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -118,7 +118,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "cf-la-nucia-2026-012",

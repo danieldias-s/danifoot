@@ -36,9 +36,9 @@
     "playerCatalogId": "real-valladolid-2026-004",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2820,
-    "yellowCards": 11,
-    "redCards": 1,
+    "minutes": 2962,
+    "yellowCards": 8,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -47,9 +47,9 @@
     "playerCatalogId": "real-valladolid-2026-005",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2962,
-    "yellowCards": 8,
-    "redCards": 1,
+    "minutes": 2820,
+    "yellowCards": 11,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
@@ -89,28 +89,6 @@
   },
   {
     "playerCatalogId": "real-valladolid-2026-009",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 739,
-    "yellowCards": 1,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-valladolid-2026-010",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 511,
-    "yellowCards": 2,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-valladolid-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 3035,
@@ -121,7 +99,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-012",
+    "playerCatalogId": "real-valladolid-2026-010",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2744,
@@ -132,7 +110,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-013",
+    "playerCatalogId": "real-valladolid-2026-011",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2473,
@@ -143,7 +121,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-014",
+    "playerCatalogId": "real-valladolid-2026-012",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2392,
@@ -154,7 +132,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-015",
+    "playerCatalogId": "real-valladolid-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2293,
@@ -165,7 +143,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-016",
+    "playerCatalogId": "real-valladolid-2026-014",
+    "position": "M",
+    "baseBehavior": null,
+    "minutes": 1865,
+    "yellowCards": 10,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-valladolid-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 929,
@@ -176,18 +165,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 2,
-    "comparisonGroup": "es-2026-tier2-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "real-valladolid-2026-018",
+    "playerCatalogId": "real-valladolid-2026-016",
     "position": "A",
     "baseBehavior": null,
     "minutes": 3510,
@@ -198,7 +176,7 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-019",
+    "playerCatalogId": "real-valladolid-2026-017",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2602,
@@ -209,7 +187,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-020",
+    "playerCatalogId": "real-valladolid-2026-018",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 2459,
+    "yellowCards": 7,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-valladolid-2026-019",
     "position": "A",
     "baseBehavior": null,
     "minutes": 2095,
@@ -220,18 +209,18 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-021",
+    "playerCatalogId": "real-valladolid-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2006,
-    "yellowCards": 5,
+    "minutes": 1715,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 2,
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-022",
+    "playerCatalogId": "real-valladolid-2026-021",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1325,
@@ -242,10 +231,21 @@
     "comparisonGroup": "es-2026-tier2-tm-2025-26"
   },
   {
-    "playerCatalogId": "real-valladolid-2026-023",
+    "playerCatalogId": "real-valladolid-2026-022",
     "position": "A",
     "baseBehavior": null,
     "minutes": 1109,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 2,
+    "comparisonGroup": "es-2026-tier2-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "real-valladolid-2026-023",
+    "position": "A",
+    "baseBehavior": null,
+    "minutes": 756,
     "yellowCards": 3,
     "redCards": 0,
     "fouls": null,

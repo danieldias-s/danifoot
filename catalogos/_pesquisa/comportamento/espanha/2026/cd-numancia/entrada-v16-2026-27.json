@@ -25,8 +25,8 @@
     "playerCatalogId": "cd-numancia-2026-003",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 2474,
-    "yellowCards": 7,
+    "minutes": 2506,
+    "yellowCards": 4,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
@@ -36,15 +36,26 @@
     "playerCatalogId": "cd-numancia-2026-004",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1769,
-    "yellowCards": 4,
-    "redCards": 1,
+    "minutes": 2474,
+    "yellowCards": 7,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 4,
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
     "playerCatalogId": "cd-numancia-2026-005",
+    "position": "D",
+    "baseBehavior": null,
+    "minutes": 1769,
+    "yellowCards": 4,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 4,
+    "comparisonGroup": "es-2026-tier4-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "cd-numancia-2026-006",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1575,
@@ -55,7 +66,7 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-numancia-2026-006",
+    "playerCatalogId": "cd-numancia-2026-007",
     "position": "D",
     "baseBehavior": null,
     "minutes": 1266,
@@ -66,21 +77,10 @@
     "comparisonGroup": "es-2026-tier4-tm-2025-26"
   },
   {
-    "playerCatalogId": "cd-numancia-2026-007",
-    "position": "D",
-    "baseBehavior": null,
-    "minutes": 1211,
-    "yellowCards": 3,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 4,
-    "comparisonGroup": "es-2026-tier4-tm-2025-26"
-  },
-  {
     "playerCatalogId": "cd-numancia-2026-008",
     "position": "D",
     "baseBehavior": null,
-    "minutes": 1349,
+    "minutes": 1211,
     "yellowCards": 3,
     "redCards": 0,
     "fouls": null,

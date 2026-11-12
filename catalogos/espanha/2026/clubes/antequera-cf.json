@@ -9,7 +9,7 @@
   "tieBreakPriority": 54,
   "historicalRanking": {
     "rating": 74.8,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -90,7 +90,7 @@
     },
     {
       "id": "antequera-cf-2026-008",
-      "name": "Julio Martínez",
+      "name": "Iván Pérez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,7 +98,7 @@
     },
     {
       "id": "antequera-cf-2026-009",
-      "name": "Iván Pérez",
+      "name": "Julio Martínez",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -126,7 +126,7 @@
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "antequera-cf-2026-013",
@@ -138,17 +138,17 @@
     },
     {
       "id": "antequera-cf-2026-014",
-      "name": "Carlos Mangada",
+      "name": "Moha Bassele",
       "position": "M",
-      "nationality": "ES",
+      "nationality": "SN",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "antequera-cf-2026-015",
-      "name": "Moha Bassele",
+      "name": "Carlos Mangada",
       "position": "M",
-      "nationality": "SN",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -162,14 +162,6 @@
     },
     {
       "id": "antequera-cf-2026-017",
-      "name": "Drake Hadeed",
-      "position": "M",
-      "nationality": "AG",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "antequera-cf-2026-018",
       "name": "Agüero",
       "position": "A",
       "nationality": "ES",
@@ -177,7 +169,7 @@
       "isStar": false
     },
     {
-      "id": "antequera-cf-2026-019",
+      "id": "antequera-cf-2026-018",
       "name": "Adrià Gené",
       "position": "A",
       "nationality": "ES",
@@ -185,7 +177,7 @@
       "isStar": false
     },
     {
-      "id": "antequera-cf-2026-020",
+      "id": "antequera-cf-2026-019",
       "name": "Pablo Rodríguez",
       "position": "A",
       "nationality": "ES",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "antequera-cf-2026-021",
+      "id": "antequera-cf-2026-020",
       "name": "Destiny Ilahude",
       "position": "A",
       "nationality": "NG",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "antequera-cf-2026-022",
+      "id": "antequera-cf-2026-021",
       "name": "Isra Domínguez",
       "position": "A",
       "nationality": "ES",
@@ -209,8 +201,16 @@
       "isStar": false
     },
     {
-      "id": "antequera-cf-2026-023",
+      "id": "antequera-cf-2026-022",
       "name": "Antonio Zarzana",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "antequera-cf-2026-023",
+      "name": "Moi Parra",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

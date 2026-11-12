@@ -9,7 +9,7 @@
   "tieBreakPriority": 75,
   "historicalRanking": {
     "rating": 73.0,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -154,15 +154,15 @@
     },
     {
       "id": "gimnastic-de-tarragona-2026-016",
-      "name": "Joan Prohens",
+      "name": "Carlos Segura",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "gimnastic-de-tarragona-2026-017",
-      "name": "Carlos Segura",
+      "name": "Joan Prohens",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -174,7 +174,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "gimnastic-de-tarragona-2026-019",
@@ -202,7 +202,7 @@
     },
     {
       "id": "gimnastic-de-tarragona-2026-022",
-      "name": "Darío Ramírez",
+      "name": "Borja Sánchez",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

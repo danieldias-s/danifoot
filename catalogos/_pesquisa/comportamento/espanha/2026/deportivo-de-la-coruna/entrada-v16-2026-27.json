@@ -102,6 +102,17 @@
     "playerCatalogId": "deportivo-de-la-coruna-2026-010",
     "position": "D",
     "baseBehavior": null,
+    "minutes": 1547,
+    "yellowCards": 3,
+    "redCards": 0,
+    "fouls": null,
+    "initialDivision": 1,
+    "comparisonGroup": "es-2026-tier1-tm-2025-26"
+  },
+  {
+    "playerCatalogId": "deportivo-de-la-coruna-2026-011",
+    "position": "D",
+    "baseBehavior": null,
     "minutes": 1521,
     "yellowCards": 4,
     "redCards": 0,
@@ -110,7 +121,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-011",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-012",
     "position": "D",
     "baseBehavior": null,
     "minutes": 597,
@@ -121,7 +132,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-012",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-013",
     "position": "M",
     "baseBehavior": null,
     "minutes": 3722,
@@ -132,7 +143,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-013",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-014",
     "position": "M",
     "baseBehavior": null,
     "minutes": 3511,
@@ -143,7 +154,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-014",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-015",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2539,
@@ -154,7 +165,7 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-015",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-016",
     "position": "M",
     "baseBehavior": null,
     "minutes": 2209,
@@ -165,22 +176,11 @@
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
   },
   {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-016",
+    "playerCatalogId": "deportivo-de-la-coruna-2026-017",
     "position": "M",
     "baseBehavior": null,
     "minutes": 1397,
     "yellowCards": 4,
-    "redCards": 0,
-    "fouls": null,
-    "initialDivision": 1,
-    "comparisonGroup": "es-2026-tier1-tm-2025-26"
-  },
-  {
-    "playerCatalogId": "deportivo-de-la-coruna-2026-017",
-    "position": "M",
-    "baseBehavior": null,
-    "minutes": 0,
-    "yellowCards": 0,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -192,7 +192,7 @@
     "baseBehavior": null,
     "minutes": 3027,
     "yellowCards": 5,
-    "redCards": 1,
+    "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
     "comparisonGroup": "es-2026-tier1-tm-2025-26"
@@ -201,8 +201,8 @@
     "playerCatalogId": "deportivo-de-la-coruna-2026-019",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2626,
-    "yellowCards": 5,
+    "minutes": 2762,
+    "yellowCards": 2,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,
@@ -212,8 +212,8 @@
     "playerCatalogId": "deportivo-de-la-coruna-2026-020",
     "position": "A",
     "baseBehavior": null,
-    "minutes": 2762,
-    "yellowCards": 2,
+    "minutes": 2626,
+    "yellowCards": 5,
     "redCards": 0,
     "fouls": null,
     "initialDivision": 1,

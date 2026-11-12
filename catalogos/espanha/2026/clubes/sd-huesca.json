@@ -9,7 +9,7 @@
   "tieBreakPriority": 56,
   "historicalRanking": {
     "rating": 74.3,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -106,30 +106,22 @@
     },
     {
       "id": "sd-huesca-2026-010",
-      "name": "Mohamed Djetei",
-      "position": "D",
-      "nationality": "CM",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "sd-huesca-2026-011",
       "name": "Óscar Sielva",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "sd-huesca-2026-012",
+      "id": "sd-huesca-2026-011",
       "name": "Luismi Redondo",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "sd-huesca-2026-013",
+      "id": "sd-huesca-2026-012",
       "name": "Pascu",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "sd-huesca-2026-014",
+      "id": "sd-huesca-2026-013",
       "name": "Ander Gorostidi",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "sd-huesca-2026-015",
+      "id": "sd-huesca-2026-014",
       "name": "Mario García",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "sd-huesca-2026-016",
+      "id": "sd-huesca-2026-015",
       "name": "Jimmy Suárez",
       "position": "M",
       "nationality": "ES",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "sd-huesca-2026-017",
+      "id": "sd-huesca-2026-016",
       "name": "Diego Gómez",
       "position": "A",
       "nationality": "ES",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "sd-huesca-2026-018",
+      "id": "sd-huesca-2026-017",
       "name": "Sergi Enrich",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-018",
+      "name": "Diego Collado",
       "position": "A",
       "nationality": "ES",
       "behavior": null,

@@ -9,7 +9,7 @@
   "tieBreakPriority": 22,
   "historicalRanking": {
     "rating": 81.6,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "malaga-cf-2026-003",
-      "name": "Diego Murillo",
+      "name": "Rafita Garrido",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -58,7 +58,7 @@
     },
     {
       "id": "malaga-cf-2026-004",
-      "name": "Carlos Puga",
+      "name": "Diego Murillo",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -66,7 +66,7 @@
     },
     {
       "id": "malaga-cf-2026-005",
-      "name": "Fernando Calero",
+      "name": "Carlos Puga",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "malaga-cf-2026-006",
-      "name": "Einar Galilea",
+      "name": "Fernando Calero",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -82,7 +82,7 @@
     },
     {
       "id": "malaga-cf-2026-007",
-      "name": "Ángel Recio",
+      "name": "Einar Galilea",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -90,7 +90,7 @@
     },
     {
       "id": "malaga-cf-2026-008",
-      "name": "Álex Pastor",
+      "name": "Ángel Recio",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,22 +98,14 @@
     },
     {
       "id": "malaga-cf-2026-009",
-      "name": "Adam Aznou",
-      "position": "D",
-      "nationality": "MA",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "malaga-cf-2026-010",
-      "name": "Juan Berrocal",
+      "name": "José Salinas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-011",
+      "id": "malaga-cf-2026-010",
       "name": "Izan Merino",
       "position": "M",
       "nationality": "ES",
@@ -121,7 +113,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-012",
+      "id": "malaga-cf-2026-011",
       "name": "Dani Lorenzo",
       "position": "M",
       "nationality": "ES",
@@ -129,7 +121,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-013",
+      "id": "malaga-cf-2026-012",
       "name": "Carlos Dotor",
       "position": "M",
       "nationality": "ES",
@@ -137,7 +129,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-014",
+      "id": "malaga-cf-2026-013",
       "name": "Pablo Martínez",
       "position": "M",
       "nationality": "ES",
@@ -145,7 +137,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-015",
+      "id": "malaga-cf-2026-014",
       "name": "Rafa Rodríguez",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-016",
+      "id": "malaga-cf-2026-015",
       "name": "Jens Cajuste",
       "position": "M",
       "nationality": "SE",
@@ -161,7 +153,7 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-017",
+      "id": "malaga-cf-2026-016",
       "name": "Aarón Ochoa",
       "position": "M",
       "nationality": "IE",
@@ -169,8 +161,16 @@
       "isStar": false
     },
     {
-      "id": "malaga-cf-2026-018",
+      "id": "malaga-cf-2026-017",
       "name": "David Larrubia",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "malaga-cf-2026-018",
+      "name": "Juan Cruz",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
@@ -178,11 +178,11 @@
     },
     {
       "id": "malaga-cf-2026-019",
-      "name": "Juan Cruz",
+      "name": "Chupe",
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "malaga-cf-2026-020",

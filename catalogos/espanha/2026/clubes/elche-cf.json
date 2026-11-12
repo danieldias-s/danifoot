@@ -9,7 +9,7 @@
   "tieBreakPriority": 15,
   "historicalRanking": {
     "rating": 84.1,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -66,7 +66,7 @@
     },
     {
       "id": "elche-cf-2026-005",
-      "name": "Pedro Bigas",
+      "name": "Víctor Chust",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -74,7 +74,7 @@
     },
     {
       "id": "elche-cf-2026-006",
-      "name": "Víctor Chust",
+      "name": "Pedro Bigas",
       "position": "D",
       "nationality": "ES",
       "behavior": null,
@@ -98,14 +98,6 @@
     },
     {
       "id": "elche-cf-2026-009",
-      "name": "Bambo Diaby",
-      "position": "D",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "elche-cf-2026-010",
       "name": "Buba Sangaré",
       "position": "D",
       "nationality": "ES",
@@ -113,7 +105,7 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-011",
+      "id": "elche-cf-2026-010",
       "name": "Marc Aguado",
       "position": "M",
       "nationality": "ES",
@@ -121,10 +113,18 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-012",
+      "id": "elche-cf-2026-011",
       "name": "Martim Neto",
       "position": "M",
       "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "elche-cf-2026-012",
+      "name": "Javi Morcillo",
+      "position": "M",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -138,14 +138,6 @@
     },
     {
       "id": "elche-cf-2026-014",
-      "name": "Javi Morcillo",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "elche-cf-2026-015",
       "name": "Gonzalo Villar",
       "position": "M",
       "nationality": "ES",
@@ -153,7 +145,7 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-016",
+      "id": "elche-cf-2026-015",
       "name": "Facundo Buonanotte",
       "position": "M",
       "nationality": "AR",
@@ -161,31 +153,31 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-017",
-      "name": "Federico Redondo",
-      "position": "M",
-      "nationality": "AR",
+      "id": "elche-cf-2026-016",
+      "name": "Fer Niño",
+      "position": "A",
+      "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
-      "id": "elche-cf-2026-018",
+      "id": "elche-cf-2026-017",
       "name": "Germán Valera",
       "position": "A",
       "nationality": "ES",
+      "behavior": null,
+      "isStar": true
+    },
+    {
+      "id": "elche-cf-2026-018",
+      "name": "Ali Houary",
+      "position": "A",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "elche-cf-2026-019",
-      "name": "Fer Niño",
-      "position": "A",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "elche-cf-2026-020",
       "name": "Ezequiel Ponce",
       "position": "A",
       "nationality": "AR",
@@ -193,7 +185,7 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-021",
+      "id": "elche-cf-2026-020",
       "name": "Grady Diangana",
       "position": "A",
       "nationality": "CD",
@@ -201,7 +193,7 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-022",
+      "id": "elche-cf-2026-021",
       "name": "Tete Morente",
       "position": "A",
       "nationality": "ES",
@@ -209,10 +201,18 @@
       "isStar": false
     },
     {
-      "id": "elche-cf-2026-023",
-      "name": "Lucas Cepeda",
+      "id": "elche-cf-2026-022",
+      "name": "Josan",
       "position": "A",
-      "nationality": "CL",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "elche-cf-2026-023",
+      "name": "Adam Boayar",
+      "position": "A",
+      "nationality": "MA",
       "behavior": null,
       "isStar": false
     }

@@ -9,7 +9,7 @@
   "tieBreakPriority": 8,
   "historicalRanking": {
     "rating": 85.9,
-    "source": "Opta Power Rankings",
+    "source": "OPTA",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
@@ -50,6 +50,14 @@
     },
     {
       "id": "rayo-vallecano-2026-003",
+      "name": "Dani Cárdenas",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-004",
       "name": "Florian Lejeune",
       "position": "D",
       "nationality": "FR",
@@ -57,7 +65,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-vallecano-2026-004",
+      "id": "rayo-vallecano-2026-005",
       "name": "Mujaid Sadick",
       "position": "D",
       "nationality": "ES",
@@ -65,7 +73,7 @@
       "isStar": false
     },
     {
-      "id": "rayo-vallecano-2026-005",
+      "id": "rayo-vallecano-2026-006",
       "name": "Andrei Rațiu",
       "position": "D",
       "nationality": "RO",
@@ -73,18 +81,10 @@
       "isStar": false
     },
     {
-      "id": "rayo-vallecano-2026-006",
+      "id": "rayo-vallecano-2026-007",
       "name": "Iván Balliu",
       "position": "D",
       "nationality": "AL",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rayo-vallecano-2026-007",
-      "name": "Jozhua Vertrouwd",
-      "position": "D",
-      "nationality": "NL",
       "behavior": null,
       "isStar": false
     },
@@ -98,6 +98,22 @@
     },
     {
       "id": "rayo-vallecano-2026-009",
+      "name": "Jozhua Vertrouwd",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-010",
+      "name": "Luiz Felipe",
+      "position": "D",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-011",
       "name": "Pelayo Fernández",
       "position": "D",
       "nationality": "ES",
@@ -105,28 +121,12 @@
       "isStar": false
     },
     {
-      "id": "rayo-vallecano-2026-010",
-      "name": "Marash Kumbulla",
-      "position": "D",
-      "nationality": "AL",
-      "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rayo-vallecano-2026-011",
+      "id": "rayo-vallecano-2026-012",
       "name": "Isi Palazón",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
-    },
-    {
-      "id": "rayo-vallecano-2026-012",
-      "name": "Óscar Valentín",
-      "position": "M",
-      "nationality": "ES",
-      "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rayo-vallecano-2026-013",
@@ -138,7 +138,7 @@
     },
     {
       "id": "rayo-vallecano-2026-014",
-      "name": "Unai López",
+      "name": "Óscar Valentín",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -146,7 +146,7 @@
     },
     {
       "id": "rayo-vallecano-2026-015",
-      "name": "Gnangoro Bouare",
+      "name": "Unai López",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -154,7 +154,7 @@
     },
     {
       "id": "rayo-vallecano-2026-016",
-      "name": "Rayane Belaid",
+      "name": "Gnangoro Bouare",
       "position": "M",
       "nationality": "ES",
       "behavior": null,
@@ -170,9 +170,9 @@
     },
     {
       "id": "rayo-vallecano-2026-018",
-      "name": "Randy Nteka",
+      "name": "Rayane Belaid",
       "position": "M",
-      "nationality": "AO",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     },
@@ -182,7 +182,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rayo-vallecano-2026-020",
@@ -190,7 +190,7 @@
       "position": "A",
       "nationality": "ES",
       "behavior": null,
-      "isStar": false
+      "isStar": true
     },
     {
       "id": "rayo-vallecano-2026-021",
@@ -202,17 +202,17 @@
     },
     {
       "id": "rayo-vallecano-2026-022",
-      "name": "Sergio Camello",
+      "name": "Alemão",
       "position": "A",
-      "nationality": "ES",
+      "nationality": "BR",
       "behavior": null,
       "isStar": false
     },
     {
       "id": "rayo-vallecano-2026-023",
-      "name": "Giorgi Tsitaishvili",
+      "name": "Sergio Camello",
       "position": "A",
-      "nationality": "GE",
+      "nationality": "ES",
       "behavior": null,
       "isStar": false
     }
