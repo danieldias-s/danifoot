@@ -1,0 +1,19 @@
+{
+  "cardWeight": 0.65,
+  "cleanMaximum": 0.25,
+  "extremeMinimum": 0.95,
+  "extremeMinimumCards": 6,
+  "extremeMinimumFouls": 20,
+  "extremeMinimumMatches": 20,
+  "extremeMinimumMinutes": 1800,
+  "foulWeight": 0.35,
+  "highMinimum": 0.65,
+  "lowPhysicalMaximum": 0.25,
+  "minimumCohort": 10,
+  "minimumMatches": 10,
+  "minimumMinutes": 900,
+  "redPoints": 3,
+  "version": "discipline-percentile-1.0",
+  "veryHighMinimum": 0.85,
+  "yellowPoints": 1
+}

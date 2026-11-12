@@ -1,4 +1,8 @@
-# Catálogo histórico offline — schema 1.0
+# Catálogo histórico offline — schemas 1.0 e 1.1
+
+## Estado da versão 1.1 (12/11/2026)
+
+A estrutura 1.1 e a ferramenta disciplinar estão implementadas. **Status geral PARTIAL:** a criação de mundos 1.1 está bloqueada até aprovação de uma regra que converta `teamStrength` em forças individuais. O caminho 1.0 permanece disponível com suas forças literais. A descrição original 1.0 abaixo continua válida para esse formato; as extensões 1.1 são descritas ao final. Resultados atuais em `ELIFOOT98_CATALOGO_V11_RESULTADO.md`.
 
 Projeto `D:\elifoot_98`, branch `main`. Implementação de preparação do catálogo; nenhum clube real ou elenco histórico foi cadastrado. Não usa APIs externas e não implementa aprendizado tático ou V4.
 
@@ -164,3 +168,242 @@ Depois da confirmação, alterações em arquivos não atualizam o save nem a pr
 Evidências, contagens, arquivos alterados, eventuais falhas anteriores e decisão de commit são registrados em `ELIFOOT98_CATALOGOS_RESULTADO.md` nesta pasta. Testes novos: `OfflineCatalogTests` e `offline_catalog_creator_test.dart`. Cobrem arquivos válidos/incompletos, países/anos, duplicatas, tipos/atributos, quatro táticas, offline, criação/congelamento, novos IDs, saves anteriores, preferências/carreira, alternativa estratégica, ambas economias/mercado e interface em 360/768/1024/1440 px.
 
 Limitações deliberadas: não há dados históricos reais, verificação de veracidade histórica, pesquisa externa, editor visual de todos os novos campos ou aprendizado tático. Os cinco países restantes dependem de definição do proprietário. Não há criação de mundo enquanto os catálogos não forem preenchidos com 128 clubes válidos. A instância do jogo já em execução não é reiniciada nem seus saves alterados por esta preparação; a interface nova pertence à compilação deste código.
+
+
+## Extensão 1.1: identidade compartilhada e dados anuais
+
+Árvore real adicionada (todos os novos manifests ativos continuam DRAFT/vazios):
+
+```text
+catalogos/
+  _schemas/
+    clube-1.0.schema.json
+    clube-1.1.schema.json
+    identidade-1.1.schema.json
+    manifest-1.0.schema.json
+    manifest-1.1.schema.json
+  identidades/.gitkeep
+  brasil/1998/{manifest.json,clubes/.gitkeep}     # preservado 1.0
+  brasil/2026/{manifest.json,clubes/.gitkeep}     # preservado 1.0
+  portugal/1998/{manifest.json,clubes/.gitkeep}   # preservado 1.0
+  espanha/1998/{manifest.json,clubes/.gitkeep}    # preservado 1.0
+  espanha/2026/{manifest.json,clubes/.gitkeep}
+  inglaterra/2026/{manifest.json,clubes/.gitkeep}
+  italia/2026/{manifest.json,clubes/.gitkeep}
+  _pesquisa/comportamento/{brasil,espanha}/{1998,2026}/.gitkeep
+  modelos/
+    identidade.template.json
+    clube-1.1.template.json
+    manifest-1.1.template.json
+    manifest.template.json                      # preservado 1.0
+    clube.template.json                         # preservado 1.0
+    exemplo/                                    # preservado 1.0
+    exemplo-1.1/
+      identidades/demo-v11/identidade.json
+      brasil/1998/manifest.json
+      brasil/1998/clubes/clube-sintetico.json
+      brasil/2026/manifest.json
+      brasil/2026/clubes/clube-sintetico.json
+```
+
+Cada `catalogClubId` 1.1 aponta para `identidades/<id>/identidade.json`. O ID deve coincidir exatamente com a pasta. Nome, nome curto, sigla, duas cores HEX e escudo pertencem à identidade; o arquivo anual rejeita suas cópias, inclusive campos desconhecidos. `crestFile` pode ser null; quando informado, deve ser PNG/JPEG local existente, relativo à pasta **da identidade**, até 2 MB. Paths absolutos, URLs, traversal e links/junctions são rejeitados. Uma leitura por identidade em cada varredura atende todos os anos; nova varredura relê as mudanças, sem cache permanente obsoleto. Hash da origem inclui identidade, imagem e arquivo anual. A prévia serializa os dados resolvidos, deixando de depender de alterações posteriores nos arquivos. A futura personalização histórica exigirá extensão versionada explícita, sem duplicação obrigatória hoje.
+
+`OfflineClubV11`/`OfflinePlayerV11` são contratos próprios; não aceitam `players[].strength`, nem quando null. `OfflineV11Metadata` conserva a identidade e os campos anuais na origem congelada. O DTO 1.0 permanece independente; sua propriedade opcional V11 é omitida quando null, preservando snapshots antigos. O loader lê ambos os tipos e manifests 1.0/1.1, sem conversão automática. Uma montagem não mistura versões, pois não existe equivalência aprovada entre a força literal 1.0 e a força coletiva 1.1.
+
+### Preenchimento 1.1
+
+1. Copie a identidade template para `identidades/<id>/identidade.json`; ajuste `$schema` relativo. Preencha os nomes e as duas cores; mantenha `crestFile:null` até possuir a imagem local.
+2. Copie `clube-1.1.template.json` para `<pais>/<ano>/clubes/<id>.json`; ajuste `$schema`, país ISO, ano, treinador e elenco. Informe `teamStrength` inteiro 1..20. Estádio é opcional; quando informado exige nome/capacidade válidos.
+3. Mantenha `status:DRAFT` e `behavior:null` enquanto a pesquisa estiver incompleta. Não interprete ausência como Fair Play. Cada atleta usa ID, nome, posição G/D/M/A, nacionalidade ISO, comportamento 0..5 e `isStar` explícito. Só M/A admitem estrela. Nenhuma estatística disciplinar decide estrela.
+4. Declare um ranking da época: `historicalRanking:{rating,source,referenceDate}`; maior rating é melhor. A fonte identifica também a escala. A data deve pertencer ao ano do arquivo. Ranking manual deve declarar `source:"MANUAL:<origem/escala>"`. Não há pesquisa ou comprovação automática da veracidade da fonte.
+5. Na ausência de ranking confiável, use `historicalRanking:null` e `tieBreakPriority` inteiro não negativo, fornecido manualmente (menor é melhor). Não são fabricados ratings. Prioridades iguais ainda podem exigir resolução na prévia.
+6. Inclua a referência no manifest. Use `manifest-1.1.template.json` para edições novas. Países/anos novos exigem somente arquivos, com código ISO e slug estável; Inglaterra usa GB. Há cinco países preparados e três posições do plano ainda indefinidas.
+7. Execute a CLI .NET de validação. Corrija avisos de completude, marque explicitamente os clubes e depois o manifest READY, valide novamente. `READY` não é atribuído automaticamente e não significa criação liberada quando a política de forças está pendente.
+
+11..23 atletas, pelo menos um G e dez de linha, continuam sendo exigidos para READY. Máximo 24 do servidor inalterado. As duas táticas distintas de casa e duas de fora usam a validação nativa existente. A IA mantém alternativas às preferidas; `learnedHome`/`learnedAway` continuam apenas nos metadados opcionais do treinador do mundo, sem aprendizado ou efeito.
+
+### Ranking, seleção e divisões
+
+A ordenação 1.1 agrupa por `teamStrength DESC`. Um grupo só compara ratings quando **todos** os seus clubes possuem a mesma fonte/escala e a mesma data de referência. Assim, anos diferentes e ClubElo/UEFA não são tratados como equivalentes. Se houver fonte/data incompatível ou ranking ausente no grupo de força, todo esse grupo usa apenas prioridade manual, com aviso. Em ranking comparável: rating DESC, prioridade ASC. Chave estável é apenas apresentação de empate.
+
+Todos os candidatos são carregados, sem cotas por país. A tela mostra a classificação completa, os primeiros 128 pré-selecionados e todos os excedentes identificados; permite trocar a seleção e escolher divisões manualmente. Com 384 candidatos, são 128 iniciais e 256 excedentes, sem apagar nenhum arquivo. Exatamente 128 selecionados e a confirmação explícita continuam obrigatórios. A pré-seleção é uma proposta revisável, nunca uma criação automática.
+
+Distribuição automática: posições 1–8, 9–16, 17–24 e 25–32 nas divisões 1–4; 33–128 nos distritais. Ajustes explícitos ocupam vagas primeiro; o restante segue a ordem. A prévia exige 8/8/8/8/96. Se um empate atravessar divisões, informe prioridades que o resolvam ou atribua explicitamente a divisão de **todos** os membros empatados. Empates dentro de uma divisão podem ser apresentados pela chave. Nenhum ranking é bônus de partida. Nove clubes força 20: os oito melhores ratings comparáveis entram na primeira; o nono entra na segunda e continua com força 20.
+
+### Dependência de geração de forças — PARTIAL
+
+`WorldCatalogRules016B.PowerAt`/`ClubInitialPower` classificam clubes na escala 1..20, sem converter atributos individuais. `InitialPlayerStrength` usa desempenho/ranking relativo e seed; não define mapeamento de teamStrength. A regra 017B, documentada em `docs/INITIAL_STRENGTH_RULES_017B.md`, depende da divisão e da posição, incluindo faixa 26–38 na segunda divisão. Aplicá-la ao nono clube força 20 imporia uma força pela divisão, contrariando este catálogo. Não existe conversão aprovada suficientemente definida.
+
+A prévia 1.1 funciona e conserva seus metadados/elenco; a lista de atletas jogáveis fica vazia até haver forças válidas. Retorna erro explícito de bloqueio e a confirmação do servidor rejeita 1.1 mesmo se os erros forem removidos de um request. Não se criam jogadores força 0/50, roster artificial, mundo parcial ou migration. Força real 1..50 nos mundos existentes e no importador 1.0 permanece intacta. Essa dependência exige aprovação futura de uma regra determinística independente da divisão, comportamento e estrela; não foi inventada nesta entrega.
+
+### Exemplos completos, somente sintéticos
+
+Identidade única (compartilhada por 1998 e 2026):
+
+```json
+{
+  "$schema": "../../../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "demo-v11",
+  "name": "Clube Sintético 1.1",
+  "shortName": "Sintético",
+  "abbreviation": "SYN",
+  "colors": [
+    "#123456",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}
+```
+
+Arquivo anual 1998 completo:
+
+```json
+{
+  "$schema": "../../../../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "demo-v11",
+  "country": "BR",
+  "year": 1998,
+  "teamStrength": 12,
+  "historicalRanking": {
+    "rating": 100,
+    "source": "MANUAL:escala-didatica-sintetica",
+    "referenceDate": "1998-07-01"
+  },
+  "tieBreakPriority": 1,
+  "stadium": null,
+  "coach": {
+    "id": "demo-tecnico-001",
+    "name": "Treinador Exemplo Sintetico",
+    "nationality": "BR",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-3-3"
+      ],
+      "away": [
+        "5-3-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "demo-atleta-001",
+      "name": "Atleta Exemplo Sintetico 01",
+      "position": "G",
+      "nationality": "BR",
+      "behavior": 0,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-002",
+      "name": "Atleta Exemplo Sintetico 02",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": 1,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-003",
+      "name": "Atleta Exemplo Sintetico 03",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": 2,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-004",
+      "name": "Atleta Exemplo Sintetico 04",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": 3,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-005",
+      "name": "Atleta Exemplo Sintetico 05",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": 4,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-006",
+      "name": "Atleta Exemplo Sintetico 06",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": 5,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-007",
+      "name": "Atleta Exemplo Sintetico 07",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": 0,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-008",
+      "name": "Atleta Exemplo Sintetico 08",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": 1,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-009",
+      "name": "Atleta Exemplo Sintetico 09",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": 2,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-010",
+      "name": "Atleta Exemplo Sintetico 10",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": 3,
+      "isStar": false
+    },
+    {
+      "id": "demo-atleta-011",
+      "name": "Atleta Exemplo Sintetico 11",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": 4,
+      "isStar": true
+    }
+  ],
+  "status": "READY"
+}
+```
+
+Manifest do exemplo:
+
+```json
+{
+  "$schema": "../../../../_schemas/manifest-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogId": "demo-v11-1998",
+  "country": {
+    "code": "BR",
+    "name": "Brasil",
+    "slug": "brasil"
+  },
+  "year": 1998,
+  "name": "Exemplo sintético 1.1 1998",
+  "status": "READY",
+  "gender": "Male",
+  "clubs": [
+    "clubes/clube-sintetico.json"
+  ]
+}
+```
+
+O arquivo de 2026 no mesmo exemplo referencia `demo-v11`, mas possui `teamStrength:15` e rating sintético 110, enquanto 1998 possui força 12 e rating sintético 100. Os elencos e treinador são objetos anuais independentes (os IDs podem ser preservados entre anos). Alterar o elenco ou preferências de 2026 não altera 1998; escudo e cores continuam centralizados. As datas dos rankings diferem, portanto esses ratings não seriam comparados diretamente em uma montagem multi-ano. Nenhum desses números representa informação histórica real; nenhum clube real foi cadastrado.
+
+Classificação de comportamento e aprovação manual: consulte `ELIFOOT98_CLASSIFICADOR_COMPORTAMENTO.md`. O jogo ignora `_pesquisa` e `modelos`, e não executa o classificador durante partidas.

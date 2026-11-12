@@ -1,0 +1,15 @@
+{
+  "$schema": "../../_schemas/manifest-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogId": "es-2026-principal",
+  "country": {
+    "code": "ES",
+    "name": "Espanha",
+    "slug": "espanha"
+  },
+  "year": 2026,
+  "name": "Espanha 2026 — preencher",
+  "status": "DRAFT",
+  "gender": "Male",
+  "clubs": []
+}

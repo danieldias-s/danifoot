@@ -18,7 +18,8 @@ public record OfflineClub(string? SchemaVersion, string? CatalogClubId, string? 
     string? CrestFile = null, [property: JsonPropertyName("$schema")] string? Schema = null);
 public record OfflineCatalogIssue(string Code, string Path, string Message, bool IsError = true);
 public record OfflineClubSource(string CatalogId, string CountryCode, string CountryName, int Year,
-    string SourceHash, OfflineClub Definition, string? CrestDataUrl = null);
+    string SourceHash, OfflineClub Definition, string? CrestDataUrl = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] OfflineV11Metadata? V11 = null);
 public record OfflineLoadedCatalog(string Path, OfflineManifest? Manifest, List<OfflineClubSource> Clubs,
     List<OfflineCatalogIssue> Issues, string SourceHash)
 {

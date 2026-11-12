@@ -9,7 +9,7 @@ using Elifoot.Domain;
 namespace Elifoot.Infrastructure.Catalog;
 
 /// <summary>File-only reader. Never opens a database, indexes the QA catalog, or performs network requests.</summary>
-public sealed class OfflineCatalogLoader
+public sealed partial class OfflineCatalogLoader
 {
     public static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web)
     {
@@ -29,17 +29,18 @@ public sealed class OfflineCatalogLoader
         {
             CheckTree(Root);
             if (!Directory.Exists(Root)) return new([], [new("ROOT", ".", "Pasta do catálogo não encontrada.")]);
+            var identities = await LoadIdentities(issues, ct);
             foreach (var country in Directory.EnumerateDirectories(Root).Order(StringComparer.Ordinal))
             {
                 string slug = Path.GetFileName(country);
-                if (slug.StartsWith('_') || slug == "modelos") continue;
+                if (slug.StartsWith('_') || slug is "modelos" or "identidades") continue;
                 if ((File.GetAttributes(country) & FileAttributes.ReparsePoint) != 0)
                 { issues.Add(new("PATH", slug, "Links de diretório não são permitidos.")); continue; }
                 foreach (var year in Directory.EnumerateDirectories(country).Order(StringComparer.Ordinal))
                 {
                     ct.ThrowIfCancellationRequested();
                     string relative = Path.GetRelativePath(Root, Path.Combine(year, "manifest.json")).Replace('\\', '/');
-                    catalogs.Add(await LoadManifest(relative, ct));
+                    catalogs.Add(await LoadManifest(relative, identities, ct));
                 }
             }
         }
@@ -60,7 +61,8 @@ public sealed class OfflineCatalogLoader
                         }
             foreach (int i in marked) catalogs[i].Issues.Add(new(code, catalogs[i].Path, "Identidade duplicada no mesmo ano; revise os arquivos."));
         }
-        Duplicates(s => new[] { s.Definition }, (c, s) => $"{s.CountryCode}:{s.Year}:{c.CatalogClubId}", "DUPLICATE_CLUB");
+        Duplicates(s => new[] { s.Definition }, (c, s) => s.V11 == null
+            ? $"{s.CountryCode}:{s.Year}:{c.CatalogClubId}" : $"v11:{s.Year}:{c.CatalogClubId}", "DUPLICATE_CLUB");
         Duplicates(s => s.Definition.Players?.Where(p => p != null) ?? [], (p, s) => p.Id == null ? null : $"{s.Year}:{p.Id}", "DUPLICATE_PLAYER");
         Duplicates(s => s.Definition.Coach == null ? [] : new[] { s.Definition.Coach }, (c, s) => c.Id == null ? null : $"{s.Year}:{c.Id}", "DUPLICATE_COACH");
         foreach (var group in catalogs.Where(c => c.Manifest?.CatalogId != null).GroupBy(c => c.Manifest!.CatalogId!, StringComparer.OrdinalIgnoreCase).Where(g => g.Count() > 1))
@@ -71,7 +73,7 @@ public sealed class OfflineCatalogLoader
         return new(catalogs, issues);
     }
 
-    private async Task<OfflineLoadedCatalog> LoadManifest(string relative, CancellationToken ct)
+    private async Task<OfflineLoadedCatalog> LoadManifest(string relative, Dictionary<string, IdentityAsset> identities, CancellationToken ct)
     {
         OfflineManifest? manifest = null;
         var clubs = new List<OfflineClubSource>();
@@ -89,7 +91,7 @@ public sealed class OfflineCatalogLoader
             bool ready = manifest.Status == "READY";
             void Check(bool ok, string code, string message, bool structural = true)
             { if (!ok) issues.Add(new(code, relative, message, structural || ready)); }
-            Check(manifest.SchemaVersion == OfflineCatalogRules.Version, "SCHEMA_VERSION", "Versão suportada: 1.0.");
+            Check(manifest.SchemaVersion is OfflineCatalogRules.Version or "1.1", "SCHEMA_VERSION", "Versões suportadas: 1.0 e 1.1.");
             Check(OfflineCatalogRules.Id(manifest.CatalogId), "CATALOG_ID", "catalogId estável obrigatório.");
             Check(manifest.Status is "READY" or "DRAFT", "STATUS", "Use READY ou DRAFT.");
             Check(OfflineCatalogRules.Country(manifest.Country?.Code) && OfflineCatalogRules.Text(manifest.Country?.Name), "COUNTRY", "País ISO e nome obrigatórios.");
@@ -111,6 +113,16 @@ public sealed class OfflineCatalogLoader
                         throw new ArgumentException("Referência deve ser clubes/arquivo.json, dentro do ano.");
                     if (!seen.Add(reference)) { issues.Add(new("DUPLICATE_REFERENCE", relative, "Arquivo de clube repetido.")); continue; }
                     byte[] clubBytes = await Read(SafePath(yearRoot, reference), 10_000_000, ct);
+                    using var clubDocument = JsonDocument.Parse(clubBytes);
+                    if (clubDocument.RootElement.ValueKind == JsonValueKind.Object &&
+                        clubDocument.RootElement.TryGetProperty("schemaVersion", out var clubVersion) &&
+                        clubVersion.ValueKind == JsonValueKind.String && clubVersion.GetString() == "1.1")
+                    {
+                        var annual = JsonSerializer.Deserialize<OfflineClubV11>(clubBytes, Json) ?? throw new JsonException("Clube vazio.");
+                        string annualPath = relative[..relative.LastIndexOf('/')] + "/" + reference;
+                        clubs.Add(ResolveV11(annual, manifest, annualPath, clubBytes, identities, issues));
+                        continue;
+                    }
                     var club = JsonSerializer.Deserialize<OfflineClub>(clubBytes, Json) ?? throw new JsonException("Clube vazio.");
                     string path = relative[..relative.LastIndexOf('/')] + "/" + reference;
                     issues.AddRange(OfflineCatalogRules.ValidateClub(club, path));

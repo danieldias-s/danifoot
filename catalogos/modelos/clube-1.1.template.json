@@ -1,0 +1,14 @@
+{
+  "$schema": "../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "demo-v11",
+  "country": "BR",
+  "year": 1998,
+  "teamStrength": null,
+  "historicalRanking": null,
+  "tieBreakPriority": null,
+  "stadium": null,
+  "coach": null,
+  "players": [],
+  "status": "DRAFT"
+}

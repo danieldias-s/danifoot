@@ -32,7 +32,7 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
         }
         if (clubs.Select(c => c.CountryCode).Distinct().Count() > 8 || clubs.Select(c => c.Gender).Distinct().Count() != 1)
             throw new ArgumentException("Escolha uma categoria e até oito países.");
-        return clubs.OrderBy(c => c.Key, StringComparer.Ordinal).ToList();
+        return OfflineCatalogRanking.Order(clubs);
     }
 
     public async Task<WorldCreatorPreview> Preview(Guid owner, OfflineWorldRequest request, CancellationToken ct = default)

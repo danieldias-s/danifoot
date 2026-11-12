@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "demo-v11",
+  "name": "Clube Sintético 1.1",
+  "shortName": "Sintético",
+  "abbreviation": "SYN",
+  "colors": [
+    "#123456",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

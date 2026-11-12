@@ -10,10 +10,12 @@ public static class OfflineWorldFactory
     public static EligibleCatalogClub Eligible(OfflineClubSource source, FootballGender gender)
     {
         var c = source.Definition;
+        if (c.SchemaVersion == "1.1" && source.V11 == null)
+            throw new ArgumentException("Catálogo 1.1 sem identidade e metadados resolvidos.");
         string key = $"offline:{source.CountryCode}:{source.Year}:{c.CatalogClubId}";
         return new(key, c.CatalogClubId!, "offline-v1", c.Name!, c.ShortName!, source.CountryCode,
             source.CountryName, gender, "Catálogo offline", source.Year.ToString(), c.Colors![0], c.Colors[1], null,
-            (c.Players ?? []).Select(p => new CatalogAthlete(p.Id!, c.CatalogClubId!, "offline-v1", gender,
+            source.V11 != null ? [] : (c.Players ?? []).Select(p => new CatalogAthlete(p.Id!, c.CatalogClubId!, "offline-v1", gender,
                 source.Year.ToString(), p.Name!, p.Position!, p.Strength!.Value, "Arquivo local fornecido pelo proprietário",
                 DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.Year}:{p.Id}")).ToList(), [], OfflineSource: source);
     }
@@ -27,7 +29,8 @@ public static class OfflineWorldFactory
         if (available.Select(c => c.Gender).Distinct().Count() != 1 || available.Select(c => c.CountryCode).Distinct().Count() > 8)
             throw new ArgumentException("Escolha uma categoria e até oito países.");
         var errors = new List<string>();
-        var clubs = available.OrderBy(c => c.Key, StringComparer.Ordinal).ToList();
+        var clubs = OfflineCatalogRanking.Order(available);
+        var warnings = OfflineCatalogRanking.Warnings(clubs);
         if (request.ClubKeys != null)
         {
             var keys = request.ClubKeys.ToHashSet(StringComparer.Ordinal);
@@ -55,10 +58,13 @@ public static class OfflineWorldFactory
         for (int d = 1; d <= 5; d++)
             if (assigned.Count(a => a.Division == d) != (d == 5 ? 96 : 8))
                 errors.Add(d == 5 ? "Distritais exigem 96 clubes." : $"Divisão {d} exige 8 clubes.");
-        assigned = assigned.OrderBy(a => a.Division).ThenBy(a => a.Club.Key, StringComparer.Ordinal).ToList();
+        errors.AddRange(OfflineCatalogRanking.BoundaryErrors(clubs, assigned, explicitAssignments));
+        if (clubs.Any(OfflineCatalogRanking.IsV11)) errors.Add(OfflineCatalogRanking.ForceBlock);
+        var order = clubs.Select((c, i) => (c.Key, i)).ToDictionary(x => x.Key, x => x.i);
+        assigned = assigned.OrderBy(a => a.Division).ThenBy(a => order[a.Club.Key]).ToList();
         string hash = Hash(request, assigned);
         return new(Guid.NewGuid(), request.Name, available[0].Gender, request.Seed, assigned,
-            Math.Max(0, 128 - assigned.Count), errors.Distinct().ToList(), [], [], DateTime.UtcNow, hash);
+            Math.Max(0, 128 - assigned.Count), errors.Distinct().ToList(), warnings, [], DateTime.UtcNow, hash);
     }
 
     private static string Hash(OfflineWorldRequest request, List<WorldPreviewClub> clubs) =>
@@ -66,6 +72,7 @@ public static class OfflineWorldFactory
 
     public static GameWorld Create(OfflineWorldRequest request, WorldCreatorPreview preview)
     {
+        if (preview.Clubs.Any(c => OfflineCatalogRanking.IsV11(c.Club))) throw new ArgumentException(OfflineCatalogRanking.ForceBlock);
         if (preview.Errors.Count > 0 || preview.PendingSlots != 0 || preview.DataHash != Hash(request, preview.Clubs) ||
             preview.Clubs.Count != 128 || preview.Clubs.Select(c => c.Club.Key).Distinct().Count() != 128)
             throw new ArgumentException("Prévia incompleta ou modificada; valide novamente.");

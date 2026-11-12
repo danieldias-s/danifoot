@@ -47,6 +47,122 @@ http.Response jsonResponse(dynamic data, {int code = 200}) => http.Response(
 
 void main() {
   for (final width in [360.0, 768.0, 1024.0, 1440.0]) {
+    testWidgets(
+      'V11 ranking, metadata and 384 candidates fit ${width.toInt()}px',
+      (tester) async {
+        tester.view.devicePixelRatio = 1;
+        tester.view.physicalSize = Size(width, 768);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        addTearDown(tester.view.resetPhysicalSize);
+        final rows = List.generate(384, (i) {
+          final c = Map<String, dynamic>.from(clubs()[i % 128]);
+          c['key'] = 'c-$i';
+          c['name'] = 'Sintético V11 $i';
+          c['countryCode'] = ['ES', 'GB', 'IT'][i % 3];
+          c['offlineSource'] = {
+            'definition': {
+              'coach': {'name': 'Técnico sintético'},
+              'players': List.generate(11, (_) => {}),
+            },
+            'v11': {
+              'teamStrength': 20,
+              'tieBreakPriority': i,
+              'identity': {
+                'colors': ['#123456', '#FFFFFF'],
+              },
+              'historicalRanking': {
+                'rating': 1000 - i,
+                'source': 'MANUAL:synthetic',
+                'referenceDate': '1998-07-01',
+              },
+            },
+          };
+          return c;
+        });
+        var previews = 0, confirms = 0;
+        final api = ElifootApiClient(
+          baseUrl: 'http://localhost',
+          httpClient: MockClient((r) async {
+            if (r.url.path.endsWith('/catalogs')) {
+              return jsonResponse({
+                'catalogs': [catalog(ready: true)],
+                'issues': [],
+              });
+            }
+            if (r.url.path.endsWith('/clubs')) return jsonResponse(rows);
+            if (r.url.path.endsWith('/preview')) {
+              previews++;
+              final keys = (jsonDecode(r.body)['clubKeys'] as List);
+              expect(keys.length, 128);
+              expect(keys, isNot(contains('c-0')));
+              expect(keys, contains('c-383'));
+              return jsonResponse({
+                'draftId': 'blocked',
+                'name': 'V11',
+                'pendingSlots': 0,
+                'errors': ['Criação bloqueada: gerador de forças pendente.'],
+                'warnings': ['Empate: informe prioridade manual.'],
+                'clubs': [
+                  for (int i = 0; i < 128; i++)
+                    {'division': i < 32 ? i ~/ 8 + 1 : 5, 'club': rows[i]},
+                ],
+              });
+            }
+            confirms++;
+            return jsonResponse({});
+          }),
+        );
+        await tester.pumpWidget(
+          MaterialApp(
+            home: OfflineCatalogCreator(api: api, coachId: 'owner'),
+          ),
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.byType(CheckboxListTile).first);
+        await tester.pumpAndSettle();
+        Future<void> show(Finder finder) async {
+          await tester.scrollUntilVisible(
+            finder,
+            400,
+            maxScrolls: 1000,
+            scrollable: find.byType(Scrollable).first,
+          );
+          await tester.pumpAndSettle();
+        }
+
+        await show(find.text('CARREGAR CLUBES'));
+        await tester.tap(find.text('CARREGAR CLUBES'));
+        await tester.pumpAndSettle();
+        await show(find.textContaining('Classificação geral: 384'));
+        expect(find.textContaining('Excedentes: 256'), findsOneWidget);
+        await show(find.textContaining('1. Sintético V11 0'));
+        expect(find.textContaining('Força coletiva: 20/20'), findsWidgets);
+        expect(find.textContaining('MANUAL:synthetic'), findsWidgets);
+        await tester.tap(find.textContaining('1. Sintético V11 0'));
+        await tester.pumpAndSettle();
+        await show(find.textContaining('384. Sintético V11 383'));
+        expect(find.textContaining('EXCEDENTE'), findsWidgets);
+        await tester.tap(find.textContaining('384. Sintético V11 383'));
+        await tester.pumpAndSettle();
+        await show(find.text('VALIDAR PRÉVIA'));
+        await tester.tap(find.text('VALIDAR PRÉVIA'));
+        await tester.pumpAndSettle();
+        expect(previews, 1);
+        await show(find.text('CRIAR NOVO MUNDO'));
+        expect(
+          tester
+              .widget<FilledButton>(
+                find.widgetWithText(FilledButton, 'CRIAR NOVO MUNDO'),
+              )
+              .onPressed,
+          isNull,
+        );
+        expect(confirms, 0);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+  for (final width in [360.0, 768.0, 1024.0, 1440.0]) {
     testWidgets('Offline draft is blocked and fits ${width.toInt()}px', (
       tester,
     ) async {

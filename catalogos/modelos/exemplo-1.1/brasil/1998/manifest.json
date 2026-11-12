@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../../_schemas/manifest-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogId": "demo-v11-1998",
+  "country": {
+    "code": "BR",
+    "name": "Brasil",
+    "slug": "brasil"
+  },
+  "year": 1998,
+  "name": "Exemplo sintético 1.1 1998",
+  "status": "READY",
+  "gender": "Male",
+  "clubs": [
+    "clubes/clube-sintetico.json"
+  ]
+}

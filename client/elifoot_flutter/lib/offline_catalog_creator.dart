@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'api_client.dart';
 
@@ -87,7 +88,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     setState(() {
       _clubs = clubs;
       _clubKeys.clear();
-      _clubKeys.addAll(clubs.map((c) => c['key'] as String));
+      _clubKeys.addAll(clubs.take(128).map((c) => c['key'] as String));
       _divisions.clear();
       _preview = null;
     });
@@ -116,6 +117,61 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     _divisions.clear();
     _preview = null;
   });
+
+  Map<String, dynamic> _definition(Map<String, dynamic> c) =>
+      Map<String, dynamic>.from(
+        c['offlineSource']?['definition'] as Map? ?? {},
+      );
+
+  Widget _clubDetails(Map<String, dynamic> c) {
+    final source = c['offlineSource'] as Map? ?? {};
+    final v11 = source['v11'] as Map?;
+    final definition = _definition(c);
+    final identity = v11?['identity'] as Map? ?? definition;
+    final ranking = v11?['historicalRanking'] as Map?;
+    final crest = source['crestDataUrl'] as String?;
+    final colors = identity['colors'] as List? ?? [];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 6,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            if (crest != null && crest.startsWith('data:image/'))
+              Image.memory(
+                base64Decode(crest.split(',').last),
+                width: 32,
+                height: 32,
+                errorBuilder: (_, _, _) => const Icon(Icons.shield),
+              ),
+            for (final hex in colors)
+              if (RegExp(r'^#[0-9a-fA-F]{6}$').hasMatch(hex.toString()))
+                Container(
+                  width: 18,
+                  height: 18,
+                  color: Color(
+                    int.parse('FF${hex.toString().substring(1)}', radix: 16),
+                  ),
+                ),
+          ],
+        ),
+        Text(
+          '${(definition['players'] as List? ?? c['players'] as List? ?? []).length} atletas • ${definition['coach']?['name'] ?? ''}',
+        ),
+        if (v11 != null) ...[
+          Text(
+            'Força coletiva: ${v11['teamStrength']}/20 • Prioridade: ${v11['tieBreakPriority'] ?? 'não definida'}',
+          ),
+          Text(
+            ranking == null
+                ? 'Ranking ausente: exige desempate manual nas vagas.'
+                : 'Rating: ${ranking['rating']} • ${ranking['source']} • ${ranking['referenceDate']}',
+          ),
+        ],
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +216,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
             padding: const EdgeInsets.all(16),
             children: [
               const Text(
-                'Arquivos locais • Novos mundos • Forças fornecidas pelo catálogo',
+                'Arquivos locais • Catálogos 1.0 e 1.1 • Revisão antes de criar',
               ),
               const SizedBox(height: 8),
               const Text(
@@ -297,6 +353,16 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                 if (_clubs.isNotEmpty) ...[
                   const Divider(),
                   Text('Clubes selecionados: ${_clubKeys.length}/128'),
+                  Text(
+                    'Classificação geral: ${_clubs.length} candidatos • Primeiros ${min(128, _clubs.length)} • Excedentes: ${max(0, _clubs.length - 128)}',
+                  ),
+                  const Text(
+                    'Os primeiros 128 estão pré-selecionados. Todos os excedentes permanecem abaixo para seleção manual. Nenhum clube é apagado.',
+                  ),
+                  if (_clubs.any((c) => c['offlineSource']?['v11'] != null))
+                    const Text(
+                      '1.1: força ↓, rating comparável ↓, prioridade ↑. Fontes e datas incompatíveis exigem prioridade manual. A prévia identifica empates entre divisões. Criação bloqueada até aprovar o gerador de forças individuais.',
+                    ),
                   const Text(
                     'Divisão automática respeita a divisão inicial do arquivo. Para substituir, escolha outra divisão. A prévia valida todas as vagas.',
                   ),
@@ -316,11 +382,9 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                                   contentPadding: EdgeInsets.zero,
                                   value: _clubKeys.contains(c['key']),
                                   title: Text(
-                                    '${c['name']} • ${c['countryCode']} ${c['season']}',
+                                    '${_clubs.indexOf(c) + 1}. ${c['name']} • ${c['countryCode']} ${c['season']}${_clubs.indexOf(c) >= 128 ? ' • EXCEDENTE' : ''}',
                                   ),
-                                  subtitle: Text(
-                                    '${(c['players'] as List).length} atletas • ${c['offlineSource']['definition']['coach']['name']}',
-                                  ),
+                                  subtitle: _clubDetails(c),
                                   onChanged: _busy
                                       ? null
                                       : (v) => setState(() {
@@ -384,19 +448,29 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                       color: Theme.of(context).colorScheme.error,
                     ),
                   ),
+                for (final warning in (_preview?['warnings'] as List? ?? []))
+                  Text(warning.toString()),
                 for (int d = 1; d <= 5; d++)
                   Text(
                     '${d == 5 ? 'Distritais' : '$dª Divisão'}: ${previewClubs.where((c) => c['division'] == d).length}/${d == 5 ? 96 : 8}',
                   ),
                 const Text(
-                  'Prévia congelada. Força, comportamento, estrela, nacionalidade e treinador serão copiados dos arquivos validados. Alterações posteriores nos arquivos não atualizam este mundo.',
+                  'Prévia congelada. 1.0 conserva forças literais; 1.1 não cria mundo enquanto o gerador de forças estiver pendente. Identidade, elenco, comportamento, estrela e treinador ficam congelados na prévia.',
                 ),
                 for (final c in previewClubs)
                   ListTile(
                     dense: true,
                     title: Text(c['club']['name'].toString()),
-                    subtitle: Text(
-                      '${c['club']['countryCode']} ${c['club']['season']} • divisão ${c['division']} • ${(c['club']['players'] as List).length} atletas',
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${c['club']['countryCode']} ${c['club']['season']} • divisão ${c['division']}',
+                        ),
+                        _clubDetails(
+                          Map<String, dynamic>.from(c['club'] as Map),
+                        ),
+                      ],
                     ),
                   ),
                 Wrap(

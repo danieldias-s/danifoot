@@ -18,14 +18,15 @@ public static class OfflineCatalogRules
         bool ready = c.Status == "READY";
         void Check(bool valid, string code, string field, string message, bool structural = false)
         { if (!valid) issues.Add(new(code, path + ":" + field, message, structural || ready)); }
-        Check(c.SchemaVersion == Version, "SCHEMA_VERSION", "schemaVersion", "Versão suportada: 1.0.", true);
+        bool v11 = c.SchemaVersion == "1.1";
+        Check(c.SchemaVersion is Version or "1.1", "SCHEMA_VERSION", "schemaVersion", "Versões suportadas: 1.0 e 1.1.", true);
         Check(c.Status is "DRAFT" or "READY", "STATUS", "status", "Use DRAFT ou READY.", true);
         Check(Id(c.CatalogClubId), "CLUB_ID", "catalogClubId", "Identificador estável obrigatório.", true);
         Check(Country(c.Country), "COUNTRY", "country", "Código ISO de país inválido.", true);
         Check(c.Year is >= 1 and <= 9999, "YEAR", "year", "Ano entre 1 e 9999.", true);
         Check(Text(c.Name) && Text(c.ShortName, 80) && Text(c.Abbreviation, 12), "CLUB_NAMES", "name", "Preencha nome, nome curto e sigla independentes.");
         Check(c.Colors is { Count: 2 } && c.Colors.All(x => x != null && Regex.IsMatch(x, @"\A#[0-9a-fA-F]{6}\z")), "COLORS", "colors", "Informe duas cores #RRGGBB.");
-        Check(c.Stadium != null && Text(c.Stadium.Name) && c.Stadium.Capacity is > 0 and <= 1_000_000, "STADIUM", "stadium", "Estádio e capacidade 1..1000000 obrigatórios.");
+        Check(v11 && c.Stadium == null || c.Stadium != null && Text(c.Stadium.Name) && c.Stadium.Capacity is > 0 and <= 1_000_000, "STADIUM", "stadium", "Estádio informado exige nome e capacidade 1..1000000.");
         Check(c.InitialDivision == null || c.InitialDivision is >= 1 and <= 5, "DIVISION", "initialDivision", "Divisão opcional: 1..5.", true);
         var coach = c.Coach;
         Check(coach != null && Id(coach.Id) && Text(coach.Name) && Country(coach.Nationality), "COACH", "coach", "Treinador exige ID, nome e nacionalidade ISO.");
@@ -44,10 +45,11 @@ public static class OfflineCatalogRules
             Check(p.Id == null || ids.Add(p.Id), "DUPLICATE_PLAYER", field, "ID de jogador duplicado.", true);
             Check(Text(p.Name), "PLAYER_NAME", field, "Nome obrigatório.");
             Check(p.Position is "G" or "D" or "M" or "A", "POSITION", field, "Posição: G, D, M ou A.");
-            Check(p.Strength is >= 1 and <= 50, "STRENGTH", field, "Força obrigatória: 1..50.");
+            Check(v11 ? p.Strength == null : p.Strength is >= 1 and <= 50, "STRENGTH", field, v11 ? "Força individual proibida no catálogo 1.1." : "Força obrigatória: 1..50.", v11);
             Check(Country(p.Nationality), "NATIONALITY", field, "Nacionalidade ISO obrigatória.");
-            Check(p.Behavior is >= 0 and <= 5, "BEHAVIOR", field, "Comportamento obrigatório: 0..5.");
+            Check(p.Behavior is >= 0 and <= 5, "BEHAVIOR", field, "Comportamento obrigatório: 0..5.", v11 && p.Behavior.HasValue);
             Check(p.IsStar.HasValue, "STAR", field, "isStar deve ser true ou false.");
+            if (v11) Check(!(p.IsStar == true && p.Position is "G" or "D"), "STAR_POSITION", field, "Estrela permitida somente para M/A.", true);
         }
         return issues;
     }

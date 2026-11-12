@@ -14,11 +14,11 @@
       "code": "ES",
       "slug": "espanha"
     },
-    null,
-    null,
+    {"code": "GB", "slug": "inglaterra"},
+    {"code": "IT", "slug": "italia"},
     null,
     null,
     null
   ],
-  "note": "Cinco paises ainda nao definidos pelo proprietario. Nenhum elenco real cadastrado."
+  "note": "Tres paises ainda nao definidos pelo proprietario. Inglaterra e Italia preparadas para 2026; nenhum elenco real cadastrado. GB e o codigo ISO usado para Inglaterra."
 }
