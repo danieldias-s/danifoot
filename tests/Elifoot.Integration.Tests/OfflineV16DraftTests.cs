@@ -28,6 +28,8 @@ public sealed class OfflineV16DraftTests
         Assert.All(club.Definition.Players,p=>{Assert.Null(p.Strength);Assert.Null(p.Behavior);});
         Assert.Contains(catalog.Issues,i=>i.Code=="TEAM_STRENGTH"&&!i.IsError);
         Assert.Contains(catalog.Issues,i=>i.Code=="BEHAVIOR"&&!i.IsError);
+        var service=new OfflineWorldCreatorService(new OfflineCatalogLoader(Root()),null!,null!);
+        await Assert.ThrowsAsync<ArgumentException>(()=>service.Select(["es-2026-principal"]));
     }
     [Theory]
     [InlineData("identidades/real-madrid/identidade.json")]
