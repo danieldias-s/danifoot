@@ -15,8 +15,10 @@ def interpolate(target_rank, above, below):
         rating = anchor.get('rating')
         if type(rating) not in (float, int) or not math.isfinite(rating) or not 0 <= rating <= 100:
             raise ValueError('Nota Opta deve estar entre zero e cem.')
-        date.fromisoformat(anchor['referenceDate'])
-        if not str(anchor.get('evidence', '')).strip() or not str(anchor.get('clubId', '')).strip():
+        reference = anchor.get('referenceDate')
+        if not isinstance(reference,str) or date.fromisoformat(reference).isoformat() != reference:
+            raise ValueError('Data de referência deve usar YYYY-MM-DD.')
+        if any(not isinstance(anchor.get(key),str) or not anchor[key].strip() for key in ['evidence','clubId']):
             raise ValueError('Identidade e evidência dos vizinhos são obrigatórias.')
     if above['referenceDate'] != below['referenceDate'] or above['clubId'] == below['clubId']:
         raise ValueError('Exija dois vizinhos distintos na mesma data.')

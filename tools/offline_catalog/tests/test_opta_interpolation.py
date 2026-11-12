@@ -28,6 +28,7 @@ class OptaInterpolationTests(unittest.TestCase):
     def test_rejects_incompatible_or_untraceable_anchors(self):
         for field, value in [('source', 'ClubElo'), ('source', 'OPTA_INTERPOLATED'),
                              ('referenceDate', '2025-01-01'), ('evidence', ''),
-                             ('rating', float('nan')), ('rating', 101), ('clubId', 'synthetic-a')]:
+                             ('rating', float('nan')), ('rating', 101), ('clubId', 'synthetic-a'),
+                             ('evidence', None), ('clubId', None), ('referenceDate', '20260101')]:
             with self.subTest(field=field, value=value), self.assertRaises(ValueError):
                 interpolate(12, self.above, dict(self.below, **{field: value}))
