@@ -4,7 +4,7 @@
 **Base verificada:** estrutura descrita pelo Codex no commit local `aa5130b` da branch `main` (12/11/2026).  
 **Escopo:** cadastro offline; não altera saves existentes, regras do motor de partidas, economia nem carreira.
 
-> **Estado atual:** a estrutura V1.1 existe e pode receber cadastros e passar pelo validador. A **criação de mundos a partir de catálogos V1.1 ainda está bloqueada** até a aprovação/conexão da regra existente de geração de forças individuais (1–50). O formato V1.0 permanece compatível. Os exemplos deste documento não representam cadastros históricos verificados.
+> A V1.1 valida cadastros e permite criar mundos quando os requisitos READY e a quantidade de clubes são atendidos. A geração de força inicial 1..50 já está integrada. O formato V1.0 permanece compatível. Os exemplos são ilustrativos.
 
 ---
 
@@ -14,10 +14,10 @@
 2. **Organização por país e ano:** um arquivo de clube por edição/temporada em `catalogos/<pais>/<ano>/clubes/`.
 3. **Identidade compartilhada entre anos:** nome, sigla, duas cores e escudo ficam em `catalogos/identidades/<id-do-clube>/`. Assim, Barcelona 1998 e Barcelona 2026 reutilizam uma única identidade visual.
 4. **Dados esportivos por ano:** cada edição do clube possui força coletiva, ranking histórico, estádio opcional, treinador e jogadores próprios.
-5. **Sem força individual no catálogo V1.1:** o JSON de cada jogador guarda nome, posição, nacionalidade, comportamento e asterisco — **não** possui campo `strength`. O jogador receberá força individual de 1 a 50 **na criação do mundo**, por regra já definida no jogo e ainda em auditoria.
+5. O JSON de cada jogador V1.1 guarda ID, nome, posição, nacionalidade, comportamento e asterisco. O jogador recebe força individual de 1 a 50 na criação do mundo, pela regra do jogo.
 6. **Força coletiva do clube:** `teamStrength` é um inteiro de **1 a 20**. Ela determina a prioridade principal na distribuição inicial dos clubes, mas **não** substitui a força individual dos atletas.
 7. **Ranking histórico:** desempata clubes com a mesma força coletiva na formação inicial das divisões. Não aumenta força no motor da partida.
-8. **Treinador:** duas táticas preferidas em casa e duas fora. A IA pode selecionar outras táticas válidas. O aprendizado futuro de uma tática adicional em cada contexto é reservado no estado do treinador dentro do mundo, **não** no JSON do cadastro.
+8. O treinador READY tem uma a quatro táticas comprovadas, até duas por contexto. A IA pode selecionar outras táticas válidas.
 9. **Atributo de comportamento:** cada jogador pronto para uso deve possuir um dos seis comportamentos clássicos; não deve ser sorteado na criação do mundo.
 10. **Persistência:** ao criar um mundo, os dados devem ser congelados no próprio save. Modificações posteriores nos catálogos não podem modificar carreiras já existentes automaticamente.
 
@@ -243,6 +243,8 @@ Este objeto é apenas um **exemplo de rascunho**, não um jogador real.
 
 **Escolha baseada na temporada do jogador:** os tipos podem variar entre anos. Quando houver estatísticas, use o classificador auxiliar offline para sugerir o comportamento (cartões, faltas, minutos, duelos; fontes e justificativas). Revisão humana é permitida. **Não transformar estatística ausente em zero** nem classificar automaticamente todos como Fair Play. Enquanto a evidência não for suficiente, mantenha `behavior: null` e `status: DRAFT`.
 
+Para sugestões experimentais V16, confirme a decisão individual ou em lote e aplique os IDs aprovados pela CLI local. O JSON anual recebe apenas o código de jogo. Evidências, decisões e recibos ficam em arquivos auxiliares. O fluxo inclui pesquisa manual para temporadas com estatísticas incompletas. [Contrato de aprovação e proveniência V16](ELIFOOT98_V16_APROVACAO_PROVENIENCIA.md)
+
 O asterisco é **independente** do comportamento: um meia ou atacante pode ser estrela e ter qualquer um dos seis tipos. Goleiro e defensor nunca podem ser estrelas no catálogo.
 
 ---
@@ -268,8 +270,7 @@ Exemplo de **formato**, não de treinador histórico verificado.
 - `id`: identificador estável, com o mesmo padrão alfanumérico dos IDs de jogadores.
 - `name`: não vazio, até 160 caracteres.
 - `nationality`: código ISO de duas letras.
-- `preferredTactics.home`: **exatamente duas formações distintas**.
-- `preferredTactics.away`: **exatamente duas formações distintas**.
+- `preferredTactics.home` e `preferredTactics.away` aceitam até duas formações distintas em cada contexto, com pelo menos uma no total em READY.
 - Uma mesma formação pode ser preferida tanto em casa quanto fora.
 - A IA pode usar outras formações válidas quando sua estratégia considerar melhor.
 - As extensões `learnedHome` e `learnedAway` pertencem ao estado do treinador **dentro do mundo** e **não** devem ser adicionadas ao JSON de cadastro. Aprendizado futuro ainda não implementado.
@@ -360,7 +361,7 @@ O catálogo pode possuir **mais de 128 clubes por país/ano**, e o criador pode 
 
 Na prévia de distribuição: ordenar por força coletiva e ranking comparável; resolver empates na fronteira das divisões sem sorteio; permitir ajustes manuais validados. Um nono clube com força 20 pode começar na 2ª divisão se houver oito clubes melhor posicionados na 1ª — **sem perder sua força 20**. Depois da criação do mundo, acesso/rebaixamento decorrem dos resultados das partidas.
 
-**Bloqueio vigente:** o formato V1.1 ainda aguarda confirmação da geração inicial de forças individuais `1..50`. Não alterar nem inventar fórmula enquanto a auditoria das regras originais do projeto não terminar. A evolução e a regressão das forças também devem ser reaproveitadas da implementação existente.
+A criação V1.1 usa a geração inicial de forças individuais 1..50 já integrada. O comportamento utilizado é o que consta no JSON anual validado e congelado na prévia.
 
 ---
 
@@ -375,7 +376,7 @@ Exemplo: **Barcelona, Espanha, 2026**.
 5. Copie `modelos\clube-1.1.template.json` para `espanha\2026\clubes\fc-barcelona.json`.
 6. Ajuste `$schema` para `../../../_schemas/clube-1.1.schema.json`; use o mesmo `catalogClubId`, `country: "ES"` e `year: 2026`.
 7. Cadastre jogadores em `players[]`, com **apenas os seis campos permitidos**. Não use `strength`.
-8. Defina `teamStrength` (`1..20`), ranking histórico comparável ou prioridade manual, treinador e as quatro táticas preferidas.
+8. Defina `teamStrength` (1..20), ranking histórico comparável ou prioridade manual, treinador e uma a quatro táticas comprovadas.
 9. Abra `espanha\2026\manifest.json` e **acrescente** `"clubes/fc-barcelona.json"` em `clubs`, sem remover os demais.
 10. Mantenha o clube em `DRAFT` enquanto houver dados pendentes; só altere para `READY` quando cumprir os requisitos.
 11. Execute o validador local. A validação **não cria mundo nem altera saves**.
@@ -403,7 +404,7 @@ dotnet "C:\Users\Daniel\AppData\Local\Temp\elifoot-v11-build\bin\Elifoot.Api\rel
 - **Nacionalidade:** guardar o código ISO correspondente à nacionalidade do atleta.
 - **Estrela:** marcar somente em meias e atacantes conforme o critério aprovado no projeto; não deduzir a estrela automaticamente a partir do ranking do clube.
 - **Tipo de comportamento:** consultar estatísticas ou evidências históricas do período; o classificador disciplinar offline auxilia, com revisão manual. Sem dados, `null` em DRAFT.
-- **Treinador:** registrar nome, nacionalidade e duas táticas preferidas para cada mando; a IA não fica limitada a elas.
+- Cadastre nome, nacionalidade e uma a quatro táticas comprovadas do treinador, até duas por mando. A IA pode usar outras táticas válidas.
 - **Força coletiva:** registrar uma força de 1 a 20 por clube/ano, separada do ranking histórico. **Não calcular forças individuais no cadastro.**
 - **Escudo e cores:** pesquisar uma vez por identidade e reutilizar nos anos; a validação aceita escudo opcional.
 - **Rastreabilidade:** manter as fontes utilizadas na pesquisa, especialmente para ranking, tipos e dados históricos, nos arquivos auxiliares ou documentação.
@@ -412,7 +413,7 @@ dotnet "C:\Users\Daniel\AppData\Local\Temp\elifoot-v11-build\bin\Elifoot.Api\rel
 
 ## 12. Limitações e itens ainda em acompanhamento
 
-- **Criação de mundo V1.1:** pendente aprovação/ligação com a geração de força inicial `1..50` que o jogo já possui. Não alterar fórmula sem auditoria.
+- A estrutura e os exemplos desta seção registram a auditoria de `aa5130b`. A criação V1.1 e a revisão de comportamentos foram integradas posteriormente.
 - **Catálogos reais:** nenhum clube real estava cadastrado na árvore ativa apresentada pelo Codex. Exemplos em `modelos/` são sintéticos.
 - **Escudos:** a pasta `identidades/` estava vazia no levantamento; imagens devem ser adicionadas manualmente.
 - **Manifests antigos:** Brasil 1998/2026, Portugal 1998 e Espanha 1998 ainda em V1.0 naquele levantamento.

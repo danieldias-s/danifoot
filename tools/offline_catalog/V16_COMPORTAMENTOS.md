@@ -14,10 +14,8 @@ Exemplo de comando (a entrada precisa existir, não há dados reais fabricados):
 python -B tools/offline_catalog/behavior_v16.py --input amostras-revisadas.json --root catalogos --output _pesquisa/comportamento/proposta-v16.json
 ```
 
-## Integração no mundo: pendente de definição
+## Revisão e aplicação no catálogo
 
-O catálogo READY já exige `behavior`, mas a classificação de gameplay depende da divisão escolhida na criação. A autorização manda parar a integração ambígua antes de alterar contratos de save. Por isso esta entrega não aplica propostas automaticamente: o `behavior` do catálogo continua sendo o valor-base; o `Player.Behavior` criado pelo fluxo existente conserva esse valor, congelado no save. Transferências e promoções não invocam este classificador.
+O contrato V16 permite ao operador registrar o relatório experimental como evidência, revisar individualmente ou em lote e aplicar decisões confirmadas ao JSON anual V1.1. A divisão informada ao classificador faz parte do recorte experimental. O criador de mundos usa o `behavior` que já consta no JSON validado e congela esse valor na prévia e no save.
 
-Proposta para uma autorização posterior: apresentar ajuste de gameplay separado na prévia (base, efetivo, versão, fontes, divisão inicial e aprovação explícita), incluí-lo no hash e persistir proveniência imutável junto à origem do mundo; aplicar o valor aprovado somente na criação. Definir antes onde esse registro será armazenado e como será exposto/exportado. Não reinterpretar `behavior` como índice histórico, não apagar a base e não recalcular saves, transferências ou promoções.
-
-O módulo 4 está PARTIAL: classificador e exportação implementados/testados; aprovação, aplicação e proveniência do comportamento efetivo no mundo não implementadas.
+O passo a passo de revisão, pesquisa manual, histórico e aplicação com dry-run está no [contrato de aprovação e proveniência](../../docs/catalogos/ELIFOOT98_V16_APROVACAO_PROVENIENCIA.md).

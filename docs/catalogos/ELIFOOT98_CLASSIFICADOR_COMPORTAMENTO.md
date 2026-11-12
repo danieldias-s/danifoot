@@ -1,5 +1,7 @@
 # Classificador auxiliar de comportamento — offline
 
+O documento descreve o classificador disciplinar 1.0 e o fluxo legado. Para sugestões do classificador experimental V16, use o [contrato de aprovação e proveniência V16](ELIFOOT98_V16_APROVACAO_PROVENIENCIA.md). O contrato inclui revisão em lote, operador local, histórico encadeado e aplicação validada ao JSON anual.
+
 Ferramenta: `tools/offline_catalog/behavior_classifier.py`, Python 3.12+ e biblioteca padrão; não exige instalação de pacotes, rede, API ou banco. Nenhum módulo do jogo a importa. Configuração editável: `tools/offline_catalog/behavior-config-1.0.json`. Todos os dados e números usados nos testes são sintéticos.
 
 ## Entrada e escopo
