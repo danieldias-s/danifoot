@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "linares-deportivo",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 119,
+  "historicalRanking": {
+    "rating": 69.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Linarejos",
+    "capacity": 10000
+  },
+  "coach": {
+    "id": "linares-deportivo-coach-103449",
+    "name": "Miguel de la Fuente",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "5-3-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "linares-deportivo-2026-001",
+      "name": "Diego Barrios",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-002",
+      "name": "Álex Fernández",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-003",
+      "name": "Guize Medina",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-004",
+      "name": "Carlos Becken",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-005",
+      "name": "Iker Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-006",
+      "name": "David Argüelles",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-007",
+      "name": "Eu Gutiérrez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-008",
+      "name": "Rafa Ortiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-009",
+      "name": "Monty",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-010",
+      "name": "Moisés Becken",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-011",
+      "name": "Miquel Llabrés",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-012",
+      "name": "João Paulo",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-013",
+      "name": "Juan Carlos Menudo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-014",
+      "name": "Iván Romero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-015",
+      "name": "Hugo Aranda",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-016",
+      "name": "Iván Barajas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-017",
+      "name": "Fran Fraile",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-018",
+      "name": "Tommy Montenegro",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-019",
+      "name": "David Velázquez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-020",
+      "name": "Juanma Domínguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-021",
+      "name": "Giovanni Navarro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-022",
+      "name": "Iker Navarro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "linares-deportivo-2026-023",
+      "name": "Javi Sola",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

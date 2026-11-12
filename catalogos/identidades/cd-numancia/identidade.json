@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-numancia",
+  "name": "CD Numancia",
+  "shortName": "Numancia",
+  "abbreviation": "NUM",
+  "colors": [
+    "#E53027",
+    "#000000"
+  ],
+  "crestFile": null
+}

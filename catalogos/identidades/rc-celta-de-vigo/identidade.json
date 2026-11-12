@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rc-celta-de-vigo",
+  "name": "Celta de Vigo",
+  "shortName": "Celta Vigo",
+  "abbreviation": "CEL",
+  "colors": [
+    "#52C3F1",
+    "#111111"
+  ],
+  "crestFile": null
+}

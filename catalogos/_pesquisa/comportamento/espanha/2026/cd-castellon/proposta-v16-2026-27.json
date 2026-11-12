@@ -1,0 +1,478 @@
+{
+  "application": "REVIEW_REQUIRED_NO_AUTOMATIC_WORLD_OR_CATALOG_WRITE",
+  "config": {
+    "minimumMinutes": 900,
+    "targets": {
+      "D1_D2": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "D3_D4": [
+        15,
+        15,
+        20,
+        25,
+        15,
+        10
+      ],
+      "DISTRICT": [
+        10,
+        10,
+        15,
+        30,
+        20,
+        15
+      ]
+    },
+    "version": "discipline-gameplay-1.6-experimental",
+    "weights": {
+      "fouls": 1,
+      "redCards": 5,
+      "yellowCards": 2
+    }
+  },
+  "results": [
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3600,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-001",
+      "position": "G",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2550,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-002",
+      "position": "G",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3639,
+        "redCards": 1,
+        "yellowCards": 15
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-003",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3181,
+        "redCards": 3,
+        "yellowCards": 6
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-004",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2669,
+        "redCards": 1,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2163,
+        "redCards": 0,
+        "yellowCards": 9
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-006",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1845,
+        "redCards": 1,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-007",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 481,
+        "redCards": 1,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-008",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 445,
+        "redCards": 1,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-009",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 243,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-010",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3134,
+        "redCards": 0,
+        "yellowCards": 11
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-011",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 3124,
+        "redCards": 0,
+        "yellowCards": 7
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-012",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2942,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-013",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2166,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-014",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 996,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-015",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1197,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-016",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-017",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2865,
+        "redCards": 0,
+        "yellowCards": 5
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-018",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2477,
+        "redCards": 0,
+        "yellowCards": 7
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2011,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-020",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2124,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 2009,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-022",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "es-2026-tier2-tm-2025-26",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 1468,
+        "redCards": 0,
+        "yellowCards": 9
+      },
+      "index": null,
+      "initialDivision": 2,
+      "percentile": null,
+      "playerCatalogId": "cd-castellon-2026-023",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    }
+  ],
+  "version": "discipline-gameplay-1.6-experimental"
+}

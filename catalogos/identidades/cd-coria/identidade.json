@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-coria",
+  "name": "CD Coria",
+  "shortName": "Coria",
+  "abbreviation": "CCR",
+  "colors": [
+    "#87CEFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

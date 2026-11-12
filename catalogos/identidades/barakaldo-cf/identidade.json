@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "barakaldo-cf",
+  "name": "Barakaldo CF",
+  "shortName": "Barakaldo",
+  "abbreviation": "BKL",
+  "colors": [
+    "#FFD700",
+    "#111111"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "mijas-las-lagunas",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 131,
+  "historicalRanking": {
+    "rating": 68.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Juan Gambero Culebra, Las Lagunas (Mijas), Mijas, Málaga, Andalusia",
+    "capacity": 2000
+  },
+  "coach": {
+    "id": "mijas-las-lagunas-coach-122298",
+    "name": "José Fiera",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "mijas-las-lagunas-2026-001",
+      "name": "Juan Ramos",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-002",
+      "name": "Alberto Martinez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-003",
+      "name": "Ángel Arreola",
+      "position": "D",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-004",
+      "name": "Abubakar Seidu",
+      "position": "D",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-005",
+      "name": "Boris Huerta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-006",
+      "name": "Javi Gámez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-007",
+      "name": "Álvaro Moro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-008",
+      "name": "Raúl Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-009",
+      "name": "Joselu Pozo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-010",
+      "name": "Rafa Castillo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-011",
+      "name": "José Manuel Lara",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-012",
+      "name": "Adri Peral",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-013",
+      "name": "Lesedi Steve",
+      "position": "M",
+      "nationality": "ZA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-014",
+      "name": "Kanta Morihisa",
+      "position": "M",
+      "nationality": "JP",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-015",
+      "name": "Manu López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-016",
+      "name": "Cristóbal Jiménez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-017",
+      "name": "Ricky Wagner",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-018",
+      "name": "Andrews Appiah-Kubi",
+      "position": "M",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-019",
+      "name": "José Carlos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-020",
+      "name": "Cameron Williams",
+      "position": "A",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-021",
+      "name": "Félix Pérez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-022",
+      "name": "Daniel Almagro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "mijas-las-lagunas-2026-023",
+      "name": "Paco Ariza",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

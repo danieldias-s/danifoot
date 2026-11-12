@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "yeclano-deportivo",
+  "name": "Yeclano Deportivo",
+  "shortName": "Yeclano",
+  "abbreviation": "YEC",
+  "colors": [
+    "#343FC5",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

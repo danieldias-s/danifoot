@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sd-gernika",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 127,
+  "historicalRanking": {
+    "rating": 68.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Urbieta",
+    "capacity": 3000
+  },
+  "coach": {
+    "id": "sd-gernika-coach-145562",
+    "name": "Jabi González",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "3-5-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sd-gernika-2026-001",
+      "name": "Iraitz Gelbentzu",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-002",
+      "name": "Oier Ariznabarreta",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-003",
+      "name": "Iñigo Gomeza",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-004",
+      "name": "Xabi Arberas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-005",
+      "name": "Aratz Barandiarán",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-006",
+      "name": "Beñat Leiza",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-007",
+      "name": "Paul Francia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-008",
+      "name": "Joseba Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-009",
+      "name": "Carles Marco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-010",
+      "name": "Izan Gutiérrez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-011",
+      "name": "Antton Fruniz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-012",
+      "name": "Manex Aristi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-013",
+      "name": "Aser Bikandi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-014",
+      "name": "Iñigo Baqué",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-015",
+      "name": "Herri Torrontegui",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-016",
+      "name": "Iñigo López",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-017",
+      "name": "Anartz Rementería",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-018",
+      "name": "Jon Etxeandía",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-019",
+      "name": "Julen Barrón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-020",
+      "name": "Jon Ortiz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-021",
+      "name": "Kepa Vieites",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-gernika-2026-022",
+      "name": "Alexander Olea",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

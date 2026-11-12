@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ciudad-de-lucena",
+  "name": "Ciudad de Lucena",
+  "shortName": "Ciudad de Lucena",
+  "abbreviation": "CLU",
+  "colors": [
+    "#00BBFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

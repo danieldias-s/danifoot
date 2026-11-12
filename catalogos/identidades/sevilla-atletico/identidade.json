@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sevilla-atletico",
+  "name": "Sevilla Atlético",
+  "shortName": "Sevilla Atlético",
+  "abbreviation": "SAT",
+  "colors": [
+    "#F21E27",
+    "#000000"
+  ],
+  "crestFile": null
+}

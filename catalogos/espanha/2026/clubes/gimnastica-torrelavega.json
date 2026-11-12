@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "gimnastica-torrelavega",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 165,
+  "historicalRanking": {
+    "rating": 65.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "El Malecón",
+    "capacity": 6007
+  },
+  "coach": {
+    "id": "gimnastica-torrelavega-coach-83348",
+    "name": "Mario Gutiérrez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2"
+      ],
+      "away": [
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "gimnastica-torrelavega-2026-001",
+      "name": "Dani Sotres",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-002",
+      "name": "Pablo Vinatea",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-003",
+      "name": "Pol Bassa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-004",
+      "name": "Pablo Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-005",
+      "name": "Álvaro Santamaría",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-006",
+      "name": "Miguel Goñi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-007",
+      "name": "Miguel Gándara",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-008",
+      "name": "Diego Gouveia",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-009",
+      "name": "Brayan Ademán",
+      "position": "D",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-010",
+      "name": "Christian Lagüera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-011",
+      "name": "Javi Cobo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-012",
+      "name": "Álex Aguado",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-013",
+      "name": "Manu González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-014",
+      "name": "Alberto Gómez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-015",
+      "name": "Héctor Alonso",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-016",
+      "name": "Fuli",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-017",
+      "name": "Miguel Sazatornil",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-018",
+      "name": "Joselu Friaza",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-019",
+      "name": "Dani Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-020",
+      "name": "Saúl García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-021",
+      "name": "Dani Salas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-022",
+      "name": "Pablo Lomas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-torrelavega-2026-023",
+      "name": "Samu Pedraja",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

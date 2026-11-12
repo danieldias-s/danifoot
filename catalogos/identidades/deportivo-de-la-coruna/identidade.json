@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-de-la-coruna",
+  "name": "Deportivo A Coruña",
+  "shortName": "Deportivo A Coruña",
+  "abbreviation": "DEP",
+  "colors": [
+    "#005EA4",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

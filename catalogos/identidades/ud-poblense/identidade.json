@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-poblense",
+  "name": "UD Poblense",
+  "shortName": "Poblense",
+  "abbreviation": "POB",
+  "colors": [
+    "#103989",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

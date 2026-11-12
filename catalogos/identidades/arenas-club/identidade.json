@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "arenas-club",
+  "name": "Arenas Club",
+  "shortName": "Arenas",
+  "abbreviation": "ARE",
+  "colors": [
+    "#FF0000",
+    "#000000"
+  ],
+  "crestFile": null
+}

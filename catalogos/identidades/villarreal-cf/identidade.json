@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "villarreal-cf",
+  "name": "Villarreal CF",
+  "shortName": "Villarreal",
+  "abbreviation": "VIL",
+  "colors": [
+    "#FFD301",
+    "#004D98"
+  ],
+  "crestFile": null
+}

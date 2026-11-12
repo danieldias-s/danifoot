@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "barca-atletic",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 71,
+  "historicalRanking": {
+    "rating": 73.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadi Johan Cruyff",
+    "capacity": 6000
+  },
+  "coach": {
+    "id": "barca-atletic-coach-89185",
+    "name": "Juliano Belletti",
+    "nationality": "BR",
+    "preferredTactics": {
+      "home": [
+        "4-3-3"
+      ],
+      "away": [
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "barca-atletic-2026-001",
+      "name": "Eder Aller",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-002",
+      "name": "Max Bonfill",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-003",
+      "name": "Iker Rodríguez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-004",
+      "name": "Guillem Víctor",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-005",
+      "name": "Àlex Campos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-006",
+      "name": "Josué Caicedo",
+      "position": "D",
+      "nationality": "EC",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-007",
+      "name": "Landry Farré",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-008",
+      "name": "Alex Walton",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-009",
+      "name": "Hafiz Gariba",
+      "position": "D",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-010",
+      "name": "Juwensley Onstein",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-011",
+      "name": "Juan Ybarra",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-012",
+      "name": "Pedro Villar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-013",
+      "name": "Adam Argemí",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-014",
+      "name": "Pedro Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-015",
+      "name": "Mirza Catovic",
+      "position": "M",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-016",
+      "name": "Dani Ávila",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-017",
+      "name": "Orian Goren",
+      "position": "M",
+      "nationality": "IL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-018",
+      "name": "Jesse Bisiwu",
+      "position": "A",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-019",
+      "name": "Aziz Issah",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-020",
+      "name": "Shane Kluivert",
+      "position": "A",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-021",
+      "name": "Hamza Abdelkarim",
+      "position": "A",
+      "nationality": "EG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-022",
+      "name": "Òscar Gistau",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barca-atletic-2026-023",
+      "name": "Ignasi Quer",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

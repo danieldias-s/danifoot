@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "xerez-cd",
+  "name": "Xerez CD",
+  "shortName": "Xerez",
+  "abbreviation": "XER",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

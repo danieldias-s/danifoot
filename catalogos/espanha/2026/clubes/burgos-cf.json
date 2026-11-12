@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "burgos-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 8,
+  "tieBreakPriority": 25,
+  "historicalRanking": {
+    "rating": 81.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Municipal El Plantío",
+    "capacity": 12194
+  },
+  "coach": {
+    "id": "burgos-cf-coach-29876",
+    "name": "Sergio Francisco",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "burgos-cf-2026-001",
+      "name": "Ander Cantero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-002",
+      "name": "Bruno Iribarne",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-003",
+      "name": "Grego Sierra",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-004",
+      "name": "Álex Lizancos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-005",
+      "name": "Alberto Dadie",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-006",
+      "name": "Sergio González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-007",
+      "name": "Ignasi Vilarrasa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-008",
+      "name": "Brais Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-009",
+      "name": "Oier Luengo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-010",
+      "name": "Kévin Appin",
+      "position": "M",
+      "nationality": "MQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-011",
+      "name": "Unai Vencedor",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-012",
+      "name": "José Gragera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-013",
+      "name": "Saúl del Cerro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-014",
+      "name": "Marcelo Expósito",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-015",
+      "name": "Mario Cantero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-016",
+      "name": "Santiago Lencina",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-017",
+      "name": "Pablo Galdames",
+      "position": "M",
+      "nationality": "CL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-018",
+      "name": "David González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-019",
+      "name": "Curro Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-020",
+      "name": "Víctor Mollejo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-021",
+      "name": "Fermín García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-022",
+      "name": "Álex Forés",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "burgos-cf-2026-023",
+      "name": "Jon Karrikaburu",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

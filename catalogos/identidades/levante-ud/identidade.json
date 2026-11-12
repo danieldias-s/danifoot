@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "levante-ud",
+  "name": "Levante UD",
+  "shortName": "Levante",
+  "abbreviation": "LEV",
+  "colors": [
+    "#BC161C",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

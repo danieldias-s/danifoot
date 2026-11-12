@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "pena-sport-fc",
+  "name": "Peña Sport FC",
+  "shortName": "Peña Sport",
+  "abbreviation": "PSP",
+  "colors": [
+    "#094CA1",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

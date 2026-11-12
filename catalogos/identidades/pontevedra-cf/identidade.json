@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "pontevedra-cf",
+  "name": "Pontevedra CF",
+  "shortName": "Pontevedra",
+  "abbreviation": "PNT",
+  "colors": [
+    "#850322",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

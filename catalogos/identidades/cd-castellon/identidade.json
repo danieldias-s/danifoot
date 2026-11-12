@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-castellon",
+  "name": "CD Castellón",
+  "shortName": "Castellón",
+  "abbreviation": "CAS",
+  "colors": [
+    "#FFFFFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

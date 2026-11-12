@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-central",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 159,
+  "historicalRanking": {
+    "rating": 66.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Centro Deportivo Vega de Triana, Seville",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "atletico-central-coach-115710",
+    "name": "Marcos Contreras",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "atletico-central-2026-001",
+      "name": "Antonio Santos",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-002",
+      "name": "José Romero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-003",
+      "name": "Álex Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-004",
+      "name": "Quini",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-005",
+      "name": "José Antonio Soler",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-006",
+      "name": "Raúl Navas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-007",
+      "name": "Álvaro Sotero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-008",
+      "name": "Pedro Bornes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-009",
+      "name": "Álex del Río",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-010",
+      "name": "Antonio Santos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-011",
+      "name": "Fausto Tienza",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-012",
+      "name": "Jesús Alfaro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-013",
+      "name": "Esteban Sachetti",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-014",
+      "name": "Jaime de las Marinas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-015",
+      "name": "Hugo Pech",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-016",
+      "name": "Nacho Sainz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-017",
+      "name": "José Pablo Condan",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-018",
+      "name": "Sergio Niza",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-019",
+      "name": "Juan Antonio Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-020",
+      "name": "Pablo Osborne",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-021",
+      "name": "Nico Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-022",
+      "name": "Juan Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-central-2026-023",
+      "name": "Hugo Esteban",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

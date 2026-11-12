@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "recreativo-de-huelva",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 77,
+  "historicalRanking": {
+    "rating": 72.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Nuevo Colombino",
+    "capacity": 21670
+  },
+  "coach": {
+    "id": "recreativo-de-huelva-coach-80859",
+    "name": "Jesús Galván",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "recreativo-de-huelva-2026-001",
+      "name": "Jero Lario",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-002",
+      "name": "Fernando Padilla",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-003",
+      "name": "Mikel Montero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-004",
+      "name": "Manuel Bonaque",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-005",
+      "name": "Roan Riera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-006",
+      "name": "José Carlos Ramírez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-007",
+      "name": "Nacho Ruiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-008",
+      "name": "Charbel Wehbe",
+      "position": "D",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-009",
+      "name": "Néstor Senra",
+      "position": "D",
+      "nationality": "GQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-010",
+      "name": "Álex Carrasco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-011",
+      "name": "Juan Antonio Segura",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-012",
+      "name": "Álex Bernal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-013",
+      "name": "Paolo Romero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-014",
+      "name": "Lulo Dasilva",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-015",
+      "name": "Alberto Vela",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-016",
+      "name": "Mateo Izaguirre",
+      "position": "M",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-017",
+      "name": "Hugo López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-018",
+      "name": "Ale Marín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-019",
+      "name": "Matías Chavarría",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-020",
+      "name": "Leandro Martínez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-021",
+      "name": "Pol Prats",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-022",
+      "name": "Agus Alonso",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "recreativo-de-huelva-2026-023",
+      "name": "Aitor García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-atletico-baleares",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 83,
+  "historicalRanking": {
+    "rating": 72.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadi Balear",
+    "capacity": 6000
+  },
+  "coach": {
+    "id": "cd-atletico-baleares-coach-63277",
+    "name": "Óscar Troya",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "3-5-2",
+        "4-5-1"
+      ],
+      "away": [
+        "3-5-2",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-atletico-baleares-2026-001",
+      "name": "Vicente Sabater",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-002",
+      "name": "Julián Rivas",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-003",
+      "name": "Onofre Riera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-004",
+      "name": "Iván López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-005",
+      "name": "Álvaro Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-006",
+      "name": "Alberto Espiñeira",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-007",
+      "name": "Hugo Anglada",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-008",
+      "name": "Fabrice Montcheu",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-009",
+      "name": "Mamadou Alpha",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-010",
+      "name": "Jofre Cherta",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-011",
+      "name": "Martí Payeras",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-012",
+      "name": "Gerardo Bonet",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-013",
+      "name": "Miguel Soler",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-014",
+      "name": "Pablo Hernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-015",
+      "name": "Rubén Bover",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-016",
+      "name": "Axel Bejarano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-017",
+      "name": "Izan Llinares",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-018",
+      "name": "Raúl Caballero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-019",
+      "name": "Rubén Catalá",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-020",
+      "name": "Miguelito",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-021",
+      "name": "Florin Andone",
+      "position": "A",
+      "nationality": "RO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-atletico-baleares-2026-022",
+      "name": "Adrià Catalá",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

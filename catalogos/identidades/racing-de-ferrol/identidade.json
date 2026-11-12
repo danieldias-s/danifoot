@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "racing-de-ferrol",
+  "name": "Racing Ferrol",
+  "shortName": "Racing Ferrol",
+  "abbreviation": "RFE",
+  "colors": [
+    "#006500",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

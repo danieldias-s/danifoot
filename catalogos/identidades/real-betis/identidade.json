@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-betis",
+  "name": "Real Betis Balompié",
+  "shortName": "Real Betis",
+  "abbreviation": "BET",
+  "colors": [
+    "#038316",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "juventud-de-torremolinos",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 89,
+  "historicalRanking": {
+    "rating": 71.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "El Pozuelo",
+    "capacity": 3000
+  },
+  "coach": {
+    "id": "juventud-de-torremolinos-coach-108230",
+    "name": "Junes Barny",
+    "nationality": "SE",
+    "preferredTactics": {
+      "home": [
+        "5-3-2",
+        "4-3-3"
+      ],
+      "away": [
+        "5-3-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "juventud-de-torremolinos-2026-001",
+      "name": "Javi Belman",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-002",
+      "name": "Javi Cuenca",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-003",
+      "name": "Mateo Prevedini",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-004",
+      "name": "Javi Mérida",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-005",
+      "name": "Manu Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-006",
+      "name": "Rodrigo Ajegun",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-007",
+      "name": "Martín Krug",
+      "position": "D",
+      "nationality": "PA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-008",
+      "name": "Mamadouba Diaby",
+      "position": "D",
+      "nationality": "GN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-009",
+      "name": "Daniel Igweike",
+      "position": "D",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-010",
+      "name": "Max Petersson",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-011",
+      "name": "Emin Grozdanić",
+      "position": "D",
+      "nationality": "SE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-012",
+      "name": "Ángel Climent",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-013",
+      "name": "Cristian Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-014",
+      "name": "Wilfrid Kaptoum",
+      "position": "M",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-015",
+      "name": "Julian Brandes",
+      "position": "M",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-016",
+      "name": "José Antonio Bozada",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-017",
+      "name": "Dominique Moubeke",
+      "position": "M",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-018",
+      "name": "Dioni Villalba",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-019",
+      "name": "Oscar Buch",
+      "position": "A",
+      "nationality": "DK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-020",
+      "name": "Nico Njalla",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-021",
+      "name": "Ivan Laca",
+      "position": "A",
+      "nationality": "HR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-022",
+      "name": "Ifenna Dorgu",
+      "position": "A",
+      "nationality": "DK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "juventud-de-torremolinos-2026-023",
+      "name": "Pau Pérez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

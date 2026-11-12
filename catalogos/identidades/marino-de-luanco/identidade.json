@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "marino-de-luanco",
+  "name": "Marino Luanco",
+  "shortName": "Marino Luanco",
+  "abbreviation": "MAR",
+  "colors": [
+    "#000055",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

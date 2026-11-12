@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-arnedo",
+  "name": "CD Arnedo",
+  "shortName": "Arnedo",
+  "abbreviation": "ARN",
+  "colors": [
+    "#FFFFFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

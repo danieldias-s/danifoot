@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "racing-de-santander",
+  "name": "Racing Santander",
+  "shortName": "Racing Santander",
+  "abbreviation": "RAC",
+  "colors": [
+    "#48BF5F",
+    "#000000"
+  ],
+  "crestFile": null
+}

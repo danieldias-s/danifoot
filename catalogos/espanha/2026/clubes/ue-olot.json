@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ue-olot",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 106,
+  "historicalRanking": {
+    "rating": 70.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Municipal, Olot, Catalonia",
+    "capacity": 3000
+  },
+  "coach": {
+    "id": "ue-olot-coach-113520",
+    "name": "Roger Vidal",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2"
+      ],
+      "away": [
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ue-olot-2026-001",
+      "name": "Pol Ballesté",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-002",
+      "name": "Jordi Saucedo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-003",
+      "name": "Uri Ayala",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-004",
+      "name": "Joel Arumí",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-005",
+      "name": "Robert Costa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-006",
+      "name": "Victor Maffeo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-007",
+      "name": "Josep Jaume",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-008",
+      "name": "Pablo Santiago",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-009",
+      "name": "Marc Fuentes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-010",
+      "name": "David Escoda",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-011",
+      "name": "Biel Borra",
+      "position": "D",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-012",
+      "name": "David Yusta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-013",
+      "name": "Martí Soler",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-014",
+      "name": "Rai Marchán",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-015",
+      "name": "Gil Muntadas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-016",
+      "name": "Jordi Ortega",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-017",
+      "name": "Lluc Marguí",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-018",
+      "name": "Cesc Rius",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-019",
+      "name": "Marc Mas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-020",
+      "name": "Marc Tenas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-021",
+      "name": "Mario Rodríguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-022",
+      "name": "Marti Puigbert",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-olot-2026-023",
+      "name": "Walid Meddeb",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

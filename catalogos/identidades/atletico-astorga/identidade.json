@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-astorga",
+  "name": "Atlético Astorga",
+  "shortName": "Atlético Astorga",
+  "abbreviation": "AST",
+  "colors": [
+    "#008000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

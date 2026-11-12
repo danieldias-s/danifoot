@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rayo-vallecano",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 17,
+  "tieBreakPriority": 8,
+  "historicalRanking": {
+    "rating": 85.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Vallecas Stadium",
+    "capacity": 14708
+  },
+  "coach": {
+    "id": "rayo-vallecano-coach-28835",
+    "name": "Beñat San José",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "rayo-vallecano-2026-001",
+      "name": "Augusto Batalla",
+      "position": "G",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-002",
+      "name": "Emil Audero",
+      "position": "G",
+      "nationality": "ID",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-003",
+      "name": "Florian Lejeune",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-004",
+      "name": "Mujaid Sadick",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-005",
+      "name": "Andrei Rațiu",
+      "position": "D",
+      "nationality": "RO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-006",
+      "name": "Iván Balliu",
+      "position": "D",
+      "nationality": "AL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-007",
+      "name": "Jozhua Vertrouwd",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-008",
+      "name": "Adrià Pedrosa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-009",
+      "name": "Pelayo Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-010",
+      "name": "Marash Kumbulla",
+      "position": "D",
+      "nationality": "AL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-011",
+      "name": "Isi Palazón",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-012",
+      "name": "Óscar Valentín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-013",
+      "name": "Pathé Ciss",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-014",
+      "name": "Unai López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-015",
+      "name": "Gnangoro Bouare",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-016",
+      "name": "Rayane Belaid",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-017",
+      "name": "Pedro Díaz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-018",
+      "name": "Randy Nteka",
+      "position": "M",
+      "nationality": "AO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-019",
+      "name": "Jorge de Frutos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-020",
+      "name": "Álvaro García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-021",
+      "name": "Fran Pérez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-022",
+      "name": "Sergio Camello",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-vallecano-2026-023",
+      "name": "Giorgi Tsitaishvili",
+      "position": "A",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

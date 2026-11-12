@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-zaragoza",
+  "name": "Real Zaragoza",
+  "shortName": "Zaragoza",
+  "abbreviation": "ZAR",
+  "colors": [
+    "#FFFFFF",
+    "#0000BB"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "albacete-balompie",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 37,
+  "historicalRanking": {
+    "rating": 77.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Carlos Belmonte",
+    "capacity": 17524
+  },
+  "coach": {
+    "id": "albacete-balompie-coach-36786",
+    "name": "Joseba Etxeberria",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "5-3-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "albacete-balompie-2026-001",
+      "name": "Diego Mariño",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-002",
+      "name": "Carlos Marín",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-003",
+      "name": "Carlos Neva",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-004",
+      "name": "Jesús Vallejo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-005",
+      "name": "Fran Gámez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-006",
+      "name": "Pepe Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-007",
+      "name": "Lorenzo Aguado",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-008",
+      "name": "Javi Moreno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-009",
+      "name": "Dani Bernabéu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-010",
+      "name": "Lluís López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-011",
+      "name": "Sergio Ortuño",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-012",
+      "name": "Agus Medina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-013",
+      "name": "Antonio Pacheco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-014",
+      "name": "Víctor San Bartolomé",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-015",
+      "name": "Javi Villar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-016",
+      "name": "José Corpas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-017",
+      "name": "Álex Rubio",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-018",
+      "name": "Munir El Haddadi",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-019",
+      "name": "Antonio Puertas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-020",
+      "name": "Victor Valverde",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-021",
+      "name": "Mario Soberón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-022",
+      "name": "Higinio Marín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "albacete-balompie-2026-023",
+      "name": "Agustín Albarracín",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

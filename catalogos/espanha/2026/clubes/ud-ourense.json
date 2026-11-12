@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-ourense",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 105,
+  "historicalRanking": {
+    "rating": 70.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "O Couto",
+    "capacity": 5625
+  },
+  "coach": {
+    "id": "ud-ourense-coach-163740",
+    "name": "Agustín Ruiz",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "5-4-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ud-ourense-2026-001",
+      "name": "Manu Vizoso",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-002",
+      "name": "Bruno Rielo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-003",
+      "name": "Julio Cabrera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-004",
+      "name": "Javi Labrada",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-005",
+      "name": "Lucas Puime",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-006",
+      "name": "Samuel Pardo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-007",
+      "name": "Noel González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-008",
+      "name": "Varo Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-009",
+      "name": "Igor Irazu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-010",
+      "name": "Champi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-011",
+      "name": "Álvaro Bastida",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-012",
+      "name": "Diego Tejón",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-013",
+      "name": "Curro Rivelott",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-014",
+      "name": "Viti Nieves",
+      "position": "M",
+      "nationality": "VE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-015",
+      "name": "Roi Currás",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-016",
+      "name": "Mateo Gandarillas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-017",
+      "name": "David Ferreiro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-018",
+      "name": "Rufo Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-019",
+      "name": "Sergi Baldrich",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-020",
+      "name": "Xabi Dominguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-021",
+      "name": "Romualdas Jansonas",
+      "position": "A",
+      "nationality": "LT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-ourense-2026-022",
+      "name": "Cristian Carro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

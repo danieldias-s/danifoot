@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-extremadura",
+  "name": "CD Extremadura 1924",
+  "shortName": "Extremadura",
+  "abbreviation": "EXT",
+  "colors": [
+    "#800020",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

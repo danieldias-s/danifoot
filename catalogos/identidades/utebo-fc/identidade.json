@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "utebo-fc",
+  "name": "Utebo FC",
+  "shortName": "Utebo",
+  "abbreviation": "UTE",
+  "colors": [
+    "#3959B6",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-tudelano",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 136,
+  "historicalRanking": {
+    "rating": 68.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Ciudad de Tudela, Tudela",
+    "capacity": 11000
+  },
+  "coach": {
+    "id": "cd-tudelano-coach-103174",
+    "name": "César Monasterio",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-3-3",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-tudelano-2026-001",
+      "name": "Iván Fernández",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-002",
+      "name": "Aimar Mutilva",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-003",
+      "name": "Corentin Louakima",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-004",
+      "name": "Oier Sarriegi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-005",
+      "name": "Marco Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-006",
+      "name": "Raúl Floria",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-007",
+      "name": "Adrián Hornero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-008",
+      "name": "Jon Juanena",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-009",
+      "name": "Marlone Foubert",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-010",
+      "name": "Unai Vélez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-011",
+      "name": "Ekhiotz Orobio",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-012",
+      "name": "Juan Alegre",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-013",
+      "name": "Zakarya Maiga",
+      "position": "M",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-014",
+      "name": "Félix Alonso",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-015",
+      "name": "Martín Oiartzabal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-016",
+      "name": "Iñigo Alayeto",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-017",
+      "name": "Kevin Soeiro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-018",
+      "name": "José Manuel Pedrosa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-019",
+      "name": "Eder Iribarren",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-020",
+      "name": "David Soto",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-021",
+      "name": "Gerard Solà",
+      "position": "A",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tudelano-2026-022",
+      "name": "Ion Ander Mora",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

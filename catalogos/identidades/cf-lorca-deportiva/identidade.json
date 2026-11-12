@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-lorca-deportiva",
+  "name": "CF Lorca Deportiva",
+  "shortName": "Lorca Deportiva",
+  "abbreviation": "LOR",
+  "colors": [
+    "#0626B9",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "racing-de-ferrol",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 69,
+  "historicalRanking": {
+    "rating": 73.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Municipal de A Malata",
+    "capacity": 11922
+  },
+  "coach": {
+    "id": "racing-de-ferrol-coach-80802",
+    "name": "Javi Vázquez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "racing-de-ferrol-2026-001",
+      "name": "Lucas Díaz",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-002",
+      "name": "César Fernández",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-003",
+      "name": "Germán Nóvoa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-004",
+      "name": "Álvaro Ramón",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-005",
+      "name": "Edgar Pujol",
+      "position": "D",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-006",
+      "name": "Miguel Leal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-007",
+      "name": "Eric Monjonell",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-008",
+      "name": "Saúl García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-009",
+      "name": "David Castro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-010",
+      "name": "Raúl Blanco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-011",
+      "name": "Sekou Djanbou",
+      "position": "M",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-012",
+      "name": "Vicente Esquerdo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-013",
+      "name": "Fabio González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-014",
+      "name": "Jesús Bernal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-015",
+      "name": "Unai Ropero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-016",
+      "name": "Álvaro Juan",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-017",
+      "name": "Roberto Arroyo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-018",
+      "name": "Endika Buján",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-019",
+      "name": "Dani Ojeda",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-020",
+      "name": "Raúl Alcaina",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-021",
+      "name": "Etienne Eto'o",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-ferrol-2026-022",
+      "name": "Azael García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

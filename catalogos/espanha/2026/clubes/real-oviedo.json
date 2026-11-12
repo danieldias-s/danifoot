@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-oviedo",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 7,
+  "tieBreakPriority": 28,
+  "historicalRanking": {
+    "rating": 79.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Carlos Tartiere",
+    "capacity": 30500
+  },
+  "coach": {
+    "id": "real-oviedo-coach-59701",
+    "name": "Raúl",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-oviedo-2026-001",
+      "name": "Miguel Narváez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-002",
+      "name": "Aarón Escandell",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-003",
+      "name": "Marco Esteban",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-004",
+      "name": "David Jiménez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-005",
+      "name": "Aisar Ahmed",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-006",
+      "name": "Samu Rodríguez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-007",
+      "name": "Nacho Vidal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-008",
+      "name": "David Costas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-009",
+      "name": "Dani Calvo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-010",
+      "name": "Juan Cruz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-011",
+      "name": "Dani Villahermosa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-012",
+      "name": "Alberto Reina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-013",
+      "name": "Youness Lachhab",
+      "position": "M",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-014",
+      "name": "Diego Menéndez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-015",
+      "name": "Enzo Pérez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-016",
+      "name": "Aritz Aldasoro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-017",
+      "name": "Mikel Goti",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-018",
+      "name": "Alexandru Ișfan",
+      "position": "A",
+      "nationality": "RO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-019",
+      "name": "Jacobo González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-020",
+      "name": "Ilyas Chaira",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-021",
+      "name": "Víctor Mingo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-022",
+      "name": "Pablo Sáenz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-2026-023",
+      "name": "Estanis Pedrola",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

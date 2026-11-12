@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "girona-fc",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 8,
+  "tieBreakPriority": 26,
+  "historicalRanking": {
+    "rating": 80.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadi Montilivi",
+    "capacity": 14624
+  },
+  "coach": {
+    "id": "girona-fc-coach-40682",
+    "name": "Quique Álvarez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "girona-fc-2026-001",
+      "name": "Paulo Gazzaniga",
+      "position": "G",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-002",
+      "name": "Sergi Puig",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-003",
+      "name": "Vladyslav Krapyvtsov",
+      "position": "G",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-004",
+      "name": "Javier Boñar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-005",
+      "name": "Álex Moreno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-006",
+      "name": "Alejandro Francés",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-007",
+      "name": "Mateu Morey",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-008",
+      "name": "David López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-009",
+      "name": "Abdul Mumin",
+      "position": "D",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-010",
+      "name": "Iván Morante",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-011",
+      "name": "Izan González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-012",
+      "name": "Fran Beltrán",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-013",
+      "name": "Lass Kourouma",
+      "position": "M",
+      "nationality": "GN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-014",
+      "name": "Donny van de Beek",
+      "position": "M",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-015",
+      "name": "Unai Hernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-016",
+      "name": "Vladyslav Vanat",
+      "position": "A",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-017",
+      "name": "Carles Pérez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-018",
+      "name": "Bryan Gil",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-019",
+      "name": "Jastin Garcia",
+      "position": "A",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-020",
+      "name": "Yáser Asprilla",
+      "position": "A",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-021",
+      "name": "Portu",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-022",
+      "name": "Cristhian Stuani",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-2026-023",
+      "name": "Abel Ruiz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-badajoz",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 122,
+  "historicalRanking": {
+    "rating": 69.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Nuevo Vivero, Badajoz",
+    "capacity": 14898
+  },
+  "coach": {
+    "id": "cd-badajoz-coach-93808",
+    "name": "Miguel Ángel Ávila",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-badajoz-2026-001",
+      "name": "Sergio Tienza",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-002",
+      "name": "Alonso Pérez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-003",
+      "name": "Mario Gómez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-004",
+      "name": "Jesús Ocaña",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-005",
+      "name": "Edu López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-006",
+      "name": "Franc Mateu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-007",
+      "name": "Lolo González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-008",
+      "name": "Jesús Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-009",
+      "name": "Javi Lobato",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-010",
+      "name": "Julen Agirre",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-011",
+      "name": "Carlos Beitia",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-012",
+      "name": "Gustavo Quezada",
+      "position": "M",
+      "nationality": "EC",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-013",
+      "name": "Jorge Barba",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-014",
+      "name": "Ángel Guerrero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-015",
+      "name": "Iker Guarrotxena",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-016",
+      "name": "José Manuel Bermúdez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-017",
+      "name": "Álex Alegría",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-018",
+      "name": "Nacho Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-019",
+      "name": "Manuel Hernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-020",
+      "name": "Borja Domingo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-badajoz-2026-021",
+      "name": "Guille Perero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

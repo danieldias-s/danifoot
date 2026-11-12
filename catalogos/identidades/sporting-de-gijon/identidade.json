@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sporting-de-gijon",
+  "name": "Sporting Gijón",
+  "shortName": "Sporting Gijón",
+  "abbreviation": "SPO",
+  "colors": [
+    "#F21E27",
+    "#000000"
+  ],
+  "crestFile": null
+}

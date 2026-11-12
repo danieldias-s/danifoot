@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "aguilas-fc",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 92,
+  "historicalRanking": {
+    "rating": 71.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "El Rubial",
+    "capacity": 4000
+  },
+  "coach": {
+    "id": "aguilas-fc-coach-70000",
+    "name": "Adrián Hernández",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "5-4-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "aguilas-fc-2026-001",
+      "name": "José Salcedo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-002",
+      "name": "Iván Martínez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-003",
+      "name": "Johan Terranova",
+      "position": "D",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-004",
+      "name": "Álex Revuelta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-005",
+      "name": "Héctor Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-006",
+      "name": "Fromsa",
+      "position": "D",
+      "nationality": "ET",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-007",
+      "name": "Dani Merchán",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-008",
+      "name": "José Mas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-009",
+      "name": "Antonio Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-010",
+      "name": "Mario Abenza",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-011",
+      "name": "Adri Heredia",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-012",
+      "name": "Alberto Collado",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-013",
+      "name": "Yasser El Arbaoui",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-014",
+      "name": "Adrián Pérez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-015",
+      "name": "Alonso Nyada",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-016",
+      "name": "Jesús Carrillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-017",
+      "name": "José Manuel Raigal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-018",
+      "name": "Javi Castedo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-019",
+      "name": "Gonzalo Serrano",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-020",
+      "name": "Usher Lobede",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-021",
+      "name": "Christian Martínez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-022",
+      "name": "Serpeta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "aguilas-fc-2026-023",
+      "name": "Mathieu Seyram",
+      "position": "A",
+      "nationality": "BJ",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

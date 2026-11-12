@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "aguilas-fc",
+  "name": "Águilas FC",
+  "shortName": "Águilas",
+  "abbreviation": "AGU",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

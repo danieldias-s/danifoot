@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "fc-barcelona",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 20,
+  "tieBreakPriority": 1,
+  "historicalRanking": {
+    "rating": 97.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Camp Nou",
+    "capacity": 62652
+  },
+  "coach": {
+    "id": "fc-barcelona-coach-67",
+    "name": "Hansi Flick",
+    "nationality": "DE",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "fc-barcelona-2026-001",
+      "name": "Joan García",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-002",
+      "name": "Wojciech Szczęsny",
+      "position": "G",
+      "nationality": "PL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-003",
+      "name": "Dominik Livakovic",
+      "position": "G",
+      "nationality": "HR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-004",
+      "name": "Eric García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-005",
+      "name": "Pau Cubarsí",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-006",
+      "name": "Jules Koundé",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-007",
+      "name": "Gerard Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-008",
+      "name": "Alejandro Balde",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-009",
+      "name": "João Cancelo",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-010",
+      "name": "Xavi Espart",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-011",
+      "name": "Andreas Christensen",
+      "position": "D",
+      "nationality": "DK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-012",
+      "name": "Pedri",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-013",
+      "name": "Fermín López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-014",
+      "name": "Brian Fariñas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-015",
+      "name": "Dani Olmo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-016",
+      "name": "Frenkie de Jong",
+      "position": "M",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-017",
+      "name": "Rodri",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-018",
+      "name": "Marc Bernal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-019",
+      "name": "Lamine Yamal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-020",
+      "name": "Raphinha",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-021",
+      "name": "Karim Adeyemi",
+      "position": "A",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-022",
+      "name": "Roony Bardghji",
+      "position": "A",
+      "nationality": "SE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "fc-barcelona-2026-023",
+      "name": "Gabriel Jesus",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

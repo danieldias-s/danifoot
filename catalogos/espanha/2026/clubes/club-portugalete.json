@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "club-portugalete",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 123,
+  "historicalRanking": {
+    "rating": 69.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Florida",
+    "capacity": 5000
+  },
+  "coach": {
+    "id": "club-portugalete-coach-149721",
+    "name": "Egoitz Bilbao",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "club-portugalete-2026-001",
+      "name": "Kevin Ríos",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-002",
+      "name": "Ibón González",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-003",
+      "name": "Anartz Amilibia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-004",
+      "name": "Javier Elías",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-005",
+      "name": "Uztaritz Expósito",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-006",
+      "name": "Iván del Campo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-007",
+      "name": "Iñaki Recio",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-008",
+      "name": "Ander González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-009",
+      "name": "Gorka Tapiador",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-010",
+      "name": "Unai Lechosa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-011",
+      "name": "Jorge García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-012",
+      "name": "Diego Lamadrid",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-013",
+      "name": "Oier Erdozia",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-014",
+      "name": "Jon López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-015",
+      "name": "Markel Mayo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-016",
+      "name": "Unax Odriozola",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-017",
+      "name": "Yeray Cuello",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-018",
+      "name": "Iker Llamazares",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-019",
+      "name": "Ander Honrado",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-020",
+      "name": "Aimar Barrera",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-021",
+      "name": "Gorka Crespo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-022",
+      "name": "Alain Arreitunandia",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "club-portugalete-2026-023",
+      "name": "Imanol Aránburu",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

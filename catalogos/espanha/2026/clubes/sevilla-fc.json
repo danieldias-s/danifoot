@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sevilla-fc",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 15,
+  "tieBreakPriority": 11,
+  "historicalRanking": {
+    "rating": 85.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Ramón Sánchez-Pizjuán",
+    "capacity": 42714
+  },
+  "coach": {
+    "id": "sevilla-fc-coach-6444",
+    "name": "Luis García",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sevilla-fc-2026-001",
+      "name": "Odysseas Vlachodimos",
+      "position": "G",
+      "nationality": "GR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-002",
+      "name": "Fran González",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-003",
+      "name": "Juan Iglesias",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-004",
+      "name": "José Ángel Carmona",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-005",
+      "name": "Arouna Sangante",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-006",
+      "name": "Julio Díaz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-007",
+      "name": "Kike Salas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-008",
+      "name": "Gabriel Suazo",
+      "position": "D",
+      "nationality": "CL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-009",
+      "name": "Andrés Castrín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-010",
+      "name": "Fábio Cardoso",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-011",
+      "name": "Lucien Agoumé",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-012",
+      "name": "Youssouf Fofana",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-013",
+      "name": "Jon Guridi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-014",
+      "name": "Giorgi Kochorashvili",
+      "position": "M",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-015",
+      "name": "Manu Bueno",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-016",
+      "name": "Félix Correia",
+      "position": "A",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-017",
+      "name": "Lucas Stassin",
+      "position": "A",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-018",
+      "name": "Robbie Ure",
+      "position": "A",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-019",
+      "name": "Isaac Romero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-020",
+      "name": "Rubén Vargas",
+      "position": "A",
+      "nationality": "CH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-021",
+      "name": "Peque Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-022",
+      "name": "Alfon González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sevilla-fc-2026-023",
+      "name": "Chidera Ejuke",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

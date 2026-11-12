@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "pontevedra-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 50,
+  "historicalRanking": {
+    "rating": 75.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Pasarón, Pontevedra",
+    "capacity": 10500
+  },
+  "coach": {
+    "id": "pontevedra-cf-coach-86405",
+    "name": "Rubén Domínguez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "5-4-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "pontevedra-cf-2026-001",
+      "name": "Raúl Marqueta",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-002",
+      "name": "Iker Galindo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-003",
+      "name": "Ander Vidorreta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-004",
+      "name": "Adrián Argos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-005",
+      "name": "David Alba",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-006",
+      "name": "Reda Ergouai",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-007",
+      "name": "Álvaro Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-008",
+      "name": "Juanra Gómez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-009",
+      "name": "Rui Pedro",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-010",
+      "name": "Yelko Pino",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-011",
+      "name": "Jerin Ramos",
+      "position": "M",
+      "nationality": "CV",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-012",
+      "name": "Ilias Charid",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-013",
+      "name": "Iker Ivorra",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-014",
+      "name": "Tiago Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-015",
+      "name": "Luisao Macías",
+      "position": "M",
+      "nationality": "EC",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-016",
+      "name": "Domingo Mba",
+      "position": "A",
+      "nationality": "GQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-017",
+      "name": "Alex Comparada",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-018",
+      "name": "Marcos Bravo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-019",
+      "name": "Alberto Gil",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-020",
+      "name": "Álex González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-021",
+      "name": "Papa Gaye",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-022",
+      "name": "Iñaki Elejalde",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "pontevedra-cf-2026-023",
+      "name": "Bob Omoregbe",
+      "position": "A",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

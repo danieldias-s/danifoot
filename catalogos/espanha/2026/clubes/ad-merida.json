@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ad-merida",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 62,
+  "historicalRanking": {
+    "rating": 73.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Romano",
+    "capacity": 14600
+  },
+  "coach": {
+    "id": "ad-merida-coach-97350",
+    "name": "Fran Beltrán",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ad-merida-2026-001",
+      "name": "Adrián Csenterics",
+      "position": "G",
+      "nationality": "HU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-002",
+      "name": "Bence Juhász",
+      "position": "G",
+      "nationality": "HU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-003",
+      "name": "Álex Gil",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-004",
+      "name": "Hugo Sanz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-005",
+      "name": "Fito",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-006",
+      "name": "Chechu Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-007",
+      "name": "Álex Barbu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-008",
+      "name": "Hugo Carrillo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-009",
+      "name": "Nacho González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-010",
+      "name": "Adrián Salguero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-011",
+      "name": "Alejandro Jay",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-012",
+      "name": "Martín Solar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-013",
+      "name": "Jota López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-014",
+      "name": "Raúl Beneit",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-015",
+      "name": "Benny Dibrani",
+      "position": "M",
+      "nationality": "AL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-016",
+      "name": "Antonio Aranda",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-017",
+      "name": "Darwin Guagua",
+      "position": "M",
+      "nationality": "EC",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-018",
+      "name": "Sofiane El Ftouhi",
+      "position": "A",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-019",
+      "name": "Javi Areso",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-020",
+      "name": "Carlos Doncel",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-021",
+      "name": "Lacine Koné",
+      "position": "A",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-022",
+      "name": "Sigurdur Hallsson",
+      "position": "A",
+      "nationality": "IS",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-merida-2026-023",
+      "name": "Dani Sandoval",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

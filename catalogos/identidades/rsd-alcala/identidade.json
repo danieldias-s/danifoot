@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rsd-alcala",
+  "name": "RSD Alcalá",
+  "shortName": "Alcalá",
+  "abbreviation": "RSD",
+  "colors": [
+    "#E40019",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "salamanca-cf-uds",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 112,
+  "historicalRanking": {
+    "rating": 69.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Helmántico",
+    "capacity": 17341
+  },
+  "coach": {
+    "id": "salamanca-cf-uds-coach-144323",
+    "name": "Iker Muniain",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "3-6-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "salamanca-cf-uds-2026-001",
+      "name": "Unai Ayala",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-002",
+      "name": "Álvaro Jiménez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-003",
+      "name": "Javier Murua",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-004",
+      "name": "Máximo Levrand",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-005",
+      "name": "Iker San Vicente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-006",
+      "name": "Imanol Torre",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-007",
+      "name": "Juancho Villegas",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-008",
+      "name": "Markel Ucín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-009",
+      "name": "Sergio Rivas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-010",
+      "name": "Carlos Cristeto",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-011",
+      "name": "Urki Txoperena",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-012",
+      "name": "Iñigo Eguaras",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-013",
+      "name": "Adur Alsua",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-014",
+      "name": "Jon Ander Barriga",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-015",
+      "name": "Marc Prat",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-016",
+      "name": "Álex Caramelo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-017",
+      "name": "William Peña",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-018",
+      "name": "Larry Opara",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-019",
+      "name": "Aimar Vicandi",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-020",
+      "name": "Luis Bilbao",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-021",
+      "name": "Asier Domínguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salamanca-cf-uds-2026-022",
+      "name": "Óscar León",
+      "position": "A",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

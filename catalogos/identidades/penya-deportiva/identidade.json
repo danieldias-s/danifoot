@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "penya-deportiva",
+  "name": "Penya Deportiva Santa Eulalia",
+  "shortName": "Peña Deportiva",
+  "abbreviation": "PDE",
+  "colors": [
+    "#FFFFFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

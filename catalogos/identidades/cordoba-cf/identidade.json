@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cordoba-cf",
+  "name": "Córdoba CF",
+  "shortName": "Córdoba",
+  "abbreviation": "COR",
+  "colors": [
+    "#038316",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

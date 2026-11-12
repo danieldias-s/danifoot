@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-fabril",
+  "name": "RC Deportivo Fabril",
+  "shortName": "Deportivo Fabril",
+  "abbreviation": "FAB",
+  "colors": [
+    "#0030FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

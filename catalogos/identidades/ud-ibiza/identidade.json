@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-ibiza",
+  "name": "UD Ibiza",
+  "shortName": "Ibiza",
+  "abbreviation": "IBI",
+  "colors": [
+    "#48CAF2",
+    "#111111"
+  ],
+  "crestFile": null
+}

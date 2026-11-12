@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-antoniano",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 157,
+  "historicalRanking": {
+    "rating": 66.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Municipal de Lebrija",
+    "capacity": 3500
+  },
+  "coach": {
+    "id": "atletico-antoniano-coach-123880",
+    "name": "Lolo Ortiz",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "atletico-antoniano-2026-001",
+      "name": "Matías Árbol",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-002",
+      "name": "Mike Bernal",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-003",
+      "name": "Luis Navarro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-004",
+      "name": "Ricky Castro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-005",
+      "name": "Antonio Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-006",
+      "name": "Pedro Melli",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-007",
+      "name": "Álvaro Caro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-008",
+      "name": "Carlos Hernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-009",
+      "name": "Marckus",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-010",
+      "name": "Álex Carrascal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-011",
+      "name": "José Mari Ruiz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-012",
+      "name": "Jesús García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-013",
+      "name": "Pablo Muñoz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-014",
+      "name": "Gonzalo Guzmán",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-015",
+      "name": "José Ignacio Alcón",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-016",
+      "name": "Rodrigo Márquez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-017",
+      "name": "Pablo Gálvez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-018",
+      "name": "Michael Makuemimo",
+      "position": "A",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-019",
+      "name": "Nacho Cordero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-020",
+      "name": "Juan Almeida",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-021",
+      "name": "Pablo Arana",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-022",
+      "name": "Álvaro González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-antoniano-2026-023",
+      "name": "Nando Raposo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

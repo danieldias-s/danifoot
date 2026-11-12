@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "elche-ilicitano",
+  "name": "Elche Ilicitano",
+  "shortName": "Elche Ilicitano",
+  "abbreviation": "ILI",
+  "colors": [
+    "#FFFFFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

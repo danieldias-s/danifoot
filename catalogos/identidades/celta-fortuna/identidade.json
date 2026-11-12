@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "celta-fortuna",
+  "name": "RC Celta Fortuna",
+  "shortName": "Celta Fortuna",
+  "abbreviation": "CEF",
+  "colors": [
+    "#8BC4EF",
+    "#111111"
+  ],
+  "crestFile": null
+}

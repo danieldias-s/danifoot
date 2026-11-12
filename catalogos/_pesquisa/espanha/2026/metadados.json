@@ -1,0 +1,51 @@
+{
+  "countryCode": "ES",
+  "countryName": "Espanha",
+  "slug": "espanha",
+  "catalogYear": 2026,
+  "targetSeason": "2026/27",
+  "referenceSeason": "2025/26",
+  "gender": "Male",
+  "squadSnapshotDate": "2026-11-12",
+  "rankingReferenceDate": "2026-11-12",
+  "snapshotRationale": "Data de corte alinhada à pesquisa pré-existente do Real Madrid 2026/27 (2026-11-12, rodada ~12), ao snapshot oficial ao vivo do Opta Power Rankings em 2026-11-12 e ao requisito técnico de OfflineCatalogV11Loader (historicalRanking.referenceDate no ano 2026). As estatísticas principais de desempenho, disciplina e candidatura a estrela referem-se à temporada concluída 2025/26 (no clube anterior quando o atleta foi transferido).",
+  "categories": [
+    {
+      "categoriaNacional": 1,
+      "competicao": "Primera División (La Liga EA Sports)",
+      "grupos": 1,
+      "clubCount": 20,
+      "sourceUrl": "https://www.laliga.com/en-GB/laliga-easports/clubs"
+    },
+    {
+      "categoriaNacional": 2,
+      "competicao": "Segunda División (La Liga Hypermotion)",
+      "grupos": 1,
+      "clubCount": 22,
+      "sourceUrl": "https://www.laliga.com/en-GB/laliga-hypermotion/clubs"
+    },
+    {
+      "categoriaNacional": 3,
+      "competicao": "Primera Federación",
+      "grupos": 2,
+      "clubCount": 40,
+      "sourceUrl": "https://rfef.es/es/noticias/aprobados-los-grupos-de-primera-federacion-para-la-temporada-202627"
+    },
+    {
+      "categoriaNacional": 4,
+      "competicao": "Segunda Federación",
+      "grupos": 5,
+      "clubCount": 90,
+      "sourceUrl": "https://rfef.es/es/noticias/definidos-los-grupos-de-segunda-federacion-para-la-temporada-202627"
+    }
+  ],
+  "totalClubs": 172,
+  "reserveFilialClubs": 31,
+  "researchMethod": "Cruzamento triplo entre listas oficiais da RFEF/LaLiga, Wikipédia EN/ES 2026–27 e Transfermarkt 2026/27; rankings nacionais pelo Opta Power Rankings oficial (dataviz.theanalyst.com, 2026-11-12) com arquivo secundário tonyelhabr/club-rankings (2026-01-14) documentado apenas em auditoria auxiliar sem mistura de datas; classificador experimental V16 executado localmente mantendo behavior=null e status=DRAFT sem aprovação automática.",
+  "limitations": [
+    "Clubes B/C/filiais (31 entidades) estão inventariados e catalogados como entidades distintas com vínculo documentado ao clube principal; elegibilidade conjunta em um mesmo mundo depende de regra de produto/motor não alterada.",
+    "FC Andorra (sede em Andorra, filiado à RFEF e participante da Segunda División) utiliza country='ES' no clube JSON V1.1 por exigência estrutural de OfflineCatalogV11Loader.cs (SCOPE).",
+    "Transfermarkt fornece minutos, jogos, titularidades (Appearances menos Substitutions on) e cartões de 2025/26 nas 4 categorias; faltas cometidas (total_fouls_conceded) de 2025/26 só são reportadas integralmente quando disponíveis na fonte Opta/LaLiga, gerando REVIEW_REQUIRED no V16 quando ausentes.",
+    "Clubes abaixo do corte pesquisado no Opta Power Rankings ao vivo permanecem com historicalRanking=null e status=DRAFT conforme regra anti-invenção."
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-las-palmas",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 6,
+  "tieBreakPriority": 30,
+  "historicalRanking": {
+    "rating": 79.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Gran Canaria",
+    "capacity": 32400
+  },
+  "coach": {
+    "id": "ud-las-palmas-coach-68969",
+    "name": "Albert Sánchez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ud-las-palmas-2026-001",
+      "name": "José Antonio Caro",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-002",
+      "name": "Adri Suárez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-003",
+      "name": "Enrique Clemente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-004",
+      "name": "Marvin Park",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-005",
+      "name": "Nicholas Opoku",
+      "position": "D",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-006",
+      "name": "Viti Rozada",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-007",
+      "name": "Valentín Pezzolesi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-008",
+      "name": "Juanma Herzog",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-009",
+      "name": "Giovanni Bonfanti",
+      "position": "D",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-010",
+      "name": "Iván Medina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-011",
+      "name": "Enzo Loiodice",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-012",
+      "name": "Kirian Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-013",
+      "name": "Aboubacar Bassinga",
+      "position": "M",
+      "nationality": "BF",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-014",
+      "name": "Mateo Acimovic",
+      "position": "M",
+      "nationality": "SI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-015",
+      "name": "Iñaki González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-016",
+      "name": "Edward Cedeño",
+      "position": "M",
+      "nationality": "PA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-017",
+      "name": "Iván Jaime",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-018",
+      "name": "Manu Fuster",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-019",
+      "name": "Jefté Betancor",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-020",
+      "name": "Jesé",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-021",
+      "name": "Taisei Miyashiro",
+      "position": "A",
+      "nationality": "JP",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-022",
+      "name": "Jeremía Recoba",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-las-palmas-2026-023",
+      "name": "Sandro Ramírez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

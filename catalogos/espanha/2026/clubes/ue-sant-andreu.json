@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ue-sant-andreu",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 79,
+  "historicalRanking": {
+    "rating": 72.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Narcís Sala",
+    "capacity": 6563
+  },
+  "coach": {
+    "id": "ue-sant-andreu-coach-103352",
+    "name": "Javi Rey",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-3-3",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ue-sant-andreu-2026-001",
+      "name": "Ramón Juan",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-002",
+      "name": "Iñaki Álvarez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-003",
+      "name": "Antonio Montoro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-004",
+      "name": "Jordi Méndez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-005",
+      "name": "Lucas Viña",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-006",
+      "name": "Javi Gómez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-007",
+      "name": "Andreu Hernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-008",
+      "name": "Félix Garreta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-009",
+      "name": "Nil Jiménez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-010",
+      "name": "Joan Anaya",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-011",
+      "name": "Oscar Carrasco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-012",
+      "name": "Marc Delgado",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-013",
+      "name": "Pau Darbra",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-014",
+      "name": "Albertito",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-015",
+      "name": "Dani Torices",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-016",
+      "name": "Pablo Agudín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-017",
+      "name": "Noel Carbonell",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-018",
+      "name": "Jaume Tovar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-019",
+      "name": "Alexis García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-020",
+      "name": "Sergi Serrano",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-021",
+      "name": "Sergi Armero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-022",
+      "name": "Carles Garrido",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ue-sant-andreu-2026-023",
+      "name": "Jeremy de León",
+      "position": "A",
+      "nationality": "PR",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

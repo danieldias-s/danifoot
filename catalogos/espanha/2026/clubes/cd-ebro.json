@@ -1,0 +1,195 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-ebro",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 99,
+  "historicalRanking": {
+    "rating": 70.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Campo Municipal de Fútbol La Almozara",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "cd-ebro-coach-128357",
+    "name": "Javier Genovés",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-ebro-2026-001",
+      "name": "Mateo Lite",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-002",
+      "name": "Jaime García",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-003",
+      "name": "Sergio Escolar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-004",
+      "name": "Javi Hernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-005",
+      "name": "Iván Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-006",
+      "name": "Nacho Uche",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-007",
+      "name": "Sergio Mendinueta",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-008",
+      "name": "Mohammed Saadouni",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-009",
+      "name": "Alejandro Muñoz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-010",
+      "name": "Álvaro Novials",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-011",
+      "name": "Ángel Linares",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-012",
+      "name": "Dimitri Kassekar",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-013",
+      "name": "Jaime Escario",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-014",
+      "name": "Paki",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-015",
+      "name": "Isaac Boudaoud",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-016",
+      "name": "Salvador Fillouche",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-017",
+      "name": "Javirro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-018",
+      "name": "Stéphane Emaná",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-019",
+      "name": "Cheikh Tall",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-ebro-2026-020",
+      "name": "Mariano Aké",
+      "position": "A",
+      "nationality": "BF",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "barakaldo-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 55,
+  "historicalRanking": {
+    "rating": 74.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Lasesarre, Barakaldo",
+    "capacity": 7960
+  },
+  "coach": {
+    "id": "barakaldo-cf-coach-93120",
+    "name": "Imanol de la Sota",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "barakaldo-cf-2026-001",
+      "name": "Gaizka Campos",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-002",
+      "name": "Ibon Ispizua",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-003",
+      "name": "Beñat Gómez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-004",
+      "name": "Oscar Marotías",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-005",
+      "name": "Samuel Calera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-006",
+      "name": "Sergio Camus",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-007",
+      "name": "Ander Zoilo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-008",
+      "name": "Ander Sustatxa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-009",
+      "name": "Aritz Muguruza",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-010",
+      "name": "Pablo Trigueros",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-011",
+      "name": "Julen Huidobro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-012",
+      "name": "Markel Ruiz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-013",
+      "name": "Xemi Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-014",
+      "name": "Álvaro Peña",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-015",
+      "name": "Unai Naveira",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-016",
+      "name": "Iván Castillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-017",
+      "name": "Xavier Sola",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-018",
+      "name": "Ager Badiola",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-019",
+      "name": "Endika Mateos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-020",
+      "name": "Urko Collado",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-021",
+      "name": "Carlos Mattheus",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-022",
+      "name": "Ángel Troncho",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "barakaldo-cf-2026-023",
+      "name": "Jon Cabo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

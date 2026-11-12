@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "girona-fc-b",
+  "name": "Girona FC B",
+  "shortName": "Girona B",
+  "abbreviation": "GRB",
+  "colors": [
+    "#FF0000",
+    "#111111"
+  ],
+  "crestFile": null
+}

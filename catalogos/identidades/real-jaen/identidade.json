@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-jaen",
+  "name": "Real Jaén CF",
+  "shortName": "Jaén",
+  "abbreviation": "JAE",
+  "colors": [
+    "#7329A7",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

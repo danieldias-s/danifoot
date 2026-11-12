@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-la-nucia",
+  "name": "CF La Nucía",
+  "shortName": "La Nucía",
+  "abbreviation": "LNU",
+  "colors": [
+    "#FF0000",
+    "#000000"
+  ],
+  "crestFile": null
+}

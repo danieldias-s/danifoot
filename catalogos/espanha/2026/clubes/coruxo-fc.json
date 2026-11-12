@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "coruxo-fc",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 141,
+  "historicalRanking": {
+    "rating": 67.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "O Vao",
+    "capacity": 1500
+  },
+  "coach": {
+    "id": "coruxo-fc-coach-144576",
+    "name": "Javi Pereira",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "coruxo-fc-2026-001",
+      "name": "Pablo Cacharrón",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-002",
+      "name": "Asier Troncoso",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-003",
+      "name": "Álvaro Naveira",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-004",
+      "name": "Juan Rodríguez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-005",
+      "name": "Xavier Cidre",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-006",
+      "name": "David Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-007",
+      "name": "Miguel Raimúndez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-008",
+      "name": "Adrián Gómez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-009",
+      "name": "Figueiredo",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-010",
+      "name": "Guido Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-011",
+      "name": "Nacho Fariña",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-012",
+      "name": "Guille Pinín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-013",
+      "name": "Rareș Mezdrea",
+      "position": "M",
+      "nationality": "RO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-014",
+      "name": "Álex Barba",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-015",
+      "name": "Iker Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-016",
+      "name": "Guram Khvedelidze",
+      "position": "M",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-017",
+      "name": "David Añón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-018",
+      "name": "Izan González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-019",
+      "name": "Santos Fonterigo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-020",
+      "name": "Hugo Matos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-021",
+      "name": "Dani Rosas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-022",
+      "name": "Jon Arruabarrena",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "coruxo-fc-2026-023",
+      "name": "Ivan Breñé",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

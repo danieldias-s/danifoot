@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "las-palmas-atletico",
+  "name": "Las Palmas Atlético",
+  "shortName": "Las Palmas Atlético",
+  "abbreviation": "LPB",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "mijas-las-lagunas",
+  "name": "CP Mijas Las Lagunas",
+  "shortName": "Mijas-Las Lagunas",
+  "abbreviation": "MIJ",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

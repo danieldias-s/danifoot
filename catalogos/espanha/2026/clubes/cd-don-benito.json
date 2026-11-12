@@ -1,0 +1,203 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-don-benito",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 125,
+  "historicalRanking": {
+    "rating": 68.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Vicente Sanz",
+    "capacity": 5000
+  },
+  "coach": {
+    "id": "cd-don-benito-coach-138812",
+    "name": "José Carlos Prieto",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-don-benito-2026-001",
+      "name": "Isaac Vila",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-002",
+      "name": "César Llera",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-003",
+      "name": "Brian Velázquez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-004",
+      "name": "Samu Gomis",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-005",
+      "name": "Raúl Castro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-006",
+      "name": "Rubén Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-007",
+      "name": "Philip Osei",
+      "position": "D",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-008",
+      "name": "Lolo Pavón",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-009",
+      "name": "Jorge Bote",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-010",
+      "name": "Boubacar Keita",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-011",
+      "name": "Carlos López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-012",
+      "name": "Javi Mancha",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-013",
+      "name": "Asier López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-014",
+      "name": "Nacho Goma",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-015",
+      "name": "Emmanuel Attipoe",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-016",
+      "name": "Lorenzo Busi",
+      "position": "A",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-017",
+      "name": "Gorka Santamaría",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-018",
+      "name": "Sergio Alonso",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-019",
+      "name": "Antonio Pavón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-020",
+      "name": "Abel Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-don-benito-2026-021",
+      "name": "Nando Copete",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ourense-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 110,
+  "historicalRanking": {
+    "rating": 69.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Campo de Oira",
+    "capacity": 5659
+  },
+  "coach": {
+    "id": "ourense-cf-coach-128900",
+    "name": "Jorge Cuesta",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ourense-cf-2026-001",
+      "name": "Diego García",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-002",
+      "name": "Román Noya",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-003",
+      "name": "Pablo Ramírez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-004",
+      "name": "Jorge Domingo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-005",
+      "name": "Víctor Algisí",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-006",
+      "name": "Miguel Cera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-007",
+      "name": "Mario Jorrín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-008",
+      "name": "Iván Muñoz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-009",
+      "name": "Manu Buide",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-010",
+      "name": "Iván Tomás",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-011",
+      "name": "Simón Brainsky",
+      "position": "D",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-012",
+      "name": "Meli",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-013",
+      "name": "Iker Punzano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-014",
+      "name": "Jesús Cambil",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-015",
+      "name": "Facundo Ballardo",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-016",
+      "name": "Robustiano Ndong",
+      "position": "M",
+      "nationality": "GQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-017",
+      "name": "Peter Bomwinsum",
+      "position": "M",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-018",
+      "name": "Manu de la Fuente",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-019",
+      "name": "Viti Oliver",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-020",
+      "name": "Ihab Nurudeen",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-021",
+      "name": "Marquitos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-022",
+      "name": "Aarón Delgado",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ourense-cf-2026-023",
+      "name": "Brais Penela",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

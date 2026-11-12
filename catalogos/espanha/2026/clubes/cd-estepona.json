@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-estepona",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 114,
+  "historicalRanking": {
+    "rating": 69.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Francisco Muñoz Pérez",
+    "capacity": 3800
+  },
+  "coach": {
+    "id": "cd-estepona-coach-99291",
+    "name": "Manolo Sánchez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-3-3",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "3-5-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-estepona-2026-001",
+      "name": "Fran Martínez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-002",
+      "name": "Héctor Oliva",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-003",
+      "name": "Alfonso Candelas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-004",
+      "name": "José Antonio Caro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-005",
+      "name": "Antonio Marín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-006",
+      "name": "Jorge Álvarez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-007",
+      "name": "Cristian Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-008",
+      "name": "Alberto González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-009",
+      "name": "Álvaro Díaz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-010",
+      "name": "Álex Claverías",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-011",
+      "name": "Sandji Baradji",
+      "position": "M",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-012",
+      "name": "Álvaro Yuste",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-013",
+      "name": "Maxi Benites",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-014",
+      "name": "Samu Expósito",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-015",
+      "name": "Ale Contreras",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-016",
+      "name": "Julen Jon Guerrero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-017",
+      "name": "Pablo Arriaza",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-018",
+      "name": "David Ballarín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-019",
+      "name": "Ariel Herrero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-020",
+      "name": "Héber Pena",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-021",
+      "name": "Roi Tato",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-022",
+      "name": "Baka Sow",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-estepona-2026-023",
+      "name": "Nacho Ramón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

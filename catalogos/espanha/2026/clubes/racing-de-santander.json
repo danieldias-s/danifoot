@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "racing-de-santander",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 11,
+  "tieBreakPriority": 19,
+  "historicalRanking": {
+    "rating": 83.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "El Sardinero",
+    "capacity": 22222
+  },
+  "coach": {
+    "id": "racing-de-santander-coach-54421",
+    "name": "José Alberto López",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "racing-de-santander-2026-001",
+      "name": "Julen Agirrezabala",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-002",
+      "name": "Simon Eriksson",
+      "position": "G",
+      "nationality": "SE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-003",
+      "name": "Jorge Salinas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-004",
+      "name": "Álvaro Mantilla",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-005",
+      "name": "Aarón Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-006",
+      "name": "Manu Hernando",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-007",
+      "name": "Facundo González",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-008",
+      "name": "Pablo Ramón",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-009",
+      "name": "Pedro Felipe",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-010",
+      "name": "Jeanuël Belocian",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-011",
+      "name": "Iván Martín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-012",
+      "name": "Sergio Canales",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-013",
+      "name": "Maguette Gueye",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-014",
+      "name": "Matteo Prati",
+      "position": "M",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-015",
+      "name": "André Almeida",
+      "position": "M",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-016",
+      "name": "Íñigo Sainz-Maza",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-017",
+      "name": "Andrés Martín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-018",
+      "name": "Iñigo Vicente",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-019",
+      "name": "Iker Luque",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-020",
+      "name": "Giorgi Guliashvili",
+      "position": "A",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-021",
+      "name": "Asier Villalibre",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-022",
+      "name": "Juan Carlos Arana",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "racing-de-santander-2026-023",
+      "name": "Yassir Zabiri",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

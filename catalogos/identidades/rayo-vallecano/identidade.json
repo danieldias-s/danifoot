@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rayo-vallecano",
+  "name": "Rayo Vallecano",
+  "shortName": "Rayo Vallecano",
+  "abbreviation": "RAY",
+  "colors": [
+    "#F21E27",
+    "#000000"
+  ],
+  "crestFile": null
+}

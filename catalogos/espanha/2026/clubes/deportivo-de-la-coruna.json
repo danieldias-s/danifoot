@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-de-la-coruna",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 14,
+  "tieBreakPriority": 14,
+  "historicalRanking": {
+    "rating": 84.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Riazor",
+    "capacity": 32490
+  },
+  "coach": {
+    "id": "deportivo-de-la-coruna-coach-68884",
+    "name": "Antonio Hidalgo",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "deportivo-de-la-coruna-2026-001",
+      "name": "Leo Román",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-002",
+      "name": "Álvaro Ferllo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-003",
+      "name": "Germán Parreño",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-004",
+      "name": "Miguel Loureiro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-005",
+      "name": "Giacomo Quagliata",
+      "position": "D",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-006",
+      "name": "Lucas Noubi",
+      "position": "D",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-007",
+      "name": "Adrià Altimira",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-008",
+      "name": "Dani Barcia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-009",
+      "name": "Arnau Comas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-010",
+      "name": "José María Giménez",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-011",
+      "name": "Bright Ede",
+      "position": "D",
+      "nationality": "PL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-012",
+      "name": "Mario Soriano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-013",
+      "name": "Lorenzo Amatucci",
+      "position": "M",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-014",
+      "name": "Diego Villares",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-015",
+      "name": "Riki Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-016",
+      "name": "Marc Casadó",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-017",
+      "name": "Jonathan Asp Jensen",
+      "position": "M",
+      "nationality": "DK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-018",
+      "name": "Yeremay Hernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-019",
+      "name": "Luismi Cruz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-020",
+      "name": "Pierre-Emerick Aubameyang",
+      "position": "A",
+      "nationality": "GA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-021",
+      "name": "Bil Nsongo",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-022",
+      "name": "Zakaria Eddahchouri",
+      "position": "A",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-de-la-coruna-2026-023",
+      "name": "David Mella",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

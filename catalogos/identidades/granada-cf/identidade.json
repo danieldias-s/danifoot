@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "granada-cf",
+  "name": "Granada CF",
+  "shortName": "Granada",
+  "abbreviation": "GRA",
+  "colors": [
+    "#BC161C",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

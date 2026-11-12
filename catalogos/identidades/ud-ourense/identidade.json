@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-ourense",
+  "name": "UD Ourense",
+  "shortName": "UD Ourense",
+  "abbreviation": "OUR",
+  "colors": [
+    "#FF0000",
+    "#111111"
+  ],
+  "crestFile": null
+}

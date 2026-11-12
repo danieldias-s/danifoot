@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rcd-espanyol",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 12,
+  "tieBreakPriority": 17,
+  "historicalRanking": {
+    "rating": 83.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "RCDE Stadium",
+    "capacity": 40000
+  },
+  "coach": {
+    "id": "rcd-espanyol-coach-49401",
+    "name": "Eder Sarabia",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "5-4-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "rcd-espanyol-2026-001",
+      "name": "Marko Dmitrović",
+      "position": "G",
+      "nationality": "RS",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-002",
+      "name": "Ángel Fortuño",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-003",
+      "name": "Leandro Cabrera",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-004",
+      "name": "Roger Hinojo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-005",
+      "name": "Omar El Hilali",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-006",
+      "name": "Andoni Gorosabel",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-007",
+      "name": "Quilindschy Hartman",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-008",
+      "name": "Vanja Drkusic",
+      "position": "D",
+      "nationality": "SI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-009",
+      "name": "Clemens Riedel",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-010",
+      "name": "Unai Núñez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-011",
+      "name": "Álex Calatrava",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-012",
+      "name": "Rafel Bauzà",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-013",
+      "name": "Edu Expósito",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-014",
+      "name": "Urko González de Zárate",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-015",
+      "name": "Pol Lozano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-016",
+      "name": "Javi Hernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-017",
+      "name": "Gabriel Moscardo",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-018",
+      "name": "Marcos Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-019",
+      "name": "Tyrhys Dolan",
+      "position": "A",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-020",
+      "name": "Pere Milla",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-021",
+      "name": "Bryan Zaragoza",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-022",
+      "name": "Jofre Carreras",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-espanyol-2026-023",
+      "name": "Javi Puado",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

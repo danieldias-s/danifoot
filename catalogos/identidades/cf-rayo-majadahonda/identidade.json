@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-rayo-majadahonda",
+  "name": "CF Rayo Majadahonda",
+  "shortName": "Rayo Majadahonda",
+  "abbreviation": "RMJ",
+  "colors": [
+    "#FF0000",
+    "#111111"
+  ],
+  "crestFile": null
+}

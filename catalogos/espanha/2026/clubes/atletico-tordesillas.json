@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-tordesillas",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 142,
+  "historicalRanking": {
+    "rating": 67.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Las Salinas",
+    "capacity": 3500
+  },
+  "coach": {
+    "id": "atletico-tordesillas-coach-80832",
+    "name": "Álex Izquierdo",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "atletico-tordesillas-2026-001",
+      "name": "Farolo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-002",
+      "name": "Jon Arrasate",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-003",
+      "name": "Braian",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-004",
+      "name": "Joan Castaño",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-005",
+      "name": "Fran Manja",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-006",
+      "name": "Abraham Rodríguez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-007",
+      "name": "Dieguito Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-008",
+      "name": "Diego Herrador",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-009",
+      "name": "José Colás",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-010",
+      "name": "Tjiunatjo Kakuenje",
+      "position": "D",
+      "nationality": "NA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-011",
+      "name": "Javi Bueno",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-012",
+      "name": "Sekou Kante",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-013",
+      "name": "Abel Conejo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-014",
+      "name": "Fer Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-015",
+      "name": "Miguel Hernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-016",
+      "name": "Álex Maroto",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-017",
+      "name": "David López",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-018",
+      "name": "Samu Aparicio",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-019",
+      "name": "Dani Díez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-020",
+      "name": "Chatún",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-021",
+      "name": "Jesús Torres",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-022",
+      "name": "Emilio Pérez-Minayo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-tordesillas-2026-023",
+      "name": "Javi Escudero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

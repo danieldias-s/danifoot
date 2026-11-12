@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-sociedad",
+  "name": "Real Sociedad",
+  "shortName": "Real Sociedad",
+  "abbreviation": "RSO",
+  "colors": [
+    "#194BEB",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

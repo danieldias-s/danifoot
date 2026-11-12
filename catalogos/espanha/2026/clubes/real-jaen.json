@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-jaen",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 70,
+  "historicalRanking": {
+    "rating": 73.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Nuevo La Victoria",
+    "capacity": 12569
+  },
+  "coach": {
+    "id": "real-jaen-coach-23887",
+    "name": "Manolo Herrero",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "5-4-1",
+        "4-5-1"
+      ],
+      "away": [
+        "4-3-3",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-jaen-2026-001",
+      "name": "Salvi Carrasco",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-002",
+      "name": "Jaime Morillas",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-003",
+      "name": "David Serrano",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-004",
+      "name": "Alejandro Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-005",
+      "name": "Jaume Pol",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-006",
+      "name": "Cristian Pehlivanov",
+      "position": "D",
+      "nationality": "BG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-007",
+      "name": "Mauro Cabello",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-008",
+      "name": "Javi Moyano",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-009",
+      "name": "David Márquez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-010",
+      "name": "David Montejano",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-011",
+      "name": "Antonio Caballero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-012",
+      "name": "Busi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-013",
+      "name": "José Álvarez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-014",
+      "name": "Diego Fuentes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-015",
+      "name": "Nacho Castillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-016",
+      "name": "Fran Gallego",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-017",
+      "name": "Adri Paz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-018",
+      "name": "Oscar Lozano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-019",
+      "name": "Mario Martos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-020",
+      "name": "Moha Keita",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-021",
+      "name": "Marco Siverio",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-022",
+      "name": "Peque Polo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-jaen-2026-023",
+      "name": "Yanis Senhadji",
+      "position": "A",
+      "nationality": "DZ",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

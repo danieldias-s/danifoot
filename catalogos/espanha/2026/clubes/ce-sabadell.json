@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ce-sabadell",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 5,
+  "tieBreakPriority": 32,
+  "historicalRanking": {
+    "rating": 78.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Nova Creu Alta",
+    "capacity": 11908
+  },
+  "coach": {
+    "id": "ce-sabadell-coach-64915",
+    "name": "Ferran Costa",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "5-3-2",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ce-sabadell-2026-001",
+      "name": "Diego Fuoli",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-002",
+      "name": "José Ortega",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-003",
+      "name": "Marc Vidal",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-004",
+      "name": "Arthur Bonaldo",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-005",
+      "name": "Miki Codina",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-006",
+      "name": "Genar Fornés",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-007",
+      "name": "Kaiser",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-008",
+      "name": "José Luis Català",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-009",
+      "name": "Pipa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-010",
+      "name": "Edgar González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-011",
+      "name": "Pere Pons",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-012",
+      "name": "Quadri Liameed",
+      "position": "M",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-013",
+      "name": "Albert Orriols",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-014",
+      "name": "Óscar Sanz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-015",
+      "name": "Alain Ribeiro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-016",
+      "name": "Eneko Aguilar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-017",
+      "name": "Yussif Owusu",
+      "position": "M",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-018",
+      "name": "Joel Priego",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-019",
+      "name": "Ton Ripoll",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-020",
+      "name": "Yanis Rahmani",
+      "position": "A",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-021",
+      "name": "Gastón Valles",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-022",
+      "name": "Ángel Baena",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-sabadell-2026-023",
+      "name": "Nicholas Gioacchini",
+      "position": "A",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

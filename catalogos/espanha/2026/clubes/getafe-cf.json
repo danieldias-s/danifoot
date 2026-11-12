@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "getafe-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 10,
+  "tieBreakPriority": 21,
+  "historicalRanking": {
+    "rating": 82.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Coliseum",
+    "capacity": 16500
+  },
+  "coach": {
+    "id": "getafe-cf-coach-6440",
+    "name": "José Bordalás",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "getafe-cf-2026-001",
+      "name": "David Soria",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-002",
+      "name": "Jiri Letacek",
+      "position": "G",
+      "nationality": "CZ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-003",
+      "name": "Dakonam Djené",
+      "position": "D",
+      "nationality": "TG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-004",
+      "name": "Johan Mojica",
+      "position": "D",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-005",
+      "name": "Kiko Femenía",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-006",
+      "name": "Jean Ives Valou",
+      "position": "D",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-007",
+      "name": "Abdel Abqar",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-008",
+      "name": "Zaid Romero",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-009",
+      "name": "Davinchi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-010",
+      "name": "Sebastián Boselli",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-011",
+      "name": "Saba Sazonov",
+      "position": "D",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-012",
+      "name": "Francho Serrano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-013",
+      "name": "Nemanja Gudelj",
+      "position": "M",
+      "nationality": "RS",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-014",
+      "name": "Mario Martín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-015",
+      "name": "Ramón Terrats",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-016",
+      "name": "Alberto Risco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-017",
+      "name": "Orel Mangala",
+      "position": "M",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-018",
+      "name": "Iván Azón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-019",
+      "name": "Martín Satriano",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-020",
+      "name": "Borja Mayoral",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-021",
+      "name": "Juanmi",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-022",
+      "name": "Christantus Uche",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "getafe-cf-2026-023",
+      "name": "Enes Ünal",
+      "position": "A",
+      "nationality": "TR",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

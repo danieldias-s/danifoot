@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "reus-fc-reddis",
+  "name": "Reus FC Reddis",
+  "shortName": "Reus FCR",
+  "abbreviation": "RED",
+  "colors": [
+    "#CC0000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

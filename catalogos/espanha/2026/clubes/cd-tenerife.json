@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-tenerife",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 36,
+  "historicalRanking": {
+    "rating": 77.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Heliodoro Rodríguez López",
+    "capacity": 22824
+  },
+  "coach": {
+    "id": "cd-tenerife-coach-15103",
+    "name": "Álvaro Cervera",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-tenerife-2026-001",
+      "name": "Dani Martín",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-002",
+      "name": "Gabriel De Vuyst",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-003",
+      "name": "David Rodríguez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-004",
+      "name": "Anthony Landázuri",
+      "position": "D",
+      "nationality": "EC",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-005",
+      "name": "César Álvarez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-006",
+      "name": "José León",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-007",
+      "name": "Neal Viereck",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-008",
+      "name": "Roko Jureskin",
+      "position": "D",
+      "nationality": "HR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-009",
+      "name": "Jorge Moreno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-010",
+      "name": "Marc Mateu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-011",
+      "name": "Jesús Álvarez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-012",
+      "name": "Juanjo Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-013",
+      "name": "Fabricio",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-014",
+      "name": "Mauro Pittón",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-015",
+      "name": "Anes Krdzalic",
+      "position": "M",
+      "nationality": "BA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-016",
+      "name": "Dani Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-017",
+      "name": "Martin Pecar",
+      "position": "A",
+      "nationality": "SI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-018",
+      "name": "Enric Gallego",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-019",
+      "name": "Nacho Gil",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-020",
+      "name": "Noel López",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-021",
+      "name": "Gerard Valentín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-022",
+      "name": "Iván Chapela",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-tenerife-2026-023",
+      "name": "Grant-Leon Ranos",
+      "position": "A",
+      "nationality": "AM",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

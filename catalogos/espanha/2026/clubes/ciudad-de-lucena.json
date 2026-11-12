@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ciudad-de-lucena",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 120,
+  "historicalRanking": {
+    "rating": 69.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Ciudad de Lucena",
+    "capacity": 5000
+  },
+  "coach": {
+    "id": "ciudad-de-lucena-coach-127120",
+    "name": "Antonio Cobos",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ciudad-de-lucena-2026-001",
+      "name": "Hugo Caballero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-002",
+      "name": "Froilán Leal",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-003",
+      "name": "Alejandro Pavón",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-004",
+      "name": "Pablo Morillo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-005",
+      "name": "Manolo Ortiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-006",
+      "name": "Alejandro Benítez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-007",
+      "name": "Rafa Gálvez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-008",
+      "name": "Pablo Carmona",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-009",
+      "name": "Rubén Ávila",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-010",
+      "name": "Adrián Valenzuela",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-011",
+      "name": "Juanma Porro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-012",
+      "name": "Hugo Fuentes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-013",
+      "name": "Nacho Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-014",
+      "name": "Alberto García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-015",
+      "name": "Migue Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-016",
+      "name": "Sergio García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-017",
+      "name": "Isra Cano",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-018",
+      "name": "Mario Linares",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-019",
+      "name": "Diego Vargas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-020",
+      "name": "Manu Molina",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-021",
+      "name": "Joselillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-022",
+      "name": "Diego Canty",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ciudad-de-lucena-2026-023",
+      "name": "Steffan Witmer",
+      "position": "A",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

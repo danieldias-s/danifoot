@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rayo-cantabria",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 116,
+  "historicalRanking": {
+    "rating": 69.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Campo Santi Gutiérrez Calle, Santander",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "rayo-cantabria-coach-41024",
+    "name": "Ezequiel Loza",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "rayo-cantabria-2026-001",
+      "name": "Laro Gómez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-002",
+      "name": "Luismi Morales",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-003",
+      "name": "Héctor Mejía",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-004",
+      "name": "Álvaro Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-005",
+      "name": "Jaime Prieto",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-006",
+      "name": "Aitor Crespo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-007",
+      "name": "Leo Merino",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-008",
+      "name": "Hugo Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-009",
+      "name": "Jaime Bascuñana",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-010",
+      "name": "Pablo Gaitán",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-011",
+      "name": "Mario Solórzano",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-012",
+      "name": "Andrés Vallecillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-013",
+      "name": "Hugo Martín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-014",
+      "name": "Javi Carmona",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-015",
+      "name": "Junior Bita",
+      "position": "M",
+      "nationality": "GQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-016",
+      "name": "Jorge Castellanos",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-017",
+      "name": "Enzo Juan",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-018",
+      "name": "Rodrigo Ramos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-019",
+      "name": "Javi García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-020",
+      "name": "Yaroslav Boyko",
+      "position": "A",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-021",
+      "name": "Souleymane Diouf",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-022",
+      "name": "Manu Márquez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rayo-cantabria-2026-023",
+      "name": "Gabi Jiménez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ue-sant-andreu",
+  "name": "UE Sant Andreu",
+  "shortName": "Sant Andreu",
+  "abbreviation": "SAN",
+  "colors": [
+    "#FFD700",
+    "#111111"
+  ],
+  "crestFile": null
+}

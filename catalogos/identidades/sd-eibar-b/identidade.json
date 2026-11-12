@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sd-eibar-b",
+  "name": "SD Eibar B",
+  "shortName": "Eibar B",
+  "abbreviation": "EBB",
+  "colors": [
+    "#1C2E6C",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

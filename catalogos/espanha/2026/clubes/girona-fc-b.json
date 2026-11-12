@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "girona-fc-b",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 102,
+  "historicalRanking": {
+    "rating": 70.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Municipal de Riudarenes",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "girona-fc-b-coach-108211",
+    "name": "Ángel Donato",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "girona-fc-b-2026-001",
+      "name": "Aleksandar Andreev",
+      "position": "G",
+      "nationality": "BG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-002",
+      "name": "Jordi Danso",
+      "position": "G",
+      "nationality": "GM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-003",
+      "name": "Biel Farrés",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-004",
+      "name": "Antonio Salguero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-005",
+      "name": "Pol Arnau",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-006",
+      "name": "Gibert Jordana",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-007",
+      "name": "Guillem Badia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-008",
+      "name": "Mario González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-009",
+      "name": "Mauro Furtado",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-010",
+      "name": "Anartz Segurola",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-011",
+      "name": "Javi Sarasa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-012",
+      "name": "Pol Trigueros",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-013",
+      "name": "Joan Raventós",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-014",
+      "name": "Aimar García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-015",
+      "name": "Enric García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-016",
+      "name": "Darío Frey",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-017",
+      "name": "Ricard Artero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-018",
+      "name": "Javi González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-019",
+      "name": "Juan Arango",
+      "position": "A",
+      "nationality": "VE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-020",
+      "name": "Mohammed Hamony",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-021",
+      "name": "Adam El Mokhles",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-022",
+      "name": "Jakes Gorosabel",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "girona-fc-b-2026-023",
+      "name": "Biel Carreras",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

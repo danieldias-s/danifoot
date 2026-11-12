@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "juventud-de-torremolinos",
+  "name": "Juventud Torremolinos CF",
+  "shortName": "Juventud Torremolinos",
+  "abbreviation": "JUV",
+  "colors": [
+    "#006000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

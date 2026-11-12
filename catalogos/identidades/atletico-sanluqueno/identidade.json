@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-sanluqueno",
+  "name": "Atlético Sanluqueño CF",
+  "shortName": "Atlético Sanluqueño",
+  "abbreviation": "ASL",
+  "colors": [
+    "#007733",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

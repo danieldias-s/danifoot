@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sestao-river",
+  "name": "Sestao River",
+  "shortName": "Sestao River",
+  "abbreviation": "SES",
+  "colors": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

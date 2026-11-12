@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "naxara-cd",
+  "name": "Náxara CD",
+  "shortName": "Náxara",
+  "abbreviation": "NAX",
+  "colors": [
+    "#02549E",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

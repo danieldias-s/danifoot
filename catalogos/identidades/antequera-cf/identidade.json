@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "antequera-cf",
+  "name": "Antequera CF",
+  "shortName": "Antequera",
+  "abbreviation": "ANT",
+  "colors": [
+    "#006000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

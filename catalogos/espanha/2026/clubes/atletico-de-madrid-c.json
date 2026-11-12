@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-de-madrid-c",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 143,
+  "historicalRanking": {
+    "rating": 67.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Cerro del Espino",
+    "capacity": 3865
+  },
+  "coach": {
+    "id": "atletico-de-madrid-c-coach-40830",
+    "name": "Manuel Ruano",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "5-3-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "atletico-de-madrid-c-2026-001",
+      "name": "Dani Rubio",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-002",
+      "name": "Álvaro Moreno",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-003",
+      "name": "Mohamed Habib Zinbi",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-004",
+      "name": "Beltrán Auguste",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-005",
+      "name": "Cristian Grant",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-006",
+      "name": "Javi Aznar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-007",
+      "name": "Dani Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-008",
+      "name": "Adrián Almeida",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-009",
+      "name": "Miguel Gil",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-010",
+      "name": "David Arza",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-011",
+      "name": "Adrian Lis",
+      "position": "D",
+      "nationality": "PL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-012",
+      "name": "David Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-013",
+      "name": "Joel Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-014",
+      "name": "Javi Tena",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-015",
+      "name": "Shadrack Addo",
+      "position": "M",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-016",
+      "name": "Martín Cuéllar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-017",
+      "name": "Hugo Humanes",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-018",
+      "name": "Rubén Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-019",
+      "name": "Daniel Fitzgerald",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-020",
+      "name": "Sergio Vinatea",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-021",
+      "name": "Gonzalo Gross",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-022",
+      "name": "Alage Sanha",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-de-madrid-c-2026-023",
+      "name": "Óscar Lorenzo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

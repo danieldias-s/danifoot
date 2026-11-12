@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "club-portugalete",
+  "name": "Club Portugalete",
+  "shortName": "Portugalete",
+  "abbreviation": "POR",
+  "colors": [
+    "#FFCC00",
+    "#000000"
+  ],
+  "crestFile": null
+}

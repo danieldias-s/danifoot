@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-murcia",
+  "name": "Real Murcia CF",
+  "shortName": "Murcia",
+  "abbreviation": "MUR",
+  "colors": [
+    "#CC0000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

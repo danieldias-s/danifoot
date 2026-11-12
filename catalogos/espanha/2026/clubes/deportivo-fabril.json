@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-fabril",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 84,
+  "historicalRanking": {
+    "rating": 71.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Cidade Deportiva de Abegondo",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "deportivo-fabril-coach-96628",
+    "name": "Manuel Pablo",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-3-3",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "deportivo-fabril-2026-001",
+      "name": "Hugo Rios",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-002",
+      "name": "Álex Marqués",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-003",
+      "name": "Samu Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-004",
+      "name": "Quique Teijo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-005",
+      "name": "Iker Vidal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-006",
+      "name": "Manu Serrano",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-007",
+      "name": "Damián Canedo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-008",
+      "name": "Pablo García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-009",
+      "name": "Alvaro Mardones",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-010",
+      "name": "Ferran Seco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-011",
+      "name": "Jairo Noriega",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-012",
+      "name": "Koke San José",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-013",
+      "name": "Noé Carrillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-014",
+      "name": "Dani Estévez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-015",
+      "name": "Rubén López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-016",
+      "name": "Manu Ferreiro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-017",
+      "name": "Álvaro Fraga",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-018",
+      "name": "Kevin Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-019",
+      "name": "Justino Barbosa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-020",
+      "name": "David Domínguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-021",
+      "name": "Rodrigue Dipanda",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-022",
+      "name": "Martín Ochoa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-fabril-2026-023",
+      "name": "Iker Gil",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

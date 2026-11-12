@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-llanera",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 161,
+  "historicalRanking": {
+    "rating": 66.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Pepe Quimarán",
+    "capacity": 1000
+  },
+  "coach": {
+    "id": "ud-llanera-coach-80760",
+    "name": "Chuchi Collado",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ud-llanera-2026-001",
+      "name": "Javi Benítez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-002",
+      "name": "Pablo Pellitero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-003",
+      "name": "Sergio Ordóñez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-004",
+      "name": "Miguel Berlanga",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-005",
+      "name": "Mikel Busto",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-006",
+      "name": "Paul Otia",
+      "position": "D",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-007",
+      "name": "Ousmane Traoré",
+      "position": "D",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-008",
+      "name": "Dominique Mendy",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-009",
+      "name": "Guille Vaamonde",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-010",
+      "name": "Emmanuel Njie",
+      "position": "D",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-011",
+      "name": "Michael Oladipupo",
+      "position": "M",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-012",
+      "name": "Liam Ayad",
+      "position": "M",
+      "nationality": "CI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-013",
+      "name": "Yahaya Yakubu",
+      "position": "M",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-014",
+      "name": "Dani González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-015",
+      "name": "Dani Corgo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-016",
+      "name": "Mathieu Mvondo",
+      "position": "M",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-017",
+      "name": "Ayoub El Battioui",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-018",
+      "name": "Adrián Turmo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-019",
+      "name": "Álex Alemán",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-020",
+      "name": "Pablo Calvo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-021",
+      "name": "Viti González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-022",
+      "name": "Dani Collado",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-llanera-2026-023",
+      "name": "César García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

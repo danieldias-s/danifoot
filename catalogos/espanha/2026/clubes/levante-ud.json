@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "levante-ud",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 14,
+  "tieBreakPriority": 13,
+  "historicalRanking": {
+    "rating": 84.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadi Ciutat de València",
+    "capacity": 26354
+  },
+  "coach": {
+    "id": "levante-ud-coach-69945",
+    "name": "Luís Castro",
+    "nationality": "PT",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "levante-ud-2026-001",
+      "name": "Mathew Ryan",
+      "position": "G",
+      "nationality": "AU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-002",
+      "name": "Pablo Campos",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-003",
+      "name": "Jeremy Toljan",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-004",
+      "name": "Aïssa Mandi",
+      "position": "D",
+      "nationality": "DZ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-005",
+      "name": "Adrián Dela",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-006",
+      "name": "Manu Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-007",
+      "name": "Jorge Cabello",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-008",
+      "name": "Axel Tape",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-009",
+      "name": "Nacho Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-010",
+      "name": "Ifeanyi Ndukwe",
+      "position": "D",
+      "nationality": "AT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-011",
+      "name": "Marc Santos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-012",
+      "name": "Enzo Bardeli",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-013",
+      "name": "Dani Requena",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-014",
+      "name": "Jon Ander Olasagasti",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-015",
+      "name": "Hugo Sotelo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-016",
+      "name": "Oriol Rey",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-017",
+      "name": "Iván Romero",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-018",
+      "name": "Karl Etta Eyong",
+      "position": "A",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-019",
+      "name": "Yanis Musuayi",
+      "position": "A",
+      "nationality": "BE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-020",
+      "name": "Roger Brugué",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-021",
+      "name": "Thiago Fernández",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-022",
+      "name": "Paco Cortés",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "levante-ud-2026-023",
+      "name": "Petar Ratkov",
+      "position": "A",
+      "nationality": "RS",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

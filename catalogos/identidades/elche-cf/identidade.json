@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "elche-cf",
+  "name": "Elche CF",
+  "shortName": "Elche",
+  "abbreviation": "ELC",
+  "colors": [
+    "#038316",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

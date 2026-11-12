@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-tenerife",
+  "name": "CD Tenerife",
+  "shortName": "Tenerife",
+  "abbreviation": "TEN",
+  "colors": [
+    "#0F38B8",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

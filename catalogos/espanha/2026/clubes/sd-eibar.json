@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sd-eibar",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 9,
+  "tieBreakPriority": 24,
+  "historicalRanking": {
+    "rating": 81.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Municipal de Ipurúa",
+    "capacity": 8164
+  },
+  "coach": {
+    "id": "sd-eibar-coach-114424",
+    "name": "Jokin Aranbarri",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sd-eibar-2026-001",
+      "name": "Jonmi Magunagoitia",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-002",
+      "name": "Luis López",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-003",
+      "name": "Markel Arana",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-004",
+      "name": "Anaitz Arbilla",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-005",
+      "name": "Sergio Cubero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-006",
+      "name": "Imanol García de Albéniz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-007",
+      "name": "Jair Amador",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-008",
+      "name": "Unai Elgezabal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-009",
+      "name": "Juan Bernat",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-010",
+      "name": "Sergio Álvarez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-011",
+      "name": "Peru Nolaskoain",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-012",
+      "name": "Aleix Garrido",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-013",
+      "name": "Lucas Núñez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-014",
+      "name": "Ander Madariaga",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-015",
+      "name": "Lander Olaetxea",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-016",
+      "name": "Jon Magunazelaia",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-017",
+      "name": "Iván Gil",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-018",
+      "name": "Javi Martón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-019",
+      "name": "Jon Guruzeta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-020",
+      "name": "Jon Bautista",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-021",
+      "name": "Elijah Gift",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-022",
+      "name": "Adu Ares",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-eibar-2026-023",
+      "name": "Pejiño",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

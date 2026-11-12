@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-betis",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 19,
+  "tieBreakPriority": 4,
+  "historicalRanking": {
+    "rating": 89.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio La Cartuja",
+    "capacity": 70000
+  },
+  "coach": {
+    "id": "real-betis-coach-1558",
+    "name": "Manuel Pellegrini",
+    "nationality": "CL",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-betis-2026-001",
+      "name": "Álvaro Valles",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-002",
+      "name": "Diego Conde",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-003",
+      "name": "Natan",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-004",
+      "name": "Valentín Gómez",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-005",
+      "name": "Marc Bartra",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-006",
+      "name": "Diego Llorente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-007",
+      "name": "Héctor Bellerín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-008",
+      "name": "Ángel Ortiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-009",
+      "name": "Junior Firpo",
+      "position": "D",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-010",
+      "name": "Pablo Fornals",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-011",
+      "name": "Marc Roca",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-012",
+      "name": "Nelson Deossa",
+      "position": "M",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-013",
+      "name": "Iker Losada",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-014",
+      "name": "Facundo Bernal",
+      "position": "M",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-015",
+      "name": "Álvaro Fidalgo",
+      "position": "M",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-016",
+      "name": "Dani Ceballos",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-017",
+      "name": "Isco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-018",
+      "name": "Troy Parrott",
+      "position": "A",
+      "nationality": "IE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-019",
+      "name": "Antony",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-020",
+      "name": "Abde Ezzalzouli",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-021",
+      "name": "Cucho Hernández",
+      "position": "A",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-022",
+      "name": "Aitor Ruibal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-betis-2026-023",
+      "name": "Rodrigo Riquelme",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

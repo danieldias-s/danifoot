@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "hercules-cf",
+  "name": "Hércules CF",
+  "shortName": "Hércules",
+  "abbreviation": "HER",
+  "colors": [
+    "#0033FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

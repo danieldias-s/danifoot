@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-de-madrid-c",
+  "name": "Atlético Madrid C",
+  "shortName": "Atlético Madrid C",
+  "abbreviation": "AMC",
+  "colors": [
+    "#EE0000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

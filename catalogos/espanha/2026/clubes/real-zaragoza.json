@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-zaragoza",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 38,
+  "historicalRanking": {
+    "rating": 77.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Ibercaja Stadium",
+    "capacity": 20000
+  },
+  "coach": {
+    "id": "real-zaragoza-coach-121457",
+    "name": "Ibai Gómez",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-zaragoza-2026-001",
+      "name": "Anartz Peña",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-002",
+      "name": "Sem Westerveld",
+      "position": "G",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-003",
+      "name": "Diego González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-004",
+      "name": "Marco Sangalli",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-005",
+      "name": "Rubén Iranzo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-006",
+      "name": "Raúl Pereira",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-007",
+      "name": "Tachi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-008",
+      "name": "Sergio Escudero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-009",
+      "name": "Jokin Gabilondo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-010",
+      "name": "Hugo Barrachina",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-011",
+      "name": "Peter Ademo",
+      "position": "M",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-012",
+      "name": "Rubén Díez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-013",
+      "name": "Yussif Saidu",
+      "position": "M",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-014",
+      "name": "Hugo Pinilla",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-015",
+      "name": "Ander Herrera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-016",
+      "name": "Lucas Terrer",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-017",
+      "name": "Jaume Jardí",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-018",
+      "name": "Joaquín Delgado",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-019",
+      "name": "Edu Espiau",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-020",
+      "name": "Marcos Cuenca",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-021",
+      "name": "Óscar Ureña",
+      "position": "A",
+      "nationality": "DO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-022",
+      "name": "Pau Sans",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-zaragoza-2026-023",
+      "name": "Iker Vadillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

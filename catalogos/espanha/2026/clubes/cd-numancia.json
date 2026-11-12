@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-numancia",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 80,
+  "historicalRanking": {
+    "rating": 72.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Los Pajaritos",
+    "capacity": 8261
+  },
+  "coach": {
+    "id": "cd-numancia-coach-70645",
+    "name": "Lolo Escobar",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "5-4-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-numancia-2026-001",
+      "name": "Iván Martínez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-002",
+      "name": "Guille Súnico",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-003",
+      "name": "Borja López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-004",
+      "name": "Marcos Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-005",
+      "name": "Fran González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-006",
+      "name": "Marcos Lopes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-007",
+      "name": "Rafa Roldán",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-008",
+      "name": "Sébastien Lauture",
+      "position": "D",
+      "nationality": "HT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-009",
+      "name": "Pelayo Suárez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-010",
+      "name": "Sebastián Flores",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-011",
+      "name": "Moustapha",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-012",
+      "name": "César Moreno",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-013",
+      "name": "Luis Roldán",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-014",
+      "name": "Hugo Torondel",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-015",
+      "name": "Jorge Domínguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-016",
+      "name": "Víctor Charlez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-017",
+      "name": "Jonatan González",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-018",
+      "name": "Amin Bouzaig",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-019",
+      "name": "Aitor Aranzabe",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-020",
+      "name": "Pablo Cortés",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-021",
+      "name": "Iván Moreno",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-numancia-2026-022",
+      "name": "Iker León",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

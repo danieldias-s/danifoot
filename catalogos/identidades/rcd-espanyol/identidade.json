@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rcd-espanyol",
+  "name": "RCD Espanyol Barcelona",
+  "shortName": "Espanyol",
+  "abbreviation": "ESP",
+  "colors": [
+    "#5A7CF1",
+    "#111111"
+  ],
+  "crestFile": null
+}

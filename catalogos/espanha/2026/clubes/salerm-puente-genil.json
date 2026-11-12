@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "salerm-puente-genil",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 154,
+  "historicalRanking": {
+    "rating": 66.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Manuel Polinario Poli",
+    "capacity": 2000
+  },
+  "coach": {
+    "id": "salerm-puente-genil-coach-161167",
+    "name": "Joaquín García",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "salerm-puente-genil-2026-001",
+      "name": "José Castillo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-002",
+      "name": "Javi Luengo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-003",
+      "name": "Juan Pajuelo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-004",
+      "name": "Marcos Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-005",
+      "name": "Rafita Álvarez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-006",
+      "name": "Andreu Talarn",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-007",
+      "name": "Antonio Pajuelo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-008",
+      "name": "Connor Ruane",
+      "position": "D",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-009",
+      "name": "Ginés González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-010",
+      "name": "Salvi Vera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-011",
+      "name": "Pepelu",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-012",
+      "name": "Salva Vegas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-013",
+      "name": "Lalo Hernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-014",
+      "name": "Polaco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-015",
+      "name": "Adrián Virtudes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-016",
+      "name": "Juan Rosa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-017",
+      "name": "Topo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-018",
+      "name": "Alan Araiza",
+      "position": "A",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-019",
+      "name": "Manu Viana",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-020",
+      "name": "Seth Vega",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-021",
+      "name": "Loren Bianco",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-022",
+      "name": "Bugui",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "salerm-puente-genil-2026-023",
+      "name": "Víctor Juliá",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

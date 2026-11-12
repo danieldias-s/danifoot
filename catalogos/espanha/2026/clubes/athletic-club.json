@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "athletic-club",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 17,
+  "tieBreakPriority": 7,
+  "historicalRanking": {
+    "rating": 86.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio San Mamés",
+    "capacity": 53289
+  },
+  "coach": {
+    "id": "athletic-club-coach-14226",
+    "name": "Edin Terzic",
+    "nationality": "DE",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "athletic-club-2026-001",
+      "name": "Unai Simón",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-002",
+      "name": "Álex Padilla",
+      "position": "G",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-003",
+      "name": "Yuri Berchiche",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-004",
+      "name": "Aitor Paredes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-005",
+      "name": "Aymeric Laporte",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-006",
+      "name": "Jesús Areso",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-007",
+      "name": "Hugo Rincón",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-008",
+      "name": "Johaneko Louis-Jean",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-009",
+      "name": "Yeray Álvarez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-010",
+      "name": "Unai Egiluz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-011",
+      "name": "Mikel Jauregizar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-012",
+      "name": "Iñigo Ruiz de Galarreta",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-013",
+      "name": "Peio Canales",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-014",
+      "name": "Beñat Gerenabarrena",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-015",
+      "name": "Oihan Sancet",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-016",
+      "name": "Alejandro Rego",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-017",
+      "name": "Beñat Prados",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-018",
+      "name": "Gorka Guruzeta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-019",
+      "name": "Iñaki Williams",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-020",
+      "name": "Álex Berenguer",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-021",
+      "name": "Nico Williams",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-022",
+      "name": "Álvaro Djaló",
+      "position": "A",
+      "nationality": "GW",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "athletic-club-2026-023",
+      "name": "Nico Serrano",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-intercity",
+  "name": "CF Intercity",
+  "shortName": "Intercity",
+  "abbreviation": "INT",
+  "colors": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

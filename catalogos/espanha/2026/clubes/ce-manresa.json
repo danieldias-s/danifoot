@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ce-manresa",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 139,
+  "historicalRanking": {
+    "rating": 67.8,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Nou Estadi Municipal, Manresa",
+    "capacity": 3660
+  },
+  "coach": {
+    "id": "ce-manresa-coach-155086",
+    "name": "Sergi Trullàs",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ce-manresa-2026-001",
+      "name": "Óscar Pulido",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-002",
+      "name": "Quim Borràs",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-003",
+      "name": "Daouda Koné",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-004",
+      "name": "Oussama Boukir",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-005",
+      "name": "Ángel Vera",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-006",
+      "name": "Roger Munells",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-007",
+      "name": "Marc Castro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-008",
+      "name": "Álex Iglesias",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-009",
+      "name": "Matheus Teixeira",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-010",
+      "name": "Iván Tébar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-011",
+      "name": "Nicolás Olmedo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-012",
+      "name": "Èric Montes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-013",
+      "name": "Aleix Díaz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-014",
+      "name": "Carlos Portero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-015",
+      "name": "Badr El Amerani",
+      "position": "M",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-016",
+      "name": "Bilal Achhiba",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-017",
+      "name": "Pochito",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-018",
+      "name": "Santi Guzmán",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-019",
+      "name": "Óscar Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-020",
+      "name": "David Momoh",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-021",
+      "name": "Mohamed Ezzarfani",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-022",
+      "name": "Dani Ferrer",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ce-manresa-2026-023",
+      "name": "Richard Martínez",
+      "position": "A",
+      "nationality": "HN",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

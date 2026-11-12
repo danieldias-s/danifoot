@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "calvo-sotelo-puertollano",
+  "name": "Calvo Sotelo Puertollano CF",
+  "shortName": "Calvo Sotelo",
+  "abbreviation": "CSO",
+  "colors": [
+    "#094CA1",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

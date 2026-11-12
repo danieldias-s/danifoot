@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "hercules-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 60,
+  "historicalRanking": {
+    "rating": 73.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "José Rico Pérez, Alicante",
+    "capacity": 29500
+  },
+  "coach": {
+    "id": "hercules-cf-coach-132113",
+    "name": "Beto Company",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "hercules-cf-2026-001",
+      "name": "Carlos Abad",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-002",
+      "name": "Alessandro Blazic",
+      "position": "G",
+      "nationality": "SI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-003",
+      "name": "Javier Rentero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-004",
+      "name": "Miki Bosch",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-005",
+      "name": "Javi Jiménez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-006",
+      "name": "Samu Vázquez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-007",
+      "name": "David López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-008",
+      "name": "Jorge Galvañ",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-009",
+      "name": "Yago Cantero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-010",
+      "name": "Nassourou Ben Hamed",
+      "position": "M",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-011",
+      "name": "Alejandro Fidalgo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-012",
+      "name": "Manu Rico",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-013",
+      "name": "Andy Escudero",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-014",
+      "name": "Roger Colomina",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-015",
+      "name": "Aitor Gismera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-016",
+      "name": "Rafaël De Palmas",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-017",
+      "name": "Oriol Soldevila",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-018",
+      "name": "Isaac Obeng",
+      "position": "A",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-019",
+      "name": "Fran Sol",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-020",
+      "name": "Alex Jiménez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-021",
+      "name": "Antoñín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-022",
+      "name": "Víctor Narro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "hercules-cf-2026-023",
+      "name": "Alberto Toril",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

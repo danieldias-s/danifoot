@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-eldense",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 39,
+  "historicalRanking": {
+    "rating": 77.0,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Municipal Nuevo Pepico Amat",
+    "capacity": 5776
+  },
+  "coach": {
+    "id": "cd-eldense-coach-42706",
+    "name": "Javier Calleja",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-eldense-2026-001",
+      "name": "Ramón Vila",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-002",
+      "name": "Juan Palomares",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-003",
+      "name": "Iker Recio",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-004",
+      "name": "Floris Smand",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-005",
+      "name": "Álex Serradell",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-006",
+      "name": "Jesús Clemente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-007",
+      "name": "David Ruiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-008",
+      "name": "Juan Larios",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-009",
+      "name": "Julien Yanda",
+      "position": "D",
+      "nationality": "DE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-010",
+      "name": "Alejandro Ibarrondo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-011",
+      "name": "Guillermo Macho",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-012",
+      "name": "Marcos Bustillo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-013",
+      "name": "Justin Smith",
+      "position": "M",
+      "nationality": "CA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-014",
+      "name": "Borja Calvo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-015",
+      "name": "Roberto López",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-016",
+      "name": "Javi Martínez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-017",
+      "name": "Carlos Guirao",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-018",
+      "name": "Jorge Rastrojo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-019",
+      "name": "Mariano Carmona",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-020",
+      "name": "Manu Nieto",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-021",
+      "name": "Waldo Rubio",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-022",
+      "name": "Aingeru Olabarrieta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-eldense-2026-023",
+      "name": "Pau Cabanes",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

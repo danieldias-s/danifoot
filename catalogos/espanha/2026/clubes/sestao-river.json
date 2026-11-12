@@ -1,0 +1,212 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sestao-river",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 67,
+  "historicalRanking": {
+    "rating": 73.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Las Llanas",
+    "capacity": 4367
+  },
+  "coach": {
+    "id": "sestao-river-coach-128128",
+    "name": "Héctor Urquía",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sestao-river-2026-001",
+      "name": "Ander Iru",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-002",
+      "name": "Ibon Urrosolo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-003",
+      "name": "Markel Etxeberria",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-004",
+      "name": "Jon Rojo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-005",
+      "name": "Gaizka Argente",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-006",
+      "name": "Andoni Ugarte",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-007",
+      "name": "Carlos González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-008",
+      "name": "Anton Efremov",
+      "position": "D",
+      "nationality": "RU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-009",
+      "name": "Markel Peral",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-010",
+      "name": "Gonzalo Zorrilla",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-011",
+      "name": "Ander Laka",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-012",
+      "name": "Josemi Castañeda",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-013",
+      "name": "Eneko Delgado",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-014",
+      "name": "Issa Boiro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-015",
+      "name": "Iñaki Legu",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-016",
+      "name": "Mikel Zearreta",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-017",
+      "name": "Ander Bengoetxea",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-018",
+      "name": "Adri Carrión",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-019",
+      "name": "Pau Miguélez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-020",
+      "name": "Ieltxu García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-021",
+      "name": "Andoni Arzak",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sestao-river-2026-022",
+      "name": "Ander Castillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

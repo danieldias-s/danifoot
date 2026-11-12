@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-almeria",
+  "name": "UD Almería",
+  "shortName": "Almería",
+  "abbreviation": "ALM",
+  "colors": [
+    "#F21E27",
+    "#000000"
+  ],
+  "crestFile": null
+}

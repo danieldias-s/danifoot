@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "gimnastica-torrelavega",
+  "name": "Gimnástica de Torrelavega",
+  "shortName": "Gimnástica Torrelavega",
+  "abbreviation": "GTO",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

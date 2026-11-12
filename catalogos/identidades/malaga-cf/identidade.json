@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "malaga-cf",
+  "name": "Málaga CF",
+  "shortName": "Málaga",
+  "abbreviation": "MGA",
+  "colors": [
+    "#1476C4",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

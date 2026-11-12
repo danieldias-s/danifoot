@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-valladolid-promesas",
+  "name": "Real Valladolid Promesas",
+  "shortName": "Valladolid Promesas",
+  "abbreviation": "VPR",
+  "colors": [
+    "#9765C1",
+    "#000000"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-avila",
+  "name": "Real Ávila CF",
+  "shortName": "Ávila",
+  "abbreviation": "RAV",
+  "colors": [
+    "#FF0000",
+    "#000050"
+  ],
+  "crestFile": null
+}

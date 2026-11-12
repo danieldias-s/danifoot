@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-alaves-b",
+  "name": "Deportivo Alavés B",
+  "shortName": "Alavés B",
+  "abbreviation": "DAB",
+  "colors": [
+    "#0A3FF5",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ucam-murcia",
+  "name": "UCAM Murcia CF",
+  "shortName": "UCAM Murcia",
+  "abbreviation": "UCM",
+  "colors": [
+    "#000040",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

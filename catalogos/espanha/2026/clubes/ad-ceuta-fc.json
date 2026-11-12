@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ad-ceuta-fc",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 52,
+  "historicalRanking": {
+    "rating": 74.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Alfonso Murube",
+    "capacity": 6500
+  },
+  "coach": {
+    "id": "ad-ceuta-fc-coach-24339",
+    "name": "Sergio Lobera",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-3-3",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ad-ceuta-fc-2026-001",
+      "name": "Guillermo Vallejo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-002",
+      "name": "Pedro López",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-003",
+      "name": "Carlos Hernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-004",
+      "name": "José Matos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-005",
+      "name": "Toni Abad",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-006",
+      "name": "Adrián Lapeña",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-007",
+      "name": "Carlos Redru",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-008",
+      "name": "Albert Caparrós",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-009",
+      "name": "Álex Petxarroman",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-010",
+      "name": "Ale Meléndez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-011",
+      "name": "Kuki Zalazar",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-012",
+      "name": "Marino Illescas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-013",
+      "name": "Yann Bodiger",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-014",
+      "name": "Mawuli Mensah",
+      "position": "M",
+      "nationality": "GH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-015",
+      "name": "Joaquín González",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-016",
+      "name": "Arick Betancourt",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-017",
+      "name": "Gabriel Okoro",
+      "position": "M",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-018",
+      "name": "Umaru Konaré",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-019",
+      "name": "Cedric Teguia",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-020",
+      "name": "Jordi Escobar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-021",
+      "name": "Kenneth Mamah",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-022",
+      "name": "Edgar Sevikyan",
+      "position": "A",
+      "nationality": "AM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ad-ceuta-fc-2026-023",
+      "name": "Omar Sadik",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

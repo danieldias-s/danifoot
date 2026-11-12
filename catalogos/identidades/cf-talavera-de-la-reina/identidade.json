@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-talavera-de-la-reina",
+  "name": "CF Talavera de la Reina",
+  "shortName": "Talavera de la Reina",
+  "abbreviation": "TAL",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

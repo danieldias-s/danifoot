@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "marbella-fc",
+  "name": "Marbella FC",
+  "shortName": "Marbella",
+  "abbreviation": "MBL",
+  "colors": [
+    "#FFFFFF",
+    "#111111"
+  ],
+  "crestFile": null
+}

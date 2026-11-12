@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "unionistas-de-salamanca",
+  "name": "Unionistas CF",
+  "shortName": "Unionistas",
+  "abbreviation": "UNI",
+  "colors": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

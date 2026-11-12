@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "gimnastica-segoviana",
+  "name": "Gimnástica Segoviana CF",
+  "shortName": "Gimnástica Segoviana",
+  "abbreviation": "GSE",
+  "colors": [
+    "#1034A6",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

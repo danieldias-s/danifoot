@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-valladolid",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 34,
+  "historicalRanking": {
+    "rating": 78.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "José Zorrilla Stadium",
+    "capacity": 27846
+  },
+  "coach": {
+    "id": "real-valladolid-coach-2562",
+    "name": "Fran Escribá",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-valladolid-2026-001",
+      "name": "Álvaro Aceves",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-002",
+      "name": "Dani Martín",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-003",
+      "name": "David Torres",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-004",
+      "name": "Iván Alejo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-005",
+      "name": "Pablo Tomeo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-006",
+      "name": "Guille Bueno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-007",
+      "name": "Ramón Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-008",
+      "name": "Carlos Clerc",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-009",
+      "name": "Trilli",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-010",
+      "name": "Iván Garriel",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-011",
+      "name": "Stanko Juric",
+      "position": "M",
+      "nationality": "HR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-012",
+      "name": "Thiago Ojeda",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-013",
+      "name": "Julien Ponceau",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-014",
+      "name": "Víctor Fernández",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-015",
+      "name": "Álex Balboa",
+      "position": "M",
+      "nationality": "GQ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-016",
+      "name": "Mathis Lachuer",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-017",
+      "name": "Ryotaro Ito",
+      "position": "M",
+      "nationality": "JP",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-018",
+      "name": "Luis Chacón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-019",
+      "name": "Juanmi Latasa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-020",
+      "name": "Kaj de Rooij",
+      "position": "A",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-021",
+      "name": "Robin van Duiven",
+      "position": "A",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-022",
+      "name": "Yeray Cabanzón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-valladolid-2026-023",
+      "name": "Adrián Arnu",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

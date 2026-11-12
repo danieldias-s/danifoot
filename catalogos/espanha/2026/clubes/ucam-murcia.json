@@ -1,0 +1,203 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ucam-murcia",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 86,
+  "historicalRanking": {
+    "rating": 71.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Condomina, Murcia",
+    "capacity": 6500
+  },
+  "coach": {
+    "id": "ucam-murcia-coach-122084",
+    "name": "Checa",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ucam-murcia-2026-001",
+      "name": "Álex Lázaro",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-002",
+      "name": "Rimvydas Kiriejevas",
+      "position": "G",
+      "nationality": "LT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-003",
+      "name": "Diego Mirapeix",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-004",
+      "name": "David López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-005",
+      "name": "Paco Torres",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-006",
+      "name": "Aitor Puñal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-007",
+      "name": "Héctor Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-008",
+      "name": "Alberto López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-009",
+      "name": "Bruno Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-010",
+      "name": "Charaf Taoualy",
+      "position": "M",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-011",
+      "name": "Alberto Soto",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-012",
+      "name": "Juanan Aguilera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-013",
+      "name": "Julio Iglesias",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-014",
+      "name": "Álex Bueno",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-015",
+      "name": "Xente Vila",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-016",
+      "name": "Álex Fernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-017",
+      "name": "Mati Castillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-018",
+      "name": "Karim El Kounni",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-019",
+      "name": "Dani Aquino",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-020",
+      "name": "Juan Carlos Pontones",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ucam-murcia-2026-021",
+      "name": "José Ángel Carrillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

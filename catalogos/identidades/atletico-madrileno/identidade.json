@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-madrileno",
+  "name": "Atlético Madrileño",
+  "shortName": "Atlético Madrileño",
+  "abbreviation": "AMA",
+  "colors": [
+    "#FF0000",
+    "#111111"
+  ],
+  "crestFile": null
+}

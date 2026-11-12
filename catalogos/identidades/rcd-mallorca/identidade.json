@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rcd-mallorca",
+  "name": "RCD Mallorca",
+  "shortName": "Mallorca",
+  "abbreviation": "MLL",
+  "colors": [
+    "#BC161C",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

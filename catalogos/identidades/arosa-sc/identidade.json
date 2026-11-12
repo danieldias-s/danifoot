@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "arosa-sc",
+  "name": "Arosa SC",
+  "shortName": "Arosa",
+  "abbreviation": "ARO",
+  "colors": [
+    "#0000CD",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

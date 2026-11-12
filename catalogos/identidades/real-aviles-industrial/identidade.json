@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-aviles-industrial",
+  "name": "Real Avilés Industrial",
+  "shortName": "Avilés Industrial",
+  "abbreviation": "AVI",
+  "colors": [
+    "#0000FF",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

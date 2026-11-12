@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-murcia-imperial",
+  "name": "Real Murcia Imperial",
+  "shortName": "Murcia Imperial",
+  "abbreviation": "MUI",
+  "colors": [
+    "#CC0000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

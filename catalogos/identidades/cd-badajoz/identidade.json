@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-badajoz",
+  "name": "CD Badajoz",
+  "shortName": "Badajoz",
+  "abbreviation": "BAD",
+  "colors": [
+    "#111111",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

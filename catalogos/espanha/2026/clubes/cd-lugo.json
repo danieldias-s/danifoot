@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-lugo",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 42,
+  "historicalRanking": {
+    "rating": 76.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Anxo Carro",
+    "capacity": 7114
+  },
+  "coach": {
+    "id": "cd-lugo-coach-94740",
+    "name": "Borja Fernández",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "4-3-3"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-lugo-2026-001",
+      "name": "Marc Martínez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-002",
+      "name": "Fernando Embadje",
+      "position": "G",
+      "nationality": "GW",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-003",
+      "name": "Jorge Candal",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-004",
+      "name": "Hugo Pascual",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-005",
+      "name": "Rufino Lucero",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-006",
+      "name": "Simón Luca Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-007",
+      "name": "Pol Moreno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-008",
+      "name": "Ibaider Garriz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-009",
+      "name": "Kike Hermoso",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-010",
+      "name": "Pere Haro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-011",
+      "name": "Achore Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-012",
+      "name": "Pablo Parrilla",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-013",
+      "name": "Guille Berzal",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-014",
+      "name": "Mario Nájera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-015",
+      "name": "Kevin Presa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-016",
+      "name": "Alberto Ulloa",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-017",
+      "name": "Antonio Perera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-018",
+      "name": "Chiqui",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-019",
+      "name": "Arturo Palma",
+      "position": "A",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-020",
+      "name": "Álex Costa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-021",
+      "name": "Álex Gallar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-022",
+      "name": "Alan Godoy",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-lugo-2026-023",
+      "name": "Tornike Morchiladze",
+      "position": "A",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

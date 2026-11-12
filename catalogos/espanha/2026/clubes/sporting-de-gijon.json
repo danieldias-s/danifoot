@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sporting-de-gijon",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 6,
+  "tieBreakPriority": 29,
+  "historicalRanking": {
+    "rating": 79.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Municipal El Molinón – Enrique Castro Quini",
+    "capacity": 29371
+  },
+  "coach": {
+    "id": "sporting-de-gijon-coach-44623",
+    "name": "Nicolás Larcamón",
+    "nationality": "AR",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "5-4-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sporting-de-gijon-2026-001",
+      "name": "Rubén Yáñez",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-002",
+      "name": "Egoitz Arana",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-003",
+      "name": "Guille Rosas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-004",
+      "name": "Pablo Vázquez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-005",
+      "name": "Diego Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-006",
+      "name": "Aimar Duñabeitia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-007",
+      "name": "Andrés Cuenca",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-008",
+      "name": "Jorge Sáenz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-009",
+      "name": "Pablo García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-010",
+      "name": "Emanuel Gularte",
+      "position": "D",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-011",
+      "name": "César Gelabert",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-012",
+      "name": "Àlex Corredera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-013",
+      "name": "Nacho Martín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-014",
+      "name": "Manu Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-015",
+      "name": "Hugo Guillamón",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-016",
+      "name": "Mamadou Loum",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-017",
+      "name": "Nikita Iosifov",
+      "position": "A",
+      "nationality": "RU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-018",
+      "name": "Juan Otero",
+      "position": "A",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-019",
+      "name": "Gaspar Campos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-020",
+      "name": "Konrad de la Fuente",
+      "position": "A",
+      "nationality": "US",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-021",
+      "name": "Antonio Casas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-022",
+      "name": "Andrés Ferrari",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sporting-de-gijon-2026-023",
+      "name": "Alejo Sarco",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

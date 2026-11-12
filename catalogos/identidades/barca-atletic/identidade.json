@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "barca-atletic",
+  "name": "FC Barcelona Atlètic",
+  "shortName": "Barcelona Atlètic",
+  "abbreviation": "BAT",
+  "colors": [
+    "#05003B",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

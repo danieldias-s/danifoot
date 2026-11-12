@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ad-merida",
+  "name": "Mérida AD",
+  "shortName": "Mérida",
+  "abbreviation": "MER",
+  "colors": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

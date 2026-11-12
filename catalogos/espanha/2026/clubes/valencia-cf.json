@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "valencia-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 15,
+  "tieBreakPriority": 12,
+  "historicalRanking": {
+    "rating": 84.9,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Mestalla",
+    "capacity": 49430
+  },
+  "coach": {
+    "id": "valencia-cf-coach-1548",
+    "name": "Javier Aguirre",
+    "nationality": "MX",
+    "preferredTactics": {
+      "home": [
+        "5-4-1",
+        "4-5-1"
+      ],
+      "away": [
+        "4-3-3",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "valencia-cf-2026-001",
+      "name": "Stole Dimitrievski",
+      "position": "G",
+      "nationality": "MK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-002",
+      "name": "Kayne van Oevelen",
+      "position": "G",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-003",
+      "name": "Justin de Haas",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-004",
+      "name": "Arnau Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-005",
+      "name": "César Tárrega",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-006",
+      "name": "José Gayà",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-007",
+      "name": "Pablo Maffeo",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-008",
+      "name": "Iker Córdoba",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-009",
+      "name": "Dimitri Foulquier",
+      "position": "D",
+      "nationality": "GP",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-010",
+      "name": "Mouctar Diakhaby",
+      "position": "D",
+      "nationality": "GN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-011",
+      "name": "Pepelu",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-012",
+      "name": "Javi Guerra",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-013",
+      "name": "Aliou Dieng",
+      "position": "M",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-014",
+      "name": "Filip Ugrinic",
+      "position": "M",
+      "nationality": "CH",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-015",
+      "name": "Guido Rodríguez",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-016",
+      "name": "Aarón Mayol",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-017",
+      "name": "Harvey Elliott",
+      "position": "M",
+      "nationality": "GB",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-018",
+      "name": "Luis Rioja",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-019",
+      "name": "Hugo Duro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-020",
+      "name": "Arnaut Danjuma",
+      "position": "A",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-021",
+      "name": "David Otorbi",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-022",
+      "name": "Umar Sadiq",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "valencia-cf-2026-023",
+      "name": "Dani Raba",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

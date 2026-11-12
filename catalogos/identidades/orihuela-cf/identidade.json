@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "orihuela-cf",
+  "name": "Orihuela CF",
+  "shortName": "Orihuela",
+  "abbreviation": "ORI",
+  "colors": [
+    "#FFD700",
+    "#003399"
+  ],
+  "crestFile": null
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cf-lorca-deportiva",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 132,
+  "historicalRanking": {
+    "rating": 68.2,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Francisco Artés Carrasco",
+    "capacity": 8100
+  },
+  "coach": {
+    "id": "cf-lorca-deportiva-coach-89465",
+    "name": "Alberto Cifuentes",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cf-lorca-deportiva-2026-001",
+      "name": "Ernestas Juškevičius",
+      "position": "G",
+      "nationality": "LT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-002",
+      "name": "David Vassilev",
+      "position": "G",
+      "nationality": "BG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-003",
+      "name": "Marc García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-004",
+      "name": "Antonio Sola",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-005",
+      "name": "Alain García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-006",
+      "name": "Jaime Escobar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-007",
+      "name": "Asier Pérez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-008",
+      "name": "Adrián Cagigal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-009",
+      "name": "Sergio Carmona",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-010",
+      "name": "Alexander Keiser",
+      "position": "D",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-011",
+      "name": "Sergi Monteverde",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-012",
+      "name": "Willy Ibáñez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-013",
+      "name": "Álvaro Martínez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-014",
+      "name": "Dani García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-015",
+      "name": "Mateo Enríquez",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-016",
+      "name": "Juanma Bravo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-017",
+      "name": "Chesco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-018",
+      "name": "José Naranjo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-019",
+      "name": "Javi Pedrosa",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-020",
+      "name": "Kike Carrasco",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-021",
+      "name": "Diego Talaverón",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-022",
+      "name": "Álex Peque",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cf-lorca-deportiva-2026-023",
+      "name": "Sergi Esteban",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

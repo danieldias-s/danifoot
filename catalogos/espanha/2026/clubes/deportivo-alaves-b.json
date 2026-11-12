@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportivo-alaves-b",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 65,
+  "historicalRanking": {
+    "rating": 73.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "José Luis Compañón, Vitoria",
+    "capacity": 2500
+  },
+  "coach": {
+    "id": "deportivo-alaves-b-coach-70030",
+    "name": "Molo Casas",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "deportivo-alaves-b-2026-001",
+      "name": "Grégoire Swiderski",
+      "position": "G",
+      "nationality": "CA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-002",
+      "name": "Rubén Montero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-003",
+      "name": "Xanet Oláiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-004",
+      "name": "Paco Sanz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-005",
+      "name": "Carlos Ballestero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-006",
+      "name": "Ibón Martinez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-007",
+      "name": "Manex Irizar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-008",
+      "name": "Iker Uría",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-009",
+      "name": "Igor Ortiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-010",
+      "name": "Lander Pinillos",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-011",
+      "name": "Iván Garrido",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-012",
+      "name": "Carlo Viso",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-013",
+      "name": "Ander Varona",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-014",
+      "name": "Tomás Mendes",
+      "position": "M",
+      "nationality": "GW",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-015",
+      "name": "Eduardo Fontana",
+      "position": "M",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-016",
+      "name": "Oihan Vicente",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-017",
+      "name": "Iñaki Alberca",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-018",
+      "name": "Izei Hernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-019",
+      "name": "Tazghat Bouguettaya",
+      "position": "A",
+      "nationality": "DZ",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-020",
+      "name": "Hugo Martínez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-021",
+      "name": "Pablo Goitia",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-022",
+      "name": "Dennis Rufo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "deportivo-alaves-b-2026-023",
+      "name": "Flavio Ferullo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

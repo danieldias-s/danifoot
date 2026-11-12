@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-tenerife-b",
+  "name": "CD Tenerife B",
+  "shortName": "Tenerife B",
+  "abbreviation": "TEB",
+  "colors": [
+    "#0000BB",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

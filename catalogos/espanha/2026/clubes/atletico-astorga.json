@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "atletico-astorga",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 152,
+  "historicalRanking": {
+    "rating": 66.8,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Eragudina",
+    "capacity": 3000
+  },
+  "coach": {
+    "id": "atletico-astorga-coach-114480",
+    "name": "Joselu Lago",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "atletico-astorga-2026-001",
+      "name": "Yaroslav Meykher",
+      "position": "G",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-002",
+      "name": "Pablo Sanz",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-003",
+      "name": "Jorge Sellés",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-004",
+      "name": "Sergio Peláez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-005",
+      "name": "Gabriel Rabanillo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-006",
+      "name": "Jesús Palomeque",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-007",
+      "name": "Alfonso Peral",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-008",
+      "name": "Andrés Calvo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-009",
+      "name": "Matías Müller",
+      "position": "D",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-010",
+      "name": "Abel de Prado",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-011",
+      "name": "Albertín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-012",
+      "name": "Ricardo Pesquera",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-013",
+      "name": "Urko Ardanaz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-014",
+      "name": "Álvaro Guti",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-015",
+      "name": "Ale Morales",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-016",
+      "name": "Christian Bueno",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-017",
+      "name": "Adnan Bennasar",
+      "position": "M",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-018",
+      "name": "Ángel Cerveró",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-019",
+      "name": "Álex Ribeiro",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-020",
+      "name": "Jesús Hoyos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-021",
+      "name": "Guillem Hernández",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-022",
+      "name": "David Cabezas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "atletico-astorga-2026-023",
+      "name": "Isam Ahmed",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

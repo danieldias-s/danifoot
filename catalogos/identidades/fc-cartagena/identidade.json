@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "fc-cartagena",
+  "name": "FC Cartagena",
+  "shortName": "Cartagena",
+  "abbreviation": "CAR",
+  "colors": [
+    "#000000",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

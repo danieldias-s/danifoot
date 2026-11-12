@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "malaga-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 10,
+  "tieBreakPriority": 22,
+  "historicalRanking": {
+    "rating": 81.6,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Rosaleda",
+    "capacity": 30044
+  },
+  "coach": {
+    "id": "malaga-cf-coach-92247",
+    "name": "Juan Funes",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-3-3"
+      ],
+      "away": [
+        "4-5-1",
+        "5-4-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "malaga-cf-2026-001",
+      "name": "Alfonso Herrero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-002",
+      "name": "Carlos López",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-003",
+      "name": "Diego Murillo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-004",
+      "name": "Carlos Puga",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-005",
+      "name": "Fernando Calero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-006",
+      "name": "Einar Galilea",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-007",
+      "name": "Ángel Recio",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-008",
+      "name": "Álex Pastor",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-009",
+      "name": "Adam Aznou",
+      "position": "D",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-010",
+      "name": "Juan Berrocal",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-011",
+      "name": "Izan Merino",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-012",
+      "name": "Dani Lorenzo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-013",
+      "name": "Carlos Dotor",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-014",
+      "name": "Pablo Martínez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-015",
+      "name": "Rafa Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-016",
+      "name": "Jens Cajuste",
+      "position": "M",
+      "nationality": "SE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-017",
+      "name": "Aarón Ochoa",
+      "position": "M",
+      "nationality": "IE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-018",
+      "name": "David Larrubia",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-019",
+      "name": "Juan Cruz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-020",
+      "name": "Joaquín Muñoz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-021",
+      "name": "Adrián Niño",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-022",
+      "name": "Julen Lobete",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "malaga-cf-2026-023",
+      "name": "Eneko Jauregi",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

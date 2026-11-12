@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-sociedad",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 18,
+  "tieBreakPriority": 6,
+  "historicalRanking": {
+    "rating": 87.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Reale Arena",
+    "capacity": 40000
+  },
+  "coach": {
+    "id": "real-sociedad-coach-10906",
+    "name": "Pellegrino Matarazzo",
+    "nationality": "US",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-sociedad-2026-001",
+      "name": "Álex Remiro",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-002",
+      "name": "Unai Marrero",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-003",
+      "name": "Jon Aramburu",
+      "position": "D",
+      "nationality": "VE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-004",
+      "name": "Jon Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-005",
+      "name": "Igor Zubeldia",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-006",
+      "name": "Jon Pacheco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-007",
+      "name": "Aihen Muñoz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-008",
+      "name": "Héctor Fort",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-009",
+      "name": "Álvaro Odriozola",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-010",
+      "name": "Mamadou Sarr",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-011",
+      "name": "Carlos Soler",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-012",
+      "name": "Jon Gorrotxategi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-013",
+      "name": "Beñat Turrientes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-014",
+      "name": "Pablo Marín",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-015",
+      "name": "Luka Sucic",
+      "position": "M",
+      "nationality": "HR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-016",
+      "name": "Yangel Herrera",
+      "position": "M",
+      "nationality": "VE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-017",
+      "name": "Arsen Zakharyan",
+      "position": "M",
+      "nationality": "RU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-018",
+      "name": "Mikel Oyarzabal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-019",
+      "name": "Gonçalo Guedes",
+      "position": "A",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-020",
+      "name": "Job Ochieng",
+      "position": "A",
+      "nationality": "KE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-021",
+      "name": "Takefusa Kubo",
+      "position": "A",
+      "nationality": "JP",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-022",
+      "name": "Álex Marchal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-sociedad-2026-023",
+      "name": "Orri Óskarsson",
+      "position": "A",
+      "nationality": "IS",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

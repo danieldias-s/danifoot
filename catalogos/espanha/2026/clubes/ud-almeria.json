@@ -1,0 +1,218 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-almeria",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 11,
+  "tieBreakPriority": 20,
+  "historicalRanking": {
+    "rating": 82.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "UD Almería Stadium",
+    "capacity": 18311
+  },
+  "coach": {
+    "id": "ud-almeria-coach-23730",
+    "name": "Xavier García Pimienta",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "ud-almeria-2026-001",
+      "name": "Andrés Fernández",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-002",
+      "name": "Áron Yaakobishvili",
+      "position": "G",
+      "nationality": "HU",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-003",
+      "name": "Federico Bonini",
+      "position": "D",
+      "nationality": "IT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-004",
+      "name": "Álex Muñoz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-005",
+      "name": "Jorge Pulido",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-006",
+      "name": "Leonardo Lelo",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-007",
+      "name": "Daijiro Chirino",
+      "position": "D",
+      "nationality": "NL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-008",
+      "name": "Marcos Luna",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-009",
+      "name": "Rodrigo Ely",
+      "position": "D",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-010",
+      "name": "Chumi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-011",
+      "name": "Sergio Arribas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-012",
+      "name": "Stefan Džodić",
+      "position": "M",
+      "nationality": "RS",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-013",
+      "name": "Gui Guedes",
+      "position": "M",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-014",
+      "name": "Nico Melamed",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-015",
+      "name": "Javi Muñoz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-016",
+      "name": "Mikel Vesga",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-017",
+      "name": "Quim Junyent",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-018",
+      "name": "Adrián Embarba",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-019",
+      "name": "Miguel de la Fuente",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-020",
+      "name": "Álex Sola",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-021",
+      "name": "Léo Baptistão",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-022",
+      "name": "Brian Cipenga",
+      "position": "A",
+      "nationality": "CD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "ud-almeria-2026-023",
+      "name": "Jon Morcillo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

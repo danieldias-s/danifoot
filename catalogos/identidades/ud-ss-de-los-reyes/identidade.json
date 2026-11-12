@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-ss-de-los-reyes",
+  "name": "UD San Sebastián de los Reyes",
+  "shortName": "San Sebastián de los Reyes",
+  "abbreviation": "SSR",
+  "colors": [
+    "#EF0000",
+    "#000000"
+  ],
+  "crestFile": null
+}

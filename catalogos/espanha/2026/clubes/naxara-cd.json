@@ -1,0 +1,204 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "naxara-cd",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 158,
+  "historicalRanking": {
+    "rating": 66.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Salera",
+    "capacity": 1500
+  },
+  "coach": {
+    "id": "naxara-cd-coach-145395",
+    "name": "Arturo Guerra",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "4-4-2"
+      ],
+      "away": [
+        "4-5-1",
+        "5-4-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "naxara-cd-2026-001",
+      "name": "Toño",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-002",
+      "name": "David Lleyda",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-003",
+      "name": "Juan García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-004",
+      "name": "Miguel Rodríguez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-005",
+      "name": "Víctor Martínez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-006",
+      "name": "Iñigo Ochoa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-007",
+      "name": "Izán Flaño",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-008",
+      "name": "Eloy Blanco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-009",
+      "name": "Dani García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-010",
+      "name": "Iker Losa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-011",
+      "name": "Álvaro Maiso",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-012",
+      "name": "Álvaro García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-013",
+      "name": "Pepe Blanco",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-014",
+      "name": "Marcos Ceña",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-015",
+      "name": "Alex Merino",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-016",
+      "name": "Iker Landín",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-017",
+      "name": "Jorge Campos",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-018",
+      "name": "Iván Rojo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-019",
+      "name": "Saul Vega",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-020",
+      "name": "Moustapha Zarouali",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "naxara-cd-2026-021",
+      "name": "Martin Echevarría",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "sd-huesca",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 56,
+  "historicalRanking": {
+    "rating": 74.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio El Alcoraz",
+    "capacity": 9100
+  },
+  "coach": {
+    "id": "sd-huesca-coach-96644",
+    "name": "Albert Rudé",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1",
+        "5-4-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "sd-huesca-2026-001",
+      "name": "Gianfranco Gazzaniga",
+      "position": "G",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-002",
+      "name": "Álvaro Killane",
+      "position": "G",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-003",
+      "name": "Víctor García",
+      "position": "D",
+      "nationality": "VE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-004",
+      "name": "Yann Kembo",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-005",
+      "name": "Salva Ruiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-006",
+      "name": "Quique Fornos",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-007",
+      "name": "Iván Rodríguez",
+      "position": "D",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-008",
+      "name": "Guillem Molina",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-009",
+      "name": "Marc Aznar",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-010",
+      "name": "Mohamed Djetei",
+      "position": "D",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-011",
+      "name": "Óscar Sielva",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-012",
+      "name": "Luismi Redondo",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-013",
+      "name": "Pascu",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-014",
+      "name": "Ander Gorostidi",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-015",
+      "name": "Mario García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-016",
+      "name": "Jimmy Suárez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-017",
+      "name": "Diego Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-018",
+      "name": "Sergi Enrich",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-019",
+      "name": "Agustín Juarez",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-020",
+      "name": "Rafa Tresaco",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-021",
+      "name": "Cristian Herrera",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-022",
+      "name": "Douglas Aurélio",
+      "position": "A",
+      "nationality": "BR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "sd-huesca-2026-023",
+      "name": "Diego Aznar",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

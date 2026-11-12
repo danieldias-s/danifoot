@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-alcoyano",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 111,
+  "historicalRanking": {
+    "rating": 69.7,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "El Collao, Alcoy",
+    "capacity": 4850
+  },
+  "coach": {
+    "id": "cd-alcoyano-coach-40831",
+    "name": "Fran Alcoy",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "5-4-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cd-alcoyano-2026-001",
+      "name": "Borja Martí",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-002",
+      "name": "Jagoba Zárraga",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-003",
+      "name": "Dmytro Pogorilyi",
+      "position": "G",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-004",
+      "name": "Ivi",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-005",
+      "name": "Pablo Carbonell",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-006",
+      "name": "Loren Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-007",
+      "name": "José Solbes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-008",
+      "name": "Raúl González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-009",
+      "name": "Adolfo Romero",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-010",
+      "name": "Álex Alonso",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-011",
+      "name": "Víctor Pacheco",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-012",
+      "name": "Adrián Lledó",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-013",
+      "name": "Javi Soler",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-014",
+      "name": "Javi Mecerreyes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-015",
+      "name": "Diego Rodríguez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-016",
+      "name": "Toni Penyafort",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-017",
+      "name": "Tiko Iniesta",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-018",
+      "name": "Guillem Naranjo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-019",
+      "name": "Alex Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-020",
+      "name": "Kenneth Soler",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-021",
+      "name": "Sergio Chinchilla",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-022",
+      "name": "Guille Andrés",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cd-alcoyano-2026-023",
+      "name": "Yosmel Zayas",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

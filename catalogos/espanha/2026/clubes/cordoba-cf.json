@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cordoba-cf",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 5,
+  "tieBreakPriority": 31,
+  "historicalRanking": {
+    "rating": 78.4,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio Bahrain Victorious Nuevo Arcángel de Córdoba",
+    "capacity": 21650
+  },
+  "coach": {
+    "id": "cordoba-cf-coach-47512",
+    "name": "Iván Ania",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-3-3",
+        "4-5-1"
+      ],
+      "away": [
+        "4-3-3",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "cordoba-cf-2026-001",
+      "name": "Iker Álvarez",
+      "position": "G",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-002",
+      "name": "Guilherme Fernandes",
+      "position": "G",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-003",
+      "name": "Juan Gutiérrez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-004",
+      "name": "Egoitz Muñoz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-005",
+      "name": "Carlos Albarrán",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-006",
+      "name": "Nélson Monte",
+      "position": "D",
+      "nationality": "PT",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-007",
+      "name": "Álex Martín",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-008",
+      "name": "Rubén Alves",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-009",
+      "name": "Jacobo Martí",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-010",
+      "name": "Dani Tasende",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-011",
+      "name": "Franck Fomeyem",
+      "position": "D",
+      "nationality": "CM",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-012",
+      "name": "Isma Ruiz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-013",
+      "name": "Eder García",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-014",
+      "name": "Damián Cáceres",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-015",
+      "name": "Yussi Diarra",
+      "position": "M",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-016",
+      "name": "Théo Zidane",
+      "position": "M",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-017",
+      "name": "Cristian Carracedo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-018",
+      "name": "Adnane Ghailan",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-019",
+      "name": "Ibai Sanz",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-020",
+      "name": "Salim El Jebari",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-021",
+      "name": "Enol Rodríguez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-022",
+      "name": "Diego Bri",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "cordoba-cf-2026-023",
+      "name": "Diego Percan",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

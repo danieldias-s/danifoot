@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ud-tamaraceite",
+  "name": "UD Tamaraceite",
+  "shortName": "Tamaraceite",
+  "abbreviation": "TAM",
+  "colors": [
+    "#2222CD",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

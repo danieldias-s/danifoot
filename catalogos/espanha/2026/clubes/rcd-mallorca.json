@@ -1,0 +1,219 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "rcd-mallorca",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 9,
+  "tieBreakPriority": 23,
+  "historicalRanking": {
+    "rating": 81.5,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadi Mallorca Son Moix",
+    "capacity": 25736
+  },
+  "coach": {
+    "id": "rcd-mallorca-coach-72702",
+    "name": "Luis García",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "rcd-mallorca-2026-001",
+      "name": "Arnau Tenas",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-002",
+      "name": "Lucas Bergström",
+      "position": "G",
+      "nationality": "FI",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-003",
+      "name": "Iván Cuéllar",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-004",
+      "name": "Martin Valjent",
+      "position": "D",
+      "nationality": "SK",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-005",
+      "name": "Antonio Raíllo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-006",
+      "name": "Alberto Moreno",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-007",
+      "name": "David López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-008",
+      "name": "Toni Lato",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-009",
+      "name": "John Donald",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-010",
+      "name": "Aboubaka Soumahoro",
+      "position": "D",
+      "nationality": "FR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-011",
+      "name": "Miguel Calatayud",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-012",
+      "name": "Sergi Darder",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-013",
+      "name": "Manu Morlanes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-014",
+      "name": "Pablo Torre",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-015",
+      "name": "Antonio Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-016",
+      "name": "Jan Salas",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-017",
+      "name": "Álex Sala",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-018",
+      "name": "Adrián Fuentes",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-019",
+      "name": "Daniel Luna",
+      "position": "A",
+      "nationality": "CO",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-020",
+      "name": "Josep Cerdà",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-021",
+      "name": "Arnau Puigmal",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-022",
+      "name": "Adam Buksa",
+      "position": "A",
+      "nationality": "PL",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "rcd-mallorca-2026-023",
+      "name": "Zito Luvumbo",
+      "position": "A",
+      "nationality": "AO",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

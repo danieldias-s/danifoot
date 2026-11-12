@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-guadalajara",
+  "name": "CD Guadalajara",
+  "shortName": "Guadalajara",
+  "abbreviation": "GUA",
+  "colors": [
+    "#543A82",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

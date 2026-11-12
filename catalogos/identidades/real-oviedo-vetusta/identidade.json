@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-oviedo-vetusta",
+  "name": "Real Oviedo Vetusta",
+  "shortName": "Oviedo Vetusta",
+  "abbreviation": "OVB",
+  "colors": [
+    "#0033A0",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

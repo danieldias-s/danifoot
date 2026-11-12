@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-valladolid",
+  "name": "Real Valladolid CF",
+  "shortName": "Valladolid",
+  "abbreviation": "VLL",
+  "colors": [
+    "#7305C8",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

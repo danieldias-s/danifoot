@@ -1,0 +1,204 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "gimnastica-segoviana",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 133,
+  "historicalRanking": {
+    "rating": 68.1,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "La Albuera, Segovia",
+    "capacity": 6000
+  },
+  "coach": {
+    "id": "gimnastica-segoviana-coach-69981",
+    "name": "Aitor Calle",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "gimnastica-segoviana-2026-001",
+      "name": "Diego Llamazares",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-002",
+      "name": "Arnau Rafús",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-003",
+      "name": "Héctor Espiérrez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-004",
+      "name": "Simón Lecea",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-005",
+      "name": "Alfredo Pedraza",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-006",
+      "name": "Liam López",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-007",
+      "name": "Luis Aguado",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-008",
+      "name": "Asier Seijo",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-009",
+      "name": "Samba Gnamadio",
+      "position": "D",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-010",
+      "name": "David Sánchez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-011",
+      "name": "Sergio Orviz",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-012",
+      "name": "Fernando Llorente",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-013",
+      "name": "Jaime Felgueroso",
+      "position": "M",
+      "nationality": "PR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-014",
+      "name": "Rodrigo Ibañes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-015",
+      "name": "Izan Chamorro",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-016",
+      "name": "Miguel Leyva",
+      "position": "A",
+      "nationality": "MX",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-017",
+      "name": "Enzo Facchin",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-018",
+      "name": "David Álvarez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-019",
+      "name": "Diego Lorenzo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-020",
+      "name": "Rubén Sanchidrián",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "gimnastica-segoviana-2026-021",
+      "name": "Luhe Brun",
+      "position": "A",
+      "nationality": "UY",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

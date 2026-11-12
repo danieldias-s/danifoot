@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "ce-sabadell",
+  "name": "CE Sabadell FC",
+  "shortName": "Sabadell",
+  "abbreviation": "SAB",
+  "colors": [
+    "#1E73BE",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

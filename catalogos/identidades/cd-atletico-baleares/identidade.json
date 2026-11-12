@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "cd-atletico-baleares",
+  "name": "CD Atlético Baleares",
+  "shortName": "Atlético Baleares",
+  "abbreviation": "ATB",
+  "colors": [
+    "#0000CC",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

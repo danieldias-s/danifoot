@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "fc-barcelona",
+  "name": "FC Barcelona",
+  "shortName": "Barcelona",
+  "abbreviation": "BAR",
+  "colors": [
+    "#0F39B8",
+    "#FFFFFF"
+  ],
+  "crestFile": null
+}

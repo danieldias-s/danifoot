@@ -1,0 +1,13 @@
+{
+  "$schema": "../../_schemas/identidade-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "deportiva-minera",
+  "name": "Deportiva Minera",
+  "shortName": "Minera",
+  "abbreviation": "MIN",
+  "colors": [
+    "#FF0000",
+    "#111111"
+  ],
+  "crestFile": null
+}

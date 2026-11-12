@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "real-oviedo-vetusta",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 117,
+  "historicalRanking": {
+    "rating": 69.3,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Ciudad Deportiva El Requexón, Oviedo",
+    "capacity": 3000
+  },
+  "coach": {
+    "id": "real-oviedo-vetusta-coach-20675",
+    "name": "Roberto Aguirre",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1",
+        "4-4-2"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "real-oviedo-vetusta-2026-001",
+      "name": "Samu Franganillo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-002",
+      "name": "Mate Sauri",
+      "position": "G",
+      "nationality": "GE",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-003",
+      "name": "Diego Espinosa",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-004",
+      "name": "Adrián Fernández",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-005",
+      "name": "Iker Navarro",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-006",
+      "name": "Adrián Lopes",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-007",
+      "name": "Martín Lavilla",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-008",
+      "name": "Arturo Arribas",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-009",
+      "name": "Miguel González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-010",
+      "name": "Hector González",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-011",
+      "name": "Marcos Sánchez",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-012",
+      "name": "Cheli Pereda",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-013",
+      "name": "Ot Remolins",
+      "position": "M",
+      "nationality": "AD",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-014",
+      "name": "Jaime Fuentes",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-015",
+      "name": "Gerard Marquez",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-016",
+      "name": "Isi Angulo",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-017",
+      "name": "Jaime Coballes",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-018",
+      "name": "Lamine Gueye",
+      "position": "A",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-019",
+      "name": "Abraham Nobrega",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-020",
+      "name": "Óscar de la Hera",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-021",
+      "name": "Miguel Clavería",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-022",
+      "name": "Saturday Meelubari",
+      "position": "A",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "real-oviedo-vetusta-2026-023",
+      "name": "Enzo Cazorla",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "../../_schemas/clube-1.1.schema.json",
+  "schemaVersion": "1.1",
+  "catalogClubId": "villarreal-cf-b",
+  "country": "ES",
+  "year": 2026,
+  "status": "DRAFT",
+  "teamStrength": 1,
+  "tieBreakPriority": 35,
+  "historicalRanking": {
+    "rating": 77.8,
+    "source": "Opta Power Rankings",
+    "referenceDate": "2026-11-12"
+  },
+  "stadium": {
+    "name": "Estadio de la Cerámica",
+    "capacity": 23008
+  },
+  "coach": {
+    "id": "villarreal-cf-b-coach-80801",
+    "name": "David Albelda",
+    "nationality": "ES",
+    "preferredTactics": {
+      "home": [
+        "4-4-2",
+        "4-5-1"
+      ],
+      "away": [
+        "4-4-2",
+        "4-5-1"
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "villarreal-cf-b-2026-001",
+      "name": "Alex Quevedo",
+      "position": "G",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-002",
+      "name": "Yakiv Kinareykin",
+      "position": "G",
+      "nationality": "UA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-003",
+      "name": "Eneko Ortiz",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-004",
+      "name": "Álvaro García",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-005",
+      "name": "Enric Pujol",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-006",
+      "name": "Jan Encuentra",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-007",
+      "name": "Chukwuma Eze",
+      "position": "D",
+      "nationality": "NG",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-008",
+      "name": "César Bonafé",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-009",
+      "name": "Arnau Forés",
+      "position": "D",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-010",
+      "name": "Manfa Keita",
+      "position": "D",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-011",
+      "name": "Facundo Viveros",
+      "position": "M",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-012",
+      "name": "Cheikh Tidiane Thiam",
+      "position": "M",
+      "nationality": "SN",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-013",
+      "name": "Pablo Pascual",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-014",
+      "name": "Álvaro Alcaide",
+      "position": "M",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-015",
+      "name": "Albert García",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-016",
+      "name": "Joselillo Gaitán",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-017",
+      "name": "Valen Gómez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-018",
+      "name": "Nico Sánchez",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-019",
+      "name": "Nízar El Jmili",
+      "position": "A",
+      "nationality": "ES",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-020",
+      "name": "Ayman Arguigue",
+      "position": "A",
+      "nationality": "MA",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-021",
+      "name": "Mahamoud Barry",
+      "position": "A",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-022",
+      "name": "Douga Fofana",
+      "position": "A",
+      "nationality": "ML",
+      "behavior": null,
+      "isStar": false
+    },
+    {
+      "id": "villarreal-cf-b-2026-023",
+      "name": "Nico Barattucci",
+      "position": "A",
+      "nationality": "AR",
+      "behavior": null,
+      "isStar": false
+    }
+  ]
+}
