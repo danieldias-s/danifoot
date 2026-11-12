@@ -40,6 +40,10 @@ def digest(value):
 
 
 def load_json(path):
+    return decode_json(Path(path).read_bytes())
+
+
+def decode_json(raw):
     def pairs(items):
         result = {}
         for key, value in items:
@@ -47,7 +51,7 @@ def load_json(path):
                 raise ValueError('Propriedade repetida: ' + key)
             result[key] = value
         return result
-    return json.loads(Path(path).read_text(encoding='utf-8-sig'), object_pairs_hook=pairs,
+    return json.loads(raw.decode('utf-8-sig'), object_pairs_hook=pairs,
                       parse_constant=lambda x: (_ for _ in ()).throw(ValueError('Número inválido: ' + x)))
 
 
@@ -245,6 +249,23 @@ def write_new(path, value):
         output.write(encoded(value))
 
 
+def atomic_write(path, expected, replacement):
+    """Stage a write beside its target and check the original bytes before replacing."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temporary = tempfile.mkstemp(prefix='.behavior-', suffix='.tmp', dir=path.parent)
+    try:
+        with os.fdopen(descriptor, 'wb') as output:
+            output.write(replacement)
+            output.flush()
+            os.fsync(output.fileno())
+        current = path.read_bytes() if path.exists() else None
+        if current != expected:
+            raise ValueError(f'Arquivo alterado durante a operação: {path.name}.')
+        os.replace(temporary, path)
+    finally:
+        Path(temporary).unlink(missing_ok=True)
+
+
 def scope(root, slug, year, country):
     if not re.fullmatch('[a-z][a-z0-9-]{0,79}', slug):
         raise ValueError('Slug inválido.')
@@ -342,18 +363,7 @@ def apply_approved(report, row_id, root):
     elif backup.read_bytes() != raw:
         raise ValueError('Backup conflitante.')
     replacement = encoded(club)
-    descriptor, temporary = tempfile.mkstemp(prefix='.behavior-', suffix='.tmp', dir=target.parent)
-    try:
-        with os.fdopen(descriptor, 'wb') as output:
-            output.write(replacement)
-            output.flush()
-            os.fsync(output.fileno())
-        if target.read_bytes() != raw:
-            raise ValueError('Arquivo alterado durante a aplicação.')
-        os.replace(temporary, target)
-    finally:
-        if Path(temporary).exists():
-            Path(temporary).unlink()
+    atomic_write(target, raw, replacement)
     return {'status': 'APLICADO', 'target': decision['target'], 'previousSha256': digest(raw),
             'sha256': digest(replacement), 'rowId': row_id, 'decision': decision}
 

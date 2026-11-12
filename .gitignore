@@ -32,3 +32,8 @@ docs/audit-014c-rebalance/browser-review-world.json
 docs/audit-014c-rebalance/http-restart-state.json
 docs/audit-014c-rebalance/review-world-preparation.log
 scripts/__pycache__/
+
+# Local behavior approval policy and transient transaction files.
+behavior-operators.local.json
+/catalogos/_pesquisa/comportamento/v16/workflow.lock
+/catalogos/_pesquisa/comportamento/v16/transaction.json
