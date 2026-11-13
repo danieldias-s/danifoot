@@ -84,14 +84,49 @@ class _CreatorFixture {
         }
         data = rows.values.toList();
       } else if (request.url.path.endsWith('/offline/catalogs/summary')) {
+        data = male ? offlineCatalogs : [];
+      } else if (request.url.path.endsWith('/offline/clubs')) {
+        expect(jsonDecode(request.body)['catalogIds'], ['es-2026-principal']);
         data = [
-          for (final c in offlineCatalogs)
-            if (male) c['summary'],
+          for (var i = 0; i < 128; i++)
+            {
+              'key': 'offline-$i',
+              'name': 'Clube espanhol $i',
+              'countryCode': 'ES',
+              'season': '2026',
+              'offlineSource': {'v11': {}},
+              'players': [],
+            },
         ];
-      } else if (request.url.path.endsWith('/offline/catalogs')) {
+      } else if (request.url.path.endsWith('/offline/preview')) {
+        final body = jsonDecode(request.body) as Map;
+        expect(body['catalogIds'], ['es-2026-principal']);
+        expect(body['applyV16RosterPolicy'], isTrue);
+        final keys = (body['clubKeys'] as List).toSet();
+        expect(keys, hasLength(128));
+        final assignments = (body['assignments'] as List).cast<Map>();
+        expect(assignments, isEmpty);
         data = {
-          'catalogs': [for (final c in offlineCatalogs) c['catalog']],
+          'draftId': 'offline-test',
+          'pendingSlots': 0,
+          'errors': [],
+          'warnings': [],
+          'clubs': [
+            for (final (index, key) in keys.indexed)
+              {
+                'division': index < 32 ? index ~/ 8 + 1 : 5,
+                'club': {
+                  'key': key,
+                  'name': 'Clube $key',
+                  'countryCode': 'ES',
+                  'season': '2026',
+                  'players': [],
+                },
+              },
+          ],
         };
+      } else if (request.url.path.endsWith('/offline/confirm/offline-test')) {
+        data = {'id': 'offline-world'};
       } else if (request.url.path.endsWith('/last-configuration')) {
         if (failLastConfiguration) {
           return http.Response('{"error":"Configuração indisponível"}', 503);
@@ -487,48 +522,77 @@ void main() {
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
   });
 
-  testWidgets('Países mostra a Espanha offline quando o histórico está vazio', (
+  Map<String, dynamic> spainCatalog({required bool ready}) => {
+    'catalogId': 'es-2026-principal',
+    'country': {'code': 'ES', 'name': 'Espanha'},
+    'year': 2026,
+    'clubCount': 172,
+    'ready': ready,
+    'valid': true,
+  };
+
+  testWidgets('Espanha em rascunho permite escolher país e ano no Criador', (
     tester,
   ) async {
-    final summary = {
-      'catalogId': 'es-2026-principal',
-      'country': {'code': 'ES', 'name': 'Espanha'},
-      'year': 2026,
-      'clubCount': 172,
-      'ready': false,
-      'valid': true,
-    };
     final fixture = _CreatorFixture()
       ..seasons = []
-      ..offlineCatalogs = [
-        {
-          'summary': summary,
-          'catalog': {
-            'manifest': {...summary, 'name': 'Espanha 2026/27'},
-            'clubs': List.generate(172, (_) => {}),
-            'ready': false,
-            'valid': true,
-            'issues': [
-              {'code': 'BEHAVIOR'},
-              {'code': 'RANKING_RESOLUTION'},
-            ],
-          },
-        },
-      ];
+      ..offlineCatalogs = [spainCatalog(ready: false)];
     await _creator(tester, fixture, 1366);
     await _pressContinue(tester);
-    expect(find.text('172 clubes • Rascunho'), findsOneWidget);
+    expect(find.text('Espanha'), findsOneWidget);
+    expect(find.byType(CheckboxListTile), findsOneWidget);
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
-    await _tapVisible(tester, find.text('Espanha • 2026'));
-
-    expect(find.text('Espanha 2026/27 • 2026'), findsOneWidget);
-    expect(find.textContaining('RASCUNHO • 172 clubes'), findsOneWidget);
-    final catalog = find.widgetWithText(
-      CheckboxListTile,
-      'Espanha 2026/27 • 2026',
+    await selectHistoricalCountries(tester, ['ES']);
+    expect(find.text('1/8 • Países'), findsOneWidget);
+    expect(find.text('Catálogo histórico offline'), findsNothing);
+    await _pressContinue(tester);
+    expect(find.text('2026 • 172 clubes'), findsOneWidget);
+    expect(find.text('Espanha (172) • Rascunho'), findsOneWidget);
+    expect(
+      tester.widget<CheckboxListTile>(historicalYear('2026')).value,
+      false,
     );
-    expect(tester.widget<CheckboxListTile>(catalog).onChanged, isNull);
-    expect(tester.takeException(), isNull);
+    await selectHistoricalYear(tester, '2026');
+    expect(find.text('1 ano selecionado'), findsOneWidget);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await _tapVisible(tester, find.text('VOLTAR'));
+    expect(find.text('1/8 • Países'), findsOneWidget);
+    await _pressContinue(tester);
+    expect(tester.widget<CheckboxListTile>(historicalYear('2026')).value, true);
+    expect(
+      fixture.requests.any((r) => r.url.path.endsWith('/offline/clubs')),
+      isFalse,
+    );
+  });
+
+  testWidgets('Catálogo pronto segue das etapas Países e Anos até confirmar', (
+    tester,
+  ) async {
+    final fixture = _CreatorFixture()
+      ..seasons = []
+      ..offlineCatalogs = [spainCatalog(ready: true)];
+    await _creator(tester, fixture, 1366);
+    await _pressContinue(tester);
+    await selectHistoricalCountries(tester, ['ES']);
+    await _pressContinue(tester);
+    await selectHistoricalYear(tester, '2026');
+    await _pressContinue(tester);
+    expect(find.text('Clube espanhol 0'), findsWidgets);
+    await _pressContinue(tester);
+    await _pressContinue(tester);
+    expect(
+      find.text('Os elencos reais serão carregados do catálogo selecionado.'),
+      findsOneWidget,
+    );
+    await _pressContinue(tester);
+    await _pressContinue(tester);
+    await _tapVisible(tester, find.text('CONFIRMAR CRIAÇÃO'));
+    expect(
+      fixture.requests.where(
+        (r) => r.url.path.endsWith('/offline/confirm/offline-test'),
+      ),
+      hasLength(1),
+    );
   });
 
   testWidgets('Dois países exibem cobertura e anos dinâmicos ao voltar', (

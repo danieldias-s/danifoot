@@ -143,6 +143,25 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   bool get _canAdvanceFromCountries =>
       !_countryLoadFailed && _selectedCountryCount > 0;
 
+  Iterable<Map<String, dynamic>> get _selectedOfflineCatalogs =>
+      _offlineCatalogs.where(
+        (catalog) =>
+            _countries.contains(catalog['country']['code']) &&
+            _years.contains(catalog['year'].toString()),
+      );
+
+  bool get _canAdvanceFromYears =>
+      !_yearsLoadFailed &&
+      _years.isNotEmpty &&
+      _selectedOfflineCatalogs.every((catalog) => catalog['ready'] == true);
+
+  bool get _usingOfflineCatalog =>
+      _assembly == null && _selectedOfflineCatalogs.isNotEmpty;
+
+  List<String> get _offlineCatalogIds => _selectedOfflineCatalogs
+      .map((catalog) => catalog['catalogId'].toString())
+      .toList();
+
   Future<void> _loadCountries() async {
     final path = Uri(
       path: 'historical-countries',
@@ -166,6 +185,17 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         }
       }
       if (!mounted) return;
+      final offlineCountries = <String, Map<String, dynamic>>{};
+      for (final catalog in offlineCatalogs) {
+        final country = catalog['country'] as Map;
+        final code = country['code'].toString();
+        final option = offlineCountries.putIfAbsent(
+          code,
+          () => {'code': code, 'name': country['name'], 'clubCount': 0},
+        );
+        option['clubCount'] += _clubCount(catalog);
+      }
+      options.addAll(offlineCountries.values);
       final available = options.map((country) => country['code']).toSet();
       final validSelection = _countries
           .where(available.contains)
@@ -176,6 +206,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _options = options;
         _offlineCatalogs = offlineCatalogs;
         _offlineCatalogLoadFailed = offlineLoadFailed;
+        if (offlineCatalogs.isNotEmpty) _generateAllRosterPlayers = false;
         if (validSelection.length != _countries.length) {
           _countries
             ..clear()
@@ -191,6 +222,35 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   List<String> get _orderedYears =>
       _years.toList()..sort((a, b) => int.parse(b).compareTo(int.parse(a)));
 
+  List<Map<String, dynamic>> _offlineYears() {
+    final byYear = <String, List<Map<String, dynamic>>>{};
+    for (final catalog in _offlineCatalogs) {
+      final country = catalog['country'] as Map;
+      if (!_countries.contains(country['code'])) continue;
+      (byYear[catalog['year'].toString()] ??= []).add({
+        'code': country['code'],
+        'name': country['name'],
+        'clubCount': _clubCount(catalog),
+        'status': catalog['ready'] == true
+            ? null
+            : catalog['valid'] == true
+            ? 'Rascunho'
+            : 'Inválido',
+      });
+    }
+    return [
+      for (final entry in byYear.entries)
+        {
+          'year': entry.key,
+          'clubCount': entry.value.fold<int>(
+            0,
+            (total, country) => total + _clubCount(country),
+          ),
+          'countries': entry.value,
+        },
+    ];
+  }
+
   Future<void> _loadYears() async {
     final path = Uri(
       path: 'historical-years',
@@ -201,13 +261,16 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     );
     try {
       final options =
-          _maps(
-            await _call(path.toString()),
-          ).where((option) => _clubCount(option) > 0).toList()..sort(
-            (a, b) => int.parse(
-              b['year'].toString(),
-            ).compareTo(int.parse(a['year'].toString())),
-          );
+          (_offlineCatalogs.isNotEmpty
+                ? _offlineYears()
+                : _maps(
+                    await _call(path.toString()),
+                  ).where((option) => _clubCount(option) > 0).toList())
+            ..sort(
+              (a, b) => int.parse(
+                b['year'].toString(),
+              ).compareTo(int.parse(a['year'].toString())),
+            );
       if (!mounted) return;
       setState(() {
         _yearsLoadFailed = false;
@@ -328,27 +391,52 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   Future<void> _catalog() async {
     if (_hasReviewDraft) return;
-    final data = Map<String, dynamic>.from(
-      await _call(
-            'catalog',
-            body: {
-              ..._request(),
-              'dataMode': null,
-              'useSavedData': true,
-              'generateAllRosterPlayers': false,
-            },
-          )
-          as Map,
-    );
+    final offline = _usingOfflineCatalog;
+    final data = offline
+        ? await _call('offline/clubs', body: {'catalogIds': _offlineCatalogIds})
+        : (await _call(
+                'catalog',
+                body: {
+                  ..._request(),
+                  'dataMode': null,
+                  'useSavedData': true,
+                  'generateAllRosterPlayers': false,
+                },
+              )
+              as Map)['clubs'];
     if (mounted) {
       setState(() {
-        _clubs = _maps(data['clubs'])..sort(_compareClubs);
+        _clubs = _maps(data);
+        if (!offline) _clubs.sort(_compareClubs);
         for (final club in _clubs) {
           club['name'] = _catalogClubName(club);
         }
         _reconcileDivisions();
       });
     }
+  }
+
+  Future<Map<String, dynamic>> _offlinePreview(
+    List<String> clubKeys,
+    List<Map<String, dynamic>> assignments,
+  ) async {
+    return Map<String, dynamic>.from(
+      await _call(
+            'offline/preview',
+            body: {
+              'name': _name.text.trim(),
+              'catalogIds': _offlineCatalogIds,
+              'seed': _seed,
+              'maxHumans': _humans,
+              'applyV16RosterPolicy': _clubs.any(
+                (club) => club['offlineSource']?['v11'] != null,
+              ),
+              'clubKeys': clubKeys,
+              'assignments': assignments,
+            },
+          )
+          as Map,
+    );
   }
 
   Future<void> _makePreview() async {
@@ -366,9 +454,26 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       );
       return;
     }
-    final data = Map<String, dynamic>.from(
-      await _call('preview', body: _request()) as Map,
-    );
+    final data = _usingOfflineCatalog
+        ? await _offlinePreview(
+            [
+              ..._divisionSlots.whereType<String>(),
+              if (_district == 'Manual')
+                ..._districtClubs
+              else
+                for (final club in _districtCandidates.take(_districtCapacity))
+                  club['key'].toString(),
+            ],
+            _maps(_request()['assignments'])
+                .where(
+                  (assignment) =>
+                      _manuallyChanged || assignment['division'] == 5,
+                )
+                .toList(),
+          )
+        : Map<String, dynamic>.from(
+            await _call('preview', body: _request()) as Map,
+          );
     if (mounted) {
       setState(() {
         _preview = data;
@@ -436,18 +541,26 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     if (draft == null) {
       throw Exception('Atualize a prévia antes de trocar clubes.');
     }
-    final data = Map<String, dynamic>.from(
-      await _call(
-            'preview/${draft['draftId']}/reassign',
-            body: {
-              'assignments': placement.assignments,
-              'name': _name.text.trim(),
-              'maxHumans': _humans,
-              'districtMode': ?districtMode,
-            },
+    final data = _usingOfflineCatalog
+        ? await _offlinePreview(
+            placement.divisions.expand((keys) => keys).toList(),
+            placement.assignments,
           )
-          as Map,
-    );
+        : Map<String, dynamic>.from(
+            await _call(
+                  'preview/${draft['draftId']}/reassign',
+                  body: {
+                    'assignments': placement.assignments,
+                    'name': _name.text.trim(),
+                    'maxHumans': _humans,
+                    'districtMode': ?districtMode,
+                  },
+                )
+                as Map,
+          );
+    if (_usingOfflineCatalog && (data['errors'] as List).isNotEmpty) {
+      throw Exception((data['errors'] as List).first);
+    }
     try {
       CreatorClubPlacement.fromPreview(_maps(data['clubs']));
     } on FormatException {
@@ -463,9 +576,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   void _chooseDistrictMode(String mode) {
-    if (!_hasReviewDraft) {
+    if (!_hasReviewDraft || _usingOfflineCatalog && mode != 'Manual') {
       setState(() {
         _district = mode;
+        _reviewDraft = null;
+        _reviewScope = null;
         _preview = null;
       });
     } else if (mode == 'Manual') {
@@ -932,7 +1047,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   );
   bool _clubAllowed(Map<String, dynamic> club) {
     return club['isFictional'] != true &&
-        (club['verification'] as Map?)?['status'] == 'REAL_CLUB_VERIFIED';
+        (_usingOfflineCatalog && club['offlineSource'] != null ||
+            (club['verification'] as Map?)?['status'] == 'REAL_CLUB_VERIFIED');
   }
 
   List<Map<String, dynamic>> get _districtCandidates => _eligibleClubs
@@ -1093,7 +1209,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       },
       rosterMode: _generateAllRosterPlayers ? 'Fictício' : 'Real',
       maxHumans: _humans,
-      synchronized: widget.worldCatalogRules,
+      synchronized: widget.worldCatalogRules && !_usingOfflineCatalog,
       confirmation: confirmation,
       busy: _busy,
       onRefresh: _busy ? null : () => _run(_makePreview),
@@ -1107,6 +1223,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   Widget _countryCard(Map<String, dynamic> country) {
     final theme = ClassicTheme.of(context).paper;
     final selected = _countries.contains(country['code']);
+    final clubLabel = _offlineCatalogs.isEmpty ? 'disponíveis' : 'no catálogo';
     return Container(
       key: ValueKey('country-card-${country['code']}'),
       margin: const EdgeInsets.only(bottom: 10),
@@ -1164,7 +1281,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          '${_clubCount(country)} clubes${constraints.maxWidth < 120 ? '\n' : ' '}disponíveis',
+                          '${_clubCount(country)} clubes${constraints.maxWidth < 120 ? '\n' : ' '}$clubLabel',
                           style: TextStyle(
                             color: theme.textPrimary,
                             fontSize: 17,
@@ -1217,10 +1334,6 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (a, b) => a['name'].toString().compareTo(b['name'].toString()),
           );
     final theme = ClassicTheme.of(context).paper;
-    final offlineCatalogs = _offlineCatalogs.where((catalog) {
-      final name = catalog['country']['name'].toString().toLowerCase();
-      return '$name ${catalog['year']}'.contains(_search);
-    });
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1291,30 +1404,6 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             onPressed: () => _run(_loadCountries),
             child: const Text('TENTAR NOVAMENTE'),
           ),
-        ] else if (!_busy && _offlineCatalogs.isNotEmpty) ...[
-          for (final catalog in offlineCatalogs)
-            ListTile(
-              key: ValueKey('offline-country-${catalog['catalogId']}'),
-              leading: CreatorCountryFlag(
-                code: catalog['country']['code'].toString(),
-                countryName: catalog['country']['name'].toString(),
-              ),
-              title: Text('${catalog['country']['name']} • ${catalog['year']}'),
-              subtitle: Text(
-                '${catalog['clubCount']} clubes • ${catalog['ready'] == true
-                    ? 'Disponível'
-                    : catalog['valid'] == true
-                    ? 'Rascunho'
-                    : 'Inválido'}',
-              ),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => _openOfflineCatalog(
-                country: catalog['country']['code'].toString(),
-                year: catalog['year'].toString(),
-              ),
-            ),
-          if (offlineCatalogs.isEmpty)
-            const Text('Nenhum país corresponde à pesquisa.'),
         ] else if (!_busy && _offlineCatalogLoadFailed) ...[
           const Text('Não foi possível consultar o catálogo offline.'),
           TextButton(
@@ -1368,6 +1457,13 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               const Text('Nenhum ano com clubes nos países selecionados.'),
             for (final item in _yearOptions)
               _yearCard(theme, item, names, mobile),
+            if (_selectedOfflineCatalogs.any((c) => c['ready'] != true))
+              const Padding(
+                padding: EdgeInsets.only(bottom: 12),
+                child: Text(
+                  'A criação só pode avançar para Divisões quando os catálogos dos anos selecionados estiverem prontos.',
+                ),
+              ),
             if (_yearOptions.isNotEmpty)
               Container(
                 key: const ValueKey('catalog-years-summary'),
@@ -1437,7 +1533,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             const SizedBox(width: 6),
             Flexible(
               child: Text(
-                '${country['name'] ?? names[country['code']]} (${_clubCount(country)})',
+                '${country['name'] ?? names[country['code']]} (${_clubCount(country)})'
+                '${country['status'] == null ? '' : ' • ${country['status']}'}',
                 style: TextStyle(
                   color: theme.textSecondary,
                   fontSize: mobile ? 14 : 17,
@@ -1590,24 +1687,30 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _preview = null;
   });
 
-  Widget _sourcesPanel() => CreatorRosterSources(
-    generatedOnly: _generateAllRosterPlayers,
-    fillClubVacancies: _fillClubVacancies,
-    fictionalWorld: _fictionalOnly,
-    problem: _rosterProblem,
-    onChooseGenerated: _busy ? null : _chooseRosterOrigin,
-  );
+  Widget _sourcesPanel() => _usingOfflineCatalog
+      ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Os elencos reais serão carregados do catálogo selecionado.',
+            ),
+            if (_rosterProblem != null) Text(_rosterProblem!),
+          ],
+        )
+      : CreatorRosterSources(
+          generatedOnly: _generateAllRosterPlayers,
+          fillClubVacancies: _fillClubVacancies,
+          fictionalWorld: _fictionalOnly,
+          problem: _rosterProblem,
+          onChooseGenerated: _busy ? null : _chooseRosterOrigin,
+        );
 
-  Future<void> _openOfflineCatalog({String? country, String? year}) async {
+  Future<void> _openOfflineCatalog() async {
     final created = await Navigator.push<bool>(
       context,
       MaterialPageRoute(
-        builder: (_) => OfflineCatalogCreator(
-          api: widget.api,
-          coachId: widget.coachId,
-          initialCountry: country,
-          initialYear: year,
-        ),
+        builder: (_) =>
+            OfflineCatalogCreator(api: widget.api, coachId: widget.coachId),
       ),
     );
     if (created == true && mounted) Navigator.pop(context, true);
@@ -1707,7 +1810,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           },
         );
       } else {
-        await _call('confirm/${_preview!['draftId']}', body: {});
+        final path = _usingOfflineCatalog ? 'offline/confirm' : 'confirm';
+        await _call('$path/${_preview!['draftId']}', body: {});
       }
       if (mounted) Navigator.pop(context, true);
     });
@@ -1757,6 +1861,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   String _invalidRosterPreview() {
     final count = (_preview?['clubs'] as List?)?.length ?? 0;
+    if (_usingOfflineCatalog) {
+      return (_preview?['errors'] as List?)?.firstOrNull?.toString() ??
+          'Revise a distribuição e os elencos dos clubes escolhidos.';
+    }
     const switchHint =
         'Para jogar agora, selecione USAR ELENCO FICTÍCIO e clique em CONTINUAR.';
     final summary = _preview?['dataSummary'] as Map?;
@@ -1792,6 +1900,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         _step = _countriesStep;
         _search = '';
         _options = [];
+        _offlineCatalogs = [];
         _countryLoadFailed = false;
       });
       await _loadCountries();
@@ -1809,7 +1918,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       return;
     }
     if (_step == _yearsStep && _assembly == null) {
-      if (_yearsLoadFailed || _years.isEmpty) return;
+      if (!_canAdvanceFromYears) return;
       await _catalog();
     }
     if (_step == _divisionsStep && _divisionProblem != null) return;
@@ -1899,7 +2008,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               (_step == _countriesStep && !_canAdvanceFromCountries) ||
               (_step == _yearsStep &&
                   _assembly == null &&
-                  (_yearsLoadFailed || _years.isEmpty)) ||
+                  !_canAdvanceFromYears) ||
               (_step == _divisionsStep && _divisionProblem != null) ||
               (_step == _districtsStep && _districtProblem != null) ||
               (_step >= _previewStep && !_validPreview)

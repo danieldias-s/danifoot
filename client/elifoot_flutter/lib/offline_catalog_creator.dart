@@ -7,14 +7,10 @@ import 'api_client.dart';
 class OfflineCatalogCreator extends StatefulWidget {
   final ElifootApiClient api;
   final String coachId;
-  final String? initialCountry;
-  final String? initialYear;
   const OfflineCatalogCreator({
     super.key,
     required this.api,
     required this.coachId,
-    this.initialCountry,
-    this.initialYear,
   });
 
   @override
@@ -28,8 +24,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
   final _seed = Random.secure().nextInt(2147483646) + 1;
   List<Map<String, dynamic>> _catalogs = [], _clubs = [];
   Map<String, dynamic>? _preview;
-  late String? _country = widget.initialCountry;
-  late String? _year = widget.initialYear;
+  String? _country, _year;
   String _error = '';
   int _humans = 1;
   bool _busy = false;
@@ -70,17 +65,6 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     if (!mounted) return;
     setState(() {
       _catalogs = _maps(report['catalogs']);
-      final manifests = _catalogs.map((c) => c['manifest']).whereType<Map>();
-      if (!manifests.any((m) => m['country']?['code'] == _country)) {
-        _country = null;
-      }
-      if (!manifests.any(
-        (m) =>
-            (_country == null || m['country']?['code'] == _country) &&
-            m['year'].toString() == _year,
-      )) {
-        _year = null;
-      }
       _error = _maps(report['issues']).map((i) => i['message']).join('\n');
     });
   }
@@ -304,14 +288,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     SizedBox(
                       width: 240,
                       child: DropdownButtonFormField<String>(
-                        key: ValueKey((
-                          'country',
-                          _country,
-                          countries.containsKey(_country),
-                        )),
-                        initialValue: countries.containsKey(_country)
-                            ? _country
-                            : null,
+                        initialValue: _country,
                         isExpanded: true,
                         decoration: const InputDecoration(labelText: 'País'),
                         items: [
@@ -336,13 +313,8 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     SizedBox(
                       width: 160,
                       child: DropdownButtonFormField<String>(
-                        key: ValueKey((
-                          'year',
-                          _country,
-                          _year,
-                          years.contains(_year),
-                        )),
-                        initialValue: years.contains(_year) ? _year : null,
+                        key: ValueKey('year-$_country'),
+                        initialValue: _year,
                         isExpanded: true,
                         decoration: const InputDecoration(labelText: 'Ano'),
                         items: [
