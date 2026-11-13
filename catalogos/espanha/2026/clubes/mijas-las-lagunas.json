@@ -6,12 +6,8 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": 131,
-  "historicalRanking": {
-    "rating": 68.2,
-    "source": "OPTA",
-    "referenceDate": "2026-11-12"
-  },
+  "tieBreakPriority": null,
+  "historicalRanking": null,
   "stadium": {
     "name": "Juan Gambero Culebra, Las Lagunas (Mijas), Mijas, Málaga, Andalusia",
     "capacity": 2000

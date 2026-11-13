@@ -1,0 +1,909 @@
+posicao_nacional,clube,clubId,grupo,playerId,jogador,posicao,nacionalidade,estrela,comportamento,minutos_2025_26,titularidades_2025_26,prodigio_protegido,valor_individual_eur,na_previa
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-001,Sergio Mestre,G,ES,NAO,PENDENTE,1380,15,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-002,Ferran Quetglás,G,ES,NAO,PENDENTE,900,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-003,Diego Arroyo,G,ES,NAO,PENDENTE,722,8,SIM,SEM_FONTE_NO_ZIP_BASE,CORTADO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-004,Oscar Naasei,D,GH,NAO,PENDENTE,2895,36,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-005,Joan Martínez,D,ES,NAO,PENDENTE,2613,29,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-006,Diego Aguado,D,ES,NAO,PENDENTE,2503,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-007,Lamini Fati,D,ES,NAO,PENDENTE,2280,23,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-008,Mario Rivas,D,ES,NAO,PENDENTE,1620,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-009,Jesús Fortea,D,ES,NAO,PENDENTE,1320,13,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-010,Jorge Cestero,M,ES,NAO,PENDENTE,3043,34,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-011,Pol Fortuny,M,ES,SIM,PENDENTE,2431,27,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-012,Thiago Pitarch,M,ES,NAO,PENDENTE,2286,28,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-013,Daniel Mesonero,M,ES,NAO,PENDENTE,2172,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-014,Sergio Martínez,M,ES,NAO,PENDENTE,1992,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-015,Izan Regueira,M,ES,NAO,PENDENTE,1588,16,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-016,Roberto Martín,M,ES,NAO,PENDENTE,1384,16,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-017,Ángel Carvajal,A,ES,SIM,PENDENTE,2995,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-018,Álvaro Leiva,A,ES,NAO,PENDENTE,2524,24,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-019,Daniel Yáñez,A,ES,NAO,PENDENTE,2188,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-020,Alexis Ciria,A,ES,NAO,PENDENTE,1551,17,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-021,Rachad Fettal,A,ES,NAO,PENDENTE,688,6,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+43,Real Madrid Castilla,real-madrid-castilla,Grupo 2,real-madrid-castilla-2026-022,Hugo de Llanos,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-001,Anartz Peña,G,ES,NAO,PENDENTE,1620,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-002,Sem Westerveld,G,NL,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-003,Diego González,D,ES,NAO,PENDENTE,2861,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-004,Hugo Barrachina,D,ES,NAO,PENDENTE,2404,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-005,Marco Sangalli,D,ES,NAO,PENDENTE,1872,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-006,Rubén Iranzo,D,ES,NAO,PENDENTE,1312,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-007,Raúl Pereira,D,ES,NAO,PENDENTE,929,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-008,Tachi,D,ES,NAO,PENDENTE,898,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-009,Sergio Escudero,D,ES,NAO,PENDENTE,758,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-010,Jokin Gabilondo,D,ES,NAO,PENDENTE,504,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-011,Peter Ademo,M,NG,SIM,PENDENTE,3120,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-012,Rubén Díez,M,ES,NAO,PENDENTE,2195,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-013,Yussif Saidu,M,GH,NAO,PENDENTE,1959,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-014,Hugo Pinilla,M,ES,NAO,PENDENTE,1444,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-015,Lucas Terrer,M,ES,NAO,PENDENTE,1431,15,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-016,Ander Herrera,M,ES,NAO,PENDENTE,537,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-017,Jaume Jardí,A,ES,SIM,PENDENTE,3006,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-018,Joaquín Delgado,A,ES,SIM,PENDENTE,2536,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-019,Edu Espiau,A,ES,NAO,PENDENTE,1672,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-020,Óscar Ureña,A,DO,NAO,PENDENTE,1489,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-021,Marcos Cuenca,A,ES,NAO,PENDENTE,1453,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-022,Iker Vadillo,A,ES,NAO,PENDENTE,857,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+44,Real Zaragoza,real-zaragoza,Grupo 2,real-zaragoza-2026-023,Pau Sans,A,ES,NAO,PENDENTE,546,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-001,Ander Astralaga,G,ES,NAO,PENDENTE,1531,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-002,Mario de Luis,G,ES,NAO,PENDENTE,990,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-003,Izan Coulibaly,G,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-004,Javier Gil,D,ES,NAO,PENDENTE,2295,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-005,Arnau Solà,D,ES,NAO,PENDENTE,2100,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-006,Sergio Diez,D,ES,NAO,PENDENTE,908,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-007,Antal Yaakobishvili,D,HU,NAO,PENDENTE,635,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-008,Romeo Hueso,D,ES,NAO,PENDENTE,376,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-009,Carlos Giménez,D,ES,NAO,PENDENTE,78,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-010,Pablo Pan,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-011,Thiago Helguera,M,UY,NAO,PENDENTE,2385,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-012,David García,M,ES,NAO,PENDENTE,1914,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-013,David Muñoz,M,ES,NAO,PENDENTE,1601,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-014,Edgar Alcañiz,M,ES,NAO,PENDENTE,1294,11,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-015,Jorge Castillo,M,ES,NAO,PENDENTE,675,3,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-016,Taufik Seidu,M,ES,NAO,PENDENTE,31,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-017,Álvaro Justo,M,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-018,Issiaka Kamate,A,FR,SIM,PENDENTE,2985,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-019,Álvaro Santos,A,ES,NAO,PENDENTE,2276,27,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-020,Miguel Cubo,A,ES,SIM,PENDENTE,1739,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-021,Koke Mota,A,ES,NAO,PENDENTE,551,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-022,Marc Domènech,A,ES,NAO,PENDENTE,480,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+45,Atlético Madrileño,atletico-madrileno,Grupo 2,atletico-madrileno-2026-023,Sergio Esteban,A,ES,NAO,PENDENTE,20,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-001,Mikel Santos,G,ES,NAO,PENDENTE,2970,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-002,Simón García,G,ES,NAO,PENDENTE,2693,30,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-003,Danel Belategi,D,ES,NAO,PENDENTE,2624,29,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-004,Dani Pérez,D,ES,NAO,PENDENTE,2402,27,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-005,Iker Monreal,D,ES,NAO,PENDENTE,2283,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-006,Beñat Larrea,D,ES,NAO,PENDENTE,2138,24,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-007,Telmo Zarandona,D,ES,NAO,PENDENTE,1734,20,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-008,Lucas Sarasketa,D,ES,NAO,PENDENTE,1481,17,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-009,Ander Izagirre,D,ES,NAO,PENDENTE,481,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-010,Ilyas El Youbi,D,MA,NAO,PENDENTE,90,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-011,Eñaut Lete,M,ES,NAO,PENDENTE,2244,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-012,Adrián Pérez,M,ES,NAO,PENDENTE,2120,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-013,Javi Sola,M,ES,NAO,PENDENTE,2013,22,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-014,Selton Sánchez,M,ES,NAO,PENDENTE,1126,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-015,Efe Korkut,M,TR,NAO,PENDENTE,622,8,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-016,Beñat García,M,ES,NAO,PENDENTE,553,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-017,Ander Peciña,A,ES,SIM,PENDENTE,2115,23,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-018,Aritz Conde,A,ES,SIM,PENDENTE,1896,24,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-019,Txus Vizcay,A,ES,NAO,PENDENTE,1374,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-020,Igor Oyono,A,ES,NAO,PENDENTE,951,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-021,Peio Huestamendia,A,ES,NAO,PENDENTE,934,7,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-022,Asier Hierro,A,ES,NAO,PENDENTE,891,5,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+46,Bilbao Athletic,bilbao-athletic,Grupo 1,bilbao-athletic-2026-023,Manex Lozano,A,ES,NAO,PENDENTE,878,7,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-001,Alex Quevedo,G,ES,NAO,PENDENTE,630,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-002,Yakiv Kinareykin,G,UA,NAO,PENDENTE,389,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-003,Eneko Ortiz,D,ES,NAO,PENDENTE,3042,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-004,Álvaro García,D,ES,NAO,PENDENTE,2115,23,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-005,Enric Pujol,D,ES,NAO,PENDENTE,1960,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-006,Jan Encuentra,D,ES,NAO,PENDENTE,1718,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-007,Chukwuma Eze,D,NG,NAO,PENDENTE,1263,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-008,César Bonafé,D,ES,NAO,PENDENTE,631,6,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-009,Arnau Forés,D,ES,NAO,PENDENTE,248,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-010,Manfa Keita,D,ML,NAO,PENDENTE,180,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-011,Moussa Diallo,D,SN,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-012,Facundo Viveros,M,AR,NAO,PENDENTE,1786,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-013,Cheikh Tidiane Thiam,M,SN,NAO,PENDENTE,1158,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-014,Pablo Pascual,M,ES,NAO,PENDENTE,641,6,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-015,Álvaro Alcaide,M,ES,NAO,PENDENTE,40,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-016,Albert García,A,ES,SIM,PENDENTE,2014,23,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-017,Joselillo Gaitán,A,ES,NAO,PENDENTE,1646,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-018,Nico Sánchez,A,ES,NAO,PENDENTE,1347,14,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-019,Valen Gómez,A,ES,NAO,PENDENTE,1204,16,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-020,Ayman Arguigue,A,MA,NAO,PENDENTE,1181,7,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-021,Nízar El Jmili,A,ES,NAO,PENDENTE,1101,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-022,Mahamoud Barry,A,ML,NAO,PENDENTE,504,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+47,Villarreal CF B,villarreal-cf-b,Grupo 2,villarreal-cf-b-2026-023,Nico Barattucci,A,AR,NAO,PENDENTE,192,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-001,Carlos Abad,G,ES,NAO,PENDENTE,2520,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-002,Alessandro Blazic,G,SI,NAO,PENDENTE,900,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-003,Javier Rentero,D,ES,NAO,PENDENTE,3151,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-004,Miki Bosch,D,ES,NAO,PENDENTE,2995,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-005,Javi Jiménez,D,ES,NAO,PENDENTE,2500,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-006,Samu Vázquez,D,ES,NAO,PENDENTE,2068,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-007,David López,D,ES,NAO,PENDENTE,1853,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-008,Rubén Cantero,D,ES,NAO,PENDENTE,1244,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-009,Jorge Galvañ,D,ES,NAO,PENDENTE,958,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-010,Yago Cantero,D,ES,NAO,PENDENTE,812,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-011,Nassourou Ben Hamed,M,CM,NAO,PENDENTE,2580,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-012,Alejandro Fidalgo,M,ES,NAO,PENDENTE,1968,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-013,Manu Rico,M,ES,NAO,PENDENTE,1704,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-014,Andy Escudero,M,ES,SIM,PENDENTE,1577,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-015,Mehdi Puch,M,DZ,NAO,PENDENTE,1515,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-016,Aitor Gismera,M,ES,NAO,PENDENTE,1348,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-017,Roger Colomina,M,ES,NAO,PENDENTE,1133,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-018,Rafaël De Palmas,M,FR,NAO,PENDENTE,674,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-019,Isaac Obeng,A,GH,NAO,PENDENTE,2546,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-020,Fran Sol,A,ES,SIM,PENDENTE,2278,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-021,Alex Jiménez,A,ES,NAO,PENDENTE,2267,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-022,Antoñín,A,ES,NAO,PENDENTE,1741,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+48,Hércules CF,hercules-cf,Grupo 2,hercules-cf-2026-023,Víctor Narro,A,ES,NAO,PENDENTE,890,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-001,Edgar Badia,G,ES,NAO,PENDENTE,3690,41,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-002,Adrián Zango,G,ES,NAO,PENDENTE,992,11,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-003,Jesús Ruiz,G,ES,NAO,PENDENTE,420,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-004,Carlos Navarro,D,ES,NAO,PENDENTE,2552,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-005,Iker Pedernales,D,ES,NAO,PENDENTE,2245,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-006,Peru Rodríguez,D,ES,NAO,PENDENTE,2185,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-007,Martín Aguirregabiria,D,ES,NAO,PENDENTE,1956,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-008,Pablo Pérez,D,ES,NAO,PENDENTE,1648,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-009,Aritz Arambarri,D,ES,NAO,PENDENTE,1097,12,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-010,Hodei Arrillaga,D,ES,NAO,PENDENTE,590,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-011,Joaquín Fernández,D,ES,NAO,PENDENTE,43,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-012,Markel Lozano,M,ES,NAO,PENDENTE,3336,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-013,Miguel Auría,M,ES,NAO,PENDENTE,3021,35,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-014,Adrián Verde,M,ES,NAO,PENDENTE,2560,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-015,Riki de Moraes,M,BR,NAO,PENDENTE,1974,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-016,Raúl Martínez,M,ES,NAO,PENDENTE,1914,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-017,David Dela,M,ES,NAO,PENDENTE,1151,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-018,Rodri Val,A,ES,SIM,PENDENTE,2854,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-019,Iker Unzueta,A,ES,SIM,PENDENTE,2575,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-020,Jorge González,A,ES,NAO,PENDENTE,1401,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-021,Nico Espinosa,A,ES,NAO,PENDENTE,1226,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-022,Aitor Uzkudun,A,ES,NAO,PENDENTE,1200,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+49,CD Mirandés,cd-mirandes,Grupo 1,cd-mirandes-2026-023,Josué Dorrio,A,ES,NAO,PENDENTE,340,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-001,Dani Jiménez,G,ES,NAO,PENDENTE,3420,38,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-002,Diego Piñeiro,G,ES,NAO,PENDENTE,739,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-003,Joan Rojas,D,ES,NAO,PENDENTE,2938,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-004,Cristo Romero,D,ES,NAO,PENDENTE,2791,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-005,Víctor Olmedo,D,ES,NAO,PENDENTE,2587,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-006,Jorge Mier,D,ES,NAO,PENDENTE,2425,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-007,Alberto González,D,ES,NAO,PENDENTE,2024,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-008,Jorge Sánchez,D,ES,NAO,PENDENTE,1945,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-009,Héctor Pérez,D,ES,NAO,PENDENTE,1865,20,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-010,Mounir Errahaly,D,MA,NAO,PENDENTE,1283,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-011,Usse Diao,M,ES,NAO,PENDENTE,1794,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-012,Óscar Gil,M,ES,NAO,PENDENTE,1720,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-013,João Pedro Palmberg,M,BR,NAO,PENDENTE,1625,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-014,Sergio Moyita,M,ES,NAO,PENDENTE,1261,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-015,Chema Núñez,M,ES,NAO,PENDENTE,1013,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-016,Javi Mier,M,ES,NAO,PENDENTE,917,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-017,Alonso Yoldi,M,ES,NAO,PENDENTE,758,10,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-018,David Flakus Bosilj,A,SI,SIM,PENDENTE,2818,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-019,Javi Moreno,A,ES,NAO,PENDENTE,2703,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-020,Álvaro Giménez,A,ES,SIM,PENDENTE,2443,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-021,Álvaro Bustos,A,ES,NAO,PENDENTE,1321,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-022,Joel Jorquera,A,ES,NAO,PENDENTE,1121,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+50,Real Murcia CF,real-murcia,Grupo 2,real-murcia-2026-023,Álex Meca,A,ES,NAO,PENDENTE,559,6,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-001,Hugo Rios,G,ES,NAO,PENDENTE,2250,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-002,Álex Marqués,G,ES,NAO,PENDENTE,540,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-003,Samu Fernández,D,ES,NAO,PENDENTE,2148,24,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-004,Quique Teijo,D,ES,NAO,PENDENTE,2133,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-005,Iker Vidal,D,ES,NAO,PENDENTE,1927,22,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-006,Manu Serrano,D,ES,NAO,PENDENTE,1554,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-007,Damián Canedo,D,ES,NAO,PENDENTE,1122,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-008,Pablo García,D,ES,NAO,PENDENTE,1122,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-009,Alvaro Mardones,D,ES,NAO,PENDENTE,1089,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-010,Jairo Noriega,M,ES,NAO,PENDENTE,2182,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-011,Noé Carrillo,M,ES,NAO,PENDENTE,1876,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-012,Koke San José,M,ES,NAO,PENDENTE,1820,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-013,Dani Estévez,M,ES,NAO,PENDENTE,1494,17,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-014,Rubén López,M,ES,NAO,PENDENTE,1049,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-015,Manu Ferreiro,M,ES,NAO,PENDENTE,737,8,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-016,Yayo González,M,ES,NAO,PENDENTE,647,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-017,Adrián Guerrero,A,ES,SIM,PENDENTE,2803,30,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-018,Kevin Sánchez,A,ES,NAO,PENDENTE,2598,29,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-019,Justino Barbosa,A,ES,NAO,PENDENTE,2316,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-020,David Domínguez,A,ES,NAO,PENDENTE,1858,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-021,Martín Ochoa,A,ES,SIM,PENDENTE,1703,18,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-022,Rodrigue Dipanda,A,CM,NAO,PENDENTE,1324,14,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+51,RC Deportivo Fabril,deportivo-fabril,Grupo 1,deportivo-fabril-2026-023,Iker Gil,A,ES,NAO,PENDENTE,159,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-001,Gaizka Ayesa,G,ES,NAO,PENDENTE,3330,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-002,Vicent Abril,G,ES,NAO,PENDENTE,1710,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-003,Manel Royo,D,ES,NAO,PENDENTE,3221,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-004,Nico Van Rijn,D,NL,NAO,PENDENTE,3026,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-005,José Amo,D,ES,NAO,PENDENTE,2763,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-006,Joseda Menargues,D,ES,NAO,PENDENTE,2443,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-007,Víctor Villote,D,ES,NAO,PENDENTE,2302,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-008,Ismael Athuman,D,KE,NAO,PENDENTE,2081,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-009,Fran Gil,D,ES,NAO,PENDENTE,995,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-010,Oriol Subirats,D,ES,NAO,PENDENTE,149,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-011,Marc Montalvo,M,ES,NAO,PENDENTE,2923,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-012,Meshak Babanzila,M,GA,NAO,PENDENTE,2716,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-013,Eugeni,M,ES,NAO,PENDENTE,2344,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-014,Toni Gabarri,M,ES,NAO,PENDENTE,2287,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-015,Aitor Gelardo,M,ES,NAO,PENDENTE,1343,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-016,Carlos Segura,A,ES,SIM,PENDENTE,2940,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-017,Joan Prohens,A,ES,NAO,PENDENTE,2859,34,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-018,Diego Gómez,A,ES,SIM,PENDENTE,2469,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-019,Shinnosuke Katsushima,A,JP,NAO,PENDENTE,1592,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-020,Pere Marco,A,ES,NAO,PENDENTE,1286,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-021,Alex Almansa,A,ES,NAO,PENDENTE,1107,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-022,Borja Sánchez,A,ES,NAO,PENDENTE,265,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+52,Gimnàstic de Tarragona,gimnastic-de-tarragona,Grupo 2,gimnastic-de-tarragona-2026-023,Sinan Bakış,A,TR,NAO,PENDENTE,258,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-001,Andrés Prieto,G,ES,NAO,PENDENTE,2714,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-002,Dimitrios Stamatakis,G,GR,NAO,PENDENTE,1710,19,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-003,David Astals,D,ES,NAO,PENDENTE,2865,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-004,Ismael Fadel,D,MA,NAO,PENDENTE,2799,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-005,Erik Ruiz,D,ES,NAO,PENDENTE,2556,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-006,Hugo San Modesto,D,ES,NAO,PENDENTE,2142,22,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-007,Eric Curbelo,D,ES,NAO,PENDENTE,1462,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-008,Víctor García,D,ES,NAO,PENDENTE,1328,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-009,Jérémy Blasco,D,FR,NAO,PENDENTE,1148,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-010,Pablo Busto,D,ES,NAO,PENDENTE,764,9,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-011,Gonzalo Almenara,D,ES,NAO,PENDENTE,625,7,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-012,Théo Valls,M,FR,NAO,PENDENTE,1613,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-013,Genaro Rodríguez,M,ES,NAO,PENDENTE,1439,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-014,Josep Calavera,M,ES,NAO,PENDENTE,1392,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-015,Pedro Ortiz,M,ES,NAO,PENDENTE,956,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-016,Iván del Olmo,M,ES,NAO,PENDENTE,701,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-017,Ander Yoldi,A,ES,SIM,PENDENTE,2655,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-018,Georges Nsukula,A,FR,NAO,PENDENTE,1896,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-019,Javi Eslava,A,ES,SIM,PENDENTE,1653,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-020,José Carlos Lazo,A,ES,NAO,PENDENTE,1460,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-021,Manu Justo,A,ES,NAO,PENDENTE,1282,15,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-022,Liberto Beltrán,A,ES,NAO,PENDENTE,1212,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+53,UD Ibiza,ud-ibiza,Grupo 2,ud-ibiza-2026-023,Iker Varela,A,ES,NAO,PENDENTE,942,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-001,Miquel Parera,G,ES,NAO,PENDENTE,2880,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-002,Miguel San Román,G,ES,NAO,PENDENTE,180,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-003,Rodri Suárez,D,ES,NAO,PENDENTE,2870,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-004,Oier López,D,ES,NAO,PENDENTE,2477,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-005,Bogdan Țîru,D,RO,NAO,PENDENTE,2189,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-006,Guzmán Ortega,D,ES,NAO,PENDENTE,1699,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-007,Iago López,D,ES,NAO,PENDENTE,1508,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-008,Carlos Pomares,D,ES,NAO,PENDENTE,1232,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-009,Jaime Vázquez,D,ES,NAO,PENDENTE,1174,14,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-010,Antxón Jaso,D,ES,NAO,PENDENTE,448,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-011,Róber Pier,D,ES,NAO,PENDENTE,353,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-012,Bicho,M,ES,NAO,PENDENTE,2288,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-013,Sergi Maestre,M,ES,NAO,PENDENTE,1504,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-014,Ángel Algobia,M,ES,NAO,PENDENTE,1253,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-015,Álex Cardero,M,ES,NAO,PENDENTE,1195,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-016,Jon García,M,ES,NAO,PENDENTE,1146,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-017,Assane Ndiaye,M,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-018,Pedro Benito,A,ES,SIM,PENDENTE,2640,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-019,Antón Escobar,A,ES,NAO,PENDENTE,1624,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-020,Dani Queipo,A,ES,NAO,PENDENTE,732,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-021,Hugo García,A,ES,NAO,PENDENTE,555,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-022,Jorge Delgado,A,ES,NAO,PENDENTE,346,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+54,Cultural Leonesa,cultural-y-deportiva-leonesa,Grupo 1,cultural-y-deportiva-leonesa-2026-023,João Fersura,A,BR,NAO,PENDENTE,132,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-001,Dani Alcover,G,ES,NAO,PENDENTE,2546,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-002,Samu Pérez,G,ES,NAO,PENDENTE,994,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-003,Fer Pérez,G,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-004,Alberto Quintana,D,ES,NAO,PENDENTE,3077,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-005,Raúl Alarcón,D,ES,NAO,PENDENTE,2700,30,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-006,Javi Antón,D,ES,NAO,PENDENTE,2458,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-007,David Cuenca,D,ES,NAO,PENDENTE,2177,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-008,Iván Pérez,D,ES,NAO,PENDENTE,2141,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-009,Julio Martínez,D,ES,NAO,PENDENTE,2126,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-010,Raul Giménez,D,ES,NAO,PENDENTE,1164,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-011,Samu Almagro,D,ES,NAO,PENDENTE,712,8,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-012,Luismi Gutiérrez,M,ES,SIM,PENDENTE,2885,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-013,Juan Aspra,M,ES,NAO,PENDENTE,2720,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-014,Moha Bassele,M,SN,NAO,PENDENTE,1952,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-015,Carlos Mangada,M,ES,NAO,PENDENTE,1735,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-016,Rafa Diz,M,ES,NAO,PENDENTE,989,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-017,Agüero,A,ES,NAO,PENDENTE,2397,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-018,Adrià Gené,A,ES,NAO,PENDENTE,1825,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-019,Pablo Rodríguez,A,ES,NAO,PENDENTE,1710,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-020,Destiny Ilahude,A,NG,NAO,PENDENTE,1516,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-021,Isra Domínguez,A,ES,NAO,PENDENTE,1024,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-022,Antonio Zarzana,A,ES,NAO,PENDENTE,751,8,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+55,Antequera CF,antequera-cf,Grupo 2,antequera-cf-2026-023,Moi Parra,A,ES,NAO,PENDENTE,681,8,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-001,Ramón Juan,G,ES,NAO,PENDENTE,3121,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-002,Iñaki Álvarez,G,ES,NAO,PENDENTE,2880,32,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-003,Antonio Montoro,D,ES,NAO,PENDENTE,3302,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-004,Carlos Blanco,D,ES,NAO,PENDENTE,2706,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-005,Lucas Viña,D,ES,NAO,PENDENTE,2653,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-006,Jordi Méndez,D,ES,NAO,PENDENTE,2587,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-007,Javi Gómez,D,ES,NAO,PENDENTE,2505,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-008,Andreu Hernández,D,ES,NAO,PENDENTE,2461,28,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-009,Félix Garreta,D,ES,NAO,PENDENTE,1402,18,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-010,Nil Jiménez,D,ES,NAO,PENDENTE,1266,16,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-011,Joan Anaya,D,ES,NAO,PENDENTE,1085,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-012,Oscar Carrasco,M,ES,NAO,PENDENTE,3292,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-013,Pau Darbra,M,ES,NAO,PENDENTE,2556,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-014,Marc Delgado,M,ES,NAO,PENDENTE,2553,30,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-015,Dani Torices,M,ES,NAO,PENDENTE,2026,20,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-016,Albertito,M,ES,NAO,PENDENTE,2020,23,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-017,Pablo Agudín,M,ES,NAO,PENDENTE,1592,16,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-018,Noel Carbonell,M,ES,NAO,PENDENTE,1097,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-019,Jaume Tovar,A,ES,SIM,PENDENTE,2690,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-020,Alexis García,A,ES,SIM,PENDENTE,2524,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-021,Sergi Serrano,A,ES,NAO,PENDENTE,1950,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-022,Sergi Armero,A,ES,NAO,PENDENTE,1914,18,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+56,UE Sant Andreu,ue-sant-andreu,Grupo 2,ue-sant-andreu-2026-023,Carles Garrido,A,ES,NAO,PENDENTE,1483,15,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-001,Fran Árbol,G,ES,NAO,PENDENTE,1710,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-002,Iker Piedra,G,ES,NAO,PENDENTE,1170,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-003,Eudald Vergés,D,ES,NAO,PENDENTE,3178,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-004,Aleix Gorjón,D,ES,NAO,PENDENTE,3135,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-005,Luismi Luengo,D,ES,NAO,PENDENTE,3110,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-006,Guillem Rodríguez,D,ES,NAO,PENDENTE,2769,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-007,Unai Dufur,D,ES,NAO,PENDENTE,2674,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-008,Iago Indias,D,ES,NAO,PENDENTE,2582,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-009,Diego Moreno,D,ES,NAO,PENDENTE,2075,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-010,José Albert,D,ES,NAO,PENDENTE,1811,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-011,Eric Gómez,D,ES,NAO,PENDENTE,539,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-012,Carlos Ramos,M,ES,SIM,PENDENTE,3223,38,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-013,Juanje Rodríguez,M,ES,NAO,PENDENTE,3118,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-014,Isaiah Navarro,M,ES,NAO,PENDENTE,2553,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-015,Alex Hidalgo,M,ES,NAO,PENDENTE,2434,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-016,Mauro Costa,M,ES,NAO,PENDENTE,2322,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-017,Mario Losada,A,ES,NAO,PENDENTE,2987,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-018,Pau Mascaró,A,ES,SIM,PENDENTE,2511,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-019,Izan Yurrieta,A,ES,NAO,PENDENTE,2455,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-020,Fabián Urzain,A,ES,NAO,PENDENTE,1938,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-021,Javier Carbonell,A,ES,NAO,PENDENTE,1784,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+57,Zamora CF,zamora-cf,Grupo 1,zamora-cf-2026-022,Dani Fernández,A,ES,NAO,PENDENTE,29,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-001,Miguel Prieto,G,ES,NAO,PENDENTE,2610,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-002,Toni Fuidias,G,ES,NAO,PENDENTE,360,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-003,Dani Ramos,D,ES,NAO,PENDENTE,2953,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-004,Juan Durán,D,ES,NAO,PENDENTE,2940,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-005,Dani Gallardo,D,ES,NAO,PENDENTE,2791,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-006,Ale Díez,D,ES,NAO,PENDENTE,2138,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-007,Choco,D,ES,NAO,PENDENTE,1987,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-008,Bema Sina,D,GH,NAO,PENDENTE,1577,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-009,Óscar Mesa,D,ES,NAO,PENDENTE,1173,12,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-010,Alejandro Sotillos,D,ES,NAO,PENDENTE,886,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-011,Antonio Amaro,M,ES,NAO,PENDENTE,2811,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-012,Yuya Yoshimura,M,JP,SIM,PENDENTE,2711,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-013,Tarsi Aguado,M,ES,NAO,PENDENTE,2295,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-014,David del Pozo,M,ES,NAO,PENDENTE,1681,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-015,Neco Celorio,M,ES,NAO,PENDENTE,1347,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-016,Rubén Quintanilla,M,ES,NAO,PENDENTE,409,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-017,Manín Gonzaga,A,ES,NAO,PENDENTE,2331,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-018,Raúl Hernández,A,ES,NAO,PENDENTE,2275,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-019,José Cambra,A,ES,NAO,PENDENTE,2122,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-020,Joshua Farrell,A,GB,NAO,PENDENTE,906,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-021,Gonzalo Calçada,A,ES,NAO,PENDENTE,817,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-022,Ismael Álvarez,A,ES,NAO,PENDENTE,661,5,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+58,CF Rayo Majadahonda,cf-rayo-majadahonda,Grupo 2,cf-rayo-majadahonda-2026-023,Iñigo Ramos,A,ES,NAO,PENDENTE,542,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-001,Gianfranco Gazzaniga,G,AR,NAO,PENDENTE,2956,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-002,Álvaro Killane,G,AR,NAO,PENDENTE,2700,30,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-003,Víctor García,D,VE,NAO,PENDENTE,2712,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-004,Yann Kembo,D,FR,NAO,PENDENTE,1331,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-005,Salva Ruiz,D,ES,NAO,PENDENTE,1197,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-006,Quique Fornos,D,ES,NAO,PENDENTE,1097,12,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-007,Iván Rodríguez,D,AD,NAO,PENDENTE,816,8,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-008,Guillem Molina,D,ES,NAO,PENDENTE,326,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-009,Marc Aznar,D,ES,NAO,PENDENTE,45,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-010,Óscar Sielva,M,ES,SIM,PENDENTE,2776,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-011,Luismi Redondo,M,ES,SIM,PENDENTE,2587,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-012,Pascu,M,ES,NAO,PENDENTE,2523,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-013,Ander Gorostidi,M,ES,NAO,PENDENTE,2340,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-014,Mario García,M,ES,NAO,PENDENTE,1697,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-015,Jimmy Suárez,M,ES,NAO,PENDENTE,1240,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-016,Diego Gómez,A,ES,NAO,PENDENTE,2023,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-017,Sergi Enrich,A,ES,NAO,PENDENTE,1783,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-018,Diego Collado,A,ES,NAO,PENDENTE,1645,16,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-019,Agustín Juarez,A,AR,NAO,PENDENTE,1486,17,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-020,Rafa Tresaco,A,ES,NAO,PENDENTE,1334,16,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-021,Cristian Herrera,A,ES,NAO,PENDENTE,501,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-022,Douglas Aurélio,A,BR,NAO,PENDENTE,53,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+59,SD Huesca,sd-huesca,Grupo 2,sd-huesca-2026-023,Diego Aznar,A,ES,NAO,PENDENTE,53,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-001,Lucas Díaz,G,ES,NAO,PENDENTE,750,8,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-002,César Fernández,G,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-003,Germán Nóvoa,D,ES,NAO,PENDENTE,3545,39,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-004,Álvaro Ramón,D,ES,NAO,PENDENTE,2923,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-005,Edgar Pujol,D,DO,NAO,PENDENTE,2660,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-006,Miguel Leal,D,ES,NAO,PENDENTE,2155,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-007,Saúl García,D,ES,NAO,PENDENTE,1473,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-008,Eric Monjonell,D,ES,NAO,PENDENTE,1370,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-009,David Castro,D,ES,NAO,PENDENTE,244,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-010,Raúl Blanco,M,ES,NAO,PENDENTE,1837,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-011,Sekou Djanbou,M,ML,NAO,PENDENTE,1529,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-012,Fabio González,M,ES,NAO,PENDENTE,1222,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-013,Vicente Esquerdo,M,ES,NAO,PENDENTE,1210,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-014,Jesús Bernal,M,ES,NAO,PENDENTE,602,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-015,Unai Ropero,A,ES,SIM,PENDENTE,2153,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-016,Álvaro Juan,A,ES,SIM,PENDENTE,2139,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-017,Roberto Arroyo,A,ES,NAO,PENDENTE,2105,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-018,Dani Ojeda,A,ES,NAO,PENDENTE,1456,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-019,Endika Buján,A,ES,NAO,PENDENTE,1408,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-020,Raúl Alcaina,A,ES,NAO,PENDENTE,1371,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-021,Etienne Eto'o,A,CM,NAO,PENDENTE,1000,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+60,Racing Ferrol,racing-de-ferrol,Grupo 1,racing-de-ferrol-2026-022,Azael García,A,ES,NAO,PENDENTE,586,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-001,Álvaro Ratón,G,ES,NAO,PENDENTE,2880,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-002,Marco Suárez,G,ES,NAO,PENDENTE,900,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-003,Jon Sillero,D,ES,NAO,PENDENTE,2928,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-004,Roger Escoruela,D,ES,NAO,PENDENTE,2467,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-005,Iker Alday,D,ES,NAO,PENDENTE,2297,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-006,Osky Menéndez,D,ES,NAO,PENDENTE,1817,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-007,Andrés Carmona,D,ES,NAO,PENDENTE,1510,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-008,Markel Artetxe,D,ES,NAO,PENDENTE,1352,14,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-009,Yago Rodríguez,D,ES,NAO,PENDENTE,1316,14,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-010,Pitu Doncel,M,ES,NAO,PENDENTE,3194,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-011,Neskes,M,ES,NAO,PENDENTE,2234,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-012,Brais Abelenda,M,ES,NAO,PENDENTE,1997,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-013,Isi Gómez,M,ES,NAO,PENDENTE,1704,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-014,Mangel Prendes,M,ES,NAO,PENDENTE,1555,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-015,Pablo Larrea,M,ES,NAO,PENDENTE,1533,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-016,Samu Mayo,M,ES,NAO,PENDENTE,1523,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-017,Berto Cayarga,A,ES,NAO,PENDENTE,2692,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-018,Álvaro Santamaría,A,ES,SIM,PENDENTE,2484,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-019,Santi Franco,A,ES,SIM,PENDENTE,2014,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-020,Iñigo Muñoz,A,ES,NAO,PENDENTE,1549,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-021,Julián Mahicas,A,ES,NAO,PENDENTE,1364,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-022,Cris Montes,A,ES,NAO,PENDENTE,380,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+61,Real Avilés Industrial,real-aviles-industrial,Grupo 1,real-aviles-industrial-2026-023,Natalio,A,ES,NAO,PENDENTE,149,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-001,Lucas Madrigal,G,ES,NAO,PENDENTE,405,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-002,Nil Ruiz,G,ES,NAO,PENDENTE,180,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-003,Arnau Campeny,D,ES,NAO,PENDENTE,3234,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-004,Álex Cano,D,ES,NAO,PENDENTE,2670,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-005,Enol Coto,D,ES,NAO,PENDENTE,2558,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-006,Marcel Sgrò,D,ES,NAO,PENDENTE,1431,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-007,Joan Puig,D,ES,NAO,PENDENTE,1251,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-008,Víctor Morales,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-009,Victor Edo,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-010,Pedro Cancelo,D,PT,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-011,Santi Pallarés,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-012,Gori Gracia,M,ES,NAO,PENDENTE,1613,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-013,Albert Tolosa,M,ES,NAO,PENDENTE,195,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-014,Marc Anglès,M,ES,NAO,PENDENTE,147,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-015,Guillem Cardelús,M,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-016,Teto Martín,A,ES,SIM,PENDENTE,1330,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-017,Khalid Noureddine,A,ES,NAO,PENDENTE,1024,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-018,Youssef Zayzoun,A,MA,NAO,PENDENTE,858,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-019,Joan Mascaró,A,ES,NAO,PENDENTE,379,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-020,Flavio Ribeiro,A,ES,NAO,PENDENTE,136,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-021,Adri Expósito,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+62,CE Europa,ce-europa,Grupo 2,ce-europa-2026-022,Adriá Padillo,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-001,Adrián Csenterics,G,HU,NAO,PENDENTE,3240,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-002,Bence Juhász,G,HU,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-003,Hugo Sanz,D,ES,NAO,PENDENTE,3776,42,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-004,Fito,D,ES,NAO,PENDENTE,3308,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-005,Chechu Martínez,D,ES,NAO,PENDENTE,3211,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-006,Álex Barbu,D,ES,NAO,PENDENTE,3170,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-007,Hugo Carrillo,D,ES,NAO,PENDENTE,2338,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-008,Nacho González,D,ES,NAO,PENDENTE,1738,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-009,Adrián Salguero,D,ES,NAO,PENDENTE,1152,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-010,Alejandro Jay,D,ES,NAO,PENDENTE,685,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-011,Martín Solar,M,ES,NAO,PENDENTE,3240,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-012,Raúl Beneit,M,ES,NAO,PENDENTE,2593,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-013,Jota López,M,ES,NAO,PENDENTE,2552,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-014,Benny Dibrani,M,AL,NAO,PENDENTE,1629,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-015,Antonio Aranda,M,ES,NAO,PENDENTE,1192,14,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-016,Gio Almeida,M,PT,NAO,PENDENTE,947,10,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-017,Darwin Guagua,M,EC,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-018,Sofiane El Ftouhi,A,FR,NAO,PENDENTE,2067,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-019,Javi Areso,A,ES,NAO,PENDENTE,1906,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-020,Carlos Doncel,A,ES,NAO,PENDENTE,1617,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-021,Lacine Koné,A,CI,SIM,PENDENTE,1314,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-022,Sigurdur Hallsson,A,IS,NAO,PENDENTE,921,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+63,Mérida AD,ad-merida,Grupo 1,ad-merida-2026-023,Dani Sandoval,A,ES,NAO,PENDENTE,373,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-001,Lucho García,G,CO,NAO,PENDENTE,2520,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-002,Jhafets Reyes,G,EC,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-003,Imanol Baz,D,ES,NAO,PENDENTE,3395,38,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-004,Luca Lohr,D,ES,NAO,PENDENTE,2856,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-005,Nacho Martínez,D,ES,NAO,PENDENTE,2551,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-006,Rubén Serrano,D,ES,NAO,PENDENTE,2369,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-007,Dani Perejón,D,ES,NAO,PENDENTE,1967,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-008,Amet Korça,D,US,NAO,PENDENTE,1656,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-009,Marc Jurado,D,ES,NAO,PENDENTE,1565,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-010,Grégory Kelo,D,FR,NAO,PENDENTE,1369,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-011,Adrián Corral,D,ES,NAO,PENDENTE,938,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-012,Pablo de Blasis,M,AR,NAO,PENDENTE,2109,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-013,Javier Ajenjo,M,PL,SIM,PENDENTE,2080,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-014,Jean Jules,M,CM,NAO,PENDENTE,782,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-015,Pablo Clavería,M,ES,NAO,PENDENTE,533,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-016,Boston Billups,M,MT,NAO,PENDENTE,202,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-017,Ibán Ribeiro,A,ES,SIM,PENDENTE,2792,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-018,Marcos Moreno,A,ES,NAO,PENDENTE,2097,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-019,Raúl Dacosta,A,ES,NAO,PENDENTE,1571,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-020,Abdel Lah Mohamed,A,ES,NAO,PENDENTE,1446,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-021,Álex Guti,A,ES,NAO,PENDENTE,1429,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-022,Marcelo dos Santos,A,BR,NAO,PENDENTE,1271,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+64,FC Cartagena,fc-cartagena,Grupo 2,fc-cartagena-2026-023,Rubén Richarte,A,ES,NAO,PENDENTE,594,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-001,Salvi Carrasco,G,ES,NAO,PENDENTE,1500,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-002,Jaime Morillas,G,ES,NAO,PENDENTE,960,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-003,David Serrano,D,ES,NAO,PENDENTE,3260,37,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-004,Alejandro Pérez,D,ES,NAO,PENDENTE,3231,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-005,Jaume Pol,D,ES,NAO,PENDENTE,3218,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-006,Cristian Pehlivanov,D,BG,NAO,PENDENTE,2986,34,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-007,Mauro Cabello,D,ES,NAO,PENDENTE,2888,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-008,Javi Moyano,D,ES,NAO,PENDENTE,2842,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-009,Moha Sanhaji,D,MA,NAO,PENDENTE,2630,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-010,David Márquez,D,ES,NAO,PENDENTE,1457,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-011,David Montejano,D,ES,NAO,PENDENTE,1330,15,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-012,Antonio Caballero,M,ES,NAO,PENDENTE,2541,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-013,Busi,M,ES,NAO,PENDENTE,2493,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-014,José Álvarez,M,ES,NAO,PENDENTE,2061,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-015,Diego Fuentes,M,ES,NAO,PENDENTE,1989,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-016,Nacho Castillo,M,ES,NAO,PENDENTE,1978,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-017,Fran Gallego,M,ES,NAO,PENDENTE,1917,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-018,Adri Paz,M,ES,NAO,PENDENTE,1477,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-019,Oscar Lozano,M,ES,NAO,PENDENTE,294,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-020,Marco Siverio,A,ES,SIM,PENDENTE,2996,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-021,Mario Martos,A,ES,NAO,PENDENTE,2937,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-022,Moha Keita,A,SN,SIM,PENDENTE,2593,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+65,Real Jaén CF,real-jaen,Grupo 2,real-jaen-2026-023,Peque Polo,A,ES,NAO,PENDENTE,1279,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-001,Jon Tena,G,ES,NAO,PENDENTE,1980,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-002,Lander Emery,G,ES,NAO,PENDENTE,1080,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-003,Paul Álvarez,D,ES,NAO,PENDENTE,2762,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-004,Unai Medina,D,ES,NAO,PENDENTE,2568,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-005,Álvaro Mateo,D,ES,NAO,PENDENTE,2136,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-006,Javi Fontán,D,ES,NAO,PENDENTE,2106,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-007,Jordi Pola,D,ES,NAO,PENDENTE,1780,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-008,Gaizka Martínez,D,ES,NAO,PENDENTE,1618,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-009,Urtzi Albizua,D,ES,NAO,PENDENTE,543,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-010,Martín Arruti,M,ES,NAO,PENDENTE,2202,25,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-011,Juan de la Mata,M,ES,NAO,PENDENTE,1771,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-012,Luca Sangalli,M,ES,NAO,PENDENTE,1695,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-013,Beñat Gaubeka,M,ES,NAO,PENDENTE,1565,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-014,Ander Martín,M,ES,NAO,PENDENTE,903,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-015,Markel Mancisidor,M,ES,NAO,PENDENTE,56,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-016,Aitor Galarza,A,ES,SIM,PENDENTE,2393,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-017,Unai García,A,ES,SIM,PENDENTE,2201,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-018,Yassin Tallal,A,MA,NAO,PENDENTE,1880,20,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-019,Mustapha Muhammad,A,NG,NAO,PENDENTE,732,9,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-020,Martín Merquelanz,A,ES,NAO,PENDENTE,598,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-021,Ekain Azkune,A,ES,NAO,PENDENTE,248,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+66,Real Unión Club,real-union,Grupo 1,real-union-2026-022,Peru Ruiz,A,ES,NAO,PENDENTE,227,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-001,Miguel Bañuz,G,ES,NAO,PENDENTE,480,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-002,Oriol Martí,G,ES,NAO,PENDENTE,90,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-003,Álvaro Mayorga,D,ES,NAO,PENDENTE,2481,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-004,Javi Lancho,D,ES,NAO,PENDENTE,2413,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-005,Miguel Cuesta,D,ES,NAO,PENDENTE,2344,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-006,Pol Domingo,D,ES,NAO,PENDENTE,2234,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-007,Xabi Irurita,D,ES,NAO,PENDENTE,1505,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-008,Arnau Gaixas,D,ES,NAO,PENDENTE,1441,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-009,Lucas Pérez,D,ES,NAO,PENDENTE,780,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-010,Diego Arcos,D,ES,NAO,PENDENTE,135,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-011,Pablo Rivera,M,ES,NAO,PENDENTE,2820,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-012,Toni Caravaca,M,ES,NAO,PENDENTE,2018,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-013,Luis Vacas,M,ES,NAO,PENDENTE,1860,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-014,Gonzalo Melero,M,ES,NAO,PENDENTE,1214,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-015,Fran Manzanara,M,ES,NAO,PENDENTE,380,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-016,Dax Palmer,M,CR,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-017,Omar Ouhdadi,A,MA,SIM,PENDENTE,2648,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-018,Miguel Berlanga,A,ES,SIM,PENDENTE,2452,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-019,Davo,A,ES,NAO,PENDENTE,1858,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-020,Esteban Aparicio,A,ES,NAO,PENDENTE,1496,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-021,Fran Sabina,A,ES,NAO,PENDENTE,957,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+67,AD Alcorcón,ad-alcorcon,Grupo 2,ad-alcorcon-2026-022,Rober Ibáñez,A,ES,NAO,PENDENTE,776,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-001,Raúl Marqueta,G,ES,NAO,PENDENTE,2880,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-002,Iker Galindo,G,ES,NAO,PENDENTE,180,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-003,Ander Vidorreta,D,ES,NAO,PENDENTE,3117,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-004,Adrián Argos,D,ES,NAO,PENDENTE,2375,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-005,David Alba,D,ES,NAO,PENDENTE,1567,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-006,Reda Ergouai,D,MA,NAO,PENDENTE,1469,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-007,Álvaro Pérez,D,ES,NAO,PENDENTE,670,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-008,Juanra Gómez,D,ES,NAO,PENDENTE,445,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-009,Rui Pedro,D,PT,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-010,Yelko Pino,M,ES,SIM,PENDENTE,3291,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-011,Jerin Ramos,M,CV,NAO,PENDENTE,2961,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-012,Ilias Charid,M,ES,NAO,PENDENTE,2566,31,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-013,Iker Ivorra,M,ES,NAO,PENDENTE,1877,23,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-014,Tiago Rodríguez,M,ES,NAO,PENDENTE,1691,18,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-015,Luisao Macías,M,EC,NAO,PENDENTE,1234,8,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-016,Domingo Mba,A,GQ,NAO,PENDENTE,2247,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-017,Alex Comparada,A,ES,NAO,PENDENTE,2149,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-018,Marcos Bravo,A,ES,NAO,PENDENTE,1942,20,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-019,Álex González,A,ES,NAO,PENDENTE,1364,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-020,Alberto Gil,A,ES,NAO,PENDENTE,1319,19,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-021,Papa Gaye,A,SN,NAO,PENDENTE,943,10,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-022,Iñaki Elejalde,A,ES,NAO,PENDENTE,800,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+68,Pontevedra CF,pontevedra-cf,Grupo 1,pontevedra-cf-2026-023,Bob Omoregbe,A,IT,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-001,Diego Nieves,G,ES,NAO,PENDENTE,2700,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-002,Germán García,G,ES,NAO,PENDENTE,450,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-003,Iván Martínez,D,ES,NAO,PENDENTE,2729,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-004,Víctor Rodríguez,D,ES,NAO,PENDENTE,1738,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-005,José Manuel Alonso,D,ES,NAO,PENDENTE,1693,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-006,Manolo Molina,D,ES,NAO,PENDENTE,1581,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-007,Marcos Sevila,D,ES,NAO,PENDENTE,1167,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-008,Sergi López,D,ES,NAO,PENDENTE,1038,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-009,Adrián Expósito,D,ES,NAO,PENDENTE,650,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-010,Pablo Barea,D,ES,NAO,PENDENTE,599,6,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-011,Álvaro Gete,M,ES,NAO,PENDENTE,2096,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-012,Luis Sánchez,M,ES,NAO,PENDENTE,1715,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-013,Nico Conesa,M,ES,NAO,PENDENTE,1475,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-014,Toño Calvo,M,ES,NAO,PENDENTE,1247,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-015,Deco,M,ES,NAO,PENDENTE,1179,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-016,Unai Rodríguez,M,ES,NAO,PENDENTE,22,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-017,Runy,A,ES,NAO,PENDENTE,2187,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-018,Ignacio Tellechea,A,ES,SIM,PENDENTE,2153,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-019,Álex Monerris,A,ES,NAO,PENDENTE,1616,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-020,Iván Fernández,A,ES,NAO,PENDENTE,1453,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-021,Juan Artola,A,ES,NAO,PENDENTE,984,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-022,Oussama Chit,A,MA,NAO,PENDENTE,932,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+69,CP Cacereño,cp-cacereno,Grupo 1,cp-cacereno-2026-023,Sergio Navarro,A,ES,NAO,PENDENTE,364,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-001,David Pinto,G,PT,NAO,PENDENTE,2610,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-002,Alfonso Liceras,G,ES,NAO,PENDENTE,2520,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-003,Sergi Molina,D,ES,NAO,PENDENTE,3325,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-004,Álex Macías,D,ES,NAO,PENDENTE,2928,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-005,Ismael Bekhoucha,D,MA,NAO,PENDENTE,2749,32,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-006,Diego Espejo,D,ES,NAO,PENDENTE,2223,26,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-007,Carlos Cordero,D,ES,NAO,PENDENTE,2174,26,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-008,Edu Sánchez,D,ES,NAO,PENDENTE,1179,11,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-009,Rober Correa,D,ES,NAO,PENDENTE,845,10,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-010,Giovanni Zarfino,M,UY,NAO,PENDENTE,2946,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-011,Luka Lecic,M,ME,NAO,PENDENTE,2860,33,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-012,Yael Ballesteros,M,ES,NAO,PENDENTE,2455,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-013,Marco Manchón,M,ES,NAO,PENDENTE,2428,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-014,Luis Morcillo,M,ES,NAO,PENDENTE,2196,25,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-015,Kike Márquez,A,ES,SIM,PENDENTE,3200,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-016,Imanol Barace,A,ES,NAO,PENDENTE,2830,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-017,Chus Villar,A,ES,SIM,PENDENTE,2767,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-018,Iker Burgos,A,ES,NAO,PENDENTE,2665,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-019,Diego Díaz,A,ES,SIM,PENDENTE,2532,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-020,Rodrigo Escudero,A,ES,NAO,PENDENTE,2320,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-021,Nordin Al-Lal,A,MA,NAO,PENDENTE,1079,13,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-022,Héctor Areosa,A,ES,NAO,PENDENTE,621,7,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+70,CD Extremadura 1924,cd-extremadura,Grupo 1,cd-extremadura-2026-023,Alfred Gøthler,A,DK,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-001,Gaizka Campos,G,ES,NAO,PENDENTE,1877,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-002,Ibon Ispizua,G,ES,NAO,PENDENTE,1539,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-003,Beñat Gómez,D,ES,NAO,PENDENTE,2936,33,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-004,Oscar Marotías,D,ES,NAO,PENDENTE,2655,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-005,Samuel Calera,D,ES,NAO,PENDENTE,2442,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-006,Sergio Camus,D,ES,NAO,PENDENTE,2115,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-007,Ander Zoilo,D,ES,NAO,PENDENTE,1584,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-008,Ander Sustatxa,D,ES,NAO,PENDENTE,1542,16,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-009,Aritz Muguruza,D,ES,NAO,PENDENTE,1411,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-010,Pablo Trigueros,D,ES,NAO,PENDENTE,1025,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-011,Julen Huidobro,M,ES,SIM,PENDENTE,2715,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-012,Markel Ruiz,M,ES,NAO,PENDENTE,2454,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-013,Xemi Fernández,M,ES,NAO,PENDENTE,2080,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-014,Álvaro Peña,M,ES,NAO,PENDENTE,1617,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-015,Unai Naveira,M,ES,NAO,PENDENTE,1611,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-016,Iván Castillo,M,ES,NAO,PENDENTE,1279,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-017,Xavier Sola,A,ES,SIM,PENDENTE,2575,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-018,Ager Badiola,A,ES,NAO,PENDENTE,2331,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-019,Endika Mateos,A,ES,NAO,PENDENTE,1818,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-020,Urko Collado,A,ES,NAO,PENDENTE,1592,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-021,Carlos Mattheus,A,ES,NAO,PENDENTE,1538,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-022,Ángel Troncho,A,ES,NAO,PENDENTE,1273,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+71,Barakaldo CF,barakaldo-cf,Grupo 1,barakaldo-cf-2026-023,Jon Cabo,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-001,José Salcedo,G,ES,NAO,PENDENTE,3000,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-002,Iván Martínez,G,ES,NAO,PENDENTE,1800,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-003,Álex Revuelta,D,ES,NAO,PENDENTE,3090,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-004,Johan Terranova,D,CO,NAO,PENDENTE,3067,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-005,José Mas,D,ES,NAO,PENDENTE,2210,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-006,Héctor Martínez,D,ES,NAO,PENDENTE,2183,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-007,Dani Merchán,D,ES,NAO,PENDENTE,2123,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-008,Fromsa,D,ET,NAO,PENDENTE,2050,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-009,Antonio Sánchez,D,ES,NAO,PENDENTE,1481,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-010,Adrián Pérez,M,ES,NAO,PENDENTE,3139,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-011,Mario Abenza,M,ES,NAO,PENDENTE,2859,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-012,Adri Heredia,M,ES,NAO,PENDENTE,2025,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-013,Alberto Collado,M,ES,NAO,PENDENTE,1641,21,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-014,Yasser El Arbaoui,M,ES,NAO,PENDENTE,1595,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-015,Alonso Nyada,M,ES,NAO,PENDENTE,95,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-016,Jesús Carrillo,M,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-017,José Manuel Raigal,A,ES,NAO,PENDENTE,2641,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-018,Javi Castedo,A,ES,SIM,PENDENTE,2545,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-019,Gonzalo Serrano,A,ES,SIM,PENDENTE,2322,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-020,Usher Lobede,A,ES,NAO,PENDENTE,1896,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-021,Christian Martínez,A,ES,NAO,PENDENTE,1688,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-022,Serpeta,A,ES,NAO,PENDENTE,594,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+72,Águilas FC,aguilas-fc,Grupo 2,aguilas-fc-2026-023,Mathieu Seyram,A,BJ,NAO,PENDENTE,331,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-001,Marc Martínez,G,ES,NAO,PENDENTE,2250,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-002,Fernando Embadje,G,GW,NAO,PENDENTE,1620,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-003,Hugo Pascual,D,ES,NAO,PENDENTE,2970,33,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-004,Rufino Lucero,D,AR,NAO,PENDENTE,2606,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-005,Simón Luca Pérez,D,ES,NAO,PENDENTE,2128,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-006,Pol Moreno,D,ES,NAO,PENDENTE,2066,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-007,Ibaider Garriz,D,ES,NAO,PENDENTE,1983,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-008,Kike Hermoso,D,ES,NAO,PENDENTE,1712,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-009,Pere Haro,D,ES,NAO,PENDENTE,1089,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-010,Pablo Parrilla,M,ES,NAO,PENDENTE,3209,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-011,Guille Berzal,M,ES,NAO,PENDENTE,2526,32,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-012,Mario Nájera,M,ES,SIM,PENDENTE,2181,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-013,Kevin Presa,M,ES,NAO,PENDENTE,2024,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-014,Alberto Ulloa,M,ES,NAO,PENDENTE,1485,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-015,Antonio Perera,M,ES,NAO,PENDENTE,628,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-016,Chiqui,A,ES,NAO,PENDENTE,2601,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-017,Arturo Palma,A,MX,NAO,PENDENTE,1979,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-018,Álex Costa,A,ES,NAO,PENDENTE,1871,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-019,Álex Gallar,A,ES,NAO,PENDENTE,1837,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-020,Alan Godoy,A,ES,NAO,PENDENTE,999,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-021,Mo Dauda,A,GH,NAO,PENDENTE,967,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-022,Tornike Morchiladze,A,GE,NAO,PENDENTE,478,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+73,CD Lugo,cd-lugo,Grupo 1,cd-lugo-2026-023,Mateo Muñoz,A,ES,NAO,PENDENTE,38,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-001,Amador Zarco,G,ES,NAO,PENDENTE,2609,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-002,Alejandro Palop,G,ES,NAO,PENDENTE,570,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-003,Álvaro López,D,ES,NAO,PENDENTE,3032,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-004,Joserra de Diego,D,ES,NAO,PENDENTE,2919,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-005,Andrés Borge,D,ES,NAO,PENDENTE,2848,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-006,Pablo Felipe,D,ES,NAO,PENDENTE,2111,24,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-007,Goyo Medina,D,ES,NAO,PENDENTE,1866,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-008,Santi Borikó,D,GQ,NAO,PENDENTE,1665,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-009,Nathaniel Nicholas,D,NG,NAO,PENDENTE,1286,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-010,Lluís Llácer,D,ES,NAO,PENDENTE,879,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-011,Carlos Igual,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-012,Haritz Albisua,M,ES,NAO,PENDENTE,3227,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-013,Relu,M,ES,NAO,PENDENTE,3017,36,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-014,Miguel Romera,M,ES,NAO,PENDENTE,2018,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-015,Hugo Redón,M,ES,NAO,PENDENTE,1762,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-016,Sander Ballero,M,ES,NAO,PENDENTE,1134,12,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-017,Edu Gallardo,A,ES,NAO,PENDENTE,2710,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-018,Sergio Moreno,A,ES,NAO,PENDENTE,2643,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-019,Bebé,A,CV,SIM,PENDENTE,2420,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+74,CD Teruel,cd-teruel,Grupo 2,cd-teruel-2026-020,Mario Sesè,A,ES,NAO,PENDENTE,342,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-001,Emilio Bernad,G,ES,NAO,PENDENTE,1170,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-002,Álex Daza,G,ES,NAO,PENDENTE,776,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-003,Diego Caballo,D,ES,NAO,PENDENTE,1814,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-004,Dani Morer,D,ES,NAO,PENDENTE,1619,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-005,Christian Mutilva,D,ES,NAO,PENDENTE,1421,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-006,Gorka Rivera,D,ES,NAO,PENDENTE,1229,15,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-007,Mikel Serrano,D,ES,NAO,PENDENTE,1165,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-008,Alberto Retuerta,D,ES,NAO,PENDENTE,1112,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-009,Ramiro Mayor,D,ES,NAO,PENDENTE,362,4,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-010,Abderrezzek Saidi,D,DZ,NAO,PENDENTE,217,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-011,Luis Alcalde,M,ES,NAO,PENDENTE,1713,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-012,Carlos de la Nava,M,ES,NAO,PENDENTE,1695,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-013,Arnau Casas,M,ES,NAO,PENDENTE,1304,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-014,Juanma Lendínez,M,ES,NAO,PENDENTE,1073,9,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-015,Álex Gil,M,ES,NAO,PENDENTE,743,9,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-016,Gonzalo Pastor,M,ES,NAO,PENDENTE,725,9,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-017,Alejandro Marcelo,M,ES,NAO,PENDENTE,120,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-018,Álvaro Gómez,A,ES,SIM,PENDENTE,2954,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-019,Dani González,A,ES,NAO,PENDENTE,1407,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-020,Pau Ferrer,A,ES,NAO,PENDENTE,1017,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-021,Hugo de Bustos,A,ES,NAO,PENDENTE,670,5,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+75,Unionistas CF,unionistas-de-salamanca,Grupo 1,unionistas-de-salamanca-2026-022,Willy Chatiliez,A,CL,NAO,PENDENTE,400,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-001,Iván Moreno,G,ES,NAO,PENDENTE,3150,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-002,Tao Paradowski,G,FR,NAO,PENDENTE,297,3,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-003,Fran Carmona,D,ES,NAO,PENDENTE,2923,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-004,Tomás Sánchez,D,ES,NAO,PENDENTE,2701,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-005,José Carlos Márquez,D,ES,NAO,PENDENTE,2513,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-006,Víctor Ruiz,D,ES,NAO,PENDENTE,2178,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-007,Paris Adot,D,ES,NAO,PENDENTE,1266,14,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-008,Ángel Gómez,D,ES,NAO,PENDENTE,1219,13,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-009,Aleix Coch,D,ES,NAO,PENDENTE,1063,12,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-010,Óscar Castro,M,ES,NAO,PENDENTE,2842,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-011,Jony Álamo,M,ES,NAO,PENDENTE,2490,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-012,Iván Turrillo,M,ES,NAO,PENDENTE,2278,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-013,Toni Ramón,M,ES,NAO,PENDENTE,2077,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-014,Dani Garrido,M,ES,NAO,PENDENTE,1543,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-015,Diego Almeida,M,EC,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-016,Juanma García,A,ES,SIM,PENDENTE,2401,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-017,Raúl Rubio,A,ES,NAO,PENDENTE,1858,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-018,Diego Iglesias,A,ES,NAO,PENDENTE,1843,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-019,Pau Martínez,A,ES,NAO,PENDENTE,1693,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-020,Javi Avilés,A,ES,NAO,PENDENTE,774,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-021,Joe Riley,A,ES,NAO,PENDENTE,280,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+76,Algeciras CF,algeciras-cf,Grupo 2,algeciras-cf-2026-022,Enrique Herrero,A,ES,NAO,PENDENTE,155,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-001,Alvin Abajas,G,ES,NAO,PENDENTE,1562,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-002,Amir Abedzadeh,G,IR,NAO,PENDENTE,450,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-003,Emi Hernández,D,ES,NAO,PENDENTE,3214,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-004,Aymane Jelbat,D,MA,NAO,PENDENTE,3132,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-005,José Luis Aranda,D,ES,NAO,PENDENTE,2419,27,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-006,Aleix Roig,D,ES,NAO,PENDENTE,2400,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-007,Koke Iglesias,D,ES,NAO,PENDENTE,2378,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-008,David Andújar,D,ES,NAO,PENDENTE,1631,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-009,Sergio Nieto,D,ES,NAO,PENDENTE,1226,12,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-010,Lucas Macazaga,D,BO,NAO,PENDENTE,210,2,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-011,Eneko Undabarrena,M,ES,NAO,PENDENTE,3331,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-012,Óscar Vacas,M,ES,NAO,PENDENTE,2349,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-013,Ntji Tounkara,M,ES,NAO,PENDENTE,1765,20,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-014,Arturo Molina,M,ES,NAO,PENDENTE,1660,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-015,Fede San Emeterio,M,ES,NAO,PENDENTE,1617,18,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-016,Borja Valle,A,ES,SIM,PENDENTE,2746,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-017,Pablo Muñoz,A,ES,SIM,PENDENTE,2278,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-018,Carlos Calderón,A,ES,NAO,PENDENTE,1975,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-019,Quicala Bari,A,GW,NAO,PENDENTE,1703,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-020,Slavy,A,BG,NAO,PENDENTE,1450,15,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-021,José de León,A,DO,NAO,PENDENTE,1286,17,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-022,Serigne Faye,A,SN,NAO,PENDENTE,1038,11,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+77,SD Ponferradina,sd-ponferradina,Grupo 1,sd-ponferradina-2026-023,Josué Chibozo,A,BJ,NAO,PENDENTE,644,7,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-001,Fermín Sobrón,G,ES,NAO,PENDENTE,3889,43,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-002,Taliby Konate,G,ES,NAO,PENDENTE,2773,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-003,Eduardo Cabetas,D,ES,NAO,PENDENTE,3011,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-004,José Val,D,ES,NAO,PENDENTE,2878,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-005,Sergio Camacho,D,ES,NAO,PENDENTE,2690,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-006,Miguel Barandalla,D,ES,NAO,PENDENTE,1909,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-007,Manu Pedreño,D,ES,NAO,PENDENTE,1748,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-008,Carlos García-Die,D,ES,NAO,PENDENTE,1385,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-009,Bolo,D,ES,NAO,PENDENTE,1295,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-010,Jaime Vallejo,D,ES,NAO,PENDENTE,717,8,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-011,Miguel Marí,M,ES,NAO,PENDENTE,2867,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-012,Mikel Zabala,M,ES,NAO,PENDENTE,2449,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-013,Anai Morales,M,ES,SIM,PENDENTE,2413,28,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-014,Quique Rivero,M,ES,SIM,PENDENTE,2278,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-015,David Navarro,M,ES,NAO,PENDENTE,1183,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-016,Latif Issman,M,GH,NAO,PENDENTE,472,3,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-017,Ismael Santana,A,ES,NAO,PENDENTE,2606,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-018,Papa Ba,A,SN,NAO,PENDENTE,2266,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-019,Ibai Asenjo,A,ES,NAO,PENDENTE,2034,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-020,Berto Rosas,A,AD,SIM,PENDENTE,1920,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-021,Marcos Baselga,A,ES,NAO,PENDENTE,1910,23,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-022,David Amigo,A,ES,NAO,PENDENTE,1705,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+78,UD Logroñés,ud-logrones,Grupo 1,ud-logrones-2026-023,Miguelete,A,ES,NAO,PENDENTE,1157,12,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-001,Javi Belman,G,ES,NAO,PENDENTE,1560,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-002,Javi Cuenca,G,ES,NAO,PENDENTE,976,11,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-003,Mateo Prevedini,D,AR,NAO,PENDENTE,2365,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-004,Javi Mérida,D,ES,NAO,PENDENTE,2153,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-005,Matías Barboza,D,ES,NAO,PENDENTE,813,8,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-006,Martín Krug,D,PA,NAO,PENDENTE,450,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-007,Rodrigo Ajegun,D,ES,NAO,PENDENTE,335,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-008,Manu Sánchez,D,ES,NAO,PENDENTE,180,3,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-009,Mamadouba Diaby,D,GN,NAO,PENDENTE,45,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-010,Daniel Igweike,D,NG,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-011,Max Petersson,D,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-012,Ángel Climent,M,ES,NAO,PENDENTE,2482,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-013,Cristian Rodríguez,M,ES,NAO,PENDENTE,617,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-014,Wilfrid Kaptoum,M,CM,NAO,PENDENTE,408,4,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-015,Julian Brandes,M,NL,NAO,PENDENTE,166,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-016,José Antonio Bozada,M,ES,NAO,PENDENTE,37,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-017,Dominique Moubeke,M,CM,NAO,PENDENTE,17,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-018,Dioni Villalba,A,ES,SIM,PENDENTE,2405,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-019,Oscar Buch,A,DK,SIM,PENDENTE,1570,16,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-020,Nico Njalla,A,CM,NAO,PENDENTE,540,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-021,Ivan Laca,A,HR,NAO,PENDENTE,53,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-022,Ifenna Dorgu,A,DK,NAO,PENDENTE,25,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+79,Juventud Torremolinos CF,juventud-de-torremolinos,Grupo 2,juventud-de-torremolinos-2026-023,Pau Pérez,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-001,Aarón Alonso,G,ES,NAO,PENDENTE,2370,26,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-002,Javi Garrido,G,ES,NAO,PENDENTE,90,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-003,Alberto Trapero,D,ES,NAO,PENDENTE,3330,37,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-004,Álex Blanco,D,ES,NAO,PENDENTE,3178,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-005,Jacobo Guzmán,D,ES,NAO,PENDENTE,3168,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-006,José Currás,D,ES,NAO,PENDENTE,2826,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-007,Iñaki León,D,ES,NAO,PENDENTE,2710,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-008,Álvaro Domínguez,D,ES,NAO,PENDENTE,2137,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-009,Benji Núñez,D,DO,NAO,PENDENTE,2086,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-010,Jaime Calleja,D,ES,NAO,PENDENTE,1992,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-011,Marco Leiton,D,ES,NAO,PENDENTE,99,0,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-012,Javi Tapia,M,ES,NAO,PENDENTE,2683,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-013,Edu Llorente,M,ES,SIM,PENDENTE,2653,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-014,Sergio Gómez,M,ES,NAO,PENDENTE,2641,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-015,Alberto Moreno,M,ES,NAO,PENDENTE,2402,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-016,Josu Gallastegui,M,ES,NAO,PENDENTE,1561,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-017,Aimar Santiago,M,ES,NAO,PENDENTE,1054,11,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-018,Pau Palacín,A,ES,NAO,PENDENTE,1826,19,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-019,Diego Morcillo,A,ES,NAO,PENDENTE,1526,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-020,Iván Ramos,A,ES,NAO,PENDENTE,1133,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-021,Álex Toper,A,ES,NAO,PENDENTE,1060,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-022,Antonio Arcos,A,ES,NAO,PENDENTE,781,6,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+80,CD Coria,cd-coria,Grupo 1,cd-coria-2026-023,Rafa Núñez,A,DO,NAO,PENDENTE,496,5,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-001,Hodei Oleaga,G,ES,NAO,PENDENTE,2430,27,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-002,Manuel Obón,G,ES,NAO,PENDENTE,945,10,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-003,Ander Dufur,D,ES,NAO,PENDENTE,3075,34,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-004,Julen Zubelzu,D,ES,NAO,PENDENTE,2205,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-005,Eneko Zabaleta,D,ES,NAO,PENDENTE,1876,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-006,Adrián Lekuna,D,ES,NAO,PENDENTE,1678,19,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-007,Beñat Arratibel,D,ES,NAO,PENDENTE,1551,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-008,Jon Larrauri,D,ES,NAO,PENDENTE,1103,14,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-009,Eneko Ebro,D,ES,NAO,PENDENTE,687,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-010,Erlantz Palacín,D,ES,NAO,PENDENTE,289,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-011,Iñaki Telletxea,M,ES,NAO,PENDENTE,2681,33,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-012,Iker García,M,ES,NAO,PENDENTE,2408,29,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-013,Ibon Badiola,M,ES,NAO,PENDENTE,2321,26,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-014,Álvaro Arnedo,M,ES,NAO,PENDENTE,774,7,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-015,Gael Joel Akogo,M,GQ,NAO,PENDENTE,77,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-016,Rubén Torres,A,ES,SIM,PENDENTE,2409,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-017,José Luis Cortés,A,ES,NAO,PENDENTE,1952,21,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-018,Ekaitz Redondo,A,ES,NAO,PENDENTE,1524,20,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-019,Martin Pedroarena,A,ES,NAO,PENDENTE,1274,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-020,Julen Lartitegi,A,ES,NAO,PENDENTE,1101,13,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-021,Álex Oyón,A,ES,NAO,PENDENTE,192,2,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-022,Unai Buján,A,ES,NAO,PENDENTE,101,1,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+81,Arenas Club,arenas-club,Grupo 1,arenas-club-2026-023,Suso Sánchez,A,ES,NAO,PENDENTE,0,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-001,Manu Vizoso,G,ES,NAO,PENDENTE,2820,31,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-002,Bruno Rielo,G,ES,NAO,PENDENTE,720,8,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-003,Julio Cabrera,D,ES,NAO,PENDENTE,2510,28,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-004,Javi Labrada,D,ES,NAO,PENDENTE,2431,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-005,Samuel Pardo,D,ES,NAO,PENDENTE,2041,22,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-006,Lucas Puime,D,ES,NAO,PENDENTE,2021,24,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-007,Varo Fernández,D,ES,NAO,PENDENTE,1902,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-008,Noel González,D,ES,NAO,PENDENTE,1898,22,SIM,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-009,Igor Irazu,D,ES,NAO,PENDENTE,1535,17,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-010,Álvaro Bastida,M,ES,NAO,PENDENTE,2759,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-011,Champi,M,ES,NAO,PENDENTE,2699,32,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-012,Diego Tejón,M,ES,NAO,PENDENTE,2570,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-013,Curro Rivelott,M,ES,NAO,PENDENTE,1728,18,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-014,Viti Nieves,M,VE,NAO,PENDENTE,598,7,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-015,Roi Currás,M,ES,NAO,PENDENTE,202,1,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-016,Mateo Gandarillas,A,ES,SIM,PENDENTE,2859,35,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-017,David Ferreiro,A,ES,NAO,PENDENTE,2633,30,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-018,Rufo Sánchez,A,ES,NAO,PENDENTE,2241,25,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-019,Sergi Baldrich,A,ES,NAO,PENDENTE,1724,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-020,Xabi Dominguez,A,ES,NAO,PENDENTE,1606,20,NAO,SEM_FONTE_NO_ZIP_BASE,MANTIDO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-021,Romualdas Jansonas,A,LT,NAO,PENDENTE,52,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO
+82,UD Ourense,ud-ourense,Grupo 1,ud-ourense-2026-022,Cristian Carro,A,ES,NAO,PENDENTE,43,0,NAO,SEM_FONTE_NO_ZIP_BASE,CORTADO

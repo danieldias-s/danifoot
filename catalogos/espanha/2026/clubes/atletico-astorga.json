@@ -6,12 +6,8 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": 152,
-  "historicalRanking": {
-    "rating": 66.8,
-    "source": "OPTA",
-    "referenceDate": "2026-11-12"
-  },
+  "tieBreakPriority": null,
+  "historicalRanking": null,
   "stadium": {
     "name": "La Eragudina",
     "capacity": 3000

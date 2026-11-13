@@ -4,11 +4,30 @@
   "catalogClubId": "real-madrid",
   "country": "ES",
   "year": 2026,
-  "teamStrength": null,
-  "historicalRanking": null,
+  "teamStrength": 20,
+  "historicalRanking": {
+    "rating": 15.0,
+    "source": "TRANSFERMARKT_SNAPSHOT_VALOR_MERCADO_TOTAL_EUR_MILHOES_DIV_100",
+    "referenceDate": "2026-11-12"
+  },
   "tieBreakPriority": null,
-  "stadium": null,
-  "coach": null,
+  "stadium": {
+    "name": "Santiago Bernabéu",
+    "capacity": 83186
+  },
+  "coach": {
+    "id": "jose-mourinho-2026",
+    "name": "José Mourinho",
+    "nationality": "PT",
+    "preferredTactics": {
+      "home": [
+        "4-5-1"
+      ],
+      "away": [
+        "4-5-1"
+      ]
+    }
+  },
   "players": [
     {
       "id": "real-madrid-2026-001",
@@ -179,10 +198,10 @@
       "isStar": false
     },
     {
-      "id": "real-madrid-2026-022",
-      "name": "Raúl Asencio",
+      "id": "real-madrid-2026-024",
+      "name": "Denzel Dumfries",
       "position": "D",
-      "nationality": "ES",
+      "nationality": "NL",
       "behavior": null,
       "isStar": false
     },

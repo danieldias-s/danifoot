@@ -6,12 +6,8 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": 136,
-  "historicalRanking": {
-    "rating": 68.0,
-    "source": "OPTA",
-    "referenceDate": "2026-11-12"
-  },
+  "tieBreakPriority": null,
+  "historicalRanking": null,
   "stadium": {
     "name": "Ciudad de Tudela, Tudela",
     "capacity": 11000

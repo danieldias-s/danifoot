@@ -6,12 +6,8 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": 117,
-  "historicalRanking": {
-    "rating": 69.3,
-    "source": "OPTA",
-    "referenceDate": "2026-11-12"
-  },
+  "tieBreakPriority": null,
+  "historicalRanking": null,
   "stadium": {
     "name": "Ciudad Deportiva El Requexón, Oviedo",
     "capacity": 3000

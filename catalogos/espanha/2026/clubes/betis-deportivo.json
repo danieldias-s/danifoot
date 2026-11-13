@@ -6,12 +6,8 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": 91,
-  "historicalRanking": {
-    "rating": 71.2,
-    "source": "OPTA",
-    "referenceDate": "2026-11-12"
-  },
+  "tieBreakPriority": null,
+  "historicalRanking": null,
   "stadium": {
     "name": "Ciudad Deportiva Luis del Sol",
     "capacity": 2100

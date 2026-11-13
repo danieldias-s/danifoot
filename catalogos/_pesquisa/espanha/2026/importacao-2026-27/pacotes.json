@@ -1,0 +1,38 @@
+[
+  {
+    "category": 1,
+    "archive": "ELIFOOT98_LALIGA_2026_27_20_CLUBES.zip",
+    "sha256": "745635C76B7D0DDA741EA22B7D50424D4D8E1AE9D36E1474F627E59A3EFA4345",
+    "clubs": 20,
+    "verifiedMembers": 87,
+    "baseManifest": "01_CATALOGO_BASE_23/catalogos/espanha/2026/manifest.json",
+    "matchingV16Evidence": 0
+  },
+  {
+    "category": 2,
+    "archive": "ELIFOOT98_SEGUNDA_ESPANHA_2026_27_22_CLUBES_CORRIGIDO.zip",
+    "sha256": "A26CF1B3CAD2821EA198C108F0579E16981BFDA16760C5ADCFB35E0C5107160D",
+    "clubs": 22,
+    "verifiedMembers": 96,
+    "baseManifest": "01_CATALOGO_BASE_23/catalogos/espanha/2026/manifest.json",
+    "matchingV16Evidence": 0
+  },
+  {
+    "category": 3,
+    "archive": "ELIFOOT98_TERCEIRA_ESPANHA_2026_27_40_CLUBES.zip",
+    "sha256": "E89F408816B59B166C321B83299804D10E7E518B1628EBC8D7A6B559884F9EE6",
+    "clubs": 40,
+    "verifiedMembers": 290,
+    "baseManifest": "01_CATALOGO_BASE/catalogos/espanha/2026/manifest.json",
+    "matchingV16Evidence": 120
+  },
+  {
+    "category": 4,
+    "archive": "ELIFOOT98_QUARTA_ESPANHA_2026_27_90_CLUBES.zip",
+    "sha256": "CC8F28B482DC4D2228A785CF4E991CCEB10A8240D352CD803FC76782C5BECDE8",
+    "clubs": 90,
+    "verifiedMembers": 640,
+    "baseManifest": "01_CATALOGO_BASE/catalogos/espanha/2026/manifest.json",
+    "matchingV16Evidence": 270
+  }
+]

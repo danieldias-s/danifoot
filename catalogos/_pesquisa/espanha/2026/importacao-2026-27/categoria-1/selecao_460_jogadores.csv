@@ -1,0 +1,461 @@
+posicao_clube_laliga,divisao_elifoot_preview,clube,clubId,playerId,jogador,posicao,isStar,protectedProspect,minutos_2025_26,titularidades_2025_26,mantido_preview,motivo,valor_mercado_individual_eur,fonte_base
+1,1,Real Madrid,real-madrid,real-madrid-2026-001,Thibaut Courtois,G,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-002,Andriy Lunin,G,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-003,Dean Huijsen,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-004,Ibrahima Konaté,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-005,Éder Militão,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-006,Trent Alexander-Arnold,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-007,Marc Cucurella,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-008,Álvaro Carreras,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-009,Antonio Rüdiger,D,False,False,,,False,CORTE_PROVISORIO_EDICAO_POR_CONTEXTO; REVISAR_VALOR_INDIVIDUAL,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-010,Jude Bellingham,M,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-011,Eduardo Camavinga,M,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-012,Federico Valverde,M,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-013,Aurélien Tchouaméni,M,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-014,Arda Güler,M,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-015,Bernardo Silva,M,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-016,Vinícius Júnior,A,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-017,Endrick,A,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-018,Kylian Mbappé,A,True,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-019,Rodrygo,A,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-020,Brahim Díaz,A,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-021,Yan Diomande,A,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-024,Denzel Dumfries,D,False,False,,,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+1,1,Real Madrid,real-madrid,real-madrid-2026-023,Carlos Espí,A,False,False,,,False,CORTE_PROVISORIO_EDICAO_POR_CONTEXTO; REVISAR_VALOR_INDIVIDUAL,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-001,Joan García,G,False,False,4042,45,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-002,Wojciech Szczęsny,G,False,False,998,11,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-003,Pau Cubarsí,D,False,True,3978,45,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-004,Eric García,D,False,False,3954,47,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-005,Jules Koundé,D,False,False,3529,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-006,Gerard Martín,D,False,False,3223,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-007,Alejandro Balde,D,False,False,2806,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-008,João Cancelo,D,False,False,1432,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-009,Xavi Espart,D,False,True,1051,11,False,CORTE_PROVISORIO_EDICAO_POR_CONTEXTO; REVISAR_VALOR_INDIVIDUAL,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-010,Pedri,M,True,False,3094,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-011,Fermín López,M,True,False,3053,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-012,Dani Olmo,M,False,False,2838,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-013,Brian Fariñas,M,False,True,2799,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-014,Frenkie de Jong,M,False,False,2569,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-015,Rodri,M,False,False,2185,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-016,Marc Bernal,M,False,True,1313,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-017,Gavi,M,False,False,700,8,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-018,Lamine Yamal,A,True,True,3702,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-019,Anthony Gordon,A,False,False,2869,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-020,Raphinha,A,True,False,2194,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-021,Karim Adeyemi,A,False,False,1836,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-022,Gabriel Jesus,A,False,False,988,9,False,CORTE_PROVISORIO_EDICAO_POR_CONTEXTO; REVISAR_VALOR_INDIVIDUAL,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+2,1,FC Barcelona,fc-barcelona,fc-barcelona-2026-023,Roony Bardghji,A,False,True,872,10,False,CORTE_PROVISORIO_EDICAO_POR_CONTEXTO; REVISAR_VALOR_INDIVIDUAL,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-001,Jan Oblak,G,False,False,3870,43,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-002,Salvi Esquivel,G,False,True,2608,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-003,Juan Musso,G,False,False,1650,18,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-004,Dávid Hancko,D,False,False,4074,45,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-005,Alejandro Grimaldo,D,False,False,4038,45,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-006,Marcos Llorente,D,False,False,3861,44,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-007,Dani Martínez,D,False,False,2980,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-008,Robin Le Normand,D,False,False,2845,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-009,Marc Pubill,D,False,False,2775,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-010,Cristian Romero,D,False,False,2657,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-011,Morten Hjulmand,M,False,False,4036,44,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-012,Koke,M,False,False,3610,40,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-013,Pablo Barrios,M,False,False,2452,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-014,Kang-in Lee,M,False,False,1843,19,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-015,Johnny Cardoso,M,False,False,1715,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-016,Rodrigo Mendoza,M,False,True,1597,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-017,Giuliano Simeone,A,False,False,3803,46,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-018,Julián Álvarez,A,False,False,3549,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-019,Arnau Ortiz,A,True,False,3194,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-020,Alexander Sørloth,A,False,False,2816,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-021,Ademola Lookman,A,False,False,2621,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-022,Jonathan David,A,False,False,2329,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+3,1,Atlético de Madrid,atletico-de-madrid,atletico-de-madrid-2026-023,Álex Baena,A,False,False,2305,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-001,Rubén Gómez,G,False,False,3241,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-002,Luiz Júnior,G,False,False,2970,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-003,Péter Gulácsi,G,False,False,2009,23,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-004,Renato Veiga,D,False,False,3352,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-005,Carlos Romero,D,False,False,3195,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-006,Santiago Mouriño,D,False,False,2917,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-007,Sergi Cardona,D,False,False,2647,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-008,Pau Navarro,D,False,True,2201,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-009,Juan Foyth,D,False,False,1314,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-010,Alex Freeman,D,False,False,340,3,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-011,Santi Comesaña,M,False,False,3152,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-012,Nathan Saliba,M,False,False,3061,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-013,Alassane Diatta,M,False,True,2914,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-014,Pape Gueye,M,False,False,2834,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-015,Carlos Macià,M,False,True,2471,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-016,Nicolas Pépé,A,False,False,3183,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-017,Georges Mikautadze,A,False,False,2874,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-018,Alberto Moleiro,A,True,False,2828,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-019,Tajon Buchanan,A,False,False,2331,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-020,Ayoze Pérez,A,False,False,1583,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-021,Tani Oluwaseyi,A,False,False,1535,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-022,Gerard Moreno,A,False,False,1395,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+4,1,Villarreal CF,villarreal-cf,villarreal-cf-2026-023,Ilias Akhomach,A,False,False,1353,14,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-001,Álex Remiro,G,False,False,3510,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-002,Unai Marrero,G,False,False,690,7,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-003,Jon Aramburu,D,False,False,3291,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-004,Sergio Gómez,D,False,False,3263,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-005,Jon Martín,D,False,True,2850,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-006,Luken Beitia,D,False,False,2467,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-007,Igor Zubeldia,D,False,False,2383,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-008,Jon Pacheco,D,False,False,2004,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-009,Aihen Muñoz,D,False,False,1214,13,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-010,Héctor Fort,D,False,True,623,8,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-011,Carlos Soler,M,False,False,2883,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-012,Jon Gorrotxategi,M,False,False,2636,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-013,Beñat Turrientes,M,False,False,1878,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-014,Pablo Marín,M,False,False,1829,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-015,Luka Sucic,M,False,False,1351,13,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-016,Arsen Zakharyan,M,False,False,696,6,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-017,Mikel Oyarzabal,A,True,False,3195,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-018,Gonçalo Guedes,A,False,False,2329,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-019,Ander Barrenetxea,A,False,False,1996,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-020,Takefusa Kubo,A,False,False,1746,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-021,Job Ochieng,A,False,False,1671,21,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-022,Álex Marchal,A,False,True,1529,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+5,1,Real Sociedad,real-sociedad,real-sociedad-2026-023,Orri Óskarsson,A,False,False,912,8,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-001,Álvaro Valles,G,False,False,2970,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-002,Diego Conde,G,False,False,90,1,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-003,Natan,D,False,False,3755,43,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-004,Valentín Gómez,D,False,False,2856,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-005,Marc Bartra,D,False,False,2496,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-006,Diego Llorente,D,False,False,2192,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-007,Héctor Bellerín,D,False,False,1988,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-008,Ángel Ortiz,D,False,False,1379,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-009,Fran García,D,False,False,1352,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-010,Junior Firpo,D,False,False,1000,12,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-011,Pablo Fornals,M,True,False,3709,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-012,Marc Roca,M,False,False,2717,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-013,Álvaro Fidalgo,M,False,False,2283,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-014,Giovani Lo Celso,M,False,False,1777,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-015,Nelson Deossa,M,False,False,1491,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-016,Iker Losada,M,False,False,1158,13,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-017,Facundo Bernal,M,False,False,1009,12,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-018,Troy Parrott,A,False,False,3770,43,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-019,Antony,A,False,False,3498,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-020,Abde Ezzalzouli,A,False,False,3171,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-021,Cucho Hernández,A,False,False,3130,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-022,Aitor Ruibal,A,False,False,2703,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+6,1,Real Betis,real-betis,real-betis-2026-023,Rodrigo Riquelme,A,False,False,1432,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-001,Unai Simón,G,False,False,4140,46,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-002,Álex Padilla,G,False,False,600,6,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-003,Dani Vivian,D,False,False,3478,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-004,Yuri Berchiche,D,False,False,3183,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-005,Aitor Paredes,D,False,False,2502,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-006,Aymeric Laporte,D,False,False,2434,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-007,Jesús Areso,D,False,False,1963,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-008,Hugo Rincón,D,False,False,1928,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-009,Johaneko Louis-Jean,D,False,False,982,10,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-010,Yeray Álvarez,D,False,False,514,6,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-011,Mikel Jauregizar,M,False,False,3816,45,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-012,Peio Canales,M,True,True,2858,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-013,Beñat Gerenabarrena,M,False,False,2798,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-014,Iñigo Ruiz de Galarreta,M,False,False,2744,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-015,Oihan Sancet,M,False,False,2466,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-016,Alejandro Rego,M,False,False,2058,21,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-017,Gorka Guruzeta,A,True,False,3282,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-018,Álex Berenguer,A,False,False,2821,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-019,Iñaki Williams,A,False,False,2708,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-020,Nico Williams,A,False,False,2101,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-021,Robert Navarro,A,False,False,2038,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-022,Álvaro Djaló,A,False,False,1730,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+7,1,Athletic Club,athletic-club,athletic-club-2026-023,Nico Serrano,A,False,False,577,5,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-001,Ionuț Radu,G,False,False,4500,50,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-002,Altay Bayındır,G,False,False,540,6,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-003,Iván Villar,G,False,False,510,5,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-004,Marcos Alonso,D,False,False,3759,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-005,Javi Rodríguez,D,False,False,3633,40,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-006,Sergio Carreira,D,False,False,3514,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-007,Sebastián Cáceres,D,False,False,3144,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-008,Carl Starfelt,D,False,False,2394,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-009,Javi Rueda,D,False,False,2082,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-010,Javi Galán,D,False,False,2044,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-011,Álvaro Núñez,D,False,False,1984,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-012,Yoel Lago,D,False,False,1385,16,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-013,Ilaix Moriba,M,False,False,3509,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-014,Aleix Febas,M,False,False,3256,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-015,Miguel Román,M,False,False,2003,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-016,Borja Iglesias,A,True,False,2710,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-017,Hugo González,A,True,False,2710,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-018,Ferran Jutglà,A,False,False,2280,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-019,Iago Aspas,A,False,False,2047,21,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-020,Williot Swedberg,A,True,False,1975,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-021,Hugo Álvarez,A,False,False,1922,20,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-022,Pablo Durán,A,False,False,1876,21,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+8,1,Celta de Vigo,rc-celta-de-vigo,rc-celta-de-vigo-2026-023,Jones El-Abdellaoui,A,False,True,1169,9,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-001,Odysseas Vlachodimos,G,False,False,3060,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-002,Fran González,G,False,True,2520,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-003,Juan Iglesias,D,False,False,3217,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-004,José Ángel Carmona,D,False,False,2719,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-005,Julio Díaz,D,False,True,2487,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-006,Arouna Sangante,D,False,False,2425,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-007,Kike Salas,D,False,False,2383,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-008,Gabriel Suazo,D,False,False,2127,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-009,Andrés Castrín,D,False,False,1658,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-010,Marcão,D,False,False,937,11,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-011,Lucien Agoumé,M,False,False,2805,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-012,Youssouf Fofana,M,False,False,2373,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-013,Jon Guridi,M,False,False,1424,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-014,Giorgi Kochorashvili,M,False,False,970,9,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-015,Manu Bueno,M,False,False,428,4,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-016,Félix Correia,A,False,False,2949,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-017,Lucas Stassin,A,True,True,2597,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-018,Miguel Sierra,A,False,False,1891,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-019,Robbie Ure,A,True,False,1826,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-020,Isaac Romero,A,False,False,1670,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-021,Rubén Vargas,A,False,False,1620,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-022,Peque Fernández,A,False,False,1148,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+9,2,Sevilla FC,sevilla-fc,sevilla-fc-2026-023,Chidera Ejuke,A,False,False,1016,7,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-001,Stole Dimitrievski,G,False,False,2190,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-002,Cristian Rivero,G,False,False,0,0,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-003,Justin de Haas,D,False,False,2970,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-004,César Tárrega,D,False,False,2762,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-005,Arnau Martínez,D,False,False,2739,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-006,Pablo Maffeo,D,False,False,2691,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-007,José Gayà,D,False,False,2462,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-008,José Copete,D,False,False,1910,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-009,Jesús Vázquez,D,False,False,1441,12,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-010,Iker Córdoba,D,False,True,1430,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-011,Dimitri Foulquier,D,False,False,1400,15,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-012,Aliou Dieng,M,False,False,2385,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-013,Pepelu,M,False,False,2383,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-014,Javi Guerra,M,False,False,2359,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-015,Filip Ugrinic,M,False,False,1699,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-016,Guido Rodríguez,M,False,False,1581,17,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-017,Luis Rioja,A,True,False,2859,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-018,Hugo Duro,A,True,False,2201,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-019,Diego López,A,False,False,2006,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-020,Arnaut Danjuma,A,False,False,1814,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-021,David Otorbi,A,False,True,1550,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-022,Ryunosuke Sato,A,False,True,1304,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+10,2,Valencia CF,valencia-cf,valencia-cf-2026-023,Umar Sadiq,A,False,False,1301,13,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-001,Marko Dmitrović,G,False,False,3330,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-002,Ángel Fortuño,G,False,False,270,3,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-003,Leandro Cabrera,D,False,False,3330,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-004,Roger Hinojo,D,False,True,3119,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-005,Omar El Hilali,D,False,False,2918,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-006,Andoni Gorosabel,D,False,False,2051,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-007,Quilindschy Hartman,D,False,False,2010,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-008,Vanja Drkusic,D,False,False,1966,21,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-009,Clemens Riedel,D,False,False,1676,19,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-010,Álex Calatrava,M,True,False,3672,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-011,Rafel Bauzà,M,False,True,3268,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-012,Urko González de Zárate,M,False,False,2745,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-013,Edu Expósito,M,False,False,2618,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-014,Pol Lozano,M,False,False,2170,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-015,Javi Hernández,M,False,False,1939,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-016,Gabriel Moscardo,M,False,True,1527,12,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-017,Marcos Fernández,A,True,False,3019,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-018,Tyrhys Dolan,A,False,False,2464,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-019,Roberto Fernández,A,False,False,2444,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-020,Pere Milla,A,False,False,1988,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-021,Kike García,A,False,False,1878,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-022,Bryan Zaragoza,A,False,False,1611,19,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+11,2,RCD Espanyol,rcd-espanyol,rcd-espanyol-2026-023,Jofre Carreras,A,False,False,983,10,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-001,Leo Román,G,False,False,2970,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-002,Álvaro Ferllo,G,False,False,1980,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-003,Germán Parreño,G,False,False,1890,21,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-004,Miguel Loureiro,D,False,False,3433,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-005,Giacomo Quagliata,D,False,False,3055,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-006,Lucas Noubi,D,False,True,2313,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-007,Adrià Altimira,D,False,False,2228,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-008,Dani Barcia,D,False,False,2202,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-009,Arnau Comas,D,False,False,1713,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-010,Ximo Navarro,D,False,False,1547,17,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-011,José María Giménez,D,False,False,1521,16,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-012,Bright Ede,D,False,True,597,7,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-013,Mario Soriano,M,False,False,3722,43,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-014,Lorenzo Amatucci,M,False,False,3511,40,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-015,Diego Villares,M,False,False,2539,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-016,Riki Rodríguez,M,False,False,2209,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-017,Marc Casadó,M,False,False,1397,15,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-018,Yeremay Hernández,A,True,False,3027,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-019,Pierre-Emerick Aubameyang,A,True,False,2762,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-020,Luismi Cruz,A,False,False,2626,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-021,Bil Nsongo,A,True,False,2502,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-022,Zakaria Eddahchouri,A,False,False,1734,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+12,2,Deportivo A Coruña,deportivo-de-la-coruna,deportivo-de-la-coruna-2026-023,David Mella,A,False,True,1722,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-001,Julen Agirrezabala,G,False,False,1710,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-002,Simon Eriksson,G,False,False,540,6,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-003,Jorge Salinas,D,False,True,2656,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-004,Manu Hernando,D,False,False,2346,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-005,Aarón Martín,D,False,False,2341,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-006,Álvaro Mantilla,D,False,False,2333,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-007,Facundo González,D,False,False,2072,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-008,Pablo Ramón,D,False,False,1970,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-009,Pedro Felipe,D,False,False,1513,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-010,Jeanuël Belocian,D,False,False,482,5,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-011,Iván Martín,M,False,False,2593,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-012,Sergio Canales,M,False,False,2581,29,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-013,Matteo Prati,M,False,False,2090,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-014,Maguette Gueye,M,False,False,2017,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-015,André Almeida,M,False,False,1188,13,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-016,Íñigo Sainz-Maza,M,False,False,845,10,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-017,Andrés Martín,A,True,False,3486,41,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-018,Iñigo Vicente,A,True,False,3297,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-019,Giorgi Guliashvili,A,False,False,2975,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-020,Iker Luque,A,False,True,2668,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-021,Asier Villalibre,A,False,False,1426,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-022,Yassir Zabiri,A,False,True,794,8,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+13,2,Racing Santander,racing-de-santander,racing-de-santander-2026-023,Pablo García,A,False,True,714,5,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-001,Augusto Batalla,G,False,False,4410,49,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-002,Emil Audero,G,False,False,3150,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-003,Dani Cárdenas,G,False,False,750,8,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-004,Florian Lejeune,D,False,False,4778,53,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-005,Mujaid Sadick,D,False,False,4167,46,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-006,Andrei Rațiu,D,False,False,3866,41,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-007,Iván Balliu,D,False,False,1452,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-008,Adrià Pedrosa,D,False,False,1392,11,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-009,Jozhua Vertrouwd,D,False,False,1177,12,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-010,Luiz Felipe,D,False,False,1095,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-011,Pelayo Fernández,D,False,False,1040,10,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-012,Isi Palazón,M,True,False,3394,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-013,Pathé Ciss,M,False,False,3119,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-014,Óscar Valentín,M,False,False,2952,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-015,Unai López,M,False,False,2577,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-016,Gnangoro Bouare,M,False,False,2468,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-017,Pedro Díaz,M,False,False,2294,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-018,Rayane Belaid,M,False,True,2119,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-019,Jorge de Frutos,A,True,False,3366,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-020,Álvaro García,A,True,False,3080,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-021,Fran Pérez,A,False,False,2046,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-022,Alemão,A,False,False,1740,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+14,2,Rayo Vallecano,rayo-vallecano,rayo-vallecano-2026-023,Sergio Camello,A,False,False,1623,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-001,David Soria,G,False,False,3420,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-002,Jiri Letacek,G,False,False,300,3,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-003,Johan Mojica,D,False,False,2726,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-004,Dakonam Djené,D,False,False,2585,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-005,Jean Ives Valou,D,False,True,2097,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-006,Kiko Femenía,D,False,False,2052,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-007,Abdel Abqar,D,False,False,1462,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-008,Zaid Romero,D,False,False,1350,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-009,Daniel Carvajal,D,False,False,1085,10,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-010,Davinchi,D,False,True,698,7,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-011,Sebastián Boselli,D,False,False,374,4,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-012,Francho Serrano,M,True,False,2964,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-013,Nemanja Gudelj,M,False,False,2549,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-014,Mario Martín,M,False,False,2238,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-015,Alberto Risco,M,False,True,1119,12,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-016,Ramón Terrats,M,False,False,1117,13,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-017,Orel Mangala,M,False,False,509,5,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-018,Martín Satriano,A,True,False,2885,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-019,Iván Azón,A,False,False,1815,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-020,Borja Mayoral,A,False,False,1218,13,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-021,Juanmi,A,False,False,385,3,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-022,Christantus Uche,A,False,False,270,3,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+15,2,Getafe CF,getafe-cf,getafe-cf-2026-023,Enes Ünal,A,False,False,242,1,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-001,Mathew Ryan,G,False,False,3240,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-002,Pablo Campos,G,False,False,450,5,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-003,Aïssa Mandi,D,False,False,3278,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-004,Jeremy Toljan,D,False,False,3206,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-005,Adrián Dela,D,False,False,2890,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-006,Manu Sánchez,D,False,False,2818,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-007,Jorge Cabello,D,False,False,2422,27,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-008,Nacho Pérez,D,False,False,362,4,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-009,Axel Tape,D,False,False,288,3,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-010,Ifeanyi Ndukwe,D,False,False,0,0,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-011,Enzo Bardeli,M,True,False,3086,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-012,Dani Requena,M,False,False,2602,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-013,Jon Ander Olasagasti,M,False,False,1881,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-014,Hugo Sotelo,M,False,False,1606,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-015,Oriol Rey,M,False,False,1454,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-016,Iván Romero,A,False,False,2320,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-017,Karl Etta Eyong,A,False,False,1684,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-018,Yanis Musuayi,A,False,True,1304,12,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-019,Víctor García,A,False,False,1220,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-020,Roger Brugué,A,False,False,1093,11,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-021,Paco Cortés,A,False,True,855,7,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-022,Thiago Fernández,A,False,False,822,9,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+16,2,Levante UD,levante-ud,levante-ud-2026-023,Petar Ratkov,A,False,False,228,2,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-001,Sergio Herrera,G,False,False,3285,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-002,Aitor Fernández,G,False,False,555,5,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-003,Alejandro Catena,D,False,False,3249,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-004,Enzo Boyomo,D,False,False,2665,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-005,Valentin Rosier,D,False,False,2611,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-006,Diego Rico,D,False,False,1964,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-007,Jorge Herrando,D,False,False,1922,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-008,Unai Santos,D,False,True,1782,19,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-009,Abel Bretones,D,False,False,1747,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-010,Rockson Yeboah,D,False,False,1667,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-011,Iñigo Arguibide,D,False,True,1439,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-012,Jon Moncayola,M,False,False,3201,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-013,Mauro Echegoyen,M,False,True,2915,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-014,Lucas Torró,M,False,False,2395,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-015,Aimar Oroz,M,False,False,2154,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-016,Moi Gómez,M,False,False,1478,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-017,Iker Muñoz,M,False,False,1310,12,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-018,Asier Osambela,M,False,False,1308,13,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-019,Jonathan Dubasin,A,True,False,3025,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-020,Ante Budimir,A,True,False,3013,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-021,Romain Del Castillo,A,False,False,2736,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-022,Rubén García,A,False,False,2383,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+17,3,CA Osasuna,ca-osasuna,ca-osasuna-2026-023,Raúl García,A,False,False,1384,10,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-001,Matías Dituro,G,False,False,2370,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-002,Alejandro Iturbe,G,False,False,0,0,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-003,Roy Revivo,D,False,False,4206,48,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-004,Matia Barzic,D,False,False,3060,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-005,Víctor Chust,D,False,False,2301,24,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-006,Pedro Bigas,D,False,False,2114,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-007,Kevin Lomónaco,D,False,False,1936,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-008,Rubén Sánchez,D,False,False,878,9,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-009,Buba Sangaré,D,False,True,541,8,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-010,Marc Aguado,M,False,False,2640,31,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-011,Martim Neto,M,False,False,1529,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-012,Javi Morcillo,M,False,True,1363,11,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-013,Thomas Lemar,M,False,False,1304,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-014,Gonzalo Villar,M,False,False,718,8,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-015,Facundo Buonanotte,M,False,True,518,7,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-016,Fer Niño,A,True,False,2917,32,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-017,Germán Valera,A,True,False,2892,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-018,Ali Houary,A,False,True,1800,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-019,Ezequiel Ponce,A,False,False,1285,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-020,Grady Diangana,A,False,False,950,13,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-021,Tete Morente,A,False,False,933,11,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-022,Josan,A,False,False,841,8,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+18,3,Elche CF,elche-cf,elche-cf-2026-023,Adam Boayar,A,False,True,666,6,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-001,Antonio Sivera,G,False,False,3420,38,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-002,Adrián Rodríguez,G,False,False,1425,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-003,Nahuel Tenaglia,D,False,False,3510,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-004,Jonny Otto,D,False,False,3112,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-005,Hugo Novoa,D,False,False,1917,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-006,Youssef Enríquez,D,False,True,1611,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-007,Facundo Garcés,D,False,False,792,8,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-008,Ville Koski,D,False,False,281,3,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-009,Antonio Blanco,M,False,False,3239,37,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-010,Pablo Ibáñez,M,False,False,2420,30,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-011,Carles Aleñá,M,False,False,2203,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-012,Mikel Rodriguez,M,False,False,2184,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-013,Selu Diallo,M,False,False,1757,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-014,Denis Suárez,M,False,False,1581,17,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-015,Ander Guevara,M,False,False,993,6,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-016,Carlos Protesoni,M,False,False,655,6,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-017,Toni Martínez,A,True,False,3079,36,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-018,Ángel Pérez,A,False,False,2572,28,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-019,Miguel Rodríguez,A,False,False,2278,26,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-020,Lucas Boyé,A,False,False,1998,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-021,Abde Rebbach,A,False,False,1731,18,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-022,Aitor Mañas,A,False,False,1721,20,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+19,3,Deportivo Alavés,deportivo-alaves,deportivo-alaves-2026-023,Mariano Díaz,A,False,False,420,5,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-001,Alfonso Herrero,G,False,False,4140,46,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-002,Carlos López,G,False,False,180,2,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-003,Rafita Garrido,D,False,False,3548,40,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-004,Diego Murillo,D,False,False,3520,39,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-005,Carlos Puga,D,False,False,2948,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-006,Fernando Calero,D,False,False,2240,25,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-007,Einar Galilea,D,False,False,1947,23,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-008,Ángel Recio,D,False,False,1159,13,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-009,José Salinas,D,False,False,429,4,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-010,Izan Merino,M,False,True,3024,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-011,Dani Lorenzo,M,False,False,2813,34,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-012,Carlos Dotor,M,False,False,2753,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-013,Pablo Martínez,M,False,False,1959,22,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-014,Rafa Rodríguez,M,False,False,1548,16,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-015,Jens Cajuste,M,False,False,1280,14,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-016,Aarón Ochoa,M,False,True,957,9,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-017,David Larrubia,A,True,False,3644,42,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-018,Juan Cruz,A,False,False,3010,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-019,Chupe,A,True,False,3008,33,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-020,Joaquín Muñoz,A,False,False,2776,35,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-021,Adrián Niño,A,False,False,1408,15,True,MANTIDO,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-022,Julen Lobete,A,False,False,1025,10,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv
+20,3,Málaga CF,malaga-cf,malaga-cf-2026-023,Eneko Jauregi,A,False,False,692,6,False,CORTE_PREVIO_SEM_VALOR_INDIVIDUAL; revisar por valor Transfermarkt,,ZIP catalogo Espanha 2026 V1.6; estatísticas de selecao_jogadores.csv

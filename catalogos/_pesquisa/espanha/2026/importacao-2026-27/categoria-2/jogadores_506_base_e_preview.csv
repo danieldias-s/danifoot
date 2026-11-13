@@ -1,0 +1,507 @@
+posicao_nacional,clube,clubId,divisao_previa_conjunta,playerId,jogador,posicao,nacionalidade,estrela,comportamento,minutos_2025_26,titularidades_2025_26,prodigio_protegido,preview,avaliacao_individual_eur
+21,Girona FC,girona-fc,3,girona-fc-2026-001,Paulo Gazzaniga,G,AR,NAO,PENDENTE,3193,36,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-002,Sergi Puig,G,ES,NAO,PENDENTE,2250,25,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-003,Vladyslav Krapyvtsov,G,UA,NAO,PENDENTE,257,2,NAO,CORTADO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-004,Javier Boñar,D,ES,NAO,PENDENTE,3342,37,SIM,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-005,Álex Moreno,D,ES,NAO,PENDENTE,2558,28,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-006,Alejandro Francés,D,ES,NAO,PENDENTE,1200,12,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-007,Mateu Morey,D,ES,NAO,PENDENTE,950,12,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-008,David López,D,ES,NAO,PENDENTE,293,3,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-009,Abdul Mumin,D,GH,NAO,PENDENTE,78,1,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-010,Iván Morante,M,ES,NAO,PENDENTE,3487,41,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-011,Izan González,M,ES,NAO,PENDENTE,3154,35,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-012,Fran Beltrán,M,ES,NAO,PENDENTE,1974,23,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-013,Lass Kourouma,M,GN,NAO,PENDENTE,1446,16,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-014,Donny van de Beek,M,NL,NAO,PENDENTE,41,1,NAO,CORTADO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-015,Unai Hernández,M,ES,NAO,PENDENTE,8,0,NAO,CORTADO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-016,Vladyslav Vanat,A,UA,SIM,PENDENTE,2545,33,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-017,Carles Pérez,A,ES,NAO,PENDENTE,1852,23,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-018,Bryan Gil,A,ES,NAO,PENDENTE,1641,20,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-019,Jastin Garcia,A,PT,NAO,PENDENTE,1434,14,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-020,Yáser Asprilla,A,CO,NAO,PENDENTE,770,8,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-021,Oleksandr Pyshchur,A,UA,NAO,PENDENTE,616,4,SIM,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-022,Portu,A,ES,NAO,PENDENTE,532,5,NAO,MANTIDO,NAO DISPONIVEL
+21,Girona FC,girona-fc,3,girona-fc-2026-023,Cristhian Stuani,A,UY,NAO,PENDENTE,471,2,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-001,Andrés Fernández,G,ES,NAO,PENDENTE,4140,46,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-002,Áron Yaakobishvili,G,HU,NAO,PENDENTE,1890,21,SIM,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-003,Federico Bonini,D,IT,NAO,PENDENTE,3464,39,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-004,Álex Muñoz,D,ES,NAO,PENDENTE,3413,39,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-005,Jorge Pulido,D,ES,NAO,PENDENTE,3258,37,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-006,Leonardo Lelo,D,PT,NAO,PENDENTE,2914,32,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-007,Daijiro Chirino,D,NL,NAO,PENDENTE,2386,26,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-008,Marcos Luna,D,ES,NAO,PENDENTE,1945,22,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-009,Rodrigo Ely,D,BR,NAO,PENDENTE,1232,14,NAO,CORTADO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-010,Chumi,D,ES,NAO,PENDENTE,336,4,NAO,CORTADO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-011,Sergio Arribas,M,ES,SIM,PENDENTE,3830,45,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-012,Stefan Džodić,M,RS,NAO,PENDENTE,2546,28,SIM,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-013,Gui Guedes,M,PT,NAO,PENDENTE,1308,15,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-014,Nico Melamed,M,ES,NAO,PENDENTE,1137,12,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-015,Mikel Vesga,M,ES,NAO,PENDENTE,829,5,NAO,CORTADO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-016,Javi Muñoz,M,ES,NAO,PENDENTE,826,7,NAO,CORTADO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-017,Adrián Embarba,A,ES,NAO,PENDENTE,3186,37,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-018,Miguel de la Fuente,A,ES,NAO,PENDENTE,2723,32,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-019,Álex Sola,A,ES,NAO,PENDENTE,2660,29,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-020,Jon Morcillo,A,ES,NAO,PENDENTE,2273,23,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-021,Brian Cipenga,A,CD,NAO,PENDENTE,2250,24,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-022,Léo Baptistão,A,BR,NAO,PENDENTE,2111,26,NAO,MANTIDO,NAO DISPONIVEL
+22,UD Almería,ud-almeria,3,ud-almeria-2026-023,Thalys,A,BR,NAO,PENDENTE,906,7,SIM,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-001,Arnau Tenas,G,ES,NAO,PENDENTE,1380,15,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-002,Lucas Bergström,G,FI,NAO,PENDENTE,630,7,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-003,Martin Valjent,D,SK,NAO,PENDENTE,3362,37,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-004,Antonio Raíllo,D,ES,NAO,PENDENTE,2070,23,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-005,Alberto Moreno,D,ES,NAO,PENDENTE,1515,16,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-006,David López,D,ES,NAO,PENDENTE,1074,12,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-007,John Donald,D,ES,NAO,PENDENTE,862,8,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-008,Toni Lato,D,ES,NAO,PENDENTE,697,9,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-009,Aboubaka Soumahoro,D,FR,NAO,PENDENTE,157,2,NAO,CORTADO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-010,Sergi Darder,M,ES,NAO,PENDENTE,2720,30,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-011,Manu Morlanes,M,ES,NAO,PENDENTE,1852,23,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-012,Pablo Torre,M,ES,NAO,PENDENTE,1829,22,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-013,Antonio Sánchez,M,ES,NAO,PENDENTE,1319,12,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-014,Guille Fernández,M,ES,NAO,PENDENTE,787,8,SIM,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-015,Jan Salas,M,ES,NAO,PENDENTE,212,2,NAO,CORTADO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-016,Adrián Fuentes,A,ES,SIM,PENDENTE,2726,34,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-017,Daniel Luna,A,CO,NAO,PENDENTE,1937,22,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-018,Adrián Liso,A,ES,NAO,PENDENTE,1801,21,SIM,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-019,Arnau Puigmal,A,ES,NAO,PENDENTE,1654,14,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-020,Josep Cerdà,A,ES,NAO,PENDENTE,1602,18,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-021,Adam Buksa,A,PL,NAO,PENDENTE,1047,8,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-022,Zito Luvumbo,A,AO,NAO,PENDENTE,984,10,NAO,MANTIDO,NAO DISPONIVEL
+23,RCD Mallorca,rcd-mallorca,3,rcd-mallorca-2026-023,Abdón Prats,A,ES,NAO,PENDENTE,401,3,NAO,CORTADO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-001,Álvaro Aceves,G,ES,NAO,PENDENTE,1080,12,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-002,Dani Martín,G,ES,NAO,PENDENTE,660,7,SIM,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-003,David Torres,D,ES,NAO,PENDENTE,3326,38,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-004,Pablo Tomeo,D,ES,NAO,PENDENTE,2962,32,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-005,Iván Alejo,D,ES,NAO,PENDENTE,2820,33,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-006,Guille Bueno,D,ES,NAO,PENDENTE,1459,17,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-007,Ramón Martínez,D,ES,NAO,PENDENTE,1438,15,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-008,Carlos Clerc,D,ES,NAO,PENDENTE,1138,14,NAO,CORTADO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-009,Stanko Juric,M,HR,NAO,PENDENTE,3035,35,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-010,Thiago Ojeda,M,AR,NAO,PENDENTE,2744,32,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-011,Julien Ponceau,M,FR,NAO,PENDENTE,2473,29,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-012,Víctor Fernández,M,ES,SIM,PENDENTE,2392,27,SIM,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-013,Álex Balboa,M,GQ,NAO,PENDENTE,2293,26,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-014,Dani Pérez,M,ES,NAO,PENDENTE,1865,21,SIM,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-015,Mathis Lachuer,M,FR,NAO,PENDENTE,929,11,NAO,CORTADO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-016,Luis Chacón,A,ES,NAO,PENDENTE,3510,39,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-017,Juanmi Latasa,A,ES,NAO,PENDENTE,2602,28,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-018,Robin van Duiven,A,NL,SIM,PENDENTE,2459,28,SIM,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-019,Kaj de Rooij,A,NL,NAO,PENDENTE,2095,24,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-020,Tay Abed,A,IL,NAO,PENDENTE,1715,18,NAO,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-021,Yeray Cabanzón,A,ES,NAO,PENDENTE,1325,14,NAO,CORTADO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-022,Adrián Arnu,A,ES,NAO,PENDENTE,1109,13,SIM,MANTIDO,NAO DISPONIVEL
+24,Real Valladolid CF,real-valladolid,3,real-valladolid-2026-023,Víctor Barberá,A,ES,NAO,PENDENTE,756,8,NAO,CORTADO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-001,Miguel Narváez,G,ES,NAO,PENDENTE,3360,37,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-002,Aarón Escandell,G,ES,NAO,PENDENTE,3240,36,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-003,Marco Esteban,D,ES,NAO,PENDENTE,3462,38,SIM,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-004,David Jiménez,D,ES,NAO,PENDENTE,3021,35,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-005,Aisar Ahmed,D,ES,NAO,PENDENTE,2956,34,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-006,Samu Rodríguez,D,ES,NAO,PENDENTE,2566,27,SIM,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-007,Nacho Vidal,D,ES,NAO,PENDENTE,2272,27,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-008,David Costas,D,ES,NAO,PENDENTE,2064,22,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-009,Dani Calvo,D,ES,NAO,PENDENTE,1729,18,NAO,CORTADO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-010,Juan Cruz,D,ES,NAO,PENDENTE,994,11,NAO,CORTADO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-011,Dani Villahermosa,M,ES,NAO,PENDENTE,3206,37,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-012,Youness Lachhab,M,MA,NAO,PENDENTE,2540,31,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-013,Alberto Reina,M,ES,NAO,PENDENTE,2536,32,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-014,Diego Menéndez,M,ES,NAO,PENDENTE,2313,26,SIM,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-015,Enzo Pérez,M,ES,NAO,PENDENTE,1300,18,SIM,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-016,Mikel Goti,M,ES,NAO,PENDENTE,1079,12,NAO,CORTADO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-017,Aritz Aldasoro,M,ES,NAO,PENDENTE,1020,13,NAO,CORTADO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-018,Alexandru Ișfan,A,RO,SIM,PENDENTE,3200,38,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-019,Jacobo González,A,ES,NAO,PENDENTE,3124,35,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-020,Carlos Fernández,A,ES,SIM,PENDENTE,2661,31,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-021,Víctor Mingo,A,ES,SIM,PENDENTE,2631,28,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-022,Ilyas Chaira,A,MA,NAO,PENDENTE,2482,30,NAO,MANTIDO,NAO DISPONIVEL
+25,Real Oviedo,real-oviedo,4,real-oviedo-2026-023,Pablo Sáenz,A,ES,NAO,PENDENTE,1677,19,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-001,José Antonio Caro,G,ES,NAO,PENDENTE,230,2,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-002,Adri Suárez,G,ES,NAO,PENDENTE,0,0,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-003,Enrique Clemente,D,ES,NAO,PENDENTE,3520,39,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-004,Nicholas Opoku,D,GH,NAO,PENDENTE,2432,26,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-005,Marvin Park,D,ES,NAO,PENDENTE,2367,27,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-006,Viti Rozada,D,ES,NAO,PENDENTE,2165,25,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-007,Andrés Rodríguez,D,ES,NAO,PENDENTE,2164,24,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-008,Álex Suárez,D,ES,NAO,PENDENTE,1357,13,NAO,CORTADO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-009,Valentín Pezzolesi,D,ES,NAO,PENDENTE,1073,12,SIM,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-010,Juanma Herzog,D,ES,NAO,PENDENTE,626,6,NAO,CORTADO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-011,Iván Medina,M,ES,SIM,PENDENTE,2780,31,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-012,Enzo Loiodice,M,FR,NAO,PENDENTE,2443,28,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-013,Sergio Ruiz,M,ES,NAO,PENDENTE,2116,24,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-014,Kirian Rodríguez,M,ES,NAO,PENDENTE,1600,17,NAO,CORTADO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-015,Aboubacar Bassinga,M,BF,NAO,PENDENTE,893,8,SIM,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-016,Mateo Acimovic,M,SI,NAO,PENDENTE,512,8,SIM,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-017,Iñaki González,M,ES,NAO,PENDENTE,272,3,NAO,CORTADO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-018,Manu Fuster,A,ES,SIM,PENDENTE,3322,40,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-019,Elías Romero,A,ES,NAO,PENDENTE,2315,27,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-020,Jefté Betancor,A,ES,SIM,PENDENTE,2292,27,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-021,Ale García,A,ES,NAO,PENDENTE,2156,25,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-022,Jesé,A,ES,NAO,PENDENTE,1976,25,NAO,MANTIDO,NAO DISPONIVEL
+26,UD Las Palmas,ud-las-palmas,4,ud-las-palmas-2026-023,Taisei Miyashiro,A,JP,NAO,PENDENTE,1348,16,NAO,CORTADO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-001,Rubén Yáñez,G,ES,NAO,PENDENTE,3516,40,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-002,Egoitz Arana,G,ES,NAO,PENDENTE,990,11,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-003,Guille Rosas,D,ES,NAO,PENDENTE,3338,38,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-004,Pablo Vázquez,D,ES,NAO,PENDENTE,3291,38,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-005,Diego Sánchez,D,ES,NAO,PENDENTE,2914,32,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-006,Aimar Duñabeitia,D,ES,NAO,PENDENTE,1828,21,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-007,Andrés Cuenca,D,ES,NAO,PENDENTE,1091,13,SIM,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-008,Jorge Sáenz,D,ES,NAO,PENDENTE,1062,11,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-009,Pablo García,D,ES,NAO,PENDENTE,834,5,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-010,Emanuel Gularte,D,UY,NAO,PENDENTE,0,0,NAO,CORTADO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-011,Àlex Corredera,M,ES,NAO,PENDENTE,3360,38,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-012,César Gelabert,M,ES,SIM,PENDENTE,3358,41,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-013,Nacho Martín,M,ES,NAO,PENDENTE,1758,20,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-014,Manu Rodríguez,M,ES,NAO,PENDENTE,1645,19,SIM,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-015,Hugo Guillamón,M,ES,NAO,PENDENTE,1596,17,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-016,Mamadou Loum,M,SN,NAO,PENDENTE,61,1,NAO,CORTADO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-017,Nikita Iosifov,A,RU,SIM,PENDENTE,4063,46,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-018,Juan Otero,A,CO,SIM,PENDENTE,2821,33,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-019,Gaspar Campos,A,ES,NAO,PENDENTE,2208,25,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-020,Konrad de la Fuente,A,US,NAO,PENDENTE,1463,14,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-021,Antonio Casas,A,ES,NAO,PENDENTE,702,5,NAO,MANTIDO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-022,Andrés Ferrari,A,UY,NAO,PENDENTE,273,3,NAO,CORTADO,NAO DISPONIVEL
+27,Sporting Gijón,sporting-de-gijon,4,sporting-de-gijon-2026-023,Alejo Sarco,A,AR,NAO,PENDENTE,121,0,NAO,CORTADO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-001,Aitor Fraga,G,ES,NAO,PENDENTE,2790,31,NAO,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-002,Theo Folgado,G,FR,NAO,PENDENTE,450,5,NAO,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-003,Jon Balda,D,ES,NAO,PENDENTE,2668,30,NAO,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-004,Kazunari Kita,D,JP,NAO,PENDENTE,2384,27,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-005,Unax Agote,D,ES,NAO,PENDENTE,1778,20,NAO,CORTADO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-006,Jon Garro,D,ES,NAO,PENDENTE,1525,16,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-007,Unax Ayo,D,ES,NAO,PENDENTE,1342,14,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-008,Iker Ropero,D,ES,NAO,PENDENTE,905,10,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-009,Iker Calderón,D,ES,NAO,PENDENTE,562,7,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-010,Tomy Carbonell,M,ES,NAO,PENDENTE,2966,34,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-011,Gorka Gorosabel,M,ES,NAO,PENDENTE,1990,21,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-012,Ibai Aguirre,M,ES,NAO,PENDENTE,1644,21,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-013,Jon Eceizabarrena,M,ES,NAO,PENDENTE,1432,16,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-014,Joan Oleaga,M,ES,NAO,PENDENTE,745,8,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-015,Alex Lebarbier,M,FR,NAO,PENDENTE,538,4,NAO,CORTADO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-016,Gorka Carrera,A,ES,SIM,PENDENTE,3073,33,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-017,Lander Astiazaran,A,ES,NAO,PENDENTE,2671,29,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-018,Arkaitz Mariezkurrena,A,ES,NAO,PENDENTE,2270,26,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-019,Javier Soroeta,A,ES,SIM,PENDENTE,2059,23,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-020,Dani Díaz,A,ES,NAO,PENDENTE,1254,15,SIM,MANTIDO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-021,Ekain Orobengoa,A,ES,NAO,PENDENTE,460,5,NAO,CORTADO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-022,Sydney Osazuwa,A,ES,NAO,PENDENTE,263,3,NAO,CORTADO,NAO DISPONIVEL
+28,Real Sociedad B,real-sociedad-b,4,real-sociedad-b-2026-023,Andrews Adjabeng,A,GH,NAO,PENDENTE,56,0,NAO,CORTADO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-001,Jokin Ezkieta,G,ES,NAO,PENDENTE,3060,34,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-002,David Gil,G,ES,NAO,PENDENTE,900,10,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-003,Kenan Toibibou,D,KM,NAO,PENDENTE,2721,31,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-004,Javi Castro,D,ES,NAO,PENDENTE,2322,23,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-005,Bojan Kovacevic,D,RS,NAO,PENDENTE,1825,20,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-006,Beñat de Jesús,D,ES,NAO,PENDENTE,1819,20,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-007,Noah Ukwuije,D,FR,NAO,PENDENTE,1698,19,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-008,Sergio Arribas,D,ES,NAO,PENDENTE,1635,19,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-009,Giorgi Gocholeishvili,D,GE,NAO,PENDENTE,1273,13,NAO,CORTADO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-010,Manu Fernández,D,ES,NAO,PENDENTE,1116,12,NAO,CORTADO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-011,Juan Díaz,D,ES,NAO,PENDENTE,891,9,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-012,Dilan Zárate,M,ES,NAO,PENDENTE,2230,26,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-013,Ibon Sánchez,M,ES,NAO,PENDENTE,2147,25,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-014,Aïmen Moueffek,M,MA,NAO,PENDENTE,1443,17,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-015,Jandro Orellana,M,ES,NAO,PENDENTE,1348,17,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-016,Damián Rodríguez,M,ES,NAO,PENDENTE,1348,17,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-017,Marc-Olivier Doué,M,FR,NAO,PENDENTE,865,6,NAO,CORTADO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-018,Borja Vázquez,A,ES,NAO,PENDENTE,3309,36,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-019,Álvaro García Pascual,A,ES,SIM,PENDENTE,2782,33,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-020,Vladyslav Kopotun,A,UA,SIM,PENDENTE,2256,24,NAO,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-021,Gonzalo Petit,A,UY,NAO,PENDENTE,1755,20,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-022,Antoñito Cordero,A,ES,NAO,PENDENTE,1301,16,SIM,MANTIDO,NAO DISPONIVEL
+29,Cádiz CF,cadiz-cf,4,cadiz-cf-2026-023,Iuri Tabatadze,A,GE,NAO,PENDENTE,911,11,NAO,CORTADO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-001,Romain Matthys,G,BE,NAO,PENDENTE,3600,40,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-002,Amir Saipi,G,CH,NAO,PENDENTE,2550,28,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-003,Sergi Torner,G,ES,NAO,PENDENTE,2510,28,NAO,CORTADO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-004,Juanjo Nieto,D,ES,NAO,PENDENTE,3639,43,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-005,Alberto Jiménez,D,ES,NAO,PENDENTE,3337,37,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-006,Jérémy Mellot,D,FR,NAO,PENDENTE,3181,36,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-007,Lucas Alcázar,D,ES,NAO,PENDENTE,2669,33,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-008,Fabrizio Brignani,D,IT,NAO,PENDENTE,2163,25,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-009,Agustín Sienra,D,AR,NAO,PENDENTE,1845,21,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-010,Diego Barri,M,ES,NAO,PENDENTE,3134,38,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-011,Antonio Gala,M,IT,NAO,PENDENTE,3124,37,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-012,Jari Vlak,M,NL,SIM,PENDENTE,2942,34,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-013,Fran Castillo,M,ES,NAO,PENDENTE,2166,25,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-014,Israel Suero,M,ES,NAO,PENDENTE,1197,8,NAO,CORTADO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-015,Álvaro Martín,M,ES,NAO,PENDENTE,996,11,NAO,CORTADO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-016,Iñigo Córdoba,A,ES,NAO,PENDENTE,2865,34,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-017,Ousmane Camara,A,GN,NAO,PENDENTE,2477,29,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-018,Adam Jakobsen,A,DK,NAO,PENDENTE,2124,26,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-019,Pablo Santiago,A,ES,NAO,PENDENTE,2011,28,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-020,David Nzanza,A,AO,SIM,PENDENTE,2009,22,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-021,Álvaro García,A,ES,SIM,PENDENTE,1910,20,NAO,MANTIDO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-022,Hamza Bellari,A,MA,NAO,PENDENTE,1468,17,NAO,CORTADO,NAO DISPONIVEL
+30,CD Castellón,cd-castellon,4,cd-castellon-2026-023,Raúl Sánchez,A,ES,NAO,PENDENTE,501,4,NAO,CORTADO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-001,Jonmi Magunagoitia,G,ES,NAO,PENDENTE,3780,42,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-002,Luis López,G,ES,NAO,PENDENTE,270,3,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-003,Markel Arana,D,ES,NAO,PENDENTE,3162,35,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-004,Anaitz Arbilla,D,ES,NAO,PENDENTE,2890,33,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-005,Sergio Cubero,D,ES,NAO,PENDENTE,2863,33,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-006,Imanol García de Albéniz,D,ES,NAO,PENDENTE,1572,18,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-007,Jair Amador,D,PT,NAO,PENDENTE,1563,16,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-008,Álvaro Rodríguez,D,ES,NAO,PENDENTE,1181,10,NAO,CORTADO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-009,Unai Elgezabal,D,ES,NAO,PENDENTE,1023,12,NAO,CORTADO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-010,Sergio Álvarez,M,ES,NAO,PENDENTE,2846,32,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-011,Peru Nolaskoain,M,ES,NAO,PENDENTE,2425,28,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-012,Aleix Garrido,M,ES,NAO,PENDENTE,2289,26,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-013,Lucas Núñez,M,ES,NAO,PENDENTE,1869,21,SIM,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-014,Ander Madariaga,M,ES,NAO,PENDENTE,1716,20,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-015,Lander Olaetxea,M,ES,NAO,PENDENTE,1714,19,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-016,Jon Magunazelaia,M,ES,NAO,PENDENTE,1452,16,NAO,CORTADO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-017,Jon Bautista,A,ES,NAO,PENDENTE,2256,22,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-018,Javi Martón,A,ES,SIM,PENDENTE,2164,25,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-019,Jon Guruzeta,A,ES,NAO,PENDENTE,2108,25,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-020,Elijah Gift,A,ES,NAO,PENDENTE,1877,22,SIM,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-021,Adu Ares,A,ES,NAO,PENDENTE,1768,21,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-022,Eric Pérez,A,ES,NAO,PENDENTE,1697,18,NAO,MANTIDO,NAO DISPONIVEL
+31,SD Eibar,sd-eibar,4,sd-eibar-2026-023,Pejiño,A,ES,NAO,PENDENTE,1080,14,NAO,CORTADO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-001,Luca Zidane,G,DZ,NAO,PENDENTE,2430,27,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-002,Raúl Fernández,G,ES,NAO,PENDENTE,450,5,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-003,Marvel,D,ES,NAO,PENDENTE,3249,37,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-004,Álvaro Tejero,D,ES,NAO,PENDENTE,2748,28,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-005,Lalo Aguilar,D,ES,NAO,PENDENTE,2643,31,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-006,Javi Montero,D,ES,NAO,PENDENTE,2394,27,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-007,Ignasi Miquel,D,ES,NAO,PENDENTE,2276,26,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-008,Enric Franquesa,D,ES,NAO,PENDENTE,1744,19,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-009,Rubén Peña,D,ES,NAO,PENDENTE,1698,21,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-010,Miguel Atienza,M,ES,NAO,PENDENTE,3681,41,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-011,Amadou Diawara,M,GN,NAO,PENDENTE,3569,41,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-012,Zico Buurmeester,M,NL,NAO,PENDENTE,1746,17,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-013,Yassine Kechta,M,MA,NAO,PENDENTE,1375,14,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-014,Dani Rodríguez,M,ES,NAO,PENDENTE,1267,14,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-015,Andrés Campos,M,ES,NAO,PENDENTE,129,1,NAO,CORTADO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-016,Naim García,A,ES,SIM,PENDENTE,2434,28,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-017,Álex Millán,A,ES,SIM,PENDENTE,1667,19,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-018,Álvaro Morata,A,ES,NAO,PENDENTE,998,9,NAO,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-019,Unax del Cura,A,ES,NAO,PENDENTE,958,11,SIM,MANTIDO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-020,Álex Sancris,A,ES,NAO,PENDENTE,905,7,NAO,CORTADO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-021,Patrick Soko,A,CM,NAO,PENDENTE,831,8,NAO,CORTADO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-022,Ismaël Gharbi,A,TN,NAO,PENDENTE,138,1,NAO,CORTADO,NAO DISPONIVEL
+32,CD Leganés,cd-leganes,4,cd-leganes-2026-023,Sule El Haddadi,A,ES,NAO,PENDENTE,79,1,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-001,Raúl Lizoain,G,ES,NAO,PENDENTE,2370,26,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-002,Alberto Flores,G,ES,NAO,PENDENTE,2250,25,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-003,Manu Lama,D,ES,NAO,PENDENTE,2999,33,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-004,Baïla Diallo,D,MR,NAO,PENDENTE,2592,31,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-005,Sergio López,D,ES,NAO,PENDENTE,2384,28,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-006,Benedikt Gimber,D,DE,NAO,PENDENTE,1527,19,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-007,Pau Casadesús,D,ES,NAO,PENDENTE,1513,16,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-008,Diego Pampín,D,ES,NAO,PENDENTE,714,8,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-009,Juanjo Flores,D,ES,NAO,PENDENTE,551,6,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-010,Ángelo García,D,ES,NAO,PENDENTE,0,0,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-011,Bourama Dembélé,D,ES,NAO,PENDENTE,0,0,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-012,Pedro Alemañ,M,ES,SIM,PENDENTE,2734,32,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-013,Rubén Alcaraz,M,ES,NAO,PENDENTE,2533,30,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-014,Gerard Gumbau,M,ES,NAO,PENDENTE,1967,25,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-015,Diego Hormigo,M,ES,NAO,PENDENTE,1254,13,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-016,Mario Gambín,M,ES,NAO,PENDENTE,111,1,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-017,Dylan Rodríguez,M,ES,NAO,PENDENTE,0,0,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-018,José Manuel Arnáiz,A,ES,NAO,PENDENTE,2512,29,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-019,Jorge Pascual,A,ES,NAO,PENDENTE,2371,25,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-020,Abdoul Kader Bamba,A,FR,NAO,PENDENTE,2033,25,NAO,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-021,Alejandro Marqués,A,VE,NAO,PENDENTE,1154,13,NAO,CORTADO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-022,Sergio Rodelas,A,ES,NAO,PENDENTE,867,6,SIM,MANTIDO,NAO DISPONIVEL
+33,Granada CF,granada-cf,5,granada-cf-2026-023,Chinaza Onouha,A,NG,NAO,PENDENTE,0,0,NAO,CORTADO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-001,Ander Cantero,G,ES,NAO,PENDENTE,3780,42,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-002,Bruno Iribarne,G,ES,NAO,PENDENTE,90,1,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-003,Grego Sierra,D,ES,NAO,PENDENTE,3585,40,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-004,Álex Lizancos,D,ES,NAO,PENDENTE,3146,35,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-005,Alberto Dadie,D,ES,NAO,PENDENTE,2683,31,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-006,Iván Martínez,D,ES,NAO,PENDENTE,2322,26,SIM,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-007,Sergio González,D,ES,NAO,PENDENTE,2092,23,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-008,Ignasi Vilarrasa,D,ES,NAO,PENDENTE,1562,19,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-009,Brais Martínez,D,ES,NAO,PENDENTE,668,7,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-010,Oier Luengo,D,ES,NAO,PENDENTE,533,6,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-011,Kévin Appin,M,MQ,NAO,PENDENTE,1469,14,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-012,Unai Vencedor,M,ES,NAO,PENDENTE,993,13,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-013,José Gragera,M,ES,NAO,PENDENTE,733,9,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-014,Saúl del Cerro,M,ES,NAO,PENDENTE,640,6,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-015,Marcelo Expósito,M,ES,NAO,PENDENTE,451,5,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-016,Mario Cantero,M,ES,NAO,PENDENTE,433,4,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-017,Pablo Galdames,M,CL,NAO,PENDENTE,278,1,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-018,David González,A,ES,SIM,PENDENTE,3173,38,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-019,Curro Sánchez,A,ES,NAO,PENDENTE,2830,36,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-020,Víctor Mollejo,A,ES,NAO,PENDENTE,1163,10,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-021,Fermín García,A,ES,NAO,PENDENTE,631,5,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-022,Álex Forés,A,ES,NAO,PENDENTE,448,4,NAO,MANTIDO,NAO DISPONIVEL
+34,Burgos CF,burgos-cf,5,burgos-cf-2026-023,Javi Llabrés,A,ES,NAO,PENDENTE,429,4,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-001,Iker Álvarez,G,AD,NAO,PENDENTE,3105,34,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-002,Guilherme Fernandes,G,PT,NAO,PENDENTE,2790,31,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-003,Juan Gutiérrez,D,ES,NAO,PENDENTE,3630,40,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-004,Daniel Budesca,D,ES,NAO,PENDENTE,3187,36,SIM,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-005,Egoitz Muñoz,D,ES,NAO,PENDENTE,2960,33,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-006,Carlos Albarrán,D,ES,NAO,PENDENTE,2503,29,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-007,Álex Martín,D,ES,NAO,PENDENTE,2493,27,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-008,Nélson Monte,D,PT,NAO,PENDENTE,2464,28,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-009,Rubén Alves,D,ES,NAO,PENDENTE,1668,20,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-010,Dani Tasende,D,ES,NAO,PENDENTE,1517,14,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-011,Jacobo Martí,D,ES,NAO,PENDENTE,1311,15,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-012,Isma Ruiz,M,ES,NAO,PENDENTE,3036,35,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-013,Eder García,M,ES,NAO,PENDENTE,2911,34,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-014,Damián Cáceres,M,ES,NAO,PENDENTE,2531,28,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-015,Yussi Diarra,M,ML,NAO,PENDENTE,1729,20,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-016,Théo Zidane,M,FR,NAO,PENDENTE,658,4,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-017,Adnane Ghailan,A,MA,NAO,PENDENTE,3380,37,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-018,Cristian Carracedo,A,ES,SIM,PENDENTE,3157,38,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-019,Ibai Sanz,A,ES,SIM,PENDENTE,2534,32,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-020,Salim El Jebari,A,MA,NAO,PENDENTE,1807,19,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-021,Enol Rodríguez,A,ES,NAO,PENDENTE,1741,17,NAO,MANTIDO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-022,Kevin Medina,A,ES,NAO,PENDENTE,1353,15,NAO,CORTADO,NAO DISPONIVEL
+35,Córdoba CF,cordoba-cf,5,cordoba-cf-2026-023,Diego Bri,A,ES,NAO,PENDENTE,1282,12,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-001,Jesús Owono,G,GQ,NAO,PENDENTE,1845,20,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-002,Pau López,G,ES,NAO,PENDENTE,1440,16,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-003,Andoni López,D,ES,NAO,PENDENTE,3314,38,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-004,Gael Alonso,D,ES,NAO,PENDENTE,3222,37,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-005,Thomas Carrique,D,FR,NAO,PENDENTE,3143,36,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-006,Lautaro Spatz,D,AR,NAO,PENDENTE,2854,32,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-007,Martí Vilà,D,ES,NAO,PENDENTE,1952,23,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-008,Diego Alende,D,ES,NAO,PENDENTE,1878,21,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-009,Juan Sebastián,D,ES,NAO,PENDENTE,1450,16,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-010,Marc Bombardó,D,ES,NAO,PENDENTE,1325,15,SIM,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-011,Nacho Quintana,M,ES,NAO,PENDENTE,2917,33,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-012,Sergio Molina,M,ES,NAO,PENDENTE,2654,29,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-013,Marc Doménech,M,ES,NAO,PENDENTE,2369,26,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-014,Hugo Solozábal,M,ES,NAO,PENDENTE,2365,28,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-015,Randy Schneider,M,PH,NAO,PENDENTE,2127,24,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-016,Diego Díaz,M,ES,NAO,PENDENTE,2098,21,SIM,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-017,Efe Akman,M,TR,NAO,PENDENTE,1638,19,SIM,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-018,Théo Le Normand,M,FR,NAO,PENDENTE,1194,14,NAO,CORTADO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-019,Jordi Cano,A,ES,SIM,PENDENTE,3510,39,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-020,Moró Sidibe,A,ES,NAO,PENDENTE,2922,33,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-021,Lautaro de León,A,UY,NAO,PENDENTE,2412,29,NAO,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-022,Hugo López,A,ES,NAO,PENDENTE,1924,23,SIM,MANTIDO,NAO DISPONIVEL
+36,FC Andorra,fc-andorra,5,fc-andorra-2026-023,Álex Calvo,A,ES,NAO,PENDENTE,781,6,NAO,CORTADO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-001,Diego Mariño,G,ES,NAO,PENDENTE,1890,21,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-002,Carlos Marín,G,ES,NAO,PENDENTE,765,9,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-003,Carlos Neva,D,ES,NAO,PENDENTE,2942,35,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-004,Jesús Vallejo,D,ES,NAO,PENDENTE,2624,29,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-005,Fran Gámez,D,ES,NAO,PENDENTE,2504,29,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-006,Lorenzo Aguado,D,ES,NAO,PENDENTE,1856,19,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-007,Javi Moreno,D,ES,NAO,PENDENTE,1844,19,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-008,Pepe Sánchez,D,ES,NAO,PENDENTE,1643,21,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-009,Lluís López,D,ES,NAO,PENDENTE,1096,11,NAO,CORTADO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-010,Dani Bernabéu,D,ES,NAO,PENDENTE,1050,13,SIM,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-011,Sergio Ortuño,M,ES,NAO,PENDENTE,2697,32,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-012,Antonio Pacheco,M,ES,NAO,PENDENTE,2365,24,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-013,Agus Medina,M,ES,NAO,PENDENTE,2250,25,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-014,Víctor San Bartolomé,M,ES,NAO,PENDENTE,1634,20,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-015,Javi Villar,M,ES,NAO,PENDENTE,1568,18,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-016,José Corpas,A,ES,SIM,PENDENTE,3488,40,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-017,Álex Rubio,A,ES,SIM,PENDENTE,2369,27,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-018,Antonio Puertas,A,ES,NAO,PENDENTE,2117,23,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-019,Munir El Haddadi,A,MA,NAO,PENDENTE,2109,25,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-020,Rober González,A,ES,NAO,PENDENTE,1248,15,NAO,MANTIDO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-021,Mario Soberón,A,ES,NAO,PENDENTE,1219,12,NAO,CORTADO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-022,Victor Valverde,A,ES,NAO,PENDENTE,1193,14,NAO,CORTADO,NAO DISPONIVEL
+37,Albacete Balompié,albacete-balompie,5,albacete-balompie-2026-023,Samuel Obeng,A,GH,NAO,PENDENTE,945,7,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-001,Dani Martín,G,ES,NAO,PENDENTE,3015,34,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-002,Gabriel De Vuyst,G,ES,NAO,PENDENTE,585,6,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-003,David Rodríguez,D,ES,NAO,PENDENTE,3334,38,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-004,Anthony Landázuri,D,EC,NAO,PENDENTE,3271,37,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-005,César Álvarez,D,ES,NAO,PENDENTE,2743,30,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-006,José León,D,ES,NAO,PENDENTE,2632,28,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-007,Neal Viereck,D,NL,NAO,PENDENTE,2359,24,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-008,Roko Jureskin,D,HR,NAO,PENDENTE,1725,18,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-009,Jorge Moreno,D,ES,NAO,PENDENTE,1622,18,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-010,Jesús Álvarez,M,ES,NAO,PENDENTE,2747,35,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-011,Juanjo Sánchez,M,ES,NAO,PENDENTE,2528,29,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-012,Fabricio,M,BR,NAO,PENDENTE,2077,25,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-013,Mauro Pittón,M,AR,NAO,PENDENTE,1745,20,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-014,Anes Krdzalic,M,BA,NAO,PENDENTE,1392,16,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-015,Dani Fernández,M,ES,NAO,PENDENTE,773,9,SIM,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-016,Martin Pecar,A,SI,NAO,PENDENTE,2753,35,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-017,Enric Gallego,A,ES,SIM,PENDENTE,2646,35,NAO,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-018,Víctor Moreno,A,ES,NAO,PENDENTE,2345,25,SIM,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-019,Nacho Gil,A,ES,NAO,PENDENTE,2303,26,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-020,Baba Diocou,A,ES,NAO,PENDENTE,2127,23,SIM,MANTIDO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-021,Alassan Manjam,A,GW,NAO,PENDENTE,1655,21,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-022,Noel López,A,ES,NAO,PENDENTE,1365,11,NAO,CORTADO,NAO DISPONIVEL
+38,CD Tenerife,cd-tenerife,5,cd-tenerife-2026-023,Christian Gomis,A,SN,NAO,PENDENTE,1222,14,NAO,CORTADO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-001,Guillermo Vallejo,G,ES,NAO,PENDENTE,2880,32,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-002,Pedro López,G,ES,NAO,PENDENTE,1080,12,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-003,Carlos Hernández,D,ES,NAO,PENDENTE,3433,38,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-004,José Matos,D,ES,NAO,PENDENTE,2792,31,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-005,Toni Abad,D,ES,NAO,PENDENTE,2009,25,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-006,Adrián Lapeña,D,ES,NAO,PENDENTE,1827,20,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-007,Carlos Redru,D,ES,NAO,PENDENTE,1027,12,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-008,Albert Caparrós,D,ES,NAO,PENDENTE,1003,11,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-009,Álex Petxarroman,D,ES,NAO,PENDENTE,823,10,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-010,Ale Meléndez,M,ES,NAO,PENDENTE,2868,33,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-011,Kuki Zalazar,M,ES,SIM,PENDENTE,2507,31,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-012,Marino Illescas,M,ES,NAO,PENDENTE,2162,24,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-013,Yann Bodiger,M,FR,NAO,PENDENTE,2078,21,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-014,Mawuli Mensah,M,GH,NAO,PENDENTE,1715,19,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-015,Joaquín González,M,ES,NAO,PENDENTE,810,10,NAO,CORTADO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-016,Arick Betancourt,M,ES,NAO,PENDENTE,226,2,NAO,CORTADO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-017,Alex Camacho,A,ES,NAO,PENDENTE,2755,31,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-018,Kialy Koné,A,CI,NAO,PENDENTE,2366,29,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-019,Anuar,A,MA,NAO,PENDENTE,1949,22,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-020,Umaru Konaré,A,ES,NAO,PENDENTE,1518,17,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-021,Jordi Escobar,A,ES,NAO,PENDENTE,983,10,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-022,Cedric Teguia,A,ES,NAO,PENDENTE,906,10,NAO,MANTIDO,NAO DISPONIVEL
+39,AD Ceuta FC,ad-ceuta-fc,5,ad-ceuta-fc-2026-023,Kenneth Mamah,A,NG,NAO,PENDENTE,467,4,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-001,Coke Carrillo,G,ES,NAO,PENDENTE,3630,40,NAO,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-002,Caio Barone,G,BR,NAO,PENDENTE,90,1,NAO,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-003,Marcos González,G,ES,NAO,PENDENTE,90,1,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-004,Anxo Rodríguez,D,ES,NAO,PENDENTE,3449,39,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-005,Pablo Meixús,D,ES,NAO,PENDENTE,3371,39,NAO,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-006,Pablo Gavián,D,ES,NAO,PENDENTE,2731,31,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-007,Joel López,D,ES,NAO,PENDENTE,1914,22,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-008,Quique Ribes,D,ES,NAO,PENDENTE,1477,18,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-009,Alexis Olmedo,D,ES,NAO,PENDENTE,1105,13,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-010,Jan Oliveras,D,ES,NAO,PENDENTE,733,8,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-011,Anthony Khayat,D,AE,NAO,PENDENTE,716,8,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-012,Seyni Ndiaye,D,SN,NAO,PENDENTE,115,2,NAO,CORTADO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-013,Óscar Marcos,M,ES,SIM,PENDENTE,2904,33,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-014,Hugo Burcio,M,ES,NAO,PENDENTE,2679,29,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-015,Andrés Antañón,M,ES,NAO,PENDENTE,2117,23,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-016,Adrià Capdevila,M,ES,NAO,PENDENTE,1985,25,NAO,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-017,Hugo Cuenca,M,PY,NAO,PENDENTE,558,8,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-018,Álvaro Marín,A,ES,NAO,PENDENTE,2411,31,NAO,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-019,Ángel Arcos,A,ES,NAO,PENDENTE,2249,19,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-020,Bernard Somuah,A,GH,NAO,PENDENTE,1609,15,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-021,Germain Milla,A,CM,NAO,PENDENTE,1531,13,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-022,Vlad,A,PT,NAO,PENDENTE,968,9,SIM,MANTIDO,NAO DISPONIVEL
+40,Celta Fortuna,celta-fortuna,5,celta-fortuna-2026-023,Aldrine Kibet,A,KE,NAO,PENDENTE,338,2,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-001,Diego Fuoli,G,ES,NAO,PENDENTE,3780,42,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-002,José Ortega,G,ES,NAO,PENDENTE,210,2,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-003,Arthur Bonaldo,D,BR,NAO,PENDENTE,3825,42,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-004,Miki Codina,D,ES,NAO,PENDENTE,3071,34,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-005,Genar Fornés,D,ES,NAO,PENDENTE,2273,25,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-006,Kaiser,D,ES,NAO,PENDENTE,1944,23,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-007,José Luis Català,D,ES,NAO,PENDENTE,1850,21,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-008,Pipa,D,ES,NAO,PENDENTE,1159,16,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-009,Edgar González,D,ES,NAO,PENDENTE,871,9,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-010,Pere Pons,M,ES,NAO,PENDENTE,4136,47,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-011,Albert Orriols,M,ES,NAO,PENDENTE,3660,40,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-012,Quadri Liameed,M,NG,NAO,PENDENTE,3538,42,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-013,Óscar Sanz,M,ES,NAO,PENDENTE,2708,33,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-014,Alain Ribeiro,M,ES,SIM,PENDENTE,2638,30,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-015,Eneko Aguilar,M,ES,NAO,PENDENTE,2247,24,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-016,Yussif Owusu,M,GB,NAO,PENDENTE,829,9,SIM,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-017,Joel Priego,A,ES,NAO,PENDENTE,3475,40,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-018,Javi López,A,ES,NAO,PENDENTE,2886,35,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-019,Ton Ripoll,A,ES,NAO,PENDENTE,2159,22,NAO,MANTIDO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-020,Ángel Baena,A,ES,NAO,PENDENTE,1567,15,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-021,Yanis Rahmani,A,FR,NAO,PENDENTE,1470,16,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-022,Gastón Valles,A,UY,NAO,PENDENTE,1394,16,NAO,CORTADO,NAO DISPONIVEL
+41,CE Sabadell,ce-sabadell,5,ce-sabadell-2026-023,Xavi Moreno,A,ES,NAO,PENDENTE,1289,13,NAO,CORTADO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-001,Ramón Vila,G,ES,NAO,PENDENTE,3229,36,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-002,Juan Palomares,G,ES,NAO,PENDENTE,2505,27,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-003,Iker Recio,D,ES,NAO,PENDENTE,3547,40,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-004,Floris Smand,D,NL,NAO,PENDENTE,3394,38,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-005,Álex Serradell,D,ES,NAO,PENDENTE,2706,31,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-006,Jesús Clemente,D,ES,NAO,PENDENTE,2403,26,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-007,David Ruiz,D,ES,NAO,PENDENTE,2357,26,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-008,Juan Larios,D,ES,NAO,PENDENTE,2008,22,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-009,Alejandro Ibarrondo,D,ES,NAO,PENDENTE,1976,20,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-010,Julien Yanda,D,DE,NAO,PENDENTE,1874,21,SIM,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-011,Jordi Martín,D,ES,NAO,PENDENTE,854,9,NAO,CORTADO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-012,Guillermo Macho,M,ES,NAO,PENDENTE,2630,31,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-013,Marcos Bustillo,M,ES,NAO,PENDENTE,2220,24,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-014,Justin Smith,M,CA,NAO,PENDENTE,1963,21,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-015,Borja Calvo,M,ES,NAO,PENDENTE,1311,14,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-016,Javi Martínez,M,ES,NAO,PENDENTE,1078,8,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-017,Roberto López,M,ES,NAO,PENDENTE,1025,9,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-018,Fidel,A,ES,SIM,PENDENTE,3004,35,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-019,Jorge Rastrojo,A,ES,NAO,PENDENTE,2766,31,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-020,Mariano Carmona,A,ES,NAO,PENDENTE,2265,26,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-021,Manu Nieto,A,ES,NAO,PENDENTE,1505,15,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-022,Waldo Rubio,A,ES,NAO,PENDENTE,1367,14,NAO,MANTIDO,NAO DISPONIVEL
+42,CD Eldense,cd-eldense,5,cd-eldense-2026-023,Aingeru Olabarrieta,A,ES,NAO,PENDENTE,1285,12,SIM,MANTIDO,NAO DISPONIVEL

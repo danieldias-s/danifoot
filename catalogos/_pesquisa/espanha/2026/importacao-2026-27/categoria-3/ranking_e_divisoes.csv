@@ -1,0 +1,41 @@
+posicao_nacional,posicao_categoria_3,categoria_nacional,grupo,clubId,clube,valor_total_milhoes_eur,ranking_valor_div_100,teamStrength,divisao_previa,jogadores_base,jogadores_previa,goleiros_previa,defensores_previa,meias_previa,atacantes_previa,cortados,status,fonte_valor,data_original_snapshot
+43,1,3,Grupo 2,real-madrid-castilla,Real Madrid Castilla,49.80,0.498,1,5,22,21,2,6,7,6,1,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+44,2,3,Grupo 2,real-zaragoza,Real Zaragoza,14.85,0.1485,1,5,23,18,2,5,5,6,5,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+45,3,3,Grupo 2,atletico-madrileno,Atlético Madrileño,14.55,0.1455,1,5,23,19,2,6,6,5,4,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+46,4,3,Grupo 1,bilbao-athletic,Bilbao Athletic,12.90,0.129,1,5,23,21,2,6,6,7,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+47,5,3,Grupo 2,villarreal-cf-b,Villarreal CF B,11.88,0.1188,1,5,23,16,2,6,3,5,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+48,6,3,Grupo 2,hercules-cf,Hércules CF,5.05,0.0505,1,5,23,23,2,8,8,5,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+49,7,3,Grupo 1,cd-mirandes,CD Mirandés,4.65,0.0465,1,5,23,16,2,5,5,4,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+50,8,3,Grupo 2,real-murcia,Real Murcia CF,4.45,0.0445,1,5,23,21,2,8,5,6,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+51,9,3,Grupo 1,deportivo-fabril,RC Deportivo Fabril,4.05,0.0405,1,5,23,21,2,7,6,6,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+52,10,3,Grupo 2,gimnastic-de-tarragona,Gimnàstic de Tarragona,3.88,0.0388,1,5,23,20,2,7,5,6,3,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+53,11,3,Grupo 2,ud-ibiza,UD Ibiza,3.85,0.0385,1,5,23,15,1,7,3,4,8,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+54,12,3,Grupo 1,cultural-y-deportiva-leonesa,Cultural Leonesa,3.80,0.038,1,5,23,16,2,7,4,3,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+55,13,3,Grupo 2,antequera-cf,Antequera CF,3.60,0.036,1,5,23,22,2,8,5,7,1,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+56,14,3,Grupo 2,ue-sant-andreu,UE Sant Andreu,3.50,0.035,1,5,23,14,1,6,4,3,9,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+57,15,3,Grupo 1,zamora-cf,Zamora CF,3.50,0.035,1,5,22,22,2,9,5,6,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+58,16,3,Grupo 2,cf-rayo-majadahonda,CF Rayo Majadahonda,3.43,0.0343,1,5,23,19,2,7,5,5,4,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+59,17,3,Grupo 2,sd-huesca,SD Huesca,3.40,0.034,1,5,23,14,2,4,5,3,9,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+60,18,3,Grupo 1,racing-de-ferrol,Racing Ferrol,3.33,0.0333,1,5,22,20,2,6,5,7,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+61,19,3,Grupo 1,real-aviles-industrial,Real Avilés Industrial,3.33,0.0333,1,5,23,20,2,6,7,5,3,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+62,20,3,Grupo 2,ce-europa,CE Europa,3.30,0.033,1,5,22,15,2,5,3,5,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+63,21,3,Grupo 1,ad-merida,Mérida AD,3.18,0.0318,1,5,23,15,1,6,4,4,8,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+64,22,3,Grupo 2,fc-cartagena,FC Cartagena,3.03,0.0303,1,5,23,21,2,9,3,7,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+65,23,3,Grupo 2,real-jaen,Real Jaén CF,2.93,0.0293,1,5,23,22,2,9,7,4,1,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+66,24,3,Grupo 1,real-union,Real Unión Club,2.78,0.0278,1,5,22,22,2,7,6,7,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+67,25,3,Grupo 2,ad-alcorcon,AD Alcorcón,2.75,0.0275,1,5,22,22,2,8,6,6,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+68,26,3,Grupo 1,pontevedra-cf,Pontevedra CF,2.75,0.0275,1,5,23,13,2,4,4,3,10,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+69,27,3,Grupo 1,cp-cacereno,CP Cacereño,2.70,0.027,1,5,23,14,1,4,5,4,9,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+70,28,3,Grupo 1,cd-extremadura,CD Extremadura 1924,2.65,0.0265,1,5,23,18,2,4,4,8,5,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+71,29,3,Grupo 1,barakaldo-cf,Barakaldo CF,2.55,0.0255,1,5,23,23,2,8,6,7,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+72,30,3,Grupo 2,aguilas-fc,Águilas FC,2.48,0.0248,1,5,23,21,2,7,5,7,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+73,31,3,Grupo 1,cd-lugo,CD Lugo,2.48,0.0248,1,5,23,19,2,7,5,5,4,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+74,32,3,Grupo 2,cd-teruel,CD Teruel,2.45,0.0245,1,5,20,18,2,8,5,3,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+75,33,3,Grupo 1,unionistas-de-salamanca,Unionistas CF,2.35,0.0235,1,5,22,15,1,6,5,3,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+76,34,3,Grupo 2,algeciras-cf,Algeciras CF,2.30,0.023,1,5,22,15,2,4,5,4,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+77,35,3,Grupo 1,sd-ponferradina,SD Ponferradina,2.13,0.0213,1,5,23,16,2,6,4,4,7,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+78,36,3,Grupo 1,ud-logrones,UD Logroñés,1.93,0.0193,1,5,23,20,2,7,5,6,3,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+79,37,3,Grupo 2,juventud-de-torremolinos,Juventud Torremolinos CF,1.88,0.0188,1,5,23,21,2,8,6,5,2,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-ii/startseite/wettbewerb/E3G2,NAO_CONFIRMADA
+80,38,3,Grupo 1,cd-coria,CD Coria,1.68,0.0168,1,5,23,23,2,9,6,6,0,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+81,39,3,Grupo 1,arenas-club,Arenas Club,1.65,0.0165,1,5,23,22,2,8,5,7,1,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA
+82,40,3,Grupo 1,ud-ourense,UD Ourense,1.23,0.0123,1,5,22,18,2,7,4,5,4,DRAFT,https://www.transfermarkt.es/primera-federacion-grupo-1/teilnehmer/pokalwettbewerb/E3G1,NAO_CONFIRMADA

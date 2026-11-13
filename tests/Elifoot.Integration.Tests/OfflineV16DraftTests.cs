@@ -14,22 +14,58 @@ public sealed class OfflineV16DraftTests
         return Path.Combine(directory.FullName,"catalogos");
     }
     [Fact]
-    public async Task RealMadridDraftIsStructurallyValidButCannotCreateWorld()
+    public async Task ConsolidatedSpanishDraftIsStructurallyValidButCannotCreateWorld()
     {
         var report=await new OfflineCatalogLoader(Root()).LoadAsync();
         Assert.True(report.Valid);
         var catalog=Assert.Single(report.Catalogs,c=>c.Manifest?.CatalogId=="es-2026-principal");
         Assert.False(catalog.Ready);Assert.Equal("DRAFT",catalog.Manifest!.Status);
+        Assert.Equal(172, catalog.Clubs.Count);
+        Assert.Equal(172, catalog.Manifest.Clubs!.Distinct().Count());
         Assert.Single(catalog.Manifest.Clubs!,c=>c=="clubes/real-madrid.json");
         var club=Assert.Single(catalog.Clubs,c=>c.Definition.CatalogClubId=="real-madrid");
-        Assert.Equal("DRAFT",club.Definition.Status);Assert.Null(club.V11!.TeamStrength);
-        Assert.Null(club.V11.HistoricalRanking);Assert.Null(club.V11.TieBreakPriority);Assert.Null(club.Definition.Coach);
+        Assert.Equal("DRAFT",club.Definition.Status);
+        Assert.Equal(20, club.V11!.TeamStrength);
+        Assert.Equal(15d, club.V11.HistoricalRanking!.Rating);
+        Assert.Null(club.V11.TieBreakPriority);
+        Assert.Equal("jose-mourinho-2026", club.Definition.Coach!.Id);
+        Assert.Equal(82, catalog.Clubs.Count(c => c.V11!.HistoricalRanking != null));
+        Assert.Equal(90, catalog.Clubs.Count(c => c.V11!.HistoricalRanking == null));
         Assert.Equal(23,club.Definition.Players!.Count);
         Assert.All(club.Definition.Players,p=>{Assert.Null(p.Strength);Assert.Null(p.Behavior);});
-        Assert.Contains(catalog.Issues,i=>i.Code=="TEAM_STRENGTH"&&!i.IsError);
+        Assert.Contains(catalog.Issues,i=>i.Code=="RANKING_RESOLUTION"&&!i.IsError);
         Assert.Contains(catalog.Issues,i=>i.Code=="BEHAVIOR"&&!i.IsError);
         var service=new OfflineWorldCreatorService(new OfflineCatalogLoader(Root()),null!,null!);
         await Assert.ThrowsAsync<ArgumentException>(()=>service.Select(["es-2026-principal"]));
+    }
+
+    [Fact]
+    public async Task ConsolidatedSpanishCandidatesCanBePreviewedInMemoryWithExactly128Clubs()
+    {
+        var report = await new OfflineCatalogLoader(Root()).LoadAsync();
+        var catalog = Assert.Single(report.Catalogs, c => c.Manifest?.CatalogId == "es-2026-principal");
+        var available = catalog.Clubs.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender)).ToList();
+        var request = new OfflineWorldRequest("Espanha · teste em memória", ["es-2026-principal"], 42,
+            ApplyV16RosterPolicy: true);
+        Assert.Contains(OfflineWorldFactory.Preview(request, available).Errors, e => e.Contains("exatamente 128"));
+        request = request with { ClubKeys = available.Take(128).Select(c => c.Key).ToList() };
+        var preview = OfflineWorldFactory.Preview(request, available);
+        Assert.Empty(preview.Errors);
+        Assert.Equal(new[] { 8, 8, 8, 8, 96 }, preview.Clubs.GroupBy(c => c.Division).Select(group => group.Count()));
+        foreach (var entry in preview.Clubs)
+        {
+            var (minimum, maximum) = entry.Division switch
+            {
+                1 => (20, 21), 2 or 3 => (19, 20), 4 => (17, 19), _ => (13, 23)
+            };
+            int size = entry.Club.Players.Count;
+            int keepers = entry.Club.Players.Count(p => p.Position == "G");
+            Assert.InRange(size, minimum, maximum);
+            Assert.InRange(keepers, entry.Division == 5 ? 1 : 2, entry.Division == 5 && size == 23 ? 3 : 2);
+            Assert.True(size - keepers >= 10);
+        }
+        Assert.Equal(preview.DataHash, OfflineWorldFactory.Preview(request, available).DataHash);
+        Assert.Throws<ArgumentException>(() => OfflineWorldFactory.Create(request, preview));
     }
     [Theory]
     [InlineData("penya-deportiva")]

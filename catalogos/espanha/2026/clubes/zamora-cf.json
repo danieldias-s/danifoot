@@ -8,8 +8,8 @@
   "teamStrength": 1,
   "tieBreakPriority": 57,
   "historicalRanking": {
-    "rating": 74.3,
-    "source": "OPTA",
+    "rating": 0.035,
+    "source": "TRANSFERMARKT_SQUAD_TOTAL_EUR_MILLIONS_DIV_100",
     "referenceDate": "2026-11-12"
   },
   "stadium": {

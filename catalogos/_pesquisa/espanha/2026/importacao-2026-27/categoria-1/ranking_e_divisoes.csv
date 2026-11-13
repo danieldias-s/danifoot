@@ -1,0 +1,21 @@
+posicao,clube,clubId,valor_total_milhoes_eur,ranking_valor_div_100,teamStrength,divisao_preview,jogadores_base,jogadores_preview,goleiros_preview,defensores_preview,meias_preview,atacantes_preview,jogadores_cortados,coach,status
+1,Real Madrid,real-madrid,1500.00,15.0,20,1,23,21,2,7,6,6,"Carlos Espí, Antonio Rüdiger",José Mourinho,DRAFT
+2,FC Barcelona,fc-barcelona,1300.00,13.0,20,1,23,20,2,6,8,4,"Xavi Espart, Gabriel Jesus, Roony Bardghji",Hansi Flick,DRAFT
+3,Atlético de Madrid,atletico-de-madrid,703.50,7.035,19,1,23,21,2,7,5,7,"Juan Musso, Kang-in Lee",Diego Simeone,DRAFT
+4,Villarreal CF,villarreal-cf,368.05,3.6805,19,1,23,20,2,6,5,7,"Péter Gulácsi, Alex Freeman, Ilias Akhomach",Iñigo Pérez,DRAFT
+5,Real Sociedad,real-sociedad,291.80,2.918,18,1,23,21,2,8,5,6,"Arsen Zakharyan, Orri Óskarsson",Pellegrino Matarazzo,DRAFT
+6,Real Betis,real-betis,258.10,2.581,18,1,23,20,2,7,5,6,"Junior Firpo, Facundo Bernal, Iker Losada",Manuel Pellegrini,DRAFT
+7,Athletic Club,athletic-club,229.80,2.298,17,1,23,21,2,7,6,6,"Nico Serrano, Yeray Álvarez",Edin Terzic,DRAFT
+8,Celta de Vigo,rc-celta-de-vigo,180.30,1.803,17,1,23,20,2,8,3,7,"Iván Villar, Yoel Lago, Hugo Álvarez",Claudio Giráldez,DRAFT
+9,Sevilla FC,sevilla-fc,176.70,1.767,16,2,23,20,2,8,3,7,"Manu Bueno, Chidera Ejuke, Giorgi Kochorashvili",Luis García,DRAFT
+10,Valencia CF,valencia-cf,156.50,1.565,16,2,23,19,2,7,4,6,"Jesús Vázquez, Umar Sadiq, Dimitri Foulquier, Guido Rodríguez",Javier Aguirre,DRAFT
+11,RCD Espanyol,rcd-espanyol,141.60,1.416,15,2,23,20,2,6,7,5,"Jofre Carreras, Bryan Zaragoza, Clemens Riedel",Eder Sarabia,DRAFT
+12,Deportivo A Coruña,deportivo-de-la-coruna,125.00,1.25,15,2,23,19,2,7,4,6,"Germán Parreño, Marc Casadó, José María Giménez, Ximo Navarro",Antonio Hidalgo,DRAFT
+13,Racing Santander,racing-de-santander,114.50,1.145,14,2,23,20,2,7,4,7,"Jeanuël Belocian, Íñigo Sainz-Maza, André Almeida",José Alberto López,DRAFT
+14,Rayo Vallecano,rayo-vallecano,100.30,1.003,14,2,23,19,2,5,7,5,"Dani Cárdenas, Pelayo Fernández, Adrià Pedrosa, Jozhua Vertrouwd",Beñat San José,DRAFT
+15,Getafe CF,getafe-cf,98.90,0.989,13,2,23,20,2,9,6,3,"Enes Ünal, Christantus Uche, Juanmi",José Bordalás,DRAFT
+16,Levante UD,levante-ud,91.50,0.915,13,2,23,19,2,5,5,7,"Ifeanyi Ndukwe, Petar Ratkov, Axel Tape, Nacho Pérez",Luís Castro,DRAFT
+17,CA Osasuna,ca-osasuna,82.00,0.82,12,3,23,20,2,9,5,4,"Raúl García, Iker Muñoz, Asier Osambela",Jagoba Arrasate,DRAFT
+18,Elche CF,elche-cf,74.30,0.743,12,3,23,19,2,6,5,6,"Gonzalo Villar, Josan, Rubén Sánchez, Tete Morente",Martín Anselmi,DRAFT
+19,Deportivo Alavés,deportivo-alaves,72.90,0.729,11,3,23,20,2,5,7,6,"Ville Koski, Mariano Díaz, Carlos Protesoni",Quique Sánchez Flores,DRAFT
+20,Málaga CF,malaga-cf,62.45,0.6245,11,3,23,19,2,5,7,5,"José Salinas, Eneko Jauregi, Julen Lobete, Ángel Recio",Juan Funes,DRAFT

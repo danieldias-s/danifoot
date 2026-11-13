@@ -5,11 +5,11 @@
   "country": "ES",
   "year": 2026,
   "status": "DRAFT",
-  "teamStrength": 13,
-  "tieBreakPriority": 16,
+  "teamStrength": 12,
+  "tieBreakPriority": null,
   "historicalRanking": {
-    "rating": 83.8,
-    "source": "OPTA",
+    "rating": 0.82,
+    "source": "TRANSFERMARKT_SNAPSHOT_VALOR_MERCADO_TOTAL_EUR_MILHOES_DIV_100",
     "referenceDate": "2026-11-12"
   },
   "stadium": {
