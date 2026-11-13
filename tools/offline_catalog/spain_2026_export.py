@@ -14,23 +14,30 @@ ROOT = Path(__file__).resolve().parents[2]
 SPAIN = "catalogos/espanha/2026"
 RESEARCH = "catalogos/_pesquisa/espanha/2026"
 BEHAVIOR = "catalogos/_pesquisa/comportamento/espanha/2026"
-ARCHIVE = "exports/ELIFOOT98_CATALOGO_ESPANHA_2026.zip"
+ARCHIVE = "exports/ELIFOOT98_ESPANHA_2026_COMPLETA.zip"
+RESEARCH_ARCHIVE = "exports/ELIFOOT98_CATALOGO_ESPANHA_2026.zip"
+IMPORT_RESEARCH = f"{RESEARCH}/importacao-2026-27"
 CHECKSUMS = "EXPORT_MANIFEST_SHA256.txt"
 DIALECT = "https://json-schema.org/draft/2020-12/schema"
 README = """# Elifoot 98 · Espanha 2026/27
 
-Catálogo offline V1.1 em DRAFT. Contém 172 clubes e 172 identidades.
-Extraia o ZIP mantendo a estrutura de pastas e aponte o validador oficial
-para a pasta extraída `catalogos` com `--CatalogOffline:Root=<pasta>`.
-O estado DRAFT impede a criação de mundos com este catálogo.
+Catálogo offline V1.1 em DRAFT. Contém 172 clubes, 172 identidades e 3.905 jogadores.
+Extraia em uma pasta vazia, mantendo a estrutura de diretórios. Valide o catálogo
+com `dotnet Elifoot.Api.dll offline-catalog-validate --CatalogOffline:Root=<pasta-extraída>/catalogos`.
+Use a pasta validada como raiz offline. O estado DRAFT permite consulta e
+impede a criação de mundos com este catálogo.
 
 Os SHA-256 cobrem todos os arquivos da exportação, incluindo este README.
 O manifesto de hashes é a única exceção. A exportação usa ordem, data e
 permissões fixas. Compare arquivos gerados com os mesmos bytes de origem
 e a mesma versão de Python/zlib.
 
-As propostas V1.6 incluídas são material de pesquisa. Cada comportamento
-permanece pendente de aprovação. Consulte o relatório de qualidade em `reports/`.
+O manifest segue a ordem dos quatro catálogos-base. A pasta
+`catalogos/_pesquisa/espanha/2026/importacao-2026-27` contém as fontes da
+importação e o inventário de ranking por valor de mercado. Os levantamentos
+Opta e os relatórios de cadastro e qualidade anteriores são registros históricos.
+As propostas V1.6 são evidência de pesquisa. Cada comportamento permanece
+pendente de aprovação.
 """
 
 
@@ -85,6 +92,12 @@ def members(root, research_archive=None):
     ):
         files.add(root / RESEARCH / name)
     files.update((root / "catalogos/_schemas").glob("*.schema.json"))
+    imports = root / IMPORT_RESEARCH
+    files.update(imports / name for name in ("pacotes.json", "inventario_consolidado.csv"))
+    for category in range(1, 5):
+        folder = imports / f"categoria-{category}"
+        files.update(path for path in folder.iterdir()
+                     if path.is_file() and path.suffix in {".md", ".csv"})
     files.update(root / relative for relative in (
         "docs/catalogos/ELIFOOT98_V16_APROVACAO_PROVENIENCIA.md",
         "reports/ELIFOOT98_PAIS_ESPANHA_2026_CADASTRO.md",
@@ -116,7 +129,7 @@ def manifest_bytes(files):
 
 
 def build(root, output):
-    files = members(root, root / ARCHIVE)
+    files = members(root, root / RESEARCH_ARCHIVE)
     files["EXPORT_README.md"] = README.encode("utf-8")
     files[CHECKSUMS] = manifest_bytes(files)
     with ZipFile(output, "w") as archive:
@@ -164,9 +177,6 @@ def main():
         count, schemas = verify(package, destination)
         # Keep the destination's filesystem permissions when updating an existing export.
         copyfile(package, args.output)
-        if args.output.resolve() == ROOT / ARCHIVE:
-            for name in ("EXPORT_README.md", CHECKSUMS):
-                (args.output.parent / name).write_bytes((destination / name).read_bytes())
     print(f"{count} checked entries, {schemas} resolved schema references, SHA-256 {sha256(args.output.read_bytes())}")
 
 

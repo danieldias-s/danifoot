@@ -2,6 +2,7 @@ import csv
 import shutil
 import unittest
 from collections import Counter
+from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
@@ -54,52 +55,32 @@ class Spain2026ExportTests(unittest.TestCase):
             stars = {p["id"] for p in players if p["isStar"]}
             self.assertEqual(245, len(stars))
             self.assertTrue(all(p["position"] in "MA" for p in players if p["id"] in stars))
-            selection = rows(research / "selecao_jogadores.csv")
-            active = [r for r in selection if r["candidate"] == "true"]
-            self.assertEqual(274, len(selection) - len(active))
-            self.assertEqual({p["id"] for p in players}, {r["playerId"] for r in active})
-            self.assertEqual(Counter(AWARD_OR_BEST_XI=13, LOCAL_HIGHLIGHT=226, PRE_EXISTING_BASELINE=6),
-                             Counter(r["starClassification"] for r in active if r["playerId"] in stars))
-            local = Counter(r["clubId"] for r in active if r["starClassification"] == "LOCAL_HIGHLIGHT")
-            awarded = {r["clubId"] for r in active if r["starClassification"] == "AWARD_OR_BEST_XI"}
-            self.assertTrue(all(1 <= count <= 3 for count in local.values()))
-            self.assertTrue(awarded.isdisjoint(local))
-            self.assertTrue(all(r["starCandidateNote"] for r in active
-                                if r["starClassification"] in {"LOCAL_HIGHLIGHT", "AWARD_OR_BEST_XI"}))
-
-            national = rows(research / "ranking_nacional.csv")
-            world = {r["catalogClubId"]: r for r in rows(research / "ranking_mundial.csv")}
-            self.assertEqual(set(range(1, 173)), {int(r["nationalPosition"]) for r in national})
-            self.assertEqual(set(by_id), set(world))
-            self.assertEqual(26, sum(not r["optaTeamId"] for r in national))
-            self.assertEqual(146, len({r["optaTeamId"] for r in national if r["optaTeamId"]}))
-            for row in national:
-                club_id = row["catalogClubId"]
-                other = world[club_id]
-                self.assertEqual(
-                    [row[k] for k in ("nationalPosition", "optaTeamId", "referenceDate", "source", "optaGlobalRank", "optaRating")],
-                    [other[k] for k in ("nationalPosition", "optaTeamId", "referenceDate", "source", "globalRank", "rating")],
-                )
-                rank = int(row["nationalPosition"])
-                strength = 20 - (rank - 1) // 2 if rank <= 32 else 1
-                club = by_id[club_id]
-                self.assertEqual(strength, int(row["teamStrength"]))
-                if club_id == "real-madrid":
-                    self.assertIsNone(club["teamStrength"])
+            imports = extracted / export.IMPORT_RESEARCH
+            national = rows(imports / "inventario_consolidado.csv")
+            self.assertEqual(list(by_id), [r["clubId"] for r in national])
+            self.assertEqual(Counter({"1": 20, "2": 22, "3": 40, "4": 90}),
+                             Counter(r["category"] for r in national))
+            for rank, row in enumerate(national, 1):
+                club = by_id[row["clubId"]]
+                self.assertEqual(rank, int(row["nationalPosition"]))
+                self.assertEqual(20 - (rank - 1) // 2 if rank <= 32 else 1, club["teamStrength"])
+                self.assertEqual(int(row["players"]), len(club["players"]))
+                if row["category"] == "4":
                     self.assertIsNone(club["historicalRanking"])
-                else:
-                    self.assertEqual(strength, club["teamStrength"])
-                    self.assertEqual(row["referenceDate"], club["historicalRanking"]["referenceDate"])
-                    self.assertEqual(float(row["optaRating"]), club["historicalRanking"]["rating"])
-
-            active_ids = {r["playerId"] for r in active}
-            self.assertTrue(all(r["playerId"] in active_ids for r in rows(research / "fontes.csv") if r["playerId"]))
-            pending = rows(research / "proveniencia_pendente.csv")
-            self.assertEqual(active_ids, {r["playerId"] for r in pending})
+                    self.assertIsNone(club["tieBreakPriority"])
+                    continue
+                ranking = club["historicalRanking"]
+                self.assertIn("TRANSFERMARKT", ranking["source"])
+                self.assertEqual(row["rankingSource"], ranking["source"])
+                self.assertEqual(row["referenceDate"], ranking["referenceDate"])
+                self.assertEqual(Decimal(row["marketValueEURMillions"]) / 100, Decimal(str(ranking["rating"])))
+            self.assertEqual(15, by_id["real-madrid"]["historicalRanking"]["rating"])
+            self.assertTrue((research / "ranking_mundial.csv").is_file())
+            self.assertFalse(any("02_PREVIA" in p.name for p in extracted.rglob("*")))
 
             # A clean checkout can recover the untracked Madrid research from the versioned archive.
             (extracted / export.BEHAVIOR / "real-madrid" / "fontes-e-coleta-2026-27.json").unlink()
-            previous = extracted / export.ARCHIVE
+            previous = extracted / export.RESEARCH_ARCHIVE
             previous.parent.mkdir()
             shutil.copyfile(first, previous)
             export.build(extracted, second)
