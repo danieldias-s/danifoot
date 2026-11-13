@@ -440,7 +440,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   ) async {
     return Map<String, dynamic>.from(
       await _call(
-            'offline/preview',
+            _offlinePlanningOnly
+                ? 'offline/planning-preview'
+                : 'offline/preview',
             body: {
               'name': _name.text.trim(),
               'catalogIds': _offlineCatalogIds,
@@ -1232,7 +1234,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       onEditDivisions: _busy
           ? null
           : () => setState(() => _step = _divisionsStep),
-      onSwapClub: _busy || !confirmation ? null : _pickReviewClub,
+      onSwapClub: _busy || !confirmation || _offlinePlanningOnly
+          ? null
+          : _pickReviewClub,
     );
   }
 
@@ -1727,7 +1731,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       children: [
         if (_offlinePlanningOnly)
           const Text(
-            'Ainda há dados pendentes no catálogo. Você pode consultar os elencos cadastrados antes da criação do campeonato.',
+            'Ainda há dados pendentes no catálogo. Clique em Continuar para revisar o corte dos elencos na prévia.',
           )
         else
           const Text(
@@ -1874,7 +1878,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   }
 
   Future<void> _confirm() async {
-    if (_busy || !_validPreview) return;
+    if (_busy || _offlinePlanningOnly || !_validPreview) return;
     await _run(() async {
       if (_assembly != null) {
         await _call(
@@ -2003,13 +2007,12 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
     if (_step == _divisionsStep && _divisionProblem != null) return;
     if (_step == _districtsStep && _districtProblem != null) return;
-    if (_step == _previewStep && !_validPreview) {
+    if (_step == _previewStep && !_canReviewNext) {
       throw Exception(
         _previewStructureProblem ?? 'Resolva as pendências da prévia.',
       );
     }
     if (_step == _sourcesStep) {
-      if (_offlinePlanningOnly) return;
       final problem = _divisionProblem ?? _districtProblem;
       if (problem != null) {
         setState(() => _rosterProblem = problem);
@@ -2017,7 +2020,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       }
       await _makePreview();
       if (!mounted) return;
-      if (_assembly == null && !_validPreview) {
+      if (_assembly == null && !_canReviewNext) {
         setState(() {
           _rosterProblem = _invalidRosterPreview();
           _preview = null;
@@ -2061,6 +2064,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
   }
 
+  bool get _canReviewNext =>
+      _validPreview || (_offlinePlanningOnly && _preview != null);
+
   @override
   Widget build(BuildContext context) {
     final reviewStage = _step >= _previewStep;
@@ -2073,7 +2079,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       error: _error,
       divisionSummary: _divisionSummary,
       forceStadium: modernStage || _step == _sourcesStep && _assembly == null,
-      stageDescription: _step == _districtsStep && _assembly == null
+      stageDescription: _step >= _previewStep && _offlinePlanningOnly
+          ? 'Prévia de rascunho. Valide o catálogo para criar o campeonato.'
+          : _step == _districtsStep && _assembly == null
           ? 'Confira os clubes disponíveis para completar as competições distritais do seu mundo.'
           : null,
       nextLabel: _step == _confirmStep
@@ -2092,10 +2100,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   !_canAdvanceFromYears) ||
               (_step == _divisionsStep && _divisionProblem != null) ||
               (_step == _districtsStep && _districtProblem != null) ||
-              (_step == _sourcesStep &&
-                  _sourcesReturnStep == null &&
-                  _offlinePlanningOnly) ||
-              (_step >= _previewStep && !_validPreview)
+              (_step == _previewStep && !_canReviewNext) ||
+              (_step == _confirmStep &&
+                  (_offlinePlanningOnly || !_validPreview))
           ? null
           : _step == _confirmStep
           ? _confirm

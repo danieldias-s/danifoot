@@ -22,7 +22,8 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
     public Task<List<EligibleCatalogClub>> SelectForPlanning(List<string> ids, CancellationToken ct = default) =>
         SelectCatalogs(ids, planningOnly: true, ct);
 
-    private async Task<List<EligibleCatalogClub>> SelectCatalogs(List<string> ids, bool planningOnly, CancellationToken ct)
+    private async Task<List<EligibleCatalogClub>> SelectCatalogs(List<string> ids, bool planningOnly, CancellationToken ct,
+        bool includePreviewRosters = false)
     {
         if (ids == null || ids.Count == 0 || ids.Distinct().Count() != ids.Count) throw new ArgumentException("Selecione catálogos sem repetição.");
         var report = await loader.LoadAsync(ct);
@@ -35,15 +36,28 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
             var catalog = matches[0];
             if (!catalog.Valid || !planningOnly && !catalog.Ready)
                 throw new ArgumentException($"Catálogo {id} incompleto/inválido. Corrija os arquivos e marque READY após validar.");
+            if (includePreviewRosters && catalog.Issues.FirstOrDefault(i => i.Code is not ("BEHAVIOR" or "RANKING_RESOLUTION")) is { } issue)
+                throw new ArgumentException($"Catálogo {id}: {issue.Message} ({issue.Path})");
             var candidates = catalog.Ready ? catalog.Clubs : catalog.Clubs
                 .Where(c => OfflineCatalogRules.Text(c.Definition.Name) && OfflineCatalogRules.Text(c.Definition.ShortName, 80) &&
                     c.Definition.Colors is { Count: 2 } colors && colors.All(color => !string.IsNullOrWhiteSpace(color)));
             if (!candidates.Any()) throw new ArgumentException($"Catálogo {id} não tem clubes aptos para montar as divisões.");
-            clubs.AddRange(candidates.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender, planningOnly)));
+            clubs.AddRange(candidates.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender, planningOnly && !includePreviewRosters)));
         }
         if (clubs.Select(c => c.CountryCode).Distinct().Count() > 8 || clubs.Select(c => c.Gender).Distinct().Count() != 1)
             throw new ArgumentException("Escolha uma categoria e até oito países.");
         return OfflineCatalogRanking.Order(clubs);
+    }
+
+    public async Task<WorldCreatorPreview> PreviewForPlanning(OfflineWorldRequest request, CancellationToken ct = default)
+    {
+        var candidates = await SelectCatalogs(request.CatalogIds, planningOnly: true, ct, includePreviewRosters: true);
+        var preview = OfflineWorldFactory.Preview(request, candidates);
+        return preview with
+        {
+            DraftId = Guid.Empty,
+            Errors = [.. preview.Errors, "Prévia de rascunho. Valide o catálogo para confirmar a criação do campeonato."]
+        };
     }
 
     public async Task<WorldCreatorPreview> Preview(Guid owner, OfflineWorldRequest request, CancellationToken ct = default)

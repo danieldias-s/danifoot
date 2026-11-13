@@ -64,6 +64,12 @@ public sealed class OfflineV16DraftTests
         request = request with { ClubKeys = available.Take(128).Select(c => c.Key).ToList() };
         var preview = OfflineWorldFactory.Preview(request, available);
         Assert.Empty(preview.Errors);
+        var service = new OfflineWorldCreatorService(new OfflineCatalogLoader(Root()), null!, null!);
+        var planning = await service.PreviewForPlanning(request);
+        Assert.Equal(Guid.Empty, planning.DraftId);
+        Assert.Contains("Prévia de rascunho", Assert.Single(planning.Errors));
+        Assert.Equal(preview.DataHash, planning.DataHash);
+        Assert.Throws<ArgumentException>(() => OfflineWorldFactory.Create(request, planning));
         Assert.Equal(new[] { 8, 8, 8, 8, 96 }, preview.Clubs.GroupBy(c => c.Division).Select(group => group.Count()));
         foreach (var entry in preview.Clubs)
         {

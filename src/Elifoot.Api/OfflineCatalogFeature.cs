@@ -47,6 +47,8 @@ internal static class OfflineCatalogFeature
             Results.Ok(await service.Select(request.CatalogIds, ct)));
         group.MapPost("/planning-clubs", async (OfflineWorldRequest request, OfflineWorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.SelectForPlanning(request.CatalogIds, ct)));
+        group.MapPost("/planning-preview", async (OfflineWorldRequest request, OfflineWorldCreatorService service, CancellationToken ct) =>
+            Results.Ok(await service.PreviewForPlanning(request, ct)));
         group.MapPost("/preview", async (OfflineWorldRequest request, HttpContext c, OfflineWorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.Preview(Owner(c), request, ct)));
         group.MapPost("/confirm/{id:guid}", async (Guid id, HttpContext c, OfflineWorldCreatorService service, CancellationToken ct) =>

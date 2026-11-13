@@ -111,7 +111,9 @@ class _CreatorFixture {
               'players': [],
             },
         ];
-      } else if (request.url.path.endsWith('/offline/preview')) {
+      } else if (request.url.path.endsWith('/offline/preview') ||
+          request.url.path.endsWith('/offline/planning-preview')) {
+        final planning = request.url.path.endsWith('/offline/planning-preview');
         final body = jsonDecode(request.body) as Map;
         expect(body['catalogIds'], ['es-2026-principal']);
         expect(body['applyV16RosterPolicy'], isTrue);
@@ -120,9 +122,11 @@ class _CreatorFixture {
         final assignments = (body['assignments'] as List).cast<Map>();
         expect(assignments, isEmpty);
         data = {
-          'draftId': 'offline-test',
+          'draftId': planning
+              ? '00000000-0000-0000-0000-000000000000'
+              : 'offline-test',
           'pendingSlots': 0,
-          'errors': [],
+          'errors': [if (planning) 'Prévia de rascunho. Valide o catálogo.'],
           'warnings': [],
           'clubs': [
             for (final (index, key) in keys.indexed)
@@ -602,7 +606,30 @@ void main() {
     await _tapVisible(tester, clubDropdown);
     await _tapVisible(tester, find.text('Clube espanhol 1').last);
     expect(find.text('G • Goleiro cadastrado 1'), findsOneWidget);
-    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await _pressContinue(tester);
+    expect(
+      find.byKey(const ValueKey('creator-preview-review')),
+      findsOneWidget,
+    );
+    expect(
+      find.text(
+        'Prévia de rascunho. Valide o catálogo para criar o campeonato.',
+      ),
+      findsOneWidget,
+    );
+    await _pressContinue(tester);
+    expect(
+      find.byKey(const ValueKey('creator-confirmation-review')),
+      findsOneWidget,
+    );
+    final confirm = find.widgetWithText(ElevatedButton, 'CONFIRMAR CRIAÇÃO');
+    expect(tester.widget<ElevatedButton>(confirm).onPressed, isNull);
+    expect(
+      fixture.requests.where(
+        (r) => r.url.path.endsWith('/offline/planning-preview'),
+      ),
+      hasLength(1),
+    );
     expect(
       fixture.requests.any((r) => r.url.path.endsWith('/offline/preview')),
       isFalse,
