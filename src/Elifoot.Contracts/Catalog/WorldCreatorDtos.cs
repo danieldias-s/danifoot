@@ -25,7 +25,8 @@ public record CatalogAthlete(string PlayerExternalId, string ClubExternalId, str
     DateTime UpdatedAt, string? CanonicalPlayerId = null, CatalogDataOrigin? IdentityOrigin = null,
     PlayerStrengthEstimate? StrengthEstimate = null, CatalogPlayerPerformance? Performance = null,
     DateOnly? MembershipStart = null, DateOnly? MembershipEnd = null, string? OriginalPosition = null, CatalogMembershipEvidence? MembershipEvidence = null, WorldPlayerOrigin? PlayerOrigin = null,
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? Number = null);
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? Number = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] PlayerBehavior? InitialBehavior = null);
 public record CatalogRank(string ClubExternalId, string ClubProvider, FootballGender Gender, string Season,
     int Rank, string Source, DateTime UpdatedAt, double? Score = null, string? Method = null,
     double? Confidence = null, string? ComparableGroup = null, CatalogDataOrigin? Origin = null);

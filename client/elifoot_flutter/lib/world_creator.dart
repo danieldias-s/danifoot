@@ -1768,7 +1768,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
           )
         else if (_offlineUsesDefaultBehavior)
           const Text(
-            'Jogadores sem comportamento cadastrado usarão Cavalheiro, o padrão do jogo, neste campeonato.',
+            'O jogo vai sortear os seis comportamentos em proporções iguais entre os jogadores sem classificação.',
           )
         else
           const Text(

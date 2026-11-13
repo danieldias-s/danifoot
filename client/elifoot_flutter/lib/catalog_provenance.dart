@@ -41,7 +41,12 @@ Widget catalogPlayerRow(Map<String, dynamic> player) => ListTile(
     '${player['position']} • ${player['playerName']}${player['number'] is int ? ' • Nº ${player['number']}' : ''} • ${catalogStrengthDescription(player)}',
   ),
   subtitle: Text(
-    '${catalogIdentityOrigin(player)} • ${player['source']} • ${player['playerOrigin'] == 'FICTIONAL_GENERATED' ? 'geração determinística; seed salva' : player['updatedAt']}',
+    '${catalogIdentityOrigin(player)} • ${player['source']} • ${player['playerOrigin'] == 'FICTIONAL_GENERATED' ? 'geração determinística; seed salva' : player['updatedAt']}'
+    '${switch (player['initialBehavior']) {
+      'FairPlay' => '\nComportamento sorteado: Fair Play',
+      final String behavior => '\nComportamento sorteado: $behavior',
+      _ => '',
+    }}',
   ),
 );
 

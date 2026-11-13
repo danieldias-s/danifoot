@@ -98,7 +98,13 @@ public sealed class OfflineV16DraftTests
         var world = OfflineWorldFactory.Create(playableRequest, playablePreview);
         Assert.Equal(128, world.Clubs.Count);
         Assert.NotEmpty(world.Players);
-        Assert.All(world.Players, p => Assert.Equal(PlayerBehavior.Cavalheiro, p.Behavior));
+        var counts = world.Players.GroupBy(p => p.Behavior).Select(group => group.Count()).ToList();
+        Assert.Equal(6, counts.Count);
+        Assert.InRange(counts.Max() - counts.Min(), 0, 1);
+        var previewPlayers = playablePreview.Clubs.SelectMany(c => c.Club.Players)
+            .ToDictionary(p => p.PlayerExternalId, p => p.InitialBehavior);
+        Assert.All(world.Players, player => Assert.Equal(previewPlayers[player.OfflineIdentity!.PlayerId], player.Behavior));
+        Assert.Equal(playablePreview.DataHash, OfflineWorldFactory.Preview(playableRequest, available.AsEnumerable().Reverse().ToList()).DataHash);
         Assert.All(available.SelectMany(c => c.OfflineSource!.Definition.Players!), p => Assert.Null(p.Behavior));
     }
     [Theory]

@@ -665,7 +665,7 @@ void main() {
         await _pressContinue(tester);
         expect(
           useDefaults
-              ? find.textContaining('usarão Cavalheiro')
+              ? find.textContaining('seis comportamentos em proporções iguais')
               : find.text(
                   'Os elencos reais serão carregados do catálogo selecionado.',
                 ),

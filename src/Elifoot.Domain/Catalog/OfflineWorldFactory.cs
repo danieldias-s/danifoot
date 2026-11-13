@@ -114,9 +114,44 @@ public static class OfflineWorldFactory
             catch (ArgumentException error) { errors.Add(error.Message); }
         }
         if (isV11) assigned = InitialSquadStrength017B.Apply(assigned, request.Seed);
+        if (request.UseDefaultBehavior)
+        {
+            var behaviors = DrawMissingBehaviors(assigned, request.Seed);
+            assigned = assigned.Select(entry => entry with
+            {
+                Club = entry.Club with
+                {
+                    Players = entry.Club.Players.Select(player =>
+                        behaviors.TryGetValue((entry.Club.Key, player.PlayerExternalId), out var behavior)
+                            ? player with { InitialBehavior = behavior } : player).ToList()
+                }
+            }).ToList();
+            if (behaviors.Count > 0)
+                warnings.Add($"{behaviors.Count} jogadores sem classificação receberam comportamentos sorteados. Os seis tipos foram distribuídos em partes iguais, com diferença de até um jogador.");
+        }
         string hash = Hash(request, assigned);
         return new(Guid.NewGuid(), request.Name, available[0].Gender, request.Seed, assigned,
             Math.Max(0, 128 - assigned.Count), errors.Distinct().ToList(), warnings, [], DateTime.UtcNow, hash);
+    }
+
+    private static Dictionary<(string Club, string Player), PlayerBehavior> DrawMissingBehaviors(
+        List<WorldPreviewClub> clubs, int seed)
+    {
+        var players = clubs.Where(entry => entry.Club.OfflineSource?.V11 != null && !entry.Club.IsFictional)
+            .SelectMany(entry =>
+            {
+                var missing = (entry.Club.OfflineSource!.Definition.Players ?? [])
+                    .Where(player => player.Behavior == null).Select(player => player.Id).ToHashSet();
+                return entry.Club.Players.Where(player => missing.Contains(player.PlayerExternalId))
+                    .Select(player => (Club: entry.Club.Key, Player: player.PlayerExternalId));
+            })
+            .OrderBy(key => OfflineRosterV16.Draw(seed, key.Club, $"behavior:{key.Player}"))
+            .ThenBy(key => key.Club, StringComparer.Ordinal).ThenBy(key => key.Player, StringComparer.Ordinal);
+        var types = Enum.GetValues<PlayerBehavior>()
+            .OrderBy(behavior => OfflineRosterV16.Draw(seed, "behavior-types", ((int)behavior).ToString(System.Globalization.CultureInfo.InvariantCulture)))
+            .ThenBy(behavior => behavior).ToArray();
+        return players.Select((key, index) => (key, behavior: types[index % types.Length]))
+            .ToDictionary(item => item.key, item => item.behavior);
     }
 
     private static string Hash(OfflineWorldRequest request, List<WorldPreviewClub> clubs) =>
@@ -202,7 +237,8 @@ public static class OfflineWorldFactory
                 {
                     Id = Guid.NewGuid(), GameWorldId = world.Id, ClubId = club.Id, Name = p.Name!,
                     Position = Enum.Parse<PlayerPosition>(p.Position!), Strength = strength,
-                    Behavior = p.Behavior is int behavior ? (PlayerBehavior)behavior : PlayerBehavior.Cavalheiro,
+                    Behavior = p.Behavior is int behavior ? (PlayerBehavior)behavior :
+                        selected.InitialBehavior ?? throw new ArgumentException("Comportamento sorteado ausente. Atualize a prévia."),
                     IsStar = p.IsStar!.Value, Nationality = p.Nationality,
                     ContractRoundsRemaining = contractDefaults[j % contractDefaults.Count].ContractRoundsRemaining,
                     OfflineIdentity = new(originalSource.CatalogId, p.Id!, originalSource.CountryCode, originalSource.Year)

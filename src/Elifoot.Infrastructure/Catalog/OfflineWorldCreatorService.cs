@@ -72,9 +72,6 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
         var candidates = await SelectCatalogs(request.CatalogIds, planningOnly: false, ct,
             useDefaultBehavior: request.UseDefaultBehavior);
         var preview = OfflineWorldFactory.Preview(request, candidates);
-        if (request.UseDefaultBehavior && preview.Clubs.Any(entry =>
-            entry.Club.OfflineSource!.Definition.Players!.Any(p => p.Behavior == null)))
-            preview.Warnings.Add("Os jogadores sem comportamento no catálogo usarão o padrão do jogo, Cavalheiro, neste campeonato.");
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         db.Drafts.Add(new()
         {
