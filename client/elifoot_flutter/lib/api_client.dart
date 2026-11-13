@@ -22,6 +22,7 @@ class ElifootApiClient {
   String? _lobbyCoachId, _lobbyDeviceId;
   String? _roomCoachId;
   final AccountHttpClient _http;
+  final _pendingContinueKeys = <(String, String, String), String>{};
   WebSocketChannel? _wsChannel;
   StreamSubscription? _wsSub;
   Timer? _pollTimer;
@@ -532,18 +533,30 @@ class ElifootApiClient {
 
   Future<Map<String, dynamic>> confirmContinue(
     String worldId,
-    String coachId,
-  ) async {
+    String coachId, {
+    String? pauseWindowId,
+  }) async {
+    final target = (worldId, coachId, pauseWindowId ?? '');
+    final key = _pendingContinueKeys.putIfAbsent(
+      target,
+      () => 'cont-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+    );
     final res = await _http.post(
       Uri.parse('$baseUrl/api/worlds/$worldId/continue'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'gameWorldId': worldId,
         'coachId': coachId,
-        'idempotencyKey':
-            'cont-$coachId-${DateTime.now().microsecondsSinceEpoch}',
+        'pauseWindowId': ?pauseWindowId,
+        'idempotencyKey': key,
       }),
     );
+    if (res.statusCode >= 500) {
+      throw Exception(
+        'Não foi possível confirmar a retomada agora. Aguarde e tente continuar novamente.',
+      );
+    }
+    if (_pendingContinueKeys[target] == key) _pendingContinueKeys.remove(target);
     return _decodeResponse(res);
   }
 

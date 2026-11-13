@@ -1060,17 +1060,32 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   }
 
   Future<void> _handleConfirmContinue() async {
-    if (_worldId == null || _coachId == null) return;
+    final world = _worldId, coach = _coachId;
+    if (world == null || coach == null) return;
+    final pauseWindowId =
+        _snapshot?['activePauseWindow']?['pauseWindowId'] as String?;
     try {
-      final res = await widget.apiClient.confirmContinue(_worldId!, _coachId!);
+      final res = await widget.apiClient.confirmContinue(
+        world,
+        coach,
+        pauseWindowId: pauseWindowId,
+      );
+      if (!mounted || _worldId != world || _coachId != coach) return;
       setState(() {
         _snapshot = _acceptSnapshot(res['snapshot'] as Map<String, dynamic>?);
+        _matchInteractionNotice = null;
         _statusBanner = res['resumed'] == true
             ? 'Partidas retomadas!'
             : 'Confirmação registrada. Aguardando demais técnicos...';
       });
-    } catch (e) {
-      setState(() => _statusBanner = 'Erro ao continuar: $e');
+    } catch (_) {
+      if (!mounted || _worldId != world || _coachId != coach) return;
+      setState(() {
+        const notice =
+            'Não foi possível confirmar a retomada agora. Aguarde e tente continuar novamente.';
+        _statusBanner = notice;
+        _matchInteractionNotice = notice;
+      });
     }
   }
 
@@ -3170,6 +3185,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
             pause: pause,
             confirmed: confirmed,
             busy: _commandBusy,
+            notice: _matchInteractionNotice,
             onContinue: () => _runUiCommand(_handleConfirmContinue),
           )
         : SubstitutionChoicePanel(

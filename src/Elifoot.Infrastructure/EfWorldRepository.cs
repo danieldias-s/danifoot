@@ -94,7 +94,13 @@ public sealed class EfWorldRepository : IWorldRepository
         return result;
     }
 
-    public async Task SaveWorldAsync(GameWorld world, CancellationToken ct = default)
+    public Task SaveWorldAsync(GameWorld world, CancellationToken ct = default)
+        => SaveWorldAsync(world, ct, previousPauseVersion: null);
+
+    public Task SavePauseTransitionAsync(GameWorld world, long previousVersion)
+        => SaveWorldAsync(world, CancellationToken.None, previousVersion);
+
+    private async Task SaveWorldAsync(GameWorld world, CancellationToken ct, long? previousPauseVersion)
     {
         var gate = SaveLocks.GetOrAdd(world.Id, _ => new SemaphoreSlim(1, 1));
         await gate.WaitAsync(ct);
@@ -128,6 +134,8 @@ public sealed class EfWorldRepository : IWorldRepository
             SeasonNumber=w.SeasonNumber,RoundNumber=w.RoundNumber,RoundState=w.RoundState,RoundVersion=w.RoundVersion,
             CurrentMatchMinute=w.CurrentMatchMinute,CreatedAtUtc=w.CreatedAtUtc,UpdatedAtUtc=w.UpdatedAtUtc
         }).FirstOrDefaultAsync(ct);
+        if (previousPauseVersion is long expected && existing?.RoundVersion != expected)
+            throw new DbUpdateConcurrencyException("The persisted pause has changed.");
         if (existing == null)
         {
             db.Worlds.Add(new WorldRecord
@@ -213,7 +221,15 @@ public sealed class EfWorldRepository : IWorldRepository
         // A failed first save must never make an unpersisted world visible to confirmation retries.
         MemoryCache[world.Id] = world;
         world.RequiresDurableMatchInteractionSave = false;
-        } finally { gate.Release(); }
+        }
+        catch when (previousPauseVersion.HasValue)
+        {
+            // A failed write may have committed. The next command must read the persisted
+            // snapshot and receipt before deciding whether to apply the transition.
+            MemoryCache.TryRemove(world.Id, out _);
+            throw;
+        }
+        finally { gate.Release(); }
     }
 }
 

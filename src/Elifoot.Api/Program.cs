@@ -6,6 +6,7 @@ using Elifoot.Application;
 using Elifoot.Contracts;
 using Elifoot.Domain;
 using Elifoot.Infrastructure;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 if (await LocalCatalogCommand.TryRunAsync(args)) return;
@@ -85,6 +86,37 @@ async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken
 
 app.UseRouting();
 app.UseCors();
+app.Use(async (context, next) =>
+{
+    if (context.GetEndpoint()?.Metadata.GetMetadata<IEndpointNameMetadata>()?.EndpointName != "ConfirmContinueMatch")
+    {
+        await next(context);
+        return;
+    }
+
+    try { await next(context); }
+    catch (Exception error) when (!context.Response.HasStarted
+        && (error is not OperationCanceledException || !context.RequestAborted.IsCancellationRequested))
+    {
+        var sqlite = error.GetBaseException() as SqliteException;
+        bool persistenceFailure = sqlite != null || error is DbUpdateException or IOException;
+        context.Response.StatusCode = persistenceFailure ? StatusCodes.Status503ServiceUnavailable : StatusCodes.Status500InternalServerError;
+        await context.Response.WriteAsJsonAsync(new
+        {
+            error = "Não foi possível confirmar a retomada agora. Aguarde e tente continuar novamente.",
+            code = persistenceFailure ? "MATCH_PERSISTENCE_FAILED" : "MATCH_CONTINUE_FAILED"
+        });
+        try
+        {
+            app.Logger.LogError("Continue failed for world {WorldId}, request {TraceId}, exception {ExceptionType}, SQLite {SqliteCode}/{ExtendedCode}",
+                context.Request.RouteValues["worldId"], context.TraceIdentifier, error.GetType().Name, sqlite?.SqliteErrorCode, sqlite?.SqliteExtendedErrorCode);
+        }
+        catch (AggregateException)
+        {
+            // A failed logging provider must not replace the sanitized response.
+        }
+    }
+});
 app.UseAccountLogin();
 // A failed market save must remain a server failure so clients retain the original command key.
 // Finance keeps the complete receipt for a durability retry; no incomplete operation is acknowledged.
@@ -287,9 +319,15 @@ app.MapPost("/api/worlds/join-by-code", async (
 
 app.MapGet("/api/worlds/{worldId:guid}/snapshot", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-    return Results.Ok(await RoomSnapshot(world, ct));
+    var gate = MultiplayerRoundOrchestrator.GetRoomLock(worldId);
+    await gate.WaitAsync(ct);
+    try
+    {
+        var world = await repo.GetWorldAsync(worldId, ct);
+        if (world == null) return Results.NotFound();
+        return Results.Ok(roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world)));
+    }
+    finally { gate.Release(); }
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/calendar", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
@@ -436,7 +474,7 @@ app.MapPost("/api/worlds/{worldId:guid}/continue", async (
     var (ok, err, resumed, snapshot) = await orchestrator.ConfirmContinueMatchAsync(cmd with { GameWorldId = worldId }, ct);
     if (!ok) return Results.BadRequest(new { error = err, snapshot });
     return Results.Ok(new { resumed, snapshot });
-});
+}).WithName("ConfirmContinueMatch");
 
 app.MapPost("/api/worlds/{worldId:guid}/tick", async (
     Guid worldId,

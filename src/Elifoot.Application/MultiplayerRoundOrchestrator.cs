@@ -812,34 +812,43 @@ public sealed partial class MultiplayerRoundOrchestrator
             var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", false, null);
 
-            var receiptKey = InteractionKey("continue", command.CoachId, command.IdempotencyKey);
-            var fingerprint = InteractionFingerprint(command);
-            if (receiptKey != null && world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt))
-                return receipt.Fingerprint == fingerprint ? (true, null, world.ActivePauseWindowId != receipt.PauseWindowId, BuildLiveRoundSnapshotDto(world)) : (false, "Chave de operação reutilizada com dados diferentes.", false, BuildLiveRoundSnapshotDto(world));
-            if (world.ActivePauseWindowId == null)
-                return (false, "Não há janela de pausa ou intervalo ativa.", false, BuildLiveRoundSnapshotDto(world));
-
-            var window = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
             var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
             if (coach == null)
                 return (false, "Participante não encontrado na sala.", false, BuildLiveRoundSnapshotDto(world));
 
-            window.ConfirmedCoachIds.Add(coach.Id);
-            RecordInteraction(world, receiptKey, fingerprint, window.Id);
-
-            AutoConfirmPauseObservers(world, window);
-
-            bool allConfirmed = world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id));
-            if (allConfirmed)
+            var receiptKey = InteractionKey("continue", command.CoachId, command.IdempotencyKey);
+            if (receiptKey == null)
+                return (false, "Informe a chave da operação.", false, BuildLiveRoundSnapshotDto(world));
+            var fingerprint = InteractionFingerprint(command);
+            if (world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt))
             {
-                ResumeFromPauseWindowInternal(world, window);
+                var current = BuildLiveRoundSnapshotDto(world);
+                if (receipt.Fingerprint != fingerprint)
+                    return (false, "Chave de operação reutilizada com dados diferentes.", false, current);
+                // Also deliver a snapshot if the original request lost its response after commit.
+                await _publisher.PublishRoundStateChangedAsync(world.Id, current, CancellationToken.None);
+                return (true, null, world.ActivePauseWindowId != receipt.PauseWindowId, current);
             }
+            if (world.ActivePauseWindowId == null)
+                return (false, "Não há janela de pausa ou intervalo ativa.", false, BuildLiveRoundSnapshotDto(world));
+            if (command.PauseWindowId is Guid expectedWindow && world.ActivePauseWindowId != expectedWindow)
+                return (false, "Esta pausa já terminou. Atualize a partida para continuar.", false, BuildLiveRoundSnapshotDto(world));
 
-            world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            var window = world.PauseWindows.First(w => w.Id == world.ActivePauseWindowId.Value);
+            if (window.ConfirmedCoachIds.Contains(coach.Id))
+                return (true, null, false, BuildLiveRoundSnapshotDto(world));
+
+            bool resumed = await SavePauseTransitionAsync(world, window, receiptKey, () =>
+            {
+                window.ConfirmedCoachIds.Add(coach.Id);
+                RecordInteraction(world, receiptKey, fingerprint, window.Id);
+                AutoConfirmPauseObservers(world, window);
+                if (world.HumanCoaches.All(h => window.ConfirmedCoachIds.Contains(h.Id)))
+                    ResumeFromPauseWindowInternal(world, window);
+            }, ct);
             var snapshot = BuildLiveRoundSnapshotDto(world);
-            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
-            return (true, null, allConfirmed, snapshot);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, CancellationToken.None);
+            return (true, null, resumed, snapshot);
         }
         finally
         {
@@ -864,16 +873,48 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (!ignoreClockForTest && DateTime.UtcNow < window.ExpiresAtUtc && !intervalReady)
                 return false;
 
-            AutoConfirmPauseObservers(world, window);
-            ResumeFromPauseWindowInternal(world, window);
-            world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
-            await _publisher.PublishRoundStateChangedAsync(world.Id, BuildLiveRoundSnapshotDto(world), ct);
+            await SavePauseTransitionAsync(world, window, null, () =>
+            {
+                AutoConfirmPauseObservers(world, window);
+                ResumeFromPauseWindowInternal(world, window);
+            }, ct);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, BuildLiveRoundSnapshotDto(world), CancellationToken.None);
             return true;
         }
         finally
         {
             sem.Release();
+        }
+    }
+
+    private async Task<bool> SavePauseTransitionAsync(
+        GameWorld world, PauseWindow window, string? receiptKey, Action apply, CancellationToken ct)
+    {
+        ct.ThrowIfCancellationRequested();
+        var confirmed = window.ConfirmedCoachIds.ToHashSet();
+        var state = world.RoundState;
+        var wasClosed = window.IsClosed;
+        var version = world.RoundVersion;
+        var updated = world.UpdatedAtUtc;
+        var needsSave = world.RequiresDurableMatchInteractionSave;
+        try
+        {
+            apply();
+            world.RoundVersion++;
+            await _repository.SavePauseTransitionAsync(world, version);
+            return window.IsClosed;
+        }
+        catch
+        {
+            window.ConfirmedCoachIds = confirmed;
+            window.IsClosed = wasClosed;
+            world.ActivePauseWindowId = window.Id;
+            world.RoundState = state;
+            world.RoundVersion = version;
+            world.UpdatedAtUtc = updated;
+            world.RequiresDurableMatchInteractionSave = needsSave;
+            if (receiptKey != null) world.MatchInteractionReceipts.Remove(receiptKey);
+            throw;
         }
     }
 

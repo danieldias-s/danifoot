@@ -619,12 +619,14 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
 class PauseWaitingContent extends StatelessWidget {
   final Map<String, dynamic> pause;
   final bool confirmed, busy;
+  final String? notice;
   final VoidCallback onContinue;
   const PauseWaitingContent({
     super.key,
     required this.pause,
     required this.confirmed,
     required this.busy,
+    this.notice,
     required this.onContinue,
   });
   @override
@@ -641,6 +643,7 @@ class PauseWaitingContent extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       const SizedBox(height: 10),
+      if (notice != null) Text(notice!, textAlign: TextAlign.center),
       _actionButton(
         key: const Key('btn-confirmar-continuar'),
         label: confirmed ? 'AGUARDANDO' : 'CONTINUAR',

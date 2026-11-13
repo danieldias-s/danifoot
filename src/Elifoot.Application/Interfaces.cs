@@ -9,6 +9,10 @@ public interface IWorldRepository
     Task<GameWorld?> GetWorldByInviteCodeAsync(string inviteCode, CancellationToken ct = default);
     Task<List<GameWorld>> ListWorldsAsync(CancellationToken ct = default);
     Task SaveWorldAsync(GameWorld world, CancellationToken ct = default);
+
+    // A persistent implementation must resolve the next read from storage if the outcome is unknown.
+    Task SavePauseTransitionAsync(GameWorld world, long previousVersion)
+        => SaveWorldAsync(world, CancellationToken.None);
 }
 
 public interface IMatchRoomNotificationPublisher

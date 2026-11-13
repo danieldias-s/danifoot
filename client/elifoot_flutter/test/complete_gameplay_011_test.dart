@@ -721,8 +721,9 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   @override
   Future<Map<String, dynamic>> confirmContinue(
     String worldId,
-    String coachId,
-  ) async {
+    String coachId, {
+    String? pauseWindowId,
+  }) async {
     confirmedPauseCount = 4;
     currentRoundState = 'RESULTS';
     roundVersion++;

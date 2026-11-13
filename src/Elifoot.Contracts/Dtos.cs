@@ -69,7 +69,11 @@ public record PendingPenaltyDecisionDto(Guid DecisionId, Guid MatchId, Guid Coac
 public record ConfirmContinueMatchCommand(
     Guid GameWorldId,
     Guid CoachId,
-    string IdempotencyKey);
+    string IdempotencyKey)
+{
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Guid? PauseWindowId { get; init; }
+}
 
 public record ReadyCounterDto(
     Guid GameWorldId,

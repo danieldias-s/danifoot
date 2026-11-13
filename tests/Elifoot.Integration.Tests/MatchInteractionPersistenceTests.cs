@@ -1,21 +1,39 @@
+using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using Elifoot.Application;
 using Elifoot.Contracts;
 using Elifoot.Domain;
 using Elifoot.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.EventLog;
 namespace Elifoot.Integration.Tests;
 
 [Collection("Player rankings 009 SQLite")]
 public class MatchInteractionPersistenceTests
 {
-    private static WebApplicationFactory<Program> Factory(string connection, bool postgres) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
+    private static WebApplicationFactory<Program> Factory(string connection, bool postgres, SaveChangesInterceptor? fault = null) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
         b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider", postgres ? "PostgreSQL" : "Sqlite");
         b.UseSetting("ConnectionStrings:DefaultConnection", connection);
         b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
         b.UseSetting("Elifoot:DisableBackgroundClock", "true");
+        if (fault != null)
+        {
+            // Keep injected SQLite failures observable on hosts without Event Log write access.
+            b.ConfigureLogging(logging =>
+            {
+                if (OperatingSystem.IsWindows())
+                    logging.AddFilter<EventLogLoggerProvider>(null, LogLevel.None);
+            });
+            b.ConfigureServices(services =>
+                services.ConfigureDbContext<ElifootDbContext>(options => options.AddInterceptors(fault)));
+        }
     });
     private static async Task<(GameWorld W, MatchFixture M, HumanCoach A, HumanCoach B)> Room()
     {
@@ -38,6 +56,136 @@ public class MatchInteractionPersistenceTests
             fixture.CurrentMinute = fixture.LastSimulatedMinute = 20;
         }
         return (world, match, a, b);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public async Task ContinueRecoversFromSqliteIoFailure(bool afterCommit, bool lastConfirmation)
+    {
+        string file = Path.Combine(Path.GetTempPath(), $"elifoot-continue-io-{Guid.NewGuid():N}.db");
+        string connection = $"Data Source={file};Pooling=False";
+        var (world, match, a, b) = await Room();
+        var window = new PauseWindow
+        {
+            GameWorldId = world.Id, SeasonNumber = world.SeasonNumber, RoundNumber = world.RoundNumber,
+            Minute = 20, ExpiresAtUtc = DateTime.UtcNow.AddHours(1)
+        };
+        if (lastConfirmation) window.ConfirmedCoachIds.Add(a.Id);
+        world.PauseWindows.Add(window);
+        world.ActivePauseWindowId = window.Id;
+        world.RoundState = RoundState.GLOBAL_PAUSED;
+        match.HomeGoals = 1;
+        MatchEventType[] originalEvents = [MatchEventType.Goal, MatchEventType.YellowCard, MatchEventType.Injury];
+        match.Events = originalEvents.Select(type => new MatchEventRecord { EventType = type, Minute = 19, ClubId = match.HomeClubId }).ToList();
+        var balances = world.Clubs.Select(club => club.CashBalance).ToArray();
+        var ledgerIds = world.Transactions.Select(entry => entry.Id).ToArray();
+        long version = world.RoundVersion;
+        var coach = lastConfirmation ? b : a;
+        var command = new ConfirmContinueMatchCommand(world.Id, coach.Id, "resume-io") { PauseWindowId = window.Id };
+        var route = $"/api/worlds/{world.Id}";
+        var fault = new ContinueSaveFault(afterCommit);
+
+        try
+        {
+            await using (var initial = Factory(connection, false, fault))
+            {
+                using var first = initial.CreateClient();
+                using var second = initial.CreateClient();
+                await initial.Services.GetRequiredService<IWorldRepository>().SaveWorldAsync(world);
+                first.DefaultRequestHeaders.Add("Cookie", "session=private-test-cookie");
+                first.DefaultRequestHeaders.Add("Authorization", "Bearer private-test-token");
+                fault.Armed = true;
+
+                using var failed = await first.PostAsJsonAsync(route + "/continue", command);
+                Assert.Equal(HttpStatusCode.ServiceUnavailable, failed.StatusCode);
+                var body = await failed.Content.ReadFromJsonAsync<JsonElement>();
+                Assert.Equal("MATCH_PERSISTENCE_FAILED", body.GetProperty("code").GetString());
+                Assert.Equal(2, body.EnumerateObject().Count());
+                Assert.DoesNotContain("private-test", body.GetRawText());
+                Assert.DoesNotContain(nameof(SqliteException), body.GetRawText());
+                Assert.Equal(1, fault.Failures);
+
+                var left = (await first.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+                var right = (await second.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+                Assert.Equal(afterCommit ? version + 1 : version, left.RoundVersion);
+                Assert.Equal(left.RoundVersion, right.RoundVersion);
+                Assert.Equal(afterCommit ? RoundState.RUNNING_FIRST_HALF : RoundState.GLOBAL_PAUSED, left.RoundState);
+                Assert.Equal(left.RoundState, right.RoundState);
+                if (!afterCommit)
+                {
+                    Assert.DoesNotContain(coach.Id, left.ActivePauseWindow!.ConfirmedCoachIds);
+                    using var tick = await second.PostAsync(route + "/tick", null);
+                    tick.EnsureSuccessStatusCode();
+                    Assert.Equal(20, (await tick.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.CurrentMinute);
+                }
+
+                var retries = await Task.WhenAll(first.PostAsJsonAsync(route + "/continue", command),
+                    second.PostAsJsonAsync(route + "/continue", command));
+                foreach (var retry in retries)
+                {
+                    using (retry)
+                    {
+                        retry.EnsureSuccessStatusCode();
+                        var result = await retry.Content.ReadFromJsonAsync<JsonElement>();
+                        Assert.Equal(lastConfirmation, result.GetProperty("resumed").GetBoolean());
+                        Assert.Equal(version + 1, result.GetProperty("snapshot").GetProperty("roundVersion").GetInt64());
+                    }
+                }
+            }
+
+            EfWorldRepository.ClearCacheForTesting();
+            await using var restarted = Factory(connection, false);
+            using var client = restarted.CreateClient();
+            using var replay = await client.PostAsJsonAsync(route + "/continue", command);
+            replay.EnsureSuccessStatusCode();
+            var wrongWindow = command with { PauseWindowId = Guid.NewGuid(), IdempotencyKey = "stale-window" };
+            using var stale = await client.PostAsJsonAsync(route + "/continue", wrongWindow);
+            Assert.Equal(HttpStatusCode.BadRequest, stale.StatusCode);
+            var restored = (await restarted.Services.GetRequiredService<IWorldRepository>().GetWorldAsync(world.Id))!;
+            var restoredMatch = restored.Fixtures.Single(f => f.Id == match.Id);
+            Assert.Equal(version + 1, restored.RoundVersion);
+            Assert.Equal(world.RoundNumber, restored.RoundNumber);
+            Assert.Equal(20, restored.CurrentMatchMinute);
+            Assert.Equal(1, restoredMatch.HomeGoals);
+            Assert.Equal(originalEvents, restoredMatch.Events.Select(e => e.EventType));
+            Assert.Equal(balances, restored.Clubs.Select(club => club.CashBalance));
+            Assert.Equal(ledgerIds, restored.Transactions.Select(entry => entry.Id));
+        }
+        finally
+        {
+            EfWorldRepository.ClearCacheForTesting();
+            if (File.Exists(file)) File.Delete(file);
+        }
+    }
+
+    private sealed class ContinueSaveFault(bool afterCommit) : SaveChangesInterceptor
+    {
+        public bool Armed { get; set; }
+        public int Failures { get; private set; }
+
+        public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData,
+            InterceptionResult<int> result, CancellationToken cancellationToken = default)
+        {
+            if (!afterCommit) FailIfArmed();
+            return ValueTask.FromResult(result);
+        }
+
+        public override ValueTask<int> SavedChangesAsync(SaveChangesCompletedEventData eventData, int result,
+            CancellationToken cancellationToken = default)
+        {
+            if (afterCommit) FailIfArmed();
+            return ValueTask.FromResult(result);
+        }
+
+        private void FailIfArmed()
+        {
+            if (!Armed) return;
+            Armed = false;
+            Failures++;
+            throw new SqliteException("disk I/O error", 10, 778);
+        }
     }
     [Theory]
     [InlineData(false)]
