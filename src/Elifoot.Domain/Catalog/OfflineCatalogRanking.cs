@@ -8,11 +8,17 @@ public static class OfflineCatalogRanking
     public static bool IsV11(EligibleCatalogClub club) => club.OfflineSource?.Definition.SchemaVersion == "1.1";
     private static bool Comparable(IEnumerable<EligibleCatalogClub> clubs)
     {
-        var metadata = clubs.Select(c => c.OfflineSource?.V11).ToList();
-        return metadata.All(m => m?.HistoricalRanking?.Rating != null) &&
-            metadata.Select(m => (Family(m!.HistoricalRanking!.Source), m.HistoricalRanking.ReferenceDate)).Distinct().Count() == 1;
+        return clubs.Select(c => c.OfflineSource!.V11!.HistoricalRanking)
+            .Where(ranking => ranking?.Rating != null)
+            .Select(ranking => (Family(ranking!.Source), ranking.ReferenceDate)).Distinct().Count() <= 1;
     }
-    private static string? Family(string? source) => source is "OPTA" or "OPTA_INTERPOLATED" ? "OPTA" : source;
+    private static string? Family(string? source) => source switch
+    {
+        "OPTA" or "OPTA_INTERPOLATED" => "OPTA",
+        "TRANSFERMARKT_SNAPSHOT_VALOR_MERCADO_TOTAL_EUR_MILHOES_DIV_100" or
+        "TRANSFERMARKT_SQUAD_TOTAL_EUR_MILLIONS_DIV_100" => "TRANSFERMARKT_EUR_MILLIONS_DIV_100",
+        _ => source
+    };
     public static List<EligibleCatalogClub> Order(IEnumerable<EligibleCatalogClub> input)
     {
         var clubs = input.ToList();
@@ -22,7 +28,7 @@ public static class OfflineCatalogRanking
             .OrderByDescending(g => g.Key).SelectMany(group =>
             {
                 bool comparable = Comparable(group);
-                return group.OrderByDescending(c => comparable ? c.OfflineSource!.V11!.HistoricalRanking!.Rating : null)
+                return group.OrderByDescending(c => comparable ? c.OfflineSource!.V11!.HistoricalRanking?.Rating : null)
                     .ThenBy(c => c.OfflineSource!.V11!.TieBreakPriority ?? int.MaxValue)
                     .ThenBy(c => c.Key, StringComparer.Ordinal);
             }).ToList();
@@ -39,7 +45,7 @@ public static class OfflineCatalogRanking
         foreach (var group in ordered.Where(IsV11).GroupBy(c => c.OfflineSource!.V11!.TeamStrength))
         {
             bool comparable = Comparable(group);
-            foreach (var tied in group.GroupBy(c => (Rating: comparable ? c.OfflineSource!.V11!.HistoricalRanking!.Rating : null,
+            foreach (var tied in group.GroupBy(c => (Rating: comparable ? c.OfflineSource!.V11!.HistoricalRanking?.Rating : null,
                          Priority: c.OfflineSource!.V11!.TieBreakPriority)))
             {
                 var keys = tied.Select(c => c.Key).ToHashSet(StringComparer.Ordinal);

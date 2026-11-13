@@ -22,8 +22,14 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
     public Task<List<EligibleCatalogClub>> SelectForPlanning(List<string> ids, CancellationToken ct = default) =>
         SelectCatalogs(ids, planningOnly: true, ct);
 
+    public static bool CanUseDefaultBehavior(OfflineLoadedCatalog catalog) =>
+        catalog.Manifest is { SchemaVersion: "1.1", Status: "DRAFT" } &&
+        !string.IsNullOrWhiteSpace(catalog.Manifest.Name) && catalog.Valid &&
+        catalog.Clubs.Count > 0 && catalog.Clubs.All(club => club.V11 != null) &&
+        catalog.Issues.Count > 0 && catalog.Issues.All(issue => issue.Code == "BEHAVIOR");
+
     private async Task<List<EligibleCatalogClub>> SelectCatalogs(List<string> ids, bool planningOnly, CancellationToken ct,
-        bool includePreviewRosters = false)
+        bool includePreviewRosters = false, bool useDefaultBehavior = false)
     {
         if (ids == null || ids.Count == 0 || ids.Distinct().Count() != ids.Count) throw new ArgumentException("Selecione catálogos sem repetição.");
         var report = await loader.LoadAsync(ct);
@@ -34,11 +40,12 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
             var matches = report.Catalogs.Where(c => c.Manifest?.CatalogId == id).ToList();
             if (matches.Count != 1) throw new ArgumentException($"Catálogo inexistente ou duplicado: {id}.");
             var catalog = matches[0];
-            if (!catalog.Valid || !planningOnly && !catalog.Ready)
+            var useDefaults = useDefaultBehavior && CanUseDefaultBehavior(catalog);
+            if (!catalog.Valid || !planningOnly && !catalog.Ready && !useDefaults)
                 throw new ArgumentException($"Catálogo {id} incompleto/inválido. Corrija os arquivos e marque READY após validar.");
             if (includePreviewRosters && catalog.Issues.FirstOrDefault(i => i.Code is not ("BEHAVIOR" or "RANKING_RESOLUTION")) is { } issue)
                 throw new ArgumentException($"Catálogo {id}: {issue.Message} ({issue.Path})");
-            var candidates = catalog.Ready ? catalog.Clubs : catalog.Clubs
+            var candidates = catalog.Ready || useDefaults ? catalog.Clubs : catalog.Clubs
                 .Where(c => OfflineCatalogRules.Text(c.Definition.Name) && OfflineCatalogRules.Text(c.Definition.ShortName, 80) &&
                     c.Definition.Colors is { Count: 2 } colors && colors.All(color => !string.IsNullOrWhiteSpace(color)));
             if (!candidates.Any()) throw new ArgumentException($"Catálogo {id} não tem clubes aptos para montar as divisões.");
@@ -62,7 +69,12 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
 
     public async Task<WorldCreatorPreview> Preview(Guid owner, OfflineWorldRequest request, CancellationToken ct = default)
     {
-        var preview = OfflineWorldFactory.Preview(request, await Select(request.CatalogIds, ct));
+        var candidates = await SelectCatalogs(request.CatalogIds, planningOnly: false, ct,
+            useDefaultBehavior: request.UseDefaultBehavior);
+        var preview = OfflineWorldFactory.Preview(request, candidates);
+        if (request.UseDefaultBehavior && preview.Clubs.Any(entry =>
+            entry.Club.OfflineSource!.Definition.Players!.Any(p => p.Behavior == null)))
+            preview.Warnings.Add("Os jogadores sem comportamento no catálogo usarão o padrão do jogo, Cavalheiro, neste campeonato.");
         using var scope = factory.CreateScope(); var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
         db.Drafts.Add(new()
         {

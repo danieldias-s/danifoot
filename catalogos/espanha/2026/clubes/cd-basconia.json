@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 86,
   "historicalRanking": null,
   "stadium": {
     "name": "Polideportivo de Artunduaga, Basauri, Basque Country",

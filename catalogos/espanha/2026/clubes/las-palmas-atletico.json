@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 147,
   "historicalRanking": null,
   "stadium": {
     "name": "Anexo al Estadio Gran Canaria, Las Palmas",

@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 136,
   "historicalRanking": null,
   "stadium": {
     "name": "La Constitución, Yecla",

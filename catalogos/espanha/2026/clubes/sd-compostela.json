@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 97,
   "historicalRanking": null,
   "stadium": {
     "name": "San Lázaro, Santiago de Compostela",

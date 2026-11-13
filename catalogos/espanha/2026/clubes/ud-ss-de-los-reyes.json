@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 172,
   "historicalRanking": null,
   "stadium": {
     "name": "Nuevo Matapiñonera",

@@ -14,7 +14,7 @@ public sealed class OfflineV16DraftTests
         return Path.Combine(directory.FullName,"catalogos");
     }
     [Fact]
-    public async Task ConsolidatedSpanishDraftIsStructurallyValidButCannotCreateWorld()
+    public async Task SpanishCatalogKeepsHistoricalDataAndOrdersUnvaluedClubsLast()
     {
         var report=await new OfflineCatalogLoader(Root()).LoadAsync();
         Assert.True(report.Valid);
@@ -33,13 +33,19 @@ public sealed class OfflineV16DraftTests
         Assert.Equal(90, catalog.Clubs.Count(c => c.V11!.HistoricalRanking == null));
         Assert.Equal(23,club.Definition.Players!.Count);
         Assert.All(club.Definition.Players,p=>{Assert.Null(p.Strength);Assert.Null(p.Behavior);});
-        Assert.Contains(catalog.Issues,i=>i.Code=="RANKING_RESOLUTION"&&!i.IsError);
-        Assert.Contains(catalog.Issues,i=>i.Code=="BEHAVIOR"&&!i.IsError);
+        Assert.All(catalog.Issues, issue => Assert.Equal("BEHAVIOR", issue.Code));
+        Assert.True(OfflineWorldCreatorService.CanUseDefaultBehavior(catalog));
         var service=new OfflineWorldCreatorService(new OfflineCatalogLoader(Root()),null!,null!);
         await Assert.ThrowsAsync<ArgumentException>(()=>service.Select(["es-2026-principal"]));
         var candidates = await service.SelectForPlanning(["es-2026-principal"]);
         Assert.Equal(172, candidates.Count);
         Assert.Equal(172, candidates.Select(c => c.Key).Distinct().Count());
+        Assert.All(candidates.Take(82), c => Assert.NotNull(c.OfflineSource!.V11!.HistoricalRanking));
+        Assert.Equal(Enumerable.Range(83, 90), candidates.Skip(82)
+            .Select(c => c.OfflineSource!.V11!.TieBreakPriority!.Value));
+        var ratedForceOne = candidates.Where(c => c.OfflineSource!.V11 is { TeamStrength: 1, HistoricalRanking: not null });
+        var ratings = ratedForceOne.Select(c => c.OfflineSource!.V11!.HistoricalRanking!.Rating).ToList();
+        Assert.Equal(ratings.OrderDescending(), ratings);
         Assert.Equal(3905, candidates.Sum(c => c.OfflineSource!.Definition.Players!.Count));
         Assert.All(candidates, c =>
         {
@@ -87,6 +93,13 @@ public sealed class OfflineV16DraftTests
         }
         Assert.Equal(preview.DataHash, OfflineWorldFactory.Preview(request, available).DataHash);
         Assert.Throws<ArgumentException>(() => OfflineWorldFactory.Create(request, preview));
+        var playableRequest = request with { UseDefaultBehavior = true };
+        var playablePreview = OfflineWorldFactory.Preview(playableRequest, available);
+        var world = OfflineWorldFactory.Create(playableRequest, playablePreview);
+        Assert.Equal(128, world.Clubs.Count);
+        Assert.NotEmpty(world.Players);
+        Assert.All(world.Players, p => Assert.Equal(PlayerBehavior.Cavalheiro, p.Behavior));
+        Assert.All(available.SelectMany(c => c.OfflineSource!.Definition.Players!), p => Assert.Null(p.Behavior));
     }
     [Theory]
     [InlineData("penya-deportiva")]

@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 163,
   "historicalRanking": null,
   "stadium": {
     "name": "Estadio El Prado",

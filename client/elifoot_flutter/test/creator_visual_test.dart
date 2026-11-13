@@ -117,6 +117,12 @@ class _CreatorFixture {
         final body = jsonDecode(request.body) as Map;
         expect(body['catalogIds'], ['es-2026-principal']);
         expect(body['applyV16RosterPolicy'], isTrue);
+        expect(
+          body['useDefaultBehavior'],
+          offlineCatalogs.any((c) => c['canUseDefaultBehavior'] == true)
+              ? true
+              : null,
+        );
         final keys = (body['clubKeys'] as List).toSet();
         expect(keys, hasLength(128));
         final assignments = (body['assignments'] as List).cast<Map>();
@@ -636,35 +642,47 @@ void main() {
     );
   });
 
-  testWidgets('Catálogo pronto segue das etapas Países e Anos até confirmar', (
-    tester,
-  ) async {
-    final fixture = _CreatorFixture()
-      ..seasons = []
-      ..offlineCatalogs = [spainCatalog(ready: true)];
-    await _creator(tester, fixture, 1366);
-    await _pressContinue(tester);
-    await selectHistoricalCountries(tester, ['ES']);
-    await _pressContinue(tester);
-    await selectHistoricalYear(tester, '2026');
-    await _pressContinue(tester);
-    expect(find.text('Clube espanhol 0'), findsWidgets);
-    await _pressContinue(tester);
-    await _pressContinue(tester);
-    expect(
-      find.text('Os elencos reais serão carregados do catálogo selecionado.'),
-      findsOneWidget,
+  for (final useDefaults in [false, true]) {
+    testWidgets(
+      'Catálogo jogável segue até confirmar (comportamento padrão: $useDefaults)',
+      (tester) async {
+        final fixture = _CreatorFixture()
+          ..seasons = []
+          ..offlineCatalogs = [
+            {
+              ...spainCatalog(ready: !useDefaults),
+              'canUseDefaultBehavior': useDefaults,
+            },
+          ];
+        await _creator(tester, fixture, 1366);
+        await _pressContinue(tester);
+        await selectHistoricalCountries(tester, ['ES']);
+        await _pressContinue(tester);
+        await selectHistoricalYear(tester, '2026');
+        await _pressContinue(tester);
+        expect(find.text('Clube espanhol 0'), findsWidgets);
+        await _pressContinue(tester);
+        await _pressContinue(tester);
+        expect(
+          useDefaults
+              ? find.textContaining('usarão Cavalheiro')
+              : find.text(
+                  'Os elencos reais serão carregados do catálogo selecionado.',
+                ),
+          findsOneWidget,
+        );
+        await _pressContinue(tester);
+        await _pressContinue(tester);
+        await _tapVisible(tester, find.text('CONFIRMAR CRIAÇÃO'));
+        expect(
+          fixture.requests.where(
+            (r) => r.url.path.endsWith('/offline/confirm/offline-test'),
+          ),
+          hasLength(1),
+        );
+      },
     );
-    await _pressContinue(tester);
-    await _pressContinue(tester);
-    await _tapVisible(tester, find.text('CONFIRMAR CRIAÇÃO'));
-    expect(
-      fixture.requests.where(
-        (r) => r.url.path.endsWith('/offline/confirm/offline-test'),
-      ),
-      hasLength(1),
-    );
-  });
+  }
 
   testWidgets('Dois países exibem cobertura e anos dinâmicos ao voltar', (
     tester,

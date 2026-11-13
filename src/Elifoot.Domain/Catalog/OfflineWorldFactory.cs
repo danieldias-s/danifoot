@@ -130,7 +130,9 @@ public static class OfflineWorldFactory
         foreach (var entry in preview.Clubs)
         {
             var source = entry.Club.OfflineSource ?? throw new ArgumentException("Clube sem origem offline.");
-            if (source.Definition.Status != "READY" || OfflineCatalogRules.ValidateClub(source.Definition, entry.Club.Key).Count > 0)
+            var useDefaults = request.UseDefaultBehavior && source.V11 != null;
+            if ((source.Definition.Status != "READY" && !(useDefaults && source.Definition.Status == "DRAFT")) ||
+                OfflineCatalogRules.ValidateClub(source.Definition, entry.Club.Key).Any(i => i.IsError || !useDefaults || i.Code != "BEHAVIOR"))
                 throw new ArgumentException("Clube incompleto na prévia.");
             if ((!request.ApplyV16RosterPolicy && entry.Club.Players.Count != source.Definition.Players!.Count) ||
                 entry.Club.Players.Any(p => p.Strength is < 1 or > 50 || source.Definition.Players!.All(s => s.Id != p.PlayerExternalId)) ||
@@ -200,7 +202,8 @@ public static class OfflineWorldFactory
                 {
                     Id = Guid.NewGuid(), GameWorldId = world.Id, ClubId = club.Id, Name = p.Name!,
                     Position = Enum.Parse<PlayerPosition>(p.Position!), Strength = strength,
-                    Behavior = (PlayerBehavior)p.Behavior!.Value, IsStar = p.IsStar!.Value, Nationality = p.Nationality,
+                    Behavior = p.Behavior is int behavior ? (PlayerBehavior)behavior : PlayerBehavior.Cavalheiro,
+                    IsStar = p.IsStar!.Value, Nationality = p.Nationality,
                     ContractRoundsRemaining = contractDefaults[j % contractDefaults.Count].ContractRoundsRemaining,
                     OfflineIdentity = new(originalSource.CatalogId, p.Id!, originalSource.CountryCode, originalSource.Year)
                 };

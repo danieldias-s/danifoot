@@ -162,7 +162,18 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
 
   bool get _offlinePlanningOnly =>
       _usingOfflineCatalog &&
-      _selectedOfflineCatalogs.any((catalog) => catalog['ready'] != true);
+      _selectedOfflineCatalogs.any(
+        (catalog) =>
+            catalog['ready'] != true &&
+            catalog['canUseDefaultBehavior'] != true,
+      );
+
+  bool get _offlineUsesDefaultBehavior =>
+      _usingOfflineCatalog &&
+      !_offlinePlanningOnly &&
+      _selectedOfflineCatalogs.any(
+        (catalog) => catalog['canUseDefaultBehavior'] == true,
+      );
 
   List<String> get _offlineCatalogPendingDetails {
     final catalogs = _selectedOfflineCatalogs;
@@ -427,7 +438,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     final offline = _usingOfflineCatalog;
     final data = offline
         ? await _call(
-            _offlinePlanningOnly ? 'offline/planning-clubs' : 'offline/clubs',
+            _offlinePlanningOnly || _offlineUsesDefaultBehavior
+                ? 'offline/planning-clubs'
+                : 'offline/clubs',
             body: {'catalogIds': _offlineCatalogIds},
           )
         : (await _call(
@@ -466,6 +479,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               'catalogIds': _offlineCatalogIds,
               'seed': _seed,
               'maxHumans': _humans,
+              if (_offlineUsesDefaultBehavior) 'useDefaultBehavior': true,
               'applyV16RosterPolicy': _clubs.any(
                 (club) => club['offlineSource']?['v11'] != null,
               ),
@@ -1751,6 +1765,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         if (_offlinePlanningOnly)
           const Text(
             'Ainda há dados pendentes no catálogo. Clique em Continuar para revisar o corte dos elencos na prévia.',
+          )
+        else if (_offlineUsesDefaultBehavior)
+          const Text(
+            'Jogadores sem comportamento cadastrado usarão Cavalheiro, o padrão do jogo, neste campeonato.',
           )
         else
           const Text(

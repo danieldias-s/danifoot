@@ -6,7 +6,7 @@
   "year": 2026,
   "status": "DRAFT",
   "teamStrength": 1,
-  "tieBreakPriority": null,
+  "tieBreakPriority": 154,
   "historicalRanking": null,
   "stadium": {
     "name": "Municipal de Chapín",

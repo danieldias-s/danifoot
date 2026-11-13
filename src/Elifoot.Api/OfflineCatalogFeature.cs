@@ -41,6 +41,7 @@ internal static class OfflineCatalogFeature
                     ClubCount = c.Clubs.Count,
                     Valid = c.Valid && rootValid,
                     Ready = c.Ready && rootValid,
+                    CanUseDefaultBehavior = rootValid && OfflineWorldCreatorService.CanUseDefaultBehavior(c),
                     PendingBehaviors = c.Issues.Count(i => i.Code == "BEHAVIOR"),
                     PendingRankings = c.Issues.Count(i => i.Code == "RANKING_RESOLUTION")
                 }));
