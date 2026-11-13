@@ -97,11 +97,50 @@ public class MatchInteractionDecisionTests
         w=JsonSerializer.Deserialize<GameWorld>(JsonSerializer.Serialize(w))!;await r.SaveWorldAsync(w);s=new(r,NullMatchRoomNotificationPublisher.Instance);
         m=w.Fixtures.First(f=>f.Id==m.Id);kick=m.PendingPenalties.Single();var request=new ChoosePenaltyTakerCommand(w.Id,a.Id,kick.Id,kick.EligiblePlayerIds[0],"kick");
         var result=await s.ChoosePenaltyTakerAsync(request);Assert.True(result.Success,result.Error);Assert.Null(result.Snapshot!.PendingPenalty);Assert.Equal(20,result.Snapshot.CurrentMinute);
+        var presentation = Assert.Single(result.Snapshot.Matches.Single(f => f.MatchId == m.Id).Events,
+            e => e.PenaltyKick is not null).PenaltyKick!;
+        Assert.Equal(kick.Id, presentation.DecisionId);
+        Assert.Equal(request.PlayerId, presentation.Taker.PlayerId);
+        Assert.Equal("Goal", presentation.Outcome);
+        Assert.Equal(1, presentation.HomeGoals);
+        Assert.Equal(0, presentation.AwayGoals);
         Assert.Single(m.Events,e=>e.EventType is MatchEventType.Goal or MatchEventType.PenaltyMissed);
         Assert.True((await s.ChoosePenaltyTakerAsync(request)).Success);Assert.True((await s.ChoosePenaltyTakerAsync(request with{IdempotencyKey="retry-new-key"})).Success);
         Assert.Single(m.Events,e=>e.EventType is MatchEventType.Goal or MatchEventType.PenaltyMissed);Assert.Equal(0,m.HomeUsedPauseWindows);Assert.Equal(0,m.HomeUsedSubstitutions);
         Assert.Equal(21,(await s.AdvanceClockTickAsync(w.Id))!.CurrentMinute);
     }
+    [Theory]
+    [InlineData(0.0, "Goal")]
+    [InlineData(0.75, "Saved")]
+    [InlineData(0.99, "Wide")]
+    public async Task ReconnectionSnapshotTransportsPenaltyOutcomeAndOwnGoalMetadata(double roll, string outcome)
+    {
+        var (world, _, _, match, _, _) = await Room();
+        var home = world.Clubs.Single(c => c.Id == match.HomeClubId);
+        var away = world.Clubs.Single(c => c.Id == match.AwayClubId);
+        var taker = world.Players.First(p => p.ClubId == home.Id);
+        var keeper = world.Players.First(p => p.ClubId == away.Id && p.Position == PlayerPosition.G);
+        taker.Strength = 25;
+        taker.IsStar = false;
+        MatchSimulationEngine.ResolvePenaltyKick(match, home, taker, keeper, 25, true, 20, roll, new());
+        match.Events.Add(new MatchEventRecord
+        {
+            Minute = 21, EventType = MatchEventType.Goal, ClubId = away.Id, IsOwnGoal = true,
+            PrimaryPlayerId = taker.Id, PrimaryPlayerDisplayName = taker.DisplayName
+        });
+
+        var reopened = JsonSerializer.Deserialize<GameWorld>(JsonSerializer.Serialize(world))!;
+        var events = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(reopened)
+            .Matches.Single(m => m.MatchId == match.Id).Events;
+        var kick = Assert.Single(events, e => e.PenaltyKick is not null);
+        Assert.Equal(outcome, kick.PenaltyKick!.Outcome);
+        Assert.Equal(taker.DisplayName, kick.PenaltyKick.Taker.DisplayName);
+        Assert.Equal(outcome == "Saved" ? keeper.DisplayName : null, kick.SecondaryPlayerDisplayName);
+        var ownGoal = Assert.Single(events, e => e.IsOwnGoal);
+        Assert.Equal(away.Id, ownGoal.ClubId);
+        Assert.Equal(taker.DisplayName, ownGoal.PrimaryPlayerDisplayName);
+    }
+
     [Fact] public async Task ConcurrentDifferentChoicesProduceOneKickAndDurableReceiptSurvivesRestart()
     {
         var(w,r,s,m,a,b)=await Room();var p=Pending(w,m,a);
@@ -147,6 +186,11 @@ public class MatchInteractionDecisionTests
             var automatic=JsonSerializer.Deserialize<MatchFixture>(template)!;automatic.CurrentMinute=30;automatic.LastSimulatedMinute=29;
             MatchSimulationEngine.SimulateSingleMinute(automatic,home,away,Players(),ManagerTacticalIdentity.Equilibrado,ManagerTacticalIdentity.Equilibrado,seed);
             Assert.Empty(automatic.PendingPenalties);Assert.Equal(automatic.HomeGoals,manual.HomeGoals);Assert.Equal(automatic.AwayGoals,manual.AwayGoals);
+            var presentation = Assert.Single(automatic.Events, e => e.PenaltyKick is not null).PenaltyKick!;
+            Assert.Null(presentation.DecisionId);
+            Assert.Equal(chosen.Id, presentation.Taker.PlayerId);
+            Assert.Equal(automatic.HomeGoals, presentation.HomeGoals);
+            Assert.Equal(automatic.AwayGoals, presentation.AwayGoals);
             break;
         }
         Assert.True(found,"A real deterministic seed must award a human penalty.");

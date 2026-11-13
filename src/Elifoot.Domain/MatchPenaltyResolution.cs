@@ -4,8 +4,9 @@ public static partial class MatchSimulationEngine
 {
     public static void ResolvePenaltyKick(MatchFixture match, Club attackingClub, Player penTaker,
         Player? defendingGk, double goalkeeperPower, bool isHomeAttacking, int minute,
-        double convRoll, List<MatchEventRecord> events)
+        double convRoll, List<MatchEventRecord> events, Guid? decisionId = null)
     {
+            var taker = new PenaltyTakerChoiceDto(penTaker.Id, penTaker.DisplayName, penTaker.Position, penTaker.Strength, penTaker.IsStar);
             double takerSkill = 0.74 + (penTaker.Strength - 25) * 0.004 + (penTaker.IsStar ? 0.06 : 0.0);
             double gkResist = goalkeeperPower * 0.003;
             double penConvProb = Math.Clamp(takerSkill - gkResist, 0.58, 0.88);
@@ -13,6 +14,7 @@ public static partial class MatchSimulationEngine
             if (convRoll < penConvProb)
             {
                 RecordGoalScored(match, attackingClub, penTaker, isHomeAttacking, minute, isPenalty: true, events);
+                match.Events[^1].PenaltyKick = new(decisionId, taker, "Goal", match.HomeGoals, match.AwayGoals);
             }
             else
             {
@@ -24,6 +26,7 @@ public static partial class MatchSimulationEngine
                 {
                     Minute = minute,
                     EventType = MatchEventType.PenaltyMissed,
+                    PenaltyKick = new(decisionId, taker, isGoalkeeperSave ? "Saved" : "Wide", match.HomeGoals, match.AwayGoals),
                     ClubId = attackingClub.Id,
                     ClubName = attackingClub.Name,
                     PrimaryPlayerId = penTaker.Id,

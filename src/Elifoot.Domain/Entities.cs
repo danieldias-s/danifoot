@@ -370,6 +370,8 @@ public class MatchFixture
 
 public class MatchEventRecord
 {
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public PenaltyKickPresentationDto? PenaltyKick { get; set; }
     public int? DisciplinarySuspensionMatches { get; set; }
     public bool IsOwnGoal { get; set; }
     public int Minute { get; set; }

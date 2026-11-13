@@ -105,6 +105,24 @@ class ClubClickApi extends WaitingRoomApi {
   }
 }
 
+Map<String, dynamic> incident(
+  String type,
+  int minute,
+  String club,
+  String player, {
+  String? other,
+  bool ownGoal = false,
+  String? outcome,
+}) => {
+  'eventType': type,
+  'minute': minute,
+  'clubId': club,
+  'primaryPlayerDisplayName': player,
+  'secondaryPlayerDisplayName': other,
+  'isOwnGoal': ownGoal,
+  if (outcome != null) 'penaltyKick': {'outcome': outcome},
+};
+
 void main() {
   test(
     'Last-event text uses official type and never invents actions or a past score',
@@ -128,6 +146,155 @@ void main() {
       );
     },
   );
+  test('Event labels identify the official players and outcomes', () {
+    for (final (event, label) in [
+      (incident('Goal', 54, 'home', 'César'), 'Gol! César'),
+      (
+        incident('Goal', 54, 'home', 'César', ownGoal: true),
+        'Gol contra! César',
+      ),
+      (
+        incident('Goal', 54, 'home', 'César', outcome: 'Goal'),
+        'Pênalti convertido! César',
+      ),
+      (incident('YellowCard', 54, 'home', 'Pablo'), 'Pablo'),
+      (incident('DirectRedCard', 54, 'home', 'Pablo'), 'Pablo'),
+      (incident('SecondYellowRedCard', 54, 'home', 'Pablo'), 'Pablo'),
+      (
+        incident('Substitution', 54, 'home', 'Álex', other: 'Hugo'),
+        'Sai: Hugo → Entra: Álex',
+      ),
+      (incident('Injury', 54, 'home', 'Mamadou'), 'Lesão! Mamadou'),
+      (incident('Offside', 54, 'home', 'Pablo'), 'Impedimento Pablo'),
+      (
+        incident(
+          'PenaltyMissed',
+          54,
+          'home',
+          'César',
+          outcome: 'Saved',
+          other: 'Rubén',
+        ),
+        'Pênalti defendido! César (defesa de Rubén)',
+      ),
+      (
+        incident('PenaltyMissed', 54, 'home', 'César', outcome: 'Wide'),
+        'Pênalti para fora! César',
+      ),
+    ]) {
+      expect(classicLiveEventText(event), '$label (54′)');
+    }
+  });
+
+  for (final width in [390.0, 1366.0]) {
+    testWidgets(
+      'Last event per side and fixture survives stale updates at $width',
+      (t) async {
+        t.view.physicalSize = Size(width, 1000);
+        t.view.devicePixelRatio = 1;
+        addTearDown(t.view.resetPhysicalSize);
+        addTearDown(t.view.resetDevicePixelRatio);
+        final api = ClubClickApi();
+        await join(t, api);
+        await PresentationScope.maybeOf(
+          t.element(find.byType(ElifootShellScreen)),
+        )!.select(api, PresentationVersion.classic);
+        await t.pumpAndSettle();
+        await api.emit('RUNNING_SECOND_HALF');
+        await t.pumpAndSettle();
+        final snap = await api.getSnapshot('world-011');
+        final matches = snap['matches'] as List;
+        final homeGoal = incident('Goal', 54, 'club-1', 'César Gelabert');
+        final awayRed = incident(
+          'SecondYellowRedCard',
+          81,
+          'club-2',
+          'Pedro Costa',
+        );
+        const outgoing = 'Hugo Guillamón com nome extremamente comprido';
+        final homeEvents = [
+          homeGoal,
+          incident('YellowCard', 69, 'club-1', 'Pablo García'),
+          incident(
+            'Substitution',
+            72,
+            'club-1',
+            'Álex Corredera',
+            other: outgoing,
+          ),
+          incident('Injury', 75, 'club-1', 'Mamadou Loum'),
+        ];
+        final homeCell = find.byKey(
+          const ValueKey('classic-last-event-match-1-home'),
+        );
+        final awayCell = find.byKey(
+          const ValueKey('classic-last-event-match-1-away'),
+        );
+        final otherCell = find.byKey(
+          const ValueKey('classic-last-event-foreign-live-home'),
+        );
+        final row = find.byKey(const ValueKey('coach-highlighted-match-card'));
+        final height = t.getSize(row).height;
+        String tooltip(Finder cell) => t.widget<Tooltip>(cell).message!;
+        final stale = await api.getSnapshot('world-011');
+        final expected = [
+          'Gol! César Gelabert (54′)',
+          'Cartão amarelo • Pablo García (69′)',
+          'Sai: $outgoing → Entra: Álex Corredera (72′)',
+          'Lesão! Mamadou Loum (75′)',
+        ];
+        for (var i = 0; i < expected.length; i++) {
+          final events = [...homeEvents.take(i + 1).skip(1), awayRed, homeGoal];
+          api.onSnapshotUpdated!.call({
+            ...snap,
+            'roundVersion': (snap['roundVersion'] as int) + i + 1,
+            'matches': [
+              {
+                ...matches.first as Map<String, dynamic>,
+                'homeGoals': 3,
+                'events': events,
+              },
+              {
+                ...matches.last as Map<String, dynamic>,
+                'events': [
+                  incident(
+                    'DirectRedCard',
+                    70,
+                    'foreign-home',
+                    'Expulso do outro jogo',
+                  ),
+                ],
+              },
+            ],
+          });
+          await t.pumpAndSettle();
+          expect(tooltip(homeCell), endsWith(expected[i]));
+          expect(
+            tooltip(awayCell),
+            endsWith('Segundo amarelo e expulsão • Pedro Costa (81′)'),
+          );
+          expect(
+            tooltip(otherCell),
+            endsWith('Cartão vermelho • Expulso do outro jogo (70′)'),
+          );
+          expect(
+            find.descendant(of: row, matching: find.text('3 x 1')),
+            findsOneWidget,
+          );
+          expect(t.getSize(row).height, height);
+        }
+        api.onSnapshotUpdated!.call(stale);
+        await t.pumpAndSettle();
+        expect(tooltip(homeCell), endsWith(expected.last));
+        expect(
+          find.descendant(of: row, matching: find.text('3 x 1')),
+          findsOneWidget,
+        );
+        expect(t.takeException(), isNull);
+      },
+    );
+  }
+
   for (final width in [360.0, 390.0, 430.0, 768.0, 1366.0, 1920.0]) {
     testWidgets('Classic list and live team consultation at $width px', (
       t,

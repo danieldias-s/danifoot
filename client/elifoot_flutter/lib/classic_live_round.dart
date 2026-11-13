@@ -7,24 +7,107 @@ import 'match_gate.dart';
 /// Compact display of official events; never generates commentary or scores.
 String classicLiveEventText(Map<String, dynamic>? event) {
   if (event == null) return 'Sem lance registrado';
-  final label = switch (eventType(event)) {
-    'Goal' => 'Gol!',
-    'YellowCard' => 'Cartão amarelo',
-    'DirectRedCard' || 'SecondYellowRedCard' => 'Expulsão',
-    'Injury' => 'Lesão',
-    'Substitution' => 'Substituição',
-    'TacticChange' => 'Alteração tática',
-    'PenaltyAwarded' => 'Pênalti',
-    'PenaltyMissed' => 'Pênalti perdido',
-    'PenaltyShootoutGoal' => 'Gol nos pênaltis',
-    'PenaltyShootoutMiss' => 'Pênalti perdido',
-    'Offside' => 'Impedimento',
+  final kind = _liveEventKind(event);
+  final kick = event['penaltyKick'] as Map?;
+  final player =
+      (kick?['taker'] as Map?)?['displayName']?.toString() ??
+      event['primaryPlayerDisplayName']?.toString();
+  final secondary = event['secondaryPlayerDisplayName']?.toString();
+  String withPlayer(String label) =>
+      player == null || player.isEmpty ? label : '$label $player';
+  final description = event['description']?.toString().replaceFirst(
+    RegExp(r"^\d+['’′]\s*"),
+    '',
+  );
+  final label = switch (kind) {
+    'Goal' => withPlayer('Gol!'),
+    'OwnGoal' => withPlayer('Gol contra!'),
+    'PenaltyGoal' => withPlayer('Pênalti convertido!'),
+    'YellowCard' => player ?? 'Cartão amarelo',
+    'DirectRedCard' => player ?? 'Cartão vermelho',
+    'SecondYellowRedCard' => player ?? 'Segundo amarelo e expulsão',
+    'Injury' => withPlayer('Lesão!'),
+    'Substitution' when secondary != null && player != null =>
+      'Sai: $secondary → Entra: $player',
+    'Substitution' => description ?? 'Substituição',
+    'TacticChange' => description ?? 'Alteração tática',
+    'PenaltyAwarded' => withPlayer('Pênalti'),
+    'PenaltySaved' when secondary != null =>
+      "${withPlayer('Pênalti defendido!')} (defesa de $secondary)",
+    'PenaltySaved' => withPlayer('Pênalti defendido!'),
+    'PenaltyWide' => withPlayer('Pênalti para fora!'),
+    'PenaltyMissed' || 'PenaltyShootoutMiss' => withPlayer('Pênalti perdido'),
+    'PenaltyShootoutGoal' => description ?? withPlayer('Gol nos pênaltis'),
+    'Offside' => withPlayer('Impedimento'),
     'HalftimeReached' => 'Intervalo',
     'ExtraTimeStarted' => 'Prorrogação',
-    'GlobalPauseTriggered' => 'Pausa',
-    _ => '${event['description'] ?? 'Lance registrado'}',
+    'GlobalPauseTriggered' => description ?? 'Pausa',
+    _ => description ?? withPlayer('Lance registrado'),
   };
   return event['minute'] == null ? label : '$label (${event['minute']}′)';
+}
+
+String _liveEventKind(Map<String, dynamic> event) {
+  final type = eventType(event);
+  final kick = event['penaltyKick'] as Map?;
+  final description = (event['description'] as String? ?? '').toUpperCase();
+  return switch (type) {
+    'Goal' when event['isOwnGoal'] == true => 'OwnGoal',
+    'Goal'
+        when kick?['outcome'] == 'Goal' ||
+            (kick == null && description.contains('(PÊNALTI)')) =>
+      'PenaltyGoal',
+    'PenaltyMissed'
+        when kick?['outcome'] == 'Saved' ||
+            (kick == null && description.contains('PÊNALTI DEFENDIDO!')) =>
+      'PenaltySaved',
+    'PenaltyMissed'
+        when kick?['outcome'] == 'Wide' ||
+            (kick == null && description.contains('PÊNALTI PARA FORA!')) =>
+      'PenaltyWide',
+    _ => type,
+  };
+}
+
+Widget? _liveEventIcon(String kind) {
+  const red = Color(0xFFC52025);
+  const yellow = Color(0xFFFFD937);
+  Widget card(Color color) => Container(
+    width: 7,
+    height: 10,
+    decoration: BoxDecoration(
+      color: color,
+      border: Border.all(color: const Color(0xFF493F31), width: .6),
+    ),
+  );
+  return switch (kind) {
+    'YellowCard' => card(yellow),
+    'DirectRedCard' => card(red),
+    'SecondYellowRedCard' => SizedBox(
+      width: 11,
+      height: 13,
+      child: Stack(
+        children: [
+          Positioned(left: 0, top: 0, child: card(yellow)),
+          Positioned(right: 0, bottom: 0, child: card(red)),
+        ],
+      ),
+    ),
+    'Injury' => const Icon(Icons.add_box_sharp, color: red, size: 14),
+    'Goal' ||
+    'OwnGoal' ||
+    'PenaltyGoal' ||
+    'PenaltyAwarded' ||
+    'PenaltyShootoutGoal' => const Icon(Icons.sports_soccer, size: 13),
+    'PenaltyWide' || 'PenaltyMissed' || 'PenaltyShootoutMiss' => const Icon(
+      Icons.close_sharp,
+      size: 14,
+      color: red,
+    ),
+    'PenaltySaved' => const Icon(Icons.pan_tool_sharp, size: 13),
+    'Offside' => const Icon(Icons.flag_sharp, size: 13),
+    _ => null,
+  };
 }
 
 class ClassicReferenceMatchList extends StatelessWidget {
@@ -54,14 +137,6 @@ class ClassicReferenceMatchList extends StatelessWidget {
     final full = '${match['${side}ClubName'] ?? '—'}';
     final short = clubs['${match['${side}ClubId']}']?['shortName'];
     return mobile || short == null || '$short'.isEmpty ? full : '$short';
-  }
-
-  Map<String, dynamic>? _last(Map<String, dynamic> match, [String? side]) {
-    final events = officialMatchEvents(match);
-    if (side == null) return events.lastOrNull;
-    return events
-        .where((e) => e['clubId'] == match['${side}ClubId'])
-        .lastOrNull;
   }
 
   @override
@@ -180,34 +255,80 @@ class ClassicReferenceMatchList extends StatelessWidget {
       );
     }
 
-    Widget event([String? side]) {
-      final last = _last(match, side);
-      var text = classicLiveEventText(last);
-      if (mobile && last != null) {
-        final club = clubs['${last['clubId']}'];
-        final name = club?['shortName'] ?? last['clubName'];
-        if (name != null && '$name'.isNotEmpty) text = '$name: $text';
-      }
+    final events = officialMatchEvents(match);
+    Widget event(String side) {
+      final club = match['${side}ClubId'];
+      final last = events.reversed
+          .where((e) => e['clubId'] == club)
+          .firstOrNull;
+      final text = classicLiveEventText(last);
+      final kind = last == null ? '' : _liveEventKind(last);
+      final icon = _liveEventIcon(kind);
+      final clubName = _clubName(match, side);
+      final style = TextStyle(
+        color: Colors.black,
+        fontFamily: 'ClassicCondensed',
+        fontWeight: FontWeight.w600,
+        fontSize: mobile ? 11 : 14,
+        height: 1.1,
+      );
+      final entry = last?['primaryPlayerDisplayName'];
+      final exit = last?['secondaryPlayerDisplayName'];
+      final substitution =
+          kind == 'Substitution' && entry != null && exit != null;
+      final detail = switch (kind) {
+        'YellowCard' when entry != null => 'Cartão amarelo • $text',
+        'DirectRedCard' when entry != null => 'Cartão vermelho • $text',
+        'SecondYellowRedCard' when entry != null =>
+          'Segundo amarelo e expulsão • $text',
+        _ => text,
+      };
       return Tooltip(
-        message: '${last?['description'] ?? text}',
+        key: ValueKey('classic-last-event-$id-$side'),
+        message: '$clubName • $detail',
         child: Container(
           constraints: BoxConstraints(minHeight: mobile ? 54 : 36),
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+          padding: EdgeInsets.symmetric(
+            horizontal: mobile ? 2 : 5,
+            vertical: 3,
+          ),
           decoration: BoxDecoration(
             color: mobile ? const Color(0xFFD9F0CF) : cream,
             border: Border.all(color: const Color(0xFF898B7C), width: .6),
           ),
-          child: Text(
-            text,
-            maxLines: mobile ? 3 : 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-              fontSize: mobile ? 11 : 14,
-              height: 1.1,
-            ),
+          child: Row(
+            children: [
+              if (icon != null) ...[icon, const SizedBox(width: 3)],
+              Expanded(
+                child: substitution
+                    ? Text.rich(
+                        TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: 'Sai: ',
+                              style: TextStyle(color: Color(0xFF9E1C22)),
+                            ),
+                            TextSpan(text: '$exit → '),
+                            const TextSpan(
+                              text: 'Entra: ',
+                              style: TextStyle(color: Color(0xFF125F34)),
+                            ),
+                            TextSpan(text: '$entry (${last!['minute']}′)'),
+                          ],
+                        ),
+                        maxLines: mobile ? 3 : 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: style,
+                      )
+                    : Text(
+                        text,
+                        maxLines: mobile ? 3 : 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: style,
+                      ),
+              ),
+            ],
           ),
         ),
       );
@@ -256,7 +377,15 @@ class ClassicReferenceMatchList extends StatelessWidget {
                 Expanded(flex: 28, child: team('home')),
                 Expanded(flex: 13, child: score),
                 Expanded(flex: 28, child: team('away')),
-                Expanded(flex: 31, child: event()),
+                Expanded(
+                  flex: 31,
+                  child: Row(
+                    children: [
+                      Expanded(child: event('home')),
+                      Expanded(child: event('away')),
+                    ],
+                  ),
+                ),
               ]
             : [
                 SizedBox(

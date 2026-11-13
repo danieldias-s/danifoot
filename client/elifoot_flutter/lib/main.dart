@@ -24,6 +24,7 @@ import 'live_match_data.dart';
 import 'live_match_view.dart';
 import 'live_match_navigation.dart';
 import 'match_interaction_dialog.dart';
+import 'classic_penalty_dialog.dart';
 import 'tactical_formation.dart';
 import 'appearance_settings.dart';
 import 'catalog_provenance.dart';
@@ -260,6 +261,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   // In-match substitution selection state
   String? _matchInteractionNotice;
   String? _lastInteractionId;
+  String? _penaltyPresentationRoom;
+  final _classicPenaltyResults =
+      <({String id, Map<String, dynamic> event, Map<String, dynamic> match})>[];
 
   // Editor state
 
@@ -651,6 +655,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
     final next = _preferLatestSnapshot(incoming);
     if (next != null) {
+      _queueClassicPenalties(next);
       final interactionId =
           (next['pendingPenalty']?['decisionId'] ??
                   next['activePauseWindow']?['pauseWindowId'])
@@ -741,6 +746,47 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       });
     }
     return next;
+  }
+
+  void _queueClassicPenalties(Map<String, dynamic> next) {
+    final room = '$_worldId:$_coachId';
+    if (_penaltyPresentationRoom != room) {
+      _penaltyPresentationRoom = room;
+      _classicPenaltyResults.clear();
+      return;
+    }
+    final previous = _snapshot;
+    if (widget.presentation?.version != PresentationVersion.classic ||
+        previous == null ||
+        identical(previous, next) ||
+        previous['seasonNumber'] != next['seasonNumber'] ||
+        previous['roundNumber'] != next['roundNumber'])
+      return;
+    final previousMatches = {
+      for (final match in (previous['matches'] as List? ?? []).whereType<Map>())
+        match['matchId']: (match['events'] as List? ?? []).length,
+    };
+    for (final match in (next['matches'] as List? ?? []).whereType<Map>()) {
+      final id = match['matchId'];
+      final firstNew = previousMatches[id];
+      if (firstNew == null) continue;
+      final events = match['events'] as List? ?? [];
+      for (var index = firstNew; index < events.length; index++) {
+        final event = events[index];
+        if (event is! Map || event['penaltyKick'] is! Map) continue;
+        final kick = event['penaltyKick'] as Map;
+        if (kick['decisionId'] == null &&
+            match['homeClubId'] != _myClubId &&
+            match['awayClubId'] != _myClubId &&
+            id != _liveSelection.matchId)
+          continue;
+        _classicPenaltyResults.add((
+          id: '${next['seasonNumber']}:${next['roundNumber']}:$id:$index',
+          event: Map<String, dynamic>.from(event),
+          match: Map<String, dynamic>.from(match),
+        ));
+      }
+    }
   }
 
   void _returnToCoachHome() {
@@ -3054,28 +3100,56 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   Widget? _buildMatchInteraction() {
     final penalty = _snapshot?['pendingPenalty'];
+    final classic = widget.presentation?.version == PresentationVersion.classic;
+    if (classic &&
+        _penaltyPresentationRoom == '$_worldId:$_coachId' &&
+        _classicPenaltyResults.isNotEmpty) {
+      final result = _classicPenaltyResults.first;
+      return ClassicPenaltyResult(
+        key: ValueKey('penalty-result-${result.id}'),
+        event: result.event,
+        match: result.match,
+        isOwnKick:
+            result.event['penaltyKick']['decisionId'] != null &&
+            result.event['clubId'] == _myClubId,
+        onDone: () => setState(() => _classicPenaltyResults.removeAt(0)),
+      );
+    }
     if (penalty is Map) {
       final value = Map<String, dynamic>.from(penalty);
+      final key = ValueKey('penalty-${value['decisionId']}');
+      final choosing = value['coachId'] == _coachId;
+      void shoot(String player) => _runUiCommand(() async {
+        try {
+          final snap = await widget.apiClient.choosePenaltyTaker(
+            _worldId!,
+            _coachId!,
+            '${value['decisionId']}',
+            player,
+          );
+          if (mounted) setState(() => _snapshot = _acceptSnapshot(snap));
+        } catch (e) {
+          if (mounted) setState(() => _matchInteractionNotice = '$e');
+          rethrow;
+        }
+      });
+      if (classic) {
+        return ClassicPenaltyDialog(
+          key: key,
+          penalty: value,
+          choosing: choosing,
+          busy: _commandBusy,
+          notice: _matchInteractionNotice,
+          onShoot: shoot,
+        );
+      }
       return PenaltyChoiceDialog(
-        key: ValueKey('penalty-${value['decisionId']}'),
+        key: key,
         penalty: value,
-        choosing: value['coachId'] == _coachId,
+        choosing: choosing,
         busy: _commandBusy,
         notice: _matchInteractionNotice,
-        onShoot: (player) => _runUiCommand(() async {
-          try {
-            final snap = await widget.apiClient.choosePenaltyTaker(
-              _worldId!,
-              _coachId!,
-              '${value['decisionId']}',
-              player,
-            );
-            if (mounted) setState(() => _snapshot = _acceptSnapshot(snap));
-          } catch (e) {
-            if (mounted) setState(() => _matchInteractionNotice = '$e');
-            rethrow;
-          }
-        }),
+        onShoot: shoot,
       );
     }
     final pauseRaw = _snapshot?['activePauseWindow'];

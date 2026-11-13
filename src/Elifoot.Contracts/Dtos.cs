@@ -200,6 +200,9 @@ public record MatchLineupPlayerDto(
     public bool IsOnPitch { get; init; }
 }
 
+public record PenaltyKickPresentationDto(Guid? DecisionId, PenaltyTakerChoiceDto Taker,
+    string Outcome, int HomeGoals, int AwayGoals);
+
 public record MatchEventDto(
     int Minute,
     MatchEventType EventType,
@@ -209,7 +212,13 @@ public record MatchEventDto(
     string? PrimaryPlayerDisplayName,
     Guid? SecondaryPlayerId,
     string? SecondaryPlayerDisplayName,
-    string Description);
+    string Description)
+{
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public bool IsOwnGoal { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public PenaltyKickPresentationDto? PenaltyKick { get; init; }
+}
 
 public record PlayerDto(
     Guid Id,

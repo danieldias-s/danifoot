@@ -1331,7 +1331,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                     e.Minute, e.EventType, e.ClubId, e.ClubName,
                     e.PrimaryPlayerId, e.PrimaryPlayerDisplayName,
                     e.SecondaryPlayerId, e.SecondaryPlayerDisplayName,
-                    e.Description)).ToList(),
+                    e.Description) { PenaltyKick = e.PenaltyKick, IsOwnGoal = e.IsOwnGoal }).ToList(),
                 HomeStarters: MapLineup(homeStarterSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
                 HomeBench: MapLineup(homeBenchSource, m.HomeYellowCardsInMatch, m.HomeSentOffIds, m.HomeInjuredInMatchIds, m.HomeSubstitutedOutIds, m.HomeSubstitutedInIds),
                 AwayStarters: MapLineup(awayStarterSource, m.AwayYellowCardsInMatch, m.AwaySentOffIds, m.AwayInjuredInMatchIds, m.AwaySubstitutedOutIds, m.AwaySubstitutedInIds),

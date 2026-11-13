@@ -5,20 +5,25 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:elifoot_flutter/api_client.dart';
 import 'package:elifoot_flutter/match_interaction_dialog.dart';
+import 'package:elifoot_flutter/main.dart';
+import 'package:elifoot_flutter/presentation_version.dart';
+import 'package:elifoot_flutter/presentation_widgets.dart';
 import 'classic_ux_014b_test.dart' show WaitingRoomApi, join;
 
 class PenaltyRoomApi extends WaitingRoomApi {
   final bool mine;
   bool pending = true;
   String? chosen;
+  String? outcome;
+  bool automatic = false;
   PenaltyRoomApi(this.mine) : super(2) {
     currentRoundState = 'RUNNING_FIRST_HALF';
   }
   @override
   Future<Map<String, dynamic>> getSnapshot(String world) async {
     final snap = await super.getSnapshot(world);
+    final m = (snap['matches'] as List).first;
     if (pending) {
-      final m = (snap['matches'] as List).first;
       snap['pendingPenalty'] = {
         'decisionId': 'decision-37',
         'matchId': m['matchId'],
@@ -39,6 +44,27 @@ class PenaltyRoomApi extends WaitingRoomApi {
             )
             .toList(),
       };
+    } else if (outcome != null) {
+      (m['events'] as List).add({
+        'type': outcome == 'Goal' ? 'Goal' : 'PenaltyMissed',
+        'minute': 42,
+        'clubId': mine ? 'club-1' : 'club-2',
+        'clubName': mine ? 'Atlético Verde' : 'Real Dourado',
+        'description': 'Cobrança de pênalti',
+        'penaltyKick': {
+          'decisionId': automatic ? null : 'decision-37',
+          'outcome': outcome,
+          'homeGoals': 3,
+          'awayGoals': 1,
+          'taker': {
+            'playerId': 'p-2',
+            'displayName': 'Titular 2',
+            'position': 'D',
+            'strength': 43,
+            'isStar': false,
+          },
+        },
+      });
     }
     return snap;
   }
@@ -82,6 +108,80 @@ class FinishedClubPauseApi extends WaitingRoomApi {
 }
 
 void main() {
+  Future<void> joinClassic(WidgetTester tester, PenaltyRoomApi api) async {
+    tester.view.physicalSize = const Size(320, 950);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await join(tester, api);
+    tester.view.physicalSize = const Size(320, 600);
+    await PresentationScope.maybeOf(
+      tester.element(find.byType(ElifootShellScreen)),
+    )!.select(api, PresentationVersion.classic);
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> press(WidgetTester tester, String key) async {
+    final button = find.byKey(ValueKey(key));
+    await tester.ensureVisible(button);
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+  }
+
+  testWidgets(
+    'Classic penalty shows the chosen taker and score before closing',
+    (tester) async {
+      final api = PenaltyRoomApi(true)..outcome = 'Goal';
+      await joinClassic(tester, api);
+      expect(find.text('EM CAMPO (11)'), findsOneWidget);
+      await press(tester, 'penalty-taker-p-2');
+      await press(tester, 'announce-penalty-taker');
+      expect(find.text('Titular 2 vai cobrar.'), findsOneWidget);
+      expect(api.chosen, isNull);
+      await press(tester, 'confirm-penalty-taker');
+      expect(api.chosen, 'p-2');
+      expect(find.text('GOL!'), findsOneWidget);
+      expect(find.text('3 x 1'), findsOneWidget);
+      await press(tester, 'acknowledge-penalty-result');
+      await api.emit('RUNNING_FIRST_HALF');
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('penalty-result-dialog')), findsNothing);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  for (final automatic in [false, true]) {
+    testWidgets(
+      'Classic observer sees waiting, taker and outcome (AI: $automatic)',
+      (tester) async {
+        final api = PenaltyRoomApi(false)
+          ..automatic = automatic
+          ..pending = !automatic;
+        await joinClassic(tester, api);
+        if (!automatic) expect(find.text('AGUARDE'), findsOneWidget);
+        expect(find.byKey(const Key('confirm-penalty-taker')), findsNothing);
+        api
+          ..pending = false
+          ..outcome = automatic ? 'Wide' : 'Saved';
+        await api.emit('RUNNING_FIRST_HALF');
+        await tester.pump();
+        if (automatic) {
+          expect(find.text('AGUARDE'), findsOneWidget);
+          await tester.pump(const Duration(milliseconds: 700));
+        }
+        expect(find.text('Titular 2 vai cobrar.'), findsOneWidget);
+        await tester.pump(const Duration(milliseconds: 1450));
+        expect(
+          find.text(automatic ? 'PRA FORA!' : 'DEFENDEU!'),
+          findsOneWidget,
+        );
+        await press(tester, 'acknowledge-penalty-result');
+        expect(api.chosen, isNull);
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+
   testWidgets(
     'Finished club observes another clubs extra-time break without edit controls',
     (tester) async {

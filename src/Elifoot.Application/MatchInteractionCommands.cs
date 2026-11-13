@@ -56,7 +56,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             if(taker==null || !kick.EligiblePlayerIds.Contains(taker.Id) || !active.Contains(taker.Id) || injured.Contains(taker.Id) || sentOff.Contains(taker.Id) || (match.ForceRulesVersion==ClassicForceEvolutionEngine.Version && taker.InjuryDaysRemaining>0))
                 return (false,"Escolha um jogador apto que esteja em campo.",BuildLiveRoundSnapshotDto(world));
             var club=world.Clubs.First(c=>c.Id==kick.ClubId);
-            MatchSimulationEngine.ResolvePenaltyKick(match,club,taker,world.Players.FirstOrDefault(p=>p.Id==kick.GoalkeeperId),kick.GoalkeeperPower,match.HomeClubId==club.Id,kick.Minute,kick.ConversionRoll,new List<MatchEventRecord>());
+            MatchSimulationEngine.ResolvePenaltyKick(match,club,taker,world.Players.FirstOrDefault(p=>p.Id==kick.GoalkeeperId),kick.GoalkeeperPower,match.HomeClubId==club.Id,kick.Minute,kick.ConversionRoll,new List<MatchEventRecord>(),kick.Id);
             match.PendingPenalties.Remove(kick);
             RecordInteraction(world,key,fingerprint); RecordInteraction(world,decisionKey,fingerprint);
             if(match.PendingPenalties.Count==0) {
