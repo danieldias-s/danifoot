@@ -388,20 +388,15 @@ class SubstitutionChoicePanel extends StatefulWidget {
 }
 
 class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
-  String? outId, inId, formation;
+  String? outId, inId, selectedFormation;
   String get current =>
       '${widget.match[widget.isHome ? 'homeFormation' : 'awayFormation'] ?? '4-4-2'}';
-  @override
-  void initState() {
-    super.initState();
-    formation = current;
-  }
 
   @override
   void didUpdateWidget(covariant SubstitutionChoicePanel old) {
     super.didUpdateWidget(old);
     if (old.match[old.isHome ? 'homeFormation' : 'awayFormation'] != current) {
-      formation = current;
+      selectedFormation = null;
     }
   }
 
@@ -426,27 +421,39 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
           widget.coachId,
         ));
     final active = !widget.busy && !widget.confirmed;
-    final validOut =
-        starters.any(
+    final outgoing = starters
+        .where(
           (p) =>
               '${p['playerId']}' == outId &&
               p['isSentOff'] != true &&
               p['wasSubstitutedOut'] != true,
         )
-        ? outId
-        : null;
-    final validIn =
-        bench.any(
+        .firstOrNull;
+    final incoming = bench
+        .where(
           (p) =>
               '${p['playerId']}' == inId &&
               p['isSentOff'] != true &&
               p['isInjuredInMatch'] != true,
         )
-        ? inId
+        .firstOrNull;
+    final pair = outgoing != null && incoming != null;
+    final partial = (outgoing != null) != (incoming != null);
+    final projected = pair
+        ? [
+            for (final player in _playersOnPitch(starters))
+              if (player['playerId'] != outgoing['playerId']) player,
+            Map<String, dynamic>.from(incoming),
+          ]
         : null;
-    final pair = validOut != null && validIn != null,
-        partial = (validOut != null) != (validIn != null),
-        changed = formation != current;
+    final inferred =
+        pair && _pos(outgoing['position']) != _pos(incoming['position'])
+        ? formationFromPlayers(projected!, current)
+        : current;
+    final allowed = inferred != '5-0-5' || widget.formations.contains(inferred);
+    final formation = selectedFormation ?? (allowed ? inferred : current);
+    final choices = {...widget.formations, current, formation};
+    final changed = formation != current;
     return Column(
       key: const ValueKey('in-match-substitution-panel'),
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -488,8 +495,11 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
             match: widget.match,
             side: side,
             formationOverride: formation,
+            projectedPlayers: projected,
             onPlayer: active && hasWindow && used < max
-                ? (id) => setState(() => outId = id)
+                ? (id) {
+                    if (id != inId) setState(() => outId = id);
+                  }
                 : null,
           ),
         LayoutBuilder(
@@ -497,7 +507,7 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
             final left = _MatchPlayerList(
               title: 'EM CAMPO — SAI',
               players: starters,
-              selected: validOut,
+              selected: outgoing == null ? null : outId,
               playerKeyPrefix: 'sub-select-out',
               enabled: active && hasWindow && used < max,
               onSelect: (id) => setState(() => outId = id),
@@ -505,7 +515,7 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
             final right = _MatchPlayerList(
               title: 'BANCO — ENTRA',
               players: bench,
-              selected: validIn,
+              selected: incoming == null ? null : inId,
               playerKeyPrefix: 'sub-select-in',
               enabled: active && hasWindow && used < max,
               onSelect: (id) => setState(() => inId = id),
@@ -530,9 +540,7 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
           children: [
             DropdownButton<String>(
               key: const ValueKey('in-match-formation-dropdown'),
-              value: widget.formations.contains(formation)
-                  ? formation
-                  : '4-4-2',
+              value: formation,
               dropdownColor: Colors.white,
               style: TextStyle(
                 fontFamily: _dialogFont(context),
@@ -540,14 +548,14 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
                 fontSize: 12,
               ),
               iconEnabledColor: _ink,
-              items: widget.formations
+              items: choices
                   .map(
                     (f) =>
                         DropdownMenuItem(value: f, child: Text('Formação $f')),
                   )
                   .toList(),
               onChanged: active && hasWindow
-                  ? (f) => setState(() => formation = f)
+                  ? (f) => setState(() => selectedFormation = f)
                   : null,
             ),
             _actionButton(
@@ -562,12 +570,12 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
                       (!pair || used < max)
                   ? () async {
                       await widget.onApply(
-                        changed ? formation : null,
+                        selectedFormation,
                         pair
                             ? [
                                 {
-                                  'playerOutId': validOut,
-                                  'playerInId': validIn,
+                                  'playerOutId': '${outgoing['playerId']}',
+                                  'playerInId': '${incoming['playerId']}',
                                 },
                               ]
                             : [],
@@ -576,6 +584,7 @@ class _SubstitutionChoicePanelState extends State<SubstitutionChoicePanel> {
                         setState(() {
                           outId = null;
                           inId = null;
+                          selectedFormation = null;
                         });
                       }
                     }
@@ -642,33 +651,40 @@ class PauseWaitingContent extends StatelessWidget {
   );
 }
 
+List<Map<String, dynamic>> _playersOnPitch(Iterable<Map> players) => players
+    .where(
+      (p) =>
+          p['isSentOff'] != true &&
+          p['wasSubstitutedOut'] != true &&
+          p['isOnPitch'] != false,
+    )
+    .map((p) => Map<String, dynamic>.from(p))
+    .toList();
+
 /// The same live lineup schematic is used for observation and substitutions.
 class MatchTeamTacticalPitch extends StatelessWidget {
   final Map<String, dynamic> match;
   final String side;
   final String? formationOverride;
+  final List<Map<String, dynamic>>? projectedPlayers;
   final ValueChanged<String>? onPlayer;
   const MatchTeamTacticalPitch({
     super.key,
     required this.match,
     required this.side,
     this.formationOverride,
+    this.projectedPlayers,
     this.onPlayer,
   });
   @override
   Widget build(BuildContext context) {
     final formation =
         formationOverride ?? match['${side}Formation']?.toString();
-    final players = (match['${side}Starters'] as List? ?? [])
-        .whereType<Map>()
-        .where(
-          (p) =>
-              p['isSentOff'] != true &&
-              p['wasSubstitutedOut'] != true &&
-              p['isOnPitch'] != false,
-        )
-        .map((p) => Map<String, dynamic>.from(p))
-        .toList();
+    final players =
+        projectedPlayers ??
+        _playersOnPitch(
+          (match['${side}Starters'] as List? ?? []).whereType<Map>(),
+        );
     if (formation == null ||
         !isValidTacticalFormation(formation) ||
         players.isEmpty) {
@@ -677,9 +693,6 @@ class MatchTeamTacticalPitch extends StatelessWidget {
         child: Text('Tática ou escalação não informada nesta partida.'),
       );
     }
-    final normalized = players
-        .map((p) => {...p, 'position': squadPosition(p)})
-        .toList();
     final colors = matchTeamColors(
       ClassicTheme.of(context),
       match['${side}ColorPalette'] as Map?,
@@ -699,7 +712,12 @@ class MatchTeamTacticalPitch extends StatelessWidget {
             child: AbsorbPointer(
               absorbing: onPlayer == null,
               child: ClassicTacticalPitch(
-                lines: tacticalPitchLines(normalized, formation),
+                lines: tacticalPitchLines(
+                  players
+                      .map((p) => {...p, 'position': squadPosition(p)})
+                      .toList(),
+                  formation,
+                ),
                 shirt: colors.background,
                 ink: colors.ink,
                 aspectRatio: 1.35,

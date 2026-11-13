@@ -86,6 +86,43 @@ public class MatchInteractionDecisionTests
         Assert.True((await s.SubmitInMatchAdjustmentAsync(new(w.Id,a.Id,m.Id,null,new(){new(next,ins[2])},"half"))).Success);
         Assert.Equal(3,m.HomeUsedSubstitutions);Assert.Equal(1,m.HomeUsedPauseWindows);
     }
+    [Fact]
+    public async Task CrossPositionSubstitutionsUpdateTheOfficialFormationWithoutObscuringTheSubstitutionEvent()
+    {
+        var (world, _, service, match, coach, _) = await Room();
+        var players = world.Players.ToDictionary(p => p.Id);
+        PlayerPosition[] positions = [
+            PlayerPosition.G, PlayerPosition.D, PlayerPosition.D, PlayerPosition.D, PlayerPosition.D, PlayerPosition.D,
+            PlayerPosition.M, PlayerPosition.M, PlayerPosition.M, PlayerPosition.M, PlayerPosition.A
+        ];
+        var starters = match.HomeActiveStarterIds.ToArray();
+        var reserves = match.HomeBenchIds.Take(2).ToArray();
+        for (int i = 0; i < positions.Length; i++)
+            players[starters[i]].Position = positions[i];
+        foreach (var id in reserves) players[id].Position = PlayerPosition.A;
+        match.HomeFormation = "5-4-1";
+        Assert.True((await service.RequestGlobalPauseAsync(new(world.Id, coach.Id, "preparation"))).Success);
+
+        foreach (var (outgoing, incoming, formation) in new[]
+        {
+            (starters[1], reserves[0], "4-4-2"),
+            (starters[2], reserves[1], "3-4-3")
+        })
+        {
+            var result = await service.SubmitInMatchAdjustmentAsync(
+                new(world.Id, coach.Id, match.Id, null, [new(outgoing, incoming)], $"sub-{incoming}"));
+            Assert.True(result.Success, result.Error);
+            var state = result.Snapshot!.Matches.Single(m => m.MatchId == match.Id);
+            Assert.Equal(formation, state.HomeFormation);
+            Assert.Equal(formation, match.HomeFormation);
+            Assert.Contains(incoming, match.HomeActiveStarterIds);
+            Assert.DoesNotContain(outgoing, match.HomeActiveStarterIds);
+            Assert.Equal(MatchEventType.Substitution, state.Events.Last().EventType);
+        }
+
+        Assert.Equal(2, match.HomeUsedSubstitutions);
+        Assert.Equal(1, match.HomeUsedPauseWindows);
+    }
     [Fact] public async Task PenaltyFreezesEntireRoomPersistsAcrossReloadAndOnlyItsCoachCanChooseAnActivePlayer()
     {
         var(w,r,s,m,a,b)=await Room();var kick=Pending(w,m,a);long version=w.RoundVersion;

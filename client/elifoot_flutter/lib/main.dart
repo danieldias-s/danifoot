@@ -770,16 +770,16 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       final id = match['matchId'];
       final firstNew = previousMatches[id];
       if (firstNew == null) continue;
+      final isMyMatch =
+          _myClubId != null &&
+          (match['homeClubId'] == _myClubId ||
+              match['awayClubId'] == _myClubId);
       final events = match['events'] as List? ?? [];
       for (var index = firstNew; index < events.length; index++) {
         final event = events[index];
         if (event is! Map || event['penaltyKick'] is! Map) continue;
         final kick = event['penaltyKick'] as Map;
-        if (kick['decisionId'] == null &&
-            match['homeClubId'] != _myClubId &&
-            match['awayClubId'] != _myClubId &&
-            id != _liveSelection.matchId)
-          continue;
+        if (kick['decisionId'] == null && !isMyMatch) continue;
         _classicPenaltyResults.add((
           id: '${next['seasonNumber']}:${next['roundNumber']}:$id:$index',
           event: Map<String, dynamic>.from(event),
@@ -3102,6 +3102,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     final penalty = _snapshot?['pendingPenalty'];
     final classic = widget.presentation?.version == PresentationVersion.classic;
     if (classic &&
+        penalty is! Map &&
         _penaltyPresentationRoom == '$_worldId:$_coachId' &&
         _classicPenaltyResults.isNotEmpty) {
       final result = _classicPenaltyResults.first;

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:elifoot_flutter/api_client.dart';
+import 'package:elifoot_flutter/classic_layout.dart' show ClassicTacticalPitch;
 import 'package:elifoot_flutter/match_interaction_dialog.dart';
 import 'package:elifoot_flutter/main.dart';
 import 'package:elifoot_flutter/presentation_version.dart';
@@ -16,6 +17,7 @@ class PenaltyRoomApi extends WaitingRoomApi {
   String? chosen;
   String? outcome;
   bool automatic = false;
+  bool otherFixture = false;
   PenaltyRoomApi(this.mine) : super(2) {
     currentRoundState = 'RUNNING_FIRST_HALF';
   }
@@ -23,13 +25,25 @@ class PenaltyRoomApi extends WaitingRoomApi {
   Future<Map<String, dynamic>> getSnapshot(String world) async {
     final snap = await super.getSnapshot(world);
     final m = (snap['matches'] as List).first;
+    final other = {
+      ...m as Map<String, dynamic>,
+      'matchId': 'match-other',
+      'homeClubId': 'club-3',
+      'awayClubId': 'club-4',
+      'events': <Map<String, dynamic>>[],
+    };
+    if (otherFixture) snap['matches'] = [m, other];
     if (pending) {
       snap['pendingPenalty'] = {
         'decisionId': 'decision-37',
-        'matchId': m['matchId'],
+        'matchId': otherFixture ? other['matchId'] : m['matchId'],
         'coachId': mine ? 'coach-1' : 'other-1',
         'coachName': mine ? 'Treinador 1' : 'Treinador 2',
-        'clubId': mine ? 'club-1' : 'club-2',
+        'clubId': otherFixture
+            ? 'club-4'
+            : mine
+            ? 'club-1'
+            : 'club-2',
         'clubName': mine ? 'Atlético Verde' : 'Real Dourado',
         'minute': 42,
         'eligiblePlayers': (m['homeStarters'] as List)
@@ -45,10 +59,14 @@ class PenaltyRoomApi extends WaitingRoomApi {
             .toList(),
       };
     } else if (outcome != null) {
-      (m['events'] as List).add({
+      ((otherFixture ? other : m)['events'] as List).add({
         'type': outcome == 'Goal' ? 'Goal' : 'PenaltyMissed',
         'minute': 42,
-        'clubId': mine ? 'club-1' : 'club-2',
+        'clubId': otherFixture
+            ? 'club-4'
+            : mine
+            ? 'club-1'
+            : 'club-2',
         'clubName': mine ? 'Atlético Verde' : 'Real Dourado',
         'description': 'Cobrança de pênalti',
         'penaltyKick': {
@@ -83,6 +101,76 @@ class PenaltyRoomApi extends WaitingRoomApi {
   }
 }
 
+class SubstitutionFormationApi extends WaitingRoomApi {
+  final List<String> _active = [
+    'p-1',
+    'p-2',
+    'p-3',
+    'p-4',
+    'p-5',
+    'p-6',
+    'p-7',
+    'p-8',
+    'p-9',
+    'p-10',
+    'p-11',
+  ];
+  final List<String> _bench = ['p-12', 'p-13', 'p-14'];
+
+  SubstitutionFormationApi() : super(2) {
+    currentRoundState = 'HALFTIME_PAUSED';
+    liveFormation = '5-4-1';
+  }
+
+  Map<String, dynamic> _player(String id) {
+    final n = int.parse(id.substring(2));
+    return {
+      'playerId': id,
+      'displayName': 'Jogador $n',
+      'strength': 25,
+      'position': n == 1 || n == 12
+          ? 'G'
+          : n <= 6
+          ? 'D'
+          : n <= 10
+          ? 'M'
+          : 'A',
+    };
+  }
+
+  @override
+  Future<Map<String, dynamic>> getSnapshot(String world) async {
+    final state = await super.getSnapshot(world);
+    final match = (state['matches'] as List).first;
+    match['homeStarters'] = _active.map(_player).toList();
+    match['homeBench'] = _bench.map(_player).toList();
+    return state;
+  }
+
+  @override
+  Future<Map<String, dynamic>> submitInMatchAdjustments({
+    required String worldId,
+    required String coachId,
+    required String matchId,
+    String? newFormation,
+    required List<Map<String, String>> substitutions,
+  }) {
+    expect(newFormation, isNull);
+    final swap = substitutions.single;
+    final incoming = swap['playerInId']!;
+    final outgoing = swap['playerOutId']!;
+    _active[_active.indexOf(outgoing)] = incoming;
+    _bench.remove(incoming);
+    liveFormation = usedSubs == 0 ? '4-4-2' : '3-4-3';
+    return super.submitInMatchAdjustments(
+      worldId: worldId,
+      coachId: coachId,
+      matchId: matchId,
+      substitutions: substitutions,
+    );
+  }
+}
+
 class FinishedClubPauseApi extends WaitingRoomApi {
   FinishedClubPauseApi() : super(2) {
     currentRoundState = 'EXTRA_TIME_BREAK';
@@ -108,13 +196,17 @@ class FinishedClubPauseApi extends WaitingRoomApi {
 }
 
 void main() {
-  Future<void> joinClassic(WidgetTester tester, PenaltyRoomApi api) async {
-    tester.view.physicalSize = const Size(320, 950);
+  Future<void> joinClassic(
+    WidgetTester tester,
+    WaitingRoomApi api, {
+    double width = 320,
+  }) async {
+    tester.view.physicalSize = Size(width, 950);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     await join(tester, api);
-    tester.view.physicalSize = const Size(320, 600);
+    tester.view.physicalSize = Size(width, 600);
     await PresentationScope.maybeOf(
       tester.element(find.byType(ElifootShellScreen)),
     )!.select(api, PresentationVersion.classic);
@@ -156,9 +248,16 @@ void main() {
       (tester) async {
         final api = PenaltyRoomApi(false)
           ..automatic = automatic
-          ..pending = !automatic;
+          ..pending = false;
         await joinClassic(tester, api);
-        if (!automatic) expect(find.text('AGUARDE'), findsOneWidget);
+        if (!automatic) {
+          api
+            ..otherFixture = true
+            ..pending = true;
+          await api.emit('RUNNING_FIRST_HALF');
+          await tester.pumpAndSettle();
+          expect(find.text('AGUARDE'), findsOneWidget);
+        }
         expect(find.byKey(const Key('confirm-penalty-taker')), findsNothing);
         api
           ..pending = false
@@ -181,6 +280,65 @@ void main() {
       },
     );
   }
+
+  testWidgets('No penalty modal for a CPU fixture, even when selected', (
+    tester,
+  ) async {
+    final api = PenaltyRoomApi(false)
+      ..pending = false
+      ..automatic = true;
+    await joinClassic(tester, api);
+    api.otherFixture = true;
+    await api.emit('RUNNING_FIRST_HALF');
+    await tester.pumpAndSettle();
+    await press(tester, 'select-match-match-other');
+    api.outcome = 'Goal';
+    await api.emit('RUNNING_FIRST_HALF');
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('penalty-waiting-dialog')), findsNothing);
+    expect(find.byKey(const Key('penalty-taker-dialog')), findsNothing);
+    expect(find.byKey(const Key('penalty-result-dialog')), findsNothing);
+    expect(
+      tester
+          .widget<Tooltip>(
+            find.byKey(const Key('classic-last-event-match-other-away')),
+          )
+          .message,
+      contains('Pênalti convertido! Titular 2'),
+    );
+  });
+
+  testWidgets('Substitution previews and refreshes 5-4-1 to 4-4-2 to 3-4-3', (
+    tester,
+  ) async {
+    final api = SubstitutionFormationApi();
+    await joinClassic(tester, api, width: 1150);
+    ClassicTacticalPitch pitch() => tester.widget<ClassicTacticalPitch>(
+      find.descendant(
+        of: find.byType(MatchTeamTacticalPitch),
+        matching: find.byType(ClassicTacticalPitch),
+      ),
+    );
+    List<int> lines() => pitch().lines.map((line) => line.length).toList();
+    expect(lines(), [1, 4, 5, 1]);
+    for (final (out, incoming, shape) in [
+      ('p-2', 'p-13', [2, 4, 4, 1]),
+      ('p-3', 'p-14', [3, 4, 3, 1]),
+    ]) {
+      await press(tester, 'sub-select-out-$out');
+      await press(tester, 'sub-select-in-$incoming');
+      expect(lines(), shape);
+      expect(pitch().lines.first.map((p) => p['playerId']), contains(incoming));
+      expect(
+        pitch().lines.expand((line) => line.map((p) => p['playerId'])),
+        isNot(contains(out)),
+      );
+      await press(tester, 'btn-aplicar-ajuste-janela');
+      expect(lines(), shape);
+    }
+    expect(api.usedSubs, 2);
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets(
     'Finished club observes another clubs extra-time break without edit controls',

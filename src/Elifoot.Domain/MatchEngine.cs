@@ -692,8 +692,10 @@ public static partial class MatchSimulationEngine
     {
         var createdEvents = new List<MatchEventRecord>();
         PlayerStatisticsEngine.CaptureLineup(match, worldPlayers);
-        bool hasFormationChange = !string.IsNullOrWhiteSpace(newFormation) &&
-            !string.Equals(newFormation.Trim(), isHomeTeam ? match.HomeFormation : match.AwayFormation, StringComparison.OrdinalIgnoreCase);
+        string currentFormation = isHomeTeam ? match.HomeFormation : match.AwayFormation;
+        string? requestedFormation = newFormation?.Trim();
+        bool hasFormationChange = !string.IsNullOrEmpty(requestedFormation) &&
+            !string.Equals(requestedFormation, currentFormation, StringComparison.OrdinalIgnoreCase);
         bool hasSubs = substitutions.Count > 0;
 
         if (!hasFormationChange && !hasSubs)
@@ -771,6 +773,20 @@ public static partial class MatchSimulationEngine
             return (false, "A equipe não pode retirar seu goleiro sem colocar outro goleiro em campo.", createdEvents);
         }
 
+        string formation = currentFormation;
+        if (hasFormationChange)
+        {
+            formation = requestedFormation!;
+        }
+        else if (club.HumanCoachId != null && string.IsNullOrEmpty(requestedFormation) &&
+            substitutions.Any(s => worldPlayers[s.PlayerOutId].Position != worldPlayers[s.PlayerInId].Position) &&
+            simActive.Count == SquadValidator.RequiredStarters && gkAfter == 1)
+        {
+            var positions = simActive.Select(id => worldPlayers[id].Position).ToList();
+            var inferred = $"{positions.Count(p => p == PlayerPosition.D)}-{positions.Count(p => p == PlayerPosition.M)}-{positions.Count(p => p == PlayerPosition.A)}";
+            if (TacticalFormations.TryGet(inferred, allowClassic505, out var spec)) formation = spec.Code;
+        }
+
         // Commit changes
         if (needsNewWindowQuota)
         {
@@ -816,19 +832,18 @@ public static partial class MatchSimulationEngine
             createdEvents.Add(evt);
         }
 
+        if (isHomeTeam) match.HomeFormation = formation;
+        else match.AwayFormation = formation;
+
         if (hasFormationChange)
         {
-            string normalized = newFormation!.Trim();
-            if (isHomeTeam) match.HomeFormation = normalized;
-            else match.AwayFormation = normalized;
-
             var evt = new MatchEventRecord
             {
                 Minute = match.CurrentMinute,
                 EventType = MatchEventType.TacticChange,
                 ClubId = club.Id,
                 ClubName = club.Name,
-                Description = $"{match.CurrentMinute}' Alteração tática ({club.ShortName}): {normalized}."
+                Description = $"{match.CurrentMinute}' Alteração tática ({club.ShortName}): {formation}."
             };
             match.Events.Add(evt);
             createdEvents.Add(evt);
