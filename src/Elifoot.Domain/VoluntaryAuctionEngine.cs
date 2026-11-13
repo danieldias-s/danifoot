@@ -6,10 +6,24 @@ public static class VoluntaryAuctionEngine
 {
     public static (bool Success,string? Error,Guid? AuctionId) Create(GameWorld world,Club seller,Guid playerId,string key,
         decimal minimumBid=VoluntaryAuctionDefaults.MinimumBid,int durationRounds=VoluntaryAuctionDefaults.DurationRounds)
+        => Create(world, seller, playerId, key, minimumBid, durationRounds, null);
+
+    internal static (bool Success, string? Error, Guid? AuctionId) CreateForAi(
+        GameWorld world, Club seller, Guid playerId, decimal minimumBid, int durationRounds)
+    {
+        if (!MarketValidationEngine.CanActAsAi(world, seller))
+            return (false, "MARKET_AUTHORITY: O treinador de IA não controla este clube.", null);
+        return Create(world, seller, playerId, $"S{world.SeasonNumber}:R{world.RoundNumber}",
+            minimumBid, durationRounds, world.SettledFinancialRounds.Count);
+    }
+
+    private static (bool Success,string? Error,Guid? AuctionId) Create(GameWorld world,Club seller,Guid playerId,string key,
+        decimal minimumBid,int durationRounds,int? aiOpenedAfterCompletedRounds)
     {
         if(string.IsNullOrWhiteSpace(key))return(false,"Identificador da operação é obrigatório.",null);
         if(!world.Clubs.Contains(seller))return(false,"MARKET_AUTHORITY: Clube não pertence a esta sala.",null);
-        var id=CoachCareerEngine.StableId($"voluntary-auction:{world.Id}:{seller.Id}:{key}");
+        string operation = aiOpenedAfterCompletedRounds.HasValue ? "ai-voluntary-auction" : "voluntary-auction";
+        var id=CoachCareerEngine.StableId($"{operation}:{world.Id}:{seller.Id}:{key}");
         var previous=world.Auctions.FirstOrDefault(a=>a.Id==id);
         if(previous!=null){bool same=previous.PlayerId==playerId&&previous.MinimumBid==minimumBid&&previous.DurationRounds==durationRounds;return(same,same?null:"Chave usada por outra operação.",same?id:null);}
         if(!ClassicEconomyEngine.Safe(world))return(false,"Leilões disponíveis somente entre partidas.",null);
@@ -28,7 +42,9 @@ public static class VoluntaryAuctionEngine
         int target=world.RoundNumber+durationRounds-1+(world.RoundState==RoundState.RESULTS?1:0);
         var auction=new AuctionItem{Id=id,GameWorldId=world.Id,PlayerId=player.Id,FormerClubId=seller.Id,Reason=AuctionReason.Voluntary,
             MinimumBid=minimumBid,DurationRounds=durationRounds,CreatedAtSeason=world.SeasonNumber,CreatedAtRound=world.RoundNumber,
+            AiOpenedAfterCompletedRounds=aiOpenedAfterCompletedRounds,
             ExpiresAtSeason=world.SeasonNumber+(target-1)/total,ExpiresAtRound=(target-1)%total+1};
+        if (player.IsListedForTransfer) player.TransferListingVersion++;
         player.IsListedForTransfer=false;player.AskingPrice=null;
         world.Auctions.Add(auction);
         return(true,null,id);

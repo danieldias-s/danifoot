@@ -178,6 +178,8 @@ public sealed partial class ClubAndMarketApplicationService
 
         if (askingPrice != Math.Round(askingPrice, 2)) return (false, "Preço deve ter até duas casas decimais.");
         player.TransferListingVersion++;
+        if (!player.IsListedForTransfer || player.TransferListedAfterCompletedRounds == null)
+            player.TransferListedAfterCompletedRounds = world.SettledFinancialRounds.Count;
         player.IsListedForTransfer = true;
         player.AskingPrice = askingPrice;
         player.ListedAtRound = world.RoundNumber;

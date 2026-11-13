@@ -289,6 +289,7 @@ public static class WorldSeedFactory
                     player.IsListedForTransfer = true;
                     player.AskingPrice = Math.Round(player.MarketPrice * 0.95m, 0);
                     player.ListedAtRound = 1;
+                    player.TransferListedAfterCompletedRounds = 0;
                 }
 
                 clubSquad.Add(player);

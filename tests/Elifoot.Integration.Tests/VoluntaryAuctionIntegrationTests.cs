@@ -33,6 +33,125 @@ public class VoluntaryAuctionIntegrationTests
         }
         return(w,a,b,w.Players.Last(p=>p.ClubId==a.CurrentClubId));
     }
+
+    [Fact]
+    public async Task AiCreatedAuctionIsSharedAcrossClientsAndSurvivesRestartThroughHumanWinningBid()
+    {
+        string file = Path.Combine(Path.GetTempPath(), $"elifoot-ai-auction-{Guid.NewGuid():N}.db");
+        try
+        {
+            var (world, _, bidder, _) = Seed();
+            var seller = world.Clubs[2];
+            var interested = world.Clubs[3];
+            seller.HumanCoachId = null;
+            interested.HumanCoachId = null;
+            world.AiManagers.Single(m => m.Id == seller.AiManagerId).PreferredFormations = [new("4-4-2", 100)];
+            world.AiManagers.Single(m => m.Id == interested.AiManagerId).PreferredFormations = [new("4-4-2", 100)];
+            var attackers = world.Players.Where(p => p.ClubId == interested.Id && p.Position == PlayerPosition.A).ToList();
+            foreach (var player in attackers.Skip(1)) player.ClubId = null;
+            foreach (var player in world.Players.Where(p => p.ClubId == seller.Id))
+            {
+                player.RenewedForSeason = null;
+                player.Strength = 38;
+                player.IsStar = false;
+                player.SalaryPerRound = 50_000m;
+            }
+            for (int i = 0; i < 3; i++)
+                world.Players.Add(new Player { Name = $"Reserva {i}", ClubId = seller.Id,
+                    Position = PlayerPosition.A, Strength = 30 - i, ContractRoundsRemaining = 10, SalaryPerRound = 500m });
+            interested.CashBalance = 50_000_000m;
+            seller.CashBalance = -1_000_000m;
+            world.Clubs.Single(c => c.Id == bidder.CurrentClubId).CashBalance = 100_000_000m;
+
+            // Use the real room clock command at the last minute of R7 to publish the auction.
+            world.RoundState = RoundState.RUNNING_SECOND_HALF;
+            world.CurrentMatchMinute = 89;
+            foreach (var match in MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world))
+            {
+                match.CurrentMinute = 89;
+                match.LastSimulatedMinute = 89;
+            }
+            var auctionRound = new TaskCompletionSource<LiveRoundSnapshotDto>(TaskCreationOptions.RunContinuationsAsynchronously);
+            AuctionItem auction;
+            decimal winningBid;
+            string marketPath = $"/api/worlds/{world.Id}/market";
+            await using (var factory = Factory(file))
+            {
+                using var clientA = factory.CreateClient();
+                using var clientB = factory.CreateClient();
+                var repo = factory.Services.GetRequiredService<IWorldRepository>();
+                await repo.SaveWorldAsync(world);
+                await using var hub = new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom",
+                    o => o.HttpMessageHandlerFactory = _ => factory.Server.CreateHandler()).Build();
+                hub.On<LiveRoundSnapshotDto>("ClockTick", state =>
+                {
+                    if (state.RoundState == RoundState.RESULTS) auctionRound.TrySetResult(state);
+                });
+                await hub.StartAsync();
+                await hub.InvokeAsync<LiveRoundSnapshotDto>("JoinRoom", world.Id, bidder.Id);
+                (await clientA.PostAsync($"/api/worlds/{world.Id}/tick", null)).EnsureSuccessStatusCode();
+                await auctionRound.Task.WaitAsync(TimeSpan.FromSeconds(10));
+                var live = (await repo.GetWorldAsync(world.Id))!;
+                auction = Assert.Single(live.Auctions, a => a.FormerClubId == seller.Id && a.AiOpenedAfterCompletedRounds != null);
+                winningBid = Math.Max(auction.MinimumBid, auction.CurrentBid) + 50_000m;
+                (await clientB.PostAsync($"{marketPath}/auction/{auction.Id}/bid?coachId={bidder.Id}&bidAmount={winningBid}&idempotencyKey=human-bid", null))
+                    .EnsureSuccessStatusCode();
+                var views = await Task.WhenAll(clientA.GetFromJsonAsync<JsonElement>(marketPath),
+                    clientB.GetFromJsonAsync<JsonElement>(marketPath));
+                foreach (var view in views)
+                {
+                    var visible = Assert.Single(view.GetProperty("auctions").EnumerateArray(),
+                        a => a.GetProperty("auctionId").GetGuid() == auction.Id);
+                    Assert.Equal(seller.Id, visible.GetProperty("sellerClubId").GetGuid());
+                    Assert.Equal(winningBid, visible.GetProperty("currentBid").GetDecimal());
+                    Assert.Equal(bidder.CurrentClubId, visible.GetProperty("highestBidderClubId").GetGuid());
+                    Assert.DoesNotContain("privateAiMaxBids", visible.GetRawText(), StringComparison.OrdinalIgnoreCase);
+                }
+            }
+
+            EfWorldRepository.ClearCacheForTesting();
+            await using (var restarted = Factory(file))
+            {
+                using var clientA = restarted.CreateClient();
+                using var clientB = restarted.CreateClient();
+                var repo = restarted.Services.GetRequiredService<IWorldRepository>();
+                var loaded = (await repo.GetWorldAsync(world.Id))!;
+                var restored = Assert.Single(loaded.Auctions, a => a.Id == auction.Id);
+                Assert.Equal(auction.AiOpenedAfterCompletedRounds, restored.AiOpenedAfterCompletedRounds);
+                Assert.Equal(auction.ExpiresAtRound, restored.ExpiresAtRound);
+                Assert.Equal(winningBid, restored.CurrentBid);
+                Assert.Equal(seller.Id, loaded.Players.Single(p => p.Id == restored.PlayerId).ClubId);
+                loaded.RoundNumber = restored.ExpiresAtRound;
+                loaded.RoundState = RoundState.RESULTS;
+                loaded.SettledFinancialRounds.Add($"round_settled:S{loaded.SeasonNumber}:R{loaded.RoundNumber}");
+                var loadedSeller = loaded.Clubs.Single(c => c.Id == seller.Id);
+                decimal sellerCash = loadedSeller.CashBalance;
+                MarketAndEconomyEngine.SettleAuction(loaded, restored);
+                MarketAndEconomyEngine.SettleAuction(loaded, restored);
+                Assert.Equal("SOLD", restored.ClosureReason);
+                Assert.Equal(bidder.CurrentClubId, loaded.Players.Single(p => p.Id == restored.PlayerId).ClubId);
+                Assert.Equal(sellerCash + winningBid, loadedSeller.CashBalance);
+                Assert.Single(loaded.Transactions, t => t.Category == FinancialTransactionCategory.AuctionSale
+                    && t.PlayerId == restored.PlayerId && t.ClubId == seller.Id && t.Amount == winningBid);
+                await repo.SaveWorldAsync(loaded);
+                var views = await Task.WhenAll(clientA.GetFromJsonAsync<JsonElement>(marketPath),
+                    clientB.GetFromJsonAsync<JsonElement>(marketPath));
+                foreach (var view in views)
+                {
+                    var visible = Assert.Single(view.GetProperty("auctions").EnumerateArray(),
+                        a => a.GetProperty("auctionId").GetGuid() == restored.Id);
+                    Assert.True(visible.GetProperty("isClosed").GetBoolean());
+                    Assert.Equal("SOLD", visible.GetProperty("closureReason").GetString());
+                    Assert.Equal(bidder.CurrentClubId, visible.GetProperty("highestBidderClubId").GetGuid());
+                }
+            }
+        }
+        finally
+        {
+            EfWorldRepository.ClearCacheForTesting();
+            if (File.Exists(file)) File.Delete(file);
+        }
+    }
     [Fact]
     public async Task HttpDefaultsConcurrentReplaySignalRAndRealR7R8Settlement()
     {

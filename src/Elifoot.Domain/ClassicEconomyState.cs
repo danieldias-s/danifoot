@@ -23,6 +23,7 @@ public class ClassicEconomyState
     public Dictionary<Guid,ClubFinancialCrisis> Crises { get; set; } = new();
     public List<FinancialCrisisRecord> CrisisHistory { get; set; } = new();
     public List<SpecialAuctionResult> AuctionHistory { get; set; } = new();
+    public string? LastAiVoluntaryAuctionRound { get; set; }
     public HashSet<string> SalaryRequestRounds { get; set; } = new();
     public HashSet<string> SalaryRequestCheckedRounds { get; set; } = new();
     public HashSet<string> AiFinancialRounds { get; set; } = new();

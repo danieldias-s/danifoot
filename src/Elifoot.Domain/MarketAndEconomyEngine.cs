@@ -538,8 +538,11 @@ public static class MarketAndEconomyEngine
         var managerDict = world.AiManagers.ToDictionary(m => m.Id);
         var playerDict = world.Players.ToDictionary(p => p.Id);
 
+        var marketClubs = world.Clubs.Where(c => MarketValidationEngine.CanActAsAi(world, c)
+            && c.DivisionTier != DivisionTier.Distrital).ToList();
+
         // Update all AI squad plans first
-        foreach (var club in world.Clubs.Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital))
+        foreach (var club in marketClubs)
         {
             if (club.AiManagerId != null && managerDict.TryGetValue(club.AiManagerId.Value, out var mgr))
             {
@@ -549,8 +552,15 @@ public static class MarketAndEconomyEngine
             }
         }
 
+        // Evaluate the same prospective buyers the existing auction batch will consider.
+        var buyerCandidates = marketClubs
+            .OrderByDescending(c => c.LatestSquadPlan?.PriorityGapPositions.Count ?? 0)
+            .ThenBy(c => (c.DeterministicIndex + world.RoundNumber * 5) % 32)
+            .ToList();
+        AiVoluntaryAuctionEngine.OpenForCompletedRound(world, marketClubs, buyerCandidates.Take(10).ToList(), logs);
+
         // 1. AI clubs list surplus players or discount stale listings
-        foreach (var club in world.Clubs.Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital))
+        foreach (var club in marketClubs)
         {
             var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
             var plan = club.LatestSquadPlan;
@@ -560,6 +570,8 @@ public static class MarketAndEconomyEngine
             foreach (var listed in squad.Where(p => p.IsListedForTransfer && world.RoundNumber - p.ListedAtRound >= 3))
             {
                 decimal fair = CalculateFairValue(world, listed);
+                listed.TransferListedAfterCompletedRounds ??= Math.Max(0,
+                    world.SettledFinancialRounds.Count - AiVoluntaryAuctionEngine.RoundsSinceListing(world, listed));
                 listed.AskingPrice = Math.Round(Math.Max(fair * 0.78m, (listed.AskingPrice ?? fair) * 0.90m), 0);
                 listed.ListedAtRound = world.RoundNumber;
             }
@@ -574,8 +586,9 @@ public static class MarketAndEconomyEngine
 
                 decimal fair = CalculateFairValue(world, p);
                 p.IsListedForTransfer = true;
-                p.AskingPrice = Math.Round(fair * (club.CashBalance < plan.EmergencyCashReserve ? 0.88m : 1.04m), 0);
+                p.AskingPrice = AiFixedAskingPrice(club, plan, fair);
                 p.ListedAtRound = world.RoundNumber;
+                p.TransferListedAfterCompletedRounds = world.SettledFinancialRounds.Count;
             }
         }
 
@@ -629,13 +642,6 @@ public static class MarketAndEconomyEngine
         }
 
         // 3. AI clubs actively seek tactical reinforcements (up to max 1 signing per club per round)
-        // Order by tactical need (PriorityGapPositions.Count) + deterministic round rotation so all divisions participate
-        var buyerCandidates = world.Clubs
-            .Where(c => MarketValidationEngine.CanActAsAi(world,c) && c.DivisionTier != DivisionTier.Distrital)
-            .OrderByDescending(c => c.LatestSquadPlan?.PriorityGapPositions.Count ?? 0)
-            .ThenBy(c => (c.DeterministicIndex + world.RoundNumber * 5) % 32)
-            .ToList();
-
         int transfersExecutedThisBatch = 0;
         foreach (var buyer in buyerCandidates)
         {
@@ -828,8 +834,7 @@ public static class MarketAndEconomyEngine
 
                 if (!auction.PrivateAiMaxBids.TryGetValue(aiClub.Id, out decimal privateMax))
                 {
-                    decimal valuation = fair * (needsPos ? 1.05m : 0.88m);
-                    privateMax = Math.Round(Math.Min(valuation, plan.MaxSingleSigningBudget), 0);
+                    privateMax = AiAuctionValuation(plan, needsPos, fair);
                     auction.PrivateAiMaxBids[aiClub.Id] = privateMax;
                 }
 
@@ -860,6 +865,12 @@ public static class MarketAndEconomyEngine
         ClassicEconomyEngine.EvaluateInsolvency(world);
         return logs;
     }
+
+    internal static decimal AiFixedAskingPrice(Club club, ManagerSquadPlan plan, decimal fair)
+        => Math.Round(fair * (club.CashBalance < plan.EmergencyCashReserve ? 0.88m : 1.04m), 0);
+
+    internal static decimal AiAuctionValuation(ManagerSquadPlan plan, bool needsPosition, decimal fair)
+        => Math.Round(Math.Min(fair * (needsPosition ? 1.05m : 0.88m), plan.MaxSingleSigningBudget), 0);
 
     public static (bool Success, string? ErrorMessage) ExecuteTransfer(
         GameWorld world,

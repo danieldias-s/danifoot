@@ -148,6 +148,7 @@ public partial class Player
     public bool IsListedForTransfer { get; set; }
     public decimal? AskingPrice { get; set; }
     public int ListedAtRound { get; set; }
+    public int? TransferListedAfterCompletedRounds { get; set; }
     public long TransferListingVersion { get; set; }
 
     public int InjuryRoundsRemaining { get; set; }
@@ -433,6 +434,7 @@ public class AuctionItem
     public Guid? HighestBidderClubId { get; set; }
     public int CreatedAtSeason { get; set; }
     public int CreatedAtRound { get; set; }
+    public int? AiOpenedAfterCompletedRounds { get; set; }
     public int ExpiresAtRound { get; set; }
     // Optional: old automatic auctions retain their original deadline semantics.
     public int? DurationRounds { get; set; }
