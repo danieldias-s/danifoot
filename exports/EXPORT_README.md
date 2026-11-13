@@ -1,23 +1,14 @@
-# ELIFOOT 98 — Exportação Offline: Espanha 2026/27 (Schema V1.1 DRAFT)
+# Elifoot 98 · Espanha 2026/27
 
-- País: Espanha (`ES`, slug `espanha`)
-- Ano do Catálogo: `2026` (temporada-alvo `2026/27`, estatísticas de referência `2025/26`)
-- Data de Corte (`squadSnapshotDate` / `rankingReferenceDate`): `2026-11-12`
-- Gênero: `Male`
-- Status: `DRAFT` (`behavior: null` nos 171 novos clubes pela ausência de faltas no TM; `isStar` aplicado conforme Plano Mestre V1.6 Seção 18.2 com `239` estrelas nos `171` novos clubes e `6` pré-existentes no `real-madrid` preservado intacto)
-- Categorias inventariadas: 4 divisões, 172 clubes (20 LaLiga + 22 Segunda + 40 Primera Federación + 90 Segunda Federación), incluindo 31 clubes filiais/B/C documentados.
+Catálogo offline V1.1 em DRAFT. Contém 172 clubes e 172 identidades.
+Extraia o ZIP mantendo a estrutura de pastas e aponte o validador oficial
+para a pasta extraída `catalogos` com `--CatalogOffline:Root=<pasta>`.
+O estado DRAFT impede a criação de mundos com este catálogo.
 
-## Conteúdo do Pacote
-- `catalogos/espanha/2026/**` (`manifest.json` + 172 arquivos em `clubes/`)
-- `catalogos/identidades/<clubId>/identidade.json` (172 identidades referenciadas)
-- `catalogos/_pesquisa/espanha/2026/**` (`metadados.json`, CSVs de inventário, fontes, rankings, seleção, excluídos e pendências)
-- `catalogos/_pesquisa/comportamento/espanha/2026/**` (`disciplina-2026-27.csv`, `entrada-v16-2026-27.json` e `proposta-v16-2026-27.json` por clube)
-- `reports/ELIFOOT98_PAIS_ESPANHA_2026_CADASTRO.md`
-- `EXPORT_README.md`
-- `EXPORT_MANIFEST_SHA256.txt`
+Os SHA-256 cobrem todos os arquivos da exportação, incluindo este README.
+O manifesto de hashes é a única exceção. A exportação usa ordem, data e
+permissões fixas. Compare arquivos gerados com os mesmos bytes de origem
+e a mesma versão de Python/zlib.
 
-## Como Validar Integridade
-No diretório onde o pacote foi extraído:
-1. Verifique os hashes SHA-256 listados em `EXPORT_MANIFEST_SHA256.txt`.
-2. Execute o validador oficial contra a raiz de `catalogos/`:
-   `dotnet Elifoot.Api.dll offline-catalog-validate --CatalogOffline:Root=<caminho>/catalogos`
+As propostas V1.6 incluídas são material de pesquisa. Cada comportamento
+permanece pendente de aprovação. Consulte o relatório de qualidade em `reports/`.
