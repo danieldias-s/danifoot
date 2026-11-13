@@ -107,7 +107,7 @@ public static class OfflineWorldFactory
         }
         if (request.IncludeSurplusClub && errors.Count == 0)
         {
-            try { assigned.Add(OfflineSurplusV16.Build(assigned, request.Seed)); }
+            try { assigned.Add(OfflineSurplusV16.Build(assigned, request.Seed, request.RetentionEvidence)); }
             catch (ArgumentException error) { errors.Add(error.Message); }
         }
         if (isV11) assigned = InitialSquadStrength017B.Apply(assigned, request.Seed);

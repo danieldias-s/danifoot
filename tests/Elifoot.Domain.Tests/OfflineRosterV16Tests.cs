@@ -49,6 +49,44 @@ public sealed class OfflineRosterV16Tests
         if(valid) Assert.InRange(OfflineRosterV16.Select(input,72).Club.Players.Count,13,23);
         else Assert.Throws<ArgumentException>(()=>OfflineRosterV16.Select(input,72));
     }
+
+    [Theory]
+    [InlineData(5, 13, 1, 13, 13)]
+    [InlineData(5, 21, 2, 13, 21)]
+    [InlineData(5, 22, 3, 13, 21)]
+    [InlineData(5, 23, 1, 13, 23)]
+    [InlineData(5, 23, 2, 13, 23)]
+    [InlineData(5, 23, 3, 13, 23)]
+    [InlineData(5, 14, 3, 13, 13)]
+    [InlineData(1, 21, 3, 20, 20)]
+    [InlineData(2, 20, 3, 19, 19)]
+    [InlineData(3, 20, 3, 19, 19)]
+    [InlineData(4, 18, 3, 17, 17)]
+    public void DrawnSizeIsCappedAtLargestLegalRoster(int division, int candidates, int keepers, int minimum, int maximum)
+    {
+        var input = new WorldPreviewClub(division, Club(count: candidates, goalkeepers: keepers));
+        var sizes = new HashSet<int>();
+        for (int seed = 0; seed < 100; seed++)
+        {
+            var players = OfflineRosterV16.Select(input, seed).Club.Players;
+            sizes.Add(players.Count);
+            int expectedKeepers = division < 5 ? 2 : Math.Min(players.Count == 23 ? 3 : 2, keepers);
+            Assert.Equal(expectedKeepers, players.Count(p => p.Position == "G"));
+            Assert.True(players.Count - expectedKeepers >= 10);
+            Assert.All(players, player => Assert.Contains(player, input.Club.Players));
+            Assert.Equal(players, OfflineRosterV16.Select(input, seed).Club.Players);
+        }
+        Assert.Equal(Enumerable.Range(minimum, maximum - minimum + 1), sizes.Order());
+    }
+
+    [Theory]
+    [InlineData(23, 0)]
+    [InlineData(13, 3)]
+    public void DistrictRejectsCandidatesWithoutALegalRoster(int candidates, int keepers)
+    {
+        var input = new WorldPreviewClub(5, Club(count: candidates, goalkeepers: keepers));
+        Assert.Throws<ArgumentException>(() => OfflineRosterV16.Select(input, 0));
+    }
     [Fact]
     public void StarAndDocumentedProdigyAndStarterAreRetainedWhenPositionsPermit()
     {
@@ -86,6 +124,38 @@ public sealed class OfflineRosterV16Tests
         Assert.Empty(next.Errors);Assert.NotEqual(first.DataHash,next.DataHash);
         Assert.InRange(next.Clubs.Single(c=>c.Club.Key==clubs[0].Key).Club.Players.Count,17,19);
         Assert.InRange(first.Clubs.Single(c=>c.Club.Key==clubs[0].Key).Club.Players.Count,20,21);
+    }
+
+    [Theory]
+    [InlineData(1)]
+    [InlineData(8)]
+    public void CreateRequires128SelectedClubsFromLargerCatalog(int countries)
+    {
+        string[] codes = ["BR", "ES", "PT", "IT", "GB", "FR", "AR", "UY"];
+        var clubs = Enumerable.Range(0, 172).Select(i =>
+        {
+            var club = Club(i);
+            var code = codes[i % countries];
+            var source = club.OfflineSource!;
+            return club with
+            {
+                CountryCode = code,
+                OfflineSource = source with { CountryCode = code, Definition = source.Definition with { Country = code } }
+            };
+        }).ToList();
+        var request = new OfflineWorldRequest("Synthetic", codes.Take(countries).ToList(), 42, ApplyV16RosterPolicy: true);
+        var invalid = OfflineWorldFactory.Preview(request, clubs);
+        Assert.Contains(invalid.Errors, error => error.Contains("exatamente 128"));
+        Assert.Throws<ArgumentException>(() => OfflineWorldFactory.Create(request, invalid));
+
+        var selected = clubs.Take(128).Select(club => club.Key).ToList();
+        request = request with { ClubKeys = selected };
+        var preview = OfflineWorldFactory.Preview(request, clubs);
+        Assert.Empty(preview.Errors);
+        Assert.Equal(new[] { 8, 8, 8, 8, 96 }, preview.Clubs.GroupBy(club => club.Division).Select(group => group.Count()));
+        Assert.Equal(countries, preview.Clubs.Select(club => club.Club.CountryCode).Distinct().Count());
+        Assert.Equal(preview.DataHash, OfflineWorldFactory.Preview(request, clubs.AsEnumerable().Reverse().ToList()).DataHash);
+        Assert.Equal(128, OfflineWorldFactory.Create(request, preview).Clubs.Count);
     }
     [Fact]
     public void PreviewCreateFreezeSelectedAndExcludedAndSaveRestoresWithoutRecalculation()

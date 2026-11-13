@@ -50,4 +50,47 @@ public sealed class OfflineSurplusV16Tests
     {
         var clubs=Clubs();Assert.Throws<ArgumentException>(()=>OfflineWorldFactory.Preview(Request(clubs) with {ApplyV16RosterPolicy=false},clubs));
     }
+
+    [Fact]
+    public void SurplusPrefersDocumentedCutsWithinTheHighestRankedClub()
+    {
+        var club = OfflineRosterV16Tests.Club();
+        var source = club.OfflineSource!;
+        var star = source.Definition.Players!.Single(p => p.IsStar == true);
+        var extra = club.Players.First(p => p.Position == "D").PlayerExternalId;
+        string Position(string id, string current) => id == star.Id || id == extra ? "A" : current;
+        club = club with
+        {
+            Players = club.Players.Select(p => p with { Position = Position(p.PlayerExternalId, p.Position) }).ToList(),
+            OfflineSource = source with
+            {
+                Definition = source.Definition with
+                {
+                    Players = source.Definition.Players!.Select(p => p with { Position = Position(p.Id!, p.Position!) }).ToList()
+                }
+            }
+        };
+        var attackers = club.Players.Where(p => p.Position == "A" && p.PlayerExternalId != star.Id).ToList();
+        var research = new List<OfflineRetentionEvidence>
+        {
+            new(club.Key, attackers[0].PlayerExternalId, "Synthetic prodigy", IsProdigy: true),
+            new(club.Key, attackers[1].PlayerExternalId, "Synthetic starter", ImportantStarter: true),
+            new(club.Key, attackers[2].PlayerExternalId, "Synthetic participation", Minutes: 900)
+        };
+        var protectedIds = research.Select(r => r.PlayerId).Append(star.Id!).ToHashSet();
+        var candidates = club.Players.Select(p => p with
+        {
+            Strength = protectedIds.Contains(p.PlayerExternalId) ? 1 : 50
+        }).ToList();
+        var second = OfflineRosterV16Tests.Club(1);
+        var entries = new List<WorldPreviewClub>
+        {
+            new(5, second with { Rank = 2, ReferencePlayers = second.Players, Players = [] }),
+            new(5, club with { Rank = 1, ReferencePlayers = candidates, Players = [] })
+        };
+        var selected = OfflineSurplusV16.Build(entries, 42, research).Club.Players;
+        Assert.All(protectedIds, id => Assert.Contains(selected, p => p.PlayerExternalId == id));
+        Assert.DoesNotContain(selected, p => second.Players.Contains(p) && p.Position == "A");
+        Assert.Equal(selected, OfflineSurplusV16.Build(entries, 42, research).Club.Players);
+    }
 }

@@ -7,15 +7,26 @@ namespace Elifoot.Domain;
 public static class OfflineSurplusV16
 {
     public const string ClubId = "v16-surplus-fictional";
-    public static WorldPreviewClub Build(List<WorldPreviewClub> realClubs, int seed)
+    public static WorldPreviewClub Build(List<WorldPreviewClub> realClubs, int seed,
+        IReadOnlyList<OfflineRetentionEvidence>? research = null)
     {
         var selectedIds = realClubs.SelectMany(c => c.Club.Players).Select(p => p.PlayerExternalId).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var all = realClubs.SelectMany(c => c.Club.ReferencePlayers ?? []).ToList();
         if (all.Select(p => p.PlayerExternalId).Distinct(StringComparer.OrdinalIgnoreCase).Count() != all.Count)
             throw new ArgumentException("Excedentes: IDs de atletas ambíguos entre clubes/anos. Resolva a identidade antes de criar.");
+        var original = realClubs.SelectMany(c => c.Club.OfflineSource!.Definition.Players!).ToDictionary(p => p.Id!);
+        var evidence = (research ?? []).ToDictionary(e => (e.ClubKey, e.PlayerId));
         var cuts = realClubs.OrderBy(c => c.Club.Rank).SelectMany(c => (c.Club.ReferencePlayers ?? [])
-            .Where(p => !selectedIds.Contains(p.PlayerExternalId)).OrderByDescending(p => p.Strength)
-            .ThenBy(p => OfflineRosterV16.Draw(seed, c.Club.Key, p.PlayerExternalId))).ToList();
+            .Where(p => !selectedIds.Contains(p.PlayerExternalId))
+            .Select(p => (Player: p, Evidence: evidence.GetValueOrDefault((c.Club.Key, p.PlayerExternalId))))
+            .OrderByDescending(p => original[p.Player.PlayerExternalId].IsStar == true)
+            .ThenByDescending(p => p.Evidence?.IsProdigy == true)
+            .ThenByDescending(p => p.Evidence?.ImportantStarter == true)
+            .ThenByDescending(p => p.Evidence?.Minutes ?? -1)
+            .ThenByDescending(p => p.Player.Strength)
+            .ThenBy(p => OfflineRosterV16.Draw(seed, c.Club.Key, p.Player.PlayerExternalId))
+            .ThenBy(p => p.Player.PlayerExternalId, StringComparer.Ordinal)
+            .Select(p => p.Player)).ToList();
         if (cuts.Count(p => p.Position == "G") < 3 || cuts.Count(p => p.Position != "G") < 20)
             throw new ArgumentException("Excedentes insuficientes: exige 3 G reais e 20 de linha cortados. Desligue o clube de excedentes ou revise os elencos; nenhum atleta será inventado.");
         var players = cuts.Where(p => p.Position == "G").Take(3).ToList();
@@ -27,7 +38,6 @@ public static class OfflineSurplusV16
             throw new ArgumentException("Excedentes sem equilíbrio para 4-4-2; desligue o clube especial ou revise os candidatos.");
         var first = realClubs[0].Club;
         var source = first.OfflineSource!;
-        var original = realClubs.SelectMany(c => c.Club.OfflineSource!.Definition.Players!).ToDictionary(p => p.Id!);
         var definition = new OfflineClub("1.1",ClubId,source.CountryCode,source.Year,
             "Excedentes — clube fictício V1.6","Excedentes (fictício)","EXC",["#444444","#FFD700"],null,
             new("v16-surplus-coach-fictional","Treinador virtual dos Excedentes",source.CountryCode,new(["4-4-2"],[])),

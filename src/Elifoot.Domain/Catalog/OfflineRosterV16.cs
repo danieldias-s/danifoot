@@ -27,10 +27,15 @@ public static class OfflineRosterV16
         var byId = evidence.ToDictionary(e => e.PlayerId);
         var source = original.ToDictionary(p => p.Id!);
         var (minimum, maximum) = entry.Division switch { 1 => (20,21), 2 or 3 => (19,20), 4 => (17,19), 5 => (13,23), _ => throw new ArgumentException("Divisão inválida.") };
-        int target = Math.Min(candidates.Count, minimum + (int)(Draw(seed, club.Key, "size") % (uint)(maximum-minimum+1)));
+        int drawn = minimum + (int)(Draw(seed, club.Key, "size") % (uint)(maximum - minimum + 1));
         int availableG = candidates.Count(p => p.Position == "G");
-        int keepG = entry.Division < 5 ? 2 : target == 23 && availableG >= 3 ? 3 : Math.Min(2, availableG);
-        if (target < minimum || availableG < keepG || keepG == 0 || candidates.Count-availableG < target-keepG)
+        int outfield = candidates.Count - availableG;
+        int keepG = entry.Division < 5 ? 2 : Math.Min(2, availableG);
+        // Only the full district roster can use a third keeper. Cap other draws by usable candidates.
+        if (entry.Division == 5 && drawn == 23 && availableG >= 3 && outfield >= 20)
+            keepG = 3;
+        int target = Math.Min(drawn, outfield + keepG);
+        if (target < minimum || availableG < keepG || keepG == 0 || target - keepG < 10)
             throw new ArgumentException($"{club.Name}: candidatos insuficientes para divisão {entry.Division} ({minimum}..{maximum}, {keepG} G). Não serão inventados atletas.");
 
         // Lexicographic preservation, no unapproved numeric weights or inferred ages/minutes.
