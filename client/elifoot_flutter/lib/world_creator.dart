@@ -49,6 +49,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   bool _busy = false, _saved = false;
   final _countries = <String>{};
   List<Map<String, dynamic>> _options = [], _clubs = [];
+  List<Map<String, dynamic>> _offlineCatalogs = [];
+  bool _offlineCatalogLoadFailed = false;
   final _districtClubs = <String>{};
   final _districtView = CreatorDistrictViewState();
   static const _districtCapacity = 96;
@@ -150,6 +152,19 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       final options = _maps(
         await _call(path.toString()),
       ).where((country) => _clubCount(country) > 0).toList();
+      final offlineCatalogs = <Map<String, dynamic>>[];
+      var offlineLoadFailed = false;
+      if (options.isEmpty) {
+        try {
+          final summaryPath = Uri(
+            path: 'offline/catalogs/summary',
+            queryParameters: {'gender': _gender},
+          );
+          offlineCatalogs.addAll(_maps(await _call(summaryPath.toString())));
+        } catch (_) {
+          offlineLoadFailed = true;
+        }
+      }
       if (!mounted) return;
       final available = options.map((country) => country['code']).toSet();
       final validSelection = _countries
@@ -159,6 +174,8 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       setState(() {
         _countryLoadFailed = false;
         _options = options;
+        _offlineCatalogs = offlineCatalogs;
+        _offlineCatalogLoadFailed = offlineLoadFailed;
         if (validSelection.length != _countries.length) {
           _countries
             ..clear()
@@ -1200,6 +1217,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
             (a, b) => a['name'].toString().compareTo(b['name'].toString()),
           );
     final theme = ClassicTheme.of(context).paper;
+    final offlineCatalogs = _offlineCatalogs.where((catalog) {
+      final name = catalog['country']['name'].toString().toLowerCase();
+      return '$name ${catalog['year']}'.contains(_search);
+    });
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1266,6 +1287,36 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         const SizedBox(height: 2),
         if (!_busy && _countryLoadFailed) ...[
           const Text('Não foi possível consultar os países do catálogo local.'),
+          TextButton(
+            onPressed: () => _run(_loadCountries),
+            child: const Text('TENTAR NOVAMENTE'),
+          ),
+        ] else if (!_busy && _offlineCatalogs.isNotEmpty) ...[
+          for (final catalog in offlineCatalogs)
+            ListTile(
+              key: ValueKey('offline-country-${catalog['catalogId']}'),
+              leading: CreatorCountryFlag(
+                code: catalog['country']['code'].toString(),
+                countryName: catalog['country']['name'].toString(),
+              ),
+              title: Text('${catalog['country']['name']} • ${catalog['year']}'),
+              subtitle: Text(
+                '${catalog['clubCount']} clubes • ${catalog['ready'] == true
+                    ? 'Disponível'
+                    : catalog['valid'] == true
+                    ? 'Rascunho'
+                    : 'Inválido'}',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => _openOfflineCatalog(
+                country: catalog['country']['code'].toString(),
+                year: catalog['year'].toString(),
+              ),
+            ),
+          if (offlineCatalogs.isEmpty)
+            const Text('Nenhum país corresponde à pesquisa.'),
+        ] else if (!_busy && _offlineCatalogLoadFailed) ...[
+          const Text('Não foi possível consultar o catálogo offline.'),
           TextButton(
             onPressed: () => _run(_loadCountries),
             child: const Text('TENTAR NOVAMENTE'),
@@ -1547,6 +1598,21 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     onChooseGenerated: _busy ? null : _chooseRosterOrigin,
   );
 
+  Future<void> _openOfflineCatalog({String? country, String? year}) async {
+    final created = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => OfflineCatalogCreator(
+          api: widget.api,
+          coachId: widget.coachId,
+          initialCountry: country,
+          initialYear: year,
+        ),
+      ),
+    );
+    if (created == true && mounted) Navigator.pop(context, true);
+  }
+
   Widget _body() {
     if (_assembly != null && _step >= _yearsStep && _step <= _sourcesStep) {
       return _assemblyPanel();
@@ -1556,22 +1622,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         return Column(
           children: [
             TextButton(
-              onPressed: _busy
-                  ? null
-                  : () async {
-                      final created = await Navigator.push<bool>(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => OfflineCatalogCreator(
-                            api: widget.api,
-                            coachId: widget.coachId,
-                          ),
-                        ),
-                      );
-                      if (created == true && mounted) {
-                        Navigator.pop(context, true);
-                      }
-                    },
+              onPressed: _busy ? null : _openOfflineCatalog,
               child: const Text('USAR CATÁLOGO OFFLINE'),
             ),
             TextButton(

@@ -31,6 +31,7 @@ class _CreatorFixture {
   bool failLastConfiguration = false;
   Map<String, dynamic>? lastConfiguration;
   Map<String, dynamic>? previewSnapshot;
+  List<Map<String, dynamic>> offlineCatalogs = [];
   int reassignmentCount = 0;
   late final api = ElifootApiClient(
     httpClient: MockClient((request) async {
@@ -82,6 +83,15 @@ class _CreatorFixture {
           }
         }
         data = rows.values.toList();
+      } else if (request.url.path.endsWith('/offline/catalogs/summary')) {
+        data = [
+          for (final c in offlineCatalogs)
+            if (male) c['summary'],
+        ];
+      } else if (request.url.path.endsWith('/offline/catalogs')) {
+        data = {
+          'catalogs': [for (final c in offlineCatalogs) c['catalog']],
+        };
       } else if (request.url.path.endsWith('/last-configuration')) {
         if (failLastConfiguration) {
           return http.Response('{"error":"Configuração indisponível"}', 503);
@@ -475,6 +485,50 @@ void main() {
       findsOneWidget,
     );
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+  });
+
+  testWidgets('Países mostra a Espanha offline quando o histórico está vazio', (
+    tester,
+  ) async {
+    final summary = {
+      'catalogId': 'es-2026-principal',
+      'country': {'code': 'ES', 'name': 'Espanha'},
+      'year': 2026,
+      'clubCount': 172,
+      'ready': false,
+      'valid': true,
+    };
+    final fixture = _CreatorFixture()
+      ..seasons = []
+      ..offlineCatalogs = [
+        {
+          'summary': summary,
+          'catalog': {
+            'manifest': {...summary, 'name': 'Espanha 2026/27'},
+            'clubs': List.generate(172, (_) => {}),
+            'ready': false,
+            'valid': true,
+            'issues': [
+              {'code': 'BEHAVIOR'},
+              {'code': 'RANKING_RESOLUTION'},
+            ],
+          },
+        },
+      ];
+    await _creator(tester, fixture, 1366);
+    await _pressContinue(tester);
+    expect(find.text('172 clubes • Rascunho'), findsOneWidget);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    await _tapVisible(tester, find.text('Espanha • 2026'));
+
+    expect(find.text('Espanha 2026/27 • 2026'), findsOneWidget);
+    expect(find.textContaining('RASCUNHO • 172 clubes'), findsOneWidget);
+    final catalog = find.widgetWithText(
+      CheckboxListTile,
+      'Espanha 2026/27 • 2026',
+    );
+    expect(tester.widget<CheckboxListTile>(catalog).onChanged, isNull);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('Dois países exibem cobertura e anos dinâmicos ao voltar', (

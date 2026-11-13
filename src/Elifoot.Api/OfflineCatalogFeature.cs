@@ -27,6 +27,22 @@ internal static class OfflineCatalogFeature
         var group = parent.MapGroup("/offline");
         Guid Owner(HttpContext c) => (Guid)c.Items["creatorOwner"]!;
         group.MapGet("/catalogs", async (OfflineWorldCreatorService service, CancellationToken ct) => Results.Ok(await service.Catalogs(ct)));
+        group.MapGet("/catalogs/summary", async (FootballGender gender, OfflineWorldCreatorService service, CancellationToken ct) =>
+        {
+            var report = await service.Catalogs(ct);
+            var rootValid = report.Issues.All(i => !i.IsError);
+            return Results.Ok(report.Catalogs
+                .Where(c => c.Manifest is { Country: not null } manifest && manifest.Gender == gender && c.Clubs.Count > 0)
+                .Select(c => new
+                {
+                    c.Manifest!.CatalogId,
+                    c.Manifest.Country,
+                    c.Manifest.Year,
+                    ClubCount = c.Clubs.Count,
+                    Valid = c.Valid && rootValid,
+                    Ready = c.Ready && rootValid
+                }));
+        });
         group.MapPost("/clubs", async (OfflineWorldRequest request, OfflineWorldCreatorService service, CancellationToken ct) =>
             Results.Ok(await service.Select(request.CatalogIds, ct)));
         group.MapPost("/preview", async (OfflineWorldRequest request, HttpContext c, OfflineWorldCreatorService service, CancellationToken ct) =>

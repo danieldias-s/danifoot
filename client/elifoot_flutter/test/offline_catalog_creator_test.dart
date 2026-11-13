@@ -15,6 +15,7 @@ Map<String, dynamic> catalog({bool ready = false}) => {
     'country': {'code': 'BR', 'name': 'Brasil'},
   },
   'ready': ready,
+  'valid': true,
   'clubs': List.generate(ready ? 128 : 0, (_) => {}),
   'issues': ready
       ? []
@@ -266,7 +267,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.textContaining('RASCUNHO / INVÁLIDO'), findsOneWidget);
+      expect(find.textContaining('RASCUNHO'), findsOneWidget);
       final checkbox = tester.widget<CheckboxListTile>(
         find.byType(CheckboxListTile),
       );

@@ -7,10 +7,14 @@ import 'api_client.dart';
 class OfflineCatalogCreator extends StatefulWidget {
   final ElifootApiClient api;
   final String coachId;
+  final String? initialCountry;
+  final String? initialYear;
   const OfflineCatalogCreator({
     super.key,
     required this.api,
     required this.coachId,
+    this.initialCountry,
+    this.initialYear,
   });
 
   @override
@@ -24,7 +28,8 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
   final _seed = Random.secure().nextInt(2147483646) + 1;
   List<Map<String, dynamic>> _catalogs = [], _clubs = [];
   Map<String, dynamic>? _preview;
-  String? _country, _year;
+  late String? _country = widget.initialCountry;
+  late String? _year = widget.initialYear;
   String _error = '';
   int _humans = 1;
   bool _busy = false;
@@ -65,6 +70,17 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
     if (!mounted) return;
     setState(() {
       _catalogs = _maps(report['catalogs']);
+      final manifests = _catalogs.map((c) => c['manifest']).whereType<Map>();
+      if (!manifests.any((m) => m['country']?['code'] == _country)) {
+        _country = null;
+      }
+      if (!manifests.any(
+        (m) =>
+            (_country == null || m['country']?['code'] == _country) &&
+            m['year'].toString() == _year,
+      )) {
+        _year = null;
+      }
       _error = _maps(report['issues']).map((i) => i['message']).join('\n');
     });
   }
@@ -131,6 +147,29 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
       Map<String, dynamic>.from(
         c['offlineSource']?['definition'] as Map? ?? {},
       );
+
+  String _catalogDetails(Map<String, dynamic> catalog) {
+    final status = catalog['ready'] == true
+        ? 'DISPONÍVEL'
+        : catalog['valid'] == true
+        ? 'RASCUNHO'
+        : 'INVÁLIDO';
+    final issues = _maps(catalog['issues']);
+    final behavior = issues.where((i) => i['code'] == 'BEHAVIOR').length;
+    final ranking = issues
+        .where((i) => i['code'] == 'RANKING_RESOLUTION')
+        .length;
+    final other = issues.where(
+      (i) => i['code'] != 'BEHAVIOR' && i['code'] != 'RANKING_RESOLUTION',
+    );
+    return [
+      '$status • ${(catalog['clubs'] as List? ?? []).length} clubes',
+      if (behavior > 0) '$behavior jogadores com comportamento pendente',
+      if (ranking > 0) '$ranking clubes sem ranking ou prioridade de desempate',
+      ...other.take(3).map((i) => i['message'].toString()),
+      if (other.length > 3) 'Mais ${other.length - 3} ocorrências',
+    ].join('\n');
+  }
 
   Widget _clubDetails(Map<String, dynamic> c) {
     final source = c['offlineSource'] as Map? ?? {};
@@ -265,7 +304,14 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     SizedBox(
                       width: 240,
                       child: DropdownButtonFormField<String>(
-                        initialValue: _country,
+                        key: ValueKey((
+                          'country',
+                          _country,
+                          countries.containsKey(_country),
+                        )),
+                        initialValue: countries.containsKey(_country)
+                            ? _country
+                            : null,
                         isExpanded: true,
                         decoration: const InputDecoration(labelText: 'País'),
                         items: [
@@ -290,8 +336,13 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     SizedBox(
                       width: 160,
                       child: DropdownButtonFormField<String>(
-                        key: ValueKey('year-$_country'),
-                        initialValue: _year,
+                        key: ValueKey((
+                          'year',
+                          _country,
+                          _year,
+                          years.contains(_year),
+                        )),
+                        initialValue: years.contains(_year) ? _year : null,
                         isExpanded: true,
                         decoration: const InputDecoration(labelText: 'Ano'),
                         items: [
@@ -336,9 +387,7 @@ class _OfflineCatalogCreatorState extends State<OfflineCatalogCreator> {
                     title: Text(
                       '${c['manifest']['name']} • ${c['manifest']['year']}',
                     ),
-                    subtitle: Text(
-                      '${c['ready'] == true ? 'READY' : 'RASCUNHO / INVÁLIDO'} • ${(c['clubs'] as List? ?? []).length} clubes\n${_maps(c['issues']).map((i) => i['message']).join('\n')}',
-                    ),
+                    subtitle: Text(_catalogDetails(c)),
                     onChanged: _busy || c['ready'] != true
                         ? null
                         : (v) => _changeCatalog(
