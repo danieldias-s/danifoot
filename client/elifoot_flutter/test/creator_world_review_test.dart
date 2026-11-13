@@ -6,6 +6,10 @@ import 'package:elifoot_flutter/creator_world_review.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+const _catalogCrest =
+    'data:image/png;base64,'
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aQm8AAAAASUVORK5CYII=';
+
 Map<String, dynamic> _preview({
   bool blocking = false,
   bool longNames = false,
@@ -27,6 +31,7 @@ Map<String, dynamic> _preview({
           'provider': 'local-historical',
           if (index == 0)
             'palette': {'primaryColor': '#00512E', 'secondaryColor': '#FFFFFF'},
+          if (index < 2) 'offlineSource': {'crestDataUrl': _catalogCrest},
           'players': [
             {
               'playerName': 'Atleta do catálogo $index',
@@ -126,7 +131,18 @@ void main() {
       expect(find.text('Clube de catálogo (2025)'), findsOneWidget);
       expect(find.text('Clube de catálogo (1985)'), findsOneWidget);
       expect(find.byType(CreatorCountryFlag), findsNWidgets(8));
-      expect(find.byType(ClubCrest), findsOneWidget);
+      final crests = tester.widgetList<ClubCrest>(find.byType(ClubCrest));
+      expect(crests.map((crest) => crest.crestDataUrl), [
+        _catalogCrest,
+        _catalogCrest,
+      ]);
+      expect(
+        find.descendant(
+          of: find.byType(ClubCrest),
+          matching: find.byType(Image),
+        ),
+        findsNWidgets(2),
+      );
       expect(find.byKey(const ValueKey('review-club-2-qa-8')), findsNothing);
       for (var division = 1; division <= 4; division++) {
         expect(

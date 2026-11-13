@@ -164,6 +164,24 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       _usingOfflineCatalog &&
       _selectedOfflineCatalogs.any((catalog) => catalog['ready'] != true);
 
+  List<String> get _offlineCatalogPendingDetails {
+    final catalogs = _selectedOfflineCatalogs;
+    final players = catalogs.fold<int>(
+      0,
+      (sum, c) => sum + (c['pendingBehaviors'] as int? ?? 0),
+    );
+    final rankings = catalogs.fold<int>(
+      0,
+      (sum, c) => sum + (c['pendingRankings'] as int? ?? 0),
+    );
+    return [
+      if (players > 0)
+        '$players jogadores com comportamento pendente no catálogo.',
+      if (rankings > 0)
+        '$rankings clubes sem ranking ou prioridade de desempate no catálogo.',
+    ];
+  }
+
   List<String> get _offlineCatalogIds => _selectedOfflineCatalogs
       .map((catalog) => catalog['catalogId'].toString())
       .toList();
@@ -1205,6 +1223,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         ...preview,
         'errors': {
           ...preview['errors'] as List? ?? [],
+          if (_offlinePlanningOnly) ..._offlineCatalogPendingDetails,
           ?_previewStructureProblem,
         }.toList(),
         'clubs': [

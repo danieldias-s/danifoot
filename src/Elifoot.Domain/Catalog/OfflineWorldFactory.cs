@@ -17,7 +17,8 @@ public static class OfflineWorldFactory
             source.CountryName, gender, "Catálogo offline", source.Year.ToString(), c.Colors![0], c.Colors[1], null,
             planningOnly || source.V11 != null ? [] : (c.Players ?? []).Select(p => new CatalogAthlete(p.Id!, c.CatalogClubId!, "offline-v1", gender,
                 source.Year.ToString(), p.Name!, p.Position!, p.Strength!.Value, "Arquivo local fornecido pelo proprietário",
-                DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.Year}:{p.Id}")).ToList(), [], OfflineSource: source);
+                DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.Year}:{p.Id}",
+                IdentityOrigin: CatalogDataOrigin.Real, PlayerOrigin: WorldPlayerOrigin.REAL_HISTORICAL_CATALOG)).ToList(), [], OfflineSource: source);
     }
 
     public static WorldCreatorPreview Preview(OfflineWorldRequest request, List<EligibleCatalogClub> available)
@@ -66,7 +67,9 @@ public static class OfflineWorldFactory
                     Players = (def.Players ?? []).Select(p => new CatalogAthlete(p.Id!, def.CatalogClubId!, "offline-v1.1", c.Gender,
                         source.Year.ToString(), p.Name!, p.Position!, 1, "Arquivo local fornecido pelo proprietário",
                         DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.CountryCode}:{source.Year}:{def.CatalogClubId}:{p.Id}",
-                        StrengthEstimate: new(InitialPlayerStrength.Version, CatalogDataOrigin.Estimated, 0, "", .5, null))).ToList()
+                        IdentityOrigin: CatalogDataOrigin.Real,
+                        StrengthEstimate: new(InitialPlayerStrength.Version, CatalogDataOrigin.Estimated, 0, "", .5, null),
+                        PlayerOrigin: WorldPlayerOrigin.REAL_HISTORICAL_CATALOG)).ToList()
                 };
             }).ToList(), request.Seed);
             if (request.IncludeSurplusClub) clubs = clubs.Where(c => chosen.Contains(c.Key)).ToList();

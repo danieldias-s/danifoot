@@ -1,30 +1,61 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'club_theme.dart';
 
-/// Generic club-color shield; the API does not supply licensed crest artwork.
+/// Catalog artwork with a club-color shield as a fallback.
 class ClubCrest extends StatelessWidget {
   final Map<String, dynamic>? palette;
   final String club;
   final double size;
+  final String? crestDataUrl;
   const ClubCrest({
     super.key,
     required this.club,
     this.palette,
     this.size = 42,
+    this.crestDataUrl,
   });
+
+  static String? catalogImage(Map club) {
+    final source = club['offlineSource'];
+    final image = source is Map ? source['crestDataUrl'] : null;
+    return image is String && image.isNotEmpty ? image : null;
+  }
+
+  Widget _shield() => CustomPaint(
+    size: Size(size * .84, size),
+    painter: _ClubShield(
+      rgbColor(palette?['primaryColor']) ?? const Color(0xFF607D70),
+      rgbColor(palette?['secondaryColor']) ?? Colors.white,
+    ),
+  );
+
+  Widget _artwork() {
+    final data = crestDataUrl;
+    if (data != null &&
+        (data.startsWith('data:image/png;base64,') ||
+            data.startsWith('data:image/jpeg;base64,'))) {
+      try {
+        return Image.memory(
+          base64Decode(data.substring(data.indexOf(',') + 1)),
+          width: size,
+          height: size,
+          fit: BoxFit.contain,
+          excludeFromSemantics: true,
+          errorBuilder: (_, _, _) => _shield(),
+        );
+      } on FormatException {
+        return _shield();
+      }
+    }
+    return _shield();
+  }
+
   @override
   Widget build(BuildContext context) => Tooltip(
     message: club,
-    child: Semantics(
-      label: club,
-      child: CustomPaint(
-        size: Size(size * .84, size),
-        painter: _ClubShield(
-          rgbColor(palette?['primaryColor']) ?? const Color(0xFF607D70),
-          rgbColor(palette?['secondaryColor']) ?? Colors.white,
-        ),
-      ),
-    ),
+    child: Semantics(label: club, child: _artwork()),
   );
 }
 

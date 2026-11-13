@@ -436,10 +436,16 @@ class _CreatorWorldReviewState extends State<CreatorWorldReview> {
         : club['primaryColor'] != null
         ? club
         : null;
-    if (colors == null) return null;
+    final image = ClubCrest.catalogImage(club);
+    if (colors == null && image == null) return null;
     return Padding(
       padding: const EdgeInsets.only(right: 8),
-      child: ClubCrest(club: _name(club), palette: colors, size: 25),
+      child: ClubCrest(
+        club: _name(club),
+        palette: colors,
+        size: 25,
+        crestDataUrl: image,
+      ),
     );
   }
 

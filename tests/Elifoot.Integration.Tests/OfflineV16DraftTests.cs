@@ -73,6 +73,8 @@ public sealed class OfflineV16DraftTests
         Assert.Equal(new[] { 8, 8, 8, 8, 96 }, preview.Clubs.GroupBy(c => c.Division).Select(group => group.Count()));
         foreach (var entry in preview.Clubs)
         {
+            Assert.All(entry.Club.Players, player =>
+                Assert.Equal(WorldPlayerOrigin.REAL_HISTORICAL_CATALOG, player.PlayerOrigin));
             var (minimum, maximum) = entry.Division switch
             {
                 1 => (20, 21), 2 or 3 => (19, 20), 4 => (17, 19), _ => (13, 23)
