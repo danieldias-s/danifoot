@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:elifoot_flutter/salary_request_modal.dart';
 import 'package:elifoot_flutter/main.dart';
+import 'package:elifoot_flutter/classic98_widgets.dart' show RetroButton;
 import 'package:elifoot_flutter/match_router.dart';
 import 'package:elifoot_flutter/presentation_version.dart';
 import 'package:elifoot_flutter/presentation_widgets.dart';
@@ -211,12 +212,27 @@ void main() {
       addTearDown(tester.view.resetDevicePixelRatio);
       final api = PendingSalaryApi();
       await join(tester, api);
+      final renew = find.byKey(
+        Key(classic ? 'retro-renew-contract' : 'renew-contract-p-1'),
+      );
+      VoidCallback? renewAction() => classic
+          ? tester.widget<RetroButton>(renew).onPressed
+          : tester.widget<IconButton>(renew).onPressed;
       if (classic) {
         await PresentationScope.maybeOf(
           tester.element(find.byType(ElifootShellScreen)),
         )!.select(api, PresentationVersion.classic);
         await tester.pumpAndSettle();
+        final table = find.byKey(const Key('retro-roster'));
+        final player = find.descendant(
+          of: table,
+          matching: find.textContaining('Carlos Muralha'),
+        );
+        await tester.ensureVisible(player.first);
+        await tester.tap(player.first);
+        await tester.pumpAndSettle();
       }
+      expect(renewAction(), isNotNull);
       api.pending = true;
       api.onNotification?.call('Atualização salarial');
       await tester.pumpAndSettle();
@@ -227,6 +243,7 @@ void main() {
       expect(api.resolved, isTrue);
       expect(find.byType(SalaryRequestModal), findsNothing);
       expect(find.text('✓'), findsOneWidget);
+      expect(renewAction(), isNull);
       await tester.pumpWidget(const SizedBox());
       api.disconnectRealtime();
     });

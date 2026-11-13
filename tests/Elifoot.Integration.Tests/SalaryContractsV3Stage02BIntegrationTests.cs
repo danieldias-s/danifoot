@@ -69,7 +69,7 @@ public class SalaryContractsV3Stage02BIntegrationTests
         EfWorldRepository.ClearCacheForTesting();File.Delete(file);
     }
 
-    [Fact] public async Task ApiBlocksPendingTurnoverThenHumanDecisionUnlocksSaleNextSeason()
+    [Fact] public async Task AcceptedRaiseBlocksRenewalUntilNextSeason()
     {
         string file=DatabaseFile();var(w,h,p,r)=Setup();w.RoundState=RoundState.RESULTS;w.RoundNumber=w.TotalRoundsInSeason;
         await using(var factory=Factory(file))
@@ -87,16 +87,30 @@ public class SalaryContractsV3Stage02BIntegrationTests
             var adjusted = (await client.GetFromJsonAsync<ClubDetailDto>(clubDetail))!.Squad.Single(x => x.Id == p.Id);
             Assert.True(adjusted.SalaryRaiseAcceptedForSeason);
             Assert.False(adjusted.ContractRenewedForSeason);
-            var renewal=await client.GetFromJsonAsync<RenewalContractPreviewDto>($"/api/worlds/{w.Id}/players/{p.Id}/renew-preview?coachId={h[0].Id}");
-            Assert.True((await client.PostAsync($"/api/worlds/{w.Id}/players/{p.Id}/renew?coachId={h[0].Id}&additionalRounds=0&idempotencyKey=voluntary&renewalTermsToken={renewal!.TermsToken}",null)).IsSuccessStatusCode);
-            string list=$"/api/worlds/{w.Id}/market/list?coachId={h[0].Id}&playerId={p.Id}&askingPrice=100000";
-            Assert.False((await client.PostAsync(list+"&idempotencyKey=protected",null)).IsSuccessStatusCode);
+            string playerPath = $"/api/worlds/{w.Id}/players/{p.Id}";
+            string preview = $"{playerPath}/renew-preview?coachId={h[0].Id}";
+            string renew = $"{playerPath}/renew?coachId={h[0].Id}&additionalRounds=0";
+            foreach (var response in new[]
+            {
+                await client.GetAsync(preview),
+                await client.GetAsync(preview + "&offeredSalary=110"),
+                await client.PostAsync(renew + "&idempotencyKey=blocked", null),
+                await client.PostAsJsonAsync(playerPath + "/renew-negotiation",
+                    new RenewalNegotiationCommandDto(h[0].Id, 110, true, "old-terms", "blocked-offer"))
+            })
+            {
+                Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+                Assert.Contains("aumento salarial aceito", await response.Content.ReadAsStringAsync());
+            }
+            Assert.Empty(w.Transactions.Where(t => t.PlayerId == p.Id && t.Category == FinancialTransactionCategory.ContractRenewal));
+            Assert.Single(w.Economy.ContractHistory, record => record.PlayerId == p.Id);
             Assert.True((await client.PostAsync(next,null)).IsSuccessStatusCode);Assert.True((await client.PostAsync(next,null)).IsSuccessStatusCode);
             Assert.Equal(2,w.SeasonNumber);Assert.Single(w.SeasonHistories);
             var nextSeason = (await client.GetFromJsonAsync<ClubDetailDto>(clubDetail))!.Squad.Single(x => x.Id == p.Id);
             Assert.False(nextSeason.SalaryRaiseAcceptedForSeason);
             Assert.False(nextSeason.ContractRenewedForSeason);
-            Assert.True((await client.PostAsync(list+"&idempotencyKey=next-season",null)).IsSuccessStatusCode);
+            var renewal = await client.GetFromJsonAsync<RenewalContractPreviewDto>(preview);
+            Assert.True((await client.PostAsync(renew + $"&idempotencyKey=next-season&renewalTermsToken={renewal!.TermsToken}", null)).IsSuccessStatusCode);
             Assert.Equal(renewal.RequiredSalary,p.SalaryPerRound);Assert.Equal(h[0].CurrentClubId,p.ClubId);
         }
         EfWorldRepository.ClearCacheForTesting();File.Delete(file);

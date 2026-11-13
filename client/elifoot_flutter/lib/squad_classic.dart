@@ -340,16 +340,19 @@ class ClassicSquadRoster extends StatelessWidget {
                       Row(
                         children: [
                           action(
+                            key: ValueKey('renew-contract-${players[i]['id']}'),
                             icon: Icons.edit_outlined,
                             tooltip:
                                 players[i]['contractRenewedForSeason'] == true
                                 ? 'Contrato já renovado nesta temporada'
+                                : players[i]['salaryRaiseAcceptedForSeason'] ==
+                                      true
+                                ? 'Aumento salarial já aceito nesta temporada'
                                 : 'Renovar contrato',
                             onPressed:
                                 canManage &&
                                     !busy &&
-                                    players[i]['contractRenewedForSeason'] !=
-                                        true
+                                    !squadContractConfirmed(players[i])
                                 ? () => onRenew(players[i])
                                 : null,
                           ),

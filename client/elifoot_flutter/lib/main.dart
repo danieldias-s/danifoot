@@ -2023,7 +2023,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     if (_contractNegotiationLocked ||
         world == null ||
         coach == null ||
-        player['contractRenewedForSeason'] == true) {
+        squadContractConfirmed(player)) {
       return;
     }
     if (player['seasonContractsEnabled'] != true) {
@@ -2092,7 +2092,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Future<void> _renewSquadPlayer(Map<String, dynamic> player) async {
     final world = _worldId, coach = _coachId, club = _myClubId;
     if (_commandBusy || _matchLocked || world == null || coach == null) return;
-    if (player['contractRenewedForSeason'] == true) return;
+    if (squadContractConfirmed(player)) return;
     final season = (_snapshot?['seasonNumber'] as num?)?.toInt() ?? 1;
     final annual = player['seasonContractsEnabled'] == true;
     String? renewalToken;

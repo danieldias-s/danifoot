@@ -3,6 +3,22 @@ namespace Elifoot.Domain;
 
 public static partial class ClassicEconomyEngine
 {
+    public static bool IsAcceptedSalaryRaise(PlayerContractRecord record, int season) =>
+        record.Season == season && record.Reason is "SPONTANEOUS_HUMAN_ACCEPTED" or "SPONTANEOUS_AI_ACCEPTED";
+
+    private static bool HasAcceptedSalaryRaise(GameWorld world, Player player) =>
+        player.ClubId.HasValue && world.Economy.ContractHistory.Any(record =>
+            record.PlayerId == player.Id && record.ClubId == player.ClubId &&
+            IsAcceptedSalaryRaise(record, world.SeasonNumber));
+
+    public static string? RenewalSeasonRestriction(GameWorld world, Player player)
+    {
+        if (IsSeasonRenewed(world, player)) return "Contrato já renovado até o fim desta temporada.";
+        return HasAcceptedSalaryRaise(world, player)
+            ? "Jogador já teve um aumento salarial aceito nesta temporada."
+            : null;
+    }
+
     private static IEnumerable<SalaryRaiseRequest> PendingForPlayer(GameWorld w,Guid playerId)
     {
         if(w.Economy.PendingCacheCount!=w.Economy.SalaryRequests.Count)
@@ -36,7 +52,7 @@ public static partial class ClassicEconomyEngine
         if(receipt.Found)return(receipt.Valid,receipt.Valid?null:"Chave usada por outra operação.");
         if(string.IsNullOrWhiteSpace(key)||!Safe(w)||!w.Clubs.Contains(c)||!w.Players.Contains(p)||p.ClubId!=c.Id)return(false,"Renovação inválida ou indisponível durante a partida.");
         if(AuctionReserved(w,p.Id))return(false,"Jogador está reservado para um leilão em andamento.");
-        if(IsSeasonRenewed(w,p))return(false,"Contrato já renovado até o fim desta temporada.");
+        if(RenewalSeasonRestriction(w,p) is string restriction)return(false,restriction);
         if(PendingForPlayer(w,p.Id).Any())return(false,"SALARY_PENDING_DECISION: Resolva o pedido espontâneo antes de tentar renovar este jogador.");
         if(p.SalaryPerRound<0||p.SalaryPerRound!=Math.Round(p.SalaryPerRound,2))return(false,"CONTRACT_VALUE_INVALID: Salário vigente inválido.");
         if(w.Economy.Rules.SeasonContractsEnabled&&salary==null)
@@ -101,6 +117,8 @@ public static partial class ClassicEconomyEngine
         var clubsWithPending=w.Economy.SalaryRequests.Where(r=>r.IsUnresolved).Select(r=>r.ClubId).ToHashSet();
         var clubsWithRequestThisRound=w.Economy.SalaryRequests
             .Where(r=>r.Season==w.SeasonNumber&&r.Round==w.RoundNumber).Select(r=>r.ClubId).ToHashSet();
+        var adjustedPlayers = w.Economy.ContractHistory.Where(r => IsAcceptedSalaryRaise(r, w.SeasonNumber))
+            .Select(r => (r.PlayerId, r.ClubId)).ToHashSet();
         foreach(var c in w.Clubs.Where(c=>clubsPlaying.Contains(c.Id)).OrderBy(c=>c.Id))
         {
             string roundKey=$"{c.Id}:S{w.SeasonNumber}:R{w.RoundNumber}";
@@ -108,6 +126,7 @@ public static partial class ClassicEconomyEngine
             if(w.Economy.SalaryRequestRounds.Contains(roundKey)||clubsWithRequestThisRound.Contains(c.Id))continue;
             if(clubsWithPending.Contains(c.Id))continue;
             var candidates=w.Players.Where(p=>p.ClubId==c.Id&&p.ContractRoundsRemaining<=0&&!IsSeasonRenewed(w,p)
+                    &&!adjustedPlayers.Contains((p.Id,p.ClubId))
                     &&!p.IsListedForTransfer&&!AuctionReserved(w,p.Id)&&w.Economy.SalaryEligibility.TryGetValue(p.Id,out var e)&&e.ClubId==c.Id&&e.FromSeason<=w.SeasonNumber)
                 .Select(p=>new {Player=p,Requested=RequestedSalary(w,c,p),Trigger=w.Economy.SalaryEligibility[p.Id]})
                 .Where(x=>x.Requested>x.Player.SalaryPerRound)
@@ -140,7 +159,8 @@ public static partial class ClassicEconomyEngine
             return ("SALARY_AUTHORITY", "SALARY_AUTHORITY: Pedido pertence a outro mundo.");
         if (request.Season > w.SeasonNumber)
             return ("SALARY_SEASON_INVALID", "SALARY_SEASON_INVALID: Pedido pertence a uma temporada futura.");
-        if ((!w.Economy.Rules.SeasonContractsEnabled && player.ContractRoundsRemaining > 0) || IsSeasonRenewed(w, player))
+        if ((!w.Economy.Rules.SeasonContractsEnabled && player.ContractRoundsRemaining > 0) ||
+            RenewalSeasonRestriction(w, player) != null)
             return ("CONTRACT_IN_FORCE", "Jogador já possui contrato vigente.");
         if (AuctionReserved(w, player.Id))
             return ("PLAYER_IN_AUCTION", "Jogador já está em leilão.");

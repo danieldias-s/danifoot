@@ -18,7 +18,7 @@ public sealed partial class ClubAndMarketApplicationService
             var p=w.Players.FirstOrDefault(p=>p.Id==playerId&&p.ClubId==c?.Id);
             if(c==null||p==null)return(null,"Jogador não pertence ao seu clube.");
             if(!ClassicEconomyEngine.Safe(w)||coach!.IsReadyForRound)return(null,"Renovação disponível entre partidas e sem pronto.");
-            if(ClassicEconomyEngine.IsSeasonRenewed(w,p))return(null,"Jogador já renovado nesta temporada.");
+            if(ClassicEconomyEngine.RenewalSeasonRestriction(w,p) is string restriction)return(null,restriction);
             if(w.Auctions.Any(a=>!a.IsClosed&&a.PlayerId==p.Id))return(null,"Jogador reservado para leilão.");
             if(w.Economy.SalaryRequests.Any(r=>r.PlayerId==p.Id&&r.IsUnresolved))
                 return(null,"SALARY_PENDING_DECISION: Resolva primeiro o pedido espontâneo.");

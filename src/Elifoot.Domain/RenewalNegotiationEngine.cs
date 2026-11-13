@@ -21,8 +21,8 @@ public static partial class ClassicEconomyEngine
             return (false, "Renovação disponível apenas para seu jogador entre partidas.", null);
         if (!world.Economy.Rules.SeasonContractsEnabled)
             return (false, "Negociação anual indisponível nesta sala.", null);
-        if (IsSeasonRenewed(world, player))
-            return (false, "Contrato já renovado até o fim desta temporada.", null);
+        if (RenewalSeasonRestriction(world, player) is string restriction)
+            return (false, restriction, null);
         if (AuctionReserved(world, player.Id))
             return (false, "Jogador está reservado para um leilão em andamento.", null);
         if (PendingForPlayer(world, player.Id).Any())

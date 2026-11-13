@@ -1361,7 +1361,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                   label: 'Renovar contrato',
                   onPressed:
                       _contractNegotiationLocked ||
-                          _retroSelected!['contractRenewedForSeason'] == true
+                          squadContractConfirmed(_retroSelected!)
                       ? null
                       : () => _negotiateSquadContract(_retroSelected!),
                 ),
@@ -1906,7 +1906,9 @@ extension _Classic98Shell on _ElifootShellScreenState {
               label: 'Consultar renovação...',
               onPressed:
                   _commandBusy ||
-                      (_tacticsLocked && _snapshot?['roundState'] != 'RESULTS')
+                      (_tacticsLocked &&
+                          _snapshot?['roundState'] != 'RESULTS') ||
+                      squadContractConfirmed(p)
                   ? null
                   : () => _renewSquadPlayer(p),
             ),
