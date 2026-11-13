@@ -37,10 +37,9 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
                 throw new ArgumentException($"Catálogo {id} incompleto/inválido. Corrija os arquivos e marque READY após validar.");
             var candidates = catalog.Ready ? catalog.Clubs : catalog.Clubs
                 .Where(c => OfflineCatalogRules.Text(c.Definition.Name) && OfflineCatalogRules.Text(c.Definition.ShortName, 80) &&
-                    c.Definition.Colors is { Count: 2 } colors && colors.All(color => !string.IsNullOrWhiteSpace(color)))
-                .Select(c => c with { Definition = c.Definition with { Players = [] } });
+                    c.Definition.Colors is { Count: 2 } colors && colors.All(color => !string.IsNullOrWhiteSpace(color)));
             if (!candidates.Any()) throw new ArgumentException($"Catálogo {id} não tem clubes aptos para montar as divisões.");
-            clubs.AddRange(candidates.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender)));
+            clubs.AddRange(candidates.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender, planningOnly)));
         }
         if (clubs.Select(c => c.CountryCode).Distinct().Count() > 8 || clubs.Select(c => c.Gender).Distinct().Count() != 1)
             throw new ArgumentException("Escolha uma categoria e até oito países.");

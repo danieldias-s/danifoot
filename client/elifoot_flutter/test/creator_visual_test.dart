@@ -96,7 +96,18 @@ class _CreatorFixture {
               'name': 'Clube espanhol $i',
               'countryCode': 'ES',
               'season': '2026',
-              'offlineSource': {'v11': {}},
+              'offlineSource': {
+                'v11': {},
+                'definition': {
+                  'players': [
+                    {
+                      'name': 'Goleiro cadastrado $i',
+                      'position': 'G',
+                      'behavior': null,
+                    },
+                  ],
+                },
+              },
               'players': [],
             },
         ];
@@ -578,6 +589,19 @@ void main() {
     expect(districts.districtCount, 96);
     await _pressContinue(tester);
     expect(find.textContaining('Ainda há dados pendentes'), findsOneWidget);
+    expect(find.text('G • Goleiro cadastrado 0'), findsOneWidget);
+    expect(find.text('1 com comportamento pendente.'), findsOneWidget);
+    final clubDropdown = find.widgetWithText(
+      DropdownButtonFormField<String>,
+      'Clube',
+    );
+    expect(
+      tester.widget<DropdownButtonFormField<String>>(clubDropdown).initialValue,
+      'offline-0',
+    );
+    await _tapVisible(tester, clubDropdown);
+    await _tapVisible(tester, find.text('Clube espanhol 1').last);
+    expect(find.text('G • Goleiro cadastrado 1'), findsOneWidget);
     expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
     expect(
       fixture.requests.any((r) => r.url.path.endsWith('/offline/preview')),

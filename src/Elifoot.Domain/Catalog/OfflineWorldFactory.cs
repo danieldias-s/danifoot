@@ -7,7 +7,7 @@ namespace Elifoot.Domain;
 /// <summary>Imports explicit values without passing through 017B or synthetic roster completion.</summary>
 public static class OfflineWorldFactory
 {
-    public static EligibleCatalogClub Eligible(OfflineClubSource source, FootballGender gender)
+    public static EligibleCatalogClub Eligible(OfflineClubSource source, FootballGender gender, bool planningOnly = false)
     {
         var c = source.Definition;
         if (c.SchemaVersion == "1.1" && source.V11 == null)
@@ -15,7 +15,7 @@ public static class OfflineWorldFactory
         string key = $"offline:{source.CountryCode}:{source.Year}:{c.CatalogClubId}";
         return new(key, c.CatalogClubId!, "offline-v1", c.Name!, c.ShortName!, source.CountryCode,
             source.CountryName, gender, "Catálogo offline", source.Year.ToString(), c.Colors![0], c.Colors[1], null,
-            source.V11 != null ? [] : (c.Players ?? []).Select(p => new CatalogAthlete(p.Id!, c.CatalogClubId!, "offline-v1", gender,
+            planningOnly || source.V11 != null ? [] : (c.Players ?? []).Select(p => new CatalogAthlete(p.Id!, c.CatalogClubId!, "offline-v1", gender,
                 source.Year.ToString(), p.Name!, p.Position!, p.Strength!.Value, "Arquivo local fornecido pelo proprietário",
                 DateTime.UnixEpoch, CanonicalPlayerId: $"offline:{source.Year}:{p.Id}")).ToList(), [], OfflineSource: source);
     }

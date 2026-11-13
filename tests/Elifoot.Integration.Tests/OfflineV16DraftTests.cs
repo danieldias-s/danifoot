@@ -40,11 +40,13 @@ public sealed class OfflineV16DraftTests
         var candidates = await service.SelectForPlanning(["es-2026-principal"]);
         Assert.Equal(172, candidates.Count);
         Assert.Equal(172, candidates.Select(c => c.Key).Distinct().Count());
+        Assert.Equal(3905, candidates.Sum(c => c.OfflineSource!.Definition.Players!.Count));
         Assert.All(candidates, c =>
         {
             Assert.Equal("ES", c.CountryCode);
             Assert.Equal("2026", c.Season);
-            Assert.Empty(c.OfflineSource!.Definition.Players!);
+            Assert.NotEmpty(c.OfflineSource!.Definition.Players!);
+            Assert.Empty(c.Players);
         });
         await Assert.ThrowsAsync<ArgumentException>(() => service.Preview(Guid.NewGuid(),
             new OfflineWorldRequest("Espanha 2026", ["es-2026-principal"], 42)));

@@ -42,6 +42,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   bool _generateAllRosterPlayers = false;
   bool _repairUnavailableAssignments = false;
   String? _rosterProblem;
+  String? _offlineRosterClubKey;
   int? _sourcesReturnStep;
   Map<String, dynamic>? _assembly;
   final _confirmationKey = 'create-${DateTime.now().microsecondsSinceEpoch}';
@@ -123,6 +124,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _reviewDraft = null;
     _reviewScope = null;
     _rosterProblem = null;
+    _offlineRosterClubKey = null;
     _repairUnavailableAssignments = keepPlacement;
     if (keepPlacement) return;
     _districtView.reset();
@@ -165,6 +167,15 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   List<String> get _offlineCatalogIds => _selectedOfflineCatalogs
       .map((catalog) => catalog['catalogId'].toString())
       .toList();
+
+  List<String> get _offlineSelectedClubKeys => [
+    ..._divisionSlots.whereType<String>(),
+    if (_district == 'Manual')
+      ..._districtClubs
+    else
+      for (final club in _districtCandidates.take(_districtCapacity))
+        club['key'].toString(),
+  ];
 
   Future<void> _loadCountries() async {
     final path = Uri(
@@ -463,14 +474,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     }
     final data = _usingOfflineCatalog
         ? await _offlinePreview(
-            [
-              ..._divisionSlots.whereType<String>(),
-              if (_district == 'Manual')
-                ..._districtClubs
-              else
-                for (final club in _districtCandidates.take(_districtCapacity))
-                  club['key'].toString(),
-            ],
+            _offlineSelectedClubKeys,
             _maps(_request()['assignments'])
                 .where(
                   (assignment) =>
@@ -1703,18 +1707,76 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     _preview = null;
   });
 
-  Widget _sourcesPanel() => _usingOfflineCatalog
-      ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+  Widget _offlineSourcesPanel() {
+    final byKey = {for (final club in _clubs) club['key']: club};
+    final clubs = _offlineSelectedClubKeys
+        .map((key) => byKey[key])
+        .nonNulls
+        .toList();
+    final club =
+        clubs.where((c) => c['key'] == _offlineRosterClubKey).firstOrNull ??
+        clubs.firstOrNull;
+    final players = _maps(
+      (club?['offlineSource']?['definition'] as Map?)?['players'],
+    );
+    final missingBehavior = players
+        .where((player) => player['behavior'] == null)
+        .length;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (_offlinePlanningOnly)
+          const Text(
+            'Ainda há dados pendentes no catálogo. Você pode consultar os elencos cadastrados antes da criação do campeonato.',
+          )
+        else
+          const Text(
+            'Os elencos reais serão carregados do catálogo selecionado.',
+          ),
+        if (_rosterProblem != null) Text(_rosterProblem!),
+        if (club != null) ...[
+          const SizedBox(height: 12),
+          DropdownButtonFormField<String>(
+            key: ValueKey('offline-roster-${club['key']}'),
+            initialValue: club['key'] as String,
+            isExpanded: true,
+            decoration: const InputDecoration(labelText: 'Clube'),
+            items: [
+              for (final candidate in clubs)
+                DropdownMenuItem(
+                  value: candidate['key'] as String,
+                  child: Text(
+                    candidate['name'].toString(),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+            ],
+            onChanged: _busy
+                ? null
+                : (key) => setState(() => _offlineRosterClubKey = key),
+          ),
+          const SizedBox(height: 8),
+          if (players.isEmpty)
+            const Text('Nenhum jogador cadastrado para este clube.')
+          else ...[
             Text(
-              _offlinePlanningOnly
-                  ? 'Para criar o campeonato com os clubes escolhidos, finalize e valide o catálogo. Ainda há dados pendentes nos elencos ou no ranking.'
-                  : 'Os elencos reais serão carregados do catálogo selecionado.',
+              '${players.length} jogadores cadastrados. O corte por divisão é aplicado na prévia.',
             ),
-            if (_rosterProblem != null) Text(_rosterProblem!),
+            if (missingBehavior > 0)
+              Text('$missingBehavior com comportamento pendente.'),
+            const SizedBox(height: 8),
+            for (final player in players)
+              Text(
+                '${player['position'] ?? '—'} • ${player['name'] ?? 'Nome pendente'}',
+              ),
           ],
-        )
+        ],
+      ],
+    );
+  }
+
+  Widget _sourcesPanel() => _usingOfflineCatalog
+      ? _offlineSourcesPanel()
       : CreatorRosterSources(
           generatedOnly: _generateAllRosterPlayers,
           fillClubVacancies: _fillClubVacancies,
