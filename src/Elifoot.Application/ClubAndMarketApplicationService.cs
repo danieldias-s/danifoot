@@ -29,6 +29,9 @@ public sealed partial class ClubAndMarketApplicationService
             .OrderBy(p => p.Position)
             .ThenByDescending(p => p.Strength)
             .ToList();
+        var salaryRaisePlayerIds = world.Economy.ContractHistory
+            .Where(record => record.ClubId == clubId && IsAcceptedSalaryRaise(record, world.SeasonNumber))
+            .Select(record => record.PlayerId).ToHashSet();
 
         var human = club.HumanCoachId != null ? world.HumanCoaches.FirstOrDefault(h => h.Id == club.HumanCoachId.Value) : null;
         var aiMgr = club.AiManagerId != null ? world.AiManagers.FirstOrDefault(m => m.Id == club.AiManagerId.Value) : null;
@@ -85,7 +88,7 @@ public sealed partial class ClubAndMarketApplicationService
                 ExpansionTargetSeats: club.Stadium.ExpansionTargetSeats,
                 ExpansionRoundsRemaining: club.Stadium.ExpansionRoundsRemaining,
                 RenovationRoundsRemaining: club.Stadium.RenovationRoundsRemaining),
-            Squad: squad.Select(p => MapPlayerDto(p, club.Name, world)).ToList(),
+            Squad: squad.Select(p => MapPlayerDto(p, club.Name, world, salaryRaisePlayerIds.Contains(p.Id))).ToList(),
             AiSquadPlan: planDto)
         {
             ColorPalette = club.ColorPalette,
@@ -97,7 +100,10 @@ public sealed partial class ClubAndMarketApplicationService
         };
     }
 
-    public static PlayerDto MapPlayerDto(Player p, string? clubName, GameWorld? world=null)
+    private static bool IsAcceptedSalaryRaise(PlayerContractRecord record, int season) =>
+        record.Season == season && record.Reason is "SPONTANEOUS_HUMAN_ACCEPTED" or "SPONTANEOUS_AI_ACCEPTED";
+
+    public static PlayerDto MapPlayerDto(Player p, string? clubName, GameWorld? world=null, bool? salaryRaiseAccepted=null)
     {
         decimal fair = MarketAndEconomyEngine.CalculateFairValue(world, p);
         var panel = PlayerStatisticsEngine.GetPanelStatistics(world, p);
@@ -133,6 +139,9 @@ public sealed partial class ClubAndMarketApplicationService
             ReferenceSalaryPerRound = MarketAndEconomyEngine.CalculateFairSalaryPerRound(world, p),
             NegotiatedContractProtected = p.NegotiatedContractProtected,
             ContractRenewedForSeason = world!=null&&ClassicEconomyEngine.IsSeasonRenewed(world,p),
+            SalaryRaiseAcceptedForSeason = salaryRaiseAccepted ?? (world != null && p.ClubId.HasValue &&
+                world.Economy.ContractHistory.Any(record => record.PlayerId == p.Id && record.ClubId == p.ClubId &&
+                    IsAcceptedSalaryRaise(record, world.SeasonNumber))),
             ContractThroughSeason = p.RenewedForSeason,
             SeasonRenewalFee = world==null?0:ClassicEconomyEngine.SeasonRenewalFee(world,p),
             SeasonContractsEnabled = world?.Economy.Rules.SeasonContractsEnabled??false,

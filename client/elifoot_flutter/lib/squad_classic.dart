@@ -16,6 +16,13 @@ String squadPosition(Map<String, dynamic> player) {
 String squadPlayerName(Map<String, dynamic> player) =>
     '${player['displayName'] ?? player['name'] ?? '—'}';
 
+bool squadContractConfirmed(Map<String, dynamic> player) =>
+    player['contractRenewedForSeason'] == true ||
+    player['salaryRaiseAcceptedForSeason'] == true;
+
+String squadContractMark(Map<String, dynamic> player) =>
+    squadContractConfirmed(player) ? '✓' : '—';
+
 String squadCondition(Map<String, dynamic> p) =>
     (p['injuryDaysRemaining'] as num? ?? 0) > 0
     ? 'LES ${p['injuryDaysRemaining']}d'
@@ -279,12 +286,12 @@ class ClassicSquadRoster extends StatelessWidget {
                       Tooltip(
                         message: players[i]['contractRenewedForSeason'] == true
                             ? 'Renovado até o fim da temporada ${players[i]['contractThroughSeason']}. Protegido de vendas e leilões.'
+                            : players[i]['salaryRaiseAcceptedForSeason'] == true
+                            ? 'Aumento salarial aceito nesta temporada.'
                             : 'Sem contrato da temporada. O atleta continua vinculado ao clube.',
                         child: text(
-                          players[i]['contractRenewedForSeason'] == true
-                              ? '✓'
-                              : '—',
-                          color: players[i]['contractRenewedForSeason'] == true
+                          squadContractMark(players[i]),
+                          color: squadContractConfirmed(players[i])
                               ? const Color(0xFF087825)
                               : null,
                           bold: true,

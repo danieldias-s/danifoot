@@ -243,6 +243,7 @@ public record PlayerDto(
     public decimal ReferenceSalaryPerRound { get; init; }
     public bool NegotiatedContractProtected { get; init; }
     public bool ContractRenewedForSeason { get; init; }
+    public bool SalaryRaiseAcceptedForSeason { get; init; }
     public int? ContractThroughSeason { get; init; }
     public decimal SeasonRenewalFee { get; init; }
     public bool SeasonContractsEnabled { get; init; }

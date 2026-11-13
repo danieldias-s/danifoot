@@ -83,12 +83,19 @@ public class SalaryContractsV3Stage02BIntegrationTests
             Assert.True((await client.PostAsJsonAsync(salary,decision)).IsSuccessStatusCode);
             Assert.True((await client.PostAsJsonAsync(salary,decision)).IsSuccessStatusCode);Assert.Equal(1,r.DecisionVersion);
             Assert.Equal(110,p.SalaryPerRound);Assert.False(ClassicEconomyEngine.IsSeasonRenewed(w,p));
+            string clubDetail = $"/api/worlds/{w.Id}/clubs/{r.ClubId}";
+            var adjusted = (await client.GetFromJsonAsync<ClubDetailDto>(clubDetail))!.Squad.Single(x => x.Id == p.Id);
+            Assert.True(adjusted.SalaryRaiseAcceptedForSeason);
+            Assert.False(adjusted.ContractRenewedForSeason);
             var renewal=await client.GetFromJsonAsync<RenewalContractPreviewDto>($"/api/worlds/{w.Id}/players/{p.Id}/renew-preview?coachId={h[0].Id}");
             Assert.True((await client.PostAsync($"/api/worlds/{w.Id}/players/{p.Id}/renew?coachId={h[0].Id}&additionalRounds=0&idempotencyKey=voluntary&renewalTermsToken={renewal!.TermsToken}",null)).IsSuccessStatusCode);
             string list=$"/api/worlds/{w.Id}/market/list?coachId={h[0].Id}&playerId={p.Id}&askingPrice=100000";
             Assert.False((await client.PostAsync(list+"&idempotencyKey=protected",null)).IsSuccessStatusCode);
             Assert.True((await client.PostAsync(next,null)).IsSuccessStatusCode);Assert.True((await client.PostAsync(next,null)).IsSuccessStatusCode);
             Assert.Equal(2,w.SeasonNumber);Assert.Single(w.SeasonHistories);
+            var nextSeason = (await client.GetFromJsonAsync<ClubDetailDto>(clubDetail))!.Squad.Single(x => x.Id == p.Id);
+            Assert.False(nextSeason.SalaryRaiseAcceptedForSeason);
+            Assert.False(nextSeason.ContractRenewedForSeason);
             Assert.True((await client.PostAsync(list+"&idempotencyKey=next-season",null)).IsSuccessStatusCode);
             Assert.Equal(renewal.RequiredSalary,p.SalaryPerRound);Assert.Equal(h[0].CurrentClubId,p.ClubId);
         }

@@ -356,15 +356,12 @@ void main() {
         'CONTRATO',
       ]);
       expect(roster().rows.every((r) => r.length == 6), isTrue);
-      expect(roster().rows.where((r) => r[5] == 'RENOVADO').length, 2);
+      expect(roster().rows.where((r) => r[5] == '✓').length, 2);
       expect(
         roster().rows.firstWhere((r) => r[1].startsWith('Carlos Muralha'))[5],
-        'RENOVADO',
+        '✓',
       );
-      expect(
-        roster().rows.firstWhere((r) => r[1] == 'Atleta 12')[5],
-        'RENOVADO',
-      );
+      expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 12')[5], '✓');
       expect(roster().rows.firstWhere((r) => r[1] == 'Atleta 2')[5], '—');
       if (width >= 768) {
         expect(

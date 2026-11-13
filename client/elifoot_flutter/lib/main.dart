@@ -2934,6 +2934,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               player['seasonContractsEnabled'] == true
                   ? player['contractRenewedForSeason'] == true
                         ? '✓ Contrato renovado até o fim da temporada ${player['contractThroughSeason']}.'
+                        : player['salaryRaiseAcceptedForSeason'] == true
+                        ? '✓ Aumento salarial aceito nesta temporada.'
                         : 'SEM RENOVAÇÃO ATIVA. O jogador continua pertencendo ao clube.'
                   : 'Contrato restante: ${player['contractRoundsRemaining']} rodadas',
             ),

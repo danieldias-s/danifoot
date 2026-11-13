@@ -1292,7 +1292,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
             '${p['strength']}',
             _retroBehavior(p),
             formatClassicMoney(p['salaryPerRound']),
-            p['contractRenewedForSeason'] == true ? 'RENOVADO' : '—',
+            squadContractMark(p),
           ],
       ],
       selected: squad.indexWhere(
@@ -1799,7 +1799,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
                     '${p['strength']}',
                     _retroBehavior(p),
                     formatClassicMoney(p['salaryPerRound']),
-                    p['contractRenewedForSeason'] == true ? 'RENOVADO' : '—',
+                    squadContractMark(p),
                   ],
               ],
               selected: bench.indexWhere(
@@ -1886,7 +1886,11 @@ extension _Classic98Shell on _ElifootShellScreenState {
                 ),
                 Text('Valor justo: ${formatClassicMoney(p['fairValue'])}'),
                 Text(
-                  'Contrato: ${p['contractRenewedForSeason'] == true ? 'até o fim da temporada ${p['contractThroughSeason'] ?? '—'}' : '${p['contractRoundsRemaining'] ?? '—'} rodadas'}',
+                  'Contrato: ${p['contractRenewedForSeason'] == true
+                      ? 'até o fim da temporada ${p['contractThroughSeason'] ?? '—'}'
+                      : p['salaryRaiseAcceptedForSeason'] == true
+                      ? '✓ Aumento salarial aceito nesta temporada'
+                      : '${p['contractRoundsRemaining'] ?? '—'} rodadas'}',
                 ),
                 if (page == 'statistics') ...[
                   Text('Gols na temporada: ${p['seasonGoals'] ?? '—'}'),

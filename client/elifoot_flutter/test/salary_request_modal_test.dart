@@ -12,6 +12,23 @@ import 'presentation_017a_test.dart' show GameplayPresentationApi;
 class PendingSalaryApi extends GameplayPresentationApi {
   bool pending = false;
   bool resolved = false;
+  bool accepted = false;
+
+  @override
+  Future<Map<String, dynamic>> getClubDetail(String world, String club) async {
+    final detail = await super.getClubDetail(world, club);
+    return {
+      ...detail,
+      'squad': [
+        for (final player in detail['squad'] as List)
+          {
+            ...player as Map,
+            if (player['id'] == 'p-1') 'salaryRaiseAcceptedForSeason': accepted,
+          },
+      ],
+    };
+  }
+
   @override
   Future<Map<String, dynamic>> getClubFinances(
     String world,
@@ -40,6 +57,7 @@ class PendingSalaryApi extends GameplayPresentationApi {
     bool accept,
   ) async {
     resolved = true;
+    accepted = accept;
     return null;
   }
 }
@@ -203,10 +221,12 @@ void main() {
       api.onNotification?.call('Atualização salarial');
       await tester.pumpAndSettle();
       expect(find.byType(SalaryRequestModal), findsOneWidget);
+      expect(find.text('✓'), findsNothing);
       await tester.tap(find.text('ACEITAR'));
       await tester.pumpAndSettle();
       expect(api.resolved, isTrue);
       expect(find.byType(SalaryRequestModal), findsNothing);
+      expect(find.text('✓'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
       api.disconnectRealtime();
     });

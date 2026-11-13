@@ -141,7 +141,7 @@ void main() {
             updated.rows.firstWhere(
               (r) => r[1].startsWith('Carlos Muralha'),
             )[5],
-            'RENOVADO',
+            '✓',
           );
         }
         expect(t.takeException(), isNull);
