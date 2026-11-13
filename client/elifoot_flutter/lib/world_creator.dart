@@ -153,10 +153,14 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
   bool get _canAdvanceFromYears =>
       !_yearsLoadFailed &&
       _years.isNotEmpty &&
-      _selectedOfflineCatalogs.every((catalog) => catalog['ready'] == true);
+      _selectedOfflineCatalogs.every((catalog) => catalog['valid'] == true);
 
   bool get _usingOfflineCatalog =>
       _assembly == null && _selectedOfflineCatalogs.isNotEmpty;
+
+  bool get _offlinePlanningOnly =>
+      _usingOfflineCatalog &&
+      _selectedOfflineCatalogs.any((catalog) => catalog['ready'] != true);
 
   List<String> get _offlineCatalogIds => _selectedOfflineCatalogs
       .map((catalog) => catalog['catalogId'].toString())
@@ -393,7 +397,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
     if (_hasReviewDraft) return;
     final offline = _usingOfflineCatalog;
     final data = offline
-        ? await _call('offline/clubs', body: {'catalogIds': _offlineCatalogIds})
+        ? await _call(
+            _offlinePlanningOnly ? 'offline/planning-clubs' : 'offline/clubs',
+            body: {'catalogIds': _offlineCatalogIds},
+          )
         : (await _call(
                 'catalog',
                 body: {
@@ -921,6 +928,11 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
         if (_fictionalOnly)
           const Text(
             'O mundo totalmente fictício será gerado na prévia. As escolhas abaixo são usadas ao voltar para clubes do catálogo.',
+          ),
+        if (_usingOfflineCatalog && eligible.length > _worldCapacity)
+          Text(
+            '${eligible.length} clubes no catálogo para $_worldCapacity vagas. '
+            'Monte quatro divisões de 8 clubes e escolha $_districtCapacity distritais.',
           ),
         CreatorDivisions(
           divisions: [
@@ -1457,12 +1469,16 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
               const Text('Nenhum ano com clubes nos países selecionados.'),
             for (final item in _yearOptions)
               _yearCard(theme, item, names, mobile),
-            if (_selectedOfflineCatalogs.any((c) => c['ready'] != true))
+            if (_offlinePlanningOnly)
               const Padding(
                 padding: EdgeInsets.only(bottom: 12),
                 child: Text(
-                  'A criação só pode avançar para Divisões quando os catálogos dos anos selecionados estiverem prontos.',
+                  'Com um catálogo em rascunho, você pode montar as divisões e os distritais.',
                 ),
+              ),
+            if (_selectedOfflineCatalogs.any((c) => c['valid'] != true))
+              const Text(
+                'Desmarque os anos com catálogos inválidos para continuar.',
               ),
             if (_yearOptions.isNotEmpty)
               Container(
@@ -1691,8 +1707,10 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       ? Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Os elencos reais serão carregados do catálogo selecionado.',
+            Text(
+              _offlinePlanningOnly
+                  ? 'Para criar o campeonato com os clubes escolhidos, finalize e valide o catálogo. Ainda há dados pendentes nos elencos ou no ranking.'
+                  : 'Os elencos reais serão carregados do catálogo selecionado.',
             ),
             if (_rosterProblem != null) Text(_rosterProblem!),
           ],
@@ -1929,6 +1947,7 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
       );
     }
     if (_step == _sourcesStep) {
+      if (_offlinePlanningOnly) return;
       final problem = _divisionProblem ?? _districtProblem;
       if (problem != null) {
         setState(() => _rosterProblem = problem);
@@ -2011,6 +2030,9 @@ class _WorldCreatorScreenState extends State<WorldCreatorScreen> {
                   !_canAdvanceFromYears) ||
               (_step == _divisionsStep && _divisionProblem != null) ||
               (_step == _districtsStep && _districtProblem != null) ||
+              (_step == _sourcesStep &&
+                  _sourcesReturnStep == null &&
+                  _offlinePlanningOnly) ||
               (_step >= _previewStep && !_validPreview)
           ? null
           : _step == _confirmStep

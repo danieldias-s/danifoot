@@ -16,7 +16,13 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
     private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> Gates = new();
     public Task<OfflineCatalogReport> Catalogs(CancellationToken ct = default) => loader.LoadAsync(ct);
 
-    public async Task<List<EligibleCatalogClub>> Select(List<string> ids, CancellationToken ct = default)
+    public Task<List<EligibleCatalogClub>> Select(List<string> ids, CancellationToken ct = default) =>
+        SelectCatalogs(ids, planningOnly: false, ct);
+
+    public Task<List<EligibleCatalogClub>> SelectForPlanning(List<string> ids, CancellationToken ct = default) =>
+        SelectCatalogs(ids, planningOnly: true, ct);
+
+    private async Task<List<EligibleCatalogClub>> SelectCatalogs(List<string> ids, bool planningOnly, CancellationToken ct)
     {
         if (ids == null || ids.Count == 0 || ids.Distinct().Count() != ids.Count) throw new ArgumentException("Selecione catálogos sem repetição.");
         var report = await loader.LoadAsync(ct);
@@ -27,8 +33,14 @@ public sealed class OfflineWorldCreatorService(OfflineCatalogLoader loader, ISer
             var matches = report.Catalogs.Where(c => c.Manifest?.CatalogId == id).ToList();
             if (matches.Count != 1) throw new ArgumentException($"Catálogo inexistente ou duplicado: {id}.");
             var catalog = matches[0];
-            if (!catalog.Ready) throw new ArgumentException($"Catálogo {id} incompleto/inválido. Corrija os arquivos e marque READY após validar.");
-            clubs.AddRange(catalog.Clubs.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender)));
+            if (!catalog.Valid || !planningOnly && !catalog.Ready)
+                throw new ArgumentException($"Catálogo {id} incompleto/inválido. Corrija os arquivos e marque READY após validar.");
+            var candidates = catalog.Ready ? catalog.Clubs : catalog.Clubs
+                .Where(c => OfflineCatalogRules.Text(c.Definition.Name) && OfflineCatalogRules.Text(c.Definition.ShortName, 80) &&
+                    c.Definition.Colors is { Count: 2 } colors && colors.All(color => !string.IsNullOrWhiteSpace(color)))
+                .Select(c => c with { Definition = c.Definition with { Players = [] } });
+            if (!candidates.Any()) throw new ArgumentException($"Catálogo {id} não tem clubes aptos para montar as divisões.");
+            clubs.AddRange(candidates.Select(c => OfflineWorldFactory.Eligible(c, catalog.Manifest!.Gender)));
         }
         if (clubs.Select(c => c.CountryCode).Distinct().Count() > 8 || clubs.Select(c => c.Gender).Distinct().Count() != 1)
             throw new ArgumentException("Escolha uma categoria e até oito países.");

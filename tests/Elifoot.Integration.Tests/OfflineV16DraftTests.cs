@@ -37,6 +37,17 @@ public sealed class OfflineV16DraftTests
         Assert.Contains(catalog.Issues,i=>i.Code=="BEHAVIOR"&&!i.IsError);
         var service=new OfflineWorldCreatorService(new OfflineCatalogLoader(Root()),null!,null!);
         await Assert.ThrowsAsync<ArgumentException>(()=>service.Select(["es-2026-principal"]));
+        var candidates = await service.SelectForPlanning(["es-2026-principal"]);
+        Assert.Equal(172, candidates.Count);
+        Assert.Equal(172, candidates.Select(c => c.Key).Distinct().Count());
+        Assert.All(candidates, c =>
+        {
+            Assert.Equal("ES", c.CountryCode);
+            Assert.Equal("2026", c.Season);
+            Assert.Empty(c.OfflineSource!.Definition.Players!);
+        });
+        await Assert.ThrowsAsync<ArgumentException>(() => service.Preview(Guid.NewGuid(),
+            new OfflineWorldRequest("Espanha 2026", ["es-2026-principal"], 42)));
     }
 
     [Fact]

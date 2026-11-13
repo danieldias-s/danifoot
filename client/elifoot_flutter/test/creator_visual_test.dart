@@ -6,6 +6,7 @@ import 'package:elifoot_flutter/club_selection_dialog.dart';
 import 'package:elifoot_flutter/club_crest.dart';
 import 'package:elifoot_flutter/club_theme.dart';
 import 'package:elifoot_flutter/creator_divisions.dart';
+import 'package:elifoot_flutter/creator_districts.dart';
 import 'package:elifoot_flutter/creator_visual.dart';
 import 'package:elifoot_flutter/world_creator.dart';
 import 'package:flutter/material.dart';
@@ -85,10 +86,11 @@ class _CreatorFixture {
         data = rows.values.toList();
       } else if (request.url.path.endsWith('/offline/catalogs/summary')) {
         data = male ? offlineCatalogs : [];
-      } else if (request.url.path.endsWith('/offline/clubs')) {
+      } else if (request.url.path.endsWith('/offline/clubs') ||
+          request.url.path.endsWith('/offline/planning-clubs')) {
         expect(jsonDecode(request.body)['catalogIds'], ['es-2026-principal']);
         data = [
-          for (var i = 0; i < 128; i++)
+          for (var i = 0; i < 172; i++)
             {
               'key': 'offline-$i',
               'name': 'Clube espanhol $i',
@@ -531,7 +533,7 @@ void main() {
     'valid': true,
   };
 
-  testWidgets('Espanha em rascunho permite escolher país e ano no Criador', (
+  testWidgets('Espanha em rascunho oferece 172 clubes para montar 128 vagas', (
     tester,
   ) async {
     final fixture = _CreatorFixture()
@@ -554,13 +556,31 @@ void main() {
     );
     await selectHistoricalYear(tester, '2026');
     expect(find.text('1 ano selecionado'), findsOneWidget);
-    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNotNull);
     await _tapVisible(tester, find.text('VOLTAR'));
     expect(find.text('1/8 • Países'), findsOneWidget);
     await _pressContinue(tester);
     expect(tester.widget<CheckboxListTile>(historicalYear('2026')).value, true);
+    await _pressContinue(tester);
+    final divisions = tester.widget<CreatorDivisions>(
+      find.byType(CreatorDivisions),
+    );
+    expect(divisions.eligibleClubs, hasLength(172));
     expect(
-      fixture.requests.any((r) => r.url.path.endsWith('/offline/clubs')),
+      divisions.divisions.expand((d) => d).whereType<Map>(),
+      hasLength(32),
+    );
+    await _pressContinue(tester);
+    final districts = tester.widget<CreatorDistricts>(
+      find.byType(CreatorDistricts),
+    );
+    expect(districts.availableCount, 140);
+    expect(districts.districtCount, 96);
+    await _pressContinue(tester);
+    expect(find.textContaining('Ainda há dados pendentes'), findsOneWidget);
+    expect(tester.widget<ElevatedButton>(continueButton).onPressed, isNull);
+    expect(
+      fixture.requests.any((r) => r.url.path.endsWith('/offline/preview')),
       isFalse,
     );
   });
