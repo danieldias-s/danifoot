@@ -8,6 +8,7 @@ import 'presentation_widgets.dart';
 class WorldInitialLobby016B extends StatefulWidget {
   final ElifootApiClient api;
   final String worldId, coachId;
+  final int? roomVersion;
   final Future<void> Function() onStarted, onLeave;
   final PresentationController? presentation;
   const WorldInitialLobby016B({
@@ -17,6 +18,7 @@ class WorldInitialLobby016B extends StatefulWidget {
     required this.coachId,
     required this.onStarted,
     required this.onLeave,
+    this.roomVersion,
     this.presentation,
   });
   @override
@@ -34,6 +36,7 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
       _dirty = false,
       _commandError = false;
   Timer? _timer;
+  bool _reloadAfterPoll = false;
   Future<dynamic> _call(String path, {Map<String, dynamic>? body}) =>
       widget.api.world016b(
         widget.coachId,
@@ -46,6 +49,17 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
     super.initState();
     _load();
     _timer = Timer.periodic(const Duration(seconds: 2), (_) => _load());
+  }
+
+  @override
+  void didUpdateWidget(WorldInitialLobby016B oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if ((widget.roomVersion ?? -1) <= (oldWidget.roomVersion ?? -1)) return;
+    if (_polling) {
+      _reloadAfterPoll = true;
+    } else {
+      unawaited(_load());
+    }
   }
 
   @override
@@ -87,6 +101,10 @@ class _WorldInitialLobby016BState extends State<WorldInitialLobby016B> {
       if (mounted) setState(() => _error = e.toString());
     } finally {
       _polling = false;
+      if (_reloadAfterPoll && mounted) {
+        _reloadAfterPoll = false;
+        unawaited(_load());
+      }
     }
   }
 

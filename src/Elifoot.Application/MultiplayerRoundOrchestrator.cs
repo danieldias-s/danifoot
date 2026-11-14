@@ -11,18 +11,20 @@ namespace Elifoot.Application;
 /// </summary>
 public sealed partial class MultiplayerRoundOrchestrator
 {
+    private readonly IRoundTickTiming? _tickTiming;
     private readonly IWorldRepository _repository;
     private readonly RoomConnectionRegistry? _connections;
     private readonly IMatchRoomNotificationPublisher _publisher;
     private static readonly ConcurrentDictionary<Guid, SemaphoreSlim> WorldLocks = new();
-    private static readonly ConcurrentDictionary<Guid, HashSet<string>> ProcessedIdempotencyKeys = new();
 
     public MultiplayerRoundOrchestrator(
         IWorldRepository repository,
-        IMatchRoomNotificationPublisher publisher, RoomConnectionRegistry? connections = null)
+        IMatchRoomNotificationPublisher publisher, RoomConnectionRegistry? connections = null,
+        IRoundTickTiming? tickTiming = null)
     {
         _repository = repository;
         _publisher = publisher;
+        _tickTiming = tickTiming;
         _connections = connections;
     }
 
@@ -31,10 +33,7 @@ public sealed partial class MultiplayerRoundOrchestrator
     internal static SemaphoreSlim GetLock(Guid worldId)
         => WorldLocks.GetOrAdd(worldId, _ => new SemaphoreSlim(1, 1));
 
-    private static HashSet<string> GetIdempotencySet(Guid worldId)
-        => ProcessedIdempotencyKeys.GetOrAdd(worldId, _ => new HashSet<string>(StringComparer.Ordinal));
-
-    public async Task<GameWorld> CreateWorldAsync(CreateWorldRequest request, CancellationToken ct = default)
+    public async Task<GameWorld> CreateWorldAsync(CreateWorldRequest request, CancellationToken ct = default, Guid? ownerCoachId = null)
     {
         if (!Enum.IsDefined(request.ForceEvolutionMode)) throw new ArgumentException("Unsupported force evolution mode.");
         var world = WorldSeedFactory.CreateSeededWorld(
@@ -49,6 +48,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             forceEvolutionMode: request.ForceEvolutionMode,
             applyInitialSquadStrength: true);
 
+        world.OwnerCoachId = ownerCoachId;
         await _repository.SaveWorldAsync(world, ct);
         return world;
     }
@@ -61,16 +61,30 @@ public sealed partial class MultiplayerRoundOrchestrator
         Guid? preferredClubId = null,
         bool joinUnemployed = false,
         CancellationToken ct = default,
-        bool allowDeviceReconnect = false)
+        bool allowDeviceReconnect = false,
+        IReadOnlySet<Guid>? accountCoaches = null,
+        string? inviteCode = null)
     {
         var sem = GetLock(worldId);
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(worldId, ct);
+            var world = accountCoaches == null
+                ? await _repository.GetWorldAsync(worldId, ct)
+                : await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
             if (world == null) return (false, "Sala/Mundo não encontrado.", null, null);
 
             var existingCoach = world.HumanCoaches.FirstOrDefault(h => h.Id == coachId);
+            if (accountCoaches != null)
+            {
+                bool ownsAnotherSeat = existingCoach == null && world.HumanCoaches.Any(h => accountCoaches.Contains(h.Id));
+                bool admitted = existingCoach != null || world.CreatorCoachId == coachId ||
+                    (!string.IsNullOrWhiteSpace(inviteCode) && string.Equals(world.InviteCode, inviteCode.Trim(), StringComparison.OrdinalIgnoreCase));
+                if (!accountCoaches.Contains(coachId) || ownsAnotherSeat || !admitted)
+                    return (false, "Use o código da sala ou retome com o perfil vinculado.", null, null);
+                if (world.PendingWorldDataChange != null) throw new RoundCheckpointPendingException();
+                if (world.RoundCheckpointNeedsSave) await PersistRoundCheckpointAsync(world);
+            }
             var normalizedDevice = deviceId.Trim();
             // LocalDev device identity survives nickname edits; never guess by nickname or a shared legacy placeholder.
             if (allowDeviceReconnect && existingCoach == null && normalizedDevice.Length > 0 && normalizedDevice != "dev")
@@ -82,6 +96,8 @@ public sealed partial class MultiplayerRoundOrchestrator
             }
             if (existingCoach != null)
             {
+                if (accountCoaches != null && (preferredClubId == null || existingCoach.CurrentClubId == preferredClubId))
+                    return (true, null, existingCoach, world);
                 if (preferredClubId != null && existingCoach.CurrentClubId != preferredClubId)
                 {
                     if (existingCoach.CurrentClubId != null || existingCoach.Dismissals > 0 || existingCoach.EmploymentHistory.Count > 0)
@@ -95,13 +111,14 @@ public sealed partial class MultiplayerRoundOrchestrator
                     if(world.InitialLobby is {StartedAt:null} waiting) {waiting.Choices[existingCoach.Id]=new(InitialCareerChoice016B.MANUAL,preferredClubId);waiting.Version++;}
                 }
                 world.RoundVersion++;
-                await _repository.SaveWorldAsync(world, ct);
+                if (accountCoaches == null) await _repository.SaveWorldAsync(world, ct);
+                else await PersistRoundCheckpointAsync(world);
                 await _publisher.PublishReadyCounterUpdatedAsync(world.Id, BuildReadyCounterDto(world), ct);
                 return (true, null, existingCoach, world);
             }
 
-            if(world.InitialLobby is {StartedAt:null} initial && coachId!=initial.HostCoachId &&
-                !world.HumanCoaches.Any(c=>c.Id==initial.HostCoachId) && world.HumanCoaches.Count>=world.MaxHumans-1)
+            if (world.CreatorCoachId is Guid creator && coachId != creator &&
+                !world.HumanCoaches.Any(c => c.Id == creator) && world.HumanCoaches.Count >= world.MaxHumans - 1)
                 return (false,"A última vaga está reservada ao criador desta sala.",null,world);
             if (world.HumanCoaches.Count >= world.MaxHumans)
                 return (false, $"Sala lotada: as {world.MaxHumans} vagas estão ocupadas. Treinadores desconectados mantêm sua vaga e seu clube. Para retornar, use a mesma identidade e o mesmo ID de dispositivo; uma nova identidade precisa de uma vaga livre.", null, world);
@@ -115,7 +132,7 @@ public sealed partial class MultiplayerRoundOrchestrator
                 Nickname = string.IsNullOrWhiteSpace(nickname) ? $"Técnico {world.HumanCoaches.Count + 1}" : nickname.Trim(),
                 DeviceId = normalizedDevice,
                 SessionToken = Guid.NewGuid().ToString("N"),
-                IsHost = world.InitialLobby is { } lobbyHost ? lobbyHost.HostCoachId==coachId : world.HumanCoaches.Count == 0,
+                IsHost = world.CreatorCoachId is Guid host ? host == coachId : world.HumanCoaches.Count == 0,
                 IsConnected = false
             };
 
@@ -154,7 +171,8 @@ public sealed partial class MultiplayerRoundOrchestrator
                 initialLobby.Version++;
             }
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            if (accountCoaches == null) await _repository.SaveWorldAsync(world, ct);
+            else await PersistRoundCheckpointAsync(world);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, BuildReadyCounterDto(world), ct);
             return (true, null, coach, world);
         }
@@ -241,8 +259,12 @@ public sealed partial class MultiplayerRoundOrchestrator
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            var world = await GetWorldForReadinessAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null, false);
+
+            var receipt = ReadReadinessReceipt(world, "tactics", request.CoachId, request.IdempotencyKey, request);
+            if (receipt.HasValue)
+                return (receipt.Value, receipt.Value ? null : "Chave de operação reutilizada com dados diferentes.", BuildReadyCounterDto(world), false);
 
             if(world.InitialLobby is {StartedAt:null})
                 return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world),false);
@@ -263,11 +285,6 @@ public sealed partial class MultiplayerRoundOrchestrator
             await RecoverSalaryDecisionsAsync(world, _repository);
             if (SalarySeasonTransitionEngine.BlockingReason(world, club.Id) is string salaryError)
                 return (false, salaryError, BuildReadyCounterDto(world), false);
-
-            // Idempotency: if the same idempotency key was already processed, return current counter without mutating
-            var idemSet = GetIdempotencySet(world.Id);
-            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
-                return (true, null, BuildReadyCounterDto(world), false);
 
             var clubSquad = world.Players.Where(p => p.ClubId == club.Id).ToList();
             bool needsLineup = NeedsCurrentRoundLineup(world, club.Id);
@@ -295,13 +312,11 @@ public sealed partial class MultiplayerRoundOrchestrator
                 club.PreferredBenchIds = coach.SubmittedBenchIds.ToList();
             }
 
-            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey))
-                idemSet.Add(request.IdempotencyKey);
-
             world.RoundVersion++;
             bool started = CheckAndStartRoundIfAllReadyInternal(world);
 
-            await _repository.SaveWorldAsync(world, ct);
+            RecordReadinessReceipt(world, "tactics", request.CoachId, request.IdempotencyKey, request);
+            await PersistRoundCheckpointAsync(world);
             var counter = BuildReadyCounterDto(world);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
 
@@ -331,8 +346,12 @@ public sealed partial class MultiplayerRoundOrchestrator
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            var world = await GetWorldForReadinessAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null, false);
+
+            var receipt = ReadReadinessReceipt(world, "ready", request.CoachId, request.IdempotencyKey, request);
+            if (receipt.HasValue)
+                return (receipt.Value, receipt.Value ? null : "Chave de operação reutilizada com dados diferentes.", BuildReadyCounterDto(world), false);
 
             if(world.InitialLobby is {StartedAt:null})
                 return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world),false);
@@ -350,12 +369,6 @@ public sealed partial class MultiplayerRoundOrchestrator
             if (club != null && SalarySeasonTransitionEngine.BlockingReason(world, club.Id) is string salaryError)
                 return (false, salaryError, BuildReadyCounterDto(world), false);
 
-            var idemSet = GetIdempotencySet(world.Id);
-            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey) && idemSet.Contains(request.IdempotencyKey))
-            {
-                return (true, null, BuildReadyCounterDto(world), world.RoundState != RoundState.PREPARING);
-            }
-
             // If coach actually has a club and auto-submits via PRONTO, validate/auto-build their preferred lineup
             if (club != null)
             {
@@ -369,13 +382,11 @@ public sealed partial class MultiplayerRoundOrchestrator
 
             coach.IsReadyForRound = true;
             coach.LastIdempotencyKey = request.IdempotencyKey;
-            if (!string.IsNullOrWhiteSpace(request.IdempotencyKey))
-                idemSet.Add(request.IdempotencyKey);
-
             world.RoundVersion++;
             bool started = CheckAndStartRoundIfAllReadyInternal(world);
 
-            await _repository.SaveWorldAsync(world, ct);
+            RecordReadinessReceipt(world, "ready", request.CoachId, request.IdempotencyKey, request);
+            await PersistRoundCheckpointAsync(world);
             var counter = BuildReadyCounterDto(world);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
 
@@ -400,8 +411,12 @@ public sealed partial class MultiplayerRoundOrchestrator
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(request.GameWorldId, ct);
+            var world = await GetWorldForReadinessAsync(request.GameWorldId, ct);
             if (world == null) return (false, "Sala não encontrada.", null);
+
+            var receipt = ReadReadinessReceipt(world, "withdraw", request.CoachId, request.IdempotencyKey, request);
+            if (receipt.HasValue)
+                return (receipt.Value, receipt.Value ? null : "Chave de operação reutilizada com dados diferentes.", BuildReadyCounterDto(world));
 
             if(world.InitialLobby is {StartedAt:null})
                 return (false,"Aguardando o criador iniciar o campeonato no lobby.",BuildReadyCounterDto(world));
@@ -413,7 +428,8 @@ public sealed partial class MultiplayerRoundOrchestrator
 
             coach.IsReadyForRound = false;
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            RecordReadinessReceipt(world, "withdraw", request.CoachId, request.IdempotencyKey, request);
+            await PersistRoundCheckpointAsync(world);
 
             var counter = BuildReadyCounterDto(world);
             await _publisher.PublishReadyCounterUpdatedAsync(world.Id, counter, ct);
@@ -424,6 +440,29 @@ public sealed partial class MultiplayerRoundOrchestrator
             sem.Release();
         }
     }
+
+    private async Task<GameWorld?> GetWorldForReadinessAsync(Guid worldId, CancellationToken ct)
+    {
+        var world = await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
+        if (world?.PendingWorldDataChange != null) throw new RoundCheckpointPendingException();
+        if (world?.RoundCheckpointNeedsSave == true)
+            await PersistRoundCheckpointAsync(world);
+        return world;
+    }
+
+    private static bool? ReadReadinessReceipt<T>(GameWorld world, string action, Guid coachId, string key, T request)
+    {
+        var receiptKey = InteractionKey(action, coachId, key);
+        return receiptKey != null && world.MatchInteractionReceipts.TryGetValue(receiptKey, out var receipt)
+            ? receipt.Fingerprint == ReadinessFingerprint(request)
+            : null;
+    }
+
+    private static void RecordReadinessReceipt<T>(GameWorld world, string action, Guid coachId, string key, T request)
+        => RecordInteraction(world, InteractionKey(action, coachId, key), ReadinessFingerprint(request));
+
+    private static string ReadinessFingerprint<T>(T request)
+        => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(request)));
 
     private static bool NeedsCurrentRoundLineup(GameWorld world, Guid clubId)
         => !ClassicForceEvolutionEngine.IsActive(world) || GetCurrentRoundFixtures(world)
@@ -962,8 +1001,22 @@ public sealed partial class MultiplayerRoundOrchestrator
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(worldId, ct);
+            var world = await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
             if (world == null) return null;
+
+            if (world.PendingWorldDataChange != null)
+            {
+                await ClubAndMarketApplicationService.ConfirmWorldDataChangeAsync(world, _repository, _publisher);
+                return BuildLiveRoundSnapshotDto(world);
+            }
+
+            if (world.RoundCheckpointNeedsSave)
+            {
+                await PersistRoundCheckpointAsync(world);
+                var recovered = BuildLiveRoundSnapshotDto(world);
+                await _publisher.PublishRoundStateChangedAsync(world.Id, recovered, ct);
+                return recovered;
+            }
 
             if (world.RoundState is not (RoundState.RUNNING_FIRST_HALF or RoundState.RUNNING_SECOND_HALF or RoundState.RUNNING_EXTRA_TIME))
             {
@@ -971,6 +1024,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             }
 
             if (FirstPendingPenalty(world) != null) return BuildLiveRoundSnapshotDto(world);
+            var simulationStart = System.Diagnostics.Stopwatch.GetTimestamp();
             world.CurrentMatchMinute++;
             int minute = world.CurrentMatchMinute;
 
@@ -1009,10 +1063,33 @@ public sealed partial class MultiplayerRoundOrchestrator
 
             if (FirstPendingPenalty(world) == null) ApplyCurrentMinuteBoundary(world);
 
+            var persistenceStart = System.Diagnostics.Stopwatch.GetTimestamp();
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, ct);
+            if (world.RoundState == RoundState.RESULTS)
+                await PersistRoundCheckpointAsync(world);
+            else
+            {
+                world.RoundCheckpointId = Guid.NewGuid();
+                try
+                {
+                    await _repository.SaveWorldAsync(world, ct);
+                }
+                catch
+                {
+                    // The minute has already mutated the aggregate. Retry its exact state
+                    // before a subsequent tick can simulate another minute.
+                    world.RequiresDurableMatchInteractionSave = true;
+                    world.RoundCheckpointNeedsSave = true;
+                    throw;
+                }
+            }
+            var synchronizationStart = System.Diagnostics.Stopwatch.GetTimestamp();
             var snapshot = BuildLiveRoundSnapshotDto(world);
             await _publisher.PublishClockTickAsync(world.Id, snapshot, ct);
+            _tickTiming?.Record(
+                System.Diagnostics.Stopwatch.GetElapsedTime(simulationStart, persistenceStart).TotalMilliseconds,
+                System.Diagnostics.Stopwatch.GetElapsedTime(persistenceStart, synchronizationStart).TotalMilliseconds,
+                System.Diagnostics.Stopwatch.GetElapsedTime(synchronizationStart).TotalMilliseconds);
             return snapshot;
         }
         finally
@@ -1109,6 +1186,26 @@ public sealed partial class MultiplayerRoundOrchestrator
         MarketAndEconomyEngine.ProcessWeeklyAiMarketBatch(world);
     }
 
+    private async Task PersistRoundCheckpointAsync(GameWorld world)
+    {
+        bool retry = world.RoundCheckpointNeedsSave;
+        if (!retry) world.RoundCheckpointId = Guid.NewGuid();
+        world.RoundCheckpointNeedsSave = true;
+        if (!retry && world.RoundState == RoundState.RESULTS)
+        {
+            try
+            {
+                await _publisher.PublishRoundCheckpointPendingAsync(world.Id, world.RoundVersion, CancellationToken.None);
+            }
+            catch
+            {
+                // Reconciliation can observe the pending checkpoint even if SignalR is unavailable.
+            }
+        }
+        await _repository.SaveRoundCheckpointAsync(world, retry);
+        world.RoundCheckpointNeedsSave = false;
+    }
+
     /// <summary>
     /// Advances the room from RoundState.RESULTS to the next round's RoundState.PREPARING
     /// (or concludes the season and starts Season + 1 if it was the final round).
@@ -1120,15 +1217,22 @@ public sealed partial class MultiplayerRoundOrchestrator
         await sem.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(worldId, ct);
+            var world = await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
             if (world == null) return null;
+            if (world.PendingWorldDataChange != null) throw new RoundCheckpointPendingException();
+
+            if (world.RoundCheckpointNeedsSave)
+            {
+                await PersistRoundCheckpointAsync(world);
+                var recovered = BuildLiveRoundSnapshotDto(world);
+                await _publisher.PublishRoundStateChangedAsync(world.Id, recovered, ct);
+                return recovered;
+            }
 
             // A delayed automatic request must never advance a later completed round.
             if ((expectedSeasonNumber.HasValue && world.SeasonNumber != expectedSeasonNumber) ||
                 (expectedRoundNumber.HasValue && world.RoundNumber != expectedRoundNumber))
             {
-                // A retry after a failed save must durably confirm the complete cached transition.
-                await _repository.SaveWorldAsync(world,CancellationToken.None);
                 return BuildLiveRoundSnapshotDto(world);
             }
 
@@ -1163,9 +1267,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             ClassicForceEvolutionEngine.PrepareRound(world);
             // Refresh AI squad plans and ensure human-controlled clubs have healthy default starters/bench for the new round
             var aiDict = world.AiManagers.ToDictionary(m => m.Id);
+            var squads = world.Players.ToLookup(player => player.ClubId);
             foreach (var club in world.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital))
             {
-                var squad = world.Players.Where(p => p.ClubId == club.Id).ToList();
+                var squad = squads[club.Id].ToList();
                 if (club.HumanCoachId == null && club.AiManagerId != null && aiDict.TryGetValue(club.AiManagerId.Value, out var mgr))
                 {
                     AiManagerBrain.PlanAndSelectLineup(mgr, club, squad, null, null, true, world.Seed, world.SeasonNumber, world.RoundNumber, world.AllowClassic505, world);
@@ -1180,10 +1285,10 @@ public sealed partial class MultiplayerRoundOrchestrator
             }
 
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, CancellationToken.None);
+            await PersistRoundCheckpointAsync(world);
             var snapshot = BuildLiveRoundSnapshotDto(world);
-            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, ct);
-            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snapshot.ReadyCounter, ct);
+            await _publisher.PublishRoundStateChangedAsync(world.Id, snapshot, CancellationToken.None);
+            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snapshot.ReadyCounter, CancellationToken.None);
             return snapshot;
         }
         finally
@@ -1407,6 +1512,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             ForceEvolutionMode = world.ForceEvolutionMode,
             DisciplineRulesVersion = world.DisciplineRulesVersion,
             ForceRulesVersion = ClassicForceEvolutionEngine.IsActive(world) ? world.ClassicForce.Version : 0,
+            PersistedRoundVersion = world.PersistedRoundVersion,
             GameDate = ClassicForceEvolutionEngine.IsActive(world) ? world.ClassicForce.GameDate : null
         };
     }

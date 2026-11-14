@@ -73,7 +73,7 @@ public sealed partial class MultiplayerRoundOrchestrator
             string key="capacity:"+command.IdempotencyKey;if(lobby.CommandReceipts.Contains(key))return LobbyView(w);
             if(lobby.StartedAt!=null||lobby.DrawCompletedAt!=null||command.MaxHumans<w.HumanCoaches.Count)throw new ArgumentException("Capacidade não pode remover participantes ou mudar após sorteio/início.");
             w.MaxHumans=command.MaxHumans;lobby.CommandReceipts.Add(key);lobby.Version++;w.RoundVersion++;
-            await _repository.SaveWorldAsync(w,ct);return LobbyView(w);
+            await _repository.SaveWorldAsync(w,ct);await _publisher.PublishReadyCounterUpdatedAsync(w.Id,BuildReadyCounterDto(w),ct);return LobbyView(w);
         }finally{gate.Release();}
     }
 }

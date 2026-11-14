@@ -160,6 +160,40 @@ class LiveShellApi extends WaitingRoomApi {
 }
 
 void main() {
+  testWidgets(
+    'Clock ticks update the live match without rebuilding the shell',
+    (tester) async {
+      await tester.binding.setSurfaceSize(const Size(1440, 1100));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      final api = LiveShellApi();
+      await join(tester, api);
+      await api.emit('RUNNING_FIRST_HALF');
+      await tester.pumpAndSettle();
+      final live = find.byType(LiveMatchScreen);
+      final original = tester.widget<LiveMatchScreen>(live);
+      final shell = find.ancestor(of: live, matching: find.byType(Scaffold));
+      final originalShell = tester.widget<Scaffold>(shell.first);
+      final next = {
+        ...original.snapshot,
+        'roundVersion': (original.snapshot['roundVersion'] as num) + 1,
+        'currentMinute': (original.snapshot['currentMinute'] as num? ?? 0) + 1,
+      };
+      api.onSnapshotUpdated!(next);
+      await tester.pump();
+      expect(tester.widget<LiveMatchScreen>(live).snapshot, same(next));
+      expect(tester.widget<Scaffold>(shell.first), same(originalShell));
+      final foreign = {
+        ...next,
+        'gameWorldId': 'unrelated-world',
+        'roundVersion': 999,
+      };
+      api.onSnapshotUpdated!(foreign);
+      await tester.pump();
+      expect(tester.widget<LiveMatchScreen>(live).snapshot, same(next));
+      await tester.pumpWidget(const SizedBox());
+    },
+  );
+
   test(
     'Selection survives snapshots and reload, resets across coach room club season and round',
     () {

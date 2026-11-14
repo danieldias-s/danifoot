@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -20,7 +21,8 @@ namespace Elifoot.Api;
 public static class AccountLogin
 {
     public const string Scheme = "AccountTest";
-    public static bool Enabled(IConfiguration configuration) => configuration["Elifoot:AuthMode"] == Scheme;
+    public const string CommercialMode = "Account";
+    public static bool Enabled(IConfiguration configuration) => configuration["Elifoot:AuthMode"] is Scheme or CommercialMode;
     public static Guid AccountId(HttpContext http) => Guid.Parse(http.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
     public static Guid CoachId(HttpContext http) => Guid.Parse(http.User.FindFirstValue("coach")!);
     public static string SessionToken(HttpContext http) => http.User.FindFirstValue("sid")!;
@@ -37,16 +39,44 @@ public static class AccountLogin
     public static void AddAccountLogin(this WebApplicationBuilder builder)
     {
         if (!Enabled(builder.Configuration)) return;
-        if (builder.Environment.IsProduction()) throw new InvalidOperationException("AccountTest é exclusivo para ambiente local/de teste.");
-        if (builder.Configuration["Elifoot:DatabaseProvider"] == "InMemory") throw new InvalidOperationException("AccountTest requer persistência PostgreSQL ou SQLite.");
+        bool commercial = builder.Configuration["Elifoot:AuthMode"] == CommercialMode;
+        if (builder.Environment.IsProduction() && !commercial) throw new InvalidOperationException("AccountTest é exclusivo para ambiente local/de teste.");
+        if (string.Equals(builder.Configuration["Elifoot:DatabaseProvider"], "InMemory", StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("A autenticação por conta requer persistência.");
         builder.Services.AddScoped<AccountSessionService>();
         builder.Services.AddSingleton<IPasswordHasher<AccountRecord>, PasswordHasher<AccountRecord>>();
         builder.Services.AddSingleton<AccountConnections>();
-        builder.Services.AddDataProtection().SetApplicationName("LigaClassica98.AccountTest");
-        builder.Services.AddAntiforgery(o => { o.HeaderName = "X-CSRF-TOKEN"; o.Cookie.Name = "lc98.csrf"; o.Cookie.HttpOnly = true; o.Cookie.SameSite = SameSiteMode.Strict; o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; });
+        var protection = builder.Services.AddDataProtection().SetApplicationName($"LigaClassica98.{(commercial ? CommercialMode : Scheme)}");
+        if (commercial)
+        {
+            var origins = builder.Configuration.GetSection("Accounts:AllowedOrigins").Get<string[]>();
+            if (origins is not { Length: > 0 } || origins.Any(value => !Uri.TryCreate(value, UriKind.Absolute, out var uri)
+                || uri.Scheme != Uri.UriSchemeHttps || uri.UserInfo.Length != 0 || uri.GetLeftPart(UriPartial.Authority) != value))
+                throw new InvalidOperationException("Configure Accounts:AllowedOrigins com origens HTTPS explícitas.");
+            var keys = builder.Configuration["Accounts:KeyDirectory"];
+            var certificate = builder.Configuration["Accounts:KeyCertificate"];
+            if (string.IsNullOrWhiteSpace(keys) || !Path.IsPathFullyQualified(keys) || !Directory.Exists(keys)
+                || string.IsNullOrWhiteSpace(certificate) || !Path.IsPathFullyQualified(certificate))
+                throw new InvalidOperationException("Configure um diretório de chaves e um certificado de Data Protection por caminhos absolutos.");
+            var privateKey = builder.Configuration["Accounts:KeyCertificatePemPrivateKey"];
+            var keyCertificate = string.IsNullOrWhiteSpace(privateKey)
+                ? X509CertificateLoader.LoadPkcs12FromFile(certificate,
+                    builder.Configuration["Accounts:KeyCertificatePassword"], X509KeyStorageFlags.EphemeralKeySet)
+                : X509Certificate2.CreateFromPemFile(certificate, privateKey);
+            if (!keyCertificate.HasPrivateKey) throw new InvalidOperationException("O certificado de Data Protection precisa da chave privada.");
+            protection.PersistKeysToFileSystem(new DirectoryInfo(keys)).ProtectKeysWithCertificate(keyCertificate);
+        }
+        else if (builder.Configuration["Accounts:KeyDirectory"] is { Length: > 0 } testKeys)
+        {
+            if (!Path.IsPathFullyQualified(testKeys) || !Directory.Exists(testKeys))
+                throw new InvalidOperationException("Use um diretório de chaves de teste existente e absoluto.");
+            protection.PersistKeysToFileSystem(new DirectoryInfo(testKeys));
+        }
+        var securePolicy = commercial ? CookieSecurePolicy.Always : CookieSecurePolicy.SameAsRequest;
+        builder.Services.AddAntiforgery(o => { o.HeaderName = "X-CSRF-TOKEN"; o.Cookie.Name = "lc98.csrf"; o.Cookie.HttpOnly = true; o.Cookie.SameSite = SameSiteMode.Strict; o.Cookie.SecurePolicy = securePolicy; });
         builder.Services.AddAuthentication(Scheme).AddCookie(Scheme, o =>
         {
-            o.Cookie.Name = "lc98.account"; o.Cookie.HttpOnly = true; o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            o.Cookie.Name = "lc98.account"; o.Cookie.HttpOnly = true; o.Cookie.SecurePolicy = securePolicy;
             o.Cookie.SameSite = SameSiteMode.Strict; o.ExpireTimeSpan = TimeSpan.FromHours(12); o.SlidingExpiration = false;
             o.Events.OnRedirectToLogin = c => { c.Response.StatusCode = 401; return Task.CompletedTask; };
             o.Events.OnRedirectToAccessDenied = c => { c.Response.StatusCode = 403; return Task.CompletedTask; };
@@ -65,6 +95,11 @@ public static class AccountLogin
         builder.Services.AddRateLimiter(o =>
         {
             o.RejectionStatusCode = 429;
+            o.AddPolicy("world-invite", c => RateLimitPartition.GetFixedWindowLimiter(c.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "anonymous", _ =>
+                new FixedWindowRateLimiterOptions
+                {
+                    PermitLimit = 20, Window = TimeSpan.FromMinutes(1), QueueLimit = 0, AutoReplenishment = true
+                }));
             o.AddPolicy("account-auth", c => RateLimitPartition.GetFixedWindowLimiter(c.Connection.RemoteIpAddress?.ToString() ?? "local", _ => new FixedWindowRateLimiterOptions
             {
                 PermitLimit = 20,
@@ -81,13 +116,16 @@ public static class AccountLogin
         app.UseAuthentication(); app.UseAuthorization(); app.UseRateLimiter();
         app.Use(async (http, next) =>
         {
-            var path = http.Request.Path.Value ?? "";
-            if (!path.StartsWith("/api/") && !path.StartsWith("/hubs/")) { await next(); return; }
+            var path = (http.Request.Path.Value ?? "").TrimEnd('/');
+            bool api = http.Request.Path.StartsWithSegments("/api");
+            if (!api && !http.Request.Path.StartsWithSegments("/hubs")) { await next(); return; }
+            if (app.Configuration["Elifoot:AuthMode"] == CommercialMode && !http.Request.IsHttps)
+            { http.Response.StatusCode = 400; return; }
             http.Response.Headers.CacheControl = "no-store";
             var origin = http.Request.Headers.Origin.ToString();
             var allowed = app.Configuration.GetSection("Accounts:AllowedOrigins").Get<string[]>() ?? ["http://127.0.0.1:5242", "http://localhost:5242"];
             if (origin.Length > 0 && !allowed.Contains(origin, StringComparer.OrdinalIgnoreCase)) { http.Response.StatusCode = 403; return; }
-            if (path == "/api/auth/local-login") { http.Response.StatusCode = 404; return; }
+            if (path.Equals("/api/auth/local-login", StringComparison.OrdinalIgnoreCase)) { http.Response.StatusCode = 404; return; }
             var anonymous = path is "/api/health" or "/api/auth/csrf" or "/api/auth/login" or "/api/auth/register";
             if (!anonymous && http.User.Identity?.IsAuthenticated != true) { http.Response.StatusCode = 401; return; }
             if (!HttpMethods.IsGet(http.Request.Method) && !HttpMethods.IsHead(http.Request.Method) && !HttpMethods.IsOptions(http.Request.Method))
@@ -95,7 +133,7 @@ public static class AccountLogin
                 try { await http.RequestServices.GetRequiredService<IAntiforgery>().ValidateRequestAsync(http); }
                 catch (AntiforgeryValidationException) { http.Response.StatusCode = 400; await http.Response.WriteAsJsonAsync(new { error = "Sessão de formulário expirada. Atualize a página.", code = "CSRF_INVALID" }); return; }
             }
-            if (!anonymous && !path.StartsWith("/api/auth/") && !path.StartsWith("/api/accounts/"))
+            if (!anonymous && api && !http.Request.Path.StartsWithSegments("/api/auth") && !http.Request.Path.StartsWithSegments("/api/accounts"))
             {
                 if (!await AuthorizeRequest(http)) { http.Response.StatusCode = 403; await http.Response.WriteAsJsonAsync(new { error = "Esta conta não pode controlar esse treinador ou recurso." }); return; }
             }
@@ -107,7 +145,7 @@ public static class AccountLogin
     {
         var service = http.RequestServices.GetRequiredService<AccountSessionService>();
         var account = AccountId(http); var actor = CoachId(http); var ct = http.RequestAborted;
-        var requestedActors = new List<Guid>();
+        var requestedActors = new HashSet<Guid>();
         foreach (var pair in http.Request.Query.Where(x => x.Key.Equals("coachId", StringComparison.OrdinalIgnoreCase)))
             foreach (var value in pair.Value) { if (!Guid.TryParse(value, out var id)) return false; requestedActors.Add(id); }
         if (http.Request.RouteValues.TryGetValue("coachId", out var routeCoach))
@@ -123,7 +161,8 @@ public static class AccountLogin
                 using var json = await JsonDocument.ParseAsync(http.Request.Body, cancellationToken: ct);
                 if (json.RootElement.ValueKind == JsonValueKind.Object) foreach (var field in json.RootElement.EnumerateObject())
                 {
-                    if (field.Name.Equals("accountId", StringComparison.OrdinalIgnoreCase) && field.Value.GetString() != account.ToString()) return false;
+                    if (field.Name.Equals("accountId", StringComparison.OrdinalIgnoreCase) &&
+                        (field.Value.ValueKind != JsonValueKind.String || field.Value.GetString() != account.ToString())) return false;
                     if (field.Name.Equals("coachId", StringComparison.OrdinalIgnoreCase) || field.Name.Equals("hostCoachId", StringComparison.OrdinalIgnoreCase))
                     {
                         if (!Guid.TryParse(field.Value.ToString(), out var id)) return false; requestedActors.Add(id);
@@ -133,28 +172,45 @@ public static class AccountLogin
             catch (JsonException) { return false; }
             finally { http.Request.Body.Position = 0; }
         }
-        foreach (var id in requestedActors) if (!await service.Owns(account, id, ct)) return false;
-        if (requestedActors.Count > 0) actor = requestedActors[0];
-        var path = http.Request.Path.Value!;
+        if (requestedActors.Count > 1) return false;
+        if (requestedActors.Count == 1)
+        {
+            actor = requestedActors.Single();
+            if (!await service.Owns(account, actor, ct)) return false;
+        }
+        var path = http.Request.Path.Value!.TrimEnd('/');
         var query = http.Request.Query.ToDictionary(x => x.Key, x => x.Value, StringComparer.OrdinalIgnoreCase);
         if (!query.ContainsKey("coachId")) query["coachId"] = actor.ToString();
         // Identity comes from the authenticated session; legacy device values cannot establish ownership.
         query["deviceId"] = $"account:{account:N}";
         query["nickname"] = (await service.Account(account, ct)).DisplayName;
         http.Request.QueryString = QueryString.Create(query.SelectMany(x => x.Value.Select(v => new KeyValuePair<string, string?>(x.Key, v))));
-        if (path.EndsWith("/tick", StringComparison.Ordinal)) return false; // Clock is driven by the existing server worker.
-        if (http.Request.RouteValues.TryGetValue("worldId", out var worldRoute) && Guid.TryParse(worldRoute?.ToString(), out var worldId))
+        if (path.EndsWith("/tick", StringComparison.OrdinalIgnoreCase)) return false;
+        var worldRoute = http.Request.RouteValues["worldId"];
+        if (worldRoute == null && http.Request.Path.StartsWithSegments("/api/world-lobby-016b"))
+            worldRoute = http.Request.RouteValues["id"];
+        if (Guid.TryParse(worldRoute?.ToString(), out var worldId))
         {
             var repo = http.RequestServices.GetRequiredService<IWorldRepository>();
-            var world = await repo.GetWorldAsync(worldId, ct);
-            if (world == null) return true;
+            var world = await repo.GetWorldForRoundCheckpointAsync(worldId, ct);
+            if (world == null) return false;
             var profiles = await service.Profiles(account, ct); var owned = profiles.Select(x => x.CoachId).ToHashSet();
-            var memberships = world.HumanCoaches.Where(x => owned.Contains(x.Id)).ToList();
-            if (path.EndsWith("/join", StringComparison.Ordinal)) return memberships.Count == 0 || memberships.Any(x => x.Id == actor);
-            if (path.Contains("/finances", StringComparison.Ordinal) && http.Request.RouteValues.TryGetValue("clubId", out var club))
-                return memberships.Any(x => x.Id == actor && x.CurrentClubId?.ToString() == club?.ToString());
-            if (path.Contains("/editor/", StringComparison.Ordinal)) return memberships.Any(x => x.IsHost) || (world.InitialLobby != null && owned.Contains(world.InitialLobby.HostCoachId));
-            if (!HttpMethods.IsGet(http.Request.Method) && memberships.All(x => x.Id != actor)) return false;
+            var gate = MultiplayerRoundOrchestrator.GetRoomLock(worldId);
+            await gate.WaitAsync(ct);
+            try
+            {
+                if (path.EndsWith("/join", StringComparison.OrdinalIgnoreCase)) return true; // Admission is checked under the join lock.
+                bool creator = world.CreatorCoachId is Guid host && owned.Contains(host);
+                var memberships = world.HumanCoaches.Where(x => owned.Contains(x.Id)).ToList();
+                if (path.Contains("/editor/", StringComparison.OrdinalIgnoreCase))
+                    return creator || memberships.Any(x => x.IsHost);
+                if (path.Contains("/finances", StringComparison.OrdinalIgnoreCase) && http.Request.RouteValues.TryGetValue("clubId", out var club))
+                    return memberships.Any(x => x.Id == actor && x.CurrentClubId?.ToString() == club?.ToString());
+                if (HttpMethods.IsGet(http.Request.Method) || HttpMethods.IsHead(http.Request.Method))
+                    return creator || memberships.Count > 0;
+                return memberships.Any(x => x.Id == actor);
+            }
+            finally { gate.Release(); }
         }
         return true;
     }
@@ -226,7 +282,7 @@ public static class AccountLogin
             displayName = account.DisplayName,
             coachId = CoachId(http),
             profiles = profiles.Select(p => new { p.CoachId, p.DisplayName, p.IsPrimary }),
-            authMode = Scheme
+            authMode = http.RequestServices.GetRequiredService<IConfiguration>()["Elifoot:AuthMode"]
         });
     }
     public sealed record RegisterAccount(string Username, string DisplayName, string Password);

@@ -5,6 +5,7 @@ import 'club_theme.dart';
 
 /// Catalog artwork with a club-color shield as a fallback.
 class ClubCrest extends StatelessWidget {
+  static final _images = <String, MemoryImage>{};
   final Map<String, dynamic>? palette;
   final String club;
   final double size;
@@ -37,8 +38,13 @@ class ClubCrest extends StatelessWidget {
         (data.startsWith('data:image/png;base64,') ||
             data.startsWith('data:image/jpeg;base64,'))) {
       try {
-        return Image.memory(
-          base64Decode(data.substring(data.indexOf(',') + 1)),
+        final image =
+            _images.remove(data) ??
+            MemoryImage(base64Decode(data.substring(data.indexOf(',') + 1)));
+        _images[data] = image;
+        if (_images.length > 128) _images.remove(_images.keys.first);
+        return Image(
+          image: image,
           width: size,
           height: size,
           fit: BoxFit.contain,

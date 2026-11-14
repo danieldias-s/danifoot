@@ -150,6 +150,7 @@ public sealed class WorldAssemblyService(IServiceScopeFactory factory, IWorldRep
                 string name = string.IsNullOrWhiteSpace(command.WorldName) ? row.Name : command.WorldName.Trim(); Name(name);
                 var created = CustomAssemblyPolicy.CreateIndependent(dto.Package, row.Id, row.Version, dto.Countries, name, command.MaxHumans);
                 created.GameModeId=command.GameModeId;
+                created.OwnerCoachId = owner;
                 if(command.RequireHostStart)created.InitialLobby=new(){HostCoachId=owner};
                 receipt = new() { Id = receiptId, OwnerId = owner, RequestJson = Json(new { assemblyConfirmation = true, assemblyId = id, version = row.Version }), PreviewJson = "{}", WorldId = created.Id, WorldJson = Json(created), ExpiresAt = DateTime.UtcNow.AddYears(100) };
                 db.Drafts.Add(receipt);

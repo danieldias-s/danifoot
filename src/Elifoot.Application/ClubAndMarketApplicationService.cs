@@ -434,28 +434,33 @@ public sealed partial class ClubAndMarketApplicationService
         await gate.WaitAsync(ct);
         try
         {
-            var world = await _repository.GetWorldAsync(worldId, ct);
+            var world = await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
             if (world == null) return (false, "Sala não encontrada.");
+            if (world.RoundCheckpointNeedsSave) throw new RoundCheckpointPendingException();
+            var coach = world.HumanCoaches.FirstOrDefault(c => c.Id == coachId);
+            if (coach == null) return (false, "Treinador não pertence à sala.");
             ClassicEconomyEngine.EnsureMigrated(world);
             CoachCareerEngine.EnsureMigrated(world);
-            string? receiptKey = string.IsNullOrWhiteSpace(idempotencyKey) ? null : $"INV:{coachId}:{idempotencyKey.Trim()}";
+            string receiptKey = string.IsNullOrWhiteSpace(idempotencyKey)
+                ? $"INV-LEGACY:{coachId}:{invitationId}"
+                : $"INV:{coachId}:{idempotencyKey.Trim()}";
             string payload = $"{invitationId}:{accept}";
-            if (receiptKey != null && world.Economy.Commands.TryGetValue(receiptKey, out var receipt) && receipt.ResultJson != null)
+            if (world.Economy.Commands.TryGetValue(receiptKey, out var receipt) && receipt.ResultJson != null)
             {
                 if (receipt.Operation != "APP:INVITATION_RESPOND" || receipt.Payload != payload)
                     return (false, "Chave usada por outra operação.");
-                await _repository.SaveWorldAsync(world, CancellationToken.None);
+                await FlushWorldDataChange(world);
                 return System.Text.Json.JsonSerializer.Deserialize<(bool Success, string? Error)>(receipt.ResultJson, CommandJson)!;
             }
+            await FlushWorldDataChange(world);
             if (expectedRoundVersion.HasValue && expectedRoundVersion.Value != world.RoundVersion)
                 return (false, "A sala mudou. Atualize antes de confirmar a operação.");
-            var coach = world.HumanCoaches.FirstOrDefault(c => c.Id == coachId);
-            if (world.RoundState == RoundState.PREPARING && coach?.IsReadyForRound == true)
+            if (world.RoundState == RoundState.PREPARING && coach.IsReadyForRound)
                 return (false, "Retire o pronto antes de mudar de clube.");
             var result = CoachCareerEngine.Respond(world, coachId, invitationId, accept);
             if (!result.Success) return result;
             ClassicEconomyEngine.ResolvePendingAiSalaryRequests(world);
-            if (accept && coach?.CurrentClubId is Guid newClubId)
+            if (accept && coach.CurrentClubId is Guid newClubId)
             {
                 var club = world.Clubs.FirstOrDefault(c => c.Id == newClubId);
                 if (club != null)
@@ -471,15 +476,11 @@ public sealed partial class ClubAndMarketApplicationService
                     }
                 }
             }
-            if (receiptKey != null)
-            {
-                world.Economy.Commands[receiptKey] = new("APP:INVITATION_RESPOND", payload, null, null, System.Text.Json.JsonSerializer.Serialize(result, CommandJson));
-            }
+            world.Economy.Commands[receiptKey] = new("APP:INVITATION_RESPOND", payload, null, null, System.Text.Json.JsonSerializer.Serialize(result, CommandJson));
             world.RoundVersion++;
-            await _repository.SaveWorldAsync(world, CancellationToken.None);
-            var snap = MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world);
-            await _publisher.PublishReadyCounterUpdatedAsync(world.Id, snap.ReadyCounter, ct);
-            await _publisher.PublishRoundStateChangedAsync(world.Id, snap, ct);
+            await SaveWorldDataChange(world, accept
+                ? ["invites", "ranking", "squad", "finances", "clubs", "market", "participants"]
+                : ["invites", "ranking", "finances"]);
             return (true, null);
         }
         finally { gate.Release(); }
@@ -490,9 +491,15 @@ public sealed partial class ClubAndMarketApplicationService
         var gate = MultiplayerRoundOrchestrator.GetLock(worldId); await gate.WaitAsync(ct);
         try
         {
-            var w = await _repository.GetWorldAsync(worldId, ct); if (w == null) return null;
-            CoachCareerEngine.EnsureMigrated(w); CoachCareerEngine.ProcessVacancies(w);
-            await _repository.SaveWorldAsync(w, ct);
+            var w = await _repository.GetWorldForRoundCheckpointAsync(worldId, ct);
+            if (w == null || !w.HumanCoaches.Any(c => c.Id == coachId)) return null;
+            if (w.RoundCheckpointNeedsSave) throw new RoundCheckpointPendingException();
+            await FlushWorldDataChange(w);
+            if (CoachCareerEngine.ProcessVacancies(w))
+            {
+                w.RoundVersion++;
+                await SaveWorldDataChange(w, ["invites", "ranking", "clubs"]);
+            }
             var coach = CoachCareerEngine.Find(w, coachId);
             var list = w.JobInvitations.Where(i => i.CoachId == coachId && !i.IsExpired && !i.IsRejected && !i.IsAccepted)
                 .Select(i => {
@@ -535,7 +542,9 @@ public sealed partial class ClubAndMarketApplicationService
             if(!w.HumanCoaches.Any(c=>c.Id==hostId && c.IsHost))return(false,"Apenas o anfitrião pode configurar as faixas.");
             if(!CoachCareerEngine.IsSafe(w))return(false,"Configuração somente entre partidas.");
             if(rules.YellowMinimum<1 || rules.GreenMinimum<=rules.YellowMinimum || rules.GreenMinimum>100 || rules.UnemployedRecoveryPerRound<1 || rules.UnemployedRecoveryPerRound>20)return(false,"Faixas inválidas.");
-            w.CoachMoraleRules=rules;w.RoundVersion++;await _repository.SaveWorldAsync(w,ct);return(true,null);
+            w.CoachMoraleRules=rules;w.RoundVersion++;
+            await SaveWorldDataChange(w, ["invites", "ranking"]);
+            return(true,null);
         } finally {gate.Release();}
     }
 

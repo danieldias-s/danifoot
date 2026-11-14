@@ -33,8 +33,14 @@ public sealed partial class MultiplayerRoundOrchestrator
     {
         var sem = GetLock(command.GameWorldId); await sem.WaitAsync(ct);
         try {
-            var world = await _repository.GetWorldAsync(command.GameWorldId, ct);
+            var world = await _repository.GetWorldForRoundCheckpointAsync(command.GameWorldId, ct);
             if (world == null) return (false,"Sala não encontrada.",null);
+            if (world.PendingWorldDataChange != null) throw new RoundCheckpointPendingException();
+            if (world.RoundCheckpointNeedsSave)
+            {
+                await PersistRoundCheckpointAsync(world);
+                await _publisher.PublishRoundStateChangedAsync(world.Id, BuildLiveRoundSnapshotDto(world), ct);
+            }
             var coach = world.HumanCoaches.FirstOrDefault(h => h.Id == command.CoachId);
             if (coach == null) return (false,"Treinador não pertence à sala.",BuildLiveRoundSnapshotDto(world));
             if (string.IsNullOrWhiteSpace(command.IdempotencyKey)) return (false,"Informe a chave da operação.",BuildLiveRoundSnapshotDto(world));
@@ -67,7 +73,11 @@ public sealed partial class MultiplayerRoundOrchestrator
                 }
             }
             if(FirstPendingPenalty(world)==null) ApplyCurrentMinuteBoundary(world);
-            world.RoundVersion++; await _repository.SaveWorldAsync(world,ct);
+            world.RoundVersion++;
+            if (world.RoundState == RoundState.RESULTS)
+                await PersistRoundCheckpointAsync(world);
+            else
+                await _repository.SaveWorldAsync(world, ct);
             var snapshot=BuildLiveRoundSnapshotDto(world);await _publisher.PublishRoundStateChangedAsync(world.Id,snapshot,ct);
             return (true,null,snapshot);
         } finally { sem.Release(); }

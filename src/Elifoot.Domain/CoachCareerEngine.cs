@@ -236,12 +236,19 @@ public static class CoachCareerEngine
         }
     }
 
-    public static void ProcessVacancies(GameWorld w)
+    public static bool ProcessVacancies(GameWorld w)
     {
-        EnsureMigrated(w); if (!IsSafe(w)) return;
+        var previousRulesVersion = w.CareerRulesVersion;
+        EnsureMigrated(w);
+        bool changed = previousRulesVersion != w.CareerRulesVersion;
+        if (!IsSafe(w)) return changed;
+        var vacancies = w.Clubs.Where(c => c.HumanCoachId == null && c.CareerVacancyId.HasValue)
+            .OrderBy(c => c.DeterministicIndex).ToList();
+        if (vacancies.Count == 0) return changed;
         var ranks = CompetitionAndSeasonEngine.GetClassicCoachRanking(w).ToDictionary(r => r.CoachId, r => r.Rank);
-        foreach (var club in w.Clubs.Where(c => c.HumanCoachId == null && c.CareerVacancyId.HasValue).OrderBy(c => c.DeterministicIndex).ToList())
+        foreach (var club in vacancies)
         {
+            changed |= club.AiManagerId == null;
             EnsureProvisional(w, club);
             var pending = w.JobInvitations.FirstOrDefault(i => i.VacancyId == club.CareerVacancyId && !i.IsAccepted && !i.IsExpired && !i.IsRejected);
             if (pending != null)
@@ -249,10 +256,12 @@ public static class CoachCareerEngine
                 var candidate = Find(w, pending.CoachId);
                 if (pending.ExpiresAtOrdinal > Ordinal(w) && candidate != null && EvaluateOpportunity(w, candidate, club).Eligible) continue;
                 pending.IsExpired = true;
+                changed = true;
                 Log(w, "CANDIDATE_NOT_ELIGIBLE", pending.CoachId, club.Id, "Convite expirado ou moral/projeto mudou.");
             }
             if (club.LastVacancySearchOrdinal == Ordinal(w)) continue;
             club.LastVacancySearchOrdinal = Ordinal(w);
+            changed = true;
             var tried = w.JobInvitations.Where(i => i.VacancyId == club.CareerVacancyId).Select(i => i.CoachId).ToHashSet();
             var candidates = Coaches(w).Where(c => c.ClubId != club.Id && !tried.Contains(c.Id) && c.State.Morale >= w.CoachMoraleRules.GreenMinimum)
                 .Select(c => new { Coach = c, Score = (ranks.Count - ranks.GetValueOrDefault(c.Id, ranks.Count)) * 20m / Math.Max(1, ranks.Count)
@@ -275,6 +284,7 @@ public static class CoachCareerEngine
                 Hire(w, c, club, invitation); break;
             }
         }
+        return changed;
     }
 
     public static (bool Success, string? Error) Respond(GameWorld w, Guid coachId, Guid invitationId, bool accept)

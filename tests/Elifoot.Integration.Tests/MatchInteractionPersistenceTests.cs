@@ -13,16 +13,25 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.EventLog;
+using Npgsql;
 namespace Elifoot.Integration.Tests;
 
 [Collection("Player rankings 009 SQLite")]
 public class MatchInteractionPersistenceTests
 {
-    private static WebApplicationFactory<Program> Factory(string connection, bool postgres, SaveChangesInterceptor? fault = null) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
+    private static WebApplicationFactory<Program> Factory(string connection, bool postgres, SaveChangesInterceptor? fault = null, bool compress = false,
+        DbTransactionInterceptor? transactionFault = null) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => {
         b.UseSetting("Elifoot:AuthMode", "LocalDev"); b.UseSetting("Elifoot:DatabaseProvider", postgres ? "PostgreSQL" : "Sqlite");
         b.UseSetting("ConnectionStrings:DefaultConnection", connection);
         b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
         b.UseSetting("Elifoot:DisableBackgroundClock", "true");
+        b.UseSetting("Elifoot:CompressNewSqliteSnapshots", compress.ToString());
+        if (transactionFault != null)
+        {
+            b.UseSetting("Elifoot:ExclusiveWorldAuthority", "true");
+            b.ConfigureServices(services =>
+                services.ConfigureDbContext<ElifootDbContext>(options => options.AddInterceptors(transactionFault)));
+        }
         if (fault != null)
         {
             // Keep injected SQLite failures observable on hosts without Event Log write access.
@@ -35,6 +44,88 @@ public class MatchInteractionPersistenceTests
                 services.ConfigureDbContext<ElifootDbContext>(options => options.AddInterceptors(fault)));
         }
     });
+
+    [Stage4PostgresTheory]
+    [InlineData(false, 89)]
+    [InlineData(true, 89)]
+    [InlineData(false, 14)]
+    [InlineData(true, 14)]
+    public async Task PostgresRecoversResultWhenTheActualTransactionCommitFails(bool afterCommit, int minute)
+    {
+        var setting = new NpgsqlConnectionStringBuilder(Environment.GetEnvironmentVariable("ELIFOOT_STAGE4_TEST_PG"));
+        Assert.Equal("127.0.0.1", setting.Host);
+        Assert.Equal(54983, setting.Port);
+        Assert.StartsWith("audit_", setting.Database);
+        var fault = new PostgreSqlCommitFault(afterCommit);
+        var (world, match, _, _) = await Room();
+        world.RoundState = RoundState.RUNNING_SECOND_HALF;
+        world.CurrentMatchMinute = minute;
+        foreach (var fixture in MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world))
+            fixture.CurrentMinute = fixture.LastSimulatedMinute = minute;
+        await using var factory = Factory(setting.ConnectionString, true, transactionFault: fault);
+        using var first = factory.CreateClient();
+        using var second = factory.CreateClient();
+        await factory.Services.GetRequiredService<IWorldRepository>().SaveWorldAsync(world);
+        var route = $"/api/worlds/{world.Id}";
+        var originalVersion = world.RoundVersion;
+        fault.Armed = true;
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, (await first.PostAsync(route + "/tick", null)).StatusCode);
+        Assert.True(world.RoundCheckpointNeedsSave);
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, (await second.GetAsync(route + "/snapshot")).StatusCode);
+        using (var scope = factory.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
+            var durableVersion = await db.Worlds.Where(w => w.Id == world.Id).Select(w => w.RoundVersion).SingleAsync();
+            Assert.Equal(afterCommit ? world.RoundVersion : originalVersion, durableVersion);
+        }
+        var events = match.Events.Count;
+        var transactions = world.Transactions.Select(t => t.Id).ToArray();
+        var recovered = minute == 89
+            ? await Task.WhenAll(first.PostAsync(route + "/tick", null), second.PostAsync(route + "/tick", null))
+            : new[] { await second.PostAsync(route + "/tick", null) };
+        Assert.All(recovered, r => r.EnsureSuccessStatusCode());
+        Assert.Equal(events, match.Events.Count);
+        Assert.Equal(transactions, world.Transactions.Select(t => t.Id));
+        var snapshot = await first.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot");
+        Assert.Equal(minute + 1, snapshot!.CurrentMinute);
+        Assert.Equal(minute == 89 ? RoundState.RESULTS : RoundState.RUNNING_SECOND_HALF, snapshot.RoundState);
+        Assert.Equal(world.RoundVersion, snapshot.PersistedRoundVersion);
+    }
+
+    private sealed class Stage4PostgresTheoryAttribute : TheoryAttribute
+    {
+        public Stage4PostgresTheoryAttribute()
+        {
+            if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ELIFOOT_STAGE4_TEST_PG")))
+                Skip = "Requer PostgreSQL descartável da Etapa 4.";
+        }
+    }
+
+    private sealed class PostgreSqlCommitFault(bool afterCommit) : DbTransactionInterceptor
+    {
+        public bool Armed { get; set; }
+
+        public override ValueTask<InterceptionResult> TransactionCommittingAsync(System.Data.Common.DbTransaction transaction,
+            TransactionEventData eventData, InterceptionResult result, CancellationToken cancellationToken = default)
+        {
+            if (!afterCommit) FailIfArmed();
+            return ValueTask.FromResult(result);
+        }
+
+        public override Task TransactionCommittedAsync(System.Data.Common.DbTransaction transaction,
+            TransactionEndEventData eventData, CancellationToken cancellationToken = default)
+        {
+            if (afterCommit) FailIfArmed();
+            return Task.CompletedTask;
+        }
+
+        private void FailIfArmed()
+        {
+            if (!Armed) return;
+            Armed = false;
+            throw new IOException("Falha controlada na confirmação do commit PostgreSQL.");
+        }
+    }
     private static async Task<(GameWorld W, MatchFixture M, HumanCoach A, HumanCoach B)> Room()
     {
         var repository = new InMemoryWorldRepository();
@@ -56,6 +147,68 @@ public class MatchInteractionPersistenceTests
             fixture.CurrentMinute = fixture.LastSimulatedMinute = 20;
         }
         return (world, match, a, b);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public async Task FinalCheckpointHidesUnconfirmedResultsAndRecoversExactlyOnce(bool afterCommit, bool compress)
+    {
+        string file = Path.Combine(Path.GetTempPath(), $"elifoot-round-io-{Guid.NewGuid():N}.db");
+        var (world, match, _, _) = await Room();
+        world.RoundState = RoundState.RUNNING_SECOND_HALF;
+        world.CurrentMatchMinute = 89;
+        foreach (var fixture in MultiplayerRoundOrchestrator.GetCurrentRoundFixtures(world))
+            fixture.CurrentMinute = fixture.LastSimulatedMinute = 89;
+        var fault = new ContinueSaveFault(afterCommit);
+        try
+        {
+            await using var factory = Factory($"Data Source={file};Pooling=False", false, fault, compress);
+            using var first = factory.CreateClient();
+            using var second = factory.CreateClient();
+            var repo = factory.Services.GetRequiredService<IWorldRepository>();
+            await repo.SaveWorldAsync(world);
+            var route = $"/api/worlds/{world.Id}";
+            var nextRound = route + $"/next-round?expectedSeasonNumber={world.SeasonNumber}&expectedRoundNumber={world.RoundNumber}";
+            fault.Armed = true;
+            using var failure = await first.PostAsync(route + "/tick", null);
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, failure.StatusCode);
+            Assert.True(world.RoundCheckpointNeedsSave);
+            Assert.DoesNotContain(await repo.ListWorldsAsync(), room => room.Id == world.Id);
+            Assert.Contains(await repo.ListWorldsForClockAsync(), room => room.Id == world.Id);
+            using var blocked = await second.GetAsync(route + "/standings/PrimeiraDivisao");
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, blocked.StatusCode);
+            using var blockedSnapshot = await second.GetAsync(route + "/snapshot");
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, blockedSnapshot.StatusCode);
+
+            var version = world.RoundVersion;
+            var eventTypes = match.Events.Select(e => e.EventType).ToArray();
+            var transactionIds = world.Transactions.Select(t => t.Id).ToArray();
+            using var recovered = await second.PostAsync(route + "/tick", null);
+            recovered.EnsureSuccessStatusCode();
+            var snapshot = (await first.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+            Assert.Equal(RoundState.RESULTS, snapshot.RoundState);
+            Assert.DoesNotContain(await repo.ListWorldsForClockAsync(), room => room.Id == world.Id);
+            Assert.Equal(version, snapshot.RoundVersion);
+            Assert.Equal(eventTypes, match.Events.Select(e => e.EventType));
+            Assert.Equal(transactionIds, world.Transactions.Select(t => t.Id));
+
+            world.Economy.SalaryRequests.Clear();
+            using var advanced = await first.PostAsync(nextRound, null);
+            advanced.EnsureSuccessStatusCode();
+            fault.Armed = true;
+            using var replayed = await second.PostAsync(nextRound, null);
+            replayed.EnsureSuccessStatusCode();
+            Assert.True(fault.Armed);
+            Assert.Equal(version + 1, (await replayed.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.RoundVersion);
+        }
+        finally
+        {
+            EfWorldRepository.ClearCacheForTesting();
+            if (File.Exists(file)) File.Delete(file);
+        }
     }
 
     [Theory]

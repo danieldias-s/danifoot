@@ -13,17 +13,21 @@ if (await LocalCatalogCommand.TryRunAsync(args)) return;
 var builder = WebApplication.CreateBuilder(args);
 
 string authMode = builder.Configuration["Elifoot:AuthMode"] ?? AccountLogin.Scheme;
-if (!string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase) && authMode != AccountLogin.Scheme &&
-    string.IsNullOrWhiteSpace(builder.Configuration["Elifoot:ProductionJwtSecret"]))
-{
-    throw new InvalidOperationException(
-        "SECURITY BLOCK: O modo de execução não é 'LocalDev', mas 'Elifoot:ProductionJwtSecret' não foi configurado. " +
-        "O login simplificado por Nickname/DeviceId é exclusivo para DEV local e não pode ser exposto na internet.");
-}
+if (authMode is not ("LocalDev" or AccountLogin.Scheme or AccountLogin.CommercialMode)
+    || (builder.Environment.IsProduction() && authMode != AccountLogin.CommercialMode))
+    throw new InvalidOperationException("Configure um modo de autenticação suportado. Production exige Elifoot:AuthMode=Account.");
 
 string dbProvider = builder.Configuration["Elifoot:DatabaseProvider"] ?? "PostgreSQL";
 string connString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? "Host=127.0.0.1;Port=5432;Database=elifoot_classic;Username=postgres;Password=123456";
+bool exclusiveAuthority = authMode == AccountLogin.CommercialMode ||
+    builder.Configuration.GetValue<bool>("Elifoot:ExclusiveWorldAuthority");
+if (authMode == AccountLogin.CommercialMode && (!string.Equals(dbProvider, "PostgreSQL", StringComparison.OrdinalIgnoreCase)
+    || string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("DefaultConnection"))
+    || string.Equals(connString, "Host=127.0.0.1;Port=5432;Database=elifoot_classic;Username=postgres;Password=123456", StringComparison.OrdinalIgnoreCase)))
+    throw new InvalidOperationException("O modo Account requer um banco PostgreSQL provisionado.");
+if (exclusiveAuthority)
+    builder.Services.AddSingleton(_ => new WorldAuthority(dbProvider, connString));
 
 if (string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase))
 {
@@ -31,6 +35,11 @@ if (string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase))
 }
 else
 {
+    builder.Services.AddSingleton(new SqliteSnapshotOptions(
+        builder.Configuration.GetValue<bool>("Elifoot:CompressNewSqliteSnapshots")));
+    builder.Services.AddSingleton(new WorldCacheOptions(
+        builder.Configuration.GetValue<int>("Elifoot:InactiveWorldCacheCount", 16),
+        TimeSpan.FromSeconds(builder.Configuration.GetValue<int>("Elifoot:InactiveWorldCacheSeconds", 120))));
     builder.Services.AddDbContext<ElifootDbContext>(options =>
     {
         if (string.Equals(dbProvider, "Sqlite", StringComparison.OrdinalIgnoreCase))
@@ -54,11 +63,15 @@ if (!localHistoricalCatalog)
     builder.AddWorldCatalog016B();
 }
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<RoundStream>();
 builder.Services.AddSingleton<RoomConnectionRegistry>();
 builder.Services.AddSingleton<IMatchRoomNotificationPublisher, SignalRMatchRoomNotificationPublisher>();
 builder.Services.AddScoped<MultiplayerRoundOrchestrator>();
 builder.Services.AddScoped<ClubAndMarketApplicationService>();
 builder.Services.AddScoped<PlayerRankingsApplicationService>();
+builder.Services.AddSingleton<RoomClockMetrics>();
+builder.Services.AddSingleton<WorldPersistenceMetrics>();
+builder.Services.AddSingleton<IRoundTickTiming>(services => services.GetRequiredService<RoomClockMetrics>());
 builder.Services.AddHostedService<RoomClockBackgroundService>();
 
 builder.Services.AddCors(options =>
@@ -75,6 +88,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+if (exclusiveAuthority)
+{
+    var authority = app.Services.GetRequiredService<WorldAuthority>();
+    await authority.AcquireAsync(app.Lifetime.StopApplication);
+    app.Lifetime.ApplicationStopped.Register(authority.Stop);
+}
 var roomConnections = app.Services.GetRequiredService<RoomConnectionRegistry>();
 async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken ct)
 {
@@ -86,6 +105,15 @@ async Task<LiveRoundSnapshotDto> RoomSnapshot(GameWorld world, CancellationToken
 
 app.UseRouting();
 app.UseCors();
+if (exclusiveAuthority)
+{
+    var authority = app.Services.GetRequiredService<WorldAuthority>();
+    app.Use(async (context, next) =>
+    {
+        if (authority.IsActive) await next(context);
+        else context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+    });
+}
 app.Use(async (context, next) =>
 {
     if (context.GetEndpoint()?.Metadata.GetMetadata<IEndpointNameMetadata>()?.EndpointName != "ConfirmContinueMatch")
@@ -117,6 +145,19 @@ app.Use(async (context, next) =>
         }
     }
 });
+app.Use(async (context, next) =>
+{
+    try { await next(context); }
+    catch (RoundCheckpointPendingException) when (!context.Response.HasStarted)
+    {
+        context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+        await context.Response.WriteAsJsonAsync(new
+        {
+            error = "O resultado ainda está sendo registrado. Tente novamente em instantes.",
+            code = "ROUND_CHECKPOINT_PENDING"
+        });
+    }
+});
 app.UseAccountLogin();
 // A failed market save must remain a server failure so clients retain the original command key.
 // Finance keeps the complete receipt for a durability retry; no incomplete operation is acknowledged.
@@ -126,13 +167,38 @@ app.Use(async (context, next) =>
     catch (Exception error) when (!context.Response.HasStarted
         && context.Request.Path.StartsWithSegments("/api/worlds")
         && (context.Request.Path.Value?.Contains("/market/", StringComparison.Ordinal) == true
+            ||context.Request.Path.Value?.EndsWith("/join",StringComparison.OrdinalIgnoreCase)==true
+            ||context.Request.Path.Value?.EndsWith("/join-by-code",StringComparison.OrdinalIgnoreCase)==true
             ||context.Request.Path.Value?.Contains("/salary-requests/",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.Contains("/invitations/",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/renew",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/renew-negotiation",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/tick",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/tactics",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/ready-unemployed",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/withdraw-ready",StringComparison.Ordinal)==true
+            ||context.Request.Path.Value?.EndsWith("/penalty-taker",StringComparison.Ordinal)==true
             ||context.Request.Path.Value?.EndsWith("/next-round",StringComparison.Ordinal)==true)
-        && error is IOException or DbUpdateException)
+        && error is not RoundCheckpointPendingException
+        && (error is IOException or DbUpdateException or SqliteException))
     {
+        if (context.Request.Path.Value?.EndsWith("/tick", StringComparison.Ordinal) == true
+            || context.Request.Path.Value?.EndsWith("/join", StringComparison.OrdinalIgnoreCase) == true
+            || context.Request.Path.Value?.EndsWith("/join-by-code", StringComparison.OrdinalIgnoreCase) == true
+            || context.Request.Path.Value?.EndsWith("/tactics", StringComparison.Ordinal) == true
+            || context.Request.Path.Value?.EndsWith("/ready-unemployed", StringComparison.Ordinal) == true
+            || context.Request.Path.Value?.EndsWith("/withdraw-ready", StringComparison.Ordinal) == true
+            || context.Request.Path.Value?.EndsWith("/penalty-taker", StringComparison.Ordinal) == true
+            || context.Request.Path.Value?.EndsWith("/next-round", StringComparison.Ordinal) == true)
+        {
+            context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+            await context.Response.WriteAsJsonAsync(new
+            {
+                error = "Não foi possível confirmar a rodada agora. Aguarde e tente novamente.",
+                code = "ROUND_PERSISTENCE_FAILED"
+            });
+            return;
+        }
         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
         string code=context.Request.Path.Value?.Contains("/market/",StringComparison.Ordinal)==true?"MARKET_PERSISTENCE_FAILED":"CONTRACT_PERSISTENCE_FAILED";
         await context.Response.WriteAsJsonAsync(new { error = code+": A operação não foi confirmada. Repita com a mesma chave." });
@@ -145,17 +211,32 @@ using (var scope = app.Services.CreateScope())
     if (!string.Equals(dbProvider, "InMemory", StringComparison.OrdinalIgnoreCase))
     {
         var db = scope.ServiceProvider.GetRequiredService<ElifootDbContext>();
-        await db.Database.EnsureCreatedAsync();
-        await ProfileAppearanceStore.EnsureSchema(db);
-        if (AccountLogin.Enabled(app.Configuration)) await AccountSchema.Ensure(db);
+        if (authMode == AccountLogin.CommercialMode)
+        {
+            // Production schema is provisioned separately from API startup.
+            await db.Worlds.Select(w => w.Id).Take(1).ToListAsync();
+            await db.AccountSessions.Select(s => s.IdHash).Take(1).ToListAsync();
+        }
+        else
+        {
+            await db.Database.EnsureCreatedAsync();
+            await ProfileAppearanceStore.EnsureSchema(db);
+            if (AccountLogin.Enabled(app.Configuration)) await AccountSchema.Ensure(db);
+        }
     }
 
-    bool autoSeed = builder.Configuration.GetValue<bool>("Elifoot:AutoSeedDefaultWorld", true);
+    bool autoSeed = authMode != AccountLogin.CommercialMode &&
+        builder.Configuration.GetValue<bool>("Elifoot:AutoSeedDefaultWorld", true);
     if (autoSeed)
     {
         var repo = scope.ServiceProvider.GetRequiredService<IWorldRepository>();
-        var existing = await repo.ListWorldsAsync();
-        if (existing.Count == 0)
+        bool hasWorld = false;
+        await foreach (var _ in repo.EnumerateWorldsAsync())
+        {
+            hasWorld = true;
+            break;
+        }
+        if (!hasWorld)
         {
             var orchestrator = scope.ServiceProvider.GetRequiredService<MultiplayerRoundOrchestrator>();
             await orchestrator.CreateWorldAsync(new CreateWorldRequest(
@@ -195,9 +276,16 @@ app.MapGet("/api/health", () => Results.Ok(new
     timestampUtc = DateTime.UtcNow
 }));
 
+if (authMode == "LocalDev" && builder.Configuration.GetValue<bool>("Elifoot:EnableLocalClockMetrics"))
+{
+    app.MapGet("/api/audit/clock", (RoomClockMetrics metrics) => Results.Ok(metrics.Snapshot()));
+    app.MapGet("/api/audit/persistence", (WorldPersistenceMetrics metrics) => Results.Ok(metrics.Snapshot()));
+}
+
 // 1. LocalDev Auth
 app.MapPost("/api/auth/local-login", (LocalAuthRequest req) =>
 {
+    if (authMode != "LocalDev") return Results.NotFound();
     string nick = string.IsNullOrWhiteSpace(req.Nickname) ? "Técnico" : req.Nickname.Trim();
     string devId = string.IsNullOrWhiteSpace(req.DeviceId) ? Guid.NewGuid().ToString("N") : req.DeviceId.Trim();
     // Deterministic CoachId from Nickname + DeviceId so reconnecting from the same device restores identity!
@@ -218,14 +306,16 @@ app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? d
     var ownedProfiles = AccountLogin.Enabled(app.Configuration)
         ? (await http.RequestServices.GetRequiredService<AccountSessionService>().Profiles(AccountLogin.AccountId(http), ct)).Select(p => p.CoachId).ToHashSet()
         : null;
-    var worlds = await repo.ListWorldsAsync(ct);
     var summaries = new List<object>();
-    foreach (var w in worlds)
+    await foreach (var w in repo.EnumerateWorldsAsync(ct))
     {
         var sem = MultiplayerRoundOrchestrator.GetRoomLock(w.Id);
         await sem.WaitAsync(ct);
         try
         {
+            if (w.RoundCheckpointNeedsSave || w.PendingWorldDataChange != null) continue;
+            if (ownedProfiles != null && !w.HumanCoaches.Any(h => ownedProfiles.Contains(h.Id)) &&
+                !(w.CreatorCoachId is Guid creator && ownedProfiles.Contains(creator))) continue;
             var counter = roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildReadyCounterDto(w));
             var own = w.HumanCoaches.FirstOrDefault(h => h.Id == coachId && (ownedProfiles == null || ownedProfiles.Contains(h.Id)))
                 ?? (ownedProfiles == null ? null : w.HumanCoaches.FirstOrDefault(h => ownedProfiles.Contains(h.Id)));
@@ -252,11 +342,21 @@ app.MapGet("/api/worlds", async (IWorldRepository repo, Guid? coachId, string? d
     return Results.Ok(summaries);
 });
 
-app.MapPost("/api/worlds", async (CreateWorldRequest req, MultiplayerRoundOrchestrator orchestrator, CancellationToken ct) =>
+app.MapPost("/api/worlds", async (CreateWorldRequest req, HttpContext http, MultiplayerRoundOrchestrator orchestrator, CancellationToken ct) =>
 {
-    var world = await orchestrator.CreateWorldAsync(req, ct);
+    if (authMode == AccountLogin.CommercialMode)
+        req = req with { InviteCode = Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(12)) };
+    var world = await orchestrator.CreateWorldAsync(req, ct,
+        AccountLogin.Enabled(app.Configuration) ? AccountLogin.CoachId(http) : null);
     return Results.Ok(await RoomSnapshot(world, ct));
 });
+
+async Task<HashSet<Guid>?> AccountCoaches(HttpContext http, CancellationToken ct)
+{
+    if (!AccountLogin.Enabled(app.Configuration)) return null;
+    var accounts = http.RequestServices.GetRequiredService<AccountSessionService>();
+    return (await accounts.Profiles(AccountLogin.AccountId(http), ct)).Select(profile => profile.CoachId).ToHashSet();
+}
 
 app.MapPost("/api/worlds/{worldId:guid}/join", async (
     Guid worldId,
@@ -265,11 +365,14 @@ app.MapPost("/api/worlds/{worldId:guid}/join", async (
     string? deviceId,
     Guid? preferredClubId,
     bool? joinUnemployed,
+    HttpContext http,
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
     var (ok, err, coach, world) = await orchestrator.JoinWorldAndAssignClubAsync(
-        worldId, coachId, nickname, deviceId ?? "dev", preferredClubId, joinUnemployed ?? false, ct, allowDeviceReconnect: string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase));
+        worldId, coachId, nickname, deviceId ?? "dev", preferredClubId, joinUnemployed ?? false, ct,
+        allowDeviceReconnect: authMode == "LocalDev", accountCoaches: await AccountCoaches(http, ct));
+    if (world == null && AccountLogin.Enabled(app.Configuration)) return Results.StatusCode(403);
     if (!ok || world == null) return Results.BadRequest(new { error = err, code = err?.StartsWith("Sala lotada:", StringComparison.Ordinal) == true ? "ROOM_FULL" : "JOIN_REJECTED" });
 
     return Results.Ok(new
@@ -283,8 +386,9 @@ app.MapPost("/api/worlds/{worldId:guid}/join", async (
     });
 });
 
-app.MapPost("/api/worlds/join-by-code", async (
-    string inviteCode,
+var joinByCode = app.MapPost("/api/worlds/join-by-code", async (
+    string? inviteCode,
+    WorldInviteRequest? request,
     Guid coachId,
     string nickname,
     string? deviceId,
@@ -294,16 +398,17 @@ app.MapPost("/api/worlds/join-by-code", async (
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
-    var world = await repo.GetWorldByInviteCodeAsync(inviteCode, ct);
-    if (world == null) return Results.NotFound(new { error = $"Sala com código '{inviteCode}' não encontrada." });
-    if (AccountLogin.Enabled(app.Configuration)) {
-        var owned = (await http.RequestServices.GetRequiredService<AccountSessionService>().Profiles(AccountLogin.AccountId(http), ct)).Select(p => p.CoachId).ToHashSet();
-        if (world.HumanCoaches.Any(c => owned.Contains(c.Id)) && !world.HumanCoaches.Any(c => c.Id == coachId && owned.Contains(c.Id)))
-            return Results.Conflict(new { error = "Você já participa desta sala. Use RETOMAR MINHA SESSÃO com o perfil vinculado." });
-    }
+    var owned = await AccountCoaches(http, ct);
+    var code = owned != null ? request?.InviteCode : inviteCode;
+    if (string.IsNullOrWhiteSpace(code) || code.Length > 32) return Results.BadRequest(new { error = "Informe o código da sala." });
+    var world = await repo.GetWorldByInviteCodeAsync(code.Trim(), ct);
+    if (world == null || (owned != null && !string.Equals(world.InviteCode, code.Trim(), StringComparison.OrdinalIgnoreCase)))
+        return Results.NotFound(new { error = "Sala não encontrada para esse código." });
 
     var (ok, err, coach, updatedWorld) = await orchestrator.JoinWorldAndAssignClubAsync(
-        world.Id, coachId, nickname, deviceId ?? "dev", preferredClubId, false, ct, allowDeviceReconnect: string.Equals(authMode, "LocalDev", StringComparison.OrdinalIgnoreCase));
+        world.Id, coachId, nickname, deviceId ?? "dev", owned != null ? request?.PreferredClubId : preferredClubId, request?.JoinUnemployed ?? false, ct,
+        allowDeviceReconnect: authMode == "LocalDev", accountCoaches: owned, inviteCode: code);
+    if (updatedWorld == null && owned != null) return Results.StatusCode(403);
     if (!ok || updatedWorld == null) return Results.BadRequest(new { error = err, code = err?.StartsWith("Sala lotada:", StringComparison.Ordinal) == true ? "ROOM_FULL" : "JOIN_REJECTED" });
 
     return Results.Ok(new
@@ -316,8 +421,36 @@ app.MapPost("/api/worlds/join-by-code", async (
         snapshot = await RoomSnapshot(updatedWorld, ct)
     });
 });
+if (AccountLogin.Enabled(app.Configuration)) joinByCode.RequireRateLimiting("world-invite");
 
-app.MapGet("/api/worlds/{worldId:guid}/snapshot", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
+var invitePreview = app.MapPost("/api/worlds/invite-preview", async (WorldInviteRequest request, IWorldRepository repo, CancellationToken ct) =>
+{
+    if (!AccountLogin.Enabled(app.Configuration)) return Results.NotFound();
+    if (string.IsNullOrWhiteSpace(request.InviteCode) || request.InviteCode.Length > 32) return Results.BadRequest();
+    string code = request.InviteCode.Trim();
+    var world = await repo.GetWorldByInviteCodeAsync(code, ct);
+    if (world == null || !string.Equals(world.InviteCode, code, StringComparison.OrdinalIgnoreCase))
+        return Results.NotFound(new { error = "Sala não encontrada para esse código." });
+    var gate = MultiplayerRoundOrchestrator.GetRoomLock(world.Id);
+    await gate.WaitAsync(ct);
+    try
+    {
+        if (world.RoundCheckpointNeedsSave || world.PendingWorldDataChange != null)
+            throw new RoundCheckpointPendingException();
+        return Results.Ok(new
+        {
+            hasInitialLobby = world.InitialLobby is { StartedAt: null },
+            clubs = world.Clubs.Where(c => c.DivisionTier != DivisionTier.Distrital && c.HumanCoachId == null)
+                .Select(c => new { c.Id, c.Name, c.ShortName, c.DivisionTier, DivisionDisplay = c.DivisionTier.ToDisplayPt(), c.ColorPalette, c.PrimaryColorHex, c.SecondaryColorHex })
+                .ToArray()
+        });
+    }
+    finally { gate.Release(); }
+});
+if (AccountLogin.Enabled(app.Configuration)) invitePreview.RequireRateLimiting("world-invite");
+
+app.MapGet("/api/worlds/{worldId:guid}/snapshot", async (Guid worldId, Guid? epoch, long? sequence, long? version,
+    IWorldRepository repo, RoundStream stream, CancellationToken ct) =>
 {
     var gate = MultiplayerRoundOrchestrator.GetRoomLock(worldId);
     await gate.WaitAsync(ct);
@@ -325,23 +458,30 @@ app.MapGet("/api/worlds/{worldId:guid}/snapshot", async (Guid worldId, IWorldRep
     {
         var world = await repo.GetWorldAsync(worldId, ct);
         if (world == null) return Results.NotFound();
-        return Results.Ok(roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world)));
+        if (version == world.RoundVersion && stream.IsCurrent(worldId, epoch, sequence))
+            return Results.NoContent();
+        return Results.Ok(stream.Stamp(roomConnections.WithPresence(MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world))));
     }
     finally { gate.Release(); }
 });
 
-app.MapGet("/api/worlds/{worldId:guid}/calendar", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
+app.MapGet("/api/worlds/{worldId:guid}/calendar", async (Guid worldId, PlayerRankingsApplicationService queries, CancellationToken ct) =>
 {
-    var w = await repo.GetWorldAsync(worldId, ct);
-    if (w == null) return Results.NotFound();
-    var clubs = w.Clubs.ToDictionary(c => c.Id);
-    var schedule = CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(w);
-    return Results.Ok(schedule.Select((type, i) => new {
-        roundNumber = i + 1, competition = type.ToString(),
-        fixtures = w.Fixtures.Where(f => f.SeasonNumber == w.SeasonNumber && f.RoundNumber == i + 1)
-            .Select(f => new { f.Id, home = clubs[f.HomeClubId].Name, away = clubs[f.AwayClubId].Name,
-                f.HomeGoals, f.AwayGoals, f.IsFinished, f.HomeClubId, f.AwayClubId })
-    }));
+    var calendar = await queries.ReadWorldAsync(worldId, world =>
+    {
+        var clubs = world.Clubs.ToDictionary(c => c.Id);
+        var fixtures = world.Fixtures.Where(f => f.SeasonNumber == world.SeasonNumber).ToLookup(f => f.RoundNumber);
+        return CompetitionAndSeasonEngine.BuildSeasonRoundSchedule(world).Select((type, i) => new
+        {
+            roundNumber = i + 1, competition = type.ToString(),
+            fixtures = fixtures[i + 1].Select(f => new
+            {
+                f.Id, home = clubs[f.HomeClubId].Name, away = clubs[f.AwayClubId].Name,
+                f.HomeGoals, f.AwayGoals, f.IsFinished, f.HomeClubId, f.AwayClubId
+            }).ToArray()
+        }).ToArray();
+    }, ct);
+    return calendar == null ? Results.NotFound() : Results.Ok(calendar);
 });
 
 app.MapPost("/api/worlds/{worldId:guid}/editor/update-club", async (
@@ -471,6 +611,8 @@ app.MapPost("/api/worlds/{worldId:guid}/continue", async (
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
+    if (authMode == AccountLogin.CommercialMode && (cmd.PauseWindowId is null || string.IsNullOrWhiteSpace(cmd.IdempotencyKey)))
+        return Results.BadRequest(new { error = "Informe a pausa e a chave da operação." });
     var (ok, err, resumed, snapshot) = await orchestrator.ConfirmContinueMatchAsync(cmd with { GameWorldId = worldId }, ct);
     if (!ok) return Results.BadRequest(new { error = err, snapshot });
     return Results.Ok(new { resumed, snapshot });
@@ -500,6 +642,8 @@ app.MapPost("/api/worlds/{worldId:guid}/next-round", async (
     MultiplayerRoundOrchestrator orchestrator,
     CancellationToken ct) =>
 {
+    if (AccountLogin.Enabled(app.Configuration) && (expectedSeasonNumber is not > 0 || expectedRoundNumber is not > 0))
+        return Results.BadRequest(new { error = "Informe a temporada e a rodada esperadas." });
     try
     {
         var snap = await orchestrator.AdvanceToNextRoundPreparationAsync(worldId, ct, expectedSeasonNumber, expectedRoundNumber);
@@ -515,16 +659,14 @@ app.MapPost("/api/worlds/{worldId:guid}/next-round", async (
 app.MapGet("/api/worlds/{worldId:guid}/clubs", async (
     Guid worldId,
     DivisionTier? tier,
-    IWorldRepository repo,
+    PlayerRankingsApplicationService queries,
     CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-
+    var clubs = await queries.ReadWorldAsync(worldId, world => {
     var aiDict = world.AiManagers.ToDictionary(m => m.Id);
     var humanDict = world.HumanCoaches.ToDictionary(h => h.Id);
 
-    var clubs = world.Clubs
+    return world.Clubs
         .Where(c => tier == null || c.DivisionTier == tier.Value)
         .OrderBy(c => c.DivisionTier)
         .ThenBy(c => c.DeterministicIndex)
@@ -548,9 +690,9 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs", async (
             StadiumName = c.Stadium.Name,
             c.Stadium.BuiltCapacity,
             c.Stadium.UsableCapacity
-        });
-
-    return Results.Ok(clubs);
+        }).ToArray();
+    }, ct);
+    return clubs == null ? Results.NotFound() : Results.Ok(clubs);
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}", async (
@@ -559,19 +701,25 @@ app.MapGet("/api/worlds/{worldId:guid}/clubs/{clubId:guid}", async (
     ClubAndMarketApplicationService service,
     CancellationToken ct) =>
 {
-    var dto = await service.GetClubDetailAsync(worldId, clubId, ct);
-    return dto == null ? Results.NotFound() : Results.Ok(dto);
+    var gate = MultiplayerRoundOrchestrator.GetRoomLock(worldId);
+    await gate.WaitAsync(ct);
+    try
+    {
+        var dto = await service.GetClubDetailAsync(worldId, clubId, ct);
+        return dto == null ? Results.NotFound() : Results.Ok(dto);
+    }
+    finally { gate.Release(); }
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/standings/{tier}", async (
     Guid worldId,
     DivisionTier tier,
-    IWorldRepository repo,
+    PlayerRankingsApplicationService queries,
     CancellationToken ct) =>
 {
-    var world = await repo.GetWorldAsync(worldId, ct);
-    if (world == null) return Results.NotFound();
-    return Results.Ok(CompetitionAndSeasonEngine.GetDivisionStandings(world, tier));
+    var standings = await queries.ReadWorldAsync(worldId,
+        world => CompetitionAndSeasonEngine.GetDivisionStandings(world, tier), ct);
+    return standings == null ? Results.NotFound() : Results.Ok(standings);
 });
 
 app.MapGet("/api/worlds/{worldId:guid}/cup", async (Guid worldId, IWorldRepository repo, CancellationToken ct) =>
@@ -983,6 +1131,7 @@ app.MapPost("/api/worlds/editor/import-package", async (
     WorldPackageExportDto package,
     string? newWorldName,
     IWorldRepository repo,
+    HttpContext http,
     CancellationToken ct) =>
 {
     var (newWorld, validation) = WorldEditorAndPackageService.CreateWorldFromPackage(
@@ -991,6 +1140,9 @@ app.MapPost("/api/worlds/editor/import-package", async (
     if (!validation.IsValid || newWorld == null)
         return Results.BadRequest(validation);
 
+    if (AccountLogin.Enabled(app.Configuration)) newWorld.OwnerCoachId = AccountLogin.CoachId(http);
+    if (authMode == AccountLogin.CommercialMode)
+        newWorld.InviteCode = Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(12));
     await repo.SaveWorldAsync(newWorld, ct);
     return Results.Ok(new
     {
@@ -1086,3 +1238,4 @@ app.MapPost("/api/worlds/{worldId:guid}/editor/update-manager", async (
 app.Run();
 
 public partial class Program { }
+internal sealed record WorldInviteRequest(string InviteCode, bool JoinUnemployed = false, Guid? PreferredClubId = null);

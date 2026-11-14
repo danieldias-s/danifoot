@@ -278,26 +278,61 @@ extension _AccountShell on _ElifootShellScreenState {
         ],
       ),
     );
-    if (code != null && code.isNotEmpty) {
-      await _reloadAccountWorlds();
-      final room = _worlds
-          .whereType<Map>()
-          .where(
-            (r) => '${r['inviteCode']}'.toUpperCase() == code.toUpperCase(),
-          )
-          .firstOrNull;
-      if (room == null) {
-        if (mounted) {
-          setState(
-            () => _statusBanner = 'Sala não encontrada para esse código.',
-          );
-        }
-      } else {
-        await _enterAccountRoom(Map<String, dynamic>.from(room));
-      }
-    }
     await Future<void>.delayed(const Duration(milliseconds: 300));
     controller.dispose();
+    if (code != null && code.isNotEmpty && mounted) {
+      try {
+        final preview = await widget.apiClient.previewAccountWorldInvite(code);
+        final choice = !mounted
+            ? null
+            : preview['hasInitialLobby'] == true
+            ? 'lobby'
+            : await showDialog<String>(
+                context: context,
+                builder: (ctx) => SimpleDialog(
+                  title: const Text('Como deseja entrar?'),
+                  children: [
+                    SimpleDialogOption(
+                      onPressed: () => Navigator.pop(ctx, 'club'),
+                      child: const Text('ASSUMIR CLUBE'),
+                    ),
+                    SimpleDialogOption(
+                      onPressed: () => Navigator.pop(ctx, 'unemployed'),
+                      child: const Text('COMEÇAR DESEMPREGADO'),
+                    ),
+                  ],
+                ),
+              );
+        if (choice != null && mounted) {
+          final club = choice == 'club'
+              ? await showDialog<String>(
+                  context: context,
+                  builder: (_) => ClubSelectionDialog(
+                    api: widget.apiClient,
+                    presentation: widget.presentation,
+                    clubs: (preview['clubs'] as List)
+                        .map((item) => Map<String, dynamic>.from(item as Map))
+                        .toList(),
+                  ),
+                )
+              : null;
+          if (!mounted || (choice == 'club' && club == null)) return;
+          final joined = await widget.apiClient.joinAccountWorldByCode(
+            code,
+            joinUnemployed: choice == 'unemployed',
+            preferredClubId: club,
+          );
+          if (mounted) {
+            await _joinSelectedWorld(
+              joined['worldId'].toString(),
+              joined: joined,
+            );
+          }
+        }
+      } catch (e) {
+        if (mounted) setState(() => _statusBanner = e.toString());
+      }
+    }
   }
 
   Future<void> _accountProfile() async {

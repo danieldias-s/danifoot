@@ -6,6 +6,8 @@ using Elifoot.Contracts;
 using Elifoot.Domain;
 using Elifoot.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Elifoot.Integration.Tests;
@@ -34,6 +36,8 @@ public class ManagerCareerV3Stage02DIntegrationTests
             b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             b.UseSetting("Elifoot:DisableBackgroundClock", "true");
             b.UseSetting("Accounts:MigrationAdminToken", "admin-migration-token-02d");
+            b.ConfigureServices(services => services.AddDataProtection().PersistKeysToFileSystem(
+                Directory.CreateDirectory(sqlitePath + ".keys")));
         });
 
     private static async Task<HttpClient> CreateCsrfAuthenticatedClientAsync(
@@ -87,6 +91,7 @@ public class ManagerCareerV3Stage02DIntegrationTests
         var repo = factory.Services.GetRequiredService<IWorldRepository>();
         var world = WorldSeedFactory.CreateSeededWorld("Mundo Conta 02D", 199801, inviteCode: "ACC02D");
         world.RoundNumber = 3;
+        world.OwnerCoachId = primaryCoachId;
         var initialClub = world.Clubs.First(c => c.DivisionTier == DivisionTier.QuartaDivisao);
         var nextClub = world.Clubs.First(c => c.DivisionTier == DivisionTier.SegundaDivisao);
         await repo.SaveWorldAsync(world);
@@ -188,10 +193,15 @@ public class ManagerCareerV3Stage02DIntegrationTests
         var joinRes = await client.PostAsync(
             $"/api/worlds/{world.Id}/join?coachId={coachId}&nickname=IdemCoach&deviceId=dev-idem&preferredClubId={clubA.Id}", null);
         joinRes.EnsureSuccessStatusCode();
+        Guid otherCoach = Guid.NewGuid();
+        using var joined = await client.PostAsync(
+            $"/api/worlds/{world.Id}/join?coachId={otherCoach}&nickname=Observer&joinUnemployed=true", null);
+        joined.EnsureSuccessStatusCode();
 
         var w = (await repo.GetWorldAsync(world.Id))!;
         var h = w.HumanCoaches.Single(c => c.Id == coachId);
         h.Career.Morale = 80;
+        w.HumanCoaches.Single(c => c.Id == otherCoach).Career.Morale = 20;
         foreach (var ai in w.AiManagers) ai.Career.Morale = 20;
         CoachCareerEngine.OpenVacancy(w, w.Clubs.Single(c => c.Id == clubB.Id));
         CoachCareerEngine.ProcessVacancies(w);
@@ -201,15 +211,29 @@ public class ManagerCareerV3Stage02DIntegrationTests
         Assert.NotNull(careerBefore);
         var invite = Assert.Single(careerBefore!.Invitations);
 
-        // First accept with idempotencyKey
-        var accept1 = await client.PostAsync(
-            $"/api/worlds/{world.Id}/invitations/{invite.InvitationId}/accept?coachId={coachId}&idempotencyKey=idem-accept-02d", null);
-        accept1.EnsureSuccessStatusCode();
-
-        // Second accept with the SAME idempotencyKey (network retry) -> 200 OK idempotent!
-        var accept2 = await client.PostAsync(
-            $"/api/worlds/{world.Id}/invitations/{invite.InvitationId}/accept?coachId={coachId}&idempotencyKey=idem-accept-02d", null);
-        accept2.EnsureSuccessStatusCode();
+        await using var hub = new HubConnectionBuilder().WithUrl("http://localhost/hubs/gameroom",
+            options => options.HttpMessageHandlerFactory = _ => factory.Server.CreateHandler()).Build();
+        var received = new TaskCompletionSource<WorldDataChange>(TaskCreationOptions.RunContinuationsAsynchronously);
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+        var ct = timeout.Token;
+        hub.On<WorldDataChange>("WorldDataChanged", change => { received.TrySetResult(change); });
+        await hub.StartAsync(ct);
+        await hub.InvokeAsync<LiveRoundSnapshotDto>("JoinRoomV2", world.Id, otherCoach, ct);
+        string Decide(Guid coach) =>
+            $"/api/worlds/{world.Id}/invitations/{invite.InvitationId}/accept?coachId={coach}&idempotencyKey=idem-accept-02d";
+        var version = w.RoundVersion;
+        var attempts = await Task.WhenAll(client.PostAsync(Decide(coachId), null, ct),
+            client.PostAsync(Decide(otherCoach), null, ct), client.PostAsync(Decide(coachId), null, ct));
+        using var accept = attempts[0];
+        using var foreign = attempts[1];
+        using var replay = attempts[2];
+        accept.EnsureSuccessStatusCode();
+        replay.EnsureSuccessStatusCode();
+        Assert.Equal(HttpStatusCode.BadRequest, foreign.StatusCode);
+        Assert.Equal(version + 1, w.RoundVersion);
+        var change = await received.Task.WaitAsync(ct);
+        Assert.Equal(w.RoundVersion, change.Version);
+        Assert.Contains("participants", change.Areas);
 
         // Simulate server restart by clearing EfWorldRepository cache and reloading from SQLite
         EfWorldRepository.ClearCacheForTesting();

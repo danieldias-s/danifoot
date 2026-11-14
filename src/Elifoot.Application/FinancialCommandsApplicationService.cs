@@ -13,8 +13,9 @@ public sealed partial class ClubAndMarketApplicationService
         var gate=MultiplayerRoundOrchestrator.GetLock(worldId);await gate.WaitAsync(ct);
         try
         {
-            var w=await _repository.GetWorldAsync(worldId,ct);
+            var w=await _repository.GetWorldForRoundCheckpointAsync(worldId,ct);
             if(w==null)return fail("Sala não encontrada.");
+            if (w.RoundCheckpointNeedsSave) throw new RoundCheckpointPendingException();
             ClassicEconomyEngine.EnsureMigrated(w);
             var coach=w.HumanCoaches.FirstOrDefault(h=>h.Id==coachId);
             var c=w.Clubs.FirstOrDefault(c=>c.Id==coach?.CurrentClubId&&c.HumanCoachId==coachId);
@@ -24,10 +25,10 @@ public sealed partial class ClubAndMarketApplicationService
             if(w.Economy.Commands.TryGetValue(receiptKey,out var receipt)&&receipt.ResultJson!=null)
             {
                 if(receipt.Operation!="APP:"+operation||receipt.Payload!=payload)return fail("Chave usada por outra operação.");
-                // Also retry durability if the original save failed after the in-memory mutation.
-                await _repository.SaveWorldAsync(w,CancellationToken.None);
+                await FlushWorldDataChange(w);
                 return JsonSerializer.Deserialize<T>(receipt.ResultJson,CommandJson)!;
             }
+            await FlushWorldDataChange(w);
             bool salaryDecision = operation == "SALARY";
             if (!(salaryDecision ? ClassicEconomyEngine.CanRespondSalary(w) : ClassicEconomyEngine.Safe(w)))
                 return fail("Operações financeiras disponíveis somente entre partidas.");
@@ -49,16 +50,48 @@ public sealed partial class ClubAndMarketApplicationService
                     && w.HumanCoaches.All(h => h.IsReadyForRound || h.IsAutoMode);
                 bool started = checkReady && MultiplayerRoundOrchestrator.CheckAndStartRoundIfAllReadyInternal(w);
                 // Once accepted under the room lock, a disconnected client cannot cancel durability.
-                await _repository.SaveWorldAsync(w,CancellationToken.None);
-                if (started)
-                    await _publisher.PublishRoundStateChangedAsync(w.Id, MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(w), ct);
-                if (checkReady)
-                    await _publisher.PublishReadyCounterUpdatedAsync(w.Id, MultiplayerRoundOrchestrator.BuildReadyCounterDto(w), ct);
-                await _publisher.PublishMarketUpdatedAsync(w.Id,"Finanças atualizadas.",ct);
+                bool acceptedOffer = tuple.Length > 2 && tuple[2] is TransferOfferDto { Status: TransferOfferStatus.Accepted };
+                await SaveWorldDataChange(w, FinancialAreas(operation, acceptedOffer), started, checkReady);
             }
             return result;
         }
         finally{gate.Release();}
+    }
+
+    private static string[] FinancialAreas(string operation, bool acceptedOffer) => operation switch
+    {
+        "LIST" or "UNLIST" or "CREATE_VOLUNTARY_AUCTION" => ["market", "squad"],
+        "OFFER" when !acceptedOffer => ["market"],
+        "COUNTER_OFFER" => ["market"],
+        "BUY" or "OFFER" or "OFFER_DECISION" => ["market", "squad", "finances", "clubs", "invites"],
+        "BID" => ["market", "finances"],
+        "SALARY" or "RENEW" or "RENEWAL_NEGOTIATION" => ["market", "squad", "finances"],
+        _ => ["squad", "finances", "clubs", "invites"]
+    };
+
+    private Task SaveWorldDataChange(GameWorld world, string[] areas, bool roundChanged = false, bool readinessChanged = false)
+    {
+        world.PendingWorldDataChange = new(world.Id, world.RoundVersion, world.SeasonNumber,
+            world.RoundNumber, world.RoundState, areas);
+        world.PendingWorldDataRoundChanged = roundChanged || areas.Contains("participants");
+        world.PendingWorldDataReadinessChanged = readinessChanged;
+        return FlushWorldDataChange(world);
+    }
+
+    private Task FlushWorldDataChange(GameWorld world) => ConfirmWorldDataChangeAsync(world, _repository, _publisher);
+
+    internal static async Task ConfirmWorldDataChangeAsync(GameWorld world, IWorldRepository repository,
+        IMatchRoomNotificationPublisher publisher)
+    {
+        if (world.PendingWorldDataChange is not { } pending) return;
+        world.RequiresDurableMatchInteractionSave = true;
+        await repository.SaveWorldAsync(world, CancellationToken.None);
+        world.PendingWorldDataChange = null;
+        await publisher.PublishWorldDataChangedAsync(pending, CancellationToken.None);
+        if (world.PendingWorldDataRoundChanged)
+            await publisher.PublishRoundStateChangedAsync(world.Id, MultiplayerRoundOrchestrator.BuildLiveRoundSnapshotDto(world), CancellationToken.None);
+        if (world.PendingWorldDataReadinessChanged)
+            await publisher.PublishReadyCounterUpdatedAsync(world.Id, MultiplayerRoundOrchestrator.BuildReadyCounterDto(world), CancellationToken.None);
     }
     public Task<(bool Success,string? Error)> ListPlayerForTransferAsync(Guid worldId,Guid coachId,Guid playerId,decimal askingPrice,CancellationToken ct=default,string? idempotencyKey=null,long? expectedRoundVersion=null)
         =>Finance(worldId,coachId,"LIST",$"{playerId}:{askingPrice}",idempotencyKey,expectedRoundVersion,e=>(false,e),k=>ListPlayerForTransferCoreAsync(worldId,coachId,playerId,askingPrice,ct),ct);

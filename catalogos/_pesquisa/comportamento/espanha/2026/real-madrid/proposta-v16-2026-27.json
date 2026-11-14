@@ -1,0 +1,851 @@
+{
+  "application": "REVIEW_REQUIRED_NO_AUTOMATIC_WORLD_OR_CATALOG_WRITE",
+  "config": {
+    "minimumMinutes": 900,
+    "targets": {
+      "D1_D2": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "D3_D4": [
+        15,
+        15,
+        20,
+        25,
+        15,
+        10
+      ],
+      "DISTRICT": [
+        10,
+        10,
+        15,
+        30,
+        20,
+        15
+      ]
+    },
+    "version": "discipline-gameplay-1.6-experimental",
+    "weights": {
+      "fouls": 1,
+      "redCards": 5,
+      "yellowCards": 2
+    }
+  },
+  "results": [
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 5,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 990,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.0,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "real-madrid-2026-001",
+      "position": "G",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 90,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-002",
+      "position": "G",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 8,
+        "minutes": 862,
+        "redCards": 1,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-003",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 3,
+      "historicalStatistics": {
+        "fouls": 13,
+        "minutes": 990,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": 1.7272727272727273,
+      "initialDivision": 1,
+      "percentile": 0.75,
+      "playerCatalogId": "real-madrid-2026-004",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 5,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-005",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 356,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-006",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 12,
+        "minutes": 835,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-007",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 1,
+        "minutes": 246,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-008",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 2,
+        "minutes": 306,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-009",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 1,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 8,
+        "minutes": 957,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": 1.1285266457680252,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "real-madrid-2026-010",
+      "position": "M",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 5,
+        "minutes": 294,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-011",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 5,
+        "minutes": 891,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-012",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 4,
+        "minutes": 628,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-013",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 6,
+        "minutes": 744,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-014",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 9,
+        "minutes": 544,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-015",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 7,
+        "minutes": 585,
+        "redCards": 1,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-016",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 84,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-017",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 2,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 1,
+      "historicalStatistics": {
+        "fouls": 9,
+        "minutes": 1073,
+        "redCards": 0,
+        "yellowCards": 3
+      },
+      "index": 1.2581547064305685,
+      "initialDivision": 1,
+      "percentile": 0.25,
+      "playerCatalogId": "real-madrid-2026-018",
+      "position": "A",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
+        "redCards": null,
+        "yellowCards": null
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-019",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 149,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-020",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 11,
+        "minutes": 714,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-021",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 0,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-022",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 33,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "real-madrid-2026-023",
+      "position": "A",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 5,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 1080,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.0,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "reference-laliga-atm-13",
+      "position": "G",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 0,
+      "historicalStatistics": {
+        "fouls": 3,
+        "minutes": 933,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": 0.4823151125401929,
+      "initialDivision": 1,
+      "percentile": 0.08333333333333333,
+      "playerCatalogId": "reference-laliga-atm-17",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 7,
+        "minutes": 940,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.6702127659574468,
+      "initialDivision": 1,
+      "percentile": 0.4166666666666667,
+      "playerCatalogId": "reference-laliga-atm-22",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 5,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 945,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.0,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "reference-laliga-bar-1",
+      "position": "G",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 2,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 3,
+      "historicalStatistics": {
+        "fouls": 13,
+        "minutes": 995,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": 1.5376884422110553,
+      "initialDivision": 1,
+      "percentile": 0.75,
+      "playerCatalogId": "reference-laliga-bar-10",
+      "position": "A",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 5,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 1080,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.0,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "reference-laliga-bet-1",
+      "position": "G",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 1,
+      "historicalStatistics": {
+        "fouls": 2,
+        "minutes": 900,
+        "redCards": 0,
+        "yellowCards": 2
+      },
+      "index": 0.6000000000000001,
+      "initialDivision": 1,
+      "percentile": 0.25,
+      "playerCatalogId": "reference-laliga-bet-4",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 5,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 990,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": 0.0,
+      "initialDivision": 1,
+      "percentile": 0.5,
+      "playerCatalogId": "reference-laliga-rso-1",
+      "position": "G",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 4,
+      "historicalStatistics": {
+        "fouls": 13,
+        "minutes": 906,
+        "redCards": 1,
+        "yellowCards": 2
+      },
+      "index": 2.185430463576159,
+      "initialDivision": 1,
+      "percentile": 0.9166666666666666,
+      "playerCatalogId": "reference-laliga-rso-6",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "approximateTargets": [
+        20,
+        20,
+        25,
+        20,
+        10,
+        5
+      ],
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "cohortSize": 6,
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": 2,
+      "historicalStatistics": {
+        "fouls": 8,
+        "minutes": 990,
+        "redCards": 0,
+        "yellowCards": 4
+      },
+      "index": 1.4545454545454546,
+      "initialDivision": 1,
+      "percentile": 0.5833333333333334,
+      "playerCatalogId": "reference-laliga-vil-12",
+      "position": "D",
+      "reason": "Proposta experimental por posição e grupo; não é fato histórico nem quota por clube.",
+      "status": "SUGERIDO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": null,
+        "minutes": 0,
+        "redCards": null,
+        "yellowCards": null
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "research-rma-2026-shirt-023",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 2,
+        "minutes": 447,
+        "redCards": 0,
+        "yellowCards": 1
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "research-rma-2026-shirt-024",
+      "position": "D",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    },
+    {
+      "baseBehavior": null,
+      "classification": "GAMEPLAY_ESTIMATE",
+      "comparisonGroup": "laliga-2026-27-rodada12-elites-fontes-conferidas",
+      "effectiveBehaviorProposal": null,
+      "historicalStatistics": {
+        "fouls": 0,
+        "minutes": 1,
+        "redCards": 0,
+        "yellowCards": 0
+      },
+      "index": null,
+      "initialDivision": 1,
+      "percentile": null,
+      "playerCatalogId": "research-rma-2026-shirt-027",
+      "position": "M",
+      "reason": "Dados ausentes ou menos de 900 minutos.",
+      "status": "REVISAO"
+    }
+  ],
+  "version": "discipline-gameplay-1.6-experimental"
+}

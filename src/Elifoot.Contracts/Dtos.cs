@@ -142,6 +142,9 @@ public record LiveRoundSnapshotDto(
     public int ForceRulesVersion { get; init; }
     public int DisciplineRulesVersion { get; init; }
     public DateOnly? GameDate { get; init; }
+    public long? PersistedRoundVersion { get; init; }
+    public Guid? RealtimeEpoch { get; init; }
+    public long? RealtimeSequence { get; init; }
 }
 
 public record LiveMatchSummaryDto(

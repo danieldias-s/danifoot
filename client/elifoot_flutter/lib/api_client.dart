@@ -5,6 +5,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'api_environment.dart';
 import 'account_http_client.dart';
 import 'account_transport.dart';
+import 'round_stream.dart';
 
 class ElifootApiClient {
   Future<Map<String, dynamic>> getClubHistory(
@@ -29,7 +30,9 @@ class ElifootApiClient {
   Timer? _pingTimer;
   Timer? _reconnectTimer;
   int _connectionGeneration = 0;
-  bool _polling = false;
+  int? _pollingGeneration;
+  final _realtimeActivity = Stopwatch();
+  Duration _lastReconciliation = Duration.zero;
   bool _signalRConnected = false;
   int _signalRMessagesReceived = 0;
 
@@ -37,7 +40,11 @@ class ElifootApiClient {
   int get signalRMessagesReceived => _signalRMessagesReceived;
 
   void Function(Map<String, dynamic> snapshot)? onSnapshotUpdated;
+  void Function(Map<String, dynamic> snapshot)? onRealtimeEpochChanged;
+  void Function()? onRoomDataReconciliation;
+  void Function(String worldId, int? version)? onRoundCheckpointPending;
   void Function(Map<String, dynamic> counter)? onReadyCounterUpdated;
+  void Function(Map<String, dynamic> change)? onWorldDataChanged;
   void Function(String message)? onNotification;
 
   ElifootApiClient({String? baseUrl, http.Client? httpClient})
@@ -334,6 +341,32 @@ class ElifootApiClient {
     return _decodeResponse(res);
   }
 
+  Future<Map<String, dynamic>> joinAccountWorldByCode(
+    String code, {
+    required bool joinUnemployed,
+    String? preferredClubId,
+  }) async {
+    final res = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/join-by-code'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'inviteCode': code,
+        'joinUnemployed': joinUnemployed,
+        'preferredClubId': preferredClubId,
+      }),
+    );
+    return _decodeResponse(res);
+  }
+
+  Future<Map<String, dynamic>> previewAccountWorldInvite(String code) async {
+    final res = await _http.post(
+      Uri.parse('$baseUrl/api/worlds/invite-preview'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'inviteCode': code}),
+    );
+    return _decodeResponse(res);
+  }
+
   Future<Map<String, dynamic>> getSnapshot(String worldId) async {
     final res = await _http.get(
       Uri.parse('$baseUrl/api/worlds/$worldId/snapshot'),
@@ -556,7 +589,9 @@ class ElifootApiClient {
         'Não foi possível confirmar a retomada agora. Aguarde e tente continuar novamente.',
       );
     }
-    if (_pendingContinueKeys[target] == key) _pendingContinueKeys.remove(target);
+    if (_pendingContinueKeys[target] == key) {
+      _pendingContinueKeys.remove(target);
+    }
     return _decodeResponse(res);
   }
 
@@ -1217,16 +1252,105 @@ class ElifootApiClient {
   /// Connects to the SignalR Hub via WebSocket JSON protocol (`\x1e` delimiter)
   /// with automatic snapshot reconciliation.
   void connectRealtimeRoom(String worldId, String coachId) {
+    _connectRealtimeRoom(worldId, coachId, RoundStream(worldId));
+  }
+
+  void _connectRealtimeRoom(
+    String worldId,
+    String coachId,
+    RoundStream stream,
+  ) {
     disconnectRealtime();
     _roomCoachId = coachId;
     final generation = _connectionGeneration;
+    _realtimeActivity
+      ..reset()
+      ..start();
+    _lastReconciliation = Duration.zero;
+    final connectionAge = Stopwatch()..start();
+    var lastFullCheck = Duration.zero;
+    var waitingForBase = false;
+    var legacyJoin = false;
+    var reconnectScheduled = false;
+    num? knownDataVersion = stream.snapshot?['roundVersion'] as num?;
+
+    void acceptFull(Map<String, dynamic> snap) {
+      final previousEpoch = stream.snapshot?['realtimeEpoch'];
+      if (!stream.acceptFull(snap)) return;
+      final version = snap['roundVersion'] as num?;
+      if (version != null &&
+          (previousEpoch != snap['realtimeEpoch'] ||
+              version > (knownDataVersion ?? -1))) {
+        knownDataVersion = version;
+      }
+      waitingForBase = false;
+      final epoch = snap['realtimeEpoch'];
+      if (previousEpoch != null &&
+          epoch != null &&
+          previousEpoch != epoch &&
+          onRealtimeEpochChanged != null) {
+        onRealtimeEpochChanged!(snap);
+      } else {
+        onSnapshotUpdated?.call(snap);
+      }
+    }
+
+    Future<void> reconcile({bool full = false}) async {
+      if (generation != _connectionGeneration ||
+          _pollingGeneration == generation) {
+        return;
+      }
+      _pollingGeneration = generation;
+      _lastReconciliation = connectionAge.elapsed;
+      final snapshot = stream.snapshot;
+      try {
+        final uri = Uri.parse('$baseUrl/api/worlds/$worldId/snapshot');
+        final response = await _http
+            .get(
+              !full && snapshot?['realtimeEpoch'] != null
+                  ? uri.replace(
+                      queryParameters: {
+                        'epoch': '${snapshot!['realtimeEpoch']}',
+                        'sequence': '${snapshot['realtimeSequence']}',
+                        'version': '${snapshot['roundVersion']}',
+                      },
+                    )
+                  : uri,
+            )
+            .timeout(const Duration(seconds: 5));
+        if (generation != _connectionGeneration || response.statusCode == 204) {
+          return;
+        }
+        if (response.statusCode == 401 || response.statusCode == 403) {
+          disconnectRealtime();
+          onNotification?.call('A sessão já não tem acesso a esta sala.');
+          return;
+        }
+        acceptFull(_decodeResponse(response));
+        if (full) {
+          lastFullCheck = connectionAge.elapsed;
+          onRoomDataReconciliation?.call();
+        }
+      } on _RoundCheckpointPending {
+        if (generation == _connectionGeneration) {
+          onRoundCheckpointPending?.call(worldId, null);
+        }
+      } catch (_) {
+        // The watchdog retries while the room is open.
+      } finally {
+        if (_pollingGeneration == generation) _pollingGeneration = null;
+      }
+    }
+
     void reconnect() {
       if (generation != _connectionGeneration) return;
       _signalRConnected = false;
+      if (reconnectScheduled) return;
+      reconnectScheduled = true;
       _reconnectTimer?.cancel();
       _reconnectTimer = Timer(const Duration(seconds: 2), () {
         if (generation == _connectionGeneration) {
-          connectRealtimeRoom(worldId, coachId);
+          _connectRealtimeRoom(worldId, coachId, stream);
         }
       });
     }
@@ -1241,19 +1365,22 @@ class ElifootApiClient {
           : WebSocketChannel.connect(socketUri);
       // SignalR JSON v1 handshake
       _wsChannel!.sink.add('{"protocol":"json","version":1}\x1e');
-      // Invoke JoinRoom(worldId, coachId)
-      _wsChannel!.sink.add(
-        '${jsonEncode({
-          'type': 1,
-          'invocationId': 'join-1',
-          'target': 'JoinRoom',
-          'arguments': [worldId, coachId],
-        })}\x1e',
-      );
+      void join(String target, String invocation) {
+        _wsChannel!.sink.add(
+          '${jsonEncode({
+            'type': 1,
+            'invocationId': invocation,
+            'target': target,
+            'arguments': [worldId, coachId],
+          })}\x1e',
+        );
+      }
+
+      join('JoinRoomV2', 'join-v2');
 
       _wsSub = _wsChannel!.stream.listen(
         (raw) {
-          if (raw is! String) return;
+          if (generation != _connectionGeneration || raw is! String) return;
           final frames = raw.split('\x1e');
           for (final frame in frames) {
             if (frame.trim().isEmpty) continue;
@@ -1264,31 +1391,97 @@ class ElifootApiClient {
                 _signalRMessagesReceived++;
                 final target = msg['target'] as String?;
                 final args = msg['arguments'] as List<dynamic>? ?? const [];
-                if (target == 'ReadyCounterUpdated' && args.isNotEmpty) {
-                  onReadyCounterUpdated?.call(args[0] as Map<String, dynamic>);
-                } else if ((target == 'RoundStateChanged' ||
-                        target == 'ClockTick') &&
-                    args.isNotEmpty) {
-                  onSnapshotUpdated?.call(args[0] as Map<String, dynamic>);
-                } else if (target == 'GlobalPause' && args.isNotEmpty) {
-                  final payload = args[0] as Map<String, dynamic>;
-                  if (payload['snapshot'] != null) {
-                    onSnapshotUpdated?.call(
-                      payload['snapshot'] as Map<String, dynamic>,
-                    );
+                if (args.isEmpty || args[0] is! Map<String, dynamic>) continue;
+                final payload = args[0] as Map<String, dynamic>;
+                final eventWorld =
+                    payload['gameWorldId'] ??
+                    payload['worldId'] ??
+                    (payload['snapshot'] as Map?)?['gameWorldId'];
+                if (eventWorld != worldId) continue;
+                if (target == 'ReadyCounterUpdated') {
+                  onReadyCounterUpdated?.call(payload);
+                } else if (target == 'RoundPatchV2') {
+                  final previous = stream.snapshot;
+                  if (!stream.apply(payload)) {
+                    waitingForBase = true;
+                    unawaited(reconcile(full: true));
+                  } else if (!identical(previous, stream.snapshot)) {
+                    waitingForBase = false;
+                    _realtimeActivity.reset();
+                    onSnapshotUpdated?.call(stream.snapshot!);
                   }
-                } else if (target == 'MarketUpdated' && args.isNotEmpty) {
-                  final payload = args[0] as Map<String, dynamic>;
+                } else if (const {
+                  'RoundSyncV2',
+                  'RoundStateChanged',
+                  'ClockTick',
+                  'GlobalPause',
+                }.contains(target)) {
+                  final snap = target == 'GlobalPause'
+                      ? payload['snapshot']
+                      : payload;
+                  if (snap is Map<String, dynamic>) {
+                    _realtimeActivity.reset();
+                    acceptFull(snap);
+                  }
+                } else if (target == 'RoundCheckpointPending') {
+                  onRoundCheckpointPending?.call(
+                    worldId,
+                    (payload['version'] as num?)?.toInt(),
+                  );
+                } else if (target == 'WorldDataChanged') {
+                  onWorldDataChanged?.call(payload);
+                  final version = payload['version'];
+                  final baseVersion = stream.snapshot?['roundVersion'] as num?;
+                  final known = knownDataVersion ?? baseVersion;
+                  if (version is num) {
+                    final last =
+                        baseVersion != null && baseVersion > (known ?? -1)
+                        ? baseVersion
+                        : known;
+                    if (last == null || version > last + 1) {
+                      unawaited(reconcile(full: true));
+                    }
+                    if (version > (last ?? -1)) knownDataVersion = version;
+                  }
+                } else if (target == 'MarketUpdated' &&
+                    (legacyJoin || payload['scoped'] != true)) {
                   onNotification?.call(
                     payload['summaryMessage']?.toString() ??
                         'Mercado atualizado',
                   );
                 }
-              } else if (type == 3 && msg['result'] is Map<String, dynamic>) {
-                _signalRConnected = true;
-                onSnapshotUpdated?.call(msg['result'] as Map<String, dynamic>);
+              } else if (type == 3) {
+                final invocation = msg['invocationId'];
+                if (invocation != 'join-v2' && invocation != 'join-legacy') {
+                  continue;
+                }
+                final joined = msg['result'];
+                if (joined is Map<String, dynamic> &&
+                    joined['gameWorldId'] == worldId) {
+                  final hadBase = stream.snapshot != null;
+                  _signalRConnected = true;
+                  _realtimeActivity.reset();
+                  acceptFull(joined);
+                  if (hadBase) onRoomDataReconciliation?.call();
+                } else if (invocation == 'join-v2' &&
+                    msg['error'] != null &&
+                    !legacyJoin) {
+                  legacyJoin = true;
+                  join('JoinRoom', 'join-legacy');
+                } else if (joined == null && msg['error'] == null) {
+                  disconnectRealtime();
+                  onNotification?.call(
+                    'A sessão já não tem acesso a esta sala.',
+                  );
+                  return;
+                } else {
+                  reconnect();
+                }
               }
-            } catch (_) {}
+            } catch (_) {
+              waitingForBase = true;
+              unawaited(reconcile(full: true));
+            }
           }
         },
         onError: (_) => reconnect(),
@@ -1305,16 +1498,21 @@ class ElifootApiClient {
       reconnect();
     }
 
-    // Periodic snapshot reconciliation every 600ms so reconnections or missed frames heal automatically
-    _pollTimer = Timer.periodic(const Duration(milliseconds: 600), (_) async {
-      if (_polling) return;
-      _polling = true;
-      try {
-        final snap = await getSnapshot(worldId);
-        if (generation == _connectionGeneration) onSnapshotUpdated?.call(snap);
-      } catch (_) {
-      } finally {
-        _polling = false;
+    // Use SignalR during normal play and keep an HTTP watchdog for missed events.
+    _pollTimer = Timer.periodic(const Duration(milliseconds: 600), (_) {
+      if (!_signalRConnected &&
+          connectionAge.elapsed >= const Duration(seconds: 5)) {
+        reconnect();
+      }
+      final full =
+          waitingForBase ||
+          connectionAge.elapsed - lastFullCheck >= const Duration(seconds: 30);
+      if (full ||
+          !_signalRConnected ||
+          (_realtimeActivity.elapsed >= const Duration(seconds: 3) &&
+              connectionAge.elapsed - _lastReconciliation >=
+                  const Duration(seconds: 3))) {
+        unawaited(reconcile(full: full));
       }
     });
   }
@@ -1337,6 +1535,9 @@ class ElifootApiClient {
     if (res.statusCode >= 400) {
       try {
         final err = jsonDecode(res.body);
+        if (err is Map && err['code'] == 'ROUND_CHECKPOINT_PENDING') {
+          throw const _RoundCheckpointPending();
+        }
         if (err is Map && err['error'] != null) {
           throw Exception(err['error'].toString());
         }
@@ -1350,4 +1551,11 @@ class ElifootApiClient {
     if (res.body.isEmpty) return {};
     return jsonDecode(res.body) as Map<String, dynamic>;
   }
+}
+
+class _RoundCheckpointPending implements Exception {
+  const _RoundCheckpointPending();
+
+  @override
+  String toString() => 'O resultado ainda está sendo registrado.';
 }

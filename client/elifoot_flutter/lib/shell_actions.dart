@@ -1149,116 +1149,113 @@ extension _ShellActions on _ElifootShellScreenState {
               r['roundNumber'] == currentRound,
         )
         .toList();
-    return ListView(
+    return ListView.builder(
+      key: PageStorageKey('calendar-$_worldId-$_selectedCalendarFilter'),
       padding: const EdgeInsets.all(10),
-      children: [
-        const ClassicPageHeader(
-          title: 'CALENDÁRIO DA TEMPORADA E RESULTADOS',
-          icon: Icons.calendar_month,
-          subtitle:
-              'Veja o calendário completo da temporada e os resultados das partidas já disputadas.',
-        ),
-        const SizedBox(height: 10),
-        ClassicSelectionTabs(
-          key: const Key('calendar-filters'),
-          selected: _selectedCalendarFilter,
-          items: [
-            ('ALL', 'TODAS AS RODADAS'),
-            ('CURRENT', 'RODADA ATUAL (R$currentRound)'),
-            if (myClubName != null) ('MY_CLUB', 'MEU CLUBE'),
-          ],
-          onSelected: (value) =>
-              setState(() => _selectedCalendarFilter = value),
-        ),
-        const SizedBox(height: 10),
-        if (rounds.isEmpty)
-          const ClassicPaperPanel(
+      itemCount: 1 + (rounds.isEmpty ? 1 : rounds.length),
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const ClassicPageHeader(
+                title: 'CALENDÁRIO DA TEMPORADA E RESULTADOS',
+                icon: Icons.calendar_month,
+                subtitle:
+                    'Veja o calendário completo da temporada e os resultados das partidas já disputadas.',
+              ),
+              const SizedBox(height: 10),
+              ClassicSelectionTabs(
+                key: const Key('calendar-filters'),
+                selected: _selectedCalendarFilter,
+                items: [
+                  ('ALL', 'TODAS AS RODADAS'),
+                  ('CURRENT', 'RODADA ATUAL (R$currentRound)'),
+                  if (myClubName != null) ('MY_CLUB', 'MEU CLUBE'),
+                ],
+                onSelected: (value) =>
+                    setState(() => _selectedCalendarFilter = value),
+              ),
+              const SizedBox(height: 10),
+            ],
+          );
+        }
+        if (rounds.isEmpty) {
+          return const ClassicPaperPanel(
             child: Text('Calendário ainda não disponível.'),
-          ),
-        for (final r in rounds)
-          Builder(
-            builder: (context) {
-              final fixtures = (r['fixtures'] as List? ?? [])
-                  .where(
-                    (f) =>
-                        _selectedCalendarFilter != 'MY_CLUB' ||
-                        f['homeClubId'] == _myClubId ||
-                        f['awayClubId'] == _myClubId ||
-                        f['home'] == myClubName ||
-                        f['away'] == myClubName,
-                  )
-                  .toList();
-              final current = r['roundNumber'] == currentRound;
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 7),
-                child: ClassicPaperPanel(
-                  padding: EdgeInsets.zero,
-                  child: ExpansionTile(
-                    key: PageStorageKey(
-                      'calendar-$_selectedCalendarFilter-${r['roundNumber']}',
-                    ),
-                    initiallyExpanded:
-                        current || _selectedCalendarFilter != 'ALL',
-                    tilePadding: const EdgeInsets.symmetric(horizontal: 10),
-                    title: Text(
-                      'Rodada ${r['roundNumber']} • ${classicCompetition(r['competition'])}${current ? ' [ATUAL]' : ''}',
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
+          );
+        }
+        final r = rounds[index - 1];
+        final fixtures = (r['fixtures'] as List? ?? [])
+            .where(
+              (f) =>
+                  _selectedCalendarFilter != 'MY_CLUB' ||
+                  f['homeClubId'] == _myClubId ||
+                  f['awayClubId'] == _myClubId ||
+                  f['home'] == myClubName ||
+                  f['away'] == myClubName,
+            )
+            .toList();
+        final current = r['roundNumber'] == currentRound;
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 7),
+          child: ClassicPaperPanel(
+            padding: EdgeInsets.zero,
+            child: ExpansionTile(
+              key: PageStorageKey(
+                'calendar-$_selectedCalendarFilter-${r['roundNumber']}',
+              ),
+              initiallyExpanded: current || _selectedCalendarFilter != 'ALL',
+              tilePadding: const EdgeInsets.symmetric(horizontal: 10),
+              title: Text(
+                'Rodada ${r['roundNumber']} • ${classicCompetition(r['competition'])}${current ? ' [ATUAL]' : ''}',
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+              ),
+              backgroundColor: ClassicTheme.of(context).primary,
+              collapsedBackgroundColor: ClassicTheme.of(context).paper.surface,
+              textColor: current
+                  ? ClassicTheme.of(context).selectedBackground
+                  : ClassicTheme.of(context).textPrimary,
+              collapsedTextColor: ClassicTheme.of(context).paper.textPrimary,
+              iconColor: ClassicTheme.of(context).selectedBackground,
+              collapsedIconColor: ClassicTheme.of(context).paper.accent,
+              children: [
+                if (fixtures.isEmpty)
+                  ClassicPaper(
+                    builder: (_) => Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Text(
+                        _selectedCalendarFilter == 'MY_CLUB' &&
+                                (r['fixtures'] as List? ?? []).isNotEmpty
+                            ? 'Seu clube não disputa esta rodada.'
+                            : 'Confrontos definidos após a fase anterior da Taça.',
                       ),
                     ),
-                    backgroundColor: ClassicTheme.of(context).primary,
-                    collapsedBackgroundColor: ClassicTheme.of(
-                      context,
-                    ).paper.surface,
-                    textColor: current
-                        ? ClassicTheme.of(context).selectedBackground
-                        : ClassicTheme.of(context).textPrimary,
-                    collapsedTextColor: ClassicTheme.of(
-                      context,
-                    ).paper.textPrimary,
-                    iconColor: ClassicTheme.of(context).selectedBackground,
-                    collapsedIconColor: ClassicTheme.of(context).paper.accent,
-                    children: [
-                      if (fixtures.isEmpty)
-                        ClassicPaper(
-                          builder: (_) => Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: Text(
-                              _selectedCalendarFilter == 'MY_CLUB' &&
-                                      (r['fixtures'] as List? ?? []).isNotEmpty
-                                  ? 'Seu clube não disputa esta rodada.'
-                                  : 'Confrontos definidos após a fase anterior da Taça.',
-                            ),
-                          ),
-                        )
-                      else
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxHeight: MediaQuery.sizeOf(context).width < 700
-                                ? 280
-                                : 440,
-                          ),
-                          child: SingleChildScrollView(
-                            key: PageStorageKey(
-                              'calendar-fixtures-$_selectedCalendarFilter-${r['roundNumber']}',
-                            ),
-                            child: ClassicFixtureList(
-                              fixtures: fixtures,
-                              tableKey: 'calendar-round-${r['roundNumber']}',
-                              live: current && _matchLocked,
-                              palette: (id, name) =>
-                                  _teamPalette(id: id, name: name),
-                            ),
-                          ),
-                        ),
-                    ],
+                  )
+                else
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.sizeOf(context).width < 700
+                          ? 280
+                          : 440,
+                    ),
+                    child: SingleChildScrollView(
+                      key: PageStorageKey(
+                        'calendar-fixtures-$_selectedCalendarFilter-${r['roundNumber']}',
+                      ),
+                      child: ClassicFixtureList(
+                        fixtures: fixtures,
+                        tableKey: 'calendar-round-${r['roundNumber']}',
+                        live: current && _matchLocked,
+                        palette: (id, name) => _teamPalette(id: id, name: name),
+                      ),
+                    ),
                   ),
-                ),
-              );
-            },
+              ],
+            ),
           ),
-      ],
+        );
+      },
     );
   }
 }

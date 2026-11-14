@@ -452,11 +452,7 @@ extension _Classic98Shell on _ElifootShellScreenState {
     if (_matchLocked) return;
     if (page == 'bank' || page == 'stadium') _statusBanner = null;
     if (page == 'market') _marketPreferences.discovery = null;
-    _navigateToTab(index);
-    setState(() {
-      _classicPage = page;
-      _mobileTacticsView = page == 'tactics';
-    });
+    _navigateToTab(index, classicPage: page);
   }
 
   String _retroCondition(Map p) {
@@ -1158,13 +1154,16 @@ extension _Classic98Shell on _ElifootShellScreenState {
         };
     switch (page) {
       case 'squad':
-        return _retroHome(ctx, mobile);
+        return _whenRoomData({_RoomData.squad}, () => _retroHome(ctx, mobile));
       case 'tactics':
-        return _retroTactics();
+        return _whenRoomData({_RoomData.squad}, _retroTactics);
       case 'bench':
-        return _retroBench(mobile);
+        return _whenRoomData({_RoomData.squad}, () => _retroBench(mobile));
       case 'bank':
-        return _buildFinancesAndStadiumScreen();
+        return _whenRoomData({
+          _RoomData.finances,
+          _RoomData.squad,
+        }, _buildFinancesAndStadiumScreen);
       case 'player':
       case 'statistics':
       case 'contract':
@@ -1172,16 +1171,18 @@ extension _Classic98Shell on _ElifootShellScreenState {
       case 'standings':
         return _retroStandings(mobile);
       case 'coachRanking':
-        return _retroCoaches(mobile);
+        return _whenRoomData({_RoomData.ranking}, () => _retroCoaches(mobile));
       case 'profile':
         return _retroProfile();
       case 'career':
-        return _retroCareer();
+        return _whenRoomData({_RoomData.invites}, _retroCareer);
       case 'cup':
-        return _retroCup();
+        return _whenRoomData({_RoomData.cup}, _retroCup);
       case 'calendar':
       case 'results':
-        return _retroCalendar(page == 'results');
+        return _whenRoomData({
+          _RoomData.calendar,
+        }, () => _retroCalendar(page == 'results'));
       default:
         return _buildSharedScreenBody();
     }
@@ -1953,48 +1954,43 @@ extension _Classic98Shell on _ElifootShellScreenState {
                     ? ClassicColors.titleBarBlue
                     : ClassicColors.actionGreen,
                 label: '${d.$2} Divisão',
-                onPressed: () async {
-                  setState(() => _selectedDivisionTier = d.$1);
-                  final rows = await widget.apiClient.getStandings(
-                    _worldId!,
-                    d.$1,
-                  );
-                  if (mounted && _selectedDivisionTier == d.$1) {
-                    setState(() => _standings = rows);
-                  }
-                },
+                onPressed: () => _selectDivision(d.$1),
               ),
           ],
         ),
         const SizedBox(height: 10),
-        RetroTable(
-          selected: _standings.indexWhere(
-            (r) => r is Map && r['clubId'] == _myClubId,
-          ),
-          onSelect: _matchLocked
-              ? null
-              : (i) => _retroStandingDetails(_standings[i] as Map),
-          headers: mobile
-              ? ['#', 'CLUBE', 'PTS', 'J', 'SG']
-              : ['#', 'CLUBE', 'PTS', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'],
-          flex: mobile ? [1, 6, 1, 1, 1] : [1, 8, 1, 1, 1, 1, 1, 1, 1, 1],
-          rows: [
-            for (final r in _standings)
-              [
-                '${r['position']}',
-                '${r['clubName']}',
-                '${r['points']}',
-                '${r['played'] ?? r['playedMatches'] ?? '—'}',
-                if (!mobile) ...[
-                  '${r['wins']}',
-                  '${r['draws']}',
-                  '${r['losses']}',
-                  '${r['goalsFor']}',
-                  '${r['goalsAgainst']}',
+        _whenRoomData(
+          {_RoomData.standings},
+          () => RetroTable(
+            selected: _standings.indexWhere(
+              (r) => r is Map && r['clubId'] == _myClubId,
+            ),
+            onSelect: _matchLocked
+                ? null
+                : (i) => _retroStandingDetails(_standings[i] as Map),
+            headers: mobile
+                ? ['#', 'CLUBE', 'PTS', 'J', 'SG']
+                : ['#', 'CLUBE', 'PTS', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG'],
+            flex: mobile ? [1, 6, 1, 1, 1] : [1, 8, 1, 1, 1, 1, 1, 1, 1, 1],
+            rows: [
+              for (final r in _standings)
+                [
+                  '${r['position']}',
+                  '${r['clubName']}',
+                  '${r['points']}',
+                  '${r['played'] ?? r['playedMatches'] ?? '—'}',
+                  if (!mobile) ...[
+                    '${r['wins']}',
+                    '${r['draws']}',
+                    '${r['losses']}',
+                    '${r['goalsFor']}',
+                    '${r['goalsAgainst']}',
+                  ],
+                  '${r['goalDifference']}',
                 ],
-                '${r['goalDifference']}',
-              ],
-          ],
+            ],
+          ),
+          message: _holdingClassification ? 'Atualizando resultados...' : null,
         ),
         if (mobile)
           const Padding(

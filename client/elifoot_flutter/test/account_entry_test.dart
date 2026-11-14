@@ -40,6 +40,38 @@ Map<String, dynamic> room(String id, {bool mine = false, bool full = false}) =>
 
 void main() {
   test(
+    'Convite de conta usa POST com código no corpo e preserva o clube',
+    () async {
+      final paths = <String>[];
+      final api = ElifootApiClient(
+        baseUrl: 'http://localhost',
+        httpClient: MockClient((request) async {
+          paths.add(request.url.path);
+          expect(request.method, 'POST');
+          expect(request.url.query, isEmpty);
+          final body = jsonDecode(request.body) as Map<String, dynamic>;
+          expect(body['inviteCode'], 'PRIVATE-QA');
+          if (request.url.path.endsWith('/invite-preview')) {
+            return http.Response('{"clubs":[{"id":"club-1"}]}', 200);
+          }
+          expect(body['preferredClubId'], 'club-1');
+          expect(body['joinUnemployed'], false);
+          return http.Response('{"worldId":"room-1"}', 200);
+        }),
+      );
+      final preview = await api.previewAccountWorldInvite('PRIVATE-QA');
+      final club = preview['clubs'][0]['id'] as String;
+      final joined = await api.joinAccountWorldByCode(
+        'PRIVATE-QA',
+        joinUnemployed: false,
+        preferredClubId: club,
+      );
+      expect(joined['worldId'], 'room-1');
+      expect(paths, ['/api/worlds/invite-preview', '/api/worlds/join-by-code']);
+    },
+  );
+
+  test(
     'Falha de conexão no login informa indisponibilidade sem expor detalhes técnicos',
     () async {
       final api = ElifootApiClient(

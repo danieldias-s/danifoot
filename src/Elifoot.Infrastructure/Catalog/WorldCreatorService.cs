@@ -393,6 +393,7 @@ public sealed class WorldCreatorService(IServiceScopeFactory factory, CatalogSyn
                 if (CatalogRightsPolicy.WorldIssue(reference, DateTime.UtcNow, request.CatalogYears != null) is { } issue)
                     throw new ArgumentException(issue);
             var generated = WorldCreatorEngine.Create(request, preview);
+            generated.OwnerCoachId = owner;
             if(request.RequireHostStart||request.UseWorldCatalogRules)generated.InitialLobby=new(){HostCoachId=owner};
             generated.GameModeId=request.GameModeId;
             var json = JsonSerializer.Serialize(generated, CatalogImportCodec.Json);

@@ -13,6 +13,10 @@ public partial class GameWorld
     public Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; } = "Campeonato Brasileiro Clássico";
     public string InviteCode { get; set; } = "ELIF98";
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Guid? OwnerCoachId { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public Guid? CreatorCoachId => OwnerCoachId ?? InitialLobby?.HostCoachId;
     public int Seed { get; set; } = 199801;
     public int MaxHumans { get; set; } = 8;
     public int TotalClubs { get; set; } = 128;

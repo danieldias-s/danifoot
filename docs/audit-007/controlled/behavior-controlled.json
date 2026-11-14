@@ -2,7 +2,7 @@
   {
     "Behavior": "FairPlay",
     "Matches": 400,
-    "Minutes": 396000,
+    "Minutes": 393173,
     "Appearances": 4400,
     "Fouls": 0,
     "Yellows": 0,
@@ -14,9 +14,9 @@
   {
     "Behavior": "Cordeirinho",
     "Matches": 400,
-    "Minutes": 396000,
+    "Minutes": 392792,
     "Appearances": 4400,
-    "Fouls": 1253,
+    "Fouls": 1250,
     "Yellows": 172,
     "DirectReds": 0,
     "SecondYellowReds": 0,
@@ -26,49 +26,49 @@
   {
     "Behavior": "Cavalheiro",
     "Matches": 400,
-    "Minutes": 395656,
+    "Minutes": 392448,
     "Appearances": 4400,
-    "Fouls": 2590,
+    "Fouls": 2584,
     "Yellows": 339,
     "DirectReds": 4,
     "SecondYellowReds": 3,
     "SuspensionAwards": 7,
-    "RedsPer10000Minutes": 0.17692136603514164
+    "RedsPer10000Minutes": 0.1783675799086758
   },
   {
     "Behavior": "Caneleiro",
     "Matches": 400,
-    "Minutes": 394335,
+    "Minutes": 391147,
     "Appearances": 4400,
-    "Fouls": 4829,
-    "Yellows": 652,
+    "Fouls": 4825,
+    "Yellows": 650,
     "DirectReds": 23,
-    "SecondYellowReds": 13,
-    "SuspensionAwards": 36,
-    "RedsPer10000Minutes": 0.9129293620906083
+    "SecondYellowReds": 15,
+    "SuspensionAwards": 38,
+    "RedsPer10000Minutes": 0.9715017627643827
   },
   {
     "Behavior": "Caceteiro",
     "Matches": 400,
-    "Minutes": 391238,
+    "Minutes": 388094,
     "Appearances": 4400,
-    "Fouls": 7778,
-    "Yellows": 962,
+    "Fouls": 7771,
+    "Yellows": 958,
     "DirectReds": 68,
-    "SecondYellowReds": 50,
-    "SuspensionAwards": 118,
-    "RedsPer10000Minutes": 3.0160669464622556
+    "SecondYellowReds": 52,
+    "SuspensionAwards": 120,
+    "RedsPer10000Minutes": 3.0920344040361356
   },
   {
     "Behavior": "Sarrafeiro",
     "Matches": 400,
-    "Minutes": 386227,
+    "Minutes": 382967,
     "Appearances": 4400,
-    "Fouls": 11432,
-    "Yellows": 1339,
+    "Fouls": 11423,
+    "Yellows": 1334,
     "DirectReds": 148,
-    "SecondYellowReds": 101,
-    "SuspensionAwards": 249,
-    "RedsPer10000Minutes": 6.446985839933511
+    "SecondYellowReds": 105,
+    "SuspensionAwards": 253,
+    "RedsPer10000Minutes": 6.606313337702726
   }
 ]

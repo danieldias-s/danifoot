@@ -3,9 +3,20 @@ namespace Elifoot.Domain;
 
 public partial class GameWorld
 {
+    [System.Text.Json.Serialization.JsonIgnore]
+    public long? PersistedRoundVersion { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public WorldDataChange? PendingWorldDataChange { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool PendingWorldDataRoundChanged { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool PendingWorldDataReadinessChanged { get; set; }
     // Interaction decisions must be durable even between periodic live-clock checkpoints.
     [System.Text.Json.Serialization.JsonIgnore]
     public bool RequiresDurableMatchInteractionSave { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool RoundCheckpointNeedsSave { get; set; }
+    public Guid? RoundCheckpointId { get; set; }
     public Dictionary<string, MatchInteractionReceipt> MatchInteractionReceipts { get; set; } = new();
 }
 public sealed class MatchInteractionReceipt

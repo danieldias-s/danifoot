@@ -1,5 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using Elifoot.Api;
 using Elifoot.Application;
@@ -7,6 +9,7 @@ using Elifoot.Contracts;
 using Elifoot.Domain;
 using Elifoot.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -26,11 +29,11 @@ public sealed class AccountLoginTests
         using var second = fixture.Server.CreateClient();
         var coachA = (await Register(first, "salarios-a", "Treinador A")).GetProperty("coachId").GetGuid();
         var coachB = (await Register(second, "salarios-b", "Treinador B")).GetProperty("coachId").GetGuid();
-        var created = await Send(first, "/api/worlds", new CreateWorldRequest("Pedidos simultâneos", 2, 32));
+        var created = await Send(first, "/api/worlds", new CreateWorldRequest("Pedidos simultâneos", 2, 32, InviteCode: "SALARIOS-QA"));
         created.EnsureSuccessStatusCode();
         var worldId = (await created.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
         (await Send(first, $"/api/worlds/{worldId}/join")).EnsureSuccessStatusCode();
-        (await Send(second, $"/api/worlds/{worldId}/join")).EnsureSuccessStatusCode();
+        (await Send(second, "/api/worlds/join-by-code", new { inviteCode = "SALARIOS-QA" })).EnsureSuccessStatusCode();
         var repo = fixture.Server.Services.GetRequiredService<IWorldRepository>();
         var world = (await repo.GetWorldAsync(worldId))!;
         var clubA = world.Clubs.Single(c => c.HumanCoachId == coachA);
@@ -164,6 +167,130 @@ public sealed class AccountLoginTests
     }
     private const string Password = "Teste-local-98!";
 
+    [Stage1PostgreSqlFact]
+    public async Task CommercialAccountModeRequiresHttpsAndIssuesSecureCookies()
+    {
+        var baseConnection = Environment.GetEnvironmentVariable("ELIFOOT_STAGE1_PG")
+            ?? throw new InvalidOperationException("Configure ELIFOOT_STAGE1_PG com o cluster descartável da Etapa 1.");
+        var settings = new Npgsql.NpgsqlConnectionStringBuilder(baseConnection);
+        Assert.Equal("127.0.0.1", settings.Host);
+        Assert.True(settings.Port == 54987 && settings.Database!.StartsWith("stage1_", StringComparison.Ordinal) ||
+            settings.Port == 54983 && settings.Database!.StartsWith("audit_", StringComparison.Ordinal));
+        await using (var database = new ElifootDbContext(new DbContextOptionsBuilder<ElifootDbContext>()
+            .UseNpgsql(settings.ConnectionString).Options))
+        {
+            await database.Database.EnsureCreatedAsync();
+            await ProfileAppearanceStore.EnsureSchema(database);
+        }
+        using var keys = new TestKeyMaterial();
+        await using var server = new WebApplicationFactory<Program>().WithWebHostBuilder(b =>
+        {
+            b.UseEnvironment("Production");
+            b.UseSetting("Elifoot:AuthMode", "Account");
+            b.UseSetting("Elifoot:DatabaseProvider", "PostgreSQL");
+            b.UseSetting("ConnectionStrings:DefaultConnection", settings.ConnectionString);
+            b.UseSetting("Elifoot:DisableBackgroundClock", "true");
+            b.UseSetting("Catalog013A:Enabled", "false");
+            b.UseSetting("Accounts:AllowedOrigins:0", "https://localhost");
+            b.UseSetting("Accounts:KeyDirectory", keys.Path);
+            b.UseSetting("Accounts:KeyCertificate", keys.CertificatePath);
+            b.UseSetting("Accounts:KeyCertificatePemPrivateKey", keys.PrivateKeyPath);
+        });
+        using var https = server.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = new Uri("https://localhost") });
+        using var http = server.CreateClient();
+        Assert.Equal(HttpStatusCode.BadRequest, (await http.GetAsync("http://localhost/api/health")).StatusCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, (await https.GetAsync("/API/WORLDS/")).StatusCode);
+        using var registration = await Send(https, "/api/auth/register", new
+        {
+            username = $"audit-{Guid.NewGuid():N}", displayName = "Audit", password = Password
+        });
+        registration.EnsureSuccessStatusCode();
+        Assert.Contains(registration.Headers.GetValues("Set-Cookie"), cookie =>
+            cookie.StartsWith("lc98.account=") && cookie.Contains("secure", StringComparison.OrdinalIgnoreCase));
+        Assert.Equal("Account", (await https.GetFromJsonAsync<JsonElement>("/api/auth/session")).GetProperty("authMode").GetString());
+        Assert.Equal(HttpStatusCode.NotFound, (await Send(https, "/API/AUTH/LOCAL-LOGIN/", new { nickname = "audit" })).StatusCode);
+    }
+
+    private sealed class Stage1PostgreSqlFactAttribute : FactAttribute
+    {
+        public Stage1PostgreSqlFactAttribute()
+        {
+            if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ELIFOOT_STAGE1_PG")))
+                Skip = "Requer cluster PostgreSQL isolado da Etapa 1.";
+        }
+    }
+
+    private sealed class TestKeyMaterial : IDisposable
+    {
+        private readonly DirectoryInfo _directory = Directory.CreateTempSubdirectory("elifoot-account-cert-");
+        public string Path => _directory.FullName;
+        public string CertificatePath => System.IO.Path.Combine(Path, "audit.crt");
+        public string PrivateKeyPath => System.IO.Path.Combine(Path, "audit.key");
+
+        public TestKeyMaterial()
+        {
+            using var rsa = RSA.Create(2048);
+            var request = new CertificateRequest("CN=Elifoot isolated test", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+            using var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddDays(-1), DateTimeOffset.UtcNow.AddDays(1));
+            File.WriteAllText(CertificatePath, certificate.ExportCertificatePem());
+            File.WriteAllText(PrivateKeyPath, rsa.ExportPkcs8PrivateKeyPem());
+        }
+
+        public void Dispose() => _directory.Delete(recursive: true);
+    }
+
+    [Fact]
+    public async Task InviteAdmitsOnlyTheChosenWorldAndConcurrentReadinessSurvivesRestart()
+    {
+        await using var fixture = new Fixture();
+        using var host = fixture.Server.CreateClient();
+        using var guest = fixture.Server.CreateClient();
+        var hostId = (await Register(host, "private-host", "Host")).GetProperty("coachId").GetGuid();
+        var guestId = (await Register(guest, "private-guest", "Guest")).GetProperty("coachId").GetGuid();
+        async Task<Guid> Create(string code)
+        {
+            using var response = await Send(host, "/api/worlds", new CreateWorldRequest(code, 2, 64, InviteCode: code));
+            response.EnsureSuccessStatusCode();
+            return (await response.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
+        }
+        var worldId = await Create("PRIVATE-QA");
+        var other = await Create("OTHER-QA");
+        var route = $"/api/worlds/{worldId}";
+        Assert.Equal(0, (await guest.GetFromJsonAsync<JsonElement>("/api/worlds")).GetArrayLength());
+        Assert.Equal(HttpStatusCode.Unauthorized, (await fixture.Server.CreateClient().GetAsync("/API/WORLDS")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await guest.GetAsync(route + "/snapshot")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await Send(guest, route + "/join")).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await Send(guest, "/api/worlds/invite-preview", new { inviteCode = worldId.ToString("N") })).StatusCode);
+        (await Send(host, route + "/join?joinUnemployed=true")).EnsureSuccessStatusCode();
+        using var preview = await Send(guest, "/api/worlds/invite-preview", new { inviteCode = "private-qa" });
+        preview.EnsureSuccessStatusCode();
+        var view = await preview.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.False(view.TryGetProperty("readyCounter", out _));
+        (await Send(guest, "/api/worlds/join-by-code", new { inviteCode = "private-qa", joinUnemployed = true })).EnsureSuccessStatusCode();
+        Assert.Equal(1, (await guest.GetFromJsonAsync<JsonElement>("/api/worlds")).GetArrayLength());
+        Assert.Equal(HttpStatusCode.Forbidden, (await Send(guest, $"/api/worlds/{other}/next-round")).StatusCode);
+
+        var snapshot = (await host.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+        var hostReady = new UnemployedReadyRequest(worldId, hostId, "same-key", snapshot.RoundVersion);
+        var guestReady = hostReady with { CoachId = guestId };
+        var replies = await Task.WhenAll(Send(host, route + "/ready-unemployed", hostReady), Send(guest, route + "/ready-unemployed", guestReady));
+        Assert.All(replies, response => response.EnsureSuccessStatusCode());
+        var started = (await guest.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+        Assert.Equal(RoundState.RUNNING_FIRST_HALF, started.RoundState);
+        Assert.Equal(2, started.ReadyCounter.ReadyCount);
+
+        await fixture.Restart();
+        EfWorldRepository.ClearCacheForTesting();
+        using var reconnected = fixture.Server.CreateClient();
+        await Login(reconnected, "private-guest");
+        (await Send(reconnected, route + "/ready-unemployed", guestReady)).EnsureSuccessStatusCode();
+        var restored = (await reconnected.GetFromJsonAsync<LiveRoundSnapshotDto>(route + "/snapshot"))!;
+        Assert.Equal(started.RoundVersion, restored.RoundVersion);
+        Assert.Equal(started.RoundState, restored.RoundState);
+        Assert.Equal(HttpStatusCode.BadRequest,
+            (await Send(reconnected, route + "/ready-unemployed", guestReady with { ExpectedRoundVersion = started.RoundVersion })).StatusCode);
+    }
+
     [Fact]
     public async Task PersonalObservedPlayersPersistAfterRestartAndCannotBeReadOrChangedByAnotherAccount()
     {
@@ -172,11 +299,11 @@ public sealed class AccountLoginTests
         using var second = fixture.Server.CreateClient();
         var a = (await Register(first, "scout-a", "Scout A")).GetProperty("coachId").GetGuid();
         var b = (await Register(second, "scout-b", "Scout B")).GetProperty("coachId").GetGuid();
-        var create = await Send(first, "/api/worlds", new CreateWorldRequest("Scouting", MaxHumans: 2));
+        var create = await Send(first, "/api/worlds", new CreateWorldRequest("Scouting", MaxHumans: 2, InviteCode: "SCOUTING-QA"));
         create.EnsureSuccessStatusCode();
         var world = (await create.Content.ReadFromJsonAsync<LiveRoundSnapshotDto>())!.GameWorldId;
         (await Send(first, $"/api/worlds/{world}/join?joinUnemployed=true")).EnsureSuccessStatusCode();
-        (await Send(second, $"/api/worlds/{world}/join?joinUnemployed=true")).EnsureSuccessStatusCode();
+        (await Send(second, "/api/worlds/join-by-code", new { inviteCode = "SCOUTING-QA", joinUnemployed = true })).EnsureSuccessStatusCode();
         var repository = fixture.Server.Services.GetRequiredService<IWorldRepository>();
         var w = (await repository.GetWorldAsync(world))!;
         var player = w.Players[0].Id;
@@ -283,7 +410,7 @@ public sealed class AccountLoginTests
         Assert.Equal(HttpStatusCode.Forbidden, (await Send(stranger, $"/api/worlds/{world}/tactics", new { coachId = ownerId })).StatusCode);
         Assert.Equal(HttpStatusCode.Forbidden, (await stranger.GetAsync($"/api/worlds?accountId={owner.GetProperty("accountId").GetGuid()}")).StatusCode);
         Assert.Equal(HttpStatusCode.Forbidden, (await Send(stranger, "/api/auth/profile", new { coachId = ownerId })).StatusCode);
-        Assert.Equal(HttpStatusCode.BadRequest, (await Send(stranger, $"/api/worlds/{world}/join?coachId={otherId}&nickname=Visitante")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await Send(stranger, $"/api/worlds/{world}/join?coachId={otherId}&nickname=Visitante")).StatusCode);
         var snapshot = await second.GetFromJsonAsync<LiveRoundSnapshotDto>($"/api/worlds/{world}/snapshot"); Assert.Single(snapshot!.ReadyCounter.Participants);
         Assert.Equal("Proprietário", snapshot.ReadyCounter.Participants.Single().Nickname);
         (await Send(first, "/api/profile/appearance", new { mode = "CLASSIC_98" }, HttpMethod.Put)).EnsureSuccessStatusCode();
@@ -306,7 +433,8 @@ public sealed class AccountLoginTests
         }
         using var owner = fixture.Server.CreateClient(); using var stranger = fixture.Server.CreateClient();
         await Register(owner, "destinatario", "Mesmo Nome"); await Register(stranger, "terceiro", "Mesmo Nome");
-        var before = await owner.GetFromJsonAsync<JsonElement>($"/api/worlds?deviceId={legacyDevice}"); Assert.False(before.EnumerateArray().Single().GetProperty("accountOwnsSeat").GetBoolean());
+        var before = await owner.GetFromJsonAsync<JsonElement>($"/api/worlds?deviceId={legacyDevice}");
+        Assert.Equal(0, before.GetArrayLength());
         Assert.Equal(HttpStatusCode.Forbidden, (await Send(owner, $"/api/worlds/{world}/join?coachId={legacyCoach}&deviceId={legacyDevice}&nickname=Mesmo Nome")).StatusCode);
         Assert.Equal(HttpStatusCode.Forbidden, (await Send(owner, "/api/accounts/legacy-link-grants", new { username = "destinatario", coachId = legacyCoach, reason = "not approved" })).StatusCode);
         owner.DefaultRequestHeaders.Add("X-Account-Migration-Token", fixture.AdminToken);
@@ -357,9 +485,9 @@ public sealed class AccountLoginTests
             await hub.StartAsync(); return hub;
         }
         await using var one = await Connect(first, jar); await using var two = await Connect(second, secondJar);
-        Assert.NotNull(await one.InvokeAsync<LiveRoundSnapshotDto?>("JoinRoom", world, coach));
+        Assert.NotNull(await one.InvokeAsync<LiveRoundSnapshotDto?>("JoinRoomV2", world, coach));
         Assert.NotNull(await two.InvokeAsync<LiveRoundSnapshotDto?>("JoinRoom", world, coach));
-        await Assert.ThrowsAsync<Microsoft.AspNetCore.SignalR.HubException>(() => one.InvokeAsync<LiveRoundSnapshotDto?>("JoinRoom", world, foreign.GetProperty("coachId").GetGuid()));
+        await Assert.ThrowsAsync<Microsoft.AspNetCore.SignalR.HubException>(() => one.InvokeAsync<LiveRoundSnapshotDto?>("JoinRoomV2", world, foreign.GetProperty("coachId").GetGuid()));
         var shared = await first.GetFromJsonAsync<LiveRoundSnapshotDto>($"/api/worlds/{world}/snapshot");
         Assert.Single(shared!.ReadyCounter.Participants); Assert.True(shared.ReadyCounter.Participants.Single().IsConnected);
         var closed = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously); one.Closed += _ => { closed.TrySetResult(); return Task.CompletedTask; };
@@ -424,6 +552,7 @@ public sealed class AccountLoginTests
     private sealed class Fixture : IAsyncDisposable
     {
         private readonly string _file = Path.Combine(Path.GetTempPath(), $"elifoot-account-{Guid.NewGuid():N}.db");
+        private readonly DirectoryInfo _keys = Directory.CreateTempSubdirectory("elifoot-account-keys-");
         public string AdminToken { get; } = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
         public WebApplicationFactory<Program> Server { get; private set; }
         public Fixture() => Server = Start();
@@ -433,8 +562,9 @@ public sealed class AccountLoginTests
             b.UseSetting("ConnectionStrings:DefaultConnection", $"Data Source={_file};Pooling=False"); b.UseSetting("Elifoot:AutoSeedDefaultWorld", "false");
             b.UseSetting("Elifoot:DisableBackgroundClock", "true"); b.UseSetting("Catalog013A:Enabled", "false"); b.UseSetting("Catalog016A:Enabled", "false"); b.UseSetting("Catalog016B:Enabled", "false");
             b.UseSetting("Accounts:MigrationAdminToken", AdminToken);
+            b.ConfigureServices(services => services.AddDataProtection().PersistKeysToFileSystem(_keys));
         });
         public async Task Restart() { await Server.DisposeAsync(); Server = Start(); }
-        public async ValueTask DisposeAsync() { await Server.DisposeAsync(); File.Delete(_file); }
+        public async ValueTask DisposeAsync() { await Server.DisposeAsync(); File.Delete(_file); _keys.Delete(recursive: true); }
     }
 }

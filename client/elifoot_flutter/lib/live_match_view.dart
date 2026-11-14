@@ -707,6 +707,12 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
   int _detailTab = 0;
   double? _returnOffset;
   final _scroll = ScrollController();
+  late List<Map<String, dynamic>> _calendar = _readCalendar();
+
+  List<Map<String, dynamic>> _readCalendar() => widget.calendar
+      .whereType<Map>()
+      .map((round) => Map<String, dynamic>.from(round))
+      .toList();
   @override
   void dispose() {
     _scroll.dispose();
@@ -716,6 +722,9 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
   @override
   void didUpdateWidget(covariant LiveMatchScreen old) {
     super.didUpdateWidget(old);
+    if (!identical(old.calendar, widget.calendar)) {
+      _calendar = _readCalendar();
+    }
     if (widget.snapshot['activePauseWindow'] != null ||
         widget.snapshot['pendingPenalty'] != null) {
       _inspectedMatch = null;
@@ -882,11 +891,7 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
       final snapshot = widget.snapshot,
           current = (snapshot['roundNumber'] as num? ?? 1).toInt(),
           round = _viewedRound ?? current;
-      final calendar = widget.calendar
-          .whereType<Map>()
-          .map((r) => Map<String, dynamic>.from(r))
-          .toList();
-      final cal = calendar.where((r) => r['roundNumber'] == round).firstOrNull;
+      final cal = _calendar.where((r) => r['roundNumber'] == round).firstOrNull;
       final games = round == current
           ? (snapshot['matches'] as List? ?? [])
                 .map(
@@ -1090,7 +1095,7 @@ class _LiveMatchScreenState extends State<LiveMatchScreen> {
       Widget statistics() => MatchStatisticsPanel(match: selected!);
       final rounds = <int>{
         current,
-        ...calendar.map((r) => (r['roundNumber'] as num).toInt()),
+        ..._calendar.map((r) => (r['roundNumber'] as num).toInt()),
       }.toList()..sort();
       void viewRound(int value) {
         setState(() {

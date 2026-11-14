@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart' show mapEquals;
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -46,6 +47,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'shell_actions.dart';
 part 'classic98_shell.dart';
 part 'account_shell.dart';
+part 'room_data.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -176,6 +178,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
 
   List<dynamic> _worlds = [];
   Map<String, dynamic>? _snapshot;
+  final _liveMinuteRevision = ValueNotifier<int>(0);
   Map<String, dynamic>? _myClubDetail;
   List<dynamic> _standings = [];
   String _selectedDivisionTier = 'PrimeiraDivisao';
@@ -197,49 +200,42 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     return _clubPaletteByName[name?.toString()];
   }
 
-  Future<void> _loadClubPalettes(String worldId) async {
-    // Stadium capacity and club metadata can change between rounds.
-    try {
-      final clubs = await widget.apiClient.getClubs(worldId);
-      if (!mounted || _worldId != worldId) return;
-      setState(() {
-        _clubPaletteWorld = worldId;
-        _clubPaletteById.clear();
-        _clubPaletteByName.clear();
-        _liveClubs.clear();
-        final duplicateNames = <String>{};
-        final seenNames = <String>{};
-        for (final c in clubs) {
-          if (c is Map &&
-              c['name'] != null &&
-              !seenNames.add(c['name'].toString())) {
-            duplicateNames.add(c['name'].toString());
-          }
-        }
-        for (final c in clubs) {
-          if (c is Map && c['id'] != null) {
-            _liveClubs['${c['id']}'] = Map<String, dynamic>.from(c);
-          }
-          if (c is! Map) continue;
-          final p = clubMatchPalette(c);
-          if (p == null) continue;
-          _clubPaletteById[c['id'].toString()] = p;
-          if (c['name'] != null &&
-              !duplicateNames.contains(c['name'].toString())) {
-            _clubPaletteByName[c['name'].toString()] = p;
-          }
-        }
-      });
-    } catch (_) {
-      // Team blocks fall back to neutral; gameplay data is unaffected.
+  void _applyClubPalettes(String worldId, List<dynamic> clubs) {
+    _clubPaletteWorld = worldId;
+    _clubPaletteById.clear();
+    _clubPaletteByName.clear();
+    _liveClubs.clear();
+    final duplicateNames = <String>{};
+    final seenNames = <String>{};
+    for (final c in clubs) {
+      if (c is Map &&
+          c['name'] != null &&
+          !seenNames.add(c['name'].toString())) {
+        duplicateNames.add(c['name'].toString());
+      }
+    }
+    for (final c in clubs) {
+      if (c is Map && c['id'] != null) {
+        _liveClubs['${c['id']}'] = Map<String, dynamic>.from(c);
+      }
+      if (c is! Map) continue;
+      final p = clubMatchPalette(c);
+      if (p == null) continue;
+      _clubPaletteById[c['id'].toString()] = p;
+      if (c['name'] != null && !duplicateNames.contains(c['name'].toString())) {
+        _clubPaletteByName[c['name'].toString()] = p;
+      }
     }
   }
 
   List<dynamic> _topScorers = [];
   Map<String, dynamic>? _marketData;
   Map<String, dynamic>? _financesData;
-  int _secondaryDataRequest = 0;
-  int _appliedSecondaryDataRequest = 0;
+  int _dataRevision = 0;
+  num? _dataSnapshotVersion;
+  final _lastAreaVersion = <_RoomData, num>{};
+  (String?, Object?, Object?, Object?)? _worldDataEpoch;
+  final _roomReads = <(_RoomData, String?), _RoomRead>{};
   Map<String, dynamic>? _rankingData;
   Map<String, dynamic>? _invitationsData;
 
@@ -283,6 +279,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Timer? _postRoundTimer;
   String? _postRoundKey;
   bool _holdingClassification = false;
+  bool _registeringResult = false;
+  bool _resultSaveDelayed = false;
   bool _autoPreparingRound = false;
   late final _navigation = widget.navigation ?? MatchNavigationController();
   bool _restoringSession = false;
@@ -298,9 +296,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _classicPage = null;
       }
     });
+    // Route changes can also originate in browser history or from the round.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) unawaited(_loadVisibleRoomData());
+    });
   }
 
-  void _navigateToTab(int index) {
+  void _navigateToTab(int index, {String? classicPage}) {
     if (_matchLocked) {
       _navigation.navigate('/partida');
       return;
@@ -309,7 +311,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       _appearanceOpen = false;
     });
     _navigation.navigate(MatchNavigationController.paths[index]);
-    _refreshClubAndSecondaryData();
+    if (classicPage != null) {
+      setState(() {
+        _classicPage = classicPage;
+        _mobileTacticsView = classicPage == 'tactics';
+      });
+    }
+    unawaited(_loadVisibleRoomData());
   }
 
   String? _statusBanner;
@@ -362,21 +370,61 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _coachId = session?['coachId'];
     _authenticatedDeviceId = session?['deviceId'];
     _savedSessions = widget.useAccountLogin ? [] : readSavedSessions();
-    widget.apiClient.onSnapshotUpdated = (snap) {
+    widget.apiClient.onRoundCheckpointPending = (world, version) {
+      if (!mounted ||
+          _worldId != world ||
+          !_matchLocked ||
+          (version != null &&
+              version <= (_snapshot?['roundVersion'] as num? ?? 0))) {
+        return;
+      }
+      if (_registeringResult && (version != null || _resultSaveDelayed)) return;
+      setState(() {
+        _resultSaveDelayed = _registeringResult && version == null;
+        _registeringResult = true;
+      });
+    };
+    void applyRealtimeSnapshot(
+      Map<String, dynamic> snap, {
+      bool reset = false,
+    }) {
       if (!mounted) return;
       if (_worldId != null &&
           snap['gameWorldId'] != null &&
           snap['gameWorldId'] != _worldId) {
         return;
       }
-      if ((_snapshot?['roundVersion'] as num? ?? 0) >
-          (snap['roundVersion'] as num? ?? 0)) {
+      if (!reset &&
+          (_snapshot?['roundVersion'] as num? ?? 0) >
+              (snap['roundVersion'] as num? ?? 0)) {
         return;
       }
+      if (!reset &&
+          _snapshot?['roundVersion'] == snap['roundVersion'] &&
+          _snapshot?['roundState'] == snap['roundState'] &&
+          _snapshot?['currentMinute'] == snap['currentMinute'] &&
+          _snapshot?['hasInitialLobby'] == snap['hasInitialLobby'] &&
+          _snapshot?['lobbyStarted'] == snap['lobbyStarted'] &&
+          jsonEncode(_snapshot?['readyCounter']) ==
+              jsonEncode(snap['readyCounter'])) {
+        return;
+      }
+      if (!reset && _applyLiveMinute(snap)) return;
       final previousClub = _myClubId;
-      final previousVersion = _snapshot?['roundVersion'] as num? ?? 0;
+      final previousState = _snapshot?['roundState'];
+      final previousVersion = _snapshot?['roundVersion'] as num?;
+      final previousParticipants = _snapshot?['readyCounter']?['participants'];
+      final previousRound = _snapshot?['roundNumber'];
+      final previousSeason = _snapshot?['seasonNumber'];
       final newState = snap['roundState'];
+      if (reset) {
+        _cancelPostRoundPreparation();
+        _worldDataEpoch = null;
+      }
       setState(() {
+        _registeringResult = false;
+        _resultSaveDelayed = false;
+        if (reset) _snapshot = null;
         _snapshot = _acceptSnapshot(snap);
         final people =
             snap['readyCounter']?['participants'] as List<dynamic>? ?? [];
@@ -388,6 +436,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         }
       });
       if (previousClub != _myClubId) {
+        _myClubDetail = null;
+        _financesData = null;
         widget.appearance?.activate(
           widget.apiClient,
           _coachId,
@@ -395,12 +445,44 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _myClubId,
           null,
         );
-        _refreshClubAndSecondaryData();
+        unawaited(_refreshClubAndSecondaryData());
       }
-      if (previousClub == _myClubId &&
+      if (reset) {
+        if (previousClub == _myClubId) {
+          unawaited(_refreshClubAndSecondaryData());
+        }
+      } else if (previousClub == _myClubId &&
           const ['PREPARING', 'RESULTS', 'FINISHED'].contains(newState) &&
-          (snap['roundVersion'] as num? ?? 0) > previousVersion) {
-        _refreshClubAndSecondaryData();
+          (newState != previousState ||
+              snap['roundNumber'] != previousRound ||
+              snap['seasonNumber'] != previousSeason)) {
+        unawaited(_refreshClubAndSecondaryData());
+      } else if (newState != previousState && _matchLocked) {
+        unawaited(_loadVisibleRoomData());
+      } else if (newState == previousState &&
+          const ['PREPARING', 'RESULTS', 'FINISHED'].contains(newState) &&
+          previousVersion != null &&
+          (snap['roundVersion'] as num? ?? 0) > previousVersion &&
+          jsonEncode(snap['readyCounter']?['participants']) ==
+              jsonEncode(previousParticipants)) {
+        final room = _roomIdentity;
+        final version = snap['roundVersion'];
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted &&
+              _roomIdentity == room &&
+              _dataSnapshotVersion != version) {
+            unawaited(_refreshClubAndSecondaryData());
+          }
+        });
+      }
+    }
+
+    widget.apiClient.onSnapshotUpdated = applyRealtimeSnapshot;
+    widget.apiClient.onRealtimeEpochChanged = (snap) =>
+        applyRealtimeSnapshot(snap, reset: true);
+    widget.apiClient.onRoomDataReconciliation = () {
+      if (mounted && _worldId != null && !_matchLocked) {
+        unawaited(_refreshClubAndSecondaryData());
       }
     };
     widget.apiClient.onReadyCounterUpdated = (counter) {
@@ -417,6 +499,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         _snapshot = {..._snapshot!, 'readyCounter': counter};
       });
     };
+    widget.apiClient.onWorldDataChanged = _applyWorldDataChange;
     widget.apiClient.onNotification = (msg) {
       if (!mounted) return;
       setState(() => _statusBanner = msg);
@@ -441,6 +524,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   @override
   void dispose() {
     _cancelPostRoundPreparation();
+    _liveMinuteRevision.dispose();
     _navigation.removeListener(_onNavigationRequest);
     if (widget.navigation == null) _navigation.dispose();
     widget.apiClient.disconnectRealtime();
@@ -502,18 +586,21 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     String worldId, {
     String? preferredClubId,
     bool joinUnemployed = false,
+    Map<String, dynamic>? joined,
   }) async {
     if (_coachId == null) return;
     setState(() => _isLoading = true);
     try {
-      final res = await widget.apiClient.joinWorld(
-        worldId: worldId,
-        coachId: _coachId!,
-        nickname: _nickname,
-        deviceId: _deviceId,
-        preferredClubId: preferredClubId,
-        joinUnemployed: joinUnemployed,
-      );
+      final res =
+          joined ??
+          await widget.apiClient.joinWorld(
+            worldId: worldId,
+            coachId: _coachId!,
+            nickname: _nickname,
+            deviceId: _deviceId,
+            preferredClubId: preferredClubId,
+            joinUnemployed: joinUnemployed,
+          );
       final snap = res['snapshot'] as Map<String, dynamic>;
       setState(() {
         if (_worldId != worldId) {
@@ -523,6 +610,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _cancelPostRoundPreparation();
           _roundView.reset();
         }
+        _worldDataEpoch = null;
         _worldId = worldId;
         _coachId = res['coachId']?.toString() ?? _coachId;
         _nickname = res['nickname']?.toString() ?? _nickname;
@@ -533,7 +621,7 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       widget.apiClient.connectRealtimeRoom(worldId, _coachId!);
       await widget.presentation?.activate(widget.apiClient, _coachId!);
       await _saveSession();
-      await _refreshClubAndSecondaryData();
+      await _loadVisibleRoomData(also: {_RoomData.squad, _RoomData.finances});
     } catch (e) {
       setState(
         () => _statusBanner =
@@ -549,107 +637,83 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     }
   }
 
-  Future<void> _refreshClubAndSecondaryData() async {
-    final world = _worldId, club = _myClubId, coach = _coachId;
-    if (world == null) return;
-    final request = ++_secondaryDataRequest;
-    try {
-      final standings = await widget.apiClient.getStandings(
-        world,
-        _selectedDivisionTier,
-      );
-      final cup = await widget.apiClient.getCupFixtures(world);
-      final scorers = await widget.apiClient.getTopScorers(world);
-      final market = await widget.apiClient.getMarket(world);
-      final ranking = await widget.apiClient.getRankingAndHistory(world);
-      final calendar = await widget.apiClient.getCalendar(world);
-      await _loadClubPalettes(world);
+  bool _applyLiveMinute(Map<String, dynamic> incoming) {
+    final previous = _snapshot;
+    if (previous == null ||
+        !_matchLocked ||
+        _registeringResult ||
+        _resultSaveDelayed ||
+        previous['activePauseWindow'] != null ||
+        incoming['activePauseWindow'] != null ||
+        previous['pendingPenalty'] != null ||
+        incoming['pendingPenalty'] != null ||
+        (incoming['currentMinute'] as num? ?? -1) <=
+            (previous['currentMinute'] as num? ?? -1)) {
+      return false;
+    }
 
-      Map<String, dynamic>? clubDetail;
-      Map<String, dynamic>? finances;
-      if (club != null && club.isNotEmpty) {
-        clubDetail = await widget.apiClient.getClubDetail(world, club);
-        finances = await widget.apiClient.getClubFinances(world, club);
-      }
-
-      Map<String, dynamic>? invites;
-      if (coach != null) {
-        invites = await widget.apiClient.getInvitations(world, coach);
-      }
-
-      if (!mounted ||
-          _worldId != world ||
-          _myClubId != club ||
-          _coachId != coach ||
-          request < _appliedSecondaryDataRequest) {
-        return;
-      }
-      _appliedSecondaryDataRequest = request;
-      setState(() {
-        _standings = standings;
-        _cupFixtures = cup;
-        _topScorers = scorers;
-        _marketData = market;
-        _rankingData = ranking;
-        _invitationsData = invites;
-        _calendar = calendar;
-        if (clubDetail != null) {
-          _myClubDetail = clubDetail;
-          ClubNameDirectory.register(clubDetail['id'], clubDetail['name']);
-          if (_selectedStarterIds.isEmpty ||
-              !_selectedStarterIds.every(
-                (id) =>
-                    (clubDetail!['squad'] as List).any((p) => p['id'] == id),
-              )) {
-            _selectedFormation =
-                clubDetail['preferredFormation']?.toString() ?? '4-4-2';
-            _selectedStarterIds =
-                (clubDetail['preferredStarterIds'] as List<dynamic>? ?? [])
-                    .map((e) => e.toString())
-                    .toList();
-            _selectedBenchIds =
-                (clubDetail['preferredBenchIds'] as List<dynamic>? ?? [])
-                    .map((e) => e.toString())
-                    .toList();
-          }
-        }
-        if (clubDetail != null) {
-          final squadIds = (clubDetail['squad'] as List)
-              .map((p) => p['id'].toString())
-              .toSet();
-          _selectedBenchIds.removeWhere((id) => !squadIds.contains(id));
-          if (_classicSelectedPlayerId != null &&
-              !squadIds.contains(_classicSelectedPlayerId)) {
-            _classicSelectedPlayerId = null;
-            _classicSelectedPlayerHistory = null;
-            _classicPlayerStatsRequestSeq++;
-          }
-        }
-        if (finances != null) {
-          _financesData = finances;
-        }
-      });
-      if (_classicSelectedPlayerId != null) {
-        unawaited(_loadClassicSelectedPlayerHistory(_classicSelectedPlayerId!));
-      }
-      await widget.appearance?.activate(
-        widget.apiClient,
-        coach,
-        world,
-        club,
-        clubDetail?['colorPalette'] is Map
-            ? Map<String, dynamic>.from(clubDetail!['colorPalette'] as Map)
-            : null,
-      );
-    } catch (e) {
-      if (mounted &&
-          _worldId == world &&
-          _myClubId == club &&
-          _coachId == coach &&
-          request >= _appliedSecondaryDataRequest) {
-        setState(() => _statusBanner = 'Aviso: $e');
+    // Only a regular clock tick can skip the surrounding shell. Compare the
+    // rest of the projection so presence, tactics and transitions still use it.
+    const tickFields = {
+      'roundVersion',
+      'persistedRoundVersion',
+      'realtimeSequence',
+      'currentMinute',
+      'matches',
+      'readyCounter',
+    };
+    if (incoming.length != previous.length ||
+        !incoming.entries.every(
+          (entry) =>
+              tickFields.contains(entry.key) ||
+              (previous.containsKey(entry.key) &&
+                  previous[entry.key] == entry.value),
+        )) {
+      return false;
+    }
+    final oldReady = previous['readyCounter'];
+    final newReady = incoming['readyCounter'];
+    if (!identical(oldReady, newReady)) {
+      if (oldReady is! Map ||
+          newReady is! Map ||
+          oldReady.length != newReady.length ||
+          !newReady.entries.every((entry) {
+            if (entry.key == 'roundVersion') return true;
+            final oldValue = oldReady[entry.key];
+            if (entry.key != 'participants') {
+              return oldReady.containsKey(entry.key) && oldValue == entry.value;
+            }
+            final people = entry.value;
+            if (identical(oldValue, people)) return true;
+            if (oldValue is! List ||
+                people is! List ||
+                oldValue.length != people.length) {
+              return false;
+            }
+            for (var index = 0; index < people.length; index++) {
+              final before = oldValue[index];
+              final after = people[index];
+              if (!identical(before, after) &&
+                  (before is! Map ||
+                      after is! Map ||
+                      !mapEquals(before, after))) {
+                return false;
+              }
+            }
+            return true;
+          })) {
+        return false;
       }
     }
+
+    final previousPenalties = _classicPenaltyResults.length;
+    _snapshot = _acceptSnapshot(incoming);
+    if (previousPenalties != _classicPenaltyResults.length) {
+      setState(() {});
+    } else {
+      _liveMinuteRevision.value++;
+    }
+    return true;
   }
 
   Map<String, dynamic>? _acceptSnapshot(Map<String, dynamic>? incoming) {
@@ -713,10 +777,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           _statusBanner = 'JOGOS DA TAÇA CONCLUÍDOS';
           _returnToCoachHome();
         case RoundViewDecision.tactics:
+          _cancelPostRoundPreparation();
           _statusBanner = null;
           _selectedStarterIds = [];
           _selectedBenchIds = [];
-          if (!_holdingClassification) _returnToCoachHome();
+          _returnToCoachHome();
         case RoundViewDecision.none:
           break;
       }
@@ -760,8 +825,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         previous == null ||
         identical(previous, next) ||
         previous['seasonNumber'] != next['seasonNumber'] ||
-        previous['roundNumber'] != next['roundNumber'])
+        previous['roundNumber'] != next['roundNumber']) {
       return;
+    }
     final previousMatches = {
       for (final match in (previous['matches'] as List? ?? []).whereType<Map>())
         match['matchId']: (match['events'] as List? ?? []).length,
@@ -826,14 +892,24 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _postRoundKey = key;
     final type = '${completed['competitionType'] ?? 'League'}';
     _holdingClassification = type == 'League' || type == '0';
+    if (_holdingClassification) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted || _postRoundKey != key) return;
+        await _loadRoomData(_RoomData.standings);
+        if (mounted && _postRoundKey == key) {
+          _armRoundPreparation(world, season, round, key);
+        }
+      });
+    } else {
+      _armRoundPreparation(world, season, round, key);
+    }
+  }
+
+  void _armRoundPreparation(String world, int season, int round, String key) {
     _postRoundTimer = Timer(
       _holdingClassification ? const Duration(seconds: 5) : Duration.zero,
       () {
         if (!mounted || _worldId != world || _postRoundKey != key) return;
-        setState(() {
-          _holdingClassification = false;
-          _returnToCoachHome();
-        });
         _prepareFollowingRound(world, season, round, key);
       },
     );
@@ -854,24 +930,27 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     _postRoundTimer?.cancel();
     setState(() => _autoPreparingRound = true);
     try {
-      final next = await widget.apiClient.advanceToNextRound(
-        world,
-        expectedSeasonNumber: season,
-        expectedRoundNumber: round,
-      );
+      final next = await widget.apiClient
+          .advanceToNextRound(
+            world,
+            expectedSeasonNumber: season,
+            expectedRoundNumber: round,
+          )
+          .timeout(const Duration(seconds: 15));
       if (!mounted || _worldId != world || _postRoundKey != key) return;
-      setState(() => _snapshot = _acceptSnapshot(next));
-      await _refreshClubAndSecondaryData();
+      widget.apiClient.onSnapshotUpdated?.call(next);
     } catch (error) {
       if (mounted &&
           _postRoundKey == key &&
           _sameCompletedRound(world, season, round)) {
         final waitingForSalary = error.toString().contains('SALARY_PENDING_');
-        setState(
-          () => _statusBanner = waitingForSalary
+        setState(() {
+          _holdingClassification = false;
+          _returnToCoachHome();
+          _statusBanner = waitingForSalary
               ? error.toString().replaceFirst('Exception: ', '')
-              : 'Reconectando para preparar a próxima rodada...',
-        );
+              : 'Não foi possível preparar a próxima rodada. Tentando novamente...';
+        });
         _postRoundTimer = Timer(
           Duration(seconds: waitingForSalary ? 5 : 2),
           () => _prepareFollowingRound(world, season, round, key),
@@ -1093,9 +1172,12 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
   Widget build(BuildContext context) {
     final game = _buildGame(context);
     final world = _worldId, club = _myClubId, coach = _coachId;
-    final pending = (_financesData?['salaryRequests'] as List? ?? [])
-        .where((r) => r['status'] == 'PENDING' && r['clubId'] == club)
-        .firstOrNull;
+    final pending =
+        (_hasCurrentRoomData(_RoomData.finances)
+                ? (_financesData?['salaryRequests'] as List? ?? [])
+                : const [])
+            .where((r) => r['status'] == 'PENDING' && r['clubId'] == club)
+            .firstOrNull;
     final safeHome =
         world != null &&
         club != null &&
@@ -1197,6 +1279,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           api: widget.apiClient,
           worldId: _worldId!,
           coachId: _coachId!,
+          roomVersion: (_snapshot?['readyCounter']?['roundVersion'] as num?)
+              ?.toInt(),
           presentation: widget.presentation,
           onLeave: () async {
             widget.apiClient.disconnectRealtime();
@@ -1644,7 +1728,9 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     Widget action;
     if (_holdingClassification || _autoPreparingRound || state == 'RESULTS') {
       action = Text(
-        _holdingClassification
+        _autoPreparingRound
+            ? 'PROCESSANDO RODADA...'
+            : _holdingClassification
             ? 'CLASSIFICAÇÃO • RETORNO AO TREINADOR EM 5 SEGUNDOS'
             : 'PREPARANDO PRÓXIMA RODADA...',
       );
@@ -1785,10 +1871,13 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
           Container(
             color: t.secondary,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            child: Text(
-              "MINUTO ${snap?['currentMinute'] ?? 0}'  |  SUBSTITUIÇÕES ${me?['usedSubstitutions'] ?? 0}/${me?['maxSubstitutions'] ?? 5}  |  PARADAS ${me?['usedPauseWindows'] ?? 0}/${me?['maxPauseWindows'] ?? 3}",
-              key: const Key('live-match-quota-header'),
-              style: TextStyle(fontSize: 11, color: t.textSecondary),
+            child: ValueListenableBuilder(
+              valueListenable: _liveMinuteRevision,
+              builder: (_, _, _) => Text(
+                "MINUTO ${_snapshot?['currentMinute'] ?? 0}'  |  SUBSTITUIÇÕES ${me?['usedSubstitutions'] ?? 0}/${me?['maxSubstitutions'] ?? 5}  |  PARADAS ${me?['usedPauseWindows'] ?? 0}/${me?['maxPauseWindows'] ?? 3}",
+                key: const Key('live-match-quota-header'),
+                style: TextStyle(fontSize: 11, color: t.textSecondary),
+              ),
             ),
           ),
         if (pause != null)
@@ -1849,6 +1938,8 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
     widget.apiClient.disconnectRealtime();
     setState(() {
       _worldId = null;
+      _registeringResult = false;
+      _resultSaveDelayed = false;
       widget.appearance?.activate(widget.apiClient, null, null, null, null);
       _snapshot = null;
       _myClubDetail = null;
@@ -2389,21 +2480,35 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
       );
     }
     if (_matchLocked || _showMatchView) {
-      return _buildLiveMatchesAndPauseScreen();
+      return ValueListenableBuilder(
+        valueListenable: _liveMinuteRevision,
+        builder: (_, _, _) => _buildLiveMatchesAndPauseScreen(),
+      );
     }
     switch (_activeTabIndex) {
       case 0:
-        return _buildSquadAndTacticsScreen();
+        return _whenRoomData({_RoomData.squad}, _buildSquadAndTacticsScreen);
       case 1:
         return _buildDivisionsAndCupScreen();
       case 2:
-        return _buildMarketAndAuctionsScreen();
+        return _whenRoomData(
+          {_RoomData.market, _RoomData.squad},
+          _buildMarketAndAuctionsScreen,
+          keepContent: true,
+        );
       case 3:
-        return _buildFinancesAndStadiumScreen();
+        return _whenRoomData(
+          {_RoomData.finances, _RoomData.squad},
+          _buildFinancesAndStadiumScreen,
+          keepContent: true,
+        );
       case 4:
-        return _buildCareerRankingAndInvitationsScreen();
+        return _whenRoomData({
+          _RoomData.invites,
+          _RoomData.ranking,
+        }, _buildCareerRankingAndInvitationsScreen);
       case 5:
-        return _buildCalendarScreen();
+        return _whenRoomData({_RoomData.calendar}, _buildCalendarScreen);
       case 6:
         return PlayerRankingsScreen(
           requestedCategory: _classicRankingCategory,
@@ -3079,7 +3184,11 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
           child: Text(
-            'PLACARES DA RODADA • ${_matchVisualStateLabel(snap['roundState']?.toString() ?? 'PREPARING', pause)}',
+            _resultSaveDelayed
+                ? 'Gravação pendente. O servidor tentará novamente.'
+                : _registeringResult
+                ? 'Registrando resultado...'
+                : 'PLACARES DA RODADA • ${_matchVisualStateLabel(snap['roundState']?.toString() ?? 'PREPARING', pause)}',
             key: const ValueKey('live-match-state-banner'),
             style: TextStyle(
               color: ClassicTheme.of(context).accent,
@@ -3289,7 +3398,10 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
               ('standings', 'CLASSIFICAÇÃO'),
               ('cup', 'TAÇA NACIONAL'),
             ],
-            onSelected: (value) => setState(() => _competitionTab = value),
+            onSelected: (value) {
+              setState(() => _competitionTab = value);
+              unawaited(_loadVisibleRoomData());
+            },
           ),
           const SizedBox(height: 10),
           if (_competitionTab == 'standings') ...[
@@ -3303,123 +3415,97 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                 ('TerceiraDivisao', '3ª DIVISÃO'),
                 ('QuartaDivisao', '4ª DIVISÃO'),
               ],
-              onSelected: (value) async {
-                setState(() => _selectedDivisionTier = value);
-                final rows = await widget.apiClient.getStandings(
-                  _worldId!,
-                  value,
-                );
-                if (mounted) setState(() => _standings = rows);
-              },
+              onSelected: _selectDivision,
             ),
             const SizedBox(height: 10),
-            ClassicStandings(
-              rows: _standings,
-              onClubSelected: _matchLocked ? null : _openClubHistory,
-              clubId: _myClubId,
-              title:
-                  '${switch (_selectedDivisionTier) {
-                    'SegundaDivisao' => '2ª',
-                    'TerceiraDivisao' => '3ª',
-                    'QuartaDivisao' => '4ª',
-                    _ => '1ª',
-                  }} DIVISÃO — CLASSIFICAÇÃO',
+            _whenRoomData(
+              {_RoomData.standings},
+              () => ClassicStandings(
+                rows: _standings,
+                onClubSelected: _matchLocked ? null : _openClubHistory,
+                clubId: _myClubId,
+                title:
+                    '${switch (_selectedDivisionTier) {
+                      'SegundaDivisao' => '2ª',
+                      'TerceiraDivisao' => '3ª',
+                      'QuartaDivisao' => '4ª',
+                      _ => '1ª',
+                    }} DIVISÃO — CLASSIFICAÇÃO',
+              ),
+              message: _holdingClassification
+                  ? 'Atualizando resultados...'
+                  : null,
             ),
             const SizedBox(height: 12),
-            ClassicRoundSummary(
-              rounds: [
-                ('RODADA ANTERIOR', prevRound),
-                ('RODADA ATUAL', curRoundCal),
-                ('PRÓXIMA RODADA', nextRound),
-              ],
+            _whenRoomData(
+              {_RoomData.calendar},
+              () => ClassicRoundSummary(
+                rounds: [
+                  ('RODADA ANTERIOR', prevRound),
+                  ('RODADA ATUAL', curRoundCal),
+                  ('PRÓXIMA RODADA', nextRound),
+                ],
+              ),
             ),
           ],
           if (_competitionTab == 'cup')
-            ClassicPaperPanel(
-              child: ClassicPaper(
-                builder: (context) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)',
-                      style: TextStyle(
-                        color: ClassicTheme.of(context).accent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    if (cupChampion != null && cupChampion.isNotEmpty) ...[
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(bottom: 8),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: ClassicTheme.of(context).surfaceAlternate,
-                          border: Border.all(
-                            color: ClassicTheme.of(context).selectedBackground,
-                            width: 1.5,
-                          ),
-                        ),
-                        child: Text(
-                          'CAMPEÃO DA TAÇA NACIONAL: $cupChampion',
-                          key: const ValueKey('cup-champion-banner'),
-                          style: TextStyle(
-                            color: ClassicTheme.of(context).accent,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                          ),
+            _whenRoomData(
+              {_RoomData.cup, _RoomData.scorers},
+              () => ClassicPaperPanel(
+                child: ClassicPaper(
+                  builder: (context) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'TAÇA NACIONAL (PRELIMINARES DISTRITAIS 96 -> 32 + MATA-MATA DE 64 CLUBES)',
+                        style: TextStyle(
+                          color: ClassicTheme.of(context).accent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
                         ),
                       ),
-                    ],
-                    if (cupStages.isNotEmpty) ...[
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 6,
-                        children: [
-                          InkWell(
-                            key: const ValueKey('cup-stage-ALL'),
-                            onTap: () =>
-                                setState(() => _selectedCupStage = 'ALL'),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 5,
-                              ),
-                              decoration: BoxDecoration(
-                                color: activeCupStage == 'ALL'
-                                    ? ClassicTheme.of(
-                                        context,
-                                      ).selectedBackground
-                                    : ClassicTheme.of(context).surface,
-                                border: Border.all(
-                                  color: ClassicTheme.of(context).border,
-                                ),
-                              ),
-                              child: Text(
-                                'TODAS AS FASES (${_cupFixtures.length})',
-                                style: TextStyle(
-                                  fontSize: 10.5,
-                                  fontWeight: FontWeight.bold,
-                                  color: activeCupStage == 'ALL'
-                                      ? ClassicTheme.of(context).selectedText
-                                      : ClassicTheme.of(context).textPrimary,
-                                ),
-                              ),
+                      const SizedBox(height: 6),
+                      if (cupChampion != null && cupChampion.isNotEmpty) ...[
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: ClassicTheme.of(context).surfaceAlternate,
+                            border: Border.all(
+                              color: ClassicTheme.of(
+                                context,
+                              ).selectedBackground,
+                              width: 1.5,
                             ),
                           ),
-                          for (final st in cupStages)
+                          child: Text(
+                            'CAMPEÃO DA TAÇA NACIONAL: $cupChampion',
+                            key: const ValueKey('cup-champion-banner'),
+                            style: TextStyle(
+                              color: ClassicTheme.of(context).accent,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ],
+                      if (cupStages.isNotEmpty) ...[
+                        Wrap(
+                          spacing: 6,
+                          runSpacing: 6,
+                          children: [
                             InkWell(
-                              key: ValueKey('cup-stage-$st'),
+                              key: const ValueKey('cup-stage-ALL'),
                               onTap: () =>
-                                  setState(() => _selectedCupStage = st),
+                                  setState(() => _selectedCupStage = 'ALL'),
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 8,
                                   vertical: 5,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: activeCupStage == st
+                                  color: activeCupStage == 'ALL'
                                       ? ClassicTheme.of(
                                           context,
                                         ).selectedBackground
@@ -3429,138 +3515,177 @@ class _ElifootShellScreenState extends State<ElifootShellScreen> {
                                   ),
                                 ),
                                 child: Text(
-                                  st,
+                                  'TODAS AS FASES (${_cupFixtures.length})',
                                   style: TextStyle(
                                     fontSize: 10.5,
                                     fontWeight: FontWeight.bold,
-                                    color: activeCupStage == st
+                                    color: activeCupStage == 'ALL'
                                         ? ClassicTheme.of(context).selectedText
                                         : ClassicTheme.of(context).textPrimary,
                                   ),
                                 ),
                               ),
                             ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                    ],
-                    if (visibleCupFixtures.isEmpty)
-                      const Text(
-                        'Nenhuma partida da Taça registrada nesta fase ainda.',
-                        style: TextStyle(fontSize: 12),
-                      )
-                    else
-                      ClassicTable(
-                        tableKey: 'cup-fixtures-table',
-                        columns: const [
-                          'FASE',
-                          'MANDANTE',
-                          'PLACAR',
-                          'VISITANTE',
-                          'CLASSIFICADO / SITUAÇÃO',
-                        ],
-                        rows: visibleCupFixtures.asMap().entries.map((entry) {
-                          final i = entry.key;
-                          final f = entry.value;
-                          final penH = f['homePenaltyGoals'];
-                          final penA = f['awayPenaltyGoals'];
-                          final penStr = (penH != null && penA != null)
-                              ? ' (Pên: $penH x $penA)'
-                              : '';
-                          final winner = f['winnerClubName']?.toString();
-                          final scoreStr =
-                              f['isFinished'] == true || winner != null
-                              ? '${f['homeGoals']} x ${f['awayGoals']}$penStr'
-                              : 'vs';
-                          return DataRow(
-                            color: WidgetStateProperty.all(
-                              i.isEven
-                                  ? ClassicTheme.of(context).tableRow
-                                  : ClassicTheme.of(context).tableRowAlternate,
-                            ),
-                            cells: [
-                              DataCell(
-                                Text(
-                                  '${f['stage']}',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: ClassicTheme.of(context).accent,
+                            for (final st in cupStages)
+                              InkWell(
+                                key: ValueKey('cup-stage-$st'),
+                                onTap: () =>
+                                    setState(() => _selectedCupStage = st),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 5,
                                   ),
-                                ),
-                              ),
-                              DataCell(
-                                TeamColorName(
-                                  name:
-                                      '${f['homeClubName']} (${f['homeDivision']})',
-                                  palette: _teamPalette(
-                                    id: f['homeClubId'],
-                                    name: f['homeClubName'],
-                                  ),
-                                  textAlign: TextAlign.right,
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  scoreStr,
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: ClassicTheme.of(context).accent,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                TeamColorName(
-                                  name:
-                                      '${f['awayClubName']} (${f['awayDivision']})',
-                                  palette: _teamPalette(
-                                    id: f['awayClubId'],
-                                    name: f['awayClubName'],
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  winner != null
-                                      ? 'Vencedor: $winner'
-                                      : 'A disputar',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: winner != null
-                                        ? readableOn(
-                                            Colors.lightGreenAccent,
-                                            ClassicTheme.of(context).tableRow,
-                                          )
-                                        : ClassicTheme.of(
+                                  decoration: BoxDecoration(
+                                    color: activeCupStage == st
+                                        ? ClassicTheme.of(
                                             context,
-                                          ).textSecondary,
+                                          ).selectedBackground
+                                        : ClassicTheme.of(context).surface,
+                                    border: Border.all(
+                                      color: ClassicTheme.of(context).border,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    st,
+                                    style: TextStyle(
+                                      fontSize: 10.5,
+                                      fontWeight: FontWeight.bold,
+                                      color: activeCupStage == st
+                                          ? ClassicTheme.of(
+                                              context,
+                                            ).selectedText
+                                          : ClassicTheme.of(
+                                              context,
+                                            ).textPrimary,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ],
-                          );
-                        }).toList(),
-                      ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'ARTILHARIA DA TEMPORADA',
-                      style: TextStyle(
-                        color: ClassicTheme.of(context).accent,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    ..._topScorers.take(15).map((s) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2),
-                        child: Text(
-                          '${s['rank']}º ${s['displayName']} (${s['clubName']}) — ${(s['seasonGoals'] as num? ?? 0) + (s['cupGoals'] as num? ?? 0)} gols (Liga: ${s['seasonGoals']}, Taça: ${s['cupGoals']})',
-                          style: const TextStyle(fontSize: 12),
+                          ],
                         ),
-                      );
-                    }),
-                  ],
+                        const SizedBox(height: 8),
+                      ],
+                      if (visibleCupFixtures.isEmpty)
+                        const Text(
+                          'Nenhuma partida da Taça registrada nesta fase ainda.',
+                          style: TextStyle(fontSize: 12),
+                        )
+                      else
+                        ClassicTable(
+                          tableKey: 'cup-fixtures-table',
+                          columns: const [
+                            'FASE',
+                            'MANDANTE',
+                            'PLACAR',
+                            'VISITANTE',
+                            'CLASSIFICADO / SITUAÇÃO',
+                          ],
+                          rows: visibleCupFixtures.asMap().entries.map((entry) {
+                            final i = entry.key;
+                            final f = entry.value;
+                            final penH = f['homePenaltyGoals'];
+                            final penA = f['awayPenaltyGoals'];
+                            final penStr = (penH != null && penA != null)
+                                ? ' (Pên: $penH x $penA)'
+                                : '';
+                            final winner = f['winnerClubName']?.toString();
+                            final scoreStr =
+                                f['isFinished'] == true || winner != null
+                                ? '${f['homeGoals']} x ${f['awayGoals']}$penStr'
+                                : 'vs';
+                            return DataRow(
+                              color: WidgetStateProperty.all(
+                                i.isEven
+                                    ? ClassicTheme.of(context).tableRow
+                                    : ClassicTheme.of(
+                                        context,
+                                      ).tableRowAlternate,
+                              ),
+                              cells: [
+                                DataCell(
+                                  Text(
+                                    '${f['stage']}',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: ClassicTheme.of(context).accent,
+                                    ),
+                                  ),
+                                ),
+                                DataCell(
+                                  TeamColorName(
+                                    name:
+                                        '${f['homeClubName']} (${f['homeDivision']})',
+                                    palette: _teamPalette(
+                                      id: f['homeClubId'],
+                                      name: f['homeClubName'],
+                                    ),
+                                    textAlign: TextAlign.right,
+                                  ),
+                                ),
+                                DataCell(
+                                  Text(
+                                    scoreStr,
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: ClassicTheme.of(context).accent,
+                                    ),
+                                  ),
+                                ),
+                                DataCell(
+                                  TeamColorName(
+                                    name:
+                                        '${f['awayClubName']} (${f['awayDivision']})',
+                                    palette: _teamPalette(
+                                      id: f['awayClubId'],
+                                      name: f['awayClubName'],
+                                    ),
+                                  ),
+                                ),
+                                DataCell(
+                                  Text(
+                                    winner != null
+                                        ? 'Vencedor: $winner'
+                                        : 'A disputar',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: winner != null
+                                          ? readableOn(
+                                              Colors.lightGreenAccent,
+                                              ClassicTheme.of(context).tableRow,
+                                            )
+                                          : ClassicTheme.of(
+                                              context,
+                                            ).textSecondary,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'ARTILHARIA DA TEMPORADA',
+                        style: TextStyle(
+                          color: ClassicTheme.of(context).accent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      ..._topScorers.take(15).map((s) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          child: Text(
+                            '${s['rank']}º ${s['displayName']} (${s['clubName']}) — ${(s['seasonGoals'] as num? ?? 0) + (s['cupGoals'] as num? ?? 0)} gols (Liga: ${s['seasonGoals']}, Taça: ${s['cupGoals']})',
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
                 ),
               ),
             ),

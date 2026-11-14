@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:elifoot_flutter/api_client.dart';
 import 'package:elifoot_flutter/main.dart';
 import 'package:flutter/material.dart';
@@ -884,7 +886,160 @@ class FakeGameplay011ApiClient extends ElifootApiClient {
   }
 }
 
+class _DelayedStandingsApi extends FakeGameplay011ApiClient {
+  final second = Completer<List<dynamic>>();
+  int secondReads = 0;
+  int marketReads = 0;
+  bool failThird = true;
+
+  @override
+  Future<List<dynamic>> getStandings(String worldId, String tier) async {
+    if (tier == 'SegundaDivisao') {
+      secondReads++;
+      return second.future;
+    }
+    if (tier == 'TerceiraDivisao') {
+      if (failThird) throw StateError('network unavailable');
+      return [_row('Clube exclusivo da terceira')];
+    }
+    return [_row('Clube exclusivo da primeira')];
+  }
+
+  static Map<String, dynamic> _row(String name) => {
+    'position': 1,
+    'clubId': 'test-only',
+    'clubName': name,
+    'points': 2,
+  };
+
+  @override
+  Future<Map<String, dynamic>> getMarket(String worldId) async {
+    marketReads++;
+    return super.getMarket(worldId);
+  }
+}
+
+class _MarketInvalidationApi extends _DelayedStandingsApi {
+  String? connectedWorld;
+  final blockedMarket = Completer<Map<String, dynamic>>();
+
+  @override
+  void connectRealtimeRoom(String worldId, String coachId) {
+    connectedWorld = worldId;
+  }
+
+  @override
+  Future<Map<String, dynamic>> getMarket(String worldId) {
+    if (marketReads == 1) {
+      marketReads++;
+      return blockedMarket.future;
+    }
+    return super.getMarket(worldId);
+  }
+}
+
 void main() {
+  testWidgets(
+    'Scoped invalidation refreshes the market and discards old replies',
+    (tester) async {
+      final api = _MarketInvalidationApi();
+      await tester.binding.setSurfaceSize(const Size(1280, 900));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('ENTRAR DESEMPREGADO'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('ENTRAR DESEMPREGADO'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('3. MERCADO & LEILÃO'));
+      await tester.pumpAndSettle();
+      expect(api.marketReads, 1);
+      expect(find.textContaining('Goleiro Livre'), findsOneWidget);
+
+      void change(
+        int version, {
+        String? world,
+        List<String> areas = const ['market'],
+      }) {
+        api.onWorldDataChanged!({
+          'worldId': world ?? api.connectedWorld,
+          'seasonNumber': api.currentSeason,
+          'roundNumber': api.currentRound,
+          'roundState': api.currentRoundState,
+          'version': version,
+          'areas': areas,
+        });
+      }
+
+      change(2, world: 'other-room');
+      change(2, areas: ['ranking']);
+      await tester.pumpAndSettle();
+      expect(api.marketReads, 1);
+
+      change(2);
+      await tester.pump(const Duration(milliseconds: 250));
+      expect(find.textContaining('Goleiro Livre'), findsNothing);
+      change(3);
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Goleiro Livre'), findsOneWidget);
+      api.blockedMarket.complete({
+        'listings': [],
+        'offers': [],
+        'auctions': [],
+      });
+      change(3);
+      change(2);
+      await tester.pumpAndSettle();
+      expect(find.textContaining('Goleiro Livre'), findsOneWidget);
+      expect(api.marketReads, 3);
+    },
+  );
+
+  testWidgets(
+    'Rapid division changes discard late rows and allow a safe retry',
+    (tester) async {
+      final api = _DelayedStandingsApi();
+      await tester.binding.setSurfaceSize(const Size(1280, 900));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        ElifootClassicApp(accountLogin: false, apiClient: api),
+      );
+      await tester.tap(find.text('ENTRAR NO LOBBY'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('ENTRAR DESEMPREGADO'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('ENTRAR DESEMPREGADO'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('2. DIVISÕES & TAÇA'));
+      await tester.pumpAndSettle();
+      expect(find.text('Clube exclusivo da primeira'), findsOneWidget);
+      await tester.tap(
+        find.byKey(const ValueKey('btn-division-SegundaDivisao')),
+      );
+      await tester.pump();
+      expect(find.text('Carregando classificação...'), findsNothing);
+      expect(find.text('Clube exclusivo da primeira'), findsNothing);
+      await tester.pump(const Duration(milliseconds: 200));
+      expect(find.text('Carregando classificação...'), findsOneWidget);
+      await tester.tap(
+        find.byKey(const ValueKey('btn-division-TerceiraDivisao')),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Tentar novamente'), findsOneWidget);
+      api.failThird = false;
+      await tester.tap(find.text('Tentar novamente'));
+      await tester.pumpAndSettle();
+      api.second.complete([_DelayedStandingsApi._row('Resposta atrasada')]);
+      await tester.pumpAndSettle();
+      expect(find.text('Resposta atrasada'), findsNothing);
+      expect(find.text('Clube exclusivo da terceira'), findsOneWidget);
+      expect(api.secondReads, 1);
+      expect(api.marketReads, 0);
+    },
+  );
   testWidgets(
     'Task 011: Coach Main Panel, Squad Filters, Tactical Field, Swap & Live Match Flow',
     (WidgetTester tester) async {

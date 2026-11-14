@@ -97,7 +97,11 @@ public sealed class AccountSessionService(ElifootDbContext db, IPasswordHasher<A
     {
         var account = await db.Accounts.SingleOrDefaultAsync(x => x.NormalizedUsername == Normalize(username), ct);
         if (account == null) return null;
-        var exists = (await worlds.ListWorldsAsync(ct)).Any(w => w.HumanCoaches.Any(c => c.Id == coachId));
+        bool exists = false;
+        await foreach (var world in worlds.EnumerateWorldsAsync(ct))
+        {
+            if (world.HumanCoaches.Any(c => c.Id == coachId)) { exists = true; break; }
+        }
         if (!exists || await db.AccountCoaches.AnyAsync(x => x.CoachId == coachId, ct))
         { await Audit(account.Id, coachId, "Rejected", "Identidade ausente ou já vinculada.", ct); return null; }
         var token = Token();
